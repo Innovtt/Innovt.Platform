@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <PackageId>Innovt.Notification.Core</PackageId>
+    <PackageVersion>3.0.3</PackageVersion>
+    <Authors>Michel,Tiago</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>Innovt Tecnologia</Copyright>
+    <Description>Innovt.Notification.Core</Description>
+    <Version>3.0.3</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj" />
+  </ItemGroup>
+</Project>

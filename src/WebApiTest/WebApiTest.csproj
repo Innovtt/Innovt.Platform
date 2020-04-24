@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Innovt.AspNetCore\Innovt.AspNetCore.csproj" />
+    <ProjectReference Include="..\Innovt.CrossCutting.IOC.StructureMap\Innovt.CrossCutting.IOC.StructureMap.csproj" />
+  </ItemGroup>
+
+
+</Project>

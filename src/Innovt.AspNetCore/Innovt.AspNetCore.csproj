@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <PackageId>Innovt.AspNetCore</PackageId>
+    <PackageVersion>3.0.9</PackageVersion>
+    <Authors>Michel,Tiago</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>Innovt Tecnologia</Copyright>
+    <Description>AspNetCore Base Project</Description>
+    <Version>3.0.9</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.3" />
+    <PackageReference Include="OpenTracing.Contrib.NetCore" Version="0.6.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.3.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj" />
+    <ProjectReference Include="..\Innovt.Domain\Innovt.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+     <PackageId>Innovt.Cloud.AWS.S3</PackageId>
+    <PackageVersion>1.0.4</PackageVersion>
+    <Authors>Michel,Tiago</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>Innovt Tecnologia</Copyright>
+    <Description>AWS implementation for S3 Abstraction.</Description>
+    <Version>1.0.4</Version>
+  </PropertyGroup>
+  <ItemGroup>
+     <PackageReference Include="AWSSDK.S3" Version="3.3.110.55" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <PackageId>Innovt.Cloud.AWS.Cognito</PackageId>
+    <PackageVersion>1.0.3</PackageVersion>
+    <Authors>Michel,Tiago</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>Innovt Tecnologia</Copyright>
+    <Description>AWS implementation for coginito features.</Description>
+    <Version>1.0.3</Version>
+  </PropertyGroup>
+  <ItemGroup>
+        <PackageReference Include="Amazon.Extensions.CognitoAuthentication" Version="1.0.3" />
+        <PackageReference Include="System.Text.Json" Version="4.7.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Resources\Messages.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

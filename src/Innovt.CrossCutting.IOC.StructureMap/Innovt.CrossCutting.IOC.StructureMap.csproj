@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <PackageId>Innovt.CrossCutting.IOC.StructureMap</PackageId>
+    <PackageVersion>3.0.2</PackageVersion>
+    <Authors>Michel,Tiago</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>Innovt Tecnologia</Copyright>
+    <Description>Structure map implementation for IOC.</Description>
+    <Version>3.0.2</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="StructureMap" Version="4.7.1" />
+    <PackageReference Include="StructureMap.Microsoft.DependencyInjection" Version="2.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Update="NETStandard.Library" />
+  </ItemGroup>
+</Project>

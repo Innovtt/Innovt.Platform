@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+     <PackageId>Innovt.Cloud.AWS.Notification</PackageId>
+    <PackageVersion>1.0.3</PackageVersion>
+    <Authors>Michel,Tiago</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>Innovt Tecnologia</Copyright>
+    <Description>AWS implementation for SES and SNS Abstraction.</Description>
+    <Version>1.0.3</Version>
+  </PropertyGroup>
+  <ItemGroup>
+         <PackageReference Include="AWSSDK.SimpleEmail" Version="3.3.101.135" />
+    <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.3.101.153" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj" />
+  </ItemGroup>
+
+</Project>
