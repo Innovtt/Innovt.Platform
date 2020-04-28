@@ -1,4 +1,5 @@
 ![.NET Core](https://github.com/Innovtt/Innovt.Platform/workflows/.NET%20Core/badge.svg)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Innovtt_Innovt.Platform&metric=alert_status)](https://sonarcloud.io/dashboard?id=Innovtt_Innovt.Platform)
 
 
 ## Welcome to GitHub Pages
