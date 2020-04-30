@@ -11,7 +11,7 @@ namespace Innovt.Core.Utilities
     {
         public static bool IsEmail(this string value)
         {
-            var isValid = new EmailAddressAttribute().IsValid(value);
+            var isValid = (new EmailAddressAttribute().IsValid(value) && Regex.IsMatch(value, @"([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})"));
 
             return isValid;
         }
@@ -23,7 +23,7 @@ namespace Innovt.Core.Utilities
             return value.Length <= maxLength ? value : value.Substring(0, maxLength);
         }
 
-        
+
 
         /// <summary>
         /// Verifica se um CPF é válido
@@ -94,7 +94,7 @@ namespace Innovt.Core.Utilities
             if (cnpj.Length != 14)
                 return false;
             var tempCnpj = cnpj.Substring(0, 12);
-          
+
             var soma = 0;
             for (var i = 0; i < 12; i++)
                 soma += int.Parse(tempCnpj[i].ToString()) * multiplicador1[i];
@@ -230,11 +230,11 @@ namespace Innovt.Core.Utilities
         /// <returns></returns>
         public static string FormatCoordinate(this long value)
         {
-           var multiplier = value>0 ? "" : "-";
+            var multiplier = value > 0 ? "" : "-";
 
-           var latitude = value.ToString().OnlyNumber().PadLeft(9,'0');
+            var latitude = value.ToString().OnlyNumber().PadLeft(9, '0');
 
-           return $"{multiplier}{latitude.Substring(0,2)}.{latitude.Substring(2, 7)}";
+            return $"{multiplier}{latitude.Substring(0, 2)}.{latitude.Substring(2, 7)}";
         }
 
 
