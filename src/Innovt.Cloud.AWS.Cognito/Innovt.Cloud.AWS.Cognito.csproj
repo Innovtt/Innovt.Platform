@@ -13,7 +13,7 @@
   </PropertyGroup>
   <ItemGroup>
         <PackageReference Include="Amazon.Extensions.CognitoAuthentication" Version="1.0.3" />
-        <PackageReference Include="System.Text.Json" Version="4.7.1" />
+        <PackageReference Include="System.Text.Json" Version="4.7.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj" />

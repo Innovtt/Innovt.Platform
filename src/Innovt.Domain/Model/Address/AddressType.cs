@@ -3,13 +3,13 @@ using System.Linq;
 
 namespace Innovt.Domain.Model.Address
 {
-    public class AddressType : ValueObject
+    public sealed class AddressType : ValueObject
     {
-        protected static List<AddressType> types = new List<AddressType>();
+        private static List<AddressType> types = new List<AddressType>();
 
-        public static AddressType Comercial = new AddressType(1, "Comercial");
-        public static AddressType Residential = new AddressType(2, "Residencial");
-        public static AddressType Pagamento = new AddressType(3, "Pagamento");
+        public static readonly AddressType Comercial = new AddressType(1, "Comercial");
+        public static readonly AddressType Residential = new AddressType(2, "Residencial");
+        public static readonly AddressType Pagamento = new AddressType(3, "Pagamento");
 
         public string Name { get; set; }
 

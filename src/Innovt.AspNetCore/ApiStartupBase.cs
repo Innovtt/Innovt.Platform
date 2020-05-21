@@ -9,26 +9,28 @@ using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 
 namespace Innovt.AspNetCore
 {
     public abstract class ApiStartupBase
     {
         private readonly string healthPath;
+        private readonly bool ignoreSwaggerDoc;
         public IConfiguration Configuration { get; }
         private readonly string apiTitle;
         private readonly string apiDescription;
         private readonly string apiVersion;
  
         protected ApiStartupBase(IConfiguration configuration, string apiTitle,
-            string apiDescription, string apiVersion,string healthPath="/health")
+            string apiDescription, string apiVersion,string healthPath="/health",bool ignoreSwaggerDoc = false)
         {
             Configuration = configuration;
+
             this.apiTitle = apiTitle;
             this.apiDescription = apiDescription;
             this.apiVersion = apiVersion;
             this.healthPath = healthPath;
+            this.ignoreSwaggerDoc = ignoreSwaggerDoc;
         }
 
         protected ApiStartupBase(IConfiguration configuration):this(configuration,"Api Title","Please provide you api Description.(Startup Constructor)","v1")
@@ -36,7 +38,10 @@ namespace Innovt.AspNetCore
         }
 
         protected virtual void AddSwagger(IServiceCollection services)
-        {
+        {   
+            if(ignoreSwaggerDoc)
+                return;
+
             services.AddSwaggerGen(options =>
             {
                 options.IgnoreObsoleteActions();
@@ -57,7 +62,7 @@ namespace Innovt.AspNetCore
             });
         }
 
-        protected abstract IContainer ConfigureIoc(IServiceCollection services);
+        protected abstract IContainer ConfigureIoC(IServiceCollection services);
 
         /// <summary>
         /// Implement only the AddHealthChecks by default
@@ -81,6 +86,8 @@ namespace Innovt.AspNetCore
         /// <param name="services"></param>
         public virtual void ConfigureServices(IServiceCollection services)
         {
+            var container = ConfigureIoC(services);
+
             AddDefaultServices(services);
 
             ConfigureHealthChecks(services);
@@ -89,7 +96,7 @@ namespace Innovt.AspNetCore
 
             AddSwagger(services);
 
-            ConfigureIoc(services)?.CheckConfiguration();
+            container?.CheckConfiguration();
         }
 
 

@@ -4,39 +4,53 @@ using System.Linq;
 using System.Threading.Tasks;
 using Innovt.Domain.Repository;
 using Microsoft.EntityFrameworkCore;
-using Innovt.Core.Utilities;
 using System.Threading;
+using Innovt.Core.Utilities;
+using Innovt.Data.DataSources;
+using Innovt.Data.Exceptions;
+using Innovt.Data.Model;
 
 namespace Innovt.Data.EFCore
 {
     public class DbContext: Microsoft.EntityFrameworkCore.DbContext, IExtendedUnitOfWork
     {
-        protected readonly string ConnectionString;
-        
+        private readonly IDataSource dataSource;
+
         public DbContext(IDataSource dataSource)
         {
-            ConnectionString = dataSource?.GetConnectionString() ?? throw new ArgumentNullException(nameof(dataSource));
-        }
-
-        public DbContext(string connectionString)
-        {
-            ConnectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));
+            this.dataSource = dataSource ?? throw new ArgumentNullException(nameof(dataSource));
         }
 
         public DbContext()
         {
-        
         }
 
         public DbContext(DbContextOptions options):base(options)
         {
-         
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if(!ConnectionString.IsNullOrEmpty())
-                optionsBuilder.UseSqlServer(ConnectionString);
+            if (dataSource!=null)
+            {
+                var connectionString = dataSource.GetConnectionString();
+
+                if(connectionString.IsNullOrEmpty())
+                    throw  new ConnectionStringException($"Connection string for datasource {dataSource.Name} is empty.");
+
+                switch (dataSource.Provider)
+                {
+                    case Provider.MsSql:
+                        optionsBuilder.UseSqlServer(connectionString);
+                        break;
+                    case Provider.PostgreSqL:
+                        optionsBuilder.UseNpgsql(connectionString);
+                        break;
+                    default:
+                        optionsBuilder.UseSqlServer(connectionString);
+                        break;
+                }
+            }   
             
             base.OnConfiguring(optionsBuilder);
         }
@@ -96,14 +110,14 @@ namespace Innovt.Data.EFCore
             base.Update(entity);
         }
 
-        void IExtendedUnitOfWork.Attach<T>(T item)
+        void IExtendedUnitOfWork.Attach<T>(T entity)
         {
-            base.Attach(item);
+            base.Attach(entity);
         }
 
-        void IExtendedUnitOfWork.Detach<T>(T item)
+        void IExtendedUnitOfWork.Detach<T>(T entity)
         {
-            base.Entry(item).State = EntityState.Detached;
+            base.Entry(entity).State = EntityState.Detached;
         }
 
         IQueryable<T> IExtendedUnitOfWork.Queryable<T>()

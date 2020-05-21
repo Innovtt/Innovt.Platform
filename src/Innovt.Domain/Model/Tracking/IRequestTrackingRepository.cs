@@ -4,6 +4,6 @@ namespace Innovt.Domain.Model.Tracking
 {
     public interface IRequestTrackingRepository
     {
-        Task AddTracking(RequestTracking traking);
+        Task AddTracking(RequestTracking tracking);
     }
 }

@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using System.Collections.Generic;
 using System;
-using Innovt.Core.Utilities;
 using Innovt.Domain.Model.Security;
 using Innovt.Data.EFCore.Maps;
+using Innovt.Domain.Repository;
 
 namespace Innovt.Data.EFCore
 {
@@ -67,19 +67,18 @@ namespace Innovt.Data.EFCore
 
             var maps = assembly.GetTypes().Where(t => t.GetInterfaces().Any(i => i.Name.Contains(baseType.Name))).ToList();
 
-            if (maps.Any())
+            if (!maps.Any()) return;
+
+            var entityMethod = typeof(ModelBuilder).GetMethod("ApplyConfiguration");
+
+            foreach (var type in maps)
             {
-                var entityMethod = typeof(ModelBuilder).GetMethod("ApplyConfiguration");
+                var instance = Activator.CreateInstance(type);
 
-                foreach (var type in maps)
-                {
-                    var instance = Activator.CreateInstance(type);
+                var genericArg = type.GetInterface(baseType.Name).GetGenericArguments()[0];
 
-                    var genericArg = type.GetInterface(baseType.Name).GetGenericArguments()[0];
-
-                    entityMethod.MakeGenericMethod(genericArg)
-                        .Invoke(modelBuilder, new object[] { instance });
-                }
+                entityMethod?.MakeGenericMethod(genericArg)
+                    .Invoke(modelBuilder, new object[] { instance });
             }
         }
 

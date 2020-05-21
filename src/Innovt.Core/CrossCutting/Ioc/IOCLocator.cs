@@ -7,8 +7,6 @@ namespace Innovt.Core.CrossCutting.Ioc
 {
     public static class IOCLocator
     {
-        //private static  readonly IoCLocator instance = new IoCLocator();
-
         private static IContainer container;
 
         public static void Initialize(IContainer mainContainer)
@@ -16,7 +14,7 @@ namespace Innovt.Core.CrossCutting.Ioc
             container = mainContainer ?? throw new ArgumentNullException(nameof(mainContainer));
         }
 
-        private static void ThowExceptionIfContainerIsNotInitialized()
+        private static void ThrowExceptionIfContainerIsNotInitialized()
         {
             if(container==null)
                 throw new CriticalException("IOC Container not initialized");
@@ -24,35 +22,35 @@ namespace Innovt.Core.CrossCutting.Ioc
 
         public static void Register<T>(T type)
         {
-            ThowExceptionIfContainerIsNotInitialized();
+            ThrowExceptionIfContainerIsNotInitialized();
 
             container.Register(type);
         }
         
         public static object Resolve(Type type)
         {
-            ThowExceptionIfContainerIsNotInitialized();
+            ThrowExceptionIfContainerIsNotInitialized();
 
             return container.Resolve(type);
         }
 
         public static TService Resolve<TService>(Type type)
         {
-            ThowExceptionIfContainerIsNotInitialized();
+            ThrowExceptionIfContainerIsNotInitialized();
 
             return container.Resolve<TService>(type);
         }
         
         public static TService Resolve<TService>(string intanceKey)
         {
-            ThowExceptionIfContainerIsNotInitialized();
+            ThrowExceptionIfContainerIsNotInitialized();
 
             return container.Resolve<TService>(intanceKey);
         }
 
         public static TService Resolve<TService>(Type type,string intanceKey)
         {
-            ThowExceptionIfContainerIsNotInitialized();
+            ThrowExceptionIfContainerIsNotInitialized();
 
             return container.Resolve<TService>(type,intanceKey);
         }
@@ -62,14 +60,14 @@ namespace Innovt.Core.CrossCutting.Ioc
 
         public static TService Resolve<TService>()
         {
-            ThowExceptionIfContainerIsNotInitialized();
+            ThrowExceptionIfContainerIsNotInitialized();
 
             return container.Resolve<TService>();
         }
 
         public static void Release(object inst)
         {
-            ThowExceptionIfContainerIsNotInitialized();
+            ThrowExceptionIfContainerIsNotInitialized();
             container.Release(inst);
         }
 
@@ -77,14 +75,14 @@ namespace Innovt.Core.CrossCutting.Ioc
         {
             if (module == null) throw new ArgumentNullException(nameof(module));
 
-            ThowExceptionIfContainerIsNotInitialized();
+            ThrowExceptionIfContainerIsNotInitialized();
 
             container.AddModule(module);
         }
 
         public static void AddModuleFromAssembly(Assembly assembly)
         {
-            ThowExceptionIfContainerIsNotInitialized();
+            ThrowExceptionIfContainerIsNotInitialized();
 
             var moduleType = typeof(IOCModule);
             var modules = assembly.GetTypes().Where(t => t.GetTypeInfo().IsSubclassOf(moduleType)).ToList();
@@ -99,7 +97,7 @@ namespace Innovt.Core.CrossCutting.Ioc
 
         public static void CheckConfiguration()
         {
-            ThowExceptionIfContainerIsNotInitialized();
+            ThrowExceptionIfContainerIsNotInitialized();
             container.CheckConfiguration();
         }
     }

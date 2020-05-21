@@ -5,7 +5,6 @@ namespace Innovt.Core.CrossCutting.Ioc
     public interface IContainer
     {
         void AddModule(IOCModule module);
-
         void Register<T>(T type);
         void Register<T>(T type,string instanceKey);
         
@@ -16,7 +15,6 @@ namespace Innovt.Core.CrossCutting.Ioc
         TService Resolve<TService>(Type type);
         TService Resolve<TService>(string intanceKey);
         TService Resolve<TService>(Type type,string intanceKey);
-
         void CheckConfiguration();
     }
 }

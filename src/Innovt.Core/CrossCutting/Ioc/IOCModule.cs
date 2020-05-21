@@ -4,21 +4,16 @@ namespace Innovt.Core.CrossCutting.Ioc
 {
     public class IOCModule
     {
-        private readonly IServiceCollection _services;
-
-        public IOCModule(IServiceCollection services)
-        {
-            _services = services;
-        }
+        private readonly IServiceCollection services;
 
         public IOCModule()
         {
-            _services = new ServiceCollection();
+            this.services = new ServiceCollection();
         }
 
         public IServiceCollection GetServices()
         {
-            return _services;
+            return  this.services;
         }
     }
 }

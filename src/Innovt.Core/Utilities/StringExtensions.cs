@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -22,14 +23,8 @@ namespace Innovt.Core.Utilities
 
             return value.Length <= maxLength ? value : value.Substring(0, maxLength);
         }
-
         
 
-        /// <summary>
-        /// Verifica se um CPF é válido
-        /// </summary>
-        /// <param name="value">CPF a ser análisado</param>
-        /// <returns>True se a string passada corresponde a um CPF válido.</returns>
         public static bool IsCpf(this string value)
         {
             if (value.IsNullOrEmpty())
@@ -124,10 +119,6 @@ namespace Innovt.Core.Utilities
             return String.IsNullOrWhiteSpace(str);
         }
 
-        public static string ComputeMD5(this string str)
-        {
-            return PasswordHelper.Md5Hash(str);
-        }
 
         public static string GetValueOrDefault(this string str, string defaultValue = null)
         {
@@ -182,16 +173,25 @@ namespace Innovt.Core.Utilities
 
             return str.Split(separator).ToList();
         }
+        
+        public static string ToTitleCase(this string str)
+        {
+            return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(str);
+        }
+
+        public static string ToCamelCase(this string str) => str.ToTitleCase();
+      
 
         public static string ClearMask(this string value)
         {
             if (value.IsNullOrEmpty())
                 return value;
 
-            String[] caracteresEspeciais = { ".", ",", "-", "_", "/", "\\", "(", ")", "[", "]", ":", "\r\n", "\r", "\n" };
-            for (int i = 0; i < caracteresEspeciais.Length; i++)
+            var specialChars = new string[] { ".", ",", "-", "_", "/", "\\", "(", ")", "[", "]", ":", "\r\n", "\r", "\n" };
+
+            for (var i = 0; i < specialChars.Length; i++)
             {
-                value = value.Replace(caracteresEspeciais[i], "");
+                value = value.Replace(specialChars[i], "");
             }
             return value;
         }

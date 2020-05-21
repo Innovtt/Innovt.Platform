@@ -4,13 +4,11 @@ using System.Diagnostics;
 using Innovt.Core.Exceptions;
 using JetBrains.Annotations;
 
-//This code is from Entity Core Check
 namespace Innovt.Core.Utilities
 {
     [DebuggerStepThrough]
     public static class Check
-    {   
-        [ContractAnnotation("value:null => halt")]
+    {
         public static T NotNull<T>(T value,string parameterName)
         {
             if (ReferenceEquals(value, null))
@@ -22,8 +20,7 @@ namespace Innovt.Core.Utilities
 
             return value;
         }
-
-        // [ContractAnnotation("value:null => halt")]
+     
         public static int NotLessThanZero(int? value,string parameterName)
         {
             if (value.IsLessThanOrEqualToZero())
@@ -32,7 +29,7 @@ namespace Innovt.Core.Utilities
             return 0;
         }
 
-       // [ContractAnnotation("value:null => halt")]
+    
         public static int NotLessThanZero(int value,string parameterName)
         {
             if(value.IsLessThanOrEqualToZero())
@@ -41,7 +38,7 @@ namespace Innovt.Core.Utilities
             return 0;
         }
 
-       // [ContractAnnotation("value:null => halt")]
+     
         public static void NotLessThanZero<T>(params T[] value)
         {
             foreach (var i in value)
@@ -53,7 +50,8 @@ namespace Innovt.Core.Utilities
             }
         }
 
-      //  [ContractAnnotation("value:null => halt")]
+
+        [ContractAnnotation("=> halt")]
         public static T NotNullWithBusinessException<T>(T value, string message)
         {
             if (ReferenceEquals(value, null))
@@ -64,6 +62,7 @@ namespace Innovt.Core.Utilities
             return value;
         }
 
+        [ContractAnnotation("=> halt")]
         public static T NotNullWithCriticalException<T>(T value, string message)
         {
             if (ReferenceEquals(value, null))
@@ -74,24 +73,18 @@ namespace Innovt.Core.Utilities
             return value;
         }
 
-        private static bool AreEqualImpl(string value, string value2, string message) => (value != null && !value.Equals(value2, StringComparison.InvariantCultureIgnoreCase));
+        private static bool AreEqualImpl(string value, string value2) => (value != null && !value.Equals(value2, StringComparison.InvariantCultureIgnoreCase));
         
+        [ContractAnnotation("=> halt")]
         public static void AreEqual(string value, string value2,string message)
         {
-            if (AreEqualImpl(value,value2,message))
+            if (AreEqualImpl(value,value2))
             {
                 throw new BusinessException(message);
             }
         }
 
-        public static void AreNotEqual(string value, string value2, string message) {
-
-            if (!AreEqualImpl(value, value2, message))
-            {
-                throw new BusinessException(message);
-            }
-        }
-        
+        [ContractAnnotation("=> halt")]
         public static void AreEqual(int value, int value2, string message)
         {
             if (value != value2)
@@ -99,16 +92,7 @@ namespace Innovt.Core.Utilities
                 throw new BusinessException(message);
             }
         }
-
-        public static void AreNotEqual(int value, int value2, string message)
-        {
-            if (value == value2)
-            {
-                throw new BusinessException(message);
-            }
-        }
-        
-
+        [ContractAnnotation("=> halt")]
         public static void AreEqual(long value, long value2, string message)
         {
             if (value != value2)
@@ -117,6 +101,33 @@ namespace Innovt.Core.Utilities
             }
         }
 
+        [ContractAnnotation("=> halt")]
+        public static void AreEqual(decimal value, decimal value2, string message)
+        {
+            if (value != value2)
+            {
+                throw new BusinessException(message);
+            }
+        }
+        [ContractAnnotation("=> halt")]
+        public static void AreNotEqual(string value, string value2, string message) {
+
+            if (!AreEqualImpl(value, value2))
+            {
+                throw new BusinessException(message);
+            }
+        }
+        
+        [ContractAnnotation("=> halt")]
+        public static void AreNotEqual(int value, int value2, string message)
+        {
+            if (value == value2)
+            {
+                throw new BusinessException(message);
+            }
+        }
+
+        [ContractAnnotation("=> halt")]
         public static void AreNotEqual(long value, long value2, string message)
         {
             if (value == value2)
@@ -125,15 +136,7 @@ namespace Innovt.Core.Utilities
             }
         }
 
-        public static void AreEqual(decimal value, decimal value2, string message)
-        {
-            if (value != value2)
-            {
-                throw new BusinessException(message);
-            }
-        }
 
-        [ContractAnnotation("value:null => halt")]
         public static IReadOnlyList<T> NotEmpty<T>(IReadOnlyList<T> value, string parameterName)
         {
             NotNull(value, parameterName);
@@ -148,7 +151,6 @@ namespace Innovt.Core.Utilities
             return value;
         }
 
-        //[ContractAnnotation("value:null => halt")]
         public static string NotEmpty(string value,string parameterName=null)
         {
             Exception e = null;
@@ -183,8 +185,5 @@ namespace Innovt.Core.Utilities
 
             return value;
         }
-
-
-
     }
 }

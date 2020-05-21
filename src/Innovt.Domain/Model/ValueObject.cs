@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-
+﻿
 namespace Innovt.Domain.Model
 {
     public abstract class ValueObject
@@ -10,10 +9,8 @@ namespace Innovt.Domain.Model
         {
             if (object.ReferenceEquals(this, obj)) return true;
             if (object.ReferenceEquals(null, obj)) return false;
-            if (this.GetType() != obj.GetType()) return false;
 
-
-            return base.Equals(obj);
+            return (obj as ValueObject)?.Id == this.Id;
         }
 
         public override int GetHashCode()

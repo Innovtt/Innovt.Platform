@@ -19,11 +19,11 @@ namespace Innovt.Domain.Repository
 
         void Remove<T>(IEnumerable<T> entities) where T : class;
 
-        void Update<T>(T item) where T : class;
+        void Update<T>(T entity) where T : class;
 
-        void Attach<T>(T item) where T : class;
+        void Attach<T>(T entity) where T : class;
 
-        void Detach<T>(T item) where T : class;
+        void Detach<T>(T entity) where T : class;
 
         IQueryable<T> Queryable<T>() where T : class;
 

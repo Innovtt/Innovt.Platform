@@ -4,18 +4,13 @@ using System.Linq;
 namespace Innovt.Core.Collections
 {
     public static class Extensions
-    {
-        public static bool IsNullOrEmpty<T>(this ICollection<T> collection)
+    { 
+        public static bool IsNullOrEmpty<T>(this IList<T> list)
         {
-            if ((collection == null) || (collection.Count == 0))
+            if ((list == null) || (list.Count == 0))
                 return true;
 
             return false;
-        }
-
-        public static bool IsNotNullOrEmpty<T>(this ICollection<T> collection)
-        {
-            return !collection.IsNullOrEmpty();
         }
 
         public static bool IsNullOrEmpty<T>(this IEnumerable<T> enumerable)
@@ -26,19 +21,25 @@ namespace Innovt.Core.Collections
             return enumerable.ToList().IsNullOrEmpty();
         }
 
-        public static bool IsNotNullOrEmpty<T>(this IEnumerable<T> enumerable)
+        public static bool IsNullOrEmpty<T>(this ICollection<T> collection)
         {
-            return !enumerable.IsNullOrEmpty();
-        }
-
-
-        public static bool IsNullOrEmpty<T>(this IList<T> list)
-        {
-            if ((list == null) || (list.Count == 0))
+            if ((collection == null) || (collection.Count == 0))
                 return true;
 
             return false;
         }
+
+        public static bool IsNotNullOrEmpty<T>(this IEnumerable<T> enumerable)
+        {
+            return !enumerable.IsNullOrEmpty();
+        }
+        public static bool IsNotNullOrEmpty<T>(this ICollection<T> collection)
+        {
+            return !collection.IsNullOrEmpty();
+        }
+
+     
+
         /// <summary>
         /// Initialize the collection if is null, so you don't have to check it
         /// </summary>

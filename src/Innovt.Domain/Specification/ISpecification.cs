@@ -23,7 +23,6 @@ namespace Innovt.Domain.Specification
     /// This is really a variant implementation where we have added Linq and
     /// lambda expression into this pattern.
     /// </summary>
-    /// <typeparam name="TValueObject">Type of entity</typeparam>
     public interface ISpecification<TEntity>
         where TEntity : class
     {

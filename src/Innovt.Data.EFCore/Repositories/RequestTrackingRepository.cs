@@ -15,9 +15,9 @@ namespace Innovt.Data.EFCore.Repositories
             this.context = context ?? throw new System.ArgumentNullException(nameof(context));
         }
 
-        public async Task AddTracking(RequestTracking traking)
+        public async Task AddTracking(RequestTracking tracking)
         {
-            await context.AddAsync(traking);
+            await context.AddAsync(tracking);
 
             await context.CommitAsync();
         }

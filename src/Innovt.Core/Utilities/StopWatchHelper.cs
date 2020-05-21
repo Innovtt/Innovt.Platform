@@ -4,7 +4,7 @@ using Innovt.Core.CrossCutting.Log;
 
 namespace Innovt.Core.Utilities
 {
-    public class StopWatchHelper:IDisposable
+    public class StopWatchHelper : IDisposable
     {
         private readonly ILogger logger;
         private readonly string action;
@@ -17,16 +17,29 @@ namespace Innovt.Core.Utilities
             stopwatch = Stopwatch.StartNew();
         }
 
-        public void Dispose()
+        protected virtual void Dispose(bool disposing)
         {
             try
             {
-				logger.Info($"Action={action},ElapsedMilliseconds={ stopwatch.ElapsedMilliseconds}");
+                logger.Info($"Action={action},ElapsedMilliseconds={ stopwatch.ElapsedMilliseconds}");
                 stopwatch = null;
             }
-            catch {}
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
 
 
+        public void Dispose()
+        {
+           Dispose(true);
+           GC.SuppressFinalize(this);
+        }
+
+        ~StopWatchHelper()
+        {
+            Dispose(false);
         }
     }
 }

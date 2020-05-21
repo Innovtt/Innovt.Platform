@@ -408,7 +408,7 @@ namespace Innovt.Cloud.AWS.Cognito
 
                 var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () => await provider.ListUsersAsync(listUserRequest, cancellationToken));
 
-                var cognitoUser = response?.Users.FirstOrDefault(u => (request.ExcludeExternalUser == true && u.UserStatus != "EXTERNAL_PROVIDER"));
+                var cognitoUser = response?.Users.FirstOrDefault(u => (request.ExcludeExternalUser && u.UserStatus != "EXTERNAL_PROVIDER"));
 
                 if (cognitoUser == null)
                     return default;

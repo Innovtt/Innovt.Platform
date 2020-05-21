@@ -38,33 +38,24 @@ namespace Innovt.Core.CrossCutting.Log
         /// </summary>
         /// <param name="message">The message templete will follow the Serilog Pattern.</param>
         void Error(string message);
-
        
         void Error(string messageTemplate, params object[] propertyValues);
-
       
         void Error(Exception exception, string messageTemplate);
        
         void Error(Exception exception, string messageTemplate, params object[] propertyValues);
 
-
         void Fatal(string message);
-
 
         void Fatal(string messageTemplate, params object[] propertyValues);
 
-
         void Fatal(Exception exception, string messageTemplate);
-
 
         void Fatal(Exception exception, string messageTemplate, params object[] propertyValues);
 
-
         void Info(string message);
 
-
         void Info(string messageTemplate, params object[] propertyValues);
-
 
         void Info(Exception exception, string messageTemplate);
 
@@ -77,19 +68,20 @@ namespace Innovt.Core.CrossCutting.Log
 
         void Verbose(Exception exception, string messageTemplate);
 
-
         void Verbose(Exception exception, string messageTemplate, params object[] propertyValues);
-
 
         void Warning(string message);
 
         void Warning(string messageTemplate, params object[] propertyValues);
 
-
         void Warning(Exception exception, string messageTemplate);
 
-
         void Warning(Exception exception, string messageTemplate, params object[] propertyValues);
+    }
+
+    public interface ILogger<T>:ILogger
+    {
+
     }
 }
 

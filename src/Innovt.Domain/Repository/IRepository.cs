@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Innovt.Core.Utilities;
+using Innovt.Domain.Model;
 
 namespace Innovt.Domain.Repository
 {
@@ -15,12 +15,10 @@ namespace Innovt.Domain.Repository
 
         Task AddAsync(T entity);
 
-        void Remove(T entity);
-
         void Modify(T entity);
 
-        void Remove(IEnumerable<T> entities);
-
+       void Remove(IEnumerable<T> entities);
+       void Remove(T entity);
         T GetSingleOrDefault(ISpecification<T> specification, Include includes=null);
     
         Task<T> GetSingleOrDefaultAsync(ISpecification<T> specification, Include includes=null,  
@@ -49,13 +47,10 @@ namespace Innovt.Domain.Repository
         
         Task<PagedCollection<T>> FindPaginatedByAsync<TKey>(ISpecification<T> specification, Expression<Func<T, TKey>> orderBy = null, 
             bool isOrderByDescending = false,Include includes = null, CancellationToken cancellationToken = default);
-        
-        int CountBy(ISpecification<T> specification);
 
-        Task<int> CountByAsync(ISpecification<T> specification,
-            CancellationToken cancellationToken = default);
-        
         int CountBy<TKEntity>(ISpecification<TKEntity> specification) where TKEntity : class;
+
+        int CountBy(ISpecification<T> specification);
 
         Task<int> CountByAsync<TKEntity>(ISpecification<TKEntity> specification,CancellationToken cancellationToken = default) where TKEntity : class;
         

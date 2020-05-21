@@ -23,6 +23,16 @@ namespace Innovt.CrossCutting.IOC.StructureMap
         {
         }
 
+        public void AddModule(StructMapModule module)
+        {
+            if (module == null) throw new ArgumentNullException(nameof(module));
+        
+            Configure(config =>
+            {
+                config.AddRegistry(module);
+            });
+        }
+
         public void AddModule(IOCModule module)
         {
             if (module == null) throw new ArgumentNullException(nameof(module));
@@ -30,7 +40,7 @@ namespace Innovt.CrossCutting.IOC.StructureMap
             var services = module.GetServices();
 
             Configure(config =>
-            {   
+            { 
                 config.Scan(s=>s.WithDefaultConventions());
                 config.Populate(services);
             });
@@ -63,7 +73,6 @@ namespace Innovt.CrossCutting.IOC.StructureMap
         {
             return GetInstance<TService>();
         }
-        
 
         public TService Resolve<TService>(Type type,string instanceKey)
         {

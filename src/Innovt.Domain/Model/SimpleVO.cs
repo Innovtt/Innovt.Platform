@@ -1,18 +1,17 @@
-﻿namespace Innovt.Domain.Model
-{
-    public class SimpleVO
-    {
-        public string Id  { get; set; }
-        public string Description { get; set; }
+﻿
 
-        public SimpleVO()
-        {
-            
+namespace Innovt.Domain.Model
+{
+    public class SimpleVo<T> : ValueObject<T> where T:struct
+    {
+        public string Description { get; set; }
+        public SimpleVo()
+        {   
         }
 
-        public SimpleVO(string id, string description)
+        public SimpleVo(T id, string description)
         {
-            Id = id;
+            this.Id = id;
             Description = description;
         }
     }

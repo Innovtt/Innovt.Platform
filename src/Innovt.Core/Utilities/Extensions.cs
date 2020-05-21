@@ -76,7 +76,7 @@ namespace Innovt.Core.Utilities
             return (latitude, longitude);
         }
 
-        public static DateTimeOffset? MiliSecondsToDateTime(this double fromSeconds)
+        public static DateTimeOffset? MillisecondToDateTime(this double fromSeconds)
         {
             var dateTime = DateTimeOffset.MinValue;
             dateTime = dateTime.AddSeconds(fromSeconds).ToLocalTime();

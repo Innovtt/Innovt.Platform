@@ -11,6 +11,7 @@ using Innovt.Core.Utilities;
 
 namespace Innovt.Core.Exceptions
 {
+    [Serializable]
     public class BusinessException : BaseException
     {
         public string Code { get; protected set; }
