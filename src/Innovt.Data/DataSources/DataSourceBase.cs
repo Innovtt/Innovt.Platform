@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Configuration;
-using Innovt.Core.Exceptions;
 using Innovt.Data.Exceptions;
 using Innovt.Data.Model;
+using JetBrains.Annotations;
 using Microsoft.Extensions.Configuration;
 
 namespace Innovt.Data.DataSources
@@ -18,39 +17,31 @@ namespace Innovt.Data.DataSources
 
         public Provider Provider { get; private set; }
 
-        protected DataSourceBase(string connectionStringName,Provider provider = Provider.MsSql)
+        protected DataSourceBase([NotNull] string name, [NotNull] string connectionString,Provider provider = Provider.MsSql)
         {
+            this.Name = name ?? throw new ArgumentNullException(nameof(name));
             this.Provider = provider;
-
-            SetConnectionString(connectionStringName);
+            this.connectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));
         }
 
-        protected DataSourceBase(IConfiguration configuration, string connectionStringName,Provider provider = Provider.MsSql)
-        {
-            this.Provider = provider;
 
+        protected DataSourceBase([NotNull] IConfiguration configuration, [NotNull] string connectionStringName,
+            Provider provider = Provider.MsSql)
+        {
+            if (configuration == null) throw new ArgumentNullException(nameof(configuration));
+            if (connectionStringName == null) throw new ArgumentNullException(nameof(connectionStringName));
+
+
+            this.Provider = provider;
             SetConnectionString(configuration, connectionStringName);
         }
 
-        private void SetConnectionString(string connectionStringName)
+        protected DataSourceBase(IConfiguration configuration, string name, string connectionStringName,Provider provider = Provider.MsSql)
         {
-            Name = connectionStringName;
+            this.Provider = provider;
+            this.Name = name;
 
-        #if (!NETCOREAPP2_0 && !NETCOREAPP2_1)
-            if (connectionStringName == null) throw new ArgumentNullException(nameof(connectionStringName));
-
-            var localConnectionString = ConfigurationManager.ConnectionStrings[connectionStringName]?.ConnectionString;
-
-            if (string.IsNullOrEmpty(localConnectionString))
-                throw new CriticalException($"Connection string {connectionStringName} not found or null.");
-
-            this.connectionString = localConnectionString;
-
-            #else
-                var builder = new Microsoft.Extensions.Configuration.ConfigurationBuilder();
-
-                SetConnectionString(builder.Build(), connectionStringName);
-            #endif
+            SetConnectionString(configuration, connectionStringName);
         }
 
         private void SetConnectionString(IConfiguration configuration, string name)
@@ -66,7 +57,6 @@ namespace Innovt.Data.DataSources
             this.Name = name;
             this.connectionString = localConnectionString;
         }
-
 
         public string GetConnectionString()
         {

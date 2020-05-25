@@ -20,7 +20,7 @@ namespace Innovt.AspNetCore
         private readonly string apiTitle;
         private readonly string apiDescription;
         private readonly string apiVersion;
- 
+
         protected ApiStartupBase(IConfiguration configuration, string apiTitle,
             string apiDescription, string apiVersion,string healthPath="/health",bool ignoreSwaggerDoc = false)
         {
@@ -75,7 +75,7 @@ namespace Innovt.AspNetCore
 
         protected virtual void ConfigureOpenTracing(IServiceCollection services)
         {
-           services.AddOpenTracing();
+            services.AddOpenTracing();
         }
 
 

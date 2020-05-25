@@ -4,6 +4,10 @@ using Innovt.Core.Utilities;
 
 namespace Innovt.Domain.Model.Contacts
 {
+
+    /// <summary>
+    /// Email, Phone
+    /// </summary>
     public class ContactType:ValueObject<int>
     {
         private ContactType() {}

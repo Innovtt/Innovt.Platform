@@ -9,28 +9,41 @@ using Innovt.Core.Utilities;
 using Innovt.Data.DataSources;
 using Innovt.Data.Exceptions;
 using Innovt.Data.Model;
+using JetBrains.Annotations;
+using Microsoft.Extensions.Logging;
 
 namespace Innovt.Data.EFCore
 {
     public class DbContext: Microsoft.EntityFrameworkCore.DbContext, IExtendedUnitOfWork
     {
         private readonly IDataSource dataSource;
+        private readonly ILoggerFactory loggerFactory;
 
         public DbContext(IDataSource dataSource)
         {
             this.dataSource = dataSource ?? throw new ArgumentNullException(nameof(dataSource));
+
+            base.ChangeTracker.LazyLoadingEnabled = false;
         }
 
-        public DbContext()
+        public DbContext(IDataSource dataSource, [NotNull] ILoggerFactory loggerFactory):this(dataSource)
         {
+            this.loggerFactory = loggerFactory ?? throw new ArgumentNullException(nameof(loggerFactory));
         }
 
         public DbContext(DbContextOptions options):base(options)
-        {
+        {   
+            base.ChangeTracker.LazyLoadingEnabled = false;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            if (loggerFactory != null)
+            {
+                optionsBuilder.UseLoggerFactory(loggerFactory);
+            }
+
+
             if (dataSource!=null)
             {
                 var connectionString = dataSource.GetConnectionString();

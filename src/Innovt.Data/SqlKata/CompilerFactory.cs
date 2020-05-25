@@ -10,9 +10,9 @@ namespace Innovt.Data.SqlKata
         {
             return dataSource.Provider switch
             {
-                Provider.MsSql => (Compiler) new SqlServerCompiler(),
+                Provider.MsSql => new SqlServerCompiler() { UseLegacyPagination = false },
                 Provider.PostgreSqL => new PostgresCompiler(),
-                _ => new SqlServerCompiler()
+                _ => new SqlServerCompiler(){ UseLegacyPagination = false },
             };
         }
     }

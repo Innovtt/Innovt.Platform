@@ -24,7 +24,6 @@ namespace Innovt.Data.Ado
             {
                 Provider.PostgreSqL => new NpgsqlConnection(connectionString),
                 Provider.MsSql => new SqlConnection(connectionString),
-
                 _ => new SqlConnection(connectionString)
             };
         }
