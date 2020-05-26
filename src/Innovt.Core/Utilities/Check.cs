@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using Innovt.Core.Exceptions;
-using JetBrains.Annotations;
 
 namespace Innovt.Core.Utilities
 {
@@ -11,7 +10,7 @@ namespace Innovt.Core.Utilities
     {
         public static T NotNull<T>(T value,string parameterName)
         {
-            if (ReferenceEquals(value, null))
+            if (value == null)
             {
                 NotEmpty(parameterName, nameof(parameterName));
 
@@ -51,10 +50,10 @@ namespace Innovt.Core.Utilities
         }
 
 
-        [ContractAnnotation("=> halt")]
+       // [ContractAnnotation("=> halt")]
         public static T NotNullWithBusinessException<T>(T value, string message)
         {
-            if (ReferenceEquals(value, null))
+            if (value == null)
             {
                 throw new BusinessException(message);
             }
@@ -62,10 +61,10 @@ namespace Innovt.Core.Utilities
             return value;
         }
 
-        [ContractAnnotation("=> halt")]
+       // [ContractAnnotation("=> halt")]
         public static T NotNullWithCriticalException<T>(T value, string message)
         {
-            if (ReferenceEquals(value, null))
+            if (value == null)
             {
                 throw new CriticalException(message);
             }
@@ -75,7 +74,7 @@ namespace Innovt.Core.Utilities
 
         private static bool AreEqualImpl(string value, string value2) => (value != null && !value.Equals(value2, StringComparison.InvariantCultureIgnoreCase));
         
-        [ContractAnnotation("=> halt")]
+      //  [ContractAnnotation("=> halt")]
         public static void AreEqual(string value, string value2,string message)
         {
             if (AreEqualImpl(value,value2))
@@ -84,7 +83,7 @@ namespace Innovt.Core.Utilities
             }
         }
 
-        [ContractAnnotation("=> halt")]
+       // [ContractAnnotation("=> halt")]
         public static void AreEqual(int value, int value2, string message)
         {
             if (value != value2)
@@ -92,7 +91,7 @@ namespace Innovt.Core.Utilities
                 throw new BusinessException(message);
             }
         }
-        [ContractAnnotation("=> halt")]
+       // [ContractAnnotation("=> halt")]
         public static void AreEqual(long value, long value2, string message)
         {
             if (value != value2)
@@ -101,7 +100,7 @@ namespace Innovt.Core.Utilities
             }
         }
 
-        [ContractAnnotation("=> halt")]
+       // [ContractAnnotation("=> halt")]
         public static void AreEqual(decimal value, decimal value2, string message)
         {
             if (value != value2)
@@ -109,7 +108,7 @@ namespace Innovt.Core.Utilities
                 throw new BusinessException(message);
             }
         }
-        [ContractAnnotation("=> halt")]
+       // [ContractAnnotation("=> halt")]
         public static void AreNotEqual(string value, string value2, string message) {
 
             if (!AreEqualImpl(value, value2))
@@ -118,7 +117,7 @@ namespace Innovt.Core.Utilities
             }
         }
         
-        [ContractAnnotation("=> halt")]
+        //[ContractAnnotation("=> halt")]
         public static void AreNotEqual(int value, int value2, string message)
         {
             if (value == value2)
@@ -127,7 +126,7 @@ namespace Innovt.Core.Utilities
             }
         }
 
-        [ContractAnnotation("=> halt")]
+       // [ContractAnnotation("=> halt")]
         public static void AreNotEqual(long value, long value2, string message)
         {
             if (value == value2)
@@ -154,7 +153,7 @@ namespace Innovt.Core.Utilities
         public static string NotEmpty(string value,string parameterName=null)
         {
             Exception e = null;
-            if (ReferenceEquals(value, null))
+            if (value is null)
             {
                 e = new ArgumentNullException(parameterName);
             }
@@ -175,7 +174,7 @@ namespace Innovt.Core.Utilities
 
         public static string NullButNotEmpty(string value, string parameterName)
         {
-            if (!ReferenceEquals(value, null)
+            if (value!= null
                 && value.Length == 0)
             {
                 NotEmpty(parameterName, nameof(parameterName));

@@ -1,7 +1,6 @@
 ﻿using System;
 using Innovt.Data.Exceptions;
 using Innovt.Data.Model;
-using JetBrains.Annotations;
 using Microsoft.Extensions.Configuration;
 
 namespace Innovt.Data.DataSources
@@ -17,7 +16,7 @@ namespace Innovt.Data.DataSources
 
         public Provider Provider { get; private set; }
 
-        protected DataSourceBase([NotNull] string name, [NotNull] string connectionString,Provider provider = Provider.MsSql)
+        protected DataSourceBase( string name, string connectionString,Provider provider = Provider.MsSql)
         {
             this.Name = name ?? throw new ArgumentNullException(nameof(name));
             this.Provider = provider;
@@ -25,7 +24,7 @@ namespace Innovt.Data.DataSources
         }
 
 
-        protected DataSourceBase([NotNull] IConfiguration configuration, [NotNull] string connectionStringName,
+        protected DataSourceBase(IConfiguration configuration,string connectionStringName,
             Provider provider = Provider.MsSql)
         {
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));

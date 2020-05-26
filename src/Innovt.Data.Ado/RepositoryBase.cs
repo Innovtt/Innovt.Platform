@@ -10,175 +10,146 @@ using Innovt.Core.Cqrs.Queries;
 using System.Threading;
 using Innovt.Data.DataSources;
 using Innovt.Data.Exceptions;
-using Innovt.Data.SqlKata;
-using JetBrains.Annotations;
-using SqlKata;
 
 namespace Innovt.Data.Ado
-{
-    public class RepositoryBase
+{   
+    public class RepositoryBase : IRepositoryBase
     {
-        private readonly IDataSource datasource;
+        private readonly IDataSource dataSource;
         private readonly IConnectionFactory connectionFactory;
+   
 
         public RepositoryBase(IDataSource datasource) : this(datasource, null)
         {
         }
 
-        public RepositoryBase(IDataSource datasource, IConnectionFactory connectionFactory)
+        public RepositoryBase(IDataSource dataSource, IConnectionFactory connectionFactory)
         {
-            this.datasource = datasource ?? throw new ArgumentNullException(nameof(datasource));
+            this.dataSource = dataSource ?? throw new ArgumentNullException(nameof(dataSource));
 
             this.connectionFactory = connectionFactory ?? new ConnectionFactory();
         }
 
-        protected IDbConnection GetConnection()
+        private IDbConnection GetConnection()
         {
-            return connectionFactory.Create(datasource);
+            return connectionFactory.Create(dataSource);
         }
-
-        protected Query CreateQuery(string tableName = "")
-        {
-            return new Query(tableName);
-        }
-
-        internal async Task<T> QueryFirstOrDefaultInternalAsync<T>([NotNull] Query query, CancellationToken cancellationToken = default)
-        {
-            var compiled = query.Compile(datasource);
-
+        internal async Task<T> QueryFirstOrDefaultInternalAsync<T>(string sql, object filter = null, CancellationToken cancellationToken = default)
+        {  
             using var con = GetConnection();
 
-            var result = await con.QueryFirstOrDefaultAsync<T>(new CommandDefinition(compiled.Sql,
-                compiled.NamedBindings, cancellationToken: cancellationToken)).ConfigureAwait(false);
-
+            var result = await con.QueryFirstOrDefaultAsync<T>(new CommandDefinition(sql, filter, cancellationToken: cancellationToken)).ConfigureAwait(false);
             return result;
         }
 
-        protected Task<T> QueryFirstOrDefaultAsync<T>([NotNull] Query query, CancellationToken cancellationToken = default) where T : class
-        {
-            if (query == null) throw new ArgumentNullException(nameof(query));
+        internal async Task<T> QueryFirstOrDefaultInternalAsync<T>(string tableName,string whereClause, object filter = null, CancellationToken cancellationToken = default,params string[] columns)
+        {   
+            var fields = string.Join(",", columns);
 
-            return QueryFirstOrDefaultInternalAsync<T>(query, cancellationToken);
+            var sql = $"SELECT TOP 1 {fields} FROM [{tableName}] WHERE {whereClause}";
+
+            return await QueryFirstOrDefaultInternalAsync<T>(sql, filter, cancellationToken);
         }
 
-        internal async Task<T> QueryFirstInternalAsync<T>([NotNull] Query query,
-            CancellationToken cancellationToken = default)
+        public Task<T> QueryFirstOrDefaultAsync<T>(string tableName,string whereClause, object filter = null, CancellationToken cancellationToken = default,params string[] columns)
         {
-            var compiled = query.Compile(datasource);
+            if (tableName == null) throw new ArgumentNullException(nameof(tableName));
+            if (whereClause == null) throw new ArgumentNullException(nameof(whereClause));
 
+            return QueryFirstOrDefaultInternalAsync<T>(tableName, whereClause, filter, cancellationToken, columns);
+        }
+
+        public Task<T> QueryFirstOrDefaultAsync<T>(string sql, object filter = null, CancellationToken cancellationToken = default)
+        {
+            if (sql == null) throw new ArgumentNullException(nameof(sql));
+
+            return QueryFirstOrDefaultInternalAsync<T>(sql, filter, cancellationToken);
+        }
+        
+        internal async Task<T> QuerySingleOrDefaultInternalAsync<T>(string sql, object filter = null, CancellationToken cancellationToken = default)
+        { 
             using var con = GetConnection();
-
-            var result = await con
-                .QueryFirstAsync<T>(new CommandDefinition(compiled.Sql,compiled.NamedBindings,
-                    cancellationToken: cancellationToken)).ConfigureAwait(false);
-
-            return result;
+            return await con
+                .QuerySingleOrDefaultAsync<T>(new CommandDefinition(sql, filter, cancellationToken: cancellationToken))
+                .ConfigureAwait(false);
         }
 
-        protected Task<T> QueryFirstAsync<T>([NotNull] Query query, CancellationToken cancellationToken = default) where T : class
+        public Task<T> QuerySingleOrDefaultAsync<T>(string sql, object filter = null, CancellationToken cancellationToken = default)
         {
-            if (query == null) throw new ArgumentNullException(nameof(query));
-
-            return QueryFirstInternalAsync<T>(query, cancellationToken);
+            if (sql == null) throw new ArgumentNullException(nameof(sql));
+           
+            return QuerySingleOrDefaultInternalAsync<T>(sql,filter,cancellationToken);
         }
 
-        internal async Task<T> QuerySingleOrDefaultInternalAsync<T>(Query query, CancellationToken cancellationToken = default) where T : class
+        public Task<T> QuerySingleOrDefaultAsync<T>(string tableName, string whereClause, object filter = null, CancellationToken cancellationToken = default, params string[] columns)
         {
-            var compiled = query.Compile(datasource);
+            var sql = $"SELECT {string.Join(",", columns)} FROM [{tableName}] WHERE {whereClause}";
 
-            using var con = GetConnection();
-
-            return await con.QuerySingleOrDefaultAsync<T>(new CommandDefinition(compiled.Sql,compiled.NamedBindings, cancellationToken: cancellationToken)).ConfigureAwait(false);
+            return this.QuerySingleOrDefaultInternalAsync<T>(sql, filter, cancellationToken);
         }
 
-        protected Task<T> QuerySingleOrDefaultAsync<T>([NotNull] Query query, CancellationToken cancellationToken = default) where T : class
+
+        internal async Task<int> QueryCountInternalAsync(string tableName, string whereClause = null, object filter = null, CancellationToken cancellationToken = default)
         {
-            if (query == null) throw new ArgumentNullException(nameof(query));
+            var sql = $"SELECT COUNT(1) FROM [{tableName}]";
 
-            return QuerySingleOrDefaultInternalAsync<T>(query, cancellationToken);
+            if (whereClause.IsNotNullOrEmpty())
+            {
+                sql += $" WHERE { whereClause} ";
+            }
+
+            return await this.QuerySingleOrDefaultAsync<int>(sql, filter, cancellationToken).ConfigureAwait(false);
         }
 
-        //protected Task<T> QuerySingleOrDefaultAsync<T>([NotNull] string tableName, [NotNull] string whereClause, object parameters = null, CancellationToken cancellationToken = default,
-        //    params string[] columns) where T : class
-        //{
-        //    if (tableName == null) throw new ArgumentNullException(nameof(tableName));
-        //    if (whereClause == null) throw new ArgumentNullException(nameof(whereClause));
 
-        //    var query = this.CreateQuery(tableName).WhereRaw(whereClause).Select(columns);
-
-
-        //    return this.QuerySingleOrDefaultInternalAsync<T>(query, parameters, cancellationToken);
-        //}
-
-        internal async Task<T> QuerySingleInternalAsync<T>(Query query, CancellationToken cancellationToken = default)
-        {
-            var compiled = query.Compile(datasource);
-
-            using var con = GetConnection();
-
-            return await con.QuerySingleAsync<T>(new CommandDefinition(compiled.Sql,compiled.NamedBindings, cancellationToken: cancellationToken)).ConfigureAwait(false);
-        }
-
-        protected Task<T> QuerySingleAsync<T>([NotNull] Query query, CancellationToken cancellationToken = default)
-        {
-            if (query == null) throw new ArgumentNullException(nameof(query));
-
-            return QuerySingleInternalAsync<T>(query, cancellationToken);
-        }
-
-        internal async Task<int> QueryCountInternalAsync(string tableName, string whereClause = null, CancellationToken cancellationToken = default)
-        {
-            var query = this.CreateQuery(tableName).WhereRaw(whereClause).AsCount();
-
-            return await this.QuerySingleInternalAsync<int>(query, cancellationToken).ConfigureAwait(false);
-        }
-
-        protected Task<int> QueryCountAsync([NotNull] string tableName, string whereClause = null, CancellationToken cancellationToken = default)
+        public Task<int> QueryCountAsync(string tableName, string whereClause = null, object filter = null, CancellationToken cancellationToken = default)
         {
             if (tableName == null) throw new ArgumentNullException(nameof(tableName));
 
-            return QueryCountInternalAsync(tableName, whereClause, cancellationToken);
+            return QueryCountInternalAsync(tableName, whereClause, filter, cancellationToken);
         }
 
-        internal async Task<IEnumerable<T>> QueryInternalAsync<T>([NotNull] Query query, CancellationToken cancellationToken = default) where T : class
+        internal async Task<IEnumerable<T>> QueryInternalAsync<T>(string sql, object filter=null, CancellationToken cancellationToken = default)
         {
-            var compiled = query.Compile(datasource);
-
             using var con = GetConnection();
-
-            var result = await con.QueryAsync<T>(new CommandDefinition(compiled.Sql, compiled.NamedBindings, cancellationToken: cancellationToken)).ConfigureAwait(false);
-
-            return result;
+            return await con.QueryAsync<T>(new CommandDefinition(sql, filter, cancellationToken: cancellationToken))
+                .ConfigureAwait(false);
         }
 
-        protected Task<IEnumerable<T>> QueryAsync<T>([NotNull] Query query, CancellationToken cancellationToken = default) where T : class
+        public Task<IEnumerable<T>> QueryAsync<T>(string sql, object filter=null, CancellationToken cancellationToken = default)
         {
-            if (query == null) throw new ArgumentNullException(nameof(query));
+            if (sql == null) throw new ArgumentNullException(nameof(sql));
 
-            return QueryInternalAsync<T>(query, cancellationToken);
+            return this.QueryInternalAsync<T>(sql,filter,cancellationToken);
         }
 
-        internal async Task<PagedCollection<T>> QueryPagedInternalAsync<T>([NotNull] Query query,
-            [NotNull] IPagedFilter filter, CancellationToken cancellationToken = default) where T : class
-        {   
-            var compiled = query.Compile(datasource);
+        public async Task<PagedCollection<T>> QueryPagedAsync<T>(string sql, IPagedFilter filter, bool automaticQueryCount = true, CancellationToken cancellationToken = default) where T : class
+        {
 
-            var orderByIndex = compiled.Sql.LastIndexOf("ORDER BY", StringComparison.CurrentCultureIgnoreCase);
+            var orderByIndex = sql.LastIndexOf("ORDER BY", StringComparison.CurrentCultureIgnoreCase);
 
             if (orderByIndex <= 0)
-                throw new SqlSyntaxException("ORDER BY Clause not found. To filter as paged you need to provide an ORDER BY Clause.");
+                throw new SqlSyntaxException("ORDER BY Clause not found. To filter as pagged you need to provide an ORDER BY Clause.");
+            
+            if (automaticQueryCount)
+            {
+                //removing order by
+                var newSql = sql.Substring(0, orderByIndex);
 
-            var sql = $"SELECT COUNT(1) FROM ({compiled.Sql.Substring(0, orderByIndex)}) C;";
+                sql = $"SELECT COUNT(1) FROM ({newSql}) C;" + sql;
+            }
 
-            compiled = query.Clone().ForPage(filter.Page, filter.PageSize).Compile(datasource);
-
-            sql += compiled.Sql;
+            sql = sql.AddPagination(filter,dataSource);
 
             using var con = GetConnection();
+            var qResult = await con.QueryMultipleAsync(new CommandDefinition(sql, filter, cancellationToken: cancellationToken));
 
-            var qResult = await con.QueryMultipleAsync(new CommandDefinition(sql, compiled.NamedBindings, cancellationToken: cancellationToken)).ConfigureAwait(false);
+            int totalRecords = 0;
 
-            var totalRecords = qResult.ReadFirst<int>();
+            if (automaticQueryCount)
+            {
+                totalRecords = qResult.ReadFirst<int>();
+            }
 
             var result = new PagedCollection<T>(qResult.Read<T>())
             {
@@ -189,63 +160,51 @@ namespace Innovt.Data.Ado
             return result;
         }
 
-        protected Task<PagedCollection<T>> QueryPagedAsync<T>([NotNull] Query query, [NotNull] IPagedFilter filter, CancellationToken cancellationToken = default) where T : class
-        {
-            if (filter == null) throw new ArgumentNullException(nameof(filter));
-            if (query == null) throw new ArgumentNullException(nameof(query));
-
-            return QueryPagedInternalAsync<T>(query, filter, cancellationToken);
-        }
-
-        internal async Task<IEnumerable<T>> QueryListPagedInternalAsync<T>([NotNull] Query query, [NotNull] IPagedFilter filter, CancellationToken cancellationToken = default)
-        {
-            var pagedQuery =  query.Clone().ForPage(filter.Page,filter.PageSize);
-            
-            var compiled = pagedQuery.Compile(datasource);
+        internal async Task<IEnumerable<T>> QueryListPagedInternalAsync<T>(string sql, IPagedFilter filter, CancellationToken cancellationToken = default)
+        {   
+            var query = sql.AddPagination(filter,dataSource);
 
             using var con = GetConnection();
 
-            return  await con.QueryAsync<T>(new CommandDefinition(compiled.Sql, compiled.NamedBindings, cancellationToken: cancellationToken)).ConfigureAwait(false);
+            return  await con.QueryAsync<T>(new CommandDefinition(query, filter, cancellationToken: cancellationToken)).ConfigureAwait(false);
         }
 
-        protected Task<IEnumerable<T>> QueryListPagedAsync<T>([NotNull] Query query, [NotNull] IPagedFilter filter, CancellationToken cancellationToken = default)
+        public Task<IEnumerable<T>> QueryListPagedAsync<T>( string sql, IPagedFilter filter, CancellationToken cancellationToken = default)
         {
+            if (sql == null) throw new ArgumentNullException(nameof(sql));
             if (filter == null) throw new ArgumentNullException(nameof(filter));
-            if (query == null) throw new ArgumentNullException(nameof(query));
 
-            return QueryListPagedInternalAsync<T>(query, filter, cancellationToken);
+            return QueryListPagedInternalAsync<T>(sql, filter, cancellationToken);
         }
 
-        internal async Task<SqlMapper.GridReader> QueryMultipleInternalAsync(Query[] queries)
+        internal async Task<SqlMapper.GridReader> QueryMultipleInternalAsync(string[] queries)
         {
             var sql =new StringBuilder();
             var nameBindings = new Dictionary<string,object>();
 
             foreach (var query in queries)
-            {
-                var compiled = query.Compile(datasource);
-                sql.Append(compiled.Sql);
-
-               // nameBindings.add.AddFluent(compiled.NamedBindings);
+            {  
+                sql.Append(query);
             }
 
             using var con = GetConnection();
 
-           return  await con.QueryMultipleAsync(sql.ToString(), nameBindings).ConfigureAwait(false);
+            return  await con.QueryMultipleAsync(sql.ToString(), nameBindings).ConfigureAwait(false);
         }
 
-        internal async Task<IEnumerable<TReturn>> QueryMultipleInternalAsync<TFirst, TSecond, TReturn>(Query[] queries, Func<TFirst, TSecond, TReturn> func, string splitOn = "id")
+        internal async Task<IEnumerable<TReturn>> ReadMultipleInternalAsync<TFirst, TSecond, TReturn>(string[] queries, Func<TFirst, TSecond, TReturn> func, string splitOn = "id")
         {
             var result = await QueryMultipleInternalAsync(queries);
+
             return result.Read(func, splitOn, true).ToList();
         }
 
-        protected Task<IEnumerable<TReturn>> QueryMultipleAsync<TFirst, TSecond, TReturn>(Query[] queries, [NotNull] Func<TFirst, TSecond, TReturn> func, string splitOn = "id")
+        public Task<IEnumerable<TReturn>> QueryMultipleAsync<TFirst, TSecond, TReturn>(string[] queries, Func<TFirst, TSecond, TReturn> func, string splitOn = "id")
         {
             if (queries == null) throw new ArgumentNullException(nameof(queries));
             if (func == null) throw new ArgumentNullException(nameof(func));
 
-            return QueryMultipleInternalAsync(queries, func,splitOn);
+            return ReadMultipleInternalAsync(queries, func,splitOn);
         }
     }
 }

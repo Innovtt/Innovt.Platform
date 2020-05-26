@@ -9,7 +9,6 @@ using Innovt.Core.Utilities;
 using Innovt.Data.DataSources;
 using Innovt.Data.Exceptions;
 using Innovt.Data.Model;
-using JetBrains.Annotations;
 using Microsoft.Extensions.Logging;
 
 namespace Innovt.Data.EFCore
@@ -26,7 +25,7 @@ namespace Innovt.Data.EFCore
             base.ChangeTracker.LazyLoadingEnabled = false;
         }
 
-        public DbContext(IDataSource dataSource, [NotNull] ILoggerFactory loggerFactory):this(dataSource)
+        public DbContext(IDataSource dataSource, ILoggerFactory loggerFactory):this(dataSource)
         {
             this.loggerFactory = loggerFactory ?? throw new ArgumentNullException(nameof(loggerFactory));
         }
