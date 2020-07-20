@@ -12,10 +12,11 @@
     <Version>1.0.4</Version>
   </PropertyGroup>
     <ItemGroup>
-    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.3.106.9" />
+    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.3.106.34" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj" />
+    <ProjectReference Include="..\Innovt.Domain\Innovt.Domain.csproj" />
   </ItemGroup>
 
 </Project>

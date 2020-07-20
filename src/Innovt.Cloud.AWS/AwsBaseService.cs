@@ -12,10 +12,12 @@ using RetryPolicy = Polly.Retry.RetryPolicy;
 
 namespace Innovt.Cloud.AWS
 {
-    public abstract class AWSBaseService
+    public abstract class AwsBaseService
     {
         protected readonly IAWSConfiguration Configuration;
 
+        private string region;
+        
         public RegionEndpoint Region { get; set; }
 
         public int RetryCount { get; set; }
@@ -26,30 +28,22 @@ namespace Innovt.Cloud.AWS
 
         public ILogger Logger { get; }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="T:Innovt.Cloud.AWS.AWSBaseService"/> class.
-        /// </summary>
-        /// <param name="configuration">Configuration.</param>
-        /// <param name="logger"></param>
-        /// <param name="region">Region.</param>
-        protected AWSBaseService(IAWSConfiguration configuration,ILogger logger, string region):this()
+
+        protected AwsBaseService(ILogger logger, IAWSConfiguration configuration, string region):this()
         {
             this.Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
             this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            this.Region = this.GetRegionEndPoint(region);
+            this.region = region ?? throw new ArgumentNullException(nameof(region));
         }
 
-        protected AWSBaseService(ILogger logger):this()
+        protected AwsBaseService(ILogger logger):this()
         {  
             this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        protected AWSBaseService(IAWSConfiguration configuration,ILogger logger) : this(configuration, logger,null)
-        { 
-   
-        }
+       
 
-        protected AWSBaseService()
+        protected AwsBaseService()
         { 
             RetryCount = 3;
             CircuitBreakerAllowedExceptions = 3;
@@ -59,7 +53,7 @@ namespace Innovt.Cloud.AWS
         protected RegionEndpoint GetRegionEndPoint(string region)
         {
             if (string.IsNullOrEmpty(region))
-                region = this.Configuration.DefaultRegion;
+                region = this.Configuration?.Region;
 
             if (string.IsNullOrEmpty(region))
                 throw new ConfigurationException("AWS Region name not defined for this service.");
@@ -84,6 +78,8 @@ namespace Innovt.Cloud.AWS
                 return Activator.CreateInstance<T>();
             }
 
+
+     
             var instance = (T)Activator.CreateInstance(typeof(T), Configuration.AccessKey,Configuration.SecretKey, Region);
 
             return instance;

@@ -11,7 +11,7 @@ using Innovt.Core.CrossCutting.Log;
 
 namespace Innovt.Cloud.AWS.Notification
 {
-    public class SmsNotificationHandler: AWSBaseService, INotificationHandler
+    public class SmsNotificationHandler: AwsBaseService, INotificationHandler
     {
 
         public SmsNotificationHandler(ILogger logger) : base(logger)
@@ -19,7 +19,7 @@ namespace Innovt.Cloud.AWS.Notification
         }
 
 
-        public SmsNotificationHandler(IAWSConfiguration configuration,ILogger logger,string region=null) : base(configuration,logger,region)
+        public SmsNotificationHandler(ILogger logger,IAWSConfiguration configuration,string region=null) : base(logger,configuration,region)
         {
         }
 

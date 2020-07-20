@@ -11,9 +11,9 @@
     <Description>AWS implementation for cloud features.</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="AWSSDK.Core" Version="3.3.107.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.4" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="3.1.4" />
+    <PackageReference Include="AWSSDK.Core" Version="3.3.107.26" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="3.1.6" />
     <PackageReference Include="Polly" Version="7.2.1" />
     <PackageReference Include="System.Text.Json" Version="4.7.2" />
   </ItemGroup>

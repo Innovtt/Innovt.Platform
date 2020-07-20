@@ -28,7 +28,6 @@ namespace Innovt.Notification.Core.Domain
             this.Type = type;
         }
 
-
         public NotificationMessage(NotificationMessageType type,string fromAddress,string fromName,string subject)
         {
             this.Type = type;

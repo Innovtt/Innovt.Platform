@@ -19,7 +19,7 @@ namespace Innovt.Cloud.AWS.Lambda
 
         public override async Task Handle(SQSEvent sqsEvent, ILambdaContext context)
         {
-            Logger.Info($"Processing Sqs event With {sqsEvent.Records?.Count} records.");
+            Logger?.Info($"Processing Sqs event With {sqsEvent.Records?.Count} records.");
 
             if (sqsEvent?.Records == null) return;
             if (sqsEvent.Records.Count == 0) return;

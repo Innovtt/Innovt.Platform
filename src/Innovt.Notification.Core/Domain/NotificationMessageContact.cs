@@ -8,6 +8,11 @@ namespace Innovt.Notification.Core.Domain
             Name = name;
             Address = address;
         }
+
+        public NotificationMessageContact()
+        {
+
+        }
         
         public string Name { get; set; }
         public string Address { get; set; }

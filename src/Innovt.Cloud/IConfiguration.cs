@@ -7,6 +7,8 @@ namespace Innovt.Cloud
 
         string AccessKey { get; set; }
 
-        string DefaultRegion { get; set; }
+        string Region { get; set; }
+
+        public string Profile { get; set; }
     }
 }

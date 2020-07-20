@@ -4,30 +4,17 @@ using System.Threading.Tasks;
 
 namespace Innovt.Cloud.Queue
 {
-    public interface IQueueService
+    public interface IQueueService<T> where T : IQueueMessage
     {
-        IList<T> GetMessages<T>(int quantity, int? waitTimeInSeconds = null,
-            int? visibilityTimeoutInSeconds = null)
-            where T : IQueueMessage;
+        Task<IList<T>> GetMessagesAsync(int quantity, int? waitTimeInSeconds = null,
+            int? visibilityTimeoutInSeconds = null, CancellationToken cancellationToken = default);
+            
+        Task DeQueueAsync(string popReceipt, CancellationToken cancellationToken = default);
 
-        Task<IList<T>> GetMessagesAsync<T>(int quantity, int? waitTimeInSeconds = null,
-            int? visibilityTimeoutInSeconds = null, CancellationToken cancellationToken = default)
-            where T : IQueueMessage;
+        Task<string> QueueAsync(object message, int? visibilityTimeoutInSeconds = null, CancellationToken cancellationToken = default);
         
-        Task DeQueueAsync(string id, string popReceipt, CancellationToken cancellationToken = default);
-
-        void DeQueue(string id, string popReceipt);
-
-        Task QueueAsync(object message, int? visibilityTimeoutInSeconds = null, CancellationToken cancellationToken = default);
-     
-        void Queue(object message, int? visibilityTimeoutInSeconds = null);
-
         Task<int> ApproximateMessageCountAsync(CancellationToken cancellationToken = default);
-        
-        int ApproximateMessageCount();
 
         Task CreateIfNotExistAsync(CancellationToken cancellationToken = default);
-
-        void CreateIfNotExist();
     }
 }

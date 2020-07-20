@@ -14,8 +14,4 @@
   <ItemGroup>
     <Compile Remove="Configuration\DefaultAWSConfiguration.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Queue\" />
-    <Folder Include="Table\" />
-  </ItemGroup>
 </Project>

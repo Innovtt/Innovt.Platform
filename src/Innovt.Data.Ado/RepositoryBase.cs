@@ -17,7 +17,6 @@ namespace Innovt.Data.Ado
     {
         private readonly IDataSource dataSource;
         private readonly IConnectionFactory connectionFactory;
-   
 
         public RepositoryBase(IDataSource datasource) : this(datasource, null)
         {
@@ -88,7 +87,6 @@ namespace Innovt.Data.Ado
             return this.QuerySingleOrDefaultInternalAsync<T>(sql, filter, cancellationToken);
         }
 
-
         internal async Task<int> QueryCountInternalAsync(string tableName, string whereClause = null, object filter = null, CancellationToken cancellationToken = default)
         {
             var sql = $"SELECT COUNT(1) FROM [{tableName}]";
@@ -123,33 +121,21 @@ namespace Innovt.Data.Ado
             return this.QueryInternalAsync<T>(sql,filter,cancellationToken);
         }
 
-        public async Task<PagedCollection<T>> QueryPagedAsync<T>(string sql, IPagedFilter filter, bool automaticQueryCount = true, CancellationToken cancellationToken = default) where T : class
+        public async Task<PagedCollection<T>> QueryPagedAsync<T>(string sql, IPagedFilter filter, CancellationToken cancellationToken = default) where T : class
         {
-
             var orderByIndex = sql.LastIndexOf("ORDER BY", StringComparison.CurrentCultureIgnoreCase);
 
             if (orderByIndex <= 0)
                 throw new SqlSyntaxException("ORDER BY Clause not found. To filter as pagged you need to provide an ORDER BY Clause.");
-            
-            if (automaticQueryCount)
-            {
-                //removing order by
-                var newSql = sql.Substring(0, orderByIndex);
 
-                sql = $"SELECT COUNT(1) FROM ({newSql}) C;" + sql;
-            }
+            var newSql = sql.Substring(0, orderByIndex);
 
-            sql = sql.AddPagination(filter,dataSource);
+            var query = $"SELECT COUNT(1) FROM ({newSql}) C;" + sql.AddPagination(filter, dataSource);
 
             using var con = GetConnection();
-            var qResult = await con.QueryMultipleAsync(new CommandDefinition(sql, filter, cancellationToken: cancellationToken));
+            var qResult = await con.QueryMultipleAsync(new CommandDefinition(query, filter, cancellationToken: cancellationToken));
 
-            int totalRecords = 0;
-
-            if (automaticQueryCount)
-            {
-                totalRecords = qResult.ReadFirst<int>();
-            }
+            int totalRecords = qResult.ReadFirst<int>();
 
             var result = new PagedCollection<T>(qResult.Read<T>())
             {

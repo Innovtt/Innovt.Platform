@@ -16,13 +16,13 @@ using Innovt.Core.CrossCutting.Log;
 
 namespace Innovt.Cloud.AWS.S3
 {
-    public class S3FileSystem : AWSBaseService, IFileSystem 
+    public class S3FileSystem : AwsBaseService, IFileSystem 
     {
         public S3FileSystem(ILogger logger) : base(logger)
         {
         }
 
-        public S3FileSystem(IAWSConfiguration configuration,ILogger logger, string region=null) : base(configuration,logger,region)
+        public S3FileSystem(ILogger logger,IAWSConfiguration configuration, string region=null) : base(logger,configuration,region)
         {
         }
 

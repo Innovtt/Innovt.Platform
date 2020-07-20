@@ -1,4 +1,6 @@
-﻿namespace Innovt.Cloud.Table
+﻿using System;
+
+namespace Innovt.Cloud.Table
 {
     public interface ITableMessage
     {

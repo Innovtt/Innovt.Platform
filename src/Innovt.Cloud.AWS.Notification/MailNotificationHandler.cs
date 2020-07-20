@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Amazon.Runtime;
 using Amazon.SimpleEmail;
 using Amazon.SimpleEmail.Model;
 using Innovt.Core.Utilities;
@@ -9,11 +8,10 @@ using Innovt.Cloud.AWS.Configuration;
 using Innovt.Notification.Core;
 using Innovt.Notification.Core.Domain;
 using Innovt.Core.CrossCutting.Log;
-using Polly.Retry;
 
 namespace Innovt.Cloud.AWS.Notification
 {
-    public class MailNotificationHandler: AWSBaseService, INotificationHandler
+    public class MailNotificationHandler: AwsBaseService, INotificationHandler
     {
         public string DefaultCharset { get; set; } = "UTF-8";
 
@@ -21,7 +19,7 @@ namespace Innovt.Cloud.AWS.Notification
         {
         }
 
-        public MailNotificationHandler(IAWSConfiguration configuration,ILogger logger,string region=null) : base(configuration,logger,region)
+        public MailNotificationHandler(ILogger logger,IAWSConfiguration configuration,string region=null) : base(logger,configuration,region)
         {
 
         }

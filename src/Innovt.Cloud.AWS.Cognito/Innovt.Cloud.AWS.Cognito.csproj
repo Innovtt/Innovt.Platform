@@ -12,7 +12,7 @@
     <Version>1.0.3</Version>
   </PropertyGroup>
   <ItemGroup>
-        <PackageReference Include="Amazon.Extensions.CognitoAuthentication" Version="1.0.3" />
+        <PackageReference Include="Amazon.Extensions.CognitoAuthentication" Version="1.0.4" />
         <PackageReference Include="System.Text.Json" Version="4.7.2" />
   </ItemGroup>
   <ItemGroup>

@@ -19,7 +19,7 @@ using Innovt.Core.Validation;
 
 namespace Innovt.Cloud.AWS.Cognito
 {
-    public abstract class CognitoIdentityProvider : AWSBaseService, ICognitoIdentityProvider
+    public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentityProvider
     {
         private readonly string clientId;
         private readonly string userPoolId;
@@ -35,9 +35,9 @@ namespace Innovt.Cloud.AWS.Cognito
             this.domainEndPoint = new Uri(domainEndPoint);
         }
 
-        protected CognitoIdentityProvider(IAWSConfiguration configuration, ILogger logger, string clientId,
+        protected CognitoIdentityProvider(ILogger logger,IAWSConfiguration configuration, string clientId,
             string userPoolId, string domainEndPoint, string region = null) :
-            base(configuration, logger, region)
+            base( logger,configuration, region)
         {
             this.clientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
             this.userPoolId = userPoolId ?? throw new ArgumentNullException(nameof(userPoolId));

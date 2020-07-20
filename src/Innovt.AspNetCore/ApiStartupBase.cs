@@ -2,27 +2,27 @@ using System;
 using System.IO;
 using System.Reflection;
 using Innovt.AspNetCore.Filters;
-using Innovt.Core.CrossCutting.Ioc;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace Innovt.AspNetCore
 {
     public abstract class ApiStartupBase
     {
-        private readonly string healthPath;
-        private readonly bool ignoreSwaggerDoc;
+        private readonly string healthPath= "/health";
+
         public IConfiguration Configuration { get; }
         private readonly string apiTitle;
         private readonly string apiDescription;
         private readonly string apiVersion;
 
         protected ApiStartupBase(IConfiguration configuration, string apiTitle,
-            string apiDescription, string apiVersion,string healthPath="/health",bool ignoreSwaggerDoc = false)
+            string apiDescription, string apiVersion,string healthPath="/health")
         {
             Configuration = configuration;
 
@@ -30,16 +30,22 @@ namespace Innovt.AspNetCore
             this.apiDescription = apiDescription;
             this.apiVersion = apiVersion;
             this.healthPath = healthPath;
-            this.ignoreSwaggerDoc = ignoreSwaggerDoc;
         }
 
-        protected ApiStartupBase(IConfiguration configuration):this(configuration,"Api Title","Please provide you api Description.(Startup Constructor)","v1")
+
+        protected ApiStartupBase(IConfiguration configuration):this(configuration,null,null,null)
         {
+            
+        }
+
+
+        internal bool isSwaggerEnabled() {
+            return !(apiTitle == null && apiVersion == null);
         }
 
         protected virtual void AddSwagger(IServiceCollection services)
         {   
-            if(ignoreSwaggerDoc)
+            if(!isSwaggerEnabled())
                 return;
 
             services.AddSwaggerGen(options =>
@@ -62,7 +68,7 @@ namespace Innovt.AspNetCore
             });
         }
 
-        protected abstract IContainer ConfigureIoC(IServiceCollection services);
+        protected abstract void ConfigureIoC(IServiceCollection services);
 
         /// <summary>
         /// Implement only the AddHealthChecks by default
@@ -86,7 +92,7 @@ namespace Innovt.AspNetCore
         /// <param name="services"></param>
         public virtual void ConfigureServices(IServiceCollection services)
         {
-            var container = ConfigureIoC(services);
+            ConfigureIoC(services);
 
             AddDefaultServices(services);
 
@@ -95,13 +101,14 @@ namespace Innovt.AspNetCore
             ConfigureOpenTracing(services);
 
             AddSwagger(services);
-
-            container?.CheckConfiguration();
         }
 
 
         protected virtual void ConfigureSwaggerUi(IApplicationBuilder app)
-        {   
+        {
+            if (!isSwaggerEnabled())
+                return;
+
             app.UseRewriter(new RewriteOptions().AddRedirect("(.*)docs$", "$1docs/index.html"));
             
             app.UseSwagger(s=>{ 
@@ -119,22 +126,26 @@ namespace Innovt.AspNetCore
         /// </summary>
         /// <param name="app"></param>
         /// <param name="env"></param>
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+            else 
+            {
+                app.UseExceptionHandler();
+            }
 
             app.UseHealthChecks(healthPath);
 
-            ConfigureApp(app, env); 
+            ConfigureApp(app, env, loggerFactory); 
 
             ConfigureSwaggerUi(app);
         }
 
         protected abstract void AddDefaultServices(IServiceCollection services);
 
-        public abstract void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env);
+        public abstract void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory);
     }
 }

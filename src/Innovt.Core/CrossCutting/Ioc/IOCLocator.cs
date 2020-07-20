@@ -20,12 +20,6 @@ namespace Innovt.Core.CrossCutting.Ioc
                 throw new CriticalException("IOC Container not initialized");
         }
 
-        public static void Register<T>(T type)
-        {
-            ThrowExceptionIfContainerIsNotInitialized();
-
-            container.Register(type);
-        }
         
         public static object Resolve(Type type)
         {
@@ -48,27 +42,12 @@ namespace Innovt.Core.CrossCutting.Ioc
             return container.Resolve<TService>(intanceKey);
         }
 
-        public static TService Resolve<TService>(Type type,string intanceKey)
-        {
-            ThrowExceptionIfContainerIsNotInitialized();
-
-            return container.Resolve<TService>(type,intanceKey);
-        }
-
-
-        // public TService Resolve<TService>(Type type,string instanceKey)
 
         public static TService Resolve<TService>()
         {
             ThrowExceptionIfContainerIsNotInitialized();
 
             return container.Resolve<TService>();
-        }
-
-        public static void Release(object inst)
-        {
-            ThrowExceptionIfContainerIsNotInitialized();
-            container.Release(inst);
         }
 
         public static void AddModule(IOCModule module)

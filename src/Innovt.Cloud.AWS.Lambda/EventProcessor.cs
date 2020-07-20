@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Amazon.Lambda.Core;
 using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Core.CrossCutting.Log;
+using Microsoft.Extensions.Configuration;
 
 namespace Innovt.Cloud.AWS.Lambda
 {
@@ -10,6 +11,7 @@ namespace Innovt.Cloud.AWS.Lambda
     {
         protected ILogger Logger { get; private set; }
         protected ILambdaContext Context { get; private set; }
+        protected IConfigurationRoot Configuration { get; private set; }
 
         protected bool IsIocContainerInitialized = false;
 
@@ -17,21 +19,20 @@ namespace Innovt.Cloud.AWS.Lambda
         {
             Logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
+
         protected EventProcessor()
         {
         }
 
-        protected void SetupIoc(ILambdaContext context)
+        protected void SetupIoc()
         {
-            context.Logger.LogLine("Initializing IOC Container.");
-
             if (IsIocContainerInitialized)
             {
-                context.Logger.LogLine("IOC Container already initialized.");
+                Context.Logger.LogLine("IOC Container already initialized.");
                 return;
             }
 
-            Context = context;
+            Context.Logger.LogLine("Initializing IOC Container.");
 
             var container = SetupIocContainer();
 
@@ -41,34 +42,36 @@ namespace Innovt.Cloud.AWS.Lambda
 
                 Logger = container.Resolve<ILogger>();
 
-                if (Logger == null)
-                {
-                    context.Logger.LogLine("Custom Logger not initialized. Please provide the default logger using your IOC container.");
-                    Logger = new LambdaLogger(context.Logger);
-
-                }
+                Context.Logger.LogLine("IOC Container Initialized.");
+            }
+            else
+            {
+                Context.Logger.LogLine("IOC Container not found.");
+            }
+  
+            if (Logger == null)
+            {
+                Context.Logger.LogLine("Custom Logger not initialized. Please provide the default logger using your IOC container.");
+                Logger = new LambdaLogger(Context.Logger);
             }
 
+            //Will check always
             IsIocContainerInitialized = true;
-
-            context.Logger.LogLine("IOC Container Initialized.");
         }
 
-
-        /// <summary>
-        /// The Default Function Will be Namespace::Class::Process
-        /// </summary>
-        /// <param name="message">The message received</param>
-        /// <param name="context">The lambda context</param>
-        /// <returns></returns>
         public async Task Process(T message, ILambdaContext context)
-        {   
-            SetupIoc(context);
+        {
+            context.Logger.LogLine($"Receiving message. Function {context.FunctionName} and Version {context.FunctionVersion}");
+
+            this.Context = context;
+
+            SetupIoc();
 
             await Handle(message, context);
         }
 
         protected abstract IContainer SetupIocContainer();
+ 
         public abstract Task Handle(T message, ILambdaContext context);
     }
 }

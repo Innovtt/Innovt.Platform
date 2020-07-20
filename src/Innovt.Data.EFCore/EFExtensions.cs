@@ -61,28 +61,6 @@ namespace Innovt.Data.EFCore
             }
         }
 
-        public static void AddConfigurationFromAssembly(this ModelBuilder modelBuilder, Assembly assembly)
-        {
-            var baseType = typeof(IEntityTypeConfiguration<>);
-
-            var maps = assembly.GetTypes().Where(t => t.GetInterfaces().Any(i => i.Name.Contains(baseType.Name))).ToList();
-
-            if (!maps.Any()) return;
-
-            var entityMethod = typeof(ModelBuilder).GetMethod("ApplyConfiguration");
-
-            foreach (var type in maps)
-            {
-                var instance = Activator.CreateInstance(type);
-
-                var genericArg = type.GetInterface(baseType.Name).GetGenericArguments()[0];
-
-                entityMethod?.MakeGenericMethod(genericArg)
-                    .Invoke(modelBuilder, new object[] { instance });
-            }
-        }
-
-
         public static void AddSecurityMap(this ModelBuilder modelBuilder)
         {  
             modelBuilder.ApplyConfiguration<Policy>(new PolicyMap());

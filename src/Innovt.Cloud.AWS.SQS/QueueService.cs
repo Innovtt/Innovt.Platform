@@ -14,29 +14,56 @@ using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.SQS
 {
-    public class QueueService :  AWSBaseService, IQueueService
-    { 
-        public string QueueName { get; private set; }
+    public class QueueService<T> :  AwsBaseService, IQueueService<T> where T:IQueueMessage
+    {
+        private AmazonSQSClient sqsClient = null;
+
+        public string QueueName { get; protected set; }
+
+        private static string queueUrl { get; set; }
+
+        public QueueService(ILogger logger) : this(logger, typeof(T).Name)
+        { 
+        }
+
+        public QueueService(ILogger logger, string queueName) : this(logger,null, queueName)
+        {
+        }
+
+        public QueueService(ILogger logger, IAWSConfiguration configuration) : this(logger, configuration, typeof(T).Name)
+        {   
+         
+        }
+
+        public QueueService(ILogger logger, IAWSConfiguration configuration, string queueName, string region = null)
+            : base(logger, configuration, region)
+        {
+            Check.NotNull(queueName, nameof(queueName));
+
+            this.QueueName = queueName;
+           
+            sqsClient = CreateService<AmazonSQSClient>();
+        }
 
         protected async Task<string> GetQueueUrlAsync()
         {
-            using var s3Client = CreateService<AmazonSQSClient>();
+            if (queueUrl!=null && queueUrl.EndsWith(QueueName))
+            {
+                return queueUrl;
+            }
 
-            return (await s3Client.GetQueueUrlAsync(QueueName))?.QueueUrl;
+            if (base.Configuration.AccountNumber!=null && base.Configuration.Region!=null)
+            {
+                queueUrl = $"https://sqs.{base.Configuration.Region}.amazonaws.com/{base.Configuration.AccountNumber}/{QueueName}";
+            }
+            else
+            {
+                queueUrl = (await sqsClient.GetQueueUrlAsync(QueueName))?.QueueUrl;
+            }
+
+            return queueUrl;
         }
 
-        public QueueService(ILogger logger, string queueName) : base(logger)
-        {
-            Check.NotNull(queueName, nameof(queueName));
-            this.QueueName = queueName;
-        }
-
-        public QueueService(IAWSConfiguration configuration,ILogger logger, string queueName, string region=null) 
-            : base(configuration, logger,region)
-        {
-            Check.NotNull(queueName, nameof(queueName));
-            this.QueueName = queueName;
-        }
 
         /// <summary>
         /// Enable user to receive messages
@@ -46,14 +73,15 @@ namespace Innovt.Cloud.AWS.SQS
         /// <param name="visibilityTimeoutInSeconds"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<IList<T>> GetMessagesAsync<T>(int quantity,int? waitTimeInSeconds=null, 
+        public async Task<IList<T>> GetMessagesAsync(int quantity,int? waitTimeInSeconds=null, 
             int? visibilityTimeoutInSeconds=null,
-            CancellationToken cancellationToken = default) where T: IQueueMessage
+            CancellationToken cancellationToken = default)
         {
             var request = new ReceiveMessageRequest()
             {  
                 MaxNumberOfMessages = quantity, 
-                AttributeNames = new List<string>() { "All" } 
+                AttributeNames = new List<string>() { "All" },
+                QueueUrl = await GetQueueUrlAsync()
             };
 
             if (visibilityTimeoutInSeconds.HasValue)
@@ -61,12 +89,8 @@ namespace Innovt.Cloud.AWS.SQS
 
             if (waitTimeInSeconds.HasValue)
                 request.WaitTimeSeconds = waitTimeInSeconds.Value;
-         
-            using var s3Client  =  CreateService<AmazonSQSClient>();
 
-            request.QueueUrl = (await s3Client.GetQueueUrlAsync(QueueName, cancellationToken)).QueueUrl;
-
-            var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async ()=> await s3Client.ReceiveMessageAsync(request, cancellationToken));
+            var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async ()=> await sqsClient.ReceiveMessageAsync(request, cancellationToken));
 
             if (response.HttpStatusCode != HttpStatusCode.OK)
                 throw new CriticalException("Error getting messages from the queue.");
@@ -87,57 +111,32 @@ namespace Innovt.Cloud.AWS.SQS
             return messages;
         }
 
-            /// <returns></returns>
-        public IList<T> GetMessages<T>(int quantity,int? waitTimeInSeconds=null, int? visibilityTimeoutInSeconds=null) where T: IQueueMessage{
 
-           return AsyncHelper.RunSync(async () => await GetMessagesAsync<T>(quantity, waitTimeInSeconds, visibilityTimeoutInSeconds));
-        }
-
-        public async Task DeQueueAsync(string id, string receiptHandle, CancellationToken cancellationToken = default)
+        public async Task DeQueueAsync(string receiptHandle, CancellationToken cancellationToken = default)
         { 
-            using var s3Client  =  CreateService<AmazonSQSClient>();
-
             var queueUrl = await GetQueueUrlAsync();
 
             var deleteRequest = new DeleteMessageRequest(queueUrl, receiptHandle);
 
-            await base.CreateDefaultRetryAsyncPolicy().ExecuteAndCaptureAsync(async () => await s3Client.DeleteMessageAsync(deleteRequest, cancellationToken));
-        }
-
-        public void DeQueue(string id, string receiptHandle)
-        {
-            AsyncHelper.RunSync(async () => await DeQueueAsync(id,receiptHandle));
+            await base.CreateDefaultRetryAsyncPolicy().ExecuteAndCaptureAsync(async () => await sqsClient.DeleteMessageAsync(deleteRequest, cancellationToken));
         }
 
         public async Task<int> ApproximateMessageCountAsync(CancellationToken cancellationToken = default)
         {
             var attributes = new List<string>() { "ApproximateNumberOfMessages" };
-            
-            using var s3Client  =  CreateService<AmazonSQSClient>();
-
+      
             var queueUrl = await GetQueueUrlAsync();
 
-            var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async ()=> await s3Client.GetQueueAttributesAsync(queueUrl, attributes, cancellationToken));
+            var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async ()=> await sqsClient.GetQueueAttributesAsync(queueUrl, attributes, cancellationToken));
 
             return (response?.ApproximateNumberOfMessages).GetValueOrDefault();
         }
 
-        public int ApproximateMessageCount()
-        {
-             return AsyncHelper.RunSync(async () => await ApproximateMessageCountAsync());
-        }
-
         public async Task CreateIfNotExistAsync(CancellationToken cancellationToken = default)
         {   
-            using var s3Client  =  CreateService<AmazonSQSClient>();
-
-            await s3Client.CreateQueueAsync(QueueName, cancellationToken);
+            await sqsClient.CreateQueueAsync(QueueName, cancellationToken);
         }
-
-        public void CreateIfNotExist()
-        {   
-           AsyncHelper.RunSync(async () => await CreateIfNotExistAsync());
-        }
+      
 
         /// <summary>
         /// 
@@ -152,7 +151,7 @@ namespace Innovt.Cloud.AWS.SQS
         /// When you set <code>FifoQueue</code>, you can't set <code>DelaySeconds</code> per message.
         /// You can set this parameter only on a queue level.</param>
         /// <returns></returns>
-        public async Task QueueAsync(object message, int? delaySeconds = null, CancellationToken cancellationToken = default)
+        public async Task<string> QueueAsync(object message, int? delaySeconds = null, CancellationToken cancellationToken = default)
         {
             if (message == null) throw new ArgumentNullException(nameof(message));
            
@@ -164,18 +163,13 @@ namespace Innovt.Cloud.AWS.SQS
 
             if (delaySeconds.HasValue)
                 messageRequest.DelaySeconds = delaySeconds.Value;
-           
-            using var s3Client  =  CreateService<AmazonSQSClient>();
 
-            var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async ()=> await s3Client.SendMessageAsync(messageRequest, cancellationToken));
+            var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async ()=> await sqsClient.SendMessageAsync(messageRequest, cancellationToken));
 
             if (response.HttpStatusCode != HttpStatusCode.OK)
                 throw new CriticalException("Error sending message to queue.");
-        }
 
-        public void Queue(object message, int? delaySeconds = null)
-        {
-            AsyncHelper.RunSync(async () => await QueueAsync(message,delaySeconds));
+            return response.MessageId;
         }
     }
 }

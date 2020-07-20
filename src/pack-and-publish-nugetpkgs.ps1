@@ -23,7 +23,7 @@ $projectsToBuild =
    'Innovt.Job.Quartz',
    'Innovt.Job.Core',
    'Innovt.Cqrs',
-   'Innovt.CrossCutting.IOC.StructureMap',
+   'Innovt.CrossCutting.IOC',
    'Innovt.CrossCutting.Log.Serilog',
    'Innovt.Data',
    'Innovt.Data.Ado',

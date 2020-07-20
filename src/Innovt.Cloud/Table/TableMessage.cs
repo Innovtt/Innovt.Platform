@@ -12,7 +12,6 @@ namespace Innovt.Cloud.Table
         {
             if (string.IsNullOrEmpty(key)) throw new ArgumentNullException(nameof(key));
             if (string.IsNullOrEmpty(partitionKey)) throw new ArgumentNullException(nameof(partitionKey));
-  
    
             this.Id = key;
             this.PartitionKey = partitionKey;
@@ -21,6 +20,5 @@ namespace Innovt.Cloud.Table
         public string Id { get; set; }
 
         public string PartitionKey { get; set; }
-
     }
 }
