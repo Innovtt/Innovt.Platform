@@ -1,6 +1,6 @@
 using System;
 
-namespace IocSampleTest
+namespace IocSample
 {
     public class WeatherForecast
     {

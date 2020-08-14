@@ -39,7 +39,7 @@ namespace Innovt.Cloud.AWS.Lambda
             if (container != null)
             {
                 container.CheckConfiguration();
-
+             
                 Logger = container.Resolve<ILogger>();
 
                 Context.Logger.LogLine("IOC Container Initialized.");
@@ -72,6 +72,6 @@ namespace Innovt.Cloud.AWS.Lambda
 
         protected abstract IContainer SetupIocContainer();
  
-        public abstract Task Handle(T message, ILambdaContext context);
+        protected abstract Task Handle(T message, ILambdaContext context);
     }
 }

@@ -14,35 +14,20 @@ namespace Innovt.Cloud.Queue
 
         public int? ApproximateReceiveCount { get; set; }
 
-        public Dictionary<string, string> Attributes { get; set; }
-
+        public Dictionary<string, string> Attributes{ get; set; }
+       
         public QueueMessage()
-        {
+        {  
         }
 
         public QueueMessage(T body)
         {
             Body = body;
         }
-
+        
         public QueueMessage(Dictionary<string, string> attributes)
         {
-            Attributes = attributes;
-            this.ParseQueueAttributes(attributes);
-        }
-        public void ParseQueueAttributes(Dictionary<string, string> queueAttributes)
-        {
-            if (queueAttributes == null)
-                return;
-
-            if (queueAttributes.ContainsKey("ApproximateReceiveCount"))
-                this.ApproximateReceiveCount = int.Parse(queueAttributes["ApproximateReceiveCount"]);
-
-            if (queueAttributes.ContainsKey("ApproximateFirstReceiveTimestamp"))
-            {
-                this.ApproximateFirstReceiveTimestamp =
-                    double.Parse(queueAttributes["ApproximateFirstReceiveTimestamp"]);
-            }
+            this.Attributes = attributes;
         }
     }
 }

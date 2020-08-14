@@ -1,4 +1,8 @@
-﻿using Innovt.Cloud.AWS.Configuration;
+﻿using Amazon.DynamoDBv2;
+using Amazon.Runtime;
+using Amazon.SQS;
+using Innovt.Cloud.AWS.Configuration;
+using Innovt.Cloud.AWS.Dynamo;
 using Innovt.Cloud.AWS.SQS;
 using Innovt.Cloud.Queue;
 using Innovt.Core.CrossCutting.Log;
@@ -16,22 +20,13 @@ namespace ConsoleAppTest
         public int? ApproximateReceiveCount { get; set; }
         public Dictionary<string, string> Attributes { get; set; }
     }
-    public class SqsService : QueueService<Queue>
+    public class SqsService : Repository
     {
-        public SqsService(ILogger logger) : base(logger)
-        {
-        }
-
-        public SqsService(ILogger logger, string queueName) : base(logger, queueName)
-        {
-        }
-
         public SqsService(ILogger logger, IAWSConfiguration configuration) : base(logger, configuration)
         {
-            //configuration.Profile
         }
 
-        public SqsService(ILogger logger, IAWSConfiguration configuration, string queueName, string region = null) : base(logger, configuration, queueName, region)
+        public SqsService(ILogger logger, IAWSConfiguration configuration, string region) : base(logger, configuration, region)
         {
         }
     }

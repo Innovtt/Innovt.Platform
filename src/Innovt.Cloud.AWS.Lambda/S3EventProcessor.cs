@@ -19,8 +19,10 @@ namespace Innovt.Cloud.AWS.Lambda
         {
         }
 
-        public override async Task Handle(S3Event s3Event, ILambdaContext context)
+        protected override async Task Handle(S3Event s3Event, ILambdaContext context)
         {
+            //TODO: Ter controle de indepotencia.
+
             Logger.Info($"Processing S3Event With {s3Event.Records?.Count} records.");
 
             if (s3Event?.Records == null) return;
@@ -33,7 +35,6 @@ namespace Innovt.Cloud.AWS.Lambda
                 await ProcessMessage(record);
 
                 Logger.Info($"Event from S3 processed. Version {record.EventVersion}");
-             
             }
         }
 

@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Innovt.Core.Exceptions;
 using Amazon.Runtime;
 using Amazon.Runtime.CredentialManagement;
-using Innovt.Core.Collections;
+using System;
 
 namespace Innovt.Cloud.AWS.Configuration
 {
@@ -15,14 +15,40 @@ namespace Innovt.Cloud.AWS.Configuration
         public string AccessKey { get; set; }
         public string Region { get; set; }
         public string Profile { get; set; }
+      
+        /// <summary>
+        /// Using custom Profile
+        /// </summary>
+        /// <param name="profileName"></param>
+        public DefaultAWSConfiguration(string profileName)
+        {
+            Profile = profileName ?? throw new System.ArgumentNullException(nameof(profileName));
+        }
+
+        public DefaultAWSConfiguration()
+        {
+        }
 
         /// <summary>
-        /// Using this constructor you can set the parameters manually or use the overrided constructor
+        /// This Constructor will use the Autobind from GetSection. 
         /// </summary>
-        /// <param name="accountNumber">Account number.</param>
-        /// <param name="accessKey">Access key.</param>
-        /// <param name="secretKey">Secret key.</param>
-        /// <param name="defaultRegion">Default region.</param>
+        /// <param name="configuration">IConfiguration from .Net Core</param>
+        /// <param name="sectionName"> The default is AWS. </param>
+        public DefaultAWSConfiguration(Microsoft.Extensions.Configuration.IConfiguration configuration, string sectionName = configSection)
+        {
+            Check.NotNull(configuration, nameof(configuration));
+
+            var section = configuration.GetSection(sectionName);
+
+            if (section == null || !section.Exists())
+            {
+                throw new CriticalException($"Section {sectionName} not Found!");
+            }
+
+            section.Bind(this);
+        }
+
+
         public DefaultAWSConfiguration(string accessKey,string secretKey,string region, string accountNumber = null)
         {   
             Check.NotNull(accessKey, nameof(accessKey));
@@ -35,68 +61,36 @@ namespace Innovt.Cloud.AWS.Configuration
             this.Region = region;
         }
 
-
-        /// <summary>
-        /// This Constructor will use the Autobind from GetSection. 
-        /// </summary>
-        /// <param name="configuration">IConfiguration from .Net Core</param>
-        /// <param name="sectionName"> The default is AW. </param>
-        public DefaultAWSConfiguration(Microsoft.Extensions.Configuration.IConfiguration configuration,string sectionName = configSection)
+        internal AWSCredentials GetCredentialsFromProfile()
         {
-            Check.NotNull(configuration, nameof(configuration));
-          
-            var section = configuration.GetSection(sectionName);
+            var sharedProfile = new SharedCredentialsFile();
 
-            if (section == null)
-                throw new CriticalException("Section not Found!");
+            var profile = sharedProfile.ListProfiles().Find(p => p.Name.Equals(Profile, StringComparison.InvariantCultureIgnoreCase));
 
-            section.Bind(this);
-        }
+            if (profile == null)
+               throw new ConfigurationException($"Profile {Profile} not found.");
 
-        public DefaultAWSConfiguration(string profileName)
-        {
-            Profile = profileName;
-        }
-
-        /// <summary>
-        /// Using profile
-        /// </summary>
-        public DefaultAWSConfiguration()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the DefaultAWSConfiguration class using IConfiguration from .net Core.
-        /// </summary>
-        /// <param name="configuration">Configuration.</param>
-        public DefaultAWSConfiguration(Microsoft.Extensions.Configuration.IConfiguration configuration): this(configuration, configSection)
-        {
-        }
-
-        internal AWSCredentials getCredentialsFromProfile()
-        {
-            var netSDKFile = new NetSDKCredentialsFile();
-
-            if(netSDKFile.TryGetProfile(Profile, out var credentialProfile))
-            {
-                return credentialProfile.GetAWSCredentials(credentialProfile.CredentialProfileStore);
-            }
-            else
-            {
-                throw new ConfigurationException($"Profile {Profile} not found.");
-            }
+            return AWSCredentialsFactory.GetAWSCredentials(profile, sharedProfile);
         }
 
         public AWSCredentials GetCredential() {
 
-            if (Profile.IsNullOrEmpty())
-            {
-                var credential = new BasicAWSCredentials(AccessKey, SecretKey);
+            AWSCredentials credentials = null;
 
-                return credential;
+            if (Profile.IsNotNullOrEmpty())
+            {
+                credentials = GetCredentialsFromProfile();
             }
 
-            return getCredentialsFromProfile();
+            if (credentials != null)
+                return credentials;
+
+            if (AccessKey!=null && SecretKey!=null)
+            {
+                credentials = new BasicAWSCredentials(AccessKey, SecretKey);
+            }
+
+            return credentials;
         }
     }
 }

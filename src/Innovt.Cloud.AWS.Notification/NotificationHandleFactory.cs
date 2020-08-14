@@ -18,7 +18,7 @@ namespace Innovt.Cloud.AWS.Notification
         {
             return type switch
             {
-                NotificationMessageType.Email => (INotificationHandler) container.Resolve<MailNotificationHandler>(),
+                NotificationMessageType.Email => container.Resolve<MailNotificationHandler>(),
                 NotificationMessageType.Sms => container.Resolve<SmsNotificationHandler>(),
                 _ => throw new Exception($"{type} not implemented")
             };

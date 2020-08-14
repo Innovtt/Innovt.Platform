@@ -19,7 +19,8 @@ namespace Innovt.Cloud.AWS.Lambda
 
         }
 
-        public override async Task Handle(KinesisEvent kinesisEvent, ILambdaContext context)
+
+        protected override async Task Handle(KinesisEvent kinesisEvent, ILambdaContext context)
         { 
             Logger.Info($"Processing Kinesis Event With {kinesisEvent.Records?.Count} records.");
 

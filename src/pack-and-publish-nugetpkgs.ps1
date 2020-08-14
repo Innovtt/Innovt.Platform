@@ -108,5 +108,4 @@ foreach ($p in $packages)
     ..\tools\nuget.exe push $pkgPath !1nn0vt# -Source http://nugetinnovt.azurewebsites.net/api/v2/package
 }
 
-
 Write-Host "Package Push Complete." -ForegroundColor "Green"

@@ -8,36 +8,33 @@ using Polly.Retry;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Amazon.DynamoDBv2.DocumentModel;
 
 namespace Innovt.Cloud.AWS.Dynamo
 {
     public abstract class Repository : AwsBaseService, ITableRepository
     {
+        protected Repository(ILogger logger, IAWSConfiguration configuration) : base(logger, configuration)
+        {
+        }
+
+        protected Repository(ILogger logger, IAWSConfiguration configuration, string region) : base(logger, configuration, region)
+        {
+         
+        }
+
         private DynamoDBContext context = null;
+        private DynamoDBContext Context => context ??= new DynamoDBContext(DynamoClient);
+
         private AmazonDynamoDBClient dynamoClient = null;
-
-        protected Repository(ILogger logger,IAWSConfiguration configuration, string region) : base(logger,configuration, region)
-        {
-            dynamoClient = CreateService<AmazonDynamoDBClient>();
-
-            context = new DynamoDBContext(dynamoClient);
-        }
-
-        protected Repository(ILogger logger) : this(logger,null, null)
-        {
-           
-        }
-
-        protected Repository( ILogger logger,IAWSConfiguration configuration) : this(logger,configuration,null)
-        {
-        }
+        private AmazonDynamoDBClient DynamoClient => dynamoClient ??= CreateService<AmazonDynamoDBClient>();
 
         protected override AsyncRetryPolicy CreateDefaultRetryAsyncPolicy()
         {
             return base.CreateRetryAsyncPolicy<ProvisionedThroughputExceededException, InternalServerErrorException>();
         }
 
-        public async Task<T> GetByIdAsync<T>(object hashKey, string partitionKey=null, CancellationToken cancellationToken = default)
+        public async Task<T> GetByIdAsync<T>(object hashKey, string partitionKey=null, CancellationToken cancellationToken = default) where T : ITableMessage
         {
             var config = new DynamoDBOperationConfig()
             {
@@ -45,28 +42,28 @@ namespace Innovt.Cloud.AWS.Dynamo
             };
 
             var policy = this.CreateDefaultRetryAsyncPolicy();
-        
-            if (string.IsNullOrEmpty(partitionKey))
-                return await policy.ExecuteAsync(async () => await context.LoadAsync<T>(hashKey, config, cancellationToken));
 
-            return await policy.ExecuteAsync(async () => await context.LoadAsync<T>(hashKey, partitionKey, config, cancellationToken));
+            if (string.IsNullOrEmpty(partitionKey))
+                return await policy.ExecuteAsync(async () => await Context.LoadAsync<T>(hashKey, config, cancellationToken));
+
+            return await policy.ExecuteAsync(async () => await Context.LoadAsync<T>(hashKey, partitionKey, config, cancellationToken));
         }
 
-        public async Task DeleteAsync<T>(T value, CancellationToken cancellationToken = default)
+        public async Task DeleteAsync<T>(T value, CancellationToken cancellationToken = default) where T : ITableMessage
         {
             var policy = this.CreateDefaultRetryAsyncPolicy();
 
-            await policy.ExecuteAsync(async () => await context.DeleteAsync<T>(value, cancellationToken)).ConfigureAwait(false);
+            await policy.ExecuteAsync(async () => await Context.DeleteAsync<T>(value, cancellationToken)).ConfigureAwait(false);
         }
 
-        public async Task DeleteAsync<T>(object id, string partitionKey, CancellationToken cancellationToken = default)
+        public async Task DeleteAsync<T>(object id, string partitionKey, CancellationToken cancellationToken = default) where T : ITableMessage
         {
             var policy = this.CreateDefaultRetryAsyncPolicy();
 
             if (string.IsNullOrEmpty(partitionKey))
-                await policy.ExecuteAsync(async () => await context.DeleteAsync<T>(id, cancellationToken));
+                await policy.ExecuteAsync(async () => await Context.DeleteAsync<T>(id, cancellationToken));
             else
-                await policy.ExecuteAsync(async () => await context.DeleteAsync<T>(id, partitionKey, cancellationToken));
+                await policy.ExecuteAsync(async () => await Context.DeleteAsync<T>(id, partitionKey, cancellationToken));
         }
 
         public async Task AddAsync<T>(T message, CancellationToken cancellationToken = default) where T:ITableMessage
@@ -78,7 +75,7 @@ namespace Innovt.Cloud.AWS.Dynamo
 
             var policy = this.CreateDefaultRetryAsyncPolicy();
 
-            await policy.ExecuteAsync(async () => await context.SaveAsync(message, config, cancellationToken));
+            await policy.ExecuteAsync(async () => await Context.SaveAsync(message, config, cancellationToken));
         }
 
         public async Task AddAsync<T>(IList<T> messages, CancellationToken cancellationToken = default) where T : ITableMessage
@@ -90,12 +87,12 @@ namespace Innovt.Cloud.AWS.Dynamo
 
             var config = new DynamoDBOperationConfig()
             {
-                IgnoreNullValues = true, 
+                IgnoreNullValues = true
             };
 
             var policy = this.CreateDefaultRetryAsyncPolicy();
 
-            var batch = context.CreateBatchWrite<T>();
+            var batch = Context.CreateBatchWrite<T>();
 
             batch.AddPutItems(messages);
 
@@ -108,41 +105,64 @@ namespace Innovt.Cloud.AWS.Dynamo
         {  
             var policy = this.CreateDefaultRetryAsyncPolicy();
 
-            await policy.ExecuteAsync(async () => await dynamoClient.UpdateItemAsync(tableName, key, attributeUpdates, cancellationToken)).ConfigureAwait(false);
+            await policy.ExecuteAsync(async () => await DynamoClient.UpdateItemAsync(tableName, key, attributeUpdates, cancellationToken)).ConfigureAwait(false);
         }
 
-        public async Task<List<T>> FindByAsync<T>(IList<ScanCondition> conditions, CancellationToken cancellationToken = default)
+        public Task<List<T>> FindByAsync<T>(IList<ScanCondition> conditions, CancellationToken cancellationToken = default) where T : ITableMessage
         {
             var config = new DynamoDBOperationConfig()
             {
                 ConsistentRead = true, 
             };
 
-            return await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () => await context.ScanAsync<T>(conditions, config).GetNextSetAsync(cancellationToken));
+            return  CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () => await Context.ScanAsync<T>(conditions, config).GetNextSetAsync(cancellationToken));
         }
 
-        public async Task<IList<T>> QueryAsync<T>(object hashKeyValue, CancellationToken cancellationToken = default)
+        public async Task<IList<T>> QueryAsync<T>(object hashKeyValue, CancellationToken cancellationToken = default) where T : ITableMessage
         {
             var config = new DynamoDBOperationConfig()
             {
-               ConsistentRead = true
+               ConsistentRead = true, 
             };
 
+            var result = await Context.QueryAsync<T>(hashKeyValue, config).GetRemainingAsync(cancellationToken);
+
             return await this.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () => await
-                context.QueryAsync<T>(hashKeyValue,config).GetNextSetAsync(cancellationToken));
+                Context.QueryAsync<T>(hashKeyValue,config).GetNextSetAsync(cancellationToken));
         }
+        
+        // public async Task<IList<T>> QueryAsyncs<T>(object hashKeyValue, CancellationToken cancellationToken = default) where T : ITableMessage
+        // {
+        //     var config = new QueryOperationConfig()
+        //     {
+        //         ConsistentRead = true,
+        //        KeyExpression = null, 
+        //        //Filter = new QueryFilter()
+        //        FilterExpression = null,
+        //        AttributesToGet = null,
+        //        // ConditionalOperator = 
+        //        
+        //         // PaginationToken = 
+        //     };
+        //     
+        //     //Context.FromScanAsync<T>(new ScanOperationConfig(){})
+        //     var config2 = new ScanOperationConfig()
+        //     {
+        //         FilterExpression = new Expression(),
+        //         Filter = new ScanFilter(),
+        //         
+        //     };
+        //
+        //             // Context.FromDocuments<T>()
+        //         
+        //     return await this.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () => await
+        //         Context.FromScanAsync<T>(config2).GetNextSetAsync(cancellationToken));
+        // }
 
-        //public async Task<IList<T>> QueryAsync<T>(object hashKeyValue, CancellationToken cancellationToken = default)
-        //{
-        //    var config = new DynamoDBOperationConfig()
-        //    {
-        //        ConsistentRead = true,
-        //    };
-
-        //    return await this.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () => await
-        //        context.QueryAsync<T>(hashKeyValue, config).GetNextSetAsync(cancellationToken));
-        //}
+        protected override void DisposeServices()
+        { 
+            context?.Dispose();
+            dynamoClient?.Dispose();
+        }
     }
-
-  
 }

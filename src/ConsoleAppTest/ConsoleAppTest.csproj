@@ -6,6 +6,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="appsettings.dev.json" />
+    <None Remove="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.dev.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.6" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Innovt.Cloud.AWS.Dynamo\Innovt.Cloud.AWS.Dynamo.csproj" />
     <ProjectReference Include="..\Innovt.Cloud.AWS.SQS\Innovt.Cloud.AWS.SQS.csproj" />
     <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj" />

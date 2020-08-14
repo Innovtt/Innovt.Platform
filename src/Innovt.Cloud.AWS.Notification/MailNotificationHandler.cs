@@ -15,15 +15,30 @@ namespace Innovt.Cloud.AWS.Notification
     {
         public string DefaultCharset { get; set; } = "UTF-8";
 
-        public MailNotificationHandler(ILogger logger) : base(logger)
+        public MailNotificationHandler(ILogger logger, IAWSConfiguration configuration) : base(logger, configuration)
         {
+         
         }
 
-        public MailNotificationHandler(ILogger logger,IAWSConfiguration configuration,string region=null) : base(logger,configuration,region)
+        public MailNotificationHandler(ILogger logger, IAWSConfiguration configuration, string region) : base(logger, configuration, region)
         {
-
+          
         }
 
+        private AmazonSimpleEmailServiceClient _simpleEmailClient;
+        private AmazonSimpleEmailServiceClient SimpleEmailClient
+        {
+            get
+            {
+                if (_simpleEmailClient == null)
+                {
+                    _simpleEmailClient = CreateService<AmazonSimpleEmailServiceClient>();
+                }
+
+                return _simpleEmailClient;
+            }
+        }
+            
         public async Task<dynamic> SendAsync(NotificationMessage message, CancellationToken cancellationToken = default)
         {
             Check.NotNull(message, nameof(message));
@@ -80,11 +95,14 @@ namespace Innovt.Cloud.AWS.Notification
 
             var policy = CreateDefaultRetryAsyncPolicy();
 
-             using var simpleEmailClient = CreateService<AmazonSimpleEmailServiceClient>();
-
-            var response = await policy.ExecuteAsync(async ()=> await simpleEmailClient.SendEmailAsync(mailRequest, cancellationToken));
+            var response = await policy.ExecuteAsync(async ()=> await SimpleEmailClient.SendEmailAsync(mailRequest, cancellationToken));
                
             return response;
+        }
+
+        protected override void DisposeServices()
+        {   
+            _simpleEmailClient?.Dispose();
         }
     }
 }

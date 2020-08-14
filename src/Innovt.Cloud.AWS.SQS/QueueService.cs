@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Amazon.SQS;
@@ -10,60 +10,54 @@ using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.Queue;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Exceptions;
-using Innovt.Core.Utilities;
+using Innovt.Core.Serialization;
 
 namespace Innovt.Cloud.AWS.SQS
 {
     public class QueueService<T> :  AwsBaseService, IQueueService<T> where T:IQueueMessage
-    {
+    {   
+        public string QueueName { get; protected set; }
+        public static string QueueUrl { get; private set; }
+
+        private ISerializer serializer;
+
+        public QueueService(ILogger logger, IAWSConfiguration configuration, string queueName=null, ISerializer serializer=null) : base(logger, configuration)
+        {
+            this.serializer = serializer;
+            this.QueueName = queueName ?? typeof(T).Name;
+        }
+
+        public QueueService(ILogger logger, IAWSConfiguration configuration, string region, string queueName=null, ISerializer serializer = null) : base(logger, configuration, region)
+        {
+            this.serializer = serializer;
+            this.QueueName = queueName ?? typeof(T).Name;
+        }
+
         private AmazonSQSClient sqsClient = null;
 
-        public string QueueName { get; protected set; }
+        private AmazonSQSClient SqsClient => sqsClient ??= CreateService<AmazonSQSClient>();
 
-        private static string queueUrl { get; set; }
-
-        public QueueService(ILogger logger) : this(logger, typeof(T).Name)
-        { 
-        }
-
-        public QueueService(ILogger logger, string queueName) : this(logger,null, queueName)
+        private async Task<string> GetQueueUrlAsync()
         {
-        }
-
-        public QueueService(ILogger logger, IAWSConfiguration configuration) : this(logger, configuration, typeof(T).Name)
-        {   
-         
-        }
-
-        public QueueService(ILogger logger, IAWSConfiguration configuration, string queueName, string region = null)
-            : base(logger, configuration, region)
-        {
-            Check.NotNull(queueName, nameof(queueName));
-
-            this.QueueName = queueName;
-           
-            sqsClient = CreateService<AmazonSQSClient>();
-        }
-
-        protected async Task<string> GetQueueUrlAsync()
-        {
-            if (queueUrl!=null && queueUrl.EndsWith(QueueName))
+            if (QueueUrl != null && QueueUrl.EndsWith(QueueName))
             {
-                return queueUrl;
+                return QueueUrl;
             }
 
-            if (base.Configuration.AccountNumber!=null && base.Configuration.Region!=null)
+            if (base.Configuration?.AccountNumber!=null)
             {
-                queueUrl = $"https://sqs.{base.Configuration.Region}.amazonaws.com/{base.Configuration.AccountNumber}/{QueueName}";
+                QueueUrl = $"https://sqs.{base.GetServiceRegionEndPoint().SystemName}.amazonaws.com/{base.Configuration.AccountNumber}/{QueueName}";
             }
             else
             {
-                queueUrl = (await sqsClient.GetQueueUrlAsync(QueueName))?.QueueUrl;
+                QueueUrl = (await SqsClient.GetQueueUrlAsync(QueueName))?.QueueUrl;
             }
 
-            return queueUrl;
+            return QueueUrl;
         }
 
+
+        private ISerializer Serializer => serializer ??= new Innovt.Core.Serialization.JsonSerializer();
 
         /// <summary>
         /// Enable user to receive messages
@@ -90,7 +84,7 @@ namespace Innovt.Cloud.AWS.SQS
             if (waitTimeInSeconds.HasValue)
                 request.WaitTimeSeconds = waitTimeInSeconds.Value;
 
-            var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async ()=> await sqsClient.ReceiveMessageAsync(request, cancellationToken));
+            var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async ()=> await SqsClient.ReceiveMessageAsync(request, cancellationToken));
 
             if (response.HttpStatusCode != HttpStatusCode.OK)
                 throw new CriticalException("Error getting messages from the queue.");
@@ -102,10 +96,11 @@ namespace Innovt.Cloud.AWS.SQS
 
             foreach (var message in response.Messages)
             {   
-                var tMessage = JsonSerializer.Deserialize<T>(message.Body);
+                var tMessage = Serializer.DeserializeObject<T>(message.Body);
                 tMessage.MessageId = message.MessageId;
                 tMessage.ReceiptHandle = message.ReceiptHandle;
                 tMessage.Attributes = message.Attributes;
+                tMessage.ParseQueueAttributes(message.Attributes);
                 messages.Add(tMessage);
             }
             return messages;
@@ -118,7 +113,7 @@ namespace Innovt.Cloud.AWS.SQS
 
             var deleteRequest = new DeleteMessageRequest(queueUrl, receiptHandle);
 
-            await base.CreateDefaultRetryAsyncPolicy().ExecuteAndCaptureAsync(async () => await sqsClient.DeleteMessageAsync(deleteRequest, cancellationToken));
+            await base.CreateDefaultRetryAsyncPolicy().ExecuteAndCaptureAsync(async () => await SqsClient.DeleteMessageAsync(deleteRequest, cancellationToken));
         }
 
         public async Task<int> ApproximateMessageCountAsync(CancellationToken cancellationToken = default)
@@ -127,14 +122,14 @@ namespace Innovt.Cloud.AWS.SQS
       
             var queueUrl = await GetQueueUrlAsync();
 
-            var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async ()=> await sqsClient.GetQueueAttributesAsync(queueUrl, attributes, cancellationToken));
+            var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async ()=> await SqsClient.GetQueueAttributesAsync(queueUrl, attributes, cancellationToken));
 
             return (response?.ApproximateNumberOfMessages).GetValueOrDefault();
         }
 
         public async Task CreateIfNotExistAsync(CancellationToken cancellationToken = default)
         {   
-            await sqsClient.CreateQueueAsync(QueueName, cancellationToken);
+            await SqsClient.CreateQueueAsync(QueueName, cancellationToken);
         }
       
 
@@ -151,25 +146,74 @@ namespace Innovt.Cloud.AWS.SQS
         /// When you set <code>FifoQueue</code>, you can't set <code>DelaySeconds</code> per message.
         /// You can set this parameter only on a queue level.</param>
         /// <returns></returns>
-        public async Task<string> QueueAsync(object message, int? delaySeconds = null, CancellationToken cancellationToken = default)
+        public async Task<string> QueueAsync<K>(K message, int? delaySeconds = null, CancellationToken cancellationToken = default)
         {
             if (message == null) throw new ArgumentNullException(nameof(message));
            
             var messageRequest = new SendMessageRequest
             {
-                MessageBody = JsonSerializer.Serialize(message),
+                MessageBody = Serializer.SerializeObject(message),
                 QueueUrl = await GetQueueUrlAsync()
-        };
+            };
 
             if (delaySeconds.HasValue)
                 messageRequest.DelaySeconds = delaySeconds.Value;
 
-            var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async ()=> await sqsClient.SendMessageAsync(messageRequest, cancellationToken));
+            var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () => await SqsClient.SendMessageAsync(messageRequest, cancellationToken)).ConfigureAwait(false);
 
             if (response.HttpStatusCode != HttpStatusCode.OK)
                 throw new CriticalException("Error sending message to queue.");
 
+          
             return response.MessageId;
+        }
+
+        public async Task<IList<MessageQueueResult>> QueueBatchAsync(IEnumerable<MessageBatchRequest> message, int? delaySeconds = null, CancellationToken cancellationToken = default)
+        {
+            if (message == null) throw new ArgumentNullException(nameof(message));
+
+            var messageRequest = new SendMessageBatchRequest
+            {
+                QueueUrl = await GetQueueUrlAsync(),
+            };
+
+            messageRequest.Entries = new List<SendMessageBatchRequestEntry>();
+            foreach (var item in message)
+            {
+                messageRequest.Entries.Add(new SendMessageBatchRequestEntry()
+                {
+                    Id = item.Id,
+                    DelaySeconds = delaySeconds.GetValueOrDefault(),
+                    MessageBody = Serializer.SerializeObject(item.Message),
+                });
+            }
+
+            var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () => await SqsClient.SendMessageBatchAsync(messageRequest, cancellationToken)).ConfigureAwait(false);
+
+            var result = new List<MessageQueueResult>();
+
+            if (response.Successful != null)
+            {
+                foreach (var item in response.Successful)
+                {
+                    result.Add(new MessageQueueResult() { Id = item.Id, Success = true });
+                }
+            }
+
+            if (response.Failed != null)
+            {
+                foreach (var item in response.Failed)
+                {
+                    result.Add(new MessageQueueResult() { Id = item.Id, Success = false, Error = item.Message });
+                }
+            }
+
+            return result;
+        }
+
+        protected override void DisposeServices()
+        {
+            sqsClient?.Dispose();
         }
     }
 }

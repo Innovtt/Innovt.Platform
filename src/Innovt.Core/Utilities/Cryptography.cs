@@ -20,7 +20,7 @@ namespace Innovt.Core.Utilities
             return hashedPassword;
         }
 
-        internal static string Encrypt(ICryptoTransform cryptoTransform, string plainText,byte[] iVector)
+        internal static string Encrypt(ICryptoTransform cryptoTransform, string plainText)
         {
             if (plainText == null) throw new ArgumentNullException(nameof(plainText));
 
@@ -59,7 +59,7 @@ namespace Innovt.Core.Utilities
 
             using var crypto = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
 
-            return Encrypt(crypto, plainText, aesAlg.IV);
+            return Encrypt(crypto, plainText);
         }
 
         
@@ -74,7 +74,7 @@ namespace Innovt.Core.Utilities
 
             using var crypto = rijndael.CreateEncryptor(Encoding.UTF8.GetBytes(keyString), rijndael.IV);
 
-            return Encrypt(crypto, plainText, rijndael.IV);
+            return Encrypt(crypto, plainText);
         }
 
 

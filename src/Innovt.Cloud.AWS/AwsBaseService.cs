@@ -2,7 +2,6 @@
 using Amazon.Runtime;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Core.CrossCutting.Log;
-using Innovt.Core.Exceptions;
 using Polly;
 using Polly.CircuitBreaker;
 using Polly.Retry;
@@ -12,13 +11,14 @@ using RetryPolicy = Polly.Retry.RetryPolicy;
 
 namespace Innovt.Cloud.AWS
 {
-    public abstract class AwsBaseService
+    public abstract class AwsBaseService : IDisposable
     {
         protected readonly IAWSConfiguration Configuration;
 
-        private string region;
-        
-        public RegionEndpoint Region { get; set; }
+        /// <summary>
+        /// This is the service region
+        /// </summary>
+        private string Region { get; set; }
 
         public int RetryCount { get; set; }
 
@@ -28,42 +28,34 @@ namespace Innovt.Cloud.AWS
 
         public ILogger Logger { get; }
 
-
-        protected AwsBaseService(ILogger logger, IAWSConfiguration configuration, string region):this()
+        private AwsBaseService()
         {
-            this.Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
-            this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            this.region = region ?? throw new ArgumentNullException(nameof(region));
-        }
-
-        protected AwsBaseService(ILogger logger):this()
-        {  
-            this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        }
-
-       
-
-        protected AwsBaseService()
-        { 
             RetryCount = 3;
             CircuitBreakerAllowedExceptions = 3;
             CircuitBreakerDurationOfBreak = TimeSpan.FromSeconds(5);
         }
 
-        protected RegionEndpoint GetRegionEndPoint(string region)
+        protected AwsBaseService(ILogger logger, IAWSConfiguration configuration) : this()
         {
-            if (string.IsNullOrEmpty(region))
-                region = this.Configuration?.Region;
+            this.Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+            this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        }
 
-            if (string.IsNullOrEmpty(region))
-                throw new ConfigurationException("AWS Region name not defined for this service.");
+        protected AwsBaseService(ILogger logger, IAWSConfiguration configuration, string region):this()
+        {
+            this.Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+            this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            this.Region = region ?? throw new ArgumentNullException(nameof(region));
+        }
 
-            var awsRegion = RegionEndpoint.GetBySystemName(region);
+        protected RegionEndpoint GetServiceRegionEndPoint()
+        {
+            var region = Region ?? Configuration?.Region;
 
-            if (awsRegion == null)
-                throw new ConfigurationException($"Invalid AWS Region {region}.");
+            if (region == null)
+                return null;
 
-            return awsRegion;
+            return RegionEndpoint.GetBySystemName(region);
         }
         
         /// <summary>
@@ -73,16 +65,16 @@ namespace Innovt.Cloud.AWS
         /// <returns></returns>
         protected T CreateService<T>() where T: IAmazonService
         {
-            if (Configuration == null)
+            var credentials = Configuration.GetCredential();
+            var serviceRegion = GetServiceRegionEndPoint();
+
+            if (credentials == null)
             {
-                return Activator.CreateInstance<T>();
+                return serviceRegion == null ? Activator.CreateInstance<T>() : (T)Activator.CreateInstance(typeof(T), serviceRegion);
             }
 
-
-     
-            var instance = (T)Activator.CreateInstance(typeof(T), Configuration.AccessKey,Configuration.SecretKey, Region);
-
-            return instance;
+            return serviceRegion == null ? (T)Activator.CreateInstance(typeof(T), credentials) :
+                (T)Activator.CreateInstance(typeof(T), credentials, serviceRegion);
         }
 
 
@@ -133,5 +125,28 @@ namespace Innovt.Cloud.AWS
            return Policy.Handle<T>().CircuitBreakerAsync(CircuitBreakerAllowedExceptions, CircuitBreakerDurationOfBreak);
         }
 
+        private bool disposed=false;
+        
+        private void Dispose(bool disposing)
+        {
+            if (this.disposed || !disposing)
+                return;
+            
+            DisposeServices();
+
+            disposed = true;
+        }
+
+        public void Dispose()
+        {
+            this.Dispose(true);
+        }
+        
+        ~AwsBaseService()
+        {
+            this.Dispose(false);
+        }
+
+        protected abstract void DisposeServices();
     }
 }

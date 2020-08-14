@@ -132,10 +132,6 @@ namespace Innovt.AspNetCore
             {
                 app.UseDeveloperExceptionPage();
             }
-            else 
-            {
-                app.UseExceptionHandler();
-            }
 
             app.UseHealthChecks(healthPath);
 
