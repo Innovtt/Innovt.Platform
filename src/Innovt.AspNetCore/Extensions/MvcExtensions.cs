@@ -106,10 +106,9 @@ namespace Innovt.AspNetCore.Extensions
             
             var html = new StringBuilder();
 
-            if (builder.Collection.TotalRecords < builder.Collection.PageSize && builder.Collection.Page <= 1)
+            if (builder.Collection.TotalRecords < builder.Collection.PageSize && (builder.Collection.IsNumberPagination && int.Parse(builder.Collection.Page) <= 1))
                 return new HtmlString(html.ToString());
 
-            
             html.Append(builder.BuildHeader());
 
             if (builder.Collection.HasPrevious())
@@ -121,7 +120,7 @@ namespace Innovt.AspNetCore.Extensions
             {
                 for (int i = 0; i <= builder.Collection.PageCount - 1; i++)
                 {
-                    var isCurrent = builder.Collection.Page == i;
+                    var isCurrent = builder.Collection.Page == i.ToString();
 
                     html.Append(builder.BuildItem(i, isCurrent));
                 }

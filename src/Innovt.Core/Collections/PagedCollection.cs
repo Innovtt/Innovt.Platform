@@ -1,33 +1,48 @@
-﻿using System.Collections.Generic;
+﻿using Innovt.Core.Utilities;
+using System.Collections.Generic;
 
 namespace Innovt.Core.Collections
 {
-    public class PagedCollection<T> : IPagedCollection<T> where T : class
+    public class PagedCollection<T> : IPagedCollection<T>
     {
         public IEnumerable<T> Items { get; set; }
 
-        public PagedCollection(IEnumerable<T> collection,int? page,int? pageSize)
+
+        public PagedCollection(IEnumerable<T> collection, int? page = null, int? pageSize = null):this(collection,pageSize?.ToString(),pageSize)
+        {  
+        }
+
+
+        public PagedCollection(IEnumerable<T> collection,string page=null,int? pageSize=null)
         {
             this.Items = collection;
-            this.Page = page.GetValueOrDefault();
+            this.Page = page;
             this.PageSize = pageSize.GetValueOrDefault();
         }
 
-        public PagedCollection(IEnumerable<T> collection):this(collection,0,0)
+        public PagedCollection(IEnumerable<T> collection):this(collection,"0",0)
         {
          
         }
 
         public PagedCollection()
         {
-            
         }
         
         public int TotalRecords { get; set; }
         
-        public int Page { get; set; }
+        public string Page { get; set; }
 
         public int PageSize { get; set; }
+
+
+        public bool IsNumberPagination
+        {
+            get
+            {
+                return this.Page.IsNumber();
+            }
+        }
 
         public int PageCount
         {
@@ -42,20 +57,21 @@ namespace Innovt.Core.Collections
 
         public bool HasNext()
         {
-            if (TotalRecords <= 0)
+            if (TotalRecords <= 0 || !IsNumberPagination)
                 return false;
+
             //Page +1 because of the indice will be 0
-            var actualPage = Page + 1 * PageSize;
+            var actualPage = int.Parse(Page) + 1 * PageSize;
 
             return TotalRecords > actualPage;
         }
 
         public bool HasPrevious()
         {
-            if (TotalRecords <= 0)
+            if (TotalRecords <= 0 || !IsNumberPagination)
                 return false;
 
-            return Page > 1;
+            return int.Parse(Page) > 1;
         }
 
       

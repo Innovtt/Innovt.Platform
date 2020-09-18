@@ -3,11 +3,13 @@ using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
-using Innovt.Cloud.Table;
+using Innovt.Core.Cqrs.Queries;
 using Innovt.Core.Utilities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Innovt.Cloud.AWS.Dynamo
 {
@@ -31,32 +33,63 @@ namespace Innovt.Cloud.AWS.Dynamo
             return attribute.TableName;
         }
 
-        //internal static Filter CreateScanFilter(IList<FilterCondition> filters)
-        //{
-        //    if (filters is null)
-        //        return null;
 
-        //    var  scanFilter = new ScanFilter();
+        internal static Amazon.DynamoDBv2.Model.AttributeValue CreateAttributeValue(object value)
+        {
+            if (value is null)
+                return new AttributeValue() { NULL = true };
 
-        //    foreach (var condition in filters)
-        //    {
-        //        if (condition.Value is null)
-        //        {
-        //            scanFilter.AddCondition(condition.AttributeName, (ScanOperator)condition.Operator.Id);
-        //        }
-        //        else
-        //        {
-        //            var dynamoDbValue = ConvertObjectToDynamoDbEntry(condition.Value);
-        //            scanFilter.AddCondition(condition.AttributeName, (ScanOperator)condition.Operator.Id, dynamoDbValue);
-        //        }
-        //    }
+            if (value is MemoryStream)
+                return new AttributeValue() { B = value as MemoryStream };
 
-        //    return scanFilter;
-        //}
+            if (value is bool)
+                return new AttributeValue() { BOOL = bool.Parse(value.ToString()) };
+
+            if (value is List<MemoryStream>)
+                return new AttributeValue() { BS = value as List<MemoryStream> };
+
+            //todo: finalizar listas 
+
+            if (value is List<string>)
+                return new AttributeValue(value as List<string>);
+
+            if (value.ToString().IsNumber())
+                return new AttributeValue() { N =  value.ToString() };
+
+            return new AttributeValue(value.ToString());
+
+        }
+        internal static Dictionary<string, AttributeValue> CreateExpressionAttributeValues(IFilter  filter, string attributes)
+        {
+            if (filter == null)
+                return null;
+
+            var attributeValues = new Dictionary<string, AttributeValue>();
+
+            var properties = filter.GetType().GetProperties();
+
+            if (properties.Length > 0)
+            {
+                foreach (var item in properties)
+                {
+                    var key = $":{item.Name}".ToLower();
+
+                    if (attributes.Contains(key) && !attributeValues.ContainsKey(key))
+                    {
+                        var value = item.GetValue(filter);
+
+                        attributeValues.Add(key, CreateAttributeValue(value));
+                    }
+                }
+            }
+
+            return attributeValues;
+        }
+
 
         internal static Amazon.DynamoDBv2.Model.QueryRequest CreateQueryRequest<T>(Innovt.Cloud.Table.QueryRequest request)
         {
-            var queryRequest =  new Amazon.DynamoDBv2.Model.QueryRequest()
+            var queryRequest = new Amazon.DynamoDBv2.Model.QueryRequest()
             {
                 IndexName = request.IndexName,
                 TableName = GetTableName<T>(),
@@ -64,32 +97,11 @@ namespace Innovt.Cloud.AWS.Dynamo
                 Limit = request.PageSize == 0 ? 1 : request.PageSize,
                 FilterExpression = request.FilterExpression,
                 KeyConditionExpression = request.KeyConditionExpression,
-                ProjectionExpression = string.Join(',', request.AttributesToGet),
-                ExclusiveStartKey = PaginationTokenToDictionary(request.PaginationToken)
+                ProjectionExpression = request.AttributesToGet,
+                ExclusiveStartKey = PaginationTokenToDictionary(request.Page),
+                ExpressionAttributeValues = CreateExpressionAttributeValues(request.Filter,string.Join(',',request.KeyConditionExpression, request.FilterExpression) )
             };
-
-            if (request.Filter != null) {
-
-                var properties = typeof(T).GetProperties();
-
-                if (properties.Length > 0)
-                {
-                    queryRequest.ExpressionAttributeValues = new Dictionary<string, AttributeValue>();
-
-
-
-                }
-
-
-    //            "Id = :v_Id and ReplyDateTime > :v_twoWeeksAgo",
-    //ExpressionAttributeValues = new Dictionary<string, AttributeValue> {
-    //    {":v_Id", new AttributeValue { S =  "Amazon DynamoDB#DynamoDB Thread 2" }},
-    //    {":v_twoWeeksAgo", new AttributeValue { S =  twoWeeksAgoString }}
-    //},
-
-            }
-           // queryRequest.KeyConditionExpression
-
+           
 
             return queryRequest;
         }
@@ -103,12 +115,10 @@ namespace Innovt.Cloud.AWS.Dynamo
                 ConsistentRead = request.IndexName == null,
                 Limit = request.PageSize == 0 ? 1 : request.PageSize,
                 FilterExpression = request.FilterExpression,
-                ProjectionExpression = string.Join(',', request.AttributesToGet),
-                ExclusiveStartKey = PaginationTokenToDictionary(request.PaginationToken)
+                ProjectionExpression = request.AttributesToGet,
+                ExclusiveStartKey = PaginationTokenToDictionary(request.Page),
+                ExpressionAttributeValues = CreateExpressionAttributeValues(request.Filter, string.Join(',', request.FilterExpression))
             };
-
-           //scanRequest.ExpressionAttributeNames
-
 
             return scanRequest;
         }
@@ -153,7 +163,7 @@ namespace Innovt.Cloud.AWS.Dynamo
 
         internal static Dictionary<string, AttributeValue> PaginationTokenToDictionary(string paginationToken)
         {
-            if (paginationToken is null)
+            if (paginationToken.IsNullOrEmpty())
                 return null;
 
             var decriptedToken = Cryptography.AesDecrypt(paginationToken, encriptionKey);

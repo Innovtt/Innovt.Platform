@@ -11,6 +11,12 @@
     <Description>Cloud interfaces.</Description>
     <Version>3.0.8</Version>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Table\Expressions\**" />
+    <EmbeddedResource Remove="Table\Expressions\**" />
+    <None Remove="Table\Expressions\**" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Remove="Configuration\DefaultAWSConfiguration.cs" />
   </ItemGroup>

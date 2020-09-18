@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Innovt.Core.Collections;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,8 +22,8 @@ namespace Innovt.Cloud.Table
         
         Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default) where T : ITableMessage;
  
-        Task<PagedResult<T>> ScanPaginatedByAsync<T>(Innovt.Cloud.Table.ScanRequest request, CancellationToken cancellationToken = default) where T : ITableMessage;
-        Task<PagedResult<T>> QueryPaginatedByAsync<T>(Innovt.Cloud.Table.QueryRequest request, CancellationToken cancellationToken = default) where T : ITableMessage;
+        Task<PagedCollection<T>> ScanPaginatedByAsync<T>(Innovt.Cloud.Table.ScanRequest request, CancellationToken cancellationToken = default) where T : ITableMessage;
+        Task<PagedCollection<T>> QueryPaginatedByAsync<T>(Innovt.Cloud.Table.QueryRequest request, CancellationToken cancellationToken = default) where T : ITableMessage;
    
     }
 }

@@ -9,8 +9,8 @@ using Polly.Retry;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Amazon.DynamoDBv2.DocumentModel;
 using System.Linq;
+using Innovt.Core.Collections;
 
 namespace Innovt.Cloud.AWS.Dynamo
 {
@@ -125,7 +125,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             return result;
         }
  
-        public async Task<PagedResult<T>> QueryPaginatedByAsync<T>(Innovt.Cloud.Table.QueryRequest request, CancellationToken cancellationToken = default) where T : ITableMessage
+        public async Task<PagedCollection<T>> QueryPaginatedByAsync<T>(Innovt.Cloud.Table.QueryRequest request, CancellationToken cancellationToken = default) where T : ITableMessage
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
@@ -133,19 +133,19 @@ namespace Innovt.Cloud.AWS.Dynamo
 
             var queryResponse = await DynamoClient.QueryAsync(queryRequest).ConfigureAwait(false);
 
+            var a = queryResponse.Count;
+
             if (queryResponse.Items is null)
                 return null;
 
-            var response = new PagedResult<T>()
+            return new PagedCollection<T>()
             {
-                Items = Helpers.ConvertAttributesToType<T>(queryResponse.Items,Context),
-                PaginationToken = Helpers.CreatePaginationToken(queryResponse.LastEvaluatedKey)
+                Items = Helpers.ConvertAttributesToType<T>(queryResponse.Items, Context),
+                Page = queryResponse.Items?.Count() > 0 ? Helpers.CreatePaginationToken(queryResponse.LastEvaluatedKey) : null
             };
-
-            return response;
         }
 
-        public async Task<PagedResult<T>> ScanPaginatedByAsync<T>(Innovt.Cloud.Table.ScanRequest request, CancellationToken cancellationToken = default) where T : ITableMessage
+        public async Task<PagedCollection<T>> ScanPaginatedByAsync<T>(Innovt.Cloud.Table.ScanRequest request, CancellationToken cancellationToken = default) where T : ITableMessage
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
@@ -156,10 +156,11 @@ namespace Innovt.Cloud.AWS.Dynamo
             if (scanResponse.Items is null)
                 return null;
 
-            var response = new PagedResult<T>()
+
+            var response = new PagedCollection<T>()
             {
                 Items = Helpers.ConvertAttributesToType<T>(scanResponse.Items, Context),
-                PaginationToken = Helpers.CreatePaginationToken(scanResponse.LastEvaluatedKey)
+                Page = scanResponse.Items?.Count() > 0 ? Helpers.CreatePaginationToken(scanResponse.LastEvaluatedKey) : null
             };
 
             return response;

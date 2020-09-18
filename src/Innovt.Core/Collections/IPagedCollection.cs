@@ -2,11 +2,11 @@
 
 namespace Innovt.Core.Collections
 {
-    public interface IPagedCollection<T> where T : class
+    public interface IPagedCollection<T>
     {
         IEnumerable<T> Items { get; set; }
 
-        int Page { get; set; }
+        string Page { get; set; }
       
         int PageCount { get; }
         int PageSize { get; set; }

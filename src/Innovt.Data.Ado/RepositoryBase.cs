@@ -175,10 +175,8 @@ namespace Innovt.Data.Ado
 
             int totalRecords = qResult.ReadFirst<int>();
 
-            var result = new PagedCollection<T>(qResult.Read<T>())
-            {
-                Page = filter.Page,
-                PageSize = filter.PageSize,
+            var result = new PagedCollection<T>(qResult.Read<T>(), filter.Page, filter.PageSize)
+            { 
                 TotalRecords = totalRecords
             };
             return result;

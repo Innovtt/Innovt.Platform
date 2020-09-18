@@ -1,5 +1,6 @@
 ﻿using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.Table;
+using Innovt.Core.Cqrs.Queries;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.CrossCutting.IOC;
 using Innovt.CrossCutting.Log.Serilog;
@@ -7,11 +8,22 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Threading.Tasks;
 
 namespace ConsoleAppTest
 {
+    public class Filter : IFilter {
+
+        public string Id { get; set; }
+        public string Subject { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            return null;
+        }
+    }
     public class IocTestModule: Innovt.Core.CrossCutting.Ioc.IOCModule
     {
         public IocTestModule(IConfiguration configuration)
@@ -49,42 +61,20 @@ namespace ConsoleAppTest
 
             var dynamoService = container.Resolve<DynamoService>();
 
-            var conditions = new List<FilterCondition>();
 
-            //conditions.Add(new FilterCondition("Subject", ComparisonOperator.Contains, "Subject"));
-            conditions.Add(new FilterCondition("Subject", ComparisonOperator.Null));
-
-            //var result = await dynamoService.ScanAsync<DynamoTable>(condition);
-
-            var scanRequest = new ScanRequest()
+            var queryRequest = new QueryRequest()
             {
-                PageSize = 1,
-                ConditionalOperator = ConditionalOperator.And,
-               
+                Filter = new Filter() { Id= "SendBuyerLotNotAntecipatedScheduler", Subject = "{{"},
+                PageSize = 10,
+                Page = "1",
+               // AttributesToGet = 
+                KeyConditionExpression = "Id = :id", //10000 Chinese Wall + Nombanco23456789
+                FilterExpression = " begins_with (Subject, :subject)"
             };
 
-            scanRequest.AddCondition("Id", ComparisonOperator.Contains, "");
-            scanRequest.AddCondition("Id", ComparisonOperator.Contains, "");
-            scanRequest.AddCondition("Id", ComparisonOperator.Contains, "");
-            scanRequest.AddCondition("Id", ComparisonOperator.Contains, "");
-            scanRequest.AddCondition("Id", ComparisonOperator.Contains, "");
-            scanRequest.AddCondition("Id", ComparisonOperator.Contains, "");
+            var result = await dynamoService.QueryPaginatedByAsync<DynamoTable>(queryRequest);
 
-
-
-            scanRequest.AddCondition(conditions[0]);
-
-            var resulta = await dynamoService.GetByIdAsync<DynamoTable>("SendAntecipationRequestClose","01");
-
-
-
-            var result = await dynamoService.ScanPaginatedBy<DynamoTable>(scanRequest);
-
-            scanRequest.PaginationToken = result.PaginationToken;
-
-
-            result = await dynamoService.ScanPaginatedBy<DynamoTable>(scanRequest);
-
+            queryRequest.Page = result.Page;
 
             //var result = await dynamoService.QueryAsync<DynamoTable>("SendBuyerLotNotAntecipatedScheduler");
 

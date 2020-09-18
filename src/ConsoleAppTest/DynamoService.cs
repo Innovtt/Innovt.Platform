@@ -29,15 +29,17 @@ namespace ConsoleAppTest
             //var integrationDate = (await base.QueryAsync<TaskIntegrationDate>(conditions, cancellationToken)).FirstOrDefault();
             //return integrationDate;
 
-            var queryOperation = new ScanRequest()
-            {
+
+            return null;
+            //var queryOperation = new ScanRequest()
+            //{
               
-            };
+            //};
 
-            queryOperation.AddCondition("FromAddress", Innovt.Cloud.Table.ComparisonOperator.Equal, "desenvolvimento@antecipa.com")
-                .AddCondition("Subject", Innovt.Cloud.Table.ComparisonOperator.Contains, "Subject");
+            //queryOperation.AddCondition("FromAddress", Innovt.Cloud.Table.ComparisonOperator.Equal, "desenvolvimento@antecipa.com")
+            //    .AddCondition("Subject", Innovt.Cloud.Table.ComparisonOperator.Contains, "Subject");
 
-            return await base.ScanAsync<DynamoTable>(queryOperation);
+            //return await base.ScanAsync<DynamoTable>(queryOperation);
         
         }
     }
