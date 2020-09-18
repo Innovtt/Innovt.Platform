@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
 using Innovt.Core.Collections;
@@ -18,5 +19,10 @@ namespace Innovt.Data.Ado
         Task<PagedCollection<T>> QueryPagedAsync<T>(string sql, IPagedFilter filter,CancellationToken cancellationToken = default) where T : class;
         Task<IEnumerable<T>> QueryListPagedAsync<T>( string sql, IPagedFilter filter, CancellationToken cancellationToken = default);
         Task<IEnumerable<TReturn>> QueryMultipleAsync<TFirst, TSecond, TReturn>(string[] queries, Func<TFirst, TSecond, TReturn> func, string splitOn = "id");
+
+        Task<T> ExecuteScalarAsync<T>(string sql, object filter = null, IDbTransaction dbTransaction = null, CancellationToken cancellationToken = default);
+
+        Task<int> ExecuteAsync(string sql, object filter = null, IDbTransaction dbTransaction = null, CancellationToken cancellationToken = default);
+        
     }
 }

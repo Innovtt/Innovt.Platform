@@ -12,24 +12,11 @@
     <Version>1.0.3</Version>
   </PropertyGroup>
   <ItemGroup>
-        <PackageReference Include="Amazon.Extensions.CognitoAuthentication" Version="1.0.4" />
+        <PackageReference Include="AWSSDK.CognitoIdentityProvider" Version="3.5.0.15" />
         <PackageReference Include="System.Text.Json" Version="4.7.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="Resources\Messages.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Messages.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="Resources\Messages.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

@@ -14,27 +14,6 @@ namespace IocSample
          
         }
 
-        //// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        //public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        //{
-        //    if (env.IsDevelopment())
-        //    {
-        //        app.UseDeveloperExceptionPage();
-        //    }
-
-        //    app.UseHttpsRedirection();
-
-        //    app.UseRouting();
-
-        //    app.UseAuthorization();
-
-        //    app.UseEndpoints(endpoints =>
-        //    {
-        //        endpoints.MapControllers();
-        //    });
-        //}
-      
-
         public override void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseHttpsRedirection();
@@ -47,6 +26,11 @@ namespace IocSample
             {
                 endpoints.MapControllers();
             });
+
+    //        var log = new LoggerConfiguration(url: "http-intake.logs.datadoghq.com")
+    //            .WriteTo.DatadogLogs("<API_KEY>")
+    //.CreateLogger();
+
         }
 
         protected override void AddDefaultServices(IServiceCollection services)

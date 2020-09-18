@@ -3,20 +3,18 @@ using Innovt.Core.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
-using OpenTracing;
 
 namespace Innovt.AspNetCore.Controllers
 {
     public abstract class BaseController : ControllerBase
     {
         protected readonly ILogger Logger;
-        protected readonly ITracer Tracer;
-
-        protected BaseController(ILogger logger,ITracer tracer)
-        {
-            this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            this.Tracer = tracer ?? throw new ArgumentNullException(nameof(tracer));
-        }
+       
+        //protected BaseController(ILogger logger)
+        //{
+        //    this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        //    this.Tracer = tracer ?? throw new ArgumentNullException(nameof(tracer));
+        //}
 
         protected BaseController(ILogger logger)
         {

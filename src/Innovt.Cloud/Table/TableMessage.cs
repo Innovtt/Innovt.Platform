@@ -7,18 +7,22 @@ namespace Innovt.Cloud.Table
         public TableMessage()
         {
         }
-        
-        public TableMessage(string key, string partitionKey)
+
+        public TableMessage(string id)
         {
-            if (string.IsNullOrEmpty(key)) throw new ArgumentNullException(nameof(key));
-            if (string.IsNullOrEmpty(partitionKey)) throw new ArgumentNullException(nameof(partitionKey));
-   
-            this.Id = key;
-            this.PartitionKey = partitionKey;
+            if (string.IsNullOrEmpty(id)) throw new ArgumentNullException(nameof(id));
+
+            this.Id = id;
+        }
+
+        public TableMessage(string id,string rangeKey):this(id)
+        {
+            if (string.IsNullOrEmpty(rangeKey)) throw new ArgumentNullException(nameof(rangeKey));
+
+            this.RangeKey = rangeKey;
         }
 
         public string Id { get; set; }
-
-        public string PartitionKey { get; set; }
+        public string RangeKey { get; set; }
     }
 }

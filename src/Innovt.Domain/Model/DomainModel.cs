@@ -6,21 +6,27 @@ namespace Innovt.Domain.Model
 {
     public class DomainModel<T>: ValueObject where T: ValueObject
     {
-        private static readonly List<T> statusModel = new List<T>();
+        private  readonly List<T> models = new List<T>();
 
         protected void AddModel(T model)
         {
-            statusModel.Add(model);
+            models.Add(model);
         } 
        
-        public static List<T> FindAll()
+        public List<T> FindAll()
         {
-            return statusModel;
+            return models;
         }
 
-        public static T GetByPk(int id)
+        public T GetByPk(int id)
         {
-            return statusModel.SingleOrDefault(s => s.Id == id);
+            return models.SingleOrDefault(s => s.Id == id);
         }
+
+
+        //public static List<T> FindAll(this DomainModel<T> instance)
+        //{
+        //    return instance.FindAll();
+        //} 
     }
 }

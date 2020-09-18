@@ -1,15 +1,12 @@
-﻿using Amazon.DynamoDBv2.DataModel;
-using ConsoleAppTest.Domain;
-using Innovt.Cloud.AWS.Configuration;
+﻿using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.Table;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.CrossCutting.IOC;
 using Innovt.CrossCutting.Log.Serilog;
-using Innovt.Notification.Core.Domain;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Globalization;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -27,19 +24,9 @@ namespace ConsoleAppTest
 
             collection.AddScoped<ILogger, Logger>();
 
-            collection.AddScoped<SqsService>();
-
-            //SqsService
+            collection.AddScoped<DynamoService>();
         }
     }
-
-    [DynamoDBTable("NotificationsTemplate")]
-    public class NotificationTemplate2 : NotificationTemplate,ITableMessage
-    {
-        public string PartitionKey { get; set; }
-    }
-
-
 
     class Program
     {
@@ -60,15 +47,62 @@ namespace ConsoleAppTest
 
             container.CheckConfiguration();
 
-            var sqs = container.Resolve<SqsService>();
+            var dynamoService = container.Resolve<DynamoService>();
 
-            var item = await sqs.GetByIdAsync<NotificationTemplate2>("TemplateWithParameters","01");
+            var conditions = new List<FilterCondition>();
 
-           // var item = await sqs.QueryAsync<TableRepo>("TemplateWithParameters","01");
+            //conditions.Add(new FilterCondition("Subject", ComparisonOperator.Contains, "Subject"));
+            conditions.Add(new FilterCondition("Subject", ComparisonOperator.Null));
+
+            //var result = await dynamoService.ScanAsync<DynamoTable>(condition);
+
+            var scanRequest = new ScanRequest()
+            {
+                PageSize = 1,
+                ConditionalOperator = ConditionalOperator.And,
+               
+            };
+
+            scanRequest.AddCondition("Id", ComparisonOperator.Contains, "");
+            scanRequest.AddCondition("Id", ComparisonOperator.Contains, "");
+            scanRequest.AddCondition("Id", ComparisonOperator.Contains, "");
+            scanRequest.AddCondition("Id", ComparisonOperator.Contains, "");
+            scanRequest.AddCondition("Id", ComparisonOperator.Contains, "");
+            scanRequest.AddCondition("Id", ComparisonOperator.Contains, "");
 
 
 
-            Console.WriteLine(item);
+            scanRequest.AddCondition(conditions[0]);
+
+            var resulta = await dynamoService.GetByIdAsync<DynamoTable>("SendAntecipationRequestClose","01");
+
+
+
+            var result = await dynamoService.ScanPaginatedBy<DynamoTable>(scanRequest);
+
+            scanRequest.PaginationToken = result.PaginationToken;
+
+
+            result = await dynamoService.ScanPaginatedBy<DynamoTable>(scanRequest);
+
+
+            //var result = await dynamoService.QueryAsync<DynamoTable>("SendBuyerLotNotAntecipatedScheduler");
+
+
+            //   var result = await dynamoService.GetByIdAsync<DynamoTable>("SendBuyerLotNotAntecipatedScheduler");
+            // var result = await dynamoService.GetAll();
+
+
+            //var result = await dynamoService.GetByIdAsync<DynamoTable>("SendBuyerLotNotAntecipatedScheduler");
+
+            Console.WriteLine(result);
+
+
+           // var item = await sqs.GetByIdAsync<NotificationTemplate2>("TemplateWithParameters","01");
+
+            // var item = await sqs.QueryAsync<TableRepo>("TemplateWithParameters","01");
+
+            //Console.WriteLine(item);
 
             // var configuration = container.Resolve<IAWSConfiguration>();
 

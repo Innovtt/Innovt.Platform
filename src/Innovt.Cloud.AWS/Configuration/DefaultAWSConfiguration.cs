@@ -70,6 +70,9 @@ namespace Innovt.Cloud.AWS.Configuration
             if (profile == null)
                throw new ConfigurationException($"Profile {Profile} not found.");
 
+            if (Region == null && profile?.Region != null)
+                Region = profile.Region.SystemName;
+            
             return AWSCredentialsFactory.GetAWSCredentials(profile, sharedProfile);
         }
 

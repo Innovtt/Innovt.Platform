@@ -15,6 +15,7 @@ namespace Innovt.AspNetCore
     public abstract class ApiStartupBase
     {
         private readonly string healthPath= "/health";
+        private readonly bool enableDocInProduction;
 
         public IConfiguration Configuration { get; }
         private readonly string apiTitle;
@@ -22,7 +23,7 @@ namespace Innovt.AspNetCore
         private readonly string apiVersion;
 
         protected ApiStartupBase(IConfiguration configuration, string apiTitle,
-            string apiDescription, string apiVersion,string healthPath="/health")
+            string apiDescription, string apiVersion,string healthPath="/health",bool enableDocInProduction=false)
         {
             Configuration = configuration;
 
@@ -30,14 +31,13 @@ namespace Innovt.AspNetCore
             this.apiDescription = apiDescription;
             this.apiVersion = apiVersion;
             this.healthPath = healthPath;
+            this.enableDocInProduction = enableDocInProduction;
         }
 
 
         protected ApiStartupBase(IConfiguration configuration):this(configuration,null,null,null)
-        {
-            
+        {   
         }
-
 
         internal bool isSwaggerEnabled() {
             return !(apiTitle == null && apiVersion == null);
@@ -47,7 +47,7 @@ namespace Innovt.AspNetCore
         {   
             if(!isSwaggerEnabled())
                 return;
-
+          
             services.AddSwaggerGen(options =>
             {
                 options.IgnoreObsoleteActions();
@@ -79,11 +79,6 @@ namespace Innovt.AspNetCore
             services.AddHealthChecks();
         }
 
-        protected virtual void ConfigureOpenTracing(IServiceCollection services)
-        {
-            services.AddOpenTracing();
-        }
-
 
         // This method gets called by the runtime. Use this method to add services to the container.
         /// <summary>
@@ -91,14 +86,12 @@ namespace Innovt.AspNetCore
         /// </summary>
         /// <param name="services"></param>
         public virtual void ConfigureServices(IServiceCollection services)
-        {
+        {  
             ConfigureIoC(services);
 
             AddDefaultServices(services);
 
             ConfigureHealthChecks(services);
-
-            ConfigureOpenTracing(services);
 
             AddSwagger(services);
         }
@@ -135,9 +128,12 @@ namespace Innovt.AspNetCore
 
             app.UseHealthChecks(healthPath);
 
-            ConfigureApp(app, env, loggerFactory); 
+            ConfigureApp(app, env, loggerFactory);
 
-            ConfigureSwaggerUi(app);
+            if ((env.IsProduction() && enableDocInProduction) || !env.IsProduction())
+            {
+                ConfigureSwaggerUi(app);
+            }
         }
 
         protected abstract void AddDefaultServices(IServiceCollection services);

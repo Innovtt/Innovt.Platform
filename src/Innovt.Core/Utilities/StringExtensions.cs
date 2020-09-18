@@ -17,6 +17,11 @@ namespace Innovt.Core.Utilities
             return isValid;
         }
 
+        public static bool IsNumber(this string value)
+        {
+            return value.All(char.IsNumber);
+        }
+
         public static string Truncate(this string value, int maxLength)
         {
             if (string.IsNullOrEmpty(value)) return value;

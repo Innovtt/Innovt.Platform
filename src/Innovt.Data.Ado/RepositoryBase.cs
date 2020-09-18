@@ -121,6 +121,44 @@ namespace Innovt.Data.Ado
             return this.QueryInternalAsync<T>(sql,filter,cancellationToken);
         }
 
+        internal async Task<T> ExecuteInternalScalar<T>(string sql, object filter = null, IDbTransaction dbTransaction=null, CancellationToken cancellationToken = default)
+        {
+            using var con = GetConnection();
+            
+            return await con.ExecuteScalarAsync<T>(new CommandDefinition(sql, filter, dbTransaction,cancellationToken: cancellationToken))
+                .ConfigureAwait(false);
+        }
+
+        public Task<T> ExecuteScalarAsync<T>(string sql, object filter = null, IDbTransaction dbTransaction = null, CancellationToken cancellationToken = default)
+        {
+            if (sql is null)
+            {
+                throw new ArgumentNullException(nameof(sql));
+            };
+
+            return this.ExecuteInternalScalar<T>(sql, filter, dbTransaction, cancellationToken);
+        }
+
+
+        internal async Task<int> ExecuteInternalAsync(string sql, object filter = null, IDbTransaction dbTransaction = null, CancellationToken cancellationToken = default)
+        {
+            using var con = GetConnection();
+
+            return await con.ExecuteAsync(new CommandDefinition(sql, filter, dbTransaction, cancellationToken: cancellationToken))
+                .ConfigureAwait(false);
+        }
+
+        public Task<int> ExecuteAsync(string sql, object filter = null, IDbTransaction dbTransaction = null, CancellationToken cancellationToken = default)
+        {
+            if (sql is null)
+            {
+                throw new ArgumentNullException(nameof(sql));
+            };
+
+            return this.ExecuteInternalAsync(sql, filter, dbTransaction, cancellationToken);
+        }
+
+
         public async Task<PagedCollection<T>> QueryPagedAsync<T>(string sql, IPagedFilter filter, CancellationToken cancellationToken = default) where T : class
         {
             var orderByIndex = sql.LastIndexOf("ORDER BY", StringComparison.CurrentCultureIgnoreCase);
@@ -174,7 +212,7 @@ namespace Innovt.Data.Ado
             }
 
             using var con = GetConnection();
-
+         
             return  await con.QueryMultipleAsync(sql.ToString(), nameBindings).ConfigureAwait(false);
         }
 

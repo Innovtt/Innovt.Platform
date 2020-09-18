@@ -29,7 +29,7 @@ namespace Innovt.Cloud.AWS.S3
         private AmazonS3Client _s3Client;
         private AmazonS3Client S3Client
         {
-            get { return _s3Client ?? (_s3Client = CreateService<AmazonS3Client>()); }
+            get { return _s3Client ??= CreateService<AmazonS3Client>(); }
         }
 
         private string GetObjectUrl(string bucketName, string fileKey)

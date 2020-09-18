@@ -22,11 +22,11 @@ namespace Innovt.Cloud.AWS
 
         public int RetryCount { get; set; }
 
-        public int CircuitBreakerAllowedExceptions { get; set; }
+        protected int CircuitBreakerAllowedExceptions { get; set; }
 
-        public TimeSpan CircuitBreakerDurationOfBreak { get; set; }
+        protected TimeSpan CircuitBreakerDurationOfBreak { get; set; }
 
-        public ILogger Logger { get; }
+        protected ILogger Logger { get; }
 
         private AwsBaseService()
         {
@@ -73,6 +73,7 @@ namespace Innovt.Cloud.AWS
                 return serviceRegion == null ? Activator.CreateInstance<T>() : (T)Activator.CreateInstance(typeof(T), serviceRegion);
             }
 
+       
             return serviceRegion == null ? (T)Activator.CreateInstance(typeof(T), credentials) :
                 (T)Activator.CreateInstance(typeof(T), credentials, serviceRegion);
         }
@@ -117,7 +118,29 @@ namespace Innovt.Cloud.AWS
         {       
            return Policy.Handle<T>().Or<T1>().WaitAndRetryAsync(RetryCount, retryAttempt => 
 	                TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
+        }
 
+        protected virtual AsyncRetryPolicy CreateRetryAsyncPolicy<T, T1, T2>() where T : Exception where T1 : Exception where T2 : Exception
+        {
+            return Policy.Handle<T>().Or<T1>().Or<T2>()
+                .WaitAndRetryAsync(RetryCount, retryAttempt =>
+                     TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
+        }
+
+        protected virtual AsyncRetryPolicy CreateRetryAsyncPolicy<T,T1,T2,T3>() where T : Exception where T1 : Exception where T2 : Exception
+            where T3 : Exception
+        {
+            return Policy.Handle<T>().Or<T1>().Or<T2>().Or<T3>()
+                .WaitAndRetryAsync(RetryCount, retryAttempt =>
+                     TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
+        }
+
+        protected virtual AsyncRetryPolicy CreateRetryAsyncPolicy<T, T1, T2, T3, T4>() where T : Exception where T1 : Exception where T2 : Exception
+        where T3 : Exception where T4 : Exception
+        {
+            return Policy.Handle<T>().Or<T1>().Or<T2>().Or<T3>().Or<T4>()
+                .WaitAndRetryAsync(RetryCount, retryAttempt =>
+                     TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
         }
 
         protected virtual AsyncCircuitBreakerPolicy CreateCircuitBreaker<T,T1>() where T: Exception where T1: Exception
