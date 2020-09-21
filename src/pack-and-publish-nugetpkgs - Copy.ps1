@@ -12,16 +12,19 @@ Remove-Item –path $packageOutputFolder\*
 #projects 
 $projectsToBuild =
    'Innovt.Cloud',
+   'Innovt.AspNetCore',
    'Innovt.Cloud.AWS',
    'Innovt.Cloud.AWS.Cognito',
    'Innovt.Cloud.AWS.Dynamo',
+   'Innovt.Cloud.AWS.Kinesis',
    'Innovt.Cloud.AWS.Lambda',
-   'Innovt.Cloud.AWS.Notification',
+   'Innovt.Cloud.AWS.Lambda.Kinesis',
+   'Innovt.Cloud.AWS.Lambda.S3',
+   'Innovt.Cloud.AWS.Lambda.Sqs',
+   'Innovt.Cloud.AWS.Notification'
    'Innovt.Cloud.AWS.S3',
-   'Innovt.Cloud.AWS.SQS',
+   'Innovt.Cloud.AWS.Sqs',
    'Innovt.Core',
-   'Innovt.Job.Quartz',
-   'Innovt.Job.Core',
    'Innovt.Cqrs',
    'Innovt.CrossCutting.IOC',
    'Innovt.CrossCutting.Log.Serilog',
@@ -29,7 +32,8 @@ $projectsToBuild =
    'Innovt.Data.Ado',
    'Innovt.Data.EFCore',
    'Innovt.Domain',
-   'Innovt.AspNetCore',
+   'Innovt.Job.Core',
+   'Innovt.Job.Quartz',
    'Innovt.Notification.Core'
 
 

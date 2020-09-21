@@ -19,6 +19,9 @@ namespace Innovt.Core.Utilities
 
         public static bool IsNumber(this string value)
         {
+            if (value == null)
+                return false;
+
             return value.All(char.IsNumber);
         }
 

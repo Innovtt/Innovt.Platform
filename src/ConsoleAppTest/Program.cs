@@ -59,22 +59,38 @@ namespace ConsoleAppTest
 
             container.CheckConfiguration();
 
+
             var dynamoService = container.Resolve<DynamoService>();
+
+            var result1 = await dynamoService.GetByIdAsync<DynamoTable>("af51abef-91bf-4642-94b7-4349288f62cb");
+
+            Console.WriteLine(result1);
 
 
             var queryRequest = new QueryRequest()
             {
-                Filter = new Filter() { Id= "SendBuyerLotNotAntecipatedScheduler", Subject = "{{"},
-                PageSize = 10,
-                Page = "1",
-               // AttributesToGet = 
-                KeyConditionExpression = "Id = :id", //10000 Chinese Wall + Nombanco23456789
-                FilterExpression = " begins_with (Subject, :subject)"
+                Filter = new Filter() { Id = "af51abef-91bf-4642-94b7-4349288f62cb" },
+                PageSize = 2,
+                KeyConditionExpression = "Id = :id"
             };
 
             var result = await dynamoService.QueryPaginatedByAsync<DynamoTable>(queryRequest);
 
-            queryRequest.Page = result.Page;
+
+            Console.WriteLine(result1);
+
+
+
+            //var scanRequest = new ScanRequest()
+            //{
+            //    Filter = new Filter() { Id = "af51abef-91bf-4642-94b7-4349288f62cb" },
+            //    PageSize = 2,
+            //   // FilterExpression = " begins_with (Subject, :subject)"
+            //};
+
+            //var result = await dynamoService.ScanPaginatedByAsync<DynamoTable>(queryRequest);
+
+            //queryRequest.Page = result.Page;
 
             //var result = await dynamoService.QueryAsync<DynamoTable>("SendBuyerLotNotAntecipatedScheduler");
 

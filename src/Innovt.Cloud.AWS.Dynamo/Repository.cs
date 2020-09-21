@@ -133,15 +133,13 @@ namespace Innovt.Cloud.AWS.Dynamo
 
             var queryResponse = await DynamoClient.QueryAsync(queryRequest).ConfigureAwait(false);
 
-            var a = queryResponse.Count;
-
-            if (queryResponse.Items is null)
-                return null;
+            if (queryResponse.Items?.Count() == 0)
+                return new PagedCollection<T>();
 
             return new PagedCollection<T>()
             {
                 Items = Helpers.ConvertAttributesToType<T>(queryResponse.Items, Context),
-                Page = queryResponse.Items?.Count() > 0 ? Helpers.CreatePaginationToken(queryResponse.LastEvaluatedKey) : null
+                Page =  Helpers.CreatePaginationToken(queryResponse.LastEvaluatedKey)
             };
         }
 
@@ -153,14 +151,13 @@ namespace Innovt.Cloud.AWS.Dynamo
 
             var scanResponse = await DynamoClient.ScanAsync(scanRequest).ConfigureAwait(false);
 
-            if (scanResponse.Items is null)
-                return null;
-
+            if (scanResponse.Items?.Count() ==0)
+                return new PagedCollection<T>();
 
             var response = new PagedCollection<T>()
             {
                 Items = Helpers.ConvertAttributesToType<T>(scanResponse.Items, Context),
-                Page = scanResponse.Items?.Count() > 0 ? Helpers.CreatePaginationToken(scanResponse.LastEvaluatedKey) : null
+                Page  = Helpers.CreatePaginationToken(scanResponse.LastEvaluatedKey)
             };
 
             return response;

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using OpenTelemetry.Trace;
 
 namespace IocSample
 {
@@ -11,7 +12,7 @@ namespace IocSample
     {
         public Startup(IConfiguration configuration):base(configuration)
         {   
-         
+            
         }
 
         public override void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
@@ -44,6 +45,11 @@ namespace IocSample
             //IServiceProvider
 
         }
+
+        //protected override void ConfigureTracer(TracerProviderBuilder tracerBuilder)
+        //{
+        //    tracerBuilder.AddConsoleExporter();
+        //}
     }
 
    

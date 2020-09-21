@@ -27,6 +27,7 @@ namespace Innovt.Core.Collections
 
         public PagedCollection()
         {
+            this.Items = new List<T>();
         }
         
         public int TotalRecords { get; set; }

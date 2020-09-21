@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+//using OpenTelemetry.Trace;
 
 namespace Innovt.AspNetCore
 {
@@ -21,9 +22,10 @@ namespace Innovt.AspNetCore
         private readonly string apiTitle;
         private readonly string apiDescription;
         private readonly string apiVersion;
+        private readonly bool disableTrace;
 
         protected ApiStartupBase(IConfiguration configuration, string apiTitle,
-            string apiDescription, string apiVersion,string healthPath="/health",bool enableDocInProduction=false)
+            string apiDescription, string apiVersion,string healthPath="/health",bool enableDocInProduction=false, bool disableTrace=false)
         {
             Configuration = configuration;
 
@@ -32,6 +34,7 @@ namespace Innovt.AspNetCore
             this.apiVersion = apiVersion;
             this.healthPath = healthPath;
             this.enableDocInProduction = enableDocInProduction;
+            this.disableTrace = disableTrace;
         }
 
 
@@ -39,13 +42,13 @@ namespace Innovt.AspNetCore
         {   
         }
 
-        internal bool isSwaggerEnabled() {
+        internal bool IsSwaggerEnabled() {
             return !(apiTitle == null && apiVersion == null);
         }
 
         protected virtual void AddSwagger(IServiceCollection services)
         {   
-            if(!isSwaggerEnabled())
+            if(!IsSwaggerEnabled())
                 return;
           
             services.AddSwaggerGen(options =>
@@ -79,6 +82,18 @@ namespace Innovt.AspNetCore
             services.AddHealthChecks();
         }
 
+        protected virtual void AddTracing(IServiceCollection services)
+        {
+            if (disableTrace)
+                return;
+
+            //services.AddOpenTelemetryTracing(b => {
+            //    b.AddAspNetCoreInstrumentation();
+            //    ConfigureTracer(b);
+            //    });
+        }
+
+       
 
         // This method gets called by the runtime. Use this method to add services to the container.
         /// <summary>
@@ -93,13 +108,14 @@ namespace Innovt.AspNetCore
 
             ConfigureHealthChecks(services);
 
+            AddTracing(services);
+
             AddSwagger(services);
         }
 
-
         protected virtual void ConfigureSwaggerUi(IApplicationBuilder app)
         {
-            if (!isSwaggerEnabled())
+            if (!IsSwaggerEnabled())
                 return;
 
             app.UseRewriter(new RewriteOptions().AddRedirect("(.*)docs$", "$1docs/index.html"));
@@ -139,5 +155,10 @@ namespace Innovt.AspNetCore
         protected abstract void AddDefaultServices(IServiceCollection services);
 
         public abstract void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory);
+
+        //protected virtual void ConfigureTracer(TracerProviderBuilder tracerBuilder)
+        //{
+        //    tracerBuilder.AddConsoleExporter();
+        //}
     }
 }
