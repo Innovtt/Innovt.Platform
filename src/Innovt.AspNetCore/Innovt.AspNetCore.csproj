@@ -22,4 +22,10 @@
     <ProjectReference Include="..\Innovt.Domain\Innovt.Domain.csproj" />
   </ItemGroup>
 
+    <ItemGroup>
+	    <PackageReference Include="Microsoft.NetCore.Analyzers" Version="3.3.0">
+		    <PrivateAssets>all</PrivateAssets>
+	    </PackageReference>
+    </ItemGroup>
+
 </Project>

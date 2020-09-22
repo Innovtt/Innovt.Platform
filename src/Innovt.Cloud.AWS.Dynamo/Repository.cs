@@ -124,7 +124,49 @@ namespace Innovt.Cloud.AWS.Dynamo
 
             return result;
         }
- 
+        public async Task<IList<T>> QueryAsync<T>(Table.QueryRequest request, CancellationToken cancellationToken = default) where T : ITableMessage
+        {
+            if (request is null) throw new ArgumentNullException(nameof(request));
+
+            var queryRequest = Helpers.CreateQueryRequest<T>(request);
+
+            var queryResponse = await DynamoClient.QueryAsync(queryRequest).ConfigureAwait(false);
+
+            if (queryResponse.Items?.Count() == 0)
+                return new List<T>();
+
+            return Helpers.ConvertAttributesToType<T>(queryResponse.Items, Context);
+        }
+
+        public async Task<T> QueryFirstOrDefaultAsync<T>(Table.QueryRequest request, CancellationToken cancellationToken = default) where T : ITableMessage
+        {
+            if (request is null) throw new ArgumentNullException(nameof(request));
+
+            var queryRequest = Helpers.CreateQueryRequest<T>(request);
+            queryRequest.Limit = 1;
+
+            var queryResponse = await DynamoClient.QueryAsync(queryRequest).ConfigureAwait(false);
+
+            if (queryResponse.Items?.Count() == 0)
+                return default(T);
+
+            return Helpers.ConvertAttributesToType<T>(queryResponse.Items, Context).SingleOrDefault();
+        }
+
+        public async Task<IList<T>> ScanAsync<T>(Table.ScanRequest request, CancellationToken cancellationToken = default) where T : ITableMessage
+        {
+            if (request is null) throw new ArgumentNullException(nameof(request));
+
+            var scanRequest = Helpers.CreateScanRequest<T>(request);
+
+            var scanResponse = await DynamoClient.ScanAsync(scanRequest).ConfigureAwait(false);
+
+            if (scanResponse.Items?.Count() == 0)
+                return new List<T>();
+
+            return Helpers.ConvertAttributesToType<T>(scanResponse.Items, Context);
+        }
+
         public async Task<PagedCollection<T>> QueryPaginatedByAsync<T>(Innovt.Cloud.Table.QueryRequest request, CancellationToken cancellationToken = default) where T : ITableMessage
         {
             if (request is null) throw new ArgumentNullException(nameof(request));

@@ -6,7 +6,7 @@ using Innovt.Cloud.Queue;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Serialization;
 
-namespace Innovt.Cloud.AWS.Lambda
+namespace Innovt.Cloud.AWS.Lambda.Sqs
 {
     public abstract class SqsEventProcessor<TBody> : EventProcessor<SQSEvent> where TBody : class
     {
@@ -15,7 +15,7 @@ namespace Innovt.Cloud.AWS.Lambda
 
         protected SqsEventProcessor(ILogger logger) : base(logger)
         {
-            
+
         }
 
         protected SqsEventProcessor(ILogger logger, ISerializer serializer) : base(logger)
@@ -32,14 +32,14 @@ namespace Innovt.Cloud.AWS.Lambda
             get
             {
                 if (serializer == null)
-                    serializer = new Innovt.Core.Serialization.JsonSerializer();
+                    serializer = new Core.Serialization.JsonSerializer();
 
                 return serializer;
             }
 
             set
             {
-                this.serializer = value;
+                serializer = value;
             }
         }
 
@@ -62,7 +62,7 @@ namespace Innovt.Cloud.AWS.Lambda
                     Attributes = record.Attributes,
                     Body = Serializer.DeserializeObject<TBody>(record.Body)
                 };
-                
+
                 message.ParseQueueAttributes(record.Attributes);
 
                 await ProcessMessage(message);

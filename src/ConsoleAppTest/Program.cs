@@ -10,7 +10,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
+using Innovt.Core.Utilities;
+using Innovt.Core.Validation;
 
 namespace ConsoleAppTest
 {
@@ -39,7 +42,16 @@ namespace ConsoleAppTest
             collection.AddScoped<DynamoService>();
         }
     }
-
+ 
+    public class BuyerByDocumentFilter : IFilter
+    {
+        public string Document { get; set; }
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            return new List<ValidationResult>();
+        }
+    }
+    
     class Program
     {
         static async Task Main(string[] args)
@@ -59,9 +71,18 @@ namespace ConsoleAppTest
 
             container.CheckConfiguration();
 
-
             var dynamoService = container.Resolve<DynamoService>();
 
+            // BuyerByDocumentFilter
+            // var scanRequest = new ScanRequest()
+            // {
+            //     FilterExpression = "Document = :document",
+            //     Filter = new BuyerByDocumentFilter(),
+            // };
+            // var buyer = await base.ScanPaginatedByAsync<Buyer>(scanRequest, cancellationToken);
+            // return buyer.Items?.FirstOrDefault();            
+            
+            
             var result1 = await dynamoService.GetByIdAsync<DynamoTable>("af51abef-91bf-4642-94b7-4349288f62cb");
 
             Console.WriteLine(result1);

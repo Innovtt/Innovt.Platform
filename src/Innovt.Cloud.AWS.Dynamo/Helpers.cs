@@ -1,4 +1,5 @@
 ﻿
+using Amazon.Auth.AccessControlPolicy.ActionIdentifiers;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
@@ -6,8 +7,10 @@ using Amazon.DynamoDBv2.Model;
 using Innovt.Core.Cqrs.Queries;
 using Innovt.Core.Utilities;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -32,8 +35,7 @@ namespace Innovt.Cloud.AWS.Dynamo
 
             return attribute.TableName;
         }
-
-
+    
         internal static Amazon.DynamoDBv2.Model.AttributeValue CreateAttributeValue(object value)
         {
             if (value is null)
@@ -48,13 +50,30 @@ namespace Innovt.Cloud.AWS.Dynamo
             if (value is List<MemoryStream>)
                 return new AttributeValue() { BS = value as List<MemoryStream> };
 
-            //todo: finalizar listas 
-
             if (value is List<string>)
                 return new AttributeValue(value as List<string>);
 
-            if (value.ToString().IsNumber())
-                return new AttributeValue() { N =  value.ToString() };
+            if (value is int || value is double || value is float | value is decimal)
+                return new AttributeValue { N = value.ToString() };
+
+            if (value is IList<int> || value is IList<double> || value is IList<float> | value is IList<decimal>)
+            {
+                var array = (value as IList).Cast<string>();
+
+                return new AttributeValue { NS = array.ToList<string>() };
+            }
+
+            if (value is IDictionary<string,object>)
+            {
+                var array = new Dictionary<string, AttributeValue>();
+
+                foreach (var item in (value as IDictionary<string, object>))
+                {
+                    array.Add(item.Key, CreateAttributeValue(item.Value));
+                }
+
+                return new AttributeValue { M = array };
+            }
 
             return new AttributeValue(value.ToString());
 
@@ -77,8 +96,8 @@ namespace Innovt.Cloud.AWS.Dynamo
                     if (attributes.Contains(key) && !attributeValues.ContainsKey(key))
                     {
                         var value = item.GetValue(filter);
-
-                        attributeValues.Add(key, CreateAttributeValue(value));
+                        
+                        attributeValues.Add(key,  CreateAttributeValue(value));
                     }
                 }
             }
