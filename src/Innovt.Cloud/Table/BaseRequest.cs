@@ -12,7 +12,7 @@ namespace Innovt.Cloud.Table
         public IFilter Filter { get; set; }
 
         public string AttributesToGet { get; set; }
-        public int PageSize { get; set; }
+        public int? PageSize { get; set; }
         public string Page { get; set; }
         public string FilterExpression { get; set; }
     }

@@ -18,18 +18,19 @@ namespace Innovt.Cloud.Table
 
         Task AddAsync<T>(IList<T> message, CancellationToken cancellationToken = default) where T : ITableMessage;
 
-        Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default) where T : ITableMessage;
+        Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default);
 
-        Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default) where T : ITableMessage;
+        Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default);
 
-        Task<IList<T>> QueryAsync<T>(Innovt.Cloud.Table.QueryRequest request, CancellationToken cancellationToken = default) where T : ITableMessage;
+        Task<IList<T>> QueryAsync<T>(Innovt.Cloud.Table.QueryRequest request, CancellationToken cancellationToken = default);
 
-        Task<T> QueryFirstOrDefaultAsync<T>(Table.QueryRequest request, CancellationToken cancellationToken = default) where T : ITableMessage;
+        Task<T> QueryFirstOrDefaultAsync<T>(Table.QueryRequest request, CancellationToken cancellationToken = default);
 
-        Task<IList<T>> ScanAsync<T>(Innovt.Cloud.Table.ScanRequest request, CancellationToken cancellationToken = default) where T : ITableMessage;
+        Task<IList<T>> ScanAsync<T>(Innovt.Cloud.Table.ScanRequest request, CancellationToken cancellationToken = default);
 
-        Task<PagedCollection<T>> ScanPaginatedByAsync<T>(Innovt.Cloud.Table.ScanRequest request, CancellationToken cancellationToken = default) where T : ITableMessage;
-        Task<PagedCollection<T>> QueryPaginatedByAsync<T>(Innovt.Cloud.Table.QueryRequest request, CancellationToken cancellationToken = default) where T : ITableMessage;
+        Task<PagedCollection<T>> ScanPaginatedByAsync<T>(Innovt.Cloud.Table.ScanRequest request, CancellationToken cancellationToken = default);
+        Task<PagedCollection<T>> QueryPaginatedByAsync<T>(Innovt.Cloud.Table.QueryRequest request, CancellationToken cancellationToken = default);
+        //where T : ITableMessage;
 
     }
 }

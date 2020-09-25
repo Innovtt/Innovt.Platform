@@ -63,8 +63,8 @@ namespace ConsoleAppTest
                .SetBasePath(Directory.GetCurrentDirectory()) // <== compile failing here
                 .AddJsonFile($"appsettings.json");
 
-            var build  = confbuild.Build();
-            
+            var build = confbuild.Build();
+
             var container = new Container();
 
             container.AddModule(new IocTestModule(build));
@@ -74,31 +74,49 @@ namespace ConsoleAppTest
             var dynamoService = container.Resolve<DynamoService>();
 
             // BuyerByDocumentFilter
-            // var scanRequest = new ScanRequest()
-            // {
-            //     FilterExpression = "Document = :document",
-            //     Filter = new BuyerByDocumentFilter(),
-            // };
-            // var buyer = await base.ScanPaginatedByAsync<Buyer>(scanRequest, cancellationToken);
-            // return buyer.Items?.FirstOrDefault();            
-            
-            
-            var result1 = await dynamoService.GetByIdAsync<DynamoTable>("af51abef-91bf-4642-94b7-4349288f62cb");
-
-            Console.WriteLine(result1);
-
-
-            var queryRequest = new QueryRequest()
+            var scanRequest = new QueryRequest()
             {
-                Filter = new Filter() { Id = "af51abef-91bf-4642-94b7-4349288f62cb" },
-                PageSize = 2,
-                KeyConditionExpression = "Id = :id"
+                KeyConditionExpression = "BuyerId = :document",
+                Filter = new BuyerByDocumentFilter() { Document = "DDCC8E14-7421-46A4-9C71-15B203E5DE07" },
+                PageSize = 2
             };
 
-            var result = await dynamoService.QueryPaginatedByAsync<DynamoTable>(queryRequest);
+            // var buyer = await dynamoService.ScanAsync<DynamoTable>(scanRequest);
+            
+            var buyer = await dynamoService.QueryPaginatedByAsync<DynamoTable>(scanRequest);
+
+            Console.WriteLine(buyer);
+
+           //  var buyer = await dynamoService.ScanPaginatedByAsync<DynamoTable>(scanRequest);
+
+            //var scanRequest = new ScanRequest()
+            //{
+            //    FilterExpression = "Document = :document",
+            //    Filter = new BuyerByDocumentFilter() { Document = "59770464000120" },
+            //    PageSize = 2
+            //};
+
+            //var buyer = await dynamoService.ScanPaginatedByAsync<DynamoTable>(scanRequest);
+
+            // return buyer.Items?.FirstOrDefault();            
 
 
-            Console.WriteLine(result1);
+            //var result1 = await dynamoService.GetByIdAsync<DynamoTable>("af51abef-91bf-4642-94b7-4349288f62cb");
+
+            //Console.WriteLine(result1);
+
+
+            //var queryRequest = new QueryRequest()
+            //{
+            //    Filter = new Filter() { Id = "af51abef-91bf-4642-94b7-4349288f62cb" },
+            //    PageSize = 2,
+            //    KeyConditionExpression = "Id = :id"
+            //};
+
+            //var result = await dynamoService.QueryPaginatedByAsync<DynamoTable>(queryRequest);
+
+
+            //Console.WriteLine(result1);
 
 
 
@@ -122,10 +140,10 @@ namespace ConsoleAppTest
 
             //var result = await dynamoService.GetByIdAsync<DynamoTable>("SendBuyerLotNotAntecipatedScheduler");
 
-            Console.WriteLine(result);
+            //Console.WriteLine(result);
 
 
-           // var item = await sqs.GetByIdAsync<NotificationTemplate2>("TemplateWithParameters","01");
+            // var item = await sqs.GetByIdAsync<NotificationTemplate2>("TemplateWithParameters","01");
 
             // var item = await sqs.QueryAsync<TableRepo>("TemplateWithParameters","01");
 
@@ -135,7 +153,7 @@ namespace ConsoleAppTest
 
             //var credential = configuration.GetCredential();
 
-            
+
             //var sqs = container.Resolve<SqsService>();
 
 

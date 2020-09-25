@@ -95,7 +95,19 @@ namespace Innovt.Cloud.AWS.Dynamo
             await DynamoClient.UpdateItemAsync(tableName, key, attributeUpdates, cancellationToken)).ConfigureAwait(false);
         }
 
-        public async Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default) where T : ITableMessage
+        internal async Task<(Dictionary<string, AttributeValue> LastEvaluatedKey, IList<T> Items)> InternalQueryAsync<T>(Innovt.Cloud.Table.QueryRequest request, CancellationToken cancellationToken = default)
+        {
+            if (request is null) throw new ArgumentNullException(nameof(request));
+
+            var queryRequest = Helpers.CreateQueryRequest<T>(request);
+
+            var queryResponse = await DynamoClient.QueryAsync(queryRequest).ConfigureAwait(false);
+
+            return (queryResponse.LastEvaluatedKey, Helpers.ConvertAttributesToType<T>(queryResponse.Items, Context));
+        }
+
+
+        public async Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default)
         {
             var config = new DynamoDBOperationConfig()
             {
@@ -111,7 +123,9 @@ namespace Innovt.Cloud.AWS.Dynamo
             return result.FirstOrDefault();
         }
 
-        public async Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default) where T : ITableMessage
+    
+
+        public async Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default)
         {
             var config = new DynamoDBOperationConfig()
             {
@@ -124,88 +138,99 @@ namespace Innovt.Cloud.AWS.Dynamo
 
             return result;
         }
-        public async Task<IList<T>> QueryAsync<T>(Table.QueryRequest request, CancellationToken cancellationToken = default) where T : ITableMessage
+        public async Task<IList<T>> QueryAsync<T>(Table.QueryRequest request, CancellationToken cancellationToken = default)
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
-            var queryRequest = Helpers.CreateQueryRequest<T>(request);
-
-            var queryResponse = await DynamoClient.QueryAsync(queryRequest).ConfigureAwait(false);
-
-            if (queryResponse.Items?.Count() == 0)
-                return new List<T>();
-
-            return Helpers.ConvertAttributesToType<T>(queryResponse.Items, Context);
+            return (await InternalQueryAsync<T>(request)).Items;
         }
 
-        public async Task<T> QueryFirstOrDefaultAsync<T>(Table.QueryRequest request, CancellationToken cancellationToken = default) where T : ITableMessage
+        public async Task<T> QueryFirstOrDefaultAsync<T>(Table.QueryRequest request, CancellationToken cancellationToken = default)
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
-            var queryRequest = Helpers.CreateQueryRequest<T>(request);
-            queryRequest.Limit = 1;
+            request.PageSize = 1;
 
-            var queryResponse = await DynamoClient.QueryAsync(queryRequest).ConfigureAwait(false);
-
-            if (queryResponse.Items?.Count() == 0)
-                return default(T);
-
-            return Helpers.ConvertAttributesToType<T>(queryResponse.Items, Context).SingleOrDefault();
+            var queryResponse = (await InternalQueryAsync<T>(request)).Items;
+          
+            return queryResponse.FirstOrDefault();
         }
 
-        public async Task<IList<T>> ScanAsync<T>(Table.ScanRequest request, CancellationToken cancellationToken = default) where T : ITableMessage
+        public async Task<PagedCollection<T>> QueryPaginatedByAsync<T>(Innovt.Cloud.Table.QueryRequest request, CancellationToken cancellationToken = default)
+        {
+            if (request is null) throw new ArgumentNullException(nameof(request));
+
+            var queryResponse = (await InternalQueryAsync<T>(request));
+
+
+            return new PagedCollection<T>()
+            {
+                Items = queryResponse.Items,
+                Page = Helpers.CreatePaginationToken(queryResponse.LastEvaluatedKey)
+            };
+        }
+
+
+        internal async Task<(Dictionary<string,AttributeValue> ExclusiveStartKey, IList<T> Items)> InternalScanAsync<T>(Table.ScanRequest request, CancellationToken cancellationToken = default)
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
             var scanRequest = Helpers.CreateScanRequest<T>(request);
 
-            var scanResponse = await DynamoClient.ScanAsync(scanRequest).ConfigureAwait(false);
+            var result = new List<T>();
+            var pageSize = request.PageSize.GetValueOrDefault();
 
-            if (scanResponse.Items?.Count() == 0)
-                return new List<T>();
-
-            return Helpers.ConvertAttributesToType<T>(scanResponse.Items, Context);
-        }
-
-        public async Task<PagedCollection<T>> QueryPaginatedByAsync<T>(Innovt.Cloud.Table.QueryRequest request, CancellationToken cancellationToken = default) where T : ITableMessage
-        {
-            if (request is null) throw new ArgumentNullException(nameof(request));
-
-            var queryRequest = Helpers.CreateQueryRequest<T>(request);
-
-            var queryResponse = await DynamoClient.QueryAsync(queryRequest).ConfigureAwait(false);
-
-            if (queryResponse.Items?.Count() == 0)
-                return new PagedCollection<T>();
-
-            return new PagedCollection<T>()
+            do
             {
-                Items = Helpers.ConvertAttributesToType<T>(queryResponse.Items, Context),
-                Page =  Helpers.CreatePaginationToken(queryResponse.LastEvaluatedKey)
-            };
+                if (pageSize > 0)
+                {
+                    // at least 10 elements per request
+                    scanRequest.Limit = (pageSize - result.Count) < 10 ? 10 : (pageSize - result.Count);
+                }
+
+                var response = await DynamoClient.ScanAsync(scanRequest).ConfigureAwait(false);
+
+                if (response.Items.Any())
+                {
+                    result.AddRange(Helpers.ConvertAttributesToType<T>(response.Items, Context));
+                }
+
+                scanRequest.ExclusiveStartKey = response.LastEvaluatedKey;
+
+            } while (scanRequest.ExclusiveStartKey != null && scanRequest.ExclusiveStartKey.Count != 0 && (pageSize > 0 && (result.Count() < pageSize)));
+
+            if(pageSize>0)
+                return (scanRequest.ExclusiveStartKey, result.Take(pageSize).ToList());
+
+            return (scanRequest.ExclusiveStartKey,result);
         }
 
-        public async Task<PagedCollection<T>> ScanPaginatedByAsync<T>(Innovt.Cloud.Table.ScanRequest request, CancellationToken cancellationToken = default) where T : ITableMessage
+
+        public async Task<IList<T>> ScanAsync<T>(Table.ScanRequest request, CancellationToken cancellationToken = default)
+        {
+            return (await InternalScanAsync<T>(request)).Items;
+        }
+
+
+        public async Task<PagedCollection<T>> ScanPaginatedByAsync<T>(Innovt.Cloud.Table.ScanRequest request, CancellationToken cancellationToken = default)
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
-            var scanRequest  = Helpers.CreateScanRequest<T>(request);
-
-            var scanResponse = await DynamoClient.ScanAsync(scanRequest).ConfigureAwait(false);
+            var scanResponse = await this.InternalScanAsync<T>(request, cancellationToken);
 
             if (scanResponse.Items?.Count() ==0)
                 return new PagedCollection<T>();
 
             var response = new PagedCollection<T>()
             {
-                Items = Helpers.ConvertAttributesToType<T>(scanResponse.Items, Context),
-                Page  = Helpers.CreatePaginationToken(scanResponse.LastEvaluatedKey)
+                Items = scanResponse.Items,
+                Page  = Helpers.CreatePaginationToken(scanResponse.ExclusiveStartKey),
             };
 
             return response;
         }
 
-        protected async Task<TransactGetItemsResponse> TransactGetItemsAsync<T>(TransactGetItemsRequest request, CancellationToken cancellationToken = default) where T : ITableMessage
+        protected async Task<TransactGetItemsResponse> TransactGetItemsAsync<T>(TransactGetItemsRequest request, CancellationToken cancellationToken = default)
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 

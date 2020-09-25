@@ -1,9 +1,8 @@
-﻿
-using Amazon.Auth.AccessControlPolicy.ActionIdentifiers;
-using Amazon.DynamoDBv2;
+﻿using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
+using Innovt.Core.Collections;
 using Innovt.Core.Cqrs.Queries;
 using Innovt.Core.Utilities;
 using System;
@@ -12,7 +11,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Innovt.Cloud.AWS.Dynamo
 {
@@ -113,17 +111,19 @@ namespace Innovt.Cloud.AWS.Dynamo
                 IndexName = request.IndexName,
                 TableName = GetTableName<T>(),
                 ConsistentRead = request.IndexName == null,
-                Limit = request.PageSize == 0 ? 1 : request.PageSize,
                 FilterExpression = request.FilterExpression,
                 KeyConditionExpression = request.KeyConditionExpression,
                 ProjectionExpression = request.AttributesToGet,
                 ExclusiveStartKey = PaginationTokenToDictionary(request.Page),
                 ExpressionAttributeValues = CreateExpressionAttributeValues(request.Filter,string.Join(',',request.KeyConditionExpression, request.FilterExpression) )
             };
-           
+
+            if (request.PageSize.HasValue)
+                queryRequest.Limit = request.PageSize == 0 ? 1 : request.PageSize.Value;
 
             return queryRequest;
         }
+
 
         internal static Amazon.DynamoDBv2.Model.ScanRequest CreateScanRequest<T>(Innovt.Cloud.Table.ScanRequest request)
         {
@@ -132,12 +132,15 @@ namespace Innovt.Cloud.AWS.Dynamo
                 IndexName = request.IndexName,
                 TableName = GetTableName<T>(),
                 ConsistentRead = request.IndexName == null,
-                Limit = request.PageSize == 0 ? 1 : request.PageSize,
                 FilterExpression = request.FilterExpression,
                 ProjectionExpression = request.AttributesToGet,
                 ExclusiveStartKey = PaginationTokenToDictionary(request.Page),
                 ExpressionAttributeValues = CreateExpressionAttributeValues(request.Filter, string.Join(',', request.FilterExpression))
             };
+
+            if (request.PageSize.HasValue)
+                scanRequest.Limit = request.PageSize ==0 ? 1 : request.PageSize.Value;
+
 
             return scanRequest;
         }
@@ -162,7 +165,7 @@ namespace Innovt.Cloud.AWS.Dynamo
 
     internal static string CreatePaginationToken(Dictionary<string, AttributeValue> lastEvaluatedKey)
         {
-            if (lastEvaluatedKey is null)
+            if (lastEvaluatedKey.IsNullOrEmpty())
                 return null;
 
             var stringBuilder = new StringBuilder();
