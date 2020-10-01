@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -66,28 +67,34 @@ namespace Innovt.AspNetCore.Filters
 
             ReadConfig(context);
 
+
             using var httpClient = new HttpClient();
-            string stringAsync = await httpClient.GetStringAsync($"{captchaURI}?secret={secretKey}&response={token}");
-                
-            var serializerSettings = new JsonSerializerOptions
-            {
-                IgnoreNullValues = true
-            };
+            
+                var stringAsync = await httpClient.GetStringAsync($"{captchaURI}?secret={secretKey}&response={token}");
+
+                var serializerSettings = new JsonSerializerOptions
+                {
+                    IgnoreNullValues = true
+                };
+            
 
             dynamic captchaResponse = JsonSerializer.Deserialize<dynamic>(stringAsync, serializerSettings);
 
-            if (captchaResponse.Success & antiForgery && !string.IsNullOrEmpty(hostName) && captchaResponse.Hostname.ToLower() != hostName.ToLower())
-                throw new ValidationException("Captcha hostname and request hostname do not match. Please review anti forgery settings.");
+            if (captchaResponse.Success & antiForgery && hostName.IsNotNullOrEmpty() &&
+                !captchaResponse.Hostname.Equals(hostName))
+                throw new ValidationException(
+                    "Captcha hostname and request hostname do not match. Please review anti forgery settings.");
 
             return captchaResponse.Success;
-        }
+        
+    }
 
         public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {  
             if (!context.HttpContext.IsLocal())
             {
                 var header =
-                    context.HttpContext.Request.Headers.TryGetValue("g-recaptcha-response", out var g_recaptcha_response);
+                    context.HttpContext.Request.Headers.TryGetValue("g-recaptcha-response", out var recaptchaResponse);
 
                 if (!header)
                 {
@@ -101,7 +108,7 @@ namespace Innovt.AspNetCore.Filters
                     return;
                 }
 
-                var isValid = await this.IsValid(g_recaptcha_response,context.HttpContext);
+                var isValid = await this.IsValid(recaptchaResponse,context.HttpContext);
 
                 if (!isValid)
                 {

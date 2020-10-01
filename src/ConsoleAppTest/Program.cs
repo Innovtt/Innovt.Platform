@@ -17,10 +17,10 @@ using Innovt.Core.Validation;
 
 namespace ConsoleAppTest
 {
-    public class Filter : IFilter {
+    public class SupplierConsultancyRegisterFilter : IFilter {
 
-        public string Id { get; set; }
-        public string Subject { get; set; }
+        public string ConsultancyId { get; set; }
+        public string SupplierId { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
@@ -45,7 +45,7 @@ namespace ConsoleAppTest
  
     public class BuyerByDocumentFilter : IFilter
     {
-        public string Document { get; set; }
+        public int Enabled { get; set; }
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             return new List<ValidationResult>();
@@ -73,19 +73,44 @@ namespace ConsoleAppTest
 
             var dynamoService = container.Resolve<DynamoService>();
 
-            // BuyerByDocumentFilter
-            var scanRequest = new QueryRequest()
+            //DAta mnodel 
+            // Entity 
+            // ("50f67209-7732-47b8-a0d3-c3e6c7730992", "3fea4ece-c746-440a-b6cc-2e229f85837e");
+
+
+            var filter =    new Innovt.Cloud.Table.QueryRequest()
             {
-                KeyConditionExpression = "BuyerId = :document",
-                Filter = new BuyerByDocumentFilter() { Document = "DDCC8E14-7421-46A4-9C71-15B203E5DE07" },
-                PageSize = 2
+                KeyConditionExpression = "ConsultancyId = :consultancyid AND SupplierId = :supplierid",
+                Filter = new SupplierConsultancyRegisterFilter() { ConsultancyId = "50f67209-7732-47b8-a0d3-c3e6c7730992", SupplierId = "3fea4ece-c746-440a-b6cc-2e229f85837e" }
             };
 
-            // var buyer = await dynamoService.ScanAsync<DynamoTable>(scanRequest);
-            
-            var buyer = await dynamoService.QueryPaginatedByAsync<DynamoTable>(scanRequest);
+            var res = await dynamoService.QueryFirstOrDefaultAsync<SupplierConsultancyRegister>(filter);
 
-            Console.WriteLine(buyer);
+            Console.WriteLine(res);
+
+
+            //// BuyerByDocumentFilter
+            //var scanRequest = new ScanRequest()
+            //{
+            //    FilterExpression = "Configuration.Enabled = :enabled",
+            //    Filter = new BuyerByDocumentFilter() { Enabled = 0 }
+            //};  
+
+
+            //var buyer = await dynamoService.ScanAsync<DynamoTable>(scanRequest);
+
+            // var scanRequest = new QueryRequest()
+            // {
+            //     KeyConditionExpression = "BuyerId = :document",
+            //     Filter = new BuyerByDocumentFilter() { Document = "DDCC8E14-7421-46A4-9C71-15B203E5DE07" },
+            //     PageSize = 2
+            // };
+
+            // var buyer = await dynamoService.ScanAsync<DynamoTable>(scanRequest);
+
+            //var buyer = await dynamoService.QueryPaginatedByAsync<DynamoTable>(scanRequest);
+
+            //Console.WriteLine(buyer);
 
            //  var buyer = await dynamoService.ScanPaginatedByAsync<DynamoTable>(scanRequest);
 

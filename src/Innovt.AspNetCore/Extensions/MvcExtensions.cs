@@ -102,13 +102,17 @@ namespace Innovt.AspNetCore.Extensions
 
         public static IHtmlContent Pager<T>(this IHtmlHelper helper, PaginationBuilder<T> builder) where T : class
         {
+            if (helper is null) throw new ArgumentNullException(nameof(helper));
+            
+
             if (builder == null) throw new ArgumentNullException(nameof(builder));
             
+            if (builder.Collection.TotalRecords < builder.Collection.PageSize && (builder.Collection.IsNumberPagination && builder.Collection.Page!=null 
+                && int.Parse(builder.Collection.Page,CultureInfo.InvariantCulture) <= 1))
+                return new HtmlString(string.Empty);
+
             var html = new StringBuilder();
-
-            if (builder.Collection.TotalRecords < builder.Collection.PageSize && (builder.Collection.IsNumberPagination && int.Parse(builder.Collection.Page) <= 1))
-                return new HtmlString(html.ToString());
-
+            
             html.Append(builder.BuildHeader());
 
             if (builder.Collection.HasPrevious())
@@ -118,9 +122,9 @@ namespace Innovt.AspNetCore.Extensions
 
             if (builder.Collection.PageCount > 1)
             {
-                for (int i = 0; i <= builder.Collection.PageCount - 1; i++)
+                for (var i = 0; i <= builder.Collection.PageCount - 1; i++)
                 {
-                    var isCurrent = builder.Collection.Page == i.ToString();
+                    var isCurrent = builder.Collection.Page == i.ToString(CultureInfo.InvariantCulture);
 
                     html.Append(builder.BuildItem(i, isCurrent));
                 }

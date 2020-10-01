@@ -20,27 +20,6 @@ namespace ConsoleAppTest
         }
 
 
-        public async Task<IList<DynamoTable>> GetAll() {
 
-            //var conditions = new List<ScanCondition>();
-            //conditions.Add(new ScanCondition("PartitionKey", ScanOperator.Equal, buyerId));
-            //conditions.Add(new ScanCondition("BuyerId", ScanOperator.Equal, buyerId));
-            //conditions.Add(new ScanCondition("Type", ScanOperator.Equal, type));
-            //var integrationDate = (await base.QueryAsync<TaskIntegrationDate>(conditions, cancellationToken)).FirstOrDefault();
-            //return integrationDate;
-
-
-            return null;
-            //var queryOperation = new ScanRequest()
-            //{
-              
-            //};
-
-            //queryOperation.AddCondition("FromAddress", Innovt.Cloud.Table.ComparisonOperator.Equal, "desenvolvimento@antecipa.com")
-            //    .AddCondition("Subject", Innovt.Cloud.Table.ComparisonOperator.Contains, "Subject");
-
-            //return await base.ScanAsync<DynamoTable>(queryOperation);
-        
-        }
     }
 }

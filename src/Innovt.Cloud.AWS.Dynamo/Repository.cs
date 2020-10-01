@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Linq;
 using Innovt.Core.Collections;
+using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.Dynamo
 {
@@ -113,6 +114,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             {
                 BackwardQuery = true
             };
+         
 
             var result = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () => 
                          await Context.QueryAsync<T>(id, config).GetNextSetAsync(cancellationToken)).ConfigureAwait(false);

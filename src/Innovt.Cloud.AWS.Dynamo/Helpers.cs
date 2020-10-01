@@ -29,7 +29,7 @@ namespace Innovt.Cloud.AWS.Dynamo
         internal static string GetTableName<T>()
         {
             if (!(Attribute.GetCustomAttribute(typeof(T), typeof(DynamoDBTableAttribute)) is DynamoDBTableAttribute attribute))
-                return nameof(T);
+                return typeof(T).Name;
 
             return attribute.TableName;
         }
@@ -84,7 +84,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             var attributeValues = new Dictionary<string, AttributeValue>();
 
             var properties = filter.GetType().GetProperties();
-
+                
             if (properties.Length > 0)
             {
                 foreach (var item in properties)

@@ -1,7 +1,11 @@
 ﻿
+using Innovt.Core.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
 namespace Innovt.Notification.Core.Domain
 {
-    public class NotificationMessageContact
+    public class NotificationMessageContact:IValidatableObject
     {
         public NotificationMessageContact(string name, string address)
         {
@@ -16,5 +20,13 @@ namespace Innovt.Notification.Core.Domain
         
         public string Name { get; set; }
         public string Address { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (Address.IsNullOrEmpty())
+            {
+                yield return new ValidationResult("Invalid address");
+            }
+        }
     }
 }

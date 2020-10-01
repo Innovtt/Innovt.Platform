@@ -1,4 +1,5 @@
 using Innovt.AspNetCore;
+using Innovt.AspNetCore.Filters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -27,16 +28,14 @@ namespace IocSample
             {
                 endpoints.MapControllers();
             });
-
-    //        var log = new LoggerConfiguration(url: "http-intake.logs.datadoghq.com")
-    //            .WriteTo.DatadogLogs("<API_KEY>")
-    //.CreateLogger();
-
         }
 
         protected override void AddDefaultServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers(op =>
+            {
+                op.Filters.Add(new ApiExceptionFilterAttribute());
+            });
         }
 
         protected override void ConfigureIoC(IServiceCollection services)

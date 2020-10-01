@@ -1,6 +1,7 @@
 ﻿using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Exceptions;
 using Microsoft.AspNetCore.Mvc;
+using OpenTracing;
 using System;
 using System.Threading.Tasks;
 
@@ -9,16 +10,12 @@ namespace Innovt.AspNetCore.Controllers
     public abstract class BaseController : ControllerBase
     {
         protected readonly ILogger Logger;
-       
-        //protected BaseController(ILogger logger)
-        //{
-        //    this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        //    this.Tracer = tracer ?? throw new ArgumentNullException(nameof(tracer));
-        //}
+        protected readonly ITracer Tracer;
 
-        protected BaseController(ILogger logger)
+        protected BaseController(ILogger logger, ITracer tracer)
         {
             this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            this.Tracer = tracer ?? throw new ArgumentNullException(nameof(tracer));
         }
 
         protected IActionResult RedirectToLocal(string returnUrl, RedirectToActionResult redirect = null, string defaultAction = "Index", string defaultController = "Home")

@@ -2,14 +2,18 @@ using System;
 using System.IO;
 using System.Reflection;
 using Innovt.AspNetCore.Filters;
+using Innovt.AspNetCore.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-//using OpenTelemetry.Trace;
+using OpenTracing;
+using OpenTracing.Noop;
+using OpenTracing.Util;
 
 namespace Innovt.AspNetCore
 {
@@ -36,7 +40,6 @@ namespace Innovt.AspNetCore
             this.enableDocInProduction = enableDocInProduction;
             this.disableTrace = disableTrace;
         }
-
 
         protected ApiStartupBase(IConfiguration configuration):this(configuration,null,null,null)
         {   
@@ -71,7 +74,7 @@ namespace Innovt.AspNetCore
             });
         }
 
-        protected abstract void ConfigureIoC(IServiceCollection services);
+       
 
         /// <summary>
         /// Implement only the AddHealthChecks by default
@@ -87,10 +90,15 @@ namespace Innovt.AspNetCore
             if (disableTrace)
                 return;
 
-            //services.AddOpenTelemetryTracing(b => {
-            //    b.AddAspNetCoreInstrumentation();
-            //    ConfigureTracer(b);
-            //    });
+            services.AddOpenTracing(b => b.AddAspNetCore());
+
+            services.AddSingleton<ITracer>(serviceProvider =>
+            {
+                var tracer = CreateTracer(services);
+
+                GlobalTracer.Register(tracer);
+                return tracer;
+            });
         }
 
        
@@ -103,6 +111,11 @@ namespace Innovt.AspNetCore
         public virtual void ConfigureServices(IServiceCollection services)
         {  
             ConfigureIoC(services);
+            
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.InvalidModelStateResponseFactory = InvalidModelStateResponse.CreateCustomErrorResponse;
+            });
 
             AddDefaultServices(services);
 
@@ -141,7 +154,7 @@ namespace Innovt.AspNetCore
             {
                 app.UseDeveloperExceptionPage();
             }
-
+          
             app.UseHealthChecks(healthPath);
 
             ConfigureApp(app, env, loggerFactory);
@@ -154,11 +167,13 @@ namespace Innovt.AspNetCore
 
         protected abstract void AddDefaultServices(IServiceCollection services);
 
+        protected abstract void ConfigureIoC(IServiceCollection services);
+
         public abstract void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory);
 
-        //protected virtual void ConfigureTracer(TracerProviderBuilder tracerBuilder)
-        //{
-        //    tracerBuilder.AddConsoleExporter();
-        //}
+        protected virtual ITracer CreateTracer(IServiceCollection services)
+        {
+            return NoopTracerFactory.Create();
+        }
     }
 }

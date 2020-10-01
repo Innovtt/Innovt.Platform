@@ -2,7 +2,9 @@
 using System.Net;
 using System.Threading.Tasks;
 using Innovt.AspNetCore.Model;
+using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Exceptions;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Localization;
@@ -12,7 +14,7 @@ namespace Innovt.AspNetCore.Filters
     public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
     {
         private readonly IStringLocalizer stringLocalizer;
-
+       
         public ApiExceptionFilterAttribute(IStringLocalizer localizer)
         {
             this.stringLocalizer = localizer ?? throw new ArgumentNullException(nameof(localizer));
@@ -23,6 +25,7 @@ namespace Innovt.AspNetCore.Filters
             
         }
 
+
         private string Translate(string message)
         {
             if (stringLocalizer == null)
@@ -31,39 +34,30 @@ namespace Innovt.AspNetCore.Filters
             return stringLocalizer[message];
         }
 
-
-        private void CheckExceptionResult(ExceptionContext context)
-        {
-            if (context.Exception is BusinessException bex)
-            {
-                var result = new ResponseError
-                {
-                    Message = Translate(bex.Message),
-                    Code = bex.Code,
-                    Errors = bex.Errors
-                };
-
-                context.Result = new BadRequestObjectResult(result);
-            }
-        }
-
         public override void OnException(ExceptionContext context)
         {
-            context.Result = new StatusCodeResult((int)HttpStatusCode.InternalServerError);
+            //logger?.Error(context.Exception);
 
-            CheckExceptionResult(context);
-            
+            var result = new ResponseError
+            {
+                Message = Translate(context.Exception.Message),
+                TraceId = context.HttpContext.TraceIdentifier,
+                Detail = context.Exception.StackTrace
+            };
+
+            if (context.Exception is BusinessException bex)
+            {
+                result.Code = $"{StatusCodes.Status400BadRequest}";
+                result.Detail = bex.Errors;
+                context.Result = new BadRequestObjectResult(result);
+            }
+            else
+            {
+                result.Code = $"{StatusCodes.Status500InternalServerError}";
+                context.Result = new ObjectResult(result) { StatusCode = StatusCodes.Status500InternalServerError };
+            }
+
             base.OnException(context);
-        }
-
-
-        public override async Task OnExceptionAsync(ExceptionContext context)
-        {
-            context.Result = new StatusCodeResult((int)HttpStatusCode.InternalServerError);
-            
-            CheckExceptionResult(context);
-
-            await base.OnExceptionAsync(context);
         }
     }
 }
