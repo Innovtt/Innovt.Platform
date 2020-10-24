@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Innovt.Domain.Repository;
 using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using Innovt.Core.Utilities;
 using Innovt.Data.DataSources;
 using Innovt.Data.Exceptions;
 using Innovt.Data.Model;
+using Innovt.Domain.Core.Repository;
 using Microsoft.Extensions.Logging;
 
 namespace Innovt.Data.EFCore

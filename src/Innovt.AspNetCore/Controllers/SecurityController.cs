@@ -18,7 +18,7 @@ namespace Innovt.AspNetCore.Controllers
     {
         private readonly IActionDescriptorCollectionProvider actionDescriptorProvider;
 
-        public SecurityController(IActionDescriptorCollectionProvider actionDescriptorProvider, ILogger logger,ITracer tracer) : base(logger, tracer)
+        public SecurityController(IActionDescriptorCollectionProvider actionDescriptorProvider,ILogger logger, ITracer tracer) : base(logger, tracer)
         {
             this.actionDescriptorProvider = actionDescriptorProvider ?? throw new ArgumentNullException(nameof(actionDescriptorProvider));
         }

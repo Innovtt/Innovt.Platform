@@ -1,14 +1,16 @@
 using Innovt.AspNetCore;
 using Innovt.AspNetCore.Filters;
+using Innovt.AspNetCore.Resources;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
-using OpenTelemetry.Trace;
+using OpenTracing;
 
 namespace IocSample
-{
+{   
     public class Startup : ApiStartupBase
     {
         public Startup(IConfiguration configuration):base(configuration)
@@ -32,23 +34,27 @@ namespace IocSample
 
         protected override void AddDefaultServices(IServiceCollection services)
         {
-            services.AddControllers(op =>
-            {
-                op.Filters.Add(new ApiExceptionFilterAttribute());
-            });
+            //services.AddScoped<IStringLocalizer<IExceptionResource>,ExceptionResource>();
+
+
+            //services.AddScoped<ApiExceptionFilter>();
+            
+            ////[ServiceFilter(typeof(ApiExceptionFilter))]
+            //services.AddControllers(op =>
+            //{   
+            //    op.Filters.Add<ApiExceptionFilter>();
+            //});
         }
 
         protected override void ConfigureIoC(IServiceCollection services)
         {
-          
-            //IServiceProvider
-
+            services.AddScoped<Innovt.Core.CrossCutting.Log.ILogger>(l=> new Innovt.CrossCutting.Log.Serilog.Logger());
         }
 
-        //protected override void ConfigureTracer(TracerProviderBuilder tracerBuilder)
-        //{
-        //    tracerBuilder.AddConsoleExporter();
-        //}
+        protected override ITracer CreateTracer(IServiceCollection services)
+        {  
+            return Datadog.Trace.OpenTracing.OpenTracingTracerFactory.CreateTracer();
+        }
     }
 
    

@@ -12,10 +12,10 @@ namespace Innovt.AspNetCore.Controllers
         protected readonly ILogger Logger;
         protected readonly ITracer Tracer;
 
-        protected BaseController(ILogger logger, ITracer tracer)
+        protected BaseController(ILogger logger,ITracer tracer)
         {
-            this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
             this.Tracer = tracer ?? throw new ArgumentNullException(nameof(tracer));
+            this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         protected IActionResult RedirectToLocal(string returnUrl, RedirectToActionResult redirect = null, string defaultAction = "Index", string defaultController = "Home")

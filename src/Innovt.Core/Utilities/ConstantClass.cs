@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Innovt.Core.Utilities
 {
@@ -13,7 +14,6 @@ namespace Innovt.Core.Utilities
 
         public override bool Equals(object obj)
         {
-
             return obj?.ToString() == Value;
         }
         public virtual bool Equals(ConstantClass obj)

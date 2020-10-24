@@ -1,4 +1,4 @@
-﻿using Innovt.Domain.Model.Users;
+﻿using Innovt.Domain.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

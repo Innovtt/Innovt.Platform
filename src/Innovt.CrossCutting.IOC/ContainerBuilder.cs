@@ -6,7 +6,7 @@ namespace Innovt.CrossCutting.IOC
 {
     public class ContainerBuilder
     { 
-        private IContainer container = null;
+        private readonly IContainer container = null;
 
         public ContainerBuilder(IServiceCollection services)
         { 

@@ -6,6 +6,6 @@
         public ParamsWrappers(params T[] parameters)
         {
             this.Parameters = parameters;
-        } 
+        }
     }
 }

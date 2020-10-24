@@ -9,11 +9,16 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.IO;
-using System.Threading;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
-using Innovt.Core.Utilities;
-using Innovt.Core.Validation;
+using OpenTracing;
+using OpenTracing.Mock;
+using OpenTracing.Noop;
+using OpenTracing.Util;
 
 namespace ConsoleAppTest
 {
@@ -36,6 +41,12 @@ namespace ConsoleAppTest
             collection.AddSingleton(configuration);
 
             collection.AddScoped<IAWSConfiguration, DefaultAWSConfiguration>();
+
+            ITracer tracer = Datadog.Trace.OpenTracing.OpenTracingTracerFactory.CreateTracer();
+
+            GlobalTracer.Register(tracer);
+
+            collection.AddScoped<ITracer>(t=> tracer);
 
             collection.AddScoped<ILogger, Logger>();
 
@@ -63,30 +74,85 @@ namespace ConsoleAppTest
                .SetBasePath(Directory.GetCurrentDirectory()) // <== compile failing here
                 .AddJsonFile($"appsettings.json");
 
-            var build = confbuild.Build();
+            //var build = confbuild.Build();
 
-            var container = new Container();
+            //var container = new Container();
 
-            container.AddModule(new IocTestModule(build));
+            //container.AddModule(new IocTestModule(build));
 
-            container.CheckConfiguration();
+            //container.CheckConfiguration();
+            //var tracer = GlobalTracer.Instance;
 
-            var dynamoService = container.Resolve<DynamoService>();
+            //var logger = container.Resolve<ILogger>();
+
+            //using (var scope = tracer.BuildSpan("teste").StartActive()) 
+            //{
+            //    logger.Info("my name is {@name}", "michel");
+
+            //    logger.Error("borges");
+
+            //}
+
+            try
+            {
+                var client = new HttpClient()
+                {
+                    Timeout = TimeSpan.FromMinutes(10), BaseAddress =  new Uri("https://antecipaapirestp14qhi5h8t.br1.hana.ondemand.com/"), 
+                };
+
+
+            var byteArray = Encoding.ASCII.GetBytes("antecipa:@!ntEcIpaRece$biveis");
+
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+          
+            var sw = new Stopwatch();
+
+                sw.Start();
+
+                var res = await client.GetAsync(
+                    "sap-integration/api/v2/buyer/find-account-documents?buyerErpId=2000&startDate=11/01/2018&endDate=11/01/2018&compensationTree=true&destinationId=grupo_gol_qas");
+
+                res.EnsureSuccessStatusCode();
+
+                var response = await res.Content.ReadAsStringAsync();
+                
+                //var response = await client.GetStringAsync(
+                //    "sap-integration/api/v2/buyer/find-account-documents?buyerErpId=2000&startDate=11/01/2018&endDate=11/01/2018&compensationTree=true&destinationId=grupo_gol_qas");
+
+                Console.WriteLine(response);
+                Console.WriteLine(sw.Elapsed.TotalMinutes);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
 
             //DAta mnodel 
             // Entity 
             // ("50f67209-7732-47b8-a0d3-c3e6c7730992", "3fea4ece-c746-440a-b6cc-2e229f85837e");
 
+            //var where = new StringBuilder("Deleted = :deleted AND Enabled = :enabled");
 
-            var filter =    new Innovt.Cloud.Table.QueryRequest()
-            {
-                KeyConditionExpression = "ConsultancyId = :consultancyid AND SupplierId = :supplierid",
-                Filter = new SupplierConsultancyRegisterFilter() { ConsultancyId = "50f67209-7732-47b8-a0d3-c3e6c7730992", SupplierId = "3fea4ece-c746-440a-b6cc-2e229f85837e" }
-            };
+            ////where.Append(" AND (contains(FirstName, :term) OR contains(LastName, :term) OR contains(Email, :term))");
+            //var filter = new Innovt.Cloud.Table.QueryRequest()
+            //{
+            //    KeyConditionExpression = "ConsultancyId = :consultancyid AND SupplierId = :supplierid",
+            //    Filter = new SupplierConsultancyRegisterFilter() { ConsultancyId = "50f67209-7732-47b8-a0d3-c3e6c7730992", SupplierId = "3fea4ece-c746-440a-b6cc-2e229f85837e" }
+            //};
 
-            var res = await dynamoService.QueryFirstOrDefaultAsync<SupplierConsultancyRegister>(filter);
+            ////var request = new ScanRequest()
+            ////{
+            ////    FilterExpression = where.ToString(),
+            ////    Filter = filter,
+            ////    PageSize = filter.PageSize,
+            ////    Page = filter.PaginationToken
+            ////}, cancellationToken);
 
-            Console.WriteLine(res);
+            //var res = await dynamoService.QueryFirstOrDefaultAsync<SupplierConsultancyRegister>(filter);
+
+            // Console.WriteLine(res);
 
 
             //// BuyerByDocumentFilter
@@ -112,7 +178,7 @@ namespace ConsoleAppTest
 
             //Console.WriteLine(buyer);
 
-           //  var buyer = await dynamoService.ScanPaginatedByAsync<DynamoTable>(scanRequest);
+            //  var buyer = await dynamoService.ScanPaginatedByAsync<DynamoTable>(scanRequest);
 
             //var scanRequest = new ScanRequest()
             //{

@@ -9,14 +9,16 @@ namespace Innovt.CrossCutting.Log.Serilog
     public class Logger: Core.CrossCutting.Log.ILogger
     {
         private readonly global::Serilog.Core.Logger logger=null;
+
+        private const string ConsoleTemplate =
+            "[{Timestamp:HH:mm:ss} {TraceId:TraceId} {SpanId:SpanId} {Level:u3}] {Message:lj}{NewLine}{Exception}{NewLine}{Properties:j}";
         
         /// <summary>
         /// The default sink is Console
         /// </summary>
-        public Logger()
+        public Logger():this(new LoggerConfiguration())
         {
-            logger = new LoggerConfiguration().WriteTo.Console()
-                .CreateLogger();
+           
         }
 
         public Logger(ILogEventEnricher enricher)
@@ -26,15 +28,16 @@ namespace Innovt.CrossCutting.Log.Serilog
                 throw new ArgumentNullException(nameof(enricher));
             }
 
-            logger = new LoggerConfiguration().WriteTo.Console().Enrich.With(enricher)
-                .CreateLogger();
+            logger = new LoggerConfiguration().WriteTo.Console(outputTemplate:ConsoleTemplate
+                ).Enrich.With(enricher).CreateLogger();
         }
 
         public Logger(LoggerConfiguration configuration)
         {
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
-            logger = configuration.CreateLogger();
+            //The default Enricher ir OpenTracing
+            logger = configuration.WriteTo.Console(outputTemplate:ConsoleTemplate).Enrich.With<OpenTracingContextLogEnricher>().Enrich.FromLogContext().CreateLogger();
         }
 
         public void Debug(string messageTemplate)
@@ -43,7 +46,7 @@ namespace Innovt.CrossCutting.Log.Serilog
                 Console.WriteLine("LogLevel Debug not enabled.");
                 return;
             }
-
+          
             logger.Debug(messageTemplate);
         }
 

@@ -1,4 +1,5 @@
-﻿using Innovt.Domain.Repository;
+﻿using Innovt.Domain.Core.Repository;
+
 
 namespace Innovt.Data.EFCore.Repositories
 {

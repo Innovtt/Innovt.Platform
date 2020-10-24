@@ -1,5 +1,4 @@
-﻿
-using Innovt.Domain.Model.Security;
+﻿using Innovt.Domain.Security;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

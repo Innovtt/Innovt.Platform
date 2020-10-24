@@ -99,11 +99,10 @@ namespace Innovt.Core.Utilities
 
         public static string FormatToExtensionDateTime(this DateTimeOffset value)
         {
-            string dia = String.Empty;
 
             string[] diaSemana = value.ToString("dddd").Split('-');
 
-            dia = diaSemana[0].Substring(0, 1).ToUpper() + diaSemana[0].Substring(1, diaSemana[0].Length - 1);
+            var dia = diaSemana[0].Substring(0, 1).ToUpper() + diaSemana[0].Substring(1, diaSemana[0].Length - 1);
 
             if (diaSemana.Length == 2)
                 dia += "-" + diaSemana[1].Substring(0, 1).ToUpper() + diaSemana[1].Substring(1, diaSemana[1].Length - 1);
@@ -116,11 +115,9 @@ namespace Innovt.Core.Utilities
 
         public static string FormatToSimpleDateTime(this DateTimeOffset value)
         {
-            string dia = String.Empty;
-
             string[] diaSemana = value.ToString("dddd").Split('-');
 
-            dia = diaSemana[0].Substring(0, 1).ToUpper() + diaSemana[0].Substring(1, diaSemana[0].Length - 1);
+            var dia = diaSemana[0].Substring(0, 1).ToUpper() + diaSemana[0].Substring(1, diaSemana[0].Length - 1);
 
 
             return dia + " - " + value.Day + "/" + value.Month;
@@ -298,30 +295,26 @@ namespace Innovt.Core.Utilities
 
         public static byte[] Zip(this byte[] bytes)
         {
-            using (var msi = new MemoryStream(bytes))
-            using (var mso = new MemoryStream())
+            using var msi = new MemoryStream(bytes);
+            using var mso = new MemoryStream();
+            using (var gs = new GZipStream(mso, CompressionMode.Compress))
             {
-                using (var gs = new GZipStream(mso, CompressionMode.Compress))
-                {
-                    CopyTo(msi, gs);
-                }
-
-                return mso.ToArray();
+                CopyTo(msi, gs);
             }
+
+            return mso.ToArray();
         }
 
         public static string Unzip(this byte[] bytes)
         {
-            using (var msi = new MemoryStream(bytes))
-            using (var mso = new MemoryStream())
-            {
-                using (var gs = new GZipStream(msi, CompressionMode.Decompress))
-                {   
-                    CopyTo(gs, mso);
-                }
-
-                return Encoding.UTF8.GetString(mso.ToArray());
+            using var msi = new MemoryStream(bytes);
+            using var mso = new MemoryStream();
+            using (var gs = new GZipStream(msi, CompressionMode.Decompress))
+            {   
+                CopyTo(gs, mso);
             }
+
+            return Encoding.UTF8.GetString(mso.ToArray());
         }
 
         #endregion

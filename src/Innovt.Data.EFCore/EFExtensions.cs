@@ -1,12 +1,12 @@
 ﻿using System.Linq;
-using Innovt.Domain.Specification;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using System.Collections.Generic;
 using System;
-using Innovt.Domain.Model.Security;
 using Innovt.Data.EFCore.Maps;
-using Innovt.Domain.Repository;
+using Innovt.Domain.Core.Repository;
+using Innovt.Domain.Core.Specification;
+using Innovt.Domain.Security;
 
 namespace Innovt.Data.EFCore
 {

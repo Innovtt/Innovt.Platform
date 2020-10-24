@@ -1,4 +1,4 @@
-﻿using Innovt.Domain.Model.Documents;
+﻿using Innovt.Domain.Documents;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

@@ -1,4 +1,4 @@
-﻿using Innovt.Domain.Model.Address;
+﻿using Innovt.Domain.Address;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

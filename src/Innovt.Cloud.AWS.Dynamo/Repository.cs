@@ -11,7 +11,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Linq;
 using Innovt.Core.Collections;
-using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.Dynamo
 {
@@ -102,7 +101,7 @@ namespace Innovt.Cloud.AWS.Dynamo
 
             var queryRequest = Helpers.CreateQueryRequest<T>(request);
 
-            var queryResponse = await DynamoClient.QueryAsync(queryRequest).ConfigureAwait(false);
+            var queryResponse = await DynamoClient.QueryAsync(queryRequest,cancellationToken).ConfigureAwait(false);
 
             return (queryResponse.LastEvaluatedKey, Helpers.ConvertAttributesToType<T>(queryResponse.Items, Context));
         }
@@ -144,7 +143,7 @@ namespace Innovt.Cloud.AWS.Dynamo
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
-            return (await InternalQueryAsync<T>(request)).Items;
+            return (await InternalQueryAsync<T>(request,cancellationToken)).Items;
         }
 
         public async Task<T> QueryFirstOrDefaultAsync<T>(Table.QueryRequest request, CancellationToken cancellationToken = default)
@@ -153,7 +152,7 @@ namespace Innovt.Cloud.AWS.Dynamo
 
             request.PageSize = 1;
 
-            var queryResponse = (await InternalQueryAsync<T>(request)).Items;
+            var queryResponse = (await InternalQueryAsync<T>(request,cancellationToken)).Items;
           
             return queryResponse.FirstOrDefault();
         }
@@ -162,13 +161,13 @@ namespace Innovt.Cloud.AWS.Dynamo
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
-            var queryResponse = (await InternalQueryAsync<T>(request));
+            var (lastEvaluatedKey, items) = (await InternalQueryAsync<T>(request,cancellationToken));
 
 
             return new PagedCollection<T>()
             {
-                Items = queryResponse.Items,
-                Page = Helpers.CreatePaginationToken(queryResponse.LastEvaluatedKey)
+                Items = items,
+                Page = Helpers.CreatePaginationToken(lastEvaluatedKey)
             };
         }
 
@@ -190,7 +189,7 @@ namespace Innovt.Cloud.AWS.Dynamo
                     scanRequest.Limit = (pageSize - result.Count) < 10 ? 10 : (pageSize - result.Count);
                 }
 
-                var response = await DynamoClient.ScanAsync(scanRequest).ConfigureAwait(false);
+                var response = await DynamoClient.ScanAsync(scanRequest,cancellationToken).ConfigureAwait(false);
 
                 if (response.Items.Any())
                 {
@@ -210,7 +209,7 @@ namespace Innovt.Cloud.AWS.Dynamo
 
         public async Task<IList<T>> ScanAsync<T>(Table.ScanRequest request, CancellationToken cancellationToken = default)
         {
-            return (await InternalScanAsync<T>(request)).Items;
+            return (await InternalScanAsync<T>(request,cancellationToken)).Items;
         }
 
 
@@ -218,15 +217,15 @@ namespace Innovt.Cloud.AWS.Dynamo
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
-            var scanResponse = await this.InternalScanAsync<T>(request, cancellationToken);
+            var (exclusiveStartKey, items) = await this.InternalScanAsync<T>(request, cancellationToken);
 
-            if (scanResponse.Items?.Count() ==0)
+            if (items?.Count() ==0)
                 return new PagedCollection<T>();
 
             var response = new PagedCollection<T>()
             {
-                Items = scanResponse.Items,
-                Page  = Helpers.CreatePaginationToken(scanResponse.ExclusiveStartKey),
+                Items = items,
+                Page  = Helpers.CreatePaginationToken(exclusiveStartKey),
             };
 
             return response;

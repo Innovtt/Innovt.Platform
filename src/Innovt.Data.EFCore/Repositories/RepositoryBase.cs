@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Innovt.Core.Collections;
-using Innovt.Domain.Repository;
-using Innovt.Domain.Specification;
+using Innovt.Domain.Core.Repository;
+using Innovt.Domain.Core.Specification;
 using Microsoft.EntityFrameworkCore;
 
 namespace Innovt.Data.EFCore.Repositories

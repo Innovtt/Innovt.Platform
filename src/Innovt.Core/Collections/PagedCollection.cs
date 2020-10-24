@@ -8,7 +8,7 @@ namespace Innovt.Core.Collections
         public IEnumerable<T> Items { get; set; }
 
 
-        public PagedCollection(IEnumerable<T> collection, int? page = null, int? pageSize = null):this(collection,pageSize?.ToString(),pageSize)
+        public PagedCollection(IEnumerable<T> collection, int? page = null, int? pageSize = null):this(collection,page?.ToString(),pageSize)
         {  
         }
 

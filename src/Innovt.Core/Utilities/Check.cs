@@ -5,6 +5,20 @@ using Innovt.Core.Exceptions;
 
 namespace Innovt.Core.Utilities
 {
+    public class AppServiceAbc
+    {
+
+        public void AddUser(object user)
+        {
+            Check.NotNull(user,nameof(user));
+
+
+
+
+        }
+    }
+
+
     [DebuggerStepThrough]
     public static class Check
     {

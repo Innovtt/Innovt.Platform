@@ -3,17 +3,19 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <PackageId>Innovt.Domain</PackageId>
-    <PackageVersion>3.0.4</PackageVersion>
+    <PackageVersion>4.0.0</PackageVersion>
     <Authors>Michel,Tiago</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Copyright>Innovt Tecnologia</Copyright>
     <Description>Simple domain project.</Description>
-    <Version>3.0.4</Version>
+    <Version>4.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj" />
+    <ProjectReference Include="..\Innovt.Domain.Core\Innovt.Domain.Core.csproj" />
+
   </ItemGroup>
 
   <ItemGroup>

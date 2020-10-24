@@ -5,7 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Innovt.AspNetCore.Extensions;
 using Innovt.Core.Utilities;
-using Innovt.Domain.Model.Security;
+using Innovt.Domain.Security;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc.Controllers;

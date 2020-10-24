@@ -29,19 +29,19 @@ namespace Innovt.Cloud.File
         
         string GeneratePreSignedURL(string bucketName, string key, DateTime expiration, IDictionary<string, object> additionalProperties);
        
+        string GetPreSignedURL(string bucketName, string key, DateTime expires);
+
         string GetObjectContent(string url, Encoding encoding);
        
         Task<string> GetObjectContentAsync(string url, Encoding encoding, CancellationToken cancellationToken = default);
-       
-        string GetPreSignedURL(string bucketName, string key, DateTime expires);
         
-        string PutObject(string bucketName, Stream stream, string fileName, string region = null, string contentType = null);
+        string PutObject(string bucketName, Stream stream, string fileName,string contentType = null);
        
-        string PutObject(string bucketName, string filePath, string region = null, string contentType = null);
+        string PutObject(string bucketName, string filePath, string contentType = null);
        
-        Task<string> PutObjectAsync(string bucketName, Stream stream, string fileName, string region = null, string contentType = null, CancellationToken cancellationToken = default);
+        Task<string> PutObjectAsync(string bucketName, Stream stream, string fileName, string contentType = null, CancellationToken cancellationToken = default);
         
-        Task<string> PutObjectAsync(string bucketName, string filePath, string region = null, string contentType = null, CancellationToken cancellationToken = default);
+        Task<string> PutObjectAsync(string bucketName, string filePath, string contentType = null, CancellationToken cancellationToken = default);
       
         string Upload(string bucketName, Stream stream, string fileName, string region = null, List<KeyValuePair<string, string>> metadata = null);
        

@@ -1,10 +1,10 @@
-﻿using Innovt.Domain.Model.Security;
-using Innovt.Domain.Repository;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Innovt.Domain.Core.Repository;
+using Innovt.Domain.Security;
 
 namespace Innovt.Data.EFCore.Repositories
 {

@@ -6,7 +6,7 @@ namespace Innovt.CrossCutting.IOC
 {
     public sealed class Container : Innovt.Core.CrossCutting.Ioc.IContainer
     {
-        private Lamar.Container container;
+        private readonly Lamar.Container container;
 
         public Container(IServiceCollection services)
         {

@@ -3,6 +3,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Datadog.Trace.OpenTracing" Version="1.19.5" />
     <PackageReference Include="OpenTelemetry.Exporter.Console" Version="0.6.0-beta.1" />
     <PackageReference Include="OpenTracing.Contrib.NetCore" Version="0.6.2" />
   </ItemGroup>
@@ -10,5 +11,6 @@
     <ProjectReference Include="..\Innovt.AspNetCore\Innovt.AspNetCore.csproj" />
     <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj" />
     <ProjectReference Include="..\Innovt.CrossCutting.IOC\Innovt.CrossCutting.IOC.csproj" />
+    <ProjectReference Include="..\Innovt.CrossCutting.Log.Serilog\Innovt.CrossCutting.Log.Serilog.csproj" />
   </ItemGroup>
 </Project>

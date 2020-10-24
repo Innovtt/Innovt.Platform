@@ -85,16 +85,13 @@ namespace Innovt.Core.Utilities
             if (keyString == null) throw new ArgumentNullException(nameof(keyString));
 
 
-            using (var aesAlg = Aes.Create())
-            {
-                aesAlg.Key = Encoding.UTF8.GetBytes(keyString);
-                aesAlg.IV = new byte[16];
+            using var aesAlg = Aes.Create();
+            aesAlg.Key = Encoding.UTF8.GetBytes(keyString);
+            aesAlg.IV = new byte[16];
 
-                using var cryptoTransform = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
+            using var cryptoTransform = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
 
-                return Decrypt(cryptoTransform, encryptedText);
-            }
-
+            return Decrypt(cryptoTransform, encryptedText);
         }
 
         public static string RijndaelDecrypt(string encryptedText, string keyString)

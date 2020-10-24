@@ -4,7 +4,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Innovt.AspNetCore.Extensions;
 using Innovt.Core.CrossCutting.Log;
-using Innovt.Domain.Model.Tracking;
+using Innovt.Domain.Tracking;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -14,14 +14,14 @@ namespace Innovt.AspNetCore.Filters
     public class RequestTrackingFilterAttribute : ActionFilterAttribute
     {
         private readonly IRequestTrackingRepository trackingRepository;
-        private ILogger logger;
+        private readonly ILogger logger;
 
         private RequestTracking tracking = null;
 
 
-        public RequestTrackingFilterAttribute(IRequestTrackingRepository  _trackingRepository,ILogger _logger)
+        public RequestTrackingFilterAttribute(IRequestTrackingRepository  trackingRepository,ILogger _logger)
         {
-            trackingRepository = _trackingRepository ?? throw new System.ArgumentNullException(nameof(_trackingRepository));
+            this.trackingRepository = trackingRepository ?? throw new System.ArgumentNullException(nameof(trackingRepository));
             logger = _logger ?? throw new ArgumentNullException(nameof(_logger));
         }
         

@@ -53,19 +53,19 @@ namespace Innovt.Cloud.AWS.S3
             return (bucket, fileKey);
         }
 
-        public string PutObject(string bucketName, string filePath, string region = null, string contentType = null)
+        public string PutObject(string bucketName, string filePath,string contentType = null)
         {
-            return AsyncHelper.RunSync<string>(async () => await PutObjectAsync(bucketName, filePath, region, contentType));
+            return AsyncHelper.RunSync<string>(async () => await PutObjectAsync(bucketName, filePath, contentType));
         }
 
-        public string PutObject(string bucketName, Stream stream, string fileName, string region = null, string contentType = null)
+        public string PutObject(string bucketName, Stream stream, string fileName, string contentType = null)
         {
-            return AsyncHelper.RunSync<string>(async () => await PutObjectAsync(bucketName, stream, fileName, region, contentType));
+            return AsyncHelper.RunSync<string>(async () => await PutObjectAsync(bucketName, stream, fileName, contentType));
         }
 
 
         internal async Task<string> PutObjectInternalAsync(string bucketName, Stream stream, string fileName,
-            string region = null, string contentType = null, CancellationToken cancellationToken = default)
+            string contentType = null, CancellationToken cancellationToken = default)
         {
             var fileKey = Path.GetFileName(fileName);
 
@@ -90,29 +90,29 @@ namespace Innovt.Cloud.AWS.S3
             return GetObjectUrl(bucketName, fileKey);
         }
 
-        internal async Task<string> PutObjectInternalAsync(string bucketName, [NotNull] string filePath, string region = null,
+        internal async Task<string> PutObjectInternalAsync(string bucketName, [NotNull] string filePath,
             string contentType = null, CancellationToken cancellationToken = default)
         {
             await using FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
 
             var fileName = Path.GetFileName(filePath);
 
-            return await PutObjectAsync(bucketName, stream, fileName, region, contentType, cancellationToken);
+            return await PutObjectAsync(bucketName, stream, fileName, contentType, cancellationToken);
         }
 
-        public Task<string> PutObjectAsync(string bucketName, Stream stream, string fileName, string region = null, string contentType = null, CancellationToken cancellationToken = default)
+        public Task<string> PutObjectAsync(string bucketName, Stream stream, string fileName, string contentType = null, CancellationToken cancellationToken = default)
         {
             if (bucketName == null) throw new System.ArgumentNullException(nameof(bucketName));
             if (stream == null) throw new System.ArgumentNullException(nameof(stream));
 
-            return PutObjectInternalAsync(bucketName, stream, fileName, region, contentType, cancellationToken);
+            return PutObjectInternalAsync(bucketName, stream, fileName, contentType, cancellationToken);
         }
 
-        public Task<string> PutObjectAsync(string bucketName, string filePath, string region = null, string contentType = null, CancellationToken cancellationToken = default)
+        public Task<string> PutObjectAsync(string bucketName, string filePath, string contentType = null, CancellationToken cancellationToken = default)
         {
             if (filePath == null) throw new ArgumentNullException(nameof(filePath));
 
-            return PutObjectInternalAsync(bucketName, filePath, region, contentType, cancellationToken);
+            return PutObjectInternalAsync(bucketName, filePath, contentType, cancellationToken);
         }
 
         /// <summary>

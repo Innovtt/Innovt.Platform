@@ -8,11 +8,11 @@ namespace Innovt.Core.Serialization
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public class JsonFormatAttribute: JsonAttribute
     {
-        private readonly string format;
+        public string Format { get; }
 
         public JsonFormatAttribute(string format)
         {
-            this.format = format;
+            this.Format = format;
         }
     }
 }

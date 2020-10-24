@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using Innovt.Domain.Model.Tracking;
-using Innovt.Domain.Repository;
+using Innovt.Domain.Core.Repository;
+using Innovt.Domain.Tracking;
 
 
 namespace Innovt.Data.EFCore.Repositories

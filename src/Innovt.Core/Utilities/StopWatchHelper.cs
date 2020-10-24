@@ -26,7 +26,7 @@ namespace Innovt.Core.Utilities
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Console.WriteLine(e);//todo: colocar no log
             }
         }
 
