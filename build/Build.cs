@@ -2,10 +2,8 @@ using System;
 using System.Linq;
 using Nuke.Common;
 using Nuke.Common.Execution;
-using Nuke.Common.Git;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
-using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Tools.GitVersion;
 using Nuke.Common.Utilities.Collections;
@@ -23,19 +21,23 @@ class Build : NukeBuild
     ///   - JetBrains Rider            https://nuke.build/rider
     ///   - Microsoft VisualStudio     https://nuke.build/visualstudio
     ///   - Microsoft VSCode           https://nuke.build/vscode
-
-    public static int Main () => Execute<Build>(x => x.Pack);
+  
+    public static int Main () => Execute<Build>(x => x.Publish);
 
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
 
+    [Parameter] string NugetApiUrl = "https://nuget.pkg.github.com/Innovtt/index.json";
+    [Parameter] string NugetApiKey;
+
+     
     [Solution] readonly Solution Solution;
-    [GitRepository] readonly GitRepository GitRepository;
+    //[GitRepository] readonly GitRepository GitRepository;
     [GitVersion] readonly GitVersion GitVersion;
 
     AbsolutePath SourceDirectory => RootDirectory / "src";
     AbsolutePath ArtifactsDirectory => RootDirectory / "artifacts";
-
+    
     Target Clean => _ => _
         .Before(Restore)
         .Executes(() =>
@@ -54,7 +56,8 @@ class Build : NukeBuild
     Target Compile => _ => _
         .DependsOn(Restore)
         .Executes(() =>
-        {
+        {   
+           
             DotNetBuild(s => s
                 .SetProjectFile(Solution)
                 .SetConfiguration(Configuration)
@@ -69,29 +72,35 @@ class Build : NukeBuild
         .DependsOn(Compile)
         .Executes(() =>
         {
+            EnsureCleanDirectory(ArtifactsDirectory);
             DotNetPack(p => p
                 .SetProject(Solution)
                 .SetAuthors("Michel Borges")
                 .SetVersion(GitVersion.NuGetVersionV2)
                 .SetNoDependencies(true)
                 .SetOutputDirectory(ArtifactsDirectory / "nuget")
+                .SetRepositoryType("git")
+                .SetRepositoryUrl("https://github.com/Innovtt/Innovt.Platform")
             );
         });
 
-    Target Push => _ => _
+    Target Publish => _ => _
         .DependsOn(Pack)
+        .Requires(() => NugetApiUrl)
+        .Requires(() => NugetApiKey)
         .Requires(() => Configuration.Equals(Configuration.Release))
         .Executes(() =>
         {
             GlobFiles(ArtifactsDirectory / "nuget", "*.nupkg")
                 .NotEmpty()
-                .Where(x => !x.EndsWith("symbols.nupkg"))
+               // .Where(x => x.StartsWith("Innovt.",StringComparison.InvariantCultureIgnoreCase))
                 .ForEach(x =>
-                {
+                {  
                     DotNetNuGetPush(s => s
+                        .EnableSkipDuplicate()
                         .SetTargetPath(x)
-                        .SetSource("http://nugetinnovt.azurewebsites.net/api/v2/package")
-                        .SetApiKey("!1nn0vt#")
+                        .SetSource(NugetApiUrl)
+                        .SetApiKey(NugetApiKey)
                     );
                 });
         });
