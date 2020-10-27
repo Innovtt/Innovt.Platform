@@ -2,8 +2,8 @@
 
 namespace Innovt.Cqrs.Queries
 {
-    public interface IQueryHandler<T,R> where T:IFilter where R:class
+    public interface IQueryHandler<in TFilter, out TResult> where TFilter:IFilter where TResult:class
     {
-        R Handle(T filter);                          
+        TResult Handle(TFilter filter);                          
     }
 }

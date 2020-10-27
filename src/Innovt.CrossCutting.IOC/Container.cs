@@ -75,9 +75,14 @@ namespace Innovt.CrossCutting.IOC
             return (TService)container.GetInstance(type);
         }
 
-        public TService Resolve<TService>(string intanceKey)
+        public TService Resolve<TService>(string instanceKey)
         {
-            return container.GetInstance<TService>(intanceKey);
+            return container.GetInstance<TService>(instanceKey);
+        }
+
+        public void Dispose()
+        {
+            container?.Dispose();
         }
     }
 }

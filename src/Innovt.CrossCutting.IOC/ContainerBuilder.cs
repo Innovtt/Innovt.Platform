@@ -15,7 +15,7 @@ namespace Innovt.CrossCutting.IOC
 
         public IServiceProvider GetServiceProvider()
         {
-            return container;
+            return new ServiceProvider(container);
         }
     }
 
