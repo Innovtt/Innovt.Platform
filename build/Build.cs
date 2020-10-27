@@ -7,7 +7,6 @@ using Nuke.Common.ProjectModel;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Tools.GitVersion;
 using Nuke.Common.Utilities.Collections;
-using static Nuke.Common.EnvironmentInfo;
 using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.IO.PathConstruction;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
@@ -25,9 +24,9 @@ class Build : NukeBuild
     public static int Main () => Execute<Build>(x => x.Publish);
 
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
-    readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
+    readonly string Configuration = IsLocalBuild ? "Debug" : "Release";
 
-    [Parameter] string NugetApiUrl = "https://nuget.pkg.github.com/Innovtt/index.json";
+    [Parameter] string NugetApiUrl = "http://nugetinnovt.azurewebsites.net/api/v2/package";
     [Parameter] string NugetApiKey;
 
      
@@ -56,8 +55,7 @@ class Build : NukeBuild
     Target Compile => _ => _
         .DependsOn(Restore)
         .Executes(() =>
-        {   
-           
+        {  
             DotNetBuild(s => s
                 .SetProjectFile(Solution)
                 .SetConfiguration(Configuration)
@@ -79,8 +77,8 @@ class Build : NukeBuild
                 .SetVersion(GitVersion.NuGetVersionV2)
                 .SetNoDependencies(true)
                 .SetOutputDirectory(ArtifactsDirectory / "nuget")
-                .SetRepositoryType("git")
-                .SetRepositoryUrl("https://github.com/Innovtt/Innovt.Platform")
+                //.SetRepositoryType("git")
+               // .SetRepositoryUrl("https://github.com/Innovtt/Innovt.Platform")
             );
         });
 
@@ -88,7 +86,7 @@ class Build : NukeBuild
         .DependsOn(Pack)
         .Requires(() => NugetApiUrl)
         .Requires(() => NugetApiKey)
-        .Requires(() => Configuration.Equals(Configuration.Release))
+        .Requires(() => Configuration.Equals("Release",StringComparison.InvariantCultureIgnoreCase))
         .Executes(() =>
         {
             GlobFiles(ArtifactsDirectory / "nuget", "*.nupkg")
