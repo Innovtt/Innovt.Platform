@@ -1,4 +1,8 @@
 ﻿
+using System;
+using System.Collections.Generic;
+using Innovt.Domain.Core.Events;
+
 namespace Innovt.Domain.Core.Model
 {
     public interface IAggregateRoot<T>
@@ -8,6 +12,6 @@ namespace Innovt.Domain.Core.Model
 
     public interface IAggregateRoot
     {
-       // public T Id { get; set; }
+        public int Id { get; set; }
     }
 }

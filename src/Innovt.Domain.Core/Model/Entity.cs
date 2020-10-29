@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Innovt.Domain.Core.Events;
 
 namespace Innovt.Domain.Core.Model
 {
@@ -10,7 +12,7 @@ namespace Innovt.Domain.Core.Model
 
         protected Entity()
         {
-
+            CreatedAt  = DateTimeOffset.UtcNow;
         }
 
         protected Entity(int id)
@@ -34,11 +36,22 @@ namespace Innovt.Domain.Core.Model
 
             return anotherEntity?.Id == Id;
         }
+        
+        private List<DomainEvent> domainEvents;
+        public IReadOnlyList<DomainEvent> DomainEvents => domainEvents?.AsReadOnly();
+
+        public void AddDomainEvent(DomainEvent domainEvent)
+        {
+            if (domainEvent == null) throw new ArgumentNullException(nameof(domainEvent));
+
+            domainEvents ??= new List<DomainEvent>();
+                
+            domainEvents.Add(domainEvent);
+        }
     }
 
     public abstract class Entity<T>: Entity where T : struct
     {
         public new T Id { get; set; }
-        
     }
 }

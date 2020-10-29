@@ -9,7 +9,7 @@ namespace Innovt.Domain.Core.Events
         public string TraceId { get; set; }
         public DateTimeOffset CreatedAt { get; }
 
-        protected DomainEvent(string name, string version, string traceId)
+        protected DomainEvent(string name, string version = "1.0", string traceId=null)
         {
             Name = name;
             Version = version;

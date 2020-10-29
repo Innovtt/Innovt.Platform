@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Innovt.Domain.Core.Events
 {
-    public interface IEventBus
+    public interface IEventHandler
     {
         Task Publish(DomainEvent @event, CancellationToken cancellationToken = default);
         Task Publish(List<DomainEvent> events, CancellationToken cancellationToken = default);

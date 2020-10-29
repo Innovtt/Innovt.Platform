@@ -4,9 +4,9 @@ using Innovt.Core.Cqrs.Queries;
 
 namespace Innovt.Cqrs.Queries
 {
-    public interface IAsyncQueryHandler<T, R> where T : IFilter where R : class
+    public interface IAsyncQueryHandler<in TFilter, TResult> where TFilter : IFilter where TResult : class
     {
-        Task<R> HandleAsync(T filter, CancellationToken cancellationToken = default);
+        Task<TResult> HandleAsync(TFilter filter, CancellationToken cancellationToken = default);
     }
 
     public interface ICountAsyncQueryHandler<in T> where T : IFilter

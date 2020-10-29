@@ -160,7 +160,6 @@ namespace Innovt.AspNetCore
               return;
             }
 
-
             app.UseRewriter(new RewriteOptions().AddRedirect("(.*)docs$", "$1docs/index.html"));
  
             app.UseSwagger(s=>{ 
