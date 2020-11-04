@@ -9,7 +9,7 @@ namespace Innovt.Cloud.Table
     {
         public string IndexName { get; set; }
         
-        public IFilter Filter { get; set; }
+        public object Filter { get; set; }
 
         public string AttributesToGet { get; set; }
         public int? PageSize { get; set; }

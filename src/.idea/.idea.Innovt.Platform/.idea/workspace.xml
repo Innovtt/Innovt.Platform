@@ -34,10 +34,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="741c11c8-6345-4a62-a870-aa11e5bc5449" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/ApiStartupBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/ApiStartupBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Handlers/HasScopeRequirement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Innovt.AspNetCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Innovt.AspNetCore.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Innovt.Cloud.AWS.Cognito.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Innovt.Cloud.AWS.Cognito.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Helpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Helpers.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Innovt.Cloud.AWS.Dynamo.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Innovt.Cloud.AWS.Dynamo.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/EventHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/EventHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/Innovt.Cloud.AWS.Kinesis.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/Innovt.Cloud.AWS.Kinesis.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/Innovt.Cloud.AWS.Lambda.Kinesis.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/Innovt.Cloud.AWS.Lambda.Kinesis.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.S3/Innovt.Cloud.AWS.Lambda.S3.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.S3/Innovt.Cloud.AWS.Lambda.S3.csproj" afterDir="false" />
@@ -48,22 +53,21 @@
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.SQS/Innovt.Cloud.AWS.SQS.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.SQS/Innovt.Cloud.AWS.SQS.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS/Innovt.Cloud.AWS.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS/Innovt.Cloud.AWS.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud/Innovt.Cloud.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud/Innovt.Cloud.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Cloud/Table/BaseRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud/Table/BaseRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Cloud/Table/ITableRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud/Table/ITableRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Core/Innovt.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Innovt.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cqrs/Commands/Decorators/DatabaseAsyncRetryDecorator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cqrs/Commands/Decorators/DatabaseAsyncRetryDecorator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cqrs/Commands/Decorators/DatabaseRetryDecorator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cqrs/Commands/Decorators/DatabaseRetryDecorator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cqrs/Commands/IAsyncCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cqrs/Commands/IAsyncCommandHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cqrs/Innovt.Cqrs.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cqrs/Innovt.Cqrs.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cqrs/Queries/IAsyncQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cqrs/Queries/IAsyncQueryHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.CrossCutting.IOC/Innovt.CrossCutting.IOC.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.CrossCutting.IOC/Innovt.CrossCutting.IOC.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.CrossCutting.Log.Serilog/Innovt.CrossCutting.Log.Serilog.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.CrossCutting.Log.Serilog/Innovt.CrossCutting.Log.Serilog.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.CrossCutting.Log.Serilog/Logger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.CrossCutting.Log.Serilog/Logger.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Data.Ado/Innovt.Data.Ado.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Ado/Innovt.Data.Ado.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/DBContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/DBContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/Innovt.Data.EFCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/Innovt.Data.EFCore.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Data.Migration/Innovt.Data.Migration.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Migration/Innovt.Data.Migration.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Data/Innovt.Data.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data/Innovt.Data.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Events/DomainEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Events/DomainEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Events/IEventHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Events/IEventHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Innovt.Domain.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Innovt.Domain.Core.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Model/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Model/Entity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Model/IAggregateRoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Model/IAggregateRoot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Domain/Innovt.Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Innovt.Domain.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Job.Core/Innovt.Job.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Job.Core/Innovt.Job.Core.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Job.Quartz/Innovt.Job.Quartz.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Job.Quartz/Innovt.Job.Quartz.csproj" afterDir="false" />
@@ -77,12 +81,32 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D5EDF430-AB5A-4412-A0B9-E75F3C32EB0A/65/336f1dd1/ModelBuilder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/051BC642-7BC4-4025-8FC8-06B760F03A0E/09/a0dedce9/AttributeValue.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Innovt.Domain.Core/Events/DomainEvent.cs" />
-        <option value="$PROJECT_DIR$/Innovt.Domain.Core/Model/Entity.cs" />
         <option value="$PROJECT_DIR$/Innovt.Domain.Core/Model/IAggregateRoot.cs" />
+        <option value="$PROJECT_DIR$/Innovt.Domain.Core/Events/IEventHandler.cs" />
+        <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/EventHandler.cs" />
+        <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/Innovt.Cloud.AWS.Lambda.Kinesis.csproj" />
+        <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Sqs/Innovt.Cloud.AWS.Lambda.Sqs.csproj" />
+        <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.S3/Innovt.Cloud.AWS.Lambda.S3.csproj" />
+        <option value="$PROJECT_DIR$/Innovt.CrossCutting.IOC/Innovt.CrossCutting.IOC.csproj" />
+        <option value="$PROJECT_DIR$/Innovt.AspNetCore/Innovt.AspNetCore.csproj" />
+        <option value="$PROJECT_DIR$/Innovt.AspNetCore/Handlers/HasScopeRequirement.cs" />
+        <option value="$PROJECT_DIR$/Innovt.CrossCutting.Log.Serilog/Logger.cs" />
+        <option value="$PROJECT_DIR$/Innovt.Cloud/Table/BaseRequest.cs" />
+        <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Helpers.cs" />
+        <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" />
+        <option value="$PROJECT_DIR$/Innovt.Cloud/Table/ITableRepository.cs" />
+        <option value="$PROJECT_DIR$/Innovt.Cloud.AWS/Innovt.Cloud.AWS.csproj" />
+        <option value="$PROJECT_DIR$/Innovt.Data/Innovt.Data.csproj" />
+        <option value="$PROJECT_DIR$/Innovt.Data.EFCore/DBContext.cs" />
+        <option value="$PROJECT_DIR$/Innovt.Domain.Core/Model/Entity.cs" />
       </list>
     </option>
   </component>
@@ -93,8 +117,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -125,7 +152,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1603933633727</updated>
-      <workItem from="1603933648483" duration="851000" />
+      <workItem from="1603933648483" duration="2555000" />
+      <workItem from="1603937505361" duration="3906000" />
+      <workItem from="1604062926839" duration="2062000" />
+      <workItem from="1604412682047" duration="11409000" />
     </task>
     <servers />
   </component>
@@ -142,14 +172,26 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2020" y="162" width="1720" height="857" key="VCS.FileHistoryDialog" timestamp="1603934777424">
+    <state x="2020" y="141" width="1720" height="876" key="VCS.FileHistoryDialog" timestamp="1604497758711">
+      <screen x="1920" y="39" width="1920" height="1080" />
+    </state>
+    <state x="2020" y="141" width="1720" height="876" key="VCS.FileHistoryDialog/-1920.87.1920.1057/1920.39.1920.1080/0.23.1920.1177@1920.39.1920.1080" timestamp="1604497758711" />
+    <state x="2020" y="162" width="1720" height="857" key="VCS.FileHistoryDialog/-1920.87.1920.1057/1920.62.1920.1057/0.23.1920.1177@1920.62.1920.1057" timestamp="1603934777424" />
+    <state x="2418" y="169" width="797" height="755" key="find.popup" timestamp="1604498553063">
+      <screen x="1920" y="39" width="1920" height="1080" />
+    </state>
+    <state x="2418" y="169" width="797" height="755" key="find.popup/-1920.64.1920.1080/1920.39.1920.1080/0.0.1920.1200@1920.39.1920.1080" timestamp="1604498553063" />
+    <state x="586" y="202" width="797" height="822" key="find.popup/-1920.87.1920.1057/1920.62.1920.1057/0.23.1920.1177@0.23.1920.1177" timestamp="1603979050754" />
+    <state x="2506" y="223" width="747" height="735" key="find.popup/-1920.87.1920.1057/1920.62.1920.1057/0.23.1920.1177@1920.62.1920.1057" timestamp="1603937724503" />
+    <state x="2543" y="295" width="672" height="678" key="search.everywhere.popup" timestamp="1603937036321">
       <screen x="1920" y="62" width="1920" height="1057" />
     </state>
-    <state x="2020" y="162" width="1720" height="857" key="VCS.FileHistoryDialog/-1920.87.1920.1057/1920.62.1920.1057/0.23.1920.1177@1920.62.1920.1057" timestamp="1603934777424" />
+    <state x="2543" y="295" width="672" height="678" key="search.everywhere.popup/-1920.87.1920.1057/1920.62.1920.1057/0.23.1920.1177@1920.62.1920.1057" timestamp="1603937036321" />
   </component>
 </project>

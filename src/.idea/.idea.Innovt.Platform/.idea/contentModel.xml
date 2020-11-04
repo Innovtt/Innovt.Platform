@@ -59,6 +59,9 @@
           <e p="RequestTrackingFilterAttribute.cs" t="Include" />
           <e p="SwaggerExcludeFilter.cs" t="Include" />
         </e>
+        <e p="Handlers" t="Include">
+          <e p="HasScopeRequirement.cs" t="Include" />
+        </e>
         <e p="Infrastructure" t="Include">
           <e p="InvalidModelStateResponse.cs" t="Include" />
         </e>

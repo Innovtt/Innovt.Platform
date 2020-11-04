@@ -26,6 +26,13 @@ namespace Innovt.Cloud.Table
 
         Task<T> QueryFirstOrDefaultAsync<T>(Table.QueryRequest request, CancellationToken cancellationToken = default);
 
+        Task<(List<TResult1> first, List<TResult2> second)> QueryMultipleAsync<T, TResult1, TResult2>(
+            Table.QueryRequest request,string splitBy, CancellationToken cancellationToken = default);
+
+        Task<(List<TResult1> first, List<TResult2> second, List<TResult3> third)>
+            QueryMultipleAsync<T, TResult1, TResult2, TResult3>(Table.QueryRequest request,string[] splitBy,
+                CancellationToken cancellationToken = default);
+
         Task<IList<T>> ScanAsync<T>(Innovt.Cloud.Table.ScanRequest request, CancellationToken cancellationToken = default);
 
         Task<PagedCollection<T>> ScanPaginatedByAsync<T>(Innovt.Cloud.Table.ScanRequest request, CancellationToken cancellationToken = default);

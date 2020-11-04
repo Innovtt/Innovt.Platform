@@ -38,8 +38,7 @@ namespace Innovt.Domain.Core.Model
         }
         
         private List<DomainEvent> domainEvents;
-        public IReadOnlyList<DomainEvent> DomainEvents => domainEvents?.AsReadOnly();
-
+      
         public void AddDomainEvent(DomainEvent domainEvent)
         {
             if (domainEvent == null) throw new ArgumentNullException(nameof(domainEvent));
@@ -47,6 +46,11 @@ namespace Innovt.Domain.Core.Model
             domainEvents ??= new List<DomainEvent>();
                 
             domainEvents.Add(domainEvent);
+        }
+
+        public IReadOnlyList<DomainEvent> GetDomainEvents()
+        {
+            return domainEvents?.AsReadOnly();
         }
     }
 

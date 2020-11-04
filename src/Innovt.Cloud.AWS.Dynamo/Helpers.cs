@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Innovt.Cloud.Table;
 
 namespace Innovt.Cloud.AWS.Dynamo
 {
@@ -76,7 +77,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             return new AttributeValue(value.ToString());
 
         }
-        internal static Dictionary<string, AttributeValue> CreateExpressionAttributeValues(IFilter  filter, string attributes)
+        private static Dictionary<string, AttributeValue> CreateExpressionAttributeValues(object  filter, string attributes)
         {
             if (filter == null)
                 return null;
@@ -141,12 +142,10 @@ namespace Innovt.Cloud.AWS.Dynamo
             if (request.PageSize.HasValue)
                 scanRequest.Limit = request.PageSize ==0 ? 1 : request.PageSize.Value;
 
-
             return scanRequest;
         }
-    
 
-      internal static List<T> ConvertAttributesToType<T>(List<Dictionary<string, AttributeValue>> items, DynamoDBContext context)
+        internal static List<T> ConvertAttributesToType<T>(List<Dictionary<string, AttributeValue>> items, DynamoDBContext context)
     {
             if (items is null)
                 return null;
@@ -161,7 +160,66 @@ namespace Innovt.Cloud.AWS.Dynamo
 
             return result;
         }
+        
+        internal static (List<T1> first,List<T2> seccond) ConvertAttributesToType<T1,T2>(List<Dictionary<string, AttributeValue>> items,string splitBy,  DynamoDBContext context)
+        {
+            if (items is null)
+                return (null,null);
 
+            var result1 = new List<T1>();
+            var result2 = new List<T2>();
+           
+            foreach (var item in items)
+            {
+                var doc = Document.FromAttributeMap(item);
+
+                if(item.ContainsKey("EntityType") && (item["EntityType"].S == splitBy))
+                {
+                    result1.Add(context.FromDocument<T1>(doc));
+                }
+                else
+                {
+                    result2.Add(context.FromDocument<T2>(doc));
+                }
+            }
+
+            return (result1,result2);
+        }
+        internal static (List<T1> first,List<T2> seccond,List<T3> third) ConvertAttributesToType<T1,T2,T3>(List<Dictionary<string, AttributeValue>> items,string[] splitBy, DynamoDBContext context)
+        {
+            if (items is null)
+                return (null,null,null);
+
+            var result1 = new List<T1>();
+            var result2 = new List<T2>();
+            var result3 = new List<T3>();
+           
+            foreach (var item in items)
+            {
+                var doc = Document.FromAttributeMap(item);
+              
+                if(!item.ContainsKey("EntityType"))
+                    continue;
+                    
+                if(item["EntityType"].S == splitBy[0])
+                {
+                    result1.Add(context.FromDocument<T1>(doc));
+                }
+                else
+                {
+                    if (item["EntityType"].S == splitBy[1])
+                    {
+                        result2.Add(context.FromDocument<T2>(doc));
+                    }
+                    else
+                    {
+                        result3.Add(context.FromDocument<T3>(doc));
+                    }
+                }
+            }
+
+            return (result1,result2,result3);
+        }
 
     internal static string CreatePaginationToken(Dictionary<string, AttributeValue> lastEvaluatedKey)
         {

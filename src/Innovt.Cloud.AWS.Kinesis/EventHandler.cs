@@ -36,7 +36,7 @@ namespace Innovt.Cloud.AWS.Kinesis
             get { return kinesisClient ??= CreateService<AmazonKinesisClient>(); }
         }
 
-        private async Task InternalPublish(List<DomainEvent> events, CancellationToken cancellationToken = default)
+        private async Task InternalPublish(IList<DomainEvent> events, CancellationToken cancellationToken = default)
         {
             if (events == null) throw new ArgumentNullException(nameof(events));
             if (events.Count > 500) throw new InvalidEventLimitException();
@@ -93,7 +93,7 @@ namespace Innovt.Cloud.AWS.Kinesis
             await InternalPublish(new List<DomainEvent>(){ @event }, cancellationToken);
         }
 
-        public async Task Publish(List<DomainEvent> events, CancellationToken cancellationToken = default)
+        public async Task Publish(IList<DomainEvent> events, CancellationToken cancellationToken = default)
         {
             await InternalPublish(events, cancellationToken);
         }

@@ -11,7 +11,7 @@ namespace Innovt.CrossCutting.Log.Serilog
         private readonly global::Serilog.Core.Logger logger=null;
 
         private const string ConsoleTemplate =
-            "[{Timestamp:HH:mm:ss} {TraceId:TraceId} {SpanId:SpanId} {Level:u3}] {Message:lj}{NewLine}{Exception}{NewLine}{Properties:j}";
+            "[{Timestamp:HH:mm:ss} {Level:u3}] {TraceId:TraceId} {SpanId:SpanId} {Message:lj}{NewLine}{Exception}{NewLine}{Properties:j}";
         
         /// <summary>
         /// The default sink is Console

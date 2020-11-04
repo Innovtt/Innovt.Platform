@@ -7,6 +7,6 @@ namespace Innovt.Domain.Core.Events
     public interface IEventHandler
     {
         Task Publish(DomainEvent @event, CancellationToken cancellationToken = default);
-        Task Publish(List<DomainEvent> events, CancellationToken cancellationToken = default);
+        Task Publish(IList<DomainEvent> events, CancellationToken cancellationToken = default);
     }
 }

@@ -41,8 +41,7 @@ namespace Innovt.Data.EFCore
             {
                 optionsBuilder.UseLoggerFactory(loggerFactory);
             }
-
-
+            
             if (dataSource!=null)
             {
                 var connectionString = dataSource.GetConnectionString();
