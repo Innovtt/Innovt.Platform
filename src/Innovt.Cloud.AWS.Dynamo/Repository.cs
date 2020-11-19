@@ -95,8 +95,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             await DynamoClient.UpdateItemAsync(tableName, key, attributeUpdates, cancellationToken)).ConfigureAwait(false);
         }
 
-        //   return (queryResponse.LastEvaluatedKey, Helpers.ConvertAttributesToType<T>(queryResponse.Items, Context));
-
+     
         private async Task<(Dictionary<string, AttributeValue> LastEvaluatedKey, List<Dictionary<string, AttributeValue>> Items)> InternalQueryAsync<T>(Innovt.Cloud.Table.QueryRequest request, CancellationToken cancellationToken = default)
         {
             if (request is null) throw new ArgumentNullException(nameof(request));

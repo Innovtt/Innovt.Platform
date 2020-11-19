@@ -24,7 +24,7 @@ namespace Innovt.Cloud.AWS.Lambda
         {
         }
 
-        protected void SetupIoc()
+        private void SetupIoc()
         {
             if (IsIocContainerInitialized)
             {
@@ -61,6 +61,9 @@ namespace Innovt.Cloud.AWS.Lambda
 
         public async Task Process(T message, ILambdaContext context)
         {
+            if (message == null) throw new ArgumentNullException(nameof(message));
+            if (context == null) throw new ArgumentNullException(nameof(context));
+            
             context.Logger.LogLine($"Receiving message. Function {context.FunctionName} and Version {context.FunctionVersion}");
 
             this.Context = context;
@@ -70,6 +73,7 @@ namespace Innovt.Cloud.AWS.Lambda
             await Handle(message, context);
         }
 
+        
         protected abstract IContainer SetupIocContainer();
  
         protected abstract Task Handle(T message, ILambdaContext context);

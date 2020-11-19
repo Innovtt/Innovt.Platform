@@ -10,7 +10,6 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
 {
     public abstract class SqsEventProcessor<TBody> : EventProcessor<SQSEvent> where TBody : class
     {
-
         private ISerializer serializer;
 
         protected SqsEventProcessor(ILogger logger) : base(logger)

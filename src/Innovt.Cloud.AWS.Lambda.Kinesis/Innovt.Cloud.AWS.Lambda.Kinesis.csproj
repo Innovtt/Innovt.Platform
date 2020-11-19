@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<PackageId>Innovt.Cloud.AWS.Lambda.Kinesis</PackageId>
-		<PackageVersion>3.1.6.3</PackageVersion>
+		<PackageVersion>3.1.6.6</PackageVersion>
 		<Authors>Michel,Tiago</Authors>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -19,6 +19,7 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda\Innovt.Cloud.AWS.Lambda.csproj" />
+	  <ProjectReference Include="..\Innovt.Domain.Core\Innovt.Domain.Core.csproj" />
 	</ItemGroup>
 
 </Project>

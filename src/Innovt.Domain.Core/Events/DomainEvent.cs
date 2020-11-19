@@ -1,21 +1,18 @@
 ﻿using System;
+using Innovt.Domain.Core.Streams;
 
 namespace Innovt.Domain.Core.Events
 {
-    public abstract class DomainEvent
+    public abstract class DomainEvent: IDataStream
     {
         public string Name { get; }
+        
         public string Version { get; }
-        public string TraceId { get; set; }
-        public DateTimeOffset CreatedAt { get; }
 
-        protected DomainEvent(string name, string version = "1.0", string traceId=null)
-        {
-            Name = name;
-            Version = version;
-            TraceId = traceId;
-            CreatedAt =  DateTimeOffset.UtcNow;
-            Version = version ?? "1.0";
-        }
+        public string EventId { get; set; }
+        public string Partition { get; set; }
+        public string TraceId { get; set; }
+        
+        public DateTime ApproximateArrivalTimestamp { get; set; }
     }
 }
