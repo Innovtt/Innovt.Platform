@@ -61,7 +61,7 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
             //
             // var result = await client.QueryAsync(request, CancellationToken.None);
 
-            var filter = new { bid= "f2c9e6ba-2735-43e1-82f2-0ddf5c766c42", pid = 5};
+            var filter = new { bid= "f2c9e6ba-2735-43e1-82f2-0ddf5c766c42", pid = 588};
             
             var queryRequest = new QueryRequest()
             {
@@ -73,7 +73,8 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
             };
             
               //TODO: Alter Query to accept pagesize
-              var res = await baseRepository.QueryPaginatedByAsync<DataModel>(queryRequest, CancellationToken.None);
+              var res = await baseRepository.QueryAsync<DataModel>(queryRequest, CancellationToken.None);
+             // var res = await baseRepository.QueryPaginatedByAsync<DataModel>(queryRequest, CancellationToken.None);
               
               
               

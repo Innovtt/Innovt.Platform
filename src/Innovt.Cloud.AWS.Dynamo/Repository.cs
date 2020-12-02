@@ -102,15 +102,18 @@ namespace Innovt.Cloud.AWS.Dynamo
 
             var items = new List<Dictionary<string, AttributeValue>>();
             
-            var remaining = request.PageSize; //10
+            var remaining = request.PageSize;
             Dictionary<string, AttributeValue> lastEvaluatedKey = null;
             
             do
             {
                 var queryRequest = Helpers.CreateQueryRequest<T>(request);
-                
-                queryRequest.Limit = remaining ?? 0;
                 queryRequest.ExclusiveStartKey = lastEvaluatedKey;
+                
+                if (remaining.HasValue)
+                {
+                    queryRequest.Limit = remaining.Value;
+                }
                 
                 var queryResponse = await DynamoClient.QueryAsync(queryRequest,cancellationToken).ConfigureAwait(false);
 
