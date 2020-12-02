@@ -36,42 +36,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="741c11c8-6345-4a62-a870-aa11e5bc5449" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/BaseRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/DataModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/riderModule.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Filters/ApiExceptionFilter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Filters/ApiExceptionFilter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Innovt.AspNetCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Innovt.AspNetCore.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Innovt.Cloud.AWS.Cognito.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Innovt.Cloud.AWS.Cognito.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/DataModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/DataModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Innovt.Cloud.AWS.Dynamo.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Innovt.Cloud.AWS.Dynamo.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/DataProducer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/DataProducer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/Innovt.Cloud.AWS.Kinesis.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/Innovt.Cloud.AWS.Kinesis.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/Innovt.Cloud.AWS.Lambda.Kinesis.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/Innovt.Cloud.AWS.Lambda.Kinesis.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.S3/Innovt.Cloud.AWS.Lambda.S3.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.S3/Innovt.Cloud.AWS.Lambda.S3.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Sqs/Innovt.Cloud.AWS.Lambda.Sqs.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Sqs/Innovt.Cloud.AWS.Lambda.Sqs.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/Innovt.Cloud.AWS.Lambda.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/Innovt.Cloud.AWS.Lambda.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Notification/Innovt.Cloud.AWS.Notification.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Notification/Innovt.Cloud.AWS.Notification.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.S3/Innovt.Cloud.AWS.S3.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.S3/Innovt.Cloud.AWS.S3.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.SQS/Innovt.Cloud.AWS.SQS.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.SQS/Innovt.Cloud.AWS.SQS.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS/Innovt.Cloud.AWS.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS/Innovt.Cloud.AWS.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud/Innovt.Cloud.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud/Innovt.Cloud.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Exceptions/ErrorMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Exceptions/ErrorMessage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Innovt.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Innovt.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cqrs/Innovt.Cqrs.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cqrs/Innovt.Cqrs.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.CrossCutting.IOC/Innovt.CrossCutting.IOC.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.CrossCutting.IOC/Innovt.CrossCutting.IOC.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.CrossCutting.Log.Serilog/Innovt.CrossCutting.Log.Serilog.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.CrossCutting.Log.Serilog/Innovt.CrossCutting.Log.Serilog.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.Ado/Innovt.Data.Ado.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Ado/Innovt.Data.Ado.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/Innovt.Data.EFCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/Innovt.Data.EFCore.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.Migration/Innovt.Data.Migration.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Migration/Innovt.Data.Migration.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data/Innovt.Data.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data/Innovt.Data.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Events/DomainEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Events/DomainEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Innovt.Domain.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Innovt.Domain.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/Innovt.Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Innovt.Domain.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Job.Core/Innovt.Job.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Job.Core/Innovt.Job.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Job.Quartz/Innovt.Job.Quartz.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Job.Quartz/Innovt.Job.Quartz.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Notification.Core/Innovt.Notification.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Notification.Core/Innovt.Notification.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Platform.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Platform.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,12 +57,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2487D3E0-48CE-4C7C-BE1B-5A050DA81DEE/0b/ca08ba3b/IDynamoDBv2PaginatorFactory.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2487D3E0-48CE-4C7C-BE1B-5A050DA81DEE/0b/ca08ba3b/IDynamoDBv2PaginatorFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/654AC2D5-AEE9-4BB7-9DE1-E6F0533F5376/140/CancellationToken.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/654AC2D5-AEE9-4BB7-9DE1-E6F0533F5376/2f/fc6fb880/IReadOnlyList`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2487D3E0-48CE-4C7C-BE1B-5A050DA81DEE/66/95d0c8e7/QueryRequest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2487D3E0-48CE-4C7C-BE1B-5A050DA81DEE/07/c9d5a3f1/IQueryPaginator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2487D3E0-48CE-4C7C-BE1B-5A050DA81DEE/66/95d0c8e7/QueryRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2487D3E0-48CE-4C7C-BE1B-5A050DA81DEE/07/c9d5a3f1/IQueryPaginator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/Helpers.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2487D3E0-48CE-4C7C-BE1B-5A050DA81DEE/5f/b2daf244/AmazonDynamoDBClient.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2487D3E0-48CE-4C7C-BE1B-5A050DA81DEE/5f/b2daf244/AmazonDynamoDBClient.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D5EDF430-AB5A-4412-A0B9-E75F3C32EB0A/65/336f1dd1/ModelBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/LambdaLogger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/051BC642-7BC4-4025-8FC8-06B760F03A0E/09/a0dedce9/AttributeValue.cs" root0="SKIP_HIGHLIGHTING" />
@@ -104,7 +80,6 @@
         <option value="$PROJECT_DIR$/Innovt.Cloud/Table/ITableRepository.cs" />
         <option value="$PROJECT_DIR$/Innovt.Data.EFCore/DBContext.cs" />
         <option value="$PROJECT_DIR$/Innovt.Data/Innovt.Data.csproj" />
-        <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" />
         <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Sqs/SqsEventProcessor.cs" />
         <option value="$PROJECT_DIR$/Innovt.Domain.Core/Streams/IDataStream.cs" />
         <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/EventProcessor.cs" />
@@ -128,10 +103,11 @@
         <option value="$PROJECT_DIR$/Innovt.AspNetCore/Innovt.AspNetCore.csproj" />
         <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Helpers.cs" />
         <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/UnitTest1.cs" />
-        <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/DataModel.cs" />
         <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/BaseRepository.cs" />
         <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/Innovt.Cloud.AWS.Dynamo.Tests.csproj" />
+        <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/DataModel.cs" />
         <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" />
+        <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" />
       </list>
     </option>
   </component>
@@ -144,6 +120,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34975636" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.29994586" />
@@ -231,7 +208,7 @@
       <workItem from="1606511686586" duration="2772000" />
       <workItem from="1606596427433" duration="1382000" />
       <workItem from="1606748211350" duration="1683000" />
-      <workItem from="1606851249208" duration="5607000" />
+      <workItem from="1606851249208" duration="9574000" />
     </task>
     <servers />
   </component>
@@ -254,90 +231,90 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="421" height="464" key="DebuggerActiveHint" timestamp="1606854266778">
+    <state width="518" height="464" key="DebuggerActiveHint" timestamp="1606922183656">
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
-    <state width="421" height="464" key="DebuggerActiveHint/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606854266778" />
-    <state width="1878" height="381" key="GridCell.Tab.0.bottom" timestamp="1606854284649">
+    <state width="518" height="464" key="DebuggerActiveHint/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606922183656" />
+    <state width="1878" height="101" key="GridCell.Tab.0.bottom" timestamp="1606922186320">
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
-    <state width="1878" height="381" key="GridCell.Tab.0.bottom/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606854284649" />
-    <state width="1878" height="381" key="GridCell.Tab.0.center" timestamp="1606854284648">
+    <state width="1878" height="101" key="GridCell.Tab.0.bottom/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606922186320" />
+    <state width="1878" height="101" key="GridCell.Tab.0.center" timestamp="1606922186319">
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
-    <state width="1878" height="381" key="GridCell.Tab.0.center/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606854284648" />
-    <state width="1878" height="381" key="GridCell.Tab.0.left" timestamp="1606854284648">
+    <state width="1878" height="101" key="GridCell.Tab.0.center/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606922186319" />
+    <state width="1878" height="101" key="GridCell.Tab.0.left" timestamp="1606922186318">
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
-    <state width="1878" height="381" key="GridCell.Tab.0.left/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606854284648" />
-    <state width="1878" height="381" key="GridCell.Tab.0.right" timestamp="1606854284649">
+    <state width="1878" height="101" key="GridCell.Tab.0.left/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606922186318" />
+    <state width="1878" height="101" key="GridCell.Tab.0.right" timestamp="1606922186320">
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
-    <state width="1878" height="381" key="GridCell.Tab.0.right/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606854284649" />
-    <state width="1878" height="381" key="GridCell.Tab.1.bottom" timestamp="1606854284650">
+    <state width="1878" height="101" key="GridCell.Tab.0.right/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606922186320" />
+    <state width="1878" height="101" key="GridCell.Tab.1.bottom" timestamp="1606922186323">
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
-    <state width="1878" height="381" key="GridCell.Tab.1.bottom/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606854284650" />
-    <state width="1878" height="381" key="GridCell.Tab.1.center" timestamp="1606854284650">
+    <state width="1878" height="101" key="GridCell.Tab.1.bottom/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606922186323" />
+    <state width="1878" height="101" key="GridCell.Tab.1.center" timestamp="1606922186321">
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
-    <state width="1878" height="381" key="GridCell.Tab.1.center/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606854284650" />
-    <state width="1878" height="381" key="GridCell.Tab.1.left" timestamp="1606854284649">
+    <state width="1878" height="101" key="GridCell.Tab.1.center/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606922186321" />
+    <state width="1878" height="101" key="GridCell.Tab.1.left" timestamp="1606922186321">
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
-    <state width="1878" height="381" key="GridCell.Tab.1.left/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606854284649" />
-    <state width="1878" height="381" key="GridCell.Tab.1.right" timestamp="1606854284650">
+    <state width="1878" height="101" key="GridCell.Tab.1.left/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606922186321" />
+    <state width="1878" height="101" key="GridCell.Tab.1.right" timestamp="1606922186322">
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
-    <state width="1878" height="381" key="GridCell.Tab.1.right/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606854284650" />
-    <state width="1878" height="381" key="GridCell.Tab.2.bottom" timestamp="1606854284651">
+    <state width="1878" height="101" key="GridCell.Tab.1.right/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606922186322" />
+    <state width="1878" height="101" key="GridCell.Tab.2.bottom" timestamp="1606922186324">
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
-    <state width="1878" height="381" key="GridCell.Tab.2.bottom/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606854284651" />
-    <state width="1878" height="381" key="GridCell.Tab.2.center" timestamp="1606854284651">
+    <state width="1878" height="101" key="GridCell.Tab.2.bottom/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606922186324" />
+    <state width="1878" height="101" key="GridCell.Tab.2.center" timestamp="1606922186323">
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
-    <state width="1878" height="381" key="GridCell.Tab.2.center/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606854284651" />
-    <state width="1878" height="381" key="GridCell.Tab.2.left" timestamp="1606854284651">
+    <state width="1878" height="101" key="GridCell.Tab.2.center/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606922186323" />
+    <state width="1878" height="101" key="GridCell.Tab.2.left" timestamp="1606922186323">
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
-    <state width="1878" height="381" key="GridCell.Tab.2.left/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606854284651" />
-    <state width="1878" height="381" key="GridCell.Tab.2.right" timestamp="1606854284651">
+    <state width="1878" height="101" key="GridCell.Tab.2.left/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606922186323" />
+    <state width="1878" height="101" key="GridCell.Tab.2.right" timestamp="1606922186324">
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
-    <state width="1878" height="381" key="GridCell.Tab.2.right/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606854284651" />
-    <state width="1878" height="381" key="GridCell.Tab.3.bottom" timestamp="1606854284652">
+    <state width="1878" height="101" key="GridCell.Tab.2.right/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606922186324" />
+    <state width="1878" height="101" key="GridCell.Tab.3.bottom" timestamp="1606922186326">
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
-    <state width="1878" height="381" key="GridCell.Tab.3.bottom/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606854284652" />
-    <state width="1878" height="381" key="GridCell.Tab.3.center" timestamp="1606854284652">
+    <state width="1878" height="101" key="GridCell.Tab.3.bottom/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606922186326" />
+    <state width="1878" height="101" key="GridCell.Tab.3.center" timestamp="1606922186325">
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
-    <state width="1878" height="381" key="GridCell.Tab.3.center/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606854284652" />
-    <state width="1878" height="381" key="GridCell.Tab.3.left" timestamp="1606854284652">
+    <state width="1878" height="101" key="GridCell.Tab.3.center/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606922186325" />
+    <state width="1878" height="101" key="GridCell.Tab.3.left" timestamp="1606922186325">
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
-    <state width="1878" height="381" key="GridCell.Tab.3.left/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606854284652" />
-    <state width="1878" height="381" key="GridCell.Tab.3.right" timestamp="1606854284652">
+    <state width="1878" height="101" key="GridCell.Tab.3.left/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606922186325" />
+    <state width="1878" height="101" key="GridCell.Tab.3.right" timestamp="1606922186326">
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
-    <state width="1878" height="381" key="GridCell.Tab.3.right/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606854284652" />
-    <state width="1878" height="381" key="GridCell.Tab.4.bottom" timestamp="1606854284653">
+    <state width="1878" height="101" key="GridCell.Tab.3.right/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606922186326" />
+    <state width="1878" height="101" key="GridCell.Tab.4.bottom" timestamp="1606922186328">
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
-    <state width="1878" height="381" key="GridCell.Tab.4.bottom/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606854284653" />
-    <state width="1878" height="381" key="GridCell.Tab.4.center" timestamp="1606854284653">
+    <state width="1878" height="101" key="GridCell.Tab.4.bottom/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606922186328" />
+    <state width="1878" height="101" key="GridCell.Tab.4.center" timestamp="1606922186327">
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
-    <state width="1878" height="381" key="GridCell.Tab.4.center/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606854284653" />
-    <state width="1878" height="381" key="GridCell.Tab.4.left" timestamp="1606854284653">
+    <state width="1878" height="101" key="GridCell.Tab.4.center/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606922186327" />
+    <state width="1878" height="101" key="GridCell.Tab.4.left" timestamp="1606922186327">
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
-    <state width="1878" height="381" key="GridCell.Tab.4.left/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606854284653" />
-    <state width="1878" height="381" key="GridCell.Tab.4.right" timestamp="1606854284653">
+    <state width="1878" height="101" key="GridCell.Tab.4.left/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606922186327" />
+    <state width="1878" height="101" key="GridCell.Tab.4.right" timestamp="1606922186327">
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
-    <state width="1878" height="381" key="GridCell.Tab.4.right/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606854284653" />
+    <state width="1878" height="101" key="GridCell.Tab.4.right/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606922186327" />
     <state x="2474" y="335" key="Rider.ProjectTemplateDialog.Size" timestamp="1606851302955">
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
@@ -353,6 +330,10 @@
     </state>
     <state x="2020" y="141" width="1720" height="876" key="VCS.FileHistoryDialog/-1920.87.1920.1057/1920.39.1920.1080/0.23.1920.1177@1920.39.1920.1080" timestamp="1604497758711" />
     <state x="2020" y="162" width="1720" height="857" key="VCS.FileHistoryDialog/-1920.87.1920.1057/1920.62.1920.1057/0.23.1920.1177@1920.62.1920.1057" timestamp="1603934777424" />
+    <state width="960" height="527" key="XDebugger.FullValuePopup" timestamp="1606920134739">
+      <screen x="1920" y="64" width="1920" height="1055" />
+    </state>
+    <state width="960" height="527" key="XDebugger.FullValuePopup/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606920134739" />
     <state x="-1422" y="216" width="797" height="822" key="find.popup" timestamp="1606596635462">
       <screen x="-1920" y="89" width="1920" height="1055" />
     </state>
@@ -363,40 +344,66 @@
     <state x="513" y="179" width="797" height="822" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1604634092496" />
     <state x="2418" y="169" width="797" height="756" key="find.popup/1920.39.1920.1080/-1920.64.1920.1080/0.0.1920.1200@1920.39.1920.1080" timestamp="1605829108758" />
     <state x="2418" y="189" width="797" height="739" key="find.popup/1920.62.1920.1057/-1920.87.1920.1057/0.23.1920.1177@1920.62.1920.1057" timestamp="1605813902788" />
-    <state x="2543" y="297" width="672" height="677" key="search.everywhere.popup" timestamp="1606857007042">
+    <state x="2543" y="297" width="672" height="677" key="search.everywhere.popup" timestamp="1606921547965">
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
     <state x="2543" y="295" width="672" height="678" key="search.everywhere.popup/-1920.87.1920.1057/1920.62.1920.1057/0.23.1920.1177@1920.62.1920.1057" timestamp="1603937036321" />
-    <state x="2543" y="297" width="672" height="677" key="search.everywhere.popup/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606857007042" />
+    <state x="2543" y="297" width="672" height="677" key="search.everywhere.popup/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606921547965" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs</url>
-          <line>35</line>
-          <properties documentPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" initialLine="35">
+          <line>75</line>
+          <properties documentPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" initialLine="75">
             <startOffsets>
-              <option value="969" />
+              <option value="2987" />
             </startOffsets>
             <endOffsets>
-              <option value="1031" />
+              <option value="3089" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="2" />
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs</url>
-          <line>55</line>
-          <properties documentPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" initialLine="59">
+          <url>file://$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs</url>
+          <line>102</line>
+          <properties documentPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" initialLine="102">
             <startOffsets>
-              <option value="2011" />
+              <option value="4673" />
             </startOffsets>
             <endOffsets>
-              <option value="2057" />
+              <option value="4732" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="3" />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs</url>
+          <line>109</line>
+          <properties documentPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" initialLine="109">
+            <startOffsets>
+              <option value="4927" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4985" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs</url>
+          <line>116</line>
+          <properties documentPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" initialLine="116">
+            <startOffsets>
+              <option value="5278" />
+            </startOffsets>
+            <endOffsets>
+              <option value="5328" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

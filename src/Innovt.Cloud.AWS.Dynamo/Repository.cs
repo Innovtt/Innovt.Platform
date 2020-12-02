@@ -100,11 +100,28 @@ namespace Innovt.Cloud.AWS.Dynamo
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
-            var queryRequest = Helpers.CreateQueryRequest<T>(request);
+            var items = new List<Dictionary<string, AttributeValue>>();
+            
+            var remaining = request.PageSize; //10
+            Dictionary<string, AttributeValue> lastEvaluatedKey = null;
+            
+            do
+            {
+                var queryRequest = Helpers.CreateQueryRequest<T>(request);
+                
+                queryRequest.Limit = remaining ?? 0;
+                queryRequest.ExclusiveStartKey = lastEvaluatedKey;
+                
+                var queryResponse = await DynamoClient.QueryAsync(queryRequest,cancellationToken).ConfigureAwait(false);
 
-            var queryResponse = await DynamoClient.QueryAsync(queryRequest,cancellationToken).ConfigureAwait(false);
-
-            return (queryResponse.LastEvaluatedKey, queryResponse.Items);
+                lastEvaluatedKey = queryResponse.LastEvaluatedKey;
+                remaining = remaining.HasValue ? (remaining - queryResponse.Count) : null;
+                
+                items.AddRange(queryResponse.Items);//TODo quando retornar null
+                
+            } while (remaining > 0 && lastEvaluatedKey != null);
+            
+            return (lastEvaluatedKey, items);
         }
         
         public async Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default)

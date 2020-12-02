@@ -16,7 +16,7 @@
     <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj" />
     <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj" />
     <ProjectReference Include="..\Innovt.Domain\Innovt.Domain.csproj" />
-    <PackageReference Include="AWSSDK.Kinesis" Version="3.5.0.42" />
+    <PackageReference Include="AWSSDK.Kinesis" Version="3.5.0.43" />
     <PackageReference Include="OpenTracing" Version="0.12.1" />
     <PackageReference Include="System.Text.Json" Version="5.0.0" />
   </ItemGroup>

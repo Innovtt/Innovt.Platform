@@ -10,6 +10,7 @@ using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.Table;
 using Innovt.Core.CrossCutting.Log;
 using NUnit.Framework;
+using QueryRequest = Innovt.Cloud.Table.QueryRequest;
 
 namespace Innovt.Cloud.AWS.Dynamo.Tests
 {
@@ -23,7 +24,9 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
         {
             loggerMock = NSubstitute.Substitute.For<ILogger>();
                 
-            baseRepository= new BaseRepository(loggerMock, new DefaultAWSConfiguration());
+            //var client = new AmazonDynamoDBClient(RegionEndpoint.USEast1);
+            
+            baseRepository= new BaseRepository(loggerMock, new DefaultAWSConfiguration("antecipa-dev"));
         }
 
         [Test]
@@ -33,31 +36,7 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
             {
                 //var profile = new CredentialProfile("antecipa-dev",new CredentialProfileOptions());
             
-            var client = new AmazonDynamoDBClient(RegionEndpoint.USEast1);
-            
-            var request = new Amazon.DynamoDBv2.Model.QueryRequest()
-            {
-                TableName = "Invoices",
-                IndexName = "BuyerId-InvoiceId-Index",
-                KeyConditionExpression = "BuyerId = :bid",
-               // FilterExpression = " PaymentOrderStatusId = :pid OR (PaymentOrderStatusId = :psid AND PaymentTypeId = :pti)",
-               FilterExpression = " PaymentOrderStatusId = :pid ",
-                ExpressionAttributeValues = new Dictionary<string, AttributeValue>()
-                {
-                    {":bid", new AttributeValue(){ S = "f2c9e6ba-2735-43e1-82f2-0ddf5c766c42"}},
-                    {":pid", new AttributeValue(){ N = "5"}},
-                  //  {":psid", new AttributeValue(){ N = "5"}},
-                  //  {":pti", new AttributeValue(){ N = "2"}},
-                }, 
-                Limit = 10,
-                //f2c9e6ba-2735-43e1-82f2-0ddf5c766c42
-            };
-            
-            var result = client.Paginators.Query(request);
-
-
-            var res = result.Responses.GetAsyncEnumerator();
-            
+           // var client = new AmazonDynamoDBClient(RegionEndpoint.USEast1);
             
             
             // var request = new Amazon.DynamoDBv2.Model.QueryRequest()
@@ -82,12 +61,23 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
             //
             // var result = await client.QueryAsync(request, CancellationToken.None);
 
-            foreach (var item in res.Current.Items)
+            var filter = new { bid= "f2c9e6ba-2735-43e1-82f2-0ddf5c766c42", pid = 5};
+            
+            var queryRequest = new QueryRequest()
             {
-                Console.WriteLine(item);
-            }
-
-            //   var res = await baseRepository.QueryAsync<DataModel>();
+                IndexName = "BuyerId-InvoiceId-Index",
+                KeyConditionExpression =  "BuyerId = :bid", //n invoices que pertencem a um buyer 
+                FilterExpression = "PaymentOrderStatusId = :pid",
+                Filter = filter,
+                PageSize = 10
+            };
+            
+              //TODO: Alter Query to accept pagesize
+              var res = await baseRepository.QueryPaginatedByAsync<DataModel>(queryRequest, CancellationToken.None);
+              
+              
+              
+              
 
             }
             catch (Exception e)
