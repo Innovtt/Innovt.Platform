@@ -53,9 +53,5 @@ namespace Innovt.AspNetCore.Filters
                 logger?.Error(context.Exception,"Message: {@Message} TraceId: @{TraceId} ",baseException.Message,result.TraceId);
             }
         }
-
-
-
-      
     }
 }

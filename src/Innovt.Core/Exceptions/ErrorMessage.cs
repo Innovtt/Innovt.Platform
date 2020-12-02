@@ -14,6 +14,11 @@
             this.Message = message;
         }
 
+        public ErrorMessage()
+        {
+            
+        }
+
         /// <summary>
         /// Constructor 
         /// </summary>

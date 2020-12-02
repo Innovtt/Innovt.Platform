@@ -35,6 +35,7 @@ namespace Innovt.Cloud.AWS.Kinesis
         {
             get { return kinesisClient ??= CreateService<AmazonKinesisClient>(); }
         }
+        
 
         private async Task InternalPublish(IList<T> dataList, CancellationToken cancellationToken = default)
         {
@@ -54,7 +55,7 @@ namespace Innovt.Cloud.AWS.Kinesis
                 if (data.TraceId.IsNullOrEmpty())
                     data.TraceId = base.GetTraceId();
                 
-                var dataAsBytes = Encoding.UTF8.GetBytes(System.Text.Json.JsonSerializer.Serialize(data));
+                var dataAsBytes = Encoding.UTF8.GetBytes(System.Text.Json.JsonSerializer.Serialize<object>(data));
                 await using var ms = new MemoryStream(dataAsBytes);
 
                 request.Records.Add(new PutRecordsRequestEntry()

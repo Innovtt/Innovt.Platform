@@ -13,11 +13,16 @@ namespace Innovt.Domain.Core.Events
         public string TraceId { get; set; }
         
         public DateTime ApproximateArrivalTimestamp { get; set; }
+
+
+        public DateTime CreatedAt { get; set; }
+        
         public DomainEvent(string name, string version,string partition)
         {
-            this.Name = name;
-            this.Version = version;
+            Name = name;
+            Version = version;
             Partition = partition;
+            CreatedAt =  DateTime.UtcNow;
         }
     }
 }
