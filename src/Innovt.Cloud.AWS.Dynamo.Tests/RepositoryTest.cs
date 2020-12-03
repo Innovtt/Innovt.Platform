@@ -61,7 +61,7 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
             //
             // var result = await client.QueryAsync(request, CancellationToken.None);
 
-            var filter = new { bid= "f2c9e6ba-2735-43e1-82f2-0ddf5c766c42", pid = 588};
+            var filter = new { bid= "f2c9e6ba-2735-43e1-82f2-0ddf5c766c42", pid = 5};
             
             var queryRequest = new QueryRequest()
             {
@@ -69,7 +69,7 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
                 KeyConditionExpression =  "BuyerId = :bid", //n invoices que pertencem a um buyer 
                 FilterExpression = "PaymentOrderStatusId = :pid",
                 Filter = filter,
-                PageSize = 10
+               //PageSize = 10
             };
             
               //TODO: Alter Query to accept pagesize

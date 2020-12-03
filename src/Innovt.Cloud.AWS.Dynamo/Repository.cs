@@ -100,29 +100,33 @@ namespace Innovt.Cloud.AWS.Dynamo
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
-            var items = new List<Dictionary<string, AttributeValue>>();
+            var queryRequest = Helpers.CreateQueryRequest<T>(request);
             
-            var remaining = request.PageSize;
             Dictionary<string, AttributeValue> lastEvaluatedKey = null;
             
+            var items = new List<Dictionary<string, AttributeValue>>();
+            var remaining = request.PageSize;
+            
+            var iterator = DynamoClient.Paginators.Query(queryRequest).Responses.GetAsyncEnumerator(cancellationToken);
+
             do
             {
-                var queryRequest = Helpers.CreateQueryRequest<T>(request);
-                queryRequest.ExclusiveStartKey = lastEvaluatedKey;
+                await iterator.MoveNextAsync();
+
+                if (iterator.Current == null)
+                    break;
+
+                items.AddRange(iterator.Current.Items);
+                queryRequest.ExclusiveStartKey = lastEvaluatedKey = iterator.Current.LastEvaluatedKey;
+
+                remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
                 
-                if (remaining.HasValue)
+                if (remaining>0)
                 {
                     queryRequest.Limit = remaining.Value;
                 }
-                
-                var queryResponse = await DynamoClient.QueryAsync(queryRequest,cancellationToken).ConfigureAwait(false);
 
-                lastEvaluatedKey = queryResponse.LastEvaluatedKey;
-                remaining = remaining.HasValue ? (remaining - queryResponse.Count) : null;
-                
-                items.AddRange(queryResponse.Items);//TODo quando retornar null
-                
-            } while (remaining > 0 && lastEvaluatedKey != null);
+            } while (lastEvaluatedKey.Count > 0 && remaining>0);
             
             return (lastEvaluatedKey, items);
         }
@@ -214,33 +218,34 @@ namespace Innovt.Cloud.AWS.Dynamo
             if (request is null) throw new ArgumentNullException(nameof(request));
 
             var scanRequest = Helpers.CreateScanRequest<T>(request);
-
-            var result = new List<T>();
-            var pageSize = request.PageSize.GetValueOrDefault();
+            
+            Dictionary<string, AttributeValue> lastEvaluatedKey = null;
+            
+            var items = new List<T>();
+            var remaining = request.PageSize;
+            
+            var iterator = DynamoClient.Paginators.Scan(scanRequest).Responses.GetAsyncEnumerator(cancellationToken);
 
             do
             {
-                if (pageSize > 0)
+                await iterator.MoveNextAsync();
+
+                if (iterator.Current == null)
+                    break;
+
+                items.AddRange(Helpers.ConvertAttributesToType<T>(iterator.Current.Items, Context));
+                scanRequest.ExclusiveStartKey = lastEvaluatedKey = iterator.Current.LastEvaluatedKey;
+
+                remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
+                
+                if (remaining>0)
                 {
-                    // at least 10 elements per request
-                    scanRequest.Limit = (pageSize - result.Count) < 10 ? 10 : (pageSize - result.Count);
+                    scanRequest.Limit = remaining.Value;
                 }
 
-                var response = await DynamoClient.ScanAsync(scanRequest,cancellationToken).ConfigureAwait(false);
-
-                if (response.Items.Any())
-                {
-                    result.AddRange(Helpers.ConvertAttributesToType<T>(response.Items, Context));
-                }
-
-                scanRequest.ExclusiveStartKey = response.LastEvaluatedKey;
-
-            } while (scanRequest.ExclusiveStartKey != null && scanRequest.ExclusiveStartKey.Count != 0 && (pageSize > 0 && (result.Count() < pageSize)));
-
-            if(pageSize>0)
-                return (scanRequest.ExclusiveStartKey, result.Take(pageSize).ToList());
-
-            return (scanRequest.ExclusiveStartKey,result);
+            } while (lastEvaluatedKey.Count > 0 && remaining>0);
+            
+            return (lastEvaluatedKey, items);
         }
 
 
