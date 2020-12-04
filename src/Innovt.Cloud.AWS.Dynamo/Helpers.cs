@@ -54,6 +54,9 @@ namespace Innovt.Cloud.AWS.Dynamo
 
             if (value is int || value is double || value is float | value is decimal)
                 return new AttributeValue { N = value.ToString() };
+            
+            if (value is DateTime)
+                return new AttributeValue { S = ((DateTime)value).ToString("s") };
 
             if (value is IList<int> || value is IList<double> || value is IList<float> | value is IList<decimal>)
             {
