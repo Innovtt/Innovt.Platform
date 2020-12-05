@@ -37,44 +37,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="741c11c8-6345-4a62-a870-aa11e5bc5449" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/riderModule.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Innovt.AspNetCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Innovt.AspNetCore.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Innovt.Cloud.AWS.Cognito.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Innovt.Cloud.AWS.Cognito.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/Innovt.Cloud.AWS.Dynamo.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/Innovt.Cloud.AWS.Dynamo.Tests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Helpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Helpers.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Innovt.Cloud.AWS.Dynamo.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Innovt.Cloud.AWS.Dynamo.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/Innovt.Cloud.AWS.Kinesis.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/Innovt.Cloud.AWS.Kinesis.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/Innovt.Cloud.AWS.Lambda.Kinesis.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/Innovt.Cloud.AWS.Lambda.Kinesis.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.S3/Innovt.Cloud.AWS.Lambda.S3.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.S3/Innovt.Cloud.AWS.Lambda.S3.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Sqs/Innovt.Cloud.AWS.Lambda.Sqs.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Sqs/Innovt.Cloud.AWS.Lambda.Sqs.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/Innovt.Cloud.AWS.Lambda.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/Innovt.Cloud.AWS.Lambda.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Notification/Innovt.Cloud.AWS.Notification.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Notification/Innovt.Cloud.AWS.Notification.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.S3/Innovt.Cloud.AWS.S3.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.S3/Innovt.Cloud.AWS.S3.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.SQS/Innovt.Cloud.AWS.SQS.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.SQS/Innovt.Cloud.AWS.SQS.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS/Innovt.Cloud.AWS.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS/Innovt.Cloud.AWS.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud/Innovt.Cloud.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud/Innovt.Cloud.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud/Table/BaseRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud/Table/BaseRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud/Table/QueryRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud/Table/QueryRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core.Test/Innovt.Core.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core.Test/Innovt.Core.Test.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Innovt.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Innovt.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Utilities/StringExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Utilities/StringExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cqrs/Innovt.Cqrs.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cqrs/Innovt.Cqrs.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.CrossCutting.IOC/Innovt.CrossCutting.IOC.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.CrossCutting.IOC/Innovt.CrossCutting.IOC.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.CrossCutting.Log.Serilog/Innovt.CrossCutting.Log.Serilog.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.CrossCutting.Log.Serilog/Innovt.CrossCutting.Log.Serilog.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.Ado.Tests/Innovt.Data.Ado.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Ado.Tests/Innovt.Data.Ado.Tests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.Ado/Innovt.Data.Ado.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Ado/Innovt.Data.Ado.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/Innovt.Data.EFCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/Innovt.Data.EFCore.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.Migration/Innovt.Data.Migration.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Migration/Innovt.Data.Migration.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data/Innovt.Data.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data/Innovt.Data.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Innovt.Domain.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Innovt.Domain.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/Innovt.Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Innovt.Domain.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Job.Core/Innovt.Job.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Job.Core/Innovt.Job.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Job.Quartz/Innovt.Job.Quartz.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Job.Quartz/Innovt.Job.Quartz.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Notification.Core/Innovt.Notification.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Notification.Core/Innovt.Notification.Core.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -271,7 +240,7 @@
       <workItem from="1607007410503" duration="363000" />
       <workItem from="1607147298555" duration="427000" />
       <workItem from="1607175988480" duration="1598000" />
-      <workItem from="1607178728809" duration="3831000" />
+      <workItem from="1607178728809" duration="4098000" />
     </task>
     <servers />
   </component>
@@ -397,14 +366,14 @@
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
     <state width="960" height="527" key="XDebugger.FullValuePopup/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1606920134739" />
-    <state x="2418" y="191" width="797" height="822" key="find.popup" timestamp="1607184416872">
+    <state x="2418" y="191" width="797" height="822" key="find.popup" timestamp="1607190562621">
       <screen x="1920" y="64" width="1920" height="1055" />
     </state>
     <state x="2418" y="169" width="797" height="755" key="find.popup/-1920.64.1920.1080/1920.39.1920.1080/0.0.1920.1200@1920.39.1920.1080" timestamp="1604976940626" />
     <state x="586" y="202" width="797" height="822" key="find.popup/-1920.87.1920.1057/1920.62.1920.1057/0.23.1920.1177@0.23.1920.1177" timestamp="1603979050754" />
     <state x="2506" y="223" width="747" height="735" key="find.popup/-1920.87.1920.1057/1920.62.1920.1057/0.23.1920.1177@1920.62.1920.1057" timestamp="1604502488395" />
     <state x="-1422" y="216" width="797" height="822" key="find.popup/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@-1920.89.1920.1055" timestamp="1606596635462" />
-    <state x="2418" y="191" width="797" height="822" key="find.popup/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1607184416872" />
+    <state x="2418" y="191" width="797" height="822" key="find.popup/-1920.89.1920.1055/1920.64.1920.1055/0.25.1920.1175@1920.64.1920.1055" timestamp="1607190562621" />
     <state x="513" y="179" width="797" height="822" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1604634092496" />
     <state x="2418" y="169" width="797" height="756" key="find.popup/1920.39.1920.1080/-1920.64.1920.1080/0.0.1920.1200@1920.39.1920.1080" timestamp="1605829108758" />
     <state x="2418" y="189" width="797" height="739" key="find.popup/1920.62.1920.1057/-1920.87.1920.1057/0.23.1920.1177@1920.62.1920.1057" timestamp="1605813902788" />
