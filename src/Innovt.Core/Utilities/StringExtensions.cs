@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Web;
 
 namespace Innovt.Core.Utilities
 {
@@ -127,6 +128,15 @@ namespace Innovt.Core.Utilities
             return String.IsNullOrWhiteSpace(str);
         }
 
+        public static string UrlEncode(this string str)
+        {
+            return str.IsNullOrEmpty() ? str : HttpUtility.UrlEncode(str, Encoding.UTF8);
+        }
+        
+        public static string UrlDecode(this string str)
+        {   
+            return str.IsNullOrEmpty() ? str : HttpUtility.UrlDecode(str, Encoding.UTF8);
+        }
 
         public static string GetValueOrDefault(this string str, string defaultValue = null)
         {
@@ -137,7 +147,7 @@ namespace Innovt.Core.Utilities
             if (defaultValue.IsNotNullOrEmpty())
                 return defaultValue;
 
-            return String.Empty;
+            return string.Empty;
         }
 
         public static string SmartTrim(this string str)
@@ -167,7 +177,6 @@ namespace Innovt.Core.Utilities
 
             return result;
         }
-
 
         public static bool IsNotNullOrEmpty(this string str)
         {

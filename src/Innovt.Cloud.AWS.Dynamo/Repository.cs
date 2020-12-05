@@ -191,8 +191,6 @@ namespace Innovt.Cloud.AWS.Dynamo
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
-            request.PageSize = 1;
-
             var result = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
                 
             var queryResponse =  Helpers.ConvertAttributesToType<T>(result.Items, Context);
@@ -209,7 +207,8 @@ namespace Innovt.Cloud.AWS.Dynamo
             return new PagedCollection<T>()
             {
                 Items = Helpers.ConvertAttributesToType<T>(items, Context),
-                Page = Helpers.CreatePaginationToken(lastEvaluatedKey)
+                Page = Helpers.CreatePaginationToken(lastEvaluatedKey),
+                PageSize = request.PageSize.GetValueOrDefault()
             };
         }
 
@@ -225,7 +224,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             var remaining = request.PageSize;
             
             var iterator = DynamoClient.Paginators.Scan(scanRequest).Responses.GetAsyncEnumerator(cancellationToken);
-
+            //TODO: Thi code is the same in InternalQuery - Refactory it
             do
             {
                 await iterator.MoveNextAsync();
@@ -268,6 +267,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             {
                 Items = items,
                 Page  = Helpers.CreatePaginationToken(exclusiveStartKey),
+                PageSize = request.PageSize.GetValueOrDefault()
             };
 
             return response;

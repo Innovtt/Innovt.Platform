@@ -2,13 +2,12 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <PackageId>Innovt.AspNetCore</PackageId>
-    <PackageVersion>3.1.6.12</PackageVersion>
+    <PackageVersion>3.1.6.15</PackageVersion>
     <Authors>Michel,Tiago</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Copyright>Innovt Tecnologia</Copyright>
     <Description>AspNetCore Base Project</Description>
-	 
   </PropertyGroup>
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
@@ -24,7 +23,7 @@
   </ItemGroup>
 
     <ItemGroup>
-	    <PackageReference Include="Microsoft.NetCore.Analyzers" Version="3.3.1">
+	    <PackageReference Include="Microsoft.NetCore.Analyzers" Version="3.3.2">
 		    <PrivateAssets>all</PrivateAssets>
 	    </PackageReference>
     </ItemGroup>

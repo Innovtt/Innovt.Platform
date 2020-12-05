@@ -61,19 +61,20 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
             //
             // var result = await client.QueryAsync(request, CancellationToken.None);
 
-            var filter = new { bid= "f2c9e6ba-2735-43e1-82f2-0ddf5c766c42", pid = 5};
+            var filter = new { sid= "b503630a-1d6e-4f98-a2d0-2c50fdc360b1" };
             
             var queryRequest = new QueryRequest()
             {
-                IndexName = "BuyerId-InvoiceId-Index",
-                KeyConditionExpression =  "BuyerId = :bid", //n invoices que pertencem a um buyer 
-                FilterExpression = "PaymentOrderStatusId = :pid",
+                IndexName = "SupplierId-DueDate-Index",
+                KeyConditionExpression =  "SupplierId = :sid", //n invoices que pertencem a um buyer 
+              //  FilterExpression = "PaymentOrderStatusId = :pid",
                 Filter = filter,
-               //PageSize = 10
+            //    Page = "%2fV5spd%2fkrcGowMd1g58YpeiOAjD%2bbWhUvsZx6lrG5%2bDtKveLYKwXr1FuQq6Pw2XwOdsRBCyvBGPSZq8Do8UJjmajqnGST7qKp3luOYlsb%2fs26Vn%2bJKAZ5bt88b945VVYZo0ZsgnKg7llHSRIX40FmXn2RjMdlGZwf%2bVUVNbWf9yswPiw%2bYyGj8I4OZDfBkeRI%2bRI7DZysjq556Bd4LipWymDgPB4aS9OcrCRdWCaifc%3d",
+               PageSize = 10
             };
             
               //TODO: Alter Query to accept pagesize
-              var res = await baseRepository.QueryAsync<DataModel>(queryRequest, CancellationToken.None);
+              var res = await baseRepository.QueryPaginatedByAsync<DataModel>(queryRequest, CancellationToken.None);
              // var res = await baseRepository.QueryPaginatedByAsync<DataModel>(queryRequest, CancellationToken.None);
               
               

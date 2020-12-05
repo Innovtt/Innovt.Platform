@@ -15,5 +15,6 @@ namespace Innovt.Cloud.Table
         public int? PageSize { get; set; }
         public string Page { get; set; }
         public string FilterExpression { get; set; }
+
     }
 }

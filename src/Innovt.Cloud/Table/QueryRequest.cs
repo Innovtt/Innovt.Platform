@@ -7,7 +7,9 @@ namespace Innovt.Cloud.Table
     public class QueryRequest: BaseRequest, ICloneable
     {
         public string KeyConditionExpression { get; set; }
-
+        
+        public bool ScanIndexForward { get; set; }
+ 
         public object Clone()
         {
             return new QueryRequest()
@@ -17,6 +19,7 @@ namespace Innovt.Cloud.Table
                 KeyConditionExpression = this.KeyConditionExpression,
                 FilterExpression = this.FilterExpression,
                 IndexName = this.IndexName,
+                ScanIndexForward = this.ScanIndexForward,
                 PageSize = this.PageSize,
                 Page = this.Page
             };

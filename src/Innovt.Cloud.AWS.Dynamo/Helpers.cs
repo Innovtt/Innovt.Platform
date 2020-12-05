@@ -3,7 +3,6 @@ using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
 using Innovt.Core.Collections;
-using Innovt.Core.Cqrs.Queries;
 using Innovt.Core.Utilities;
 using System;
 using System.Collections;
@@ -11,7 +10,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Innovt.Cloud.Table;
 
 namespace Innovt.Cloud.AWS.Dynamo
 {
@@ -54,6 +52,9 @@ namespace Innovt.Cloud.AWS.Dynamo
 
             if (value is int || value is double || value is float | value is decimal)
                 return new AttributeValue { N = value.ToString() };
+            
+            if (value is DateTime time)
+                return new AttributeValue { S = time.ToString("s") };
 
             if (value is IList<int> || value is IList<double> || value is IList<float> | value is IList<decimal>)
             {
@@ -113,6 +114,7 @@ namespace Innovt.Cloud.AWS.Dynamo
                 TableName = GetTableName<T>(),
                 ConsistentRead = request.IndexName == null,
                 FilterExpression = request.FilterExpression,
+                ScanIndexForward = request.ScanIndexForward,
                 KeyConditionExpression = request.KeyConditionExpression,
                 ProjectionExpression = request.AttributesToGet,
                 ExclusiveStartKey = PaginationTokenToDictionary(request.Page),
@@ -233,20 +235,18 @@ namespace Innovt.Cloud.AWS.Dynamo
                 //TODO:Binary not supported
                 var value = item.Value.S != null ? $"S:{item.Value.S}" : $"N:{item.Value.N}";
 
-                stringBuilder.Append($"{item.Key}:{value},");
+                stringBuilder.Append($"{item.Key}|{value},");
             }
 
-            return Cryptography.AesEncrypt(stringBuilder.ToString(), encriptionKey);
+            return Cryptography.AesEncrypt(stringBuilder.ToString(), encriptionKey).UrlEncode();
         }
-
-
 
         internal static Dictionary<string, AttributeValue> PaginationTokenToDictionary(string paginationToken)
         {
             if (paginationToken.IsNullOrEmpty())
                 return null;
 
-            var decriptedToken = Cryptography.AesDecrypt(paginationToken, encriptionKey);
+            var decriptedToken =  Cryptography.AesDecrypt(paginationToken.UrlDecode(), encriptionKey);
 
             var result = new Dictionary<string, AttributeValue>();
 
@@ -254,22 +254,24 @@ namespace Innovt.Cloud.AWS.Dynamo
 
             foreach (var key in keys)
             {
-                var attributes = key.Split(":");
+                var attributes = key.Split("|");
 
-                if (attributes.Length != 3)
+                if (attributes.Length != 2)
                     continue;
-
+                 
                 AttributeValue attributeValue;
+                
+                var value = attributes[1].Substring(2, attributes[1].Length - 2);
 
-                if(attributes[1] == "S")
+                if(attributes[1].StartsWith("S:"))
                 {
-                    attributeValue = new AttributeValue(attributes[2]);
+                    attributeValue = new AttributeValue(value);
                 }
                 else
                 {
                     attributeValue = new AttributeValue()
                     {
-                        N = attributes[2]
+                        N = value
                     };
                 }
 
