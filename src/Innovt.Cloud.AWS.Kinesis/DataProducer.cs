@@ -37,10 +37,13 @@ namespace Innovt.Cloud.AWS.Kinesis
         }
         
 
-        private async Task InternalPublish(IList<T> dataList, CancellationToken cancellationToken = default)
+        private async Task InternalPublish(IEnumerable<T> dataList, CancellationToken cancellationToken = default)
         {
             if (dataList == null) throw new ArgumentNullException(nameof(dataList));
-            if (dataList.Count > 500) throw new InvalidEventLimitException();
+            
+            var dataStreams = dataList.ToList();
+            
+            if (dataStreams.Count() > 500) throw new InvalidEventLimitException();
 
             Logger.Info("Kinesis Publisher Started");
 
@@ -50,7 +53,7 @@ namespace Innovt.Cloud.AWS.Kinesis
                 Records =  new List<PutRecordsRequestEntry>()
             };
 
-            foreach (var data in dataList)
+            foreach (var data in dataStreams)
             {
                 if (data.TraceId.IsNullOrEmpty())
                     data.TraceId = base.GetTraceId();
@@ -94,7 +97,7 @@ namespace Innovt.Cloud.AWS.Kinesis
             await InternalPublish(new List<T>(){ @data }, cancellationToken);
         }
 
-        public async Task Publish(IList<T> events, CancellationToken cancellationToken = default)
+        public async Task Publish(IEnumerable<T> events, CancellationToken cancellationToken = default)
         {
             await InternalPublish(events, cancellationToken);
         }

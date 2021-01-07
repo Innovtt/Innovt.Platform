@@ -8,6 +8,23 @@ namespace Innovt.Core.Validation
 {
     public static class Extensions
     {
+        public static IEnumerable<ValidationResult> Validate(this IEnumerable<IValidatableObject> array,ValidationContext context=null)
+        {
+            var validationResult = new List<ValidationResult>();
+            
+            if (array == null)
+                return validationResult;
+
+            context ??= new ValidationContext(array);
+            
+            foreach (var obj in array)
+            { 
+                validationResult.AddRange(obj.Validate(context));
+            }
+            
+            return validationResult;
+        }
+
         public static bool IsValid(this IValidatableObject obj,ValidationContext context=null)
         {
             if (obj == null)

@@ -87,7 +87,7 @@ namespace Innovt.Data.Ado
             return this.QuerySingleOrDefaultInternalAsync<T>(sql, filter, cancellationToken);
         }
 
-        internal async Task<int> QueryCountInternalAsync(string tableName, string whereClause = null, object filter = null, CancellationToken cancellationToken = default)
+        private async Task<int> QueryCountInternalAsync(string tableName, string whereClause = null, object filter = null, CancellationToken cancellationToken = default)
         {
             var sql = $"SELECT COUNT(1) FROM [{tableName}]";
 
@@ -98,8 +98,7 @@ namespace Innovt.Data.Ado
 
             return await this.QuerySingleOrDefaultAsync<int>(sql, filter, cancellationToken).ConfigureAwait(false);
         }
-
-
+        
         public Task<int> QueryCountAsync(string tableName, string whereClause = null, object filter = null, CancellationToken cancellationToken = default)
         {
             if (tableName == null) throw new ArgumentNullException(nameof(tableName));
@@ -107,21 +106,63 @@ namespace Innovt.Data.Ado
             return QueryCountInternalAsync(tableName, whereClause, filter, cancellationToken);
         }
 
-        internal async Task<IEnumerable<T>> QueryInternalAsync<T>(string sql, object filter=null, CancellationToken cancellationToken = default)
+        private async Task<IEnumerable<T>> QueryInternalAsync<T>(string sql, object filter=null, CancellationToken cancellationToken = default)
         {
             using var con = GetConnection();
             return await con.QueryAsync<T>(new CommandDefinition(sql, filter, cancellationToken: cancellationToken))
                 .ConfigureAwait(false);
         }
 
+        private async Task<IEnumerable<TReturn>> QueryInternalAsync<TFirst, TSecond, TReturn>(string sql,object filter, Func<TFirst, TSecond, TReturn> func, string splitOn, CancellationToken cancellationToken = default)
+        {
+            using var con = GetConnection();
+            return await con.QueryAsync<TFirst, TSecond, TReturn>(
+                new CommandDefinition(sql, filter, cancellationToken: cancellationToken), func, splitOn);
+        }
+
+        private async Task<IEnumerable<TReturn>> QueryInternalAsync<TFirst, TSecond, TThird, TReturn>(string sql,object filter, Func<TFirst, TSecond,TThird, TReturn> func, string splitOn, CancellationToken cancellationToken = default)
+        {
+            using var con = GetConnection();
+            return await con.QueryAsync<TFirst, TSecond, TThird,TReturn>(
+                new CommandDefinition(sql, filter, cancellationToken: cancellationToken), func, splitOn);
+        } 
+        private async Task<IEnumerable<TReturn>> QueryInternalAsync<TFirst, TSecond, TThird, TFourth, TReturn>(string sql,object filter, Func<TFirst, TSecond,TThird, TFourth, TReturn> func, string splitOn, CancellationToken cancellationToken = default)
+        {
+            using var con = GetConnection();
+            return await con.QueryAsync<TFirst, TSecond, TThird,TFourth, TReturn>(
+                new CommandDefinition(sql, filter, cancellationToken: cancellationToken), func, splitOn);
+        }
+        
         public Task<IEnumerable<T>> QueryAsync<T>(string sql, object filter=null, CancellationToken cancellationToken = default)
         {
             if (sql == null) throw new ArgumentNullException(nameof(sql));
 
             return this.QueryInternalAsync<T>(sql,filter,cancellationToken);
         }
+        
+        public Task<IEnumerable<TReturn>> QueryAsync<TFirst, TSecond, TReturn>(string sql, object filter, Func<TFirst, TSecond, TReturn> func, string splitOn, CancellationToken cancellationToken = default)
+        {
+            if (sql == null) throw new ArgumentNullException(nameof(sql));
 
-        internal async Task<T> ExecuteInternalScalar<T>(string sql, object filter = null, IDbTransaction dbTransaction=null, CancellationToken cancellationToken = default)
+            return this.QueryInternalAsync<TFirst,TSecond,TReturn>(sql,filter,func,splitOn,cancellationToken);
+        }
+        
+        
+        public Task<IEnumerable<TReturn>> QueryAsync<TFirst, TSecond, TThird, TReturn>(string sql, object filter, Func<TFirst, TSecond, TThird, TReturn> func, string splitOn, CancellationToken cancellationToken = default)
+        {
+            if (sql == null) throw new ArgumentNullException(nameof(sql));
+
+            return this.QueryInternalAsync<TFirst, TSecond, TThird, TReturn>(sql,filter,func,splitOn,cancellationToken);
+        }
+        
+        public Task<IEnumerable<TReturn>> QueryAsync<TFirst, TSecond, TThird, TFourth, TReturn>(string sql, object filter, Func<TFirst, TSecond, TThird, TFourth, TReturn> func, string splitOn, CancellationToken cancellationToken = default)
+        {
+            if (sql == null) throw new ArgumentNullException(nameof(sql));
+
+            return this.QueryInternalAsync<TFirst, TSecond, TThird, TFourth, TReturn>(sql,filter,func,splitOn,cancellationToken);
+        }
+
+        private async Task<T> ExecuteInternalScalar<T>(string sql, object filter = null, IDbTransaction dbTransaction=null, CancellationToken cancellationToken = default)
         {
             using var con = GetConnection();
             
@@ -138,9 +179,7 @@ namespace Innovt.Data.Ado
 
             return this.ExecuteInternalScalar<T>(sql, filter, dbTransaction, cancellationToken);
         }
-
-
-        internal async Task<int> ExecuteInternalAsync(string sql, object filter = null, IDbTransaction dbTransaction = null, CancellationToken cancellationToken = default)
+        private async Task<int> ExecuteInternalAsync(string sql, object filter = null, IDbTransaction dbTransaction = null, CancellationToken cancellationToken = default)
         {
             using var con = GetConnection();
 
