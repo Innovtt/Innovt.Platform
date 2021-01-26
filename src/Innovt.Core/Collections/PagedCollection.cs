@@ -1,5 +1,6 @@
 ﻿using Innovt.Core.Utilities;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 
 namespace Innovt.Core.Collections
 {
@@ -45,16 +46,7 @@ namespace Innovt.Core.Collections
             }
         }
 
-        public int PageCount
-        {
-            get{
-
-                if (PageSize != 0)
-                    return (TotalRecords + PageSize - 1) / PageSize;
-
-                return 0;
-            }
-        }
+        public int PageCount => (PageSize <=0) ? 0 :TotalRecords / PageSize;
 
         public bool HasNext()
         {

@@ -33,7 +33,6 @@ namespace Innovt.Core.Utilities
             return value.Length <= maxLength ? value : value.Substring(0, maxLength);
         }
         
-
         public static bool IsCpf(this string value)
         {
             if (value.IsNullOrEmpty())
@@ -219,6 +218,17 @@ namespace Innovt.Core.Utilities
                 return value;
 
             return Regex.Replace(value, "[^0-9]+?", "");
+        }
+        
+        
+        public static string NormalizeText(this string str)
+        {
+            if (str.IsNullOrEmpty())
+                return str;
+
+            var result = str.RemoveAccents().TrimStart().TrimEnd();
+
+            return result;
         }
 
         public static string RemoveAccents(this string str)
