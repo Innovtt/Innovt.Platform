@@ -134,6 +134,14 @@ namespace Innovt.Data.Ado
                 new CommandDefinition(sql, filter, cancellationToken: cancellationToken), func, splitOn);
         }
         
+        private async Task<IEnumerable<TReturn>> QueryInternalAsync<TFirst, TSecond, TThird, TFourth,TFifth, TReturn>(string sql,object filter, Func<TFirst, TSecond,TThird, TFourth,TFifth, TReturn> func, string splitOn, CancellationToken cancellationToken = default)
+        {
+            using var con = GetConnection();
+            return await con.QueryAsync<TFirst, TSecond, TThird,TFourth,TFifth, TReturn>(
+                new CommandDefinition(sql, filter, cancellationToken: cancellationToken), func, splitOn);
+        }
+        
+        
         public Task<IEnumerable<T>> QueryAsync<T>(string sql, object filter=null, CancellationToken cancellationToken = default)
         {
             if (sql == null) throw new ArgumentNullException(nameof(sql));
@@ -157,6 +165,14 @@ namespace Innovt.Data.Ado
         }
         
         public Task<IEnumerable<TReturn>> QueryAsync<TFirst, TSecond, TThird, TFourth, TReturn>(string sql, object filter, Func<TFirst, TSecond, TThird, TFourth, TReturn> func, string splitOn, CancellationToken cancellationToken = default)
+        {
+            if (sql == null) throw new ArgumentNullException(nameof(sql));
+
+            return this.QueryInternalAsync(sql,filter,func,splitOn,cancellationToken);
+        }
+
+        public Task<IEnumerable<TReturn>> QueryAsync<TFirst, TSecond, TThird, TFourth, TFifth, TReturn>(string sql, object filter, Func<TFirst, TSecond, TThird, TFourth, TFifth, TReturn> func, string splitOn,
+            CancellationToken cancellationToken = default)
         {
             if (sql == null) throw new ArgumentNullException(nameof(sql));
 
@@ -239,7 +255,7 @@ namespace Innovt.Data.Ado
             return QueryListPagedInternalAsync<T>(sql, filter, cancellationToken);
         }
 
-        private async Task<SqlMapper.GridReader> QueryMultipleInternalAsync(string[] queries,object filter = null)
+        private async Task<SqlMapper.GridReader> QueryMultipleInternalAsync(IDbConnection con, string[] queries,object filter = null)
         {
             if (queries == null) throw new ArgumentNullException(nameof(queries));
             
@@ -249,55 +265,62 @@ namespace Innovt.Data.Ado
             {  
                 sql.Append(query);
             }
-
-            using var con = GetConnection();
             
-            return  await con.QueryMultipleAsync(new CommandDefinition( sql.ToString(),filter)).ConfigureAwait(false);
+            return await con.QueryMultipleAsync(new CommandDefinition( sql.ToString(),filter)).ConfigureAwait(false);
         }
 
-        private async Task<IEnumerable<TReturn>> ReadMultipleInternalAsync<TFirst, TSecond, TReturn>(string[] queries, Func<TFirst, TSecond, TReturn> func,object filter = null, string splitOn = "id")
+        private async Task<(IEnumerable<TFirst> firstCollection, IEnumerable<TSecond> secondCollection )> ReadMultipleInternalAsync<TFirst, TSecond>(string[] queries,object filter = null)
         {
-            var result = await QueryMultipleInternalAsync(queries,filter);
-
-            return result.Read(func, splitOn, true).ToList();
+            using (var con = GetConnection())
+            {
+                var result = await QueryMultipleInternalAsync(con, queries, filter);
+                
+                return (await result.ReadAsync<TFirst>(), await result.ReadAsync<TSecond>());
+            }
         }
         
         private async Task<IEnumerable<TReturn>> ReadMultipleInternalAsync<TFirst, TSecond,TThird, TReturn>(string[] queries, Func<TFirst, TSecond,TThird, TReturn> func,object filter = null, string splitOn = "id")
         {
-            var result = await QueryMultipleInternalAsync(queries,filter);
+            using (var con = GetConnection())
+            {
+                var result = await QueryMultipleInternalAsync(con,queries, filter);
 
-            return result.Read(func, splitOn, true).ToList();
+                return result.Read(func, splitOn, true).ToList();
+            }
         }
         
         private async Task<IEnumerable<TReturn>> ReadMultipleInternalAsync<TFirst, TSecond,TThird,TFourth, TReturn>(string[] queries, Func<TFirst, TSecond,TThird,TFourth, TReturn> func,object filter = null, string splitOn = "id")
         {
-            var result = await QueryMultipleInternalAsync(queries, filter);
+            using (var con = GetConnection())
+            {
+                var result = await QueryMultipleInternalAsync(con, queries, filter);
 
-            return result.Read(func, splitOn, true).ToList();
+                return result.Read(func, splitOn, true).ToList();
+            }
         }
 
-        public Task<IEnumerable<TReturn>> QueryMultipleAsync<TFirst, TSecond, TReturn>(string[] queries, Func<TFirst, TSecond, TReturn> func,object filter = null, string splitOn = "id")
-        {
-            if (queries == null) throw new ArgumentNullException(nameof(queries));
-            if (func == null) throw new ArgumentNullException(nameof(func));
-
-            return ReadMultipleInternalAsync(queries,func,filter, splitOn);
-        }
-        
-        public Task<IEnumerable<TReturn>> QueryMultipleAsync<TFirst, TSecond,TThird, TReturn>(string[] queries, Func<TFirst, TSecond,TThird, TReturn> func,object filter = null, string splitOn = "id")
-        {
-            if (queries == null) throw new ArgumentNullException(nameof(queries));
-            if (func == null) throw new ArgumentNullException(nameof(func));
-
-            return ReadMultipleInternalAsync(queries, func,filter,splitOn);
-        }
-        
-        public Task<IEnumerable<TReturn>> QueryMultipleAsync<TFirst, TSecond,TThird,TFourth, TReturn>(string[] queries, Func<TFirst, TSecond,TThird,TFourth, TReturn> func, object filter = null, string splitOn = "id")
-        {
-            if (queries == null) throw new ArgumentNullException(nameof(queries));
-            if (func == null) throw new ArgumentNullException(nameof(func));
-
-            return ReadMultipleInternalAsync(queries, func,filter,splitOn);
-        }
+        // public Task<IEnumerable<TReturn>> QueryMultipleAsync<TFirst, TSecond, TReturn>(string[] queries, Func<TFirst, TSecond, TReturn> func,object filter = null, string splitOn = "id")
+        // {
+        //     if (queries == null) throw new ArgumentNullException(nameof(queries));
+        //     if (func == null) throw new ArgumentNullException(nameof(func));
+        //
+        //     return ReadMultipleInternalAsync(queries,func,filter, splitOn);
+        // }
+        //
+        // public Task<IEnumerable<TReturn>> QueryMultipleAsync<TFirst, TSecond,TThird, TReturn>(string[] queries, Func<TFirst, TSecond,TThird, TReturn> func,object filter = null, string splitOn = "id")
+        // {
+        //     if (queries == null) throw new ArgumentNullException(nameof(queries));
+        //     if (func == null) throw new ArgumentNullException(nameof(func));
+        //
+        //     return ReadMultipleInternalAsync(queries, func,filter,splitOn);
+        // }
+        //
+        // public Task<IEnumerable<TReturn>> QueryMultipleAsync<TFirst, TSecond,TThird,TFourth, TReturn>(string[] queries, Func<TFirst, TSecond,TThird,TFourth, TReturn> func, object filter = null, string splitOn = "id")
+        // {
+        //     if (queries == null) throw new ArgumentNullException(nameof(queries));
+        //     if (func == null) throw new ArgumentNullException(nameof(func));
+        //
+        //     return ReadMultipleInternalAsync(queries, func,filter,splitOn);
+        // }
     }
 }

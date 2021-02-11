@@ -5,16 +5,16 @@ using Innovt.Core.CrossCutting.Log;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using Innovt.Domain.Core.Streams;
+using Innovt.Domain.Core.Events;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis
 {
-    public abstract class KinesisEventProcessor<TBody> : EventProcessor<KinesisEvent> where TBody :class
+    public abstract class KinesisDomainEventProcessor<TBody> : EventProcessor<KinesisEvent> where TBody : DomainEvent
     {
-        protected KinesisEventProcessor(ILogger logger) : base(logger)
+        protected KinesisDomainEventProcessor(ILogger logger) : base(logger)
         {
         }
-        protected KinesisEventProcessor() : base()
+        protected KinesisDomainEventProcessor() : base()
         {
         }
 
@@ -45,14 +45,14 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
                     Logger.Info("Stream Content Read.");
                     
                     Logger.Info("Creating DataStream Message.");
-
-                    var message = new DataStream<TBody>()
+                    
+                    var message = DeserializeBody(content,record.Kinesis.PartitionKey);
+                    
+                    if (message != null)
                     {
-                        Body = DeserializeBody(content, record.Kinesis.PartitionKey),
-                        EventId = record.EventId,
-                        Partition = record.Kinesis.PartitionKey,
-                        ApproximateArrivalTimestamp = record.Kinesis.ApproximateArrivalTimestamp
-                    };
+                        message.EventId = record.EventId;
+                        message.ApproximateArrivalTimestamp = record.Kinesis.ApproximateArrivalTimestamp;
+                    }
                     
                     Logger.Info("Invoking ProcessMessage.");
                     
@@ -66,7 +66,7 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
                 }
             }
         }
-
-        protected abstract Task ProcessMessage(DataStream<TBody> message);
+        
+        protected abstract Task ProcessMessage(TBody message);
     }
 }

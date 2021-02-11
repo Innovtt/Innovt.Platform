@@ -37,12 +37,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="741c11c8-6345-4a62-a870-aa11e5bc5449" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisDataProcessor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisDomainEventProcessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/riderModule.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Innovt.AspNetCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Innovt.AspNetCore.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Innovt.Cloud.AWS.Cognito.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Innovt.Cloud.AWS.Cognito.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/Innovt.Cloud.AWS.Dynamo.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/Innovt.Cloud.AWS.Dynamo.Tests.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Innovt.Cloud.AWS.Dynamo.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Innovt.Cloud.AWS.Dynamo.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/DataProducer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/DataProducer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/Innovt.Cloud.AWS.Kinesis.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/Innovt.Cloud.AWS.Kinesis.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/InvalidEventLimitException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/InvalidEventLimitException.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/Innovt.Cloud.AWS.Lambda.Kinesis.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/Innovt.Cloud.AWS.Lambda.Kinesis.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisEventProcessor.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.S3/Innovt.Cloud.AWS.Lambda.S3.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.S3/Innovt.Cloud.AWS.Lambda.S3.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Sqs/Innovt.Cloud.AWS.Lambda.Sqs.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Sqs/Innovt.Cloud.AWS.Lambda.Sqs.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/Innovt.Cloud.AWS.Lambda.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/Innovt.Cloud.AWS.Lambda.csproj" afterDir="false" />
@@ -51,20 +59,20 @@
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.SQS/Innovt.Cloud.AWS.SQS.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.SQS/Innovt.Cloud.AWS.SQS.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS/Innovt.Cloud.AWS.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS/Innovt.Cloud.AWS.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud/Innovt.Cloud.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud/Innovt.Cloud.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core.Test/Innovt.Core.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core.Test/Innovt.Core.Test.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Core/Innovt.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Innovt.Core.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cqrs/Innovt.Cqrs.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cqrs/Innovt.Cqrs.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.CrossCutting.IOC/Innovt.CrossCutting.IOC.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.CrossCutting.IOC/Innovt.CrossCutting.IOC.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.CrossCutting.Log.Serilog/Innovt.CrossCutting.Log.Serilog.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.CrossCutting.Log.Serilog/Innovt.CrossCutting.Log.Serilog.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.Ado.Tests/Innovt.Data.Ado.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Ado.Tests/Innovt.Data.Ado.Tests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.Ado/Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Ado/Extensions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Data.Ado/IRepositoryBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Ado/IRepositoryBase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Data.Ado/Innovt.Data.Ado.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Ado/Innovt.Data.Ado.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Data.Ado/RepositoryBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Ado/RepositoryBase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/Innovt.Data.EFCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/Innovt.Data.EFCore.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Data.Migration/Innovt.Data.Migration.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Migration/Innovt.Data.Migration.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Data/Innovt.Data.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data/Innovt.Data.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Events/DomainEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Events/DomainEvent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Innovt.Domain.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Innovt.Domain.Core.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Streams/DataStream.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Streams/DataStream.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Streams/IDataStream.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Streams/IDataStream.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Domain/Innovt.Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Innovt.Domain.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Job.Core/Innovt.Job.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Job.Core/Innovt.Job.Core.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Job.Quartz/Innovt.Job.Quartz.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Job.Quartz/Innovt.Job.Quartz.csproj" afterDir="false" />
@@ -101,17 +109,32 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/DataProducer.cs" />
       <option value="$PROJECT_DIR$/Innovt.Domain.Core/Events/IEventHandler.cs" />
       <option value="$PROJECT_DIR$/Innovt.Core/Utilities/Extensions.cs" />
-      <option value="$PROJECT_DIR$/Innovt.AspNetCore/Innovt.AspNetCore.csproj" />
       <option value="$PROJECT_DIR$/Innovt.Core/Utilities/StringExtensions.cs" />
       <option value="$PROJECT_DIR$/Innovt.Core/Collections/PagedCollection.cs" />
       <option value="$PROJECT_DIR$/Innovt.Data.Ado/Extensions.cs" />
-      <option value="$PROJECT_DIR$/Innovt.Core/Innovt.Core.csproj" />
+      <option value="$PROJECT_DIR$/Innovt.Data/Innovt.Data.csproj" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud/Innovt.Cloud.csproj" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/InvalidEventLimitException.cs" />
       <option value="$PROJECT_DIR$/Innovt.Data.Ado/IRepositoryBase.cs" />
       <option value="$PROJECT_DIR$/Innovt.Data.Ado/RepositoryBase.cs" />
-      <option value="$PROJECT_DIR$/Innovt.Data/Innovt.Data.csproj" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS/Innovt.Cloud.AWS.csproj" />
+      <option value="$PROJECT_DIR$/Innovt.Core/Innovt.Core.csproj" />
+      <option value="$PROJECT_DIR$/Innovt.Job.Core/Innovt.Job.Core.csproj" />
+      <option value="$PROJECT_DIR$/Innovt.AspNetCore/Innovt.AspNetCore.csproj" />
+      <option value="$PROJECT_DIR$/Innovt.CrossCutting.Log.Serilog/Innovt.CrossCutting.Log.Serilog.csproj" />
+      <option value="$PROJECT_DIR$/Innovt.Data.EFCore/Innovt.Data.EFCore.csproj" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/DataProducer.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisEventProcessorBase.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Domain.Core/Streams/IDataStream.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Domain.Core/Streams/DataStream.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Domain.Core/Events/DomainEvent.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisEventProcessor - Copy.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisEventProcessor.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisDomainEventProcessor.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisDataProcessor.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/Innovt.Cloud.AWS.Lambda.Kinesis.csproj" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1jWxQf8VmAkARbTTMoJUI5G2XMM" />
@@ -247,7 +270,11 @@
       <workItem from="1610572137522" duration="739000" />
       <workItem from="1611671937127" duration="3181000" />
       <workItem from="1611682448889" duration="1043000" />
-      <workItem from="1612791217156" duration="1912000" />
+      <workItem from="1612791217156" duration="4374000" />
+      <workItem from="1612996043118" duration="1395000" />
+      <workItem from="1613055120532" duration="1209000" />
+      <workItem from="1613063116448" duration="2612000" />
+      <workItem from="1613070022698" duration="4958000" />
     </task>
     <servers />
   </component>

@@ -19,12 +19,12 @@ namespace Innovt.Cloud.AWS.Kinesis
     {
         private string BusName { get; set; }
 
-        public DataProducer(string busName,ILogger logger, IAWSConfiguration configuration) : base(logger, configuration)
+        protected DataProducer(string busName,ILogger logger, IAWSConfiguration configuration) : base(logger, configuration)
         {  
             this.BusName = busName ?? throw new ArgumentNullException(nameof(busName));
         }
 
-        public DataProducer(string busName, ILogger logger,ITracer tracer, IAWSConfiguration configuration, string region) : base(logger,tracer,
+        protected DataProducer(string busName, ILogger logger,ITracer tracer, IAWSConfiguration configuration, string region) : base(logger,tracer,
             configuration, region)
         {
             this.BusName = busName ?? throw new ArgumentNullException(nameof(busName));
