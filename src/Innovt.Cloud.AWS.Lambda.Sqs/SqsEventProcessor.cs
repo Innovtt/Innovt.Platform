@@ -14,7 +14,6 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
 
         protected SqsEventProcessor(ILogger logger) : base(logger)
         {
-
         }
 
         protected SqsEventProcessor(ILogger logger, ISerializer serializer) : base(logger)
@@ -26,7 +25,7 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
         {
         }
 
-        protected ISerializer Serializer
+        private ISerializer Serializer
         {
             get
             {

@@ -3,7 +3,6 @@ using Innovt.Core.Collections;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -66,7 +65,7 @@ namespace Innovt.Data.Ado
             return QueryFirstOrDefaultInternalAsync<T>(sql, filter, cancellationToken);
         }
         
-        internal async Task<T> QuerySingleOrDefaultInternalAsync<T>(string sql, object filter = null, CancellationToken cancellationToken = default)
+        private async Task<T> QuerySingleOrDefaultInternalAsync<T>(string sql, object filter = null, CancellationToken cancellationToken = default)
         { 
             using var con = GetConnection();
             return await con
