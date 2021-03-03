@@ -127,6 +127,17 @@ namespace Innovt.Cloud.AWS.SQS
             return (response?.ApproximateNumberOfMessages).GetValueOrDefault();
         }
 
+        public async Task<int> ApproximateMessageNotVisibleCountAsync(CancellationToken cancellationToken = default)
+        {
+            var attributes = new List<string>() { "ApproximateNumberOfMessagesNotVisible" };
+
+            var queueUrl = await GetQueueUrlAsync();
+
+            var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () => await SqsClient.GetQueueAttributesAsync(queueUrl, attributes, cancellationToken));
+
+            return (response?.ApproximateNumberOfMessages).GetValueOrDefault();
+        }
+
         public async Task CreateIfNotExistAsync(CancellationToken cancellationToken = default)
         {   
             await SqsClient.CreateQueueAsync(QueueName, cancellationToken);

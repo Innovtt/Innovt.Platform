@@ -16,6 +16,7 @@ namespace Innovt.Cloud.Queue
         Task<IList<MessageQueueResult>> QueueBatchAsync(IEnumerable<MessageBatchRequest> message, int? delaySeconds = null, CancellationToken cancellationToken = default);
 
         Task<int> ApproximateMessageCountAsync(CancellationToken cancellationToken = default);
+        Task<int> ApproximateMessageNotVisibleCountAsync(CancellationToken cancellationToken = default);
 
         Task CreateIfNotExistAsync(CancellationToken cancellationToken = default);
     }
