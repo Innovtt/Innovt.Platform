@@ -127,6 +127,25 @@ namespace Innovt.Core.Utilities
             return String.IsNullOrWhiteSpace(str);
         }
 
+        public static bool IsEmpty(this Guid guid)
+        {
+            return guid == Guid.Empty;
+        }
+        
+        public static bool IsNotEmpty(this Guid guid)
+        {
+            return !IsEmpty(guid);
+        }
+        public static bool IsNullOrEmpty(this Guid? guid)
+        {
+            return IsEmpty(guid.GetValueOrDefault());
+        }
+        
+        public static bool IsNotNullOrEmpty(this Guid? guid)
+        {
+            return !IsNullOrEmpty(guid);
+        }
+        
         public static string UrlEncode(this string str)
         {
             return str.IsNullOrEmpty() ? str : HttpUtility.UrlEncode(str, Encoding.UTF8);

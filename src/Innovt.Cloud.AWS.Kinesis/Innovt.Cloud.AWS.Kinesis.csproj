@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <PackageId>Innovt.Cloud.AWS.Kinesis</PackageId>
-    <PackageVersion>3.1.6.30</PackageVersion>
+    <PackageVersion>3.1.6.33</PackageVersion>
     <Authors>Michel,Tiago</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -16,7 +16,7 @@
     <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj" />
     <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj" />
     <ProjectReference Include="..\Innovt.Domain\Innovt.Domain.csproj" />
-    <PackageReference Include="AWSSDK.Kinesis" Version="3.5.0.71" />
+    <PackageReference Include="AWSSDK.Kinesis" Version="3.5.0.76" />
     <PackageReference Include="OpenTracing" Version="0.12.1" />
     <PackageReference Include="System.Text.Json" Version="5.0.1" />
   </ItemGroup>

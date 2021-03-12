@@ -48,7 +48,7 @@ namespace Innovt.AspNetCore.Handlers
             // First check for permissions, they may show up in addition to or instead of scopes...
             if (context.User.HasClaim(c =>
                 c.Type == "permissions" && c.Issuer == requirement.Issuer &&
-                c.Value?.ToLower(CultureInfo.CurrentCulture) == $"{controller}:{action}".ToLower(CultureInfo.CurrentCulture)))
+                c.Value?.ToLower(CultureInfo.CurrentCulture) == $"{Scope}:{controller}:{action}".ToLower(CultureInfo.CurrentCulture)))
             {
                 context.Succeed(requirement);
                 return Task.CompletedTask;

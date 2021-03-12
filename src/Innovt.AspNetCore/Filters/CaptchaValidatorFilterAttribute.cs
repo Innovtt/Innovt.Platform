@@ -70,7 +70,7 @@ namespace Innovt.AspNetCore.Filters
 
             using var httpClient = new HttpClient();
             
-                var stringAsync = await httpClient.GetStringAsync($"{captchaURI}?secret={secretKey}&response={token}");
+                var stringAsync = await httpClient.GetStringAsync($"{captchaURI}?secret={secretKey}&response={token}").ConfigureAwait(false);
 
                 var serializerSettings = new JsonSerializerOptions
                 {
@@ -108,7 +108,7 @@ namespace Innovt.AspNetCore.Filters
                     return;
                 }
 
-                var isValid = await this.IsValid(recaptchaResponse,context.HttpContext);
+                var isValid = await this.IsValid(recaptchaResponse,context.HttpContext).ConfigureAwait(false);
 
                 if (!isValid)
                 {

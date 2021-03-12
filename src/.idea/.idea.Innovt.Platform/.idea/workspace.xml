@@ -37,33 +37,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="741c11c8-6345-4a62-a870-aa11e5bc5449" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/riderModule.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Filters/AuthorizationFilter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Filters/AuthorizationFilter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Filters/CaptchaValidatorFilterAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Filters/CaptchaValidatorFilterAttribute.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Handlers/HasScopeRequirement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Handlers/HasScopeRequirement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Innovt.AspNetCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Innovt.AspNetCore.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Innovt.Cloud.AWS.Cognito.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Innovt.Cloud.AWS.Cognito.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/Innovt.Cloud.AWS.Dynamo.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/Innovt.Cloud.AWS.Dynamo.Tests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Innovt.Cloud.AWS.Dynamo.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Innovt.Cloud.AWS.Dynamo.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/Innovt.Cloud.AWS.Kinesis.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/Innovt.Cloud.AWS.Kinesis.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/Innovt.Cloud.AWS.Lambda.Kinesis.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/Innovt.Cloud.AWS.Lambda.Kinesis.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.S3/Innovt.Cloud.AWS.Lambda.S3.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.S3/Innovt.Cloud.AWS.Lambda.S3.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Sqs/Innovt.Cloud.AWS.Lambda.Sqs.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Sqs/Innovt.Cloud.AWS.Lambda.Sqs.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/Innovt.Cloud.AWS.Lambda.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/Innovt.Cloud.AWS.Lambda.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Notification/Innovt.Cloud.AWS.Notification.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Notification/Innovt.Cloud.AWS.Notification.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Notification/MailNotificationHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Notification/MailNotificationHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.S3/Innovt.Cloud.AWS.S3.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.S3/Innovt.Cloud.AWS.S3.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.SQS/Innovt.Cloud.AWS.SQS.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.SQS/Innovt.Cloud.AWS.SQS.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS/Innovt.Cloud.AWS.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS/Innovt.Cloud.AWS.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud/Innovt.Cloud.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud/Innovt.Cloud.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Innovt.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Innovt.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cqrs/Innovt.Cqrs.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cqrs/Innovt.Cqrs.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.CrossCutting.IOC/Innovt.CrossCutting.IOC.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.CrossCutting.IOC/Innovt.CrossCutting.IOC.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.CrossCutting.Log.Serilog/Innovt.CrossCutting.Log.Serilog.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.CrossCutting.Log.Serilog/Innovt.CrossCutting.Log.Serilog.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.Ado/Innovt.Data.Ado.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Ado/Innovt.Data.Ado.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/Innovt.Data.EFCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/Innovt.Data.EFCore.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.Migration/Innovt.Data.Migration.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Migration/Innovt.Data.Migration.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data/Innovt.Data.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data/Innovt.Data.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Innovt.Domain.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Innovt.Domain.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/Innovt.Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Innovt.Domain.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Job.Core/Innovt.Job.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Job.Core/Innovt.Job.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Job.Quartz/Innovt.Job.Quartz.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Job.Quartz/Innovt.Job.Quartz.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Notification.Core/Innovt.Notification.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Notification.Core/Innovt.Notification.Core.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Core.Test/Innovt.Core.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core.Test/Innovt.Core.Test.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Core/Utilities/StringExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Utilities/StringExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Data.Ado.Tests/Innovt.Data.Ado.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Ado.Tests/Innovt.Data.Ado.Tests.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +71,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/LambdaLogger.cs" root0="FORCE_HIGHLIGHTING" />
@@ -90,6 +97,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2487D3E0-48CE-4C7C-BE1B-5A050DA81DEE/66/95d0c8e7/QueryRequest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Innovt.Cloud/Table/BaseRequest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/051BC642-7BC4-4025-8FC8-06B760F03A0E/09/a0dedce9/AttributeValue.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9CDB37C3-E1A3-453A-81AC-59D315001BF4/e7/29a7d756/AmazonDynamoDBClient.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Innovt.Cloud/Table/ScanRequest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/Helpers.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2487D3E0-48CE-4C7C-BE1B-5A050DA81DEE/07/c9d5a3f1/IQueryPaginator.cs" root0="FORCE_HIGHLIGHTING" />
@@ -98,14 +106,12 @@
     <changedPaths>
       <option value="$PROJECT_DIR$/Innovt.Domain.Core/Events/IEventHandler.cs" />
       <option value="$PROJECT_DIR$/Innovt.Core/Utilities/Extensions.cs" />
-      <option value="$PROJECT_DIR$/Innovt.Core/Utilities/StringExtensions.cs" />
       <option value="$PROJECT_DIR$/Innovt.Core/Collections/PagedCollection.cs" />
       <option value="$PROJECT_DIR$/Innovt.Data.Ado/Extensions.cs" />
       <option value="$PROJECT_DIR$/Innovt.Data/Innovt.Data.csproj" />
       <option value="$PROJECT_DIR$/Innovt.Cloud/Innovt.Cloud.csproj" />
       <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/InvalidEventLimitException.cs" />
       <option value="$PROJECT_DIR$/Innovt.Data.Ado/IRepositoryBase.cs" />
-      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS/Innovt.Cloud.AWS.csproj" />
       <option value="$PROJECT_DIR$/Innovt.Core/Innovt.Core.csproj" />
       <option value="$PROJECT_DIR$/Innovt.Job.Core/Innovt.Job.Core.csproj" />
       <option value="$PROJECT_DIR$/Innovt.CrossCutting.Log.Serilog/Innovt.CrossCutting.Log.Serilog.csproj" />
@@ -118,12 +124,30 @@
       <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisEventProcessor - Copy.cs" />
       <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisEventProcessor.cs" />
       <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisDomainEventProcessor.cs" />
-      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/Innovt.Cloud.AWS.Lambda.Kinesis.csproj" />
       <option value="$PROJECT_DIR$/Innovt.Data.Ado/RepositoryBase.cs" />
       <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisDataProcessor.cs" />
       <option value="$PROJECT_DIR$/Innovt.Core/CrossCutting/Ioc/IContainer.cs" />
       <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Sqs/SqsEventProcessor.cs" />
+      <option value="$PROJECT_DIR$/Innovt.AspNetCore/Handlers/HasScopeRequirement.cs" />
       <option value="$PROJECT_DIR$/Innovt.AspNetCore/Innovt.AspNetCore.csproj" />
+      <option value="$PROJECT_DIR$/Innovt.Core/Utilities/StringExtensions.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS/Configuration/IAWSConfiguration.cs" />
+      <option value="$PROJECT_DIR$/Innovt.AspNetCore/Filters/CaptchaValidatorFilterAttribute.cs" />
+      <option value="$PROJECT_DIR$/Innovt.AspNetCore/Filters/AuthorizationFilter.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS/Innovt.Cloud.AWS.csproj" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/Innovt.Cloud.AWS.Lambda.csproj" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/Innovt.Cloud.AWS.Lambda.Kinesis.csproj" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.S3/Innovt.Cloud.AWS.Lambda.S3.csproj" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Sqs/Innovt.Cloud.AWS.Lambda.Sqs.csproj" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Innovt.Cloud.AWS.Cognito.csproj" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Innovt.Cloud.AWS.Dynamo.csproj" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/Innovt.Cloud.AWS.Kinesis.csproj" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Notification/Innovt.Cloud.AWS.Notification.csproj" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.S3/Innovt.Cloud.AWS.S3.csproj" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.SQS/Innovt.Cloud.AWS.SQS.csproj" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1jWxQf8VmAkARbTTMoJUI5G2XMM" />
@@ -138,7 +162,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34975636" />
-    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.29994586" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -265,6 +289,11 @@
       <workItem from="1613063116448" duration="2612000" />
       <workItem from="1613070022698" duration="5719000" />
       <workItem from="1613085084832" duration="988000" />
+      <workItem from="1614005987111" duration="871000" />
+      <workItem from="1614088394964" duration="973000" />
+      <workItem from="1615561623809" duration="3784000" />
+      <workItem from="1615567758900" duration="2371000" />
+      <workItem from="1615570436156" duration="1254000" />
     </task>
     <servers />
   </component>
@@ -291,13 +320,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs</url>
-          <line>130</line>
+          <line>144</line>
           <properties documentPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" initialLine="123">
             <startOffsets>
-              <option value="5714" />
+              <option value="5980" />
             </startOffsets>
             <endOffsets>
-              <option value="5747" />
+              <option value="6013" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="10" />
@@ -307,10 +336,10 @@
           <line>86</line>
           <properties documentPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" initialLine="85">
             <startOffsets>
-              <option value="3628" />
+              <option value="4560" />
             </startOffsets>
             <endOffsets>
-              <option value="3649" />
+              <option value="4581" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="17" />
@@ -320,10 +349,10 @@
           <line>102</line>
           <properties documentPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" initialLine="110">
             <startOffsets>
-              <option value="4973" />
+              <option value="5239" />
             </startOffsets>
             <endOffsets>
-              <option value="5080" />
+              <option value="5346" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="22" />
@@ -333,26 +362,13 @@
           <line>65</line>
           <properties documentPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" initialLine="65">
             <startOffsets>
-              <option value="2549" />
+              <option value="3481" />
             </startOffsets>
             <endOffsets>
-              <option value="3188" />
+              <option value="4120" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Helpers.cs</url>
-          <line>245</line>
-          <properties documentPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Helpers.cs" initialLine="245">
-            <startOffsets>
-              <option value="8909" />
-            </startOffsets>
-            <endOffsets>
-              <option value="8945" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Helpers.cs</url>
@@ -366,6 +382,45 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs</url>
+          <line>93</line>
+          <properties documentPath="$PROJECT_DIR$/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs" initialLine="92" containingFunctionPresentation="method 'GetCredential'">
+            <startOffsets>
+              <option value="3386" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3420" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs</url>
+          <line>117</line>
+          <properties documentPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" initialLine="117" containingFunctionPresentation="method 'InternalQueryAsync'">
+            <startOffsets>
+              <option value="5141" />
+            </startOffsets>
+            <endOffsets>
+              <option value="5162" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs</url>
+          <line>123</line>
+          <properties documentPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" initialLine="123" containingFunctionPresentation="method 'InternalQueryAsync'">
+            <startOffsets>
+              <option value="5239" />
+            </startOffsets>
+            <endOffsets>
+              <option value="5346" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

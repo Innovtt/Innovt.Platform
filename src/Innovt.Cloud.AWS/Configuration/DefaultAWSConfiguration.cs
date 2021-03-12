@@ -13,16 +13,21 @@ namespace Innovt.Cloud.AWS.Configuration
         public string AccountNumber { get; set; }
         public string SecretKey { get; set; }
         public string AccessKey { get; set; }
+        public string RoleArn { get; set; }
+        public string SessionToken { get; set; }
         public string Region { get; set; }
         public string Profile { get; set; }
-      
+        
+        
         /// <summary>
         /// Using custom Profile
         /// </summary>
         /// <param name="profileName"></param>
-        public DefaultAWSConfiguration(string profileName)
+        /// <param name="roleArn"></param>
+        public DefaultAWSConfiguration(string profileName,string roleArn=null)
         {
             Profile = profileName ?? throw new System.ArgumentNullException(nameof(profileName));
+            RoleArn = roleArn;
         }
 
         public DefaultAWSConfiguration()
@@ -47,21 +52,21 @@ namespace Innovt.Cloud.AWS.Configuration
 
             section.Bind(this);
         }
-
-
-        public DefaultAWSConfiguration(string accessKey,string secretKey,string region, string accountNumber = null)
+     
+        public DefaultAWSConfiguration(string accessKey,string secretKey,string region, string accountNumber = null, string sessionToken = null)
         {   
             Check.NotNull(accessKey, nameof(accessKey));
             Check.NotNull(secretKey, nameof(secretKey));
             Check.NotNull(region, nameof(region));
             
-            this.AccountNumber = accountNumber;
-            this.AccessKey = accessKey;
-            this.SecretKey = secretKey;
-            this.Region = region;
+            AccountNumber = accountNumber;
+            AccessKey = accessKey;
+            SecretKey = secretKey;
+            Region = region;
+            SessionToken = sessionToken;
         }
 
-        internal AWSCredentials GetCredentialsFromProfile()
+        private AWSCredentials GetCredentialsFromProfile()
         {
             var sharedProfile = new SharedCredentialsFile();
 
@@ -76,6 +81,14 @@ namespace Innovt.Cloud.AWS.Configuration
             return AWSCredentialsFactory.GetAWSCredentials(profile, sharedProfile);
         }
 
+        private AWSCredentials AssumeRole(AWSCredentials credentials)
+        {
+            if (credentials is null || RoleArn.IsNullOrEmpty())
+                return credentials;
+            
+            return new AssumeRoleAWSCredentials(credentials, RoleArn, $"InnovtRoleSession");
+        }
+
         public AWSCredentials GetCredential() {
 
             AWSCredentials credentials = null;
@@ -84,15 +97,26 @@ namespace Innovt.Cloud.AWS.Configuration
             {
                 credentials = GetCredentialsFromProfile();
             }
-
-            if (credentials != null)
-                return credentials;
-
-            if (AccessKey!=null && SecretKey!=null)
+            else
             {
-                credentials = new BasicAWSCredentials(AccessKey, SecretKey);
+                if (AccessKey.IsNotNullOrEmpty() || SecretKey.IsNotNullOrEmpty())
+                {
+                    if (SessionToken.IsNullOrEmpty())
+                    {
+                        credentials = new BasicAWSCredentials(AccessKey, SecretKey);
+                    }
+                    else
+                    {
+                        credentials = new SessionAWSCredentials(AccessKey, SecretKey, SessionToken);
+                    }
+                }
             }
-
+            
+            if (RoleArn.IsNotNullOrEmpty())
+            {
+                credentials = AssumeRole(credentials);
+            }
+            
             return credentials;
         }
     }

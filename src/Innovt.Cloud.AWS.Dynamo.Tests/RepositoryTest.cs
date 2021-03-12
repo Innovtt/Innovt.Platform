@@ -23,10 +23,10 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
         public void Setup()
         {
             loggerMock = NSubstitute.Substitute.For<ILogger>();
-                
             //var client = new AmazonDynamoDBClient(RegionEndpoint.USEast1);
-            
-            baseRepository= new BaseRepository(loggerMock, new DefaultAWSConfiguration("antecipa-dev"));
+            //baseRepository= new BaseRepository(loggerMock, new DefaultAWSConfiguration("antecipa-dev"));
+            baseRepository= new BaseRepository(loggerMock, new DefaultAWSConfiguration("ASIA4UCADRLLRDH4VFMO","wOvjebR8ggmvVKWp+O7BgUkmhN0TomXNAIKxKGE/","us-east-1","" +
+                "", "IQoJb3JpZ2luX2VjEIL//////////wEaCXVzLWVhc3QtMSJIMEYCIQDR7VQlA7TIHN8ELRQzZUPZXSN1wTLx2glW1duPwpuF/AIhAMQgaRTr3WUCmWuRPM2IrpwDyKA2YdYc0nXJDEIilJjYKqcCCKv//////////wEQARoMODY3NzE3ODQzNjcxIgx4hMvKmEmTILT+NSIq+wFXhl40ryJyZ9iu9L23kVNIlHH+tNucxi3GIq/xCIa3TCm1ELIqHoaczblAMaUbzWoOvR8PJ7qGR+RZxLv4qSzrNNxVh/smxpGn+Cl0hID9ek8RIqDxv0XaHkqHYuDjeP4505gAncGlGdqvmMcyRlMxYnAP6P09jyFfRNBzcAhSNSWHmwZAAejv16T32Ou1VViOuncvB4YR6hjMvY6vuQ4OMgxmvbf5w/SXiyG71XFqjtClD0jh4a++jooFCrstmDK2j9HYPEtu9w5Z73oDTWZRXgw15mUYlMND5BENJWy+jnhFJEPZDwARz4pJAjQPJWKNVho76g0d+Q6P0jCK1a6CBjqcAZJC+NxqlhYL50ZkA7+Qt7+oL8rxW+p4bZzd3veBes+SjDHcfStYxJisQbIdH8fO2mhKcvE68YZpns99JiQTZkaBbZ1yfiOp2fe5ILD3VUoPIt46oxvz4lxf12zlpdMGa0h0eomG5HJ+Q4IvVY/oixDtRQnj3Xok0k4kVQj+jsobb6EaTsyfEzusbzAxAXnvKBi2AUM5qzAvJbo+3w=="));
         }
 
         [Test]

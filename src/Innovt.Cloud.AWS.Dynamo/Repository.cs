@@ -106,6 +106,20 @@ namespace Innovt.Cloud.AWS.Dynamo
             
             var items = new List<Dictionary<string, AttributeValue>>();
             var remaining = request.PageSize;
+
+
+            try
+            {
+
+                var tables = await DynamoClient.ListTablesAsync(cancellationToken);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+            
             
             var iterator = DynamoClient.Paginators.Query(queryRequest).Responses.GetAsyncEnumerator(cancellationToken);
 

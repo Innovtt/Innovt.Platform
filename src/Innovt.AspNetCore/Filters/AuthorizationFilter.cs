@@ -22,7 +22,7 @@ namespace Innovt.AspNetCore.Filters
             this.securityRepository = securityRepository ?? throw new ArgumentNullException(nameof(securityRepository));
         }
 
-        private bool AllowAnonymous(AuthorizationFilterContext context)
+        private static bool AllowAnonymous(FilterContext context)
         {
             if (context.Filters.Any(item => item is IAllowAnonymousFilter))
                 return true;
@@ -130,7 +130,7 @@ namespace Innovt.AspNetCore.Filters
             /// Controller/* mean that you can althorize all actions
             /// Controller/Action mean that you want to authorize only this action
             /// </summary>
-            var hasPermission = await this.HasPermission(userId, area, controller, action);
+            var hasPermission = await HasPermission(userId, area, controller, action).ConfigureAwait(false);
 
             if (!hasPermission)
             {

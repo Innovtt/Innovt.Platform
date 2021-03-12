@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <PackageId>Innovt.AspNetCore</PackageId>
-    <PackageVersion>3.1.6.30</PackageVersion>
+    <PackageVersion>3.1.6.31</PackageVersion>
     <Authors>Michel,Tiago</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -16,18 +16,11 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.12" />
     <PackageReference Include="OpenTracing.Contrib.NetCore" Version="0.7.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.0.7" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.12" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj" />
     <ProjectReference Include="..\Innovt.Domain\Innovt.Domain.csproj" />
   </ItemGroup>
-
-<!--    <ItemGroup>-->
-<!--	    <PackageReference Include="Microsoft.NetCore.Analyzers" Version="3.3.2">-->
-<!--		    <PrivateAssets>all</PrivateAssets>-->
-<!--	    </PackageReference>-->
-<!--    </ItemGroup>-->
-
 </Project>
