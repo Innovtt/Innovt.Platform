@@ -21,10 +21,7 @@ namespace Innovt.Notification.Core.Domain
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (Address.IsNullOrEmpty())
-            {
-                yield return new ValidationResult("Invalid address");
-            }
+            if (Address.IsNullOrEmpty()) yield return new ValidationResult("Invalid address");
         }
     }
 }

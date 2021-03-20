@@ -12,14 +12,14 @@ namespace Innovt.Cloud.Table
         {
             if (string.IsNullOrEmpty(id)) throw new ArgumentNullException(nameof(id));
 
-            this.Id = id;
+            Id = id;
         }
 
         public TableMessage(string id, string rangeKey) : this(id)
         {
             if (string.IsNullOrEmpty(rangeKey)) throw new ArgumentNullException(nameof(rangeKey));
 
-            this.RangeKey = rangeKey;
+            RangeKey = rangeKey;
         }
 
         public string Id { get; set; }

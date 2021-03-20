@@ -59,12 +59,9 @@ namespace Innovt.Data.EFCore
             where TEntity : class
         {
             if (configurationList == null)
-                throw new System.ArgumentNullException(nameof(configurationList));
+                throw new ArgumentNullException(nameof(configurationList));
 
-            foreach (var item in configurationList)
-            {
-                modelBuilder.AddConfiguration(item);
-            }
+            foreach (var item in configurationList) modelBuilder.AddConfiguration(item);
         }
 
         public static void AddSecurityMap(this ModelBuilder modelBuilder)

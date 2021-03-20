@@ -20,9 +20,9 @@ namespace Innovt.Job.Core
         protected virtual void SetupConfiguration()
         {
             var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+                .AddJsonFile("appsettings.json", true, true);
 
-            this.Configuration = builder.Build();
+            Configuration = builder.Build();
         }
 
 

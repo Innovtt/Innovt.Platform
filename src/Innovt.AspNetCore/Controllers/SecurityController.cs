@@ -54,7 +54,7 @@ namespace Innovt.AspNetCore.Controllers
                 {
                     Area = controllerTypeInfo.GetCustomAttribute<AreaAttribute>()?.RouteValue,
                     DisplayName = controllerTypeInfo.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName,
-                    Name = actionDescriptor.ControllerName,
+                    Name = actionDescriptor.ControllerName
                 };
 
                 var actions = new List<MvcActionViewModel>();
@@ -68,7 +68,7 @@ namespace Innovt.AspNetCore.Controllers
                         Controller = currentController.Name,
                         Name = descriptor.ActionName,
                         DisplayName = methodInfo.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName,
-                        Method = methodInfo.GetCustomAttribute<HttpMethodAttribute>()?.Name ?? "GET",
+                        Method = methodInfo.GetCustomAttribute<HttpMethodAttribute>()?.Name ?? "GET"
                     });
                 }
 

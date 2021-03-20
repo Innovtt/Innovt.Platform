@@ -27,20 +27,17 @@ namespace Innovt.CrossCutting.IOC
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            if (!disposed)
             {
-                if (disposing)
-                {
-                    this.container.Dispose();
-                }
+                if (disposing) container.Dispose();
 
-                this.disposed = true;
+                disposed = true;
             }
         }
 
         public void Dispose()
         {
-            this.Dispose(true);
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
     }

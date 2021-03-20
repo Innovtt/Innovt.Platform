@@ -25,22 +25,16 @@ namespace Innovt.Notification.Core.Domain
 
         public NotificationMessage(NotificationMessageType type)
         {
-            this.Type = type;
+            Type = type;
         }
 
         public NotificationMessage(NotificationMessageType type, string fromAddress, string fromName, string subject)
         {
-            this.Type = type;
+            Type = type;
 
-            if (fromAddress.IsNotNullOrEmpty())
-            {
-                this.AddFrom(fromAddress, fromName);
-            }
+            if (fromAddress.IsNotNullOrEmpty()) AddFrom(fromAddress, fromName);
 
-            if (subject.IsNotNullOrEmpty())
-            {
-                this.AddSubject(subject);
-            }
+            if (subject.IsNotNullOrEmpty()) AddSubject(subject);
         }
 
         public NotificationMessage AddSubject(string subject, string charset = null)
@@ -100,33 +94,20 @@ namespace Innovt.Notification.Core.Domain
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (this.To == null || !this.To.Any())
-            {
-                yield return new ValidationResult("Invalid value for To", new[] {"To"});
-            }
+            if (To == null || !To.Any()) yield return new ValidationResult("Invalid value for To", new[] {"To"});
 
-            if (this.Body == null || this.Body.Content.IsNullOrEmpty())
-            {
+            if (Body == null || Body.Content.IsNullOrEmpty())
                 yield return new ValidationResult("Invalid value for Body", new[] {"Body"});
-            }
 
-            if (this.From == null || this.From.Address.IsNullOrEmpty())
-            {
+            if (From == null || From.Address.IsNullOrEmpty())
                 yield return new ValidationResult("Invalid value for From", new[] {"From"});
-            }
 
             if (Type == NotificationMessageType.Sms)
-            {
-                foreach (var to in this.To)
-                {
+                foreach (var to in To)
                     if (to.Address == null ||
                         !to.Address.StartsWith("+", System.StringComparison.InvariantCultureIgnoreCase))
-                    {
                         yield return new ValidationResult(
                             "Invalid value for To that should start with + and E.164 format.", new[] {"To"});
-                    }
-                }
-            }
         }
     }
 }

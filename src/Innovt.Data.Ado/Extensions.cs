@@ -12,7 +12,7 @@ namespace Innovt.Data.Ado
             if (pagedFilter.IsNull())
                 return rawSql;
 
-            var recordStart = (pagedFilter.Page) * pagedFilter.PageSize;
+            var recordStart = pagedFilter.Page * pagedFilter.PageSize;
 
             if (recordStart < 0)
                 recordStart = 0;

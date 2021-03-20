@@ -18,10 +18,7 @@ namespace Innovt.Core.Validation
 
             context ??= new ValidationContext(array);
 
-            foreach (var obj in array)
-            {
-                validationResult.AddRange(obj.Validate(context));
-            }
+            foreach (var obj in array) validationResult.AddRange(obj.Validate(context));
 
             return validationResult;
         }
@@ -67,10 +64,7 @@ namespace Innovt.Core.Validation
 
         public static IEnumerable<ValidationResult> YieldFromCollection(this IEnumerable<ValidationResult> items)
         {
-            foreach (var item in items)
-            {
-                yield return item;
-            }
+            foreach (var item in items) yield return item;
         }
     }
 }

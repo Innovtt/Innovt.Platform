@@ -22,14 +22,14 @@ namespace Innovt.Cloud.AWS.Kinesis
         protected DataProducer(string busName, ILogger logger, IAWSConfiguration configuration) : base(logger,
             configuration)
         {
-            this.BusName = busName ?? throw new ArgumentNullException(nameof(busName));
+            BusName = busName ?? throw new ArgumentNullException(nameof(busName));
         }
 
         protected DataProducer(string busName, ILogger logger, ITracer tracer, IAWSConfiguration configuration,
             string region) : base(logger, tracer,
             configuration, region)
         {
-            this.BusName = busName ?? throw new ArgumentNullException(nameof(busName));
+            BusName = busName ?? throw new ArgumentNullException(nameof(busName));
         }
 
         private AmazonKinesisClient kinesisClient;
@@ -50,7 +50,7 @@ namespace Innovt.Cloud.AWS.Kinesis
 
             Logger.Info("Kinesis Publisher Started");
 
-            var request = new Amazon.Kinesis.Model.PutRecordsRequest()
+            var request = new PutRecordsRequest()
             {
                 StreamName = BusName,
                 Records = new List<PutRecordsRequestEntry>()
@@ -59,7 +59,7 @@ namespace Innovt.Cloud.AWS.Kinesis
             foreach (var data in dataStreams)
             {
                 if (data.TraceId.IsNullOrEmpty())
-                    data.TraceId = base.GetTraceId();
+                    data.TraceId = GetTraceId();
 
                 var dataAsBytes = Encoding.UTF8.GetBytes(System.Text.Json.JsonSerializer.Serialize<object>(data));
                 await using var ms = new MemoryStream(dataAsBytes);
@@ -87,10 +87,8 @@ namespace Innovt.Cloud.AWS.Kinesis
             var errorRecords = results.Records.Where(r => r.ErrorCode != null);
 
             foreach (var error in errorRecords)
-            {
                 Logger.Error("Error publishing message. Error: @ErrorCode, ErrorMessage: @ErrorMessage ",
                     error.ErrorCode, error.ErrorMessage);
-            }
         }
 
         public async Task Publish(T data, CancellationToken cancellationToken = default)

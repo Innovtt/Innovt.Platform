@@ -28,7 +28,7 @@ namespace Innovt.Domain.Core.Specification
     {
         #region Members
 
-        readonly Expression<Func<TEntity, bool>> matchingCriteria;
+        private readonly Expression<Func<TEntity, bool>> matchingCriteria;
 
         #endregion
 

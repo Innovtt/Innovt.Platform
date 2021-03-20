@@ -27,7 +27,7 @@ namespace Innovt.Cloud.Queue
 
         public QueueMessage(Dictionary<string, string> attributes)
         {
-            this.Attributes = attributes;
+            Attributes = attributes;
         }
     }
 }

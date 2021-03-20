@@ -23,24 +23,15 @@ namespace Innovt.Core.CrossCutting.Ioc
 
         public static void AddModule(this IServiceCollection services, IOCModule module)
         {
-            if (module is null)
-            {
-                throw new ArgumentNullException(nameof(module));
-            }
+            if (module is null) throw new ArgumentNullException(nameof(module));
 
             var servicesModule = module.GetServices();
 
 
             if (servicesModule != null)
-            {
                 foreach (var service in servicesModule)
-                {
                     if (!services.Contains(service))
-                    {
                         services.Add(service);
-                    }
-                }
-            }
         }
     }
 }

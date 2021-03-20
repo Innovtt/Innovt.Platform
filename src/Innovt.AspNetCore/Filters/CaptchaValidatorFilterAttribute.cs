@@ -81,7 +81,7 @@ namespace Innovt.AspNetCore.Filters
             };
 
 
-            dynamic captchaResponse = JsonSerializer.Deserialize<dynamic>(stringAsync, serializerSettings);
+            var captchaResponse = JsonSerializer.Deserialize<dynamic>(stringAsync, serializerSettings);
 
             if (captchaResponse.Success & antiForgery && hostName.IsNotNullOrEmpty() &&
                 !captchaResponse.Hostname.Equals(hostName))
@@ -110,7 +110,7 @@ namespace Innovt.AspNetCore.Filters
                     return;
                 }
 
-                var isValid = await this.IsValid(recaptchaResponse, context.HttpContext).ConfigureAwait(false);
+                var isValid = await IsValid(recaptchaResponse, context.HttpContext).ConfigureAwait(false);
 
                 if (!isValid)
                 {

@@ -13,7 +13,7 @@ namespace Innovt.Job.Core
 
         protected JobBase(string jobName, ILogger logger, double heartBeatIntervalInMiliSeconds)
         {
-            this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            Logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
             Name = jobName;
             heartBeat = new Timer(heartBeatIntervalInMiliSeconds)

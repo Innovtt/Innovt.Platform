@@ -34,7 +34,7 @@ namespace Innovt.AspNetCore
             this(configuration)
         {
             Documentation = new DefaultApiDocumentation(enableDocInProduction, apiTitle, apiDescription, apiVersion);
-            this.DisableTracing = disableTracing;
+            DisableTracing = disableTracing;
         }
 
         protected ApiStartupBase(IConfiguration configuration)
@@ -45,7 +45,7 @@ namespace Innovt.AspNetCore
 
         internal bool IsSwaggerEnabled()
         {
-            return (Documentation is { });
+            return Documentation is { };
         }
 
         protected virtual void AddSwagger(IServiceCollection services)
@@ -71,10 +71,7 @@ namespace Innovt.AspNetCore
                 var xmlPath = Path.Combine(AppContext.BaseDirectory,
                     $"{Assembly.GetEntryAssembly()?.GetName().Name}.xml");
 
-                if (File.Exists(xmlPath))
-                {
-                    options.IncludeXmlComments(xmlPath);
-                }
+                if (File.Exists(xmlPath)) options.IncludeXmlComments(xmlPath);
             });
         }
 
@@ -160,10 +157,7 @@ namespace Innovt.AspNetCore
 
         protected virtual void ConfigureSwaggerUi(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (!IsSwaggerEnabled() || (env.IsProduction() && !Documentation.EnableDocInProduction))
-            {
-                return;
-            }
+            if (!IsSwaggerEnabled() || env.IsProduction() && !Documentation.EnableDocInProduction) return;
 
             app.UseRewriter(new RewriteOptions().AddRedirect("(.*)docs$", "$1docs/index.html"));
 
@@ -183,10 +177,7 @@ namespace Innovt.AspNetCore
         /// <param name="loggerFactory"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             ConfigureCultures(app);
 
@@ -211,12 +202,12 @@ namespace Innovt.AspNetCore
 
         protected virtual Action<ApiBehaviorOptions> ConfigureApiBehavior()
         {
-            return (options =>
+            return options =>
             {
                 options.InvalidModelStateResponseFactory = InvalidModelStateResponse.CreateCustomErrorResponse;
                 options.SuppressInferBindingSourcesForParameters = true;
                 options.SuppressMapClientErrors = true;
-            });
+            };
         }
 
         protected virtual void ConfigureCultures(IApplicationBuilder app)

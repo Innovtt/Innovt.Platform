@@ -37,10 +37,7 @@ namespace Innovt.Data.EFCore
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (loggerFactory != null)
-            {
-                optionsBuilder.UseLoggerFactory(loggerFactory);
-            }
+            if (loggerFactory != null) optionsBuilder.UseLoggerFactory(loggerFactory);
 
             if (dataSource != null)
             {

@@ -32,10 +32,7 @@ namespace Innovt.Core.Serialization
                 {
                     xmlSerializerNamespaces = new XmlSerializerNamespaces();
                     xmlSerializerNamespaces.Add(string.Empty, string.Empty);
-                    foreach (var np in namespaces)
-                    {
-                        xmlSerializerNamespaces.Add(np.Key, np.Value);
-                    }
+                    foreach (var np in namespaces) xmlSerializerNamespaces.Add(np.Key, np.Value);
                 }
 
                 using var memoryStream = new MemoryStream();

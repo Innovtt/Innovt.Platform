@@ -19,18 +19,12 @@ namespace Innovt.Notification.Core.Domain
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (TemplateId.IsNullOrEmpty())
-            {
-                yield return new ValidationResult("TemplateId can't be null or empty.");
-            }
+            if (TemplateId.IsNullOrEmpty()) yield return new ValidationResult("TemplateId can't be null or empty.");
 
 
             if (To.IsNullOrEmpty())
-            {
                 yield return new ValidationResult("The To can't be empty.");
-            }
             else
-            {
                 foreach (var to in To)
                 {
                     var items = to.Validate(validationContext);
@@ -38,7 +32,6 @@ namespace Innovt.Notification.Core.Domain
                     foreach (var item in items)
                         yield return item;
                 }
-            }
         }
     }
 }

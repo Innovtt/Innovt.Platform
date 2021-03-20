@@ -22,7 +22,7 @@ namespace Innovt.AspNetCore.Filters
         public RequestTrackingFilterAttribute(IRequestTrackingRepository trackingRepository, ILogger _logger)
         {
             this.trackingRepository =
-                trackingRepository ?? throw new System.ArgumentNullException(nameof(trackingRepository));
+                trackingRepository ?? throw new ArgumentNullException(nameof(trackingRepository));
             logger = _logger ?? throw new ArgumentNullException(nameof(_logger));
         }
 

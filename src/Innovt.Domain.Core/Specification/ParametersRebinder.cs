@@ -53,10 +53,7 @@ namespace Innovt.Domain.Core.Specification
         /// <returns>New visited expression</returns>
         protected override Expression VisitParameter(ParameterExpression p)
         {
-            if (map.TryGetValue(p, out var replacement))
-            {
-                p = replacement;
-            }
+            if (map.TryGetValue(p, out var replacement)) p = replacement;
 
             return base.VisitParameter(p);
         }

@@ -14,14 +14,14 @@ namespace Innovt.Cloud.Table
         {
             return new QueryRequest()
             {
-                AttributesToGet = this.AttributesToGet,
-                Filter = this.Filter,
-                KeyConditionExpression = this.KeyConditionExpression,
-                FilterExpression = this.FilterExpression,
-                IndexName = this.IndexName,
-                ScanIndexForward = this.ScanIndexForward,
-                PageSize = this.PageSize,
-                Page = this.Page
+                AttributesToGet = AttributesToGet,
+                Filter = Filter,
+                KeyConditionExpression = KeyConditionExpression,
+                FilterExpression = FilterExpression,
+                IndexName = IndexName,
+                ScanIndexForward = ScanIndexForward,
+                PageSize = PageSize,
+                Page = Page
             };
         }
     }

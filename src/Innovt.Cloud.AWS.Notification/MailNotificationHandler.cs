@@ -30,10 +30,7 @@ namespace Innovt.Cloud.AWS.Notification
         {
             get
             {
-                if (_simpleEmailClient == null)
-                {
-                    _simpleEmailClient = CreateService<AmazonSimpleEmailServiceClient>();
-                }
+                if (_simpleEmailClient == null) _simpleEmailClient = CreateService<AmazonSimpleEmailServiceClient>();
 
                 return _simpleEmailClient;
             }
@@ -66,21 +63,17 @@ namespace Innovt.Cloud.AWS.Notification
 
             mailRequest.Message.Body = new Body();
             if (message.Body.IsHtml)
-            {
                 mailRequest.Message.Body.Html = new Content()
                 {
                     Charset = message.Body.Charset.GetValueOrDefault(DefaultCharset),
                     Data = message.Body.Content
                 };
-            }
             else
-            {
                 mailRequest.Message.Body.Text = new Content()
                 {
                     Charset = message.Body.Charset.GetValueOrDefault(DefaultCharset),
                     Data = message.Body.Content
                 };
-            }
 
             mailRequest.Destination.ToAddresses = message.To.Select(a => $"{a.Name} <{a.Address}>").ToList();
 

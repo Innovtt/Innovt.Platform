@@ -12,7 +12,7 @@ namespace Innovt.Core.Serialization
 
         public JsonFormatAttribute(string format)
         {
-            this.Format = format;
+            Format = format;
         }
     }
 }

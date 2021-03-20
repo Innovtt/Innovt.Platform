@@ -26,13 +26,9 @@ namespace Innovt.Data.EFCore.Maps
             builder.Property(d => d.Nationality).HasMaxLength(20).IsRequired();
 
             if (ignoreIsoCode)
-            {
                 builder.Ignore(d => d.Code);
-            }
             else
-            {
                 builder.Property(d => d.Code).HasMaxLength(3).IsRequired();
-            }
         }
     }
 }

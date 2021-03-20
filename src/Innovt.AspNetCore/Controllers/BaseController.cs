@@ -14,8 +14,8 @@ namespace Innovt.AspNetCore.Controllers
 
         protected BaseController(ILogger logger, ITracer tracer)
         {
-            this.Tracer = tracer ?? throw new ArgumentNullException(nameof(tracer));
-            this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            Tracer = tracer ?? throw new ArgumentNullException(nameof(tracer));
+            Logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         protected IActionResult RedirectToLocal(string returnUrl, RedirectToActionResult redirect = null,

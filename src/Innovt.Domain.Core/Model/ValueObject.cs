@@ -6,10 +6,10 @@
 
         public override bool Equals(object obj)
         {
-            if (object.ReferenceEquals(this, obj)) return true;
+            if (ReferenceEquals(this, obj)) return true;
             if (obj is null) return false;
 
-            return (obj as ValueObject)?.Id == this.Id;
+            return (obj as ValueObject)?.Id == Id;
         }
 
         public override int GetHashCode()

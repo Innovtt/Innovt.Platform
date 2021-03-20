@@ -7,7 +7,7 @@ namespace Innovt.Core.Collections
     {
         public static bool IsNullOrEmpty<T>(this IList<T> list)
         {
-            if ((list == null) || (list.Count == 0))
+            if (list == null || list.Count == 0)
                 return true;
 
             return false;
@@ -23,7 +23,7 @@ namespace Innovt.Core.Collections
 
         public static bool IsNullOrEmpty<T>(this ICollection<T> collection)
         {
-            if ((collection == null) || (collection.Count == 0))
+            if (collection == null || collection.Count == 0)
                 return true;
 
             return false;

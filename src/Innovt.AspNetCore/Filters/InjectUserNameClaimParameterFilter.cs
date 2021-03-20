@@ -37,7 +37,6 @@ namespace Innovt.AspNetCore.Filters
                 .FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
 
             if (!userName.IsNullOrEmpty())
-            {
                 foreach (var actionParameter in actionParameters)
                 {
                     filterContext.ActionArguments.TryGetValue(actionParameter, out var inputParam);
@@ -46,12 +45,8 @@ namespace Innovt.AspNetCore.Filters
 
                     var property = inputParam.GetType().GetProperty(defaultAuthorizationProperty);
 
-                    if (property != null)
-                    {
-                        property.SetValue(inputParam, userName);
-                    }
+                    if (property != null) property.SetValue(inputParam, userName);
                 }
-            }
 
             await next();
         }

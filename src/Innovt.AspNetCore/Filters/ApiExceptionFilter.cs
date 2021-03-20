@@ -18,7 +18,7 @@ namespace Innovt.AspNetCore.Filters
         public ApiExceptionFilter(ILogger logger, IStringLocalizer<IExceptionResource> localizer)
         {
             this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            this.stringLocalizer = localizer ?? throw new ArgumentNullException(nameof(localizer));
+            stringLocalizer = localizer ?? throw new ArgumentNullException(nameof(localizer));
         }
 
         public ApiExceptionFilter(ILogger logger)
@@ -38,7 +38,7 @@ namespace Innovt.AspNetCore.Filters
             var result = new ResponseError
             {
                 Message = Translate(baseException.Message),
-                TraceId = context.HttpContext.TraceIdentifier,
+                TraceId = context.HttpContext.TraceIdentifier
             };
 
             if (baseException is BusinessException bex)

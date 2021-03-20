@@ -50,10 +50,7 @@ namespace Innovt.Data.EFCore.Maps
                 builder.HasOne(a => a.Type).WithMany().HasForeignKey(a => a.TypeId);
             }
 
-            if (ignoreCoordinate)
-            {
-                builder.Ignore(b => b.Coordinate);
-            }
+            if (ignoreCoordinate) builder.Ignore(b => b.Coordinate);
 
             //todo:map coordinates
         }

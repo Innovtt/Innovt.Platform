@@ -26,12 +26,12 @@ namespace Innovt.Domain
 
         public static string GetMaskedCreditCard(string number)
         {
-            string result = "******";
+            var result = "******";
 
             if (number != null && number.Length > 10)
             {
-                string first = number.Substring(0, 6);
-                string last = number.Substring(number.Length - 4, 4);
+                var first = number.Substring(0, 6);
+                var last = number.Substring(number.Length - 4, 4);
 
                 result = first + result + last;
             }

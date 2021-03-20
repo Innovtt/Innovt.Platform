@@ -27,14 +27,10 @@ namespace Innovt.Cloud.AWS.Cognito.Model
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (Field.IsNullOrEmpty() && Value.IsNullOrEmpty())
-            {
                 yield return new ValidationResult(Messages.FieldFilterIsRequired, new[] {nameof(Field)});
-            }
 
             if (Value.IsNullOrEmpty())
-            {
                 yield return new ValidationResult(Messages.ValueFieldIsRequired, new[] {nameof(Value)});
-            }
         }
     }
 }

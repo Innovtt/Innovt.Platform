@@ -10,7 +10,7 @@ namespace Innovt.Core.Http
 
         public HttpException(HttpRequestDetail detail)
         {
-            this.RequestDetail = detail;
+            RequestDetail = detail;
         }
 
         public HttpException(Exception requestException)

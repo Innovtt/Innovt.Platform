@@ -45,7 +45,7 @@ namespace Innovt.Cloud.AWS.Dynamo
                 ConsistentRead = true
             };
 
-            var policy = this.CreateDefaultRetryAsyncPolicy();
+            var policy = CreateDefaultRetryAsyncPolicy();
 
             if (string.IsNullOrEmpty(rangeKey))
                 return await policy.ExecuteAsync(async () => await Context.LoadAsync<T>(id, config, cancellationToken))
@@ -58,14 +58,14 @@ namespace Innovt.Cloud.AWS.Dynamo
 
         public async Task DeleteAsync<T>(T value, CancellationToken cancellationToken = default) where T : ITableMessage
         {
-            await this.CreateDefaultRetryAsyncPolicy()
+            await CreateDefaultRetryAsyncPolicy()
                 .ExecuteAsync(async () => await Context.DeleteAsync<T>(value, cancellationToken)).ConfigureAwait(false);
         }
 
         public async Task DeleteAsync<T>(object id, string rangeKey = null,
             CancellationToken cancellationToken = default) where T : ITableMessage
         {
-            var policy = this.CreateDefaultRetryAsyncPolicy();
+            var policy = CreateDefaultRetryAsyncPolicy();
 
             if (string.IsNullOrEmpty(rangeKey))
                 await policy.ExecuteAsync(async () => await Context.DeleteAsync<T>(id, cancellationToken))
@@ -82,7 +82,7 @@ namespace Innovt.Cloud.AWS.Dynamo
                 IgnoreNullValues = true
             };
 
-            await this.CreateDefaultRetryAsyncPolicy()
+            await CreateDefaultRetryAsyncPolicy()
                 .ExecuteAsync(async () => await Context.SaveAsync(message, config, cancellationToken))
                 .ConfigureAwait(false);
         }
@@ -90,13 +90,13 @@ namespace Innovt.Cloud.AWS.Dynamo
         public async Task AddAsync<T>(IList<T> messages, CancellationToken cancellationToken = default)
             where T : ITableMessage
         {
-            if (messages is null) throw new System.ArgumentNullException(nameof(messages));
+            if (messages is null) throw new ArgumentNullException(nameof(messages));
 
             var batch = Context.CreateBatchWrite<T>();
 
             batch.AddPutItems(messages);
 
-            await this.CreateDefaultRetryAsyncPolicy()
+            await CreateDefaultRetryAsyncPolicy()
                 .ExecuteAsync(async () => await batch.ExecuteAsync(cancellationToken)).ConfigureAwait(false);
         }
 
@@ -112,7 +112,7 @@ namespace Innovt.Cloud.AWS.Dynamo
 
         private async
             Task<(Dictionary<string, AttributeValue> LastEvaluatedKey, List<Dictionary<string, AttributeValue>> Items)>
-            InternalQueryAsync<T>(Innovt.Cloud.Table.QueryRequest request,
+            InternalQueryAsync<T>(Table.QueryRequest request,
                 CancellationToken cancellationToken = default)
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
@@ -138,10 +138,7 @@ namespace Innovt.Cloud.AWS.Dynamo
 
                 remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
 
-                if (remaining > 0)
-                {
-                    queryRequest.Limit = remaining.Value;
-                }
+                if (remaining > 0) queryRequest.Limit = remaining.Value;
             } while (lastEvaluatedKey.Count > 0 && remaining > 0);
 
             return (lastEvaluatedKey, items);
@@ -168,7 +165,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             var config = new DynamoDBOperationConfig()
             {
                 ConsistentRead = true,
-                BackwardQuery = true,
+                BackwardQuery = true
             };
 
             var result = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
@@ -220,13 +217,13 @@ namespace Innovt.Cloud.AWS.Dynamo
             return queryResponse.FirstOrDefault();
         }
 
-        public async Task<PagedCollection<T>> QueryPaginatedByAsync<T>(Innovt.Cloud.Table.QueryRequest request,
+        public async Task<PagedCollection<T>> QueryPaginatedByAsync<T>(Table.QueryRequest request,
             CancellationToken cancellationToken = default)
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
             var (lastEvaluatedKey, items) =
-                (await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false));
+                await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
             return new PagedCollection<T>()
             {
@@ -262,10 +259,7 @@ namespace Innovt.Cloud.AWS.Dynamo
                 scanRequest.ExclusiveStartKey = lastEvaluatedKey = iterator.Current.LastEvaluatedKey;
                 remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
 
-                if (remaining > 0)
-                {
-                    scanRequest.Limit = remaining.Value;
-                }
+                if (remaining > 0) scanRequest.Limit = remaining.Value;
             } while (lastEvaluatedKey.Count > 0 && remaining > 0);
 
             return (lastEvaluatedKey, items);
@@ -279,12 +273,12 @@ namespace Innovt.Cloud.AWS.Dynamo
         }
 
 
-        public async Task<PagedCollection<T>> ScanPaginatedByAsync<T>(Innovt.Cloud.Table.ScanRequest request,
+        public async Task<PagedCollection<T>> ScanPaginatedByAsync<T>(Table.ScanRequest request,
             CancellationToken cancellationToken = default)
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
-            var (exclusiveStartKey, items) = await this.InternalScanAsync<T>(request, cancellationToken);
+            var (exclusiveStartKey, items) = await InternalScanAsync<T>(request, cancellationToken);
 
             if (items?.Count() == 0)
                 return new PagedCollection<T>();
@@ -304,7 +298,7 @@ namespace Innovt.Cloud.AWS.Dynamo
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
-            return await this.CreateDefaultRetryAsyncPolicy()
+            return await CreateDefaultRetryAsyncPolicy()
                 .ExecuteAsync(async () => await DynamoClient.TransactGetItemsAsync(request, cancellationToken))
                 .ConfigureAwait(false);
         }

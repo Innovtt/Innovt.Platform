@@ -16,9 +16,7 @@ namespace Innovt.Cloud.AWS.Cognito.Model
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (Password != ConfirmPassword)
-            {
                 yield return new ValidationResult(Messages.PasswordsDoNotMatch, new[] {nameof(Password)});
-            }
         }
     }
 }

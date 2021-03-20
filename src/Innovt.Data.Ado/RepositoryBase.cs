@@ -94,7 +94,7 @@ namespace Innovt.Data.Ado
         {
             var sql = $"SELECT {string.Join(",", columns)} FROM [{tableName}] WHERE {whereClause}";
 
-            return this.QuerySingleOrDefaultInternalAsync<T>(sql, filter, cancellationToken);
+            return QuerySingleOrDefaultInternalAsync<T>(sql, filter, cancellationToken);
         }
 
         private async Task<int> QueryCountInternalAsync(string tableName, string whereClause = null,
@@ -102,12 +102,9 @@ namespace Innovt.Data.Ado
         {
             var sql = $"SELECT COUNT(1) FROM [{tableName}]";
 
-            if (whereClause.IsNotNullOrEmpty())
-            {
-                sql += $" WHERE {whereClause} ";
-            }
+            if (whereClause.IsNotNullOrEmpty()) sql += $" WHERE {whereClause} ";
 
-            return await this.QuerySingleOrDefaultAsync<int>(sql, filter, cancellationToken).ConfigureAwait(false);
+            return await QuerySingleOrDefaultAsync<int>(sql, filter, cancellationToken).ConfigureAwait(false);
         }
 
         public Task<int> QueryCountAsync(string tableName, string whereClause = null, object filter = null,
@@ -167,7 +164,7 @@ namespace Innovt.Data.Ado
         {
             if (sql == null) throw new ArgumentNullException(nameof(sql));
 
-            return this.QueryInternalAsync<T>(sql, filter, cancellationToken);
+            return QueryInternalAsync<T>(sql, filter, cancellationToken);
         }
 
         public Task<IEnumerable<TReturn>> QueryAsync<TFirst, TSecond, TReturn>(string sql, object filter,
@@ -175,7 +172,7 @@ namespace Innovt.Data.Ado
         {
             if (sql == null) throw new ArgumentNullException(nameof(sql));
 
-            return this.QueryInternalAsync(sql, filter, func, splitOn, cancellationToken);
+            return QueryInternalAsync(sql, filter, func, splitOn, cancellationToken);
         }
 
 
@@ -184,7 +181,7 @@ namespace Innovt.Data.Ado
         {
             if (sql == null) throw new ArgumentNullException(nameof(sql));
 
-            return this.QueryInternalAsync(sql, filter, func, splitOn, cancellationToken);
+            return QueryInternalAsync(sql, filter, func, splitOn, cancellationToken);
         }
 
         public Task<IEnumerable<TReturn>> QueryAsync<TFirst, TSecond, TThird, TFourth, TReturn>(string sql,
@@ -193,7 +190,7 @@ namespace Innovt.Data.Ado
         {
             if (sql == null) throw new ArgumentNullException(nameof(sql));
 
-            return this.QueryInternalAsync(sql, filter, func, splitOn, cancellationToken);
+            return QueryInternalAsync(sql, filter, func, splitOn, cancellationToken);
         }
 
         public Task<IEnumerable<TReturn>> QueryAsync<TFirst, TSecond, TThird, TFourth, TFifth, TReturn>(string sql,
@@ -202,7 +199,7 @@ namespace Innovt.Data.Ado
         {
             if (sql == null) throw new ArgumentNullException(nameof(sql));
 
-            return this.QueryInternalAsync(sql, filter, func, splitOn, cancellationToken);
+            return QueryInternalAsync(sql, filter, func, splitOn, cancellationToken);
         }
 
         private async Task<T> ExecuteInternalScalar<T>(string sql, object filter = null,
@@ -219,14 +216,11 @@ namespace Innovt.Data.Ado
         public Task<T> ExecuteScalarAsync<T>(string sql, object filter = null, IDbTransaction dbTransaction = null,
             CancellationToken cancellationToken = default)
         {
-            if (sql is null)
-            {
-                throw new ArgumentNullException(nameof(sql));
-            }
+            if (sql is null) throw new ArgumentNullException(nameof(sql));
 
             ;
 
-            return this.ExecuteInternalScalar<T>(sql, filter, dbTransaction, cancellationToken);
+            return ExecuteInternalScalar<T>(sql, filter, dbTransaction, cancellationToken);
         }
 
         private async Task<int> ExecuteInternalAsync(string sql, object filter = null,
@@ -242,14 +236,11 @@ namespace Innovt.Data.Ado
         public Task<int> ExecuteAsync(string sql, object filter = null, IDbTransaction dbTransaction = null,
             CancellationToken cancellationToken = default)
         {
-            if (sql is null)
-            {
-                throw new ArgumentNullException(nameof(sql));
-            }
+            if (sql is null) throw new ArgumentNullException(nameof(sql));
 
             ;
 
-            return this.ExecuteInternalAsync(sql, filter, dbTransaction, cancellationToken);
+            return ExecuteInternalAsync(sql, filter, dbTransaction, cancellationToken);
         }
 
 
@@ -271,7 +262,7 @@ namespace Innovt.Data.Ado
                 await con.QueryMultipleAsync(new CommandDefinition(query, filter,
                     cancellationToken: cancellationToken));
 
-            int totalRecords = qResult.ReadFirst<int>();
+            var totalRecords = qResult.ReadFirst<int>();
 
             var result = new PagedCollection<T>(qResult.Read<T>(), filter.Page, filter.PageSize)
             {
@@ -307,10 +298,7 @@ namespace Innovt.Data.Ado
 
             var sql = new StringBuilder();
 
-            foreach (var query in queries)
-            {
-                sql.Append(query);
-            }
+            foreach (var query in queries) sql.Append(query);
 
             return await con.QueryMultipleAsync(new CommandDefinition(sql.ToString(), filter)).ConfigureAwait(false);
         }

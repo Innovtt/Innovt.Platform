@@ -18,19 +18,13 @@ namespace Innovt.Cloud.AWS.Cognito.Model
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (UserName.IsNullOrEmpty())
-            {
                 yield return new ValidationResult(Messages.UserNameIsRequired, new[] {nameof(UserName)});
-            }
 
             if (ChallengeName.IsNullOrEmpty())
-            {
                 yield return new ValidationResult(Messages.ChallengeNameIsRequired, new[] {nameof(ChallengeName)});
-            }
 
             if (Session.IsNullOrEmpty())
-            {
                 yield return new ValidationResult(Messages.InvalidChallengeSession, new[] {nameof(Session)});
-            }
         }
     }
 }

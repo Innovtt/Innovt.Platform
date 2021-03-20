@@ -17,9 +17,9 @@ namespace Innovt.Core.Collections
 
         public PagedCollection(IEnumerable<T> collection, string page = null, int? pageSize = null)
         {
-            this.Items = collection;
-            this.Page = page;
-            this.PageSize = pageSize.GetValueOrDefault();
+            Items = collection;
+            Page = page;
+            PageSize = pageSize.GetValueOrDefault();
         }
 
         public PagedCollection(IEnumerable<T> collection) : this(collection, "0", 0)
@@ -28,7 +28,7 @@ namespace Innovt.Core.Collections
 
         public PagedCollection()
         {
-            this.Items = new List<T>();
+            Items = new List<T>();
         }
 
         public int TotalRecords { get; set; }
@@ -38,12 +38,9 @@ namespace Innovt.Core.Collections
         public int PageSize { get; set; }
 
 
-        public bool IsNumberPagination
-        {
-            get { return this.Page.IsNumber(); }
-        }
+        public bool IsNumberPagination => Page.IsNumber();
 
-        public int PageCount => (PageSize <= 0) ? 0 : TotalRecords / PageSize;
+        public int PageCount => PageSize <= 0 ? 0 : TotalRecords / PageSize;
 
         public bool HasNext()
         {

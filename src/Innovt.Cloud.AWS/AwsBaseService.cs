@@ -40,8 +40,8 @@ namespace Innovt.Cloud.AWS
 
         protected AwsBaseService(ILogger logger, IAWSConfiguration configuration) : this()
         {
-            this.Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
-            this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+            Logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         protected AwsBaseService(ILogger logger, ITracer tracer, IAWSConfiguration configuration) : this(logger,
@@ -52,9 +52,9 @@ namespace Innovt.Cloud.AWS
 
         protected AwsBaseService(ILogger logger, IAWSConfiguration configuration, string region) : this()
         {
-            this.Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
-            this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            this.Region = region ?? throw new ArgumentNullException(nameof(region));
+            Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+            Logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            Region = region ?? throw new ArgumentNullException(nameof(region));
         }
 
         protected AwsBaseService(ILogger logger, ITracer tracer, IAWSConfiguration configuration, string region) : this(
@@ -93,11 +93,9 @@ namespace Innovt.Cloud.AWS
             var serviceRegion = GetServiceRegionEndPoint();
 
             if (credentials == null)
-            {
                 return serviceRegion == null
                     ? Activator.CreateInstance<T>()
                     : (T) Activator.CreateInstance(typeof(T), serviceRegion);
-            }
 
 
             return serviceRegion == null
@@ -187,7 +185,7 @@ namespace Innovt.Cloud.AWS
 
         private void Dispose(bool disposing)
         {
-            if (this.disposed || !disposing)
+            if (disposed || !disposing)
                 return;
 
             DisposeServices();
@@ -197,12 +195,12 @@ namespace Innovt.Cloud.AWS
 
         public void Dispose()
         {
-            this.Dispose(true);
+            Dispose(true);
         }
 
         ~AwsBaseService()
         {
-            this.Dispose(false);
+            Dispose(false);
         }
 
         protected abstract void DisposeServices();

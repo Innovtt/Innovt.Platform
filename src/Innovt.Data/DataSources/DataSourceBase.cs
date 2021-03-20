@@ -18,8 +18,8 @@ namespace Innovt.Data.DataSources
 
         protected DataSourceBase(string name, string connectionString, Provider provider = Provider.MsSql)
         {
-            this.Name = name ?? throw new ArgumentNullException(nameof(name));
-            this.Provider = provider;
+            Name = name ?? throw new ArgumentNullException(nameof(name));
+            Provider = provider;
             this.connectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));
         }
 
@@ -31,15 +31,15 @@ namespace Innovt.Data.DataSources
             if (connectionStringName == null) throw new ArgumentNullException(nameof(connectionStringName));
 
 
-            this.Provider = provider;
+            Provider = provider;
             SetConnectionString(configuration, connectionStringName);
         }
 
         protected DataSourceBase(IConfiguration configuration, string name, string connectionStringName,
             Provider provider = Provider.MsSql)
         {
-            this.Provider = provider;
-            this.Name = name;
+            Provider = provider;
+            Name = name;
 
             SetConnectionString(configuration, connectionStringName);
         }
@@ -54,8 +54,8 @@ namespace Innovt.Data.DataSources
             if (string.IsNullOrEmpty(localConnectionString))
                 throw new ConnectionStringException($"Connection string {name} not found or null.");
 
-            this.Name = name;
-            this.connectionString = localConnectionString;
+            Name = name;
+            connectionString = localConnectionString;
         }
 
         public string GetConnectionString()

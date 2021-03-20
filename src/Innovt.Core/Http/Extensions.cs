@@ -14,9 +14,7 @@ namespace Innovt.Core.Http
             if (baseUri == null) throw new ArgumentNullException(nameof(baseUri));
 
             if (!Uri.TryCreate(baseUri, resource, out var uniformResourceIdentifier))
-            {
                 throw new Exception("Cannot create URL; baseURI=" + baseUri + ", resourcePath=" + resource);
-            }
 
             return uniformResourceIdentifier;
         }
@@ -39,12 +37,8 @@ namespace Innovt.Core.Http
             //}
 
             if (headerData.Count > 0)
-            {
                 foreach (string key in headerData.Keys)
-                {
                     request.Headers.Add(key, headerData[key].ToString());
-                }
-            }
 
             return request;
         }
@@ -55,7 +49,7 @@ namespace Innovt.Core.Http
                 return request;
 
 
-            byte[] byteData = UTF8Encoding.UTF8.GetBytes(dataToSend);
+            var byteData = Encoding.UTF8.GetBytes(dataToSend);
 
             request.ContentLength = byteData.Length;
 

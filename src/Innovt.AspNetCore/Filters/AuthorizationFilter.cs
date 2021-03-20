@@ -61,7 +61,7 @@ namespace Innovt.AspNetCore.Filters
 
         private async Task<bool> HasPermission(string userId, string module, string controller, string action)
         {
-            var userPermissions = await securityRepository.GetUserPermissions(userId);
+            var userPermissions = await securityRepository.GetUserPermissions(userId).ConfigureAwait(false);
 
             if (!userPermissions.Any())
                 return false;
@@ -110,10 +110,7 @@ namespace Innovt.AspNetCore.Filters
 
             var userId = GetUserId(context);
 
-            if (userId.IsNullOrEmpty())
-            {
-                throw new InvalidOperationException("No Claim SID found for loggerd user.");
-            }
+            if (userId.IsNullOrEmpty()) throw new InvalidOperationException("No Claim SID found for loggerd user.");
 
 
             var (area, controller, action) = GetActionInfo(context);

@@ -8,12 +8,12 @@ namespace Innovt.Core.CrossCutting.Ioc
 
         public IOCModule()
         {
-            this.services = new ServiceCollection();
+            services = new ServiceCollection();
         }
 
         public IServiceCollection GetServices()
         {
-            return this.services;
+            return services;
         }
     }
 }

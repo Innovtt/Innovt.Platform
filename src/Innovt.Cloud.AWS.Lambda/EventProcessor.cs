@@ -68,7 +68,7 @@ namespace Innovt.Cloud.AWS.Lambda
             context.Logger.LogLine(
                 $"Receiving message. Function {context.FunctionName} and Version {context.FunctionVersion}");
 
-            this.Context = context;
+            Context = context;
 
             SetupIoc();
 

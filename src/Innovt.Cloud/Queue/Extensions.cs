@@ -14,10 +14,8 @@ namespace Innovt.Cloud.Queue
                 queueMessage.ApproximateReceiveCount = int.Parse(queueAttributes["ApproximateReceiveCount"]);
 
             if (queueAttributes.ContainsKey("ApproximateFirstReceiveTimestamp"))
-            {
                 queueMessage.ApproximateFirstReceiveTimestamp =
                     double.Parse(queueAttributes["ApproximateFirstReceiveTimestamp"]);
-            }
         }
     }
 }

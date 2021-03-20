@@ -14,8 +14,8 @@
 
         public Coordinate(long latitude, long longitude)
         {
-            this.Longitude = longitude;
-            this.Latitude = latitude;
+            Longitude = longitude;
+            Latitude = latitude;
         }
     }
 }

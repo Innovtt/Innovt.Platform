@@ -10,7 +10,7 @@
 
         public SimpleVo(T id, string description)
         {
-            this.Id = id;
+            Id = id;
             Description = description;
         }
     }

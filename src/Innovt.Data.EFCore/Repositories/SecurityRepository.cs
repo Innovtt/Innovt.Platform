@@ -16,20 +16,14 @@ namespace Innovt.Data.EFCore.Repositories
 
         public async Task AddPermission(Permission permission)
         {
-            if (permission == null)
-            {
-                throw new ArgumentNullException(nameof(permission));
-            }
+            if (permission == null) throw new ArgumentNullException(nameof(permission));
 
             await Context.AddAsync(permission);
         }
 
         public async Task AddPolicy(Policy policy)
         {
-            if (policy == null)
-            {
-                throw new ArgumentNullException(nameof(policy));
-            }
+            if (policy == null) throw new ArgumentNullException(nameof(policy));
 
             await Context.AddAsync(policy);
         }
@@ -54,10 +48,7 @@ namespace Innovt.Data.EFCore.Repositories
         public async Task<IList<Permission>> GetUserPermissions(string userId, string domain = null,
             string resource = null)
         {
-            if (userId == null)
-            {
-                throw new ArgumentNullException(nameof(userId));
-            }
+            if (userId == null) throw new ArgumentNullException(nameof(userId));
 
             var dbSet = Context.Queryable<SecurityGroupUser>().Where(sg => sg.UserId.ToString() == userId)
                 .Include("SecurityGroup.Policies.Policy.Permissions");
@@ -94,10 +85,7 @@ namespace Innovt.Data.EFCore.Repositories
 
         public async Task RemovePermission(Permission permission)
         {
-            if (permission == null)
-            {
-                throw new ArgumentNullException(nameof(permission));
-            }
+            if (permission == null) throw new ArgumentNullException(nameof(permission));
 
             Context.Remove(permission);
 
@@ -106,10 +94,7 @@ namespace Innovt.Data.EFCore.Repositories
 
         public async Task RemovePolicy(Policy policy)
         {
-            if (policy == null)
-            {
-                throw new ArgumentNullException(nameof(policy));
-            }
+            if (policy == null) throw new ArgumentNullException(nameof(policy));
 
             Context.Remove(policy);
 

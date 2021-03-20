@@ -14,14 +14,10 @@ namespace Innovt.Cloud.AWS.Cognito.Model
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (Code.IsNullOrEmpty())
-            {
                 yield return new ValidationResult(Messages.OAuthCodeNotFound, new[] {nameof(Code)});
-            }
 
             if (RedirectUri.IsNullOrEmpty())
-            {
                 yield return new ValidationResult(Messages.RedirectUriRequired, new[] {nameof(RedirectUri)});
-            }
         }
     }
 }

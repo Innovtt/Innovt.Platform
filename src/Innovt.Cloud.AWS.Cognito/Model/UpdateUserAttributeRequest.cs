@@ -14,14 +14,10 @@ namespace Innovt.Cloud.AWS.Cognito.Model
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (AccessToken.IsNullOrEmpty())
-            {
                 yield return new ValidationResult(Messages.AccessTokenIsRequired, new[] {nameof(AccessToken)});
-            }
 
             if (Attributes.IsNullOrEmpty())
-            {
                 yield return new ValidationResult(Messages.AttributesIsRequired, new[] {nameof(Attributes)});
-            }
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Innovt.Cloud.AWS.Configuration
         /// <param name="roleArn"></param>
         public DefaultAWSConfiguration(string profileName, string roleArn = null)
         {
-            Profile = profileName ?? throw new System.ArgumentNullException(nameof(profileName));
+            Profile = profileName ?? throw new ArgumentNullException(nameof(profileName));
             RoleArn = roleArn;
         }
 
@@ -46,10 +46,7 @@ namespace Innovt.Cloud.AWS.Configuration
 
             var section = configuration.GetSection(sectionName);
 
-            if (section == null || !section.Exists())
-            {
-                throw new CriticalException($"Section {sectionName} not Found!");
-            }
+            if (section == null || !section.Exists()) throw new CriticalException($"Section {sectionName} not Found!");
 
             section.Bind(this);
         }
@@ -105,20 +102,13 @@ namespace Innovt.Cloud.AWS.Configuration
                 if (AccessKey.IsNotNullOrEmpty() || SecretKey.IsNotNullOrEmpty())
                 {
                     if (SessionToken.IsNullOrEmpty())
-                    {
                         credentials = new BasicAWSCredentials(AccessKey, SecretKey);
-                    }
                     else
-                    {
                         credentials = new SessionAWSCredentials(AccessKey, SecretKey, SessionToken);
-                    }
                 }
             }
 
-            if (RoleArn.IsNotNullOrEmpty())
-            {
-                credentials = AssumeRole(credentials);
-            }
+            if (RoleArn.IsNotNullOrEmpty()) credentials = AssumeRole(credentials);
 
             return credentials;
         }

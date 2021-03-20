@@ -17,7 +17,7 @@ namespace Innovt.Core.Utilities
 
         public static string ToStringOrDefault(this object obj)
         {
-            return obj == null ? String.Empty : obj.ToString();
+            return obj == null ? string.Empty : obj.ToString();
         }
 
         public static bool IsEmpty(this Guid id)
@@ -45,8 +45,8 @@ namespace Innovt.Core.Utilities
             return id <= 0;
         }
 
-        static readonly ConcurrentDictionary<Type, bool> IsSimpleTypeCache =
-            new ConcurrentDictionary<System.Type, bool>();
+        private static readonly ConcurrentDictionary<Type, bool> IsSimpleTypeCache =
+            new ConcurrentDictionary<Type, bool>();
 
         //From Stack Owverlow: https://stackoverflow.com/questions/2442534/how-to-test-if-type-is-primitive
         public static bool IsPrimitiveType(this Type type)
@@ -79,7 +79,7 @@ namespace Innovt.Core.Utilities
                 return (0, 0);
 
             long latitude = 0;
-            int op = 1;
+            var op = 1;
 
             if (!splittedValues[0].IsNullOrEmpty())
             {
@@ -126,7 +126,7 @@ namespace Innovt.Core.Utilities
 
         public static string FormatToExtensionDateTime(this DateTimeOffset value)
         {
-            string[] diaSemana = value.ToString("dddd").Split('-');
+            var diaSemana = value.ToString("dddd").Split('-');
 
             var dia = diaSemana[0].Substring(0, 1).ToUpper() + diaSemana[0].Substring(1, diaSemana[0].Length - 1);
 
@@ -134,7 +134,7 @@ namespace Innovt.Core.Utilities
                 dia += "-" + diaSemana[1].Substring(0, 1).ToUpper() +
                        diaSemana[1].Substring(1, diaSemana[1].Length - 1);
 
-            string mes = value.ToString("MMMM");
+            var mes = value.ToString("MMMM");
             mes = mes.Substring(0, 1).ToUpper() + mes.Substring(1, mes.Length - 1);
 
             return dia + ", " + value.ToString("dd") + " de " + mes + " de " + value.ToString("yyyy") + ", " +
@@ -143,7 +143,7 @@ namespace Innovt.Core.Utilities
 
         public static string FormatToSimpleDateTime(this DateTimeOffset value)
         {
-            string[] diaSemana = value.ToString("dddd").Split('-');
+            var diaSemana = value.ToString("dddd").Split('-');
 
             var dia = diaSemana[0].Substring(0, 1).ToUpper() + diaSemana[0].Substring(1, diaSemana[0].Length - 1);
 
@@ -158,7 +158,7 @@ namespace Innovt.Core.Utilities
 
         public static DateTime FromUnixTimestamp(this double unixTimestamp)
         {
-            var baseBase = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc).AddMilliseconds(unixTimestamp)
+            var baseBase = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(unixTimestamp)
                 .ToLocalTime();
 
             return baseBase;
@@ -197,7 +197,7 @@ namespace Innovt.Core.Utilities
                 }
                 else
                 {
-                    var res = String.Empty;
+                    var res = string.Empty;
                     //same month
                     if (startDate.Month == endDate.Month)
                     {
@@ -246,21 +246,15 @@ namespace Innovt.Core.Utilities
         {
             var res = new string[value + 1];
 
-            for (int i = 0; i <= value; i++)
-            {
-                res[i] = i.ToString();
-            }
+            for (var i = 0; i <= value; i++) res[i] = i.ToString();
 
             return res;
         }
 
         public static DateTimeOffset StartOfWeek(this DateTimeOffset dt, DayOfWeek startOfWeek)
         {
-            int diff = dt.DayOfWeek - startOfWeek;
-            if (diff < 0)
-            {
-                diff += 7;
-            }
+            var diff = dt.DayOfWeek - startOfWeek;
+            if (diff < 0) diff += 7;
 
             return dt.AddDays(-1 * diff).Date;
         }
@@ -304,7 +298,7 @@ namespace Innovt.Core.Utilities
 
             var bf = new BinaryFormatter();
             using var ms = new MemoryStream(data);
-            object obj = bf.Deserialize(ms);
+            var obj = bf.Deserialize(ms);
             return (T) obj;
         }
 
@@ -312,14 +306,11 @@ namespace Innovt.Core.Utilities
 
         public static void CopyTo(Stream src, Stream dest)
         {
-            byte[] bytes = new byte[4096];
+            var bytes = new byte[4096];
 
             int cnt;
 
-            while ((cnt = src.Read(bytes, 0, bytes.Length)) != 0)
-            {
-                dest.Write(bytes, 0, cnt);
-            }
+            while ((cnt = src.Read(bytes, 0, bytes.Length)) != 0) dest.Write(bytes, 0, cnt);
         }
 
         public static byte[] Zip(this string str)

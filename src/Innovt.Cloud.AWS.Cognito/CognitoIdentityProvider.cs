@@ -58,7 +58,7 @@ namespace Innovt.Cloud.AWS.Cognito
                 ExpiredCodeException _ => new BusinessException(ErrorCode.ExpiredCode, ex),
                 LimitExceededException _ => new BusinessException(ErrorCode.LimitExceeded, ex),
                 BusinessException _ => ex,
-                _ => new CriticalException(ErrorCode.InternalServerError, ex),
+                _ => new CriticalException(ErrorCode.InternalServerError, ex)
             };
         }
 
@@ -91,27 +91,25 @@ namespace Innovt.Cloud.AWS.Cognito
             }
         }
 
-        public virtual async Task UpdateUserAttributes(Model.UpdateUserAttributeRequest command,
+        public virtual async Task UpdateUserAttributes(UpdateUserAttributeRequest command,
             CancellationToken cancellationToken = default)
         {
             Check.NotNull(command, nameof(command));
 
             command.EnsureIsValid();
 
-            var updateUserAttributeRequest = new Amazon.CognitoIdentityProvider.Model.UpdateUserAttributesRequest
+            var updateUserAttributeRequest = new UpdateUserAttributesRequest
             {
-                AccessToken = command.AccessToken,
+                AccessToken = command.AccessToken
             };
 
 
             foreach (var attr in command.Attributes)
-            {
                 updateUserAttributeRequest.UserAttributes.Add(new AttributeType()
                 {
                     Name = attr.Key,
                     Value = attr.Value
                 });
-            }
 
             try
             {
@@ -201,7 +199,7 @@ namespace Innovt.Cloud.AWS.Cognito
 
             var parameters = new Dictionary<string, string>() {{"PASSWORD", command.Password}};
 
-            return await this.SignIn(AuthFlowType.USER_PASSWORD_AUTH, command, parameters, cancellationToken);
+            return await SignIn(AuthFlowType.USER_PASSWORD_AUTH, command, parameters, cancellationToken);
         }
 
         public async Task SignOut(SignOutRequest request, CancellationToken cancellationToken = default)
@@ -235,14 +233,14 @@ namespace Innovt.Cloud.AWS.Cognito
             return attribute?.Value;
         }
 
-        public virtual async Task<Model.SignUpResponse> SignUp(Model.ISignUpRequest command,
+        public virtual async Task<Model.SignUpResponse> SignUp(ISignUpRequest command,
             CancellationToken cancellationToken = default)
         {
             Check.NotNull(command, nameof(command));
 
             command.EnsureIsValid();
 
-            var signUpRequest = new Amazon.CognitoIdentityProvider.Model.SignUpRequest
+            var signUpRequest = new SignUpRequest
             {
                 ClientId = clientId,
                 Username = command.UserName.ToLower(),
@@ -264,13 +262,11 @@ namespace Innovt.Cloud.AWS.Cognito
             {
                 var value = prop.GetValue(command);
                 if (value != null)
-                {
                     signUpRequest.UserAttributes.Add(new AttributeType()
                     {
                         Name = prop.Name.ToLower(),
                         Value = value.ToString()
                     });
-                }
             }
 
             try
@@ -372,7 +368,7 @@ namespace Innovt.Cloud.AWS.Cognito
         }
 
         public virtual async Task<T> GetUser<T>(Model.GetUserRequest request,
-            CancellationToken cancellationToken = default) where T : Model.IGetUserResponse
+            CancellationToken cancellationToken = default) where T : IGetUserResponse
         {
             Check.NotNull(request, nameof(request));
 
@@ -390,7 +386,7 @@ namespace Innovt.Cloud.AWS.Cognito
                     await CognitoidentityProvider.ListUsersAsync(listUserRequest, cancellationToken));
 
                 var cognitoUser = response?.Users.FirstOrDefault(u =>
-                    (request.ExcludeExternalUser && u.UserStatus != "EXTERNAL_PROVIDER"));
+                    request.ExcludeExternalUser && u.UserStatus != "EXTERNAL_PROVIDER");
 
                 if (cognitoUser == null)
                     return default;
@@ -417,13 +413,10 @@ namespace Innovt.Cloud.AWS.Cognito
                             break;
                         default:
                             var propInfo = typeof(T).GetProperty(userAttribute.Name,
-                                System.Reflection.BindingFlags.IgnoreCase | BindingFlags.Instance |
+                                BindingFlags.IgnoreCase | BindingFlags.Instance |
                                 BindingFlags.Public);
 
-                            if (propInfo != null)
-                            {
-                                propInfo.SetValue(user, userAttribute.Value);
-                            }
+                            if (propInfo != null) propInfo.SetValue(user, userAttribute.Value);
 
                             break;
                     }
@@ -437,7 +430,7 @@ namespace Innovt.Cloud.AWS.Cognito
             }
         }
 
-        public async Task<Model.AuthChallengeResponse> RespondToAuthChallenge(
+        public async Task<AuthChallengeResponse> RespondToAuthChallenge(
             Model.RespondToAuthChallengeRequest command,
             CancellationToken cancellationToken = default)
         {
@@ -485,13 +478,9 @@ namespace Innovt.Cloud.AWS.Cognito
 
                 var result = new AuthChallengeResponse();
 
-                if (response.ResponseMetadata != null)
-                {
-                    result.Metadata = response.ResponseMetadata.Metadata;
-                }
+                if (response.ResponseMetadata != null) result.Metadata = response.ResponseMetadata.Metadata;
 
                 if (response.AuthenticationResult != null)
-                {
                     result.AuthenticationResult = new SignInResponse()
                     {
                         IdToken = response.AuthenticationResult.IdToken,
@@ -501,7 +490,6 @@ namespace Innovt.Cloud.AWS.Cognito
                         RefreshToken = response.AuthenticationResult.RefreshToken,
                         SignInType = "USER_PASSWORD_AUTH"
                     };
-                }
 
                 return result;
             }

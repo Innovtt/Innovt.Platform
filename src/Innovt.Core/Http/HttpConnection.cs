@@ -12,7 +12,7 @@ namespace Innovt.Core.Http
     {
         private static HttpWebRequest CreateHttpRequest(Uri url, int? connectionTimeout = 30000)
         {
-            HttpWebRequest httpRequest = (HttpWebRequest) WebRequest.Create(url);
+            var httpRequest = (HttpWebRequest) WebRequest.Create(url);
 
             httpRequest.Timeout = connectionTimeout ?? 30000;
 
@@ -81,10 +81,7 @@ namespace Innovt.Core.Http
 
         private static T DeserializeObject<T>(ISerializer serializer, string content) where T : class
         {
-            if (typeof(T).Name.Equals("String"))
-            {
-                return (T) Convert.ChangeType(content, typeof(T));
-            }
+            if (typeof(T).Name.Equals("String")) return (T) Convert.ChangeType(content, typeof(T));
 
             return serializer.DeserializeObject<T>(content);
         }
@@ -120,20 +117,17 @@ namespace Innovt.Core.Http
 
             try
             {
-                using HttpWebResponse webResponse = webRequest.GetResponse() as HttpWebResponse;
-                StreamReader streamReader = new StreamReader(webResponse.GetResponseStream());
+                using var webResponse = webRequest.GetResponse() as HttpWebResponse;
+                var streamReader = new StreamReader(webResponse.GetResponseStream());
                 requestDetail.RawResponse = streamReader.ReadToEnd();
                 requestDetail.ResponseStatusCode = webResponse.StatusCode;
             }
             catch (WebException ex)
             {
-                if (ex.Response == null)
-                {
-                    throw;
-                }
+                if (ex.Response == null) throw;
 
-                using HttpWebResponse webResponse = (HttpWebResponse) ex.Response;
-                StreamReader test = new StreamReader(webResponse.GetResponseStream());
+                using var webResponse = (HttpWebResponse) ex.Response;
+                var test = new StreamReader(webResponse.GetResponseStream());
                 requestDetail.RawResponse = test.ReadToEnd();
                 requestDetail.ResponseStatusCode = webResponse.StatusCode;
             }

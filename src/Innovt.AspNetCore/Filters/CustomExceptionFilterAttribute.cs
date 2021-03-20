@@ -19,16 +19,10 @@ namespace Innovt.AspNetCore.Filters
             var bEx = (BusinessException) context.Exception;
 
             if (bEx.Errors.Any())
-            {
                 foreach (var error in bEx.Errors)
-                {
                     context.ModelState.AddModelError(error.PropertyName, error.Message);
-                }
-            }
             else
-            {
                 context.ModelState.AddModelError("", bEx.Message);
-            }
 
             context.Result = new ViewResult
             {

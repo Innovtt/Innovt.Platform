@@ -50,23 +50,14 @@ namespace Innovt.AspNetCore.Extensions
         {
             var section = configuration.GetSection(configSection);
 
-            if (section == null)
-            {
-                throw new CriticalException($"The Config Section '{configSection}' not defined.");
-            }
+            if (section == null) throw new CriticalException($"The Config Section '{configSection}' not defined.");
 
             var audienceSection = section.GetSection("Audience");
             var authoritySection = section.GetSection("Authority");
 
-            if (audienceSection == null)
-            {
-                throw new CriticalException($"The Config Section 'Audience' not defined.");
-            }
+            if (audienceSection == null) throw new CriticalException($"The Config Section 'Audience' not defined.");
 
-            if (authoritySection == null)
-            {
-                throw new CriticalException($"The Config Section 'Authority' not defined.");
-            }
+            if (authoritySection == null) throw new CriticalException($"The Config Section 'Authority' not defined.");
 
             services.AddBearerAuthorization(audienceSection.Value, authoritySection.Value);
         }
@@ -110,34 +101,26 @@ namespace Innovt.AspNetCore.Extensions
             if (builder == null) throw new ArgumentNullException(nameof(builder));
 
             if (builder.Collection.TotalRecords < builder.Collection.PageSize &&
-                (builder.Collection.IsNumberPagination && builder.Collection.Page != null
-                                                       && int.Parse(builder.Collection.Page,
-                                                           CultureInfo.InvariantCulture) <= 1))
+                builder.Collection.IsNumberPagination && builder.Collection.Page != null && int.Parse(
+                    builder.Collection.Page,
+                    CultureInfo.InvariantCulture) <= 1)
                 return new HtmlString(string.Empty);
 
             var html = new StringBuilder();
 
             html.Append(builder.BuildHeader());
 
-            if (builder.Collection.HasPrevious())
-            {
-                html.Append(builder.BuildPrevious());
-            }
+            if (builder.Collection.HasPrevious()) html.Append(builder.BuildPrevious());
 
             if (builder.Collection.PageCount > 1)
-            {
                 for (var i = 0; i <= builder.Collection.PageCount - 1; i++)
                 {
                     var isCurrent = builder.Collection.Page == i.ToString(CultureInfo.InvariantCulture);
 
                     html.Append(builder.BuildItem(i, isCurrent));
                 }
-            }
 
-            if (builder.Collection.HasNext())
-            {
-                html.Append(builder.BuildNext());
-            }
+            if (builder.Collection.HasNext()) html.Append(builder.BuildNext());
 
             html.Append(builder.BuildFooter());
 
@@ -151,7 +134,7 @@ namespace Innovt.AspNetCore.Extensions
             var statusList = new List<SelectListItem>()
             {
                 new SelectListItem() {Value = "1", Text = "Ativo"},
-                new SelectListItem() {Value = "0", Text = "Inativo"},
+                new SelectListItem() {Value = "0", Text = "Inativo"}
             };
 
             return new SelectList(statusList, "Value", "Text");
@@ -202,22 +185,15 @@ namespace Innovt.AspNetCore.Extensions
             var remoteIp = context.Connection?.RemoteIpAddress;
             var localIp = context.Connection?.LocalIpAddress;
 
-            if (remoteIp == null && localIp == null)
-            {
-                return true;
-            }
+            if (remoteIp == null && localIp == null) return true;
 
 
             if (remoteIp != null)
             {
                 if (localIp != null)
-                {
                     return remoteIp.Equals(localIp);
-                }
                 else
-                {
                     return IPAddress.IsLoopback(remoteIp);
-                }
             }
 
             return false;
@@ -226,7 +202,7 @@ namespace Innovt.AspNetCore.Extensions
         public static void Set<T>(this ISession session, string key, T value)
         {
             if (session == null)
-                throw new System.Exception("Session not available yet.");
+                throw new Exception("Session not available yet.");
 
             session.SetString(key, JsonSerializer.Serialize(value));
         }
@@ -234,7 +210,7 @@ namespace Innovt.AspNetCore.Extensions
         public static T Get<T>(this ISession session, string key)
         {
             if (session == null)
-                throw new System.Exception("Session not  available yet.");
+                throw new Exception("Session not  available yet.");
 
             var value = session.GetString(key);
 

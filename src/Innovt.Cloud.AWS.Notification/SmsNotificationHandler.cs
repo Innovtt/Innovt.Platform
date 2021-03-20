@@ -29,9 +29,7 @@ namespace Innovt.Cloud.AWS.Notification
             get
             {
                 if (_simpleNotificationClient == null)
-                {
                     _simpleNotificationClient = CreateService<AmazonSimpleNotificationServiceClient>();
-                }
 
                 return _simpleNotificationClient;
             }
@@ -43,7 +41,7 @@ namespace Innovt.Cloud.AWS.Notification
             Check.NotNullWithBusinessException(message.Body, nameof(message.Body));
             Check.NotNullWithBusinessException(message.To, nameof(message.To));
 
-            List<dynamic> deliveryResult = new List<dynamic>();
+            var deliveryResult = new List<dynamic>();
 
             var policy = base.CreateDefaultRetryAsyncPolicy();
 

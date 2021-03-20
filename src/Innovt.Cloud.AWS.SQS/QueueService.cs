@@ -25,14 +25,14 @@ namespace Innovt.Cloud.AWS.SQS
             ISerializer serializer = null) : base(logger, configuration)
         {
             this.serializer = serializer;
-            this.QueueName = queueName ?? typeof(T).Name;
+            QueueName = queueName ?? typeof(T).Name;
         }
 
         public QueueService(ILogger logger, IAWSConfiguration configuration, string region, string queueName = null,
             ISerializer serializer = null) : base(logger, configuration, region)
         {
             this.serializer = serializer;
-            this.QueueName = queueName ?? typeof(T).Name;
+            QueueName = queueName ?? typeof(T).Name;
         }
 
         private AmazonSQSClient sqsClient = null;
@@ -41,26 +41,19 @@ namespace Innovt.Cloud.AWS.SQS
 
         private async Task<string> GetQueueUrlAsync()
         {
-            if (QueueUrl != null && QueueUrl.EndsWith(QueueName))
-            {
-                return QueueUrl;
-            }
+            if (QueueUrl != null && QueueUrl.EndsWith(QueueName)) return QueueUrl;
 
-            if (base.Configuration?.AccountNumber != null)
-            {
+            if (Configuration?.AccountNumber != null)
                 QueueUrl =
-                    $"https://sqs.{base.GetServiceRegionEndPoint().SystemName}.amazonaws.com/{base.Configuration.AccountNumber}/{QueueName}";
-            }
+                    $"https://sqs.{GetServiceRegionEndPoint().SystemName}.amazonaws.com/{Configuration.AccountNumber}/{QueueName}";
             else
-            {
                 QueueUrl = (await SqsClient.GetQueueUrlAsync(QueueName))?.QueueUrl;
-            }
 
             return QueueUrl;
         }
 
 
-        private ISerializer Serializer => serializer ??= new Innovt.Core.Serialization.JsonSerializer();
+        private ISerializer Serializer => serializer ??= new JsonSerializer();
 
         /// <summary>
         /// Enable user to receive messages
@@ -185,19 +178,17 @@ namespace Innovt.Cloud.AWS.SQS
 
             var messageRequest = new SendMessageBatchRequest
             {
-                QueueUrl = await GetQueueUrlAsync(),
+                QueueUrl = await GetQueueUrlAsync()
             };
 
             messageRequest.Entries = new List<SendMessageBatchRequestEntry>();
             foreach (var item in message)
-            {
                 messageRequest.Entries.Add(new SendMessageBatchRequestEntry()
                 {
                     Id = item.Id,
                     DelaySeconds = delaySeconds.GetValueOrDefault(),
-                    MessageBody = Serializer.SerializeObject(item.Message),
+                    MessageBody = Serializer.SerializeObject(item.Message)
                 });
-            }
 
             var response = await base.CreateDefaultRetryAsyncPolicy()
                 .ExecuteAsync(async () => await SqsClient.SendMessageBatchAsync(messageRequest, cancellationToken))
@@ -206,20 +197,12 @@ namespace Innovt.Cloud.AWS.SQS
             var result = new List<MessageQueueResult>();
 
             if (response.Successful != null)
-            {
                 foreach (var item in response.Successful)
-                {
                     result.Add(new MessageQueueResult() {Id = item.Id, Success = true});
-                }
-            }
 
             if (response.Failed != null)
-            {
                 foreach (var item in response.Failed)
-                {
                     result.Add(new MessageQueueResult() {Id = item.Id, Success = false, Error = item.Message});
-                }
-            }
 
             return result;
         }

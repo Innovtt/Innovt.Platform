@@ -40,8 +40,8 @@ namespace Innovt.Domain.Core.Specification
         /// <param name="rightSide">Right side specification</param>
         public AndSpecification(ISpecification<T> leftSide, ISpecification<T> rightSide)
         {
-            this.leftSideSpecification = leftSide ?? throw new ArgumentNullException("leftSide");
-            this.rightSideSpecification = rightSide ?? throw new ArgumentNullException("rightSide");
+            leftSideSpecification = leftSide ?? throw new ArgumentNullException("leftSide");
+            rightSideSpecification = rightSide ?? throw new ArgumentNullException("rightSide");
         }
 
         #endregion
@@ -51,18 +51,12 @@ namespace Innovt.Domain.Core.Specification
         /// <summary>
         /// Left side specification
         /// </summary>
-        public override ISpecification<T> LeftSideSpecification
-        {
-            get { return leftSideSpecification; }
-        }
+        public override ISpecification<T> LeftSideSpecification => leftSideSpecification;
 
         /// <summary>
         /// Right side specification
         /// </summary>
-        public override ISpecification<T> RightSideSpecification
-        {
-            get { return rightSideSpecification; }
-        }
+        public override ISpecification<T> RightSideSpecification => rightSideSpecification;
 
         /// <summary>
         /// <see cref="ISpecification{TEntity}"/>
@@ -70,10 +64,10 @@ namespace Innovt.Domain.Core.Specification
         /// <returns><see cref="ISpecification{TEntity}"/></returns>
         public override Expression<Func<T, bool>> SatisfiedBy()
         {
-            Expression<Func<T, bool>> left = leftSideSpecification.SatisfiedBy();
-            Expression<Func<T, bool>> right = rightSideSpecification.SatisfiedBy();
+            var left = leftSideSpecification.SatisfiedBy();
+            var right = rightSideSpecification.SatisfiedBy();
 
-            return (left.And(right));
+            return left.And(right);
         }
 
         #endregion

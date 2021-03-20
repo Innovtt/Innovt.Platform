@@ -24,26 +24,18 @@ namespace Innovt.Cloud.AWS.Cognito.Model
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (AccessToken.IsNullOrEmpty())
-            {
                 yield return new ValidationResult(Messages.EmailIsRequired, new[] {nameof(AccessToken)});
-            }
 
             if (ConfirmProposedPassword.IsNullOrEmpty())
-            {
                 yield return new ValidationResult(Messages.ConfirmPasswordIsRequired,
                     new[] {nameof(ConfirmProposedPassword)});
-            }
 
             if (PreviousPassword.IsNullOrEmpty())
-            {
                 yield return new ValidationResult(Messages.CurrentPasswordRequired, new[] {nameof(PreviousPassword)});
-            }
 
             if (ProposedPassword != ConfirmProposedPassword)
-            {
                 yield return new ValidationResult(Messages.PasswordsDoNotMatch,
                     new[] {nameof(ConfirmProposedPassword), nameof(ProposedPassword)});
-            }
         }
     }
 }

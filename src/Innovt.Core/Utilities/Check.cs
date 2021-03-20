@@ -62,10 +62,7 @@ namespace Innovt.Core.Utilities
         // [ContractAnnotation("=> halt")]
         public static T NotNullWithBusinessException<T>(T value, string message)
         {
-            if (value == null)
-            {
-                throw new BusinessException(message);
-            }
+            if (value == null) throw new BusinessException(message);
 
             return value;
         }
@@ -73,78 +70,56 @@ namespace Innovt.Core.Utilities
         // [ContractAnnotation("=> halt")]
         public static T NotNullWithCriticalException<T>(T value, string message)
         {
-            if (value == null)
-            {
-                throw new CriticalException(message);
-            }
+            if (value == null) throw new CriticalException(message);
 
             return value;
         }
 
-        private static bool AreEqualImpl(string value, string value2) =>
-            (value != null && !value.Equals(value2, StringComparison.InvariantCultureIgnoreCase));
+        private static bool AreEqualImpl(string value, string value2)
+        {
+            return value != null && !value.Equals(value2, StringComparison.InvariantCultureIgnoreCase);
+        }
 
         //  [ContractAnnotation("=> halt")]
         public static void AreEqual(string value, string value2, string message)
         {
-            if (AreEqualImpl(value, value2))
-            {
-                throw new BusinessException(message);
-            }
+            if (AreEqualImpl(value, value2)) throw new BusinessException(message);
         }
 
         // [ContractAnnotation("=> halt")]
         public static void AreEqual(int value, int value2, string message)
         {
-            if (value != value2)
-            {
-                throw new BusinessException(message);
-            }
+            if (value != value2) throw new BusinessException(message);
         }
 
         // [ContractAnnotation("=> halt")]
         public static void AreEqual(long value, long value2, string message)
         {
-            if (value != value2)
-            {
-                throw new BusinessException(message);
-            }
+            if (value != value2) throw new BusinessException(message);
         }
 
         // [ContractAnnotation("=> halt")]
         public static void AreEqual(decimal value, decimal value2, string message)
         {
-            if (value != value2)
-            {
-                throw new BusinessException(message);
-            }
+            if (value != value2) throw new BusinessException(message);
         }
 
         // [ContractAnnotation("=> halt")]
         public static void AreNotEqual(string value, string value2, string message)
         {
-            if (!AreEqualImpl(value, value2))
-            {
-                throw new BusinessException(message);
-            }
+            if (!AreEqualImpl(value, value2)) throw new BusinessException(message);
         }
 
         //[ContractAnnotation("=> halt")]
         public static void AreNotEqual(int value, int value2, string message)
         {
-            if (value == value2)
-            {
-                throw new BusinessException(message);
-            }
+            if (value == value2) throw new BusinessException(message);
         }
 
         // [ContractAnnotation("=> halt")]
         public static void AreNotEqual(long value, long value2, string message)
         {
-            if (value == value2)
-            {
-                throw new BusinessException(message);
-            }
+            if (value == value2) throw new BusinessException(message);
         }
 
 
@@ -166,13 +141,8 @@ namespace Innovt.Core.Utilities
         {
             Exception e = null;
             if (value is null)
-            {
                 e = new ArgumentNullException(parameterName);
-            }
-            else if (value.Trim().Length == 0)
-            {
-                e = new ArgumentException(nameof(parameterName));
-            }
+            else if (value.Trim().Length == 0) e = new ArgumentException(nameof(parameterName));
 
             if (e != null)
             {

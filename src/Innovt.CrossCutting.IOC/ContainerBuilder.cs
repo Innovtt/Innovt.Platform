@@ -10,7 +10,7 @@ namespace Innovt.CrossCutting.IOC
 
         public ContainerBuilder(IServiceCollection services)
         {
-            this.container = new Container(services);
+            container = new Container(services);
         }
 
         public IServiceProvider GetServiceProvider()

@@ -28,10 +28,8 @@ namespace Innovt.Domain.Contacts
             }
             else
             {
-                if (Type.Validate(this.Value))
-                {
+                if (Type.Validate(Value))
                     yield return new ValidationResult($"The value {Value} is not valid for {Type.Name}.");
-                }
             }
         }
     }

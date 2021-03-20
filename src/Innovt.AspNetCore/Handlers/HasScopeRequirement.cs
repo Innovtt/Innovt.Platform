@@ -24,8 +24,8 @@ namespace Innovt.AspNetCore.Handlers
         /// <param name="issuer"></param>
         public HasScopeRequirement(string scope, string issuer)
         {
-            this.Scope = scope;
-            this.Issuer = issuer;
+            Scope = scope;
+            Issuer = issuer;
         }
 
         /// <summary>

@@ -22,10 +22,7 @@ namespace Innovt.CrossCutting.Log.Serilog
 
         public Logger(ILogEventEnricher enricher)
         {
-            if (enricher is null)
-            {
-                throw new ArgumentNullException(nameof(enricher));
-            }
+            if (enricher is null) throw new ArgumentNullException(nameof(enricher));
 
             logger = new LoggerConfiguration().WriteTo.Console(outputTemplate: ConsoleTemplate
             ).Enrich.With(enricher).CreateLogger();
@@ -59,7 +56,7 @@ namespace Innovt.CrossCutting.Log.Serilog
                 return;
             }
 
-            logger.Debug(messageTemplate, propertyValues: propertyValues);
+            logger.Debug(messageTemplate, propertyValues);
         }
 
         public void Debug(Exception exception, string messageTemplate)

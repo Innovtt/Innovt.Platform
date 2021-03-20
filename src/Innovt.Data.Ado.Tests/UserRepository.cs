@@ -23,10 +23,10 @@ namespace Innovt.Data.Ado.Tests
 
             var filter = new PagedFilterBase() {Page = 1, PageSize = 10};
 
-            var res = await base.QueryPagedAsync<User>(query, filter);
+            var res = await QueryPagedAsync<User>(query, filter);
 
 
-            return await base.QueryAsync<User>(query);
+            return await QueryAsync<User>(query);
         }
 
         public void DeleteAllUsers()

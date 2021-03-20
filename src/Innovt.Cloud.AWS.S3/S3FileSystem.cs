@@ -45,7 +45,7 @@ namespace Innovt.Cloud.AWS.S3
             var amazonPrefix = ".amazonaws.com/";
 
             var urlWithoutPrefix = url.Remove(0,
-                url.IndexOf(amazonPrefix, System.StringComparison.CurrentCultureIgnoreCase) + amazonPrefix.Length);
+                url.IndexOf(amazonPrefix, StringComparison.CurrentCultureIgnoreCase) + amazonPrefix.Length);
 
             var spitedUrl = urlWithoutPrefix.Split('/');
 
@@ -88,7 +88,7 @@ namespace Innovt.Cloud.AWS.S3
             var result =
                 await policy.ExecuteAsync(async () => await S3Client.PutObjectAsync(request, cancellationToken));
 
-            if (result.HttpStatusCode != System.Net.HttpStatusCode.OK)
+            if (result.HttpStatusCode != HttpStatusCode.OK)
                 throw new FileNotFoundException();
 
             return GetObjectUrl(bucketName, fileKey);
@@ -97,7 +97,7 @@ namespace Innovt.Cloud.AWS.S3
         internal async Task<string> PutObjectInternalAsync(string bucketName, [NotNull] string filePath,
             string contentType = null, CancellationToken cancellationToken = default)
         {
-            await using FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            await using var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
 
             var fileName = Path.GetFileName(filePath);
 
@@ -107,8 +107,8 @@ namespace Innovt.Cloud.AWS.S3
         public Task<string> PutObjectAsync(string bucketName, Stream stream, string fileName, string contentType = null,
             CancellationToken cancellationToken = default)
         {
-            if (bucketName == null) throw new System.ArgumentNullException(nameof(bucketName));
-            if (stream == null) throw new System.ArgumentNullException(nameof(stream));
+            if (bucketName == null) throw new ArgumentNullException(nameof(bucketName));
+            if (stream == null) throw new ArgumentNullException(nameof(stream));
 
             return PutObjectInternalAsync(bucketName, stream, fileName, contentType, cancellationToken);
         }
@@ -145,7 +145,7 @@ namespace Innovt.Cloud.AWS.S3
             var request = new TransferUtilityOpenStreamRequest()
             {
                 BucketName = bucketName,
-                Key = fileName,
+                Key = fileName
             };
 
             return base.CreateDefaultRetryPolicy().Execute(() => new TransferUtility(S3Client).OpenStream(request));
@@ -165,7 +165,7 @@ namespace Innovt.Cloud.AWS.S3
             var request = new TransferUtilityOpenStreamRequest()
             {
                 BucketName = bucketName,
-                Key = fileName,
+                Key = fileName
             };
 
             var policy = base.CreateDefaultRetryAsyncPolicy();
@@ -215,10 +215,7 @@ namespace Innovt.Cloud.AWS.S3
 
             if (metadata == null) return request;
 
-            foreach (var (key, value) in metadata)
-            {
-                request.Metadata.Add(key, value);
-            }
+            foreach (var (key, value) in metadata) request.Metadata.Add(key, value);
 
             return request;
         }
@@ -273,7 +270,7 @@ namespace Innovt.Cloud.AWS.S3
         {
             var fileName = Path.GetFileName(filePath);
 
-            using FileStream fileToUpload = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            using var fileToUpload = new FileStream(filePath, FileMode.Open, FileAccess.Read);
 
             return Upload(bucketName, fileToUpload, fileName, region, metadata);
         }
@@ -306,7 +303,7 @@ namespace Innovt.Cloud.AWS.S3
             {
                 BucketName = bucketName,
                 MaxKeys = 1,
-                Prefix = key,
+                Prefix = key
             };
 
             var policy = base.CreateDefaultRetryAsyncPolicy();
@@ -350,7 +347,7 @@ namespace Innovt.Cloud.AWS.S3
                 SourceBucket = sourceBucket,
                 SourceKey = sourceKey,
                 DestinationBucket = destinationBucket,
-                DestinationKey = destinationKey,
+                DestinationKey = destinationKey
             };
 
             var policy = base.CreateDefaultRetryAsyncPolicy();
@@ -358,7 +355,7 @@ namespace Innovt.Cloud.AWS.S3
             var response =
                 await policy.ExecuteAsync(async () => await S3Client.CopyObjectAsync(request, cancellationToken));
 
-            return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+            return response.HttpStatusCode == HttpStatusCode.OK;
         }
 
         protected override void DisposeServices()

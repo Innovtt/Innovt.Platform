@@ -4,7 +4,7 @@ using System;
 
 namespace Innovt.CrossCutting.IOC
 {
-    public sealed class Container : Innovt.Core.CrossCutting.Ioc.IContainer
+    public sealed class Container : IContainer
     {
         private readonly Lamar.Container container;
 
@@ -30,20 +30,14 @@ namespace Innovt.CrossCutting.IOC
 
         public Container(IOCModule module)
         {
-            if (module is null)
-            {
-                throw new ArgumentNullException(nameof(module));
-            }
+            if (module is null) throw new ArgumentNullException(nameof(module));
 
             container = new Lamar.Container(module.GetServices());
         }
 
         public void AddModule(IOCModule module)
         {
-            if (module is null)
-            {
-                throw new ArgumentNullException(nameof(module));
-            }
+            if (module is null) throw new ArgumentNullException(nameof(module));
 
             var services = module.GetServices();
 

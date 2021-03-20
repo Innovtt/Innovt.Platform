@@ -24,13 +24,13 @@ namespace Innovt.Domain.Core.Repository
 
         public Include Add(string param)
         {
-            this.Includes.Add(param);
+            Includes.Add(param);
             return this;
         }
 
         public Include Add(params string[] parameters)
         {
-            this.Includes.AddRange(parameters);
+            Includes.AddRange(parameters);
             return this;
         }
 

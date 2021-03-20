@@ -17,9 +17,7 @@ namespace Innovt.Cloud.AWS.Cognito.Model
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (RefreshToken.IsNullOrEmpty())
-            {
                 yield return new ValidationResult(Messages.RefreshTokenIsRequired, new[] {nameof(RefreshToken)});
-            }
         }
     }
 }

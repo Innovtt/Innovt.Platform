@@ -15,7 +15,7 @@ namespace Innovt.Cloud.AWS.Dynamo
 {
     internal static class Helpers
     {
-        const string encriptionKey = "AAECAwQFBgcICQoL";
+        private const string encriptionKey = "AAECAwQFBgcICQoL";
         private const string paginationTokenseparator = "|";
 
 
@@ -36,7 +36,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             return attribute.TableName;
         }
 
-        internal static Amazon.DynamoDBv2.Model.AttributeValue CreateAttributeValue(object value)
+        internal static AttributeValue CreateAttributeValue(object value)
         {
             if (value is null)
                 return new AttributeValue() {NULL = true};
@@ -70,10 +70,8 @@ namespace Innovt.Cloud.AWS.Dynamo
             {
                 var array = new Dictionary<string, AttributeValue>();
 
-                foreach (var item in (value as IDictionary<string, object>))
-                {
+                foreach (var item in value as IDictionary<string, object>)
                     array.Add(item.Key, CreateAttributeValue(item.Value));
-                }
 
                 return new AttributeValue {M = array};
             }
@@ -92,7 +90,6 @@ namespace Innovt.Cloud.AWS.Dynamo
             var properties = filter.GetType().GetProperties();
 
             if (properties.Length > 0)
-            {
                 foreach (var item in properties)
                 {
                     var key = $":{item.Name}".ToLower();
@@ -104,16 +101,15 @@ namespace Innovt.Cloud.AWS.Dynamo
                         attributeValues.Add(key, CreateAttributeValue(value));
                     }
                 }
-            }
 
             return attributeValues;
         }
 
 
-        internal static Amazon.DynamoDBv2.Model.QueryRequest CreateQueryRequest<T>(
+        internal static QueryRequest CreateQueryRequest<T>(
             Innovt.Cloud.Table.QueryRequest request)
         {
-            var queryRequest = new Amazon.DynamoDBv2.Model.QueryRequest()
+            var queryRequest = new QueryRequest()
             {
                 IndexName = request.IndexName,
                 TableName = GetTableName<T>(),
@@ -134,9 +130,9 @@ namespace Innovt.Cloud.AWS.Dynamo
         }
 
 
-        internal static Amazon.DynamoDBv2.Model.ScanRequest CreateScanRequest<T>(Innovt.Cloud.Table.ScanRequest request)
+        internal static ScanRequest CreateScanRequest<T>(Innovt.Cloud.Table.ScanRequest request)
         {
-            var scanRequest = new Amazon.DynamoDBv2.Model.ScanRequest()
+            var scanRequest = new ScanRequest()
             {
                 IndexName = request.IndexName,
                 TableName = GetTableName<T>(),
@@ -184,14 +180,10 @@ namespace Innovt.Cloud.AWS.Dynamo
             {
                 var doc = Document.FromAttributeMap(item);
 
-                if (item.ContainsKey("EntityType") && (item["EntityType"].S == splitBy))
-                {
+                if (item.ContainsKey("EntityType") && item["EntityType"].S == splitBy)
                     result1.Add(context.FromDocument<T1>(doc));
-                }
                 else
-                {
                     result2.Add(context.FromDocument<T2>(doc));
-                }
             }
 
             return (result1, result2);
@@ -221,13 +213,9 @@ namespace Innovt.Cloud.AWS.Dynamo
                 else
                 {
                     if (item["EntityType"].S == splitBy[1])
-                    {
                         result2.Add(context.FromDocument<T2>(doc));
-                    }
                     else
-                    {
                         result3.Add(context.FromDocument<T3>(doc));
-                    }
                 }
             }
 
@@ -274,17 +262,13 @@ namespace Innovt.Cloud.AWS.Dynamo
                 var attributeValue = string.Join(paginationTokenseparator, attributes, 1, attributes.Length - 1);
 
                 if (attributeValue.StartsWith("S:"))
-                {
                     result.Add(attributeKey,
                         new AttributeValue(attributeValue.Substring(2, attributeValue.Length - 2)));
-                }
                 else
-                {
                     result.Add(attributeKey, new AttributeValue()
                     {
                         N = attributeValue.Substring(2, attributeValue.Length - 2)
                     });
-                }
             }
 
             return result;

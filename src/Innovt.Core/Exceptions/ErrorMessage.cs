@@ -11,7 +11,7 @@
         /// <param name="message">The message that you want to send.</param>
         public ErrorMessage(string message)
         {
-            this.Message = message;
+            Message = message;
         }
 
         public ErrorMessage()
@@ -25,8 +25,8 @@
         /// <param name="propertyName">The property(optional) that this error happened.</param>
         public ErrorMessage(string message, string propertyName)
         {
-            this.Message = message;
-            this.PropertyName = propertyName;
+            Message = message;
+            PropertyName = propertyName;
         }
 
         /// <summary>
@@ -37,9 +37,9 @@
         /// <param name="code">The code of you error</param>
         public ErrorMessage(string message, string propertyName, string code)
         {
-            this.Message = message;
-            this.PropertyName = propertyName;
-            this.Code = code;
+            Message = message;
+            PropertyName = propertyName;
+            Code = code;
         }
 
 

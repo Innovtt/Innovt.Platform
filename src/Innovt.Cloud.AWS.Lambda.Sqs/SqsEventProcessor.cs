@@ -35,7 +35,7 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
                 return serializer;
             }
 
-            set { serializer = value; }
+            set => serializer = value;
         }
 
 

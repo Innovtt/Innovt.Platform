@@ -40,8 +40,8 @@ namespace Innovt.Domain.Core.Specification
         /// <param name="rightSide">Right side specification</param>
         public OrSpecification(ISpecification<T> leftSide, ISpecification<T> rightSide)
         {
-            this.leftSideSpecification = leftSide ?? throw new ArgumentNullException(nameof(leftSide));
-            this.rightSideSpecification = rightSide ?? throw new ArgumentNullException(nameof(rightSide));
+            leftSideSpecification = leftSide ?? throw new ArgumentNullException(nameof(leftSide));
+            rightSideSpecification = rightSide ?? throw new ArgumentNullException(nameof(rightSide));
         }
 
         #endregion
@@ -64,10 +64,10 @@ namespace Innovt.Domain.Core.Specification
         /// <returns><see cref="ISpecification{TEntity}"/></returns>
         public override Expression<Func<T, bool>> SatisfiedBy()
         {
-            Expression<Func<T, bool>> left = leftSideSpecification.SatisfiedBy();
-            Expression<Func<T, bool>> right = rightSideSpecification.SatisfiedBy();
+            var left = leftSideSpecification.SatisfiedBy();
+            var right = rightSideSpecification.SatisfiedBy();
 
-            return (left.Or(right));
+            return left.Or(right);
         }
 
         #endregion

@@ -15,17 +15,21 @@ namespace Innovt.Core.Utilities
             TaskScheduler.Default);
 
         public static TResult RunSync<TResult>(Func<Task<TResult>> func)
-            => _taskFactory
+        {
+            return _taskFactory
                 .StartNew(func)
                 .Unwrap()
                 .GetAwaiter()
                 .GetResult();
+        }
 
         public static void RunSync(Func<Task> func)
-            => _taskFactory
+        {
+            _taskFactory
                 .StartNew(func)
                 .Unwrap()
                 .GetAwaiter()
                 .GetResult();
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace Innovt.AspNetCore.Utility.Pagination
 
         public PaginationBuilder(PagedCollection<T> collection, string formId)
         {
-            this.Collection = collection ?? throw new ArgumentNullException(nameof(collection));
+            Collection = collection ?? throw new ArgumentNullException(nameof(collection));
             this.formId = formId;
         }
 

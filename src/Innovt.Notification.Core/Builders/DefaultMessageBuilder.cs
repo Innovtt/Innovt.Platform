@@ -46,10 +46,7 @@ namespace Innovt.Notification.Core.Builders
 
             var toList = new List<NotificationMessageContact>();
 
-            foreach (var to in request.To)
-            {
-                toList.Add(new NotificationMessageContact(to.Name, to.Address));
-            }
+            foreach (var to in request.To) toList.Add(new NotificationMessageContact(to.Name, to.Address));
 
             return toList;
         }
@@ -114,18 +111,11 @@ namespace Innovt.Notification.Core.Builders
             if (parser == null)
                 return;
 
-            if (message.Subject != null)
-            {
-                message.Subject.Content = parser.Render(message.Subject.Content, payLoad);
-            }
+            if (message.Subject != null) message.Subject.Content = parser.Render(message.Subject.Content, payLoad);
 
-            if (message.Body != null)
-            {
-                message.Body.Content = parser.Render(message.Body.Content, payLoad);
-            }
+            if (message.Body != null) message.Body.Content = parser.Render(message.Body.Content, payLoad);
 
             if (message.To != null)
-            {
                 foreach (var to in message.To)
                 {
                     to.Address = parser.Render(to.Address, payLoad);
@@ -133,10 +123,8 @@ namespace Innovt.Notification.Core.Builders
                     if (!string.IsNullOrEmpty(to.Name))
                         to.Name = parser.Render(to.Name, payLoad);
                 }
-            }
 
             if (message.BccTo != null)
-            {
                 foreach (var bccTo in message.BccTo)
                 {
                     bccTo.Address = parser.Render(bccTo.Address, payLoad);
@@ -144,10 +132,8 @@ namespace Innovt.Notification.Core.Builders
                     if (!string.IsNullOrEmpty(bccTo.Name))
                         bccTo.Name = parser.Render(bccTo.Name, payLoad);
                 }
-            }
 
             if (message.CcTo != null)
-            {
                 foreach (var ccTo in message.CcTo)
                 {
                     ccTo.Address = parser.Render(ccTo.Address, payLoad);
@@ -155,12 +141,8 @@ namespace Innovt.Notification.Core.Builders
                     if (!string.IsNullOrEmpty(ccTo.Name))
                         ccTo.Name = parser.Render(ccTo.Name, payLoad);
                 }
-            }
 
-            if (message.Subject != null)
-            {
-                message.Subject.Content = parser.Render(message.Subject.Content, payLoad);
-            }
+            if (message.Subject != null) message.Subject.Content = parser.Render(message.Subject.Content, payLoad);
         }
     }
 }

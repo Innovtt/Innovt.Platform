@@ -19,7 +19,7 @@ namespace Innovt.Cqrs.Commands.Decorators
         public DatabaseAsyncRetryDecorator(IAsyncCommandHandler<TCommand> commandHandler, ILogger logger,
             int retryCount = 3) : base(logger, retryCount)
         {
-            this.asyncCommandHandler = commandHandler ?? throw new ArgumentNullException(nameof(commandHandler));
+            asyncCommandHandler = commandHandler ?? throw new ArgumentNullException(nameof(commandHandler));
         }
 
         public async Task Handle(TCommand command, CancellationToken cancellationToken = default)

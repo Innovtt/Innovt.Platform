@@ -17,12 +17,8 @@ namespace Innovt.Cloud.AWS.Lambda
             var variable = Environment.GetEnvironmentVariable(varName);
 
             if (variable == null && context?.ClientContext?.Environment != null)
-            {
                 if (context.ClientContext.Environment.ContainsKey(varName))
-                {
                     variable = context.ClientContext.Environment[varName];
-                }
-            }
 
             return variable ?? defaultValue;
         }
@@ -36,7 +32,7 @@ namespace Innovt.Cloud.AWS.Lambda
             var configurationName = $"appsettings.{environmentVariable}.json";
 
             return new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile(configurationName, optional: true, reloadOnChange: true).Build();
+                .AddJsonFile(configurationName, true, true).Build();
         }
     }
 }

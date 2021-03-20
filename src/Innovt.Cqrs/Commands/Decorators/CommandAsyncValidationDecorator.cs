@@ -13,7 +13,7 @@ namespace Innovt.Cqrs.Commands.Decorators
 
         public CommandAsyncValidationDecorator(IAsyncCommandHandler<TCommand> commandHandler)
         {
-            this.asyncCommandHandler = commandHandler ?? throw new ArgumentNullException(nameof(commandHandler));
+            asyncCommandHandler = commandHandler ?? throw new ArgumentNullException(nameof(commandHandler));
         }
 
         public async Task Handle(TCommand command, CancellationToken cancellationToken = default)

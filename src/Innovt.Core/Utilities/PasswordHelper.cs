@@ -8,7 +8,7 @@ namespace Innovt.Core.Utilities
 {
     public static class PasswordHelper
     {
-        const int SaltSize = 128 / 8; // 128 bits
+        private const int SaltSize = 128 / 8; // 128 bits
 
         public static bool IsValid(string decodedPassword, string hashedPassword, string salt)
         {
@@ -45,10 +45,10 @@ namespace Innovt.Core.Utilities
         {
             Check.NotEmpty(plainPassword, nameof(plainPassword));
 
-            string salt = RandomSalt();
+            var salt = RandomSalt();
 
             // Aspnet core sample
-            string hashedPassword = plainPassword.ShaHash(salt);
+            var hashedPassword = plainPassword.ShaHash(salt);
 
             return (hashedPassword, salt);
         }
