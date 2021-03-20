@@ -6,23 +6,24 @@ using Innovt.Data.DataSources;
 
 namespace Innovt.Data.Ado.Tests
 {
-    public class UserRepository:RepositoryBase
+    public class UserRepository : RepositoryBase
     {
         public UserRepository(IDataSource datasource) : base(datasource)
         {
         }
 
-        public UserRepository(IDataSource datasource, IConnectionFactory connectionFactory) : base(datasource, connectionFactory)
+        public UserRepository(IDataSource datasource, IConnectionFactory connectionFactory) : base(datasource,
+            connectionFactory)
         {
         }
 
         public async Task<IEnumerable<User>> GetAll()
         {
             var query = "SELECT * FROM USER ORDER BY NAME";
-            
+
             var filter = new PagedFilterBase() {Page = 1, PageSize = 10};
 
-            var res = await base.QueryPagedAsync<User>(query,filter);
+            var res = await base.QueryPagedAsync<User>(query, filter);
 
 
             return await base.QueryAsync<User>(query);
@@ -30,7 +31,6 @@ namespace Innovt.Data.Ado.Tests
 
         public void DeleteAllUsers()
         {
-
             //base.CreateQuery("User").in
         }
     }

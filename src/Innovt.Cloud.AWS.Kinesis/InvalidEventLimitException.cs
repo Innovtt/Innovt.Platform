@@ -2,11 +2,11 @@
 
 namespace Innovt.Cloud.AWS.Kinesis
 {
-    internal class InvalidEventLimitException:BaseException
+    internal class InvalidEventLimitException : BaseException
     {
-        internal InvalidEventLimitException():base("Invalid event limit. Kinesis supports up to 500 messages per request.")
+        internal InvalidEventLimitException() : base(
+            "Invalid event limit. Kinesis supports up to 500 messages per request.")
         {
-            
         }
     }
 }

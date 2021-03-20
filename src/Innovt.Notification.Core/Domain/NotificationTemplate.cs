@@ -12,5 +12,4 @@
         public string Builder { get; set; }
         public NotificationMessageType Type { get; set; }
     }
-     
 }

@@ -4,15 +4,15 @@ using System.Threading.Tasks;
 
 namespace Innovt.Core.Utilities
 {
-
     /// <summary>
     /// Reference https://cpratt.co/async-tips-tricks/
     /// </summary>
     public static class AsyncHelper
     {
-        private static readonly TaskFactory _taskFactory = new TaskFactory(CancellationToken.None, TaskCreationOptions.None,
-                    TaskContinuationOptions.None,
-                    TaskScheduler.Default);
+        private static readonly TaskFactory _taskFactory = new TaskFactory(CancellationToken.None,
+            TaskCreationOptions.None,
+            TaskContinuationOptions.None,
+            TaskScheduler.Default);
 
         public static TResult RunSync<TResult>(Func<Task<TResult>> func)
             => _taskFactory

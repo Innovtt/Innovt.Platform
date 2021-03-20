@@ -16,11 +16,11 @@ namespace Innovt.Core.CrossCutting.Ioc
 
         private static void ThrowExceptionIfContainerIsNotInitialized()
         {
-            if(container==null)
+            if (container == null)
                 throw new CriticalException("IOC Container not initialized");
         }
 
-        
+
         public static object Resolve(Type type)
         {
             ThrowExceptionIfContainerIsNotInitialized();
@@ -34,7 +34,7 @@ namespace Innovt.Core.CrossCutting.Ioc
 
             return container.Resolve<TService>(type);
         }
-        
+
         public static TService Resolve<TService>(string intanceKey)
         {
             ThrowExceptionIfContainerIsNotInitialized();

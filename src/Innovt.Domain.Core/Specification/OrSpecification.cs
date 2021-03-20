@@ -21,8 +21,8 @@ namespace Innovt.Domain.Core.Specification
     /// </summary>
     /// <typeparam name="T">Type of entity that check this specification</typeparam>
     public sealed class OrSpecification<T>
-         : CompositeSpecification<T>
-         where T : class
+        : CompositeSpecification<T>
+        where T : class
     {
         #region Members
 
@@ -68,7 +68,6 @@ namespace Innovt.Domain.Core.Specification
             Expression<Func<T, bool>> right = rightSideSpecification.SatisfiedBy();
 
             return (left.Or(right));
-            
         }
 
         #endregion

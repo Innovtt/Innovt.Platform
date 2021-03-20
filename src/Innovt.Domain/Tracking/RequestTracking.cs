@@ -3,7 +3,7 @@ using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Tracking
 {
-    public class RequestTracking:ValueObject<Guid>
+    public class RequestTracking : ValueObject<Guid>
     {
         public string UserId { get; set; }
 

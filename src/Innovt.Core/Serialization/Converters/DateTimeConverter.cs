@@ -10,7 +10,7 @@ using System.Text.Json.Serialization;
 
 namespace Innovt.Core.Serialization.Converters
 {
-    public class DateTimeConverter:JsonConverter<DateTime>
+    public class DateTimeConverter : JsonConverter<DateTime>
     {
         private readonly string format;
 
@@ -28,7 +28,6 @@ namespace Innovt.Core.Serialization.Converters
 
         public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
         {
-
             writer.WriteStringValue(value.ToString(format));
         }
     }

@@ -9,7 +9,7 @@ using Npgsql;
 
 namespace Innovt.Data.Ado
 {
-    public class ConnectionFactory:IConnectionFactory 
+    public class ConnectionFactory : IConnectionFactory
     {
         public IDbConnection Create(IDataSource dataSource)
         {

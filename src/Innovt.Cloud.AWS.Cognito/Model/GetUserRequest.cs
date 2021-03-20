@@ -1,5 +1,4 @@
-﻿
-using Innovt.Cloud.AWS.Cognito.Resources;
+﻿using Innovt.Cloud.AWS.Cognito.Resources;
 using Innovt.Core.Utilities;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -19,7 +18,7 @@ namespace Innovt.Cloud.AWS.Cognito.Model
             ExcludeExternalUser = true;
         }
 
-        public GetUserRequest(string field, string value):this()
+        public GetUserRequest(string field, string value) : this()
         {
             Field = field;
             Value = value;
@@ -29,12 +28,12 @@ namespace Innovt.Cloud.AWS.Cognito.Model
         {
             if (Field.IsNullOrEmpty() && Value.IsNullOrEmpty())
             {
-                yield return new ValidationResult(Messages.FieldFilterIsRequired, new[] { nameof(Field) });
+                yield return new ValidationResult(Messages.FieldFilterIsRequired, new[] {nameof(Field)});
             }
 
             if (Value.IsNullOrEmpty())
             {
-                yield return new ValidationResult(Messages.ValueFieldIsRequired, new[] { nameof(Value) });
+                yield return new ValidationResult(Messages.ValueFieldIsRequired, new[] {nameof(Value)});
             }
         }
     }

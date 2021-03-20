@@ -6,7 +6,8 @@ using Innovt.Core.Validation;
 
 namespace Innovt.Cqrs.Commands.Decorators
 {
-    public sealed class CommandAsyncValidationDecorator<TCommand> : IAsyncCommandHandler<TCommand> where TCommand: ICommand
+    public sealed class CommandAsyncValidationDecorator<TCommand> : IAsyncCommandHandler<TCommand>
+        where TCommand : ICommand
     {
         private readonly IAsyncCommandHandler<TCommand> asyncCommandHandler;
 

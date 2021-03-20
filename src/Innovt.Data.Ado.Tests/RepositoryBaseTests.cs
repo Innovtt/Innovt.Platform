@@ -14,7 +14,7 @@ namespace Innovt.Data.Ado.Tests
         public void Setup()
         {
             //var connectionString = @"Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=AdoTestDB;Integrated Security=SSPI;AttachDBFilename=X:\Projects\Innovt.Platform\src\Innovt.Data.Ado.Tests\AdoTestDB.mdf";
-            
+
             //repository = new UserRepository(new DefaultDataSource("TestDB",connectionString, Provider.MsSql));
         }
 
@@ -42,7 +42,6 @@ namespace Innovt.Data.Ado.Tests
                 Console.WriteLine(e);
                 throw;
             }
-         
         }
     }
 }

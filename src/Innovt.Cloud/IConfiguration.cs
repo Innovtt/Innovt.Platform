@@ -1,5 +1,4 @@
-﻿
-namespace Innovt.Cloud
+﻿namespace Innovt.Cloud
 {
     public interface IConfiguration
     {
@@ -8,6 +7,5 @@ namespace Innovt.Cloud
         string AccessKey { get; set; }
 
         string Region { get; set; }
-   
     }
 }

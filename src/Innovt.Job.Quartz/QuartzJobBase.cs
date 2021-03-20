@@ -7,14 +7,15 @@ using Quartz;
 
 namespace Innovt.Job.Quartz
 {
-    public abstract class QuartzJobBase : JobBase , IJob // where T : IJob
+    public abstract class QuartzJobBase : JobBase, IJob // where T : IJob
     {
         private readonly IScheduler scheduler;
         private readonly JobKey key;
         private readonly int intervalInMinutes;
         private DateTimeOffset nextScheduleExecution = DateTimeOffset.MinValue;
 
-        protected QuartzJobBase(string name, double heartBeatInterval, ILogger logger, IScheduler scheduler, int intervalInMinutes) : base(name, logger, heartBeatInterval)
+        protected QuartzJobBase(string name, double heartBeatInterval, ILogger logger, IScheduler scheduler,
+            int intervalInMinutes) : base(name, logger, heartBeatInterval)
         {
             this.scheduler = scheduler ?? throw new ArgumentNullException(nameof(scheduler));
             this.intervalInMinutes = intervalInMinutes;
@@ -28,7 +29,7 @@ namespace Innovt.Job.Quartz
 
         protected override async Task OnStop(CancellationToken cancellationToken = default)
         {
-           await scheduler.Shutdown(true, cancellationToken);
+            await scheduler.Shutdown(true, cancellationToken);
         }
 
         public virtual async Task Schedule(CancellationToken cancellationToken = default)
@@ -46,17 +47,17 @@ namespace Innovt.Job.Quartz
                 if (jobExist)
                 {
                     nextScheduleExecution = DateTime.Now.AddMinutes(intervalInMinutes);
-                    await scheduler.DeleteJob(key,cancellationToken);
+                    await scheduler.DeleteJob(key, cancellationToken);
                 }
-                
+
                 var trigger = TriggerBuilder.Create().WithIdentity(key.Name).StartAt(nextScheduleExecution).Build();
-                
+
                 var job = JobBuilder.Create().WithIdentity(key).Build();
-                
-                await scheduler.ScheduleJob(job, trigger,cancellationToken);
+
+                await scheduler.ScheduleJob(job, trigger, cancellationToken);
             }
         }
-        
+
         protected abstract Task OnExecute();
 
         public Task Execute(IJobExecutionContext context)

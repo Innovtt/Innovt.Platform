@@ -1,5 +1,4 @@
-﻿
-namespace Innovt.Domain.Core.Model
+﻿namespace Innovt.Domain.Core.Model
 {
     public abstract class ValueObject
     {
@@ -19,7 +18,7 @@ namespace Innovt.Domain.Core.Model
         }
     }
 
-    public abstract class ValueObject<T>: ValueObject where T:struct
+    public abstract class ValueObject<T> : ValueObject where T : struct
     {
         public new T Id { get; set; }
     }

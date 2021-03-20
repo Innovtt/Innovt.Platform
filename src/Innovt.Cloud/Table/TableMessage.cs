@@ -2,7 +2,7 @@
 
 namespace Innovt.Cloud.Table
 {
-    public class TableMessage:ITableMessage
+    public class TableMessage : ITableMessage
     {
         public TableMessage()
         {
@@ -15,7 +15,7 @@ namespace Innovt.Cloud.Table
             this.Id = id;
         }
 
-        public TableMessage(string id,string rangeKey):this(id)
+        public TableMessage(string id, string rangeKey) : this(id)
         {
             if (string.IsNullOrEmpty(rangeKey)) throw new ArgumentNullException(nameof(rangeKey));
 

@@ -2,7 +2,7 @@
 
 namespace Innovt.Domain.Security
 {
-    public  class SecurityGroupUser : ValueObject
+    public class SecurityGroupUser : ValueObject
     {
         public int UserId { get; set; }
 

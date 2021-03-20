@@ -4,12 +4,12 @@ using System.Linq;
 
 namespace Innovt.Cloud.Table
 {
-    public class QueryRequest: BaseRequest, ICloneable
+    public class QueryRequest : BaseRequest, ICloneable
     {
         public string KeyConditionExpression { get; set; }
-        
+
         public bool ScanIndexForward { get; set; }
- 
+
         public object Clone()
         {
             return new QueryRequest()

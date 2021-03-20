@@ -1,5 +1,4 @@
-﻿
-namespace Innovt.Cloud.Table
+﻿namespace Innovt.Cloud.Table
 {
     public interface ITableMessage
     {

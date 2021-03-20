@@ -5,11 +5,12 @@ using System.Text.Json.Serialization;
 
 namespace Innovt.Core.Serialization
 {
-    public class JsonSerializer:ISerializer
-    { 
+    public class JsonSerializer : ISerializer
+    {
         private readonly JsonSerializerOptions options = null;
 
-        public JsonSerializer(bool ignoreNullValues=true, bool ignoreReadOnlyProperties=true,bool propertyNameCaseInsensitive=true,List<JsonConverter> converters=null)
+        public JsonSerializer(bool ignoreNullValues = true, bool ignoreReadOnlyProperties = true,
+            bool propertyNameCaseInsensitive = true, List<JsonConverter> converters = null)
         {
             options = new JsonSerializerOptions()
             {
@@ -18,7 +19,7 @@ namespace Innovt.Core.Serialization
                 PropertyNameCaseInsensitive = propertyNameCaseInsensitive
             };
 
-            converters?.ForEach(c=>options.Converters.Add(c));
+            converters?.ForEach(c => options.Converters.Add(c));
         }
 
         public T DeserializeObject<T>(string serializedObject)
@@ -30,7 +31,7 @@ namespace Innovt.Core.Serialization
         {
             if (obj == null) throw new ArgumentNullException(nameof(obj));
 
-            return System.Text.Json.JsonSerializer.Serialize<T>(obj,options);
+            return System.Text.Json.JsonSerializer.Serialize<T>(obj, options);
         }
     }
 }

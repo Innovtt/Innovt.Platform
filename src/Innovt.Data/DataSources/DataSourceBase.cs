@@ -10,13 +10,13 @@ namespace Innovt.Data.DataSources
     /// </summary>
     public abstract class DataSourceBase : IDataSource
     {
-        private  string connectionString = null;
+        private string connectionString = null;
 
         public string Name { get; set; }
 
         public Provider Provider { get; private set; }
 
-        protected DataSourceBase( string name, string connectionString,Provider provider = Provider.MsSql)
+        protected DataSourceBase(string name, string connectionString, Provider provider = Provider.MsSql)
         {
             this.Name = name ?? throw new ArgumentNullException(nameof(name));
             this.Provider = provider;
@@ -24,7 +24,7 @@ namespace Innovt.Data.DataSources
         }
 
 
-        protected DataSourceBase(IConfiguration configuration,string connectionStringName,
+        protected DataSourceBase(IConfiguration configuration, string connectionStringName,
             Provider provider = Provider.MsSql)
         {
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
@@ -35,7 +35,8 @@ namespace Innovt.Data.DataSources
             SetConnectionString(configuration, connectionStringName);
         }
 
-        protected DataSourceBase(IConfiguration configuration, string name, string connectionStringName,Provider provider = Provider.MsSql)
+        protected DataSourceBase(IConfiguration configuration, string name, string connectionStringName,
+            Provider provider = Provider.MsSql)
         {
             this.Provider = provider;
             this.Name = name;

@@ -23,10 +23,10 @@ namespace Innovt.Core.Http
 
         public static HttpWebRequest AddHeader(this HttpWebRequest request, NameValueCollection headerData)
         {
-            if (headerData == null || request==null)
+            if (headerData == null || request == null)
                 return request;
 
-           
+
             if (headerData.AllKeys.Contains("User-Agent") == true)
             {
                 request.UserAgent = headerData["User-Agent"];
@@ -56,17 +56,16 @@ namespace Innovt.Core.Http
 
 
             byte[] byteData = UTF8Encoding.UTF8.GetBytes(dataToSend);
-            
+
             request.ContentLength = byteData.Length;
 
             using (var writerStream = request.GetRequestStream())
             {
-                writerStream.Write(byteData,0, byteData.Length);
+                writerStream.Write(byteData, 0, byteData.Length);
                 writerStream.Flush();
             }
 
             return request;
-          
         }
     }
 }

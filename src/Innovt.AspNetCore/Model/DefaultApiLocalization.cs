@@ -6,16 +6,16 @@ namespace Innovt.AspNetCore.Model
 {
     public class DefaultApiLocalization
     {
-        public List<CultureInfo> SupportedCultures{ get; set; }
+        public List<CultureInfo> SupportedCultures { get; set; }
 
         public Type DefaultLocalizeResource { get; set; }
         public CultureInfo RequestCulture { get; set; }
 
-       public DefaultApiLocalization()
-       {
-           RequestCulture = new CultureInfo("pt-BR");
-           AddSupportedCulture("pt-br").AddSupportedCulture("en-US");
-       }
+        public DefaultApiLocalization()
+        {
+            RequestCulture = new CultureInfo("pt-BR");
+            AddSupportedCulture("pt-br").AddSupportedCulture("en-US");
+        }
 
         protected DefaultApiLocalization AddSupportedCulture(string name)
         {

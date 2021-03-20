@@ -7,15 +7,15 @@ using Timer = System.Timers.Timer;
 namespace Innovt.Job.Core
 {
     public abstract class JobBase
-    {  
+    {
         protected readonly ILogger Logger = null;
         private readonly Timer heartBeat = null;
 
-        protected JobBase(string jobName,ILogger logger, double heartBeatIntervalInMiliSeconds)
+        protected JobBase(string jobName, ILogger logger, double heartBeatIntervalInMiliSeconds)
         {
             this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
-            Name      = jobName;
+            Name = jobName;
             heartBeat = new Timer(heartBeatIntervalInMiliSeconds)
             {
                 Enabled = true,

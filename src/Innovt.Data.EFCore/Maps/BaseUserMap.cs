@@ -6,7 +6,6 @@ namespace Innovt.Data.EFCore.Maps
 {
     public class BaseUserMap : IEntityTypeConfiguration<BaseUser>
     {
-    
         public void Configure(EntityTypeBuilder<BaseUser> builder)
         {
             builder.ToTable("User");

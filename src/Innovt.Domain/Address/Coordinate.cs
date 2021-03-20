@@ -8,7 +8,9 @@
 
         public long Latitude { get; set; }
 
-        public Coordinate() { }
+        public Coordinate()
+        {
+        }
 
         public Coordinate(long latitude, long longitude)
         {

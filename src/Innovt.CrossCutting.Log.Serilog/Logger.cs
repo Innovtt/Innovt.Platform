@@ -6,19 +6,18 @@ using Serilog.Events;
 
 namespace Innovt.CrossCutting.Log.Serilog
 {
-    public class Logger: Core.CrossCutting.Log.ILogger
+    public class Logger : Core.CrossCutting.Log.ILogger
     {
-        private readonly global::Serilog.Core.Logger logger=null;
+        private readonly global::Serilog.Core.Logger logger = null;
 
         private const string ConsoleTemplate =
             "[{Timestamp:HH:mm:ss} {Level:u3}] {TraceId:TraceId} {SpanId:SpanId} {Message:lj}{NewLine}{Exception}{NewLine}{Properties:j}";
-        
+
         /// <summary>
         /// The default sink is Console
         /// </summary>
-        public Logger():this(new LoggerConfiguration())
+        public Logger() : this(new LoggerConfiguration())
         {
-           
         }
 
         public Logger(ILogEventEnricher enricher)
@@ -28,8 +27,8 @@ namespace Innovt.CrossCutting.Log.Serilog
                 throw new ArgumentNullException(nameof(enricher));
             }
 
-            logger = new LoggerConfiguration().WriteTo.Console(outputTemplate:ConsoleTemplate
-                ).Enrich.With(enricher).CreateLogger();
+            logger = new LoggerConfiguration().WriteTo.Console(outputTemplate: ConsoleTemplate
+            ).Enrich.With(enricher).CreateLogger();
         }
 
         public Logger(LoggerConfiguration configuration)
@@ -37,16 +36,18 @@ namespace Innovt.CrossCutting.Log.Serilog
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
             //The default Enricher ir OpenTracing
-            logger = configuration.WriteTo.Console(outputTemplate:ConsoleTemplate).Enrich.With<OpenTracingContextLogEnricher>().Enrich.FromLogContext().CreateLogger();
+            logger = configuration.WriteTo.Console(outputTemplate: ConsoleTemplate).Enrich
+                .With<OpenTracingContextLogEnricher>().Enrich.FromLogContext().CreateLogger();
         }
 
         public void Debug(string messageTemplate)
         {
-            if (!IsEnabled(LogLevel.Debug)) {
+            if (!IsEnabled(LogLevel.Debug))
+            {
                 Console.WriteLine("LogLevel Debug not enabled.");
                 return;
             }
-          
+
             logger.Debug(messageTemplate);
         }
 
@@ -58,7 +59,7 @@ namespace Innovt.CrossCutting.Log.Serilog
                 return;
             }
 
-            logger.Debug(messageTemplate,propertyValues: propertyValues);
+            logger.Debug(messageTemplate, propertyValues: propertyValues);
         }
 
         public void Debug(Exception exception, string messageTemplate)
@@ -157,7 +158,7 @@ namespace Innovt.CrossCutting.Log.Serilog
                 return;
             }
 
-            logger.Fatal(exception,messageTemplate);
+            logger.Fatal(exception, messageTemplate);
         }
 
         public void Fatal(Exception exception, string messageTemplate, params object[] propertyValues)
@@ -201,7 +202,7 @@ namespace Innovt.CrossCutting.Log.Serilog
                 return;
             }
 
-            logger.Information(exception,messageTemplate);
+            logger.Information(exception, messageTemplate);
         }
 
         public void Info(Exception exception, string messageTemplate, params object[] propertyValues)
@@ -245,7 +246,7 @@ namespace Innovt.CrossCutting.Log.Serilog
                 return;
             }
 
-            logger.Verbose(exception,messageTemplate);
+            logger.Verbose(exception, messageTemplate);
         }
 
         public void Verbose(Exception exception, string messageTemplate, params object[] propertyValues)
@@ -289,7 +290,7 @@ namespace Innovt.CrossCutting.Log.Serilog
                 return;
             }
 
-            logger.Warning(exception,messageTemplate);
+            logger.Warning(exception, messageTemplate);
         }
 
         public void Warning(Exception exception, string messageTemplate, params object[] propertyValues)
@@ -310,32 +311,31 @@ namespace Innovt.CrossCutting.Log.Serilog
             {
                 case LogLevel.Trace:
                 case LogLevel.Debug:
-                    {
-                        return logger.IsEnabled(LogEventLevel.Debug) || logger.IsEnabled(LogEventLevel.Verbose);
-                    }
+                {
+                    return logger.IsEnabled(LogEventLevel.Debug) || logger.IsEnabled(LogEventLevel.Verbose);
+                }
                 case LogLevel.Information:
-                    {
-                        return logger.IsEnabled(LogEventLevel.Information);
-                    }
+                {
+                    return logger.IsEnabled(LogEventLevel.Information);
+                }
                 case LogLevel.Warning:
-                    {
-                        return logger.IsEnabled(LogEventLevel.Warning);
-                    }
+                {
+                    return logger.IsEnabled(LogEventLevel.Warning);
+                }
                 case LogLevel.Error:
-                    {
-                        return logger.IsEnabled(LogEventLevel.Error);
-                    }
+                {
+                    return logger.IsEnabled(LogEventLevel.Error);
+                }
 
                 case LogLevel.Critical:
-                    {
-                        return logger.IsEnabled(LogEventLevel.Fatal);
-                    }
+                {
+                    return logger.IsEnabled(LogEventLevel.Fatal);
+                }
                 default:
-                    {
-                        return false;
-                    }
+                {
+                    return false;
+                }
             }
         }
-
     }
 }

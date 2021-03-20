@@ -39,7 +39,7 @@ namespace Innovt.Cloud.AWS.Lambda
             if (container != null)
             {
                 container.CheckConfiguration();
-             
+
                 Logger = container.Resolve<ILogger>();
 
                 Context.Logger.LogLine("IOC Container Initialized.");
@@ -48,10 +48,11 @@ namespace Innovt.Cloud.AWS.Lambda
             {
                 Context.Logger.LogLine("IOC Container not found.");
             }
-  
+
             if (Logger == null)
             {
-                Context.Logger.LogLine("Custom Logger not initialized. Please provide the default logger using your IOC container.");
+                Context.Logger.LogLine(
+                    "Custom Logger not initialized. Please provide the default logger using your IOC container.");
                 Logger = new LambdaLogger(Context.Logger);
             }
 
@@ -63,8 +64,9 @@ namespace Innovt.Cloud.AWS.Lambda
         {
             if (message == null) throw new ArgumentNullException(nameof(message));
             if (context == null) throw new ArgumentNullException(nameof(context));
-            
-            context.Logger.LogLine($"Receiving message. Function {context.FunctionName} and Version {context.FunctionVersion}");
+
+            context.Logger.LogLine(
+                $"Receiving message. Function {context.FunctionName} and Version {context.FunctionVersion}");
 
             this.Context = context;
 
@@ -73,9 +75,9 @@ namespace Innovt.Cloud.AWS.Lambda
             await Handle(message, context);
         }
 
-        
+
         protected abstract IContainer SetupIocContainer();
- 
+
         protected abstract Task Handle(T message, ILambdaContext context);
     }
 }

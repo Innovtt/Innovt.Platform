@@ -1,11 +1,9 @@
-﻿
-
-using Innovt.Domain.Core.Model;
+﻿using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Documents
 {
     public class Document : ValueObject
-    {   
+    {
         public int DocumentTypeId { get; set; }
 
         public DocumentType DocumentType { get; set; }
@@ -14,10 +12,9 @@ namespace Innovt.Domain.Documents
 
         public Document()
         {
-            
         }
 
-        public Document(string number,int documentTypeId)
+        public Document(string number, int documentTypeId)
         {
             DocumentTypeId = documentTypeId;
             Number = number;

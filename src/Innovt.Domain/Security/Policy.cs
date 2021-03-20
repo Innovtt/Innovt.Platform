@@ -6,7 +6,7 @@ using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Security
 {
-    public class Policy: ValueObject
+    public class Policy : ValueObject
     {
         public string Name { get; set; }
 
@@ -19,12 +19,12 @@ namespace Innovt.Domain.Security
             if (Permissions.IsNullOrEmpty())
                 Permissions = new List<PolicyPermission>();
 
-            var exist = Permissions.Any(p =>  p.PermissionId == permissionId);
+            var exist = Permissions.Any(p => p.PermissionId == permissionId);
 
             if (exist)
                 throw new BusinessException($"Permission {permissionId} alreary exist to this Polocy.");
 
-            var permission = new PolicyPermission {  PermissionId = permissionId,Policy = this };
+            var permission = new PolicyPermission {PermissionId = permissionId, Policy = this};
 
             Permissions.Add(permission);
         }

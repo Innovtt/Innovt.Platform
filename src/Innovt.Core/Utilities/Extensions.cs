@@ -24,6 +24,7 @@ namespace Innovt.Core.Utilities
         {
             return id == Guid.Empty;
         }
+
         public static bool IsLessThanOrEqualToZero(this int id)
         {
             return id <= 0;
@@ -43,9 +44,10 @@ namespace Innovt.Core.Utilities
         {
             return id <= 0;
         }
-        
-        static readonly ConcurrentDictionary<Type, bool> IsSimpleTypeCache = new ConcurrentDictionary<System.Type, bool>();
-       
+
+        static readonly ConcurrentDictionary<Type, bool> IsSimpleTypeCache =
+            new ConcurrentDictionary<System.Type, bool>();
+
         //From Stack Owverlow: https://stackoverflow.com/questions/2442534/how-to-test-if-type-is-primitive
         public static bool IsPrimitiveType(this Type type)
         {
@@ -64,7 +66,9 @@ namespace Innovt.Core.Utilities
             {
                 var underlyingType = Nullable.GetUnderlyingType(t);
                 return underlyingType != null && IsPrimitiveType(underlyingType);
-            }   ;
+            }
+
+            ;
         }
 
         public static (long Latitude, long Longitude) ExtractCoordinates(this string str, char splittedBy = ';')
@@ -116,24 +120,25 @@ namespace Innovt.Core.Utilities
         public static DateTimeOffset LastDayOfMonth(this DateTimeOffset date)
         {
             return new DateTimeOffset(
-               new DateTime(date.Year, date.Month, DateTime.DaysInMonth(date.Year, date.Month)).AddDays(1)
+                new DateTime(date.Year, date.Month, DateTime.DaysInMonth(date.Year, date.Month)).AddDays(1)
                     .AddMilliseconds(-1), date.Offset);
         }
 
         public static string FormatToExtensionDateTime(this DateTimeOffset value)
         {
-
             string[] diaSemana = value.ToString("dddd").Split('-');
 
             var dia = diaSemana[0].Substring(0, 1).ToUpper() + diaSemana[0].Substring(1, diaSemana[0].Length - 1);
 
             if (diaSemana.Length == 2)
-                dia += "-" + diaSemana[1].Substring(0, 1).ToUpper() + diaSemana[1].Substring(1, diaSemana[1].Length - 1);
+                dia += "-" + diaSemana[1].Substring(0, 1).ToUpper() +
+                       diaSemana[1].Substring(1, diaSemana[1].Length - 1);
 
             string mes = value.ToString("MMMM");
             mes = mes.Substring(0, 1).ToUpper() + mes.Substring(1, mes.Length - 1);
 
-            return dia + ", " + value.ToString("dd") + " de " + mes + " de " + value.ToString("yyyy") + ", " + value.ToString("t") + "h";
+            return dia + ", " + value.ToString("dd") + " de " + mes + " de " + value.ToString("yyyy") + ", " +
+                   value.ToString("t") + "h";
         }
 
         public static string FormatToSimpleDateTime(this DateTimeOffset value)
@@ -153,7 +158,8 @@ namespace Innovt.Core.Utilities
 
         public static DateTime FromUnixTimestamp(this double unixTimestamp)
         {
-            var baseBase = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc).AddMilliseconds(unixTimestamp).ToLocalTime();
+            var baseBase = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc).AddMilliseconds(unixTimestamp)
+                .ToLocalTime();
 
             return baseBase;
         }
@@ -168,7 +174,8 @@ namespace Innovt.Core.Utilities
             return dateTime.UtcDateTime.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
         }
 
-        public static string FormatToPeriod(this DateTimeOffset startDate, DateTimeOffset endDate, CultureInfo cultureInfo = null)
+        public static string FormatToPeriod(this DateTimeOffset startDate, DateTimeOffset endDate,
+            CultureInfo cultureInfo = null)
         {
             var currentYear = DateTimeOffset.Now.Year;
 
@@ -185,7 +192,8 @@ namespace Innovt.Core.Utilities
                 //day equal but time diferent
                 if (startDate.Day == endDate.Day && startDate.Month == endDate.Month && startDate.Year == endDate.Year)
                 {
-                    return $"{startDate.ToString("d MMMM", cultureInfo)} {startDate.ToString("HH:mm", cultureInfo)} - {endDate.ToString("HH:mm", cultureInfo)}";
+                    return
+                        $"{startDate.ToString("d MMMM", cultureInfo)} {startDate.ToString("HH:mm", cultureInfo)} - {endDate.ToString("HH:mm", cultureInfo)}";
                 }
                 else
                 {
@@ -202,27 +210,30 @@ namespace Innovt.Core.Utilities
                         }
                         else
                         {
-                            return $"{startDate.Day} {startDate.ToString("MMMM", cultureInfo)} {startDate.Year} - {endDate.Day} {endDate.ToString("MMMM", cultureInfo)} {endDate.Year}";
+                            return
+                                $"{startDate.Day} {startDate.ToString("MMMM", cultureInfo)} {startDate.Year} - {endDate.Day} {endDate.ToString("MMMM", cultureInfo)} {endDate.Year}";
                         }
                     }
                     else
                     {
                         if (startDate.Year == endDate.Year)
                         {
-                            res = $"{startDate.Day} {startDate.ToString("MMMM", cultureInfo)} - {endDate.Day} {endDate.ToString("MMMM", cultureInfo)}";
+                            res =
+                                $"{startDate.Day} {startDate.ToString("MMMM", cultureInfo)} - {endDate.Day} {endDate.ToString("MMMM", cultureInfo)}";
 
                             if (startDate.Year != currentYear)
                                 return res + $" {startDate.Year}";
                         }
                         else
                         {
-                            return $"{startDate.Day} {startDate.ToString("MMMM", cultureInfo)} {startDate.Year} - {endDate.Day} {endDate.ToString("MMMM", cultureInfo)} {endDate.Year}";
+                            return
+                                $"{startDate.Day} {startDate.ToString("MMMM", cultureInfo)} {startDate.Year} - {endDate.Day} {endDate.ToString("MMMM", cultureInfo)} {endDate.Year}";
                         }
                     }
+
                     return res;
                 }
             }
-
         }
 
         public static string ToYesNO(this bool value)
@@ -270,8 +281,8 @@ namespace Innovt.Core.Utilities
         {
             if (number.IsNullOrEmpty())
                 return number;
-          
-            if (number.Length <= 10) 
+
+            if (number.Length <= 10)
                 return number;
 
             const int beginLength = 6;
@@ -280,8 +291,8 @@ namespace Innovt.Core.Utilities
 
             var result = number.Substring(0, beginLength);
 
-            result = result.PadRight(middleLength,'*');
-            
+            result = result.PadRight(middleLength, '*');
+
             return result;
         }
 
@@ -294,7 +305,7 @@ namespace Innovt.Core.Utilities
             var bf = new BinaryFormatter();
             using var ms = new MemoryStream(data);
             object obj = bf.Deserialize(ms);
-            return (T)obj;
+            return (T) obj;
         }
 
         #region [From Net Code]
@@ -333,7 +344,7 @@ namespace Innovt.Core.Utilities
             using var msi = new MemoryStream(bytes);
             using var mso = new MemoryStream();
             using (var gs = new GZipStream(msi, CompressionMode.Decompress))
-            {   
+            {
                 CopyTo(gs, mso);
             }
 
@@ -341,6 +352,5 @@ namespace Innovt.Core.Utilities
         }
 
         #endregion
-
     }
 }

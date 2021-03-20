@@ -13,7 +13,7 @@ namespace Innovt.Core.CrossCutting.Ioc
 
         public IServiceCollection GetServices()
         {
-            return  this.services;
+            return this.services;
         }
     }
 }

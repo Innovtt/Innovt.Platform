@@ -15,7 +15,6 @@ namespace Innovt.Data.EFCore.Maps
             builder.Property(b => b.Description).HasMaxLength(100).IsRequired(false);
             builder.HasMany(b => b.Users);
             builder.HasMany(b => b.Policies);
-
         }
     }
 }

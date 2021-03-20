@@ -10,10 +10,10 @@ namespace Innovt.Data.EFCore.Maps
         private readonly bool ignoreCity;
         private readonly bool ignoreType;
 
-        public AddressMap(bool ignoreCoordinate=false, bool ignoreCity=false, bool ignoreType=false)
+        public AddressMap(bool ignoreCoordinate = false, bool ignoreCity = false, bool ignoreType = false)
         {
             this.ignoreCoordinate = ignoreCoordinate;
-            this.ignoreCity       = ignoreCity;
+            this.ignoreCity = ignoreCity;
             this.ignoreType = ignoreType;
         }
 
@@ -38,7 +38,7 @@ namespace Innovt.Data.EFCore.Maps
             {
                 builder.HasOne(a => a.City).WithMany().HasForeignKey(a => a.CityId);
             }
-            
+
 
             if (ignoreType)
             {
@@ -54,6 +54,7 @@ namespace Innovt.Data.EFCore.Maps
             {
                 builder.Ignore(b => b.Coordinate);
             }
+
             //todo:map coordinates
         }
     }

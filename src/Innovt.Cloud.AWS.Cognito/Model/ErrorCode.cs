@@ -20,6 +20,4 @@ namespace Innovt.Cloud.AWS.Cognito.Model
         public static string OAuthResponseError => "OAuthResponseError";
         public static string ChallengeNotAvailable => "ChallengeNotAvailable";
     }
-
-
 }

@@ -4,7 +4,7 @@ using Innovt.Core.Validation;
 
 namespace Innovt.Cqrs.Commands.Decorators
 {
-    public sealed class CommandValidationDecorator<TCommand> : ICommandHandler<TCommand> where TCommand: ICommand
+    public sealed class CommandValidationDecorator<TCommand> : ICommandHandler<TCommand> where TCommand : ICommand
     {
         private readonly ICommandHandler<TCommand> commandHandler;
 

@@ -12,21 +12,21 @@ namespace Innovt.AspNetCore.Filters
         public void Apply(OpenApiSchema schema, SchemaFilterContext context)
         {
             if (schema.Properties.Count == 0)
-               return;
+                return;
 
             var excludeAttributes = context.Type.GetCustomAttributes<ModelExcludeFilterAttribute>(true)
                 .SelectMany(a => a.ExcludeAttributes).ToList();
 
-            if(!excludeAttributes.Any())
+            if (!excludeAttributes.Any())
                 return;
 
             foreach (var prop in excludeAttributes)
-            {   
+            {
                 var schemaProp = schema.Properties.Where(p =>
                         string.Equals(p.Key, prop, StringComparison.InvariantCultureIgnoreCase)).Select(p => p.Key)
                     .SingleOrDefault();
 
-                if (schemaProp!=null)
+                if (schemaProp != null)
                     schema.Properties.Remove(schemaProp);
             }
         }
@@ -49,6 +49,4 @@ namespace Innovt.AspNetCore.Filters
             }
         }
     }
-
-   
 }

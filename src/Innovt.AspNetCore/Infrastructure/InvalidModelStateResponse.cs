@@ -7,7 +7,6 @@ namespace Innovt.AspNetCore.Infrastructure
 {
     public static class InvalidModelStateResponse
     {
-       
         /// <summary>
         /// Create a custom bad request result
         /// </summary>

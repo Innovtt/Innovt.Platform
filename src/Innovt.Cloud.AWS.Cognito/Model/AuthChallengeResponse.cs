@@ -4,8 +4,8 @@ namespace Innovt.Cloud.AWS.Cognito.Model
 {
     public class AuthChallengeResponse
     {
-        public IDictionary<string, string> Metadata { get; set;}
+        public IDictionary<string, string> Metadata { get; set; }
 
-        public SignInResponse AuthenticationResult { get; set;}
+        public SignInResponse AuthenticationResult { get; set; }
     }
 }

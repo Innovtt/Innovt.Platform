@@ -7,7 +7,7 @@ namespace Innovt.Notification.Core.Builders
     public abstract class MessageBuilderAB
     {
         private readonly ITemplateParser parser;
-      
+
         protected MessageBuilderAB(ITemplateParser parser)
         {
             this.parser = parser ?? throw new ArgumentNullException(nameof(parser));
@@ -17,28 +17,29 @@ namespace Innovt.Notification.Core.Builders
         {
             if (template == null) throw new ArgumentNullException(nameof(template));
             if (request == null) throw new ArgumentNullException(nameof(request));
-            
-            var message = new NotificationMessage(template.Type, template.FromAddress, template.FromName, template.Subject)
-            {
-                Body = new NotificationMessageBody()
+
+            var message =
+                new NotificationMessage(template.Type, template.FromAddress, template.FromName, template.Subject)
                 {
-                    Content = template.Body,
-                    Charset = template.Charset,
-                    //IsHtml = template.Type == Innovt.Core.Notification.NotificationMessageType.Email
-                }
-            };
+                    Body = new NotificationMessageBody()
+                    {
+                        Content = template.Body,
+                        Charset = template.Charset,
+                        //IsHtml = template.Type == Innovt.Core.Notification.NotificationMessageType.Email
+                    }
+                };
 
             foreach (var to in request.To)
             {
                 message.AddTo(to.Name, to.Address);
             }
-            
-            ParseMessage(message,request.PayLoad);
+
+            ParseMessage(message, request.PayLoad);
 
             return message;
         }
 
-        protected virtual void ParseMessage(NotificationMessage message,object payLoad)
+        protected virtual void ParseMessage(NotificationMessage message, object payLoad)
         {
             if (message.Body == null && message.To == null && message.Subject == null)
                 return;

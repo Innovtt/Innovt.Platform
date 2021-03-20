@@ -10,10 +10,19 @@ namespace Innovt.Cloud.AWS.Cognito
         Task ConfirmForgotPassword(ConfirmForgotPasswordRequest command, CancellationToken cancellationToken = default);
         Task ConfirmSignUp(ConfirmSignUpRequest request, CancellationToken cancellationToken = default);
         Task ForgotPassword(ForgotPasswordRequest command, CancellationToken cancellationToken = default);
-        Task<T> GetUser<T>(GetUserRequest request, CancellationToken cancellationToken = default) where T : IGetUserResponse;
-        Task<RefreshTokenResponse> RefreshToken(RefreshTokenRequest command, CancellationToken cancellationToken = default);
-        Task ResendConfirmationCode(ResendConfirmationCodeRequest command, CancellationToken cancellationToken = default);
-        Task<AuthChallengeResponse> RespondToAuthChallenge(RespondToAuthChallengeRequest command, CancellationToken cancellationToken = default);
+
+        Task<T> GetUser<T>(GetUserRequest request, CancellationToken cancellationToken = default)
+            where T : IGetUserResponse;
+
+        Task<RefreshTokenResponse> RefreshToken(RefreshTokenRequest command,
+            CancellationToken cancellationToken = default);
+
+        Task ResendConfirmationCode(ResendConfirmationCodeRequest command,
+            CancellationToken cancellationToken = default);
+
+        Task<AuthChallengeResponse> RespondToAuthChallenge(RespondToAuthChallengeRequest command,
+            CancellationToken cancellationToken = default);
+
         Task<SignInResponse> SignIn(OtpSignInRequest command, CancellationToken cancellationToken = default);
         Task<SignInResponse> SignIn(SignInRequest command, CancellationToken cancellationToken = default);
         Task SignOut(SignOutRequest request, CancellationToken cancellationToken = default);

@@ -2,7 +2,7 @@
 
 namespace Innovt.Cloud.AWS.Cognito.Model
 {
-    public interface ISignUpRequest :  IRequestBase
+    public interface ISignUpRequest : IRequestBase
     {
         string UserName { get; set; }
 

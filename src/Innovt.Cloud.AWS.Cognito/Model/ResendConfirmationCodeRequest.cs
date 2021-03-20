@@ -6,15 +6,14 @@ using Innovt.Cloud.AWS.Cognito.Resources;
 namespace Innovt.Cloud.AWS.Cognito.Model
 {
     public class ResendConfirmationCodeRequest : RequestBase
-    {   
-        [Required]
-        public virtual string UserName { get; set; }
+    {
+        [Required] public virtual string UserName { get; set; }
 
-        public override  IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (UserName.IsNullOrEmpty())
             {
-                yield return new ValidationResult(Messages.UserNameIsRequired, new[] { nameof(UserName) });
+                yield return new ValidationResult(Messages.UserNameIsRequired, new[] {nameof(UserName)});
             }
         }
     }

@@ -32,14 +32,14 @@ namespace Innovt.Core.Utilities
 
             return value.Length <= maxLength ? value : value.Substring(0, maxLength);
         }
-        
+
         public static bool IsCpf(this string value)
         {
             if (value.IsNullOrEmpty())
                 return false;
 
-            int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-            int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int[] multiplicador1 = new int[9] {10, 9, 8, 7, 6, 5, 4, 3, 2};
+            int[] multiplicador2 = new int[10] {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
             string corpovalue;
             string digitoVerificador;
             int soma;
@@ -90,14 +90,14 @@ namespace Innovt.Core.Utilities
             if (cnpj.IsNullOrEmpty())
                 return false;
 
-            int[] multiplicador1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
-            int[] multiplicador2 = new int[13] { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int[] multiplicador1 = new int[12] {5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
+            int[] multiplicador2 = new int[13] {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
             cnpj = cnpj.Trim();
             cnpj = cnpj.Replace(".", "").Replace("-", "").Replace("/", "");
             if (cnpj.Length != 14)
                 return false;
             var tempCnpj = cnpj.Substring(0, 12);
-          
+
             var soma = 0;
             for (var i = 0; i < 12; i++)
                 soma += int.Parse(tempCnpj[i].ToString()) * multiplicador1[i];
@@ -131,28 +131,29 @@ namespace Innovt.Core.Utilities
         {
             return guid == Guid.Empty;
         }
-        
+
         public static bool IsNotEmpty(this Guid guid)
         {
             return !IsEmpty(guid);
         }
+
         public static bool IsNullOrEmpty(this Guid? guid)
         {
             return IsEmpty(guid.GetValueOrDefault());
         }
-        
+
         public static bool IsNotNullOrEmpty(this Guid? guid)
         {
             return !IsNullOrEmpty(guid);
         }
-        
+
         public static string UrlEncode(this string str)
         {
             return str.IsNullOrEmpty() ? str : HttpUtility.UrlEncode(str, Encoding.UTF8);
         }
-        
+
         public static string UrlDecode(this string str)
-        {   
+        {
             return str.IsNullOrEmpty() ? str : HttpUtility.UrlDecode(str, Encoding.UTF8);
         }
 
@@ -208,26 +209,28 @@ namespace Innovt.Core.Utilities
 
             return str.Split(separator).ToList();
         }
-        
+
         public static string ToTitleCase(this string str)
         {
             return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(str);
         }
 
         public static string ToCamelCase(this string str) => str.ToTitleCase();
-      
+
 
         public static string ClearMask(this string value)
         {
             if (value.IsNullOrEmpty())
                 return value;
 
-            var specialChars = new string[] { ".", ",", "-", "_", "/", "\\", "(", ")", "[", "]", ":", "\r\n", "\r", "\n" };
+            var specialChars = new string[]
+                {".", ",", "-", "_", "/", "\\", "(", ")", "[", "]", ":", "\r\n", "\r", "\n"};
 
             for (var i = 0; i < specialChars.Length; i++)
             {
                 value = value.Replace(specialChars[i], "");
             }
+
             return value;
         }
 
@@ -238,8 +241,8 @@ namespace Innovt.Core.Utilities
 
             return Regex.Replace(value, "[^0-9]+?", "");
         }
-        
-        
+
+
         public static string NormalizeText(this string str)
         {
             if (str.IsNullOrEmpty())
@@ -276,11 +279,11 @@ namespace Innovt.Core.Utilities
         /// <returns></returns>
         public static string FormatCoordinate(this long value)
         {
-           var multiplier = value>0 ? "" : "-";
+            var multiplier = value > 0 ? "" : "-";
 
-           var latitude = value.ToString().OnlyNumber().PadLeft(9,'0');
+            var latitude = value.ToString().OnlyNumber().PadLeft(9, '0');
 
-           return $"{multiplier}{latitude.Substring(0,2)}.{latitude.Substring(2, 7)}";
+            return $"{multiplier}{latitude.Substring(0, 2)}.{latitude.Substring(2, 7)}";
         }
 
 
@@ -288,6 +291,7 @@ namespace Innovt.Core.Utilities
         {
             return FormatByMask(celPhone, @"{0:\(00\)00000\-0000}");
         }
+
         public static string FormatPhoneNumber(this string phoneNumber)
         {
             return FormatByMask(phoneNumber, @"{0:\(00\)000\-0000}");
@@ -345,6 +349,7 @@ namespace Innovt.Core.Utilities
 
             return Convert.ToBase64String(btToEncode);
         }
+
         /// <summary>
         /// Decode  your string from Base64 
         /// </summary>
@@ -509,7 +514,8 @@ namespace Innovt.Core.Utilities
         }
 
 
-        public static DateTimeOffset ToDateTimeOffset(this string str, DateTimeOffset defaultValue = new DateTimeOffset())
+        public static DateTimeOffset ToDateTimeOffset(this string str,
+            DateTimeOffset defaultValue = new DateTimeOffset())
         {
             if (string.IsNullOrEmpty(str))
                 return DateTimeOffset.MinValue;
@@ -530,6 +536,5 @@ namespace Innovt.Core.Utilities
 
             return defaultValue;
         }
-
     }
 }

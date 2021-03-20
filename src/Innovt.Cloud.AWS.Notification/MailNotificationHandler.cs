@@ -11,21 +11,21 @@ using Innovt.Core.CrossCutting.Log;
 
 namespace Innovt.Cloud.AWS.Notification
 {
-    public class MailNotificationHandler: AwsBaseService, INotificationHandler
+    public class MailNotificationHandler : AwsBaseService, INotificationHandler
     {
         public string DefaultCharset { get; set; } = "UTF-8";
 
         public MailNotificationHandler(ILogger logger, IAWSConfiguration configuration) : base(logger, configuration)
         {
-         
         }
 
-        public MailNotificationHandler(ILogger logger, IAWSConfiguration configuration, string region) : base(logger, configuration, region)
+        public MailNotificationHandler(ILogger logger, IAWSConfiguration configuration, string region) : base(logger,
+            configuration, region)
         {
-          
         }
 
         private AmazonSimpleEmailServiceClient _simpleEmailClient;
+
         private AmazonSimpleEmailServiceClient SimpleEmailClient
         {
             get
@@ -38,7 +38,7 @@ namespace Innovt.Cloud.AWS.Notification
                 return _simpleEmailClient;
             }
         }
-            
+
         public async Task<dynamic> SendAsync(NotificationMessage message, CancellationToken cancellationToken = default)
         {
             Check.NotNull(message, nameof(message));
@@ -53,17 +53,17 @@ namespace Innovt.Cloud.AWS.Notification
             var mailRequest = new SendEmailRequest()
             {
                 Destination = new Destination(),
-                Source      = $"{message.From.Name} <{message.From.Address}>",
+                Source = $"{message.From.Name} <{message.From.Address}>",
                 Message = new Message()
             };
-               
+
             mailRequest.Message.Subject = new Content()
             {
                 Charset = message.Subject.Charset.GetValueOrDefault(DefaultCharset),
-                Data    = message.Subject.Content
+                Data = message.Subject.Content
             };
-                
-                
+
+
             mailRequest.Message.Body = new Body();
             if (message.Body.IsHtml)
             {
@@ -81,9 +81,9 @@ namespace Innovt.Cloud.AWS.Notification
                     Data = message.Body.Content
                 };
             }
-              
+
             mailRequest.Destination.ToAddresses = message.To.Select(a => $"{a.Name} <{a.Address}>").ToList();
-             
+
             if (message.BccTo != null)
                 mailRequest.Destination.BccAddresses = message.BccTo.Select(a => $"{a.Name} <{a.Address}>").ToList();
 
@@ -95,13 +95,14 @@ namespace Innovt.Cloud.AWS.Notification
 
             var policy = CreateDefaultRetryAsyncPolicy();
 
-            var response = await policy.ExecuteAsync(async ()=> await SimpleEmailClient.SendEmailAsync(mailRequest, cancellationToken));
-               
+            var response = await policy.ExecuteAsync(async () =>
+                await SimpleEmailClient.SendEmailAsync(mailRequest, cancellationToken));
+
             return response;
         }
 
         protected override void DisposeServices()
-        {   
+        {
             _simpleEmailClient?.Dispose();
         }
     }

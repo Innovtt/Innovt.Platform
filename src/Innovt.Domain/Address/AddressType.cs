@@ -25,6 +25,7 @@ namespace Innovt.Domain.Address
         {
             return Types.OrderBy(c => c.Name).ToList();
         }
+
         public static AddressType GetByPk(int id)
         {
             return Types.SingleOrDefault(s => s.Id == id);

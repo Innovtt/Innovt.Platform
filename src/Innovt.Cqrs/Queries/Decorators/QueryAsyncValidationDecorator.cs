@@ -6,11 +6,12 @@ using Innovt.Core.Validation;
 
 namespace Innovt.Cqrs.Queries.Decorators
 {
-    public sealed class QueryAsyncValidationDecorator<TFilter,TResult> : IAsyncQueryHandler<TFilter,TResult> where TFilter : IFilter where TResult : class
+    public sealed class QueryAsyncValidationDecorator<TFilter, TResult> : IAsyncQueryHandler<TFilter, TResult>
+        where TFilter : IFilter where TResult : class
     {
-        private readonly IAsyncQueryHandler<TFilter,TResult> queryHandler;
+        private readonly IAsyncQueryHandler<TFilter, TResult> queryHandler;
 
-        public QueryAsyncValidationDecorator(IAsyncQueryHandler<TFilter,TResult> queryHandler)
+        public QueryAsyncValidationDecorator(IAsyncQueryHandler<TFilter, TResult> queryHandler)
         {
             this.queryHandler = queryHandler ?? throw new ArgumentNullException(nameof(queryHandler));
         }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Innovt.Domain.Core.Repository
 {
-    public interface IExtendedUnitOfWork:IUnitOfWork
+    public interface IExtendedUnitOfWork : IUnitOfWork
     {
         void Add<T>(T entity) where T : class;
 
@@ -29,6 +29,7 @@ namespace Innovt.Domain.Core.Repository
 
         int ExecuteSqlCommand(string sql, params object[] parameters);
 
-        Task<int> ExecuteSqlCommandAsync(string sql, CancellationToken cancellationToken = default, params object[] parameters);
+        Task<int> ExecuteSqlCommandAsync(string sql, CancellationToken cancellationToken = default,
+            params object[] parameters);
     }
 }

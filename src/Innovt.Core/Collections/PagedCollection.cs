@@ -9,30 +9,30 @@ namespace Innovt.Core.Collections
         public IEnumerable<T> Items { get; set; }
 
 
-        public PagedCollection(IEnumerable<T> collection, int? page = null, int? pageSize = null):this(collection,page?.ToString(),pageSize)
-        {  
+        public PagedCollection(IEnumerable<T> collection, int? page = null, int? pageSize = null) : this(collection,
+            page?.ToString(), pageSize)
+        {
         }
 
 
-        public PagedCollection(IEnumerable<T> collection,string page=null,int? pageSize=null)
+        public PagedCollection(IEnumerable<T> collection, string page = null, int? pageSize = null)
         {
             this.Items = collection;
             this.Page = page;
             this.PageSize = pageSize.GetValueOrDefault();
         }
 
-        public PagedCollection(IEnumerable<T> collection):this(collection,"0",0)
+        public PagedCollection(IEnumerable<T> collection) : this(collection, "0", 0)
         {
-         
         }
 
         public PagedCollection()
         {
             this.Items = new List<T>();
         }
-        
+
         public int TotalRecords { get; set; }
-        
+
         public string Page { get; set; }
 
         public int PageSize { get; set; }
@@ -40,13 +40,10 @@ namespace Innovt.Core.Collections
 
         public bool IsNumberPagination
         {
-            get
-            {
-                return this.Page.IsNumber();
-            }
+            get { return this.Page.IsNumber(); }
         }
 
-        public int PageCount => (PageSize <=0) ? 0 :TotalRecords / PageSize;
+        public int PageCount => (PageSize <= 0) ? 0 : TotalRecords / PageSize;
 
         public bool HasNext()
         {
@@ -66,7 +63,5 @@ namespace Innovt.Core.Collections
 
             return int.Parse(Page) > 1;
         }
-
-      
     }
 }

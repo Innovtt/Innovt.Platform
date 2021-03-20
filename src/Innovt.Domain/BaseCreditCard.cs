@@ -7,13 +7,13 @@ namespace Innovt.Domain
     {
         public string Number { get; set; }
         public string Holder { get; set; }
-     
+
         public string SecurityCode { get; set; }
-  
+
         public string Token { get; set; }
 
         public DateTime Expiration { get; set; }
-       
+
         public string MaskedNumber
         {
             get
@@ -55,7 +55,6 @@ namespace Innovt.Domain
 
         public BaseCreditCard()
         {
-            
         }
     }
 }

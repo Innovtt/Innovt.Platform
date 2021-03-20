@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Configuration;
 
 namespace Innovt.AspNetCore.Filters
-{ 
+{
     /// <summary>
     /// Code by Rafael Cruzeiro: https://github.com/rcruzeiro/Core.Framework/tree/master/Core.Framework.reCAPTCHA
     /// </summary>
@@ -25,13 +25,14 @@ namespace Innovt.AspNetCore.Filters
         private const string captchaURI = "https://www.google.com/recaptcha/api/siteverify";
         private readonly string defaultToken = "inn0ut#";
 
-         /// <summary>
-         /// 
-         /// </summary>
-         /// <param name="antiForgery"></param>
-         /// <param name="hostName"></param>
-         /// <param name="defaultToken">You can use this parameter if you want to mock you request. You can't set empty string.</param>
-        public CaptchaValidatorFilterAttribute(string antiForgery=null, string hostName=null,string defaultToken = "inn0ut#")
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="antiForgery"></param>
+        /// <param name="hostName"></param>
+        /// <param name="defaultToken">You can use this parameter if you want to mock you request. You can't set empty string.</param>
+        public CaptchaValidatorFilterAttribute(string antiForgery = null, string hostName = null,
+            string defaultToken = "inn0ut#")
         {
             this.antiForgery = antiForgery;
             this.hostName = hostName;
@@ -40,7 +41,7 @@ namespace Innovt.AspNetCore.Filters
 
         private void ReadConfig(HttpContext context)
         {
-            if(secretKey.IsNotNullOrEmpty())
+            if (secretKey.IsNotNullOrEmpty())
                 return;
 
 
@@ -50,11 +51,12 @@ namespace Innovt.AspNetCore.Filters
             var captchaSection = configuration.GetSection("Recaptcha");
 
             if (captchaSection == null)
-                throw new ConfigurationException("Recaptcha section not found. The Recaptcha should contain: SiteKey and SecretKey");
+                throw new ConfigurationException(
+                    "Recaptcha section not found. The Recaptcha should contain: SiteKey and SecretKey");
 
             secretKey = captchaSection["SecretKey"];
 
-            if(secretKey.IsNullOrEmpty())
+            if (secretKey.IsNullOrEmpty())
                 throw new ConfigurationException("Recaptcha SecretKey can not bu null or empty.");
         }
 
@@ -69,14 +71,15 @@ namespace Innovt.AspNetCore.Filters
 
 
             using var httpClient = new HttpClient();
-            
-                var stringAsync = await httpClient.GetStringAsync($"{captchaURI}?secret={secretKey}&response={token}").ConfigureAwait(false);
 
-                var serializerSettings = new JsonSerializerOptions
-                {
-                    IgnoreNullValues = true
-                };
-            
+            var stringAsync = await httpClient.GetStringAsync($"{captchaURI}?secret={secretKey}&response={token}")
+                .ConfigureAwait(false);
+
+            var serializerSettings = new JsonSerializerOptions
+            {
+                IgnoreNullValues = true
+            };
+
 
             dynamic captchaResponse = JsonSerializer.Deserialize<dynamic>(stringAsync, serializerSettings);
 
@@ -86,11 +89,10 @@ namespace Innovt.AspNetCore.Filters
                     "Captcha hostname and request hostname do not match. Please review anti forgery settings.");
 
             return captchaResponse.Success;
-        
-    }
+        }
 
         public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
-        {  
+        {
             if (!context.HttpContext.IsLocal())
             {
                 var header =
@@ -108,7 +110,7 @@ namespace Innovt.AspNetCore.Filters
                     return;
                 }
 
-                var isValid = await this.IsValid(recaptchaResponse,context.HttpContext).ConfigureAwait(false);
+                var isValid = await this.IsValid(recaptchaResponse, context.HttpContext).ConfigureAwait(false);
 
                 if (!isValid)
                 {

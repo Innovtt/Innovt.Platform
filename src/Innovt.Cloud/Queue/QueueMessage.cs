@@ -14,17 +14,17 @@ namespace Innovt.Cloud.Queue
 
         public int? ApproximateReceiveCount { get; set; }
 
-        public Dictionary<string, string> Attributes{ get; set; }
-       
+        public Dictionary<string, string> Attributes { get; set; }
+
         public QueueMessage()
-        {  
+        {
         }
 
         public QueueMessage(T body)
         {
             Body = body;
         }
-        
+
         public QueueMessage(Dictionary<string, string> attributes)
         {
             this.Attributes = attributes;

@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Innovt.Notification.Core.Domain
 {
-    public class NotificationRequest: IValidatableObject
+    public class NotificationRequest : IValidatableObject
     {
         public string TemplateId { get; set; }
-        
+
         public List<NotificationMessageContact> To { get; set; }
 
         public object PayLoad { get; set; }
@@ -19,7 +19,6 @@ namespace Innovt.Notification.Core.Domain
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-
             if (TemplateId.IsNullOrEmpty())
             {
                 yield return new ValidationResult("TemplateId can't be null or empty.");

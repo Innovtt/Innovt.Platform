@@ -11,7 +11,8 @@ namespace Innovt.Job.Core
     {
         public string JobName { get; }
         public IConfiguration Configuration { get; protected set; }
-        protected JobEntry(string[] args,string jobName)
+
+        protected JobEntry(string[] args, string jobName)
         {
             JobName = jobName;
         }
@@ -21,14 +22,14 @@ namespace Innovt.Job.Core
             var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
-            this.Configuration =  builder.Build();
+            this.Configuration = builder.Build();
         }
 
 
         private void SetupContainer()
         {
             var container = CreateIocContainer();
-            
+
             container.CheckConfiguration();
 
             IOCLocator.Initialize(container);
@@ -36,8 +37,8 @@ namespace Innovt.Job.Core
 
         protected abstract IContainer CreateIocContainer();
         protected abstract JobBase CreateJob();
-    
-      
+
+
         public void Run()
 
         {
@@ -47,15 +48,15 @@ namespace Innovt.Job.Core
                 Console.WriteLine($"************** Checking the ConfigurationFile **************");
                 SetupConfiguration();
                 Console.WriteLine($"************** ConfigurationFile  DONE! **************");
-                
+
                 Console.WriteLine($"************** SetupContainer **************");
                 SetupContainer();
                 Console.WriteLine($"************** SetupContainer  DONE! **************");
-                
+
                 var job = CreateJob();
 
-                if(job == null)
-                    throw  new CriticalException($"The call for CreateJob method return NULL for Job Name {JobName}");
+                if (job == null)
+                    throw new CriticalException($"The call for CreateJob method return NULL for Job Name {JobName}");
 
 
                 AsyncHelper.RunSync(async () => await job.Start());

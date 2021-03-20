@@ -8,7 +8,7 @@ namespace Innovt.Data.EFCore.Maps
     {
         private readonly bool ignoreIsoCode;
 
-        public CountryMap(bool ignoreIsoCode=false)
+        public CountryMap(bool ignoreIsoCode = false)
         {
             this.ignoreIsoCode = ignoreIsoCode;
         }
@@ -21,7 +21,7 @@ namespace Innovt.Data.EFCore.Maps
             builder.HasKey(c => c.Id);
 
             builder.Property(d => d.Name).HasMaxLength(30).IsRequired();
- 
+
             builder.Property(d => d.ISOCode).HasMaxLength(3).IsRequired();
             builder.Property(d => d.Nationality).HasMaxLength(20).IsRequired();
 
@@ -33,7 +33,6 @@ namespace Innovt.Data.EFCore.Maps
             {
                 builder.Property(d => d.Code).HasMaxLength(3).IsRequired();
             }
-
         }
     }
 }

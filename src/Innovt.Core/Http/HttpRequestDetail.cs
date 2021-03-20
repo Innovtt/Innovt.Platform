@@ -15,7 +15,7 @@ namespace Innovt.Core.Http
         public string RawRequest { get; set; }
         public string RawResponse { get; set; }
         public HttpStatusCode ResponseStatusCode { get; set; }
-      
+
 
         public HttpRequestDetail()
         {

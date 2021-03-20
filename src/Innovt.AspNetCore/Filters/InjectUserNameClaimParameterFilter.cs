@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Innovt.AspNetCore.Filters
 {
-
     /// <summary>
     /// This Filter Will inject the username claim in the action Parameters
     /// </summary>
@@ -17,8 +16,8 @@ namespace Innovt.AspNetCore.Filters
 
         public InjectUserNameClaimParameterFilter(string defaultAuthorizationProperty, params string[] actionParameters)
         {
-            Check.NotNull(defaultAuthorizationProperty,nameof(defaultAuthorizationProperty));
-            Check.NotNull(actionParameters,nameof(actionParameters));
+            Check.NotNull(defaultAuthorizationProperty, nameof(defaultAuthorizationProperty));
+            Check.NotNull(actionParameters, nameof(actionParameters));
 
             this.defaultAuthorizationProperty = defaultAuthorizationProperty;
             this.actionParameters = actionParameters;
@@ -27,13 +26,15 @@ namespace Innovt.AspNetCore.Filters
         /// <summary>
         /// Using defaults: ExternalId  and "filter","command"
         /// </summary>
-        public InjectUserNameClaimParameterFilter():this("ExternalId","filter","command")
+        public InjectUserNameClaimParameterFilter() : this("ExternalId", "filter", "command")
         {
         }
 
-        public override async Task OnActionExecutionAsync(ActionExecutingContext filterContext, ActionExecutionDelegate next)
-        { 
-            var userName = filterContext.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+        public override async Task OnActionExecutionAsync(ActionExecutingContext filterContext,
+            ActionExecutionDelegate next)
+        {
+            var userName = filterContext.HttpContext.User.Claims
+                .FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
 
             if (!userName.IsNullOrEmpty())
             {
@@ -51,7 +52,7 @@ namespace Innovt.AspNetCore.Filters
                     }
                 }
             }
-            
+
             await next();
         }
     }

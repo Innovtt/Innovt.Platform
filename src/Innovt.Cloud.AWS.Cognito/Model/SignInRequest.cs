@@ -17,7 +17,7 @@ namespace Innovt.Cloud.AWS.Cognito.Model
         {
             if (UserName.IsNullOrEmpty())
             {
-                yield return new ValidationResult(Messages.EmailIsRequired, new[] { nameof(UserName) });
+                yield return new ValidationResult(Messages.EmailIsRequired, new[] {nameof(UserName)});
             }
 
             if (validationContext.ObjectInstance != null &&
@@ -25,12 +25,12 @@ namespace Innovt.Cloud.AWS.Cognito.Model
             {
                 if (IpAddress.IsNullOrEmpty())
                 {
-                    yield return new ValidationResult(Messages.IpAddressRequired, new[] { nameof(IpAddress) });
+                    yield return new ValidationResult(Messages.IpAddressRequired, new[] {nameof(IpAddress)});
                 }
 
                 if (ServerPath.IsNullOrEmpty())
                 {
-                    yield return new ValidationResult(Messages.ServerPathRequired, new[] { nameof(ServerPath) });
+                    yield return new ValidationResult(Messages.ServerPathRequired, new[] {nameof(ServerPath)});
                 }
             }
         }

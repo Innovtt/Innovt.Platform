@@ -5,7 +5,6 @@ namespace Innovt.Core.Cqrs.Queries
 {
     public class PagedFilterBase : PagedFilterBase<string>
     {
-       
     }
 
     public class PagedFilterBase<T> : IPagedFilter

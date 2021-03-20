@@ -28,10 +28,10 @@ namespace Innovt.Notification.Core.Domain
             this.Type = type;
         }
 
-        public NotificationMessage(NotificationMessageType type,string fromAddress,string fromName,string subject)
+        public NotificationMessage(NotificationMessageType type, string fromAddress, string fromName, string subject)
         {
             this.Type = type;
-            
+
             if (fromAddress.IsNotNullOrEmpty())
             {
                 this.AddFrom(fromAddress, fromName);
@@ -43,7 +43,7 @@ namespace Innovt.Notification.Core.Domain
             }
         }
 
-        public NotificationMessage AddSubject(string subject,string charset=null)
+        public NotificationMessage AddSubject(string subject, string charset = null)
         {
             Subject = new NotificationMessageSubject()
             {
@@ -54,7 +54,7 @@ namespace Innovt.Notification.Core.Domain
             return this;
         }
 
-        public NotificationMessage AddFrom(string address,string name=null)
+        public NotificationMessage AddFrom(string address, string name = null)
         {
             From = new NotificationMessageContact(name, address);
 
@@ -99,29 +99,31 @@ namespace Innovt.Notification.Core.Domain
         //}
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        {
             if (this.To == null || !this.To.Any())
             {
-                yield return new ValidationResult("Invalid value for To", new[] { "To" });
+                yield return new ValidationResult("Invalid value for To", new[] {"To"});
             }
 
             if (this.Body == null || this.Body.Content.IsNullOrEmpty())
             {
-                yield return new ValidationResult("Invalid value for Body", new[] { "Body" });
+                yield return new ValidationResult("Invalid value for Body", new[] {"Body"});
             }
 
             if (this.From == null || this.From.Address.IsNullOrEmpty())
             {
-                yield return new ValidationResult("Invalid value for From", new[] { "From" });
+                yield return new ValidationResult("Invalid value for From", new[] {"From"});
             }
 
-            if(Type == NotificationMessageType.Sms)
+            if (Type == NotificationMessageType.Sms)
             {
-                foreach(var to in this.To)
+                foreach (var to in this.To)
                 {
-                    if(to.Address==null ||!to.Address.StartsWith("+", System.StringComparison.InvariantCultureIgnoreCase))
+                    if (to.Address == null ||
+                        !to.Address.StartsWith("+", System.StringComparison.InvariantCultureIgnoreCase))
                     {
-                        yield return new ValidationResult("Invalid value for To that should start with + and E.164 format.", new[] { "To" });
+                        yield return new ValidationResult(
+                            "Invalid value for To that should start with + and E.164 format.", new[] {"To"});
                     }
                 }
             }

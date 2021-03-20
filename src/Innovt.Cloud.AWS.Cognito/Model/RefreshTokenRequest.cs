@@ -10,16 +10,15 @@ using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.Cognito.Model
 {
-    public class RefreshTokenRequest:RequestBase
+    public class RefreshTokenRequest : RequestBase
     {
-        [Required]
-        public string RefreshToken { get; set; }
+        [Required] public string RefreshToken { get; set; }
 
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (RefreshToken.IsNullOrEmpty())
             {
-                yield return new ValidationResult(Messages.RefreshTokenIsRequired, new[] { nameof(RefreshToken) });
+                yield return new ValidationResult(Messages.RefreshTokenIsRequired, new[] {nameof(RefreshToken)});
             }
         }
     }

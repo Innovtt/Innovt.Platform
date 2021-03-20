@@ -12,14 +12,13 @@
 
 namespace Innovt.Domain.Core.Specification
 {
-
     /// <summary>
     /// Base class for composite specifications
     /// </summary>
     /// <typeparam name="TValueObject">Type of entity that check this specification</typeparam>
     public abstract class CompositeSpecification<TEntity>
-         : Specification<TEntity>
-         where TEntity : class
+        : Specification<TEntity>
+        where TEntity : class
     {
         #region Properties
 

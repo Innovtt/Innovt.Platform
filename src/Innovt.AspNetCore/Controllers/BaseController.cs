@@ -12,13 +12,14 @@ namespace Innovt.AspNetCore.Controllers
         protected readonly ILogger Logger;
         protected readonly ITracer Tracer;
 
-        protected BaseController(ILogger logger,ITracer tracer)
+        protected BaseController(ILogger logger, ITracer tracer)
         {
             this.Tracer = tracer ?? throw new ArgumentNullException(nameof(tracer));
             this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        protected IActionResult RedirectToLocal(string returnUrl, RedirectToActionResult redirect = null, string defaultAction = "Index", string defaultController = "Home")
+        protected IActionResult RedirectToLocal(string returnUrl, RedirectToActionResult redirect = null,
+            string defaultAction = "Index", string defaultController = "Home")
         {
             if (Url.IsLocalUrl(returnUrl))
                 return Redirect(returnUrl);
@@ -34,15 +35,15 @@ namespace Innovt.AspNetCore.Controllers
         {
             try
             {
-               return await func();
+                return await func();
             }
             catch (BusinessException ex)
             {
-               return new JsonResult(new { ex.Message });
+                return new JsonResult(new {ex.Message});
             }
             catch (Exception ex)
             {
-                Logger.Error(ex,errorMessage);
+                Logger.Error(ex, errorMessage);
                 throw ex;
             }
         }

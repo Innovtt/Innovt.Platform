@@ -1,6 +1,6 @@
 ﻿namespace Innovt.AspNetCore.ViewModel
 {
-    public class MvcActionViewModel: ViewModelBase
+    public class MvcActionViewModel : ViewModelBase
     {
         public string DisplayName { get; set; }
 

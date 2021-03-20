@@ -1,8 +1,6 @@
-﻿
-
-namespace Innovt.AspNetCore.Model
+﻿namespace Innovt.AspNetCore.Model
 {
-   public class ResponseError
+    public class ResponseError
     {
         public string TraceId { get; set; }
 
@@ -10,7 +8,6 @@ namespace Innovt.AspNetCore.Model
 
         public string Code { get; set; }
 
-        public object Detail { get; set; }//ErrorMessage
-
+        public object Detail { get; set; } //ErrorMessage
     }
 }

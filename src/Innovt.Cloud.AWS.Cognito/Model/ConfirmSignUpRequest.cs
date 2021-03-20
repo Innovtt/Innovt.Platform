@@ -1,5 +1,4 @@
-﻿
-using Innovt.Core.Collections;
+﻿using Innovt.Core.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Innovt.Cloud.AWS.Cognito.Resources;
@@ -7,9 +6,8 @@ using Innovt.Cloud.AWS.Cognito.Resources;
 namespace Innovt.Cloud.AWS.Cognito.Model
 {
     public class ConfirmSignUpRequest : RequestBase
-    {  
-        [Required]
-        public virtual string UserName { get; set; }
+    {
+        [Required] public virtual string UserName { get; set; }
 
         [Required]
         [StringLength(20, MinimumLength = 4)]
@@ -19,12 +17,12 @@ namespace Innovt.Cloud.AWS.Cognito.Model
         {
             if (UserName.IsNullOrEmpty())
             {
-                yield return new ValidationResult(Messages.UserNameIsRequired, new[] { nameof(UserName) });
+                yield return new ValidationResult(Messages.UserNameIsRequired, new[] {nameof(UserName)});
             }
 
             if (ConfirmationCode.IsNullOrEmpty())
             {
-                yield return new ValidationResult(Messages.ConfirmationCodeRequired, new[] { nameof(ConfirmationCode) });
+                yield return new ValidationResult(Messages.ConfirmationCodeRequired, new[] {nameof(ConfirmationCode)});
             }
         }
     }

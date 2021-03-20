@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Innovt.Core.Attributes
 {
-
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter,
+        AllowMultiple = false)]
     public class RequiredNumberGreaterThanZeroAttribute : ValidationAttribute
     {
         public override bool IsValid(object value)

@@ -8,18 +8,17 @@ namespace Innovt.Core.CrossCutting.Ioc
 {
     public static class Extensions
     {
-        public static void AddModule(this IServiceCollection services,Assembly assembly)
+        public static void AddModule(this IServiceCollection services, Assembly assembly)
         {
             var modulesTypes = assembly.DefinedTypes.Where(t => t.IsSubclassOf(typeof(IOCModule))).ToList();
 
             foreach (var moduleType in modulesTypes)
             {
-                var module = (IOCModule)Activator.CreateInstance(moduleType.UnderlyingSystemType, services);
-                
-                if(module==null)
+                var module = (IOCModule) Activator.CreateInstance(moduleType.UnderlyingSystemType, services);
+
+                if (module == null)
                     throw new ConfigurationException("Innovt - IOC Module not found.");
             }
-            
         }
 
         public static void AddModule(this IServiceCollection services, IOCModule module)

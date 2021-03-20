@@ -39,7 +39,7 @@ namespace Innovt.AspNetCore.Filters
 
         private string GetUserId(AuthorizationFilterContext context)
         {
-            var userId = context.HttpContext.User?.GetClaim(ClaimTypes.Sid );
+            var userId = context.HttpContext.User?.GetClaim(ClaimTypes.Sid);
 
             return userId ?? string.Empty;
         }
@@ -47,7 +47,7 @@ namespace Innovt.AspNetCore.Filters
 
         private (string area, string controller, string action) GetActionInfo(AuthorizationFilterContext context)
         {
-            var controllerActionDescriptor = (ControllerActionDescriptor)context.ActionDescriptor;
+            var controllerActionDescriptor = (ControllerActionDescriptor) context.ActionDescriptor;
 
             var area = controllerActionDescriptor.ControllerTypeInfo.GetCustomAttribute<AreaAttribute>()?.RouteValue;
 
@@ -59,8 +59,8 @@ namespace Innovt.AspNetCore.Filters
         }
 
 
-        private async Task<bool> HasPermission(string userId,string module, string controller, string action) {
-
+        private async Task<bool> HasPermission(string userId, string module, string controller, string action)
+        {
             var userPermissions = await securityRepository.GetUserPermissions(userId);
 
             if (!userPermissions.Any())
@@ -87,7 +87,7 @@ namespace Innovt.AspNetCore.Filters
 
             if (hasActionPermission)
                 return true;
-            
+
 
             return false;
         }
@@ -104,10 +104,10 @@ namespace Innovt.AspNetCore.Filters
 
             if (!IsUserAuthenticated(context))
             {
-                context.Result = new UnauthorizedResult( );
+                context.Result = new UnauthorizedResult();
                 return;
             }
-            
+
             var userId = GetUserId(context);
 
             if (userId.IsNullOrEmpty())
@@ -140,6 +140,5 @@ namespace Innovt.AspNetCore.Filters
 
             context.Result = new ForbidResult();
         }
-
     }
 }

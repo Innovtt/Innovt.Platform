@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Innovt.CrossCutting.IOC
 {
-    public class ServiceProvider:IServiceProvider,  ISupportRequiredService, IDisposable
+    public class ServiceProvider : IServiceProvider, ISupportRequiredService, IDisposable
     {
         private readonly IContainer container;
         private bool disposed;

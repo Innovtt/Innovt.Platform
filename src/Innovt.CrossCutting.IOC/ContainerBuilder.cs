@@ -5,11 +5,11 @@ using System;
 namespace Innovt.CrossCutting.IOC
 {
     public class ContainerBuilder
-    { 
+    {
         private readonly IContainer container = null;
 
         public ContainerBuilder(IServiceCollection services)
-        { 
+        {
             this.container = new Container(services);
         }
 
@@ -18,5 +18,4 @@ namespace Innovt.CrossCutting.IOC
             return new ServiceProvider(container);
         }
     }
-
 }

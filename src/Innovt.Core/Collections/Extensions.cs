@@ -4,7 +4,7 @@ using System.Linq;
 namespace Innovt.Core.Collections
 {
     public static class Extensions
-    { 
+    {
         public static bool IsNullOrEmpty<T>(this IList<T> list)
         {
             if ((list == null) || (list.Count == 0))
@@ -33,12 +33,12 @@ namespace Innovt.Core.Collections
         {
             return !enumerable.IsNullOrEmpty();
         }
+
         public static bool IsNotNullOrEmpty<T>(this ICollection<T> collection)
         {
             return !collection.IsNullOrEmpty();
         }
 
-     
 
         /// <summary>
         /// Initialize the collection if is null, so you don't have to check it
@@ -56,12 +56,13 @@ namespace Innovt.Core.Collections
             return list;
         }
 
-        public static Dictionary<TKey, TValue> AddFluent<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey key, TValue value)
+        public static Dictionary<TKey, TValue> AddFluent<TKey, TValue>(this Dictionary<TKey, TValue> dictionary,
+            TKey key, TValue value)
         {
             if (dictionary == null)
                 dictionary = new Dictionary<TKey, TValue>();
 
-            dictionary.Add(key,value);
+            dictionary.Add(key, value);
 
             return dictionary;
         }

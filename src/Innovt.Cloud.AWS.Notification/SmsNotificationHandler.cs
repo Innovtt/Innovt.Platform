@@ -11,13 +11,14 @@ using Innovt.Core.CrossCutting.Log;
 
 namespace Innovt.Cloud.AWS.Notification
 {
-    public class SmsNotificationHandler: AwsBaseService, INotificationHandler
+    public class SmsNotificationHandler : AwsBaseService, INotificationHandler
     {
         public SmsNotificationHandler(ILogger logger, IAWSConfiguration configuration) : base(logger, configuration)
         {
         }
 
-        public SmsNotificationHandler(ILogger logger, IAWSConfiguration configuration, string region) : base(logger, configuration, region)
+        public SmsNotificationHandler(ILogger logger, IAWSConfiguration configuration, string region) : base(logger,
+            configuration, region)
         {
         }
 
@@ -38,32 +39,34 @@ namespace Innovt.Cloud.AWS.Notification
 
         public async Task<dynamic> SendAsync(NotificationMessage message, CancellationToken cancellationToken = default)
         {
-            Check.NotNull(message,nameof(message));
+            Check.NotNull(message, nameof(message));
             Check.NotNullWithBusinessException(message.Body, nameof(message.Body));
             Check.NotNullWithBusinessException(message.To, nameof(message.To));
 
             List<dynamic> deliveryResult = new List<dynamic>();
-            
+
             var policy = base.CreateDefaultRetryAsyncPolicy();
 
-            foreach(var to in message.To) {
-                    var request = new PublishRequest
-                    {
-                        Subject = message.Subject.Content,
-                        PhoneNumber = to.Address,
-                        Message = message.Body.Content
-                    };
+            foreach (var to in message.To)
+            {
+                var request = new PublishRequest
+                {
+                    Subject = message.Subject.Content,
+                    PhoneNumber = to.Address,
+                    Message = message.Body.Content
+                };
 
-                    var result = await policy.ExecuteAsync(async ()=> await SimpleNotificationClient.PublishAsync(request, cancellationToken));
+                var result = await policy.ExecuteAsync(async () =>
+                    await SimpleNotificationClient.PublishAsync(request, cancellationToken));
 
-                    deliveryResult.Add(result);
+                deliveryResult.Add(result);
             }
 
             return deliveryResult;
         }
 
         protected override void DisposeServices()
-         {   
+        {
             _simpleNotificationClient?.Dispose();
         }
     }

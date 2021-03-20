@@ -29,7 +29,8 @@ namespace Innovt.AspNetCore.Extensions
         /// </summary>
         /// <param name="app"></param>
         /// <param name="supportedCultures"></param>
-        public static void UseRequestLocalization(this IApplicationBuilder app, List<CultureInfo> supportedCultures = null)
+        public static void UseRequestLocalization(this IApplicationBuilder app,
+            List<CultureInfo> supportedCultures = null)
         {
             if (supportedCultures == null)
                 supportedCultures = new List<CultureInfo>()
@@ -44,7 +45,8 @@ namespace Innovt.AspNetCore.Extensions
             });
         }
 
-        public static void AddBearerAuthorization(this IServiceCollection services, IConfiguration configuration, string configSection = "BearerAuthentication")
+        public static void AddBearerAuthorization(this IServiceCollection services, IConfiguration configuration,
+            string configSection = "BearerAuthentication")
         {
             var section = configuration.GetSection(configSection);
 
@@ -79,10 +81,10 @@ namespace Innovt.AspNetCore.Extensions
             });
 
             services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
+                {
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
                 .AddJwtBearer(options =>
                 {
                     options.Audience = audienceId;
@@ -103,16 +105,18 @@ namespace Innovt.AspNetCore.Extensions
         public static IHtmlContent Pager<T>(this IHtmlHelper helper, PaginationBuilder<T> builder) where T : class
         {
             if (helper is null) throw new ArgumentNullException(nameof(helper));
-            
+
 
             if (builder == null) throw new ArgumentNullException(nameof(builder));
-            
-            if (builder.Collection.TotalRecords < builder.Collection.PageSize && (builder.Collection.IsNumberPagination && builder.Collection.Page!=null 
-                && int.Parse(builder.Collection.Page,CultureInfo.InvariantCulture) <= 1))
+
+            if (builder.Collection.TotalRecords < builder.Collection.PageSize &&
+                (builder.Collection.IsNumberPagination && builder.Collection.Page != null
+                                                       && int.Parse(builder.Collection.Page,
+                                                           CultureInfo.InvariantCulture) <= 1))
                 return new HtmlString(string.Empty);
 
             var html = new StringBuilder();
-            
+
             html.Append(builder.BuildHeader());
 
             if (builder.Collection.HasPrevious())
@@ -141,13 +145,13 @@ namespace Innovt.AspNetCore.Extensions
 
             return new HtmlString(html.ToString());
         }
-        
+
         public static SelectList ActiveAndInactiveList()
         {
             var statusList = new List<SelectListItem>()
             {
-                new SelectListItem() { Value="1", Text="Ativo" },
-                new SelectListItem() { Value="0", Text="Inativo" },
+                new SelectListItem() {Value = "1", Text = "Ativo"},
+                new SelectListItem() {Value = "0", Text = "Inativo"},
             };
 
             return new SelectList(statusList, "Value", "Text");
@@ -158,22 +162,22 @@ namespace Innovt.AspNetCore.Extensions
         {
             var statusList = new List<SelectListItem>()
             {
-                new SelectListItem() { Value="1", Text="Sim" },
-                new SelectListItem() { Value="0", Text="Não" }
+                new SelectListItem() {Value = "1", Text = "Sim"},
+                new SelectListItem() {Value = "0", Text = "Não"}
             };
 
             return new SelectList(statusList, "Value", "Text");
         }
 
 
-        public static string GetClaim(this ClaimsPrincipal user,string type = ClaimTypes.Email)
+        public static string GetClaim(this ClaimsPrincipal user, string type = ClaimTypes.Email)
         {
             if (user == null)
                 return string.Empty;
 
             var value = (from c in user.Claims
                 where c.Type == type
-                         select c.Value).FirstOrDefault();
+                select c.Value).FirstOrDefault();
 
             return value;
         }
@@ -183,8 +187,8 @@ namespace Innovt.AspNetCore.Extensions
             if (action == null || filter == null)
                 return false;
 
-            var exist =  action.FilterDescriptors.Any(f=>f.Filter.GetType() == filter);
-            
+            var exist = action.FilterDescriptors.Any(f => f.Filter.GetType() == filter);
+
             return exist;
         }
 
@@ -213,10 +217,9 @@ namespace Innovt.AspNetCore.Extensions
                 else
                 {
                     return IPAddress.IsLoopback(remoteIp);
-
                 }
             }
-           
+
             return false;
         }
 
@@ -235,8 +238,7 @@ namespace Innovt.AspNetCore.Extensions
 
             var value = session.GetString(key);
 
-            return value == null ? default :
-                JsonSerializer.Deserialize<T>(value);
+            return value == null ? default : JsonSerializer.Deserialize<T>(value);
         }
     }
 }

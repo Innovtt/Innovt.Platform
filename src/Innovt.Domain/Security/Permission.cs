@@ -2,7 +2,7 @@
 
 namespace Innovt.Domain.Security
 {
-    public class Permission: ValueObject
+    public class Permission : ValueObject
     {
         /// <summary>
         /// Can be the area in your Controller

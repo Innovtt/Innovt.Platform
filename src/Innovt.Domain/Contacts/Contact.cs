@@ -4,21 +4,19 @@ using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Contacts
 {
-    public class Contact:ValueObject<int>, IValidatableObject
+    public class Contact : ValueObject<int>, IValidatableObject
     {
-        [Required]
-        public string Name { get; set; }
+        [Required] public string Name { get; set; }
+
         /// <summary>
         /// For example Home, Office etc
         /// </summary>
         [Required]
         public string Description { get; set; }
 
-        [Required]
-        public ContactType Type { get; set; }
+        [Required] public ContactType Type { get; set; }
 
-        [Required]
-        public string Value { get; set; }
+        [Required] public string Value { get; set; }
 
         public bool IsDeleted { get; set; }
 

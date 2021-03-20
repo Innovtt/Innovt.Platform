@@ -12,7 +12,7 @@ namespace Innovt.Domain.Core.Model
 
         protected Entity()
         {
-            CreatedAt  = DateTimeOffset.UtcNow;
+            CreatedAt = DateTimeOffset.UtcNow;
         }
 
         protected Entity(int id)
@@ -36,15 +36,15 @@ namespace Innovt.Domain.Core.Model
 
             return anotherEntity?.Id == Id;
         }
-        
+
         private List<DomainEvent> domainEvents;
-      
+
         public void AddDomainEvent(DomainEvent domainEvent)
         {
             if (domainEvent == null) throw new ArgumentNullException(nameof(domainEvent));
 
             domainEvents ??= new List<DomainEvent>();
-                
+
             domainEvents.Add(domainEvent);
         }
 
@@ -54,7 +54,7 @@ namespace Innovt.Domain.Core.Model
         }
     }
 
-    public abstract class Entity<T>: Entity where T : struct
+    public abstract class Entity<T> : Entity where T : struct
     {
         public new T Id { get; set; }
     }

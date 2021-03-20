@@ -9,67 +9,74 @@ namespace Innovt.Notification.Core.Builders
     public class DefaultMessageBuilder : IMessageBuilder
     {
         private readonly ITemplateParser parser;
-       
-       /// <summary>
-       /// Default constructor using a template parser(optional)
-       /// </summary>
-       /// <param name="parser"></param>
-       public DefaultMessageBuilder(ITemplateParser parser=null)
-       {
-           this.parser = parser;
-       }
 
-       protected virtual NotificationMessageSubject BuildSubject(NotificationTemplate template, NotificationRequest request)
-       {
-           return new NotificationMessageSubject()
-           {
-               Charset = template.Charset,
-               Content = template.Subject
-           };
-       }
-       
-       protected virtual NotificationMessageBody BuildBody(NotificationTemplate template, NotificationRequest request)
-       {
-           return new NotificationMessageBody()
-           {
-               Content = template.Body,
-               Charset = template.Charset,
-               IsHtml = template.Type == NotificationMessageType.Email
-           };
-       }
-
-       protected virtual List<NotificationMessageContact> BuildTo(NotificationTemplate template, NotificationRequest request)
-       {
-           Check.NotNullWithBusinessException(request.To,$"Invalid ToAddress for template Id {template.Id}");
-
-           var toList = new List<NotificationMessageContact>();
-
-           foreach (var to in request.To)
-           {
-               toList.Add(new NotificationMessageContact(to.Name, to.Address));
-           }
-
-           return toList;
-       }
-
-       protected virtual NotificationMessageContact BuildFrom(NotificationTemplate template, NotificationRequest request)
-       {
-           Check.NotNullWithBusinessException(template.FromAddress, $"Invalid FromAddress for template Id {template.Id}");
-
-           return new NotificationMessageContact(template.FromName,template.FromAddress);
+        /// <summary>
+        /// Default constructor using a template parser(optional)
+        /// </summary>
+        /// <param name="parser"></param>
+        public DefaultMessageBuilder(ITemplateParser parser = null)
+        {
+            this.parser = parser;
         }
 
-       protected virtual List<NotificationMessageContact> BuildBccTo(NotificationTemplate template, NotificationRequest request)
-       {
-           return null;
-       }
+        protected virtual NotificationMessageSubject BuildSubject(NotificationTemplate template,
+            NotificationRequest request)
+        {
+            return new NotificationMessageSubject()
+            {
+                Charset = template.Charset,
+                Content = template.Subject
+            };
+        }
 
-        protected virtual List<NotificationMessageContact> BuildCcTo(NotificationTemplate template, NotificationRequest request)
+        protected virtual NotificationMessageBody BuildBody(NotificationTemplate template, NotificationRequest request)
+        {
+            return new NotificationMessageBody()
+            {
+                Content = template.Body,
+                Charset = template.Charset,
+                IsHtml = template.Type == NotificationMessageType.Email
+            };
+        }
+
+        protected virtual List<NotificationMessageContact> BuildTo(NotificationTemplate template,
+            NotificationRequest request)
+        {
+            Check.NotNullWithBusinessException(request.To, $"Invalid ToAddress for template Id {template.Id}");
+
+            var toList = new List<NotificationMessageContact>();
+
+            foreach (var to in request.To)
+            {
+                toList.Add(new NotificationMessageContact(to.Name, to.Address));
+            }
+
+            return toList;
+        }
+
+        protected virtual NotificationMessageContact BuildFrom(NotificationTemplate template,
+            NotificationRequest request)
+        {
+            Check.NotNullWithBusinessException(template.FromAddress,
+                $"Invalid FromAddress for template Id {template.Id}");
+
+            return new NotificationMessageContact(template.FromName, template.FromAddress);
+        }
+
+        protected virtual List<NotificationMessageContact> BuildBccTo(NotificationTemplate template,
+            NotificationRequest request)
         {
             return null;
         }
 
-        protected virtual List<NotificationMessageContact> BuildReplyTo(NotificationTemplate template, NotificationRequest request)
+        protected virtual List<NotificationMessageContact> BuildCcTo(NotificationTemplate template,
+            NotificationRequest request)
+        {
+            return null;
+        }
+
+        protected virtual List<NotificationMessageContact> BuildReplyTo(NotificationTemplate template,
+            NotificationRequest request)
         {
             return null;
         }
@@ -88,25 +95,25 @@ namespace Innovt.Notification.Core.Builders
             var message = new NotificationMessage(template.Type)
             {
                 Subject = BuildSubject(template, request),
-                From    = BuildFrom(template, request),
-                To      = BuildTo(template, request),
-                Body    = BuildBody(template, request),
-                BccTo   = BuildBccTo(template, request),
-                CcTo    = BuildCcTo(template, request),
-                ReplyToAddresses    = BuildReplyTo(template, request)
+                From = BuildFrom(template, request),
+                To = BuildTo(template, request),
+                Body = BuildBody(template, request),
+                BccTo = BuildBccTo(template, request),
+                CcTo = BuildCcTo(template, request),
+                ReplyToAddresses = BuildReplyTo(template, request)
             };
-           
+
             //TODO: can be better if we parse per type maybe
-           ParseMessage(message,request.PayLoad);
+            ParseMessage(message, request.PayLoad);
 
             return message;
         }
 
-        protected virtual void ParseMessage(NotificationMessage message,object payLoad)
+        protected virtual void ParseMessage(NotificationMessage message, object payLoad)
         {
             if (parser == null)
                 return;
-            
+
             if (message.Subject != null)
             {
                 message.Subject.Content = parser.Render(message.Subject.Content, payLoad);

@@ -1,11 +1,10 @@
-﻿
-using Innovt.Core.Collections;
+﻿using Innovt.Core.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Innovt.Notification.Core.Domain
 {
-    public class NotificationMessageContact:IValidatableObject
+    public class NotificationMessageContact : IValidatableObject
     {
         public NotificationMessageContact(string name, string address)
         {
@@ -15,9 +14,8 @@ namespace Innovt.Notification.Core.Domain
 
         public NotificationMessageContact()
         {
-
         }
-        
+
         public string Name { get; set; }
         public string Address { get; set; }
 

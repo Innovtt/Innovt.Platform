@@ -21,23 +21,25 @@ namespace Innovt.Cqrs.Decorators
         {
             return (exception, timeSpan, retryCount, context) =>
             {
-                logger.Warning($"Retry {retryCount} implemented of {context.PolicyKey} at {context.OperationKey} due to {exception}");
+                logger.Warning(
+                    $"Retry {retryCount} implemented of {context.PolicyKey} at {context.OperationKey} due to {exception}");
             };
         }
 
         protected virtual AsyncRetryPolicy CreateAsyncPolicy()
         {
-            var policy =   Policy.Handle<SqlException>().WaitAndRetryAsync(retryCount, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),LogResiliencyRetry());
+            var policy = Policy.Handle<SqlException>().WaitAndRetryAsync(retryCount,
+                retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
 
             return policy;
         }
 
         protected virtual RetryPolicy CreatePolicy()
         {
-            var policy =   Policy.Handle<SqlException>().WaitAndRetry(retryCount, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),LogResiliencyRetry());
+            var policy = Policy.Handle<SqlException>().WaitAndRetry(retryCount,
+                retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
 
             return policy;
         }
-
     }
 }

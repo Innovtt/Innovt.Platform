@@ -5,7 +5,6 @@ using Innovt.Domain.Tracking;
 
 namespace Innovt.Data.EFCore.Repositories
 {
-
     public class RequestTrackingRepository : IRequestTrackingRepository
     {
         private readonly IExtendedUnitOfWork context;

@@ -7,13 +7,13 @@ namespace Innovt.Core.Attributes
     /// You can use it for different purpose at the framework
     /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
-    public class ModelExcludeFilterAttribute :  Attribute
+    public class ModelExcludeFilterAttribute : Attribute
     {
         public string[] ExcludeAttributes { get; internal set; }
 
         public ModelExcludeFilterAttribute([CallerMemberName] string propertyName = null)
         {
-            this.ExcludeAttributes = new[] { propertyName };
+            this.ExcludeAttributes = new[] {propertyName};
         }
 
         public ModelExcludeFilterAttribute(params string[] excludeAttributes)

@@ -7,7 +7,7 @@ using Innovt.Notification.Core.Template;
 
 namespace Innovt.Notification.Core.Builders
 {
-    public class DefaultMessageBuilderFactory: IMessageBuilderFactory
+    public class DefaultMessageBuilderFactory : IMessageBuilderFactory
     {
         private readonly ITemplateParser templateParser;
 
@@ -22,7 +22,7 @@ namespace Innovt.Notification.Core.Builders
         /// <param name="builderName"></param>
         /// <returns></returns>
         public IMessageBuilder Create(string builderName)
-        {   
+        {
             return new DefaultMessageBuilder(templateParser);
         }
     }

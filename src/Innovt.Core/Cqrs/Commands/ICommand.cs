@@ -2,8 +2,7 @@
 
 namespace Innovt.Core.Cqrs.Commands
 {
-    public interface ICommand: IValidatableObject
+    public interface ICommand : IValidatableObject
     {
-
     }
 }

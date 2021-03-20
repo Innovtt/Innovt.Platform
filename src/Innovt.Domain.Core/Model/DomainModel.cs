@@ -3,15 +3,15 @@ using System.Linq;
 
 namespace Innovt.Domain.Core.Model
 {
-    public class DomainModel<T>: ValueObject where T: ValueObject
+    public class DomainModel<T> : ValueObject where T : ValueObject
     {
-        private  readonly List<T> models = new List<T>();
+        private readonly List<T> models = new List<T>();
 
         protected void AddModel(T model)
         {
             models.Add(model);
-        } 
-       
+        }
+
         public List<T> FindAll()
         {
             return models;

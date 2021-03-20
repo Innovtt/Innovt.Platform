@@ -2,9 +2,8 @@
 
 namespace Innovt.Core.Cqrs.Queries
 {
-    public interface IFilter:IValidatableObject
+    public interface IFilter : IValidatableObject
     {
-
     }
 
     public interface IPagedFilter : IFilter

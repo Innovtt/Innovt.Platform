@@ -5,7 +5,7 @@ using Innovt.Notification.Core.Domain;
 
 namespace Innovt.Cloud.AWS.Notification
 {
-    public class NotificationHandleFactory:INotificationHandleFactory
+    public class NotificationHandleFactory : INotificationHandleFactory
     {
         private readonly IContainer container;
 
@@ -13,7 +13,7 @@ namespace Innovt.Cloud.AWS.Notification
         {
             this.container = container ?? throw new ArgumentNullException(nameof(container));
         }
-        
+
         public virtual INotificationHandler Create(NotificationMessageType type)
         {
             return type switch

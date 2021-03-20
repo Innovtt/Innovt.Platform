@@ -2,7 +2,7 @@
 
 namespace Innovt.AspNetCore.ViewModel
 {
-    public class MvcControllerViewModel:ViewModelBase
+    public class MvcControllerViewModel : ViewModelBase
     {
         public string Area { get; set; }
 

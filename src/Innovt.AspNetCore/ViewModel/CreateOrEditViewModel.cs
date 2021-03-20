@@ -1,5 +1,4 @@
-﻿
-namespace Innovt.AspNetCore.ViewModel
+﻿namespace Innovt.AspNetCore.ViewModel
 {
     public abstract class CreateOrEditViewModel : ViewModelBase
     {

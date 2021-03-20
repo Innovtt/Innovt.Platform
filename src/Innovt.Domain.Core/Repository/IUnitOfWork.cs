@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Innovt.Domain.Core.Repository
 {
-    public interface IUnitOfWork: IDisposable
+    public interface IUnitOfWork : IDisposable
     {
         int Commit();
         Task<int> CommitAsync(CancellationToken cancellationToken = default);

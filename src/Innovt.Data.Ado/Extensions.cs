@@ -12,11 +12,11 @@ namespace Innovt.Data.Ado
             if (pagedFilter.IsNull())
                 return rawSql;
 
-            var recordStart  = (pagedFilter.Page) * pagedFilter.PageSize;
+            var recordStart = (pagedFilter.Page) * pagedFilter.PageSize;
 
-            if (recordStart < 0 )
+            if (recordStart < 0)
                 recordStart = 0;
-            
+
             return dataSource.Provider switch
             {
                 Provider.PostgreSqL => $"{rawSql} OFFSET ({recordStart}) LIMIT @PageSize ",

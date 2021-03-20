@@ -21,8 +21,8 @@ namespace Innovt.Domain.Core.Specification
     /// </summary>
     /// <typeparam name="TValueObject">Type of entity in this specification</typeparam>
     public sealed class TrueSpecification<TEntity>
-        :Specification<TEntity>
-        where TEntity:class
+        : Specification<TEntity>
+        where TEntity : class
     {
         #region Specification overrides
 

@@ -8,7 +8,7 @@ namespace Innovt.Data.EFCore.Maps
     {
         private readonly bool ignoreDocumentType;
 
-        public DocumentMap(bool ignoreDocumentType=false)
+        public DocumentMap(bool ignoreDocumentType = false)
         {
             this.ignoreDocumentType = ignoreDocumentType;
         }

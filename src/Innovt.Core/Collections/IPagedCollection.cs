@@ -7,7 +7,7 @@ namespace Innovt.Core.Collections
         IEnumerable<T> Items { get; set; }
 
         string Page { get; set; }
-      
+
         int PageCount { get; }
         int PageSize { get; set; }
         int TotalRecords { get; set; }

@@ -1,7 +1,6 @@
 ﻿namespace Innovt.Data.DataSources
 {
-    public interface IDataSourceReader:IDataSource
+    public interface IDataSourceReader : IDataSource
     {
-        
     }
 }

@@ -5,10 +5,9 @@ using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.Cognito.Model
 {
-    public class ChangePasswordRequest: RequestBase
-    { 
-        [Required]
-        public string AccessToken { get; set; }
+    public class ChangePasswordRequest : RequestBase
+    {
+        [Required] public string AccessToken { get; set; }
 
         [Required]
         [StringLength(20, MinimumLength = 4)]
@@ -26,22 +25,24 @@ namespace Innovt.Cloud.AWS.Cognito.Model
         {
             if (AccessToken.IsNullOrEmpty())
             {
-                yield return new ValidationResult(Messages.EmailIsRequired, new[] { nameof(AccessToken) });
+                yield return new ValidationResult(Messages.EmailIsRequired, new[] {nameof(AccessToken)});
             }
-            
+
             if (ConfirmProposedPassword.IsNullOrEmpty())
             {
-                yield return new ValidationResult(Messages.ConfirmPasswordIsRequired, new[] { nameof(ConfirmProposedPassword) });
-            }  
-            
+                yield return new ValidationResult(Messages.ConfirmPasswordIsRequired,
+                    new[] {nameof(ConfirmProposedPassword)});
+            }
+
             if (PreviousPassword.IsNullOrEmpty())
             {
-                yield return new ValidationResult(Messages.CurrentPasswordRequired, new[] { nameof(PreviousPassword) });
+                yield return new ValidationResult(Messages.CurrentPasswordRequired, new[] {nameof(PreviousPassword)});
             }
-            
+
             if (ProposedPassword != ConfirmProposedPassword)
             {
-                yield return new ValidationResult(Messages.PasswordsDoNotMatch, new[] { nameof(ConfirmProposedPassword), nameof(ProposedPassword) });
+                yield return new ValidationResult(Messages.PasswordsDoNotMatch,
+                    new[] {nameof(ConfirmProposedPassword), nameof(ProposedPassword)});
             }
         }
     }

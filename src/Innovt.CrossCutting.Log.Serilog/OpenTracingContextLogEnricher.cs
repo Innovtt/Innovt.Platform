@@ -5,7 +5,7 @@ using Serilog.Events;
 namespace Innovt.CrossCutting.Log.Serilog
 {
     //this code came from https://github.com/yesmarket/Serilog.Enrichers.OpenTracing/blob/master/src/Serilog.Enrichers.OpenTracing/OpenTracingContextLogEventEnricher.cs
-    public class OpenTracingContextLogEnricher:ILogEventEnricher
+    public class OpenTracingContextLogEnricher : ILogEventEnricher
     {
         public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
         {

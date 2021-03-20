@@ -13,7 +13,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Innovt.Data.EFCore
 {
-    public class DbContext: Microsoft.EntityFrameworkCore.DbContext, IExtendedUnitOfWork
+    public class DbContext : Microsoft.EntityFrameworkCore.DbContext, IExtendedUnitOfWork
     {
         private readonly IDataSource dataSource;
         private readonly ILoggerFactory loggerFactory;
@@ -25,13 +25,13 @@ namespace Innovt.Data.EFCore
             base.ChangeTracker.LazyLoadingEnabled = false;
         }
 
-        public DbContext(IDataSource dataSource, ILoggerFactory loggerFactory):this(dataSource)
+        public DbContext(IDataSource dataSource, ILoggerFactory loggerFactory) : this(dataSource)
         {
             this.loggerFactory = loggerFactory ?? throw new ArgumentNullException(nameof(loggerFactory));
         }
 
-        public DbContext(DbContextOptions options):base(options)
-        {   
+        public DbContext(DbContextOptions options) : base(options)
+        {
             base.ChangeTracker.LazyLoadingEnabled = false;
         }
 
@@ -41,13 +41,14 @@ namespace Innovt.Data.EFCore
             {
                 optionsBuilder.UseLoggerFactory(loggerFactory);
             }
-            
-            if (dataSource!=null)
+
+            if (dataSource != null)
             {
                 var connectionString = dataSource.GetConnectionString();
 
-                if(connectionString.IsNullOrEmpty())
-                    throw  new ConnectionStringException($"Connection string for datasource {dataSource.Name} is empty.");
+                if (connectionString.IsNullOrEmpty())
+                    throw new ConnectionStringException(
+                        $"Connection string for datasource {dataSource.Name} is empty.");
 
                 switch (dataSource.Provider)
                 {
@@ -61,32 +62,33 @@ namespace Innovt.Data.EFCore
                         optionsBuilder.UseSqlServer(connectionString);
                         break;
                 }
-            }   
-            
+            }
+
             base.OnConfiguring(optionsBuilder);
         }
 
         public int Commit()
         {
-           return SaveChanges();
+            return SaveChanges();
         }
 
         public async Task<int> CommitAsync(CancellationToken cancellationToken = default)
         {
             return await SaveChangesAsync(cancellationToken);
         }
+
         public void Rollback()
         {
             base.ChangeTracker.Entries()
-                            .ToList()
-                            .ForEach(entry => entry.State = EntityState.Unchanged);
-            
+                .ToList()
+                .ForEach(entry => entry.State = EntityState.Unchanged);
         }
 
         void IExtendedUnitOfWork.Add<T>(T entity)
         {
             base.Add(entity);
         }
+
         void IExtendedUnitOfWork.Add<T>(IEnumerable<T> entities)
         {
             base.AddRange(entities);
@@ -100,7 +102,8 @@ namespace Innovt.Data.EFCore
         }
 
 #pragma warning disable CS1066 // The default value specified will have no effect because it applies to a member that is used in contexts that do not allow optional arguments
-        async Task IExtendedUnitOfWork.AddAsync<T>(IEnumerable<T> entities, CancellationToken cancellationToken = default)
+        async Task IExtendedUnitOfWork.AddAsync<T>(IEnumerable<T> entities,
+            CancellationToken cancellationToken = default)
 #pragma warning restore CS1066 // The default value specified will have no effect because it applies to a member that is used in contexts that do not allow optional arguments
         {
             await base.AddRangeAsync(entities, cancellationToken);
@@ -138,14 +141,14 @@ namespace Innovt.Data.EFCore
 
         int IExtendedUnitOfWork.ExecuteSqlCommand(string sql, params object[] parameters)
         {
-			return base.Database.ExecuteSqlRaw(sql, parameters);
+            return base.Database.ExecuteSqlRaw(sql, parameters);
         }
 
         async Task<int> IExtendedUnitOfWork.ExecuteSqlCommandAsync(string sql, CancellationToken cancellationToken,
-        params object[] parameters)
+            params object[] parameters)
         {
-           return await base.Database.ExecuteSqlRawAsync(sql,cancellationToken: cancellationToken,parameters: parameters);
+            return await base.Database.ExecuteSqlRawAsync(sql, cancellationToken: cancellationToken,
+                parameters: parameters);
         }
-
     }
 }

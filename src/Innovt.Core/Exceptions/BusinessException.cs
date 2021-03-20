@@ -20,14 +20,17 @@ namespace Innovt.Core.Exceptions
         public BusinessException(string message) : base(message)
         {
         }
-        public BusinessException(string message, Exception ex) : base(message, ex) { }
+
+        public BusinessException(string message, Exception ex) : base(message, ex)
+        {
+        }
 
 
         public BusinessException(string code, string message) : base(message)
         {
             this.Code = code;
         }
-        
+
         public BusinessException(string code, string message, Exception ex) : base(message, ex)
         {
             this.Code = code;
@@ -37,12 +40,13 @@ namespace Innovt.Core.Exceptions
         {
             this.Errors = errors;
         }
+
         public BusinessException(ErrorMessage[] errors) : base(CreateMessage(errors))
         {
             this.Errors = errors;
         }
 
-        public BusinessException(ErrorMessage error):this(new[] { error })
+        public BusinessException(ErrorMessage error) : this(new[] {error})
         {
         }
 
@@ -58,9 +62,12 @@ namespace Innovt.Core.Exceptions
             {
                 if (errorInfo.Message.IsNotNullOrEmpty())
                 {
-                    strError.Append("{" + $"\"Message\":\"{errorInfo.Message}\",\"Code\":\"{errorInfo.Code}\",\"PropertyName\":\"{errorInfo.PropertyName}\"" +"}");
+                    strError.Append("{" +
+                                    $"\"Message\":\"{errorInfo.Message}\",\"Code\":\"{errorInfo.Code}\",\"PropertyName\":\"{errorInfo.PropertyName}\"" +
+                                    "}");
                 }
             }
+
             strError.Append("]");
 
             return strError.ToString();

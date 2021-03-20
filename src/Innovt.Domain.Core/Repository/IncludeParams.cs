@@ -12,28 +12,30 @@ namespace Innovt.Domain.Core.Repository
             Includes = new List<string>();
         }
 
-        public Include(params string[] includes):this()
+        public Include(params string[] includes) : this()
         {
             Includes.AddRange(includes);
         }
-       
+
         public bool IsEmpty()
         {
             return Includes == null || !Includes.Any();
         }
 
-        public Include Add(string param) { 
-
+        public Include Add(string param)
+        {
             this.Includes.Add(param);
             return this;
         }
 
-        public Include Add(params string[] parameters) { 
+        public Include Add(params string[] parameters)
+        {
             this.Includes.AddRange(parameters);
             return this;
         }
 
-        public static Include New(params string[] parameters) { 
+        public static Include New(params string[] parameters)
+        {
             return new Include(parameters);
         }
     }

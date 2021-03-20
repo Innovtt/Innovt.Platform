@@ -23,7 +23,7 @@ namespace Innovt.Domain.Core.Specification
     /// </summary>
     /// <typeparam name="TValueObject">Type of element for this specificaiton</typeparam>
     public sealed class NotSpecification<TEntity>
-        :Specification<TEntity>
+        : Specification<TEntity>
         where TEntity : class
     {
         #region Members
@@ -40,7 +40,6 @@ namespace Innovt.Domain.Core.Specification
         /// <param name="originalSpecification">Original specification</param>
         public NotSpecification(ISpecification<TEntity> originalSpecification)
         {
-
             if (originalSpecification == null)
                 throw new ArgumentNullException("originalSpecification");
 
@@ -51,7 +50,7 @@ namespace Innovt.Domain.Core.Specification
         /// Constructor for NotSpecification
         /// </summary>
         /// <param name="originalSpecification">Original specificaiton</param>
-        public NotSpecification(Expression<Func<TEntity,bool>> originalSpecification)
+        public NotSpecification(Expression<Func<TEntity, bool>> originalSpecification)
         {
             originalCriteria = originalSpecification ?? throw new ArgumentNullException("originalSpecification");
         }
@@ -66,9 +65,8 @@ namespace Innovt.Domain.Core.Specification
         /// <returns><see cref="ISpecification{TEntity}"/></returns>
         public override Expression<Func<TEntity, bool>> SatisfiedBy()
         {
-            
-            return Expression.Lambda<Func<TEntity,bool>>(Expression.Not(originalCriteria.Body),
-                                                         originalCriteria.Parameters.Single());
+            return Expression.Lambda<Func<TEntity, bool>>(Expression.Not(originalCriteria.Body),
+                originalCriteria.Parameters.Single());
         }
 
         #endregion

@@ -1,9 +1,8 @@
-
 using System;
 
 namespace Innovt.Domain.Core.Streams
 {
-    public class DataStream<T>: IDataStream<T> where T:class
+    public class DataStream<T> : IDataStream<T> where T : class
     {
         public string Version { get; set; }
         public string EventId { get; set; }
@@ -12,9 +11,9 @@ namespace Innovt.Domain.Core.Streams
         public DateTime ApproximateArrivalTimestamp { get; set; }
 
         public T Body { get; set; }
-        
+
         public DataStream()
-        {   
+        {
         }
 
         public DataStream(string version, string partition, string traceId, T body)

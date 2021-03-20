@@ -2,7 +2,7 @@
 
 namespace Innovt.Core.CrossCutting.Ioc
 {
-    public interface IContainer: IDisposable
+    public interface IContainer : IDisposable
     {
         void AddModule(IOCModule module);
         object Resolve(Type type);

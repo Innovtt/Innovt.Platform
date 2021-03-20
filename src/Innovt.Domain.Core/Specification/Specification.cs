@@ -27,14 +27,13 @@ namespace Innovt.Domain.Core.Specification
     /// </summary>
     /// <typeparam name="TValueObject">Type of item in the criteria</typeparam>
     public abstract class Specification<TEntity>
-         : ISpecification<TEntity>
-         where TEntity : class
+        : ISpecification<TEntity>
+        where TEntity : class
     {
         public int? Page { get; set; }
         public int? PageSize { get; set; }
 
         #region ISpecification<TValueObject> Members
-
 
         /// <summary>
         /// IsSatisFied Specification pattern method,
@@ -52,22 +51,24 @@ namespace Innovt.Domain.Core.Specification
         /// <param name="leftSideSpecification">left operand in this AND operation</param>
         /// <param name="rightSideSpecification">right operand in this AND operation</param>
         /// <returns>New specification</returns>
-        public static Specification<TEntity> operator &(Specification<TEntity> leftSideSpecification, Specification<TEntity> rightSideSpecification)
+        public static Specification<TEntity> operator &(Specification<TEntity> leftSideSpecification,
+            Specification<TEntity> rightSideSpecification)
         {
             return new AndSpecification<TEntity>(leftSideSpecification, rightSideSpecification);
         }
-       
+
         /// <summary>
         /// Or operator
         /// </summary>
         /// <param name="leftSideSpecification">left operand in this OR operation</param>
         /// <param name="rightSideSpecification">left operand in this OR operation</param>
         /// <returns>New specification </returns>
-        public static Specification<TEntity> operator |(Specification<TEntity> leftSideSpecification, Specification<TEntity> rightSideSpecification)
+        public static Specification<TEntity> operator |(Specification<TEntity> leftSideSpecification,
+            Specification<TEntity> rightSideSpecification)
         {
             return new OrSpecification<TEntity>(leftSideSpecification, rightSideSpecification);
         }
-        
+
         /// <summary>
         /// Not specification
         /// </summary>
@@ -77,7 +78,7 @@ namespace Innovt.Domain.Core.Specification
         {
             return new NotSpecification<TEntity>(specification);
         }
-      
+
         /// <summary>
         /// Override operator false, only for support AND OR operators
         /// </summary>
@@ -87,19 +88,19 @@ namespace Innovt.Domain.Core.Specification
         {
             return false;
         }
-        
+
         /// <summary>
         /// Override operator True, only for support AND OR operators
         /// </summary>
         /// <param name="specification">Specification instance</param>
         /// <returns>See True operator in C#</returns>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "specification")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters",
+            MessageId = "specification")]
         public static bool operator true(Specification<TEntity> specification)
         {
             return false;
         }
-      
+
         #endregion
     }
 }
-

@@ -16,14 +16,16 @@ namespace Innovt.AspNetCore.Filters
         private readonly ILogger logger;
 
         public ApiExceptionFilter(ILogger logger, IStringLocalizer<IExceptionResource> localizer)
-        {   
+        {
             this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
             this.stringLocalizer = localizer ?? throw new ArgumentNullException(nameof(localizer));
         }
+
         public ApiExceptionFilter(ILogger logger)
-        {   
+        {
             this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
+
         private string Translate(string message)
         {
             return stringLocalizer == null ? message : stringLocalizer[message];
@@ -46,11 +48,12 @@ namespace Innovt.AspNetCore.Filters
                 context.Result = new BadRequestObjectResult(result);
             }
             else
-            { 
+            {
                 result.Code = $"{StatusCodes.Status500InternalServerError}";
                 result.Detail = $"Server Error: {baseException.Message}. Check your backend log for more detail.";
-                context.Result = new ObjectResult(result) { StatusCode = StatusCodes.Status500InternalServerError };
-                logger?.Error(context.Exception,"Message: {@Message} TraceId: @{TraceId} ",baseException.Message,result.TraceId);
+                context.Result = new ObjectResult(result) {StatusCode = StatusCodes.Status500InternalServerError};
+                logger?.Error(context.Exception, "Message: {@Message} TraceId: @{TraceId} ", baseException.Message,
+                    result.TraceId);
             }
         }
     }
