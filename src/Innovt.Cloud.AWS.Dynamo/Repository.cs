@@ -16,12 +16,15 @@ namespace Innovt.Cloud.AWS.Dynamo
 {
     public abstract class Repository : AwsBaseService, ITableRepository
     {
+
         protected Repository(ILogger logger, IAWSConfiguration configuration) : base(logger, configuration)
         {
+            
         }
 
         protected Repository(ILogger logger, IAWSConfiguration configuration, string region) : base(logger, configuration, region)
         {
+            
         }
 
         private DynamoDBContext context = null;
@@ -106,21 +109,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             
             var items = new List<Dictionary<string, AttributeValue>>();
             var remaining = request.PageSize;
-
-
-            try
-            {
-
-                var tables = await DynamoClient.ListTablesAsync(cancellationToken);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-
-            
-            
+   
             var iterator = DynamoClient.Paginators.Query(queryRequest).Responses.GetAsyncEnumerator(cancellationToken);
 
             do
@@ -237,6 +226,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             var items = new List<T>();
             var remaining = request.PageSize;
             
+         
             var iterator = DynamoClient.Paginators.Scan(scanRequest).Responses.GetAsyncEnumerator(cancellationToken);
             //TODO: Thi code is the same in InternalQuery - Refactory it
             do
@@ -248,7 +238,6 @@ namespace Innovt.Cloud.AWS.Dynamo
 
                 items.AddRange(Helpers.ConvertAttributesToType<T>(iterator.Current.Items, Context));
                 scanRequest.ExclusiveStartKey = lastEvaluatedKey = iterator.Current.LastEvaluatedKey;
-
                 remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
                 
                 if (remaining>0)

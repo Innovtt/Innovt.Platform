@@ -16,7 +16,9 @@ namespace Innovt.Cloud.AWS.Dynamo
     internal static class Helpers
     {
         const string encriptionKey = "AAECAwQFBgcICQoL";
-
+        private const string paginationTokenseparator = "|";
+            
+            
         internal static DynamoDBEntry ConvertObjectToDynamoDbEntry(object value)
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
@@ -148,7 +150,7 @@ namespace Innovt.Cloud.AWS.Dynamo
         }
 
         internal static List<T> ConvertAttributesToType<T>(List<Dictionary<string, AttributeValue>> items, DynamoDBContext context)
-    {
+        {
             if (items is null)
                 return null;
 
@@ -222,60 +224,58 @@ namespace Innovt.Cloud.AWS.Dynamo
 
             return (result1,result2,result3);
         }
-
-    internal static string CreatePaginationToken(Dictionary<string, AttributeValue> lastEvaluatedKey)
+        
+        internal static string CreatePaginationToken(Dictionary<string, AttributeValue> lastEvaluatedKey)
         {
             if (lastEvaluatedKey.IsNullOrEmpty())
                 return null;
 
             var stringBuilder = new StringBuilder();
 
-            foreach (var item in lastEvaluatedKey)
-            {
-                //TODO:Binary not supported
-                var value = item.Value.S != null ? $"S:{item.Value.S}" : $"N:{item.Value.N}";
+            foreach (var (attributeKey,attributeValue) in lastEvaluatedKey)
+            {   
+                var value = attributeValue.S != null ? $"S:{attributeValue.S}" : $"N:{attributeValue.N}";
 
-                stringBuilder.Append($"{item.Key}|{value},");
+                stringBuilder.Append($"{attributeKey}{paginationTokenseparator}{value}\\r\\n");
             }
 
-            return Cryptography.AesEncrypt(stringBuilder.ToString(), encriptionKey).UrlEncode();
+            return Convert.ToBase64String(stringBuilder.ToString().Zip()).UrlEncode();
         }
 
-        internal static Dictionary<string, AttributeValue> PaginationTokenToDictionary(string paginationToken)
+        private static Dictionary<string, AttributeValue> PaginationTokenToDictionary(string paginationToken)
         {
             if (paginationToken.IsNullOrEmpty())
                 return null;
 
-            var decriptedToken =  Cryptography.AesDecrypt(paginationToken.UrlDecode(), encriptionKey);
-
+            var decryptedToken = Convert.FromBase64String(paginationToken.UrlDecode()).Unzip();
+            
             var result = new Dictionary<string, AttributeValue>();
 
-            var keys = decriptedToken.Split(",");
+            var keys = decryptedToken.Split("\\r\\n");
 
             foreach (var key in keys)
             {
-                var attributes = key.Split("|");
+                var attributes = key.Split(paginationTokenseparator);
 
-                if (attributes.Length != 2)
+                if (attributes.Length < 2)
                     continue;
-                 
-                AttributeValue attributeValue;
-                
-                var value = attributes[1].Substring(2, attributes[1].Length - 2);
 
-                if(attributes[1].StartsWith("S:"))
+                var attributeKey = attributes[0];
+                //Just in case that the separator was used
+                var attributeValue = string.Join(paginationTokenseparator, attributes,1,attributes.Length - 1);
+
+                if(attributeValue.StartsWith("S:"))
                 {
-                    attributeValue = new AttributeValue(value);
+                    result.Add(attributeKey, new AttributeValue(attributeValue.Substring(2,attributeValue.Length - 2)));
                 }
                 else
                 {
-                    attributeValue = new AttributeValue()
+                    result.Add(attributeKey, new AttributeValue()
                     {
-                        N = value
-                    };
-                }
+                        N = attributeValue.Substring(2,attributeValue.Length - 2)
+                    });
 
-                result.Add(attributes[0], attributeValue);
+                }
             }
 
             return result;
