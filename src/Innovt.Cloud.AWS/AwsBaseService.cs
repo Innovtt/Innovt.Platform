@@ -7,8 +7,6 @@ using Polly.CircuitBreaker;
 using Polly.Retry;
 using System;
 using System.Net;
-using OpenTracing;
-using OpenTracing.Util;
 using RetryPolicy = Polly.Retry.RetryPolicy;
 
 namespace Innovt.Cloud.AWS
@@ -29,7 +27,6 @@ namespace Innovt.Cloud.AWS
         protected TimeSpan CircuitBreakerDurationOfBreak { get; set; }
 
         protected ILogger Logger { get; }
-        protected ITracer Tracer { get; }
 
         private AwsBaseService()
         {
@@ -44,12 +41,6 @@ namespace Innovt.Cloud.AWS
             Logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        protected AwsBaseService(ILogger logger, ITracer tracer, IAWSConfiguration configuration) : this(logger,
-            configuration)
-        {
-            Tracer = tracer ?? throw new ArgumentNullException(nameof(tracer));
-        }
-
         protected AwsBaseService(ILogger logger, IAWSConfiguration configuration, string region) : this()
         {
             Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
@@ -57,20 +48,6 @@ namespace Innovt.Cloud.AWS
             Region = region ?? throw new ArgumentNullException(nameof(region));
         }
 
-        protected AwsBaseService(ILogger logger, ITracer tracer, IAWSConfiguration configuration, string region) : this(
-            logger, configuration, region)
-        {
-            Tracer = tracer ?? throw new ArgumentNullException(nameof(tracer));
-        }
-
-
-        protected string GetTraceId()
-        {
-            var tracer = GlobalTracer.Instance ?? Tracer;
-
-
-            return tracer?.ActiveSpan?.Context?.TraceId;
-        }
 
         protected RegionEndpoint GetServiceRegionEndPoint()
         {

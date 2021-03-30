@@ -11,7 +11,7 @@
     <Description>AWS implementation for SQS Abstraction.</Description>
   </PropertyGroup>
  <ItemGroup>
-      <PackageReference Include="AWSSDK.SQS" Version="3.5.1.26" />
+      <PackageReference Include="AWSSDK.SQS" Version="3.7.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj" />

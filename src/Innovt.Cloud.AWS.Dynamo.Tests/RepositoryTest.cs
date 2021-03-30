@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Innovt.Cloud.AWS.Configuration;
-using Innovt.Cloud.Table;
 using Innovt.Core.CrossCutting.Log;
 using NUnit.Framework;
 using QueryRequest = Innovt.Cloud.Table.QueryRequest;
@@ -73,7 +71,7 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
                 {
                     IndexName = "BuyerId-DueDate-Index",
                     KeyConditionExpression = "BuyerId = :sid",
-                    Filter = filter,
+                    Filter = filter, 
                     //  Page = "7E5bD%2bk3PeSrD%2bYaP97OaiWT4q0fLR5tAxfISrRdYcIWvyZ5xU0HIAZMCQYZQbGqdY%2f0TGhLjrEZybywEHZ3HV2tP2fnJt0kfF4uLTE81w3%2b98UwsdzR5PUAI3GPcCaNrQQg0mqC%2fQoBjSYEeYfgmpqHw7eVvaD9XE2SAB3BmtcVvs5GqcvgVHDC8J5Lh%2bieRrwG5HpMZnoyRjAHY1Tj2w%3d%3d",
                     PageSize = 10
                 };
@@ -92,7 +90,6 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
                 };
 
                 var res2 = await baseRepository.QueryPaginatedByAsync<DataModel>(queryRequest2, CancellationToken.None);
-
 
                 Console.Write(res2);
             }

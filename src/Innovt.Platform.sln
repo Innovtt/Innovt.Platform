@@ -80,7 +80,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "..\build\_build.c
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".tests", ".tests", "{B9D67F90-4165-4986-AA52-9E30F64013D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innovt.Cloud.AWS.Dynamo.Tests", "Innovt.Cloud.AWS.Dynamo.Tests\Innovt.Cloud.AWS.Dynamo.Tests.csproj", "{B2305000-D0E2-4514-B792-BE05908BA10A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Cloud.AWS.Dynamo.Tests", "Innovt.Cloud.AWS.Dynamo.Tests\Innovt.Cloud.AWS.Dynamo.Tests.csproj", "{B2305000-D0E2-4514-B792-BE05908BA10A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innovt.AspNetCore.Tests", "Innovt.AspNetCore.Tests\Innovt.AspNetCore.Tests.csproj", "{81DB1FBB-ABE5-4548-9B46-6AEFE92EC530}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innovt.AspNetCore.Tests", "Innovt.AspNetCore.Tests\Innovt.AspNetCore.Tests.csproj", "{3BEE08B5-13A2-4FC7-979E-6EA3051B865B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -329,6 +333,22 @@ Global
 		{B2305000-D0E2-4514-B792-BE05908BA10A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B2305000-D0E2-4514-B792-BE05908BA10A}.Release|x86.ActiveCfg = Release|Any CPU
 		{B2305000-D0E2-4514-B792-BE05908BA10A}.Release|x86.Build.0 = Release|Any CPU
+		{81DB1FBB-ABE5-4548-9B46-6AEFE92EC530}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81DB1FBB-ABE5-4548-9B46-6AEFE92EC530}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81DB1FBB-ABE5-4548-9B46-6AEFE92EC530}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{81DB1FBB-ABE5-4548-9B46-6AEFE92EC530}.Debug|x86.Build.0 = Debug|Any CPU
+		{81DB1FBB-ABE5-4548-9B46-6AEFE92EC530}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81DB1FBB-ABE5-4548-9B46-6AEFE92EC530}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81DB1FBB-ABE5-4548-9B46-6AEFE92EC530}.Release|x86.ActiveCfg = Release|Any CPU
+		{81DB1FBB-ABE5-4548-9B46-6AEFE92EC530}.Release|x86.Build.0 = Release|Any CPU
+		{3BEE08B5-13A2-4FC7-979E-6EA3051B865B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BEE08B5-13A2-4FC7-979E-6EA3051B865B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BEE08B5-13A2-4FC7-979E-6EA3051B865B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3BEE08B5-13A2-4FC7-979E-6EA3051B865B}.Debug|x86.Build.0 = Debug|Any CPU
+		{3BEE08B5-13A2-4FC7-979E-6EA3051B865B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BEE08B5-13A2-4FC7-979E-6EA3051B865B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BEE08B5-13A2-4FC7-979E-6EA3051B865B}.Release|x86.ActiveCfg = Release|Any CPU
+		{3BEE08B5-13A2-4FC7-979E-6EA3051B865B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -357,6 +377,7 @@ Global
 		{6FA99C73-D528-4CB3-9B48-B808EE1BEB66} = {2E2BD745-61C0-449D-93C2-EF43F8D7E640}
 		{D1B5CE26-DEE7-409A-9243-FBD526C8632D} = {43B9B336-E801-4F68-BF06-E8F7C538CD7B}
 		{B2305000-D0E2-4514-B792-BE05908BA10A} = {EA0C6A75-5EFC-4F7F-9E13-EB63F17ECF1E}
+		{81DB1FBB-ABE5-4548-9B46-6AEFE92EC530} = {43B9B336-E801-4F68-BF06-E8F7C538CD7B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {43168DBE-48A6-435D-9405-F6728340FFEA}

@@ -1,7 +1,6 @@
 ﻿using Innovt.Cloud.AWS.Configuration;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Domain.Core.Events;
-using OpenTracing;
 
 namespace Innovt.Cloud.AWS.Kinesis
 {
@@ -12,8 +11,8 @@ namespace Innovt.Cloud.AWS.Kinesis
         {
         }
 
-        public EventHandler(string busName, ILogger logger, ITracer tracer, IAWSConfiguration configuration,
-            string region) : base(busName, logger, tracer, configuration, region)
+        public EventHandler(string busName, ILogger logger, IAWSConfiguration configuration,
+            string region) : base(busName, logger, configuration, region)
         {
         }
     }

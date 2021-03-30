@@ -11,7 +11,6 @@ using Innovt.Cloud.AWS.Configuration;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Utilities;
 using Innovt.Domain.Core.Streams;
-using OpenTracing;
 
 namespace Innovt.Cloud.AWS.Kinesis
 {
@@ -25,9 +24,8 @@ namespace Innovt.Cloud.AWS.Kinesis
             BusName = busName ?? throw new ArgumentNullException(nameof(busName));
         }
 
-        protected DataProducer(string busName, ILogger logger, ITracer tracer, IAWSConfiguration configuration,
-            string region) : base(logger, tracer,
-            configuration, region)
+        protected DataProducer(string busName, ILogger logger,IAWSConfiguration configuration,
+            string region) : base(logger,configuration, region)
         {
             BusName = busName ?? throw new ArgumentNullException(nameof(busName));
         }
@@ -58,8 +56,8 @@ namespace Innovt.Cloud.AWS.Kinesis
 
             foreach (var data in dataStreams)
             {
-                if (data.TraceId.IsNullOrEmpty())
-                    data.TraceId = GetTraceId();
+                // if (data.TraceId.IsNullOrEmpty())
+                //     data.TraceId = GetTraceId();
 
                 var dataAsBytes = Encoding.UTF8.GetBytes(System.Text.Json.JsonSerializer.Serialize<object>(data));
                 await using var ms = new MemoryStream(dataAsBytes);

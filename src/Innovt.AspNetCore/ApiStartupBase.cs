@@ -1,6 +1,4 @@
 using System;
-using System.IO;
-using System.Reflection;
 using Innovt.AspNetCore.Filters;
 using Innovt.AspNetCore.Infrastructure;
 using Innovt.AspNetCore.Model;
@@ -8,42 +6,44 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using OpenTracing;
-using OpenTracing.Noop;
-using OpenTracing.Util;
+using Microsoft.OpenApi.Models;
+using OpenTelemetry.Trace;
 
 namespace Innovt.AspNetCore
 {
     public abstract class ApiStartupBase
     {
-        protected string DefaultHealthPath => "/health";
+        protected string DefaultHealthPath  { get; set; }
 
         protected DefaultApiDocumentation Documentation { get; set; }
+
         protected DefaultApiLocalization Localization { get; set; }
+
         protected bool DisableTracing { get; set; }
 
         public IConfiguration Configuration { get; }
-
-        protected ApiStartupBase(IConfiguration configuration, string apiTitle,
-            string apiDescription, string apiVersion, bool enableDocInProduction = false, bool disableTracing = false) :
-            this(configuration)
-        {
-            Documentation = new DefaultApiDocumentation(enableDocInProduction, apiTitle, apiDescription, apiVersion);
-            DisableTracing = disableTracing;
-        }
+        
 
         protected ApiStartupBase(IConfiguration configuration)
         {
             Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
             Localization = new DefaultApiLocalization();
+            DefaultHealthPath = "/health";
         }
 
-        internal bool IsSwaggerEnabled()
+        protected ApiStartupBase(IConfiguration configuration, string apiTitle,
+            string apiDescription, string apiVersion, bool disableTracing = false) :
+            this(configuration)
+        {
+            Documentation = new DefaultApiDocumentation(apiTitle, apiDescription, apiVersion);
+            DisableTracing = disableTracing;
+        }
+
+        private bool IsSwaggerEnabled()
         {
             return Documentation is { };
         }
@@ -53,26 +53,32 @@ namespace Innovt.AspNetCore
             if (!IsSwaggerEnabled())
                 return;
 
-            services.AddSwaggerGen(options =>
+
+            services.AddSwaggerGen(c =>
             {
-                options.IgnoreObsoleteActions();
-                options.IgnoreObsoleteProperties();
-
-                options.SchemaFilter<SwaggerExcludeFilter>();
-                options.OperationFilter<SwaggerExcludeFilter>();
-
-                options.SwaggerDoc(Documentation.ApiVersion,
-                    new Microsoft.OpenApi.Models.OpenApiInfo
-                    {
-                        Title = Documentation.ApiTitle, Description = Documentation.ApiDescription,
-                        Version = Documentation.ApiVersion
-                    });
-
-                var xmlPath = Path.Combine(AppContext.BaseDirectory,
-                    $"{Assembly.GetEntryAssembly()?.GetName().Name}.xml");
-
-                if (File.Exists(xmlPath)) options.IncludeXmlComments(xmlPath);
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication1", Version = "v1" });
             });
+
+            // services.AddSwaggerGen(options =>
+            // {
+            //     options.IgnoreObsoleteActions();
+            //     options.IgnoreObsoleteProperties();
+            //
+            //     options.SchemaFilter<SwaggerExcludeFilter>();
+            //     options.OperationFilter<SwaggerExcludeFilter>();
+            //
+            //     options.SwaggerDoc(Documentation.ApiVersion,
+            //         new Microsoft.OpenApi.Models.OpenApiInfo
+            //         {
+            //             Title = Documentation.ApiTitle, Description = Documentation.ApiDescription,
+            //             Version = Documentation.ApiVersion
+            //         });
+            //
+            //     var xmlPath = Path.Combine(AppContext.BaseDirectory,
+            //         $"{Assembly.GetEntryAssembly()?.GetName().Name}.xml");
+            //
+            //     if (File.Exists(xmlPath)) options.IncludeXmlComments(xmlPath);
+            // });
         }
 
         /// <summary>
@@ -89,15 +95,11 @@ namespace Innovt.AspNetCore
             if (DisableTracing)
                 return;
 
-            services.AddOpenTracing(b => b.AddAspNetCore());
-
-            services.AddSingleton<ITracer>(serviceProvider =>
+            services.AddOpenTelemetryTracing(builder =>
             {
-                var tracer = CreateTracer(services);
-
-                GlobalTracer.Register(tracer);
-
-                return tracer;
+                builder.AddAspNetCoreInstrumentation()
+                    .AddSource()
+                    .AddConsoleExporter();
             });
         }
 
@@ -140,32 +142,37 @@ namespace Innovt.AspNetCore
         /// <param name="services"></param>
         public virtual void ConfigureServices(IServiceCollection services)
         {
-            ConfigureIoC(services);
-
-            AddDefaultServices(services);
-
-            AddCoreServices(services);
-
-            services.Configure(ConfigureApiBehavior());
-
-            ConfigureHealthChecks(services);
-
-            AddTracing(services);
-
-            AddSwagger(services);
+            // ConfigureIoC(services);
+            //
+            // AddDefaultServices(services);
+            //
+            // AddCoreServices(services);
+            //
+            // services.Configure(ConfigureApiBehavior());
+            //
+            // ConfigureHealthChecks(services);
+            //
+            // AddTracing(services);
+            //
+            // AddSwagger(services);
         }
 
         protected virtual void ConfigureSwaggerUi(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (!IsSwaggerEnabled() || env.IsProduction() && !Documentation.EnableDocInProduction) return;
+            if (!IsSwaggerEnabled()) return;
 
-            app.UseRewriter(new RewriteOptions().AddRedirect("(.*)docs$", "$1docs/index.html"));
 
-            app.UseSwagger(s => { s.RouteTemplate = "docs/{documentName}/swagger.json"; }).UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint($"{Documentation.ApiVersion}/swagger.json", Documentation.ApiTitle);
-                c.RoutePrefix = "docs";
-            });
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", Documentation.ApiTitle));
+
+
+            // app.UseRewriter(new RewriteOptions().AddRedirect("(.*)docs$", "$1docs/index.html"));
+            //
+            // app.UseSwagger(s => { s.RouteTemplate = "docs/{documentName}/swagger.json"; }).UseSwaggerUI(c =>
+            // {
+            //     c.SwaggerEndpoint($"{Documentation.ApiVersion}/swagger.json", Documentation.ApiTitle);
+            //     c.RoutePrefix = "docs";
+            // });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -177,15 +184,30 @@ namespace Innovt.AspNetCore
         /// <param name="loggerFactory"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
-            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                
+                ConfigureSwaggerUi(app, env);
+            }
 
-            ConfigureCultures(app);
+            app.UseHttpsRedirection().UseRouting();
 
-            app.UseHealthChecks(DefaultHealthPath);
+            //ConfigureCultures(app);
 
+            //app.UseHealthChecks(DefaultHealthPath);
             ConfigureApp(app, env, loggerFactory);
 
-            ConfigureSwaggerUi(app, env);
+            app.UseEndpoints(endpoints =>
+                {
+                 
+                });
+                
+                
+            // app.UseEndpoints(endpoints =>
+            // {
+            //     endpoints.MapControllers();
+            // });
         }
 
         protected abstract void AddDefaultServices(IServiceCollection services);
@@ -194,12 +216,7 @@ namespace Innovt.AspNetCore
 
         public abstract void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env,
             ILoggerFactory loggerFactory);
-
-        protected virtual ITracer CreateTracer(IServiceCollection services)
-        {
-            return NoopTracerFactory.Create();
-        }
-
+        
         protected virtual Action<ApiBehaviorOptions> ConfigureApiBehavior()
         {
             return options =>

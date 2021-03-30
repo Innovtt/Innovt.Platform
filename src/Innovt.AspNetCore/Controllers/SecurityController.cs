@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
-using OpenTracing;
+
 
 namespace Innovt.AspNetCore.Controllers
 {
@@ -18,8 +18,7 @@ namespace Innovt.AspNetCore.Controllers
     {
         private readonly IActionDescriptorCollectionProvider actionDescriptorProvider;
 
-        public SecurityController(IActionDescriptorCollectionProvider actionDescriptorProvider, ILogger logger,
-            ITracer tracer) : base(logger, tracer)
+        public SecurityController(IActionDescriptorCollectionProvider actionDescriptorProvider, ILogger logger) : base(logger)
         {
             this.actionDescriptorProvider = actionDescriptorProvider ??
                                             throw new ArgumentNullException(nameof(actionDescriptorProvider));

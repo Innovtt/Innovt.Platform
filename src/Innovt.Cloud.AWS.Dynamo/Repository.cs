@@ -42,7 +42,8 @@ namespace Innovt.Cloud.AWS.Dynamo
         {
             var config = new DynamoDBOperationConfig()
             {
-                ConsistentRead = true
+                ConsistentRead = true,
+                Conversion =  DynamoDBEntryConversion.V2
             };
 
             var policy = CreateDefaultRetryAsyncPolicy();
@@ -79,7 +80,8 @@ namespace Innovt.Cloud.AWS.Dynamo
         {
             var config = new DynamoDBOperationConfig()
             {
-                IgnoreNullValues = true
+                IgnoreNullValues = true, 
+                Conversion =  DynamoDBEntryConversion.V2
             };
 
             await CreateDefaultRetryAsyncPolicy()
@@ -148,7 +150,8 @@ namespace Innovt.Cloud.AWS.Dynamo
         {
             var config = new DynamoDBOperationConfig()
             {
-                BackwardQuery = true
+                BackwardQuery = true,
+                Conversion =  DynamoDBEntryConversion.V2
             };
 
             var result = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
@@ -165,7 +168,8 @@ namespace Innovt.Cloud.AWS.Dynamo
             var config = new DynamoDBOperationConfig()
             {
                 ConsistentRead = true,
-                BackwardQuery = true
+                BackwardQuery = true,
+                Conversion =  DynamoDBEntryConversion.V2
             };
 
             var result = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
