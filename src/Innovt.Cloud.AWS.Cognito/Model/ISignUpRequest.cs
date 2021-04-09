@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Innovt.Cloud.AWS.Cognito.Model
+﻿namespace Innovt.Cloud.AWS.Cognito.Model
 {
     public interface ISignUpRequest : IRequestBase
     {

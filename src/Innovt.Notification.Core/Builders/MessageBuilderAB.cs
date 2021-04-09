@@ -1,6 +1,6 @@
-﻿using System;
-using Innovt.Notification.Core.Domain;
+﻿using Innovt.Notification.Core.Domain;
 using Innovt.Notification.Core.Template;
+using System;
 
 namespace Innovt.Notification.Core.Builders
 {

@@ -1,5 +1,4 @@
 ﻿using System.Text.Json.Serialization;
-using ThirdParty.Json.LitJson;
 
 namespace Innovt.Cloud.AWS.Cognito.Model
 {

@@ -1,30 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Reflection;
-using Innovt.AspNetCore.ViewModel;
+﻿using Innovt.AspNetCore.ViewModel;
 using Innovt.Core.CrossCutting.Log;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Reflection;
 
 
 namespace Innovt.AspNetCore.Controllers
 {
     [Obsolete("Please do not use it anymore!:)")]
-    public class SecurityController : BaseController
+    public class SecurityController : Controller
     {
         private readonly IActionDescriptorCollectionProvider actionDescriptorProvider;
 
-        public SecurityController(IActionDescriptorCollectionProvider actionDescriptorProvider, ILogger logger) : base(logger)
+        protected ILogger Logger { get; }
+
+        public SecurityController(IActionDescriptorCollectionProvider actionDescriptorProvider, ILogger logger)
         {
             this.actionDescriptorProvider = actionDescriptorProvider ??
                                             throw new ArgumentNullException(nameof(actionDescriptorProvider));
+            this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        protected List<MvcControllerViewModel> GetControllers()
+        protected IList<MvcControllerViewModel> GetControllers()
         {
             var controllers = new List<MvcControllerViewModel>();
 
@@ -32,7 +35,7 @@ namespace Innovt.AspNetCore.Controllers
             var items = actionDescriptorProvider
                 .ActionDescriptors.Items
                 .Where(descriptor => descriptor.GetType() == typeof(ControllerActionDescriptor))
-                .Select(descriptor => (ControllerActionDescriptor) descriptor)
+                .Select(descriptor => (ControllerActionDescriptor)descriptor)
                 .GroupBy(descriptor => descriptor.ControllerTypeInfo.FullName)
                 .ToList();
 
@@ -71,7 +74,7 @@ namespace Innovt.AspNetCore.Controllers
                     });
                 }
 
-                currentController.Actions = actions;
+                currentController.AddActions(actions);
                 controllers.Add(currentController);
             }
 

@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
-using Amazon.SQS;
+﻿using Amazon.SQS;
 using Amazon.SQS.Model;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.Queue;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Serialization;
+using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.SQS
 {
@@ -70,7 +69,7 @@ namespace Innovt.Cloud.AWS.SQS
             var request = new ReceiveMessageRequest()
             {
                 MaxNumberOfMessages = quantity,
-                AttributeNames = new List<string>() {"All"},
+                AttributeNames = new List<string>() { "All" },
                 QueueUrl = await GetQueueUrlAsync()
             };
 
@@ -117,7 +116,7 @@ namespace Innovt.Cloud.AWS.SQS
 
         public async Task<int> ApproximateMessageCountAsync(CancellationToken cancellationToken = default)
         {
-            var attributes = new List<string>() {"ApproximateNumberOfMessages"};
+            var attributes = new List<string>() { "ApproximateNumberOfMessages" };
 
             var queueUrl = await GetQueueUrlAsync();
 
@@ -198,11 +197,11 @@ namespace Innovt.Cloud.AWS.SQS
 
             if (response.Successful != null)
                 foreach (var item in response.Successful)
-                    result.Add(new MessageQueueResult() {Id = item.Id, Success = true});
+                    result.Add(new MessageQueueResult() { Id = item.Id, Success = true });
 
             if (response.Failed != null)
                 foreach (var item in response.Failed)
-                    result.Add(new MessageQueueResult() {Id = item.Id, Success = false, Error = item.Message});
+                    result.Add(new MessageQueueResult() { Id = item.Id, Success = false, Error = item.Message });
 
             return result;
         }

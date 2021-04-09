@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Innovt.Core.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Innovt.Core.Exceptions;
 
 namespace Innovt.Core.Utilities
 {

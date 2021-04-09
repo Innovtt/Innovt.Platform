@@ -1,18 +1,18 @@
 ﻿using Amazon.S3;
 using Amazon.S3.Model;
 using Amazon.S3.Transfer;
+using Innovt.Cloud.AWS.Configuration;
+using Innovt.Cloud.File;
+using Innovt.Core.CrossCutting.Log;
+using Innovt.Core.Utilities;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Innovt.Cloud.AWS.Configuration;
-using Innovt.Core.Utilities;
-using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Net;
-using Innovt.Cloud.File;
-using Innovt.Core.CrossCutting.Log;
 
 namespace Innovt.Cloud.AWS.S3
 {
@@ -236,7 +236,7 @@ namespace Innovt.Cloud.AWS.S3
             IDictionary<string, object> additionalProperties)
         {
             return base.CreateDefaultRetryPolicy().Execute(() =>
-                ((IAmazonS3) S3Client).GeneratePreSignedURL(bucketName, key, expiration, additionalProperties));
+                ((IAmazonS3)S3Client).GeneratePreSignedURL(bucketName, key, expiration, additionalProperties));
         }
 
         public async Task UploadDirectoryAsync(string bucketName, string directory,

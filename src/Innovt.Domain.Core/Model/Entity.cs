@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Innovt.Domain.Core.Events;
+using System;
 using System.Collections.Generic;
-using Innovt.Domain.Core.Events;
 
 namespace Innovt.Domain.Core.Model
 {

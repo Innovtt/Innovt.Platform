@@ -1,9 +1,9 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Core.CrossCutting.Log;
 using NUnit.Framework;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 using QueryRequest = Innovt.Cloud.Table.QueryRequest;
 
 namespace Innovt.Cloud.AWS.Dynamo.Tests
@@ -66,12 +66,12 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
                 // };
                 //
 
-                var filter = new {sid = "09788ce6-4ecb-40e5-8231-4e646a1ff3d9"};
+                var filter = new { sid = "09788ce6-4ecb-40e5-8231-4e646a1ff3d9" };
                 var queryRequest = new QueryRequest()
                 {
                     IndexName = "BuyerId-DueDate-Index",
                     KeyConditionExpression = "BuyerId = :sid",
-                    Filter = filter, 
+                    Filter = filter,
                     //  Page = "7E5bD%2bk3PeSrD%2bYaP97OaiWT4q0fLR5tAxfISrRdYcIWvyZ5xU0HIAZMCQYZQbGqdY%2f0TGhLjrEZybywEHZ3HV2tP2fnJt0kfF4uLTE81w3%2b98UwsdzR5PUAI3GPcCaNrQQg0mqC%2fQoBjSYEeYfgmpqHw7eVvaD9XE2SAB3BmtcVvs5GqcvgVHDC8J5Lh%2bieRrwG5HpMZnoyRjAHY1Tj2w%3d%3d",
                     PageSize = 10
                 };

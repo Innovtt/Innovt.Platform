@@ -8,14 +8,14 @@ namespace Innovt.CrossCutting.Log.Serilog
     public class OpenTracingContextLogEnricher : ILogEventEnricher
     {
         public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
-         {
-        //     var tracer = "" GlobalTracer.Instance;
-        //
-        //     if (tracer?.ActiveSpan == null)
-        //         return;
-        //
-        //     logEvent.AddPropertyIfAbsent(propertyFactory.CreateProperty("TraceId", tracer.ActiveSpan.Context.TraceId));
-        //     logEvent.AddPropertyIfAbsent(propertyFactory.CreateProperty("SpanId", tracer.ActiveSpan.Context.SpanId));
+        {
+            //     var tracer = "" GlobalTracer.Instance;
+            //
+            //     if (tracer?.ActiveSpan == null)
+            //         return;
+            //
+            //     logEvent.AddPropertyIfAbsent(propertyFactory.CreateProperty("TraceId", tracer.ActiveSpan.Context.TraceId));
+            //     logEvent.AddPropertyIfAbsent(propertyFactory.CreateProperty("SpanId", tracer.ActiveSpan.Context.SpanId));
         }
     }
 }

@@ -1,16 +1,16 @@
-﻿using System;
+﻿using Amazon.Kinesis;
+using Amazon.Kinesis.Model;
+using Innovt.Cloud.AWS.Configuration;
+using Innovt.Core.CrossCutting.Log;
+using Innovt.Core.Utilities;
+using Innovt.Domain.Core.Streams;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Amazon.Kinesis;
-using Amazon.Kinesis.Model;
-using Innovt.Cloud.AWS.Configuration;
-using Innovt.Core.CrossCutting.Log;
-using Innovt.Core.Utilities;
-using Innovt.Domain.Core.Streams;
 
 namespace Innovt.Cloud.AWS.Kinesis
 {
@@ -24,8 +24,8 @@ namespace Innovt.Cloud.AWS.Kinesis
             BusName = busName ?? throw new ArgumentNullException(nameof(busName));
         }
 
-        protected DataProducer(string busName, ILogger logger,IAWSConfiguration configuration,
-            string region) : base(logger,configuration, region)
+        protected DataProducer(string busName, ILogger logger, IAWSConfiguration configuration,
+            string region) : base(logger, configuration, region)
         {
             BusName = busName ?? throw new ArgumentNullException(nameof(busName));
         }
@@ -95,7 +95,7 @@ namespace Innovt.Cloud.AWS.Kinesis
 
             Logger.Info("Sending Domain Event @name", @data);
 
-            await InternalPublish(new List<T>() {@data}, cancellationToken);
+            await InternalPublish(new List<T>() { @data }, cancellationToken);
         }
 
         public async Task Publish(IEnumerable<T> events, CancellationToken cancellationToken = default)

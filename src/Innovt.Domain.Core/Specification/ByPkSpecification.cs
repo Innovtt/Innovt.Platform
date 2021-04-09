@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Innovt.Domain.Core.Model;
+using System;
 using System.Linq.Expressions;
-using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Core.Specification
 {

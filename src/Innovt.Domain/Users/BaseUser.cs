@@ -3,8 +3,8 @@
 // Created By: Michel Borges
 // Date: 2016/10/19
 
-using System;
 using Innovt.Domain.Core.Model;
+using System;
 
 namespace Innovt.Domain.Users
 {

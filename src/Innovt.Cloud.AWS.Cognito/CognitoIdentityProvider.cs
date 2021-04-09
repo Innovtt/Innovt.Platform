@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Reflection;
-using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
-using Amazon.CognitoIdentityProvider;
+﻿using Amazon.CognitoIdentityProvider;
 using Amazon.CognitoIdentityProvider.Model;
-using Amazon.CognitoIdentityProvider.Model.Internal.MarshallTransformations;
 using Innovt.Cloud.AWS.Cognito.Model;
 using Innovt.Cloud.AWS.Cognito.Resources;
 using Innovt.Cloud.AWS.Configuration;
@@ -17,6 +8,14 @@ using Innovt.Core.Exceptions;
 using Innovt.Core.Http;
 using Innovt.Core.Utilities;
 using Innovt.Core.Validation;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Reflection;
+using System.Text.Json;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Cognito
 {
@@ -197,7 +196,7 @@ namespace Innovt.Cloud.AWS.Cognito
 
             command.EnsureIsValid();
 
-            var parameters = new Dictionary<string, string>() {{"PASSWORD", command.Password}};
+            var parameters = new Dictionary<string, string>() { { "PASSWORD", command.Password } };
 
             return await SignIn(AuthFlowType.USER_PASSWORD_AUTH, command, parameters, cancellationToken);
         }
@@ -274,7 +273,7 @@ namespace Innovt.Cloud.AWS.Cognito
                 var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                     await CognitoidentityProvider.SignUpAsync(signUpRequest, cancellationToken));
 
-                return new Model.SignUpResponse {Confirmed = response.UserConfirmed, UUID = response.UserSub};
+                return new Model.SignUpResponse { Confirmed = response.UserConfirmed, UUID = response.UserSub };
             }
             catch (Exception ex)
             {
@@ -568,7 +567,7 @@ namespace Innovt.Cloud.AWS.Cognito
 
                 var socialUser = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                     await CognitoidentityProvider.GetUserAsync(
-                        new Amazon.CognitoIdentityProvider.Model.GetUserRequest {AccessToken = response.AccessToken},
+                        new Amazon.CognitoIdentityProvider.Model.GetUserRequest { AccessToken = response.AccessToken },
                         cancellationToken));
 
                 if (socialUser == null)

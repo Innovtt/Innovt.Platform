@@ -1,49 +1,49 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Globalization;
-using System.Net.Http;
-using System.Text.Json;
-using System.Threading.Tasks;
-using Innovt.AspNetCore.Extensions;
+﻿using Innovt.AspNetCore.Extensions;
 using Innovt.Core.Exceptions;
-using Innovt.Core.Utilities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Configuration;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
+using Innovt.Core.Utilities;
 
 namespace Innovt.AspNetCore.Filters
 {
     /// <summary>
     /// Code by Rafael Cruzeiro: https://github.com/rcruzeiro/Core.Framework/tree/master/Core.Framework.reCAPTCHA
     /// </summary>
-    public class CaptchaValidatorFilterAttribute : ActionFilterAttribute
+    public sealed class CaptchaValidatorFilterAttribute : ActionFilterAttribute
     {
-        private readonly string antiForgery;
-        private readonly string hostName;
-        private static string secretKey;
-        private const string captchaURI = "https://www.google.com/recaptcha/api/siteverify";
-        private readonly string defaultToken = "inn0ut#";
+
+        public string AntiForgery { get; }
+        public string HostName { get; }
+        public string SecretKey { get; internal set; }
+        public string DefaultToken { get; }
+        private const string CaptchaUri = "https://www.google.com/recaptcha/api/siteverify";
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="antiForgery"></param>
         /// <param name="hostName"></param>
+        /// <param name="secretKey"></param>
         /// <param name="defaultToken">You can use this parameter if you want to mock you request. You can't set empty string.</param>
-        public CaptchaValidatorFilterAttribute(string antiForgery = null, string hostName = null,
-            string defaultToken = "inn0ut#")
+        public CaptchaValidatorFilterAttribute(string antiForgery, string hostName, string secretKey,string defaultToken = "inn0ut#")
         {
-            this.antiForgery = antiForgery;
-            this.hostName = hostName;
-            this.defaultToken = defaultToken ?? throw new ArgumentNullException(nameof(defaultToken));
+            this.DefaultToken = defaultToken ?? throw new ArgumentNullException(nameof(defaultToken));
+            this.AntiForgery = antiForgery;
+            this.HostName = hostName;
+            this.SecretKey = secretKey;
         }
 
         private void ReadConfig(HttpContext context)
         {
-            if (secretKey.IsNotNullOrEmpty())
+            if (SecretKey.IsNotNullOrEmpty())
                 return;
-
 
             if (!(context.RequestServices.GetService(typeof(IConfiguration)) is IConfiguration configuration))
                 throw new ConfigurationException("IConfiguration Service not found.");
@@ -54,9 +54,9 @@ namespace Innovt.AspNetCore.Filters
                 throw new ConfigurationException(
                     "Recaptcha section not found. The Recaptcha should contain: SiteKey and SecretKey");
 
-            secretKey = captchaSection["SecretKey"];
+            SecretKey = captchaSection["SecretKey"];
 
-            if (secretKey.IsNullOrEmpty())
+            if (SecretKey.IsNullOrEmpty())
                 throw new ConfigurationException("Recaptcha SecretKey can not bu null or empty.");
         }
 
@@ -64,7 +64,7 @@ namespace Innovt.AspNetCore.Filters
         {
             if (string.IsNullOrEmpty(token)) throw new ValidationException("Invalid token.");
 
-            if (defaultToken.IsNotNullOrEmpty() && token == defaultToken)
+            if (DefaultToken.IsNotNullOrEmpty() && token == DefaultToken)
                 return true;
 
             ReadConfig(context);
@@ -72,7 +72,8 @@ namespace Innovt.AspNetCore.Filters
 
             using var httpClient = new HttpClient();
 
-            var stringAsync = await httpClient.GetStringAsync($"{captchaURI}?secret={secretKey}&response={token}")
+
+            var stringAsync = await httpClient.GetStringAsync(new Uri($"{CaptchaUri}?secret={SecretKey}&response={token}"))
                 .ConfigureAwait(false);
 
             var serializerSettings = new JsonSerializerOptions
@@ -83,8 +84,11 @@ namespace Innovt.AspNetCore.Filters
 
             var captchaResponse = JsonSerializer.Deserialize<dynamic>(stringAsync, serializerSettings);
 
-            if (captchaResponse.Success & antiForgery && hostName.IsNotNullOrEmpty() &&
-                !captchaResponse.Hostname.Equals(hostName))
+            if (captchaResponse is null)
+                return false;
+
+            if (captchaResponse.Success & AntiForgery && HostName.IsNotNullOrEmpty() &&
+                !captchaResponse.Hostname.Equals(HostName))
                 throw new ValidationException(
                     "Captcha hostname and request hostname do not match. Please review anti forgery settings.");
 
@@ -93,7 +97,7 @@ namespace Innovt.AspNetCore.Filters
 
         public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            if (!context.HttpContext.IsLocal())
+            if (context!=null && !context.HttpContext.IsLocal())
             {
                 var header =
                     context.HttpContext.Request.Headers.TryGetValue("g-recaptcha-response", out var recaptchaResponse);
@@ -125,7 +129,7 @@ namespace Innovt.AspNetCore.Filters
                 }
             }
 
-            await base.OnActionExecutionAsync(context, next);
+            await base.OnActionExecutionAsync(context, next).ConfigureAwait(false);
         }
     }
 }

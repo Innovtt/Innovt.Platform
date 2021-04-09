@@ -1,9 +1,9 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
-using Innovt.Core.Attributes;
+﻿using Innovt.Core.Attributes;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using System;
+using System.Linq;
+using System.Reflection;
 
 namespace Innovt.AspNetCore.Filters
 {
@@ -11,6 +11,9 @@ namespace Innovt.AspNetCore.Filters
     {
         public void Apply(OpenApiSchema schema, SchemaFilterContext context)
         {
+            if (schema == null) throw new ArgumentNullException(nameof(schema));
+            if (context == null) throw new ArgumentNullException(nameof(context));
+
             if (schema.Properties.Count == 0)
                 return;
 
@@ -23,7 +26,7 @@ namespace Innovt.AspNetCore.Filters
             foreach (var prop in excludeAttributes)
             {
                 var schemaProp = schema.Properties.Where(p =>
-                        string.Equals(p.Key, prop, StringComparison.InvariantCultureIgnoreCase)).Select(p => p.Key)
+                        string.Equals(p.Key, prop, StringComparison.OrdinalIgnoreCase)).Select(p => p.Key)
                     .SingleOrDefault();
 
                 if (schemaProp != null)
@@ -33,6 +36,9 @@ namespace Innovt.AspNetCore.Filters
 
         public void Apply(OpenApiOperation operation, OperationFilterContext context)
         {
+            if (operation == null) throw new ArgumentNullException(nameof(operation));
+            if (context == null) throw new ArgumentNullException(nameof(context));
+
             var ignoredProperties = context.MethodInfo.GetCustomAttributes<ModelExcludeFilterAttribute>(true)
                 .SelectMany(a => a.ExcludeAttributes).ToList();
 
@@ -42,7 +48,7 @@ namespace Innovt.AspNetCore.Filters
             foreach (var prop in ignoredProperties)
             {
                 var schemaProp = operation.Parameters
-                    .SingleOrDefault(p => string.Equals(p.Name, prop, StringComparison.InvariantCultureIgnoreCase));
+                    .SingleOrDefault(p => string.Equals(p.Name, prop, StringComparison.OrdinalIgnoreCase));
 
                 if (schemaProp != null)
                     operation.Parameters.Remove(schemaProp);

@@ -13,7 +13,7 @@ namespace Innovt.Core.Attributes
 
         public ModelExcludeFilterAttribute([CallerMemberName] string propertyName = null)
         {
-            ExcludeAttributes = new[] {propertyName};
+            ExcludeAttributes = new[] { propertyName };
         }
 
         public ModelExcludeFilterAttribute(params string[] excludeAttributes)

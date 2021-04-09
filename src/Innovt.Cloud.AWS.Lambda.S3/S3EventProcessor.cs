@@ -1,8 +1,8 @@
-﻿using System.Threading.Tasks;
-using Amazon.Lambda.Core;
+﻿using Amazon.Lambda.Core;
 using Amazon.Lambda.S3Events;
 using Amazon.S3.Util;
 using Innovt.Core.CrossCutting.Log;
+using System.Threading.Tasks;
 
 
 namespace Innovt.Cloud.AWS.Lambda.S3

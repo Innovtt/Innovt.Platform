@@ -1,6 +1,6 @@
-﻿using System;
-using Innovt.Core.CrossCutting.Ioc;
+﻿using Innovt.Core.CrossCutting.Ioc;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace Innovt.CrossCutting.IOC
 {

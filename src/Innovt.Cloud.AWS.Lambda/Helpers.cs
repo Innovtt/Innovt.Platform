@@ -3,10 +3,10 @@
 // DATE: 02-26-2019
 // AUTHOR: michel
 
-using System;
-using System.IO;
 using Amazon.Lambda.Core;
 using Microsoft.Extensions.Configuration;
+using System;
+using System.IO;
 
 namespace Innovt.Cloud.AWS.Lambda
 {

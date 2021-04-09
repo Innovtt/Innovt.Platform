@@ -1,6 +1,6 @@
-﻿using System;
-using Innovt.Core.Cqrs.Queries;
+﻿using Innovt.Core.Cqrs.Queries;
 using Innovt.Core.Validation;
+using System;
 
 namespace Innovt.Cqrs.Queries.Decorators
 {

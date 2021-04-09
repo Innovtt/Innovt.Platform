@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Innovt.Core.Exceptions;
+using System;
 using System.Linq;
 using System.Reflection;
-using Innovt.Core.Exceptions;
 
 namespace Innovt.Core.CrossCutting.Ioc
 {
@@ -68,7 +68,7 @@ namespace Innovt.Core.CrossCutting.Ioc
 
             foreach (var module in modules)
             {
-                var moduleInstance = (IOCModule) Activator.CreateInstance(module);
+                var moduleInstance = (IOCModule)Activator.CreateInstance(module);
 
                 container.AddModule(moduleInstance);
             }

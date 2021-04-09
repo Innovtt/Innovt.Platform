@@ -1,9 +1,9 @@
-﻿using System;
-using System.IO;
-using Innovt.Core.CrossCutting.Ioc;
+﻿using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
 using Microsoft.Extensions.Configuration;
+using System;
+using System.IO;
 
 namespace Innovt.Job.Core
 {

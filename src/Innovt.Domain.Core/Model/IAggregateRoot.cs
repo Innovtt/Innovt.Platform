@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Innovt.Domain.Core.Events;
-
-namespace Innovt.Domain.Core.Model
+﻿namespace Innovt.Domain.Core.Model
 {
     public interface IAggregateRoot<T>
     {

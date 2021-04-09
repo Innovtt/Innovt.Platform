@@ -1,9 +1,9 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Innovt.Core.CrossCutting.Log;
+﻿using Innovt.Core.CrossCutting.Log;
 using Innovt.Job.Core;
 using Quartz;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Innovt.Job.Quartz
 {

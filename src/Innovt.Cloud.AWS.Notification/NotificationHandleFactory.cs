@@ -1,7 +1,7 @@
-﻿using System;
-using Innovt.Core.CrossCutting.Ioc;
+﻿using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Notification.Core;
 using Innovt.Notification.Core.Domain;
+using System;
 
 namespace Innovt.Cloud.AWS.Notification
 {

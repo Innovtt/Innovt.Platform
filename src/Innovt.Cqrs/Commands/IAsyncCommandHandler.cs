@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using Innovt.Core.Cqrs.Commands;
 using System.Threading;
 using System.Threading.Tasks;
-using Innovt.Core.Cqrs.Commands;
 
 namespace Innovt.Cqrs.Commands
 {

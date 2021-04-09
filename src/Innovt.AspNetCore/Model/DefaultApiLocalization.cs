@@ -6,7 +6,7 @@ namespace Innovt.AspNetCore.Model
 {
     public class DefaultApiLocalization
     {
-        public List<CultureInfo> SupportedCultures { get; set; }
+        public IList<CultureInfo> SupportedCultures { get; private set; }
 
         public Type DefaultLocalizeResource { get; set; }
         public CultureInfo RequestCulture { get; set; }

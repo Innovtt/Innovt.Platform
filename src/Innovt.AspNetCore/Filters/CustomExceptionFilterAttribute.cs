@@ -1,22 +1,22 @@
 ﻿// TotalAcesso.Admin.Web
 
-using System.Linq;
 using Innovt.Core.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
+using System.Linq;
 
 namespace Innovt.AspNetCore.Filters
 {
-    public class CustomExceptionFilterAttribute : ExceptionFilterAttribute
+    public sealed class CustomExceptionFilterAttribute : ExceptionFilterAttribute
     {
         public override void OnException(ExceptionContext context)
         {
-            if (context.ExceptionHandled) return;
+            if (context is null || context.ExceptionHandled) return;
 
             if (!(context.Exception is BusinessException)) return;
 
-            var bEx = (BusinessException) context.Exception;
+            var bEx = (BusinessException)context.Exception;
 
             if (bEx.Errors.Any())
                 foreach (var error in bEx.Errors)
@@ -26,7 +26,7 @@ namespace Innovt.AspNetCore.Filters
 
             context.Result = new ViewResult
             {
-                ViewName = ((RouteData) context.RouteData).Values["action"].ToString()
+                ViewName = (context.RouteData as RouteData)?.Values["action"]?.ToString()
             };
             context.ExceptionHandled = true;
 

@@ -1,15 +1,15 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Innovt.AspNetCore.Extensions;
+﻿using Innovt.AspNetCore.Extensions;
 using Innovt.Core.Utilities;
 using Innovt.Domain.Security;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
+using System;
+using System.Linq;
+using System.Reflection;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Innovt.AspNetCore.Filters
 {
@@ -31,13 +31,16 @@ namespace Innovt.AspNetCore.Filters
         }
 
 
-        private bool IsUserAuthenticated(AuthorizationFilterContext context)
+        private static bool IsUserAuthenticated(AuthorizationFilterContext context)
         {
+            if (context?.HttpContext.User.Identity is null)
+                return false;
+
             return context.HttpContext.User.Identity.IsAuthenticated;
         }
 
 
-        private string GetUserId(AuthorizationFilterContext context)
+        private static string GetUserId(AuthorizationFilterContext context)
         {
             var userId = context.HttpContext.User?.GetClaim(ClaimTypes.Sid);
 
@@ -45,9 +48,9 @@ namespace Innovt.AspNetCore.Filters
         }
 
 
-        private (string area, string controller, string action) GetActionInfo(AuthorizationFilterContext context)
+        private static (string area, string controller, string action) GetActionInfo(AuthorizationFilterContext context)
         {
-            var controllerActionDescriptor = (ControllerActionDescriptor) context.ActionDescriptor;
+            var controllerActionDescriptor = (ControllerActionDescriptor)context.ActionDescriptor;
 
             var area = controllerActionDescriptor.ControllerTypeInfo.GetCustomAttribute<AreaAttribute>()?.RouteValue;
 
@@ -94,11 +97,13 @@ namespace Innovt.AspNetCore.Filters
 
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            AsyncHelper.RunSync(async () => await OnAuthorizationAsync(context));
+            AsyncHelper.RunSync(async () => await OnAuthorizationAsync(context).ConfigureAwait(false));
         }
 
         public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
         {
+            if (context == null) throw new ArgumentNullException(nameof(context));
+
             if (AllowAnonymous(context))
                 return;
 
@@ -119,14 +124,12 @@ namespace Innovt.AspNetCore.Filters
             // sele etem permissao no /area ele tem permissar na area toda
             // se ele tem permissar no /action ele tem apenas na action 
             // as permissoes sao em cascata : ex se ele tem no action entao é geral 
-            // Module pode ser a area 
+            // Module can be area
             // Admin /resource * 
             // Admin/
-            /// <summary>
-            /// * - mean that you want to authoriza the full path/domain
-            /// Controller/* mean that you can althorize all actions
-            /// Controller/Action mean that you want to authorize only this action
-            /// </summary>
+            // * - mean that you want to authorize the full path/domain
+            // Controller/* mean that you can althorize all actions
+            // Controller/Action mean that you want to authorize only this action
             var hasPermission = await HasPermission(userId, area, controller, action).ConfigureAwait(false);
 
             if (!hasPermission)

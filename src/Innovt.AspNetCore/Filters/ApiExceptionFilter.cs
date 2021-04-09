@@ -1,46 +1,47 @@
-﻿using System;
-using Innovt.AspNetCore.Model;
+﻿using Innovt.AspNetCore.Model;
 using Innovt.AspNetCore.Resources;
-using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Localization;
+using System;
 
 namespace Innovt.AspNetCore.Filters
 {
-    public class ApiExceptionFilter : ExceptionFilterAttribute
+    [AttributeUsage(AttributeTargets.All)]
+    public sealed class ApiExceptionFilter : ExceptionFilterAttribute
     {
-        private readonly IStringLocalizer<IExceptionResource> stringLocalizer;
-        private readonly ILogger logger;
-
-        public ApiExceptionFilter(ILogger logger, IStringLocalizer<IExceptionResource> localizer)
+        public IStringLocalizer<IExceptionResource> StringLocalizer { get; } 
+ 
+        public ApiExceptionFilter(IStringLocalizer<IExceptionResource> stringLocalizer)
         {
-            this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            stringLocalizer = localizer ?? throw new ArgumentNullException(nameof(localizer));
+            this.StringLocalizer = stringLocalizer ?? throw new ArgumentNullException(nameof(stringLocalizer));
         }
 
-        public ApiExceptionFilter(ILogger logger)
+        public ApiExceptionFilter()
         {
-            this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            
         }
 
         private string Translate(string message)
         {
-            return stringLocalizer == null ? message : stringLocalizer[message];
+            return StringLocalizer?[message] ?? message;
         }
 
         public override void OnException(ExceptionContext context)
         {
-            var baseException = context.Exception.GetBaseException();
-
+            if (context == null) throw new ArgumentNullException(nameof(context));
+            
+            var baseException = context.Exception?.GetBaseException();
+            
             var result = new ResponseError
             {
                 Message = Translate(baseException.Message),
                 TraceId = context.HttpContext.TraceIdentifier
             };
-
+            
+        
             if (baseException is BusinessException bex)
             {
                 result.Code = $"{StatusCodes.Status400BadRequest}";
@@ -51,9 +52,7 @@ namespace Innovt.AspNetCore.Filters
             {
                 result.Code = $"{StatusCodes.Status500InternalServerError}";
                 result.Detail = $"Server Error: {baseException.Message}. Check your backend log for more detail.";
-                context.Result = new ObjectResult(result) {StatusCode = StatusCodes.Status500InternalServerError};
-                logger?.Error(context.Exception, "Message: {@Message} TraceId: @{TraceId} ", baseException.Message,
-                    result.TraceId);
+                context.Result = new ObjectResult(result) { StatusCode = StatusCodes.Status500InternalServerError };
             }
         }
     }

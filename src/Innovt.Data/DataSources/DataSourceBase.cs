@@ -1,7 +1,7 @@
-﻿using System;
-using Innovt.Data.Exceptions;
+﻿using Innovt.Data.Exceptions;
 using Innovt.Data.Model;
 using Microsoft.Extensions.Configuration;
+using System;
 
 namespace Innovt.Data.DataSources
 {

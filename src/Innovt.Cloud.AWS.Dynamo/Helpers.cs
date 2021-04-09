@@ -39,31 +39,31 @@ namespace Innovt.Cloud.AWS.Dynamo
         internal static AttributeValue CreateAttributeValue(object value)
         {
             if (value is null)
-                return new AttributeValue() {NULL = true};
+                return new AttributeValue() { NULL = true };
 
             if (value is MemoryStream)
-                return new AttributeValue() {B = value as MemoryStream};
+                return new AttributeValue() { B = value as MemoryStream };
 
             if (value is bool)
-                return new AttributeValue() {BOOL = bool.Parse(value.ToString())};
+                return new AttributeValue() { BOOL = bool.Parse(value.ToString()) };
 
             if (value is List<MemoryStream>)
-                return new AttributeValue() {BS = value as List<MemoryStream>};
+                return new AttributeValue() { BS = value as List<MemoryStream> };
 
             if (value is List<string>)
                 return new AttributeValue(value as List<string>);
 
             if (value is int || value is double || value is float | value is decimal)
-                return new AttributeValue {N = value.ToString()};
+                return new AttributeValue { N = value.ToString() };
 
             if (value is DateTime time)
-                return new AttributeValue {S = time.ToString("s")};
+                return new AttributeValue { S = time.ToString("s") };
 
             if (value is IList<int> || value is IList<double> || value is IList<float> | value is IList<decimal>)
             {
                 var array = (value as IList).Cast<string>();
 
-                return new AttributeValue {NS = array.ToList<string>()};
+                return new AttributeValue { NS = array.ToList<string>() };
             }
 
             if (value is IDictionary<string, object>)
@@ -73,7 +73,7 @@ namespace Innovt.Cloud.AWS.Dynamo
                 foreach (var item in value as IDictionary<string, object>)
                     array.Add(item.Key, CreateAttributeValue(item.Value));
 
-                return new AttributeValue {M = array};
+                return new AttributeValue { M = array };
             }
 
             return new AttributeValue(value.ToString());

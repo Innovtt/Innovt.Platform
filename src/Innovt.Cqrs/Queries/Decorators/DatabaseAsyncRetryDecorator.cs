@@ -1,9 +1,9 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Innovt.Core.Cqrs.Queries;
+﻿using Innovt.Core.Cqrs.Queries;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Cqrs.Decorators;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Innovt.Cqrs.Queries.Decorators
 {

@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Innovt.Core.Collections;
+using Innovt.Domain.Core.Specification;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Innovt.Core.Collections;
-using Innovt.Domain.Core.Specification;
 
 namespace Innovt.Domain.Core.Repository
 {

@@ -299,7 +299,7 @@ namespace Innovt.Core.Utilities
             var bf = new BinaryFormatter();
             using var ms = new MemoryStream(data);
             var obj = bf.Deserialize(ms);
-            return (T) obj;
+            return (T)obj;
         }
 
         #region [From Net Code]

@@ -1,8 +1,3 @@
-using Innovt.Core.Cqrs.Queries;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 namespace Innovt.Cloud.Table
 {
     public class BaseRequest

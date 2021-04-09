@@ -29,14 +29,12 @@ namespace Innovt.AspNetCore.Extensions
         /// </summary>
         /// <param name="app"></param>
         /// <param name="supportedCultures"></param>
-        public static void UseRequestLocalization(this IApplicationBuilder app,
-            List<CultureInfo> supportedCultures = null)
+        public static void UseRequestLocalization(this IApplicationBuilder app, IList<CultureInfo> supportedCultures = null)
         {
-            if (supportedCultures == null)
-                supportedCultures = new List<CultureInfo>()
-                {
-                    new CultureInfo("en"), new CultureInfo("en-US"), new CultureInfo("pt"), new CultureInfo("pt-BR")
-                };
+            supportedCultures ??= new List<CultureInfo>()
+            {
+                new CultureInfo("en"), new CultureInfo("en-US"), new CultureInfo("pt"), new CultureInfo("pt-BR")
+            };
 
             app.UseRequestLocalization(new RequestLocalizationOptions()
             {
@@ -48,6 +46,8 @@ namespace Innovt.AspNetCore.Extensions
         public static void AddBearerAuthorization(this IServiceCollection services, IConfiguration configuration,
             string configSection = "BearerAuthentication")
         {
+            if (configuration == null) throw new ArgumentNullException(nameof(configuration));
+
             var section = configuration.GetSection(configSection);
 
             if (section == null) throw new CriticalException($"The Config Section '{configSection}' not defined.");
@@ -159,8 +159,8 @@ namespace Innovt.AspNetCore.Extensions
                 return string.Empty;
 
             var value = (from c in user.Claims
-                where c.Type == type
-                select c.Value).FirstOrDefault();
+                         where c.Type == type
+                         select c.Value).FirstOrDefault();
 
             return value;
         }
@@ -182,6 +182,8 @@ namespace Innovt.AspNetCore.Extensions
         /// <returns></returns>
         public static bool IsLocal(this HttpContext context)
         {
+            if (context == null) throw new ArgumentNullException(nameof(context));
+
             var remoteIp = context.Connection?.RemoteIpAddress;
             var localIp = context.Connection?.LocalIpAddress;
 
@@ -201,18 +203,12 @@ namespace Innovt.AspNetCore.Extensions
 
         public static void Set<T>(this ISession session, string key, T value)
         {
-            if (session == null)
-                throw new Exception("Session not available yet.");
-
-            session.SetString(key, JsonSerializer.Serialize(value));
+            session?.SetString(key, JsonSerializer.Serialize(value));
         }
 
         public static T Get<T>(this ISession session, string key)
         {
-            if (session == null)
-                throw new Exception("Session not  available yet.");
-
-            var value = session.GetString(key);
+            var value = session?.GetString(key);
 
             return value == null ? default : JsonSerializer.Deserialize<T>(value);
         }

@@ -1,26 +1,28 @@
-﻿using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using System;
 using Innovt.Core.Utilities;
 using Microsoft.AspNetCore.Mvc.Filters;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Innovt.AspNetCore.Filters
 {
     /// <summary>
     /// This Filter Will inject the username claim in the action Parameters
     /// </summary>
-    public class InjectUserNameClaimParameterFilter : ActionFilterAttribute
-    {
-        private readonly string defaultAuthorizationProperty;
-        private readonly string[] actionParameters;
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public sealed class InjectUserNameClaimParameterFilter : ActionFilterAttribute
+    {  
+        public string DefaultAuthorizationProperty { get; }
+        public string[] ActionParameters { get; }
 
         public InjectUserNameClaimParameterFilter(string defaultAuthorizationProperty, params string[] actionParameters)
         {
             Check.NotNull(defaultAuthorizationProperty, nameof(defaultAuthorizationProperty));
             Check.NotNull(actionParameters, nameof(actionParameters));
 
-            this.defaultAuthorizationProperty = defaultAuthorizationProperty;
-            this.actionParameters = actionParameters;
+            this.DefaultAuthorizationProperty = defaultAuthorizationProperty;
+            this.ActionParameters = actionParameters;
         }
 
         /// <summary>
@@ -30,25 +32,47 @@ namespace Innovt.AspNetCore.Filters
         {
         }
 
-        public override async Task OnActionExecutionAsync(ActionExecutingContext filterContext,
-            ActionExecutionDelegate next)
+
+        private void InjectUserName(ActionExecutingContext context)
         {
-            var userName = filterContext.HttpContext.User.Claims
+
+            if(context is null)
+                return;
+
+            var userName = context.HttpContext.User.Claims
                 .FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
 
-            if (!userName.IsNullOrEmpty())
-                foreach (var actionParameter in actionParameters)
-                {
-                    filterContext.ActionArguments.TryGetValue(actionParameter, out var inputParam);
+            if (userName.IsNullOrEmpty()) return;
 
-                    if (inputParam == null) continue;
+            foreach (var actionParameter in ActionParameters)
+            {
+                context.ActionArguments.TryGetValue(actionParameter, out var inputParam);
 
-                    var property = inputParam.GetType().GetProperty(defaultAuthorizationProperty);
+                if (inputParam == null) continue;
 
-                    if (property != null) property.SetValue(inputParam, userName);
-                }
+                var property = inputParam.GetType().GetProperty(DefaultAuthorizationProperty);
 
-            await next();
+                if (property != null) property.SetValue(inputParam, userName);
+            }
         }
+
+    
+
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            InjectUserName(context);
+            
+            base.OnActionExecuting(context);
+        }
+
+
+        public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+        {
+            InjectUserName(context);
+            
+            //TODO: Not sure yet
+            await base.OnActionExecutionAsync(context, next).ConfigureAwait(true);
+        }
+
     }
 }

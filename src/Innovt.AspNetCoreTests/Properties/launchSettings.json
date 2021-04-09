@@ -1,0 +1,20 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/Innovt.AspNetCoreTests",
+      "sslPort": 0
+    },
+    "iisExpress": {
+      "applicationUrl": "http://localhost:59963/",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "Innovt.AspNetCoreTests": {
+      "commandName": "Project",
+      "launchBrowser": true
+    }
+  }
+}

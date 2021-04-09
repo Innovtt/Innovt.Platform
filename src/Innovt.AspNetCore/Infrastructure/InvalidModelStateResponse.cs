@@ -1,6 +1,6 @@
-﻿using System;
-using Innovt.AspNetCore.Model;
+﻿using Innovt.AspNetCore.Model;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
 
 namespace Innovt.AspNetCore.Infrastructure

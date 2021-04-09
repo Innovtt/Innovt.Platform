@@ -1,16 +1,16 @@
-﻿using System;
-using Amazon.DynamoDBv2;
+﻿using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.Model;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.Table;
+using Innovt.Core.Collections;
 using Innovt.Core.CrossCutting.Log;
 using Polly.Retry;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Linq;
-using Innovt.Core.Collections;
 
 namespace Innovt.Cloud.AWS.Dynamo
 {
@@ -43,7 +43,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             var config = new DynamoDBOperationConfig()
             {
                 ConsistentRead = true,
-                Conversion =  DynamoDBEntryConversion.V2
+                Conversion = DynamoDBEntryConversion.V2
             };
 
             var policy = CreateDefaultRetryAsyncPolicy();
@@ -60,7 +60,7 @@ namespace Innovt.Cloud.AWS.Dynamo
         public async Task DeleteAsync<T>(T value, CancellationToken cancellationToken = default) where T : ITableMessage
         {
             await CreateDefaultRetryAsyncPolicy()
-                .ExecuteAsync(async () => await Context.DeleteAsync<T>(value, cancellationToken)).ConfigureAwait(false);
+                .ExecuteAsync(async () => await Context.DeleteAsync<T>(value, cancellationToken)).ConfigureAwait(true);
         }
 
         public async Task DeleteAsync<T>(object id, string rangeKey = null,
@@ -70,23 +70,23 @@ namespace Innovt.Cloud.AWS.Dynamo
 
             if (string.IsNullOrEmpty(rangeKey))
                 await policy.ExecuteAsync(async () => await Context.DeleteAsync<T>(id, cancellationToken))
-                    .ConfigureAwait(false);
+                    .ConfigureAwait(true);
             else
                 await policy.ExecuteAsync(async () => await Context.DeleteAsync<T>(id, rangeKey, cancellationToken))
-                    .ConfigureAwait(false);
+                    .ConfigureAwait(true);
         }
 
         public async Task AddAsync<T>(T message, CancellationToken cancellationToken = default) where T : ITableMessage
         {
             var config = new DynamoDBOperationConfig()
             {
-                IgnoreNullValues = true, 
-                Conversion =  DynamoDBEntryConversion.V2
+                IgnoreNullValues = true,
+                Conversion = DynamoDBEntryConversion.V2
             };
 
             await CreateDefaultRetryAsyncPolicy()
                 .ExecuteAsync(async () => await Context.SaveAsync(message, config, cancellationToken))
-                .ConfigureAwait(false);
+                .ConfigureAwait(true);
         }
 
         public async Task AddAsync<T>(IList<T> messages, CancellationToken cancellationToken = default)
@@ -108,7 +108,7 @@ namespace Innovt.Cloud.AWS.Dynamo
         {
             await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                     await DynamoClient.UpdateItemAsync(tableName, key, attributeUpdates, cancellationToken))
-                .ConfigureAwait(false);
+                .ConfigureAwait(true);
         }
 
 
@@ -151,7 +151,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             var config = new DynamoDBOperationConfig()
             {
                 BackwardQuery = true,
-                Conversion =  DynamoDBEntryConversion.V2
+                Conversion = DynamoDBEntryConversion.V2
             };
 
             var result = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
@@ -169,7 +169,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             {
                 ConsistentRead = true,
                 BackwardQuery = true,
-                Conversion =  DynamoDBEntryConversion.V2
+                Conversion = DynamoDBEntryConversion.V2
             };
 
             var result = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
@@ -183,19 +183,19 @@ namespace Innovt.Cloud.AWS.Dynamo
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
-            var items = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
+            var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(true);
 
-            return Helpers.ConvertAttributesToType<T>(items.Items, Context);
+            return Helpers.ConvertAttributesToType<T>(items, Context);
         }
 
         public async Task<(List<TResult1> first, List<TResult2> second)> QueryMultipleAsync<T, TResult1, TResult2>(
             Table.QueryRequest request, string splitBy, CancellationToken cancellationToken = default)
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
+          
+            var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(true);
 
-            var items = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
-
-            return Helpers.ConvertAttributesToType<TResult1, TResult2>(items.Items, splitBy, Context);
+            return Helpers.ConvertAttributesToType<TResult1, TResult2>(items, splitBy, Context);
         }
 
         public async Task<(List<TResult1> first, List<TResult2> second, List<TResult3> third)>
@@ -204,9 +204,9 @@ namespace Innovt.Cloud.AWS.Dynamo
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
-            var items = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
+            var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
-            return Helpers.ConvertAttributesToType<TResult1, TResult2, TResult3>(items.Items, splitBy, Context);
+            return Helpers.ConvertAttributesToType<TResult1, TResult2, TResult3>(items, splitBy, Context);
         }
 
         public async Task<T> QueryFirstOrDefaultAsync<T>(Table.QueryRequest request,
@@ -214,9 +214,9 @@ namespace Innovt.Cloud.AWS.Dynamo
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
-            var result = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
+            var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(true);
 
-            var queryResponse = Helpers.ConvertAttributesToType<T>(result.Items, Context);
+            var queryResponse = Helpers.ConvertAttributesToType<T>(items, Context);
 
             return queryResponse.FirstOrDefault();
         }
@@ -227,7 +227,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             if (request is null) throw new ArgumentNullException(nameof(request));
 
             var (lastEvaluatedKey, items) =
-                await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
+                await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(true);
 
             return new PagedCollection<T>()
             {

@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Innovt.Core.Collections;
+﻿using Innovt.Core.Collections;
 using Innovt.Core.Exceptions;
 using Innovt.Domain.Core.Model;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Innovt.Domain.Security
 {
@@ -24,7 +24,7 @@ namespace Innovt.Domain.Security
             if (exist)
                 throw new BusinessException($"Permission {permissionId} alreary exist to this Polocy.");
 
-            var permission = new PolicyPermission {PermissionId = permissionId, Policy = this};
+            var permission = new PolicyPermission { PermissionId = permissionId, Policy = this };
 
             Permissions.Add(permission);
         }

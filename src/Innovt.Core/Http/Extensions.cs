@@ -2,7 +2,6 @@
 using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
-using System.IO;
 using System.Text;
 
 namespace Innovt.Core.Http

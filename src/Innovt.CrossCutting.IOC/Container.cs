@@ -66,7 +66,7 @@ namespace Innovt.CrossCutting.IOC
 
         public TService Resolve<TService>(Type type)
         {
-            return (TService) container.GetInstance(type);
+            return (TService)container.GetInstance(type);
         }
 
         public TService Resolve<TService>(string instanceKey)

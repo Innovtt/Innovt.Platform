@@ -1,10 +1,9 @@
-﻿using System.Text.Json;
-using System.Threading.Tasks;
-using Amazon.Lambda.Core;
+﻿using Amazon.Lambda.Core;
 using Amazon.Lambda.SQSEvents;
 using Innovt.Cloud.Queue;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Serialization;
+using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Lambda.Sqs
 {

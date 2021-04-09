@@ -1,7 +1,7 @@
-﻿using System;
-using Innovt.Core.Cqrs.Commands;
+﻿using Innovt.Core.Cqrs.Commands;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Cqrs.Decorators;
+using System;
 
 namespace Innovt.Cqrs.Commands.Decorators
 {

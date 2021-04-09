@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Innovt.Core.CrossCutting.Log;
+using System;
 using System.Diagnostics;
-using Innovt.Core.CrossCutting.Log;
 
 namespace Innovt.Core.Utilities
 {

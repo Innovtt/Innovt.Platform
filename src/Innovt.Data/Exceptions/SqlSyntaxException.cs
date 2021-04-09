@@ -1,5 +1,5 @@
-﻿using System;
-using Innovt.Core.Exceptions;
+﻿using Innovt.Core.Exceptions;
+using System;
 
 namespace Innovt.Data.Exceptions
 {

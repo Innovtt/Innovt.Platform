@@ -1,12 +1,9 @@
-﻿using System;
-using System.Data.SqlClient;
+﻿using Innovt.Core.Cqrs.Commands;
+using Innovt.Core.CrossCutting.Log;
+using Innovt.Cqrs.Decorators;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Innovt.Core.Cqrs.Commands;
-using Innovt.Core.CrossCutting.Log;
-using Innovt.Core.Validation;
-using Innovt.Cqrs.Decorators;
-using Polly;
 
 namespace Innovt.Cqrs.Commands.Decorators
 {

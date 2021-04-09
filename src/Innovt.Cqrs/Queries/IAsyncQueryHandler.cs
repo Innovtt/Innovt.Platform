@@ -1,6 +1,6 @@
-﻿using System.Threading;
+﻿using Innovt.Core.Cqrs.Queries;
+using System.Threading;
 using System.Threading.Tasks;
-using Innovt.Core.Cqrs.Queries;
 
 namespace Innovt.Cqrs.Queries
 {

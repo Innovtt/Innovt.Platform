@@ -12,8 +12,8 @@
 	 
   </PropertyGroup>
   <ItemGroup>
-        <PackageReference Include="AWSSDK.CognitoIdentityProvider" Version="3.7.0" />
-        <PackageReference Include="System.Text.Json" Version="5.0.1" />
+        <PackageReference Include="AWSSDK.CognitoIdentityProvider" Version="3.7.0.9" />
+        <PackageReference Include="System.Text.Json" Version="5.0.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj" />

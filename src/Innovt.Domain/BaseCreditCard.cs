@@ -1,5 +1,5 @@
-﻿using System;
-using Innovt.Domain.Core.Model;
+﻿using Innovt.Domain.Core.Model;
+using System;
 
 namespace Innovt.Domain
 {

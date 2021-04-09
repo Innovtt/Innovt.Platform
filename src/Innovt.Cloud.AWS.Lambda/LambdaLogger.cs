@@ -1,6 +1,6 @@
-﻿using System;
-using Amazon.Lambda.Core;
+﻿using Amazon.Lambda.Core;
 using Innovt.Core.CrossCutting.Log;
+using System;
 
 namespace Innovt.Cloud.AWS.Lambda
 {

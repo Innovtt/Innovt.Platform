@@ -1,5 +1,5 @@
-﻿using System;
-using Innovt.Domain.Core.Streams;
+﻿using Innovt.Domain.Core.Streams;
+using System;
 
 namespace Innovt.Domain.Core.Events
 {

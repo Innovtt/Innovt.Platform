@@ -16,16 +16,16 @@ namespace Innovt.Cloud.AWS.Cognito.Model
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (UserName.IsNullOrEmpty())
-                yield return new ValidationResult(Messages.EmailIsRequired, new[] {nameof(UserName)});
+                yield return new ValidationResult(Messages.EmailIsRequired, new[] { nameof(UserName) });
 
             if (validationContext.ObjectInstance != null &&
                 ValidateContextCreate.Equals(validationContext.ObjectInstance.ToString()))
             {
                 if (IpAddress.IsNullOrEmpty())
-                    yield return new ValidationResult(Messages.IpAddressRequired, new[] {nameof(IpAddress)});
+                    yield return new ValidationResult(Messages.IpAddressRequired, new[] { nameof(IpAddress) });
 
                 if (ServerPath.IsNullOrEmpty())
-                    yield return new ValidationResult(Messages.ServerPathRequired, new[] {nameof(ServerPath)});
+                    yield return new ValidationResult(Messages.ServerPathRequired, new[] { nameof(ServerPath) });
             }
         }
     }

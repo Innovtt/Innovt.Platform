@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Innovt.Core.Cqrs.Queries;
+﻿using Innovt.Core.Cqrs.Queries;
 using Innovt.Data.Ado.Tests.Model;
 using Innovt.Data.DataSources;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Innovt.Data.Ado.Tests
 {
@@ -21,7 +21,7 @@ namespace Innovt.Data.Ado.Tests
         {
             var query = "SELECT * FROM USER ORDER BY NAME";
 
-            var filter = new PagedFilterBase() {Page = 1, PageSize = 10};
+            var filter = new PagedFilterBase() { Page = 1, PageSize = 10 };
 
             var res = await QueryPagedAsync<User>(query, filter);
 

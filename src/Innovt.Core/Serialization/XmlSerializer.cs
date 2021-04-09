@@ -14,7 +14,7 @@ namespace Innovt.Core.Serialization
             using var xmlReader = XmlReader.Create(new StringReader(serializedObject));
             var serializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
 
-            return (T) serializer.Deserialize(xmlReader);
+            return (T)serializer.Deserialize(xmlReader);
         }
 
         public string SerializeObject<T>(T obj)

@@ -1,10 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Innovt.Domain.Core.Repository;
+using Innovt.Domain.Security;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Innovt.Domain.Core.Repository;
-using Innovt.Domain.Security;
 
 namespace Innovt.Data.EFCore.Repositories
 {
@@ -55,7 +55,7 @@ namespace Innovt.Data.EFCore.Repositories
 
 
             var policyPermissions = from p in dbSet
-                select p.SecurityGroup.Policies.SelectMany(po => po.Policy.Permissions);
+                                    select p.SecurityGroup.Policies.SelectMany(po => po.Policy.Permissions);
 
             var permissions = await policyPermissions.SelectMany(po => po.Select(p => p.Permission)).ToListAsync();
 

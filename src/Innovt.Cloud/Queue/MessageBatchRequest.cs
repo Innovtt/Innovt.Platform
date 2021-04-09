@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Innovt.Cloud.Queue
+﻿namespace Innovt.Cloud.Queue
 {
     public class MessageBatchRequest
     {

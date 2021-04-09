@@ -72,12 +72,12 @@ namespace Innovt.Cloud.AWS
             if (credentials == null)
                 return serviceRegion == null
                     ? Activator.CreateInstance<T>()
-                    : (T) Activator.CreateInstance(typeof(T), serviceRegion);
+                    : (T)Activator.CreateInstance(typeof(T), serviceRegion);
 
 
             return serviceRegion == null
-                ? (T) Activator.CreateInstance(typeof(T), credentials)
-                : (T) Activator.CreateInstance(typeof(T), credentials, serviceRegion);
+                ? (T)Activator.CreateInstance(typeof(T), credentials)
+                : (T)Activator.CreateInstance(typeof(T), credentials, serviceRegion);
         }
 
 

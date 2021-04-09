@@ -3,8 +3,8 @@
 // Created By: Michel Borges
 // Date: 2016/10/18
 
-using System.Collections.Generic;
 using Innovt.Domain.Core.Model;
+using System.Collections.Generic;
 
 namespace Innovt.Domain.Address
 {

@@ -1,8 +1,8 @@
-﻿using Innovt.Core.Utilities;
-using Microsoft.Extensions.Configuration;
-using Innovt.Core.Exceptions;
-using Amazon.Runtime;
+﻿using Amazon.Runtime;
 using Amazon.Runtime.CredentialManagement;
+using Innovt.Core.Exceptions;
+using Innovt.Core.Utilities;
+using Microsoft.Extensions.Configuration;
 using System;
 
 namespace Innovt.Cloud.AWS.Configuration

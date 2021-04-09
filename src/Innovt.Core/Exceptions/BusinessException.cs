@@ -3,11 +3,11 @@
 // Created By: Michel Borges
 // Date: 2016/10/19
 
+using Innovt.Core.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Innovt.Core.Utilities;
 
 namespace Innovt.Core.Exceptions
 {
@@ -46,7 +46,7 @@ namespace Innovt.Core.Exceptions
             Errors = errors;
         }
 
-        public BusinessException(ErrorMessage error) : this(new[] {error})
+        public BusinessException(ErrorMessage error) : this(new[] { error })
         {
         }
 

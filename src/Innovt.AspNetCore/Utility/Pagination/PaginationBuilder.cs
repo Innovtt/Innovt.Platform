@@ -6,7 +6,7 @@ namespace Innovt.AspNetCore.Utility.Pagination
     public class PaginationBuilder<T> where T : class
     {
         public PagedCollection<T> Collection { get; set; }
-        protected readonly string formId;
+        private readonly string formId;
 
         public PaginationBuilder(PagedCollection<T> collection, string formId)
         {

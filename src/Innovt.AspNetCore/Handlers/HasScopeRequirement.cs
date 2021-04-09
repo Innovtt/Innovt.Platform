@@ -1,7 +1,7 @@
+using Microsoft.AspNetCore.Authorization;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 
 // Code provided by tiago@innovt.com.br and welbert@antecipa.com
 //
@@ -37,18 +37,24 @@ namespace Innovt.AspNetCore.Handlers
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context,
             HasScopeRequirement requirement)
         {
-            var controller =
-                ((Microsoft.AspNetCore.Mvc.Controllers.ControllerActionDescriptor)
-                    ((Microsoft.AspNetCore.Mvc.ActionContext) context.Resource).ActionDescriptor).ControllerName;
-            var action =
-                ((Microsoft.AspNetCore.Mvc.Controllers.ControllerActionDescriptor)
-                    ((Microsoft.AspNetCore.Mvc.ActionContext) context.Resource).ActionDescriptor).ActionName;
+            var actionContext = (Microsoft.AspNetCore.Mvc.ActionContext)context?.Resource;
 
+
+            if (actionContext is null)
+                return Task.CompletedTask;
+
+
+            var controller = (Microsoft.AspNetCore.Mvc.Controllers.ControllerActionDescriptor)actionContext.ActionDescriptor;
+
+
+            var actionName = controller.ActionName;
+            var controllerName = controller.ControllerName;
+            
             // First check for permissions, they may show up in addition to or instead of scopes...
             if (context.User.HasClaim(c =>
                 c.Type == "permissions" && c.Issuer == requirement.Issuer &&
                 c.Value?.ToLower(CultureInfo.CurrentCulture) ==
-                $"{Scope}:{controller}:{action}".ToLower(CultureInfo.CurrentCulture)))
+                $"{Scope}:{controller}:{actionName}".ToLower(CultureInfo.CurrentCulture)))
             {
                 context.Succeed(requirement);
                 return Task.CompletedTask;
@@ -60,8 +66,13 @@ namespace Innovt.AspNetCore.Handlers
                 return Task.CompletedTask;
 
             // Split the scopes string into an array
-            var scopes = context.User.FindFirst(c => c.Type == "scope" && c.Issuer == requirement.Issuer).Value
+            var scopes = context.User.FindFirst(c => c.Type == "scope" && c.Issuer == requirement.Issuer)
+                ?.Value
                 .Split(' ');
+            
+
+            if(scopes ==null)
+                return Task.CompletedTask;
 
             // Succeed if the scope array contains the required scope
             if (scopes.Any(s => s == requirement.Scope))

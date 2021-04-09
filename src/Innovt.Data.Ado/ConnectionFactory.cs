@@ -1,11 +1,11 @@
-﻿using System;
-using System.Data;
-using System.Data.SqlClient;
-using Innovt.Core.Utilities;
+﻿using Innovt.Core.Utilities;
 using Innovt.Data.DataSources;
 using Innovt.Data.Exceptions;
 using Innovt.Data.Model;
 using Npgsql;
+using System;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Innovt.Data.Ado
 {

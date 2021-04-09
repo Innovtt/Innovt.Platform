@@ -1,13 +1,13 @@
-﻿using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Amazon.SimpleEmail;
+﻿using Amazon.SimpleEmail;
 using Amazon.SimpleEmail.Model;
-using Innovt.Core.Utilities;
 using Innovt.Cloud.AWS.Configuration;
+using Innovt.Core.CrossCutting.Log;
+using Innovt.Core.Utilities;
 using Innovt.Notification.Core;
 using Innovt.Notification.Core.Domain;
-using Innovt.Core.CrossCutting.Log;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Notification
 {

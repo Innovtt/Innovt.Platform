@@ -1,6 +1,6 @@
-using System;
 using Innovt.Core.Utilities;
 using NUnit.Framework;
+using System;
 
 namespace Innovt.Core.Test
 {

@@ -1,11 +1,11 @@
-﻿using System;
-using Amazon.Lambda.Core;
+﻿using Amazon.Lambda.Core;
 using Amazon.Lambda.KinesisEvents;
 using Innovt.Core.CrossCutting.Log;
+using Innovt.Domain.Core.Streams;
+using System;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using Innovt.Domain.Core.Streams;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis
 {

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Innovt.Core.Utilities;
+﻿using Innovt.Core.Utilities;
 using Innovt.Notification.Core.Domain;
 using Innovt.Notification.Core.Template;
+using System;
+using System.Collections.Generic;
 
 namespace Innovt.Notification.Core.Builders
 {

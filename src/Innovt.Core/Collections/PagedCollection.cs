@@ -1,6 +1,5 @@
 ﻿using Innovt.Core.Utilities;
 using System.Collections.Generic;
-using System.Net.Http.Headers;
 
 namespace Innovt.Core.Collections
 {

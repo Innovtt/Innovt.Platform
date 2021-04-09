@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using Innovt.Cloud.AWS.Cognito.Resources;
+﻿using Innovt.Cloud.AWS.Cognito.Resources;
 using Innovt.Core.Utilities;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Innovt.Cloud.AWS.Cognito.Model
 {
@@ -24,18 +24,18 @@ namespace Innovt.Cloud.AWS.Cognito.Model
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (AccessToken.IsNullOrEmpty())
-                yield return new ValidationResult(Messages.EmailIsRequired, new[] {nameof(AccessToken)});
+                yield return new ValidationResult(Messages.EmailIsRequired, new[] { nameof(AccessToken) });
 
             if (ConfirmProposedPassword.IsNullOrEmpty())
                 yield return new ValidationResult(Messages.ConfirmPasswordIsRequired,
-                    new[] {nameof(ConfirmProposedPassword)});
+                    new[] { nameof(ConfirmProposedPassword) });
 
             if (PreviousPassword.IsNullOrEmpty())
-                yield return new ValidationResult(Messages.CurrentPasswordRequired, new[] {nameof(PreviousPassword)});
+                yield return new ValidationResult(Messages.CurrentPasswordRequired, new[] { nameof(PreviousPassword) });
 
             if (ProposedPassword != ConfirmProposedPassword)
                 yield return new ValidationResult(Messages.PasswordsDoNotMatch,
-                    new[] {nameof(ConfirmProposedPassword), nameof(ProposedPassword)});
+                    new[] { nameof(ConfirmProposedPassword), nameof(ProposedPassword) });
         }
     }
 }

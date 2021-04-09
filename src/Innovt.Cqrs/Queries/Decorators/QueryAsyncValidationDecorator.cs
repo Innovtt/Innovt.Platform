@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Innovt.Core.Cqrs.Queries;
+using Innovt.Core.Validation;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Innovt.Core.Cqrs.Queries;
-using Innovt.Core.Validation;
 
 namespace Innovt.Cqrs.Queries.Decorators
 {

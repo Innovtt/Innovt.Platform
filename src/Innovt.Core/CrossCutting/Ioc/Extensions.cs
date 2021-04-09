@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Innovt.Core.Exceptions;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Linq;
 using System.Reflection;
-using Innovt.Core.Exceptions;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Innovt.Core.CrossCutting.Ioc
 {
@@ -14,7 +14,7 @@ namespace Innovt.Core.CrossCutting.Ioc
 
             foreach (var moduleType in modulesTypes)
             {
-                var module = (IOCModule) Activator.CreateInstance(moduleType.UnderlyingSystemType, services);
+                var module = (IOCModule)Activator.CreateInstance(moduleType.UnderlyingSystemType, services);
 
                 if (module == null)
                     throw new ConfigurationException("Innovt - IOC Module not found.");

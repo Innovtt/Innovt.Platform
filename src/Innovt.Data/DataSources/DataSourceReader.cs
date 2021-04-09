@@ -1,6 +1,6 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Innovt.Data.Model;
+﻿using Innovt.Data.Model;
 using Microsoft.Extensions.Configuration;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Innovt.Data.DataSources
 {

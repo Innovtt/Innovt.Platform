@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Innovt.Core.Collections;
+﻿using Innovt.Core.Collections;
 using Innovt.Core.Exceptions;
 using Innovt.Domain.Core.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Innovt.Domain.Security
 {
@@ -38,7 +38,7 @@ namespace Innovt.Domain.Security
             if (exist)
                 throw new BusinessException($"Policy already linked for this security group.");
 
-            var sgPolicy = new SecurityGroupPolicy {SecurityGroup = this, PolicyId = policyId};
+            var sgPolicy = new SecurityGroupPolicy { SecurityGroup = this, PolicyId = policyId };
 
             Policies.Add(sgPolicy);
         }
@@ -64,7 +64,7 @@ namespace Innovt.Domain.Security
             if (exist)
                 throw new BusinessException($"User {userId} already allow to this group.");
 
-            var userGroup = new SecurityGroupUser {SecurityGroup = this, UserId = userId};
+            var userGroup = new SecurityGroupUser { SecurityGroup = this, UserId = userId };
 
             Users.Add(userGroup);
         }

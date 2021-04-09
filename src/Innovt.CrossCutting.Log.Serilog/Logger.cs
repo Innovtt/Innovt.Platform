@@ -1,8 +1,8 @@
-﻿using System;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
+using System;
 
 namespace Innovt.CrossCutting.Log.Serilog
 {
@@ -308,30 +308,30 @@ namespace Innovt.CrossCutting.Log.Serilog
             {
                 case LogLevel.Trace:
                 case LogLevel.Debug:
-                {
-                    return logger.IsEnabled(LogEventLevel.Debug) || logger.IsEnabled(LogEventLevel.Verbose);
-                }
+                    {
+                        return logger.IsEnabled(LogEventLevel.Debug) || logger.IsEnabled(LogEventLevel.Verbose);
+                    }
                 case LogLevel.Information:
-                {
-                    return logger.IsEnabled(LogEventLevel.Information);
-                }
+                    {
+                        return logger.IsEnabled(LogEventLevel.Information);
+                    }
                 case LogLevel.Warning:
-                {
-                    return logger.IsEnabled(LogEventLevel.Warning);
-                }
+                    {
+                        return logger.IsEnabled(LogEventLevel.Warning);
+                    }
                 case LogLevel.Error:
-                {
-                    return logger.IsEnabled(LogEventLevel.Error);
-                }
+                    {
+                        return logger.IsEnabled(LogEventLevel.Error);
+                    }
 
                 case LogLevel.Critical:
-                {
-                    return logger.IsEnabled(LogEventLevel.Fatal);
-                }
+                    {
+                        return logger.IsEnabled(LogEventLevel.Fatal);
+                    }
                 default:
-                {
-                    return false;
-                }
+                    {
+                        return false;
+                    }
             }
         }
     }

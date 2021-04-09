@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Innovt.Domain.Core.Repository;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using Innovt.Domain.Core.Repository;
 
 namespace Innovt.Domain.Security
 {

@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Innovt.Domain.Core.Model;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Contacts
 {

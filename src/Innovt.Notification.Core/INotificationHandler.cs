@@ -1,6 +1,6 @@
-﻿using System.Threading;
+﻿using Innovt.Notification.Core.Domain;
+using System.Threading;
 using System.Threading.Tasks;
-using Innovt.Notification.Core.Domain;
 
 namespace Innovt.Notification.Core
 {

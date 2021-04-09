@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using System.Threading;
-using Innovt.Core.Utilities;
+﻿using Innovt.Core.Utilities;
 using Innovt.Data.DataSources;
 using Innovt.Data.Exceptions;
 using Innovt.Data.Model;
 using Innovt.Domain.Core.Repository;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Innovt.Data.EFCore
 {
@@ -21,7 +21,6 @@ namespace Innovt.Data.EFCore
         public DbContext(IDataSource dataSource)
         {
             this.dataSource = dataSource ?? throw new ArgumentNullException(nameof(dataSource));
-
             base.ChangeTracker.LazyLoadingEnabled = false;
         }
 
@@ -141,10 +140,10 @@ namespace Innovt.Data.EFCore
             return base.Database.ExecuteSqlRaw(sql, parameters);
         }
 
-        async Task<int> IExtendedUnitOfWork.ExecuteSqlCommandAsync(string sql, CancellationToken cancellationToken,
+        Task<int> IExtendedUnitOfWork.ExecuteSqlCommandAsync(string sql, CancellationToken cancellationToken,
             params object[] parameters)
         {
-            return await base.Database.ExecuteSqlRawAsync(sql, cancellationToken: cancellationToken,
+            return base.Database.ExecuteSqlRawAsync(sql, cancellationToken: cancellationToken,
                 parameters: parameters);
         }
     }

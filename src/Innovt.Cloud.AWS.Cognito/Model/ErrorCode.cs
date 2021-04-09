@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Innovt.Cloud.AWS.Cognito.Model
+﻿namespace Innovt.Cloud.AWS.Cognito.Model
 {
     public static class ErrorCode
     {
