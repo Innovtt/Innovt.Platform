@@ -1,11 +1,17 @@
-﻿using Innovt.Data.EFCore.Maps;
-using Innovt.Domain.Core.Repository;
-using Innovt.Domain.Core.Specification;
-using Innovt.Domain.Security;
-using Microsoft.EntityFrameworkCore;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Data.EFCore
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Innovt.Data.EFCore.Maps;
+using Innovt.Domain.Core.Repository;
+using Innovt.Domain.Core.Specification;
+using Microsoft.EntityFrameworkCore;
 
 namespace Innovt.Data.EFCore
 {
@@ -65,12 +71,12 @@ namespace Innovt.Data.EFCore
 
         public static void AddSecurityMap(this ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration<Policy>(new PolicyMap());
-            modelBuilder.ApplyConfiguration<Permission>(new PermissionMap());
-            modelBuilder.ApplyConfiguration<SecurityGroup>(new SecurityGroupMap());
-            modelBuilder.ApplyConfiguration<PolicyPermission>(new PolicyPermissionMap());
-            modelBuilder.ApplyConfiguration<SecurityGroupPolicy>(new SecurityGroupPolicyMap());
-            modelBuilder.ApplyConfiguration<SecurityGroupUser>(new SecurityGroupUserMap());
+            modelBuilder.ApplyConfiguration(new PolicyMap());
+            modelBuilder.ApplyConfiguration(new PermissionMap());
+            modelBuilder.ApplyConfiguration(new SecurityGroupMap());
+            modelBuilder.ApplyConfiguration(new PolicyPermissionMap());
+            modelBuilder.ApplyConfiguration(new SecurityGroupPolicyMap());
+            modelBuilder.ApplyConfiguration(new SecurityGroupUserMap());
         }
     }
 }

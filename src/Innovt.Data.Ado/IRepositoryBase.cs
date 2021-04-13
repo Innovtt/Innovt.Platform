@@ -1,10 +1,17 @@
-﻿using Innovt.Core.Collections;
-using Innovt.Core.Cqrs.Queries;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Data.Ado
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
+using Innovt.Core.Collections;
+using Innovt.Core.Cqrs.Queries;
 
 namespace Innovt.Data.Ado
 {

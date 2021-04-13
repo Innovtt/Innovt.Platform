@@ -1,4 +1,11 @@
-﻿using System;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Core
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
@@ -38,8 +45,8 @@ namespace Innovt.Core.Utilities
             if (value.IsNullOrEmpty())
                 return false;
 
-            var multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-            var multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+            var multiplicador1 = new int[9] {10, 9, 8, 7, 6, 5, 4, 3, 2};
+            var multiplicador2 = new int[10] {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
             string corpovalue;
             string digitoVerificador;
             int soma;
@@ -90,8 +97,8 @@ namespace Innovt.Core.Utilities
             if (cnpj.IsNullOrEmpty())
                 return false;
 
-            var multiplicador1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
-            var multiplicador2 = new int[13] { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+            var multiplicador1 = new int[12] {5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
+            var multiplicador2 = new int[13] {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
             cnpj = cnpj.Trim();
             cnpj = cnpj.Replace(".", "").Replace("-", "").Replace("/", "");
             if (cnpj.Length != 14)
@@ -118,7 +125,7 @@ namespace Innovt.Core.Utilities
                 resto = 0;
             else
                 resto = 11 - resto;
-            digito = digito + resto.ToString();
+            digito = digito + resto;
             return cnpj.EndsWith(digito);
         }
 
@@ -175,7 +182,7 @@ namespace Innovt.Core.Utilities
         }
 
         /// <summary>
-        /// Will mask an email using this format mich***@gmail.com
+        ///     Will mask an email using this format mich***@gmail.com
         /// </summary>
         /// <param name="email">The email that you want to mask</param>
         /// <returns>mich***@gmail.com</returns>
@@ -226,7 +233,7 @@ namespace Innovt.Core.Utilities
             if (value.IsNullOrEmpty())
                 return value;
 
-            var specialChars = new string[]
+            var specialChars = new[]
                 {".", ",", "-", "_", "/", "\\", "(", ")", "[", "]", ":", "\r\n", "\r", "\n"};
 
             for (var i = 0; i < specialChars.Length; i++) value = value.Replace(specialChars[i], "");
@@ -273,7 +280,7 @@ namespace Innovt.Core.Utilities
         }
 
         /// <summary>
-        /// You can use this method to forma DD stardand Latitude or Longitude
+        ///     You can use this method to forma DD stardand Latitude or Longitude
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -332,7 +339,7 @@ namespace Innovt.Core.Utilities
 
 
         /// <summary>
-        /// Encode your string to Base64 
+        ///     Encode your string to Base64
         /// </summary>
         /// <param name="toEncode">The String to encode</param>
         /// <param name="encoding">Optional and will be ASCII if null</param>
@@ -351,7 +358,7 @@ namespace Innovt.Core.Utilities
         }
 
         /// <summary>
-        /// Decode  your string from Base64 
+        ///     Decode  your string from Base64
         /// </summary>
         /// <param name="toDecode">The string to decode</param>
         /// <param name="encoding">Optional and will be ASCII if null</param>

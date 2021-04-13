@@ -1,4 +1,11 @@
-﻿using System;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Cloud
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 
 namespace Innovt.Cloud.Table
 {
@@ -22,7 +29,8 @@ namespace Innovt.Cloud.Table
             RangeKey = rangeKey;
         }
 
-        public string Id { get; set; }
         public string RangeKey { get; set; }
+
+        public string Id { get; set; }
     }
 }

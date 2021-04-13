@@ -1,24 +1,30 @@
-﻿using Amazon.SQS;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Cloud.AWS.SQS
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Threading;
+using System.Threading.Tasks;
+using Amazon.SQS;
 using Amazon.SQS.Model;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.Queue;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Serialization;
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.SQS
 {
     public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueueMessage
     {
-        public string QueueName { get; protected set; }
-        public static string QueueUrl { get; private set; }
-
         private ISerializer serializer;
+
+        private AmazonSQSClient sqsClient;
 
         public QueueService(ILogger logger, IAWSConfiguration configuration, string queueName = null,
             ISerializer serializer = null) : base(logger, configuration)
@@ -34,28 +40,16 @@ namespace Innovt.Cloud.AWS.SQS
             QueueName = queueName ?? typeof(T).Name;
         }
 
-        private AmazonSQSClient sqsClient = null;
+        public string QueueName { get; protected set; }
+        public static string QueueUrl { get; private set; }
 
         private AmazonSQSClient SqsClient => sqsClient ??= CreateService<AmazonSQSClient>();
-
-        private async Task<string> GetQueueUrlAsync()
-        {
-            if (QueueUrl != null && QueueUrl.EndsWith(QueueName)) return QueueUrl;
-
-            if (Configuration?.AccountNumber != null)
-                QueueUrl =
-                    $"https://sqs.{GetServiceRegionEndPoint().SystemName}.amazonaws.com/{Configuration.AccountNumber}/{QueueName}";
-            else
-                QueueUrl = (await SqsClient.GetQueueUrlAsync(QueueName))?.QueueUrl;
-
-            return QueueUrl;
-        }
 
 
         private ISerializer Serializer => serializer ??= new JsonSerializer();
 
         /// <summary>
-        /// Enable user to receive messages
+        ///     Enable user to receive messages
         /// </summary>
         /// <param name="quantity">1-10</param>
         /// <param name="waitTimeInSeconds">To enable long pooling</param>
@@ -66,10 +60,10 @@ namespace Innovt.Cloud.AWS.SQS
             int? visibilityTimeoutInSeconds = null,
             CancellationToken cancellationToken = default)
         {
-            var request = new ReceiveMessageRequest()
+            var request = new ReceiveMessageRequest
             {
                 MaxNumberOfMessages = quantity,
-                AttributeNames = new List<string>() { "All" },
+                AttributeNames = new List<string> {"All"},
                 QueueUrl = await GetQueueUrlAsync()
             };
 
@@ -80,7 +74,7 @@ namespace Innovt.Cloud.AWS.SQS
                 request.WaitTimeSeconds = waitTimeInSeconds.Value;
 
             var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                await SqsClient.ReceiveMessageAsync(request, cancellationToken));
+                await SqsClient.ReceiveMessageAsync(request, cancellationToken)).ConfigureAwait(false);
 
             if (response.HttpStatusCode != HttpStatusCode.OK)
                 throw new CriticalException("Error getting messages from the queue.");
@@ -111,17 +105,17 @@ namespace Innovt.Cloud.AWS.SQS
             var deleteRequest = new DeleteMessageRequest(queueUrl, receiptHandle);
 
             await base.CreateDefaultRetryAsyncPolicy().ExecuteAndCaptureAsync(async () =>
-                await SqsClient.DeleteMessageAsync(deleteRequest, cancellationToken));
+                await SqsClient.DeleteMessageAsync(deleteRequest, cancellationToken)).ConfigureAwait(false);
         }
 
         public async Task<int> ApproximateMessageCountAsync(CancellationToken cancellationToken = default)
         {
-            var attributes = new List<string>() { "ApproximateNumberOfMessages" };
+            var attributes = new List<string> {"ApproximateNumberOfMessages"};
 
             var queueUrl = await GetQueueUrlAsync();
 
             var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                await SqsClient.GetQueueAttributesAsync(queueUrl, attributes, cancellationToken));
+                await SqsClient.GetQueueAttributesAsync(queueUrl, attributes, cancellationToken)).ConfigureAwait(false);
 
             return (response?.ApproximateNumberOfMessages).GetValueOrDefault();
         }
@@ -133,17 +127,18 @@ namespace Innovt.Cloud.AWS.SQS
 
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="message"></param>
         /// <param name="delaySeconds"></param>
-        /// <param name="cancellationToken">// Gets and sets the property DelaySeconds.
-        ///  The length of time, in seconds, for which to delay a specific message. Valid values:
-        /// 0 to 900. Maximum: 15 minutes. Messages with a positive <code>DelaySeconds</code>
-        /// value become available for processing after the delay period is finished. If you don't
-        /// specify a value, the default value for the queue applies.
-        /// When you set <code>FifoQueue</code>, you can't set <code>DelaySeconds</code> per message.
-        /// You can set this parameter only on a queue level.</param>
+        /// <param name="cancellationToken">
+        ///     // Gets and sets the property DelaySeconds.
+        ///     The length of time, in seconds, for which to delay a specific message. Valid values:
+        ///     0 to 900. Maximum: 15 minutes. Messages with a positive <code>DelaySeconds</code>
+        ///     value become available for processing after the delay period is finished. If you don't
+        ///     specify a value, the default value for the queue applies.
+        ///     When you set <code>FifoQueue</code>, you can't set <code>DelaySeconds</code> per message.
+        ///     You can set this parameter only on a queue level.
+        /// </param>
         /// <returns></returns>
         public async Task<string> QueueAsync<K>(K message, int? delaySeconds = null,
             CancellationToken cancellationToken = default)
@@ -182,7 +177,7 @@ namespace Innovt.Cloud.AWS.SQS
 
             messageRequest.Entries = new List<SendMessageBatchRequestEntry>();
             foreach (var item in message)
-                messageRequest.Entries.Add(new SendMessageBatchRequestEntry()
+                messageRequest.Entries.Add(new SendMessageBatchRequestEntry
                 {
                     Id = item.Id,
                     DelaySeconds = delaySeconds.GetValueOrDefault(),
@@ -197,13 +192,26 @@ namespace Innovt.Cloud.AWS.SQS
 
             if (response.Successful != null)
                 foreach (var item in response.Successful)
-                    result.Add(new MessageQueueResult() { Id = item.Id, Success = true });
+                    result.Add(new MessageQueueResult {Id = item.Id, Success = true});
 
             if (response.Failed != null)
                 foreach (var item in response.Failed)
-                    result.Add(new MessageQueueResult() { Id = item.Id, Success = false, Error = item.Message });
+                    result.Add(new MessageQueueResult {Id = item.Id, Success = false, Error = item.Message});
 
             return result;
+        }
+
+        private async Task<string> GetQueueUrlAsync()
+        {
+            if (QueueUrl != null && QueueUrl.EndsWith(QueueName)) return QueueUrl;
+
+            if (Configuration?.AccountNumber != null)
+                QueueUrl =
+                    $"https://sqs.{GetServiceRegionEndPoint().SystemName}.amazonaws.com/{Configuration.AccountNumber}/{QueueName}";
+            else
+                QueueUrl = (await SqsClient.GetQueueUrlAsync(QueueName).ConfigureAwait(false))?.QueueUrl;
+
+            return QueueUrl;
         }
 
         protected override void DisposeServices()

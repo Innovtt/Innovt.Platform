@@ -1,11 +1,17 @@
-﻿using System;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.AspNetCore
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 using Innovt.Core.Collections;
 
 namespace Innovt.AspNetCore.Utility.Pagination
 {
     public class PaginationBuilder<T> where T : class
     {
-        public PagedCollection<T> Collection { get; set; }
         private readonly string formId;
 
         public PaginationBuilder(PagedCollection<T> collection, string formId)
@@ -14,10 +20,12 @@ namespace Innovt.AspNetCore.Utility.Pagination
             this.formId = formId;
         }
 
+        public PagedCollection<T> Collection { get; set; }
+
 
         public virtual string BuildHeader()
         {
-            return $@"<div class=""portlet-body text-center""><ul class=""pagination pagination-large"">";
+            return @"<div class=""portlet-body text-center""><ul class=""pagination pagination-large"">";
         }
 
         public virtual string BuildPagerScript()
@@ -32,7 +40,7 @@ namespace Innovt.AspNetCore.Utility.Pagination
 
         public virtual string BuildFooter()
         {
-            return $"</ul></div>";
+            return "</ul></div>";
         }
 
         public virtual string BuildPrevious(string previousText = "Anterior")

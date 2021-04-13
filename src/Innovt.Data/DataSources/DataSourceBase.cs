@@ -1,20 +1,23 @@
-﻿using Innovt.Data.Exceptions;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Data
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
+using Innovt.Data.Exceptions;
 using Innovt.Data.Model;
 using Microsoft.Extensions.Configuration;
-using System;
 
 namespace Innovt.Data.DataSources
 {
     /// <summary>
-    /// The Default DataSource is using ConfigurationManager
+    ///     The Default DataSource is using ConfigurationManager
     /// </summary>
     public abstract class DataSourceBase : IDataSource
     {
-        private string connectionString = null;
-
-        public string Name { get; set; }
-
-        public Provider Provider { get; private set; }
+        private string connectionString;
 
         protected DataSourceBase(string name, string connectionString, Provider provider = Provider.MsSql)
         {
@@ -44,6 +47,15 @@ namespace Innovt.Data.DataSources
             SetConnectionString(configuration, connectionStringName);
         }
 
+        public string Name { get; set; }
+
+        public Provider Provider { get; }
+
+        public string GetConnectionString()
+        {
+            return connectionString;
+        }
+
         private void SetConnectionString(IConfiguration configuration, string name)
         {
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
@@ -56,11 +68,6 @@ namespace Innovt.Data.DataSources
 
             Name = name;
             connectionString = localConnectionString;
-        }
-
-        public string GetConnectionString()
-        {
-            return connectionString;
         }
     }
 }

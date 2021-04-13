@@ -1,20 +1,17 @@
-﻿using Innovt.Domain.Core.Streams;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Domain.Core
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
+using Innovt.Domain.Core.Streams;
 
 namespace Innovt.Domain.Core.Events
 {
     public abstract class DomainEvent : IDataStream
     {
-        public string Name { get; set; }
-
-        public string EventId { get; set; }
-        public string Version { get; set; }
-        public string Partition { get; set; }
-        public string TraceId { get; set; }
-
-        public DateTime ApproximateArrivalTimestamp { get; set; }
-        public DateTime CreatedAt { get; set; }
-
         protected DomainEvent(string name, string version, string partition)
         {
             Name = name;
@@ -29,5 +26,15 @@ namespace Innovt.Domain.Core.Events
             Partition = partition;
             CreatedAt = DateTime.UtcNow;
         }
+
+        public string Name { get; set; }
+        public DateTime CreatedAt { get; set; }
+
+        public string EventId { get; set; }
+        public string Version { get; set; }
+        public string Partition { get; set; }
+        public string TraceId { get; set; }
+
+        public DateTime ApproximateArrivalTimestamp { get; set; }
     }
 }

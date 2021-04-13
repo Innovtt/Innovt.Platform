@@ -1,4 +1,11 @@
-﻿using System;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Core
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -14,12 +21,12 @@ namespace Innovt.Core.Serialization
             using var xmlReader = XmlReader.Create(new StringReader(serializedObject));
             var serializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
 
-            return (T)serializer.Deserialize(xmlReader);
+            return (T) serializer.Deserialize(xmlReader);
         }
 
         public string SerializeObject<T>(T obj)
         {
-            return SerializeObject<T>(obj, null);
+            return SerializeObject(obj, null);
         }
 
         public string SerializeObject<T>(T obj, Dictionary<string, string> namespaces)

@@ -1,7 +1,14 @@
-﻿using Innovt.Core.CrossCutting.Ioc;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Cloud.AWS.Notification
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
+using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Notification.Core;
 using Innovt.Notification.Core.Domain;
-using System;
 
 namespace Innovt.Cloud.AWS.Notification
 {

@@ -1,12 +1,19 @@
-﻿using Innovt.Core.Utilities;
-using Innovt.Domain.Core.Model;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Domain
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
+using Innovt.Core.Utilities;
+using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Contacts
 {
     /// <summary>
-    /// Email, Phone
+    ///     Email, Phone
     /// </summary>
     public class ContactType : ValueObject<int>
     {
@@ -23,7 +30,7 @@ namespace Innovt.Domain.Contacts
 
         public static ContactType Create(string name, string description)
         {
-            return new ContactType()
+            return new ContactType
             {
                 Name = name,
                 Description = description

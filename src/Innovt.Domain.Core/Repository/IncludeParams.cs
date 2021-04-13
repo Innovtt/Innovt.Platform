@@ -1,12 +1,17 @@
-﻿using System.Collections.Generic;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Domain.Core
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Innovt.Domain.Core.Repository
 {
     public class Include
     {
-        public List<string> Includes { get; private set; }
-
         public Include()
         {
             Includes = new List<string>();
@@ -16,6 +21,8 @@ namespace Innovt.Domain.Core.Repository
         {
             Includes.AddRange(includes);
         }
+
+        public List<string> Includes { get; }
 
         public bool IsEmpty()
         {

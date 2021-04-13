@@ -1,19 +1,26 @@
-﻿using Amazon.SimpleEmail;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Cloud.AWS.Notification
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using Amazon.SimpleEmail;
 using Amazon.SimpleEmail.Model;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Utilities;
 using Innovt.Notification.Core;
 using Innovt.Notification.Core.Domain;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Notification
 {
     public class MailNotificationHandler : AwsBaseService, INotificationHandler
     {
-        public string DefaultCharset { get; set; } = "UTF-8";
+        private AmazonSimpleEmailServiceClient _simpleEmailClient;
 
         public MailNotificationHandler(ILogger logger, IAWSConfiguration configuration) : base(logger, configuration)
         {
@@ -24,7 +31,7 @@ namespace Innovt.Cloud.AWS.Notification
         {
         }
 
-        private AmazonSimpleEmailServiceClient _simpleEmailClient;
+        public string DefaultCharset { get; set; } = "UTF-8";
 
         private AmazonSimpleEmailServiceClient SimpleEmailClient
         {
@@ -47,14 +54,14 @@ namespace Innovt.Cloud.AWS.Notification
             Check.NotNull(message.Subject, nameof(message.Subject));
 
             //Invalid configuration set name<Não Responda>: only alphanumeric ASCII characters, '_', and '-' are allowed.
-            var mailRequest = new SendEmailRequest()
+            var mailRequest = new SendEmailRequest
             {
                 Destination = new Destination(),
                 Source = $"{message.From.Name} <{message.From.Address}>",
                 Message = new Message()
             };
 
-            mailRequest.Message.Subject = new Content()
+            mailRequest.Message.Subject = new Content
             {
                 Charset = message.Subject.Charset.GetValueOrDefault(DefaultCharset),
                 Data = message.Subject.Content
@@ -63,13 +70,13 @@ namespace Innovt.Cloud.AWS.Notification
 
             mailRequest.Message.Body = new Body();
             if (message.Body.IsHtml)
-                mailRequest.Message.Body.Html = new Content()
+                mailRequest.Message.Body.Html = new Content
                 {
                     Charset = message.Body.Charset.GetValueOrDefault(DefaultCharset),
                     Data = message.Body.Content
                 };
             else
-                mailRequest.Message.Body.Text = new Content()
+                mailRequest.Message.Body.Text = new Content
                 {
                     Charset = message.Body.Charset.GetValueOrDefault(DefaultCharset),
                     Data = message.Body.Content

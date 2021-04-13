@@ -1,10 +1,14 @@
-﻿// TotalAcesso.Admin.Web
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.AspNetCore
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System.Linq;
 using Innovt.Core.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.Routing;
-using System.Linq;
 
 namespace Innovt.AspNetCore.Filters
 {
@@ -16,7 +20,7 @@ namespace Innovt.AspNetCore.Filters
 
             if (!(context.Exception is BusinessException)) return;
 
-            var bEx = (BusinessException)context.Exception;
+            var bEx = (BusinessException) context.Exception;
 
             if (bEx.Errors.Any())
                 foreach (var error in bEx.Errors)
@@ -26,7 +30,7 @@ namespace Innovt.AspNetCore.Filters
 
             context.Result = new ViewResult
             {
-                ViewName = (context.RouteData as RouteData)?.Values["action"]?.ToString()
+                ViewName = context.RouteData?.Values["action"]?.ToString()
             };
             context.ExceptionHandled = true;
 

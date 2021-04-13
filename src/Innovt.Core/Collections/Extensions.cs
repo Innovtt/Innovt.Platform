@@ -1,4 +1,11 @@
-﻿using System.Collections.Generic;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Core
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Innovt.Core.Collections
@@ -41,7 +48,7 @@ namespace Innovt.Core.Collections
 
 
         /// <summary>
-        /// Initialize the collection if is null, so you don't have to check it
+        ///     Initialize the collection if is null, so you don't have to check it
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>

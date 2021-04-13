@@ -1,15 +1,22 @@
-﻿using Innovt.Core.Utilities;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Data.EFCore
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using Innovt.Core.Utilities;
 using Innovt.Data.DataSources;
 using Innovt.Data.Exceptions;
 using Innovt.Data.Model;
 using Innovt.Domain.Core.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Innovt.Data.EFCore
 {
@@ -34,43 +41,14 @@ namespace Innovt.Data.EFCore
             base.ChangeTracker.LazyLoadingEnabled = false;
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (loggerFactory != null) optionsBuilder.UseLoggerFactory(loggerFactory);
-
-            if (dataSource != null)
-            {
-                var connectionString = dataSource.GetConnectionString();
-
-                if (connectionString.IsNullOrEmpty())
-                    throw new ConnectionStringException(
-                        $"Connection string for datasource {dataSource.Name} is empty.");
-
-                switch (dataSource.Provider)
-                {
-                    case Provider.MsSql:
-                        optionsBuilder.UseSqlServer(connectionString);
-                        break;
-                    case Provider.PostgreSqL:
-                        optionsBuilder.UseNpgsql(connectionString);
-                        break;
-                    default:
-                        optionsBuilder.UseSqlServer(connectionString);
-                        break;
-                }
-            }
-
-            base.OnConfiguring(optionsBuilder);
-        }
-
         public int Commit()
         {
             return SaveChanges();
         }
 
-        public async Task<int> CommitAsync(CancellationToken cancellationToken = default)
+        public Task<int> CommitAsync(CancellationToken cancellationToken = default)
         {
-            return await SaveChangesAsync(cancellationToken);
+            return SaveChangesAsync(cancellationToken);
         }
 
         public void Rollback()
@@ -94,7 +72,7 @@ namespace Innovt.Data.EFCore
         async Task IExtendedUnitOfWork.AddAsync<T>(T entity, CancellationToken cancellationToken = default)
 #pragma warning restore CS1066 // The default value specified will have no effect because it applies to a member that is used in contexts that do not allow optional arguments
         {
-            await base.AddAsync(entity, cancellationToken);
+            await base.AddAsync(entity, cancellationToken).ConfigureAwait(false);
         }
 
 #pragma warning disable CS1066 // The default value specified will have no effect because it applies to a member that is used in contexts that do not allow optional arguments
@@ -102,7 +80,7 @@ namespace Innovt.Data.EFCore
             CancellationToken cancellationToken = default)
 #pragma warning restore CS1066 // The default value specified will have no effect because it applies to a member that is used in contexts that do not allow optional arguments
         {
-            await base.AddRangeAsync(entities, cancellationToken);
+            await base.AddRangeAsync(entities, cancellationToken).ConfigureAwait(false);
         }
 
         void IExtendedUnitOfWork.Remove<T>(T entity)
@@ -145,6 +123,35 @@ namespace Innovt.Data.EFCore
         {
             return base.Database.ExecuteSqlRawAsync(sql, cancellationToken: cancellationToken,
                 parameters: parameters);
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (loggerFactory != null) optionsBuilder.UseLoggerFactory(loggerFactory);
+
+            if (dataSource != null)
+            {
+                var connectionString = dataSource.GetConnectionString();
+
+                if (connectionString.IsNullOrEmpty())
+                    throw new ConnectionStringException(
+                        $"Connection string for datasource {dataSource.Name} is empty.");
+
+                switch (dataSource.Provider)
+                {
+                    case Provider.MsSql:
+                        optionsBuilder.UseSqlServer(connectionString);
+                        break;
+                    case Provider.PostgreSqL:
+                        optionsBuilder.UseNpgsql(connectionString);
+                        break;
+                    default:
+                        optionsBuilder.UseSqlServer(connectionString);
+                        break;
+                }
+            }
+
+            base.OnConfiguring(optionsBuilder);
         }
     }
 }

@@ -1,10 +1,35 @@
-﻿using Innovt.Domain.Core.Model;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Domain
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
+using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain
 {
     public class BaseCreditCard : ValueObject
     {
+        public BaseCreditCard(string number, string holder, DateTime expiration, string securityCode)
+        {
+            Number = number;
+            Holder = holder;
+            Expiration = expiration;
+            SecurityCode = securityCode;
+        }
+
+        public BaseCreditCard(string token, string securityCode)
+        {
+            SecurityCode = securityCode;
+            Token = token;
+        }
+
+        public BaseCreditCard()
+        {
+        }
+
         public string Number { get; set; }
         public string Holder { get; set; }
 
@@ -37,24 +62,6 @@ namespace Innovt.Domain
             }
 
             return result;
-        }
-
-        public BaseCreditCard(string number, string holder, DateTime expiration, string securityCode)
-        {
-            Number = number;
-            Holder = holder;
-            Expiration = expiration;
-            SecurityCode = securityCode;
-        }
-
-        public BaseCreditCard(string token, string securityCode)
-        {
-            SecurityCode = securityCode;
-            Token = token;
-        }
-
-        public BaseCreditCard()
-        {
         }
     }
 }

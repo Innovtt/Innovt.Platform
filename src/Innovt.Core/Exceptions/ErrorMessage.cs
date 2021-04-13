@@ -1,12 +1,19 @@
-﻿namespace Innovt.Core.Exceptions
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Core
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+namespace Innovt.Core.Exceptions
 {
     /// <summary>
-    /// You can use it to create custom error messages that will be used by our framework.
+    ///     You can use it to create custom error messages that will be used by our framework.
     /// </summary>
     public class ErrorMessage
     {
         /// <summary>
-        /// Constructor 
+        ///     Constructor
         /// </summary>
         /// <param name="message">The message that you want to send.</param>
         public ErrorMessage(string message)
@@ -19,7 +26,7 @@
         }
 
         /// <summary>
-        /// Constructor 
+        ///     Constructor
         /// </summary>
         /// <param name="message">The message that you want to send.</param>
         /// <param name="propertyName">The property(optional) that this error happened.</param>
@@ -30,7 +37,7 @@
         }
 
         /// <summary>
-        /// Constructor 
+        ///     Constructor
         /// </summary>
         /// <param name="message">The message that you want to send.</param>
         /// <param name="propertyName">The property(optional) that this error happened.</param>

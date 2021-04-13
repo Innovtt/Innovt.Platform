@@ -1,15 +1,9 @@
-﻿//===================================================================================
-// Microsoft Developer & Platform Evangelism
-//=================================================================================== 
-// THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
-// EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES 
-// OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-//===================================================================================
-// Copyright (c) Microsoft Corporation.  All Rights Reserved.
-// This code is released under the terms of the MS-LPL license, 
-// http://microsoftnlayerapp.codeplex.com/license
-//===================================================================================
-
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Domain.Core
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
 using System.Linq.Expressions;
@@ -17,55 +11,54 @@ using System.Linq.Expressions;
 namespace Innovt.Domain.Core.Specification
 {
     /// <summary>
-    /// A logic AND Specification
+    ///     A logic AND Specification
     /// </summary>
     /// <typeparam name="T">Type of entity that check this specification</typeparam>
     public sealed class AndSpecification<T>
         : CompositeSpecification<T>
         where T : class
     {
-        #region Members
-
-        private readonly ISpecification<T> rightSideSpecification = null;
-        private readonly ISpecification<T> leftSideSpecification = null;
-
-        #endregion
-
         #region Public Constructor
 
         /// <summary>
-        /// Default constructor for AndSpecification
+        ///     Default constructor for AndSpecification
         /// </summary>
         /// <param name="leftSide">Left side specification</param>
         /// <param name="rightSide">Right side specification</param>
         public AndSpecification(ISpecification<T> leftSide, ISpecification<T> rightSide)
         {
-            leftSideSpecification = leftSide ?? throw new ArgumentNullException("leftSide");
-            rightSideSpecification = rightSide ?? throw new ArgumentNullException("rightSide");
+            LeftSideSpecification = leftSide ?? throw new ArgumentNullException("leftSide");
+            RightSideSpecification = rightSide ?? throw new ArgumentNullException("rightSide");
         }
+
+        #endregion
+
+        #region Members
 
         #endregion
 
         #region Composite Specification overrides
 
         /// <summary>
-        /// Left side specification
+        ///     Left side specification
         /// </summary>
-        public override ISpecification<T> LeftSideSpecification => leftSideSpecification;
+        public override ISpecification<T> LeftSideSpecification { get; }
 
         /// <summary>
-        /// Right side specification
+        ///     Right side specification
         /// </summary>
-        public override ISpecification<T> RightSideSpecification => rightSideSpecification;
+        public override ISpecification<T> RightSideSpecification { get; }
 
         /// <summary>
-        /// <see cref="ISpecification{TEntity}"/>
+        ///     <see cref="ISpecification{TEntity}" />
         /// </summary>
-        /// <returns><see cref="ISpecification{TEntity}"/></returns>
+        /// <returns>
+        ///     <see cref="ISpecification{TEntity}" />
+        /// </returns>
         public override Expression<Func<T, bool>> SatisfiedBy()
         {
-            var left = leftSideSpecification.SatisfiedBy();
-            var right = rightSideSpecification.SatisfiedBy();
+            var left = LeftSideSpecification.SatisfiedBy();
+            var right = RightSideSpecification.SatisfiedBy();
 
             return left.And(right);
         }

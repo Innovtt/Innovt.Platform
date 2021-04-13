@@ -1,10 +1,16 @@
-﻿using Innovt.Core.Serialization;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Core
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
 using System.Collections.Specialized;
 using System.IO;
 using System.Net;
 using System.Net.Http;
-
+using Innovt.Core.Serialization;
 
 namespace Innovt.Core.Http
 {
@@ -12,7 +18,7 @@ namespace Innovt.Core.Http
     {
         private static HttpWebRequest CreateHttpRequest(Uri url, int? connectionTimeout = 30000)
         {
-            var httpRequest = (HttpWebRequest)WebRequest.Create(url);
+            var httpRequest = (HttpWebRequest) WebRequest.Create(url);
 
             httpRequest.Timeout = connectionTimeout ?? 30000;
 
@@ -51,7 +57,7 @@ namespace Innovt.Core.Http
             string dataToSend,
             NameValueCollection headerData = null, int? connectionTimeout = null)
         {
-            return SendHttpWebRequest(endpoint, HttpMethod.Put.Method, dataToSend, headerData,connectionTimeout);
+            return SendHttpWebRequest(endpoint, HttpMethod.Put.Method, dataToSend, headerData, connectionTimeout);
         }
 
         public static HttpRequestDetail Delete(Uri endpoint,
@@ -79,7 +85,7 @@ namespace Innovt.Core.Http
 
         private static T DeserializeObject<T>(ISerializer serializer, string content) where T : class
         {
-            if (typeof(T).Name.Equals("String")) return (T)Convert.ChangeType(content, typeof(T));
+            if (typeof(T).Name.Equals("String")) return (T) Convert.ChangeType(content, typeof(T));
 
             return serializer.DeserializeObject<T>(content);
         }
@@ -107,7 +113,7 @@ namespace Innovt.Core.Http
             webRequest.Method = method;
             webRequest.AddHeader(headerData).AddBody(dataToSend);
 
-            var requestDetail = new HttpRequestDetail()
+            var requestDetail = new HttpRequestDetail
             {
                 Url = webRequest.RequestUri.AbsoluteUri,
                 Method = webRequest.Method,
@@ -126,7 +132,7 @@ namespace Innovt.Core.Http
             {
                 if (ex.Response == null) throw;
 
-                using var webResponse = (HttpWebResponse)ex.Response;
+                using var webResponse = (HttpWebResponse) ex.Response;
                 var test = new StreamReader(webResponse.GetResponseStream());
                 requestDetail.RawResponse = test.ReadToEnd();
                 requestDetail.ResponseStatusCode = webResponse.StatusCode;

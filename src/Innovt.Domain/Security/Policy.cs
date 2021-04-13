@@ -1,8 +1,15 @@
-﻿using Innovt.Core.Collections;
-using Innovt.Core.Exceptions;
-using Innovt.Domain.Core.Model;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Domain
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System.Collections.Generic;
 using System.Linq;
+using Innovt.Core.Collections;
+using Innovt.Core.Exceptions;
+using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Security
 {
@@ -24,7 +31,7 @@ namespace Innovt.Domain.Security
             if (exist)
                 throw new BusinessException($"Permission {permissionId} alreary exist to this Polocy.");
 
-            var permission = new PolicyPermission { PermissionId = permissionId, Policy = this };
+            var permission = new PolicyPermission {PermissionId = permissionId, Policy = this};
 
             Permissions.Add(permission);
         }

@@ -1,10 +1,17 @@
-﻿using Innovt.Core.Collections;
-using Innovt.Domain.Core.Specification;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Domain.Core
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Innovt.Core.Collections;
+using Innovt.Domain.Core.Specification;
 
 namespace Innovt.Domain.Core.Repository
 {

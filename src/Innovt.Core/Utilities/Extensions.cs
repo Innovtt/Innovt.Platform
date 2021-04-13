@@ -1,4 +1,11 @@
-﻿using System;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Core
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 using System.Collections.Concurrent;
 using System.Globalization;
 using System.IO;
@@ -10,6 +17,9 @@ namespace Innovt.Core.Utilities
 {
     public static class Extensions
     {
+        private static readonly ConcurrentDictionary<Type, bool> IsSimpleTypeCache =
+            new ConcurrentDictionary<Type, bool>();
+
         public static bool IsNull(this object obj)
         {
             return obj == null;
@@ -44,9 +54,6 @@ namespace Innovt.Core.Utilities
         {
             return id <= 0;
         }
-
-        private static readonly ConcurrentDictionary<Type, bool> IsSimpleTypeCache =
-            new ConcurrentDictionary<Type, bool>();
 
         //From Stack Owverlow: https://stackoverflow.com/questions/2442534/how-to-test-if-type-is-primitive
         public static bool IsPrimitiveType(this Type type)
@@ -183,57 +190,48 @@ namespace Innovt.Core.Utilities
                 cultureInfo = new CultureInfo("pt-BR");
 
             //same day
-            if (endDate.Subtract(startDate) == TimeSpan.Zero)
+            if (endDate.Subtract(startDate) == TimeSpan.Zero) return startDate.ToString("d MMMM", cultureInfo);
+
+            //day equal but time diferent
+            if (startDate.Day == endDate.Day && startDate.Month == endDate.Month && startDate.Year == endDate.Year)
+                return
+                    $"{startDate.ToString("d MMMM", cultureInfo)} {startDate.ToString("HH:mm", cultureInfo)} - {endDate.ToString("HH:mm", cultureInfo)}";
+
+            var res = string.Empty;
+            //same month
+            if (startDate.Month == endDate.Month)
             {
-                return startDate.ToString("d MMMM", cultureInfo);
-            }
-            else
-            {
-                //day equal but time diferent
-                if (startDate.Day == endDate.Day && startDate.Month == endDate.Month && startDate.Year == endDate.Year)
+                if (startDate.Year == endDate.Year)
                 {
-                    return
-                        $"{startDate.ToString("d MMMM", cultureInfo)} {startDate.ToString("HH:mm", cultureInfo)} - {endDate.ToString("HH:mm", cultureInfo)}";
+                    res = $"{startDate.Day} - {endDate.Day} {endDate.ToString("MMMM", cultureInfo)}";
+
+                    if (startDate.Year != currentYear)
+                        return res + $" {startDate.Year}";
                 }
                 else
                 {
-                    var res = string.Empty;
-                    //same month
-                    if (startDate.Month == endDate.Month)
-                    {
-                        if (startDate.Year == endDate.Year)
-                        {
-                            res = $"{startDate.Day} - {endDate.Day} {endDate.ToString("MMMM", cultureInfo)}";
-
-                            if (startDate.Year != currentYear)
-                                return res + $" {startDate.Year}";
-                        }
-                        else
-                        {
-                            return
-                                $"{startDate.Day} {startDate.ToString("MMMM", cultureInfo)} {startDate.Year} - {endDate.Day} {endDate.ToString("MMMM", cultureInfo)} {endDate.Year}";
-                        }
-                    }
-                    else
-                    {
-                        if (startDate.Year == endDate.Year)
-                        {
-                            res =
-                                $"{startDate.Day} {startDate.ToString("MMMM", cultureInfo)} - {endDate.Day} {endDate.ToString("MMMM", cultureInfo)}";
-
-                            if (startDate.Year != currentYear)
-                                return res + $" {startDate.Year}";
-                        }
-                        else
-                        {
-                            return
-                                $"{startDate.Day} {startDate.ToString("MMMM", cultureInfo)} {startDate.Year} - {endDate.Day} {endDate.ToString("MMMM", cultureInfo)} {endDate.Year}";
-                        }
-                    }
-
-                    return res;
+                    return
+                        $"{startDate.Day} {startDate.ToString("MMMM", cultureInfo)} {startDate.Year} - {endDate.Day} {endDate.ToString("MMMM", cultureInfo)} {endDate.Year}";
                 }
             }
+            else
+            {
+                if (startDate.Year == endDate.Year)
+                {
+                    res =
+                        $"{startDate.Day} {startDate.ToString("MMMM", cultureInfo)} - {endDate.Day} {endDate.ToString("MMMM", cultureInfo)}";
+
+                    if (startDate.Year != currentYear)
+                        return res + $" {startDate.Year}";
+                }
+                else
+                {
+                    return
+                        $"{startDate.Day} {startDate.ToString("MMMM", cultureInfo)} {startDate.Year} - {endDate.Day} {endDate.ToString("MMMM", cultureInfo)} {endDate.Year}";
+                }
+            }
+
+            return res;
         }
 
         public static string ToYesNO(this bool value)
@@ -299,7 +297,7 @@ namespace Innovt.Core.Utilities
             var bf = new BinaryFormatter();
             using var ms = new MemoryStream(data);
             var obj = bf.Deserialize(ms);
-            return (T)obj;
+            return (T) obj;
         }
 
         #region [From Net Code]

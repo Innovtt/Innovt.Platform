@@ -1,8 +1,15 @@
-﻿using Innovt.Core.Cqrs.Queries;
-using Innovt.Data.Ado.Tests.Model;
-using Innovt.Data.DataSources;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Data.Ado.Tests
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Innovt.Core.Cqrs.Queries;
+using Innovt.Data.Ado.Tests.Model;
+using Innovt.Data.DataSources;
 
 namespace Innovt.Data.Ado.Tests
 {
@@ -21,7 +28,7 @@ namespace Innovt.Data.Ado.Tests
         {
             var query = "SELECT * FROM USER ORDER BY NAME";
 
-            var filter = new PagedFilterBase() { Page = 1, PageSize = 10 };
+            var filter = new PagedFilterBase {Page = 1, PageSize = 10};
 
             var res = await QueryPagedAsync<User>(query, filter);
 

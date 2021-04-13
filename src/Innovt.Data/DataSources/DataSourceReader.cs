@@ -1,6 +1,13 @@
-﻿using Innovt.Data.Model;
-using Microsoft.Extensions.Configuration;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Data
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System.Diagnostics.CodeAnalysis;
+using Innovt.Data.Model;
+using Microsoft.Extensions.Configuration;
 
 namespace Innovt.Data.DataSources
 {

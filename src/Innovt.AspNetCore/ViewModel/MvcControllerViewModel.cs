@@ -1,6 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.AspNetCore
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
+using System.Collections.Generic;
 
 namespace Innovt.AspNetCore.ViewModel
 {
@@ -18,10 +24,10 @@ namespace Innovt.AspNetCore.ViewModel
         public void AddActions(IList<MvcActionViewModel> actions)
         {
             if (actions == null) throw new ArgumentNullException(nameof(actions));
-            
-            this.Actions ??= new List<MvcActionViewModel>();
 
-            this.Actions.AddRange(actions);
+            Actions ??= new List<MvcActionViewModel>();
+
+            Actions.AddRange(actions);
         }
     }
 }

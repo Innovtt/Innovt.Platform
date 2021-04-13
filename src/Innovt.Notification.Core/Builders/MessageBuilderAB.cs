@@ -1,6 +1,13 @@
-﻿using Innovt.Notification.Core.Domain;
-using Innovt.Notification.Core.Template;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Notification.Core
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
+using Innovt.Notification.Core.Domain;
+using Innovt.Notification.Core.Template;
 
 namespace Innovt.Notification.Core.Builders
 {
@@ -21,7 +28,7 @@ namespace Innovt.Notification.Core.Builders
             var message =
                 new NotificationMessage(template.Type, template.FromAddress, template.FromName, template.Subject)
                 {
-                    Body = new NotificationMessageBody()
+                    Body = new NotificationMessageBody
                     {
                         Content = template.Body,
                         Charset = template.Charset

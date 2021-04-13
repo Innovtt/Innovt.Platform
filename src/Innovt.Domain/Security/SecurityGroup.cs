@@ -1,25 +1,32 @@
-﻿using Innovt.Core.Collections;
-using Innovt.Core.Exceptions;
-using Innovt.Domain.Core.Model;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Domain
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Innovt.Core.Collections;
+using Innovt.Core.Exceptions;
+using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Security
 {
     public class SecurityGroup : Entity
     {
+        public SecurityGroup()
+        {
+            CreatedAt = DateTimeOffset.UtcNow;
+        }
+
         public virtual string Name { get; set; }
         public virtual string Description { get; set; }
 
         public IList<SecurityGroupPolicy> Policies { get; set; }
 
         public IList<SecurityGroupUser> Users { get; set; }
-
-        public SecurityGroup()
-        {
-            CreatedAt = DateTimeOffset.UtcNow;
-        }
 
 
         public IList<Policy> GetPolicies()
@@ -36,9 +43,9 @@ namespace Innovt.Domain.Security
             var exist = Policies.Any(p => p.PolicyId == policyId);
 
             if (exist)
-                throw new BusinessException($"Policy already linked for this security group.");
+                throw new BusinessException("Policy already linked for this security group.");
 
-            var sgPolicy = new SecurityGroupPolicy { SecurityGroup = this, PolicyId = policyId };
+            var sgPolicy = new SecurityGroupPolicy {SecurityGroup = this, PolicyId = policyId};
 
             Policies.Add(sgPolicy);
         }
@@ -48,7 +55,7 @@ namespace Innovt.Domain.Security
             var sGpolicy = Policies?.FirstOrDefault(p => p.PolicyId == policyId);
 
             if (sGpolicy == null)
-                throw new BusinessException($"This Policy is not linked.");
+                throw new BusinessException("This Policy is not linked.");
 
             Policies.Remove(sGpolicy);
         }
@@ -64,7 +71,7 @@ namespace Innovt.Domain.Security
             if (exist)
                 throw new BusinessException($"User {userId} already allow to this group.");
 
-            var userGroup = new SecurityGroupUser { SecurityGroup = this, UserId = userId };
+            var userGroup = new SecurityGroupUser {SecurityGroup = this, UserId = userId};
 
             Users.Add(userGroup);
         }

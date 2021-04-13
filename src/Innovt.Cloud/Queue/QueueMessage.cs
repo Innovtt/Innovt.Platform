@@ -1,21 +1,16 @@
-﻿using System.Collections.Generic;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Cloud
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System.Collections.Generic;
 
 namespace Innovt.Cloud.Queue
 {
     public class QueueMessage<T> : IQueueMessage
     {
-        public string MessageId { get; set; }
-
-        public string ReceiptHandle { get; set; }
-
-        public T Body { get; set; }
-
-        public double? ApproximateFirstReceiveTimestamp { get; set; }
-
-        public int? ApproximateReceiveCount { get; set; }
-
-        public Dictionary<string, string> Attributes { get; set; }
-
         public QueueMessage()
         {
         }
@@ -29,5 +24,16 @@ namespace Innovt.Cloud.Queue
         {
             Attributes = attributes;
         }
+
+        public T Body { get; set; }
+        public string MessageId { get; set; }
+
+        public string ReceiptHandle { get; set; }
+
+        public double? ApproximateFirstReceiveTimestamp { get; set; }
+
+        public int? ApproximateReceiveCount { get; set; }
+
+        public Dictionary<string, string> Attributes { get; set; }
     }
 }

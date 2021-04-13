@@ -1,4 +1,11 @@
-﻿using Innovt.Domain.Address;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Domain
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using Innovt.Domain.Address;
 using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Documents

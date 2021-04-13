@@ -1,22 +1,30 @@
-using Innovt.Cloud.AWS.Configuration;
-using Innovt.Core.CrossCutting.Log;
-using NUnit.Framework;
+// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Cloud.AWS.Dynamo.Tests
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using QueryRequest = Innovt.Cloud.Table.QueryRequest;
+using Innovt.Cloud.AWS.Configuration;
+using Innovt.Cloud.Table;
+using Innovt.Core.CrossCutting.Log;
+using NSubstitute;
+using NUnit.Framework;
 
 namespace Innovt.Cloud.AWS.Dynamo.Tests
 {
     public class Tests
     {
-        private ILogger loggerMock = null;
-        private BaseRepository baseRepository = null;
+        private BaseRepository baseRepository;
+        private ILogger loggerMock;
 
         [SetUp]
         public void Setup()
         {
-            loggerMock = NSubstitute.Substitute.For<ILogger>();
+            loggerMock = Substitute.For<ILogger>();
             //var client = new AmazonDynamoDBClient(RegionEndpoint.USEast1);
             baseRepository = new BaseRepository(loggerMock, new DefaultAWSConfiguration("antecipa-dev"));
         }
@@ -66,8 +74,8 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
                 // };
                 //
 
-                var filter = new { sid = "09788ce6-4ecb-40e5-8231-4e646a1ff3d9" };
-                var queryRequest = new QueryRequest()
+                var filter = new {sid = "09788ce6-4ecb-40e5-8231-4e646a1ff3d9"};
+                var queryRequest = new QueryRequest
                 {
                     IndexName = "BuyerId-DueDate-Index",
                     KeyConditionExpression = "BuyerId = :sid",
@@ -80,7 +88,7 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
                 var res = await baseRepository.QueryPaginatedByAsync<DataModel>(queryRequest, CancellationToken.None);
                 // var res = await baseRepository.QueryPaginatedByAsync<DataModel>(queryRequest, CancellationToken.None);
 
-                var queryRequest2 = new QueryRequest()
+                var queryRequest2 = new QueryRequest
                 {
                     IndexName = "BuyerId-DueDate-Index",
                     KeyConditionExpression = "BuyerId = :sid",

@@ -1,4 +1,10 @@
-﻿
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.CrossCutting.Log.Serilog
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using Serilog.Core;
 using Serilog.Events;
 

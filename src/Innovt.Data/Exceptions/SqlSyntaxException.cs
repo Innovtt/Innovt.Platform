@@ -1,5 +1,12 @@
-﻿using Innovt.Core.Exceptions;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Data
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
+using Innovt.Core.Exceptions;
 
 namespace Innovt.Data.Exceptions
 {

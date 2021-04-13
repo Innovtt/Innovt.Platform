@@ -1,18 +1,24 @@
-﻿using Innovt.Core.CrossCutting.Log;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.AspNetCore
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
+using Innovt.Core.CrossCutting.Log;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Innovt.AspNetCore.Controllers
 {
     [ApiController]
     public abstract class BaseApiController : ControllerBase
     {
-        protected ILogger Logger { get; }
-
         protected BaseApiController(ILogger logger)
         {
-            this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            Logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
+
+        protected ILogger Logger { get; }
     }
 }

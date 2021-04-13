@@ -1,26 +1,26 @@
-﻿using Amazon.Runtime;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Cloud.AWS
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
+using Amazon.Runtime;
 using Amazon.Runtime.CredentialManagement;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
 using Microsoft.Extensions.Configuration;
-using System;
 
 namespace Innovt.Cloud.AWS.Configuration
 {
     public class DefaultAWSConfiguration : IAWSConfiguration
     {
         private const string configSection = "AWS";
-        public string AccountNumber { get; set; }
-        public string SecretKey { get; set; }
-        public string AccessKey { get; set; }
-        public string RoleArn { get; set; }
-        public string SessionToken { get; set; }
-        public string Region { get; set; }
-        public string Profile { get; set; }
 
 
         /// <summary>
-        /// Using custom Profile
+        ///     Using custom Profile
         /// </summary>
         /// <param name="profileName"></param>
         /// <param name="roleArn"></param>
@@ -35,7 +35,7 @@ namespace Innovt.Cloud.AWS.Configuration
         }
 
         /// <summary>
-        /// This Constructor will use the Autobind from GetSection. 
+        ///     This Constructor will use the Autobind from GetSection.
         /// </summary>
         /// <param name="configuration">IConfiguration from .Net Core</param>
         /// <param name="sectionName"> The default is AWS. </param>
@@ -65,29 +65,13 @@ namespace Innovt.Cloud.AWS.Configuration
             SessionToken = sessionToken;
         }
 
-        private AWSCredentials GetCredentialsFromProfile()
-        {
-            var sharedProfile = new SharedCredentialsFile();
-
-            var profile = sharedProfile.ListProfiles()
-                .Find(p => p.Name.Equals(Profile, StringComparison.InvariantCultureIgnoreCase));
-
-            if (profile == null)
-                throw new ConfigurationException($"Profile {Profile} not found.");
-
-            if (Region == null && profile?.Region != null)
-                Region = profile.Region.SystemName;
-
-            return AWSCredentialsFactory.GetAWSCredentials(profile, sharedProfile);
-        }
-
-        private AWSCredentials AssumeRole(AWSCredentials credentials)
-        {
-            if (credentials is null || RoleArn.IsNullOrEmpty())
-                return credentials;
-
-            return new AssumeRoleAWSCredentials(credentials, RoleArn, $"InnovtRoleSession");
-        }
+        public string RoleArn { get; set; }
+        public string SessionToken { get; set; }
+        public string AccountNumber { get; set; }
+        public string SecretKey { get; set; }
+        public string AccessKey { get; set; }
+        public string Region { get; set; }
+        public string Profile { get; set; }
 
         public AWSCredentials GetCredential()
         {
@@ -111,6 +95,30 @@ namespace Innovt.Cloud.AWS.Configuration
             if (RoleArn.IsNotNullOrEmpty()) credentials = AssumeRole(credentials);
 
             return credentials;
+        }
+
+        private AWSCredentials GetCredentialsFromProfile()
+        {
+            var sharedProfile = new SharedCredentialsFile();
+
+            var profile = sharedProfile.ListProfiles()
+                .Find(p => p.Name.Equals(Profile, StringComparison.InvariantCultureIgnoreCase));
+
+            if (profile == null)
+                throw new ConfigurationException($"Profile {Profile} not found.");
+
+            if (Region == null && profile?.Region != null)
+                Region = profile.Region.SystemName;
+
+            return AWSCredentialsFactory.GetAWSCredentials(profile, sharedProfile);
+        }
+
+        private AWSCredentials AssumeRole(AWSCredentials credentials)
+        {
+            if (credentials is null || RoleArn.IsNullOrEmpty())
+                return credentials;
+
+            return new AssumeRoleAWSCredentials(credentials, RoleArn, "InnovtRoleSession");
         }
     }
 }

@@ -1,7 +1,9 @@
-﻿// COMPANY: INNOVT TECNOLOGIA
-// PROJECT: Innovt.Core
-// DATE: 02-19-2019
-// AUTHOR: michel
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Notification.Core
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using Innovt.Notification.Core.Template;
 
@@ -17,7 +19,7 @@ namespace Innovt.Notification.Core.Builders
         }
 
         /// <summary>
-        /// You can use your IOC Container to do It based in Names
+        ///     You can use your IOC Container to do It based in Names
         /// </summary>
         /// <param name="builderName"></param>
         /// <returns></returns>

@@ -1,12 +1,20 @@
-﻿using Innovt.Core.Collections;
-using Innovt.Domain.Core.Repository;
-using Innovt.Domain.Core.Specification;
-using Microsoft.EntityFrameworkCore;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Data.EFCore
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Innovt.Core.Collections;
+using Innovt.Domain.Core.Repository;
+using Innovt.Domain.Core.Specification;
+using Microsoft.EntityFrameworkCore;
 
 namespace Innovt.Data.EFCore.Repositories
 {
@@ -79,7 +87,7 @@ namespace Innovt.Data.EFCore.Repositories
 
 
         public virtual IEnumerable<T> FindBy<TKey>(ISpecification<T> specification,
-            System.Linq.Expressions.Expression<Func<T, TKey>> orderBy = null, bool isOrderByDescending = false,
+            Expression<Func<T, TKey>> orderBy = null, bool isOrderByDescending = false,
             Include includes = null)
         {
             var query = Context.Queryable<T>()
@@ -105,7 +113,7 @@ namespace Innovt.Data.EFCore.Repositories
         }
 
         public virtual async Task<IEnumerable<T>> FindByAsync<TKey>(ISpecification<T> specification,
-            System.Linq.Expressions.Expression<Func<T, TKey>> orderBy = null,
+            Expression<Func<T, TKey>> orderBy = null,
             bool isOrderByDescending = false, Include includes = null,
             CancellationToken cancellationToken = default)
         {
@@ -132,10 +140,10 @@ namespace Innovt.Data.EFCore.Repositories
         }
 
         public virtual PagedCollection<T> FindPaginatedBy<TKey>(ISpecification<T> specification,
-            System.Linq.Expressions.Expression<Func<T, TKey>> orderBy = null,
+            Expression<Func<T, TKey>> orderBy = null,
             bool isOrderByDescending = false, Include includes = null)
         {
-            var items = FindBy<TKey>(specification, orderBy, isOrderByDescending, includes);
+            var items = FindBy(specification, orderBy, isOrderByDescending, includes);
 
             var result = new PagedCollection<T>(items, specification.Page, specification.PageSize)
             {
@@ -159,10 +167,10 @@ namespace Innovt.Data.EFCore.Repositories
         }
 
         public virtual async Task<PagedCollection<T>> FindPaginatedByAsync<TKey>(ISpecification<T> specification,
-            System.Linq.Expressions.Expression<Func<T, TKey>> orderBy = null, bool isOrderByDescending = false,
+            Expression<Func<T, TKey>> orderBy = null, bool isOrderByDescending = false,
             Include includes = null, CancellationToken cancellationToken = default)
         {
-            var items = await FindByAsync<TKey>(specification, orderBy, isOrderByDescending, includes,
+            var items = await FindByAsync(specification, orderBy, isOrderByDescending, includes,
                 cancellationToken);
 
             var result = new PagedCollection<T>(items, specification.Page, specification.PageSize)

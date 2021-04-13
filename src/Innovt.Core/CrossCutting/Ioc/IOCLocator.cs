@@ -1,7 +1,14 @@
-﻿using Innovt.Core.Exceptions;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Core
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
 using System.Linq;
 using System.Reflection;
+using Innovt.Core.Exceptions;
 
 namespace Innovt.Core.CrossCutting.Ioc
 {
@@ -68,7 +75,7 @@ namespace Innovt.Core.CrossCutting.Ioc
 
             foreach (var module in modules)
             {
-                var moduleInstance = (IOCModule)Activator.CreateInstance(module);
+                var moduleInstance = (IOCModule) Activator.CreateInstance(module);
 
                 container.AddModule(moduleInstance);
             }

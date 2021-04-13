@@ -1,17 +1,24 @@
-﻿using Innovt.Core.CrossCutting.Log;
-using Innovt.Job.Core;
-using Quartz;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Job.Quartz
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Innovt.Core.CrossCutting.Log;
+using Innovt.Job.Core;
+using Quartz;
 
 namespace Innovt.Job.Quartz
 {
     public abstract class QuartzJobBase : JobBase, IJob // where T : IJob
     {
-        private readonly IScheduler scheduler;
-        private readonly JobKey key;
         private readonly int intervalInMinutes;
+        private readonly JobKey key;
+        private readonly IScheduler scheduler;
         private DateTimeOffset nextScheduleExecution = DateTimeOffset.MinValue;
 
         protected QuartzJobBase(string name, double heartBeatInterval, ILogger logger, IScheduler scheduler,
@@ -20,6 +27,11 @@ namespace Innovt.Job.Quartz
             this.scheduler = scheduler ?? throw new ArgumentNullException(nameof(scheduler));
             this.intervalInMinutes = intervalInMinutes;
             key = new JobKey(Name + "Key");
+        }
+
+        public Task Execute(IJobExecutionContext context)
+        {
+            return OnExecute();
         }
 
         protected override async Task OnStart(CancellationToken cancellationToken = default)
@@ -59,10 +71,5 @@ namespace Innovt.Job.Quartz
         }
 
         protected abstract Task OnExecute();
-
-        public Task Execute(IJobExecutionContext context)
-        {
-            return OnExecute();
-        }
     }
 }

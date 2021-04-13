@@ -1,15 +1,20 @@
+// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.AspNetCoreTests
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using Innovt.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
 
 namespace Innovt.AspNetCoreTests
 {
-    public class Startup:ApiStartupBase
+    public class Startup : ApiStartupBase
     {
         //public Startup(IConfiguration configuration)
         //{
@@ -55,17 +60,18 @@ namespace Innovt.AspNetCoreTests
 
         protected override void AddDefaultServices(IServiceCollection services)
         {
-           // throw new System.NotImplementedException();
+            // throw new System.NotImplementedException();
         }
 
         protected override void ConfigureIoC(IServiceCollection services)
         {
-           // throw new System.NotImplementedException();
+            // throw new System.NotImplementedException();
         }
 
-        public override void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
+        public override void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env,
+            ILoggerFactory loggerFactory)
         {
-           // throw new System.NotImplementedException();
+            // throw new System.NotImplementedException();
         }
     }
 }

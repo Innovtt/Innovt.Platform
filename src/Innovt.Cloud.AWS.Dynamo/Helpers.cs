@@ -1,15 +1,22 @@
-﻿using Amazon.DynamoDBv2;
-using Amazon.DynamoDBv2.DataModel;
-using Amazon.DynamoDBv2.DocumentModel;
-using Amazon.DynamoDBv2.Model;
-using Innovt.Core.Collections;
-using Innovt.Core.Utilities;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Cloud.AWS.Dynamo
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.DataModel;
+using Amazon.DynamoDBv2.DocumentModel;
+using Amazon.DynamoDBv2.Model;
+using Innovt.Core.Collections;
+using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.Dynamo
 {
@@ -39,31 +46,31 @@ namespace Innovt.Cloud.AWS.Dynamo
         internal static AttributeValue CreateAttributeValue(object value)
         {
             if (value is null)
-                return new AttributeValue() { NULL = true };
+                return new AttributeValue {NULL = true};
 
             if (value is MemoryStream)
-                return new AttributeValue() { B = value as MemoryStream };
+                return new AttributeValue {B = value as MemoryStream};
 
             if (value is bool)
-                return new AttributeValue() { BOOL = bool.Parse(value.ToString()) };
+                return new AttributeValue {BOOL = bool.Parse(value.ToString())};
 
             if (value is List<MemoryStream>)
-                return new AttributeValue() { BS = value as List<MemoryStream> };
+                return new AttributeValue {BS = value as List<MemoryStream>};
 
             if (value is List<string>)
                 return new AttributeValue(value as List<string>);
 
             if (value is int || value is double || value is float | value is decimal)
-                return new AttributeValue { N = value.ToString() };
+                return new AttributeValue {N = value.ToString()};
 
             if (value is DateTime time)
-                return new AttributeValue { S = time.ToString("s") };
+                return new AttributeValue {S = time.ToString("s")};
 
             if (value is IList<int> || value is IList<double> || value is IList<float> | value is IList<decimal>)
             {
                 var array = (value as IList).Cast<string>();
 
-                return new AttributeValue { NS = array.ToList<string>() };
+                return new AttributeValue {NS = array.ToList()};
             }
 
             if (value is IDictionary<string, object>)
@@ -73,7 +80,7 @@ namespace Innovt.Cloud.AWS.Dynamo
                 foreach (var item in value as IDictionary<string, object>)
                     array.Add(item.Key, CreateAttributeValue(item.Value));
 
-                return new AttributeValue { M = array };
+                return new AttributeValue {M = array};
             }
 
             return new AttributeValue(value.ToString());
@@ -107,9 +114,9 @@ namespace Innovt.Cloud.AWS.Dynamo
 
 
         internal static QueryRequest CreateQueryRequest<T>(
-            Innovt.Cloud.Table.QueryRequest request)
+            Table.QueryRequest request)
         {
-            var queryRequest = new QueryRequest()
+            var queryRequest = new QueryRequest
             {
                 IndexName = request.IndexName,
                 TableName = GetTableName<T>(),
@@ -130,9 +137,9 @@ namespace Innovt.Cloud.AWS.Dynamo
         }
 
 
-        internal static ScanRequest CreateScanRequest<T>(Innovt.Cloud.Table.ScanRequest request)
+        internal static ScanRequest CreateScanRequest<T>(Table.ScanRequest request)
         {
-            var scanRequest = new ScanRequest()
+            var scanRequest = new ScanRequest
             {
                 IndexName = request.IndexName,
                 TableName = GetTableName<T>(),
@@ -265,7 +272,7 @@ namespace Innovt.Cloud.AWS.Dynamo
                     result.Add(attributeKey,
                         new AttributeValue(attributeValue.Substring(2, attributeValue.Length - 2)));
                 else
-                    result.Add(attributeKey, new AttributeValue()
+                    result.Add(attributeKey, new AttributeValue
                     {
                         N = attributeValue.Substring(2, attributeValue.Length - 2)
                     });

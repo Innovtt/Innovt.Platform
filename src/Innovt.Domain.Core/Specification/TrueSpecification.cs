@@ -1,15 +1,9 @@
-﻿//===================================================================================
-// Microsoft Developer & Platform Evangelism
-//=================================================================================== 
-// THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
-// EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES 
-// OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-//===================================================================================
-// Copyright (c) Microsoft Corporation.  All Rights Reserved.
-// This code is released under the terms of the MS-LPL license, 
-// http://microsoftnlayerapp.codeplex.com/license
-//===================================================================================
-
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Domain.Core
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
 using System.Linq.Expressions;
@@ -17,7 +11,7 @@ using System.Linq.Expressions;
 namespace Innovt.Domain.Core.Specification
 {
     /// <summary>
-    /// True specification
+    ///     True specification
     /// </summary>
     /// <typeparam name="TValueObject">Type of entity in this specification</typeparam>
     public sealed class TrueSpecification<TEntity>
@@ -27,9 +21,11 @@ namespace Innovt.Domain.Core.Specification
         #region Specification overrides
 
         /// <summary>
-        /// <see cref=" Specification{TEntity}"/>
+        ///     <see cref=" Specification{TEntity}" />
         /// </summary>
-        /// <returns><see cref=" Specification{TEntity}"/></returns>
+        /// <returns>
+        ///     <see cref=" Specification{TEntity}" />
+        /// </returns>
         public override Expression<Func<TEntity, bool>> SatisfiedBy()
         {
             //Create "result variable" transform adhoc execution plan in prepared plan

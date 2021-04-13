@@ -1,7 +1,9 @@
-﻿// Solution: Innovt.Platform
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
 // Project: Innovt.Core
-// User: Michel Magalhães
-// Date: 2020/02/17 at 11:48 PM
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
 using System.Diagnostics;

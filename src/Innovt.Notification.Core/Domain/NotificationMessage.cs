@@ -1,13 +1,35 @@
-﻿using Innovt.Core.Collections;
-using Innovt.Core.Utilities;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Notification.Core
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using Innovt.Core.Collections;
+using Innovt.Core.Utilities;
 
 namespace Innovt.Notification.Core.Domain
 {
     public class NotificationMessage : IValidatableObject
     {
+        public NotificationMessage(NotificationMessageType type)
+        {
+            Type = type;
+        }
+
+        public NotificationMessage(NotificationMessageType type, string fromAddress, string fromName, string subject)
+        {
+            Type = type;
+
+            if (fromAddress.IsNotNullOrEmpty()) AddFrom(fromAddress, fromName);
+
+            if (subject.IsNotNullOrEmpty()) AddSubject(subject);
+        }
+
         public NotificationMessageContact From { get; internal set; }
 
         public List<NotificationMessageContact> To { get; internal set; }
@@ -23,23 +45,36 @@ namespace Innovt.Notification.Core.Domain
         public NotificationMessageSubject Subject { get; set; }
         public NotificationMessageBody Body { get; set; }
 
-        public NotificationMessage(NotificationMessageType type)
+        //public string GetMD5Hash()
+        //{
+        //    var destinations = string.Join(",", To.Select(t => t.Address));
+
+        //    var hashContent = $"{From?.Address}-{destinations}-{Type}-{Body.Content}";
+
+        //    return hashContent.ComputeMD5();
+        //}
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            Type = type;
-        }
+            if (To == null || !To.Any()) yield return new ValidationResult("Invalid value for To", new[] {"To"});
 
-        public NotificationMessage(NotificationMessageType type, string fromAddress, string fromName, string subject)
-        {
-            Type = type;
+            if (Body == null || Body.Content.IsNullOrEmpty())
+                yield return new ValidationResult("Invalid value for Body", new[] {"Body"});
 
-            if (fromAddress.IsNotNullOrEmpty()) AddFrom(fromAddress, fromName);
+            if (From == null || From.Address.IsNullOrEmpty())
+                yield return new ValidationResult("Invalid value for From", new[] {"From"});
 
-            if (subject.IsNotNullOrEmpty()) AddSubject(subject);
+            if (Type == NotificationMessageType.Sms)
+                foreach (var to in To)
+                    if (to.Address == null ||
+                        !to.Address.StartsWith("+", StringComparison.InvariantCultureIgnoreCase))
+                        yield return new ValidationResult(
+                            "Invalid value for To that should start with + and E.164 format.", new[] {"To"});
         }
 
         public NotificationMessage AddSubject(string subject, string charset = null)
         {
-            Subject = new NotificationMessageSubject()
+            Subject = new NotificationMessageSubject
             {
                 Charset = charset.GetValueOrDefault("UTF-8"),
                 Content = subject
@@ -81,33 +116,6 @@ namespace Innovt.Notification.Core.Domain
             ReplyToAddresses = ReplyToAddresses.AddFluent(new NotificationMessageContact(name, address));
 
             return this;
-        }
-
-        //public string GetMD5Hash()
-        //{
-        //    var destinations = string.Join(",", To.Select(t => t.Address));
-
-        //    var hashContent = $"{From?.Address}-{destinations}-{Type}-{Body.Content}";
-
-        //    return hashContent.ComputeMD5();
-        //}
-
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            if (To == null || !To.Any()) yield return new ValidationResult("Invalid value for To", new[] { "To" });
-
-            if (Body == null || Body.Content.IsNullOrEmpty())
-                yield return new ValidationResult("Invalid value for Body", new[] { "Body" });
-
-            if (From == null || From.Address.IsNullOrEmpty())
-                yield return new ValidationResult("Invalid value for From", new[] { "From" });
-
-            if (Type == NotificationMessageType.Sms)
-                foreach (var to in To)
-                    if (to.Address == null ||
-                        !to.Address.StartsWith("+", System.StringComparison.InvariantCultureIgnoreCase))
-                        yield return new ValidationResult(
-                            "Invalid value for To that should start with + and E.164 format.", new[] { "To" });
         }
     }
 }

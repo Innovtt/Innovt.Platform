@@ -1,3 +1,11 @@
+// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: _build
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 using Nuke.Common;
 using Nuke.Common.Execution;
 using Nuke.Common.IO;
@@ -5,7 +13,6 @@ using Nuke.Common.ProjectModel;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Tools.GitVersion;
 using Nuke.Common.Utilities.Collections;
-using System;
 using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.IO.PathConstruction;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
@@ -14,24 +21,17 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 [UnsetVisualStudioEnvironmentVariables]
 class Build : NukeBuild
 {
-    /// Support plugins are available for:
-    ///   - JetBrains ReSharper        https://nuke.build/resharper
-    ///   - JetBrains Rider            https://nuke.build/rider
-    ///   - Microsoft VisualStudio     https://nuke.build/visualstudio
-    ///   - Microsoft VSCode           https://nuke.build/vscode
-    public static int Main() => Execute<Build>(x => x.Publish);
-
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
     readonly string Configuration = IsLocalBuild ? "Debug" : "Release";
 
-    [Parameter] string NugetApiUrl = "http://nugetinnovt.azurewebsites.net/api/v2/package";
-    [Parameter] string NugetApiKey;
+    //[GitRepository] readonly GitRepository GitRepository;
+    [GitVersion] readonly GitVersion GitVersion;
 
 
     [Solution] readonly Solution Solution;
+    [Parameter] string NugetApiKey;
 
-    //[GitRepository] readonly GitRepository GitRepository;
-    [GitVersion] readonly GitVersion GitVersion;
+    [Parameter] string NugetApiUrl = "http://nugetinnovt.azurewebsites.net/api/v2/package";
 
     AbsolutePath SourceDirectory => RootDirectory / "src";
     AbsolutePath ArtifactsDirectory => RootDirectory / "artifacts";
@@ -77,8 +77,8 @@ class Build : NukeBuild
                     .SetVersion(GitVersion.NuGetVersionV2)
                     .SetNoDependencies(true)
                     .SetOutputDirectory(ArtifactsDirectory / "nuget")
-            //.SetRepositoryType("git")
-            // .SetRepositoryUrl("https://github.com/Innovtt/Innovt.Platform")
+                //.SetRepositoryType("git")
+                // .SetRepositoryUrl("https://github.com/Innovtt/Innovt.Platform")
             );
         });
 
@@ -102,4 +102,11 @@ class Build : NukeBuild
                     );
                 });
         });
+
+    /// Support plugins are available for:
+    /// - JetBrains ReSharper        https://nuke.build/resharper
+    /// - JetBrains Rider            https://nuke.build/rider
+    /// - Microsoft VisualStudio     https://nuke.build/visualstudio
+    /// - Microsoft VSCode           https://nuke.build/vscode
+    public static int Main() => Execute<Build>(x => x.Publish);
 }

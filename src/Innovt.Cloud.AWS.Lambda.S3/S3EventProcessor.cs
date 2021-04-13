@@ -1,9 +1,15 @@
-﻿using Amazon.Lambda.Core;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Cloud.AWS.Lambda.S3
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System.Threading.Tasks;
+using Amazon.Lambda.Core;
 using Amazon.Lambda.S3Events;
 using Amazon.S3.Util;
 using Innovt.Core.CrossCutting.Log;
-using System.Threading.Tasks;
-
 
 namespace Innovt.Cloud.AWS.Lambda.S3
 {
@@ -13,14 +19,12 @@ namespace Innovt.Cloud.AWS.Lambda.S3
         {
         }
 
-        protected S3EventProcessor() : base()
+        protected S3EventProcessor()
         {
         }
 
         protected override async Task Handle(S3Event s3Event, ILambdaContext context)
         {
-            //TODO: Ter controle de indepotencia.
-
             Logger.Info($"Processing S3Event With {s3Event.Records?.Count} records.");
 
             if (s3Event?.Records == null) return;

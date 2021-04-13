@@ -1,15 +1,9 @@
-﻿//===================================================================================
-// Microsoft Developer & Platform Evangelism
-//=================================================================================== 
-// THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
-// EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES 
-// OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-//===================================================================================
-// Copyright (c) Microsoft Corporation.  All Rights Reserved.
-// This code is released under the terms of the MS-LPL license, 
-// http://microsoftnlayerapp.codeplex.com/license
-//===================================================================================
-
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Domain.Core
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -17,16 +11,16 @@ using System.Linq.Expressions;
 namespace Innovt.Domain.Core.Specification
 {
     /// <summary>
-    /// Helper for rebinder parameters without use Invoke method in expressions 
-    /// ( this methods is not supported in all linq query providers, 
-    /// for example in Linq2Entities is not supported)
+    ///     Helper for rebinder parameters without use Invoke method in expressions
+    ///     ( this methods is not supported in all linq query providers,
+    ///     for example in Linq2Entities is not supported)
     /// </summary>
     public sealed class ParameterRebinder : ExpressionVisitor
     {
         private readonly Dictionary<ParameterExpression, ParameterExpression> map;
 
         /// <summary>
-        /// Default construcotr
+        ///     Default construcotr
         /// </summary>
         /// <param name="map">Map specification</param>
         public ParameterRebinder(Dictionary<ParameterExpression, ParameterExpression> map)
@@ -35,7 +29,7 @@ namespace Innovt.Domain.Core.Specification
         }
 
         /// <summary>
-        /// Replate parameters in expression with a Map information
+        ///     Replate parameters in expression with a Map information
         /// </summary>
         /// <param name="map">Map information</param>
         /// <param name="exp">Expression to replace parameters</param>
@@ -47,7 +41,7 @@ namespace Innovt.Domain.Core.Specification
         }
 
         /// <summary>
-        /// Visit pattern method
+        ///     Visit pattern method
         /// </summary>
         /// <param name="p">A Parameter expression</param>
         /// <returns>New visited expression</returns>

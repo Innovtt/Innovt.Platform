@@ -1,11 +1,19 @@
-﻿using Amazon.Lambda.Core;
-using Amazon.Lambda.KinesisEvents;
-using Innovt.Core.CrossCutting.Log;
-using Innovt.Domain.Core.Events;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Cloud.AWS.Lambda.Kinesis
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
 using System.IO;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using Amazon.Lambda.Core;
+using Amazon.Lambda.KinesisEvents;
+using Innovt.Core.CrossCutting.Log;
+using Innovt.Domain.Core.Events;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis
 {
@@ -15,13 +23,13 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
         {
         }
 
-        protected KinesisDomainEventProcessor() : base()
+        protected KinesisDomainEventProcessor()
         {
         }
 
         protected virtual TBody DeserializeBody(string content, string partition)
         {
-            return System.Text.Json.JsonSerializer.Deserialize<TBody>(content);
+            return JsonSerializer.Deserialize<TBody>(content);
         }
 
         protected override async Task Handle(KinesisEvent kinesisEvent, ILambdaContext context)

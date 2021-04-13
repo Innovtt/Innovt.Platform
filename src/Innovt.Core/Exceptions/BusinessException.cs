@@ -1,22 +1,21 @@
-﻿// Company: INNOVT
-// Project: Innovt.Common
-// Created By: Michel Borges
-// Date: 2016/10/19
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Core
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Innovt.Core.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Innovt.Core.Utilities;
 
 namespace Innovt.Core.Exceptions
 {
     [Serializable]
     public class BusinessException : BaseException
     {
-        public string Code { get; protected set; }
-        public IEnumerable<ErrorMessage> Errors { get; set; }
-
         public BusinessException(string message) : base(message)
         {
         }
@@ -46,9 +45,12 @@ namespace Innovt.Core.Exceptions
             Errors = errors;
         }
 
-        public BusinessException(ErrorMessage error) : this(new[] { error })
+        public BusinessException(ErrorMessage error) : this(new[] {error})
         {
         }
+
+        public string Code { get; protected set; }
+        public IEnumerable<ErrorMessage> Errors { get; set; }
 
         private static string CreateMessage(IEnumerable<ErrorMessage> errors)
         {

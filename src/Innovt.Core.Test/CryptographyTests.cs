@@ -1,6 +1,13 @@
+// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Core.Test
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 using Innovt.Core.Utilities;
 using NUnit.Framework;
-using System;
 
 namespace Innovt.Core.Test
 {

@@ -1,22 +1,29 @@
-﻿using Amazon.Kinesis;
-using Amazon.Kinesis.Model;
-using Innovt.Cloud.AWS.Configuration;
-using Innovt.Core.CrossCutting.Log;
-using Innovt.Core.Utilities;
-using Innovt.Domain.Core.Streams;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Cloud.AWS.Kinesis
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using Amazon.Kinesis;
+using Amazon.Kinesis.Model;
+using Innovt.Cloud.AWS.Configuration;
+using Innovt.Core.CrossCutting.Log;
+using Innovt.Domain.Core.Streams;
 
 namespace Innovt.Cloud.AWS.Kinesis
 {
     public class DataProducer<T> : AwsBaseService where T : class, IDataStream
     {
-        private string BusName { get; set; }
+        private AmazonKinesisClient kinesisClient;
 
         protected DataProducer(string busName, ILogger logger, IAWSConfiguration configuration) : base(logger,
             configuration)
@@ -30,7 +37,7 @@ namespace Innovt.Cloud.AWS.Kinesis
             BusName = busName ?? throw new ArgumentNullException(nameof(busName));
         }
 
-        private AmazonKinesisClient kinesisClient;
+        private string BusName { get; }
 
         private AmazonKinesisClient KinesisClient
         {
@@ -48,7 +55,7 @@ namespace Innovt.Cloud.AWS.Kinesis
 
             Logger.Info("Kinesis Publisher Started");
 
-            var request = new PutRecordsRequest()
+            var request = new PutRecordsRequest
             {
                 StreamName = BusName,
                 Records = new List<PutRecordsRequestEntry>()
@@ -59,10 +66,10 @@ namespace Innovt.Cloud.AWS.Kinesis
                 // if (data.TraceId.IsNullOrEmpty())
                 //     data.TraceId = GetTraceId();
 
-                var dataAsBytes = Encoding.UTF8.GetBytes(System.Text.Json.JsonSerializer.Serialize<object>(data));
+                var dataAsBytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize<object>(data));
                 await using var ms = new MemoryStream(dataAsBytes);
 
-                request.Records.Add(new PutRecordsRequestEntry()
+                request.Records.Add(new PutRecordsRequestEntry
                 {
                     Data = ms,
                     PartitionKey = data.Partition
@@ -74,7 +81,7 @@ namespace Innovt.Cloud.AWS.Kinesis
             var policy = base.CreateDefaultRetryAsyncPolicy();
 
             var results = await policy.ExecuteAsync(async () =>
-                await KinesisClient.PutRecordsAsync(request, cancellationToken));
+                await KinesisClient.PutRecordsAsync(request, cancellationToken)).ConfigureAwait(false);
 
             if (results.FailedRecordCount == 0)
             {
@@ -91,16 +98,16 @@ namespace Innovt.Cloud.AWS.Kinesis
 
         public async Task Publish(T data, CancellationToken cancellationToken = default)
         {
-            if (@data == null) throw new ArgumentNullException(nameof(@data));
+            if (data == null) throw new ArgumentNullException(nameof(data));
 
-            Logger.Info("Sending Domain Event @name", @data);
+            Logger.Info("Sending Domain Event @name", data);
 
-            await InternalPublish(new List<T>() { @data }, cancellationToken);
+            await InternalPublish(new List<T> {data}, cancellationToken).ConfigureAwait(false);
         }
 
         public async Task Publish(IEnumerable<T> events, CancellationToken cancellationToken = default)
         {
-            await InternalPublish(events, cancellationToken);
+            await InternalPublish(events, cancellationToken).ConfigureAwait(false);
         }
 
         protected override void DisposeServices()

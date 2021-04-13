@@ -1,21 +1,28 @@
-﻿using Innovt.Core.CrossCutting.Ioc;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Job.Core
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
+using System.IO;
+using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.IO;
 
 namespace Innovt.Job.Core
 {
     public abstract class JobEntry
     {
-        public string JobName { get; }
-        public IConfiguration Configuration { get; protected set; }
-
         protected JobEntry(string[] args, string jobName)
         {
             JobName = jobName;
         }
+
+        public string JobName { get; }
+        public IConfiguration Configuration { get; protected set; }
 
         protected virtual void SetupConfiguration()
         {
@@ -45,13 +52,13 @@ namespace Innovt.Job.Core
             Console.WriteLine($"************** Starting  {JobName} Job  **************");
             try
             {
-                Console.WriteLine($"************** Checking the ConfigurationFile **************");
+                Console.WriteLine("************** Checking the ConfigurationFile **************");
                 SetupConfiguration();
-                Console.WriteLine($"************** ConfigurationFile  DONE! **************");
+                Console.WriteLine("************** ConfigurationFile  DONE! **************");
 
-                Console.WriteLine($"************** SetupContainer **************");
+                Console.WriteLine("************** SetupContainer **************");
                 SetupContainer();
-                Console.WriteLine($"************** SetupContainer  DONE! **************");
+                Console.WriteLine("************** SetupContainer  DONE! **************");
 
                 var job = CreateJob();
 

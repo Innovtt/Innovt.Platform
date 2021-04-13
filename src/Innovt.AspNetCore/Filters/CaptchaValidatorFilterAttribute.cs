@@ -1,51 +1,58 @@
-﻿using Innovt.AspNetCore.Extensions;
-using Innovt.Core.Exceptions;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.Extensions.Configuration;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.AspNetCore
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Innovt.AspNetCore.Extensions;
+using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.Configuration;
 
 namespace Innovt.AspNetCore.Filters
 {
     /// <summary>
-    /// Code by Rafael Cruzeiro: https://github.com/rcruzeiro/Core.Framework/tree/master/Core.Framework.reCAPTCHA
+    ///     Code by Rafael Cruzeiro: https://github.com/rcruzeiro/Core.Framework/tree/master/Core.Framework.reCAPTCHA
     /// </summary>
     public sealed class CaptchaValidatorFilterAttribute : ActionFilterAttribute
     {
-
-        public string AntiForgery { get; }
-        public string HostName { get; }
-        public string SecretKey { get; internal set; }
-        public string DefaultToken { get; }
         private const string CaptchaUri = "https://www.google.com/recaptcha/api/siteverify";
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="antiForgery"></param>
         /// <param name="hostName"></param>
         /// <param name="secretKey"></param>
         /// <param name="defaultToken">You can use this parameter if you want to mock you request. You can't set empty string.</param>
-        public CaptchaValidatorFilterAttribute(string antiForgery, string hostName, string secretKey,string defaultToken = "inn0ut#")
+        public CaptchaValidatorFilterAttribute(string antiForgery, string hostName, string secretKey,
+            string defaultToken = "inn0ut#")
         {
-            this.DefaultToken = defaultToken ?? throw new ArgumentNullException(nameof(defaultToken));
-            this.AntiForgery = antiForgery;
-            this.HostName = hostName;
-            this.SecretKey = secretKey;
+            DefaultToken = defaultToken ?? throw new ArgumentNullException(nameof(defaultToken));
+            AntiForgery = antiForgery;
+            HostName = hostName;
+            SecretKey = secretKey;
         }
+
+        public string AntiForgery { get; }
+        public string HostName { get; }
+        public string SecretKey { get; internal set; }
+        public string DefaultToken { get; }
 
         private void ReadConfig(HttpContext context)
         {
             if (SecretKey.IsNotNullOrEmpty())
                 return;
 
-            if (!(context.RequestServices.GetService(typeof(IConfiguration)) is IConfiguration configuration))
+            if (context.RequestServices.GetService(typeof(IConfiguration)) is not IConfiguration configuration)
                 throw new ConfigurationException("IConfiguration Service not found.");
 
             var captchaSection = configuration.GetSection("Recaptcha");
@@ -73,7 +80,8 @@ namespace Innovt.AspNetCore.Filters
             using var httpClient = new HttpClient();
 
 
-            var stringAsync = await httpClient.GetStringAsync(new Uri($"{CaptchaUri}?secret={SecretKey}&response={token}"))
+            var stringAsync = await httpClient
+                .GetStringAsync(new Uri($"{CaptchaUri}?secret={SecretKey}&response={token}"))
                 .ConfigureAwait(false);
 
             var serializerSettings = new JsonSerializerOptions
@@ -97,7 +105,7 @@ namespace Innovt.AspNetCore.Filters
 
         public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            if (context!=null && !context.HttpContext.IsLocal())
+            if (context != null && !context.HttpContext.IsLocal())
             {
                 var header =
                     context.HttpContext.Request.Headers.TryGetValue("g-recaptcha-response", out var recaptchaResponse);

@@ -1,8 +1,15 @@
-﻿using Innovt.Core.Utilities;
-using Innovt.Notification.Core.Domain;
-using Innovt.Notification.Core.Template;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Notification.Core
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
 using System.Collections.Generic;
+using Innovt.Core.Utilities;
+using Innovt.Notification.Core.Domain;
+using Innovt.Notification.Core.Template;
 
 namespace Innovt.Notification.Core.Builders
 {
@@ -11,7 +18,7 @@ namespace Innovt.Notification.Core.Builders
         private readonly ITemplateParser parser;
 
         /// <summary>
-        /// Default constructor using a template parser(optional)
+        ///     Default constructor using a template parser(optional)
         /// </summary>
         /// <param name="parser"></param>
         public DefaultMessageBuilder(ITemplateParser parser = null)
@@ -19,10 +26,38 @@ namespace Innovt.Notification.Core.Builders
             this.parser = parser;
         }
 
+        /// <summary>
+        ///     This method will build the message and parse the result of each content
+        /// </summary>
+        /// <param name="template"></param>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public NotificationMessage Build(NotificationTemplate template, NotificationRequest request)
+        {
+            if (template == null) throw new ArgumentNullException(nameof(template));
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
+            var message = new NotificationMessage(template.Type)
+            {
+                Subject = BuildSubject(template, request),
+                From = BuildFrom(template, request),
+                To = BuildTo(template, request),
+                Body = BuildBody(template, request),
+                BccTo = BuildBccTo(template, request),
+                CcTo = BuildCcTo(template, request),
+                ReplyToAddresses = BuildReplyTo(template, request)
+            };
+
+            //TODO: can be better if we parse per type maybe
+            ParseMessage(message, request.PayLoad);
+
+            return message;
+        }
+
         protected virtual NotificationMessageSubject BuildSubject(NotificationTemplate template,
             NotificationRequest request)
         {
-            return new NotificationMessageSubject()
+            return new NotificationMessageSubject
             {
                 Charset = template.Charset,
                 Content = template.Subject
@@ -31,7 +66,7 @@ namespace Innovt.Notification.Core.Builders
 
         protected virtual NotificationMessageBody BuildBody(NotificationTemplate template, NotificationRequest request)
         {
-            return new NotificationMessageBody()
+            return new NotificationMessageBody
             {
                 Content = template.Body,
                 Charset = template.Charset,
@@ -76,34 +111,6 @@ namespace Innovt.Notification.Core.Builders
             NotificationRequest request)
         {
             return null;
-        }
-
-        /// <summary>
-        /// This method will build the message and parse the result of each content
-        /// </summary>
-        /// <param name="template"></param>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        public NotificationMessage Build(NotificationTemplate template, NotificationRequest request)
-        {
-            if (template == null) throw new ArgumentNullException(nameof(template));
-            if (request == null) throw new ArgumentNullException(nameof(request));
-
-            var message = new NotificationMessage(template.Type)
-            {
-                Subject = BuildSubject(template, request),
-                From = BuildFrom(template, request),
-                To = BuildTo(template, request),
-                Body = BuildBody(template, request),
-                BccTo = BuildBccTo(template, request),
-                CcTo = BuildCcTo(template, request),
-                ReplyToAddresses = BuildReplyTo(template, request)
-            };
-
-            //TODO: can be better if we parse per type maybe
-            ParseMessage(message, request.PayLoad);
-
-            return message;
         }
 
         protected virtual void ParseMessage(NotificationMessage message, object payLoad)

@@ -1,13 +1,17 @@
-﻿using Innovt.Core.Exceptions;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Core
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
+using Innovt.Core.Exceptions;
 
 namespace Innovt.Core.Http
 {
     public class HttpException : BaseException
     {
-        public Exception RequestException { get; }
-        public HttpRequestDetail RequestDetail { get; private set; }
-
         public HttpException(HttpRequestDetail detail)
         {
             RequestDetail = detail;
@@ -17,5 +21,8 @@ namespace Innovt.Core.Http
         {
             RequestException = requestException;
         }
+
+        public Exception RequestException { get; }
+        public HttpRequestDetail RequestDetail { get; }
     }
 }

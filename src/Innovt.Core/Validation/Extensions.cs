@@ -1,8 +1,15 @@
-﻿using Innovt.Core.Cqrs.Commands;
-using Innovt.Core.Exceptions;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Core
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using Innovt.Core.Cqrs.Commands;
+using Innovt.Core.Exceptions;
 
 namespace Innovt.Core.Validation
 {
@@ -51,7 +58,7 @@ namespace Innovt.Core.Validation
             if (validationResults.Any())
             {
                 var errors = from e in validationResults
-                             select new ErrorMessage(e.ErrorMessage, string.Join(",", e.MemberNames));
+                    select new ErrorMessage(e.ErrorMessage, string.Join(",", e.MemberNames));
 
                 throw new BusinessException(errors.ToList());
             }
@@ -59,7 +66,7 @@ namespace Innovt.Core.Validation
 
         public static void EnsureIsValid(this ICommand obj, ValidationContext context = null)
         {
-            EnsureIsValid((IValidatableObject)obj, context);
+            EnsureIsValid((IValidatableObject) obj, context);
         }
 
         public static IEnumerable<ValidationResult> YieldFromCollection(this IEnumerable<ValidationResult> items)

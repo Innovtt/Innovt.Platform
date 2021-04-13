@@ -1,3 +1,11 @@
+// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.AspNetCore
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 using Innovt.AspNetCore.Filters;
 using Innovt.AspNetCore.Infrastructure;
 using Innovt.AspNetCore.Model;
@@ -5,27 +13,17 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using OpenTelemetry.Trace;
-using System;
-using Microsoft.AspNetCore.Rewrite;
 
 namespace Innovt.AspNetCore
 {
     public abstract class ApiStartupBase
     {
-        protected string DefaultHealthPath { get; set; }
-
-        protected DefaultApiDocumentation Documentation { get; set; }
-
-        protected DefaultApiLocalization Localization { get; set; }
-
-        public IConfiguration Configuration { get; }
-
         protected ApiStartupBase(IConfiguration configuration)
         {
             Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
@@ -33,10 +31,19 @@ namespace Innovt.AspNetCore
             DefaultHealthPath = "/health";
         }
 
-        protected ApiStartupBase(IConfiguration configuration, string apiTitle,string apiDescription, string apiVersion) : this(configuration)
+        protected ApiStartupBase(IConfiguration configuration, string apiTitle, string apiDescription,
+            string apiVersion) : this(configuration)
         {
             Documentation = new DefaultApiDocumentation(apiTitle, apiDescription, apiVersion);
         }
+
+        protected string DefaultHealthPath { get; set; }
+
+        protected DefaultApiDocumentation Documentation { get; set; }
+
+        protected DefaultApiLocalization Localization { get; set; }
+
+        public IConfiguration Configuration { get; }
 
         private bool IsSwaggerEnabled()
         {
@@ -47,14 +54,14 @@ namespace Innovt.AspNetCore
         {
             if (!IsSwaggerEnabled())
                 return;
-            
+
             services.AddSwaggerGen(options =>
             {
                 options.SchemaFilter<SwaggerExcludeFilter>();
                 options.OperationFilter<SwaggerExcludeFilter>();
 
                 options.SwaggerDoc(Documentation.ApiVersion,
-                    new OpenApiInfo()
+                    new OpenApiInfo
                     {
                         Description = Documentation.ApiDescription, Title = Documentation.ApiTitle,
                         Version = Documentation.ApiVersion
@@ -66,7 +73,7 @@ namespace Innovt.AspNetCore
         }
 
         /// <summary>
-        /// Implement only the AddHealthChecks by default
+        ///     Implement only the AddHealthChecks by default
         /// </summary>
         /// <param name="services"></param>
         protected virtual void ConfigureHealthChecks(IServiceCollection services)
@@ -75,13 +82,13 @@ namespace Innovt.AspNetCore
         }
 
         protected virtual void AddTracing(IServiceCollection services)
-        {  
-            services.AddOpenTelemetryTracing(builder =>
-            {
-                builder.AddAspNetCoreInstrumentation()
-                    .AddSource()
-                    .AddConsoleExporter();
-            });
+        {
+            //services.AddOpenTelemetryTracing(builder =>
+            //{
+            //    builder.AddAspNetCoreInstrumentation()
+            //        .AddSource()
+            //        .AddConsoleExporter();
+            //});
         }
 
 
@@ -117,13 +124,13 @@ namespace Innovt.AspNetCore
 
         // This method gets called by the runtime. Use this method to add services to the container.
         /// <summary>
-        /// Configure services will register default services for api and mvc applications. AddHealthChecks 
+        ///     Configure services will register default services for api and mvc applications. AddHealthChecks
         /// </summary>
         /// <param name="services"></param>
         public virtual void ConfigureServices(IServiceCollection services)
         {
             ConfigureIoC(services);
-            
+
             AddDefaultServices(services);
 
             AddCoreServices(services);
@@ -140,7 +147,7 @@ namespace Innovt.AspNetCore
         protected virtual void ConfigureSwaggerUi(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (!IsSwaggerEnabled()) return;
-       
+
             app.UseRewriter(new RewriteOptions().AddRedirect("(.*)docs$", "$1docs/index.html"));
 
             app.UseSwagger(s => { s.RouteTemplate = "docs/{documentName}/swagger.json"; }).UseSwaggerUI(c =>
@@ -152,7 +159,7 @@ namespace Innovt.AspNetCore
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         /// <summary>
-        /// Configure Will Add All main Services as Default for Api and MVC Applications
+        ///     Configure Will Add All main Services as Default for Api and MVC Applications
         /// </summary>
         /// <param name="app"></param>
         /// <param name="env"></param>
@@ -172,14 +179,11 @@ namespace Innovt.AspNetCore
             app.UseHealthChecks(DefaultHealthPath);
 
             ConfigureApp(app, env, loggerFactory);
-            
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
 
-      
+
         protected virtual Action<ApiBehaviorOptions> ConfigureApiBehavior()
         {
             return options =>
@@ -192,7 +196,7 @@ namespace Innovt.AspNetCore
 
         protected virtual void ConfigureCultures(IApplicationBuilder app)
         {
-            app.UseRequestLocalization(new RequestLocalizationOptions()
+            app.UseRequestLocalization(new RequestLocalizationOptions
             {
                 DefaultRequestCulture = new RequestCulture(Localization.RequestCulture),
                 SupportedCultures = Localization.SupportedCultures,
@@ -206,6 +210,5 @@ namespace Innovt.AspNetCore
 
         public abstract void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env,
             ILoggerFactory loggerFactory);
-        
     }
 }

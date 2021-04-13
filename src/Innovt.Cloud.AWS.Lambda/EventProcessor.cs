@@ -1,19 +1,22 @@
-﻿using Amazon.Lambda.Core;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Cloud.AWS.Lambda
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
+using System.Threading.Tasks;
+using Amazon.Lambda.Core;
 using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Core.CrossCutting.Log;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Lambda
 {
     public abstract class EventProcessor<T> where T : class
     {
-        protected ILogger Logger { get; private set; }
-        protected ILambdaContext Context { get; private set; }
-        protected IConfigurationRoot Configuration { get; private set; }
-
-        protected bool IsIocContainerInitialized = false;
+        protected bool IsIocContainerInitialized;
 
         protected EventProcessor(ILogger logger)
         {
@@ -23,6 +26,10 @@ namespace Innovt.Cloud.AWS.Lambda
         protected EventProcessor()
         {
         }
+
+        protected ILogger Logger { get; private set; }
+        protected ILambdaContext Context { get; private set; }
+        protected IConfigurationRoot Configuration { get; private set; }
 
         private void SetupIoc()
         {
@@ -72,7 +79,7 @@ namespace Innovt.Cloud.AWS.Lambda
 
             SetupIoc();
 
-            await Handle(message, context);
+            await Handle(message, context).ConfigureAwait(false);
         }
 
 

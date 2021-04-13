@@ -1,11 +1,18 @@
-﻿using System;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Core
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Innovt.Core.Utilities
 {
     /// <summary>
-    /// Reference https://cpratt.co/async-tips-tricks/
+    ///     Reference https://cpratt.co/async-tips-tricks/
     /// </summary>
     public static class AsyncHelper
     {

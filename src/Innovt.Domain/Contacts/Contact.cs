@@ -1,6 +1,13 @@
-﻿using Innovt.Domain.Core.Model;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Domain
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Contacts
 {
@@ -9,7 +16,7 @@ namespace Innovt.Domain.Contacts
         [Required] public string Name { get; set; }
 
         /// <summary>
-        /// For example Home, Office etc
+        ///     For example Home, Office etc
         /// </summary>
         [Required]
         public string Description { get; set; }

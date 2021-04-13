@@ -1,20 +1,28 @@
-﻿using Microsoft.Extensions.Logging;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.CrossCutting.Log.Serilog
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
+using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
-using System;
+using ILogger = Innovt.Core.CrossCutting.Log.ILogger;
 
 namespace Innovt.CrossCutting.Log.Serilog
 {
-    public class Logger : Core.CrossCutting.Log.ILogger
+    public class Logger : ILogger
     {
-        private readonly global::Serilog.Core.Logger logger = null;
-
         private const string ConsoleTemplate =
             "[{Timestamp:HH:mm:ss} {Level:u3}] {TraceId:TraceId} {SpanId:SpanId} {Message:lj}{NewLine}{Exception}{NewLine}{Properties:j}";
 
+        private readonly global::Serilog.Core.Logger logger;
+
         /// <summary>
-        /// The default sink is Console
+        ///     The default sink is Console
         /// </summary>
         public Logger() : this(new LoggerConfiguration())
         {
@@ -308,30 +316,30 @@ namespace Innovt.CrossCutting.Log.Serilog
             {
                 case LogLevel.Trace:
                 case LogLevel.Debug:
-                    {
-                        return logger.IsEnabled(LogEventLevel.Debug) || logger.IsEnabled(LogEventLevel.Verbose);
-                    }
+                {
+                    return logger.IsEnabled(LogEventLevel.Debug) || logger.IsEnabled(LogEventLevel.Verbose);
+                }
                 case LogLevel.Information:
-                    {
-                        return logger.IsEnabled(LogEventLevel.Information);
-                    }
+                {
+                    return logger.IsEnabled(LogEventLevel.Information);
+                }
                 case LogLevel.Warning:
-                    {
-                        return logger.IsEnabled(LogEventLevel.Warning);
-                    }
+                {
+                    return logger.IsEnabled(LogEventLevel.Warning);
+                }
                 case LogLevel.Error:
-                    {
-                        return logger.IsEnabled(LogEventLevel.Error);
-                    }
+                {
+                    return logger.IsEnabled(LogEventLevel.Error);
+                }
 
                 case LogLevel.Critical:
-                    {
-                        return logger.IsEnabled(LogEventLevel.Fatal);
-                    }
+                {
+                    return logger.IsEnabled(LogEventLevel.Fatal);
+                }
                 default:
-                    {
-                        return false;
-                    }
+                {
+                    return false;
+                }
             }
         }
     }

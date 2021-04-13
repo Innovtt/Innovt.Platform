@@ -1,5 +1,12 @@
-﻿using Innovt.Data.DataSources;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Data.Ado
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System.Data;
+using Innovt.Data.DataSources;
 
 namespace Innovt.Data.Ado
 {

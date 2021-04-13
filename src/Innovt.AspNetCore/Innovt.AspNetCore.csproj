@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <PackageId>Innovt.AspNetCore</PackageId>
-    <PackageVersion>3.1.6.31</PackageVersion>
+    <PackageVersion>5.0.0-rc</PackageVersion>
     <Authors>Michel,Tiago</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -24,9 +24,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.5" />
     <PackageReference Include="OpenTelemetry" Version="1.0.1" />
     <PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.0.1" />
-    <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.0.0-rc2" />
-    <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.0.0-rc2" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
   </ItemGroup>
   <ItemGroup>

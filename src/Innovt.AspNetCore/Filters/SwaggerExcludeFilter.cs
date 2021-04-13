@@ -1,14 +1,42 @@
-﻿using Innovt.Core.Attributes;
-using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerGen;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.AspNetCore
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
 using System.Linq;
 using System.Reflection;
+using Innovt.Core.Attributes;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Innovt.AspNetCore.Filters
 {
     public class SwaggerExcludeFilter : ISchemaFilter, IOperationFilter
     {
+        public void Apply(OpenApiOperation operation, OperationFilterContext context)
+        {
+            if (operation == null) throw new ArgumentNullException(nameof(operation));
+            if (context == null) throw new ArgumentNullException(nameof(context));
+
+            var ignoredProperties = context.MethodInfo.GetCustomAttributes<ModelExcludeFilterAttribute>(true)
+                .SelectMany(a => a.ExcludeAttributes).ToList();
+
+            if (!ignoredProperties.Any()) return;
+
+
+            foreach (var prop in ignoredProperties)
+            {
+                var schemaProp = operation.Parameters
+                    .SingleOrDefault(p => string.Equals(p.Name, prop, StringComparison.OrdinalIgnoreCase));
+
+                if (schemaProp != null)
+                    operation.Parameters.Remove(schemaProp);
+            }
+        }
+
         public void Apply(OpenApiSchema schema, SchemaFilterContext context)
         {
             if (schema == null) throw new ArgumentNullException(nameof(schema));
@@ -31,27 +59,6 @@ namespace Innovt.AspNetCore.Filters
 
                 if (schemaProp != null)
                     schema.Properties.Remove(schemaProp);
-            }
-        }
-
-        public void Apply(OpenApiOperation operation, OperationFilterContext context)
-        {
-            if (operation == null) throw new ArgumentNullException(nameof(operation));
-            if (context == null) throw new ArgumentNullException(nameof(context));
-
-            var ignoredProperties = context.MethodInfo.GetCustomAttributes<ModelExcludeFilterAttribute>(true)
-                .SelectMany(a => a.ExcludeAttributes).ToList();
-
-            if (!ignoredProperties.Any()) return;
-
-
-            foreach (var prop in ignoredProperties)
-            {
-                var schemaProp = operation.Parameters
-                    .SingleOrDefault(p => string.Equals(p.Name, prop, StringComparison.OrdinalIgnoreCase));
-
-                if (schemaProp != null)
-                    operation.Parameters.Remove(schemaProp);
             }
         }
     }

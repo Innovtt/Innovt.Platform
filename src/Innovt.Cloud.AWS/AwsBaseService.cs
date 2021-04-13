@@ -1,12 +1,19 @@
-﻿using Amazon;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Cloud.AWS
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
+using System.Net;
+using Amazon;
 using Amazon.Runtime;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Core.CrossCutting.Log;
 using Polly;
 using Polly.CircuitBreaker;
 using Polly.Retry;
-using System;
-using System.Net;
 using RetryPolicy = Polly.Retry.RetryPolicy;
 
 namespace Innovt.Cloud.AWS
@@ -15,18 +22,7 @@ namespace Innovt.Cloud.AWS
     {
         protected readonly IAWSConfiguration Configuration;
 
-        /// <summary>
-        /// This is the service region
-        /// </summary>
-        private string Region { get; set; }
-
-        public int RetryCount { get; set; }
-
-        protected int CircuitBreakerAllowedExceptions { get; set; }
-
-        protected TimeSpan CircuitBreakerDurationOfBreak { get; set; }
-
-        protected ILogger Logger { get; }
+        private bool disposed;
 
         private AwsBaseService()
         {
@@ -48,6 +44,24 @@ namespace Innovt.Cloud.AWS
             Region = region ?? throw new ArgumentNullException(nameof(region));
         }
 
+        /// <summary>
+        ///     This is the service region
+        /// </summary>
+        private string Region { get; }
+
+        public int RetryCount { get; set; }
+
+        protected int CircuitBreakerAllowedExceptions { get; set; }
+
+        protected TimeSpan CircuitBreakerDurationOfBreak { get; set; }
+
+        protected ILogger Logger { get; }
+
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
 
         protected RegionEndpoint GetServiceRegionEndPoint()
         {
@@ -60,7 +74,7 @@ namespace Innovt.Cloud.AWS
         }
 
         /// <summary>
-        /// This method will decide about Configuration or Profile AWS Services 
+        ///     This method will decide about Configuration or Profile AWS Services
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
@@ -72,12 +86,12 @@ namespace Innovt.Cloud.AWS
             if (credentials == null)
                 return serviceRegion == null
                     ? Activator.CreateInstance<T>()
-                    : (T)Activator.CreateInstance(typeof(T), serviceRegion);
+                    : (T) Activator.CreateInstance(typeof(T), serviceRegion);
 
 
             return serviceRegion == null
-                ? (T)Activator.CreateInstance(typeof(T), credentials)
-                : (T)Activator.CreateInstance(typeof(T), credentials, serviceRegion);
+                ? (T) Activator.CreateInstance(typeof(T), credentials)
+                : (T) Activator.CreateInstance(typeof(T), credentials, serviceRegion);
         }
 
 
@@ -91,7 +105,7 @@ namespace Innovt.Cloud.AWS
         }
 
         /// <summary>
-        /// Basic Retry Policy using AmazonServiceException
+        ///     Basic Retry Policy using AmazonServiceException
         /// </summary>
         /// <returns></returns>
         protected virtual AsyncRetryPolicy CreateDefaultRetryAsyncPolicy()
@@ -158,8 +172,6 @@ namespace Innovt.Cloud.AWS
                 .CircuitBreakerAsync(CircuitBreakerAllowedExceptions, CircuitBreakerDurationOfBreak);
         }
 
-        private bool disposed = false;
-
         private void Dispose(bool disposing)
         {
             if (disposed || !disposing)
@@ -168,11 +180,6 @@ namespace Innovt.Cloud.AWS
             DisposeServices();
 
             disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
         }
 
         ~AwsBaseService()

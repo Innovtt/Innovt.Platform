@@ -1,22 +1,27 @@
-﻿using Dapper;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Data.Ado
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Threading;
+using System.Threading.Tasks;
+using Dapper;
 using Innovt.Core.Collections;
 using Innovt.Core.Cqrs.Queries;
 using Innovt.Data.DataSources;
 using Innovt.Data.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Innovt.Data.Ado
 {
     public class RepositoryBase : IRepositoryBase
     {
-        private readonly IDataSource dataSource;
         private readonly IConnectionFactory connectionFactory;
+        private readonly IDataSource dataSource;
 
         public RepositoryBase(IDataSource datasource) : this(datasource, null)
         {
@@ -27,32 +32,6 @@ namespace Innovt.Data.Ado
             this.dataSource = dataSource ?? throw new ArgumentNullException(nameof(dataSource));
 
             this.connectionFactory = connectionFactory ?? new ConnectionFactory();
-        }
-
-        private IDbConnection GetConnection()
-        {
-            return connectionFactory.Create(dataSource);
-        }
-
-        private Task<T> QueryFirstOrDefaultInternalAsync<T>(string sql, object filter = null,
-            CancellationToken cancellationToken = default)
-        {
-            using var con = GetConnection();
-
-            var result = con
-                .QueryFirstOrDefaultAsync<T>(new CommandDefinition(sql, filter, cancellationToken: cancellationToken));
-                
-            return result;
-        }
-
-        private Task<T> QueryFirstOrDefaultInternalAsync<T>(string tableName, string whereClause,
-            object filter = null, CancellationToken cancellationToken = default, params string[] columns)
-        {
-            var fields = string.Join(",", columns);
-
-            var sql = $"SELECT TOP 1 {fields} FROM [{tableName}] WHERE {whereClause}";
-
-            return QueryFirstOrDefaultInternalAsync<T>(sql, filter, cancellationToken);
         }
 
         public Task<T> QueryFirstOrDefaultAsync<T>(string tableName, string whereClause, object filter = null,
@@ -72,15 +51,6 @@ namespace Innovt.Data.Ado
             return QueryFirstOrDefaultInternalAsync<T>(sql, filter, cancellationToken);
         }
 
-        private Task<T> QuerySingleOrDefaultInternalAsync<T>(string sql, object filter = null,
-            CancellationToken cancellationToken = default)
-        {
-            using var con = GetConnection();
-            return con
-                .QuerySingleOrDefaultAsync<T>(new CommandDefinition(sql, filter, cancellationToken: cancellationToken));
-
-        }
-
         public Task<T> QuerySingleOrDefaultAsync<T>(string sql, object filter = null,
             CancellationToken cancellationToken = default)
         {
@@ -97,64 +67,12 @@ namespace Innovt.Data.Ado
             return QuerySingleOrDefaultInternalAsync<T>(sql, filter, cancellationToken);
         }
 
-        private Task<int> QueryCountInternalAsync(string tableName, string whereClause = null,
-            object filter = null, CancellationToken cancellationToken = default)
-        {
-            var sql = $"SELECT COUNT(1) FROM [{tableName}]";
-
-            if (whereClause.IsNotNullOrEmpty()) sql += $" WHERE {whereClause} ";
-
-            return QuerySingleOrDefaultAsync<int>(sql, filter, cancellationToken);
-        }
-
         public Task<int> QueryCountAsync(string tableName, string whereClause = null, object filter = null,
             CancellationToken cancellationToken = default)
         {
             if (tableName == null) throw new ArgumentNullException(nameof(tableName));
 
             return QueryCountInternalAsync(tableName, whereClause, filter, cancellationToken);
-        }
-
-        private Task<IEnumerable<T>> QueryInternalAsync<T>(string sql, object filter = null,
-            CancellationToken cancellationToken = default)
-        {
-            using var con = GetConnection();
-            return con.QueryAsync<T>(new CommandDefinition(sql, filter, cancellationToken: cancellationToken));
-        }
-
-        private Task<IEnumerable<TReturn>> QueryInternalAsync<TFirst, TSecond, TReturn>(string sql, object filter,
-            Func<TFirst, TSecond, TReturn> func, string splitOn, CancellationToken cancellationToken = default)
-        {
-            using var con = GetConnection();
-            return  con.QueryAsync<TFirst, TSecond, TReturn>(
-                new CommandDefinition(sql, filter, cancellationToken: cancellationToken), func, splitOn);
-        }
-
-        private  Task<IEnumerable<TReturn>> QueryInternalAsync<TFirst, TSecond, TThird, TReturn>(string sql,
-            object filter, Func<TFirst, TSecond, TThird, TReturn> func, string splitOn,
-            CancellationToken cancellationToken = default)
-        {
-            using var con = GetConnection();
-            return con.QueryAsync<TFirst, TSecond, TThird, TReturn>(
-                new CommandDefinition(sql, filter, cancellationToken: cancellationToken), func, splitOn);
-        }
-
-        private Task<IEnumerable<TReturn>> QueryInternalAsync<TFirst, TSecond, TThird, TFourth, TReturn>(
-            string sql, object filter, Func<TFirst, TSecond, TThird, TFourth, TReturn> func, string splitOn,
-            CancellationToken cancellationToken = default)
-        {
-            using var con = GetConnection();
-            return con.QueryAsync<TFirst, TSecond, TThird, TFourth, TReturn>(
-                new CommandDefinition(sql, filter, cancellationToken: cancellationToken), func, splitOn);
-        }
-
-        private Task<IEnumerable<TReturn>> QueryInternalAsync<TFirst, TSecond, TThird, TFourth, TFifth, TReturn>(
-            string sql, object filter, Func<TFirst, TSecond, TThird, TFourth, TFifth, TReturn> func, string splitOn,
-            CancellationToken cancellationToken = default)
-        {
-            using var con = GetConnection();
-            return con.QueryAsync<TFirst, TSecond, TThird, TFourth, TFifth, TReturn>(
-                new CommandDefinition(sql, filter, cancellationToken: cancellationToken), func, splitOn);
         }
 
 
@@ -201,17 +119,6 @@ namespace Innovt.Data.Ado
             return QueryInternalAsync(sql, filter, func, splitOn, cancellationToken);
         }
 
-        private Task<T> ExecuteInternalScalar<T>(string sql, object filter = null,
-            IDbTransaction dbTransaction = null, CancellationToken cancellationToken = default)
-        {
-            using var con = GetConnection();
-
-            return con
-                .ExecuteScalarAsync<T>(new CommandDefinition(sql, filter, dbTransaction,
-                    cancellationToken: cancellationToken));
-
-        }
-
         public Task<T> ExecuteScalarAsync<T>(string sql, object filter = null, IDbTransaction dbTransaction = null,
             CancellationToken cancellationToken = default)
         {
@@ -219,15 +126,6 @@ namespace Innovt.Data.Ado
 
 
             return ExecuteInternalScalar<T>(sql, filter, dbTransaction, cancellationToken);
-        }
-
-        private Task<int> ExecuteInternalAsync(string sql, object filter = null,
-            IDbTransaction dbTransaction = null, CancellationToken cancellationToken = default)
-        {
-            using var con = GetConnection();
-
-            return con
-                .ExecuteAsync(new CommandDefinition(sql, filter, dbTransaction, cancellationToken: cancellationToken));
         }
 
         public Task<int> ExecuteAsync(string sql, object filter = null, IDbTransaction dbTransaction = null,
@@ -255,7 +153,7 @@ namespace Innovt.Data.Ado
             using var con = GetConnection();
             var qResult =
                 await con.QueryMultipleAsync(new CommandDefinition(query, filter,
-                    cancellationToken: cancellationToken)).ConfigureAwait(true);
+                    cancellationToken: cancellationToken)).ConfigureAwait(false);
 
             var totalRecords = qResult.ReadFirst<int>();
 
@@ -266,6 +164,120 @@ namespace Innovt.Data.Ado
             return result;
         }
 
+        public Task<IEnumerable<T>> QueryListPagedAsync<T>(string sql, IPagedFilter filter,
+            CancellationToken cancellationToken = default)
+        {
+            if (sql == null) throw new ArgumentNullException(nameof(sql));
+            if (filter == null) throw new ArgumentNullException(nameof(filter));
+
+            return QueryListPagedInternalAsync<T>(sql, filter, cancellationToken);
+        }
+
+        private IDbConnection GetConnection()
+        {
+            return connectionFactory.Create(dataSource);
+        }
+
+        private Task<T> QueryFirstOrDefaultInternalAsync<T>(string sql, object filter = null,
+            CancellationToken cancellationToken = default)
+        {
+            using var con = GetConnection();
+
+            var result = con
+                .QueryFirstOrDefaultAsync<T>(new CommandDefinition(sql, filter, cancellationToken: cancellationToken));
+
+            return result;
+        }
+
+        private Task<T> QueryFirstOrDefaultInternalAsync<T>(string tableName, string whereClause,
+            object filter = null, CancellationToken cancellationToken = default, params string[] columns)
+        {
+            var fields = string.Join(",", columns);
+
+            var sql = $"SELECT TOP 1 {fields} FROM [{tableName}] WHERE {whereClause}";
+
+            return QueryFirstOrDefaultInternalAsync<T>(sql, filter, cancellationToken);
+        }
+
+        private Task<T> QuerySingleOrDefaultInternalAsync<T>(string sql, object filter = null,
+            CancellationToken cancellationToken = default)
+        {
+            using var con = GetConnection();
+            return con
+                .QuerySingleOrDefaultAsync<T>(new CommandDefinition(sql, filter, cancellationToken: cancellationToken));
+        }
+
+        private Task<int> QueryCountInternalAsync(string tableName, string whereClause = null,
+            object filter = null, CancellationToken cancellationToken = default)
+        {
+            var sql = $"SELECT COUNT(1) FROM [{tableName}]";
+
+            if (whereClause.IsNotNullOrEmpty()) sql += $" WHERE {whereClause} ";
+
+            return QuerySingleOrDefaultAsync<int>(sql, filter, cancellationToken);
+        }
+
+        private Task<IEnumerable<T>> QueryInternalAsync<T>(string sql, object filter = null,
+            CancellationToken cancellationToken = default)
+        {
+            using var con = GetConnection();
+            return con.QueryAsync<T>(new CommandDefinition(sql, filter, cancellationToken: cancellationToken));
+        }
+
+        private Task<IEnumerable<TReturn>> QueryInternalAsync<TFirst, TSecond, TReturn>(string sql, object filter,
+            Func<TFirst, TSecond, TReturn> func, string splitOn, CancellationToken cancellationToken = default)
+        {
+            using var con = GetConnection();
+            return con.QueryAsync(
+                new CommandDefinition(sql, filter, cancellationToken: cancellationToken), func, splitOn);
+        }
+
+        private Task<IEnumerable<TReturn>> QueryInternalAsync<TFirst, TSecond, TThird, TReturn>(string sql,
+            object filter, Func<TFirst, TSecond, TThird, TReturn> func, string splitOn,
+            CancellationToken cancellationToken = default)
+        {
+            using var con = GetConnection();
+            return con.QueryAsync(
+                new CommandDefinition(sql, filter, cancellationToken: cancellationToken), func, splitOn);
+        }
+
+        private Task<IEnumerable<TReturn>> QueryInternalAsync<TFirst, TSecond, TThird, TFourth, TReturn>(
+            string sql, object filter, Func<TFirst, TSecond, TThird, TFourth, TReturn> func, string splitOn,
+            CancellationToken cancellationToken = default)
+        {
+            using var con = GetConnection();
+            return con.QueryAsync(
+                new CommandDefinition(sql, filter, cancellationToken: cancellationToken), func, splitOn);
+        }
+
+        private Task<IEnumerable<TReturn>> QueryInternalAsync<TFirst, TSecond, TThird, TFourth, TFifth, TReturn>(
+            string sql, object filter, Func<TFirst, TSecond, TThird, TFourth, TFifth, TReturn> func, string splitOn,
+            CancellationToken cancellationToken = default)
+        {
+            using var con = GetConnection();
+            return con.QueryAsync(
+                new CommandDefinition(sql, filter, cancellationToken: cancellationToken), func, splitOn);
+        }
+
+        private Task<T> ExecuteInternalScalar<T>(string sql, object filter = null,
+            IDbTransaction dbTransaction = null, CancellationToken cancellationToken = default)
+        {
+            using var con = GetConnection();
+
+            return con
+                .ExecuteScalarAsync<T>(new CommandDefinition(sql, filter, dbTransaction,
+                    cancellationToken: cancellationToken));
+        }
+
+        private Task<int> ExecuteInternalAsync(string sql, object filter = null,
+            IDbTransaction dbTransaction = null, CancellationToken cancellationToken = default)
+        {
+            using var con = GetConnection();
+
+            return con
+                .ExecuteAsync(new CommandDefinition(sql, filter, dbTransaction, cancellationToken: cancellationToken));
+        }
+
         private Task<IEnumerable<T>> QueryListPagedInternalAsync<T>(string sql, IPagedFilter filter,
             CancellationToken cancellationToken = default)
         {
@@ -274,15 +286,6 @@ namespace Innovt.Data.Ado
             using var con = GetConnection();
 
             return con.QueryAsync<T>(new CommandDefinition(query, filter, cancellationToken: cancellationToken));
-        }
-
-        public Task<IEnumerable<T>> QueryListPagedAsync<T>(string sql, IPagedFilter filter,
-            CancellationToken cancellationToken = default)
-        {
-            if (sql == null) throw new ArgumentNullException(nameof(sql));
-            if (filter == null) throw new ArgumentNullException(nameof(filter));
-
-            return QueryListPagedInternalAsync<T>(sql, filter, cancellationToken);
         }
 
         //private Task<SqlMapper.GridReader> QueryMultipleInternalAsync(IDbConnection con, string[] queries,

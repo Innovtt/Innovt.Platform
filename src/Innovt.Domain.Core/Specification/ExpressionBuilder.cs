@@ -1,15 +1,9 @@
-﻿//===================================================================================
-// Microsoft Developer & Platform Evangelism
-//=================================================================================== 
-// THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
-// EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES 
-// OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-//===================================================================================
-// Copyright (c) Microsoft Corporation.  All Rights Reserved.
-// This code is released under the terms of the MS-LPL license, 
-// http://microsoftnlayerapp.codeplex.com/license
-//===================================================================================
-
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Domain.Core
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
 using System.Linq;
@@ -18,12 +12,12 @@ using System.Linq.Expressions;
 namespace Innovt.Domain.Core.Specification
 {
     /// <summary>
-    /// Extension methods for adding AND and OR with parameters rebinder
+    ///     Extension methods for adding AND and OR with parameters rebinder
     /// </summary>
     public static class ExpressionBuilder
     {
         /// <summary>
-        /// Compose two expressions and merge all in a new expression
+        ///     Compose two expressions and merge all in a new expression
         /// </summary>
         /// <typeparam name="T">Type of params in expression</typeparam>
         /// <param name="first">Expression instance</param>
@@ -34,7 +28,7 @@ namespace Innovt.Domain.Core.Specification
             Func<Expression, Expression, Expression> merge)
         {
             // build parameter map (from parameters of second to parameters of first)
-            var map = first.Parameters.Select((f, i) => new { f, s = second.Parameters[i] })
+            var map = first.Parameters.Select((f, i) => new {f, s = second.Parameters[i]})
                 .ToDictionary(p => p.s, p => p.f);
 
             // replace parameters in the second lambda expression with parameters from the first
@@ -44,7 +38,7 @@ namespace Innovt.Domain.Core.Specification
         }
 
         /// <summary>
-        /// And operator
+        ///     And operator
         /// </summary>
         /// <typeparam name="T">Type of params in expression</typeparam>
         /// <param name="first">Right Expression in AND operation</param>
@@ -57,7 +51,7 @@ namespace Innovt.Domain.Core.Specification
         }
 
         /// <summary>
-        /// Or operator
+        ///     Or operator
         /// </summary>
         /// <typeparam name="T">Type of param in expression</typeparam>
         /// <param name="first">Right expression in OR operation</param>

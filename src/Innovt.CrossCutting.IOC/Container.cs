@@ -1,6 +1,13 @@
-﻿using Innovt.Core.CrossCutting.Ioc;
-using Microsoft.Extensions.DependencyInjection;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.CrossCutting.IOC
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
+using Innovt.Core.CrossCutting.Ioc;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Innovt.CrossCutting.IOC
 {
@@ -14,7 +21,7 @@ namespace Innovt.CrossCutting.IOC
         }
 
         /// <summary>
-        /// With default scan
+        ///     With default scan
         /// </summary>
         public Container()
         {
@@ -49,11 +56,6 @@ namespace Innovt.CrossCutting.IOC
             container.AssertConfigurationIsValid();
         }
 
-        public object GetService(Type serviceType)
-        {
-            return container.GetInstance(serviceType);
-        }
-
         public object Resolve(Type type)
         {
             return container.GetInstance(type);
@@ -66,7 +68,7 @@ namespace Innovt.CrossCutting.IOC
 
         public TService Resolve<TService>(Type type)
         {
-            return (TService)container.GetInstance(type);
+            return (TService) container.GetInstance(type);
         }
 
         public TService Resolve<TService>(string instanceKey)
@@ -77,6 +79,11 @@ namespace Innovt.CrossCutting.IOC
         public void Dispose()
         {
             container?.Dispose();
+        }
+
+        public object GetService(Type serviceType)
+        {
+            return container.GetInstance(serviceType);
         }
     }
 }

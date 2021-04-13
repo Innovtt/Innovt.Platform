@@ -1,7 +1,16 @@
-using Microsoft.AspNetCore.Authorization;
+// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.AspNetCore
+// Solution: Innovt.Platform
+// Date: 2021-04-08
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Controllers;
 
 // Code provided by tiago@innovt.com.br and welbert@antecipa.com
 //
@@ -9,16 +18,12 @@ namespace Innovt.AspNetCore.Handlers
 {
     public class HasScopeRequirement : AuthorizationHandler<HasScopeRequirement>, IAuthorizationRequirement
     {
-        private string Issuer { get; set; }
-
-        private string Scope { get; set; }
-
         public HasScopeRequirement()
         {
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="scope"></param>
         /// <param name="issuer"></param>
@@ -28,8 +33,12 @@ namespace Innovt.AspNetCore.Handlers
             Issuer = issuer;
         }
 
+        private string Issuer { get; }
+
+        private string Scope { get; }
+
         /// <summary>
-        /// HandleRequirementAsync
+        ///     HandleRequirementAsync
         /// </summary>
         /// <param name="context">AuthorizationHandlerContext</param>
         /// <param name="requirement">HasScopeRequirement</param>
@@ -37,19 +46,20 @@ namespace Innovt.AspNetCore.Handlers
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context,
             HasScopeRequirement requirement)
         {
-            var actionContext = (Microsoft.AspNetCore.Mvc.ActionContext)context?.Resource;
+            var actionContext = (ActionContext) context?.Resource;
 
 
             if (actionContext is null)
                 return Task.CompletedTask;
 
 
-            var controller = (Microsoft.AspNetCore.Mvc.Controllers.ControllerActionDescriptor)actionContext.ActionDescriptor;
+            var controller =
+                (ControllerActionDescriptor) actionContext.ActionDescriptor;
 
 
             var actionName = controller.ActionName;
             var controllerName = controller.ControllerName;
-            
+
             // First check for permissions, they may show up in addition to or instead of scopes...
             if (context.User.HasClaim(c =>
                 c.Type == "permissions" && c.Issuer == requirement.Issuer &&
@@ -69,9 +79,9 @@ namespace Innovt.AspNetCore.Handlers
             var scopes = context.User.FindFirst(c => c.Type == "scope" && c.Issuer == requirement.Issuer)
                 ?.Value
                 .Split(' ');
-            
 
-            if(scopes ==null)
+
+            if (scopes == null)
                 return Task.CompletedTask;
 
             // Succeed if the scope array contains the required scope
