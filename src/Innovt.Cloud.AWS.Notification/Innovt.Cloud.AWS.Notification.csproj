@@ -12,8 +12,8 @@
 	 
   </PropertyGroup>
   <ItemGroup>
-         <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.0.10" />
-    <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.7.0.11" />
+         <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.0.11" />
+    <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.7.0.12" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj" />
