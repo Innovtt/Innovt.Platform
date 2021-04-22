@@ -37,6 +37,9 @@ namespace Innovt.Data.EFCore
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.EnableSensitiveDataLogging(false);
+            optionsBuilder.EnableDetailedErrors();
+            
             if (loggerFactory != null)
             {
                 optionsBuilder.UseLoggerFactory(loggerFactory);

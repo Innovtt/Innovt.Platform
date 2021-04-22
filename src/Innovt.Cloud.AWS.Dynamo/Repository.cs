@@ -36,12 +36,18 @@ namespace Innovt.Cloud.AWS.Dynamo
                                                InternalServerErrorException,LimitExceededException, ResourceInUseException>();
         }
 
+        private DynamoDBOperationConfig CreateDbOperationConfig()
+        {
+           return new DynamoDBOperationConfig()
+            {
+                ConsistentRead = true,
+                Conversion = DynamoDBEntryConversion.V2
+            };
+        }
+
         public async Task<T> GetByIdAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default) where T : ITableMessage
         {
-            var config = new DynamoDBOperationConfig()
-            {
-                ConsistentRead = true
-            };
+            var config = CreateDbOperationConfig();
 
             var policy = this.CreateDefaultRetryAsyncPolicy();
 
@@ -68,10 +74,7 @@ namespace Innovt.Cloud.AWS.Dynamo
 
         public async Task AddAsync<T>(T message, CancellationToken cancellationToken = default) where T : ITableMessage
         {
-            var config = new DynamoDBOperationConfig()
-            {
-                IgnoreNullValues = true
-            };
+            var config = CreateDbOperationConfig();
 
             await this.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () => await Context.SaveAsync(message, config, cancellationToken)).ConfigureAwait(false);
         }
@@ -106,19 +109,6 @@ namespace Innovt.Cloud.AWS.Dynamo
             
             var items = new List<Dictionary<string, AttributeValue>>();
             var remaining = request.PageSize;
-
-
-            try
-            {
-
-                var tables = await DynamoClient.ListTablesAsync(cancellationToken);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-
             
             
             var iterator = DynamoClient.Paginators.Query(queryRequest).Responses.GetAsyncEnumerator(cancellationToken);
@@ -147,11 +137,8 @@ namespace Innovt.Cloud.AWS.Dynamo
         
         public async Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default)
         {
-            var config = new DynamoDBOperationConfig()
-            {
-                BackwardQuery = true
-            };
-            
+            var config = CreateDbOperationConfig();
+
             var result = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () => 
                          await Context.QueryAsync<T>(id, config).GetNextSetAsync(cancellationToken)).ConfigureAwait(false);
 
@@ -163,12 +150,8 @@ namespace Innovt.Cloud.AWS.Dynamo
 
         public async Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default)
         {
-            var config = new DynamoDBOperationConfig()
-            {
-                ConsistentRead = true,
-                BackwardQuery = true,
-            };
-            
+            var config = CreateDbOperationConfig();
+
             var result = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                           await Context.QueryAsync<T>(id, config).GetRemainingAsync(cancellationToken)).ConfigureAwait(false);
 

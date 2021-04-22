@@ -1,8 +1,6 @@
 ﻿using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
 using System.Collections.Generic;
-using System;
 using Innovt.Data.EFCore.Maps;
 using Innovt.Domain.Core.Repository;
 using Innovt.Domain.Core.Specification;
