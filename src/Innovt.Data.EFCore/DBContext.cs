@@ -57,6 +57,9 @@ namespace Innovt.Data.EFCore
                     case Provider.PostgreSqL:
                         optionsBuilder.UseNpgsql(connectionString);
                         break;
+                    case Provider.Oracle:
+                        optionsBuilder.UseOracle(connectionString);
+                        break;
                     default:
                         optionsBuilder.UseSqlServer(connectionString);
                         break;
@@ -65,6 +68,8 @@ namespace Innovt.Data.EFCore
             
             base.OnConfiguring(optionsBuilder);
         }
+
+
 
         public int Commit()
         {
