@@ -18,13 +18,12 @@ namespace Innovt.Data.Ado.Tests
 
         public async Task<IEnumerable<User>> GetAll()
         {
-            var query = "SELECT * FROM USER ORDER BY NAME";
+            var query = "SELECT s.ID_BRANCH AS Id, s.ID_VENDOR AS IdVendor,  s.NAME AS Name, s.CORPORATE_NAME AS CorporateName, s.NUM_DOCUMENT AS Document, s.LAST_UPDATE AS LastUpdate FROM APPS.XXATCP_AP_SUPPLIERS_V s WHERE 1=1 ORDER BY s.ID_BRANCH";
+
+            var filter = new PagedFilterBase() { Page = 1, PageSize = 100};
             
-            var filter = new PagedFilterBase() {Page = 1, PageSize = 10};
-
             var res = await base.QueryPagedAsync<User>(query,filter);
-
-
+            
             return await base.QueryAsync<User>(query);
         }
 
