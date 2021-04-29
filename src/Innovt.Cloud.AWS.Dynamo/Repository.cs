@@ -26,7 +26,6 @@ namespace Innovt.Cloud.AWS.Dynamo
 
         private DynamoDBContext context = null;
         private DynamoDBContext Context => context ??= new DynamoDBContext(DynamoClient);
-
         private AmazonDynamoDBClient dynamoClient = null;
         private AmazonDynamoDBClient DynamoClient => dynamoClient ??= CreateService<AmazonDynamoDBClient>();
 
@@ -82,8 +81,10 @@ namespace Innovt.Cloud.AWS.Dynamo
         public async Task AddAsync<T>(IList<T> messages, CancellationToken cancellationToken = default) where T : ITableMessage
         {
             if (messages is null) throw new System.ArgumentNullException(nameof(messages));
-           
-            var batch = Context.CreateBatchWrite<T>();
+
+            var config = CreateDbOperationConfig();
+
+            var batch = Context.CreateBatchWrite<T>(config);
 
             batch.AddPutItems(messages);
 
@@ -109,8 +110,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             
             var items = new List<Dictionary<string, AttributeValue>>();
             var remaining = request.PageSize;
-            
-            
+
             var iterator = DynamoClient.Paginators.Query(queryRequest).Responses.GetAsyncEnumerator(cancellationToken);
 
             do
@@ -142,10 +142,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             var result = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () => 
                          await Context.QueryAsync<T>(id, config).GetNextSetAsync(cancellationToken)).ConfigureAwait(false);
 
-            if (result == null)
-                return default;
-
-            return result.FirstOrDefault();
+            return result == null ? default : result.FirstOrDefault();
         }
 
         public async Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default)

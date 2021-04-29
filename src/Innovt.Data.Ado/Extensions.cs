@@ -17,14 +17,20 @@ namespace Innovt.Data.Ado
             if (recordStart < 0 )
                 recordStart = 0;
 
-            return dataSource.Provider switch
+            switch (dataSource.Provider)
             {
-                Provider.PostgreSqL => $"{rawSql} OFFSET ({recordStart}) LIMIT @PageSize ",
-                Provider.Oracle =>
-                    $" SELECT * FROM (SELECT a.*, rownum r_  FROM ({rawSql}) a WHERE rownum < (({pagedFilter.Page} * {pagedFilter.PageSize}) + 1) ) WHERE r_ >=  ((({pagedFilter.Page} - 1) * {pagedFilter.PageSize}) + 1)",
-                Provider.MsSql => $"{rawSql} OFFSET {recordStart} ROWS FETCH NEXT @PageSize ROWS ONLY",
-                _ => $"{rawSql} OFFSET {recordStart} ROWS FETCH NEXT @PageSize ROWS ONLY"
-            };
+                case Provider.PostgreSqL:
+                    return $"{rawSql} OFFSET ({recordStart}) LIMIT @PageSize ";
+                case Provider.Oracle:
+                    pagedFilter.Page = pagedFilter.Page <= 0 ? 1 : pagedFilter.Page;
+                    return
+                        $" SELECT * FROM (SELECT a.*, rownum r_  FROM ({rawSql}) a WHERE rownum < (({pagedFilter.Page} * {pagedFilter.PageSize}) + 1) ) WHERE r_ >=  ((({pagedFilter.Page} - 1) * {pagedFilter.PageSize}) + 1)";
+                case Provider.MsSql:
+                    return $"{rawSql} OFFSET {recordStart} ROWS FETCH NEXT @PageSize ROWS ONLY";
+                    break;
+                default:
+                    return $"{rawSql} OFFSET {recordStart} ROWS FETCH NEXT @PageSize ROWS ONLY";
+            }
         }
     }
 }
