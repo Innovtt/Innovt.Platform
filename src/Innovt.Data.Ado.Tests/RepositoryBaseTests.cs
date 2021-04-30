@@ -13,14 +13,14 @@ namespace Innovt.Data.Ado.Tests
 {
     public class RepositoryBaseTests
     {
-        private readonly UserRepository repository = null;
+        private UserRepository repository = null;
 
         [SetUp]
         public void Setup()
         {
-            //var connectionString = @"Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=AdoTestDB;Integrated Security=SSPI;AttachDBFilename=X:\Projects\Innovt.Platform\src\Innovt.Data.Ado.Tests\AdoTestDB.mdf";
+           var connectionString = @"Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=AdoTestDB;Integrated Security=SSPI;AttachDBFilename=X:\Projects\Innovt.Platform\src\Innovt.Data.Ado.Tests\AdoTestDB.mdf";
 
-            //repository = new UserRepository(new DefaultDataSource("TestDB",connectionString, Provider.MsSql));
+            repository = new UserRepository(new DefaultDataSource("TestDB",connectionString, Provider.Oracle));
         }
 
 
@@ -37,8 +37,6 @@ namespace Innovt.Data.Ado.Tests
             try
             {
                 var users = await repository.GetAll();
-
-                Assert.IsNotNull(users);
 
                 Assert.Pass();
             }

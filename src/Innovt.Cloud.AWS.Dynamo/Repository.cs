@@ -39,16 +39,28 @@ namespace Innovt.Cloud.AWS.Dynamo
         }
 
         private DynamoDBContext Context => context ??= new DynamoDBContext(DynamoClient);
+        private AmazonDynamoDBClient dynamoClient = null;
         private AmazonDynamoDBClient DynamoClient => dynamoClient ??= CreateService<AmazonDynamoDBClient>();
 
         public async Task<T> GetByIdAsync<T>(object id, string rangeKey = null,
             CancellationToken cancellationToken = default) where T : ITableMessage
         {
-            var config = new DynamoDBOperationConfig
+            return base.CreateRetryAsyncPolicy<ProvisionedThroughputExceededException,
+                                               InternalServerErrorException,LimitExceededException, ResourceInUseException>();
+        }
+
+        private DynamoDBOperationConfig CreateDbOperationConfig()
+        {
+           return new DynamoDBOperationConfig()
             {
                 ConsistentRead = true,
                 Conversion = DynamoDBEntryConversion.V2
             };
+        }
+
+        public async Task<T> GetByIdAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default) where T : ITableMessage
+        {
+            var config = CreateDbOperationConfig();
 
             var policy = CreateDefaultRetryAsyncPolicy();
 
@@ -82,11 +94,7 @@ namespace Innovt.Cloud.AWS.Dynamo
 
         public async Task AddAsync<T>(T message, CancellationToken cancellationToken = default) where T : ITableMessage
         {
-            var config = new DynamoDBOperationConfig
-            {
-                IgnoreNullValues = true,
-                Conversion = DynamoDBEntryConversion.V2
-            };
+            var config = CreateDbOperationConfig();
 
             await CreateDefaultRetryAsyncPolicy()
                 .ExecuteAsync(async () => await Context.SaveAsync(message, config, cancellationToken))
@@ -96,9 +104,11 @@ namespace Innovt.Cloud.AWS.Dynamo
         public async Task AddAsync<T>(IList<T> messages, CancellationToken cancellationToken = default)
             where T : ITableMessage
         {
-            if (messages is null) throw new ArgumentNullException(nameof(messages));
+            if (messages is null) throw new System.ArgumentNullException(nameof(messages));
 
-            var batch = Context.CreateBatchWrite<T>();
+            var config = CreateDbOperationConfig();
+
+            var batch = Context.CreateBatchWrite<T>(config);
 
             batch.AddPutItems(messages);
 
@@ -106,31 +116,63 @@ namespace Innovt.Cloud.AWS.Dynamo
                 .ExecuteAsync(async () => await batch.ExecuteAsync(cancellationToken)).ConfigureAwait(false);
         }
 
+        protected async Task UpdateAsync(string tableName, Dictionary<string, AttributeValue> key,
+            Dictionary<string, AttributeValueUpdate> attributeUpdates,
+            CancellationToken cancellationToken = default)
+        {
+            await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () => 
+            await DynamoClient.UpdateItemAsync(tableName, key, attributeUpdates, cancellationToken)).ConfigureAwait(false);
+        }
+
+     
+        private async Task<(Dictionary<string, AttributeValue> LastEvaluatedKey, List<Dictionary<string, AttributeValue>> Items)> InternalQueryAsync<T>(Innovt.Cloud.Table.QueryRequest request, CancellationToken cancellationToken = default)
+        {
+            if (request is null) throw new ArgumentNullException(nameof(request));
+
+            var queryRequest = Helpers.CreateQueryRequest<T>(request);
+            
+            Dictionary<string, AttributeValue> lastEvaluatedKey = null;
+            
+            var items = new List<Dictionary<string, AttributeValue>>();
+            var remaining = request.PageSize;
+
+            var iterator = DynamoClient.Paginators.Query(queryRequest).Responses.GetAsyncEnumerator(cancellationToken);
+
+            do
+            {
+                await iterator.MoveNextAsync();
+
+                if (iterator.Current == null)
+                    break;
+
+                items.AddRange(iterator.Current.Items);
+                queryRequest.ExclusiveStartKey = lastEvaluatedKey = iterator.Current.LastEvaluatedKey;
+
+                remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
+                
+                if (remaining>0)
+                {
+                    queryRequest.Limit = remaining.Value;
+                }
+
+            } while (lastEvaluatedKey.Count > 0 && remaining>0);
+            
+            return (lastEvaluatedKey, items);
+        }
+        
         public async Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default)
         {
-            var config = new DynamoDBOperationConfig
-            {
-                BackwardQuery = true,
-                Conversion = DynamoDBEntryConversion.V2
-            };
+            var config = CreateDbOperationConfig();
 
-            var result = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                await Context.QueryAsync<T>(id, config).GetNextSetAsync(cancellationToken)).ConfigureAwait(false);
+            var result = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () => 
+                         await Context.QueryAsync<T>(id, config).GetNextSetAsync(cancellationToken)).ConfigureAwait(false);
 
-            if (result == null)
-                return default;
-
-            return result.FirstOrDefault();
+            return result == null ? default : result.FirstOrDefault();
         }
 
         public async Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default)
         {
-            var config = new DynamoDBOperationConfig
-            {
-                ConsistentRead = true,
-                BackwardQuery = true,
-                Conversion = DynamoDBEntryConversion.V2
-            };
+            var config = CreateDbOperationConfig();
 
             var result = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                 await Context.QueryAsync<T>(id, config).GetRemainingAsync(cancellationToken)).ConfigureAwait(false);

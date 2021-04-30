@@ -9,7 +9,6 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Copyright>Innovt Tecnologia</Copyright>
     <Description>Innovt.Notification.Core</Description>
-	 
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj" />

@@ -41,6 +41,45 @@ namespace Innovt.Data.EFCore
             base.ChangeTracker.LazyLoadingEnabled = false;
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.EnableSensitiveDataLogging(false);
+            optionsBuilder.EnableDetailedErrors();
+            
+            if (loggerFactory != null)
+            {
+                optionsBuilder.UseLoggerFactory(loggerFactory);
+            }
+            
+            if (dataSource!=null)
+            {
+                var connectionString = dataSource.GetConnectionString();
+
+                if(connectionString.IsNullOrEmpty())
+                    throw  new ConnectionStringException($"Connection string for datasource {dataSource.Name} is empty.");
+
+                switch (dataSource.Provider)
+                {
+                    case Provider.MsSql:
+                        optionsBuilder.UseSqlServer(connectionString);
+                        break;
+                    case Provider.PostgreSqL:
+                        optionsBuilder.UseNpgsql(connectionString);
+                        break;
+                    case Provider.Oracle:
+                        optionsBuilder.UseOracle(connectionString);
+                        break;
+                    default:
+                        optionsBuilder.UseSqlServer(connectionString);
+                        break;
+                }
+            }   
+            
+            base.OnConfiguring(optionsBuilder);
+        }
+
+
+
         public int Commit()
         {
             return SaveChanges();

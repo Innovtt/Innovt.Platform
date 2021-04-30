@@ -13,6 +13,7 @@ using Innovt.Data.DataSources;
 using Innovt.Data.Exceptions;
 using Innovt.Data.Model;
 using Npgsql;
+using Oracle.ManagedDataAccess.Client;
 
 namespace Innovt.Data.Ado
 {
@@ -30,7 +31,7 @@ namespace Innovt.Data.Ado
             return dataSource.Provider switch
             {
                 Provider.PostgreSqL => new NpgsqlConnection(connectionString),
-                Provider.MsSql => new SqlConnection(connectionString),
+                Provider.Oracle => new OracleConnection(connectionString),
                 _ => new SqlConnection(connectionString)
             };
         }

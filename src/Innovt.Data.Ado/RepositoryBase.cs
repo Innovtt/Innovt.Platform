@@ -15,6 +15,7 @@ using Innovt.Core.Collections;
 using Innovt.Core.Cqrs.Queries;
 using Innovt.Data.DataSources;
 using Innovt.Data.Exceptions;
+using Innovt.Data.Model;
 
 namespace Innovt.Data.Ado
 {
@@ -135,33 +136,52 @@ namespace Innovt.Data.Ado
 
             return ExecuteInternalAsync(sql, filter, dbTransaction, cancellationToken);
         }
-
-
-        public async Task<PagedCollection<T>> QueryPagedAsync<T>(string sql, IPagedFilter filter,
-            CancellationToken cancellationToken = default) where T : class
+        
+        public async Task<PagedCollection<T>> QueryPagedAsync<T>(string sql, IPagedFilter filter, bool useCount = true,CancellationToken cancellationToken = default) where T : class
         {
             var orderByIndex = sql.LastIndexOf("ORDER BY", StringComparison.CurrentCultureIgnoreCase);
 
             if (orderByIndex <= 0)
-                throw new SqlSyntaxException(
-                    "ORDER BY Clause not found. To filter as pagged you need to provide an ORDER BY Clause.");
+                throw new SqlSyntaxException("ORDER BY Clause not found. To filter as paged you need to provide an ORDER BY Clause.");
 
             var newSql = sql.Substring(0, orderByIndex);
-
-            var query = $"SELECT COUNT(1) FROM ({newSql}) C;" + sql.AddPagination(filter, dataSource);
+            
+            var queryPaged = sql.AddPagination(filter, dataSource);
 
             using var con = GetConnection();
-            var qResult =
-                await con.QueryMultipleAsync(new CommandDefinition(query, filter,
-                    cancellationToken: cancellationToken)).ConfigureAwait(false);
 
-            var totalRecords = qResult.ReadFirst<int>();
-
-            var result = new PagedCollection<T>(qResult.Read<T>(), filter.Page, filter.PageSize)
+            if (!useCount)
             {
+                var pagedResult = await con.QueryAsync<T>(new CommandDefinition(queryPaged, filter, cancellationToken: cancellationToken));
+                return new PagedCollection<T>(pagedResult, filter.Page, filter.PageSize);
+            }
+
+            var queryCount = $"SELECT COUNT(1) FROM ({newSql}) C";
+
+            var totalRecords = 0;
+            IEnumerable<T> queryResult = null;
+            
+            if (dataSource.Provider == Provider.Oracle)
+            {
+                totalRecords = await con.QuerySingleAsync<int>(new CommandDefinition(queryCount, filter, cancellationToken: cancellationToken))
+                .ConfigureAwait(false);
+                queryResult = await con
+                    .QueryAsync<T>(new CommandDefinition(queryPaged, filter, cancellationToken: cancellationToken))
+                    .ConfigureAwait(false);
+            }
+            else
+            {
+                var query = $"{queryCount}; {queryPaged}";
+                var qResult = await con.QueryMultipleAsync(new CommandDefinition(query, filter, cancellationToken: cancellationToken));
+
+                totalRecords = qResult.ReadFirst<int>();
+                queryResult = await qResult.ReadAsync<T>().ConfigureAwait(false);
+            }
+
+            return new PagedCollection<T>(queryResult, filter.Page, filter.PageSize)
+            { 
                 TotalRecords = totalRecords
             };
-            return result;
         }
 
         public Task<IEnumerable<T>> QueryListPagedAsync<T>(string sql, IPagedFilter filter,

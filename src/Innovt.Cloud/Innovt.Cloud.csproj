@@ -9,7 +9,6 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Copyright>Innovt Tecnologia</Copyright>
     <Description>Cloud interfaces.</Description>
-	 
   </PropertyGroup>
 
   <ItemGroup>

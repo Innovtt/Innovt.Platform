@@ -9,7 +9,6 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Copyright>Innovt Tecnologia</Copyright>
     <Description>AWS implementation for DynamoDB Abstraction.</Description>
-	 
   </PropertyGroup>
     <ItemGroup>
     <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.0.12" />
