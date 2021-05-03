@@ -39,16 +39,9 @@ namespace Innovt.Cloud.AWS.Dynamo
         }
 
         private DynamoDBContext Context => context ??= new DynamoDBContext(DynamoClient);
-        private AmazonDynamoDBClient dynamoClient = null;
         private AmazonDynamoDBClient DynamoClient => dynamoClient ??= CreateService<AmazonDynamoDBClient>();
 
-        public async Task<T> GetByIdAsync<T>(object id, string rangeKey = null,
-            CancellationToken cancellationToken = default) where T : ITableMessage
-        {
-            return base.CreateRetryAsyncPolicy<ProvisionedThroughputExceededException,
-                                               InternalServerErrorException,LimitExceededException, ResourceInUseException>();
-        }
-
+    
         private DynamoDBOperationConfig CreateDbOperationConfig()
         {
            return new DynamoDBOperationConfig()

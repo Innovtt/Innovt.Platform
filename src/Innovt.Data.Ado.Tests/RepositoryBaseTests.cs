@@ -7,6 +7,8 @@
 
 using System;
 using System.Threading.Tasks;
+using Innovt.Data.DataSources;
+using Innovt.Data.Model;
 using NUnit.Framework;
 
 namespace Innovt.Data.Ado.Tests
