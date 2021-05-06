@@ -2,7 +2,7 @@
 // Author: Michel Magalhães
 // Project: _build
 // Solution: Innovt.Platform
-// Date: 2021-04-08
+// Date: 2021-05-03
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;

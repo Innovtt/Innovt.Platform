@@ -3,16 +3,16 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <PackageId>Innovt.Cloud.AWS</PackageId>
-    <PackageVersion>5.0.0-rc</PackageVersion>
+    <PackageVersion>5.0.0-rc1</PackageVersion>
     <Authors>Michel,Tiago</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Copyright>Innovt Tecnologia</Copyright>
     <Description>AWS implementation for cloud features.</Description>
-	 
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="AWSSDK.Core" Version="3.7.0.12" />
+    <PackageReference Include="AWSSDK.Core" Version="3.7.0.17" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.0.0" />
     <PackageReference Include="Polly" Version="7.2.2" />
     <PackageReference Include="System.Text.Json" Version="5.0.2" />

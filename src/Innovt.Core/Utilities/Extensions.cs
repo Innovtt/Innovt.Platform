@@ -2,7 +2,7 @@
 // Author: Michel Magalhães
 // Project: Innovt.Core
 // Solution: Innovt.Platform
-// Date: 2021-04-08
+// Date: 2021-05-03
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
@@ -86,11 +86,10 @@ namespace Innovt.Core.Utilities
                 return (0, 0);
 
             long latitude = 0;
-            var op = 1;
 
             if (!splittedValues[0].IsNullOrEmpty())
             {
-                op = splittedValues[0][0] == '-' ? -1 : 1;
+                var op = splittedValues[0][0] == '-' ? -1 : 1;
 
                 long.TryParse(splittedValues[0].OnlyNumber(), out latitude);
 
@@ -102,7 +101,7 @@ namespace Innovt.Core.Utilities
 
             if (splittedValues.Length > 1 && !splittedValues[1].IsNullOrEmpty())
             {
-                op = splittedValues[1][0] == '-' ? -1 : 1;
+                var op = splittedValues[1][0] == '-' ? -1 : 1;
 
                 long.TryParse(splittedValues[1].OnlyNumber(), out longitude);
 
@@ -133,16 +132,16 @@ namespace Innovt.Core.Utilities
 
         public static string FormatToExtensionDateTime(this DateTimeOffset value)
         {
-            var diaSemana = value.ToString("dddd").Split('-');
+            var weekDay = value.ToString("dddd").Split('-');
+            
+            var dia = weekDay[0][..1].ToUpper() + weekDay[0][1..];
 
-            var dia = diaSemana[0].Substring(0, 1).ToUpper() + diaSemana[0].Substring(1, diaSemana[0].Length - 1);
-
-            if (diaSemana.Length == 2)
-                dia += "-" + diaSemana[1].Substring(0, 1).ToUpper() +
-                       diaSemana[1].Substring(1, diaSemana[1].Length - 1);
+            if (weekDay.Length == 2)
+                dia += "-" + weekDay[1][..1].ToUpper() + weekDay[1][1..];
 
             var mes = value.ToString("MMMM");
-            mes = mes.Substring(0, 1).ToUpper() + mes.Substring(1, mes.Length - 1);
+
+            mes = mes[..1].ToUpper() + mes[1..];
 
             return dia + ", " + value.ToString("dd") + " de " + mes + " de " + value.ToString("yyyy") + ", " +
                    value.ToString("t") + "h";
@@ -150,10 +149,9 @@ namespace Innovt.Core.Utilities
 
         public static string FormatToSimpleDateTime(this DateTimeOffset value)
         {
-            var diaSemana = value.ToString("dddd").Split('-');
+            var weekDay = value.ToString("dddd").Split('-');
 
-            var dia = diaSemana[0].Substring(0, 1).ToUpper() + diaSemana[0].Substring(1, diaSemana[0].Length - 1);
-
+            var dia = weekDay[0][..1].ToUpper() + weekDay[0][1..];
 
             return dia + " - " + value.Day + "/" + value.Month;
         }
@@ -197,7 +195,7 @@ namespace Innovt.Core.Utilities
                 return
                     $"{startDate.ToString("d MMMM", cultureInfo)} {startDate.ToString("HH:mm", cultureInfo)} - {endDate.ToString("HH:mm", cultureInfo)}";
 
-            var res = string.Empty;
+            string res;
             //same month
             if (startDate.Month == endDate.Month)
             {
@@ -234,7 +232,7 @@ namespace Innovt.Core.Utilities
             return res;
         }
 
-        public static string ToYesNO(this bool value)
+        public static string ToYesNo(this bool value)
         {
             return value ? "Sim" : "Não";
         }

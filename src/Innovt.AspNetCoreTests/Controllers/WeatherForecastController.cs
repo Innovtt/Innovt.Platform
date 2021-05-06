@@ -2,14 +2,17 @@
 // Author: Michel Magalhães
 // Project: Innovt.AspNetCoreTests
 // Solution: Innovt.Platform
-// Date: 2021-04-08
+// Date: 2021-05-03
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using OpenTelemetry;
+using OpenTelemetry.Trace;
 
 namespace Innovt.AspNetCoreTests.Controllers
 {
@@ -21,28 +24,59 @@ namespace Innovt.AspNetCoreTests.Controllers
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
-
-        private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
-        {
-            _logger = logger;
-        }
-
+        
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
-            _logger.LogError("erro");
+            //using var tracerProvider = Sdk.CreateTracerProviderBuilder().Build();
+            //using (Sdk.CreateTracerProviderBuilder().AddXRayTraceId().Build())
+
+            Activity.DefaultIdFormat = ActivityIdFormat.W3C;
+
+            var activity = new Activity("Get");
+            
+            //activity.SetParentId("");
+           
+           using (Sdk.CreateTracerProviderBuilder().Build())
+           {
+               activity.Start();
 
 
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-                {
-                    Date = DateTime.Now.AddDays(index),
-                    TemperatureC = rng.Next(-20, 55),
-                    Summary = Summaries[rng.Next(Summaries.Length)]
-                })
-                .ToArray();
+
+
+
+               //using (var activitySource = new ActivitySource("TestTraceIdBasedSamplerOn"))
+               //{
+               //    var a = activitySource.StartActivity("Get", ActivityKind.Producer);
+
+               //    a.AddTag("Name", "MIchel");
+               //    a.AddTag("FirstName", "MIchel");
+
+
+
+
+
+
+               //    using (var activity = activitySource.StartActivity("RootActivity", ActivityKind.Internal))
+               //    {
+               //        //Assert.True(activity.ActivityTraceFlags == ActivityTraceFlags.Recorded);
+               //    }
+               //}
+
+
+
+
+
+
+               var rng = new Random();
+               return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+                   {
+                       Date = DateTime.Now.AddDays(index),
+                       TemperatureC = rng.Next(-20, 55),
+                       Summary = Summaries[rng.Next(Summaries.Length)]
+                   })
+                   .ToArray();
+           }
         }
     }
 }

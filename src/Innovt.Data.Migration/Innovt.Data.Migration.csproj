@@ -3,17 +3,17 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <PackageId>Innovt.Data.Migration</PackageId>
-   <PackageVersion>5.0.0-rc</PackageVersion>
+   <PackageVersion>5.0.0-rc1</PackageVersion>
     <Authors>Michel,Tiago</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Copyright>Innovt Tecnologia</Copyright>
     <Description>Migration project to help our team to setup some frameworks.</Description>
-	 
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dapper" Version="2.0.78" />
+    <PackageReference Include="Dapper" Version="2.0.90" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>
 

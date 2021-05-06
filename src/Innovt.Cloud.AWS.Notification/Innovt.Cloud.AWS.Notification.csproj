@@ -3,17 +3,17 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
      <PackageId>Innovt.Cloud.AWS.Notification</PackageId>
-    <PackageVersion>5.0.0-rc</PackageVersion>
+    <PackageVersion>5.0.0-rc1</PackageVersion>
     <Authors>Michel,Tiago</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Copyright>Innovt Tecnologia</Copyright>
     <Description>AWS implementation for SES and SNS Abstraction.</Description>
-	 
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-         <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.0.11" />
-    <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.7.0.12" />
+         <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.0.16" />
+    <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.7.1.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj" />

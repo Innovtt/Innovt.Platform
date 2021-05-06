@@ -2,7 +2,7 @@
 // Author: Michel Magalhães
 // Project: Innovt.Data.EFCore
 // Solution: Innovt.Platform
-// Date: 2021-04-08
+// Date: 2021-05-03
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
@@ -40,45 +40,6 @@ namespace Innovt.Data.EFCore
         {
             base.ChangeTracker.LazyLoadingEnabled = false;
         }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.EnableSensitiveDataLogging(false);
-            optionsBuilder.EnableDetailedErrors();
-            
-            if (loggerFactory != null)
-            {
-                optionsBuilder.UseLoggerFactory(loggerFactory);
-            }
-            
-            if (dataSource!=null)
-            {
-                var connectionString = dataSource.GetConnectionString();
-
-                if(connectionString.IsNullOrEmpty())
-                    throw  new ConnectionStringException($"Connection string for datasource {dataSource.Name} is empty.");
-
-                switch (dataSource.Provider)
-                {
-                    case Provider.MsSql:
-                        optionsBuilder.UseSqlServer(connectionString);
-                        break;
-                    case Provider.PostgreSqL:
-                        optionsBuilder.UseNpgsql(connectionString);
-                        break;
-                    case Provider.Oracle:
-                        optionsBuilder.UseOracle(connectionString);
-                        break;
-                    default:
-                        optionsBuilder.UseSqlServer(connectionString);
-                        break;
-                }
-            }   
-            
-            base.OnConfiguring(optionsBuilder);
-        }
-
-
 
         public int Commit()
         {
@@ -166,6 +127,9 @@ namespace Innovt.Data.EFCore
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.EnableSensitiveDataLogging(false);
+            optionsBuilder.EnableDetailedErrors();
+
             if (loggerFactory != null) optionsBuilder.UseLoggerFactory(loggerFactory);
 
             if (dataSource != null)
@@ -183,6 +147,9 @@ namespace Innovt.Data.EFCore
                         break;
                     case Provider.PostgreSqL:
                         optionsBuilder.UseNpgsql(connectionString);
+                        break;
+                    case Provider.Oracle:
+                        optionsBuilder.UseOracle(connectionString);
                         break;
                     default:
                         optionsBuilder.UseSqlServer(connectionString);

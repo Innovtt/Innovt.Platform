@@ -2,7 +2,7 @@
 // Author: Michel Magalhães
 // Project: Innovt.Data.Ado
 // Solution: Innovt.Platform
-// Date: 2021-04-08
+// Date: 2021-05-03
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using Innovt.Core.Cqrs.Queries;
@@ -34,7 +34,6 @@ namespace Innovt.Data.Ado
                         $" SELECT * FROM (SELECT a.*, rownum r_  FROM ({rawSql}) a WHERE rownum < (({pagedFilter.Page} * {pagedFilter.PageSize}) + 1) ) WHERE r_ >=  ((({pagedFilter.Page} - 1) * {pagedFilter.PageSize}) + 1)";
                 case Provider.MsSql:
                     return $"{rawSql} OFFSET {recordStart} ROWS FETCH NEXT @PageSize ROWS ONLY";
-                    break;
                 default:
                     return $"{rawSql} OFFSET {recordStart} ROWS FETCH NEXT @PageSize ROWS ONLY";
             }

@@ -3,15 +3,16 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
   <PackageId>Innovt.Cloud.AWS.SQS</PackageId>
-  <PackageVersion>5.0.0-rc</PackageVersion>
+  <PackageVersion>5.0.0-rc1</PackageVersion>
     <Authors>Michel,Tiago</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Copyright>Innovt Tecnologia</Copyright>
     <Description>AWS implementation for SQS Abstraction.</Description>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
  <ItemGroup>
-      <PackageReference Include="AWSSDK.SQS" Version="3.7.0.12" />
+      <PackageReference Include="AWSSDK.SQS" Version="3.7.0.17" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj" />

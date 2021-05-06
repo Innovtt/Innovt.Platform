@@ -4,13 +4,13 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<PackageId>Innovt.CrossCutting.IOC</PackageId>
-		<PackageVersion>5.0.0-rc</PackageVersion>
+		<PackageVersion>5.0.0-rc1</PackageVersion>
 		<Authors>Michel,Tiago</Authors>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<Copyright>Innovt Tecnologia</Copyright>
 		<Description>IOC implementation as .net core applications</Description>
-		<RepositoryUrl>https://github.com/Innovtt/Innovt.Platform</RepositoryUrl>
+    <LangVersion>latest</LangVersion>
 	</PropertyGroup>
 
 	<ItemGroup>

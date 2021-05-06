@@ -2,10 +2,12 @@
 // Author: Michel Magalhães
 // Project: Innovt.AspNetCore
 // Solution: Innovt.Platform
-// Date: 2021-04-08
+// Date: 2021-05-03
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using Innovt.AspNetCore.Filters;
 using Innovt.AspNetCore.Infrastructure;
 using Innovt.AspNetCore.Model;
@@ -19,20 +21,24 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using OpenTelemetry.Trace;
 
 namespace Innovt.AspNetCore
 {
     public abstract class ApiStartupBase
     {
-        protected ApiStartupBase(IConfiguration configuration)
+        public string AppName { get; }
+
+        protected ApiStartupBase(IConfiguration configuration, string appName)
         {
             Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+            AppName = appName ?? throw new ArgumentNullException(nameof(appName));
             Localization = new DefaultApiLocalization();
             DefaultHealthPath = "/health";
         }
 
-        protected ApiStartupBase(IConfiguration configuration, string apiTitle, string apiDescription,
-            string apiVersion) : this(configuration)
+        protected ApiStartupBase(IConfiguration configuration,string appName, string apiTitle, string apiDescription,
+            string apiVersion) : this(configuration,appName)
         {
             Documentation = new DefaultApiDocumentation(apiTitle, apiDescription, apiVersion);
         }
@@ -59,7 +65,6 @@ namespace Innovt.AspNetCore
             {
                 options.SchemaFilter<SwaggerExcludeFilter>();
                 options.OperationFilter<SwaggerExcludeFilter>();
-
                 options.SwaggerDoc(Documentation.ApiVersion,
                     new OpenApiInfo
                     {
@@ -83,14 +88,16 @@ namespace Innovt.AspNetCore
 
         protected virtual void AddTracing(IServiceCollection services)
         {
-            //services.AddOpenTelemetryTracing(builder =>
-            //{
-            //    builder.AddAspNetCoreInstrumentation()
-            //        .AddSource()
-            //        .AddConsoleExporter();
-            //});
-        }
+            services.AddOpenTelemetryTracing(builder =>
+            {   
+               builder.AddAspNetCoreInstrumentation()
+                   .AddHttpClientInstrumentation()
+                    .AddSource(AppName)
+                   .AddConsoleExporter();
 
+                ConfigureOpenTelemetry(builder);
+            });
+        }
 
         private void AddCoreServices(IServiceCollection services)
         {
@@ -105,21 +112,20 @@ namespace Innovt.AspNetCore
                 op.Filters.Add(provider.GetService<ApiExceptionFilter>());
             });
 
-            if (Localization?.DefaultLocalizeResource != null)
-            {
-                services.AddLocalization();
+            if (Localization?.DefaultLocalizeResource == null) return;
+            
+            services.AddLocalization();
 
-                mvcBuilder.AddMvcLocalization(op =>
-                    {
-                        op.DataAnnotationLocalizerProvider =
-                            (type, factory) => factory.Create(Localization.DefaultLocalizeResource);
-                    })
-                    .AddDataAnnotationsLocalization(op =>
-                    {
-                        op.DataAnnotationLocalizerProvider =
-                            (type, factory) => factory.Create(Localization.DefaultLocalizeResource);
-                    });
-            }
+            mvcBuilder.AddMvcLocalization(op =>
+            {
+                op.DataAnnotationLocalizerProvider =
+                    (type, factory) => factory.Create(Localization.DefaultLocalizeResource);
+            })
+            .AddDataAnnotationsLocalization(op =>
+            {
+                op.DataAnnotationLocalizerProvider =
+                    (type, factory) => factory.Create(Localization.DefaultLocalizeResource);
+            });
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -210,5 +216,7 @@ namespace Innovt.AspNetCore
 
         public abstract void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env,
             ILoggerFactory loggerFactory);
+
+        protected abstract void ConfigureOpenTelemetry(TracerProviderBuilder builder);
     }
 }

@@ -2,7 +2,7 @@
 // Author: Michel Magalhães
 // Project: Innovt.Core
 // Solution: Innovt.Platform
-// Date: 2021-04-08
+// Date: 2021-05-03
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
@@ -115,8 +115,10 @@ namespace Innovt.Core.Utilities
                 resto = 0;
             else
                 resto = 11 - resto;
-            var digito = resto.ToString();
-            tempCnpj = tempCnpj + digito;
+            
+            var digit = resto.ToString();
+
+            tempCnpj += digit;
             soma = 0;
             for (var i = 0; i < 13; i++)
                 soma += int.Parse(tempCnpj[i].ToString()) * multiplicador2[i];
@@ -125,8 +127,8 @@ namespace Innovt.Core.Utilities
                 resto = 0;
             else
                 resto = 11 - resto;
-            digito = digito + resto;
-            return cnpj.EndsWith(digito);
+            digit += resto;
+            return cnpj.EndsWith(digit);
         }
 
         public static bool IsNullOrEmpty(this string str)
@@ -270,7 +272,7 @@ namespace Innovt.Core.Utilities
         }
 
 
-        public static string FormatCPF(this string cpf)
+        public static string FormatCpf(this string cpf)
         {
             if (cpf.IsNullOrEmpty())
                 return cpf;
@@ -304,8 +306,11 @@ namespace Innovt.Core.Utilities
             return FormatByMask(phoneNumber, @"{0:\(00\)000\-0000}");
         }
 
-        public static string FormatCNPJ(this string cnpj)
+        public static string FormatCnpj(this string cnpj)
         {
+            if (cnpj.IsNullOrEmpty())
+                return null;
+
             cnpj = cnpj.PadLeft(14, '0');
 
             return FormatByMask(cnpj, @"{0:00\.000\.000\/0000\-00}");
@@ -317,7 +322,7 @@ namespace Innovt.Core.Utilities
                 return value;
 
             var firstLetter = value[0].ToString().ToUpper();
-            var tail = value.Substring(1, value.Length - 1);
+            var tail = value[1..];
 
             return firstLetter + tail;
         }
@@ -347,10 +352,9 @@ namespace Innovt.Core.Utilities
         public static string ToBase64(this string toEncode, Encoding encoding = null)
         {
             if (toEncode == null)
-                return toEncode;
+                return null;
 
-            if (encoding == null)
-                encoding = Encoding.ASCII;
+            encoding ??= Encoding.ASCII;
 
             var btToEncode = encoding.GetBytes(toEncode);
 
@@ -366,10 +370,9 @@ namespace Innovt.Core.Utilities
         public static string FromBase64(this string toDecode, Encoding encoding = null)
         {
             if (toDecode == null)
-                return toDecode;
+                return null;
 
-            if (encoding == null)
-                encoding = Encoding.ASCII;
+            encoding ??= Encoding.ASCII;
 
             var btToDecode = Convert.FromBase64String(toDecode);
 
@@ -377,7 +380,7 @@ namespace Innovt.Core.Utilities
         }
 
 
-        public static string AplyQuotes(this string value)
+        public static string ApplyQuotes(this string value)
         {
             if (string.IsNullOrEmpty(value))
                 return value;
@@ -403,7 +406,6 @@ namespace Innovt.Core.Utilities
 
             if (int.TryParse(str, out var value))
                 return value;
-
 
             return defaultValue;
         }
@@ -543,5 +545,16 @@ namespace Innovt.Core.Utilities
 
             return defaultValue;
         }
+
+        public static Guid ToGuid(this string str)
+        {
+            return Guid.Parse(str);
+        }
+
+        public static Guid? ToGuidOrEmpty(this string str)
+        {
+            return Guid.TryParse(str, out var result) ? result : Guid.Empty;
+        }
+
     }
 }

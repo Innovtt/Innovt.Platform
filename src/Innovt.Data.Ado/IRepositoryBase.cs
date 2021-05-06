@@ -2,7 +2,7 @@
 // Author: Michel Magalhães
 // Project: Innovt.Data.Ado
 // Solution: Innovt.Platform
-// Date: 2021-04-08
+// Date: 2021-05-03
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
@@ -50,10 +50,12 @@ namespace Innovt.Data.Ado
             object filter,
             Func<TFirst, TSecond, TThird, TFourth, TFifth, TReturn> func, string splitOn,
             CancellationToken cancellationToken = default);
-        
-        Task<PagedCollection<T>> QueryPagedAsync<T>(string sql, IPagedFilter filter, bool useCount = true,CancellationToken cancellationToken = default) where T : class;
 
-        Task<IEnumerable<T>> QueryListPagedAsync<T>( string sql, IPagedFilter filter, CancellationToken cancellationToken = default);
+        Task<PagedCollection<T>> QueryPagedAsync<T>(string sql, IPagedFilter filter, bool useCount = true,
+            CancellationToken cancellationToken = default) where T : class;
+
+        Task<IEnumerable<T>> QueryListPagedAsync<T>(string sql, IPagedFilter filter,
+            CancellationToken cancellationToken = default);
         // Task<IEnumerable<TReturn>> QueryMultipleAsync<TFirst, TSecond, TReturn>(string[] queries, Func<TFirst, TSecond, TReturn> func,object filter = null, string splitOn = "id");
         //
         // Task<IEnumerable<TReturn>> QueryMultipleAsync<TFirst, TSecond, TThird, TReturn>(string[] queries,

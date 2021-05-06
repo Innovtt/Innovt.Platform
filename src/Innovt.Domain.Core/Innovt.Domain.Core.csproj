@@ -3,12 +3,13 @@
   <PropertyGroup>
 	  <TargetFramework>netstandard2.1</TargetFramework>
 	  <PackageId>Innovt.Domain.Core</PackageId>
-	 <PackageVersion>5.0.0-rc</PackageVersion>
+	 <PackageVersion>5.0.0-rc1</PackageVersion>
 	  <Authors>Michel,Tiago</Authors>
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	  <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 	  <Copyright>Innovt Tecnologia</Copyright>
 	  <Description>Domain core.</Description>
+    <LangVersion>latest</LangVersion>
 	 
   </PropertyGroup>
 

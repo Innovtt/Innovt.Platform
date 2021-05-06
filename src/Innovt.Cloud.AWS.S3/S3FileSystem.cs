@@ -2,11 +2,12 @@
 // Author: Michel Magalhães
 // Project: Innovt.Cloud.AWS.S3
 // Solution: Innovt.Platform
-// Date: 2021-04-08
+// Date: 2021-05-03
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net;
@@ -25,7 +26,9 @@ namespace Innovt.Cloud.AWS.S3
 {
     public class S3FileSystem : AwsBaseService, IFileSystem
     {
-        
+        private static readonly ActivitySource S3ActivitySource = new(nameof(S3FileSystem));
+
+        private AmazonS3Client s3Client;
 
         public S3FileSystem(ILogger logger, IAWSConfiguration configuration) : base(logger, configuration)
         {
@@ -34,17 +37,12 @@ namespace Innovt.Cloud.AWS.S3
         public S3FileSystem(ILogger logger, IAWSConfiguration configuration, string region) : base(logger,
             configuration, region)
         {
+
         }
 
-        private AmazonS3Client s3Client;
         private AmazonS3Client S3Client
         {
             get { return s3Client ??= CreateService<AmazonS3Client>(); }
-        }
-
-        private string GetObjectUrl(string bucketName, string fileKey)
-        {
-            return "https://s3.amazonaws.com/" + $"{bucketName}/{fileKey}";
         }
 
         //only if in the same region
@@ -64,36 +62,28 @@ namespace Innovt.Cloud.AWS.S3
             return (bucket, fileKey);
         }
 
-        public string PutObject(string bucketName, string filePath, string contentType = null, string serverSideEncryptionMethod = null)
+        public string PutObject(string bucketName, string filePath, string contentType = null,
+            string serverSideEncryptionMethod = null)
         {
-            return AsyncHelper.RunSync(async () => await PutObjectAsync(bucketName, filePath, contentType, serverSideEncryptionMethod));
+            return AsyncHelper.RunSync(async () =>
+                await PutObjectAsync(bucketName, filePath, contentType, serverSideEncryptionMethod));
         }
 
-        public string PutObject(string bucketName, Stream stream, string fileName, string contentType = null, string serverSideEncryptionMethod = null)
+        public string PutObject(string bucketName, Stream stream, string fileName, string contentType = null,
+            string serverSideEncryptionMethod = null)
         {
             return AsyncHelper.RunSync(async () =>
                 await PutObjectAsync(bucketName, stream, fileName, contentType));
         }
 
-        internal async Task<string> PutObjectInternalAsync(string bucketName, [NotNull] string filePath,
-            string contentType = null, string serverSideEncryptionMethod = null, CancellationToken cancellationToken = default)
-        {
-            await using var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
-
-            var fileName = Path.GetFileName(filePath);
-
-            return await PutObjectAsync(bucketName, stream, fileName, contentType, serverSideEncryptionMethod,
-                cancellationToken).ConfigureAwait(false);
-        }
-
         public Task<string> PutObjectAsync(string bucketName, Stream stream, string fileName, string contentType = null,
-            string serverSideEncryptionMethod = null,
-            CancellationToken cancellationToken = default)
+            string serverSideEncryptionMethod = null, CancellationToken cancellationToken = default)
         {
             if (bucketName == null) throw new ArgumentNullException(nameof(bucketName));
             if (stream == null) throw new ArgumentNullException(nameof(stream));
 
-            return PutObjectInternalAsync(bucketName, stream, fileName, contentType, serverSideEncryptionMethod, cancellationToken);
+            return PutObjectInternalAsync(bucketName, stream, fileName, contentType, serverSideEncryptionMethod,
+                cancellationToken);
         }
 
         public Task<string> PutObjectAsync(string bucketName, string filePath, string contentType = null,
@@ -102,9 +92,10 @@ namespace Innovt.Cloud.AWS.S3
         {
             if (filePath == null) throw new ArgumentNullException(nameof(filePath));
 
-            return PutObjectInternalAsync(bucketName, filePath, contentType, serverSideEncryptionMethod,cancellationToken);
+            return PutObjectInternalAsync(bucketName, filePath, contentType, serverSideEncryptionMethod,
+                cancellationToken);
         }
-        
+
         public void Download(string bucketName, string fileName, string destination)
         {
             var request = new TransferUtilityDownloadRequest
@@ -120,6 +111,10 @@ namespace Innovt.Cloud.AWS.S3
 
         public Stream DownloadStream(string bucketName, string fileName)
         {
+            using var activity = S3ActivitySource.StartActivity("DownloadStream");
+            activity?.SetTag("s3.bucket_name", bucketName);
+            activity?.SetTag("s3.filename", fileName);
+
             var request = new TransferUtilityOpenStreamRequest
             {
                 BucketName = bucketName,
@@ -140,14 +135,18 @@ namespace Innovt.Cloud.AWS.S3
         public async Task<Stream> DownloadStreamAsync(string bucketName, string fileName,
             CancellationToken cancellationToken = default)
         {
+            using var activity = S3ActivitySource.StartActivity("DownloadStreamAsync");
+            activity?.SetTag("s3.bucket_name", bucketName);
+            activity?.SetTag("s3.filename", fileName);
+
             var request = new TransferUtilityOpenStreamRequest
             {
                 BucketName = bucketName,
                 Key = fileName
             };
-            
+
             return await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(
-                async () => await new TransferUtility(S3Client).OpenStreamAsync(request, cancellationToken))
+                    async () => await new TransferUtility(S3Client).OpenStreamAsync(request, cancellationToken))
                 .ConfigureAwait(false);
         }
 
@@ -177,8 +176,13 @@ namespace Innovt.Cloud.AWS.S3
             return reader.ReadToEnd();
         }
 
-        public string GetPreSignedURL(string bucketName, string key, DateTime expires)
+        public string GetPreSignedUrl(string bucketName, string key, DateTime expires)
         {
+            using var activity = S3ActivitySource.StartActivity("GetPreSignedUrl");
+            activity?.SetTag("s3.bucket_name", bucketName);
+            activity?.SetTag("s3.key", key);
+            activity?.SetTag("s3.expire", expires.ToString("O"));
+
             var request = new GetPreSignedUrlRequest
             {
                 BucketName = bucketName,
@@ -189,23 +193,33 @@ namespace Innovt.Cloud.AWS.S3
             return base.CreateDefaultRetryPolicy().Execute(() => S3Client.GetPreSignedURL(request));
         }
 
-        public string GeneratePreSignedURL(string bucketName, string key, DateTime expiration,
+        public string GeneratePreSignedUrl(string bucketName, string key, DateTime expiration,
             IDictionary<string, object> additionalProperties)
         {
+            using var activity = S3ActivitySource.StartActivity("GeneratePreSignedUrl");
+            activity?.SetTag("s3.bucket_name", bucketName);
+            activity?.SetTag("s3.key", key);
+            activity?.SetTag("s3.expire", expiration.ToString("O"));
+
             return base.CreateDefaultRetryPolicy().Execute(() =>
-                ((IAmazonS3)S3Client).GeneratePreSignedURL(bucketName, key, expiration, additionalProperties));
+                ((IAmazonS3) S3Client).GeneratePreSignedURL(bucketName, key, expiration, additionalProperties));
         }
 
         public async Task UploadDirectoryAsync(string bucketName, string directory,
             string serverSideEncryptionMethod = null,
             CancellationToken cancellationToken = default)
         {
+            using var activity = S3ActivitySource.StartActivity("UploadDirectoryAsync");
+            activity?.SetTag("s3.bucket_name", bucketName);
+            activity?.SetTag("s3.directory", directory);
+
             var request = new TransferUtilityUploadDirectoryRequest
             {
                 BucketName = bucketName,
                 Directory = directory,
                 UploadFilesConcurrently = true,
-                ServerSideEncryptionMethod = serverSideEncryptionMethod ?? new ServerSideEncryptionMethod(serverSideEncryptionMethod)
+                ServerSideEncryptionMethod = serverSideEncryptionMethod ??
+                                             new ServerSideEncryptionMethod(serverSideEncryptionMethod)
             };
 
             var policy = base.CreateDefaultRetryAsyncPolicy();
@@ -214,51 +228,60 @@ namespace Innovt.Cloud.AWS.S3
                 await new TransferUtility(S3Client).UploadDirectoryAsync(request, cancellationToken));
         }
 
-        public string Upload(string bucketName, Stream stream, string fileName, string region = null,
-            List<KeyValuePair<string, string>> metadata = null)
+        public string Upload(string bucketName, Stream stream, string fileName,
+            List<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null)
         {
-            var request = CreateUploadRequest(bucketName, stream, fileName, metadata);
+            using var activity = S3ActivitySource.StartActivity("Upload");
+            activity?.SetTag("s3.bucket_name", bucketName);
+            activity?.SetTag("s3.filename", fileName);
+
+            var request = CreateUploadRequest(bucketName, stream, fileName, metadata, serverSideEncryptionMethod);
 
             base.CreateDefaultRetryPolicy().Execute(() => new TransferUtility(S3Client).Upload(request));
 
             return GetObjectUrl(bucketName, fileName);
         }
 
-        public string Upload(string bucketName, string filePath, string region = null,
-            List<KeyValuePair<string, string>> metadata = null)
+        public string Upload(string bucketName, string filePath,
+            List<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null)
         {
             var fileName = Path.GetFileName(filePath);
 
             using var fileToUpload = new FileStream(filePath, FileMode.Open, FileAccess.Read);
 
-            return Upload(bucketName, fileToUpload, fileName, region, metadata);
+            return Upload(bucketName, fileToUpload, fileName, metadata, serverSideEncryptionMethod);
         }
 
-        public async Task<string> UploadAsync(string bucketName, Stream stream, string fileName, string region = null,
-            List<KeyValuePair<string, string>> metadata = null, CancellationToken cancellationToken = default)
+        public async Task<string> UploadAsync(string bucketName, Stream stream, string fileName,
+            List<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null,
+            CancellationToken cancellationToken = default)
         {
-            var request = CreateUploadRequest(bucketName, stream, fileName, metadata);
+            var request = CreateUploadRequest(bucketName, stream, fileName, metadata, serverSideEncryptionMethod);
 
             await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                 await new TransferUtility(S3Client).UploadAsync(request, cancellationToken)).ConfigureAwait(false);
 
-
             return GetObjectUrl(bucketName, fileName);
         }
 
-        public Task<string> UploadAsync(string bucketName, string filePath, string region = null,
-            List<KeyValuePair<string, string>> metadata = null, CancellationToken cancellationToken = default)
+        public Task<string> UploadAsync(string bucketName, string filePath,
+            List<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null,
+            CancellationToken cancellationToken = default)
         {
             var fileName = Path.GetFileName(filePath);
 
             using var fileToUpload = new FileStream(filePath, FileMode.Open, FileAccess.Read);
 
-            return UploadAsync(bucketName, fileToUpload, fileName, region, metadata, cancellationToken);
+            return UploadAsync(bucketName, fileToUpload, fileName, metadata, serverSideEncryptionMethod,
+                cancellationToken);
         }
 
-        public async Task<bool> FolderExistsAsync(string bucketName, string key, string region = null,
-            List<KeyValuePair<string, string>> metadata = null, CancellationToken cancellationToken = default)
+        public async Task<bool> FolderExistsAsync(string bucketName, string key,CancellationToken cancellationToken = default)
         {
+            using var activity = S3ActivitySource.StartActivity("FolderExistsAsync");
+            activity?.SetTag("s3.bucket_name", bucketName);
+            activity?.SetTag("s3.key", key);
+
             var request = new ListObjectsV2Request
             {
                 BucketName = bucketName,
@@ -266,10 +289,9 @@ namespace Innovt.Cloud.AWS.S3
                 Prefix = key
             };
 
-            var policy = base.CreateDefaultRetryAsyncPolicy();
-
             var response =
-                await policy.ExecuteAsync(async () => await S3Client.ListObjectsV2Async(request, cancellationToken))
+                await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+                        await S3Client.ListObjectsV2Async(request, cancellationToken))
                     .ConfigureAwait(false);
 
             return response.MaxKeys > 0;
@@ -283,6 +305,10 @@ namespace Innovt.Cloud.AWS.S3
         public async Task<bool> DeleteObjectAsync(string bucketName, string key,
             CancellationToken cancellationToken = default)
         {
+            using var activity = S3ActivitySource.StartActivity("DeleteObjectAsync");
+            activity?.SetTag("s3.bucket_name", bucketName);
+            activity?.SetTag("s3.key", key);
+
             var request = new DeleteObjectRequest
             {
                 BucketName = bucketName,
@@ -302,29 +328,59 @@ namespace Innovt.Cloud.AWS.S3
         }
 
         public async Task<bool> CopyObject(string sourceBucket, string sourceKey, string destinationBucket,
-            string destinationKey, CancellationToken cancellationToken = default)
+            string destinationKey, string serverSideEncryptionMethod = null,
+            CancellationToken cancellationToken = default)
         {
+            using var activity = S3ActivitySource.StartActivity("DeleteObjectAsync");
+            activity?.SetTag("s3.source_bucket", sourceBucket);
+            activity?.SetTag("s3.source_key", sourceKey);
+            activity?.SetTag("s3.destination_bucket", destinationBucket);
+            activity?.SetTag("s3.destination_key", destinationKey);
+
             var request = new CopyObjectRequest
             {
                 SourceBucket = sourceBucket,
                 SourceKey = sourceKey,
                 DestinationBucket = destinationBucket,
-                DestinationKey = destinationKey
+                DestinationKey = destinationKey,
+                ServerSideEncryptionMethod = serverSideEncryptionMethod ??
+                                             new ServerSideEncryptionMethod(serverSideEncryptionMethod)
             };
 
-            var policy = base.CreateDefaultRetryAsyncPolicy();
-
             var response =
-                await policy.ExecuteAsync(async () => await S3Client.CopyObjectAsync(request, cancellationToken))
+                await CreateDefaultRetryAsyncPolicy()
+                    .ExecuteAsync(async () => await S3Client.CopyObjectAsync(request, cancellationToken))
                     .ConfigureAwait(false);
 
             return response.HttpStatusCode == HttpStatusCode.OK;
         }
-        
 
-        internal async Task<string> PutObjectInternalAsync(string bucketName, Stream stream, string fileName,
-            string contentType = null, CancellationToken cancellationToken = default)
+        private string GetObjectUrl(string bucketName, string fileKey)
         {
+            return "https://s3.amazonaws.com/" + $"{bucketName}/{fileKey}";
+        }
+
+        private async Task<string> PutObjectInternalAsync(string bucketName, [NotNull] string filePath,
+            string contentType = null, string serverSideEncryptionMethod = null,
+            CancellationToken cancellationToken = default)
+        {
+            await using var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+
+            var fileName = Path.GetFileName(filePath);
+
+            return await PutObjectAsync(bucketName, stream, fileName, contentType, serverSideEncryptionMethod,
+                cancellationToken).ConfigureAwait(false);
+        }
+
+        private async Task<string> PutObjectInternalAsync(string bucketName, Stream stream, string fileName,
+            string contentType = null, string serverSideEncryptionMethod = null,
+            CancellationToken cancellationToken = default)
+        {
+            using var activity = S3ActivitySource.StartActivity("PutObjectInternalAsync");
+
+            activity?.SetTag("s3.bucket_name", bucketName);
+            activity?.SetTag("s3.filename", fileName);
+
             var fileKey = Path.GetFileName(fileName);
 
             var request = new PutObjectRequest
@@ -334,13 +390,14 @@ namespace Innovt.Cloud.AWS.S3
                 CannedACL = S3CannedACL.BucketOwnerFullControl,
                 InputStream = stream,
                 ContentType = contentType,
-                AutoCloseStream = true
+                AutoCloseStream = true,
+                ServerSideEncryptionMethod = serverSideEncryptionMethod ??
+                                             new ServerSideEncryptionMethod(serverSideEncryptionMethod)
             };
 
-            var policy = base.CreateDefaultRetryAsyncPolicy();
-
             var result =
-                await policy.ExecuteAsync(async () => await S3Client.PutObjectAsync(request, cancellationToken))
+                await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+                        await S3Client.PutObjectAsync(request, cancellationToken))
                     .ConfigureAwait(false);
 
             if (result.HttpStatusCode != HttpStatusCode.OK)
@@ -349,19 +406,26 @@ namespace Innovt.Cloud.AWS.S3
             return GetObjectUrl(bucketName, fileKey);
         }
 
-       
 
-        private TransferUtilityUploadRequest CreateUploadRequest(string bucketName, Stream stream, string fileName,
-            List<KeyValuePair<string, string>> metadata = null)
+        private static TransferUtilityUploadRequest CreateUploadRequest(string bucketName, Stream stream,
+            string fileName, IList<KeyValuePair<string, string>> metadata = null,
+            string serverSideEncryptionMethod = null)
         {
+            using var activity = S3ActivitySource.StartActivity("CreateUploadRequest");
+
+            activity?.SetTag("s3.bucket_name", bucketName);
+            activity?.SetTag("s3.filename", fileName);
+
             var request = new TransferUtilityUploadRequest
             {
                 BucketName = bucketName,
-                StorageClass = S3StorageClass.StandardInfrequentAccess,
+                StorageClass = S3StorageClass.Standard,
                 InputStream = stream,
                 AutoResetStreamPosition = true,
                 AutoCloseStream = true,
-                Key = fileName
+                Key = fileName,
+                ServerSideEncryptionMethod = serverSideEncryptionMethod ??
+                                             new ServerSideEncryptionMethod(serverSideEncryptionMethod)
             };
 
             if (metadata == null) return request;
@@ -373,7 +437,7 @@ namespace Innovt.Cloud.AWS.S3
 
         protected override void DisposeServices()
         {
-            _s3Client?.Dispose();
+            s3Client?.Dispose();
         }
     }
 }

@@ -2,15 +2,20 @@
 // Author: Michel Magalhães
 // Project: Innovt.AspNetCoreTests
 // Solution: Innovt.Platform
-// Date: 2021-04-08
+// Date: 2021-05-03
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using Innovt.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using OpenTelemetry;
+using OpenTelemetry.Trace;
 
 namespace Innovt.AspNetCoreTests
 {
@@ -54,9 +59,10 @@ namespace Innovt.AspNetCoreTests
         //    });
         //}
 
-        public Startup(IConfiguration configuration) : base(configuration, "Title", "description", "1.0")
+        public Startup(IConfiguration configuration) : base(configuration,"sampleMIchel", "Title", "description", "1.0")
         {
         }
+
 
         protected override void AddDefaultServices(IServiceCollection services)
         {
@@ -72,6 +78,19 @@ namespace Innovt.AspNetCoreTests
             ILoggerFactory loggerFactory)
         {
             // throw new System.NotImplementedException();
+        }
+
+        protected override void ConfigureOpenTelemetry(TracerProviderBuilder builder)
+        {
+            builder.AddZipkinExporter();
+
+            //builder.AddZipkinExporter(c =>
+            //    {
+            //        c.Endpoint = new Uri("http://127.1.1.1:9410/api/v2/spans");
+            //        c.ExportProcessorType = ExportProcessorType.Simple;
+            //    }
+            //);
+
         }
     }
 }
