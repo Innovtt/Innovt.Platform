@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
      <PackageId>Innovt.Cloud.AWS.Notification</PackageId>
-    <PackageVersion>5.0.0-rc1</PackageVersion>
+    <PackageVersion>5.0.0-rc2</PackageVersion>
     <Authors>Michel,Tiago</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -12,8 +12,8 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-         <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.0.16" />
-    <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.7.1.2" />
+         <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.0.17" />
+    <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.7.1.3" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj" />

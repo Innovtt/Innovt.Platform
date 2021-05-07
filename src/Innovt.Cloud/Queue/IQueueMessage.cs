@@ -14,7 +14,7 @@ namespace Innovt.Cloud.Queue
         string MessageId { get; set; }
 
         string ReceiptHandle { get; set; }
-
+        
         double? ApproximateFirstReceiveTimestamp { get; set; }
 
         int? ApproximateReceiveCount { get; set; }

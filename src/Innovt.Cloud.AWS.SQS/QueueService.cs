@@ -7,6 +7,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
@@ -22,6 +23,8 @@ namespace Innovt.Cloud.AWS.SQS
 {
     public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueueMessage
     {
+        private static readonly ActivitySource QueueActivitySource = new(nameof(QueueService<T>));
+
         private ISerializer serializer;
 
         private AmazonSQSClient sqsClient;
@@ -60,6 +63,11 @@ namespace Innovt.Cloud.AWS.SQS
             int? visibilityTimeoutInSeconds = null,
             CancellationToken cancellationToken = default)
         {
+            using var activity = QueueActivitySource.StartActivity("GetMessagesAsync");
+            activity?.SetTag("sqs.quantity", quantity);
+            activity?.SetTag("sqs.waitTimeInSeconds", waitTimeInSeconds);
+            activity?.SetTag("sqs.visibilityTimeoutInSeconds", visibilityTimeoutInSeconds);
+
             var request = new ReceiveMessageRequest
             {
                 MaxNumberOfMessages = quantity,
@@ -100,8 +108,11 @@ namespace Innovt.Cloud.AWS.SQS
 
         public async Task DeQueueAsync(string receiptHandle, CancellationToken cancellationToken = default)
         {
-            var queueUrl = await GetQueueUrlAsync();
+            using var activity = QueueActivitySource.StartActivity("DeQueueAsync");
+            activity?.SetTag("sqs.receipt_handle", receiptHandle);
 
+            var queueUrl = await GetQueueUrlAsync();
+            
             var deleteRequest = new DeleteMessageRequest(queueUrl, receiptHandle);
 
             await base.CreateDefaultRetryAsyncPolicy().ExecuteAndCaptureAsync(async () =>
@@ -110,21 +121,43 @@ namespace Innovt.Cloud.AWS.SQS
 
         public async Task<int> ApproximateMessageCountAsync(CancellationToken cancellationToken = default)
         {
+            using var activity = QueueActivitySource.StartActivity("ApproximateMessageCountAsync");
+            
             var attributes = new List<string> {"ApproximateNumberOfMessages"};
 
             var queueUrl = await GetQueueUrlAsync();
 
             var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                 await SqsClient.GetQueueAttributesAsync(queueUrl, attributes, cancellationToken)).ConfigureAwait(false);
+            
+            
+            activity?.SetTag("sqs.approximate_number_of_messages", response?.ApproximateNumberOfMessages);
 
             return (response?.ApproximateNumberOfMessages).GetValueOrDefault();
         }
 
         public async Task CreateIfNotExistAsync(CancellationToken cancellationToken = default)
         {
+            using var activity = QueueActivitySource.StartActivity("CreateIfNotExistAsync");
+            activity?.SetTag("sqs.queue_name", QueueName);
+
             await SqsClient.CreateQueueAsync(QueueName, cancellationToken);
         }
 
+        private static void EnrichMessage<TK>(Activity activity, SendMessageRequest messageRequest)
+        {
+            if (activity == null) return;
+
+            messageRequest.MessageAttributes.TryAdd("ParentId", new MessageAttributeValue()
+            {
+                StringValue = activity.ParentId
+            });
+
+            messageRequest.MessageAttributes.TryAdd("RootTraceId", new MessageAttributeValue()
+            {
+                StringValue = activity.RootId
+            });
+        }
 
         /// <summary>
         /// </summary>
@@ -140,16 +173,23 @@ namespace Innovt.Cloud.AWS.SQS
         ///     You can set this parameter only on a queue level.
         /// </param>
         /// <returns></returns>
-        public async Task<string> QueueAsync<K>(K message, int? delaySeconds = null,
+        public async Task<string> QueueAsync<TK>(TK message, int? delaySeconds = null,
             CancellationToken cancellationToken = default)
         {
             if (message == null) throw new ArgumentNullException(nameof(message));
 
+            using var activity = QueueActivitySource.StartActivity("QueueAsync");
+            activity?.SetTag("sqs.delay_seconds", delaySeconds);
+            
             var messageRequest = new SendMessageRequest
             {
                 MessageBody = Serializer.SerializeObject(message),
-                QueueUrl = await GetQueueUrlAsync()
+                QueueUrl = await GetQueueUrlAsync(),
             };
+
+            activity?.SetTag("sqs.queue_url", messageRequest.QueueUrl);
+
+            EnrichMessage<TK>(activity, messageRequest);
 
             if (delaySeconds.HasValue)
                 messageRequest.DelaySeconds = delaySeconds.Value;
@@ -158,24 +198,27 @@ namespace Innovt.Cloud.AWS.SQS
                 .ExecuteAsync(async () => await SqsClient.SendMessageAsync(messageRequest, cancellationToken))
                 .ConfigureAwait(false);
 
+            activity?.SetTag("sqs.status_code", response.HttpStatusCode);
+
             if (response.HttpStatusCode != HttpStatusCode.OK)
                 throw new CriticalException("Error sending message to queue.");
 
-
             return response.MessageId;
         }
-
+        
         public async Task<IList<MessageQueueResult>> QueueBatchAsync(IEnumerable<MessageBatchRequest> message,
             int? delaySeconds = null, CancellationToken cancellationToken = default)
         {
             if (message == null) throw new ArgumentNullException(nameof(message));
 
+            using var activity = QueueActivitySource.StartActivity("QueueBatchAsync");
+            activity?.SetTag("sqs.delay_seconds", delaySeconds);
+
             var messageRequest = new SendMessageBatchRequest
             {
-                QueueUrl = await GetQueueUrlAsync()
+                QueueUrl = await GetQueueUrlAsync(), Entries = new List<SendMessageBatchRequestEntry>()
             };
 
-            messageRequest.Entries = new List<SendMessageBatchRequestEntry>();
             foreach (var item in message)
                 messageRequest.Entries.Add(new SendMessageBatchRequestEntry
                 {
@@ -190,20 +233,38 @@ namespace Innovt.Cloud.AWS.SQS
 
             var result = new List<MessageQueueResult>();
 
+            activity?.SetTag("sqs.status_code", response.HttpStatusCode);
+            activity?.SetTag("sqs.status_code", response.Failed);
+
+
             if (response.Successful != null)
                 foreach (var item in response.Successful)
                     result.Add(new MessageQueueResult {Id = item.Id, Success = true});
 
-            if (response.Failed != null)
+            if (response.Failed == null) return result;
+            {
                 foreach (var item in response.Failed)
+                {
                     result.Add(new MessageQueueResult {Id = item.Id, Success = false, Error = item.Message});
+                    activity?.SetTag($"sqs.message_{item.Id}_id", item.Id);
+                    activity?.SetTag($"sqs.message_{item.Id}_message", item.Message);
+                    activity?.SetTag($"sqs.message_{item.Id}_code", item.Code);
+                    activity?.SetTag($"sqs.message_{item.Id}_sender_fault", item.SenderFault);
+                }
+            }
 
             return result;
         }
 
         private async Task<string> GetQueueUrlAsync()
         {
+
             if (QueueUrl != null && QueueUrl.EndsWith(QueueName)) return QueueUrl;
+
+            using var activity = QueueActivitySource.StartActivity("GetQueueUrlAsync");
+            activity?.SetTag("sqs.account_number", Configuration?.AccountNumber);
+            activity?.SetTag("sqs.queue_name", QueueName);
+
 
             if (Configuration?.AccountNumber != null)
                 QueueUrl =
@@ -211,7 +272,12 @@ namespace Innovt.Cloud.AWS.SQS
             else
                 QueueUrl = (await SqsClient.GetQueueUrlAsync(QueueName).ConfigureAwait(false))?.QueueUrl;
 
+
+            activity?.SetTag("sqs.queue_url", QueueUrl);
+
+
             return QueueUrl;
+
         }
 
         protected override void DisposeServices()

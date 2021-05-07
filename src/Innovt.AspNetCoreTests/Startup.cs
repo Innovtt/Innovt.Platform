@@ -5,15 +5,11 @@
 // Date: 2021-05-03
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using Innovt.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using OpenTelemetry;
 using OpenTelemetry.Trace;
 
@@ -74,8 +70,7 @@ namespace Innovt.AspNetCoreTests
             // throw new System.NotImplementedException();
         }
 
-        public override void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env,
-            ILoggerFactory loggerFactory)
+        public override void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env)
         {
             // throw new System.NotImplementedException();
         }

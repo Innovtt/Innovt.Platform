@@ -6,8 +6,6 @@
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using Innovt.AspNetCore.Filters;
 using Innovt.AspNetCore.Infrastructure;
 using Innovt.AspNetCore.Model;
@@ -19,7 +17,6 @@ using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using OpenTelemetry.Trace;
 
@@ -169,8 +166,7 @@ namespace Innovt.AspNetCore
         /// </summary>
         /// <param name="app"></param>
         /// <param name="env"></param>
-        /// <param name="loggerFactory"></param>
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -184,11 +180,10 @@ namespace Innovt.AspNetCore
 
             app.UseHealthChecks(DefaultHealthPath);
 
-            ConfigureApp(app, env, loggerFactory);
+            ConfigureApp(app, env);
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
-
 
         protected virtual Action<ApiBehaviorOptions> ConfigureApiBehavior()
         {
@@ -214,8 +209,7 @@ namespace Innovt.AspNetCore
 
         protected abstract void ConfigureIoC(IServiceCollection services);
 
-        public abstract void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env,
-            ILoggerFactory loggerFactory);
+        public abstract void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env);
 
         protected abstract void ConfigureOpenTelemetry(TracerProviderBuilder builder);
     }
