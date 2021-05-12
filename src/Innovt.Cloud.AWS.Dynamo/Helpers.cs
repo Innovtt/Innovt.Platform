@@ -16,6 +16,7 @@ namespace Innovt.Cloud.AWS.Dynamo
     internal static class Helpers
     {
         const string encriptionKey = "AAECAwQFBgcICQoL";
+        private const string paginationTokenseparator = "|";
 
         internal static DynamoDBEntry ConvertObjectToDynamoDbEntry(object value)
         {
@@ -223,62 +224,56 @@ namespace Innovt.Cloud.AWS.Dynamo
             return (result1,result2,result3);
         }
 
-    internal static string CreatePaginationToken(Dictionary<string, AttributeValue> lastEvaluatedKey)
+        internal static string CreatePaginationToken(Dictionary<string, AttributeValue> lastEvaluatedKey)
         {
             if (lastEvaluatedKey.IsNullOrEmpty())
                 return null;
 
             var stringBuilder = new StringBuilder();
 
-            foreach (var item in lastEvaluatedKey)
+            foreach (var (attributeKey, attributeValue) in lastEvaluatedKey)
             {
-                //TODO:Binary not supported
-                var value = item.Value.S != null ? $"S:{item.Value.S}" : $"N:{item.Value.N}";
+                var value = attributeValue.S != null ? $"S:{attributeValue.S}" : $"N:{attributeValue.N}";
 
-                stringBuilder.Append($"{item.Key}|{value},");
+                stringBuilder.Append($"{attributeKey}{paginationTokenseparator}{value}\\r\\n");
             }
 
-            return Cryptography.AesEncrypt(stringBuilder.ToString(), encriptionKey).UrlEncode();
+            return Convert.ToBase64String(stringBuilder.ToString().Zip()).UrlEncode();
         }
 
-        internal static Dictionary<string, AttributeValue> PaginationTokenToDictionary(string paginationToken)
+        private static Dictionary<string, AttributeValue> PaginationTokenToDictionary(string paginationToken)
+    {
+        if (paginationToken.IsNullOrEmpty())
+            return null;
+
+        var decryptedToken = Convert.FromBase64String(paginationToken.UrlDecode()).Unzip();
+
+        var result = new Dictionary<string, AttributeValue>();
+
+        var keys = decryptedToken.Split("\\r\\n");
+
+        foreach (var key in keys)
         {
-            if (paginationToken.IsNullOrEmpty())
-                return null;
+            var attributes = key.Split(paginationTokenseparator);
 
-            var decriptedToken =  Cryptography.AesDecrypt(paginationToken.UrlDecode(), encriptionKey);
+            if (attributes.Length < 2)
+                continue;
 
-            var result = new Dictionary<string, AttributeValue>();
+            var attributeKey = attributes[0];
+            //Just in case that the separator was used
+            var attributeValue = string.Join(paginationTokenseparator, attributes, 1, attributes.Length - 1);
 
-            var keys = decriptedToken.Split(",");
-
-            foreach (var key in keys)
-            {
-                var attributes = key.Split("|");
-
-                if (attributes.Length != 2)
-                    continue;
-                 
-                AttributeValue attributeValue;
-                
-                var value = attributes[1].Substring(2, attributes[1].Length - 2);
-
-                if(attributes[1].StartsWith("S:"))
+            if (attributeValue.StartsWith("S:"))
+                result.Add(attributeKey,
+                    new AttributeValue(attributeValue.Substring(2, attributeValue.Length - 2)));
+            else
+                result.Add(attributeKey, new AttributeValue
                 {
-                    attributeValue = new AttributeValue(value);
-                }
-                else
-                {
-                    attributeValue = new AttributeValue()
-                    {
-                        N = value
-                    };
-                }
-
-                result.Add(attributes[0], attributeValue);
-            }
-
-            return result;
+                    N = attributeValue.Substring(2, attributeValue.Length - 2)
+                });
         }
+
+        return result;
+    }
     }
 }
