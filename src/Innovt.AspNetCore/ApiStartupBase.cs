@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using OpenTelemetry.Trace;
 
@@ -166,7 +167,8 @@ namespace Innovt.AspNetCore
         /// </summary>
         /// <param name="app"></param>
         /// <param name="env"></param>
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        /// <param name="loggerFactory"></param>
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
@@ -180,7 +182,7 @@ namespace Innovt.AspNetCore
 
             app.UseHealthChecks(DefaultHealthPath);
 
-            ConfigureApp(app, env);
+            ConfigureApp(app, env, loggerFactory);
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
@@ -209,7 +211,7 @@ namespace Innovt.AspNetCore
 
         protected abstract void ConfigureIoC(IServiceCollection services);
 
-        public abstract void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env);
+        public abstract void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory);
 
         protected abstract void ConfigureOpenTelemetry(TracerProviderBuilder builder);
     }

@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using OpenTelemetry;
 using OpenTelemetry.Trace;
 
@@ -70,9 +71,10 @@ namespace Innovt.AspNetCoreTests
             // throw new System.NotImplementedException();
         }
 
-        public override void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env)
+        public override void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env,ILoggerFactory loggerFactory)
         {
             // throw new System.NotImplementedException();
+
         }
 
         protected override void ConfigureOpenTelemetry(TracerProviderBuilder builder)

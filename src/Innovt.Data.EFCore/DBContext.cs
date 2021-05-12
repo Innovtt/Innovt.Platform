@@ -22,9 +22,12 @@ namespace Innovt.Data.EFCore
 {
     public class DbContext : Microsoft.EntityFrameworkCore.DbContext, IExtendedUnitOfWork
     {
+        public int? MaxRetryCount { get; set; }
+        public TimeSpan? MaxRetryDelay { get; set; }
+
         private readonly IDataSource dataSource;
         private readonly ILoggerFactory loggerFactory;
-
+        
         public DbContext(IDataSource dataSource)
         {
             this.dataSource = dataSource ?? throw new ArgumentNullException(nameof(dataSource));
@@ -139,23 +142,37 @@ namespace Innovt.Data.EFCore
                 if (connectionString.IsNullOrEmpty())
                     throw new ConnectionStringException(
                         $"Connection string for datasource {dataSource.Name} is empty.");
-
+                
                 switch (dataSource.Provider)
                 {
-                    case Provider.MsSql:
-                        optionsBuilder.UseSqlServer(connectionString);
-                        break;
                     case Provider.PostgreSqL:
-                        optionsBuilder.UseNpgsql(connectionString);
+                        optionsBuilder.UseNpgsql(connectionString, postOptions =>
+                        {
+                            if (MaxRetryCount != null && MaxRetryDelay != null)
+                            {
+                                postOptions.EnableRetryOnFailure(MaxRetryCount.GetValueOrDefault(),
+                                    MaxRetryDelay.GetValueOrDefault(), null);
+                            }
+                        });
                         break;
                     case Provider.Oracle:
                         optionsBuilder.UseOracle(connectionString);
                         break;
                     default:
-                        optionsBuilder.UseSqlServer(connectionString);
-                        break;
+                        optionsBuilder.UseSqlServer(connectionString, sqlOptions =>
+                        {
+                            if (MaxRetryCount != null && MaxRetryDelay != null)
+                            {
+                                sqlOptions.EnableRetryOnFailure(MaxRetryCount.GetValueOrDefault(),
+                                    MaxRetryDelay.GetValueOrDefault(), null
+                                );
+                            }
+                        });
+                break;
                 }
             }
+
+
 
             base.OnConfiguring(optionsBuilder);
         }

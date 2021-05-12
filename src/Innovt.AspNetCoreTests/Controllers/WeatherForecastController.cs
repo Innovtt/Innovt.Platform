@@ -9,8 +9,12 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using Innovt.AspNetCoreTests.Model;
+using Innovt.Core.Serialization;
+using Innovt.Domain.Core.Events;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using OpenTelemetry;
 using OpenTelemetry.Trace;
 
@@ -24,12 +28,55 @@ namespace Innovt.AspNetCoreTests.Controllers
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
-        
+
+      
+
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
             //using var tracerProvider = Sdk.CreateTracerProviderBuilder().Build();
             //using (Sdk.CreateTracerProviderBuilder().AddXRayTraceId().Build())
+
+            //initialize on your IOC
+            DeserializerFactory.Instance.AddMapping<Antecipa.Anticipation.Events.AnticipationRequestCreated>();
+            DeserializerFactory.Instance.AddMapping<Antecipa.Anticipation.Events.AnticipationRequestClosedOrCanceled>();
+            DeserializerFactory.Instance.AddMapping<Antecipa.Anticipation.Events.AnticipationRequestChangePaused>();
+            DeserializerFactory.Instance.AddMapping<Antecipa.Invoice.Events.InvoiceSyncFinished>();
+
+            var content = "";
+
+            DomainEvent dEvent = DeserializerFactory.Instance.Deserialize<DomainEvent>("",content);
+
+
+
+            var jsonType = "A";
+            var jsonPayload = "A";
+
+            object res;
+
+
+            switch (jsonType)
+            {
+                case "A":
+                    res = System.Text.Json.JsonSerializer.Deserialize<A>(jsonPayload);
+                    break;
+
+                case "B":
+                    res = System.Text.Json.JsonSerializer.Deserialize<B>(jsonPayload);
+                    break;
+            }
+            
+
+
+
+
+
+
+
+
+
+
+
 
             Activity.DefaultIdFormat = ActivityIdFormat.W3C;
 
