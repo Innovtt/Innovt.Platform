@@ -23,14 +23,13 @@ namespace Innovt.Domain.Security
             CreatedAt = DateTimeOffset.UtcNow;
         }
 
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
-        public virtual string Description { get; set; }
+        public string Description { get; set; }
 
         public IList<Role> Roles { get; private set; }
 
         public IList<string> Users { get; private set; }
-
 
         public void AddRole(Role role)
         {

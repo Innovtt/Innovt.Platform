@@ -4,14 +4,13 @@ using Innovt.Core.Cqrs.Commands;
 
 namespace Innovt.Authorization.Platform.Application.Commands
 {
-    public class AddPermissionCommand:ICommand
+    public class AddGroupCommand : ICommand
     {
         public string Name { get; set; }
 
         public string Domain { get; set; }
 
         public string Resource { get; set; }
-
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

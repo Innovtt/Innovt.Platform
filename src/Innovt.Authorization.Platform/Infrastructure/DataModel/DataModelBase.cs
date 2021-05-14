@@ -1,10 +1,9 @@
-﻿
-using Amazon.DynamoDBv2.DataModel;
+﻿using Amazon.DynamoDBv2.DataModel;
 using Innovt.Cloud.Table;
 
-namespace Antecipa.BI.Platform.Infrastructure.Database.DataModel
+namespace Innovt.Authorization.Platform.Infrastructure.DataModel
 {
-    [DynamoDBTable("BiDashboards")]
+    [DynamoDBTable("Authorization")]
     public abstract class DataModelBase: ITableMessage
     { 
         [DynamoDBHashKey("PK")]

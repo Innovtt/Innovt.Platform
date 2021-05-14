@@ -11,8 +11,6 @@ using System.Diagnostics.CodeAnalysis;
 namespace Innovt.Core.Exceptions
 {
     [Serializable]
-    [SuppressMessage("Major Code Smell",
-        "S3925:\"ISerializable\" should be implemented correctly", Justification = "<Pending>")]
     public class ConfigurationException : BaseException
     {
         public ConfigurationException(string message) : base(message)
@@ -24,6 +22,15 @@ namespace Innovt.Core.Exceptions
         }
 
         public ConfigurationException(Exception ex) : base(ex)
+        {
+        }
+
+        private ConfigurationException()
+        {
+        }
+
+        protected ConfigurationException(System.Runtime.Serialization.SerializationInfo serializationInfo,
+            System.Runtime.Serialization.StreamingContext streamingContext) : base(serializationInfo, streamingContext)
         {
         }
     }

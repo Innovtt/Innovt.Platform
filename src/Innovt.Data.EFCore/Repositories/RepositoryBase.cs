@@ -171,12 +171,12 @@ namespace Innovt.Data.EFCore.Repositories
             Include includes = null, CancellationToken cancellationToken = default)
         {
             var items = await FindByAsync(specification, orderBy, isOrderByDescending, includes,
-                cancellationToken);
+                cancellationToken).ConfigureAwait(false);
 
             var result = new PagedCollection<T>(items, specification.Page, specification.PageSize)
             {
-                TotalRecords = await CountByAsync(specification, cancellationToken)
-            };
+                TotalRecords = await CountByAsync(specification, cancellationToken).ConfigureAwait(false)
+        };
 
             return result;
         }

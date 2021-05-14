@@ -12,7 +12,7 @@ namespace Innovt.Domain.Core.Model
 {
     public class DomainModel<T> : ValueObject where T : ValueObject
     {
-        private readonly List<T> models = new List<T>();
+        private readonly List<T> models = new();
 
         protected void AddModel(T model)
         {

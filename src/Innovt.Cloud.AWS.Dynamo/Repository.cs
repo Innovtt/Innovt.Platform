@@ -31,7 +31,6 @@ namespace Innovt.Cloud.AWS.Dynamo
         private DynamoDBContext context;
         private AmazonDynamoDBClient dynamoClient;
 
-
         protected Repository(ILogger logger, IAWSConfiguration configuration) : base(logger, configuration)
         {
         }

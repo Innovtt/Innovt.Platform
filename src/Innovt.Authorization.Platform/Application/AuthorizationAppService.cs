@@ -2,23 +2,24 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Innovt.Authorization.Platform.Application.Commands;
+using Innovt.Core.Utilities;
+using Innovt.Domain.Security;
 
 namespace Innovt.Authorization.Platform.Application
 {
-    public class SecurityAppService : BaseAppService, ISecurityAppService
+    public class AuthorizationAppService : IAuthorizationAppService
     {
-        private readonly ISecurityRepository repository;
+        private readonly ISecurityRepository securityRepository;
 
-        public SecurityAppService(IUnitOfWork unitWork,
-           ILogger logger, ISecurityRepository securityRepository) : base(unitWork, logger)
+        public AuthorizationAppService(ISecurityRepository securityRepository)
         {
-            this.repository = securityRepository ?? throw new ArgumentNullException(nameof(securityRepository));
+            this.securityRepository = securityRepository ?? throw new ArgumentNullException(nameof(securityRepository));
         }
 
         public async Task AddPermission(AddPermissionCommand command)
         {
-            Check.NotNull(command, nameof(command));
-
+            if (command == null) throw new ArgumentNullException(nameof(command));
+            
             var permission = new Permission()
             {
                 Domain = command.Domain,
@@ -26,21 +27,16 @@ namespace Innovt.Authorization.Platform.Application
                 Resource = command.Resource
             };
 
-            await repository.AddPermission(permission);
+            await securityRepository.AddPermission(permission);
 
-            await UnitOfWork.CommitAsync();
+            
         }
 
         public async Task AddPolicie(AddPolicyCommand command)
         {
             Check.NotNull(command, nameof(command));
 
-            var policy = new Policy()
-            {
-                //Domain = command.,
-                //Name = command.Name,
-                //Resource = command.Resource
-            };
+         
 
             await repository.AddPolicy(policy);
 

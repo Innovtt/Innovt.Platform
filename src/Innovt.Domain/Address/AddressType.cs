@@ -13,11 +13,11 @@ namespace Innovt.Domain.Address
 {
     public sealed class AddressType : ValueObject
     {
-        private static readonly List<AddressType> Types = new List<AddressType>();
+        private static readonly List<AddressType> Types = new();
 
-        public static readonly AddressType Comercial = new AddressType(1, "Comercial");
-        public static readonly AddressType Residential = new AddressType(2, "Residencial");
-        public static readonly AddressType Pagamento = new AddressType(3, "Pagamento");
+        public static readonly AddressType Comercial = new(1, "Comercial");
+        public static readonly AddressType Residential = new(2, "Residencial");
+        public static readonly AddressType Pagamento = new(3, "Pagamento");
 
         public AddressType(int id, string name)
         {

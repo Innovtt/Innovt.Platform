@@ -6,13 +6,10 @@
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Innovt.Core.Exceptions
 {
     [Serializable]
-    [SuppressMessage("Major Code Smell",
-        "S3925:\"ISerializable\" should be implemented correctly", Justification = "<Pending>")]
     public class CriticalException : BaseException
     {
         public CriticalException(string message) : base(message)
@@ -24,6 +21,15 @@ namespace Innovt.Core.Exceptions
         }
 
         public CriticalException(Exception ex) : base(ex)
+        {
+        }
+
+        private CriticalException()
+        {
+        }
+
+        protected CriticalException(System.Runtime.Serialization.SerializationInfo serializationInfo,
+            System.Runtime.Serialization.StreamingContext streamingContext):base(serializationInfo,streamingContext)
         {
         }
     }

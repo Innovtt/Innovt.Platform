@@ -11,8 +11,8 @@ namespace Innovt.Domain.Users
 {
     public class Gender : DomainModel<Gender>
     {
-        public static Gender Male = new Gender(1, 'M', "Masculino");
-        public static Gender Female = new Gender(2, 'F', "Feminino");
+        public static Gender Male = new(1, 'M', "Masculino");
+        public static Gender Female = new(2, 'F', "Feminino");
 
         public Gender()
         {

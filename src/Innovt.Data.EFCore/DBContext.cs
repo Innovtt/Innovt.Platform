@@ -172,8 +172,6 @@ namespace Innovt.Data.EFCore
                 }
             }
 
-
-
             base.OnConfiguring(optionsBuilder);
         }
     }

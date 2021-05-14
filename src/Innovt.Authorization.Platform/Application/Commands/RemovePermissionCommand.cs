@@ -1,12 +1,16 @@
-﻿namespace Innovt.Authorization.Platform.Application.Commands
-{
-    public class RemovePermissionCommand
-    {
-        public int Id { get; set; }
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using Innovt.Core.Cqrs.Commands;
 
-        public RemovePermissionCommand(int loggedUserId, int id)
+namespace Innovt.Authorization.Platform.Application.Commands
+{
+    public class RemovePermissionCommand:ICommand
+    {
+        public Guid Id { get; set; }
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            Id = id;
+            throw new NotImplementedException();
         }
     }
 }
