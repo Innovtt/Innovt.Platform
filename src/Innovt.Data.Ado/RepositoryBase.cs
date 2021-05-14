@@ -63,7 +63,7 @@ namespace Innovt.Data.Ado
         public Task<T> QuerySingleOrDefaultAsync<T>(string tableName, string whereClause, object filter = null,
             CancellationToken cancellationToken = default, params string[] columns)
         {
-            var sql = $"SELECT {string.Join(",", columns)} FROM [{tableName}] WHERE {whereClause}";
+            var sql = $"SELECT {string.Join(",", columns)} FROM [{tableName}] WITH(NOLOCK) WHERE {whereClause}";
 
             return QuerySingleOrDefaultInternalAsync<T>(sql, filter, cancellationToken);
         }
@@ -160,7 +160,7 @@ namespace Innovt.Data.Ado
                 return new PagedCollection<T>(pagedResult, filter.Page, filter.PageSize);
             }
 
-            var queryCount = $"SELECT COUNT(1) FROM ({newSql}) C";
+            var queryCount = $"SELECT COUNT(1) FROM ({newSql}) C WITH(NOLOCK)";
 
             var totalRecords = 0;
             IEnumerable<T> queryResult = null;
@@ -222,7 +222,7 @@ namespace Innovt.Data.Ado
         {
             var fields = string.Join(",", columns);
 
-            var sql = $"SELECT TOP 1 {fields} FROM [{tableName}] WHERE {whereClause}";
+            var sql = $"SELECT TOP 1 {fields} FROM [{tableName}] WITH(NOLOCK) WHERE {whereClause}";
 
             return QueryFirstOrDefaultInternalAsync<T>(sql, filter, cancellationToken);
         }
@@ -238,7 +238,7 @@ namespace Innovt.Data.Ado
         private Task<int> QueryCountInternalAsync(string tableName, string whereClause = null,
             object filter = null, CancellationToken cancellationToken = default)
         {
-            var sql = $"SELECT COUNT(1) FROM [{tableName}]";
+            var sql = $"SELECT COUNT(1) FROM [{tableName}] WITH(NOLOCK)";
 
             if (whereClause.IsNotNullOrEmpty()) sql += $" WHERE {whereClause} ";
 

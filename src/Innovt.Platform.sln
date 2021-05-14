@@ -83,11 +83,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{20C03968
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AspNet", "AspNet", "{E4691D09-94FB-47D1-9EBA-550A6649178C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innovt.AspNetCore.Authorization", "Innovt.AspNetCore.Authorization\Innovt.AspNetCore.Authorization.csproj", "{4814864F-6029-406D-861B-8F8D5BFB43B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.AspNetCore.Authorization", "Innovt.AspNetCore.Authorization\Innovt.AspNetCore.Authorization.csproj", "{4814864F-6029-406D-861B-8F8D5BFB43B9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authorization", "Authorization", "{8FBB44C7-84F7-4015-9AA6-4A32480BF706}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innovt.Authorization.Platform", "Innovt.Authorization.Platform\Innovt.Authorization.Platform.csproj", "{26661BF0-DFBD-4C32-8108-2C7625F3AF61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innovt.Cloud.AWS.Lambda.CustomRuntime", "Innovt.Cloud.AWS.Lambda.CustomRuntime\Innovt.Cloud.AWS.Lambda.CustomRuntime.csproj", "{59F66B5A-E0B0-41E7-BB2E-8263A094DCC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -361,6 +363,14 @@ Global
 		{26661BF0-DFBD-4C32-8108-2C7625F3AF61}.Release|Any CPU.Build.0 = Release|Any CPU
 		{26661BF0-DFBD-4C32-8108-2C7625F3AF61}.Release|x86.ActiveCfg = Release|Any CPU
 		{26661BF0-DFBD-4C32-8108-2C7625F3AF61}.Release|x86.Build.0 = Release|Any CPU
+		{59F66B5A-E0B0-41E7-BB2E-8263A094DCC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59F66B5A-E0B0-41E7-BB2E-8263A094DCC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59F66B5A-E0B0-41E7-BB2E-8263A094DCC8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{59F66B5A-E0B0-41E7-BB2E-8263A094DCC8}.Debug|x86.Build.0 = Debug|Any CPU
+		{59F66B5A-E0B0-41E7-BB2E-8263A094DCC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59F66B5A-E0B0-41E7-BB2E-8263A094DCC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59F66B5A-E0B0-41E7-BB2E-8263A094DCC8}.Release|x86.ActiveCfg = Release|Any CPU
+		{59F66B5A-E0B0-41E7-BB2E-8263A094DCC8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -393,6 +403,7 @@ Global
 		{C7CD3A14-2253-436C-91FA-6A2D78349CF7} = {E4691D09-94FB-47D1-9EBA-550A6649178C}
 		{4814864F-6029-406D-861B-8F8D5BFB43B9} = {8FBB44C7-84F7-4015-9AA6-4A32480BF706}
 		{8FBB44C7-84F7-4015-9AA6-4A32480BF706} = {E4691D09-94FB-47D1-9EBA-550A6649178C}
+		{59F66B5A-E0B0-41E7-BB2E-8263A094DCC8} = {ECD92DFF-5A6C-44D1-B3B4-F5CEE1E879B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {43168DBE-48A6-435D-9405-F6728340FFEA}

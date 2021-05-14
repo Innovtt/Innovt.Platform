@@ -16,14 +16,14 @@ namespace Innovt.Core.Utilities
     /// </summary>
     public static class AsyncHelper
     {
-        private static readonly TaskFactory _taskFactory = new TaskFactory(CancellationToken.None,
+        private static readonly TaskFactory TaskFactory = new(CancellationToken.None,
             TaskCreationOptions.None,
             TaskContinuationOptions.None,
             TaskScheduler.Default);
 
         public static TResult RunSync<TResult>(Func<Task<TResult>> func)
         {
-            return _taskFactory
+            return TaskFactory
                 .StartNew(func)
                 .Unwrap()
                 .GetAwaiter()
@@ -32,7 +32,7 @@ namespace Innovt.Core.Utilities
 
         public static void RunSync(Func<Task> func)
         {
-            _taskFactory
+            TaskFactory
                 .StartNew(func)
                 .Unwrap()
                 .GetAwaiter()

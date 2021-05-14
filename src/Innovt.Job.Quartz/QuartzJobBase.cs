@@ -34,14 +34,14 @@ namespace Innovt.Job.Quartz
             return OnExecute();
         }
 
-        protected override async Task OnStart(CancellationToken cancellationToken = default)
+        protected override Task OnStart(CancellationToken cancellationToken = default)
         {
-            await Schedule(cancellationToken);
+            return Schedule(cancellationToken);
         }
 
-        protected override async Task OnStop(CancellationToken cancellationToken = default)
+        protected override Task OnStop(CancellationToken cancellationToken = default)
         {
-            await scheduler.Shutdown(true, cancellationToken);
+           return scheduler.Shutdown(true, cancellationToken);
         }
 
         public virtual async Task Schedule(CancellationToken cancellationToken = default)
@@ -50,23 +50,23 @@ namespace Innovt.Job.Quartz
             if (nextScheduleExecution == DateTimeOffset.MinValue)
             {
                 nextScheduleExecution = DateTimeOffset.Now;
-                await scheduler.Start(cancellationToken);
+                await scheduler.Start(cancellationToken).ConfigureAwait(false);
             }
             else
             {
-                var jobExist = await scheduler.CheckExists(key, cancellationToken);
+                var jobExist = await scheduler.CheckExists(key, cancellationToken).ConfigureAwait(false);
 
                 if (jobExist)
                 {
                     nextScheduleExecution = DateTime.Now.AddMinutes(intervalInMinutes);
-                    await scheduler.DeleteJob(key, cancellationToken);
+                    await scheduler.DeleteJob(key, cancellationToken).ConfigureAwait(false);
                 }
 
                 var trigger = TriggerBuilder.Create().WithIdentity(key.Name).StartAt(nextScheduleExecution).Build();
 
                 var job = JobBuilder.Create().WithIdentity(key).Build();
 
-                await scheduler.ScheduleJob(job, trigger, cancellationToken);
+                await scheduler.ScheduleJob(job, trigger, cancellationToken).ConfigureAwait(false);
             }
         }
 

@@ -9,7 +9,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Innovt.Core.Exceptions;
-using Innovt.Core.Utilities;
 using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Security
@@ -46,12 +45,9 @@ namespace Innovt.Domain.Security
 
         public void RemovePermission(Guid permissionId)
         {
-            if (Permissions.IsNull())
-                return;
-            
-            var permission = Permissions.SingleOrDefault(p => p.Id == permissionId);
+            var permission = Permissions?.SingleOrDefault(p => p.Id == permissionId);
 
-            if (permission.IsNull())
+            if (permission is null)
                 throw new BusinessException("Permission not assigned to this group.");
 
             Permissions.Remove(permission);

@@ -23,9 +23,9 @@ namespace Innovt.Domain.Security
         public virtual string Name { get; set; }
 
         /// <summary>
-        ///     * - mean that you want to authoriza the full path/domain
-        ///     Controller/* mean that you can althorize all actions
-        ///     Controller/Action mean that you want to authorize only this action
+        ///  * - mean that you want to authorize the full path/domain
+        ///  Controller/* mean that you can authorize all actions
+        ///  Controller/Action mean that you want to authorize only this action
         /// </summary>
         public virtual string Resource { get; set; }
     }

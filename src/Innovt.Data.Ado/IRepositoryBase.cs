@@ -56,6 +56,7 @@ namespace Innovt.Data.Ado
 
         Task<IEnumerable<T>> QueryListPagedAsync<T>(string sql, IPagedFilter filter,
             CancellationToken cancellationToken = default);
+
         // Task<IEnumerable<TReturn>> QueryMultipleAsync<TFirst, TSecond, TReturn>(string[] queries, Func<TFirst, TSecond, TReturn> func,object filter = null, string splitOn = "id");
         //
         // Task<IEnumerable<TReturn>> QueryMultipleAsync<TFirst, TSecond, TThird, TReturn>(string[] queries,

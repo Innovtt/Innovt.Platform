@@ -9,7 +9,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Innovt.Core.Exceptions;
-using Innovt.Core.Utilities;
 using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Security
@@ -51,12 +50,10 @@ namespace Innovt.Domain.Security
         public void RemoveRole(Role role)
         {
             if (role == null) throw new ArgumentNullException(nameof(role));
+            
+            var roleToRemove = Roles?.SingleOrDefault(r => r.Id == role.Id);
 
-            Roles ??= new List<Role>();
-
-            var roleToRemove = Roles.SingleOrDefault(r => r.Id == role.Id);
-
-            if (roleToRemove.IsNull())
+            if (roleToRemove is null)
                 throw new BusinessException($"Role {role.Id} is not linked to this group.");
 
             Roles.Remove(role);

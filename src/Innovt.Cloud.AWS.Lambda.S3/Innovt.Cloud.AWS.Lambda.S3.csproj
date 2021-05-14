@@ -9,11 +9,15 @@
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<Copyright>Innovt Tecnologia</Copyright>
 		<Description>AWS implementation for lambda and S3 events.</Description>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>latest</LangVersion><AnalysisMode>AllEnabledByDefault</AnalysisMode>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Amazon.Lambda.S3Events" Version="2.0.1" />
 		<PackageReference Include="System.Text.Json" Version="5.0.2" />
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
 	</ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda\Innovt.Cloud.AWS.Lambda.csproj" />
