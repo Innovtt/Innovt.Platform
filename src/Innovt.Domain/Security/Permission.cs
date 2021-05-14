@@ -5,11 +5,12 @@
 // Date: 2021-05-03
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
 using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Security
 {
-    public class Permission : ValueObject
+    public class Permission : ValueObject<Guid>
     {
         /// <summary>
         ///     Can be the area in your Controller

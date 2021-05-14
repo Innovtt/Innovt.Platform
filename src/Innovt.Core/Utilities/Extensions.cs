@@ -7,6 +7,7 @@
 
 using System;
 using System.Collections.Concurrent;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.IO.Compression;
@@ -17,9 +18,8 @@ namespace Innovt.Core.Utilities
 {
     public static class Extensions
     {
-        private static readonly ConcurrentDictionary<Type, bool> IsSimpleTypeCache =
-            new ConcurrentDictionary<Type, bool>();
-
+   
+        
         public static bool IsNull(this object obj)
         {
             return obj == null;
@@ -55,6 +55,9 @@ namespace Innovt.Core.Utilities
             return id <= 0;
         }
 
+        private static readonly ConcurrentDictionary<Type, bool> IsSimpleTypeCache =
+            new();
+
         //From Stack Owverlow: https://stackoverflow.com/questions/2442534/how-to-test-if-type-is-primitive
         public static bool IsPrimitiveType(this Type type)
         {
@@ -74,8 +77,6 @@ namespace Innovt.Core.Utilities
                 var underlyingType = Nullable.GetUnderlyingType(t);
                 return underlyingType != null && IsPrimitiveType(underlyingType);
             }
-
-            ;
         }
 
         public static (long Latitude, long Longitude) ExtractCoordinates(this string str, char splittedBy = ';')

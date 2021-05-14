@@ -8,7 +8,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Innovt.Data.EFCore.Maps;
 using Innovt.Domain.Core.Repository;
 using Innovt.Domain.Core.Specification;
 using Microsoft.EntityFrameworkCore;
@@ -67,16 +66,6 @@ namespace Innovt.Data.EFCore
                 throw new ArgumentNullException(nameof(configurationList));
 
             foreach (var item in configurationList) modelBuilder.AddConfiguration(item);
-        }
-
-        public static void AddSecurityMap(this ModelBuilder modelBuilder)
-        {
-            modelBuilder.ApplyConfiguration(new PolicyMap());
-            modelBuilder.ApplyConfiguration(new PermissionMap());
-            modelBuilder.ApplyConfiguration(new SecurityGroupMap());
-            modelBuilder.ApplyConfiguration(new PolicyPermissionMap());
-            modelBuilder.ApplyConfiguration(new SecurityGroupPolicyMap());
-            modelBuilder.ApplyConfiguration(new SecurityGroupUserMap());
         }
     }
 }
