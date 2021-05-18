@@ -16,14 +16,17 @@ namespace Innovt.Domain.Security
     /// <summary>
     /// Represents an aggregator of Roles
     /// </summary>
-    public class Group : Entity
+    public class Group : Entity<Guid>
     {
         public Group()
         {
             CreatedAt = DateTimeOffset.UtcNow;
+            Id = Guid.NewGuid();
         }
 
         public string Name { get; set; }
+
+        public string Domain { get; set; }
 
         public string Description { get; set; }
 

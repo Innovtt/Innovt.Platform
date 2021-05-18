@@ -4,7 +4,7 @@ using Innovt.Cloud.Table;
 namespace Innovt.Authorization.Platform.Infrastructure.DataModel
 {
     [DynamoDBTable("Authorization")]
-    public abstract class DataModelBase: ITableMessage
+    internal abstract class DataModelBase: ITableMessage
     { 
         [DynamoDBHashKey("PK")]
         public string Id { get; set; }

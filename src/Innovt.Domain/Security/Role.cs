@@ -21,6 +21,7 @@ namespace Innovt.Domain.Security
         public Role()
         {
             CreatedAt = DateTimeOffset.UtcNow;
+            Id = Guid.NewGuid();
         }
 
         public string Name { get; set; }

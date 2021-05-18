@@ -11,7 +11,7 @@ using Innovt.Domain.Security;
 
 namespace Innovt.Authorization.Platform.Infrastructure.DataModel
 {
-    public class RoleDataModel: DataModelBase
+    internal class RoleDataModel: DataModelBase
     {
         public string Name { get; set; }
 

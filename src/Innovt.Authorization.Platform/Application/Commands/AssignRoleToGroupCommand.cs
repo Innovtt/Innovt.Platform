@@ -7,13 +7,14 @@ namespace Innovt.Authorization.Platform.Application.Commands
 {
     public class AssignRoleToGroupCommand : ICommand
     {
+        [Required]
         public Guid RoleId { get; set; }
-
+        [Required]
         public Guid GroupId { get; set; }
         
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            throw new System.NotImplementedException();
+            return new List<ValidationResult>();
         }
     }
 }

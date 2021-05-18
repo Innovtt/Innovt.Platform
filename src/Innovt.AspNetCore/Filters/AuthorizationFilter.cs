@@ -22,9 +22,9 @@ namespace Innovt.AspNetCore.Filters
 {
     public class AuthorizationFilter : IAsyncAuthorizationFilter, IAuthorizationFilter
     {
-        private readonly ISecurityRepository securityRepository;
+        private readonly IAuthorizationRepository securityRepository;
 
-        public AuthorizationFilter(ISecurityRepository securityRepository)
+        public AuthorizationFilter(IAuthorizationRepository securityRepository)
         {
             this.securityRepository = securityRepository ?? throw new ArgumentNullException(nameof(securityRepository));
         }

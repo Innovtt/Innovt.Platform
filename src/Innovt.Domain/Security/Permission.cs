@@ -15,18 +15,23 @@ namespace Innovt.Domain.Security
         /// <summary>
         ///     Can be the area in your Controller
         /// </summary>
-        public virtual string Domain { get; set; }
+        public  string Domain { get; set; }
 
         /// <summary>
         ///     The custom name that you need to show to your customer.
         /// </summary>
-        public virtual string Name { get; set; }
+        public  string Name { get; set; }
 
         /// <summary>
         ///  * - mean that you want to authorize the full path/domain
         ///  Controller/* mean that you can authorize all actions
         ///  Controller/Action mean that you want to authorize only this action
         /// </summary>
-        public virtual string Resource { get; set; }
+        public string Resource { get; set; }
+
+        public Permission()
+        {
+            Id = Guid.NewGuid();
+        }
     }
 }

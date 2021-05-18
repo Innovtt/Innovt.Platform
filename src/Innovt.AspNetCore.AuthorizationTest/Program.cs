@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Innovt.AspNetCore.Authorization
+namespace Innovt.AspNetCore.AuthorizationTest
 {
     public class Program
     {

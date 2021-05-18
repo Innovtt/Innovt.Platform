@@ -1,6 +1,6 @@
 using System;
 
-namespace Innovt.AspNetCore.Authorization
+namespace Innovt.AspNetCore.AuthorizationTest
 {
     public class WeatherForecast
     {

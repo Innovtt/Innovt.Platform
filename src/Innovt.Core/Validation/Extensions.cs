@@ -5,8 +5,10 @@
 // Date: 2021-05-03
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Innovt.Core.Cqrs.Commands;
 using Innovt.Core.Exceptions;
@@ -29,16 +31,38 @@ namespace Innovt.Core.Validation
 
             return validationResult;
         }
+        
+        /// <summary>
+        /// Internal validation, validate all required fields and Custom Validation
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        internal static IList<ValidationResult>  Validate(this IValidatableObject obj, ValidationContext context = null)
+        {
+            var validationResults = new List<ValidationResult>();
+            
+            context ??= new ValidationContext(obj);
+
+            //first validate the object 
+            Validator.TryValidateObject(obj, context, validationResults);
+
+            var result = obj.Validate(context)?.ToList();
+
+            if (result?.Any() == true)
+            {
+                validationResults.AddRange(result);
+            }
+
+            return validationResults;
+        }
 
         public static bool IsValid(this IValidatableObject obj, ValidationContext context = null)
         {
             if (obj == null)
                 return false;
-
-            if (context == null)
-                context = new ValidationContext(obj);
-
-            var result = obj.Validate(context);
+      
+            var result = Validate(obj, context);
 
             return !result.Any();
         }
@@ -47,31 +71,22 @@ namespace Innovt.Core.Validation
         {
             if (obj == null)
                 return;
+            
+            var validationResults = Validate(obj,context);
 
-            if (context == null)
-                context = new ValidationContext(obj);
+            if (!validationResults.Any()) return;
 
-            var result = obj.Validate(context);
-
-            var validationResults = result as ValidationResult[] ?? result.ToArray();
-
-            if (validationResults.Any())
-            {
-                var errors = from e in validationResults
-                    select new ErrorMessage(e.ErrorMessage, string.Join(",", e.MemberNames));
-
-                throw new BusinessException(errors.ToList());
-            }
+            var errors = from e in validationResults
+                select new ErrorMessage(e.ErrorMessage, string.Join(",", e.MemberNames));
+            
+            throw new BusinessException(errors.ToList());
         }
 
-        public static void EnsureIsValid(this ICommand obj, ValidationContext context = null)
+        public static void EnsureIsValid([NotNull]this ICommand command, ValidationContext context = null)
         {
-            EnsureIsValid((IValidatableObject) obj, context);
-        }
+            if (command == null) throw new ArgumentNullException(nameof(command));
 
-        public static IEnumerable<ValidationResult> YieldFromCollection(this IEnumerable<ValidationResult> items)
-        {
-            foreach (var item in items) yield return item;
+            EnsureIsValid((IValidatableObject)command, context);
         }
     }
 }

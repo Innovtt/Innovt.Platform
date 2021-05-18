@@ -89,7 +89,7 @@ namespace Innovt.AspNetCore
             services.AddOpenTelemetryTracing(builder =>
             {   
                builder.AddAspNetCoreInstrumentation()
-                   .AddHttpClientInstrumentation()
+//                   .AddHttpClientInstrumentation()
                     .AddSource(AppName)
                    .AddConsoleExporter();
 

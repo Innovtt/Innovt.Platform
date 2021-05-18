@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <PackageId>Innovt.Core</PackageId>
-    <PackageVersion>5.0.0-rc2</PackageVersion>
+    <PackageVersion>5.0.0-rc4</PackageVersion>
     <Authors>Michel,Tiago</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -11,9 +11,6 @@
     <LangVersion>latest</LangVersion>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
   </PropertyGroup>
-  <ItemGroup>
-    <Folder Include="CrossCutting\Log\" />
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />

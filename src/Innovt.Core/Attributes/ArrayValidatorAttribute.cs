@@ -23,7 +23,7 @@ namespace Innovt.Core.Attributes
                 return false;
 
             if (value is string[] list)
-                return list.Count(s => s.Trim().Length == 0) == 0;
+                return list.Any(s => s.Trim().Length == 0);
 
             return true;
         }

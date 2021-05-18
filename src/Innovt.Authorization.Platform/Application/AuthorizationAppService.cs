@@ -1,83 +1,139 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Innovt.Authorization.Platform.Application.Commands;
-using Innovt.Core.Utilities;
+using Innovt.Core.Exceptions;
+using Innovt.Core.Validation;
 using Innovt.Domain.Security;
 
 namespace Innovt.Authorization.Platform.Application
 {
     public class AuthorizationAppService : IAuthorizationAppService
     {
-        private readonly ISecurityRepository securityRepository;
+        private readonly IAuthorizationRepository authorizationRepository;
 
-        public AuthorizationAppService(ISecurityRepository securityRepository)
+        public AuthorizationAppService(IAuthorizationRepository authorizationRepository)
         {
-            this.securityRepository = securityRepository ?? throw new ArgumentNullException(nameof(securityRepository));
+            this.authorizationRepository = authorizationRepository ?? throw new ArgumentNullException(nameof(authorizationRepository));
         }
 
-        public async Task AddPermission(AddPermissionCommand command)
+        public async Task<Guid> AddPermission(AddPermissionCommand command, CancellationToken cancellationToken)
         {
             if (command == null) throw new ArgumentNullException(nameof(command));
             
+            command.EnsureIsValid();
+
+            var persistedPermission = await authorizationRepository.GetPermissionsBy(command.Domain, command.Resource, cancellationToken: cancellationToken).ConfigureAwait(false);
+
+            if (persistedPermission?.Count>0)
+                throw new BusinessException(Messages.PermissionAlreadyExist);
+            
             var permission = new Permission()
             {
-                Domain = command.Domain,
+                Domain = command.Domain, 
                 Name = command.Name,
                 Resource = command.Resource
             };
 
-            await securityRepository.AddPermission(permission);
-
+            await authorizationRepository.AddPermission(permission, cancellationToken).ConfigureAwait(false);
             
+            return permission.Id;
         }
 
-        public async Task AddPolicie(AddPolicyCommand command)
+        public async Task RemovePermission(RemovePermissionCommand command, CancellationToken cancellationToken)
         {
-            Check.NotNull(command, nameof(command));
+            if (command == null) throw new ArgumentNullException(nameof(command));
 
-         
+            command.EnsureIsValid();
 
-            await repository.AddPolicy(policy);
+            var permission = await authorizationRepository.GetPermissionsById(command.Id,cancellationToken).ConfigureAwait(false);
 
-            await UnitOfWork.CommitAsync();
+            if (permission is null)
+                throw new BusinessException(Messages.PermissionNotFound);
+
+            await authorizationRepository.RemovePermission(permission, cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task<IList<PermissionDTO>> FindPermissionBy(string domain = null, string resource = null, string name = null)
+        public async Task<Guid> AddRole(AddRoleCommand command, CancellationToken cancellationToken)
         {
-            var record = await repository.GetPermissionsBy();
+            if (command == null) throw new ArgumentNullException(nameof(command));
+            
+            command.EnsureIsValid();
 
-            return record.ProjectAs();
-        }
+            var persistedRole = await authorizationRepository.GetRoleByName(command.Name, cancellationToken).ConfigureAwait(false);
 
-        public Task<IList<PermissionDTO>> GetPermissionsBy(string domain = null, string resource = null, string name = null)
-        {
-            throw new NotImplementedException();
-        }
+            if (persistedRole is not null)
+                throw new BusinessException(Messages.RoleAlreadyExist);
 
-        public Task<IList<PolicyDTO>> GetPolicies(string name = null, string description = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IList<PermissionDTO>> GetUserPermissions(string userId, string domain = null, string resource = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task RemovePermission(RemovePermissionCommand command)
-        {
-            Check.NotNull(command, nameof(command));
-
-            var permission = new Permission()
+            var role = new Role()
             {
-                Id = command.Id
+                Name = command.Name,
+                Description = command.Description
             };
 
-            await repository.RemovePermission(permission);
+            await authorizationRepository.AddRole(role, cancellationToken).ConfigureAwait(false);
+
+            return role.Id;
         }
 
-        public Task RemovePolicy(RemovePolicyCommand policy)
+        public async Task RemoveRole(RemoveRoleCommand command, CancellationToken cancellationToken)
+        {
+            if (command == null) throw new ArgumentNullException(nameof(command));
+
+            command.EnsureIsValid();
+
+            var role = await authorizationRepository.GetRoleById(command.Id, cancellationToken).ConfigureAwait(false);
+
+            if (role is null)
+                throw new BusinessException(Messages.RoleNotFound);
+
+            await authorizationRepository.RemoveRole(role, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<Guid> AddGroup(AddGroupCommand command, CancellationToken cancellationToken)
+        {
+            if (command == null) throw new ArgumentNullException(nameof(command));
+
+            command.EnsureIsValid();
+
+            var groupPersisted = await authorizationRepository.GetGroupBy(command.Name,command.Domain, cancellationToken).ConfigureAwait(false);
+
+            if (groupPersisted is not null)
+                throw new BusinessException(Messages.GroupAlreadyExist);
+
+            var group = new Group()
+            {
+                Name = command.Name,
+                Description = command.Description,
+                Domain = command.Domain
+            };
+
+            await authorizationRepository.AddGroup(group, cancellationToken).ConfigureAwait(false);
+
+            return group.Id;
+        }
+
+        public async Task RemoveGroup(RemoveGroupCommand command, CancellationToken cancellationToken)
+        {
+            if (command == null) throw new ArgumentNullException(nameof(command));
+
+            command.EnsureIsValid();
+
+            var group = await authorizationRepository.GetGroupById(command.Id, cancellationToken).ConfigureAwait(false);
+
+            if (group is null)
+                throw new BusinessException(Messages.GroupNotFound);
+
+            await authorizationRepository.RemoveGroup(group, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Initialize a module authorization. DataBase, First User Etc.
+        /// </summary>
+        /// <param name="moduleName"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public Task Init(string moduleName, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

@@ -10,7 +10,7 @@ using Innovt.Domain.Security;
 
 namespace Innovt.Authorization.Platform.Infrastructure.DataModel
 {
-    public class PermissionDataModel: DataModelBase
+    internal class PermissionDataModel: DataModelBase
     {
         public string Domain { get; set; }
 
