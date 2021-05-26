@@ -5,6 +5,7 @@
 // Date: 2021-05-03
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System.IO;
 using Innovt.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -58,6 +59,7 @@ namespace Innovt.AspNetCoreTests
 
         public Startup(IConfiguration configuration) : base(configuration,"sampleMIchel", "Title", "description", "1.0")
         {
+
         }
 
 

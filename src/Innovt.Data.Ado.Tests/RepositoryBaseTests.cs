@@ -20,10 +20,9 @@ namespace Innovt.Data.Ado.Tests
         [SetUp]
         public void Setup()
         {
-            var connectionString =
-                @"Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=AdoTestDB;Integrated Security=SSPI;AttachDBFilename=X:\Projects\Innovt.Platform\src\Innovt.Data.Ado.Tests\AdoTestDB.mdf";
+            var connectionString =  @"Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=AdoTestDB;Integrated Security=SSPI;AttachDBFilename=X:\Projects\Innovt.Platform\src\Innovt.Data.Ado.Tests\AdoTestDB.mdf";
 
-            repository = new UserRepository(new DefaultDataSource("TestDB", connectionString, Provider.Oracle));
+            repository = new UserRepository(new DefaultDataSource("TestDB", connectionString, Provider.PostgreSqL));
         }
 
 
@@ -35,20 +34,12 @@ namespace Innovt.Data.Ado.Tests
 
 
         [Test]
-        [Ignore("Internal tests")]
+        //[Ignore("Internal tests")]
         public async Task Test1()
         {
             try
             {
                 var value = DateTime.Now;
-
-
-
-                var weekDay = value.ToString("dddd").Split('-');
-
-                var dia = weekDay[0][0..1].ToUpper() + weekDay[0][1..];
-                
-                var dia2 = weekDay[0][0..1].ToUpper() + weekDay[0][1..];
 
 
                 var users = await repository.GetAll();

@@ -48,5 +48,6 @@ namespace Innovt.Domain.Security
 
         Task<IList<Permission>> GetUserPermissions(string userId, string domain = null, string resource = null, CancellationToken cancellationToken = default);
 
+        object GetAdminUser(string userName, string password);
     }
 }
