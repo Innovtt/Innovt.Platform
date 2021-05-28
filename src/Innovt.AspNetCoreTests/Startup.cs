@@ -5,6 +5,7 @@
 // Date: 2021-05-03
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
 using System.IO;
 using Innovt.AspNetCore;
 using Microsoft.AspNetCore.Builder;

@@ -18,9 +18,22 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
 
         public DateTime CreatedAt { get; set; }
 
-       // public IList<Permission> Permissions { get; set; }
+        // public IList<Permission> Permissions { get; set; }
 
-       public static RoleDataModel FromRole(Role role)
+
+        public string BuildPk()
+        {
+            return $"R#{Name}";
+        }
+
+        public string BuildSk()
+        {
+            return $"R#";
+        }
+
+
+
+        public static RoleDataModel FromRole(Role role)
        {
            if (role == null) throw new ArgumentNullException(nameof(role));
            throw new NotImplementedException();

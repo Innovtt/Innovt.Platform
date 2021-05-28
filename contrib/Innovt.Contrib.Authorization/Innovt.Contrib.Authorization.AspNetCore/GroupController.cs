@@ -32,7 +32,8 @@ namespace Innovt.Contrib.Authorization.AspNetCore
         public async Task<IActionResult> Get(GroupFilter filter, CancellationToken cancellationToken = default)
         {
             var groups = await authorizationAppService.FindGroupBy(filter, cancellationToken);
-            
+
+
             return Ok(groups);
         }
 

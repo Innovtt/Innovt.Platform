@@ -17,6 +17,17 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
         public string Name { get; set; }
 
         public string Resource { get; set; }
+        
+        public string BuildPk()
+        {
+            return $"P#{Id}";
+        }
+
+        public string BuildSk()
+        {
+            return $"R#{Resource}#N#{Name}#";
+        }
+
 
         public static PermissionDataModel FromPermission(Permission permission)
         {
