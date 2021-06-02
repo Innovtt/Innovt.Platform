@@ -9,8 +9,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Antecipa.Anticipation.Events;
-using Antecipa.Invoice.Events;
 using Innovt.AspNetCoreTests.Model;
 using Innovt.Core.Serialization;
 using Innovt.Domain.Core.Events;
@@ -37,11 +35,11 @@ namespace Innovt.AspNetCoreTests.Controllers
             //using var tracerProvider = Sdk.CreateTracerProviderBuilder().Build();
             //using (Sdk.CreateTracerProviderBuilder().AddXRayTraceId().Build())
 
-            //initialize on your IOC
-            DeserializerFactory.Instance.AddMapping<AnticipationRequestCreated>();
-            DeserializerFactory.Instance.AddMapping<AnticipationRequestClosedOrCanceled>();
-            DeserializerFactory.Instance.AddMapping<AnticipationRequestChangePaused>();
-            DeserializerFactory.Instance.AddMapping<InvoiceSyncFinished>();
+            ////initialize on your IOC
+            //DeserializerFactory.Instance.AddMapping<AnticipationRequestCreated>();
+            //DeserializerFactory.Instance.AddMapping<AnticipationRequestClosedOrCanceled>();
+            //DeserializerFactory.Instance.AddMapping<AnticipationRequestChangePaused>();
+            //DeserializerFactory.Instance.AddMapping<InvoiceSyncFinished>();
 
             var content = "";
 
