@@ -47,11 +47,9 @@ namespace Innovt.AspNetCore.Handlers
             HasScopeRequirement requirement)
         {
             var actionContext = (ActionContext) context?.Resource;
-
-
+            
             if (actionContext is null)
                 return Task.CompletedTask;
-
 
             var controller =
                 (ControllerActionDescriptor) actionContext.ActionDescriptor;
@@ -64,7 +62,7 @@ namespace Innovt.AspNetCore.Handlers
             if (context.User.HasClaim(c =>
                 c.Type == "permissions" && c.Issuer == requirement.Issuer &&
                 c.Value?.ToLower(CultureInfo.CurrentCulture) ==
-                $"{Scope}:{controller}:{actionName}".ToLower(CultureInfo.CurrentCulture)))
+                $"{Scope}:{controllerName}:{actionName}".ToLower(CultureInfo.CurrentCulture)))
             {
                 context.Succeed(requirement);
                 return Task.CompletedTask;
