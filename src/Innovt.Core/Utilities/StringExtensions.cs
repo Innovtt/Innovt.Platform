@@ -1,4 +1,11 @@
-﻿using System;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Core
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
@@ -32,14 +39,14 @@ namespace Innovt.Core.Utilities
 
             return value.Length <= maxLength ? value : value.Substring(0, maxLength);
         }
-        
+
         public static bool IsCpf(this string value)
         {
             if (value.IsNullOrEmpty())
                 return false;
 
-            int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-            int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+            var multiplicador1 = new int[9] {10, 9, 8, 7, 6, 5, 4, 3, 2};
+            var multiplicador2 = new int[10] {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
             string corpovalue;
             string digitoVerificador;
             int soma;
@@ -47,16 +54,16 @@ namespace Innovt.Core.Utilities
 
             value = value.OnlyNumber();
 
-            if ((value.Length != 11) | (value.Equals("11111111111")) | (value.Equals("22222222222")) |
-                (value.Equals("33333333333")) | (value.Equals("44444444444")) | (value.Equals("55555555555")) |
-                (value.Equals("66666666666")) | (value.Equals("77777777777")) | (value.Equals("88888888888")) |
-                (value.Equals("99999999999")))
+            if ((value.Length != 11) | value.Equals("11111111111") | value.Equals("22222222222") |
+                value.Equals("33333333333") | value.Equals("44444444444") | value.Equals("55555555555") |
+                value.Equals("66666666666") | value.Equals("77777777777") | value.Equals("88888888888") |
+                value.Equals("99999999999"))
                 return false;
 
             corpovalue = value.Substring(0, 9);
             soma = 0;
-            for (int i = 0; i < 9; i++)
-                soma += Int32.Parse(corpovalue[i].ToString()) * multiplicador1[i];
+            for (var i = 0; i < 9; i++)
+                soma += int.Parse(corpovalue[i].ToString()) * multiplicador1[i];
 
             resto = soma % 11;
             if (resto < 2)
@@ -90,69 +97,72 @@ namespace Innovt.Core.Utilities
             if (cnpj.IsNullOrEmpty())
                 return false;
 
-            int[] multiplicador1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
-            int[] multiplicador2 = new int[13] { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+            var multiplicador1 = new int[12] {5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
+            var multiplicador2 = new int[13] {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
             cnpj = cnpj.Trim();
             cnpj = cnpj.Replace(".", "").Replace("-", "").Replace("/", "");
             if (cnpj.Length != 14)
                 return false;
             var tempCnpj = cnpj.Substring(0, 12);
-          
+
             var soma = 0;
             for (var i = 0; i < 12; i++)
                 soma += int.Parse(tempCnpj[i].ToString()) * multiplicador1[i];
 
-            var resto = (soma % 11);
+            var resto = soma % 11;
 
             if (resto < 2)
                 resto = 0;
             else
                 resto = 11 - resto;
-            var digito = resto.ToString();
-            tempCnpj = tempCnpj + digito;
+
+            var digit = resto.ToString();
+
+            tempCnpj += digit;
             soma = 0;
             for (var i = 0; i < 13; i++)
                 soma += int.Parse(tempCnpj[i].ToString()) * multiplicador2[i];
-            resto = (soma % 11);
+            resto = soma % 11;
             if (resto < 2)
                 resto = 0;
             else
                 resto = 11 - resto;
-            digito = digito + resto.ToString();
-            return cnpj.EndsWith(digito);
+            digit += resto;
+            return cnpj.EndsWith(digit);
         }
 
         public static bool IsNullOrEmpty(this string str)
         {
-            return String.IsNullOrWhiteSpace(str);
+            return string.IsNullOrWhiteSpace(str);
         }
 
-        public static bool IsEmpty(this Guid guid)
+        public static bool IsEmpty(this Guid yourGuid)
         {
-            return guid == Guid.Empty;
+            return yourGuid == Guid.Empty;
         }
-        
-        public static bool IsNotEmpty(this Guid guid)
+
+        public static bool IsNotEmpty(this Guid yourGuid)
         {
-            return !IsEmpty(guid);
+            return !IsEmpty(yourGuid);
         }
-        public static bool IsNullOrEmpty(this Guid? guid)
+
+        public static bool IsNullOrEmpty(this Guid? yourGuid)
         {
-            return IsEmpty(guid.GetValueOrDefault());
+            return IsEmpty(yourGuid.GetValueOrDefault());
         }
-        
-        public static bool IsNotNullOrEmpty(this Guid? guid)
+
+        public static bool IsNotNullOrEmpty(this Guid? yourGuid)
         {
-            return !IsNullOrEmpty(guid);
+            return !IsNullOrEmpty(yourGuid);
         }
-        
+
         public static string UrlEncode(this string str)
         {
             return str.IsNullOrEmpty() ? str : HttpUtility.UrlEncode(str, Encoding.UTF8);
         }
-        
+
         public static string UrlDecode(this string str)
-        {   
+        {
             return str.IsNullOrEmpty() ? str : HttpUtility.UrlDecode(str, Encoding.UTF8);
         }
 
@@ -174,7 +184,7 @@ namespace Innovt.Core.Utilities
         }
 
         /// <summary>
-        /// Will mask an email using this format mich***@gmail.com
+        ///     Will mask an email using this format mich***@gmail.com
         /// </summary>
         /// <param name="email">The email that you want to mask</param>
         /// <returns>mich***@gmail.com</returns>
@@ -184,21 +194,21 @@ namespace Innovt.Core.Utilities
                 return email;
 
             if (!email.Contains("@"))
-                return new String('*', email.Length);
+                return new string('*', email.Length);
 
             if (email.Split('@')[0].Length < 4)
                 return @"*@*.*";
 
-            string pattern = @"(?<=[\w]{1})[\w-\._\+%]*(?=[\w]{1}@)";
+            var pattern = @"(?<=[\w]{1})[\w-\._\+%]*(?=[\w]{1}@)";
 
-            string result = Regex.Replace(email, pattern, m => new string('*', m.Length));
+            var result = Regex.Replace(email, pattern, m => new string('*', m.Length));
 
             return result;
         }
 
         public static bool IsNotNullOrEmpty(this string str)
         {
-            return !String.IsNullOrWhiteSpace(str);
+            return !string.IsNullOrWhiteSpace(str);
         }
 
         public static List<string> ToList(this string str, char separator)
@@ -208,26 +218,28 @@ namespace Innovt.Core.Utilities
 
             return str.Split(separator).ToList();
         }
-        
+
         public static string ToTitleCase(this string str)
         {
             return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(str);
         }
 
-        public static string ToCamelCase(this string str) => str.ToTitleCase();
-      
+        public static string ToCamelCase(this string str)
+        {
+            return str.ToTitleCase();
+        }
+
 
         public static string ClearMask(this string value)
         {
             if (value.IsNullOrEmpty())
                 return value;
 
-            var specialChars = new string[] { ".", ",", "-", "_", "/", "\\", "(", ")", "[", "]", ":", "\r\n", "\r", "\n" };
+            var specialChars = new[]
+                {".", ",", "-", "_", "/", "\\", "(", ")", "[", "]", ":", "\r\n", "\r", "\n"};
 
-            for (var i = 0; i < specialChars.Length; i++)
-            {
-                value = value.Replace(specialChars[i], "");
-            }
+            for (var i = 0; i < specialChars.Length; i++) value = value.Replace(specialChars[i], "");
+
             return value;
         }
 
@@ -238,8 +250,8 @@ namespace Innovt.Core.Utilities
 
             return Regex.Replace(value, "[^0-9]+?", "");
         }
-        
-        
+
+
         public static string NormalizeText(this string str)
         {
             if (str.IsNullOrEmpty())
@@ -255,12 +267,12 @@ namespace Innovt.Core.Utilities
             if (str.IsNullOrEmpty())
                 return str;
 
-            byte[] bytes = Encoding.GetEncoding("iso-8859-8").GetBytes(str);
+            var bytes = Encoding.GetEncoding("iso-8859-8").GetBytes(str);
             return Encoding.UTF8.GetString(bytes);
         }
 
 
-        public static string FormatCPF(this string cpf)
+        public static string FormatCpf(this string cpf)
         {
             if (cpf.IsNullOrEmpty())
                 return cpf;
@@ -270,17 +282,17 @@ namespace Innovt.Core.Utilities
         }
 
         /// <summary>
-        /// You can use this method to forma DD stardand Latitude or Longitude
+        ///     You can use this method to forma DD stardand Latitude or Longitude
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         public static string FormatCoordinate(this long value)
         {
-           var multiplier = value>0 ? "" : "-";
+            var multiplier = value > 0 ? "" : "-";
 
-           var latitude = value.ToString().OnlyNumber().PadLeft(9,'0');
+            var latitude = value.ToString().OnlyNumber().PadLeft(9, '0');
 
-           return $"{multiplier}{latitude.Substring(0,2)}.{latitude.Substring(2, 7)}";
+            return $"{multiplier}{latitude.Substring(0, 2)}.{latitude.Substring(2, 7)}";
         }
 
 
@@ -288,13 +300,17 @@ namespace Innovt.Core.Utilities
         {
             return FormatByMask(celPhone, @"{0:\(00\)00000\-0000}");
         }
+
         public static string FormatPhoneNumber(this string phoneNumber)
         {
             return FormatByMask(phoneNumber, @"{0:\(00\)000\-0000}");
         }
 
-        public static string FormatCNPJ(this string cnpj)
+        public static string FormatCnpj(this string cnpj)
         {
+            if (cnpj.IsNullOrEmpty())
+                return null;
+
             cnpj = cnpj.PadLeft(14, '0');
 
             return FormatByMask(cnpj, @"{0:00\.000\.000\/0000\-00}");
@@ -306,7 +322,7 @@ namespace Innovt.Core.Utilities
                 return value;
 
             var firstLetter = value[0].ToString().ToUpper();
-            var tail = value.Substring(1, value.Length - 1);
+            var tail = value[1..];
 
             return firstLetter + tail;
         }
@@ -321,14 +337,14 @@ namespace Innovt.Core.Utilities
         {
             var numbers = value.OnlyNumber();
 
-            long lgValue = Int64.Parse(numbers);
+            var lgValue = long.Parse(numbers);
 
-            return String.Format(mascara, lgValue);
+            return string.Format(mascara, lgValue);
         }
 
 
         /// <summary>
-        /// Encode your string to Base64 
+        ///     Encode your string to Base64
         /// </summary>
         /// <param name="toEncode">The String to encode</param>
         /// <param name="encoding">Optional and will be ASCII if null</param>
@@ -336,17 +352,17 @@ namespace Innovt.Core.Utilities
         public static string ToBase64(this string toEncode, Encoding encoding = null)
         {
             if (toEncode == null)
-                return toEncode;
+                return null;
 
-            if (encoding == null)
-                encoding = Encoding.ASCII;
+            encoding ??= Encoding.ASCII;
 
             var btToEncode = encoding.GetBytes(toEncode);
 
             return Convert.ToBase64String(btToEncode);
         }
+
         /// <summary>
-        /// Decode  your string from Base64 
+        ///     Decode  your string from Base64
         /// </summary>
         /// <param name="toDecode">The string to decode</param>
         /// <param name="encoding">Optional and will be ASCII if null</param>
@@ -354,10 +370,9 @@ namespace Innovt.Core.Utilities
         public static string FromBase64(this string toDecode, Encoding encoding = null)
         {
             if (toDecode == null)
-                return toDecode;
+                return null;
 
-            if (encoding == null)
-                encoding = Encoding.ASCII;
+            encoding ??= Encoding.ASCII;
 
             var btToDecode = Convert.FromBase64String(toDecode);
 
@@ -365,7 +380,7 @@ namespace Innovt.Core.Utilities
         }
 
 
-        public static string AplyQuotes(this string value)
+        public static string ApplyQuotes(this string value)
         {
             if (string.IsNullOrEmpty(value))
                 return value;
@@ -389,9 +404,8 @@ namespace Innovt.Core.Utilities
             if (string.IsNullOrEmpty(str))
                 return defaultValue;
 
-            if (int.TryParse(str, out int value))
+            if (int.TryParse(str, out var value))
                 return value;
-
 
             return defaultValue;
         }
@@ -410,7 +424,7 @@ namespace Innovt.Core.Utilities
             if (string.IsNullOrEmpty(str))
                 return defaultValue;
 
-            if (decimal.TryParse(str, out decimal value))
+            if (decimal.TryParse(str, out var value))
                 return value;
 
 
@@ -422,7 +436,7 @@ namespace Innovt.Core.Utilities
             if (string.IsNullOrEmpty(str))
                 return defaultValue;
 
-            if (double.TryParse(str, out double value))
+            if (double.TryParse(str, out var value))
                 return value;
 
 
@@ -434,7 +448,7 @@ namespace Innovt.Core.Utilities
             if (string.IsNullOrEmpty(str))
                 return defaultValue;
 
-            if (double.TryParse(str, out double value))
+            if (double.TryParse(str, out var value))
                 return value;
 
 
@@ -446,7 +460,7 @@ namespace Innovt.Core.Utilities
             if (string.IsNullOrEmpty(str))
                 return defaultValue;
 
-            if (float.TryParse(str, out float value))
+            if (float.TryParse(str, out var value))
                 return value;
 
             return defaultValue;
@@ -457,7 +471,7 @@ namespace Innovt.Core.Utilities
             if (string.IsNullOrEmpty(str))
                 return defaultValue;
 
-            if (float.TryParse(str, out float value))
+            if (float.TryParse(str, out var value))
                 return value;
 
             return defaultValue;
@@ -469,7 +483,7 @@ namespace Innovt.Core.Utilities
             if (string.IsNullOrEmpty(str))
                 return defaultValue;
 
-            if (bool.TryParse(str, out bool value))
+            if (bool.TryParse(str, out var value))
                 return value;
 
             return defaultValue;
@@ -480,18 +494,18 @@ namespace Innovt.Core.Utilities
             if (string.IsNullOrEmpty(str))
                 return defaultValue;
 
-            if (bool.TryParse(str, out bool value))
+            if (bool.TryParse(str, out var value))
                 return value;
 
             return defaultValue;
         }
 
-        public static DateTime ToDateTime(this string str, DateTime defaultValue = new DateTime())
+        public static DateTime ToDateTime(this string str, DateTime defaultValue = new())
         {
             if (string.IsNullOrEmpty(str))
                 return DateTime.MinValue;
 
-            if (DateTime.TryParse(str, out DateTime value))
+            if (DateTime.TryParse(str, out var value))
                 return value;
 
             return defaultValue;
@@ -502,19 +516,20 @@ namespace Innovt.Core.Utilities
             if (string.IsNullOrEmpty(str))
                 return defaultValue;
 
-            if (DateTime.TryParse(str, out DateTime value))
+            if (DateTime.TryParse(str, out var value))
                 return value;
 
             return defaultValue;
         }
 
 
-        public static DateTimeOffset ToDateTimeOffset(this string str, DateTimeOffset defaultValue = new DateTimeOffset())
+        public static DateTimeOffset ToDateTimeOffset(this string str,
+            DateTimeOffset defaultValue = new())
         {
             if (string.IsNullOrEmpty(str))
                 return DateTimeOffset.MinValue;
 
-            if (DateTimeOffset.TryParse(str, out DateTimeOffset value))
+            if (DateTimeOffset.TryParse(str, out var value))
                 return value;
 
             return defaultValue;
@@ -525,11 +540,20 @@ namespace Innovt.Core.Utilities
             if (string.IsNullOrEmpty(str))
                 return defaultValue;
 
-            if (DateTimeOffset.TryParse(str, out DateTimeOffset value))
+            if (DateTimeOffset.TryParse(str, out var value))
                 return value;
 
             return defaultValue;
         }
 
+        public static Guid ToGuid(this string str)
+        {
+            return Guid.Parse(str);
+        }
+
+        public static Guid? ToGuidOrEmpty(this string str)
+        {
+            return Guid.TryParse(str, out var result) ? result : Guid.Empty;
+        }
     }
 }

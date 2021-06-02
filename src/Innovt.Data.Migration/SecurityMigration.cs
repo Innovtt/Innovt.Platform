@@ -1,17 +1,21 @@
-﻿using Dapper;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Data.Migration
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
 using System.Data.SqlClient;
+using Dapper;
 
 namespace Innovt.Data.Migration
 {
-    public class SecurityMigration
+    public static class SecurityMigration
     {
-        public static void CreateTablesIfNotExist(string connectionString) {
-
-            if (connectionString == null)
-            {
-                throw new ArgumentNullException(nameof(connectionString));
-            }
+        public static void CreateTablesIfNotExist(string connectionString)
+        {
+            if (connectionString == null) throw new ArgumentNullException(nameof(connectionString));
 
             var query = @" /****** Object:  Table [dbo].[Permission] Script Date: 10/1/2018 2:58:00 PM ******/
                           IF OBJECT_ID (N'Permission', N'U') IS NULL 
@@ -125,17 +129,17 @@ namespace Innovt.Data.Migration
                             
                             ALTER TABLE [dbo].[SecurityGroupUser] CHECK CONSTRAINT [FK_SecurityGroupUser_SecurityGroup_SecurityGroupId]";
 
-                        //ALTER TABLE [dbo].[SecurityGroupUser]  WITH CHECK ADD  CONSTRAINT [FK_SecurityGroupUser_User_UserId] FOREIGN KEY([UserId])
-                        //REFERENCES [dbo].[User] ([Id])
-                        //ON DELETE CASCADE
+            //ALTER TABLE [dbo].[SecurityGroupUser]  WITH CHECK ADD  CONSTRAINT [FK_SecurityGroupUser_User_UserId] FOREIGN KEY([UserId])
+            //REFERENCES [dbo].[User] ([Id])
+            //ON DELETE CASCADE
 
-                        // ALTER TABLE[dbo].[SecurityGroupUser]
-                        // CHECK CONSTRAINT[FK_SecurityGroupUser_User_UserId]
+            // ALTER TABLE[dbo].[SecurityGroupUser]
+            // CHECK CONSTRAINT[FK_SecurityGroupUser_User_UserId]
 
-                        using var con = new SqlConnection(connectionString);
-                        con.Open();
+            using var con = new SqlConnection(connectionString);
+            con.Open();
 
-                        con.Execute(query);
+            con.Execute(query);
         }
     }
 }

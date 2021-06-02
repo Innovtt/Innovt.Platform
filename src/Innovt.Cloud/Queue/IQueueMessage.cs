@@ -1,5 +1,11 @@
-﻿using System.Collections.Generic;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Cloud
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System.Collections.Generic;
 
 namespace Innovt.Cloud.Queue
 {
@@ -12,7 +18,7 @@ namespace Innovt.Cloud.Queue
         double? ApproximateFirstReceiveTimestamp { get; set; }
 
         int? ApproximateReceiveCount { get; set; }
-        
+
         Dictionary<string, string> Attributes { get; set; }
     }
 }

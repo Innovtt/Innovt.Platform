@@ -1,39 +1,39 @@
+// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Cloud.AWS.Dynamo.Tests
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Amazon;
-using Amazon.DynamoDBv2;
-using Amazon.DynamoDBv2.Model;
-using Amazon.Runtime.CredentialManagement;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.Table;
 using Innovt.Core.CrossCutting.Log;
+using NSubstitute;
 using NUnit.Framework;
-using QueryRequest = Innovt.Cloud.Table.QueryRequest;
 
 namespace Innovt.Cloud.AWS.Dynamo.Tests
 {
     public class Tests
     {
-        private ILogger loggerMock = null;
-        private BaseRepository baseRepository;
         private IAWSConfiguration configuration;
-        
+        private ILogger loggerMock;
+
         [SetUp]
         public void Setup()
         {
-            loggerMock = NSubstitute.Substitute.For<ILogger>();
+            loggerMock = Substitute.For<ILogger>();
 
 
             configuration = new DefaultAWSConfiguration("antecipa-dev");
         }
 
         [Test]
-        public async Task Test1()
+        public void Test1()
         {
             try
             {
+                loggerMock.Info(configuration.AccountNumber);
                 //var bucketName = "users-antecipa-dev";
 
                 //var fileSystem = new S3FileSystem(loggerMock, configuration);
@@ -42,7 +42,7 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
 
 
                 //var resUrl = await fileSystem.UploadAsync(bucketName, file, "michel/testemichel.pdf", serverSideEncryptionMethod: "AES256");
-                
+
                 //var profile = new CredentialProfile("antecipa-dev",new CredentialProfileOptions());
 
                 // var client = new AmazonDynamoDBClient(RegionEndpoint.USEast1);
@@ -70,28 +70,28 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
                 //
                 // var result = await client.QueryAsync(request, CancellationToken.None);
 
-                var filter = new { sid= "b503630a-1d6e-4f98-a2d0-2c50fdc360b1" };
-            
-            var queryRequest = new QueryRequest()
-            {
-                IndexName = "SupplierId-DueDate-Index",
-                KeyConditionExpression =  "SupplierId = :sid", //n invoices que pertencem a um buyer 
-              //  FilterExpression = "PaymentOrderStatusId = :pid",
-                Filter = filter,
-            //    Page = "%2fV5spd%2fkrcGowMd1g58YpeiOAjD%2bbWhUvsZx6lrG5%2bDtKveLYKwXr1FuQq6Pw2XwOdsRBCyvBGPSZq8Do8UJjmajqnGST7qKp3luOYlsb%2fs26Vn%2bJKAZ5bt88b945VVYZo0ZsgnKg7llHSRIX40FmXn2RjMdlGZwf%2bVUVNbWf9yswPiw%2bYyGj8I4OZDfBkeRI%2bRI7DZysjq556Bd4LipWymDgPB4aS9OcrCRdWCaifc%3d",
-               PageSize = 10
-            };
+                var filter = new {sid = "b503630a-1d6e-4f98-a2d0-2c50fdc360b1"};
 
-            //TODO: Alter Query to accept pagesize
-              var res = await baseRepository.QueryPaginatedByAsync<DataModel>(queryRequest, CancellationToken.None);
-             // var res = await baseRepository.QueryPaginatedByAsync<DataModel>(queryRequest, CancellationToken.None);
+                var queryRequest = new QueryRequest
+                {
+                    IndexName = "SupplierId-DueDate-Index",
+                    KeyConditionExpression = "SupplierId = :sid", //n invoices que pertencem a um buyer 
+                    //  FilterExpression = "PaymentOrderStatusId = :pid",
+                    Filter = filter,
+                    //    Page = "%2fV5spd%2fkrcGowMd1g58YpeiOAjD%2bbWhUvsZx6lrG5%2bDtKveLYKwXr1FuQq6Pw2XwOdsRBCyvBGPSZq8Do8UJjmajqnGST7qKp3luOYlsb%2fs26Vn%2bJKAZ5bt88b945VVYZo0ZsgnKg7llHSRIX40FmXn2RjMdlGZwf%2bVUVNbWf9yswPiw%2bYyGj8I4OZDfBkeRI%2bRI7DZysjq556Bd4LipWymDgPB4aS9OcrCRdWCaifc%3d",
+                    PageSize = 10
+                };
+
+                //TODO: Alter Query to accept pagesize
+                //var res = await baseRepository.QueryPaginatedByAsync<DataModel>(queryRequest, CancellationToken.None);
+                // var res = await baseRepository.QueryPaginatedByAsync<DataModel>(queryRequest, CancellationToken.None);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
                 throw;
             }
-            
+
             Assert.Pass();
         }
     }

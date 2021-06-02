@@ -1,15 +1,9 @@
-﻿//===================================================================================
-// Microsoft Developer & Platform Evangelism
-//=================================================================================== 
-// THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
-// EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES 
-// OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-//===================================================================================
-// Copyright (c) Microsoft Corporation.  All Rights Reserved.
-// This code is released under the terms of the MS-LPL license, 
-// http://microsoftnlayerapp.codeplex.com/license
-//===================================================================================
-
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Domain.Core
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
 using System.Linq.Expressions;
@@ -17,9 +11,9 @@ using System.Linq.Expressions;
 namespace Innovt.Domain.Core.Specification
 {
     /// <summary>
-    /// A Direct Specification is a simple implementation
-    /// of specification that acquire this from a lambda expression
-    /// in  constructor
+    ///     A Direct Specification is a simple implementation
+    ///     of specification that acquire this from a lambda expression
+    ///     in  constructor
     /// </summary>
     /// <typeparam name="TValueObject">Type of entity that check this specification</typeparam>
     public sealed class DirectSpecification<TEntity>
@@ -28,19 +22,14 @@ namespace Innovt.Domain.Core.Specification
     {
         #region Members
 
-        readonly Expression<Func<TEntity, bool>> matchingCriteria;
+        private readonly Expression<Func<TEntity, bool>> matchingCriteria;
 
         #endregion
-
-        public static DirectSpecification<TEntity> By(Expression<Func<TEntity, bool>> matchingCriteria)
-        {
-            return new DirectSpecification<TEntity>(matchingCriteria);
-        }
 
         #region Constructor
 
         /// <summary>
-        /// Default constructor for Direct Specification
+        ///     Default constructor for Direct Specification
         /// </summary>
         /// <param name="matchingCriteria">A Matching Criteria</param>
         public DirectSpecification(Expression<Func<TEntity, bool>> matchingCriteria)
@@ -50,10 +39,14 @@ namespace Innovt.Domain.Core.Specification
 
         #endregion
 
+        public static DirectSpecification<TEntity> By(Expression<Func<TEntity, bool>> matchingCriteria)
+        {
+            return new(matchingCriteria);
+        }
+
         #region Override
 
         /// <summary>
-        /// 
         /// </summary>
         /// <returns></returns>
         public override Expression<Func<TEntity, bool>> SatisfiedBy()

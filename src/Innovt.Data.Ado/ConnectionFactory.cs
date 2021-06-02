@@ -1,4 +1,11 @@
-﻿using System;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Data.Ado
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using Innovt.Core.Utilities;
@@ -10,7 +17,7 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace Innovt.Data.Ado
 {
-    public class ConnectionFactory:IConnectionFactory 
+    public class ConnectionFactory : IConnectionFactory
     {
         public IDbConnection Create(IDataSource dataSource)
         {

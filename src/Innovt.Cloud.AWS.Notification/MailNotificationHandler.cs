@@ -1,44 +1,48 @@
-﻿using System.Linq;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Cloud.AWS.Notification
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Amazon.SimpleEmail;
 using Amazon.SimpleEmail.Model;
-using Innovt.Core.Utilities;
 using Innovt.Cloud.AWS.Configuration;
+using Innovt.Core.CrossCutting.Log;
+using Innovt.Core.Utilities;
 using Innovt.Notification.Core;
 using Innovt.Notification.Core.Domain;
-using Innovt.Core.CrossCutting.Log;
 
 namespace Innovt.Cloud.AWS.Notification
 {
-    public class MailNotificationHandler: AwsBaseService, INotificationHandler
+    public class MailNotificationHandler : AwsBaseService, INotificationHandler
     {
-        public string DefaultCharset { get; set; } = "UTF-8";
+        private AmazonSimpleEmailServiceClient _simpleEmailClient;
 
         public MailNotificationHandler(ILogger logger, IAWSConfiguration configuration) : base(logger, configuration)
         {
-         
         }
 
-        public MailNotificationHandler(ILogger logger, IAWSConfiguration configuration, string region) : base(logger, configuration, region)
+        public MailNotificationHandler(ILogger logger, IAWSConfiguration configuration, string region) : base(logger,
+            configuration, region)
         {
-          
         }
 
-        private AmazonSimpleEmailServiceClient _simpleEmailClient;
+        public string DefaultCharset { get; set; } = "UTF-8";
+
         private AmazonSimpleEmailServiceClient SimpleEmailClient
         {
             get
             {
-                if (_simpleEmailClient == null)
-                {
-                    _simpleEmailClient = CreateService<AmazonSimpleEmailServiceClient>();
-                }
+                if (_simpleEmailClient == null) _simpleEmailClient = CreateService<AmazonSimpleEmailServiceClient>();
 
                 return _simpleEmailClient;
             }
         }
-            
+
         public async Task<dynamic> SendAsync(NotificationMessage message, CancellationToken cancellationToken = default)
         {
             Check.NotNull(message, nameof(message));
@@ -50,40 +54,36 @@ namespace Innovt.Cloud.AWS.Notification
             Check.NotNull(message.Subject, nameof(message.Subject));
 
             //Invalid configuration set name<Não Responda>: only alphanumeric ASCII characters, '_', and '-' are allowed.
-            var mailRequest = new SendEmailRequest()
+            var mailRequest = new SendEmailRequest
             {
                 Destination = new Destination(),
-                Source      = $"{message.From.Name} <{message.From.Address}>",
+                Source = $"{message.From.Name} <{message.From.Address}>",
                 Message = new Message()
             };
-               
-            mailRequest.Message.Subject = new Content()
+
+            mailRequest.Message.Subject = new Content
             {
                 Charset = message.Subject.Charset.GetValueOrDefault(DefaultCharset),
-                Data    = message.Subject.Content
+                Data = message.Subject.Content
             };
-                
-                
+
+
             mailRequest.Message.Body = new Body();
             if (message.Body.IsHtml)
-            {
-                mailRequest.Message.Body.Html = new Content()
+                mailRequest.Message.Body.Html = new Content
                 {
                     Charset = message.Body.Charset.GetValueOrDefault(DefaultCharset),
                     Data = message.Body.Content
                 };
-            }
             else
-            {
-                mailRequest.Message.Body.Text = new Content()
+                mailRequest.Message.Body.Text = new Content
                 {
                     Charset = message.Body.Charset.GetValueOrDefault(DefaultCharset),
                     Data = message.Body.Content
                 };
-            }
-              
+
             mailRequest.Destination.ToAddresses = message.To.Select(a => $"{a.Name} <{a.Address}>").ToList();
-             
+
             if (message.BccTo != null)
                 mailRequest.Destination.BccAddresses = message.BccTo.Select(a => $"{a.Name} <{a.Address}>").ToList();
 
@@ -95,13 +95,14 @@ namespace Innovt.Cloud.AWS.Notification
 
             var policy = CreateDefaultRetryAsyncPolicy();
 
-            var response = await policy.ExecuteAsync(async ()=> await SimpleEmailClient.SendEmailAsync(mailRequest, cancellationToken));
-               
+            var response = await policy.ExecuteAsync(async () =>
+                await SimpleEmailClient.SendEmailAsync(mailRequest, cancellationToken));
+
             return response;
         }
 
         protected override void DisposeServices()
-        {   
+        {
             _simpleEmailClient?.Dispose();
         }
     }

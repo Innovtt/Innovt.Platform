@@ -1,4 +1,11 @@
-﻿using System;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Core
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 using System.Collections.Specialized;
 using System.Net;
 
@@ -6,6 +13,11 @@ namespace Innovt.Core.Http
 {
     public class HttpRequestDetail
     {
+        public HttpRequestDetail()
+        {
+            Id = Guid.NewGuid();
+        }
+
         public Guid Id { get; set; }
 
         public string Url { get; set; }
@@ -15,11 +27,5 @@ namespace Innovt.Core.Http
         public string RawRequest { get; set; }
         public string RawResponse { get; set; }
         public HttpStatusCode ResponseStatusCode { get; set; }
-      
-
-        public HttpRequestDetail()
-        {
-            Id = Guid.NewGuid();
-        }
     }
 }

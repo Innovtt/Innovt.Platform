@@ -1,4 +1,11 @@
-﻿using System;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.AspNetCore
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 using System.Linq;
 using System.Reflection;
 using System.Security.Claims;
@@ -15,11 +22,57 @@ namespace Innovt.AspNetCore.Filters
 {
     public class AuthorizationFilter : IAsyncAuthorizationFilter, IAuthorizationFilter
     {
-        private readonly ISecurityRepository securityRepository;
+        private readonly IAuthorizationRepository securityRepository;
 
-        public AuthorizationFilter(ISecurityRepository securityRepository)
+        public AuthorizationFilter(IAuthorizationRepository securityRepository)
         {
             this.securityRepository = securityRepository ?? throw new ArgumentNullException(nameof(securityRepository));
+        }
+
+        public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
+        {
+            if (context == null) throw new ArgumentNullException(nameof(context));
+
+            if (AllowAnonymous(context))
+                return;
+
+            if (!IsUserAuthenticated(context))
+            {
+                context.Result = new UnauthorizedResult();
+                return;
+            }
+
+            var userId = GetUserId(context);
+
+            if (userId.IsNullOrEmpty()) throw new InvalidOperationException("No Claim SID found for loggerd user.");
+
+
+            var (area, controller, action) = GetActionInfo(context);
+
+            // Se ele tem o /controller ele tem permissao em todo o controller
+            // sele etem permissao no /area ele tem permissar na area toda
+            // se ele tem permissar no /action ele tem apenas na action 
+            // as permissoes sao em cascata : ex se ele tem no action entao é geral 
+            // Module can be area
+            // Admin /resource * 
+            // Admin/
+            // * - mean that you want to authorize the full path/domain
+            // Controller/* mean that you can althorize all actions
+            // Controller/Action mean that you want to authorize only this action
+            var hasPermission = await HasPermission(userId, area, controller, action).ConfigureAwait(false);
+
+            if (!hasPermission)
+            {
+                context.Result = new UnauthorizedResult();
+                return;
+            }
+
+            context.Result = new ForbidResult();
+        }
+
+        public void OnAuthorization(AuthorizationFilterContext context)
+        {
+            AsyncHelper.RunSync(async () => await OnAuthorizationAsync(context).ConfigureAwait(false));
         }
 
         private static bool AllowAnonymous(FilterContext context)
@@ -31,23 +84,26 @@ namespace Innovt.AspNetCore.Filters
         }
 
 
-        private bool IsUserAuthenticated(AuthorizationFilterContext context)
+        private static bool IsUserAuthenticated(AuthorizationFilterContext context)
         {
+            if (context?.HttpContext.User.Identity is null)
+                return false;
+
             return context.HttpContext.User.Identity.IsAuthenticated;
         }
 
 
-        private string GetUserId(AuthorizationFilterContext context)
+        private static string GetUserId(AuthorizationFilterContext context)
         {
-            var userId = context.HttpContext.User?.GetClaim(ClaimTypes.Sid );
+            var userId = context.HttpContext.User?.GetClaim(ClaimTypes.Sid);
 
             return userId ?? string.Empty;
         }
 
 
-        private (string area, string controller, string action) GetActionInfo(AuthorizationFilterContext context)
+        private static (string area, string controller, string action) GetActionInfo(AuthorizationFilterContext context)
         {
-            var controllerActionDescriptor = (ControllerActionDescriptor)context.ActionDescriptor;
+            var controllerActionDescriptor = (ControllerActionDescriptor) context.ActionDescriptor;
 
             var area = controllerActionDescriptor.ControllerTypeInfo.GetCustomAttribute<AreaAttribute>()?.RouteValue;
 
@@ -59,9 +115,9 @@ namespace Innovt.AspNetCore.Filters
         }
 
 
-        private async Task<bool> HasPermission(string userId,string module, string controller, string action) {
-
-            var userPermissions = await securityRepository.GetUserPermissions(userId);
+        private async Task<bool> HasPermission(string userId, string module, string controller, string action)
+        {
+            var userPermissions = await securityRepository.GetUserPermissions(userId).ConfigureAwait(false);
 
             if (!userPermissions.Any())
                 return false;
@@ -85,61 +141,7 @@ namespace Innovt.AspNetCore.Filters
             //permission to specific action
             var hasActionPermission = userPermissions.Any(p => p.Resource == $"{controller}/{action}");
 
-            if (hasActionPermission)
-                return true;
-            
-
-            return false;
+            return hasActionPermission;
         }
-
-        public void OnAuthorization(AuthorizationFilterContext context)
-        {
-            AsyncHelper.RunSync(async () => await OnAuthorizationAsync(context));
-        }
-
-        public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
-        {
-            if (AllowAnonymous(context))
-                return;
-
-            if (!IsUserAuthenticated(context))
-            {
-                context.Result = new UnauthorizedResult( );
-                return;
-            }
-            
-            var userId = GetUserId(context);
-
-            if (userId.IsNullOrEmpty())
-            {
-                throw new InvalidOperationException("No Claim SID found for loggerd user.");
-            }
-
-
-            var (area, controller, action) = GetActionInfo(context);
-
-            // Se ele tem o /controller ele tem permissao em todo o controller
-            // sele etem permissao no /area ele tem permissar na area toda
-            // se ele tem permissar no /action ele tem apenas na action 
-            // as permissoes sao em cascata : ex se ele tem no action entao é geral 
-            // Module pode ser a area 
-            // Admin /resource * 
-            // Admin/
-            /// <summary>
-            /// * - mean that you want to authoriza the full path/domain
-            /// Controller/* mean that you can althorize all actions
-            /// Controller/Action mean that you want to authorize only this action
-            /// </summary>
-            var hasPermission = await HasPermission(userId, area, controller, action).ConfigureAwait(false);
-
-            if (!hasPermission)
-            {
-                context.Result = new UnauthorizedResult();
-                return;
-            }
-
-            context.Result = new ForbidResult();
-        }
-
     }
 }

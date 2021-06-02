@@ -1,4 +1,12 @@
-﻿using System.Linq;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.AspNetCore
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Innovt.Core.Utilities;
@@ -6,53 +14,69 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Innovt.AspNetCore.Filters
 {
-
     /// <summary>
-    /// This Filter Will inject the username claim in the action Parameters
+    ///     This Filter Will inject the username claim in the action Parameters
     /// </summary>
-    public class InjectUserNameClaimParameterFilter : ActionFilterAttribute
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public sealed class InjectUserNameClaimParameterFilter : ActionFilterAttribute
     {
-        private readonly string defaultAuthorizationProperty;
-        private readonly string[] actionParameters;
-
         public InjectUserNameClaimParameterFilter(string defaultAuthorizationProperty, params string[] actionParameters)
         {
-            Check.NotNull(defaultAuthorizationProperty,nameof(defaultAuthorizationProperty));
-            Check.NotNull(actionParameters,nameof(actionParameters));
+            Check.NotNull(defaultAuthorizationProperty, nameof(defaultAuthorizationProperty));
+            Check.NotNull(actionParameters, nameof(actionParameters));
 
-            this.defaultAuthorizationProperty = defaultAuthorizationProperty;
-            this.actionParameters = actionParameters;
+            DefaultAuthorizationProperty = defaultAuthorizationProperty;
+            ActionParameters = actionParameters;
         }
 
         /// <summary>
-        /// Using defaults: ExternalId  and "filter","command"
+        ///     Using defaults: ExternalId  and "filter","command"
         /// </summary>
-        public InjectUserNameClaimParameterFilter():this("ExternalId","filter","command")
+        public InjectUserNameClaimParameterFilter() : this("ExternalId", "filter", "command")
         {
         }
 
-        public override async Task OnActionExecutionAsync(ActionExecutingContext filterContext, ActionExecutionDelegate next)
-        { 
-            var userName = filterContext.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+        public string DefaultAuthorizationProperty { get; }
+        public string[] ActionParameters { get; }
 
-            if (!userName.IsNullOrEmpty())
+
+        private void InjectUserName(ActionExecutingContext context)
+        {
+            if (context is null)
+                return;
+
+            var userName = context.HttpContext.User.Claims
+                .FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+
+            if (userName.IsNullOrEmpty()) return;
+
+            foreach (var actionParameter in ActionParameters)
             {
-                foreach (var actionParameter in actionParameters)
-                {
-                    filterContext.ActionArguments.TryGetValue(actionParameter, out var inputParam);
+                context.ActionArguments.TryGetValue(actionParameter, out var inputParam);
 
-                    if (inputParam == null) continue;
+                if (inputParam == null) continue;
 
-                    var property = inputParam.GetType().GetProperty(defaultAuthorizationProperty);
+                var property = inputParam.GetType().GetProperty(DefaultAuthorizationProperty);
 
-                    if (property != null)
-                    {
-                        property.SetValue(inputParam, userName);
-                    }
-                }
+                if (property != null) property.SetValue(inputParam, userName);
             }
-            
-            await next();
+        }
+
+
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            InjectUserName(context);
+
+            base.OnActionExecuting(context);
+        }
+
+
+        public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+        {
+            InjectUserName(context);
+
+            //TODO: Not sure yet
+            await base.OnActionExecutionAsync(context, next).ConfigureAwait(false);
         }
     }
 }

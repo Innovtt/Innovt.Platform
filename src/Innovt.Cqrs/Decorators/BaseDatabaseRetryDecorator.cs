@@ -1,4 +1,11 @@
-﻿using System;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Cqrs
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 using System.Data.SqlClient;
 using Innovt.Core.CrossCutting.Log;
 using Polly;
@@ -21,23 +28,25 @@ namespace Innovt.Cqrs.Decorators
         {
             return (exception, timeSpan, retryCount, context) =>
             {
-                logger.Warning($"Retry {retryCount} implemented of {context.PolicyKey} at {context.OperationKey} due to {exception}");
+                logger.Warning(
+                    $"Retry {retryCount} implemented of {context.PolicyKey} at {context.OperationKey} due to {exception}");
             };
         }
 
         protected virtual AsyncRetryPolicy CreateAsyncPolicy()
         {
-            var policy =   Policy.Handle<SqlException>().WaitAndRetryAsync(retryCount, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),LogResiliencyRetry());
+            var policy = Policy.Handle<SqlException>().WaitAndRetryAsync(retryCount,
+                retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
 
             return policy;
         }
 
         protected virtual RetryPolicy CreatePolicy()
         {
-            var policy =   Policy.Handle<SqlException>().WaitAndRetry(retryCount, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),LogResiliencyRetry());
+            var policy = Policy.Handle<SqlException>().WaitAndRetry(retryCount,
+                retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
 
             return policy;
         }
-
     }
 }

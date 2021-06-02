@@ -1,5 +1,12 @@
-using Microsoft.Extensions.DependencyInjection;
+// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.CrossCutting.IOC
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Innovt.CrossCutting.IOC
 {
@@ -7,7 +14,7 @@ namespace Innovt.CrossCutting.IOC
     {
         public ContainerBuilder CreateBuilder(IServiceCollection services)
         {
-            return new ContainerBuilder(services);
+            return new(services);
         }
 
         public IServiceProvider CreateServiceProvider(ContainerBuilder containerBuilder)

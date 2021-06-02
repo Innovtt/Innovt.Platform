@@ -1,4 +1,11 @@
-﻿using System.Text.Json;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Cloud.AWS.Lambda.Sqs
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 using System.Threading.Tasks;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.SQSEvents;
@@ -18,10 +25,10 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
 
         protected SqsEventProcessor(ILogger logger, ISerializer serializer) : base(logger)
         {
-            this.serializer = serializer ?? throw new System.ArgumentNullException(nameof(serializer));
+            this.serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
         }
 
-        protected SqsEventProcessor() : base()
+        protected SqsEventProcessor()
         {
         }
 
@@ -30,15 +37,12 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
             get
             {
                 if (serializer == null)
-                    serializer = new Core.Serialization.JsonSerializer();
+                    serializer = new JsonSerializer();
 
                 return serializer;
             }
 
-            set
-            {
-                serializer = value;
-            }
+            set => serializer = value;
         }
 
 
@@ -53,7 +57,7 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
             {
                 Logger.Info($"Processing SQS Event message ID {record.MessageId}.");
 
-                var message = new QueueMessage<TBody>()
+                var message = new QueueMessage<TBody>
                 {
                     MessageId = record.MessageId,
                     ReceiptHandle = record.ReceiptHandle,

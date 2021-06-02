@@ -1,25 +1,30 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 
-	<PropertyGroup>
-		<TargetFramework>netstandard2.1</TargetFramework>
-		<PackageId>Innovt.CrossCutting.IOC</PackageId>
-		<PackageVersion>3.1.6.33</PackageVersion>
-		<Authors>Michel,Tiago</Authors>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-		<Copyright>Innovt Tecnologia</Copyright>
-		<Description>IOC implementation as .net core applications</Description>
-		<RepositoryUrl>https://github.com/Innovtt/Innovt.Platform</RepositoryUrl>
-	</PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <PackageId>Innovt.CrossCutting.IOC</PackageId>
+    <PackageVersion>5.0.0</PackageVersion>
+    <Authors>Michel Borges</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>Innovt Tecnologia</Copyright>
+    <Description>IOC implementation as .net core applications</Description>
+    <LangVersion>latest</LangVersion>
+    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+  </PropertyGroup>
 
-	<ItemGroup>
-	  <PackageReference Include="Lamar" Version="5.0.3" />
-	  <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="3.1.12" />
-	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Lamar" Version="5.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj" />
+  </ItemGroup>
 
 </Project>

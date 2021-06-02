@@ -1,4 +1,11 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Core
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Innovt.Core.CrossCutting.Ioc
 {
@@ -8,12 +15,12 @@ namespace Innovt.Core.CrossCutting.Ioc
 
         public IOCModule()
         {
-            this.services = new ServiceCollection();
+            services = new ServiceCollection();
         }
 
         public IServiceCollection GetServices()
         {
-            return  this.services;
+            return services;
         }
     }
 }

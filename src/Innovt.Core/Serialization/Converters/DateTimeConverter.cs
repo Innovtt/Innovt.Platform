@@ -1,7 +1,9 @@
-﻿// Solution: Innovt.Platform
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
 // Project: Innovt.Core
-// User: Michel Magalhães
-// Date: 2020/02/17 at 11:48 PM
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
 using System.Diagnostics;
@@ -10,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace Innovt.Core.Serialization.Converters
 {
-    public class DateTimeConverter:JsonConverter<DateTime>
+    public class DateTimeConverter : JsonConverter<DateTime>
     {
         private readonly string format;
 
@@ -28,7 +30,6 @@ namespace Innovt.Core.Serialization.Converters
 
         public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
         {
-
             writer.WriteStringValue(value.ToString(format));
         }
     }

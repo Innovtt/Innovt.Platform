@@ -1,4 +1,11 @@
-﻿using System;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Domain.Core
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 using System.Collections.Generic;
 using Innovt.Domain.Core.Events;
 
@@ -6,19 +13,21 @@ namespace Innovt.Domain.Core.Model
 {
     public abstract class Entity
     {
-        public virtual int Id { get; set; }
-
-        public DateTimeOffset? CreatedAt { get; set; }
+        private List<DomainEvent> domainEvents;
 
         protected Entity()
         {
-            CreatedAt  = DateTimeOffset.UtcNow;
+            CreatedAt = DateTimeOffset.UtcNow;
         }
 
         protected Entity(int id)
         {
             Id = id;
         }
+
+        public virtual int Id { get; set; }
+
+        public DateTimeOffset? CreatedAt { get; set; }
 
         public bool IsNew()
         {
@@ -36,15 +45,13 @@ namespace Innovt.Domain.Core.Model
 
             return anotherEntity?.Id == Id;
         }
-        
-        private List<DomainEvent> domainEvents;
-      
+
         public void AddDomainEvent(DomainEvent domainEvent)
         {
             if (domainEvent == null) throw new ArgumentNullException(nameof(domainEvent));
 
             domainEvents ??= new List<DomainEvent>();
-                
+
             domainEvents.Add(domainEvent);
         }
 
@@ -54,7 +61,7 @@ namespace Innovt.Domain.Core.Model
         }
     }
 
-    public abstract class Entity<T>: Entity where T : struct
+    public abstract class Entity<T> : Entity where T : struct
     {
         public new T Id { get; set; }
     }

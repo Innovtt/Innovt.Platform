@@ -1,10 +1,17 @@
-﻿using Innovt.Core.CrossCutting.Ioc;
-using Microsoft.Extensions.DependencyInjection;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.CrossCutting.IOC
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
+using Innovt.Core.CrossCutting.Ioc;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Innovt.CrossCutting.IOC
 {
-    public sealed class Container : Innovt.Core.CrossCutting.Ioc.IContainer
+    public sealed class Container : IContainer
     {
         private readonly Lamar.Container container;
 
@@ -14,7 +21,7 @@ namespace Innovt.CrossCutting.IOC
         }
 
         /// <summary>
-        /// With default scan
+        ///     With default scan
         /// </summary>
         public Container()
         {
@@ -30,20 +37,14 @@ namespace Innovt.CrossCutting.IOC
 
         public Container(IOCModule module)
         {
-            if (module is null)
-            {
-                throw new ArgumentNullException(nameof(module));
-            }
+            if (module is null) throw new ArgumentNullException(nameof(module));
 
             container = new Lamar.Container(module.GetServices());
         }
 
         public void AddModule(IOCModule module)
         {
-            if (module is null)
-            {
-                throw new ArgumentNullException(nameof(module));
-            }
+            if (module is null) throw new ArgumentNullException(nameof(module));
 
             var services = module.GetServices();
 
@@ -53,11 +54,6 @@ namespace Innovt.CrossCutting.IOC
         public void CheckConfiguration()
         {
             container.AssertConfigurationIsValid();
-        }
-
-        public object GetService(Type serviceType)
-        {
-            return container.GetInstance(serviceType);
         }
 
         public object Resolve(Type type)
@@ -72,7 +68,7 @@ namespace Innovt.CrossCutting.IOC
 
         public TService Resolve<TService>(Type type)
         {
-            return (TService)container.GetInstance(type);
+            return (TService) container.GetInstance(type);
         }
 
         public TService Resolve<TService>(string instanceKey)
@@ -83,6 +79,11 @@ namespace Innovt.CrossCutting.IOC
         public void Dispose()
         {
             container?.Dispose();
+        }
+
+        public object GetService(Type serviceType)
+        {
+            return container.GetInstance(serviceType);
         }
     }
 }

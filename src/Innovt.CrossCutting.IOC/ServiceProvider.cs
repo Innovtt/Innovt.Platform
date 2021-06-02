@@ -1,10 +1,17 @@
-﻿using System;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.CrossCutting.IOC
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 using Innovt.Core.CrossCutting.Ioc;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Innovt.CrossCutting.IOC
 {
-    public class ServiceProvider:IServiceProvider,  ISupportRequiredService, IDisposable
+    public class ServiceProvider : IServiceProvider, ISupportRequiredService, IDisposable
     {
         private readonly IContainer container;
         private bool disposed;
@@ -13,6 +20,12 @@ namespace Innovt.CrossCutting.IOC
         public ServiceProvider(IContainer container)
         {
             this.container = container ?? throw new ArgumentNullException(nameof(container));
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         public object GetService(Type serviceType)
@@ -27,21 +40,12 @@ namespace Innovt.CrossCutting.IOC
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            if (!disposed)
             {
-                if (disposing)
-                {
-                    this.container.Dispose();
-                }
+                if (disposing) container.Dispose();
 
-                this.disposed = true;
+                disposed = true;
             }
-        }
-
-        public void Dispose()
-        {
-            this.Dispose(true);
-            GC.SuppressFinalize(this);
         }
     }
 }

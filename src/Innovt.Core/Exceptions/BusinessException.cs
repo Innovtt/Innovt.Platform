@@ -1,7 +1,9 @@
-﻿// Company: INNOVT
-// Project: Innovt.Common
-// Created By: Michel Borges
-// Date: 2016/10/19
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Core
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
 using System.Collections.Generic;
@@ -14,37 +16,41 @@ namespace Innovt.Core.Exceptions
     [Serializable]
     public class BusinessException : BaseException
     {
-        public string Code { get; protected set; }
-        public IEnumerable<ErrorMessage> Errors { get; set; }
-
         public BusinessException(string message) : base(message)
         {
         }
-        public BusinessException(string message, Exception ex) : base(message, ex) { }
+
+        public BusinessException(string message, Exception ex) : base(message, ex)
+        {
+        }
 
 
         public BusinessException(string code, string message) : base(message)
         {
-            this.Code = code;
+            Code = code;
         }
-        
+
         public BusinessException(string code, string message, Exception ex) : base(message, ex)
         {
-            this.Code = code;
+            Code = code;
         }
 
         public BusinessException(IList<ErrorMessage> errors) : base(CreateMessage(errors))
         {
-            this.Errors = errors;
-        }
-        public BusinessException(ErrorMessage[] errors) : base(CreateMessage(errors))
-        {
-            this.Errors = errors;
+            Errors = errors;
         }
 
-        public BusinessException(ErrorMessage error):this(new[] { error })
+        public BusinessException(ErrorMessage[] errors) : base(CreateMessage(errors))
+        {
+            Errors = errors;
+        }
+
+        public BusinessException(ErrorMessage error) : this(new[] {error})
         {
         }
+
+        public string Code { get; protected set; }
+        public IEnumerable<ErrorMessage> Errors { get; set; }
 
         private static string CreateMessage(IEnumerable<ErrorMessage> errors)
         {
@@ -55,12 +61,11 @@ namespace Innovt.Core.Exceptions
             var strError = new StringBuilder();
             strError.Append("[");
             foreach (var errorInfo in errorMessages)
-            {
                 if (errorInfo.Message.IsNotNullOrEmpty())
-                {
-                    strError.Append("{" + $"\"Message\":\"{errorInfo.Message}\",\"Code\":\"{errorInfo.Code}\",\"PropertyName\":\"{errorInfo.PropertyName}\"" +"}");
-                }
-            }
+                    strError.Append("{" +
+                                    $"\"Message\":\"{errorInfo.Message}\",\"Code\":\"{errorInfo.Code}\",\"PropertyName\":\"{errorInfo.PropertyName}\"" +
+                                    "}");
+
             strError.Append("]");
 
             return strError.ToString();

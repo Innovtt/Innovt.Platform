@@ -1,8 +1,15 @@
-﻿using System;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Cloud
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 
 namespace Innovt.Cloud.Table
 {
-    public class TableMessage:ITableMessage
+    public class TableMessage : ITableMessage
     {
         public TableMessage()
         {
@@ -12,17 +19,18 @@ namespace Innovt.Cloud.Table
         {
             if (string.IsNullOrEmpty(id)) throw new ArgumentNullException(nameof(id));
 
-            this.Id = id;
+            Id = id;
         }
 
-        public TableMessage(string id,string rangeKey):this(id)
+        public TableMessage(string id, string rangeKey) : this(id)
         {
             if (string.IsNullOrEmpty(rangeKey)) throw new ArgumentNullException(nameof(rangeKey));
 
-            this.RangeKey = rangeKey;
+            RangeKey = rangeKey;
         }
 
-        public string Id { get; set; }
         public string RangeKey { get; set; }
+
+        public string Id { get; set; }
     }
 }

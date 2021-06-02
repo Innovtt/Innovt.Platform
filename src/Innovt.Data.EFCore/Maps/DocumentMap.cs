@@ -1,4 +1,11 @@
-﻿using Innovt.Domain.Documents;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Data.EFCore
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using Innovt.Domain.Documents;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -8,7 +15,7 @@ namespace Innovt.Data.EFCore.Maps
     {
         private readonly bool ignoreDocumentType;
 
-        public DocumentMap(bool ignoreDocumentType=false)
+        public DocumentMap(bool ignoreDocumentType = false)
         {
             this.ignoreDocumentType = ignoreDocumentType;
         }

@@ -1,4 +1,11 @@
-﻿using Innovt.Core.Cqrs.Queries;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Data.Ado
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using Innovt.Core.Cqrs.Queries;
 using Innovt.Core.Utilities;
 using Innovt.Data.DataSources;
 using Innovt.Data.Model;
@@ -12,9 +19,9 @@ namespace Innovt.Data.Ado
             if (pagedFilter.IsNull())
                 return rawSql;
 
-            var recordStart  = (pagedFilter.Page) * pagedFilter.PageSize;
+            var recordStart = pagedFilter.Page * pagedFilter.PageSize;
 
-            if (recordStart < 0 )
+            if (recordStart < 0)
                 recordStart = 0;
 
             switch (dataSource.Provider)
@@ -27,7 +34,6 @@ namespace Innovt.Data.Ado
                         $" SELECT * FROM (SELECT a.*, rownum r_  FROM ({rawSql}) a WHERE rownum < (({pagedFilter.Page} * {pagedFilter.PageSize}) + 1) ) WHERE r_ >=  ((({pagedFilter.Page} - 1) * {pagedFilter.PageSize}) + 1)";
                 case Provider.MsSql:
                     return $"{rawSql} OFFSET {recordStart} ROWS FETCH NEXT @PageSize ROWS ONLY";
-                    break;
                 default:
                     return $"{rawSql} OFFSET {recordStart} ROWS FETCH NEXT @PageSize ROWS ONLY";
             }

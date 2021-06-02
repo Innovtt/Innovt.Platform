@@ -1,26 +1,31 @@
-﻿using System.Collections.Specialized;
-using System.Net;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Core
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using System;
+using System.Collections.Specialized;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using Innovt.Core.Serialization;
-
 
 namespace Innovt.Core.Http
 {
     public static class HttpConnection
     {
-        private static HttpWebRequest CreateHttpRequest(Uri url,int? connectionTimeout = 30000)
+        private static HttpWebRequest CreateHttpRequest(Uri url, int? connectionTimeout = 30000)
         {
-            HttpWebRequest httpRequest = (HttpWebRequest)WebRequest.Create(url);
-           
+            var httpRequest = (HttpWebRequest) WebRequest.Create(url);
+
             httpRequest.Timeout = connectionTimeout ?? 30000;
 
             // Don't set the Expect: 100-continue header as it's not supported
             // well by Akamai and can negatively impact performance.
-             httpRequest.ServicePoint.Expect100Continue = false;
-             httpRequest.AutomaticDecompression = DecompressionMethods.GZip;
-
+            httpRequest.ServicePoint.Expect100Continue = false;
+            httpRequest.AutomaticDecompression = DecompressionMethods.GZip;
 
             return httpRequest;
         }
@@ -34,13 +39,14 @@ namespace Innovt.Core.Http
         //}
 
         public static T Get<T>(Uri endpoint, ISerializer serializer,
-            string dataToSend=null, 
+            string dataToSend = null,
             NameValueCollection headerData = null, int? connectionTimeout = null) where T : class
         {
             var response = SendHttpWebRequest(endpoint, HttpMethod.Get.Method, dataToSend, headerData,
                 connectionTimeout);
 
-            if (response.ResponseStatusCode != HttpStatusCode.OK && response.ResponseStatusCode != HttpStatusCode.Created)
+            if (response.ResponseStatusCode != HttpStatusCode.OK &&
+                response.ResponseStatusCode != HttpStatusCode.Created)
                 throw new HttpException(response);
 
             return DeserializeObject<T>(serializer, response.RawResponse);
@@ -49,10 +55,9 @@ namespace Innovt.Core.Http
 
         public static HttpRequestDetail Put(Uri endpoint,
             string dataToSend,
-            NameValueCollection headerData = null, int? connectionTimeout = null, string accept=null)
+            NameValueCollection headerData = null, int? connectionTimeout = null)
         {
-            return SendHttpWebRequest(endpoint, HttpMethod.Put.Method, dataToSend, headerData,
-                connectionTimeout);
+            return SendHttpWebRequest(endpoint, HttpMethod.Put.Method, dataToSend, headerData, connectionTimeout);
         }
 
         public static HttpRequestDetail Delete(Uri endpoint,
@@ -62,6 +67,7 @@ namespace Innovt.Core.Http
             return SendHttpWebRequest(endpoint, HttpMethod.Delete.Method, dataToSend, headerData,
                 connectionTimeout);
         }
+
         public static HttpRequestDetail Head(Uri endpoint,
             string dataToSend,
             NameValueCollection headerData = null, int? connectionTimeout = null)
@@ -70,8 +76,8 @@ namespace Innovt.Core.Http
                 connectionTimeout);
         }
 
-        public static HttpRequestDetail Post(Uri endpoint,string dataToSend,
-            NameValueCollection headerData = null, int? connectionTimeout=null)
+        public static HttpRequestDetail Post(Uri endpoint, string dataToSend,
+            NameValueCollection headerData = null, int? connectionTimeout = null)
         {
             return SendHttpWebRequest(endpoint, HttpMethod.Post.Method, dataToSend, headerData,
                 connectionTimeout);
@@ -79,23 +85,21 @@ namespace Innovt.Core.Http
 
         private static T DeserializeObject<T>(ISerializer serializer, string content) where T : class
         {
-            if (typeof(T).Name.Equals("String"))
-            {
-                return (T)Convert.ChangeType(content, typeof(T));
-            }
+            if (typeof(T).Name.Equals("String")) return (T) Convert.ChangeType(content, typeof(T));
 
             return serializer.DeserializeObject<T>(content);
         }
 
         public static T Post<T>(Uri endpoint, string dataToSend, ISerializer serializer,
-            NameValueCollection headerData = null, int? connectionTimeout = null) where T:class 
+            NameValueCollection headerData = null, int? connectionTimeout = null) where T : class
         {
             if (serializer == null) throw new ArgumentNullException(nameof(serializer));
 
-            var response =  SendHttpWebRequest(endpoint, HttpMethod.Post.Method, dataToSend, headerData,
+            var response = SendHttpWebRequest(endpoint, HttpMethod.Post.Method, dataToSend, headerData,
                 connectionTimeout);
 
-            if (response.ResponseStatusCode != HttpStatusCode.OK && response.ResponseStatusCode != HttpStatusCode.Created)
+            if (response.ResponseStatusCode != HttpStatusCode.OK &&
+                response.ResponseStatusCode != HttpStatusCode.Created)
                 throw new HttpException(response);
 
             return DeserializeObject<T>(serializer, response.RawResponse);
@@ -103,35 +107,37 @@ namespace Innovt.Core.Http
 
         //PostAsync
         internal static HttpRequestDetail SendHttpWebRequest(Uri endpoint, string method, string dataToSend,
-            NameValueCollection headerData=null, int? connectionTimeout = null)
+            NameValueCollection headerData = null, int? connectionTimeout = null)
         {
             var webRequest = CreateHttpRequest(endpoint, connectionTimeout);
             webRequest.Method = method;
             webRequest.AddHeader(headerData).AddBody(dataToSend);
 
-            var requestDetail = new HttpRequestDetail()
+            var requestDetail = new HttpRequestDetail
             {
                 Url = webRequest.RequestUri.AbsoluteUri,
-                Method = webRequest.Method, Header = headerData, RawRequest = dataToSend
+                Method = webRequest.Method,
+                Header = headerData,
+                RawRequest = dataToSend
             };
-            
+
             try
             {
-                using HttpWebResponse webResponse = webRequest.GetResponse() as HttpWebResponse;
-                StreamReader streamReader = new StreamReader(webResponse.GetResponseStream());
+                using var webResponse = webRequest.GetResponse() as HttpWebResponse;
+                var streamReader = new StreamReader(webResponse.GetResponseStream());
                 requestDetail.RawResponse = streamReader.ReadToEnd();
                 requestDetail.ResponseStatusCode = webResponse.StatusCode;
             }
             catch (WebException ex)
             {
-                if (ex.Response == null) { throw; }
+                if (ex.Response == null) throw;
 
-                using HttpWebResponse webResponse = (HttpWebResponse)ex.Response;
-                StreamReader test = new StreamReader(webResponse.GetResponseStream());
+                using var webResponse = (HttpWebResponse) ex.Response;
+                var test = new StreamReader(webResponse.GetResponseStream());
                 requestDetail.RawResponse = test.ReadToEnd();
                 requestDetail.ResponseStatusCode = webResponse.StatusCode;
             }
-          
+
 
             return requestDetail;
         }

@@ -1,5 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Core
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 
 namespace Innovt.Core.Utilities
 {
@@ -16,6 +22,7 @@ namespace Innovt.Core.Utilities
         {
             return obj?.ToString() == Value;
         }
+
         public virtual bool Equals(ConstantClass obj)
         {
             return obj?.Value == Value;
@@ -40,22 +47,27 @@ namespace Innovt.Core.Utilities
         {
             return a?.Value == b?.Value;
         }
+
         public static bool operator ==(ConstantClass a, string b)
         {
             return a?.Value == b;
         }
+
         public static bool operator ==(string a, ConstantClass b)
         {
             return a == b?.Value;
         }
+
         public static bool operator !=(ConstantClass a, ConstantClass b)
         {
             return a?.Value != b?.Value;
         }
+
         public static bool operator !=(ConstantClass a, string b)
         {
             return a?.Value != b;
         }
+
         public static bool operator !=(string a, ConstantClass b)
         {
             return a != b?.Value;

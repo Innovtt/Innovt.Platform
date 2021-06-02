@@ -1,4 +1,11 @@
-﻿using System;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Core
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 using System.Diagnostics;
 using Innovt.Core.CrossCutting.Log;
 
@@ -6,35 +13,35 @@ namespace Innovt.Core.Utilities
 {
     public class StopWatchHelper : IDisposable
     {
-        private readonly ILogger logger;
         private readonly string action;
-        private Stopwatch stopwatch = null;
-        
-        public StopWatchHelper(ILogger logger,string action)
+        private readonly ILogger logger;
+        private Stopwatch stopwatch;
+
+        public StopWatchHelper(ILogger logger, string action)
         {
             this.logger = logger;
             this.action = action;
             stopwatch = Stopwatch.StartNew();
         }
 
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
         protected virtual void Dispose(bool disposing)
         {
             try
             {
-                logger.Info($"Action={action},ElapsedMilliseconds={ stopwatch.ElapsedMilliseconds}");
+                logger.Info($"Action={action},ElapsedMilliseconds={stopwatch.ElapsedMilliseconds}");
                 stopwatch = null;
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);//todo: colocar no log
+                Console.WriteLine(e); //todo: colocar no log
             }
-        }
-
-
-        public void Dispose()
-        {
-           Dispose(true);
-           GC.SuppressFinalize(this);
         }
 
         ~StopWatchHelper()

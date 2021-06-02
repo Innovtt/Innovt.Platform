@@ -1,14 +1,19 @@
-﻿using Amazon;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Cloud.AWS
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
+using System.Net;
+using Amazon;
 using Amazon.Runtime;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Core.CrossCutting.Log;
 using Polly;
 using Polly.CircuitBreaker;
 using Polly.Retry;
-using System;
-using System.Net;
-using OpenTracing;
-using OpenTracing.Util;
 using RetryPolicy = Polly.Retry.RetryPolicy;
 
 namespace Innovt.Cloud.AWS
@@ -17,19 +22,7 @@ namespace Innovt.Cloud.AWS
     {
         protected readonly IAWSConfiguration Configuration;
 
-        /// <summary>
-        /// This is the service region
-        /// </summary>
-        private string Region { get; set; }
-
-        public int RetryCount { get; set; }
-
-        protected int CircuitBreakerAllowedExceptions { get; set; }
-
-        protected TimeSpan CircuitBreakerDurationOfBreak { get; set; }
-
-        protected ILogger Logger { get; }
-        protected ITracer Tracer { get; }
+        private bool disposed;
 
         private AwsBaseService()
         {
@@ -40,36 +33,36 @@ namespace Innovt.Cloud.AWS
 
         protected AwsBaseService(ILogger logger, IAWSConfiguration configuration) : this()
         {
-            this.Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
-            this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+            Logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        protected AwsBaseService(ILogger logger,ITracer tracer, IAWSConfiguration configuration) : this(logger,configuration)
+        protected AwsBaseService(ILogger logger, IAWSConfiguration configuration, string region) : this()
         {
-            Tracer = tracer ?? throw new ArgumentNullException(nameof(tracer));
+            Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+            Logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            Region = region ?? throw new ArgumentNullException(nameof(region));
         }
 
-        protected AwsBaseService(ILogger logger, IAWSConfiguration configuration, string region):this()
+        /// <summary>
+        ///     This is the service region
+        /// </summary>
+        private string Region { get; }
+
+        public int RetryCount { get; set; }
+
+        protected int CircuitBreakerAllowedExceptions { get; set; }
+
+        protected TimeSpan CircuitBreakerDurationOfBreak { get; set; }
+
+        protected ILogger Logger { get; }
+
+        public void Dispose()
         {
-            this.Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
-            this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            this.Region = region ?? throw new ArgumentNullException(nameof(region));
-        }
-
-        protected AwsBaseService(ILogger logger,ITracer tracer, IAWSConfiguration configuration, string region):this(logger, configuration, region)
-        {
-            Tracer = tracer ?? throw new ArgumentNullException(nameof(tracer));
+            Dispose(true);
         }
 
 
-        protected string GetTraceId()
-        {
-            var tracer = GlobalTracer.Instance ?? Tracer;
-
-
-            return tracer?.ActiveSpan?.Context?.TraceId;
-        }
-     
         protected RegionEndpoint GetServiceRegionEndPoint()
         {
             var region = Region ?? Configuration?.Region;
@@ -79,25 +72,26 @@ namespace Innovt.Cloud.AWS
 
             return RegionEndpoint.GetBySystemName(region);
         }
-        
+
         /// <summary>
-        /// This method will decide about Configuration or Profile AWS Services 
+        ///     This method will decide about Configuration or Profile AWS Services
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        protected T CreateService<T>() where T: IAmazonService
+        protected T CreateService<T>() where T : IAmazonService
         {
             var credentials = Configuration.GetCredential();
             var serviceRegion = GetServiceRegionEndPoint();
 
             if (credentials == null)
-            {
-                return serviceRegion == null ? Activator.CreateInstance<T>() : (T)Activator.CreateInstance(typeof(T), serviceRegion);
-            }
+                return serviceRegion == null
+                    ? Activator.CreateInstance<T>()
+                    : (T) Activator.CreateInstance(typeof(T), serviceRegion);
 
-       
-            return serviceRegion == null ? (T)Activator.CreateInstance(typeof(T), credentials) :
-                (T)Activator.CreateInstance(typeof(T), credentials, serviceRegion);
+
+            return serviceRegion == null
+                ? (T) Activator.CreateInstance(typeof(T), credentials)
+                : (T) Activator.CreateInstance(typeof(T), credentials, serviceRegion);
         }
 
 
@@ -105,20 +99,21 @@ namespace Innovt.Cloud.AWS
         {
             return (exception, timeSpan, retryCount, context) =>
             {
-                Logger.Warning($"Retry {retryCount} implemented of {context.PolicyKey} at {context.OperationKey} due to {exception}");
+                Logger.Warning(
+                    $"Retry {retryCount} implemented of {context.PolicyKey} at {context.OperationKey} due to {exception}");
             };
         }
 
         /// <summary>
-        /// Basic Retry Policy using AmazonServiceException
+        ///     Basic Retry Policy using AmazonServiceException
         /// </summary>
         /// <returns></returns>
         protected virtual AsyncRetryPolicy CreateDefaultRetryAsyncPolicy()
         {
             return Policy.Handle<AmazonServiceException>(r =>
-                     r.StatusCode == HttpStatusCode.ServiceUnavailable ||
-                     r.StatusCode == HttpStatusCode.InternalServerError).WaitAndRetryAsync(RetryCount, retryAttempt =>
-                     TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
+                r.StatusCode == HttpStatusCode.ServiceUnavailable ||
+                r.StatusCode == HttpStatusCode.InternalServerError).WaitAndRetryAsync(RetryCount, retryAttempt =>
+                TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
         }
 
         protected virtual RetryPolicy CreateDefaultRetryPolicy()
@@ -129,69 +124,67 @@ namespace Innovt.Cloud.AWS
                 TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
         }
 
-        protected virtual AsyncRetryPolicy CreateRetryAsyncPolicy<T>() where T: Exception
-        {       
-           return Policy.Handle<T>().WaitAndRetryAsync(RetryCount, retryAttempt => 
-
-
-	                TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry() );
-
+        protected virtual AsyncRetryPolicy CreateRetryAsyncPolicy<T>() where T : Exception
+        {
+            return Policy.Handle<T>().WaitAndRetryAsync(RetryCount, retryAttempt =>
+                TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
         }
 
-        protected virtual AsyncRetryPolicy CreateRetryAsyncPolicy<T,T1>() where T: Exception where T1: Exception
-        {       
-           return Policy.Handle<T>().Or<T1>().WaitAndRetryAsync(RetryCount, retryAttempt => 
-	                TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
+        protected virtual AsyncRetryPolicy CreateRetryAsyncPolicy<T, T1>() where T : Exception where T1 : Exception
+        {
+            return Policy.Handle<T>().Or<T1>().WaitAndRetryAsync(RetryCount, retryAttempt =>
+                TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
         }
 
-        protected virtual AsyncRetryPolicy CreateRetryAsyncPolicy<T, T1, T2>() where T : Exception where T1 : Exception where T2 : Exception
+        protected virtual AsyncRetryPolicy CreateRetryAsyncPolicy<T, T1, T2>()
+            where T : Exception where T1 : Exception where T2 : Exception
         {
             return Policy.Handle<T>().Or<T1>().Or<T2>()
                 .WaitAndRetryAsync(RetryCount, retryAttempt =>
-                     TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
+                    TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
         }
 
-        protected virtual AsyncRetryPolicy CreateRetryAsyncPolicy<T,T1,T2,T3>() where T : Exception where T1 : Exception where T2 : Exception
+        protected virtual AsyncRetryPolicy CreateRetryAsyncPolicy<T, T1, T2, T3>() where T : Exception
+            where T1 : Exception
+            where T2 : Exception
             where T3 : Exception
         {
             return Policy.Handle<T>().Or<T1>().Or<T2>().Or<T3>()
                 .WaitAndRetryAsync(RetryCount, retryAttempt =>
-                     TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
+                    TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
         }
 
-        protected virtual AsyncRetryPolicy CreateRetryAsyncPolicy<T, T1, T2, T3, T4>() where T : Exception where T1 : Exception where T2 : Exception
-        where T3 : Exception where T4 : Exception
+        protected virtual AsyncRetryPolicy CreateRetryAsyncPolicy<T, T1, T2, T3, T4>() where T : Exception
+            where T1 : Exception
+            where T2 : Exception
+            where T3 : Exception
+            where T4 : Exception
         {
             return Policy.Handle<T>().Or<T1>().Or<T2>().Or<T3>().Or<T4>()
                 .WaitAndRetryAsync(RetryCount, retryAttempt =>
-                     TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
+                    TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
         }
 
-        protected virtual AsyncCircuitBreakerPolicy CreateCircuitBreaker<T,T1>() where T: Exception where T1: Exception
-        {       
-           return Policy.Handle<T>().CircuitBreakerAsync(CircuitBreakerAllowedExceptions, CircuitBreakerDurationOfBreak);
+        protected virtual AsyncCircuitBreakerPolicy CreateCircuitBreaker<T, T1>()
+            where T : Exception where T1 : Exception
+        {
+            return Policy.Handle<T>()
+                .CircuitBreakerAsync(CircuitBreakerAllowedExceptions, CircuitBreakerDurationOfBreak);
         }
 
-        private bool disposed=false;
-        
         private void Dispose(bool disposing)
         {
-            if (this.disposed || !disposing)
+            if (disposed || !disposing)
                 return;
-            
+
             DisposeServices();
 
             disposed = true;
         }
 
-        public void Dispose()
-        {
-            this.Dispose(true);
-        }
-        
         ~AwsBaseService()
         {
-            this.Dispose(false);
+            Dispose(false);
         }
 
         protected abstract void DisposeServices();

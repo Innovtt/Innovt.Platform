@@ -1,21 +1,28 @@
-﻿using System;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Core
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
 namespace Innovt.Core.Utilities
 {
-    public static  class Cryptography
+    public static class Cryptography
     {
-        public static string ShaHash(this string plainPassword,string salt="")
+        public static string ShaHash(this string plainPassword, string salt = "")
         {
             using var sha256 = SHA256.Create();
 
             var passBytes = Encoding.UTF8.GetBytes(plainPassword + salt);
-                
+
             var hashBytes = sha256.ComputeHash(passBytes);
 
-            var hashedPassword = BitConverter.ToString(hashBytes).Replace("-", "").ToLower(); 
+            var hashedPassword = BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
 
             return hashedPassword;
         }
@@ -25,21 +32,22 @@ namespace Innovt.Core.Utilities
             if (plainText == null) throw new ArgumentNullException(nameof(plainText));
 
             using var resultStream = new MemoryStream();
-            using (var sWriter = new StreamWriter(new CryptoStream(resultStream, cryptoTransform, CryptoStreamMode.Write)))
+            using (var sWriter =
+                new StreamWriter(new CryptoStream(resultStream, cryptoTransform, CryptoStreamMode.Write)))
             {
                 sWriter.Write(plainText);
             }
 
             var encrypted = resultStream.ToArray();
 
-            return Convert.ToBase64String(encrypted);  
+            return Convert.ToBase64String(encrypted);
         }
 
-     
-        internal static string Decrypt(ICryptoTransform cryptoTransform,string  encrypted)
+
+        internal static string Decrypt(ICryptoTransform cryptoTransform, string encrypted)
         {
             if (encrypted == null) throw new ArgumentNullException(nameof(encrypted));
-   
+
             var buffer = Convert.FromBase64String(encrypted);
 
             using var mStream = new MemoryStream(buffer);
@@ -48,7 +56,7 @@ namespace Innovt.Core.Utilities
         }
 
 
-        public static string AesEncrypt(string plainText,string keyString)
+        public static string AesEncrypt(string plainText, string keyString)
         {
             if (plainText == null) throw new ArgumentNullException(nameof(plainText));
             if (keyString == null) throw new ArgumentNullException(nameof(keyString));
@@ -62,7 +70,7 @@ namespace Innovt.Core.Utilities
             return Encrypt(crypto, plainText);
         }
 
-        
+
         public static string RijndaelEncrypt(string plainText, string keyString)
         {
             if (plainText == null) throw new ArgumentNullException(nameof(plainText));
@@ -76,7 +84,6 @@ namespace Innovt.Core.Utilities
 
             return Encrypt(crypto, plainText);
         }
-
 
 
         public static string AesDecrypt(string encryptedText, string keyString)
@@ -112,10 +119,10 @@ namespace Innovt.Core.Utilities
         {
             using var sha256 = MD5.Create();
             var passBytes = Encoding.UTF8.GetBytes(plainPassword);
-                
+
             var hashBytes = sha256.ComputeHash(passBytes);
 
-            var hashedPassword = BitConverter.ToString(hashBytes).Replace("-", "").ToLower(); 
+            var hashedPassword = BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
 
             return hashedPassword;
         }

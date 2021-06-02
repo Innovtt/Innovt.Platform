@@ -1,18 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Core
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 using System.Text.Json.Serialization;
 
 namespace Innovt.Core.Serialization
 {
-    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
-    public class JsonFormatAttribute: JsonAttribute
+    [AttributeUsage(AttributeTargets.Property)]
+    public class JsonFormatAttribute : JsonAttribute
     {
-        public string Format { get; }
-
         public JsonFormatAttribute(string format)
         {
-            this.Format = format;
+            Format = format;
         }
+
+        public string Format { get; }
     }
 }

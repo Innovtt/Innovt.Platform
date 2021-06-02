@@ -1,14 +1,20 @@
-﻿using System.Collections.Generic;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Cloud.AWS.Cognito
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Innovt.Cloud.AWS.Cognito.Resources;
 using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.Cognito.Model
 {
-    public class ChangePasswordRequest: RequestBase
-    { 
-        [Required]
-        public string AccessToken { get; set; }
+    public class ChangePasswordRequest : RequestBase
+    {
+        [Required] public string AccessToken { get; set; }
 
         [Required]
         [StringLength(20, MinimumLength = 4)]
@@ -25,24 +31,18 @@ namespace Innovt.Cloud.AWS.Cognito.Model
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (AccessToken.IsNullOrEmpty())
-            {
-                yield return new ValidationResult(Messages.EmailIsRequired, new[] { nameof(AccessToken) });
-            }
-            
+                yield return new ValidationResult(Messages.EmailIsRequired, new[] {nameof(AccessToken)});
+
             if (ConfirmProposedPassword.IsNullOrEmpty())
-            {
-                yield return new ValidationResult(Messages.ConfirmPasswordIsRequired, new[] { nameof(ConfirmProposedPassword) });
-            }  
-            
+                yield return new ValidationResult(Messages.ConfirmPasswordIsRequired,
+                    new[] {nameof(ConfirmProposedPassword)});
+
             if (PreviousPassword.IsNullOrEmpty())
-            {
-                yield return new ValidationResult(Messages.CurrentPasswordRequired, new[] { nameof(PreviousPassword) });
-            }
-            
+                yield return new ValidationResult(Messages.CurrentPasswordRequired, new[] {nameof(PreviousPassword)});
+
             if (ProposedPassword != ConfirmProposedPassword)
-            {
-                yield return new ValidationResult(Messages.PasswordsDoNotMatch, new[] { nameof(ConfirmProposedPassword), nameof(ProposedPassword) });
-            }
+                yield return new ValidationResult(Messages.PasswordsDoNotMatch,
+                    new[] {nameof(ConfirmProposedPassword), nameof(ProposedPassword)});
         }
     }
 }

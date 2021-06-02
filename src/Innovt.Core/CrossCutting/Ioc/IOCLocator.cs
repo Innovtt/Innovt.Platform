@@ -1,4 +1,11 @@
-﻿using System;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Core
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 using System.Linq;
 using System.Reflection;
 using Innovt.Core.Exceptions;
@@ -16,11 +23,11 @@ namespace Innovt.Core.CrossCutting.Ioc
 
         private static void ThrowExceptionIfContainerIsNotInitialized()
         {
-            if(container==null)
+            if (container == null)
                 throw new CriticalException("IOC Container not initialized");
         }
 
-        
+
         public static object Resolve(Type type)
         {
             ThrowExceptionIfContainerIsNotInitialized();
@@ -34,7 +41,7 @@ namespace Innovt.Core.CrossCutting.Ioc
 
             return container.Resolve<TService>(type);
         }
-        
+
         public static TService Resolve<TService>(string intanceKey)
         {
             ThrowExceptionIfContainerIsNotInitialized();

@@ -1,43 +1,38 @@
-﻿//===================================================================================
-// Microsoft Developer & Platform Evangelism
-//=================================================================================== 
-// THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
-// EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES 
-// OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-//===================================================================================
-// Copyright (c) Microsoft Corporation.  All Rights Reserved.
-// This code is released under the terms of the MS-LPL license, 
-// http://microsoftnlayerapp.codeplex.com/license
-//===================================================================================
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Domain.Core
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 
 namespace Innovt.Domain.Core.Specification
 {
     /// <summary>
-    /// Represent a Expression Specification
-    /// <remarks>
-    /// Specification overload operators for create AND,OR or NOT specifications.
-    /// Additionally overload AND and OR operators with the same sense of ( binary And and binary Or ).
-    /// C# couldn’t overload the AND and OR operators directly since the framework doesn’t allow such craziness. But
-    /// with overloading false and true operators this is posible. For explain this behavior please read
-    /// http://msdn.microsoft.com/en-us/library/aa691312(VS.71).aspx
-    /// </remarks>
+    ///     Represent a Expression Specification
+    ///     <remarks>
+    ///         Specification overload operators for create AND,OR or NOT specifications.
+    ///         Additionally overload AND and OR operators with the same sense of ( binary And and binary Or ).
+    ///         C# couldn’t overload the AND and OR operators directly since the framework doesn’t allow such craziness. But
+    ///         with overloading false and true operators this is posible. For explain this behavior please read
+    ///         http://msdn.microsoft.com/en-us/library/aa691312(VS.71).aspx
+    ///     </remarks>
     /// </summary>
     /// <typeparam name="TValueObject">Type of item in the criteria</typeparam>
     public abstract class Specification<TEntity>
-         : ISpecification<TEntity>
-         where TEntity : class
+        : ISpecification<TEntity>
+        where TEntity : class
     {
         public int? Page { get; set; }
         public int? PageSize { get; set; }
 
         #region ISpecification<TValueObject> Members
 
-
         /// <summary>
-        /// IsSatisFied Specification pattern method,
+        ///     IsSatisFied Specification pattern method,
         /// </summary>
         /// <returns>Expression that satisfy this specification</returns>
         public abstract Expression<Func<TEntity, bool>> SatisfiedBy();
@@ -47,29 +42,31 @@ namespace Innovt.Domain.Core.Specification
         #region Override Operators
 
         /// <summary>
-        ///  And operator
+        ///     And operator
         /// </summary>
         /// <param name="leftSideSpecification">left operand in this AND operation</param>
         /// <param name="rightSideSpecification">right operand in this AND operation</param>
         /// <returns>New specification</returns>
-        public static Specification<TEntity> operator &(Specification<TEntity> leftSideSpecification, Specification<TEntity> rightSideSpecification)
+        public static Specification<TEntity> operator &(Specification<TEntity> leftSideSpecification,
+            Specification<TEntity> rightSideSpecification)
         {
             return new AndSpecification<TEntity>(leftSideSpecification, rightSideSpecification);
         }
-       
+
         /// <summary>
-        /// Or operator
+        ///     Or operator
         /// </summary>
         /// <param name="leftSideSpecification">left operand in this OR operation</param>
         /// <param name="rightSideSpecification">left operand in this OR operation</param>
         /// <returns>New specification </returns>
-        public static Specification<TEntity> operator |(Specification<TEntity> leftSideSpecification, Specification<TEntity> rightSideSpecification)
+        public static Specification<TEntity> operator |(Specification<TEntity> leftSideSpecification,
+            Specification<TEntity> rightSideSpecification)
         {
             return new OrSpecification<TEntity>(leftSideSpecification, rightSideSpecification);
         }
-        
+
         /// <summary>
-        /// Not specification
+        ///     Not specification
         /// </summary>
         /// <param name="specification">Specification to negate</param>
         /// <returns>New specification</returns>
@@ -77,9 +74,9 @@ namespace Innovt.Domain.Core.Specification
         {
             return new NotSpecification<TEntity>(specification);
         }
-      
+
         /// <summary>
-        /// Override operator false, only for support AND OR operators
+        ///     Override operator false, only for support AND OR operators
         /// </summary>
         /// <param name="specification">Specification instance</param>
         /// <returns>See False operator in C#</returns>
@@ -87,19 +84,19 @@ namespace Innovt.Domain.Core.Specification
         {
             return false;
         }
-        
+
         /// <summary>
-        /// Override operator True, only for support AND OR operators
+        ///     Override operator True, only for support AND OR operators
         /// </summary>
         /// <param name="specification">Specification instance</param>
         /// <returns>See True operator in C#</returns>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "specification")]
+        [SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters",
+            MessageId = "specification")]
         public static bool operator true(Specification<TEntity> specification)
         {
             return false;
         }
-      
+
         #endregion
     }
 }
-

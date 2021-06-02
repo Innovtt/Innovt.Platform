@@ -1,4 +1,11 @@
-﻿using System;
+﻿// INNOVT TECNOLOGIA 2014-2021
+// Author: Michel Magalhães
+// Project: Innovt.Job.Quartz
+// Solution: Innovt.Platform
+// Date: 2021-06-02
+// Contact: michel@innovt.com.br or michelmob@gmail.com
+
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Innovt.Core.CrossCutting.Log;
@@ -7,28 +14,34 @@ using Quartz;
 
 namespace Innovt.Job.Quartz
 {
-    public abstract class QuartzJobBase : JobBase , IJob // where T : IJob
+    public abstract class QuartzJobBase : JobBase, IJob // where T : IJob
     {
-        private readonly IScheduler scheduler;
-        private readonly JobKey key;
         private readonly int intervalInMinutes;
+        private readonly JobKey key;
+        private readonly IScheduler scheduler;
         private DateTimeOffset nextScheduleExecution = DateTimeOffset.MinValue;
 
-        protected QuartzJobBase(string name, double heartBeatInterval, ILogger logger, IScheduler scheduler, int intervalInMinutes) : base(name, logger, heartBeatInterval)
+        protected QuartzJobBase(string name, double heartBeatInterval, ILogger logger, IScheduler scheduler,
+            int intervalInMinutes) : base(name, logger, heartBeatInterval)
         {
             this.scheduler = scheduler ?? throw new ArgumentNullException(nameof(scheduler));
             this.intervalInMinutes = intervalInMinutes;
             key = new JobKey(Name + "Key");
         }
 
-        protected override async Task OnStart(CancellationToken cancellationToken = default)
+        public Task Execute(IJobExecutionContext context)
         {
-            await Schedule(cancellationToken);
+            return OnExecute();
         }
 
-        protected override async Task OnStop(CancellationToken cancellationToken = default)
+        protected override Task OnStart(CancellationToken cancellationToken = default)
         {
-           await scheduler.Shutdown(true, cancellationToken);
+            return Schedule(cancellationToken);
+        }
+
+        protected override Task OnStop(CancellationToken cancellationToken = default)
+        {
+            return scheduler.Shutdown(true, cancellationToken);
         }
 
         public virtual async Task Schedule(CancellationToken cancellationToken = default)
@@ -37,31 +50,26 @@ namespace Innovt.Job.Quartz
             if (nextScheduleExecution == DateTimeOffset.MinValue)
             {
                 nextScheduleExecution = DateTimeOffset.Now;
-                await scheduler.Start(cancellationToken);
+                await scheduler.Start(cancellationToken).ConfigureAwait(false);
             }
             else
             {
-                var jobExist = await scheduler.CheckExists(key, cancellationToken);
+                var jobExist = await scheduler.CheckExists(key, cancellationToken).ConfigureAwait(false);
 
                 if (jobExist)
                 {
                     nextScheduleExecution = DateTime.Now.AddMinutes(intervalInMinutes);
-                    await scheduler.DeleteJob(key,cancellationToken);
+                    await scheduler.DeleteJob(key, cancellationToken).ConfigureAwait(false);
                 }
-                
+
                 var trigger = TriggerBuilder.Create().WithIdentity(key.Name).StartAt(nextScheduleExecution).Build();
-                
+
                 var job = JobBuilder.Create().WithIdentity(key).Build();
-                
-                await scheduler.ScheduleJob(job, trigger,cancellationToken);
+
+                await scheduler.ScheduleJob(job, trigger, cancellationToken).ConfigureAwait(false);
             }
         }
-        
-        protected abstract Task OnExecute();
 
-        public Task Execute(IJobExecutionContext context)
-        {
-            return OnExecute();
-        }
+        protected abstract Task OnExecute();
     }
 }
