@@ -14,9 +14,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1.8.0
+      uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0
+        dotnet-version: 5.0.x
     - name: Setting Workspace
       working-directory: ${{ github.workspace }}
       run: ls -la
