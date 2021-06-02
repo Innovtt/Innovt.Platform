@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
   <PackageId>Innovt.Cloud.AWS.SQS</PackageId>
-  <PackageVersion>5.0.0-rc6</PackageVersion>
+  <PackageVersion>5.0.0</PackageVersion>
     <Authors>Michel,Tiago</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
