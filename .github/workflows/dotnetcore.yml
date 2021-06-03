@@ -27,7 +27,7 @@ jobs:
       working-directory: src
       run: dotnet build --configuration Release --no-restore
     - name: SonarCloud Scan
-      uses: SonarSource/sonarcloud-github-action@v1.1
+      uses: SonarSource/sonarcloud-github-action@v1.6
       with:
         projectBaseDir: src
       env:
