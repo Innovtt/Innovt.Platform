@@ -24,7 +24,7 @@ namespace Innovt.Cloud.Table
 
         Task AddAsync<T>(T message, CancellationToken cancellationToken = default) where T : ITableMessage;
 
-        Task AddAsync<T>(IList<T> message, CancellationToken cancellationToken = default) where T : ITableMessage;
+        Task AddAsync<T>(IList<T> messages, CancellationToken cancellationToken = default) where T : ITableMessage;
 
         Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default);
 

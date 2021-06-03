@@ -8,6 +8,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,7 @@ namespace Innovt.Cloud.AWS.Dynamo
 {
     internal static class Helpers
     {
-        private const string encriptionKey = "AAECAwQFBgcICQoL";
+        const string encriptionKey = "AAECAwQFBgcICQoL";
         private const string paginationTokenseparator = "|";
 
 
@@ -96,18 +97,19 @@ namespace Innovt.Cloud.AWS.Dynamo
 
             var properties = filter.GetType().GetProperties();
 
-            if (properties.Length > 0)
-                foreach (var item in properties)
+            if (properties.Length <= 0) return attributeValues;
+
+            foreach (var item in properties)
+            {
+                var key = $":{item.Name}".ToLower(CultureInfo.CurrentCulture);
+
+                if (attributes.Contains(key,StringComparison.InvariantCultureIgnoreCase) && !attributeValues.ContainsKey(key))
                 {
-                    var key = $":{item.Name}".ToLower();
+                    var value = item.GetValue(filter);
 
-                    if (attributes.Contains(key) && !attributeValues.ContainsKey(key))
-                    {
-                        var value = item.GetValue(filter);
-
-                        attributeValues.Add(key, CreateAttributeValue(value));
-                    }
+                    attributeValues.Add(key, CreateAttributeValue(value));
                 }
+            }
 
             return attributeValues;
         }

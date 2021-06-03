@@ -57,7 +57,9 @@ namespace Innovt.Notification.Core.Builders
         protected virtual NotificationMessageSubject BuildSubject(NotificationTemplate template,
             NotificationRequest request)
         {
-            return new()
+            if (template == null) throw new ArgumentNullException(nameof(template));
+
+            return new NotificationMessageSubject()
             {
                 Charset = template.Charset,
                 Content = template.Subject
