@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <PackageId>Innovt.AspNetCore</PackageId>
-    <PackageVersion>5.0.0</PackageVersion>
+    <PackageVersion>5.0.1</PackageVersion>
     <Authors>Michel Borges</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -21,12 +21,12 @@
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.6" />
-    <PackageReference Include="OpenTelemetry" Version="1.1.0-beta3" />
-    <PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.1.0-beta3" />
-    <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.0.0-rc4" />
-    <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.0.0-rc4" />
-    <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.0.0-rc4" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.7" />
+    <PackageReference Include="OpenTelemetry" Version="1.1.0-beta4" />
+    <PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.1.0-beta4" />
+    <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.0.0-rc5" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.0.0-rc5" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.0.0-rc5" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3">

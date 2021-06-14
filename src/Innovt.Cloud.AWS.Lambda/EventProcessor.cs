@@ -16,7 +16,7 @@ namespace Innovt.Cloud.AWS.Lambda
 {
     public abstract class EventProcessor<T> where T : class
     {
-        protected bool IsIocContainerInitialized;
+        private bool isIocContainerInitialized;
 
         protected EventProcessor(ILogger logger)
         {
@@ -29,11 +29,11 @@ namespace Innovt.Cloud.AWS.Lambda
 
         protected ILogger Logger { get; private set; }
         protected ILambdaContext Context { get; private set; }
-        protected IConfigurationRoot Configuration { get; private set; }
+        protected IConfigurationRoot Configuration { get; set; }
 
         private void SetupIoc()
         {
-            if (IsIocContainerInitialized)
+            if (isIocContainerInitialized)
             {
                 Context.Logger.LogLine("IOC Container already initialized.");
                 return;
@@ -64,7 +64,7 @@ namespace Innovt.Cloud.AWS.Lambda
             }
 
             //Will check always
-            IsIocContainerInitialized = true;
+            isIocContainerInitialized = true;
         }
 
         public async Task Process(T message, ILambdaContext context)
@@ -72,8 +72,7 @@ namespace Innovt.Cloud.AWS.Lambda
             if (message == null) throw new ArgumentNullException(nameof(message));
             if (context == null) throw new ArgumentNullException(nameof(context));
 
-            context.Logger.LogLine(
-                $"Receiving message. Function {context.FunctionName} and Version {context.FunctionVersion}");
+            context.Logger.LogLine($"Receiving message. Function {context.FunctionName} and Version {context.FunctionVersion}");
 
             Context = context;
 
@@ -81,7 +80,6 @@ namespace Innovt.Cloud.AWS.Lambda
 
             await Handle(message, context).ConfigureAwait(false);
         }
-
 
         protected abstract IContainer SetupIocContainer();
 

@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="OpenTelemetry.Exporter.Zipkin" Version="1.1.0-beta3" />
+    <PackageReference Include="OpenTelemetry.Exporter.Zipkin" Version="1.1.0-beta4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
-    <PackageReference Include="OpenTelemetry" Version="1.1.0-beta3" />
+    <PackageReference Include="OpenTelemetry" Version="1.1.0-beta4" />
   </ItemGroup>
 
   <ItemGroup>

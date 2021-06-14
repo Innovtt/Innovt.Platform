@@ -85,8 +85,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AspNet", "AspNet", "{E4691D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Cloud.AWS.Lambda.CustomRuntime", "Innovt.Cloud.AWS.Lambda.CustomRuntime\Innovt.Cloud.AWS.Lambda.CustomRuntime.csproj", "{59F66B5A-E0B0-41E7-BB2E-8263A094DCC8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{AB65946D-3D2C-4B2D-804B-C35749D61617}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
