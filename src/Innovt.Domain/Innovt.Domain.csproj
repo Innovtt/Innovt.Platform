@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <PackageId>Innovt.Domain</PackageId>
-    <PackageVersion>5.0.0</PackageVersion>
+    <PackageVersion>5.0.3</PackageVersion>
     <Authors>Michel Borges</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -12,11 +12,9 @@
     <LangVersion>latest</LangVersion>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
   </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj" />
     <ProjectReference Include="..\Innovt.Domain.Core\Innovt.Domain.Core.csproj" />
-
   </ItemGroup>
 
   <ItemGroup>

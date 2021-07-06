@@ -49,9 +49,18 @@ namespace Innovt.Core.Validation
 
             var result = obj.Validate(context)?.ToList();
 
-            if (result?.Any() == true) validationResults.AddRange(result);
+            if (result?.Any() == true)
+            {
+                foreach (var item in result)
+                {
+                    if(!validationResults.Any(r=>r.ErrorMessage == item.ErrorMessage))
+                    {
+                        validationResults.Add(item);
+                    }                    
+                }                
+            }
 
-            return validationResults;
+            return validationResults.Distinct().ToList();
         }
 
         public static bool IsValid(this IValidatableObject obj, ValidationContext context = null)
@@ -84,6 +93,13 @@ namespace Innovt.Core.Validation
             if (command == null) throw new ArgumentNullException(nameof(command));
 
             EnsureIsValid((IValidatableObject) command, context);
+        }
+
+        public static void EnsureIsValid([NotNull] this ICommand command, string contextName)
+        {
+            if (command == null) throw new ArgumentNullException(nameof(command));
+
+            EnsureIsValid((IValidatableObject)command, new ValidationContext(command) { MemberName = contextName, DisplayName = contextName });
         }
     }
 }

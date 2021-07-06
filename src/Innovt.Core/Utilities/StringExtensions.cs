@@ -267,7 +267,8 @@ namespace Innovt.Core.Utilities
             if (str.IsNullOrEmpty())
                 return str;
 
-            var bytes = Encoding.GetEncoding("iso-8859-8").GetBytes(str);
+            var bytes = Encoding.GetEncoding(28591).GetBytes(str);
+
             return Encoding.UTF8.GetString(bytes);
         }
 

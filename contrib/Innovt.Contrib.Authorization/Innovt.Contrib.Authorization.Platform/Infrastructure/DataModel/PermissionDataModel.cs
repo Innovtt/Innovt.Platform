@@ -17,7 +17,9 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
         public string Name { get; set; }
 
         public string Resource { get; set; }
-        
+
+        public Guid PermissionId { get; set; }
+
         public string BuildPk()
         {
             return $"P#{Id}";
@@ -31,10 +33,31 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
 
         public static PermissionDataModel FromPermission(Permission permission)
         {
-            if (permission == null) throw new ArgumentNullException(nameof(permission));
+            if (permission is null)
+                return null;
 
+            return new PermissionDataModel()
+            {
+                Name = permission.Name,
+                Domain = permission.Domain,
+                Resource = permission.Resource,
+                Sk = $"R#{permission.Resource}#N#{permission.Name}#",
+                Id = $"P#{permission.Id}"
+            };
+        }
 
-            throw new NotImplementedException();
+        public static Permission ToPermission(PermissionDataModel permission)
+        {
+            if (permission is null)
+                return null;
+
+            return new Permission()
+            {
+                Name = permission.Name,
+                Domain = permission.Domain,
+                Resource = permission.Resource,
+                Id  = permission.PermissionId
+            };
         }
     }
 }

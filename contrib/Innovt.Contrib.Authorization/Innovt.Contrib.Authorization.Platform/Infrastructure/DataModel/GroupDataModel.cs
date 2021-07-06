@@ -17,31 +17,49 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
 
         public string Description { get; set; }
 
-        public bool IsActive { get; set; }
+
+        public string Domain { get; set; }
+
+
+        public Guid GroupId { get; set; }
+
+        public DateTime CreatedAt { get; set; }
 
         public GroupDataModel()
         {
             EntityType = "Group";
         }
 
-        //public IList<Role> Roles { get; private set; }
-
-        public string BuildPk()
-        {
-            return $"G#{Name}";
-        }
-
         public IList<string> Users { get; private set; }
 
         public static GroupDataModel FromGroup(Group group)
         {
-            if (@group == null) throw new ArgumentNullException(nameof(@group));
+            if (group is null)
+                return null;
 
 
-            group.Roles[0].Permissions[0].
+            return new GroupDataModel()
+            {
+                Name = group.Name,
+                Description = group.Description,                
+                Id = $"G#{group.Name}",
+                Sk = group.Name                
+            };
+        }
 
+        public static Group ToGroup(GroupDataModel group)
+        {
+            if (group is null)
+                return null;
 
-            throw new System.NotImplementedException();
+            return new Group()
+            {
+                Name = group.Name,
+                Description = group.Description,                
+                Id = group.GroupId,
+                CreatedAt = group.CreatedAt,
+                Domain = group.Domain,
+            };
         }
     }
 }

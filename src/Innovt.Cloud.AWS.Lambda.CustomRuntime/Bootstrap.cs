@@ -14,7 +14,7 @@ using Amazon.Lambda.Serialization.SystemTextJson;
 
 namespace Innovt.Cloud.AWS.Lambda.CustomRuntime
 {
-    public static class LambdaCustomRuntime
+    public static class Bootstrap
     {
         public static async Task RunAsync<T>(Func<T, ILambdaContext, Task> func, CancellationToken cancellationToken)
         {

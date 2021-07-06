@@ -18,25 +18,38 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
 
         public DateTime CreatedAt { get; set; }
 
+        public Guid RoleId { get; set; }
+
         // public IList<Permission> Permissions { get; set; }
 
-
-        public string BuildPk()
+        public static Role ToRole(RoleDataModel roleDataModel)
         {
-            return $"R#{Name}";
-        }
+            if (roleDataModel is null)
+                return null;
 
-        public string BuildSk()
-        {
-            return $"R#";
+            return new Role()
+            {
+                Name = roleDataModel.Name,
+                Id = roleDataModel.RoleId,
+                CreatedAt = roleDataModel.CreatedAt, 
+                Description = roleDataModel.Description
+            };
         }
 
 
 
         public static RoleDataModel FromRole(Role role)
        {
-           if (role == null) throw new ArgumentNullException(nameof(role));
-           throw new NotImplementedException();
-       }
+            if (role is null)
+                return null;
+
+            return new RoleDataModel()
+            {
+                Name = role.Name,
+                Description =  role.Description,
+                CreatedAt = role.CreatedAt.GetValueOrDefault().UtcDateTime, 
+                RoleId = role.Id  
+            };
+        }
     }
 }
