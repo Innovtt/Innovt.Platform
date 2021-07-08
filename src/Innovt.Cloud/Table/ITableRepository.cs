@@ -38,8 +38,7 @@ namespace Innovt.Cloud.Table
         Task<(List<TResult1> first, List<TResult2> second)> QueryMultipleAsync<T, TResult1, TResult2>(
             QueryRequest request, string splitBy, CancellationToken cancellationToken = default);
 
-        Task<(List<TResult1> first, List<TResult2> second, List<TResult3> third)>
-            QueryMultipleAsync<T, TResult1, TResult2, TResult3>(QueryRequest request, string[] splitBy,
+        Task<(List<TResult1> first, List<TResult2> second, List<TResult3> third)> QueryMultipleAsync<T, TResult1, TResult2, TResult3>(QueryRequest request, string[] splitBy,
                 CancellationToken cancellationToken = default);
 
         Task<IList<T>> ScanAsync<T>(ScanRequest request,
