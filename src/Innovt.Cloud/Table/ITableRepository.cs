@@ -44,12 +44,10 @@ namespace Innovt.Cloud.Table
         Task<IList<T>> ScanAsync<T>(ScanRequest request,
             CancellationToken cancellationToken = default);
 
-        Task<PagedCollection<T>> ScanPaginatedByAsync<T>(ScanRequest request,
-            CancellationToken cancellationToken = default);
+        Task<PagedCollection<T>> ScanPaginatedByAsync<T>(ScanRequest request, CancellationToken cancellationToken = default);
 
-        Task<PagedCollection<T>> QueryPaginatedByAsync<T>(QueryRequest request,
-            CancellationToken cancellationToken = default);
+        Task<PagedCollection<T>> QueryPaginatedByAsync<T>(QueryRequest request, CancellationToken cancellationToken = default);
 
-        //where T : ITableMessage;
+        Task TransactWriteItemsAsync(TransactionWriteRequest request, CancellationToken cancellationToken);
     }
 }

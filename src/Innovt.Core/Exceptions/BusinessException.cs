@@ -70,5 +70,9 @@ namespace Innovt.Core.Exceptions
 
             return strError.ToString();
         }
+
+        public BusinessException()
+        {
+        }
     }
 }

@@ -19,12 +19,18 @@ namespace Innovt.Domain.Core.Repository
     {
         void Add(T entity);
 
+        void Add(IEnumerable<T> entities);
+
         Task AddAsync(T entity);
+
+        Task AddAsync(IEnumerable<T> entities);
 
         void Modify(T entity);
 
         void Remove(IEnumerable<T> entities);
+
         void Remove(T entity);
+
         T GetSingleOrDefault(ISpecification<T> specification, Include includes = null);
 
         Task<T> GetSingleOrDefaultAsync(ISpecification<T> specification, Include includes = null,

@@ -25,7 +25,7 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
 
         protected SqsEventProcessor(ILogger logger, ISerializer serializer) : base(logger)
         {
-            this.serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
+            this.Serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
         }
 
         protected SqsEventProcessor()
@@ -34,30 +34,27 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
 
         private ISerializer Serializer
         {
-            get
-            {
-                if (serializer == null)
-                    serializer = new JsonSerializer();
-
-                return serializer;
-            }
+            get { return serializer ??= new JsonSerializer(); }
 
             set => serializer = value;
         }
 
 
-        protected override async Task Handle(SQSEvent sqsEvent, ILambdaContext context)
+        protected override async Task Handle(SQSEvent message, ILambdaContext context)
         {
-            Logger.Info($"Processing Sqs event With {sqsEvent.Records?.Count} records.");
+            Logger.Info($"Processing Sqs event With {message?.Records?.Count} records.");
 
-            if (sqsEvent?.Records == null) return;
-            if (sqsEvent.Records.Count == 0) return;
+            if (message?.Records == null) return;
+            if (message.Records.Count == 0) return;
 
-            foreach (var record in sqsEvent.Records)
+            using var activity = EventProcessorActivitySource.StartActivity(nameof(Handle));
+            activity?.SetTag("SqsMessageRecordsCount", message?.Records?.Count);
+                
+            foreach (var record in message.Records)
             {
                 Logger.Info($"Processing SQS Event message ID {record.MessageId}.");
 
-                var message = new QueueMessage<TBody>
+                var queueMessage = new QueueMessage<TBody>
                 {
                     MessageId = record.MessageId,
                     ReceiptHandle = record.ReceiptHandle,
@@ -65,9 +62,23 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
                     Body = Serializer.DeserializeObject<TBody>(record.Body)
                 };
 
-                message.ParseQueueAttributes(record.Attributes);
+                if (record.Attributes is not null)
+                {
+                    queueMessage.ParseQueueAttributes(record.Attributes);
 
-                await ProcessMessage(message);
+                    record.Attributes.TryGetValue("TraceId", out var traceId);
+
+                    if (traceId is not null)
+                    {
+                        activity?.SetParentId(traceId);
+                    }
+                }
+
+                activity?.SetTag("SqsMessageId", queueMessage.MessageId);
+                activity?.SetTag("SqsMessageApproximateFirstReceiveTimestamp", queueMessage.ApproximateFirstReceiveTimestamp);
+                activity?.SetTag("SqsMessageApproximateReceiveCount", queueMessage.ApproximateReceiveCount);
+
+                await ProcessMessage(queueMessage).ConfigureAwait(false);
 
                 Logger.Info($"SQS Event message ID {record.MessageId} Processed.");
             }

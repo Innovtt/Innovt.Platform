@@ -24,6 +24,8 @@ namespace Innovt.Data.EFCore
     {
         private readonly IDataSource dataSource;
         private readonly ILoggerFactory loggerFactory;
+        public int? MaxRetryCount { get; set; }
+        public TimeSpan? MaxRetryDelay { get; set; }
 
         public DbContext(IDataSource dataSource)
         {
@@ -40,18 +42,15 @@ namespace Innovt.Data.EFCore
         {
             base.ChangeTracker.LazyLoadingEnabled = false;
         }
-
-        public int? MaxRetryCount { get; set; }
-        public TimeSpan? MaxRetryDelay { get; set; }
-
+        
         public int Commit()
         {
             return SaveChanges();
         }
 
-        public Task<int> CommitAsync(CancellationToken cancellationToken = default)
+        public async Task<int> CommitAsync(CancellationToken cancellationToken = default)
         {
-            return SaveChangesAsync(cancellationToken);
+            return await SaveChangesAsync(cancellationToken).ConfigureAwait(false);
         }
 
         public void Rollback()
@@ -61,75 +60,73 @@ namespace Innovt.Data.EFCore
                 .ForEach(entry => entry.State = EntityState.Unchanged);
         }
 
-        void IExtendedUnitOfWork.Add<T>(T entity)
+        public new void Add<T>(T entity) where  T: class
         {
             base.Add(entity);
         }
 
-        void IExtendedUnitOfWork.Add<T>(IEnumerable<T> entities)
+        public void Add<T>(IEnumerable<T> entities) where T : class
         {
             base.AddRange(entities);
         }
 
-#pragma warning disable CS1066 // The default value specified will have no effect because it applies to a member that is used in contexts that do not allow optional arguments
-        async Task IExtendedUnitOfWork.AddAsync<T>(T entity, CancellationToken cancellationToken = default)
-#pragma warning restore CS1066 // The default value specified will have no effect because it applies to a member that is used in contexts that do not allow optional arguments
+        public new async Task AddAsync<T>(T entity, CancellationToken cancellationToken = default) where T:class
         {
             await base.AddAsync(entity, cancellationToken).ConfigureAwait(false);
         }
-
-#pragma warning disable CS1066 // The default value specified will have no effect because it applies to a member that is used in contexts that do not allow optional arguments
-        async Task IExtendedUnitOfWork.AddAsync<T>(IEnumerable<T> entities,
-            CancellationToken cancellationToken = default)
-#pragma warning restore CS1066 // The default value specified will have no effect because it applies to a member that is used in contexts that do not allow optional arguments
+        
+        public async Task AddAsync<T>(IEnumerable<T> entities,CancellationToken cancellationToken = default) where T : class
         {
             await base.AddRangeAsync(entities, cancellationToken).ConfigureAwait(false);
         }
 
-        void IExtendedUnitOfWork.Remove<T>(T entity)
+        public new void Remove<T>(T entity) where T : class
         {
             base.Remove(entity);
         }
 
-        void IExtendedUnitOfWork.Remove<T>(IEnumerable<T> entities)
+        public void Remove<T>(IEnumerable<T> entities) where T : class
         {
             base.RemoveRange(entities);
         }
 
-        void IExtendedUnitOfWork.Update<T>(T entity)
+        public new void Update<T>(T entity) where T : class
         {
             base.Update(entity);
         }
 
-        void IExtendedUnitOfWork.Attach<T>(T entity)
+        public new void Attach<T>(T entity) where T : class
         {
             base.Attach(entity);
         }
 
-        void IExtendedUnitOfWork.Detach<T>(T entity)
+        public void Detach<T>(T entity) where T : class
         {
             base.Entry(entity).State = EntityState.Detached;
         }
 
-        IQueryable<T> IExtendedUnitOfWork.Queryable<T>()
+        public IQueryable<T> Queryable<T>() where T : class
         {
             return base.Set<T>();
         }
 
-        int IExtendedUnitOfWork.ExecuteSqlCommand(string sql, params object[] parameters)
+        public int ExecuteSqlCommand(string sql, params object[] parameters)
         {
             return base.Database.ExecuteSqlRaw(sql, parameters);
         }
 
-        Task<int> IExtendedUnitOfWork.ExecuteSqlCommandAsync(string sql, CancellationToken cancellationToken,
-            params object[] parameters)
+        public async Task<int> ExecuteSqlCommandAsync(string sql, CancellationToken cancellationToken = default, params object[] parameters)
         {
-            return base.Database.ExecuteSqlRawAsync(sql, cancellationToken: cancellationToken,
-                parameters: parameters);
+            return await base.Database
+                .ExecuteSqlRawAsync(sql, cancellationToken: cancellationToken, parameters: parameters)
+                .ConfigureAwait(false);
         }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            if (optionsBuilder == null) throw new ArgumentNullException(nameof(optionsBuilder));
+
             optionsBuilder.EnableSensitiveDataLogging(false);
             optionsBuilder.EnableDetailedErrors();
 

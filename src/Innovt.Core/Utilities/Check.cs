@@ -16,16 +16,13 @@ namespace Innovt.Core.Utilities
     [DebuggerStepThrough]
     public static class Check
     {
-        public static T NotNull<T>([NotNull] T value, string parameterName)
+        public static T NotNull<T>([AllowNull, NotNull] T value, string parameterName)
         {
-            if (value == null)
-            {
-                NotEmpty(parameterName, nameof(parameterName));
+            if (value != null) return value;
 
-                throw new ArgumentNullException(parameterName);
-            }
+            NotEmpty(parameterName, nameof(parameterName));
 
-            return value;
+            throw new ArgumentNullException(parameterName);
         }
 
         public static int NotLessThanZero(int? value, string parameterName)
@@ -73,7 +70,7 @@ namespace Innovt.Core.Utilities
 
         private static bool AreEqualImpl(string value, string value2)
         {
-            return value != null && !value.Equals(value2, StringComparison.InvariantCultureIgnoreCase);
+            return value != null && !value.Equals(value2, StringComparison.OrdinalIgnoreCase);
         }
 
         public static void AreEqual(string value, string value2, string message)

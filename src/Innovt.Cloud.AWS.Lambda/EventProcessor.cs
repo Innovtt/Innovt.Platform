@@ -6,6 +6,7 @@
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Amazon.Lambda.Core;
 using Innovt.Core.CrossCutting.Ioc;
@@ -18,6 +19,8 @@ namespace Innovt.Cloud.AWS.Lambda
     {
         private bool isIocContainerInitialized;
 
+        protected static readonly ActivitySource EventProcessorActivitySource = new(nameof(EventProcessor<T>));
+        
         protected EventProcessor(ILogger logger)
         {
             Logger = logger ?? throw new ArgumentNullException(nameof(logger));
@@ -39,6 +42,7 @@ namespace Innovt.Cloud.AWS.Lambda
                 return;
             }
 
+            using var activity = EventProcessorActivitySource.StartActivity(nameof(SetupIoc));
             Context.Logger.LogLine("Initializing IOC Container.");
 
             var container = SetupIocContainer();
@@ -73,6 +77,12 @@ namespace Innovt.Cloud.AWS.Lambda
             if (context == null) throw new ArgumentNullException(nameof(context));
 
             context.Logger.LogLine($"Receiving message. Function {context.FunctionName} and Version {context.FunctionVersion}");
+
+            using var activity = EventProcessorActivitySource.StartActivity(nameof(Process));
+            activity?.SetTag("AwsRequestId", context.AwsRequestId);
+            activity?.SetTag("FunctionName", context.FunctionName);
+            activity?.SetTag("FunctionVersion", context.FunctionVersion);
+            activity?.SetTag("MemoryLimitInMB", context.MemoryLimitInMB);
 
             Context = context;
 

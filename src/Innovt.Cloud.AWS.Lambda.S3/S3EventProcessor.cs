@@ -23,18 +23,21 @@ namespace Innovt.Cloud.AWS.Lambda.S3
         {
         }
 
-        protected override async Task Handle(S3Event s3Event, ILambdaContext context)
+        protected override async Task Handle(S3Event message, ILambdaContext context)
         {
-            Logger.Info($"Processing S3Event With {s3Event.Records?.Count} records.");
+            Logger.Info($"Processing S3Event With {message?.Records?.Count} records.");
 
-            if (s3Event?.Records == null) return;
-            if (s3Event.Records.Count == 0) return;
+            if (message?.Records == null) return;
+            if (message.Records.Count == 0) return;
 
-            foreach (var record in s3Event.Records)
+            using var activity = EventProcessorActivitySource.StartActivity(nameof(Handle));
+            activity?.SetTag("S3MessageRecordsCount", message?.Records?.Count);
+
+            foreach (var record in message.Records)
             {
                 Logger.Info($"Processing S3Event Version {record.EventVersion}");
-
-                await ProcessMessage(record);
+                    
+                await ProcessMessage(record).ConfigureAwait(false);
 
                 Logger.Info($"Event from S3 processed. Version {record.EventVersion}");
             }

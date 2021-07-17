@@ -13,12 +13,12 @@ namespace Innovt.Cloud.AWS.Kinesis
 {
     public class EventHandler : DataProducer<DomainEvent>, IEventHandler
     {
-        public EventHandler(string busName, ILogger logger, IAWSConfiguration configuration) : base(busName, logger,
+        public EventHandler(string busName, ILogger logger, IAwsConfiguration configuration) : base(busName, logger,
             configuration)
         {
         }
 
-        public EventHandler(string busName, ILogger logger, IAWSConfiguration configuration,
+        public EventHandler(string busName, ILogger logger, IAwsConfiguration configuration,
             string region) : base(busName, logger, configuration, region)
         {
         }

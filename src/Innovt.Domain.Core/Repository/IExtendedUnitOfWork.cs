@@ -31,12 +31,9 @@ namespace Innovt.Domain.Core.Repository
         void Attach<T>(T entity) where T : class;
 
         void Detach<T>(T entity) where T : class;
-
-        IQueryable<T> Queryable<T>() where T : class;
-
+        
         int ExecuteSqlCommand(string sql, params object[] parameters);
 
-        Task<int> ExecuteSqlCommandAsync(string sql, CancellationToken cancellationToken = default,
-            params object[] parameters);
+        Task<int> ExecuteSqlCommandAsync(string sql, CancellationToken cancellationToken = default, params object[] parameters);
     }
 }

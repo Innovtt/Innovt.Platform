@@ -7,6 +7,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.Table;
 using Innovt.Core.Collections;
 using Innovt.Core.CrossCutting.Log;
+using Innovt.Core.Exceptions;
 using Polly.Retry;
 using QueryRequest = Innovt.Cloud.Table.QueryRequest;
 using ScanRequest = Innovt.Cloud.Table.ScanRequest;
@@ -26,16 +28,16 @@ namespace Innovt.Cloud.AWS.Dynamo
 {
     public abstract class Repository : AwsBaseService, ITableRepository
     {
-        //private static readonly ActivitySource Activity = new(nameof(Repository));
+        private static readonly ActivitySource ActivityRepository = new(nameof(Repository));
 
         private DynamoDBContext context;
         private AmazonDynamoDBClient dynamoClient;
 
-        protected Repository(ILogger logger, IAWSConfiguration configuration) : base(logger, configuration)
+        protected Repository(ILogger logger, IAwsConfiguration configuration) : base(logger, configuration)
         {
         }
 
-        protected Repository(ILogger logger, IAWSConfiguration configuration, string region) : base(logger,
+        protected Repository(ILogger logger, IAwsConfiguration configuration, string region) : base(logger,
             configuration, region)
         {
         }
@@ -53,42 +55,62 @@ namespace Innovt.Cloud.AWS.Dynamo
         public async Task<T> GetByIdAsync<T>(object id, string rangeKey = null,
             CancellationToken cancellationToken = default) where T : ITableMessage
         {
-            var policy = CreateDefaultRetryAsyncPolicy();
+            using (ActivityRepository.StartActivity(nameof(GetByIdAsync)))
+            {
+                var policy = CreateDefaultRetryAsyncPolicy();
 
-            if (string.IsNullOrEmpty(rangeKey))
-                return await policy.ExecuteAsync(async () =>
-                        await Context.LoadAsync<T>(id, OperationConfig, cancellationToken).ConfigureAwait(false))
+                if (string.IsNullOrEmpty(rangeKey))
+                    return await policy.ExecuteAsync(async () =>
+                            await Context.LoadAsync<T>(id, OperationConfig, cancellationToken).ConfigureAwait(false))
+                        .ConfigureAwait(false);
+
+                return await policy
+                    .ExecuteAsync(async () =>
+                        await Context.LoadAsync<T>(id, rangeKey, OperationConfig, cancellationToken)
+                            .ConfigureAwait(false))
                     .ConfigureAwait(false);
-
-            return await policy
-                .ExecuteAsync(async () => await Context.LoadAsync<T>(id, rangeKey, OperationConfig, cancellationToken).ConfigureAwait(false))
-                .ConfigureAwait(false);
+            }
         }
 
         public async Task DeleteAsync<T>(T value, CancellationToken cancellationToken = default) where T : ITableMessage
         {
-            await CreateDefaultRetryAsyncPolicy()
-                .ExecuteAsync(async () => await Context.DeleteAsync(value, cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
+            using (ActivityRepository.StartActivity(nameof(DeleteAsync)))
+            {
+                await CreateDefaultRetryAsyncPolicy()
+                    .ExecuteAsync(async () => await Context.DeleteAsync(value, cancellationToken).ConfigureAwait(false))
+                    .ConfigureAwait(false);
+            }
         }
 
         public async Task DeleteAsync<T>(object id, string rangeKey = null,
             CancellationToken cancellationToken = default) where T : ITableMessage
         {
+            if (id == null) throw new ArgumentNullException(nameof(id));
+
+            using var activity = ActivityRepository.StartActivity(nameof(DeleteAsync));
+            activity?.SetTag("id", id);
+
             var policy = CreateDefaultRetryAsyncPolicy();
 
             if (string.IsNullOrEmpty(rangeKey))
-                await policy.ExecuteAsync(async () => await Context.DeleteAsync<T>(id, cancellationToken).ConfigureAwait(false))
+                await policy.ExecuteAsync(async () =>
+                        await Context.DeleteAsync<T>(id, cancellationToken).ConfigureAwait(false))
                     .ConfigureAwait(false);
             else
-                await policy.ExecuteAsync(async () => await Context.DeleteAsync<T>(id, rangeKey, cancellationToken).ConfigureAwait(false))
+                await policy.ExecuteAsync(async () =>
+                        await Context.DeleteAsync<T>(id, rangeKey, cancellationToken).ConfigureAwait(false))
                     .ConfigureAwait(false);
         }
 
         public async Task AddAsync<T>(T message, CancellationToken cancellationToken = default) where T : ITableMessage
         {
-            await CreateDefaultRetryAsyncPolicy()
-                .ExecuteAsync(async () => await Context.SaveAsync(message, OperationConfig, cancellationToken).ConfigureAwait(false))
-                .ConfigureAwait(false);
+            using (ActivityRepository.StartActivity(nameof(DeleteAsync)))
+            {
+                await CreateDefaultRetryAsyncPolicy()
+                    .ExecuteAsync(async () =>
+                        await Context.SaveAsync(message, OperationConfig, cancellationToken).ConfigureAwait(false))
+                    .ConfigureAwait(false);
+            }
         }
 
         public async Task AddAsync<T>(IList<T> messages, CancellationToken cancellationToken = default)
@@ -96,39 +118,54 @@ namespace Innovt.Cloud.AWS.Dynamo
         {
             if (messages is null) throw new ArgumentNullException(nameof(messages));
 
-            var batch = Context.CreateBatchWrite<T>(OperationConfig);
+            using (ActivityRepository.StartActivity(nameof(AddAsync)))
+            {
+                var batch = Context.CreateBatchWrite<T>(OperationConfig);
 
-            batch.AddPutItems(messages);
+                batch.AddPutItems(messages);
 
-            await CreateDefaultRetryAsyncPolicy()
-                .ExecuteAsync(async () => await batch.ExecuteAsync(cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
+                await CreateDefaultRetryAsyncPolicy()
+                    .ExecuteAsync(async () => await batch.ExecuteAsync(cancellationToken).ConfigureAwait(false))
+                    .ConfigureAwait(false);
+            }
         }
 
         public async Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default)
         {
-            var result = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await Context.QueryAsync<T>(id, OperationConfig).GetNextSetAsync(cancellationToken).ConfigureAwait(false))
-                .ConfigureAwait(false);
+            using (ActivityRepository.StartActivity(nameof(QueryFirstAsync)))
+            {
+                var result = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+                        await Context.QueryAsync<T>(id, OperationConfig).GetNextSetAsync(cancellationToken)
+                            .ConfigureAwait(false))
+                    .ConfigureAwait(false);
 
-            return result == null ? default : result.FirstOrDefault();
+                return result == null ? default : result.FirstOrDefault();
+            }
         }
 
         public async Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default)
         {
-            var result = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await Context.QueryAsync<T>(id, OperationConfig).GetRemainingAsync(cancellationToken).ConfigureAwait(false))
-                .ConfigureAwait(false);
+            using (ActivityRepository.StartActivity(nameof(QueryAsync)))
+            {
+                var result = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+                        await Context.QueryAsync<T>(id, OperationConfig).GetRemainingAsync(cancellationToken)
+                            .ConfigureAwait(false))
+                    .ConfigureAwait(false);
 
-            return result;
+                return result;
+            }
         }
 
         public async Task<IList<T>> QueryAsync<T>(QueryRequest request, CancellationToken cancellationToken = default)
         {
-            if (request is null) throw new ArgumentNullException(nameof(request));
+            using (ActivityRepository.StartActivity(nameof(QueryAsync)))
+            {
+                if (request is null) throw new ArgumentNullException(nameof(request));
 
-            var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
+                var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
-            return Helpers.ConvertAttributesToType<T>(items, Context);
+                return Helpers.ConvertAttributesToType<T>(items, Context);
+            }
         }
 
         public async Task<(List<TResult1> first, List<TResult2> second)> QueryMultipleAsync<T, TResult1, TResult2>(
@@ -136,9 +173,12 @@ namespace Innovt.Cloud.AWS.Dynamo
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
-            var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
+            using (ActivityRepository.StartActivity(nameof(QueryMultipleAsync)))
+            {
+                var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
-            return Helpers.ConvertAttributesToType<TResult1, TResult2>(items, splitBy, Context);
+                return Helpers.ConvertAttributesToType<TResult1, TResult2>(items, splitBy, Context);
+            }
         }
 
         public async Task<(List<TResult1> first, List<TResult2> second, List<TResult3> third)>
@@ -147,10 +187,13 @@ namespace Innovt.Cloud.AWS.Dynamo
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
             if (splitBy == null) throw new ArgumentNullException(nameof(splitBy));
+            
+            using (ActivityRepository.StartActivity(nameof(QueryMultipleAsync)))
+            {
+                var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
-            var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
-
-            return Helpers.ConvertAttributesToType<TResult1, TResult2, TResult3>(items, splitBy, Context);
+                return Helpers.ConvertAttributesToType<TResult1, TResult2, TResult3>(items, splitBy, Context);
+            }
         }
 
         public async Task<T> QueryFirstOrDefaultAsync<T>(QueryRequest request,
@@ -158,11 +201,14 @@ namespace Innovt.Cloud.AWS.Dynamo
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
-            var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
+            using (ActivityRepository.StartActivity(nameof(QueryFirstOrDefaultAsync)))
+            {
+                var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
-            var queryResponse = Helpers.ConvertAttributesToType<T>(items, Context);
+                var queryResponse = Helpers.ConvertAttributesToType<T>(items, Context);
 
-            return queryResponse.FirstOrDefault();
+                return queryResponse.FirstOrDefault();
+            }
         }
 
         public async Task<PagedCollection<T>> QueryPaginatedByAsync<T>(QueryRequest request,
@@ -170,44 +216,75 @@ namespace Innovt.Cloud.AWS.Dynamo
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
-            var (lastEvaluatedKey, items) =
-                await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
-
-            return new PagedCollection<T>
+            using (ActivityRepository.StartActivity(nameof(QueryFirstOrDefaultAsync)))
             {
-                Items = Helpers.ConvertAttributesToType<T>(items, Context),
-                Page = Helpers.CreatePaginationToken(lastEvaluatedKey),
-                PageSize = request.PageSize.GetValueOrDefault()
+                var (lastEvaluatedKey, items) =
+                    await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
+
+                return new PagedCollection<T>
+                {
+                    Items = Helpers.ConvertAttributesToType<T>(items, Context),
+                    Page = Helpers.CreatePaginationToken(lastEvaluatedKey),
+                    PageSize = request.PageSize.GetValueOrDefault()
+                };
+            }
+        }
+
+        public async Task TransactWriteItemsAsync(TransactionWriteRequest request, CancellationToken cancellationToken)
+        {
+            if (request is null) throw new ArgumentNullException(nameof(request));            
+
+            if (request.TransactItems is null || (request.TransactItems.Count is > 25 or 0))
+                throw new BusinessException("The number of transactItems should be greater than 0 and less or equal than 25");
+
+            using var activity = ActivityRepository.StartActivity(nameof(TransactWriteItemsAsync));
+            activity?.SetTag("TransactItems", request.TransactItems.Count);
+
+            var transactRequest = new TransactWriteItemsRequest()
+            {
+                ClientRequestToken = request.ClientRequestToken
             };
+
+            foreach (var transactItem in request.TransactItems)
+            {
+                transactRequest.TransactItems.Add(Helpers.CreateTransactionItem(transactItem));
+            }
+
+            await DynamoClient.TransactWriteItemsAsync(transactRequest, cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<IList<T>> ScanAsync<T>(ScanRequest request,
             CancellationToken cancellationToken = default)
         {
-            return (await InternalScanAsync<T>(request, cancellationToken).ConfigureAwait(false)).Items;
+            using (ActivityRepository.StartActivity(nameof(ScanAsync)))
+            {
+                return (await InternalScanAsync<T>(request, cancellationToken).ConfigureAwait(false)).Items;
+            }
         }
 
 
-        public async Task<PagedCollection<T>> ScanPaginatedByAsync<T>(ScanRequest request,
-            CancellationToken cancellationToken = default)
+        public async Task<PagedCollection<T>> ScanPaginatedByAsync<T>(ScanRequest request, CancellationToken cancellationToken = default)
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
-            var (exclusiveStartKey, items) = await InternalScanAsync<T>(request, cancellationToken);
-
-            if (items?.Count() == 0)
-                return new PagedCollection<T>();
-
-            var response = new PagedCollection<T>
+            using (ActivityRepository.StartActivity(nameof(ScanPaginatedByAsync)))
             {
-                Items = items,
-                Page = Helpers.CreatePaginationToken(exclusiveStartKey),
-                PageSize = request.PageSize.GetValueOrDefault()
-            };
+                var (exclusiveStartKey, items) =
+                    await InternalScanAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
-            return response;
+                if (items?.Count == 0)
+                    return new PagedCollection<T>();
+
+                var response = new PagedCollection<T>
+                {
+                    Items = items,
+                    Page = Helpers.CreatePaginationToken(exclusiveStartKey),
+                    PageSize = request.PageSize.GetValueOrDefault()
+                };
+
+                return response;
+            }
         }
-
 
         protected override AsyncRetryPolicy CreateDefaultRetryAsyncPolicy()
         {
@@ -218,42 +295,48 @@ namespace Innovt.Cloud.AWS.Dynamo
         protected async Task UpdateAsync(string tableName, Dictionary<string, AttributeValue> key,
             Dictionary<string, AttributeValueUpdate> attributeUpdates, CancellationToken cancellationToken = default)
         {
-            await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await DynamoClient.UpdateItemAsync(tableName, key, attributeUpdates, cancellationToken).ConfigureAwait(false))
-                .ConfigureAwait(false);
+            using (ActivityRepository.StartActivity(nameof(UpdateAsync)))
+            {
+                await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+                        await DynamoClient.UpdateItemAsync(tableName, key, attributeUpdates, cancellationToken)
+                            .ConfigureAwait(false))
+                    .ConfigureAwait(false);
+            }
         }
 
-        private async
-            Task<(Dictionary<string, AttributeValue> LastEvaluatedKey, List<Dictionary<string, AttributeValue>> Items)>
-            InternalQueryAsync<T>(QueryRequest request, CancellationToken cancellationToken = default)
+        private async Task<(Dictionary<string, AttributeValue> LastEvaluatedKey, List<Dictionary<string, AttributeValue>> Items)> InternalQueryAsync<T>(QueryRequest request, CancellationToken cancellationToken = default)
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
-            var queryRequest = Helpers.CreateQueryRequest<T>(request);
-
-            Dictionary<string, AttributeValue> lastEvaluatedKey = null;
-
-            var items = new List<Dictionary<string, AttributeValue>>();
-            var remaining = request.PageSize;
-
-            var iterator = DynamoClient.Paginators.Query(queryRequest).Responses.GetAsyncEnumerator(cancellationToken);
-
-            do
+            using (ActivityRepository.StartActivity(nameof(InternalQueryAsync)))
             {
-                await iterator.MoveNextAsync().ConfigureAwait(false);
+                var queryRequest = Helpers.CreateQueryRequest<T>(request);
 
-                if (iterator.Current == null)
-                    break;
+                var items = new List<Dictionary<string, AttributeValue>>();
+                var remaining = request.PageSize;
 
-                items.AddRange(iterator.Current.Items);
-                queryRequest.ExclusiveStartKey = lastEvaluatedKey = iterator.Current.LastEvaluatedKey;
+                var iterator = DynamoClient.Paginators.Query(queryRequest).Responses
+                    .GetAsyncEnumerator(cancellationToken);
 
-                remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
+                Dictionary<string, AttributeValue> lastEvaluatedKey = null;
 
-                if (remaining > 0) queryRequest.Limit = remaining.Value;
-            } while (lastEvaluatedKey.Count > 0 && remaining > 0);
+                do
+                {
+                    await iterator.MoveNextAsync().ConfigureAwait(false);
 
-            return (lastEvaluatedKey, items);
+                    if (iterator.Current == null)
+                        break;
+
+                    items.AddRange(iterator.Current.Items);
+                    queryRequest.ExclusiveStartKey = lastEvaluatedKey = iterator.Current.LastEvaluatedKey;
+
+                    remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
+
+                    if (remaining > 0) queryRequest.Limit = remaining.Value;
+                } while (lastEvaluatedKey.Count > 0 && remaining > 0);
+
+                return (lastEvaluatedKey, items);
+            }
         }
 
 
@@ -262,42 +345,36 @@ namespace Innovt.Cloud.AWS.Dynamo
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
-            var scanRequest = Helpers.CreateScanRequest<T>(request);
-
-            Dictionary<string, AttributeValue> lastEvaluatedKey = null;
-
-            var items = new List<T>();
-            var remaining = request.PageSize;
-
-
-            var iterator = DynamoClient.Paginators.Scan(scanRequest).Responses.GetAsyncEnumerator(cancellationToken);
-            //TODO: Thi code is the same in InternalQuery - Refactory it
-            do
+            using (ActivityRepository.StartActivity(nameof(InternalScanAsync)))
             {
-                await iterator.MoveNextAsync().ConfigureAwait(false);
+                var scanRequest = Helpers.CreateScanRequest<T>(request);
 
-                if (iterator.Current == null)
-                    break;
+                Dictionary<string, AttributeValue> lastEvaluatedKey = null;
 
-                items.AddRange(Helpers.ConvertAttributesToType<T>(iterator.Current.Items, Context));
-                scanRequest.ExclusiveStartKey = lastEvaluatedKey = iterator.Current.LastEvaluatedKey;
-                remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
+                var items = new List<T>();
+                var remaining = request.PageSize;
 
-                if (remaining > 0) scanRequest.Limit = remaining.Value;
-            } while (lastEvaluatedKey.Count > 0 && remaining > 0);
+                var iterator = DynamoClient.Paginators.Scan(scanRequest).Responses.GetAsyncEnumerator(cancellationToken);
 
-            return (lastEvaluatedKey, items);
-        }
+                //TODO: Thi code is the same in InternalQuery - Refactory it
+                do
+                {
+                    await iterator.MoveNextAsync().ConfigureAwait(false);
 
-        protected async Task<TransactGetItemsResponse> TransactGetItemsAsync<T>(TransactGetItemsRequest request,
-            CancellationToken cancellationToken = default)
-        {
-            if (request is null) throw new ArgumentNullException(nameof(request));
+                    if (iterator.Current == null)
+                        break;
 
-            return await CreateDefaultRetryAsyncPolicy()
-                .ExecuteAsync(async () => await DynamoClient.TransactGetItemsAsync(request, cancellationToken).ConfigureAwait(false))
-                .ConfigureAwait(false);
-        }
+                    items.AddRange(Helpers.ConvertAttributesToType<T>(iterator.Current.Items, Context));
+                    scanRequest.ExclusiveStartKey = lastEvaluatedKey = iterator.Current.LastEvaluatedKey;
+                    remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
+
+                    if (remaining > 0) scanRequest.Limit = remaining.Value;
+                } while (lastEvaluatedKey.Count > 0 && remaining > 0);
+
+                return (lastEvaluatedKey, items);
+            }
+        }     
+
 
         protected override void DisposeServices()
         {

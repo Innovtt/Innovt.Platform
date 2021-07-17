@@ -20,7 +20,7 @@ namespace Innovt.Cloud.AWS
 {
     public abstract class AwsBaseService : IDisposable
     {
-        protected readonly IAWSConfiguration Configuration;
+        protected readonly IAwsConfiguration Configuration;
 
         private bool disposed;
 
@@ -31,13 +31,13 @@ namespace Innovt.Cloud.AWS
             CircuitBreakerDurationOfBreak = TimeSpan.FromSeconds(5);
         }
 
-        protected AwsBaseService(ILogger logger, IAWSConfiguration configuration) : this()
+        protected AwsBaseService(ILogger logger, IAwsConfiguration configuration) : this()
         {
             Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
             Logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        protected AwsBaseService(ILogger logger, IAWSConfiguration configuration, string region) : this()
+        protected AwsBaseService(ILogger logger, IAwsConfiguration configuration, string region) : this()
         {
             Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
             Logger = logger ?? throw new ArgumentNullException(nameof(logger));
@@ -62,15 +62,11 @@ namespace Innovt.Cloud.AWS
             Dispose(true);
         }
 
-
         protected RegionEndpoint GetServiceRegionEndPoint()
         {
             var region = Region ?? Configuration?.Region;
 
-            if (region == null)
-                return null;
-
-            return RegionEndpoint.GetBySystemName(region);
+            return region == null ? null : RegionEndpoint.GetBySystemName(region);
         }
 
         /// <summary>

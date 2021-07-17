@@ -30,16 +30,20 @@ namespace Innovt.Cloud.File
         Task<Stream> DownloadStreamAsync(string bucketName, string fileName,
             CancellationToken cancellationToken = default);
 
-        (string bucket, string fileKey) ExtractBucketFromGetUrl(string url);
+        (string bucket, string fileKey) ExtractBucketFromGetUrl(string bucketUrl);
 
         bool FolderExists(string bucketName, string key);
 
         Task<bool> FolderExistsAsync(string bucketName, string key, CancellationToken cancellationToken = default);
 
+#pragma warning disable CA1055 // URI-like return values should not be strings
         string GeneratePreSignedUrl(string bucketName, string key, DateTime expiration,
+#pragma warning restore CA1055 // URI-like return values should not be strings
             IDictionary<string, object> additionalProperties);
 
+#pragma warning disable CA1055 // URI-like return values should not be strings
         string GetPreSignedUrl(string bucketName, string key, DateTime expires);
+#pragma warning restore CA1055 // URI-like return values should not be strings
 
         string GetObjectContent(string url, Encoding encoding);
 
@@ -59,17 +63,17 @@ namespace Innovt.Cloud.File
             string serverSideEncryptionMethod = null, CancellationToken cancellationToken = default);
 
         string Upload(string bucketName, Stream stream, string fileName,
-            List<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null);
+            IList<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null);
 
         string Upload(string bucketName, string filePath,
-            List<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null);
+            IList<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null);
 
         Task<string> UploadAsync(string bucketName, Stream stream, string fileName,
-            List<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null,
+            IList<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null,
             CancellationToken cancellationToken = default);
 
         Task<string> UploadAsync(string bucketName, string filePath,
-            List<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null,
+            IList<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null,
             CancellationToken cancellationToken = default);
 
         Task UploadDirectoryAsync(string bucketName, string directory, string serverSideEncryptionMethod = null,

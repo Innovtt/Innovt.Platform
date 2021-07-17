@@ -14,7 +14,11 @@ namespace Innovt.Domain.Core.Repository
     public interface IUnitOfWork : IDisposable
     {
         int Commit();
+
         Task<int> CommitAsync(CancellationToken cancellationToken = default);
+        
+        System.Linq.IQueryable<T> Queryable<T>() where T : class;
+
         void Rollback();
     }
 }

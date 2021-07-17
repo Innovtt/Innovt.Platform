@@ -32,73 +32,16 @@ namespace Innovt.AspNetCoreTests.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
-            //using var tracerProvider = Sdk.CreateTracerProviderBuilder().Build();
-            //using (Sdk.CreateTracerProviderBuilder().AddXRayTraceId().Build())
-
-            ////initialize on your IOC
-            //DeserializerFactory.Instance.AddMapping<AnticipationRequestCreated>();
-            //DeserializerFactory.Instance.AddMapping<AnticipationRequestClosedOrCanceled>();
-            //DeserializerFactory.Instance.AddMapping<AnticipationRequestChangePaused>();
-            //DeserializerFactory.Instance.AddMapping<InvoiceSyncFinished>();
-
-            var content = "";
-
-            var dEvent = DeserializerFactory.Instance.Deserialize<DomainEvent>("", content);
-
-
-            var jsonType = "A";
-            var jsonPayload = "A";
-
-            object res;
-
-
-            switch (jsonType)
-            {
-                case "A":
-                    res = JsonSerializer.Deserialize<A>(jsonPayload);
-                    break;
-
-                case "B":
-                    res = JsonSerializer.Deserialize<B>(jsonPayload);
-                    break;
-            }
-
-
             Activity.DefaultIdFormat = ActivityIdFormat.W3C;
-
-            var activity = new Activity("Get");
-
-            //activity.SetParentId("");
-
-            using (Sdk.CreateTracerProviderBuilder().Build())
-            {
-                activity.Start();
-
-
-                //using (var activitySource = new ActivitySource("TestTraceIdBasedSamplerOn"))
-                //{
-                //    var a = activitySource.StartActivity("Get", ActivityKind.Producer);
-
-                //    a.AddTag("Name", "MIchel");
-                //    a.AddTag("FirstName", "MIchel");
-
-
-                //    using (var activity = activitySource.StartActivity("RootActivity", ActivityKind.Internal))
-                //    {
-                //        //Assert.True(activity.ActivityTraceFlags == ActivityTraceFlags.Recorded);
-                //    }
-                //}
-
-
-                var rng = new Random();
-                return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-                    {
-                        Date = DateTime.Now.AddDays(index),
-                        TemperatureC = rng.Next(-20, 55),
-                        Summary = Summaries[rng.Next(Summaries.Length)]
-                    })
-                    .ToArray();
-            }
+            
+            var rng = new Random();
+            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+                {
+                    Date = DateTime.Now.AddDays(index),
+                    TemperatureC = rng.Next(-20, 55),
+                    Summary = Summaries[rng.Next(Summaries.Length)]
+                })
+                .ToArray();
         }
     }
 }

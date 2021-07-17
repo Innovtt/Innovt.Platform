@@ -14,7 +14,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Innovt.Cloud.AWS.Configuration
 {
-    public class DefaultAWSConfiguration : IAWSConfiguration
+    public class DefaultAWSConfiguration : IAwsConfiguration
     {
         private const string configSection = "AWS";
 
@@ -102,12 +102,12 @@ namespace Innovt.Cloud.AWS.Configuration
             var sharedProfile = new SharedCredentialsFile();
 
             var profile = sharedProfile.ListProfiles()
-                .Find(p => p.Name.Equals(Profile, StringComparison.InvariantCultureIgnoreCase));
+                .Find(p => p.Name.Equals(Profile, StringComparison.OrdinalIgnoreCase));
 
             if (profile == null)
                 throw new ConfigurationException($"Profile {Profile} not found.");
 
-            if (Region == null && profile?.Region != null)
+            if (Region == null && profile.Region != null)
                 Region = profile.Region.SystemName;
 
             return AWSCredentialsFactory.GetAWSCredentials(profile, sharedProfile);

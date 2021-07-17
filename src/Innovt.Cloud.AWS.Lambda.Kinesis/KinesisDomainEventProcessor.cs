@@ -6,8 +6,6 @@
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
-using System.IO;
-using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Amazon.Lambda.Core;
@@ -17,7 +15,7 @@ using Innovt.Domain.Core.Events;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis
 {
-    public abstract class KinesisDomainEventProcessor<TBody> : EventProcessor<KinesisEvent> where TBody : DomainEvent
+    public abstract class KinesisDomainEventProcessor<TBody> : KinesisDataProcessorBase<TBody> where TBody : DomainEvent
     {
         protected KinesisDomainEventProcessor(ILogger logger) : base(logger)
         {
@@ -27,50 +25,39 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
         {
         }
 
-        protected virtual TBody DeserializeBody(string content, string partition)
+        protected new virtual TBody DeserializeBody(string content, string partition)
         {
             return JsonSerializer.Deserialize<TBody>(content);
         }
 
-        protected override async Task Handle(KinesisEvent kinesisEvent, ILambdaContext context)
+        protected override async Task Handle(KinesisEvent message, ILambdaContext context)
         {
-            Logger.Info($"Processing Kinesis Event With {kinesisEvent.Records?.Count} records.");
+            Logger.Info($"Processing Kinesis Event With {message?.Records?.Count} records.");
 
-            if (kinesisEvent?.Records == null) return;
-            if (kinesisEvent.Records.Count == 0) return;
+            if (message?.Records == null) return;
+            if (message.Records.Count == 0) return;
 
-            foreach (var record in kinesisEvent.Records)
+            using var activity = EventProcessorActivitySource.StartActivity(nameof(Handle));
+            foreach (var record in message.Records)
             {
                 Logger.Info($"Processing Kinesis Event message ID {record.EventId}.");
-
+                    
                 try
                 {
                     Logger.Info("Reading Stream Content.");
+                        
+                    var body = await ParseRecord(record).ConfigureAwait(false);
 
-                    using var reader = new StreamReader(record.Kinesis.Data, Encoding.UTF8);
-
-                    var content = await reader.ReadToEndAsync();
-
-                    Logger.Info("Stream Content Read.");
-
-                    Logger.Info("Creating DataStream Message.");
-
-                    var message = DeserializeBody(content, record.Kinesis.PartitionKey);
-
-                    if (message != null)
+                    if (body?.TraceId != null && activity != null)
                     {
-                        message.EventId = record.EventId;
-                        message.ApproximateArrivalTimestamp = record.Kinesis.ApproximateArrivalTimestamp;
+                        activity.SetParentId(body.TraceId);
                     }
 
-                    Logger.Info("Invoking ProcessMessage.");
-
-                    await ProcessMessage(message);
+                    await ProcessMessage(body?.Body).ConfigureAwait(false);
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error(ex,
-                        "Error Processing Message from Kinesis Event. Developer, you should take care of it!. Message: Id={EventId}, PartitionKey= {PartitionKey}",
+                    Logger.Error(ex, "Error Processing Message from Kinesis Event. Developer, you should take care of it!. Message: Id={EventId}, PartitionKey= {PartitionKey}",
                         record.EventId, record.Kinesis.PartitionKey);
                     throw;
                 }

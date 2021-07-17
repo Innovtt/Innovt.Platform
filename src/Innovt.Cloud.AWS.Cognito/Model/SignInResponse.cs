@@ -29,6 +29,8 @@ namespace Innovt.Cloud.AWS.Cognito.Model
         [JsonPropertyName("ChallengeName")] public string ChallengeName { get; set; }
 
         [JsonPropertyName("ChallengeParameters")]
+#pragma warning disable CA2227 // Collection properties should be read only
         public Dictionary<string, string> ChallengeParameters { get; set; }
+#pragma warning restore CA2227 // Collection properties should be read only
     }
 }

@@ -29,14 +29,14 @@ namespace Innovt.Cloud.AWS.SQS
 
         private AmazonSQSClient sqsClient;
 
-        public QueueService(ILogger logger, IAWSConfiguration configuration, string queueName = null,
+        public QueueService(ILogger logger, IAwsConfiguration configuration, string queueName = null,
             ISerializer serializer = null) : base(logger, configuration)
         {
             this.serializer = serializer;
             QueueName = queueName ?? typeof(T).Name;
         }
 
-        public QueueService(ILogger logger, IAWSConfiguration configuration, string region, string queueName = null,
+        public QueueService(ILogger logger, IAwsConfiguration configuration, string region, string queueName = null,
             ISerializer serializer = null) : base(logger, configuration, region)
         {
             this.serializer = serializer;
@@ -44,7 +44,9 @@ namespace Innovt.Cloud.AWS.SQS
         }
 
         public string QueueName { get; protected set; }
-        public static string QueueUrl { get; private set; }
+#pragma warning disable CA1056 // URI-like properties should not be strings
+        public string QueueUrl { get; private set; }
+#pragma warning restore CA1056 // URI-like properties should not be strings
 
         private AmazonSQSClient SqsClient => sqsClient ??= CreateService<AmazonSQSClient>();
 
@@ -178,7 +180,7 @@ namespace Innovt.Cloud.AWS.SQS
 
             activity?.SetTag("sqs.queue_url", messageRequest.QueueUrl);
 
-            EnrichMessage<TK>(activity, messageRequest);
+            EnrichMessage(activity, messageRequest);
 
             if (visibilityTimeoutInSeconds.HasValue)
                 messageRequest.DelaySeconds = visibilityTimeoutInSeconds.Value;
@@ -234,21 +236,21 @@ namespace Innovt.Cloud.AWS.SQS
                     result.Add(new MessageQueueResult {Id = item.Id, Success = true});
 
             if (response.Failed == null) return result;
+            
+            foreach (var item in response.Failed)
             {
-                foreach (var item in response.Failed)
-                {
-                    result.Add(new MessageQueueResult {Id = item.Id, Success = false, Error = item.Message});
-                    activity?.SetTag($"sqs.message_{item.Id}_id", item.Id);
-                    activity?.SetTag($"sqs.message_{item.Id}_message", item.Message);
-                    activity?.SetTag($"sqs.message_{item.Id}_code", item.Code);
-                    activity?.SetTag($"sqs.message_{item.Id}_sender_fault", item.SenderFault);
-                }
+                result.Add(new MessageQueueResult {Id = item.Id, Success = false, Error = item.Message});
+                activity?.SetTag($"sqs.message_{item.Id}_id", item.Id);
+                activity?.SetTag($"sqs.message_{item.Id}_message", item.Message);
+                activity?.SetTag($"sqs.message_{item.Id}_code", item.Code);
+                activity?.SetTag($"sqs.message_{item.Id}_sender_fault", item.SenderFault);
             }
+            
 
             return result;
         }
 
-        private static void EnrichMessage<TK>(Activity activity, SendMessageRequest messageRequest)
+        private static void EnrichMessage(Activity activity, SendMessageRequest messageRequest)
         {
             if (activity == null) return;
 
@@ -272,15 +274,12 @@ namespace Innovt.Cloud.AWS.SQS
             activity?.SetTag("sqs.queue_name", QueueName);
 
 
-            if (Configuration?.AccountNumber != null)
-                QueueUrl =
-                    $"https://sqs.{GetServiceRegionEndPoint().SystemName}.amazonaws.com/{Configuration.AccountNumber}/{QueueName}";
-            else
-                QueueUrl = (await SqsClient.GetQueueUrlAsync(QueueName).ConfigureAwait(false))?.QueueUrl;
+            QueueUrl = Configuration?.AccountNumber != null ? 
+                $"https://sqs.{GetServiceRegionEndPoint().SystemName}.amazonaws.com/{Configuration.AccountNumber}/{QueueName}" 
+                : (await SqsClient.GetQueueUrlAsync(QueueName).ConfigureAwait(false))?.QueueUrl;
 
 
             activity?.SetTag("sqs.queue_url", QueueUrl);
-
 
             return QueueUrl;
         }

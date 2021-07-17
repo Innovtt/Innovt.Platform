@@ -7,6 +7,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,7 @@ using Amazon.Kinesis;
 using Amazon.Kinesis.Model;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Core.CrossCutting.Log;
+using Innovt.Core.Utilities;
 using Innovt.Domain.Core.Streams;
 
 namespace Innovt.Cloud.AWS.Kinesis
@@ -25,13 +27,15 @@ namespace Innovt.Cloud.AWS.Kinesis
     {
         private AmazonKinesisClient kinesisClient;
 
-        protected DataProducer(string busName, ILogger logger, IAWSConfiguration configuration) : base(logger,
+        private static readonly ActivitySource ActivityDataProducer = new(nameof(DataProducer<T>));
+
+        protected DataProducer(string busName, ILogger logger, IAwsConfiguration configuration) : base(logger,
             configuration)
         {
             BusName = busName ?? throw new ArgumentNullException(nameof(busName));
         }
 
-        protected DataProducer(string busName, ILogger logger, IAWSConfiguration configuration,
+        protected DataProducer(string busName, ILogger logger, IAwsConfiguration configuration,
             string region) : base(logger, configuration, region)
         {
             BusName = busName ?? throw new ArgumentNullException(nameof(busName));
@@ -51,9 +55,12 @@ namespace Innovt.Cloud.AWS.Kinesis
 
             var dataStreams = dataList.ToList();
 
-            if (dataStreams.Count() > 500) throw new InvalidEventLimitException();
+            if (dataStreams.Count > 500) throw new InvalidEventLimitException();
 
             Logger.Info("Kinesis Publisher Started");
+
+            using var activity = ActivityDataProducer.StartActivity(nameof(InternalPublish));
+            activity?.SetTag("BusName", BusName);
 
             var request = new PutRecordsRequest
             {
@@ -63,12 +70,15 @@ namespace Innovt.Cloud.AWS.Kinesis
 
             foreach (var data in dataStreams)
             {
-                // if (data.TraceId.IsNullOrEmpty())
-                //     data.TraceId = GetTraceId();
+                activity?.SetTag("BusName", BusName);
+                    
+                if (activity?.ParentId is null && data.TraceId.IsNotNullOrEmpty())
+                {
+                    activity?.SetParentId(data.TraceId);
+                }
 
                 var dataAsBytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize<object>(data));
                 await using var ms = new MemoryStream(dataAsBytes);
-
                 request.Records.Add(new PutRecordsRequestEntry
                 {
                     Data = ms,
@@ -76,31 +86,32 @@ namespace Innovt.Cloud.AWS.Kinesis
                 });
             }
 
-            Logger.Info("Publishing Data for Bus @BusName", BusName);
+            Logger.Info($"Publishing Data for Bus {BusName}");
 
             var policy = base.CreateDefaultRetryAsyncPolicy();
 
             var results = await policy.ExecuteAsync(async () =>
-                await KinesisClient.PutRecordsAsync(request, cancellationToken)).ConfigureAwait(false);
+                await KinesisClient.PutRecordsAsync(request, cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
 
             if (results.FailedRecordCount == 0)
             {
-                Logger.Info("All data published to Bus @BusName", BusName);
+                Logger.Info($"All data published to Bus {BusName}");
                 return;
             }
 
             var errorRecords = results.Records.Where(r => r.ErrorCode != null);
 
             foreach (var error in errorRecords)
-                Logger.Error("Error publishing message. Error: @ErrorCode, ErrorMessage: @ErrorMessage ",
-                    error.ErrorCode, error.ErrorMessage);
+            {
+                Logger.Error($"Error publishing message. Error: {error.ErrorCode}, ErrorMessage: {error.ErrorMessage}");
+            }
         }
 
         public async Task Publish(T data, CancellationToken cancellationToken = default)
         {
             if (data == null) throw new ArgumentNullException(nameof(data));
 
-            Logger.Info("Sending Domain Event @name", data);
+            Logger.Info("Sending Domain Event", data);
 
             await InternalPublish(new List<T> {data}, cancellationToken).ConfigureAwait(false);
         }
@@ -108,6 +119,7 @@ namespace Innovt.Cloud.AWS.Kinesis
         public async Task Publish(IEnumerable<T> events, CancellationToken cancellationToken = default)
         {
             await InternalPublish(events, cancellationToken).ConfigureAwait(false);
+
         }
 
         protected override void DisposeServices()

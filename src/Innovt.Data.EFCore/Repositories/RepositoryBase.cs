@@ -32,6 +32,16 @@ namespace Innovt.Data.EFCore.Repositories
             Context.Add(entity);
         }
 
+        public virtual void Add(IEnumerable<T> entities)
+        {
+            Context.Add(entities);
+        }
+
+        public virtual Task AddAsync(IEnumerable<T> entities)
+        {
+            return Context.AddAsync(entities);
+        }
+
         public virtual Task AddAsync(T entity)
         {
             return Context.AddAsync(entity);

@@ -16,6 +16,7 @@ using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
+using Innovt.Cloud.Table;
 using Innovt.Core.Collections;
 using Innovt.Core.Utilities;
 
@@ -23,9 +24,7 @@ namespace Innovt.Cloud.AWS.Dynamo
 {
     internal static class Helpers
     {
-        const string encriptionKey = "AAECAwQFBgcICQoL";
-        private const string paginationTokenseparator = "|";
-
+        private const string PaginationTokenSeparator = "|";
 
         internal static DynamoDBEntry ConvertObjectToDynamoDbEntry(object value)
         {
@@ -35,63 +34,64 @@ namespace Innovt.Cloud.AWS.Dynamo
         }
 
 
-        internal static string GetTableName<T>()
+        public  static string GetTableName<T>()
         {
-            if (!(Attribute.GetCustomAttribute(typeof(T), typeof(DynamoDBTableAttribute)) is DynamoDBTableAttribute
-                attribute))
+            if (Attribute.GetCustomAttribute(typeof(T), typeof(DynamoDBTableAttribute)) is not DynamoDBTableAttribute attribute)
                 return typeof(T).Name;
 
             return attribute.TableName;
         }
 
-        internal static AttributeValue CreateAttributeValue(object value)
+        private static Dictionary<string, AttributeValue> ConvertToAttributeValues(Dictionary<string, object> items)
         {
-            if (value is null)
-                return new AttributeValue {NULL = true};
 
-            if (value is MemoryStream)
-                return new AttributeValue {B = value as MemoryStream};
+            return items?.Select(i =>
+                new {
+                    i.Key,
+                    Value = CreateAttributeValue(i.Value)
+                }).ToDictionary(x => x.Key, x => x.Value);
 
-            if (value is bool)
-                return new AttributeValue {BOOL = bool.Parse(value.ToString())};
-
-            if (value is List<MemoryStream>)
-                return new AttributeValue {BS = value as List<MemoryStream>};
-
-            if (value is List<string>)
-                return new AttributeValue(value as List<string>);
-
-            if (value is int || value is double || value is float | value is decimal)
-                return new AttributeValue {N = value.ToString()};
-
-            if (value is DateTime time)
-                return new AttributeValue {S = time.ToString("s")};
-
-            if (value is IList<int> || value is IList<double> || value is IList<float> | value is IList<decimal>)
-            {
-                var array = (value as IList).Cast<string>();
-
-                return new AttributeValue {NS = array.ToList()};
-            }
-
-            if (value is IDictionary<string, object>)
-            {
-                var array = new Dictionary<string, AttributeValue>();
-
-                foreach (var item in value as IDictionary<string, object>)
-                    array.Add(item.Key, CreateAttributeValue(item.Value));
-
-                return new AttributeValue {M = array};
-            }
-
-            return new AttributeValue(value.ToString());
         }
 
-        private static Dictionary<string, AttributeValue> CreateExpressionAttributeValues(object filter,
-            string attributes)
+        internal static AttributeValue CreateAttributeValue(object value)
+        {
+            switch (value)
+            {
+                case null:
+                    return new AttributeValue {NULL = true};
+                case MemoryStream stream:
+                    return new AttributeValue {B = stream};
+                case bool:
+                    return new AttributeValue {BOOL = bool.Parse(value.ToString())};
+                case List<MemoryStream> streams:
+                    return new AttributeValue {BS = streams};
+                case List<string> list:
+                    return new AttributeValue(list);
+                case int or double or float or decimal:
+                    return new AttributeValue {N = value.ToString()};
+                case DateTime time:
+                    return new AttributeValue {S = time.ToString("s")};
+                case IList<int> or IList<double> or IList<float> or IList<decimal>:
+                {
+                    var array = (value as IList).Cast<string>();
+
+                    return new AttributeValue {NS = array.ToList()};
+                }
+                case IDictionary<string, object> objects:
+                {
+                    var array = objects.ToDictionary(item => item.Key, item => CreateAttributeValue(item.Value));
+
+                    return new AttributeValue {M = array};
+                }
+                default:
+                    return new AttributeValue(value.ToString());
+            }
+        }
+
+        private static Dictionary<string, AttributeValue> CreateExpressionAttributeValues(object filter,string attributes)
         {
             if (filter == null)
-                return null;
+                return new Dictionary<string, AttributeValue>();
 
             var attributeValues = new Dictionary<string, AttributeValue>();
 
@@ -115,10 +115,10 @@ namespace Innovt.Cloud.AWS.Dynamo
         }
 
 
-        internal static QueryRequest CreateQueryRequest<T>(
+        internal static Amazon.DynamoDBv2.Model.QueryRequest CreateQueryRequest<T>(
             Table.QueryRequest request)
         {
-            var queryRequest = new QueryRequest
+            var queryRequest = new Amazon.DynamoDBv2.Model.QueryRequest
             {
                 IndexName = request.IndexName,
                 TableName = GetTableName<T>(),
@@ -139,9 +139,9 @@ namespace Innovt.Cloud.AWS.Dynamo
         }
 
 
-        internal static ScanRequest CreateScanRequest<T>(Table.ScanRequest request)
+        internal static Amazon.DynamoDBv2.Model.ScanRequest CreateScanRequest<T>(Table.ScanRequest request)
         {
-            var scanRequest = new ScanRequest
+            var scanRequest = new Amazon.DynamoDBv2.Model.ScanRequest
             {
                 IndexName = request.IndexName,
                 TableName = GetTableName<T>(),
@@ -163,7 +163,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             DynamoDBContext context)
         {
             if (items is null)
-                return null;
+                return new List<T>();
 
             var result = new List<T>();
 
@@ -242,7 +242,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             {
                 var value = attributeValue.S != null ? $"S:{attributeValue.S}" : $"N:{attributeValue.N}";
 
-                stringBuilder.Append($"{attributeKey}{paginationTokenseparator}{value}\\r\\n");
+                stringBuilder.Append($"{attributeKey}{PaginationTokenSeparator}{value}\\r\\n");
             }
 
             return Convert.ToBase64String(stringBuilder.ToString().Zip()).UrlEncode();
@@ -250,7 +250,7 @@ namespace Innovt.Cloud.AWS.Dynamo
 
         private static Dictionary<string, AttributeValue> PaginationTokenToDictionary(string paginationToken)
         {
-            if (paginationToken.IsNullOrEmpty())
+            if (paginationToken is null)
                 return null;
 
             var decryptedToken = Convert.FromBase64String(paginationToken.UrlDecode()).Unzip();
@@ -261,26 +261,101 @@ namespace Innovt.Cloud.AWS.Dynamo
 
             foreach (var key in keys)
             {
-                var attributes = key.Split(paginationTokenseparator);
+                var attributes = key.Split(PaginationTokenSeparator);
 
                 if (attributes.Length < 2)
                     continue;
 
                 var attributeKey = attributes[0];
                 //Just in case that the separator was used
-                var attributeValue = string.Join(paginationTokenseparator, attributes, 1, attributes.Length - 1);
+                var attributeValue = string.Join(PaginationTokenSeparator, attributes, 1, attributes.Length - 1);
 
-                if (attributeValue.StartsWith("S:"))
+                if (attributeValue.StartsWith("S:", StringComparison.OrdinalIgnoreCase))
                     result.Add(attributeKey,
-                        new AttributeValue(attributeValue.Substring(2, attributeValue.Length - 2)));
+                        new AttributeValue(attributeValue[2..]));
                 else
                     result.Add(attributeKey, new AttributeValue
                     {
-                        N = attributeValue.Substring(2, attributeValue.Length - 2)
+                        N = attributeValue[2..]
                     });
             }
 
             return result;
+        }
+
+        private static Put CreatePutTransactItem(TransactionWriteItem transactionWriteItem) { 
+
+            if(transactionWriteItem.OperationType != TransactionWriteOperationType.Put)
+                return null;
+
+            return new Put()
+            {
+                ConditionExpression = transactionWriteItem.ConditionExpression,
+                TableName = transactionWriteItem.TableName,
+                ExpressionAttributeValues = ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
+                Item = ConvertToAttributeValues(transactionWriteItem.Keys)                
+            };
+        }
+
+       
+
+        private static ConditionCheck CreateConditionCheckTransactItem(TransactionWriteItem transactionWriteItem)
+        {
+            if (transactionWriteItem.OperationType != TransactionWriteOperationType.Check)
+                return null;
+
+            return new ConditionCheck()
+            {
+                ConditionExpression = transactionWriteItem.ConditionExpression,
+                TableName = transactionWriteItem.TableName,
+                ExpressionAttributeValues = ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
+                Key = ConvertToAttributeValues(transactionWriteItem.Keys),
+            };
+        }
+        
+        private static Delete CreateDeleteTransactItem(TransactionWriteItem transactionWriteItem)
+        {
+            if (transactionWriteItem.OperationType != TransactionWriteOperationType.Delete)
+                return null;
+
+            return new Delete()
+            {
+                ConditionExpression = transactionWriteItem.ConditionExpression,
+                TableName = transactionWriteItem.TableName,
+                ExpressionAttributeValues = ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
+                Key = ConvertToAttributeValues(transactionWriteItem.Keys)                
+            };
+        }
+
+        private static Update CreateUpdateTransactItem(TransactionWriteItem transactionWriteItem)
+        {
+            if (transactionWriteItem.OperationType != TransactionWriteOperationType.Update)
+                return null;
+
+            return new Update()
+            {
+                ConditionExpression = transactionWriteItem.ConditionExpression,
+                TableName = transactionWriteItem.TableName,
+                UpdateExpression = transactionWriteItem.UpdateExpression,
+                ExpressionAttributeValues = ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
+                Key = ConvertToAttributeValues(transactionWriteItem.Keys)
+            };
+        }
+
+        internal static TransactWriteItem CreateTransactionItem(TransactionWriteItem transactionWriteItem)
+        {
+            if (transactionWriteItem is null)
+            {
+                throw new ArgumentNullException(nameof(transactionWriteItem));
+            }
+
+            return  new TransactWriteItem
+            {
+                ConditionCheck = CreateConditionCheckTransactItem(transactionWriteItem),
+                Put = CreatePutTransactItem(transactionWriteItem),
+                Delete = CreateDeleteTransactItem(transactionWriteItem),
+                Update = CreateUpdateTransactItem(transactionWriteItem)
+            };
         }
     }
 }

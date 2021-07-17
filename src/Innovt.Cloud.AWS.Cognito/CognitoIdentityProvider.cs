@@ -7,6 +7,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
@@ -34,15 +37,18 @@ using SignUpResponse = Innovt.Cloud.AWS.Cognito.Model.SignUpResponse;
 
 namespace Innovt.Cloud.AWS.Cognito
 {
-    public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentityProvider
+    public abstract class CognitoIdentityProvider : AwsBaseService, Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider
     {
+        protected static readonly ActivitySource CognitoIdentityProviderActivitySource = new(nameof(CognitoIdentityProvider));
+
         private readonly string clientId;
         private readonly Uri domainEndPoint;
         private readonly string userPoolId;
+        private readonly CultureInfo cultureInfo = CultureInfo.CurrentCulture;
 
-        private AmazonCognitoIdentityProviderClient cognitoidentityProvider;
+        private AmazonCognitoIdentityProviderClient cognitoIdentityProvider;
 
-        protected CognitoIdentityProvider(ILogger logger, IAWSConfiguration configuration, string clientId,
+        protected CognitoIdentityProvider(ILogger logger, IAwsConfiguration configuration, string clientId,
             string userPoolId, string domainEndPoint, string region = null) :
             base(logger, configuration, region)
         {
@@ -50,22 +56,28 @@ namespace Innovt.Cloud.AWS.Cognito
             this.userPoolId = userPoolId ?? throw new ArgumentNullException(nameof(userPoolId));
             if (domainEndPoint == null) throw new ArgumentNullException(nameof(domainEndPoint));
 
-            this.domainEndPoint = new Uri(domainEndPoint);
+            this.domainEndPoint = new Uri(domainEndPoint);            
         }
 
-        private AmazonCognitoIdentityProviderClient CognitoidentityProvider =>
-            cognitoidentityProvider ??= CreateService<AmazonCognitoIdentityProviderClient>();
+        private AmazonCognitoIdentityProviderClient CognitoProvider
+        {
+            get
+            {
+                return cognitoIdentityProvider ??= CreateService<AmazonCognitoIdentityProviderClient>();
+            }
+        } 
 
-        public virtual async Task ForgotPassword(ForgotPasswordRequest command,
+        public virtual async Task ForgotPassword([NotNull]ForgotPasswordRequest command,
             CancellationToken cancellationToken = default)
         {
-            Check.NotNull(command, nameof(command));
-
             command.EnsureIsValid();
+
+            using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(ForgotPassword));
+            activity?.SetTag("UserName",command.UserName);
 
             var forgotRequest = new Amazon.CognitoIdentityProvider.Model.ForgotPasswordRequest
             {
-                Username = command.UserName.ToLower(),
+                Username = command.UserName.ToLower(cultureInfo),
                 ClientId = clientId,
                 UserContextData = new UserContextDataType
                 {
@@ -77,7 +89,8 @@ namespace Innovt.Cloud.AWS.Cognito
             try
             {
                 await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await CognitoidentityProvider.ForgotPasswordAsync(forgotRequest, cancellationToken));
+                    await CognitoProvider.ForgotPasswordAsync(forgotRequest, cancellationToken)
+                        .ConfigureAwait(false)).ConfigureAwait(false);
             }
             catch (Exception ex)
             {
@@ -92,24 +105,27 @@ namespace Innovt.Cloud.AWS.Cognito
 
             command.EnsureIsValid();
 
+            using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(UpdateUserAttributes));
             var updateUserAttributeRequest = new UpdateUserAttributesRequest
             {
                 AccessToken = command.AccessToken
             };
 
 
-            foreach (var attr in command.Attributes)
+            foreach (var (key, value) in command.Attributes)
+            {
                 updateUserAttributeRequest.UserAttributes.Add(new AttributeType
                 {
-                    Name = attr.Key,
-                    Value = attr.Value
+                    Name = key,
+                    Value = value
                 });
+            }
 
             try
             {
                 await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await CognitoidentityProvider.UpdateUserAttributesAsync(updateUserAttributeRequest,
-                        cancellationToken));
+                    await CognitoProvider.UpdateUserAttributesAsync(updateUserAttributeRequest,
+                        cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
             }
             catch (Exception ex)
             {
@@ -120,11 +136,9 @@ namespace Innovt.Cloud.AWS.Cognito
         public virtual async Task<SignInResponse> SignIn(OtpSignInRequest command,
             CancellationToken cancellationToken = default)
         {
-            Check.NotNull(command, nameof(command));
-
             command.EnsureIsValid();
 
-            return await SignIn(AuthFlowType.CUSTOM_AUTH, command, null, cancellationToken);
+            return await SignIn(AuthFlowType.CUSTOM_AUTH, command, null, cancellationToken).ConfigureAwait(false);
         }
 
 
@@ -137,7 +151,7 @@ namespace Innovt.Cloud.AWS.Cognito
 
             var parameters = new Dictionary<string, string> {{"PASSWORD", command.Password}};
 
-            return await SignIn(AuthFlowType.USER_PASSWORD_AUTH, command, parameters, cancellationToken);
+            return await SignIn(AuthFlowType.USER_PASSWORD_AUTH, command, parameters, cancellationToken).ConfigureAwait(false);
         }
 
         public async Task SignOut(SignOutRequest request, CancellationToken cancellationToken = default)
@@ -146,6 +160,7 @@ namespace Innovt.Cloud.AWS.Cognito
 
             request.EnsureIsValid();
 
+            using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(SignOut));
             var signOutRequest = new GlobalSignOutRequest
             {
                 AccessToken = request.AccessToken
@@ -154,7 +169,8 @@ namespace Innovt.Cloud.AWS.Cognito
             try
             {
                 await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await CognitoidentityProvider.GlobalSignOutAsync(signOutRequest, cancellationToken));
+                    await CognitoProvider.GlobalSignOutAsync(signOutRequest, cancellationToken)
+                        .ConfigureAwait(false)).ConfigureAwait(false);
             }
             catch (Exception ex)
             {
@@ -169,10 +185,13 @@ namespace Innovt.Cloud.AWS.Cognito
 
             command.EnsureIsValid();
 
+            using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(SignUp));
+            activity?.SetTag("UserName", command.UserName);
+
             var signUpRequest = new SignUpRequest
             {
                 ClientId = clientId,
-                Username = command.UserName.ToLower(),
+                Username = command.UserName.ToLower(cultureInfo),
                 Password = command.Password,
                 UserContextData = new UserContextDataType
                 {
@@ -185,7 +204,7 @@ namespace Innovt.Cloud.AWS.Cognito
                 {"password", "username", "ipaddress", "serverpath", "servername", "httpheader"};
 
             var properties = command.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public)
-                .Where(p => !excludedProperties.Contains(p.Name.ToLower()));
+                .Where(p => !excludedProperties.Contains(p.Name.ToLower(cultureInfo)));
 
             foreach (var prop in properties)
             {
@@ -193,7 +212,7 @@ namespace Innovt.Cloud.AWS.Cognito
                 if (value != null)
                     signUpRequest.UserAttributes.Add(new AttributeType
                     {
-                        Name = prop.Name.ToLower(),
+                        Name = prop.Name.ToLower(cultureInfo),
                         Value = value.ToString()
                     });
             }
@@ -201,7 +220,8 @@ namespace Innovt.Cloud.AWS.Cognito
             try
             {
                 var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await CognitoidentityProvider.SignUpAsync(signUpRequest, cancellationToken));
+                        await CognitoProvider.SignUpAsync(signUpRequest, cancellationToken).ConfigureAwait(false))
+                    .ConfigureAwait(false);
 
                 return new SignUpResponse {Confirmed = response.UserConfirmed, UUID = response.UserSub};
             }
@@ -219,10 +239,13 @@ namespace Innovt.Cloud.AWS.Cognito
 
             request.EnsureIsValid();
 
+            using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(ConfirmSignUp));
+            activity?.SetTag("UserName", request.UserName);
+
             var confirmSignUpRequest = new Amazon.CognitoIdentityProvider.Model.ConfirmSignUpRequest
             {
                 ClientId = clientId,
-                Username = request.UserName.ToLower(),
+                Username = request.UserName.ToLower(cultureInfo),
                 ConfirmationCode = request.ConfirmationCode,
                 UserContextData = new UserContextDataType
                 {
@@ -234,7 +257,8 @@ namespace Innovt.Cloud.AWS.Cognito
             try
             {
                 await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await CognitoidentityProvider.ConfirmSignUpAsync(confirmSignUpRequest, cancellationToken));
+                    await CognitoProvider.ConfirmSignUpAsync(confirmSignUpRequest, cancellationToken)
+                        .ConfigureAwait(false)).ConfigureAwait(false);
             }
             catch (Exception ex)
             {
@@ -249,10 +273,13 @@ namespace Innovt.Cloud.AWS.Cognito
 
             command.EnsureIsValid();
 
+            using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(ResendConfirmationCode));
+            activity?.SetTag("UserName", command.UserName);
+
             var resendCodeRequest = new Amazon.CognitoIdentityProvider.Model.ResendConfirmationCodeRequest
             {
                 ClientId = clientId,
-                Username = command.UserName.ToLower(),
+                Username = command.UserName.ToLower(cultureInfo),
                 UserContextData = new UserContextDataType
                 {
                     EncodedData =
@@ -263,7 +290,8 @@ namespace Innovt.Cloud.AWS.Cognito
             try
             {
                 await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await CognitoidentityProvider.ResendConfirmationCodeAsync(resendCodeRequest, cancellationToken));
+                    await CognitoProvider.ResendConfirmationCodeAsync(resendCodeRequest, cancellationToken)
+                        .ConfigureAwait(false)).ConfigureAwait(false);
             }
             catch (Exception ex)
             {
@@ -278,6 +306,7 @@ namespace Innovt.Cloud.AWS.Cognito
 
             command.EnsureIsValid();
 
+            using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(ChangePassword));
             var changeRequest = new Amazon.CognitoIdentityProvider.Model.ChangePasswordRequest
             {
                 AccessToken = command.AccessToken,
@@ -288,7 +317,8 @@ namespace Innovt.Cloud.AWS.Cognito
             try
             {
                 await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await CognitoidentityProvider.ChangePasswordAsync(changeRequest, cancellationToken));
+                    await CognitoProvider.ChangePasswordAsync(changeRequest, cancellationToken)
+                        .ConfigureAwait(false)).ConfigureAwait(false);
             }
             catch (Exception ex)
             {
@@ -303,6 +333,7 @@ namespace Innovt.Cloud.AWS.Cognito
 
             request.EnsureIsValid();
 
+            using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(GetUser));
             var listUserRequest = new ListUsersRequest
             {
                 UserPoolId = userPoolId,
@@ -312,7 +343,9 @@ namespace Innovt.Cloud.AWS.Cognito
             try
             {
                 var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await CognitoidentityProvider.ListUsersAsync(listUserRequest, cancellationToken));
+                        await CognitoProvider.ListUsersAsync(listUserRequest, cancellationToken)
+                            .ConfigureAwait(false))
+                    .ConfigureAwait(false);
 
                 var cognitoUser = response?.Users.FirstOrDefault(u =>
                     request.ExcludeExternalUser && u.UserStatus != "EXTERNAL_PROVIDER");
@@ -323,7 +356,7 @@ namespace Innovt.Cloud.AWS.Cognito
                 var user = Activator.CreateInstance<T>();
 
                 user.UserName = cognitoUser.Username;
-                user.Status = cognitoUser.UserStatus.ToString();
+                user.Status = cognitoUser.UserStatus.ToString(cultureInfo);
                 user.UserCreateDate = cognitoUser.UserCreateDate;
                 user.UserLastModifiedDate = cognitoUser.UserLastModifiedDate;
 
@@ -367,9 +400,12 @@ namespace Innovt.Cloud.AWS.Cognito
 
             command.EnsureIsValid();
 
+            using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(RespondToAuthChallenge));
+            activity?.SetTag("UserName", command.UserName);
+
             var challengeResponses = new Dictionary<string, string>
             {
-                {"USERNAME", command.UserName.ToLower()}
+                {"USERNAME", command.UserName.ToLower(cultureInfo)}
             };
 
             switch (command.ChallengeName)
@@ -403,7 +439,8 @@ namespace Innovt.Cloud.AWS.Cognito
             try
             {
                 var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await CognitoidentityProvider.RespondToAuthChallengeAsync(request, cancellationToken));
+                    await CognitoProvider.RespondToAuthChallengeAsync(request, cancellationToken)
+                        .ConfigureAwait(false)).ConfigureAwait(false);
 
                 var result = new AuthChallengeResponse();
 
@@ -435,12 +472,15 @@ namespace Innovt.Cloud.AWS.Cognito
 
             command.EnsureIsValid();
 
+            using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(ConfirmForgotPassword));
+            activity?.SetTag("UserName", command.UserName);
+
             try
             {
                 var respond = new Amazon.CognitoIdentityProvider.Model.ConfirmForgotPasswordRequest
                 {
                     ClientId = clientId,
-                    Username = command.UserName.ToLower(),
+                    Username = command.UserName.ToLower(cultureInfo),
                     Password = command.Password,
                     ConfirmationCode = command.ConfirmationCode,
                     UserContextData = new UserContextDataType
@@ -451,11 +491,12 @@ namespace Innovt.Cloud.AWS.Cognito
                 };
 
                 await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await CognitoidentityProvider.ConfirmForgotPasswordAsync(respond, cancellationToken));
+                    await CognitoProvider.ConfirmForgotPasswordAsync(respond, cancellationToken)
+                        .ConfigureAwait(false)).ConfigureAwait(false);
             }
             catch (Exception ex)
             {
-                CatchException(ex);
+                throw CatchException(ex);
             }
         }
 
@@ -466,8 +507,7 @@ namespace Innovt.Cloud.AWS.Cognito
 
             command.EnsureIsValid();
 
-            OAuth2SignInResponse response = null;
-
+            using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(ConfirmForgotPassword));
             var parameters = new List<KeyValuePair<string, string>>
             {
                 new("grant_type", "authorization_code"),
@@ -476,19 +516,21 @@ namespace Innovt.Cloud.AWS.Cognito
                 new("redirect_uri", command.RedirectUri)
             };
 
+            OAuth2SignInResponse response = null;
+
             try
             {
                 var uri = domainEndPoint.AppendResourceUri("oauth2/token");
 
                 using var httpClient = new HttpClient();
-
+                using var content = new FormUrlEncodedContent(parameters);
                 var responseMessage =
-                    await httpClient.PostAsync(uri, new FormUrlEncodedContent(parameters), cancellationToken);
+                    await httpClient.PostAsync(uri, content, cancellationToken).ConfigureAwait(false);
 
                 if (!responseMessage.IsSuccessStatusCode)
                     throw new BusinessException(ErrorCode.OAuthResponseError);
 
-                var responseContent = await responseMessage.Content.ReadAsStringAsync();
+                var responseContent = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 response = JsonSerializer.Deserialize<OAuth2SignInResponse>(responseContent);
 
@@ -496,20 +538,21 @@ namespace Innovt.Cloud.AWS.Cognito
                     throw new BusinessException(ErrorCode.OAuthResponseError);
 
                 var socialUser = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await CognitoidentityProvider.GetUserAsync(
-                        new Amazon.CognitoIdentityProvider.Model.GetUserRequest {AccessToken = response.AccessToken},
-                        cancellationToken));
+                    await CognitoProvider.GetUserAsync(
+                        new Amazon.CognitoIdentityProvider.Model.GetUserRequest
+                            {AccessToken = response.AccessToken},
+                        cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
 
                 if (socialUser == null)
                     throw new CriticalException(ErrorCode.UserNotFound);
 
                 var socialUserEmail = GetUserAttributeValue(socialUser.UserAttributes, "email");
 
-                var listUsersResponse = await CognitoidentityProvider.ListUsersAsync(new ListUsersRequest
+                var listUsersResponse = await CognitoProvider.ListUsersAsync(new ListUsersRequest
                 {
                     UserPoolId = userPoolId,
                     Filter = $"email=\"{socialUserEmail}\""
-                }, cancellationToken);
+                }, cancellationToken).ConfigureAwait(false);
 
                 var hasCognitoUser = listUsersResponse.Users.Any(u => u.UserStatus != "EXTERNAL_PROVIDER");
 
@@ -526,9 +569,9 @@ namespace Innovt.Cloud.AWS.Cognito
 
                 if (response.NeedRegister) response.AccessToken = response.IdToken = response.RefreshToken = null;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                CatchException(e);
+                throw CatchException(ex);
             }
 
             return response;
@@ -541,6 +584,7 @@ namespace Innovt.Cloud.AWS.Cognito
 
             command.EnsureIsValid();
 
+            using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(RefreshToken));
             var authRequest = new InitiateAuthRequest
             {
                 ClientId = clientId,
@@ -557,7 +601,9 @@ namespace Innovt.Cloud.AWS.Cognito
             try
             {
                 var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await CognitoidentityProvider.InitiateAuthAsync(authRequest, cancellationToken));
+                        await CognitoProvider.InitiateAuthAsync(authRequest, cancellationToken)
+                            .ConfigureAwait(false))
+                    .ConfigureAwait(false);
 
                 if (response.AuthenticationResult == null)
                     throw new BusinessException(Messages.NotAuthorized);
@@ -577,7 +623,7 @@ namespace Innovt.Cloud.AWS.Cognito
         }
 
 
-        private Exception CatchException(Exception ex)
+        private static Exception CatchException(Exception ex)
         {
             throw ex switch
             {
@@ -599,8 +645,11 @@ namespace Innovt.Cloud.AWS.Cognito
 
         private async Task<SignInResponse> SignIn(AuthFlowType type, SignInRequestBase request,
             Dictionary<string, string> authParameters = null, CancellationToken cancellationToken = default)
-        {
+        {            
             Check.NotNull(request, nameof(request));
+
+            using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(SignIn));
+            activity?.SetTag("UserName", request.UserName);
 
             var authRequest = new InitiateAuthRequest
             {
@@ -613,7 +662,7 @@ namespace Innovt.Cloud.AWS.Cognito
                 }
             };
 
-            authRequest.AuthParameters.Add("USERNAME", request.UserName.ToLower());
+            authRequest.AuthParameters.Add("USERNAME", request.UserName.ToLower(cultureInfo));
 
             if (authParameters != null)
                 foreach (var (key, value) in authParameters)
@@ -622,7 +671,9 @@ namespace Innovt.Cloud.AWS.Cognito
             try
             {
                 var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await CognitoidentityProvider.InitiateAuthAsync(authRequest, cancellationToken));
+                        await CognitoProvider.InitiateAuthAsync(authRequest, cancellationToken)
+                            .ConfigureAwait(false))
+                    .ConfigureAwait(false);
 
                 if (response.AuthenticationResult != null)
                     return new SignInResponse
@@ -652,18 +703,17 @@ namespace Innovt.Cloud.AWS.Cognito
             }
         }
 
-
-        private string GetUserAttributeValue(List<AttributeType> attributes, string attributeName)
+        private static string GetUserAttributeValue(IEnumerable<AttributeType> attributes, string attributeName)
         {
-            var attribute = attributes.SingleOrDefault(a =>
-                a.Name.Equals(attributeName, StringComparison.CurrentCultureIgnoreCase));
+            var attribute = attributes?.SingleOrDefault(a =>
+                a.Name.Equals(attributeName, StringComparison.OrdinalIgnoreCase));
 
             return attribute?.Value;
         }
 
         protected override void DisposeServices()
         {
-            cognitoidentityProvider?.Dispose();
+            cognitoIdentityProvider?.Dispose();
         }
     }
 }

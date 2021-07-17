@@ -18,9 +18,11 @@ namespace Innovt.Cloud.AWS.Lambda
         {
             var variable = Environment.GetEnvironmentVariable(varName);
 
-            if (variable == null && context?.ClientContext?.Environment != null)
-                if (context.ClientContext.Environment.ContainsKey(varName))
-                    variable = context.ClientContext.Environment[varName];
+            if (variable != null || context?.ClientContext?.Environment == null) return variable ?? defaultValue;
+
+
+            if (context.ClientContext.Environment.ContainsKey(varName))
+                variable = context.ClientContext.Environment[varName];
 
             return variable ?? defaultValue;
         }

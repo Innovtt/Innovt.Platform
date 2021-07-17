@@ -15,10 +15,14 @@ namespace Innovt.Cloud.Queue
 
         string ReceiptHandle { get; set; }
 
+        string TraceId { get; set; }
+
         double? ApproximateFirstReceiveTimestamp { get; set; }
 
         int? ApproximateReceiveCount { get; set; }
 
+        #pragma warning disable CA2227 // Collection properties should be read only
         Dictionary<string, string> Attributes { get; set; }
+        #pragma warning restore CA2227 // Collection properties should be read only
     }
 }

@@ -22,11 +22,11 @@ namespace Innovt.Cloud.AWS.Notification
     {
         private AmazonSimpleNotificationServiceClient _simpleNotificationClient;
 
-        public SmsNotificationHandler(ILogger logger, IAWSConfiguration configuration) : base(logger, configuration)
+        public SmsNotificationHandler(ILogger logger, IAwsConfiguration configuration) : base(logger, configuration)
         {
         }
 
-        public SmsNotificationHandler(ILogger logger, IAWSConfiguration configuration, string region) : base(logger,
+        public SmsNotificationHandler(ILogger logger, IAwsConfiguration configuration, string region) : base(logger,
             configuration, region)
         {
         }

@@ -48,6 +48,8 @@ namespace Innovt.Data.EFCore
         public static IQueryable<T> ApplyPagination<T>(this IQueryable<T> query, ISpecification<T> specification)
             where T : class
         {
+            if (specification == null) throw new ArgumentNullException(nameof(specification));
+
             return query.ApplyPagination(specification.Page, specification.PageSize);
         }
 
@@ -55,15 +57,17 @@ namespace Innovt.Data.EFCore
             IEntityTypeConfiguration<TEntity> configuration)
             where TEntity : class
         {
+            if (modelBuilder == null) throw new ArgumentNullException(nameof(modelBuilder));
+            if (configuration == null) throw new ArgumentNullException(nameof(configuration));
+
             configuration.Configure(modelBuilder.Entity<TEntity>());
         }
 
-        public static void AddConfiguration<TEntity>(this ModelBuilder modelBuilder,
-            List<IEntityTypeConfiguration<TEntity>> configurationList)
+        public static void AddConfiguration<TEntity>(this ModelBuilder modelBuilder, IList<IEntityTypeConfiguration<TEntity>> configurationList)
             where TEntity : class
         {
-            if (configurationList == null)
-                throw new ArgumentNullException(nameof(configurationList));
+            if (modelBuilder == null) throw new ArgumentNullException(nameof(modelBuilder));
+            if (configurationList == null) throw new ArgumentNullException(nameof(configurationList));
 
             foreach (var item in configurationList) modelBuilder.AddConfiguration(item);
         }

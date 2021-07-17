@@ -12,11 +12,11 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
 {
     public class BaseRepository : Repository
     {
-        public BaseRepository(ILogger logger, IAWSConfiguration configuration) : base(logger, configuration)
+        public BaseRepository(ILogger logger, IAwsConfiguration configuration) : base(logger, configuration)
         {
         }
 
-        public BaseRepository(ILogger logger, IAWSConfiguration configuration, string region) : base(logger,
+        public BaseRepository(ILogger logger, IAwsConfiguration configuration, string region) : base(logger,
             configuration, region)
         {
         }

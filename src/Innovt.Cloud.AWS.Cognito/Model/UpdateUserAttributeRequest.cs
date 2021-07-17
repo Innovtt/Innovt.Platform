@@ -16,7 +16,9 @@ namespace Innovt.Cloud.AWS.Cognito.Model
     {
         [Required] public string AccessToken { get; set; }
 
+#pragma warning disable CA2227 // Collection properties should be read only
         public Dictionary<string, string> Attributes { get; set; }
+#pragma warning restore CA2227 // Collection properties should be read only
 
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

@@ -43,9 +43,6 @@ namespace Innovt.Data.Ado.Tests
                         WHERE 1=1  AND B.""Id""='ffc04a95-15d6-4a32-9dcc-381a996e37c5'");
 
             return await QueryAsync<dynamic>(query.ToString()).ConfigureAwait(true);
-
-
-            //return await QueryAsync<User>(query);
         }
     }
 }

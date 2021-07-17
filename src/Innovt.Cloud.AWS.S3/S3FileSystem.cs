@@ -30,11 +30,11 @@ namespace Innovt.Cloud.AWS.S3
 
         private AmazonS3Client s3Client;
 
-        public S3FileSystem(ILogger logger, IAWSConfiguration configuration) : base(logger, configuration)
+        public S3FileSystem(ILogger logger, IAwsConfiguration configuration) : base(logger, configuration)
         {
         }
 
-        public S3FileSystem(ILogger logger, IAWSConfiguration configuration, string region) : base(logger,
+        public S3FileSystem(ILogger logger, IAwsConfiguration configuration, string region) : base(logger,
             configuration, region)
         {
         }
@@ -45,18 +45,20 @@ namespace Innovt.Cloud.AWS.S3
         }
 
         //only if in the same region
-        public (string bucket, string fileKey) ExtractBucketFromGetUrl(string url)
+        public (string bucket, string fileKey) ExtractBucketFromGetUrl(string bucketUrl)
         {
+            if (bucketUrl == null) throw new ArgumentNullException(nameof(bucketUrl));
+
             var amazonPrefix = ".amazonaws.com/";
 
-            var urlWithoutPrefix = url.Remove(0,
-                url.IndexOf(amazonPrefix, StringComparison.CurrentCultureIgnoreCase) + amazonPrefix.Length);
+            var urlWithoutPrefix = bucketUrl.Remove(0,
+                bucketUrl.IndexOf(amazonPrefix, StringComparison.CurrentCultureIgnoreCase) + amazonPrefix.Length);
 
             var spitedUrl = urlWithoutPrefix.Split('/');
 
             var bucket = spitedUrl[0];
 
-            var fileKey = urlWithoutPrefix.Replace(bucket + "/", "");
+            var fileKey = urlWithoutPrefix.Replace(bucket + "/", "", StringComparison.OrdinalIgnoreCase);
 
             return (bucket, fileKey);
         }
@@ -65,14 +67,14 @@ namespace Innovt.Cloud.AWS.S3
             string serverSideEncryptionMethod = null)
         {
             return AsyncHelper.RunSync(async () =>
-                await PutObjectAsync(bucketName, filePath, contentType, serverSideEncryptionMethod));
+                await PutObjectAsync(bucketName, filePath, contentType, serverSideEncryptionMethod).ConfigureAwait(false));
         }
 
         public string PutObject(string bucketName, Stream stream, string fileName, string contentType = null,
             string serverSideEncryptionMethod = null)
         {
             return AsyncHelper.RunSync(async () =>
-                await PutObjectAsync(bucketName, stream, fileName, contentType));
+                await PutObjectAsync(bucketName, stream, fileName, contentType).ConfigureAwait(false));
         }
 
         public Task<string> PutObjectAsync(string bucketName, Stream stream, string fileName, string contentType = null,
@@ -145,7 +147,7 @@ namespace Innovt.Cloud.AWS.S3
             };
 
             return await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(
-                    async () => await new TransferUtility(S3Client).OpenStreamAsync(request, cancellationToken))
+                    async () => await new TransferUtility(S3Client).OpenStreamAsync(request, cancellationToken).ConfigureAwait(false))
                 .ConfigureAwait(false);
         }
 
@@ -163,7 +165,7 @@ namespace Innovt.Cloud.AWS.S3
 
             using var reader = new StreamReader(stream, encoding);
 
-            return await reader.ReadToEndAsync();
+            return await reader.ReadToEndAsync().ConfigureAwait(false);
         }
 
         public string GetObjectContent(string url, Encoding encoding)
@@ -224,11 +226,11 @@ namespace Innovt.Cloud.AWS.S3
             var policy = base.CreateDefaultRetryAsyncPolicy();
 
             await policy.ExecuteAsync(async () =>
-                await new TransferUtility(S3Client).UploadDirectoryAsync(request, cancellationToken));
+                await new TransferUtility(S3Client).UploadDirectoryAsync(request, cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
         }
 
         public string Upload(string bucketName, Stream stream, string fileName,
-            List<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null)
+            IList<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null)
         {
             using var activity = S3ActivitySource.StartActivity("Upload");
             activity?.SetTag("s3.bucket_name", bucketName);
@@ -242,7 +244,7 @@ namespace Innovt.Cloud.AWS.S3
         }
 
         public string Upload(string bucketName, string filePath,
-            List<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null)
+            IList<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null)
         {
             var fileName = Path.GetFileName(filePath);
 
@@ -252,19 +254,19 @@ namespace Innovt.Cloud.AWS.S3
         }
 
         public async Task<string> UploadAsync(string bucketName, Stream stream, string fileName,
-            List<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null,
+            IList<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null,
             CancellationToken cancellationToken = default)
         {
             var request = CreateUploadRequest(bucketName, stream, fileName, metadata, serverSideEncryptionMethod);
 
             await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                await new TransferUtility(S3Client).UploadAsync(request, cancellationToken)).ConfigureAwait(false);
+                await new TransferUtility(S3Client).UploadAsync(request, cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
 
             return GetObjectUrl(bucketName, fileName);
         }
 
         public Task<string> UploadAsync(string bucketName, string filePath,
-            List<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null,
+            IList<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null,
             CancellationToken cancellationToken = default)
         {
             var fileName = Path.GetFileName(filePath);
@@ -291,7 +293,7 @@ namespace Innovt.Cloud.AWS.S3
 
             var response =
                 await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                        await S3Client.ListObjectsV2Async(request, cancellationToken))
+                        await S3Client.ListObjectsV2Async(request, cancellationToken).ConfigureAwait(false))
                     .ConfigureAwait(false);
 
             return response.MaxKeys > 0;

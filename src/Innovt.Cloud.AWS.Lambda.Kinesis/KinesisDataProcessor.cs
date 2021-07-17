@@ -5,10 +5,6 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.IO;
-using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.KinesisEvents;
@@ -17,63 +13,47 @@ using Innovt.Domain.Core.Streams;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis
 {
-    public abstract class KinesisDataProcessor<TBody> : EventProcessor<KinesisEvent> where TBody : class
+    public abstract class KinesisDataProcessor<TBody> : KinesisDataProcessorBase<TBody> where TBody : class
     {
         protected KinesisDataProcessor(ILogger logger) : base(logger)
         {
         }
-
         protected KinesisDataProcessor()
         {
         }
 
-        protected virtual DataStream<TBody> DeserializeBody(string content, string partition)
+        protected override async Task Handle(KinesisEvent message, ILambdaContext context)
         {
-            return JsonSerializer.Deserialize<DataStream<TBody>>(content);
-        }
+            Logger.Info($"Processing Kinesis Event With {message?.Records?.Count} records.");
 
-        protected override async Task Handle(KinesisEvent kinesisEvent, ILambdaContext context)
-        {
-            Logger.Info($"Processing Kinesis Event With {kinesisEvent.Records?.Count} records.");
+            if (message?.Records == null) return;
+            if (message.Records.Count == 0) return;
 
-            if (kinesisEvent?.Records == null) return;
-            if (kinesisEvent.Records.Count == 0) return;
-
-            foreach (var record in kinesisEvent.Records)
+            using var activity = EventProcessorActivitySource.StartActivity(nameof(Handle));
+            foreach (var record in message.Records)
             {
                 Logger.Info($"Processing Kinesis Event message ID {record.EventId}.");
 
-                try
+                var body = await base.ParseRecord(record).ConfigureAwait(false);
+
+                if (body?.TraceId !=null && activity !=null)
                 {
-                    Logger.Info("Reading Stream Content.");
-
-                    using var reader = new StreamReader(record.Kinesis.Data, Encoding.UTF8);
-
-                    var content = await reader.ReadToEndAsync();
-
-                    Logger.Info("Stream Content Read.");
-
-                    Logger.Info("Creating DataStream Message.");
-
-                    var message = DeserializeBody(content, record.Kinesis.PartitionKey);
-
-                    if (message != null)
-                    {
-                        message.EventId = record.EventId;
-                        message.ApproximateArrivalTimestamp = record.Kinesis.ApproximateArrivalTimestamp;
-                    }
-
-                    Logger.Info("Invoking ProcessMessage.");
-
-                    await ProcessMessage(message);
+                    activity.SetParentId(body.TraceId);
                 }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex,
-                        "Error Processing Message from Kinesis Event. Developer, you should take care of it!. Message: Id={EventId}, PartitionKey= {PartitionKey}",
-                        record.EventId, record.Kinesis.PartitionKey);
-                    throw;
-                }
+
+                Logger.Info("Invoking ProcessMessage.");
+
+                using var processActivity = EventProcessorActivitySource.StartActivity(nameof(ProcessMessage));
+                processActivity?.SetTag("KinesisEventId", record?.EventId);
+                processActivity?.SetTag("KinesisEventName", record?.EventName);
+                processActivity?.SetTag("KinesisPartitionKey", record?.Kinesis?.PartitionKey);
+                processActivity?.SetTag("KinesisApproximateArrivalTimestamp", record?.Kinesis?.ApproximateArrivalTimestamp);
+                processActivity?.SetTag("BodyEventId", body?.EventId);
+                processActivity?.SetTag("BodyPartition", body?.Partition);
+                processActivity?.SetTag("BodyVersion", body?.Version);
+                processActivity?.SetTag("BodyVersion", body?.TraceId);
+
+                await ProcessMessage(body).ConfigureAwait(false);
             }
         }
 
