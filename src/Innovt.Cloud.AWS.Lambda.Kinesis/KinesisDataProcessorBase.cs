@@ -5,14 +5,14 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using Amazon.Lambda.KinesisEvents;
+using Innovt.Core.CrossCutting.Log;
+using Innovt.Domain.Core.Streams;
 using System;
 using System.IO;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Amazon.Lambda.KinesisEvents;
-using Innovt.Core.CrossCutting.Log;
-using Innovt.Domain.Core.Streams;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis
 {
@@ -27,13 +27,13 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
         {
         }
 
-        protected virtual DataStream<TBody> DeserializeBody(string content, string partition)
+        protected virtual T DeserializeBody<T>(string content, string partition) where T : IDataStream
         {
-            return JsonSerializer.Deserialize<DataStream<TBody>>(content);
+            return JsonSerializer.Deserialize<T>(content);
         }
 
 
-        protected async Task<DataStream<TBody>> ParseRecord(KinesisEvent.KinesisEventRecord record)
+        protected async Task<T> ParseRecord<T>(KinesisEvent.KinesisEventRecord record) where T : IDataStream
         {
             if (record == null) throw new ArgumentNullException(nameof(record));
 
@@ -57,7 +57,7 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
 
                 Logger.Info("Creating DataStream Message.");
 
-                var body = DeserializeBody(content, record.Kinesis.PartitionKey);
+                var body = DeserializeBody<T>(content, record.Kinesis.PartitionKey);
 
                 if (body != null)
                 {

@@ -5,11 +5,11 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System.Threading.Tasks;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.KinesisEvents;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Domain.Core.Streams;
+using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis
 {
@@ -34,9 +34,9 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
             {
                 Logger.Info($"Processing Kinesis Event message ID {record.EventId}.");
 
-                var body = await base.ParseRecord(record).ConfigureAwait(false);
+                var body = await base.ParseRecord<DataStream<TBody>>(record).ConfigureAwait(false);
 
-                if (body?.TraceId !=null && activity !=null)
+                if (body?.TraceId != null && activity != null)
                 {
                     activity.SetParentId(body.TraceId);
                 }
