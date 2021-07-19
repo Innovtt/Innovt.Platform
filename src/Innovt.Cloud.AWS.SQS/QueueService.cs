@@ -23,7 +23,7 @@ namespace Innovt.Cloud.AWS.SQS
 {
     public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueueMessage
     {
-        private static readonly ActivitySource QueueActivitySource = new(nameof(QueueService<T>));
+        private static readonly ActivitySource QueueActivitySource = new("Innovt.Cloud.AWS.SQS.QueueService");
 
         private ISerializer serializer;
 

@@ -42,9 +42,10 @@ namespace Innovt.Core.Utilities
             return 0;
         }
 
-
         public static void NotLessThanZero<T>(params T[] value)
         {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            
             foreach (var i in value)
             {
                 var item = i as int?;
@@ -121,7 +122,7 @@ namespace Innovt.Core.Utilities
             {
                 NotEmpty(parameterName, nameof(parameterName));
 
-                throw new ArgumentException(nameof(parameterName));
+                throw new ArgumentException(parameterName);
             }
 
             return value;
@@ -132,7 +133,7 @@ namespace Innovt.Core.Utilities
             Exception e = null;
             if (value is null)
                 e = new ArgumentNullException(parameterName);
-            else if (value.Trim().Length == 0) e = new ArgumentException(nameof(parameterName));
+            else if (value.Trim().Length == 0) e = new ArgumentException(parameterName);
 
             if (e != null)
             {
@@ -146,15 +147,12 @@ namespace Innovt.Core.Utilities
 
         public static string NullButNotEmpty(string value, string parameterName)
         {
-            if (value != null
-                && value.Length == 0)
-            {
-                NotEmpty(parameterName, nameof(parameterName));
+            if (value is not {Length: 0}) return value;
 
-                throw new ArgumentException(nameof(parameterName));
-            }
 
-            return value;
+            NotEmpty(parameterName, nameof(parameterName));
+
+            throw new ArgumentException(parameterName);
         }
     }
 }

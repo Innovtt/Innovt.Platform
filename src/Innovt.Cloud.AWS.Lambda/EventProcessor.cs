@@ -19,7 +19,7 @@ namespace Innovt.Cloud.AWS.Lambda
     {
         private bool isIocContainerInitialized;
 
-        protected static readonly ActivitySource EventProcessorActivitySource = new(nameof(EventProcessor<T>));
+        protected static readonly ActivitySource EventProcessorActivitySource = new("Innovt.Cloud.AWS.Lambda.EventProcessor");
         
         protected EventProcessor(ILogger logger)
         {
@@ -44,7 +44,7 @@ namespace Innovt.Cloud.AWS.Lambda
 
             using var activity = EventProcessorActivitySource.StartActivity(nameof(SetupIoc));
             Context.Logger.LogLine("Initializing IOC Container.");
-
+            
             var container = SetupIocContainer();
 
             if (container != null)
@@ -79,10 +79,9 @@ namespace Innovt.Cloud.AWS.Lambda
             context.Logger.LogLine($"Receiving message. Function {context.FunctionName} and Version {context.FunctionVersion}");
 
             using var activity = EventProcessorActivitySource.StartActivity(nameof(Process));
-            activity?.SetTag("AwsRequestId", context.AwsRequestId);
-            activity?.SetTag("FunctionName", context.FunctionName);
-            activity?.SetTag("FunctionVersion", context.FunctionVersion);
-            activity?.SetTag("MemoryLimitInMB", context.MemoryLimitInMB);
+            activity?.SetTag("Lambda.RequestId", context.AwsRequestId);
+            activity?.SetTag("Lambda.FunctionName", context.FunctionName);
+            activity?.SetTag("Lambda.FunctionVersion", context.FunctionVersion);
 
             Context = context;
 

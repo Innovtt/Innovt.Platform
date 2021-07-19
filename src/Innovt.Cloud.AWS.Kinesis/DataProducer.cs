@@ -27,7 +27,7 @@ namespace Innovt.Cloud.AWS.Kinesis
     {
         private AmazonKinesisClient kinesisClient;
 
-        private static readonly ActivitySource ActivityDataProducer = new(nameof(DataProducer<T>));
+        public static readonly ActivitySource ActivityDataProducer = new("Innovt.Cloud.AWS.KinesisDataProducer");
 
         protected DataProducer(string busName, ILogger logger, IAwsConfiguration configuration) : base(logger,
             configuration)

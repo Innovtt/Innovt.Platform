@@ -28,7 +28,7 @@ namespace Innovt.Cloud.AWS.Dynamo
 {
     public abstract class Repository : AwsBaseService, ITableRepository
     {
-        private static readonly ActivitySource ActivityRepository = new(nameof(Repository));
+        private static readonly ActivitySource ActivityRepository = new("Innovt.Cloud.AWS.Dynamo.Repository");
 
         private DynamoDBContext context;
         private AmazonDynamoDBClient dynamoClient;

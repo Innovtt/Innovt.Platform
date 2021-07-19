@@ -64,30 +64,40 @@ namespace Innovt.Data.EFCore.Repositories
 
         public virtual T GetFirstOrDefault(ISpecification<T> specification, Include includes = null)
         {
+            if (specification == null) throw new ArgumentNullException(nameof(specification));
+
             return Context.Queryable<T>().AddInclude(includes).FirstOrDefault(specification.SatisfiedBy());
         }
 
         public virtual async Task<T> GetFirstOrDefaultAsync(ISpecification<T> specification, Include includes = null,
             CancellationToken cancellationToken = default)
         {
+            if (specification == null) throw new ArgumentNullException(nameof(specification));
+
             return await Context.Queryable<T>().AddInclude(includes)
-                .FirstOrDefaultAsync(specification.SatisfiedBy(), cancellationToken);
+                .FirstOrDefaultAsync(specification.SatisfiedBy(), cancellationToken).ConfigureAwait(false);
         }
 
         public virtual async Task<T> GetSingleOrDefaultAsync(ISpecification<T> specification, Include includes = null,
             CancellationToken cancellationToken = default)
         {
+            if (specification == null) throw new ArgumentNullException(nameof(specification));
+
             return await Context.Queryable<T>().AddInclude(includes)
-                .SingleOrDefaultAsync(specification.SatisfiedBy(), cancellationToken);
+                .SingleOrDefaultAsync(specification.SatisfiedBy(), cancellationToken).ConfigureAwait(false);
         }
 
         public virtual T GetSingleOrDefault(ISpecification<T> specification, Include includes = null)
         {
+            if (specification == null) throw new ArgumentNullException(nameof(specification));
+
             return Context.Queryable<T>().AddInclude(includes).SingleOrDefault(specification.SatisfiedBy());
         }
 
         public virtual IEnumerable<T> FindBy(ISpecification<T> specification, Include includes = null)
         {
+            if (specification == null) throw new ArgumentNullException(nameof(specification));
+
             var query = Context.Queryable<T>().AddInclude(includes)
                 .Where(specification.SatisfiedBy())
                 .ApplyPagination(specification);
@@ -100,6 +110,8 @@ namespace Innovt.Data.EFCore.Repositories
             Expression<Func<T, TKey>> orderBy = null, bool isOrderByDescending = false,
             Include includes = null)
         {
+            if (specification == null) throw new ArgumentNullException(nameof(specification));
+
             var query = Context.Queryable<T>()
                 .AddInclude(includes)
                 .Where(specification.SatisfiedBy())
@@ -115,11 +127,13 @@ namespace Innovt.Data.EFCore.Repositories
             Include includes = null,
             CancellationToken cancellationToken = default)
         {
+            if (specification == null) throw new ArgumentNullException(nameof(specification));
+
             var query = Context.Queryable<T>().AddInclude(includes)
                 .Where(specification.SatisfiedBy())
                 .ApplyPagination(specification);
 
-            return await query.ToListAsync(cancellationToken);
+            return await query.ToListAsync(cancellationToken).ConfigureAwait(false);
         }
 
         public virtual async Task<IEnumerable<T>> FindByAsync<TKey>(ISpecification<T> specification,
@@ -127,6 +141,8 @@ namespace Innovt.Data.EFCore.Repositories
             bool isOrderByDescending = false, Include includes = null,
             CancellationToken cancellationToken = default)
         {
+            if (specification == null) throw new ArgumentNullException(nameof(specification));
+
             var query = Context.Queryable<T>().AddInclude(includes)
                 .Where(specification.SatisfiedBy())
                 .ApplyPagination(specification);
@@ -134,11 +150,13 @@ namespace Innovt.Data.EFCore.Repositories
             if (orderBy != null)
                 query = isOrderByDescending ? query.OrderByDescending(orderBy) : query.OrderBy(orderBy);
 
-            return await query.ToListAsync(cancellationToken);
+            return await query.ToListAsync(cancellationToken).ConfigureAwait(false);
         }
 
         public virtual PagedCollection<T> FindPaginatedBy(ISpecification<T> specification, Include includes = null)
         {
+            if (specification == null) throw new ArgumentNullException(nameof(specification));
+
             var items = FindBy(specification, includes);
 
             var result = new PagedCollection<T>(items, specification.Page, specification.PageSize)
@@ -153,6 +171,8 @@ namespace Innovt.Data.EFCore.Repositories
             Expression<Func<T, TKey>> orderBy = null,
             bool isOrderByDescending = false, Include includes = null)
         {
+            if (specification == null) throw new ArgumentNullException(nameof(specification));
+
             var items = FindBy(specification, orderBy, isOrderByDescending, includes);
 
             var result = new PagedCollection<T>(items, specification.Page, specification.PageSize)
@@ -166,11 +186,13 @@ namespace Innovt.Data.EFCore.Repositories
         public virtual async Task<PagedCollection<T>> FindPaginatedByAsync(ISpecification<T> specification,
             Include includes = null, CancellationToken cancellationToken = default)
         {
-            var items = await FindByAsync(specification, includes, cancellationToken);
+            if (specification == null) throw new ArgumentNullException(nameof(specification));
+
+            var items = await FindByAsync(specification, includes, cancellationToken).ConfigureAwait(false);
 
             var result = new PagedCollection<T>(items, specification.Page, specification.PageSize)
             {
-                TotalRecords = await CountByAsync(specification, cancellationToken)
+                TotalRecords = await CountByAsync(specification, cancellationToken).ConfigureAwait(false)
             };
 
             return result;
@@ -180,6 +202,8 @@ namespace Innovt.Data.EFCore.Repositories
             Expression<Func<T, TKey>> orderBy = null, bool isOrderByDescending = false,
             Include includes = null, CancellationToken cancellationToken = default)
         {
+            if (specification == null) throw new ArgumentNullException(nameof(specification));
+
             var items = await FindByAsync(specification, orderBy, isOrderByDescending, includes,
                 cancellationToken).ConfigureAwait(false);
 
@@ -194,24 +218,32 @@ namespace Innovt.Data.EFCore.Repositories
 
         public virtual int CountBy(ISpecification<T> specification)
         {
+            if (specification == null) throw new ArgumentNullException(nameof(specification));
+
             return Context.Queryable<T>().Count(specification.SatisfiedBy());
         }
 
         public virtual int CountBy<TKEntity>(ISpecification<TKEntity> specification) where TKEntity : class
         {
+            if (specification == null) throw new ArgumentNullException(nameof(specification));
+
             return Context.Queryable<TKEntity>().Count(specification.SatisfiedBy());
         }
 
         public virtual async Task<int> CountByAsync<TKEntity>(ISpecification<TKEntity> specification,
             CancellationToken cancellationToken = default) where TKEntity : class
         {
-            return await Context.Queryable<TKEntity>().CountAsync(specification.SatisfiedBy(), cancellationToken);
+            if (specification == null) throw new ArgumentNullException(nameof(specification));
+
+            return await Context.Queryable<TKEntity>().CountAsync(specification.SatisfiedBy(), cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<int> CountByAsync(ISpecification<T> specification,
             CancellationToken cancellationToken = default)
         {
-            return await Context.Queryable<T>().CountAsync(specification.SatisfiedBy(), cancellationToken);
+            if (specification == null) throw new ArgumentNullException(nameof(specification));
+
+            return await Context.Queryable<T>().CountAsync(specification.SatisfiedBy(), cancellationToken).ConfigureAwait(false);
         }
     }
 }

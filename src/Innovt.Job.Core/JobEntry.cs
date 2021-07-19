@@ -66,7 +66,7 @@ namespace Innovt.Job.Core
                     throw new CriticalException($"The call for CreateJob method return NULL for Job Name {JobName}");
 
 
-                AsyncHelper.RunSync(async () => await job.Start());
+                AsyncHelper.RunSync(async () => await job.Start().ConfigureAwait(false));
             }
             catch (Exception)
             {

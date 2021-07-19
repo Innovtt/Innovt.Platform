@@ -16,9 +16,7 @@ namespace Innovt.CrossCutting.Log.Serilog
 {
     public class Logger : ILogger
     {
-        private const string ConsoleTemplate =
-            "[{Timestamp:HH:mm:ss} {Level:u3}] {TraceId:TraceId} {SpanId:SpanId} {Message:lj}{NewLine}{Exception}{NewLine}{Properties:j}";
-
+        private const string ConsoleTemplate = "[{Timestamp:HH:mm:ss} {Level:u3}] [TraceId:{TraceId:TraceId}] {Message:lj}{NewLine}{Exception}";
         private readonly global::Serilog.Core.Logger logger;
 
         /// <summary>
@@ -32,20 +30,17 @@ namespace Innovt.CrossCutting.Log.Serilog
         {
             if (enricher is null) throw new ArgumentNullException(nameof(enricher));
 
-            logger = new LoggerConfiguration().WriteTo.Console(outputTemplate: ConsoleTemplate
-            ).Enrich.With(enricher).CreateLogger();
+            logger = new LoggerConfiguration().WriteTo.Console(outputTemplate: ConsoleTemplate).Enrich.With(enricher).Enrich.With(new ActivityEnrich()).CreateLogger();
         }
 
         public Logger(LoggerConfiguration configuration)
         {
-            if (configuration == null) throw new ArgumentNullException(nameof(configuration));
-
-            //The default Enricher ir OpenTracing
-            logger = configuration.WriteTo.Console(outputTemplate: ConsoleTemplate).Enrich
-                .With<OpenTracingContextLogEnricher>().Enrich.FromLogContext().CreateLogger();
+            if (configuration == null) throw new ArgumentNullException(nameof(configuration));            
+            logger = configuration.WriteTo.Console(
+                outputTemplate: ConsoleTemplate).Enrich.With(new ActivityEnrich()).Enrich.FromLogContext().CreateLogger();
         }
 
-        public void Debug(string messageTemplate)
+        public void Debug(string message)
         {
             if (!IsEnabled(LogLevel.Debug))
             {
@@ -53,7 +48,7 @@ namespace Innovt.CrossCutting.Log.Serilog
                 return;
             }
 
-            logger.Debug(messageTemplate);
+            logger.Debug(message);
         }
 
         public void Debug(string messageTemplate, params object[] propertyValues)

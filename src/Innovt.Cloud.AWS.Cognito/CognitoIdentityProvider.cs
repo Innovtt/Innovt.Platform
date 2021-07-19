@@ -39,7 +39,7 @@ namespace Innovt.Cloud.AWS.Cognito
 {
     public abstract class CognitoIdentityProvider : AwsBaseService, Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider
     {
-        protected static readonly ActivitySource CognitoIdentityProviderActivitySource = new(nameof(CognitoIdentityProvider));
+        protected static readonly ActivitySource CognitoIdentityProviderActivitySource = new("Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider");
 
         private readonly string clientId;
         private readonly Uri domainEndPoint;

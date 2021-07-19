@@ -22,10 +22,9 @@ namespace Innovt.AspNetCoreTests
         {
         }
 
-
         protected override void AddDefaultServices(IServiceCollection services)
         {
-            
+            services.AddScoped<Core.CrossCutting.Log.ILogger, Innovt.CrossCutting.Log.Serilog.Logger>();
         }
 
         protected override void ConfigureIoC(IServiceCollection services)
@@ -35,12 +34,13 @@ namespace Innovt.AspNetCoreTests
 
         public override void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env,
             ILoggerFactory loggerFactory)
-        {
-            
+        {                    
         }
 
         protected override void ConfigureOpenTelemetry(TracerProviderBuilder builder)
         {
+            builder.AddSource(Innovt.Cloud.AWS.Kinesis.EventHandler.ActivityDataProducer.Name);
+
             builder.AddZipkinExporter();
         }
     }

@@ -26,7 +26,7 @@ namespace Innovt.Cloud.AWS.S3
 {
     public class S3FileSystem : AwsBaseService, IFileSystem
     {
-        private static readonly ActivitySource S3ActivitySource = new(nameof(S3FileSystem));
+        private static readonly ActivitySource S3ActivitySource = new("Innovt.Cloud.AWS.S3.S3FileSystem");
 
         private AmazonS3Client s3Client;
 
