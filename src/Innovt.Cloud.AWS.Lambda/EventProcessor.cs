@@ -18,6 +18,7 @@ namespace Innovt.Cloud.AWS.Lambda
     public abstract class EventProcessor<T> where T : class
     {
         private bool isIocContainerInitialized;
+        internal const string EnvVarTraceId = "_X_AMZN_TRACE_ID";
 
         protected static readonly ActivitySource EventProcessorActivitySource = new("Innovt.Cloud.AWS.Lambda.EventProcessor");
         
@@ -77,17 +78,32 @@ namespace Innovt.Cloud.AWS.Lambda
             if (context == null) throw new ArgumentNullException(nameof(context));
 
             context.Logger.LogLine($"Receiving message. Function {context.FunctionName} and Version {context.FunctionVersion}");
+             try
+            {
+                using var activity = EventProcessorActivitySource.StartActivity(nameof(Process));            
+                activity?.SetTag("Lambda.FunctionName", context.FunctionName);
+                activity?.SetTag("Lambda.FunctionVersion", context.FunctionVersion);
+                activity?.SetTag("Lambda.LogStreamName", context.LogStreamName);
+                activity?.AddBaggage("Lambda.RequestId", context.AwsRequestId);
 
-            using var activity = EventProcessorActivitySource.StartActivity(nameof(Process));
-            activity?.SetTag("Lambda.RequestId", context.AwsRequestId);
-            activity?.SetTag("Lambda.FunctionName", context.FunctionName);
-            activity?.SetTag("Lambda.FunctionVersion", context.FunctionVersion);
+                //setting request id as parentId.
+                if (activity?.ParentId is null && context.AwsRequestId != null)
+                {
+                    activity?.SetParentId(context.AwsRequestId);
+                }
 
-            Context = context;
+                Context = context;
+           
+                SetupIoc();
 
-            SetupIoc();
-
-            await Handle(message, context).ConfigureAwait(false);
+                await Handle(message, context).ConfigureAwait(false);
+            }
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception ex)
+#pragma warning restore CA1031 // Do not catch general exception types
+            {
+                Console.WriteLine(ex);
+            }
         }
 
         protected abstract IContainer SetupIocContainer();

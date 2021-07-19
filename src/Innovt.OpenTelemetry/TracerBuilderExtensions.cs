@@ -15,8 +15,7 @@ namespace Innovt.OpenTelemetry
         {
             if (builder == null)
                 throw new ArgumentNullException(nameof(builder));
-
-            
+                        
             builder.AddSource("Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider")
             .AddSource("Innovt.Cloud.AWS.Dynamo.Repository")
             .AddSource("Innovt.Cloud.AWS.KinesisDataProducer")
