@@ -19,7 +19,6 @@ namespace Innovt.CrossCutting.IOC
         {
             container = new Lamar.Container(services);
         }
-
         /// <summary>
         ///     With default scan
         /// </summary>
@@ -30,6 +29,7 @@ namespace Innovt.CrossCutting.IOC
                 c.Scan(s =>
                 {
                     s.TheCallingAssembly();
+                    
                     s.WithDefaultConventions();
                 });
             });
@@ -79,6 +79,13 @@ namespace Innovt.CrossCutting.IOC
         public void Dispose()
         {
             container?.Dispose();
+        }
+
+        public void Release(object obj)
+        {
+            container.ServiceProvider.
+
+                container.TryAddDisposable(obj);
         }
 
         public object GetService(Type serviceType)

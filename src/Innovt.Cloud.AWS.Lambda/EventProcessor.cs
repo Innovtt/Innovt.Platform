@@ -17,7 +17,7 @@ namespace Innovt.Cloud.AWS.Lambda
 {
     public abstract class EventProcessor<T> where T : class
     {
-        private bool isIocContainerInitialized;       
+        private bool isIocContainerInitialized;
 
         protected static readonly ActivitySource EventProcessorActivitySource = new("Innovt.Cloud.AWS.Lambda.EventProcessor");
         
