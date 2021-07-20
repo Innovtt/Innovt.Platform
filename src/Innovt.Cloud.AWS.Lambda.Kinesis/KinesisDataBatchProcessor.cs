@@ -30,7 +30,7 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
 
                 foreach (var record in messageRecords)
                 {
-                    dataStreams.Add(await ParseRecord<IDataStream<TBody>>(record).ConfigureAwait(false));
+                    dataStreams.Add(await ParseRecord<DataStream<TBody>>(record).ConfigureAwait(false));
                 }
 
                 return dataStreams;
