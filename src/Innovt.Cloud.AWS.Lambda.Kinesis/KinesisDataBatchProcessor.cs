@@ -26,10 +26,10 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
         {
             var dataStreams = new List<IDataStream<TBody>>();
 
-            foreach (var record in messageRecords)
-            {
-                dataStreams.Add(await ParseRecord<IDataStream<TBody>>(record).ConfigureAwait(false));
-            }
+                foreach (var record in messageRecords)
+                {
+                    dataStreams.Add(await ParseRecord<DataStream<TBody>>(record).ConfigureAwait(false));
+                }
 
             return dataStreams;            
         }

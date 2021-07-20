@@ -34,7 +34,7 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
             {
                 Logger.Info($"Processing Kinesis Event message ID {record.EventId}.");
 
-                var body = await base.ParseRecord<IDataStream<TBody>>(record).ConfigureAwait(false);
+                var body = await base.ParseRecord<DataStream<TBody>>(record).ConfigureAwait(false);
 
                 if (body?.TraceId != null && activity != null)
                 {
