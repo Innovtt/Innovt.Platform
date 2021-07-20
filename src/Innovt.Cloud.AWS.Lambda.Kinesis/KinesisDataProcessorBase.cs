@@ -27,13 +27,12 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
         {
         }
 
-        protected virtual DataStream<TBody> DeserializeBody(string content, string partition)
-        {
-            return JsonSerializer.Deserialize<DataStream<TBody>>(content);
-        }
+        //protected virtual IDataStream<TBody> DeserializeBody(string content, string partition)
+        //{
+        //    return JsonSerializer.Deserialize<IDataStream<TBody>>(content);
+        //}
 
-
-        protected async Task<DataStream<TBody>> ParseRecord(KinesisEvent.KinesisEventRecord record)
+        protected async Task<IDataStream> ParseRecord(KinesisEvent.KinesisEventRecord record)
         {
             if (record == null) throw new ArgumentNullException(nameof(record));
 

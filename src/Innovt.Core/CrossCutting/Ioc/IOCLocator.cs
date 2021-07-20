@@ -66,8 +66,19 @@ namespace Innovt.Core.CrossCutting.Ioc
             container.AddModule(module);
         }
 
+
+        public static void Release(object obj)
+        {
+            ThrowExceptionIfContainerIsNotInitialized();
+
+            container.Release(obj);
+        }
+
+
         public static void AddModuleFromAssembly(Assembly assembly)
         {
+            if (assembly == null) throw new ArgumentNullException(nameof(assembly));
+
             ThrowExceptionIfContainerIsNotInitialized();
 
             var moduleType = typeof(IOCModule);

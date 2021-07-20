@@ -22,11 +22,11 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
         {
         }
 
-        private async Task<List<DataStream<TBody>>> CreateBatchMessages(IEnumerable<KinesisEvent.KinesisEventRecord> messageRecords)
+        private async Task<List<IDataStream<TBody>>> CreateBatchMessages(IEnumerable<KinesisEvent.KinesisEventRecord> messageRecords)
         {
             using (EventProcessorActivitySource.StartActivity(nameof(ParseRecord)))
             {
-                var dataStreams = new List<DataStream<TBody>>();
+                var dataStreams = new List<IDataStream<TBody>>();
 
                 foreach (var record in messageRecords)
                 {
@@ -54,6 +54,6 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
             await ProcessMessage(batchMessages).ConfigureAwait(false);
         }
 
-        protected abstract Task ProcessMessage(IList<DataStream<TBody>> message);
+        protected abstract Task ProcessMessage(IList<IDataStream<TBody>> message);
     }
 }

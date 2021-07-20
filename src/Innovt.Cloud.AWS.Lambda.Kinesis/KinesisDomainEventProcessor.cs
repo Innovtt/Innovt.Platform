@@ -25,10 +25,10 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
         {
         }
 
-        protected new virtual TBody DeserializeBody(string content, string partition)
-        {
-            return JsonSerializer.Deserialize<TBody>(content);
-        }
+        //protected new virtual TBody DeserializeBody(string content, string partition)
+        //{
+        //    return JsonSerializer.Deserialize<TBody>(content);
+        //}
 
         protected override async Task Handle(KinesisEvent message, ILambdaContext context)
         {

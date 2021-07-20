@@ -57,6 +57,6 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
             }
         }
 
-        protected abstract Task ProcessMessage(DataStream<TBody> message);
+        protected abstract Task ProcessMessage(IDataStream<TBody> message);
     }
 }
