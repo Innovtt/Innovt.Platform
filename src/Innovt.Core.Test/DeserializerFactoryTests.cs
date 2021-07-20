@@ -16,7 +16,7 @@ namespace Innovt.Core.Test
     public class DeserializerFactoryTests
     {
         [Test]
-        public void Instance_ShouldNotReturnNUll()
+        public void InstanceShouldNotReturnNUll()
         {
             var instance = DeserializerFactory.Instance;
 
@@ -24,7 +24,7 @@ namespace Innovt.Core.Test
         }
 
         [Test]
-        public void Instance_ShouldBeTheSame_After_ManyCalls()
+        public void InstanceShouldBeTheSameAfterManyCalls()
         {
             var instanceA = DeserializerFactory.Instance;
 
@@ -37,7 +37,7 @@ namespace Innovt.Core.Test
         }
 
         [Test]
-        public void Deserialize_ShouldReturn_Null_If_Content_IsNull_Or_Empty()
+        public void DeserializeShouldReturnNullIfContentIsNullOrEmpty()
         {
             var result = DeserializerFactory.Instance.Deserialize("A", null);
 
@@ -50,7 +50,7 @@ namespace Innovt.Core.Test
 
 
         [Test]
-        public void Deserialize_ShouldReturn_Null_When_Has_No_Mapping()
+        public void DeserializeShouldReturnNullWhenHasNoMapping()
         {
             var result = DeserializerFactory.Instance.Deserialize("A", "");
 

@@ -48,10 +48,9 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
                 processActivity?.SetTag("KinesisEventName", record?.EventName);
                 processActivity?.SetTag("KinesisPartitionKey", record?.Kinesis?.PartitionKey);
                 processActivity?.SetTag("KinesisApproximateArrivalTimestamp", record?.Kinesis?.ApproximateArrivalTimestamp);
-                processActivity?.SetTag("BodyEventId", body?.EventId);
                 processActivity?.SetTag("BodyPartition", body?.Partition);
                 processActivity?.SetTag("BodyVersion", body?.Version);
-                processActivity?.SetTag("BodyVersion", body?.TraceId);
+                processActivity?.SetTag("BodyTraceId", body?.TraceId);
 
                 await ProcessMessage(body).ConfigureAwait(false);
             }

@@ -24,31 +24,29 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
 
         private async Task<List<IDataStream<TBody>>> CreateBatchMessages(IEnumerable<KinesisEvent.KinesisEventRecord> messageRecords)
         {
-            using (EventProcessorActivitySource.StartActivity(nameof(ParseRecord)))
+            var dataStreams = new List<IDataStream<TBody>>();
+
+            foreach (var record in messageRecords)
             {
-                var dataStreams = new List<IDataStream<TBody>>();
-
-                foreach (var record in messageRecords)
-                {
-                    dataStreams.Add(await ParseRecord<IDataStream<TBody>>(record).ConfigureAwait(false));
-                }
-
-                return dataStreams;
+                dataStreams.Add(await ParseRecord<IDataStream<TBody>>(record).ConfigureAwait(false));
             }
+
+            return dataStreams;            
         }
 
         protected override async Task Handle(KinesisEvent message, ILambdaContext context)
         {
             Logger.Info($"Processing Kinesis Event With {message?.Records?.Count} records.");
+            
+            using var activity = EventProcessorActivitySource.StartActivity(nameof(Handle));
+            activity?.SetTag("Message.Records", message?.Records?.Count);
 
             if (message?.Records == null) return;
             if (message.Records.Count == 0) return;
 
             Logger.Info($"Processing Kinesis Event With {message?.Records?.Count} records.");
             var batchMessages = await CreateBatchMessages(message.Records).ConfigureAwait(false);
-            Logger.Info($"Processing Kinesis Event With {message?.Records?.Count} records.");
-
-            using var activity = EventProcessorActivitySource.StartActivity(nameof(ProcessMessage));
+            Logger.Info($"Processing Kinesis Event With {message?.Records?.Count} records.");                        
             activity?.SetTag("BatchMessagesCount", batchMessages.Count);
 
             await ProcessMessage(batchMessages).ConfigureAwait(false);

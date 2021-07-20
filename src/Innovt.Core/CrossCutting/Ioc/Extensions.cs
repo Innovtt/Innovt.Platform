@@ -17,6 +17,16 @@ namespace Innovt.Core.CrossCutting.Ioc
     {
         public static void AddModule(this IServiceCollection services, Assembly assembly)
         {
+            if (services is null)
+            {
+                throw new ArgumentNullException(nameof(services));
+            }
+
+            if (assembly is null)
+            {
+                throw new ArgumentNullException(nameof(assembly));
+            }
+
             var modulesTypes = assembly.DefinedTypes.Where(t => t.IsSubclassOf(typeof(IOCModule))).ToList();
 
             foreach (var moduleType in modulesTypes)
@@ -30,6 +40,11 @@ namespace Innovt.Core.CrossCutting.Ioc
 
         public static void AddModule(this IServiceCollection services, IOCModule module)
         {
+            if (services is null)
+            {
+                throw new ArgumentNullException(nameof(services));
+            }
+
             if (module is null) throw new ArgumentNullException(nameof(module));
 
             var servicesModule = module.GetServices();

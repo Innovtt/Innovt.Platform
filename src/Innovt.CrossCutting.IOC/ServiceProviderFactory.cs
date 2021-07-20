@@ -19,7 +19,12 @@ namespace Innovt.CrossCutting.IOC
 
         public IServiceProvider CreateServiceProvider(ContainerBuilder containerBuilder)
         {
-            return containerBuilder.GetServiceProvider();
+            if (containerBuilder is null)
+            {
+                throw new ArgumentNullException(nameof(containerBuilder));
+            }
+
+            return containerBuilder.GetServiceProvider;
         }
     }
 }

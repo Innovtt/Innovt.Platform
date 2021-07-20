@@ -8,6 +8,7 @@
 using Innovt.Domain.Documents;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
 
 namespace Innovt.Data.EFCore.Maps
 {
@@ -15,6 +16,11 @@ namespace Innovt.Data.EFCore.Maps
     {
         public void Configure(EntityTypeBuilder<DocumentType> builder)
         {
+            if (builder is null)
+            {
+                throw new ArgumentNullException(nameof(builder));
+            }
+
             builder.ToTable(nameof(DocumentType));
 
             builder.HasKey(d => d.Id);

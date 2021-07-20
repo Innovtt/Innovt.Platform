@@ -57,10 +57,7 @@ namespace Innovt.Cloud.AWS
 
         protected ILogger Logger { get; }
 
-        public void Dispose()
-        {
-            Dispose(true);
-        }
+       
 
         protected RegionEndpoint GetServiceRegionEndPoint()
         {
@@ -167,8 +164,14 @@ namespace Innovt.Cloud.AWS
             return Policy.Handle<T>()
                 .CircuitBreakerAsync(CircuitBreakerAllowedExceptions, CircuitBreakerDurationOfBreak);
         }
+        
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
 
-        private void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
             if (disposed || !disposing)
                 return;
