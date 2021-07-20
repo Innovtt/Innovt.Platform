@@ -29,24 +29,23 @@ namespace Innovt.CrossCutting.IOC
                 c.Scan(s =>
                 {
                     s.TheCallingAssembly();
-                    
                     s.WithDefaultConventions();
                 });
             });
         }
 
-        public Container(IOCModule module)
+        public Container(IOCModule iocModule)
         {
-            if (module is null) throw new ArgumentNullException(nameof(module));
+            if (iocModule is null) throw new ArgumentNullException(nameof(iocModule));
 
-            container = new Lamar.Container(module.GetServices());
+            container = new Lamar.Container(iocModule.GetServices());
         }
 
-        public void AddModule(IOCModule module)
+        public void AddModule(IOCModule iocModule)
         {
-            if (module is null) throw new ArgumentNullException(nameof(module));
+            if (iocModule is null) throw new ArgumentNullException(nameof(iocModule));
 
-            var services = module.GetServices();
+            var services = iocModule.GetServices();
 
             container.Configure(services);
         }
@@ -83,9 +82,12 @@ namespace Innovt.CrossCutting.IOC
 
         public void Release(object obj)
         {
-            container.ServiceProvider.
+            container.TryAddDisposable(obj);            
+        }
 
-                container.TryAddDisposable(obj);
+        public IServiceScope CreateScope()
+        {
+            return container.CreateScope();
         }
 
         public object GetService(Type serviceType)

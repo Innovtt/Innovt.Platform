@@ -9,6 +9,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 using Innovt.Core.Exceptions;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Innovt.Core.CrossCutting.Ioc
 {
@@ -26,7 +27,6 @@ namespace Innovt.Core.CrossCutting.Ioc
             if (container == null)
                 throw new CriticalException("IOC Container not initialized");
         }
-
 
         public static object Resolve(Type type)
         {
@@ -74,6 +74,12 @@ namespace Innovt.Core.CrossCutting.Ioc
             container.Release(obj);
         }
 
+        public static IServiceScope CreateScope()
+        {
+            ThrowExceptionIfContainerIsNotInitialized();
+
+            return container.CreateScope();
+        }
 
         public static void AddModuleFromAssembly(Assembly assembly)
         {
