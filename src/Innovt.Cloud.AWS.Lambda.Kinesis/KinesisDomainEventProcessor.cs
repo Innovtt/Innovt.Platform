@@ -5,13 +5,12 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Text.Json;
-using System.Threading.Tasks;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.KinesisEvents;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Domain.Core.Events;
+using System;
+using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis
 {
@@ -25,11 +24,6 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
         {
         }
 
-        protected new virtual TBody DeserializeBody(string content, string partition)
-        {
-            return JsonSerializer.Deserialize<TBody>(content);
-        }
-
         protected override async Task Handle(KinesisEvent message, ILambdaContext context)
         {
             Logger.Info($"Processing Kinesis Event With {message?.Records?.Count} records.");
@@ -41,19 +35,19 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
             foreach (var record in message.Records)
             {
                 Logger.Info($"Processing Kinesis Event message ID {record.EventId}.");
-                    
+
                 try
                 {
                     Logger.Info("Reading Stream Content.");
-                        
-                    var body = await ParseRecord(record).ConfigureAwait(false);
+
+                    var body = await ParseRecord<TBody>(record).ConfigureAwait(false);
 
                     if (body?.TraceId != null && activity != null)
                     {
                         activity.SetParentId(body.TraceId);
                     }
 
-                    await ProcessMessage(body?.Body).ConfigureAwait(false);
+                    await ProcessMessage(body).ConfigureAwait(false);
                 }
                 catch (Exception ex)
                 {
