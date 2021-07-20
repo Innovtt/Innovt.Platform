@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Innovt.CrossCutting.IOC
 {
-    public class ContainerBuilder
+    public class ContainerBuilder : IDisposable
     {
         private readonly IContainer container;
 
@@ -20,9 +20,19 @@ namespace Innovt.CrossCutting.IOC
             container = new Container(services);
         }
 
-        public IServiceProvider GetServiceProvider()
+        public IServiceProvider GetServiceProvider => new ServiceProvider(container);
+
+        public void Dispose()
         {
-            return new ServiceProvider(container);
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                container?.Dispose();
+            }
         }
     }
 }

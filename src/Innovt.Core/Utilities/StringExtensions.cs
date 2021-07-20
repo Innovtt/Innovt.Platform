@@ -238,7 +238,7 @@ namespace Innovt.Core.Utilities
             var specialChars = new[]
                 {".", ",", "-", "_", "/", "\\", "(", ")", "[", "]", ":", "\r\n", "\r", "\n"};
 
-            for (var i = 0; i < specialChars.Length; i++) value = value.Replace(specialChars[i], "");
+            for (var i = 0; i < specialChars.Length; i++) value = value.Replace(specialChars[i], "", StringComparison.OrdinalIgnoreCase);
 
             return value;
         }

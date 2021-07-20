@@ -18,7 +18,6 @@ namespace Innovt.Cloud.AWS.Lambda
     public abstract class EventProcessor<T> where T : class
     {
         private bool isIocContainerInitialized;
-        internal const string EnvVarTraceId = "_X_AMZN_TRACE_ID";
 
         protected static readonly ActivitySource EventProcessorActivitySource = new("Innovt.Cloud.AWS.Lambda.EventProcessor");
         
@@ -103,6 +102,7 @@ namespace Innovt.Cloud.AWS.Lambda
 #pragma warning restore CA1031 // Do not catch general exception types
             {
                 Console.WriteLine(ex);
+                throw;
             }
         }
 
