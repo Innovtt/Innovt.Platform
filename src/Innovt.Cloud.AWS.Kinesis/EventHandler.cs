@@ -21,6 +21,8 @@ namespace Innovt.Cloud.AWS.Kinesis
         public EventHandler(string busName, ILogger logger, IAwsConfiguration configuration,
             string region) : base(busName, logger, configuration, region)
         {
+
+            
         }
     }
 }

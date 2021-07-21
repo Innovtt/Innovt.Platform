@@ -85,7 +85,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AspNet", "AspNet", "{E4691D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Cloud.AWS.Lambda.CustomRuntime", "Innovt.Cloud.AWS.Lambda.CustomRuntime\Innovt.Cloud.AWS.Lambda.CustomRuntime.csproj", "{59F66B5A-E0B0-41E7-BB2E-8263A094DCC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innovt.OpenTelemetry", "Innovt.OpenTelemetry\Innovt.OpenTelemetry.csproj", "{06CA419F-2646-42E4-8830-9CB5EC21A59E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.OpenTelemetry", "Innovt.OpenTelemetry\Innovt.OpenTelemetry.csproj", "{06CA419F-2646-42E4-8830-9CB5EC21A59E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innovt.Cloud.AWS.Lambda.Kinesis.Tests", "Innovt.Cloud.AWS.Lambda.Kinesis.Tests\Innovt.Cloud.AWS.Lambda.Kinesis.Tests.csproj", "{06062B04-BE0B-4D77-BA77-52F80B545988}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -359,6 +361,14 @@ Global
 		{06CA419F-2646-42E4-8830-9CB5EC21A59E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{06CA419F-2646-42E4-8830-9CB5EC21A59E}.Release|x86.ActiveCfg = Release|Any CPU
 		{06CA419F-2646-42E4-8830-9CB5EC21A59E}.Release|x86.Build.0 = Release|Any CPU
+		{06062B04-BE0B-4D77-BA77-52F80B545988}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06062B04-BE0B-4D77-BA77-52F80B545988}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06062B04-BE0B-4D77-BA77-52F80B545988}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{06062B04-BE0B-4D77-BA77-52F80B545988}.Debug|x86.Build.0 = Debug|Any CPU
+		{06062B04-BE0B-4D77-BA77-52F80B545988}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06062B04-BE0B-4D77-BA77-52F80B545988}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06062B04-BE0B-4D77-BA77-52F80B545988}.Release|x86.ActiveCfg = Release|Any CPU
+		{06062B04-BE0B-4D77-BA77-52F80B545988}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -390,6 +400,7 @@ Global
 		{B2305000-D0E2-4514-B792-BE05908BA10A} = {EA0C6A75-5EFC-4F7F-9E13-EB63F17ECF1E}
 		{C7CD3A14-2253-436C-91FA-6A2D78349CF7} = {E4691D09-94FB-47D1-9EBA-550A6649178C}
 		{59F66B5A-E0B0-41E7-BB2E-8263A094DCC8} = {ECD92DFF-5A6C-44D1-B3B4-F5CEE1E879B0}
+		{06062B04-BE0B-4D77-BA77-52F80B545988} = {ECD92DFF-5A6C-44D1-B3B4-F5CEE1E879B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {43168DBE-48A6-435D-9405-F6728340FFEA}

@@ -13,6 +13,7 @@ namespace Innovt.Domain.Core.Streams
     {
         public DataStream()
         {
+
         }
 
         public DataStream(string version, string partition, string traceId, T body)
@@ -28,7 +29,6 @@ namespace Innovt.Domain.Core.Streams
         public string Partition { get; set; }
         public string TraceId { get; set; }
         public DateTime ApproximateArrivalTimestamp { get; set; }
-
         public T Body { get; set; }
     }
 }

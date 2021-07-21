@@ -5,57 +5,46 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Amazon.Lambda.Core;
-using Amazon.Lambda.KinesisEvents;
+using System;
+using System.Collections.Generic;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Domain.Core.Streams;
 using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis
 {
-    public abstract class KinesisDataProcessor<TBody> : KinesisDataProcessorBase<TBody> where TBody : class
+    public abstract class KinesisDataProcessor<TBody> : KinesisDataProcessorBatch<TBody> where TBody : class, IDataStream
     {
         protected KinesisDataProcessor(ILogger logger) : base(logger)
         {
         }
+
         protected KinesisDataProcessor()
         {
         }
 
-        protected override async Task Handle(KinesisEvent message, ILambdaContext context)
+        protected override async Task ProcessMessages(IList<TBody> messages)
         {
-            Logger.Info($"Processing Kinesis Event With {message?.Records?.Count} records.");
+            if (messages == null) throw new ArgumentNullException(nameof(messages));
 
-            if (message?.Records == null) return;
-            if (message.Records.Count == 0) return;
-
-            using var activity = EventProcessorActivitySource.StartActivity(nameof(Handle));
-            foreach (var record in message.Records)
+            foreach (var message in messages)
             {
-                Logger.Info($"Processing Kinesis Event message ID {record.EventId}.");
+                Logger.Info($"Processing Kinesis EventId={message.EventId}.");
 
-                var body = await base.ParseRecord<DataStream<TBody>>(record).ConfigureAwait(false);
-
-                if (body?.TraceId != null && activity != null)
+                try
                 {
-                    activity.SetParentId(body.TraceId);
+                    await ProcessMessage(message).ConfigureAwait(false);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, $"Error Processing Message from Kinesis Event. Developer, you should take care of it!. EventId={message.EventId}, PartitionKey={ message.Partition }");
+                    throw;
                 }
 
-                Logger.Info("Invoking ProcessMessage.");
-
-                using var processActivity = EventProcessorActivitySource.StartActivity(nameof(ProcessMessage));
-                processActivity?.SetTag("KinesisEventId", record?.EventId);
-                processActivity?.SetTag("KinesisEventName", record?.EventName);
-                processActivity?.SetTag("KinesisPartitionKey", record?.Kinesis?.PartitionKey);
-                processActivity?.SetTag("KinesisApproximateArrivalTimestamp", record?.Kinesis?.ApproximateArrivalTimestamp);
-                processActivity?.SetTag("BodyPartition", body?.Partition);
-                processActivity?.SetTag("BodyVersion", body?.Version);
-                processActivity?.SetTag("BodyTraceId", body?.TraceId);
-
-                await ProcessMessage(body).ConfigureAwait(false);
+                Logger.Info($"EventId={message.EventId} from Kinesis processed.");
             }
         }
 
-        protected abstract Task ProcessMessage(IDataStream<TBody> message);
+        protected abstract Task ProcessMessage(TBody message);
     }
 }

@@ -301,7 +301,7 @@ namespace Innovt.Cloud.AWS.S3
 
         public bool FolderExists(string bucketName, string key)
         {
-            return AsyncHelper.RunSync(async () => await FolderExistsAsync(bucketName, key));
+            return AsyncHelper.RunSync(async () => await FolderExistsAsync(bucketName, key).ConfigureAwait(false));
         }
 
         public async Task<bool> DeleteObjectAsync(string bucketName, string key,
@@ -318,7 +318,7 @@ namespace Innovt.Cloud.AWS.S3
             };
 
             var response = await base.CreateDefaultRetryAsyncPolicy()
-                .ExecuteAsync(async () => await S3Client.DeleteObjectAsync(request, cancellationToken))
+                .ExecuteAsync(async () => await S3Client.DeleteObjectAsync(request, cancellationToken).ConfigureAwait(false))
                 .ConfigureAwait(false);
 
             return response.HttpStatusCode == HttpStatusCode.OK;
@@ -326,7 +326,7 @@ namespace Innovt.Cloud.AWS.S3
 
         public bool DeleteObject(string bucketName, string key)
         {
-            return AsyncHelper.RunSync(async () => await DeleteObjectAsync(bucketName, key));
+            return AsyncHelper.RunSync(async () => await DeleteObjectAsync(bucketName, key).ConfigureAwait(false));
         }
 
         public async Task<bool> CopyObject(string sourceBucket, string sourceKey, string destinationBucket,
@@ -351,7 +351,7 @@ namespace Innovt.Cloud.AWS.S3
 
             var response =
                 await CreateDefaultRetryAsyncPolicy()
-                    .ExecuteAsync(async () => await S3Client.CopyObjectAsync(request, cancellationToken))
+                    .ExecuteAsync(async () => await S3Client.CopyObjectAsync(request, cancellationToken).ConfigureAwait(false))
                     .ConfigureAwait(false);
 
             return response.HttpStatusCode == HttpStatusCode.OK;
@@ -399,7 +399,7 @@ namespace Innovt.Cloud.AWS.S3
 
             var result =
                 await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                        await S3Client.PutObjectAsync(request, cancellationToken))
+                        await S3Client.PutObjectAsync(request, cancellationToken).ConfigureAwait(false))
                     .ConfigureAwait(false);
 
             if (result.HttpStatusCode != HttpStatusCode.OK)

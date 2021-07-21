@@ -20,7 +20,7 @@ namespace Innovt.Cloud.AWS.Lambda
         private bool isIocContainerInitialized;
 
         protected static readonly ActivitySource EventProcessorActivitySource = new("Innovt.Cloud.AWS.Lambda.EventProcessor");
-        
+
         protected EventProcessor(ILogger logger)
         {
             Logger = logger ?? throw new ArgumentNullException(nameof(logger));
@@ -43,8 +43,9 @@ namespace Innovt.Cloud.AWS.Lambda
             }
 
             using var activity = EventProcessorActivitySource.StartActivity(nameof(SetupIoc));
+
             Context.Logger.LogLine("Initializing IOC Container.");
-            
+
             var container = SetupIocContainer();
 
             if (container != null)
@@ -77,9 +78,9 @@ namespace Innovt.Cloud.AWS.Lambda
             if (context == null) throw new ArgumentNullException(nameof(context));
 
             context.Logger.LogLine($"Receiving message. Function {context.FunctionName} and Version {context.FunctionVersion}");
-             try
+            try
             {
-                using var activity = EventProcessorActivitySource.StartActivity(nameof(Process));            
+                using var activity = EventProcessorActivitySource.StartActivity(nameof(Process));
                 activity?.SetTag("Lambda.FunctionName", context.FunctionName);
                 activity?.SetTag("Lambda.FunctionVersion", context.FunctionVersion);
                 activity?.SetTag("Lambda.LogStreamName", context.LogStreamName);
@@ -92,16 +93,14 @@ namespace Innovt.Cloud.AWS.Lambda
                 }
 
                 Context = context;
-           
+
                 SetupIoc();
 
                 await Handle(message, context).ConfigureAwait(false);
             }
-#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
-#pragma warning restore CA1031 // Do not catch general exception types
             {
-                Console.WriteLine(ex);
+                Context.Logger.LogLine(ex.StackTrace);
                 throw;
             }
         }

@@ -5,17 +5,16 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Amazon.Lambda.Core;
-using Amazon.Lambda.KinesisEvents;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Domain.Core.Events;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis
 {
-    public abstract class KinesisDomainEventProcessor<TBody> : KinesisDataProcessorBase<TBody> where TBody : DomainEvent
-    {
+    public abstract class KinesisDomainEventProcessor<TBody> : KinesisDomainEventProcessorBatch<TBody> where TBody : DomainEvent
+        {
         protected KinesisDomainEventProcessor(ILogger logger) : base(logger)
         {
         }
@@ -24,37 +23,27 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
         {
         }
 
-        protected override async Task Handle(KinesisEvent message, ILambdaContext context)
+        protected override async Task ProcessMessages(IList<TBody> messages)
         {
-            Logger.Info($"Processing Kinesis Event With {message?.Records?.Count} records.");
+            if (messages == null) throw new ArgumentNullException(nameof(messages));
+            
 
-            if (message?.Records == null) return;
-            if (message.Records.Count == 0) return;
-
-            using var activity = EventProcessorActivitySource.StartActivity(nameof(Handle));
-            foreach (var record in message.Records)
+            foreach (var message in messages)
             {
-                Logger.Info($"Processing Kinesis Event message ID {record.EventId}.");
+                Logger.Info($"Processing Kinesis EventId={message.EventId}.");
 
                 try
                 {
-                    Logger.Info("Reading Stream Content.");
 
-                    var body = await ParseRecord<TBody>(record).ConfigureAwait(false);
-
-                    if (body?.TraceId != null && activity != null)
-                    {
-                        activity.SetParentId(body.TraceId);
-                    }
-
-                    await ProcessMessage(body).ConfigureAwait(false);
+                    await ProcessMessage(message).ConfigureAwait(false);
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error(ex, "Error Processing Message from Kinesis Event. Developer, you should take care of it!. Message: Id={EventId}, PartitionKey= {PartitionKey}",
-                        record.EventId, record.Kinesis.PartitionKey);
+                    Logger.Error(ex, $"Error Processing Message from Kinesis Event. Developer, you should take care of it!. EventId={message.EventId}, PartitionKey={ message.Partition }");
                     throw;
                 }
+
+                Logger.Info($"EventId={message.EventId} from Kinesis processed.");
             }
         }
 

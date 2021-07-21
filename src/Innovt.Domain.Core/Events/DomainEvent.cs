@@ -28,11 +28,15 @@ namespace Innovt.Domain.Core.Events
         }
 
         public string Name { get; set; }
+
         public DateTime CreatedAt { get; set; }
 
         public string EventId { get; set; }
+        
         public string Version { get; set; }
+        
         public string Partition { get; set; }
+
         public string TraceId { get; set; }
 
         public DateTime ApproximateArrivalTimestamp { get; set; }

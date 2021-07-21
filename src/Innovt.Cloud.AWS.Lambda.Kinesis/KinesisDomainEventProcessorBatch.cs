@@ -4,40 +4,52 @@
 // Solution: Innovt.Platform
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
+
 using Amazon.Lambda.Core;
 using Amazon.Lambda.KinesisEvents;
 using Innovt.Core.CrossCutting.Log;
-using Innovt.Domain.Core.Streams;
+using Innovt.Domain.Core.Events;
+using System;
 using System.Collections.Generic;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis
 {
-    public abstract class KinesisDataBatchProcessor<TBody> : KinesisDataProcessorBase<TBody> where TBody : class
+    public abstract class KinesisDomainEventProcessorBatch<TBody> : KinesisProcessorBase<TBody> where TBody : DomainEvent
     {
-        protected KinesisDataBatchProcessor(ILogger logger) : base(logger)
-        {
-        }
-        protected KinesisDataBatchProcessor()
+        protected KinesisDomainEventProcessorBatch(ILogger logger) : base(logger)
         {
         }
 
-        private async Task<List<IDataStream<TBody>>> CreateBatchMessages(IEnumerable<KinesisEvent.KinesisEventRecord> messageRecords)
+        protected KinesisDomainEventProcessorBatch()
         {
-            var dataStreams = new List<IDataStream<TBody>>();
-
-                foreach (var record in messageRecords)
-                {
-                    dataStreams.Add(await ParseRecord<DataStream<TBody>>(record).ConfigureAwait(false));
-                }
-
-            return dataStreams;            
         }
+
+        protected override TBody DeserializeBody(string content, string partition)
+        {
+            return JsonSerializer.Deserialize<TBody>(content);
+        }
+
+        private async Task<IList<TBody>> CreateBatchMessages(IEnumerable<KinesisEvent.KinesisEventRecord> messageRecords)
+        {
+            if (messageRecords == null) throw new ArgumentNullException(nameof(messageRecords));
+
+            var dataStreams = new List<TBody>();
+
+            foreach (var record in messageRecords)
+            {
+                dataStreams.Add(await ParseRecord(record).ConfigureAwait(false));
+            }
+
+            return dataStreams;
+        }
+
 
         protected override async Task Handle(KinesisEvent message, ILambdaContext context)
         {
             Logger.Info($"Processing Kinesis Event With {message?.Records?.Count} records.");
-            
+
             using var activity = EventProcessorActivitySource.StartActivity(nameof(Handle));
             activity?.SetTag("Message.Records", message?.Records?.Count);
 
@@ -46,12 +58,13 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
 
             Logger.Info($"Processing Kinesis Event With {message?.Records?.Count} records.");
             var batchMessages = await CreateBatchMessages(message.Records).ConfigureAwait(false);
-            Logger.Info($"Processing Kinesis Event With {message?.Records?.Count} records.");                        
+            Logger.Info($"Processing Kinesis Event With {message?.Records?.Count} records.");
             activity?.SetTag("BatchMessagesCount", batchMessages.Count);
 
-            await ProcessMessage(batchMessages).ConfigureAwait(false);
+            await ProcessMessages(batchMessages).ConfigureAwait(false);
+
         }
 
-        protected abstract Task ProcessMessage(IList<IDataStream<TBody>> message);
+        protected abstract Task ProcessMessages(IList<TBody> messages);
     }
 }

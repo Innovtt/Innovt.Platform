@@ -39,7 +39,7 @@ namespace Innovt.AspNetCoreTests
 
         protected override void ConfigureOpenTelemetry(TracerProviderBuilder builder)
         {
-            builder.AddSource(Innovt.Cloud.AWS.Kinesis.EventHandler.ActivityDataProducer.Name);
+            //builder.AddSource(Innovt.Cloud.AWS.Kinesis.EventHandler.ActivityDataProducer.Name);
 
             builder.AddZipkinExporter();
         }

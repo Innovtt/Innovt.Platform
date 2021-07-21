@@ -27,7 +27,7 @@ namespace Innovt.Cloud.AWS.Kinesis
     {
         private AmazonKinesisClient kinesisClient;
 
-        public static readonly ActivitySource ActivityDataProducer = new("Innovt.Cloud.AWS.KinesisDataProducer");
+        protected static readonly ActivitySource ActivityDataProducer = new("Innovt.Cloud.AWS.KinesisDataProducer");
 
         protected DataProducer(string busName, ILogger logger, IAwsConfiguration configuration) : base(logger,
             configuration)
@@ -47,8 +47,7 @@ namespace Innovt.Cloud.AWS.Kinesis
         {
             get { return kinesisClient ??= CreateService<AmazonKinesisClient>(); }
         }
-
-
+        
         private async Task InternalPublish(IEnumerable<T> dataList, CancellationToken cancellationToken = default)
         {
             if (dataList == null) throw new ArgumentNullException(nameof(dataList));
@@ -69,12 +68,10 @@ namespace Innovt.Cloud.AWS.Kinesis
             };
 
             foreach (var data in dataStreams)
-            {
-                activity?.SetTag("BusName", BusName);
-                    
-                if (activity?.ParentId is null && data.TraceId.IsNotNullOrEmpty())
+            {   
+                if (data.TraceId.IsNullOrEmpty() && activity!=null)
                 {
-                    activity?.SetParentId(data.TraceId);
+                    data.TraceId = activity.ParentId ?? activity.TraceId.ToString();//todo: ver isso
                 }
 
                 var dataAsBytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize<object>(data));
@@ -119,7 +116,6 @@ namespace Innovt.Cloud.AWS.Kinesis
         public async Task Publish(IEnumerable<T> events, CancellationToken cancellationToken = default)
         {
             await InternalPublish(events, cancellationToken).ConfigureAwait(false);
-
         }
 
         protected override void DisposeServices()
