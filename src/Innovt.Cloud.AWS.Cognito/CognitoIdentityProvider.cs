@@ -18,6 +18,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Amazon.CognitoIdentityProvider;
 using Amazon.CognitoIdentityProvider.Model;
+using Amazon.Runtime.Internal.Transform;
 using Innovt.Cloud.AWS.Cognito.Model;
 using Innovt.Cloud.AWS.Cognito.Resources;
 using Innovt.Cloud.AWS.Configuration;
@@ -199,22 +200,38 @@ namespace Innovt.Cloud.AWS.Cognito
                         $"IP:{command.IpAddress};ServerPath:{command.ServerPath};ServerName:{command.ServerName}"
                 }
             };
+                      
+            if (command.CustomAttributes != null)
+            {
+                foreach (var attribute in command.CustomAttributes) 
+                {
+                    signUpRequest.UserAttributes.Add(new AttributeType
+                    {
+                        Name = $"custom:{attribute.Key}",
+                        Value = attribute.Value
+                    });
+                }
+            }
 
             var excludedProperties = new[]
-                {"password", "username", "ipaddress", "serverpath", "servername", "httpheader"};
+              {"password", "username", "ipaddress", "serverpath", "servername", "httpheader", "customattributes"};
+
 
             var properties = command.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public)
-                .Where(p => !excludedProperties.Contains(p.Name.ToLower(cultureInfo)));
+             .Where(p => !excludedProperties.Contains(p.Name.ToLower(cultureInfo)));
 
             foreach (var prop in properties)
             {
                 var value = prop.GetValue(command);
+
                 if (value != null)
+                {
                     signUpRequest.UserAttributes.Add(new AttributeType
                     {
                         Name = prop.Name.ToLower(cultureInfo),
                         Value = value.ToString()
                     });
+                }
             }
 
             try
@@ -359,7 +376,7 @@ namespace Innovt.Cloud.AWS.Cognito
                 user.Status = cognitoUser.UserStatus.ToString(cultureInfo);
                 user.UserCreateDate = cognitoUser.UserCreateDate;
                 user.UserLastModifiedDate = cognitoUser.UserLastModifiedDate;
-
+                                                
                 foreach (var userAttribute in cognitoUser.Attributes)
                 {
                     if (userAttribute.Name == null)
@@ -374,12 +391,20 @@ namespace Innovt.Cloud.AWS.Cognito
                             user.LastName = userAttribute.Value;
                             break;
                         default:
+
                             var propInfo = typeof(T).GetProperty(userAttribute.Name,
                                 BindingFlags.IgnoreCase | BindingFlags.Instance |
                                 BindingFlags.Public);
 
-                            if (propInfo != null) propInfo.SetValue(user, userAttribute.Value);
-
+                            if (propInfo != null)
+                            {
+                                propInfo.SetValue(user, userAttribute.Value);
+                            }
+                            else
+                            {
+                                user.CustomAttributes ??= new Dictionary<string, string>();
+                                user.CustomAttributes.Add(userAttribute.Name.Replace("custom:","",StringComparison.OrdinalIgnoreCase), userAttribute.Value);
+                            }
                             break;
                     }
                 }
