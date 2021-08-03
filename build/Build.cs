@@ -74,7 +74,7 @@ class Build : NukeBuild
             EnsureCleanDirectory(ArtifactsDirectory);
             DotNetPack(p => p
                     .SetProject(Solution)
-                    .SetAuthors("Michel Borges")
+                    .SetAuthors("Michel Borges")                    
                     .SetVersion(GitVersion.NuGetVersionV2)
                     .SetNoDependencies(true)
                     .SetOutputDirectory(ArtifactsDirectory / "nuget")
@@ -91,16 +91,24 @@ class Build : NukeBuild
         .Executes(() =>
         {
             GlobFiles(ArtifactsDirectory / "nuget", "*.nupkg")
-                .NotEmpty()
+                .NotEmpty()                
                 // .Where(x => x.StartsWith("Innovt.",StringComparison.InvariantCultureIgnoreCase))
                 .ForEach(x =>
                 {
-                    DotNetNuGetPush(s => s
-                        .EnableSkipDuplicate()
-                        .SetTargetPath(x)
-                        .SetSource(NugetApiUrl)
-                        .SetApiKey(NugetApiKey)
-                    );
+                    try
+                    {
+                        DotNetNuGetPush(s => s
+                                             .EnableSkipDuplicate()
+                                             .SetTargetPath(x)                                             
+                                             .SetSource(NugetApiUrl)
+                                             .SetApiKey(NugetApiKey)
+                                         );
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
+
                 });
         });
 
