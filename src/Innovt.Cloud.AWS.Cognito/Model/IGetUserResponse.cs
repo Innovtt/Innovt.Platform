@@ -6,6 +6,7 @@
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
+using System.Collections.Generic;
 
 namespace Innovt.Cloud.AWS.Cognito.Model
 {
@@ -18,6 +19,8 @@ namespace Innovt.Cloud.AWS.Cognito.Model
         string LastName { get; set; }
 
         string Status { get; set; }
+
+        Dictionary<string, string> CustomAttributes { get; set; }
 
         DateTime UserCreateDate { get; set; }
 

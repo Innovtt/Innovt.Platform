@@ -5,6 +5,8 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System.Collections.Generic;
+
 namespace Innovt.Cloud.AWS.Cognito.Model
 {
     public interface ISignUpRequest : IRequestBase
@@ -12,5 +14,7 @@ namespace Innovt.Cloud.AWS.Cognito.Model
         string UserName { get; set; }
 
         string Password { get; set; }
+
+        public Dictionary<string,string> CustomAttributes { get; set; }
     }
 }

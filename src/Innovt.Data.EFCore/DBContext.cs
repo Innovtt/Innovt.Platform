@@ -66,7 +66,7 @@ namespace Innovt.Data.EFCore
         }
 
         public void Add<T>(IEnumerable<T> entities) where T : class
-        {
+        {            
             base.AddRange(entities);
         }
 
