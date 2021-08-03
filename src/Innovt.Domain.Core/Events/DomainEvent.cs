@@ -40,5 +40,10 @@ namespace Innovt.Domain.Core.Events
         public string TraceId { get; set; }
 
         public DateTime ApproximateArrivalTimestamp { get; set; }
+
+        public static DomainEvent Empty()
+        {
+            return new EmptyDomainEvent("empty");
+        }
     }
 }

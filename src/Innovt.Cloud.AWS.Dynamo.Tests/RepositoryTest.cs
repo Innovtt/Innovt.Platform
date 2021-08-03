@@ -1,5 +1,5 @@
 // INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+// Author: Michel Magalhï¿½es
 // Project: Innovt.Cloud.AWS.Dynamo.Tests
 // Solution: Innovt.Platform
 // Date: 2021-06-02
@@ -17,7 +17,7 @@ using NUnit.Framework;
 
 namespace Innovt.Cloud.AWS.Dynamo.Tests
 {
-    public class Tests
+    public class RepositoryTests
     {
         private IAwsConfiguration configuration;
         private ILogger loggerMock;

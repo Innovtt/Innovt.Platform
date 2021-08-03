@@ -25,7 +25,17 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
         protected KinesisProcessorBase()
         {
         }
-        
+
+        /// <summary>
+        /// When the developer want to discard the message from specific partition
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        protected bool IsEmptyMessage(TBody message)
+        {
+            return message is IEmptyDataStream;
+        }
+
         protected async Task<TBody> ParseRecord(KinesisEvent.KinesisEventRecord record)
         {
             if (record == null) throw new ArgumentNullException(nameof(record));
@@ -41,7 +51,6 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
             activity?.SetTag("Kinesis.PartitionKey", record.Kinesis?.PartitionKey);
             activity?.SetTag("Kinesis.ApproximateArrivalTimestamp", record.Kinesis?.ApproximateArrivalTimestamp);
             
-
             Logger.Info("Reading Stream Content.");
 
             using var reader = new StreamReader(record.Kinesis.Data, Encoding.UTF8);
@@ -68,6 +77,7 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
             {
                 activity?.SetParentId(body.TraceId);
             }
+            
             return body;
         }
 

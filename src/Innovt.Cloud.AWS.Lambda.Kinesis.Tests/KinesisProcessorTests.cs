@@ -9,6 +9,7 @@ using Amazon.Lambda.KinesisEvents;
 using Amazon.Lambda.TestUtilities;
 using Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors;
 using Innovt.Core.Exceptions;
+using Innovt.Domain.Core.Events;
 using Innovt.Domain.Core.Streams;
 using NSubstitute;
 using NUnit.Framework;
@@ -220,7 +221,28 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests
             domainMock.Received().InicializeIoc();
             domainMock.Received().ProcessMessage(Arg.Is<DataStream<BaseInvoice>>(p => p.Body.NetValue == netValue && p.EventId == eventId.ToString()));
         }
+        
+        [Test]
+        public async Task ProcessShouldDiscardEmptyMessage()
+        {
+            var domainMock = Substitute.For<IDomainEventServiceMock<DomainEvent>>();
+            var function = new KinesisDomainEventEmptyInvoiceProcessor(domainMock);
+            var lambdaContext = new TestLambdaContext();
+            var eventId = Guid.NewGuid();
+            var netValue = 20;
 
+            var message = new KinesisEvent
+            {
+                Records = new List<KinesisEvent.KinesisEventRecord>()
+                {
+                    CreateValidKinesisRecord(eventId, new DataStream<BaseInvoice>( ){ Body = new BaseInvoice(){NetValue = netValue}})
+                }
+            };
+
+            await function.Process(message, lambdaContext);
+
+            domainMock.DidNotReceive().ProcessMessage(Arg.Any<DomainEvent>());
+        }
         private KinesisEvent.KinesisEventRecord CreateValidKinesisRecord(Guid eventId, object invoice)
         {
 

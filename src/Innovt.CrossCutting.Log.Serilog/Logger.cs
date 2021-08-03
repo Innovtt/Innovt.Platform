@@ -84,15 +84,15 @@ namespace Innovt.CrossCutting.Log.Serilog
             logger.Debug(exception, messageTemplate, propertyValues);
         }
 
-        public void Error(string messageTemplate)
+        public void Error(string message)
         {
             if (!IsEnabled(LogLevel.Error))
             {
                 Console.WriteLine("LogLevel Error not enabled.");
                 return;
             }
-
-            logger.Error(messageTemplate);
+            
+            logger.Error(message);
         }
 
         public void Error(string messageTemplate, params object[] propertyValues)
@@ -106,15 +106,16 @@ namespace Innovt.CrossCutting.Log.Serilog
             logger.Error(messageTemplate, propertyValues);
         }
 
-        public void Error(Exception exception, string messageTemplate)
+        public void Error(Exception exception, string message)
         {
             if (!IsEnabled(LogLevel.Error))
             {
                 Console.WriteLine("LogLevel Error not enabled.");
                 return;
             }
-
-            logger.Error(exception, messageTemplate);
+            
+            
+            logger.Error(exception, message);
         }
 
         public void Error(Exception exception, string messageTemplate, params object[] propertyValues)
@@ -128,7 +129,7 @@ namespace Innovt.CrossCutting.Log.Serilog
             logger.Error(exception, messageTemplate, propertyValues);
         }
 
-        public void Fatal(string messageTemplate)
+        public void Fatal(string message)
         {
             if (!IsEnabled(LogLevel.Critical))
             {
@@ -136,7 +137,7 @@ namespace Innovt.CrossCutting.Log.Serilog
                 return;
             }
 
-            logger.Fatal(messageTemplate);
+            logger.Fatal(message);
         }
 
         public void Fatal(string messageTemplate, params object[] propertyValues)

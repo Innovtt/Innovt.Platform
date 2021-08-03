@@ -28,7 +28,7 @@ namespace Innovt.Domain.Address
 
         public string Name { get; set; }
 
-        public static List<AddressType> FindAll()
+        public static IList<AddressType> FindAll()
         {
             return Types.OrderBy(c => c.Name).ToList();
         }

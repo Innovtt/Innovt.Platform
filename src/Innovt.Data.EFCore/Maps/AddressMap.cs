@@ -5,6 +5,7 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
 using Innovt.Domain.Address;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -24,8 +25,10 @@ namespace Innovt.Data.EFCore.Maps
             this.ignoreType = ignoreType;
         }
 
+        
         public void Configure(EntityTypeBuilder<Address> builder)
         {
+            if (builder == null) throw new ArgumentNullException(nameof(builder));
             builder.ToTable(nameof(Address));
 
             builder.HasKey(u => u.Id);

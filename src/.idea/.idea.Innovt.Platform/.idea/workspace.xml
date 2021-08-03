@@ -6,6 +6,7 @@
     <projectFile>Innovt.Data.Ado.Tests/Innovt.Data.Ado.Tests.csproj</projectFile>
     <projectFile>Innovt.Cloud.AWS.Dynamo.Tests/Innovt.Cloud.AWS.Dynamo.Tests.csproj</projectFile>
     <projectFile>Innovt.AspNetCore.Test/Innovt.AspNetCore.Test.csproj</projectFile>
+    <projectFile>Innovt.AspNetCoreTests/Innovt.AspNetCoreTests.csproj</projectFile>
   </component>
   <component name="BranchesTreeState">
     <expand>
@@ -38,401 +39,55 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="741c11c8-6345-4a62-a870-aa11e5bc5449" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../._.DS_Store" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitattributes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.github/workflows/dotnetcore.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../.github/workflows/dotnetcore.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.nuke" beforeDir="false" afterPath="$PROJECT_DIR$/../.nuke" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../_config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../build/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/../build/.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../build/Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../build/Build.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../build/_build.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../build/_build.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../build/_build.csproj.DotSettings" beforeDir="false" afterPath="$PROJECT_DIR$/../build/_build.csproj.DotSettings" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sonar-project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../sonar-project.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/._build.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis.Tests/Processors/KinesisDomainEventEmptyInvoiceProcessor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Events/EmptyDomainEvent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Streams/EmptyDataStream.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Streams/IEmptyDataStream.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/contentModel.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/riderModule.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/riderModule.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/riderModule.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleAppTest/ConsoleAppTest.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleAppTest/ConsoleAppTest.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleAppTest/DataModels/UserDataModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleAppTest/DataModels/UserDataModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleAppTest/Domain/Contact.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleAppTest/Domain/Contact.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleAppTest/Domain/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleAppTest/Domain/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleAppTest/DynamoService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleAppTest/DynamoService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleAppTest/DynamoTable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleAppTest/DynamoTable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleAppTest/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleAppTest/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleAppTest/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleAppTest/UserRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleAppTest/appsettings.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleAppTest/appsettings.dev.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleAppTest/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleAppTest/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/ApiStartupBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/ApiStartupBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Controllers/BaseController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Controllers/BaseController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Controllers/SecurityController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Controllers/SecurityController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Extensions/MvcExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Extensions/MvcExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Filters/ApiExceptionFilter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Filters/ApiExceptionFilter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Filters/AuthorizationFilter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Filters/AuthorizationFilter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Filters/CaptchaValidatorFilterAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Filters/CaptchaValidatorFilterAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Filters/CustomExceptionFilterAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Filters/CustomExceptionFilterAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Filters/InjectUserNameClaimParameterFilter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Filters/InjectUserNameClaimParameterFilter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Filters/RequestTrackingFilterAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Filters/RequestTrackingFilterAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Filters/SwaggerExcludeFilter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Filters/SwaggerExcludeFilter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Handlers/HasScopeRequirement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Handlers/HasScopeRequirement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Infrastructure/InvalidModelStateResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Infrastructure/InvalidModelStateResponse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Innovt.Platform/riderModule.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Innovt.AspNetCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Innovt.AspNetCore.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Model/DefaultApiDocumentation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Model/DefaultApiDocumentation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Model/DefaultApiLocalization.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Model/DefaultApiLocalization.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Model/ResponseError.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Model/ResponseError.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Resources/IExceptionResource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Resources/IExceptionResource.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/Utility/Pagination/PaginationBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/Utility/Pagination/PaginationBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/ViewModel/CreateOrEditViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/ViewModel/CreateOrEditViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/ViewModel/ListViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/ViewModel/ListViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/ViewModel/MvcActionViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/ViewModel/MvcActionViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/ViewModel/MvcControllerViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/ViewModel/MvcControllerViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.AspNetCore/ViewModel/ViewModelBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.AspNetCore/ViewModel/ViewModelBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/ICognitoIdentityProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/ICognitoIdentityProvider.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Innovt.Cloud.AWS.Cognito.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Innovt.Cloud.AWS.Cognito.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/AuthChallengeResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/AuthChallengeResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/ChangePasswordRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/ChangePasswordRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/ConfirmForgotPasswordRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/ConfirmForgotPasswordRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/ConfirmSignUpRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/ConfirmSignUpRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/ForgotPasswordRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/ForgotPasswordRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/GetUserRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/GetUserRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/IGetUserResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/IGetUserResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/IRequestBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/IRequestBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/ISignUpRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/ISignUpRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/OAuth2SignInResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/OAuth2SignInResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/OtpSignInRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/OtpSignInRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/RefreshTokenRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/RefreshTokenRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/RefreshTokenResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/RefreshTokenResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/RequestBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/RequestBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/ResendConfirmationCodeRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/ResendConfirmationCodeRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/RespondToAuthChallengeRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/RespondToAuthChallengeRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/SignInRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/SignInRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/SignInRequestBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/SignInRequestBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/SignInResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/SignInResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/SignOutRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/SignOutRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/SignUpResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/SignUpResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/SocialSigninRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/SocialSigninRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/UpdateUserAttributeRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Model/UpdateUserAttributeRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Resources/Messages.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Resources/Messages.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Resources/Messages.resx" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Cognito/Resources/Messages.resx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/BaseRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/BaseRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/DataModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/DataModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/Innovt.Cloud.AWS.Dynamo.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/Innovt.Cloud.AWS.Dynamo.Tests.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Helpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Helpers.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Innovt.Cloud.AWS.Dynamo.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Innovt.Cloud.AWS.Dynamo.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/DataProducer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/DataProducer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/EventHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/EventHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/Innovt.Cloud.AWS.Kinesis.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/Innovt.Cloud.AWS.Kinesis.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/InvalidEventLimitException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/InvalidEventLimitException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.CustomRuntime/Innovt.Cloud.AWS.Lambda.CustomRuntime.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.CustomRuntime/Innovt.Cloud.AWS.Lambda.CustomRuntime.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis.Tests/KinesisProcessorTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis.Tests/KinesisProcessorTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/Innovt.Cloud.AWS.Lambda.Kinesis.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/Innovt.Cloud.AWS.Lambda.Kinesis.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisDataProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisDataProcessor.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisDomainEventProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisDomainEventProcessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisProcessorBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisProcessorBase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.S3/Innovt.Cloud.AWS.Lambda.S3.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.S3/Innovt.Cloud.AWS.Lambda.S3.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.S3/S3EventProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.S3/S3EventProcessor.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Sqs/Innovt.Cloud.AWS.Lambda.Sqs.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Sqs/Innovt.Cloud.AWS.Lambda.Sqs.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Sqs/SqsEventProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Sqs/SqsEventProcessor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/EventProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/EventProcessor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/Helpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/Helpers.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/Innovt.Cloud.AWS.Lambda.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/Innovt.Cloud.AWS.Lambda.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/LambdaLogger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/LambdaLogger.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Notification/Innovt.Cloud.AWS.Notification.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Notification/Innovt.Cloud.AWS.Notification.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Notification/MailNotificationHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Notification/MailNotificationHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Notification/NotificationHandleFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Notification/NotificationHandleFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.Notification/SmsNotificationHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Notification/SmsNotificationHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.S3/Innovt.Cloud.AWS.S3.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.S3/Innovt.Cloud.AWS.S3.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.S3/S3FileSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.S3/S3FileSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.SQS/Innovt.Cloud.AWS.SQS.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.SQS/Innovt.Cloud.AWS.SQS.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS.SQS/QueueService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS.SQS/QueueService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS/AwsBaseService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS/AwsBaseService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS/Configuration/IAWSConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS/Configuration/IAWSConfiguration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud.AWS/Innovt.Cloud.AWS.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud.AWS/Innovt.Cloud.AWS.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud/File/IFileSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud/File/IFileSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud/IConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud/IConfiguration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cloud/Innovt.Cloud.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud/Innovt.Cloud.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud/Queue/Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud/Queue/Extensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud/Queue/IQueueMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud/Queue/IQueueMessage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud/Queue/IQueueService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud/Queue/IQueueService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud/Queue/MessageBatchRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud/Queue/MessageBatchRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud/Queue/MessageBatchResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud/Queue/MessageBatchResult.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud/Queue/QueueMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud/Queue/QueueMessage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud/Table/BaseRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud/Table/BaseRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud/Table/ITableMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud/Table/ITableMessage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud/Table/ITableRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud/Table/ITableRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud/Table/QueryRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud/Table/QueryRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud/Table/ScanRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud/Table/ScanRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cloud/Table/TableMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cloud/Table/TableMessage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core.Test/CryptographyTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core.Test/CryptographyTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core.Test/Innovt.Core.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core.Test/Innovt.Core.Test.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Attributes/ArrayValidatorAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Attributes/ArrayValidatorAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Attributes/ModelExcludeFilterAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Attributes/ModelExcludeFilterAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Attributes/NumberGreaterThanZeroAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Attributes/NumberGreaterThanZeroAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Cache/ICacheService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Cache/ICacheService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Collections/Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Collections/Extensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Collections/IPagedCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Collections/IPagedCollection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Collections/PagedCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Collections/PagedCollection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Collections/ParamsWrapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Collections/ParamsWrapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Cqrs/Commands/ICommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Cqrs/Commands/ICommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Cqrs/Queries/FilterBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Cqrs/Queries/FilterBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Cqrs/Queries/IFilter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Cqrs/Queries/IFilter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Cqrs/Queries/SimpleFilter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Cqrs/Queries/SimpleFilter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/CrossCutting/Ioc/Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/CrossCutting/Ioc/Extensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/CrossCutting/Ioc/IContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/CrossCutting/Ioc/IContainer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/CrossCutting/Ioc/IOCLocator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/CrossCutting/Ioc/IOCLocator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/CrossCutting/Ioc/IOCModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/CrossCutting/Ioc/IOCModule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/CrossCutting/Log/ILogger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/CrossCutting/Log/ILogger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Exceptions/BaseException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Exceptions/BaseException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Exceptions/BusinessException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Exceptions/BusinessException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Exceptions/ConfigurationException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Exceptions/ConfigurationException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Exceptions/CriticalException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Exceptions/CriticalException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Exceptions/ErrorMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Exceptions/ErrorMessage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Exceptions/FatalException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Exceptions/FatalException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/HealthChecks/IServiceHealthCheck.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/HealthChecks/IServiceHealthCheck.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Http/Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Http/Extensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Http/HttpConnection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Http/HttpConnection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Http/HttpException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Http/HttpException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Http/HttpRequestDetail.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Http/HttpRequestDetail.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Core/Innovt.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Innovt.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Serialization/Converters/DateTimeConverter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Serialization/Converters/DateTimeConverter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Serialization/ISerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Serialization/ISerializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Serialization/JsonFormatAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Serialization/JsonFormatAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Serialization/JsonSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Serialization/JsonSerializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Serialization/XmlSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Serialization/XmlSerializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Utilities/AsyncHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Utilities/AsyncHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Utilities/Check.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Utilities/Check.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Utilities/ConstantClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Utilities/ConstantClass.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Utilities/Cryptography.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Utilities/Cryptography.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Utilities/Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Utilities/Extensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Utilities/PasswordHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Utilities/PasswordHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Utilities/StopWatchHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Utilities/StopWatchHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Utilities/StringExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Utilities/StringExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Core/Validation/Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Core/Validation/Extensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cqrs/Commands/Decorators/CommandAsyncValidationDecorator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cqrs/Commands/Decorators/CommandAsyncValidationDecorator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cqrs/Commands/Decorators/CommandValidationDecorator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cqrs/Commands/Decorators/CommandValidationDecorator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cqrs/Commands/Decorators/DatabaseAsyncRetryDecorator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cqrs/Commands/Decorators/DatabaseAsyncRetryDecorator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cqrs/Commands/Decorators/DatabaseRetryDecorator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cqrs/Commands/Decorators/DatabaseRetryDecorator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cqrs/Commands/IAsyncCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cqrs/Commands/IAsyncCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cqrs/Commands/ICommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cqrs/Commands/ICommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cqrs/Decorators/BaseDatabaseRetryDecorator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cqrs/Decorators/BaseDatabaseRetryDecorator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Cqrs/Innovt.Cqrs.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cqrs/Innovt.Cqrs.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cqrs/Queries/Decorators/DatabaseAsyncRetryDecorator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cqrs/Queries/Decorators/DatabaseAsyncRetryDecorator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cqrs/Queries/Decorators/DatabaseRetryDecorator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cqrs/Queries/Decorators/DatabaseRetryDecorator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cqrs/Queries/Decorators/QueryAsyncValidationDecorator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cqrs/Queries/Decorators/QueryAsyncValidationDecorator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cqrs/Queries/Decorators/QueryValidationDecorator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cqrs/Queries/Decorators/QueryValidationDecorator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cqrs/Queries/IAsyncQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cqrs/Queries/IAsyncQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Cqrs/Queries/IQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Cqrs/Queries/IQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.CrossCutting.IOC/Container.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.CrossCutting.IOC/Container.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.CrossCutting.IOC/ContainerBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.CrossCutting.IOC/ContainerBuilder.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.CrossCutting.IOC/Innovt.CrossCutting.IOC.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.CrossCutting.IOC/Innovt.CrossCutting.IOC.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.CrossCutting.IOC/ServiceProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.CrossCutting.IOC/ServiceProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.CrossCutting.IOC/ServiceProviderFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.CrossCutting.IOC/ServiceProviderFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.CrossCutting.Log.Serilog/Innovt.CrossCutting.Log.Serilog.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.CrossCutting.Log.Serilog/Innovt.CrossCutting.Log.Serilog.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.CrossCutting.Log.Serilog/Logger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.CrossCutting.Log.Serilog/Logger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.CrossCutting.Log.Serilog/OpenTracingContextLogEnricher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.CrossCutting.Log.Serilog/OpenTracingContextLogEnricher.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.Ado.Tests/Innovt.Data.Ado.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Ado.Tests/Innovt.Data.Ado.Tests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.Ado.Tests/Model/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Ado.Tests/Model/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.Ado.Tests/RepositoryBaseTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Ado.Tests/RepositoryBaseTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.Ado.Tests/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Ado.Tests/UserRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.Ado/ConnectionFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Ado/ConnectionFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.Ado/Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Ado/Extensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.Ado/IConnectionFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Ado/IConnectionFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.Ado/IRepositoryBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Ado/IRepositoryBase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Data.Ado/Innovt.Data.Ado.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Ado/Innovt.Data.Ado.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.Ado/RepositoryBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Ado/RepositoryBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/DBContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/DBContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/EFExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/EFExtensions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/Innovt.Data.EFCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/Innovt.Data.EFCore.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/AddressMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/AddressMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/AddressTypeMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/AddressTypeMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/BaseUserMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/BaseUserMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/CityMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/CityMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/CountryMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/CountryMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/DocumentMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/DocumentMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/DocumentTypeMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/DocumentTypeMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/PermissionMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/PermissionMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/PolicyMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/PolicyMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/PolicyPermissionMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/PolicyPermissionMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/SecurityGroupMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/SecurityGroupMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/SecurityGroupPolicyMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/SecurityGroupPolicyMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/SecurityGroupUserMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/SecurityGroupUserMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/Repositories/GenericRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/Repositories/GenericRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/Repositories/RepositoryBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/Repositories/RepositoryBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/Repositories/RequestTrackingRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/Repositories/RequestTrackingRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.EFCore/Repositories/SecurityRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.EFCore/Repositories/SecurityRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Data.Migration/Innovt.Data.Migration.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Migration/Innovt.Data.Migration.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.Migration/SecurityMigration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Migration/SecurityMigration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.Tests/Innovt.Data.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Tests/Innovt.Data.Tests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.Tests/PostgreSqlBuilderTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Tests/PostgreSqlBuilderTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data.Tests/SqlBuilderTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data.Tests/SqlBuilderTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data/DataSources/DataSourceBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data/DataSources/DataSourceBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data/DataSources/DataSourceReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data/DataSources/DataSourceReader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data/DataSources/DataSourceWriter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data/DataSources/DataSourceWriter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data/DataSources/DefaultDataSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data/DataSources/DefaultDataSource.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data/DataSources/IDataSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data/DataSources/IDataSource.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data/DataSources/IDataSourceReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data/DataSources/IDataSourceReader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data/DataSources/IDataSourceWriter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data/DataSources/IDataSourceWriter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data/Exceptions/ConnectionStringException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data/Exceptions/ConnectionStringException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data/Exceptions/SqlSyntaxException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data/Exceptions/SqlSyntaxException.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Data/Innovt.Data.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data/Innovt.Data.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Data/Model/Provider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Data/Model/Provider.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Events/DomainEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Events/DomainEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Events/IEventHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Events/IEventHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Innovt.Domain.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Innovt.Domain.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Model/DomainModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Model/DomainModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Model/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Model/Entity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Model/IAggregateRoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Model/IAggregateRoot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Model/SimpleVO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Model/SimpleVO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Model/ValueObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Model/ValueObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Repository/IRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Repository/IRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Repository/IUnitOfWork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Repository/IUnitOfWork.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Repository/IncludeParams.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Repository/IncludeParams.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Service/IDomainService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Service/IDomainService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Specification/AndSpecification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Specification/AndSpecification.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Specification/ByPkSpecification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Specification/ByPkSpecification.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Specification/CompositeSpecification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Specification/CompositeSpecification.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Specification/DirectSpecification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Specification/DirectSpecification.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Specification/ExpressionBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Specification/ExpressionBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Specification/ISpecification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Specification/ISpecification.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Specification/NotSpecification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Specification/NotSpecification.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Specification/OrSpecification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Specification/OrSpecification.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Specification/ParametersRebinder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Specification/ParametersRebinder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Specification/Specification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Specification/Specification.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Specification/TrueSpecification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Specification/TrueSpecification.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Streams/DataStream.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Streams/DataStream.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain.Core/Streams/IDataStream.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain.Core/Streams/IDataStream.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/Address/Address.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Address/Address.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Domain/Address/AddressType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Address/AddressType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/Address/City.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Address/City.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/Address/Coordinate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Address/Coordinate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/Address/Country.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Address/Country.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/Address/State.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Address/State.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/BaseCreditCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/BaseCreditCard.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/Contacts/Contact.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Contacts/Contact.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/Contacts/ContactType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Contacts/ContactType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/Contacts/Phone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Contacts/Phone.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/Documents/Document.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Documents/Document.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/Documents/DocumentType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Documents/DocumentType.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Domain/Innovt.Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Innovt.Domain.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/Security/ISecurityRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Security/ISecurityRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/Security/Permission.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Security/Permission.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/Security/Policy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Security/Policy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/Security/PolicyPermission.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Security/PolicyPermission.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/Security/SecurityGroup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Security/SecurityGroup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/Security/SecurityGroupPolicy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Security/SecurityGroupPolicy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/Security/SecurityGroupUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Security/SecurityGroupUser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/Tracking/IRequestTrackingRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Tracking/IRequestTrackingRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/Tracking/RequestTracking.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Tracking/RequestTracking.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/Users/BaseUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Users/BaseUser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Domain/Users/Gender.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Domain/Users/Gender.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Job.Core/Innovt.Job.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Job.Core/Innovt.Job.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Job.Core/JobBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Job.Core/JobBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Job.Core/JobEntry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Job.Core/JobEntry.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Job.Quartz/Innovt.Job.Quartz.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Job.Quartz/Innovt.Job.Quartz.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Job.Quartz/QuartzJobBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Job.Quartz/QuartzJobBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Notification.Core/Builders/DefaultMessageBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Notification.Core/Builders/DefaultMessageBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Notification.Core/Builders/DefaultMessageBuilderFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Notification.Core/Builders/DefaultMessageBuilderFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Notification.Core/Builders/IMessageBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Notification.Core/Builders/IMessageBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Notification.Core/Builders/IMessageBuilderFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Notification.Core/Builders/IMessageBuilderFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Notification.Core/Builders/MessageBuilderAB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Notification.Core/Builders/MessageBuilderAB.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Notification.Core/Domain/NotificationMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Notification.Core/Domain/NotificationMessage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Notification.Core/Domain/NotificationMessageBody.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Notification.Core/Domain/NotificationMessageBody.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Notification.Core/Domain/NotificationMessageContact.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Notification.Core/Domain/NotificationMessageContact.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Notification.Core/Domain/NotificationMessageContent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Notification.Core/Domain/NotificationMessageContent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Notification.Core/Domain/NotificationMessageSubject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Notification.Core/Domain/NotificationMessageSubject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Notification.Core/Domain/NotificationMessageType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Notification.Core/Domain/NotificationMessageType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Notification.Core/Domain/NotificationRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Notification.Core/Domain/NotificationRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Notification.Core/Domain/NotificationTemplate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Notification.Core/Domain/NotificationTemplate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Notification.Core/INotificationHandleFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Notification.Core/INotificationHandleFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Notification.Core/INotificationHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Notification.Core/INotificationHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Innovt.Notification.Core/Innovt.Notification.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Notification.Core/Innovt.Notification.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Notification.Core/Template/ITemplateParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Notification.Core/Template/ITemplateParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Platform.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Platform.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Innovt.Platform.sln.DotSettings" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.Platform.sln.DotSettings" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IocSampleTest/Controllers/WeatherForecastController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/IocSampleTest/Controllers/WeatherForecastController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IocSampleTest/IocSample.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/IocSampleTest/IocSample.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IocSampleTest/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/IocSampleTest/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IocSampleTest/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/IocSampleTest/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IocSampleTest/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/IocSampleTest/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IocSampleTest/WeatherForecast.cs" beforeDir="false" afterPath="$PROJECT_DIR$/IocSampleTest/WeatherForecast.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IocSampleTest/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/IocSampleTest/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IocSampleTest/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/IocSampleTest/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/build.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/build.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nuget.config" beforeDir="false" afterPath="$PROJECT_DIR$/nuget.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tools/NuGet.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../tools/NuGet.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/EncodingFoundException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/EncodingFoundException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlAgilityPack.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlAgilityPack.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlAgilityPack.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlAgilityPack.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlAgilityPack.snk" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlAgilityPack.snk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlAttributeCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlAttributeCollection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlCmdLine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlCmdLine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlCommentNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlCommentNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlConsoleListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlConsoleListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlDocument.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlDocument.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlElementFlag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlElementFlag.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlNameTable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlNameTable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlNodeCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlNodeCollection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlNodeNavigator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlNodeNavigator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlNodeType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlNodeType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlParseError.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlParseError.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlParseErrorCode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlParseErrorCode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlTextNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlTextNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlWeb.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlWeb.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlWebException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/HtmlWebException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/IOLibrary.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/IOLibrary.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/IServerSideDocument.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/IServerSideDocument.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/MixedCodeDocument.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/MixedCodeDocument.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/MixedCodeDocumentCodeFragment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/MixedCodeDocumentCodeFragment.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/MixedCodeDocumentFragment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/MixedCodeDocumentFragment.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/MixedCodeDocumentFragmentList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/MixedCodeDocumentFragmentList.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/MixedCodeDocumentFragmentType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/MixedCodeDocumentFragmentType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/MixedCodeDocumentTextFragment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/MixedCodeDocumentTextFragment.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/NameValuePair.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/NameValuePair.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/NameValuePairList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/NameValuePairList.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/Properties/AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/Properties/AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/RazorServerSideDocument.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/RazorServerSideDocument.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/crc32.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/crc32.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/packages.config" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/HtmlAgilityPack/packages.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/Innovt.NugetServer/Innovt.NugetServer.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/Innovt.NugetServer/Innovt.NugetServer.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/Innovt.NugetServer/Innovt.NugetServer/DataServices/Packages.svc" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/Innovt.NugetServer/Innovt.NugetServer/DataServices/Packages.svc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/Innovt.NugetServer/Innovt.NugetServer/DataServices/Routes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/Innovt.NugetServer/Innovt.NugetServer/DataServices/Routes.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/Innovt.NugetServer/Innovt.NugetServer/Default.aspx" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/Innovt.NugetServer/Innovt.NugetServer/Default.aspx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/Innovt.NugetServer/Innovt.NugetServer/Innovt.NugetServer.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/Innovt.NugetServer/Innovt.NugetServer/Innovt.NugetServer.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/Innovt.NugetServer/Innovt.NugetServer/Properties/AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/Innovt.NugetServer/Innovt.NugetServer/Properties/AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/Innovt.NugetServer/Innovt.NugetServer/Web.Debug.config" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/Innovt.NugetServer/Innovt.NugetServer/Web.Debug.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/Innovt.NugetServer/Innovt.NugetServer/Web.Release.config" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/Innovt.NugetServer/Innovt.NugetServer/Web.Release.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/Innovt.NugetServer/Innovt.NugetServer/Web.config" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/Innovt.NugetServer/Innovt.NugetServer/Web.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/Innovt.NugetServer/Innovt.NugetServer/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/Innovt.NugetServer/Innovt.NugetServer/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/Innovt.NugetServer/Innovt.NugetServer/packages.config" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/Innovt.NugetServer/Innovt.NugetServer/packages.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/PublishArtefacts/Innovt.PublishToolbelt/Innovt.PublishToolbelt.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/PublishArtefacts/Innovt.PublishToolbelt/Innovt.PublishToolbelt.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/PublishArtefacts/Innovt.PublishToolbelt/Innovt.PublishToolbelt/App.config" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/PublishArtefacts/Innovt.PublishToolbelt/Innovt.PublishToolbelt/App.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/PublishArtefacts/Innovt.PublishToolbelt/Innovt.PublishToolbelt/ArgumentHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/PublishArtefacts/Innovt.PublishToolbelt/Innovt.PublishToolbelt/ArgumentHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/PublishArtefacts/Innovt.PublishToolbelt/Innovt.PublishToolbelt/AssetsDeploy/AssetsDeployManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/PublishArtefacts/Innovt.PublishToolbelt/Innovt.PublishToolbelt/AssetsDeploy/AssetsDeployManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/PublishArtefacts/Innovt.PublishToolbelt/Innovt.PublishToolbelt/Innovt.PublishToolbelt.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/PublishArtefacts/Innovt.PublishToolbelt/Innovt.PublishToolbelt/Innovt.PublishToolbelt.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/PublishArtefacts/Innovt.PublishToolbelt/Innovt.PublishToolbelt/Minify/MinifyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/PublishArtefacts/Innovt.PublishToolbelt/Innovt.PublishToolbelt/Minify/MinifyManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/PublishArtefacts/Innovt.PublishToolbelt/Innovt.PublishToolbelt/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/PublishArtefacts/Innovt.PublishToolbelt/Innovt.PublishToolbelt/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/PublishArtefacts/Innovt.PublishToolbelt/Innovt.PublishToolbelt/Properties/AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/PublishArtefacts/Innovt.PublishToolbelt/Innovt.PublishToolbelt/Properties/AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../utilities/PublishArtefacts/Innovt.PublishToolbelt/Innovt.PublishToolbelt/packages.config" beforeDir="false" afterPath="$PROJECT_DIR$/../utilities/PublishArtefacts/Innovt.PublishToolbelt/Innovt.PublishToolbelt/packages.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Innovt.OpenTelemetry/Innovt.OpenTelemetry.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Innovt.OpenTelemetry/Innovt.OpenTelemetry.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -451,67 +106,53 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/LambdaLogger.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F354EAD0-452D-4353-A875-C3EF145AAED1/1F/HostingLoggerExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/654AC2D5-AEE9-4BB7-9DE1-E6F0533F5376/2f/fc6fb880/IReadOnlyList`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5119FDDB-18ED-4899-B855-3CEFB2E48D3E/29/e2aa9615/AttributeValue.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1F4F0914-5411-4A47-9D76-C00412957903/3FA/Dictionary.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/654AC2D5-AEE9-4BB7-9DE1-E6F0533F5376/140/CancellationToken.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/C7788B2B-C733-412D-8EE3-9C302FF7CE57/3/HostBuilder.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F354EAD0-452D-4353-A875-C3EF145AAED1/11/GenericWebHostBuilder.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Helpers.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Innovt.Core/Utilities/StringExtensions.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2487D3E0-48CE-4C7C-BE1B-5A050DA81DEE/0b/ca08ba3b/IDynamoDBv2PaginatorFactory.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F758DD2F-9E4C-41A0-B7A1-63138D66F75D/A/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/29B9D97A-B9AA-4D0B-8EBD-B9B197A9612D/402/List.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1F4F0914-5411-4A47-9D76-C00412957903/68/Boolean.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2487D3E0-48CE-4C7C-BE1B-5A050DA81DEE/5f/b2daf244/AmazonDynamoDBClient.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5AD26F49-380D-4E44-9163-18BB071294DE/140/CancellationToken.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2487D3E0-48CE-4C7C-BE1B-5A050DA81DEE/07/c9d5a3f1/IQueryPaginator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5119FDDB-18ED-4899-B855-3CEFB2E48D3E/45/237438de/DynamoDBContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D5EDF430-AB5A-4412-A0B9-E75F3C32EB0A/65/336f1dd1/ModelBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2487D3E0-48CE-4C7C-BE1B-5A050DA81DEE/66/95d0c8e7/QueryRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2487D3E0-48CE-4C7C-BE1B-5A050DA81DEE/07/c9d5a3f1/IQueryPaginator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1F4F0914-5411-4A47-9D76-C00412957903/68/Boolean.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A9A63A62-DB37-49DF-8EAA-4C72B9E75C79/d6/20441e52/AWSConfigsDynamoDB.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2487D3E0-48CE-4C7C-BE1B-5A050DA81DEE/5f/b2daf244/AmazonDynamoDBClient.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/87A9744D-177D-40C0-B64D-079333099378/3D/KestrelServerImpl.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A9A63A62-DB37-49DF-8EAA-4C72B9E75C79/5e/58d3122d/DynamoDBEntryConversion.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/654AC2D5-AEE9-4BB7-9DE1-E6F0533F5376/2f/fc6fb880/IReadOnlyList`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2487D3E0-48CE-4C7C-BE1B-5A050DA81DEE/0b/ca08ba3b/IDynamoDBv2PaginatorFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F758DD2F-9E4C-41A0-B7A1-63138D66F75D/A/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5119FDDB-18ED-4899-B855-3CEFB2E48D3E/c1/00d7499f/Document.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5119FDDB-18ED-4899-B855-3CEFB2E48D3E/45/237438de/DynamoDBContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/44064694-2DA2-45F5-A2D0-848F8C61ED74/80/325e54a6/QueryResponse.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/804CA853-9C6E-4025-80A1-F012B0A50C56/D/SqlMapper.Async.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/42ED81B8-4EA6-4A20-9C8A-62C83D9D73F9/228/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5AD26F49-380D-4E44-9163-18BB071294DE/140/CancellationToken.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A9A63A62-DB37-49DF-8EAA-4C72B9E75C79/89/8fc4095a/DynamoDBContextConfig.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/42ED81B8-4EA6-4A20-9C8A-62C83D9D73F9/1C5/Task.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/C7788B2B-C733-412D-8EE3-9C302FF7CE57/9/Host.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Innovt.Cloud/Table/BaseRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/051BC642-7BC4-4025-8FC8-06B760F03A0E/09/a0dedce9/AttributeValue.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/42ED81B8-4EA6-4A20-9C8A-62C83D9D73F9/ce/c68a3738/Task.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9CDB37C3-E1A3-453A-81AC-59D315001BF4/e7/29a7d756/AmazonDynamoDBClient.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Innovt.Cloud/Table/ScanRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/Helpers.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/654AC2D5-AEE9-4BB7-9DE1-E6F0533F5376/140/CancellationToken.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/42ED81B8-4EA6-4A20-9C8A-62C83D9D73F9/228/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F354EAD0-452D-4353-A875-C3EF145AAED1/1F/HostingLoggerExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1F4F0914-5411-4A47-9D76-C00412957903/3FA/Dictionary.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F354EAD0-452D-4353-A875-C3EF145AAED1/12/GenericWebHostedService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Innovt.Core/Utilities/StringExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Innovt.Cloud/Table/BaseRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/87A9744D-177D-40C0-B64D-079333099378/3D/KestrelServerImpl.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/42ED81B8-4EA6-4A20-9C8A-62C83D9D73F9/ce/c68a3738/Task.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/C7788B2B-C733-412D-8EE3-9C302FF7CE57/9/Host.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/C7788B2B-C733-412D-8EE3-9C302FF7CE57/3/HostBuilder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/LambdaLogger.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F354EAD0-452D-4353-A875-C3EF145AAED1/11/GenericWebHostBuilder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda/Helpers.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Innovt.Cloud/Table/ScanRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A9A63A62-DB37-49DF-8EAA-4C72B9E75C79/d6/20441e52/AWSConfigsDynamoDB.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9CDB37C3-E1A3-453A-81AC-59D315001BF4/e7/29a7d756/AmazonDynamoDBClient.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/051BC642-7BC4-4025-8FC8-06B760F03A0E/09/a0dedce9/AttributeValue.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A9A63A62-DB37-49DF-8EAA-4C72B9E75C79/5e/58d3122d/DynamoDBEntryConversion.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/804CA853-9C6E-4025-80A1-F012B0A50C56/D/SqlMapper.Async.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0604C291-3BDE-49E3-A1B2-7B619B582326/f9/f4d3049e/Record.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A9A63A62-DB37-49DF-8EAA-4C72B9E75C79/89/8fc4095a/DynamoDBContextConfig.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/44064694-2DA2-45F5-A2D0-848F8C61ED74/80/325e54a6/QueryResponse.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Helpers.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Innovt.Core/Collections/PagedCollection.cs" />
-      <option value="$PROJECT_DIR$/Innovt.Data.Ado/Extensions.cs" />
-      <option value="$PROJECT_DIR$/Innovt.Data/Innovt.Data.csproj" />
-      <option value="$PROJECT_DIR$/Innovt.Cloud/Innovt.Cloud.csproj" />
-      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/InvalidEventLimitException.cs" />
-      <option value="$PROJECT_DIR$/Innovt.Data.Ado/IRepositoryBase.cs" />
-      <option value="$PROJECT_DIR$/Innovt.Core/Innovt.Core.csproj" />
-      <option value="$PROJECT_DIR$/Innovt.Job.Core/Innovt.Job.Core.csproj" />
-      <option value="$PROJECT_DIR$/Innovt.CrossCutting.Log.Serilog/Innovt.CrossCutting.Log.Serilog.csproj" />
-      <option value="$PROJECT_DIR$/Innovt.Data.EFCore/Innovt.Data.EFCore.csproj" />
-      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/DataProducer.cs" />
-      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisEventProcessorBase.cs" />
       <option value="$PROJECT_DIR$/Innovt.Domain.Core/Streams/IDataStream.cs" />
-      <option value="$PROJECT_DIR$/Innovt.Domain.Core/Streams/DataStream.cs" />
-      <option value="$PROJECT_DIR$/Innovt.Domain.Core/Events/DomainEvent.cs" />
       <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisEventProcessor - Copy.cs" />
       <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisEventProcessor.cs" />
-      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisDomainEventProcessor.cs" />
       <option value="$PROJECT_DIR$/Innovt.Data.Ado/RepositoryBase.cs" />
-      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisDataProcessor.cs" />
       <option value="$PROJECT_DIR$/Innovt.Core/CrossCutting/Ioc/IContainer.cs" />
       <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Sqs/SqsEventProcessor.cs" />
       <option value="$PROJECT_DIR$/Innovt.AspNetCore/Handlers/HasScopeRequirement.cs" />
@@ -533,16 +174,32 @@
       <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" />
       <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/BaseRepository.cs" />
       <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Helpers.cs" />
-      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" />
       <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Innovt.Cloud.AWS.Dynamo.csproj" />
       <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo/Repository.cs" />
-      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" />
       <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Kinesis/DataProducer.cs" />
       <option value="$PROJECT_DIR$/Innovt.AspNetCore/Innovt.AspNetCore.csproj" />
       <option value="$PROJECT_DIR$/Innovt.AspNetCore.Test/Startup.cs" />
       <option value="$PROJECT_DIR$/Innovt.AspNetCore/ApiStartupBase.cs" />
       <option value="$PROJECT_DIR$/Innovt.AspNetCore.Tests/Innovt.AspNetCore.Tests.csproj" />
       <option value="$PROJECT_DIR$/Innovt.AspNetCore.Tests/Startup.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisDataProcessor.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisDomainEventProcessor.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Domain.Core/Streams/IEmptyDataStream.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis/KinesisProcessorBase.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Domain.Core/Streams/EmptyDataStream.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Domain.Core/Streams/DataStream.cs" />
+      <option value="$PROJECT_DIR$/Innovt.CrossCutting.Log.Serilog/Logger.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis.Tests/KinesisProcessorTests.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Domain.Core/Events/DomainEvent.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Domain.Core/Events/EmptyDomainEvent.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Domain.Core/Events/IEmptyDomainEvent.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis.Tests/Processors/KinesisDomainEventEmptyInvoiceProcessor.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Domain.Core/Service/IDomainService.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Domain/Address/AddressType.cs" />
+      <option value="$PROJECT_DIR$/Innovt.Data.EFCore/Maps/AddressMap.cs" />
+      <option value="$PROJECT_DIR$/Innovt.CrossCutting.IOC/Innovt.CrossCutting.IOC.csproj" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1jWxQf8VmAkARbTTMoJUI5G2XMM" />
@@ -556,7 +213,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34975636" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34971997" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -633,6 +290,21 @@
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
       <option name="PROJECT_KIND" value="DotNetCore" />
       <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="Innovt.AspNetCoreTests" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Innovt.AspNetCoreTests/Innovt.AspNetCoreTests.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value="net5.0" />
+      <option name="LAUNCH_PROFILE_NAME" value="Innovt.AspNetCoreTests" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -743,6 +415,7 @@
       <workItem from="1616518469421" duration="551000" />
       <workItem from="1616538878265" duration="4119000" />
       <workItem from="1616728312514" duration="4018000" />
+      <workItem from="1626892112672" duration="6078000" />
     </task>
     <servers />
   </component>
@@ -772,10 +445,10 @@
           <line>101</line>
           <properties documentPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" initialLine="85">
             <startOffsets>
-              <option value="4506" />
+              <option value="4516" />
             </startOffsets>
             <endOffsets>
-              <option value="4527" />
+              <option value="4537" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="17" />
@@ -785,10 +458,10 @@
           <line>59</line>
           <properties documentPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" initialLine="65">
             <startOffsets>
-              <option value="2348" />
+              <option value="2358" />
             </startOffsets>
             <endOffsets>
-              <option value="3014" />
+              <option value="3024" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="23" />
@@ -798,10 +471,10 @@
           <line>105</line>
           <properties documentPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" initialLine="104" containingFunctionPresentation="method 'Test1'">
             <startOffsets>
-              <option value="4590" />
+              <option value="4600" />
             </startOffsets>
             <endOffsets>
-              <option value="4604" />
+              <option value="4614" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="43" />
@@ -811,10 +484,10 @@
           <line>96</line>
           <properties documentPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Dynamo.Tests/RepositoryTest.cs" initialLine="96" containingFunctionPresentation="method 'Test1'">
             <startOffsets>
-              <option value="4409" />
+              <option value="4419" />
             </startOffsets>
             <endOffsets>
-              <option value="4429" />
+              <option value="4439" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="47" />
@@ -831,6 +504,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis.Tests/KinesisProcessorTests.cs</url>
+          <line>241</line>
+          <properties documentPath="$PROJECT_DIR$/Innovt.Cloud.AWS.Lambda.Kinesis.Tests/KinesisProcessorTests.cs" initialLine="241" containingFunctionPresentation="method 'ProcessShouldDiscardEmptyMessage'">
+            <startOffsets>
+              <option value="8095" />
+            </startOffsets>
+            <endOffsets>
+              <option value="8142" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="50" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
