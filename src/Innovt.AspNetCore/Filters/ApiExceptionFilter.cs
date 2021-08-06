@@ -39,14 +39,13 @@ namespace Innovt.AspNetCore.Filters
         {
             if (context == null) throw new ArgumentNullException(nameof(context));
 
-            var baseException = context.Exception?.GetBaseException();
+            var baseException = context.Exception;
 
             var result = new ResponseError
             {
                 Message = Translate(baseException.Message),
                 TraceId = context.HttpContext.TraceIdentifier
             };
-
 
             if (baseException is BusinessException bex)
             {
@@ -58,7 +57,7 @@ namespace Innovt.AspNetCore.Filters
             {
                 result.Code = $"{StatusCodes.Status500InternalServerError}";
                 result.Detail = $"Server Error: {baseException.Message}. Check your backend log for more detail.";
-                context.Result = new ObjectResult(result) {StatusCode = StatusCodes.Status500InternalServerError};
+                context.Result = new ObjectResult(result) { StatusCode = StatusCodes.Status500InternalServerError };
             }
         }
     }

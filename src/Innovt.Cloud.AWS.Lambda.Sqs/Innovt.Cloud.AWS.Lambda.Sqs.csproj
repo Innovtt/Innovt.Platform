@@ -3,7 +3,7 @@
  	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<PackageId>Innovt.Cloud.AWS.Lambda.Sqs</PackageId>
-    <PackageVersion>5.0.13</PackageVersion>
+    <PackageVersion>5.0.14</PackageVersion>
 		<Authors>Michel Borges</Authors>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -11,7 +11,6 @@
 		<Description>AWS implementation for lambda and Sqs events.</Description>
     <LangVersion>latest</LangVersion><AnalysisMode>AllEnabledByDefault</AnalysisMode>
 	</PropertyGroup>
-
 	<ItemGroup>
 		<PackageReference Include="Amazon.Lambda.SQSEvents" Version="2.0.0" />
 		<PackageReference Include="System.Text.Json" Version="5.0.2" />

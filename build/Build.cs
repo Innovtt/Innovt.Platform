@@ -94,20 +94,13 @@ class Build : NukeBuild
                 .NotEmpty()                
                 // .Where(x => x.StartsWith("Innovt.",StringComparison.InvariantCultureIgnoreCase))
                 .ForEach(x =>
-                {
-                    try
-                    {
-                        DotNetNuGetPush(s => s
-                                             .EnableSkipDuplicate()
-                                             .SetTargetPath(x)                                             
-                                             .SetSource(NugetApiUrl)
-                                             .SetApiKey(NugetApiKey)
-                                         );
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex);
-                    }
+                {                   
+                    DotNetNuGetPush(s => s
+                                            .EnableSkipDuplicate()
+                                            .SetTargetPath(x)                                             
+                                            .SetSource(NugetApiUrl)
+                                            .SetApiKey(NugetApiKey)
+                    );                   
 
                 });
         });

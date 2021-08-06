@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<PackageId>Innovt.Cloud.AWS.Lambda.Kinesis</PackageId>
-    <PackageVersion>5.0.13</PackageVersion>
+    <PackageVersion>5.0.14</PackageVersion>
 		<Authors>Michel Borges</Authors>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -12,7 +12,6 @@
     <LangVersion>latest</LangVersion>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
 	</PropertyGroup>
-	
 	
 	<ItemGroup>
 		<PackageReference Include="Amazon.Lambda.KinesisEvents" Version="2.0.0" />
