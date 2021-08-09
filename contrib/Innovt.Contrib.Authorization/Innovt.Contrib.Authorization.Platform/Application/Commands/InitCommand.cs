@@ -22,11 +22,11 @@ namespace Innovt.Contrib.Authorization.Platform.Application.Commands
         [Required]
         public string Domain { get; set; }
 
-        public string Group { get; set; }
+        //public string Group { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            throw new System.NotImplementedException();
+            return  new List<ValidationResult>();
         }
     }
 }

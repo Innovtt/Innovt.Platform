@@ -168,7 +168,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             }
         }
 
-        public async Task<(List<TResult1> first, List<TResult2> second)> QueryMultipleAsync<T, TResult1, TResult2>(
+        public async Task<(IList<TResult1> first, IList<TResult2> second)> QueryMultipleAsync<T, TResult1, TResult2>(
             QueryRequest request, string splitBy, CancellationToken cancellationToken = default)
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
@@ -181,7 +181,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             }
         }
 
-        public async Task<(List<TResult1> first, List<TResult2> second, List<TResult3> third)>
+        public async Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third)>
             QueryMultipleAsync<T, TResult1, TResult2, TResult3>(QueryRequest request, string[] splitBy,
                 CancellationToken cancellationToken = default)
         {
@@ -193,6 +193,36 @@ namespace Innovt.Cloud.AWS.Dynamo
                 var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
                 return Helpers.ConvertAttributesToType<TResult1, TResult2, TResult3>(items, splitBy, Context);
+            }
+        }
+
+        public async Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth)>        
+          QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4>(QueryRequest request, string[] splitBy,
+              CancellationToken cancellationToken = default)
+        {
+            if (request is null) throw new ArgumentNullException(nameof(request));
+            if (splitBy == null) throw new ArgumentNullException(nameof(splitBy));
+
+            using (ActivityRepository.StartActivity(nameof(QueryMultipleAsync)))
+            {
+                var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
+
+                return Helpers.ConvertAttributesToType<TResult1, TResult2, TResult3, TResult4>(items, splitBy, Context);
+            }
+        }
+
+        public async Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth, IList<TResult5> fifth)>
+       QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4, TResult5>(QueryRequest request, string[] splitBy,
+           CancellationToken cancellationToken = default)
+        {
+            if (request is null) throw new ArgumentNullException(nameof(request));
+            if (splitBy == null) throw new ArgumentNullException(nameof(splitBy));
+
+            using (ActivityRepository.StartActivity(nameof(QueryMultipleAsync)))
+            {
+                var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
+
+                return Helpers.ConvertAttributesToType<TResult1, TResult2, TResult3, TResult4,TResult5>(items, splitBy, Context);
             }
         }
 
@@ -304,7 +334,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             }
         }
 
-        private async Task<(Dictionary<string, AttributeValue> LastEvaluatedKey, List<Dictionary<string, AttributeValue>> Items)> InternalQueryAsync<T>(QueryRequest request, CancellationToken cancellationToken = default)
+        private async Task<(Dictionary<string, AttributeValue> LastEvaluatedKey, IList<Dictionary<string, AttributeValue>> Items)> InternalQueryAsync<T>(QueryRequest request, CancellationToken cancellationToken = default)
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
@@ -375,11 +405,10 @@ namespace Innovt.Cloud.AWS.Dynamo
             }
         }     
 
-
         protected override void DisposeServices()
         {
             context?.Dispose();
             dynamoClient?.Dispose();
-        }
+        }      
     }
 }

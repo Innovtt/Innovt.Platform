@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 
-namespace Innovt.Contrib.Authorization.AspNetCore.Tests.Controllers
+namespace AppSample.Controllers
 {
     [ApiController]
     [Route("[controller]")]

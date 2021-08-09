@@ -3,7 +3,7 @@ using Innovt.Cloud.Table;
 
 namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
 {
-    [DynamoDBTable("Authorization")]
+    [DynamoDBTable("ServicesAuthorization")] 
     internal abstract class DataModelBase: ITableMessage
     { 
         [DynamoDBHashKey("PK")]
@@ -12,7 +12,11 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
         [DynamoDBRangeKey("SK")]
         public string Sk { get; set; }
 
+        public DataModelBase()
+        {            
+        }
+
         [DynamoDBProperty]
-        public string EntityType { get; set; }
+        public string EntityType { get; set; }      
     }
 }

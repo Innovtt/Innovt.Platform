@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using Amazon.DynamoDBv2.DocumentModel;
 using Innovt.Contrib.Authorization.Platform.Application;
 using Innovt.Contrib.Authorization.Platform.Application.Commands;
 using Innovt.Contrib.Authorization.Platform.Application.Dtos;
@@ -11,9 +12,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Innovt.Contrib.Authorization.AspNetCore
 {
-    [ApiController]
-    [Area("Authorization")]
-    [Route("[controller]")]
+    [ApiController]    
+    [Route("Authorization/[controller]")]
     public class GroupController : ControllerBase
     {
         private readonly IAuthorizationAppService authorizationAppService;
@@ -23,7 +23,6 @@ namespace Innovt.Contrib.Authorization.AspNetCore
             this.authorizationAppService = authorizationAppService ?? throw new ArgumentNullException(nameof(authorizationAppService));
         }
 
-
         [HttpGet]
         [ProducesResponseType(typeof(IList<GroupDto>), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
@@ -31,8 +30,9 @@ namespace Innovt.Contrib.Authorization.AspNetCore
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         public async Task<IActionResult> Get(GroupFilter filter, CancellationToken cancellationToken = default)
         {
-            var groups = await authorizationAppService.FindGroupBy(filter, cancellationToken);
+            if (filter is null)throw new ArgumentNullException(nameof(filter));            
 
+            var groups = await authorizationAppService.FindGroupBy(filter, cancellationToken);
 
             return Ok(groups);
         }
@@ -41,7 +41,9 @@ namespace Innovt.Contrib.Authorization.AspNetCore
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         public async Task<IActionResult> Add(AddGroupCommand command, CancellationToken cancellationToken =default)
-        {
+{
+            if (command is null) throw new ArgumentNullException(nameof(command));
+
             var groupId = await authorizationAppService.AddGroup(command, cancellationToken);
             
             return Ok(groupId);
@@ -52,6 +54,8 @@ namespace Innovt.Contrib.Authorization.AspNetCore
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         public async Task<IActionResult> Remove(RemoveGroupCommand command, CancellationToken cancellationToken = default)
         {
+            if (command is null) throw new ArgumentNullException(nameof(command));
+
             await authorizationAppService.RemoveGroup(command, cancellationToken);
 
             return Ok();

@@ -11,8 +11,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Innovt.Contrib.Authorization.AspNetCore
 {
-    [ApiController]
-    [Route("[controller]")]
+    [ApiController]    
+    [Route("Authorization/[controller]")]
     public class PermissionController : ControllerBase
     {
         private readonly IAuthorizationAppService authorizationAppService;

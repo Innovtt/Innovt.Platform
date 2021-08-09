@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Innovt.Contrib.Authorization.AspNetCore
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("Authorization/[controller]")]
     public class AdminController : ControllerBase
     {
         private readonly IAuthorizationAppService authorizationAppService;

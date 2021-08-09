@@ -13,14 +13,16 @@ using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.AWS.Dynamo;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Domain.Security;
+using Innovt.Domain.Users;
 
 namespace Innovt.Contrib.Authorization.Platform.Infrastructure
 {
+
+
     internal class AuthorizationRepository : Repository, IAuthorizationRepository
     {
-        public AuthorizationRepository(ILogger logger, IAWSConfiguration awsConfiguration) : base(logger, awsConfiguration)
+        public AuthorizationRepository(ILogger logger, IAwsConfiguration awsConfiguration) : base(logger, awsConfiguration)
         {
-
         }
 
         //public async Task AddPermission(Permission permission,CancellationToken cancellationToken = default)
@@ -139,7 +141,7 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure
             //    Filter = new { pk = $"C#", sk = $"S#True#CAT#" },
             //    AttributesToGet = "CategoryName,CategoryIconUrl,CategoryId"
             //};
-            
+            //
 
             //var category = await base.QueryAsync<DashboardDataModel>(request, cancellationToken).ConfigureAwait(false);
             return null;
@@ -147,7 +149,16 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure
 
         public object GetAdminUser(string userName, string password)
         {
-            throw new NotImplementedException();
+            var request = new Innovt.Cloud.Table.QueryRequest()
+            {
+                KeyConditionExpression = $"PK = :pk",
+                Filter = new { pk = $"C#" }                
+            };
+            
+            var user = base.QueryFirstOrDefaultAsync<BaseUser>(request).Result;
+
+
+            return user;
         }
     }
 }

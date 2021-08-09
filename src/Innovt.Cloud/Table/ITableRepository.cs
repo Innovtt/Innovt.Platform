@@ -16,7 +16,6 @@ namespace Innovt.Cloud.Table
     {
         Task<T> GetByIdAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default)
             where T : ITableMessage;
-
         Task DeleteAsync<T>(T value, CancellationToken cancellationToken = default) where T : ITableMessage;
 
         Task DeleteAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default)
@@ -35,11 +34,19 @@ namespace Innovt.Cloud.Table
 
         Task<T> QueryFirstOrDefaultAsync<T>(QueryRequest request, CancellationToken cancellationToken = default);
 
-        Task<(List<TResult1> first, List<TResult2> second)> QueryMultipleAsync<T, TResult1, TResult2>(
+        Task<(IList<TResult1> first, IList<TResult2> second)> QueryMultipleAsync<T, TResult1, TResult2>(
             QueryRequest request, string splitBy, CancellationToken cancellationToken = default);
 
-        Task<(List<TResult1> first, List<TResult2> second, List<TResult3> third)> QueryMultipleAsync<T, TResult1, TResult2, TResult3>(QueryRequest request, string[] splitBy,
+        Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third)> QueryMultipleAsync<T, TResult1, TResult2, TResult3>(QueryRequest request, string[] splitBy,
                 CancellationToken cancellationToken = default);
+
+        Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth)>
+            QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4>(QueryRequest request, string[] splitBy,
+                CancellationToken cancellationToken = default);
+
+        Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth, IList<TResult5> fifth)>
+         QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4,TResult5>(QueryRequest request, string[] splitBy,
+             CancellationToken cancellationToken = default);
 
         Task<IList<T>> ScanAsync<T>(ScanRequest request,
             CancellationToken cancellationToken = default);

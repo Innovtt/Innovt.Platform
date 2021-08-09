@@ -140,14 +140,28 @@ namespace Innovt.Contrib.Authorization.Platform.Application
         public async Task Init(InitCommand command, CancellationToken cancellationToken= default)
         {
             command.EnsureIsValid();
+            
+            try
+            {
+                var adminUser = authorizationRepository.GetAdminUser(command.Username, command.Password.Md5Hash());
 
-            //TODO: ServciceDomain
-            //check if has user created
 
-            var adminUser = authorizationRepository.GetAdminUser(command.Username,command.Password.Md5Hash());
 
-            if (adminUser is null)
-                throw new Exception("");
+                if (adminUser != null)
+                    throw new BusinessException("Service alreary initialized.");
+
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+         
+
+            //var user =             
+
+
+
 
 
             return;

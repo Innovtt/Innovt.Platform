@@ -33,7 +33,6 @@ namespace Innovt.Cloud.AWS.Dynamo
             return DynamoDBEntryConversion.V2.ConvertToEntry(value.ToString());
         }
 
-
         public  static string GetTableName<T>()
         {
             if (Attribute.GetCustomAttribute(typeof(T), typeof(DynamoDBTableAttribute)) is not DynamoDBTableAttribute attribute)
@@ -159,25 +158,24 @@ namespace Innovt.Cloud.AWS.Dynamo
             return scanRequest;
         }
 
-        internal static List<T> ConvertAttributesToType<T>(List<Dictionary<string, AttributeValue>> items,
-            DynamoDBContext context)
+        internal static IList<T> ConvertAttributesToType<T>(IList<Dictionary<string, AttributeValue>> items,DynamoDBContext context)
         {
             if (items is null)
                 return new List<T>();
 
             var result = new List<T>();
 
-            items.ForEach(item =>
+            foreach (var item in items)
             {
                 var doc = Document.FromAttributeMap(item);
                 result.Add(context.FromDocument<T>(doc));
-            });
+            }            
 
             return result;
         }
 
-        internal static (List<T1> first, List<T2> seccond) ConvertAttributesToType<T1, T2>(
-            List<Dictionary<string, AttributeValue>> items, string splitBy, DynamoDBContext context)
+        internal static (IList<T1> first, IList<T2> seccond) ConvertAttributesToType<T1, T2>(
+            IList<Dictionary<string, AttributeValue>> items, string splitBy, DynamoDBContext context)
         {
             if (items is null)
                 return (null, null);
@@ -198,8 +196,8 @@ namespace Innovt.Cloud.AWS.Dynamo
             return (result1, result2);
         }
 
-        internal static (List<T1> first, List<T2> seccond, List<T3> third) ConvertAttributesToType<T1, T2, T3>(
-            List<Dictionary<string, AttributeValue>> items, string[] splitBy, DynamoDBContext context)
+        internal static (List<T1> first, IList<T2> seccond, IList<T3> third) ConvertAttributesToType<T1, T2, T3>(
+            IList<Dictionary<string, AttributeValue>> items, string[] splitBy, DynamoDBContext context)
         {
             if (items is null)
                 return (null, null, null);
@@ -229,6 +227,92 @@ namespace Innovt.Cloud.AWS.Dynamo
             }
 
             return (result1, result2, result3);
+        }
+
+        internal static (IList<T1> first, IList<T2> seccond, IList<T3> third, IList<T4> fourth) ConvertAttributesToType<T1, T2, T3,T4>(
+         IList<Dictionary<string, AttributeValue>> items, string[] splitBy, DynamoDBContext context)
+        {
+            if (items is null)
+                return (null, null, null,null);
+
+            var result1 = new List<T1>();
+            var result2 = new List<T2>();
+            var result3 = new List<T3>();
+            var result4 = new List<T4>();
+
+            foreach (var item in items)
+            {
+                var doc = Document.FromAttributeMap(item);
+
+                if (!item.ContainsKey("EntityType"))
+                    continue;
+                
+                if (item["EntityType"].S == splitBy[0])
+                {
+                    result1.Add(context.FromDocument<T1>(doc));
+                }
+                else
+                {
+                    if (item["EntityType"].S == splitBy[1])
+                        result2.Add(context.FromDocument<T2>(doc));
+                    else
+                    {
+                        if (item["EntityType"].S == splitBy[2])
+                            result3.Add(context.FromDocument<T3>(doc));
+                        else
+                            result4.Add(context.FromDocument<T4>(doc));
+                    }
+                        
+                }
+            }
+
+            return (result1, result2, result3,result4);
+        }
+
+        internal static (IList<T1> first, IList<T2> seccond, IList<T3> third, IList<T4> fourth,IList<T5> fifth) ConvertAttributesToType<T1, T2, T3, T4,T5>(
+        IList<Dictionary<string, AttributeValue>> items, string[] splitBy, DynamoDBContext context)
+        {
+            if (items is null)
+                return (null, null, null, null,null);
+
+            var result1 = new List<T1>();
+            var result2 = new List<T2>();
+            var result3 = new List<T3>();
+            var result4 = new List<T4>();
+            var result5 = new List<T5>();
+
+            foreach (var item in items)
+            {
+                var doc = Document.FromAttributeMap(item);
+
+                if (!item.ContainsKey("EntityType"))
+                    continue;
+                
+
+                if (item["EntityType"].S == splitBy[0])
+                {
+                    result1.Add(context.FromDocument<T1>(doc));
+                }
+                else
+                {
+                    if (item["EntityType"].S == splitBy[1])
+                        result2.Add(context.FromDocument<T2>(doc));
+                    else
+                    {
+                        if (item["EntityType"].S == splitBy[2])
+                            result3.Add(context.FromDocument<T3>(doc));
+                        else
+                        {
+                            if (item["EntityType"].S == splitBy[3])
+                                result4.Add(context.FromDocument<T4>(doc));
+                            else
+                                result5.Add(context.FromDocument<T5>(doc));
+                        }                            
+                    }
+                }
+            }
+
+            return (result1, result2, result3, result4,result5);
         }
 
         internal static string CreatePaginationToken(Dictionary<string, AttributeValue> lastEvaluatedKey)
@@ -296,8 +380,7 @@ namespace Innovt.Cloud.AWS.Dynamo
                 Item = ConvertToAttributeValues(transactionWriteItem.Keys)                
             };
         }
-
-       
+              
 
         private static ConditionCheck CreateConditionCheckTransactItem(TransactionWriteItem transactionWriteItem)
         {
