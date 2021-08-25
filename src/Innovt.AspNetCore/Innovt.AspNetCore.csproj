@@ -21,7 +21,7 @@
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.9" />
     <PackageReference Include="OpenTelemetry" Version="1.1.0" />
     <PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.1.0" />
     <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.0.0-rc7" />
