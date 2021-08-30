@@ -37,13 +37,13 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
             if (group is null)
                 return null;
 
-
             return new GroupDataModel()
             {
                 Name = group.Name,
+                Domain = group.Domain,
                 Description = group.Description,                
                 Id = $"G#{group.Name}",
-                Sk = group.Name                
+                Sk = $"G#{group.Name}",
             };
         }
 

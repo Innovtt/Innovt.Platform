@@ -123,6 +123,9 @@
   <data name="GroupNotFound" xml:space="preserve">
     <value>Group not found.</value>
   </data>
+  <data name="InvalidUserOrPassword" xml:space="preserve">
+    <value>Admin user or password invalid.</value>
+  </data>
   <data name="PermissionAlreadyExist" xml:space="preserve">
     <value>Permission already exist.</value>
   </data>

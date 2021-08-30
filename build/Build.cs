@@ -14,7 +14,6 @@ using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Tools.GitVersion;
 using Nuke.Common.Utilities.Collections;
 using static Nuke.Common.IO.FileSystemTasks;
-
 using static Nuke.Common.IO.PathConstruction;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
@@ -26,7 +25,8 @@ class Build : NukeBuild
     readonly string Configuration = IsLocalBuild ? "Debug" : "Release";
 
     //[GitRepository] readonly GitRepository GitRepository;
-    [GitVersion] readonly GitVersion GitVersion;
+    [GitVersion(Framework = "netcoreapp3.0")] 
+    readonly GitVersion GitVersion;
 
 
     [Solution] readonly Solution Solution;
@@ -63,7 +63,7 @@ class Build : NukeBuild
                 .SetFileVersion(GitVersion.AssemblySemFileVer)
                 .SetInformationalVersion(GitVersion.InformationalVersion)
                 .SetCopyright("Innovt Technologies")
-                .SetAuthors("Michel Borges")
+                .SetAuthors("Michel Borges & Tiago Freire & Welbert Serra")
                 .EnableNoRestore());
         });
 
@@ -74,7 +74,7 @@ class Build : NukeBuild
             EnsureCleanDirectory(ArtifactsDirectory);
             DotNetPack(p => p
                     .SetProject(Solution)
-                    .SetAuthors("Michel Borges")                    
+                    .SetAuthors("Michel Borges & Tiago Freire & Welbert Serra")
                     .SetVersion(GitVersion.NuGetVersionV2)
                     .SetNoDependencies(true)
                     .SetOutputDirectory(ArtifactsDirectory / "nuget")

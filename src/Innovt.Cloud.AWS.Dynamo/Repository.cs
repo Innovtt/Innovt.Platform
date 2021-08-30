@@ -123,7 +123,6 @@ namespace Innovt.Cloud.AWS.Dynamo
                 var batch = Context.CreateBatchWrite<T>(OperationConfig);
 
                 batch.AddPutItems(messages);
-
                 await CreateDefaultRetryAsyncPolicy()
                     .ExecuteAsync(async () => await batch.ExecuteAsync(cancellationToken).ConfigureAwait(false))
                     .ConfigureAwait(false);

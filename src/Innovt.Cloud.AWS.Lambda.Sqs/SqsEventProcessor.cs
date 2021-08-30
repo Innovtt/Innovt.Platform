@@ -76,7 +76,11 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
 
                 activity?.SetTag("SqsMessageId", queueMessage.MessageId);
                 activity?.SetTag("SqsMessageApproximateFirstReceiveTimestamp", queueMessage.ApproximateFirstReceiveTimestamp);
-                activity?.SetTag("SqsMessageApproximateReceiveCount", queueMessage.ApproximateReceiveCount);
+                activity?.SetTag("SqsMessageApproximateReceiveCount", queueMessage.ApproximateReceiveCount);                
+                activity?.AddBaggage("Message.ElapsedTimeBeforeAttendedInMilliseconds", $"{DateTime.UtcNow.Subtract(TimeSpan.FromMilliseconds(queueMessage.ApproximateFirstReceiveTimestamp.GetValueOrDefault()).TotalMilliseconds}");
+                activity?.AddBaggage("Message.ElapsedTimeBeforeAttendedInMinutes", $"{DateTime.UtcNow.Subtract(TimeSpan.FromMilliseconds(queueMessage.ApproximateFirstReceiveTimestamp.GetValueOrDefault()).TotalMilliseconds}");
+
+
 
                 await ProcessMessage(queueMessage).ConfigureAwait(false);
 

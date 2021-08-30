@@ -7,13 +7,17 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.AWS.Dynamo;
+using Innovt.Contrib.Authorization.Platform.Domain;
+using Innovt.Contrib.Authorization.Platform.Domain.Filters;
+using Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Domain.Security;
-using Innovt.Domain.Users;
+using IAuthorizationRepository = Innovt.Contrib.Authorization.Platform.Domain.IAuthorizationRepository;
 
 namespace Innovt.Contrib.Authorization.Platform.Infrastructure
 {
@@ -48,14 +52,28 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure
 
         //    return CategoryDataModel.ToCategory(category);
         //}
-        public Task AddPermission(Permission permission, CancellationToken cancellationToken = default)
+        public async Task AddPermission(Permission permission, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            if (permission is null)
+            {
+                throw new ArgumentNullException(nameof(permission));
+            }
+
+            var permissionDataModel = PermissionDataModel.FromPermission(permission);
+
+            await base.AddAsync(permissionDataModel, cancellationToken).ConfigureAwait(false);
         }
 
-        public Task RemovePermission(Permission permission, CancellationToken cancellationToken = default)
+        public async Task RemovePermission(Permission permission, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            if (permission is null)
+            {
+                throw new ArgumentNullException(nameof(permission));
+            }
+
+            var permissionDataModel = PermissionDataModel.FromPermission(permission);
+
+            await base.DeleteAsync(permissionDataModel, cancellationToken).ConfigureAwait(false);
         }
 
         public Task<Permission> GetPermissionsById(Guid permissionId, CancellationToken cancellationToken = default)
@@ -63,14 +81,25 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure
             throw new NotImplementedException();
         }
 
-        public Task AddRole(Role role, CancellationToken cancellationToken = default)
+        public async  Task AddRole(Role role, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            if (role is null)
+            {
+                throw new ArgumentNullException(nameof(role));
+            }
+
+            var roleDataModel = RoleDataModel.FromRole(role);
+
+            await base.AddAsync(roleDataModel, cancellationToken).ConfigureAwait(false);
         }
 
-        public Task RemoveRole(Role role, CancellationToken cancellationToken = default)
+        public async Task RemoveRole(Role role, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            if (role is null)throw new ArgumentNullException(nameof(role));            
+
+            var roleDataModel = RoleDataModel.FromRole(role);
+
+            await base.DeleteAsync(roleDataModel, cancellationToken).ConfigureAwait(false);
         }
 
         public Task<Role> GetRoleById(Guid roleId, CancellationToken cancellationToken = default)
@@ -88,9 +117,16 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure
             throw new NotImplementedException();
         }
 
-        public Task AddGroup(Group @group, CancellationToken cancellationToken = default)
+        public async Task AddGroup(Group @group, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            if (@group is null)
+            {
+                throw new ArgumentNullException(nameof(@group));
+            }
+
+            var groupDataModel = GroupDataModel.FromGroup(@group);
+
+            await base.AddAsync(groupDataModel, cancellationToken).ConfigureAwait(false);
         }
 
         public Task UpdateGroup(Group @group, CancellationToken cancellationToken = default)
@@ -146,19 +182,29 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure
             //var category = await base.QueryAsync<DashboardDataModel>(request, cancellationToken).ConfigureAwait(false);
             return null;
         }
-
-        public object GetAdminUser(string userName, string password)
+     
+        public async Task<Domain.AdminUser> GetAdminUser(UserFilter userFilter, CancellationToken cancellationToken)
         {
             var request = new Innovt.Cloud.Table.QueryRequest()
             {
-                KeyConditionExpression = $"PK = :pk",
-                Filter = new { pk = $"C#" }                
+                KeyConditionExpression = $"PK=:pk AND SK=:sk",
+                Filter = new { pk = $"MU#{userFilter.Email}", sk= "ADMINUSER" }
             };
-            
-            var user = base.QueryFirstOrDefaultAsync<BaseUser>(request).Result;
 
+            var user = await base.QueryFirstOrDefaultAsync<UserDataModel>(request, cancellationToken).ConfigureAwait(false);
 
-            return user;
+            return UserDataModel.ToUser(user);
+        }
+        public async Task Save(Domain.AdminUser adminUser, CancellationToken cancellationToken)
+        {
+            if (adminUser is null)
+            {
+                throw new ArgumentNullException(nameof(adminUser));
+            }
+
+            var user = UserDataModel.FromUser(adminUser);
+
+            await base.AddAsync(user, cancellationToken).ConfigureAwait(false);
         }
     }
 }

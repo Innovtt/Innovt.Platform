@@ -84,7 +84,7 @@ namespace Innovt.Cloud.AWS.Lambda
                 activity?.SetTag("Lambda.FunctionName", context.FunctionName);
                 activity?.SetTag("Lambda.FunctionVersion", context.FunctionVersion);
                 activity?.SetTag("Lambda.LogStreamName", context.LogStreamName);
-                activity?.AddBaggage("Lambda.RequestId", context.AwsRequestId);
+                activity?.AddBaggage("Lambda.RequestId", context.AwsRequestId);                
 
                 //setting request id as parentId.
                 if (activity?.ParentId is null && context.AwsRequestId != null)

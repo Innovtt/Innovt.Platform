@@ -48,9 +48,12 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
             activity?.SetTag("Kinesis.EventName", record.EventName);
             activity?.SetTag("Kinesis.EventVersion", record.EventVersion);
             activity?.SetTag("Kinesis.EventSource", record.EventSource);
-            activity?.SetTag("Kinesis.PartitionKey", record.Kinesis?.PartitionKey);
-            activity?.SetTag("Kinesis.ApproximateArrivalTimestamp", record.Kinesis?.ApproximateArrivalTimestamp);
-            
+            activity?.SetTag("Kinesis.PartitionKey", record.Kinesis.PartitionKey);
+            activity?.SetTag("Kinesis.ApproximateArrivalTimestamp", record.Kinesis.ApproximateArrivalTimestamp);
+            activity?.AddBaggage("Message.ElapsedTimeBeforeAttendedInMilliseconds", $"{DateTime.UtcNow.Subtract(record.Kinesis.ApproximateArrivalTimestamp).TotalMilliseconds}");
+            activity?.AddBaggage("Message.ElapsedTimeBeforeAttendedInMinutes", $"{DateTime.UtcNow.Subtract(record.Kinesis.ApproximateArrivalTimestamp).TotalMinutes}");
+
+            //tempo de atendimento 
             Logger.Info("Reading Stream Content.");
 
             using var reader = new StreamReader(record.Kinesis.Data, Encoding.UTF8);

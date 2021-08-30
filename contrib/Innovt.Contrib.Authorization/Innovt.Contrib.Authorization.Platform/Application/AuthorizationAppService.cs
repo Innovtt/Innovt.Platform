@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Reflection;
+using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
 using Innovt.Contrib.Authorization.Platform.Application.Commands;
 using Innovt.Contrib.Authorization.Platform.Application.Dtos;
+using Innovt.Contrib.Authorization.Platform.Domain;
 using Innovt.Contrib.Authorization.Platform.Domain.Filters;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
 using Innovt.Core.Validation;
 using Innovt.Domain.Security;
+using IAuthorizationRepository = Innovt.Contrib.Authorization.Platform.Domain.IAuthorizationRepository;
 
 namespace Innovt.Contrib.Authorization.Platform.Application
 {
@@ -131,7 +137,41 @@ namespace Innovt.Contrib.Authorization.Platform.Application
             await authorizationRepository.RemoveGroup(group, cancellationToken).ConfigureAwait(false);
         }
 
-        //init -  Create Database
+
+        private async Task<AdminUser> InitializeAdminUser(InitCommand command, CancellationToken cancellationToken = default)
+        {
+            if (command is null)
+            {
+                throw new ArgumentNullException(nameof(command));
+            }
+
+            var adminUser = await authorizationRepository.GetAdminUser(new UserFilter(command.Email), cancellationToken).ConfigureAwait(false);
+
+
+            if (adminUser != null && command.Password.Md5Hash() != adminUser.PasswordHash)
+            {
+                throw new BusinessException(Messages.InvalidUserOrPassword);
+            }
+
+            if (adminUser is null)
+            {
+                adminUser = new Domain.AdminUser()
+                {
+                    Email = command.Email,
+                    IsEnabled = true,
+                    Name = "Master",
+                    PasswordHash = command.Password.Md5Hash()
+                };
+            }
+
+            adminUser.RegisterAccess();
+
+            await authorizationRepository.Save(adminUser, cancellationToken).ConfigureAwait(false);
+
+            return adminUser;
+        }
+
+      
         //Inject Controllers
         //Create a Group Admin
         //Create a Role ALL
@@ -143,13 +183,29 @@ namespace Innovt.Contrib.Authorization.Platform.Application
             
             try
             {
-                var adminUser = authorizationRepository.GetAdminUser(command.Username, command.Password.Md5Hash());
+                var adminUser = await InitializeAdminUser(command, cancellationToken).ConfigureAwait(false);
+                       
+                
+                //Add permissions 
 
 
+                //add Group/
 
-                if (adminUser != null)
-                    throw new BusinessException("Service alreary initialized.");
 
+                //Add Role
+                //group
+                //var roleAll = new Role() { Name = "All", Description = "All", CreatedAt = DateTimeOffset.UtcNow, };
+
+                
+
+
+                var group = new Group() { Domain = command.Domain, CreatedAt = DateTime.UtcNow, Description = "Admin", Name = "Admin" };
+
+                
+
+                //group.AddRole();
+
+                await authorizationRepository.AddGroup(group, cancellationToken).ConfigureAwait(false);
 
             }
             catch (Exception)

@@ -4,10 +4,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using Innovt.Contrib.Authorization.Platform.Application;
 using Innovt.Contrib.Authorization.Platform.Application.Commands;
+using Innovt.Contrib.Authorization.Platform.Domain;
 using Innovt.Core.Exceptions;
 using Innovt.Domain.Security;
 using NSubstitute;
 using NUnit.Framework;
+using IAuthorizationRepository = Innovt.Contrib.Authorization.Platform.Domain.IAuthorizationRepository;
 
 namespace Innovt.Contrib.Authorization.Platform.Tests
 {

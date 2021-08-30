@@ -12,7 +12,6 @@ using Innovt.Contrib.Authorization.Platform.Domain;
 using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.CrossCutting.Log.Serilog;
-using Innovt.Domain.Security;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Innovt.Contrib.Authorization.Platform.Infrastructure.IOC
