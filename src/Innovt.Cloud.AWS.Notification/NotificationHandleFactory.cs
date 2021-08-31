@@ -21,14 +21,19 @@ namespace Innovt.Cloud.AWS.Notification
             this.container = container ?? throw new ArgumentNullException(nameof(container));
         }
 
-        public virtual INotificationHandler Create(NotificationMessageType type)
+        public virtual INotificationHandler Create(NotificationMessageType notificationMessageType)
         {
-            return type switch
+            return notificationMessageType switch
             {
                 NotificationMessageType.Email => container.Resolve<MailNotificationHandler>(),
                 NotificationMessageType.Sms => container.Resolve<SmsNotificationHandler>(),
-                _ => throw new Exception($"{type} not implemented")
+                _ => CreateCustomHandle(notificationMessageType)                    
             };
+        }
+
+        public virtual INotificationHandler CreateCustomHandle(NotificationMessageType notificationMessageType) {
+
+            return null;
         }
     }
 }

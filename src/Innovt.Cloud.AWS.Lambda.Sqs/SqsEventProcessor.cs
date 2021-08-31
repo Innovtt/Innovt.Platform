@@ -43,7 +43,7 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
         protected override async Task Handle(SQSEvent message, ILambdaContext context)
         {
             Logger.Info($"Processing Sqs event With {message?.Records?.Count} records.");
-
+                        
             if (message?.Records == null) return;
             if (message.Records.Count == 0) return;
 
@@ -76,11 +76,8 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
 
                 activity?.SetTag("SqsMessageId", queueMessage.MessageId);
                 activity?.SetTag("SqsMessageApproximateFirstReceiveTimestamp", queueMessage.ApproximateFirstReceiveTimestamp);
-                activity?.SetTag("SqsMessageApproximateReceiveCount", queueMessage.ApproximateReceiveCount);                
-                activity?.AddBaggage("Message.ElapsedTimeBeforeAttendedInMilliseconds", $"{DateTime.UtcNow.Subtract(TimeSpan.FromMilliseconds(queueMessage.ApproximateFirstReceiveTimestamp.GetValueOrDefault()).TotalMilliseconds}");
-                activity?.AddBaggage("Message.ElapsedTimeBeforeAttendedInMinutes", $"{DateTime.UtcNow.Subtract(TimeSpan.FromMilliseconds(queueMessage.ApproximateFirstReceiveTimestamp.GetValueOrDefault()).TotalMilliseconds}");
-
-
+                activity?.SetTag("SqsMessageApproximateReceiveCount", queueMessage.ApproximateReceiveCount);                             
+                activity?.AddBaggage("Message.ElapsedTimeBeforeAttendedInMilliseconds", $"{queueMessage.ApproximateFirstReceiveTimestamp.GetValueOrDefault()}");
 
                 await ProcessMessage(queueMessage).ConfigureAwait(false);
 

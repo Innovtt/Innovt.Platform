@@ -6,23 +6,26 @@
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace Innovt.Cloud.Queue
 {
-    public static class Extensions
+    public static class QueueExtensions
     {
         public static void ParseQueueAttributes(this IQueueMessage queueMessage,
             Dictionary<string, string> queueAttributes)
         {
-            if (queueAttributes == null)
+            if (queueMessage is null || queueAttributes == null)
                 return;
 
-            if (queueAttributes.ContainsKey("ApproximateReceiveCount"))
-                queueMessage.ApproximateReceiveCount = int.Parse(queueAttributes["ApproximateReceiveCount"]);
+            if (queueAttributes.ContainsKey("ApproximateReceiveCount")) {
+                queueMessage.ApproximateReceiveCount = int.Parse(queueAttributes["ApproximateReceiveCount"], System.Globalization.NumberStyles.Integer, CultureInfo.InvariantCulture);
+            }
 
-            if (queueAttributes.ContainsKey("ApproximateFirstReceiveTimestamp"))
+            if (queueAttributes.ContainsKey("ApproximateFirstReceiveTimestamp")) {
                 queueMessage.ApproximateFirstReceiveTimestamp =
-                    double.Parse(queueAttributes["ApproximateFirstReceiveTimestamp"]);
+                    double.Parse(queueAttributes["ApproximateFirstReceiveTimestamp"], System.Globalization.NumberStyles.Number, CultureInfo.InvariantCulture);
+            }
         }
     }
 }

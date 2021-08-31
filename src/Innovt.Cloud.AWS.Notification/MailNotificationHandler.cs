@@ -96,7 +96,7 @@ namespace Innovt.Cloud.AWS.Notification
             var policy = CreateDefaultRetryAsyncPolicy();
 
             var response = await policy.ExecuteAsync(async () =>
-                await SimpleEmailClient.SendEmailAsync(mailRequest, cancellationToken));
+                await SimpleEmailClient.SendEmailAsync(mailRequest, cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
 
             return response;
         }

@@ -11,6 +11,6 @@ namespace Innovt.Notification.Core
 {
     public interface INotificationHandleFactory
     {
-        INotificationHandler Create(NotificationMessageType type);
+        INotificationHandler Create(NotificationMessageType notificationMessageType);
     }
 }
