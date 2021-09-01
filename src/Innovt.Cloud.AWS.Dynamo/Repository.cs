@@ -384,7 +384,7 @@ namespace Innovt.Cloud.AWS.Dynamo
                 var remaining = request.PageSize;
 
                 var iterator = DynamoClient.Paginators.Scan(scanRequest).Responses.GetAsyncEnumerator(cancellationToken);
-
+                
                 //TODO: Thi code is the same in InternalQuery - Refactory it
                 do
                 {

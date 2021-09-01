@@ -11,6 +11,6 @@ namespace Innovt.Notification.Core.Builders
 {
     public interface IMessageBuilder
     {
-        NotificationMessage Build(NotificationTemplate template, NotificationRequest request);
+        NotificationMessage Build(NotificationTemplate notificationTemplate, NotificationRequest request);
     }
 }

@@ -29,23 +29,23 @@ namespace Innovt.Notification.Core.Builders
         /// <summary>
         ///     This method will build the message and parse the result of each content
         /// </summary>
-        /// <param name="template"></param>
+        /// <param name="notificationTemplate"></param>
         /// <param name="request"></param>
         /// <returns></returns>
-        public NotificationMessage Build(NotificationTemplate template, NotificationRequest request)
+        public NotificationMessage Build(NotificationTemplate notificationTemplate, NotificationRequest request)
         {
-            if (template == null) throw new ArgumentNullException(nameof(template));
+            if (notificationTemplate == null) throw new ArgumentNullException(nameof(notificationTemplate));
             if (request == null) throw new ArgumentNullException(nameof(request));
 
-            var message = new NotificationMessage(template.Type)
+            var message = new NotificationMessage(notificationTemplate.Type)
             {
-                Subject = BuildSubject(template, request),
-                From = BuildFrom(template, request),
-                To = BuildTo(template, request),
-                Body = BuildBody(template, request),
-                BccTo = BuildBccTo(template, request),
-                CcTo = BuildCcTo(template, request),
-                ReplyToAddresses = BuildReplyTo(template, request)
+                Subject = BuildSubject(notificationTemplate, request),
+                From = BuildFrom(notificationTemplate, request),
+                To = BuildTo(notificationTemplate, request),
+                Body = BuildBody(notificationTemplate, request),
+                BccTo = BuildBccTo(notificationTemplate, request),
+                CcTo = BuildCcTo(notificationTemplate, request),
+                ReplyToAddresses = BuildReplyTo(notificationTemplate, request)
             };
 
             //TODO: can be better if we parse per type maybe
@@ -66,20 +66,22 @@ namespace Innovt.Notification.Core.Builders
             };
         }
 
-        protected virtual NotificationMessageBody BuildBody(NotificationTemplate template, NotificationRequest request)
+        protected virtual NotificationMessageBody BuildBody(NotificationTemplate notificationTemplate, NotificationRequest request)
         {
+            if (notificationTemplate == null) return null;
+            
             return new()
             {
-                Content = template.Body,
-                Charset = template.Charset,
-                IsHtml = template.Type == NotificationMessageType.Email
+                Content = notificationTemplate.Body,
+                Charset = notificationTemplate.Charset,
+                IsHtml = notificationTemplate.Type == NotificationMessageType.Email
             };
         }
 
-        protected virtual List<NotificationMessageContact> BuildTo(NotificationTemplate template,
+        protected virtual List<NotificationMessageContact> BuildTo(NotificationTemplate notificationTemplate,
             NotificationRequest request)
         {
-            Check.NotNullWithBusinessException(request.To, $"Invalid ToAddress for template Id {template.Id}");
+            Check.NotNullWithBusinessException(request.To, $"Invalid ToAddress for template Id {notificationTemplate.Id}");
 
             var toList = new List<NotificationMessageContact>();
 
@@ -88,13 +90,13 @@ namespace Innovt.Notification.Core.Builders
             return toList;
         }
 
-        protected virtual NotificationMessageContact BuildFrom(NotificationTemplate template,
+        protected virtual NotificationMessageContact BuildFrom(NotificationTemplate notificationTemplate,
             NotificationRequest request)
         {
-            Check.NotNullWithBusinessException(template.FromAddress,
-                $"Invalid FromAddress for template Id {template.Id}");
+            Check.NotNullWithBusinessException(notificationTemplate.FromAddress,
+                $"Invalid FromAddress for template Id {notificationTemplate.Id}");
 
-            return new NotificationMessageContact(template.FromName, template.FromAddress);
+            return new NotificationMessageContact(notificationTemplate.FromName, notificationTemplate.FromAddress);
         }
 
         protected virtual List<NotificationMessageContact> BuildBccTo(NotificationTemplate template,
@@ -115,43 +117,51 @@ namespace Innovt.Notification.Core.Builders
             return null;
         }
 
-        protected virtual void ParseMessage(NotificationMessage message, object payLoad)
+        protected virtual void ParseMessage(NotificationMessage notificationMessage, object payLoad)
         {
-            if (parser == null)
+            if (parser == null || notificationMessage == null)
                 return;
 
-            if (message.Subject != null) message.Subject.Content = parser.Render(message.Subject.Content, payLoad);
+            if (notificationMessage.Subject?.Content != null) 
+                notificationMessage.Subject.Content = parser.Render(notificationMessage.Subject.Content, payLoad);
 
-            if (message.Body != null) message.Body.Content = parser.Render(message.Body.Content, payLoad);
+            if (notificationMessage.Body?.Content != null) 
+                notificationMessage.Body.Content = parser.Render(notificationMessage.Body.Content, payLoad);
 
-            if (message.To != null)
-                foreach (var to in message.To)
+            if (notificationMessage.To != null)
+            {
+                foreach (var to in notificationMessage.To)
                 {
                     to.Address = parser.Render(to.Address, payLoad);
 
                     if (!string.IsNullOrEmpty(to.Name))
                         to.Name = parser.Render(to.Name, payLoad);
                 }
+            }
 
-            if (message.BccTo != null)
-                foreach (var bccTo in message.BccTo)
+            if (notificationMessage.BccTo != null)
+            {
+                foreach (var bccTo in notificationMessage.BccTo)
                 {
                     bccTo.Address = parser.Render(bccTo.Address, payLoad);
 
                     if (!string.IsNullOrEmpty(bccTo.Name))
                         bccTo.Name = parser.Render(bccTo.Name, payLoad);
                 }
+            }
 
-            if (message.CcTo != null)
-                foreach (var ccTo in message.CcTo)
+            if (notificationMessage.CcTo != null)
+            {
+                foreach (var ccTo in notificationMessage.CcTo)
                 {
                     ccTo.Address = parser.Render(ccTo.Address, payLoad);
 
                     if (!string.IsNullOrEmpty(ccTo.Name))
                         ccTo.Name = parser.Render(ccTo.Name, payLoad);
                 }
+            }
 
-            if (message.Subject != null) message.Subject.Content = parser.Render(message.Subject.Content, payLoad);
+            if (notificationMessage.Subject?.Content != null) notificationMessage.Subject.Content = parser.Render(notificationMessage.Subject.Content, payLoad);
         }
     }
 }
