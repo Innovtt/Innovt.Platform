@@ -108,8 +108,6 @@ namespace Innovt.Cloud.AWS.Kinesis
         {
             if (data == null) throw new ArgumentNullException(nameof(data));
 
-            Logger.Info("Sending Domain Event", data);
-
             await InternalPublish(new List<T> {data}, cancellationToken).ConfigureAwait(false);
         }
 

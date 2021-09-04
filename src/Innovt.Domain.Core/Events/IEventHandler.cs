@@ -13,7 +13,7 @@ namespace Innovt.Domain.Core.Events
 {
     public interface IEventHandler
     {
-        Task Publish(DomainEvent @event, CancellationToken cancellationToken = default);
-        Task Publish(IEnumerable<DomainEvent> events, CancellationToken cancellationToken = default);
+        Task Publish(DomainEvent domainEvent, CancellationToken cancellationToken = default);
+        Task Publish(IEnumerable<DomainEvent> domainEvents, CancellationToken cancellationToken = default);
     }
 }
