@@ -26,7 +26,7 @@ namespace Innovt.Domain.Security
 
         public string Name { get; set; }
 
-        public string Domain { get; set; }
+        public string Scope { get; set; }
 
         public string Description { get; set; }
 

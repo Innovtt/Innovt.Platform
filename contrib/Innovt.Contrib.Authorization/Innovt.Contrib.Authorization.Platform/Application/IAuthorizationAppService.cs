@@ -13,21 +13,26 @@ namespace Innovt.Contrib.Authorization.Platform.Application
         Task<Guid> AddPermission(AddPermissionCommand command, CancellationToken cancellationToken);
 
         Task RemovePermission(RemovePermissionCommand command, CancellationToken cancellationToken);
-        
+
+        Task<IList<PermissionDto>> FindPermissionBy(PermissionFilter filter, CancellationToken cancellationToken);
+
+
+
         Task<Guid> AddRole(AddRoleCommand command, CancellationToken cancellationToken);
 
         Task RemoveRole(RemoveRoleCommand command, CancellationToken cancellationToken);
-        
+
+        Task<IList<RoleDto>> FindRoleBy(RoleFilter filter, CancellationToken cancellationToken);
+
+
+
         Task<Guid> AddGroup(AddGroupCommand command, CancellationToken cancellationToken);
 
         Task RemoveGroup(RemoveGroupCommand command, CancellationToken cancellationToken);
         
-        Task Init(InitCommand command,CancellationToken cancellationToken);
+        Task AddMaster(InitCommand command,CancellationToken cancellationToken);
 
         Task<IList<GroupDto>> FindGroupBy(GroupFilter filter, CancellationToken cancellationToken);
-
-        Task<IList<PermissionDto>> FindPermissionBy(PermissionFilter filter, CancellationToken cancellationToken);
         
-        Task<IList<RoleDto>> FindRoleBy(RoleFilter filter, CancellationToken cancellationToken);
     }
 }

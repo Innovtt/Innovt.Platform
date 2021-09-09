@@ -277,10 +277,10 @@ namespace Innovt.Cloud.AWS.S3
                 cancellationToken);
         }
 
-        public async Task<bool> FolderExistsAsync(string bucketName, string key,
-            CancellationToken cancellationToken = default)
-        {
-            using var activity = S3ActivitySource.StartActivity("FolderExistsAsync");
+        private async Task<ListObjectsV2Response> ListObjectsAsync(string bucketName, string key,
+            CancellationToken cancellationToken = default) {
+
+            using var activity = S3ActivitySource.StartActivity("ListObjectsAsync");
             activity?.SetTag("s3.bucket_name", bucketName);
             activity?.SetTag("s3.key", key);
 
@@ -291,12 +291,27 @@ namespace Innovt.Cloud.AWS.S3
                 Prefix = key
             };
 
-            var response =
+            return 
                 await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                         await S3Client.ListObjectsV2Async(request, cancellationToken).ConfigureAwait(false))
                     .ConfigureAwait(false);
+            
+        }
+
+        public async Task<bool> FolderExistsAsync(string bucketName, string key,
+            CancellationToken cancellationToken = default)
+        {
+            var response = await ListObjectsAsync(bucketName, key, cancellationToken).ConfigureAwait(false);
 
             return response.MaxKeys > 0;
+        }
+
+        public async Task<bool> FileExistsAsync(string bucketName, string key,
+         CancellationToken cancellationToken = default)
+        {
+            var response = await ListObjectsAsync(bucketName, key, cancellationToken).ConfigureAwait(false);
+            
+            return response.S3Objects?.Count > 0;
         }
 
         public bool FolderExists(string bucketName, string key)

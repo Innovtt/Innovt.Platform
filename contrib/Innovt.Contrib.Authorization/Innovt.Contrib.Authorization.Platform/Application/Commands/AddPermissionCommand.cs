@@ -9,7 +9,8 @@ namespace Innovt.Contrib.Authorization.Platform.Application.Commands
         [Required]
         public string Name { get; set; }
         [Required]
-        public string Domain { get; set; }
+        public string Scope { get; set; }
+
         [Required]
         public string Resource { get; set; }
 
@@ -23,10 +24,10 @@ namespace Innovt.Contrib.Authorization.Platform.Application.Commands
             
         }
 
-        public AddPermissionCommand(string name, string domain, string resource)
+        public AddPermissionCommand(string name, string scope, string resource)
         {
             Name = name;
-            Domain = domain;
+            Scope = scope;
             Resource = resource;
         }
     }

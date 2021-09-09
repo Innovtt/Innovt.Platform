@@ -13,9 +13,18 @@ namespace Innovt.Contrib.Authorization.Platform.Domain.Filters
 {
     public class PermissionFilter:IFilter
     {
+        public string Scope { get; set; }
+
+        public string Resource { get; set; }
+
+        public string Name { get; set; }
+
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            throw new System.NotImplementedException();
+            if (Scope == null)
+            {
+                yield return new ValidationResult("Scope is required.");
+            }
         }
     }
 }

@@ -20,15 +20,8 @@ namespace Innovt.Contrib.Authorization.Platform.Application.Commands
         [Required]
         public string Password { get; set; }
 
-
         [Required]
         public string ConfirmPassword { get; set; }
-
-        [Required]
-        public string Domain { get; set; }
-
-
-        public List<AddPermissionCommand> Permissions { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

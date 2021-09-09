@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using Amazon.DynamoDBv2.DocumentModel;
 using Innovt.Contrib.Authorization.Platform.Application;
 using Innovt.Contrib.Authorization.Platform.Application.Commands;
 using Innovt.Contrib.Authorization.Platform.Application.Dtos;

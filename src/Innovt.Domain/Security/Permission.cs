@@ -20,7 +20,7 @@ namespace Innovt.Domain.Security
         /// <summary>
         ///     Can be the area in your Controller
         /// </summary>
-        public string Domain { get; set; }
+        public string Scope { get; set; }
 
         /// <summary>
         ///     The custom name that you need to show to your customer.

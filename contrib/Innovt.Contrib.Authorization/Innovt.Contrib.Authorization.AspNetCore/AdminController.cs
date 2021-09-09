@@ -22,12 +22,13 @@ namespace Innovt.Contrib.Authorization.AspNetCore
             this.actionDescriptorProvider = actionDescriptorProvider ?? throw new ArgumentNullException(nameof(actionDescriptorProvider));
         }
 
-        [HttpPost]
+        [HttpPost("AddMaster")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> Init(InitViewModel command, CancellationToken cancellationToken =default)
+        public async Task<IActionResult> AddMaster(InitViewModel command, CancellationToken cancellationToken =default)
         {
-            await authorizationAppService.Init(command.ToCommand(actionDescriptorProvider), cancellationToken);
+            await authorizationAppService.AddMaster(command.ToCommand(actionDescriptorProvider), cancellationToken);
             
             return Ok();
         }

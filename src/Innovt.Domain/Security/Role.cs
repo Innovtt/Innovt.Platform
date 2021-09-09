@@ -28,6 +28,8 @@ namespace Innovt.Domain.Security
 
         public string Description { get; set; }
 
+        public string Scope { get; set; }
+
         public IList<Permission> Permissions { get; set; }
 
         public void AssignPermission(Permission permission)

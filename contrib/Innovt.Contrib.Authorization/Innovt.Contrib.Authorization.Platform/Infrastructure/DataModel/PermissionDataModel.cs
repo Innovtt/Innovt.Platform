@@ -6,13 +6,15 @@
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Innovt.Domain.Security;
 
 namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
 {
     internal class PermissionDataModel: DataModelBase
     {
-        public string Domain { get; set; }
+        public string Scope { get; set; }
 
         public string Name { get; set; }
 
@@ -20,17 +22,11 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
 
         public Guid PermissionId { get; set; }
 
-        public string BuildPk()
+        public PermissionDataModel()
         {
-            return $"P#{Id}";
+            EntityType = "Permission";
         }
-
-        public string BuildSk()
-        {
-            return $"R#{Resource}#N#{Name}#";
-        }
-
-
+        
         public static PermissionDataModel FromPermission(Permission permission)
         {
             if (permission is null)
@@ -39,14 +35,26 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
             return new PermissionDataModel()
             {
                 Name = permission.Name,
-                Domain = permission.Domain,
+                Scope = permission.Domain,
                 Resource = permission.Resource,
-                Sk = $"R#{permission.Resource}#N#{permission.Name}#",
-                Id = $"P#{permission.Id}"
+                PermissionId = permission.Id,                
+                Sk = $"S#{permission.Domain}",
+                Id = $"P#{permission.Resource}"
+                //Sk = $"R#{permission.Resource}#N#{permission.Name}#",
+                //Id = $"P#{permission.Id}"
             };
         }
 
-        public static Permission ToPermission(PermissionDataModel permission)
+
+        public static IList<Permission> ToDomain(IList<PermissionDataModel> permissions)
+        {
+            if (permissions is null)
+                return null;
+
+            return permissions.Select(ToDomain).ToList();
+        }
+
+        public static Permission ToDomain(PermissionDataModel permission)
         {
             if (permission is null)
                 return null;
@@ -54,7 +62,7 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
             return new Permission()
             {
                 Name = permission.Name,
-                Domain = permission.Domain,
+                Domain = permission.Scope,
                 Resource = permission.Resource,
                 Id  = permission.PermissionId
             };

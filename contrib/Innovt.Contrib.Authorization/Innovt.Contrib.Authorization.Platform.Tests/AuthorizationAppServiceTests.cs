@@ -4,7 +4,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Innovt.Contrib.Authorization.Platform.Application;
 using Innovt.Contrib.Authorization.Platform.Application.Commands;
-using Innovt.Contrib.Authorization.Platform.Domain;
 using Innovt.Core.Exceptions;
 using Innovt.Domain.Security;
 using NSubstitute;
@@ -101,13 +100,13 @@ namespace Innovt.Contrib.Authorization.Platform.Tests
 
             var command = new AddPermissionCommand(expectedPermission.Name, expectedPermission.Domain, expectedPermission.Resource);
             
-            authorizationRepositoryMock.GetPermissionsBy(command.Domain,command.Resource,null, Arg.Any<CancellationToken>())
+            authorizationRepositoryMock.GetPermissionsBy(command.Scope,command.Resource,null, Arg.Any<CancellationToken>())
                 .Returns(new List<Permission>(){expectedPermission});
 
             Assert.ThrowsAsync<BusinessException>(async () =>
                 await authorizationAppService.AddPermission(command, CancellationToken.None), "Permission already exist.");
 
-            await authorizationRepositoryMock.Received(1).GetPermissionsBy(command.Domain, command.Resource, null,
+            await authorizationRepositoryMock.Received(1).GetPermissionsBy(command.Scope, command.Resource, null,
                 Arg.Any<CancellationToken>());
         }
 
@@ -116,7 +115,7 @@ namespace Innovt.Contrib.Authorization.Platform.Tests
         {
             var command = new AddPermissionCommand("Admin", "Allow Admin users", "/users");
             
-            authorizationRepositoryMock.GetPermissionsBy(command.Domain, command.Resource, null, Arg.Any<CancellationToken>())
+            authorizationRepositoryMock.GetPermissionsBy(command.Scope, command.Resource, null, Arg.Any<CancellationToken>())
                 .Returns(default(List<Permission>));
 
             var permissionId = await authorizationAppService.AddPermission(command, CancellationToken.None);
@@ -124,7 +123,7 @@ namespace Innovt.Contrib.Authorization.Platform.Tests
             Assert.IsNotNull(permissionId);
             Assert.IsFalse(permissionId == Guid.Empty);
 
-            await authorizationRepositoryMock.Received(1).GetPermissionsBy(command.Domain, command.Resource, null,
+            await authorizationRepositoryMock.Received(1).GetPermissionsBy(command.Scope, command.Resource, null,
                 Arg.Any<CancellationToken>());
 
             await authorizationRepositoryMock.Received(1).AddPermission(Arg.Any<Permission>(),Arg.Any<CancellationToken>());
@@ -141,9 +140,9 @@ namespace Innovt.Contrib.Authorization.Platform.Tests
         [TestCase(null, "user", "user group")]
         [TestCase("Admin", "", "user group")]
         [TestCase("Admin", "user", null)]
-        public void AddGroup_ThrowException_If_Command_IsNotValid(string name, string domain, string description)
+        public void AddGroup_ThrowException_If_Command_IsNotValid(string name, string scope, string description)
         {
-            var command = new AddGroupCommand(name,domain,description);
+            var command = new AddGroupCommand(name,scope,description);
 
             Assert.ThrowsAsync<BusinessException>(async () =>
                 await authorizationAppService.AddGroup(command, CancellationToken.None));
@@ -156,13 +155,13 @@ namespace Innovt.Contrib.Authorization.Platform.Tests
 
             var command = new AddGroupCommand(group.Name, group.Domain, group.Description);
 
-            authorizationRepositoryMock.GetGroupBy(command.Name, command.Domain, Arg.Any<CancellationToken>())
+            authorizationRepositoryMock.GetGroupBy(command.Name, command.Scope, Arg.Any<CancellationToken>())
                 .Returns(group);
 
             Assert.ThrowsAsync<BusinessException>(async () =>
                 await authorizationAppService.AddGroup(command, CancellationToken.None), "Group already exist.");
 
-            await authorizationRepositoryMock.Received(1).GetGroupBy(command.Name,command.Domain,
+            await authorizationRepositoryMock.Received(1).GetGroupBy(command.Name,command.Scope,
                 Arg.Any<CancellationToken>());
         }
 
@@ -171,7 +170,7 @@ namespace Innovt.Contrib.Authorization.Platform.Tests
         {
             var command = new AddGroupCommand("Admin", "User","Group admin");
             
-            authorizationRepositoryMock.GetGroupBy(command.Name, command.Domain, Arg.Any<CancellationToken>())
+            authorizationRepositoryMock.GetGroupBy(command.Name, command.Scope, Arg.Any<CancellationToken>())
                 .Returns(default(Group));
 
             var groupId = await authorizationAppService.AddGroup(command, CancellationToken.None);
@@ -180,7 +179,7 @@ namespace Innovt.Contrib.Authorization.Platform.Tests
             Assert.IsFalse(groupId == Guid.Empty);
 
             await authorizationRepositoryMock.Received(1)
-                .GetGroupBy(command.Name, command.Domain, Arg.Any<CancellationToken>());
+                .GetGroupBy(command.Name, command.Scope, Arg.Any<CancellationToken>());
 
             await authorizationRepositoryMock.Received(1).AddGroup(Arg.Any<Group>(), Arg.Any<CancellationToken>());
         }

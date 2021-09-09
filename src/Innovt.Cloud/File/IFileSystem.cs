@@ -36,6 +36,8 @@ namespace Innovt.Cloud.File
 
         Task<bool> FolderExistsAsync(string bucketName, string key, CancellationToken cancellationToken = default);
 
+        Task<bool> FileExistsAsync(string bucketName, string key, CancellationToken cancellationToken = default);
+
 #pragma warning disable CA1055 // URI-like return values should not be strings
         string GeneratePreSignedUrl(string bucketName, string key, DateTime expiration,
 #pragma warning restore CA1055 // URI-like return values should not be strings

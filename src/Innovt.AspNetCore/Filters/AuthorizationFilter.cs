@@ -101,47 +101,49 @@ namespace Innovt.AspNetCore.Filters
         }
 
 
-        private static (string area, string controller, string action) GetActionInfo(AuthorizationFilterContext context)
+        private static (string scope, string controller, string action) GetActionInfo(AuthorizationFilterContext context)
         {
             var controllerActionDescriptor = (ControllerActionDescriptor) context.ActionDescriptor;
 
-            var area = controllerActionDescriptor.ControllerTypeInfo.GetCustomAttribute<AreaAttribute>()?.RouteValue;
+            var scope = controllerActionDescriptor.ControllerTypeInfo.GetCustomAttribute<AreaAttribute>()?.RouteValue;
 
             var controller = controllerActionDescriptor.ControllerName;
 
             var action = controllerActionDescriptor.ActionName;
 
-            return (area, controller, action);
+            return (scope, controller, action);
         }
 
 
-        private async Task<bool> HasPermission(string userId, string module, string controller, string action)
+        private async Task<bool> HasPermission(string userId, string scope, string controller, string action)
         {
-            var userPermissions = await securityRepository.GetUserPermissions(userId).ConfigureAwait(false);
-
-            if (!userPermissions.Any())
-                return false;
-
-            if (module.IsNotNullOrEmpty())
-            {
-                //permission to full module
-                var hasModulePermission = userPermissions.Any(p => p.Domain == module && p.Resource == $"{module}/*");
-
-                if (hasModulePermission)
-                    return true;
-            }
-
-            //permission to full controller
-            var hasControllerPermission = userPermissions.Any(p => p.Resource == $"{controller}/*");
-
-            if (hasControllerPermission)
-                return true;
+            var userPermissions = await securityRepository.GetUser(userId,scope).ConfigureAwait(false);
+            //.GetUserPermissions(userId).ConfigureAwait(false);
 
 
-            //permission to specific action
-            var hasActionPermission = userPermissions.Any(p => p.Resource == $"{controller}/{action}");
+            return true;
+            //if (!userPermissions.Any())
+            //    return false;
 
-            return hasActionPermission;
+            //if (scope.IsNotNullOrEmpty())
+            //{
+            //    //permission to full module
+            //    var hasModulePermission = userPermissions.Any(p => p.Scope == scope && p.Resource == $"{scope}/*");
+
+            //    if (hasModulePermission)
+            //        return true;
+            //}
+
+            ////permission to full controller
+            //var hasControllerPermission = userPermissions.Any(p => p.Resource == $"{controller}/*");
+
+            //if (hasControllerPermission)
+            //    return true;
+
+            ////permission to specific action
+            //var hasActionPermission = userPermissions.Any(p => p.Resource == $"{controller}/{action}");
+
+            //return hasActionPermission;
         }
     }
 }

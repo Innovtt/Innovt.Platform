@@ -13,6 +13,8 @@ namespace Innovt.Contrib.Authorization.Platform.Domain.Filters
 {
     public class GroupFilter:IFilter
     {
+        public string Scope { get; set; }
+
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             throw new System.NotImplementedException();

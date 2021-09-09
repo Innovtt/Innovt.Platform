@@ -9,11 +9,12 @@ namespace Innovt.Contrib.Authorization.Platform.Application.Commands
         [Required]
         public string Name { get; set; }
         
-        [Required]
-        public string Domain { get; set; }
 
         [Required]
         public string Description { get; set; }
+
+        [Required]
+        public string Scope { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
@@ -26,11 +27,11 @@ namespace Innovt.Contrib.Authorization.Platform.Application.Commands
         }
 
 
-        public AddGroupCommand(string name, string domain, string description)
+        public AddGroupCommand(string name,string scope,string description)
         {
-            Name = name;
-            Domain = domain;
+            Name = name;            
             Description = description;
+            Scope = scope;
         }
     }
 }

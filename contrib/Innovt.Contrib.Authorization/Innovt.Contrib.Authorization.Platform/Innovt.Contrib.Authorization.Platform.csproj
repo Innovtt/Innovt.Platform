@@ -6,10 +6,10 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.0.50" />
-    <PackageReference Include="Innovt.Cloud.AWS.Dynamo" Version="5.0.15" />
-    <PackageReference Include="Innovt.Domain" Version="5.0.15" />
-    <PackageReference Include="Innovt.CrossCutting.Log.Serilog" Version="5.0.15" />    
+    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.0.62" />
+    <PackageReference Include="Innovt.Cloud.AWS.Dynamo" Version="5.0.19" />
+    <PackageReference Include="Innovt.Domain" Version="5.0.19" />
+    <PackageReference Include="Innovt.CrossCutting.Log.Serilog" Version="5.0.19" />    
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

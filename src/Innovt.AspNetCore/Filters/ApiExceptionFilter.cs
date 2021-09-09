@@ -8,6 +8,7 @@
 using System;
 using Innovt.AspNetCore.Model;
 using Innovt.AspNetCore.Resources;
+using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,13 +20,16 @@ namespace Innovt.AspNetCore.Filters
     [AttributeUsage(AttributeTargets.All)]
     public sealed class ApiExceptionFilter : ExceptionFilterAttribute
     {
-        public ApiExceptionFilter(IStringLocalizer<IExceptionResource> stringLocalizer)
+        public ILogger Logger { get; private set; }
+        public ApiExceptionFilter(ILogger logger,IStringLocalizer<IExceptionResource> stringLocalizer)
         {
+            this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
             StringLocalizer = stringLocalizer ?? throw new ArgumentNullException(nameof(stringLocalizer));
         }
 
-        public ApiExceptionFilter()
+        public ApiExceptionFilter(ILogger logger)
         {
+            this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         public IStringLocalizer<IExceptionResource> StringLocalizer { get; }
@@ -58,7 +62,8 @@ namespace Innovt.AspNetCore.Filters
                 result.Code = $"{StatusCodes.Status500InternalServerError}";
                 result.Detail = $"Server Error: {baseException.Message}. Check your backend log for more detail.";
                 context.Result = new ObjectResult(result) { StatusCode = StatusCodes.Status500InternalServerError };
+                Logger.Error(context.Exception, "InternalServerError");
             }
-        }
+        }   
     }
 }

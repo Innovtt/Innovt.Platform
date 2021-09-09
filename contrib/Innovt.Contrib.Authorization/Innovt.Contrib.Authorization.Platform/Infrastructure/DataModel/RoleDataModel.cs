@@ -16,13 +16,20 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
 
         public string Description { get; set; }
 
+        public string Scope { get; set; }
+
         public DateTime CreatedAt { get; set; }
 
         public Guid RoleId { get; set; }
 
         // public IList<Permission> Permissions { get; set; }
 
-        public static Role ToRole(RoleDataModel roleDataModel)
+        public RoleDataModel()
+        {
+            EntityType = "Role";
+        }
+
+        public static Role ToDomain(RoleDataModel roleDataModel)
         {
             if (roleDataModel is null)
                 return null;
@@ -38,7 +45,7 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
 
 
 
-        public static RoleDataModel FromRole(Role role)
+        public static RoleDataModel FromDomain(Role role)
        {
             if (role is null)
                 return null;
@@ -46,9 +53,12 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
             return new RoleDataModel()
             {
                 Name = role.Name,
+                Scope = role.Description,
                 Description =  role.Description,
                 CreatedAt = role.CreatedAt.GetValueOrDefault().UtcDateTime, 
-                RoleId = role.Id  
+                RoleId = role.Id,
+                Id = "",
+                Sk = ""
             };
         }
     }

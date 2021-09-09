@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Reflection;
-using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
 using Innovt.Contrib.Authorization.Platform.Application.Commands;
 using Innovt.Contrib.Authorization.Platform.Application.Dtos;
-using Innovt.Contrib.Authorization.Platform.Domain;
 using Innovt.Contrib.Authorization.Platform.Domain.Filters;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
@@ -33,14 +28,14 @@ namespace Innovt.Contrib.Authorization.Platform.Application
             
             command.EnsureIsValid();
 
-            var persistedPermission = await authorizationRepository.GetPermissionsBy(command.Domain, command.Resource, cancellationToken: cancellationToken).ConfigureAwait(false);
+            var persistedPermission = await authorizationRepository.GetPermissionsBy(command.Scope, command.Resource, cancellationToken: cancellationToken).ConfigureAwait(false);
 
             if (persistedPermission?.Count>0)
                 throw new BusinessException(Messages.PermissionAlreadyExist);
             
             var permission = new Permission()
             {
-                Domain = command.Domain,
+                Domain = command.Scope,
                 Name = command.Name,
                 Resource = command.Resource
             };
@@ -49,7 +44,6 @@ namespace Innovt.Contrib.Authorization.Platform.Application
             
             return permission.Id;
         }
-
         public async Task RemovePermission(RemovePermissionCommand command, CancellationToken cancellationToken)
         {
             if (command == null) throw new ArgumentNullException(nameof(command));
@@ -106,7 +100,7 @@ namespace Innovt.Contrib.Authorization.Platform.Application
 
             command.EnsureIsValid();
 
-            var groupPersisted = await authorizationRepository.GetGroupBy(command.Name,command.Domain, cancellationToken).ConfigureAwait(false);
+            var groupPersisted = await authorizationRepository.GetGroupBy(command.Name,command.Scope, cancellationToken).ConfigureAwait(false);
 
             if (groupPersisted is not null)
                 throw new BusinessException(Messages.GroupAlreadyExist);
@@ -115,7 +109,7 @@ namespace Innovt.Contrib.Authorization.Platform.Application
             {
                 Name = command.Name,
                 Description = command.Description,
-                Domain = command.Domain
+                Domain = command.Scope
             };
 
             await authorizationRepository.AddGroup(group, cancellationToken).ConfigureAwait(false);
@@ -137,16 +131,11 @@ namespace Innovt.Contrib.Authorization.Platform.Application
             await authorizationRepository.RemoveGroup(group, cancellationToken).ConfigureAwait(false);
         }
 
-
-        private async Task<AdminUser> InitializeAdminUser(InitCommand command, CancellationToken cancellationToken = default)
+        public async Task AddMaster(InitCommand command, CancellationToken cancellationToken = default)
         {
-            if (command is null)
-            {
-                throw new ArgumentNullException(nameof(command));
-            }
+            if (command is null)throw new ArgumentNullException(nameof(command));            
 
             var adminUser = await authorizationRepository.GetAdminUser(new UserFilter(command.Email), cancellationToken).ConfigureAwait(false);
-
 
             if (adminUser != null && command.Password.Md5Hash() != adminUser.PasswordHash)
             {
@@ -166,73 +155,7 @@ namespace Innovt.Contrib.Authorization.Platform.Application
 
             adminUser.RegisterAccess();
 
-            await authorizationRepository.Save(adminUser, cancellationToken).ConfigureAwait(false);
-
-            return adminUser;
-        }
-
-      
-        //Inject Controllers
-        //Create a Group Admin
-        //Create a Role ALL
-        //Add all permissions to specific resource
-        //O cara chama o init. ele pode ter um controller init 
-        public async Task Init(InitCommand command, CancellationToken cancellationToken= default)
-        {
-            command.EnsureIsValid();
-            
-            try
-            {
-                var adminUser = await InitializeAdminUser(command, cancellationToken).ConfigureAwait(false);
-                       
-                
-                //Add permissions 
-
-
-                //add Group/
-
-
-                //Add Role
-                //group
-                //var roleAll = new Role() { Name = "All", Description = "All", CreatedAt = DateTimeOffset.UtcNow, };
-
-                
-
-
-                var group = new Group() { Domain = command.Domain, CreatedAt = DateTime.UtcNow, Description = "Admin", Name = "Admin" };
-
-                
-
-                //group.AddRole();
-
-                await authorizationRepository.AddGroup(group, cancellationToken).ConfigureAwait(false);
-
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-         
-
-            //var user =             
-
-
-
-
-
-            return;
-
-        }
-
-        /// <summary>
-        /// Initialize a module authorization. DataBase, First User Etc.
-        /// </summary>
-        /// <param name="moduleName"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
-        public Task Init(string moduleName, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
+            await authorizationRepository.Save(adminUser, cancellationToken).ConfigureAwait(false);            
         }
 
         public Task<IList<GroupDto>> FindGroupBy(GroupFilter filter, CancellationToken cancellationToken)
@@ -240,9 +163,15 @@ namespace Innovt.Contrib.Authorization.Platform.Application
             throw new NotImplementedException();
         }
 
-        public Task<IList<PermissionDto>> FindPermissionBy(PermissionFilter filter, CancellationToken cancellationToken)
+        public async Task<IList<PermissionDto>> FindPermissionBy(PermissionFilter filter, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            if (filter is null) throw new ArgumentNullException(nameof(filter));            
+
+            filter.EnsureIsValid();
+
+            var a =  await authorizationRepository.GetPermissionsBy(filter.Scope, filter.Resource, filter.Name, cancellationToken).ConfigureAwait(false);
+
+            return null;
         }
 
         public Task<IList<RoleDto>> FindRoleBy(RoleFilter filter, CancellationToken cancellationToken)

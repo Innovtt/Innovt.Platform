@@ -17,9 +17,7 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
 
         public string Description { get; set; }
 
-
-        public string Domain { get; set; }
-
+        public string Scope { get; set; }
 
         public Guid GroupId { get; set; }
 
@@ -40,7 +38,7 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
             return new GroupDataModel()
             {
                 Name = group.Name,
-                Domain = group.Domain,
+                Scope = group.Domain,
                 Description = group.Description,                
                 Id = $"G#{group.Name}",
                 Sk = $"G#{group.Name}",
@@ -58,7 +56,7 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
                 Description = group.Description,                
                 Id = group.GroupId,
                 CreatedAt = group.CreatedAt,
-                Domain = group.Domain,
+                Domain = group.Scope,
             };
         }
     }
