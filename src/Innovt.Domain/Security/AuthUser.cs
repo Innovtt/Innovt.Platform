@@ -22,6 +22,8 @@ namespace Innovt.Domain.Security
 
         public string DomainId { get; set; }
 
-        public IList<Group> Permisions { get; set; }     
+        public string Name { get; set; }
+
+        public IList<Permission> Permissions { get; set; }     
     }
 }

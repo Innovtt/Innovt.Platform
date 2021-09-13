@@ -218,6 +218,14 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure
             await base.AddAsync(user, cancellationToken).ConfigureAwait(false);
         }
 
-    
+        Task<IList<Role>> IAuthorizationRepository.GetRoleBy(RoleFilter roleFilter, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<AuthUser> GetUser(string userId, string scope = null, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

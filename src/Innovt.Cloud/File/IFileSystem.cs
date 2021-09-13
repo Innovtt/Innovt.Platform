@@ -17,7 +17,7 @@ namespace Innovt.Cloud.File
     public interface IFileSystem
     {
         Task<bool> CopyObject(string sourceBucket, string sourceKey, string destinationBucket, string destinationKey,
-            string serverSideEncryptionMethod = null, CancellationToken cancellationToken = default);
+            string serverSideEncryptionMethod = null, string fileAcl=null, CancellationToken cancellationToken = default);
 
         void Download(string bucketName, string fileName, string destination);
 
@@ -53,32 +53,32 @@ namespace Innovt.Cloud.File
             CancellationToken cancellationToken = default);
 
         string PutObject(string bucketName, Stream stream, string fileName, string contentType = null,
-            string serverSideEncryptionMethod = null);
+            string serverSideEncryptionMethod = null, string fileAcl = null);
 
         string PutObject(string bucketName, string filePath, string contentType = null,
-            string serverSideEncryptionMethod = null);
+            string serverSideEncryptionMethod = null, string fileAcl = null);
 
         Task<string> PutObjectAsync(string bucketName, Stream stream, string fileName, string contentType = null,
-            string serverSideEncryptionMethod = null, CancellationToken cancellationToken = default);
+            string serverSideEncryptionMethod = null, string fileAcl = null, CancellationToken cancellationToken = default);
 
         Task<string> PutObjectAsync(string bucketName, string filePath, string contentType = null,
-            string serverSideEncryptionMethod = null, CancellationToken cancellationToken = default);
+            string serverSideEncryptionMethod = null, string fileAcl = null, CancellationToken cancellationToken = default);
 
         string Upload(string bucketName, Stream stream, string fileName,
-            IList<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null);
+            IList<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null, string fileAcl = null);
 
         string Upload(string bucketName, string filePath,
-            IList<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null);
+            IList<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null, string fileAcl = null);
 
         Task<string> UploadAsync(string bucketName, Stream stream, string fileName,
-            IList<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null,
+            IList<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null, string fileAcl = null,
             CancellationToken cancellationToken = default);
 
         Task<string> UploadAsync(string bucketName, string filePath,
-            IList<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null,
+            IList<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null, string fileAcl = null,
             CancellationToken cancellationToken = default);
 
-        Task UploadDirectoryAsync(string bucketName, string directory, string serverSideEncryptionMethod = null,
+        Task UploadDirectoryAsync(string bucketName, string directory, string serverSideEncryptionMethod = null, string fileAcl = null,
             CancellationToken cancellationToken = default);
 
         Task<bool> DeleteObjectAsync(string bucketName, string key, CancellationToken cancellationToken = default);

@@ -12,10 +12,7 @@ using Innovt.Core.Exceptions;
 using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Security
-{
-    /// <summary>
-    ///     Represents an aggregator of Roles
-    /// </summary>
+{   
     public class Group : Entity<Guid>
     {
         public Group()
@@ -25,9 +22,7 @@ namespace Innovt.Domain.Security
         }
 
         public string Name { get; set; }
-
-        public string Scope { get; set; }
-
+        
         public string Description { get; set; }
 
         public IList<Role> Roles { get; private set; }
@@ -60,8 +55,7 @@ namespace Innovt.Domain.Security
 
             Roles.Remove(role);
         }
-
-
+        
         public void AddUser(string userId)
         {
             if (userId == null) throw new ArgumentNullException(nameof(userId));

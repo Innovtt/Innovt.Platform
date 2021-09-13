@@ -7,25 +7,22 @@
 
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Innovt.Core.Cqrs.Commands;
+using Innovt.Core.Cqrs.Queries;
 
-namespace Innovt.Contrib.Authorization.Platform.Application.Commands
+namespace Innovt.Contrib.Authorization.Platform.Domain.Filters
 {
-    public class InitCommand: ICommand
+    public class UserByIdFilter : IFilter
     {
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; }
-
-        [Required]
-        public string Password { get; set; }
-
-        [Required]
-        public string ConfirmPassword { get; set; }
+        public string Id { get; set; }
+        
+        public UserByIdFilter(string id)
+        {
+            Id = id ?? throw new System.ArgumentNullException(nameof(id));            
+        }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            return  new List<ValidationResult>();
+            return new List<ValidationResult>();
         }
     }
 }

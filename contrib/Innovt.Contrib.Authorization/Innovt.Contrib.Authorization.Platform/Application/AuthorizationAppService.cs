@@ -35,7 +35,7 @@ namespace Innovt.Contrib.Authorization.Platform.Application
             
             var permission = new Permission()
             {
-                Domain = command.Scope,
+                Scope = command.Scope,
                 Name = command.Name,
                 Resource = command.Resource
             };
@@ -109,7 +109,6 @@ namespace Innovt.Contrib.Authorization.Platform.Application
             {
                 Name = command.Name,
                 Description = command.Description,
-                Domain = command.Scope
             };
 
             await authorizationRepository.AddGroup(group, cancellationToken).ConfigureAwait(false);
@@ -131,7 +130,7 @@ namespace Innovt.Contrib.Authorization.Platform.Application
             await authorizationRepository.RemoveGroup(group, cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task AddMaster(InitCommand command, CancellationToken cancellationToken = default)
+        public async Task RegisterAdmin(RegisterAdminCommand command, CancellationToken cancellationToken = default)
         {
             if (command is null)throw new ArgumentNullException(nameof(command));            
 
@@ -175,6 +174,27 @@ namespace Innovt.Contrib.Authorization.Platform.Application
         }
 
         public Task<IList<RoleDto>> FindRoleBy(RoleFilter filter, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task AddUser(AddUserCommand command, CancellationToken cancellationToken)
+        {
+            if (command is null) throw new ArgumentNullException(nameof(command));
+
+            command.EnsureIsValid();
+
+            var user = await authorizationRepository.GetAdminUser(new UserFilter(command.Email), cancellationToken).ConfigureAwait(false);
+
+
+
+            await authorizationRepository.GetAdminUser(new UserFilter(command.Email), cancellationToken).ConfigureAwait(false);
+
+
+
+        }
+
+        public Task RemoveUser(RemoveUserCommand command, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

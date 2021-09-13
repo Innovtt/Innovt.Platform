@@ -10,23 +10,34 @@ namespace Innovt.Contrib.Authorization.AspNetCore
 {
     [ApiController]
     [Route("Authorization/[controller]")]
-    public class AdminController : ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly IAuthorizationAppService authorizationAppService;
 
-        public AdminController(IAuthorizationAppService authorizationAppService)
+        public UserController(IAuthorizationAppService authorizationAppService)
         {   
             this.authorizationAppService = authorizationAppService ?? throw new ArgumentNullException(nameof(authorizationAppService));
         }
 
-        [HttpPost("RegisterAdmin")]
+        [HttpPost("AddUser")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> RegisterAdmin(RegisterAdminCommand command, CancellationToken cancellationToken =default)
+        public async Task<IActionResult> AddUser(AddUserCommand command, CancellationToken cancellationToken =default)
         {
-            await authorizationAppService.RegisterAdmin(command, cancellationToken);
+            await authorizationAppService.AddUser(command, cancellationToken);
             
+            return Ok();
+        }
+        
+        [HttpDelete("RemoveUser")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> RemoveUser(RemoveUserCommand command, CancellationToken cancellationToken = default)
+        {
+            await authorizationAppService.RemoveUser(command, cancellationToken);
+
             return Ok();
         }
     }

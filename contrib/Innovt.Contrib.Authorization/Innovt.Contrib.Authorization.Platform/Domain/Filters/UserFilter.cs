@@ -14,7 +14,6 @@ namespace Innovt.Contrib.Authorization.Platform.Domain.Filters
     public class UserFilter : IFilter
     {
         public string Email { get; set; }
-
         public UserFilter(string email)
         {
             Email = email ?? throw new System.ArgumentNullException(nameof(email));            

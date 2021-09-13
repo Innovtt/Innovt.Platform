@@ -18,7 +18,7 @@ namespace Innovt.Domain.Security
         }
 
         /// <summary>
-        ///     Can be the area in your Controller
+        /// Can be the area in your Controller
         /// </summary>
         public string Scope { get; set; }
 

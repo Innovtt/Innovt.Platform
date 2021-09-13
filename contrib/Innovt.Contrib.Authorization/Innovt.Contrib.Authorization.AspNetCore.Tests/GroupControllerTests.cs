@@ -1,15 +1,14 @@
-using Innovt.Contrib.Authorization.AspNetCore;
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Innovt.Contrib.Authorization.Platform.Application;
 using Innovt.Contrib.Authorization.Platform.Application.Dtos;
 using Innovt.Contrib.Authorization.Platform.Domain.Filters;
 using NSubstitute;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace Antecipa.Onboarding.Api.Tests
+namespace Innovt.Contrib.Authorization.AspNetCore.Tests
 {
     [TestFixture()]    
     public class GroupControllerTests

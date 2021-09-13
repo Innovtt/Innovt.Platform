@@ -25,6 +25,16 @@ namespace Innovt.Contrib.Authorization.Platform.Tests
             authorizationAppService = new AuthorizationAppService(authorizationRepositoryMock);
         }
 
+
+
+        [Test]
+        public void AddUser_ThrowException_If_CommandIsNUll()
+        {
+            Assert.ThrowsAsync<ArgumentNullException>(async () =>
+                await authorizationAppService.AddUser(null, CancellationToken.None));
+        }
+
+
         [Test]
         public void AddRole_ThrowException_If_CommandIsNUll()
         {

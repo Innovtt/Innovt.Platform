@@ -1,12 +1,11 @@
+using System.Threading.Tasks;
 using Innovt.Cloud.AWS.Configuration;
-using Innovt.Contrib.Authorization.AspNetCore;
 using Innovt.Contrib.Authorization.Platform.Application;
 using Innovt.Contrib.Authorization.Platform.Application.Commands;
 using Innovt.Contrib.Authorization.Platform.Infrastructure;
 using NUnit.Framework;
-using System.Threading.Tasks;
 
-namespace Antecipa.Onboarding.Api.Tests
+namespace Innovt.Contrib.Authorization.AspNetCore.Tests
 {
     [TestFixture()]    
     public class RoleControllerTests
