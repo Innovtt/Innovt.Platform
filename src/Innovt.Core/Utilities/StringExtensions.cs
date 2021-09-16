@@ -257,22 +257,38 @@ namespace Innovt.Core.Utilities
             if (str.IsNullOrEmpty())
                 return str;
 
-            var result = str.RemoveAccents().TrimStart().TrimEnd();
+            var result = str.RemoveAccents().RemoveSpecialCharacter().TrimStart().TrimEnd();
 
             return result;
+        }
+
+        public static string RemoveSpecialCharacter(this string str)
+        {
+            if (str.IsNullOrEmpty())
+                return str;
+            
+            return Regex.Replace(str, "[^0-9a-zA-Z]+", " ");
         }
 
         public static string RemoveAccents(this string str)
         {
             if (str.IsNullOrEmpty())
                 return str;
+            
+            //code from Web: https://www.codegrepper.com/code-examples/csharp/c%23+remove+accents
+            var sbReturn = new StringBuilder();
+            var arrayText = str.Normalize(NormalizationForm.FormD).ToCharArray();
+            foreach (var letter in arrayText)
+            {
+                if (CharUnicodeInfo.GetUnicodeCategory(letter) != UnicodeCategory.NonSpacingMark)
+                {
+                    sbReturn.Append(letter);
+                }
+            }
 
-            var bytes = Encoding.GetEncoding(28591).GetBytes(str);
-
-            return Encoding.UTF8.GetString(bytes);
+            return sbReturn.ToString();
         }
-
-
+        
         public static string FormatCpf(this string cpf)
         {
             if (cpf.IsNullOrEmpty())

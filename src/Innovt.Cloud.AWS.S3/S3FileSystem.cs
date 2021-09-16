@@ -244,8 +244,8 @@ namespace Innovt.Cloud.AWS.S3
             return GetObjectUrl(bucketName, fileName);
         }
 
-        public string Upload(string bucketName, string filePath,
-            IList<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null, string fileAcl = null)
+        public string Upload(string bucketName, string filePath, IList<KeyValuePair<string, string>> metadata = null, 
+            string serverSideEncryptionMethod = null, string fileAcl = null)
         {
             var fileName = Path.GetFileName(filePath);
 

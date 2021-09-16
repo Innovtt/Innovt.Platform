@@ -109,6 +109,12 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure
         {
             throw new NotImplementedException();
         }
+
+        public Task<AuthUser> GetUserById(UserByIdFilter filter, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<Role> GetRoleBy(RoleFilter roleFilter, CancellationToken cancellationToken)
         {
             if (roleFilter is null) throw new ArgumentNullException(nameof(roleFilter));
@@ -121,7 +127,7 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure
 
             var role = await base.QueryAsync<RoleDataModel>(request, cancellationToken).ConfigureAwait(false);
 
-            return RoleDataModel.ToDomain(role);
+            return null;//RoleDataModel.ToDomain(role);
         }
 
 

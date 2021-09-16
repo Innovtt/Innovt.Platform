@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Contrib.Authorizatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Contrib.Authorization.Platform.Tests", "Innovt.Contrib.Authorization.Platform.Tests\Innovt.Contrib.Authorization.Platform.Tests.csproj", "{A06B5687-534E-489D-8DA6-53785FB86C47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSample", "AppSample\AppSample.csproj", "{F28590E2-5153-467F-919A-1F77BAE0ABBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppSample", "AppSample\AppSample.csproj", "{F28590E2-5153-467F-919A-1F77BAE0ABBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innovt.Contrib.Authorization.AspNetCore.Tests", "Innovt.Contrib.Authorization.AspNetCore.Tests\Innovt.Contrib.Authorization.AspNetCore.Tests.csproj", "{1BC19A22-EF62-4E52-ABB8-4E82640699E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Contrib.Authorization.AspNetCore.Tests", "Innovt.Contrib.Authorization.AspNetCore.Tests\Innovt.Contrib.Authorization.AspNetCore.Tests.csproj", "{1BC19A22-EF62-4E52-ABB8-4E82640699E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

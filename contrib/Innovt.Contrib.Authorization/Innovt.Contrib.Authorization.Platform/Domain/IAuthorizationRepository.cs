@@ -11,7 +11,6 @@ namespace Innovt.Contrib.Authorization.Platform.Domain
     {
         Task Save(AdminUser adminUser, CancellationToken cancellationToken);
 
-
         Task<AuthUser> GetUserById(UserByIdFilter filter, CancellationToken cancellationToken);
 
 
@@ -52,8 +51,5 @@ namespace Innovt.Contrib.Authorization.Platform.Domain
 
         Task<IList<Permission>> GetPermissionsBy(string scope = null, string resource = null, string name = null,CancellationToken cancellationToken = default);
 
-        
-
-        
     }
 }

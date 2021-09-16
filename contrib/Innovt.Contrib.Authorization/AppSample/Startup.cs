@@ -13,6 +13,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace AppSample
 {
@@ -28,13 +31,31 @@ namespace AppSample
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AppSample", Version = "v1" });
             });
+            
+            services.AddAuthentication("Token");
 
-            services.AddInnovtAuthorization("Sample");
+            services.AddAuthorization();
+
+
+            services.AddMvc(s =>
+            {
+                var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+
+                s.Filters.Add(new AuthorizeFilter(policy));
+
+                s.Filters.Add(typeof(AuthorizationFilter));
+            });
+
+            //services.AddScoped<IAuthorizationService, SampleAuthorizationService>();
+
+            //services.AddScoped<IdentityUserRole, SampleAuthorizationService>();
+
+            //services.AddInnovtAuthorization("Sample");
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +72,7 @@ namespace AppSample
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

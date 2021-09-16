@@ -106,9 +106,9 @@ namespace Innovt.Contrib.Authorization.Platform.Tests
         [Test]
         public async Task AddPermission_Throw_Exception_If_Permission_Already_Exist()
         {
-            var expectedPermission = new Permission() { Name = "AllowGet", Domain = "user", Resource = "/user" };
+            var expectedPermission = new Permission() { Name = "AllowGet", Scope = "user", Resource = "/user" };
 
-            var command = new AddPermissionCommand(expectedPermission.Name, expectedPermission.Domain, expectedPermission.Resource);
+            var command = new AddPermissionCommand(expectedPermission.Name, expectedPermission.Scope, expectedPermission.Resource);
             
             authorizationRepositoryMock.GetPermissionsBy(command.Scope,command.Resource,null, Arg.Any<CancellationToken>())
                 .Returns(new List<Permission>(){expectedPermission});
@@ -161,9 +161,9 @@ namespace Innovt.Contrib.Authorization.Platform.Tests
         [Test]
         public async Task AddGroup_Throw_Exception_If_Group_Already_Exist()
         {
-            var group = new Group() { Name = "AllowGet", Domain = "user", Description = "Group of users"};
+            var group = new Group() { Name = "AllowGet", Scope = "user", Description = "Group of users"};
 
-            var command = new AddGroupCommand(group.Name, group.Domain, group.Description);
+            var command = new AddGroupCommand(group.Name, group.Scope, group.Description);
 
             authorizationRepositoryMock.GetGroupBy(command.Name, command.Scope, Arg.Any<CancellationToken>())
                 .Returns(group);

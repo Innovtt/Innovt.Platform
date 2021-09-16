@@ -35,10 +35,10 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
             return new PermissionDataModel()
             {
                 Name = permission.Name,
-                Scope = permission.Domain,
+                Scope = permission.Scope,
                 Resource = permission.Resource,
                 PermissionId = permission.Id,                
-                Sk = $"S#{permission.Domain}",
+                Sk = $"S#{permission.Scope}",
                 Id = $"P#{permission.Resource}"
                 //Sk = $"R#{permission.Resource}#N#{permission.Name}#",
                 //Id = $"P#{permission.Id}"
@@ -62,7 +62,7 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
             return new Permission()
             {
                 Name = permission.Name,
-                Domain = permission.Scope,
+                Scope = permission.Scope,
                 Resource = permission.Resource,
                 Id  = permission.PermissionId
             };

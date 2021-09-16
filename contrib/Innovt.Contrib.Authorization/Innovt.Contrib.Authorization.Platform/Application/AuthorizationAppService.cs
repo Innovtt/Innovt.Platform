@@ -184,14 +184,9 @@ namespace Innovt.Contrib.Authorization.Platform.Application
 
             command.EnsureIsValid();
 
-            var user = await authorizationRepository.GetAdminUser(new UserFilter(command.Email), cancellationToken).ConfigureAwait(false);
-
-
-
-            await authorizationRepository.GetAdminUser(new UserFilter(command.Email), cancellationToken).ConfigureAwait(false);
-
-
-
+            var user = await authorizationRepository.GetUser(command.Id,null,cancellationToken).ConfigureAwait(false);
+            
+            //await authorizationRepository.GetAdminUser(new UserFilter(command.Id), cancellationToken).ConfigureAwait(false);
         }
 
         public Task RemoveUser(RemoveUserCommand command, CancellationToken cancellationToken)

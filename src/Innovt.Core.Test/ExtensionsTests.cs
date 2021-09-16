@@ -13,12 +13,15 @@ namespace Innovt.Core.Test
         [Test]
         public void CheckRemoveAccents()
         {
-            var guid = Guid.NewGuid();
+            var actual = ("Hoje é o dia mais feliz da minha vida. Espero que isso funcione. " +
+                          "Esse código foi baixado da WEB e ainda não tenho como testar sem´aspas '").NormalizeText();
 
-            var strGuid = guid.ToString().Replace("-", "");
+            var expected = "Hoje e o dia mais feliz da minha vida Espero que isso funcione Esse codigo foi baixado da WEB e ainda nao tenho como testar sem aspas";
 
+            
 
-           Assert.IsNull(strGuid);
+           Assert.IsTrue(actual.Equals(expected, StringComparison.InvariantCultureIgnoreCase));
+
         }
 
 
