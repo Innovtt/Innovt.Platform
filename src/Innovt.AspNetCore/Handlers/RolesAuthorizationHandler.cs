@@ -18,10 +18,7 @@ using Innovt.Core.Utilities;
 using Innovt.Domain.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.AspNetCore.Mvc.Controllers;
-using Microsoft.AspNetCore.Mvc.Filters;
+
 
 namespace Innovt.AspNetCore.Handlers
 {
@@ -84,9 +81,9 @@ namespace Innovt.AspNetCore.Handlers
                 return;
             }
 
-            var roles = user.Groups.SelectMany(g => g.Roles).ToList();
+            var roles = user.Groups?.SelectMany(g => g.Roles).ToList();
             
-            if (roles.IsNullOrEmpty())
+            if (roles is null)
             {
                 Fail(context, $"User of id {userId} has no roles defined.");
                 return;
