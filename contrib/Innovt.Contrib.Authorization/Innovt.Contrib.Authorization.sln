@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppSample", "AppSample\AppS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Contrib.Authorization.AspNetCore.Tests", "Innovt.Contrib.Authorization.AspNetCore.Tests\Innovt.Contrib.Authorization.AspNetCore.Tests.csproj", "{1BC19A22-EF62-4E52-ABB8-4E82640699E0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innovt.Contrib.AuthorizationRoles.AspNetCore", "Innovt.Contrib.AuthorizationRoles.AspNetCore\Innovt.Contrib.AuthorizationRoles.AspNetCore.csproj", "{DC21582A-C06D-4513-ADF4-CFB07C06E95E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innovt.Contrib.AuthorizationRoles.AspNetCore.Tests", "Innovt.Contrib.AuthorizationRoles.AspNetCore.Tests\Innovt.Contrib.AuthorizationRoles.AspNetCore.Tests.csproj", "{12EBDBBA-EF19-4533-BC8C-9DB6E7B475B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{1BC19A22-EF62-4E52-ABB8-4E82640699E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BC19A22-EF62-4E52-ABB8-4E82640699E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BC19A22-EF62-4E52-ABB8-4E82640699E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC21582A-C06D-4513-ADF4-CFB07C06E95E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC21582A-C06D-4513-ADF4-CFB07C06E95E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC21582A-C06D-4513-ADF4-CFB07C06E95E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC21582A-C06D-4513-ADF4-CFB07C06E95E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12EBDBBA-EF19-4533-BC8C-9DB6E7B475B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12EBDBBA-EF19-4533-BC8C-9DB6E7B475B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12EBDBBA-EF19-4533-BC8C-9DB6E7B475B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12EBDBBA-EF19-4533-BC8C-9DB6E7B475B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,9 +1,7 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
-// Project: Innovt.Authorization.Platform
-// Solution: Innovt.Platform
-// Date: 2021-05-18
-// Contact: michel@innovt.com.br or michelmob@gmail.com
+﻿// Company: Antecipa
+// Project: Innovt.Contrib.Authorization.Platform
+// Solution: Innovt.Contrib.Authorization
+// Date: 2021-06-02
 
 using System;
 using Innovt.Cloud.AWS.Configuration;
@@ -16,7 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Innovt.Contrib.Authorization.Platform.Infrastructure.IOC
 {
-    public class AuthorizationModule:IOCModule
+    public class AuthorizationModule : IOCModule
     {
         public AuthorizationModule(IServiceCollection services, string moduleName)
         {
@@ -25,19 +23,14 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.IOC
             services.AddSingleton(new ModuleConfiguration(moduleName));
 
             services.AddScoped<IAuthorizationAppService, AuthorizationAppService>();
-            services.AddScoped<IAuthorizationRepository, AuthorizationRepository>();
+            services.AddScoped<IAuthorizationPolicyRepository, AuthorizationRepository>();
 
             var builder = services.BuildServiceProvider();
 
-            if (builder.GetService<ILogger>() is null) 
-            {
-                services.AddScoped<ILogger, Logger>();
-            }
+            if (builder.GetService<ILogger>() is null) services.AddScoped<ILogger, Logger>();
 
             if (builder.GetService<IAwsConfiguration>() is null)
-            {
                 services.AddScoped<IAwsConfiguration, DefaultAWSConfiguration>();
-            }            
         }
     }
 }

@@ -36,9 +36,9 @@ namespace Innovt.AspNetCore.Tests
         [Test]
         public void ConstructorShould_ThrowException_If_Parameters_Is_NUll()
         { 
-            Assert.Throws<ArgumentException>(() => new RolesAuthorizationHandler(null, loggerMock));
+            Assert.Throws<ArgumentNullException>(() => new RolesAuthorizationHandler(null, loggerMock));
             
-            Assert.Throws<ArgumentException>(() => new RolesAuthorizationHandler(authorizationRepositoryMoq, null));
+            Assert.Throws<ArgumentNullException>(() => new RolesAuthorizationHandler(authorizationRepositoryMoq, null));
         }
 
         private AuthorizationHandlerContext CreateContext(ClaimsPrincipal user)
@@ -78,7 +78,7 @@ namespace Innovt.AspNetCore.Tests
         [Test]
         public async Task HandleAsync_Fail_If_User_Does_Not_Exist()
         {
-            authorizationRepositoryMoq.GetUser(Arg.Any<string>(), Arg.Any<CancellationToken>())
+            authorizationRepositoryMoq.GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>())
                 .Returns(default(AuthUser));
 
             var handle = new RolesAuthorizationHandler(authorizationRepositoryMoq, loggerMock);
@@ -98,7 +98,7 @@ namespace Innovt.AspNetCore.Tests
             await handle.HandleAsync(context);
             Assert.IsTrue(context.HasFailed);
 
-            await authorizationRepositoryMoq.Received(1).GetUser(Arg.Any<string>(), Arg.Any<CancellationToken>());
+            await authorizationRepositoryMoq.Received(1).GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
         }
         
         [Test]
@@ -111,7 +111,7 @@ namespace Innovt.AspNetCore.Tests
                 Id = "michel@antecipa.com"
             };
 
-            authorizationRepositoryMoq.GetUser(user.Id, Arg.Any<CancellationToken>())
+            authorizationRepositoryMoq.GetUserByExternalId(user.Id, Arg.Any<CancellationToken>())
                 .Returns(user);
 
             var handle = new RolesAuthorizationHandler(authorizationRepositoryMoq, loggerMock);
@@ -132,7 +132,7 @@ namespace Innovt.AspNetCore.Tests
 
             Assert.IsTrue(context.HasFailed);
 
-            await authorizationRepositoryMoq.Received(1).GetUser(Arg.Any<string>(), Arg.Any<CancellationToken>());
+            await authorizationRepositoryMoq.Received(1).GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
 
             loggerMock.Received(1).Warning($"User of id {user.Id} has no roles defined.");
         }
@@ -157,14 +157,12 @@ namespace Innovt.AspNetCore.Tests
             {
                 Name = "Michel",
                 DomainId = "123456",
-                Id = "michel@antecipa.com",
-                Groups = new List<Group>()
-                {
-                    group
-                }
+                Id = "michel@antecipa.com"
             };
 
-            authorizationRepositoryMoq.GetUser(user.Id, Arg.Any<CancellationToken>())
+            user.AssignGroup(group);
+
+            authorizationRepositoryMoq.GetUserByExternalId(user.Id, Arg.Any<CancellationToken>())
                 .Returns(user);
 
             var handle = new RolesAuthorizationHandler(authorizationRepositoryMoq, loggerMock);
@@ -185,7 +183,7 @@ namespace Innovt.AspNetCore.Tests
 
             Assert.IsTrue(context.HasFailed == success);
 
-            await authorizationRepositoryMoq.Received(1).GetUser(Arg.Any<string>(), Arg.Any<CancellationToken>());
+            await authorizationRepositoryMoq.Received(1).GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
         }
 
 

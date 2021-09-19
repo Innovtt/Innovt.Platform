@@ -1,69 +1,51 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
-// Project: Innovt.Authorization.Platform
-// Solution: Innovt.Platform
-// Date: 2021-05-14
-// Contact: michel@innovt.com.br or michelmob@gmail.com
+﻿// Company: Antecipa
+// Project: Innovt.Contrib.Authorization.Platform
+// Solution: Innovt.Contrib.Authorization
+// Date: 2021-08-07
 
 using System;
-using Innovt.Contrib.Authorization.Platform.Domain;
+using Innovt.Domain.Security;
 
 namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
 {
     internal class UserDataModel : DataModelBase
     {
-        public Guid UserId { get; set; }
+        public UserDataModel()
+        {
+            EntityType = "User";
+        }
 
-        public string Name { get; set; }
-
-        public string Email { get; set; }
-
-        public string PasswordHash { get; set; }
+        public string AuthId { get; set; }
+        public string DomainId { get; set; }
 
         public DateTime CreatedAt { get; set; }
 
-        public DateTime LastAccess { get; set; }
 
-        public bool IsEnabled { get; set; }
-
-        public UserDataModel()
-        {
-            EntityType = "Admin";
-        }
-        
-        public static AdminUser ToUser(UserDataModel userDataModel)
+        public static AuthUser ToUser(UserDataModel userDataModel)
         {
             if (userDataModel is null)
                 return null;
 
-            return new AdminUser()
+            return new AuthUser
             {
-                Id = userDataModel.UserId,
-                Name  =  userDataModel.Name,
-                PasswordHash   = userDataModel.PasswordHash,
-                IsEnabled   = userDataModel.IsEnabled,
-                CreatedAt  = userDataModel.CreatedAt,
-                Email      = userDataModel.Email,
-                LastAccess = userDataModel.LastAccess
+                Id = userDataModel.AuthId,
+                DomainId = userDataModel.DomainId,
+                CreatedAt = userDataModel.CreatedAt
             };
         }
 
-        public static UserDataModel FromUser(AdminUser user)
+        public static UserDataModel FromUser(AuthUser user)
         {
             if (user is null)
                 return null;
 
-            return new UserDataModel()
+            return new UserDataModel
             {
-                Id = $"MU#{user.Email}",//MU = masterUser
-                Sk = "ADMINUSER",
-                Name = user.Name,
-                UserId =  user.Id,
-                CreatedAt = user.CreatedAt.GetValueOrDefault().UtcDateTime, 
-                Email = user.Email,
-                PasswordHash = user.PasswordHash,
-                IsEnabled = user.IsEnabled,
-                LastAccess = user.LastAccess.UtcDateTime
+                Id = $"U#{user.Id}",
+                Sk = $"DID#{user.DomainId}",
+                AuthId = user.Id,
+                DomainId = user.DomainId,
+                CreatedAt = user.CreatedAt.GetValueOrDefault().UtcDateTime,
             };
         }
     }

@@ -1,3 +1,8 @@
+// Company: Antecipa
+// Project: AppSample
+// Solution: Innovt.Contrib.Authorization
+// Date: 2021-08-07
+
 using System;
 
 namespace AppSample

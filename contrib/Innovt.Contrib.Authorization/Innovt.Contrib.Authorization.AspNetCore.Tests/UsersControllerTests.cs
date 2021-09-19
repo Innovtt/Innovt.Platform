@@ -1,3 +1,8 @@
+// Company: Antecipa
+// Project: Innovt.Contrib.Authorization.AspNetCore.Tests
+// Solution: Innovt.Contrib.Authorization
+// Date: 2021-09-12
+
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,30 +13,27 @@ using NUnit.Framework;
 
 namespace Innovt.Contrib.Authorization.AspNetCore.Tests
 {
-    [TestFixture()]    
-    public class UserControllerTests
+    [TestFixture]
+    public class UsersControllerTests
     {
-        private IAuthorizationAppService authorizationAppServiceMock;
-        private UserController userController;
-
-        public UserControllerTests()
-        {
-        }
-
         [SetUp]
         public void Setup()
         {
             authorizationAppServiceMock = Substitute.For<IAuthorizationAppService>();
 
-            userController = new UserController(authorizationAppServiceMock);
+            userController = new UsersController(authorizationAppServiceMock);
         }
+
+        private IAuthorizationAppService authorizationAppServiceMock;
+        private UsersController userController;
 
         [Test]
         public void AddShouldThrowExceptionWhenFilterIsNull()
         {
-            Assert.ThrowsAsync<ArgumentNullException>(async () => await userController.AddUser(null, CancellationToken.None));
+            Assert.ThrowsAsync<ArgumentNullException>(async () =>
+                await userController.AddUser(null, CancellationToken.None));
         }
-        
+
         [Test]
         public async Task Add()
         {
@@ -39,10 +41,10 @@ namespace Innovt.Contrib.Authorization.AspNetCore.Tests
 
             authorizationAppServiceMock.AddUser(userCommand, Arg.Any<CancellationToken>()).Returns(Task.CompletedTask);
 
-            var result =  await userController.AddUser(userCommand);
+            var result = await userController.AddUser(userCommand);
 
             Assert.IsNotNull(result);
-            
+
             await authorizationAppServiceMock.Received(1).AddUser(userCommand, Arg.Any<CancellationToken>());
         }
     }

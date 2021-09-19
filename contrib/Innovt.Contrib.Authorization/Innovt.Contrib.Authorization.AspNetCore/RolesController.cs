@@ -1,4 +1,9 @@
-﻿using System;
+﻿// Company: Antecipa
+// Project: Innovt.Contrib.Authorization.AspNetCore
+// Solution: Innovt.Contrib.Authorization
+// Date: 2021-06-02
+
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading;
@@ -13,13 +18,14 @@ namespace Innovt.Contrib.Authorization.AspNetCore
 {
     [ApiController]
     [Route("Authorization/[controller]")]
-    public class RoleController:ControllerBase
+    public class RolesController : ControllerBase
     {
         private readonly IAuthorizationAppService authorizationAppService;
-        
-        public RoleController(IAuthorizationAppService authorizationAppService)
+
+        public RolesController(IAuthorizationAppService authorizationAppService)
         {
-            this.authorizationAppService = authorizationAppService ?? throw new ArgumentNullException(nameof(authorizationAppService));
+            this.authorizationAppService = authorizationAppService ??
+                                           throw new ArgumentNullException(nameof(authorizationAppService));
         }
 
         [HttpGet]
@@ -47,12 +53,12 @@ namespace Innovt.Contrib.Authorization.AspNetCore
         [HttpDelete]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> Remove(RemoveRoleCommand command, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> Remove(RemoveRoleCommand command,
+            CancellationToken cancellationToken = default)
         {
             await authorizationAppService.RemoveRole(command, cancellationToken);
 
             return Ok();
         }
-
     }
 }

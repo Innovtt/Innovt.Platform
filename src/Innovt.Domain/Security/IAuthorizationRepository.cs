@@ -12,6 +12,6 @@ namespace Innovt.Domain.Security
 {
     public interface IAuthorizationRepository
     {
-        Task<AuthUser> GetUser(string userId, CancellationToken cancellationToken = default);
+        Task<AuthUser> GetUserByExternalId(string externalId, CancellationToken cancellationToken = default);
     }
 }

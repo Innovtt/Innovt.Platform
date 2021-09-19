@@ -1,9 +1,7 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
-// Project: Innovt.Authorization.Platform
-// Solution: Innovt.Platform
-// Date: 2021-05-20
-// Contact: michel@innovt.com.br or michelmob@gmail.com
+﻿// Company: Antecipa
+// Project: Innovt.Contrib.Authorization.Platform
+// Solution: Innovt.Contrib.Authorization
+// Date: 2021-06-02
 
 using System.Collections.Generic;
 
@@ -16,6 +14,5 @@ namespace Innovt.Contrib.Authorization.Platform.Application.Dtos
         public string Description { get; set; }
 
         public IList<PermissionDto> Permissions { get; set; }
-
     }
 }

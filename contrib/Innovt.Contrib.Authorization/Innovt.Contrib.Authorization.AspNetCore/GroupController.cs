@@ -1,4 +1,9 @@
-﻿using System;
+﻿// Company: Antecipa
+// Project: Innovt.Contrib.Authorization.AspNetCore
+// Solution: Innovt.Contrib.Authorization
+// Date: 2021-06-02
+
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading;
@@ -11,7 +16,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Innovt.Contrib.Authorization.AspNetCore
 {
-    [ApiController]    
+    [ApiController]
     [Route("Authorization/[controller]")]
     public class GroupController : ControllerBase
     {
@@ -19,7 +24,8 @@ namespace Innovt.Contrib.Authorization.AspNetCore
 
         public GroupController(IAuthorizationAppService authorizationAppService)
         {
-            this.authorizationAppService = authorizationAppService ?? throw new ArgumentNullException(nameof(authorizationAppService));
+            this.authorizationAppService = authorizationAppService ??
+                                           throw new ArgumentNullException(nameof(authorizationAppService));
         }
 
         [HttpGet]
@@ -29,7 +35,7 @@ namespace Innovt.Contrib.Authorization.AspNetCore
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         public async Task<IActionResult> Get(GroupFilter filter, CancellationToken cancellationToken = default)
         {
-            if (filter is null)throw new ArgumentNullException(nameof(filter));            
+            if (filter is null) throw new ArgumentNullException(nameof(filter));
 
             var groups = await authorizationAppService.FindGroupBy(filter, cancellationToken);
 
@@ -39,19 +45,20 @@ namespace Innovt.Contrib.Authorization.AspNetCore
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> Add(AddGroupCommand command, CancellationToken cancellationToken =default)
-{
+        public async Task<IActionResult> Add(AddGroupCommand command, CancellationToken cancellationToken = default)
+        {
             if (command is null) throw new ArgumentNullException(nameof(command));
 
             var groupId = await authorizationAppService.AddGroup(command, cancellationToken);
-            
+
             return Ok(groupId);
         }
 
         [HttpDelete]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> Remove(RemoveGroupCommand command, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> Remove(RemoveGroupCommand command,
+            CancellationToken cancellationToken = default)
         {
             if (command is null) throw new ArgumentNullException(nameof(command));
 

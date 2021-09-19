@@ -1,23 +1,21 @@
 ﻿// Company: Antecipa
 // Project: Innovt.Contrib.Authorization.Platform
 // Solution: Innovt.Contrib.Authorization
-// Date: 2021-06-02
+// Date: 2021-09-17
 
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Innovt.Core.Cqrs.Queries;
+using Innovt.Core.Cqrs.Commands;
 
-namespace Innovt.Contrib.Authorization.Platform.Domain.Filters
+namespace Innovt.Contrib.Authorization.Platform.Application.Commands
 {
-    public class RoleFilter : IFilter
+    public class AssignRoleCommand : ICommand
     {
-        public Guid? Id { get; set; }
+        [Required] public string UserId { get; set; }
 
-        public string Name { get; set; }
-
-        public string Scope { get; set; }
-
+        [Required] public string RoleName { get; set; }
+        
+        [Required] public string Scope { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

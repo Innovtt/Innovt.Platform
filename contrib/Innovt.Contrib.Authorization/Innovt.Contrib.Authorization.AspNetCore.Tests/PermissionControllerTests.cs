@@ -1,34 +1,37 @@
+// Company: Antecipa
+// Project: Innovt.Contrib.Authorization.AspNetCore.Tests
+// Solution: Innovt.Contrib.Authorization
+// Date: 2021-09-07
+
 using System.Threading.Tasks;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Contrib.Authorization.Platform.Application;
 using Innovt.Contrib.Authorization.Platform.Application.Commands;
 using Innovt.Contrib.Authorization.Platform.Domain.Filters;
 using Innovt.Contrib.Authorization.Platform.Infrastructure;
+using Innovt.CrossCutting.Log.Serilog;
 using NUnit.Framework;
 
 namespace Innovt.Contrib.Authorization.AspNetCore.Tests
 {
-    [TestFixture()]    
+    [TestFixture]
     public class PermissionControllerTests
     {
-        private IAuthorizationAppService authorizationAppServiceMock;
-        private PermissionController permissionController;
-
-        public PermissionControllerTests()
-        {
-        }
-
         [SetUp]
         public void Setup()
         {
             //authorizationAppServiceMock = Substitute.For<IAuthorizationAppService>();
             IAwsConfiguration configuration = new DefaultAWSConfiguration();
-            var logger = new Innovt.CrossCutting.Log.Serilog.Logger();
+            var logger = new Logger();
 
-            authorizationAppServiceMock = new AuthorizationAppService(new AuthorizationRepository(logger,configuration));
+            authorizationAppServiceMock =
+                new AuthorizationAppService(new AuthorizationRepository(logger, configuration));
 
             permissionController = new PermissionController(authorizationAppServiceMock);
         }
+
+        private IAuthorizationAppService authorizationAppServiceMock;
+        private PermissionController permissionController;
 
         //[Test]
         //public void GetShouldThrowExceptionWhenFilterIsNull()
@@ -51,9 +54,9 @@ namespace Innovt.Contrib.Authorization.AspNetCore.Tests
         [Test]
         public async Task GetPermissions()
         {
-            var filter = new PermissionFilter()
-            {       
-                Scope = "user",
+            var filter = new PermissionFilter
+            {
+                Scope = "user"
             };
             await permissionController.Get(filter);
         }
@@ -61,7 +64,7 @@ namespace Innovt.Contrib.Authorization.AspNetCore.Tests
         [Test]
         public async Task AddPermission()
         {
-            var command = new AddPermissionCommand()
+            var command = new AddPermissionCommand
             {
                 Scope = "user",
                 Name = "Get User",

@@ -1,3 +1,8 @@
+// Company: Antecipa
+// Project: Innovt.Contrib.Authorization.AspNetCore.Tests
+// Solution: Innovt.Contrib.Authorization
+// Date: 2021-08-07
+
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -10,16 +15,9 @@ using NUnit.Framework;
 
 namespace Innovt.Contrib.Authorization.AspNetCore.Tests
 {
-    [TestFixture()]    
+    [TestFixture]
     public class GroupControllerTests
     {
-        private IAuthorizationAppService authorizationAppServiceMock;
-        private GroupController groupController;
-
-        public GroupControllerTests()
-        {
-        }
-
         [SetUp]
         public void Setup()
         {
@@ -28,10 +26,13 @@ namespace Innovt.Contrib.Authorization.AspNetCore.Tests
             groupController = new GroupController(authorizationAppServiceMock);
         }
 
+        private IAuthorizationAppService authorizationAppServiceMock;
+        private GroupController groupController;
+
         [Test]
         public void GetShouldThrowExceptionWhenFilterIsNull()
         {
-            Assert.ThrowsAsync<ArgumentNullException>(async ()=> await groupController.Get(null));
+            Assert.ThrowsAsync<ArgumentNullException>(async () => await groupController.Get(null));
         }
 
         [Test]
@@ -51,13 +52,15 @@ namespace Innovt.Contrib.Authorization.AspNetCore.Tests
         {
             var groupsExpected = new List<GroupDto>();
 
-            authorizationAppServiceMock.FindGroupBy(Arg.Any<GroupFilter>(), Arg.Any<CancellationToken>()).Returns(groupsExpected);
+            authorizationAppServiceMock.FindGroupBy(Arg.Any<GroupFilter>(), Arg.Any<CancellationToken>())
+                .Returns(groupsExpected);
 
             var actual = await groupController.Get(new GroupFilter());
 
             Assert.IsNotNull(actual);
 
-            await authorizationAppServiceMock.Received(1).FindGroupBy(Arg.Any<GroupFilter>(), Arg.Any<CancellationToken>());
+            await authorizationAppServiceMock.Received(1)
+                .FindGroupBy(Arg.Any<GroupFilter>(), Arg.Any<CancellationToken>());
         }
     }
 }

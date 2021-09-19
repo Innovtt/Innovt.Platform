@@ -1,21 +1,18 @@
+// Company: Antecipa
+// Project: AppSample
+// Solution: Innovt.Contrib.Authorization
+// Date: 2021-08-07
+
 using Innovt.Contrib.Authorization.AspNetCore;
+using Innovt.Contrib.AuthorizationRoles.AspNetCore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace AppSample
 {
@@ -35,27 +32,27 @@ namespace AppSample
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AppSample", Version = "v1" });
             });
-            
+
             services.AddAuthentication("Token");
 
             services.AddAuthorization();
 
 
-            services.AddMvc(s =>
-            {
-                var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+            //services.AddMvc(s =>
+            //{
+            //    var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
 
-                s.Filters.Add(new AuthorizeFilter(policy));
+            //    s.Filters.Add(new AuthorizeFilter(policy));
 
-                s.Filters.Add(typeof(AuthorizationFilter));
-            });
+            //    s.Filters.Add(typeof(AuthorizationFilter));
+            //});
 
             //services.AddScoped<IAuthorizationService, SampleAuthorizationService>();
 
             //services.AddScoped<IdentityUserRole, SampleAuthorizationService>();
 
             //services.AddInnovtAuthorization("Sample");
-
+            services.AddInnovtRolesAuthorization("Sample");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -75,10 +72,7 @@ namespace AppSample
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }

@@ -1,9 +1,7 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
-// Project: Innovt.Authorization.Platform
-// Solution: Innovt.Platform
-// Date: 2021-05-14
-// Contact: michel@innovt.com.br or michelmob@gmail.com
+﻿// Company: Antecipa
+// Project: Innovt.Contrib.Authorization.Platform
+// Solution: Innovt.Contrib.Authorization
+// Date: 2021-06-02
 
 using System;
 using System.Collections.Generic;
@@ -11,8 +9,13 @@ using Innovt.Domain.Security;
 
 namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
 {
-    internal class GroupDataModel:DataModelBase
+    internal class GroupDataModel : DataModelBase
     {
+        public GroupDataModel()
+        {
+            EntityType = "Group";
+        }
+
         public string Name { get; set; }
 
         public string Description { get; set; }
@@ -23,11 +26,6 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
 
         public DateTime CreatedAt { get; set; }
 
-        public GroupDataModel()
-        {
-            EntityType = "Group";
-        }
-
         public IList<string> Users { get; private set; }
 
         public static GroupDataModel FromGroup(Group group)
@@ -35,13 +33,12 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
             if (group is null)
                 return null;
 
-            return new GroupDataModel()
+            return new GroupDataModel
             {
                 Name = group.Name,
-                Scope = group.Scope,
-                Description = group.Description,                
+                Description = group.Description,
                 Id = $"G#{group.Name}",
-                Sk = $"G#{group.Name}",
+                Sk = $"G#{group.Name}"
             };
         }
 
@@ -50,13 +47,12 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
             if (group is null)
                 return null;
 
-            return new Group()
+            return new Group
             {
                 Name = group.Name,
-                Description = group.Description,                
+                Description = group.Description,
                 Id = group.GroupId,
-                CreatedAt = group.CreatedAt,
-                Scope = group.Scope,
+                CreatedAt = group.CreatedAt
             };
         }
     }

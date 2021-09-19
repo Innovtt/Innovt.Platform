@@ -1,7 +1,7 @@
 ﻿// Company: Antecipa
-// Project: Innovt.Contrib.Authorization.AspNetCore
+// Project: Innovt.Contrib.AuthorizationRoles.AspNetCore
 // Solution: Innovt.Contrib.Authorization
-// Date: 2021-06-02
+// Date: 2021-09-17
 
 using System;
 using System.Net;
@@ -11,7 +11,7 @@ using Innovt.Contrib.Authorization.Platform.Application;
 using Innovt.Contrib.Authorization.Platform.Application.Commands;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Innovt.Contrib.Authorization.AspNetCore
+namespace Innovt.Contrib.AuthorizationRoles.AspNetCore
 {
     [ApiController]
     [Route("Authorization/[controller]")]

@@ -6,6 +6,7 @@
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Security.Claims;
@@ -72,16 +73,14 @@ namespace Innovt.AspNetCore.Handlers
                 return;
             }
 
-            //var roles = requirement.AllowedRoles;
-            var user = await securityRepository.GetUser(userId, CancellationToken.None).ConfigureAwait(false);
+            var user = await securityRepository.GetUserByExternalId(userId, CancellationToken.None).ConfigureAwait(false);
             
             if (user is null)
             {
                 Fail(context, $"User of id {userId} not found for role authorization.");
                 return;
             }
-
-            var roles = user.Groups?.SelectMany(g => g.Roles).ToList();
+            var roles = GetUserRoles(user);
             
             if (roles is null)
             {
@@ -97,8 +96,24 @@ namespace Innovt.AspNetCore.Handlers
             }
             else
             {
+                Fail(context, $"User of id {userId} has no roles defined.");
                 context.Fail();
             }
+        }
+
+        private static List<Role> GetUserRoles(AuthUser user)
+        {
+            var roles = new List<Role>();
+
+            if (user.Roles is { })
+                roles.AddRange(user.Roles);
+
+            var groupRoles = user.Groups?.SelectMany(g => g.Roles).ToList();
+
+            if (groupRoles is { })
+                roles.AddRange(groupRoles);
+
+            return roles;
         }
     }
 }

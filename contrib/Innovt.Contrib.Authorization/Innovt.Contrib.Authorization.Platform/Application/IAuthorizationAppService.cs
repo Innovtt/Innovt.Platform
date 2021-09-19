@@ -1,4 +1,9 @@
-﻿using System;
+﻿// Company: Antecipa
+// Project: Innovt.Contrib.Authorization.Platform
+// Solution: Innovt.Contrib.Authorization
+// Date: 2021-06-02
+
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,18 +25,22 @@ namespace Innovt.Contrib.Authorization.Platform.Application
 
         Task<IList<PermissionDto>> FindPermissionBy(PermissionFilter filter, CancellationToken cancellationToken);
         
-
         Task<Guid> AddRole(AddRoleCommand command, CancellationToken cancellationToken);
 
+        Task AssignRole(AssignRoleCommand command, CancellationToken cancellationToken);
+
+        Task UnAssignRole(UnAssignUserRoleCommand command, CancellationToken cancellationToken);
+
         Task RemoveRole(RemoveRoleCommand command, CancellationToken cancellationToken);
+
 
         Task<IList<RoleDto>> FindRoleBy(RoleFilter filter, CancellationToken cancellationToken);
 
         Task<Guid> AddGroup(AddGroupCommand command, CancellationToken cancellationToken);
 
         Task RemoveGroup(RemoveGroupCommand command, CancellationToken cancellationToken);
-        
-        Task RegisterAdmin(RegisterAdminCommand command,CancellationToken cancellationToken);
+
+        Task RegisterAdmin(RegisterAdminCommand command, CancellationToken cancellationToken);
 
         Task<IList<GroupDto>> FindGroupBy(GroupFilter filter, CancellationToken cancellationToken);
     }

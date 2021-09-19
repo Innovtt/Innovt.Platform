@@ -1,9 +1,7 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
-// Project: Innovt.Authorization.Platform
-// Solution: Innovt.Platform
-// Date: 2021-05-14
-// Contact: michel@innovt.com.br or michelmob@gmail.com
+﻿// Company: Antecipa
+// Project: Innovt.Contrib.Authorization.Platform
+// Solution: Innovt.Contrib.Authorization
+// Date: 2021-06-02
 
 using System;
 using System.Collections.Generic;
@@ -12,8 +10,13 @@ using Innovt.Domain.Security;
 
 namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
 {
-    internal class PermissionDataModel: DataModelBase
+    internal class PermissionDataModel : DataModelBase
     {
+        public PermissionDataModel()
+        {
+            EntityType = "Permission";
+        }
+
         public string Scope { get; set; }
 
         public string Name { get; set; }
@@ -22,22 +25,17 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
 
         public Guid PermissionId { get; set; }
 
-        public PermissionDataModel()
-        {
-            EntityType = "Permission";
-        }
-        
         public static PermissionDataModel FromPermission(Permission permission)
         {
             if (permission is null)
                 return null;
 
-            return new PermissionDataModel()
+            return new PermissionDataModel
             {
                 Name = permission.Name,
                 Scope = permission.Scope,
                 Resource = permission.Resource,
-                PermissionId = permission.Id,                
+                PermissionId = permission.Id,
                 Sk = $"S#{permission.Scope}",
                 Id = $"P#{permission.Resource}"
                 //Sk = $"R#{permission.Resource}#N#{permission.Name}#",
@@ -59,12 +57,12 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
             if (permission is null)
                 return null;
 
-            return new Permission()
+            return new Permission
             {
                 Name = permission.Name,
                 Scope = permission.Scope,
                 Resource = permission.Resource,
-                Id  = permission.PermissionId
+                Id = permission.PermissionId
             };
         }
     }

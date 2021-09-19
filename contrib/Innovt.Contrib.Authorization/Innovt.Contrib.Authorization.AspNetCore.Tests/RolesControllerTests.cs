@@ -1,32 +1,36 @@
+// Company: Antecipa
+// Project: Innovt.Contrib.Authorization.AspNetCore.Tests
+// Solution: Innovt.Contrib.Authorization
+// Date: 2021-09-07
+
 using System.Threading.Tasks;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Contrib.Authorization.Platform.Application;
 using Innovt.Contrib.Authorization.Platform.Application.Commands;
 using Innovt.Contrib.Authorization.Platform.Infrastructure;
+using Innovt.CrossCutting.Log.Serilog;
 using NUnit.Framework;
 
 namespace Innovt.Contrib.Authorization.AspNetCore.Tests
 {
-    [TestFixture()]    
-    public class RoleControllerTests
+    [TestFixture]
+    public class RolesControllerTests
     {
-        private IAuthorizationAppService authorizationAppServiceMock;
-        private RoleController roleController;
-        public RoleControllerTests()
-        {
-        }
-
         [SetUp]
         public void Setup()
         {
             //authorizationAppServiceMock = Substitute.For<IAuthorizationAppService>();
             IAwsConfiguration configuration = new DefaultAWSConfiguration();
-            var logger = new Innovt.CrossCutting.Log.Serilog.Logger();
+            var logger = new Logger();
 
-            authorizationAppServiceMock = new AuthorizationAppService(new AuthorizationRepository(logger,configuration));
+            authorizationAppServiceMock =
+                new AuthorizationAppService(new AuthorizationRepository(logger, configuration));
 
-            roleController = new RoleController(authorizationAppServiceMock);
+            roleController = new RolesController(authorizationAppServiceMock);
         }
+
+        private IAuthorizationAppService authorizationAppServiceMock;
+        private RolesController roleController;
 
         //[Test]
         //public void GetShouldThrowExceptionWhenFilterIsNull()
@@ -49,10 +53,10 @@ namespace Innovt.Contrib.Authorization.AspNetCore.Tests
         [Test]
         public async Task AddRole()
         {
-            var command = new AddRoleCommand()
+            var command = new AddRoleCommand
             {
-                Name= "Admin",
-                Description= "Admin Role",
+                Name = "Admin",
+                Description = "Admin Role",
                 Scope = "user"
             };
 

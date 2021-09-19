@@ -1,10 +1,9 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
-// Project: Innovt.Authorization.Platform
-// Solution: Innovt.Platform
-// Date: 2021-05-20
-// Contact: michel@innovt.com.br or michelmob@gmail.com
+﻿// Company: Antecipa
+// Project: Innovt.Contrib.Authorization.Platform
+// Solution: Innovt.Contrib.Authorization
+// Date: 2021-08-09
 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Innovt.Core.Cqrs.Queries;
@@ -13,23 +12,21 @@ namespace Innovt.Contrib.Authorization.Platform.Domain.Filters
 {
     public class UserFilter : IFilter
     {
-        public string Email { get; set; }
         public UserFilter(string email)
         {
-            Email = email ?? throw new System.ArgumentNullException(nameof(email));            
-        }
-                
-
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            throw new System.NotImplementedException();
+            Email = email ?? throw new ArgumentNullException(nameof(email));
         }
 
         public UserFilter()
         {
-
         }
 
+        public string Email { get; set; }
 
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,16 +1,16 @@
 ﻿// Company: Antecipa
-// Project: Innovt.Contrib.Authorization.AspNetCore
+// Project: Innovt.Contrib.AuthorizationRoles.AspNetCore
 // Solution: Innovt.Contrib.Authorization
-// Date: 2021-06-02
+// Date: 2021-09-17
 
 using Innovt.Contrib.Authorization.Platform.Infrastructure.IOC;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Innovt.Contrib.Authorization.AspNetCore
+namespace Innovt.Contrib.AuthorizationRoles.AspNetCore
 {
     public static class SetupExtension
     {
-        public static void AddInnovtAuthorization(this IServiceCollection services, string moduleName)
+        public static void AddInnovtRolesAuthorization(this IServiceCollection services, string moduleName)
         {
             _ = new AuthorizationModule(services, moduleName);
 

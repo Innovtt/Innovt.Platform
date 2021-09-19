@@ -1,11 +1,22 @@
-﻿using Innovt.Core.Utilities;
-using Innovt.Domain.Core.Model;
+﻿// Company: Antecipa
+// Project: Innovt.Contrib.Authorization.Platform
+// Solution: Innovt.Contrib.Authorization
+// Date: 2021-08-09
+
 using System;
+using Innovt.Core.Utilities;
+using Innovt.Domain.Core.Model;
 
 namespace Innovt.Contrib.Authorization.Platform.Domain
 {
-    public class AdminUser:Entity<Guid>
+    public class AdminUser : Entity<Guid>
     {
+        public AdminUser()
+        {
+            Id = Guid.NewGuid();
+            CreatedAt = DateTimeOffset.UtcNow;
+        }
+
         public string Name { get; set; }
 
         public string Email { get; set; }
@@ -16,13 +27,7 @@ namespace Innovt.Contrib.Authorization.Platform.Domain
 
         public bool IsEnabled { get; set; }
 
-        public AdminUser()
-        {
-            Id = Guid.NewGuid();
-            CreatedAt = DateTimeOffset.UtcNow;
-        }
-
-        public bool IsPasswordValid(string password) 
+        public bool IsPasswordValid(string password)
         {
             return PasswordHash == password.Md5Hash();
         }

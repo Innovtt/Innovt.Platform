@@ -7,6 +7,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Innovt.Core.Exceptions;
 using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Security
@@ -24,6 +26,57 @@ namespace Innovt.Domain.Security
 
         public string Name { get; set; }
 
-        public IList<Group> Groups { get; set; }
+        public IList<Group> Groups { get; private set; }
+
+        public IList<Role> Roles { get; private set; }
+        
+        public void AssignRole(Role role)
+        {
+            if (role == null) throw new ArgumentNullException(nameof(role));
+
+            Roles ??= new List<Role>();
+            
+            var roleExist = Roles.Any(r => r.Scope == role.Scope && r.Name == role.Name);
+
+            if (roleExist)
+                throw new BusinessException($"Role {role.Name} already assigned.");
+            
+            Roles.Add(role);
+        }
+
+        public void UnAssignRole(string scope, string roleName)
+        {
+            var role = Roles?.SingleOrDefault(r => r.Scope == scope && r.Name == roleName);
+
+            if (role is null)
+                return;
+
+            Roles.Remove(role);
+        }
+
+        public void AssignGroup(Group group)
+        {
+            if (group == null) throw new ArgumentNullException(nameof(group));
+
+            Groups ??= new List<Group>();
+
+            var roleExist = Groups.Any(r => r.Name == group.Name);
+
+            if (roleExist)
+                throw new BusinessException($"Group {group.Name} already assigned.");
+
+            Groups.Add(group);
+        }
+
+        public void UnAssignGroup(string groupName)
+        {
+            var group = Groups?.SingleOrDefault(r => r.Name == groupName);
+
+            if (group is null)
+                return;
+
+            Groups.Remove(group);
+        }
+
     }
 }

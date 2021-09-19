@@ -1,4 +1,9 @@
-﻿using System;
+﻿// Company: Antecipa
+// Project: Innovt.Contrib.Authorization.AspNetCore
+// Solution: Innovt.Contrib.Authorization
+// Date: 2021-06-02
+
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading;
@@ -11,7 +16,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Innovt.Contrib.Authorization.AspNetCore
 {
-    [ApiController]    
+    [ApiController]
     [Route("Authorization/[controller]")]
     public class PermissionController : ControllerBase
     {
@@ -19,7 +24,8 @@ namespace Innovt.Contrib.Authorization.AspNetCore
 
         public PermissionController(IAuthorizationAppService authorizationAppService)
         {
-            this.authorizationAppService = authorizationAppService ?? throw new ArgumentNullException(nameof(authorizationAppService));
+            this.authorizationAppService = authorizationAppService ??
+                                           throw new ArgumentNullException(nameof(authorizationAppService));
         }
 
         [HttpGet]
@@ -37,7 +43,8 @@ namespace Innovt.Contrib.Authorization.AspNetCore
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> Add(AddPermissionCommand command, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> Add(AddPermissionCommand command,
+            CancellationToken cancellationToken = default)
         {
             var permissionId = await authorizationAppService.AddPermission(command, cancellationToken);
 
@@ -47,12 +54,12 @@ namespace Innovt.Contrib.Authorization.AspNetCore
         [HttpDelete]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> Remove(RemovePermissionCommand command, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> Remove(RemovePermissionCommand command,
+            CancellationToken cancellationToken = default)
         {
             await authorizationAppService.RemovePermission(command, cancellationToken);
 
             return Ok();
         }
-
     }
 }
