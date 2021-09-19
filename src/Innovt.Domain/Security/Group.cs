@@ -23,9 +23,8 @@ namespace Innovt.Domain.Security
         public string Name { get; set; }
         public string Description { get; set; }
         public IList<Role> Roles { get; private set; }
-        public IList<string> Users { get; private set; }
-
-        public void AddRole(Role role)
+        
+        public void AssignRole(Role role)
         {
             if (role == null) throw new ArgumentNullException(nameof(role));
 
@@ -38,9 +37,8 @@ namespace Innovt.Domain.Security
 
             Roles.Add(role);
         }
-
-
-        public void RemoveRole(Role role)
+        
+        public void UnAssignRole(Role role)
         {
             if (role == null) throw new ArgumentNullException(nameof(role));
 
@@ -50,32 +48,6 @@ namespace Innovt.Domain.Security
                 throw new BusinessException($"Role {role.Id} is not linked to this group.");
 
             Roles.Remove(role);
-        }
-        
-        public void AddUser(string userId)
-        {
-            if (userId == null) throw new ArgumentNullException(nameof(userId));
-
-            Users ??= new List<string>();
-
-            var exist = Users.Any(u => u == userId);
-
-            if (exist)
-                throw new BusinessException($"User {userId} already assigned to this group.");
-
-            Users.Add(userId);
-        }
-
-        public void RemoveUser(string userId)
-        {
-            if (userId == null) throw new ArgumentNullException(nameof(userId));
-
-            var user = Users?.SingleOrDefault(u => u == userId);
-
-            if (user is null)
-                throw new BusinessException($"User {userId} not assigned to this group.");
-
-            Users.Remove(user);
         }
     }
 }

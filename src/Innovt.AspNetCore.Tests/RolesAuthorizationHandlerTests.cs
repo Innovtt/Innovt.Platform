@@ -147,7 +147,7 @@ namespace Innovt.AspNetCore.Tests
                 Description = "Default"
             };
 
-            group.AddRole(new Role()
+            group.AssignRole(new Role()
             {
                 Scope = "default",
                 Name = role
