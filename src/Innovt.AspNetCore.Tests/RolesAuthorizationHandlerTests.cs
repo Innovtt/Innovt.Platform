@@ -184,6 +184,8 @@ namespace Innovt.AspNetCore.Tests
             Assert.IsTrue(context.HasFailed == success);
 
             await authorizationRepositoryMoq.Received(1).GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
+
+
         }
 
 

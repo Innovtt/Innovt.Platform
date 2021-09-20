@@ -89,7 +89,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Cloud.AWS.Lambda.Kin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Cloud.AWS.S3.Tests", "Innovt.Cloud.AWS.S3.Tests\Innovt.Cloud.AWS.S3.Tests.csproj", "{670D39C0-E037-41BC-B69F-6B961D441F06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innovt.AspNetCore.Tests", "Innovt.AspNetCore.Tests\Innovt.AspNetCore.Tests.csproj", "{109306CD-F874-463D-9E09-DF895C4749B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.AspNetCore.Tests", "Innovt.AspNetCore.Tests\Innovt.AspNetCore.Tests.csproj", "{109306CD-F874-463D-9E09-DF895C4749B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contrib", "Contrib", "{3255704B-38CE-4A2D-9E65-EEE1088A4EDE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Contrib.AuthorizationRoles.AspNetCore", "..\contrib\Innovt.Contrib.Authorization\Innovt.Contrib.AuthorizationRoles.AspNetCore\Innovt.Contrib.AuthorizationRoles.AspNetCore.csproj", "{714DF605-4225-44AE-A557-F443305BEC71}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Contrib.Authorization.Platform", "..\contrib\Innovt.Contrib.Authorization\Innovt.Contrib.Authorization.Platform\Innovt.Contrib.Authorization.Platform.csproj", "{F7B6B8CC-395C-4C2F-98BC-2C5899800C7F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -379,6 +385,22 @@ Global
 		{109306CD-F874-463D-9E09-DF895C4749B6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{109306CD-F874-463D-9E09-DF895C4749B6}.Release|x86.ActiveCfg = Release|Any CPU
 		{109306CD-F874-463D-9E09-DF895C4749B6}.Release|x86.Build.0 = Release|Any CPU
+		{714DF605-4225-44AE-A557-F443305BEC71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{714DF605-4225-44AE-A557-F443305BEC71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{714DF605-4225-44AE-A557-F443305BEC71}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{714DF605-4225-44AE-A557-F443305BEC71}.Debug|x86.Build.0 = Debug|Any CPU
+		{714DF605-4225-44AE-A557-F443305BEC71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{714DF605-4225-44AE-A557-F443305BEC71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{714DF605-4225-44AE-A557-F443305BEC71}.Release|x86.ActiveCfg = Release|Any CPU
+		{714DF605-4225-44AE-A557-F443305BEC71}.Release|x86.Build.0 = Release|Any CPU
+		{F7B6B8CC-395C-4C2F-98BC-2C5899800C7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7B6B8CC-395C-4C2F-98BC-2C5899800C7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7B6B8CC-395C-4C2F-98BC-2C5899800C7F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F7B6B8CC-395C-4C2F-98BC-2C5899800C7F}.Debug|x86.Build.0 = Debug|Any CPU
+		{F7B6B8CC-395C-4C2F-98BC-2C5899800C7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7B6B8CC-395C-4C2F-98BC-2C5899800C7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7B6B8CC-395C-4C2F-98BC-2C5899800C7F}.Release|x86.ActiveCfg = Release|Any CPU
+		{F7B6B8CC-395C-4C2F-98BC-2C5899800C7F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -412,6 +434,8 @@ Global
 		{06062B04-BE0B-4D77-BA77-52F80B545988} = {ECD92DFF-5A6C-44D1-B3B4-F5CEE1E879B0}
 		{670D39C0-E037-41BC-B69F-6B961D441F06} = {EA0C6A75-5EFC-4F7F-9E13-EB63F17ECF1E}
 		{109306CD-F874-463D-9E09-DF895C4749B6} = {E4691D09-94FB-47D1-9EBA-550A6649178C}
+		{714DF605-4225-44AE-A557-F443305BEC71} = {3255704B-38CE-4A2D-9E65-EEE1088A4EDE}
+		{F7B6B8CC-395C-4C2F-98BC-2C5899800C7F} = {3255704B-38CE-4A2D-9E65-EEE1088A4EDE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {43168DBE-48A6-435D-9405-F6728340FFEA}

@@ -6,11 +6,10 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.1" />
+    <PackageReference Include="Innovt.AspNetCore" Version="5.0.20.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Innovt.Contrib.Authorization.AspNetCore\Innovt.Contrib.Authorization.AspNetCore.csproj" />
-    <ProjectReference Include="..\Innovt.Contrib.AuthorizationRoles.AspNetCore.Tests\Innovt.Contrib.AuthorizationRoles.AspNetCore.Tests.csproj" />
     <ProjectReference Include="..\Innovt.Contrib.AuthorizationRoles.AspNetCore\Innovt.Contrib.AuthorizationRoles.AspNetCore.csproj" />
   </ItemGroup>
 

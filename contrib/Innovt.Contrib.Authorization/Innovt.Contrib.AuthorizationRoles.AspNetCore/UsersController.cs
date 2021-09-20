@@ -25,7 +25,7 @@ namespace Innovt.Contrib.AuthorizationRoles.AspNetCore
                                            throw new ArgumentNullException(nameof(authorizationAppService));
         }
 
-        [HttpPost()]
+        [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
@@ -36,7 +36,7 @@ namespace Innovt.Contrib.AuthorizationRoles.AspNetCore
             return Ok();
         }
 
-        [HttpDelete()]
+        [HttpDelete]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
@@ -49,22 +49,24 @@ namespace Innovt.Contrib.AuthorizationRoles.AspNetCore
         }
 
 
-        [HttpPut()]
+        [HttpPut("AssignRole")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> AssignRole(AssignRoleCommand command, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> AssignRole(AssignRoleCommand command,
+            CancellationToken cancellationToken = default)
         {
             await authorizationAppService.AssignRole(command, cancellationToken);
 
             return Ok();
         }
 
-        [HttpPut()]
+        [HttpPut("UnAssignRole")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> UnAssignRole(UnAssignUserRoleCommand command, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> UnAssignRole(UnAssignUserRoleCommand command,
+            CancellationToken cancellationToken = default)
         {
             await authorizationAppService.UnAssignRole(command, cancellationToken);
 

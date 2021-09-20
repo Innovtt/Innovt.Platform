@@ -14,7 +14,7 @@ namespace Innovt.Contrib.Authorization.Platform.Application.Commands
         [Required] public string UserId { get; set; }
 
         [Required] public string RoleName { get; set; }
-        
+
         [Required] public string Scope { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

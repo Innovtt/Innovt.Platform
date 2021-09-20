@@ -1,7 +1,7 @@
 ﻿// Company: Antecipa
 // Project: Innovt.Contrib.Authorization.Platform
 // Solution: Innovt.Contrib.Authorization
-// Date: 2021-08-07
+// Date: 2021-09-19
 
 using System;
 using Innovt.Contrib.Authorization.Platform.Domain;

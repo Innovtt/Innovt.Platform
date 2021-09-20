@@ -4,6 +4,7 @@
 // Date: 2021-08-07
 
 using System;
+using System.Collections.Generic;
 using Innovt.Domain.Security;
 
 namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
@@ -17,21 +18,27 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
 
         public string AuthId { get; set; }
         public string DomainId { get; set; }
-
+        public List<RoleDataModel> Roles { get; set; }
         public DateTime CreatedAt { get; set; }
-
 
         public static AuthUser ToUser(UserDataModel userDataModel)
         {
             if (userDataModel is null)
                 return null;
 
-            return new AuthUser
+            var authUser = new AuthUser
             {
                 Id = userDataModel.AuthId,
                 DomainId = userDataModel.DomainId,
                 CreatedAt = userDataModel.CreatedAt
             };
+
+            if (userDataModel.Roles == null) return authUser;
+
+
+            foreach (var role in userDataModel.Roles) authUser.AssignRole(RoleDataModel.ToDomain(role));
+
+            return authUser;
         }
 
         public static UserDataModel FromUser(AuthUser user)
@@ -39,14 +46,22 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
             if (user is null)
                 return null;
 
-            return new UserDataModel
+            var dataModel = new UserDataModel
             {
                 Id = $"U#{user.Id}",
                 Sk = $"DID#{user.DomainId}",
                 AuthId = user.Id,
                 DomainId = user.DomainId,
-                CreatedAt = user.CreatedAt.GetValueOrDefault().UtcDateTime,
+                CreatedAt = user.CreatedAt.GetValueOrDefault().UtcDateTime
             };
+
+            if (user.Roles == null) return dataModel;
+
+            dataModel.Roles = new List<RoleDataModel>();
+
+            foreach (var role in user.Roles) dataModel.Roles.Add(RoleDataModel.FromDomain(role));
+
+            return dataModel;
         }
     }
 }

@@ -8,12 +8,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 using Innovt.AspNetCore.Extensions;
-using Innovt.Core.Collections;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Utilities;
 using Innovt.Domain.Security;
@@ -41,6 +39,10 @@ namespace Innovt.AspNetCore.Handlers
             return userId ?? string.Empty;
         }
 
+        private static void SetUserDomainId(AuthUser authUser,AuthorizationHandlerContext context)
+        {
+            context.User.AddIdentity(new ClaimsIdentity(new[] { new Claim(ClaimTypes.PrimarySid, authUser.DomainId) }));
+        }
 
         private static bool IsUserAuthenticated(AuthorizationHandlerContext context)
         {
@@ -92,6 +94,8 @@ namespace Innovt.AspNetCore.Handlers
             
             if (hasPermission)
             {
+                SetUserDomainId(user,context);
+
                 context.Succeed(requirement);
             }
             else

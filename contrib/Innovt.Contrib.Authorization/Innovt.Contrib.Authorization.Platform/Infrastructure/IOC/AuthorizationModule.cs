@@ -16,18 +16,17 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.IOC
 {
     public class AuthorizationModule : IOCModule
     {
-        public AuthorizationModule(IServiceCollection services, string moduleName)
+        public AuthorizationModule(IServiceCollection services)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            services.AddSingleton(new ModuleConfiguration(moduleName));
-
             services.AddScoped<IAuthorizationAppService, AuthorizationAppService>();
-            services.AddScoped<IAuthorizationPolicyRepository, AuthorizationRepository>();
+
+            services.AddScoped<IAuthorizationRepository, AuthorizationRepository>();
 
             var builder = services.BuildServiceProvider();
 
-            if (builder.GetService<ILogger>() is null) services.AddScoped<ILogger, Logger>();
+            if (builder.GetService<ILogger>() is null) services.AddSingleton<ILogger, Logger>();
 
             if (builder.GetService<IAwsConfiguration>() is null)
                 services.AddScoped<IAwsConfiguration, DefaultAWSConfiguration>();

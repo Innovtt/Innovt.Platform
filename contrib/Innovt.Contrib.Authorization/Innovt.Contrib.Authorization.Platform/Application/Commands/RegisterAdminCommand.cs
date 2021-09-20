@@ -17,8 +17,8 @@ namespace Innovt.Contrib.Authorization.Platform.Application.Commands
 
         [Required] public string Password { get; set; }
 
-        [Required] 
-        [Compare(nameof(Password),ErrorMessage = "Password doesn't match.")]
+        [Required]
+        [Compare(nameof(Password), ErrorMessage = "Password doesn't match.")]
         public string ConfirmPassword { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

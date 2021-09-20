@@ -33,12 +33,13 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
             return new Role
             {
                 Name = roleDataModel.Name,
+                Scope = roleDataModel.Scope,
                 Id = roleDataModel.RoleId,
                 CreatedAt = roleDataModel.CreatedAt,
                 Description = roleDataModel.Description
             };
         }
-        
+
         public static RoleDataModel FromDomain(Role role)
         {
             if (role is null)
@@ -47,12 +48,12 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
             return new RoleDataModel
             {
                 Name = role.Name,
-                Scope = role.Description,
+                Scope = role.Scope,
                 Description = role.Description,
                 CreatedAt = role.CreatedAt.GetValueOrDefault().UtcDateTime,
                 RoleId = role.Id,
-                Id = "",
-                Sk = ""
+                Id = $"R#{role.Name}",
+                Sk = $"S{role.Scope}"
             };
         }
     }

@@ -3,12 +3,10 @@
 // Solution: Innovt.Contrib.Authorization
 // Date: 2021-08-07
 
-using Innovt.Contrib.Authorization.AspNetCore;
 using Innovt.Contrib.AuthorizationRoles.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -33,10 +31,15 @@ namespace AppSample
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AppSample", Version = "v1" });
             });
 
+            services.AddInnovtRolesAdminAuthorization();
+
+
+
             services.AddAuthentication("Token");
 
-            services.AddAuthorization();
+            //services.AddAuthorization();
 
+            //services.AddControllers();
 
             //services.AddMvc(s =>
             //{
@@ -47,12 +50,26 @@ namespace AppSample
             //    s.Filters.Add(typeof(AuthorizationFilter));
             //});
 
-            //services.AddScoped<IAuthorizationService, SampleAuthorizationService>();
+            //services.AddInnovtRolesAuthorization();
+
+            //services.AddAuthorization(options =>
+            //{
+            //    options.FallbackPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+            //});
+
+
+            services.AddControllers(s =>
+            {
+                //var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+
+                //s.Filters.Add(new AuthorizeFilter(policy));
+
+                //s.Filters.Add(new AuthorizationFilter());
+            });
+
+            //services.AddScoped<IAuthorizationHandler, RolesAuthorizationHandler>();
 
             //services.AddScoped<IdentityUserRole, SampleAuthorizationService>();
-
-            //services.AddInnovtAuthorization("Sample");
-            services.AddInnovtRolesAuthorization("Sample");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
