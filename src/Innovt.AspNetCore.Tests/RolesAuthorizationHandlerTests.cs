@@ -88,7 +88,7 @@ namespace Innovt.AspNetCore.Tests
             identity.IsAuthenticated.Returns(true);
             identity.Claims.Returns(new List<Claim>()
             {
-                new Claim(ClaimTypes.Sid, "564654654")
+                new Claim(ClaimTypes.NameIdentifier, "564654654")
             });
 
             var principal = new ClaimsPrincipal(identity);
@@ -121,7 +121,7 @@ namespace Innovt.AspNetCore.Tests
             identity.IsAuthenticated.Returns(true);
             identity.Claims.Returns(new List<Claim>()
             {
-                new Claim(ClaimTypes.Sid, user.Id)
+                new Claim(ClaimTypes.NameIdentifier, user.Id)
             });
 
             var principal = new ClaimsPrincipal(identity);
@@ -172,7 +172,7 @@ namespace Innovt.AspNetCore.Tests
             identity.IsAuthenticated.Returns(true);
             identity.Claims.Returns(new List<Claim>()
             {
-                new Claim(ClaimTypes.Sid, user.Id)
+                new Claim(ClaimTypes.NameIdentifier, user.Id)
             });
 
             var principal = new ClaimsPrincipal(identity);
@@ -182,9 +182,9 @@ namespace Innovt.AspNetCore.Tests
             await handle.HandleAsync(context);
 
             Assert.IsTrue(context.HasFailed == success);
+            Assert.IsTrue(context.HasSucceeded == !success);
 
             await authorizationRepositoryMoq.Received(1).GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
-
 
         }
 

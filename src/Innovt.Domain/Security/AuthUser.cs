@@ -39,7 +39,7 @@ namespace Innovt.Domain.Security
             var roleExist = Roles.Any(r => r.Scope == role.Scope && r.Name == role.Name);
 
             if (roleExist)
-                throw new BusinessException($"Role {role.Name} already assigned.");
+                return;
             
             Roles.Add(role);
         }

@@ -4,9 +4,9 @@
 // Date: 2021-09-17
 
 using Innovt.AspNetCore.Handlers;
+using Innovt.Contrib.Authorization.Platform.Domain;
 using Innovt.Contrib.Authorization.Platform.Infrastructure;
 using Innovt.Contrib.Authorization.Platform.Infrastructure.IOC;
-using Innovt.Domain.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -27,7 +27,7 @@ namespace Innovt.Contrib.AuthorizationRoles.AspNetCore
 
             var provider = services.BuildServiceProvider();
 
-            services.AddScoped<IAuthorizationRepository>(_ => provider.GetService<AuthorizationRepository>());
+            services.AddScoped<Innovt.Domain.Security.IAuthorizationRepository>(p => provider.GetService<IAuthorizationRepository>());
 
             services.AddScoped<IAuthorizationHandler, RolesAuthorizationHandler>();
         }

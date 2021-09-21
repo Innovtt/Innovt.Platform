@@ -25,12 +25,6 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure
         {
         }
 
-
-        public Task<AuthUser> GetUserById(UserByIdFilter filter, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<AdminUser> GetAdminUser(UserFilter userFilter, CancellationToken cancellationToken)
         {
             if (userFilter is null) throw new ArgumentNullException(nameof(userFilter));

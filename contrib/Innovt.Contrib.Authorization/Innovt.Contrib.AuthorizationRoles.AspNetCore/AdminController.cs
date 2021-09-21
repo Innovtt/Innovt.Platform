@@ -32,7 +32,7 @@ namespace Innovt.Contrib.AuthorizationRoles.AspNetCore
         public async Task<IActionResult> RegisterAdmin(RegisterAdminCommand command,
             CancellationToken cancellationToken = default)
         {
-            await authorizationAppService.RegisterAdmin(command, cancellationToken);
+            await authorizationAppService.RegisterAdmin(command, cancellationToken).ConfigureAwait(false);
 
             return Ok();
         }

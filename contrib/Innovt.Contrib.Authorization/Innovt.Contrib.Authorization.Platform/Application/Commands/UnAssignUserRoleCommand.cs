@@ -1,7 +1,7 @@
 ﻿// Company: Antecipa
 // Project: Innovt.Contrib.Authorization.Platform
 // Solution: Innovt.Contrib.Authorization
-// Date: 2021-09-17
+// Date: 2021-09-20
 
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

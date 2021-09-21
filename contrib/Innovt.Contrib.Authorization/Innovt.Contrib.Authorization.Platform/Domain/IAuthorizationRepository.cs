@@ -1,7 +1,7 @@
 ﻿// Company: Antecipa
 // Project: Innovt.Contrib.Authorization.Platform
 // Solution: Innovt.Contrib.Authorization
-// Date: 2021-09-19
+// Date: 2021-09-20
 
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,8 +17,6 @@ namespace Innovt.Contrib.Authorization.Platform.Domain
         Task Save(AuthUser user, CancellationToken cancellationToken);
 
         Task RemoveUser(AuthUser user, CancellationToken cancellationToken);
-
-        Task<AuthUser> GetUserById(UserByIdFilter filter, CancellationToken cancellationToken);
 
         Task<AdminUser> GetAdminUser(UserFilter userFilter, CancellationToken cancellationToken);
     }

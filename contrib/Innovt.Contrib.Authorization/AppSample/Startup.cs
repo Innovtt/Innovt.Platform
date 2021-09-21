@@ -3,6 +3,7 @@
 // Solution: Innovt.Contrib.Authorization
 // Date: 2021-08-07
 
+
 using Innovt.Contrib.AuthorizationRoles.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -31,10 +32,10 @@ namespace AppSample
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AppSample", Version = "v1" });
             });
 
-            services.AddInnovtRolesAdminAuthorization();
+            //services.AddInnovtRolesAdminAuthorization();
 
-
-
+            services.AddInnovtRolesAuthorization();
+            
             services.AddAuthentication("Token");
 
             //services.AddAuthorization();
@@ -52,10 +53,10 @@ namespace AppSample
 
             //services.AddInnovtRolesAuthorization();
 
-            //services.AddAuthorization(options =>
-            //{
-            //    options.FallbackPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-            //});
+            services.AddAuthorization(options =>
+            {
+                options.FallbackPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+            });
 
 
             services.AddControllers(s =>
@@ -78,8 +79,11 @@ namespace AppSample
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AppSample v1"));
+                app.UseSwagger(op =>
+                { op.SerializeAsV2 = true;
+                });
+                app.UseSwaggerUI(c =>
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "AppSample v1"));
             }
 
             app.UseHttpsRedirection();

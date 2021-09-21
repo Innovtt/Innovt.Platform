@@ -29,9 +29,10 @@ namespace Innovt.Contrib.AuthorizationRoles.AspNetCore
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+
         public async Task<IActionResult> Add(AddUserCommand command, CancellationToken cancellationToken = default)
         {
-            await authorizationAppService.AddUser(command, cancellationToken);
+            await authorizationAppService.AddUser(command, cancellationToken).ConfigureAwait(false);
 
             return Ok();
         }
@@ -43,7 +44,7 @@ namespace Innovt.Contrib.AuthorizationRoles.AspNetCore
         public async Task<IActionResult> Delete(RemoveUserCommand command,
             CancellationToken cancellationToken = default)
         {
-            await authorizationAppService.RemoveUser(command, cancellationToken);
+            await authorizationAppService.RemoveUser(command, cancellationToken).ConfigureAwait(false);
 
             return Ok();
         }
@@ -56,7 +57,7 @@ namespace Innovt.Contrib.AuthorizationRoles.AspNetCore
         public async Task<IActionResult> AssignRole(AssignRoleCommand command,
             CancellationToken cancellationToken = default)
         {
-            await authorizationAppService.AssignRole(command, cancellationToken);
+            await authorizationAppService.AssignRole(command, cancellationToken).ConfigureAwait(false);
 
             return Ok();
         }
@@ -68,7 +69,7 @@ namespace Innovt.Contrib.AuthorizationRoles.AspNetCore
         public async Task<IActionResult> UnAssignRole(UnAssignUserRoleCommand command,
             CancellationToken cancellationToken = default)
         {
-            await authorizationAppService.UnAssignRole(command, cancellationToken);
+            await authorizationAppService.UnAssignRole(command, cancellationToken).ConfigureAwait(false);
 
             return Ok();
         }

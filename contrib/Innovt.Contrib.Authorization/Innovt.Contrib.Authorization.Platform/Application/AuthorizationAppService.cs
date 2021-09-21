@@ -65,7 +65,7 @@ namespace Innovt.Contrib.Authorization.Platform.Application
             user = new AuthUser
             {
                 Id = command.Id,
-                DomainId = command.Id,
+                DomainId = command.DomainId,
                 CreatedAt = DateTimeOffset.UtcNow
             };
 

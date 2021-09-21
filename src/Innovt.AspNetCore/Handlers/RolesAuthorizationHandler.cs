@@ -34,14 +34,14 @@ namespace Innovt.AspNetCore.Handlers
 
         private static string GetUserId(AuthorizationHandlerContext context)
         {
-            var userId = context.User?.GetClaim(ClaimTypes.Sid);
+            var userId = context.User?.GetClaim(ClaimTypes.NameIdentifier);
 
             return userId ?? string.Empty;
         }
 
         private static void SetUserDomainId(AuthUser authUser,AuthorizationHandlerContext context)
         {
-            context.User.AddIdentity(new ClaimsIdentity(new[] { new Claim(ClaimTypes.PrimarySid, authUser.DomainId) }));
+            context.User.AddIdentity(new ClaimsIdentity(new[] { new Claim(ClaimTypes.Sid, authUser.DomainId) }));
         }
 
         private static bool IsUserAuthenticated(AuthorizationHandlerContext context)
@@ -90,7 +90,7 @@ namespace Innovt.AspNetCore.Handlers
                 return;
             }
 
-            var hasPermission = roles.Any(r => requirement.AllowedRoles.Contains(r.Name));
+            var hasPermission = roles.Any(r => requirement.AllowedRoles.Contains(r.Name, StringComparer.OrdinalIgnoreCase));
             
             if (hasPermission)
             {

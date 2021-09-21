@@ -53,7 +53,7 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
                 CreatedAt = role.CreatedAt.GetValueOrDefault().UtcDateTime,
                 RoleId = role.Id,
                 Id = $"R#{role.Name}",
-                Sk = $"S{role.Scope}"
+                Sk = $"S#{role.Scope}"
             };
         }
     }

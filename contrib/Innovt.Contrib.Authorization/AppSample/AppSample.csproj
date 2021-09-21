@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.1" />
-    <PackageReference Include="Innovt.AspNetCore" Version="5.0.20.2" />
   </ItemGroup>
 
   <ItemGroup>
