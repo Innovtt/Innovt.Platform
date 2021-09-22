@@ -3,7 +3,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <PackageId>Innovt.Contrib.Authorization.Platform</PackageId>
-    <PackageVersion>1.0.1</PackageVersion>
+    <PackageVersion>1.0.2</PackageVersion>
     <Authors>Michel Borges</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -13,10 +13,10 @@
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.0.69" />
-    <PackageReference Include="Innovt.Cloud.AWS.Dynamo" Version="5.0.20.4" />
-    <PackageReference Include="Innovt.Domain" Version="5.0.20.4" />
-    <PackageReference Include="Innovt.CrossCutting.Log.Serilog" Version="5.0.20.4" />    
+    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.0.70" />
+    <PackageReference Include="Innovt.Cloud.AWS.Dynamo" Version="5.0.21" />
+    <PackageReference Include="Innovt.Domain" Version="5.0.21" />
+    <PackageReference Include="Innovt.CrossCutting.Log.Serilog" Version="5.0.21" />
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -39,6 +39,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Application\Dtos\" />
     <Folder Include="Infrastructure\IOC\" />
   </ItemGroup>
 

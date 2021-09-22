@@ -1,7 +1,7 @@
 ﻿// Company: Antecipa
 // Project: Innovt.Contrib.AuthorizationRoles.AspNetCore
 // Solution: Innovt.Contrib.Authorization
-// Date: 2021-09-17
+// Date: 2021-09-20
 
 using System;
 using System.Net;
@@ -29,8 +29,7 @@ namespace Innovt.Contrib.AuthorizationRoles.AspNetCore
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-
-        public async Task<IActionResult> Add(AddUserCommand command, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> Add([FromBody]AddUserCommand command, CancellationToken cancellationToken = default)
         {
             await authorizationAppService.AddUser(command, cancellationToken).ConfigureAwait(false);
 
@@ -41,7 +40,7 @@ namespace Innovt.Contrib.AuthorizationRoles.AspNetCore
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> Delete(RemoveUserCommand command,
+        public async Task<IActionResult> Delete([FromBody] RemoveUserCommand command,
             CancellationToken cancellationToken = default)
         {
             await authorizationAppService.RemoveUser(command, cancellationToken).ConfigureAwait(false);
@@ -54,7 +53,7 @@ namespace Innovt.Contrib.AuthorizationRoles.AspNetCore
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> AssignRole(AssignRoleCommand command,
+        public async Task<IActionResult> AssignRole([FromBody] AssignRoleCommand command,
             CancellationToken cancellationToken = default)
         {
             await authorizationAppService.AssignRole(command, cancellationToken).ConfigureAwait(false);
@@ -66,7 +65,7 @@ namespace Innovt.Contrib.AuthorizationRoles.AspNetCore
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> UnAssignRole(UnAssignUserRoleCommand command,
+        public async Task<IActionResult> UnAssignRole([FromBody] UnAssignUserRoleCommand command,
             CancellationToken cancellationToken = default)
         {
             await authorizationAppService.UnAssignRole(command, cancellationToken).ConfigureAwait(false);

@@ -9,7 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Innovt.Contrib.AuthorizationRoles.AspNetCore\Innovt.Contrib.AuthorizationRoles.AspNetCore.csproj" />
+    <ProjectReference
+      Include="..\Innovt.Contrib.AuthorizationRoles.AspNetCore\Innovt.Contrib.AuthorizationRoles.AspNetCore.csproj" />
   </ItemGroup>
 
 </Project>

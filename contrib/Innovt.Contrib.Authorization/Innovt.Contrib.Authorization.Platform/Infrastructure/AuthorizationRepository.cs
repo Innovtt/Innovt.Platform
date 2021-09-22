@@ -4,6 +4,7 @@
 // Date: 2021-06-02
 
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Innovt.Cloud.AWS.Configuration;
@@ -13,6 +14,7 @@ using Innovt.Contrib.Authorization.Platform.Domain;
 using Innovt.Contrib.Authorization.Platform.Domain.Filters;
 using Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel;
 using Innovt.Core.CrossCutting.Log;
+using Innovt.Core.Utilities;
 using Innovt.Domain.Security;
 using IAuthorizationRepository = Innovt.Contrib.Authorization.Platform.Domain.IAuthorizationRepository;
 
@@ -39,6 +41,30 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure
                 .ConfigureAwait(false);
 
             return AdminUserDataModel.ToUser(user);
+        }
+
+        public async Task<IList<Role>> GetUserRolesBy(RoleByUserFilter filter, CancellationToken cancellationToken)
+        {
+            if (filter is null) throw new ArgumentNullException(nameof(filter));
+
+            var request = new QueryRequest()
+            {
+                KeyConditionExpression = "PK=:pk AND begins_with(SK,:sk)"
+            };
+
+            if (filter.ExternalId.IsNotNullOrEmpty())
+            {
+                request.Filter = new { pk = $"U#{filter.ExternalId}", sk = "DID#" };
+            }
+            else
+            {
+                request.IndexName = "SK-PK-Index"; 
+                request.Filter = new { pk = $"DID#{filter.DomainId}", sk = "U#", };
+            }
+
+            var user = await QueryFirstOrDefaultAsync<UserDataModel>(request, cancellationToken).ConfigureAwait(false);
+
+            return UserDataModel.ToUser(user)?.Roles;
         }
 
         public async Task Save(AdminUser adminUser, CancellationToken cancellationToken)

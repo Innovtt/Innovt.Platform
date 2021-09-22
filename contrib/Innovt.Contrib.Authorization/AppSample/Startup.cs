@@ -1,8 +1,7 @@
 // Company: Antecipa
 // Project: AppSample
 // Solution: Innovt.Contrib.Authorization
-// Date: 2021-08-07
-
+// Date: 2021-09-20
 
 using Innovt.Contrib.AuthorizationRoles.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
@@ -32,11 +31,11 @@ namespace AppSample
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AppSample", Version = "v1" });
             });
 
-            //services.AddInnovtRolesAdminAuthorization();
+            services.AddInnovtRolesAdminAuthorization();
 
-            services.AddInnovtRolesAuthorization();
-            
-            services.AddAuthentication("Token");
+            //services.AddInnovtRolesAuthorization();
+
+            //services.AddAuthentication("Token");
 
             //services.AddAuthorization();
 
@@ -53,10 +52,10 @@ namespace AppSample
 
             //services.AddInnovtRolesAuthorization();
 
-            services.AddAuthorization(options =>
-            {
-                options.FallbackPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-            });
+            //services.AddAuthorization(options =>
+            //{
+            //    options.FallbackPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+            //});
 
 
             services.AddControllers(s =>
@@ -79,9 +78,7 @@ namespace AppSample
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger(op =>
-                { op.SerializeAsV2 = true;
-                });
+                app.UseSwagger(op => { op.SerializeAsV2 = true; });
                 app.UseSwaggerUI(c =>
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "AppSample v1"));
             }

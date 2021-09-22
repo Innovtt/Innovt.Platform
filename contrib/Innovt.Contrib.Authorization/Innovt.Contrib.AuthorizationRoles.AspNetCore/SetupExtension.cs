@@ -1,7 +1,7 @@
 ﻿// Company: Antecipa
 // Project: Innovt.Contrib.AuthorizationRoles.AspNetCore
 // Solution: Innovt.Contrib.Authorization
-// Date: 2021-09-17
+// Date: 2021-09-20
 
 using Innovt.AspNetCore.Handlers;
 using Innovt.Contrib.Authorization.Platform.Domain;
@@ -25,10 +25,11 @@ namespace Innovt.Contrib.AuthorizationRoles.AspNetCore
         {
             _ = new AuthorizationModule(services);
 
-            var provider = services.BuildServiceProvider();
-
-            services.AddScoped<Innovt.Domain.Security.IAuthorizationRepository>(p => provider.GetService<IAuthorizationRepository>());
-
+            
+            services.AddScoped<Innovt.Domain.Security.IAuthorizationRepository>(provider =>
+                provider.GetRequiredService<IAuthorizationRepository>()
+            );
+            
             services.AddScoped<IAuthorizationHandler, RolesAuthorizationHandler>();
         }
     }

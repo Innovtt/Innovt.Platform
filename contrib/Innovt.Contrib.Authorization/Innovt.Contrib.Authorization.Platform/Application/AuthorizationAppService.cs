@@ -4,9 +4,11 @@
 // Date: 2021-06-02
 
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Innovt.Contrib.Authorization.Platform.Application.Commands;
+using Innovt.Contrib.Authorization.Platform.Application.Dtos;
 using Innovt.Contrib.Authorization.Platform.Domain;
 using Innovt.Contrib.Authorization.Platform.Domain.Filters;
 using Innovt.Core.Exceptions;
@@ -36,7 +38,7 @@ namespace Innovt.Contrib.Authorization.Platform.Application
 
             if (adminUser != null && command.Password.Md5Hash() != adminUser.PasswordHash)
                 throw new BusinessException(Messages.InvalidUserOrPassword);
-
+            
 
             adminUser ??= new AdminUser
             {
@@ -70,6 +72,15 @@ namespace Innovt.Contrib.Authorization.Platform.Application
             };
 
             await authorizationRepository.Save(user, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<IList<RoleDto>> GetUserRoles(RoleByUserFilter filter, CancellationToken cancellationToken)
+        {
+            filter.EnsureIsValid();
+            
+            var roles = await authorizationRepository.GetUserRolesBy(filter,cancellationToken).ConfigureAwait(false);
+            
+            return RoleDto.FromDomain(roles);
         }
 
         public async Task RemoveUser(RemoveUserCommand command, CancellationToken cancellationToken)

@@ -4,6 +4,7 @@
 // Date: 2021-09-20
 
 using System;
+using Amazon.Runtime;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Contrib.Authorization.Platform.Application;
 using Innovt.Contrib.Authorization.Platform.Domain;
@@ -11,6 +12,7 @@ using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.CrossCutting.Log.Serilog;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Innovt.Contrib.Authorization.Platform.Infrastructure.IOC
 {
@@ -21,15 +23,11 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.IOC
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddScoped<IAuthorizationAppService, AuthorizationAppService>();
-
             services.AddScoped<IAuthorizationRepository, AuthorizationRepository>();
-
-            var builder = services.BuildServiceProvider();
-
-            if (builder.GetService<ILogger>() is null) services.AddSingleton<ILogger, Logger>();
-
-            if (builder.GetService<IAwsConfiguration>() is null)
-                services.AddScoped<IAwsConfiguration, DefaultAWSConfiguration>();
+            
+            services.TryAddScoped<IAwsConfiguration, DefaultAWSConfiguration>();
+            
+            services.TryAddScoped<ILogger, Logger>();
         }
     }
 }

@@ -1,7 +1,7 @@
 // Company: Antecipa
 // Project: Innovt.Contrib.Authorization.Platform.Tests
 // Solution: Innovt.Contrib.Authorization
-// Date: 2021-06-02
+// Date: 2021-09-20
 
 using System;
 using System.Threading;

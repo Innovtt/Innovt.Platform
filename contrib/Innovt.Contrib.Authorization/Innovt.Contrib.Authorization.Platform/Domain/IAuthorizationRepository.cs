@@ -3,6 +3,7 @@
 // Solution: Innovt.Contrib.Authorization
 // Date: 2021-09-20
 
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Innovt.Contrib.Authorization.Platform.Domain.Filters;
@@ -19,5 +20,6 @@ namespace Innovt.Contrib.Authorization.Platform.Domain
         Task RemoveUser(AuthUser user, CancellationToken cancellationToken);
 
         Task<AdminUser> GetAdminUser(UserFilter userFilter, CancellationToken cancellationToken);
+        Task<IList<Role>> GetUserRolesBy(RoleByUserFilter filter, CancellationToken cancellationToken);
     }
 }
