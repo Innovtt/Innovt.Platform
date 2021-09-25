@@ -124,7 +124,7 @@ namespace Innovt.Contrib.Authorization.Platform.Application
 
             user.UnAssignRole(command.Scope, command.RoleName);
 
-            await authorizationRepository.Save(user, cancellationToken).ConfigureAwait(false);
+             await authorizationRepository.Save(user, cancellationToken).ConfigureAwait(false);
         }
     }
 }

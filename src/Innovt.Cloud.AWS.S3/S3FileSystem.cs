@@ -219,9 +219,9 @@ namespace Innovt.Cloud.AWS.S3
                 BucketName = bucketName,
                 Directory = directory,
                 UploadFilesConcurrently = true,
-                CannedACL = fileAcl ?? new S3CannedACL(fileAcl),
-                ServerSideEncryptionMethod = serverSideEncryptionMethod ??
-                                             new ServerSideEncryptionMethod(serverSideEncryptionMethod)
+                CannedACL = fileAcl is null ? null : new S3CannedACL(fileAcl),
+                ServerSideEncryptionMethod = serverSideEncryptionMethod is null ? null :
+                    new ServerSideEncryptionMethod(serverSideEncryptionMethod)
             };
 
             var policy = base.CreateDefaultRetryAsyncPolicy();
@@ -360,10 +360,10 @@ namespace Innovt.Cloud.AWS.S3
                 SourceBucket = sourceBucket,
                 SourceKey = sourceKey,
                 DestinationBucket = destinationBucket,
-                CannedACL = fileAcl ?? new S3CannedACL(fileAcl),
                 DestinationKey = destinationKey,
-                ServerSideEncryptionMethod = serverSideEncryptionMethod ??
-                                             new ServerSideEncryptionMethod(serverSideEncryptionMethod)
+                CannedACL = fileAcl is null ? null : new S3CannedACL(fileAcl),
+                ServerSideEncryptionMethod = serverSideEncryptionMethod is null ? null :
+                    new ServerSideEncryptionMethod(serverSideEncryptionMethod)
             };
 
             var response =
@@ -409,9 +409,9 @@ namespace Innovt.Cloud.AWS.S3
                 InputStream = stream,
                 ContentType = contentType,
                 AutoCloseStream = true,
-                CannedACL = fileAcl ?? new S3CannedACL(fileAcl),
-                ServerSideEncryptionMethod = serverSideEncryptionMethod ??
-                                             new ServerSideEncryptionMethod(serverSideEncryptionMethod)
+                CannedACL = fileAcl is null ? null : new S3CannedACL(fileAcl),
+                ServerSideEncryptionMethod = serverSideEncryptionMethod is null ? null :
+                    new ServerSideEncryptionMethod(serverSideEncryptionMethod)
             };
 
             var result =
@@ -441,11 +441,11 @@ namespace Innovt.Cloud.AWS.S3
                 StorageClass = S3StorageClass.Standard,
                 InputStream = stream,
                 AutoResetStreamPosition = true,
-                CannedACL = fileAcl ?? new S3CannedACL(fileAcl),
                 AutoCloseStream = true,
                 Key = fileName,
-                ServerSideEncryptionMethod = serverSideEncryptionMethod ??
-                                             new ServerSideEncryptionMethod(serverSideEncryptionMethod)
+                CannedACL = fileAcl is null ? null : new S3CannedACL(fileAcl),
+                ServerSideEncryptionMethod = serverSideEncryptionMethod == null ? null :
+                    new ServerSideEncryptionMethod(serverSideEncryptionMethod)
             };
 
             if (metadata == null) return request;

@@ -55,5 +55,13 @@ namespace Innovt.Domain.Security
 
             Permissions.Remove(permission);
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is not Role role)
+                return false;
+
+            return role.Name == this.Name && this.Scope == role.Scope;
+        }
     }
 }

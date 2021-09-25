@@ -46,7 +46,11 @@ namespace Innovt.Domain.Security
 
         public void UnAssignRole(string scope, string roleName)
         {
-            var role = Roles?.SingleOrDefault(r => r.Scope == scope && r.Name == roleName);
+            if (scope == null) throw new ArgumentNullException(nameof(scope));
+            if (roleName == null) throw new ArgumentNullException(nameof(roleName));
+           
+            var role = Roles?.SingleOrDefault(r => r.Scope.Equals(scope, StringComparison.OrdinalIgnoreCase) 
+                                                   && r.Name.Equals(roleName, StringComparison.OrdinalIgnoreCase));
 
             if (role is null)
                 return;
