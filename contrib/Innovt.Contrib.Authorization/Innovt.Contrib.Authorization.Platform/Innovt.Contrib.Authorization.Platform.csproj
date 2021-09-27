@@ -3,7 +3,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <PackageId>Innovt.Contrib.Authorization.Platform</PackageId>
-    <PackageVersion>1.0.3</PackageVersion>
+    <PackageVersion>1.0.4</PackageVersion>
     <Authors>Michel Borges</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -13,10 +13,7 @@
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.0.72" />
-    <PackageReference Include="Innovt.Cloud.AWS.Dynamo" Version="5.0.22" />
-    <PackageReference Include="Innovt.Domain" Version="5.0.22" />
-    <PackageReference Include="Innovt.CrossCutting.Log.Serilog" Version="5.0.22" />
+    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.0.73" />
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -41,6 +38,12 @@
   <ItemGroup>
     <Folder Include="Application\Dtos\" />
     <Folder Include="Infrastructure\IOC\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Innovt.Cloud.AWS.Dynamo\Innovt.Cloud.AWS.Dynamo.csproj" />
+    <ProjectReference Include="..\..\..\src\Innovt.CrossCutting.Log.Serilog\Innovt.CrossCutting.Log.Serilog.csproj" />
+    <ProjectReference Include="..\..\..\src\Innovt.Domain\Innovt.Domain.csproj" />
   </ItemGroup>
 
 </Project>

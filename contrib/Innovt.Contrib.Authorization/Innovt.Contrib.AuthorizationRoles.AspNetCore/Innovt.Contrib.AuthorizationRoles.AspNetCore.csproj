@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <PackageId>Innovt.Contrib.AuthorizationRoles.AspNetCore</PackageId>
-    <PackageVersion>1.0.3</PackageVersion>
+    <PackageVersion>1.0.4</PackageVersion>
     <Authors>Michel Borges</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -13,9 +13,9 @@
   </PropertyGroup>
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Innovt.AspNetCore" Version="5.0.22" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Innovt.AspNetCore\Innovt.AspNetCore.csproj" />
     <ProjectReference Include="..\Innovt.Contrib.Authorization.Platform\Innovt.Contrib.Authorization.Platform.csproj" />
   </ItemGroup>
 </Project>
