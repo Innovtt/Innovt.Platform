@@ -9,14 +9,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Innovt.AspNetCore.Extensions;
+using Innovt.Core.Collections;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Utilities;
 using Innovt.Domain.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Primitives;
 
 
 namespace Innovt.AspNetCore.Handlers
@@ -25,7 +29,7 @@ namespace Innovt.AspNetCore.Handlers
     {
         private readonly IAuthorizationRepository securityRepository;
         private readonly ILogger logger;
-
+        
         public RolesAuthorizationHandler(IAuthorizationRepository securityRepository, ILogger logger)
         {
             this.securityRepository = securityRepository ?? throw new ArgumentNullException(nameof(securityRepository));
@@ -33,10 +37,33 @@ namespace Innovt.AspNetCore.Handlers
         }
 
         private static string GetUserId(AuthorizationHandlerContext context)
-        {
+        {   
             var userId = context.User?.GetClaim(ClaimTypes.NameIdentifier);
-
+           
             return userId ?? string.Empty;
+        }
+
+        private static string GetCurrentScope(AuthorizationHandlerContext context)
+        {
+            var scope = string.Empty;
+
+            if (context.Resource is not HttpContext httpContext) return scope;
+            
+            if(httpContext.Request.Headers.TryGetValue(Constants.HeaderApplicationScope, out var appScope))
+            {
+                scope = appScope.ToString();
+            }
+
+            if (!httpContext.Request.Headers.TryGetValue(Constants.HeaderApplicationContext, out var headerContext))
+                return scope;
+            
+            if (!httpContext.Request.Headers.TryGetValue(headerContext, out var applicationContext))
+                return scope;
+
+            if (applicationContext.IsNullOrEmpty())
+                return scope;
+            
+            return scope.IsNullOrEmpty() ? applicationContext : $"{applicationContext}::{scope}";
         }
 
         private static void SetUserDomainId(AuthUser authUser,AuthorizationHandlerContext context)
@@ -46,13 +73,9 @@ namespace Innovt.AspNetCore.Handlers
 
         private static bool IsUserAuthenticated(AuthorizationHandlerContext context)
         {
-            if (context?.User.Identity is null)
-                return false;
-
-            return context.User.Identity.IsAuthenticated;
+            return context?.User.Identity is not null && context.User.Identity.IsAuthenticated;
         }
-
-
+        
         private void Fail(AuthorizationHandlerContext context, string reason)
         {  
             logger.Warning(reason);
@@ -90,7 +113,9 @@ namespace Innovt.AspNetCore.Handlers
                 return;
             }
 
-            var hasPermission = roles.Any(r => requirement.AllowedRoles.Contains(r.Name, StringComparer.OrdinalIgnoreCase));
+            var scope = GetCurrentScope(context);
+
+            var hasPermission = roles.Any(r => r.Scope == scope && requirement.AllowedRoles.Contains(r.Name, StringComparer.OrdinalIgnoreCase));
             
             if (hasPermission)
             {

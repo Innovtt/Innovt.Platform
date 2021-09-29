@@ -5,12 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference
-      Include="..\Innovt.Contrib.AuthorizationRoles.AspNetCore\Innovt.Contrib.AuthorizationRoles.AspNetCore.csproj" />
+    <ProjectReference Include="..\Innovt.Contrib.AuthorizationRoles.AspNetCore\Innovt.Contrib.AuthorizationRoles.AspNetCore.csproj" />
   </ItemGroup>
 
 </Project>

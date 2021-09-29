@@ -6,6 +6,7 @@
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
+using Innovt.AspNetCore.Extensions;
 using Innovt.AspNetCore.Filters;
 using Innovt.AspNetCore.Infrastructure;
 using Innovt.AspNetCore.Model;

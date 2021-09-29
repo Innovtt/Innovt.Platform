@@ -97,7 +97,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Contrib.Authorizatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Contrib.Authorization.Platform", "..\contrib\Innovt.Contrib.Authorization\Innovt.Contrib.Authorization.Platform\Innovt.Contrib.Authorization.Platform.csproj", "{F7B6B8CC-395C-4C2F-98BC-2C5899800C7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innovt.Domain.Tests", "Innovt.Domain.Tests\Innovt.Domain.Tests.csproj", "{E66CD328-2137-4D6A-A8E1-EA421234EDA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Domain.Tests", "Innovt.Domain.Tests\Innovt.Domain.Tests.csproj", "{E66CD328-2137-4D6A-A8E1-EA421234EDA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

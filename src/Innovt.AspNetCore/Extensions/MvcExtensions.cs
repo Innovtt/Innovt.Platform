@@ -15,6 +15,7 @@ using System.Text;
 using System.Text.Json;
 using Innovt.AspNetCore.Utility.Pagination;
 using Innovt.Core.Exceptions;
+using Innovt.Core.Utilities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -31,6 +32,7 @@ namespace Innovt.AspNetCore.Extensions
 {
     public static class MvcExtensions
     {
+
         /// <summary>
         ///     Default Cultures are en, en-US, pt-BR
         /// </summary>
@@ -48,6 +50,30 @@ namespace Innovt.AspNetCore.Extensions
             {
                 DefaultRequestCulture = new RequestCulture("pt-BR"),
                 SupportedCultures = supportedCultures
+            });
+        }
+
+        public static IApplicationBuilder UseApplicationScope(this IApplicationBuilder app,string scope)
+        {
+            if (scope.IsNullOrEmpty())
+                return app;
+
+            return app.Use(async (context, next) =>
+            {
+                context.Request.Headers.Add(Constants.HeaderApplicationScope, scope);
+                await next().ConfigureAwait(false);
+            });
+        }
+        
+        public static IApplicationBuilder SetHeaderApplicationContext(this IApplicationBuilder app, string headerContext)
+        {
+            if (headerContext.IsNullOrEmpty())
+                return app;
+
+            return app.Use(async (context, next) =>
+            {
+                context.Request.Headers.Add(Constants.HeaderApplicationContext, headerContext);
+                await next().ConfigureAwait(false);
             });
         }
 

@@ -3,10 +3,12 @@
 // Solution: Innovt.Contrib.Authorization
 // Date: 2021-09-20
 
+using System.Threading.Tasks;
 using Innovt.Contrib.AuthorizationRoles.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,7 +33,9 @@ namespace AppSample
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AppSample", Version = "v1" });
             });
 
-            services.AddInnovtRolesAdminAuthorization();
+
+
+//            services.AddInnovtRolesAdminAuthorization();
 
             //services.AddInnovtRolesAuthorization();
 
@@ -51,10 +55,12 @@ namespace AppSample
             //});
 
             //services.AddInnovtRolesAuthorization();
-
+            
             //services.AddAuthorization(options =>
             //{
-            //    options.FallbackPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+            //    options.FallbackPolicy = new AuthorizationPolicyBuilder("")
+            //        .RequireAuthenticatedUser()
+            //        .Build();
             //});
 
 
@@ -68,7 +74,6 @@ namespace AppSample
             });
 
             //services.AddScoped<IAuthorizationHandler, RolesAuthorizationHandler>();
-
             //services.AddScoped<IdentityUserRole, SampleAuthorizationService>();
         }
 
@@ -87,8 +92,12 @@ namespace AppSample
 
             app.UseRouting();
 
-            app.UseAuthentication();
-            app.UseAuthorization();
+            app.Use(async (context, next) =>
+            {
+                context.Request.Headers.Add("X-AppName", "Your Name");
+                await next();
+            });
+
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
