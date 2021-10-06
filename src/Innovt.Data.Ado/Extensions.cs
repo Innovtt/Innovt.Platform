@@ -38,5 +38,19 @@ namespace Innovt.Data.Ado
                     return $"{rawSql} OFFSET {recordStart} ROWS FETCH NEXT @PageSize ROWS ONLY";
             }
         }
+
+        internal static string AddNoLock(this string rawSql,IDataSource dataSource)
+        {
+            return dataSource.Provider switch
+            {
+                Provider.PostgreSqL => rawSql,
+                _ => rawSql + " WITH(NOLOCK) "
+            };
+        }
+
+        internal static string AddWhere(this string rawSql,string whereClause)
+        {
+            return whereClause.IsNullOrEmpty() ? rawSql : $"{rawSql} WHERE {whereClause}";
+        }
     }
 }

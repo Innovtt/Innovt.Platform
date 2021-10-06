@@ -18,7 +18,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Amazon.CognitoIdentityProvider;
 using Amazon.CognitoIdentityProvider.Model;
-using Amazon.Runtime.Internal.Transform;
 using Innovt.Cloud.AWS.Cognito.Model;
 using Innovt.Cloud.AWS.Cognito.Resources;
 using Innovt.Cloud.AWS.Configuration;
@@ -78,7 +77,7 @@ namespace Innovt.Cloud.AWS.Cognito
 
             var forgotRequest = new Amazon.CognitoIdentityProvider.Model.ForgotPasswordRequest
             {
-                Username = command.UserName.ToLower(cultureInfo),
+                Username = command.UserName.Trim().ToLower(cultureInfo),
                 ClientId = clientId,
                 UserContextData = new UserContextDataType
                 {
@@ -192,7 +191,7 @@ namespace Innovt.Cloud.AWS.Cognito
             var signUpRequest = new SignUpRequest
             {
                 ClientId = clientId,
-                Username = command.UserName.ToLower(cultureInfo),
+                Username = command.UserName.Trim().ToLower(cultureInfo),
                 Password = command.Password,
                 UserContextData = new UserContextDataType
                 {
@@ -262,7 +261,7 @@ namespace Innovt.Cloud.AWS.Cognito
             var confirmSignUpRequest = new Amazon.CognitoIdentityProvider.Model.ConfirmSignUpRequest
             {
                 ClientId = clientId,
-                Username = request.UserName.ToLower(cultureInfo),
+                Username = request.UserName.Trim().ToLower(cultureInfo),
                 ConfirmationCode = request.ConfirmationCode,
                 UserContextData = new UserContextDataType
                 {
@@ -296,7 +295,7 @@ namespace Innovt.Cloud.AWS.Cognito
             var resendCodeRequest = new Amazon.CognitoIdentityProvider.Model.ResendConfirmationCodeRequest
             {
                 ClientId = clientId,
-                Username = command.UserName.ToLower(cultureInfo),
+                Username = command.UserName.Trim().ToLower(cultureInfo),
                 UserContextData = new UserContextDataType
                 {
                     EncodedData =
@@ -430,7 +429,7 @@ namespace Innovt.Cloud.AWS.Cognito
 
             var challengeResponses = new Dictionary<string, string>
             {
-                {"USERNAME", command.UserName.ToLower(cultureInfo)}
+                {"USERNAME", command.UserName.Trim().ToLower(cultureInfo)}
             };
 
             switch (command.ChallengeName)
@@ -505,7 +504,7 @@ namespace Innovt.Cloud.AWS.Cognito
                 var respond = new Amazon.CognitoIdentityProvider.Model.ConfirmForgotPasswordRequest
                 {
                     ClientId = clientId,
-                    Username = command.UserName.ToLower(cultureInfo),
+                    Username = command.UserName.Trim().ToLower(cultureInfo),
                     Password = command.Password,
                     ConfirmationCode = command.ConfirmationCode,
                     UserContextData = new UserContextDataType
@@ -652,16 +651,18 @@ namespace Innovt.Cloud.AWS.Cognito
         {
             throw ex switch
             {
-                UsernameExistsException _ => new BusinessException(ErrorCode.UsernameAlreadyExists, ex),
-                NotAuthorizedException _ => new BusinessException(ErrorCode.NotAuthorized, ex),
-                TooManyRequestsException _ => new BusinessException(ErrorCode.TooManyRequests, ex),
-                PasswordResetRequiredException _ => new BusinessException(ErrorCode.PasswordResetRequired, ex),
-                UserNotFoundException _ => new BusinessException(ErrorCode.UserNotFound, ex),
-                UserNotConfirmedException _ => new BusinessException(ErrorCode.UserNotConfirmed, ex),
-                InvalidPasswordException _ => new BusinessException(ErrorCode.InvalidPassword, ex),
-                CodeMismatchException _ => new BusinessException(ErrorCode.CodeMismatch, ex),
-                ExpiredCodeException _ => new BusinessException(ErrorCode.ExpiredCode, ex),
-                LimitExceededException _ => new BusinessException(ErrorCode.LimitExceeded, ex),
+                UsernameExistsException => new BusinessException(ErrorCode.UsernameAlreadyExists, ex),
+                NotAuthorizedException => new BusinessException(ErrorCode.NotAuthorized, ex),
+                TooManyRequestsException => new BusinessException(ErrorCode.TooManyRequests, ex),
+                PasswordResetRequiredException => new BusinessException(ErrorCode.PasswordResetRequired, ex),
+                UserNotFoundException => new BusinessException(ErrorCode.UserNotFound, ex),
+                UserNotConfirmedException => new BusinessException(ErrorCode.UserNotConfirmed, ex),
+                InvalidPasswordException => new BusinessException(ErrorCode.InvalidPassword, ex),
+                CodeMismatchException => new BusinessException(ErrorCode.CodeMismatch, ex),
+                ExpiredCodeException => new BusinessException(ErrorCode.ExpiredCode, ex),
+                LimitExceededException => new BusinessException(ErrorCode.LimitExceeded, ex),
+                InvalidParameterException ipEx => ipEx.Message == "Cannot reset password for the user as there is no registered / verified email or phone_number" ?
+                new BusinessException(ErrorCode.UserNotConfirmed, ex): ipEx,
                 BusinessException _ => ex,
                 _ => new CriticalException(ErrorCode.InternalServerError, ex)
             };
@@ -687,7 +688,7 @@ namespace Innovt.Cloud.AWS.Cognito
                 }
             };
 
-            authRequest.AuthParameters.Add("USERNAME", request.UserName.ToLower(cultureInfo));
+            authRequest.AuthParameters.Add("USERNAME", request.UserName.Trim().ToLower(cultureInfo));
 
             if (authParameters != null)
                 foreach (var (key, value) in authParameters)

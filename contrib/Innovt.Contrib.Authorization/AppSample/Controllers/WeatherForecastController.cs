@@ -16,7 +16,7 @@ namespace AppSample.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-   // [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries =

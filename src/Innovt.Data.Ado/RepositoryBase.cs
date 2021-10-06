@@ -63,7 +63,7 @@ namespace Innovt.Data.Ado
         public async Task<T> QuerySingleOrDefaultAsync<T>(string tableName, string whereClause, object filter = null,
             CancellationToken cancellationToken = default, params string[] columns)
         {
-            var sql = $"SELECT {string.Join(",", columns)} FROM [{tableName}] WITH(NOLOCK) WHERE {whereClause}";
+            var sql = $"SELECT {string.Join(",", columns)} FROM [{tableName}]".AddNoLock(dataSource).AddWhere(whereClause);
 
             return await QuerySingleOrDefaultInternalAsync<T>(sql, filter, cancellationToken).ConfigureAwait(false);
         }
@@ -93,8 +93,7 @@ namespace Innovt.Data.Ado
 
             return await QueryInternalAsync(sql, filter, func, splitOn, cancellationToken).ConfigureAwait(false);
         }
-
-
+        
         public async Task<IEnumerable<TReturn>> QueryAsync<TFirst, TSecond, TThird, TReturn>(string sql, object filter,
             Func<TFirst, TSecond, TThird, TReturn> func, string splitOn, CancellationToken cancellationToken = default)
         {
@@ -148,8 +147,7 @@ namespace Innovt.Data.Ado
             var orderByIndex = sql.LastIndexOf("ORDER BY", StringComparison.CurrentCultureIgnoreCase);
 
             if (orderByIndex <= 0)
-                throw new SqlSyntaxException(
-                    "ORDER BY Clause not found. To filter as paged you need to provide an ORDER BY Clause.");
+                throw new SqlSyntaxException("ORDER BY Clause not found. To filter as paged you need to provide an ORDER BY Clause.");
 
             var newSql = sql.Substring(0, orderByIndex);
 
@@ -165,7 +163,7 @@ namespace Innovt.Data.Ado
                 return new PagedCollection<T>(pagedResult, filter.Page, filter.PageSize);
             }
 
-            var queryCount = $"SELECT COUNT(1) FROM ({newSql}) C WITH(NOLOCK)";
+            var queryCount = $"SELECT COUNT(1) FROM ({newSql}) C".AddNoLock(dataSource);
 
             var totalRecords = 0;
             IEnumerable<T> queryResult = null;
@@ -225,7 +223,7 @@ namespace Innovt.Data.Ado
         {
             var fields = string.Join(",", columns);
 
-            var sql = $"SELECT TOP 1 {fields} FROM [{tableName}] WITH(NOLOCK) WHERE {whereClause}";
+            var sql = $"SELECT TOP 1 {fields} FROM [{tableName}] ".AddNoLock(dataSource).AddWhere(whereClause);
 
             return await QueryFirstOrDefaultInternalAsync<T>(sql, filter, cancellationToken).ConfigureAwait(false);
         }
@@ -242,10 +240,8 @@ namespace Innovt.Data.Ado
         private async Task<int> QueryCountInternalAsync(string tableName, string whereClause = null,
             object filter = null, CancellationToken cancellationToken = default)
         {
-            var sql = $"SELECT COUNT(1) FROM [{tableName}] WITH(NOLOCK)";
-
-            if (whereClause.IsNotNullOrEmpty()) sql += $" WHERE {whereClause} ";
-
+            var sql = $"SELECT COUNT(1) FROM [{tableName}] ".AddNoLock(dataSource).AddWhere(whereClause);
+            
             return await QuerySingleOrDefaultAsync<int>(sql, filter, cancellationToken).ConfigureAwait(false);
         }
 

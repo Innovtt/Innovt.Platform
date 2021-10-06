@@ -4,6 +4,8 @@
 // Date: 2021-09-20
 
 using System.Threading.Tasks;
+using Innovt.AspNetCore.Extensions;
+using Innovt.AspNetCore.Handlers;
 using Innovt.Contrib.AuthorizationRoles.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -32,36 +34,15 @@ namespace AppSample
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AppSample", Version = "v1" });
             });
-
-
-
-//            services.AddInnovtRolesAdminAuthorization();
-
-            //services.AddInnovtRolesAuthorization();
-
-            //services.AddAuthentication("Token");
-
-            //services.AddAuthorization();
-
-            //services.AddControllers();
-
-            //services.AddMvc(s =>
-            //{
-            //    var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-
-            //    s.Filters.Add(new AuthorizeFilter(policy));
-
-            //    s.Filters.Add(typeof(AuthorizationFilter));
-            //});
-
-            //services.AddInnovtRolesAuthorization();
             
-            //services.AddAuthorization(options =>
-            //{
-            //    options.FallbackPolicy = new AuthorizationPolicyBuilder("")
-            //        .RequireAuthenticatedUser()
-            //        .Build();
-            //});
+            services.AddInnovtRolesAuthorization();
+
+            services.AddAuthorization(options =>
+            {
+                options.FallbackPolicy = new AuthorizationPolicyBuilder("")
+                    .RequireAuthenticatedUser()
+                    .Build();
+            });
 
 
             services.AddControllers(s =>
@@ -73,7 +54,7 @@ namespace AppSample
                 //s.Filters.Add(new AuthorizationFilter());
             });
 
-            //services.AddScoped<IAuthorizationHandler, RolesAuthorizationHandler>();
+            services.AddScoped<IAuthorizationHandler, RolesAuthorizationHandler>();
             //services.AddScoped<IdentityUserRole, SampleAuthorizationService>();
         }
 
@@ -90,14 +71,11 @@ namespace AppSample
 
             app.UseHttpsRedirection();
 
+            app.UseApplicationScope("Supplier").SetHeaderApplicationContext("company-id");
+
             app.UseRouting();
 
-            app.Use(async (context, next) =>
-            {
-                context.Request.Headers.Add("X-AppName", "Your Name");
-                await next();
-            });
-
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }

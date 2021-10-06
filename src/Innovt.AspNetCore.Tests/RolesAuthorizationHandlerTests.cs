@@ -150,7 +150,7 @@ namespace Innovt.AspNetCore.Tests
 
             group.AssignRole(new Role()
             {
-                Scope = "",//no scope
+                Scope = "User",//no scope
                 Name = role
             });
 

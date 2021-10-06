@@ -62,7 +62,7 @@ namespace Innovt.AspNetCore.Handlers
 
             if (applicationContext.IsNullOrEmpty())
                 return scope;
-            
+       
             return scope.IsNullOrEmpty() ? applicationContext : $"{applicationContext}::{scope}";
         }
 
@@ -115,7 +115,9 @@ namespace Innovt.AspNetCore.Handlers
 
             var scope = GetCurrentScope(context);
 
-            var hasPermission = roles.Any(r => r.Scope == scope && requirement.AllowedRoles.Contains(r.Name, StringComparer.OrdinalIgnoreCase));
+            var hasPermission = scope.IsNullOrEmpty()
+                                ? roles.Any(r => requirement.AllowedRoles.Contains(r.Name, StringComparer.OrdinalIgnoreCase)) :
+                                 roles.Any(r => r.Scope == scope && requirement.AllowedRoles.Contains(r.Name, StringComparer.OrdinalIgnoreCase));
             
             if (hasPermission)
             {
