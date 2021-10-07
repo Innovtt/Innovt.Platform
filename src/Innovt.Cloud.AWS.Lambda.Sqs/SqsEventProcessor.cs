@@ -12,6 +12,7 @@ using Amazon.Lambda.SQSEvents;
 using Innovt.Cloud.Queue;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Serialization;
+using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.Lambda.Sqs
 {
@@ -43,13 +44,15 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
         protected override async Task Handle(SQSEvent message, ILambdaContext context)
         {
             Logger.Info($"Processing Sqs event With {message?.Records?.Count} records.");
-                        
+
+            using var watcher = new StopWatchHelper(Logger, nameof(Handle));
+
             if (message?.Records == null) return;
             if (message.Records.Count == 0) return;
 
             using var activity = EventProcessorActivitySource.StartActivity(nameof(Handle));
             activity?.SetTag("SqsMessageRecordsCount", message?.Records?.Count);
-                
+
             foreach (var record in message.Records)
             {
                 Logger.Info($"Processing SQS Event message ID {record.MessageId}.");
@@ -76,7 +79,7 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
 
                 activity?.SetTag("SqsMessageId", queueMessage.MessageId);
                 activity?.SetTag("SqsMessageApproximateFirstReceiveTimestamp", queueMessage.ApproximateFirstReceiveTimestamp);
-                activity?.SetTag("SqsMessageApproximateReceiveCount", queueMessage.ApproximateReceiveCount);                             
+                activity?.SetTag("SqsMessageApproximateReceiveCount", queueMessage.ApproximateReceiveCount);
                 activity?.AddBaggage("Message.ElapsedTimeBeforeAttendedInMilliseconds", $"{queueMessage.ApproximateFirstReceiveTimestamp.GetValueOrDefault()}");
 
                 await ProcessMessage(queueMessage).ConfigureAwait(false);

@@ -14,6 +14,7 @@ using NUnit.Framework;
 
 namespace Innovt.AspNetCore.Tests
 {
+    [TestFixture]
     public class RolesAuthorizationHandlerTests
     {
         private IAuthorizationRepository authorizationRepositoryMoq;
@@ -342,6 +343,65 @@ namespace Innovt.AspNetCore.Tests
 
             var httpContext = new DefaultHttpContext();
             httpContext.Request.Headers.Add("X-Application-Scope", scope);
+            httpContext.Request.Headers.Add("X-Application-Context", "company-id");
+            httpContext.Request.Headers.Add("company-id", appCode);
+
+            var context = new AuthorizationHandlerContext(new List<IAuthorizationRequirement>()
+            {
+                new RolesAuthorizationRequirement(new []{"Admin"})
+            }, principal, httpContext);
+
+            await handle.HandleAsync(context);
+
+            Assert.IsTrue(context.HasSucceeded == success);
+            Assert.IsTrue(context.HasFailed == !success);
+
+            await authorizationRepositoryMoq.Received(1).GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
+        }
+
+        [Test]
+        [TestCase("*", "123456", true)]
+        [TestCase("*::User", "123456", true)]
+        [TestCase("User", "123456", false)]
+        public async Task HandleAsync_When_User_Has_WildCard_Scope(string scope, string appCode, bool success)
+        {
+            var group = new Group()
+            {
+                Description = "Default"
+            };
+
+            group.AssignRole(new Role()
+            {
+                Scope = scope,
+                Name = "Admin"
+            });
+
+            var user = new AuthUser()
+            {
+                Name = "Michel",
+                DomainId = "123456",
+                Id = "michel@antecipa.com"
+            };
+
+            user.AssignGroup(group);
+
+            authorizationRepositoryMoq.GetUserByExternalId(user.Id, Arg.Any<CancellationToken>())
+                .Returns(user);
+
+            var handle = new RolesAuthorizationHandler(authorizationRepositoryMoq, loggerMock);
+
+            var identity = NSubstitute.Substitute.For<ClaimsIdentity>();
+
+            identity.IsAuthenticated.Returns(true);
+            identity.Claims.Returns(new List<Claim>()
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id)
+            });
+
+            var principal = new ClaimsPrincipal(identity);
+
+            var httpContext = new DefaultHttpContext();
+            httpContext.Request.Headers.Add("X-Application-Scope", "User");
             httpContext.Request.Headers.Add("X-Application-Context", "company-id");
             httpContext.Request.Headers.Add("company-id", appCode);
 

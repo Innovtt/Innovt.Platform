@@ -20,13 +20,14 @@ using Innovt.Domain.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Primitives;
+
 
 
 namespace Innovt.AspNetCore.Handlers
 {
     public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorizationRequirement>, IAuthorizationHandler
     {
+        const string contextSeparator = "::";
         private readonly IAuthorizationRepository securityRepository;
         private readonly ILogger logger;
         
@@ -43,7 +44,7 @@ namespace Innovt.AspNetCore.Handlers
             return userId ?? string.Empty;
         }
 
-        private static string GetCurrentScope(AuthorizationHandlerContext context)
+        private static string GetApplicationContext(AuthorizationHandlerContext context)
         {
             var scope = string.Empty;
 
@@ -63,7 +64,7 @@ namespace Innovt.AspNetCore.Handlers
             if (applicationContext.IsNullOrEmpty())
                 return scope;
        
-            return scope.IsNullOrEmpty() ? applicationContext : $"{applicationContext}::{scope}";
+            return scope.IsNullOrEmpty() ? applicationContext : $"{applicationContext}{contextSeparator}{scope}";
         }
 
         private static void SetUserDomainId(AuthUser authUser,AuthorizationHandlerContext context)
@@ -80,6 +81,12 @@ namespace Innovt.AspNetCore.Handlers
         {  
             logger.Warning(reason);
             context.Fail();
+        }
+
+        private string ExtractScope(string appContext)
+        {
+            return !appContext.Contains(contextSeparator) ? appContext : 
+                    appContext.Split(contextSeparator)[1];
         }
 
         protected override async Task HandleRequirementAsync(AuthorizationHandlerContext context, RolesAuthorizationRequirement requirement)
@@ -113,11 +120,13 @@ namespace Innovt.AspNetCore.Handlers
                 return;
             }
 
-            var scope = GetCurrentScope(context);
-
-            var hasPermission = scope.IsNullOrEmpty()
+            var appContext = GetApplicationContext(context);
+            var scope      = ExtractScope(appContext);
+            
+            var hasPermission = appContext.IsNullOrEmpty()
                                 ? roles.Any(r => requirement.AllowedRoles.Contains(r.Name, StringComparer.OrdinalIgnoreCase)) :
-                                 roles.Any(r => r.Scope == scope && requirement.AllowedRoles.Contains(r.Name, StringComparer.OrdinalIgnoreCase));
+                                 roles.Any(r =>  ((r.Scope == appContext || r.Scope == "*" || r.Scope== $"*::{scope}") &&
+                                                 requirement.AllowedRoles.Contains(r.Name, StringComparer.OrdinalIgnoreCase)));
             
             if (hasPermission)
             {
