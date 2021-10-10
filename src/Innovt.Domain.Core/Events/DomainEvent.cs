@@ -41,9 +41,9 @@ namespace Innovt.Domain.Core.Events
 
         public DateTime ApproximateArrivalTimestamp { get; set; }
 
-        public static DomainEvent Empty()
+        public static DomainEvent Empty(string partition)
         {
-            return new EmptyDomainEvent("empty");
+            return new EmptyDomainEvent(partition);
         }
     }
 }

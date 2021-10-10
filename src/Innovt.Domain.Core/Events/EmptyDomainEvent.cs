@@ -9,8 +9,7 @@ using Innovt.Domain.Core.Streams;
 
 namespace Innovt.Domain.Core.Events
 {
-    internal class EmptyDomainEvent : DomainEvent, IEmptyDataStream
-        //, IEmptyDomainEvent
+    internal class EmptyDomainEvent : DomainEvent, IEmptyDataStream        
     {
         public EmptyDomainEvent(string partition) : base("empty", partition)
         {

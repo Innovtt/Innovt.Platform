@@ -34,17 +34,19 @@ namespace Innovt.Cloud.AWS.Lambda
         protected ILambdaContext Context { get; private set; }
         protected IConfigurationRoot Configuration { get; set; }
 
+        private void InitializeLogger(ILogger logger =null) {
+
+            if (Logger is { } && logger is null)
+                return;
+            
+            Logger = logger is null ? new LambdaLogger(Context.Logger) : logger;                        
+        }
         private void SetupIoc()
         {
-            if (isIocContainerInitialized)
-            {
-                Context.Logger.LogLine("IOC Container already initialized.");
-                return;
-            }
-
-            using var activity = EventProcessorActivitySource.StartActivity(nameof(SetupIoc));
-
-            Context.Logger.LogLine("Initializing IOC Container.");
+            if (isIocContainerInitialized)                            
+                return;            
+            
+            Logger.Info("Initializing IOC Container.");
 
             var container = SetupIocContainer();
 
@@ -52,32 +54,29 @@ namespace Innovt.Cloud.AWS.Lambda
             {
                 container.CheckConfiguration();
 
-                Logger = container.Resolve<ILogger>();
+                InitializeLogger(container.Resolve<ILogger>()); 
 
-                Context.Logger.LogLine("IOC Container Initialized.");
+                Logger.Info("IOC Container Initialized.");
             }
             else
             {
-                Context.Logger.LogLine("IOC Container not found.");
+                Logger.Warning("IOC Container not found.");
             }
-
-            if (Logger == null)
-            {
-                Context.Logger.LogLine(
-                    "Custom Logger not initialized. Please provide the default logger using your IOC container.");
-                Logger = new LambdaLogger(Context.Logger);
-            }
-
-            //Will check always
+            
             isIocContainerInitialized = true;
         }
-
+      
         public async Task Process(T message, ILambdaContext context)
         {
             if (message == null) throw new ArgumentNullException(nameof(message));
             if (context == null) throw new ArgumentNullException(nameof(context));
 
-            context.Logger.LogLine($"Receiving message. Function {context.FunctionName} and Version {context.FunctionVersion}");
+            Context = context;
+
+            InitializeLogger();
+
+            Logger.Info($"Receiving message. Function {context.FunctionName} and Version {context.FunctionVersion}");
+
             try
             {
                 using var activity = EventProcessorActivitySource.StartActivity(nameof(Process));
@@ -92,15 +91,13 @@ namespace Innovt.Cloud.AWS.Lambda
                     activity?.SetParentId(context.AwsRequestId);
                 }
 
-                Context = context;
-
                 SetupIoc();
 
                 await Handle(message, context).ConfigureAwait(false);
             }
             catch (Exception ex)
             {
-                Context.Logger.LogLine(ex.StackTrace);
+                Logger.Error(ex.Message, ex);                
                 throw;
             }
         }

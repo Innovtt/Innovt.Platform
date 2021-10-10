@@ -20,7 +20,7 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors
         
         protected override DomainEvent DeserializeBody(string content, string partition)
         {
-            return DomainEvent.Empty();
+            return DomainEvent.Empty(partition);
         }
         protected override IContainer SetupIocContainer()
         {   
