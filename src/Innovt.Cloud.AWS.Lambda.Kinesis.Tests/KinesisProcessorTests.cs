@@ -136,6 +136,30 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests
 
 
         [Test]
+        public async Task Process_WithCustomLogger()
+        {
+            var function = new KinesisDataInvoiceProcessorBatch(serviceMock);
+            
+            var lambdaContext = new TestLambdaContext();
+
+            var eventId = Guid.NewGuid();
+
+            var message = new KinesisEvent
+            {
+                Records = new List<KinesisEvent.KinesisEventRecord>()
+                {
+                   CreateValidKinesisRecord(eventId, new Invoice())
+                }
+            };
+
+            await function.Process(message, lambdaContext);
+
+            serviceMock.Received().InicializeIoc();
+            serviceMock.Received().ProcessMessage(Arg.Any<string>());
+        }
+
+
+        [Test]
         public async Task ProcessShouldSetTraceIdWhenBodyHasNoTraceId()
         {
             var function = new KinesisDataInvoiceProcessorBatch(serviceMock);

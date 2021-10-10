@@ -97,7 +97,7 @@ namespace Innovt.Cloud.AWS.Lambda
             }
             catch (Exception ex)
             {
-                Logger.Error(ex.Message, ex);                
+                Logger.Error(ex, ex.Message);                
                 throw;
             }
         }
