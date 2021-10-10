@@ -11,6 +11,7 @@ using Innovt.Contrib.Authorization.Platform.Application.Commands;
 using Innovt.Contrib.Authorization.Platform.Application.Dtos;
 using Innovt.Contrib.Authorization.Platform.Domain;
 using Innovt.Contrib.Authorization.Platform.Domain.Filters;
+using Innovt.Core.Collections;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
 using Innovt.Core.Validation;
@@ -38,7 +39,7 @@ namespace Innovt.Contrib.Authorization.Platform.Application
 
             if (adminUser != null && command.Password.Md5Hash() != adminUser.PasswordHash)
                 throw new BusinessException(Messages.InvalidUserOrPassword);
-            
+
 
             adminUser ??= new AdminUser
             {
@@ -52,9 +53,18 @@ namespace Innovt.Contrib.Authorization.Platform.Application
 
             await authorizationRepository.Save(adminUser, cancellationToken).ConfigureAwait(false);
         }
+        private static void AssignRole(AuthUser user, IList<AddRoleCommand> roleCommands)
+        {
+            if (roleCommands.IsNullOrEmpty())
+                return;
 
+            foreach (var role in roleCommands)
+            {
+                user.AssignRole(new Role { Scope = role.Scope, Name = role.RoleName });
+            }           
+        }
 
-        public async Task AddUser(AddUserCommand command, CancellationToken cancellationToken)
+            public async Task AddUser(AddUserCommand command, CancellationToken cancellationToken)
         {
             command.EnsureIsValid();
 
@@ -70,6 +80,8 @@ namespace Innovt.Contrib.Authorization.Platform.Application
                 DomainId = command.DomainId,
                 CreatedAt = DateTimeOffset.UtcNow
             };
+
+            AssignRole(user, command.Roles);
 
             await authorizationRepository.Save(user, cancellationToken).ConfigureAwait(false);
         }
@@ -96,7 +108,6 @@ namespace Innovt.Contrib.Authorization.Platform.Application
             await authorizationRepository.RemoveUser(user, cancellationToken).ConfigureAwait(false);
         }
 
-
         public async Task AssignRole(AssignRoleCommand command, CancellationToken cancellationToken)
         {
             command.EnsureIsValid();
@@ -107,8 +118,8 @@ namespace Innovt.Contrib.Authorization.Platform.Application
             if (user is null)
                 throw new BusinessException($"User {command.UserId} doesn't exist.");
 
-            user.AssignRole(new Role { Scope = command.Scope, Name = command.RoleName });
-
+            AssignRole(user, command.Roles);
+                       
             await authorizationRepository.Save(user, cancellationToken).ConfigureAwait(false);
         }
 

@@ -5,6 +5,7 @@
 
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using Innovt.Core.Cqrs.Commands;
 
 namespace Innovt.Contrib.Authorization.Platform.Application.Commands
@@ -13,13 +14,24 @@ namespace Innovt.Contrib.Authorization.Platform.Application.Commands
     {
         [Required] public string UserId { get; set; }
 
-        [Required] public string RoleName { get; set; }
-
-        [Required] public string Scope { get; set; }
-
+        public IList<AddRoleCommand> Roles { get; set; }
+    
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (Scope == null) yield return new ValidationResult("Scope is required.");
+            if (Roles == null)
+            {
+                yield return new ValidationResult("Role is required.");
+            }
+            else 
+            {             
+                var errors = Roles.SelectMany(r => r.Validate(validationContext));
+
+                foreach (var error in errors)
+                {
+                    yield return error;
+                }                             
+            }
+
         }
     }
 }

@@ -52,16 +52,13 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
             activity?.SetTag("Kinesis.ApproximateArrivalTimestamp", record.Kinesis.ApproximateArrivalTimestamp);
             activity?.AddBaggage("Message.ElapsedTimeBeforeAttendedInMilliseconds", $"{DateTime.UtcNow.Subtract(record.Kinesis.ApproximateArrivalTimestamp).TotalMilliseconds}");
             activity?.AddBaggage("Message.ElapsedTimeBeforeAttendedInMinutes", $"{DateTime.UtcNow.Subtract(record.Kinesis.ApproximateArrivalTimestamp).TotalMinutes}");
-
-            //tempo de atendimento 
+                        
             Logger.Info("Reading Stream Content.");
 
             using var reader = new StreamReader(record.Kinesis.Data, Encoding.UTF8);
 
             var content = await reader.ReadToEndAsync().ConfigureAwait(false);
-
-            Logger.Info("Stream content read finished.");
-
+                        
             Logger.Info("Deserializing Body Message.");
 
             var body = DeserializeBody(content, record.Kinesis.PartitionKey);

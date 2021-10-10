@@ -40,16 +40,8 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
                 }
                 
                 Logger.Info($"Processing Kinesis EventId={message.EventId}.");
-
-                try
-                {
-                    await ProcessMessage(message).ConfigureAwait(false);
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex, $"Error Processing Message from Kinesis Event. Developer, you should take care of it!. EventId={message.EventId}, PartitionKey={ message.Partition }");
-                    throw;
-                }
+                               
+                await ProcessMessage(message).ConfigureAwait(false);               
 
                 Logger.Info($"EventId={message.EventId} from Kinesis processed.");
             }

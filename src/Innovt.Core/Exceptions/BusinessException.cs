@@ -52,6 +52,13 @@ namespace Innovt.Core.Exceptions
         public string Code { get; protected set; }
         public IEnumerable<ErrorMessage> Errors { get; set; }
 
+        public string ReadFullErrors() {
+
+            if(Errors is null || !Errors.Any())            
+                return Message;
+            
+            return string.Join(",", Errors.Select(p => p.Message));
+        }
         private static string CreateMessage(IEnumerable<ErrorMessage> errors)
         {
             var errorMessages = errors as ErrorMessage[] ?? errors.ToArray();

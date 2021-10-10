@@ -62,7 +62,6 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
             activity?.SetTag("BatchMessagesCount", batchMessages.Count);
 
             await ProcessMessages(batchMessages).ConfigureAwait(false);
-
         }
 
         protected abstract Task ProcessMessages(IList<TBody> messages);
