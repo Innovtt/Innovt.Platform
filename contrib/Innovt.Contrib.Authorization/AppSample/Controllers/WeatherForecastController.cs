@@ -10,6 +10,7 @@ using System.Net.Mime;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 
 namespace AppSample.Controllers
@@ -25,11 +26,12 @@ namespace AppSample.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IMemoryCache memoryCache;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IMemoryCache memoryCache)
         {
             _logger = logger;
-
+            this.memoryCache = memoryCache;
         }
 
         [HttpGet]

@@ -64,7 +64,7 @@ namespace Innovt.Contrib.Authorization.Platform.Application
             }           
         }
 
-            public async Task AddUser(AddUserCommand command, CancellationToken cancellationToken)
+        public async Task AddUser(AddUserCommand command, CancellationToken cancellationToken)
         {
             command.EnsureIsValid();
 
@@ -133,9 +133,12 @@ namespace Innovt.Contrib.Authorization.Platform.Application
             if (user is null)
                 throw new BusinessException($"User {command.UserId} doesn't exist.");
 
-            user.UnAssignRole(command.Scope, command.RoleName);
+            foreach (var role in command.Roles)
+            {
+                user.UnAssignRole(role.Scope, role.RoleName);
+            }
 
-             await authorizationRepository.Save(user, cancellationToken).ConfigureAwait(false);
+            await authorizationRepository.Save(user, cancellationToken).ConfigureAwait(false);
         }
     }
 }

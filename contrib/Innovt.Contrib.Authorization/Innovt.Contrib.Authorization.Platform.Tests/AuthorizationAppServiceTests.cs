@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using Innovt.Contrib.Authorization.Platform.Application;
 using Innovt.Contrib.Authorization.Platform.Application.Commands;
 using Innovt.Core.Exceptions;
@@ -17,6 +18,7 @@ using IAuthorizationRepository = Innovt.Contrib.Authorization.Platform.Domain.IA
 
 namespace Innovt.Contrib.Authorization.Platform.Tests
 {
+    [TestFixture]
     public class AuthorizationAppServiceTests
     {
         private IAuthorizationAppService authorizationAppService;
@@ -135,6 +137,87 @@ namespace Innovt.Contrib.Authorization.Platform.Tests
 
             Assert.ThrowsAsync<BusinessException>(async () =>
                await authorizationAppService.AssignRole(command, CancellationToken.None));
+        }
+
+
+
+        [Test]
+        public void UnAssignUserRole_ThrowException_If_There_Is_NoRoles()
+        {
+            var command = new UnAssignUserRoleCommand()
+            {
+                UserId = "123465"
+            };
+
+            Assert.ThrowsAsync<BusinessException>(async () =>
+               await authorizationAppService.UnAssignRole(command, CancellationToken.None));
+        }
+
+
+        [Test]
+        public void UnAssignUserRole_ThrowException_If_There_Is_An_Invalid_Roles()
+        {
+            var command = new UnAssignUserRoleCommand()
+            {
+                UserId = "123465",
+                Roles = new List<RemoveRoleCommand>()
+                {
+                    new RemoveRoleCommand(){
+                    Scope="",
+                    RoleName="User"
+                    }
+                }
+            };
+
+           var bex =  Assert.ThrowsAsync<BusinessException>(async () =>
+               await authorizationAppService.UnAssignRole(command, CancellationToken.None));
+
+            Assert.IsNotNull(bex);
+            Assert.AreEqual(bex.Errors.Count(), 1);
+            Assert.AreEqual(bex.Errors.First().Message, "Scope is required.");
+        }
+
+
+        [Test]
+        public async Task UnAssignUserRole()
+        {
+            var userId = Guid.NewGuid();
+            var roleUser = "Admin";
+            var roleScope = "User";
+
+
+            var actualUser = new AuthUser()
+            {
+                Id = userId.ToString(),
+                DomainId = Guid.NewGuid().ToString()               
+            };
+
+            actualUser.AssignRole(new Role() { Name= roleUser, Scope = roleScope });
+            actualUser.AssignRole(new Role() { Name= "Admin", Scope = "Financial" });
+
+            authorizationRepositoryMock.GetUserByExternalId(userId.ToString(), Arg.Any<CancellationToken>()).Returns(actualUser);
+
+          
+
+            var command = new UnAssignUserRoleCommand()
+            {
+                UserId =userId.ToString(),
+                Roles = new List<RemoveRoleCommand>()
+                {
+                    new RemoveRoleCommand(){
+                    Scope=roleScope,
+                    RoleName=roleUser
+                    }
+                }
+            };
+
+            await authorizationAppService.UnAssignRole(command, CancellationToken.None);
+
+            await authorizationRepositoryMock.Received(1).Save(Arg.Any<AuthUser>(), Arg.Any<CancellationToken>());
+
+            Assert.IsNotNull(actualUser.Roles);
+            Assert.AreEqual(actualUser.Roles.Count,1);
+            Assert.AreEqual(actualUser.Roles.First().Scope, "Financial");
         }
     }
 }
