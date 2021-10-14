@@ -101,7 +101,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Domain.Tests", "Inno
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Cloud.AWS.Cognito.Tests", "Innovt.Cloud.AWS.Cognito.Tests\Innovt.Cloud.AWS.Cognito.Tests.csproj", "{070C5E37-475D-4ACD-A704-0721BB43021F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innovt.Cloud.AWS.Lambda.Tests", "Innovt.Cloud.AWS.Lambda.Tests\Innovt.Cloud.AWS.Lambda.Tests.csproj", "{3941521E-AA9E-4044-B97B-83E1C286924B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Cloud.AWS.Lambda.Tests", "Innovt.Cloud.AWS.Lambda.Tests\Innovt.Cloud.AWS.Lambda.Tests.csproj", "{3941521E-AA9E-4044-B97B-83E1C286924B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innovt.CrossCutting.Log.Serilog.Tests", "Innovt.CrossCutting.Log.Serilog.Tests\Innovt.CrossCutting.Log.Serilog.Tests.csproj", "{2849F4A7-0001-47CB-8BA9-650994BB8E83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -431,6 +433,14 @@ Global
 		{3941521E-AA9E-4044-B97B-83E1C286924B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3941521E-AA9E-4044-B97B-83E1C286924B}.Release|x86.ActiveCfg = Release|Any CPU
 		{3941521E-AA9E-4044-B97B-83E1C286924B}.Release|x86.Build.0 = Release|Any CPU
+		{2849F4A7-0001-47CB-8BA9-650994BB8E83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2849F4A7-0001-47CB-8BA9-650994BB8E83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2849F4A7-0001-47CB-8BA9-650994BB8E83}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2849F4A7-0001-47CB-8BA9-650994BB8E83}.Debug|x86.Build.0 = Debug|Any CPU
+		{2849F4A7-0001-47CB-8BA9-650994BB8E83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2849F4A7-0001-47CB-8BA9-650994BB8E83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2849F4A7-0001-47CB-8BA9-650994BB8E83}.Release|x86.ActiveCfg = Release|Any CPU
+		{2849F4A7-0001-47CB-8BA9-650994BB8E83}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

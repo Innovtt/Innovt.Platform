@@ -16,7 +16,7 @@ namespace Innovt.CrossCutting.Log.Serilog
 {
     public class Logger : ILogger
     {
-        private const string ConsoleTemplate = "[{Timestamp:HH:mm:ss} {Level:u3}] [TraceId:{TraceId:TraceId}] {Message:lj}{NewLine}{Exception}";
+        private const string ConsoleTemplate = "{Timestamp:HH:mm:ss} {Level} {TraceId:TraceId} {ParentId:ParentId} {Message:lj}{NewLine}{Exception}";        
         private readonly global::Serilog.Core.Logger logger;
 
         /// <summary>
@@ -30,14 +30,15 @@ namespace Innovt.CrossCutting.Log.Serilog
         {
             if (enricher is null) throw new ArgumentNullException(nameof(enricher));
 
-            logger = new LoggerConfiguration().WriteTo.Console(outputTemplate: ConsoleTemplate).Enrich.With(enricher).Enrich.With(new ActivityEnrich()).CreateLogger();
+            logger = new LoggerConfiguration().WriteTo.Console(outputTemplate: ConsoleTemplate)
+                .Enrich.With(enricher).Enrich.With(new ActivityEnrich()).Enrich.FromLogContext().CreateLogger();
         }
 
         public Logger(LoggerConfiguration configuration)
         {
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));            
-            logger = configuration.WriteTo.Console(
-                outputTemplate: ConsoleTemplate).Enrich.With(new ActivityEnrich()).Enrich.FromLogContext().CreateLogger();
+            logger = configuration.WriteTo.Console(outputTemplate: ConsoleTemplate)
+                .Enrich.With(new ActivityEnrich()).Enrich.FromLogContext().CreateLogger();
         }
 
         public void Debug(string message)
