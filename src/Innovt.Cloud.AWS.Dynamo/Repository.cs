@@ -232,6 +232,9 @@ namespace Innovt.Cloud.AWS.Dynamo
 
             using (ActivityRepository.StartActivity(nameof(QueryFirstOrDefaultAsync)))
             {
+                request.PageSize = 1;
+                request.Page     = null;
+
                 var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
                 var queryResponse = Helpers.ConvertAttributesToType<T>(items, Context);
