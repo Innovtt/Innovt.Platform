@@ -254,15 +254,21 @@ namespace Innovt.Cloud.AWS.SQS
         {
             if (activity == null) return;
 
-            messageRequest.MessageAttributes.TryAdd("ParentId", new MessageAttributeValue
+            if (activity.ParentId is { })
             {
-                StringValue = activity.ParentId
-            });
+                messageRequest.MessageAttributes.TryAdd("ParentId", new MessageAttributeValue
+                {
+                    StringValue = activity.ParentId
+                });
+            }
 
-            messageRequest.MessageAttributes.TryAdd("RootTraceId", new MessageAttributeValue
+            if (activity.RootId is { })
             {
-                StringValue = activity.RootId
-            });
+                messageRequest.MessageAttributes.TryAdd("RootTraceId", new MessageAttributeValue
+                {
+                    StringValue = activity.RootId
+                });
+            }
         }
 
         private async Task<string> GetQueueUrlAsync()
@@ -273,11 +279,9 @@ namespace Innovt.Cloud.AWS.SQS
             activity?.SetTag("sqs.account_number", Configuration?.AccountNumber);
             activity?.SetTag("sqs.queue_name", QueueName);
 
-
             QueueUrl = Configuration?.AccountNumber != null ? 
                 $"https://sqs.{GetServiceRegionEndPoint().SystemName}.amazonaws.com/{Configuration.AccountNumber}/{QueueName}" 
                 : (await SqsClient.GetQueueUrlAsync(QueueName).ConfigureAwait(false))?.QueueUrl;
-
 
             activity?.SetTag("sqs.queue_url", QueueUrl);
 
