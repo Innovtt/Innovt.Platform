@@ -18,10 +18,10 @@ namespace Innovt.Cloud.Queue
 
         Task DeQueueAsync(string popReceipt, CancellationToken cancellationToken = default);
 
-        Task<string> QueueAsync<TK>(TK message, int? visibilityTimeoutInSeconds = null,
+        Task<string> EnQueueAsync<TK>(TK message, int? visibilityTimeoutInSeconds = null,
             CancellationToken cancellationToken = default);
 
-        Task<IList<MessageQueueResult>> QueueBatchAsync(IEnumerable<MessageBatchRequest> message,
+        Task<IList<MessageQueueResult>> EnQueueBatchAsync(IEnumerable<MessageBatchRequest> message,
             int? delaySeconds = null, CancellationToken cancellationToken = default);
 
         Task<int> ApproximateMessageCountAsync(CancellationToken cancellationToken = default);

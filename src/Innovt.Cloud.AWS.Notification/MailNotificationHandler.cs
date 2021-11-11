@@ -60,7 +60,7 @@ namespace Innovt.Cloud.AWS.Notification
                 Source = $"{message.From.Name} <{message.From.Address}>",
                 Message = new Message()
             };
-
+            
             mailRequest.Message.Subject = new Content
             {
                 Charset = message.Subject.Charset.GetValueOrDefault(DefaultCharset),
@@ -69,18 +69,20 @@ namespace Innovt.Cloud.AWS.Notification
 
 
             mailRequest.Message.Body = new Body();
-            if (message.Body.IsHtml)
+            if (message.Body.IsHtml) {
                 mailRequest.Message.Body.Html = new Content
                 {
                     Charset = message.Body.Charset.GetValueOrDefault(DefaultCharset),
                     Data = message.Body.Content
                 };
-            else
+            }
+            else {
                 mailRequest.Message.Body.Text = new Content
                 {
                     Charset = message.Body.Charset.GetValueOrDefault(DefaultCharset),
-                    Data = message.Body.Content
+                    Data = message.Body.Content,
                 };
+            }
 
             mailRequest.Destination.ToAddresses = message.To.Select(a => $"{a.Name} <{a.Address}>").ToList();
 
@@ -92,6 +94,7 @@ namespace Innovt.Cloud.AWS.Notification
 
             if (message.ReplyToAddresses != null)
                 mailRequest.ReplyToAddresses = message.ReplyToAddresses.Select(a => $"{a.Name} <{a.Address}>").ToList();
+
 
             var policy = CreateDefaultRetryAsyncPolicy();
 

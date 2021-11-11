@@ -164,7 +164,7 @@ namespace Innovt.Cloud.AWS.SQS
         ///     You can set this parameter only on a queue level.
         /// </param>
         /// <returns></returns>
-        public async Task<string> QueueAsync<TK>(TK message, int? visibilityTimeoutInSeconds = null,
+        public async Task<string> EnQueueAsync<TK>(TK message, int? visibilityTimeoutInSeconds = null,
             CancellationToken cancellationToken = default)
         {
             if (message == null) throw new ArgumentNullException(nameof(message));
@@ -198,7 +198,7 @@ namespace Innovt.Cloud.AWS.SQS
             return response.MessageId;
         }
 
-        public async Task<IList<MessageQueueResult>> QueueBatchAsync(IEnumerable<MessageBatchRequest> message,
+        public async Task<IList<MessageQueueResult>> EnQueueBatchAsync(IEnumerable<MessageBatchRequest> message,
             int? delaySeconds = null, CancellationToken cancellationToken = default)
         {
             if (message == null) throw new ArgumentNullException(nameof(message));
@@ -254,7 +254,7 @@ namespace Innovt.Cloud.AWS.SQS
         {
             if (activity == null) return;
 
-            if (activity.ParentId is { })
+            if (!string.IsNullOrEmpty(activity.ParentId))
             {
                 messageRequest.MessageAttributes.TryAdd("ParentId", new MessageAttributeValue
                 {
@@ -262,7 +262,7 @@ namespace Innovt.Cloud.AWS.SQS
                 });
             }
 
-            if (activity.RootId is { })
+            if (string.IsNullOrEmpty(activity.RootId))
             {
                 messageRequest.MessageAttributes.TryAdd("RootTraceId", new MessageAttributeValue
                 {

@@ -6,90 +6,72 @@
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using Amazon.Lambda.Core;
-using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Core.CrossCutting.Log;
-using Microsoft.Extensions.Configuration;
 
 namespace Innovt.Cloud.AWS.Lambda
 {
-    public abstract class EventProcessor<T> where T : class
+    public abstract class EventProcessor<T, TResult>: BaseEventProcessor where T : class
     {
-        private bool isIocContainerInitialized;
-
-        protected static readonly ActivitySource EventProcessorActivitySource = new("Innovt.Cloud.AWS.Lambda.EventProcessor");
-
-        protected EventProcessor(ILogger logger)
+        public async Task<TResult> Process(T message, ILambdaContext context)
         {
-            Logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        }
+            if (message == null) throw new ArgumentNullException(nameof(message));
+            if (context == null) throw new ArgumentNullException(nameof(context));
 
-        protected EventProcessor()
-        {
-        }
+            Logger.Info($"Receiving message. Function {context.FunctionName} and Version {context.FunctionVersion}");
 
-        protected ILogger Logger { get; private set; }
-        protected ILambdaContext Context { get; private set; }
-        protected IConfigurationRoot Configuration { get; set; }
+            Context = context;
 
-        private void InitializeLogger(ILogger logger =null) {
-
-            if (Logger is { } && logger is null)
-                return;
+            InitializeLogger();
             
-            Logger = logger is null ? new LambdaLogger(Context.Logger) : logger;                        
-        }
-        private void SetupIoc()
-        {
-            if (isIocContainerInitialized)                            
-                return;            
-            
-            Logger.Info("Initializing IOC Container.");
-
-            var container = SetupIocContainer();
-
-            if (container != null)
+            try
             {
-                container.CheckConfiguration();
+                using var activity = StartBaseActivity(nameof(Process));
 
-                InitializeLogger(container.Resolve<ILogger>()); 
+                SetupConfiguration();
 
-                Logger.Info("IOC Container Initialized.");
+                SetupIoc();
+
+                return await Handle(message, context).ConfigureAwait(false);
             }
-            else
+            catch (Exception ex)
             {
-                Logger.Warning("IOC Container not found.");
+                Logger.Error(ex, ex.Message);
+                throw;
             }
-            
-            isIocContainerInitialized = true;
         }
+
+        protected abstract Task<TResult> Handle(T message, ILambdaContext context);
+    }
+
+    public abstract class EventProcessor<T>: BaseEventProcessor where T : class
+    {   
+        protected EventProcessor(ILogger logger):base(logger)
+        {            
+        }
+
+        protected EventProcessor():base()
+        {
+        }       
+      
       
         public async Task Process(T message, ILambdaContext context)
         {
             if (message == null) throw new ArgumentNullException(nameof(message));
             if (context == null) throw new ArgumentNullException(nameof(context));
 
+            Logger.Info($"Receiving message. Function {context.FunctionName} and Version {context.FunctionVersion}");
+
             Context = context;
 
-            InitializeLogger();
-
-            Logger.Info($"Receiving message. Function {context.FunctionName} and Version {context.FunctionVersion}");
+            InitializeLogger();            
 
             try
             {
-                using var activity = EventProcessorActivitySource.StartActivity(nameof(Process));
-                activity?.SetTag("Lambda.FunctionName", context.FunctionName);
-                activity?.SetTag("Lambda.FunctionVersion", context.FunctionVersion);
-                activity?.SetTag("Lambda.LogStreamName", context.LogStreamName);
-                activity?.AddBaggage("Lambda.RequestId", context.AwsRequestId);                
+                using var activity = base.StartBaseActivity(nameof(Process));
 
-                //setting request id as parentId.
-                if (activity?.ParentId is null && context.AwsRequestId != null)
-                {
-                    activity?.SetParentId(context.AwsRequestId);
-                }
+                SetupConfiguration();
 
                 SetupIoc();
 
@@ -101,9 +83,6 @@ namespace Innovt.Cloud.AWS.Lambda
                 throw;
             }
         }
-
-        protected abstract IContainer SetupIocContainer();
-
         protected abstract Task Handle(T message, ILambdaContext context);
     }
 }
