@@ -92,7 +92,7 @@ namespace Innovt.Cloud.AWS.Lambda
         {
             var configBuilder = new ConfigurationBuilder();
             configBuilder.AddEnvironmentVariables();
-            configBuilder.AddJsonFile($"appsettings.json");
+            configBuilder.AddJsonFile($"appsettings.json", optional:true);
             
             var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 

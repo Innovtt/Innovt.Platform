@@ -17,14 +17,12 @@ namespace Innovt.Cloud.AWS.Lambda
         public async Task<TResult> Process(T message, ILambdaContext context)
         {
             if (message == null) throw new ArgumentNullException(nameof(message));
-            if (context == null) throw new ArgumentNullException(nameof(context));
+            Context = context ?? throw new ArgumentNullException(nameof(context));
+
+            InitializeLogger();
 
             Logger.Info($"Receiving message. Function {context.FunctionName} and Version {context.FunctionVersion}");
 
-            Context = context;
-
-            InitializeLogger();
-            
             try
             {
                 using var activity = StartBaseActivity(nameof(Process));
@@ -59,13 +57,11 @@ namespace Innovt.Cloud.AWS.Lambda
         public async Task Process(T message, ILambdaContext context)
         {
             if (message == null) throw new ArgumentNullException(nameof(message));
-            if (context == null) throw new ArgumentNullException(nameof(context));
+            Context = context ?? throw new ArgumentNullException(nameof(context));
+
+            InitializeLogger();
 
             Logger.Info($"Receiving message. Function {context.FunctionName} and Version {context.FunctionVersion}");
-
-            Context = context;
-
-            InitializeLogger();            
 
             try
             {
