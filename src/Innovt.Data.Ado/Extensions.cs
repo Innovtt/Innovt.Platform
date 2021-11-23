@@ -44,7 +44,7 @@ namespace Innovt.Data.Ado
             return dataSource.Provider switch
             {
                 Provider.PostgreSqL => rawSql,
-                _ => rawSql + " WITH(NOLOCK) "
+                _ => rawSql + " WITH (NOLOCK) "
             };
         }
 

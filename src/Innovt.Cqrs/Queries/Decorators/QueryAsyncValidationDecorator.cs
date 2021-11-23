@@ -14,7 +14,7 @@ using Innovt.Core.Validation;
 namespace Innovt.Cqrs.Queries.Decorators
 {
     public sealed class QueryAsyncValidationDecorator<TFilter, TResult> : IAsyncQueryHandler<TFilter, TResult>
-        where TFilter : IFilter where TResult : class
+        where TFilter : IPagedFilter where TResult : class
     {
         private readonly IAsyncQueryHandler<TFilter, TResult> queryHandler;
 

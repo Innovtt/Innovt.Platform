@@ -84,6 +84,8 @@ namespace Innovt.Cloud.AWS.Notification
                 };
             }
 
+            
+
             mailRequest.Destination.ToAddresses = message.To.Select(a => $"{a.Name} <{a.Address}>").ToList();
 
             if (message.BccTo != null)

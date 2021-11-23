@@ -13,7 +13,7 @@ using Innovt.Cqrs.Decorators;
 namespace Innovt.Cqrs.Queries.Decorators
 {
     public sealed class DatabaseRetryDecorator<TFilter, TResult> : BaseDatabaseRetryDecorator,
-        IQueryHandler<TFilter, TResult> where TFilter : IFilter where TResult : class
+        IQueryHandler<TFilter, TResult> where TFilter : IPagedFilter where TResult : class
     {
         private readonly IQueryHandler<TFilter, TResult> queryHandler;
 

@@ -163,7 +163,7 @@ namespace Innovt.Data.Ado
                 return new PagedCollection<T>(pagedResult, filter.Page, filter.PageSize);
             }
 
-            var queryCount = $"SELECT COUNT(1) FROM ({newSql}) C".AddNoLock(dataSource);
+            var queryCount = $"SELECT COUNT(1) FROM ({newSql}) AS INNOVT_COUNT";
 
             var totalRecords = 0;
             IEnumerable<T> queryResult = null;

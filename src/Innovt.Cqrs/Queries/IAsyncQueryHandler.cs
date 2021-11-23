@@ -11,17 +11,17 @@ using Innovt.Core.Cqrs.Queries;
 
 namespace Innovt.Cqrs.Queries
 {
-    public interface IAsyncQueryHandler<in TFilter, TResult> where TFilter : IFilter where TResult : class
+    public interface IAsyncQueryHandler<in TFilter, TResult> where TFilter : IPagedFilter where TResult : class
     {
         Task<TResult> HandleAsync(TFilter filter, CancellationToken cancellationToken = default);
     }
 
-    public interface ICountAsyncQueryHandler<in T> where T : IFilter
+    public interface ICountAsyncQueryHandler<in T> where T : IPagedFilter
     {
         Task<int> CountAsync(T filter, CancellationToken cancellationToken = default);
     }
 
-    public interface IExistAsyncQueryHandler<in T> where T : IFilter
+    public interface IExistAsyncQueryHandler<in T> where T : IPagedFilter
     {
         Task<bool> ExistAsync(T filter, CancellationToken cancellationToken = default);
     }
