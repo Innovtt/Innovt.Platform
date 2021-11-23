@@ -12,7 +12,7 @@ using Innovt.Core.Validation;
 namespace Innovt.Cqrs.Queries.Decorators
 {
     public sealed class QueryValidationDecorator<TFilter, TResult> : IQueryHandler<TFilter, TResult>
-        where TFilter : IPagedFilter where TResult : class
+        where TFilter : IFilter where TResult : class
     {
         private readonly IQueryHandler<TFilter, TResult> queryHandler;
 

@@ -15,7 +15,7 @@ using Innovt.Cqrs.Decorators;
 namespace Innovt.Cqrs.Queries.Decorators
 {
     public sealed class DatabaseAsyncRetryDecorator<TFilter, TResult> : BaseDatabaseRetryDecorator,
-        IAsyncQueryHandler<TFilter, TResult> where TFilter : IPagedFilter where TResult : class
+        IAsyncQueryHandler<TFilter, TResult> where TFilter : IFilter where TResult : class
     {
         private readonly IAsyncQueryHandler<TFilter, TResult> queryHandler;
 
