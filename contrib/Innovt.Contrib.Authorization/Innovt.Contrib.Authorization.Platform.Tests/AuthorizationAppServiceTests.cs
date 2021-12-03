@@ -8,8 +8,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Innovt.Cloud.AWS.Configuration;
 using Innovt.Contrib.Authorization.Platform.Application;
 using Innovt.Contrib.Authorization.Platform.Application.Commands;
+using Innovt.Contrib.Authorization.Platform.Infrastructure;
+using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Exceptions;
 using Innovt.Domain.Security;
 using NSubstitute;
@@ -137,6 +140,50 @@ namespace Innovt.Contrib.Authorization.Platform.Tests
 
             Assert.ThrowsAsync<BusinessException>(async () =>
                await authorizationAppService.AssignRole(command, CancellationToken.None));
+        }
+
+        [Test]
+        public async Task  AssignRole_ThrowException_If_There_Is_An_Invalid_RolesTest()
+        {
+
+            //var user = new AddUserCommand()
+            //{
+            //    DomainId = "88c2a0e6-d291-4a5c-a441-f7b25c9a944a",
+            //    Id = "1fd52fa2-3837-4260-a8cc-a5f7c4c002b2",
+            //    Roles = new List<AddRoleCommand>() {
+            //    new AddRoleCommand(){
+            //        Scope="901ac82d-7105-40f4-a5b4-b6954f6dbcd6::CapitalSource",
+            //        RoleName="Admin",
+            //    },
+            //     new AddRoleCommand(){
+            //        Scope="Antecipa",
+            //        RoleName="Basic",
+            //    }
+            //    }
+            //};
+
+   
+
+            var logger = NSubstitute.Substitute.For<ILogger>();
+
+            var authorizationRepository = new AuthorizationRepository(logger, new DefaultAWSConfiguration("antecipa-prod"));
+
+            authorizationAppService = new AuthorizationAppService(authorizationRepository);
+
+           //await authorizationAppService.AddUser(user, CancellationToken.None);
+          //var             await authorizationAppService.AssignRole(command, CancellationToken.None);           
+
+            var roles = await authorizationAppService.GetUserRoles(new Domain.Filters.RoleByUserFilter()
+            {
+                DomainId = "88c2a0e6-d291-4a5c-a441-f7b25c9a944a",
+                ExternalId = "1fd52fa2-3837-4260-a8cc-a5f7c4c002b2"
+            }, CancellationToken.None);
+
+            Console.Write(roles);
+
+            //await authorizationAppService.AssignRole(command, CancellationToken.None));
+
+
         }
 
 
