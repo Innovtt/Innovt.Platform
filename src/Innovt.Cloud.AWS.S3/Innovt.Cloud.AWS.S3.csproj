@@ -12,9 +12,9 @@
     <LangVersion>latest</LangVersion><AnalysisMode>AllEnabledByDefault</AnalysisMode>
   </PropertyGroup>
   <ItemGroup>
-     <PackageReference Include="AWSSDK.S3" Version="3.7.6" />
-     <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="5.0.1" />
-     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3">
+     <PackageReference Include="AWSSDK.S3" Version="3.7.7.1" />
+     <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="6.0.0" />
+     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0">
        <PrivateAssets>all</PrivateAssets>
        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
      </PackageReference>

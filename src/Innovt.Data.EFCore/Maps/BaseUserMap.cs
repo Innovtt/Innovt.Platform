@@ -8,7 +8,6 @@
 using Innovt.Domain.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
 
 namespace Innovt.Data.EFCore.Maps
 {
@@ -21,7 +20,8 @@ namespace Innovt.Data.EFCore.Maps
                 throw new ArgumentNullException(nameof(builder));
             }
 
-            builder.ToTable("User");
+            //builder.ToTable("User");
+
             builder.HasKey(u => u.Id);
             builder.Property(b => b.FirstName).HasMaxLength(50).IsRequired();
             builder.Property(b => b.LastName).HasMaxLength(50).IsRequired(false);

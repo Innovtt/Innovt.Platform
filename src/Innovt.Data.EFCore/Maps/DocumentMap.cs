@@ -28,8 +28,6 @@ namespace Innovt.Data.EFCore.Maps
                 throw new ArgumentNullException(nameof(builder));
             }
 
-            builder.ToTable(nameof(Document));
-
             builder.HasKey(d => d.Id);
             builder.Property(e => e.Number).HasMaxLength(20).IsRequired();
 

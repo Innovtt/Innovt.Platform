@@ -432,7 +432,7 @@ namespace Innovt.Core.Utilities
         {
             if (string.IsNullOrEmpty(str))
                 return defaultValue;
-
+                        
             return decimal.Parse(str);
         }
 

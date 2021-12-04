@@ -5,8 +5,6 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Threading.Tasks;
 using Innovt.Domain.Core.Repository;
 using Innovt.Domain.Tracking;
 

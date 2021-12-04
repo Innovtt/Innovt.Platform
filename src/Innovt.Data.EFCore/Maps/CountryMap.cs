@@ -29,8 +29,6 @@ namespace Innovt.Data.EFCore.Maps
                 throw new ArgumentNullException(nameof(builder));
             }
 
-            builder.ToTable(nameof(Country));
-
             builder.HasKey(c => c.Id);
 
             builder.Property(d => d.Name).HasMaxLength(30).IsRequired();

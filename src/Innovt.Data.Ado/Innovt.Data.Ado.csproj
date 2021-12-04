@@ -14,7 +14,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.123" />
-    <PackageReference Include="Npgsql" Version="5.0.10" />
+    <PackageReference Include="Npgsql" Version="6.0.1" />
     <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="3.21.4" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0">
@@ -28,9 +28,8 @@
     <ProjectReference Include="..\Innovt.Data\Innovt.Data.csproj" />
     <ProjectReference Include="..\Innovt.Domain\Innovt.Domain.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
+  <!--<ItemGroup>
     <PackageReference Update="NETStandard.Library" Version="2.0.3" />
-  </ItemGroup>
+  </ItemGroup>-->
 
 </Project>

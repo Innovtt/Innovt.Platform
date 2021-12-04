@@ -21,8 +21,6 @@ namespace Innovt.Data.EFCore.Maps
                 throw new ArgumentNullException(nameof(builder));
             }
 
-            builder.ToTable(nameof(AddressType));
-
             builder.HasKey(u => u.Id);
             builder.Property(b => b.Name).HasMaxLength(15).IsRequired();
         }

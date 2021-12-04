@@ -8,7 +8,6 @@
 using Innovt.Domain.Address;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
 
 namespace Innovt.Data.EFCore.Maps
 {
@@ -20,8 +19,6 @@ namespace Innovt.Data.EFCore.Maps
             {
                 throw new ArgumentNullException(nameof(builder));
             }
-
-            builder.ToTable(nameof(City));
 
             builder.HasKey(c => c.Id);
 

@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
-
-        <IsPackable>false</IsPackable>
-      <LangVersion>9.0</LangVersion><AnalysisMode>AllEnabledByDefault</AnalysisMode>
+      <TargetFramework>net6.0</TargetFramework>
+      <IsPackable>false</IsPackable>
+      <LangVersion>9.0</LangVersion>
+      <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
 
     <ItemGroup>

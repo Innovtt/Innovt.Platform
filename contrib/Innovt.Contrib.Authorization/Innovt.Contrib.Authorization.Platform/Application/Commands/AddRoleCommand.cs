@@ -12,7 +12,8 @@ namespace Innovt.Contrib.Authorization.Platform.Application.Commands
 {
     public class AddRoleCommand : ICommand
     {
-        [Required] public string RoleName { get; set; }
+        [Required] 
+        public string RoleName { get; set; }
 
         [Required] public string Scope { get; set; }
 

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Oracle.EntityFrameworkCore" Version="5.21.4" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Innovt.Data.EFCore\Innovt.Data.EFCore.csproj" />
+	</ItemGroup>
+</Project>
