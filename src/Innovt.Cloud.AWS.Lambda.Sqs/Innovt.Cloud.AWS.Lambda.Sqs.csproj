@@ -9,7 +9,7 @@
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<Copyright>Innovt Tecnologia</Copyright>
 		<Description>AWS implementation for lambda and Sqs events.</Description>
-    <LangVersion>latest</LangVersion><AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    <LangVersion>latest</LangVersion><AnalysisMode>AllEnabledByFDefault</AnalysisMode>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Amazon.Lambda.SQSEvents" Version="2.0.0" />

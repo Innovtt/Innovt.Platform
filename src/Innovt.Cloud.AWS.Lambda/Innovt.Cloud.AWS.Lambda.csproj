@@ -15,7 +15,8 @@
     <PackageReference Include="Amazon.Lambda.Core" Version="2.1.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
-    <PackageReference Include="OpenTelemetry.Contrib.Instrumentation.AWS" Version="1.0.1" />
+    <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="6.0.0" />
+    <!--<PackageReference Include="OpenTelemetry.Contrib.Instrumentation.AWS" Version="1.0.1" />-->
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Innovt.Cloud\Innovt.Cloud.csproj" />
