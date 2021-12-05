@@ -37,7 +37,7 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
                 {
                     Logger.Warning($"Discarding message from partition {message.Partition}. EventId={message.EventId}");
                     continue;
-                }
+                }                
                 
                 Logger.Info($"Processing Kinesis EventId={message.EventId}.");
                                
