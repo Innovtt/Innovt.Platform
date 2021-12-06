@@ -5,11 +5,18 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System.Linq.Expressions;
+
+
 using Innovt.Core.Collections;
 using Innovt.Domain.Core.Repository;
 using Innovt.Domain.Core.Specification;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Innovt.Data.EFCore.Repositories
 {
@@ -57,14 +64,14 @@ namespace Innovt.Data.EFCore.Repositories
             Context.Remove(entity);
         }
 
-        public virtual T GetFirstOrDefault(ISpecification<T> specification, Include? includes = null)
+        public virtual T GetFirstOrDefault(ISpecification<T> specification, Include includes = null)
         {
             if (specification == null) throw new ArgumentNullException(nameof(specification));
 
             return Context.Queryable<T>().AddInclude(includes).FirstOrDefault(specification.SatisfiedBy());
         }
 
-        public virtual async Task<T> GetFirstOrDefaultAsync(ISpecification<T> specification, Include? includes = null,
+        public virtual async Task<T> GetFirstOrDefaultAsync(ISpecification<T> specification, Include includes = null,
             CancellationToken cancellationToken = default)
         {
             if (specification == null) throw new ArgumentNullException(nameof(specification));
@@ -73,7 +80,7 @@ namespace Innovt.Data.EFCore.Repositories
                 .FirstOrDefaultAsync(specification.SatisfiedBy(), cancellationToken).ConfigureAwait(false);
         }
 
-        public virtual async Task<T> GetSingleOrDefaultAsync(ISpecification<T> specification, Include? includes = null,
+        public virtual async Task<T> GetSingleOrDefaultAsync(ISpecification<T> specification, Include includes = null,
             CancellationToken cancellationToken = default)
         {
             if (specification == null) throw new ArgumentNullException(nameof(specification));
@@ -82,14 +89,14 @@ namespace Innovt.Data.EFCore.Repositories
                 .SingleOrDefaultAsync(specification.SatisfiedBy(), cancellationToken).ConfigureAwait(false);
         }
 
-        public virtual T GetSingleOrDefault(ISpecification<T> specification, Include? includes = null)
+        public virtual T GetSingleOrDefault(ISpecification<T> specification, Include includes = null)
         {
             if (specification == null) throw new ArgumentNullException(nameof(specification));
 
             return Context.Queryable<T>().AddInclude(includes).SingleOrDefault(specification.SatisfiedBy());
         }
 
-        public virtual IEnumerable<T> FindBy(ISpecification<T> specification, Include? includes = null)
+        public virtual IEnumerable<T> FindBy(ISpecification<T> specification, Include includes = null)
         {
             if (specification == null) throw new ArgumentNullException(nameof(specification));
 
@@ -102,7 +109,7 @@ namespace Innovt.Data.EFCore.Repositories
 
 
         public virtual IEnumerable<T> FindBy<TKey>(ISpecification<T> specification, Expression<Func<T, TKey>>? orderBy = null, bool isOrderByDescending = false,
-            Include? includes = null)
+            Include includes = null)
         {
             if (specification == null) throw new ArgumentNullException(nameof(specification));
 
@@ -118,7 +125,7 @@ namespace Innovt.Data.EFCore.Repositories
         }
 
         public virtual async Task<IEnumerable<T>> FindByAsync(ISpecification<T> specification,
-            Include? includes = null,
+            Include includes = null,
             CancellationToken cancellationToken = default)
         {
             if (specification == null) throw new ArgumentNullException(nameof(specification));
@@ -132,7 +139,7 @@ namespace Innovt.Data.EFCore.Repositories
 
         public virtual async Task<IEnumerable<T>> FindByAsync<TKey>(ISpecification<T> specification,
             Expression<Func<T, TKey>>? orderBy = null,
-            bool isOrderByDescending = false, Include? includes = null,
+            bool isOrderByDescending = false, Include includes = null,
             CancellationToken cancellationToken = default)
         {
             if (specification == null) throw new ArgumentNullException(nameof(specification));
@@ -147,7 +154,7 @@ namespace Innovt.Data.EFCore.Repositories
             return await query.ToListAsync(cancellationToken).ConfigureAwait(false);
         }
 
-        public virtual PagedCollection<T> FindPaginatedBy(ISpecification<T> specification, Include? includes = null)
+        public virtual PagedCollection<T> FindPaginatedBy(ISpecification<T> specification, Include includes = null)
         {
             if (specification == null) throw new ArgumentNullException(nameof(specification));
 
@@ -163,7 +170,7 @@ namespace Innovt.Data.EFCore.Repositories
 
         public virtual PagedCollection<T> FindPaginatedBy<TKey>(ISpecification<T> specification,
             Expression<Func<T, TKey>>? orderBy = null,
-            bool isOrderByDescending = false, Include? includes = null)
+            bool isOrderByDescending = false, Include includes = null)
         {
             if (specification == null) throw new ArgumentNullException(nameof(specification));
 
@@ -178,7 +185,7 @@ namespace Innovt.Data.EFCore.Repositories
         }
 
         public virtual async Task<PagedCollection<T>> FindPaginatedByAsync(ISpecification<T> specification,
-            Include? includes = null, CancellationToken cancellationToken = default)
+            Include includes = null, CancellationToken cancellationToken = default)
         {
             if (specification == null) throw new ArgumentNullException(nameof(specification));
 
@@ -194,7 +201,7 @@ namespace Innovt.Data.EFCore.Repositories
 
         public virtual async Task<PagedCollection<T>> FindPaginatedByAsync<TKey>(ISpecification<T> specification,
             Expression<Func<T, TKey>>? orderBy = null, bool isOrderByDescending = false,
-            Include? includes = null, CancellationToken cancellationToken = default)
+            Include includes = null, CancellationToken cancellationToken = default)
         {
             if (specification == null) throw new ArgumentNullException(nameof(specification));
 

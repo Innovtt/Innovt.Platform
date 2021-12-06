@@ -13,10 +13,11 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using Innovt.Core.Exceptions;
+using System.Collections.Generic;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis
 {
-    public abstract class KinesisProcessorBase<TBody> : EventProcessor<KinesisEvent> where TBody : IDataStream
+    public abstract class KinesisProcessorBase<TBody> : EventProcessor<KinesisEvent,IList<BatchFailureResponse>> where TBody : IDataStream
     {
         protected KinesisProcessorBase(ILogger logger) : base(logger)
         {
@@ -80,7 +81,6 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
             
             return body;
         }
-
         protected abstract TBody DeserializeBody(string content, string partition);
     }
 }

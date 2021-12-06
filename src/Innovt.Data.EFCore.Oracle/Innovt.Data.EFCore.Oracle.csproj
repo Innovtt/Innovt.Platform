@@ -1,9 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+	 <TargetFramework>netstandard2.1</TargetFramework>
+	<PackageId>Innovt.Data.EFCore.Oracle</PackageId>
+	<PackageVersion>6.0.0-rc2</PackageVersion>
+	<Authors>Michel Borges</Authors>
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+	<Copyright>Innovt Tecnologia</Copyright>
+	<Description>EF core project for oracle provider.</Description>
+	<LangVersion>latest</LangVersion>
+	<AnalysisMode>AllEnabledByDefault</AnalysisMode>
+	<OutputType>Library</OutputType>
+    
   </PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Oracle.EntityFrameworkCore" Version="5.21.4" />

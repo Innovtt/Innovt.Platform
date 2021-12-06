@@ -1,18 +1,18 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Innovt.Cloud.AWS.Lambda.Sqs
+namespace Innovt.Cloud.AWS.Lambda
 {
-    public sealed class SqsBatchResponse
+    public sealed class BatchFailureResponse
     {
         [JsonPropertyName("itemIdentifier")]
         public string ItemIdentifier { get; set; }
 
-        public SqsBatchResponse(string itemIdentifier)
+        public BatchFailureResponse(string itemIdentifier)
         {
             ItemIdentifier = itemIdentifier;
         }
 
-        public SqsBatchResponse()
+        public BatchFailureResponse()
         {
 
         }

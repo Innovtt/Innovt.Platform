@@ -23,11 +23,11 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors
             return null;
         }
 
-        protected override Task ProcessMessages(IList<Invoice> messages)
+        protected override Task<IList<BatchFailureResponse>> ProcessMessages(IList<Invoice> messages)
         {
-           serviceMock.ProcessMessage(messages.First().TraceId);
+           var result = serviceMock.ProcessMessage(messages.First().TraceId);
 
-           return Task.CompletedTask;
+           return Task.FromResult(result);
         }
     }
 }

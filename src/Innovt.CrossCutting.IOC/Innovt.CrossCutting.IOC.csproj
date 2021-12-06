@@ -3,9 +3,9 @@
 
   <PropertyGroup>
     <!--<TargetFramework>netstandard2.1</TargetFramework>-->
-	 <TargetFramework>net6.0</TargetFramework>
+	<TargetFramework>net6.0</TargetFramework>
     <PackageId>Innovt.CrossCutting.IOC</PackageId>
-    <PackageVersion>6.0.0-rc1</PackageVersion>
+    <PackageVersion>6.0.0-rc2</PackageVersion>
     <Authors>Michel Borges</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>

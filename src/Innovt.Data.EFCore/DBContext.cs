@@ -11,13 +11,18 @@ using Innovt.Data.Exceptions;
 using Innovt.Domain.Core.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Innovt.Data.EFCore
 {
     public abstract class DbContext : Microsoft.EntityFrameworkCore.DbContext, IExtendedUnitOfWork
     {
-        private readonly IDataSource? dataSource;
-        private readonly ILoggerFactory? loggerFactory;
+        private readonly IDataSource dataSource;
+        private readonly ILoggerFactory loggerFactory;
         public int? MaxRetryCount { get; set; }
         public TimeSpan? MaxRetryDelay { get; set; }
 

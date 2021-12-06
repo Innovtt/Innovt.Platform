@@ -22,7 +22,7 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
     /// If you're using this feature with a FIFO queue, your function should stop processing messages after the first failure and return all failed and unprocessed messages in batchItemFailures. This helps preserve the ordering of messages in your queue.
     /// </summary>
     /// <typeparam name="TBody"></typeparam>
-    public abstract class SqsEventProcessor<TBody> : EventProcessor<SQSEvent, IList<SqsBatchResponse>> where TBody : class
+    public abstract class SqsEventProcessor<TBody> : EventProcessor<SQSEvent, IList<BatchFailureResponse>> where TBody : class
     {
         private ISerializer serializer;
         private readonly bool isFifo;
@@ -50,13 +50,13 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
             set => serializer = value;
         }
                 
-        protected override async Task<IList<SqsBatchResponse>> Handle(SQSEvent message, ILambdaContext context)
+        protected override async Task<IList<BatchFailureResponse>> Handle(SQSEvent message, ILambdaContext context)
         {
             Logger.Info($"Processing Sqs event With {message?.Records?.Count} records.");
 
             using var watcher = new StopWatchHelper(Logger, nameof(Handle));
             
-            var response = new List<SqsBatchResponse>();
+            var response = new List<BatchFailureResponse>();
 
             if (message?.Records == null || message.Records.Count == 0) return response;
 
@@ -112,16 +112,16 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
                         break;
                     }
 
-                    response.Add(new SqsBatchResponse(record.MessageId));
+                    response.Add(new BatchFailureResponse(record.MessageId));
                 }
             }
 
             return response;
         }
 
-        private static List<SqsBatchResponse> GetRemainingMessages(SQSEvent message, IList<string> processedMessages)
+        private static List<BatchFailureResponse> GetRemainingMessages(SQSEvent message, IList<string> processedMessages)
         {
-            return message.Records.Where(r => !processedMessages.Contains(r.MessageId)).Distinct().Select(r => new SqsBatchResponse(r.MessageId)).ToList();
+            return message.Records.Where(r => !processedMessages.Contains(r.MessageId)).Distinct().Select(r => new BatchFailureResponse(r.MessageId)).ToList();
         }
 
         protected abstract Task ProcessMessage(QueueMessage<TBody> message);
