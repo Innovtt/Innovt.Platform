@@ -26,16 +26,17 @@ namespace Innovt.AspNetCore
 {
     public abstract class ApiStartupBase
     {
-        protected ApiStartupBase(IConfiguration configuration, string appName)
+        protected ApiStartupBase(IConfiguration configuration, IWebHostEnvironment environment, string appName)
         {
             Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+            Environment = environment ?? throw new ArgumentNullException(nameof(environment));
             AppName = appName ?? throw new ArgumentNullException(nameof(appName));
             Localization = new DefaultApiLocalization();
             DefaultHealthPath = "/health";
         }
 
-        protected ApiStartupBase(IConfiguration configuration, string appName, string apiTitle, string apiDescription,
-            string apiVersion) : this(configuration, appName)
+        protected ApiStartupBase(IConfiguration configuration, IWebHostEnvironment environment, string appName, string apiTitle, string apiDescription,
+            string apiVersion) : this(configuration, environment, appName)
         {
             Documentation = new DefaultApiDocumentation(apiTitle, apiDescription, apiVersion);
         }
@@ -50,9 +51,16 @@ namespace Innovt.AspNetCore
 
         public IConfiguration Configuration { get; }
 
+        public IWebHostEnvironment Environment { get; }
+
         private bool IsSwaggerEnabled()
         {
             return Documentation is { };
+        }
+
+        protected bool IsDevelopmentEnvironment()
+        {
+            return Environment.IsDevelopment();
         }
 
         protected virtual void AddSwagger(IServiceCollection services)
