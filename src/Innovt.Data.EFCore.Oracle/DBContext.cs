@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Innovt.Data.EFCore.Oracle
 {
-    public class DBContext : DbContext
+    public class DBContext : DBContextBase
     {
         public DBContext(IDataSource dataSource) : base(dataSource)
         {

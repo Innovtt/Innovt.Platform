@@ -19,25 +19,25 @@ using System.Threading.Tasks;
 
 namespace Innovt.Data.EFCore
 {
-    public abstract class DbContext : Microsoft.EntityFrameworkCore.DbContext, IExtendedUnitOfWork
+    public abstract class DBContextBase : Microsoft.EntityFrameworkCore.DbContext, IExtendedUnitOfWork
     {
         private readonly IDataSource dataSource;
         private readonly ILoggerFactory loggerFactory;
         public int? MaxRetryCount { get; set; }
         public TimeSpan? MaxRetryDelay { get; set; }
 
-        protected DbContext(IDataSource dataSource)
+        protected DBContextBase(IDataSource dataSource)
         {
             this.dataSource = dataSource ?? throw new ArgumentNullException(nameof(dataSource));
             base.ChangeTracker.LazyLoadingEnabled = false;
         }
 
-        protected DbContext(IDataSource dataSource, ILoggerFactory loggerFactory) : this(dataSource)
+        protected DBContextBase(IDataSource dataSource, ILoggerFactory loggerFactory) : this(dataSource)
         {
             this.loggerFactory = loggerFactory ?? throw new ArgumentNullException(nameof(loggerFactory));
         }
 
-        protected DbContext(DbContextOptions options) : base(options)
+        protected DBContextBase(DbContextOptions options) : base(options)
         {
             base.ChangeTracker.LazyLoadingEnabled = false;
         }

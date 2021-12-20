@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Innovt.Data.EFCore.MsSql
 {
-    public class DBContext : Innovt.Data.EFCore.DbContext
+    public class DBContext : Innovt.Data.EFCore.DBContextBase
     {
         public DBContext(IDataSource dataSource) : base(dataSource)
         {
