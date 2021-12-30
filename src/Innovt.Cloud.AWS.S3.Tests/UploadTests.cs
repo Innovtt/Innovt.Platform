@@ -30,9 +30,7 @@ namespace Innovt.Cloud.AWS.S3.Tests
             //107532f24b15ca16ab4a7057d0be7ca9.json
 
             var exist = await fileSystem.FileExistsAsync(bucketName,fileName);
-
-
-  
+                          
             var content = "sample storage class".ToString();
 
             using var ms = new MemoryStream();
