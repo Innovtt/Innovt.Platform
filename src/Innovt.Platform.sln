@@ -111,7 +111,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Data.EFCore.MsSql", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Data.EFCore.PostgreSQL", "Innovt.Data.EFCore.PostgreSQL\Innovt.Data.EFCore.PostgreSQL.csproj", "{6A81A298-4D37-4107-9770-003DD96A377D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innovt.Cloud.AWS.Lambda.Sqs.Tests", "Innovt.Cloud.AWS.Lambda.Sqs.Tests\Innovt.Cloud.AWS.Lambda.Sqs.Tests.csproj", "{2453B714-209A-4FE1-B954-F9B1D8CA3659}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Cloud.AWS.Lambda.Sqs.Tests", "Innovt.Cloud.AWS.Lambda.Sqs.Tests\Innovt.Cloud.AWS.Lambda.Sqs.Tests.csproj", "{2453B714-209A-4FE1-B954-F9B1D8CA3659}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
