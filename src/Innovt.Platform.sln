@@ -103,7 +103,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Cloud.AWS.Cognito.Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Cloud.AWS.Lambda.Tests", "Innovt.Cloud.AWS.Lambda.Tests\Innovt.Cloud.AWS.Lambda.Tests.csproj", "{3941521E-AA9E-4044-B97B-83E1C286924B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innovt.CrossCutting.Log.Serilog.Tests", "Innovt.CrossCutting.Log.Serilog.Tests\Innovt.CrossCutting.Log.Serilog.Tests.csproj", "{2849F4A7-0001-47CB-8BA9-650994BB8E83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.CrossCutting.Log.Serilog.Tests", "Innovt.CrossCutting.Log.Serilog.Tests\Innovt.CrossCutting.Log.Serilog.Tests.csproj", "{2849F4A7-0001-47CB-8BA9-650994BB8E83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
