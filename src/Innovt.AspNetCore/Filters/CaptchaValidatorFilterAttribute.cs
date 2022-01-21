@@ -8,6 +8,7 @@ using System;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Innovt.AspNetCore.Model;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
 using Microsoft.AspNetCore.Http;
@@ -84,9 +85,6 @@ namespace Innovt.AspNetCore.Filters
             if (captchaResponse is null)
                 return false;
 
-            //if (captchaResponse.success & AntiForgery && HostName.IsNotNullOrEmpty() && !captchaResponse.hostname.Equals(HostName))
-            //    throw new ValidationException("Captcha hostname and request hostname do not match. Please review anti forgery settings.");
-
             return captchaResponse.success;
         }
 
@@ -99,15 +97,16 @@ namespace Innovt.AspNetCore.Filters
 
             var header = context.HttpContext.Request.Headers.TryGetValue("g-recaptcha-response", out var recaptchaResponse);
 
+            var result = new ResponseError
+            {
+                Code = $"{StatusCodes.Status400BadRequest}",                
+                TraceId = context.HttpContext.TraceIdentifier
+            };
+
             if (!header)
             {
-                context.HttpContext.Response.StatusCode = 400;
-
-                context.Result = new ContentResult
-                {
-                    Content = "Missing g-recaptcha-response header.",
-                    StatusCode = 400
-                };
+                result.Message = "Missing g-recaptcha-response header.";
+                context.Result = new BadRequestObjectResult(result);
 
                 return;
             }
@@ -116,13 +115,8 @@ namespace Innovt.AspNetCore.Filters
 
             if (!isValid)
             {
-                context.HttpContext.Response.StatusCode = 400;
-                context.Result = new ContentResult
-                {
-                    Content = "Invalid CAPTCHA Token.",
-                    StatusCode = 400
-                };
-
+                result.Message = "Invalid CAPTCHA Token";
+                context.Result = new BadRequestObjectResult(result);
                 return;
             }
 
