@@ -7,6 +7,7 @@
 
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json;
+using Innovt.AspNetCore.Model;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
 using Microsoft.AspNetCore.Http;
@@ -98,16 +99,16 @@ namespace Innovt.AspNetCore.Filters
 
             var header = context.HttpContext.Request.Headers.TryGetValue("g-recaptcha-response", out var recaptchaResponse);
 
+            var result = new ResponseError
+            {
+                Code = $"{StatusCodes.Status400BadRequest}",
+                TraceId = context.HttpContext.TraceIdentifier
+            };
+
             if (!header)
             {
-                context.HttpContext.Response.StatusCode = 400;
-
-                context.Result = new ContentResult
-                {
-                    Content = "Missing g-recaptcha-response header.",
-                    StatusCode = 400
-                };
-
+                result.Message = "Missing g-recaptcha-response header.";
+                context.Result = new BadRequestObjectResult(result);
                 return;
             }
 
@@ -115,16 +116,10 @@ namespace Innovt.AspNetCore.Filters
 
             if (!isValid)
             {
-                context.HttpContext.Response.StatusCode = 400;
-                context.Result = new ContentResult
-                {
-                    Content = "Invalid CAPTCHA Token.",
-                    StatusCode = 400
-                };
-
+                result.Message = "Invalid CAPTCHA Token";
+                context.Result = new BadRequestObjectResult(result);
                 return;
             }
-            
 
             await base.OnActionExecutionAsync(context, next).ConfigureAwait(false);
         }
