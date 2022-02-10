@@ -5,16 +5,18 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+
+
+using Innovt.Core.Collections;
+using Innovt.Domain.Core.Repository;
+using Innovt.Domain.Core.Specification;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Innovt.Core.Collections;
-using Innovt.Domain.Core.Repository;
-using Innovt.Domain.Core.Specification;
-using Microsoft.EntityFrameworkCore;
 
 namespace Innovt.Data.EFCore.Repositories
 {
@@ -106,8 +108,7 @@ namespace Innovt.Data.EFCore.Repositories
         }
 
 
-        public virtual IEnumerable<T> FindBy<TKey>(ISpecification<T> specification,
-            Expression<Func<T, TKey>> orderBy = null, bool isOrderByDescending = false,
+        public virtual IEnumerable<T> FindBy<TKey>(ISpecification<T> specification, Expression<Func<T, TKey>>? orderBy = null, bool isOrderByDescending = false,
             Include includes = null)
         {
             if (specification == null) throw new ArgumentNullException(nameof(specification));
@@ -137,7 +138,7 @@ namespace Innovt.Data.EFCore.Repositories
         }
 
         public virtual async Task<IEnumerable<T>> FindByAsync<TKey>(ISpecification<T> specification,
-            Expression<Func<T, TKey>> orderBy = null,
+            Expression<Func<T, TKey>>? orderBy = null,
             bool isOrderByDescending = false, Include includes = null,
             CancellationToken cancellationToken = default)
         {
@@ -168,7 +169,7 @@ namespace Innovt.Data.EFCore.Repositories
         }
 
         public virtual PagedCollection<T> FindPaginatedBy<TKey>(ISpecification<T> specification,
-            Expression<Func<T, TKey>> orderBy = null,
+            Expression<Func<T, TKey>>? orderBy = null,
             bool isOrderByDescending = false, Include includes = null)
         {
             if (specification == null) throw new ArgumentNullException(nameof(specification));
@@ -199,7 +200,7 @@ namespace Innovt.Data.EFCore.Repositories
         }
 
         public virtual async Task<PagedCollection<T>> FindPaginatedByAsync<TKey>(ISpecification<T> specification,
-            Expression<Func<T, TKey>> orderBy = null, bool isOrderByDescending = false,
+            Expression<Func<T, TKey>>? orderBy = null, bool isOrderByDescending = false,
             Include includes = null, CancellationToken cancellationToken = default)
         {
             if (specification == null) throw new ArgumentNullException(nameof(specification));

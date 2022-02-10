@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Amazon.Lambda.KinesisEvents;
 using Amazon.Lambda.TestUtilities;
 using Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors;
@@ -30,6 +26,19 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests
         {
             serviceMock = Substitute.For<IServiceMock>();
         }
+
+
+        [Test]
+        public async Task SimpleFunctionTest()
+        {
+            var domainServiceMock = Substitute.For<IDomainEventServiceMock<DomainEvent>>();
+
+            var function = new KinesisDomainEventEmptyInvoiceProcessor(domainServiceMock);
+
+            await function.Process(new KinesisEvent(), new TestLambdaContext());
+
+        }
+
 
 
         [Test]

@@ -4,7 +4,6 @@
 // Date: 2021-09-20
 
 using System;
-using Amazon.Runtime;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Contrib.Authorization.Platform.Application;
 using Innovt.Contrib.Authorization.Platform.Domain;
@@ -23,10 +22,8 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.IOC
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddScoped<IAuthorizationAppService, AuthorizationAppService>();
-            services.AddScoped<IAuthorizationRepository, AuthorizationRepository>();
-            
-            services.TryAddScoped<IAwsConfiguration, DefaultAWSConfiguration>();
-            
+            services.AddScoped<IAuthorizationRepository, AuthorizationRepository>();            
+            services.TryAddScoped<IAwsConfiguration, DefaultAWSConfiguration>();            
             services.TryAddScoped<ILogger, Logger>();
         }
     }

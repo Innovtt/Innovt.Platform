@@ -52,6 +52,8 @@ namespace Innovt.Cloud.File
         Task<string> GetObjectContentAsync(string url, Encoding encoding,
             CancellationToken cancellationToken = default);
 
+        T GetObjectFromJson<T>(Uri filePath);
+
         string PutObject(string bucketName, Stream stream, string fileName, string contentType = null,
             string serverSideEncryptionMethod = null, string fileAcl = null);
 
@@ -77,6 +79,11 @@ namespace Innovt.Cloud.File
         Task<string> UploadAsync(string bucketName, string filePath,
             IList<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null, string fileAcl = null,
             CancellationToken cancellationToken = default);
+
+        Task<string> UploadAsJsonAsync<T>(string bucketName, T obj, string fileName,
+          IList<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null, string fileAcl = null,
+          CancellationToken cancellationToken = default);
+
 
         Task UploadDirectoryAsync(string bucketName, string directory, string serverSideEncryptionMethod = null, string fileAcl = null,
             CancellationToken cancellationToken = default);

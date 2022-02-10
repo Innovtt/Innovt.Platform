@@ -125,13 +125,12 @@ namespace Innovt.Cloud.AWS.S3
             return base.CreateDefaultRetryPolicy().Execute(() => new TransferUtility(S3Client).OpenStream(request));
         }
 
-
         public Stream DownloadStream(string url)
         {
             var (bucket, fileKey) = ExtractBucketFromGetUrl(url);
 
             return DownloadStream(bucket, fileKey);
-        }
+        }      
 
         public async Task<Stream> DownloadStreamAsync(string bucketName, string fileName,
             CancellationToken cancellationToken = default)
@@ -175,6 +174,30 @@ namespace Innovt.Cloud.AWS.S3
             using var reader = new StreamReader(stream, encoding);
 
             return reader.ReadToEnd();
+        }
+
+        /// <summary>
+        /// When you need to get a content from Json file as an typed method.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public T GetObjectFromJson<T>(Uri filePath)
+        {
+            if (filePath is null)
+            {
+                throw new ArgumentNullException(nameof(filePath));
+            }
+
+            using var activity = S3ActivitySource.StartActivity("GetObjectFromJson");            
+            activity?.SetTag("s3.url", filePath);
+            
+            var content = GetObjectContent(filePath.ToString(),Encoding.UTF8);
+
+            if(content is null)
+                return default;
+
+            return System.Text.Json.JsonSerializer.Deserialize<T>(content);            
         }
 
         public string GetPreSignedUrl(string bucketName, string key, DateTime expires)
@@ -383,7 +406,7 @@ namespace Innovt.Cloud.AWS.S3
             string contentType = null, string serverSideEncryptionMethod = null, string fileAcl = null,
             CancellationToken cancellationToken = default)
         {
-            await using var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            using var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
 
             var fileName = Path.GetFileName(filePath);
 
@@ -454,10 +477,33 @@ namespace Innovt.Cloud.AWS.S3
 
             return request;
         }
+     
+        public async Task<string> UploadAsJsonAsync<T>(string bucketName,
+                                                       T obj,
+                                                       string fileName,
+                                                       IList<KeyValuePair<string, string>> metadata = null,
+                                                       string serverSideEncryptionMethod = null,
+                                                       string fileAcl = null,
+                                                       CancellationToken cancellationToken = default)
+        {
+         
+            if(obj is null)
+                throw new ArgumentNullException(nameof(obj));
+
+            using var stream = new MemoryStream();
+            using var writer = new StreamWriter(stream);
+            await writer.WriteAsync(System.Text.Json.JsonSerializer.Serialize(obj)).ConfigureAwait(false);
+            await writer.FlushAsync().ConfigureAwait(false);
+
+            return await UploadAsync(bucketName, stream, fileName, metadata, serverSideEncryptionMethod, fileAcl,cancellationToken).ConfigureAwait(false);
+        }
+
 
         protected override void DisposeServices()
         {
             s3Client?.Dispose();
         }
+
+    
     }
 }

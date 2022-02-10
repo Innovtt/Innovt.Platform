@@ -20,11 +20,10 @@ namespace Innovt.Core.Validation
         public static IEnumerable<ValidationResult> Validate(this IEnumerable<IValidatableObject> array,
             ValidationContext context = null)
         {
+            if (array == null) throw new ArgumentNullException(nameof(array));
+
             var validationResult = new List<ValidationResult>();
-
-            if (array == null)
-                return validationResult;
-
+            
             context ??= new ValidationContext(array);
 
             foreach (var obj in array) validationResult.AddRange(obj.Validate(context));
@@ -40,6 +39,8 @@ namespace Innovt.Core.Validation
         /// <returns></returns>
         internal static IList<ValidationResult> Validate(this IValidatableObject obj, ValidationContext context = null)
         {
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+
             var validationResults = new List<ValidationResult>();
 
             context ??= new ValidationContext(obj);
@@ -75,8 +76,7 @@ namespace Innovt.Core.Validation
 
         public static void EnsureIsValid(this IValidatableObject obj, ValidationContext context = null)
         {
-            if (obj == null)
-                return;
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
 
             var validationResults = Validate(obj, context);
 

@@ -6,8 +6,6 @@
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
@@ -18,8 +16,12 @@ namespace Innovt.AspNetCore.Handlers
 {
     public class HasScopeRequirement : AuthorizationHandler<HasScopeRequirement>, IAuthorizationRequirement
     {
-        public HasScopeRequirement()
+        private string Issuer { get; }
+        private string Scope { get; }
+
+        public HasScopeRequirement():this(string.Empty,string.Empty)
         {
+            
         }
 
         /// <summary>
@@ -33,9 +35,7 @@ namespace Innovt.AspNetCore.Handlers
             Issuer = issuer;
         }
 
-        private string Issuer { get; }
-
-        private string Scope { get; }
+  
 
         /// <summary>
         ///     HandleRequirementAsync
@@ -46,9 +46,9 @@ namespace Innovt.AspNetCore.Handlers
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context,
             HasScopeRequirement requirement)
         {
-            var actionContext = (ActionContext) context?.Resource;
+            var actionContext = context?.Resource as ActionContext;
 
-            if (actionContext is null)
+            if (context is null || actionContext is null)
                 return Task.CompletedTask;
 
             var controller =

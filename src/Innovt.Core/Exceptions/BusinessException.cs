@@ -8,13 +8,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using Innovt.Core.Utilities;
 
 namespace Innovt.Core.Exceptions
 {
     [Serializable]
-    public class BusinessException : BaseException
+    public class BusinessException : BaseException, ISerializable
     {
         public BusinessException(string message) : base(message)
         {
@@ -49,6 +50,12 @@ namespace Innovt.Core.Exceptions
         {
         }
 
+        protected BusinessException(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext)
+        {
+            Code = serializationInfo?.GetString("ResourceName");
+            Errors = (IEnumerable<ErrorMessage>)serializationInfo?.GetValue("Errors",typeof(IEnumerable<ErrorMessage>));
+        }
+
         public string Code { get; protected set; }
         public IEnumerable<ErrorMessage> Errors { get; set; }
 
@@ -77,9 +84,20 @@ namespace Innovt.Core.Exceptions
 
             return strError.ToString();
         }
-
         public BusinessException()
         {
+        }
+
+
+        public override void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            if (info == null)            
+                throw new ArgumentNullException(nameof(info));            
+
+            info.AddValue("Code", this.Code);
+            info.AddValue("Errors", this.Errors, typeof(IEnumerable<ErrorMessage>));
+
+            base.GetObjectData(info, context);
         }
     }
 }

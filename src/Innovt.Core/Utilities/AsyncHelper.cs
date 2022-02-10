@@ -9,6 +9,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
+[assembly: CLSCompliant(false)]
 namespace Innovt.Core.Utilities
 {
     /// <summary>
@@ -21,19 +22,19 @@ namespace Innovt.Core.Utilities
             TaskContinuationOptions.None,
             TaskScheduler.Default);
 
-        public static TResult RunSync<TResult>(Func<Task<TResult>> func)
+        public static TResult RunSync<TResult>(Func<Task<TResult>> func,CancellationToken cancellationToken = default)
         {
             return TaskFactory
-                .StartNew(func)
+                .StartNew(func, cancellationToken)
                 .Unwrap()
                 .GetAwaiter()
                 .GetResult();
         }
 
-        public static void RunSync(Func<Task> func)
+        public static void RunSync(Func<Task> func, CancellationToken cancellationToken = default)
         {
             TaskFactory
-                .StartNew(func)
+                .StartNew(func, cancellationToken)
                 .Unwrap()
                 .GetAwaiter()
                 .GetResult();

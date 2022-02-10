@@ -29,7 +29,7 @@ namespace Innovt.Data.EFCore.Maps
         public void Configure(EntityTypeBuilder<Address> builder)
         {
             if (builder == null) throw new ArgumentNullException(nameof(builder));
-            builder.ToTable(nameof(Address));
+
 
             builder.HasKey(u => u.Id);
             builder.Property(b => b.Description).HasMaxLength(50).IsRequired(false);

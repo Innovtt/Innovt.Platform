@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>netstandard2.1</TargetFramework>
+	  <PackageId>Innovt.Data.EFCore.PostgreSQL</PackageId>
+	  <PackageVersion>6.0.0-rc8</PackageVersion>
+	  <Authors>Michel Borges</Authors>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	  <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+	  <Copyright>Innovt Tecnologia</Copyright>
+	  <Description>EF core project for postgre provider.</Description>
+	  <LangVersion>latest</LangVersion>
+	  <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+	  <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Innovt.Data.EFCore\Innovt.Data.EFCore.csproj" />
+  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.10" />
+	</ItemGroup>
+
+</Project>

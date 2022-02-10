@@ -5,40 +5,39 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using Innovt.Core.Utilities;
+using Innovt.Data.DataSources;
+using Innovt.Data.Exceptions;
+using Innovt.Domain.Core.Repository;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Innovt.Core.Utilities;
-using Innovt.Data.DataSources;
-using Innovt.Data.Exceptions;
-using Innovt.Data.Model;
-using Innovt.Domain.Core.Repository;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 namespace Innovt.Data.EFCore
 {
-    public class DbContext : Microsoft.EntityFrameworkCore.DbContext, IExtendedUnitOfWork
+    public abstract class DBContextBase : Microsoft.EntityFrameworkCore.DbContext, IExtendedUnitOfWork
     {
         private readonly IDataSource dataSource;
         private readonly ILoggerFactory loggerFactory;
         public int? MaxRetryCount { get; set; }
         public TimeSpan? MaxRetryDelay { get; set; }
 
-        public DbContext(IDataSource dataSource)
+        protected DBContextBase(IDataSource dataSource)
         {
             this.dataSource = dataSource ?? throw new ArgumentNullException(nameof(dataSource));
             base.ChangeTracker.LazyLoadingEnabled = false;
         }
 
-        public DbContext(IDataSource dataSource, ILoggerFactory loggerFactory) : this(dataSource)
+        protected DBContextBase(IDataSource dataSource, ILoggerFactory loggerFactory) : this(dataSource)
         {
             this.loggerFactory = loggerFactory ?? throw new ArgumentNullException(nameof(loggerFactory));
         }
 
-        public DbContext(DbContextOptions options) : base(options)
+        protected DBContextBase(DbContextOptions options) : base(options)
         {
             base.ChangeTracker.LazyLoadingEnabled = false;
         }
@@ -108,20 +107,7 @@ namespace Innovt.Data.EFCore
         public IQueryable<T> Queryable<T>() where T : class
         {
             return base.Set<T>();
-        }
-
-        public int ExecuteSqlCommand(string sql, params object[] parameters)
-        {
-            return base.Database.ExecuteSqlRaw(sql, parameters);
-        }
-
-        public async Task<int> ExecuteSqlCommandAsync(string sql, CancellationToken cancellationToken = default, params object[] parameters)
-        {
-            return await base.Database
-                .ExecuteSqlRawAsync(sql, cancellationToken: cancellationToken, parameters: parameters)
-                .ConfigureAwait(false);
-        }
-
+        }     
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -137,35 +123,20 @@ namespace Innovt.Data.EFCore
                 var connectionString = dataSource.GetConnectionString();
 
                 if (connectionString.IsNullOrEmpty())
-                    throw new ConnectionStringException(
-                        $"Connection string for datasource {dataSource.Name} is empty.");
+                    throw new ConnectionStringException($"Connection string for datasource {dataSource.Name} is empty.");
 
-                switch (dataSource.Provider)
-                {
-                    case Provider.PostgreSqL:
-                        optionsBuilder.UseNpgsql(connectionString, postOptions =>
-                        {
-                            if (MaxRetryCount != null && MaxRetryDelay != null)
-                                postOptions.EnableRetryOnFailure(MaxRetryCount.GetValueOrDefault(),
-                                    MaxRetryDelay.GetValueOrDefault(), null);
-                        });
-                        break;
-                    case Provider.Oracle:
-                        optionsBuilder.UseOracle(connectionString);
-                        break;
-                    default:
-                        optionsBuilder.UseSqlServer(connectionString, sqlOptions =>
-                        {
-                            if (MaxRetryCount != null && MaxRetryDelay != null)
-                                sqlOptions.EnableRetryOnFailure(MaxRetryCount.GetValueOrDefault(),
-                                    MaxRetryDelay.GetValueOrDefault(), null
-                                );
-                        });
-                        break;
-                }
+
+                ConfigureProvider(optionsBuilder, connectionString);
+            
             }
 
             base.OnConfiguring(optionsBuilder);
         }
+
+        protected abstract void ConfigureProvider(DbContextOptionsBuilder optionsBuilder, string connectionString);
+
+        public abstract int ExecuteSqlCommand(string sql, params object[] parameters);
+
+        public abstract Task<int> ExecuteSqlCommandAsync(string sql, CancellationToken cancellationToken = default, params object[] parameters);
     }
 }

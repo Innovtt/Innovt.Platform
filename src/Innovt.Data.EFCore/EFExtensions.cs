@@ -16,7 +16,7 @@ namespace Innovt.Data.EFCore
 {
     public static class EfExtensions
     {
-        public static IQueryable<T> AddInclude<T>(this IQueryable<T> query, Include includes) where T : class
+        public static IQueryable<T> AddInclude<T>(this IQueryable<T> query, Include? includes) where T : class
         {
             return includes == null || includes.IsEmpty()
                 ? query

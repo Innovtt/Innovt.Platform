@@ -8,7 +8,6 @@
 using System;
 using Innovt.Core.CrossCutting.Ioc;
 using Microsoft.Extensions.DependencyInjection;
-
 namespace Innovt.CrossCutting.IOC
 {
     public sealed class Container : IContainer

@@ -184,7 +184,7 @@ namespace Innovt.Data.Ado
                 var qResult = await con.QueryMultipleAsync(new CommandDefinition(query, filter,
                     cancellationToken: cancellationToken)).ConfigureAwait(false);
 
-                totalRecords = qResult.ReadFirst<int>();
+                totalRecords = await qResult.ReadFirstAsync<int>().ConfigureAwait(false);
                 queryResult = await qResult.ReadAsync<T>().ConfigureAwait(false);
             }
 

@@ -25,6 +25,7 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors
         protected override IContainer SetupIocContainer()
         {   
             serviceMock.InicializeIoc();
+
             return null;
         }
         protected override Task ProcessMessage(DomainEvent message)

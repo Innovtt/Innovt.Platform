@@ -35,5 +35,7 @@ namespace Innovt.Domain.Core.Repository
         int ExecuteSqlCommand(string sql, params object[] parameters);
 
         Task<int> ExecuteSqlCommandAsync(string sql, CancellationToken cancellationToken = default, params object[] parameters);
+
+        System.Linq.IQueryable<T> Queryable<T>() where T : class;
     }
 }

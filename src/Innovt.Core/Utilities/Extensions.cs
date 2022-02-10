@@ -31,9 +31,14 @@ namespace Innovt.Core.Utilities
             return obj == null ? string.Empty : obj.ToString();
         }
 
-        public static bool IsEmpty(this Guid id)
+        public static bool IsGuidEmpty(this Guid id)
         {
             return id == Guid.Empty;
+        }
+
+        public static bool IsGuidNUllOrEmpty(this Guid? id)
+        {
+            return (id is null || id.Value.IsGuidEmpty()) ;
         }
 
         public static bool IsLessThanOrEqualToZero(this int id)

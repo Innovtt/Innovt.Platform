@@ -14,6 +14,14 @@ namespace Innovt.Cloud.AWS.Lambda
 {
     public abstract class EventProcessor<T, TResult>: BaseEventProcessor where T : class
     {
+        protected EventProcessor(ILogger logger) : base(logger)
+        {
+        }
+
+        protected EventProcessor() : base()
+        {
+        }
+
         public async Task<TResult> Process(T message, ILambdaContext context)
         {
             if (message == null) throw new ArgumentNullException(nameof(message));

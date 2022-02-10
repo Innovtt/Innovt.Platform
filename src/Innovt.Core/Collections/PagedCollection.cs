@@ -6,6 +6,7 @@
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System.Collections.Generic;
+using System.Globalization;
 using Innovt.Core.Utilities;
 
 namespace Innovt.Core.Collections
@@ -13,7 +14,7 @@ namespace Innovt.Core.Collections
     public class PagedCollection<T> : IPagedCollection<T>
     {
         public PagedCollection(IEnumerable<T> collection, int? page = null, int? pageSize = null) : this(collection,
-            page?.ToString(), pageSize)
+            page?.ToString(CultureInfo.CurrentCulture), pageSize)
         {
         }
 

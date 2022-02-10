@@ -17,8 +17,6 @@ namespace Innovt.Domain.Core.Repository
 
         Task<int> CommitAsync(CancellationToken cancellationToken = default);
         
-        System.Linq.IQueryable<T> Queryable<T>() where T : class;
-
         void Rollback();
     }
 }
