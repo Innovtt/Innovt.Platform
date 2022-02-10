@@ -5,10 +5,10 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using Innovt.Cloud.AWS.Cognito.Resources;
 using Innovt.Core.Utilities;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Innovt.Cloud.AWS.Cognito.Model
 {
@@ -34,10 +34,10 @@ namespace Innovt.Cloud.AWS.Cognito.Model
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (Field.IsNullOrEmpty() && Value.IsNullOrEmpty())
-                yield return new ValidationResult(Messages.FieldFilterIsRequired, new[] {nameof(Field)});
+                yield return new ValidationResult(Messages.FieldFilterIsRequired, new[] { nameof(Field) });
 
             if (Value.IsNullOrEmpty())
-                yield return new ValidationResult(Messages.ValueFieldIsRequired, new[] {nameof(Value)});
+                yield return new ValidationResult(Messages.ValueFieldIsRequired, new[] { nameof(Value) });
         }
     }
 }

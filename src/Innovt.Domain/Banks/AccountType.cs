@@ -9,7 +9,7 @@ namespace Innovt.Domain.Banks
 {
     public enum AccountType
     {
-        Checking =0,
-        Savings =1,
+        Checking = 0,
+        Savings = 1,
     }
 }

@@ -5,12 +5,6 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
 using Amazon.SQS;
 using Amazon.SQS.Model;
 using Innovt.Cloud.AWS.Configuration;
@@ -18,6 +12,12 @@ using Innovt.Cloud.Queue;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Serialization;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.SQS
 {
@@ -73,7 +73,7 @@ namespace Innovt.Cloud.AWS.SQS
             var request = new ReceiveMessageRequest
             {
                 MaxNumberOfMessages = quantity,
-                AttributeNames = new List<string> {"All"},
+                AttributeNames = new List<string> { "All" },
                 QueueUrl = await GetQueueUrlAsync().ConfigureAwait(false)
             };
 
@@ -127,7 +127,7 @@ namespace Innovt.Cloud.AWS.SQS
         {
             using var activity = QueueActivitySource.StartActivity("ApproximateMessageCountAsync");
 
-            var attributes = new List<string> {"ApproximateNumberOfMessages"};
+            var attributes = new List<string> { "ApproximateNumberOfMessages" };
 
             var queueUrl = await GetQueueUrlAsync().ConfigureAwait(false);
 
@@ -233,19 +233,19 @@ namespace Innovt.Cloud.AWS.SQS
 
             if (response.Successful != null)
                 foreach (var item in response.Successful)
-                    result.Add(new MessageQueueResult {Id = item.Id, Success = true});
+                    result.Add(new MessageQueueResult { Id = item.Id, Success = true });
 
             if (response.Failed == null) return result;
-            
+
             foreach (var item in response.Failed)
             {
-                result.Add(new MessageQueueResult {Id = item.Id, Success = false, Error = item.Message});
+                result.Add(new MessageQueueResult { Id = item.Id, Success = false, Error = item.Message });
                 activity?.SetTag($"sqs.message_{item.Id}_id", item.Id);
                 activity?.SetTag($"sqs.message_{item.Id}_message", item.Message);
                 activity?.SetTag($"sqs.message_{item.Id}_code", item.Code);
                 activity?.SetTag($"sqs.message_{item.Id}_sender_fault", item.SenderFault);
             }
-            
+
 
             return result;
         }
@@ -279,8 +279,8 @@ namespace Innovt.Cloud.AWS.SQS
             activity?.SetTag("sqs.account_number", Configuration?.AccountNumber);
             activity?.SetTag("sqs.queue_name", QueueName);
 
-            QueueUrl = Configuration?.AccountNumber != null ? 
-                $"https://sqs.{GetServiceRegionEndPoint().SystemName}.amazonaws.com/{Configuration.AccountNumber}/{QueueName}" 
+            QueueUrl = Configuration?.AccountNumber != null ?
+                $"https://sqs.{GetServiceRegionEndPoint().SystemName}.amazonaws.com/{Configuration.AccountNumber}/{QueueName}"
                 : (await SqsClient.GetQueueUrlAsync(QueueName).ConfigureAwait(false))?.QueueUrl;
 
             activity?.SetTag("sqs.queue_url", QueueUrl);

@@ -7,7 +7,7 @@ using Innovt.Core.CrossCutting.Ioc;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors
 {
-    public class KinesisDataInvoiceProcessorBatch: KinesisDataProcessorBatch<Invoice>
+    public class KinesisDataInvoiceProcessorBatch : KinesisDataProcessorBatch<Invoice>
     {
         private readonly IServiceMock serviceMock;
 
@@ -25,9 +25,9 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors
 
         protected override Task<IList<BatchFailureResponse>> ProcessMessages(IList<Invoice> messages)
         {
-           var result = serviceMock.ProcessMessage(messages.First().TraceId);
+            var result = serviceMock.ProcessMessage(messages.First().TraceId);
 
-           return Task.FromResult(result);
+            return Task.FromResult(result);
         }
     }
 }

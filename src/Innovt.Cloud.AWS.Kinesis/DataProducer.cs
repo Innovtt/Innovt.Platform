@@ -5,6 +5,12 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using Amazon.Kinesis;
+using Amazon.Kinesis.Model;
+using Innovt.Cloud.AWS.Configuration;
+using Innovt.Core.CrossCutting.Log;
+using Innovt.Core.Utilities;
+using Innovt.Domain.Core.Streams;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,12 +20,6 @@ using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using Amazon.Kinesis;
-using Amazon.Kinesis.Model;
-using Innovt.Cloud.AWS.Configuration;
-using Innovt.Core.CrossCutting.Log;
-using Innovt.Core.Utilities;
-using Innovt.Domain.Core.Streams;
 
 namespace Innovt.Cloud.AWS.Kinesis
 {
@@ -47,7 +47,7 @@ namespace Innovt.Cloud.AWS.Kinesis
         {
             get { return kinesisClient ??= CreateService<AmazonKinesisClient>(); }
         }
-        
+
         private async Task InternalPublish(IEnumerable<T> dataList, CancellationToken cancellationToken = default)
         {
             if (dataList == null) throw new ArgumentNullException(nameof(dataList));
@@ -68,8 +68,8 @@ namespace Innovt.Cloud.AWS.Kinesis
             };
 
             foreach (var data in dataStreams)
-            {   
-                if (data.TraceId.IsNullOrEmpty() && activity!=null)
+            {
+                if (data.TraceId.IsNullOrEmpty() && activity != null)
                 {
                     data.TraceId = activity.ParentId ?? activity.TraceId.ToString();//todo: ver isso
                 }
@@ -108,7 +108,7 @@ namespace Innovt.Cloud.AWS.Kinesis
         {
             if (data == null) throw new ArgumentNullException(nameof(data));
 
-            await InternalPublish(new List<T> {data}, cancellationToken).ConfigureAwait(false);
+            await InternalPublish(new List<T> { data }, cancellationToken).ConfigureAwait(false);
         }
 
         public async Task Publish(IEnumerable<T> events, CancellationToken cancellationToken = default)

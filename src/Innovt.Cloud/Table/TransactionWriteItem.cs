@@ -26,7 +26,7 @@ namespace Innovt.Cloud.Table
 #pragma warning restore CA2227 // Collection properties should be read only
 
 #pragma warning disable CA2227 // Collection properties should be read only
-        public Dictionary<string,object> ExpressionAttributeValues { get; set; }
+        public Dictionary<string, object> ExpressionAttributeValues { get; set; }
 #pragma warning restore CA2227 // Collection properties should be read only
     }
 }

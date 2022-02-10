@@ -5,8 +5,8 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
 using Innovt.Domain.Core.Streams;
+using System;
 
 namespace Innovt.Domain.Core.Events
 {
@@ -32,9 +32,9 @@ namespace Innovt.Domain.Core.Events
         public DateTime CreatedAt { get; set; }
 
         public string EventId { get; set; }
-        
+
         public string Version { get; set; }
-        
+
         public string Partition { get; set; }
 
         public string TraceId { get; set; }

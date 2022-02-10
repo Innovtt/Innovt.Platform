@@ -5,16 +5,16 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.SQSEvents;
 using Innovt.Cloud.Queue;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Serialization;
 using Innovt.Core.Utilities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Lambda.Sqs
 {
@@ -27,7 +27,7 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
         private ISerializer serializer;
         private readonly bool isFifo;
 
-        protected SqsEventProcessor(ILogger logger, bool isFifo=false) : base(logger)
+        protected SqsEventProcessor(ILogger logger, bool isFifo = false) : base(logger)
         {
             this.isFifo = isFifo;
         }
@@ -49,20 +49,20 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
 
             set => serializer = value;
         }
-                
+
         protected override async Task<IList<BatchFailureResponse>> Handle(SQSEvent message, ILambdaContext context)
         {
             Logger.Info($"Processing Sqs event With {message?.Records?.Count} records.");
 
             using var watcher = new StopWatchHelper(Logger, nameof(Handle));
-            
+
             var response = new List<BatchFailureResponse>();
 
             if (message?.Records == null || message.Records.Count == 0) return response;
 
             using var activity = EventProcessorActivitySource.StartActivity(nameof(Handle));
             activity?.SetTag("SqsMessageRecordsCount", message?.Records?.Count);
-            
+
             var processedMessages = new List<string>();
 
             foreach (var record in message.Records)
@@ -104,8 +104,8 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
                 }
                 catch
                 {
-                    Logger.Warning($"SQS Event message ID {record.MessageId} will be returned as item failure.");  
-                                        
+                    Logger.Warning($"SQS Event message ID {record.MessageId} will be returned as item failure.");
+
                     if (isFifo)
                     {
                         response.AddRange(GetRemainingMessages(message, processedMessages));

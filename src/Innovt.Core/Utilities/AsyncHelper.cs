@@ -22,7 +22,7 @@ namespace Innovt.Core.Utilities
             TaskContinuationOptions.None,
             TaskScheduler.Default);
 
-        public static TResult RunSync<TResult>(Func<Task<TResult>> func,CancellationToken cancellationToken = default)
+        public static TResult RunSync<TResult>(Func<Task<TResult>> func, CancellationToken cancellationToken = default)
         {
             return TaskFactory
                 .StartNew(func, cancellationToken)

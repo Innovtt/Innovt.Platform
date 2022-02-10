@@ -1,6 +1,3 @@
-using System.Diagnostics;
-using System.Text;
-using System.Text.Json;
 using Amazon.Lambda.KinesisEvents;
 using Amazon.Lambda.TestUtilities;
 using Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors;
@@ -12,6 +9,9 @@ using NUnit.Framework;
 using OpenTelemetry;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
+using System.Diagnostics;
+using System.Text;
+using System.Text.Json;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests
 {
@@ -20,7 +20,7 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests
     {
         private IServiceMock serviceMock;
         protected static readonly ActivitySource KinesisProcessorTestsActivitySource = new("Innovt.Cloud.AWS.Lambda.Kinesis.Tests");
-        
+
         [SetUp]
         public void Setup()
         {
@@ -94,7 +94,7 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests
             var function = new KinesisDataInvoiceProcessorBatch(serviceMock);
 
             var lambdaContext = new TestLambdaContext();
-            
+
             var eventId = Guid.NewGuid().ToString();
 
             var message = new KinesisEvent
@@ -113,7 +113,7 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests
                 }
             };
 
-            Assert.ThrowsAsync<CriticalException>(async () => await function.Process(message, lambdaContext),$"Kinesis Data for EventId {eventId} is null");
+            Assert.ThrowsAsync<CriticalException>(async () => await function.Process(message, lambdaContext), $"Kinesis Data for EventId {eventId} is null");
 
             serviceMock.Received().InicializeIoc();
             serviceMock.DidNotReceive().ProcessMessage();
@@ -148,7 +148,7 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests
         public async Task Process_WithCustomLogger()
         {
             var function = new KinesisDataInvoiceProcessorBatch(serviceMock);
-            
+
             var lambdaContext = new TestLambdaContext();
 
             var eventId = Guid.NewGuid();
@@ -198,16 +198,16 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests
             await function.Process(message, lambdaContext);
 
             serviceMock.Received().InicializeIoc();
-            serviceMock.Received().ProcessMessage(Arg.Is<string>(p=> p.Contains(rootId)));
+            serviceMock.Received().ProcessMessage(Arg.Is<string>(p => p.Contains(rootId)));
         }
-        
+
         [Test]
         public async Task DeserializeDomainEvent()
         {
             var domainMock = Substitute.For<IDomainEventServiceMock<InvoiceDomainEvent>>();
-            
+
             var function = new KinesisDomainEventInvoiceProcessorBatch(domainMock);
-            
+
             var lambdaContext = new TestLambdaContext();
 
             var eventId = Guid.NewGuid();
@@ -254,7 +254,7 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests
             domainMock.Received().InicializeIoc();
             domainMock.Received().ProcessMessage(Arg.Is<DataStream<BaseInvoice>>(p => p.Body.NetValue == netValue && p.EventId == eventId.ToString()));
         }
-        
+
         [Test]
         public async Task ProcessShouldDiscardEmptyMessage()
         {
@@ -288,7 +288,7 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests
                 EventName = "eventTest",
                 EventVersion = "1.0.0",
                 EventSource = "testing",
-                Kinesis = new KinesisEvent.Record() {PartitionKey = "partition1", Data = ms}
+                Kinesis = new KinesisEvent.Record() { PartitionKey = "partition1", Data = ms }
             };
 
         }

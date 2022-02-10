@@ -3,11 +3,10 @@
 // Solution: Innovt.Contrib.Authorization
 // Date: 2021-09-20
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using Innovt.Core.Cqrs.Queries;
 using Innovt.Core.Utilities;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Innovt.Contrib.Authorization.Platform.Domain.Filters
 {
@@ -25,11 +24,11 @@ namespace Innovt.Contrib.Authorization.Platform.Domain.Filters
         public RoleByUserFilter()
         {
         }
-        
+
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (ExternalId.IsNullOrEmpty() && DomainId.IsNullOrEmpty())
-                yield return new ValidationResult("Domain id or External is required.",new []{ nameof(ExternalId),nameof(DomainId)});
+                yield return new ValidationResult("Domain id or External is required.", new[] { nameof(ExternalId), nameof(DomainId) });
         }
     }
 }

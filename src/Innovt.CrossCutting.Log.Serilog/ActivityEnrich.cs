@@ -14,14 +14,14 @@ namespace Innovt.CrossCutting.Log.Serilog
             {
                 throw new ArgumentNullException(nameof(logEvent));
             }
-            
+
             var activity = GetActivity();
 
             if (activity is null)
                 return;
 
-            logEvent.AddOrUpdateProperty(new LogEventProperty("TraceId",new ScalarValue(activity.Id)));     
-            
+            logEvent.AddOrUpdateProperty(new LogEventProperty("TraceId", new ScalarValue(activity.Id)));
+
             if (activity.ParentId is { })
             {
                 logEvent.AddOrUpdateProperty(new LogEventProperty("ParentId", new ScalarValue(activity.ParentId)));
@@ -33,11 +33,11 @@ namespace Innovt.CrossCutting.Log.Serilog
         private Activity GetActivity()
 #pragma warning restore CA1822 // Mark members as static
         {
-            if (Activity.Current is null) 
+            if (Activity.Current is null)
                 return null;
 
             return Activity.Current;
-            
+
         }
     }
 }

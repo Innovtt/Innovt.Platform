@@ -5,13 +5,13 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using Innovt.Core.Cqrs.Commands;
+using Innovt.Core.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Innovt.Core.Cqrs.Commands;
-using Innovt.Core.Exceptions;
 
 namespace Innovt.Core.Validation
 {
@@ -23,7 +23,7 @@ namespace Innovt.Core.Validation
             if (array == null) throw new ArgumentNullException(nameof(array));
 
             var validationResult = new List<ValidationResult>();
-            
+
             context ??= new ValidationContext(array);
 
             foreach (var obj in array) validationResult.AddRange(obj.Validate(context));
@@ -54,11 +54,11 @@ namespace Innovt.Core.Validation
             {
                 foreach (var item in result)
                 {
-                    if(!validationResults.Any(r=>r.ErrorMessage == item.ErrorMessage))
+                    if (!validationResults.Any(r => r.ErrorMessage == item.ErrorMessage))
                     {
                         validationResults.Add(item);
-                    }                    
-                }                
+                    }
+                }
             }
 
             return validationResults.Distinct().ToList();
@@ -83,7 +83,7 @@ namespace Innovt.Core.Validation
             if (!validationResults.Any()) return;
 
             var errors = from e in validationResults
-                select new ErrorMessage(e.ErrorMessage, string.Join(",", e.MemberNames));
+                         select new ErrorMessage(e.ErrorMessage, string.Join(",", e.MemberNames));
 
             throw new BusinessException(errors.ToList());
         }
@@ -92,7 +92,7 @@ namespace Innovt.Core.Validation
         {
             if (command == null) throw new ArgumentNullException(nameof(command));
 
-            EnsureIsValid((IValidatableObject) command, context);
+            EnsureIsValid((IValidatableObject)command, context);
         }
 
         public static void EnsureIsValid([NotNull] this ICommand command, string contextName)

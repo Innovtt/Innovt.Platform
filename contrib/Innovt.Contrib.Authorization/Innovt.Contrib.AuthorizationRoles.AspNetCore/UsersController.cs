@@ -3,13 +3,10 @@
 // Solution: Innovt.Contrib.Authorization
 // Date: 2021-09-20
 
-using System;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
 using Innovt.Contrib.Authorization.Platform.Application;
 using Innovt.Contrib.Authorization.Platform.Application.Commands;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace Innovt.Contrib.AuthorizationRoles.AspNetCore
 {
@@ -29,7 +26,7 @@ namespace Innovt.Contrib.AuthorizationRoles.AspNetCore
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> Add([FromBody]AddUserCommand command, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> Add([FromBody] AddUserCommand command, CancellationToken cancellationToken = default)
         {
             await authorizationAppService.AddUser(command, cancellationToken).ConfigureAwait(false);
 

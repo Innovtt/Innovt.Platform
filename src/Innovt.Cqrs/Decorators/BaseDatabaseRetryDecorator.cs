@@ -5,11 +5,11 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Data.SqlClient;
 using Innovt.Core.CrossCutting.Log;
 using Polly;
 using Polly.Retry;
+using System;
+using System.Data.SqlClient;
 
 namespace Innovt.Cqrs.Decorators
 {

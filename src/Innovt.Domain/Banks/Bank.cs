@@ -9,7 +9,7 @@ using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Banks
 {
-    public class Bank: ValueObject
+    public class Bank : ValueObject
     {
         public string Name { get; set; }
 

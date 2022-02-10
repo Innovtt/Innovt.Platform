@@ -3,7 +3,6 @@
 // Solution: Innovt.Platform
 // Date: 2021-07-20
 
-using System.Threading.Tasks;
 using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Domain.Core.Streams;
 
@@ -23,12 +22,12 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors
             serviceMock.InicializeIoc();
             return null;
         }
-        
-        protected override Task ProcessMessage(DataStream<BaseInvoice> message)
-        {   
-             serviceMock.ProcessMessage(message);
 
-             return Task.CompletedTask;
+        protected override Task ProcessMessage(DataStream<BaseInvoice> message)
+        {
+            serviceMock.ProcessMessage(message);
+
+            return Task.CompletedTask;
         }
     }
 }

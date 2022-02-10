@@ -5,12 +5,12 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using Innovt.Core.Collections;
+using Innovt.Core.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Innovt.Core.Collections;
-using Innovt.Core.Utilities;
 
 namespace Innovt.Notification.Core.Domain
 {
@@ -47,13 +47,13 @@ namespace Innovt.Notification.Core.Domain
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (To == null || !To.Any()) yield return new ValidationResult("Invalid value for To", new[] {"To"});
+            if (To == null || !To.Any()) yield return new ValidationResult("Invalid value for To", new[] { "To" });
 
             if (Body == null || Body.Content.IsNullOrEmpty())
-                yield return new ValidationResult("Invalid value for Body", new[] {"Body"});
+                yield return new ValidationResult("Invalid value for Body", new[] { "Body" });
 
             if (From == null || From.Address.IsNullOrEmpty())
-                yield return new ValidationResult("Invalid value for From", new[] {"From"});
+                yield return new ValidationResult("Invalid value for From", new[] { "From" });
 
             if (Type != NotificationMessageType.Sms || To == null) yield break;
 
@@ -62,7 +62,7 @@ namespace Innovt.Notification.Core.Domain
                 if (to.Address == null ||
                     !to.Address.StartsWith("+", StringComparison.InvariantCultureIgnoreCase))
                     yield return new ValidationResult(
-                        "Invalid value for To that should start with + and E.164 format.", new[] {"To"});
+                        "Invalid value for To that should start with + and E.164 format.", new[] { "To" });
         }
 
         public NotificationMessage AddSubject(string subject, string charset = null)

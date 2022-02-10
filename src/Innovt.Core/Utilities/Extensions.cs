@@ -38,7 +38,7 @@ namespace Innovt.Core.Utilities
 
         public static bool IsGuidNUllOrEmpty(this Guid? id)
         {
-            return (id is null || id.Value.IsGuidEmpty()) ;
+            return (id is null || id.Value.IsGuidEmpty());
         }
 
         public static bool IsLessThanOrEqualToZero(this int id)
@@ -299,7 +299,7 @@ namespace Innovt.Core.Utilities
             var bf = new BinaryFormatter();
             using var ms = new MemoryStream(data);
             var obj = bf.Deserialize(ms);
-            return (T) obj;
+            return (T)obj;
         }
 
         #region [From Net Code]

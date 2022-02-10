@@ -15,6 +15,6 @@ namespace Innovt.Cloud.AWS.Cognito.Model
 
         string Password { get; set; }
 
-        public Dictionary<string,string> CustomAttributes { get; set; }
+        public Dictionary<string, string> CustomAttributes { get; set; }
     }
 }

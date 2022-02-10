@@ -6,7 +6,6 @@
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -31,7 +30,7 @@ namespace Innovt.Domain.Core.Repository
         void Attach<T>(T entity) where T : class;
 
         void Detach<T>(T entity) where T : class;
-        
+
         int ExecuteSqlCommand(string sql, params object[] parameters);
 
         Task<int> ExecuteSqlCommandAsync(string sql, CancellationToken cancellationToken = default, params object[] parameters);

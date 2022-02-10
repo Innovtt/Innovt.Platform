@@ -5,14 +5,14 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using Innovt.Core.Exceptions;
+using Innovt.Domain.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Innovt.Core.Exceptions;
-using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Security
-{   
+{
     public class Group : Entity<Guid>
     {
         public Group()
@@ -23,7 +23,7 @@ namespace Innovt.Domain.Security
         public string Name { get; set; }
         public string Description { get; set; }
         public IList<Role> Roles { get; private set; }
-        
+
         public void AssignRole(Role role)
         {
             if (role == null) throw new ArgumentNullException(nameof(role));
@@ -37,7 +37,7 @@ namespace Innovt.Domain.Security
 
             Roles.Add(role);
         }
-        
+
         public void UnAssignRole(Role role)
         {
             if (role == null) throw new ArgumentNullException(nameof(role));

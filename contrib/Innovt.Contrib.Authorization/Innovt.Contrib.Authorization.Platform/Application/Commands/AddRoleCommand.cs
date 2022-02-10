@@ -3,16 +3,16 @@
 // Solution: Innovt.Contrib.Authorization
 // Date: 2021-09-20
 
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using Innovt.Core.Cqrs.Commands;
 using Innovt.Core.Utilities;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Innovt.Contrib.Authorization.Platform.Application.Commands
 {
     public class AddRoleCommand : ICommand
     {
-        [Required] 
+        [Required]
         public string RoleName { get; set; }
 
         [Required] public string Scope { get; set; }

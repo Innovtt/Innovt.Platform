@@ -5,16 +5,14 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Net.Http.Headers;
-using System.Security.Claims;
-using System.Text;
-using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 using Innovt.Core.Security;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using System.Net.Http.Headers;
+using System.Security.Claims;
+using System.Text;
+using System.Text.Encodings.Web;
 
 namespace Innovt.AspNetCore.Handlers
 {
@@ -38,7 +36,7 @@ namespace Innovt.AspNetCore.Handlers
 
         private static AuthenticateResult Success(string username)
         {
-            var claims = new[] {new Claim(ClaimTypes.Name, username)};
+            var claims = new[] { new Claim(ClaimTypes.Name, username) };
 
             var principal = new ClaimsPrincipal(new ClaimsIdentity(claims, SchemeName));
 

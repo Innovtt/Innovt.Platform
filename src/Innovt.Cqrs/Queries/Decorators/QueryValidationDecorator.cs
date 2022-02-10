@@ -5,9 +5,9 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
 using Innovt.Core.Cqrs.Queries;
 using Innovt.Core.Validation;
+using System;
 
 namespace Innovt.Cqrs.Queries.Decorators
 {

@@ -31,7 +31,7 @@ namespace Innovt.Data.EFCore.MsSql
         {
             return base.Database
                 .ExecuteSqlRawAsync(sql, cancellationToken: cancellationToken, parameters: parameters);
-                
+
         }
 
         protected override void ConfigureProvider(DbContextOptionsBuilder optionsBuilder, string connectionString)

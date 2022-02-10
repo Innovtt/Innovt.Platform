@@ -9,12 +9,12 @@ using Innovt.Core.Exceptions;
 using System;
 
 namespace Innovt.Data.Exceptions
-{    
+{
     [Serializable]
     public class ConnectionStringException : ConfigurationException
     {
         public ConnectionStringException(string message) : base(message)
         {
-        }  
+        }
     }
 }

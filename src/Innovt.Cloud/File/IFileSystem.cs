@@ -17,7 +17,7 @@ namespace Innovt.Cloud.File
     public interface IFileSystem
     {
         Task<bool> CopyObject(string sourceBucket, string sourceKey, string destinationBucket, string destinationKey,
-            string serverSideEncryptionMethod = null, string fileAcl=null, CancellationToken cancellationToken = default);
+            string serverSideEncryptionMethod = null, string fileAcl = null, CancellationToken cancellationToken = default);
 
         void Download(string bucketName, string fileName, string destination);
 

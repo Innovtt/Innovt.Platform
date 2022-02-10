@@ -10,7 +10,7 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests
 {
     public class Tests
     {
-        private TestLambdaContext lambdaContext;      
+        private TestLambdaContext lambdaContext;
 
 
         [SetUp]
@@ -30,7 +30,7 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests
             var result = await processor.Process(new Amazon.Lambda.SQSEvents.SQSEvent(), lambdaContext);
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(result.Count,0);
+            Assert.AreEqual(result.Count, 0);
         }
 
 
@@ -39,7 +39,7 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests
         public async Task Handle_BatchMessage_ForFifoQueue_Returns_TheRemainingMessages_WhenFindTheFirstFailure()
         {
             var processor = new CustomSqsEventProcessor(true);
-            
+
             var messages = new List<Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage>();
 
             var expectedMessageIdFailed = new List<string>() {
@@ -90,7 +90,7 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests
                 {
                     Assert.Fail(item.ItemIdentifier);
                 }
-            }            
+            }
         }
 
 
@@ -103,9 +103,9 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests
 
             var expectedMessageIdFailed = new List<string>() {
                 Guid.NewGuid().ToString(),
-                Guid.NewGuid().ToString()                
+                Guid.NewGuid().ToString()
             };
-                      
+
 
             messages.Add(new Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage()
             {
@@ -118,7 +118,7 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests
                 Body = System.Text.Json.JsonSerializer.Serialize(new Person("michel")),
                 MessageId = Guid.NewGuid().ToString(),
             });
-          
+
             messages.Add(new Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage()
             {
                 Body = System.Text.Json.JsonSerializer.Serialize(new Person("ale")),
@@ -153,7 +153,8 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests
         }
 
         [Test]
-        public async Task Handle_BatchMessage_Returns_EmptyBatchResponseWhen_ThereIsNoFailures() {
+        public async Task Handle_BatchMessage_Returns_EmptyBatchResponseWhen_ThereIsNoFailures()
+        {
 
             var processor = new CustomSqsEventProcessor(false);
 
@@ -163,7 +164,7 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests
             {
                 Body = System.Text.Json.JsonSerializer.Serialize(new Person("michel")),
                 MessageId = Guid.NewGuid().ToString(),
-            });                    
+            });
 
             messages.Add(new Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage()
             {

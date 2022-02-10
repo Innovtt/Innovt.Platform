@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Threading;
-using System.Threading.Tasks;
 using Innovt.AspNetCore.Handlers;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Domain.Security;
@@ -11,6 +6,7 @@ using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using NSubstitute;
 using NUnit.Framework;
+using System.Security.Claims;
 
 namespace Innovt.AspNetCore.Tests
 {
@@ -20,7 +16,7 @@ namespace Innovt.AspNetCore.Tests
         private IAuthorizationRepository authorizationRepositoryMoq;
         private ILogger loggerMock;
 
-        
+
         [SetUp]
         public void Setup()
         {
@@ -37,15 +33,15 @@ namespace Innovt.AspNetCore.Tests
 
         [Test]
         public void ConstructorShould_ThrowException_If_Parameters_Is_NUll()
-        { 
+        {
             Assert.Throws<ArgumentNullException>(() => new RolesAuthorizationHandler(null, loggerMock));
-            
+
             Assert.Throws<ArgumentNullException>(() => new RolesAuthorizationHandler(authorizationRepositoryMoq, null));
         }
 
         private AuthorizationHandlerContext CreateContext(ClaimsPrincipal user)
         {
-            return  new AuthorizationHandlerContext(new List<IAuthorizationRequirement>()
+            return new AuthorizationHandlerContext(new List<IAuthorizationRequirement>()
             {
                 new RolesAuthorizationRequirement(new []{"Admin"})
             }, user, null);
@@ -66,9 +62,9 @@ namespace Innovt.AspNetCore.Tests
         public async Task HandleAsync_Fail_If_User_HasNoId()
         {
             var handle = new RolesAuthorizationHandler(authorizationRepositoryMoq, loggerMock);
-            
+
             var identity = NSubstitute.Substitute.For<ClaimsIdentity>();
-            
+
             identity.IsAuthenticated.Returns(true);
 
             var principal = new ClaimsPrincipal(identity);
@@ -76,7 +72,7 @@ namespace Innovt.AspNetCore.Tests
             await handle.HandleAsync(context);
             Assert.IsTrue(context.HasFailed);
         }
-        
+
         [Test]
         public async Task HandleAsync_Fail_If_User_Does_Not_Exist()
         {
@@ -96,13 +92,13 @@ namespace Innovt.AspNetCore.Tests
             var principal = new ClaimsPrincipal(identity);
 
             var context = CreateContext(principal);
-            
+
             await handle.HandleAsync(context);
             Assert.IsTrue(context.HasFailed);
 
             await authorizationRepositoryMoq.Received(1).GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
         }
-        
+
         [Test]
         public async Task HandleAsync_Fail_If_User_HasNoRoles()
         {
@@ -227,12 +223,12 @@ namespace Innovt.AspNetCore.Tests
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id)
             });
-            
+
             var principal = new ClaimsPrincipal(identity);
 
             var httpContext = new DefaultHttpContext();
             httpContext.Request.Headers.Add("X-Application-Scope", "User");
-            
+
             var context = new AuthorizationHandlerContext(new List<IAuthorizationRequirement>()
             {
                 new RolesAuthorizationRequirement(new []{"Admin"})
@@ -304,7 +300,7 @@ namespace Innovt.AspNetCore.Tests
         [Test]
         [TestCase("Buyer", "123456", true)]
         [TestCase("User", "123456", false)]
-        public async Task HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode(string scope, string appCode,bool success)
+        public async Task HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode(string scope, string appCode, bool success)
         {
             var group = new Group()
             {

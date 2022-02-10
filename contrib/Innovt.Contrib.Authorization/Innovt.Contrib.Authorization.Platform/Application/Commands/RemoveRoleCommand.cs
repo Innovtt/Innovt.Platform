@@ -3,15 +3,15 @@
 // Solution: Innovt.Contrib.Authorization
 // Date: 2021-09-20
 
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using Innovt.Core.Collections;
 using Innovt.Core.Cqrs.Commands;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Innovt.Contrib.Authorization.Platform.Application.Commands
 {
     public class RemoveRoleCommand : ICommand
-    {        
+    {
         [Required] public string RoleName { get; set; }
 
         [Required] public string Scope { get; set; }

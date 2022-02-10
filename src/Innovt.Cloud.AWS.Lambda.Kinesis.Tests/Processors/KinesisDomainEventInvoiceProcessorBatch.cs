@@ -18,7 +18,7 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors
 
         protected override Task<IList<BatchFailureResponse>> ProcessMessages(IList<InvoiceDomainEvent> messages)
         {
-            var result =  serviceMock.ProcessMessage(messages.First());
+            var result = serviceMock.ProcessMessage(messages.First());
 
             return Task.FromResult(result);
         }
@@ -28,7 +28,7 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors
             serviceMock.InicializeIoc();
 
             return null;
-        }       
-    
+        }
+
     }
 }

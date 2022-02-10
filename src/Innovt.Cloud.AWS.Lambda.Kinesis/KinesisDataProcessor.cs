@@ -5,12 +5,12 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using Innovt.Core.CrossCutting.Log;
+using Innovt.Core.Exceptions;
+using Innovt.Domain.Core.Streams;
 using System;
 using System.Collections.Generic;
-using Innovt.Core.CrossCutting.Log;
-using Innovt.Domain.Core.Streams;
 using System.Threading.Tasks;
-using Innovt.Core.Exceptions;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis
 {

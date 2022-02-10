@@ -2,14 +2,12 @@
 using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Core.CrossCutting.Log;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Lambda.Tests
 {
     public class CustomEventProcessor : EventProcessor<Person>
     {
-        public CustomEventProcessor(ILogger logger):base(logger)
+        public CustomEventProcessor(ILogger logger) : base(logger)
         {
         }
         public CustomEventProcessor() : base()
@@ -27,12 +25,12 @@ namespace Innovt.Cloud.AWS.Lambda.Tests
 
         protected override IContainer SetupIocContainer()
         {
-            return null;            
+            return null;
         }
 
         protected override void EnrichConfiguration(ConfigurationBuilder configurationBuilder)
         {
             base.EnrichConfiguration(configurationBuilder);
-        }      
+        }
     }
 }

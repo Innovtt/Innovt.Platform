@@ -41,7 +41,7 @@ namespace Innovt.Data.EFCore
         {
             base.ChangeTracker.LazyLoadingEnabled = false;
         }
-        
+
         public int Commit()
         {
             return SaveChanges();
@@ -59,22 +59,22 @@ namespace Innovt.Data.EFCore
                 .ForEach(entry => entry.State = EntityState.Unchanged);
         }
 
-        public new void Add<T>(T entity) where  T: class
+        public new void Add<T>(T entity) where T : class
         {
             base.Add(entity);
         }
 
         public void Add<T>(IEnumerable<T> entities) where T : class
-        {            
+        {
             base.AddRange(entities);
         }
 
-        public new async Task AddAsync<T>(T entity, CancellationToken cancellationToken = default) where T:class
+        public new async Task AddAsync<T>(T entity, CancellationToken cancellationToken = default) where T : class
         {
             await base.AddAsync(entity, cancellationToken).ConfigureAwait(false);
         }
-        
-        public async Task AddAsync<T>(IEnumerable<T> entities,CancellationToken cancellationToken = default) where T : class
+
+        public async Task AddAsync<T>(IEnumerable<T> entities, CancellationToken cancellationToken = default) where T : class
         {
             await base.AddRangeAsync(entities, cancellationToken).ConfigureAwait(false);
         }
@@ -107,7 +107,7 @@ namespace Innovt.Data.EFCore
         public IQueryable<T> Queryable<T>() where T : class
         {
             return base.Set<T>();
-        }     
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -127,7 +127,7 @@ namespace Innovt.Data.EFCore
 
 
                 ConfigureProvider(optionsBuilder, connectionString);
-            
+
             }
 
             base.OnConfiguring(optionsBuilder);

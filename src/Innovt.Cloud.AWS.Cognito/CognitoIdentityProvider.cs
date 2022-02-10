@@ -5,6 +5,16 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using Amazon.CognitoIdentityProvider;
+using Amazon.CognitoIdentityProvider.Model;
+using Innovt.Cloud.AWS.Cognito.Model;
+using Innovt.Cloud.AWS.Cognito.Resources;
+using Innovt.Cloud.AWS.Configuration;
+using Innovt.Core.CrossCutting.Log;
+using Innovt.Core.Exceptions;
+using Innovt.Core.Http;
+using Innovt.Core.Utilities;
+using Innovt.Core.Validation;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,16 +26,6 @@ using System.Reflection;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using Amazon.CognitoIdentityProvider;
-using Amazon.CognitoIdentityProvider.Model;
-using Innovt.Cloud.AWS.Cognito.Model;
-using Innovt.Cloud.AWS.Cognito.Resources;
-using Innovt.Cloud.AWS.Configuration;
-using Innovt.Core.CrossCutting.Log;
-using Innovt.Core.Exceptions;
-using Innovt.Core.Http;
-using Innovt.Core.Utilities;
-using Innovt.Core.Validation;
 using ChangePasswordRequest = Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest;
 using ConfirmForgotPasswordRequest = Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest;
 using ConfirmSignUpRequest = Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest;
@@ -56,7 +56,7 @@ namespace Innovt.Cloud.AWS.Cognito
             this.userPoolId = userPoolId ?? throw new ArgumentNullException(nameof(userPoolId));
             if (domainEndPoint == null) throw new ArgumentNullException(nameof(domainEndPoint));
 
-            this.domainEndPoint = new Uri(domainEndPoint);            
+            this.domainEndPoint = new Uri(domainEndPoint);
         }
 
         private AmazonCognitoIdentityProviderClient CognitoProvider
@@ -65,15 +65,15 @@ namespace Innovt.Cloud.AWS.Cognito
             {
                 return cognitoIdentityProvider ??= CreateService<AmazonCognitoIdentityProviderClient>();
             }
-        } 
+        }
 
-        public virtual async Task ForgotPassword([NotNull]ForgotPasswordRequest command,
+        public virtual async Task ForgotPassword([NotNull] ForgotPasswordRequest command,
             CancellationToken cancellationToken = default)
         {
             command.EnsureIsValid();
 
             using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(ForgotPassword));
-            activity?.SetTag("UserName",command.UserName);
+            activity?.SetTag("UserName", command.UserName);
 
             var forgotRequest = new Amazon.CognitoIdentityProvider.Model.ForgotPasswordRequest
             {
@@ -149,7 +149,7 @@ namespace Innovt.Cloud.AWS.Cognito
 
             command.EnsureIsValid();
 
-            var parameters = new Dictionary<string, string> {{"PASSWORD", command.Password}};
+            var parameters = new Dictionary<string, string> { { "PASSWORD", command.Password } };
 
             return await SignIn(AuthFlowType.USER_PASSWORD_AUTH, command, parameters, cancellationToken).ConfigureAwait(false);
         }
@@ -199,10 +199,10 @@ namespace Innovt.Cloud.AWS.Cognito
                         $"IP:{command.IpAddress};ServerPath:{command.ServerPath};ServerName:{command.ServerName}"
                 }
             };
-                      
+
             if (command.CustomAttributes != null)
             {
-                foreach (var attribute in command.CustomAttributes) 
+                foreach (var attribute in command.CustomAttributes)
                 {
                     signUpRequest.UserAttributes.Add(new AttributeType
                     {
@@ -239,7 +239,7 @@ namespace Innovt.Cloud.AWS.Cognito
                         await CognitoProvider.SignUpAsync(signUpRequest, cancellationToken).ConfigureAwait(false))
                     .ConfigureAwait(false);
 
-                return new SignUpResponse {Confirmed = response.UserConfirmed, UUID = response.UserSub};
+                return new SignUpResponse { Confirmed = response.UserConfirmed, UUID = response.UserSub };
             }
             catch (Exception ex)
             {
@@ -375,7 +375,7 @@ namespace Innovt.Cloud.AWS.Cognito
                 user.Status = cognitoUser.UserStatus.ToString(cultureInfo);
                 user.UserCreateDate = cognitoUser.UserCreateDate;
                 user.UserLastModifiedDate = cognitoUser.UserLastModifiedDate;
-                                                
+
                 foreach (var userAttribute in cognitoUser.Attributes)
                 {
                     if (userAttribute.Name == null)
@@ -402,7 +402,7 @@ namespace Innovt.Cloud.AWS.Cognito
                             else
                             {
                                 user.CustomAttributes ??= new Dictionary<string, string>();
-                                user.CustomAttributes.Add(userAttribute.Name.Replace("custom:","",StringComparison.OrdinalIgnoreCase), userAttribute.Value);
+                                user.CustomAttributes.Add(userAttribute.Name.Replace("custom:", "", StringComparison.OrdinalIgnoreCase), userAttribute.Value);
                             }
                             break;
                     }
@@ -564,7 +564,7 @@ namespace Innovt.Cloud.AWS.Cognito
                 var socialUser = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                     await CognitoProvider.GetUserAsync(
                         new Amazon.CognitoIdentityProvider.Model.GetUserRequest
-                            {AccessToken = response.AccessToken},
+                        { AccessToken = response.AccessToken },
                         cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
 
                 if (socialUser == null)
@@ -662,7 +662,7 @@ namespace Innovt.Cloud.AWS.Cognito
                 ExpiredCodeException => new BusinessException(ErrorCode.ExpiredCode, ex),
                 LimitExceededException => new BusinessException(ErrorCode.LimitExceeded, ex),
                 InvalidParameterException ipEx => ipEx.Message == "Cannot reset password for the user as there is no registered / verified email or phone_number" ?
-                new BusinessException(ErrorCode.UserNotConfirmed, ex): ipEx,
+                new BusinessException(ErrorCode.UserNotConfirmed, ex) : ipEx,
                 BusinessException _ => ex,
                 _ => new CriticalException(ErrorCode.InternalServerError, ex)
             };
@@ -671,7 +671,7 @@ namespace Innovt.Cloud.AWS.Cognito
 
         private async Task<SignInResponse> SignIn(AuthFlowType type, SignInRequestBase request,
             Dictionary<string, string> authParameters = null, CancellationToken cancellationToken = default)
-        {            
+        {
             Check.NotNull(request, nameof(request));
 
             using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(SignIn));

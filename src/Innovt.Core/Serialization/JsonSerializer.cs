@@ -20,7 +20,7 @@ namespace Innovt.Core.Serialization
         public JsonSerializer(bool ignoreNullValues = true, bool ignoreReadOnlyProperties = true, bool propertyNameCaseInsensitive = true, IList<JsonConverter> converters = null)
         {
             options = new JsonSerializerOptions
-            {                   
+            {
                 IgnoreReadOnlyProperties = ignoreReadOnlyProperties,
                 PropertyNameCaseInsensitive = propertyNameCaseInsensitive
             };

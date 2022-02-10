@@ -5,8 +5,6 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Net;
 using Amazon;
 using Amazon.Runtime;
 using Innovt.Cloud.AWS.Configuration;
@@ -14,6 +12,8 @@ using Innovt.Core.CrossCutting.Log;
 using Polly;
 using Polly.CircuitBreaker;
 using Polly.Retry;
+using System;
+using System.Net;
 using RetryPolicy = Polly.Retry.RetryPolicy;
 
 namespace Innovt.Cloud.AWS
@@ -57,7 +57,7 @@ namespace Innovt.Cloud.AWS
 
         protected ILogger Logger { get; }
 
-       
+
 
         protected RegionEndpoint GetServiceRegionEndPoint()
         {
@@ -79,12 +79,12 @@ namespace Innovt.Cloud.AWS
             if (credentials == null)
                 return serviceRegion == null
                     ? Activator.CreateInstance<T>()
-                    : (T) Activator.CreateInstance(typeof(T), serviceRegion);
+                    : (T)Activator.CreateInstance(typeof(T), serviceRegion);
 
 
             return serviceRegion == null
-                ? (T) Activator.CreateInstance(typeof(T), credentials)
-                : (T) Activator.CreateInstance(typeof(T), credentials, serviceRegion);
+                ? (T)Activator.CreateInstance(typeof(T), credentials)
+                : (T)Activator.CreateInstance(typeof(T), credentials, serviceRegion);
         }
 
 
@@ -164,7 +164,7 @@ namespace Innovt.Cloud.AWS
             return Policy.Handle<T>()
                 .CircuitBreakerAsync(CircuitBreakerAllowedExceptions, CircuitBreakerDurationOfBreak);
         }
-        
+
         public void Dispose()
         {
             Dispose(true);

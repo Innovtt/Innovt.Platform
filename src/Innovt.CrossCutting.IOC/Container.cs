@@ -5,9 +5,9 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
 using Innovt.Core.CrossCutting.Ioc;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 namespace Innovt.CrossCutting.IOC
 {
     public sealed class Container : IContainer
@@ -66,7 +66,7 @@ namespace Innovt.CrossCutting.IOC
 
         public TService Resolve<TService>(Type type)
         {
-            return (TService) container.GetInstance(type);
+            return (TService)container.GetInstance(type);
         }
 
         public TService Resolve<TService>(string instanceKey)
@@ -81,7 +81,7 @@ namespace Innovt.CrossCutting.IOC
 
         public void Release(object obj)
         {
-            container.TryAddDisposable(obj);            
+            container.TryAddDisposable(obj);
         }
 
         public IServiceScope CreateScope()

@@ -5,13 +5,6 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
@@ -19,6 +12,13 @@ using Amazon.DynamoDBv2.Model;
 using Innovt.Cloud.Table;
 using Innovt.Core.Collections;
 using Innovt.Core.Utilities;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Text;
 
 namespace Innovt.Cloud.AWS.Dynamo
 {
@@ -33,7 +33,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             return DynamoDBEntryConversion.V2.ConvertToEntry(value.ToString());
         }
 
-        public  static string GetTableName<T>()
+        public static string GetTableName<T>()
         {
             if (Attribute.GetCustomAttribute(typeof(T), typeof(DynamoDBTableAttribute)) is not DynamoDBTableAttribute attribute)
                 return typeof(T).Name;
@@ -45,7 +45,8 @@ namespace Innovt.Cloud.AWS.Dynamo
         {
 
             return items?.Select(i =>
-                new {
+                new
+                {
                     i.Key,
                     Value = CreateAttributeValue(i.Value)
                 }).ToDictionary(x => x.Key, x => x.Value);
@@ -57,37 +58,37 @@ namespace Innovt.Cloud.AWS.Dynamo
             switch (value)
             {
                 case null:
-                    return new AttributeValue {NULL = true};
+                    return new AttributeValue { NULL = true };
                 case MemoryStream stream:
-                    return new AttributeValue {B = stream};
+                    return new AttributeValue { B = stream };
                 case bool:
-                    return new AttributeValue {BOOL = bool.Parse(value.ToString())};
+                    return new AttributeValue { BOOL = bool.Parse(value.ToString()) };
                 case List<MemoryStream> streams:
-                    return new AttributeValue {BS = streams};
+                    return new AttributeValue { BS = streams };
                 case List<string> list:
                     return new AttributeValue(list);
                 case int or double or float or decimal:
-                    return new AttributeValue {N = value.ToString()};
+                    return new AttributeValue { N = value.ToString() };
                 case DateTime time:
-                    return new AttributeValue {S = time.ToString("s")};
+                    return new AttributeValue { S = time.ToString("s") };
                 case IList<int> or IList<double> or IList<float> or IList<decimal>:
-                {
-                    var array = (value as IList).Cast<string>();
+                    {
+                        var array = (value as IList).Cast<string>();
 
-                    return new AttributeValue {NS = array.ToList()};
-                }
+                        return new AttributeValue { NS = array.ToList() };
+                    }
                 case IDictionary<string, object> objects:
-                {
-                    var array = objects.ToDictionary(item => item.Key, item => CreateAttributeValue(item.Value));
+                    {
+                        var array = objects.ToDictionary(item => item.Key, item => CreateAttributeValue(item.Value));
 
-                    return new AttributeValue {M = array};
-                }
+                        return new AttributeValue { M = array };
+                    }
                 default:
                     return new AttributeValue(value.ToString());
             }
         }
 
-        private static Dictionary<string, AttributeValue> CreateExpressionAttributeValues(object filter,string attributes)
+        private static Dictionary<string, AttributeValue> CreateExpressionAttributeValues(object filter, string attributes)
         {
             if (filter == null)
                 return new Dictionary<string, AttributeValue>();
@@ -102,7 +103,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             {
                 var key = $":{item.Name}".ToLower(CultureInfo.CurrentCulture);
 
-                if (attributes.Contains(key,StringComparison.InvariantCultureIgnoreCase) && !attributeValues.ContainsKey(key))
+                if (attributes.Contains(key, StringComparison.InvariantCultureIgnoreCase) && !attributeValues.ContainsKey(key))
                 {
                     var value = item.GetValue(filter);
 
@@ -158,7 +159,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             return scanRequest;
         }
 
-        internal static IList<T> ConvertAttributesToType<T>(IList<Dictionary<string, AttributeValue>> items,DynamoDBContext context)
+        internal static IList<T> ConvertAttributesToType<T>(IList<Dictionary<string, AttributeValue>> items, DynamoDBContext context)
         {
             if (items is null)
                 return new List<T>();
@@ -169,7 +170,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             {
                 var doc = Document.FromAttributeMap(item);
                 result.Add(context.FromDocument<T>(doc));
-            }            
+            }
 
             return result;
         }
@@ -229,11 +230,11 @@ namespace Innovt.Cloud.AWS.Dynamo
             return (result1, result2, result3);
         }
 
-        internal static (IList<T1> first, IList<T2> seccond, IList<T3> third, IList<T4> fourth) ConvertAttributesToType<T1, T2, T3,T4>(
+        internal static (IList<T1> first, IList<T2> seccond, IList<T3> third, IList<T4> fourth) ConvertAttributesToType<T1, T2, T3, T4>(
          IList<Dictionary<string, AttributeValue>> items, string[] splitBy, DynamoDBContext context)
         {
             if (items is null)
-                return (null, null, null,null);
+                return (null, null, null, null);
 
             var result1 = new List<T1>();
             var result2 = new List<T2>();
@@ -246,7 +247,7 @@ namespace Innovt.Cloud.AWS.Dynamo
 
                 if (!item.ContainsKey("EntityType"))
                     continue;
-                
+
                 if (item["EntityType"].S == splitBy[0])
                 {
                     result1.Add(context.FromDocument<T1>(doc));
@@ -262,18 +263,18 @@ namespace Innovt.Cloud.AWS.Dynamo
                         else
                             result4.Add(context.FromDocument<T4>(doc));
                     }
-                        
+
                 }
             }
 
-            return (result1, result2, result3,result4);
+            return (result1, result2, result3, result4);
         }
 
-        internal static (IList<T1> first, IList<T2> seccond, IList<T3> third, IList<T4> fourth,IList<T5> fifth) ConvertAttributesToType<T1, T2, T3, T4,T5>(
+        internal static (IList<T1> first, IList<T2> seccond, IList<T3> third, IList<T4> fourth, IList<T5> fifth) ConvertAttributesToType<T1, T2, T3, T4, T5>(
         IList<Dictionary<string, AttributeValue>> items, string[] splitBy, DynamoDBContext context)
         {
             if (items is null)
-                return (null, null, null, null,null);
+                return (null, null, null, null, null);
 
             var result1 = new List<T1>();
             var result2 = new List<T2>();
@@ -287,7 +288,7 @@ namespace Innovt.Cloud.AWS.Dynamo
 
                 if (!item.ContainsKey("EntityType"))
                     continue;
-                
+
 
                 if (item["EntityType"].S == splitBy[0])
                 {
@@ -307,12 +308,12 @@ namespace Innovt.Cloud.AWS.Dynamo
                                 result4.Add(context.FromDocument<T4>(doc));
                             else
                                 result5.Add(context.FromDocument<T5>(doc));
-                        }                            
+                        }
                     }
                 }
             }
 
-            return (result1, result2, result3, result4,result5);
+            return (result1, result2, result3, result4, result5);
         }
 
         internal static string CreatePaginationToken(Dictionary<string, AttributeValue> lastEvaluatedKey)
@@ -367,9 +368,10 @@ namespace Innovt.Cloud.AWS.Dynamo
             return result;
         }
 
-        private static Put CreatePutTransactItem(TransactionWriteItem transactionWriteItem) { 
+        private static Put CreatePutTransactItem(TransactionWriteItem transactionWriteItem)
+        {
 
-            if(transactionWriteItem.OperationType != TransactionWriteOperationType.Put)
+            if (transactionWriteItem.OperationType != TransactionWriteOperationType.Put)
                 return null;
 
             return new Put()
@@ -377,10 +379,10 @@ namespace Innovt.Cloud.AWS.Dynamo
                 ConditionExpression = transactionWriteItem.ConditionExpression,
                 TableName = transactionWriteItem.TableName,
                 ExpressionAttributeValues = ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
-                Item = ConvertToAttributeValues(transactionWriteItem.Keys)                
+                Item = ConvertToAttributeValues(transactionWriteItem.Keys)
             };
         }
-              
+
 
         private static ConditionCheck CreateConditionCheckTransactItem(TransactionWriteItem transactionWriteItem)
         {
@@ -395,7 +397,7 @@ namespace Innovt.Cloud.AWS.Dynamo
                 Key = ConvertToAttributeValues(transactionWriteItem.Keys),
             };
         }
-        
+
         private static Delete CreateDeleteTransactItem(TransactionWriteItem transactionWriteItem)
         {
             if (transactionWriteItem.OperationType != TransactionWriteOperationType.Delete)
@@ -406,7 +408,7 @@ namespace Innovt.Cloud.AWS.Dynamo
                 ConditionExpression = transactionWriteItem.ConditionExpression,
                 TableName = transactionWriteItem.TableName,
                 ExpressionAttributeValues = ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
-                Key = ConvertToAttributeValues(transactionWriteItem.Keys)                
+                Key = ConvertToAttributeValues(transactionWriteItem.Keys)
             };
         }
 
@@ -432,7 +434,7 @@ namespace Innovt.Cloud.AWS.Dynamo
                 throw new ArgumentNullException(nameof(transactionWriteItem));
             }
 
-            return  new TransactWriteItem
+            return new TransactWriteItem
             {
                 ConditionCheck = CreateConditionCheckTransactItem(transactionWriteItem),
                 Put = CreatePutTransactItem(transactionWriteItem),

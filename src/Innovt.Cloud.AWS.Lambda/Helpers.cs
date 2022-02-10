@@ -5,10 +5,10 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.IO;
 using Amazon.Lambda.Core;
 using Microsoft.Extensions.Configuration;
+using System;
+using System.IO;
 
 namespace Innovt.Cloud.AWS.Lambda
 {

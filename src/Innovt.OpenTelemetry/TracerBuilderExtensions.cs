@@ -3,8 +3,8 @@
 // Solution: Innovt.Platform
 // Date: 2021-07-18
 
-using System;
 using OpenTelemetry.Trace;
+using System;
 
 namespace Innovt.OpenTelemetry
 {
@@ -15,7 +15,7 @@ namespace Innovt.OpenTelemetry
         {
             if (builder == null)
                 throw new ArgumentNullException(nameof(builder));
-                        
+
             builder.AddSource("Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider")
             .AddSource("Innovt.Cloud.AWS.Dynamo.Repository")
             .AddSource("Innovt.Cloud.AWS.KinesisDataProducer")

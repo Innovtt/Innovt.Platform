@@ -5,17 +5,17 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Threading;
-using System.Threading.Tasks;
 using Dapper;
 using Innovt.Core.Collections;
 using Innovt.Core.Cqrs.Queries;
 using Innovt.Data.DataSources;
 using Innovt.Data.Exceptions;
 using Innovt.Data.Model;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Innovt.Data.Ado
 {
@@ -93,7 +93,7 @@ namespace Innovt.Data.Ado
 
             return await QueryInternalAsync(sql, filter, func, splitOn, cancellationToken).ConfigureAwait(false);
         }
-        
+
         public async Task<IEnumerable<TReturn>> QueryAsync<TFirst, TSecond, TThird, TReturn>(string sql, object filter,
             Func<TFirst, TSecond, TThird, TReturn> func, string splitOn, CancellationToken cancellationToken = default)
         {
@@ -241,7 +241,7 @@ namespace Innovt.Data.Ado
             object filter = null, CancellationToken cancellationToken = default)
         {
             var sql = $"SELECT COUNT(1) FROM [{tableName}] ".AddNoLock(dataSource).AddWhere(whereClause);
-            
+
             return await QuerySingleOrDefaultAsync<int>(sql, filter, cancellationToken).ConfigureAwait(false);
         }
 

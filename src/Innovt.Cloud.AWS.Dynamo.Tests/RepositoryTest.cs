@@ -5,15 +5,15 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.Table;
 using Innovt.Core.CrossCutting.Log;
 using NSubstitute;
 using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Dynamo.Tests
 {
@@ -42,7 +42,7 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
 
                 var request = new Table.TransactionWriteRequest()
                 {
-                    TransactItems = new List<TransactionWriteItem>() 
+                    TransactItems = new List<TransactionWriteItem>()
                 };
 
                 request.TransactItems.Add(new TransactionWriteItem()
@@ -52,7 +52,7 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
                     //UpdateExpression = "SET Deleted = :up ",
                     //ConditionExpression = "Deleted = :d",
                     Keys = new Dictionary<string, object>()
-                    {   
+                    {
                         {"PK", "U#michemob@gmail.com" },
                         {"SK", "PROFILE" }
                     },

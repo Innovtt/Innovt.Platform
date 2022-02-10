@@ -1,11 +1,6 @@
 ﻿using Innovt.Data.Ado.Tests.Model;
 using Innovt.Data.DataSources;
-using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Innovt.Data.Ado.Tests
@@ -65,7 +60,7 @@ namespace Innovt.Data.Ado.Tests
                                    WHERE c.NewId=@CompanyId ) a
                                 WHERE 1=1  ORDER BY a.CreatedOn DESC ";
 
-            var dataSource = new DataSourceReader("FakeDb","Fake");
+            var dataSource = new DataSourceReader("FakeDb", "Fake");
 
             var repo = new UserRepository(dataSource);
 

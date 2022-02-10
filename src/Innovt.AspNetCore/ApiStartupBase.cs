@@ -5,7 +5,6 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
 using Innovt.AspNetCore.Extensions;
 using Innovt.AspNetCore.Filters;
 using Innovt.AspNetCore.Infrastructure;
@@ -75,7 +74,8 @@ namespace Innovt.AspNetCore
                 options.SwaggerDoc(Documentation.ApiVersion,
                     new OpenApiInfo
                     {
-                        Description = Documentation.ApiDescription, Title = Documentation.ApiTitle,
+                        Description = Documentation.ApiDescription,
+                        Title = Documentation.ApiTitle,
                         Version = Documentation.ApiVersion
                     });
 

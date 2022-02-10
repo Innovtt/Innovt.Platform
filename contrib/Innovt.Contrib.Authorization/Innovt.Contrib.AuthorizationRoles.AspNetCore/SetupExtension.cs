@@ -5,7 +5,6 @@
 
 using Innovt.AspNetCore.Handlers;
 using Innovt.Contrib.Authorization.Platform.Domain;
-using Innovt.Contrib.Authorization.Platform.Infrastructure;
 using Innovt.Contrib.Authorization.Platform.Infrastructure.IOC;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,11 +24,11 @@ namespace Innovt.Contrib.AuthorizationRoles.AspNetCore
         {
             _ = new AuthorizationModule(services);
 
-            
+
             services.AddScoped<Innovt.Domain.Security.IAuthorizationRepository>(provider =>
                 provider.GetRequiredService<IAuthorizationRepository>()
             );
-            
+
             services.AddScoped<IAuthorizationHandler, RolesAuthorizationHandler>();
         }
     }

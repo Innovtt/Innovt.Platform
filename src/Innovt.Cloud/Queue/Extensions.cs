@@ -18,11 +18,13 @@ namespace Innovt.Cloud.Queue
             if (queueMessage is null || queueAttributes == null)
                 return;
 
-            if (queueAttributes.ContainsKey("ApproximateReceiveCount")) {
+            if (queueAttributes.ContainsKey("ApproximateReceiveCount"))
+            {
                 queueMessage.ApproximateReceiveCount = int.Parse(queueAttributes["ApproximateReceiveCount"], System.Globalization.NumberStyles.Integer, CultureInfo.InvariantCulture);
             }
 
-            if (queueAttributes.ContainsKey("ApproximateFirstReceiveTimestamp")) {
+            if (queueAttributes.ContainsKey("ApproximateFirstReceiveTimestamp"))
+            {
                 queueMessage.ApproximateFirstReceiveTimestamp =
                     double.Parse(queueAttributes["ApproximateFirstReceiveTimestamp"], System.Globalization.NumberStyles.Number, CultureInfo.InvariantCulture);
             }

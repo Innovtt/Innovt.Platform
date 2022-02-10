@@ -11,7 +11,7 @@ namespace Innovt.Domain.Address
 {
     public class Country : ValueObject
     {
-        public static Country Brazil = new() {Id = 1, Name = "Brasil", Code = 55, ISOCode = "BRA"};
+        public static Country Brazil = new() { Id = 1, Name = "Brasil", Code = 55, ISOCode = "BRA" };
 
         public string Name { get; set; }
 

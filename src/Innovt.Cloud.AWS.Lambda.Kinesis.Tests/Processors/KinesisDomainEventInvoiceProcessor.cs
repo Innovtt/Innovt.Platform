@@ -3,7 +3,6 @@
 // Solution: Innovt.Platform
 // Date: 2021-07-20
 
-using System.Threading.Tasks;
 using Innovt.Core.CrossCutting.Ioc;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors
@@ -16,7 +15,7 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors
         {
             this.serviceMock = domainEventServiceMock ?? throw new System.ArgumentNullException(nameof(domainEventServiceMock));
         }
-        
+
         protected override IContainer SetupIocContainer()
         {
             serviceMock.InicializeIoc();

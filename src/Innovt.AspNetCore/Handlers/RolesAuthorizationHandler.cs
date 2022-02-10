@@ -5,13 +5,6 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using Innovt.AspNetCore.Extensions;
 using Innovt.Core.Collections;
 using Innovt.Core.CrossCutting.Log;
@@ -20,6 +13,7 @@ using Innovt.Domain.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 
 
 
@@ -30,7 +24,7 @@ namespace Innovt.AspNetCore.Handlers
         const string contextSeparator = "::";
         private readonly IAuthorizationRepository securityRepository;
         private readonly ILogger logger;
-        
+
         public RolesAuthorizationHandler(IAuthorizationRepository securityRepository, ILogger logger)
         {
             this.securityRepository = securityRepository ?? throw new ArgumentNullException(nameof(securityRepository));
@@ -38,9 +32,9 @@ namespace Innovt.AspNetCore.Handlers
         }
 
         private static string GetUserId(AuthorizationHandlerContext context)
-        {   
+        {
             var userId = context.User?.GetClaim(ClaimTypes.NameIdentifier);
-           
+
             return userId ?? string.Empty;
         }
 
@@ -49,25 +43,25 @@ namespace Innovt.AspNetCore.Handlers
             var scope = string.Empty;
 
             if (context.Resource is not HttpContext httpContext) return scope;
-            
-            if(httpContext.Request.Headers.TryGetValue(Constants.HeaderApplicationScope, out var appScope))
+
+            if (httpContext.Request.Headers.TryGetValue(Constants.HeaderApplicationScope, out var appScope))
             {
                 scope = appScope.ToString();
             }
 
             if (!httpContext.Request.Headers.TryGetValue(Constants.HeaderApplicationContext, out var headerContext))
                 return scope;
-            
+
             if (!httpContext.Request.Headers.TryGetValue(headerContext, out var applicationContext))
                 return scope;
 
             if (applicationContext.IsNullOrEmpty())
                 return scope;
-       
+
             return scope.IsNullOrEmpty() ? applicationContext : $"{applicationContext}{contextSeparator}{scope}";
         }
 
-        private static void SetUserDomainId(AuthUser authUser,AuthorizationHandlerContext context)
+        private static void SetUserDomainId(AuthUser authUser, AuthorizationHandlerContext context)
         {
             context.User.AddIdentity(new ClaimsIdentity(new[] { new Claim(ClaimTypes.Sid, authUser.DomainId) }));
         }
@@ -76,16 +70,16 @@ namespace Innovt.AspNetCore.Handlers
         {
             return context?.User.Identity is not null && context.User.Identity.IsAuthenticated;
         }
-        
+
         private void Fail(AuthorizationHandlerContext context, string reason)
-        {  
+        {
             logger.Warning(reason);
             context.Fail();
         }
 
         private string ExtractScope(string appContext)
         {
-            return !appContext.Contains(contextSeparator) ? appContext : 
+            return !appContext.Contains(contextSeparator) ? appContext :
                     appContext.Split(contextSeparator)[1];
         }
 
@@ -98,22 +92,22 @@ namespace Innovt.AspNetCore.Handlers
             }
 
             var userId = GetUserId(context);
-            
-            if (requirement.AllowedRoles?.Any() ==false || userId.IsNullOrEmpty())
+
+            if (requirement.AllowedRoles?.Any() == false || userId.IsNullOrEmpty())
             {
                 Fail(context, $"Invalid user roles or id.The current user id is {userId}.");
                 return;
             }
 
             var user = await securityRepository.GetUserByExternalId(userId, CancellationToken.None).ConfigureAwait(false);
-            
+
             if (user is null)
             {
                 Fail(context, $"User of id {userId} not found for role authorization.");
                 return;
             }
             var roles = GetUserRoles(user);
-            
+
             if (roles is null)
             {
                 Fail(context, $"User of id {userId} has no roles defined.");
@@ -121,16 +115,16 @@ namespace Innovt.AspNetCore.Handlers
             }
 
             var appContext = GetApplicationContext(context);
-            var scope      = ExtractScope(appContext);
-            
+            var scope = ExtractScope(appContext);
+
             var hasPermission = appContext.IsNullOrEmpty()
                                 ? roles.Any(r => requirement.AllowedRoles.Contains(r.Name, StringComparer.OrdinalIgnoreCase)) :
-                                 roles.Any(r =>  ((r.Scope == appContext || r.Scope == "*" || r.Scope== $"*::{scope}") &&
+                                 roles.Any(r => ((r.Scope == appContext || r.Scope == "*" || r.Scope == $"*::{scope}") &&
                                                  requirement.AllowedRoles.Contains(r.Name, StringComparer.OrdinalIgnoreCase)));
-            
+
             if (hasPermission)
             {
-                SetUserDomainId(user,context);
+                SetUserDomainId(user, context);
 
                 context.Succeed(requirement);
             }

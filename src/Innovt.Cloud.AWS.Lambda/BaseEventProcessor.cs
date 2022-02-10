@@ -5,15 +5,15 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Diagnostics;
 using Amazon.Lambda.Core;
 using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Core.CrossCutting.Log;
 using Microsoft.Extensions.Configuration;
+using System;
+using System.Diagnostics;
 
 namespace Innovt.Cloud.AWS.Lambda
-{ 
+{
     public abstract class BaseEventProcessor
     {
         private bool isIocContainerInitialized;
@@ -33,19 +33,20 @@ namespace Innovt.Cloud.AWS.Lambda
         protected ILambdaContext Context { get; set; }
         protected IConfigurationRoot Configuration { get; set; }
 
-        protected void InitializeLogger(ILogger logger =null) {
+        protected void InitializeLogger(ILogger logger = null)
+        {
 
             if (Logger is { } && logger is null)
                 return;
-            
-            Logger = logger is null ? new LambdaLogger(Context.Logger) : logger;                        
+
+            Logger = logger is null ? new LambdaLogger(Context.Logger) : logger;
         }
 
         protected void SetupIoc()
         {
-            if (isIocContainerInitialized)                            
-                return;            
-            
+            if (isIocContainerInitialized)
+                return;
+
             Logger.Info("Initializing IOC Container.");
 
             var container = SetupIocContainer();
@@ -54,7 +55,7 @@ namespace Innovt.Cloud.AWS.Lambda
             {
                 container.CheckConfiguration();
 
-                InitializeLogger(container.Resolve<ILogger>()); 
+                InitializeLogger(container.Resolve<ILogger>());
 
                 Logger.Info("IOC Container Initialized.");
             }
@@ -62,12 +63,13 @@ namespace Innovt.Cloud.AWS.Lambda
             {
                 Logger.Warning("IOC Container not found.");
             }
-            
+
             isIocContainerInitialized = true;
         }
 
-        protected Activity StartBaseActivity(string activityName) {
-            
+        protected Activity StartBaseActivity(string activityName)
+        {
+
             if (activityName is null)
             {
                 throw new ArgumentNullException(nameof(activityName));
@@ -92,8 +94,8 @@ namespace Innovt.Cloud.AWS.Lambda
         {
             var configBuilder = new ConfigurationBuilder();
             configBuilder.AddEnvironmentVariables();
-            configBuilder.AddJsonFile($"appsettings.json", optional:true);
-            
+            configBuilder.AddJsonFile($"appsettings.json", optional: true);
+
             var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
             if (!string.IsNullOrWhiteSpace(environmentName))
@@ -102,8 +104,8 @@ namespace Innovt.Cloud.AWS.Lambda
             }
 
             EnrichConfiguration(configBuilder);
-            
-            Configuration = configBuilder.Build();          
+
+            Configuration = configBuilder.Build();
         }
 
 

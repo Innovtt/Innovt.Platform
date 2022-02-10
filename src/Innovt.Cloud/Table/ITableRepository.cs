@@ -5,10 +5,10 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using Innovt.Core.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Innovt.Core.Collections;
 
 namespace Innovt.Cloud.Table
 {
@@ -45,7 +45,7 @@ namespace Innovt.Cloud.Table
                 CancellationToken cancellationToken = default);
 
         Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth, IList<TResult5> fifth)>
-         QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4,TResult5>(QueryRequest request, string[] splitBy,
+         QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4, TResult5>(QueryRequest request, string[] splitBy,
              CancellationToken cancellationToken = default);
 
         Task<IList<T>> ScanAsync<T>(ScanRequest request,

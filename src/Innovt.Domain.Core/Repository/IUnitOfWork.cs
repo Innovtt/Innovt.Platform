@@ -16,7 +16,7 @@ namespace Innovt.Domain.Core.Repository
         int Commit();
 
         Task<int> CommitAsync(CancellationToken cancellationToken = default);
-        
+
         void Rollback();
     }
 }

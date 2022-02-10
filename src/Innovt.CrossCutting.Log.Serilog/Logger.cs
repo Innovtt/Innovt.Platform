@@ -5,18 +5,18 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
+using System;
 using ILogger = Innovt.Core.CrossCutting.Log.ILogger;
 
 namespace Innovt.CrossCutting.Log.Serilog
 {
     public class Logger : ILogger
     {
-        private const string ConsoleTemplate = "{Timestamp:HH:mm:ss} {Level} {TraceId:TraceId} {ParentId:ParentId} {Message:lj}{NewLine}{Exception}";        
+        private const string ConsoleTemplate = "{Timestamp:HH:mm:ss} {Level} {TraceId:TraceId} {ParentId:ParentId} {Message:lj}{NewLine}{Exception}";
         private readonly global::Serilog.Core.Logger logger;
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Innovt.CrossCutting.Log.Serilog
 
         public Logger(LoggerConfiguration configuration)
         {
-            if (configuration == null) throw new ArgumentNullException(nameof(configuration));            
+            if (configuration == null) throw new ArgumentNullException(nameof(configuration));
             logger = configuration.WriteTo.Console(outputTemplate: ConsoleTemplate)
                 .Enrich.With(new ActivityEnrich()).Enrich.FromLogContext().CreateLogger();
         }
@@ -92,7 +92,7 @@ namespace Innovt.CrossCutting.Log.Serilog
                 Console.WriteLine("LogLevel Error not enabled.");
                 return;
             }
-            
+
             logger.Error(message);
         }
 
@@ -114,8 +114,8 @@ namespace Innovt.CrossCutting.Log.Serilog
                 Console.WriteLine("LogLevel Error not enabled.");
                 return;
             }
-            
-            
+
+
             logger.Error(exception, message);
         }
 
@@ -313,30 +313,30 @@ namespace Innovt.CrossCutting.Log.Serilog
             {
                 case LogLevel.Trace:
                 case LogLevel.Debug:
-                {
-                    return logger.IsEnabled(LogEventLevel.Debug) || logger.IsEnabled(LogEventLevel.Verbose);
-                }
+                    {
+                        return logger.IsEnabled(LogEventLevel.Debug) || logger.IsEnabled(LogEventLevel.Verbose);
+                    }
                 case LogLevel.Information:
-                {
-                    return logger.IsEnabled(LogEventLevel.Information);
-                }
+                    {
+                        return logger.IsEnabled(LogEventLevel.Information);
+                    }
                 case LogLevel.Warning:
-                {
-                    return logger.IsEnabled(LogEventLevel.Warning);
-                }
+                    {
+                        return logger.IsEnabled(LogEventLevel.Warning);
+                    }
                 case LogLevel.Error:
-                {
-                    return logger.IsEnabled(LogEventLevel.Error);
-                }
+                    {
+                        return logger.IsEnabled(LogEventLevel.Error);
+                    }
 
                 case LogLevel.Critical:
-                {
-                    return logger.IsEnabled(LogEventLevel.Fatal);
-                }
+                    {
+                        return logger.IsEnabled(LogEventLevel.Fatal);
+                    }
                 default:
-                {
-                    return false;
-                }
+                    {
+                        return false;
+                    }
             }
         }
     }

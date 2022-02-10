@@ -5,14 +5,6 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Net;
-using System.Security.Claims;
-using System.Text;
-using System.Text.Json;
 using Innovt.AspNetCore.Utility.Pagination;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
@@ -27,6 +19,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using System.Globalization;
+using System.Net;
+using System.Security.Claims;
+using System.Text;
+using System.Text.Json;
 
 namespace Innovt.AspNetCore.Extensions
 {
@@ -53,7 +50,7 @@ namespace Innovt.AspNetCore.Extensions
             });
         }
 
-        public static IApplicationBuilder UseApplicationScope(this IApplicationBuilder app,string scope)
+        public static IApplicationBuilder UseApplicationScope(this IApplicationBuilder app, string scope)
         {
             if (scope.IsNullOrEmpty())
                 return app;
@@ -64,7 +61,7 @@ namespace Innovt.AspNetCore.Extensions
                 await next().ConfigureAwait(false);
             });
         }
-        
+
         public static IApplicationBuilder SetHeaderApplicationContext(this IApplicationBuilder app, string headerContext)
         {
             if (headerContext.IsNullOrEmpty())
@@ -193,8 +190,8 @@ namespace Innovt.AspNetCore.Extensions
                 return string.Empty;
 
             var value = (from c in user.Claims
-                where c.Type == type
-                select c.Value).FirstOrDefault();
+                         where c.Type == type
+                         select c.Value).FirstOrDefault();
 
             return value;
         }

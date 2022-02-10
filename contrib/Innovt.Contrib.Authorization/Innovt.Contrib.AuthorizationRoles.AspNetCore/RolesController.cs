@@ -3,15 +3,11 @@
 // Solution: Innovt.Contrib.Authorization
 // Date: 2021-09-20
 
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
 using Innovt.Contrib.Authorization.Platform.Application;
 using Innovt.Contrib.Authorization.Platform.Application.Dtos;
 using Innovt.Contrib.Authorization.Platform.Domain.Filters;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace Innovt.Contrib.AuthorizationRoles.AspNetCore
 {
@@ -28,10 +24,10 @@ namespace Innovt.Contrib.AuthorizationRoles.AspNetCore
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(IList<RoleDto>),(int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(IList<RoleDto>), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> Get([FromQuery]RoleByUserFilter filter, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> Get([FromQuery] RoleByUserFilter filter, CancellationToken cancellationToken = default)
         {
             var roles = await authorizationAppService.GetUserRoles(filter, cancellationToken).ConfigureAwait(false);
 

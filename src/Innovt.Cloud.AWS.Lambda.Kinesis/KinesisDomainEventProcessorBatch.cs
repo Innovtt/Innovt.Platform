@@ -46,13 +46,13 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
         }
 
         protected override async Task<IList<BatchFailureResponse>> Handle(KinesisEvent message, ILambdaContext context)
-        {   
+        {
             Logger.Info($"Processing Kinesis Event With {message?.Records?.Count} records.");
 
             using var activity = EventProcessorActivitySource.StartActivity(nameof(Handle));
             activity?.SetTag("Message.Records", message?.Records?.Count);
 
-            if (message?.Records == null || message.Records.Count == 0) return new List<BatchFailureResponse>();            
+            if (message?.Records == null || message.Records.Count == 0) return new List<BatchFailureResponse>();
 
             Logger.Info($"Processing Kinesis Event With {message?.Records?.Count} records.");
             var batchMessages = await CreateBatchMessages(message.Records).ConfigureAwait(false);

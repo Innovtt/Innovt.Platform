@@ -5,7 +5,6 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System.Linq;
 using Innovt.Core.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -20,7 +19,7 @@ namespace Innovt.AspNetCore.Filters
 
             if (!(context.Exception is BusinessException)) return;
 
-            var bEx = (BusinessException) context.Exception;
+            var bEx = (BusinessException)context.Exception;
 
             if (bEx.Errors.Any())
                 foreach (var error in bEx.Errors)

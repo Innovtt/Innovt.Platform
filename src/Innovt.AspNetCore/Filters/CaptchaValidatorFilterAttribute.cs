@@ -4,34 +4,28 @@
 // Solution: Innovt.Platform
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
-
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations;
 using Innovt.AspNetCore.Model;
-using System.Net.Http;
-using System.Text.Json;
-using System.Threading.Tasks;
-using Innovt.AspNetCore.Extensions;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.Configuration;
+using System.Text.Json;
+
+namespace Innovt.AspNetCore.Filters
+{
     internal class RecaptchaResponse
     {
         public bool success { get; set; }
         public decimal score { get; set; }
         public string action { get; set; }
         public string challenge_ts { get; set; }
-        public string hostname { get; set; }        
-  
+        public string hostname { get; set; }
+
     }
 
 
-using Microsoft.Extensions.Configuration;
-
-namespace Innovt.AspNetCore.Filters
-{
     /// <summary>
     ///     Code by Rafael Cruzeiro: https://github.com/rcruzeiro/Core.Framework/tree/master/Core.Framework.reCAPTCHA
     /// </summary>
@@ -39,14 +33,14 @@ namespace Innovt.AspNetCore.Filters
     {
         private const string CaptchaUri = "https://www.google.com/recaptcha/api/siteverify";
         public string AntiForgery { get; }
-        public CaptchaValidatorFilterAttribute()
-        {
-            DefaultToken = "inn0ut#";
-        }     
-
         public string HostName { get; }
         public string SecretKey { get; internal set; }
         public string DefaultToken { get; set; }
+
+        public CaptchaValidatorFilterAttribute()
+        {
+            DefaultToken = "inn0ut#";
+        }
 
         private void ReadConfig(HttpContext context)
         {
@@ -76,45 +70,43 @@ namespace Innovt.AspNetCore.Filters
 
             var stringAsync = await httpClient
                 .GetStringAsync(new Uri($"{CaptchaUri}?secret={SecretKey}&response={token}"))
-                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull                
+                .ConfigureAwait(false);
 
             var serializerSettings = new JsonSerializerOptions
             {
-                IgnoreNullValues = true
+                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
             };
-                return false;            
-            
-            //if (captchaResponse.success & AntiForgery && HostName.IsNotNullOrEmpty() && !captchaResponse.hostname.Equals(HostName))
-            //    throw new ValidationException("Captcha hostname and request hostname do not match. Please review anti forgery settings.");
+
+            var captchaResponse = JsonSerializer.Deserialize<RecaptchaResponse>(stringAsync, serializerSettings);
+
+            if (captchaResponse is null)
+                return false;
 
             return captchaResponse.success;
-                throw new ValidationException(
-                    "Captcha hostname and request hostname do not match. Please review anti forgery settings.");
+        }
 
-            return captchaResponse.Success;
+        public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+        {
             if (context is null)
-            {               
+            {
                 return;
             }
 
             var header = context.HttpContext.Request.Headers.TryGetValue("g-recaptcha-response", out var recaptchaResponse);
-            if (context != null && !context.HttpContext.IsLocal())
+
             var result = new ResponseError
             {
                 Code = $"{StatusCodes.Status400BadRequest}",
                 TraceId = context.HttpContext.TraceIdentifier
             };
-                    {
+
             if (!header)
             {
                 result.Message = "Missing g-recaptcha-response header.";
                 context.Result = new BadRequestObjectResult(result);
+
                 return;
             }
-                    };
-
-                    return;
-                }
 
             var isValid = await IsValid(recaptchaResponse, context.HttpContext).ConfigureAwait(false);
 

@@ -5,11 +5,11 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using Innovt.Core.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using Innovt.Core.Exceptions;
 
 namespace Innovt.Core.Utilities
 {
@@ -45,7 +45,7 @@ namespace Innovt.Core.Utilities
         public static void NotLessThanZero<T>(params T[] value)
         {
             if (value == null) throw new ArgumentNullException(nameof(value));
-            
+
             foreach (var i in value)
             {
                 var item = i as int?;
@@ -147,7 +147,7 @@ namespace Innovt.Core.Utilities
 
         public static string NullButNotEmpty(string value, string parameterName)
         {
-            if (value is not {Length: 0}) return value;
+            if (value is not { Length: 0 }) return value;
 
 
             NotEmpty(parameterName, nameof(parameterName));

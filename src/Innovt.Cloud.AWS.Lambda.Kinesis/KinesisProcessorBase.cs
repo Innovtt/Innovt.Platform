@@ -7,17 +7,17 @@
 
 using Amazon.Lambda.KinesisEvents;
 using Innovt.Core.CrossCutting.Log;
+using Innovt.Core.Exceptions;
 using Innovt.Domain.Core.Streams;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using Innovt.Core.Exceptions;
-using System.Collections.Generic;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis
 {
-    public abstract class KinesisProcessorBase<TBody> : EventProcessor<KinesisEvent,IList<BatchFailureResponse>> where TBody : IDataStream
+    public abstract class KinesisProcessorBase<TBody> : EventProcessor<KinesisEvent, IList<BatchFailureResponse>> where TBody : IDataStream
     {
         protected KinesisProcessorBase(ILogger logger) : base(logger)
         {
@@ -53,19 +53,19 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
             activity?.SetTag("Kinesis.ApproximateArrivalTimestamp", record.Kinesis.ApproximateArrivalTimestamp);
             activity?.AddBaggage("Message.ElapsedTimeBeforeAttendedInMilliseconds", $"{DateTime.UtcNow.Subtract(record.Kinesis.ApproximateArrivalTimestamp).TotalMilliseconds}");
             activity?.AddBaggage("Message.ElapsedTimeBeforeAttendedInMinutes", $"{DateTime.UtcNow.Subtract(record.Kinesis.ApproximateArrivalTimestamp).TotalMinutes}");
-                        
+
             Logger.Info("Reading Stream Content.");
 
             using var reader = new StreamReader(record.Kinesis.Data, Encoding.UTF8);
 
             var content = await reader.ReadToEndAsync().ConfigureAwait(false);
-                        
+
             Logger.Info("Deserializing Body Message.");
 
             var body = DeserializeBody(content, record.Kinesis.PartitionKey);
 
             Logger.Info("Body message deserialized.");
-            
+
             if (body != null)
             {
                 body.EventId = record.EventId;
@@ -78,7 +78,7 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
             {
                 activity?.SetParentId(body.TraceId);
             }
-            
+
             return body;
         }
         protected abstract TBody DeserializeBody(string content, string partition);

@@ -5,9 +5,6 @@
 // Date: 2021-06-14
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.RuntimeSupport;
 using Amazon.Lambda.Serialization.SystemTextJson;

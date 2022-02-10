@@ -3,10 +3,6 @@
 // Solution: Innovt.Contrib.Authorization
 // Date: 2021-06-02
 
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 using Innovt.Contrib.Authorization.Platform.Application.Commands;
 using Innovt.Contrib.Authorization.Platform.Application.Dtos;
 using Innovt.Contrib.Authorization.Platform.Domain;
@@ -16,6 +12,10 @@ using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
 using Innovt.Core.Validation;
 using Innovt.Domain.Security;
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using IAuthorizationRepository = Innovt.Contrib.Authorization.Platform.Domain.IAuthorizationRepository;
 
 namespace Innovt.Contrib.Authorization.Platform.Application
@@ -61,7 +61,7 @@ namespace Innovt.Contrib.Authorization.Platform.Application
             foreach (var role in roleCommands)
             {
                 user.AssignRole(new Role { Scope = role.Scope, Name = role.RoleName });
-            }           
+            }
         }
 
         public async Task AddUser(AddUserCommand command, CancellationToken cancellationToken)
@@ -89,9 +89,9 @@ namespace Innovt.Contrib.Authorization.Platform.Application
         public async Task<IList<RoleDto>> GetUserRoles(RoleByUserFilter filter, CancellationToken cancellationToken)
         {
             filter.EnsureIsValid();
-            
-            var roles = await authorizationRepository.GetUserRolesBy(filter,cancellationToken).ConfigureAwait(false);
-            
+
+            var roles = await authorizationRepository.GetUserRolesBy(filter, cancellationToken).ConfigureAwait(false);
+
             return RoleDto.FromDomain(roles);
         }
 
@@ -119,7 +119,7 @@ namespace Innovt.Contrib.Authorization.Platform.Application
                 throw new BusinessException($"User {command.UserId} doesn't exist.");
 
             AssignRole(user, command.Roles);
-                       
+
             await authorizationRepository.Save(user, cancellationToken).ConfigureAwait(false);
         }
 

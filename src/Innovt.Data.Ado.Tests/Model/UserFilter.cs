@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Innovt.Data.Ado.Tests.Model
 {
     public class UserFilter : IPagedFilter
-    {  
+    {
         public int Page { get; set; }
         public int PageSize { get; set; }
 

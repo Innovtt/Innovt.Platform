@@ -1,11 +1,8 @@
 using Amazon.Lambda.Core;
 using Amazon.Lambda.TestUtilities;
 using Innovt.Core.CrossCutting.Log;
-using Innovt.CrossCutting.Log.Serilog;
 using NSubstitute;
 using NUnit.Framework;
-using System;
-using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Lambda.Tests
 {
@@ -20,7 +17,7 @@ namespace Innovt.Cloud.AWS.Lambda.Tests
         [Test]
         public void Process_Throws_Exception_When_CustomLogger_IsNull()
         {
-            Assert.Throws<ArgumentNullException>(()=> new CustomEventProcessor(null));
+            Assert.Throws<ArgumentNullException>(() => new CustomEventProcessor(null));
         }
 
         [Test]
@@ -31,11 +28,11 @@ namespace Innovt.Cloud.AWS.Lambda.Tests
                 Logger = Substitute.For<ILambdaLogger>()
             };
 
-            var function = new CustomEventProcessor();   
+            var function = new CustomEventProcessor();
 
             await function.Process(new Person(), lambdaContext);
 
-            lambdaContext.Logger.Received().LogLine(Arg.Any<string>());            
+            lambdaContext.Logger.Received().LogLine(Arg.Any<string>());
         }
 
         [Test]
@@ -63,10 +60,10 @@ namespace Innovt.Cloud.AWS.Lambda.Tests
 
             try
             {
-                await function.Process(new Person() { Name="Exception" }, lambdaContext);
+                await function.Process(new Person() { Name = "Exception" }, lambdaContext);
             }
             catch (Exception)
-            {                
+            {
             }
 
             loggerMock.Received().Error(Arg.Any<Exception>(), Arg.Any<string>());

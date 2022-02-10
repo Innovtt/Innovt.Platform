@@ -5,12 +5,12 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using Innovt.Core.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
-using Innovt.Core.Utilities;
 
 namespace Innovt.Core.Exceptions
 {
@@ -46,24 +46,25 @@ namespace Innovt.Core.Exceptions
             Errors = errors;
         }
 
-        public BusinessException(ErrorMessage error) : this(new[] {error})
+        public BusinessException(ErrorMessage error) : this(new[] { error })
         {
         }
 
         protected BusinessException(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext)
         {
             Code = serializationInfo?.GetString("ResourceName");
-            Errors = (IEnumerable<ErrorMessage>)serializationInfo?.GetValue("Errors",typeof(IEnumerable<ErrorMessage>));
+            Errors = (IEnumerable<ErrorMessage>)serializationInfo?.GetValue("Errors", typeof(IEnumerable<ErrorMessage>));
         }
 
         public string Code { get; protected set; }
         public IEnumerable<ErrorMessage> Errors { get; set; }
 
-        public string ReadFullErrors() {
+        public string ReadFullErrors()
+        {
 
-            if(Errors is null || !Errors.Any())            
+            if (Errors is null || !Errors.Any())
                 return Message;
-            
+
             return string.Join(",", Errors.Select(p => p.Message));
         }
         private static string CreateMessage(IEnumerable<ErrorMessage> errors)
@@ -91,8 +92,8 @@ namespace Innovt.Core.Exceptions
 
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            if (info == null)            
-                throw new ArgumentNullException(nameof(info));            
+            if (info == null)
+                throw new ArgumentNullException(nameof(info));
 
             info.AddValue("Code", this.Code);
             info.AddValue("Errors", this.Errors, typeof(IEnumerable<ErrorMessage>));

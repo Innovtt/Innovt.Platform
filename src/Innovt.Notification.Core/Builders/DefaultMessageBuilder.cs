@@ -5,11 +5,11 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Collections.Generic;
 using Innovt.Core.Utilities;
 using Innovt.Notification.Core.Domain;
 using Innovt.Notification.Core.Template;
+using System;
+using System.Collections.Generic;
 
 namespace Innovt.Notification.Core.Builders
 {
@@ -69,7 +69,7 @@ namespace Innovt.Notification.Core.Builders
         protected virtual NotificationMessageBody BuildBody(NotificationTemplate notificationTemplate, NotificationRequest request)
         {
             if (notificationTemplate == null) return null;
-            
+
             return new()
             {
                 Content = notificationTemplate.Body,
@@ -122,10 +122,10 @@ namespace Innovt.Notification.Core.Builders
             if (parser == null || notificationMessage == null)
                 return;
 
-            if (notificationMessage.Subject?.Content != null) 
+            if (notificationMessage.Subject?.Content != null)
                 notificationMessage.Subject.Content = parser.Render(notificationMessage.Subject.Content, payLoad);
 
-            if (notificationMessage.Body?.Content != null) 
+            if (notificationMessage.Body?.Content != null)
                 notificationMessage.Body.Content = parser.Render(notificationMessage.Body.Content, payLoad);
 
             if (notificationMessage.To != null)

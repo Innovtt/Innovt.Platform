@@ -5,17 +5,17 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.KinesisEvents;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Domain.Core.Streams;
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis
-{  
+{
     public abstract class KinesisDataProcessorBatch<TBody> : KinesisProcessorBase<TBody> where TBody : class, IDataStream
     {
         protected KinesisDataProcessorBatch(ILogger logger) : base(logger)
@@ -56,7 +56,7 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
 
             Logger.Info($"Processing Kinesis Event With {message?.Records?.Count} records.");
             var batchMessages = await CreateBatchMessages(message.Records).ConfigureAwait(false);
-            Logger.Info($"Processing Kinesis Event With {message?.Records?.Count} records.");                        
+            Logger.Info($"Processing Kinesis Event With {message?.Records?.Count} records.");
             activity?.SetTag("BatchMessagesCount", batchMessages.Count);
 
             return await ProcessMessages(batchMessages).ConfigureAwait(false);

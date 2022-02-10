@@ -10,16 +10,16 @@ namespace Innovt.Data.EFCore.PostgreSQL
     {
         public DBContext(IDataSource dataSource) : base(dataSource)
         {
-        }    
+        }
 
-        protected DBContext(IDataSource dataSource, ILoggerFactory loggerFactory) : base(dataSource,loggerFactory)
+        protected DBContext(IDataSource dataSource, ILoggerFactory loggerFactory) : base(dataSource, loggerFactory)
         {
-            
+
         }
 
         protected DBContext(DbContextOptions options) : base(options)
         {
-            
+
         }
 
 

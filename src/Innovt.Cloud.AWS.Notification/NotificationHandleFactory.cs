@@ -5,10 +5,10 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
 using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Notification.Core;
 using Innovt.Notification.Core.Domain;
+using System;
 
 namespace Innovt.Cloud.AWS.Notification
 {
@@ -27,11 +27,12 @@ namespace Innovt.Cloud.AWS.Notification
             {
                 NotificationMessageType.Email => container.Resolve<MailNotificationHandler>(),
                 NotificationMessageType.Sms => container.Resolve<SmsNotificationHandler>(),
-                _ => CreateCustomHandle(notificationMessageType)                    
+                _ => CreateCustomHandle(notificationMessageType)
             };
         }
 
-        public virtual INotificationHandler CreateCustomHandle(NotificationMessageType notificationMessageType) {
+        public virtual INotificationHandler CreateCustomHandle(NotificationMessageType notificationMessageType)
+        {
 
             return null;
         }

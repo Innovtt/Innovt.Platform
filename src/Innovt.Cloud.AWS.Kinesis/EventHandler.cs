@@ -22,7 +22,7 @@ namespace Innovt.Cloud.AWS.Kinesis
             string region) : base(busName, logger, configuration, region)
         {
 
-            
+
         }
     }
 }

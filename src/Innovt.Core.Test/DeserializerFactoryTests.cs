@@ -5,7 +5,6 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
 using Innovt.Core.Serialization;
 using Innovt.Core.Test.Models;
 using NUnit.Framework;
@@ -71,7 +70,7 @@ namespace Innovt.Core.Test
             //first check without mapping
             DeserializerFactory.Instance.AddMapping<A>("A").AddMapping<B>();
 
-            var a = new A {Age = 10, LastName = "Borges", Name = "Michel"};
+            var a = new A { Age = 10, LastName = "Borges", Name = "Michel" };
             var aJsonContent = JsonSerializer.Serialize(a);
 
             //With Key 
@@ -80,7 +79,7 @@ namespace Innovt.Core.Test
             Assert.IsNotNull(resultA);
             Assert.IsNotNull(resultA as A);
 
-            var b = new B {Document = "12312", Id = Guid.Empty, Role = "Admin"};
+            var b = new B { Document = "12312", Id = Guid.Empty, Role = "Admin" };
             var bJsonContent = JsonSerializer.Serialize(b);
 
             //With Key 

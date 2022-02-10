@@ -5,6 +5,6 @@
 
         void InicializeIoc();
 
-        IList<BatchFailureResponse> ProcessMessage(string traceId=null);
+        IList<BatchFailureResponse> ProcessMessage(string traceId = null);
     }
 }

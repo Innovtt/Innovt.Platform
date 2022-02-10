@@ -10,7 +10,7 @@ namespace Innovt.Cloud.Table
     {
         Put = 0,
         Update = 1,
-        Delete = 2,        
+        Delete = 2,
         Check = 3
     }
 }

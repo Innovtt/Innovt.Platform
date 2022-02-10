@@ -5,11 +5,11 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System.Threading.Tasks;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.S3Events;
 using Amazon.S3.Util;
 using Innovt.Core.CrossCutting.Log;
+using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Lambda.S3
 {
@@ -36,7 +36,7 @@ namespace Innovt.Cloud.AWS.Lambda.S3
             foreach (var record in message.Records)
             {
                 Logger.Info($"Processing S3Event Version {record.EventVersion}");
-                    
+
                 await ProcessMessage(record).ConfigureAwait(false);
 
                 Logger.Info($"Event from S3 processed. Version {record.EventVersion}");

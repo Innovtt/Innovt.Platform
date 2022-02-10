@@ -1,6 +1,6 @@
-using System.Linq;
 using Innovt.Domain.Security;
 using NUnit.Framework;
+using System.Linq;
 
 namespace Innovt.Domain.Tests
 {
@@ -41,12 +41,12 @@ namespace Innovt.Domain.Tests
             Assert.IsNotNull(user.Roles);
             Assert.IsTrue(user.Roles.Count == 3);
 
-            user.UnAssignRole(roleB.Scope,roleB.Name);
+            user.UnAssignRole(roleB.Scope, roleB.Name);
 
             Assert.IsNotNull(user.Roles);
-            Assert.IsTrue(user.Roles.Count ==2);
+            Assert.IsTrue(user.Roles.Count == 2);
 
-            Assert.IsTrue(user.Roles.Count(r=>r.Name == roleA.Name) == 1);
+            Assert.IsTrue(user.Roles.Count(r => r.Name == roleA.Name) == 1);
 
             Assert.IsTrue(user.Roles.Count(r => r.Name == roleC.Name) == 1);
         }

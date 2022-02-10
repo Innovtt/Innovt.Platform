@@ -5,8 +5,8 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
 using Innovt.Core.Exceptions;
+using System;
 
 namespace Innovt.Core.Http
 {

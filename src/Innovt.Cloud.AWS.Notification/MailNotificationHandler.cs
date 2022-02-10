@@ -5,9 +5,6 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Amazon.SimpleEmail;
 using Amazon.SimpleEmail.Model;
 using Innovt.Cloud.AWS.Configuration;
@@ -15,6 +12,9 @@ using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Utilities;
 using Innovt.Notification.Core;
 using Innovt.Notification.Core.Domain;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Notification
 {
@@ -60,7 +60,7 @@ namespace Innovt.Cloud.AWS.Notification
                 Source = $"{message.From.Name} <{message.From.Address}>",
                 Message = new Message()
             };
-            
+
             mailRequest.Message.Subject = new Content
             {
                 Charset = message.Subject.Charset.GetValueOrDefault(DefaultCharset),
@@ -69,14 +69,16 @@ namespace Innovt.Cloud.AWS.Notification
 
 
             mailRequest.Message.Body = new Body();
-            if (message.Body.IsHtml) {
+            if (message.Body.IsHtml)
+            {
                 mailRequest.Message.Body.Html = new Content
                 {
                     Charset = message.Body.Charset.GetValueOrDefault(DefaultCharset),
                     Data = message.Body.Content
                 };
             }
-            else {
+            else
+            {
                 mailRequest.Message.Body.Text = new Content
                 {
                     Charset = message.Body.Charset.GetValueOrDefault(DefaultCharset),
@@ -84,7 +86,7 @@ namespace Innovt.Cloud.AWS.Notification
                 };
             }
 
-            
+
 
             mailRequest.Destination.ToAddresses = message.To.Select(a => $"{a.Name} <{a.Address}>").ToList();
 

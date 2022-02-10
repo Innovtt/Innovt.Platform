@@ -39,7 +39,7 @@ namespace Innovt.Data.Ado
             }
         }
 
-        internal static string AddNoLock(this string rawSql,IDataSource dataSource)
+        internal static string AddNoLock(this string rawSql, IDataSource dataSource)
         {
             return dataSource.Provider switch
             {
@@ -48,7 +48,7 @@ namespace Innovt.Data.Ado
             };
         }
 
-        internal static string AddWhere(this string rawSql,string whereClause)
+        internal static string AddWhere(this string rawSql, string whereClause)
         {
             return whereClause.IsNullOrEmpty() ? rawSql : $"{rawSql} WHERE {whereClause}";
         }

@@ -5,12 +5,6 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.Model;
@@ -20,6 +14,12 @@ using Innovt.Core.Collections;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Exceptions;
 using Polly.Retry;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using QueryRequest = Innovt.Cloud.Table.QueryRequest;
 using ScanRequest = Innovt.Cloud.Table.ScanRequest;
 
@@ -186,7 +186,7 @@ namespace Innovt.Cloud.AWS.Dynamo
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
             if (splitBy == null) throw new ArgumentNullException(nameof(splitBy));
-            
+
             using (ActivityRepository.StartActivity(nameof(QueryMultipleAsync)))
             {
                 var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
@@ -195,7 +195,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             }
         }
 
-        public async Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth)>        
+        public async Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth)>
           QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4>(QueryRequest request, string[] splitBy,
               CancellationToken cancellationToken = default)
         {
@@ -221,7 +221,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             {
                 var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
-                return Helpers.ConvertAttributesToType<TResult1, TResult2, TResult3, TResult4,TResult5>(items, splitBy, Context);
+                return Helpers.ConvertAttributesToType<TResult1, TResult2, TResult3, TResult4, TResult5>(items, splitBy, Context);
             }
         }
 
@@ -233,7 +233,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             using (ActivityRepository.StartActivity(nameof(QueryFirstOrDefaultAsync)))
             {
                 request.PageSize = 1;
-                request.Page     = null;
+                request.Page = null;
 
                 var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
@@ -264,7 +264,7 @@ namespace Innovt.Cloud.AWS.Dynamo
 
         public async Task TransactWriteItemsAsync(TransactionWriteRequest request, CancellationToken cancellationToken)
         {
-            if (request is null) throw new ArgumentNullException(nameof(request));            
+            if (request is null) throw new ArgumentNullException(nameof(request));
 
             if (request.TransactItems is null || (request.TransactItems.Count is > 25 or 0))
                 throw new BusinessException("The number of transactItems should be greater than 0 and less or equal than 25");
@@ -387,7 +387,7 @@ namespace Innovt.Cloud.AWS.Dynamo
                 var remaining = request.PageSize;
 
                 var iterator = DynamoClient.Paginators.Scan(scanRequest).Responses.GetAsyncEnumerator(cancellationToken);
-                
+
                 //TODO: Thi code is the same in InternalQuery - Refactory it
                 do
                 {
@@ -405,12 +405,12 @@ namespace Innovt.Cloud.AWS.Dynamo
 
                 return (lastEvaluatedKey, items);
             }
-        }     
+        }
 
         protected override void DisposeServices()
         {
             context?.Dispose();
             dynamoClient?.Dispose();
-        }      
+        }
     }
 }

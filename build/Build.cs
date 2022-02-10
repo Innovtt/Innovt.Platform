@@ -5,7 +5,6 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
 using Nuke.Common;
 using Nuke.Common.Execution;
 using Nuke.Common.IO;
@@ -13,6 +12,7 @@ using Nuke.Common.ProjectModel;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Tools.GitVersion;
 using Nuke.Common.Utilities.Collections;
+using System;
 using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.IO.PathConstruction;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
@@ -25,7 +25,7 @@ class Build : NukeBuild
     readonly string Configuration = IsLocalBuild ? "Debug" : "Release";
 
     //[GitRepository] readonly GitRepository GitRepository;
-    [GitVersion(Framework = "netcoreapp3.0")] 
+    [GitVersion(Framework = "netcoreapp3.0")]
     readonly GitVersion GitVersion;
 
 
@@ -78,8 +78,8 @@ class Build : NukeBuild
                     .SetVersion(GitVersion.NuGetVersionV2)
                     .SetNoDependencies(true)
                     .SetOutputDirectory(ArtifactsDirectory / "nuget")
-                //.SetRepositoryType("git")
-                // .SetRepositoryUrl("https://github.com/Innovtt/Innovt.Platform")
+            //.SetRepositoryType("git")
+            // .SetRepositoryUrl("https://github.com/Innovtt/Innovt.Platform")
             );
         });
 
@@ -91,16 +91,16 @@ class Build : NukeBuild
         .Executes(() =>
         {
             GlobFiles(ArtifactsDirectory / "nuget", "*.nupkg")
-                .NotEmpty()                
+                .NotEmpty()
                 // .Where(x => x.StartsWith("Innovt.",StringComparison.InvariantCultureIgnoreCase))
                 .ForEach(x =>
-                {                   
+                {
                     DotNetNuGetPush(s => s
                                             .EnableSkipDuplicate()
-                                            .SetTargetPath(x)                                             
+                                            .SetTargetPath(x)
                                             .SetSource(NugetApiUrl)
                                             .SetApiKey(NugetApiKey)
-                    );                   
+                    );
 
                 });
         });

@@ -5,14 +5,14 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Threading.Tasks;
 using Amazon.Lambda.Core;
 using Innovt.Core.CrossCutting.Log;
+using System;
+using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Lambda
 {
-    public abstract class EventProcessor<T, TResult>: BaseEventProcessor where T : class
+    public abstract class EventProcessor<T, TResult> : BaseEventProcessor where T : class
     {
         protected EventProcessor(ILogger logger) : base(logger)
         {
@@ -51,17 +51,17 @@ namespace Innovt.Cloud.AWS.Lambda
         protected abstract Task<TResult> Handle(T message, ILambdaContext context);
     }
 
-    public abstract class EventProcessor<T>: BaseEventProcessor where T : class
-    {   
-        protected EventProcessor(ILogger logger):base(logger)
-        {            
+    public abstract class EventProcessor<T> : BaseEventProcessor where T : class
+    {
+        protected EventProcessor(ILogger logger) : base(logger)
+        {
         }
 
-        protected EventProcessor():base()
+        protected EventProcessor() : base()
         {
-        }       
-      
-      
+        }
+
+
         public async Task Process(T message, ILambdaContext context)
         {
             if (message == null) throw new ArgumentNullException(nameof(message));
@@ -83,7 +83,7 @@ namespace Innovt.Cloud.AWS.Lambda
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.Message);                
+                Logger.Error(ex, ex.Message);
                 throw;
             }
         }

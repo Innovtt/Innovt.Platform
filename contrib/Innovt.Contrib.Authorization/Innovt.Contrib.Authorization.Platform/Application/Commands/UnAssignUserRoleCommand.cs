@@ -3,11 +3,11 @@
 // Solution: Innovt.Contrib.Authorization
 // Date: 2021-09-20
 
+using Innovt.Core.Collections;
+using Innovt.Core.Cqrs.Commands;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Innovt.Core.Collections;
-using Innovt.Core.Cqrs.Commands;
 
 namespace Innovt.Contrib.Authorization.Platform.Application.Commands
 {
@@ -22,7 +22,8 @@ namespace Innovt.Contrib.Authorization.Platform.Application.Commands
             {
                 yield return new ValidationResult("Roles are required.");
             }
-            else { 
+            else
+            {
                 var errors = Roles.SelectMany(r => r.Validate(validationContext));
 
                 foreach (var error in errors)

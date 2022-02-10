@@ -5,10 +5,10 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using Innovt.Core.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using Innovt.Core.Utilities;
 
 namespace Innovt.Core.Serialization
 {
@@ -57,7 +57,7 @@ namespace Innovt.Core.Serialization
 
         public T Deserialize<T>([NotNull] string key, string content)
         {
-            return (T) Deserialize(key, content);
+            return (T)Deserialize(key, content);
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests
 {
-    public interface IDomainEventServiceMock<T> where T: DomainEvent
+    public interface IDomainEventServiceMock<T> where T : DomainEvent
     {
         void InicializeIoc();
 

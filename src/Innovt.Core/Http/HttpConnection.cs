@@ -5,12 +5,12 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using Innovt.Core.Serialization;
 using System;
 using System.Collections.Specialized;
 using System.IO;
 using System.Net;
 using System.Net.Http;
-using Innovt.Core.Serialization;
 
 namespace Innovt.Core.Http
 {
@@ -18,7 +18,7 @@ namespace Innovt.Core.Http
     {
         private static HttpWebRequest CreateHttpRequest(Uri url, int? connectionTimeout = 30000)
         {
-            var httpRequest = (HttpWebRequest) WebRequest.Create(url);
+            var httpRequest = (HttpWebRequest)WebRequest.Create(url);
 
             httpRequest.Timeout = connectionTimeout ?? 30000;
 
@@ -85,7 +85,7 @@ namespace Innovt.Core.Http
 
         private static T DeserializeObject<T>(ISerializer serializer, string content) where T : class
         {
-            if (typeof(T).Name.Equals("String")) return (T) Convert.ChangeType(content, typeof(T));
+            if (typeof(T).Name.Equals("String")) return (T)Convert.ChangeType(content, typeof(T));
 
             return serializer.DeserializeObject<T>(content);
         }
@@ -132,7 +132,7 @@ namespace Innovt.Core.Http
             {
                 if (ex.Response == null) throw;
 
-                using var webResponse = (HttpWebResponse) ex.Response;
+                using var webResponse = (HttpWebResponse)ex.Response;
                 var test = new StreamReader(webResponse.GetResponseStream());
                 requestDetail.RawResponse = test.ReadToEnd();
                 requestDetail.ResponseStatusCode = webResponse.StatusCode;

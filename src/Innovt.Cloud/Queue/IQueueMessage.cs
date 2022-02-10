@@ -22,6 +22,6 @@ namespace Innovt.Cloud.Queue
         int? ApproximateReceiveCount { get; set; }
 
         Dictionary<string, string> Attributes { get; set; }
-        
+
     }
 }

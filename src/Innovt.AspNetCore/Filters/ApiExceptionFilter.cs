@@ -5,7 +5,6 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
 using Innovt.AspNetCore.Model;
 using Innovt.AspNetCore.Resources;
 using Innovt.Core.CrossCutting.Log;
@@ -21,7 +20,7 @@ namespace Innovt.AspNetCore.Filters
     public sealed class ApiExceptionFilter : ExceptionFilterAttribute
     {
         public ILogger Logger { get; private set; }
-        public ApiExceptionFilter(ILogger logger,IStringLocalizer<IExceptionResource> stringLocalizer)
+        public ApiExceptionFilter(ILogger logger, IStringLocalizer<IExceptionResource> stringLocalizer)
         {
             this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
             StringLocalizer = stringLocalizer ?? throw new ArgumentNullException(nameof(stringLocalizer));
@@ -64,6 +63,6 @@ namespace Innovt.AspNetCore.Filters
                 context.Result = new ObjectResult(result) { StatusCode = StatusCodes.Status500InternalServerError };
                 Logger.Error(context.Exception, "InternalServerError");
             }
-        }   
+        }
     }
 }

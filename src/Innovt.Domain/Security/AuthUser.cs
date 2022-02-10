@@ -5,19 +5,19 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using Innovt.Core.Exceptions;
+using Innovt.Domain.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Innovt.Core.Exceptions;
-using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Security
-{    
+{
     public class AuthUser : Entity
     {
         public AuthUser()
         {
-            CreatedAt = DateTimeOffset.UtcNow;               
+            CreatedAt = DateTimeOffset.UtcNow;
         }
 
         public new string Id { get; set; }
@@ -29,18 +29,18 @@ namespace Innovt.Domain.Security
         public IList<Group> Groups { get; private set; }
 
         public IList<Role> Roles { get; private set; }
-        
+
         public void AssignRole(Role role)
         {
             if (role == null) throw new ArgumentNullException(nameof(role));
 
             Roles ??= new List<Role>();
-            
+
             var roleExist = Roles.Any(r => r.Scope == role.Scope && r.Name == role.Name);
 
             if (roleExist)
                 return;
-            
+
             Roles.Add(role);
         }
 
@@ -48,8 +48,8 @@ namespace Innovt.Domain.Security
         {
             if (scope == null) throw new ArgumentNullException(nameof(scope));
             if (roleName == null) throw new ArgumentNullException(nameof(roleName));
-           
-            var role = Roles?.SingleOrDefault(r => r.Scope.Equals(scope, StringComparison.OrdinalIgnoreCase) 
+
+            var role = Roles?.SingleOrDefault(r => r.Scope.Equals(scope, StringComparison.OrdinalIgnoreCase)
                                                    && r.Name.Equals(roleName, StringComparison.OrdinalIgnoreCase));
 
             if (role is null)

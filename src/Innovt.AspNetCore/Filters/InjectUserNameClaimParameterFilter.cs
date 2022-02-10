@@ -5,12 +5,9 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
 using Innovt.Core.Utilities;
 using Microsoft.AspNetCore.Mvc.Filters;
+using System.Security.Claims;
 
 namespace Innovt.AspNetCore.Filters
 {

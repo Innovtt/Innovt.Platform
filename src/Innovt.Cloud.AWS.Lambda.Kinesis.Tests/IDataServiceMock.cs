@@ -2,7 +2,7 @@
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests
 {
-    public interface IDataServiceMock<T> where T : class 
+    public interface IDataServiceMock<T> where T : class
     {
         void InicializeIoc();
 
