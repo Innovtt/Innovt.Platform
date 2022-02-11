@@ -22,9 +22,7 @@ namespace Innovt.AspNetCore.Filters
         public string action { get; set; }
         public string challenge_ts { get; set; }
         public string hostname { get; set; }
-
     }
-
 
     /// <summary>
     ///     Code by Rafael Cruzeiro: https://github.com/rcruzeiro/Core.Framework/tree/master/Core.Framework.reCAPTCHA
