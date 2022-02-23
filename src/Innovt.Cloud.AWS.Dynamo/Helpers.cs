@@ -427,7 +427,7 @@ namespace Innovt.Cloud.AWS.Dynamo
             };
         }
 
-        internal static TransactWriteItem CreateTransactionItem(TransactionWriteItem transactionWriteItem)
+        internal static TransactWriteItem CreateTransactionWriteItem(TransactionWriteItem transactionWriteItem)
         {
             if (transactionWriteItem is null)
             {
@@ -440,6 +440,23 @@ namespace Innovt.Cloud.AWS.Dynamo
                 Put = CreatePutTransactItem(transactionWriteItem),
                 Delete = CreateDeleteTransactItem(transactionWriteItem),
                 Update = CreateUpdateTransactItem(transactionWriteItem)
+            };
+        }
+
+
+        internal static TransactGetItem CreateTransactionGetItem(TransactionWriteItem transactionWriteItem)
+        {
+            if (transactionWriteItem is null)
+            {
+                throw new ArgumentNullException(nameof(transactionWriteItem));
+            }
+
+            return new TransactGetItem
+            {
+              Get= new Get() {
+              
+              
+              }
             };
         }
     }

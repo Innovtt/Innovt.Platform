@@ -5,6 +5,8 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.Model;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.Table;
 using Innovt.Core.CrossCutting.Log;
@@ -194,6 +196,29 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
                 //TODO: Alter Query to accept pagesize
                 //var res = await baseRepository.QueryPaginatedByAsync<DataModel>(queryRequest, CancellationToken.None);
                 // var res = await baseRepository.QueryPaginatedByAsync<DataModel>(queryRequest, CancellationToken.None);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+            Assert.Pass();
+        }
+
+
+        [Test]
+        [Ignore("Only Internal Tests")]
+        public async Task ValidateSequence()
+        {
+            try
+            {
+                loggerMock.Info(configuration.AccountNumber);
+
+                using var repo = new BaseRepository(loggerMock, configuration);
+
+                var res = await repo.UpdateSequence();
+
             }
             catch (Exception e)
             {

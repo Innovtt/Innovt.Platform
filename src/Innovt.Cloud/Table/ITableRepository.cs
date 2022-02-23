@@ -56,5 +56,7 @@ namespace Innovt.Cloud.Table
         Task<PagedCollection<T>> QueryPaginatedByAsync<T>(QueryRequest request, CancellationToken cancellationToken = default);
 
         Task TransactWriteItemsAsync(TransactionWriteRequest request, CancellationToken cancellationToken);
+
+        Task<ExecuteSqlStatementResponse<T>> ExecuteStatementAsync<T>(ExecuteSqlStatementRequest sqlStatementRequest, CancellationToken cancellationToken = default) where T : class;
     }
 }

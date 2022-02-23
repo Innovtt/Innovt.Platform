@@ -270,7 +270,7 @@ namespace Innovt.Cloud.AWS.Dynamo
                 throw new BusinessException("The number of transactItems should be greater than 0 and less or equal than 25");
 
             using var activity = ActivityRepository.StartActivity(nameof(TransactWriteItemsAsync));
-            activity?.SetTag("TransactItems", request.TransactItems.Count);
+            activity?.SetTag("TransactWriteItems", request.TransactItems.Count);
 
             var transactRequest = new TransactWriteItemsRequest()
             {
@@ -279,7 +279,7 @@ namespace Innovt.Cloud.AWS.Dynamo
 
             foreach (var transactItem in request.TransactItems)
             {
-                transactRequest.TransactItems.Add(Helpers.CreateTransactionItem(transactItem));
+                transactRequest.TransactItems.Add(Helpers.CreateTransactionWriteItem(transactItem));
             }
 
             await DynamoClient.TransactWriteItemsAsync(transactRequest, cancellationToken).ConfigureAwait(false);
@@ -327,12 +327,64 @@ namespace Innovt.Cloud.AWS.Dynamo
         protected async Task UpdateAsync(string tableName, Dictionary<string, AttributeValue> key,
             Dictionary<string, AttributeValueUpdate> attributeUpdates, CancellationToken cancellationToken = default)
         {
+            if (key is null)
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
+
+            if (attributeUpdates is null)
+            {
+                throw new ArgumentNullException(nameof(attributeUpdates));
+            }
+
             using (ActivityRepository.StartActivity(nameof(UpdateAsync)))
             {
-                await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                        await DynamoClient.UpdateItemAsync(tableName, key, attributeUpdates, cancellationToken)
-                            .ConfigureAwait(false))
+                await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () => await DynamoClient.UpdateItemAsync(tableName, key, attributeUpdates, cancellationToken).ConfigureAwait(false))
                     .ConfigureAwait(false);
+            }
+        }
+
+        protected async Task<UpdateItemResponse> UpdateAsync(UpdateItemRequest updateItemRequest,CancellationToken cancellationToken = default)
+        {   
+            if (updateItemRequest is null)
+                throw new ArgumentNullException(nameof(updateItemRequest));
+
+
+            using (ActivityRepository.StartActivity(nameof(UpdateAsync)))
+            {
+                return await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+                await DynamoClient.UpdateItemAsync(updateItemRequest, cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
+            }        
+        }
+
+
+        public async Task<ExecuteSqlStatementResponse<T>> ExecuteStatementAsync<T>(ExecuteSqlStatementRequest sqlStatementRequest, CancellationToken cancellationToken = default) where T:class
+        {
+            if (sqlStatementRequest is null)
+            {
+                throw new ArgumentNullException(nameof(sqlStatementRequest));
+            }
+
+            using (ActivityRepository.StartActivity(nameof(UpdateAsync)))
+            {
+                var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+
+                await DynamoClient.ExecuteStatementAsync(new ExecuteStatementRequest()
+                { 
+                    ConsistentRead = sqlStatementRequest.ConsistentRead,
+                    NextToken = sqlStatementRequest.NextToken,
+                    Statement = sqlStatementRequest.Statment
+                }).ConfigureAwait(false)).ConfigureAwait(false);
+
+
+                if(response is null)
+                    return null;
+
+                return new ExecuteSqlStatementResponse<T>()
+                {
+                    NextToken = sqlStatementRequest.NextToken,
+                    Items = Helpers.ConvertAttributesToType<T>(response.Items, Context)
+                };
             }
         }
 

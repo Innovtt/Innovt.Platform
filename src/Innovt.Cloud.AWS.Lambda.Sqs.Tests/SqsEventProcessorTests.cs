@@ -12,7 +12,6 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests
     {
         private TestLambdaContext lambdaContext;
 
-
         [SetUp]
         public void Setup()
         {
@@ -155,7 +154,6 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests
         [Test]
         public async Task Handle_BatchMessage_Returns_EmptyBatchResponseWhen_ThereIsNoFailures()
         {
-
             var processor = new CustomSqsEventProcessor(false);
 
             var messages = new List<Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage>();

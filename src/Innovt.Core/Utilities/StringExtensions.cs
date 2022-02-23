@@ -54,10 +54,10 @@ namespace Innovt.Core.Utilities
 
             value = value.OnlyNumber();
 
-            if ((value.Length != 11) | value.Equals("11111111111") | value.Equals("22222222222") |
-                value.Equals("33333333333") | value.Equals("44444444444") | value.Equals("55555555555") |
-                value.Equals("66666666666") | value.Equals("77777777777") | value.Equals("88888888888") |
-                value.Equals("99999999999"))
+            if ((value.Length != 11) | value.Equals("11111111111", StringComparison.Ordinal) | value.Equals("22222222222", StringComparison.Ordinal) |
+                value.Equals("33333333333", StringComparison.Ordinal) | value.Equals("44444444444", StringComparison.Ordinal) | value.Equals("55555555555", StringComparison.Ordinal) |
+                value.Equals("66666666666", StringComparison.Ordinal) | value.Equals("77777777777", StringComparison.Ordinal) | value.Equals("88888888888", StringComparison.Ordinal) |
+                value.Equals("99999999999", StringComparison.Ordinal))
                 return false;
 
             corpovalue = value.Substring(0, 9);

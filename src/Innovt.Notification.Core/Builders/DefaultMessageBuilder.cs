@@ -81,11 +81,14 @@ namespace Innovt.Notification.Core.Builders
         protected virtual List<NotificationMessageContact> BuildTo(NotificationTemplate notificationTemplate,
             NotificationRequest request)
         {
-            Check.NotNullWithBusinessException(request.To, $"Invalid ToAddress for template Id {notificationTemplate.Id}");
+            Check.NotNullWithBusinessException(request?.To, $"Invalid ToAddress for template Id {notificationTemplate?.Id}");
 
             var toList = new List<NotificationMessageContact>();
 
-            foreach (var to in request.To) toList.Add(new NotificationMessageContact(to.Name, to.Address));
+            foreach (var to in request.To)
+            {
+                toList.Add(new NotificationMessageContact(to.Name, to.Address));
+            }
 
             return toList;
         }
@@ -93,14 +96,13 @@ namespace Innovt.Notification.Core.Builders
         protected virtual NotificationMessageContact BuildFrom(NotificationTemplate notificationTemplate,
             NotificationRequest request)
         {
-            Check.NotNullWithBusinessException(notificationTemplate.FromAddress,
+            Check.NotNullWithBusinessException(notificationTemplate?.FromAddress,
                 $"Invalid FromAddress for template Id {notificationTemplate.Id}");
 
             return new NotificationMessageContact(notificationTemplate.FromName, notificationTemplate.FromAddress);
         }
 
-        protected virtual List<NotificationMessageContact> BuildBccTo(NotificationTemplate template,
-            NotificationRequest request)
+        protected virtual List<NotificationMessageContact> BuildBccTo(NotificationTemplate template,NotificationRequest request)
         {
             return null;
         }

@@ -9,7 +9,7 @@ using Innovt.Core.Exceptions;
 using System;
 
 namespace Innovt.Core.Http
-{
+{    
     public class HttpException : BaseException
     {
         public HttpException(HttpRequestDetail detail)

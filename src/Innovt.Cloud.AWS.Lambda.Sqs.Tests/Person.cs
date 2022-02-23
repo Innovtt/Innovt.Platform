@@ -7,11 +7,6 @@
         public Person(string name)
         {
             Name = name;
-        }
-
-        public Person()
-        {
-
-        }
+        }       
     }
 }
