@@ -7,6 +7,7 @@
 
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
+using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.Table;
@@ -344,16 +345,25 @@ namespace Innovt.Cloud.AWS.Dynamo
             }
         }
 
-        protected async Task<UpdateItemResponse> UpdateAsync(UpdateItemRequest updateItemRequest,CancellationToken cancellationToken = default)
+        protected async Task<T> UpdateAsync<T>(UpdateItemRequest updateItemRequest,CancellationToken cancellationToken = default)
         {   
             if (updateItemRequest is null)
                 throw new ArgumentNullException(nameof(updateItemRequest));
 
-
             using (ActivityRepository.StartActivity(nameof(UpdateAsync)))
             {
-                return await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+                var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                 await DynamoClient.UpdateItemAsync(updateItemRequest, cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
+
+                if(response.Attributes is null)
+                    return default;
+
+                var doc = Document.FromAttributeMap(response.Attributes);
+
+                if (doc is null)
+                    return default;
+
+                return Context.FromDocument<T>(doc);
             }        
         }
 

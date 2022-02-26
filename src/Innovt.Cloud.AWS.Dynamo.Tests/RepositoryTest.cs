@@ -208,7 +208,7 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
 
 
         [Test]
-        [Ignore("Only Internal Tests")]
+        //[Ignore("Only Internal Tests")]
         public async Task ValidateSequence()
         {
             try

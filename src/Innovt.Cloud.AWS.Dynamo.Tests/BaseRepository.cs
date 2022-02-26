@@ -15,6 +15,13 @@ using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Dynamo.Tests
 {
+
+    public class Result {
+
+        public int SEQUENCE { get; set; }
+    }
+
+
     public class BaseRepository : Repository
     {
         public BaseRepository(ILogger logger, IAwsConfiguration configuration) : base(logger, configuration)
@@ -62,7 +69,7 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
 
             try
             {
-                var res = await UpdateAsync(new UpdateItemRequest()
+                var res = await UpdateAsync<Result>(new UpdateItemRequest()
                 {
                     AttributeUpdates = updateValues,
                     Key = keys,
