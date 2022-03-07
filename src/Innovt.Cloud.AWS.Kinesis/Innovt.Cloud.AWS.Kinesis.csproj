@@ -16,7 +16,7 @@
     <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj" />
     <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj" />
     <ProjectReference Include="..\Innovt.Domain\Innovt.Domain.csproj" />
-    <PackageReference Include="AWSSDK.Kinesis" Version="3.7.1.24" />
+    <PackageReference Include="AWSSDK.Kinesis" Version="3.7.1.28" />
     <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="6.0.0" />
     <PackageReference Include="System.Text.Json" Version="6.0.2" />
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0">
