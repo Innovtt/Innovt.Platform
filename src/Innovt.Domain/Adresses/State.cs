@@ -8,7 +8,7 @@
 using Innovt.Domain.Core.Model;
 using System.Collections.Generic;
 
-namespace Innovt.Domain.Address
+namespace Innovt.Domain.Adresses
 {
     public class State : ValueObject
     {

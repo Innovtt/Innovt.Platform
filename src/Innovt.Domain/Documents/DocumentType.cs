@@ -5,7 +5,7 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Innovt.Domain.Address;
+using Innovt.Domain.Adresses;
 using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Documents

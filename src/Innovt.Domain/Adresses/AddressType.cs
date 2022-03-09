@@ -9,7 +9,7 @@ using Innovt.Domain.Core.Model;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Innovt.Domain.Address
+namespace Innovt.Domain.Adresses
 {
     public sealed class AddressType : ValueObject
     {

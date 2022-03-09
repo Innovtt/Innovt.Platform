@@ -7,7 +7,7 @@
 
 using Innovt.Domain.Core.Model;
 
-namespace Innovt.Domain.Address
+namespace Innovt.Domain.Adresses
 {
     public class City : ValueObject
     {

@@ -7,17 +7,14 @@
 
 using Innovt.Domain.Core.Model;
 
-namespace Innovt.Domain.Address
+namespace Innovt.Domain.Adresses
 {
     public class Address : ValueObject
     {
         public AddressType Type { get; set; }
         public int TypeId { get; set; }
-
         public string Description { get; set; }
-
         public string Street { get; set; }
-
         public string Complement { get; set; }
 
         public string Neighborhood { get; set; }
@@ -31,7 +28,6 @@ namespace Innovt.Domain.Address
         public int CityId { get; set; }
 
         public Coordinate Coordinate { get; set; }
-
         public bool IsDeleted { get; set; }
     }
 }

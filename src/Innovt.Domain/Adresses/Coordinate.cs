@@ -5,7 +5,7 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-namespace Innovt.Domain.Address
+namespace Innovt.Domain.Adresses
 {
     public class Coordinate
     {
