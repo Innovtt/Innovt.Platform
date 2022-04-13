@@ -16,7 +16,7 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors
             this.serviceMock = domainEventServiceMock ?? throw new System.ArgumentNullException(nameof(domainEventServiceMock));
         }
 
-        protected override Task<IList<BatchFailureResponse>> ProcessMessages(IList<InvoiceDomainEvent> messages)
+        protected override Task<BatchFailureResponse> ProcessMessages(IList<InvoiceDomainEvent> messages)
         {
             var result = serviceMock.ProcessMessage(messages.First());
 

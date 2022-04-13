@@ -32,7 +32,7 @@ namespace ConsoleAppTest
             return null;
         }
     }
-    public class IocTestModule: Innovt.Core.CrossCutting.Ioc.IOCModule
+    public class IocTestModule : Innovt.Core.CrossCutting.Ioc.IOCModule
     {
         public IocTestModule(IConfiguration configuration)
         {
@@ -40,20 +40,20 @@ namespace ConsoleAppTest
 
             collection.AddSingleton(configuration);
 
-            collection.AddScoped<IAWSConfiguration, DefaultAWSConfiguration>();
+            collection.AddScoped<IAwsConfiguration, DefaultAWSConfiguration>();
 
             ITracer tracer = Datadog.Trace.OpenTracing.OpenTracingTracerFactory.CreateTracer();
 
             GlobalTracer.Register(tracer);
 
-            collection.AddScoped<ITracer>(t=> tracer);
+            collection.AddScoped<ITracer>(t => tracer);
 
             collection.AddScoped<ILogger, Logger>();
 
             collection.AddScoped<DynamoService>();
         }
     }
- 
+
     public class BuyerByDocumentFilter : IFilter
     {
         public int Enabled { get; set; }
@@ -74,11 +74,21 @@ namespace ConsoleAppTest
                .SetBasePath(Directory.GetCurrentDirectory()) // <== compile failing here
                 .AddJsonFile($"appsettings.json");
 
-            //var build = confbuild.Build();
+            var build = confbuild.Build();
 
-            //var container = new Container();
+            var container = new Container();
 
-            //container.AddModule(new IocTestModule(build));
+            container.AddModule(new IocTestModule(build));
+
+
+            //var repo = new UserRepository();
+
+
+
+
+
+            //var logger = container.Resolve<ILogger>();
+
 
             //container.CheckConfiguration();
             //var tracer = GlobalTracer.Instance;

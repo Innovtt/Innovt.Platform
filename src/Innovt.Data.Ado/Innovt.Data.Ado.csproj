@@ -1,9 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <PackageId>Innovt.Data.Ado</PackageId>
-   <PackageVersion>6.0.7</PackageVersion>
+   <PackageVersion>6.0.8</PackageVersion>
     <Authors>Michel Borges</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -28,8 +27,4 @@
     <ProjectReference Include="..\Innovt.Data\Innovt.Data.csproj" />
     <ProjectReference Include="..\Innovt.Domain\Innovt.Domain.csproj" />
   </ItemGroup>
-  <!--<ItemGroup>
-    <PackageReference Update="NETStandard.Library" Version="2.0.3" />
-  </ItemGroup>-->
-
 </Project>

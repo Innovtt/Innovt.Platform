@@ -9,9 +9,11 @@ namespace ConsoleAppTest
 {
     public class UserRepository:Repository
     {
-        public UserRepository(ILogger logger,IAWSConfiguration configuration):base(logger, configuration)
+        public UserRepository(ILogger logger,IAwsConfiguration configuration):base(logger, configuration)
         {
             
         }
+
+        
     }
 }

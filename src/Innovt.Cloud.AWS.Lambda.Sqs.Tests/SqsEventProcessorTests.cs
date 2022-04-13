@@ -29,7 +29,7 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests
             var result = await processor.Process(new Amazon.Lambda.SQSEvents.SQSEvent(), lambdaContext);
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(result.Count, 0);
+            Assert.IsNull(result.BatchItemFailures);            
         }
 
 
@@ -81,9 +81,10 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests
             var result = await processor.Process(sQSEvent, lambdaContext);
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(result.Count, expectedMessageIdFailed.Count);
+            Assert.IsNotNull(result.BatchItemFailures);
+            Assert.AreEqual(result.BatchItemFailures.Count, expectedMessageIdFailed.Count);            
 
-            foreach (var item in result)
+            foreach (var item in result.BatchItemFailures)
             {
                 if (!expectedMessageIdFailed.Contains(item.ItemIdentifier))
                 {
@@ -104,8 +105,7 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests
                 Guid.NewGuid().ToString(),
                 Guid.NewGuid().ToString()
             };
-
-
+            
             messages.Add(new Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage()
             {
                 Body = System.Text.Json.JsonSerializer.Serialize(new Person("magal")),
@@ -130,7 +130,6 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests
                 MessageId = Guid.NewGuid().ToString(),
             });
 
-
             var sQSEvent = new Amazon.Lambda.SQSEvents.SQSEvent()
             {
                 Records = messages
@@ -140,9 +139,13 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests
             var result = await processor.Process(sQSEvent, lambdaContext);
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(result.Count, expectedMessageIdFailed.Count);
+            Assert.IsNotNull(result.BatchItemFailures);
+            Assert.AreEqual(result.BatchItemFailures.Count, expectedMessageIdFailed.Count);
 
-            foreach (var item in result)
+
+            var content = System.Text.Json.JsonSerializer.Serialize(result);
+
+            foreach (var item in result.BatchItemFailures)
             {
                 if (!expectedMessageIdFailed.Contains(item.ItemIdentifier))
                 {
@@ -156,19 +159,20 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests
         {
             var processor = new CustomSqsEventProcessor(false);
 
-            var messages = new List<Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage>();
-
-            messages.Add(new Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage()
+            var messages = new List<Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage>
             {
-                Body = System.Text.Json.JsonSerializer.Serialize(new Person("michel")),
-                MessageId = Guid.NewGuid().ToString(),
-            });
+                new Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage()
+                {
+                    Body = System.Text.Json.JsonSerializer.Serialize(new Person("michel")),
+                    MessageId = Guid.NewGuid().ToString(),
+                },
 
-            messages.Add(new Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage()
-            {
-                Body = System.Text.Json.JsonSerializer.Serialize(new Person("michel")),
-                MessageId = Guid.NewGuid().ToString(),
-            });
+                new Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage()
+                {
+                    Body = System.Text.Json.JsonSerializer.Serialize(new Person("michel")),
+                    MessageId = Guid.NewGuid().ToString(),
+                }
+            };
 
             var sQSEvent = new Amazon.Lambda.SQSEvents.SQSEvent()
             {
@@ -178,8 +182,8 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests
             //Will fail when person name is not michel
             var result = await processor.Process(sQSEvent, lambdaContext);
 
-            Assert.IsNotNull(result);
-            Assert.AreEqual(result.Count, 0);
+            Assert.IsNotNull(result);            
+            Assert.IsNull(result.BatchItemFailures);            
         }
 
 

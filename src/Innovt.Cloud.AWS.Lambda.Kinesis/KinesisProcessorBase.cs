@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis
 {
-    public abstract class KinesisProcessorBase<TBody> : EventProcessor<KinesisEvent, IList<BatchFailureResponse>> where TBody : IDataStream
+    public abstract class KinesisProcessorBase<TBody> : EventProcessor<KinesisEvent, BatchFailureResponse> where TBody : IDataStream
     {
         protected KinesisProcessorBase(ILogger logger) : base(logger)
         {

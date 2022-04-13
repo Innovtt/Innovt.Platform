@@ -5,7 +5,6 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests
     public interface IDomainEventServiceMock<T> where T : DomainEvent
     {
         void InicializeIoc();
-
-        IList<BatchFailureResponse> ProcessMessage(T domainEvent);
+        BatchFailureResponse ProcessMessage(T domainEvent);
     }
 }

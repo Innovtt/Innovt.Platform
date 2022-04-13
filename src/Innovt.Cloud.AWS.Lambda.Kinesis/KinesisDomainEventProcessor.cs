@@ -25,11 +25,11 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
 
         }
 
-        protected override async Task<IList<BatchFailureResponse>> ProcessMessages(IList<TBody> messages)
+        protected override async Task<BatchFailureResponse> ProcessMessages(IList<TBody> messages)
         {
             if (messages == null) throw new ArgumentNullException(nameof(messages));
 
-            var response = new List<BatchFailureResponse>();
+            var response = new BatchFailureResponse();
 
             foreach (var message in messages)
             {
@@ -52,7 +52,7 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
                 }
                 catch (Exception)
                 {
-                    response.Add(new BatchFailureResponse(message.EventId));
+                    response.AddItem(message.EventId);
                 }
             }
 
