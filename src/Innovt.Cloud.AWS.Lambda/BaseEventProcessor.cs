@@ -69,7 +69,6 @@ namespace Innovt.Cloud.AWS.Lambda
 
         protected Activity StartBaseActivity(string activityName)
         {
-
             if (activityName is null)
             {
                 throw new ArgumentNullException(nameof(activityName));

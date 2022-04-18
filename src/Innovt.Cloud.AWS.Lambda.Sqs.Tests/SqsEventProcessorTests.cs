@@ -37,7 +37,7 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests
         [Test]
         public async Task Handle_BatchMessage_ForFifoQueue_Returns_TheRemainingMessages_WhenFindTheFirstFailure()
         {
-            var processor = new CustomSqsEventProcessor(true);
+            var processor = new CustomSqsEventProcessor(true,true);
 
             var messages = new List<Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage>();
 
@@ -97,7 +97,7 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests
         [Test]
         public async Task Handle_BatchMessage_Returns_FailedMessages_WhenQueueIsStandard()
         {
-            var processor = new CustomSqsEventProcessor(false);
+            var processor = new CustomSqsEventProcessor(false,true);
 
             var messages = new List<Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage>();
 
@@ -141,23 +141,57 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.BatchItemFailures);
             Assert.AreEqual(result.BatchItemFailures.Count, expectedMessageIdFailed.Count);
+        }
 
+        [Test]
+        public void Handle_BatchMessage_Returns_Exception_WhenFunctionDoesNotReportItemFailuers()
+        {
+            var processor = new CustomSqsEventProcessor(false, false);
 
-            var content = System.Text.Json.JsonSerializer.Serialize(result);
+            var messages = new List<Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage>();
 
-            foreach (var item in result.BatchItemFailures)
+            var expectedMessageIdFailed = new List<string>() {
+                Guid.NewGuid().ToString(),
+                Guid.NewGuid().ToString()
+            };
+
+            messages.Add(new Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage()
             {
-                if (!expectedMessageIdFailed.Contains(item.ItemIdentifier))
-                {
-                    Assert.Fail(item.ItemIdentifier);
-                }
-            }
+                Body = System.Text.Json.JsonSerializer.Serialize(new Person("magal")),
+                MessageId = expectedMessageIdFailed[0]
+            });
+
+            messages.Add(new Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage()
+            {
+                Body = System.Text.Json.JsonSerializer.Serialize(new Person("michel")),
+                MessageId = Guid.NewGuid().ToString(),
+            });
+
+            messages.Add(new Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage()
+            {
+                Body = System.Text.Json.JsonSerializer.Serialize(new Person("ale")),
+                MessageId = expectedMessageIdFailed[1]
+            });
+
+            messages.Add(new Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage()
+            {
+                Body = System.Text.Json.JsonSerializer.Serialize(new Person("michel")),
+                MessageId = Guid.NewGuid().ToString(),
+            });
+
+            var sQSEvent = new Amazon.Lambda.SQSEvents.SQSEvent()
+            {
+                Records = messages
+            };
+
+            //Will fail when person name is not michel
+            Assert.ThrowsAsync<Exception>(async ()=> await processor.Process(sQSEvent, lambdaContext), "Fake exception");
         }
 
         [Test]
         public async Task Handle_BatchMessage_Returns_EmptyBatchResponseWhen_ThereIsNoFailures()
         {
-            var processor = new CustomSqsEventProcessor(false);
+            var processor = new CustomSqsEventProcessor(false, true);
 
             var messages = new List<Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage>
             {

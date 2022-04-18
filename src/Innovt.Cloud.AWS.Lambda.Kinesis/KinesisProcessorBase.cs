@@ -19,13 +19,26 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
 {
     public abstract class KinesisProcessorBase<TBody> : EventProcessor<KinesisEvent, BatchFailureResponse> where TBody : IDataStream
     {
-        protected KinesisProcessorBase(ILogger logger) : base(logger)
+        private readonly bool reportBacthFailures;
+
+        protected KinesisProcessorBase(ILogger logger, bool reportBacthFailures = false) : base(logger)
         {
+            this.reportBacthFailures = reportBacthFailures;
         }
 
-        protected KinesisProcessorBase()
+        protected KinesisProcessorBase(bool reportBacthFailures = false)
         {
+            this.reportBacthFailures = reportBacthFailures;
         }
+      
+        protected void ThrowExceptionIfDoesNotReportBatchItemFailures(Exception ex)
+        {
+            if (reportBacthFailures)
+                return;
+
+            throw ex;
+        }
+
 
         /// <summary>
         /// When the developer want to discard the message from specific partition

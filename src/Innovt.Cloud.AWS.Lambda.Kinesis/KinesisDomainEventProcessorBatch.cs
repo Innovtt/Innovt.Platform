@@ -18,11 +18,11 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
 {
     public abstract class KinesisDomainEventProcessorBatch<TBody> : KinesisProcessorBase<TBody> where TBody : DomainEvent
     {
-        protected KinesisDomainEventProcessorBatch(ILogger logger) : base(logger)
+        protected KinesisDomainEventProcessorBatch(ILogger logger, bool reportBacthFailures = false) : base(logger, reportBacthFailures)
         {
         }
 
-        protected KinesisDomainEventProcessorBatch()
+        protected KinesisDomainEventProcessorBatch(bool reportBacthFailures = false):base(reportBacthFailures)
         {
         }
 

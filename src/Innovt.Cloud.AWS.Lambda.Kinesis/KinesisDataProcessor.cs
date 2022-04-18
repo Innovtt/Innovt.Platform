@@ -16,11 +16,12 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
 {
     public abstract class KinesisDataProcessor<TBody> : KinesisDataProcessorBatch<TBody> where TBody : class, IDataStream
     {
-        protected KinesisDataProcessor(ILogger logger) : base(logger)
-        {
+        protected KinesisDataProcessor(ILogger logger,bool reportBacthFailures = false) : base(logger, reportBacthFailures)
+        {            
         }
-        protected KinesisDataProcessor()
+        protected KinesisDataProcessor(bool reportBacthFailures =false):base(reportBacthFailures)
         {
+         
         }
 
         protected override async Task<BatchFailureResponse> ProcessMessages(IList<TBody> messages)
@@ -48,8 +49,12 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
 
                     Logger.Info($"EventId={message.EventId} from Kinesis processed.");
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    ThrowExceptionIfDoesNotReportBatchItemFailures(ex);
+
+                    Logger.Error(ex, $"Exception for message ID {message.EventId}.");
+
                     response.AddItem(message.EventId);
                 }
             }

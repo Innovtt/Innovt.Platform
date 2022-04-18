@@ -27,7 +27,6 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests
             serviceMock = Substitute.For<IServiceMock>();
         }
 
-
         [Test]
         public async Task SimpleFunctionTest()
         {
@@ -119,7 +118,6 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests
             serviceMock.DidNotReceive().ProcessMessage();
         }
 
-
         [Test]
         public async Task Process()
         {
@@ -137,12 +135,12 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests
                 }
             };
 
-            await function.Process(message, lambdaContext);
+            var result = await function.Process(message, lambdaContext);
 
+            Assert.IsNull(result);
             serviceMock.Received().InicializeIoc();
             serviceMock.Received().ProcessMessage(Arg.Any<string>());
         }
-
 
         [Test]
         public async Task Process_WithCustomLogger()

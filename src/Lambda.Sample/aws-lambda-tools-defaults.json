@@ -1,0 +1,12 @@
+{
+  "Information": [ "Lambda function for rest api" ],
+  "region": "us-east-1",
+  "configuration": "Release",
+  "framework": "net6.0",
+  "function-runtime": "dotnet6",
+  "function-memory-size": 1024,
+  "function-timeout": 60,
+  "function-handler": "Lambda.Sample::Lambda.Sample.Function::Process",
+  "environment-variables": "ASPNETCORE_ENVIRONMENT=Production"
+}
+

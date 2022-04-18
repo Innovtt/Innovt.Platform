@@ -26,21 +26,23 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
     {
         private ISerializer serializer;
         private readonly bool isFifo;
+        private readonly bool reportBacthFailures;
 
-        protected SqsEventProcessor(ILogger logger, bool isFifo = false) : base(logger)
+        protected SqsEventProcessor(bool isFifo = false, bool reportBacthFailures = false)
         {
             this.isFifo = isFifo;
+            this.reportBacthFailures = reportBacthFailures;
         }
 
-        protected SqsEventProcessor(ILogger logger, ISerializer serializer, bool isFifo = false) : base(logger)
+        protected SqsEventProcessor(ILogger logger, bool isFifo = false,bool reportBacthFailures = false) : base(logger)
         {
-            this.Serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
             this.isFifo = isFifo;
+            this.reportBacthFailures = reportBacthFailures;
         }
 
-        protected SqsEventProcessor(bool isFifo = false)
+        protected SqsEventProcessor(ILogger logger, ISerializer serializer, bool isFifo = false, bool reportBacthFailure = false) : this(logger, isFifo, reportBacthFailure)
         {
-            this.isFifo = isFifo;
+            this.Serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));            
         }
 
         private ISerializer Serializer
@@ -48,6 +50,14 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
             get { return serializer ??= new JsonSerializer(); }
 
             set => serializer = value;
+        }
+
+        protected void ThrowExceptionIfDoesNotReportBatchItemFailures(Exception ex)
+        {
+            if (reportBacthFailures)
+                return;
+
+            throw ex;
         }
 
         protected override async Task<BatchFailureResponse> Handle(SQSEvent message, ILambdaContext context)
@@ -102,9 +112,12 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
 
                     Logger.Info($"SQS Event message ID {record.MessageId} Processed.");
                 }
-                catch
+                catch(Exception ex)
                 {
+                    ThrowExceptionIfDoesNotReportBatchItemFailures(ex);
+
                     Logger.Warning($"SQS Event message ID {record.MessageId} will be returned as item failure.");
+                    Logger.Error(ex,$"Exception for message ID {record.MessageId}.");
 
                     if (isFifo)
                     {

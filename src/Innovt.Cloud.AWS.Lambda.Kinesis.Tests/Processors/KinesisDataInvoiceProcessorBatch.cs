@@ -11,7 +11,7 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors
     {
         private readonly IServiceMock serviceMock;
 
-        public KinesisDataInvoiceProcessorBatch(IServiceMock serviceMock)
+        public KinesisDataInvoiceProcessorBatch(IServiceMock serviceMock, bool reportItemFailures=false):base(reportItemFailures)
         {
             this.serviceMock = serviceMock ?? throw new System.ArgumentNullException(nameof(serviceMock));
         }

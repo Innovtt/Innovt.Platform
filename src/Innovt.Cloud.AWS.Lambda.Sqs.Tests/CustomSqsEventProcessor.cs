@@ -11,7 +11,7 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests
         public CustomSqsEventProcessor(ILogger logger) : base(logger)
         {
         }
-        public CustomSqsEventProcessor(bool isFifo) : base(isFifo)
+        public CustomSqsEventProcessor(bool isFifo, bool reportBatchItemFailures) : base(isFifo, reportBatchItemFailures)
         {
         }
         public CustomSqsEventProcessor() : base()

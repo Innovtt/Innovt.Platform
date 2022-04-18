@@ -115,6 +115,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Cloud.AWS.Lambda.Sqs
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAppTest", "ConsoleAppTest\ConsoleAppTest.csproj", "{DE1CCCB9-7832-464E-A82B-3A73970D843E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lambda.Sample", "Lambda.Sample\Lambda.Sample.csproj", "{E2648373-5BDA-4461-9461-839FCA06DB70}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -491,6 +493,14 @@ Global
 		{DE1CCCB9-7832-464E-A82B-3A73970D843E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DE1CCCB9-7832-464E-A82B-3A73970D843E}.Release|x86.ActiveCfg = Release|Any CPU
 		{DE1CCCB9-7832-464E-A82B-3A73970D843E}.Release|x86.Build.0 = Release|Any CPU
+		{E2648373-5BDA-4461-9461-839FCA06DB70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2648373-5BDA-4461-9461-839FCA06DB70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2648373-5BDA-4461-9461-839FCA06DB70}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E2648373-5BDA-4461-9461-839FCA06DB70}.Debug|x86.Build.0 = Debug|Any CPU
+		{E2648373-5BDA-4461-9461-839FCA06DB70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2648373-5BDA-4461-9461-839FCA06DB70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2648373-5BDA-4461-9461-839FCA06DB70}.Release|x86.ActiveCfg = Release|Any CPU
+		{E2648373-5BDA-4461-9461-839FCA06DB70}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -534,6 +544,7 @@ Global
 		{6A81A298-4D37-4107-9770-003DD96A377D} = {73AB5E44-F76F-42C7-9E9A-D9F9FFDAE8E6}
 		{2453B714-209A-4FE1-B954-F9B1D8CA3659} = {ECD92DFF-5A6C-44D1-B3B4-F5CEE1E879B0}
 		{DE1CCCB9-7832-464E-A82B-3A73970D843E} = {B9D67F90-4165-4986-AA52-9E30F64013D9}
+		{E2648373-5BDA-4461-9461-839FCA06DB70} = {B9D67F90-4165-4986-AA52-9E30F64013D9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {43168DBE-48A6-435D-9405-F6728340FFEA}
