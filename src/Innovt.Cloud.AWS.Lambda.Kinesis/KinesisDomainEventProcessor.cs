@@ -51,11 +51,11 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
                 }
                 catch (Exception ex)
                 {
-                    ThrowExceptionIfDoesNotReportBatchItemFailures(ex);       
+                    if (!ReportBatchFailures)
+                        throw;
                     
-                    Logger.Error(ex, $"Exception for message ID {message.EventId}.");
-
-                    response.AddItem(message.EventId);
+                    Logger.Error(ex, $"Exception for message ID {message?.EventId}.");
+                    response.AddItem(message?.EventId);
                 }
             }
 

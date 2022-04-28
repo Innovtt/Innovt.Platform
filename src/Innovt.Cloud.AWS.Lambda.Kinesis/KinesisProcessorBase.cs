@@ -10,7 +10,6 @@ using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Exceptions;
 using Innovt.Domain.Core.Streams;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,26 +18,17 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
 {
     public abstract class KinesisProcessorBase<TBody> : EventProcessor<KinesisEvent, BatchFailureResponse> where TBody : IDataStream
     {
-        private readonly bool reportBacthFailures;
+        protected bool ReportBatchFailures { get; set; }
 
-        protected KinesisProcessorBase(ILogger logger, bool reportBacthFailures = false) : base(logger)
+        protected KinesisProcessorBase(ILogger logger, bool reportBatchFailures = false) : base(logger)
         {
-            this.reportBacthFailures = reportBacthFailures;
+            this.ReportBatchFailures = reportBatchFailures;
         }
 
-        protected KinesisProcessorBase(bool reportBacthFailures = false)
+        protected KinesisProcessorBase(bool reportBatchFailures = false)
         {
-            this.reportBacthFailures = reportBacthFailures;
+            this.ReportBatchFailures = reportBatchFailures;
         }
-      
-        protected void ThrowExceptionIfDoesNotReportBatchItemFailures(Exception ex)
-        {
-            if (reportBacthFailures)
-                return;
-
-            throw ex;
-        }
-
 
         /// <summary>
         /// When the developer want to discard the message from specific partition

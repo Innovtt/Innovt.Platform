@@ -16,10 +16,10 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
 {
     public abstract class KinesisDataProcessor<TBody> : KinesisDataProcessorBatch<TBody> where TBody : class, IDataStream
     {
-        protected KinesisDataProcessor(ILogger logger,bool reportBacthFailures = false) : base(logger, reportBacthFailures)
+        protected KinesisDataProcessor(ILogger logger,bool reportBatchFailures = false) : base(logger, reportBatchFailures)
         {            
         }
-        protected KinesisDataProcessor(bool reportBacthFailures =false):base(reportBacthFailures)
+        protected KinesisDataProcessor(bool reportBatchFailures =false):base(reportBatchFailures)
         {
          
         }
@@ -51,11 +51,12 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
                 }
                 catch (Exception ex)
                 {
-                    ThrowExceptionIfDoesNotReportBatchItemFailures(ex);
+                    if (!ReportBatchFailures)
+                        throw;
 
-                    Logger.Error(ex, $"Exception for message ID {message.EventId}.");
+                    Logger.Error(ex, $"Exception for message ID {message?.EventId}.");
 
-                    response.AddItem(message.EventId);
+                    response.AddItem(message?.EventId);
                 }
             }
             return response;

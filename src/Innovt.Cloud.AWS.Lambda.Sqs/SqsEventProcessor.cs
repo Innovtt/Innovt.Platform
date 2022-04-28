@@ -26,21 +26,21 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
     {
         private ISerializer serializer;
         private readonly bool isFifo;
-        private readonly bool reportBacthFailures;
+        protected bool ReportBatchFailures { get; set; }
 
-        protected SqsEventProcessor(bool isFifo = false, bool reportBacthFailures = false)
+        protected SqsEventProcessor(bool isFifo = false, bool reportBatchFailures = false)
         {
             this.isFifo = isFifo;
-            this.reportBacthFailures = reportBacthFailures;
+            this.ReportBatchFailures = reportBatchFailures;
         }
 
-        protected SqsEventProcessor(ILogger logger, bool isFifo = false,bool reportBacthFailures = false) : base(logger)
+        protected SqsEventProcessor(ILogger logger, bool isFifo = false,bool reportBatchFailures = false) : base(logger)
         {
             this.isFifo = isFifo;
-            this.reportBacthFailures = reportBacthFailures;
+            this.ReportBatchFailures = reportBatchFailures;
         }
 
-        protected SqsEventProcessor(ILogger logger, ISerializer serializer, bool isFifo = false, bool reportBacthFailure = false) : this(logger, isFifo, reportBacthFailure)
+        protected SqsEventProcessor(ILogger logger, ISerializer serializer, bool isFifo = false, bool reportBatchFailures = false) : this(logger, isFifo, reportBatchFailures)
         {
             this.Serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));            
         }
@@ -50,14 +50,6 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
             get { return serializer ??= new JsonSerializer(); }
 
             set => serializer = value;
-        }
-
-        protected void ThrowExceptionIfDoesNotReportBatchItemFailures(Exception ex)
-        {
-            if (reportBacthFailures)
-                return;
-
-            throw ex;
         }
 
         protected override async Task<BatchFailureResponse> Handle(SQSEvent message, ILambdaContext context)
@@ -114,7 +106,8 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs
                 }
                 catch(Exception ex)
                 {
-                    ThrowExceptionIfDoesNotReportBatchItemFailures(ex);
+                    if (!ReportBatchFailures)
+                        throw;
 
                     Logger.Warning($"SQS Event message ID {record.MessageId} will be returned as item failure.");
                     Logger.Error(ex,$"Exception for message ID {record.MessageId}.");

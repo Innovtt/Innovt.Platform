@@ -18,10 +18,10 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis
 {
     public abstract class KinesisDataProcessorBatch<TBody> : KinesisProcessorBase<TBody> where TBody : class, IDataStream
     {
-        protected KinesisDataProcessorBatch(ILogger logger,bool reportBacthFailures = false) : base(logger, reportBacthFailures)
+        protected KinesisDataProcessorBatch(ILogger logger,bool reportBatchFailures = false) : base(logger, reportBatchFailures)
         {
         }
-        protected KinesisDataProcessorBatch(bool reportBacthFailures = false):base(reportBacthFailures)
+        protected KinesisDataProcessorBatch(bool reportBatchFailures = false):base(reportBatchFailures)
         {
         }
 
