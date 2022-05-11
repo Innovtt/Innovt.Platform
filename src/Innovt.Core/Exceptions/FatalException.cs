@@ -8,31 +8,30 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace Innovt.Core.Exceptions
+namespace Innovt.Core.Exceptions;
+
+[Serializable]
+public class FatalException : BaseException
 {
-    [Serializable]
-    public class FatalException : BaseException
+    public FatalException(string message) : base(message)
     {
-        public FatalException(string message) : base(message)
-        {
-        }
+    }
 
-        public FatalException(string message, Exception ex) : base(message, ex)
-        {
-        }
+    public FatalException(string message, Exception ex) : base(message, ex)
+    {
+    }
 
-        public FatalException(Exception ex) : base(ex)
-        {
-        }
+    public FatalException(Exception ex) : base(ex)
+    {
+    }
 
 
-        private FatalException()
-        {
-        }
+    private FatalException()
+    {
+    }
 
-        protected FatalException(SerializationInfo serializationInfo,
-            StreamingContext streamingContext) : base(serializationInfo, streamingContext)
-        {
-        }
+    protected FatalException(SerializationInfo serializationInfo,
+        StreamingContext streamingContext) : base(serializationInfo, streamingContext)
+    {
     }
 }

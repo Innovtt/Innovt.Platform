@@ -10,54 +10,53 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Innovt.Core.Serialization
+namespace Innovt.Core.Serialization;
+
+public class DeserializerFactory
 {
-    public class DeserializerFactory
+    private static DeserializerFactory instance;
+
+    private readonly Dictionary<string, Type> mapping;
+
+    private DeserializerFactory()
     {
-        private static DeserializerFactory instance;
+        mapping = new Dictionary<string, Type>();
+    }
 
-        private readonly Dictionary<string, Type> mapping;
+    public static DeserializerFactory Instance => instance ??= new DeserializerFactory();
 
-        private DeserializerFactory()
-        {
-            mapping = new Dictionary<string, Type>();
-        }
+    private string GetGenericFullName<T>()
+    {
+        return typeof(T).FullName;
+    }
 
-        public static DeserializerFactory Instance => instance ??= new DeserializerFactory();
+    public DeserializerFactory AddMapping<T>(string key = null)
+    {
+        var typeKey = key ?? GetGenericFullName<T>();
 
-        private string GetGenericFullName<T>()
-        {
-            return typeof(T).FullName;
-        }
-
-        public DeserializerFactory AddMapping<T>(string key = null)
-        {
-            var typeKey = key ?? GetGenericFullName<T>();
-
-            mapping.TryAdd(typeKey, typeof(T));
-            return instance;
-        }
+        mapping.TryAdd(typeKey, typeof(T));
+        return instance;
+    }
 
 
-        public object Deserialize([NotNull] string key, string content)
-        {
-            if (key == null) throw new ArgumentNullException(nameof(key));
+    public object Deserialize([NotNull] string key, string content)
+    {
+        if (key == null) throw new ArgumentNullException(nameof(key));
 
-            if (content.IsNullOrEmpty())
-                return default;
+        if (content.IsNullOrEmpty())
+            return default;
 
-            if (!mapping.TryGetValue(key, out var typeValue))
-                return default;
+        if (!mapping.TryGetValue(key, out var typeValue))
+            return default;
 
-            var deserialized = System.Text.Json.JsonSerializer.Deserialize(content, typeValue);
+        var deserialized = System.Text.Json.JsonSerializer.Deserialize(content, typeValue);
 
-            return deserialized;
-        }
+        return deserialized;
+    }
 
 
-        public T Deserialize<T>([NotNull] string key, string content)
-        {
-            return (T)Deserialize(key, content);
-        }
+    public T Deserialize<T>([NotNull] string key, string content)
+    {
+        return (T)Deserialize(key, content);
     }
 }

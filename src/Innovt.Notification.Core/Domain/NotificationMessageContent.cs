@@ -5,12 +5,11 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-namespace Innovt.Notification.Core.Domain
-{
-    public class NotificationMessageContent
-    {
-        public string Charset { get; set; }
+namespace Innovt.Notification.Core.Domain;
 
-        public string Content { get; set; }
-    }
+public class NotificationMessageContent
+{
+    public string Charset { get; set; }
+
+    public string Content { get; set; }
 }

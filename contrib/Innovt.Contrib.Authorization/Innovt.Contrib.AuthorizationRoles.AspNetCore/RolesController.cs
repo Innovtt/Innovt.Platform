@@ -9,30 +9,29 @@ using Innovt.Contrib.Authorization.Platform.Domain.Filters;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace Innovt.Contrib.AuthorizationRoles.AspNetCore
+namespace Innovt.Contrib.AuthorizationRoles.AspNetCore;
+
+[ApiController]
+[Route("Authorization/[controller]")]
+public class RolesController : ControllerBase
 {
-    [ApiController]
-    [Route("Authorization/[controller]")]
-    public class RolesController : ControllerBase
+    private readonly IAuthorizationAppService authorizationAppService;
+
+    public RolesController(IAuthorizationAppService authorizationAppService)
     {
-        private readonly IAuthorizationAppService authorizationAppService;
+        this.authorizationAppService = authorizationAppService ??
+                                       throw new ArgumentNullException(nameof(authorizationAppService));
+    }
 
-        public RolesController(IAuthorizationAppService authorizationAppService)
-        {
-            this.authorizationAppService = authorizationAppService ??
-                                           throw new ArgumentNullException(nameof(authorizationAppService));
-        }
+    [HttpGet]
+    [ProducesResponseType(typeof(IList<RoleDto>), (int)HttpStatusCode.OK)]
+    [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
+    [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+    public async Task<IActionResult> Get([FromQuery] RoleByUserFilter filter,
+        CancellationToken cancellationToken = default)
+    {
+        var roles = await authorizationAppService.GetUserRoles(filter, cancellationToken).ConfigureAwait(false);
 
-        [HttpGet]
-        [ProducesResponseType(typeof(IList<RoleDto>), (int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
-        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> Get([FromQuery] RoleByUserFilter filter, CancellationToken cancellationToken = default)
-        {
-            var roles = await authorizationAppService.GetUserRoles(filter, cancellationToken).ConfigureAwait(false);
-
-            return Ok(roles);
-        }
-
+        return Ok(roles);
     }
 }

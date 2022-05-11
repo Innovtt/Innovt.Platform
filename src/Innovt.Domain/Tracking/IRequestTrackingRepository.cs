@@ -7,10 +7,9 @@
 
 using System.Threading.Tasks;
 
-namespace Innovt.Domain.Tracking
+namespace Innovt.Domain.Tracking;
+
+public interface IRequestTrackingRepository
 {
-    public interface IRequestTrackingRepository
-    {
-        Task AddTracking(RequestTracking tracking);
-    }
+    Task AddTracking(RequestTracking tracking);
 }

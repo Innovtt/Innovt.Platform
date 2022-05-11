@@ -9,43 +9,42 @@ using Innovt.Core.CrossCutting.Ioc;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace Innovt.CrossCutting.IOC
+namespace Innovt.CrossCutting.IOC;
+
+public class ServiceProvider : IServiceProvider, ISupportRequiredService, IDisposable
 {
-    public class ServiceProvider : IServiceProvider, ISupportRequiredService, IDisposable
+    private readonly IContainer container;
+    private bool disposed;
+
+
+    public ServiceProvider(IContainer container)
     {
-        private readonly IContainer container;
-        private bool disposed;
+        this.container = container ?? throw new ArgumentNullException(nameof(container));
+    }
 
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
 
-        public ServiceProvider(IContainer container)
+    public object GetService(Type serviceType)
+    {
+        return container.Resolve(serviceType);
+    }
+
+    public object GetRequiredService(Type serviceType)
+    {
+        return container.Resolve(serviceType);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!disposed)
         {
-            this.container = container ?? throw new ArgumentNullException(nameof(container));
-        }
+            if (disposing) container.Dispose();
 
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        public object GetService(Type serviceType)
-        {
-            return container.Resolve(serviceType);
-        }
-
-        public object GetRequiredService(Type serviceType)
-        {
-            return container.Resolve(serviceType);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposed)
-            {
-                if (disposing) container.Dispose();
-
-                disposed = true;
-            }
+            disposed = true;
         }
     }
 }

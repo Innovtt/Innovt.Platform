@@ -5,30 +5,28 @@
 
 using Innovt.Core.CrossCutting.Ioc;
 
-namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors
+namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors;
+
+public class KinesisDomainEventInvoiceProcessorBatch : KinesisDomainEventProcessorBatch<InvoiceDomainEvent>
 {
-    public class KinesisDomainEventInvoiceProcessorBatch : KinesisDomainEventProcessorBatch<InvoiceDomainEvent>
+    private readonly IDomainEventServiceMock<InvoiceDomainEvent> serviceMock;
+
+    public KinesisDomainEventInvoiceProcessorBatch(IDomainEventServiceMock<InvoiceDomainEvent> domainEventServiceMock)
     {
-        private readonly IDomainEventServiceMock<InvoiceDomainEvent> serviceMock;
+        serviceMock = domainEventServiceMock ?? throw new ArgumentNullException(nameof(domainEventServiceMock));
+    }
 
-        public KinesisDomainEventInvoiceProcessorBatch(IDomainEventServiceMock<InvoiceDomainEvent> domainEventServiceMock)
-        {
-            this.serviceMock = domainEventServiceMock ?? throw new System.ArgumentNullException(nameof(domainEventServiceMock));
-        }
+    protected override Task<BatchFailureResponse> ProcessMessages(IList<InvoiceDomainEvent> messages)
+    {
+        var result = serviceMock.ProcessMessage(messages.First());
 
-        protected override Task<BatchFailureResponse> ProcessMessages(IList<InvoiceDomainEvent> messages)
-        {
-            var result = serviceMock.ProcessMessage(messages.First());
+        return Task.FromResult(result);
+    }
 
-            return Task.FromResult(result);
-        }
+    protected override IContainer SetupIocContainer()
+    {
+        serviceMock.InicializeIoc();
 
-        protected override IContainer SetupIocContainer()
-        {
-            serviceMock.InicializeIoc();
-
-            return null;
-        }
-
+        return null;
     }
 }

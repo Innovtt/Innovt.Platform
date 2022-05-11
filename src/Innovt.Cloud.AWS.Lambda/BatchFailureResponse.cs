@@ -2,36 +2,32 @@
 using System.Linq;
 using System.Text.Json.Serialization;
 
-namespace Innovt.Cloud.AWS.Lambda
+namespace Innovt.Cloud.AWS.Lambda;
+
+public class BatchFailureResponse
 {
-    public class BatchFailureResponse
+    public BatchFailureResponse()
     {
-        public BatchFailureResponse()
-        {
-        }
+    }
 
-        [JsonPropertyName("batchItemFailures")]
-        public List<ItemFailureIdentifier> BatchItemFailures { get; private set; }
+    [JsonPropertyName("batchItemFailures")]
+    public List<ItemFailureIdentifier> BatchItemFailures { get; private set; }
 
-        public void AddItem(string itemIdentifier) {
+    public void AddItem(string itemIdentifier)
+    {
+        BatchItemFailures ??= new List<ItemFailureIdentifier>();
 
-            BatchItemFailures ??= new List<ItemFailureIdentifier>();
+        if (BatchItemFailures.Any(i => i.ItemIdentifier == itemIdentifier))
+            return;
 
-            if (BatchItemFailures.Any(i => i.ItemIdentifier == itemIdentifier))
-                return;
+        BatchItemFailures.Add(new ItemFailureIdentifier(itemIdentifier));
+    }
 
-            BatchItemFailures.Add(new ItemFailureIdentifier(itemIdentifier));
-        }
+    public void AddItems(IEnumerable<string> itemsIdentifier)
+    {
+        if (itemsIdentifier == null)
+            return;
 
-        public void AddItems(IEnumerable<string> itemsIdentifier)
-        {
-            if (itemsIdentifier == null)
-                return;
-
-            foreach (string item in itemsIdentifier)
-            {
-                AddItem(item);
-            }            
-        }
+        foreach (var item in itemsIdentifier) AddItem(item);
     }
 }

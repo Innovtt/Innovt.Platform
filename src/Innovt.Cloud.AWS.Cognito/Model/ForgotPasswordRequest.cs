@@ -10,16 +10,15 @@ using Innovt.Core.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Innovt.Cloud.AWS.Cognito.Model
-{
-    public class ForgotPasswordRequest : RequestBase
-    {
-        [Required] public virtual string UserName { get; set; }
+namespace Innovt.Cloud.AWS.Cognito.Model;
 
-        public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            if (UserName.IsNullOrEmpty())
-                yield return new ValidationResult(Messages.UserNameIsRequired, new[] { nameof(UserName) });
-        }
+public class ForgotPasswordRequest : RequestBase
+{
+    [Required] public virtual string UserName { get; set; }
+
+    public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    {
+        if (UserName.IsNullOrEmpty())
+            yield return new ValidationResult(Messages.UserNameIsRequired, new[] { nameof(UserName) });
     }
 }

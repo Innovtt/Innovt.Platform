@@ -9,27 +9,26 @@ using Innovt.Contrib.Authorization.Platform.Infrastructure.IOC;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Innovt.Contrib.AuthorizationRoles.AspNetCore
+namespace Innovt.Contrib.AuthorizationRoles.AspNetCore;
+
+public static class SetupExtension
 {
-    public static class SetupExtension
+    public static void AddInnovtRolesAdminAuthorization(this IServiceCollection services)
     {
-        public static void AddInnovtRolesAdminAuthorization(this IServiceCollection services)
-        {
-            _ = new AuthorizationModule(services);
+        _ = new AuthorizationModule(services);
 
-            services.AddMvc().AddApplicationPart(typeof(UsersController).Assembly);
-        }
+        services.AddMvc().AddApplicationPart(typeof(UsersController).Assembly);
+    }
 
-        public static void AddInnovtRolesAuthorization(this IServiceCollection services)
-        {
-            _ = new AuthorizationModule(services);
+    public static void AddInnovtRolesAuthorization(this IServiceCollection services)
+    {
+        _ = new AuthorizationModule(services);
 
 
-            services.AddScoped<Innovt.Domain.Security.IAuthorizationRepository>(provider =>
-                provider.GetRequiredService<IAuthorizationRepository>()
-            );
+        services.AddScoped<Innovt.Domain.Security.IAuthorizationRepository>(provider =>
+            provider.GetRequiredService<IAuthorizationRepository>()
+        );
 
-            services.AddScoped<IAuthorizationHandler, RolesAuthorizationHandler>();
-        }
+        services.AddScoped<IAuthorizationHandler, RolesAuthorizationHandler>();
     }
 }

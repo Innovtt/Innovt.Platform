@@ -7,34 +7,33 @@ using Innovt.Core.Utilities;
 using Innovt.Domain.Core.Model;
 using System;
 
-namespace Innovt.Contrib.Authorization.Platform.Domain
+namespace Innovt.Contrib.Authorization.Platform.Domain;
+
+public class AdminUser : Entity<Guid>
 {
-    public class AdminUser : Entity<Guid>
+    public AdminUser()
     {
-        public AdminUser()
-        {
-            Id = Guid.NewGuid();
-            CreatedAt = DateTimeOffset.UtcNow;
-        }
+        Id = Guid.NewGuid();
+        CreatedAt = DateTimeOffset.UtcNow;
+    }
 
-        public string Name { get; set; }
+    public string Name { get; set; }
 
-        public string Email { get; set; }
+    public string Email { get; set; }
 
-        public string PasswordHash { get; set; }
+    public string PasswordHash { get; set; }
 
-        public DateTimeOffset LastAccess { get; set; }
+    public DateTimeOffset LastAccess { get; set; }
 
-        public bool IsEnabled { get; set; }
+    public bool IsEnabled { get; set; }
 
-        public bool IsPasswordValid(string password)
-        {
-            return PasswordHash == password.Md5Hash();
-        }
+    public bool IsPasswordValid(string password)
+    {
+        return PasswordHash == password.Md5Hash();
+    }
 
-        public void RegisterAccess()
-        {
-            LastAccess = DateTime.UtcNow;
-        }
+    public void RegisterAccess()
+    {
+        LastAccess = DateTime.UtcNow;
     }
 }

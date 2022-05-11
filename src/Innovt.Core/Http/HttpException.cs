@@ -8,21 +8,20 @@
 using Innovt.Core.Exceptions;
 using System;
 
-namespace Innovt.Core.Http
-{    
-    public class HttpException : BaseException
+namespace Innovt.Core.Http;
+
+public class HttpException : BaseException
+{
+    public HttpException(HttpRequestDetail detail)
     {
-        public HttpException(HttpRequestDetail detail)
-        {
-            RequestDetail = detail;
-        }
-
-        public HttpException(Exception requestException)
-        {
-            RequestException = requestException;
-        }
-
-        public Exception RequestException { get; }
-        public HttpRequestDetail RequestDetail { get; }
+        RequestDetail = detail;
     }
+
+    public HttpException(Exception requestException)
+    {
+        RequestException = requestException;
+    }
+
+    public Exception RequestException { get; }
+    public HttpRequestDetail RequestDetail { get; }
 }

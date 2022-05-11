@@ -10,34 +10,33 @@ using Innovt.Core.Utilities;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Innovt.Cloud.AWS.Cognito.Model
+namespace Innovt.Cloud.AWS.Cognito.Model;
+
+public class GetUserRequest : RequestBase
 {
-    public class GetUserRequest : RequestBase
+    public GetUserRequest()
     {
-        public GetUserRequest()
-        {
-            ExcludeExternalUser = true;
-        }
+        ExcludeExternalUser = true;
+    }
 
-        public GetUserRequest(string field, string value) : this()
-        {
-            Field = field;
-            Value = value;
-        }
+    public GetUserRequest(string field, string value) : this()
+    {
+        Field = field;
+        Value = value;
+    }
 
-        public string Field { get; set; }
+    public string Field { get; set; }
 
-        public string Value { get; set; }
+    public string Value { get; set; }
 
-        public bool ExcludeExternalUser { get; set; }
+    public bool ExcludeExternalUser { get; set; }
 
-        public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            if (Field.IsNullOrEmpty() && Value.IsNullOrEmpty())
-                yield return new ValidationResult(Messages.FieldFilterIsRequired, new[] { nameof(Field) });
+    public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    {
+        if (Field.IsNullOrEmpty() && Value.IsNullOrEmpty())
+            yield return new ValidationResult(Messages.FieldFilterIsRequired, new[] { nameof(Field) });
 
-            if (Value.IsNullOrEmpty())
-                yield return new ValidationResult(Messages.ValueFieldIsRequired, new[] { nameof(Value) });
-        }
+        if (Value.IsNullOrEmpty())
+            yield return new ValidationResult(Messages.ValueFieldIsRequired, new[] { nameof(Value) });
     }
 }

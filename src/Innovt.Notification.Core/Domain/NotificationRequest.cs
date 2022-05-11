@@ -9,36 +9,35 @@ using Innovt.Core.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Innovt.Notification.Core.Domain
+namespace Innovt.Notification.Core.Domain;
+
+public class NotificationRequest : IValidatableObject
 {
-    public class NotificationRequest : IValidatableObject
+    public NotificationRequest()
     {
-        public NotificationRequest()
-        {
-            To = new List<NotificationMessageContact>();
-        }
+        To = new List<NotificationMessageContact>();
+    }
 
-        public string TemplateId { get; set; }
+    public string TemplateId { get; set; }
 
-        public List<NotificationMessageContact> To { get; set; }
+    public List<NotificationMessageContact> To { get; set; }
 
-        public object PayLoad { get; set; }
+    public object PayLoad { get; set; }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            if (TemplateId.IsNullOrEmpty()) yield return new ValidationResult("TemplateId can't be null or empty.");
+    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    {
+        if (TemplateId.IsNullOrEmpty()) yield return new ValidationResult("TemplateId can't be null or empty.");
 
 
-            if (To.IsNullOrEmpty())
-                yield return new ValidationResult("The To can't be empty.");
-            else
-                foreach (var to in To)
-                {
-                    var items = to.Validate(validationContext);
+        if (To.IsNullOrEmpty())
+            yield return new ValidationResult("The To can't be empty.");
+        else
+            foreach (var to in To)
+            {
+                var items = to.Validate(validationContext);
 
-                    foreach (var item in items)
-                        yield return item;
-                }
-        }
+                foreach (var item in items)
+                    yield return item;
+            }
     }
 }

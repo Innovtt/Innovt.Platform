@@ -5,12 +5,11 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-namespace Innovt.Cloud.Queue
-{
-    public class MessageBatchRequest
-    {
-        public string Id { get; set; }
+namespace Innovt.Cloud.Queue;
 
-        public object Message { get; set; }
-    }
+public class MessageBatchRequest
+{
+    public string Id { get; set; }
+
+    public object Message { get; set; }
 }

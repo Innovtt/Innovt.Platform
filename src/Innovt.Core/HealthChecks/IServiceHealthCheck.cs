@@ -5,11 +5,10 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-namespace Innovt.Core.HealthChecks
+namespace Innovt.Core.HealthChecks;
+
+public interface IServiceHealthCheck
 {
-    public interface IServiceHealthCheck
-    {
-        string Name { get; set; }
-        bool Check();
-    }
+    string Name { get; set; }
+    bool Check();
 }

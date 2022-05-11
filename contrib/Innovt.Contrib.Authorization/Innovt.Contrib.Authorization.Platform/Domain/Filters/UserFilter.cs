@@ -8,25 +8,24 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Innovt.Contrib.Authorization.Platform.Domain.Filters
+namespace Innovt.Contrib.Authorization.Platform.Domain.Filters;
+
+public class UserFilter : IFilter
 {
-    public class UserFilter : IFilter
+    public UserFilter(string email)
     {
-        public UserFilter(string email)
-        {
-            Email = email ?? throw new ArgumentNullException(nameof(email));
-        }
+        Email = email ?? throw new ArgumentNullException(nameof(email));
+    }
 
-        public UserFilter()
-        {
-        }
+    public UserFilter()
+    {
+    }
 
-        public string Email { get; set; }
+    public string Email { get; set; }
 
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            throw new NotImplementedException();
-        }
+    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    {
+        throw new NotImplementedException();
     }
 }

@@ -9,25 +9,24 @@ using Innovt.Core.Cqrs.Queries;
 using Innovt.Core.Validation;
 using System;
 
-namespace Innovt.Cqrs.Queries.Decorators
+namespace Innovt.Cqrs.Queries.Decorators;
+
+public sealed class QueryValidationDecorator<TFilter, TResult> : IQueryHandler<TFilter, TResult>
+    where TFilter : IFilter where TResult : class
 {
-    public sealed class QueryValidationDecorator<TFilter, TResult> : IQueryHandler<TFilter, TResult>
-        where TFilter : IFilter where TResult : class
+    private readonly IQueryHandler<TFilter, TResult> queryHandler;
+
+    public QueryValidationDecorator(IQueryHandler<TFilter, TResult> queryHandler)
     {
-        private readonly IQueryHandler<TFilter, TResult> queryHandler;
+        this.queryHandler = queryHandler ?? throw new ArgumentNullException(nameof(queryHandler));
+    }
 
-        public QueryValidationDecorator(IQueryHandler<TFilter, TResult> queryHandler)
-        {
-            this.queryHandler = queryHandler ?? throw new ArgumentNullException(nameof(queryHandler));
-        }
+    public TResult Handle(TFilter filter)
+    {
+        if (filter == null) throw new ArgumentNullException(nameof(filter));
 
-        public TResult Handle(TFilter filter)
-        {
-            if (filter == null) throw new ArgumentNullException(nameof(filter));
+        filter.EnsureIsValid();
 
-            filter.EnsureIsValid();
-
-            return queryHandler.Handle(filter);
-        }
+        return queryHandler.Handle(filter);
     }
 }

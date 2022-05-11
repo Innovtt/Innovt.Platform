@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleAppTest.Domain
+namespace ConsoleAppTest.Domain;
+
+public class User
 {
-    public class User
-    {
-        public int Id { get; set; }
+    public int Id { get; set; }
 
-        public string Name { get; set; }
+    public string Name { get; set; }
 
-        public List<Contact> Contacts { get; set; }
-
-    }
+    public List<Contact> Contacts { get; set; }
 }

@@ -7,10 +7,9 @@
 
 using Innovt.Notification.Core.Domain;
 
-namespace Innovt.Notification.Core.Builders
+namespace Innovt.Notification.Core.Builders;
+
+public interface IMessageBuilder
 {
-    public interface IMessageBuilder
-    {
-        NotificationMessage Build(NotificationTemplate notificationTemplate, NotificationRequest request);
-    }
+    NotificationMessage Build(NotificationTemplate notificationTemplate, NotificationRequest request);
 }

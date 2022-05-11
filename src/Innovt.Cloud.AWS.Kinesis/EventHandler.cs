@@ -9,20 +9,17 @@ using Innovt.Cloud.AWS.Configuration;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Domain.Core.Events;
 
-namespace Innovt.Cloud.AWS.Kinesis
+namespace Innovt.Cloud.AWS.Kinesis;
+
+public class EventHandler : DataProducer<DomainEvent>, IEventHandler
 {
-    public class EventHandler : DataProducer<DomainEvent>, IEventHandler
+    public EventHandler(string busName, ILogger logger, IAwsConfiguration configuration) : base(busName, logger,
+        configuration)
     {
-        public EventHandler(string busName, ILogger logger, IAwsConfiguration configuration) : base(busName, logger,
-            configuration)
-        {
-        }
+    }
 
-        public EventHandler(string busName, ILogger logger, IAwsConfiguration configuration,
-            string region) : base(busName, logger, configuration, region)
-        {
-
-
-        }
+    public EventHandler(string busName, ILogger logger, IAwsConfiguration configuration,
+        string region) : base(busName, logger, configuration, region)
+    {
     }
 }

@@ -10,22 +10,21 @@ using Innovt.Domain.Tracking;
 using System;
 using System.Threading.Tasks;
 
-namespace Innovt.Data.EFCore.Repositories
+namespace Innovt.Data.EFCore.Repositories;
+
+public class RequestTrackingRepository : IRequestTrackingRepository
 {
-    public class RequestTrackingRepository : IRequestTrackingRepository
+    private readonly IExtendedUnitOfWork context;
+
+    public RequestTrackingRepository(IExtendedUnitOfWork context)
     {
-        private readonly IExtendedUnitOfWork context;
+        this.context = context ?? throw new ArgumentNullException(nameof(context));
+    }
 
-        public RequestTrackingRepository(IExtendedUnitOfWork context)
-        {
-            this.context = context ?? throw new ArgumentNullException(nameof(context));
-        }
+    public async Task AddTracking(RequestTracking tracking)
+    {
+        await context.AddAsync(tracking).ConfigureAwait(false);
 
-        public async Task AddTracking(RequestTracking tracking)
-        {
-            await context.AddAsync(tracking).ConfigureAwait(false);
-
-            await context.CommitAsync().ConfigureAwait(false);
-        }
+        await context.CommitAsync().ConfigureAwait(false);
     }
 }

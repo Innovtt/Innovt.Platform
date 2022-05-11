@@ -8,14 +8,13 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Innovt.Core.Attributes
+namespace Innovt.Core.Attributes;
+
+[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
+public sealed class RequiredNumberGreaterThanZeroAttribute : ValidationAttribute
 {
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
-    public sealed class RequiredNumberGreaterThanZeroAttribute : ValidationAttribute
+    public override bool IsValid(object value)
     {
-        public override bool IsValid(object value)
-        {
-            return value != null && int.TryParse(value.ToString(), out var i) && i > 0;
-        }
+        return value != null && int.TryParse(value.ToString(), out var i) && i > 0;
     }
 }

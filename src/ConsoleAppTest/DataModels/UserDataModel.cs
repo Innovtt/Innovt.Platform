@@ -4,13 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleAppTest.DataModels
-{
-    [DynamoDBTable("Users")]
-    public class UserDataModel:User
-    {
-        [DynamoDBProperty("Contacts")]
-        public new List<Contact> Contacts { get; set; }
+namespace ConsoleAppTest.DataModels;
 
-    }
+[DynamoDBTable("Users")]
+public class UserDataModel : User
+{
+    [DynamoDBProperty("Contacts")] public new List<Contact> Contacts { get; set; }
 }

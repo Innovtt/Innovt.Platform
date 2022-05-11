@@ -5,10 +5,9 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-namespace Innovt.Cloud.Table
+namespace Innovt.Cloud.Table;
+
+public interface ITableMessage
 {
-    public interface ITableMessage
-    {
-        string Id { get; set; }
-    }
+    string Id { get; set; }
 }

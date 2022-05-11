@@ -7,30 +7,29 @@
 
 using System.Globalization;
 
-namespace Innovt.AspNetCore.Model
+namespace Innovt.AspNetCore.Model;
+
+public class DefaultApiLocalization
 {
-    public class DefaultApiLocalization
+    public DefaultApiLocalization()
     {
-        public DefaultApiLocalization()
-        {
-            RequestCulture = new CultureInfo("pt-BR");
-            AddSupportedCulture("pt-br").AddSupportedCulture("en-US");
-        }
+        RequestCulture = new CultureInfo("pt-BR");
+        AddSupportedCulture("pt-br").AddSupportedCulture("en-US");
+    }
 
-        public IList<CultureInfo> SupportedCultures { get; private set; }
+    public IList<CultureInfo> SupportedCultures { get; private set; }
 
-        public Type DefaultLocalizeResource { get; set; }
-        public CultureInfo RequestCulture { get; set; }
+    public Type DefaultLocalizeResource { get; set; }
+    public CultureInfo RequestCulture { get; set; }
 
-        protected DefaultApiLocalization AddSupportedCulture(string name)
-        {
-            if (name == null) throw new ArgumentNullException(nameof(name));
+    protected DefaultApiLocalization AddSupportedCulture(string name)
+    {
+        if (name == null) throw new ArgumentNullException(nameof(name));
 
-            SupportedCultures ??= new List<CultureInfo>();
+        SupportedCultures ??= new List<CultureInfo>();
 
-            SupportedCultures.Add(CultureInfo.GetCultureInfo(name));
+        SupportedCultures.Add(CultureInfo.GetCultureInfo(name));
 
-            return this;
-        }
+        return this;
     }
 }

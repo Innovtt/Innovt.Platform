@@ -9,11 +9,10 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Innovt.Domain.Core.Events
+namespace Innovt.Domain.Core.Events;
+
+public interface IEventHandler
 {
-    public interface IEventHandler
-    {
-        Task Publish(DomainEvent domainEvent, CancellationToken cancellationToken = default);
-        Task Publish(IEnumerable<DomainEvent> domainEvents, CancellationToken cancellationToken = default);
-    }
+    Task Publish(DomainEvent domainEvent, CancellationToken cancellationToken = default);
+    Task Publish(IEnumerable<DomainEvent> domainEvents, CancellationToken cancellationToken = default);
 }

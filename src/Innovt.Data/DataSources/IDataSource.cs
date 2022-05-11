@@ -7,14 +7,13 @@
 
 using Innovt.Data.Model;
 
-namespace Innovt.Data.DataSources
+namespace Innovt.Data.DataSources;
+
+public interface IDataSource
 {
-    public interface IDataSource
-    {
-        string Name { get; set; }
+    string Name { get; set; }
 
-        Provider Provider { get; }
+    Provider Provider { get; }
 
-        string GetConnectionString();
-    }
+    string GetConnectionString();
 }

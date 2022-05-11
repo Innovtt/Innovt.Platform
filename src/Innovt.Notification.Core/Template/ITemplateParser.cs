@@ -5,10 +5,9 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-namespace Innovt.Notification.Core.Template
+namespace Innovt.Notification.Core.Template;
+
+public interface ITemplateParser
 {
-    public interface ITemplateParser
-    {
-        string Render(string content, object view);
-    }
+    string Render(string content, object view);
 }

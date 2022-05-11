@@ -1,7 +1,6 @@
-﻿namespace Innovt.Cloud.AWS.Lambda.Tests
+﻿namespace Innovt.Cloud.AWS.Lambda.Tests;
+
+public class Person
 {
-    public class Person
-    {
-        public string Name { get; set; }
-    }
+    public string Name { get; set; }
 }

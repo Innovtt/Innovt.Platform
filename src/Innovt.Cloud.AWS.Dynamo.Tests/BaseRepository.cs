@@ -15,9 +15,8 @@ using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Dynamo.Tests
 {
-
-    public class Result {
-
+    public class Result
+    {
         public int SEQUENCE { get; set; }
     }
 
@@ -31,11 +30,10 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
         public BaseRepository(ILogger logger, IAwsConfiguration configuration, string region) : base(logger,
             configuration, region)
         {
-                        
         }
 
-        public async Task<int> UpdateSequence() {
-
+        public async Task<int> UpdateSequence()
+        {
             //var keys = new Dictionary<string, AttributeValue>
             //    {
             //        {"PK", new AttributeValue("ORDER")},
@@ -54,18 +52,18 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
 
 
             var keys = new Dictionary<string, AttributeValue>
-                {
-                    {"PK", new AttributeValue("ORDER")},
-                    {"SK", new AttributeValue("SEQUENCE")}
-                };
+            {
+                { "PK", new AttributeValue("ORDER") },
+                { "SK", new AttributeValue("SEQUENCE") }
+            };
 
             var updateValues = new Dictionary<string, AttributeValueUpdate>
-                {
+            {
                 {
                     "SEQUENCE",
-                    new AttributeValueUpdate(new AttributeValue {N = "1" }, AttributeAction.ADD)
+                    new AttributeValueUpdate(new AttributeValue { N = "1" }, AttributeAction.ADD)
                 }
-                };
+            };
 
             try
             {
@@ -74,15 +72,13 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
                     AttributeUpdates = updateValues,
                     Key = keys,
                     TableName = "Anticipation",
-                    ReturnValues = ReturnValue.UPDATED_NEW,                    
+                    ReturnValues = ReturnValue.UPDATED_NEW
                 }, CancellationToken.None).ConfigureAwait(false);
             }
             catch (System.Exception ex)
             {
                 throw;
-            }          
-
-
+            }
 
 
             return 0;

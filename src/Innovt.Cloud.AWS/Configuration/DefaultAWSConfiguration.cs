@@ -12,113 +12,112 @@ using Innovt.Core.Utilities;
 using Microsoft.Extensions.Configuration;
 using System;
 
-namespace Innovt.Cloud.AWS.Configuration
+namespace Innovt.Cloud.AWS.Configuration;
+
+public class DefaultAWSConfiguration : IAwsConfiguration
 {
-    public class DefaultAWSConfiguration : IAwsConfiguration
+    private const string configSection = "AWS";
+
+
+    /// <summary>
+    ///     Using custom Profile
+    /// </summary>
+    /// <param name="profileName"></param>
+    /// <param name="roleArn"></param>
+    public DefaultAWSConfiguration(string profileName, string roleArn = null)
     {
-        private const string configSection = "AWS";
+        Profile = profileName ?? throw new ArgumentNullException(nameof(profileName));
+        RoleArn = roleArn;
+    }
 
+    public DefaultAWSConfiguration()
+    {
+    }
 
-        /// <summary>
-        ///     Using custom Profile
-        /// </summary>
-        /// <param name="profileName"></param>
-        /// <param name="roleArn"></param>
-        public DefaultAWSConfiguration(string profileName, string roleArn = null)
+    /// <summary>
+    ///     This Constructor will use the Autobind from GetSection.
+    /// </summary>
+    /// <param name="configuration">IConfiguration from .Net Core</param>
+    /// <param name="sectionName"> The default is AWS. </param>
+    public DefaultAWSConfiguration(Microsoft.Extensions.Configuration.IConfiguration configuration,
+        string sectionName = configSection)
+    {
+        Check.NotNull(configuration, nameof(configuration));
+
+        var section = configuration.GetSection(sectionName);
+
+        if (section == null || !section.Exists()) throw new CriticalException($"Section {sectionName} not Found!");
+
+        section.Bind(this);
+    }
+
+    public DefaultAWSConfiguration(string accessKey, string secretKey, string region, string accountNumber = null,
+        string sessionToken = null)
+    {
+        Check.NotNull(accessKey, nameof(accessKey));
+        Check.NotNull(secretKey, nameof(secretKey));
+        Check.NotNull(region, nameof(region));
+
+        AccountNumber = accountNumber;
+        AccessKey = accessKey;
+        SecretKey = secretKey;
+        Region = region;
+        SessionToken = sessionToken;
+    }
+
+    public string RoleArn { get; set; }
+    public string SessionToken { get; set; }
+    public string AccountNumber { get; set; }
+    public string SecretKey { get; set; }
+    public string AccessKey { get; set; }
+    public string Region { get; set; }
+    public string Profile { get; set; }
+
+    public AWSCredentials GetCredential()
+    {
+        AWSCredentials credentials = null;
+
+        if (Profile.IsNotNullOrEmpty())
         {
-            Profile = profileName ?? throw new ArgumentNullException(nameof(profileName));
-            RoleArn = roleArn;
+            credentials = GetCredentialsFromProfile();
         }
-
-        public DefaultAWSConfiguration()
+        else
         {
-        }
-
-        /// <summary>
-        ///     This Constructor will use the Autobind from GetSection.
-        /// </summary>
-        /// <param name="configuration">IConfiguration from .Net Core</param>
-        /// <param name="sectionName"> The default is AWS. </param>
-        public DefaultAWSConfiguration(Microsoft.Extensions.Configuration.IConfiguration configuration,
-            string sectionName = configSection)
-        {
-            Check.NotNull(configuration, nameof(configuration));
-
-            var section = configuration.GetSection(sectionName);
-
-            if (section == null || !section.Exists()) throw new CriticalException($"Section {sectionName} not Found!");
-
-            section.Bind(this);
-        }
-
-        public DefaultAWSConfiguration(string accessKey, string secretKey, string region, string accountNumber = null,
-            string sessionToken = null)
-        {
-            Check.NotNull(accessKey, nameof(accessKey));
-            Check.NotNull(secretKey, nameof(secretKey));
-            Check.NotNull(region, nameof(region));
-
-            AccountNumber = accountNumber;
-            AccessKey = accessKey;
-            SecretKey = secretKey;
-            Region = region;
-            SessionToken = sessionToken;
-        }
-
-        public string RoleArn { get; set; }
-        public string SessionToken { get; set; }
-        public string AccountNumber { get; set; }
-        public string SecretKey { get; set; }
-        public string AccessKey { get; set; }
-        public string Region { get; set; }
-        public string Profile { get; set; }
-
-        public AWSCredentials GetCredential()
-        {
-            AWSCredentials credentials = null;
-
-            if (Profile.IsNotNullOrEmpty())
+            if (AccessKey.IsNotNullOrEmpty() || SecretKey.IsNotNullOrEmpty())
             {
-                credentials = GetCredentialsFromProfile();
+                if (SessionToken.IsNullOrEmpty())
+                    credentials = new BasicAWSCredentials(AccessKey, SecretKey);
+                else
+                    credentials = new SessionAWSCredentials(AccessKey, SecretKey, SessionToken);
             }
-            else
-            {
-                if (AccessKey.IsNotNullOrEmpty() || SecretKey.IsNotNullOrEmpty())
-                {
-                    if (SessionToken.IsNullOrEmpty())
-                        credentials = new BasicAWSCredentials(AccessKey, SecretKey);
-                    else
-                        credentials = new SessionAWSCredentials(AccessKey, SecretKey, SessionToken);
-                }
-            }
+        }
 
-            if (RoleArn.IsNotNullOrEmpty()) credentials = AssumeRole(credentials);
+        if (RoleArn.IsNotNullOrEmpty()) credentials = AssumeRole(credentials);
 
+        return credentials;
+    }
+
+    private AWSCredentials GetCredentialsFromProfile()
+    {
+        var sharedProfile = new SharedCredentialsFile();
+
+        var profile = sharedProfile.ListProfiles()
+            .Find(p => p.Name.Equals(Profile, StringComparison.OrdinalIgnoreCase));
+
+        if (profile == null)
+            throw new ConfigurationException($"Profile {Profile} not found.");
+
+        if (Region == null && profile.Region != null)
+            Region = profile.Region.SystemName;
+
+        return AWSCredentialsFactory.GetAWSCredentials(profile, sharedProfile);
+    }
+
+    private AWSCredentials AssumeRole(AWSCredentials credentials)
+    {
+        if (credentials is null || RoleArn.IsNullOrEmpty())
             return credentials;
-        }
 
-        private AWSCredentials GetCredentialsFromProfile()
-        {
-            var sharedProfile = new SharedCredentialsFile();
-
-            var profile = sharedProfile.ListProfiles()
-                .Find(p => p.Name.Equals(Profile, StringComparison.OrdinalIgnoreCase));
-
-            if (profile == null)
-                throw new ConfigurationException($"Profile {Profile} not found.");
-
-            if (Region == null && profile.Region != null)
-                Region = profile.Region.SystemName;
-
-            return AWSCredentialsFactory.GetAWSCredentials(profile, sharedProfile);
-        }
-
-        private AWSCredentials AssumeRole(AWSCredentials credentials)
-        {
-            if (credentials is null || RoleArn.IsNullOrEmpty())
-                return credentials;
-
-            return new AssumeRoleAWSCredentials(credentials, RoleArn, "InnovtRoleSession");
-        }
+        return new AssumeRoleAWSCredentials(credentials, RoleArn, "InnovtRoleSession");
     }
 }

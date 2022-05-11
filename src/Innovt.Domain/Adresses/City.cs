@@ -7,14 +7,13 @@
 
 using Innovt.Domain.Core.Model;
 
-namespace Innovt.Domain.Adresses
+namespace Innovt.Domain.Adresses;
+
+public class City : ValueObject
 {
-    public class City : ValueObject
-    {
-        public string Name { get; set; }
+    public string Name { get; set; }
 
-        public int StateId { get; set; }
+    public int StateId { get; set; }
 
-        public virtual State State { get; set; }
-    }
+    public virtual State State { get; set; }
 }

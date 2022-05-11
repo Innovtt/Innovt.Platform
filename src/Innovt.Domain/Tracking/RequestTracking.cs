@@ -8,27 +8,26 @@
 using Innovt.Domain.Core.Model;
 using System;
 
-namespace Innovt.Domain.Tracking
+namespace Innovt.Domain.Tracking;
+
+public class RequestTracking : ValueObject<Guid>
 {
-    public class RequestTracking : ValueObject<Guid>
+    public RequestTracking()
     {
-        public RequestTracking()
-        {
-            Id = Guid.NewGuid();
-        }
-
-        public string UserId { get; set; }
-
-        public string Area { get; set; }
-
-        public string Controller { get; set; }
-
-        public string Action { get; set; }
-
-        public string Verb { get; set; }
-
-        public string Host { get; set; }
-
-        public int? ResponseStatusCode { get; set; }
+        Id = Guid.NewGuid();
     }
+
+    public string UserId { get; set; }
+
+    public string Area { get; set; }
+
+    public string Controller { get; set; }
+
+    public string Action { get; set; }
+
+    public string Verb { get; set; }
+
+    public string Host { get; set; }
+
+    public int? ResponseStatusCode { get; set; }
 }

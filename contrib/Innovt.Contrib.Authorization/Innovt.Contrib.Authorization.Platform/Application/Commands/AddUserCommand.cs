@@ -9,37 +9,27 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace Innovt.Contrib.Authorization.Platform.Application.Commands
+namespace Innovt.Contrib.Authorization.Platform.Application.Commands;
+
+public class AddUserCommand : ICommand
 {
-    public class AddUserCommand : ICommand
+    [Required] public string Id { get; set; }
+
+    [Required] public string DomainId { get; set; }
+
+    public IList<AddRoleCommand> Roles { get; set; }
+
+    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
-        [Required] public string Id { get; set; }
+        if (Id.IsNullOrEmpty()) yield return new ValidationResult("Id is required.");
 
-        [Required] public string DomainId { get; set; }
+        if (DomainId.IsNullOrEmpty()) yield return new ValidationResult("DomainId is required.");
 
-        public IList<AddRoleCommand> Roles { get; set; }
-
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        if (Roles.IsNotNullOrEmpty())
         {
-            if (Id.IsNullOrEmpty())
-            {
-                yield return new ValidationResult("Id is required.");
-            }
+            var errors = Roles.SelectMany(r => r.Validate(validationContext));
 
-            if (DomainId.IsNullOrEmpty())
-            {
-                yield return new ValidationResult("DomainId is required.");
-            }
-
-            if (Roles.IsNotNullOrEmpty())
-            {
-                var errors = Roles.SelectMany(r => r.Validate(validationContext));
-
-                foreach (var error in errors)
-                {
-                    yield return error;
-                }
-            }
+            foreach (var error in errors) yield return error;
         }
     }
 }

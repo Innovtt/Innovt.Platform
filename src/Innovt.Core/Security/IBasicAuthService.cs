@@ -7,10 +7,9 @@
 
 using System.Threading.Tasks;
 
-namespace Innovt.Core.Security
+namespace Innovt.Core.Security;
+
+public interface IBasicAuthService
 {
-    public interface IBasicAuthService
-    {
-        Task<bool> Authenticate(string userName, string password);
-    }
+    Task<bool> Authenticate(string userName, string password);
 }

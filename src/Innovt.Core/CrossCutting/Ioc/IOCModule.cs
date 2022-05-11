@@ -7,20 +7,19 @@
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Innovt.Core.CrossCutting.Ioc
+namespace Innovt.Core.CrossCutting.Ioc;
+
+public class IOCModule
 {
-    public class IOCModule
+    private readonly IServiceCollection services;
+
+    public IOCModule()
     {
-        private readonly IServiceCollection services;
+        services = new ServiceCollection();
+    }
 
-        public IOCModule()
-        {
-            services = new ServiceCollection();
-        }
-
-        public IServiceCollection GetServices()
-        {
-            return services;
-        }
+    public IServiceCollection GetServices()
+    {
+        return services;
     }
 }

@@ -7,10 +7,9 @@
 
 using Innovt.Notification.Core.Domain;
 
-namespace Innovt.Notification.Core
+namespace Innovt.Notification.Core;
+
+public interface INotificationHandleFactory
 {
-    public interface INotificationHandleFactory
-    {
-        INotificationHandler Create(NotificationMessageType notificationMessageType);
-    }
+    INotificationHandler Create(NotificationMessageType notificationMessageType);
 }

@@ -7,16 +7,15 @@
 
 using System.ComponentModel.DataAnnotations;
 
-namespace Innovt.Core.Cqrs.Queries
+namespace Innovt.Core.Cqrs.Queries;
+
+public interface IFilter : IValidatableObject
 {
-    public interface IFilter : IValidatableObject
-    {
-    }
+}
 
-    public interface IPagedFilter : IFilter
-    {
-        int Page { get; set; }
+public interface IPagedFilter : IFilter
+{
+    int Page { get; set; }
 
-        int PageSize { get; set; }
-    }
+    int PageSize { get; set; }
 }

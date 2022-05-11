@@ -8,20 +8,19 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Innovt.Contrib.Authorization.Platform.Domain.Filters
+namespace Innovt.Contrib.Authorization.Platform.Domain.Filters;
+
+public class UserByIdFilter : IFilter
 {
-    public class UserByIdFilter : IFilter
+    public UserByIdFilter(string id)
     {
-        public UserByIdFilter(string id)
-        {
-            Id = id ?? throw new ArgumentNullException(nameof(id));
-        }
+        Id = id ?? throw new ArgumentNullException(nameof(id));
+    }
 
-        public string Id { get; set; }
+    public string Id { get; set; }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            return new List<ValidationResult>();
-        }
+    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    {
+        return new List<ValidationResult>();
     }
 }

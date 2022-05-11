@@ -8,26 +8,18 @@ using Innovt.Core.Utilities;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Innovt.Contrib.Authorization.Platform.Application.Commands
+namespace Innovt.Contrib.Authorization.Platform.Application.Commands;
+
+public class AddRoleCommand : ICommand
 {
-    public class AddRoleCommand : ICommand
+    [Required] public string RoleName { get; set; }
+
+    [Required] public string Scope { get; set; }
+
+    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
-        [Required]
-        public string RoleName { get; set; }
+        if (Scope.IsNullOrEmpty()) yield return new ValidationResult("Scope is required.");
 
-        [Required] public string Scope { get; set; }
-
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            if (Scope.IsNullOrEmpty())
-            {
-                yield return new ValidationResult("Scope is required.");
-            }
-
-            if (RoleName.IsNullOrEmpty())
-            {
-                yield return new ValidationResult("RoleName is required.");
-            }
-        }
+        if (RoleName.IsNullOrEmpty()) yield return new ValidationResult("RoleName is required.");
     }
 }

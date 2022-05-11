@@ -5,9 +5,9 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-namespace Innovt.Domain.Core.Service
-{
-    // public interface IDomainService
-    // {
-    // }
-}
+namespace Innovt.Domain.Core.Service;
+
+
+// public interface IDomainService
+// {
+// }

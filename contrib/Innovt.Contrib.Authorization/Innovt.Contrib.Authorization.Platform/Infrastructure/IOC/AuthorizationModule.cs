@@ -13,18 +13,17 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 
-namespace Innovt.Contrib.Authorization.Platform.Infrastructure.IOC
-{
-    public class AuthorizationModule : IOCModule
-    {
-        public AuthorizationModule(IServiceCollection services)
-        {
-            if (services == null) throw new ArgumentNullException(nameof(services));
+namespace Innovt.Contrib.Authorization.Platform.Infrastructure.IOC;
 
-            services.AddScoped<IAuthorizationAppService, AuthorizationAppService>();
-            services.AddScoped<IAuthorizationRepository, AuthorizationRepository>();
-            services.TryAddScoped<IAwsConfiguration, DefaultAWSConfiguration>();
-            services.TryAddScoped<ILogger, Logger>();
-        }
+public class AuthorizationModule : IOCModule
+{
+    public AuthorizationModule(IServiceCollection services)
+    {
+        if (services == null) throw new ArgumentNullException(nameof(services));
+
+        services.AddScoped<IAuthorizationAppService, AuthorizationAppService>();
+        services.AddScoped<IAuthorizationRepository, AuthorizationRepository>();
+        services.TryAddScoped<IAwsConfiguration, DefaultAWSConfiguration>();
+        services.TryAddScoped<ILogger, Logger>();
     }
 }

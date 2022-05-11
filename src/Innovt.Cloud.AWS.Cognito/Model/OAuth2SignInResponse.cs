@@ -7,20 +7,19 @@
 
 using System.Text.Json.Serialization;
 
-namespace Innovt.Cloud.AWS.Cognito.Model
+namespace Innovt.Cloud.AWS.Cognito.Model;
+
+public class OAuth2SignInResponse : SignInResponse
 {
-    public class OAuth2SignInResponse : SignInResponse
-    {
-        [JsonPropertyName("error")] public string Error { get; set; }
+    [JsonPropertyName("error")] public string Error { get; set; }
 
-        public bool NeedRegister { get; set; }
+    public bool NeedRegister { get; set; }
 
-        public string FirstName { get; set; }
+    public string FirstName { get; set; }
 
-        public string LastName { get; set; }
+    public string LastName { get; set; }
 
-        public string Picture { get; set; }
+    public string Picture { get; set; }
 
-        public string Email { get; set; }
-    }
+    public string Email { get; set; }
 }

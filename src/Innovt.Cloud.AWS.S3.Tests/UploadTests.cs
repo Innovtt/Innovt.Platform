@@ -2,66 +2,60 @@ using Innovt.Cloud.File;
 using Innovt.CrossCutting.Log.Serilog;
 using NUnit.Framework;
 
-namespace Innovt.Cloud.AWS.S3.Tests
+namespace Innovt.Cloud.AWS.S3.Tests;
+
+public class Tests
 {
-    public class Tests
+    [SetUp]
+    public void Setup()
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
+    }
 
-        [Test]
-        public async Task UploadWithStandardStorage()
-        {
-            const string bucketName = "datalake-raw-antecipa-v2";
+    [Test]
+    public async Task UploadWithStandardStorage()
+    {
+        const string bucketName = "datalake-raw-antecipa-v2";
 
-            var logger = new Logger();
-            var configuration = new Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration("antecipa-data");
+        var logger = new Logger();
+        var configuration = new Configuration.DefaultAWSConfiguration("antecipa-data");
 
-            IFileSystem fileSystem = new S3FileSystem(logger, configuration);
+        IFileSystem fileSystem = new S3FileSystem(logger, configuration);
 
-            //var fileName = $"antecipa/v1/samplemichel.json".ToLower();
-            var fileName = $"antecipa/v1/user/107532f24b15ca16ab4a7057d0be7ca9s.json".ToLower();
+        //var fileName = $"antecipa/v1/samplemichel.json".ToLower();
+        var fileName = $"antecipa/v1/user/107532f24b15ca16ab4a7057d0be7ca9s.json".ToLower();
 
-            //107532f24b15ca16ab4a7057d0be7ca9.json
+        //107532f24b15ca16ab4a7057d0be7ca9.json
 
-            var exist = await fileSystem.FileExistsAsync(bucketName, fileName);
+        var exist = await fileSystem.FileExistsAsync(bucketName, fileName);
 
-            var content = "sample storage class".ToString();
+        var content = "sample storage class".ToString();
 
-            using var ms = new MemoryStream();
-            using var sw = new StreamWriter(ms);
-            sw.Write(content);
-            sw.Flush();
-            fileSystem.Upload(bucketName, ms, fileName, serverSideEncryptionMethod: "AES256");
-        }
+        using var ms = new MemoryStream();
+        using var sw = new StreamWriter(ms);
+        sw.Write(content);
+        sw.Flush();
+        fileSystem.Upload(bucketName, ms, fileName, serverSideEncryptionMethod: "AES256");
+    }
 
 
+    [Test]
+    public async Task UploadAsJson()
+    {
+        const string bucketName = "processed-tests";
 
+        var logger = new Logger();
+        var configuration = new Configuration.DefaultAWSConfiguration("antecipa-dev");
 
+        //var fileName = $"antecipa/v1/samplemichel.json".ToLower();
+        var fileName = $"userMichelDto.json".ToLower();
 
-        [Test]
-        public async Task UploadAsJson()
-        {
-            const string bucketName = "processed-tests";
+        //107532f24b15ca16ab4a7057d0be7ca9.json
+        var dto = new UserDto() { Name = "michel", LastName = "Borges" };
 
-            var logger = new Logger();
-            var configuration = new Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration("antecipa-dev");
+        IFileSystem fileSystem = new S3FileSystem(logger, configuration);
 
-            //var fileName = $"antecipa/v1/samplemichel.json".ToLower();
-            var fileName = $"userMichelDto.json".ToLower();
+        var url = await fileSystem.UploadAsJsonAsync<UserDto>(bucketName, dto, fileName);
 
-            //107532f24b15ca16ab4a7057d0be7ca9.json
-            var dto = new UserDto() { Name = "michel", LastName = "Borges" };
-
-            IFileSystem fileSystem = new S3FileSystem(logger, configuration);
-
-            var url = await fileSystem.UploadAsJsonAsync<UserDto>(bucketName, dto, fileName);
-
-            var expected = fileSystem.GetObjectFromJson<UserDto>(new Uri(url));
-
-
-        }
+        var expected = fileSystem.GetObjectFromJson<UserDto>(new Uri(url));
     }
 }

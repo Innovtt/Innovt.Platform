@@ -16,120 +16,117 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Innovt.Cloud.AWS.Lambda.Sqs
+namespace Innovt.Cloud.AWS.Lambda.Sqs;
+
+/// <summary>
+/// If you're using this feature with a FIFO queue, your function should stop processing messages after the first failure and return all failed and unprocessed messages in batchItemFailures. This helps preserve the ordering of messages in your queue.
+/// </summary>
+/// <typeparam name="TBody"></typeparam>
+public abstract class SqsEventProcessor<TBody> : EventProcessor<SQSEvent, BatchFailureResponse> where TBody : class
 {
-    /// <summary>
-    /// If you're using this feature with a FIFO queue, your function should stop processing messages after the first failure and return all failed and unprocessed messages in batchItemFailures. This helps preserve the ordering of messages in your queue.
-    /// </summary>
-    /// <typeparam name="TBody"></typeparam>
-    public abstract class SqsEventProcessor<TBody> : EventProcessor<SQSEvent, BatchFailureResponse> where TBody : class
+    private ISerializer serializer;
+    private readonly bool isFifo;
+    protected bool ReportBatchFailures { get; set; }
+
+    protected SqsEventProcessor(bool isFifo = false, bool reportBatchFailures = false)
     {
-        private ISerializer serializer;
-        private readonly bool isFifo;
-        protected bool ReportBatchFailures { get; set; }
+        this.isFifo = isFifo;
+        ReportBatchFailures = reportBatchFailures;
+    }
 
-        protected SqsEventProcessor(bool isFifo = false, bool reportBatchFailures = false)
-        {
-            this.isFifo = isFifo;
-            this.ReportBatchFailures = reportBatchFailures;
-        }
+    protected SqsEventProcessor(ILogger logger, bool isFifo = false, bool reportBatchFailures = false) : base(logger)
+    {
+        this.isFifo = isFifo;
+        ReportBatchFailures = reportBatchFailures;
+    }
 
-        protected SqsEventProcessor(ILogger logger, bool isFifo = false,bool reportBatchFailures = false) : base(logger)
-        {
-            this.isFifo = isFifo;
-            this.ReportBatchFailures = reportBatchFailures;
-        }
+    protected SqsEventProcessor(ILogger logger, ISerializer serializer, bool isFifo = false,
+        bool reportBatchFailures = false) : this(logger, isFifo, reportBatchFailures)
+    {
+        Serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
+    }
 
-        protected SqsEventProcessor(ILogger logger, ISerializer serializer, bool isFifo = false, bool reportBatchFailures = false) : this(logger, isFifo, reportBatchFailures)
-        {
-            this.Serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));            
-        }
+    private ISerializer Serializer
+    {
+        get { return serializer ??= new JsonSerializer(); }
 
-        private ISerializer Serializer
-        {
-            get { return serializer ??= new JsonSerializer(); }
+        set => serializer = value;
+    }
 
-            set => serializer = value;
-        }
+    protected override async Task<BatchFailureResponse> Handle(SQSEvent message, ILambdaContext context)
+    {
+        Logger.Info($"Processing Sqs event With {message?.Records?.Count} records.");
 
-        protected override async Task<BatchFailureResponse> Handle(SQSEvent message, ILambdaContext context)
-        {
-            Logger.Info($"Processing Sqs event With {message?.Records?.Count} records.");
+        using var watcher = new StopWatchHelper(Logger, nameof(Handle));
 
-            using var watcher = new StopWatchHelper(Logger, nameof(Handle));
+        var response = new BatchFailureResponse();
 
-            var response = new BatchFailureResponse();
+        if (message?.Records == null || message.Records.Count == 0) return response;
 
-            if (message?.Records == null || message.Records.Count == 0) return response;
+        using var activity = EventProcessorActivitySource.StartActivity(nameof(Handle));
+        activity?.SetTag("SqsMessageRecordsCount", message?.Records?.Count);
 
-            using var activity = EventProcessorActivitySource.StartActivity(nameof(Handle));
-            activity?.SetTag("SqsMessageRecordsCount", message?.Records?.Count);
+        var processedMessages = new List<string>();
 
-            var processedMessages = new List<string>();
-
-            foreach (var record in message.Records)
+        foreach (var record in message.Records)
+            try
             {
-                try
+                Logger.Info($"Processing SQS Event message ID {record.MessageId}.");
+
+                var queueMessage = new QueueMessage<TBody>
                 {
-                    Logger.Info($"Processing SQS Event message ID {record.MessageId}.");
+                    MessageId = record.MessageId,
+                    ReceiptHandle = record.ReceiptHandle,
+                    Attributes = record.Attributes,
+                    Body = Serializer.DeserializeObject<TBody>(record.Body)
+                };
 
-                    var queueMessage = new QueueMessage<TBody>
-                    {
-                        MessageId = record.MessageId,
-                        ReceiptHandle = record.ReceiptHandle,
-                        Attributes = record.Attributes,
-                        Body = Serializer.DeserializeObject<TBody>(record.Body)
-                    };
-
-                    if (record.Attributes is not null)
-                    {
-                        queueMessage.ParseQueueAttributes(record.Attributes);
-
-                        record.Attributes.TryGetValue("TraceId", out var traceId);
-
-                        if (traceId is not null)
-                        {
-                            activity?.SetParentId(traceId);
-                        }
-                    }
-
-                    activity?.SetTag("SqsMessageId", queueMessage.MessageId);
-                    activity?.SetTag("SqsMessageApproximateFirstReceiveTimestamp", queueMessage.ApproximateFirstReceiveTimestamp);
-                    activity?.SetTag("SqsMessageApproximateReceiveCount", queueMessage.ApproximateReceiveCount);
-                    activity?.AddBaggage("Message.ElapsedTimeBeforeAttendedInMilliseconds", $"{queueMessage.ApproximateFirstReceiveTimestamp.GetValueOrDefault()}");
-
-                    await ProcessMessage(queueMessage).ConfigureAwait(false);
-
-                    processedMessages.Add(record.MessageId);
-
-                    Logger.Info($"SQS Event message ID {record.MessageId} Processed.");
-                }
-                catch(Exception ex)
+                if (record.Attributes is not null)
                 {
-                    if (!ReportBatchFailures)
-                        throw;
+                    queueMessage.ParseQueueAttributes(record.Attributes);
 
-                    Logger.Warning($"SQS Event message ID {record.MessageId} will be returned as item failure.");
-                    Logger.Error(ex,$"Exception for message ID {record.MessageId}.");
+                    record.Attributes.TryGetValue("TraceId", out var traceId);
 
-                    if (isFifo)
-                    {
-                        response.AddItems(GetRemainingMessages(message, processedMessages));
-                        break;
-                    }
-
-                    response.AddItem(record.MessageId);
+                    if (traceId is not null) activity?.SetParentId(traceId);
                 }
+
+                activity?.SetTag("SqsMessageId", queueMessage.MessageId);
+                activity?.SetTag("SqsMessageApproximateFirstReceiveTimestamp",
+                    queueMessage.ApproximateFirstReceiveTimestamp);
+                activity?.SetTag("SqsMessageApproximateReceiveCount", queueMessage.ApproximateReceiveCount);
+                activity?.AddBaggage("Message.ElapsedTimeBeforeAttendedInMilliseconds",
+                    $"{queueMessage.ApproximateFirstReceiveTimestamp.GetValueOrDefault()}");
+
+                await ProcessMessage(queueMessage).ConfigureAwait(false);
+
+                processedMessages.Add(record.MessageId);
+
+                Logger.Info($"SQS Event message ID {record.MessageId} Processed.");
+            }
+            catch (Exception ex)
+            {
+                if (!ReportBatchFailures)
+                    throw;
+
+                Logger.Warning($"SQS Event message ID {record.MessageId} will be returned as item failure.");
+                Logger.Error(ex, $"Exception for message ID {record.MessageId}.");
+
+                if (isFifo)
+                {
+                    response.AddItems(GetRemainingMessages(message, processedMessages));
+                    break;
+                }
+
+                response.AddItem(record.MessageId);
             }
 
-            return response;
-        }
-
-        private static IEnumerable<string> GetRemainingMessages(SQSEvent message, IList<string> processedMessages)
-        {
-            return message.Records.Where(r => !processedMessages.Contains(r.MessageId)).Distinct().Select(r => r.MessageId);
-        }
-
-        protected abstract Task ProcessMessage(QueueMessage<TBody> message);
+        return response;
     }
+
+    private static IEnumerable<string> GetRemainingMessages(SQSEvent message, IList<string> processedMessages)
+    {
+        return message.Records.Where(r => !processedMessages.Contains(r.MessageId)).Distinct().Select(r => r.MessageId);
+    }
+
+    protected abstract Task ProcessMessage(QueueMessage<TBody> message);
 }

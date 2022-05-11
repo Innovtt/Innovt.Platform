@@ -10,28 +10,27 @@ using Innovt.Core.Utilities;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Innovt.Cloud.AWS.Cognito.Model
+namespace Innovt.Cloud.AWS.Cognito.Model;
+
+public class RespondToAuthChallengeRequest : RequestBase
 {
-    public class RespondToAuthChallengeRequest : RequestBase
+    [Required] public virtual string UserName { get; set; }
+    [Required] public virtual string Session { get; set; }
+    [Required] public virtual string ChallengeName { get; set; }
+
+    public virtual string ConfirmationCode { get; set; }
+
+    public virtual string Password { get; set; }
+
+    public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
-        [Required] public virtual string UserName { get; set; }
-        [Required] public virtual string Session { get; set; }
-        [Required] public virtual string ChallengeName { get; set; }
+        if (UserName.IsNullOrEmpty())
+            yield return new ValidationResult(Messages.UserNameIsRequired, new[] { nameof(UserName) });
 
-        public virtual string ConfirmationCode { get; set; }
+        if (ChallengeName.IsNullOrEmpty())
+            yield return new ValidationResult(Messages.ChallengeNameIsRequired, new[] { nameof(ChallengeName) });
 
-        public virtual string Password { get; set; }
-
-        public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            if (UserName.IsNullOrEmpty())
-                yield return new ValidationResult(Messages.UserNameIsRequired, new[] { nameof(UserName) });
-
-            if (ChallengeName.IsNullOrEmpty())
-                yield return new ValidationResult(Messages.ChallengeNameIsRequired, new[] { nameof(ChallengeName) });
-
-            if (Session.IsNullOrEmpty())
-                yield return new ValidationResult(Messages.InvalidChallengeSession, new[] { nameof(Session) });
-        }
+        if (Session.IsNullOrEmpty())
+            yield return new ValidationResult(Messages.InvalidChallengeSession, new[] { nameof(Session) });
     }
 }

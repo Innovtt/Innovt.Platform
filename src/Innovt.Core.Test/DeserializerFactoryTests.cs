@@ -10,83 +10,82 @@ using Innovt.Core.Test.Models;
 using NUnit.Framework;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
-namespace Innovt.Core.Test
+namespace Innovt.Core.Test;
+
+public class DeserializerFactoryTests
 {
-    public class DeserializerFactoryTests
+    [Test]
+    public void InstanceShouldNotReturnNUll()
     {
-        [Test]
-        public void InstanceShouldNotReturnNUll()
-        {
-            var instance = DeserializerFactory.Instance;
+        var instance = DeserializerFactory.Instance;
 
-            Assert.IsNotNull(instance);
-        }
+        Assert.IsNotNull(instance);
+    }
 
-        [Test]
-        public void InstanceShouldBeTheSameAfterManyCalls()
-        {
-            var instanceA = DeserializerFactory.Instance;
+    [Test]
+    public void InstanceShouldBeTheSameAfterManyCalls()
+    {
+        var instanceA = DeserializerFactory.Instance;
 
-            var instanceB = DeserializerFactory.Instance;
+        var instanceB = DeserializerFactory.Instance;
 
-            Assert.IsNotNull(instanceA);
-            Assert.IsNotNull(instanceB);
+        Assert.IsNotNull(instanceA);
+        Assert.IsNotNull(instanceB);
 
-            Assert.AreEqual(instanceA, instanceB);
-        }
+        Assert.AreEqual(instanceA, instanceB);
+    }
 
-        [Test]
-        public void DeserializeShouldReturnNullIfContentIsNullOrEmpty()
-        {
-            var result = DeserializerFactory.Instance.Deserialize("A", null);
+    [Test]
+    public void DeserializeShouldReturnNullIfContentIsNullOrEmpty()
+    {
+        var result = DeserializerFactory.Instance.Deserialize("A", null);
 
-            Assert.IsNull(result);
+        Assert.IsNull(result);
 
-            result = DeserializerFactory.Instance.Deserialize("A", "");
+        result = DeserializerFactory.Instance.Deserialize("A", "");
 
-            Assert.IsNull(result);
-        }
+        Assert.IsNull(result);
+    }
 
 
-        [Test]
-        public void DeserializeShouldReturnNullWhenHasNoMapping()
-        {
-            var result = DeserializerFactory.Instance.Deserialize("A", "");
+    [Test]
+    public void DeserializeShouldReturnNullWhenHasNoMapping()
+    {
+        var result = DeserializerFactory.Instance.Deserialize("A", "");
 
-            Assert.IsNull(result);
+        Assert.IsNull(result);
 
-            //new mapping
-            DeserializerFactory.Instance.AddMapping<A>("A");
+        //new mapping
+        DeserializerFactory.Instance.AddMapping<A>("A");
 
-            var result2 = DeserializerFactory.Instance.Deserialize("B", "B");
+        var result2 = DeserializerFactory.Instance.Deserialize("B", "B");
 
-            Assert.IsNull(result2);
-        }
+        Assert.IsNull(result2);
+    }
 
 
-        [Test]
-        public void Deserialize()
-        {
-            //first check without mapping
-            DeserializerFactory.Instance.AddMapping<A>("A").AddMapping<B>();
+    [Test]
+    public void Deserialize()
+    {
+        //first check without mapping
+        DeserializerFactory.Instance.AddMapping<A>("A").AddMapping<B>();
 
-            var a = new A { Age = 10, LastName = "Borges", Name = "Michel" };
-            var aJsonContent = JsonSerializer.Serialize(a);
+        var a = new A { Age = 10, LastName = "Borges", Name = "Michel" };
+        var aJsonContent = JsonSerializer.Serialize(a);
 
-            //With Key 
-            var resultA = DeserializerFactory.Instance.Deserialize("A", aJsonContent);
+        //With Key 
+        var resultA = DeserializerFactory.Instance.Deserialize("A", aJsonContent);
 
-            Assert.IsNotNull(resultA);
-            Assert.IsNotNull(resultA as A);
+        Assert.IsNotNull(resultA);
+        Assert.IsNotNull(resultA as A);
 
-            var b = new B { Document = "12312", Id = Guid.Empty, Role = "Admin" };
-            var bJsonContent = JsonSerializer.Serialize(b);
+        var b = new B { Document = "12312", Id = Guid.Empty, Role = "Admin" };
+        var bJsonContent = JsonSerializer.Serialize(b);
 
-            //With Key 
-            var resultB = DeserializerFactory.Instance.Deserialize(typeof(B).FullName, bJsonContent);
+        //With Key 
+        var resultB = DeserializerFactory.Instance.Deserialize(typeof(B).FullName, bJsonContent);
 
-            Assert.IsNotNull(resultB);
-            Assert.IsNotNull(resultB as B);
-        }
+        Assert.IsNotNull(resultB);
+        Assert.IsNotNull(resultB as B);
     }
 }

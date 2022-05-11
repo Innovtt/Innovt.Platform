@@ -10,54 +10,53 @@ using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
 
-namespace Innovt.AspNetCore.Filters
+namespace Innovt.AspNetCore.Filters;
+
+public class SwaggerExcludeFilter : ISchemaFilter, IOperationFilter
 {
-    public class SwaggerExcludeFilter : ISchemaFilter, IOperationFilter
+    public void Apply(OpenApiOperation operation, OperationFilterContext context)
     {
-        public void Apply(OpenApiOperation operation, OperationFilterContext context)
+        if (operation == null) throw new ArgumentNullException(nameof(operation));
+        if (context == null) throw new ArgumentNullException(nameof(context));
+
+        var ignoredProperties = context.MethodInfo.GetCustomAttributes<ModelExcludeFilterAttribute>(true)
+            .SelectMany(a => a.ExcludeAttributes).ToList();
+
+        if (!ignoredProperties.Any()) return;
+
+
+        foreach (var prop in ignoredProperties)
         {
-            if (operation == null) throw new ArgumentNullException(nameof(operation));
-            if (context == null) throw new ArgumentNullException(nameof(context));
+            var schemaProp = operation.Parameters
+                .SingleOrDefault(p => string.Equals(p.Name, prop, StringComparison.OrdinalIgnoreCase));
 
-            var ignoredProperties = context.MethodInfo.GetCustomAttributes<ModelExcludeFilterAttribute>(true)
-                .SelectMany(a => a.ExcludeAttributes).ToList();
-
-            if (!ignoredProperties.Any()) return;
-
-
-            foreach (var prop in ignoredProperties)
-            {
-                var schemaProp = operation.Parameters
-                    .SingleOrDefault(p => string.Equals(p.Name, prop, StringComparison.OrdinalIgnoreCase));
-
-                if (schemaProp != null)
-                    operation.Parameters.Remove(schemaProp);
-            }
+            if (schemaProp != null)
+                operation.Parameters.Remove(schemaProp);
         }
+    }
 
-        public void Apply(OpenApiSchema schema, SchemaFilterContext context)
+    public void Apply(OpenApiSchema schema, SchemaFilterContext context)
+    {
+        if (schema == null) throw new ArgumentNullException(nameof(schema));
+        if (context == null) throw new ArgumentNullException(nameof(context));
+
+        if (schema.Properties.Count == 0)
+            return;
+
+        var excludeAttributes = context.Type.GetCustomAttributes<ModelExcludeFilterAttribute>(true)
+            .SelectMany(a => a.ExcludeAttributes).ToList();
+
+        if (!excludeAttributes.Any())
+            return;
+
+        foreach (var prop in excludeAttributes)
         {
-            if (schema == null) throw new ArgumentNullException(nameof(schema));
-            if (context == null) throw new ArgumentNullException(nameof(context));
+            var schemaProp = schema.Properties.Where(p =>
+                    string.Equals(p.Key, prop, StringComparison.OrdinalIgnoreCase)).Select(p => p.Key)
+                .SingleOrDefault();
 
-            if (schema.Properties.Count == 0)
-                return;
-
-            var excludeAttributes = context.Type.GetCustomAttributes<ModelExcludeFilterAttribute>(true)
-                .SelectMany(a => a.ExcludeAttributes).ToList();
-
-            if (!excludeAttributes.Any())
-                return;
-
-            foreach (var prop in excludeAttributes)
-            {
-                var schemaProp = schema.Properties.Where(p =>
-                        string.Equals(p.Key, prop, StringComparison.OrdinalIgnoreCase)).Select(p => p.Key)
-                    .SingleOrDefault();
-
-                if (schemaProp != null)
-                    schema.Properties.Remove(schemaProp);
-            }
+            if (schemaProp != null)
+                schema.Properties.Remove(schemaProp);
         }
     }
 }

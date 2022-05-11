@@ -10,14 +10,13 @@ using Innovt.Core.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Innovt.Cloud.AWS.Cognito.Model
+namespace Innovt.Cloud.AWS.Cognito.Model;
+
+public class OtpSignInRequest : SignInRequestBase
 {
-    public class OtpSignInRequest : SignInRequestBase
+    public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
-        public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            if (UserName.IsNullOrEmpty())
-                yield return new ValidationResult(Messages.UserNameIsRequired, new[] { nameof(UserName) });
-        }
+        if (UserName.IsNullOrEmpty())
+            yield return new ValidationResult(Messages.UserNameIsRequired, new[] { nameof(UserName) });
     }
 }

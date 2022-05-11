@@ -16,138 +16,135 @@ using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 
 
+namespace Innovt.AspNetCore.Handlers;
 
-namespace Innovt.AspNetCore.Handlers
+public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorizationRequirement>, IAuthorizationHandler
 {
-    public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorizationRequirement>, IAuthorizationHandler
+    private const string contextSeparator = "::";
+    private readonly IAuthorizationRepository securityRepository;
+    private readonly ILogger logger;
+
+    public RolesAuthorizationHandler(IAuthorizationRepository securityRepository, ILogger logger)
     {
-        const string contextSeparator = "::";
-        private readonly IAuthorizationRepository securityRepository;
-        private readonly ILogger logger;
+        this.securityRepository = securityRepository ?? throw new ArgumentNullException(nameof(securityRepository));
+        this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
+    }
 
-        public RolesAuthorizationHandler(IAuthorizationRepository securityRepository, ILogger logger)
+    private static string GetUserId(AuthorizationHandlerContext context)
+    {
+        var userId = context.User?.GetClaim(ClaimTypes.NameIdentifier);
+
+        return userId ?? string.Empty;
+    }
+
+    private static string GetApplicationContext(AuthorizationHandlerContext context)
+    {
+        var scope = string.Empty;
+
+        if (context.Resource is not HttpContext httpContext) return scope;
+
+        if (httpContext.Request.Headers.TryGetValue(Constants.HeaderApplicationScope, out var appScope))
+            scope = appScope.ToString();
+
+        if (!httpContext.Request.Headers.TryGetValue(Constants.HeaderApplicationContext, out var headerContext))
+            return scope;
+
+        if (!httpContext.Request.Headers.TryGetValue(headerContext, out var applicationContext))
+            return scope;
+
+        if (applicationContext.IsNullOrEmpty())
+            return scope;
+
+        return scope.IsNullOrEmpty() ? applicationContext : $"{applicationContext}{contextSeparator}{scope}";
+    }
+
+    private static void SetUserDomainId(AuthUser authUser, AuthorizationHandlerContext context)
+    {
+        context.User.AddIdentity(new ClaimsIdentity(new[] { new Claim(ClaimTypes.Sid, authUser.DomainId) }));
+    }
+
+    private static bool IsUserAuthenticated(AuthorizationHandlerContext context)
+    {
+        return context?.User.Identity is not null && context.User.Identity.IsAuthenticated;
+    }
+
+    private void Fail(AuthorizationHandlerContext context, string reason)
+    {
+        logger.Warning(reason);
+        context.Fail();
+    }
+
+    private string ExtractScope(string appContext)
+    {
+        return !appContext.Contains(contextSeparator) ? appContext : appContext.Split(contextSeparator)[1];
+    }
+
+    protected override async Task HandleRequirementAsync(AuthorizationHandlerContext context,
+        RolesAuthorizationRequirement requirement)
+    {
+        if (!IsUserAuthenticated(context) || requirement is null)
         {
-            this.securityRepository = securityRepository ?? throw new ArgumentNullException(nameof(securityRepository));
-            this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            Fail(context, "User not authenticated.");
+            return;
         }
 
-        private static string GetUserId(AuthorizationHandlerContext context)
-        {
-            var userId = context.User?.GetClaim(ClaimTypes.NameIdentifier);
+        var userId = GetUserId(context);
 
-            return userId ?? string.Empty;
+        if (requirement.AllowedRoles?.Any() == false || userId.IsNullOrEmpty())
+        {
+            Fail(context, $"Invalid user roles or id.The current user id is {userId}.");
+            return;
         }
 
-        private static string GetApplicationContext(AuthorizationHandlerContext context)
+        var user = await securityRepository.GetUserByExternalId(userId, CancellationToken.None).ConfigureAwait(false);
+
+        if (user is null)
         {
-            var scope = string.Empty;
-
-            if (context.Resource is not HttpContext httpContext) return scope;
-
-            if (httpContext.Request.Headers.TryGetValue(Constants.HeaderApplicationScope, out var appScope))
-            {
-                scope = appScope.ToString();
-            }
-
-            if (!httpContext.Request.Headers.TryGetValue(Constants.HeaderApplicationContext, out var headerContext))
-                return scope;
-
-            if (!httpContext.Request.Headers.TryGetValue(headerContext, out var applicationContext))
-                return scope;
-
-            if (applicationContext.IsNullOrEmpty())
-                return scope;
-
-            return scope.IsNullOrEmpty() ? applicationContext : $"{applicationContext}{contextSeparator}{scope}";
+            Fail(context, $"User of id {userId} not found for role authorization.");
+            return;
         }
 
-        private static void SetUserDomainId(AuthUser authUser, AuthorizationHandlerContext context)
+        var roles = GetUserRoles(user);
+
+        if (roles is null)
         {
-            context.User.AddIdentity(new ClaimsIdentity(new[] { new Claim(ClaimTypes.Sid, authUser.DomainId) }));
+            Fail(context, $"User of id {userId} has no roles defined.");
+            return;
         }
 
-        private static bool IsUserAuthenticated(AuthorizationHandlerContext context)
-        {
-            return context?.User.Identity is not null && context.User.Identity.IsAuthenticated;
-        }
+        var appContext = GetApplicationContext(context);
+        var scope = ExtractScope(appContext);
 
-        private void Fail(AuthorizationHandlerContext context, string reason)
+        var hasPermission = appContext.IsNullOrEmpty()
+            ? roles.Any(r => requirement.AllowedRoles.Contains(r.Name, StringComparer.OrdinalIgnoreCase))
+            : roles.Any(r => (r.Scope == appContext || r.Scope == "*" || r.Scope == $"*::{scope}") &&
+                             requirement.AllowedRoles.Contains(r.Name, StringComparer.OrdinalIgnoreCase));
+
+        if (hasPermission)
         {
-            logger.Warning(reason);
+            SetUserDomainId(user, context);
+
+            context.Succeed(requirement);
+        }
+        else
+        {
+            Fail(context, $"User of id {userId} has no roles defined.");
             context.Fail();
         }
+    }
 
-        private string ExtractScope(string appContext)
-        {
-            return !appContext.Contains(contextSeparator) ? appContext :
-                    appContext.Split(contextSeparator)[1];
-        }
+    private static List<Role> GetUserRoles(AuthUser user)
+    {
+        var roles = new List<Role>();
 
-        protected override async Task HandleRequirementAsync(AuthorizationHandlerContext context, RolesAuthorizationRequirement requirement)
-        {
-            if (!IsUserAuthenticated(context) || requirement is null)
-            {
-                Fail(context, "User not authenticated.");
-                return;
-            }
+        if (user.Roles is { })
+            roles.AddRange(user.Roles);
 
-            var userId = GetUserId(context);
+        var groupRoles = user.Groups?.SelectMany(g => g.Roles).ToList();
 
-            if (requirement.AllowedRoles?.Any() == false || userId.IsNullOrEmpty())
-            {
-                Fail(context, $"Invalid user roles or id.The current user id is {userId}.");
-                return;
-            }
+        if (groupRoles is { })
+            roles.AddRange(groupRoles);
 
-            var user = await securityRepository.GetUserByExternalId(userId, CancellationToken.None).ConfigureAwait(false);
-
-            if (user is null)
-            {
-                Fail(context, $"User of id {userId} not found for role authorization.");
-                return;
-            }
-            var roles = GetUserRoles(user);
-
-            if (roles is null)
-            {
-                Fail(context, $"User of id {userId} has no roles defined.");
-                return;
-            }
-
-            var appContext = GetApplicationContext(context);
-            var scope = ExtractScope(appContext);
-
-            var hasPermission = appContext.IsNullOrEmpty()
-                                ? roles.Any(r => requirement.AllowedRoles.Contains(r.Name, StringComparer.OrdinalIgnoreCase)) :
-                                 roles.Any(r => ((r.Scope == appContext || r.Scope == "*" || r.Scope == $"*::{scope}") &&
-                                                 requirement.AllowedRoles.Contains(r.Name, StringComparer.OrdinalIgnoreCase)));
-
-            if (hasPermission)
-            {
-                SetUserDomainId(user, context);
-
-                context.Succeed(requirement);
-            }
-            else
-            {
-                Fail(context, $"User of id {userId} has no roles defined.");
-                context.Fail();
-            }
-        }
-
-        private static List<Role> GetUserRoles(AuthUser user)
-        {
-            var roles = new List<Role>();
-
-            if (user.Roles is { })
-                roles.AddRange(user.Roles);
-
-            var groupRoles = user.Groups?.SelectMany(g => g.Roles).ToList();
-
-            if (groupRoles is { })
-                roles.AddRange(groupRoles);
-
-            return roles;
-        }
+        return roles;
     }
 }

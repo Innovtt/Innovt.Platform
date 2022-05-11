@@ -5,9 +5,8 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-namespace Innovt.Cloud.Table
+namespace Innovt.Cloud.Table;
+
+public sealed class ScanRequest : BaseRequest
 {
-    public sealed class ScanRequest : BaseRequest
-    {
-    }
 }

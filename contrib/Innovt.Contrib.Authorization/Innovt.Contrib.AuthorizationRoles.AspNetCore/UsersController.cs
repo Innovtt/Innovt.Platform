@@ -8,66 +8,66 @@ using Innovt.Contrib.Authorization.Platform.Application.Commands;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace Innovt.Contrib.AuthorizationRoles.AspNetCore
+namespace Innovt.Contrib.AuthorizationRoles.AspNetCore;
+
+[ApiController]
+[Route("Authorization/[controller]")]
+public class UsersController : ControllerBase
 {
-    [ApiController]
-    [Route("Authorization/[controller]")]
-    public class UsersController : ControllerBase
+    private readonly IAuthorizationAppService authorizationAppService;
+
+    public UsersController(IAuthorizationAppService authorizationAppService)
     {
-        private readonly IAuthorizationAppService authorizationAppService;
+        this.authorizationAppService = authorizationAppService ??
+                                       throw new ArgumentNullException(nameof(authorizationAppService));
+    }
 
-        public UsersController(IAuthorizationAppService authorizationAppService)
-        {
-            this.authorizationAppService = authorizationAppService ??
-                                           throw new ArgumentNullException(nameof(authorizationAppService));
-        }
+    [HttpPost]
+    [ProducesResponseType((int)HttpStatusCode.OK)]
+    [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
+    [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+    public async Task<IActionResult> Add([FromBody] AddUserCommand command,
+        CancellationToken cancellationToken = default)
+    {
+        await authorizationAppService.AddUser(command, cancellationToken).ConfigureAwait(false);
 
-        [HttpPost]
-        [ProducesResponseType((int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
-        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> Add([FromBody] AddUserCommand command, CancellationToken cancellationToken = default)
-        {
-            await authorizationAppService.AddUser(command, cancellationToken).ConfigureAwait(false);
+        return Ok();
+    }
 
-            return Ok();
-        }
+    [HttpDelete]
+    [ProducesResponseType((int)HttpStatusCode.OK)]
+    [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
+    [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+    public async Task<IActionResult> Delete([FromBody] RemoveUserCommand command,
+        CancellationToken cancellationToken = default)
+    {
+        await authorizationAppService.RemoveUser(command, cancellationToken).ConfigureAwait(false);
 
-        [HttpDelete]
-        [ProducesResponseType((int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
-        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> Delete([FromBody] RemoveUserCommand command,
-            CancellationToken cancellationToken = default)
-        {
-            await authorizationAppService.RemoveUser(command, cancellationToken).ConfigureAwait(false);
-
-            return Ok();
-        }
+        return Ok();
+    }
 
 
-        [HttpPut("AssignRole")]
-        [ProducesResponseType((int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
-        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> AssignRole([FromBody] AssignRoleCommand command,
-            CancellationToken cancellationToken = default)
-        {
-            await authorizationAppService.AssignRole(command, cancellationToken).ConfigureAwait(false);
+    [HttpPut("AssignRole")]
+    [ProducesResponseType((int)HttpStatusCode.OK)]
+    [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
+    [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+    public async Task<IActionResult> AssignRole([FromBody] AssignRoleCommand command,
+        CancellationToken cancellationToken = default)
+    {
+        await authorizationAppService.AssignRole(command, cancellationToken).ConfigureAwait(false);
 
-            return Ok();
-        }
+        return Ok();
+    }
 
-        [HttpPut("UnAssignRole")]
-        [ProducesResponseType((int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
-        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> UnAssignRole([FromBody] UnAssignUserRoleCommand command,
-            CancellationToken cancellationToken = default)
-        {
-            await authorizationAppService.UnAssignRole(command, cancellationToken).ConfigureAwait(false);
+    [HttpPut("UnAssignRole")]
+    [ProducesResponseType((int)HttpStatusCode.OK)]
+    [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
+    [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+    public async Task<IActionResult> UnAssignRole([FromBody] UnAssignUserRoleCommand command,
+        CancellationToken cancellationToken = default)
+    {
+        await authorizationAppService.UnAssignRole(command, cancellationToken).ConfigureAwait(false);
 
-            return Ok();
-        }
+        return Ok();
     }
 }

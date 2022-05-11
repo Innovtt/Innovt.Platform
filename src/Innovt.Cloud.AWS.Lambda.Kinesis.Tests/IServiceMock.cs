@@ -1,10 +1,8 @@
-﻿namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+﻿namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests;
+
+public interface IServiceMock
 {
-    public interface IServiceMock
-    {
+    void InicializeIoc();
 
-        void InicializeIoc();
-
-        BatchFailureResponse ProcessMessage(string traceId = null);
-    }
+    BatchFailureResponse ProcessMessage(string traceId = null);
 }

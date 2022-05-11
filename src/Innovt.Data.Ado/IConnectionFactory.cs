@@ -8,10 +8,9 @@
 using Innovt.Data.DataSources;
 using System.Data;
 
-namespace Innovt.Data.Ado
+namespace Innovt.Data.Ado;
+
+public interface IConnectionFactory
 {
-    public interface IConnectionFactory
-    {
-        IDbConnection Create(IDataSource dataSource);
-    }
+    IDbConnection Create(IDataSource dataSource);
 }

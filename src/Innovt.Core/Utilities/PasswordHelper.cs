@@ -8,53 +8,52 @@
 using System;
 using System.Security.Cryptography;
 
-namespace Innovt.Core.Utilities
+namespace Innovt.Core.Utilities;
+
+public static class PasswordHelper
 {
-    public static class PasswordHelper
+    private const int SaltSize = 128 / 8; // 128 bits
+
+    public static bool IsValid(string decodedPassword, string hashedPassword, string salt)
     {
-        private const int SaltSize = 128 / 8; // 128 bits
+        var encodedPassword = HashPassword(decodedPassword, salt);
 
-        public static bool IsValid(string decodedPassword, string hashedPassword, string salt)
+        return encodedPassword == hashedPassword;
+    }
+
+    private static byte[] InternalRandomSalt()
+    {
+        var salt = new byte[SaltSize];
+        using (var rng = RandomNumberGenerator.Create())
         {
-            var encodedPassword = HashPassword(decodedPassword, salt);
-
-            return encodedPassword == hashedPassword;
+            rng.GetBytes(salt);
         }
 
-        private static byte[] InternalRandomSalt()
-        {
-            var salt = new byte[SaltSize];
-            using (var rng = RandomNumberGenerator.Create())
-            {
-                rng.GetBytes(salt);
-            }
+        return salt;
+    }
 
-            return salt;
-        }
+    public static string RandomSalt()
+    {
+        return Convert.ToBase64String(InternalRandomSalt());
+    }
 
-        public static string RandomSalt()
-        {
-            return Convert.ToBase64String(InternalRandomSalt());
-        }
+    public static string HashPassword(string plainPassword, string salt)
+    {
+        Check.NotEmpty(plainPassword, nameof(plainPassword));
+        Check.NotEmpty(salt, nameof(salt));
 
-        public static string HashPassword(string plainPassword, string salt)
-        {
-            Check.NotEmpty(plainPassword, nameof(plainPassword));
-            Check.NotEmpty(salt, nameof(salt));
+        return plainPassword.ShaHash(salt);
+    }
 
-            return plainPassword.ShaHash(salt);
-        }
+    public static (string password, string salt) HashPassword(string plainPassword)
+    {
+        Check.NotEmpty(plainPassword, nameof(plainPassword));
 
-        public static (string password, string salt) HashPassword(string plainPassword)
-        {
-            Check.NotEmpty(plainPassword, nameof(plainPassword));
+        var salt = RandomSalt();
 
-            var salt = RandomSalt();
+        // Aspnet core sample
+        var hashedPassword = plainPassword.ShaHash(salt);
 
-            // Aspnet core sample
-            var hashedPassword = plainPassword.ShaHash(salt);
-
-            return (hashedPassword, salt);
-        }
+        return (hashedPassword, salt);
     }
 }

@@ -8,25 +8,24 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Innovt.Domain.Core.Model
+namespace Innovt.Domain.Core.Model;
+
+public class DomainModel<T> : ValueObject where T : ValueObject
 {
-    public class DomainModel<T> : ValueObject where T : ValueObject
+    private readonly List<T> models = new();
+
+    protected void AddModel(T model)
     {
-        private readonly List<T> models = new();
+        models.Add(model);
+    }
 
-        protected void AddModel(T model)
-        {
-            models.Add(model);
-        }
+    public List<T> FindAll()
+    {
+        return models;
+    }
 
-        public List<T> FindAll()
-        {
-            return models;
-        }
-
-        public T GetByPk(int id)
-        {
-            return models.SingleOrDefault(s => s.Id == id);
-        }
+    public T GetByPk(int id)
+    {
+        return models.SingleOrDefault(s => s.Id == id);
     }
 }

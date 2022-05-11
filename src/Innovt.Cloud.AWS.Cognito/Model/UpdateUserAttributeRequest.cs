@@ -10,23 +10,22 @@ using Innovt.Core.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Innovt.Cloud.AWS.Cognito.Model
+namespace Innovt.Cloud.AWS.Cognito.Model;
+
+public class UpdateUserAttributeRequest : RequestBase
 {
-    public class UpdateUserAttributeRequest : RequestBase
-    {
-        [Required] public string AccessToken { get; set; }
+    [Required] public string AccessToken { get; set; }
 
 #pragma warning disable CA2227 // Collection properties should be read only
-        public Dictionary<string, string> Attributes { get; set; }
+    public Dictionary<string, string> Attributes { get; set; }
 #pragma warning restore CA2227 // Collection properties should be read only
 
-        public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            if (AccessToken.IsNullOrEmpty())
-                yield return new ValidationResult(Messages.AccessTokenIsRequired, new[] { nameof(AccessToken) });
+    public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    {
+        if (AccessToken.IsNullOrEmpty())
+            yield return new ValidationResult(Messages.AccessTokenIsRequired, new[] { nameof(AccessToken) });
 
-            if (Attributes.IsNullOrEmpty())
-                yield return new ValidationResult(Messages.AttributesIsRequired, new[] { nameof(Attributes) });
-        }
+        if (Attributes.IsNullOrEmpty())
+            yield return new ValidationResult(Messages.AttributesIsRequired, new[] { nameof(Attributes) });
     }
 }

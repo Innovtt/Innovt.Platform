@@ -68,14 +68,6 @@ namespace Innovt.Data.Ado.Tests
             var filter = new UserFilter();
 
             var res = await repo.QueryPagedAsync<User>(query, filter).ConfigureAwait(false);
-
-
-
-
-
-
         }
-
-
     }
 }

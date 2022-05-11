@@ -16,63 +16,62 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Innovt.Cloud.AWS.Notification
+namespace Innovt.Cloud.AWS.Notification;
+
+public class SmsNotificationHandler : AwsBaseService, INotificationHandler
 {
-    public class SmsNotificationHandler : AwsBaseService, INotificationHandler
+    private AmazonSimpleNotificationServiceClient _simpleNotificationClient;
+
+    public SmsNotificationHandler(ILogger logger, IAwsConfiguration configuration) : base(logger, configuration)
     {
-        private AmazonSimpleNotificationServiceClient _simpleNotificationClient;
+    }
 
-        public SmsNotificationHandler(ILogger logger, IAwsConfiguration configuration) : base(logger, configuration)
+    public SmsNotificationHandler(ILogger logger, IAwsConfiguration configuration, string region) : base(logger,
+        configuration, region)
+    {
+    }
+
+    private AmazonSimpleNotificationServiceClient SimpleNotificationClient
+    {
+        get
         {
+            if (_simpleNotificationClient == null)
+                _simpleNotificationClient = CreateService<AmazonSimpleNotificationServiceClient>();
+
+            return _simpleNotificationClient;
         }
+    }
 
-        public SmsNotificationHandler(ILogger logger, IAwsConfiguration configuration, string region) : base(logger,
-            configuration, region)
-        {
-        }
+    public async Task<dynamic> SendAsync(NotificationMessage message, CancellationToken cancellationToken = default)
+    {
+        Check.NotNull(message, nameof(message));
+        Check.NotNullWithBusinessException(message.Body, nameof(message.Body));
+        Check.NotNullWithBusinessException(message.To, nameof(message.To));
 
-        private AmazonSimpleNotificationServiceClient SimpleNotificationClient
+        var deliveryResult = new List<dynamic>();
+
+        var policy = base.CreateDefaultRetryAsyncPolicy();
+
+        foreach (var to in message.To)
         {
-            get
+            var request = new PublishRequest
             {
-                if (_simpleNotificationClient == null)
-                    _simpleNotificationClient = CreateService<AmazonSimpleNotificationServiceClient>();
+                Subject = message.Subject.Content,
+                PhoneNumber = to.Address,
+                Message = message.Body.Content
+            };
 
-                return _simpleNotificationClient;
-            }
+            var result = await policy.ExecuteAsync(async () =>
+                await SimpleNotificationClient.PublishAsync(request, cancellationToken));
+
+            deliveryResult.Add(result);
         }
 
-        public async Task<dynamic> SendAsync(NotificationMessage message, CancellationToken cancellationToken = default)
-        {
-            Check.NotNull(message, nameof(message));
-            Check.NotNullWithBusinessException(message.Body, nameof(message.Body));
-            Check.NotNullWithBusinessException(message.To, nameof(message.To));
+        return deliveryResult;
+    }
 
-            var deliveryResult = new List<dynamic>();
-
-            var policy = base.CreateDefaultRetryAsyncPolicy();
-
-            foreach (var to in message.To)
-            {
-                var request = new PublishRequest
-                {
-                    Subject = message.Subject.Content,
-                    PhoneNumber = to.Address,
-                    Message = message.Body.Content
-                };
-
-                var result = await policy.ExecuteAsync(async () =>
-                    await SimpleNotificationClient.PublishAsync(request, cancellationToken));
-
-                deliveryResult.Add(result);
-            }
-
-            return deliveryResult;
-        }
-
-        protected override void DisposeServices()
-        {
-            _simpleNotificationClient?.Dispose();
-        }
+    protected override void DisposeServices()
+    {
+        _simpleNotificationClient?.Dispose();
     }
 }

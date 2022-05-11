@@ -5,11 +5,9 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-namespace Innovt.AspNetCore.Resources
-{
+namespace Innovt.AspNetCore.Resources;
 #pragma warning disable CA1040 // Avoid empty interfaces
-    public interface IExceptionResource
+public interface IExceptionResource
 #pragma warning restore CA1040 // Avoid empty interfaces
-    {
-    }
+{
 }

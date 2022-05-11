@@ -8,23 +8,19 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace Innovt.CrossCutting.IOC
+namespace Innovt.CrossCutting.IOC;
+
+public class ServiceProviderFactory : IServiceProviderFactory<ContainerBuilder>
 {
-    public class ServiceProviderFactory : IServiceProviderFactory<ContainerBuilder>
+    public ContainerBuilder CreateBuilder(IServiceCollection services)
     {
-        public ContainerBuilder CreateBuilder(IServiceCollection services)
-        {
-            return new(services);
-        }
+        return new ContainerBuilder(services);
+    }
 
-        public IServiceProvider CreateServiceProvider(ContainerBuilder containerBuilder)
-        {
-            if (containerBuilder is null)
-            {
-                throw new ArgumentNullException(nameof(containerBuilder));
-            }
+    public IServiceProvider CreateServiceProvider(ContainerBuilder containerBuilder)
+    {
+        if (containerBuilder is null) throw new ArgumentNullException(nameof(containerBuilder));
 
-            return containerBuilder.GetServiceProvider;
-        }
+        return containerBuilder.GetServiceProvider;
     }
 }

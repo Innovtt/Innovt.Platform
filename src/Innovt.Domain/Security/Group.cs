@@ -11,43 +11,43 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Innovt.Domain.Security
+namespace Innovt.Domain.Security;
+
+public class Group : Entity<Guid>
 {
-    public class Group : Entity<Guid>
+    public Group()
     {
-        public Group()
-        {
-            CreatedAt = DateTimeOffset.UtcNow;
-            Id = Guid.NewGuid();
-        }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public IList<Role> Roles { get; private set; }
+        CreatedAt = DateTimeOffset.UtcNow;
+        Id = Guid.NewGuid();
+    }
 
-        public void AssignRole(Role role)
-        {
-            if (role == null) throw new ArgumentNullException(nameof(role));
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public IList<Role> Roles { get; private set; }
 
-            Roles ??= new List<Role>();
+    public void AssignRole(Role role)
+    {
+        if (role == null) throw new ArgumentNullException(nameof(role));
 
-            var exist = Roles.Any(r => r.Id == role.Id);
+        Roles ??= new List<Role>();
 
-            if (exist)
-                throw new BusinessException($"Role {role.Id} already allow to this group.");
+        var exist = Roles.Any(r => r.Id == role.Id);
 
-            Roles.Add(role);
-        }
+        if (exist)
+            throw new BusinessException($"Role {role.Id} already allow to this group.");
 
-        public void UnAssignRole(Role role)
-        {
-            if (role == null) throw new ArgumentNullException(nameof(role));
+        Roles.Add(role);
+    }
 
-            var roleToRemove = Roles?.SingleOrDefault(r => r.Id == role.Id);
+    public void UnAssignRole(Role role)
+    {
+        if (role == null) throw new ArgumentNullException(nameof(role));
 
-            if (roleToRemove is null)
-                throw new BusinessException($"Role {role.Id} is not linked to this group.");
+        var roleToRemove = Roles?.SingleOrDefault(r => r.Id == role.Id);
 
-            Roles.Remove(role);
-        }
+        if (roleToRemove is null)
+            throw new BusinessException($"Role {role.Id} is not linked to this group.");
+
+        Roles.Remove(role);
     }
 }

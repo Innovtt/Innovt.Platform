@@ -9,44 +9,43 @@ using Innovt.Core.CrossCutting.Log;
 using System;
 using System.Diagnostics;
 
-namespace Innovt.Core.Utilities
+namespace Innovt.Core.Utilities;
+
+public class StopWatchHelper : IDisposable
 {
-    public class StopWatchHelper : IDisposable
+    private readonly string action;
+    private readonly ILogger logger;
+    private Stopwatch stopwatch;
+
+    public StopWatchHelper(ILogger logger, string action)
     {
-        private readonly string action;
-        private readonly ILogger logger;
-        private Stopwatch stopwatch;
+        this.logger = logger;
+        this.action = action;
+        stopwatch = Stopwatch.StartNew();
+    }
 
-        public StopWatchHelper(ILogger logger, string action)
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        try
         {
-            this.logger = logger;
-            this.action = action;
-            stopwatch = Stopwatch.StartNew();
+            logger.Info($"Action={action},ElapsedMilliseconds={stopwatch.ElapsedMilliseconds}");
+            stopwatch = null;
         }
-
-
-        public void Dispose()
+        catch (Exception e)
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            Console.WriteLine(e); //todo: colocar no log
         }
+    }
 
-        protected virtual void Dispose(bool disposing)
-        {
-            try
-            {
-                logger.Info($"Action={action},ElapsedMilliseconds={stopwatch.ElapsedMilliseconds}");
-                stopwatch = null;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e); //todo: colocar no log
-            }
-        }
-
-        ~StopWatchHelper()
-        {
-            Dispose(false);
-        }
+    ~StopWatchHelper()
+    {
+        Dispose(false);
     }
 }

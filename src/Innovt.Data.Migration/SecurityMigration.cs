@@ -9,15 +9,15 @@ using Dapper;
 using System;
 using System.Data.SqlClient;
 
-namespace Innovt.Data.Migration
-{
-    public static class SecurityMigration
-    {
-        public static void CreateTablesIfNotExist(string connectionString)
-        {
-            if (connectionString == null) throw new ArgumentNullException(nameof(connectionString));
+namespace Innovt.Data.Migration;
 
-            var query = @" /****** Object:  Table [dbo].[Permission] Script Date: 10/1/2018 2:58:00 PM ******/
+public static class SecurityMigration
+{
+    public static void CreateTablesIfNotExist(string connectionString)
+    {
+        if (connectionString == null) throw new ArgumentNullException(nameof(connectionString));
+
+        var query = @" /****** Object:  Table [dbo].[Permission] Script Date: 10/1/2018 2:58:00 PM ******/
                           IF OBJECT_ID (N'Permission', N'U') IS NULL 
                            BEGIN
                             CREATE TABLE [dbo].[Permission](
@@ -129,17 +129,16 @@ namespace Innovt.Data.Migration
                             
                             ALTER TABLE [dbo].[SecurityGroupUser] CHECK CONSTRAINT [FK_SecurityGroupUser_SecurityGroup_SecurityGroupId]";
 
-            //ALTER TABLE [dbo].[SecurityGroupUser]  WITH CHECK ADD  CONSTRAINT [FK_SecurityGroupUser_User_UserId] FOREIGN KEY([UserId])
-            //REFERENCES [dbo].[User] ([Id])
-            //ON DELETE CASCADE
+        //ALTER TABLE [dbo].[SecurityGroupUser]  WITH CHECK ADD  CONSTRAINT [FK_SecurityGroupUser_User_UserId] FOREIGN KEY([UserId])
+        //REFERENCES [dbo].[User] ([Id])
+        //ON DELETE CASCADE
 
-            // ALTER TABLE[dbo].[SecurityGroupUser]
-            // CHECK CONSTRAINT[FK_SecurityGroupUser_User_UserId]
+        // ALTER TABLE[dbo].[SecurityGroupUser]
+        // CHECK CONSTRAINT[FK_SecurityGroupUser_User_UserId]
 
-            using var con = new SqlConnection(connectionString);
-            con.Open();
+        using var con = new SqlConnection(connectionString);
+        con.Open();
 
-            con.Execute(query);
-        }
+        con.Execute(query);
     }
 }

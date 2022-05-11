@@ -10,31 +10,29 @@ using Innovt.Notification.Core;
 using Innovt.Notification.Core.Domain;
 using System;
 
-namespace Innovt.Cloud.AWS.Notification
+namespace Innovt.Cloud.AWS.Notification;
+
+public class NotificationHandleFactory : INotificationHandleFactory
 {
-    public class NotificationHandleFactory : INotificationHandleFactory
+    private readonly IContainer container;
+
+    public NotificationHandleFactory(IContainer container)
     {
-        private readonly IContainer container;
+        this.container = container ?? throw new ArgumentNullException(nameof(container));
+    }
 
-        public NotificationHandleFactory(IContainer container)
+    public virtual INotificationHandler Create(NotificationMessageType notificationMessageType)
+    {
+        return notificationMessageType switch
         {
-            this.container = container ?? throw new ArgumentNullException(nameof(container));
-        }
+            NotificationMessageType.Email => container.Resolve<MailNotificationHandler>(),
+            NotificationMessageType.Sms => container.Resolve<SmsNotificationHandler>(),
+            _ => CreateCustomHandle(notificationMessageType)
+        };
+    }
 
-        public virtual INotificationHandler Create(NotificationMessageType notificationMessageType)
-        {
-            return notificationMessageType switch
-            {
-                NotificationMessageType.Email => container.Resolve<MailNotificationHandler>(),
-                NotificationMessageType.Sms => container.Resolve<SmsNotificationHandler>(),
-                _ => CreateCustomHandle(notificationMessageType)
-            };
-        }
-
-        public virtual INotificationHandler CreateCustomHandle(NotificationMessageType notificationMessageType)
-        {
-
-            return null;
-        }
+    public virtual INotificationHandler CreateCustomHandle(NotificationMessageType notificationMessageType)
+    {
+        return null;
     }
 }

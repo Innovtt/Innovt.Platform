@@ -5,12 +5,11 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-namespace Innovt.Data.Model
+namespace Innovt.Data.Model;
+
+public enum Provider
 {
-    public enum Provider
-    {
-        MsSql,
-        PostgreSqL,
-        Oracle
-    }
+    MsSql,
+    PostgreSqL,
+    Oracle
 }

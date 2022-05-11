@@ -7,21 +7,19 @@
 
 using System.Collections.Generic;
 
-namespace Innovt.Cloud.Queue
+namespace Innovt.Cloud.Queue;
+
+public interface IQueueMessage
 {
-    public interface IQueueMessage
-    {
-        string MessageId { get; set; }
+    string MessageId { get; set; }
 
-        string ReceiptHandle { get; set; }
+    string ReceiptHandle { get; set; }
 
-        string TraceId { get; set; }
+    string TraceId { get; set; }
 
-        double? ApproximateFirstReceiveTimestamp { get; set; }
+    double? ApproximateFirstReceiveTimestamp { get; set; }
 
-        int? ApproximateReceiveCount { get; set; }
+    int? ApproximateReceiveCount { get; set; }
 
-        Dictionary<string, string> Attributes { get; set; }
-
-    }
+    Dictionary<string, string> Attributes { get; set; }
 }

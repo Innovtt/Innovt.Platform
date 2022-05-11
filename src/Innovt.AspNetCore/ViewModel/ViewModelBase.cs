@@ -5,9 +5,8 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-namespace Innovt.AspNetCore.ViewModel
+namespace Innovt.AspNetCore.ViewModel;
+
+public abstract class ViewModelBase
 {
-    public abstract class ViewModelBase
-    {
-    }
 }

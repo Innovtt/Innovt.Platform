@@ -5,10 +5,9 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-namespace Innovt.Notification.Core.Builders
+namespace Innovt.Notification.Core.Builders;
+
+public interface IMessageBuilderFactory
 {
-    public interface IMessageBuilderFactory
-    {
-        IMessageBuilder Create(string builderName);
-    }
+    IMessageBuilder Create(string builderName);
 }

@@ -5,28 +5,27 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-namespace Innovt.Domain.Core.Specification
+namespace Innovt.Domain.Core.Specification;
+
+/// <summary>
+///     Base class for composite specifications
+/// </summary>
+/// <typeparam name="TValueObject">Type of entity that check this specification</typeparam>
+public abstract class CompositeSpecification<TEntity>
+    : Specification<TEntity>
+    where TEntity : class
 {
+    #region Properties
+
     /// <summary>
-    ///     Base class for composite specifications
+    ///     Left side specification for this composite element
     /// </summary>
-    /// <typeparam name="TValueObject">Type of entity that check this specification</typeparam>
-    public abstract class CompositeSpecification<TEntity>
-        : Specification<TEntity>
-        where TEntity : class
-    {
-        #region Properties
+    public abstract ISpecification<TEntity> LeftSideSpecification { get; }
 
-        /// <summary>
-        ///     Left side specification for this composite element
-        /// </summary>
-        public abstract ISpecification<TEntity> LeftSideSpecification { get; }
+    /// <summary>
+    ///     Right side specification for this composite element
+    /// </summary>
+    public abstract ISpecification<TEntity> RightSideSpecification { get; }
 
-        /// <summary>
-        ///     Right side specification for this composite element
-        /// </summary>
-        public abstract ISpecification<TEntity> RightSideSpecification { get; }
-
-        #endregion
-    }
+    #endregion
 }

@@ -10,19 +10,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 
-namespace Innovt.Data.EFCore.Maps
-{
-    public class AddressTypeMap : IEntityTypeConfiguration<AddressType>
-    {
-        public void Configure(EntityTypeBuilder<AddressType> builder)
-        {
-            if (builder is null)
-            {
-                throw new ArgumentNullException(nameof(builder));
-            }
+namespace Innovt.Data.EFCore.Maps;
 
-            builder.HasKey(u => u.Id);
-            builder.Property(b => b.Name).HasMaxLength(15).IsRequired();
-        }
+public class AddressTypeMap : IEntityTypeConfiguration<AddressType>
+{
+    public void Configure(EntityTypeBuilder<AddressType> builder)
+    {
+        if (builder is null) throw new ArgumentNullException(nameof(builder));
+
+        builder.HasKey(u => u.Id);
+        builder.Property(b => b.Name).HasMaxLength(15).IsRequired();
     }
 }

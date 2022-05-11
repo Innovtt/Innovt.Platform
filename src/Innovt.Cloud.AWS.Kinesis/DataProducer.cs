@@ -21,104 +21,100 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Innovt.Cloud.AWS.Kinesis
+namespace Innovt.Cloud.AWS.Kinesis;
+
+public class DataProducer<T> : AwsBaseService where T : class, IDataStream
 {
-    public class DataProducer<T> : AwsBaseService where T : class, IDataStream
+    private AmazonKinesisClient kinesisClient;
+
+    protected static readonly ActivitySource ActivityDataProducer = new("Innovt.Cloud.AWS.KinesisDataProducer");
+
+    protected DataProducer(string busName, ILogger logger, IAwsConfiguration configuration) : base(logger,
+        configuration)
     {
-        private AmazonKinesisClient kinesisClient;
+        BusName = busName ?? throw new ArgumentNullException(nameof(busName));
+    }
 
-        protected static readonly ActivitySource ActivityDataProducer = new("Innovt.Cloud.AWS.KinesisDataProducer");
+    protected DataProducer(string busName, ILogger logger, IAwsConfiguration configuration,
+        string region) : base(logger, configuration, region)
+    {
+        BusName = busName ?? throw new ArgumentNullException(nameof(busName));
+    }
 
-        protected DataProducer(string busName, ILogger logger, IAwsConfiguration configuration) : base(logger,
-            configuration)
+    private string BusName { get; }
+
+    private AmazonKinesisClient KinesisClient
+    {
+        get { return kinesisClient ??= CreateService<AmazonKinesisClient>(); }
+    }
+
+    private async Task InternalPublish(IEnumerable<T> dataList, CancellationToken cancellationToken = default)
+    {
+        if (dataList == null) throw new ArgumentNullException(nameof(dataList));
+
+        var dataStreams = dataList.ToList();
+
+        if (dataStreams.Count > 500) throw new InvalidEventLimitException();
+
+        Logger.Info("Kinesis Publisher Started");
+
+        using var activity = ActivityDataProducer.StartActivity(nameof(InternalPublish));
+        activity?.SetTag("BusName", BusName);
+
+        var request = new PutRecordsRequest
         {
-            BusName = busName ?? throw new ArgumentNullException(nameof(busName));
-        }
+            StreamName = BusName,
+            Records = new List<PutRecordsRequestEntry>()
+        };
 
-        protected DataProducer(string busName, ILogger logger, IAwsConfiguration configuration,
-            string region) : base(logger, configuration, region)
+        foreach (var data in dataStreams)
         {
-            BusName = busName ?? throw new ArgumentNullException(nameof(busName));
-        }
+            if (data.TraceId.IsNullOrEmpty() && activity != null)
+                data.TraceId = activity.ParentId ?? activity.TraceId.ToString(); //todo: ver isso
 
-        private string BusName { get; }
-
-        private AmazonKinesisClient KinesisClient
-        {
-            get { return kinesisClient ??= CreateService<AmazonKinesisClient>(); }
-        }
-
-        private async Task InternalPublish(IEnumerable<T> dataList, CancellationToken cancellationToken = default)
-        {
-            if (dataList == null) throw new ArgumentNullException(nameof(dataList));
-
-            var dataStreams = dataList.ToList();
-
-            if (dataStreams.Count > 500) throw new InvalidEventLimitException();
-
-            Logger.Info("Kinesis Publisher Started");
-
-            using var activity = ActivityDataProducer.StartActivity(nameof(InternalPublish));
-            activity?.SetTag("BusName", BusName);
-
-            var request = new PutRecordsRequest
+            var dataAsBytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize<object>(data));
+            await using var ms = new MemoryStream(dataAsBytes);
+            request.Records.Add(new PutRecordsRequestEntry
             {
-                StreamName = BusName,
-                Records = new List<PutRecordsRequestEntry>()
-            };
-
-            foreach (var data in dataStreams)
-            {
-                if (data.TraceId.IsNullOrEmpty() && activity != null)
-                {
-                    data.TraceId = activity.ParentId ?? activity.TraceId.ToString();//todo: ver isso
-                }
-
-                var dataAsBytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize<object>(data));
-                await using var ms = new MemoryStream(dataAsBytes);
-                request.Records.Add(new PutRecordsRequestEntry
-                {
-                    Data = ms,
-                    PartitionKey = data.Partition
-                });
-            }
-
-            Logger.Info($"Publishing Data for Bus {BusName}");
-
-            var policy = base.CreateDefaultRetryAsyncPolicy();
-
-            var results = await policy.ExecuteAsync(async () =>
-                await KinesisClient.PutRecordsAsync(request, cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
-
-            if (results.FailedRecordCount == 0)
-            {
-                Logger.Info($"All data published to Bus {BusName}");
-                return;
-            }
-
-            var errorRecords = results.Records.Where(r => r.ErrorCode != null);
-
-            foreach (var error in errorRecords)
-            {
-                Logger.Error($"Error publishing message. Error: {error.ErrorCode}, ErrorMessage: {error.ErrorMessage}");
-            }
+                Data = ms,
+                PartitionKey = data.Partition
+            });
         }
 
-        public async Task Publish(T data, CancellationToken cancellationToken = default)
+        Logger.Info($"Publishing Data for Bus {BusName}");
+
+        var policy = base.CreateDefaultRetryAsyncPolicy();
+
+        var results = await policy.ExecuteAsync(async () =>
+                await KinesisClient.PutRecordsAsync(request, cancellationToken).ConfigureAwait(false))
+            .ConfigureAwait(false);
+
+        if (results.FailedRecordCount == 0)
         {
-            if (data == null) throw new ArgumentNullException(nameof(data));
-
-            await InternalPublish(new List<T> { data }, cancellationToken).ConfigureAwait(false);
+            Logger.Info($"All data published to Bus {BusName}");
+            return;
         }
 
-        public async Task Publish(IEnumerable<T> events, CancellationToken cancellationToken = default)
-        {
-            await InternalPublish(events, cancellationToken).ConfigureAwait(false);
-        }
+        var errorRecords = results.Records.Where(r => r.ErrorCode != null);
 
-        protected override void DisposeServices()
-        {
-            kinesisClient?.Dispose();
-        }
+        foreach (var error in errorRecords)
+            Logger.Error($"Error publishing message. Error: {error.ErrorCode}, ErrorMessage: {error.ErrorMessage}");
+    }
+
+    public async Task Publish(T data, CancellationToken cancellationToken = default)
+    {
+        if (data == null) throw new ArgumentNullException(nameof(data));
+
+        await InternalPublish(new List<T> { data }, cancellationToken).ConfigureAwait(false);
+    }
+
+    public async Task Publish(IEnumerable<T> events, CancellationToken cancellationToken = default)
+    {
+        await InternalPublish(events, cancellationToken).ConfigureAwait(false);
+    }
+
+    protected override void DisposeServices()
+    {
+        kinesisClient?.Dispose();
     }
 }

@@ -7,27 +7,26 @@
 
 using System;
 
-namespace Innovt.Cloud.Table
+namespace Innovt.Cloud.Table;
+
+public class QueryRequest : BaseRequest, ICloneable
 {
-    public class QueryRequest : BaseRequest, ICloneable
+    public string KeyConditionExpression { get; set; }
+
+    public bool ScanIndexForward { get; set; }
+
+    public object Clone()
     {
-        public string KeyConditionExpression { get; set; }
-
-        public bool ScanIndexForward { get; set; }
-
-        public object Clone()
+        return new QueryRequest
         {
-            return new QueryRequest
-            {
-                AttributesToGet = AttributesToGet,
-                Filter = Filter,
-                KeyConditionExpression = KeyConditionExpression,
-                FilterExpression = FilterExpression,
-                IndexName = IndexName,
-                ScanIndexForward = ScanIndexForward,
-                PageSize = PageSize,
-                Page = Page
-            };
-        }
+            AttributesToGet = AttributesToGet,
+            Filter = Filter,
+            KeyConditionExpression = KeyConditionExpression,
+            FilterExpression = FilterExpression,
+            IndexName = IndexName,
+            ScanIndexForward = ScanIndexForward,
+            PageSize = PageSize,
+            Page = Page
+        };
     }
 }

@@ -5,11 +5,10 @@
 // Date: 2021-06-22
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-namespace Innovt.Domain.Banks
+namespace Innovt.Domain.Banks;
+
+public enum AccountType
 {
-    public enum AccountType
-    {
-        Checking = 0,
-        Savings = 1,
-    }
+    Checking = 0,
+    Savings = 1
 }

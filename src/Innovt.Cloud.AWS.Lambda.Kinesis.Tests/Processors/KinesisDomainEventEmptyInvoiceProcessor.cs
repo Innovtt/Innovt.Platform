@@ -6,32 +6,33 @@
 using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Domain.Core.Events;
 
-namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors
+namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors;
+
+public class KinesisDomainEventEmptyInvoiceProcessor : KinesisDomainEventProcessor<DomainEvent>
 {
-    public class KinesisDomainEventEmptyInvoiceProcessor : KinesisDomainEventProcessor<DomainEvent>
+    private readonly IDomainEventServiceMock<DomainEvent> serviceMock;
+
+    public KinesisDomainEventEmptyInvoiceProcessor(IDomainEventServiceMock<DomainEvent> domainEventServiceMock)
     {
-        private readonly IDomainEventServiceMock<DomainEvent> serviceMock;
+        serviceMock = domainEventServiceMock ?? throw new ArgumentNullException(nameof(domainEventServiceMock));
+    }
 
-        public KinesisDomainEventEmptyInvoiceProcessor(IDomainEventServiceMock<DomainEvent> domainEventServiceMock)
-        {
-            this.serviceMock = domainEventServiceMock ?? throw new System.ArgumentNullException(nameof(domainEventServiceMock));
-        }
+    protected override DomainEvent DeserializeBody(string content, string partition)
+    {
+        return DomainEvent.Empty(partition);
+    }
 
-        protected override DomainEvent DeserializeBody(string content, string partition)
-        {
-            return DomainEvent.Empty(partition);
-        }
-        protected override IContainer SetupIocContainer()
-        {
-            serviceMock.InicializeIoc();
+    protected override IContainer SetupIocContainer()
+    {
+        serviceMock.InicializeIoc();
 
-            return null;
-        }
-        protected override Task ProcessMessage(DomainEvent message)
-        {
-            serviceMock.ProcessMessage(message);
+        return null;
+    }
 
-            return Task.CompletedTask;
-        }
+    protected override Task ProcessMessage(DomainEvent message)
+    {
+        serviceMock.ProcessMessage(message);
+
+        return Task.CompletedTask;
     }
 }

@@ -6,20 +6,16 @@ using Innovt.Core.CrossCutting.Log;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ConsoleAppTest
+namespace ConsoleAppTest;
+
+public class DynamoService : Repository
 {
-
-    public class DynamoService : Repository
+    public DynamoService(ILogger logger, IAwsConfiguration configuration) : base(logger, configuration)
     {
-        public DynamoService(ILogger logger, IAwsConfiguration configuration) : base(logger, configuration)
-        {
-        }
+    }
 
-        public DynamoService(ILogger logger, IAwsConfiguration configuration, string region) : base(logger, configuration, region)
-        {
-        }
-
-
-
+    public DynamoService(ILogger logger, IAwsConfiguration configuration, string region) : base(logger, configuration,
+        region)
+    {
     }
 }

@@ -11,76 +11,74 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Innovt.Domain.Security
+namespace Innovt.Domain.Security;
+
+public class AuthUser : Entity
 {
-    public class AuthUser : Entity
+    public AuthUser()
     {
-        public AuthUser()
-        {
-            CreatedAt = DateTimeOffset.UtcNow;
-        }
+        CreatedAt = DateTimeOffset.UtcNow;
+    }
 
-        public new string Id { get; set; }
+    public new string Id { get; set; }
 
-        public string DomainId { get; set; }
+    public string DomainId { get; set; }
 
-        public string Name { get; set; }
+    public string Name { get; set; }
 
-        public IList<Group> Groups { get; private set; }
+    public IList<Group> Groups { get; private set; }
 
-        public IList<Role> Roles { get; private set; }
+    public IList<Role> Roles { get; private set; }
 
-        public void AssignRole(Role role)
-        {
-            if (role == null) throw new ArgumentNullException(nameof(role));
+    public void AssignRole(Role role)
+    {
+        if (role == null) throw new ArgumentNullException(nameof(role));
 
-            Roles ??= new List<Role>();
+        Roles ??= new List<Role>();
 
-            var roleExist = Roles.Any(r => r.Scope == role.Scope && r.Name == role.Name);
+        var roleExist = Roles.Any(r => r.Scope == role.Scope && r.Name == role.Name);
 
-            if (roleExist)
-                return;
+        if (roleExist)
+            return;
 
-            Roles.Add(role);
-        }
+        Roles.Add(role);
+    }
 
-        public void UnAssignRole(string scope, string roleName)
-        {
-            if (scope == null) throw new ArgumentNullException(nameof(scope));
-            if (roleName == null) throw new ArgumentNullException(nameof(roleName));
+    public void UnAssignRole(string scope, string roleName)
+    {
+        if (scope == null) throw new ArgumentNullException(nameof(scope));
+        if (roleName == null) throw new ArgumentNullException(nameof(roleName));
 
-            var role = Roles?.SingleOrDefault(r => r.Scope.Equals(scope, StringComparison.OrdinalIgnoreCase)
-                                                   && r.Name.Equals(roleName, StringComparison.OrdinalIgnoreCase));
+        var role = Roles?.SingleOrDefault(r => r.Scope.Equals(scope, StringComparison.OrdinalIgnoreCase)
+                                               && r.Name.Equals(roleName, StringComparison.OrdinalIgnoreCase));
 
-            if (role is null)
-                return;
+        if (role is null)
+            return;
 
-            Roles.Remove(role);
-        }
+        Roles.Remove(role);
+    }
 
-        public void AssignGroup(Group group)
-        {
-            if (group == null) throw new ArgumentNullException(nameof(group));
+    public void AssignGroup(Group group)
+    {
+        if (group == null) throw new ArgumentNullException(nameof(group));
 
-            Groups ??= new List<Group>();
+        Groups ??= new List<Group>();
 
-            var roleExist = Groups.Any(r => r.Name == group.Name);
+        var roleExist = Groups.Any(r => r.Name == group.Name);
 
-            if (roleExist)
-                throw new BusinessException($"Group {group.Name} already assigned.");
+        if (roleExist)
+            throw new BusinessException($"Group {group.Name} already assigned.");
 
-            Groups.Add(group);
-        }
+        Groups.Add(group);
+    }
 
-        public void UnAssignGroup(string groupName)
-        {
-            var group = Groups?.SingleOrDefault(r => r.Name == groupName);
+    public void UnAssignGroup(string groupName)
+    {
+        var group = Groups?.SingleOrDefault(r => r.Name == groupName);
 
-            if (group is null)
-                return;
+        if (group is null)
+            return;
 
-            Groups.Remove(group);
-        }
-
+        Groups.Remove(group);
     }
 }

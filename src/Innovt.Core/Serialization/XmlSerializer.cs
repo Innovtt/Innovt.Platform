@@ -12,57 +12,56 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Innovt.Core.Serialization
+namespace Innovt.Core.Serialization;
+
+public class XmlSerializer : ISerializer
 {
-    public class XmlSerializer : ISerializer
+    public T DeserializeObject<T>(string serializedObject)
     {
-        public T DeserializeObject<T>(string serializedObject)
-        {
-            using var xmlReader = XmlReader.Create(new StringReader(serializedObject));
-            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
+        using var xmlReader = XmlReader.Create(new StringReader(serializedObject));
+        var serializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
 
-            return (T)serializer.Deserialize(xmlReader);
-        }
+        return (T)serializer.Deserialize(xmlReader);
+    }
 
-        public string SerializeObject<T>(T obj)
-        {
-            return SerializeObject(obj, null);
-        }
+    public string SerializeObject<T>(T obj)
+    {
+        return SerializeObject(obj, null);
+    }
 
-        public string SerializeObject<T>(T obj, Dictionary<string, string> namespaces)
+    public string SerializeObject<T>(T obj, Dictionary<string, string> namespaces)
+    {
+        try
         {
-            try
+            XmlSerializerNamespaces xmlSerializerNamespaces = null;
+
+            if (namespaces != null)
             {
-                XmlSerializerNamespaces xmlSerializerNamespaces = null;
-
-                if (namespaces != null)
-                {
-                    xmlSerializerNamespaces = new XmlSerializerNamespaces();
-                    xmlSerializerNamespaces.Add(string.Empty, string.Empty);
-                    foreach (var np in namespaces) xmlSerializerNamespaces.Add(np.Key, np.Value);
-                }
-
-                using var memoryStream = new MemoryStream();
-                using var writer = new XmlTextWriter(memoryStream, Encoding.UTF8);
-
-                var serializer = new System.Xml.Serialization.XmlSerializer(obj.GetType(), "");
-                if (xmlSerializerNamespaces != null)
-                {
-                    writer.Namespaces = true;
-                    serializer.Serialize(writer, obj, xmlSerializerNamespaces);
-                }
-                else
-                {
-                    serializer.Serialize(writer, obj);
-                }
-
-                writer.Close();
-                return Encoding.UTF8.GetString(memoryStream.ToArray());
+                xmlSerializerNamespaces = new XmlSerializerNamespaces();
+                xmlSerializerNamespaces.Add(string.Empty, string.Empty);
+                foreach (var np in namespaces) xmlSerializerNamespaces.Add(np.Key, np.Value);
             }
-            catch (XmlException)
+
+            using var memoryStream = new MemoryStream();
+            using var writer = new XmlTextWriter(memoryStream, Encoding.UTF8);
+
+            var serializer = new System.Xml.Serialization.XmlSerializer(obj.GetType(), "");
+            if (xmlSerializerNamespaces != null)
             {
-                throw new Exception("Xml Serialization error.");
+                writer.Namespaces = true;
+                serializer.Serialize(writer, obj, xmlSerializerNamespaces);
             }
+            else
+            {
+                serializer.Serialize(writer, obj);
+            }
+
+            writer.Close();
+            return Encoding.UTF8.GetString(memoryStream.ToArray());
+        }
+        catch (XmlException)
+        {
+            throw new Exception("Xml Serialization error.");
         }
     }
 }

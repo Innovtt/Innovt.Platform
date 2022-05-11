@@ -5,9 +5,8 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-namespace Innovt.Data.DataSources
+namespace Innovt.Data.DataSources;
+
+public interface IDataSourceWriter : IDataSource
 {
-    public interface IDataSourceWriter : IDataSource
-    {
-    }
 }

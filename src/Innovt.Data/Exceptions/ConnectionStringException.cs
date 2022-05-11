@@ -8,13 +8,12 @@
 using Innovt.Core.Exceptions;
 using System;
 
-namespace Innovt.Data.Exceptions
+namespace Innovt.Data.Exceptions;
+
+[Serializable]
+public class ConnectionStringException : ConfigurationException
 {
-    [Serializable]
-    public class ConnectionStringException : ConfigurationException
+    public ConnectionStringException(string message) : base(message)
     {
-        public ConnectionStringException(string message) : base(message)
-        {
-        }
     }
 }

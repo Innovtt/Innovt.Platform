@@ -8,27 +8,27 @@ using Innovt.Core.Utilities;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Innovt.Contrib.Authorization.Platform.Domain.Filters
+namespace Innovt.Contrib.Authorization.Platform.Domain.Filters;
+
+public class RoleByUserFilter : IFilter
 {
-    public class RoleByUserFilter : IFilter
+    public string ExternalId { get; set; }
+    public string DomainId { get; set; }
+
+    public RoleByUserFilter(string externalId, string domainId)
     {
-        public string ExternalId { get; set; }
-        public string DomainId { get; set; }
+        ExternalId = externalId;
+        DomainId = domainId;
+    }
 
-        public RoleByUserFilter(string externalId, string domainId)
-        {
-            this.ExternalId = externalId;
-            this.DomainId = domainId;
-        }
+    public RoleByUserFilter()
+    {
+    }
 
-        public RoleByUserFilter()
-        {
-        }
-
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            if (ExternalId.IsNullOrEmpty() && DomainId.IsNullOrEmpty())
-                yield return new ValidationResult("Domain id or External is required.", new[] { nameof(ExternalId), nameof(DomainId) });
-        }
+    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    {
+        if (ExternalId.IsNullOrEmpty() && DomainId.IsNullOrEmpty())
+            yield return new ValidationResult("Domain id or External is required.",
+                new[] { nameof(ExternalId), nameof(DomainId) });
     }
 }

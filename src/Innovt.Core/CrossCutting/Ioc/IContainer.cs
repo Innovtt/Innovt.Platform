@@ -8,24 +8,23 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace Innovt.Core.CrossCutting.Ioc
+namespace Innovt.Core.CrossCutting.Ioc;
+
+public interface IContainer : IDisposable
 {
-    public interface IContainer : IDisposable
-    {
-        void AddModule(IOCModule iocModule);
+    void AddModule(IOCModule iocModule);
 
-        object Resolve(Type type);
+    object Resolve(Type type);
 
-        TService Resolve<TService>();
+    TService Resolve<TService>();
 
-        TService Resolve<TService>(Type type);
+    TService Resolve<TService>(Type type);
 
-        TService Resolve<TService>(string instanceKey);
+    TService Resolve<TService>(string instanceKey);
 
-        void Release(object obj);
+    void Release(object obj);
 
-        IServiceScope CreateScope();
+    IServiceScope CreateScope();
 
-        void CheckConfiguration();
-    }
+    void CheckConfiguration();
 }

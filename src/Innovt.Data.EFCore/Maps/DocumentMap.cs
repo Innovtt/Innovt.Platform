@@ -10,36 +10,32 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 
-namespace Innovt.Data.EFCore.Maps
+namespace Innovt.Data.EFCore.Maps;
+
+public class DocumentMap : IEntityTypeConfiguration<Document>
 {
-    public class DocumentMap : IEntityTypeConfiguration<Document>
+    private readonly bool ignoreDocumentType;
+
+    public DocumentMap(bool ignoreDocumentType = false)
     {
-        private readonly bool ignoreDocumentType;
+        this.ignoreDocumentType = ignoreDocumentType;
+    }
 
-        public DocumentMap(bool ignoreDocumentType = false)
+    public void Configure(EntityTypeBuilder<Document> builder)
+    {
+        if (builder is null) throw new ArgumentNullException(nameof(builder));
+
+        builder.HasKey(d => d.Id);
+        builder.Property(e => e.Number).HasMaxLength(20).IsRequired();
+
+        if (ignoreDocumentType)
         {
-            this.ignoreDocumentType = ignoreDocumentType;
+            builder.Ignore(d => d.DocumentType);
+            builder.Ignore(d => d.DocumentTypeId);
         }
-
-        public void Configure(EntityTypeBuilder<Document> builder)
+        else
         {
-            if (builder is null)
-            {
-                throw new ArgumentNullException(nameof(builder));
-            }
-
-            builder.HasKey(d => d.Id);
-            builder.Property(e => e.Number).HasMaxLength(20).IsRequired();
-
-            if (ignoreDocumentType)
-            {
-                builder.Ignore(d => d.DocumentType);
-                builder.Ignore(d => d.DocumentTypeId);
-            }
-            else
-            {
-                builder.HasOne(d => d.DocumentType).WithMany().HasForeignKey(d => d.DocumentTypeId);
-            }
+            builder.HasOne(d => d.DocumentType).WithMany().HasForeignKey(d => d.DocumentTypeId);
         }
     }
 }

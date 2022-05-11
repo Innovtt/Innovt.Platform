@@ -9,14 +9,13 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Innovt.Domain.Core.Repository
+namespace Innovt.Domain.Core.Repository;
+
+public interface IUnitOfWork : IDisposable
 {
-    public interface IUnitOfWork : IDisposable
-    {
-        int Commit();
+    int Commit();
 
-        Task<int> CommitAsync(CancellationToken cancellationToken = default);
+    Task<int> CommitAsync(CancellationToken cancellationToken = default);
 
-        void Rollback();
-    }
+    void Rollback();
 }

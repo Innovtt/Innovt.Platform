@@ -7,9 +7,8 @@
 
 using System.ComponentModel.DataAnnotations;
 
-namespace Innovt.Core.Cqrs.Commands
+namespace Innovt.Core.Cqrs.Commands;
+
+public interface ICommand : IValidatableObject
 {
-    public interface ICommand : IValidatableObject
-    {
-    }
 }

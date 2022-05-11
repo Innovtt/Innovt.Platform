@@ -8,20 +8,19 @@
 using Innovt.Domain.Core.Model;
 using System.Collections.Generic;
 
-namespace Innovt.Domain.Adresses
+namespace Innovt.Domain.Adresses;
+
+public class State : ValueObject
 {
-    public class State : ValueObject
-    {
-        public string Description { get; set; }
+    public string Description { get; set; }
 
-        public string Acronym { get; set; }
+    public string Acronym { get; set; }
 
-        public string UtcOffset { get; set; }
+    public string UtcOffset { get; set; }
 
-        public int CountryId { get; set; }
+    public int CountryId { get; set; }
 
-        public virtual Country Country { get; set; }
+    public virtual Country Country { get; set; }
 
-        public virtual IList<City> Cities { get; set; }
-    }
+    public virtual IList<City> Cities { get; set; }
 }

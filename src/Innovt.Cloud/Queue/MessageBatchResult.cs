@@ -5,14 +5,13 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-namespace Innovt.Cloud.Queue
+namespace Innovt.Cloud.Queue;
+
+public class MessageQueueResult
 {
-    public class MessageQueueResult
-    {
-        public string Id { get; set; }
+    public string Id { get; set; }
 
-        public string Error { get; set; }
+    public string Error { get; set; }
 
-        public bool Success { get; set; }
-    }
+    public bool Success { get; set; }
 }

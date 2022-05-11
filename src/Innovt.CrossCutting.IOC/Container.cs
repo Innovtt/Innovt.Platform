@@ -8,90 +8,91 @@
 using Innovt.Core.CrossCutting.Ioc;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-namespace Innovt.CrossCutting.IOC
+
+namespace Innovt.CrossCutting.IOC;
+
+public sealed class Container : IContainer
 {
-    public sealed class Container : IContainer
+    private readonly Lamar.Container container;
+
+    public Container(IServiceCollection services)
     {
-        private readonly Lamar.Container container;
+        container = new Lamar.Container(services);
+    }
 
-        public Container(IServiceCollection services)
+    /// <summary>
+    ///     With default scan
+    /// </summary>
+    public Container()
+    {
+        container = new Lamar.Container(c =>
         {
-            container = new Lamar.Container(services);
-        }
-        /// <summary>
-        ///     With default scan
-        /// </summary>
-        public Container()
-        {
-            container = new Lamar.Container(c =>
+            c.Scan(s =>
             {
-                c.Scan(s =>
-                {
-                    s.TheCallingAssembly();
-                    s.WithDefaultConventions();
-                });
+                s.TheCallingAssembly();
+                s.WithDefaultConventions();
             });
-        }
+        });
+    }
 
-        public Container(IOCModule iocModule)
-        {
-            if (iocModule is null) throw new ArgumentNullException(nameof(iocModule));
+    public Container(IOCModule iocModule)
+    {
+        if (iocModule is null) throw new ArgumentNullException(nameof(iocModule));
 
-            container = new Lamar.Container(iocModule.GetServices());
-        }
+        container = new Lamar.Container(iocModule.GetServices());
+    }
 
-        public void AddModule(IOCModule iocModule)
-        {
-            if (iocModule is null) throw new ArgumentNullException(nameof(iocModule));
+    public void AddModule(IOCModule iocModule)
+    {
+        if (iocModule is null) throw new ArgumentNullException(nameof(iocModule));
 
-            var services = iocModule.GetServices();
+        var services = iocModule.GetServices();
 
-            container.Configure(services);
-        }
+        container.Configure(services);
+    }
 
-        public void CheckConfiguration()
-        {
-            container.AssertConfigurationIsValid();
-        }
+    public void CheckConfiguration()
+    {
+        container.AssertConfigurationIsValid();
+    }
 
-        public object Resolve(Type type)
-        {
-            return container.GetInstance(type);
-        }
+    public object Resolve(Type type)
+    {
+        return container.GetInstance(type);
+    }
 
-        public TService Resolve<TService>()
-        {
-            return container.GetInstance<TService>();
-        }
+    public TService Resolve<TService>()
+    {
+        return container.GetInstance<TService>();
+    }
 
-        public TService Resolve<TService>(Type type)
-        {
-            return (TService)container.GetInstance(type);
-        }
+    public TService Resolve<TService>(Type type)
+    {
+        return (TService)container.GetInstance(type);
+    }
 
-        public TService Resolve<TService>(string instanceKey)
-        {
-            return container.GetInstance<TService>(instanceKey);
-        }
+    public TService Resolve<TService>(string instanceKey)
+    {
+        return container.GetInstance<TService>(instanceKey);
+    }
 
-        public void Dispose()
-        {
-            container?.Dispose();
-        }
+    public void Dispose()
+    {
+        container?.Dispose();
+    }
 
-        public void Release(object obj)
-        {
-            container.TryAddDisposable(obj);
-        }
+    public void Release(object obj)
+    {
+        container.TryAddDisposable(obj);
+    }
 
-        public IServiceScope CreateScope()
-        {
-            return container.CreateScope();
-        }
+    public IServiceScope CreateScope()
+    {
+        return container.CreateScope();
+    }
 
-        public object GetService(Type serviceType)
-        {
-            return container.GetInstance(serviceType);
-        }
+    public object GetService(Type serviceType)
+    {
+        return container.GetInstance(serviceType);
     }
 }

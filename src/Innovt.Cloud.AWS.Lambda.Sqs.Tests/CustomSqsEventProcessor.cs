@@ -4,39 +4,35 @@ using Innovt.Core.CrossCutting.Log;
 using System;
 using System.Threading.Tasks;
 
-namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests
+namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests;
+
+public class CustomSqsEventProcessor : SqsEventProcessor<Person>
 {
-    public class CustomSqsEventProcessor : SqsEventProcessor<Person>
+    public CustomSqsEventProcessor(ILogger logger) : base(logger)
     {
-        public CustomSqsEventProcessor(ILogger logger) : base(logger)
-        {
-        }
-        public CustomSqsEventProcessor(bool isFifo, bool reportBatchItemFailures) : base(isFifo, reportBatchItemFailures)
-        {
-        }
-        public CustomSqsEventProcessor() : base()
-        {
-        }
+    }
+
+    public CustomSqsEventProcessor(bool isFifo, bool reportBatchItemFailures) : base(isFifo, reportBatchItemFailures)
+    {
+    }
+
+    public CustomSqsEventProcessor() : base()
+    {
+    }
 
 
-        protected override IContainer SetupIocContainer()
-        {
-            return null;
-        }
+    protected override IContainer SetupIocContainer()
+    {
+        return null;
+    }
 
-        protected override Task ProcessMessage(QueueMessage<Person> message)
-        {
-            //fake rule to test some conditions.
+    protected override Task ProcessMessage(QueueMessage<Person> message)
+    {
+        //fake rule to test some conditions.
 
-            if (message.Body.Name == "michel")
-            {
-                return Task.CompletedTask;
-            }
-            else
-            {
-                throw new Exception("Fake exception");
-            }
-
-        }
+        if (message.Body.Name == "michel")
+            return Task.CompletedTask;
+        else
+            throw new Exception("Fake exception");
     }
 }

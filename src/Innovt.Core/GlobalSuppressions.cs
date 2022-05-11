@@ -16,5 +16,9 @@ using System.Diagnostics.CodeAnalysis;
 [assembly:
     SuppressMessage("Design", "CA1055:URI-like return values should not be strings", Justification = "<Pending>",
         Scope = "member", Target = "~M:Innovt.Core.Utilities.StringExtensions.UrlEncode(System.String)~System.String")]
-[assembly: SuppressMessage("Naming", "CA1716:Identifiers should not match keywords", Justification = "<Pending>", Scope = "member", Target = "~M:Innovt.Core.CrossCutting.Log.ILogger.Error(System.String,System.Object[])")]
-[assembly: SuppressMessage("Usage", "CA2229:Implement serialization constructors", Justification = "<Pending>", Scope = "type", Target = "~T:Innovt.Core.Exceptions.BusinessException")]
+[assembly:
+    SuppressMessage("Naming", "CA1716:Identifiers should not match keywords", Justification = "<Pending>",
+        Scope = "member", Target = "~M:Innovt.Core.CrossCutting.Log.ILogger.Error(System.String,System.Object[])")]
+[assembly:
+    SuppressMessage("Usage", "CA2229:Implement serialization constructors", Justification = "<Pending>", Scope = "type",
+        Target = "~T:Innovt.Core.Exceptions.BusinessException")]

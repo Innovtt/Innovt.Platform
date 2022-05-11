@@ -8,16 +8,15 @@
 using Innovt.Domain.Adresses;
 using Innovt.Domain.Core.Model;
 
-namespace Innovt.Domain.Documents
+namespace Innovt.Domain.Documents;
+
+public class DocumentType : ValueObject
 {
-    public class DocumentType : ValueObject
-    {
-        public string Name { get; set; }
+    public string Name { get; set; }
 
-        public int CountryId { get; set; }
+    public int CountryId { get; set; }
 
-        public Country Country { get; set; }
+    public Country Country { get; set; }
 
-        public string Mask { get; set; }
-    }
+    public string Mask { get; set; }
 }

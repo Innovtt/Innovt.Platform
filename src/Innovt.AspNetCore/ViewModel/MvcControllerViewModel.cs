@@ -5,26 +5,25 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-namespace Innovt.AspNetCore.ViewModel
+namespace Innovt.AspNetCore.ViewModel;
+
+public class MvcControllerViewModel : ViewModelBase
 {
-    public class MvcControllerViewModel : ViewModelBase
+    public string Area { get; set; }
+
+    public string DisplayName { get; set; }
+
+    public string Name { get; set; }
+
+    private List<MvcActionViewModel> Actions { get; set; }
+
+
+    public void AddActions(IList<MvcActionViewModel> actions)
     {
-        public string Area { get; set; }
+        if (actions == null) throw new ArgumentNullException(nameof(actions));
 
-        public string DisplayName { get; set; }
+        Actions ??= new List<MvcActionViewModel>();
 
-        public string Name { get; set; }
-
-        private List<MvcActionViewModel> Actions { get; set; }
-
-
-        public void AddActions(IList<MvcActionViewModel> actions)
-        {
-            if (actions == null) throw new ArgumentNullException(nameof(actions));
-
-            Actions ??= new List<MvcActionViewModel>();
-
-            Actions.AddRange(actions);
-        }
+        Actions.AddRange(actions);
     }
 }

@@ -5,12 +5,11 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-namespace Innovt.Cloud.AWS.Cognito.Model
-{
-    public class SignUpResponse
-    {
-        public bool Confirmed { get; set; }
+namespace Innovt.Cloud.AWS.Cognito.Model;
 
-        public string UUID { get; set; }
-    }
+public class SignUpResponse
+{
+    public bool Confirmed { get; set; }
+
+    public string UUID { get; set; }
 }

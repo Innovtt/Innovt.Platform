@@ -8,16 +8,15 @@
 using System;
 using System.Text.Json.Serialization;
 
-namespace Innovt.Core.Serialization
-{
-    [AttributeUsage(AttributeTargets.Property)]
-    public class JsonFormatAttribute : JsonAttribute
-    {
-        public JsonFormatAttribute(string format)
-        {
-            Format = format;
-        }
+namespace Innovt.Core.Serialization;
 
-        public string Format { get; }
+[AttributeUsage(AttributeTargets.Property)]
+public class JsonFormatAttribute : JsonAttribute
+{
+    public JsonFormatAttribute(string format)
+    {
+        Format = format;
     }
+
+    public string Format { get; }
 }

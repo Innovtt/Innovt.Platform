@@ -5,12 +5,11 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-namespace Innovt.Core.Serialization
-{
-    public interface ISerializer
-    {
-        T DeserializeObject<T>(string serializedObject);
+namespace Innovt.Core.Serialization;
 
-        string SerializeObject<T>(T obj);
-    }
+public interface ISerializer
+{
+    T DeserializeObject<T>(string serializedObject);
+
+    string SerializeObject<T>(T obj);
 }

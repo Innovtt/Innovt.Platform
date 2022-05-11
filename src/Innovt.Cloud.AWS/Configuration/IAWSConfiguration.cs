@@ -7,14 +7,13 @@
 
 using Amazon.Runtime;
 
-namespace Innovt.Cloud.AWS.Configuration
+namespace Innovt.Cloud.AWS.Configuration;
+
+public interface IAwsConfiguration : IConfiguration
 {
-    public interface IAwsConfiguration : IConfiguration
-    {
-        string AccountNumber { get; set; }
+    string AccountNumber { get; set; }
 
-        string Profile { get; set; }
+    string Profile { get; set; }
 
-        AWSCredentials GetCredential();
-    }
+    AWSCredentials GetCredential();
 }

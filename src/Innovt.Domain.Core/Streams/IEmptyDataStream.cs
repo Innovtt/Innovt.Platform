@@ -5,9 +5,8 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-namespace Innovt.Domain.Core.Streams
+namespace Innovt.Domain.Core.Streams;
+
+public interface IEmptyDataStream : IDataStream
 {
-    public interface IEmptyDataStream : IDataStream
-    {
-    }
 }

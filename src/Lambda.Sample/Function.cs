@@ -6,40 +6,38 @@ using System;
 using System.Threading.Tasks;
 
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
-namespace Lambda.Sample
+
+namespace Lambda.Sample;
+
+public class Function : SqsEventProcessor<SampleEvent>
 {
-    public class Function : SqsEventProcessor<SampleEvent>
+    public Function() : base()
     {
-        public Function() : base()
-        {
-        }
+    }
 
-        protected override Task ProcessMessage(QueueMessage<SampleEvent> message)
-        {
-            Console.WriteLine("Stating process message");
+    protected override Task ProcessMessage(QueueMessage<SampleEvent> message)
+    {
+        Console.WriteLine("Stating process message");
 
-            Console.WriteLine($"TraceId Id {message.TraceId}");
+        Console.WriteLine($"TraceId Id {message.TraceId}");
 
-            Console.WriteLine($"NUmber of attempts {message.ApproximateReceiveCount}");
+        Console.WriteLine($"NUmber of attempts {message.ApproximateReceiveCount}");
 
-            Console.WriteLine($"Body content is: {message.Body}");
+        Console.WriteLine($"Body content is: {message.Body}");
 
-            if (message.Body!=null && message.Body.Name.Contains("michel"))
-                throw new Exception("Testing batch failure");
+        if (message.Body != null && message.Body.Name.Contains("michel"))
+            throw new Exception("Testing batch failure");
 
-            foreach (var item in message.Attributes)
-            {
-                Console.WriteLine($"Attribute Key: {item.Key} and Value is {item.Value}");
-            }
+        foreach (var item in message.Attributes)
+            Console.WriteLine($"Attribute Key: {item.Key} and Value is {item.Value}");
 
-            Console.WriteLine("Message process completed");
+        Console.WriteLine("Message process completed");
 
-            return Task.CompletedTask;
-        }
+        return Task.CompletedTask;
+    }
 
-        protected override IContainer SetupIocContainer()
-        {
-            return null;
-        }
+    protected override IContainer SetupIocContainer()
+    {
+        return null;
     }
 }

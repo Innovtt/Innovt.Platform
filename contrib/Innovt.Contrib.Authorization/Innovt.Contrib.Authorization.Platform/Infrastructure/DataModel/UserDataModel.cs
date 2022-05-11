@@ -7,61 +7,60 @@ using Innovt.Domain.Security;
 using System;
 using System.Collections.Generic;
 
-namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
+namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel;
+
+internal class UserDataModel : DataModelBase
 {
-    internal class UserDataModel : DataModelBase
+    public UserDataModel()
     {
-        public UserDataModel()
+        EntityType = "User";
+    }
+
+    public string AuthId { get; set; }
+    public string DomainId { get; set; }
+    public List<RoleDataModel> Roles { get; set; }
+    public DateTime CreatedAt { get; set; }
+
+    public static AuthUser ToUser(UserDataModel userDataModel)
+    {
+        if (userDataModel is null)
+            return null;
+
+        var authUser = new AuthUser
         {
-            EntityType = "User";
-        }
+            Id = userDataModel.AuthId,
+            DomainId = userDataModel.DomainId,
+            CreatedAt = userDataModel.CreatedAt
+        };
 
-        public string AuthId { get; set; }
-        public string DomainId { get; set; }
-        public List<RoleDataModel> Roles { get; set; }
-        public DateTime CreatedAt { get; set; }
+        if (userDataModel.Roles == null) return authUser;
 
-        public static AuthUser ToUser(UserDataModel userDataModel)
+
+        foreach (var role in userDataModel.Roles) authUser.AssignRole(RoleDataModel.ToDomain(role));
+
+        return authUser;
+    }
+
+    public static UserDataModel FromUser(AuthUser user)
+    {
+        if (user is null)
+            return null;
+
+        var dataModel = new UserDataModel
         {
-            if (userDataModel is null)
-                return null;
+            Id = $"U#{user.Id}",
+            Sk = $"DID#{user.DomainId}",
+            AuthId = user.Id,
+            DomainId = user.DomainId,
+            CreatedAt = user.CreatedAt.GetValueOrDefault().UtcDateTime
+        };
 
-            var authUser = new AuthUser
-            {
-                Id = userDataModel.AuthId,
-                DomainId = userDataModel.DomainId,
-                CreatedAt = userDataModel.CreatedAt
-            };
+        if (user.Roles == null) return dataModel;
 
-            if (userDataModel.Roles == null) return authUser;
+        dataModel.Roles = new List<RoleDataModel>();
 
+        foreach (var role in user.Roles) dataModel.Roles.Add(RoleDataModel.FromDomain(role));
 
-            foreach (var role in userDataModel.Roles) authUser.AssignRole(RoleDataModel.ToDomain(role));
-
-            return authUser;
-        }
-
-        public static UserDataModel FromUser(AuthUser user)
-        {
-            if (user is null)
-                return null;
-
-            var dataModel = new UserDataModel
-            {
-                Id = $"U#{user.Id}",
-                Sk = $"DID#{user.DomainId}",
-                AuthId = user.Id,
-                DomainId = user.DomainId,
-                CreatedAt = user.CreatedAt.GetValueOrDefault().UtcDateTime
-            };
-
-            if (user.Roles == null) return dataModel;
-
-            dataModel.Roles = new List<RoleDataModel>();
-
-            foreach (var role in user.Roles) dataModel.Roles.Add(RoleDataModel.FromDomain(role));
-
-            return dataModel;
-        }
+        return dataModel;
     }
 }

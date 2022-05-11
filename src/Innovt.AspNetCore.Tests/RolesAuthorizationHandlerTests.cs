@@ -12,411 +12,415 @@ using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Innovt.AspNetCore.Tests
+namespace Innovt.AspNetCore.Tests;
+
+[TestFixture]
+public class RolesAuthorizationHandlerTests
 {
-    [TestFixture]
-    public class RolesAuthorizationHandlerTests
+    private IAuthorizationRepository authorizationRepositoryMoq;
+    private ILogger loggerMock;
+
+
+    [SetUp]
+    public void Setup()
     {
-        private IAuthorizationRepository authorizationRepositoryMoq;
-        private ILogger loggerMock;
+        authorizationRepositoryMoq = Substitute.For<IAuthorizationRepository>();
+        loggerMock = Substitute.For<ILogger>();
+    }
 
+    [TearDown]
+    public void TearDown()
+    {
+        authorizationRepositoryMoq = null;
+        loggerMock = null;
+    }
 
-        [SetUp]
-        public void Setup()
+    [Test]
+    public void ConstructorShould_ThrowException_If_Parameters_Is_NUll()
+    {
+        Assert.Throws<ArgumentNullException>(() => new RolesAuthorizationHandler(null, loggerMock));
+
+        Assert.Throws<ArgumentNullException>(() => new RolesAuthorizationHandler(authorizationRepositoryMoq, null));
+    }
+
+    private AuthorizationHandlerContext CreateContext(ClaimsPrincipal user)
+    {
+        return new AuthorizationHandlerContext(new List<IAuthorizationRequirement>()
         {
-            authorizationRepositoryMoq = Substitute.For<IAuthorizationRepository>();
-            loggerMock = Substitute.For<ILogger>();
-        }
+            new RolesAuthorizationRequirement(new[] { "Admin" })
+        }, user, null);
+    }
 
-        [TearDown]
-        public void TearDown()
+    [Test]
+    public async Task HandleAsync_Fail_If_User_Is_Not_Authenticated()
+    {
+        var handle = new RolesAuthorizationHandler(authorizationRepositoryMoq, loggerMock);
+
+        var user = new ClaimsPrincipal();
+        var context = CreateContext(user);
+        await handle.HandleAsync(context);
+        Assert.IsTrue(context.HasFailed);
+    }
+
+    [Test]
+    public async Task HandleAsync_Fail_If_User_HasNoId()
+    {
+        var handle = new RolesAuthorizationHandler(authorizationRepositoryMoq, loggerMock);
+
+        var identity = Substitute.For<ClaimsIdentity>();
+
+        identity.IsAuthenticated.Returns(true);
+
+        var principal = new ClaimsPrincipal(identity);
+        var context = CreateContext(principal);
+        await handle.HandleAsync(context);
+        Assert.IsTrue(context.HasFailed);
+    }
+
+    [Test]
+    public async Task HandleAsync_Fail_If_User_Does_Not_Exist()
+    {
+        authorizationRepositoryMoq.GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>())
+            .Returns(default(AuthUser));
+
+        var handle = new RolesAuthorizationHandler(authorizationRepositoryMoq, loggerMock);
+
+        var identity = Substitute.For<ClaimsIdentity>();
+
+        identity.IsAuthenticated.Returns(true);
+        identity.Claims.Returns(new List<Claim>()
         {
-            authorizationRepositoryMoq = null;
-            loggerMock = null;
-        }
+            new(ClaimTypes.NameIdentifier, "564654654")
+        });
 
-        [Test]
-        public void ConstructorShould_ThrowException_If_Parameters_Is_NUll()
+        var principal = new ClaimsPrincipal(identity);
+
+        var context = CreateContext(principal);
+
+        await handle.HandleAsync(context);
+        Assert.IsTrue(context.HasFailed);
+
+        await authorizationRepositoryMoq.Received(1)
+            .GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
+    }
+
+    [Test]
+    public async Task HandleAsync_Fail_If_User_HasNoRoles()
+    {
+        var user = new AuthUser()
         {
-            Assert.Throws<ArgumentNullException>(() => new RolesAuthorizationHandler(null, loggerMock));
+            Name = "MIchel",
+            DomainId = "123456",
+            Id = "michel@antecipa.com"
+        };
 
-            Assert.Throws<ArgumentNullException>(() => new RolesAuthorizationHandler(authorizationRepositoryMoq, null));
-        }
+        authorizationRepositoryMoq.GetUserByExternalId(user.Id, Arg.Any<CancellationToken>())
+            .Returns(user);
 
-        private AuthorizationHandlerContext CreateContext(ClaimsPrincipal user)
+        var handle = new RolesAuthorizationHandler(authorizationRepositoryMoq, loggerMock);
+
+        var identity = Substitute.For<ClaimsIdentity>();
+
+        identity.IsAuthenticated.Returns(true);
+        identity.Claims.Returns(new List<Claim>()
         {
-            return new AuthorizationHandlerContext(new List<IAuthorizationRequirement>()
-            {
-                new RolesAuthorizationRequirement(new []{"Admin"})
-            }, user, null);
-        }
+            new(ClaimTypes.NameIdentifier, user.Id)
+        });
 
-        [Test]
-        public async Task HandleAsync_Fail_If_User_Is_Not_Authenticated()
+        var principal = new ClaimsPrincipal(identity);
+
+        var context = CreateContext(principal);
+
+        await handle.HandleAsync(context);
+
+        Assert.IsTrue(context.HasFailed);
+
+        await authorizationRepositoryMoq.Received(1)
+            .GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
+
+        loggerMock.Received(1).Warning($"User of id {user.Id} has no roles defined.");
+    }
+
+    [Test]
+    [TestCase("Admin", true)]
+    [TestCase("User", false)]
+    public async Task HandleAsync_Fail_If_User_Has_NoMatting_Role(string role, bool success)
+    {
+        var group = new Group()
         {
-            var handle = new RolesAuthorizationHandler(authorizationRepositoryMoq, loggerMock);
+            Description = "Default"
+        };
 
-            var user = new ClaimsPrincipal();
-            var context = CreateContext(user);
-            await handle.HandleAsync(context);
-            Assert.IsTrue(context.HasFailed);
-        }
-
-        [Test]
-        public async Task HandleAsync_Fail_If_User_HasNoId()
+        group.AssignRole(new Role()
         {
-            var handle = new RolesAuthorizationHandler(authorizationRepositoryMoq, loggerMock);
+            Scope = "User", //no scope
+            Name = role
+        });
 
-            var identity = NSubstitute.Substitute.For<ClaimsIdentity>();
-
-            identity.IsAuthenticated.Returns(true);
-
-            var principal = new ClaimsPrincipal(identity);
-            var context = CreateContext(principal);
-            await handle.HandleAsync(context);
-            Assert.IsTrue(context.HasFailed);
-        }
-
-        [Test]
-        public async Task HandleAsync_Fail_If_User_Does_Not_Exist()
+        var user = new AuthUser()
         {
-            authorizationRepositoryMoq.GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>())
-                .Returns(default(AuthUser));
+            Name = "Michel",
+            DomainId = "123456",
+            Id = "michel@antecipa.com"
+        };
 
-            var handle = new RolesAuthorizationHandler(authorizationRepositoryMoq, loggerMock);
+        user.AssignGroup(group);
 
-            var identity = NSubstitute.Substitute.For<ClaimsIdentity>();
+        authorizationRepositoryMoq.GetUserByExternalId(user.Id, Arg.Any<CancellationToken>())
+            .Returns(user);
 
-            identity.IsAuthenticated.Returns(true);
-            identity.Claims.Returns(new List<Claim>()
-            {
-                new Claim(ClaimTypes.NameIdentifier, "564654654")
-            });
+        var handle = new RolesAuthorizationHandler(authorizationRepositoryMoq, loggerMock);
 
-            var principal = new ClaimsPrincipal(identity);
+        var identity = Substitute.For<ClaimsIdentity>();
 
-            var context = CreateContext(principal);
-
-            await handle.HandleAsync(context);
-            Assert.IsTrue(context.HasFailed);
-
-            await authorizationRepositoryMoq.Received(1).GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
-        }
-
-        [Test]
-        public async Task HandleAsync_Fail_If_User_HasNoRoles()
+        identity.IsAuthenticated.Returns(true);
+        identity.Claims.Returns(new List<Claim>()
         {
-            var user = new AuthUser()
-            {
-                Name = "MIchel",
-                DomainId = "123456",
-                Id = "michel@antecipa.com"
-            };
+            new(ClaimTypes.NameIdentifier, user.Id)
+        });
 
-            authorizationRepositoryMoq.GetUserByExternalId(user.Id, Arg.Any<CancellationToken>())
-                .Returns(user);
+        var principal = new ClaimsPrincipal(identity);
 
-            var handle = new RolesAuthorizationHandler(authorizationRepositoryMoq, loggerMock);
+        var context = CreateContext(principal);
 
-            var identity = NSubstitute.Substitute.For<ClaimsIdentity>();
+        await handle.HandleAsync(context);
 
-            identity.IsAuthenticated.Returns(true);
-            identity.Claims.Returns(new List<Claim>()
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.Id)
-            });
+        Assert.IsTrue(context.HasSucceeded == success);
+        Assert.IsTrue(context.HasFailed == !success);
 
-            var principal = new ClaimsPrincipal(identity);
+        await authorizationRepositoryMoq.Received(1)
+            .GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
+    }
 
-            var context = CreateContext(principal);
 
-            await handle.HandleAsync(context);
-
-            Assert.IsTrue(context.HasFailed);
-
-            await authorizationRepositoryMoq.Received(1).GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
-
-            loggerMock.Received(1).Warning($"User of id {user.Id} has no roles defined.");
-        }
-
-        [Test]
-        [TestCase("Admin", true)]
-        [TestCase("User", false)]
-        public async Task HandleAsync_Fail_If_User_Has_NoMatting_Role(string role, bool success)
+    [Test]
+    public async Task HandleAsync_Fail_If_User_Has_NoMatting_Scope()
+    {
+        var group = new Group()
         {
-            var group = new Group()
-            {
-                Description = "Default"
-            };
+            Description = "Default"
+        };
 
-            group.AssignRole(new Role()
-            {
-                Scope = "User",//no scope
-                Name = role
-            });
-
-            var user = new AuthUser()
-            {
-                Name = "Michel",
-                DomainId = "123456",
-                Id = "michel@antecipa.com"
-            };
-
-            user.AssignGroup(group);
-
-            authorizationRepositoryMoq.GetUserByExternalId(user.Id, Arg.Any<CancellationToken>())
-                .Returns(user);
-
-            var handle = new RolesAuthorizationHandler(authorizationRepositoryMoq, loggerMock);
-
-            var identity = NSubstitute.Substitute.For<ClaimsIdentity>();
-
-            identity.IsAuthenticated.Returns(true);
-            identity.Claims.Returns(new List<Claim>()
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.Id)
-            });
-
-            var principal = new ClaimsPrincipal(identity);
-
-            var context = CreateContext(principal);
-
-            await handle.HandleAsync(context);
-
-            Assert.IsTrue(context.HasSucceeded == success);
-            Assert.IsTrue(context.HasFailed == !success);
-
-            await authorizationRepositoryMoq.Received(1).GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
-
-        }
-
-
-
-        [Test]
-        public async Task HandleAsync_Fail_If_User_Has_NoMatting_Scope()
+        group.AssignRole(new Role()
         {
-            var group = new Group()
-            {
-                Description = "Default"
-            };
+            Scope = "Buyer", //Fixed scope
+            Name = "Admin"
+        });
 
-            group.AssignRole(new Role()
-            {
-                Scope = "Buyer", //Fixed scope
-                Name = "Admin"
-            });
-
-            var user = new AuthUser()
-            {
-                Name = "Michel",
-                DomainId = "123456",
-                Id = "michel@antecipa.com"
-            };
-
-            user.AssignGroup(group);
-
-            authorizationRepositoryMoq.GetUserByExternalId(user.Id, Arg.Any<CancellationToken>())
-                .Returns(user);
-
-            var handle = new RolesAuthorizationHandler(authorizationRepositoryMoq, loggerMock);
-
-            var identity = NSubstitute.Substitute.For<ClaimsIdentity>();
-
-            identity.IsAuthenticated.Returns(true);
-            identity.Claims.Returns(new List<Claim>()
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.Id)
-            });
-
-            var principal = new ClaimsPrincipal(identity);
-
-            var httpContext = new DefaultHttpContext();
-            httpContext.Request.Headers.Add("X-Application-Scope", "User");
-
-            var context = new AuthorizationHandlerContext(new List<IAuthorizationRequirement>()
-            {
-                new RolesAuthorizationRequirement(new []{"Admin"})
-            }, principal, httpContext);
-
-
-            await handle.HandleAsync(context);
-
-            Assert.IsTrue(context.HasFailed);
-
-            await authorizationRepositoryMoq.Received(1).GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
-        }
-
-
-        [Test]
-        public async Task HandleAsync_Succeed_If_User_Has_Scope_And_Role()
+        var user = new AuthUser()
         {
-            var scope = "Buyer";
-            var group = new Group()
-            {
-                Description = "Default"
-            };
+            Name = "Michel",
+            DomainId = "123456",
+            Id = "michel@antecipa.com"
+        };
 
-            group.AssignRole(new Role()
-            {
-                Scope = scope,
-                Name = "Admin"
-            });
+        user.AssignGroup(group);
 
-            var user = new AuthUser()
-            {
-                Name = "Michel",
-                DomainId = "123456",
-                Id = "michel@antecipa.com"
-            };
+        authorizationRepositoryMoq.GetUserByExternalId(user.Id, Arg.Any<CancellationToken>())
+            .Returns(user);
 
-            user.AssignGroup(group);
+        var handle = new RolesAuthorizationHandler(authorizationRepositoryMoq, loggerMock);
 
-            authorizationRepositoryMoq.GetUserByExternalId(user.Id, Arg.Any<CancellationToken>())
-                .Returns(user);
+        var identity = Substitute.For<ClaimsIdentity>();
 
-            var handle = new RolesAuthorizationHandler(authorizationRepositoryMoq, loggerMock);
-
-            var identity = NSubstitute.Substitute.For<ClaimsIdentity>();
-
-            identity.IsAuthenticated.Returns(true);
-            identity.Claims.Returns(new List<Claim>()
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.Id)
-            });
-
-            var principal = new ClaimsPrincipal(identity);
-
-            var httpContext = new DefaultHttpContext();
-            httpContext.Request.Headers.Add("X-Application-Scope", scope);
-
-            var context = new AuthorizationHandlerContext(new List<IAuthorizationRequirement>()
-            {
-                new RolesAuthorizationRequirement(new []{"Admin"})
-            }, principal, httpContext);
-
-            await handle.HandleAsync(context);
-
-            Assert.IsTrue(context.HasSucceeded);
-
-            await authorizationRepositoryMoq.Received(1).GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
-        }
-
-        [Test]
-        [TestCase("Buyer", "123456", true)]
-        [TestCase("User", "123456", false)]
-        public async Task HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode(string scope, string appCode, bool success)
+        identity.IsAuthenticated.Returns(true);
+        identity.Claims.Returns(new List<Claim>()
         {
-            var group = new Group()
-            {
-                Description = "Default"
-            };
+            new(ClaimTypes.NameIdentifier, user.Id)
+        });
 
-            group.AssignRole(new Role()
-            {
-                Scope = $"123456::Buyer",
-                Name = "Admin"
-            });
+        var principal = new ClaimsPrincipal(identity);
 
-            var user = new AuthUser()
-            {
-                Name = "Michel",
-                DomainId = "123456",
-                Id = "michel@antecipa.com"
-            };
+        var httpContext = new DefaultHttpContext();
+        httpContext.Request.Headers.Add("X-Application-Scope", "User");
 
-            user.AssignGroup(group);
-
-            authorizationRepositoryMoq.GetUserByExternalId(user.Id, Arg.Any<CancellationToken>())
-                .Returns(user);
-
-            var handle = new RolesAuthorizationHandler(authorizationRepositoryMoq, loggerMock);
-
-            var identity = NSubstitute.Substitute.For<ClaimsIdentity>();
-
-            identity.IsAuthenticated.Returns(true);
-            identity.Claims.Returns(new List<Claim>()
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.Id)
-            });
-
-            var principal = new ClaimsPrincipal(identity);
-
-            var httpContext = new DefaultHttpContext();
-            httpContext.Request.Headers.Add("X-Application-Scope", scope);
-            httpContext.Request.Headers.Add("X-Application-Context", "company-id");
-            httpContext.Request.Headers.Add("company-id", appCode);
-
-            var context = new AuthorizationHandlerContext(new List<IAuthorizationRequirement>()
-            {
-                new RolesAuthorizationRequirement(new []{"Admin"})
-            }, principal, httpContext);
-
-            await handle.HandleAsync(context);
-
-            Assert.IsTrue(context.HasSucceeded == success);
-            Assert.IsTrue(context.HasFailed == !success);
-
-            await authorizationRepositoryMoq.Received(1).GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
-        }
-
-        [Test]
-        [TestCase("*", "123456", true)]
-        [TestCase("*::User", "123456", true)]
-        [TestCase("User", "123456", false)]
-        public async Task HandleAsync_When_User_Has_WildCard_Scope(string scope, string appCode, bool success)
+        var context = new AuthorizationHandlerContext(new List<IAuthorizationRequirement>()
         {
-            var group = new Group()
-            {
-                Description = "Default"
-            };
+            new RolesAuthorizationRequirement(new[] { "Admin" })
+        }, principal, httpContext);
 
-            group.AssignRole(new Role()
-            {
-                Scope = scope,
-                Name = "Admin"
-            });
 
-            var user = new AuthUser()
-            {
-                Name = "Michel",
-                DomainId = "123456",
-                Id = "michel@antecipa.com"
-            };
+        await handle.HandleAsync(context);
 
-            user.AssignGroup(group);
+        Assert.IsTrue(context.HasFailed);
 
-            authorizationRepositoryMoq.GetUserByExternalId(user.Id, Arg.Any<CancellationToken>())
-                .Returns(user);
+        await authorizationRepositoryMoq.Received(1)
+            .GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
+    }
 
-            var handle = new RolesAuthorizationHandler(authorizationRepositoryMoq, loggerMock);
 
-            var identity = NSubstitute.Substitute.For<ClaimsIdentity>();
+    [Test]
+    public async Task HandleAsync_Succeed_If_User_Has_Scope_And_Role()
+    {
+        var scope = "Buyer";
+        var group = new Group()
+        {
+            Description = "Default"
+        };
 
-            identity.IsAuthenticated.Returns(true);
-            identity.Claims.Returns(new List<Claim>()
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.Id)
-            });
+        group.AssignRole(new Role()
+        {
+            Scope = scope,
+            Name = "Admin"
+        });
 
-            var principal = new ClaimsPrincipal(identity);
+        var user = new AuthUser()
+        {
+            Name = "Michel",
+            DomainId = "123456",
+            Id = "michel@antecipa.com"
+        };
 
-            var httpContext = new DefaultHttpContext();
-            httpContext.Request.Headers.Add("X-Application-Scope", "User");
-            httpContext.Request.Headers.Add("X-Application-Context", "company-id");
-            httpContext.Request.Headers.Add("company-id", appCode);
+        user.AssignGroup(group);
 
-            var context = new AuthorizationHandlerContext(new List<IAuthorizationRequirement>()
-            {
-                new RolesAuthorizationRequirement(new []{"Admin"})
-            }, principal, httpContext);
+        authorizationRepositoryMoq.GetUserByExternalId(user.Id, Arg.Any<CancellationToken>())
+            .Returns(user);
 
-            await handle.HandleAsync(context);
+        var handle = new RolesAuthorizationHandler(authorizationRepositoryMoq, loggerMock);
 
-            Assert.IsTrue(context.HasSucceeded == success);
-            Assert.IsTrue(context.HasFailed == !success);
+        var identity = Substitute.For<ClaimsIdentity>();
 
-            await authorizationRepositoryMoq.Received(1).GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
-        }
+        identity.IsAuthenticated.Returns(true);
+        identity.Claims.Returns(new List<Claim>()
+        {
+            new(ClaimTypes.NameIdentifier, user.Id)
+        });
 
+        var principal = new ClaimsPrincipal(identity);
+
+        var httpContext = new DefaultHttpContext();
+        httpContext.Request.Headers.Add("X-Application-Scope", scope);
+
+        var context = new AuthorizationHandlerContext(new List<IAuthorizationRequirement>()
+        {
+            new RolesAuthorizationRequirement(new[] { "Admin" })
+        }, principal, httpContext);
+
+        await handle.HandleAsync(context);
+
+        Assert.IsTrue(context.HasSucceeded);
+
+        await authorizationRepositoryMoq.Received(1)
+            .GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
+    }
+
+    [Test]
+    [TestCase("Buyer", "123456", true)]
+    [TestCase("User", "123456", false)]
+    public async Task HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode(string scope, string appCode,
+        bool success)
+    {
+        var group = new Group()
+        {
+            Description = "Default"
+        };
+
+        group.AssignRole(new Role()
+        {
+            Scope = $"123456::Buyer",
+            Name = "Admin"
+        });
+
+        var user = new AuthUser()
+        {
+            Name = "Michel",
+            DomainId = "123456",
+            Id = "michel@antecipa.com"
+        };
+
+        user.AssignGroup(group);
+
+        authorizationRepositoryMoq.GetUserByExternalId(user.Id, Arg.Any<CancellationToken>())
+            .Returns(user);
+
+        var handle = new RolesAuthorizationHandler(authorizationRepositoryMoq, loggerMock);
+
+        var identity = Substitute.For<ClaimsIdentity>();
+
+        identity.IsAuthenticated.Returns(true);
+        identity.Claims.Returns(new List<Claim>()
+        {
+            new(ClaimTypes.NameIdentifier, user.Id)
+        });
+
+        var principal = new ClaimsPrincipal(identity);
+
+        var httpContext = new DefaultHttpContext();
+        httpContext.Request.Headers.Add("X-Application-Scope", scope);
+        httpContext.Request.Headers.Add("X-Application-Context", "company-id");
+        httpContext.Request.Headers.Add("company-id", appCode);
+
+        var context = new AuthorizationHandlerContext(new List<IAuthorizationRequirement>()
+        {
+            new RolesAuthorizationRequirement(new[] { "Admin" })
+        }, principal, httpContext);
+
+        await handle.HandleAsync(context);
+
+        Assert.IsTrue(context.HasSucceeded == success);
+        Assert.IsTrue(context.HasFailed == !success);
+
+        await authorizationRepositoryMoq.Received(1)
+            .GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
+    }
+
+    [Test]
+    [TestCase("*", "123456", true)]
+    [TestCase("*::User", "123456", true)]
+    [TestCase("User", "123456", false)]
+    public async Task HandleAsync_When_User_Has_WildCard_Scope(string scope, string appCode, bool success)
+    {
+        var group = new Group()
+        {
+            Description = "Default"
+        };
+
+        group.AssignRole(new Role()
+        {
+            Scope = scope,
+            Name = "Admin"
+        });
+
+        var user = new AuthUser()
+        {
+            Name = "Michel",
+            DomainId = "123456",
+            Id = "michel@antecipa.com"
+        };
+
+        user.AssignGroup(group);
+
+        authorizationRepositoryMoq.GetUserByExternalId(user.Id, Arg.Any<CancellationToken>())
+            .Returns(user);
+
+        var handle = new RolesAuthorizationHandler(authorizationRepositoryMoq, loggerMock);
+
+        var identity = Substitute.For<ClaimsIdentity>();
+
+        identity.IsAuthenticated.Returns(true);
+        identity.Claims.Returns(new List<Claim>()
+        {
+            new(ClaimTypes.NameIdentifier, user.Id)
+        });
+
+        var principal = new ClaimsPrincipal(identity);
+
+        var httpContext = new DefaultHttpContext();
+        httpContext.Request.Headers.Add("X-Application-Scope", "User");
+        httpContext.Request.Headers.Add("X-Application-Context", "company-id");
+        httpContext.Request.Headers.Add("company-id", appCode);
+
+        var context = new AuthorizationHandlerContext(new List<IAuthorizationRequirement>()
+        {
+            new RolesAuthorizationRequirement(new[] { "Admin" })
+        }, principal, httpContext);
+
+        await handle.HandleAsync(context);
+
+        Assert.IsTrue(context.HasSucceeded == success);
+        Assert.IsTrue(context.HasFailed == !success);
+
+        await authorizationRepositoryMoq.Received(1)
+            .GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
     }
 }

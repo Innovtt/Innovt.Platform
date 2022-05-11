@@ -6,15 +6,14 @@
 using Amazon.DynamoDBv2.DataModel;
 using Innovt.Cloud.Table;
 
-namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel
+namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel;
+
+[DynamoDBTable("ServicesAuthorization")]
+internal abstract class DataModelBase : ITableMessage
 {
-    [DynamoDBTable("ServicesAuthorization")]
-    internal abstract class DataModelBase : ITableMessage
-    {
-        [DynamoDBRangeKey("SK")] public string Sk { get; set; }
+    [DynamoDBRangeKey("SK")] public string Sk { get; set; }
 
-        [DynamoDBProperty] public string EntityType { get; set; }
+    [DynamoDBProperty] public string EntityType { get; set; }
 
-        [DynamoDBHashKey("PK")] public string Id { get; set; }
-    }
+    [DynamoDBHashKey("PK")] public string Id { get; set; }
 }

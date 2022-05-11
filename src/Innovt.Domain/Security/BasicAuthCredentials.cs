@@ -5,12 +5,11 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-namespace Innovt.Domain.Security
-{
-    public class BasicAuthCredentials
-    {
-        public string Username { get; set; }
+namespace Innovt.Domain.Security;
 
-        public string Password { get; set; }
-    }
+public class BasicAuthCredentials
+{
+    public string Username { get; set; }
+
+    public string Password { get; set; }
 }

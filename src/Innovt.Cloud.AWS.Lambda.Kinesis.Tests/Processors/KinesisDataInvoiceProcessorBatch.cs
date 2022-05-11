@@ -5,29 +5,29 @@
 
 using Innovt.Core.CrossCutting.Ioc;
 
-namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors
+namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors;
+
+public class KinesisDataInvoiceProcessorBatch : KinesisDataProcessorBatch<Invoice>
 {
-    public class KinesisDataInvoiceProcessorBatch : KinesisDataProcessorBatch<Invoice>
+    private readonly IServiceMock serviceMock;
+
+    public KinesisDataInvoiceProcessorBatch(IServiceMock serviceMock, bool reportItemFailures = false) : base(
+        reportItemFailures)
     {
-        private readonly IServiceMock serviceMock;
+        this.serviceMock = serviceMock ?? throw new ArgumentNullException(nameof(serviceMock));
+    }
 
-        public KinesisDataInvoiceProcessorBatch(IServiceMock serviceMock, bool reportItemFailures=false):base(reportItemFailures)
-        {
-            this.serviceMock = serviceMock ?? throw new System.ArgumentNullException(nameof(serviceMock));
-        }
+    protected override IContainer SetupIocContainer()
+    {
+        serviceMock.InicializeIoc();
 
-        protected override IContainer SetupIocContainer()
-        {
-            serviceMock.InicializeIoc();
+        return null;
+    }
 
-            return null;
-        }
+    protected override Task<BatchFailureResponse> ProcessMessages(IList<Invoice> messages)
+    {
+        var result = serviceMock.ProcessMessage(messages.First().TraceId);
 
-        protected override Task<BatchFailureResponse> ProcessMessages(IList<Invoice> messages)
-        {
-            var result = serviceMock.ProcessMessage(messages.First().TraceId);
-
-            return Task.FromResult(result);
-        }
+        return Task.FromResult(result);
     }
 }

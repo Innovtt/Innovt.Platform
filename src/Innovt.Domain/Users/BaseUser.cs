@@ -8,22 +8,21 @@
 using Innovt.Domain.Core.Model;
 using System;
 
-namespace Innovt.Domain.Users
+namespace Innovt.Domain.Users;
+
+public class BaseUser : Entity
 {
-    public class BaseUser : Entity
-    {
-        public virtual string FirstName { get; set; }
+    public virtual string FirstName { get; set; }
 
-        public virtual string LastName { get; set; }
+    public virtual string LastName { get; set; }
 
-        public virtual string Email { get; set; }
+    public virtual string Email { get; set; }
 
-        public virtual string Password { get; set; }
+    public virtual string Password { get; set; }
 
-        public virtual bool IsActive { get; set; }
+    public virtual bool IsActive { get; set; }
 
-        public DateTimeOffset? LastAccess { get; set; }
+    public DateTimeOffset? LastAccess { get; set; }
 
-        public string Name => $"{FirstName} {LastName}";
-    }
+    public string Name => $"{FirstName} {LastName}";
 }

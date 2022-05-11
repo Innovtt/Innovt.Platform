@@ -8,20 +8,19 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Innovt.Core.Cqrs.Queries
+namespace Innovt.Core.Cqrs.Queries;
+
+public class SimpleFilter<T> : IFilter
 {
-    public class SimpleFilter<T> : IFilter
+    public SimpleFilter(T data)
     {
-        public SimpleFilter(T data)
-        {
-            Data = data;
-        }
+        Data = data;
+    }
 
-        public T Data { get; set; }
+    public T Data { get; set; }
 
-        public virtual IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            return new List<ValidationResult>();
-        }
+    public virtual IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    {
+        return new List<ValidationResult>();
     }
 }

@@ -42,7 +42,7 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
 
                 using var repo = new BaseRepository(loggerMock, configuration);
 
-                var request = new Table.TransactionWriteRequest()
+                var request = new TransactionWriteRequest()
                 {
                     TransactItems = new List<TransactionWriteItem>()
                 };
@@ -55,8 +55,8 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
                     //ConditionExpression = "Deleted = :d",
                     Keys = new Dictionary<string, object>()
                     {
-                        {"PK", "U#michemob@gmail.com" },
-                        {"SK", "PROFILE" }
+                        { "PK", "U#michemob@gmail.com" },
+                        { "SK", "PROFILE" }
                     },
                     ExpressionAttributeValues = new Dictionary<string, object>()
                     {
@@ -218,7 +218,6 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
                 using var repo = new BaseRepository(loggerMock, configuration);
 
                 var res = await repo.UpdateSequence();
-
             }
             catch (Exception e)
             {

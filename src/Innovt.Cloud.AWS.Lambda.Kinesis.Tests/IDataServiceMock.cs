@@ -1,12 +1,11 @@
 ﻿using Innovt.Domain.Core.Streams;
 
-namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests;
+
+public interface IDataServiceMock<T> where T : class
 {
-    public interface IDataServiceMock<T> where T : class
-    {
-        void InicializeIoc();
+    void InicializeIoc();
 
 
-        void ProcessMessage(IDataStream<T> domainEvent);
-    }
+    void ProcessMessage(IDataStream<T> domainEvent);
 }

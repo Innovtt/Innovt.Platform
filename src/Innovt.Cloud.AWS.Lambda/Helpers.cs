@@ -10,33 +10,32 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.IO;
 
-namespace Innovt.Cloud.AWS.Lambda
+namespace Innovt.Cloud.AWS.Lambda;
+
+public static class Helpers
 {
-    public static class Helpers
+    public static string GetEnvironmentVariable(string varName, string defaultValue, ILambdaContext context = null)
     {
-        public static string GetEnvironmentVariable(string varName, string defaultValue, ILambdaContext context = null)
-        {
-            var variable = Environment.GetEnvironmentVariable(varName);
+        var variable = Environment.GetEnvironmentVariable(varName);
 
-            if (variable != null || context?.ClientContext?.Environment == null) return variable ?? defaultValue;
+        if (variable != null || context?.ClientContext?.Environment == null) return variable ?? defaultValue;
 
 
-            if (context.ClientContext.Environment.ContainsKey(varName))
-                variable = context.ClientContext.Environment[varName];
+        if (context.ClientContext.Environment.ContainsKey(varName))
+            variable = context.ClientContext.Environment[varName];
 
-            return variable ?? defaultValue;
-        }
+        return variable ?? defaultValue;
+    }
 
 
-        public static IConfigurationRoot BuildConfiguration(string environmentVariableName, string defaultValue,
-            ILambdaContext context = null)
-        {
-            var environmentVariable = GetEnvironmentVariable(environmentVariableName, defaultValue, context);
+    public static IConfigurationRoot BuildConfiguration(string environmentVariableName, string defaultValue,
+        ILambdaContext context = null)
+    {
+        var environmentVariable = GetEnvironmentVariable(environmentVariableName, defaultValue, context);
 
-            var configurationName = $"appsettings.{environmentVariable}.json";
+        var configurationName = $"appsettings.{environmentVariable}.json";
 
-            return new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile(configurationName, true, true).Build();
-        }
+        return new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile(configurationName, true, true).Build();
     }
 }

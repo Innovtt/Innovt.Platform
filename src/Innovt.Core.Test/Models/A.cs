@@ -5,14 +5,13 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-namespace Innovt.Core.Test.Models
+namespace Innovt.Core.Test.Models;
+
+public class A
 {
-    public class A
-    {
-        public string Name { get; set; }
+    public string Name { get; set; }
 
-        public string LastName { get; set; }
+    public string LastName { get; set; }
 
-        public int Age { get; set; }
-    }
+    public int Age { get; set; }
 }

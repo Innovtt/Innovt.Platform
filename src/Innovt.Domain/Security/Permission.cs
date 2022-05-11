@@ -8,30 +8,29 @@
 using Innovt.Domain.Core.Model;
 using System;
 
-namespace Innovt.Domain.Security
+namespace Innovt.Domain.Security;
+
+public class Permission : ValueObject<Guid>
 {
-    public class Permission : ValueObject<Guid>
+    public Permission()
     {
-        public Permission()
-        {
-            Id = Guid.NewGuid();
-        }
-
-        /// <summary>
-        /// Can be the area in your Controller
-        /// </summary>
-        public string Scope { get; set; }
-
-        /// <summary>
-        ///     The custom name that you need to show to your customer.
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        ///     * - mean that you want to authorize the full path/domain
-        ///     Controller/* mean that you can authorize all actions
-        ///     Controller/Action mean that you want to authorize only this action
-        /// </summary>
-        public string Resource { get; set; }
+        Id = Guid.NewGuid();
     }
+
+    /// <summary>
+    /// Can be the area in your Controller
+    /// </summary>
+    public string Scope { get; set; }
+
+    /// <summary>
+    ///     The custom name that you need to show to your customer.
+    /// </summary>
+    public string Name { get; set; }
+
+    /// <summary>
+    ///     * - mean that you want to authorize the full path/domain
+    ///     Controller/* mean that you can authorize all actions
+    ///     Controller/Action mean that you want to authorize only this action
+    /// </summary>
+    public string Resource { get; set; }
 }

@@ -5,15 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleAppTest
-{
-    public class UserRepository:Repository
-    {
-        public UserRepository(ILogger logger,IAwsConfiguration configuration):base(logger, configuration)
-        {
-            
-        }
+namespace ConsoleAppTest;
 
-        
+public class UserRepository : Repository
+{
+    public UserRepository(ILogger logger, IAwsConfiguration configuration) : base(logger, configuration)
+    {
     }
 }

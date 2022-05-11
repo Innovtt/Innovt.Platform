@@ -3,10 +3,9 @@
 // Solution: Innovt.Platform
 // Date: 2021-07-20
 
-namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors
+namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors;
+
+public class BaseInvoice
 {
-    public class BaseInvoice
-    {
-        public decimal NetValue { get; set; }
-    }
+    public decimal NetValue { get; set; }
 }

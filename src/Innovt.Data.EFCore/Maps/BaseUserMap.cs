@@ -10,24 +10,20 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 
-namespace Innovt.Data.EFCore.Maps
+namespace Innovt.Data.EFCore.Maps;
+
+public class BaseUserMap : IEntityTypeConfiguration<BaseUser>
 {
-    public class BaseUserMap : IEntityTypeConfiguration<BaseUser>
+    public void Configure(EntityTypeBuilder<BaseUser> builder)
     {
-        public void Configure(EntityTypeBuilder<BaseUser> builder)
-        {
-            if (builder is null)
-            {
-                throw new ArgumentNullException(nameof(builder));
-            }
+        if (builder is null) throw new ArgumentNullException(nameof(builder));
 
-            //'builder.ToTable("User");
+        //'builder.ToTable("User");
 
-            builder.HasKey(u => u.Id);
-            builder.Property(b => b.FirstName).HasMaxLength(50).IsRequired();
-            builder.Property(b => b.LastName).HasMaxLength(50).IsRequired(false);
-            builder.Property(b => b.Email).HasMaxLength(300).IsRequired();
-            builder.Property(b => b.Password).HasMaxLength(50).IsRequired(false);
-        }
+        builder.HasKey(u => u.Id);
+        builder.Property(b => b.FirstName).HasMaxLength(50).IsRequired();
+        builder.Property(b => b.LastName).HasMaxLength(50).IsRequired(false);
+        builder.Property(b => b.Email).HasMaxLength(300).IsRequired();
+        builder.Property(b => b.Password).HasMaxLength(50).IsRequired(false);
     }
 }

@@ -5,24 +5,23 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-namespace Innovt.Domain.Adresses
+namespace Innovt.Domain.Adresses;
+
+public class Coordinate
 {
-    public class Coordinate
+    public Coordinate()
     {
-        public Coordinate()
-        {
-        }
-
-        public Coordinate(long latitude, long longitude)
-        {
-            Longitude = longitude;
-            Latitude = latitude;
-        }
-
-        public int AddressId { get; set; }
-
-        public long Longitude { get; set; }
-
-        public long Latitude { get; set; }
     }
+
+    public Coordinate(long latitude, long longitude)
+    {
+        Longitude = longitude;
+        Latitude = latitude;
+    }
+
+    public int AddressId { get; set; }
+
+    public long Longitude { get; set; }
+
+    public long Latitude { get; set; }
 }

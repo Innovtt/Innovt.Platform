@@ -5,14 +5,13 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-namespace Innovt.Cloud
+namespace Innovt.Cloud;
+
+public interface IConfiguration
 {
-    public interface IConfiguration
-    {
-        string SecretKey { get; set; }
+    string SecretKey { get; set; }
 
-        string AccessKey { get; set; }
+    string AccessKey { get; set; }
 
-        string Region { get; set; }
-    }
+    string Region { get; set; }
 }

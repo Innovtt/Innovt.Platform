@@ -15,25 +15,24 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace Innovt.Data.Ado
+namespace Innovt.Data.Ado;
+
+public class ConnectionFactory : IConnectionFactory
 {
-    public class ConnectionFactory : IConnectionFactory
+    public IDbConnection Create(IDataSource dataSource)
     {
-        public IDbConnection Create(IDataSource dataSource)
+        if (dataSource == null) throw new ArgumentNullException(nameof(dataSource));
+
+        var connectionString = dataSource.GetConnectionString();
+
+        if (connectionString.IsNullOrEmpty())
+            throw new ConnectionStringException($"Data source {dataSource.Name}");
+
+        return dataSource.Provider switch
         {
-            if (dataSource == null) throw new ArgumentNullException(nameof(dataSource));
-
-            var connectionString = dataSource.GetConnectionString();
-
-            if (connectionString.IsNullOrEmpty())
-                throw new ConnectionStringException($"Data source {dataSource.Name}");
-
-            return dataSource.Provider switch
-            {
-                Provider.PostgreSqL => new NpgsqlConnection(connectionString),
-                Provider.Oracle => new OracleConnection(connectionString),
-                _ => new SqlConnection(connectionString)
-            };
-        }
+            Provider.PostgreSqL => new NpgsqlConnection(connectionString),
+            Provider.Oracle => new OracleConnection(connectionString),
+            _ => new SqlConnection(connectionString)
+        };
     }
 }

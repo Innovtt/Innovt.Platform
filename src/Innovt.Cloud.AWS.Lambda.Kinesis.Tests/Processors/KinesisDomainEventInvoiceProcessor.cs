@@ -5,29 +5,28 @@
 
 using Innovt.Core.CrossCutting.Ioc;
 
-namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors
+namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors;
+
+public class KinesisDomainEventInvoiceProcessor : KinesisDomainEventProcessor<InvoiceDomainEvent>
 {
-    public class KinesisDomainEventInvoiceProcessor : KinesisDomainEventProcessor<InvoiceDomainEvent>
+    private readonly IDomainEventServiceMock<InvoiceDomainEvent> serviceMock;
+
+    public KinesisDomainEventInvoiceProcessor(IDomainEventServiceMock<InvoiceDomainEvent> domainEventServiceMock)
     {
-        private readonly IDomainEventServiceMock<InvoiceDomainEvent> serviceMock;
+        serviceMock = domainEventServiceMock ?? throw new ArgumentNullException(nameof(domainEventServiceMock));
+    }
 
-        public KinesisDomainEventInvoiceProcessor(IDomainEventServiceMock<InvoiceDomainEvent> domainEventServiceMock)
-        {
-            this.serviceMock = domainEventServiceMock ?? throw new System.ArgumentNullException(nameof(domainEventServiceMock));
-        }
+    protected override IContainer SetupIocContainer()
+    {
+        serviceMock.InicializeIoc();
 
-        protected override IContainer SetupIocContainer()
-        {
-            serviceMock.InicializeIoc();
+        return null;
+    }
 
-            return null;
-        }
+    protected override Task ProcessMessage(InvoiceDomainEvent message)
+    {
+        serviceMock.ProcessMessage(message);
 
-        protected override Task ProcessMessage(InvoiceDomainEvent message)
-        {
-            serviceMock.ProcessMessage(message);
-
-            return Task.CompletedTask;
-        }
+        return Task.CompletedTask;
     }
 }
