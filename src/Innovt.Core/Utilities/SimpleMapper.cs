@@ -1,0 +1,43 @@
+﻿using System;
+
+namespace Innovt.Core.Utilities;
+
+public static class SimpleMapper
+{
+    internal static T2 MapProperties<T1, T2>(T1 input,T2 output) where T1 : class
+    {
+        if (input == null)
+            return default;
+        
+        var properties = input.GetType().GetProperties();
+
+        foreach (var property in properties)
+        {
+            var outProperty = output.GetType().GetProperty(property.Name);
+
+            if(outProperty != null)
+                outProperty.SetValue(output, property.GetValue(input, null), null);
+        }
+
+        return output;
+    }
+
+    public static T2 Map<T1, T2>(T1 input) where T1 : class
+    {
+        if (input == null)
+            return default;
+
+        var output = Activator.CreateInstance<T2>();
+       
+        return MapProperties(input,output);
+    }
+
+    public static void Map<T1, T2>(T1 inputInstance,T2 outputInstance) where T1 : class
+    {
+        if (inputInstance is null || outputInstance is null)
+            return;
+
+        MapProperties(inputInstance,outputInstance);
+    }
+
+}

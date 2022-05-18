@@ -1,8 +1,11 @@
-﻿using Innovt.Core.Utilities;
+﻿using System;
+using Innovt.Core.Utilities;
 using NUnit.Framework;
 
 namespace Innovt.Core.Test;
 
+
+[TestFixture]
 public class ExtensionsTests
 {
     [Test]

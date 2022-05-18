@@ -5,6 +5,7 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
 using Innovt.Core.Utilities;
 using NUnit.Framework;
 
@@ -13,7 +14,7 @@ namespace Innovt.Core.Test;
 public class CryptographyTests
 {
     [Test]
-    public void AesEncrypt_Should_ThrowException_When_TextIsNull()
+    public void AesEncryptShouldThrowExceptionWhenTextIsNull()
     {
         Assert.Throws<ArgumentNullException>(() => Cryptography.AesEncrypt(null, "alfa"));
 
@@ -23,7 +24,7 @@ public class CryptographyTests
 
     [Test]
     [TestCase("michel borges")]
-    public void AesEncrypt_Cryptography(string plainText)
+    public void AesEncryptCryptography(string plainText)
     {
         var key = "e37306c1755548f79bfac21185d5a6ef";
 

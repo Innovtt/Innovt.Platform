@@ -11,7 +11,7 @@ public class BatchFailureResponse
     }
 
     [JsonPropertyName("batchItemFailures")]
-    public List<ItemFailureIdentifier> BatchItemFailures { get; private set; }
+    public IList<ItemFailureIdentifier> BatchItemFailures { get; private set; }
 
     public void AddItem(string itemIdentifier)
     {
