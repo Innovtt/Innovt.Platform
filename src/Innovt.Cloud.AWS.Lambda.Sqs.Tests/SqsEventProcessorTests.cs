@@ -1,10 +1,12 @@
+using System;
+using System.Collections.Generic;
+using System.Text.Json;
+using System.Threading.Tasks;
 using Amazon.Lambda.Core;
+using Amazon.Lambda.SQSEvents;
 using Amazon.Lambda.TestUtilities;
 using NSubstitute;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests;
 
@@ -15,7 +17,7 @@ public class Tests
     [SetUp]
     public void Setup()
     {
-        lambdaContext = new TestLambdaContext()
+        lambdaContext = new TestLambdaContext
         {
             Logger = Substitute.For<ILambdaLogger>()
         };
@@ -26,7 +28,7 @@ public class Tests
     {
         var processor = new CustomSqsEventProcessor();
 
-        var result = await processor.Process(new Amazon.Lambda.SQSEvents.SQSEvent(), lambdaContext);
+        var result = await processor.Process(new SQSEvent(), lambdaContext);
 
         Assert.IsNotNull(result);
         Assert.IsNull(result.BatchItemFailures);
@@ -38,41 +40,41 @@ public class Tests
     {
         var processor = new CustomSqsEventProcessor(true, true);
 
-        var messages = new List<Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage>();
+        var messages = new List<SQSEvent.SQSMessage>();
 
-        var expectedMessageIdFailed = new List<string>()
+        var expectedMessageIdFailed = new List<string>
         {
             Guid.NewGuid().ToString(),
             Guid.NewGuid().ToString(),
             Guid.NewGuid().ToString()
         };
 
-        messages.Add(new Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage()
+        messages.Add(new SQSEvent.SQSMessage
         {
-            Body = System.Text.Json.JsonSerializer.Serialize(new Person("michel")),
+            Body = JsonSerializer.Serialize(new Person("michel")),
             MessageId = Guid.NewGuid().ToString()
         });
         ;
 
-        messages.Add(new Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage()
+        messages.Add(new SQSEvent.SQSMessage
         {
-            Body = System.Text.Json.JsonSerializer.Serialize(new Person("magal")),
+            Body = JsonSerializer.Serialize(new Person("magal")),
             MessageId = expectedMessageIdFailed[0]
         });
 
-        messages.Add(new Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage()
+        messages.Add(new SQSEvent.SQSMessage
         {
-            Body = System.Text.Json.JsonSerializer.Serialize(new Person("ti")),
+            Body = JsonSerializer.Serialize(new Person("ti")),
             MessageId = expectedMessageIdFailed[1]
         });
 
-        messages.Add(new Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage()
+        messages.Add(new SQSEvent.SQSMessage
         {
-            Body = System.Text.Json.JsonSerializer.Serialize(new Person("ale")),
+            Body = JsonSerializer.Serialize(new Person("ale")),
             MessageId = expectedMessageIdFailed[2]
         });
 
-        var sQSEvent = new Amazon.Lambda.SQSEvents.SQSEvent()
+        var sQSEvent = new SQSEvent
         {
             Records = messages
         };
@@ -96,39 +98,39 @@ public class Tests
     {
         var processor = new CustomSqsEventProcessor(false, true);
 
-        var messages = new List<Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage>();
+        var messages = new List<SQSEvent.SQSMessage>();
 
-        var expectedMessageIdFailed = new List<string>()
+        var expectedMessageIdFailed = new List<string>
         {
             Guid.NewGuid().ToString(),
             Guid.NewGuid().ToString()
         };
 
-        messages.Add(new Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage()
+        messages.Add(new SQSEvent.SQSMessage
         {
-            Body = System.Text.Json.JsonSerializer.Serialize(new Person("magal")),
+            Body = JsonSerializer.Serialize(new Person("magal")),
             MessageId = expectedMessageIdFailed[0]
         });
 
-        messages.Add(new Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage()
+        messages.Add(new SQSEvent.SQSMessage
         {
-            Body = System.Text.Json.JsonSerializer.Serialize(new Person("michel")),
+            Body = JsonSerializer.Serialize(new Person("michel")),
             MessageId = Guid.NewGuid().ToString()
         });
 
-        messages.Add(new Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage()
+        messages.Add(new SQSEvent.SQSMessage
         {
-            Body = System.Text.Json.JsonSerializer.Serialize(new Person("ale")),
+            Body = JsonSerializer.Serialize(new Person("ale")),
             MessageId = expectedMessageIdFailed[1]
         });
 
-        messages.Add(new Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage()
+        messages.Add(new SQSEvent.SQSMessage
         {
-            Body = System.Text.Json.JsonSerializer.Serialize(new Person("michel")),
+            Body = JsonSerializer.Serialize(new Person("michel")),
             MessageId = Guid.NewGuid().ToString()
         });
 
-        var sQSEvent = new Amazon.Lambda.SQSEvents.SQSEvent()
+        var sQSEvent = new SQSEvent
         {
             Records = messages
         };
@@ -146,39 +148,39 @@ public class Tests
     {
         var processor = new CustomSqsEventProcessor(false, false);
 
-        var messages = new List<Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage>();
+        var messages = new List<SQSEvent.SQSMessage>();
 
-        var expectedMessageIdFailed = new List<string>()
+        var expectedMessageIdFailed = new List<string>
         {
             Guid.NewGuid().ToString(),
             Guid.NewGuid().ToString()
         };
 
-        messages.Add(new Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage()
+        messages.Add(new SQSEvent.SQSMessage
         {
-            Body = System.Text.Json.JsonSerializer.Serialize(new Person("magal")),
+            Body = JsonSerializer.Serialize(new Person("magal")),
             MessageId = expectedMessageIdFailed[0]
         });
 
-        messages.Add(new Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage()
+        messages.Add(new SQSEvent.SQSMessage
         {
-            Body = System.Text.Json.JsonSerializer.Serialize(new Person("michel")),
+            Body = JsonSerializer.Serialize(new Person("michel")),
             MessageId = Guid.NewGuid().ToString()
         });
 
-        messages.Add(new Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage()
+        messages.Add(new SQSEvent.SQSMessage
         {
-            Body = System.Text.Json.JsonSerializer.Serialize(new Person("ale")),
+            Body = JsonSerializer.Serialize(new Person("ale")),
             MessageId = expectedMessageIdFailed[1]
         });
 
-        messages.Add(new Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage()
+        messages.Add(new SQSEvent.SQSMessage
         {
-            Body = System.Text.Json.JsonSerializer.Serialize(new Person("michel")),
+            Body = JsonSerializer.Serialize(new Person("michel")),
             MessageId = Guid.NewGuid().ToString()
         });
 
-        var sQSEvent = new Amazon.Lambda.SQSEvents.SQSEvent()
+        var sQSEvent = new SQSEvent
         {
             Records = messages
         };
@@ -192,22 +194,22 @@ public class Tests
     {
         var processor = new CustomSqsEventProcessor(false, true);
 
-        var messages = new List<Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage>
+        var messages = new List<SQSEvent.SQSMessage>
         {
             new()
             {
-                Body = System.Text.Json.JsonSerializer.Serialize(new Person("michel")),
+                Body = JsonSerializer.Serialize(new Person("michel")),
                 MessageId = Guid.NewGuid().ToString()
             },
 
             new()
             {
-                Body = System.Text.Json.JsonSerializer.Serialize(new Person("michel")),
+                Body = JsonSerializer.Serialize(new Person("michel")),
                 MessageId = Guid.NewGuid().ToString()
             }
         };
 
-        var sQSEvent = new Amazon.Lambda.SQSEvents.SQSEvent()
+        var sQSEvent = new SQSEvent
         {
             Records = messages
         };

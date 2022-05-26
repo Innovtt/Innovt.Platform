@@ -5,10 +5,10 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Innovt.Core.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Innovt.Core.Collections;
 
 namespace Innovt.Cloud.Table;
 

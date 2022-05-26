@@ -5,10 +5,10 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System.Globalization;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
-using System.Globalization;
 
 // Code provided by tiago@innovt.com.br and welbert@antecipa.com
 //
@@ -16,9 +16,6 @@ namespace Innovt.AspNetCore.Handlers;
 
 public class HasScopeRequirement : AuthorizationHandler<HasScopeRequirement>, IAuthorizationRequirement
 {
-    private string Issuer { get; }
-    private string Scope { get; }
-
     public HasScopeRequirement() : this(string.Empty, string.Empty)
     {
     }
@@ -33,6 +30,9 @@ public class HasScopeRequirement : AuthorizationHandler<HasScopeRequirement>, IA
         Scope = scope;
         Issuer = issuer;
     }
+
+    private string Issuer { get; }
+    private string Scope { get; }
 
 
     /// <summary>

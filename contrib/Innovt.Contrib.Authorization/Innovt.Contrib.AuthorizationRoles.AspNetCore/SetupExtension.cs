@@ -4,8 +4,8 @@
 // Date: 2021-09-20
 
 using Innovt.AspNetCore.Handlers;
-using Innovt.Contrib.Authorization.Platform.Domain;
 using Innovt.Contrib.Authorization.Platform.Infrastructure.IOC;
+using Innovt.Domain.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -25,8 +25,8 @@ public static class SetupExtension
         _ = new AuthorizationModule(services);
 
 
-        services.AddScoped<Innovt.Domain.Security.IAuthorizationRepository>(provider =>
-            provider.GetRequiredService<IAuthorizationRepository>()
+        services.AddScoped<IAuthorizationRepository>(provider =>
+            provider.GetRequiredService<Authorization.Platform.Domain.IAuthorizationRepository>()
         );
 
         services.AddScoped<IAuthorizationHandler, RolesAuthorizationHandler>();

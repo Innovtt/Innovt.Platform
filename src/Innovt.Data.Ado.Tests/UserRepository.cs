@@ -5,10 +5,10 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Innovt.Data.DataSources;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Innovt.Data.DataSources;
 
 namespace Innovt.Data.Ado.Tests
 {

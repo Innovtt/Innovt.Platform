@@ -5,6 +5,11 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System.Globalization;
+using System.Net;
+using System.Security.Claims;
+using System.Text;
+using System.Text.Json;
 using Innovt.AspNetCore.Utility.Pagination;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
@@ -19,11 +24,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using System.Globalization;
-using System.Net;
-using System.Security.Claims;
-using System.Text;
-using System.Text.Json;
 
 namespace Innovt.AspNetCore.Extensions;
 

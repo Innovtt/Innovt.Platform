@@ -5,12 +5,12 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Innovt.Core.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
+using Innovt.Core.Utilities;
 
 namespace Innovt.Core.Exceptions;
 
@@ -56,8 +56,24 @@ public class BusinessException : BaseException, ISerializable
         Errors = (IEnumerable<ErrorMessage>)serializationInfo?.GetValue("Errors", typeof(IEnumerable<ErrorMessage>));
     }
 
+    public BusinessException()
+    {
+    }
+
     public string Code { get; protected set; }
     public IEnumerable<ErrorMessage> Errors { get; set; }
+
+
+    public override void GetObjectData(SerializationInfo info, StreamingContext context)
+    {
+        if (info == null)
+            throw new ArgumentNullException(nameof(info));
+
+        info.AddValue("Code", Code);
+        info.AddValue("Errors", Errors, typeof(IEnumerable<ErrorMessage>));
+
+        base.GetObjectData(info, context);
+    }
 
     public string ReadFullErrors()
     {
@@ -84,21 +100,5 @@ public class BusinessException : BaseException, ISerializable
         strError.Append("]");
 
         return strError.ToString();
-    }
-
-    public BusinessException()
-    {
-    }
-
-
-    public override void GetObjectData(SerializationInfo info, StreamingContext context)
-    {
-        if (info == null)
-            throw new ArgumentNullException(nameof(info));
-
-        info.AddValue("Code", Code);
-        info.AddValue("Errors", Errors, typeof(IEnumerable<ErrorMessage>));
-
-        base.GetObjectData(info, context);
     }
 }

@@ -5,20 +5,20 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
+using System.Runtime.CompilerServices;
 using Microsoft.Extensions.Logging;
 using Serilog;
+using Serilog.Context;
 using Serilog.Core;
 using Serilog.Events;
-using System;
 using ILogger = Innovt.Core.CrossCutting.Log.ILogger;
 
 namespace Innovt.CrossCutting.Log.Serilog;
 
 public class Logger : ILogger
 {
-    private const string ConsoleTemplate =
-        "{Timestamp:HH:mm:ss} {Level} {TraceId:TraceId} {ParentId:ParentId} {Message:lj}{NewLine}{Exception}";
-
+    private const string ConsoleTemplate = "[{Timestamp:HH:mm:ss} {Level:u3}] {TraceId} {SpanId} {Message:lj}{NewLine}{Exception}";
     private readonly global::Serilog.Core.Logger logger;
 
     /// <summary>
@@ -26,20 +26,25 @@ public class Logger : ILogger
     /// </summary>
     public Logger() : this(new LoggerConfiguration())
     {
+
     }
 
-    public Logger(ILogEventEnricher enricher)
+    public Logger(ILogEventEnricher logEventEnricher)
     {
-        if (enricher is null) throw new ArgumentNullException(nameof(enricher));
+        if (logEventEnricher is null) throw new ArgumentNullException(nameof(logEventEnricher));
 
-        logger = new LoggerConfiguration().WriteTo.Console(outputTemplate: ConsoleTemplate)
-            .Enrich.With(enricher).Enrich.With(new ActivityEnrich()).Enrich.FromLogContext().CreateLogger();
+        logger = new LoggerConfiguration()
+            .WriteTo.Console(outputTemplate: ConsoleTemplate)
+            .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+            .Enrich.With(logEventEnricher).Enrich.With(new ActivityEnrich()).Enrich.FromLogContext().CreateLogger();
     }
 
     public Logger(LoggerConfiguration configuration)
     {
         if (configuration == null) throw new ArgumentNullException(nameof(configuration));
+
         logger = configuration.WriteTo.Console(outputTemplate: ConsoleTemplate)
+            .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
             .Enrich.With(new ActivityEnrich()).Enrich.FromLogContext().CreateLogger();
     }
 

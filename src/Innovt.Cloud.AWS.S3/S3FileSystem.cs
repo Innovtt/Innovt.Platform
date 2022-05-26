@@ -5,13 +5,6 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Amazon.S3;
-using Amazon.S3.Model;
-using Amazon.S3.Transfer;
-using Innovt.Cloud.AWS.Configuration;
-using Innovt.Cloud.File;
-using Innovt.Core.CrossCutting.Log;
-using Innovt.Core.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,8 +12,16 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using Amazon.S3;
+using Amazon.S3.Model;
+using Amazon.S3.Transfer;
+using Innovt.Cloud.AWS.Configuration;
+using Innovt.Cloud.File;
+using Innovt.Core.CrossCutting.Log;
+using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.S3;
 
@@ -114,7 +115,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
 
     public Stream DownloadStream(string bucketName, string fileName)
     {
-        using var activity = S3ActivitySource.StartActivity("DownloadStream");
+        using var activity = S3ActivitySource.StartActivity();
         activity?.SetTag("s3.bucket_name", bucketName);
         activity?.SetTag("s3.filename", fileName);
 
@@ -137,7 +138,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     public async Task<Stream> DownloadStreamAsync(string bucketName, string fileName,
         CancellationToken cancellationToken = default)
     {
-        using var activity = S3ActivitySource.StartActivity("DownloadStreamAsync");
+        using var activity = S3ActivitySource.StartActivity();
         activity?.SetTag("s3.bucket_name", bucketName);
         activity?.SetTag("s3.filename", fileName);
 
@@ -180,7 +181,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// When you need to get a content from Json file as an typed method.
+    ///     When you need to get a content from Json file as an typed method.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="url"></param>
@@ -189,7 +190,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     {
         if (filePath is null) throw new ArgumentNullException(nameof(filePath));
 
-        using var activity = S3ActivitySource.StartActivity("GetObjectFromJson");
+        using var activity = S3ActivitySource.StartActivity();
         activity?.SetTag("s3.url", filePath);
 
         var content = GetObjectContent(filePath.ToString(), Encoding.UTF8);
@@ -197,12 +198,12 @@ public class S3FileSystem : AwsBaseService, IFileSystem
         if (content is null)
             return default;
 
-        return System.Text.Json.JsonSerializer.Deserialize<T>(content);
+        return JsonSerializer.Deserialize<T>(content);
     }
 
     public string GetPreSignedUrl(string bucketName, string key, DateTime expires)
     {
-        using var activity = S3ActivitySource.StartActivity("GetPreSignedUrl");
+        using var activity = S3ActivitySource.StartActivity();
         activity?.SetTag("s3.bucket_name", bucketName);
         activity?.SetTag("s3.key", key);
         activity?.SetTag("s3.expire", expires.ToString("O"));
@@ -220,7 +221,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     public string GeneratePreSignedUrl(string bucketName, string key, DateTime expiration,
         IDictionary<string, object> additionalProperties)
     {
-        using var activity = S3ActivitySource.StartActivity("GeneratePreSignedUrl");
+        using var activity = S3ActivitySource.StartActivity();
         activity?.SetTag("s3.bucket_name", bucketName);
         activity?.SetTag("s3.key", key);
         activity?.SetTag("s3.expire", expiration.ToString("O"));
@@ -233,7 +234,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
         string serverSideEncryptionMethod = null, string fileAcl = null,
         CancellationToken cancellationToken = default)
     {
-        using var activity = S3ActivitySource.StartActivity("UploadDirectoryAsync");
+        using var activity = S3ActivitySource.StartActivity();
         activity?.SetTag("s3.bucket_name", bucketName);
         activity?.SetTag("s3.directory", directory);
 
@@ -260,7 +261,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
         IList<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null,
         string fileAcl = null)
     {
-        using var activity = S3ActivitySource.StartActivity("Upload");
+        using var activity = S3ActivitySource.StartActivity();
         activity?.SetTag("s3.bucket_name", bucketName);
         activity?.SetTag("s3.filename", fileName);
 
@@ -308,26 +309,6 @@ public class S3FileSystem : AwsBaseService, IFileSystem
             cancellationToken);
     }
 
-    private async Task<ListObjectsV2Response> ListObjectsAsync(string bucketName, string key,
-        CancellationToken cancellationToken = default)
-    {
-        using var activity = S3ActivitySource.StartActivity("ListObjectsAsync");
-        activity?.SetTag("s3.bucket_name", bucketName);
-        activity?.SetTag("s3.key", key);
-
-        var request = new ListObjectsV2Request
-        {
-            BucketName = bucketName,
-            MaxKeys = 1,
-            Prefix = key
-        };
-
-        return
-            await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await S3Client.ListObjectsV2Async(request, cancellationToken).ConfigureAwait(false))
-                .ConfigureAwait(false);
-    }
-
     public async Task<bool> FolderExistsAsync(string bucketName, string key,
         CancellationToken cancellationToken = default)
     {
@@ -352,7 +333,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     public async Task<bool> DeleteObjectAsync(string bucketName, string key,
         CancellationToken cancellationToken = default)
     {
-        using var activity = S3ActivitySource.StartActivity("DeleteObjectAsync");
+        using var activity = S3ActivitySource.StartActivity();
         activity?.SetTag("s3.bucket_name", bucketName);
         activity?.SetTag("s3.key", key);
 
@@ -406,6 +387,46 @@ public class S3FileSystem : AwsBaseService, IFileSystem
         return response.HttpStatusCode == HttpStatusCode.OK;
     }
 
+    public async Task<string> UploadAsJsonAsync<T>(string bucketName,
+        T obj,
+        string fileName,
+        IList<KeyValuePair<string, string>> metadata = null,
+        string serverSideEncryptionMethod = null,
+        string fileAcl = null,
+        CancellationToken cancellationToken = default)
+    {
+        if (obj is null)
+            throw new ArgumentNullException(nameof(obj));
+
+        using var stream = new MemoryStream();
+        using var writer = new StreamWriter(stream);
+        await writer.WriteAsync(JsonSerializer.Serialize(obj)).ConfigureAwait(false);
+        await writer.FlushAsync().ConfigureAwait(false);
+
+        return await UploadAsync(bucketName, stream, fileName, metadata, serverSideEncryptionMethod, fileAcl,
+            cancellationToken).ConfigureAwait(false);
+    }
+
+    private async Task<ListObjectsV2Response> ListObjectsAsync(string bucketName, string key,
+        CancellationToken cancellationToken = default)
+    {
+        using var activity = S3ActivitySource.StartActivity();
+        activity?.SetTag("s3.bucket_name", bucketName);
+        activity?.SetTag("s3.key", key);
+
+        var request = new ListObjectsV2Request
+        {
+            BucketName = bucketName,
+            MaxKeys = 1,
+            Prefix = key
+        };
+
+        return
+            await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+                    await S3Client.ListObjectsV2Async(request, cancellationToken).ConfigureAwait(false))
+                .ConfigureAwait(false);
+    }
+
     private string GetObjectUrl(string bucketName, string fileKey)
     {
         return "https://s3.amazonaws.com/" + $"{bucketName}/{fileKey}";
@@ -427,7 +448,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
         string contentType = null, string serverSideEncryptionMethod = null, string fileAcl = null,
         CancellationToken cancellationToken = default)
     {
-        using var activity = S3ActivitySource.StartActivity("PutObjectInternalAsync");
+        using var activity = S3ActivitySource.StartActivity();
 
         activity?.SetTag("s3.bucket_name", bucketName);
         activity?.SetTag("s3.filename", fileName);
@@ -463,7 +484,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
         string fileName, IList<KeyValuePair<string, string>> metadata = null,
         string serverSideEncryptionMethod = null, string fileAcl = null)
     {
-        using var activity = S3ActivitySource.StartActivity("CreateUploadRequest");
+        using var activity = S3ActivitySource.StartActivity();
 
         activity?.SetTag("s3.bucket_name", bucketName);
         activity?.SetTag("s3.filename", fileName);
@@ -487,26 +508,6 @@ public class S3FileSystem : AwsBaseService, IFileSystem
         foreach (var (key, value) in metadata) request.Metadata.Add(key, value);
 
         return request;
-    }
-
-    public async Task<string> UploadAsJsonAsync<T>(string bucketName,
-        T obj,
-        string fileName,
-        IList<KeyValuePair<string, string>> metadata = null,
-        string serverSideEncryptionMethod = null,
-        string fileAcl = null,
-        CancellationToken cancellationToken = default)
-    {
-        if (obj is null)
-            throw new ArgumentNullException(nameof(obj));
-
-        using var stream = new MemoryStream();
-        using var writer = new StreamWriter(stream);
-        await writer.WriteAsync(System.Text.Json.JsonSerializer.Serialize(obj)).ConfigureAwait(false);
-        await writer.FlushAsync().ConfigureAwait(false);
-
-        return await UploadAsync(bucketName, stream, fileName, metadata, serverSideEncryptionMethod, fileAcl,
-            cancellationToken).ConfigureAwait(false);
     }
 
 

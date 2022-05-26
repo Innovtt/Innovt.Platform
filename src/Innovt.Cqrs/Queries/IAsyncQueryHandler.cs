@@ -5,9 +5,9 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Innovt.Core.Cqrs.Queries;
 using System.Threading;
 using System.Threading.Tasks;
+using Innovt.Core.Cqrs.Queries;
 
 namespace Innovt.Cqrs.Queries;
 

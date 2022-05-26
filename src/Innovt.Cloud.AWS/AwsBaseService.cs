@@ -5,6 +5,8 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
+using System.Net;
 using Amazon;
 using Amazon.Runtime;
 using Innovt.Cloud.AWS.Configuration;
@@ -12,8 +14,6 @@ using Innovt.Core.CrossCutting.Log;
 using Polly;
 using Polly.CircuitBreaker;
 using Polly.Retry;
-using System;
-using System.Net;
 using RetryPolicy = Polly.Retry.RetryPolicy;
 
 namespace Innovt.Cloud.AWS;
@@ -56,6 +56,12 @@ public abstract class AwsBaseService : IDisposable
     protected TimeSpan CircuitBreakerDurationOfBreak { get; set; }
 
     protected ILogger Logger { get; }
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
 
 
     protected RegionEndpoint GetServiceRegionEndPoint()
@@ -162,12 +168,6 @@ public abstract class AwsBaseService : IDisposable
     {
         return Policy.Handle<T>()
             .CircuitBreakerAsync(CircuitBreakerAllowedExceptions, CircuitBreakerDurationOfBreak);
-    }
-
-    public void Dispose()
-    {
-        Dispose(true);
-        GC.SuppressFinalize(this);
     }
 
     protected virtual void Dispose(bool disposing)

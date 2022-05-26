@@ -23,7 +23,7 @@ public class Tests
     [Test]
     public async Task Process_Use_Default_Logger_When_CustomLogger_IsNull()
     {
-        var lambdaContext = new TestLambdaContext()
+        var lambdaContext = new TestLambdaContext
         {
             Logger = Substitute.For<ILambdaLogger>()
         };
@@ -60,7 +60,7 @@ public class Tests
 
         try
         {
-            await function.Process(new Person() { Name = "Exception" }, lambdaContext);
+            await function.Process(new Person { Name = "Exception" }, lambdaContext);
         }
         catch (Exception)
         {

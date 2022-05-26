@@ -18,7 +18,7 @@ public class TransactionWriteItem
     public string ConditionExpression { get; set; }
 
     /// <summary>
-    /// Only for update operations 
+    ///     Only for update operations
     /// </summary>
     public string UpdateExpression { get; set; }
 

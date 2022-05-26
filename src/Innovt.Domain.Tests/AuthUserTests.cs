@@ -1,6 +1,6 @@
+using System.Linq;
 using Innovt.Domain.Security;
 using NUnit.Framework;
-using System.Linq;
 
 namespace Innovt.Domain.Tests
 {
@@ -16,19 +16,19 @@ namespace Innovt.Domain.Tests
         {
             var user = new AuthUser();
 
-            var roleA = new Role()
+            var roleA = new Role
             {
                 Name = "RoleA",
                 Scope = "Admin"
             };
 
-            var roleB = new Role()
+            var roleB = new Role
             {
                 Name = "RoleB",
                 Scope = "Admin"
             };
 
-            var roleC = new Role()
+            var roleC = new Role
             {
                 Name = "RoleC",
                 Scope = "Admin"

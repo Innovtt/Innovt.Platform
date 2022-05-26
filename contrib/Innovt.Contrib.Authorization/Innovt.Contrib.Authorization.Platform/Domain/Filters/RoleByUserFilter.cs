@@ -3,18 +3,15 @@
 // Solution: Innovt.Contrib.Authorization
 // Date: 2021-09-20
 
-using Innovt.Core.Cqrs.Queries;
-using Innovt.Core.Utilities;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Innovt.Core.Cqrs.Queries;
+using Innovt.Core.Utilities;
 
 namespace Innovt.Contrib.Authorization.Platform.Domain.Filters;
 
 public class RoleByUserFilter : IFilter
 {
-    public string ExternalId { get; set; }
-    public string DomainId { get; set; }
-
     public RoleByUserFilter(string externalId, string domainId)
     {
         ExternalId = externalId;
@@ -24,6 +21,9 @@ public class RoleByUserFilter : IFilter
     public RoleByUserFilter()
     {
     }
+
+    public string ExternalId { get; set; }
+    public string DomainId { get; set; }
 
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {

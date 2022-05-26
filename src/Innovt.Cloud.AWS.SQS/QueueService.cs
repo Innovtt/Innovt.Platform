@@ -5,6 +5,12 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net;
+using System.Threading;
+using System.Threading.Tasks;
 using Amazon.SQS;
 using Amazon.SQS.Model;
 using Innovt.Cloud.AWS.Configuration;
@@ -12,12 +18,6 @@ using Innovt.Cloud.Queue;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Serialization;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.SQS;
 
@@ -65,7 +65,7 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
         int? visibilityTimeoutInSeconds = null,
         CancellationToken cancellationToken = default)
     {
-        using var activity = QueueActivitySource.StartActivity("GetMessagesAsync");
+        using var activity = QueueActivitySource.StartActivity();
         activity?.SetTag("sqs.quantity", quantity);
         activity?.SetTag("sqs.waitTimeInSeconds", waitTimeInSeconds);
         activity?.SetTag("sqs.visibilityTimeoutInSeconds", visibilityTimeoutInSeconds);
@@ -111,7 +111,7 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
 
     public async Task DeQueueAsync(string popReceipt, CancellationToken cancellationToken = default)
     {
-        using var activity = QueueActivitySource.StartActivity("DeQueueAsync");
+        using var activity = QueueActivitySource.StartActivity();
         activity?.SetTag("sqs.receipt_handle", popReceipt);
 
         var queueUrl = await GetQueueUrlAsync().ConfigureAwait(false);
@@ -125,7 +125,7 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
 
     public async Task<int> ApproximateMessageCountAsync(CancellationToken cancellationToken = default)
     {
-        using var activity = QueueActivitySource.StartActivity("ApproximateMessageCountAsync");
+        using var activity = QueueActivitySource.StartActivity();
 
         var attributes = new List<string> { "ApproximateNumberOfMessages" };
 
@@ -144,7 +144,7 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
 
     public async Task CreateIfNotExistAsync(CancellationToken cancellationToken = default)
     {
-        using var activity = QueueActivitySource.StartActivity("CreateIfNotExistAsync");
+        using var activity = QueueActivitySource.StartActivity();
         activity?.SetTag("sqs.queue_name", QueueName);
 
         await SqsClient.CreateQueueAsync(QueueName, cancellationToken).ConfigureAwait(false);
@@ -271,7 +271,7 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
     {
         if (QueueUrl != null && QueueUrl.EndsWith(QueueName, StringComparison.OrdinalIgnoreCase)) return QueueUrl;
 
-        using var activity = QueueActivitySource.StartActivity("GetQueueUrlAsync");
+        using var activity = QueueActivitySource.StartActivity();
         activity?.SetTag("sqs.account_number", Configuration?.AccountNumber);
         activity?.SetTag("sqs.queue_name", QueueName);
 

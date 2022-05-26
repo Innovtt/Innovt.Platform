@@ -1,7 +1,7 @@
-﻿using Serilog.Core;
-using Serilog.Events;
-using System;
+﻿using System;
 using System.Diagnostics;
+using Serilog.Core;
+using Serilog.Events;
 
 namespace Innovt.CrossCutting.Log.Serilog;
 
@@ -17,18 +17,16 @@ public class ActivityEnrich : ILogEventEnricher
             return;
 
         logEvent.AddOrUpdateProperty(new LogEventProperty("TraceId", new ScalarValue(activity.Id)));
+        logEvent.AddOrUpdateProperty(new LogEventProperty("SpanId", new ScalarValue(activity.SpanId)));
 
         if (activity.ParentId is { })
             logEvent.AddOrUpdateProperty(new LogEventProperty("ParentId", new ScalarValue(activity.ParentId)));
     }
 
 #pragma warning disable CA1822 // Mark members as static
-    private Activity GetActivity()
+    private static Activity GetActivity()
 #pragma warning restore CA1822 // Mark members as static
     {
-        if (Activity.Current is null)
-            return null;
-
-        return Activity.Current;
+        return Activity.Current ?? null;
     }
 }

@@ -5,10 +5,11 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Innovt.Cloud.AWS.Cognito.Resources;
-using Innovt.Core.Utilities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Innovt.Cloud.AWS.Cognito.Resources;
+using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.Cognito.Model;
 
@@ -26,7 +27,7 @@ public class SignInRequest : SignInRequestBase
             yield return new ValidationResult(Messages.EmailIsRequired, new[] { nameof(UserName) });
 
         if (!ValidateContextCreate.Equals(validationContext?.ObjectInstance?.ToString(),
-                System.StringComparison.Ordinal)) yield break;
+                StringComparison.Ordinal)) yield break;
 
 
         if (IpAddress.IsNullOrEmpty())

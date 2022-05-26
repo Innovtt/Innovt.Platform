@@ -5,9 +5,9 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Dapper;
 using System;
 using System.Data.SqlClient;
+using Dapper;
 
 namespace Innovt.Data.Migration;
 

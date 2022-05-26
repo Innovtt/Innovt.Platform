@@ -5,22 +5,20 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Amazon.Lambda.KinesisEvents;
-using Innovt.Core.CrossCutting.Log;
-using Innovt.Core.Exceptions;
-using Innovt.Domain.Core.Streams;
 using System;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using Amazon.Lambda.KinesisEvents;
+using Innovt.Core.CrossCutting.Log;
+using Innovt.Core.Exceptions;
+using Innovt.Domain.Core.Streams;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis;
 
 public abstract class KinesisProcessorBase<TBody> : EventProcessor<KinesisEvent, BatchFailureResponse>
     where TBody : IDataStream
 {
-    protected bool ReportBatchFailures { get; set; }
-
     protected KinesisProcessorBase(ILogger logger, bool reportBatchFailures = false) : base(logger)
     {
         ReportBatchFailures = reportBatchFailures;
@@ -31,8 +29,10 @@ public abstract class KinesisProcessorBase<TBody> : EventProcessor<KinesisEvent,
         ReportBatchFailures = reportBatchFailures;
     }
 
+    protected bool ReportBatchFailures { get; set; }
+
     /// <summary>
-    /// When the developer want to discard the message from specific partition
+    ///     When the developer want to discard the message from specific partition
     /// </summary>
     /// <param name="message"></param>
     /// <returns></returns>

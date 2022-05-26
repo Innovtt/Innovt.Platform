@@ -6,10 +6,6 @@ namespace Innovt.Cloud.AWS.Lambda;
 
 public class BatchFailureResponse
 {
-    public BatchFailureResponse()
-    {
-    }
-
     [JsonPropertyName("batchItemFailures")]
     public IList<ItemFailureIdentifier> BatchItemFailures { get; private set; }
 

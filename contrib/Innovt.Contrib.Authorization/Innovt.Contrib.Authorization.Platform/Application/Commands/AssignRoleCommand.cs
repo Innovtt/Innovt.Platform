@@ -3,10 +3,10 @@
 // Solution: Innovt.Contrib.Authorization
 // Date: 2021-09-20
 
-using Innovt.Core.Cqrs.Commands;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using Innovt.Core.Cqrs.Commands;
 
 namespace Innovt.Contrib.Authorization.Platform.Application.Commands;
 

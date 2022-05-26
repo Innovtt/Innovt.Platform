@@ -5,9 +5,9 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System.Diagnostics.CodeAnalysis;
 using Innovt.Data.Model;
 using Microsoft.Extensions.Configuration;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Innovt.Data.DataSources;
 

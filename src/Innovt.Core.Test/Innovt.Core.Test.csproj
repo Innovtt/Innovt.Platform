@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj" />
+    <ProjectReference Include="..\Innovt.Domain.Core\Innovt.Domain.Core.csproj" />
   </ItemGroup>
 
 </Project>

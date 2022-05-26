@@ -5,8 +5,8 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Innovt.Domain.Core.Model;
 using System;
+using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Security;
 
@@ -18,7 +18,7 @@ public class Permission : ValueObject<Guid>
     }
 
     /// <summary>
-    /// Can be the area in your Controller
+    ///     Can be the area in your Controller
     /// </summary>
     public string Scope { get; set; }
 

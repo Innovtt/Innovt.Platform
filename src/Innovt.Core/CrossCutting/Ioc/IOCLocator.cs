@@ -5,11 +5,11 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Innovt.Core.Exceptions;
-using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 using System.Reflection;
+using Innovt.Core.Exceptions;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Innovt.Core.CrossCutting.Ioc;
 

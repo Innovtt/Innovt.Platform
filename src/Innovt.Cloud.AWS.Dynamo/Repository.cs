@@ -5,6 +5,12 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
@@ -15,15 +21,8 @@ using Innovt.Core.Collections;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Exceptions;
 using Polly.Retry;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using QueryRequest = Innovt.Cloud.Table.QueryRequest;
 using ScanRequest = Innovt.Cloud.Table.ScanRequest;
-
 
 namespace Innovt.Cloud.AWS.Dynamo;
 
@@ -276,7 +275,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         using var activity = ActivityRepository.StartActivity(nameof(TransactWriteItemsAsync));
         activity?.SetTag("TransactWriteItems", request.TransactItems.Count);
 
-        var transactRequest = new TransactWriteItemsRequest()
+        var transactRequest = new TransactWriteItemsRequest
         {
             ClientRequestToken = request.ClientRequestToken
         };
@@ -318,6 +317,34 @@ public abstract class Repository : AwsBaseService, ITableRepository
             };
 
             return response;
+        }
+    }
+
+
+    public async Task<ExecuteSqlStatementResponse<T>> ExecuteStatementAsync<T>(
+        ExecuteSqlStatementRequest sqlStatementRequest, CancellationToken cancellationToken = default) where T : class
+    {
+        if (sqlStatementRequest is null) throw new ArgumentNullException(nameof(sqlStatementRequest));
+
+        using (ActivityRepository.StartActivity(nameof(UpdateAsync)))
+        {
+            var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+                await DynamoClient.ExecuteStatementAsync(new ExecuteStatementRequest
+                {
+                    ConsistentRead = sqlStatementRequest.ConsistentRead,
+                    NextToken = sqlStatementRequest.NextToken,
+                    Statement = sqlStatementRequest.Statment
+                }).ConfigureAwait(false)).ConfigureAwait(false);
+
+
+            if (response is null)
+                return null;
+
+            return new ExecuteSqlStatementResponse<T>
+            {
+                NextToken = sqlStatementRequest.NextToken,
+                Items = Helpers.ConvertAttributesToType<T>(response.Items, Context)
+            };
         }
     }
 
@@ -364,34 +391,6 @@ public abstract class Repository : AwsBaseService, ITableRepository
                 return default;
 
             return Context.FromDocument<T>(doc);
-        }
-    }
-
-
-    public async Task<ExecuteSqlStatementResponse<T>> ExecuteStatementAsync<T>(
-        ExecuteSqlStatementRequest sqlStatementRequest, CancellationToken cancellationToken = default) where T : class
-    {
-        if (sqlStatementRequest is null) throw new ArgumentNullException(nameof(sqlStatementRequest));
-
-        using (ActivityRepository.StartActivity(nameof(UpdateAsync)))
-        {
-            var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                await DynamoClient.ExecuteStatementAsync(new ExecuteStatementRequest()
-                {
-                    ConsistentRead = sqlStatementRequest.ConsistentRead,
-                    NextToken = sqlStatementRequest.NextToken,
-                    Statement = sqlStatementRequest.Statment
-                }).ConfigureAwait(false)).ConfigureAwait(false);
-
-
-            if (response is null)
-                return null;
-
-            return new ExecuteSqlStatementResponse<T>()
-            {
-                NextToken = sqlStatementRequest.NextToken,
-                Items = Helpers.ConvertAttributesToType<T>(response.Items, Context)
-            };
         }
     }
 

@@ -5,13 +5,13 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.Model;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Core.CrossCutting.Log;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Dynamo.Tests
 {
@@ -65,20 +65,13 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
                 }
             };
 
-            try
+            var res = await UpdateAsync<Result>(new UpdateItemRequest
             {
-                var res = await UpdateAsync<Result>(new UpdateItemRequest()
-                {
-                    AttributeUpdates = updateValues,
-                    Key = keys,
-                    TableName = "Anticipation",
-                    ReturnValues = ReturnValue.UPDATED_NEW
-                }, CancellationToken.None).ConfigureAwait(false);
-            }
-            catch (System.Exception ex)
-            {
-                throw;
-            }
+                AttributeUpdates = updateValues,
+                Key = keys,
+                TableName = "Anticipation",
+                ReturnValues = ReturnValue.UPDATED_NEW
+            }, CancellationToken.None).ConfigureAwait(false);
 
 
             return 0;

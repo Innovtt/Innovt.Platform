@@ -5,6 +5,8 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Innovt.AspNetCore.Model;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
@@ -12,7 +14,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Configuration;
-using System.Text.Json;
 
 namespace Innovt.AspNetCore.Filters;
 
@@ -31,15 +32,16 @@ internal class RecaptchaResponse
 public sealed class CaptchaValidatorFilterAttribute : ActionFilterAttribute
 {
     private const string CaptchaUri = "https://www.google.com/recaptcha/api/siteverify";
-    public string AntiForgery { get; }
-    public string HostName { get; }
-    public string SecretKey { get; internal set; }
-    public string DefaultToken { get; set; }
 
     public CaptchaValidatorFilterAttribute()
     {
         DefaultToken = "inn0ut#";
     }
+
+    public string AntiForgery { get; }
+    public string HostName { get; }
+    public string SecretKey { get; internal set; }
+    public string DefaultToken { get; set; }
 
     private void ReadConfig(HttpContext context)
     {
@@ -74,7 +76,7 @@ public sealed class CaptchaValidatorFilterAttribute : ActionFilterAttribute
 
         var serializerSettings = new JsonSerializerOptions
         {
-            DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
         };
 
         var captchaResponse = JsonSerializer.Deserialize<RecaptchaResponse>(stringAsync, serializerSettings);

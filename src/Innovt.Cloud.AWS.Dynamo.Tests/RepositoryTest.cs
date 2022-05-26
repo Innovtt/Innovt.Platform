@@ -5,17 +5,15 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Amazon.DynamoDBv2;
-using Amazon.DynamoDBv2.Model;
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.Table;
 using Innovt.Core.CrossCutting.Log;
 using NSubstitute;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Dynamo.Tests
 {
@@ -42,23 +40,23 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
 
                 using var repo = new BaseRepository(loggerMock, configuration);
 
-                var request = new TransactionWriteRequest()
+                var request = new TransactionWriteRequest
                 {
                     TransactItems = new List<TransactionWriteItem>()
                 };
 
-                request.TransactItems.Add(new TransactionWriteItem()
+                request.TransactItems.Add(new TransactionWriteItem
                 {
                     TableName = "Users",
                     OperationType = TransactionWriteOperationType.Delete,
                     //UpdateExpression = "SET Deleted = :up ",
                     //ConditionExpression = "Deleted = :d",
-                    Keys = new Dictionary<string, object>()
+                    Keys = new Dictionary<string, object>
                     {
                         { "PK", "U#michemob@gmail.com" },
                         { "SK", "PROFILE" }
                     },
-                    ExpressionAttributeValues = new Dictionary<string, object>()
+                    ExpressionAttributeValues = new Dictionary<string, object>
                     {
                         //{":d", true }
                         //{":up", true }

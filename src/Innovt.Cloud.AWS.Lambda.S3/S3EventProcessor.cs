@@ -5,11 +5,11 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System.Threading.Tasks;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.S3Events;
 using Amazon.S3.Util;
 using Innovt.Core.CrossCutting.Log;
-using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Lambda.S3;
 
@@ -33,7 +33,7 @@ public abstract class S3EventProcessor : EventProcessor<S3Event>
         using var activity = EventProcessorActivitySource.StartActivity(nameof(Handle));
         activity?.SetTag("S3MessageRecordsCount", message?.Records?.Count);
 
-        foreach (var record in message.Records)
+        foreach (var record in message.Records!)
         {
             Logger.Info($"Processing S3Event Version {record.EventVersion}");
 

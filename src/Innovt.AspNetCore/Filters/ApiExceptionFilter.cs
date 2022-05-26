@@ -5,6 +5,7 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System.Diagnostics;
 using Innovt.AspNetCore.Model;
 using Innovt.AspNetCore.Resources;
 using Innovt.Core.CrossCutting.Log;
@@ -19,21 +20,20 @@ namespace Innovt.AspNetCore.Filters;
 [AttributeUsage(AttributeTargets.All)]
 public sealed class ApiExceptionFilter : ExceptionFilterAttribute
 {
-    public ILogger Logger { get; private set; }
+    public ILogger Logger { get; }
 
-    public ApiExceptionFilter(ILogger logger, IStringLocalizer<IExceptionResource> stringLocalizer)
-    {
-        Logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        StringLocalizer = stringLocalizer ?? throw new ArgumentNullException(nameof(stringLocalizer));
-    }
+    public IStringLocalizer<IExceptionResource> StringLocalizer { get; }
 
     public ApiExceptionFilter(ILogger logger)
     {
         Logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
-    public IStringLocalizer<IExceptionResource> StringLocalizer { get; }
-
+    public ApiExceptionFilter(ILogger logger, IStringLocalizer<IExceptionResource> stringLocalizer):this(logger)
+    {
+        StringLocalizer = stringLocalizer ?? throw new ArgumentNullException(nameof(stringLocalizer));
+    }
+    
     private string Translate(string message)
     {
         return StringLocalizer?[message] ?? message;
@@ -45,14 +45,17 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
 
         var baseException = context.Exception;
 
+        var requestId = Activity.Current?.Id ?? context.HttpContext.TraceIdentifier;
+
         var result = new ResponseError
         {
-            Message = Translate(baseException.Message),
-            TraceId = context.HttpContext.TraceIdentifier
+            Message = "Internal server error.Please try again or contact your system administrator.",
+            TraceId = requestId
         };
 
         if (baseException is BusinessException bex)
         {
+            result.Message = Translate(bex.Message);
             result.Code = $"{StatusCodes.Status400BadRequest}";
             result.Detail = bex.Errors;
             context.Result = new BadRequestObjectResult(result);
@@ -60,9 +63,12 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
         else
         {
             result.Code = $"{StatusCodes.Status500InternalServerError}";
-            result.Detail = $"Server Error: {baseException.Message}. Check your backend log for more detail.";
-            context.Result = new ObjectResult(result) { StatusCode = StatusCodes.Status500InternalServerError };
+            context.Result = new ObjectResult(result)
+            {
+                StatusCode = StatusCodes.Status500InternalServerError
+            };
             Logger.Error(context.Exception, "InternalServerError");
         }
+        Activity.Current?.SetStatus(ActivityStatusCode.Error, baseException.Message);
     }
 }

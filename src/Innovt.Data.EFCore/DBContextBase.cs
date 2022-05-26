@@ -5,17 +5,17 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using Innovt.Core.Utilities;
 using Innovt.Data.DataSources;
 using Innovt.Data.Exceptions;
 using Innovt.Domain.Core.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Innovt.Data.EFCore;
 
@@ -23,8 +23,6 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
 {
     private readonly IDataSource dataSource;
     private readonly ILoggerFactory loggerFactory;
-    public int? MaxRetryCount { get; set; }
-    public TimeSpan? MaxRetryDelay { get; set; }
 
     protected DBContextBase(IDataSource dataSource)
     {
@@ -41,6 +39,9 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     {
         base.ChangeTracker.LazyLoadingEnabled = false;
     }
+
+    public int? MaxRetryCount { get; set; }
+    public TimeSpan? MaxRetryDelay { get; set; }
 
     public int Commit()
     {
@@ -110,6 +111,11 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
         return base.Set<T>();
     }
 
+    public abstract int ExecuteSqlCommand(string sql, params object[] parameters);
+
+    public abstract Task<int> ExecuteSqlCommandAsync(string sql, CancellationToken cancellationToken = default,
+        params object[] parameters);
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (optionsBuilder == null) throw new ArgumentNullException(nameof(optionsBuilder));
@@ -134,9 +140,4 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     }
 
     protected abstract void ConfigureProvider(DbContextOptionsBuilder optionsBuilder, string connectionString);
-
-    public abstract int ExecuteSqlCommand(string sql, params object[] parameters);
-
-    public abstract Task<int> ExecuteSqlCommandAsync(string sql, CancellationToken cancellationToken = default,
-        params object[] parameters);
 }

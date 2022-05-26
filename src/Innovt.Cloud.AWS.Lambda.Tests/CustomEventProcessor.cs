@@ -11,7 +11,7 @@ public class CustomEventProcessor : EventProcessor<Person>
     {
     }
 
-    public CustomEventProcessor() : base()
+    public CustomEventProcessor()
     {
     }
 

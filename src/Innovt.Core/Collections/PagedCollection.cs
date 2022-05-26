@@ -5,9 +5,9 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Innovt.Core.Utilities;
 using System.Collections.Generic;
 using System.Globalization;
+using Innovt.Core.Utilities;
 
 namespace Innovt.Core.Collections;
 

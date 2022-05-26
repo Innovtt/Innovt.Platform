@@ -1,8 +1,6 @@
-﻿using Amazon.DynamoDBv2.DataModel;
+﻿using System.Collections.Generic;
+using Amazon.DynamoDBv2.DataModel;
 using ConsoleAppTest.Domain;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ConsoleAppTest.DataModels;
 

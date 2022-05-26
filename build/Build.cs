@@ -1,5 +1,3 @@
-using System;
-using NuGet.Common;
 using Nuke.Common;
 using Nuke.Common.CI;
 using Nuke.Common.Execution;
@@ -17,25 +15,19 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 [ShutdownDotNetAfterServerBuild]
 class Build : NukeBuild
 {
-    /// Support plugins are available for:
-    ///   - JetBrains ReSharper        https://nuke.build/resharper
-    ///   - JetBrains Rider            https://nuke.build/rider
-    ///   - Microsoft VisualStudio     https://nuke.build/visualstudio
-    ///   - Microsoft VSCode           https://nuke.build/vscode
-    public static int Main() => Execute<Build>(x => x.Publish);
-
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
 
-    [Solution] readonly Solution Solution;
     [GitRepository] readonly GitRepository GitRepository;
     [GitVersion] readonly GitVersion GitVersion;
 
-    AbsolutePath SourceDirectory => RootDirectory / "src";
-    AbsolutePath ArtifactsDirectory => RootDirectory / "artifacts";
+    [Solution] readonly Solution Solution;
+    [Parameter] string NugetApiKey;
 
     [Parameter] string NugetApiUrl = "http://nugetinnovt.azurewebsites.net/api/v2/package";
-    [Parameter] string NugetApiKey;
+
+    AbsolutePath SourceDirectory => RootDirectory / "src";
+    AbsolutePath ArtifactsDirectory => RootDirectory / "artifacts";
 
 
     Target Clean => _ => _
@@ -93,4 +85,11 @@ class Build : NukeBuild
                     );
                 });
         });
+
+    /// Support plugins are available for:
+    /// - JetBrains ReSharper        https://nuke.build/resharper
+    /// - JetBrains Rider            https://nuke.build/rider
+    /// - Microsoft VisualStudio     https://nuke.build/visualstudio
+    /// - Microsoft VSCode           https://nuke.build/vscode
+    public static int Main() => Execute<Build>(x => x.Publish);
 }

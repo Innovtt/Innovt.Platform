@@ -5,16 +5,6 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Amazon.CognitoIdentityProvider;
-using Amazon.CognitoIdentityProvider.Model;
-using Innovt.Cloud.AWS.Cognito.Model;
-using Innovt.Cloud.AWS.Cognito.Resources;
-using Innovt.Cloud.AWS.Configuration;
-using Innovt.Core.CrossCutting.Log;
-using Innovt.Core.Exceptions;
-using Innovt.Core.Http;
-using Innovt.Core.Utilities;
-using Innovt.Core.Validation;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -26,6 +16,16 @@ using System.Reflection;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using Amazon.CognitoIdentityProvider;
+using Amazon.CognitoIdentityProvider.Model;
+using Innovt.Cloud.AWS.Cognito.Model;
+using Innovt.Cloud.AWS.Cognito.Resources;
+using Innovt.Cloud.AWS.Configuration;
+using Innovt.Core.CrossCutting.Log;
+using Innovt.Core.Exceptions;
+using Innovt.Core.Http;
+using Innovt.Core.Utilities;
+using Innovt.Core.Validation;
 using ChangePasswordRequest = Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest;
 using ConfirmForgotPasswordRequest = Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest;
 using ConfirmSignUpRequest = Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest;
@@ -43,9 +43,9 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         new("Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider");
 
     private readonly string clientId;
+    private readonly CultureInfo cultureInfo = CultureInfo.CurrentCulture;
     private readonly Uri domainEndPoint;
     private readonly string userPoolId;
-    private readonly CultureInfo cultureInfo = CultureInfo.CurrentCulture;
 
     private AmazonCognitoIdentityProviderClient cognitoIdentityProvider;
 

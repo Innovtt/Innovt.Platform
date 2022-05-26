@@ -5,21 +5,22 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
+using System.Diagnostics;
+using System.Globalization;
 using Amazon.Lambda.Core;
 using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Core.CrossCutting.Log;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Diagnostics;
 
 namespace Innovt.Cloud.AWS.Lambda;
 
 public abstract class BaseEventProcessor
 {
-    private bool isIocContainerInitialized;
-
     protected static readonly ActivitySource EventProcessorActivitySource =
         new("Innovt.Cloud.AWS.Lambda.EventProcessor");
+
+    private bool isIocContainerInitialized;
 
     protected BaseEventProcessor(ILogger logger)
     {
@@ -87,13 +88,13 @@ public abstract class BaseEventProcessor
     {
         var configBuilder = new ConfigurationBuilder();
         configBuilder.AddEnvironmentVariables();
-        configBuilder.AddJsonFile($"appsettings.json", true);
+        configBuilder.AddJsonFile("appsettings.json", true);
 
         var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
         if (!string.IsNullOrWhiteSpace(environmentName))
             configBuilder.AddJsonFile(
-                $"appsettings.{environmentName.ToLower(System.Globalization.CultureInfo.CurrentCulture)}.json", true);
+                $"appsettings.{environmentName.ToLower(CultureInfo.CurrentCulture)}.json", true);
 
         EnrichConfiguration(configBuilder);
 

@@ -1,3 +1,6 @@
+using System.Diagnostics;
+using System.Text;
+using System.Text.Json;
 using Amazon.Lambda.KinesisEvents;
 using Amazon.Lambda.TestUtilities;
 using Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors;
@@ -9,25 +12,22 @@ using NUnit.Framework;
 using OpenTelemetry;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
-using System.Diagnostics;
-using System.Text;
-using System.Text.Json;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests;
 
 [TestFixture]
 public class KinesisProcessorTests
 {
-    private IServiceMock serviceMock;
-
-    protected static readonly ActivitySource KinesisProcessorTestsActivitySource =
-        new("Innovt.Cloud.AWS.Lambda.Kinesis.Tests");
-
     [SetUp]
     public void Setup()
     {
         serviceMock = Substitute.For<IServiceMock>();
     }
+
+    private IServiceMock serviceMock;
+
+    protected static readonly ActivitySource KinesisProcessorTestsActivitySource =
+        new("Innovt.Cloud.AWS.Lambda.Kinesis.Tests");
 
     [Test]
     public async Task SimpleFunctionTest()
@@ -98,7 +98,7 @@ public class KinesisProcessorTests
 
         var message = new KinesisEvent
         {
-            Records = new List<KinesisEvent.KinesisEventRecord>()
+            Records = new List<KinesisEvent.KinesisEventRecord>
             {
                 new()
                 {
@@ -107,7 +107,7 @@ public class KinesisProcessorTests
                     EventName = "eventTest",
                     EventVersion = "1.0.0",
                     EventSource = "testing",
-                    Kinesis = new KinesisEvent.Record() { PartitionKey = "partition1", Data = null }
+                    Kinesis = new KinesisEvent.Record { PartitionKey = "partition1", Data = null }
                 }
             }
         };
@@ -130,7 +130,7 @@ public class KinesisProcessorTests
 
         var message = new KinesisEvent
         {
-            Records = new List<KinesisEvent.KinesisEventRecord>()
+            Records = new List<KinesisEvent.KinesisEventRecord>
             {
                 CreateValidKinesisRecord(eventId, new Invoice())
             }
@@ -154,7 +154,7 @@ public class KinesisProcessorTests
 
         var message = new KinesisEvent
         {
-            Records = new List<KinesisEvent.KinesisEventRecord>()
+            Records = new List<KinesisEvent.KinesisEventRecord>
             {
                 CreateValidKinesisRecord(eventId, new Invoice())
             }
@@ -178,7 +178,7 @@ public class KinesisProcessorTests
 
         var message = new KinesisEvent
         {
-            Records = new List<KinesisEvent.KinesisEventRecord>()
+            Records = new List<KinesisEvent.KinesisEventRecord>
             {
                 CreateValidKinesisRecord(eventId, new Invoice())
             }
@@ -215,9 +215,9 @@ public class KinesisProcessorTests
 
         var message = new KinesisEvent
         {
-            Records = new List<KinesisEvent.KinesisEventRecord>()
+            Records = new List<KinesisEvent.KinesisEventRecord>
             {
-                CreateValidKinesisRecord(eventId, new InvoiceDomainEvent() { NetValue = netValue })
+                CreateValidKinesisRecord(eventId, new InvoiceDomainEvent { NetValue = netValue })
             }
         };
 
@@ -243,10 +243,10 @@ public class KinesisProcessorTests
 
         var message = new KinesisEvent
         {
-            Records = new List<KinesisEvent.KinesisEventRecord>()
+            Records = new List<KinesisEvent.KinesisEventRecord>
             {
                 CreateValidKinesisRecord(eventId,
-                    new DataStream<BaseInvoice>() { Body = new BaseInvoice() { NetValue = netValue } })
+                    new DataStream<BaseInvoice> { Body = new BaseInvoice { NetValue = netValue } })
             }
         };
 
@@ -269,10 +269,10 @@ public class KinesisProcessorTests
 
         var message = new KinesisEvent
         {
-            Records = new List<KinesisEvent.KinesisEventRecord>()
+            Records = new List<KinesisEvent.KinesisEventRecord>
             {
                 CreateValidKinesisRecord(eventId,
-                    new DataStream<BaseInvoice>() { Body = new BaseInvoice() { NetValue = netValue } })
+                    new DataStream<BaseInvoice> { Body = new BaseInvoice { NetValue = netValue } })
             }
         };
 
@@ -283,16 +283,16 @@ public class KinesisProcessorTests
 
     private KinesisEvent.KinesisEventRecord CreateValidKinesisRecord(Guid eventId, object invoice)
     {
-        var dataAsBytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize<object>(invoice));
+        var dataAsBytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(invoice));
         var ms = new MemoryStream(dataAsBytes);
-        return new KinesisEvent.KinesisEventRecord()
+        return new KinesisEvent.KinesisEventRecord
         {
             AwsRegion = "us-east-1",
             EventId = eventId.ToString(),
             EventName = "eventTest",
             EventVersion = "1.0.0",
             EventSource = "testing",
-            Kinesis = new KinesisEvent.Record() { PartitionKey = "partition1", Data = ms }
+            Kinesis = new KinesisEvent.Record { PartitionKey = "partition1", Data = ms }
         };
     }
 }

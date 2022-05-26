@@ -5,28 +5,30 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.SQSEvents;
 using Innovt.Cloud.Queue;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Serialization;
 using Innovt.Core.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Lambda.Sqs;
 
 /// <summary>
-/// If you're using this feature with a FIFO queue, your function should stop processing messages after the first failure and return all failed and unprocessed messages in batchItemFailures. This helps preserve the ordering of messages in your queue.
+///     If you're using this feature with a FIFO queue, your function should stop processing messages after the first
+///     failure and return all failed and unprocessed messages in batchItemFailures. This helps preserve the ordering of
+///     messages in your queue.
 /// </summary>
 /// <typeparam name="TBody"></typeparam>
 public abstract class SqsEventProcessor<TBody> : EventProcessor<SQSEvent, BatchFailureResponse> where TBody : class
 {
-    private ISerializer serializer;
     private readonly bool isFifo;
-    protected bool ReportBatchFailures { get; set; }
+    private ISerializer serializer;
 
     protected SqsEventProcessor(bool isFifo = false, bool reportBatchFailures = false)
     {
@@ -45,6 +47,8 @@ public abstract class SqsEventProcessor<TBody> : EventProcessor<SQSEvent, BatchF
     {
         Serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
     }
+
+    protected bool ReportBatchFailures { get; set; }
 
     private ISerializer Serializer
     {
@@ -105,11 +109,14 @@ public abstract class SqsEventProcessor<TBody> : EventProcessor<SQSEvent, BatchF
             }
             catch (Exception ex)
             {
+                activity?.SetStatus(ActivityStatusCode.Error, ex.Message);
+
                 if (!ReportBatchFailures)
                     throw;
 
                 Logger.Warning($"SQS Event message ID {record.MessageId} will be returned as item failure.");
                 Logger.Error(ex, $"Exception for message ID {record.MessageId}.");
+
 
                 if (isFifo)
                 {

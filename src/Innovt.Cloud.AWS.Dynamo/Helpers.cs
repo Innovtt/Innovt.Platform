@@ -5,13 +5,6 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Amazon.DynamoDBv2;
-using Amazon.DynamoDBv2.DataModel;
-using Amazon.DynamoDBv2.DocumentModel;
-using Amazon.DynamoDBv2.Model;
-using Innovt.Cloud.Table;
-using Innovt.Core.Collections;
-using Innovt.Core.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,6 +12,15 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.DataModel;
+using Amazon.DynamoDBv2.DocumentModel;
+using Amazon.DynamoDBv2.Model;
+using Innovt.Cloud.Table;
+using Innovt.Core.Collections;
+using Innovt.Core.Utilities;
+using QueryRequest = Amazon.DynamoDBv2.Model.QueryRequest;
+using ScanRequest = Amazon.DynamoDBv2.Model.ScanRequest;
 
 namespace Innovt.Cloud.AWS.Dynamo;
 
@@ -115,10 +117,10 @@ internal static class Helpers
     }
 
 
-    internal static Amazon.DynamoDBv2.Model.QueryRequest CreateQueryRequest<T>(
+    internal static QueryRequest CreateQueryRequest<T>(
         Table.QueryRequest request)
     {
-        var queryRequest = new Amazon.DynamoDBv2.Model.QueryRequest
+        var queryRequest = new QueryRequest
         {
             IndexName = request.IndexName,
             TableName = GetTableName<T>(),
@@ -139,9 +141,9 @@ internal static class Helpers
     }
 
 
-    internal static Amazon.DynamoDBv2.Model.ScanRequest CreateScanRequest<T>(Table.ScanRequest request)
+    internal static ScanRequest CreateScanRequest<T>(Table.ScanRequest request)
     {
-        var scanRequest = new Amazon.DynamoDBv2.Model.ScanRequest
+        var scanRequest = new ScanRequest
         {
             IndexName = request.IndexName,
             TableName = GetTableName<T>(),
@@ -381,7 +383,7 @@ internal static class Helpers
         if (transactionWriteItem.OperationType != TransactionWriteOperationType.Put)
             return null;
 
-        return new Put()
+        return new Put
         {
             ConditionExpression = transactionWriteItem.ConditionExpression,
             TableName = transactionWriteItem.TableName,
@@ -396,7 +398,7 @@ internal static class Helpers
         if (transactionWriteItem.OperationType != TransactionWriteOperationType.Check)
             return null;
 
-        return new ConditionCheck()
+        return new ConditionCheck
         {
             ConditionExpression = transactionWriteItem.ConditionExpression,
             TableName = transactionWriteItem.TableName,
@@ -410,7 +412,7 @@ internal static class Helpers
         if (transactionWriteItem.OperationType != TransactionWriteOperationType.Delete)
             return null;
 
-        return new Delete()
+        return new Delete
         {
             ConditionExpression = transactionWriteItem.ConditionExpression,
             TableName = transactionWriteItem.TableName,
@@ -424,7 +426,7 @@ internal static class Helpers
         if (transactionWriteItem.OperationType != TransactionWriteOperationType.Update)
             return null;
 
-        return new Update()
+        return new Update
         {
             ConditionExpression = transactionWriteItem.ConditionExpression,
             TableName = transactionWriteItem.TableName,
@@ -455,8 +457,6 @@ internal static class Helpers
         return new TransactGetItem
         {
             Get = new Get()
-            {
-            }
         };
     }
 }

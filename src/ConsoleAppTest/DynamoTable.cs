@@ -1,5 +1,6 @@
-﻿using Innovt.Cloud.Table;
-using System;
+﻿using System;
+using Amazon.DynamoDBv2.DataModel;
+using Innovt.Cloud.Table;
 
 namespace ConsoleAppTest;
 //[Amazon.DynamoDBv2.DataModel.DynamoDBTable("UserRoles")]
@@ -9,11 +10,9 @@ namespace ConsoleAppTest;
 
 internal class SupplierConsultancyRegister : ITableMessage
 {
-    [Amazon.DynamoDBv2.DataModel.DynamoDBHashKey("ConsultancyId")]
-    public Guid ConsultancyId { get; set; }
+    [DynamoDBHashKey("ConsultancyId")] public Guid ConsultancyId { get; set; }
 
-    [Amazon.DynamoDBv2.DataModel.DynamoDBRangeKey("SupplierId")]
-    public Guid RangeKey { get; set; }
+    [DynamoDBRangeKey("SupplierId")] public Guid RangeKey { get; set; }
 
     public string Status { get; set; }
 

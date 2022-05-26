@@ -5,17 +5,17 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Threading;
+using System.Threading.Tasks;
 using Dapper;
 using Innovt.Core.Collections;
 using Innovt.Core.Cqrs.Queries;
 using Innovt.Data.DataSources;
 using Innovt.Data.Exceptions;
 using Innovt.Data.Model;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Innovt.Data.Ado;
 

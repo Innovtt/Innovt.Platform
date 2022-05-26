@@ -1,3 +1,4 @@
+using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.File;
 using Innovt.CrossCutting.Log.Serilog;
 using NUnit.Framework;
@@ -17,18 +18,18 @@ public class Tests
         const string bucketName = "datalake-raw-antecipa-v2";
 
         var logger = new Logger();
-        var configuration = new Configuration.DefaultAWSConfiguration("antecipa-data");
+        var configuration = new DefaultAWSConfiguration("antecipa-data");
 
         IFileSystem fileSystem = new S3FileSystem(logger, configuration);
 
         //var fileName = $"antecipa/v1/samplemichel.json".ToLower();
-        var fileName = $"antecipa/v1/user/107532f24b15ca16ab4a7057d0be7ca9s.json".ToLower();
+        var fileName = "antecipa/v1/user/107532f24b15ca16ab4a7057d0be7ca9s.json".ToLower();
 
         //107532f24b15ca16ab4a7057d0be7ca9.json
 
         var exist = await fileSystem.FileExistsAsync(bucketName, fileName);
 
-        var content = "sample storage class".ToString();
+        var content = "sample storage class";
 
         using var ms = new MemoryStream();
         using var sw = new StreamWriter(ms);
@@ -44,17 +45,17 @@ public class Tests
         const string bucketName = "processed-tests";
 
         var logger = new Logger();
-        var configuration = new Configuration.DefaultAWSConfiguration("antecipa-dev");
+        var configuration = new DefaultAWSConfiguration("antecipa-dev");
 
         //var fileName = $"antecipa/v1/samplemichel.json".ToLower();
-        var fileName = $"userMichelDto.json".ToLower();
+        var fileName = "userMichelDto.json".ToLower();
 
         //107532f24b15ca16ab4a7057d0be7ca9.json
-        var dto = new UserDto() { Name = "michel", LastName = "Borges" };
+        var dto = new UserDto { Name = "michel", LastName = "Borges" };
 
         IFileSystem fileSystem = new S3FileSystem(logger, configuration);
 
-        var url = await fileSystem.UploadAsJsonAsync<UserDto>(bucketName, dto, fileName);
+        var url = await fileSystem.UploadAsJsonAsync(bucketName, dto, fileName);
 
         var expected = fileSystem.GetObjectFromJson<UserDto>(new Uri(url));
     }

@@ -3,9 +3,9 @@
 // Solution: Innovt.Contrib.Authorization
 // Date: 2021-09-20
 
+using System;
 using Innovt.Core.Utilities;
 using Innovt.Domain.Core.Model;
-using System;
 
 namespace Innovt.Contrib.Authorization.Platform.Domain;
 

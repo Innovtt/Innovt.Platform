@@ -5,9 +5,9 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Innovt.Notification.Core.Domain;
 using System.Threading;
 using System.Threading.Tasks;
+using Innovt.Notification.Core.Domain;
 
 namespace Innovt.Notification.Core;
 

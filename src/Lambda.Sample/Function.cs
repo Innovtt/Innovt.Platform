@@ -1,20 +1,17 @@
-﻿using Amazon.Lambda.Core;
+﻿using System;
+using System.Threading.Tasks;
+using Amazon.Lambda.Core;
+using Amazon.Lambda.Serialization.SystemTextJson;
 using Innovt.Cloud.AWS.Lambda.Sqs;
 using Innovt.Cloud.Queue;
 using Innovt.Core.CrossCutting.Ioc;
-using System;
-using System.Threading.Tasks;
 
-[assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
+[assembly: LambdaSerializer(typeof(DefaultLambdaJsonSerializer))]
 
 namespace Lambda.Sample;
 
 public class Function : SqsEventProcessor<SampleEvent>
 {
-    public Function() : base()
-    {
-    }
-
     protected override Task ProcessMessage(QueueMessage<SampleEvent> message)
     {
         Console.WriteLine("Stating process message");

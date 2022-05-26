@@ -6,6 +6,7 @@
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -36,5 +37,5 @@ public interface IExtendedUnitOfWork : IUnitOfWork
     Task<int> ExecuteSqlCommandAsync(string sql, CancellationToken cancellationToken = default,
         params object[] parameters);
 
-    System.Linq.IQueryable<T> Queryable<T>() where T : class;
+    IQueryable<T> Queryable<T>() where T : class;
 }

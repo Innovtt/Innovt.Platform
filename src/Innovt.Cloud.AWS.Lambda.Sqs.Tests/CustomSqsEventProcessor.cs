@@ -1,8 +1,8 @@
-﻿using Innovt.Cloud.Queue;
+﻿using System;
+using System.Threading.Tasks;
+using Innovt.Cloud.Queue;
 using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Core.CrossCutting.Log;
-using System;
-using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests;
 
@@ -16,7 +16,7 @@ public class CustomSqsEventProcessor : SqsEventProcessor<Person>
     {
     }
 
-    public CustomSqsEventProcessor() : base()
+    public CustomSqsEventProcessor()
     {
     }
 
@@ -32,7 +32,6 @@ public class CustomSqsEventProcessor : SqsEventProcessor<Person>
 
         if (message.Body.Name == "michel")
             return Task.CompletedTask;
-        else
-            throw new Exception("Fake exception");
+        throw new Exception("Fake exception");
     }
 }

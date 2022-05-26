@@ -5,11 +5,11 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
+using System.Collections.Generic;
 using Innovt.Core.Utilities;
 using Innovt.Notification.Core.Domain;
 using Innovt.Notification.Core.Template;
-using System;
-using System.Collections.Generic;
 
 namespace Innovt.Notification.Core.Builders;
 
@@ -59,7 +59,7 @@ public class DefaultMessageBuilder : IMessageBuilder
     {
         if (template == null) throw new ArgumentNullException(nameof(template));
 
-        return new NotificationMessageSubject()
+        return new NotificationMessageSubject
         {
             Charset = template.Charset,
             Content = template.Subject

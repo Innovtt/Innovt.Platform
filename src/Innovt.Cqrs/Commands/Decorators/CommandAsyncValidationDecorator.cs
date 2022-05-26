@@ -5,11 +5,11 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Innovt.Core.Cqrs.Commands;
-using Innovt.Core.Validation;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Innovt.Core.Cqrs.Commands;
+using Innovt.Core.Validation;
 
 namespace Innovt.Cqrs.Commands.Decorators;
 

@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading;
+using System.Threading.Tasks;
 using Innovt.AspNetCore.Handlers;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Domain.Security;
@@ -6,21 +11,12 @@ using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using NSubstitute;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Innovt.AspNetCore.Tests;
 
 [TestFixture]
 public class RolesAuthorizationHandlerTests
 {
-    private IAuthorizationRepository authorizationRepositoryMoq;
-    private ILogger loggerMock;
-
-
     [SetUp]
     public void Setup()
     {
@@ -35,6 +31,9 @@ public class RolesAuthorizationHandlerTests
         loggerMock = null;
     }
 
+    private IAuthorizationRepository authorizationRepositoryMoq;
+    private ILogger loggerMock;
+
     [Test]
     public void ConstructorShould_ThrowException_If_Parameters_Is_NUll()
     {
@@ -45,7 +44,7 @@ public class RolesAuthorizationHandlerTests
 
     private AuthorizationHandlerContext CreateContext(ClaimsPrincipal user)
     {
-        return new AuthorizationHandlerContext(new List<IAuthorizationRequirement>()
+        return new AuthorizationHandlerContext(new List<IAuthorizationRequirement>
         {
             new RolesAuthorizationRequirement(new[] { "Admin" })
         }, user, null);
@@ -88,7 +87,7 @@ public class RolesAuthorizationHandlerTests
         var identity = Substitute.For<ClaimsIdentity>();
 
         identity.IsAuthenticated.Returns(true);
-        identity.Claims.Returns(new List<Claim>()
+        identity.Claims.Returns(new List<Claim>
         {
             new(ClaimTypes.NameIdentifier, "564654654")
         });
@@ -107,7 +106,7 @@ public class RolesAuthorizationHandlerTests
     [Test]
     public async Task HandleAsync_Fail_If_User_HasNoRoles()
     {
-        var user = new AuthUser()
+        var user = new AuthUser
         {
             Name = "MIchel",
             DomainId = "123456",
@@ -122,7 +121,7 @@ public class RolesAuthorizationHandlerTests
         var identity = Substitute.For<ClaimsIdentity>();
 
         identity.IsAuthenticated.Returns(true);
-        identity.Claims.Returns(new List<Claim>()
+        identity.Claims.Returns(new List<Claim>
         {
             new(ClaimTypes.NameIdentifier, user.Id)
         });
@@ -146,18 +145,18 @@ public class RolesAuthorizationHandlerTests
     [TestCase("User", false)]
     public async Task HandleAsync_Fail_If_User_Has_NoMatting_Role(string role, bool success)
     {
-        var group = new Group()
+        var group = new Group
         {
             Description = "Default"
         };
 
-        group.AssignRole(new Role()
+        group.AssignRole(new Role
         {
             Scope = "User", //no scope
             Name = role
         });
 
-        var user = new AuthUser()
+        var user = new AuthUser
         {
             Name = "Michel",
             DomainId = "123456",
@@ -174,7 +173,7 @@ public class RolesAuthorizationHandlerTests
         var identity = Substitute.For<ClaimsIdentity>();
 
         identity.IsAuthenticated.Returns(true);
-        identity.Claims.Returns(new List<Claim>()
+        identity.Claims.Returns(new List<Claim>
         {
             new(ClaimTypes.NameIdentifier, user.Id)
         });
@@ -196,18 +195,18 @@ public class RolesAuthorizationHandlerTests
     [Test]
     public async Task HandleAsync_Fail_If_User_Has_NoMatting_Scope()
     {
-        var group = new Group()
+        var group = new Group
         {
             Description = "Default"
         };
 
-        group.AssignRole(new Role()
+        group.AssignRole(new Role
         {
             Scope = "Buyer", //Fixed scope
             Name = "Admin"
         });
 
-        var user = new AuthUser()
+        var user = new AuthUser
         {
             Name = "Michel",
             DomainId = "123456",
@@ -224,7 +223,7 @@ public class RolesAuthorizationHandlerTests
         var identity = Substitute.For<ClaimsIdentity>();
 
         identity.IsAuthenticated.Returns(true);
-        identity.Claims.Returns(new List<Claim>()
+        identity.Claims.Returns(new List<Claim>
         {
             new(ClaimTypes.NameIdentifier, user.Id)
         });
@@ -234,7 +233,7 @@ public class RolesAuthorizationHandlerTests
         var httpContext = new DefaultHttpContext();
         httpContext.Request.Headers.Add("X-Application-Scope", "User");
 
-        var context = new AuthorizationHandlerContext(new List<IAuthorizationRequirement>()
+        var context = new AuthorizationHandlerContext(new List<IAuthorizationRequirement>
         {
             new RolesAuthorizationRequirement(new[] { "Admin" })
         }, principal, httpContext);
@@ -253,18 +252,18 @@ public class RolesAuthorizationHandlerTests
     public async Task HandleAsync_Succeed_If_User_Has_Scope_And_Role()
     {
         var scope = "Buyer";
-        var group = new Group()
+        var group = new Group
         {
             Description = "Default"
         };
 
-        group.AssignRole(new Role()
+        group.AssignRole(new Role
         {
             Scope = scope,
             Name = "Admin"
         });
 
-        var user = new AuthUser()
+        var user = new AuthUser
         {
             Name = "Michel",
             DomainId = "123456",
@@ -281,7 +280,7 @@ public class RolesAuthorizationHandlerTests
         var identity = Substitute.For<ClaimsIdentity>();
 
         identity.IsAuthenticated.Returns(true);
-        identity.Claims.Returns(new List<Claim>()
+        identity.Claims.Returns(new List<Claim>
         {
             new(ClaimTypes.NameIdentifier, user.Id)
         });
@@ -291,7 +290,7 @@ public class RolesAuthorizationHandlerTests
         var httpContext = new DefaultHttpContext();
         httpContext.Request.Headers.Add("X-Application-Scope", scope);
 
-        var context = new AuthorizationHandlerContext(new List<IAuthorizationRequirement>()
+        var context = new AuthorizationHandlerContext(new List<IAuthorizationRequirement>
         {
             new RolesAuthorizationRequirement(new[] { "Admin" })
         }, principal, httpContext);
@@ -310,18 +309,18 @@ public class RolesAuthorizationHandlerTests
     public async Task HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode(string scope, string appCode,
         bool success)
     {
-        var group = new Group()
+        var group = new Group
         {
             Description = "Default"
         };
 
-        group.AssignRole(new Role()
+        group.AssignRole(new Role
         {
-            Scope = $"123456::Buyer",
+            Scope = "123456::Buyer",
             Name = "Admin"
         });
 
-        var user = new AuthUser()
+        var user = new AuthUser
         {
             Name = "Michel",
             DomainId = "123456",
@@ -338,7 +337,7 @@ public class RolesAuthorizationHandlerTests
         var identity = Substitute.For<ClaimsIdentity>();
 
         identity.IsAuthenticated.Returns(true);
-        identity.Claims.Returns(new List<Claim>()
+        identity.Claims.Returns(new List<Claim>
         {
             new(ClaimTypes.NameIdentifier, user.Id)
         });
@@ -350,7 +349,7 @@ public class RolesAuthorizationHandlerTests
         httpContext.Request.Headers.Add("X-Application-Context", "company-id");
         httpContext.Request.Headers.Add("company-id", appCode);
 
-        var context = new AuthorizationHandlerContext(new List<IAuthorizationRequirement>()
+        var context = new AuthorizationHandlerContext(new List<IAuthorizationRequirement>
         {
             new RolesAuthorizationRequirement(new[] { "Admin" })
         }, principal, httpContext);
@@ -370,18 +369,18 @@ public class RolesAuthorizationHandlerTests
     [TestCase("User", "123456", false)]
     public async Task HandleAsync_When_User_Has_WildCard_Scope(string scope, string appCode, bool success)
     {
-        var group = new Group()
+        var group = new Group
         {
             Description = "Default"
         };
 
-        group.AssignRole(new Role()
+        group.AssignRole(new Role
         {
             Scope = scope,
             Name = "Admin"
         });
 
-        var user = new AuthUser()
+        var user = new AuthUser
         {
             Name = "Michel",
             DomainId = "123456",
@@ -398,7 +397,7 @@ public class RolesAuthorizationHandlerTests
         var identity = Substitute.For<ClaimsIdentity>();
 
         identity.IsAuthenticated.Returns(true);
-        identity.Claims.Returns(new List<Claim>()
+        identity.Claims.Returns(new List<Claim>
         {
             new(ClaimTypes.NameIdentifier, user.Id)
         });
@@ -410,7 +409,7 @@ public class RolesAuthorizationHandlerTests
         httpContext.Request.Headers.Add("X-Application-Context", "company-id");
         httpContext.Request.Headers.Add("company-id", appCode);
 
-        var context = new AuthorizationHandlerContext(new List<IAuthorizationRequirement>()
+        var context = new AuthorizationHandlerContext(new List<IAuthorizationRequirement>
         {
             new RolesAuthorizationRequirement(new[] { "Admin" })
         }, principal, httpContext);

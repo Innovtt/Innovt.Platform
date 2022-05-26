@@ -5,14 +5,14 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Innovt.Core.Security;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
+using Innovt.Core.Security;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace Innovt.AspNetCore.Handlers;
 

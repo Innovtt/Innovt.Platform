@@ -5,17 +5,17 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Amazon.Lambda.Core;
-using Innovt.Core.CrossCutting.Log;
 using System;
 using System.Globalization;
+using Amazon.Lambda.Core;
+using Innovt.Core.CrossCutting.Log;
 
 namespace Innovt.Cloud.AWS.Lambda;
 
 internal class LambdaLogger : ILogger
 {
-    private readonly ILambdaLogger lambdaLogger;
     private readonly IFormatProvider formatProvider;
+    private readonly ILambdaLogger lambdaLogger;
 
     public LambdaLogger(ILambdaLogger lambdaLogger, IFormatProvider formatProvider = null)
     {

@@ -1,9 +1,6 @@
 ﻿using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.AWS.Dynamo;
 using Innovt.Core.CrossCutting.Log;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ConsoleAppTest;
 

@@ -5,7 +5,6 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Innovt.AspNetCore.Extensions;
 using Innovt.AspNetCore.Filters;
 using Innovt.AspNetCore.Infrastructure;
 using Innovt.AspNetCore.Model;
@@ -18,7 +17,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.TraceSource;
 using Microsoft.OpenApi.Models;
+using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
 namespace Innovt.AspNetCore;
@@ -98,8 +99,17 @@ public abstract class ApiStartupBase
     {
         services.AddOpenTelemetryTracing(builder =>
         {
-            builder.AddAspNetCoreInstrumentation().AddHttpClientInstrumentation().AddSource(AppName)
-                .AddConsoleExporter();
+            builder.AddSource(AppName).SetResourceBuilder(ResourceBuilder.CreateDefault()
+                    .AddService(serviceName: AppName))
+                .AddAspNetCoreInstrumentation(a =>
+                {
+                    a.RecordException = true;
+                })
+                .AddHttpClientInstrumentation(a =>
+                {
+                    a.RecordException=true;
+                })
+                .AddConsoleExporter().SetErrorStatusOnException(true);
 
             ConfigureOpenTelemetry(builder);
         });
@@ -114,7 +124,7 @@ public abstract class ApiStartupBase
         var provider = services.BuildServiceProvider();
 
         var mvcBuilder = services.AddControllers(op => { op.Filters.Add(provider.GetService<ApiExceptionFilter>()); });
-
+        
         if (Localization?.DefaultLocalizeResource == null) return;
 
         services.AddLocalization();
@@ -186,7 +196,7 @@ public abstract class ApiStartupBase
         ConfigureCultures(app);
 
         app.UseHealthChecks(DefaultHealthPath);
-
+        
         ConfigureApp(app, env, loggerFactory);
 
         app.UseEndpoints(endpoints => { endpoints.MapControllers(); });

@@ -5,9 +5,9 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Innovt.Domain.Core.Model;
 using System;
 using System.Linq.Expressions;
+using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Core.Specification;
 

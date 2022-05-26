@@ -4,7 +4,6 @@ using NUnit.Framework;
 
 namespace Innovt.Core.Test;
 
-
 [TestFixture]
 public class ExtensionsTests
 {

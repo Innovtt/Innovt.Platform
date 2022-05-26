@@ -5,10 +5,11 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using Amazon.Lambda.Core;
 using Innovt.Core.CrossCutting.Log;
-using System;
-using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Lambda;
 
@@ -18,7 +19,7 @@ public abstract class EventProcessor<T, TResult> : BaseEventProcessor where T : 
     {
     }
 
-    protected EventProcessor() : base()
+    protected EventProcessor()
     {
     }
 
@@ -29,12 +30,12 @@ public abstract class EventProcessor<T, TResult> : BaseEventProcessor where T : 
 
         InitializeLogger();
 
+        using var activity = StartBaseActivity(nameof(Process));
+
         Logger.Info($"Receiving message. Function {context.FunctionName} and Version {context.FunctionVersion}");
 
         try
         {
-            using var activity = StartBaseActivity(nameof(Process));
-
             SetupConfiguration();
 
             SetupIoc();
@@ -43,6 +44,7 @@ public abstract class EventProcessor<T, TResult> : BaseEventProcessor where T : 
         }
         catch (Exception ex)
         {
+            activity?.SetStatus(ActivityStatusCode.Error, ex.Message);
             Logger.Error(ex, ex.Message);
             throw;
         }
@@ -57,7 +59,7 @@ public abstract class EventProcessor<T> : BaseEventProcessor where T : class
     {
     }
 
-    protected EventProcessor() : base()
+    protected EventProcessor()
     {
     }
 
