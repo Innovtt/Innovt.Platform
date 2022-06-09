@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
-using System.Threading.Tasks;
 using Datadog.Trace.OpenTracing;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Core.Cqrs.Queries;
@@ -12,7 +11,6 @@ using Innovt.CrossCutting.Log.Serilog;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OpenTelemetry;
-using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using OpenTracing.Util;
 
@@ -69,14 +67,13 @@ public class Program
         Console.WriteLine("Hello World!");
 
         using var tracerProvider = Sdk.CreateTracerProviderBuilder()
-           // .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("MySample"))
+            //.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("MySample"))
             .AddSource("ConsoleAppTest")
             .AddConsoleExporter()
             .AddJaegerExporter(e =>
            {
                e.AgentPort = 6831;
                e.AgentHost = "localhost";
-
            })
             .Build();
         

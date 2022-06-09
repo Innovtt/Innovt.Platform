@@ -6,19 +6,18 @@
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
-using System.Runtime.CompilerServices;
 using Microsoft.Extensions.Logging;
 using Serilog;
-using Serilog.Context;
 using Serilog.Core;
 using Serilog.Events;
+using Serilog.Formatting.Json;
 using ILogger = Innovt.Core.CrossCutting.Log.ILogger;
 
 namespace Innovt.CrossCutting.Log.Serilog;
 
-public class Logger : ILogger
+public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 {
-    private const string ConsoleTemplate = "[{Timestamp:HH:mm:ss} {Level:u3}] {TraceId} {SpanId} {Message:lj}{NewLine}{Exception}";
+    private const string ConsoleTemplate = "[{Timestamp:HH:mm:ss} {Level:u3}] {TraceId} {SpanId} {Message:lj}{NewLine}{Exception}{ Properties: j}";
     private readonly global::Serilog.Core.Logger logger;
 
     /// <summary>
@@ -26,295 +25,232 @@ public class Logger : ILogger
     /// </summary>
     public Logger() : this(new LoggerConfiguration())
     {
-
     }
 
-    public Logger(ILogEventEnricher logEventEnricher)
+    public Logger(ILogEventEnricher logEventEnricher) : this(new[]{ logEventEnricher} )
+    {
+        if (logEventEnricher is null) throw new ArgumentNullException(nameof(logEventEnricher));
+    }
+
+    public Logger(ILogEventEnricher[] logEventEnricher)
     {
         if (logEventEnricher is null) throw new ArgumentNullException(nameof(logEventEnricher));
 
         logger = new LoggerConfiguration()
-            .WriteTo.Console(outputTemplate: ConsoleTemplate)
+            .WriteTo.Console(new JsonFormatter())
             .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-            .Enrich.With(logEventEnricher).Enrich.With(new ActivityEnrich()).Enrich.FromLogContext().CreateLogger();
+            .Enrich.With(logEventEnricher).Enrich.FromLogContext().CreateLogger();
     }
 
     public Logger(LoggerConfiguration configuration)
     {
         if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
-        logger = configuration.WriteTo.Console(outputTemplate: ConsoleTemplate)
+        logger = configuration
+            .WriteTo.Console(new JsonFormatter())
             .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-            .Enrich.With(new ActivityEnrich()).Enrich.FromLogContext().CreateLogger();
+            .Enrich.FromLogContext().CreateLogger();
     }
 
     public void Debug(string message)
     {
-        if (!IsEnabled(LogLevel.Debug))
-        {
-            Console.WriteLine("LogLevel Debug not enabled.");
+        if (!IsEnabledInternal(LogLevel.Debug))
             return;
-        }
 
         logger.Debug(message);
+
     }
 
     public void Debug(string messageTemplate, params object[] propertyValues)
     {
-        if (!IsEnabled(LogLevel.Debug))
-        {
-            Console.WriteLine("LogLevel Debug not enabled.");
+        if (!IsEnabledInternal(LogLevel.Debug))
             return;
-        }
+
 
         logger.Debug(messageTemplate, propertyValues);
     }
 
     public void Debug(Exception exception, string messageTemplate)
     {
-        if (!IsEnabled(LogLevel.Debug))
-        {
-            Console.WriteLine("LogLevel Debug not enabled.");
+        if (!IsEnabledInternal(LogLevel.Debug))
             return;
-        }
+        
 
         logger.Debug(exception, messageTemplate);
     }
 
     public void Debug(Exception exception, string messageTemplate, params object[] propertyValues)
     {
-        if (!IsEnabled(LogLevel.Debug))
-        {
-            Console.WriteLine("LogLevel Debug not enabled.");
+        if (!IsEnabledInternal(LogLevel.Debug))
             return;
-        }
 
         logger.Debug(exception, messageTemplate, propertyValues);
     }
 
     public void Error(string message)
     {
-        if (!IsEnabled(LogLevel.Error))
-        {
-            Console.WriteLine("LogLevel Error not enabled.");
+        if (!IsEnabledInternal(LogLevel.Error))
             return;
-        }
 
         logger.Error(message);
     }
 
     public void Error(string messageTemplate, params object[] propertyValues)
     {
-        if (!IsEnabled(LogLevel.Error))
-        {
-            Console.WriteLine("LogLevel Error not enabled.");
+        if (!IsEnabledInternal(LogLevel.Error))
             return;
-        }
 
         logger.Error(messageTemplate, propertyValues);
     }
 
-    public void Error(Exception exception, string message)
+    public void Error(Exception exception, string messageTemplate)
     {
-        if (!IsEnabled(LogLevel.Error))
-        {
-            Console.WriteLine("LogLevel Error not enabled.");
+        if (!IsEnabledInternal(LogLevel.Error))
             return;
-        }
 
 
-        logger.Error(exception, message);
+        logger.Error(exception, messageTemplate);
     }
 
     public void Error(Exception exception, string messageTemplate, params object[] propertyValues)
     {
-        if (!IsEnabled(LogLevel.Error))
-        {
-            Console.WriteLine("LogLevel Error not enabled.");
+        if (!IsEnabledInternal(LogLevel.Error))
             return;
-        }
-
+    
         logger.Error(exception, messageTemplate, propertyValues);
     }
 
     public void Fatal(string message)
     {
-        if (!IsEnabled(LogLevel.Critical))
-        {
-            Console.WriteLine("LogLevel Critical not enabled.");
+        if (!IsEnabledInternal(LogLevel.Critical))
             return;
-        }
+        
 
         logger.Fatal(message);
     }
 
     public void Fatal(string messageTemplate, params object[] propertyValues)
     {
-        if (!IsEnabled(LogLevel.Critical))
-        {
-            Console.WriteLine("LogLevel Critical not enabled.");
+        if (!IsEnabledInternal(LogLevel.Critical))
             return;
-        }
 
         logger.Fatal(messageTemplate, propertyValues);
     }
 
     public void Fatal(Exception exception, string messageTemplate)
     {
-        if (!IsEnabled(LogLevel.Critical))
-        {
-            Console.WriteLine("LogLevel Critical not enabled.");
+        if (!IsEnabledInternal(LogLevel.Critical))
             return;
-        }
 
         logger.Fatal(exception, messageTemplate);
     }
 
     public void Fatal(Exception exception, string messageTemplate, params object[] propertyValues)
     {
-        if (!IsEnabled(LogLevel.Critical))
-        {
-            Console.WriteLine("LogLevel Critical not enabled.");
+        if (!IsEnabledInternal(LogLevel.Critical))
             return;
-        }
 
         logger.Fatal(exception, messageTemplate, propertyValues);
     }
 
-    public void Info(string messageTemplate)
+    public void Info(string message)
     {
-        if (!IsEnabled(LogLevel.Information))
-        {
-            Console.WriteLine("LogLevel Info not enabled.");
+        if (!IsEnabledInternal(LogLevel.Information))
             return;
-        }
 
-        logger.Information(messageTemplate);
+        logger.Information(message);
     }
 
     public void Info(string messageTemplate, params object[] propertyValues)
     {
-        if (!IsEnabled(LogLevel.Information))
-        {
-            Console.WriteLine("LogLevel Info not enabled.");
+        if (!IsEnabledInternal(LogLevel.Information))
             return;
-        }
 
         logger.Information(messageTemplate, propertyValues);
     }
 
     public void Info(Exception exception, string messageTemplate)
     {
-        if (!IsEnabled(LogLevel.Information))
-        {
-            Console.WriteLine("LogLevel Info not enabled.");
+        if (!IsEnabledInternal(LogLevel.Information))
             return;
-        }
 
         logger.Information(exception, messageTemplate);
     }
 
     public void Info(Exception exception, string messageTemplate, params object[] propertyValues)
     {
-        if (!IsEnabled(LogLevel.Information))
-        {
-            Console.WriteLine("LogLevel Info not enabled.");
+        if (!IsEnabledInternal(LogLevel.Information))
             return;
-        }
 
         logger.Information(exception, messageTemplate, propertyValues);
     }
 
-    public void Verbose(string messageTemplate)
+    public void Verbose(string message)
     {
-        if (!IsEnabled(LogLevel.Trace))
-        {
-            Console.WriteLine("LogLevel Trace not enabled.");
+        if (!IsEnabledInternal(LogLevel.Trace))
             return;
-        }
 
-        logger.Verbose(messageTemplate);
+        logger.Verbose(message);
     }
 
     public void Verbose(string messageTemplate, params object[] propertyValues)
     {
-        if (!IsEnabled(LogLevel.Trace))
-        {
-            Console.WriteLine("LogLevel Trace not enabled.");
+        if (!IsEnabledInternal(LogLevel.Trace))
             return;
-        }
 
         logger.Verbose(messageTemplate, propertyValues);
     }
 
     public void Verbose(Exception exception, string messageTemplate)
     {
-        if (!IsEnabled(LogLevel.Trace))
-        {
-            Console.WriteLine("LogLevel Trace not enabled.");
+        if (!IsEnabledInternal(LogLevel.Trace))
             return;
-        }
 
         logger.Verbose(exception, messageTemplate);
     }
 
     public void Verbose(Exception exception, string messageTemplate, params object[] propertyValues)
     {
-        if (!IsEnabled(LogLevel.Trace))
-        {
-            Console.WriteLine("LogLevel Trace not enabled.");
+        if (!IsEnabledInternal(LogLevel.Trace))
             return;
-        }
 
         logger.Verbose(exception, messageTemplate, propertyValues);
     }
 
-    public void Warning(string messageTemplate)
+    public void Warning(string message)
     {
-        if (!IsEnabled(LogLevel.Warning))
-        {
-            Console.WriteLine("LogLevel Warning not enabled.");
+        if (!IsEnabledInternal(LogLevel.Warning))
             return;
-        }
 
-        logger.Warning(messageTemplate);
+        logger.Warning(message);
     }
 
     public void Warning(string messageTemplate, params object[] propertyValues)
     {
-        if (!IsEnabled(LogLevel.Warning))
-        {
-            Console.WriteLine("LogLevel Warning not enabled.");
+        if (!IsEnabledInternal(LogLevel.Warning))
             return;
-        }
 
         logger.Warning(messageTemplate, propertyValues);
     }
 
     public void Warning(Exception exception, string messageTemplate)
     {
-        if (!IsEnabled(LogLevel.Warning))
-        {
-            Console.WriteLine("LogLevel Warning not enabled.");
+        if (!IsEnabledInternal(LogLevel.Warning))
             return;
-        }
 
         logger.Warning(exception, messageTemplate);
     }
 
     public void Warning(Exception exception, string messageTemplate, params object[] propertyValues)
     {
-        if (!IsEnabled(LogLevel.Warning))
-        {
-            Console.WriteLine("LogLevel Warning not enabled.");
+        if (!IsEnabledInternal(LogLevel.Warning))
             return;
-        }
 
         logger.Warning(exception, messageTemplate, propertyValues);
     }
 
 
-    private bool IsEnabled(LogLevel logLevel)
+    private bool IsEnabledInternal(LogLevel logLevel)
     {
         switch (logLevel)
         {
@@ -340,10 +276,54 @@ public class Logger : ILogger
             {
                 return logger.IsEnabled(LogEventLevel.Fatal);
             }
+            case LogLevel.None:
             default:
             {
                 return false;
             }
         }
+    }
+
+    public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
+    {
+        if (formatter == null)
+        {
+            throw new ArgumentNullException(nameof(formatter));
+        }
+        
+        var message = formatter(state, exception);
+
+        switch (logLevel)
+        {
+            case LogLevel.Trace:
+            case LogLevel.Debug:
+                this.Debug(exception, message);
+                break;
+            case LogLevel.Information:
+                this.Info(exception, message);
+                break;
+            case LogLevel.Warning:
+                this.Warning(exception, message);
+                break;
+            case LogLevel.Error:
+                this.Error(exception, message);
+                break;
+            case LogLevel.Critical:
+                this.Fatal(exception, message);
+                break;
+            case LogLevel.None:
+            default:
+                break;
+        }
+    }
+
+    public bool IsEnabled(LogLevel logLevel)
+    {
+        return IsEnabledInternal(logLevel);
+    }
+
+    public IDisposable BeginScope<TState>(TState state)
+    {
+        return NullScope.Instance;
     }
 }

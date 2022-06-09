@@ -18,9 +18,6 @@ public class ActivityEnrich : ILogEventEnricher
 
         logEvent.AddOrUpdateProperty(new LogEventProperty("TraceId", new ScalarValue(activity.Id)));
         logEvent.AddOrUpdateProperty(new LogEventProperty("SpanId", new ScalarValue(activity.SpanId)));
-
-        if (activity.ParentId is { })
-            logEvent.AddOrUpdateProperty(new LogEventProperty("ParentId", new ScalarValue(activity.ParentId)));
     }
 
 #pragma warning disable CA1822 // Mark members as static

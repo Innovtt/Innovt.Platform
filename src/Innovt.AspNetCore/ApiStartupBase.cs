@@ -5,6 +5,7 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using Innovt.AspNetCore.Extensions;
 using Innovt.AspNetCore.Filters;
 using Innovt.AspNetCore.Infrastructure;
 using Innovt.AspNetCore.Model;
@@ -17,10 +18,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.TraceSource;
+using Microsoft.Extensions.Logging.Console;
 using Microsoft.OpenApi.Models;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
+
 
 namespace Innovt.AspNetCore;
 
@@ -96,7 +98,7 @@ public abstract class ApiStartupBase
     }
 
     protected virtual void AddTracing(IServiceCollection services)
-    {
+    {  
         services.AddOpenTelemetryTracing(builder =>
         {
             builder.AddSource(AppName).SetResourceBuilder(ResourceBuilder.CreateDefault()
@@ -196,7 +198,7 @@ public abstract class ApiStartupBase
         ConfigureCultures(app);
 
         app.UseHealthChecks(DefaultHealthPath);
-        
+
         ConfigureApp(app, env, loggerFactory);
 
         app.UseEndpoints(endpoints => { endpoints.MapControllers(); });

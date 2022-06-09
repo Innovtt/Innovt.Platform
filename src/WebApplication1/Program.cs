@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using OpenTelemetry.Trace;
 using Serilog;
 using ILogger = Innovt.Core.CrossCutting.Log.ILogger;
@@ -55,8 +56,12 @@ namespace SampleAspNetWebApiTest
         {
             return Host.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration((_, builder) =>
-                { builder.AddEnvironmentVariables();
-
+                { 
+                    builder.AddEnvironmentVariables();
+                }).ConfigureLogging(l =>
+                {
+                    l.ClearProviders();
+                    l.AddOpenTelemetry();
                 })
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
         }

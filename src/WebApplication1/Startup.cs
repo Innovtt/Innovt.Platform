@@ -49,7 +49,6 @@ namespace SampleAspNetWebApiTest
             //app.UseXRay("WebApplication1");
 
             //app.UseSerilogRequestLogging();
-
         }
 
         protected override void ConfigureOpenTelemetry(TracerProviderBuilder builder)
