@@ -10,46 +10,65 @@ using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
-using Serilog.Formatting.Json;
+using Serilog.Templates;
 using ILogger = Innovt.Core.CrossCutting.Log.ILogger;
 
 namespace Innovt.CrossCutting.Log.Serilog;
 
 public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 {
-    private const string ConsoleTemplate = "[{Timestamp:HH:mm:ss} {Level:u3}] {TraceId} {SpanId} {Message:lj}{NewLine}{Exception}{ Properties: j}";
-    private readonly global::Serilog.Core.Logger logger;
+    public const string DefaultOutputTemplate = "{ {@t, @l, @m, @i,@x, ..rest(), ..@p} }\n";
+    //"[{Timestamp:HH:mm:ss} {Level:u3}] {TraceId} {SpanId} {Message:lj}{NewLine}{Exception}{ Properties: j}";
+
+    private global::Serilog.Core.Logger logger;
 
     /// <summary>
     ///     The default sink is Console
     /// </summary>
-    public Logger() : this(new LoggerConfiguration())
+    ///
+    public Logger(string consoleOutputTemplate = DefaultOutputTemplate) 
     {
+        InitializeDefaultLogger(new LoggerConfiguration(),consoleOutputTemplate: consoleOutputTemplate);
     }
 
-    public Logger(ILogEventEnricher logEventEnricher) : this(new[]{ logEventEnricher} )
-    {
-        if (logEventEnricher is null) throw new ArgumentNullException(nameof(logEventEnricher));
-    }
-
-    public Logger(ILogEventEnricher[] logEventEnricher)
+    public Logger(ILogEventEnricher logEventEnricher, string consoleOutputTemplate = DefaultOutputTemplate) : this(new[]{ logEventEnricher}, consoleOutputTemplate)
     {
         if (logEventEnricher is null) throw new ArgumentNullException(nameof(logEventEnricher));
-
-        logger = new LoggerConfiguration()
-            .WriteTo.Console(new JsonFormatter())
-            .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-            .Enrich.With(logEventEnricher).Enrich.FromLogContext().CreateLogger();
     }
 
-    public Logger(LoggerConfiguration configuration)
+    public Logger(ILogEventEnricher[] logEventEnricher, string consoleOutputTemplate = DefaultOutputTemplate)
+    {
+        if (logEventEnricher is null) throw new ArgumentNullException(nameof(logEventEnricher));
+
+        InitializeDefaultLogger(new LoggerConfiguration(),logEventEnricher,consoleOutputTemplate);
+    }
+
+    public Logger(LoggerConfiguration configuration, string consoleOutputTemplate = DefaultOutputTemplate)
     {
         if (configuration == null) throw new ArgumentNullException(nameof(configuration));
+        
+        InitializeDefaultLogger(configuration,null,consoleOutputTemplate);
+    }
 
-        logger = configuration
-            .WriteTo.Console(new JsonFormatter())
-            .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-            .Enrich.FromLogContext().CreateLogger();
+    private void InitializeDefaultLogger(LoggerConfiguration configuration, ILogEventEnricher[] logEventEnricher=null, string consoleOutputTemplate = DefaultOutputTemplate)
+    {
+        if (logger != null)
+            return;
+        
+        configuration ??= new LoggerConfiguration();
+        
+        configuration.WriteTo.Console(new ExpressionTemplate(consoleOutputTemplate))
+                             .MinimumLevel.Override("Microsoft", LogEventLevel.Information);
+
+
+        if (logEventEnricher != null)
+        {
+            configuration.Enrich.With(logEventEnricher);
+        }
+
+        configuration.Enrich.FromLogContext();
+
+        logger = configuration.CreateLogger();
     }
 
     public void Debug(string message)

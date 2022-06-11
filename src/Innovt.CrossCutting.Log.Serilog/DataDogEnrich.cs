@@ -18,8 +18,8 @@ public class DataDogEnrich : ILogEventEnricher
         
         var ddTraceId = Convert.ToUInt64(activity.TraceId.ToString().Substring(16), 16).ToString();
         var ddSpanId = Convert.ToUInt64(activity.SpanId.ToString(), 16).ToString();
-        logEvent.AddOrUpdateProperty(new LogEventProperty("dd_trace_id", new ScalarValue(ddTraceId)));
-        logEvent.AddOrUpdateProperty(new LogEventProperty("dd_span_id", new ScalarValue(ddSpanId)));
+        logEvent.AddOrUpdateProperty(new LogEventProperty("dd.trace_id", new ScalarValue(ddTraceId)));
+        logEvent.AddOrUpdateProperty(new LogEventProperty("dd.span_id", new ScalarValue(ddSpanId)));
     }
 
 #pragma warning disable CA1822 // Mark members as static

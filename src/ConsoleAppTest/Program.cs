@@ -82,6 +82,11 @@ public class Program
         tracerProvider.ForceFlush();
     }
 
+    private static void DoSomething2()
+    {
+        throw  new Exception("Dosomething erros ");
+
+    }
 
     private static void DoSomething()
     {
@@ -93,6 +98,16 @@ public class Program
             var logger = new Logger(new DataDogEnrich());
 
             logger.Info("Teste INfo");
+            try
+            {
+                DoSomething2();
+            }
+            catch (Exception e)
+            {
+                logger.Error(e, "Deu merda");
+                throw;
+            }
+            
         }
     }
 
