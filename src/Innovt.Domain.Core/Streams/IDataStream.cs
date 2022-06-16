@@ -17,8 +17,8 @@ public interface IDataStream
 
     public string Partition { get; set; }
 
+    public DateTimeOffset? PublishedAt { get; set; }
     public string TraceId { get; set; }
-
     public DateTime ApproximateArrivalTimestamp { get; set; }
 }
 

@@ -106,6 +106,7 @@ public abstract class AwsBaseService : IDisposable
     ///     Basic Retry Policy using AmazonServiceException
     /// </summary>
     /// <returns></returns>
+    [CLSCompliant(false)]
     protected virtual AsyncRetryPolicy CreateDefaultRetryAsyncPolicy()
     {
         return Policy.Handle<AmazonServiceException>(r =>

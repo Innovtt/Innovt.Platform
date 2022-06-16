@@ -7,6 +7,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Innovt.Domain.Core.Events;
 
 namespace Innovt.Domain.Core.Model;
@@ -52,12 +53,14 @@ public abstract class Entity
 
         domainEvents ??= new List<DomainEvent>();
 
+        domainEvent.PublishedAt = null;
+
         domainEvents.Add(domainEvent);
     }
 
     public IReadOnlyList<DomainEvent> GetDomainEvents()
     {
-        return domainEvents?.AsReadOnly();
+        return domainEvents?.Where(d => d.PublishedAt is null).ToList().AsReadOnly();
     }
 }
 

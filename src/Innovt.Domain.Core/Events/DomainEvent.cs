@@ -36,9 +36,8 @@ public abstract class DomainEvent : IDataStream
     public string Version { get; set; }
 
     public string Partition { get; set; }
-
+    public DateTimeOffset? PublishedAt { get; set; }
     public string TraceId { get; set; }
-
     public DateTime ApproximateArrivalTimestamp { get; set; }
 
     public static DomainEvent Empty(string partition)

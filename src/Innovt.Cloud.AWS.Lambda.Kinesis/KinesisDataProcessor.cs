@@ -44,7 +44,11 @@ public abstract class KinesisDataProcessor<TBody> : KinesisDataProcessorBatch<TB
 
                 Logger.Info($"Processing Kinesis EventId={message.EventId}.");
 
+                message.PublishedAt = null;
+
                 await ProcessMessage(message).ConfigureAwait(false);
+                
+                message.PublishedAt = DateTimeOffset.UtcNow;
 
                 Logger.Info($"EventId={message.EventId} from Kinesis processed.");
             }

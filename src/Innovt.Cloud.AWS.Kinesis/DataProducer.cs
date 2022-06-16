@@ -16,6 +16,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Amazon.Kinesis;
 using Amazon.Kinesis.Model;
+using Amazon.Runtime.Internal;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Utilities;
@@ -47,38 +48,55 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
         get { return kinesisClient ??= CreateService<AmazonKinesisClient>(); }
     }
 
+    private static List<PutRecordsRequestEntry> CreatePutRecords(IList<T> dataStreams, Activity activity)
+    {
+        if (dataStreams == null)
+            return null;
+
+        var request = new List<PutRecordsRequestEntry>();
+
+        foreach (var data in dataStreams)
+        {
+            if (data.TraceId.IsNullOrEmpty() && activity != null)
+            {
+                data.TraceId = activity.TraceId.ToString();
+            }
+
+            data.PublishedAt = DateTimeOffset.UtcNow;
+            
+            var dataAsBytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize<object>(data));
+
+            using (var ms = new MemoryStream(dataAsBytes))
+            {
+                request.Add(new PutRecordsRequestEntry
+                {
+                    Data = ms,
+                    PartitionKey = data.Partition
+                });
+            }
+        }
+        return request;
+    }
+
     private async Task InternalPublish(IEnumerable<T> dataList, CancellationToken cancellationToken = default)
     {
         if (dataList == null) throw new ArgumentNullException(nameof(dataList));
 
+        Logger.Info("Kinesis Publisher Started");
+
+
         var dataStreams = dataList.ToList();
 
         if (dataStreams.Count > 500) throw new InvalidEventLimitException();
-
-        Logger.Info("Kinesis Publisher Started");
-
+        
         using var activity = ActivityDataProducer.StartActivity(nameof(InternalPublish));
         activity?.SetTag("BusName", BusName);
 
         var request = new PutRecordsRequest
         {
             StreamName = BusName,
-            Records = new List<PutRecordsRequestEntry>()
+            Records = CreatePutRecords(dataStreams,activity)
         };
-
-        foreach (var data in dataStreams)
-        {
-            if (data.TraceId.IsNullOrEmpty() && activity != null)
-                data.TraceId = activity.ParentId ?? activity.TraceId.ToString(); //todo: ver isso
-
-            var dataAsBytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize<object>(data));
-            await using var ms = new MemoryStream(dataAsBytes);
-            request.Records.Add(new PutRecordsRequestEntry
-            {
-                Data = ms,
-                PartitionKey = data.Partition
-            });
-        }
 
         Logger.Info($"Publishing Data for Bus {BusName}");
 
@@ -94,10 +112,17 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
             return;
         }
 
+        foreach (var data in dataStreams)
+        {
+            data.PublishedAt = null;
+        }
+
         var errorRecords = results.Records.Where(r => r.ErrorCode != null);
 
         foreach (var error in errorRecords)
+        {
             Logger.Error($"Error publishing message. Error: {error.ErrorCode}, ErrorMessage: {error.ErrorMessage}");
+        }
     }
 
     public async Task Publish(T data, CancellationToken cancellationToken = default)

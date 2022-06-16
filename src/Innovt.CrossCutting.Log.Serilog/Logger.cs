@@ -26,6 +26,9 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
     ///     The default sink is Console
     /// </summary>
     ///
+    public Logger():this(DefaultOutputTemplate)
+    {        
+    }
     public Logger(string consoleOutputTemplate = DefaultOutputTemplate) 
     {
         InitializeDefaultLogger(new LoggerConfiguration(),consoleOutputTemplate: consoleOutputTemplate);
