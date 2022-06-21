@@ -14,6 +14,7 @@ public class DBContext : DBContextBase
 
     protected DBContext(IDataSource dataSource, ILoggerFactory loggerFactory) : base(dataSource, loggerFactory)
     {
+        
     }
 
     protected DBContext(DbContextOptions options) : base(options)

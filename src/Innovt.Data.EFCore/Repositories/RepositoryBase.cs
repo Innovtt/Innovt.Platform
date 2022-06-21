@@ -115,11 +115,13 @@ public class RepositoryBase<T> : IRepository<T> where T : class
 
         var query = Context.Queryable<T>()
             .AddInclude(includes)
-            .Where(specification.SatisfiedBy())
-            .ApplyPagination(specification);
+            .Where(specification.SatisfiedBy());
+            
 
         if (orderBy != null)
             query = isOrderByDescending ? query.OrderByDescending(orderBy) : query.OrderBy(orderBy);
+        
+        query = query.ApplyPagination(specification);
 
         return query;
     }
@@ -145,11 +147,14 @@ public class RepositoryBase<T> : IRepository<T> where T : class
         if (specification == null) throw new ArgumentNullException(nameof(specification));
 
         var query = Context.Queryable<T>().AddInclude(includes)
-            .Where(specification.SatisfiedBy())
-            .ApplyPagination(specification);
+            .Where(specification.SatisfiedBy());
 
         if (orderBy != null)
             query = isOrderByDescending ? query.OrderByDescending(orderBy) : query.OrderBy(orderBy);
+
+
+        query = query.ApplyPagination(specification);
+
 
         return await query.ToListAsync(cancellationToken).ConfigureAwait(false);
     }

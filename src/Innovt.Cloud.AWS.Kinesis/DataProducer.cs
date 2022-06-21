@@ -16,7 +16,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Amazon.Kinesis;
 using Amazon.Kinesis.Model;
-using Amazon.Runtime.Internal;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Utilities;
@@ -80,11 +79,14 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
 
     private async Task InternalPublish(IEnumerable<T> dataList, CancellationToken cancellationToken = default)
     {
-        if (dataList == null) throw new ArgumentNullException(nameof(dataList));
-
         Logger.Info("Kinesis Publisher Started");
 
-
+        if (dataList is null)
+        {
+            Logger.Info("The event list is empty or null.");
+            return;
+        }
+        
         var dataStreams = dataList.ToList();
 
         if (dataStreams.Count > 500) throw new InvalidEventLimitException();
@@ -127,8 +129,6 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
 
     public async Task Publish(T data, CancellationToken cancellationToken = default)
     {
-        if (data == null) throw new ArgumentNullException(nameof(data));
-
         await InternalPublish(new List<T> { data }, cancellationToken).ConfigureAwait(false);
     }
 
