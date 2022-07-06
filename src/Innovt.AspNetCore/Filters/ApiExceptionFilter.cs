@@ -10,6 +10,7 @@ using Innovt.AspNetCore.Model;
 using Innovt.AspNetCore.Resources;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Exceptions;
+using Innovt.Core.Utilities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -56,7 +57,7 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
         if (baseException is BusinessException bex)
         {
             result.Message = Translate(bex.Message);
-            result.Code = $"{StatusCodes.Status400BadRequest}";
+            result.Code =  bex.Code.IsNullOrEmpty() ? $"{StatusCodes.Status400BadRequest}" : bex.Code;
             result.Detail = bex.Errors;
             context.Result = new BadRequestObjectResult(result);
         }
