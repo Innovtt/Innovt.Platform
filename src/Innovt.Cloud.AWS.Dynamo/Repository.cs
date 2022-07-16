@@ -15,6 +15,7 @@ using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
+using Amazon.Runtime.Internal.Transform;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.Table;
 using Innovt.Core.Collections;
@@ -277,11 +278,13 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         var transactRequest = new TransactWriteItemsRequest
         {
-            ClientRequestToken = request.ClientRequestToken
+            ClientRequestToken = request.ClientRequestToken,
         };
 
         foreach (var transactItem in request.TransactItems)
+        {
             transactRequest.TransactItems.Add(Helpers.CreateTransactionWriteItem(transactItem));
+        }
 
         await DynamoClient.TransactWriteItemsAsync(transactRequest, cancellationToken).ConfigureAwait(false);
     }
@@ -334,7 +337,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
                     ConsistentRead = sqlStatementRequest.ConsistentRead,
                     NextToken = sqlStatementRequest.NextToken,
                     Statement = sqlStatementRequest.Statment
-                }).ConfigureAwait(false)).ConfigureAwait(false);
+                }, cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
 
 
             if (response is null)

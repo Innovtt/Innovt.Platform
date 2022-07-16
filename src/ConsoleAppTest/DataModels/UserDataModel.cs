@@ -5,7 +5,8 @@ using ConsoleAppTest.Domain;
 namespace ConsoleAppTest.DataModels;
 
 [DynamoDBTable("Users")]
-public class UserDataModel : User
+public class UserDataModel 
 {
-    [DynamoDBProperty("Contacts")] public new List<Contact> Contacts { get; set; }
+    [DynamoDBProperty("Contacts")] 
+    public new List<Contact> Contacts { get; set; }
 }

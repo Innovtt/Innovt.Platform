@@ -388,7 +388,7 @@ internal static class Helpers
             ConditionExpression = transactionWriteItem.ConditionExpression,
             TableName = transactionWriteItem.TableName,
             ExpressionAttributeValues = ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
-            Item = ConvertToAttributeValues(transactionWriteItem.Keys)
+            Item = ConvertToAttributeValues(transactionWriteItem.Items)
         };
     }
 

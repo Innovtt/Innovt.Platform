@@ -9,4 +9,9 @@ public class UserRepository : Repository
     public UserRepository(ILogger logger, IAwsConfiguration configuration) : base(logger, configuration)
     {
     }
+
+
+
+
+
 }

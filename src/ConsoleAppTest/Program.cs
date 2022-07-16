@@ -2,30 +2,21 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using System.Threading.Tasks;
+using ConsoleAppTest.DataModels;
 using Datadog.Trace.OpenTracing;
 using Innovt.Cloud.AWS.Configuration;
+using Innovt.Cloud.Table;
 using Innovt.Core.Cqrs.Queries;
 using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Core.CrossCutting.Log;
+using Innovt.CrossCutting.IOC;
 using Innovt.CrossCutting.Log.Serilog;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using OpenTelemetry;
-using OpenTelemetry.Trace;
 using OpenTracing.Util;
 
 namespace ConsoleAppTest;
-
-public class SupplierConsultancyRegisterFilter : IFilter
-{
-    public string ConsultancyId { get; set; }
-    public string SupplierId { get; set; }
-
-    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-    {
-        return null;
-    }
-}
 
 public class IocTestModule : IOCModule
 {
@@ -62,24 +53,91 @@ public class BuyerByDocumentFilter : IFilter
 public class Program
 {
     private static ActivitySource source = new ActivitySource("ConsoleAppTest");
-    private static void Main(string[] args)
+    private static async Task  Main(string[] args)
     {
-        Console.WriteLine("Hello World!");
-
-        using var tracerProvider = Sdk.CreateTracerProviderBuilder()
-            //.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("MySample"))
-            .AddSource("ConsoleAppTest")
-            .AddConsoleExporter()
-            .AddJaegerExporter(e =>
-           {
-               e.AgentPort = 6831;
-               e.AgentHost = "localhost";
-           })
+        var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json")
             .Build();
         
-        DoSomething();
+        var container = new Container();
 
-        tracerProvider.ForceFlush();
+        container.AddModule(new IocTestModule(configuration));
+        
+        var invoiceRepo = new InvoiceRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
+
+
+        var companyId = Guid.Parse("4e680340-98bc-4f57-930e-48ad2904cdb5");
+
+        //var users = await invoiceRepo.QueryAsync<InvoicesAggregationCompanyDataModel>(new QueryRequest()
+        //{
+        //    KeyConditionExpression = "PK=:pk",
+        //    Filter = new { pk= "E#ed791722c6f5b3733a06238fba0c2577"  }
+        //});
+
+        var list = new List<InvoicesAggregationCompanyDataModel>();
+
+        //for(int i = 0; i < 25; i++){
+
+        //    list.Add(new InvoicesAggregationCompanyDataModel()
+        //    {
+        //        CompanyId = companyId.ToString(),
+        //        Currency = "R$",
+        //        PK = $"M#{companyId}",
+        //        SK1 = $"SampleMichel#{i}#{DateTime.Now}",
+        //        TotalValue = 10
+        //    });
+        //}
+
+        var invoices = await invoiceRepo.QueryAsync<InvoicesAggregationCompanyDataModel>(new QueryRequest()
+        {
+            KeyConditionExpression = "PK=:pk",
+            Filter = new { pk = $"M#{companyId}" }
+        });
+
+
+        foreach (var model in invoices)
+        {
+            list.Add(new InvoicesAggregationCompanyDataModel()
+            {
+                CompanyId = companyId.ToString(),
+                Currency = "R$",
+                PK = $"M#{companyId}",
+                SK1 = model.SK1,
+                TotalValue = 10,
+                Quantity = 1
+            });
+        }
+        //for(int i = 0; i < 25; i++){
+
+        //    list.Add(new InvoicesAggregationCompanyDataModel()
+        //    {
+        //        CompanyId = companyId.ToString(),
+        //        Currency = "R$",
+        //        PK = $"M#{companyId}",
+        //        SK1 = $"SampleMichel#{i}#{DateTime.Now}",
+        //        TotalValue = 10
+        //    });
+        //}
+        await invoiceRepo.SaveAll(list);
+
+        Console.WriteLine("Aqu");
+
+        
+        //Console.WriteLine("Hello World!");
+
+        //using var tracerProvider = Sdk.CreateTracerProviderBuilder()
+        //    //.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("MySample"))
+        //    .AddSource("ConsoleAppTest")
+        //    .AddConsoleExporter()
+        //    .AddJaegerExporter(e =>
+        //   {
+        //       e.AgentPort = 6831;
+        //       e.AgentHost = "localhost";
+        //   })
+        //    .Build();
+
+        //DoSomething();
+
+        //tracerProvider.ForceFlush();
     }
 
     private static void DoSomething2()
