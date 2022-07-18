@@ -1,6 +1,7 @@
+using System;
+using System.Linq;
 using Nuke.Common;
 using Nuke.Common.CI;
-using Nuke.Common.Execution;
 using Nuke.Common.Git;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
@@ -11,7 +12,7 @@ using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.IO.PathConstruction;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
-[CheckBuildProjectConfigurations]
+//[CheckBuildProjectConfigurations]
 [ShutdownDotNetAfterServerBuild]
 class Build : NukeBuild
 {
@@ -24,7 +25,7 @@ class Build : NukeBuild
     [Solution] readonly Solution Solution;
     [Parameter] string NugetApiKey;
 
-    [Parameter] string NugetApiUrl = "http://nugetinnovt.azurewebsites.net/api/v2/package";
+    [Parameter] string NugetApiUrl = "https://nugetinnovt.azurewebsites.net/api/v2/package";
 
     AbsolutePath SourceDirectory => RootDirectory / "src";
     AbsolutePath ArtifactsDirectory => RootDirectory / "artifacts";
@@ -47,7 +48,8 @@ class Build : NukeBuild
                 .SetAssemblyVersion(GitVersion.AssemblySemVer)
                 .SetFileVersion(GitVersion.AssemblySemFileVer)
                 .SetInformationalVersion(GitVersion.InformationalVersion)
-                .SetAuthors("Michel Borges & Tiago Freire & Welbert Serra"));
+                .ClearWarningsAsErrors()
+                .SetAuthors("Michel Borges"));
         });
 
 
@@ -58,7 +60,7 @@ class Build : NukeBuild
             DotNetPack(p => p
                 .SetProject(Solution)
                 .SetConfiguration(Configuration)
-                .SetAuthors("Michel Borges & Tiago Freire & Welbert Serra")
+                .SetAuthors("Michel Borges")
                 .SetVersion(GitVersion.NuGetVersionV2)
                 .SetNoDependencies(true)
                 .SetOutputDirectory(ArtifactsDirectory / "nuget")
@@ -74,15 +76,23 @@ class Build : NukeBuild
         {
             GlobFiles(ArtifactsDirectory / "nuget", "*.nupkg")
                 .NotNull()
-                // .Where(x => x.StartsWith("Innovt.",StringComparison.InvariantCultureIgnoreCase))
+                //.Where(x => x.StartsWith("Innovt.",StringComparison.InvariantCultureIgnoreCase))
                 .ForEach(x =>
                 {
-                    DotNetNuGetPush(s => s
-                        .EnableSkipDuplicate()
-                        .SetTargetPath(x)
-                        .SetSource(NugetApiUrl)
-                        .SetApiKey(NugetApiKey)
-                    );
+                    //try
+                    //{
+                        DotNetNuGetPush(s => s
+                            .EnableSkipDuplicate()
+                            .SetTargetPath(x)
+                            .SetSource(NugetApiUrl)
+                            .SetApiKey(NugetApiKey)
+                        );
+                    //}
+                    //catch (Exception e)
+                    //{
+                    //    Console.WriteLine("Publish Error");
+                    //    Console.WriteLine(e);
+                    //}
                 });
         });
 
