@@ -6,16 +6,16 @@
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
 
+using Innovt.Core.Collections;
+using Innovt.Domain.Core.Repository;
+using Innovt.Domain.Core.Specification;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Innovt.Core.Collections;
-using Innovt.Domain.Core.Repository;
-using Innovt.Domain.Core.Specification;
-using Microsoft.EntityFrameworkCore;
 
 namespace Innovt.Data.EFCore.Repositories;
 
@@ -116,11 +116,11 @@ public class RepositoryBase<T> : IRepository<T> where T : class
         var query = Context.Queryable<T>()
             .AddInclude(includes)
             .Where(specification.SatisfiedBy());
-            
+
 
         if (orderBy != null)
             query = isOrderByDescending ? query.OrderByDescending(orderBy) : query.OrderBy(orderBy);
-        
+
         query = query.ApplyPagination(specification);
 
         return query;

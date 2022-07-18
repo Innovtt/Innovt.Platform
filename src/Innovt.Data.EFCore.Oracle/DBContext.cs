@@ -1,8 +1,8 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Innovt.Data.DataSources;
+﻿using Innovt.Data.DataSources;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Innovt.Data.EFCore.Oracle;
 

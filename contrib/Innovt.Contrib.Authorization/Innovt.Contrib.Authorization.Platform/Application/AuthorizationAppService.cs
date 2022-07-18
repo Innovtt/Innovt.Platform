@@ -3,10 +3,6 @@
 // Solution: Innovt.Contrib.Authorization
 // Date: 2021-06-02
 
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 using Innovt.Contrib.Authorization.Platform.Application.Commands;
 using Innovt.Contrib.Authorization.Platform.Application.Dtos;
 using Innovt.Contrib.Authorization.Platform.Domain;
@@ -16,6 +12,10 @@ using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
 using Innovt.Core.Validation;
 using Innovt.Domain.Security;
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using IAuthorizationRepository = Innovt.Contrib.Authorization.Platform.Domain.IAuthorizationRepository;
 
 namespace Innovt.Contrib.Authorization.Platform.Application;

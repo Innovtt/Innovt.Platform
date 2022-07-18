@@ -5,12 +5,12 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
 using Amazon.Runtime;
 using Amazon.Runtime.CredentialManagement;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
 using Microsoft.Extensions.Configuration;
+using System;
 
 namespace Innovt.Cloud.AWS.Configuration;
 

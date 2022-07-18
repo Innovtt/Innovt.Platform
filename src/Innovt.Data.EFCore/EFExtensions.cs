@@ -5,12 +5,12 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Innovt.Domain.Core.Repository;
 using Innovt.Domain.Core.Specification;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Innovt.Data.EFCore;
 

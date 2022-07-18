@@ -5,14 +5,14 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Collections.Generic;
-using System.Text.Json;
-using System.Threading.Tasks;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.KinesisEvents;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Domain.Core.Streams;
+using System;
+using System.Collections.Generic;
+using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis;
 

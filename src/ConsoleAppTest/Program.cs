@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
-using System.Threading.Tasks;
-using ConsoleAppTest.DataModels;
+﻿using ConsoleAppTest.Domain;
 using Datadog.Trace.OpenTracing;
+using Innovt.Cloud.AWS.Caching;
 using Innovt.Cloud.AWS.Configuration;
-using Innovt.Cloud.Table;
+using Innovt.Core.Caching;
 using Innovt.Core.Cqrs.Queries;
 using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Core.CrossCutting.Log;
@@ -15,6 +11,11 @@ using Innovt.CrossCutting.Log.Serilog;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OpenTracing.Util;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace ConsoleAppTest;
 
@@ -37,6 +38,15 @@ public class IocTestModule : IOCModule
         collection.AddScoped<ILogger, Logger>();
 
         collection.AddScoped<DynamoService>();
+        collection.AddScoped<RedisProviderConfiguration>(p => new RedisProviderConfiguration()
+        {
+            ReadWriteHosts = new[] { "localhost:6379" },
+            ReadOnlyHosts = new[] { "localhost:6379" }
+            //ReadWriteHosts = new[] { "app-cluster.lxgfsw.ng.0001.use1.cache.amazonaws.com:6379" },
+            //ReadOnlyHosts = new[] { "app-cluster-ro.lxgfsw.ng.0001.use1.cache.amazonaws.com:6379" }
+        });
+
+        collection.AddScoped<ICacheService, RedisCacheService>();
     }
 }
 
@@ -52,76 +62,97 @@ public class BuyerByDocumentFilter : IFilter
 
 public class Program
 {
+
+
+
+
+
     private static ActivitySource source = new ActivitySource("ConsoleAppTest");
-    private static async Task  Main(string[] args)
+    private static async Task Main(string[] args)
     {
         var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json")
             .Build();
-        
+
         var container = new Container();
 
         container.AddModule(new IocTestModule(configuration));
-        
-        var invoiceRepo = new InvoiceRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
+
+        var cacheService = container.Resolve<ICacheService>();
+
+        var key = "user123";
+
+        cacheService.SetValue(key, new User() { Name = "Michel" }, TimeSpan.FromHours(1));
+
+        var value = cacheService.GetValue<User>(key);
 
 
-        var companyId = Guid.Parse("4e680340-98bc-4f57-930e-48ad2904cdb5");
+        Console.WriteLine(value);
 
-        //var users = await invoiceRepo.QueryAsync<InvoicesAggregationCompanyDataModel>(new QueryRequest()
+        //var invoiceRepo = new InvoiceRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
+
+
+
+
+
+
+
+        //var companyId = Guid.Parse("4e680340-98bc-4f57-930e-48ad2904cdb5");
+
+        ////var users = await invoiceRepo.QueryAsync<InvoicesAggregationCompanyDataModel>(new QueryRequest()
+        ////{
+        ////    KeyConditionExpression = "PK=:pk",
+        ////    Filter = new { pk= "E#ed791722c6f5b3733a06238fba0c2577"  }
+        ////});
+
+        //var list = new List<InvoicesAggregationCompanyDataModel>();
+
+        ////for(int i = 0; i < 25; i++){
+
+        ////    list.Add(new InvoicesAggregationCompanyDataModel()
+        ////    {
+        ////        CompanyId = companyId.ToString(),
+        ////        Currency = "R$",
+        ////        PK = $"M#{companyId}",
+        ////        SK1 = $"SampleMichel#{i}#{DateTime.Now}",
+        ////        TotalValue = 10
+        ////    });
+        ////}
+
+        //var invoices = await invoiceRepo.QueryAsync<InvoicesAggregationCompanyDataModel>(new QueryRequest()
         //{
         //    KeyConditionExpression = "PK=:pk",
-        //    Filter = new { pk= "E#ed791722c6f5b3733a06238fba0c2577"  }
+        //    Filter = new { pk = $"M#{companyId}" }
         //});
 
-        var list = new List<InvoicesAggregationCompanyDataModel>();
 
-        //for(int i = 0; i < 25; i++){
-
+        //foreach (var model in invoices)
+        //{
         //    list.Add(new InvoicesAggregationCompanyDataModel()
         //    {
         //        CompanyId = companyId.ToString(),
         //        Currency = "R$",
         //        PK = $"M#{companyId}",
-        //        SK1 = $"SampleMichel#{i}#{DateTime.Now}",
-        //        TotalValue = 10
+        //        SK1 = model.SK1,
+        //        TotalValue = 10,
+        //        Quantity = 1
         //    });
         //}
+        ////for(int i = 0; i < 25; i++){
 
-        var invoices = await invoiceRepo.QueryAsync<InvoicesAggregationCompanyDataModel>(new QueryRequest()
-        {
-            KeyConditionExpression = "PK=:pk",
-            Filter = new { pk = $"M#{companyId}" }
-        });
-
-
-        foreach (var model in invoices)
-        {
-            list.Add(new InvoicesAggregationCompanyDataModel()
-            {
-                CompanyId = companyId.ToString(),
-                Currency = "R$",
-                PK = $"M#{companyId}",
-                SK1 = model.SK1,
-                TotalValue = 10,
-                Quantity = 1
-            });
-        }
-        //for(int i = 0; i < 25; i++){
-
-        //    list.Add(new InvoicesAggregationCompanyDataModel()
-        //    {
-        //        CompanyId = companyId.ToString(),
-        //        Currency = "R$",
-        //        PK = $"M#{companyId}",
-        //        SK1 = $"SampleMichel#{i}#{DateTime.Now}",
-        //        TotalValue = 10
-        //    });
-        //}
-        await invoiceRepo.SaveAll(list);
+        ////    list.Add(new InvoicesAggregationCompanyDataModel()
+        ////    {
+        ////        CompanyId = companyId.ToString(),
+        ////        Currency = "R$",
+        ////        PK = $"M#{companyId}",
+        ////        SK1 = $"SampleMichel#{i}#{DateTime.Now}",
+        ////        TotalValue = 10
+        ////    });
+        ////}
+        //await invoiceRepo.SaveAll(list);
 
         Console.WriteLine("Aqu");
 
-        
+
         //Console.WriteLine("Hello World!");
 
         //using var tracerProvider = Sdk.CreateTracerProviderBuilder()
@@ -142,7 +173,7 @@ public class Program
 
     private static void DoSomething2()
     {
-        throw  new Exception("Dosomething erros ");
+        throw new Exception("Dosomething erros ");
 
     }
 
@@ -165,7 +196,7 @@ public class Program
                 logger.Error(e, "Deu merda");
                 throw;
             }
-            
+
         }
     }
 

@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Innovt.Domain.Core.Model;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Innovt.Domain.Core.Model;
 
 namespace SampleAspNetWebApiTest;
 
-public class Wheather: Entity, IValidatableObject
+public class Wheather : Entity, IValidatableObject
 {
     public string Name { get; set; }
 

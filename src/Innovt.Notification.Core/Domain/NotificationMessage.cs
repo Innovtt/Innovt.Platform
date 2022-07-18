@@ -5,12 +5,12 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using Innovt.Core.Collections;
+using Innovt.Core.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Innovt.Core.Collections;
-using Innovt.Core.Utilities;
 
 namespace Innovt.Notification.Core.Domain;
 

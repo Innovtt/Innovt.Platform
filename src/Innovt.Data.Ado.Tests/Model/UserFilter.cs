@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Innovt.Core.Cqrs.Queries;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Innovt.Core.Cqrs.Queries;
 
 namespace Innovt.Data.Ado.Tests.Model
 {

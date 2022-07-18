@@ -3,8 +3,8 @@
 // Solution: Innovt.Contrib.Authorization
 // Date: 2021-09-20
 
-using System;
 using Innovt.Domain.Security;
+using System;
 
 namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel;
 

@@ -5,7 +5,6 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System.Diagnostics;
 using Innovt.AspNetCore.Model;
 using Innovt.AspNetCore.Resources;
 using Innovt.Core.CrossCutting.Log;
@@ -15,6 +14,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Localization;
+using System.Diagnostics;
 
 namespace Innovt.AspNetCore.Filters;
 
@@ -30,11 +30,11 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
         Logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
-    public ApiExceptionFilter(ILogger logger, IStringLocalizer<IExceptionResource> stringLocalizer):this(logger)
+    public ApiExceptionFilter(ILogger logger, IStringLocalizer<IExceptionResource> stringLocalizer) : this(logger)
     {
         StringLocalizer = stringLocalizer ?? throw new ArgumentNullException(nameof(stringLocalizer));
     }
-    
+
     private string Translate(string message)
     {
         return StringLocalizer?[message] ?? message;
@@ -57,7 +57,7 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
         if (baseException is BusinessException bex)
         {
             result.Message = Translate(bex.Message);
-            result.Code =  bex.Code.IsNullOrEmpty() ? $"{StatusCodes.Status400BadRequest}" : bex.Code;
+            result.Code = bex.Code.IsNullOrEmpty() ? $"{StatusCodes.Status400BadRequest}" : bex.Code;
             result.Detail = bex.Errors;
             context.Result = new BadRequestObjectResult(result);
         }

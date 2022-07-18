@@ -31,34 +31,34 @@ namespace ConsoleAppTest.DataModels
             return $"PK#UNIQUE#SK#{CompanyId}";
         }
 
-    //    public override void EnrichmentAttibuteValueUpdate(Dictionary<string, AttributeValueUpdate> attributeValueUpdate)
-    //    {
-            
-    //        databaseObject.TableName = "InvoicesAggregation";
-    //        databaseObject.Keys = new Dictionary<string, AttributeValue>
-    //        {
-    //            {"PK", new AttributeValue(PK)},
-    //            {"SK1", new AttributeValue(BuildSk1())}
-    //        };
+        //    public override void EnrichmentAttibuteValueUpdate(Dictionary<string, AttributeValueUpdate> attributeValueUpdate)
+        //    {
 
-    //        databaseObject.AttributeValueUpdate = new Dictionary<string, AttributeValueUpdate>
-    //        {
-    //            {"SK2", new AttributeValueUpdate(new AttributeValue {S = BuildSk2()}, AttributeAction.PUT)},
-    //            {"KpiType", new AttributeValueUpdate(new AttributeValue {S = KpiType}, AttributeAction.PUT)},
-    //            {
-    //                "TotalValue",
-    //                new AttributeValueUpdate(new AttributeValue {N = TotalValue.ToString()}, AttributeAction.ADD)
-    //            },
-    //            {
-    //                "Quantity",
-    //                new AttributeValueUpdate(new AttributeValue {N = Quantity.ToString()}, AttributeAction.ADD)
-    //            },
-    //            {"Currency", new AttributeValueUpdate(new AttributeValue {S = Currency}, AttributeAction.PUT)}
-    //        };
+        //        databaseObject.TableName = "InvoicesAggregation";
+        //        databaseObject.Keys = new Dictionary<string, AttributeValue>
+        //        {
+        //            {"PK", new AttributeValue(PK)},
+        //            {"SK1", new AttributeValue(BuildSk1())}
+        //        };
 
-    //        EnrichmentAttibuteValueUpdate(databaseObject.AttributeValueUpdate);
+        //        databaseObject.AttributeValueUpdate = new Dictionary<string, AttributeValueUpdate>
+        //        {
+        //            {"SK2", new AttributeValueUpdate(new AttributeValue {S = BuildSk2()}, AttributeAction.PUT)},
+        //            {"KpiType", new AttributeValueUpdate(new AttributeValue {S = KpiType}, AttributeAction.PUT)},
+        //            {
+        //                "TotalValue",
+        //                new AttributeValueUpdate(new AttributeValue {N = TotalValue.ToString()}, AttributeAction.ADD)
+        //            },
+        //            {
+        //                "Quantity",
+        //                new AttributeValueUpdate(new AttributeValue {N = Quantity.ToString()}, AttributeAction.ADD)
+        //            },
+        //            {"Currency", new AttributeValueUpdate(new AttributeValue {S = Currency}, AttributeAction.PUT)}
+        //        };
 
-    //        return databaseObject;
-    //    }
-   }
+        //        EnrichmentAttibuteValueUpdate(databaseObject.AttributeValueUpdate);
+
+        //        return databaseObject;
+        //    }
+    }
 }

@@ -5,13 +5,6 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
@@ -19,6 +12,13 @@ using Amazon.DynamoDBv2.Model;
 using Innovt.Cloud.Table;
 using Innovt.Core.Collections;
 using Innovt.Core.Utilities;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Text;
 using QueryRequest = Amazon.DynamoDBv2.Model.QueryRequest;
 using ScanRequest = Amazon.DynamoDBv2.Model.ScanRequest;
 
@@ -73,17 +73,17 @@ internal static class Helpers
             case DateTime time:
                 return new AttributeValue { S = time.ToString("s") };
             case IList<int> or IList<double> or IList<float> or IList<decimal>:
-            {
-                var array = (value as IList).Cast<string>();
+                {
+                    var array = (value as IList).Cast<string>();
 
-                return new AttributeValue { NS = array.ToList() };
-            }
+                    return new AttributeValue { NS = array.ToList() };
+                }
             case IDictionary<string, object> objects:
-            {
-                var array = objects.ToDictionary(item => item.Key, item => CreateAttributeValue(item.Value));
+                {
+                    var array = objects.ToDictionary(item => item.Key, item => CreateAttributeValue(item.Value));
 
-                return new AttributeValue { M = array };
-            }
+                    return new AttributeValue { M = array };
+                }
             default:
                 return new AttributeValue(value.ToString());
         }

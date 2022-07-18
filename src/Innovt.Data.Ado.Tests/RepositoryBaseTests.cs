@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
-using Innovt.Data.Ado.Tests.Model;
+﻿using Innovt.Data.Ado.Tests.Model;
 using Innovt.Data.DataSources;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace Innovt.Data.Ado.Tests
 {

@@ -1,6 +1,6 @@
-using System.Linq;
 using Innovt.Domain.Security;
 using NUnit.Framework;
+using System.Linq;
 
 namespace Innovt.Domain.Tests
 {

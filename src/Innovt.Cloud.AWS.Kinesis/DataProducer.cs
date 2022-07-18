@@ -5,6 +5,12 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using Amazon.Kinesis;
+using Amazon.Kinesis.Model;
+using Innovt.Cloud.AWS.Configuration;
+using Innovt.Core.CrossCutting.Log;
+using Innovt.Core.Utilities;
+using Innovt.Domain.Core.Streams;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,12 +20,6 @@ using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using Amazon.Kinesis;
-using Amazon.Kinesis.Model;
-using Innovt.Cloud.AWS.Configuration;
-using Innovt.Core.CrossCutting.Log;
-using Innovt.Core.Utilities;
-using Innovt.Domain.Core.Streams;
 
 namespace Innovt.Cloud.AWS.Kinesis;
 
@@ -62,7 +62,7 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
             }
 
             data.PublishedAt = DateTimeOffset.UtcNow;
-            
+
             var dataAsBytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize<object>(data));
 
             using (var ms = new MemoryStream(dataAsBytes))
@@ -86,18 +86,18 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
             Logger.Info("The event list is empty or null.");
             return;
         }
-        
+
         var dataStreams = dataList.ToList();
 
         if (dataStreams.Count > 500) throw new InvalidEventLimitException();
-        
+
         using var activity = ActivityDataProducer.StartActivity(nameof(InternalPublish));
         activity?.SetTag("BusName", BusName);
 
         var request = new PutRecordsRequest
         {
             StreamName = BusName,
-            Records = CreatePutRecords(dataStreams,activity)
+            Records = CreatePutRecords(dataStreams, activity)
         };
 
         Logger.Info($"Publishing Data for Bus {BusName}");

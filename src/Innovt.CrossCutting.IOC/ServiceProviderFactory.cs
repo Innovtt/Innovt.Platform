@@ -5,8 +5,8 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace Innovt.CrossCutting.IOC;
 

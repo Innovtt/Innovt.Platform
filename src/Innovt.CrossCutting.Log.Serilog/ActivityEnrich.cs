@@ -1,7 +1,7 @@
-﻿using System;
-using System.Diagnostics;
-using Serilog.Core;
+﻿using Serilog.Core;
 using Serilog.Events;
+using System;
+using System.Diagnostics;
 
 namespace Innovt.CrossCutting.Log.Serilog;
 

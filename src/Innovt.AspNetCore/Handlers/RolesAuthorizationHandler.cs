@@ -5,7 +5,6 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System.Security.Claims;
 using Innovt.AspNetCore.Extensions;
 using Innovt.Core.Collections;
 using Innovt.Core.CrossCutting.Log;
@@ -14,6 +13,7 @@ using Innovt.Domain.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 
 namespace Innovt.AspNetCore.Handlers;
 

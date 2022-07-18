@@ -21,7 +21,7 @@ namespace Innovt.Domain.Tests
 
             Assert.IsNotNull(events);
 
-            Assert.AreEqual(1,events.Count);
+            Assert.AreEqual(1, events.Count);
         }
     }
 }

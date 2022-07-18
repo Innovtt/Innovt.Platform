@@ -3,8 +3,8 @@
 // Solution: Innovt.Platform
 // Date: 2021-07-18
 
-using System;
 using OpenTelemetry.Trace;
+using System;
 
 namespace Innovt.OpenTelemetry;
 

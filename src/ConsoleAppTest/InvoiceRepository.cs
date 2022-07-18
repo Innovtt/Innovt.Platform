@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Amazon.DynamoDBv2;
-using Amazon.DynamoDBv2.Model;
-using ConsoleAppTest.DataModels;
+﻿using ConsoleAppTest.DataModels;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.AWS.Dynamo;
 using Innovt.Cloud.Table;
 using Innovt.Core.CrossCutting.Log;
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace ConsoleAppTest;
 

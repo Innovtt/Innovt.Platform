@@ -119,7 +119,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lambda.Sample", "Lambda.Sam
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleAspNetWebApiTest", "WebApplication1\SampleAspNetWebApiTest.csproj", "{F324348B-C1B3-4D40-9103-C156AA631B00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innovt.Cloud.AWS.StepFunction", "Innovt.Cloud.AWS.StepFunction\Innovt.Cloud.AWS.StepFunction.csproj", "{5F9D0776-529A-4C19-8642-D3E4E0CFA955}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Cloud.AWS.StepFunction", "Innovt.Cloud.AWS.StepFunction\Innovt.Cloud.AWS.StepFunction.csproj", "{5F9D0776-529A-4C19-8642-D3E4E0CFA955}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innovt.Cloud.AWS.Caching", "Innovt.Cloud.AWS.Caching\Innovt.Cloud.AWS.Caching.csproj", "{64DDC663-18B6-4B58-87FF-E027EC9AAE43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -521,6 +523,14 @@ Global
 		{5F9D0776-529A-4C19-8642-D3E4E0CFA955}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5F9D0776-529A-4C19-8642-D3E4E0CFA955}.Release|x86.ActiveCfg = Release|Any CPU
 		{5F9D0776-529A-4C19-8642-D3E4E0CFA955}.Release|x86.Build.0 = Release|Any CPU
+		{64DDC663-18B6-4B58-87FF-E027EC9AAE43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64DDC663-18B6-4B58-87FF-E027EC9AAE43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64DDC663-18B6-4B58-87FF-E027EC9AAE43}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{64DDC663-18B6-4B58-87FF-E027EC9AAE43}.Debug|x86.Build.0 = Debug|Any CPU
+		{64DDC663-18B6-4B58-87FF-E027EC9AAE43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64DDC663-18B6-4B58-87FF-E027EC9AAE43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64DDC663-18B6-4B58-87FF-E027EC9AAE43}.Release|x86.ActiveCfg = Release|Any CPU
+		{64DDC663-18B6-4B58-87FF-E027EC9AAE43}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -567,6 +577,7 @@ Global
 		{E2648373-5BDA-4461-9461-839FCA06DB70} = {B9D67F90-4165-4986-AA52-9E30F64013D9}
 		{F324348B-C1B3-4D40-9103-C156AA631B00} = {B9D67F90-4165-4986-AA52-9E30F64013D9}
 		{5F9D0776-529A-4C19-8642-D3E4E0CFA955} = {EA0C6A75-5EFC-4F7F-9E13-EB63F17ECF1E}
+		{64DDC663-18B6-4B58-87FF-E027EC9AAE43} = {EA0C6A75-5EFC-4F7F-9E13-EB63F17ECF1E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {43168DBE-48A6-435D-9405-F6728340FFEA}

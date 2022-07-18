@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using Amazon.DynamoDBv2.DataModel;
+﻿using Amazon.DynamoDBv2.DataModel;
 using ConsoleAppTest.Domain;
+using System.Collections.Generic;
 
 namespace ConsoleAppTest.DataModels;
 
 [DynamoDBTable("Users")]
-public class UserDataModel 
+public class UserDataModel
 {
-    [DynamoDBProperty("Contacts")] 
+    [DynamoDBProperty("Contacts")]
     public new List<Contact> Contacts { get; set; }
 }

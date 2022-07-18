@@ -18,7 +18,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Console;
 using Microsoft.OpenApi.Models;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
@@ -98,7 +97,7 @@ public abstract class ApiStartupBase
     }
 
     protected virtual void AddTracing(IServiceCollection services)
-    {  
+    {
         services.AddOpenTelemetryTracing(builder =>
         {
             builder.AddSource(AppName).SetResourceBuilder(ResourceBuilder.CreateDefault()
@@ -109,7 +108,7 @@ public abstract class ApiStartupBase
                 })
                 .AddHttpClientInstrumentation(a =>
                 {
-                    a.RecordException=true;
+                    a.RecordException = true;
                 })
                 .AddConsoleExporter().SetErrorStatusOnException(true);
 
@@ -126,7 +125,7 @@ public abstract class ApiStartupBase
         var provider = services.BuildServiceProvider();
 
         var mvcBuilder = services.AddControllers(op => { op.Filters.Add(provider.GetService<ApiExceptionFilter>()); });
-        
+
         if (Localization?.DefaultLocalizeResource == null) return;
 
         services.AddLocalization();

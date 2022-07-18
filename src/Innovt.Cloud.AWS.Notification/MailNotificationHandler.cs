@@ -5,9 +5,6 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Amazon.SimpleEmail;
 using Amazon.SimpleEmail.Model;
 using Innovt.Cloud.AWS.Configuration;
@@ -15,6 +12,9 @@ using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Utilities;
 using Innovt.Notification.Core;
 using Innovt.Notification.Core.Domain;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Notification;
 

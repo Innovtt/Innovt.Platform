@@ -5,15 +5,15 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Diagnostics;
-using System.Threading;
-using System.Threading.Tasks;
 using Amazon.StepFunctions;
 using Amazon.StepFunctions.Model;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.StateMachine;
 using Innovt.Core.CrossCutting.Log;
+using System;
+using System.Diagnostics;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.StepFunction;
 
@@ -36,7 +36,7 @@ public class StepFunctionService : AwsBaseService, IStateMachine
     {
         get { return awStepFunctionClient ??= CreateService<AmazonStepFunctionsClient>(); }
     }
-  
+
     protected override void DisposeServices()
     {
         awStepFunctionClient?.Dispose();
@@ -51,7 +51,7 @@ public class StepFunctionService : AwsBaseService, IStateMachine
         using var activity = StepFunctionActivitySource.StartActivity();
         activity?.SetTag("StateMachine.Arn", stateMachineArn);
         activity?.SetTag("StateMachine.ExecutionName", executionId);
-        
+
         var policy = base.CreateDefaultRetryAsyncPolicy();
 
         await policy.ExecuteAsync(async () =>
@@ -61,8 +61,8 @@ public class StepFunctionService : AwsBaseService, IStateMachine
                     StateMachineArn = stateMachineArn,
                     Name = executionId
                 }, cancellationToken).ConfigureAwait(false))
-            .ConfigureAwait(false);        
-        
+            .ConfigureAwait(false);
+
     }
 
     public async Task SendTaskSuccess(string taskToken, object output, CancellationToken cancellationToken)
@@ -76,7 +76,8 @@ public class StepFunctionService : AwsBaseService, IStateMachine
         var policy = base.CreateDefaultRetryAsyncPolicy();
 
         await policy.ExecuteAsync(async () =>
-                await StepFunctionClient.SendTaskSuccessAsync(new SendTaskSuccessRequest(){
+                await StepFunctionClient.SendTaskSuccessAsync(new SendTaskSuccessRequest()
+                {
                     TaskToken = taskToken,
                     Output = System.Text.Json.JsonSerializer.Serialize(output),
                 }, cancellationToken).ConfigureAwait(false))

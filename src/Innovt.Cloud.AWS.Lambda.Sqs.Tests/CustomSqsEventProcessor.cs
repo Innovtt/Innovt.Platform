@@ -1,8 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-using Innovt.Cloud.Queue;
+﻿using Innovt.Cloud.Queue;
 using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Core.CrossCutting.Log;
+using System;
+using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests;
 

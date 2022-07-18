@@ -3,9 +3,9 @@
 // Solution: Innovt.Contrib.Authorization
 // Date: 2021-09-22
 
+using Innovt.Domain.Security;
 using System.Collections.Generic;
 using System.Linq;
-using Innovt.Domain.Security;
 
 namespace Innovt.Contrib.Authorization.Platform.Application.Dtos;
 

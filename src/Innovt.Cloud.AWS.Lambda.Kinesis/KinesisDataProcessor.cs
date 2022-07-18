@@ -5,12 +5,12 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Exceptions;
 using Innovt.Domain.Core.Streams;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis;
 
@@ -47,7 +47,7 @@ public abstract class KinesisDataProcessor<TBody> : KinesisDataProcessorBatch<TB
                 message.PublishedAt = null;
 
                 await ProcessMessage(message).ConfigureAwait(false);
-                
+
                 message.PublishedAt = DateTimeOffset.UtcNow;
 
                 Logger.Info($"EventId={message.EventId} from Kinesis processed.");

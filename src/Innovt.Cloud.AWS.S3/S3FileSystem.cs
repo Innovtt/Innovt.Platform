@@ -5,6 +5,13 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using Amazon.S3;
+using Amazon.S3.Model;
+using Amazon.S3.Transfer;
+using Innovt.Cloud.AWS.Configuration;
+using Innovt.Cloud.File;
+using Innovt.Core.CrossCutting.Log;
+using Innovt.Core.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,13 +22,6 @@ using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using Amazon.S3;
-using Amazon.S3.Model;
-using Amazon.S3.Transfer;
-using Innovt.Cloud.AWS.Configuration;
-using Innovt.Cloud.File;
-using Innovt.Core.CrossCutting.Log;
-using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.S3;
 

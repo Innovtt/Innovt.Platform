@@ -5,10 +5,10 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System.ComponentModel.DataAnnotations;
-using System.Text.RegularExpressions;
 using Innovt.Core.Utilities;
 using Innovt.Domain.Core.Model;
+using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 
 namespace Innovt.Domain.Contacts;
 

@@ -1,10 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using Amazon.Lambda.Core;
+﻿using Amazon.Lambda.Core;
 using Amazon.Lambda.Serialization.SystemTextJson;
 using Innovt.Cloud.AWS.Lambda.Sqs;
 using Innovt.Cloud.Queue;
 using Innovt.Core.CrossCutting.Ioc;
+using System;
+using System.Threading.Tasks;
 
 [assembly: LambdaSerializer(typeof(DefaultLambdaJsonSerializer))]
 

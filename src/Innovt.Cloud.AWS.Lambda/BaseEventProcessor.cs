@@ -5,13 +5,13 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using System;
-using System.Diagnostics;
-using System.Globalization;
 using Amazon.Lambda.Core;
 using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Core.CrossCutting.Log;
 using Microsoft.Extensions.Configuration;
+using System;
+using System.Diagnostics;
+using System.Globalization;
 
 namespace Innovt.Cloud.AWS.Lambda;
 

@@ -7,7 +7,6 @@ using Microsoft.Extensions.Logging;
 using OpenTelemetry;
 using OpenTelemetry.Contrib.Extensions.AWSXRay.Trace;
 using OpenTelemetry.Trace;
-using Serilog;
 using ILogger = Innovt.Core.CrossCutting.Log.ILogger;
 
 namespace SampleAspNetWebApiTest
@@ -17,9 +16,9 @@ namespace SampleAspNetWebApiTest
         public Startup(IConfiguration configuration, IWebHostEnvironment env) : base(configuration, env, "WebApplication1",
             "Anticipation Api", "", "v1")
         {
-            
+
         }
-        
+
         protected override void AddDefaultServices(IServiceCollection services)
         {
 
@@ -43,7 +42,7 @@ namespace SampleAspNetWebApiTest
             app.UseCors();
 
             app.UseAuthentication();
-            
+
             app.UseAuthorization();
 
             //app.UseXRay("WebApplication1");
