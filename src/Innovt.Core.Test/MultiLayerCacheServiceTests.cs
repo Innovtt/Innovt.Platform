@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Innovt.Core.Test;
 
 [TestFixture]
-public class LayeredCacheServiceTests
+public class MultiLayerCacheServiceTests
 {
     private ILogger loggerMock;
     private ICacheService cacheService;
@@ -22,7 +22,7 @@ public class LayeredCacheServiceTests
 
         var defaultCache = new LocalCache(new MemoryCache(new MemoryCacheOptions() { CompactionPercentage = 1 }));
 
-        cacheService = new LayeredCacheService(defaultCache, loggerMock);
+        cacheService = new MultiLayerCacheService(defaultCache, loggerMock);
     }
 
 

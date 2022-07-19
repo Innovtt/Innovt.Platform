@@ -5,12 +5,12 @@ using System.Collections.Generic;
 
 namespace Innovt.Core.Caching;
 
-public class LayeredCacheService : ICacheService, IDisposable
+public class MultiLayerCacheService : ICacheService, IDisposable
 {
     private readonly ILogger logger;
     private List<ICacheService> cacheServices;
 
-    public LayeredCacheService(ICacheService cacheDefaultLayer, ILogger logger)
+    public MultiLayerCacheService(ICacheService cacheDefaultLayer, ILogger logger)
     {
         if (cacheDefaultLayer == null) throw new ArgumentNullException(nameof(cacheDefaultLayer));
 
@@ -18,7 +18,7 @@ public class LayeredCacheService : ICacheService, IDisposable
         this.cacheServices = new List<ICacheService>() { cacheDefaultLayer };
     }
 
-    public LayeredCacheService(ICacheService cacheDefaultLayer, ICacheService cacheSecondLayer, ILogger logger)
+    public MultiLayerCacheService(ICacheService cacheDefaultLayer, ICacheService cacheSecondLayer, ILogger logger)
     {
         if (cacheDefaultLayer == null) throw new ArgumentNullException(nameof(cacheDefaultLayer));
         if (cacheSecondLayer == null) throw new ArgumentNullException(nameof(cacheSecondLayer));
@@ -29,7 +29,7 @@ public class LayeredCacheService : ICacheService, IDisposable
     }
 
 
-    ~LayeredCacheService() => Dispose(false);
+    ~MultiLayerCacheService() => Dispose(false);
 
 
     public T GetValue<T>(string key)

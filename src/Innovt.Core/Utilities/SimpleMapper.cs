@@ -15,6 +15,7 @@ public static class SimpleMapper
             .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.IgnoreCase);
         var outputProperties = output.GetType()
             .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.IgnoreCase);
+
         foreach (var property in properties)
         {
             var outProperty = outputProperties.LastOrDefault(p => p.Name == property.Name);
