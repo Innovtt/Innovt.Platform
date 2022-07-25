@@ -13,7 +13,7 @@
 	  <AnalysisMode>AllEnabledByDefault</AnalysisMode>
   </PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="AWSSDK.StepFunctions" Version="3.7.0.182" />
+		<PackageReference Include="AWSSDK.StepFunctions" Version="3.7.0.184" />
 		<PackageReference Include="System.Diagnostics.DiagnosticSource" Version="6.0.0" />
 	</ItemGroup>
 
