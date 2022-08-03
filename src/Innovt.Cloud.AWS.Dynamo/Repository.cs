@@ -9,6 +9,7 @@ using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
+using Amazon.Runtime.Internal;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.Table;
 using Innovt.Core.Collections;
@@ -469,9 +470,37 @@ public abstract class Repository : AwsBaseService, ITableRepository
         }
     }
 
+
+    public async Task<List<T>> BatchGetItem<T>(Table.BatchGetItemRequest batchGetItemRequest, CancellationToken cancellationToken = default)
+    {
+        if (batchGetItemRequest is null) throw new ArgumentNullException(nameof(batchGetItemRequest));
+      
+        using (ActivityRepository.StartActivity(nameof(BatchGetItem)))
+        {
+            var items = Helpers.CreateBatchGetItemRequest(batchGetItemRequest);
+
+            var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+                await DynamoClient.BatchGetItemAsync(items, cancellationToken).ConfigureAwait(false))
+                    .ConfigureAwait(false);
+
+            if (response.Responses is null)
+                return null;
+
+            var result = new List<T>();
+
+            foreach (var item in response.Responses)
+            {
+                result.AddRange(Helpers.ConvertAttributesToType<T>(item.Value, Context));
+            }
+
+            return result;
+        }
+    }
+
     protected override void DisposeServices()
     {
         context?.Dispose();
         dynamoClient?.Dispose();
     }
+
 }

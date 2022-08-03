@@ -4,9 +4,17 @@ using System.Collections.Generic;
 
 namespace ConsoleAppTest.DataModels;
 
-[DynamoDBTable("Users")]
 public class UserDataModel
 {
-    [DynamoDBProperty("Contacts")]
-    public new List<Contact> Contacts { get; set; }
+
+    public string PK { get; set; }
+
+    public string SK { get; set; }
+
+    public string FirstName { get; set; }
+
+
+
+
+
 }

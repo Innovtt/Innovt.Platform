@@ -64,4 +64,7 @@ public interface ITableRepository
 
     Task<ExecuteSqlStatementResponse<T>> ExecuteStatementAsync<T>(ExecuteSqlStatementRequest sqlStatementRequest,
         CancellationToken cancellationToken = default) where T : class;
+
+    Task<List<T>> BatchGetItem<T>(BatchGetItemRequest batchGetItemRequest, CancellationToken cancellationToken = default);
+
 }

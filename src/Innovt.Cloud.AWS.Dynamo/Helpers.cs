@@ -161,6 +161,28 @@ internal static class Helpers
         return scanRequest;
     }
 
+    internal static Dictionary<string, KeysAndAttributes> CreateBatchGetItemRequest(Table.BatchGetItemRequest request)
+    {
+        if (request is null) throw new ArgumentNullException(nameof(request));
+
+        var result = new Dictionary<string, KeysAndAttributes>();
+
+        foreach (var item in request.Items)
+        {
+            result.Add(item.Key, new KeysAndAttributes()
+            {
+                 ConsistentRead =  item.Value.ConsistentRead,
+                 ExpressionAttributeNames =item.Value.ExpressionAttributeNames,
+                 ProjectionExpression = item.Value.ProjectionExpression,
+                 Keys = item.Value.Keys.Select(a=> ConvertToAttributeValues(a)).ToList()
+            });
+
+        }
+
+        return result;
+    }
+
+
     internal static IList<T> ConvertAttributesToType<T>(IList<Dictionary<string, AttributeValue>> items,
         DynamoDBContext context)
     {
