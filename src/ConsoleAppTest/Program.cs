@@ -63,10 +63,6 @@ public class BuyerByDocumentFilter : IFilter
 public class Program
 {
 
-
-
-
-
     private static ActivitySource source = new ActivitySource("ConsoleAppTest");
     private static async Task Main(string[] args)
     {
@@ -84,6 +80,8 @@ public class Program
         cacheService.SetValue(key, new User() { Name = "Michel" }, TimeSpan.FromHours(1));
 
         var value = cacheService.GetValue<User>(key);
+
+
 
 
         Console.WriteLine(value);
