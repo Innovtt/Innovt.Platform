@@ -205,7 +205,7 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests
         }
 
 
-        [Test]
+        //[Test]
         //[Ignore("Only Internal Tests")]
         public async Task ValidateSequence()
         {
