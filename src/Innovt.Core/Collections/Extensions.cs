@@ -63,4 +63,18 @@ public static class Extensions
 
         return dictionary;
     }
+
+    public static Dictionary<TKey, TValue> Merge<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, Dictionary<TKey, TValue> dictionarySecond)
+    {
+        dictionary ??= new Dictionary<TKey, TValue>();
+
+        if (dictionarySecond == null) return dictionary;
+        
+        foreach (var item in dictionarySecond)
+        {
+            dictionary.TryAdd(item.Key, item.Value);
+        }
+
+        return dictionary;
+    }
 }

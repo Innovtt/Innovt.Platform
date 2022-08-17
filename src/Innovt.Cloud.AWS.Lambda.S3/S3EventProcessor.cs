@@ -7,7 +7,6 @@
 
 using Amazon.Lambda.Core;
 using Amazon.Lambda.S3Events;
-using Amazon.S3.Util;
 using Innovt.Core.CrossCutting.Log;
 using System.Threading.Tasks;
 
@@ -43,5 +42,5 @@ public abstract class S3EventProcessor : EventProcessor<S3Event>
         }
     }
 
-    protected abstract Task ProcessMessage(S3EventNotification.S3EventNotificationRecord message);
+    protected abstract Task ProcessMessage(S3Event.S3EventNotificationRecord message);
 }

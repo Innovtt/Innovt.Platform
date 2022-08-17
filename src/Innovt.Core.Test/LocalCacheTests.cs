@@ -71,7 +71,9 @@ public class LocalCacheTests
         var key = "Quantity";
         var expectedValue = 10;
 
-        var value = await cacheService.GetValueOrCreate<int?>(key, Factory, expiration, CancellationToken.None).ConfigureAwait(false);
+        var value = await cacheService.GetValueOrCreate<int?>(key, (c) => {
+            return FactoryB(null, c);
+        }, expiration, CancellationToken.None).ConfigureAwait(false);
 
         Assert.AreEqual(expectedValue, value);
 
@@ -82,7 +84,13 @@ public class LocalCacheTests
         Assert.AreEqual(expectedValue, value);
     }
 
-    private async Task<int?> Factory(CancellationToken arg)
+
+    //Only for example 
+    private async Task<int?> Factory(CancellationToken cancellation)
+    {
+        return 10;
+    }
+    private async Task<int?> FactoryB(object A, CancellationToken cancellation)
     {
         return 10;
     }

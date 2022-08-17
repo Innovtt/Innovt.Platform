@@ -19,6 +19,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using BatchWriteItemRequest = Amazon.DynamoDBv2.Model.BatchWriteItemRequest;
 using QueryRequest = Amazon.DynamoDBv2.Model.QueryRequest;
 using ScanRequest = Amazon.DynamoDBv2.Model.ScanRequest;
 
@@ -160,6 +161,52 @@ internal static class Helpers
 
         return scanRequest;
     }
+
+    internal static Dictionary<string, KeysAndAttributes> CreateBatchGetItemRequest(Table.BatchGetItemRequest request)
+    {
+        if (request is null) throw new ArgumentNullException(nameof(request));
+
+        var result = new Dictionary<string, KeysAndAttributes>();
+
+        foreach (var item in request.Items)
+        {
+            result.Add(item.Key, new KeysAndAttributes()
+            {
+                 ConsistentRead =  item.Value.ConsistentRead,
+                 ExpressionAttributeNames =item.Value.ExpressionAttributeNames,
+                 ProjectionExpression = item.Value.ProjectionExpression,
+                 Keys = item.Value.Keys.Select(ConvertToAttributeValues).ToList()
+            });
+
+        }
+
+        return result;
+    }
+
+    internal static BatchWriteItemRequest CreateBatchWriteItemRequest(Table.BatchWriteItemRequest request)
+    {
+        if (request is null) throw new ArgumentNullException(nameof(request));
+        
+        var writeRequest = new BatchWriteItemRequest()
+        {
+            RequestItems = new Dictionary<string, List<WriteRequest>>()
+        };
+
+        foreach (var item in request.Items)
+        {
+            var writeRequests = (from r in item.Value
+                select new WriteRequest()
+                {
+                    DeleteRequest = r.DeleteRequest is null ? null :  new DeleteRequest(ConvertToAttributeValues(r.DeleteRequest)),
+                    PutRequest = r.PutRequest is null ? null: new PutRequest(ConvertToAttributeValues(r.PutRequest))
+                }).ToList();
+
+            writeRequest.RequestItems.Add(item.Key, writeRequests);
+        }
+
+        return writeRequest;
+    }
+
 
     internal static IList<T> ConvertAttributesToType<T>(IList<Dictionary<string, AttributeValue>> items,
         DynamoDBContext context)
