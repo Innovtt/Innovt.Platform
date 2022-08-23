@@ -1,4 +1,6 @@
-﻿using ConsoleAppTest.DataModels;
+﻿using Amazon.DynamoDBv2.Model;
+using Amazon.DynamoDBv2;
+using ConsoleAppTest.DataModels;
 using ConsoleAppTest.Domain;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.AWS.Dynamo;
@@ -8,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using BatchGetItemRequest = Innovt.Cloud.Table.BatchGetItemRequest;
+using BatchWriteItemRequest = Innovt.Cloud.Table.BatchWriteItemRequest;
 
 namespace ConsoleAppTest;
 
@@ -83,9 +87,6 @@ public class InvoiceRepository : Repository
 
             foreach (var dataModel in dataModels)
             {
-
-                //
-
                 //transactionRequest.TransactItems.Add(new TransactionWriteItem()
                 //{
                 //    TableName = "InvoicesAggregation",
@@ -102,28 +103,35 @@ public class InvoiceRepository : Repository
                 //    },
                 //    OperationType = TransactionWriteOperationType.Put,
                 //    ConditionExpression = "attribute_not_exists(PK)",
+                
+                //Todos os registros podem ser da mesma particao. 
+                // 1- 100 supplier ->  100 
+                //A -> 2 
+                //B -> 2
+
+
                 //});
 
-                transactionRequest.TransactItems.Add(new TransactionWriteItem()
-                {
-                    TableName = "InvoicesAggregation",
-                    Keys = new Dictionary<string, object>
-                {
-                    { "PK", dataModel.PK },
-                    { "SK1", dataModel.SK1 }
-                },
-                    OperationType = TransactionWriteOperationType.Update,
-                    UpdateExpression = "SET TotalValue = TotalValue + :tot, Quantity = Quantity + :qty ",
-                    ExpressionAttributeValues = new Dictionary<string, object>
-                    {
-                        {
-                            ":tot",dataModel.TotalValue
-                        },
-                        {
-                            ":qty",dataModel.Quantity
-                        }
-                    }
-                });
+                //transactionRequest.TransactItems.Add(new TransactionWriteItem()
+                //{
+                //    TableName = "InvoicesAggregation",
+                //    Keys = new Dictionary<string, object>
+                //{
+                //    { "PK", dataModel.PK },
+                //    { "SK1", dataModel.SK1 }
+                //},
+                //    OperationType = TransactionWriteOperationType.Update,
+                //    UpdateExpression = "SET TotalValue = TotalValue + :tot, Quantity = Quantity + :qty ",
+                //    ExpressionAttributeValues = new Dictionary<string, object>
+                //    {
+                //        {
+                //            ":tot",dataModel.TotalValue
+                //        },
+                //        {
+                //            ":qty",dataModel.Quantity
+                //        }
+                //    }
+                //});
                 //transactionRequest.TransactItems.Add(new TransactionWriteItem()
                 //{
                 //    TableName = "InvoicesAggregation",
@@ -184,7 +192,6 @@ public class InvoiceRepository : Repository
                         {"PK", "U#9c3db849-a690-4c60-afd2-0af09fc755f2" },
                         {"SK", "PROFILE" }
                     }
-
                 }
             }); 
 
@@ -196,8 +203,34 @@ public class InvoiceRepository : Repository
             throw;
         }
         //await UpdateAsync(databaseObject.TableName, databaseObject.Keys, databaseObject.AttributeValueUpdate, cancellationToken);
+    }
 
+    public async Task<int> IncrementOrderSequence(CancellationToken cancellationToken)
+    {
+        var keys = new Dictionary<string, AttributeValue>
+        {
+            { "PK", new AttributeValue("ORDER") },
+            { "SK", new AttributeValue("SEQUENCE") }
+        };
 
+        var updateValues = new Dictionary<string, AttributeValueUpdate>
+        {
+            {
+                "Sequence",
+                new AttributeValueUpdate(new AttributeValue { N = "1" }, AttributeAction.ADD)
+            }
+        };
+
+        var res = await UpdateAsync<SequenceResponse>(new UpdateItemRequest
+        {
+            AttributeUpdates = updateValues,
+            Key = keys,
+            TableName = AnticipationRequestDataModel.TableName,
+            ReturnValues = ReturnValue.UPDATED_NEW
+        }, CancellationToken.None).ConfigureAwait(false);
+        
+
+        return res?.Sequence ?? 0;
     }
 
 }

@@ -65,11 +65,6 @@ public class BuyerByDocumentFilter : IFilter
 
 public class Program
 {
-
-
-
-
-
     private static ActivitySource source = new ActivitySource("ConsoleAppTest");
     private static async Task Main(string[] args)
     {
@@ -79,6 +74,10 @@ public class Program
         var container = new Container();
 
         container.AddModule(new IocTestModule(configuration));
+        
+        var invoiceRepo = new InvoiceRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
+
+        //await invoiceRepo.IncrementOrderSequence(CancellationToken.None);
 
         /*
 
@@ -92,72 +91,90 @@ public class Program
 
 
         Console.WriteLine(value);*/
+        //var taskList = new List<Task>();
 
-        var invoiceRepo = new InvoiceRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
+        //for (int i = 0; i < 500; i++)
+        //{
+        //    try
+        //    {
+        //        var invoiceRepo = new InvoiceRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
+
+        //        taskList.Add(invoiceRepo.IncrementOrderSequence(CancellationToken.None));
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine(e);
+        //    }
+        //}
+
+        //Task.WaitAll(taskList.ToArray());
+
+        //Console.ReadKey();
 
 
         var result = await invoiceRepo.GetBatchUsers();
 
-
-
         var companyId = Guid.Parse("4e680340-98bc-4f57-930e-48ad2904cdb5");
 
-        ////var users = await invoiceRepo.QueryAsync<InvoicesAggregationCompanyDataModel>(new QueryRequest()
-        ////{
-        ////    KeyConditionExpression = "PK=:pk",
-        ////    Filter = new { pk= "E#ed791722c6f5b3733a06238fba0c2577"  }
-        ////});
+        //var users = await invoiceRepo.QueryAsync<InvoicesAggregationCompanyDataModel>(new QueryRequest()
+        //{
+        //    KeyConditionExpression = "PK=:pk",
+        //    Filter = new { pk = "E#ed791722c6f5b3733a06238fba0c2577" }
+        //});
 
         var list = new List<InvoicesAggregationCompanyDataModel>();
 
-        ////for(int i = 0; i < 25; i++){
-
-        ////    list.Add(new InvoicesAggregationCompanyDataModel()
-        ////    {
-        ////        CompanyId = companyId.ToString(),
-        ////        Currency = "R$",
-        ////        PK = $"M#{companyId}",
-        ////        SK1 = $"SampleMichel#{i}#{DateTime.Now}",
-        ////        TotalValue = 10
-        ////    });
-        ////}
-
-        var invoices = await invoiceRepo.QueryAsync<InvoicesAggregationCompanyDataModel>(new QueryRequest()
+        for (int i = 0; i < 10; i++)
         {
-            KeyConditionExpression = "PK=:pk",
-            Filter = new { pk = $"M#{companyId}" }
-        });
 
-
-        foreach (var model in invoices)
-        {
             list.Add(new InvoicesAggregationCompanyDataModel()
             {
                 CompanyId = companyId.ToString(),
                 Currency = "R$",
                 PK = $"M#{companyId}",
-                SK1 = model.SK1,
-                TotalValue = 10,
-                Quantity = 1
+                SK1 = $"SampleMichel#{i}#{DateTime.Now}",
+                TotalValue = 10
             });
         }
-        //for (int i = 0; i < 25; i++)
-        //{
 
-        //    list.add(new invoicesaggregationcompanydatamodel()
+
+
+        //var invoices = await invoiceRepo.QueryAsync<InvoicesAggregationCompanyDataModel>(new QueryRequest()
+        //{
+        //    KeyConditionExpression = "PK=:pk",
+        //    Filter = new { pk = $"M#{companyId}" }
+        //});
+
+
+        //foreach (var model in invoices)
+        //{
+        //    list.Add(new InvoicesAggregationCompanyDataModel()
         //    {
-        //        companyid = companyid.tostring(),
-        //        currency = "r$",
-        //        pk = $"m#{companyid}",
-        //        sk1 = $"samplemichel#{i}#{datetime.now}",
-        //        totalvalue = 10
+        //        CompanyId = companyId.ToString(),
+        //        Currency = "R$",
+        //        PK = $"M#{companyId}",
+        //        SK1 = model.SK1,
+        //        TotalValue = 10,
+        //        Quantity = 1
         //    });
         //}
-        //await invoiceRepo.BatchInsert(list);
+        ////for (int i = 0; i < 25; i++)
+        ////{
 
-        //var taskList = new List<Task>();
+        ////    list.add(new invoicesaggregationcompanydatamodel()
+        ////    {
+        ////        companyid = companyid.tostring(),
+        ////        currency = "r$",
+        ////        pk = $"m#{companyid}",
+        ////        sk1 = $"samplemichel#{i}#{datetime.now}",
+        ////        totalvalue = 10
+        ////    });
+        ////}
+        ////await invoiceRepo.BatchInsert(list);
 
-        await invoiceRepo.SaveAll(list);
+        ////var taskList = new List<Task>();
+
+        //await invoiceRepo.SaveAll(list);
 
 
         //for (int i = 0; i < 10; i++)

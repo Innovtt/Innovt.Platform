@@ -5,18 +5,14 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
-using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
 using Innovt.Cloud.Table;
 using Innovt.Core.Collections;
 using Innovt.Core.Utilities;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Text;
 using BatchWriteItemRequest = Amazon.DynamoDBv2.Model.BatchWriteItemRequest;
@@ -28,15 +24,11 @@ namespace Innovt.Cloud.AWS.Dynamo;
 internal static class Helpers
 {
     private const string PaginationTokenSeparator = "|";
+    private const string EntitySplitter = "EntityType";
 
-    internal static DynamoDBEntry ConvertObjectToDynamoDbEntry(object value)
-    {
-        if (value is null) throw new ArgumentNullException(nameof(value));
-
-        return DynamoDBEntryConversion.V2.ConvertToEntry(value.ToString());
-    }
-
-    public static string GetTableName<T>()
+    //code from Aws SDK 
+    
+    private static string GetTableName<T>()
     {
         if (Attribute.GetCustomAttribute(typeof(T), typeof(DynamoDBTableAttribute)) is not DynamoDBTableAttribute
             attribute)
@@ -45,50 +37,6 @@ internal static class Helpers
         return attribute.TableName;
     }
 
-    private static Dictionary<string, AttributeValue> ConvertToAttributeValues(Dictionary<string, object> items)
-    {
-        return items?.Select(i =>
-            new
-            {
-                i.Key,
-                Value = CreateAttributeValue(i.Value)
-            }).ToDictionary(x => x.Key, x => x.Value);
-    }
-
-    internal static AttributeValue CreateAttributeValue(object value)
-    {
-        switch (value)
-        {
-            case null:
-                return new AttributeValue { NULL = true };
-            case MemoryStream stream:
-                return new AttributeValue { B = stream };
-            case bool:
-                return new AttributeValue { BOOL = bool.Parse(value.ToString()) };
-            case List<MemoryStream> streams:
-                return new AttributeValue { BS = streams };
-            case List<string> list:
-                return new AttributeValue(list);
-            case int or double or float or decimal:
-                return new AttributeValue { N = value.ToString() };
-            case DateTime time:
-                return new AttributeValue { S = time.ToString("s") };
-            case IList<int> or IList<double> or IList<float> or IList<decimal>:
-                {
-                    var array = (value as IList).Cast<string>();
-
-                    return new AttributeValue { NS = array.ToList() };
-                }
-            case IDictionary<string, object> objects:
-                {
-                    var array = objects.ToDictionary(item => item.Key, item => CreateAttributeValue(item.Value));
-
-                    return new AttributeValue { M = array };
-                }
-            default:
-                return new AttributeValue(value.ToString());
-        }
-    }
 
     private static Dictionary<string, AttributeValue> CreateExpressionAttributeValues(object filter, string attributes)
     {
@@ -110,13 +58,12 @@ internal static class Helpers
             {
                 var value = item.GetValue(filter);
 
-                attributeValues.Add(key, CreateAttributeValue(value));
+                attributeValues.Add(key, AttributeConverter.CreateAttributeValue(value));
             }
         }
 
         return attributeValues;
     }
-
 
     internal static QueryRequest CreateQueryRequest<T>(
         Table.QueryRequest request)
@@ -175,7 +122,7 @@ internal static class Helpers
                  ConsistentRead =  item.Value.ConsistentRead,
                  ExpressionAttributeNames =item.Value.ExpressionAttributeNames,
                  ProjectionExpression = item.Value.ProjectionExpression,
-                 Keys = item.Value.Keys.Select(ConvertToAttributeValues).ToList()
+                 Keys = item.Value.Keys.Select(AttributeConverter.ConvertToAttributeValues).ToList()
             });
 
         }
@@ -197,8 +144,8 @@ internal static class Helpers
             var writeRequests = (from r in item.Value
                 select new WriteRequest()
                 {
-                    DeleteRequest = r.DeleteRequest is null ? null :  new DeleteRequest(ConvertToAttributeValues(r.DeleteRequest)),
-                    PutRequest = r.PutRequest is null ? null: new PutRequest(ConvertToAttributeValues(r.PutRequest))
+                    DeleteRequest = r.DeleteRequest is null ? null :  new DeleteRequest(AttributeConverter.ConvertToAttributeValues(r.DeleteRequest)),
+                    PutRequest = r.PutRequest is null ? null: new PutRequest(AttributeConverter.ConvertToAttributeValues(r.PutRequest))
                 }).ToList();
 
             writeRequest.RequestItems.Add(item.Key, writeRequests);
@@ -208,25 +155,14 @@ internal static class Helpers
     }
 
 
-    internal static IList<T> ConvertAttributesToType<T>(IList<Dictionary<string, AttributeValue>> items,
-        DynamoDBContext context)
+
+
+    internal static IList<T> ConvertAttributesToType<T>(IList<Dictionary<string, AttributeValue>> items)
     {
-        if (items is null)
-            return new List<T>();
-
-        var result = new List<T>();
-
-        foreach (var item in items)
-        {
-            var doc = Document.FromAttributeMap(item);
-            result.Add(context.FromDocument<T>(doc));
-        }
-
-        return result;
+        return items is null ? new List<T>() : items.Select(AttributeConverter.ConvertAttributesToType<T>).ToList();
     }
 
-    internal static (IList<T1> first, IList<T2> seccond) ConvertAttributesToType<T1, T2>(
-        IList<Dictionary<string, AttributeValue>> items, string splitBy, DynamoDBContext context)
+    internal static (IList<T1> first, IList<T2> seccond) ConvertAttributesToType<T1, T2>(IList<Dictionary<string, AttributeValue>> items, string splitBy)
     {
         if (items is null)
             return (null, null);
@@ -236,19 +172,18 @@ internal static class Helpers
 
         foreach (var item in items)
         {
-            var doc = Document.FromAttributeMap(item);
-
-            if (item.ContainsKey("EntityType") && item["EntityType"].S == splitBy)
-                result1.Add(context.FromDocument<T1>(doc));
+            if (item.ContainsKey(EntitySplitter) && item["EntityType"].S == splitBy)
+            {
+                result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item));
+            }
             else
-                result2.Add(context.FromDocument<T2>(doc));
+                result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item));
         }
 
         return (result1, result2);
     }
 
-    internal static (List<T1> first, IList<T2> seccond, IList<T3> third) ConvertAttributesToType<T1, T2, T3>(
-        IList<Dictionary<string, AttributeValue>> items, string[] splitBy, DynamoDBContext context)
+    internal static (List<T1> first, IList<T2> seccond, IList<T3> third) ConvertAttributesToType<T1, T2, T3>(IList<Dictionary<string, AttributeValue>> items, string[] splitBy)
     {
         if (items is null)
             return (null, null, null);
@@ -259,21 +194,19 @@ internal static class Helpers
 
         foreach (var item in items)
         {
-            var doc = Document.FromAttributeMap(item);
-
             if (!item.ContainsKey("EntityType"))
                 continue;
 
             if (item["EntityType"].S == splitBy[0])
             {
-                result1.Add(context.FromDocument<T1>(doc));
+                result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item));
             }
             else
             {
                 if (item["EntityType"].S == splitBy[1])
-                    result2.Add(context.FromDocument<T2>(doc));
+                    result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item));
                 else
-                    result3.Add(context.FromDocument<T3>(doc));
+                    result3.Add(AttributeConverter.ConvertAttributesToType<T3>(item));
             }
         }
 
@@ -282,7 +215,7 @@ internal static class Helpers
 
     internal static (IList<T1> first, IList<T2> seccond, IList<T3> third, IList<T4> fourth) ConvertAttributesToType<T1,
         T2, T3, T4>(
-        IList<Dictionary<string, AttributeValue>> items, string[] splitBy, DynamoDBContext context)
+        IList<Dictionary<string, AttributeValue>> items, string[] splitBy)
     {
         if (items is null)
             return (null, null, null, null);
@@ -294,27 +227,25 @@ internal static class Helpers
 
         foreach (var item in items)
         {
-            var doc = Document.FromAttributeMap(item);
-
             if (!item.ContainsKey("EntityType"))
                 continue;
 
             if (item["EntityType"].S == splitBy[0])
             {
-                result1.Add(context.FromDocument<T1>(doc));
+                result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item));
             }
             else
             {
                 if (item["EntityType"].S == splitBy[1])
                 {
-                    result2.Add(context.FromDocument<T2>(doc));
+                    result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item));
                 }
                 else
                 {
                     if (item["EntityType"].S == splitBy[2])
-                        result3.Add(context.FromDocument<T3>(doc));
+                        result3.Add(AttributeConverter.ConvertAttributesToType<T3>(item));
                     else
-                        result4.Add(context.FromDocument<T4>(doc));
+                        result4.Add(AttributeConverter.ConvertAttributesToType<T4>(item));
                 }
             }
         }
@@ -324,7 +255,7 @@ internal static class Helpers
 
     internal static (IList<T1> first, IList<T2> seccond, IList<T3> third, IList<T4> fourth, IList<T5> fifth)
         ConvertAttributesToType<T1, T2, T3, T4, T5>(
-            IList<Dictionary<string, AttributeValue>> items, string[] splitBy, DynamoDBContext context)
+            IList<Dictionary<string, AttributeValue>> items, string[] splitBy)
     {
         if (items is null)
             return (null, null, null, null, null);
@@ -337,34 +268,31 @@ internal static class Helpers
 
         foreach (var item in items)
         {
-            var doc = Document.FromAttributeMap(item);
-
             if (!item.ContainsKey("EntityType"))
                 continue;
-
-
+            
             if (item["EntityType"].S == splitBy[0])
             {
-                result1.Add(context.FromDocument<T1>(doc));
+                result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item));
             }
             else
             {
                 if (item["EntityType"].S == splitBy[1])
                 {
-                    result2.Add(context.FromDocument<T2>(doc));
+                    result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item));
                 }
                 else
                 {
                     if (item["EntityType"].S == splitBy[2])
                     {
-                        result3.Add(context.FromDocument<T3>(doc));
+                        result3.Add(AttributeConverter.ConvertAttributesToType<T3>(item));
                     }
                     else
                     {
                         if (item["EntityType"].S == splitBy[3])
-                            result4.Add(context.FromDocument<T4>(doc));
+                            result4.Add(AttributeConverter.ConvertAttributesToType<T4>(item));
                         else
-                            result5.Add(context.FromDocument<T5>(doc));
+                            result5.Add(AttributeConverter.ConvertAttributesToType<T5>(item));
                     }
                 }
             }
@@ -434,8 +362,8 @@ internal static class Helpers
         {
             ConditionExpression = transactionWriteItem.ConditionExpression,
             TableName = transactionWriteItem.TableName,
-            ExpressionAttributeValues = ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
-            Item = ConvertToAttributeValues(transactionWriteItem.Items)
+            ExpressionAttributeValues = AttributeConverter.ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
+            Item = AttributeConverter.ConvertToAttributeValues(transactionWriteItem.Items)
         };
     }
 
@@ -449,8 +377,8 @@ internal static class Helpers
         {
             ConditionExpression = transactionWriteItem.ConditionExpression,
             TableName = transactionWriteItem.TableName,
-            ExpressionAttributeValues = ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
-            Key = ConvertToAttributeValues(transactionWriteItem.Keys)
+            ExpressionAttributeValues = AttributeConverter.ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
+            Key = AttributeConverter.ConvertToAttributeValues(transactionWriteItem.Keys)
         };
     }
 
@@ -463,8 +391,8 @@ internal static class Helpers
         {
             ConditionExpression = transactionWriteItem.ConditionExpression,
             TableName = transactionWriteItem.TableName,
-            ExpressionAttributeValues = ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
-            Key = ConvertToAttributeValues(transactionWriteItem.Keys)
+            ExpressionAttributeValues = AttributeConverter.ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
+            Key = AttributeConverter.ConvertToAttributeValues(transactionWriteItem.Keys)
         };
     }
 
@@ -478,8 +406,8 @@ internal static class Helpers
             ConditionExpression = transactionWriteItem.ConditionExpression,
             TableName = transactionWriteItem.TableName,
             UpdateExpression = transactionWriteItem.UpdateExpression,
-            ExpressionAttributeValues = ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
-            Key = ConvertToAttributeValues(transactionWriteItem.Keys)
+            ExpressionAttributeValues = AttributeConverter.ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
+            Key = AttributeConverter.ConvertToAttributeValues(transactionWriteItem.Keys)
         };
     }
 
