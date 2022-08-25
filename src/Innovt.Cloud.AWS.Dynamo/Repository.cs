@@ -386,10 +386,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
                     cancellationToken).ConfigureAwait(false))
             .ConfigureAwait(false);
 
-        if (response.Attributes.IsNullOrEmpty())
-            return default;
-
-        return AttributeConverter.ConvertAttributesToType<T>(response.Attributes);
+        return response.Attributes.IsNullOrEmpty() ? default : AttributeConverter.ConvertAttributesToType<T>(response.Attributes);
     }
 
     private async

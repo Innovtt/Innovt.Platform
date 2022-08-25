@@ -11,6 +11,7 @@ using System.Reflection;
 using Innovt.Core.Collections;
 using Innovt.Core.Utilities;
 using System.Globalization;
+using Amazon.DynamoDBv2.DataModel;
 
 namespace Innovt.Cloud.AWS.Dynamo;
 
@@ -159,7 +160,7 @@ internal static class AttributeConverter
 
     public static object ItemsToCollection(Type targetType, IEnumerable<object> items)
     {
-        return !targetType.IsArray ? AttributeConverter.ItemsToIList(targetType, items) : AttributeConverter.ItemsToArray(targetType, items);
+        return !targetType.IsArray ? ItemsToIList(targetType, items) : ItemsToArray(targetType, items);
     }
 
     private static object ItemsToArray(Type targetType, IEnumerable<object> items)
@@ -171,7 +172,7 @@ internal static class AttributeConverter
         {
             var elementType = array.GetType().GetElementType() ?? typeof(string);
 
-            array.SetValue(Convert.ChangeType(list[index], elementType, CultureInfo.CurrentCulture), index);
+            array.SetValue(ConvertType(elementType,list[index]), index);
         }
         return (object)array;
     }
@@ -201,6 +202,37 @@ internal static class AttributeConverter
         return null;
     }
 
+    private static PropertyInfo GetProperty(PropertyInfo[] properties,string propertyName)
+    {
+        var prop = properties.SingleOrDefault(p => p.Name.Equals(propertyName, StringComparison.OrdinalIgnoreCase)) ??
+                              properties.SingleOrDefault(p => p.GetCustomAttribute<DynamoDBPropertyAttribute>()!=null &&
+                                                              propertyName.Equals((p.GetCustomAttribute<DynamoDBPropertyAttribute>()).AttributeName,StringComparison.OrdinalIgnoreCase));
+
+        if (prop is null || !prop.CanWrite)
+        {
+            return null;
+        }
+
+        return prop;
+    }
+
+
+    private static object ConvertType(Type propertyType, object value)
+    {
+        var destinationType = propertyType;
+        
+        if (destinationType.IsGenericType && destinationType.GetGenericTypeDefinition() == typeof(Nullable<>)) 
+        {
+            if (value == null) 
+            { 
+                return default; 
+            }
+
+            destinationType = Nullable.GetUnderlyingType(propertyType);
+        }
+
+        return destinationType == null ? default : Convert.ChangeType(value, destinationType, CultureInfo.CurrentCulture);
+    }
 
     /// <summary>
     /// Convert an attribute array to specific type
@@ -221,15 +253,16 @@ internal static class AttributeConverter
 
         foreach (var attributeValue in items)
         {
-            var prop = properties.SingleOrDefault(p => p.Name.Equals(attributeValue.Key, StringComparison.OrdinalIgnoreCase));
+            var prop = GetProperty(properties, attributeValue.Key);
 
-            if (prop == null || !prop.CanWrite) continue;
+            if (prop is null)
+                continue;
 
             var value = CreateAttributeValueToObject(attributeValue.Value, prop.PropertyType);
 
             if (IsPrimitive(prop.PropertyType))
             {
-                prop.SetValue(obj, Convert.ChangeType(value, prop.PropertyType, CultureInfo.CurrentCulture), null);
+                prop.SetValue(obj, ConvertType(prop.PropertyType, value), null);
             }
             else
             {

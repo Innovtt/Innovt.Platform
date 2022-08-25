@@ -167,43 +167,43 @@ public class InvoiceRepository : Repository
 
     }
 
-    public async Task<List<UserDataModel>> GetBatchUsers()
-    {
-        try
-        {
-            //Cria as entradas antes,
-            //atualiza as entradas
-            var getRequest = new BatchGetItemRequest();
+    //public async Task<List<UserDataModel>> GetBatchUsers()
+    //{
+    //    try
+    //    {
+    //        //Cria as entradas antes,
+    //        //atualiza as entradas
+    //        var getRequest = new BatchGetItemRequest();
 
-            getRequest.AddItem("Users", new BatchGetItem()
-            {
-                ConsistentRead = true,
-                Keys = new List<Dictionary<string, object>>
-                {
-                    new Dictionary<string, object>(){
-                        {"PK", "U#b9909dfa-bd94-4370-80be-43d183545185" },
-                        {"SK", "PROFILE" }
-                    },
-                     new Dictionary<string, object>(){
-                        {"PK", "U#9828d40c-9122-4cbf-89e7-f53ca0de9b18" },
-                        {"SK", "PROFILE" }
-                    },
-                     new Dictionary<string, object>(){
-                        {"PK", "U#9c3db849-a690-4c60-afd2-0af09fc755f2" },
-                        {"SK", "PROFILE" }
-                    }
-                }
-            }); 
+    //        getRequest.AddItem("Users", new BatchGetItem()
+    //        {
+    //            ConsistentRead = true,
+    //            Keys = new List<Dictionary<string, object>>
+    //            {
+    //                new Dictionary<string, object>(){
+    //                    {"PK", "U#b9909dfa-bd94-4370-80be-43d183545185" },
+    //                    {"SK", "PROFILE" }
+    //                },
+    //                 new Dictionary<string, object>(){
+    //                    {"PK", "U#9828d40c-9122-4cbf-89e7-f53ca0de9b18" },
+    //                    {"SK", "PROFILE" }
+    //                },
+    //                 new Dictionary<string, object>(){
+    //                    {"PK", "U#9c3db849-a690-4c60-afd2-0af09fc755f2" },
+    //                    {"SK", "PROFILE" }
+    //                }
+    //            }
+    //        }); 
 
-            return await BatchGetItem<UserDataModel>(getRequest, CancellationToken.None);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
-        //await UpdateAsync(databaseObject.TableName, databaseObject.Keys, databaseObject.AttributeValueUpdate, cancellationToken);
-    }
+    //        return await BatchGetItem<UserDataModel>(getRequest, CancellationToken.None);
+    //    }
+    //    catch (Exception e)
+    //    {
+    //        Console.WriteLine(e);
+    //        throw;
+    //    }
+    //    //await UpdateAsync(databaseObject.TableName, databaseObject.Keys, databaseObject.AttributeValueUpdate, cancellationToken);
+    //}
 
     public async Task<int> IncrementOrderSequence(CancellationToken cancellationToken)
     {

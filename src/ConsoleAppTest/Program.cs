@@ -1,10 +1,5 @@
-﻿using ConsoleAppTest.DataModels;
-using ConsoleAppTest.Domain;
-using Datadog.Trace.OpenTracing;
-using Innovt.Cloud.AWS.Caching;
+﻿using Datadog.Trace.OpenTracing;
 using Innovt.Cloud.AWS.Configuration;
-using Innovt.Cloud.Table;
-using Innovt.Core.Caching;
 using Innovt.Core.Cqrs.Queries;
 using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Core.CrossCutting.Log;
@@ -75,7 +70,13 @@ public class Program
 
         container.AddModule(new IocTestModule(configuration));
         
-        var invoiceRepo = new InvoiceRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
+//        var invoiceRepo = new InvoiceRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
+        var userRepo = new UserRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
+
+
+        var res =  await userRepo.GetCapitalSources(CancellationToken.None);
+
+        //var result = await userRepo.GetAuthProvider();
 
         //await invoiceRepo.IncrementOrderSequence(CancellationToken.None);
 
@@ -112,30 +113,30 @@ public class Program
         //Console.ReadKey();
 
 
-        var result = await invoiceRepo.GetBatchUsers();
+        //var result = await invoiceRepo.GetBatchUsers();
 
-        var companyId = Guid.Parse("4e680340-98bc-4f57-930e-48ad2904cdb5");
+        //var companyId = Guid.Parse("4e680340-98bc-4f57-930e-48ad2904cdb5");
 
-        //var users = await invoiceRepo.QueryAsync<InvoicesAggregationCompanyDataModel>(new QueryRequest()
+        ////var users = await invoiceRepo.QueryAsync<InvoicesAggregationCompanyDataModel>(new QueryRequest()
+        ////{
+        ////    KeyConditionExpression = "PK=:pk",
+        ////    Filter = new { pk = "E#ed791722c6f5b3733a06238fba0c2577" }
+        ////});
+
+        //var list = new List<InvoicesAggregationCompanyDataModel>();
+
+        //for (int i = 0; i < 10; i++)
         //{
-        //    KeyConditionExpression = "PK=:pk",
-        //    Filter = new { pk = "E#ed791722c6f5b3733a06238fba0c2577" }
-        //});
 
-        var list = new List<InvoicesAggregationCompanyDataModel>();
-
-        for (int i = 0; i < 10; i++)
-        {
-
-            list.Add(new InvoicesAggregationCompanyDataModel()
-            {
-                CompanyId = companyId.ToString(),
-                Currency = "R$",
-                PK = $"M#{companyId}",
-                SK1 = $"SampleMichel#{i}#{DateTime.Now}",
-                TotalValue = 10
-            });
-        }
+        //    list.Add(new InvoicesAggregationCompanyDataModel()
+        //    {
+        //        CompanyId = companyId.ToString(),
+        //        Currency = "R$",
+        //        PK = $"M#{companyId}",
+        //        SK1 = $"SampleMichel#{i}#{DateTime.Now}",
+        //        TotalValue = 10
+        //    });
+        //}
 
 
 
