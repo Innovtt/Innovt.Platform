@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System;
 using System.Collections;
+using System.ComponentModel;
 using System.Linq;
 using Amazon.DynamoDBv2.Model;
 using System.Reflection;
@@ -219,19 +220,17 @@ internal static class AttributeConverter
 
     private static object ConvertType(Type propertyType, object value)
     {
-        var destinationType = propertyType;
-        
-        if (destinationType.IsGenericType && destinationType.GetGenericTypeDefinition() == typeof(Nullable<>)) 
-        {
-            if (value == null) 
-            { 
-                return default; 
-            }
+        if (value is null)
+            return default;
 
-            destinationType = Nullable.GetUnderlyingType(propertyType);
-        }
+        var typeConverter = TypeDescriptor.GetConverter(propertyType);
 
-        return destinationType == null ? default : Convert.ChangeType(value, destinationType, CultureInfo.CurrentCulture);
+        if (typeConverter.CanConvertFrom(value.GetType()))
+            return typeConverter.ConvertFrom(null,CultureInfo.InvariantCulture,value);
+
+        var destinationType = Nullable.GetUnderlyingType(propertyType) ?? propertyType;
+
+        return Convert.ChangeType(value, destinationType, CultureInfo.InvariantCulture);
     }
 
     /// <summary>

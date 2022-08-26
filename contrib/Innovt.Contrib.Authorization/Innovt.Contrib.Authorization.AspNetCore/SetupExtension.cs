@@ -12,7 +12,7 @@ namespace Innovt.Contrib.Authorization.AspNetCore
     {
         public static void AddInnovtAuthorization(this IServiceCollection services, string moduleName)
         {
-            _ = new AuthorizationModule(services, moduleName);
+            _ = new AuthorizationModule(services);
 
             services.AddMvc().AddApplicationPart(typeof(RolesController).Assembly);
         }

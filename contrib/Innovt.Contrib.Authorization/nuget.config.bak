@@ -6,7 +6,7 @@
     </packageRestore>
     <packageSources>
         <add key="NuGet official package source" value="https://api.nuget.org/v3/index.json" />
-        <add key="Innovt" value="https://nugetinnovt.azurewebsites.net/nuget" />        
+        <add key="Innovt" value="http://nugetinnovt.azurewebsites.net/nuget" />        
     </packageSources>    
     <disabledPackageSources />
 </configuration>

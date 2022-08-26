@@ -20,12 +20,8 @@ public class RoleDto
         return role is null ? null : new RoleDto { Name = role.Name, Scope = role.Scope };
     }
 
-
     public static List<RoleDto> FromDomain(IList<Role> roles)
     {
-        if (roles is null)
-            return null;
-
-        return roles.Select(FromDomain).ToList();
+        return roles?.Select(FromDomain).ToList();
     }
 }

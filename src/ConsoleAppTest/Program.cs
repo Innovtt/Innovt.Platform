@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -69,12 +70,31 @@ public class Program
         var container = new Container();
 
         container.AddModule(new IocTestModule(configuration));
-        
+
+        Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("pt-BR");
+
 //        var invoiceRepo = new InvoiceRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
         var userRepo = new UserRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
+        
+        var res = await userRepo.GetUserByExternalId("45e3d052-8fed-4d41-9e0a-a6610f536506", CancellationToken.None);
+
+        Console.WriteLine(res);
+        
+        var res2 =  await userRepo.GetCapitalSources(CancellationToken.None);
 
 
-        var res =  await userRepo.GetCapitalSources(CancellationToken.None);
+        Console.WriteLine(res2);
+
+        var res3 =  await userRepo.GetBids(CancellationToken.None);
+
+
+
+
+        Console.ReadKey();
+
+
+
+
 
         //var result = await userRepo.GetAuthProvider();
 

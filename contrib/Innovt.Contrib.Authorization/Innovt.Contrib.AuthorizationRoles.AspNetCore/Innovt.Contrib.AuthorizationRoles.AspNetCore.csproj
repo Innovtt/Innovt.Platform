@@ -4,7 +4,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>Innovt.Contrib.AuthorizationRoles.AspNetCore</PackageId>
-	<PackageVersion>6.1.8-beta02</PackageVersion>
+	<PackageVersion>6.1.8-beta04</PackageVersion>
     <Authors>Michel Borges</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
