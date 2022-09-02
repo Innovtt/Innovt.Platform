@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace SampleAspNetWebApiTest
 {
@@ -53,11 +54,8 @@ namespace SampleAspNetWebApiTest
                 .ConfigureAppConfiguration((_, builder) =>
                 {
                     builder.AddEnvironmentVariables();
-                }).ConfigureLogging(l =>
-                {
-                    l.ClearProviders();
-                    l.AddOpenTelemetry();
                 })
+                //.UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
         }
     }

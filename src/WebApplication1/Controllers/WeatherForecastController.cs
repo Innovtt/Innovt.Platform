@@ -1,9 +1,11 @@
 using Innovt.Core.Validation;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
+using Innovt.Core.CrossCutting.Log;
+using System.Diagnostics.Metrics;
 
 namespace SampleAspNetWebApiTest.Controllers
 {
@@ -16,9 +18,9 @@ namespace SampleAspNetWebApiTest.Controllers
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ILogger _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger logger)
         {
             _logger = logger;
         }
@@ -26,18 +28,21 @@ namespace SampleAspNetWebApiTest.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
-            _logger.LogInformation("Testando o info com activity");
+            var meter = new Meter("MyApplication");
+
+            var counter = meter.CreateCounter<int>("Requests");
+
+            
+            _logger.Info("Testando o info com activity");
 
 
             var w = new Wheather();
 
-            _logger.LogError("Error maldito");
+            _logger.Error("Error maldito");
 
             w.EnsureIsValid();
 
             //throw new BusinessException("Business error");
-
-
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),

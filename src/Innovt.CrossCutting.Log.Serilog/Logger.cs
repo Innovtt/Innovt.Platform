@@ -17,9 +17,8 @@ namespace Innovt.CrossCutting.Log.Serilog;
 
 public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 {
-    public const string DefaultOutputTemplate = "{ {@t, @l, @m, @i,@x, ..rest(), ..@p} }\n";
-    //"[{Timestamp:HH:mm:ss} {Level:u3}] {TraceId} {SpanId} {Message:lj}{NewLine}{Exception}{ Properties: j}";
-
+    public const string DefaultOutputTemplate = "{ {timestamp:@t, ..rest(), message:@m, eventid:@i, Exception:@x} }\n";
+ 
     private global::Serilog.Core.Logger logger;
 
     /// <summary>
@@ -60,17 +59,15 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         configuration ??= new LoggerConfiguration();
 
-        configuration.WriteTo.Console(new ExpressionTemplate(consoleOutputTemplate))
-                             .MinimumLevel.Override("Microsoft", LogEventLevel.Information);
-
+        configuration.WriteTo.Console(new ExpressionTemplate(consoleOutputTemplate));
 
         if (logEventEnricher != null)
         {
             configuration.Enrich.With(logEventEnricher);
         }
-
-        configuration.Enrich.FromLogContext();
-
+        //default enrich
+        configuration.Enrich.With(new LogLevelEnricher()).Enrich.WithActivityEnrich().Enrich.FromLogContext();
+        
         logger = configuration.CreateLogger();
     }
 

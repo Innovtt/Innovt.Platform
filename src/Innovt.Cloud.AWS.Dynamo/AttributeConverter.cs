@@ -116,7 +116,7 @@ internal static class AttributeConverter
     {
         if (value is null)
             return default;
-
+        
         if (value.IsBOOLSet)
         {
             return value.BOOL;

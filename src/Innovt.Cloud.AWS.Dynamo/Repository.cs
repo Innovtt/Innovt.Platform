@@ -166,7 +166,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             if (request is null) throw new ArgumentNullException(nameof(request));
 
             var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
-
+            
             return Helpers.ConvertAttributesToType<T>(items);
         }
     }

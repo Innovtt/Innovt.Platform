@@ -71,21 +71,34 @@ public class Program
 
         container.AddModule(new IocTestModule(configuration));
 
-        Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("pt-BR");
+        var logger = container.Resolve<ILogger>();
 
-//        var invoiceRepo = new InvoiceRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
-        var userRepo = new UserRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
+
+
+        //Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("pt-BR");
+
+        for (int i = 0; i < 5; i++)
+        {
+            logger.Info("Teste michel {@i}", i);
+            logger.Error(new Exception("fake"),"Erro nao tratado michel {@i}", i);
+            logger.Warning("Warning");
+            logger.Fatal("Fatal");
+            logger.Debug("Debug");
+        }
         
-        var res = await userRepo.GetUserByExternalId("45e3d052-8fed-4d41-9e0a-a6610f536506", CancellationToken.None);
-
-        Console.WriteLine(res);
+////        var invoiceRepo = new InvoiceRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
+//        var userRepo = new UserRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
         
-        var res2 =  await userRepo.GetCapitalSources(CancellationToken.None);
+//        var res = await userRepo.GetUserByExternalId("45e3d052-8fed-4d41-9e0a-a6610f536506", CancellationToken.None);
+
+//        Console.WriteLine(res);
+        
+//        var res2 =  await userRepo.GetCapitalSources(CancellationToken.None);
 
 
-        Console.WriteLine(res2);
+//        Console.WriteLine(res2);
 
-        var res3 =  await userRepo.GetBids(CancellationToken.None);
+//        var res3 =  await userRepo.GetBids(CancellationToken.None);
 
 
 
