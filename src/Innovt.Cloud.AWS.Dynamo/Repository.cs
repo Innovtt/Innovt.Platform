@@ -166,7 +166,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             if (request is null) throw new ArgumentNullException(nameof(request));
 
             var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
-            
+
             return Helpers.ConvertAttributesToType<T>(items);
         }
     }
@@ -241,7 +241,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             request.Page = null;
 
             var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
-
+            
             var queryResponse = Helpers.ConvertAttributesToType<T>(items);
 
             return queryResponse.FirstOrDefault();
@@ -495,7 +495,6 @@ public abstract class Repository : AwsBaseService, ITableRepository
         using (ActivityRepository.StartActivity(nameof(BatchWriteItem)))
         {
             var request = Helpers.CreateBatchWriteItemRequest(batchWriteItemRequest);
-
             var result = new BatchWriteItemResponse();
             var attempts = 0;
             var backOfficeRandom = new Random(1);

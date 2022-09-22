@@ -8,10 +8,13 @@ using Innovt.Cloud.Table;
 using Innovt.Core.CrossCutting.Log;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using BatchGetItemRequest = Innovt.Cloud.Table.BatchGetItemRequest;
 using BatchWriteItemRequest = Innovt.Cloud.Table.BatchWriteItemRequest;
+using ConsoleAppTest.DataModels.CapitalSource.DataModels;
+using QueryRequest = Innovt.Cloud.Table.QueryRequest;
+using ConsoleAppTest.DataModels.FinancialRequest;
 
 namespace ConsoleAppTest;
 
@@ -29,12 +32,12 @@ public class InvoiceRepository : Repository
 
             foreach (var dataModel in dataModels)
             {
-                transactionRequest.AddItem("InvoicesAggregation", new BatchWriteItem()
+                transactionRequest.AddItem("MichelSample", new BatchWriteItem()
                 {
                     PutRequest = new Dictionary<string, object>()
                     {
                         { "PK", dataModel.PK },
-                        { "SK1", dataModel.SK1 },
+                        { "SK", dataModel.SK1 },
                         { "TotalValue",dataModel.TotalValue},
                         {
                              "Quantity",dataModel.Quantity
@@ -231,6 +234,48 @@ public class InvoiceRepository : Repository
         
 
         return res?.Sequence ?? 0;
+    }
+
+    public async Task<ContractDataModel> GetTaxRequests()
+    {
+        var contractsRequest = new QueryRequest()
+        {
+            KeyConditionExpression = $"PK = :pk AND begins_with(EntityTypeCreatedAt,:sk) ",
+            Filter = new { pk = $"CS#52b02587-bea0-41d1-bd0d-6b2f40181be7", sk = $"ET#Contract", buyerid = "e8427bd4-b6d3-4e89-b734-1690cae813a1", deleted = false },
+            FilterExpression = "contains(BuyersIds, :buyerid) AND Deleted = :deleted ",
+            IndexName = "PK-EntityTypeCreatedAt-Index",
+            ScanIndexForward = false
+        };
+        
+        var contractResult = await QueryFirstOrDefaultAsync<ContractDataModel>(contractsRequest, CancellationToken.None);
+
+        return contractResult;
+    }
+
+    public async Task<KeyPerformanceIndicatorType> GetKeyIndicators()
+    {
+        var contractsRequest = new QueryRequest()
+        {
+            KeyConditionExpression = $"Context = :ct",
+            Filter = new { ct = $"Michel" },
+        };
+
+        var contractResult = await QueryFirstOrDefaultAsync<KeyPerformanceIndicatorType>(contractsRequest, CancellationToken.None);
+
+        return contractResult;
+    }
+
+    public async Task<FinancialRequestIntegrationDataModel> GetRequestIntegration()
+    {
+        var result = await QueryAsync<FinancialRequestIntegrationDataModel>(new QueryRequest()
+        {
+            Filter = new { financialrequestid = "de784c99-1f80-48ee-919b-f42c9fe053d6", entitytype = "FinancialRequest" },
+            IndexName = "FinancialRequestId-EntityType-Index",
+            KeyConditionExpression = "EntityType = :entitytype AND FinancialRequestId = :financialrequestid"
+        }, CancellationToken.None);
+
+
+        return result.SingleOrDefault();
     }
 
 }

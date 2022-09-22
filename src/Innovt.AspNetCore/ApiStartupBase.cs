@@ -18,7 +18,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using OpenTelemetry.Exporter;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
@@ -98,27 +97,11 @@ public abstract class ApiStartupBase
 
     protected virtual void AddTracing(IServiceCollection services)
     {
-       // var openTelemetry = Configuration.GetSection("OpenTelemetry");
-        //configuracao para habilitar ou nao o aspnet core instrumentation e http client.
-        // e o service qm questao
-        //2 - fazer uma heranca do open telemetry para console que jogue o conteudo em json format.
-        //setar um logger provider para o asp.net
         services.AddOpenTelemetryTracing(builder =>
         {
             builder.AddSource(AppName).SetResourceBuilder(ResourceBuilder.CreateDefault()
-                    .AddService(serviceName: AppName));
-
-                builder.AddAspNetCoreInstrumentation(a =>
-                {
-                    a.RecordException = true;
-                })
-                .AddHttpClientInstrumentation(a =>
-                {
-                    a.RecordException = true;
-                }).AddConsoleExporter(options =>
-                {
-
-                }).SetErrorStatusOnException(true);
+                    .AddService(serviceName: AppName))
+                .SetErrorStatusOnException(true);
 
             ConfigureOpenTelemetry(builder);
         });
@@ -132,22 +115,25 @@ public abstract class ApiStartupBase
 
         var provider = services.BuildServiceProvider();
 
-        var mvcBuilder = services.AddControllers(op => { op.Filters.Add(provider.GetService<ApiExceptionFilter>()); });
+        var mvcBuilder = services.AddControllers(op =>
+        {
+            op.Filters.Add(provider.GetService<ApiExceptionFilter>() ?? throw new InvalidOperationException());
+        });
 
         if (Localization?.DefaultLocalizeResource == null) return;
 
         services.AddLocalization();
 
         mvcBuilder.AddMvcLocalization(op =>
-            {
-                op.DataAnnotationLocalizerProvider =
-                    (type, factory) => factory.Create(Localization.DefaultLocalizeResource);
-            })
-            .AddDataAnnotationsLocalization(op =>
-            {
-                op.DataAnnotationLocalizerProvider =
-                    (type, factory) => factory.Create(Localization.DefaultLocalizeResource);
-            });
+        {
+            op.DataAnnotationLocalizerProvider =
+                (type, factory) => factory.Create(Localization.DefaultLocalizeResource);
+        })
+        .AddDataAnnotationsLocalization(op =>
+        {
+            op.DataAnnotationLocalizerProvider =
+                (type, factory) => factory.Create(Localization.DefaultLocalizeResource);
+        });
     }
 
     // This method gets called by the runtime. Use this method to add services to the container.
@@ -205,7 +191,7 @@ public abstract class ApiStartupBase
         ConfigureCultures(app);
 
         app.UseHealthChecks(DefaultHealthPath);
-        
+
         ConfigureApp(app, env, loggerFactory);
 
         app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
@@ -235,8 +221,7 @@ public abstract class ApiStartupBase
 
     protected abstract void ConfigureIoC(IServiceCollection services);
 
-    public abstract void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env,
-        ILoggerFactory loggerFactory);
+    public abstract void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory);
 
     protected abstract void ConfigureOpenTelemetry(TracerProviderBuilder builder);
 }

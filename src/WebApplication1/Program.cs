@@ -55,7 +55,6 @@ namespace SampleAspNetWebApiTest
                 {
                     builder.AddEnvironmentVariables();
                 })
-                //.UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
         }
     }

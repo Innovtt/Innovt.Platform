@@ -12,8 +12,7 @@ public static class TracerBuilderExtensions
 {
     public static TracerProviderBuilder AddInnovtInstrumentation(this TracerProviderBuilder builder)
     {
-        if (builder == null)
-            throw new ArgumentNullException(nameof(builder));
+        if (builder == null) throw new ArgumentNullException(nameof(builder));
 
         builder.AddSource("Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider")
             .AddSource("Innovt.Cloud.AWS.Dynamo.Repository")
@@ -21,6 +20,7 @@ public static class TracerBuilderExtensions
             .AddSource("Innovt.Cloud.AWS.S3.S3FileSystem")
             .AddSource("Innovt.Cloud.AWS.SQS.QueueService")
             .AddSource("Innovt.Cloud.AWS.Lambda.EventProcessor");
+
         return builder;
     }
 }

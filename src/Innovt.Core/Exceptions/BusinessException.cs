@@ -5,7 +5,6 @@
 // Date: 2021-06-02
 // Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Innovt.Core.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -88,14 +87,27 @@ public class BusinessException : BaseException, ISerializable
         var errorMessages = errors as ErrorMessage[] ?? errors.ToArray();
 
         if (!errorMessages.Any()) return string.Empty;
-
+        
         var strError = new StringBuilder();
+        
         strError.Append("[");
-        foreach (var errorInfo in errorMessages)
-            if (errorInfo.Message.IsNotNullOrEmpty())
-                strError.Append("{" +
-                                $"\"Message\":\"{errorInfo.Message}\",\"Code\":\"{errorInfo.Code}\",\"PropertyName\":\"{errorInfo.PropertyName}\"" +
-                                "}");
+        
+        var properties = errorMessages.GroupBy(err => err.PropertyName);
+
+        foreach (var property in properties)
+        {
+            strError.Append("{" + $"\"Property\":\"{property.Key}\"");
+
+            var propertyErrors = errorMessages.Where(p => p.PropertyName == property.Key);
+            strError.Append("[");
+            foreach (var propertyError in propertyErrors)
+            {
+                strError.Append("{" + $"\"Message\":\"{propertyError.Message}\",\"Code\":\"{propertyError.Code}\"" +
+                                "},");
+            }
+
+            strError.Append("]");
+        }
 
         strError.Append("]");
 

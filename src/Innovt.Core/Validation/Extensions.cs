@@ -51,9 +51,13 @@ public static class Extensions
         var result = obj.Validate(context)?.ToList();
 
         if (result?.Any() == true)
+        {
             foreach (var item in result)
-                if (!validationResults.Any(r => r.ErrorMessage == item.ErrorMessage))
+            {
+                if (validationResults.All(r => r.ErrorMessage != item.ErrorMessage))
                     validationResults.Add(item);
+            }
+        }
 
         return validationResults.Distinct().ToList();
     }

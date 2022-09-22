@@ -52,13 +52,18 @@ internal static class AttributeConverter
         return type.IsArray || (type.IsGenericType && (typeof(IEnumerable).IsAssignableFrom(type)));
     }
 
+    public static bool IsDictionary(Type type)
+    {
+        return type.IsArray || (type.IsGenericType && typeof(IDictionary<,>).IsAssignableFrom(type) || typeof(IDictionary).IsAssignableFrom(type));
+    }
+
     internal static DynamoDBEntry ConvertObjectToDynamoDbEntry(object value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
 
         return DynamoDBEntryConversion.V2.ConvertToEntry(value.ToString());
     }
-
+    
     internal static Dictionary<string, AttributeValue> ConvertToAttributeValues(Dictionary<string, object> items)
     {
         return items?.Select(i =>
@@ -164,28 +169,70 @@ internal static class AttributeConverter
         return !targetType.IsArray ? ItemsToIList(targetType, items) : ItemsToArray(targetType, items);
     }
 
+    public static object ItemsToDictionary(Type targetType, object items)
+    {
+        var dictionary = items as IDictionary;
+
+        if (dictionary == null)
+            return null;
+
+        foreach (object key1 in dictionary.Keys)
+        {
+            object obj = dictionary[key1];
+
+            if (key1 is string key2)
+            {   
+                //DynamoDBEntry dynamoDbEntry = obj != null ? this.ToDynamoDBEntry(propertyStorage, obj, flatConfig) : (DynamoDBEntry)DynamoDBNull.Null;
+
+                //output[key2] = dynamoDbEntry;
+            }
+        }
+        return null;
+
+    }
+
+    private static Type GetElementType(Type collectionType)
+    {
+        var elementType = collectionType.GetElementType();
+
+        if (elementType == (Type)null)
+        {
+            Type[] genericArguments = TypeFactory.GetTypeInfo(collectionType).GetGenericArguments();
+            if (genericArguments != null && genericArguments.Length == 1)
+                elementType = genericArguments[0];
+        }
+        return elementType;
+    }
+
+
     private static object ItemsToArray(Type targetType, IEnumerable<object> items)
     {
+        if (items is null)
+            return null;
+
         var list = items.ToList<object>();
         var array = (Array)Activator.CreateInstance(targetType, list.Count);
 
+        var elementType = GetElementType(targetType);
+
         for (var index = 0; index < list.Count; ++index)
         {
-            var elementType = array.GetType().GetElementType() ?? typeof(string);
-
-            array.SetValue(ConvertType(elementType,list[index]), index);
+            array.SetValue(IsPrimitive(elementType) ? ConvertType(elementType, list[index]) : list[index], index);
         }
         return (object)array;
     }
-
+    
     private static object ItemsToIList(Type targetType, IEnumerable<object> items)
     {
         var result = Activator.CreateInstance(targetType);
+        var elementType = GetElementType(targetType);
 
         if (result is IList list)
-        {
+        {  
             foreach (var obj in items)
-                list.Add(obj);
+            {
+                list.Add(IsPrimitive(elementType) ? ConvertType(elementType, obj) : obj);
+            }
 
             return result;
         }
@@ -195,7 +242,10 @@ internal static class AttributeConverter
         if (method != (MethodInfo)null)
         {
             foreach (var obj in items)
-                method.Invoke(result, new object[1] { obj });
+                method.Invoke(result, new object[1]
+                {
+                    IsPrimitive(elementType) ? ConvertType(elementType, obj) : obj
+                });
 
             return result;
         }
@@ -226,7 +276,14 @@ internal static class AttributeConverter
         var typeConverter = TypeDescriptor.GetConverter(propertyType);
 
         if (typeConverter.CanConvertFrom(value.GetType()))
-            return typeConverter.ConvertFrom(null,CultureInfo.InvariantCulture,value);
+        {
+            //workaround compatibility v1 and v2
+            if(typeConverter is BooleanConverter && (value.ToString() == "1" || value.ToString() =="0"))
+                return typeConverter.ConvertFrom(null, CultureInfo.InvariantCulture, (value.ToString() == "1" ? "true": "false"));
+            
+            return typeConverter.ConvertFrom(null, CultureInfo.InvariantCulture, value);
+        }
+            
 
         var destinationType = Nullable.GetUnderlyingType(propertyType) ?? propertyType;
 
@@ -234,12 +291,12 @@ internal static class AttributeConverter
     }
 
     /// <summary>
-    /// Convert an attribute array to specific type
-    /// </summary>
-    /// <typeparam name="T">The desired Type </typeparam>
-    /// <param name="items"></param>
-    /// <returns></returns>
-    internal static T ConvertAttributesToType<T>(Dictionary<string, AttributeValue> items)
+        /// Convert an attribute array to specific type
+        /// </summary>
+        /// <typeparam name="T">The desired Type </typeparam>
+        /// <param name="items"></param>
+        /// <returns></returns>
+        internal static T ConvertAttributesToType<T>(Dictionary<string, AttributeValue> items)
     {
         if (items is null)
             return default;
@@ -258,23 +315,28 @@ internal static class AttributeConverter
                 continue;
 
             var value = CreateAttributeValueToObject(attributeValue.Value, prop.PropertyType);
-
+            object convertedValue = null;
             if (IsPrimitive(prop.PropertyType))
             {
-                prop.SetValue(obj, ConvertType(prop.PropertyType, value), null);
+                convertedValue = ConvertType(prop.PropertyType, value);
             }
             else
             {
                 if (IsCollection(prop.PropertyType))
                 {
-                    prop.SetValue(obj, ItemsToCollection(prop.PropertyType, (IEnumerable<object>)value));
+                    convertedValue = !IsDictionary(prop.PropertyType)
+                        ? ItemsToCollection(prop.PropertyType, (IEnumerable<object>)value)
+                        : ItemsToDictionary(prop.PropertyType, value);
                 }
                 else
                 {
-                    prop.SetValue(obj,
-                        prop.PropertyType.IsEnum ? Enum.Parse(prop.PropertyType, value.ToString(), true) : value);
+                    convertedValue = prop.PropertyType.IsEnum
+                        ? Enum.Parse(prop.PropertyType, value.ToString(), true)
+                        : value;
                 }
             }
+
+            prop.SetValue(obj, convertedValue, null);
         }
 
         return obj;

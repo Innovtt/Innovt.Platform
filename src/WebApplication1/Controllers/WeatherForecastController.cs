@@ -2,7 +2,6 @@ using Innovt.Core.Validation;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Linq;
 using Innovt.Core.CrossCutting.Log;
 using System.Diagnostics.Metrics;
@@ -24,6 +23,18 @@ namespace SampleAspNetWebApiTest.Controllers
         {
             _logger = logger;
         }
+
+        [HttpPost(Name = "GetWeatherForecast")]
+        public IActionResult Add(AddWeatherForecastCommand command)
+        {
+            
+
+
+            return Ok();
+        }
+
+
+
 
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()

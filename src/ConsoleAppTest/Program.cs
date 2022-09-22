@@ -15,6 +15,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
+using ConsoleAppTest.DataModels;
 
 namespace ConsoleAppTest;
 
@@ -26,8 +27,10 @@ public class IocTestModule : IOCModule
 
         collection.AddSingleton(configuration);
 
-        collection.AddScoped<IAwsConfiguration, DefaultAWSConfiguration>();
+        collection.AddScoped<IAwsConfiguration>(a=>new DefaultAWSConfiguration("antecipa-prod"));
 
+        //collection.AddScoped<IAwsConfiguration, DefaultAWSConfiguration>();
+        
         var tracer = OpenTracingTracerFactory.CreateTracer();
 
         GlobalTracer.Register(tracer);
@@ -71,42 +74,32 @@ public class Program
 
         container.AddModule(new IocTestModule(configuration));
 
-        var logger = container.Resolve<ILogger>();
-
-
-
-        //Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("pt-BR");
-
-        for (int i = 0; i < 5; i++)
-        {
-            logger.Info("Teste michel {@i}", i);
-            logger.Error(new Exception("fake"),"Erro nao tratado michel {@i}", i);
-            logger.Warning("Warning");
-            logger.Fatal("Fatal");
-            logger.Debug("Debug");
-        }
+        ////Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("pt-BR");
+        var invoiceRepo = new InvoiceRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
         
-////        var invoiceRepo = new InvoiceRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
-//        var userRepo = new UserRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
-        
-//        var res = await userRepo.GetUserByExternalId("45e3d052-8fed-4d41-9e0a-a6610f536506", CancellationToken.None);
+        //var res = await invoiceRepo.GetRequestIntegration();
 
-//        Console.WriteLine(res);
-        
-//        var res2 =  await userRepo.GetCapitalSources(CancellationToken.None);
+        //Console.ReadKey();
 
 
-//        Console.WriteLine(res2);
+        //var res= await invoiceRepo.GetTaxRequests();
 
-//        var res3 =  await userRepo.GetBids(CancellationToken.None);
+        //await invoiceRepo.GetKeyIndicators();
+
+        //Console.WriteLine(res);
+
+        //var userRepo = new UserRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
+
+        //var res2 = await userRepo.GetUserByExternalId("45e3d052-8fed-4d41-9e0a-a6610f536506", CancellationToken.None);
+
+        //        Console.WriteLine(res);
+
+        //       var res3 =  await userRepo.GetCapitalSources(CancellationToken.None);
 
 
+        //Console.WriteLine(res3);
 
-
-        Console.ReadKey();
-
-
-
+        //        var res3 =  await userRepo.GetBids(CancellationToken.None);
 
 
         //var result = await userRepo.GetAuthProvider();
@@ -148,7 +141,7 @@ public class Program
 
         //var result = await invoiceRepo.GetBatchUsers();
 
-        //var companyId = Guid.Parse("4e680340-98bc-4f57-930e-48ad2904cdb5");
+        var companyId = Guid.Parse("4e680340-98bc-4f57-930e-48ad2904cdb5");
 
         ////var users = await invoiceRepo.QueryAsync<InvoicesAggregationCompanyDataModel>(new QueryRequest()
         ////{
@@ -156,22 +149,21 @@ public class Program
         ////    Filter = new { pk = "E#ed791722c6f5b3733a06238fba0c2577" }
         ////});
 
-        //var list = new List<InvoicesAggregationCompanyDataModel>();
+        var list = new List<InvoicesAggregationCompanyDataModel>();
 
-        //for (int i = 0; i < 10; i++)
-        //{
+        for (int i = 0; i < 25; i++)
+        {
+            list.Add(new InvoicesAggregationCompanyDataModel()
+            {
+                CompanyId = companyId.ToString(),
+                Currency = "R$",
+                PK = $"M#{companyId}",
+                SK1 = $"SampleMichel#{i}#{DateTime.Now}",
+                TotalValue = 10
+            });
+        }
 
-        //    list.Add(new InvoicesAggregationCompanyDataModel()
-        //    {
-        //        CompanyId = companyId.ToString(),
-        //        Currency = "R$",
-        //        PK = $"M#{companyId}",
-        //        SK1 = $"SampleMichel#{i}#{DateTime.Now}",
-        //        TotalValue = 10
-        //    });
-        //}
-
-
+        await invoiceRepo.BatchInsert(list);
 
         //var invoices = await invoiceRepo.QueryAsync<InvoicesAggregationCompanyDataModel>(new QueryRequest()
         //{

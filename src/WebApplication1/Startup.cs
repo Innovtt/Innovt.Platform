@@ -1,5 +1,6 @@
 using Innovt.AspNetCore;
 using Innovt.CrossCutting.Log.Serilog;
+using Innovt.OpenTelemetry;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -8,7 +9,6 @@ using Microsoft.Extensions.Logging;
 using OpenTelemetry;
 using OpenTelemetry.Contrib.Extensions.AWSXRay.Trace;
 using OpenTelemetry.Trace;
-using Serilog;
 using ILogger = Innovt.Core.CrossCutting.Log.ILogger;
 
 namespace SampleAspNetWebApiTest
@@ -36,9 +36,9 @@ namespace SampleAspNetWebApiTest
         {
             services.AddOpenTelemetryMetrics();
 
-            var logConfiguration = new LoggerConfiguration().WriteTo.DatadogLogs("ccfb48def408fb4aac48439c6b1619d0");
+            //var logConfiguration = new LoggerConfiguration().WriteTo.DatadogLogs("ccfb48def408fb4aac48439c6b1619d0");
 
-            services.AddTransient<ILogger>(p=>new Logger(logConfiguration));
+            services.AddTransient<ILogger, Logger>();//p=>new Logger(logConfiguration));
         }
 
         public override void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
@@ -56,6 +56,8 @@ namespace SampleAspNetWebApiTest
 
         protected override void ConfigureOpenTelemetry(TracerProviderBuilder builder)
         {
+            builder.AddLoggerExporter(builder.GetServices());
+
             builder.AddJaegerExporter(e =>
             {
                 e.AgentPort = 6831;

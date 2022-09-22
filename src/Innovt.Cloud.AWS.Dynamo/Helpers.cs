@@ -153,9 +153,7 @@ internal static class Helpers
 
         return writeRequest;
     }
-
-
-
+    
 
     internal static IList<T> ConvertAttributesToType<T>(IList<Dictionary<string, AttributeValue>> items)
     {
