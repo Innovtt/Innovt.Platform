@@ -37,7 +37,8 @@ public class IocTestModule : IOCModule
 
         collection.AddScoped(t => tracer);
 
-        collection.AddScoped<ILogger, Logger>();
+        //collection.AddScoped<ILogger, Logger>();
+        collection.AddSingleton<ILogger>(new Logger(new DataDogEnrich()));
 
         collection.AddScoped<DynamoService>();
       /*  collection.AddScoped<RedisProviderConfiguration>(p => new RedisProviderConfiguration()
@@ -77,9 +78,9 @@ public class Program
         ////Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("pt-BR");
         var invoiceRepo = new InvoiceRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
         
-        //var res = await invoiceRepo.GetRequestIntegration();
+        var res = await invoiceRepo.GetRequestIntegration();
 
-        //Console.ReadKey();
+        Console.ReadKey();
 
 
         //var res= await invoiceRepo.GetTaxRequests();

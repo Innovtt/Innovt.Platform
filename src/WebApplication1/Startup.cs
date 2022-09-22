@@ -36,8 +36,6 @@ namespace SampleAspNetWebApiTest
         {
             services.AddOpenTelemetryMetrics();
 
-            //var logConfiguration = new LoggerConfiguration().WriteTo.DatadogLogs("ccfb48def408fb4aac48439c6b1619d0");
-
             services.AddTransient<ILogger, Logger>();//p=>new Logger(logConfiguration));
         }
 
