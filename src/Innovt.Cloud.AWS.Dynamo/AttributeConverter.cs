@@ -135,9 +135,16 @@ internal static class AttributeConverter
         //Nested Type
         if (value.IsMSet)
         {
-            MethodInfo method = typeof(AttributeConverter).GetMethod(nameof(ConvertAttributesToType), BindingFlags.Static | BindingFlags.NonPublic, null, new Type[] { typeof(Dictionary<string, AttributeValue>) }, null);
-            MethodInfo generic = method?.MakeGenericMethod(desiredType);
-            return generic.Invoke(null, new object[] { value.M });
+            if (IsDictionary(desiredType))
+            {
+                return ItemsToDictionary(desiredType, value.M);
+            }
+            else
+            {
+                var method = typeof(AttributeConverter).GetMethod(nameof(ConvertAttributesToType), BindingFlags.Static | BindingFlags.NonPublic, null,
+                    new Type[] { typeof(Dictionary<string, AttributeValue>) }, null);
+                return method?.MakeGenericMethod(desiredType).Invoke(null, new object[] { value.M });
+            }
         }
 
         if (value.BS.IsNotNullOrEmpty())
@@ -169,25 +176,30 @@ internal static class AttributeConverter
         return !targetType.IsArray ? ItemsToIList(targetType, items) : ItemsToArray(targetType, items);
     }
 
-    public static object ItemsToDictionary(Type targetType, object items)
+    public static object ItemsToDictionary(Type targetType, Dictionary<string,AttributeValue> items)
     {
-        var dictionary = items as IDictionary;
+        if (items is null || targetType is null)
+            return null;
+        
+        var genericArguments = targetType.GetGenericArguments();
 
-        if (dictionary == null)
+        //not supported
+        if (genericArguments.Length != 2)
+            return null;
+        
+        var dictionary = Activator.CreateInstance(targetType) as IDictionary;
+
+        if (dictionary is null)
             return null;
 
-        foreach (object key1 in dictionary.Keys)
+        var valueType = genericArguments[1];
+
+        foreach (var item in items)
         {
-            object obj = dictionary[key1];
-
-            if (key1 is string key2)
-            {   
-                //DynamoDBEntry dynamoDbEntry = obj != null ? this.ToDynamoDBEntry(propertyStorage, obj, flatConfig) : (DynamoDBEntry)DynamoDBNull.Null;
-
-                //output[key2] = dynamoDbEntry;
-            }
+            dictionary.Add(item.Key, CreateAttributeValueToObject(item.Value, valueType));
         }
-        return null;
+
+        return dictionary;
 
     }
 
@@ -197,8 +209,8 @@ internal static class AttributeConverter
 
         if (elementType == (Type)null)
         {
-            Type[] genericArguments = TypeFactory.GetTypeInfo(collectionType).GetGenericArguments();
-            if (genericArguments != null && genericArguments.Length == 1)
+            var genericArguments = TypeFactory.GetTypeInfo(collectionType).GetGenericArguments();
+            if (genericArguments is { Length: 1 })
                 elementType = genericArguments[0];
         }
         return elementType;
@@ -324,9 +336,8 @@ internal static class AttributeConverter
             {
                 if (IsCollection(prop.PropertyType))
                 {
-                    convertedValue = !IsDictionary(prop.PropertyType)
-                        ? ItemsToCollection(prop.PropertyType, (IEnumerable<object>)value)
-                        : ItemsToDictionary(prop.PropertyType, value);
+                    convertedValue = IsDictionary(prop.PropertyType) ? value :
+                        ItemsToCollection(prop.PropertyType, (IEnumerable<object>)value);
                 }
                 else
                 {

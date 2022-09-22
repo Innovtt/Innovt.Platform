@@ -27,9 +27,9 @@ public class IocTestModule : IOCModule
 
         collection.AddSingleton(configuration);
 
-        collection.AddScoped<IAwsConfiguration>(a=>new DefaultAWSConfiguration("antecipa-prod"));
+        //collection.AddScoped<IAwsConfiguration>(a=>new DefaultAWSConfiguration("antecipa-prod"));
 
-        //collection.AddScoped<IAwsConfiguration, DefaultAWSConfiguration>();
+        collection.AddScoped<IAwsConfiguration, DefaultAWSConfiguration>();
         
         var tracer = OpenTracingTracerFactory.CreateTracer();
 
@@ -80,31 +80,33 @@ public class Program
         
         var res = await invoiceRepo.GetRequestIntegration();
 
-        Console.ReadKey();
+        //Console.ReadKey();
 
 
-        //var res= await invoiceRepo.GetTaxRequests();
+        var ress= await invoiceRepo.GetTaxRequests();
 
-        //await invoiceRepo.GetKeyIndicators();
+        await invoiceRepo.GetKeyIndicators();
 
-        //Console.WriteLine(res);
+         Console.WriteLine(res);
 
-        //var userRepo = new UserRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
+        var userRepo = new UserRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
 
-        //var res2 = await userRepo.GetUserByExternalId("45e3d052-8fed-4d41-9e0a-a6610f536506", CancellationToken.None);
+        var res2 = await userRepo.GetUserByExternalId("45e3d052-8fed-4d41-9e0a-a6610f536506", CancellationToken.None);
 
         //        Console.WriteLine(res);
 
-        //       var res3 =  await userRepo.GetCapitalSources(CancellationToken.None);
+           var res3 =  await userRepo.GetCapitalSources(CancellationToken.None);
 
 
-        //Console.WriteLine(res3);
+        Console.WriteLine(res3);
 
-        //        var res3 =  await userRepo.GetBids(CancellationToken.None);
+        var res4 =  await userRepo.GetBids(CancellationToken.None);
 
 
-        //var result = await userRepo.GetAuthProvider();
+        var result = await userRepo.GetAuthProvider();
 
+
+        Console.WriteLine(res3);
         //await invoiceRepo.IncrementOrderSequence(CancellationToken.None);
 
         /*
