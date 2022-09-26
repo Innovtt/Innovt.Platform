@@ -27,9 +27,9 @@ public class IocTestModule : IOCModule
 
         collection.AddSingleton(configuration);
 
-        //collection.AddScoped<IAwsConfiguration>(a=>new DefaultAWSConfiguration("antecipa-prod"));
+        collection.AddScoped<IAwsConfiguration>(a=>new DefaultAWSConfiguration("antecipa-prod"));
 
-        collection.AddScoped<IAwsConfiguration, DefaultAWSConfiguration>();
+        //collection.AddScoped<IAwsConfiguration, DefaultAWSConfiguration>();
         
         var tracer = OpenTracingTracerFactory.CreateTracer();
 
@@ -78,6 +78,21 @@ public class Program
         ////Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("pt-BR");
         var invoiceRepo = new InvoiceRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
         
+        try
+        {
+            var kpiProgress = await invoiceRepo.GetKpiProgress();
+
+
+            Console.WriteLine(kpiProgress);
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        
+
         var res = await invoiceRepo.GetRequestIntegration();
 
         //Console.ReadKey();

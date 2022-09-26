@@ -15,6 +15,7 @@ using BatchWriteItemRequest = Innovt.Cloud.Table.BatchWriteItemRequest;
 using ConsoleAppTest.DataModels.CapitalSource.DataModels;
 using QueryRequest = Innovt.Cloud.Table.QueryRequest;
 using ConsoleAppTest.DataModels.FinancialRequest;
+using Innovt.Core.Collections;
 
 namespace ConsoleAppTest;
 
@@ -276,6 +277,18 @@ public class InvoiceRepository : Repository
 
 
         return result.SingleOrDefault();
+    }
+
+
+    public async Task<PagedCollection<KpiProgressDataModel>> GetKpiProgress()
+    {
+        var queryRequest = new QueryRequest
+        {
+            KeyConditionExpression = "PK = :pk",
+            Filter = new { pk = "E#88d4c8c7fb435a16b0d777b42cc85bab" }
+        };
+
+        return await QueryPaginatedByAsync<KpiProgressDataModel>(queryRequest, CancellationToken.None);
     }
 
 }

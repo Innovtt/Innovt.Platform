@@ -313,11 +313,11 @@ internal static class AttributeConverter
         if (items is null)
             return default;
 
-        var obj = Activator.CreateInstance<T>();
-        var properties = obj.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);
+        var typeInstance = Activator.CreateInstance<T>();
+        var properties = typeInstance.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
 
         if (!properties.Any())
-            return obj;
+            return typeInstance;
 
         foreach (var attributeValue in items)
         {
@@ -347,10 +347,10 @@ internal static class AttributeConverter
                 }
             }
 
-            prop.SetValue(obj, convertedValue, null);
+            prop.SetValue(typeInstance, convertedValue, null);
         }
 
-        return obj;
+        return typeInstance;
     }
 
 }
