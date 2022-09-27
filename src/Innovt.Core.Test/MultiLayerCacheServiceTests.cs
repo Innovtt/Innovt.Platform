@@ -1,20 +1,21 @@
-﻿using Innovt.Core.Caching;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Core.Test
+
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Innovt.Core.Caching;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Test.Models;
 using Microsoft.Extensions.Caching.Memory;
 using NUnit.Framework;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Innovt.Core.Test;
 
 [TestFixture]
 public class MultiLayerCacheServiceTests
 {
-    private ILogger loggerMock;
-    private ICacheService cacheService;
-
     [SetUp]
     public void Setup()
     {
@@ -32,14 +33,20 @@ public class MultiLayerCacheServiceTests
         cacheService = null;
     }
 
+    private ILogger loggerMock;
+    private ICacheService cacheService;
+
     [Test]
     public void GetValueThrowExceptionIfKeyIsNullOrEmpty()
     {
         Assert.Throws<ArgumentNullException>(() => cacheService.GetValue<int>(null));
 
-        Assert.ThrowsAsync<ArgumentNullException>(async () => await cacheService.GetValue(null, Factory, CancellationToken.None).ConfigureAwait(false));
+        Assert.ThrowsAsync<ArgumentNullException>(async () =>
+            await cacheService.GetValue(null, Factory, CancellationToken.None).ConfigureAwait(false));
 
-        Assert.ThrowsAsync<ArgumentNullException>(async () => await cacheService.GetValueOrCreate(null, Factory, TimeSpan.FromSeconds(10), CancellationToken.None).ConfigureAwait(false));
+        Assert.ThrowsAsync<ArgumentNullException>(async () =>
+            await cacheService.GetValueOrCreate(null, Factory, TimeSpan.FromSeconds(10), CancellationToken.None)
+                .ConfigureAwait(false));
     }
 
     [Test]
@@ -79,7 +86,8 @@ public class MultiLayerCacheServiceTests
         var key = "Quantity";
         var expectedValue = "Michel";
 
-        var value = await cacheService.GetValueOrCreate<A>(key, Factory, expiration, CancellationToken.None).ConfigureAwait(false);
+        var value = await cacheService.GetValueOrCreate<A>(key, Factory, expiration, CancellationToken.None)
+            .ConfigureAwait(false);
 
         Assert.IsNotNull(value);
         Assert.AreEqual(expectedValue, value.Name);

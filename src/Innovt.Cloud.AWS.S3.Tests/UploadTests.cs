@@ -1,3 +1,7 @@
+// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Cloud.AWS.S3.Tests
+
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.File;
 using Innovt.CrossCutting.Log.Serilog;

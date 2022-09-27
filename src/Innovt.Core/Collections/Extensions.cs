@@ -1,9 +1,6 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Core
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System.Collections.Generic;
 using System.Linq;
@@ -64,12 +61,13 @@ public static class Extensions
         return dictionary;
     }
 
-    public static Dictionary<TKey, TValue> Merge<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, Dictionary<TKey, TValue> dictionarySecond)
+    public static Dictionary<TKey, TValue> Merge<TKey, TValue>(this Dictionary<TKey, TValue> dictionary,
+        Dictionary<TKey, TValue> dictionarySecond)
     {
         dictionary ??= new Dictionary<TKey, TValue>();
 
         if (dictionarySecond == null) return dictionary;
-        
+
         foreach (var item in dictionarySecond)
         {
             dictionary.TryAdd(item.Key, item.Value);

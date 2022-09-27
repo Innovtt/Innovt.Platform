@@ -1,14 +1,13 @@
-﻿// Company: Antecipa
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Contrib.Authorization.Platform
-// Solution: Innovt.Contrib.Authorization
-// Date: 2021-09-20
 
-using Innovt.Contrib.Authorization.Platform.Application.Commands;
-using Innovt.Contrib.Authorization.Platform.Application.Dtos;
-using Innovt.Contrib.Authorization.Platform.Domain.Filters;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Innovt.Contrib.Authorization.Platform.Application.Commands;
+using Innovt.Contrib.Authorization.Platform.Application.Dtos;
+using Innovt.Contrib.Authorization.Platform.Domain.Filters;
 
 namespace Innovt.Contrib.Authorization.Platform.Application;
 

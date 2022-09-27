@@ -1,11 +1,14 @@
+// Innovt Company
+// Author: Michel Borges
+// Project: ConsoleAppTest
+
 using System;
 
-namespace ConsoleAppTest.DataModels.CapitalSource.DataModels
+namespace ConsoleAppTest.DataModels.CapitalSource.DataModels;
+
+public class ContractStatusChangeDataModel
 {
-    public class ContractStatusChangeDataModel
-    {
-        public string UserId { get; set; }
-        public DateTime DateTime { get; set; }
-        public int StatusId { get; set; }
-    }
+    public string UserId { get; set; }
+    public DateTime DateTime { get; set; }
+    public int StatusId { get; set; }
 }

@@ -1,21 +1,24 @@
-﻿namespace ConsoleAppTest.DataModels
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: ConsoleAppTest
+
+namespace ConsoleAppTest.DataModels;
+
+public class AuthProviderDataModel : BaseDataModel
 {
-    public class AuthProviderDataModel : BaseDataModel
+    public AuthProviderDataModel()
     {
-        public string Name { get; set; }
+        EntityType = "AuthProvider";
+    }
 
-        public string? Domain { get; set; }
+    public string Name { get; set; }
 
-        public bool Enabled { get; set; }
+    public string? Domain { get; set; }
 
-        public AuthProviderDataModel()
-        {
-            EntityType = "AuthProvider";
-        }
+    public bool Enabled { get; set; }
 
-        public static string BuildPk()
-        {
-            return $"AUTH_PROVIDER";
-        }
+    public static string BuildPk()
+    {
+        return $"AUTH_PROVIDER";
     }
 }

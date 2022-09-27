@@ -1,19 +1,16 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Data.Ado
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
+using System.Data;
+using System.Data.SqlClient;
 using Innovt.Core.Utilities;
 using Innovt.Data.DataSources;
 using Innovt.Data.Exceptions;
 using Innovt.Data.Model;
 using Npgsql;
 using Oracle.ManagedDataAccess.Client;
-using System;
-using System.Data;
-using System.Data.SqlClient;
 
 namespace Innovt.Data.Ado;
 

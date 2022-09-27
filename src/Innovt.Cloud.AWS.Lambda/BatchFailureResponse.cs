@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Cloud.AWS.Lambda
+
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Serialization;
 

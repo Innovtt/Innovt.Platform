@@ -1,19 +1,16 @@
-// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalh�es
+// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Cloud.AWS.Dynamo.Tests
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.Table;
 using Innovt.Core.CrossCutting.Log;
 using NSubstitute;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Innovt.Cloud.AWS.Dynamo.Tests
 {

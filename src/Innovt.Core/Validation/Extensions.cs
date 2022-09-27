@@ -1,17 +1,14 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Core
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Innovt.Core.Cqrs.Commands;
-using Innovt.Core.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Innovt.Core.Cqrs.Commands;
+using Innovt.Core.Exceptions;
 
 namespace Innovt.Core.Validation;
 
@@ -81,7 +78,7 @@ public static class Extensions
         if (!validationResults.Any()) return;
 
         var errors = from e in validationResults
-                     select new ErrorMessage(e.ErrorMessage, string.Join(",", e.MemberNames));
+            select new ErrorMessage(e.ErrorMessage, string.Join(",", e.MemberNames));
 
         throw new BusinessException(errors.ToList());
     }

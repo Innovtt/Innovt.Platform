@@ -1,8 +1,12 @@
-﻿using Innovt.Cloud.Queue;
-using Innovt.Core.CrossCutting.Ioc;
-using Innovt.Core.CrossCutting.Log;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Cloud.AWS.Lambda.Sqs.Tests
+
 using System;
 using System.Threading.Tasks;
+using Innovt.Cloud.Queue;
+using Innovt.Core.CrossCutting.Ioc;
+using Innovt.Core.CrossCutting.Log;
 
 namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests;
 

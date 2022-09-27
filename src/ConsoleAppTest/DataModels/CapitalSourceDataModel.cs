@@ -1,7 +1,11 @@
-﻿#nullable enable
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: ConsoleAppTest
+
+#nullable enable
 namespace ConsoleAppTest.DataModels;
 
-public class CapitalSourceDataModel: BaseDataModel
+public class CapitalSourceDataModel : BaseDataModel
 {
     public string Name { get; set; }
     public string? CorporateName { get; set; }

@@ -1,3 +1,7 @@
+// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Cloud.AWS.Lambda.Tests
+
 using Amazon.Lambda.Core;
 using Amazon.Lambda.TestUtilities;
 using Innovt.Core.CrossCutting.Log;

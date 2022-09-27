@@ -1,88 +1,91 @@
-﻿using System;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Data.Tests
+
+using System;
 using Innovt.Data.DataModels;
 using Innovt.Data.Tests.DataModel;
 using NUnit.Framework;
 
-namespace Innovt.Data.Tests
+namespace Innovt.Data.Tests;
+
+[TestFixture]
+public class DMContextTests
 {
-    [TestFixture]
-    public class DMContextTests
+    [Test]
+    public void InstanceCantBeNullWhenUsingSingleton()
     {
-        [Test]
-        public void InstanceCantBeNullWhenUsingSingleton()
+        var instance = DMContext.Instance();
+        Assert.That(instance, Is.Not.Null);
+    }
+
+
+    [Test]
+    public void AttachThrowExceptionIfObjectIsNull()
+    {
+        Assert.Throws<ArgumentNullException>(() => DMContext.Instance().Attach<UserDataModel>(null));
+    }
+
+
+    [Test]
+    public void DeAttachThrowExceptionIfObjectIsNull()
+    {
+        Assert.Throws<ArgumentNullException>(() => DMContext.Instance().DeAttach<UserDataModel>(null));
+    }
+
+    [Test]
+    public void FindThrowExceptionIfObjectIsNull()
+    {
+        Assert.Throws<ArgumentNullException>(() => DMContext.Instance().Find<UserDataModel>(null));
+    }
+
+    [Test]
+    public void CheckHashCode()
+    {
+        var userDataModel = new UserDataModel()
         {
-            var instance = DMContext.Instance();
-            Assert.That(instance, Is.Not.Null);
-        }
+            Id = 10,
+            Name = "Michel",
+            Address = "Rua a",
+            LastName = "Borges"
+        };
 
+        DMContext.Instance().Attach<UserDataModel>(userDataModel);
 
-        [Test]
-        public void AttachThrowExceptionIfObjectIsNull()
+        var userDataModel2 = new UserDataModel()
         {
-            Assert.Throws<ArgumentNullException>(()=>DMContext.Instance().Attach<UserDataModel>(null));
-        }
+            Id = 10,
+            Name = "Michel",
+            Address = "Rua a",
+            LastName = "Borges"
+        };
 
+        DMContext.Instance().Attach<UserDataModel>(userDataModel2);
 
-        [Test]
-        public void DeAttachThrowExceptionIfObjectIsNull()
+        DMContext.Instance().DeAttach<UserDataModel>(userDataModel);
+        DMContext.Instance().DeAttach<UserDataModel>(userDataModel2);
+    }
+
+    [Test]
+    public void Attach()
+    {
+        var userDataModel = new UserDataModel()
         {
-            Assert.Throws<ArgumentNullException>(() => DMContext.Instance().DeAttach<UserDataModel>(null));
-        }
+            Id = 10,
+            Name = "Michel",
+            Address = "Rua a",
+            LastName = "Borges"
+        };
 
-        [Test]
-        public void FindThrowExceptionIfObjectIsNull()
-        {
-            Assert.Throws<ArgumentNullException>(() => DMContext.Instance().Find<UserDataModel>(null));
-        }
+        DMContext.Instance().Attach<UserDataModel>(userDataModel);
 
-        [Test]
-        public void CheckHashCode()
-        {
-            var userDataModel = new UserDataModel()
-            {
-                Id = 10,
-                Name = "Michel",
-                Address = "Rua a",
-                LastName = "Borges"
-            };
+        var user = DMContext.Instance().Find<UserDataModel>(userDataModel);
 
-            DMContext.Instance().Attach<UserDataModel>(userDataModel);
+        Assert.IsNotNull(user);
 
-            var userDataModel2 = new UserDataModel()
-            {
-                Id = 10,
-                Name = "Michel",
-                Address = "Rua a",
-                LastName = "Borges"
-            };
-
-            DMContext.Instance().Attach<UserDataModel>(userDataModel2);
-
-            DMContext.Instance().DeAttach<UserDataModel>(userDataModel);
-            DMContext.Instance().DeAttach<UserDataModel>(userDataModel2);
-
-        }
-        [Test]
-        public void Attach()
-        {
-            var userDataModel = new UserDataModel()
-            {
-                Id = 10,
-                Name = "Michel",
-                Address = "Rua a",
-                LastName = "Borges"
-            };
-            
-            DMContext.Instance().Attach<UserDataModel>(userDataModel);
-
-            var user = DMContext.Instance().Find<UserDataModel>(userDataModel);
-            
-            Assert.IsNotNull(user);
-
-            Assert.AreEqual(userDataModel.Name,user.Name);
-            Assert.AreEqual(userDataModel.Id,user.Id);
-            Assert.AreEqual(userDataModel.LastName,user.LastName);
-            Assert.AreEqual(userDataModel.Address,user.Address);
-        }
+        Assert.AreEqual(userDataModel.Name, user.Name);
+        Assert.AreEqual(userDataModel.Id, user.Id);
+        Assert.AreEqual(userDataModel.LastName, user.LastName);
+        Assert.AreEqual(userDataModel.Address, user.Address);
     }
 }

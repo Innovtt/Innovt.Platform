@@ -1,5 +1,7 @@
-using System;
-using System.Linq;
+// Innovt Company
+// Author: Michel Borges
+// Project: _build
+
 using Nuke.Common;
 using Nuke.Common.CI;
 using Nuke.Common.Git;
@@ -81,12 +83,12 @@ class Build : NukeBuild
                 {
                     //try
                     //{
-                        DotNetNuGetPush(s => s
-                            .EnableSkipDuplicate()
-                            .SetTargetPath(x)
-                            .SetSource(NugetApiUrl)
-                            .SetApiKey(NugetApiKey)
-                        );
+                    DotNetNuGetPush(s => s
+                        .EnableSkipDuplicate()
+                        .SetTargetPath(x)
+                        .SetSource(NugetApiUrl)
+                        .SetApiKey(NugetApiKey)
+                    );
                     //}
                     //catch (Exception e)
                     //{

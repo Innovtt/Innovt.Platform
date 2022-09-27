@@ -1,4 +1,8 @@
-﻿using System.Diagnostics;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.CrossCutting.Log.Serilog.Tests
+
+using System.Diagnostics;
 
 namespace Innovt.CrossCutting.Log.Serilog.Tests;
 

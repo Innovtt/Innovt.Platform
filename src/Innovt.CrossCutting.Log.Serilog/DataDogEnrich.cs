@@ -1,7 +1,11 @@
-﻿using Serilog.Core;
-using Serilog.Events;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.CrossCutting.Log.Serilog
+
 using System;
 using System.Diagnostics;
+using Serilog.Core;
+using Serilog.Events;
 
 namespace Innovt.CrossCutting.Log.Serilog;
 

@@ -1,17 +1,14 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Cloud.AWS.Lambda
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
+using System.Diagnostics;
+using System.Globalization;
 using Amazon.Lambda.Core;
 using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Core.CrossCutting.Log;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Diagnostics;
-using System.Globalization;
 
 namespace Innovt.Cloud.AWS.Lambda;
 

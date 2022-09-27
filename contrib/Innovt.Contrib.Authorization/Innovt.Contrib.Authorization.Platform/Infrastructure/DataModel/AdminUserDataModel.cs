@@ -1,10 +1,9 @@
-﻿// Company: Antecipa
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Contrib.Authorization.Platform
-// Solution: Innovt.Contrib.Authorization
-// Date: 2021-09-20
 
-using Innovt.Contrib.Authorization.Platform.Domain;
 using System;
+using Innovt.Contrib.Authorization.Platform.Domain;
 
 namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel;
 

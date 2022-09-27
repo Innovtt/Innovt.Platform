@@ -1,9 +1,6 @@
-// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.AspNetCore
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using Innovt.AspNetCore.Filters;
 using Innovt.AspNetCore.Infrastructure;
@@ -20,7 +17,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
-
 
 namespace Innovt.AspNetCore;
 
@@ -100,7 +96,7 @@ public abstract class ApiStartupBase
         services.AddOpenTelemetryTracing(builder =>
         {
             builder.AddSource(AppName).SetResourceBuilder(ResourceBuilder.CreateDefault()
-                    .AddService(serviceName: AppName))
+                    .AddService(AppName))
                 .SetErrorStatusOnException(true);
 
             ConfigureOpenTelemetry(builder);
@@ -125,15 +121,15 @@ public abstract class ApiStartupBase
         services.AddLocalization();
 
         mvcBuilder.AddMvcLocalization(op =>
-        {
-            op.DataAnnotationLocalizerProvider =
-                (type, factory) => factory.Create(Localization.DefaultLocalizeResource);
-        })
-        .AddDataAnnotationsLocalization(op =>
-        {
-            op.DataAnnotationLocalizerProvider =
-                (type, factory) => factory.Create(Localization.DefaultLocalizeResource);
-        });
+            {
+                op.DataAnnotationLocalizerProvider =
+                    (type, factory) => factory.Create(Localization.DefaultLocalizeResource);
+            })
+            .AddDataAnnotationsLocalization(op =>
+            {
+                op.DataAnnotationLocalizerProvider =
+                    (type, factory) => factory.Create(Localization.DefaultLocalizeResource);
+            });
     }
 
     // This method gets called by the runtime. Use this method to add services to the container.

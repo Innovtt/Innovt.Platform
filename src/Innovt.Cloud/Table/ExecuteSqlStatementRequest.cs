@@ -1,4 +1,8 @@
-﻿namespace Innovt.Cloud.Table;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Cloud
+
+namespace Innovt.Cloud.Table;
 
 public class ExecuteSqlStatementRequest
 {

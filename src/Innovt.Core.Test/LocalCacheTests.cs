@@ -1,17 +1,19 @@
-﻿using Innovt.Core.Caching;
-using Microsoft.Extensions.Caching.Memory;
-using NUnit.Framework;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Core.Test
+
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Innovt.Core.Caching;
+using Microsoft.Extensions.Caching.Memory;
+using NUnit.Framework;
 
 namespace Innovt.Core.Test;
 
 [TestFixture]
 public class LocalCacheTests
 {
-    private ICacheService cacheService;
-
     [SetUp]
     public void Setup()
     {
@@ -25,14 +27,21 @@ public class LocalCacheTests
         cacheService = null;
     }
 
+    private ICacheService cacheService;
+
     [Test]
     public void GetValueThrowExceptionIfKeyIsNullOrEmpty()
     {
         Assert.Throws<ArgumentNullException>(() => cacheService.GetValue<int>(null));
 
-        Assert.ThrowsAsync<ArgumentNullException>(async () => await cacheService.GetValue(null, token => Task.FromResult(10), CancellationToken.None).ConfigureAwait(false));
+        Assert.ThrowsAsync<ArgumentNullException>(async () =>
+            await cacheService.GetValue(null, token => Task.FromResult(10), CancellationToken.None)
+                .ConfigureAwait(false));
 
-        Assert.ThrowsAsync<ArgumentNullException>(async () => await cacheService.GetValueOrCreate(null, token => Task.FromResult(10), TimeSpan.FromSeconds(10), CancellationToken.None).ConfigureAwait(false));
+        Assert.ThrowsAsync<ArgumentNullException>(async () =>
+            await cacheService
+                .GetValueOrCreate(null, token => Task.FromResult(10), TimeSpan.FromSeconds(10), CancellationToken.None)
+                .ConfigureAwait(false));
     }
 
     [Test]
@@ -58,7 +67,8 @@ public class LocalCacheTests
     [Test]
     public async Task GetValueWithFactoryReturnsFactoryValue()
     {
-        var value = await cacheService.GetValue<int?>("Quantity", Factory, CancellationToken.None).ConfigureAwait(false);
+        var value = await cacheService.GetValue<int?>("Quantity", Factory, CancellationToken.None)
+            .ConfigureAwait(false);
 
         Assert.AreEqual(10, value);
     }
@@ -71,9 +81,9 @@ public class LocalCacheTests
         var key = "Quantity";
         var expectedValue = 10;
 
-        var value = await cacheService.GetValueOrCreate<int?>(key, (c) => {
-            return FactoryB(null, c);
-        }, expiration, CancellationToken.None).ConfigureAwait(false);
+        var value = await cacheService
+            .GetValueOrCreate<int?>(key, (c) => { return FactoryB(null, c); }, expiration, CancellationToken.None)
+            .ConfigureAwait(false);
 
         Assert.AreEqual(expectedValue, value);
 
@@ -90,6 +100,7 @@ public class LocalCacheTests
     {
         return 10;
     }
+
     private async Task<int?> FactoryB(object A, CancellationToken cancellation)
     {
         return 10;

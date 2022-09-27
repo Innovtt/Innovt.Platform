@@ -1,16 +1,13 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Core
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Innovt.Core.Serialization;
 using System;
 using System.Collections.Specialized;
 using System.IO;
 using System.Net;
 using System.Net.Http;
+using Innovt.Core.Serialization;
 
 namespace Innovt.Core.Http;
 

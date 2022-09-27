@@ -1,16 +1,13 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Cloud.AWS
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
 using Amazon.Runtime;
 using Amazon.Runtime.CredentialManagement;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
 using Microsoft.Extensions.Configuration;
-using System;
 
 namespace Innovt.Cloud.AWS.Configuration;
 

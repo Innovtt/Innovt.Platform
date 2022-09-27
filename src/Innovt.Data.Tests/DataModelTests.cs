@@ -1,29 +1,32 @@
-﻿using Innovt.Data.Tests.DataModel;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Data.Tests
+
+using Innovt.Data.Tests.DataModel;
 using NUnit.Framework;
 
-namespace Innovt.Data.Tests
+namespace Innovt.Data.Tests;
+
+[TestFixture]
+public class DataModelTests
 {
-    [TestFixture]
-    public class DataModelTests
+    [Test]
+    public void Attach()
     {
-        [Test]
-        public void Attach()
+        var userDataModel = new UserDataModel()
         {
-            var userDataModel = new UserDataModel()
-            {
-                Id = 10,
-                Name = "Michel",
-                Address = "Rua a",
-                LastName = "Borges"
-            };
+            Id = 10,
+            Name = "Michel",
+            Address = "Rua a",
+            LastName = "Borges"
+        };
 
-            userDataModel.EnableTrackingChanges = true;
+        userDataModel.EnableTrackingChanges = true;
 
-            Assert.IsFalse(userDataModel.HasChanges);
+        Assert.IsFalse(userDataModel.HasChanges);
 
-            userDataModel.Name = "Marcio";
+        userDataModel.Name = "Marcio";
 
-            Assert.IsTrue(userDataModel.HasChanges);
-        }
+        Assert.IsTrue(userDataModel.HasChanges);
     }
 }

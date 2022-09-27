@@ -1,14 +1,11 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Domain
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Innovt.Core.Utilities;
-using Innovt.Domain.Core.Model;
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
+using Innovt.Core.Utilities;
+using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Contacts;
 

@@ -1,9 +1,6 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Core
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System;
 using System.Collections.Generic;
@@ -87,11 +84,11 @@ public class BusinessException : BaseException, ISerializable
         var errorMessages = errors as ErrorMessage[] ?? errors.ToArray();
 
         if (!errorMessages.Any()) return string.Empty;
-        
+
         var strError = new StringBuilder();
-        
+
         strError.Append("[");
-        
+
         var properties = errorMessages.GroupBy(err => err.PropertyName);
 
         foreach (var property in properties)

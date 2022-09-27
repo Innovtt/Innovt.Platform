@@ -1,13 +1,10 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Data.Migration
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Dapper;
 using System;
 using System.Data.SqlClient;
+using Dapper;
 
 namespace Innovt.Data.Migration;
 

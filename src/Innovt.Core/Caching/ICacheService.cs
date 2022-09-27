@@ -1,7 +1,11 @@
-﻿using Innovt.Core.Utilities;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Core
+
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Innovt.Core.Utilities;
 
 namespace Innovt.Core.Caching;
 
@@ -9,12 +13,13 @@ public interface ICacheService
 {
     T GetValue<T>(string key);
 
-    public async Task<T> GetValue<T>(string key, Func<CancellationToken, Task<T>> factory, CancellationToken cancellationToken)
+    public async Task<T> GetValue<T>(string key, Func<CancellationToken, Task<T>> factory,
+        CancellationToken cancellationToken)
     {
         if (key.IsNullOrEmpty()) throw new ArgumentNullException(nameof(key));
         if (factory == null) throw new ArgumentNullException(nameof(factory));
 
-        var value = this.GetValue<T>(key);
+        var value = GetValue<T>(key);
 
         if (value != null)
             return value;
@@ -24,7 +29,8 @@ public interface ICacheService
         return value;
     }
 
-    public async Task<T> GetValueOrCreate<T>(string key, Func<CancellationToken, Task<T>> factory, TimeSpan expiration, CancellationToken cancellationToken)
+    public async Task<T> GetValueOrCreate<T>(string key, Func<CancellationToken, Task<T>> factory, TimeSpan expiration,
+        CancellationToken cancellationToken)
     {
         if (key.IsNullOrEmpty()) throw new ArgumentNullException(nameof(key));
         if (factory == null) throw new ArgumentNullException(nameof(factory));

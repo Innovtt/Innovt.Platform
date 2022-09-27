@@ -1,20 +1,17 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Cloud.AWS.Dynamo
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Amazon.DynamoDBv2.DataModel;
-using Amazon.DynamoDBv2.Model;
-using Innovt.Cloud.Table;
-using Innovt.Core.Collections;
-using Innovt.Core.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using Amazon.DynamoDBv2.DataModel;
+using Amazon.DynamoDBv2.Model;
+using Innovt.Cloud.Table;
+using Innovt.Core.Collections;
+using Innovt.Core.Utilities;
 using BatchWriteItemRequest = Amazon.DynamoDBv2.Model.BatchWriteItemRequest;
 using QueryRequest = Amazon.DynamoDBv2.Model.QueryRequest;
 using ScanRequest = Amazon.DynamoDBv2.Model.ScanRequest;
@@ -27,7 +24,7 @@ internal static class Helpers
     private const string EntitySplitter = "EntityType";
 
     //code from Aws SDK 
-    
+
     private static string GetTableName<T>()
     {
         if (Attribute.GetCustomAttribute(typeof(T), typeof(DynamoDBTableAttribute)) is not DynamoDBTableAttribute
@@ -119,12 +116,11 @@ internal static class Helpers
         {
             result.Add(item.Key, new KeysAndAttributes()
             {
-                 ConsistentRead =  item.Value.ConsistentRead,
-                 ExpressionAttributeNames =item.Value.ExpressionAttributeNames,
-                 ProjectionExpression = item.Value.ProjectionExpression,
-                 Keys = item.Value.Keys.Select(AttributeConverter.ConvertToAttributeValues).ToList()
+                ConsistentRead = item.Value.ConsistentRead,
+                ExpressionAttributeNames = item.Value.ExpressionAttributeNames,
+                ProjectionExpression = item.Value.ProjectionExpression,
+                Keys = item.Value.Keys.Select(AttributeConverter.ConvertToAttributeValues).ToList()
             });
-
         }
 
         return result;
@@ -133,7 +129,7 @@ internal static class Helpers
     internal static BatchWriteItemRequest CreateBatchWriteItemRequest(Table.BatchWriteItemRequest request)
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
-        
+
         var writeRequest = new BatchWriteItemRequest()
         {
             RequestItems = new Dictionary<string, List<WriteRequest>>()
@@ -144,8 +140,12 @@ internal static class Helpers
             var writeRequests = (from r in item.Value
                 select new WriteRequest()
                 {
-                    DeleteRequest = r.DeleteRequest is null ? null :  new DeleteRequest(AttributeConverter.ConvertToAttributeValues(r.DeleteRequest)),
-                    PutRequest = r.PutRequest is null ? null: new PutRequest(AttributeConverter.ConvertToAttributeValues(r.PutRequest))
+                    DeleteRequest = r.DeleteRequest is null
+                        ? null
+                        : new DeleteRequest(AttributeConverter.ConvertToAttributeValues(r.DeleteRequest)),
+                    PutRequest = r.PutRequest is null
+                        ? null
+                        : new PutRequest(AttributeConverter.ConvertToAttributeValues(r.PutRequest))
                 }).ToList();
 
             writeRequest.RequestItems.Add(item.Key, writeRequests);
@@ -153,14 +153,15 @@ internal static class Helpers
 
         return writeRequest;
     }
-    
+
 
     internal static IList<T> ConvertAttributesToType<T>(IList<Dictionary<string, AttributeValue>> items)
     {
         return items is null ? new List<T>() : items.Select(AttributeConverter.ConvertAttributesToType<T>).ToList();
     }
 
-    internal static (IList<T1> first, IList<T2> seccond) ConvertAttributesToType<T1, T2>(IList<Dictionary<string, AttributeValue>> items, string splitBy)
+    internal static (IList<T1> first, IList<T2> seccond) ConvertAttributesToType<T1, T2>(
+        IList<Dictionary<string, AttributeValue>> items, string splitBy)
     {
         if (items is null)
             return (null, null);
@@ -181,7 +182,8 @@ internal static class Helpers
         return (result1, result2);
     }
 
-    internal static (List<T1> first, IList<T2> seccond, IList<T3> third) ConvertAttributesToType<T1, T2, T3>(IList<Dictionary<string, AttributeValue>> items, string[] splitBy)
+    internal static (List<T1> first, IList<T2> seccond, IList<T3> third) ConvertAttributesToType<T1, T2, T3>(
+        IList<Dictionary<string, AttributeValue>> items, string[] splitBy)
     {
         if (items is null)
             return (null, null, null);
@@ -268,7 +270,7 @@ internal static class Helpers
         {
             if (!item.ContainsKey("EntityType"))
                 continue;
-            
+
             if (item["EntityType"].S == splitBy[0])
             {
                 result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item));
@@ -360,7 +362,8 @@ internal static class Helpers
         {
             ConditionExpression = transactionWriteItem.ConditionExpression,
             TableName = transactionWriteItem.TableName,
-            ExpressionAttributeValues = AttributeConverter.ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
+            ExpressionAttributeValues =
+                AttributeConverter.ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
             Item = AttributeConverter.ConvertToAttributeValues(transactionWriteItem.Items)
         };
     }
@@ -375,7 +378,8 @@ internal static class Helpers
         {
             ConditionExpression = transactionWriteItem.ConditionExpression,
             TableName = transactionWriteItem.TableName,
-            ExpressionAttributeValues = AttributeConverter.ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
+            ExpressionAttributeValues =
+                AttributeConverter.ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
             Key = AttributeConverter.ConvertToAttributeValues(transactionWriteItem.Keys)
         };
     }
@@ -389,7 +393,8 @@ internal static class Helpers
         {
             ConditionExpression = transactionWriteItem.ConditionExpression,
             TableName = transactionWriteItem.TableName,
-            ExpressionAttributeValues = AttributeConverter.ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
+            ExpressionAttributeValues =
+                AttributeConverter.ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
             Key = AttributeConverter.ConvertToAttributeValues(transactionWriteItem.Keys)
         };
     }
@@ -404,7 +409,8 @@ internal static class Helpers
             ConditionExpression = transactionWriteItem.ConditionExpression,
             TableName = transactionWriteItem.TableName,
             UpdateExpression = transactionWriteItem.UpdateExpression,
-            ExpressionAttributeValues = AttributeConverter.ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
+            ExpressionAttributeValues =
+                AttributeConverter.ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
             Key = AttributeConverter.ConvertToAttributeValues(transactionWriteItem.Keys)
         };
     }

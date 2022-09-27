@@ -1,9 +1,6 @@
-// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Cloud
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
 using System.Collections.Generic;
 
@@ -15,6 +12,7 @@ public class TransactionWriteItem
 
     public string TableName { get; set; }
     public string ConditionExpression { get; set; }
+
     /// <summary>
     ///  Only for update operations
     /// </summary>
@@ -23,7 +21,6 @@ public class TransactionWriteItem
 #pragma warning disable CA2227 // Collection properties should be read only
     public Dictionary<string, object> Keys { get; set; }
 #pragma warning restore CA2227 // Collection properties should be read only
-
 
 
 #pragma warning disable CA2227 // Collection properties should be read only

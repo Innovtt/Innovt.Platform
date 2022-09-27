@@ -1,4 +1,8 @@
-﻿using Innovt.Domain.Core.Events;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+
+using Innovt.Domain.Core.Events;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests;
 

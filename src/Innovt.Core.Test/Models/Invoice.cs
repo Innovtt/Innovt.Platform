@@ -1,5 +1,9 @@
-﻿using Innovt.Domain.Core.Model;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Core.Test
+
 using System;
+using Innovt.Domain.Core.Model;
 
 namespace Innovt.Core.Test.Models;
 

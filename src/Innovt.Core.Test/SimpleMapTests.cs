@@ -1,7 +1,11 @@
-﻿using Innovt.Core.Test.Models;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Core.Test
+
+using System;
+using Innovt.Core.Test.Models;
 using Innovt.Core.Utilities;
 using NUnit.Framework;
-using System;
 
 namespace Innovt.Core.Test;
 

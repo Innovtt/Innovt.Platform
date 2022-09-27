@@ -1,7 +1,6 @@
-﻿// Company: Antecipa
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.AspNetCore
-// Solution: Innovt.Platform
-// Date: 2021-09-28
 
 namespace Innovt.AspNetCore;
 

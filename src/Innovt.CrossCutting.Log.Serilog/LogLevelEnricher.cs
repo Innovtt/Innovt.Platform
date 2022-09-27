@@ -1,6 +1,10 @@
-﻿using Serilog.Core;
-using Serilog.Events;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.CrossCutting.Log.Serilog
+
 using System;
+using Serilog.Core;
+using Serilog.Events;
 
 namespace Innovt.CrossCutting.Log.Serilog;
 
@@ -9,7 +13,7 @@ public class LogLevelEnricher : ILogEventEnricher
     public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
     {
         if (logEvent is null) throw new ArgumentNullException(nameof(logEvent));
-        
+
         if (propertyFactory is null)
             return;
 
@@ -23,7 +27,7 @@ public class LogLevelEnricher : ILogEventEnricher
             LogEventLevel.Warning => "WARN",
             _ => string.Empty
         };
-        
+
         logEvent.AddPropertyIfAbsent(propertyFactory.CreateProperty("level", log4NetLevel));
     }
 }

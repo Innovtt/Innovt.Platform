@@ -1,3 +1,7 @@
+// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Cloud.AWS
+
 using System;
 using System.Runtime.InteropServices;
 

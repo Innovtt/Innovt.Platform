@@ -1,9 +1,11 @@
-﻿using Innovt.Domain.Core.Model;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Domain.Tests
 
-namespace Innovt.Domain.Tests.Mocks
+using Innovt.Domain.Core.Model;
+
+namespace Innovt.Domain.Tests.Mocks;
+
+public class UserEntity : Entity
 {
-    public class UserEntity : Entity
-    {
-
-    }
 }

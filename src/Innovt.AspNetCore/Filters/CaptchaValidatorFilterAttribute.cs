@@ -1,10 +1,9 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.AspNetCore
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Innovt.AspNetCore.Model;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
@@ -12,8 +11,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Configuration;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace Innovt.AspNetCore.Filters;
 

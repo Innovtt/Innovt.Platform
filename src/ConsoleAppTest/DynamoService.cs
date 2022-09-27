@@ -1,4 +1,8 @@
-﻿using Innovt.Cloud.AWS.Configuration;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: ConsoleAppTest
+
+using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.AWS.Dynamo;
 using Innovt.Core.CrossCutting.Log;
 

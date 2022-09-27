@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Core
+
+using System;
 using System.Linq;
 using System.Reflection;
 

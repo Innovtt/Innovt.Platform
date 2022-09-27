@@ -1,6 +1,10 @@
-﻿using Serilog;
-using Serilog.Configuration;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.CrossCutting.Log.Serilog
+
 using System;
+using Serilog;
+using Serilog.Configuration;
 
 namespace Innovt.CrossCutting.Log.Serilog;
 
@@ -19,5 +23,4 @@ public static class LoggerEnrichExtensions
 
         return enrichmentConfiguration.With<ActivityEnrich>();
     }
-
 }

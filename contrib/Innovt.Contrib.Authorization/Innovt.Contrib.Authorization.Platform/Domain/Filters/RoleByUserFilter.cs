@@ -1,12 +1,11 @@
-﻿// Company: Antecipa
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Contrib.Authorization.Platform
-// Solution: Innovt.Contrib.Authorization
-// Date: 2021-09-20
 
-using Innovt.Core.Cqrs.Queries;
-using Innovt.Core.Utilities;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Innovt.Core.Cqrs.Queries;
+using Innovt.Core.Utilities;
 
 namespace Innovt.Contrib.Authorization.Platform.Domain.Filters;
 

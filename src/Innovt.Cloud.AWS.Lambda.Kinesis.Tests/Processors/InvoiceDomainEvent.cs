@@ -1,7 +1,6 @@
-﻿// Company: Antecipa
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
-// Solution: Innovt.Platform
-// Date: 2021-07-20
 
 using Innovt.Domain.Core.Events;
 

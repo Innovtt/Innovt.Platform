@@ -1,44 +1,44 @@
-﻿using System;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Cloud
+
+using System;
 using System.Collections.Generic;
 
+namespace Innovt.Cloud.Table;
 
-namespace Innovt.Cloud.Table
+public class BatchWriteItemRequest
 {
-    public class BatchWriteItemRequest
+    public BatchWriteItemRequest()
     {
-        public Dictionary<string, List<BatchWriteItem>> Items { get; private set; }
-        public TimeSpan RetryDelay { get; set; }
-        public int MaxRetry { get; set; }
-        
-        public BatchWriteItemRequest()
-        {
-            Items = new Dictionary<string, List<BatchWriteItem>>();
-            MaxRetry = 3;
-            RetryDelay = TimeSpan.FromSeconds(1);
-        }
+        Items = new Dictionary<string, List<BatchWriteItem>>();
+        MaxRetry = 3;
+        RetryDelay = TimeSpan.FromSeconds(1);
+    }
 
-        public BatchWriteItemRequest(string tableName, BatchWriteItem batchWriteItem):this()
-        {
-            this.AddItem(tableName, batchWriteItem);
-        }
+    public BatchWriteItemRequest(string tableName, BatchWriteItem batchWriteItem) : this()
+    {
+        AddItem(tableName, batchWriteItem);
+    }
 
-        public void AddItem(string tableName, BatchWriteItem batchRequestItem)
-        {
-            if (batchRequestItem is null) throw new ArgumentNullException(nameof(batchRequestItem));
+    public Dictionary<string, List<BatchWriteItem>> Items { get; private set; }
+    public TimeSpan RetryDelay { get; set; }
+    public int MaxRetry { get; set; }
 
-            if (!Items.ContainsKey(tableName))
+    public void AddItem(string tableName, BatchWriteItem batchRequestItem)
+    {
+        if (batchRequestItem is null) throw new ArgumentNullException(nameof(batchRequestItem));
+
+        if (!Items.ContainsKey(tableName))
+        {
+            Items.Add(tableName, new List<BatchWriteItem>()
             {
-                Items.Add(tableName, new List<BatchWriteItem>()
-                {
-                    batchRequestItem
-                });
-            }
-            else
-            {
-                Items[tableName].Add(batchRequestItem);
-            }
+                batchRequestItem
+            });
         }
-
+        else
+        {
+            Items[tableName].Add(batchRequestItem);
+        }
     }
 }
-

@@ -1,8 +1,12 @@
-﻿using Innovt.Data.DataSources;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Data.EFCore.Oracle
+
 using System.Threading;
 using System.Threading.Tasks;
+using Innovt.Data.DataSources;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Innovt.Data.EFCore.Oracle;
 

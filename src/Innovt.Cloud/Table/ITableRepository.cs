@@ -1,14 +1,11 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Cloud
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Innovt.Core.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Innovt.Core.Collections;
 
 namespace Innovt.Cloud.Table;
 
@@ -65,8 +62,9 @@ public interface ITableRepository
     Task<ExecuteSqlStatementResponse<T>> ExecuteStatementAsync<T>(ExecuteSqlStatementRequest sqlStatementRequest,
         CancellationToken cancellationToken = default) where T : class;
 
-    Task<List<T>> BatchGetItem<T>(BatchGetItemRequest batchGetItemRequest, CancellationToken cancellationToken = default);
+    Task<List<T>> BatchGetItem<T>(BatchGetItemRequest batchGetItemRequest,
+        CancellationToken cancellationToken = default);
 
-    Task<BatchWriteItemResponse> BatchWriteItem(Table.BatchWriteItemRequest batchWriteItemRequest, CancellationToken cancellationToken = default);
-
+    Task<BatchWriteItemResponse> BatchWriteItem(BatchWriteItemRequest batchWriteItemRequest,
+        CancellationToken cancellationToken = default);
 }

@@ -1,18 +1,19 @@
-﻿using System;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Cloud
+
 using System.Collections.Generic;
 
-namespace Innovt.Cloud.Table
+namespace Innovt.Cloud.Table;
+
+public class BatchWriteItemResponse
 {
-    public class BatchWriteItemResponse
+    public BatchWriteItemResponse()
     {
-        public Dictionary<string, List<BatchWriteItem>> UnprocessedItems { get; private set; }
-
-        public BatchWriteItemResponse()
-        {
-            UnprocessedItems = new Dictionary<string, List<BatchWriteItem>> ();
-        }
-
-        public bool Success => UnprocessedItems is null || UnprocessedItems.Count == 0;
+        UnprocessedItems = new Dictionary<string, List<BatchWriteItem>>();
     }
-}
 
+    public Dictionary<string, List<BatchWriteItem>> UnprocessedItems { get; private set; }
+
+    public bool Success => UnprocessedItems is null || UnprocessedItems.Count == 0;
+}

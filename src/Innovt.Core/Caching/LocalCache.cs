@@ -1,12 +1,18 @@
-﻿using Innovt.Core.Utilities;
-using Microsoft.Extensions.Caching.Memory;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Core
+
 using System;
+using Innovt.Core.Utilities;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Innovt.Core.Caching;
 
 public class LocalCache : ICacheService, IDisposable
 {
     private readonly IMemoryCache memoryCache;
+
+    private bool disposed;
 
     public LocalCache(IMemoryCache memoryCache)
     {
@@ -20,8 +26,6 @@ public class LocalCache : ICacheService, IDisposable
         return memoryCache.Get<T>(key);
     }
 
-    ~LocalCache() => Dispose(false);
-
     public void SetValue<T>(string key, T entity, TimeSpan expiration)
     {
         if (key.IsNullOrEmpty()) throw new ArgumentNullException(nameof(key));
@@ -33,7 +37,6 @@ public class LocalCache : ICacheService, IDisposable
         {
             AbsoluteExpirationRelativeToNow = expiration
         });
-
     }
 
     public void Remove(string key)
@@ -43,7 +46,15 @@ public class LocalCache : ICacheService, IDisposable
         memoryCache.Remove(key);
     }
 
-    bool disposed;
+    public void Dispose()
+    {
+        memoryCache?.Dispose();
+    }
+
+    ~LocalCache()
+    {
+        Dispose(false);
+    }
 
     protected virtual void Dispose(bool disposing)
     {
@@ -53,10 +64,5 @@ public class LocalCache : ICacheService, IDisposable
         Dispose();
 
         disposed = true;
-    }
-
-    public void Dispose()
-    {
-        memoryCache?.Dispose();
     }
 }

@@ -1,13 +1,12 @@
-﻿// Company: Antecipa
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Contrib.AuthorizationRoles.AspNetCore
-// Solution: Innovt.Contrib.Authorization
-// Date: 2021-09-20
 
+using System.Net;
 using Innovt.Contrib.Authorization.Platform.Application;
 using Innovt.Contrib.Authorization.Platform.Application.Dtos;
 using Innovt.Contrib.Authorization.Platform.Domain.Filters;
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
 
 namespace Innovt.Contrib.AuthorizationRoles.AspNetCore;
 

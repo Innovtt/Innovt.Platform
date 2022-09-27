@@ -1,8 +1,12 @@
-﻿using Innovt.Data.DataSources;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Data.EFCore.MsSql
+
 using System.Threading;
 using System.Threading.Tasks;
+using Innovt.Data.DataSources;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Innovt.Data.EFCore.MsSql;
 
@@ -14,7 +18,6 @@ public class DBContext : DBContextBase
 
     protected DBContext(IDataSource dataSource, ILoggerFactory loggerFactory) : base(dataSource, loggerFactory)
     {
-
     }
 
     protected DBContext(DbContextOptions options) : base(options)

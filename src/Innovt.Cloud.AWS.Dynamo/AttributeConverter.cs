@@ -1,18 +1,21 @@
-﻿using Amazon.DynamoDBv2.DocumentModel;
-using Amazon.DynamoDBv2;
-using Amazon.Util.Internal;
-using System.Collections.Generic;
-using System.IO;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Cloud.AWS.Dynamo
+
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
+using System.IO;
 using System.Linq;
-using Amazon.DynamoDBv2.Model;
 using System.Reflection;
+using Amazon.DynamoDBv2.DataModel;
+using Amazon.DynamoDBv2.DocumentModel;
+using Amazon.DynamoDBv2.Model;
+using Amazon.Util.Internal;
 using Innovt.Core.Collections;
 using Innovt.Core.Utilities;
-using System.Globalization;
-using Amazon.DynamoDBv2.DataModel;
 
 namespace Innovt.Cloud.AWS.Dynamo;
 
@@ -20,50 +23,48 @@ internal static class AttributeConverter
 {
     private static readonly Type[] primitiveTypesArray = new Type[19]
     {
-        typeof (bool),
-        typeof (byte),
-        typeof (char),
-        typeof (DateTime),
-        typeof (Decimal),
-        typeof (double),
-        typeof (int),
-        typeof (long),
-        typeof (sbyte),
-        typeof (short),
-        typeof (float),
-        typeof (string),
-        typeof (uint),
-        typeof (ulong),
-        typeof (ushort),
-        typeof (Guid),
-        typeof (byte[]),
-        typeof (MemoryStream),
-        typeof (Primitive)
+        typeof(bool),
+        typeof(byte),
+        typeof(char),
+        typeof(DateTime),
+        typeof(decimal),
+        typeof(double),
+        typeof(int),
+        typeof(long),
+        typeof(sbyte),
+        typeof(short),
+        typeof(float),
+        typeof(string),
+        typeof(uint),
+        typeof(ulong),
+        typeof(ushort),
+        typeof(Guid),
+        typeof(byte[]),
+        typeof(MemoryStream),
+        typeof(Primitive)
     };
-    private static readonly HashSet<ITypeInfo> PrimitiveTypeInfos = new HashSet<ITypeInfo>(((IEnumerable<Type>)AttributeConverter.primitiveTypesArray).Select<Type, ITypeInfo>((Func<Type, ITypeInfo>)(TypeFactory.GetTypeInfo)));
+
+    private static readonly HashSet<ITypeInfo> PrimitiveTypeInfos =
+        new(((IEnumerable<Type>)primitiveTypesArray).Select<Type, ITypeInfo>(
+            (Func<Type, ITypeInfo>)TypeFactory.GetTypeInfo));
+
     public static bool IsPrimitive(Type type)
     {
         var typeWrapper = TypeFactory.GetTypeInfo(type);
-        return AttributeConverter.PrimitiveTypeInfos.Any<ITypeInfo>((Func<ITypeInfo, bool>)(ti => typeWrapper.IsAssignableFrom(ti)));
+        return PrimitiveTypeInfos.Any<ITypeInfo>((Func<ITypeInfo, bool>)(ti => typeWrapper.IsAssignableFrom(ti)));
     }
 
     public static bool IsCollection(Type type)
     {
-        return type.IsArray || (type.IsGenericType && (typeof(IEnumerable).IsAssignableFrom(type)));
+        return type.IsArray || (type.IsGenericType && typeof(IEnumerable).IsAssignableFrom(type));
     }
 
     public static bool IsDictionary(Type type)
     {
-        return type.IsArray || (type.IsGenericType && typeof(IDictionary<,>).IsAssignableFrom(type) || typeof(IDictionary).IsAssignableFrom(type));
+        return type.IsArray || (type.IsGenericType && typeof(IDictionary<,>).IsAssignableFrom(type)) ||
+               typeof(IDictionary).IsAssignableFrom(type);
     }
 
-    internal static DynamoDBEntry ConvertObjectToDynamoDbEntry(object value)
-    {
-        if (value is null) throw new ArgumentNullException(nameof(value));
-
-        return DynamoDBEntryConversion.V2.ConvertToEntry(value.ToString());
-    }
-    
     internal static Dictionary<string, AttributeValue> ConvertToAttributeValues(Dictionary<string, object> items)
     {
         return items?.Select(i =>
@@ -98,30 +99,31 @@ internal static class AttributeConverter
             case DateTime time:
                 return new AttributeValue { S = time.ToString("s") };
             case IList<int> or IList<double> or IList<float> or IList<decimal> or IList<long>:
-                {
-                    var array = (value as IList).Cast<string>();
+            {
+                var array = (value as IList).Cast<string>();
 
-                    return new AttributeValue { NS = array.ToList() };
-                }
+                return new AttributeValue { NS = array.ToList() };
+            }
             case IDictionary<string, object> objects:
-                {
-                    var array = objects.ToDictionary(item => item.Key, item => CreateAttributeValue(item.Value));
+            {
+                var array = objects.ToDictionary(item => item.Key, item => CreateAttributeValue(item.Value));
 
-                    return new AttributeValue { M = array };
-                }
+                return new AttributeValue { M = array };
+            }
             case IList<object> objects:
-                {
-                    return new AttributeValue { L = objects.Select(CreateAttributeValue).ToList() };
-                }
+            {
+                return new AttributeValue { L = objects.Select(CreateAttributeValue).ToList() };
+            }
             default:
                 return new AttributeValue(value.ToString());
         }
     }
+
     internal static object CreateAttributeValueToObject(AttributeValue value, Type desiredType)
     {
         if (value is null)
             return default;
-        
+
         if (value.IsBOOLSet)
         {
             return value.BOOL;
@@ -141,7 +143,8 @@ internal static class AttributeConverter
             }
             else
             {
-                var method = typeof(AttributeConverter).GetMethod(nameof(ConvertAttributesToType), BindingFlags.Static | BindingFlags.NonPublic, null,
+                var method = typeof(AttributeConverter).GetMethod(nameof(ConvertAttributesToType),
+                    BindingFlags.Static | BindingFlags.NonPublic, null,
                     new Type[] { typeof(Dictionary<string, AttributeValue>) }, null);
                 return method?.MakeGenericMethod(desiredType).Invoke(null, new object[] { value.M });
             }
@@ -176,17 +179,17 @@ internal static class AttributeConverter
         return !targetType.IsArray ? ItemsToIList(targetType, items) : ItemsToArray(targetType, items);
     }
 
-    public static object ItemsToDictionary(Type targetType, Dictionary<string,AttributeValue> items)
+    public static object ItemsToDictionary(Type targetType, Dictionary<string, AttributeValue> items)
     {
         if (items is null || targetType is null)
             return null;
-        
+
         var genericArguments = targetType.GetGenericArguments();
 
         //not supported
         if (genericArguments.Length != 2)
             return null;
-        
+
         var dictionary = Activator.CreateInstance(targetType) as IDictionary;
 
         if (dictionary is null)
@@ -200,7 +203,6 @@ internal static class AttributeConverter
         }
 
         return dictionary;
-
     }
 
     private static Type GetElementType(Type collectionType)
@@ -213,6 +215,7 @@ internal static class AttributeConverter
             if (genericArguments is { Length: 1 })
                 elementType = genericArguments[0];
         }
+
         return elementType;
     }
 
@@ -231,16 +234,17 @@ internal static class AttributeConverter
         {
             array.SetValue(IsPrimitive(elementType) ? ConvertType(elementType, list[index]) : list[index], index);
         }
+
         return (object)array;
     }
-    
+
     private static object ItemsToIList(Type targetType, IEnumerable<object> items)
     {
         var result = Activator.CreateInstance(targetType);
         var elementType = GetElementType(targetType);
 
         if (result is IList list)
-        {  
+        {
             foreach (var obj in items)
             {
                 list.Add(IsPrimitive(elementType) ? ConvertType(elementType, obj) : obj);
@@ -265,11 +269,22 @@ internal static class AttributeConverter
         return null;
     }
 
-    private static PropertyInfo GetProperty(PropertyInfo[] properties,string propertyName)
+    private static PropertyInfo GetProperty(PropertyInfo[] properties, string propertyName, Type declaringType)
     {
-        var prop = properties.SingleOrDefault(p => p.Name.Equals(propertyName, StringComparison.OrdinalIgnoreCase)) ??
-                              properties.SingleOrDefault(p => p.GetCustomAttribute<DynamoDBPropertyAttribute>()!=null &&
-                                                              propertyName.Equals((p.GetCustomAttribute<DynamoDBPropertyAttribute>()).AttributeName,StringComparison.OrdinalIgnoreCase));
+        var instanceProps = properties.Where(p => p.Name.Equals(propertyName, StringComparison.OrdinalIgnoreCase))
+            .ToList();
+
+        //Custom attributes
+        if (!instanceProps.Any())
+            instanceProps = properties.Where(p => p.GetCustomAttribute<DynamoDBPropertyAttribute>() != null &&
+                                                  propertyName.Equals(
+                                                      p.GetCustomAttribute<DynamoDBPropertyAttribute>().AttributeName,
+                                                      StringComparison.OrdinalIgnoreCase)).ToList();
+
+        if (!instanceProps.Any())
+            return null;
+
+        var prop = instanceProps.FirstOrDefault(p => p.DeclaringType == declaringType) ?? instanceProps.First();
 
         if (prop is null || !prop.CanWrite)
         {
@@ -290,12 +305,12 @@ internal static class AttributeConverter
         if (typeConverter.CanConvertFrom(value.GetType()))
         {
             //workaround compatibility v1 and v2
-            if(typeConverter is BooleanConverter && (value.ToString() == "1" || value.ToString() =="0"))
-                return typeConverter.ConvertFrom(null, CultureInfo.InvariantCulture, (value.ToString() == "1" ? "true": "false"));
-            
-            return typeConverter.ConvertFrom(null, CultureInfo.InvariantCulture, value);
+            if (typeConverter is BooleanConverter && (value.ToString() == "1" || value.ToString() == "0"))
+                return typeConverter.ConvertFrom(null!, CultureInfo.InvariantCulture,
+                    value.ToString() == "1" ? "true" : "false");
+
+            return typeConverter.ConvertFrom(null!, CultureInfo.InvariantCulture, value);
         }
-            
 
         var destinationType = Nullable.GetUnderlyingType(propertyType) ?? propertyType;
 
@@ -303,31 +318,32 @@ internal static class AttributeConverter
     }
 
     /// <summary>
-        /// Convert an attribute array to specific type
-        /// </summary>
-        /// <typeparam name="T">The desired Type </typeparam>
-        /// <param name="items"></param>
-        /// <returns></returns>
-        internal static T ConvertAttributesToType<T>(Dictionary<string, AttributeValue> items)
+    /// Convert an attribute array to specific type
+    /// </summary>
+    /// <typeparam name="T">The desired Type </typeparam>
+    /// <param name="items"></param>
+    /// <returns></returns>
+    internal static T ConvertAttributesToType<T>(Dictionary<string, AttributeValue> items)
     {
-        if (items is null)
-            return default;
+        if (items is null) return default;
 
-        var typeInstance = Activator.CreateInstance<T>();
-        var properties = typeInstance.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
+        var instance = Activator.CreateInstance<T>();
+        var properties = instance.GetType()
+            .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.SetProperty);
 
         if (!properties.Any())
-            return typeInstance;
+            return instance;
 
         foreach (var attributeValue in items)
         {
-            var prop = GetProperty(properties, attributeValue.Key);
+            var prop = GetProperty(properties, attributeValue.Key, instance.GetType());
 
             if (prop is null)
                 continue;
 
-            var value = CreateAttributeValueToObject(attributeValue.Value, prop.PropertyType);
             object convertedValue = null;
+            var value = CreateAttributeValueToObject(attributeValue.Value, prop.PropertyType);
+
             if (IsPrimitive(prop.PropertyType))
             {
                 convertedValue = ConvertType(prop.PropertyType, value);
@@ -336,8 +352,9 @@ internal static class AttributeConverter
             {
                 if (IsCollection(prop.PropertyType))
                 {
-                    convertedValue = IsDictionary(prop.PropertyType) ? value :
-                        ItemsToCollection(prop.PropertyType, (IEnumerable<object>)value);
+                    convertedValue = IsDictionary(prop.PropertyType)
+                        ? value
+                        : ItemsToCollection(prop.PropertyType, (IEnumerable<object>)value);
                 }
                 else
                 {
@@ -347,10 +364,9 @@ internal static class AttributeConverter
                 }
             }
 
-            prop.SetValue(typeInstance, convertedValue, null);
+            prop.SetValue(instance, convertedValue, null);
         }
 
-        return typeInstance;
+        return instance;
     }
-
 }

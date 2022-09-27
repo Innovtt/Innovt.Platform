@@ -1,4 +1,15 @@
-﻿using Datadog.Trace.OpenTracing;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: ConsoleAppTest
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
+using System.Threading;
+using System.Threading.Tasks;
+using ConsoleAppTest.DataModels;
+using Datadog.Trace.OpenTracing;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Core.Cqrs.Queries;
 using Innovt.Core.CrossCutting.Ioc;
@@ -8,14 +19,6 @@ using Innovt.CrossCutting.Log.Serilog;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OpenTracing.Util;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
-using System.Globalization;
-using System.Threading;
-using System.Threading.Tasks;
-using ConsoleAppTest.DataModels;
 
 namespace ConsoleAppTest;
 
@@ -27,10 +30,10 @@ public class IocTestModule : IOCModule
 
         collection.AddSingleton(configuration);
 
-        collection.AddScoped<IAwsConfiguration>(a=>new DefaultAWSConfiguration("antecipa-prod"));
+        //collection.AddScoped<IAwsConfiguration>(a=>new DefaultAWSConfiguration("antecipa-prod"));
 
-        //collection.AddScoped<IAwsConfiguration, DefaultAWSConfiguration>();
-        
+        collection.AddScoped<IAwsConfiguration, DefaultAWSConfiguration>();
+
         var tracer = OpenTracingTracerFactory.CreateTracer();
 
         GlobalTracer.Register(tracer);
@@ -41,15 +44,15 @@ public class IocTestModule : IOCModule
         collection.AddSingleton<ILogger>(new Logger(new DataDogEnrich()));
 
         collection.AddScoped<DynamoService>();
-      /*  collection.AddScoped<RedisProviderConfiguration>(p => new RedisProviderConfiguration()
-        {
-            ReadWriteHosts = new[] { "localhost:6379" },
-            ReadOnlyHosts = new[] { "localhost:6379" }
-            //ReadWriteHosts = new[] { "app-cluster.lxgfsw.ng.0001.use1.cache.amazonaws.com:6379" },
-            //ReadOnlyHosts = new[] { "app-cluster-ro.lxgfsw.ng.0001.use1.cache.amazonaws.com:6379" }
-        });
-
-        collection.AddScoped<ICacheService, RedisCacheService>();*/
+        /*  collection.AddScoped<RedisProviderConfiguration>(p => new RedisProviderConfiguration()
+          {
+              ReadWriteHosts = new[] { "localhost:6379" },
+              ReadOnlyHosts = new[] { "localhost:6379" }
+              //ReadWriteHosts = new[] { "app-cluster.lxgfsw.ng.0001.use1.cache.amazonaws.com:6379" },
+              //ReadOnlyHosts = new[] { "app-cluster-ro.lxgfsw.ng.0001.use1.cache.amazonaws.com:6379" }
+          });
+  
+          collection.AddScoped<ICacheService, RedisCacheService>();*/
     }
 }
 
@@ -65,7 +68,8 @@ public class BuyerByDocumentFilter : IFilter
 
 public class Program
 {
-    private static ActivitySource source = new ActivitySource("ConsoleAppTest");
+    private static ActivitySource source = new("ConsoleAppTest");
+
     private static async Task Main(string[] args)
     {
         var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json")
@@ -77,32 +81,30 @@ public class Program
 
         ////Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("pt-BR");
         var invoiceRepo = new InvoiceRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
-        
+
         try
         {
             var kpiProgress = await invoiceRepo.GetKpiProgress();
 
-
             Console.WriteLine(kpiProgress);
-
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
             throw;
         }
-        
+
 
         var res = await invoiceRepo.GetRequestIntegration();
 
         //Console.ReadKey();
 
 
-        var ress= await invoiceRepo.GetTaxRequests();
+        var ress = await invoiceRepo.GetTaxRequests();
 
         await invoiceRepo.GetKeyIndicators();
 
-         Console.WriteLine(res);
+        Console.WriteLine(res);
 
         var userRepo = new UserRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
 
@@ -110,12 +112,12 @@ public class Program
 
         //        Console.WriteLine(res);
 
-           var res3 =  await userRepo.GetCapitalSources(CancellationToken.None);
+        var res3 = await userRepo.GetCapitalSources(CancellationToken.None);
 
 
         Console.WriteLine(res3);
 
-        var res4 =  await userRepo.GetBids(CancellationToken.None);
+        var res4 = await userRepo.GetBids(CancellationToken.None);
 
 
         var result = await userRepo.GetAuthProvider();
@@ -169,7 +171,7 @@ public class Program
 
         var list = new List<InvoicesAggregationCompanyDataModel>();
 
-        for (int i = 0; i < 25; i++)
+        for (var i = 0; i < 25; i++)
         {
             list.Add(new InvoicesAggregationCompanyDataModel()
             {
@@ -257,12 +259,11 @@ public class Program
     private static void DoSomething2()
     {
         throw new Exception("Dosomething erros ");
-
     }
 
     private static void DoSomething()
     {
-        using (Activity activity = source.StartActivity("SomeWork"))
+        using (var activity = source.StartActivity("SomeWork"))
         {
             activity?.SetTag("foo", "foo");
             activity?.SetTag("bar", "bar");
@@ -279,8 +280,6 @@ public class Program
                 logger.Error(e, "Deu merda");
                 throw;
             }
-
         }
     }
-
 }

@@ -1,41 +1,41 @@
-﻿using System;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Cloud
+
+using System;
 using System.Collections.Generic;
 
-namespace Innovt.Cloud.Table
+namespace Innovt.Cloud.Table;
+
+public class BatchGetItemRequest
 {
-    public class BatchGetItemRequest
+    public BatchGetItemRequest()
     {
-        public Dictionary<string, BatchGetItem> Items { get; private set; }
+        Items = new Dictionary<string, BatchGetItem>();
+    }
 
-        public BatchGetItemRequest()
+    public BatchGetItemRequest(string tableName, BatchGetItem batchRequestItem) : this()
+    {
+        AddItem(tableName, batchRequestItem);
+    }
+
+    public Dictionary<string, BatchGetItem> Items { get; private set; }
+
+
+    public void AddItem(string tableName, BatchGetItem batchRequestItem)
+    {
+        if (batchRequestItem is null)
         {
-            Items = new Dictionary<string, BatchGetItem>();
+            throw new ArgumentNullException(nameof(batchRequestItem));
         }
 
-        public BatchGetItemRequest(string tableName, BatchGetItem batchRequestItem):this()
+        if (Items.TryGetValue(tableName, out var tableItem))
         {
-            this.AddItem(tableName, batchRequestItem);
+            tableItem.Keys.AddRange(batchRequestItem.Keys);
         }
-     
-     
-        public void AddItem(string tableName, BatchGetItem batchRequestItem)
+        else
         {
-            if (batchRequestItem is null)
-            {
-                throw new ArgumentNullException(nameof(batchRequestItem));
-            }
-
-            if(Items.TryGetValue(tableName, out var tableItem))
-            {
-                tableItem.Keys.AddRange(batchRequestItem.Keys);
-            }
-            else
-            {
-                Items.Add(tableName, batchRequestItem);
-            }
-
+            Items.Add(tableName, batchRequestItem);
         }
-
     }
 }
-

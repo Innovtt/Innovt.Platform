@@ -1,16 +1,7 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Cloud.AWS.Kinesis
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Amazon.Kinesis;
-using Amazon.Kinesis.Model;
-using Innovt.Cloud.AWS.Configuration;
-using Innovt.Core.CrossCutting.Log;
-using Innovt.Core.Utilities;
-using Innovt.Domain.Core.Streams;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,6 +11,12 @@ using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using Amazon.Kinesis;
+using Amazon.Kinesis.Model;
+using Innovt.Cloud.AWS.Configuration;
+using Innovt.Core.CrossCutting.Log;
+using Innovt.Core.Utilities;
+using Innovt.Domain.Core.Streams;
 
 namespace Innovt.Cloud.AWS.Kinesis;
 
@@ -74,6 +71,7 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
                 });
             }
         }
+
         return request;
     }
 

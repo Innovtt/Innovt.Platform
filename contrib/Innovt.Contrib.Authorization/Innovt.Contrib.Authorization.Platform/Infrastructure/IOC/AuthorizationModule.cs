@@ -1,8 +1,8 @@
-﻿// Company: Antecipa
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Contrib.Authorization.Platform
-// Solution: Innovt.Contrib.Authorization
-// Date: 2021-09-20
 
+using System;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Contrib.Authorization.Platform.Application;
 using Innovt.Contrib.Authorization.Platform.Domain;
@@ -11,7 +11,6 @@ using Innovt.Core.CrossCutting.Log;
 using Innovt.CrossCutting.Log.Serilog;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using System;
 
 namespace Innovt.Contrib.Authorization.Platform.Infrastructure.IOC;
 

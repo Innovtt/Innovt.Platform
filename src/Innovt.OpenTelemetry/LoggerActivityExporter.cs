@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.OpenTelemetry
+
+using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -11,10 +15,10 @@ namespace Innovt.OpenTelemetry;
 
 public class LoggerActivityExporter : BaseExporter<Activity>
 {
-    private readonly IServiceCollection serviceCollection;
-    private static Core.CrossCutting.Log.ILogger logger;
     private const string StatusCodeKey = "otel.status_code";
     private const string StatusDescriptionKey = "otel.status_description";
+    private static Core.CrossCutting.Log.ILogger logger;
+    private readonly IServiceCollection serviceCollection;
 
     public LoggerActivityExporter(IServiceCollection serviceCollection)
     {
@@ -126,7 +130,7 @@ public class LoggerActivityExporter : BaseExporter<Activity>
                 }
             }
 
-            var resource = this.ParentProvider.GetResource();
+            var resource = ParentProvider.GetResource();
             if (resource != Resource.Empty)
             {
                 logBuffer.AppendLine("Resource associated with Activity:");

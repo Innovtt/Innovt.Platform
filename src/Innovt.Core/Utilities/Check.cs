@@ -1,22 +1,19 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Core
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Innovt.Core.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using Innovt.Core.Exceptions;
 
 namespace Innovt.Core.Utilities;
 
 [DebuggerStepThrough]
 public static class Check
 {
-    public static T NotNull<T>([AllowNull][NotNull] T value, string parameterName)
+    public static T NotNull<T>([AllowNull] [NotNull] T value, string parameterName)
     {
         if (value != null) return value;
 

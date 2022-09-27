@@ -1,8 +1,12 @@
-﻿using Microsoft.Extensions.Logging;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.CrossCutting.Log.Serilog
+
+using Microsoft.Extensions.Logging;
 
 namespace Innovt.CrossCutting.Log.Serilog;
 
-public class ALoggerProvider: ILoggerProvider
+public class ALoggerProvider : ILoggerProvider
 {
     public void Dispose()
     {

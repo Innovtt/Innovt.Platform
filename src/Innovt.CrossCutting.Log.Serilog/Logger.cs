@@ -1,16 +1,13 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.CrossCutting.Log.Serilog
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
 using Serilog.Templates;
-using System;
 using ILogger = Innovt.Core.CrossCutting.Log.ILogger;
 
 namespace Innovt.CrossCutting.Log.Serilog;
@@ -18,7 +15,7 @@ namespace Innovt.CrossCutting.Log.Serilog;
 public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 {
     public const string DefaultOutputTemplate = "{ {timestamp:@t, ..rest(), message:@m, eventid:@i, Exception:@x} }\n";
- 
+
     private global::Serilog.Core.Logger logger;
 
     /// <summary>
@@ -28,12 +25,14 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
     public Logger() : this(DefaultOutputTemplate)
     {
     }
+
     public Logger(string consoleOutputTemplate = DefaultOutputTemplate)
     {
         InitializeDefaultLogger(new LoggerConfiguration(), consoleOutputTemplate: consoleOutputTemplate);
     }
 
-    public Logger(ILogEventEnricher logEventEnricher, string consoleOutputTemplate = DefaultOutputTemplate) : this(new[] { logEventEnricher }, consoleOutputTemplate)
+    public Logger(ILogEventEnricher logEventEnricher, string consoleOutputTemplate = DefaultOutputTemplate) : this(
+        new[] { logEventEnricher }, consoleOutputTemplate)
     {
         if (logEventEnricher is null) throw new ArgumentNullException(nameof(logEventEnricher));
     }
@@ -52,32 +51,12 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
         InitializeDefaultLogger(configuration, null, consoleOutputTemplate);
     }
 
-    private void InitializeDefaultLogger(LoggerConfiguration configuration, ILogEventEnricher[] logEventEnricher = null, string consoleOutputTemplate = DefaultOutputTemplate)
-    {
-        if (logger != null)
-            return;
-
-        configuration ??= new LoggerConfiguration();
-
-        configuration.WriteTo.Console(new ExpressionTemplate(consoleOutputTemplate));
-
-        if (logEventEnricher != null)
-        {
-            configuration.Enrich.With(logEventEnricher);
-        }
-        //default enrich
-        configuration.Enrich.With(new LogLevelEnricher()).Enrich.WithActivityEnrich().Enrich.FromLogContext();
-        
-        logger = configuration.CreateLogger();
-    }
-
     public void Debug(string message)
     {
         if (!IsEnabledInternal(LogLevel.Debug))
             return;
 
         logger.Debug(message);
-
     }
 
     public void Debug(string messageTemplate, params object[] propertyValues)
@@ -268,42 +247,8 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
         logger.Warning(exception, messageTemplate, propertyValues);
     }
 
-
-    private bool IsEnabledInternal(LogLevel logLevel)
-    {
-        switch (logLevel)
-        {
-            case LogLevel.Trace:
-            case LogLevel.Debug:
-                {
-                    return logger.IsEnabled(LogEventLevel.Debug) || logger.IsEnabled(LogEventLevel.Verbose);
-                }
-            case LogLevel.Information:
-                {
-                    return logger.IsEnabled(LogEventLevel.Information);
-                }
-            case LogLevel.Warning:
-                {
-                    return logger.IsEnabled(LogEventLevel.Warning);
-                }
-            case LogLevel.Error:
-                {
-                    return logger.IsEnabled(LogEventLevel.Error);
-                }
-
-            case LogLevel.Critical:
-                {
-                    return logger.IsEnabled(LogEventLevel.Fatal);
-                }
-            case LogLevel.None:
-            default:
-                {
-                    return false;
-                }
-        }
-    }
-
-    public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
+    public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception,
+        Func<TState, Exception, string> formatter)
     {
         if (formatter == null)
         {
@@ -316,19 +261,19 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
         {
             case LogLevel.Trace:
             case LogLevel.Debug:
-                this.Debug(exception, message);
+                Debug(exception, message);
                 break;
             case LogLevel.Information:
-                this.Info(exception, message);
+                Info(exception, message);
                 break;
             case LogLevel.Warning:
-                this.Warning(exception, message);
+                Warning(exception, message);
                 break;
             case LogLevel.Error:
-                this.Error(exception, message);
+                Error(exception, message);
                 break;
             case LogLevel.Critical:
-                this.Fatal(exception, message);
+                Fatal(exception, message);
                 break;
             case LogLevel.None:
             default:
@@ -344,5 +289,61 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
     public IDisposable BeginScope<TState>(TState state)
     {
         return NullScope.Instance;
+    }
+
+    private void InitializeDefaultLogger(LoggerConfiguration configuration, ILogEventEnricher[] logEventEnricher = null,
+        string consoleOutputTemplate = DefaultOutputTemplate)
+    {
+        if (logger != null)
+            return;
+
+        configuration ??= new LoggerConfiguration();
+
+        configuration.WriteTo.Console(new ExpressionTemplate(consoleOutputTemplate));
+
+        if (logEventEnricher != null)
+        {
+            configuration.Enrich.With(logEventEnricher);
+        }
+
+        //default enrich
+        configuration.Enrich.With(new LogLevelEnricher()).Enrich.WithActivityEnrich().Enrich.FromLogContext();
+
+        logger = configuration.CreateLogger();
+    }
+
+
+    private bool IsEnabledInternal(LogLevel logLevel)
+    {
+        switch (logLevel)
+        {
+            case LogLevel.Trace:
+            case LogLevel.Debug:
+            {
+                return logger.IsEnabled(LogEventLevel.Debug) || logger.IsEnabled(LogEventLevel.Verbose);
+            }
+            case LogLevel.Information:
+            {
+                return logger.IsEnabled(LogEventLevel.Information);
+            }
+            case LogLevel.Warning:
+            {
+                return logger.IsEnabled(LogEventLevel.Warning);
+            }
+            case LogLevel.Error:
+            {
+                return logger.IsEnabled(LogEventLevel.Error);
+            }
+
+            case LogLevel.Critical:
+            {
+                return logger.IsEnabled(LogEventLevel.Fatal);
+            }
+            case LogLevel.None:
+            default:
+            {
+                return false;
+            }
+        }
     }
 }

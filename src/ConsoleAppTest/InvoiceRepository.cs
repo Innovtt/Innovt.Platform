@@ -1,21 +1,25 @@
-﻿using Amazon.DynamoDBv2.Model;
-using Amazon.DynamoDBv2;
-using ConsoleAppTest.DataModels;
-using ConsoleAppTest.Domain;
-using Innovt.Cloud.AWS.Configuration;
-using Innovt.Cloud.AWS.Dynamo;
-using Innovt.Cloud.Table;
-using Innovt.Core.CrossCutting.Log;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: ConsoleAppTest
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using BatchWriteItemRequest = Innovt.Cloud.Table.BatchWriteItemRequest;
+using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.Model;
+using ConsoleAppTest.DataModels;
 using ConsoleAppTest.DataModels.CapitalSource.DataModels;
-using QueryRequest = Innovt.Cloud.Table.QueryRequest;
 using ConsoleAppTest.DataModels.FinancialRequest;
+using ConsoleAppTest.Domain;
+using Innovt.Cloud.AWS.Configuration;
+using Innovt.Cloud.AWS.Dynamo;
+using Innovt.Cloud.Table;
 using Innovt.Core.Collections;
+using Innovt.Core.CrossCutting.Log;
+using BatchWriteItemRequest = Innovt.Cloud.Table.BatchWriteItemRequest;
+using QueryRequest = Innovt.Cloud.Table.QueryRequest;
 
 namespace ConsoleAppTest;
 
@@ -39,9 +43,9 @@ public class InvoiceRepository : Repository
                     {
                         { "PK", dataModel.PK },
                         { "SK", dataModel.SK1 },
-                        { "TotalValue",dataModel.TotalValue},
+                        { "TotalValue", dataModel.TotalValue },
                         {
-                             "Quantity",dataModel.Quantity
+                            "Quantity", dataModel.Quantity
                         }
                     }
                 });
@@ -70,7 +74,6 @@ public class InvoiceRepository : Repository
             }
 
             await BatchWriteItem(transactionRequest, CancellationToken.None);
-
         }
         catch (Exception e)
         {
@@ -78,7 +81,6 @@ public class InvoiceRepository : Repository
             throw;
         }
     }
-
 
 
     public async Task SaveAll(IList<InvoicesAggregationCompanyDataModel> dataModels)
@@ -107,7 +109,7 @@ public class InvoiceRepository : Repository
                 //    },
                 //    OperationType = TransactionWriteOperationType.Put,
                 //    ConditionExpression = "attribute_not_exists(PK)",
-                
+
                 //Todos os registros podem ser da mesma particao. 
                 // 1- 100 supplier ->  100 
                 //A -> 2 
@@ -157,9 +159,8 @@ public class InvoiceRepository : Repository
                 //    }
                 //});
             }
+
             await TransactWriteItemsAsync(transactionRequest, CancellationToken.None);
-
-
         }
         catch (Exception e)
         {
@@ -167,8 +168,6 @@ public class InvoiceRepository : Repository
             throw;
         }
         //await UpdateAsync(databaseObject.TableName, databaseObject.Keys, databaseObject.AttributeValueUpdate, cancellationToken);
-
-
     }
 
     //public async Task<List<UserDataModel>> GetBatchUsers()
@@ -232,7 +231,7 @@ public class InvoiceRepository : Repository
             TableName = AnticipationRequestDataModel.TableName,
             ReturnValues = ReturnValue.UPDATED_NEW
         }, CancellationToken.None).ConfigureAwait(false);
-        
+
 
         return res?.Sequence ?? 0;
     }
@@ -242,13 +241,18 @@ public class InvoiceRepository : Repository
         var contractsRequest = new QueryRequest()
         {
             KeyConditionExpression = $"PK = :pk AND begins_with(EntityTypeCreatedAt,:sk) ",
-            Filter = new { pk = $"CS#52b02587-bea0-41d1-bd0d-6b2f40181be7", sk = $"ET#Contract", buyerid = "e8427bd4-b6d3-4e89-b734-1690cae813a1", deleted = false },
+            Filter = new
+            {
+                pk = $"CS#52b02587-bea0-41d1-bd0d-6b2f40181be7", sk = $"ET#Contract",
+                buyerid = "e8427bd4-b6d3-4e89-b734-1690cae813a1", deleted = false
+            },
             FilterExpression = "contains(BuyersIds, :buyerid) AND Deleted = :deleted ",
             IndexName = "PK-EntityTypeCreatedAt-Index",
             ScanIndexForward = false
         };
-        
-        var contractResult = await QueryFirstOrDefaultAsync<ContractDataModel>(contractsRequest, CancellationToken.None);
+
+        var contractResult =
+            await QueryFirstOrDefaultAsync<ContractDataModel>(contractsRequest, CancellationToken.None);
 
         return contractResult;
     }
@@ -258,10 +262,11 @@ public class InvoiceRepository : Repository
         var contractsRequest = new QueryRequest()
         {
             KeyConditionExpression = $"Context = :ct",
-            Filter = new { ct = $"Michel" },
+            Filter = new { ct = $"Michel" }
         };
 
-        var contractResult = await QueryFirstOrDefaultAsync<KeyPerformanceIndicatorType>(contractsRequest, CancellationToken.None);
+        var contractResult =
+            await QueryFirstOrDefaultAsync<KeyPerformanceIndicatorType>(contractsRequest, CancellationToken.None);
 
         return contractResult;
     }
@@ -270,7 +275,8 @@ public class InvoiceRepository : Repository
     {
         var result = await QueryAsync<FinancialRequestIntegrationDataModel>(new QueryRequest()
         {
-            Filter = new { financialrequestid = "de784c99-1f80-48ee-919b-f42c9fe053d6", entitytype = "FinancialRequest" },
+            Filter = new
+                { financialrequestid = "de784c99-1f80-48ee-919b-f42c9fe053d6", entitytype = "FinancialRequest" },
             IndexName = "FinancialRequestId-EntityType-Index",
             KeyConditionExpression = "EntityType = :entitytype AND FinancialRequestId = :financialrequestid"
         }, CancellationToken.None);
@@ -290,5 +296,4 @@ public class InvoiceRepository : Repository
 
         return await QueryPaginatedByAsync<KpiProgressDataModel>(queryRequest, CancellationToken.None);
     }
-
 }

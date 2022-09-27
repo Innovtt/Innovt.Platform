@@ -1,4 +1,8 @@
-﻿using Amazon.Lambda.Core;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Cloud.AWS.Lambda.Tests
+
+using Amazon.Lambda.Core;
 using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Core.CrossCutting.Log;
 using Microsoft.Extensions.Configuration;

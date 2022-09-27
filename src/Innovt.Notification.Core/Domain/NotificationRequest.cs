@@ -1,13 +1,10 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Notification.Core
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Innovt.Core.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Innovt.Core.Collections;
 
 namespace Innovt.Notification.Core.Domain;
 

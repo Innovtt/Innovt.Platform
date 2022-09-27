@@ -1,4 +1,8 @@
-﻿namespace ConsoleAppTest.Domain;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: ConsoleAppTest
+
+namespace ConsoleAppTest.Domain;
 
 public class Contact
 {

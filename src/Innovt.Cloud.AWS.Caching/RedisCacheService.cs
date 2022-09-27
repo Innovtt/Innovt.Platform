@@ -1,19 +1,25 @@
-﻿using Innovt.Cloud.AWS.Configuration;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Cloud.AWS.Caching
+
+using System;
+using System.Diagnostics;
+using Innovt.Cloud.AWS.Configuration;
 using Innovt.Core.Caching;
 using Innovt.Core.CrossCutting.Log;
 using ServiceStack.Redis;
-using System;
-using System.Diagnostics;
 
 namespace Innovt.Cloud.AWS.Caching;
 
 public class RedisCacheService : AwsBaseService, ICacheService
 {
-    protected static readonly ActivitySource RedisProviderActivitySource = new("Innovt.Cloud.AWS.Caching.RedisCacheService");
+    protected static readonly ActivitySource RedisProviderActivitySource =
+        new("Innovt.Cloud.AWS.Caching.RedisCacheService");
 
     private readonly PooledRedisClientManager redisClientManager;
 
-    public RedisCacheService(ILogger logger, IAwsConfiguration configuration, RedisProviderConfiguration providerConfiguration) : base(logger, configuration)
+    public RedisCacheService(ILogger logger, IAwsConfiguration configuration,
+        RedisProviderConfiguration providerConfiguration) : base(logger, configuration)
     {
         if (providerConfiguration == null) throw new ArgumentNullException(nameof(providerConfiguration));
 
@@ -23,12 +29,6 @@ public class RedisCacheService : AwsBaseService, ICacheService
                 ConnectTimeout = providerConfiguration.ConnectTimeout,
                 PoolTimeout = providerConfiguration.PoolTimeOutInSeconds
             };
-    }
-
-
-    protected override void DisposeServices()
-    {
-        redisClientManager?.Dispose();
     }
 
     public T GetValue<T>(string key)
@@ -50,5 +50,11 @@ public class RedisCacheService : AwsBaseService, ICacheService
         using var client = redisClientManager.GetClient();
 
         client.Remove(key);
+    }
+
+
+    protected override void DisposeServices()
+    {
+        redisClientManager?.Dispose();
     }
 }

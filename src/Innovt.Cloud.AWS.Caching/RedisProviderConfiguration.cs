@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Cloud.AWS.Caching
+
+using System.Collections.Generic;
 
 namespace Innovt.Cloud.AWS.Caching;
 

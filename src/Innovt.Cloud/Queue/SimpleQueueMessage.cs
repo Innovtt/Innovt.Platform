@@ -1,10 +1,12 @@
-﻿namespace Innovt.Cloud.Queue;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Cloud
+
+namespace Innovt.Cloud.Queue;
 
 //You Can use it to abstract infrastructure implementations
 public class SimpleQueueMessage<T>
 {
-    public T Value { get; set; }
-
     public SimpleQueueMessage()
     {
     }
@@ -13,9 +15,6 @@ public class SimpleQueueMessage<T>
     {
         Value = value;
     }
+
+    public T Value { get; set; }
 }
-
-
-
-
-

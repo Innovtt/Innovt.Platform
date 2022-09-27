@@ -1,10 +1,8 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.AspNetCore
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System.Diagnostics;
 using Innovt.AspNetCore.Model;
 using Innovt.AspNetCore.Resources;
 using Innovt.Core.CrossCutting.Log;
@@ -14,17 +12,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Localization;
-using System.Diagnostics;
 
 namespace Innovt.AspNetCore.Filters;
 
 [AttributeUsage(AttributeTargets.All)]
 public sealed class ApiExceptionFilter : ExceptionFilterAttribute
 {
-    public ILogger Logger { get; }
-
-    public IStringLocalizer<IExceptionResource> StringLocalizer { get; }
-
     public ApiExceptionFilter(ILogger logger)
     {
         Logger = logger ?? throw new ArgumentNullException(nameof(logger));
@@ -34,6 +27,10 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
     {
         StringLocalizer = stringLocalizer ?? throw new ArgumentNullException(nameof(stringLocalizer));
     }
+
+    public ILogger Logger { get; }
+
+    public IStringLocalizer<IExceptionResource> StringLocalizer { get; }
 
     private string Translate(string message)
     {
@@ -70,6 +67,7 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
             };
             Logger.Error(context.Exception, "InternalServerError");
         }
+
         Activity.Current?.SetStatus(ActivityStatusCode.Error, baseException.Message);
     }
 }

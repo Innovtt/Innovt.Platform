@@ -1,10 +1,13 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Cloud.AWS.Dynamo
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.Model;
@@ -14,12 +17,6 @@ using Innovt.Core.Collections;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Exceptions;
 using Polly.Retry;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using BatchWriteItemResponse = Innovt.Cloud.Table.BatchWriteItemResponse;
 using QueryRequest = Innovt.Cloud.Table.QueryRequest;
 using ScanRequest = Innovt.Cloud.Table.ScanRequest;
@@ -82,7 +79,8 @@ public abstract class Repository : AwsBaseService, ITableRepository
         }
     }
 
-    public async Task DeleteAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default) where T : ITableMessage
+    public async Task DeleteAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default)
+        where T : ITableMessage
     {
         if (id == null) throw new ArgumentNullException(nameof(id));
 
@@ -241,7 +239,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             request.Page = null;
 
             var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
-            
+
             var queryResponse = Helpers.ConvertAttributesToType<T>(items);
 
             return queryResponse.FirstOrDefault();
@@ -353,6 +351,66 @@ public abstract class Repository : AwsBaseService, ITableRepository
         }
     }
 
+
+    public async Task<List<T>> BatchGetItem<T>(Table.BatchGetItemRequest batchGetItemRequest,
+        CancellationToken cancellationToken = default)
+    {
+        if (batchGetItemRequest is null) throw new ArgumentNullException(nameof(batchGetItemRequest));
+
+        using (ActivityRepository.StartActivity(nameof(BatchGetItem)))
+        {
+            var items = Helpers.CreateBatchGetItemRequest(batchGetItemRequest);
+
+            var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+                    await DynamoClient.BatchGetItemAsync(items, cancellationToken).ConfigureAwait(false))
+                .ConfigureAwait(false);
+
+            if (response.Responses is null)
+                return null;
+
+            var result = new List<T>();
+
+            foreach (var item in response.Responses)
+            {
+                result.AddRange(Helpers.ConvertAttributesToType<T>(item.Value));
+            }
+
+            return result;
+        }
+    }
+
+    public async Task<BatchWriteItemResponse> BatchWriteItem(Table.BatchWriteItemRequest batchWriteItemRequest,
+        CancellationToken cancellationToken = default)
+    {
+        if (batchWriteItemRequest is null) throw new ArgumentNullException(nameof(batchWriteItemRequest));
+
+        using (ActivityRepository.StartActivity(nameof(BatchWriteItem)))
+        {
+            var request = Helpers.CreateBatchWriteItemRequest(batchWriteItemRequest);
+            var result = new BatchWriteItemResponse();
+            var attempts = 0;
+            var backOfficeRandom = new Random(1);
+
+            do
+            {
+                var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+                        await DynamoClient.BatchWriteItemAsync(request, cancellationToken).ConfigureAwait(false))
+                    .ConfigureAwait(false);
+
+                if (response.UnprocessedItems.IsNullOrEmpty())
+                    return result;
+
+                request.RequestItems = response.UnprocessedItems;
+                attempts++;
+
+                Thread.Sleep(
+                    TimeSpan.FromSeconds(batchWriteItemRequest.RetryDelay.Seconds * backOfficeRandom.Next(1, 3)));
+            } while (attempts < batchWriteItemRequest.MaxRetry);
+
+            return result;
+        }
+    }
+
     protected override AsyncRetryPolicy CreateDefaultRetryAsyncPolicy()
     {
         return base.CreateRetryAsyncPolicy<ProvisionedThroughputExceededException,
@@ -375,7 +433,8 @@ public abstract class Repository : AwsBaseService, ITableRepository
         }
     }
 
-    protected async Task<T> UpdateAsync<T>(UpdateItemRequest updateItemRequest, CancellationToken cancellationToken = default)
+    protected async Task<T> UpdateAsync<T>(UpdateItemRequest updateItemRequest,
+        CancellationToken cancellationToken = default)
     {
         if (updateItemRequest is null)
             throw new ArgumentNullException(nameof(updateItemRequest));
@@ -386,7 +445,9 @@ public abstract class Repository : AwsBaseService, ITableRepository
                     cancellationToken).ConfigureAwait(false))
             .ConfigureAwait(false);
 
-        return response.Attributes.IsNullOrEmpty() ? default : AttributeConverter.ConvertAttributesToType<T>(response.Attributes);
+        return response.Attributes.IsNullOrEmpty()
+            ? default
+            : AttributeConverter.ConvertAttributesToType<T>(response.Attributes);
     }
 
     private async
@@ -462,67 +523,9 @@ public abstract class Repository : AwsBaseService, ITableRepository
         }
     }
 
-
-    public async Task<List<T>> BatchGetItem<T>(Table.BatchGetItemRequest batchGetItemRequest, CancellationToken cancellationToken = default)
-    {
-        if (batchGetItemRequest is null) throw new ArgumentNullException(nameof(batchGetItemRequest));
-
-        using (ActivityRepository.StartActivity(nameof(BatchGetItem)))
-        {
-            var items = Helpers.CreateBatchGetItemRequest(batchGetItemRequest);
-
-            var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                await DynamoClient.BatchGetItemAsync(items, cancellationToken).ConfigureAwait(false))
-                    .ConfigureAwait(false);
-
-            if (response.Responses is null)
-                return null;
-
-            var result = new List<T>();
-
-            foreach (var item in response.Responses)
-            {
-                result.AddRange(Helpers.ConvertAttributesToType<T>(item.Value));
-            }
-
-            return result;
-        }
-    }
-    public async Task<BatchWriteItemResponse> BatchWriteItem(Table.BatchWriteItemRequest batchWriteItemRequest, CancellationToken cancellationToken = default)
-    {
-        if (batchWriteItemRequest is null) throw new ArgumentNullException(nameof(batchWriteItemRequest));
-        
-        using (ActivityRepository.StartActivity(nameof(BatchWriteItem)))
-        {
-            var request = Helpers.CreateBatchWriteItemRequest(batchWriteItemRequest);
-            var result = new BatchWriteItemResponse();
-            var attempts = 0;
-            var backOfficeRandom = new Random(1);
-
-            do
-            {
-                var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                        await DynamoClient.BatchWriteItemAsync(request, cancellationToken).ConfigureAwait(false))
-                        .ConfigureAwait(false);
-
-                if (response.UnprocessedItems.IsNullOrEmpty())
-                    return result;
-
-                request.RequestItems = response.UnprocessedItems;
-                attempts++;
-                
-                Thread.Sleep(TimeSpan.FromSeconds(batchWriteItemRequest.RetryDelay.Seconds * backOfficeRandom.Next(1, 3)));
-
-            } while (attempts < batchWriteItemRequest.MaxRetry);
-
-            return result;
-        }
-    }
-
     protected override void DisposeServices()
     {
         context?.Dispose();
         dynamoClient?.Dispose();
     }
-
 }

@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Core.Test
+
+using System;
 
 namespace Innovt.Core.Test.Models;
 

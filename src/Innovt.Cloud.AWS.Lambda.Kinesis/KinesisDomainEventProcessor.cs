@@ -1,16 +1,13 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Cloud.AWS.Lambda.Kinesis
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
-using Innovt.Core.CrossCutting.Log;
-using Innovt.Core.Exceptions;
-using Innovt.Domain.Core.Events;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Innovt.Core.CrossCutting.Log;
+using Innovt.Core.Exceptions;
+using Innovt.Domain.Core.Events;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis;
 

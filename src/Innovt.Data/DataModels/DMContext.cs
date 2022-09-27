@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Data
+
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -7,16 +11,17 @@ namespace Innovt.Data.DataModels;
 
 public class DMContext
 {
-    private Dictionary<string, IBaseDataModel> items;
     private static DMContext instance;
     private static object objlock = new();
-    
+    private Dictionary<string, IBaseDataModel> items;
+
     private DMContext()
     {
         items = new Dictionary<string, IBaseDataModel>();
     }
 
-    public static DMContext Instance() {
+    public static DMContext Instance()
+    {
         lock (objlock)
         {
             if (instance is null)
@@ -27,12 +32,12 @@ public class DMContext
 
         return instance;
     }
-    
-    public void Attach<T>(T entity) where T: IBaseDataModel
+
+    public void Attach<T>(T entity) where T : IBaseDataModel
     {
         if (entity == null) throw new ArgumentNullException(nameof(entity));
-        
-        entity.EnableTrackingChanges =true;
+
+        entity.EnableTrackingChanges = true;
 
         var key = entity.GetHashCode().ToString(CultureInfo.InvariantCulture);
 
@@ -54,6 +59,7 @@ public class DMContext
             items.Remove(key);
         }
     }
+
     public T Find<T>(T entity) where T : IBaseDataModel
     {
         if (entity == null) throw new ArgumentNullException(nameof(entity));
@@ -61,13 +67,12 @@ public class DMContext
 
         if (items.TryGetValue(key, out var item))
             return (T)item;
-        
-        return default(T);
+
+        return default;
     }
 
     public List<object> GetAllWithChanges()
     {
-        return items.Where(i => i.Value.HasChanges).Select(i=>i.Value as object).ToList();
+        return items.Where(i => i.Value.HasChanges).Select(i => i.Value as object).ToList();
     }
-
 }

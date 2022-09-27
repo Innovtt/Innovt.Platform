@@ -1,7 +1,6 @@
-﻿// Company: Antecipa
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Contrib.AuthorizationRoles.AspNetCore
-// Solution: Innovt.Contrib.Authorization
-// Date: 2021-09-20
 
 using Innovt.AspNetCore.Handlers;
 using Innovt.Contrib.Authorization.Platform.Infrastructure.IOC;

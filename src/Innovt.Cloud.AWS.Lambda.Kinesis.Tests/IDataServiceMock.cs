@@ -1,4 +1,8 @@
-﻿using Innovt.Domain.Core.Streams;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+
+using Innovt.Domain.Core.Streams;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests;
 

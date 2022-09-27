@@ -1,3 +1,10 @@
+// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+
+using System.Diagnostics;
+using System.Text;
+using System.Text.Json;
 using Amazon.Lambda.KinesisEvents;
 using Amazon.Lambda.TestUtilities;
 using Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors;
@@ -9,9 +16,6 @@ using NUnit.Framework;
 using OpenTelemetry;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
-using System.Diagnostics;
-using System.Text;
-using System.Text.Json;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests;
 

@@ -1,13 +1,10 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.CrossCutting.IOC
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
 using Innovt.Core.CrossCutting.Ioc;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace Innovt.CrossCutting.IOC;
 

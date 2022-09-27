@@ -1,7 +1,10 @@
-﻿using Amazon.DynamoDBv2.DataModel;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: ConsoleAppTest
+
+using Amazon.DynamoDBv2.DataModel;
 
 namespace ConsoleAppTest.DataModels;
-
 
 [DynamoDBTable("KeyPerformanceIndicatorType")]
 public class KeyPerformanceIndicatorType

@@ -1,3 +1,7 @@
+// Innovt Company
+// Author: Michel Borges
+// Project: ConsoleAppTest
+
 using Amazon.DynamoDBv2.DataModel;
 using Innovt.Cloud.Table;
 

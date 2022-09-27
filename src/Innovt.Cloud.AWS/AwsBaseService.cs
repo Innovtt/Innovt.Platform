@@ -1,10 +1,9 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Cloud.AWS
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System;
+using System.Net;
 using Amazon;
 using Amazon.Runtime;
 using Innovt.Cloud.AWS.Configuration;
@@ -12,8 +11,6 @@ using Innovt.Core.CrossCutting.Log;
 using Polly;
 using Polly.CircuitBreaker;
 using Polly.Retry;
-using System;
-using System.Net;
 using RetryPolicy = Polly.Retry.RetryPolicy;
 
 namespace Innovt.Cloud.AWS;

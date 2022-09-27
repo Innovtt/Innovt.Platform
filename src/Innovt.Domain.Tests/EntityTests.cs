@@ -1,27 +1,30 @@
-﻿using Innovt.Domain.Tests.Mocks;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Domain.Tests
+
+using Innovt.Domain.Tests.Mocks;
 using NUnit.Framework;
 
-namespace Innovt.Domain.Tests
+namespace Innovt.Domain.Tests;
+
+[TestFixture]
+public class EntityTests
 {
-    [TestFixture]
-    public class EntityTests
+    [Test]
+    public void CheckDomainEvents()
     {
-        [Test]
-        public void CheckDomainEvents()
-        {
-            var user = new UserEntity();
+        var user = new UserEntity();
 
-            var events = user.GetDomainEvents();
+        var events = user.GetDomainEvents();
 
-            Assert.IsNull(events);
+        Assert.IsNull(events);
 
-            user.AddDomainEvent(new UserCreated());
+        user.AddDomainEvent(new UserCreated());
 
-            events = user.GetDomainEvents();
+        events = user.GetDomainEvents();
 
-            Assert.IsNotNull(events);
+        Assert.IsNotNull(events);
 
-            Assert.AreEqual(1, events.Count);
-        }
+        Assert.AreEqual(1, events.Count);
     }
 }

@@ -1,4 +1,6 @@
-﻿using Amazon.DynamoDBv2.DataModel;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: ConsoleAppTest
 
 namespace ConsoleAppTest.Domain;
 

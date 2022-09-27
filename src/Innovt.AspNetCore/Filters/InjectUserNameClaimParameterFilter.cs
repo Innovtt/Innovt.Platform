@@ -1,13 +1,10 @@
-﻿// INNOVT TECNOLOGIA 2014-2021
-// Author: Michel Magalhães
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.AspNetCore
-// Solution: Innovt.Platform
-// Date: 2021-06-02
-// Contact: michel@innovt.com.br or michelmob@gmail.com
 
+using System.Security.Claims;
 using Innovt.Core.Utilities;
 using Microsoft.AspNetCore.Mvc.Filters;
-using System.Security.Claims;
 
 namespace Innovt.AspNetCore.Filters;
 

@@ -1,7 +1,6 @@
-﻿// Company: Antecipa
-// Project: Innovt.Contrib.Authorization.Platform
-// Solution: Innovt.Contrib.Authorization
-// Date: 2021-09-20
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: ConsoleAppTest
 
 using System;
 using System.Collections.Generic;

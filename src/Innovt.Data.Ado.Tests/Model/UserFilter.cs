@@ -1,6 +1,10 @@
-﻿using Innovt.Core.Cqrs.Queries;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Data.Ado.Tests
+
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Innovt.Core.Cqrs.Queries;
 
 namespace Innovt.Data.Ado.Tests.Model
 {

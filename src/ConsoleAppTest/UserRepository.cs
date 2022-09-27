@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: ConsoleAppTest
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -24,13 +28,13 @@ public class UserRepository : Repository
     {
         try
         {
-            var request = new Innovt.Cloud.Table.QueryRequest()
+            var request = new QueryRequest()
             {
                 KeyConditionExpression = $"PK = :pk AND SK = :sk",
                 Filter = new { pk = AuthProviderDataModel.BuildPk(), sk = "bradesco.com.br" }
             };
 
-            var authProvider = await base.QueryFirstOrDefaultAsync<AuthProviderDataModel>(request, CancellationToken.None);
+            var authProvider = await QueryFirstOrDefaultAsync<AuthProviderDataModel>(request, CancellationToken.None);
 
 
             return authProvider;
@@ -47,7 +51,7 @@ public class UserRepository : Repository
         var request = new QueryRequest()
         {
             KeyConditionExpression = $"PK = :pk AND SK = :sk",
-            Filter = new { pk = $"CS#93f8149f-e1f4-4721-8c7e-9dbc761b0f32", sk = "Profile" },
+            Filter = new { pk = $"CS#93f8149f-e1f4-4721-8c7e-9dbc761b0f32", sk = "Profile" }
         };
         var result = await QueryFirstOrDefaultAsync<CapitalSourceDataModel>(request, cancellationToken);
 
@@ -78,7 +82,8 @@ public class UserRepository : Repository
             Filter = new
             {
                 pk = "BID#",
-                sk = "BID#Supplier#e9bc5a4e-5291-4aa8-b129-08b2d75ca000#Buyer#e8427bd4-b6d3-4e89-b734-1690cae813a1#DATE#26/08/2022"
+                sk =
+                    "BID#Supplier#e9bc5a4e-5291-4aa8-b129-08b2d75ca000#Buyer#e8427bd4-b6d3-4e89-b734-1690cae813a1#DATE#26/08/2022"
             }
         };
 

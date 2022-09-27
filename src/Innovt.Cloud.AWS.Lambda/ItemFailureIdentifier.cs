@@ -1,4 +1,8 @@
-﻿using System.Text.Json.Serialization;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Cloud.AWS.Lambda
+
+using System.Text.Json.Serialization;
 
 namespace Innovt.Cloud.AWS.Lambda;
 

@@ -1,7 +1,11 @@
-﻿using Innovt.Core.CrossCutting.Log;
-using Innovt.Core.Utilities;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Core
+
 using System;
 using System.Collections.Generic;
+using Innovt.Core.CrossCutting.Log;
+using Innovt.Core.Utilities;
 
 namespace Innovt.Core.Caching;
 
@@ -10,12 +14,14 @@ public class MultiLayerCacheService : ICacheService, IDisposable
     private readonly ILogger logger;
     private List<ICacheService> cacheServices;
 
+    private bool disposed;
+
     public MultiLayerCacheService(ICacheService cacheDefaultLayer, ILogger logger)
     {
         if (cacheDefaultLayer == null) throw new ArgumentNullException(nameof(cacheDefaultLayer));
 
         this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        this.cacheServices = new List<ICacheService>() { cacheDefaultLayer };
+        cacheServices = new List<ICacheService>() { cacheDefaultLayer };
     }
 
     public MultiLayerCacheService(ICacheService cacheDefaultLayer, ICacheService cacheSecondLayer, ILogger logger)
@@ -23,13 +29,10 @@ public class MultiLayerCacheService : ICacheService, IDisposable
         if (cacheDefaultLayer == null) throw new ArgumentNullException(nameof(cacheDefaultLayer));
         if (cacheSecondLayer == null) throw new ArgumentNullException(nameof(cacheSecondLayer));
 
-        this.cacheServices = new List<ICacheService>() { cacheDefaultLayer, cacheSecondLayer };
+        cacheServices = new List<ICacheService>() { cacheDefaultLayer, cacheSecondLayer };
 
         this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
-
-
-    ~MultiLayerCacheService() => Dispose(false);
 
 
     public T GetValue<T>(string key)
@@ -88,11 +91,20 @@ public class MultiLayerCacheService : ICacheService, IDisposable
         }
     }
 
-    bool disposed;
+    public void Dispose()
+    {
+        cacheServices = null;
+        GC.SuppressFinalize(this);
+    }
+
+
+    ~MultiLayerCacheService()
+    {
+        Dispose(false);
+    }
 
     protected virtual void Dispose(bool disposing)
     {
-
         if (disposed || !disposing)
             return;
 
@@ -100,11 +112,4 @@ public class MultiLayerCacheService : ICacheService, IDisposable
 
         disposed = true;
     }
-
-    public void Dispose()
-    {
-        cacheServices = null;
-        GC.SuppressFinalize(this);
-    }
-
 }

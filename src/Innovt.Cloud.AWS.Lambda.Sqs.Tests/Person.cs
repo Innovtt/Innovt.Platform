@@ -1,4 +1,8 @@
-﻿namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Cloud.AWS.Lambda.Sqs.Tests
+
+namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests;
 
 public class Person
 {

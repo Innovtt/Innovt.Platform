@@ -1,8 +1,11 @@
-﻿// Company: Antecipa
+﻿// Innovt Company
+// Author: Michel Borges
 // Project: Innovt.Contrib.Authorization.Platform
-// Solution: Innovt.Contrib.Authorization
-// Date: 2021-06-02
 
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.AWS.Dynamo;
 using Innovt.Cloud.Table;
@@ -12,10 +15,6 @@ using Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Utilities;
 using Innovt.Domain.Security;
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 using IAuthorizationRepository = Innovt.Contrib.Authorization.Platform.Domain.IAuthorizationRepository;
 
 namespace Innovt.Contrib.Authorization.Platform.Infrastructure;

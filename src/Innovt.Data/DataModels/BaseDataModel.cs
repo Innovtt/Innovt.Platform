@@ -1,57 +1,66 @@
-﻿using System.Collections.Generic;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Data
+
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-namespace Innovt.Data.DataModels
+namespace Innovt.Data.DataModels;
+
+public abstract class BaseDataModel<TDomain, TDataModel> : INotifyPropertyChanged, IBaseDataModel
+    where TDomain : class where TDataModel : class
 {
-    public abstract class BaseDataModel<TDomain, TDataModel> : INotifyPropertyChanged, IBaseDataModel where TDomain : class where TDataModel : class
+    private bool enableTrackingChanges;
+    private bool hasChanges;
+
+    public bool EnableTrackingChanges
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        private bool hasChanges;
-        private bool enableTrackingChanges;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        get => enableTrackingChanges;
+        set
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
-            if (EnableTrackingChanges)
-            {
-                hasChanges = true;
-            }
+            enableTrackingChanges = value;
+            hasChanges = false;
         }
+    }
 
-        protected bool SetProperty<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
+    public bool HasChanges => hasChanges;
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        if (EnableTrackingChanges)
         {
-            if (EqualityComparer<T>.Default.Equals(field, value))
-                return false;
-
-            field = value;
-
-            OnPropertyChanged(propertyName);
-
-            return true;
+            hasChanges = true;
         }
+    }
 
-        public bool EnableTrackingChanges
-        {
-            get => enableTrackingChanges;
-            set
-            {
-                enableTrackingChanges = value;
-                hasChanges = false;
-            }
-        }
-        public abstract TDomain ParseToDomain(TDataModel dataModel);
+    protected bool SetProperty<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
+    {
+        if (EqualityComparer<T>.Default.Equals(field, value))
+            return false;
 
-        public abstract TDataModel ParseToDataModel(TDomain domainModel);
+        field = value;
 
-        public virtual List<TDomain> ParseToDomain(IList<TDataModel> dataModels) =>
-            dataModels?.Select(ParseToDomain).ToList();
+        OnPropertyChanged(propertyName);
 
-        public virtual List<TDataModel> ParseToDataModel(IList<TDomain> domainModels) =>
-            domainModels?.Select(ParseToDataModel).ToList();
+        return true;
+    }
 
-        public bool HasChanges => hasChanges;
+    public abstract TDomain ParseToDomain(TDataModel dataModel);
+
+    public abstract TDataModel ParseToDataModel(TDomain domainModel);
+
+    public virtual List<TDomain> ParseToDomain(IList<TDataModel> dataModels)
+    {
+        return dataModels?.Select(ParseToDomain).ToList();
+    }
+
+    public virtual List<TDataModel> ParseToDataModel(IList<TDomain> domainModels)
+    {
+        return domainModels?.Select(ParseToDataModel).ToList();
     }
 }

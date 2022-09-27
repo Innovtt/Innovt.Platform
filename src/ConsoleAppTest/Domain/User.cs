@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: ConsoleAppTest
+
+using System.Collections.Generic;
 
 namespace ConsoleAppTest.Domain;
 

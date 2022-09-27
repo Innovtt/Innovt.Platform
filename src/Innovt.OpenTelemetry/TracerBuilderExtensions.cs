@@ -1,10 +1,9 @@
-﻿// Company: Antecipa
-// Project: Innovt.Core
-// Solution: Innovt.Platform
-// Date: 2021-07-18
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.OpenTelemetry
 
-using OpenTelemetry.Trace;
 using System;
+using OpenTelemetry.Trace;
 
 namespace Innovt.OpenTelemetry;
 

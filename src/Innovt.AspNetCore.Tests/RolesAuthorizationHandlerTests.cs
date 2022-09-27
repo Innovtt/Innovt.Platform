@@ -1,3 +1,12 @@
+// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.AspNetCore.Tests
+
+using System;
+using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading;
+using System.Threading.Tasks;
 using Innovt.AspNetCore.Handlers;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Domain.Security;
@@ -6,11 +15,6 @@ using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using NSubstitute;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Innovt.AspNetCore.Tests;
 
