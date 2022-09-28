@@ -44,6 +44,16 @@ public class BusinessExceptionTests
         Assert.That(bex.Message, Is.EqualTo("One or more validation errors occurred."));
     }
 
+    [Test]
+    public void DetailShouldBeNullWhenErrorListIsEmpty()
+    {
+        var bex = new BusinessException(new List<ErrorMessage>());
+
+        Assert.IsNotNull(bex);
+        Assert.IsNotNull(bex.Errors);
+        Assert.IsNull(bex.Detail);
+    }
+
 
     [Test]
     public void CheckValidationPattern()

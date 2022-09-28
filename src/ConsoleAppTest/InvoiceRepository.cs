@@ -18,6 +18,7 @@ using Innovt.Cloud.AWS.Dynamo;
 using Innovt.Cloud.Table;
 using Innovt.Core.Collections;
 using Innovt.Core.CrossCutting.Log;
+using OpenTelemetry.Trace;
 using BatchWriteItemRequest = Innovt.Cloud.Table.BatchWriteItemRequest;
 using QueryRequest = Innovt.Cloud.Table.QueryRequest;
 
@@ -240,21 +241,29 @@ public class InvoiceRepository : Repository
     {
         var contractsRequest = new QueryRequest()
         {
-            KeyConditionExpression = $"PK = :pk AND begins_with(EntityTypeCreatedAt,:sk) ",
+            KeyConditionExpression = $"PK = :pk AND begins_with(SK,:sk) ",
             Filter = new
             {
-                pk = $"CS#52b02587-bea0-41d1-bd0d-6b2f40181be7", sk = $"ET#Contract",
-                buyerid = "e8427bd4-b6d3-4e89-b734-1690cae813a1", deleted = false
+                pk = $"CS#52b02587-bea0-41d1-bd0d-6b2f40181be7", sk = $"CT#",
+                //buyerid = "e8427bd4-b6d3-4e89-b734-1690cae813a1",
+                buyerid = new int[] {2,3},
+                //statuses1 = 2,
+                //statuses2 = 3,
+                deleted = false
             },
-            FilterExpression = "contains(BuyersIds, :buyerid) AND Deleted = :deleted ",
-            IndexName = "PK-EntityTypeCreatedAt-Index",
+            //FilterExpression = "StatusId IN (:statuses1,:statuses2) AND Deleted = :deleted ",
+            FilterExpression = "StatusId IN (:buyerid) AND Deleted = :deleted ",
+            //FilterExpression = "EconomicGroupId IN (:buyerid)", //{n:998, "333","333444"},  = > IN (:buyerid)", //{n:998} {N "333","333444"},
+            //FilterExpression = "BuyersIds IN (\"e8427bd4-b6d3-4e89-b734-1690cae813a1\") AND Deleted = :deleted ",
+
+            //IndexName = "PK-EntityTypeCreatedAt-Index",
             ScanIndexForward = false
         };
 
         var contractResult =
-            await QueryFirstOrDefaultAsync<ContractDataModel>(contractsRequest, CancellationToken.None);
+            await QueryAsync<ContractDataModel>(contractsRequest, CancellationToken.None);
 
-        return contractResult;
+        return contractResult.SingleOrDefault();
     }
 
     public async Task<KeyPerformanceIndicatorType> GetKeyIndicators()

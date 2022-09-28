@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.Json;
+using Innovt.Core.Collections;
 
 namespace Innovt.Core.Exceptions;
 
@@ -71,9 +72,11 @@ public class BusinessException : BaseException, ISerializable
 
     private object CreateMessage(IEnumerable<ErrorMessage> errors)
     {
-        var errorMessages = errors as ErrorMessage[] ?? errors.ToArray();
+        if (errors is null) return null;
 
-        if (!errorMessages.Any()) return string.Empty;
+        var errorMessages = errors.ToArray();
+
+        if (!errorMessages.Any()) return null;
 
         var errorResult = (from error in errorMessages
             group error by error.PropertyName

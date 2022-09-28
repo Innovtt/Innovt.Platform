@@ -100,9 +100,9 @@ internal static class AttributeConverter
                 return new AttributeValue { S = time.ToString("s") };
             case IList<int> or IList<double> or IList<float> or IList<decimal> or IList<long>:
             {
-                var array = (value as IList).Cast<string>();
+                var array = (value as IList).Cast<object>().Select(o => o.ToString()).ToList();
 
-                return new AttributeValue { NS = array.ToList() };
+                return new AttributeValue { NS = array };
             }
             case IDictionary<string, object> objects:
             {

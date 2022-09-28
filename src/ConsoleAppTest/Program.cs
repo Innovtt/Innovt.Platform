@@ -82,48 +82,48 @@ public class Program
         ////Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("pt-BR");
         var invoiceRepo = new InvoiceRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
 
-        try
-        {
-            var kpiProgress = await invoiceRepo.GetKpiProgress();
+        //try
+        //{
+        //    var kpiProgress = await invoiceRepo.GetKpiProgress();
 
-            Console.WriteLine(kpiProgress);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
+        //    Console.WriteLine(kpiProgress);
+        //}
+        //catch (Exception e)
+        //{
+        //    Console.WriteLine(e);
+        //    throw;
+        //}
 
 
-        var res = await invoiceRepo.GetRequestIntegration();
+        //var res = await invoiceRepo.GetRequestIntegration();
 
         //Console.ReadKey();
 
 
         var ress = await invoiceRepo.GetTaxRequests();
 
-        await invoiceRepo.GetKeyIndicators();
+        //var requests = await invoiceRepo.GetTaxRequests();
 
-        Console.WriteLine(res);
+        Console.WriteLine(ress);
 
-        var userRepo = new UserRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
+        //var userRepo = new UserRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
 
-        var res2 = await userRepo.GetUserByExternalId("45e3d052-8fed-4d41-9e0a-a6610f536506", CancellationToken.None);
+        //var res2 = await userRepo.GetUserByExternalId("45e3d052-8fed-4d41-9e0a-a6610f536506", CancellationToken.None);
 
-        //        Console.WriteLine(res);
+        ////        Console.WriteLine(res);
 
-        var res3 = await userRepo.GetCapitalSources(CancellationToken.None);
-
-
-        Console.WriteLine(res3);
-
-        var res4 = await userRepo.GetBids(CancellationToken.None);
+        //var res3 = await userRepo.GetCapitalSources(CancellationToken.None);
 
 
-        var result = await userRepo.GetAuthProvider();
+        //Console.WriteLine(res3);
+
+        //var res4 = await userRepo.GetBids(CancellationToken.None);
 
 
-        Console.WriteLine(res3);
+        //var result = await userRepo.GetAuthProvider();
+
+
+        //Console.WriteLine(res3);
         //await invoiceRepo.IncrementOrderSequence(CancellationToken.None);
 
         /*
@@ -169,21 +169,21 @@ public class Program
         ////    Filter = new { pk = "E#ed791722c6f5b3733a06238fba0c2577" }
         ////});
 
-        var list = new List<InvoicesAggregationCompanyDataModel>();
+        //var list = new List<InvoicesAggregationCompanyDataModel>();
 
-        for (var i = 0; i < 25; i++)
-        {
-            list.Add(new InvoicesAggregationCompanyDataModel()
-            {
-                CompanyId = companyId.ToString(),
-                Currency = "R$",
-                PK = $"M#{companyId}",
-                SK1 = $"SampleMichel#{i}#{DateTime.Now}",
-                TotalValue = 10
-            });
-        }
+        //for (var i = 0; i < 25; i++)
+        //{
+        //    list.Add(new InvoicesAggregationCompanyDataModel()
+        //    {
+        //        CompanyId = companyId.ToString(),
+        //        Currency = "R$",
+        //        PK = $"M#{companyId}",
+        //        SK1 = $"SampleMichel#{i}#{DateTime.Now}",
+        //        TotalValue = 10
+        //    });
+        //}
 
-        await invoiceRepo.BatchInsert(list);
+        //await invoiceRepo.BatchInsert(list);
 
         //var invoices = await invoiceRepo.QueryAsync<InvoicesAggregationCompanyDataModel>(new QueryRequest()
         //{

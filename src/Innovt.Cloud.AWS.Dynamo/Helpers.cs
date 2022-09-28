@@ -54,7 +54,6 @@ internal static class Helpers
                 !attributeValues.ContainsKey(key))
             {
                 var value = item.GetValue(filter);
-
                 attributeValues.Add(key, AttributeConverter.CreateAttributeValue(value));
             }
         }

@@ -1,3 +1,4 @@
+using Innovt.Core.Exceptions;
 using Innovt.Core.Validation;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,6 +23,9 @@ namespace SampleWebApiTests.Controllers
         [HttpPost]
         public IActionResult Add(WeatherForecastCommand command)
         {
+
+            throw new BusinessException("Deu ruim");
+
             var addCommand = new AddWeatherForecastCommand()
             {
                 Email = command.Email,
