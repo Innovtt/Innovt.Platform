@@ -21,4 +21,8 @@
     <ProjectReference Include="..\Innovt.Domain.Core\Innovt.Domain.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
+
 </Project>

@@ -11,6 +11,7 @@ using Innovt.Core.Utilities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
 
 namespace Innovt.AspNetCore.Filters;
@@ -18,6 +19,11 @@ namespace Innovt.AspNetCore.Filters;
 [AttributeUsage(AttributeTargets.All)]
 public sealed class ApiExceptionFilter : ExceptionFilterAttribute
 {
+    /// <summary>
+    /// Default Constructor 
+    /// </summary>
+    public ApiExceptionFilter() { }
+
     public ApiExceptionFilter(ILogger logger)
     {
         Logger = logger ?? throw new ArgumentNullException(nameof(logger));
@@ -28,13 +34,28 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
         StringLocalizer = stringLocalizer ?? throw new ArgumentNullException(nameof(stringLocalizer));
     }
 
-    public ILogger Logger { get; }
+    public ILogger? Logger { get; private set; }
 
-    public IStringLocalizer<IExceptionResource> StringLocalizer { get; }
+    public IStringLocalizer<IExceptionResource> StringLocalizer { get; } = null!;
 
     private string Translate(string message)
     {
         return StringLocalizer?[message] ?? message;
+    }
+
+    private void WriteLog(HttpContext context, string message, Exception ex)
+    {
+        Logger ??= context?.RequestServices.GetService<ILogger>();
+
+        if (Logger is null)
+        {
+            Console.WriteLine("ApiExceptionFilter is not resolving the innovt logger.");
+            Console.WriteLine($"Message: {message}, Exception: {ex.Message}");
+        }
+        else
+        {
+            Logger.Error(ex, message);
+        }
     }
 
     public override void OnException(ExceptionContext context)
@@ -55,7 +76,7 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
         {
             result.Message = Translate(bex.Message);
             result.Code = bex.Code.IsNullOrEmpty() ? $"{StatusCodes.Status400BadRequest}" : bex.Code;
-            result.Detail = bex.Errors;
+            result.Detail = bex.Detail;
             context.Result = new BadRequestObjectResult(result);
         }
         else
@@ -65,9 +86,8 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
             {
                 StatusCode = StatusCodes.Status500InternalServerError
             };
-            Logger.Error(context.Exception, "InternalServerError");
+            WriteLog(context.HttpContext,"InternalServerError", context.Exception);
         }
-
         Activity.Current?.SetStatus(ActivityStatusCode.Error, baseException.Message);
     }
 }

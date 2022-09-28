@@ -3,7 +3,7 @@
   <PropertyGroup>
 	<TargetFramework>net6.0</TargetFramework>
 	<PackageId>Innovt.Data.EFCore.Oracle</PackageId>
-	<PackageVersion>6.1.13</PackageVersion>
+	<PackageVersion>6.1.14</PackageVersion>
 	<Authors>Michel Borges</Authors>
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>

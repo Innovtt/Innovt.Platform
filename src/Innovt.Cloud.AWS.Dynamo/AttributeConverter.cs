@@ -172,8 +172,7 @@ internal static class AttributeConverter
 
         return value.S.IsNotNullOrEmpty() ? value.S : default(object);
     }
-
-
+    
     public static object ItemsToCollection(Type targetType, IEnumerable<object> items)
     {
         return !targetType.IsArray ? ItemsToIList(targetType, items) : ItemsToArray(targetType, items);
@@ -218,8 +217,7 @@ internal static class AttributeConverter
 
         return elementType;
     }
-
-
+    
     private static object ItemsToArray(Type targetType, IEnumerable<object> items)
     {
         if (items is null)
