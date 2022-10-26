@@ -287,6 +287,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             transactRequest.TransactItems.Add(Helpers.CreateTransactionWriteItem(transactItem));
         }
 
+
         await DynamoClient.TransactWriteItemsAsync(transactRequest, cancellationToken).ConfigureAwait(false);
     }
 
@@ -323,6 +324,9 @@ public abstract class Repository : AwsBaseService, ITableRepository
             return response;
         }
     }
+
+
+
 
     public async Task<ExecuteSqlStatementResponse<T>> ExecuteStatementAsync<T>(
         ExecuteSqlStatementRequest sqlStatementRequest, CancellationToken cancellationToken = default) where T : class

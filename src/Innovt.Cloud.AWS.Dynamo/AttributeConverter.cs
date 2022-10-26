@@ -10,6 +10,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
@@ -315,6 +316,49 @@ internal static class AttributeConverter
         return Convert.ChangeType(value, destinationType, CultureInfo.InvariantCulture);
     }
 
+    internal static DynamoDBEntry ConvertAttributeValue(AttributeValue attributeValue)
+    {
+        if (attributeValue is null)
+            return new DynamoDBNull();
+        
+        if (attributeValue.IsBOOLSet)
+            return new DynamoDBBool(attributeValue.BOOL);
+        
+        if (attributeValue.B is { })
+            return new Primitive(attributeValue.B);
+
+        if (attributeValue.N is { })
+            return new Primitive(attributeValue.N,true);
+
+        return new Primitive(attributeValue.S);
+    }
+
+
+    internal static object ConvertNonPrimitiveType(PropertyInfo property,AttributeValue attributeValue, object value)
+    {
+        if (property.PropertyType.IsEnum)
+            return Enum.Parse(property.PropertyType, value.ToString(), true);
+
+        //has converter? 
+        var customConverter = property.GetCustomAttributes<DynamoDBPropertyAttribute>()
+            .SingleOrDefault(a => a.Converter != null);
+        
+        if (customConverter is null)
+        {
+            return value;
+        }
+
+        var convertedEntry = ConvertAttributeValue(attributeValue);
+
+        if (convertedEntry is null)
+            return null;
+        
+        if (Activator.CreateInstance(customConverter.Converter) is not IPropertyConverter converterInstance)
+            return null;
+        
+        return converterInstance.FromEntry(convertedEntry);
+    }
+
     /// <summary>
     /// Convert an attribute array to specific type
     /// </summary>
@@ -350,18 +394,15 @@ internal static class AttributeConverter
             {
                 if (IsCollection(prop.PropertyType))
                 {
-                    convertedValue = IsDictionary(prop.PropertyType)
-                        ? value
+                    convertedValue = IsDictionary(prop.PropertyType) ? value
                         : ItemsToCollection(prop.PropertyType, (IEnumerable<object>)value);
                 }
                 else
                 {
-                    convertedValue = prop.PropertyType.IsEnum
-                        ? Enum.Parse(prop.PropertyType, value.ToString(), true)
-                        : value;
+                    convertedValue = ConvertNonPrimitiveType(prop, attributeValue.Value, value);
                 }
             }
-
+            //setting the converted value
             prop.SetValue(instance, convertedValue, null);
         }
 
