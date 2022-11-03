@@ -1,5 +1,4 @@
-using Innovt.Core.Exceptions;
-using Innovt.Core.Validation;
+using Innovt.Domain.Security;
 using Microsoft.AspNetCore.Mvc;
 
 namespace SampleWebApiTests.Controllers
@@ -8,44 +7,30 @@ namespace SampleWebApiTests.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+        private readonly IAuthorizationRepository authorizationRepository;
 
-        private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(IAuthorizationRepository authorizationRepository)
         {
-            _logger = logger;
+            this.authorizationRepository = authorizationRepository ?? throw new ArgumentNullException(nameof(authorizationRepository));
         }
 
-        [HttpPost]
-        public IActionResult Add(WeatherForecastCommand command)
-        {
-
-            throw new BusinessException("Deu ruim");
-
-            var addCommand = new AddWeatherForecastCommand()
-            {
-                Email = command.Email,
-                Name = command.Name
-            };
-            addCommand.EnsureIsValid();
-
-            return Ok();
-        }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public async Task<IEnumerable<WeatherForecast>> Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            try
             {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+                var res = await authorizationRepository.GetUserByExternalId("michel@antecipa.com",CancellationToken.None);
+            
+            return null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
         }
     }
 }
