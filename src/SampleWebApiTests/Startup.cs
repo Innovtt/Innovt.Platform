@@ -2,6 +2,7 @@
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Contrib.Authorization.Platform.Application;
 using Innovt.Contrib.Authorization.Platform.Infrastructure;
+using Innovt.Contrib.AuthorizationRoles.AspNetCore;
 using Innovt.CrossCutting.Log.Serilog;
 using Innovt.Domain.Security;
 using OpenTelemetry.Trace;
@@ -18,6 +19,8 @@ namespace SampleWebApiTests
         
         protected override void AddDefaultServices(IServiceCollection services)
         {
+            services.AddInnovtRolesAuthorization();
+
             services
                 .AddLocalization()
                 .AddMvc(options =>
@@ -34,10 +37,6 @@ namespace SampleWebApiTests
         protected override void ConfigureIoC(IServiceCollection services)
         {
             services.AddSingleton<ILogger, Logger>();
-            services.AddTransient<IAwsConfiguration>(a => new DefaultAWSConfiguration("antecipa-dev"));
-            //services.AddTransient<IAuthorizationAppService, AuthorizationAppService>();
-            services.AddTransient<IAuthorizationRepository, AuthorizationRepository>();
-            
         }
 
         public override void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)

@@ -15,9 +15,9 @@ public class IOCModule
         services = new ServiceCollection();
     }
 
-    public IOCModule(IServiceCollection services) : this()
+    public IOCModule(IServiceCollection services)
     {
-        AppendServices(services);
+        this.services = services;
     }
 
     public IServiceCollection GetServices()
