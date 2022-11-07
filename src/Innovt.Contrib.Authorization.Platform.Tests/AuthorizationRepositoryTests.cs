@@ -36,6 +36,7 @@ namespace Innovt.Contrib.Authorization.Platform.Tests
         }
 
         [Test]
+        [Ignore("Testing antecipa env")]
         public async Task GetUserByExternalId()
         {
             var user= await authorizationRepository.GetUserByExternalId("michel@antecipa.com", CancellationToken.None);

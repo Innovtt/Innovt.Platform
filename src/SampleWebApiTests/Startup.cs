@@ -19,7 +19,8 @@ namespace SampleWebApiTests
         
         protected override void AddDefaultServices(IServiceCollection services)
         {
-            services.AddInnovtRolesAuthorization();
+            //services.AddInnovtRolesAuthorization();
+            //services.AddLogging(c => c.ClearProviders());
 
             services
                 .AddLocalization()

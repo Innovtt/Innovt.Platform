@@ -7,9 +7,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using ConsoleAppTest.TestCase01;
 using Datadog.Trace.OpenTracing;
 using Innovt.Cloud.AWS.Configuration;
+using Innovt.Cloud.AWS.S3;
 using Innovt.Core.Cqrs.Queries;
 using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Core.CrossCutting.Log;
@@ -29,7 +29,7 @@ public class IocTestModule : IOCModule
 
         collection.AddSingleton(configuration);
 
-        collection.AddScoped<IAwsConfiguration>(a => new DefaultAWSConfiguration("antecipa-prod"));
+        collection.AddScoped<IAwsConfiguration>(a => new DefaultAWSConfiguration("antecipa-dev"));
 
         //collection.AddScoped<IAwsConfiguration, DefaultAWSConfiguration>();
 
@@ -67,14 +67,19 @@ public class Program
 
         container.AddModule(new IocTestModule(configuration));
 
-        var repository = new TestErpTaskIntegrationDataRepository(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
+        try
+        {
+            var service = new S3FileSystem(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
+
+            //var content = await service.PutObjectAsync("antecipa-files-uat", "E:\\filekeycdc.txt", null, "SSES");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+
         
-        var itens = await repository.GetTaskIntegrationDocument();
-
-        var itens2 = await repository.GetTaskIntegrationAnticipate();
-
-
-
         Console.ReadKey();
     }
 }

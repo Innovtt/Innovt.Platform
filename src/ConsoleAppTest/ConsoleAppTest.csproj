@@ -25,6 +25,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="AWSSDK.SecurityToken" Version="3.7.100.9" />
 		<PackageReference Include="Datadog.Trace.OpenTracing" Version="2.18.0" />
 		<PackageReference Include="ServiceStack.Redis" Version="6.4.0" />
 		<PackageReference Include="OpenTelemetry" Version="1.3.1" />
@@ -38,6 +39,7 @@
 		<ProjectReference Include="..\Innovt.Cloud.AWS.Caching\Innovt.Cloud.AWS.Caching.csproj" />
 		<ProjectReference Include="..\Innovt.Cloud.AWS.Dynamo\Innovt.Cloud.AWS.Dynamo.csproj" />
 		<ProjectReference Include="..\Innovt.Cloud.AWS.Kinesis\Innovt.Cloud.AWS.Kinesis.csproj" />
+		<ProjectReference Include="..\Innovt.Cloud.AWS.S3\Innovt.Cloud.AWS.S3.csproj" />
 		<ProjectReference Include="..\Innovt.Cloud.AWS.SQS\Innovt.Cloud.AWS.SQS.csproj" />
 		<ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj" />
 		<ProjectReference Include="..\Innovt.CrossCutting.IOC\Innovt.CrossCutting.IOC.csproj" />

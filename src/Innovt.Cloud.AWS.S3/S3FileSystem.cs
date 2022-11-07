@@ -449,7 +449,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
 
         activity?.SetTag("s3.bucket_name", bucketName);
         activity?.SetTag("s3.filename", fileName);
-
+        
         var fileKey = Path.GetFileName(fileName);
 
         var request = new PutObjectRequest

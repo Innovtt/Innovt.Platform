@@ -13,18 +13,38 @@ namespace Innovt.Cloud.AWS.Configuration;
 
 public class DefaultAWSConfiguration : IAwsConfiguration
 {
-    private const string configSection = "AWS";
-
+    private const string ConfigSection = "AWS";
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="profileName"></param>
+    /// <exception cref="ArgumentNullException"></exception>
+    public DefaultAWSConfiguration(string profileName)
+    {
+        Profile = profileName ?? throw new ArgumentNullException(nameof(profileName));
+    }
 
     /// <summary>
-    ///     Using custom Profile
+    /// For assume role using profile
     /// </summary>
     /// <param name="profileName"></param>
     /// <param name="roleArn"></param>
-    public DefaultAWSConfiguration(string profileName, string roleArn = null)
+    /// <param name="roleExternalId"></param>
+    /// <param name="roleSessionName"></param>
+    /// <exception cref="ArgumentNullException"></exception>
+    public DefaultAWSConfiguration(string profileName, string roleArn, string roleExternalId = null, string roleSessionName = null)
     {
         Profile = profileName ?? throw new ArgumentNullException(nameof(profileName));
         RoleArn = roleArn;
+        ExternalId = roleExternalId;
+        RoleSessionName = roleSessionName;
+    }
+
+    public DefaultAWSConfiguration(string roleArn, string roleSessionName= "InnovtRoleSession", string roleExternalId = null)
+    {
+        RoleArn = roleArn ?? throw new ArgumentNullException(nameof(roleArn));
+        RoleSessionName = roleSessionName ?? throw new ArgumentNullException(nameof(roleSessionName));
+        ExternalId = roleExternalId;
     }
 
     public DefaultAWSConfiguration()
@@ -37,7 +57,7 @@ public class DefaultAWSConfiguration : IAwsConfiguration
     /// <param name="configuration">IConfiguration from .Net Core</param>
     /// <param name="sectionName"> The default is AWS. </param>
     public DefaultAWSConfiguration(Microsoft.Extensions.Configuration.IConfiguration configuration,
-        string sectionName = configSection)
+        string sectionName = ConfigSection)
     {
         Check.NotNull(configuration, nameof(configuration));
 
@@ -63,6 +83,8 @@ public class DefaultAWSConfiguration : IAwsConfiguration
     }
 
     public string RoleArn { get; set; }
+    public string ExternalId { get; set; }
+    public string RoleSessionName { get; set; }
     public string SessionToken { get; set; }
     public string AccountNumber { get; set; }
     public string SecretKey { get; set; }
@@ -90,7 +112,7 @@ public class DefaultAWSConfiguration : IAwsConfiguration
         }
 
         if (RoleArn.IsNotNullOrEmpty()) credentials = AssumeRole(credentials);
-
+        
         return credentials;
     }
 
@@ -115,6 +137,14 @@ public class DefaultAWSConfiguration : IAwsConfiguration
         if (credentials is null || RoleArn.IsNullOrEmpty())
             return credentials;
 
-        return new AssumeRoleAWSCredentials(credentials, RoleArn, "InnovtRoleSession");
+        var options = new AssumeRoleAWSCredentialsOptions()
+        {
+            ExternalId = ExternalId
+        };
+
+        if (RoleSessionName.IsNotNullOrEmpty())
+            RoleSessionName = "InnovtRoleSession";
+        
+        return new AssumeRoleAWSCredentials(credentials, RoleArn, RoleSessionName, options);
     }
 }
