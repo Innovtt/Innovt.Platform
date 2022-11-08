@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -20,9 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda.Sqs\Innovt.Cloud.AWS.Lambda.Sqs.csproj" />
-    <ProjectReference Include="..\Innovt.Cloud.AWS.SQS\Innovt.Cloud.AWS.SQS.csproj" />
-    <ProjectReference Include="..\Innovt.CrossCutting.Log.Serilog\Innovt.CrossCutting.Log.Serilog.csproj" />
+    <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj" />
   </ItemGroup>
 
 </Project>

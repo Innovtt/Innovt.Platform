@@ -127,7 +127,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleWebApiTests", "Sample
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Cloud.AWS.SQS.Tests", "Innovt.Cloud.AWS.SQS.Tests\Innovt.Cloud.AWS.SQS.Tests.csproj", "{FF30F692-0DF6-467D-AB7C-E32B932E6BCB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innovt.Contrib.Authorization.Platform.Tests", "Innovt.Contrib.Authorization.Platform.Tests\Innovt.Contrib.Authorization.Platform.Tests.csproj", "{7A6BB3A7-C536-4422-B2F1-7C57DC87FFAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Contrib.Authorization.Platform.Tests", "Innovt.Contrib.Authorization.Platform.Tests\Innovt.Contrib.Authorization.Platform.Tests.csproj", "{7A6BB3A7-C536-4422-B2F1-7C57DC87FFAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innovt.Cloud.AWS.Tests", "Innovt.Cloud.AWS.Tests\Innovt.Cloud.AWS.Tests.csproj", "{C60FAA51-E5AA-400A-929B-8715AEFF09D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -561,6 +563,14 @@ Global
 		{7A6BB3A7-C536-4422-B2F1-7C57DC87FFAC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7A6BB3A7-C536-4422-B2F1-7C57DC87FFAC}.Release|x86.ActiveCfg = Release|Any CPU
 		{7A6BB3A7-C536-4422-B2F1-7C57DC87FFAC}.Release|x86.Build.0 = Release|Any CPU
+		{C60FAA51-E5AA-400A-929B-8715AEFF09D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C60FAA51-E5AA-400A-929B-8715AEFF09D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C60FAA51-E5AA-400A-929B-8715AEFF09D8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C60FAA51-E5AA-400A-929B-8715AEFF09D8}.Debug|x86.Build.0 = Debug|Any CPU
+		{C60FAA51-E5AA-400A-929B-8715AEFF09D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C60FAA51-E5AA-400A-929B-8715AEFF09D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C60FAA51-E5AA-400A-929B-8715AEFF09D8}.Release|x86.ActiveCfg = Release|Any CPU
+		{C60FAA51-E5AA-400A-929B-8715AEFF09D8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -611,6 +621,7 @@ Global
 		{64D820DC-CD0E-40FA-8E3F-182D5D29F3DB} = {B9D67F90-4165-4986-AA52-9E30F64013D9}
 		{FF30F692-0DF6-467D-AB7C-E32B932E6BCB} = {EA0C6A75-5EFC-4F7F-9E13-EB63F17ECF1E}
 		{7A6BB3A7-C536-4422-B2F1-7C57DC87FFAC} = {3255704B-38CE-4A2D-9E65-EEE1088A4EDE}
+		{C60FAA51-E5AA-400A-929B-8715AEFF09D8} = {EA0C6A75-5EFC-4F7F-9E13-EB63F17ECF1E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {43168DBE-48A6-435D-9405-F6728340FFEA}
