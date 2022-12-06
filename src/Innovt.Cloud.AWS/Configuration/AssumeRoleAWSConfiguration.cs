@@ -9,11 +9,12 @@ using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.Configuration;
 
-public class AssumeRoleAWSConfiguration : IAwsConfiguration
+public class AssumeRoleAWSConfiguration : IAssumeRoleAWSConfiguration
 {
     private readonly IAwsConfiguration configuration;
-    
-    public AssumeRoleAWSConfiguration(IAwsConfiguration configuration, string roleArn, string roleSessionName = null, string roleExternalId = null)
+
+    public AssumeRoleAWSConfiguration(IAwsConfiguration configuration, string roleArn, string roleSessionName = null,
+        string roleExternalId = null)
     {
         this.configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         RoleArn = roleArn ?? throw new ArgumentNullException(nameof(roleArn));
@@ -36,12 +37,12 @@ public class AssumeRoleAWSConfiguration : IAwsConfiguration
 
         if (sourceCredential == null)
             throw new ConfigurationException($"Invalid source credentials.");
-        
+
         var options = new AssumeRoleAWSCredentialsOptions()
         {
             ExternalId = ExternalId
         };
-        
+
         if (RoleSessionName.IsNotNullOrEmpty())
             RoleSessionName = "InnovtRoleSession";
 

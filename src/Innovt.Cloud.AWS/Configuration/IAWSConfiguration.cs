@@ -12,5 +12,5 @@ public interface IAwsConfiguration : IConfiguration
 
     string Profile { get; set; }
 
-    AWSCredentials GetCredential();
+    public AWSCredentials GetCredential();
 }

@@ -3,7 +3,7 @@
   <PropertyGroup>
 	  <TargetFramework>net6.0</TargetFramework>
 	  <PackageId>Innovt.Data.EFCore.PostgreSQL</PackageId>
-	  <PackageVersion>6.1.21</PackageVersion>
+	  <PackageVersion>6.1.22</PackageVersion>
 	  <Authors>Michel Borges</Authors>
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	  <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -18,7 +18,7 @@
     <ProjectReference Include="..\Innovt.Data.EFCore\Innovt.Data.EFCore.csproj" />
   </ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.7" />
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.0" />
 	</ItemGroup>
 
 </Project>
