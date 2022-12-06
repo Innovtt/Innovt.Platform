@@ -164,7 +164,7 @@ public static class Extensions
 
     public static DateTime FromUnixTimestamp(this double unixTimestamp)
     {
-        var baseBase = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(unixTimestamp)
+        var baseBase = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddSeconds(unixTimestamp)
             .ToLocalTime();
 
         return baseBase;
