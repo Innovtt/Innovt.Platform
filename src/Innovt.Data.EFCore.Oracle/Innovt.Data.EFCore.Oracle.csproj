@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	<TargetFramework>net6.0</TargetFramework>
+	<TargetFramework>net7.0</TargetFramework>
 	<PackageId>Innovt.Data.EFCore.Oracle</PackageId>
-	<PackageVersion>6.1.22</PackageVersion>
+	<PackageVersion>7.0.0-beta</PackageVersion>
 	<Authors>Michel Borges</Authors>
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -15,7 +15,7 @@
     
   </PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Oracle.EntityFrameworkCore" Version="6.21.61" />
+		<PackageReference Include="Oracle.EntityFrameworkCore" Version="7.21.9" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\Innovt.Data.EFCore\Innovt.Data.EFCore.csproj" />

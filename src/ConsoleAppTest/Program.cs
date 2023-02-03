@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Amazon.Runtime;
+using Amazon.Util;
 using Datadog.Trace.OpenTracing;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.AWS.S3;
@@ -63,13 +65,33 @@ public class Program
         var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json")
             .Build();
 
-        var container = new Container();
+        
+        
+        //var container = new Container();
 
-        container.AddModule(new IocTestModule(configuration));
+        //container.AddModule(new IocTestModule(configuration));
 
         try
         {
-            var service = new S3FileSystem(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
+            Console.Write("Listing instanceProfile");
+
+            var profile = new InstanceProfileAWSCredentials();
+
+
+
+            Console.Write(profile.Role);
+            var cred = await profile.GetCredentialsAsync();
+
+            Console.WriteLine(cred.AccessKey);
+            Console.WriteLine(cred.SecretKey);
+
+
+
+
+
+
+
+            //var service = new S3FileSystem(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
 
             //var content = await service.PutObjectAsync("antecipa-files-uat", "E:\\filekeycdc.txt", null, "SSES");
         }
