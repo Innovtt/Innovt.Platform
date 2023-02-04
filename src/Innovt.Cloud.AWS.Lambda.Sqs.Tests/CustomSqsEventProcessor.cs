@@ -27,7 +27,7 @@ public class CustomSqsEventProcessor : SqsEventProcessor<Person>
 
     protected override IContainer SetupIocContainer()
     {
-        return null;
+        return null!;
     }
 
     protected override Task ProcessMessage(QueueMessage<Person> message)

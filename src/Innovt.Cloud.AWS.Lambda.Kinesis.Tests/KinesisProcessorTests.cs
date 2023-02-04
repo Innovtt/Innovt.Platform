@@ -28,7 +28,7 @@ public class KinesisProcessorTests
         serviceMock = Substitute.For<IServiceMock>();
     }
 
-    private IServiceMock serviceMock;
+    private IServiceMock serviceMock = null!;
 
     protected static readonly ActivitySource KinesisProcessorTestsActivitySource =
         new("Innovt.Cloud.AWS.Lambda.Kinesis.Tests");
@@ -71,7 +71,7 @@ public class KinesisProcessorTests
 
         await function.Process(message, lambdaContext);
 
-        serviceMock.Received().InicializeIoc();
+        serviceMock.Received().InitializeIoc();
         serviceMock.DidNotReceive().ProcessMessage();
     }
 
@@ -119,7 +119,7 @@ public class KinesisProcessorTests
         Assert.ThrowsAsync<CriticalException>(async () => await function.Process(message, lambdaContext),
             $"Kinesis Data for EventId {eventId} is null");
 
-        serviceMock.Received().InicializeIoc();
+        serviceMock.Received().InitializeIoc();
         serviceMock.DidNotReceive().ProcessMessage();
     }
 
@@ -143,7 +143,7 @@ public class KinesisProcessorTests
         var result = await function.Process(message, lambdaContext);
 
         Assert.IsNull(result);
-        serviceMock.Received().InicializeIoc();
+        serviceMock.Received().InitializeIoc();
         serviceMock.Received().ProcessMessage(Arg.Any<string>());
     }
 
@@ -166,7 +166,7 @@ public class KinesisProcessorTests
 
         await function.Process(message, lambdaContext);
 
-        serviceMock.Received().InicializeIoc();
+        serviceMock.Received().InitializeIoc();
         serviceMock.Received().ProcessMessage(Arg.Any<string>());
     }
 
@@ -200,8 +200,9 @@ public class KinesisProcessorTests
 
         await function.Process(message, lambdaContext);
 
-        serviceMock.Received().InicializeIoc();
-        serviceMock.Received().ProcessMessage(Arg.Is<string>(p => p.Contains(rootId)));
+        serviceMock.Received().InitializeIoc();
+        Assert.IsNotNull(rootId);
+        serviceMock.Received().ProcessMessage(Arg.Is<string>(p => p.Contains(rootId!)));
     }
 
     [Test]

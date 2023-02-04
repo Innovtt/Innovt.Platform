@@ -16,7 +16,7 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs.Tests;
 
 public class Tests
 {
-    private TestLambdaContext lambdaContext;
+    private TestLambdaContext lambdaContext = null!;
 
     [SetUp]
     public void Setup()

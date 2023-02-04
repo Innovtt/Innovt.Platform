@@ -129,7 +129,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Cloud.AWS.SQS.Tests"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Contrib.Authorization.Platform.Tests", "Innovt.Contrib.Authorization.Platform.Tests\Innovt.Contrib.Authorization.Platform.Tests.csproj", "{7A6BB3A7-C536-4422-B2F1-7C57DC87FFAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innovt.Cloud.AWS.Tests", "Innovt.Cloud.AWS.Tests\Innovt.Cloud.AWS.Tests.csproj", "{C60FAA51-E5AA-400A-929B-8715AEFF09D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Cloud.AWS.Tests", "Innovt.Cloud.AWS.Tests\Innovt.Cloud.AWS.Tests.csproj", "{C60FAA51-E5AA-400A-929B-8715AEFF09D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

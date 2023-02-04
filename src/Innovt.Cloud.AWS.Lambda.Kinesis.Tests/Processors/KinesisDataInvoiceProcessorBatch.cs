@@ -18,9 +18,9 @@ public class KinesisDataInvoiceProcessorBatch : KinesisDataProcessorBatch<Invoic
 
     protected override IContainer SetupIocContainer()
     {
-        serviceMock.InicializeIoc();
+        serviceMock.InitializeIoc();
 
-        return null;
+        return default!;
     }
 
     protected override Task<BatchFailureResponse> ProcessMessages(IList<Invoice> messages)
