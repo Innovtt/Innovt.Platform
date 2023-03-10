@@ -82,7 +82,7 @@ public abstract class BaseEventProcessor
             activity?.SetIdFormat(ActivityIdFormat.W3C);
         }
 
-        activity.Start();
+        activity?.Start();
 
         return activity;
     }
