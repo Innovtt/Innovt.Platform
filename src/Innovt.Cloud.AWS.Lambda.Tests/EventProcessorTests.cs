@@ -29,7 +29,8 @@ public class Tests
     {
         var lambdaContext = new TestLambdaContext
         {
-            Logger = Substitute.For<ILambdaLogger>()
+            Logger = Substitute.For<ILambdaLogger>(),
+            AwsRequestId = "e71f4399-5cc8-44e9-818f-d2864ad1cf52"
         };
 
         var function = new CustomEventProcessor();
@@ -42,7 +43,7 @@ public class Tests
     [Test]
     public async Task Process_Use_Default_Logger()
     {
-        var lambdaContext = new TestLambdaContext();
+        var lambdaContext = new TestLambdaContext() { AwsRequestId = "e71f4399-5cc8-44e9-818f-d2864ad1cf52" };
 
         var loggerMock = Substitute.For<ILogger>();
 
@@ -56,7 +57,7 @@ public class Tests
     [Test]
     public async Task Process_Calls_LoggError_When_Function_ThrowsException()
     {
-        var lambdaContext = new TestLambdaContext();
+        var lambdaContext = new TestLambdaContext() { AwsRequestId = "e71f4399-5cc8-44e9-818f-d2864ad1cf52" };
 
         var loggerMock = Substitute.For<ILogger>();
 
