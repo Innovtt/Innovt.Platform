@@ -286,7 +286,7 @@ public class KinesisProcessorTests
         domainMock.DidNotReceive().ProcessMessage(Arg.Any<DomainEvent>());
     }
 
-    private KinesisEvent.KinesisEventRecord CreateValidKinesisRecord(Guid eventId, object invoice)
+    private static KinesisEvent.KinesisEventRecord CreateValidKinesisRecord(Guid eventId, object invoice)
     {
         var dataAsBytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(invoice));
         var ms = new MemoryStream(dataAsBytes);

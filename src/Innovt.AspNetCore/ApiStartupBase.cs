@@ -93,7 +93,7 @@ public abstract class ApiStartupBase
 
     protected virtual void AddTracing(IServiceCollection services)
     {
-        services.AddOpenTelemetryTracing(builder =>
+        services.AddOpenTelemetry().WithTracing(builder =>
         {
             builder.AddSource(AppName).SetResourceBuilder(ResourceBuilder.CreateDefault()
                     .AddService(AppName))

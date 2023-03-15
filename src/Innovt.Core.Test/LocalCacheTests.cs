@@ -96,14 +96,14 @@ public class LocalCacheTests
 
 
     //Only for example 
-    private async Task<int?> Factory(CancellationToken cancellation)
+    private static Task<int?> Factory(CancellationToken cancellation)
     {
-        return 10;
+        return Task.FromResult<int?>(10);
     }
 
-    private async Task<int?> FactoryB(object A, CancellationToken cancellation)
+    private Task<int?> FactoryB(object a, CancellationToken cancellation)
     {
-        return 10;
+        return Task.FromResult<int?>(10);
     }
 
     [Test]

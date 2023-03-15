@@ -3,7 +3,7 @@
   <PropertyGroup>
 	  <TargetFramework>net7.0</TargetFramework>
 	  <PackageId>Innovt.Data.EFCore.PostgreSQL</PackageId>
-	  <PackageVersion>7.0.0-beta</PackageVersion>
+	  <PackageVersion>7.0.1-beta</PackageVersion>
 	  <Authors>Michel Borges</Authors>
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	  <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -18,7 +18,7 @@
     <ProjectReference Include="..\Innovt.Data.EFCore\Innovt.Data.EFCore.csproj" />
   </ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.1" />
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.3" />
 	</ItemGroup>
 
 </Project>
