@@ -2,10 +2,10 @@
 // Author: Michel Borges
 // Project: Innovt.CrossCutting.Log.Serilog
 
-using System;
-using System.Diagnostics;
 using Serilog.Core;
 using Serilog.Events;
+using System;
+using System.Diagnostics;
 
 namespace Innovt.CrossCutting.Log.Serilog;
 
@@ -22,9 +22,11 @@ public class ActivityEnrich : ILogEventEnricher
 
         logEvent.AddOrUpdateProperty(new LogEventProperty("TraceId", new ScalarValue(activity.Id)));
         logEvent.AddOrUpdateProperty(new LogEventProperty("SpanId", new ScalarValue(activity.SpanId)));
+        logEvent.AddOrUpdateProperty(new LogEventProperty("ParentId", new ScalarValue(activity.ParentId)));
     }
 
 #pragma warning disable CA1822 // Mark members as static
+
     private static Activity GetActivity()
 #pragma warning restore CA1822 // Mark members as static
     {
