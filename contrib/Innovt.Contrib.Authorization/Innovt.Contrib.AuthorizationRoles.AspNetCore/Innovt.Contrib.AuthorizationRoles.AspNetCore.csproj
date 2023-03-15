@@ -4,7 +4,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>Innovt.Contrib.AuthorizationRoles.AspNetCore</PackageId>
-	<PackageVersion>6.1.22</PackageVersion>
+	<PackageVersion>6.1.23</PackageVersion>
     <Authors>Michel Borges</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -15,7 +15,7 @@
   </PropertyGroup>
     <ItemGroup>
 	    <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
-	    <PackageReference Include="OpenTelemetry" Version="1.3.1" />
+	    <PackageReference Include="OpenTelemetry" Version="1.4.0" />
     </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\Innovt.AspNetCore\Innovt.AspNetCore.csproj" />

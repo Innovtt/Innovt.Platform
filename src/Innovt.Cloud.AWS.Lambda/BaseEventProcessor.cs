@@ -37,7 +37,7 @@ public abstract class BaseEventProcessor
         if (Logger is { } && logger is null)
             return;
 
-        Logger = logger is null ? new LambdaLogger(Context.Logger) : logger;
+        Logger = logger ?? new LambdaLogger(Context.Logger);
     }
 
     protected void SetupIoc()
