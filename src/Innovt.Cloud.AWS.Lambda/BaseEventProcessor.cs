@@ -2,13 +2,13 @@
 // Author: Michel Borges
 // Project: Innovt.Cloud.AWS.Lambda
 
-using System;
-using System.Diagnostics;
-using System.Globalization;
 using Amazon.Lambda.Core;
 using Innovt.Core.CrossCutting.Ioc;
 using Innovt.Core.CrossCutting.Log;
 using Microsoft.Extensions.Configuration;
+using System;
+using System.Diagnostics;
+using System.Globalization;
 
 namespace Innovt.Cloud.AWS.Lambda;
 
@@ -37,7 +37,7 @@ public abstract class BaseEventProcessor
         if (Logger is { } && logger is null)
             return;
 
-        Logger = logger is null ? new LambdaLogger(Context.Logger) : logger;
+        Logger = logger ?? new LambdaLogger(Context.Logger);
     }
 
     protected void SetupIoc()
@@ -69,14 +69,20 @@ public abstract class BaseEventProcessor
     {
         if (activityName is null) throw new ArgumentNullException(nameof(activityName));
 
-        using var activity = EventProcessorActivitySource.StartActivity(activityName);
+        var activity = EventProcessorActivitySource.StartActivity(activityName) ?? new Activity(activityName);
         activity?.SetTag("Lambda.FunctionName", Context.FunctionName);
         activity?.SetTag("Lambda.FunctionVersion", Context.FunctionVersion);
         activity?.SetTag("Lambda.LogStreamName", Context.LogStreamName);
         activity?.AddBaggage("Lambda.RequestId", Context.AwsRequestId);
 
         //setting request id as parentId.
-        if (activity?.ParentId is null && Context.AwsRequestId != null) activity?.SetParentId(Context.AwsRequestId);
+        if (activity?.ParentId is null && Context.AwsRequestId != null)
+        {
+            activity?.SetParentId(Context.AwsRequestId);
+            activity?.SetIdFormat(ActivityIdFormat.W3C);
+        }
+
+        activity?.Start();
 
         return activity;
     }
@@ -97,7 +103,6 @@ public abstract class BaseEventProcessor
 
         Configuration = configBuilder.Build();
     }
-
 
     protected abstract IContainer SetupIocContainer();
 
