@@ -1,4 +1,5 @@
-﻿using Amazon.Scheduler;
+﻿using Amazon;
+using Amazon.Scheduler;
 using Amazon.Scheduler.Model;
 using Amazon.SecurityToken;
 using Amazon.SecurityToken.Model;
@@ -55,7 +56,11 @@ namespace Innovt.Cloud.AWS.Bridge
             {
                 Arn = await GetQueueArnAsync(queueName).ConfigureAwait(false),
                 Input = Serializer.SerializeObject(message),
-                RoleArn = RoleArn
+                RoleArn = RoleArn,
+                RetryPolicy = new RetryPolicy()
+                {
+                    MaximumRetryAttempts = 3
+                }
             };
             var flexibleTimeWindow = new FlexibleTimeWindow()
             {
@@ -70,7 +75,7 @@ namespace Innovt.Cloud.AWS.Bridge
                         State = ScheduleState.ENABLED,
                         ScheduleExpression = $"at({dateTime:yyyy-MM-ddTHH:mm:ss})",
                         Target = target,
-                        FlexibleTimeWindow = flexibleTimeWindow
+                        FlexibleTimeWindow = flexibleTimeWindow,
                     }, cancellationToken)
                 .ConfigureAwait(false)).ConfigureAwait(false);
 
@@ -91,13 +96,14 @@ namespace Innovt.Cloud.AWS.Bridge
 
             if (Configuration?.AccountNumber != null)
             {
-                queueArn = $"arn:aws:sqs:{GetServiceRegionEndPoint().SystemName}:{Configuration?.AccountNumber}:{queueName}";
+                queueArn = $"arn:aws:sqs:{GetServiceRegionEndPoint()?.SystemName ?? RegionEndpoint.USEast1.SystemName}:{Configuration.AccountNumber}:{queueName}";
             }
             else
             {
                 IAmazonSecurityTokenService stsClient = CreateService<AmazonSecurityTokenServiceClient>();
-                var accountId = (await stsClient.GetCallerIdentityAsync(new GetCallerIdentityRequest()).ConfigureAwait(false)).Account;
-                queueArn = $"arn:aws:sqs:{GetServiceRegionEndPoint().SystemName}:{accountId}:{queueName}";
+                var accountNumber = (await stsClient.GetCallerIdentityAsync(new GetCallerIdentityRequest()).ConfigureAwait(false)).Account;
+
+                queueArn = $"arn:aws:sqs:{GetServiceRegionEndPoint()?.SystemName ?? RegionEndpoint.USEast1.SystemName}:{accountNumber}:{queueName}";
             }
             activity?.SetTag("schedulerService.queue_arn", queueArn);
 

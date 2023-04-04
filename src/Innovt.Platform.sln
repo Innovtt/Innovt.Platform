@@ -131,7 +131,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Contrib.Authorizatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Cloud.AWS.Tests", "Innovt.Cloud.AWS.Tests\Innovt.Cloud.AWS.Tests.csproj", "{C60FAA51-E5AA-400A-929B-8715AEFF09D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innovt.Cloud.AWS.Bridge", "Innovt.Cloud.AWS.Bridge\Innovt.Cloud.AWS.Bridge.csproj", "{258D6762-1520-44A2-BB91-B48784471793}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Cloud.AWS.Bridge", "Innovt.Cloud.AWS.Bridge\Innovt.Cloud.AWS.Bridge.csproj", "{258D6762-1520-44A2-BB91-B48784471793}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
