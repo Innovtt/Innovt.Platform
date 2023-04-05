@@ -67,22 +67,31 @@ namespace Innovt.Cloud.AWS.Bridge
                 Mode = FlexibleTimeWindowMode.OFF
             };
 
-            var response = await base.CreateDefaultRetryAsyncPolicy()
-                .ExecuteAsync(async () =>
-                    await SchedulerClient.CreateScheduleAsync(new CreateScheduleRequest()
-                    {
-                        Name = scheduleName,
-                        State = ScheduleState.ENABLED,
-                        ScheduleExpression = $"at({dateTime:yyyy-MM-ddTHH:mm:ss})",
-                        Target = target,
-                        FlexibleTimeWindow = flexibleTimeWindow,
-                    }, cancellationToken)
-                .ConfigureAwait(false)).ConfigureAwait(false);
+            CreateScheduleResponse response;
+
+            try
+            {
+                response = await base.CreateDefaultRetryAsyncPolicy()
+                    .ExecuteAsync(async () =>
+                        await SchedulerClient.CreateScheduleAsync(new CreateScheduleRequest()
+                        {
+                            Name = scheduleName,
+                            State = ScheduleState.ENABLED,
+                            ScheduleExpression = $"at({dateTime:yyyy-MM-ddTHH:mm:ss})",
+                            Target = target,
+                            FlexibleTimeWindow = flexibleTimeWindow,
+                        }, cancellationToken)
+                    .ConfigureAwait(false)).ConfigureAwait(false);
+            }
+            catch (Amazon.Scheduler.Model.ConflictException ex)
+            {
+                throw new ScheduleConflictException(ex.Message);
+            }
 
             activity?.SetTag("schedulerService.status_code", response.HttpStatusCode);
 
             if (response.HttpStatusCode != HttpStatusCode.OK)
-                throw new CriticalException("Error sending message to queue.");
+                throw new CriticalException("Error schedule message to AWS Bridge.");
 
             return response.ResponseMetadata.RequestId;
         }
