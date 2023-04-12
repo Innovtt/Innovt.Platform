@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>Innovt.Cloud.AWS.Lambda.CustomRuntime</PackageId>
-   <PackageVersion>6.1.23</PackageVersion>
+   <PackageVersion>6.2.0</PackageVersion>
     <Authors>Michel Borges</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
