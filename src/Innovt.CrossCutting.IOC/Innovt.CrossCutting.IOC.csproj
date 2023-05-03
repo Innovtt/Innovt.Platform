@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <PackageId>Innovt.CrossCutting.IOC</PackageId>
-    <PackageVersion>7.0.2</PackageVersion>
+    <PackageVersion>7.0.3</PackageVersion>
     <Authors>Michel Borges</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
