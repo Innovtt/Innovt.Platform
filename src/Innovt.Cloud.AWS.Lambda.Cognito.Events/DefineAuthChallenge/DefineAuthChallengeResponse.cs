@@ -13,4 +13,8 @@ public class DefineAuthChallengeResponse : CognitoDefineAuthChallengeResponse
     [DataMember(Name = "issueTokens")]
     [JsonPropertyName("issueTokens")]
     public new bool? IssueTokens { get; set; }
+
+    [DataMember(Name = "failAuthentication")]
+    [JsonPropertyName("failAuthentication")]
+    public new bool? FailAuthentication { get; set; }
 }
