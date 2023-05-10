@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<PackageId>Innovt.Cloud.AWS.Lambda.Cognito.Events</PackageId>
+		<PackageVersion>7.0.4</PackageVersion>
+		<Authors>Michel Borges</Authors>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<Copyright>Innovt Tecnologia</Copyright>
+		<Description>AWS implementation for lambda cognito events.</Description>
+		<LangVersion>latest</LangVersion>
+		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Amazon.Lambda.CognitoEvents" Version="2.1.0" />
+		<PackageReference Include="System.Text.Json" Version="7.0.2" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="CreateAuthChallenge\" />
+		<Folder Include="DefineAuthChallenge\" />
+		<Folder Include="PreTokenGeneration\" />
+		<Folder Include="PostConfirmation\" />
+	</ItemGroup>
+</Project>
