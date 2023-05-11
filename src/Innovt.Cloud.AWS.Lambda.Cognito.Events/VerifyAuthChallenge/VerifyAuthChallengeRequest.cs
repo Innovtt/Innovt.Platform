@@ -27,5 +27,5 @@ public class VerifyAuthChallengeRequest : CognitoTriggerRequest
 
     [DataMember(Name = "challengeAnswer")]
     [JsonPropertyName("challengeAnswer")]
-    public new string ChallengeAnswer { get; set; }
+    public string ChallengeAnswer { get; set; }
 }
