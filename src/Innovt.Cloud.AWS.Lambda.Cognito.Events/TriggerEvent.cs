@@ -3,17 +3,13 @@
 // Project: Innovt.Cloud.AWS.Lambda.Cognito.Events
 
 using System.Runtime.Serialization;
-using Amazon.Lambda.CognitoEvents;
 
 namespace Innovt.Cloud.AWS.Lambda.Cognito.Events;
-
-public class TriggerEvent
+[DataContract]
+public abstract class TriggerEvent<TRequest, TResponse>
+    where TRequest : TriggerRequest, new()
+    where TResponse : TriggerResponse, new()
 {
-    [DataContract]
-    public abstract class CognitoTriggerEvent<TRequest, TResponse>
-        where TRequest : TriggerRequest, new()
-        where TResponse : TriggerResponse, new()
-    {
         [DataMember(Name = "version")]
         public string Version { get; set; }
 
@@ -37,5 +33,4 @@ public class TriggerEvent
         
         [DataMember(Name = "response")]
         public TResponse Response { get; set; } = new TResponse();
-    }
 }

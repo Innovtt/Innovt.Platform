@@ -5,11 +5,10 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
-using Amazon.Lambda.CognitoEvents;
 
 namespace Innovt.Cloud.AWS.Lambda.Cognito.Events.VerifyAuthChallenge;
 
-public class VerifyAuthChallengeRequest : CognitoTriggerRequest
+public class VerifyAuthChallengeRequest : TriggerRequest
 {
     [DataMember(Name = "privateChallengeParameters")]
     [JsonPropertyName("privateChallengeParameters")]
@@ -22,7 +21,7 @@ public class VerifyAuthChallengeRequest : CognitoTriggerRequest
 
     [DataMember(Name = "userNotFound")]
     [JsonPropertyName("userNotFound")]
-    public bool? UserNotFound { get; set; }
+    public bool UserNotFound { get; set; }
 
 
     [DataMember(Name = "challengeAnswer")]

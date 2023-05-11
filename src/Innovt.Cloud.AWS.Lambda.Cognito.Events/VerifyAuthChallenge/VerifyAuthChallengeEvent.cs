@@ -6,7 +6,7 @@ using Amazon.Lambda.CognitoEvents;
 
 namespace Innovt.Cloud.AWS.Lambda.Cognito.Events.VerifyAuthChallenge;
 
-public class VerifyAuthChallengeEvent : CognitoTriggerEvent<VerifyAuthChallengeRequest,
+public class VerifyAuthChallengeEvent : TriggerEvent<VerifyAuthChallengeRequest,
     VerifyAuthChallengeResponse>
 {
 }

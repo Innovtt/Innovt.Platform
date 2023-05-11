@@ -1,8 +1,6 @@
 ﻿// Innovt Company
 // Author: Michel Borges
 // Project: Innovt.Cloud.AWS.Lambda.Cognito.Events
-
-using Amazon.Lambda.CognitoEvents;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
@@ -21,7 +19,7 @@ public class CreateAuthChallengeRequest : TriggerRequest
 
     [DataMember(Name = "session")]
     [JsonPropertyName("session")]
-    public List<ChallengeResultElement> Session { get; set; } = new List<ChallengeResultElement>();
+    public List<ChallengeResult> Session { get; set; } = new List<ChallengeResult>();
 
     [DataMember(Name = "userNotFound")]
     [JsonPropertyName("userNotFound")]

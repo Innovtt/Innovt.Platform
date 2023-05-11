@@ -6,7 +6,7 @@ using Amazon.Lambda.CognitoEvents;
 
 namespace Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration;
 
-public class PreTokenGenerationEvent : CognitoTriggerEvent<PreTokenGenerationRequest,
+public class PreTokenGenerationEvent : TriggerEvent<PreTokenGenerationRequest,
     PreTokenGenerationResponse>
 {
 }

@@ -4,12 +4,11 @@
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
-using Amazon.Lambda.CognitoEvents;
 
 namespace Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge;
 
 [DataContract]
-public class DefineAuthChallengeResponse : CognitoTriggerResponse
+public class DefineAuthChallengeResponse : TriggerResponse
 {
     [DataMember(Name = "challengeName")]
     [JsonPropertyName("challengeName")]
@@ -17,11 +16,10 @@ public class DefineAuthChallengeResponse : CognitoTriggerResponse
 
     [DataMember(Name = "issueTokens")]
     [JsonPropertyName("issueTokens")]
-    public bool? IssueTokens { get; set; }
+    public bool IssueTokens { get; set; }
 
 
     [DataMember(Name = "failAuthentication")]
     [JsonPropertyName("failAuthentication")]
-    public bool? FailAuthentication { get; set; }
-
+    public bool FailAuthentication { get; set; }
 }
