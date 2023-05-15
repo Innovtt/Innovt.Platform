@@ -28,6 +28,7 @@ namespace Innovt.Cloud.AWS.Tests
 
 
         [Test]
+        [Ignore("Only for local tests")]
         public void GetCredentialWithoutProfileReturnDefaultProfile()
         {
             var configuration = new Configuration.DefaultAWSConfiguration();
