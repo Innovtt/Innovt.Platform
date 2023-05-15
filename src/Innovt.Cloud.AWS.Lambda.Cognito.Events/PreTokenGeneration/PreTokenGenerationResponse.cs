@@ -4,7 +4,6 @@
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
-using System.Xml.Linq;
 
 namespace Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration;
 

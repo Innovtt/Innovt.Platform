@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <PackageId>Innovt.Cloud.AWS.Notification</PackageId>
-   <PackageVersion>7.0.8</PackageVersion>
+   <PackageVersion>7.0.9</PackageVersion>
     <Authors>Michel Borges</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -13,8 +13,8 @@
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.100.127" />
-    <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.7.101.63" />
+    <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.100.128" />
+    <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.7.101.64" />
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

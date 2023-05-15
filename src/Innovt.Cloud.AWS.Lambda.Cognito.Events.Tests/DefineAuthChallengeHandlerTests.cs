@@ -1,7 +1,6 @@
 ﻿// Innovt Company
 // Author: Michel Borges
 // Project: Innovt.Cloud.AWS.Lambda.Cognito.Events.Tests
-
 using System.Text.Json;
 using Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge;
 using NUnit.Framework;
@@ -28,7 +27,7 @@ public class DefineAuthChallengeHandlerTests
                             },
                             ""response"": {
                                 ""challengeName"": ""string"",                                
-                                ""issueTokens"": null,
+                                ""issueTokens"": false,
                                 ""failAuthentication"": true
                             }
                         }";

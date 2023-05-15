@@ -1,5 +1,4 @@
 ﻿using System;
-using Amazon.Lambda.CognitoEvents;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Xml.Linq;
