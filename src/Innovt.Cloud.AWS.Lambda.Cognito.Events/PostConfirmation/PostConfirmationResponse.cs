@@ -6,6 +6,6 @@ using Amazon.Lambda.CognitoEvents;
 
 namespace Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation;
 
-public class PostConfirmationResponse : CognitoPostConfirmationResponse
+public class PostConfirmationResponse : TriggerResponse
 {
 }

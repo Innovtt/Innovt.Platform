@@ -14,7 +14,6 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="System.Text.Json" Version="7.0.2" />
-		<PackageReference Include="Amazon.Lambda.CognitoEvents" Version="2.1.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="CreateAuthChallenge\" />

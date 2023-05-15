@@ -38,7 +38,7 @@ public class DefineAuthChallengeHandlerTests
         Assert.Multiple(() =>
         {
             Assert.That(message, Is.Not.Null);
-            Assert.That(message.Response.IssueTokens, Is.Null);
+            Assert.That(message.Response.IssueTokens, Is.False);
             Assert.That(message.Response.FailAuthentication, Is.EqualTo(true));
         });
     }
