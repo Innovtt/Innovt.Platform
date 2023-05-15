@@ -31,7 +31,7 @@ public class IocTestModule : IOCModule
 
         collection.AddSingleton(configuration);
 
-        collection.AddScoped<IAwsConfiguration>(a => new DefaultAWSConfiguration("antecipa-dev"));
+        collection.AddScoped<IAwsConfiguration>(a => new DefaultAWSConfiguration());
 
         //collection.AddScoped<IAwsConfiguration, DefaultAWSConfiguration>();
 
