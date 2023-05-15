@@ -4,6 +4,7 @@ using NUnit.Framework;
 namespace Innovt.Cloud.AWS.Tests
 {
     [TestFixture]
+    [Ignore("Only local tests")]
     public class DefaultAWSConfigurationTests
     {
         [Test]
