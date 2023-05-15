@@ -11,5 +11,5 @@ public class PreTokenGenerationResponse : TriggerResponse
 {
     [DataMember(Name = "claimsOverrideDetails")]
     [JsonPropertyName("claimsOverrideDetails")]
-    public ClaimOverrideDetails ClaimsOverrideDetails { get; set; } = new ClaimOverrideDetails();
+    public ClaimOverrideDetails ClaimsOverrideDetails { get; set; } = new();
 }

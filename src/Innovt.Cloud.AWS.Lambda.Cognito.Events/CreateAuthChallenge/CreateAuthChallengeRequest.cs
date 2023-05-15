@@ -19,7 +19,7 @@ public class CreateAuthChallengeRequest : TriggerRequest
 
     [DataMember(Name = "session")]
     [JsonPropertyName("session")]
-    public List<ChallengeResult> Session { get; set; } = new List<ChallengeResult>();
+    public List<ChallengeResultItem> Session { get; set; } = new List<ChallengeResultItem>();
 
     [DataMember(Name = "userNotFound")]
     [JsonPropertyName("userNotFound")]

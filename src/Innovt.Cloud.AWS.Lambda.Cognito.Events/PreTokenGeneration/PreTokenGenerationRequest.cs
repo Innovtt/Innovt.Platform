@@ -13,10 +13,10 @@ public class PreTokenGenerationRequest : TriggerRequest
 {
     [DataMember(Name = "groupConfiguration")]
     [JsonPropertyName("groupConfiguration")]
-    public GroupConfiguration GroupConfiguration { get; set; } = new GroupConfiguration();
+    public GroupConfiguration GroupConfiguration { get; set; } = new();
 
 
     [DataMember(Name = "clientMetadata")]
     [JsonPropertyName("clientMetadata")]
-    public Dictionary<string, string> ClientMetadata { get; set; } = new Dictionary<string, string>();
+    public Dictionary<string, string> ClientMetadata { get; set; } = new();
 }
