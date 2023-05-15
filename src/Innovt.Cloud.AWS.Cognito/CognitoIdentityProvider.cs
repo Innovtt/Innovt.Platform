@@ -660,8 +660,6 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             _ => new CriticalException(ErrorCode.InternalServerError, ex)
         };
     }
-
-
     private async Task<SignInResponse> SignIn(AuthFlowType type, SignInRequestBase request,
         Dictionary<string, string> authParameters = null, CancellationToken cancellationToken = default)
     {

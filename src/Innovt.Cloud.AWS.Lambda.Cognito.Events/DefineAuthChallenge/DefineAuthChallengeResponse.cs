@@ -16,10 +16,10 @@ public class DefineAuthChallengeResponse : TriggerResponse
 
     [DataMember(Name = "issueTokens")]
     [JsonPropertyName("issueTokens")]
-    public bool IssueTokens { get; set; }
+    public bool? IssueTokens { get; set; }
 
 
     [DataMember(Name = "failAuthentication")]
     [JsonPropertyName("failAuthentication")]
-    public bool FailAuthentication { get; set; }
+    public bool? FailAuthentication { get; set; }
 }

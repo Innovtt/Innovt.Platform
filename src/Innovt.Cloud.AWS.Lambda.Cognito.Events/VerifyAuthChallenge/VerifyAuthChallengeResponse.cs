@@ -11,5 +11,5 @@ public class VerifyAuthChallengeResponse : TriggerResponse
 {
     [DataMember(Name = "answerCorrect")]
     [JsonPropertyName("answerCorrect")]
-    public bool AnswerCorrect { get; set; }
+    public bool? AnswerCorrect { get; set; }
 }
