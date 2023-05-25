@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<PackageId>Innovt.Cloud.AWS.Bridge</PackageId>
-		<PackageVersion>6.2.0</PackageVersion>
+		<PackageVersion>6.2.1</PackageVersion>
 		<Authors>Welbert Serra</Authors>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
