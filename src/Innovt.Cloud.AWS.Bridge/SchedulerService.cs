@@ -91,7 +91,7 @@ namespace Innovt.Cloud.AWS.Bridge
 
             activity?.SetTag("schedulerService.status_code", response.HttpStatusCode);
 
-            if (response.HttpStatusCode != HttpStatusCode.OK)
+            if (response == null || response.HttpStatusCode != HttpStatusCode.OK)
                 throw new CriticalException("Error schedule message to AWS Bridge.");
 
             return response.ResponseMetadata.RequestId;
@@ -117,17 +117,25 @@ namespace Innovt.Cloud.AWS.Bridge
             if (!string.IsNullOrWhiteSpace(scheduleGroupName))
                 activity?.SetTag("schedulerService.GroupName", scheduleGroupName);
 
-            var response = await base.CreateDefaultRetryAsyncPolicy()
-                    .ExecuteAsync(async () =>
-                        await SchedulerClient.DeleteScheduleAsync(new DeleteScheduleRequest()
-                        {
-                            Name = scheduleName,
-                            GroupName = scheduleGroupName,
-                        }, cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
+            DeleteScheduleResponse response;
+            try
+            {
+                response = await base.CreateDefaultRetryAsyncPolicy()
+                            .ExecuteAsync(async () =>
+                                await SchedulerClient.DeleteScheduleAsync(new DeleteScheduleRequest()
+                                {
+                                    Name = scheduleName,
+                                    GroupName = scheduleGroupName,
+                                }, cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
+            }
+            catch (Amazon.Scheduler.Model.ResourceNotFoundException)
+            {
+                throw new ScheduleNotFoundException($"Scheduler {scheduleName} not found.");
+            }
 
             activity?.SetTag("schedulerService.status_code", response.HttpStatusCode);
 
-            if (response.HttpStatusCode != HttpStatusCode.OK)
+            if (response == null || response.HttpStatusCode != HttpStatusCode.OK)
                 throw new CriticalException("Error on delete scheduler at AWS Bridge.");
         }
 
