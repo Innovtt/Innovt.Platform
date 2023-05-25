@@ -42,14 +42,14 @@ namespace Innovt.Cloud.AWS.Bridge
             this.serializer = serializer;
         }
 
-        public async Task<string> ScheduleQueueMessageAsync<TK>(TK message, string queueName, DateTime dateTime, string scheduleName,
+        private async Task<string> BaseScheduleQueueMessageAsync<TK>(TK message, string queueName, string scheduleExpression, string scheduleName, string scheduleGroupName = null,
         CancellationToken cancellationToken = default)
         {
             if (message == null) throw new ArgumentNullException(nameof(message));
             if (queueName == null) throw new ArgumentNullException(nameof(queueName));
             if (scheduleName == null) throw new ArgumentNullException(nameof(scheduleName));
 
-            using var activity = QueueActivitySource.StartActivity("QueueAsync");
+            using var activity = QueueActivitySource.StartActivity("ScheduleQueueAsync");
             activity?.SetTag("schedulerService.queueName", queueName);
 
             var target = new Target()
@@ -77,7 +77,8 @@ namespace Innovt.Cloud.AWS.Bridge
                         {
                             Name = scheduleName,
                             State = ScheduleState.ENABLED,
-                            ScheduleExpression = $"at({dateTime:yyyy-MM-ddTHH:mm:ss})",
+                            ScheduleExpression = scheduleExpression,
+                            GroupName = scheduleGroupName,
                             Target = target,
                             FlexibleTimeWindow = flexibleTimeWindow,
                         }, cancellationToken)
@@ -94,6 +95,40 @@ namespace Innovt.Cloud.AWS.Bridge
                 throw new CriticalException("Error schedule message to AWS Bridge.");
 
             return response.ResponseMetadata.RequestId;
+        }
+
+        public async Task<string> ScheduleQueueMessageAsync<TK>(TK message, string queueName, DateTime dateTime, string scheduleName, string scheduleGroupName = null,
+        CancellationToken cancellationToken = default)
+        {
+            return await BaseScheduleQueueMessageAsync(message, queueName, $"at({dateTime:yyyy-MM-ddTHH:mm:ss})", scheduleName, scheduleGroupName: scheduleGroupName, cancellationToken: cancellationToken);
+        }
+
+        public async Task<string> ScheduleQueueMessageAsync<TK>(TK message, string queueName, string cronExpression, string scheduleName, string scheduleGroupName = null,
+        CancellationToken cancellationToken = default)
+        {
+            return await BaseScheduleQueueMessageAsync(message, queueName, cronExpression, scheduleName, scheduleGroupName: scheduleGroupName, cancellationToken: cancellationToken);
+        }
+
+        public async Task DeleteSchedulerAsync(string scheduleName, string scheduleGroupName = null, CancellationToken cancellationToken = default)
+        {
+            if (scheduleName == null) throw new ArgumentNullException(nameof(scheduleName));
+            using var activity = QueueActivitySource.StartActivity("ScheduleDeleteAsync");
+            activity?.SetTag("schedulerService.Name", scheduleName);
+            if (!string.IsNullOrWhiteSpace(scheduleGroupName))
+                activity?.SetTag("schedulerService.GroupName", scheduleGroupName);
+
+            var response = await base.CreateDefaultRetryAsyncPolicy()
+                    .ExecuteAsync(async () =>
+                        await SchedulerClient.DeleteScheduleAsync(new DeleteScheduleRequest()
+                        {
+                            Name = scheduleName,
+                            GroupName = scheduleGroupName,
+                        }, cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
+
+            activity?.SetTag("schedulerService.status_code", response.HttpStatusCode);
+
+            if (response.HttpStatusCode != HttpStatusCode.OK)
+                throw new CriticalException("Error on delete scheduler at AWS Bridge.");
         }
 
         private async Task<string> GetQueueArnAsync(string queueName)
