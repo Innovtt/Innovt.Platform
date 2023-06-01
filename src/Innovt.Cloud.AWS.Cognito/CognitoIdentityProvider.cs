@@ -646,7 +646,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             NotAuthorizedException => new BusinessException(ErrorCode.NotAuthorized, ex),
             TooManyRequestsException => new BusinessException(ErrorCode.TooManyRequests, ex),
             PasswordResetRequiredException => new BusinessException(ErrorCode.PasswordResetRequired, ex),
-            UserNotFoundException => new BusinessException(ErrorCode.UserNotFound, ex),
+            UserNotFoundException => new Exceptions.UserNotFoundException(),
             UserNotConfirmedException => new BusinessException(ErrorCode.UserNotConfirmed, ex),
             InvalidPasswordException => new BusinessException(ErrorCode.InvalidPassword, ex),
             CodeMismatchException => new BusinessException(ErrorCode.CodeMismatch, ex),

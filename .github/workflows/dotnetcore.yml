@@ -20,7 +20,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 7.0.202
+        dotnet-version: 7.0.302
         include-prerelease: true
         fetch-depth: 0        
     - name: Setting Workspace
