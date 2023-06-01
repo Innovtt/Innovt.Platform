@@ -26,6 +26,6 @@ public class KinesisDomainEventInvoiceProcessorBatch : KinesisDomainEventProcess
     {
         serviceMock.InicializeIoc();
 
-        return null;
+        return null!;
     }
 }

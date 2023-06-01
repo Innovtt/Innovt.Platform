@@ -19,7 +19,7 @@ public class KinesisDataInvoiceProcessor2 : KinesisDataProcessor<DataStream<Base
     protected override IContainer SetupIocContainer()
     {
         serviceMock.InicializeIoc();
-        return null;
+        return null!;
     }
 
     protected override Task ProcessMessage(DataStream<BaseInvoice> message)

@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net7.0</TargetFramework>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 	</PropertyGroup>
 
@@ -25,12 +25,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="AWSSDK.SecurityToken" Version="3.7.101.25" />
-		<PackageReference Include="Datadog.Trace.OpenTracing" Version="2.26.0" />
-		<PackageReference Include="ServiceStack.Redis" Version="6.7.0" />
+		<PackageReference Include="Datadog.Trace.OpenTracing" Version="2.31.0" />
+		<PackageReference Include="ServiceStack.Redis" Version="6.8.0" />
 		<PackageReference Include="OpenTelemetry" Version="1.4.0" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="6.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
 		<PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.4.0" />
 		<PackageReference Include="OpenTelemetry.Exporter.Jaeger" Version="1.4.0" />
 	</ItemGroup>

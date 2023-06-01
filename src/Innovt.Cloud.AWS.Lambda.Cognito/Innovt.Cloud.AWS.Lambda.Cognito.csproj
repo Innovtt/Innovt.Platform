@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<PackageId>Innovt.Cloud.AWS.Lambda.Cognito</PackageId>
+		<PackageVersion>7.0.14</PackageVersion>
+		<Authors>Michel Borges</Authors>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<Copyright>Innovt Tecnologia</Copyright>
+		<Description>AWS implementation for lambda cognito Triggers.</Description>
+		<LangVersion>latest</LangVersion>
+		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="System.Text.Json" Version="7.0.2" />
+		<PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.3.1" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Innovt.Cloud.AWS.Lambda.Cognito.Events\Innovt.Cloud.AWS.Lambda.Cognito.Events.csproj" />
+		<ProjectReference Include="..\Innovt.Cloud.AWS.Lambda\Innovt.Cloud.AWS.Lambda.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Handlers\" />
+	</ItemGroup>
+</Project>

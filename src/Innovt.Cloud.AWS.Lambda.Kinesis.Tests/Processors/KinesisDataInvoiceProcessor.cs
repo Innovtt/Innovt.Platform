@@ -17,7 +17,7 @@ public class KinesisDataInvoiceProcessor : KinesisDataProcessor<Invoice>
 
     protected override IContainer SetupIocContainer()
     {
-        return null;
+        return null!;
     }
 
     protected override Task ProcessMessage(Invoice message)

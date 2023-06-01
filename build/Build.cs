@@ -76,7 +76,7 @@ class Build : NukeBuild
         .Requires(() => Configuration == "Release")
         .Executes(() =>
         {
-            GlobFiles(ArtifactsDirectory / "nuget", "*.nupkg")
+            (ArtifactsDirectory / "nuget").GlobFiles("*.nupkg")
                 .NotNull()
                 //.Where(x => x.StartsWith("Innovt.",StringComparison.InvariantCultureIgnoreCase))
                 .ForEach(x =>

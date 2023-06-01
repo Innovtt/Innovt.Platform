@@ -25,7 +25,7 @@ public class KinesisDomainEventEmptyInvoiceProcessor : KinesisDomainEventProcess
     {
         serviceMock.InicializeIoc();
 
-        return null;
+        return null!;
     }
 
     protected override Task ProcessMessage(DomainEvent message)
