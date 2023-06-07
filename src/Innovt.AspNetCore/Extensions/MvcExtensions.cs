@@ -70,25 +70,20 @@ public static class MvcExtensions
         });
     }
 
-    public static void AddBearerAuthorization(this IServiceCollection services, IConfiguration configuration,
-        string configSection = "BearerAuthentication")
+    public static void AddBearerAuthorization(this IServiceCollection services, IConfiguration configuration, string configSection = "BearerAuthentication")
     {
         if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
-        var section = configuration.GetSection(configSection);
-
-        if (section == null) throw new CriticalException($"The Config Section '{configSection}' not defined.");
-
-        var audienceSection = section.GetSection("Audience");
-        var authoritySection = section.GetSection("Authority");
-
-        if (audienceSection == null) throw new CriticalException("The Config Section 'Audience' not defined.");
-
-        if (authoritySection == null) throw new CriticalException("The Config Section 'Authority' not defined.");
+        var audienceSection = configuration.GetSection($"{configSection}:Audience");
+        var authoritySection = configuration.GetSection($"{configSection}:Authority");
+        
+        if (audienceSection.Value == null) throw new CriticalException($"The Config Section '{configSection}:Audience' not defined.");
+        if (authoritySection.Value == null) throw new CriticalException("The Config Section '{configSection}:Authority' not defined.");
 
         services.AddBearerAuthorization(audienceSection.Value, authoritySection.Value);
     }
 
+    // ReSharper disable once MemberCanBePrivate.Global
     public static void AddBearerAuthorization(this IServiceCollection services, string audienceId, string authority)
     {
         services.AddAuthorization(options =>
@@ -113,8 +108,8 @@ public static class MvcExtensions
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
-                    ValidateAudience = false,
-                    ValidateIssuer = false,
+                    ValidateAudience = true,
+                    ValidateIssuer = true,
                     ValidateLifetime = true
                 };
             });
