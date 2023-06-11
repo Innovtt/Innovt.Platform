@@ -31,8 +31,7 @@ public static class MvcExtensions
     /// </summary>
     /// <param name="app"></param>
     /// <param name="supportedCultures"></param>
-    public static void UseRequestLocalization(this IApplicationBuilder app,
-        IList<CultureInfo> supportedCultures = null)
+    public static void UseRequestLocalization(this IApplicationBuilder app, IList<CultureInfo> supportedCultures = null!)
     {
         supportedCultures ??= new List<CultureInfo>
         {
@@ -110,7 +109,7 @@ public static class MvcExtensions
                     ValidateIssuerSigningKey = true,
                     ValidateAudience = true,
                     ValidateIssuer = true,
-                    ValidateLifetime = true
+                    ValidateLifetime = true,
                 };
             });
     }
@@ -177,14 +176,14 @@ public static class MvcExtensions
 
     public static string GetClaim(this ClaimsPrincipal user, string type = ClaimTypes.Email)
     {
-        if (user == null)
+        if (user is null)
             return string.Empty;
 
         var value = (from c in user.Claims
             where c.Type == type
             select c.Value).FirstOrDefault();
 
-        return value;
+        return value ?? string.Empty;
     }
 
     public static bool HasFilter(this ActionDescriptor action, Type filter)
