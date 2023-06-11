@@ -33,7 +33,7 @@ public static class SwaggerExtensions
           Scheme = scheme,
           Name = name,
           In = ParameterLocation.Header
-        },null
+        },new List<string>()
       }
     };
   }
