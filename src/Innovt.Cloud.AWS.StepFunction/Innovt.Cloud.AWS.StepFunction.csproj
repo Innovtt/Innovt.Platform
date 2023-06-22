@@ -3,7 +3,7 @@
   <PropertyGroup>
 	  <TargetFramework>netstandard2.1</TargetFramework>
 	  <PackageId>Innovt.Cloud.AWS.StepFunction</PackageId>
-	  <PackageVersion>7.0.14</PackageVersion>
+	  <PackageVersion>7.0.17</PackageVersion>
 	  <Authors>Michel Borges</Authors>
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	  <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -13,7 +13,7 @@
 	  <AnalysisMode>AllEnabledByDefault</AnalysisMode>
   </PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="AWSSDK.StepFunctions" Version="3.7.102.111" />
+		<PackageReference Include="AWSSDK.StepFunctions" Version="3.7.102.116" />
 		<PackageReference Include="System.Diagnostics.DiagnosticSource" Version="7.0.2" />
 	</ItemGroup>
 

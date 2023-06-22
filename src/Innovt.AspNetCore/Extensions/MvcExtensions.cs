@@ -31,8 +31,7 @@ public static class MvcExtensions
     /// </summary>
     /// <param name="app"></param>
     /// <param name="supportedCultures"></param>
-    public static void UseRequestLocalization(this IApplicationBuilder app,
-        IList<CultureInfo> supportedCultures = null)
+    public static void UseRequestLocalization(this IApplicationBuilder app, IList<CultureInfo> supportedCultures = null!)
     {
         supportedCultures ??= new List<CultureInfo>
         {
@@ -70,25 +69,20 @@ public static class MvcExtensions
         });
     }
 
-    public static void AddBearerAuthorization(this IServiceCollection services, IConfiguration configuration,
-        string configSection = "BearerAuthentication")
+    public static void AddBearerAuthorization(this IServiceCollection services, IConfiguration configuration, string configSection = "BearerAuthentication")
     {
         if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
-        var section = configuration.GetSection(configSection);
-
-        if (section == null) throw new CriticalException($"The Config Section '{configSection}' not defined.");
-
-        var audienceSection = section.GetSection("Audience");
-        var authoritySection = section.GetSection("Authority");
-
-        if (audienceSection == null) throw new CriticalException("The Config Section 'Audience' not defined.");
-
-        if (authoritySection == null) throw new CriticalException("The Config Section 'Authority' not defined.");
+        var audienceSection = configuration.GetSection($"{configSection}:Audience");
+        var authoritySection = configuration.GetSection($"{configSection}:Authority");
+        
+        if (audienceSection.Value == null) throw new CriticalException($"The Config Section '{configSection}:Audience' not defined.");
+        if (authoritySection.Value == null) throw new CriticalException("The Config Section '{configSection}:Authority' not defined.");
 
         services.AddBearerAuthorization(audienceSection.Value, authoritySection.Value);
     }
 
+    // ReSharper disable once MemberCanBePrivate.Global
     public static void AddBearerAuthorization(this IServiceCollection services, string audienceId, string authority)
     {
         services.AddAuthorization(options =>
@@ -113,9 +107,9 @@ public static class MvcExtensions
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
-                    ValidateAudience = false,
-                    ValidateIssuer = false,
-                    ValidateLifetime = true
+                    ValidateAudience = true,
+                    ValidateIssuer = true,
+                    ValidateLifetime = true,
                 };
             });
     }
@@ -182,14 +176,14 @@ public static class MvcExtensions
 
     public static string GetClaim(this ClaimsPrincipal user, string type = ClaimTypes.Email)
     {
-        if (user == null)
+        if (user is null)
             return string.Empty;
 
         var value = (from c in user.Claims
             where c.Type == type
             select c.Value).FirstOrDefault();
 
-        return value;
+        return value ?? string.Empty;
     }
 
     public static bool HasFilter(this ActionDescriptor action, Type filter)
