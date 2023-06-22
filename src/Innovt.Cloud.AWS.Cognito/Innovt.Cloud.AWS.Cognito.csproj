@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <PackageId>Innovt.Cloud.AWS.Cognito</PackageId>
-    <PackageVersion>7.0.17</PackageVersion>
+    <PackageVersion>7.0.18</PackageVersion>
     <Authors>Michel Borges</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -13,10 +13,10 @@
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
   </PropertyGroup>
   <ItemGroup>
-        <PackageReference Include="AWSSDK.CognitoIdentityProvider" Version="3.7.101.143" />
+        <PackageReference Include="AWSSDK.CognitoIdentityProvider" Version="3.7.101.147" />
         <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="7.0.2" />
-        <PackageReference Include="System.Text.Json" Version="7.0.2" />
-        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.1">
+        <PackageReference Include="System.Text.Json" Version="7.0.3" />
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.3">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
