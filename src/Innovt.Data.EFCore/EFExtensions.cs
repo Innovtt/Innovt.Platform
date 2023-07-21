@@ -10,7 +10,7 @@ using Innovt.Domain.Core.Specification;
 using Microsoft.EntityFrameworkCore;
 
 namespace Innovt.Data.EFCore;
-
+#nullable enable
 public static class EfExtensions
 {
     public static IQueryable<T> AddInclude<T>(this IQueryable<T> query, Include? includes) where T : class
@@ -22,15 +22,12 @@ public static class EfExtensions
 
     public static IQueryable<T> AddInclude<T>(this IQueryable<T> query, params string[] includes) where T : class
     {
-        return includes == null ? query : includes.Aggregate(query, (current, include) => current.Include(include));
+        return includes is null ? query : includes.Aggregate(query, (current, include) => current.Include(include));
     }
 
-    public static IQueryable<T> AddInclude<T>(this IQueryable<T> query, string include) where T : class
+    public static IQueryable<T> AddInclude<T>(this IQueryable<T> query, string? include) where T : class
     {
-        if (include == null)
-            return query;
-
-        return query.Include(include);
+        return include == null ? query : query.Include(include);
     }
 
     public static IQueryable<T> ApplyPagination<T>(this IQueryable<T> query, int? page, int? pageSize)

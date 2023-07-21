@@ -11,6 +11,11 @@ namespace Innovt.AspNetCore.Filters;
 
 public class SwaggerExcludeFilter : ISchemaFilter, IOperationFilter
 {
+    public SwaggerExcludeFilter()
+    {
+        
+    }
+    
     public void Apply(OpenApiOperation operation, OperationFilterContext context)
     {
         if (operation == null) throw new ArgumentNullException(nameof(operation));

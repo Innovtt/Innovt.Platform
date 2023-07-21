@@ -20,12 +20,14 @@ namespace Innovt.Cloud.AWS.Tests
 
             var assumeRoleCredentials = new AssumeRoleAWSConfiguration(configuration, roleArn,sessionName,externalId);
 
-            Assert.IsNotNull(assumeRoleCredentials);
-            Assert.AreEqual(roleArn, assumeRoleCredentials.RoleArn);
-            Assert.AreEqual(sessionName, assumeRoleCredentials.RoleSessionName);
-            Assert.AreEqual(externalId, assumeRoleCredentials.ExternalId);
+            Assert.That(assumeRoleCredentials, Is.Not.Null);
+            Assert.Multiple(() =>
+            {
+                Assert.That(assumeRoleCredentials.RoleArn, Is.EqualTo(roleArn));
+                Assert.That(assumeRoleCredentials.RoleSessionName, Is.EqualTo(sessionName));
+                Assert.That(assumeRoleCredentials.ExternalId, Is.EqualTo(externalId));
+            });
         }
-
 
         [Test]
         [Ignore("Only for local tests")]
@@ -33,12 +35,12 @@ namespace Innovt.Cloud.AWS.Tests
         {
             var configuration = new Configuration.DefaultAWSConfiguration();
 
-            Assert.IsNotNull(configuration);
+            Assert.That(configuration, Is.Not.Null);
 
             var assumeRoleCredentials = new AssumeRoleAWSConfiguration(configuration, "rolearn");
 
-            Assert.IsNotNull(assumeRoleCredentials);
-            Assert.IsNotNull(assumeRoleCredentials.GetCredential());
+            Assert.That(assumeRoleCredentials, Is.Not.Null);
+            Assert.That(assumeRoleCredentials.GetCredential(), Is.Not.Null);
         }
 
        
