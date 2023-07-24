@@ -32,7 +32,7 @@ public class Contact : ValueObject<int>, IValidatableObject
         }
         else
         {
-            if (Type.Validate(Value))
+            if (!Type.Validate(Value))
                 yield return new ValidationResult($"The value {Value} is not valid for {Type.Name}.");
         }
     }
