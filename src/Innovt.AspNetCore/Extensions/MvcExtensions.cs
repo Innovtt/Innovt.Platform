@@ -83,7 +83,8 @@ public static class MvcExtensions
     }
 
     // ReSharper disable once MemberCanBePrivate.Global
-    public static void AddBearerAuthorization(this IServiceCollection services, string audienceId, string authority)
+    public static void AddBearerAuthorization(this IServiceCollection services, string audienceId, string authority, bool validateAudience=true, 
+        bool validateIssuer=true, bool validateLifetime=true, bool validateIssuerSigningKey=true)
     {
         services.AddAuthorization(options =>
         {
@@ -106,10 +107,10 @@ public static class MvcExtensions
                 options.SaveToken = true;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidateIssuerSigningKey = true,
-                    ValidateAudience = true,
-                    ValidateIssuer = true,
-                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = validateIssuerSigningKey,
+                    ValidateAudience = validateAudience,
+                    ValidateIssuer = validateIssuer,
+                    ValidateLifetime = validateLifetime,
                 };
             });
     }
