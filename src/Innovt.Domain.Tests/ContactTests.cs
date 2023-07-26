@@ -39,6 +39,8 @@ public class ContactTests
         };
 
         contact.EnsureIsValid();
+        
+        Assert.Pass();
     }
     
     [Test]
