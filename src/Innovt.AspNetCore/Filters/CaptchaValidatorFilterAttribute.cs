@@ -29,7 +29,6 @@ internal class RecaptchaResponse
 public sealed class CaptchaValidatorFilterAttribute : ActionFilterAttribute
 {
     private const string CaptchaUri = "https://www.google.com/recaptcha/api/siteverify";
-
     public CaptchaValidatorFilterAttribute()
     {
         DefaultToken = "inn0ut#";
