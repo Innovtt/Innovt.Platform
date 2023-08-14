@@ -5,7 +5,10 @@ namespace Innovt.Cloud.AWS.Cognito.Tests;
 
 public class BaseIdentityProvider: CognitoIdentityProvider
 {
-    public BaseIdentityProvider(ILogger logger, IAwsConfiguration configuration, string clientId, string userPoolId, string domainEndPoint, string region = null) : base(logger, configuration, clientId, userPoolId, domainEndPoint, region)
+    public BaseIdentityProvider(ILogger logger, IAwsConfiguration configuration, string clientId, string userPoolId, 
+        string domainEndPoint, string? region) 
+        : base(logger, configuration, clientId, userPoolId, domainEndPoint, region)
     {
+        
     }
 }

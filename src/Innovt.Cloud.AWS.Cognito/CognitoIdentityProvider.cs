@@ -36,7 +36,7 @@ namespace Innovt.Cloud.AWS.Cognito;
 
 public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentityProvider
 {
-    protected static readonly ActivitySource CognitoIdentityProviderActivitySource =
+    private static readonly ActivitySource CognitoIdentityProviderActivitySource =
         new("Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider");
 
     private readonly string clientId;
@@ -646,7 +646,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             NotAuthorizedException => new BusinessException(ErrorCode.NotAuthorized, ex),
             TooManyRequestsException => new BusinessException(ErrorCode.TooManyRequests, ex),
             PasswordResetRequiredException => new BusinessException(ErrorCode.PasswordResetRequired, ex),
-            UserNotFoundException => new Exceptions.UserNotFoundException(),
+            UserNotFoundException => new BusinessException(ErrorCode.UserNotFound, ex),
             UserNotConfirmedException => new BusinessException(ErrorCode.UserNotConfirmed, ex),
             InvalidPasswordException => new BusinessException(ErrorCode.InvalidPassword, ex),
             CodeMismatchException => new BusinessException(ErrorCode.CodeMismatch, ex),
