@@ -15,6 +15,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Amazon.CognitoIdentityProvider;
 using Amazon.CognitoIdentityProvider.Model;
+using Innovt.Cloud.AWS.Cognito.Exceptions;
 using Innovt.Cloud.AWS.Cognito.Model;
 using Innovt.Cloud.AWS.Cognito.Resources;
 using Innovt.Cloud.AWS.Configuration;
@@ -24,13 +25,18 @@ using Innovt.Core.Http;
 using Innovt.Core.Utilities;
 using Innovt.Core.Validation;
 using ChangePasswordRequest = Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest;
+using CodeMismatchException = Amazon.CognitoIdentityProvider.Model.CodeMismatchException;
 using ConfirmForgotPasswordRequest = Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest;
 using ConfirmSignUpRequest = Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest;
+using ExpiredCodeException = Amazon.CognitoIdentityProvider.Model.ExpiredCodeException;
 using ForgotPasswordRequest = Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest;
 using GetUserRequest = Innovt.Cloud.AWS.Cognito.Model.GetUserRequest;
+using InvalidPasswordException = Amazon.CognitoIdentityProvider.Model.InvalidPasswordException;
+using PasswordResetRequiredException = Amazon.CognitoIdentityProvider.Model.PasswordResetRequiredException;
 using ResendConfirmationCodeRequest = Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest;
 using RespondToAuthChallengeRequest = Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest;
 using SignUpResponse = Innovt.Cloud.AWS.Cognito.Model.SignUpResponse;
+using UserNotConfirmedException = Amazon.CognitoIdentityProvider.Model.UserNotConfirmedException;
 
 namespace Innovt.Cloud.AWS.Cognito;
 
@@ -642,16 +648,20 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     {
         throw ex switch
         {
-            UsernameExistsException => new BusinessException(ErrorCode.UsernameAlreadyExists, ex),
+            UsernameExistsException => new UserNameAlreadyExistsException(),
             NotAuthorizedException => new BusinessException(ErrorCode.NotAuthorized, ex),
+            UserNotFoundException => new BusinessException(ErrorCode.UserNotFound, ex),
+            
             TooManyRequestsException => new BusinessException(ErrorCode.TooManyRequests, ex),
             PasswordResetRequiredException => new BusinessException(ErrorCode.PasswordResetRequired, ex),
-            UserNotFoundException => new BusinessException(ErrorCode.UserNotFound, ex),
+            
             UserNotConfirmedException => new BusinessException(ErrorCode.UserNotConfirmed, ex),
             InvalidPasswordException => new BusinessException(ErrorCode.InvalidPassword, ex),
             CodeMismatchException => new BusinessException(ErrorCode.CodeMismatch, ex),
             ExpiredCodeException => new BusinessException(ErrorCode.ExpiredCode, ex),
+            
             LimitExceededException => new BusinessException(ErrorCode.LimitExceeded, ex),
+            
             InvalidParameterException ipEx => ipEx.Message ==
                                               "Cannot reset password for the user as there is no registered / verified email or phone_number"
                 ? new BusinessException(ErrorCode.UserNotConfirmed, ex)
