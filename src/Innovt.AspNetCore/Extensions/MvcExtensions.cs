@@ -69,7 +69,8 @@ public static class MvcExtensions
         });
     }
 
-    public static void AddBearerAuthorization(this IServiceCollection services, IConfiguration configuration, string configSection = "BearerAuthentication")
+    public static void AddBearerAuthorization(this IServiceCollection services, IConfiguration configuration, string configSection = "BearerAuthentication",bool validateAudience=true, 
+        bool validateIssuer=true, bool validateLifetime=true, bool validateIssuerSigningKey=true)
     {
         if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
@@ -79,11 +80,12 @@ public static class MvcExtensions
         if (audienceSection.Value == null) throw new CriticalException($"The Config Section '{configSection}:Audience' not defined.");
         if (authoritySection.Value == null) throw new CriticalException("The Config Section '{configSection}:Authority' not defined.");
 
-        services.AddBearerAuthorization(audienceSection.Value, authoritySection.Value);
+        services.AddBearerAuthorization(audienceSection.Value, authoritySection.Value, validateAudience, validateIssuer, validateLifetime, validateIssuerSigningKey);
     }
 
     // ReSharper disable once MemberCanBePrivate.Global
-    public static void AddBearerAuthorization(this IServiceCollection services, string audienceId, string authority)
+    public static void AddBearerAuthorization(this IServiceCollection services, string audienceId, string authority, bool validateAudience=true, 
+        bool validateIssuer=true, bool validateLifetime=true, bool validateIssuerSigningKey=true)
     {
         services.AddAuthorization(options =>
         {
@@ -106,10 +108,10 @@ public static class MvcExtensions
                 options.SaveToken = true;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidateIssuerSigningKey = true,
-                    ValidateAudience = true,
-                    ValidateIssuer = true,
-                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = validateIssuerSigningKey,
+                    ValidateAudience = validateAudience,
+                    ValidateIssuer = validateIssuer,
+                    ValidateLifetime = validateLifetime,
                 };
             });
     }

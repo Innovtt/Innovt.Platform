@@ -24,7 +24,6 @@ public class ContactType : ValueObject<int>
     public string IconUrl { get; set; }
     public string RegexValidation { get; set; }
 
-
     public static ContactType Create(string name, string description)
     {
         return new ContactType
@@ -36,7 +35,7 @@ public class ContactType : ValueObject<int>
 
     public virtual bool Validate(string value)
     {
-        if (!RegexValidation.IsNull())
+        if (RegexValidation.IsNullOrEmpty())
             return true;
 
         var regEx = new Regex(RegexValidation);
