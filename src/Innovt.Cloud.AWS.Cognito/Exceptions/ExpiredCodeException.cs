@@ -3,9 +3,9 @@ using Innovt.Core.Exceptions;
 
 namespace Innovt.Cloud.AWS.Cognito.Exceptions;
 
-public class UserNotFoundException: BusinessException
+public class ExpiredCodeException: BusinessException
 {
-    public UserNotFoundException():base(ErrorCode.UserNotFound,ErrorCode.UserNotFound)
+    public ExpiredCodeException():base(ErrorCode.ExpiredCode,ErrorCode.ExpiredCode)
     {
         
     }

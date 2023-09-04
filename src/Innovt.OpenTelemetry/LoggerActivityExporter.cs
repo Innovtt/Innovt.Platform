@@ -13,6 +13,9 @@ using OpenTelemetry.Resources;
 
 namespace Innovt.OpenTelemetry;
 
+/// <summary>
+///    This is a simple exporter that logs telemetry to the console.
+/// </summary>
 public class LoggerActivityExporter : BaseExporter<Activity>
 {
     private const string StatusCodeKey = "otel.status_code";
@@ -20,6 +23,11 @@ public class LoggerActivityExporter : BaseExporter<Activity>
     private static Core.CrossCutting.Log.ILogger logger;
     private readonly IServiceCollection serviceCollection;
 
+    /// <summary>
+    ///    Initializes a new instance of the <see cref="LoggerActivityExporter" /> class.
+    /// </summary>
+    /// <param name="serviceCollection"></param>
+    /// <exception cref="ArgumentNullException"></exception>
     public LoggerActivityExporter(IServiceCollection serviceCollection)
     {
         this.serviceCollection = serviceCollection ?? throw new ArgumentNullException(nameof(serviceCollection));
@@ -39,6 +47,11 @@ public class LoggerActivityExporter : BaseExporter<Activity>
     }
 
 
+    /// <summary>
+    ///   Exports a batch of telemetry data.
+    /// </summary>
+    /// <param name="batch"></param>
+    /// <returns></returns>
     public override ExportResult Export(in Batch<Activity> batch)
     {
         var logBuffer = new StringBuilder();

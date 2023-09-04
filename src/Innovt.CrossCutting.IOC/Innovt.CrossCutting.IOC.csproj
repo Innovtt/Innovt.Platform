@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <PackageId>Innovt.CrossCutting.IOC</PackageId>
-    <PackageVersion>7.0.23</PackageVersion>
+    <PackageVersion>7.0.26</PackageVersion>
     <Authors>Michel Borges</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -16,7 +16,7 @@
     <PackageReference Include="Lamar" Version="12.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
 	<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.3">
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>    
