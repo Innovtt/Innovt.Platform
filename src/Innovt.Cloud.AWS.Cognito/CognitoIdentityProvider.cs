@@ -37,6 +37,7 @@ using ResendConfirmationCodeRequest = Innovt.Cloud.AWS.Cognito.Model.ResendConfi
 using RespondToAuthChallengeRequest = Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest;
 using SignUpResponse = Innovt.Cloud.AWS.Cognito.Model.SignUpResponse;
 using UserNotConfirmedException = Amazon.CognitoIdentityProvider.Model.UserNotConfirmedException;
+using UserNotFoundException = Amazon.CognitoIdentityProvider.Model.UserNotFoundException;
 
 namespace Innovt.Cloud.AWS.Cognito;
 
@@ -73,7 +74,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     {
         command.EnsureIsValid();
 
-        using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(ForgotPassword));
+        using var activity = CognitoIdentityProviderActivitySource.StartActivity();
         activity?.SetTag("UserName", command.UserName);
 
         var forgotRequest = new Amazon.CognitoIdentityProvider.Model.ForgotPasswordRequest
@@ -106,7 +107,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
         command.EnsureIsValid();
 
-        using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(UpdateUserAttributes));
+        using var activity = CognitoIdentityProviderActivitySource.StartActivity();
         var updateUserAttributeRequest = new UpdateUserAttributesRequest
         {
             AccessToken = command.AccessToken
@@ -160,7 +161,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
         request.EnsureIsValid();
 
-        using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(SignOut));
+        using var activity = CognitoIdentityProviderActivitySource.StartActivity();
         var signOutRequest = new GlobalSignOutRequest
         {
             AccessToken = request.AccessToken
@@ -185,7 +186,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
         command.EnsureIsValid();
 
-        using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(SignUp));
+        using var activity = CognitoIdentityProviderActivitySource.StartActivity();
         activity?.SetTag("UserName", command.UserName);
 
         var signUpRequest = new SignUpRequest
@@ -249,7 +250,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
         request.EnsureIsValid();
 
-        using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(ConfirmSignUp));
+        using var activity = CognitoIdentityProviderActivitySource.StartActivity();
         activity?.SetTag("UserName", request.UserName);
 
         var confirmSignUpRequest = new Amazon.CognitoIdentityProvider.Model.ConfirmSignUpRequest
@@ -283,7 +284,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
         command.EnsureIsValid();
 
-        using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(ResendConfirmationCode));
+        using var activity = CognitoIdentityProviderActivitySource.StartActivity();
         activity?.SetTag("UserName", command.UserName);
 
         var resendCodeRequest = new Amazon.CognitoIdentityProvider.Model.ResendConfirmationCodeRequest
@@ -316,7 +317,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
         command.EnsureIsValid();
 
-        using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(ChangePassword));
+        using var activity = CognitoIdentityProviderActivitySource.StartActivity();
         var changeRequest = new Amazon.CognitoIdentityProvider.Model.ChangePasswordRequest
         {
             AccessToken = command.AccessToken,
@@ -343,7 +344,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
         request.EnsureIsValid();
 
-        using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(GetUser));
+        using var activity = CognitoIdentityProviderActivitySource.StartActivity();
         var listUserRequest = new ListUsersRequest
         {
             UserPoolId = userPoolId,
@@ -421,7 +422,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
         command.EnsureIsValid();
 
-        using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(RespondToAuthChallenge));
+        using var activity = CognitoIdentityProviderActivitySource.StartActivity();
         activity?.SetTag("UserName", command.UserName);
 
         var challengeResponses = new Dictionary<string, string>
@@ -493,7 +494,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
         command.EnsureIsValid();
 
-        using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(ConfirmForgotPassword));
+        using var activity = CognitoIdentityProviderActivitySource.StartActivity();
         activity?.SetTag("UserName", command.UserName);
 
         try
@@ -537,7 +538,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             new("redirect_uri", command.RedirectUri)
         };
 
-        OAuth2SignInResponse response = null;
+        OAuth2SignInResponse response;
 
         try
         {
@@ -605,7 +606,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
         command.EnsureIsValid();
 
-        using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(RefreshToken));
+        using var activity = CognitoIdentityProviderActivitySource.StartActivity();
         var authRequest = new InitiateAuthRequest
         {
             ClientId = clientId,
@@ -642,40 +643,13 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             throw CatchException(ex);
         }
     }
-
-
-    private static Exception CatchException(Exception ex)
-    {
-        throw ex switch
-        {
-            UsernameExistsException => new UserNameAlreadyExistsException(),
-            NotAuthorizedException => new BusinessException(ErrorCode.NotAuthorized, ex),
-            UserNotFoundException => new BusinessException(ErrorCode.UserNotFound, ex),
-            
-            TooManyRequestsException => new BusinessException(ErrorCode.TooManyRequests, ex),
-            PasswordResetRequiredException => new BusinessException(ErrorCode.PasswordResetRequired, ex),
-            
-            UserNotConfirmedException => new BusinessException(ErrorCode.UserNotConfirmed, ex),
-            InvalidPasswordException => new BusinessException(ErrorCode.InvalidPassword, ex),
-            CodeMismatchException => new BusinessException(ErrorCode.CodeMismatch, ex),
-            ExpiredCodeException => new BusinessException(ErrorCode.ExpiredCode, ex),
-            
-            LimitExceededException => new BusinessException(ErrorCode.LimitExceeded, ex),
-            
-            InvalidParameterException ipEx => ipEx.Message ==
-                                              "Cannot reset password for the user as there is no registered / verified email or phone_number"
-                ? new BusinessException(ErrorCode.UserNotConfirmed, ex)
-                : ipEx,
-            BusinessException _ => ex,
-            _ => new CriticalException(ErrorCode.InternalServerError, ex)
-        };
-    }
+   
     private async Task<SignInResponse> SignIn(AuthFlowType type, SignInRequestBase request,
         Dictionary<string, string> authParameters = null, CancellationToken cancellationToken = default)
     {
         Check.NotNull(request, nameof(request));
 
-        using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(SignIn));
+        using var activity = CognitoIdentityProviderActivitySource.StartActivity();
         activity?.SetTag("UserName", request.UserName);
 
         var authRequest = new InitiateAuthRequest
@@ -737,7 +711,29 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
         return attribute?.Value;
     }
-
+    private static Exception CatchException(Exception ex)
+    {
+        throw ex switch
+        {
+            UsernameExistsException => new UserNameAlreadyExistsException(),
+            NotAuthorizedException => new UserNotAuthorizedException(),
+            UserNotFoundException => new Exceptions.UserNotFoundException(),
+            UserNotConfirmedException => new Exceptions.UserNotConfirmedException(),
+            PasswordResetRequiredException => new Exceptions.PasswordResetRequiredException(),
+            CodeMismatchException => new Exceptions.CodeMismatchException(),
+            InvalidPasswordException => new Exceptions.InvalidPasswordException(),
+            ExpiredCodeException => new Exceptions.ExpiredCodeException(),
+            TooManyRequestsException => new InternalException(ErrorCode.TooManyRequests),
+            LimitExceededException => new InternalException(ErrorCode.LimitExceeded),
+            InvalidParameterException ipEx => ipEx.Message ==
+                                              "Cannot reset password for the user as there is no registered / verified email or phone_number"
+                ? new Exceptions.UserNotConfirmedException(ipEx)
+                : new InternalException(ipEx),
+            BusinessException _ => ex,
+            _ => new InternalException(ErrorCode.InternalServerError, ex)
+        };
+    }
+    
     protected override void DisposeServices()
     {
         cognitoIdentityProvider?.Dispose();

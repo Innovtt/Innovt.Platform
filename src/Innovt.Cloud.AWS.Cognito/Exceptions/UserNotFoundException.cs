@@ -3,9 +3,9 @@ using Innovt.Core.Exceptions;
 
 namespace Innovt.Cloud.AWS.Cognito.Exceptions;
 
-public class CodeMismatchException: BusinessException
+public class UserNotFoundException: BusinessException
 {
-    public CodeMismatchException():base(ErrorCode.CodeMismatch,ErrorCode.CodeMismatch)
+    public UserNotFoundException():base(ErrorCode.UserNotFound,ErrorCode.UserNotFound)
     {
         
     }

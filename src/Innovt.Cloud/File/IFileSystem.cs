@@ -11,8 +11,22 @@ using System.Threading.Tasks;
 
 namespace Innovt.Cloud.File;
 
+/// <summary>
+///    Interface for File System
+/// </summary>
 public interface IFileSystem
 {
+    /// <summary>
+    ///    Copy a file from one bucket to another
+    /// </summary>
+    /// <param name="sourceBucket"></param>
+    /// <param name="sourceKey"></param>
+    /// <param name="destinationBucket"></param>
+    /// <param name="destinationKey"></param>
+    /// <param name="serverSideEncryptionMethod"></param>
+    /// <param name="fileAcl"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     Task<bool> CopyObject(string sourceBucket, string sourceKey, string destinationBucket, string destinationKey,
         string serverSideEncryptionMethod = null, string fileAcl = null, CancellationToken cancellationToken = default);
 

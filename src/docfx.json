@@ -1,0 +1,13 @@
+{
+    "metadata": {
+      "src": [{
+        "files": ["**/bin/Release/**.dll"],
+        "src": "../"
+      }],
+      "dest": "api",
+      "properties": {
+        "TargetFramework": "net6.0"
+      }
+    },
+  }
+  
