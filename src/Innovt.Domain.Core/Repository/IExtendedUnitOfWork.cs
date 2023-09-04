@@ -9,10 +9,23 @@ using System.Threading.Tasks;
 
 namespace Innovt.Domain.Core.Repository;
 
+/// <summary>
+/// Extended Unit of Work Interface To Provide More Features To Unit Of Work When Using Entity Framework
+/// </summary>
 public interface IExtendedUnitOfWork : IUnitOfWork
 {
+    /// <summary>
+    /// Add Entity To Unit Of Work Context
+    /// </summary>
+    /// <param name="entity"></param>
+    /// <typeparam name="T"></typeparam>
     void Add<T>(T entity) where T : class;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="entities"></param>
+    /// <typeparam name="T"></typeparam>
     void Add<T>(IEnumerable<T> entities) where T : class;
 
     Task AddAsync<T>(T entity, CancellationToken cancellationToken = default) where T : class;
