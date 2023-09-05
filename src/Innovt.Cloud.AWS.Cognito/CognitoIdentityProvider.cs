@@ -694,10 +694,6 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
                 ChallengeParameters = response.ChallengeParameters
             };
         }
-        catch (NotAuthorizedException)
-        {
-            throw new BusinessException(ErrorCode.NotAuthorized);
-        }
         catch (Exception ex)
         {
             throw CatchException(ex);

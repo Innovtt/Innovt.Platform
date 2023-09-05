@@ -22,12 +22,12 @@ public interface IExtendedUnitOfWork : IUnitOfWork
     void Add<T>(T entity) where T : class;
 
     /// <summary>
-    /// 
+    /// Add Entities To Unit Of Work Context
     /// </summary>
     /// <param name="entities"></param>
     /// <typeparam name="T"></typeparam>
     void Add<T>(IEnumerable<T> entities) where T : class;
-
+    
     Task AddAsync<T>(T entity, CancellationToken cancellationToken = default) where T : class;
 
     Task AddAsync<T>(IEnumerable<T> entities, CancellationToken cancellationToken = default) where T : class;
