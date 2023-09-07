@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Text.Json;
@@ -43,6 +44,11 @@ namespace Innovt.Cloud.AWS.Cognito;
 
 public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentityProvider
 {
+    /// <summary>
+    /// Allow our system to confirm the user when a social login already exists.
+    /// </summary>
+    private readonly bool allowAutoConfirmUserWithSocialLogin;
+
     private static readonly ActivitySource CognitoIdentityProviderActivitySource =
         new("Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider");
 
@@ -54,13 +60,14 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     private AmazonCognitoIdentityProviderClient cognitoIdentityProvider;
 
     protected CognitoIdentityProvider(ILogger logger, IAwsConfiguration configuration, string clientId,
-        string userPoolId, string domainEndPoint, string region = null) :
+        string userPoolId, string domainEndPoint, string region = null, bool allowAutoConfirmUserWithSocialLogin = false) :
         base(logger, configuration, region)
     {
         this.clientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
         this.userPoolId = userPoolId ?? throw new ArgumentNullException(nameof(userPoolId));
         if (domainEndPoint == null) throw new ArgumentNullException(nameof(domainEndPoint));
 
+        this.allowAutoConfirmUserWithSocialLogin = allowAutoConfirmUserWithSocialLogin;
         this.domainEndPoint = new Uri(domainEndPoint);
     }
 
@@ -234,6 +241,9 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
                     await CognitoProvider.SignUpAsync(signUpRequest, cancellationToken).ConfigureAwait(false))
                 .ConfigureAwait(false);
 
+            if (!response.UserConfirmed)
+                response.UserConfirmed = await ConfirmUserIfHasSocialUser(signUpRequest.Username, cancellationToken);
+                
             return new SignUpResponse { Confirmed = response.UserConfirmed, UUID = response.UserSub };
         }
         catch (Exception ex)
@@ -241,7 +251,46 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             throw CatchException(ex);
         }
     }
+    
+    /// <summary>
+    /// This implementation is to avoid users with social login to confirm the user.
+    /// </summary>
+    /// <param name="username">The username</param>
+    /// <param name="cancellationToken">A cancellation token for async tasks</param>
+    /// <returns>True when everything was confirmed or false in case of failure</returns>
+    private async Task<bool> ConfirmUserIfHasSocialUser(string username, CancellationToken cancellationToken)
+    {
+        //Only confirm user if the AllowAutoConfirmUserWithSocialLogin is true
+        if(!allowAutoConfirmUserWithSocialLogin)
+            return false;
+        
+        try
+        {
+            var listUsersResponse = await ListUsersAsync(username, cancellationToken).ConfigureAwait(false);
 
+            var hasSocialUser = listUsersResponse.Users.Any(u => u.UserStatus == "EXTERNAL_PROVIDER");
+
+            if (!hasSocialUser)
+                return false;
+
+            var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+                    await 
+                        CognitoProvider.AdminConfirmSignUpAsync(new AdminConfirmSignUpRequest()
+                        {
+                            UserPoolId = userPoolId,
+                            Username = username
+                        }, cancellationToken).ConfigureAwait(false))
+                .ConfigureAwait(false);
+            
+            return response.HttpStatusCode == HttpStatusCode.OK;
+        }
+        catch (Exception ex)
+        {
+           Logger.Error(ex,"Error on confirm user with social login.");
+        }
+
+        return false;
+    }
 
     public virtual async Task ConfirmSignUp(ConfirmSignUpRequest request,
         CancellationToken cancellationToken = default)
@@ -522,6 +571,34 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         }
     }
 
+    private async Task<ListUsersResponse> ListUsersAsync(string email, CancellationToken cancellationToken = default)
+    {
+        var listUsersResponse = await CognitoProvider.ListUsersAsync(new ListUsersRequest
+        {
+            UserPoolId = userPoolId,
+            Filter = $"email=\"{email}\""
+        }, cancellationToken).ConfigureAwait(false);
+
+        return listUsersResponse;
+    }
+
+    /// <summary>
+    /// This method will return the provider name based on the username.
+    /// </summary>
+    /// <param name="userName">The username provided by cobgnito</param>
+    /// <returns></returns>
+    private static string GetSocialProviderName(string userName)
+    {
+        if (!userName.Contains('_'))
+            return string.Empty;
+        
+        var provider = userName.Split("_")[0].ToUpper();
+        return  provider switch
+        {
+            "FACEBOOK" => "USER_FACE",
+            _ => $"USER_{provider}"
+        };
+    }
     public virtual async Task<OAuth2SignInResponse> SocialSignIn(SocialSignInRequest command,
         CancellationToken cancellationToken)
     {
@@ -570,19 +647,13 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
             var socialUserEmail = GetUserAttributeValue(socialUser.UserAttributes, "email");
 
-            var listUsersResponse = await CognitoProvider.ListUsersAsync(new ListUsersRequest
-            {
-                UserPoolId = userPoolId,
-                Filter = $"email=\"{socialUserEmail}\""
-            }, cancellationToken).ConfigureAwait(false);
+            var listUsersResponse = await ListUsersAsync(socialUserEmail, cancellationToken).ConfigureAwait(false);
 
             var hasCognitoUser = listUsersResponse.Users.Any(u => u.UserStatus != "EXTERNAL_PROVIDER");
 
             response.NeedRegister = !hasCognitoUser;
-            response.SignInType =
-                "Facebook_".StartsWith(socialUser.Username, StringComparison.InvariantCultureIgnoreCase)
-                    ? "USER_FACE"
-                    : "USER_GOOGLE";
+            response.SignInType = GetSocialProviderName(socialUser.Username);
+            
 
             response.FirstName = GetUserAttributeValue(socialUser.UserAttributes, "name");
             response.LastName = GetUserAttributeValue(socialUser.UserAttributes, "family_name");
