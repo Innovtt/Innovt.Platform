@@ -8,7 +8,13 @@ using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Utilities;
 
 namespace Innovt.Core.Caching;
-
+/// <summary>
+/// Represents a multi-layer caching service that implements the <see cref="ICacheService"/> interface.
+/// </summary>
+/// <remarks>
+/// This class provides a caching service that supports multiple caching layers. It allows data retrieval and storage
+/// through a series of cache layers, falling back to subsequent layers if data is not found in earlier layers.
+/// </remarks>
 public class MultiLayerCacheService : ICacheService, IDisposable
 {
     private readonly ILogger logger;
@@ -16,6 +22,12 @@ public class MultiLayerCacheService : ICacheService, IDisposable
 
     private bool disposed;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MultiLayerCacheService"/> class with a default caching layer.
+    /// </summary>
+    /// <param name="cacheDefaultLayer">The default caching layer implementing <see cref="ICacheService"/>.</param>
+    /// <param name="logger">The logger implementation provided by <see cref="ILogger"/>.</param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="cacheDefaultLayer"/> or <paramref name="logger"/> is null.</exception>
     public MultiLayerCacheService(ICacheService cacheDefaultLayer, ILogger logger)
     {
         if (cacheDefaultLayer == null) throw new ArgumentNullException(nameof(cacheDefaultLayer));
@@ -24,6 +36,14 @@ public class MultiLayerCacheService : ICacheService, IDisposable
         cacheServices = new List<ICacheService>() { cacheDefaultLayer };
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MultiLayerCacheService"/> class with multiple caching layers.
+    /// </summary>
+    /// <param name="cacheDefaultLayer">The default caching layer implementing <see cref="ICacheService"/>.</param>
+    /// <param name="cacheSecondLayer">The secondary caching layer implementing <see cref="ICacheService"/>.</param>
+    /// <param name="logger">The logger implementation provided by <see cref="ILogger"/>.</param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="cacheDefaultLayer"/>, <paramref name="cacheSecondLayer"/>,
+    /// or <paramref name="logger"/> is null.</exception>
     public MultiLayerCacheService(ICacheService cacheDefaultLayer, ICacheService cacheSecondLayer, ILogger logger)
     {
         if (cacheDefaultLayer == null) throw new ArgumentNullException(nameof(cacheDefaultLayer));
@@ -34,7 +54,7 @@ public class MultiLayerCacheService : ICacheService, IDisposable
         this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
-
+    /// <inheritdoc />
     public T GetValue<T>(string key)
     {
         if (key.IsNullOrEmpty()) throw new ArgumentNullException(nameof(key));
@@ -56,7 +76,7 @@ public class MultiLayerCacheService : ICacheService, IDisposable
 
         return default;
     }
-
+    /// <inheritdoc />
     public void SetValue<T>(string key, T entity, TimeSpan expiration)
     {
         if (key.IsNullOrEmpty()) throw new ArgumentNullException(nameof(key));
@@ -73,7 +93,7 @@ public class MultiLayerCacheService : ICacheService, IDisposable
             }
         }
     }
-
+    /// <inheritdoc />
     public void Remove(string key)
     {
         if (key.IsNullOrEmpty()) throw new ArgumentNullException(nameof(key));
@@ -90,19 +110,29 @@ public class MultiLayerCacheService : ICacheService, IDisposable
             }
         }
     }
-
+    /// <inheritdoc />
     public void Dispose()
     {
         cacheServices = null;
         GC.SuppressFinalize(this);
     }
 
-
+    /// <summary>
+    /// Finalizes an instance of the <see cref="MultiLayerCacheService"/> class.
+    /// </summary>
     ~MultiLayerCacheService()
     {
         Dispose(false);
     }
 
+    /// <summary>
+    /// Releases the unmanaged resources used by the <see cref="MultiLayerCacheService"/> class
+    /// and optionally releases the managed resources.
+    /// </summary>
+    /// <param name="disposing">
+    ///   <c>true</c> to release both managed and unmanaged resources;
+    ///   <c>false</c> to release only unmanaged resources.
+    /// </param>
     protected virtual void Dispose(bool disposing)
     {
         if (disposed || !disposing)
