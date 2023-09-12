@@ -8,6 +8,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace Innovt.Core.Collections;
 
 [SuppressMessage("Naming", "CA1711:Identifiers should not have incorrect suffix", Justification = "<Pending>")]
+
 /// <summary>
 /// Represents a paged collection of items of type <typeparamref name="T"/>.
 /// </summary>
