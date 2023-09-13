@@ -18,6 +18,9 @@ public class ErrorMessage
         Message = message;
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ErrorMessage"/> class with default values.
+    /// </summary>
     public ErrorMessage()
     {
     }
@@ -46,8 +49,16 @@ public class ErrorMessage
         Code = code;
     }
 
-
+    /// <summary>
+    /// Gets or sets the error code associated with the error message.
+    /// </summary>
     public string Code { get; protected set; }
+    /// <summary>
+    /// Gets or sets the error message describing the error.
+    /// </summary>
     public string Message { get; protected set; }
+    /// <summary>
+    /// Gets or sets the name of the property to which the error is related.
+    /// </summary>
     public string PropertyName { get; protected set; }
 }
