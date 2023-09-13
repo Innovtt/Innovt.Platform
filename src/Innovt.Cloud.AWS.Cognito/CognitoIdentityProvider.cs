@@ -209,12 +209,14 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         };
 
         if (command.CustomAttributes != null)
+        {
             foreach (var attribute in command.CustomAttributes)
                 signUpRequest.UserAttributes.Add(new AttributeType
                 {
                     Name = $"custom:{attribute.Key}",
                     Value = attribute.Value
                 });
+        }
 
         var excludedProperties = new[]
             { "password", "username", "ipaddress", "serverpath", "servername", "httpheader", "customattributes" };
@@ -614,7 +616,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             new("code", command.Code),
             new("redirect_uri", command.RedirectUri)
         };
-
+        
         OAuth2SignInResponse response;
 
         try
@@ -628,7 +630,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
             if (!responseMessage.IsSuccessStatusCode)
                 throw new BusinessException(ErrorCode.OAuthResponseError);
-
+            
             var responseContent = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             response = JsonSerializer.Deserialize<OAuth2SignInResponse>(responseContent);
