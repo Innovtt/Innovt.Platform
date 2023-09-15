@@ -8,6 +8,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Serialization;
+using Innovt.Core.Utilities;
+
 // ReSharper disable MemberCanBePrivate.Global
 
 namespace Innovt.HttpClient.Core
@@ -45,16 +47,12 @@ namespace Innovt.HttpClient.Core
                 return Serializer.DeserializeObject<T>(contentResponse);
             }
 
-            switch (response.StatusCode)
+            return response.StatusCode switch
             {
-                case HttpStatusCode.NotFound:
-                    return default(T);
-
-                case HttpStatusCode.BadRequest:
-                    throw new BusinessException(contentResponse);
-                default:
-                    throw new HttpRequestException(response.ReasonPhrase);
-            }
+                HttpStatusCode.NotFound => default(T),
+                HttpStatusCode.BadRequest => throw new BusinessException(contentResponse),
+                _ => throw new HttpRequestException(response.ReasonPhrase)
+            };
         }
 
         protected virtual async Task<Stream> ParseStreamResponse(HttpResponseMessage response)
@@ -98,7 +96,7 @@ namespace Innovt.HttpClient.Core
 
         private void InitializeClient(System.Net.Http.HttpClient client, Dictionary<string, string> headerValues = null)
         {  
-            if (ApiContext.AccessToken != null)
+            if (ApiContext.AccessToken.IsNotNullOrEmpty() && ApiContext.TokenType.IsNotNullOrEmpty())
             {
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(ApiContext.TokenType, ApiContext.AccessToken);
             }
@@ -151,6 +149,10 @@ namespace Innovt.HttpClient.Core
         {
         }
         
+        protected BaseApiClient(ApiContext apiContext,ISerializer serializer) : base(apiContext,serializer)
+        {
+        }
+        
         protected override async Task<T> ParseResponse<T>(HttpResponseMessage response)
         {
             var contentResponse = await response.Content.ReadAsStringAsync();
@@ -159,12 +161,10 @@ namespace Innovt.HttpClient.Core
             {
                 return Serializer.DeserializeObject<T>(contentResponse);
             }
-            else
-            {
-                var errorResponse = Serializer.DeserializeObject<TErrorResponse>(contentResponse); 
 
-                throw  new ApiException<TErrorResponse>(errorResponse);
-            }
+            var errorResponse = Serializer.DeserializeObject<TErrorResponse>(contentResponse); 
+
+            throw  new ApiException<TErrorResponse>(errorResponse);
         }
 
         protected override async Task<Stream> ParseStreamResponse(HttpResponseMessage response)
@@ -175,12 +175,10 @@ namespace Innovt.HttpClient.Core
             {
                 return contentResponse;
             }
-            else
-            {
-                var errorResponse = await response.Content.ReadAsStringAsync();
+
+            var errorResponse = await response.Content.ReadAsStringAsync();
                 
-                throw  new ApiException<TErrorResponse>(Serializer.DeserializeObject<TErrorResponse>(errorResponse));
-            }
+            throw  new ApiException<TErrorResponse>(Serializer.DeserializeObject<TErrorResponse>(errorResponse));
         }
 
       
