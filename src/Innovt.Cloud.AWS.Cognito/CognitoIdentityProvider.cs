@@ -269,8 +269,8 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         try
         {
             var listUsersResponse = await ListUsersAsync(username, cancellationToken).ConfigureAwait(false);
-
-            var hasSocialUser = listUsersResponse.Users.Any(u => u.UserStatus == "EXTERNAL_PROVIDER");
+            
+            var hasSocialUser = listUsersResponse.Users.Exists(u => u.UserStatus == "EXTERNAL_PROVIDER");
 
             if (!hasSocialUser)
                 return false;

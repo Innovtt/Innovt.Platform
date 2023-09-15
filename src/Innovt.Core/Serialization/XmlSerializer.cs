@@ -2,9 +2,11 @@
 // Author: Michel Borges
 // Project: Innovt.Core
 
+using Innovt.Core.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
@@ -72,7 +74,9 @@ public class XmlSerializer : ISerializer {
             return Encoding.UTF8.GetString(memoryStream.ToArray());
         }
         catch (XmlException) {
-            throw new Exception("XML Serialization error.");
+            throw new CriticalException("XML Serialization error.");
         }
+
+        
     }
 }
