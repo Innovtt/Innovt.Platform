@@ -9,9 +9,15 @@ using NUnit.Framework;
 
 namespace Innovt.Core.Test.Exceptions;
 
+/// <summary>
+/// Unit tests for the <see cref="BusinessException"/> class.
+/// </summary>
 [TestFixture]
 public class BusinessExceptionTests
 {
+    /// <summary>
+    /// Verifies that the exception message is set correctly.
+    /// </summary>
     [Test]
     public void CheckMessage()
     {
@@ -22,7 +28,9 @@ public class BusinessExceptionTests
         Assert.That("E-mail is not valid.", Is.EqualTo(bex.Message));
     }
 
-
+    /// <summary>
+    /// Verifies that the exception code and message are set correctly.
+    /// </summary>
     [Test]
     public void CheckCode()
     {
@@ -33,7 +41,9 @@ public class BusinessExceptionTests
         Assert.That("E-mail is not valid.", Is.EqualTo(bex.Message));
         Assert.That("01", Is.EqualTo(bex.Code));
     }
-
+    /// <summary>
+    /// Verifies that the exception message is set to a default value when the error list is empty.
+    /// </summary>
     [Test]
     public void MessageIsEmptyWhenErrorListIsEmpty()
     {
@@ -43,7 +53,9 @@ public class BusinessExceptionTests
         Assert.IsNotNull(bex.Errors);
         Assert.That(bex.Message, Is.EqualTo("One or more validation errors occurred."));
     }
-
+    /// <summary>
+    /// Verifies that the exception detail is null when the error list is empty.
+    /// </summary>
     [Test]
     public void DetailShouldBeNullWhenErrorListIsEmpty()
     {
@@ -54,7 +66,9 @@ public class BusinessExceptionTests
         Assert.IsNull(bex.Detail);
     }
 
-
+    /// <summary>
+    /// Verifies that the exception is created correctly with a list of error messages.
+    /// </summary>
     [Test]
     public void CheckValidationPattern()
     {

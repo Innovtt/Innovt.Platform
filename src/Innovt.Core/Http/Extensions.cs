@@ -10,8 +10,19 @@ using System.Text;
 
 namespace Innovt.Core.Http;
 
+/// <summary>
+/// Provides a set of extension methods for working with URIs and HTTP requests.
+/// </summary>
 public static class Extensions
 {
+    /// <summary>
+    /// Appends a resource path to the base URI.
+    /// </summary>
+    /// <param name="baseUri">The base URI to which the resource path will be appended.</param>
+    /// <param name="resource">The resource path to append.</param>
+    /// <returns>A new URI containing the base URI with the appended resource path.</returns>
+    /// <exception cref="ArgumentNullException">Thrown if the baseUri is null.</exception>
+    /// <exception cref="Exception">Thrown if the URL cannot be created.</exception>
     public static Uri AppendResourceUri(this Uri baseUri, string resource)
     {
         if (baseUri == null) throw new ArgumentNullException(nameof(baseUri));
@@ -22,6 +33,12 @@ public static class Extensions
         return uniformResourceIdentifier;
     }
 
+    /// <summary>
+    /// Adds headers to an HTTP request.
+    /// </summary>
+    /// <param name="request">The HTTP request to which headers will be added.</param>
+    /// <param name="headerData">The collection of headers to add to the request.</param>
+    /// <returns>The modified HTTP request with added headers.</returns>
     public static HttpWebRequest AddHeader(this HttpWebRequest request, NameValueCollection headerData)
     {
         if (headerData == null || request == null)
@@ -46,6 +63,12 @@ public static class Extensions
         return request;
     }
 
+    /// <summary>
+    /// Adds a request body to an HTTP request.
+    /// </summary>
+    /// <param name="request">The HTTP request to which the body will be added.</param>
+    /// <param name="dataToSend">The data to include in the request body.</param>
+    /// <returns>The modified HTTP request with the added request body.</returns>
     public static HttpWebRequest AddBody(this HttpWebRequest request, string dataToSend)
     {
         if (string.IsNullOrWhiteSpace(dataToSend) || request == null)
