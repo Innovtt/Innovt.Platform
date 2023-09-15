@@ -151,6 +151,10 @@ namespace Innovt.HttpClient.Core
         {
         }
         
+        protected BaseApiClient(ApiContext apiContext,ISerializer serializer) : base(apiContext,serializer)
+        {
+        }
+        
         protected override async Task<T> ParseResponse<T>(HttpResponseMessage response)
         {
             var contentResponse = await response.Content.ReadAsStringAsync();
@@ -159,12 +163,10 @@ namespace Innovt.HttpClient.Core
             {
                 return Serializer.DeserializeObject<T>(contentResponse);
             }
-            else
-            {
-                var errorResponse = Serializer.DeserializeObject<TErrorResponse>(contentResponse); 
 
-                throw  new ApiException<TErrorResponse>(errorResponse);
-            }
+            var errorResponse = Serializer.DeserializeObject<TErrorResponse>(contentResponse); 
+
+            throw  new ApiException<TErrorResponse>(errorResponse);
         }
 
         protected override async Task<Stream> ParseStreamResponse(HttpResponseMessage response)
@@ -175,12 +177,10 @@ namespace Innovt.HttpClient.Core
             {
                 return contentResponse;
             }
-            else
-            {
-                var errorResponse = await response.Content.ReadAsStringAsync();
+
+            var errorResponse = await response.Content.ReadAsStringAsync();
                 
-                throw  new ApiException<TErrorResponse>(Serializer.DeserializeObject<TErrorResponse>(errorResponse));
-            }
+            throw  new ApiException<TErrorResponse>(Serializer.DeserializeObject<TErrorResponse>(errorResponse));
         }
 
       
