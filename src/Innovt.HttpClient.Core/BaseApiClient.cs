@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Serialization;
+// ReSharper disable MemberCanBePrivate.Global
 
 namespace Innovt.HttpClient.Core
 {
@@ -15,19 +16,24 @@ namespace Innovt.HttpClient.Core
     {
         private readonly IHttpClientFactory httpClientFactory;
 
-        protected ApiContext ApiContext  { get; private set; }
+        protected ApiContext ApiContext { get; }
 
-        protected  ISerializer Serializer { get; set; }
+        protected  ISerializer Serializer { get; }
 
-        protected BaseApiClient(ApiContext apiContext, IHttpClientFactory httpClientFactory,ISerializer serializer)
+        protected BaseApiClient(ApiContext apiContext, ISerializer serializer)
         {
             this.ApiContext = apiContext ?? throw new ArgumentNullException(nameof(apiContext));
-            this.httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
             this.Serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
         }
-
-        protected virtual System.Net.Http.HttpClient CreateHttpClient() { 
-            return httpClientFactory.CreateClient();
+        
+        protected BaseApiClient(ApiContext apiContext, IHttpClientFactory httpClientFactory,ISerializer serializer):this(apiContext,serializer)
+        {
+            this.httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
+        }
+       
+        protected virtual System.Net.Http.HttpClient CreateHttpClient()
+        {
+            return httpClientFactory is not null ? httpClientFactory.CreateClient() : new System.Net.Http.HttpClient();
         }
 
         protected virtual async Task<T> ParseResponse<T>(HttpResponseMessage response)
@@ -91,7 +97,8 @@ namespace Innovt.HttpClient.Core
         }
 
         private void InitializeClient(System.Net.Http.HttpClient client, Dictionary<string, string> headerValues = null)
-        {   if (ApiContext.AccessToken != null)
+        {  
+            if (ApiContext.AccessToken != null)
             {
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(ApiContext.TokenType, ApiContext.AccessToken);
             }
