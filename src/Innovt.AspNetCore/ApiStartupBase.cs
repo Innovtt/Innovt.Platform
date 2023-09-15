@@ -5,7 +5,9 @@
 using Innovt.AspNetCore.Filters;
 using Innovt.AspNetCore.Infrastructure;
 using Innovt.AspNetCore.Model;
+using Innovt.Core.Utilities;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
@@ -33,9 +35,9 @@ public abstract class ApiStartupBase
 
     protected ApiStartupBase(IConfiguration configuration, IWebHostEnvironment environment, string appName,
         string apiTitle, string apiDescription,
-        string apiVersion) : this(configuration, environment, appName)
+        string apiVersion, string? contactName=null, string? contactEmail=null) : this(configuration, environment, appName)
     {
-        Documentation = new DefaultApiDocumentation(apiTitle, apiDescription, apiVersion);
+        Documentation = new DefaultApiDocumentation(apiTitle, apiDescription, apiVersion, contactName,contactEmail);
     }
 
     public string AppName { get; }
@@ -54,7 +56,6 @@ public abstract class ApiStartupBase
     {
         return Documentation is { };
     }
-
     protected bool IsDevelopmentEnvironment()
     {
         return Environment.IsDevelopment();
@@ -74,7 +75,12 @@ public abstract class ApiStartupBase
                 {
                     Description = Documentation.ApiDescription,
                     Title = Documentation.ApiTitle,
-                    Version = Documentation.ApiVersion
+                    Version = Documentation.ApiVersion,
+                    Contact = Documentation.ContactName is null ? null : new OpenApiContact
+                    {
+                        Name = Documentation.ContactName,
+                        Email = Documentation.ContactEmail
+                    }
                 });
 
             options.IgnoreObsoleteActions();
@@ -92,15 +98,34 @@ public abstract class ApiStartupBase
     }
 
     protected virtual void AddTracing(IServiceCollection services)
-    {
+    {   
         services.AddOpenTelemetry().WithTracing(builder =>
         {
             builder.AddSource(AppName).SetResourceBuilder(ResourceBuilder.CreateDefault()
                     .AddService(AppName))
-                .SetErrorStatusOnException(true);
+                .SetErrorStatusOnException();
 
             ConfigureOpenTelemetry(builder);
         });
+    }
+
+    private void AddLocalization(IMvcBuilder mvcBuilder, IServiceCollection services)
+    {
+        if (Localization?.DefaultLocalizeResource == null) return;
+
+        services.AddLocalization();
+
+        mvcBuilder.AddMvcLocalization(op =>
+            {
+                op.DataAnnotationLocalizerProvider =
+                    (type, factory) => factory.Create(Localization.DefaultLocalizeResource);
+            })
+            .AddDataAnnotationsLocalization(op =>
+            {
+                op.DataAnnotationLocalizerProvider =
+                    (type, factory) => factory.Create(Localization.DefaultLocalizeResource);
+            });
+        
     }
 
     private void AddCoreServices(IServiceCollection services)
@@ -116,20 +141,7 @@ public abstract class ApiStartupBase
             op.Filters.Add(provider.GetService<ApiExceptionFilter>() ?? throw new InvalidOperationException());
         });
 
-        if (Localization?.DefaultLocalizeResource == null) return;
-
-        services.AddLocalization();
-
-        mvcBuilder.AddMvcLocalization(op =>
-            {
-                op.DataAnnotationLocalizerProvider =
-                    (type, factory) => factory.Create(Localization.DefaultLocalizeResource);
-            })
-            .AddDataAnnotationsLocalization(op =>
-            {
-                op.DataAnnotationLocalizerProvider =
-                    (type, factory) => factory.Create(Localization.DefaultLocalizeResource);
-            });
+       AddLocalization(mvcBuilder,services);
     }
 
     // This method gets called by the runtime. Use this method to add services to the container.
@@ -169,7 +181,7 @@ public abstract class ApiStartupBase
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     /// <summary>
-    ///     Configure Will Add All main Services as Default for Api and MVC Applications
+    ///  Configure Will Add All main Services as Default for Api and MVC Applications
     /// </summary>
     /// <param name="app"></param>
     /// <param name="env"></param>
@@ -217,6 +229,7 @@ public abstract class ApiStartupBase
 
     protected abstract void ConfigureIoC(IServiceCollection services);
 
+    // ReSharper disable once MemberCanBeProtected.Global
     public abstract void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory);
 
     protected abstract void ConfigureOpenTelemetry(TracerProviderBuilder builder);
