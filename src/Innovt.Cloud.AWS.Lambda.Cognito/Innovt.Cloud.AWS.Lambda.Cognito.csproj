@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
 		<PackageId>Innovt.Cloud.AWS.Lambda.Cognito</PackageId>
-		<PackageVersion>7.0.35</PackageVersion>
+		<PackageVersion>7.0.36</PackageVersion>
 		<Authors>Michel Borges</Authors>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
