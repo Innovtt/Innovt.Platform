@@ -3,7 +3,7 @@
  	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<PackageId>Innovt.Cloud.AWS.Lambda.Sqs</PackageId>
-    <PackageVersion>7.0.33</PackageVersion>
+    <PackageVersion>7.0.34</PackageVersion>
 		<Authors>Michel Borges</Authors>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -23,5 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda\Innovt.Cloud.AWS.Lambda.csproj" />
   </ItemGroup>
+
+
 
 </Project>
