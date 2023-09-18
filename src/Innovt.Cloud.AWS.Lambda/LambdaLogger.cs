@@ -9,11 +9,19 @@ using Innovt.Core.CrossCutting.Log;
 
 namespace Innovt.Cloud.AWS.Lambda;
 
+/// <summary>
+/// An adapter class that provides logging capabilities using an ILambdaLogger.
+/// </summary>
 internal class LambdaLogger : ILogger
 {
     private readonly IFormatProvider formatProvider;
     private readonly ILambdaLogger lambdaLogger;
 
+    /// <summary>
+    /// Initializes a new instance of the LambdaLogger class with the specified ILambdaLogger and optional format provider.
+    /// </summary>
+    /// <param name="lambdaLogger">The ILambdaLogger to use for logging.</param>
+    /// <param name="formatProvider">An optional format provider for message formatting.</param>
     public LambdaLogger(ILambdaLogger lambdaLogger, IFormatProvider formatProvider = null)
     {
         this.lambdaLogger = lambdaLogger ?? throw new ArgumentNullException(nameof(lambdaLogger));
@@ -21,11 +29,17 @@ internal class LambdaLogger : ILogger
         this.formatProvider = formatProvider ?? CultureInfo.CurrentCulture;
     }
 
+    /// <summary>
+    /// Logs a Debug message.
+    /// </summary>
     public void Debug(string message)
     {
         lambdaLogger.LogLine($"DEBUG: Message: {message}");
     }
 
+    /// <summary>
+    /// Logs a Debug message with formatted properties.
+    /// </summary>
     public void Debug(string messageTemplate, params object[] propertyValues)
     {
         lambdaLogger.LogLine($"DEBUG: Message: {string.Format(formatProvider, messageTemplate, propertyValues)}");
