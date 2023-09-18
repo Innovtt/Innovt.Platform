@@ -73,11 +73,27 @@ namespace Innovt.HttpClient.Core
             return await ParseResponse<T>(response);
         }
 
+        private async Task<HttpStatusCode> PostAsync(Uri baseUri, string resourceUri, HttpContent content,Dictionary<string,string> headerValues=null, CancellationToken cancellationToken = default)
+        {
+            var client = CreateHttpClient();
+
+            InitializeClient(client,headerValues);
+
+            var response = await client.PostAsync($"{baseUri.ToString()}{resourceUri}", content, cancellationToken);
+            
+            return response.StatusCode;
+        }
+        
         protected async Task<T> PostAsync<T>(Uri baseUri, string resourceUri, HttpContent content, CancellationToken cancellationToken = default)
         {
             return await PostAsync<T>(baseUri, resourceUri, content, null, cancellationToken);
         }
 
+        protected async Task<HttpStatusCode> PostAsync(Uri baseUri, string resourceUri, HttpContent content, CancellationToken cancellationToken = default)
+        {
+           return await PostAsync(baseUri, resourceUri, content, null, cancellationToken);
+        }
+        
         protected async Task<T> PutAsync<T>(Uri baseUri, string resourceUri, HttpContent content,Dictionary<string,string> headerValues=null, CancellationToken cancellationToken = default)
         {
             var client = CreateHttpClient();
