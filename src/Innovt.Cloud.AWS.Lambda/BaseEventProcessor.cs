@@ -96,8 +96,7 @@ public abstract class BaseEventProcessor
         var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
         if (!string.IsNullOrWhiteSpace(environmentName))
-            configBuilder.AddJsonFile(
-                $"appsettings.{environmentName.ToLower(CultureInfo.CurrentCulture)}.json", true);
+            configBuilder.AddJsonFile($"appsettings.{environmentName.ToLower(CultureInfo.CurrentCulture)}.json", true);
 
         EnrichConfiguration(configBuilder);
 
