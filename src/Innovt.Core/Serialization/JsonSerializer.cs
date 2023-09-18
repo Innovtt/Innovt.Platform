@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Innovt.Core.Utilities;
 
 namespace Innovt.Core.Serialization;
 
@@ -41,8 +42,9 @@ public class JsonSerializer : ISerializer {
     /// <typeparam name="T">The type of object to deserialize.</typeparam>
     /// <param name="serializedObject">The JSON string to deserialize.</param>
     /// <returns>The deserialized object of type <typeparamref name="T"/>.</returns>
-    public T DeserializeObject<T>(string serializedObject) {
-        return System.Text.Json.JsonSerializer.Deserialize<T>(serializedObject, options);
+    public T DeserializeObject<T>(string serializedObject)
+    {
+        return serializedObject.IsNullOrEmpty() ? default(T) : System.Text.Json.JsonSerializer.Deserialize<T>(serializedObject, options);
     }
 
     /// <summary>
