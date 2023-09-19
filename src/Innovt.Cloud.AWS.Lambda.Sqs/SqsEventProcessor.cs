@@ -22,31 +22,62 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs;
 ///     messages in your queue.
 /// </summary>
 /// <typeparam name="TBody"></typeparam>
+/// 
+
+// <summary>
+/// The abstract SqsEventProcessor class serves as the base class for processing Amazon SQS events in AWS Lambda functions.
+/// </summary>
+/// <typeparam name="TBody">The type of the message body within SQS event records.</typeparam>
 public abstract class SqsEventProcessor<TBody> : EventProcessor<SQSEvent, BatchFailureResponse> where TBody : class
 {
     private readonly bool isFifo;
     private ISerializer serializer;
 
+    /// <summary>
+    /// Initializes a new instance of the SqsEventProcessor class with the specified FIFO queue setting and report batch failures setting.
+    /// </summary>
+    /// <param name="isFifo">A boolean indicating whether the SQS queue is FIFO (First-In-First-Out).</param>
+    /// <param name="reportBatchFailures">A boolean indicating whether to report batch processing failures.</param>
     protected SqsEventProcessor(bool isFifo = false, bool reportBatchFailures = false)
     {
         this.isFifo = isFifo;
         ReportBatchFailures = reportBatchFailures;
     }
 
+    /// <summary>
+    /// Initializes a new instance of the SqsEventProcessor class with the specified logger, FIFO queue setting, and report batch failures setting.
+    /// </summary>
+    /// <param name="logger">The logger used for logging events and messages.</param>
+    /// <param name="isFifo">A boolean indicating whether the SQS queue is FIFO (First-In-First-Out).</param>
+    /// <param name="reportBatchFailures">A boolean indicating whether to report batch processing failures.</param>
     protected SqsEventProcessor(ILogger logger, bool isFifo = false, bool reportBatchFailures = false) : base(logger)
     {
         this.isFifo = isFifo;
         ReportBatchFailures = reportBatchFailures;
     }
 
+
+    /// <summary>
+    /// Initializes a new instance of the SqsEventProcessor class with the specified logger, serializer, FIFO queue setting, and report batch failures setting.
+    /// </summary>
+    /// <param name="logger">The logger used for logging events and messages.</param>
+    /// <param name="serializer">The serializer used for message deserialization.</param>
+    /// <param name="isFifo">A boolean indicating whether the SQS queue is FIFO (First-In-First-Out).</param>
+    /// <param name="reportBatchFailures">A boolean indicating whether to report batch processing failures.</param>
     protected SqsEventProcessor(ILogger logger, ISerializer serializer, bool isFifo = false,
         bool reportBatchFailures = false) : this(logger, isFifo, reportBatchFailures)
     {
         Serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
     }
 
+    /// <summary>
+    /// Gets or sets a boolean indicating whether to report batch processing failures.
+    /// </summary>
     protected bool ReportBatchFailures { get; set; }
 
+    /// <summary>
+    /// Gets or sets the serializer used for message deserialization.
+    /// </summary>
     private ISerializer Serializer
     {
         get { return serializer ??= new JsonSerializer(); }
@@ -54,6 +85,12 @@ public abstract class SqsEventProcessor<TBody> : EventProcessor<SQSEvent, BatchF
         set => serializer = value;
     }
 
+    /// <summary>
+    /// Handles the processing of an incoming SQSEvent, which may contain multiple SQS event records.
+    /// </summary>
+    /// <param name="message">The SQSEvent containing one or more SQS event records.</param>
+    /// <param name="context">The ILambdaContext providing information about the Lambda function's execution environment.</param>
+    /// <returns>A Task representing the asynchronous processing operation.</returns>
     protected override async Task<BatchFailureResponse> Handle(SQSEvent message, ILambdaContext context)
     {
         Logger.Info($"Processing Sqs event With {message?.Records?.Count} records.");
@@ -132,10 +169,21 @@ public abstract class SqsEventProcessor<TBody> : EventProcessor<SQSEvent, BatchF
         return response;
     }
 
+    /// <summary>
+    /// Gets the remaining messages in the SQSEvent that were not processed successfully.
+    /// </summary>
+    /// <param name="message">The SQSEvent containing one or more SQS event records.</param>
+    /// <param name="processedMessages">A list of processed message IDs.</param>
+    /// <returns>An IEnumerable of message IDs representing the remaining unprocessed messages.</returns>
     private static IEnumerable<string> GetRemainingMessages(SQSEvent message, IList<string> processedMessages)
     {
         return message.Records.Where(r => !processedMessages.Contains(r.MessageId)).Distinct().Select(r => r.MessageId);
     }
 
+    /// <summary>
+    /// Handles the processing of an individual SQS message.
+    /// </summary>
+    /// <param name="message">The QueueMessage object containing information about the SQS message.</param>
+    /// <returns>A Task representing the asynchronous processing operation.</returns>
     protected abstract Task ProcessMessage(QueueMessage<TBody> message);
 }
