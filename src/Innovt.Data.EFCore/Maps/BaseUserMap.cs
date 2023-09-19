@@ -8,9 +8,16 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Innovt.Data.EFCore.Maps;
-
+/// <summary>
+/// Configuration for mapping the BaseUser entity to the database using Entity Framework Core.
+/// </summary>
 public class BaseUserMap : IEntityTypeConfiguration<BaseUser>
 {
+    /// <summary>
+    /// Configures the mapping for the BaseUser entity.
+    /// </summary>
+    /// <param name="builder">The entity type builder.</param>
+    /// <exception cref="ArgumentNullException">Thrown when the builder parameter is null.</exception>
     public void Configure(EntityTypeBuilder<BaseUser> builder)
     {
         if (builder is null) throw new ArgumentNullException(nameof(builder));
