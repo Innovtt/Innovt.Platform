@@ -7,9 +7,16 @@ using System.Data.SqlClient;
 using Dapper;
 
 namespace Innovt.Data.Migration;
-
+/// <summary>
+/// Provides methods for security-related database schema migration.
+/// </summary>
 public static class SecurityMigration
 {
+    /// <summary>
+    /// Creates security-related tables if they do not exist in the database.
+    /// </summary>
+    /// <param name="connectionString">The connection string to the database.</param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="connectionString"/> is null.</exception>
     public static void CreateTablesIfNotExist(string connectionString)
     {
         if (connectionString == null) throw new ArgumentNullException(nameof(connectionString));
