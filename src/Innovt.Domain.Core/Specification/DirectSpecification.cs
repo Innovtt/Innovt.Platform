@@ -35,7 +35,12 @@ public sealed class DirectSpecification<TEntity>
     }
 
     #endregion
-
+    /// <summary>
+    /// Creates a direct specification for a given entity type based on provided matching criteria.
+    /// </summary>
+    /// <typeparam name="TEntity">The type of entity.</typeparam>
+    /// <param name="matchingCriteria">The expression representing the matching criteria.</param>
+    /// <returns>A direct specification based on the provided matching criteria.</returns>
     public static DirectSpecification<TEntity> By(Expression<Func<TEntity, bool>> matchingCriteria)
     {
         return new DirectSpecification<TEntity>(matchingCriteria);
