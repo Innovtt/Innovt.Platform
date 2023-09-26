@@ -42,6 +42,9 @@ using UserNotFoundException = Amazon.CognitoIdentityProvider.Model.UserNotFoundE
 
 namespace Innovt.Cloud.AWS.Cognito;
 
+/// <summary>
+/// Provides functionality for user management and authentication with Amazon Cognito Identity Provider.
+/// </summary>
 public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentityProvider
 {
     /// <summary>
@@ -76,6 +79,11 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         get { return cognitoIdentityProvider ??= CreateService<AmazonCognitoIdentityProviderClient>(); }
     }
 
+    /// <summary>
+    /// Sends a forgot password request for a user.
+    /// </summary>
+    /// <param name="command">The <see cref="ForgotPasswordRequest"/> containing user information.</param>
+    /// <param name="cancellationToken">A cancellation token for async tasks.</param>
     public virtual async Task ForgotPassword([NotNull] ForgotPasswordRequest command,
         CancellationToken cancellationToken = default)
     {
@@ -107,6 +115,11 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         }
     }
 
+    /// <summary>
+    /// Updates user attributes.
+    /// </summary>
+    /// <param name="command">The <see cref="UpdateUserAttributeRequest"/> containing user attributes.</param>
+    /// <param name="cancellationToken">A cancellation token for async tasks.</param>
     public virtual async Task UpdateUserAttributes(UpdateUserAttributeRequest command,
         CancellationToken cancellationToken = default)
     {
@@ -162,6 +175,19 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             .ConfigureAwait(false);
     }
 
+    /// <summary>
+    /// Signs out the user associated with the provided access token.
+    /// </summary>
+    /// <param name="request">A <see cref="SignOutRequest"/> object containing the access token to sign out the user.</param>
+    /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
+    /// <exception cref="ArgumentNullException">Thrown when the <paramref name="request"/> is null.</exception>
+    /// <exception cref="ValidationException">Thrown when the <paramref name="request"/> fails validation.</exception>
+    /// <exception cref="CatchException">Thrown when an error occurs during the sign-out process.</exception>
+    /// <remarks>
+    /// This method allows you to sign out the user associated with the provided access token. Signing out a user invalidates the access
+    /// token, preventing further access to protected resources without reauthentication. Ensure that you provide a valid access token
+    /// to successfully sign out the user.
+    /// </remarks>
     public async Task SignOut(SignOutRequest request, CancellationToken cancellationToken = default)
     {
         Check.NotNull(request, nameof(request));
@@ -186,6 +212,20 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         }
     }
 
+    /// <summary>
+    /// Signs up a new user with the provided registration information.
+    /// </summary>
+    /// <param name="command">An <see cref="ISignUpRequest"/> object containing the user's registration information.</param>
+    /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
+    /// <returns>A <see cref="SignUpResponse"/> indicating whether the user was successfully signed up and their UUID (User Sub).</returns>
+    /// <exception cref="ArgumentNullException">Thrown when the <paramref name="command"/> is null.</exception>
+    /// <exception cref="ValidationException">Thrown when the <paramref name="command"/> fails validation.</exception>
+    /// <exception cref="CatchException">Thrown when an error occurs during the sign-up process.</exception>
+    /// <remarks>
+    /// This method allows you to sign up a new user with the provided registration information, including username, password,
+    /// custom attributes, and other optional properties. After successful sign-up, the user may need to confirm their registration
+    /// depending on the authentication flow and configuration.
+    /// </remarks>
     public virtual async Task<SignUpResponse> SignUp(ISignUpRequest command,
         CancellationToken cancellationToken = default)
     {
@@ -294,6 +334,19 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         return false;
     }
 
+    /// <summary>
+    /// Confirms the sign-up of a user with the specified confirmation code.
+    /// </summary>
+    /// <param name="request">A <see cref="ConfirmSignUpRequest"/> containing the necessary information to confirm the sign-up.</param>
+    /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
+    /// <exception cref="ArgumentNullException">Thrown when the <paramref name="request"/> is null.</exception>
+    /// <exception cref="ValidationException">Thrown when the <paramref name="request"/> fails validation.</exception>
+    /// <exception cref="CatchException">Thrown when an error occurs while confirming the sign-up.</exception>
+    /// <remarks>
+    /// This method allows you to confirm the sign-up of a user with the specified confirmation code.
+    /// The confirmation code is typically sent to the user's email or phone number during the registration process.
+    /// After successful confirmation, the user becomes active and can log in.
+    /// </remarks>
     public virtual async Task ConfirmSignUp(ConfirmSignUpRequest request,
         CancellationToken cancellationToken = default)
     {
@@ -328,6 +381,18 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         }
     }
 
+    /// <summary>
+    /// Resends the confirmation code to a user with the specified username.
+    /// </summary>
+    /// <param name="command">A <see cref="ResendConfirmationCodeRequest"/> containing the necessary information to resend the confirmation code.</param>
+    /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
+    /// <exception cref="ArgumentNullException">Thrown when the <paramref name="command"/> is null.</exception>
+    /// <exception cref="ValidationException">Thrown when the <paramref name="command"/> fails validation.</exception>
+    /// <exception cref="CatchException">Thrown when an error occurs while resending the confirmation code.</exception>
+    /// <remarks>
+    /// This method allows you to resend the confirmation code to a user with the specified username.
+    /// The confirmation code is typically used during the user registration process to verify the user's email or phone number.
+    /// </remarks>
     public virtual async Task ResendConfirmationCode(ResendConfirmationCodeRequest command,
         CancellationToken cancellationToken = default)
     {
@@ -361,6 +426,18 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         }
     }
 
+    /// <summary>
+    /// Changes the password for a user with the specified access token.
+    /// </summary>  
+    /// <param name="command">A <see cref="ChangePasswordRequest"/> containing the necessary information to change the password.</param>
+    /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
+    /// <exception cref="ArgumentNullException">Thrown when the <paramref name="command"/> is null.</exception>
+    /// <exception cref="ValidationException">Thrown when the <paramref name="command"/> fails validation.</exception>
+    /// <exception cref="CatchException">Thrown when an error occurs during password change.</exception>
+    /// <remarks>
+    /// This method allows you to change the password for a user by providing an access token and the new proposed password.
+    /// The previous password is also required for security verification. If successful, the user's password will be updated.
+    /// </remarks>
     public virtual async Task ChangePassword(ChangePasswordRequest command,
         CancellationToken cancellationToken = default)
     {
@@ -388,6 +465,23 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         }
     }
 
+    /// <summary>
+    /// Retrieves user information based on the specified request and response type.
+    /// </summary>
+    /// <typeparam name="T">The type of response implementing <see cref="IGetUserResponse"/> to return.</typeparam>
+    /// <param name="request">A <see cref="GetUserRequest"/> containing the criteria for retrieving user information.</param>
+    /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
+    /// <returns>An instance of the specified response type containing user information.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when the <paramref name="request"/> is null.</exception>
+    /// <exception cref="ValidationException">Thrown when the <paramref name="request"/> fails validation.</exception>
+    /// <exception cref="CatchException">Thrown when an error occurs during user retrieval.</exception>
+    /// <remarks>
+    /// This method allows you to retrieve user information based on the specified request, such as
+    /// the user's username or other custom fields. You can specify the response type as a generic
+    /// parameter, which should implement the <see cref="IGetUserResponse"/> interface to provide
+    /// a structured representation of user data. The method returns an instance of the specified
+    /// response type populated with user information.
+    /// </remarks>
     public virtual async Task<T> GetUser<T>(GetUserRequest request,
         CancellationToken cancellationToken = default) where T : IGetUserResponse
     {
@@ -465,6 +559,21 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         }
     }
 
+    /// <summary>
+    /// Responds to an authentication challenge with the appropriate challenge responses.
+    /// </summary>
+    /// <param name="command">A <see cref="RespondToAuthChallengeRequest"/> containing the necessary information for the challenge response.</param>
+    /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
+    /// <returns>An <see cref="AuthChallengeResponse"/> containing the authentication result or metadata.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when the <paramref name="command"/> is null.</exception>
+    /// <exception cref="ValidationException">Thrown when the <paramref name="command"/> fails validation.</exception>
+    /// <exception cref="CriticalException">Thrown when an unsupported challenge name is encountered.</exception>
+    /// <exception cref="CatchException">Thrown when an error occurs during the challenge response process.</exception>
+    /// <remarks>
+    /// This method is used to respond to various authentication challenges such as custom challenges,
+    /// SMS Multi-Factor Authentication (MFA), and new password requirements. It provides the appropriate
+    /// challenge responses based on the challenge type and returns authentication results or metadata.
+    /// </remarks>
     public async Task<AuthChallengeResponse> RespondToAuthChallenge(
         RespondToAuthChallengeRequest command,
         CancellationToken cancellationToken = default)
@@ -538,6 +647,19 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         }
     }
 
+    /// <summary>
+    /// Confirms a user's forgotten password and sets a new password for the user.
+    /// </summary>
+    /// <param name="command">A <see cref="ConfirmForgotPasswordRequest"/> containing the necessary information for confirmation.</param>
+    /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
+    /// <returns>A task representing the asynchronous confirmation process.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when the <paramref name="command"/> is null.</exception>
+    /// <exception cref="ValidationException">Thrown when the <paramref name="command"/> fails validation.</exception>
+    /// <exception cref="CatchException">Thrown when an error occurs during the confirmation process.</exception>
+    /// <remarks>
+    /// This method is used to confirm a user's forgotten password by providing the user's username, a new password,
+    /// and a confirmation code received by the user. It sets the new password for the user if the confirmation is successful.
+    /// </remarks>
     public async Task ConfirmForgotPassword(ConfirmForgotPasswordRequest command,
         CancellationToken cancellationToken = default)
     {
@@ -573,6 +695,18 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         }
     }
 
+    /// <summary>
+    /// Lists Cognito users matching the provided email address.
+    /// </summary>
+    /// <param name="email">The email address to filter Cognito users by.</param>
+    /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
+    /// <returns>
+    /// A <see cref="ListUsersResponse"/> containing a list of Cognito users matching the provided email address.
+    /// </returns>
+    /// <remarks>
+    /// This method is used to retrieve a list of Cognito users that match the provided email address.
+    /// It performs a filter operation based on the email address and returns a list of user records.
+    /// </remarks>
     private async Task<ListUsersResponse> ListUsersAsync(string email, CancellationToken cancellationToken = default)
     {
         var listUsersResponse = await CognitoProvider.ListUsersAsync(new ListUsersRequest
@@ -601,6 +735,23 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             _ => $"USER_{provider}"
         };
     }
+
+    /// <summary>
+    /// Performs social sign-in using an authorization code obtained from an external identity provider.
+    /// </summary>
+    /// <param name="command">The request containing the authorization code and context information.</param>
+    /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
+    /// <returns>
+    /// A <see cref="OAuth2SignInResponse"/> containing user information and tokens for authentication.
+    /// </returns>
+    /// <exception cref="BusinessException">Thrown when there is an error in the OAuth2 response.</exception>
+    /// <exception cref="CriticalException">Thrown when the user is not found in the system.</exception>
+    /// <exception cref="Exception">Thrown for other exceptions during the social sign-in process.</exception>
+    /// <remarks>
+    /// This method is used to perform social sign-in using an authorization code obtained from an external identity provider.
+    /// It constructs an OAuth2 token request, sends it to the identity provider, and handles the response to authenticate the user.
+    /// The method also retrieves user information and determines if the user needs to be registered in the system.
+    /// </remarks>
     public virtual async Task<OAuth2SignInResponse> SocialSignIn(SocialSignInRequest command,
         CancellationToken cancellationToken)
     {
@@ -672,6 +823,22 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         return response;
     }
 
+    /// <summary>
+    /// Refreshes an expired access token using a refresh token, allowing the user to remain authenticated.
+    /// </summary>
+    /// <param name="command">The request containing the refresh token and context information.</param>
+    /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
+    /// <returns>
+    /// A <see cref="RefreshTokenResponse"/> containing the refreshed access token and associated details.
+    /// </returns>
+    /// <exception cref="BusinessException">Thrown when the refresh token operation is not authorized.</exception>
+    /// <exception cref="Exception">Thrown for other exceptions during the refresh token operation.</exception>
+    /// <remarks>
+    /// This method is used to refresh an expired access token using a refresh token, allowing the user to
+    /// remain authenticated without the need for re-entering credentials. The method constructs a refresh token
+    /// authentication request, including user context data, and sends it to the Amazon Cognito Identity Provider
+    /// service. The response contains the refreshed access token and related information.
+    /// </remarks>
     public virtual async Task<RefreshTokenResponse> RefreshToken(RefreshTokenRequest command,
         CancellationToken cancellationToken = default)
     {
@@ -716,7 +883,26 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             throw CatchException(ex);
         }
     }
-   
+
+    /// <summary>
+    /// Initiates a user sign-in process using the provided authentication flow type and request parameters.
+    /// </summary>
+    /// <param name="type">The authentication flow type to use for sign-in.</param>
+    /// <param name="request">The sign-in request containing user information and context.</param>
+    /// <param name="authParameters">Additional authentication parameters, if needed.</param>
+    /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
+    /// <returns>
+    /// A <see cref="SignInResponse"/> containing the result of the sign-in operation,
+    /// including tokens, session information, or challenge details.
+    /// </returns>
+    /// <exception cref="Exception">Throws various exceptions based on the sign-in outcome.</exception>
+    /// <remarks>
+    /// This method initiates a user sign-in process using the specified authentication flow type,
+    /// such as "USER_PASSWORD_AUTH" for username and password authentication. The method constructs
+    /// an authentication request, including user context data, and sends it to the Amazon Cognito Identity
+    /// Provider service to begin the sign-in process. The response may contain tokens for successful
+    /// sign-in or challenge details for multi-factor authentication (MFA) challenges.
+    /// </remarks>
     private async Task<SignInResponse> SignIn(AuthFlowType type, SignInRequestBase request,
         Dictionary<string, string> authParameters = null, CancellationToken cancellationToken = default)
     {
@@ -773,6 +959,20 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         }
     }
 
+    /// <summary>
+    /// Retrieves the value of a user attribute from a collection of attributes.
+    /// </summary>
+    /// <param name="attributes">A collection of user attributes.</param>
+    /// <param name="attributeName">The name of the attribute to retrieve.</param>
+    /// <returns>
+    /// The value of the user attribute with the specified name, or null if the attribute
+    /// is not found in the collection.
+    /// </returns>
+    /// <remarks>
+    /// This method searches for a user attribute in the given collection with a name that
+    /// matches the specified attribute name in a case-insensitive manner. If a matching attribute
+    /// is found, its value is returned. If no matching attribute is found, the method returns null.
+    /// </remarks>
     private static string GetUserAttributeValue(IEnumerable<AttributeType> attributes, string attributeName)
     {
         var attribute = attributes?.SingleOrDefault(a =>
@@ -802,7 +1002,10 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             _ => new InternalException(ErrorCode.InternalServerError, ex)
         };
     }
-    
+
+    /// <summary>
+    /// Disposes of resources when they are no longer needed.
+    /// </summary>
     protected override void DisposeServices()
     {
         cognitoIdentityProvider?.Dispose();
