@@ -8,9 +8,18 @@ using Innovt.Data.DataSources;
 using Innovt.Data.Model;
 
 namespace Innovt.Data.Ado;
-
+/// <summary>
+/// Provides extension methods for SQL query manipulation.
+/// </summary>
 internal static class Extensions
 {
+    /// <summary>
+    /// Adds pagination clauses to the raw SQL query based on the specified paged filter and data source.
+    /// </summary>
+    /// <param name="rawSql">The raw SQL query to modify.</param>
+    /// <param name="pagedFilter">The paged filter containing pagination parameters.</param>
+    /// <param name="dataSource">The data source used to determine the database provider.</param>
+    /// <returns>The modified SQL query with pagination clauses.</returns>
     internal static string AddPagination(this string rawSql, IPagedFilter pagedFilter, IDataSource dataSource)
     {
         if (pagedFilter.IsNull())
@@ -35,7 +44,12 @@ internal static class Extensions
                 return $"{rawSql} OFFSET {recordStart} ROWS FETCH NEXT @PageSize ROWS ONLY";
         }
     }
-
+    /// <summary>
+    /// Adds a NOLOCK hint to the raw SQL query based on the specified data source.
+    /// </summary>
+    /// <param name="rawSql">The raw SQL query to modify.</param>
+    /// <param name="dataSource">The data source used to determine the database provider.</param>
+    /// <returns>The modified SQL query with the NOLOCK hint.</returns>
     internal static string AddNoLock(this string rawSql, IDataSource dataSource)
     {
         return dataSource.Provider switch
@@ -44,7 +58,12 @@ internal static class Extensions
             _ => rawSql + " WITH (NOLOCK) "
         };
     }
-
+    /// <summary>
+    /// Adds a WHERE clause to the raw SQL query based on the specified WHERE clause string.
+    /// </summary>
+    /// <param name="rawSql">The raw SQL query to modify.</param>
+    /// <param name="whereClause">The WHERE clause to append.</param>
+    /// <returns>The modified SQL query with the WHERE clause.</returns>
     internal static string AddWhere(this string rawSql, string whereClause)
     {
         return whereClause.IsNullOrEmpty() ? rawSql : $"{rawSql} WHERE {whereClause}";

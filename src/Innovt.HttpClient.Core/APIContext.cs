@@ -2,17 +2,20 @@
 
 namespace Innovt.HttpClient.Core
 {
-    public class ApiContext
-    {
-        public ApiContext(IEnvironment environment, string accessToken)
+    public sealed class ApiContext
+    {   
+        public ApiContext(IEnvironment environment)
         {
             Environment = environment ?? throw new ArgumentNullException(nameof(environment));
+        }
+        
+        public ApiContext(IEnvironment environment, string accessToken):this(environment)
+        {
             AccessToken = accessToken ?? throw new ArgumentNullException(nameof(accessToken));
         }
 
-        public ApiContext(IEnvironment environment, BasicCredential credential)
+        public ApiContext(IEnvironment environment, BasicCredential credential):this(environment)
         {
-            Environment = environment ?? throw new ArgumentNullException(nameof(environment));
             Credential = credential ?? throw new ArgumentNullException(nameof(credential));
         }
 
@@ -24,7 +27,6 @@ namespace Innovt.HttpClient.Core
         public string TokenType { get; set; }
 
         public int ExpireIn { get; set; }
-
         public IEnvironment Environment { get; set; }
     }
 }

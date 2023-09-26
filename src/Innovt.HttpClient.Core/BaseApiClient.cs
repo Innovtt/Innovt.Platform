@@ -8,6 +8,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Serialization;
+using Innovt.Core.Utilities;
+
+// ReSharper disable MemberCanBePrivate.Global
 
 namespace Innovt.HttpClient.Core
 {
@@ -15,19 +18,24 @@ namespace Innovt.HttpClient.Core
     {
         private readonly IHttpClientFactory httpClientFactory;
 
-        protected ApiContext ApiContext  { get; private set; }
+        protected ApiContext ApiContext { get; }
 
-        protected  ISerializer Serializer { get; set; }
+        protected  ISerializer Serializer { get; }
 
-        protected BaseApiClient(ApiContext apiContext, IHttpClientFactory httpClientFactory,ISerializer serializer)
+        protected BaseApiClient(ApiContext apiContext, ISerializer serializer)
         {
             this.ApiContext = apiContext ?? throw new ArgumentNullException(nameof(apiContext));
-            this.httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
             this.Serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
         }
-
-        protected virtual System.Net.Http.HttpClient CreateHttpClient() { 
-            return httpClientFactory.CreateClient();
+        
+        protected BaseApiClient(ApiContext apiContext, IHttpClientFactory httpClientFactory,ISerializer serializer):this(apiContext,serializer)
+        {
+            this.httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
+        }
+       
+        protected virtual System.Net.Http.HttpClient CreateHttpClient()
+        {
+            return httpClientFactory is not null ? httpClientFactory.CreateClient() : new System.Net.Http.HttpClient();
         }
 
         protected virtual async Task<T> ParseResponse<T>(HttpResponseMessage response)
@@ -39,16 +47,12 @@ namespace Innovt.HttpClient.Core
                 return Serializer.DeserializeObject<T>(contentResponse);
             }
 
-            switch (response.StatusCode)
+            return response.StatusCode switch
             {
-                case HttpStatusCode.NotFound:
-                    return default(T);
-
-                case HttpStatusCode.BadRequest:
-                    throw new BusinessException(contentResponse);
-                default:
-                    throw new HttpRequestException(response.ReasonPhrase);
-            }
+                HttpStatusCode.NotFound => default(T),
+                HttpStatusCode.BadRequest => throw new BusinessException(contentResponse),
+                _ => throw new HttpRequestException(response.ReasonPhrase)
+            };
         }
 
         protected virtual async Task<Stream> ParseStreamResponse(HttpResponseMessage response)
@@ -69,11 +73,27 @@ namespace Innovt.HttpClient.Core
             return await ParseResponse<T>(response);
         }
 
+        private async Task<HttpStatusCode> PostAsync(Uri baseUri, string resourceUri, HttpContent content,Dictionary<string,string> headerValues=null, CancellationToken cancellationToken = default)
+        {
+            var client = CreateHttpClient();
+
+            InitializeClient(client,headerValues);
+
+            var response = await client.PostAsync($"{baseUri.ToString()}{resourceUri}", content, cancellationToken);
+            
+            return response.StatusCode;
+        }
+        
         protected async Task<T> PostAsync<T>(Uri baseUri, string resourceUri, HttpContent content, CancellationToken cancellationToken = default)
         {
             return await PostAsync<T>(baseUri, resourceUri, content, null, cancellationToken);
         }
 
+        protected async Task<HttpStatusCode> PostAsync(Uri baseUri, string resourceUri, HttpContent content, CancellationToken cancellationToken = default)
+        {
+           return await PostAsync(baseUri, resourceUri, content, null, cancellationToken);
+        }
+        
         protected async Task<T> PutAsync<T>(Uri baseUri, string resourceUri, HttpContent content,Dictionary<string,string> headerValues=null, CancellationToken cancellationToken = default)
         {
             var client = CreateHttpClient();
@@ -91,7 +111,8 @@ namespace Innovt.HttpClient.Core
         }
 
         private void InitializeClient(System.Net.Http.HttpClient client, Dictionary<string, string> headerValues = null)
-        {   if (ApiContext.AccessToken != null)
+        {  
+            if (ApiContext.AccessToken.IsNotNullOrEmpty() && ApiContext.TokenType.IsNotNullOrEmpty())
             {
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(ApiContext.TokenType, ApiContext.AccessToken);
             }
@@ -144,6 +165,10 @@ namespace Innovt.HttpClient.Core
         {
         }
         
+        protected BaseApiClient(ApiContext apiContext,ISerializer serializer) : base(apiContext,serializer)
+        {
+        }
+        
         protected override async Task<T> ParseResponse<T>(HttpResponseMessage response)
         {
             var contentResponse = await response.Content.ReadAsStringAsync();
@@ -152,12 +177,10 @@ namespace Innovt.HttpClient.Core
             {
                 return Serializer.DeserializeObject<T>(contentResponse);
             }
-            else
-            {
-                var errorResponse = Serializer.DeserializeObject<TErrorResponse>(contentResponse); 
 
-                throw  new ApiException<TErrorResponse>(errorResponse);
-            }
+            var errorResponse = Serializer.DeserializeObject<TErrorResponse>(contentResponse); 
+
+            throw  new ApiException<TErrorResponse>(errorResponse);
         }
 
         protected override async Task<Stream> ParseStreamResponse(HttpResponseMessage response)
@@ -168,12 +191,10 @@ namespace Innovt.HttpClient.Core
             {
                 return contentResponse;
             }
-            else
-            {
-                var errorResponse = await response.Content.ReadAsStringAsync();
+
+            var errorResponse = await response.Content.ReadAsStringAsync();
                 
-                throw  new ApiException<TErrorResponse>(Serializer.DeserializeObject<TErrorResponse>(errorResponse));
-            }
+            throw  new ApiException<TErrorResponse>(Serializer.DeserializeObject<TErrorResponse>(errorResponse));
         }
 
       

@@ -1,7 +1,7 @@
 ﻿
 namespace Innovt.HttpClient.Core
 {
-    public class BaseConstants
+    public static class BaseConstants
     {
         public const string ContentTypeApplicationJson = "application/json";
 
