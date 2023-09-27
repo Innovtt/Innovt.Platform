@@ -12,8 +12,8 @@
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="AWSSDK.Core" Version="3.7.202.12" />
-    <PackageReference Include="AWSSDK.SecurityToken" Version="3.7.201.39" />
+    <PackageReference Include="AWSSDK.Core" Version="3.7.202.14" />
+    <PackageReference Include="AWSSDK.SecurityToken" Version="3.7.201.41" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.4" />
     <PackageReference Include="Polly" Version="7.2.4" />
     <PackageReference Include="System.Text.Json" Version="7.0.3" />
