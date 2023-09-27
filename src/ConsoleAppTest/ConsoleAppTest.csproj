@@ -26,12 +26,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Datadog.Trace.OpenTracing" Version="2.37.0" />
+		<PackageReference Include="Datadog.Trace.OpenTracing" Version="2.38.0" />
 		<PackageReference Include="ServiceStack.Redis" Version="6.10.0" />
-		<PackageReference Include="OpenTelemetry" Version="1.5.1" />
+		<PackageReference Include="OpenTelemetry" Version="1.6.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
-		<PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.5.1" />
+		<PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.6.0" />
 		<PackageReference Include="OpenTelemetry.Exporter.Jaeger" Version="1.5.1" />
 	</ItemGroup>
 

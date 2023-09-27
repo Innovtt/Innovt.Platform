@@ -11,7 +11,9 @@ using Innovt.Core.Collections;
 using Innovt.Core.Cqrs.Queries;
 
 namespace Innovt.Data.Ado;
-
+/// <summary>
+/// Represents a base interface for repository operations.
+/// </summary>
 public interface IRepositoryBase
 {
     Task<T> QueryFirstOrDefaultAsync<T>(string tableName, string whereClause, object filter = null,
