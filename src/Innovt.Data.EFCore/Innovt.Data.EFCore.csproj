@@ -2,7 +2,7 @@
   <PropertyGroup>
 	<TargetFramework>net7.0</TargetFramework>
     <PackageId>Innovt.Data.EFCore</PackageId>
-    <PackageVersion>7.0.38</PackageVersion>
+    <PackageVersion>7.0.39</PackageVersion>
     <Authors>Michel Borges</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
