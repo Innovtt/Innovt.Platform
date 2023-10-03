@@ -14,7 +14,7 @@ namespace Innovt.Cloud.File;
 /// <summary>
 ///    Interface for File System
 /// </summary>
-public interface IFileSystem              {
+public interface IFileSystem {
     /// <summary>
     ///    Copy a file from one bucket to another
     /// </summary>
@@ -210,7 +210,16 @@ public interface IFileSystem              {
         IList<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null,
         string fileAcl = null,
         CancellationToken cancellationToken = default);
-
+    /// <summary>
+    /// Uploads an object from a local file to the specified bucket asynchronously.
+    /// </summary>
+    /// <param name="bucketName">The name of the bucket.</param>
+    /// <param name="filePath">The local file path of the object to upload.</param>
+    /// <param name="metadata">Metadata for the object.</param>
+    /// <param name="serverSideEncryptionMethod">The server-side encryption method to use.</param>
+    /// <param name="fileAcl">The access control for the object.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel the asynchronous operation.</param>
+    /// <returns>The unique identifier of the uploaded object.</returns>
     Task<string> UploadAsync(string bucketName, string filePath,
         IList<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null,
         string fileAcl = null,
