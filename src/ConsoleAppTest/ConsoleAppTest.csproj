@@ -27,7 +27,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Datadog.Trace.OpenTracing" Version="2.38.0" />
-		<PackageReference Include="ServiceStack.Redis" Version="6.10.0" />
+		<PackageReference Include="ServiceStack.Redis" Version="6.11.0" />
 		<PackageReference Include="OpenTelemetry" Version="1.6.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
