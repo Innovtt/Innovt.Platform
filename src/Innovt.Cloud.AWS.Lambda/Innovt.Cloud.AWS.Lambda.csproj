@@ -3,9 +3,9 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<PackageId>Innovt.Cloud.AWS.Lambda</PackageId>
-		<PackageVersion>7.0.41</PackageVersion>
+		<PackageVersion>7.0.42</PackageVersion>
 		<Authors>Michel Borges</Authors>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<Copyright>Innovt Tecnologia</Copyright>
 		<Description>AWS implementation for lambda features.</Description>

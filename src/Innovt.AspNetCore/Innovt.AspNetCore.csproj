@@ -4,9 +4,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>Innovt.AspNetCore</PackageId>
-    <PackageVersion>7.0.41</PackageVersion>
+    <PackageVersion>7.0.42</PackageVersion>
     <Authors>Michel Borges</Authors>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <Copyright>Innovt Tecnologia</Copyright>
