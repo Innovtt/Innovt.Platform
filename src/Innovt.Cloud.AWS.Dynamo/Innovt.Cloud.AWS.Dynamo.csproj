@@ -3,16 +3,16 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <PackageId>Innovt.Cloud.AWS.Dynamo</PackageId>
-    <PackageVersion>7.0.40</PackageVersion>
+    <PackageVersion>7.0.42</PackageVersion>
     <Authors>Michel,Tiago</Authors>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Copyright>Innovt Tecnologia</Copyright>
     <Description>AWS implementation for DynamoDB Abstraction.</Description>
     <LangVersion>latest</LangVersion><AnalysisMode>AllEnabledByDefault</AnalysisMode>
   </PropertyGroup>
     <ItemGroup>
-    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.202.4" />
+    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.203.1" />
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

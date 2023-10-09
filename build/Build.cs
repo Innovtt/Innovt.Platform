@@ -28,7 +28,7 @@ class Build : NukeBuild
     [Solution] readonly Solution Solution;
     [Parameter] string NugetApiKey;
 
-    [Parameter] string NugetApiUrl = "https://nugetinnovt.azurewebsites.net/api/v2/package";
+    [Parameter] string NugetApiUrl = "https://nuget.pkg.github.com/Innovtt/index.json";
 
     AbsolutePath SourceDirectory => RootDirectory / "src";
     AbsolutePath ArtifactsDirectory => RootDirectory / "artifacts";

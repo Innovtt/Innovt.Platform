@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <PackageId>Innovt.Cloud.AWS.Notification</PackageId>
-   <PackageVersion>7.0.40</PackageVersion>
+   <PackageVersion>7.0.42</PackageVersion>
     <Authors>Michel Borges</Authors>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Copyright>Innovt Tecnologia</Copyright>
     <Description>AWS implementation for SES and SNS Abstraction.</Description>
@@ -13,8 +13,8 @@
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.200.49" />
-    <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.7.200.49" />
+    <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.200.53" />
+    <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.7.200.53" />
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
