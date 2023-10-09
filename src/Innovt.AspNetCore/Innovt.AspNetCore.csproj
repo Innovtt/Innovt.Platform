@@ -6,7 +6,7 @@
     <PackageId>Innovt.AspNetCore</PackageId>
     <PackageVersion>7.0.42</PackageVersion>
     <Authors>Michel Borges</Authors>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <Copyright>Innovt Tecnologia</Copyright>
