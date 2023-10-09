@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <PackageId>Innovt.Cqrs</PackageId>
-    <PackageVersion>7.0.38</PackageVersion>
+    <PackageVersion>7.0.42</PackageVersion>
     <Authors>Michel Borges</Authors>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Copyright>Innovt Tecnologia</Copyright>
     <Description>CQRS handlers.Simple implementation</Description>
@@ -16,7 +16,7 @@
     <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Polly" Version="7.2.4" />
+    <PackageReference Include="Polly" Version="8.0.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
   <ItemGroup>

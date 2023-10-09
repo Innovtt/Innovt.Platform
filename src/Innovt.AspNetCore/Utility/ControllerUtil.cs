@@ -11,9 +11,17 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
 
 namespace Innovt.AspNetCore.Utility;
-
+/// <summary>
+/// Utility class for reading and processing MVC controllers and actions.
+/// </summary>
 public static class ControllerUtil
 {
+    /// <summary>
+    /// Reads and retrieves information about MVC controllers and their actions.
+    /// </summary>
+    /// <param name="actionDescriptorProvider">The provider for action descriptors.</param>
+    /// <returns>A list of MVC controller view models with associated actions.</returns>
+    /// <exception cref="ArgumentNullException">Thrown if the actionDescriptorProvider is null.</exception>
     public static IList<MvcControllerViewModel> ReadControllers(
         IActionDescriptorCollectionProvider actionDescriptorProvider)
     {

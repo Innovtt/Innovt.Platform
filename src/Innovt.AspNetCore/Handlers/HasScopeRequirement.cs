@@ -10,9 +10,14 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 // Code provided by tiago@innovt.com.br and welbert@antecipa.com
 //
 namespace Innovt.AspNetCore.Handlers;
-
+/// <summary>
+/// Requirement for checking if the user has a specific scope.
+/// </summary>
 public class HasScopeRequirement : AuthorizationHandler<HasScopeRequirement>, IAuthorizationRequirement
 {
+    /// <summary>
+    /// Constructor for HasScopeRequirement with default values.
+    /// </summary>
     public HasScopeRequirement() : this(string.Empty, string.Empty)
     {
     }

@@ -8,14 +8,19 @@ using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Innovt.AspNetCore.Filters;
-
+/// <summary>
+/// A filter used to exclude specified properties or parameters from Swagger documentation.
+/// </summary>
 public class SwaggerExcludeFilter : ISchemaFilter, IOperationFilter
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SwaggerExcludeFilter"/> class.
+    /// </summary>
     public SwaggerExcludeFilter()
     {
         
     }
-    
+    /// <inheritdoc />
     public void Apply(OpenApiOperation operation, OperationFilterContext context)
     {
         if (operation == null) throw new ArgumentNullException(nameof(operation));
@@ -36,7 +41,7 @@ public class SwaggerExcludeFilter : ISchemaFilter, IOperationFilter
                 operation.Parameters.Remove(schemaProp);
         }
     }
-
+    /// <inheritdoc />
     public void Apply(OpenApiSchema schema, SchemaFilterContext context)
     {
         if (schema == null) throw new ArgumentNullException(nameof(schema));

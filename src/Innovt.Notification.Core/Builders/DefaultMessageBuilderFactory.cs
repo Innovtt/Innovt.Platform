@@ -5,11 +5,16 @@
 using Innovt.Notification.Core.Template;
 
 namespace Innovt.Notification.Core.Builders;
-
+/// <summary>
+/// Default implementation of the message builder factory interface.
+/// </summary>
 public class DefaultMessageBuilderFactory : IMessageBuilderFactory
 {
     private readonly ITemplateParser templateParser;
-
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DefaultMessageBuilderFactory"/> class.
+    /// </summary>
+    /// <param name="templateParser">The template parser.</param>
     public DefaultMessageBuilderFactory(ITemplateParser templateParser)
     {
         this.templateParser = templateParser;

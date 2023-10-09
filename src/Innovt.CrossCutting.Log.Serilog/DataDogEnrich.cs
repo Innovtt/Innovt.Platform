@@ -8,9 +8,17 @@ using Serilog.Core;
 using Serilog.Events;
 
 namespace Innovt.CrossCutting.Log.Serilog;
-
+/// <summary>
+/// Implementation of <see cref="ILogEventEnricher"/> that enriches log events with DataDog tracing information.
+/// </summary>
 public class DataDogEnrich : ILogEventEnricher
 {
+    /// <summary>
+    /// Enriches the provided <see cref="LogEvent"/> with DataDog tracing information.
+    /// </summary>
+    /// <param name="logEvent">The log event to enrich.</param>
+    /// <param name="propertyFactory">The property factory to create log event properties.</param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="logEvent"/> is null.</exception>
     public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
     {
         if (logEvent is null) throw new ArgumentNullException(nameof(logEvent));
@@ -25,7 +33,10 @@ public class DataDogEnrich : ILogEventEnricher
         logEvent.AddOrUpdateProperty(new LogEventProperty("dd.trace_id", new ScalarValue(ddTraceId)));
         logEvent.AddOrUpdateProperty(new LogEventProperty("dd.span_id", new ScalarValue(ddSpanId)));
     }
-
+    /// <summary>
+    /// Gets the current <see cref="Activity"/>.
+    /// </summary>
+    /// <returns>The current activity or null if no activity is available.</returns>
 #pragma warning disable CA1822 // Mark members as static
     private static Activity GetActivity()
 #pragma warning restore CA1822 // Mark members as static

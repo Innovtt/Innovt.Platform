@@ -14,6 +14,11 @@ namespace Innovt.AspNetCore.Filters;
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
 public sealed class InjectUserNameClaimParameterFilter : ActionFilterAttribute
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="InjectUserNameClaimParameterFilter"/> class.
+    /// </summary>
+    /// <param name="defaultAuthorizationProperty">The default authorization property to inject the username.</param>
+    /// <param name="actionParameters">The action parameters to inject the username.</param>
     public InjectUserNameClaimParameterFilter(string defaultAuthorizationProperty, params string[] actionParameters)
     {
         Check.NotNull(defaultAuthorizationProperty, nameof(defaultAuthorizationProperty));
@@ -29,11 +34,16 @@ public sealed class InjectUserNameClaimParameterFilter : ActionFilterAttribute
     public InjectUserNameClaimParameterFilter() : this("ExternalId", "filter", "command")
     {
     }
-
+    /// <summary>
+    /// Gets the default authorization property for injecting the username.
+    /// </summary>
     public string DefaultAuthorizationProperty { get; }
+    /// <summary>
+    /// Gets the action parameters to inject the username.
+    /// </summary>
     public string[] ActionParameters { get; }
 
-
+    /// <inheritdoc />
     private void InjectUserName(ActionExecutingContext context)
     {
         if (context is null)
@@ -56,7 +66,7 @@ public sealed class InjectUserNameClaimParameterFilter : ActionFilterAttribute
         }
     }
 
-
+    /// <inheritdoc />
     public override void OnActionExecuting(ActionExecutingContext context)
     {
         InjectUserName(context);
@@ -64,7 +74,7 @@ public sealed class InjectUserNameClaimParameterFilter : ActionFilterAttribute
         base.OnActionExecuting(context);
     }
 
-
+    /// <inheritdoc />
     public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
     {
         InjectUserName(context);
