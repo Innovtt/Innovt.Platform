@@ -4,10 +4,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>Innovt.Contrib.AuthorizationRoles.AspNetCore</PackageId>
-	 <PackageVersion>7.0.38</PackageVersion>
+	 <PackageVersion>7.0.42</PackageVersion>
     <Authors>Michel Borges</Authors>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Copyright>Innovt Tecnologia</Copyright>
     <Description>Authorization Roles.</Description>
     <LangVersion>latest</LangVersion>

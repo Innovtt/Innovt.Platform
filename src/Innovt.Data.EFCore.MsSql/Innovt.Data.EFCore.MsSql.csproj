@@ -3,9 +3,9 @@
   <PropertyGroup>
 	  <TargetFramework>net7.0</TargetFramework>
 	  <PackageId>Innovt.Data.EFCore.MsSql</PackageId>
-	  <PackageVersion>7.0.38</PackageVersion>
+	  <PackageVersion>7.0.42</PackageVersion>
 	  <Authors>Michel Borges</Authors>
-	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	  <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 	  <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 	  <Copyright>Innovt Tecnologia</Copyright>
 	  <Description>EF core project for mssql provider.</Description>
