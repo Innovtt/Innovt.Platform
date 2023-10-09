@@ -1,6 +1,6 @@
 using System;
 
-namespace Innovt.Cloud.AWS.Dynamo.Mapping;
+namespace Innovt.Cloud.AWS.Dynamo.Tests.Mapping;
 
 public class UserSample
 {

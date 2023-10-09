@@ -39,7 +39,7 @@ public class Contact : ValueObject<int>, IValidatableObject
     /// </summary>
     /// <param name="validationContext">The validation context.</param>
     /// <returns>A collection of validation results.</returns>
-    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    public virtual IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
         if (Type == null)
         {

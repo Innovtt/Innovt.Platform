@@ -1,7 +1,7 @@
 ﻿// Innovt Company
 // Author: Michel Borges
 // Project: Innovt.Cloud.AWS.Dynamo
-
+/*
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -21,11 +21,11 @@ using BatchWriteItemResponse = Innovt.Cloud.Table.BatchWriteItemResponse;
 using QueryRequest = Innovt.Cloud.Table.QueryRequest;
 using ScanRequest = Innovt.Cloud.Table.ScanRequest;
 
-namespace Innovt.Cloud.AWS.Dynamo;
+namespace Innovt.Cloud.AWS.Dynamo.Mapping;
 
 public abstract class Repository : AwsBaseService, ITableRepository
 {
-    private static readonly ActivitySource ActivityRepository = new("Innovt.Cloud.AWS.Dynamo.Repository");
+    private static readonly ActivitySource ActivityRepository = new("Innovt.Cloud.AWS.Dynamo.Mapping.Repository");
 
     private DynamoDBContext context;
     private AmazonDynamoDBClient dynamoClient;
@@ -106,7 +106,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     public async Task AddAsync<T>(T message, CancellationToken cancellationToken = default) where T : ITableMessage
     {
         using (ActivityRepository.StartActivity(nameof(DeleteAsync)))
-        {
+        { 
             await CreateDefaultRetryAsyncPolicy()
                 .ExecuteAsync(async () =>
                     await Context.SaveAsync(message, OperationConfig, cancellationToken).ConfigureAwait(false))
@@ -528,4 +528,4 @@ public abstract class Repository : AwsBaseService, ITableRepository
         context?.Dispose();
         dynamoClient?.Dispose();
     }
-}
+}*/

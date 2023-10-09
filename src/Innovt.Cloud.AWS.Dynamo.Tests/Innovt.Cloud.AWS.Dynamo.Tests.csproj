@@ -3,7 +3,7 @@
     <PropertyGroup>
       <TargetFramework>net7.0</TargetFramework>
       <IsPackable>false</IsPackable>
-      <LangVersion>9.0</LangVersion>
+      <LangVersion>latest</LangVersion>
       <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
 
