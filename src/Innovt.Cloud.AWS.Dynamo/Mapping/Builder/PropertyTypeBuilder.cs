@@ -1,11 +1,9 @@
 using System;
-using Amazon.DynamoDBv2.DocumentModel;
 
 namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 
 public class PropertyTypeBuilder<T> where T : class
 {
-    private DynamoDBEntry entry;
     internal bool IsString { get; private set; }
     
     internal bool IsDecimal { get; private set; }

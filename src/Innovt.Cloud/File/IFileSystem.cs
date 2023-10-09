@@ -70,7 +70,7 @@ public interface IFileSystem {
     /// </summary>
     /// <param name="bucketName">The name of the bucket.</param>
     /// <param name="key">The key of the folder.</param>
-    /// <returns>True if the folder exists; otherwise, false.</returns
+    /// <returns>True if the folder exists; otherwise, false.</returns>
     bool FolderExists(string bucketName, string key);
     /// <summary>
     /// Checks if a folder exists in the specified bucket asynchronously.
@@ -97,7 +97,7 @@ public interface IFileSystem {
     /// <param name="key">The key of the object.</param>
     /// <param name="expiration">The expiration date and time for the pre-signed URL.</param>
     /// <param name="additionalProperties">Additional properties for customizing the URL generation.</param>
-    /// <returns>The pre-signed URL for accessing the object.</returns
+    /// <returns>The pre-signed URL for accessing the object.</returns>
     string GeneratePreSignedUrl(string bucketName, string key, DateTime expiration,
 #pragma warning restore CA1055 // URI-like return values should not be strings
         IDictionary<string, object> additionalProperties);

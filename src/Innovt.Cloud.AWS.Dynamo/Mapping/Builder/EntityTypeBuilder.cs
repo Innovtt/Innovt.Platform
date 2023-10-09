@@ -1,15 +1,14 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 
 public sealed class EntityTypeBuilder<T> where T : class
 {
-    public string TableName { get; private set; }
-    public string Pk { get; private set; }
-    public string Sk { get; private set; }
-    public string EntityType { get; private set; }
+    internal string TableName { get; private set; }
+    internal string Pk { get; private set; }
+    internal string Sk { get; private set; }
+    internal string EntityType { get; private set; }
     private List<string> IgnoredProperties { get; set; } = new();
 
     private List<PropertyTypeBuilder<T>> Properties { get; set; } = new();
@@ -56,7 +55,7 @@ public sealed class EntityTypeBuilder<T> where T : class
     public EntityTypeBuilder<T> IgnoreProperty(Func<T, string> property)=> IgnoreProperty(property.Invoke(default));
     public EntityTypeBuilder<T> IgnoreProperty(string name)
     {
-        if(IgnoredProperties.Any(p=>p.Equals(name, StringComparison.InvariantCultureIgnoreCase)))    
+        if(IgnoredProperties.Exists(p=>p.Equals(name, StringComparison.InvariantCultureIgnoreCase)))    
             return this;
         
         IgnoredProperties.Add(name);

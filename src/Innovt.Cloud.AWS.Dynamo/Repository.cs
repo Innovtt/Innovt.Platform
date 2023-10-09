@@ -111,6 +111,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
                 .ExecuteAsync(async () =>
                     await Context.SaveAsync(message, OperationConfig, cancellationToken).ConfigureAwait(false))
                 .ConfigureAwait(false);
+            
         }
     }
 
@@ -324,10 +325,6 @@ public abstract class Repository : AwsBaseService, ITableRepository
             return response;
         }
     }
-
-
-
-
     public async Task<ExecuteSqlStatementResponse<T>> ExecuteStatementAsync<T>(
         ExecuteSqlStatementRequest sqlStatementRequest, CancellationToken cancellationToken = default) where T : class
     {
@@ -448,7 +445,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
                 await DynamoClient.UpdateItemAsync(updateItemRequest,
                     cancellationToken).ConfigureAwait(false))
             .ConfigureAwait(false);
-
+        
         return response.Attributes.IsNullOrEmpty()
             ? default
             : AttributeConverter.ConvertAttributesToType<T>(response.Attributes);
