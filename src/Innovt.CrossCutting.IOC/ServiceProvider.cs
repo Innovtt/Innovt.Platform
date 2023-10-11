@@ -7,6 +7,7 @@ using Innovt.Core.CrossCutting.Ioc;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Innovt.CrossCutting.IOC;
+
 /// <summary>
 /// Implementation of the <see cref="IServiceProvider"/> and <see cref="ISupportRequiredService"/> interfaces using Lamar IoC container.
 /// </summary>
@@ -24,6 +25,7 @@ public class ServiceProvider : IServiceProvider, ISupportRequiredService, IDispo
     {
         this.container = container ?? throw new ArgumentNullException(nameof(container));
     }
+
     /// <summary>
     /// Releases the resources used by the <see cref="ServiceProvider"/>.
     /// </summary>
@@ -32,6 +34,7 @@ public class ServiceProvider : IServiceProvider, ISupportRequiredService, IDispo
         Dispose(true);
         GC.SuppressFinalize(this);
     }
+
     /// <summary>
     /// Gets the service of the specified type from the Lamar IoC container.
     /// </summary>
@@ -41,6 +44,7 @@ public class ServiceProvider : IServiceProvider, ISupportRequiredService, IDispo
     {
         return container.Resolve(serviceType);
     }
+
     /// <summary>
     /// Gets the service of the specified type from the Lamar IoC container.
     /// </summary>
@@ -51,6 +55,7 @@ public class ServiceProvider : IServiceProvider, ISupportRequiredService, IDispo
     {
         return container.Resolve(serviceType);
     }
+
     /// <summary>
     /// Releases the resources used by the <see cref="ServiceProvider"/>.
     /// </summary>

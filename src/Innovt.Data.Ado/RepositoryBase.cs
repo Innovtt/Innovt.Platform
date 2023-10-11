@@ -15,6 +15,7 @@ using Innovt.Data.Exceptions;
 using Innovt.Data.Model;
 
 namespace Innovt.Data.Ado;
+
 /// <summary>
 /// Represents a base repository implementation that provides common data access methods.
 /// </summary>
@@ -30,6 +31,7 @@ public class RepositoryBase : IRepositoryBase
     public RepositoryBase(IDataSource datasource) : this(datasource, null)
     {
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="RepositoryBase"/> class with the specified data source and connection factory.
     /// </summary>
@@ -40,6 +42,7 @@ public class RepositoryBase : IRepositoryBase
         this.dataSource = dataSource ?? throw new ArgumentNullException(nameof(dataSource));
         this.connectionFactory = connectionFactory ?? new ConnectionFactory();
     }
+
     /// <summary>
     /// Asynchronously retrieves the first result of a query from the specified table based on the provided where clause and optional columns.
     /// </summary>
@@ -60,6 +63,7 @@ public class RepositoryBase : IRepositoryBase
         return await QueryFirstOrDefaultInternalAsync<T>(tableName, whereClause, filter, cancellationToken,
             columns).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Asynchronously retrieves the first result of a query using the provided SQL statement.
     /// </summary>
@@ -76,6 +80,7 @@ public class RepositoryBase : IRepositoryBase
 
         return await QueryFirstOrDefaultInternalAsync<T>(sql, filter, cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Asynchronously executes a SQL query and returns a single result of type T, or a default value if no result is found.
     /// </summary>
@@ -95,6 +100,7 @@ public class RepositoryBase : IRepositoryBase
 
         return await QuerySingleOrDefaultInternalAsync<T>(sql, filter, cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Asynchronously retrieves a single result from the specified table based on the provided where clause and optional columns.
     /// </summary>
@@ -113,6 +119,7 @@ public class RepositoryBase : IRepositoryBase
 
         return await QuerySingleOrDefaultInternalAsync<T>(sql, filter, cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Asynchronously executes a SQL query to count records in a specified table.
     /// </summary>
@@ -151,6 +158,7 @@ public class RepositoryBase : IRepositoryBase
 
         return await QueryInternalAsync<T>(sql, filter, cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Asynchronously executes a SQL query and returns a collection of results by mapping to a custom type using a provided function.
     /// </summary>
@@ -173,6 +181,7 @@ public class RepositoryBase : IRepositoryBase
 
         return await QueryInternalAsync(sql, filter, func, splitOn, cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Asynchronously executes a SQL query and returns a collection of results by mapping to a custom type using a provided function.
     /// </summary>
@@ -196,6 +205,7 @@ public class RepositoryBase : IRepositoryBase
 
         return await QueryInternalAsync(sql, filter, func, splitOn, cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Asynchronously executes a SQL query and returns a collection of results by mapping to a custom type using a provided function.
     /// </summary>
@@ -221,6 +231,7 @@ public class RepositoryBase : IRepositoryBase
 
         return await QueryInternalAsync(sql, filter, func, splitOn, cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Asynchronously executes a SQL query and returns a collection of results by mapping to a custom type using a provided function.
     /// </summary>
@@ -248,6 +259,7 @@ public class RepositoryBase : IRepositoryBase
 
         return await QueryInternalAsync(sql, filter, func, splitOn, cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Asynchronously executes a SQL command and returns a scalar result of type T.
     /// </summary>
@@ -269,6 +281,7 @@ public class RepositoryBase : IRepositoryBase
 
         return await ExecuteInternalScalar<T>(sql, filter, dbTransaction, cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Asynchronously executes a SQL command and returns the number of affected rows.
     /// </summary>
@@ -287,6 +300,7 @@ public class RepositoryBase : IRepositoryBase
 
         return await ExecuteInternalAsync(sql, filter, dbTransaction, cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Executes a paged SQL query asynchronously and returns the results as a PagedCollection.
     /// </summary>
@@ -353,6 +367,7 @@ public class RepositoryBase : IRepositoryBase
             TotalRecords = totalRecords
         };
     }
+
     /// <summary>
     /// Executes a paged SQL query asynchronously and returns the results as an IEnumerable.
     /// </summary>
@@ -370,6 +385,7 @@ public class RepositoryBase : IRepositoryBase
 
         return await QueryListPagedInternalAsync<T>(sql, filter, cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Retrieves a database connection for executing queries.
     /// </summary>
@@ -378,6 +394,7 @@ public class RepositoryBase : IRepositoryBase
     {
         return connectionFactory.Create(dataSource);
     }
+
     /// <summary>
     /// Executes a SQL query asynchronously and returns the first result or default value of type T.
     /// </summary>
@@ -395,6 +412,7 @@ public class RepositoryBase : IRepositoryBase
             .QueryFirstOrDefaultAsync<T>(new CommandDefinition(sql, filter, cancellationToken: cancellationToken))
             .ConfigureAwait(false);
     }
+
     /// <summary>
     /// Executes a SQL query asynchronously and returns the first result or default value of type T.
     /// </summary>
@@ -431,6 +449,7 @@ public class RepositoryBase : IRepositoryBase
             .QuerySingleOrDefaultAsync<T>(new CommandDefinition(sql, filter, cancellationToken: cancellationToken))
             .ConfigureAwait(false);
     }
+
     /// <summary>
     /// Executes a SQL query asynchronously and returns the count of records.
     /// </summary>
@@ -446,6 +465,7 @@ public class RepositoryBase : IRepositoryBase
 
         return await QuerySingleOrDefaultAsync<int>(sql, filter, cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Executes a SQL query asynchronously and returns the results as an IEnumerable.
     /// </summary>
@@ -482,6 +502,7 @@ public class RepositoryBase : IRepositoryBase
             .QueryAsync(new CommandDefinition(sql, filter, cancellationToken: cancellationToken), func, splitOn)
             .ConfigureAwait(false);
     }
+
     /// <summary>
     /// Executes a SQL query asynchronously and returns the results as an IEnumerable using a specified mapping function.
     /// </summary>
@@ -503,6 +524,7 @@ public class RepositoryBase : IRepositoryBase
         return await con.QueryAsync(new CommandDefinition(sql, filter, cancellationToken: cancellationToken), func,
             splitOn).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Executes a SQL query asynchronously and returns the results as an IEnumerable using a specified mapping function.
     /// </summary>
@@ -526,6 +548,7 @@ public class RepositoryBase : IRepositoryBase
                 new CommandDefinition(sql, filter, cancellationToken: cancellationToken), func, splitOn)
             .ConfigureAwait(false);
     }
+
     /// <summary>
     /// Executes a SQL query asynchronously and returns the results as an IEnumerable using a specified mapping function.
     /// </summary>
@@ -550,6 +573,7 @@ public class RepositoryBase : IRepositoryBase
                 new CommandDefinition(sql, filter, cancellationToken: cancellationToken), func, splitOn)
             .ConfigureAwait(false);
     }
+
     /// <summary>
     /// Executes a SQL query asynchronously and returns a scalar result of type T.
     /// </summary>
@@ -568,6 +592,7 @@ public class RepositoryBase : IRepositoryBase
             .ExecuteScalarAsync<T>(new CommandDefinition(sql, filter, dbTransaction,
                 cancellationToken: cancellationToken)).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Executes a SQL query asynchronously and returns the number of affected rows.
     /// </summary>
@@ -585,6 +610,7 @@ public class RepositoryBase : IRepositoryBase
             .ExecuteAsync(new CommandDefinition(sql, filter, dbTransaction, cancellationToken: cancellationToken))
             .ConfigureAwait(false);
     }
+
     /// <summary>
     /// Executes a paged SQL query asynchronously and returns the results as an IEnumerable.
     /// </summary>

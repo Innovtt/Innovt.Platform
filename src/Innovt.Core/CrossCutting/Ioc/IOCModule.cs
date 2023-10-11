@@ -59,10 +59,7 @@ public class IOCModule
         if (externalServices == null)
             return services;
 
-        foreach (var serviceDescriptor in externalServices)
-        {
-            services.Add(serviceDescriptor);
-        }
+        foreach (var serviceDescriptor in externalServices) services.Add(serviceDescriptor);
 
         return services;
     }

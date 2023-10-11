@@ -3,7 +3,6 @@
 // Project: Innovt.Cloud.AWS.Lambda.Cognito.Events
 
 
-
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
@@ -20,5 +19,5 @@ public class PostConfirmationRequest : TriggerRequest
     /// </summary>
     [DataMember(Name = "clientMetadata")]
     [JsonPropertyName("clientMetadata")]
-    public Dictionary<string, string> ClientMetadata { get; set; } = new Dictionary<string, string>();
+    public Dictionary<string, string> ClientMetadata { get; set; } = new();
 }

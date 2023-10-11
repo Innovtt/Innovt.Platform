@@ -3,6 +3,7 @@
 // Project: Innovt.Notification.Core
 
 namespace Innovt.Notification.Core.Template;
+
 /// <summary>
 /// Interface for a template parser.
 /// </summary>

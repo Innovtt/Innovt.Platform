@@ -5,6 +5,7 @@
 using System;
 
 namespace Innovt.Core.Utilities;
+
 /// <summary>
 /// Represents a base class for constants with a string value.
 /// </summary>
@@ -18,10 +19,12 @@ public class ConstantClass
     {
         Value = value;
     }
+
     /// <summary>
     /// Gets the constant value as a string.
     /// </summary>
     public string Value { get; }
+
     /// <summary>
     /// Determines whether this instance of <see cref="ConstantClass"/> is equal to another object by comparing their string values.
     /// </summary>
@@ -31,6 +34,7 @@ public class ConstantClass
     {
         return obj?.ToString() == Value;
     }
+
     /// <summary>
     /// Determines whether this instance of <see cref="ConstantClass"/> is equal to another <see cref="ConstantClass"/> by comparing their string values.
     /// </summary>
@@ -40,6 +44,7 @@ public class ConstantClass
     {
         return obj?.Value == Value;
     }
+
     /// <summary>
     /// Returns the hash code for this instance of <see cref="ConstantClass"/>.
     /// </summary>
@@ -48,6 +53,7 @@ public class ConstantClass
     {
         return HashCode.Combine(Value);
     }
+
     /// <summary>
     /// Returns a string that represents the current object.
     /// </summary>
@@ -67,6 +73,7 @@ public class ConstantClass
     {
         return Value == value;
     }
+
     /// <summary>
     /// Compares a <see cref="ConstantClass"/> instance and a string for equality by comparing their string values.
     /// </summary>
@@ -77,6 +84,7 @@ public class ConstantClass
     {
         return a?.Value == b?.Value;
     }
+
     /// <summary>
     /// Compares a string and a <see cref="ConstantClass"/> instance for equality by comparing their string values.
     /// </summary>
@@ -87,6 +95,7 @@ public class ConstantClass
     {
         return a?.Value == b;
     }
+
     /// <summary>
     /// Compares two <see cref="ConstantClass"/> instances for inequality by comparing their string values.
     /// </summary>
@@ -97,6 +106,7 @@ public class ConstantClass
     {
         return a == b?.Value;
     }
+
     /// <summary>
     /// Compares a <see cref="ConstantClass"/> instance and a string for inequality by comparing their string values.
     /// </summary>
@@ -107,6 +117,7 @@ public class ConstantClass
     {
         return a?.Value != b?.Value;
     }
+
     /// <summary>
     /// Compares a string and a <see cref="ConstantClass"/> instance for inequality by comparing their string values.
     /// </summary>
@@ -117,6 +128,7 @@ public class ConstantClass
     {
         return a?.Value != b;
     }
+
     /// <summary>
     /// Compares a string and a <see cref="ConstantClass"/> instance for inequality by comparing their string values.
     /// </summary>
@@ -127,6 +139,7 @@ public class ConstantClass
     {
         return a != b?.Value;
     }
+
     /// <summary>
     /// Implicitly converts a <see cref="ConstantClass"/> instance to a string by returning its string value.
     /// </summary>

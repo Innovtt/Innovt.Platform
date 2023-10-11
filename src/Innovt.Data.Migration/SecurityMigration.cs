@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using Dapper;
 
 namespace Innovt.Data.Migration;
+
 /// <summary>
 /// Provides methods for security-related database schema migration.
 /// </summary>

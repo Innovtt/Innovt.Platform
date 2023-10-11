@@ -13,6 +13,7 @@ using Npgsql;
 using Oracle.ManagedDataAccess.Client;
 
 namespace Innovt.Data.Ado;
+
 /// <summary>
 /// Represents a factory for creating database connections based on a data source.
 /// </summary>

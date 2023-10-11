@@ -7,12 +7,14 @@ using Innovt.Core.CrossCutting.Ioc;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Innovt.CrossCutting.IOC;
+
 /// <summary>
 /// Implementation of the IoC container interface.
 /// </summary>
 public sealed class Container : IContainer
 {
     private readonly Lamar.Container container;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="Container"/> class using the provided services.
     /// </summary>
@@ -36,18 +38,19 @@ public sealed class Container : IContainer
             });
         });
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="Container"/> class using the specified IoC module.
     /// </summary>
     /// <param name="iocModule">The IoC module providing services for the container.</param>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="iocModule"/> is null.</exception>
-
     public Container(IOCModule iocModule)
     {
         if (iocModule is null) throw new ArgumentNullException(nameof(iocModule));
 
         container = new Lamar.Container(iocModule.GetServices());
     }
+
     /// <summary>
     /// Adds services from the specified IoC module to the container.
     /// </summary>
@@ -61,6 +64,7 @@ public sealed class Container : IContainer
 
         container.Configure(services);
     }
+
     /// <summary>
     /// Checks the configuration of the container.
     /// </summary>
@@ -68,6 +72,7 @@ public sealed class Container : IContainer
     {
         container.AssertConfigurationIsValid();
     }
+
     /// <summary>
     /// Resolves an instance of the specified type.
     /// </summary>
@@ -87,6 +92,7 @@ public sealed class Container : IContainer
     {
         return container.GetInstance<TService>();
     }
+
     /// <summary>
     /// Resolves an instance of the specified type.
     /// </summary>
@@ -108,11 +114,13 @@ public sealed class Container : IContainer
     {
         return container.GetInstance<TService>(instanceKey);
     }
+
     /// <inheritdoc />
     public void Dispose()
     {
         container?.Dispose();
     }
+
     /// <summary>
     /// Releases the specified object from the container.
     /// </summary>
@@ -121,6 +129,7 @@ public sealed class Container : IContainer
     {
         container.TryAddDisposable(obj);
     }
+
     /// <summary>
     /// Creates a new service scope within the container.
     /// </summary>
@@ -129,6 +138,7 @@ public sealed class Container : IContainer
     {
         return container.CreateScope();
     }
+
     /// <summary>
     /// Gets the service of the specified type from the container.
     /// </summary>

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Innovt.Core.Utilities;
 
 namespace Innovt.Core.Caching;
+
 /// <summary>
 /// Represents a caching service interface for storing and retrieving data.
 /// </summary>
@@ -40,6 +41,7 @@ public interface ICacheService
 
         return value;
     }
+
     /// <summary>
     /// Asynchronously retrieves a cached value associated with the specified key, or creates and caches it if not found.
     /// </summary>
@@ -59,18 +61,16 @@ public interface ICacheService
 
         var value = GetValue<T>(key);
 
-        if (value is { })
+        if (value is not null)
             return value;
 
         value = await factory(cancellationToken).ConfigureAwait(false);
 
-        if (value is { })
-        {
-            SetValue(key, value, expiration);
-        }
+        if (value is not null) SetValue(key, value, expiration);
 
         return value;
     }
+
     /// <summary>
     /// Sets a value in the cache with the specified key and expiration duration.
     /// </summary>
@@ -79,6 +79,7 @@ public interface ICacheService
     /// <param name="entity">The value to be cached.</param>
     /// <param name="expiration">The time duration for which the value should be cached.</param>
     void SetValue<T>(string key, T entity, TimeSpan expiration);
+
     /// <summary>
     /// Removes a cached value associated with the specified key.
     /// </summary>

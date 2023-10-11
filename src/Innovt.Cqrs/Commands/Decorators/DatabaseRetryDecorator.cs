@@ -8,6 +8,7 @@ using Innovt.Core.CrossCutting.Log;
 using Innovt.Cqrs.Decorators;
 
 namespace Innovt.Cqrs.Commands.Decorators;
+
 /// <summary>
 /// Decorates a command handler to include retry logic in case of failures.
 /// </summary>
@@ -29,6 +30,7 @@ public sealed class DatabaseRetryDecorator<TCommand> : BaseDatabaseRetryDecorato
     {
         this.commandHandler = commandHandler ?? throw new ArgumentNullException(nameof(commandHandler));
     }
+
     /// <summary>
     /// Handles the specified command with retry logic in case of failures.
     /// </summary>

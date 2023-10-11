@@ -8,7 +8,6 @@ using System.Runtime.Serialization;
 namespace Innovt.Core.Exceptions;
 
 [Serializable]
-
 /// <summary>
 /// Represents an exception that is critical and requires immediate attention or action.
 /// </summary>

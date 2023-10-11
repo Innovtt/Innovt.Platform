@@ -106,14 +106,14 @@ public abstract class Repository : AwsBaseService, ITableRepository
     public async Task AddAsync<T>(T message, CancellationToken cancellationToken = default) where T : ITableMessage
     {
         using (ActivityRepository.StartActivity(nameof(DeleteAsync)))
-        { 
+        {
             await CreateDefaultRetryAsyncPolicy()
                 .ExecuteAsync(async () =>
                     await Context.SaveAsync(message, OperationConfig, cancellationToken).ConfigureAwait(false))
                 .ConfigureAwait(false);
         }
     }
- 
+
     public async Task AddAsync<T>(IList<T> messages, CancellationToken cancellationToken = default)
         where T : ITableMessage
     {
@@ -444,7 +444,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
                 await DynamoClient.UpdateItemAsync(updateItemRequest,
                     cancellationToken).ConfigureAwait(false))
             .ConfigureAwait(false);
-        
+
         return response.Attributes.IsNullOrEmpty()
             ? default
             : AttributeConverter.ConvertAttributesToType<T>(response.Attributes);
@@ -529,3 +529,4 @@ public abstract class Repository : AwsBaseService, ITableRepository
         dynamoClient?.Dispose();
     }
 }*/
+

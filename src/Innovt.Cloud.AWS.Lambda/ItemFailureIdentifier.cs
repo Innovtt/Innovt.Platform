@@ -30,5 +30,6 @@ public sealed class ItemFailureIdentifier
     /// <summary>
     /// Gets or sets the identifier of the failed item.
     /// </summary>
-    [JsonPropertyName("itemIdentifier")] public string ItemIdentifier { get; set; }
+    [JsonPropertyName("itemIdentifier")]
+    public string ItemIdentifier { get; set; }
 }

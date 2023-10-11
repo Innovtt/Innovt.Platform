@@ -6,6 +6,7 @@ using Innovt.Core.CrossCutting.Log;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Innovt.AspNetCore.Controllers;
+
 /// <summary>
 /// Abstract base class for API controllers.
 /// </summary>
@@ -20,6 +21,7 @@ public abstract class BaseApiController : ControllerBase
     {
         Logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
+
     /// <summary>
     /// Gets the logger.
     /// </summary>

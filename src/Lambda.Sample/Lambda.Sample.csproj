@@ -1,27 +1,27 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-      <OutputType>Library</OutputType>
-    <TargetFramework>net7.0</TargetFramework>
-    <ApplicationIcon />
-    <StartupObject />
-    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
-    <AWSProjectType>Lambda</AWSProjectType>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-  </PropertyGroup> 
- 
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+        <TargetFramework>net7.0</TargetFramework>
+        <ApplicationIcon/>
+        <StartupObject/>
+        <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+        <AWSProjectType>Lambda</AWSProjectType>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda.Sqs\Innovt.Cloud.AWS.Lambda.Sqs.csproj" />
-  </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Amazon.Extensions.Configuration.SystemsManager" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="7.0.0" />
-    <PackageReference Include="Amazon.Lambda.Core" Version="2.1.0" />
-    <PackageReference Include="Amazon.Lambda.RuntimeSupport" Version="1.8.8" />
-    <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.3.1" />
-    <PackageReference Include="AWSSDK.XRay" Version="3.7.201.15" />    
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda.Sqs\Innovt.Cloud.AWS.Lambda.Sqs.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Amazon.Extensions.Configuration.SystemsManager" Version="6.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="7.0.0"/>
+        <PackageReference Include="Amazon.Lambda.Core" Version="2.1.0"/>
+        <PackageReference Include="Amazon.Lambda.RuntimeSupport" Version="1.8.8"/>
+        <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.3.1"/>
+        <PackageReference Include="AWSSDK.XRay" Version="3.7.201.15"/>
+    </ItemGroup>
 
 </Project>

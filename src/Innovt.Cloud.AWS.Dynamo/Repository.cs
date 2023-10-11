@@ -90,17 +90,13 @@ public abstract class Repository : AwsBaseService, ITableRepository
         var policy = CreateDefaultRetryAsyncPolicy();
 
         if (string.IsNullOrEmpty(rangeKey))
-        {
             await policy.ExecuteAsync(async () =>
                     await Context.DeleteAsync<T>(id, cancellationToken).ConfigureAwait(false))
                 .ConfigureAwait(false);
-        }
         else
-        {
             await policy.ExecuteAsync(async () =>
                     await Context.DeleteAsync<T>(id, rangeKey, cancellationToken).ConfigureAwait(false))
                 .ConfigureAwait(false);
-        }
     }
 
     public async Task AddAsync<T>(T message, CancellationToken cancellationToken = default) where T : ITableMessage
@@ -113,7 +109,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
                 .ConfigureAwait(false);
         }
     }
- 
+
     public async Task AddAsync<T>(IList<T> messages, CancellationToken cancellationToken = default)
         where T : ITableMessage
     {
@@ -283,9 +279,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         };
 
         foreach (var transactItem in request.TransactItems)
-        {
             transactRequest.TransactItems.Add(Helpers.CreateTransactionWriteItem(transactItem));
-        }
 
 
         await DynamoClient.TransactWriteItemsAsync(transactRequest, cancellationToken).ConfigureAwait(false);
@@ -324,6 +318,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             return response;
         }
     }
+
     public async Task<ExecuteSqlStatementResponse<T>> ExecuteStatementAsync<T>(
         ExecuteSqlStatementRequest sqlStatementRequest, CancellationToken cancellationToken = default) where T : class
     {
@@ -370,10 +365,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
             var result = new List<T>();
 
-            foreach (var item in response.Responses)
-            {
-                result.AddRange(Helpers.ConvertAttributesToType<T>(item.Value));
-            }
+            foreach (var item in response.Responses) result.AddRange(Helpers.ConvertAttributesToType<T>(item.Value));
 
             return result;
         }
@@ -444,7 +436,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
                 await DynamoClient.UpdateItemAsync(updateItemRequest,
                     cancellationToken).ConfigureAwait(false))
             .ConfigureAwait(false);
-        
+
         return response.Attributes.IsNullOrEmpty()
             ? default
             : AttributeConverter.ConvertAttributesToType<T>(response.Attributes);

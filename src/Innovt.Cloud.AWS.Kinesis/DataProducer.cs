@@ -53,10 +53,7 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
 
         foreach (var data in dataStreams)
         {
-            if (data.TraceId.IsNullOrEmpty() && activity != null)
-            {
-                data.TraceId = activity.TraceId.ToString();
-            }
+            if (data.TraceId.IsNullOrEmpty() && activity != null) data.TraceId = activity.TraceId.ToString();
 
             data.PublishedAt = DateTimeOffset.UtcNow;
 
@@ -112,17 +109,12 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
             return;
         }
 
-        foreach (var data in dataStreams)
-        {
-            data.PublishedAt = null;
-        }
+        foreach (var data in dataStreams) data.PublishedAt = null;
 
         var errorRecords = results.Records.Where(r => r.ErrorCode != null);
 
         foreach (var error in errorRecords)
-        {
             Logger.Error($"Error publishing message. Error: {error.ErrorCode}, ErrorMessage: {error.ErrorMessage}");
-        }
     }
 
     public async Task Publish(T data, CancellationToken cancellationToken = default)

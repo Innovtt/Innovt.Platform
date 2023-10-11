@@ -1,6 +1,7 @@
 ﻿// Innovt Company
 // Author: Michel Borges
 // Project: Innovt.Contrib.Authorization.Platform
+
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Contrib.Authorization.Platform.Application;
 using Innovt.Contrib.Authorization.Platform.Domain;
@@ -14,7 +15,7 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.IOC;
 
 public class AuthorizationModule : IOCModule
 {
-    public AuthorizationModule(IServiceCollection services=null):base(services)
+    public AuthorizationModule(IServiceCollection services = null) : base(services)
     {
         Services.AddScoped<IAuthorizationAppService, AuthorizationAppService>();
         Services.AddScoped<IAuthorizationRepository, AuthorizationRepository>();

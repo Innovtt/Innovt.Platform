@@ -5,6 +5,7 @@
 using System.Collections.Generic;
 
 namespace Innovt.Cloud.Table;
+
 /// <summary>
 /// Represents an item within a transaction for write operations.
 /// </summary>
@@ -14,10 +15,12 @@ public class TransactionWriteItem
     /// Gets or sets the type of write operation in the transaction.
     /// </summary>
     public TransactionWriteOperationType OperationType { get; set; }
+
     /// <summary>
     /// Gets or sets the name of the table associated with the transaction item.
     /// </summary>
     public string TableName { get; set; }
+
     /// <summary>
     /// Gets or sets the condition expression for the transaction item.
     /// </summary>

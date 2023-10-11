@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Innovt.Core.Cqrs.Queries;
 
 namespace Innovt.Cqrs.Queries;
+
 /// <summary>
 /// Defines an asynchronous query handler for a specific type of filter and result.
 /// </summary>
@@ -22,6 +23,7 @@ public interface IAsyncQueryHandler<in TFilter, TResult> where TFilter : IFilter
     /// <returns>A task representing the asynchronous handling of the query and the result.</returns>
     Task<TResult> HandleAsync(TFilter filter, CancellationToken cancellationToken = default);
 }
+
 /// <summary>
 /// Defines an asynchronous query handler for counting entities based on a filter.
 /// </summary>
@@ -36,6 +38,7 @@ public interface ICountAsyncQueryHandler<in T> where T : IFilter
     /// <returns>A task representing the asynchronous counting operation.</returns>
     Task<int> CountAsync(T filter, CancellationToken cancellationToken = default);
 }
+
 /// <summary>
 /// Defines an asynchronous query handler for checking the existence of entities based on a filter.
 /// </summary>

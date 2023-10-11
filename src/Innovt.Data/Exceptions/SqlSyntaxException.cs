@@ -6,6 +6,7 @@ using System;
 using Innovt.Core.Exceptions;
 
 namespace Innovt.Data.Exceptions;
+
 /// <summary>
 /// Represents an exception thrown for SQL syntax related errors.
 /// </summary>

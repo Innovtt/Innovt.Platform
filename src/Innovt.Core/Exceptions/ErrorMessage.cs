@@ -53,10 +53,12 @@ public class ErrorMessage
     /// Gets or sets the error code associated with the error message.
     /// </summary>
     public string Code { get; protected set; }
+
     /// <summary>
     /// Gets or sets the error message describing the error.
     /// </summary>
     public string Message { get; protected set; }
+
     /// <summary>
     /// Gets or sets the name of the property to which the error is related.
     /// </summary>

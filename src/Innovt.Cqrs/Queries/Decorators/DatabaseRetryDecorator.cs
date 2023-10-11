@@ -8,6 +8,7 @@ using Innovt.Core.CrossCutting.Log;
 using Innovt.Cqrs.Decorators;
 
 namespace Innovt.Cqrs.Queries.Decorators;
+
 /// <summary>
 /// Decorates a query handler to include retry logic in case of failures.
 /// </summary>
@@ -17,6 +18,7 @@ public sealed class DatabaseRetryDecorator<TFilter, TResult> : BaseDatabaseRetry
     IQueryHandler<TFilter, TResult> where TFilter : IPagedFilter where TResult : class
 {
     private readonly IQueryHandler<TFilter, TResult> queryHandler;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DatabaseRetryDecorator{TFilter, TResult}"/> class.
     /// </summary>
@@ -29,6 +31,7 @@ public sealed class DatabaseRetryDecorator<TFilter, TResult> : BaseDatabaseRetry
     {
         this.queryHandler = queryHandler ?? throw new ArgumentNullException(nameof(queryHandler));
     }
+
     /// <summary>
     /// Handles the specified query with retry logic in case of failures.
     /// </summary>

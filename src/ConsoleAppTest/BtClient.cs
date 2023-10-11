@@ -12,11 +12,10 @@ public class BtClient
 
     public BtClient(IAwsConfiguration configuration)
     {
-        this.configuration = new AssumeRoleAWSConfiguration(configuration, "", "", "" );
+        this.configuration = new AssumeRoleAWSConfiguration(configuration, "", "", "");
     }
 
     public void SalvarNaBtg()
     {
-        
     }
 }

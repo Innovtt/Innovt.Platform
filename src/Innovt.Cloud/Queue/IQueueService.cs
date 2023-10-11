@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace Innovt.Cloud.Queue;
+
 /// <summary>
 /// Defines the operations for interacting with a queue service for a specific type of queue messages.
 /// </summary>
@@ -23,6 +24,7 @@ public interface IQueueService<T> where T : IQueueMessage
     /// <returns>A list of retrieved messages.</returns>
     Task<IList<T>> GetMessagesAsync(int quantity, int? waitTimeInSeconds = null,
         int? visibilityTimeoutInSeconds = null, CancellationToken cancellationToken = default);
+
     /// <summary>
     /// Removes a message from the queue asynchronously.
     /// </summary>
@@ -30,6 +32,7 @@ public interface IQueueService<T> where T : IQueueMessage
     /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
     Task DeQueueAsync(string popReceipt, CancellationToken cancellationToken = default);
+
     /// <summary>
     /// Enqueues a message asynchronously.
     /// </summary>
@@ -50,12 +53,14 @@ public interface IQueueService<T> where T : IQueueMessage
     /// <returns>A list of message enqueue results.</returns>
     Task<IList<MessageQueueResult>> EnQueueBatchAsync(IEnumerable<MessageBatchRequest> message,
         int? delaySeconds = null, CancellationToken cancellationToken = default);
+
     /// <summary>
     /// Retrieves the approximate number of messages in the queue asynchronously.
     /// </summary>
     /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
     /// <returns>The approximate message count in the queue.</returns>
     Task<int> ApproximateMessageCountAsync(CancellationToken cancellationToken = default);
+
     /// <summary>
     /// Creates the queue if it does not already exist asynchronously.
     /// </summary>

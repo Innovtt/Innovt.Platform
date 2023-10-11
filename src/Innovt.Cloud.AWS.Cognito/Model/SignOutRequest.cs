@@ -17,7 +17,8 @@ public class SignOutRequest : RequestBase
     /// <summary>
     /// Gets or sets the access token used for signing out.
     /// </summary>
-    [Required] public virtual string AccessToken { get; set; }
+    [Required]
+    public virtual string AccessToken { get; set; }
 
     public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {

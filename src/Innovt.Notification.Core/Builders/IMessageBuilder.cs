@@ -5,6 +5,7 @@
 using Innovt.Notification.Core.Domain;
 
 namespace Innovt.Notification.Core.Builders;
+
 /// <summary>
 /// Interface for message builders.
 /// </summary>

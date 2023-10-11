@@ -15,42 +15,50 @@ public class SignInResponse
     /// <summary>
     /// Gets or sets the ID token.
     /// </summary>
-    [JsonPropertyName("id_token")] public string IdToken { get; set; }
+    [JsonPropertyName("id_token")]
+    public string IdToken { get; set; }
 
     /// <summary>
     /// Gets or sets the access token.
     /// </summary>
-    [JsonPropertyName("access_token")] public string AccessToken { get; set; }
+    [JsonPropertyName("access_token")]
+    public string AccessToken { get; set; }
 
     /// <summary>
     /// Gets or sets the expiration time in seconds for the access token.
     /// </summary>
-    [JsonPropertyName("expires_in")] public int ExpiresIn { get; set; }
+    [JsonPropertyName("expires_in")]
+    public int ExpiresIn { get; set; }
 
     /// <summary>
     /// Gets or sets the refresh token.
     /// </summary>
-    [JsonPropertyName("refresh_token")] public string RefreshToken { get; set; }
+    [JsonPropertyName("refresh_token")]
+    public string RefreshToken { get; set; }
 
     /// <summary>
     /// Gets or sets the token type.
     /// </summary>
-    [JsonPropertyName("token_type")] public string TokenType { get; set; }
+    [JsonPropertyName("token_type")]
+    public string TokenType { get; set; }
 
     /// <summary>
     /// Gets or sets the sign-in type.
     /// </summary>
-    [JsonPropertyName("signInType")] public string SignInType { get; set; }
+    [JsonPropertyName("signInType")]
+    public string SignInType { get; set; }
 
     /// <summary>
     /// Gets or sets the session.
     /// </summary>
-    [JsonPropertyName("session")] public string Session { get; set; }
+    [JsonPropertyName("session")]
+    public string Session { get; set; }
 
     /// <summary>
     /// Gets or sets the challenge name.
     /// </summary>
-    [JsonPropertyName("ChallengeName")] public string ChallengeName { get; set; }
+    [JsonPropertyName("ChallengeName")]
+    public string ChallengeName { get; set; }
 
     /// <summary>
     /// Gets or sets the challenge parameters.

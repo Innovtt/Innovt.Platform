@@ -18,7 +18,7 @@ public class VerifyAuthChallengeRequest : TriggerRequest
     /// </summary>
     [DataMember(Name = "privateChallengeParameters")]
     [JsonPropertyName("privateChallengeParameters")]
-    public Dictionary<string, string> PrivateChallengeParameters { get; set; } = new Dictionary<string, string>();
+    public Dictionary<string, string> PrivateChallengeParameters { get; set; } = new();
 
     /// <summary>
     /// Gets or sets client-specific metadata associated with the request.

@@ -198,7 +198,6 @@ internal static class Helpers
         var result = new Dictionary<string, KeysAndAttributes>();
 
         foreach (var item in request.Items)
-        {
             result.Add(item.Key, new KeysAndAttributes()
             {
                 ConsistentRead = item.Value.ConsistentRead,
@@ -206,7 +205,6 @@ internal static class Helpers
                 ProjectionExpression = item.Value.ProjectionExpression,
                 Keys = item.Value.Keys.Select(AttributeConverter.ConvertToAttributeValues).ToList()
             });
-        }
 
         return result;
     }
@@ -304,14 +302,10 @@ internal static class Helpers
         var result2 = new List<T2>();
 
         foreach (var item in items)
-        {
             if (item.ContainsKey(EntitySplitter) && item["EntityType"].S == splitBy)
-            {
                 result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item));
-            }
             else
                 result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item));
-        }
 
         return (result1, result2);
     }

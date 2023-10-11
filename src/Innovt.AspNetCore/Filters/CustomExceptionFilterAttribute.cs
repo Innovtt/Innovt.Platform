@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Innovt.AspNetCore.Filters;
+
 /// <summary>
 /// An exception filter that handles exceptions of type <see cref="BusinessException"/>.
 /// </summary>

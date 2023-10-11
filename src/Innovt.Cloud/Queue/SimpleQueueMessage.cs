@@ -17,6 +17,7 @@ public class SimpleQueueMessage<T>
     public SimpleQueueMessage()
     {
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="SimpleQueueMessage{T}"/> class with a specified value.
     /// </summary>
@@ -25,6 +26,7 @@ public class SimpleQueueMessage<T>
     {
         Value = value;
     }
+
     /// <summary>
     /// Gets or sets the value of the queue message.
     /// </summary>

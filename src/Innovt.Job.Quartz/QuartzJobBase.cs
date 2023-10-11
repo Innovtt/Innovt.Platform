@@ -10,6 +10,7 @@ using Innovt.Job.Core;
 using Quartz;
 
 namespace Innovt.Job.Quartz;
+
 /// <summary>
 /// Abstract base class for Quartz job implementations, providing common functionality for scheduling and executing jobs using Quartz framework.
 /// </summary>
@@ -35,6 +36,7 @@ public abstract class QuartzJobBase : JobBase, IJob // where T : IJob
         this.intervalInMinutes = intervalInMinutes;
         key = new JobKey(Name + "Key");
     }
+
     /// <summary>
     /// Executes the Quartz job.
     /// </summary>
@@ -44,6 +46,7 @@ public abstract class QuartzJobBase : JobBase, IJob // where T : IJob
     {
         return OnExecute();
     }
+
     /// <summary>
     /// Executes when the job is started.
     /// </summary>
@@ -53,6 +56,7 @@ public abstract class QuartzJobBase : JobBase, IJob // where T : IJob
     {
         return Schedule(cancellationToken);
     }
+
     /// <summary>
     /// Executes when the job is stopped.
     /// </summary>
@@ -62,6 +66,7 @@ public abstract class QuartzJobBase : JobBase, IJob // where T : IJob
     {
         return scheduler.Shutdown(true, cancellationToken);
     }
+
     /// <summary>
     /// Schedules the Quartz job for execution.
     /// </summary>
@@ -92,6 +97,7 @@ public abstract class QuartzJobBase : JobBase, IJob // where T : IJob
             await scheduler.ScheduleJob(job, trigger, cancellationToken).ConfigureAwait(false);
         }
     }
+
     /// <summary>
     /// Executes the Quartz job logic.
     /// </summary>

@@ -7,13 +7,12 @@ namespace Innovt.Cloud.AWS.Cognito.Exceptions;
 /// Exception thrown when an invalid password is encountered.
 /// This exception typically indicates that a password provided by a user or a system does not meet the required criteria or is incorrect.
 /// </summary>
-public class InvalidPasswordException: BusinessException
+public class InvalidPasswordException : BusinessException
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="InvalidPasswordException"/> class with a predefined error code.
     /// </summary>
-    public InvalidPasswordException():base(ErrorCode.InvalidPassword,ErrorCode.InvalidPassword)
+    public InvalidPasswordException() : base(ErrorCode.InvalidPassword, ErrorCode.InvalidPassword)
     {
-        
     }
 }

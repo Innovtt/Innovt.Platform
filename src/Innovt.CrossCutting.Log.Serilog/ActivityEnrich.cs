@@ -8,6 +8,7 @@ using System;
 using System.Diagnostics;
 
 namespace Innovt.CrossCutting.Log.Serilog;
+
 /// <summary>
 /// Implementation of <see cref="ILogEventEnricher"/> that enriches log events with activity information.
 /// </summary>

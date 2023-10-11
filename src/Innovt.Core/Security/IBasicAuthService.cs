@@ -9,7 +9,8 @@ namespace Innovt.Core.Security;
 /// <summary>
 /// Represents an interface for basic authentication services.
 /// </summary>
-public interface IBasicAuthService {
+public interface IBasicAuthService
+{
     /// <summary>
     /// Authenticates a user based on a provided username and password.
     /// </summary>

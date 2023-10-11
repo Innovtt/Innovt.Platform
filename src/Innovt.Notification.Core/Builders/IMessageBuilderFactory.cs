@@ -3,6 +3,7 @@
 // Project: Innovt.Notification.Core
 
 namespace Innovt.Notification.Core.Builders;
+
 /// <summary>
 /// Interface for message builder factories.
 /// </summary>

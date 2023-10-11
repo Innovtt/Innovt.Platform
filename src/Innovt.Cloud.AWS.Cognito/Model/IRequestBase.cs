@@ -18,21 +18,25 @@ public interface IRequestBase : IValidatableObject
     /// <summary>
     /// Gets or sets the collection of HTTP headers associated with the request.
     /// </summary>
-    [JsonIgnore] public Dictionary<string, string> HttpHeader { get; set; }
+    [JsonIgnore]
+    public Dictionary<string, string> HttpHeader { get; set; }
 #pragma warning restore CA2227 // Collection properties should be read only
 
     /// <summary>
     /// Gets or sets the IP address associated with the request.
     /// </summary>
-    [JsonIgnore] public string IpAddress { get; set; }
+    [JsonIgnore]
+    public string IpAddress { get; set; }
 
     /// <summary>
     /// Gets or sets the server path associated with the request.
     /// </summary>
-    [JsonIgnore] public string ServerPath { get; set; }
+    [JsonIgnore]
+    public string ServerPath { get; set; }
 
     /// <summary>
     /// Gets or sets the server name associated with the request.
     /// </summary>
-    [JsonIgnore] public string ServerName { get; set; }
+    [JsonIgnore]
+    public string ServerName { get; set; }
 }

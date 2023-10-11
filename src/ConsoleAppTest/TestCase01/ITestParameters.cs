@@ -1,7 +1,6 @@
-﻿namespace ConsoleAppTest.TestCase01
+﻿namespace ConsoleAppTest.TestCase01;
+
+public interface ITestParameters
 {
-    public interface ITestParameters
-    {
-        public string Type { get; set; }
-    }
+    public string Type { get; set; }
 }

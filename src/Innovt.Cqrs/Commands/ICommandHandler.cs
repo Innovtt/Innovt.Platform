@@ -5,6 +5,7 @@
 using Innovt.Core.Cqrs.Commands;
 
 namespace Innovt.Cqrs.Commands;
+
 /// <summary>
 /// Defines a synchronous command handler for a specific type of command.
 /// </summary>
@@ -17,6 +18,7 @@ public interface ICommandHandler<in T> where T : ICommand
     /// <param name="command">The command to be handled.</param>
     void Handle(T command);
 }
+
 /// <summary>
 /// Defines a synchronous command handler for a specific type of command with a result.
 /// </summary>

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Globalization;
 
 namespace Innovt.Cloud.Queue;
+
 /// <summary>
 /// Extension methods for parsing queue message attributes.
 /// </summary>

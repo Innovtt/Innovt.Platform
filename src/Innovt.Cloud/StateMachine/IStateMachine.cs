@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace Innovt.Cloud.StateMachine;
+
 /// <summary>
 /// Represents a state machine interface.
 /// </summary>
@@ -20,6 +21,7 @@ public interface IStateMachine
     /// <param name="cancellationToken">The cancellation token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
     Task StartExecution(object input, string stateMachineArn, string executionId, CancellationToken cancellationToken);
+
     /// <summary>
     /// Sends a success signal for a task to the state machine.
     /// </summary>
@@ -28,6 +30,7 @@ public interface IStateMachine
     /// <param name="cancellationToken">The cancellation token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
     Task SendTaskSuccess(string taskToken, object output, CancellationToken cancellationToken);
+
     /// <summary>
     /// Sends a failure signal for a task to the state machine.
     /// </summary>
@@ -37,6 +40,7 @@ public interface IStateMachine
     /// <param name="cancellationToken">The cancellation token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
     Task SendTaskFailure(string taskToken, string reason, string taskError, CancellationToken cancellationToken);
+
     /// <summary>
     /// Sends a heartbeat signal for a task to the state machine.
     /// </summary>

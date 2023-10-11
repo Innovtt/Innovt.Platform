@@ -11,6 +11,7 @@ using Innovt.Core.Collections;
 using Innovt.Core.Cqrs.Queries;
 
 namespace Innovt.Data.Ado;
+
 /// <summary>
 /// Represents a base interface for repository operations.
 /// </summary>

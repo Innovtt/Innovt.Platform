@@ -17,17 +17,20 @@ public class RespondToAuthChallengeRequest : RequestBase
     /// <summary>
     /// Gets or sets the user's username.
     /// </summary>
-    [Required] public virtual string UserName { get; set; }
+    [Required]
+    public virtual string UserName { get; set; }
 
     /// <summary>
     /// Gets or sets the session token associated with the authentication challenge.
     /// </summary>
-    [Required] public virtual string Session { get; set; }
+    [Required]
+    public virtual string Session { get; set; }
 
     /// <summary>
     /// Gets or sets the name of the challenge.
     /// </summary>
-    [Required] public virtual string ChallengeName { get; set; }
+    [Required]
+    public virtual string ChallengeName { get; set; }
 
     /// <summary>
     /// Gets or sets the confirmation code used to respond to the challenge.

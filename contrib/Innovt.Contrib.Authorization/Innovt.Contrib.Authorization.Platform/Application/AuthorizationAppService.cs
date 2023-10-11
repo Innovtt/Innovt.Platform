@@ -60,7 +60,7 @@ public class AuthorizationAppService : IAuthorizationAppService
         var user = await authorizationRepository.GetUserByExternalId(command.Id, cancellationToken)
             .ConfigureAwait(false);
 
-        if (user is { })
+        if (user is not null)
             throw new BusinessException($"User {command.Id} already exist.");
 
         user = new AuthUser

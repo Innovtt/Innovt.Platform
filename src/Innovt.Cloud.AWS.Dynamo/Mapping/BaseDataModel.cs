@@ -6,39 +6,31 @@ using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.Dynamo.Mapping;
 
-public abstract class BaseDataModel<TDataModel,TDomain> : ITableMessage where TDataModel: class where TDomain: class
+public abstract class BaseDataModel<TDataModel, TDomain> : ITableMessage where TDataModel : class where TDomain : class
 {
-    [DynamoDBHashKey("PK")] 
-    public string Pk { get; set; }
+    [DynamoDBHashKey("PK")] public string Pk { get; set; }
 
-    [DynamoDBRangeKey("SK")] 
-    public string Sk { get; set; }
+    [DynamoDBRangeKey("SK")] public string Sk { get; set; }
 
     [DynamoDBProperty]
     public string EntityType
     {
-        get
-        {
-            return GetEntityType();// We have to keep it because of the DyanmoDB SDK
-        }
-        set
-        {
-            _ = value;
-        }
+        get => GetEntityType(); // We have to keep it because of the DyanmoDB SDK
+        set => _ = value;
     }
-    
+
     public string Id { get; set; }
-    
+
     protected abstract string GetEntityType();
 
     public TDataModel ToDataModel(TDomain domain)
     {
         if (domain == null) return null;
-        
+
         var model = SimpleMapper.Map<TDomain, TDataModel>(domain);
-        
+
         CustomDataModelMap(model, domain);
-        
+
         return model;
     }
 
@@ -50,11 +42,11 @@ public abstract class BaseDataModel<TDataModel,TDomain> : ITableMessage where TD
     public TDomain ToDomain(TDataModel dataModel)
     {
         if (dataModel == null) return null;
-        
-        var tDomain = SimpleMapper.Map<TDataModel,TDomain >(dataModel);
-        
+
+        var tDomain = SimpleMapper.Map<TDataModel, TDomain>(dataModel);
+
         CustomDomainMap(tDomain, dataModel);
-        
+
         return tDomain;
     }
 

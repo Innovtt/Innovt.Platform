@@ -9,6 +9,7 @@ using Innovt.Notification.Core.Domain;
 using Innovt.Notification.Core.Template;
 
 namespace Innovt.Notification.Core.Builders;
+
 /// <summary>
 /// Default implementation of the message builder interface.
 /// </summary>
@@ -52,6 +53,7 @@ public class DefaultMessageBuilder : IMessageBuilder
 
         return message;
     }
+
     /// <summary>
     /// Builds the subject for the notification message.
     /// </summary>
@@ -66,6 +68,7 @@ public class DefaultMessageBuilder : IMessageBuilder
             Content = template.Subject
         };
     }
+
     /// <summary>
     /// Builds the body for the notification message.
     /// </summary>
@@ -81,6 +84,7 @@ public class DefaultMessageBuilder : IMessageBuilder
             IsHtml = notificationTemplate.Type == NotificationMessageType.Email
         };
     }
+
     /// <summary>
     /// Builds the recipient list for the notification message.
     /// </summary>
@@ -96,6 +100,7 @@ public class DefaultMessageBuilder : IMessageBuilder
 
         return toList;
     }
+
     /// <summary>
     /// Builds the sender for the notification message.
     /// </summary>
@@ -107,6 +112,7 @@ public class DefaultMessageBuilder : IMessageBuilder
 
         return new NotificationMessageContact(notificationTemplate.FromName, notificationTemplate.FromAddress);
     }
+
     /// <summary>
     /// Builds the Bcc recipient list for the notification message.
     /// </summary>
@@ -115,6 +121,7 @@ public class DefaultMessageBuilder : IMessageBuilder
     {
         return null;
     }
+
     /// <summary>
     /// Builds the Cc recipient list for the notification message.
     /// </summary>
@@ -123,6 +130,7 @@ public class DefaultMessageBuilder : IMessageBuilder
     {
         return null;
     }
+
     /// <summary>
     /// Builds the Reply-To recipient list for the notification message.
     /// </summary>
@@ -131,6 +139,7 @@ public class DefaultMessageBuilder : IMessageBuilder
     {
         return null;
     }
+
     /// <summary>
     /// Parses the notification message content using the provided payload.
     /// </summary>

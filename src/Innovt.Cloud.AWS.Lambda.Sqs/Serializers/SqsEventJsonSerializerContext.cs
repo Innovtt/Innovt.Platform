@@ -14,5 +14,4 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs.Serializers;
 [JsonSerializable(typeof(BatchFailureResponse))]
 public partial class SqsEventJsonSerializerContext : JsonSerializerContext
 {
-    
 }

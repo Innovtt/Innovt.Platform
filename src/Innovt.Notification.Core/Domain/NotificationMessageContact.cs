@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using Innovt.Core.Collections;
 
 namespace Innovt.Notification.Core.Domain;
+
 /// <summary>
 /// Represents a contact for a notification message.
 /// </summary>
@@ -22,20 +23,24 @@ public class NotificationMessageContact : IValidatableObject
         Name = name;
         Address = address;
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="NotificationMessageContact"/> class.
     /// </summary>
     public NotificationMessageContact()
     {
     }
+
     /// <summary>
     /// Gets or sets the name of the contact.
     /// </summary>
     public string Name { get; set; }
+
     /// <summary>
     /// Gets or sets the address of the contact.
     /// </summary>
     public string Address { get; set; }
+
     /// <inheritdoc />
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {

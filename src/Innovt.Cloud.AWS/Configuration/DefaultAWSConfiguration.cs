@@ -14,6 +14,7 @@ namespace Innovt.Cloud.AWS.Configuration;
 public class DefaultAWSConfiguration : IAwsConfiguration
 {
     private const string ConfigSection = "AWS";
+
     /// <summary>
     /// The default profile name
     /// </summary>
@@ -33,7 +34,8 @@ public class DefaultAWSConfiguration : IAwsConfiguration
     /// </summary>
     /// <param name="configuration">IConfiguration from .Net Core</param>
     /// <param name="sectionName"> The default is AWS. </param>
-    public DefaultAWSConfiguration(Microsoft.Extensions.Configuration.IConfiguration configuration, string sectionName = ConfigSection)
+    public DefaultAWSConfiguration(Microsoft.Extensions.Configuration.IConfiguration configuration,
+        string sectionName = ConfigSection)
     {
         Check.NotNull(configuration, nameof(configuration));
 
@@ -44,7 +46,8 @@ public class DefaultAWSConfiguration : IAwsConfiguration
         section.Bind(this);
     }
 
-    public DefaultAWSConfiguration(string accessKey, string secretKey, string region, string accountNumber = null, string sessionToken = null)
+    public DefaultAWSConfiguration(string accessKey, string secretKey, string region, string accountNumber = null,
+        string sessionToken = null)
     {
         Check.NotNull(accessKey, nameof(accessKey));
         Check.NotNull(secretKey, nameof(secretKey));
@@ -85,7 +88,7 @@ public class DefaultAWSConfiguration : IAwsConfiguration
 
         if (credentials is null)
             credentials = FallbackCredentialsFactory.GetCredentials();
-        
+
         return credentials;
     }
 
@@ -95,10 +98,10 @@ public class DefaultAWSConfiguration : IAwsConfiguration
 
         var profile = sharedProfile.ListProfiles()
             .Find(p => p.Name.Equals(Profile, StringComparison.OrdinalIgnoreCase));
-        
+
         if (profile == null)
             throw new ConfigurationException($"Profile {Profile} not found.");
-        
+
         if (Region == null && profile.Region != null)
             Region = profile.Region.SystemName;
 

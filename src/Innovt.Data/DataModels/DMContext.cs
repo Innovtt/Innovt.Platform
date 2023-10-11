@@ -8,6 +8,7 @@ using System.Globalization;
 using System.Linq;
 
 namespace Innovt.Data.DataModels;
+
 /// <summary>
 /// Represents a context for managing instances of data models and tracking changes.
 /// </summary>
@@ -16,6 +17,7 @@ public class DMContext
     private static DMContext instance;
     private static object objlock = new();
     private Dictionary<string, IBaseDataModel> items;
+
     /// <summary>
     /// Private constructor to ensure singleton pattern and initialize the context.
     /// </summary>
@@ -23,6 +25,7 @@ public class DMContext
     {
         items = new Dictionary<string, IBaseDataModel>();
     }
+
     /// <summary>
     /// Gets the singleton instance of the DMContext.
     /// </summary>
@@ -31,14 +34,12 @@ public class DMContext
     {
         lock (objlock)
         {
-            if (instance is null)
-            {
-                instance = new DMContext();
-            }
+            if (instance is null) instance = new DMContext();
         }
 
         return instance;
     }
+
     /// <summary>
     /// Attaches a data model entity to the context for change tracking.
     /// </summary>
@@ -77,6 +78,7 @@ public class DMContext
             items.Remove(key);
         }
     }
+
     /// <summary>
     /// Finds a data model entity in the context based on its hash code.
     /// </summary>
@@ -94,6 +96,7 @@ public class DMContext
 
         return default;
     }
+
     /// <summary>
     /// Retrieves a list of data model entities that have changes.
     /// </summary>

@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace Innovt.Data.EFCore;
+
 /// <summary>
 /// Abstract base class for Entity Framework DbContext implementing the extended unit of work interface.
 /// </summary>
@@ -22,6 +23,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
 {
     private readonly IDataSource dataSource;
     private readonly ILoggerFactory loggerFactory;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DBContextBase"/> class using a data source.
     /// </summary>
@@ -32,6 +34,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
         this.dataSource = dataSource ?? throw new ArgumentNullException(nameof(dataSource));
         base.ChangeTracker.LazyLoadingEnabled = false;
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DBContextBase"/> class using a data source and logger factory.
     /// </summary>
@@ -42,6 +45,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     {
         this.loggerFactory = loggerFactory ?? throw new ArgumentNullException(nameof(loggerFactory));
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DBContextBase"/> class using DbContext options.
     /// </summary>
@@ -50,14 +54,17 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     {
         base.ChangeTracker.LazyLoadingEnabled = false;
     }
+
     /// <summary>
     /// Gets or sets the maximum number of retries for a transaction.
     /// </summary>
     public int? MaxRetryCount { get; set; }
+
     /// <summary>
     /// Gets or sets the maximum delay between retries for a transaction.
     /// </summary>
     public TimeSpan? MaxRetryDelay { get; set; }
+
     /// <summary>
     /// Commits the changes made in the unit of work to the database.
     /// </summary>
@@ -66,6 +73,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     {
         return SaveChanges();
     }
+
     /// <summary>
     /// Asynchronously commits the changes made in the unit of work to the database.
     /// </summary>
@@ -75,6 +83,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     {
         return await SaveChangesAsync(cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Rolls back the changes made in the unit of work by setting all entries to an unchanged state.
     /// </summary>
@@ -84,6 +93,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
             .ToList()
             .ForEach(entry => entry.State = EntityState.Unchanged);
     }
+
     /// <summary>
     /// Adds an entity to the DbContext.
     /// </summary>
@@ -93,6 +103,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     {
         base.Add(entity);
     }
+
     /// <summary>
     /// Adds a collection of entities to the DbContext.
     /// </summary>
@@ -102,6 +113,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     {
         base.AddRange(entities);
     }
+
     /// <summary>
     /// Asynchronously adds an entity to the DbContext.
     /// </summary>
@@ -126,6 +138,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     {
         await base.AddRangeAsync(entities, cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Removes an entity from the DbContext.
     /// </summary>
@@ -135,6 +148,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     {
         base.Remove(entity);
     }
+
     /// <summary>
     /// Removes a collection of entities from the DbContext.
     /// </summary>
@@ -144,6 +158,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     {
         base.RemoveRange(entities);
     }
+
     /// <summary>
     /// Updates the specified entity in the DbContext.
     /// </summary>
@@ -153,6 +168,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     {
         base.Update(entity);
     }
+
     /// <summary>
     /// Attaches the specified entity to the DbContext.
     /// </summary>
@@ -162,6 +178,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     {
         base.Attach(entity);
     }
+
     /// <summary>
     /// Detaches an entity from the DbContext.
     /// </summary>
@@ -171,6 +188,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     {
         base.Entry(entity).State = EntityState.Detached;
     }
+
     /// <summary>
     /// Gets a queryable representation of a specific entity type.
     /// </summary>
@@ -188,6 +206,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     /// <param name="parameters">The parameters for the SQL command.</param>
     /// <returns>The number of entities affected by the SQL command.</returns>
     public abstract int ExecuteSqlCommand(string sql, params object[] parameters);
+
     /// <summary>
     /// Asynchronously executes a SQL command against the database.
     /// </summary>
@@ -197,6 +216,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     /// <returns>A task representing the asynchronous operation and yielding the number of entities affected by the SQL command.</returns>
     public abstract Task<int> ExecuteSqlCommandAsync(string sql, CancellationToken cancellationToken = default,
         params object[] parameters);
+
     /// <summary>
     /// Overrides the configuration of DbContext options.
     /// </summary>
@@ -223,6 +243,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
 
         base.OnConfiguring(optionsBuilder);
     }
+
     /// <summary>
     /// Configures the provider-specific options for the DbContext.
     /// </summary>

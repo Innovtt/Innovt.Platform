@@ -34,10 +34,12 @@ public sealed class InjectUserNameClaimParameterFilter : ActionFilterAttribute
     public InjectUserNameClaimParameterFilter() : this("ExternalId", "filter", "command")
     {
     }
+
     /// <summary>
     /// Gets the default authorization property for injecting the username.
     /// </summary>
     public string DefaultAuthorizationProperty { get; }
+
     /// <summary>
     /// Gets the action parameters to inject the username.
     /// </summary>

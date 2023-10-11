@@ -8,12 +8,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Innovt.Data.EFCore.Maps;
+
 /// <summary>
 /// Configuration for mapping the Country entity to the database using Entity Framework Core.
 /// </summary>
 public class CountryMap : IEntityTypeConfiguration<Country>
 {
     private readonly bool ignoreIsoCode;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="CountryMap"/> class.
     /// </summary>

@@ -10,6 +10,7 @@ using Innovt.Core.CrossCutting.Log;
 using Innovt.Cqrs.Decorators;
 
 namespace Innovt.Cqrs.Queries.Decorators;
+
 /// <summary>
 /// Decorates an asynchronous query handler to include retry logic in case of failures.
 /// </summary>
@@ -19,6 +20,7 @@ public sealed class DatabaseAsyncRetryDecorator<TFilter, TResult> : BaseDatabase
     IAsyncQueryHandler<TFilter, TResult> where TFilter : IFilter where TResult : class
 {
     private readonly IAsyncQueryHandler<TFilter, TResult> queryHandler;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DatabaseAsyncRetryDecorator{TFilter, TResult}"/> class.
     /// </summary>

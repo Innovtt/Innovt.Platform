@@ -21,6 +21,7 @@ using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
 namespace Innovt.AspNetCore;
+
 /// <summary>
 /// Base class for configuring API startup settings and dependencies.
 /// </summary>
@@ -41,6 +42,7 @@ public abstract class ApiStartupBase
         Localization = new DefaultApiLocalization();
         DefaultHealthPath = "/health";
     }
+
     /// <summary>
     /// Initializes a new instance of the ApiStartupBase class with additional API documentation details.
     /// </summary>
@@ -55,42 +57,51 @@ public abstract class ApiStartupBase
     /// <exception cref="ArgumentNullException">Thrown if configuration, environment, appName, apiTitle, apiDescription, or apiVersion is null.</exception>
     protected ApiStartupBase(IConfiguration configuration, IWebHostEnvironment environment, string appName,
         string apiTitle, string apiDescription,
-        string apiVersion, string? contactName=null, string? contactEmail=null) : this(configuration, environment, appName)
+        string apiVersion, string? contactName = null, string? contactEmail = null) : this(configuration, environment,
+        appName)
     {
-        Documentation = new DefaultApiDocumentation(apiTitle, apiDescription, apiVersion, contactName,contactEmail);
+        Documentation = new DefaultApiDocumentation(apiTitle, apiDescription, apiVersion, contactName, contactEmail);
     }
+
     /// <summary>
     /// Gets the name of the application.
     /// </summary>
     public string AppName { get; }
+
     /// <summary>
     /// Gets or sets the default health path for the application.
     /// </summary>
     protected string DefaultHealthPath { get; set; }
+
     /// <summary>
     /// Gets or sets the API documentation details.
     /// </summary>
     protected DefaultApiDocumentation Documentation { get; set; }
+
     /// <summary>
     /// Gets or sets the localization settings for the API.
     /// </summary>
     protected DefaultApiLocalization Localization { get; set; }
+
     /// <summary>
     /// Gets the configuration for the application.
     /// </summary>
     public IConfiguration Configuration { get; }
+
     /// <summary>
     /// Gets the hosting environment for the application.
     /// </summary>
     public IWebHostEnvironment Environment { get; }
+
     /// <summary>
     /// Checks if Swagger documentation is enabled.
     /// </summary>
     /// <returns>True if Swagger documentation is enabled; otherwise, false.</returns>
     private bool IsSwaggerEnabled()
     {
-        return Documentation is { };
+        return Documentation is not null;
     }
+
     /// <summary>
     /// Checks if the application is running in a development environment.
     /// </summary>
@@ -99,6 +110,7 @@ public abstract class ApiStartupBase
     {
         return Environment.IsDevelopment();
     }
+
     /// <summary>
     /// Adds Swagger generation to the specified services.
     /// </summary>
@@ -118,11 +130,13 @@ public abstract class ApiStartupBase
                     Description = Documentation.ApiDescription,
                     Title = Documentation.ApiTitle,
                     Version = Documentation.ApiVersion,
-                    Contact = Documentation.ContactName is null ? null : new OpenApiContact
-                    {
-                        Name = Documentation.ContactName,
-                        Email = Documentation.ContactEmail
-                    }
+                    Contact = Documentation.ContactName is null
+                        ? null
+                        : new OpenApiContact
+                        {
+                            Name = Documentation.ContactName,
+                            Email = Documentation.ContactEmail
+                        }
                 });
 
             options.IgnoreObsoleteActions();
@@ -138,12 +152,13 @@ public abstract class ApiStartupBase
     {
         services.AddHealthChecks();
     }
+
     /// <summary>
     /// Adds tracing and telemetry to the specified services.
     /// </summary>
     /// <param name="services">The service collection to add tracing to.</param>
     protected virtual void AddTracing(IServiceCollection services)
-    {   
+    {
         services.AddOpenTelemetry().WithTracing(builder =>
         {
             builder.AddSource(AppName).SetResourceBuilder(ResourceBuilder.CreateDefault()
@@ -153,6 +168,7 @@ public abstract class ApiStartupBase
             ConfigureOpenTelemetry(builder);
         });
     }
+
     /// <summary>
     /// Adds localization services to the specified MVC builder and service collection.
     /// </summary>
@@ -174,8 +190,8 @@ public abstract class ApiStartupBase
                 op.DataAnnotationLocalizerProvider =
                     (type, factory) => factory.Create(Localization.DefaultLocalizeResource);
             });
-        
     }
+
     /// <summary>
     /// Adds core services needed for API configuration.
     /// </summary>
@@ -193,7 +209,7 @@ public abstract class ApiStartupBase
             op.Filters.Add(provider.GetService<ApiExceptionFilter>() ?? throw new InvalidOperationException());
         });
 
-       AddLocalization(mvcBuilder,services);
+        AddLocalization(mvcBuilder, services);
     }
 
     // This method gets called by the runtime. Use this method to add services to the container.
@@ -217,6 +233,7 @@ public abstract class ApiStartupBase
 
         AddSwagger(services);
     }
+
     /// <summary>
     /// Configures Swagger UI for API documentation.
     /// </summary>
@@ -260,6 +277,7 @@ public abstract class ApiStartupBase
 
         app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
     }
+
     /// <summary>
     /// Configures API behavior options.
     /// </summary>
@@ -273,6 +291,7 @@ public abstract class ApiStartupBase
             options.SuppressMapClientErrors = true;
         };
     }
+
     /// <summary>
     /// Configures request cultures for the application.
     /// </summary>
@@ -286,16 +305,19 @@ public abstract class ApiStartupBase
             SupportedUICultures = Localization.SupportedCultures
         });
     }
+
     /// <summary>
     /// Adds default services to the service collection.
     /// </summary>
     /// <param name="services">The service collection to add default services to.</param>
     protected abstract void AddDefaultServices(IServiceCollection services);
+
     /// <summary>
     /// Configures the IoC container for the application.
     /// </summary>
     /// <param name="services">The service collection to configure for IoC.</param>
     protected abstract void ConfigureIoC(IServiceCollection services);
+
     /// <summary>
     /// Configures the application.
     /// </summary>
@@ -304,6 +326,7 @@ public abstract class ApiStartupBase
     /// <param name="loggerFactory">The logger factory.</param>
     // ReSharper disable once MemberCanBeProtected.Global
     public abstract void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory);
+
     /// <summary>
     /// Configures OpenTelemetry for tracing.
     /// </summary>

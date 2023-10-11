@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Innovt.Notification.Core.Domain;
 
 namespace Innovt.Notification.Core;
+
 /// <summary>
 /// Interface for a notification handler.
 /// </summary>

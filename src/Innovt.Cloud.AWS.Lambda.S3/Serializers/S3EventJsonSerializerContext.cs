@@ -14,5 +14,4 @@ namespace Innovt.Cloud.AWS.Lambda.S3.Serializers;
 [JsonSerializable(typeof(BatchFailureResponse))]
 public partial class S3EventJsonSerializerContext : JsonSerializerContext
 {
-    
 }

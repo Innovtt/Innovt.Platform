@@ -32,10 +32,12 @@ public abstract class BaseDataModel<TDomain, TDataModel> : INotifyPropertyChange
             hasChanges = false;
         }
     }
+
     /// <summary>
     /// Gets a value indicating whether there are pending changes in the data model.
     /// </summary>
     public bool HasChanges => hasChanges;
+
     /// <summary>
     /// Event that is raised when a property value changes.
     /// </summary>
@@ -49,10 +51,7 @@ public abstract class BaseDataModel<TDomain, TDataModel> : INotifyPropertyChange
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-        if (EnableTrackingChanges)
-        {
-            hasChanges = true;
-        }
+        if (EnableTrackingChanges) hasChanges = true;
     }
 
     /// <summary>
@@ -74,18 +73,21 @@ public abstract class BaseDataModel<TDomain, TDataModel> : INotifyPropertyChange
 
         return true;
     }
+
     /// <summary>
     /// Converts a data model instance to a domain model instance.
     /// </summary>
     /// <param name="dataModel">The data model instance to convert.</param>
     /// <returns>The corresponding domain model instance.</returns>
     public abstract TDomain ParseToDomain(TDataModel dataModel);
+
     /// <summary>
     /// Converts a domain model instance to a data model instance.
     /// </summary>
     /// <param name="domainModel">The domain model instance to convert.</param>
     /// <returns>The corresponding data model instance.</returns>
     public abstract TDataModel ParseToDataModel(TDomain domainModel);
+
     /// <summary>
     /// Converts a list of data model instances to a list of domain model instances.
     /// </summary>

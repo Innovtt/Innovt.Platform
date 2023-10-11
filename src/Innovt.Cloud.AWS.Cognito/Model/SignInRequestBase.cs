@@ -14,5 +14,6 @@ public abstract class SignInRequestBase : RequestBase
     /// <summary>
     /// Gets or sets the user's username.
     /// </summary>
-    [Required] public string UserName { get; set; }
+    [Required]
+    public string UserName { get; set; }
 }

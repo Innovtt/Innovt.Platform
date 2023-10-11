@@ -17,7 +17,8 @@ public class ChangePasswordRequest : RequestBase
     /// <summary>
     /// Gets or sets the access token associated with the user.
     /// </summary>
-    [Required] public string AccessToken { get; set; }
+    [Required]
+    public string AccessToken { get; set; }
 
     /// <summary>
     /// Gets or sets the user's previous password.

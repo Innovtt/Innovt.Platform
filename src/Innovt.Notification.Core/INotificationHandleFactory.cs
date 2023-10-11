@@ -5,6 +5,7 @@
 using Innovt.Notification.Core.Domain;
 
 namespace Innovt.Notification.Core;
+
 /// <summary>
 /// Interface for a notification handler factory.
 /// </summary>

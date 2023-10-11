@@ -20,19 +20,25 @@ public class ContactType : ValueObject<int>
     /// <summary>
     /// Gets or sets the name of the contact type.
     /// </summary>
-    [Required] public string Name { get; set; }
+    [Required]
+    public string Name { get; set; }
+
     /// <summary>
     /// Gets or sets the description of the contact type.
     /// </summary>
-    [Required] public string Description { get; set; }
+    [Required]
+    public string Description { get; set; }
+
     /// <summary>
     /// Gets or sets the URL to an icon associated with the contact type.
     /// </summary>
     public string IconUrl { get; set; }
+
     /// <summary>
     /// Gets or sets the regular expression for validation of contact values.
     /// </summary>
     public string RegexValidation { get; set; }
+
     /// <summary>
     /// Creates a new contact type with the given name and description.
     /// </summary>
@@ -65,7 +71,7 @@ public class ContactType : ValueObject<int>
             RegexValidation = regexValidation
         };
     }
-    
+
     /// <summary>
     /// Validates a contact value based on the regex validation.
     /// </summary>

@@ -9,5 +9,4 @@ public class UserSample
     public string Email { get; set; }
 
     public DateTimeOffset CreatedAt { get; set; }
-    
 }

@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace Innovt.AspNetCore.Handlers;
+
 /// <summary>
 /// Custom authentication handler for handling basic authentication in ASP.NET Core.
 /// </summary>
@@ -23,6 +24,7 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
     public const string SchemeName = "BasicAuthentication";
 
     private readonly IBasicAuthService authService;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="BasicAuthenticationHandler"/> class.
     /// </summary>
@@ -37,6 +39,7 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
     {
         this.authService = authService ?? throw new ArgumentNullException(nameof(authService));
     }
+
     /// <summary>
     /// Generates an authentication failure response.
     /// </summary>
@@ -46,6 +49,7 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
     {
         return AuthenticateResult.Fail(reason);
     }
+
     /// <summary>
     /// Generates an authentication success response.
     /// </summary>
@@ -59,6 +63,7 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
 
         return AuthenticateResult.Success(new AuthenticationTicket(principal, SchemeName));
     }
+
     /// <inheritdoc/>
     protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
     {

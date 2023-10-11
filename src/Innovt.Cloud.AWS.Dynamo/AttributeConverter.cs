@@ -159,15 +159,10 @@ internal static class AttributeConverter
         if (value is null)
             return default;
 
-        if (value.IsBOOLSet)
-        {
-            return value.BOOL;
-        }
+        if (value.IsBOOLSet) return value.BOOL;
 
         if (value.IsLSet)
-        {
             return value.L.Select(l => CreateAttributeValueToObject(l, desiredType.GetGenericArguments()[0])).ToList();
-        }
 
         //Nested Type
         if (value.IsMSet)
@@ -185,25 +180,13 @@ internal static class AttributeConverter
             }
         }
 
-        if (value.BS.IsNotNullOrEmpty())
-        {
-            return value.BS;
-        }
+        if (value.BS.IsNotNullOrEmpty()) return value.BS;
 
-        if (value.N is { })
-        {
-            return value.N;
-        }
+        if (value.N is not null) return value.N;
 
-        if (value.NS.IsNotNullOrEmpty())
-        {
-            return value.NS;
-        }
+        if (value.NS.IsNotNullOrEmpty()) return value.NS;
 
-        if (value.SS.IsNotNullOrEmpty())
-        {
-            return value.SS;
-        }
+        if (value.SS.IsNotNullOrEmpty()) return value.SS;
 
         return value.S.IsNotNullOrEmpty() ? value.S : default(object);
     }
@@ -247,10 +230,7 @@ internal static class AttributeConverter
 
         var valueType = genericArguments[1];
 
-        foreach (var item in items)
-        {
-            dictionary.Add(item.Key, CreateAttributeValueToObject(item.Value, valueType));
-        }
+        foreach (var item in items) dictionary.Add(item.Key, CreateAttributeValueToObject(item.Value, valueType));
 
         return dictionary;
     }
@@ -291,9 +271,7 @@ internal static class AttributeConverter
         var elementType = GetElementType(targetType);
 
         for (var index = 0; index < list.Count; ++index)
-        {
             array.SetValue(IsPrimitive(elementType) ? ConvertType(elementType, list[index]) : list[index], index);
-        }
 
         return (object)array;
     }
@@ -314,10 +292,7 @@ internal static class AttributeConverter
 
         if (result is IList list)
         {
-            foreach (var obj in items)
-            {
-                list.Add(IsPrimitive(elementType) ? ConvertType(elementType, obj) : obj);
-            }
+            foreach (var obj in items) list.Add(IsPrimitive(elementType) ? ConvertType(elementType, obj) : obj);
 
             return result;
         }
@@ -365,10 +340,7 @@ internal static class AttributeConverter
 
         var prop = instanceProps.FirstOrDefault(p => p.DeclaringType == declaringType) ?? instanceProps.First();
 
-        if (prop is null || !prop.CanWrite)
-        {
-            return null;
-        }
+        if (prop is null || !prop.CanWrite) return null;
 
         return prop;
     }
@@ -414,15 +386,15 @@ internal static class AttributeConverter
     {
         if (attributeValue is null)
             return new DynamoDBNull();
-        
+
         if (attributeValue.IsBOOLSet)
             return new DynamoDBBool(attributeValue.BOOL);
-        
-        if (attributeValue.B is { })
+
+        if (attributeValue.B is not null)
             return new Primitive(attributeValue.B);
 
-        if (attributeValue.N is { })
-            return new Primitive(attributeValue.N,true);
+        if (attributeValue.N is not null)
+            return new Primitive(attributeValue.N, true);
 
         return new Primitive(attributeValue.S);
     }
@@ -436,7 +408,7 @@ internal static class AttributeConverter
     /// <returns>
     /// The converted value of the property, considering custom converters if available, or the original value if no custom converter is found.
     /// </returns>
-    internal static object ConvertNonPrimitiveType(PropertyInfo property,AttributeValue attributeValue, object value)
+    internal static object ConvertNonPrimitiveType(PropertyInfo property, AttributeValue attributeValue, object value)
     {
         if (property.PropertyType.IsEnum)
             return Enum.Parse(property.PropertyType, value.ToString(), true);
@@ -444,20 +416,17 @@ internal static class AttributeConverter
         //has converter? 
         var customConverter = property.GetCustomAttributes<DynamoDBPropertyAttribute>()
             .SingleOrDefault(a => a.Converter != null);
-        
-        if (customConverter is null)
-        {
-            return value;
-        }
+
+        if (customConverter is null) return value;
 
         var convertedEntry = ConvertAttributeValue(attributeValue);
 
         if (convertedEntry is null)
             return null;
-        
+
         if (Activator.CreateInstance(customConverter.Converter) is not IPropertyConverter converterInstance)
             return null;
-        
+
         return converterInstance.FromEntry(convertedEntry);
     }
 
@@ -491,20 +460,17 @@ internal static class AttributeConverter
             if (IsPrimitive(prop.PropertyType))
             {
                 convertedValue = ConvertType(prop.PropertyType, value);
-
             }
             else
             {
                 if (IsCollection(prop.PropertyType))
-                {
-                    convertedValue = IsDictionary(prop.PropertyType) ? value
+                    convertedValue = IsDictionary(prop.PropertyType)
+                        ? value
                         : ItemsToCollection(prop.PropertyType, (IEnumerable<object>)value);
-                }
                 else
-                {
                     convertedValue = ConvertNonPrimitiveType(prop, attributeValue.Value, value);
-                }
             }
+
             //setting the converted value
             prop.SetValue(instance, convertedValue, null);
         }

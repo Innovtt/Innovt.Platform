@@ -5,6 +5,7 @@
 using Microsoft.Extensions.Logging;
 
 namespace Innovt.CrossCutting.Log.Serilog;
+
 /// <summary>
 /// Implementation of <see cref="ILoggerProvider"/> for ALogger.
 /// </summary>
@@ -17,6 +18,7 @@ public class ALoggerProvider : ILoggerProvider
     {
         throw new System.NotImplementedException();
     }
+
     /// <summary>
     /// Creates a new instance of <see cref="ALogger"/> for the specified category.
     /// </summary>

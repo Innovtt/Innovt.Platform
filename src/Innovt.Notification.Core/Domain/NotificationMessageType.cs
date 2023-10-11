@@ -3,6 +3,7 @@
 // Project: Innovt.Notification.Core
 
 namespace Innovt.Notification.Core.Domain;
+
 /// <summary>
 /// Enum representing the type of a notification message.
 /// </summary>

@@ -17,12 +17,14 @@ public class SocialSignInRequest : RequestBase
     /// <summary>
     /// Gets or sets the OAuth code obtained from the social authentication provider.
     /// </summary>
-    [Required] public virtual string Code { get; set; }
+    [Required]
+    public virtual string Code { get; set; }
 
     /// <summary>
     /// Gets or sets the redirect URI to which the user is redirected after social authentication.
     /// </summary>
-    [Required] public virtual string RedirectUri { get; set; }
+    [Required]
+    public virtual string RedirectUri { get; set; }
 
     /// <inheritdoc/>
     public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

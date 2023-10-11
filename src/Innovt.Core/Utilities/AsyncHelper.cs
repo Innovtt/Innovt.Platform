@@ -13,12 +13,12 @@ namespace Innovt.Core.Utilities;
 /// <summary>
 ///     Reference https://cpratt.co/async-tips-tricks/
 /// </summary>
-
 /// <summary>
 /// Provides helper methods for synchronously executing asynchronous tasks.
 /// </summary>
-public static class AsyncHelper {
-    private static readonly TaskFactory TaskFactory = new TaskFactory(
+public static class AsyncHelper
+{
+    private static readonly TaskFactory TaskFactory = new(
         CancellationToken.None,
         TaskCreationOptions.None,
         TaskContinuationOptions.None,
@@ -31,7 +31,8 @@ public static class AsyncHelper {
     /// <param name="func">The asynchronous function to run synchronously.</param>
     /// <param name="cancellationToken">An optional cancellation token for the operation.</param>
     /// <returns>The result of the asynchronous function.</returns>
-    public static TResult RunSync<TResult>(Func<Task<TResult>> func, CancellationToken cancellationToken = default) {
+    public static TResult RunSync<TResult>(Func<Task<TResult>> func, CancellationToken cancellationToken = default)
+    {
         return TaskFactory
             .StartNew(func, cancellationToken)
             .Unwrap()
@@ -44,7 +45,8 @@ public static class AsyncHelper {
     /// </summary>
     /// <param name="func">The asynchronous action to run synchronously.</param>
     /// <param name="cancellationToken">An optional cancellation token for the operation.</param>
-    public static void RunSync(Func<Task> func, CancellationToken cancellationToken = default) {
+    public static void RunSync(Func<Task> func, CancellationToken cancellationToken = default)
+    {
         TaskFactory
             .StartNew(func, cancellationToken)
             .Unwrap()

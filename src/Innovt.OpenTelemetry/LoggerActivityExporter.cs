@@ -62,14 +62,10 @@ public class LoggerActivityExporter : BaseExporter<Activity>
             logBuffer.AppendLine($"Activity.SpanId:           {activity.SpanId}");
             logBuffer.AppendLine($"Activity.TraceFlags:           {activity.ActivityTraceFlags}");
             if (!string.IsNullOrEmpty(activity.TraceStateString))
-            {
                 logBuffer.AppendLine($"Activity.TraceState:    {activity.TraceStateString}");
-            }
 
             if (activity.ParentSpanId != default)
-            {
                 logBuffer.AppendLine($"Activity.ParentSpanId:    {activity.ParentSpanId}");
-            }
 
             logBuffer.AppendLine($"Activity.ActivitySourceName: {activity.Source.Name}");
             logBuffer.AppendLine($"Activity.DisplayName: {activity.DisplayName}");
@@ -104,17 +100,13 @@ public class LoggerActivityExporter : BaseExporter<Activity>
             {
                 logBuffer.AppendLine($"StatusCode : {activity.Status}");
                 if (!string.IsNullOrEmpty(activity.StatusDescription))
-                {
                     logBuffer.AppendLine($"Activity.StatusDescription : {activity.StatusDescription}");
-                }
             }
             else if (!string.IsNullOrEmpty(statusCode))
             {
                 logBuffer.AppendLine($"   StatusCode : {statusCode}");
                 if (!string.IsNullOrEmpty(statusDesc))
-                {
                     logBuffer.AppendLine($"   Activity.StatusDescription : {statusDesc}");
-                }
             }
 
             if (activity.Events.Any())
@@ -123,10 +115,7 @@ public class LoggerActivityExporter : BaseExporter<Activity>
                 foreach (var activityEvent in activity.Events)
                 {
                     logBuffer.AppendLine($"    {activityEvent.Name} [{activityEvent.Timestamp}]");
-                    foreach (var attribute in activityEvent.Tags)
-                    {
-                        logBuffer.AppendLine($"        {attribute}");
-                    }
+                    foreach (var attribute in activityEvent.Tags) logBuffer.AppendLine($"        {attribute}");
                 }
             }
 
@@ -136,10 +125,7 @@ public class LoggerActivityExporter : BaseExporter<Activity>
                 foreach (var activityLink in activity.Links)
                 {
                     logBuffer.AppendLine($"    {activityLink.Context.TraceId} {activityLink.Context.SpanId}");
-                    foreach (var attribute in activityLink.Tags)
-                    {
-                        logBuffer.AppendLine($"        {attribute}");
-                    }
+                    foreach (var attribute in activityLink.Tags) logBuffer.AppendLine($"        {attribute}");
                 }
             }
 
@@ -147,10 +133,7 @@ public class LoggerActivityExporter : BaseExporter<Activity>
             if (resource != Resource.Empty)
             {
                 logBuffer.AppendLine("Resource associated with Activity:");
-                foreach (var resourceAttribute in resource.Attributes)
-                {
-                    logBuffer.AppendLine($"    {resourceAttribute}");
-                }
+                foreach (var resourceAttribute in resource.Attributes) logBuffer.AppendLine($"    {resourceAttribute}");
             }
 
             logBuffer.AppendLine(string.Empty);

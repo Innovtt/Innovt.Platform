@@ -5,6 +5,7 @@
 using System.Collections.Generic;
 
 namespace Innovt.Cloud.Table;
+
 /// <summary>
 /// Represents a request for a transactional write operation.
 /// </summary>
@@ -17,6 +18,7 @@ public class TransactionWriteRequest
     {
         TransactItems = new List<TransactionWriteItem>();
     }
+
     /// <summary>
     /// Gets or sets a client-provided request token to ensure idempotent execution of the transaction.
     /// </summary>

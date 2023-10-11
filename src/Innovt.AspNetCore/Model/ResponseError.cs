@@ -3,6 +3,7 @@
 // Project: Innovt.AspNetCore
 
 namespace Innovt.AspNetCore.Model;
+
 /// <summary>
 /// Represents an error response object returned by the API.
 /// </summary>

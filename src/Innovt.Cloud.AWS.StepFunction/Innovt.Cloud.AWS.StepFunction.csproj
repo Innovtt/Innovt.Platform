@@ -1,23 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-	  <TargetFramework>netstandard2.1</TargetFramework>
-	  <PackageId>Innovt.Cloud.AWS.StepFunction</PackageId>
-	  <PackageVersion>7.0.43</PackageVersion>
-	  <Authors>Michel Borges</Authors>
-	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-	  <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-	  <Copyright>Innovt Tecnologia</Copyright>
-	  <Description>AWS implementation for step function Abstraction.</Description>
-	  <LangVersion>latest</LangVersion>
-	  <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-  </PropertyGroup>
-	<ItemGroup>
-		<PackageReference Include="AWSSDK.StepFunctions" Version="3.7.200.53" />
-		<PackageReference Include="System.Diagnostics.DiagnosticSource" Version="7.0.2" />
-	</ItemGroup>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <PackageId>Innovt.Cloud.AWS.StepFunction</PackageId>
+        <PackageVersion>7.0.44</PackageVersion>
+        <Authors>Michel Borges</Authors>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Copyright>Innovt Tecnologia</Copyright>
+        <Description>AWS implementation for step function Abstraction.</Description>
+        <LangVersion>latest</LangVersion>
+        <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="AWSSDK.StepFunctions" Version="3.7.200.53"/>
+        <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="7.0.2"/>
+    </ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj" />
-	</ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj"/>
+    </ItemGroup>
 </Project>

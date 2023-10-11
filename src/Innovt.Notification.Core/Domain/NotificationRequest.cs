@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using Innovt.Core.Collections;
 
 namespace Innovt.Notification.Core.Domain;
+
 /// <summary>
 /// Represents a notification request.
 /// </summary>
@@ -19,18 +20,22 @@ public class NotificationRequest : IValidatableObject
     {
         To = new List<NotificationMessageContact>();
     }
+
     /// <summary>
     /// Gets or sets the template ID.
     /// </summary>
     public string TemplateId { get; set; }
+
     /// <summary>
     /// Gets or sets the list of "To" contacts for the notification request.
     /// </summary>
     public List<NotificationMessageContact> To { get; set; }
+
     /// <summary>
     /// Gets or sets the payload associated with the notification request.
     /// </summary>
     public object PayLoad { get; set; }
+
     /// <inheritdoc />
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {

@@ -3,6 +3,7 @@
 // Project: Innovt.Domain.Core
 
 namespace Innovt.Domain.Core.Model;
+
 /// <summary>
 /// Represents a base class for value objects.
 /// </summary>
@@ -12,6 +13,7 @@ public abstract class ValueObject
     /// Gets or sets the identifier for the value object.
     /// </summary>
     public virtual int Id { get; set; }
+
     /// <summary>
     /// Determines whether the current value object is equal to another object.
     /// </summary>
@@ -24,6 +26,7 @@ public abstract class ValueObject
 
         return (obj as ValueObject)?.Id == Id;
     }
+
     /// <summary>
     /// Serves as the default hash function.
     /// </summary>
@@ -33,6 +36,7 @@ public abstract class ValueObject
         return base.GetHashCode();
     }
 }
+
 /// <summary>
 /// Represents a base class for value objects with a generic identifier type.
 /// </summary>

@@ -8,12 +8,14 @@ using Innovt.Domain.Core.Repository;
 using Innovt.Domain.Tracking;
 
 namespace Innovt.Data.EFCore.Repositories;
+
 /// <summary>
 /// Repository for managing request tracking entities.
 /// </summary>
 public class RequestTrackingRepository : IRequestTrackingRepository
 {
     private readonly IExtendedUnitOfWork context;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="RequestTrackingRepository"/> class.
     /// </summary>
@@ -23,6 +25,7 @@ public class RequestTrackingRepository : IRequestTrackingRepository
     {
         this.context = context ?? throw new ArgumentNullException(nameof(context));
     }
+
     /// <summary>
     /// Adds request tracking information to the repository.
     /// </summary>

@@ -9,6 +9,7 @@ using Polly;
 using Polly.Retry;
 
 namespace Innovt.Cqrs.Decorators;
+
 /// <summary>
 /// Provides a base class for implementing retry logic for database operations.
 /// </summary>
@@ -16,6 +17,7 @@ public abstract class BaseDatabaseRetryDecorator
 {
     private readonly ILogger logger;
     private readonly int retryCount;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="BaseDatabaseRetryDecorator"/> class.
     /// </summary>
@@ -27,6 +29,7 @@ public abstract class BaseDatabaseRetryDecorator
         this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
         this.retryCount = retryCount;
     }
+
     /// <summary>
     /// Creates a resiliency log action for retry attempts.
     /// </summary>
@@ -39,6 +42,7 @@ public abstract class BaseDatabaseRetryDecorator
                 $"Retry {retryCount} implemented of {context.PolicyKey} at {context.OperationKey} due to {exception}");
         };
     }
+
     /// <summary>
     /// Creates an asynchronous retry policy for handling retry attempts.
     /// </summary>
@@ -50,6 +54,7 @@ public abstract class BaseDatabaseRetryDecorator
 
         return policy;
     }
+
     /// <summary>
     /// Creates a retry policy for handling retry attempts.
     /// </summary>

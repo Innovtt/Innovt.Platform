@@ -10,7 +10,8 @@ namespace Innovt.Core.Test.Models;
 /// <summary>
 /// Represents an invoice entity with various properties related to billing and payment information.
 /// </summary>
-public class Invoice : Entity<Guid> {
+public class Invoice : Entity<Guid>
+{
     /// <summary>
     /// Gets or sets the unique identifier of the associated business entity.
     /// </summary>
@@ -70,6 +71,7 @@ public class Invoice : Entity<Guid> {
     /// Gets or sets the document information associated with the supplier.
     /// </summary>
     public string SupplierDocument { get; set; }
+
     /// <summary>
     /// Gets or sets the currency identifier.
     /// </summary>
@@ -185,5 +187,4 @@ public class Invoice : Entity<Guid> {
     /// Gets or sets the date when the invoice was last updated in the system. This property can be null if the invoice has not been updated.
     /// </summary>
     public DateTime? UpdatedAt { get; set; }
-
 }
