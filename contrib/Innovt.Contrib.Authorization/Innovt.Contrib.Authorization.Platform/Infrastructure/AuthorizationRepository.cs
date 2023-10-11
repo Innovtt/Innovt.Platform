@@ -18,14 +18,21 @@ using Innovt.Domain.Security;
 using IAuthorizationRepository = Innovt.Contrib.Authorization.Platform.Domain.IAuthorizationRepository;
 
 namespace Innovt.Contrib.Authorization.Platform.Infrastructure;
-
+/// <summary>
+/// Repository for managing authorization-related data and operations.
+/// </summary>
 public class AuthorizationRepository : Repository, IAuthorizationRepository
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AuthorizationRepository"/> class.
+    /// </summary>
+    /// <param name="logger">The logger instance.</param>
+    /// <param name="awsConfiguration">The AWS configuration instance.</param>
     public AuthorizationRepository(ILogger logger, IAwsConfiguration awsConfiguration) : base(logger,
         awsConfiguration)
     {
     }
-
+    /// <inheritdoc />
     public async Task<AdminUser> GetAdminUser(UserFilter userFilter, CancellationToken cancellationToken)
     {
         if (userFilter is null) throw new ArgumentNullException(nameof(userFilter));
@@ -41,7 +48,7 @@ public class AuthorizationRepository : Repository, IAuthorizationRepository
 
         return AdminUserDataModel.ToUser(user);
     }
-
+    /// <inheritdoc />
     public async Task<IList<Role>> GetUserRolesBy(RoleByUserFilter filter, CancellationToken cancellationToken)
     {
         if (filter is null) throw new ArgumentNullException(nameof(filter));
@@ -65,7 +72,7 @@ public class AuthorizationRepository : Repository, IAuthorizationRepository
 
         return UserDataModel.ToUser(user)?.Roles;
     }
-
+    /// <inheritdoc />
     public async Task Save(AdminUser adminUser, CancellationToken cancellationToken)
     {
         if (adminUser is null) throw new ArgumentNullException(nameof(adminUser));
@@ -74,7 +81,7 @@ public class AuthorizationRepository : Repository, IAuthorizationRepository
 
         await AddAsync(user, cancellationToken).ConfigureAwait(false);
     }
-
+    /// <inheritdoc />
     public async Task<AuthUser> GetUserByExternalId(string externalId,
         CancellationToken cancellationToken = default)
     {
@@ -88,7 +95,7 @@ public class AuthorizationRepository : Repository, IAuthorizationRepository
 
         return UserDataModel.ToUser(user);
     }
-
+    /// <inheritdoc />
     public async Task Save(AuthUser user, CancellationToken cancellationToken)
     {
         if (user is null) throw new ArgumentNullException(nameof(user));
@@ -97,7 +104,7 @@ public class AuthorizationRepository : Repository, IAuthorizationRepository
 
         await AddAsync(authUser, cancellationToken).ConfigureAwait(false);
     }
-
+    /// <inheritdoc />
     public async Task RemoveUser(AuthUser user, CancellationToken cancellationToken)
     {
         if (user is null) throw new ArgumentNullException(nameof(user));
