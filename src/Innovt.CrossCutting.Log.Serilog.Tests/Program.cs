@@ -5,6 +5,7 @@
 using System.Diagnostics;
 
 namespace Innovt.CrossCutting.Log.Serilog.Tests;
+
 /// <summary>
 /// Represents the entry point and test methods for the application.
 /// </summary>
@@ -35,6 +36,7 @@ public class Program
         //
         ac.Stop();
     }
+
     /// <summary>
     /// Runs a simple test with DataDog enricher.
     /// </summary>

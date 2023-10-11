@@ -34,6 +34,7 @@ public class HttpException : BaseException
     /// Gets the exception related to the HTTP request.
     /// </summary>
     public Exception RequestException { get; }
+
     /// <summary>
     /// Gets the details of the HTTP request that triggered the exception.
     /// </summary>

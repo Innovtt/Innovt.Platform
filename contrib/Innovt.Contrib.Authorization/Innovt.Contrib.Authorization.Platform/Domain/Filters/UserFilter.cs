@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using Innovt.Core.Cqrs.Queries;
 
 namespace Innovt.Contrib.Authorization.Platform.Domain.Filters;
+
 /// <summary>
 /// Represents a filter for retrieving a user by their email.
 /// </summary>
@@ -22,12 +23,14 @@ public class UserFilter : IFilter
     {
         Email = email ?? throw new ArgumentNullException(nameof(email));
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="UserFilter"/> class.
     /// </summary>
     public UserFilter()
     {
     }
+
     /// <summary>
     /// Gets or sets the email of the user.
     /// </summary>

@@ -7,6 +7,7 @@ using Innovt.Core.Utilities;
 using Innovt.Domain.Core.Model;
 
 namespace Innovt.Contrib.Authorization.Platform.Domain;
+
 /// <summary>
 /// Represents an administrator user.
 /// </summary>
@@ -20,26 +21,32 @@ public class AdminUser : Entity<Guid>
         Id = Guid.NewGuid();
         CreatedAt = DateTimeOffset.UtcNow;
     }
+
     /// <summary>
     /// Gets or sets the name of the administrator user.
     /// </summary>
     public string Name { get; set; }
+
     /// <summary>
     /// Gets or sets the email of the administrator user.
     /// </summary>
     public string Email { get; set; }
+
     /// <summary>
     /// Gets or sets the password hash of the administrator user.
     /// </summary>
     public string PasswordHash { get; set; }
+
     /// <summary>
     /// Gets or sets the last access timestamp of the administrator user.
     /// </summary>
     public DateTimeOffset LastAccess { get; set; }
+
     /// <summary>
     /// Gets or sets a value indicating whether the administrator user is enabled.
     /// </summary>
     public bool IsEnabled { get; set; }
+
     /// <summary>
     /// Checks if the provided password matches the stored password hash.
     /// </summary>
@@ -49,6 +56,7 @@ public class AdminUser : Entity<Guid>
     {
         return PasswordHash == password.Md5Hash();
     }
+
     /// <summary>
     /// Registers access for the administrator user by updating the last access timestamp.
     /// </summary>

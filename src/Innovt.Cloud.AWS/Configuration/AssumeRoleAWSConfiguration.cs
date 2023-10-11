@@ -8,6 +8,7 @@ using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.Configuration;
+
 /// <summary>
 /// Represents the configuration for assuming a role in AWS.
 /// </summary>
@@ -31,38 +32,47 @@ public class AssumeRoleAWSConfiguration : IAssumeRoleAWSConfiguration
         ExternalId = roleExternalId;
         RoleSessionName = roleSessionName;
     }
+
     /// <summary>
     /// Gets or sets the Amazon Resource Name (ARN) of the role to assume.
     /// </summary>
     public string RoleArn { get; set; }
+
     /// <summary>
     /// Gets or sets the external ID to use when assuming the role.
     /// </summary>
     public string ExternalId { get; set; }
+
     /// <summary>
     /// Gets or sets the name to use for the assumed role session.
     /// </summary>
     public string RoleSessionName { get; set; }
+
     /// <summary>
     /// Gets or sets the AWS account number.
     /// </summary>
     public string AccountNumber { get; set; }
+
     /// <summary>
     /// Gets or sets the AWS secret key.
     /// </summary>
     public string SecretKey { get; set; }
+
     /// <summary>
     /// Gets or sets the AWS access key.
     /// </summary>
     public string AccessKey { get; set; }
+
     /// <summary>
     /// Gets or sets the AWS region.
     /// </summary>
     public string Region { get; set; }
+
     /// <summary>
     /// Gets or sets the AWS profile.
     /// </summary>
     public string Profile { get; set; }
+
     /// <summary>
     /// Gets the AWS credentials for assuming the specified role.
     /// </summary>

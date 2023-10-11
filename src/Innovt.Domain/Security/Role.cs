@@ -23,22 +23,27 @@ public class Role : Entity<Guid>
         CreatedAt = DateTimeOffset.UtcNow;
         Id = Guid.NewGuid();
     }
+
     /// <summary>
     /// Gets or sets the name of the role.
     /// </summary>
     public string Name { get; set; }
+
     /// <summary>
     /// Gets or sets the description of the role.
     /// </summary>
     public string Description { get; set; }
+
     /// <summary>
     /// Gets or sets the scope of the role.
     /// </summary>
     public string Scope { get; set; }
+
     /// <summary>
     /// Gets or sets the list of permissions associated with the role.
     /// </summary>
     public IList<Permission> Permissions { get; set; }
+
     /// <summary>
     /// Assigns a permission to the role.
     /// </summary>
@@ -56,6 +61,7 @@ public class Role : Entity<Guid>
 
         Permissions.Add(permission);
     }
+
     /// <summary>
     /// Removes a permission from the role by its identifier.
     /// </summary>
@@ -69,6 +75,7 @@ public class Role : Entity<Guid>
 
         Permissions.Remove(permission);
     }
+
     /// <summary>
     /// Determines whether the current <see cref="Role"/> instance is equal to another object.
     /// </summary>

@@ -17,7 +17,8 @@ public class ConfirmSignUpRequest : RequestBase
     /// <summary>
     /// Gets or sets the username of the user to confirm.
     /// </summary>
-    [Required] public virtual string UserName { get; set; }
+    [Required]
+    public virtual string UserName { get; set; }
 
     /// <summary>
     /// Gets or sets the confirmation code associated with the user's sign-up request.

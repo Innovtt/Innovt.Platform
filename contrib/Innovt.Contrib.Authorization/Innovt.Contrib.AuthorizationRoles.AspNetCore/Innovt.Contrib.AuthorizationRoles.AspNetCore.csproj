@@ -1,24 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <PackageId>Innovt.Contrib.AuthorizationRoles.AspNetCore</PackageId>
-	 <PackageVersion>7.0.42</PackageVersion>
-    <Authors>Michel Borges</Authors>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Copyright>Innovt Tecnologia</Copyright>
-    <Description>Authorization Roles.</Description>
-    <LangVersion>latest</LangVersion>
-    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <PackageId>Innovt.Contrib.AuthorizationRoles.AspNetCore</PackageId>
+        <PackageVersion>7.0.44</PackageVersion>
+        <Authors>Michel Borges</Authors>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Copyright>Innovt Tecnologia</Copyright>
+        <Description>Authorization Roles.</Description>
+        <LangVersion>latest</LangVersion>
+        <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    </PropertyGroup>
     <ItemGroup>
-	    <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
-	    <PackageReference Include="OpenTelemetry" Version="1.6.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0"/>
+        <PackageReference Include="OpenTelemetry" Version="1.6.0"/>
     </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\src\Innovt.AspNetCore\Innovt.AspNetCore.csproj" />
-    <ProjectReference Include="..\Innovt.Contrib.Authorization.Platform\Innovt.Contrib.Authorization.Platform.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\src\Innovt.AspNetCore\Innovt.AspNetCore.csproj"/>
+        <ProjectReference Include="..\Innovt.Contrib.Authorization.Platform\Innovt.Contrib.Authorization.Platform.csproj"/>
+    </ItemGroup>
 </Project>

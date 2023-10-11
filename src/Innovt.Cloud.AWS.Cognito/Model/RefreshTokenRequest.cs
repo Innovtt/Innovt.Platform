@@ -17,7 +17,8 @@ public class RefreshTokenRequest : RequestBase
     /// <summary>
     /// Gets or sets the refresh token.
     /// </summary>
-    [Required] public string RefreshToken { get; set; }
+    [Required]
+    public string RefreshToken { get; set; }
 
     /// <summary>
     /// Validates the request data.

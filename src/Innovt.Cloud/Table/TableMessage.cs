@@ -5,6 +5,7 @@
 using System;
 
 namespace Innovt.Cloud.Table;
+
 /// <summary>
 /// Represents a message associated with a table, implementing the ITableMessage interface.
 /// </summary>
@@ -16,6 +17,7 @@ public class TableMessage : ITableMessage
     public TableMessage()
     {
     }
+
     /// <summary>
     /// Constructor for TableMessage with an identifier.
     /// </summary>
@@ -26,6 +28,7 @@ public class TableMessage : ITableMessage
 
         Id = id;
     }
+
     /// <summary>
     /// Constructor for TableMessage with an identifier and a range key.
     /// </summary>
@@ -37,10 +40,12 @@ public class TableMessage : ITableMessage
 
         RangeKey = rangeKey;
     }
+
     /// <summary>
     /// Gets or sets the range key associated with the message.
     /// </summary>
     public string RangeKey { get; set; }
+
     /// <summary>
     /// Gets or sets the unique identifier for the message.
     /// </summary>

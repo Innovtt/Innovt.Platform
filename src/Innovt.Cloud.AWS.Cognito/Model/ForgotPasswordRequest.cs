@@ -17,7 +17,8 @@ public class ForgotPasswordRequest : RequestBase
     /// <summary>
     /// Gets or sets the username associated with the user who forgot their password.
     /// </summary>
-    [Required] public virtual string UserName { get; set; }
+    [Required]
+    public virtual string UserName { get; set; }
 
     /// <summary>
     /// Validates the <see cref="ForgotPasswordRequest"/> instance.

@@ -10,6 +10,7 @@ using Innovt.Core.Utilities;
 using Microsoft.Extensions.Configuration;
 
 namespace Innovt.Job.Core;
+
 /// <summary>
 /// Abstract base class for job entry implementations, providing common functionality for setting up and running jobs.
 /// </summary>
@@ -24,14 +25,17 @@ public abstract class JobEntry
     {
         JobName = jobName;
     }
+
     /// <summary>
     /// Gets the name of the job.
     /// </summary>
     public string JobName { get; }
+
     /// <summary>
     /// Gets or sets the configuration.
     /// </summary>
     public IConfiguration Configuration { get; protected set; }
+
     /// <summary>
     /// Sets up the configuration using appsettings.json.
     /// </summary>
@@ -55,11 +59,13 @@ public abstract class JobEntry
 
         IOCLocator.Initialize(container);
     }
+
     /// <summary>
     /// Creates the IoC container.
     /// </summary>
     /// <returns>The IoC container.</returns>
     protected abstract IContainer CreateIocContainer();
+
     /// <summary>
     /// Creates the job instance.
     /// </summary>

@@ -9,6 +9,7 @@ using Innovt.Core.Cqrs.Commands;
 using Innovt.Core.Validation;
 
 namespace Innovt.Cqrs.Commands.Decorators;
+
 /// <summary>
 /// Decorates an asynchronous command handler to include validation before handling the command.
 /// </summary>
@@ -17,6 +18,7 @@ public sealed class CommandAsyncValidationDecorator<TCommand> : IAsyncCommandHan
     where TCommand : ICommand
 {
     private readonly IAsyncCommandHandler<TCommand> asyncCommandHandler;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="CommandAsyncValidationDecorator{TCommand}"/> class.
     /// </summary>
@@ -26,6 +28,7 @@ public sealed class CommandAsyncValidationDecorator<TCommand> : IAsyncCommandHan
     {
         asyncCommandHandler = commandHandler ?? throw new ArgumentNullException(nameof(commandHandler));
     }
+
     /// <summary>
     /// Handles the specified command asynchronously after ensuring its validity.
     /// </summary>

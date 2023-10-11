@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Innovt.Data.EFCore.Maps;
+
 /// <summary>
 /// Configuration for mapping the City entity to the database using Entity Framework Core.
 /// </summary>

@@ -28,15 +28,16 @@ public sealed class ModelExcludeFilterAttribute : Attribute
     {
         ExcludeAttributes = new[] { propertyName };
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="ModelExcludeFilterAttribute"/> class.
     /// </summary>
     /// <param name="excludeAttributes">An array of property names to be excluded.</param>
-
     public ModelExcludeFilterAttribute(params string[] excludeAttributes)
     {
         ExcludeAttributes = excludeAttributes;
     }
+
     /// <summary>
     /// Gets or sets an array of property names to be excluded when applying filters.
     /// </summary>

@@ -14,6 +14,7 @@ using Innovt.Notification.Core;
 using Innovt.Notification.Core.Domain;
 
 namespace Innovt.Cloud.AWS.Notification;
+
 /// <summary>
 /// Handles sending notifications via email using Amazon Simple Email Service (SES).
 /// </summary>
@@ -29,6 +30,7 @@ public class MailNotificationHandler : AwsBaseService, INotificationHandler
     public MailNotificationHandler(ILogger logger, IAwsConfiguration configuration) : base(logger, configuration)
     {
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="MailNotificationHandler"/> class with a specified region.
     /// </summary>
@@ -39,6 +41,7 @@ public class MailNotificationHandler : AwsBaseService, INotificationHandler
         configuration, region)
     {
     }
+
     /// <summary>
     /// Gets or sets the default charset for the email.
     /// </summary>
@@ -56,6 +59,7 @@ public class MailNotificationHandler : AwsBaseService, INotificationHandler
             return _simpleEmailClient;
         }
     }
+
     /// <summary>
     /// Sends a notification via email asynchronously.
     /// </summary>
@@ -122,6 +126,7 @@ public class MailNotificationHandler : AwsBaseService, INotificationHandler
 
         return response;
     }
+
     /// <summary>
     /// Disposes of the Amazon Simple Email Service (SES) client instance.
     /// </summary>

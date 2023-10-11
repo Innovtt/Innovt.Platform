@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Innovt.Core.Collections;
+
 /// <summary>
 /// A collection of extension methods for common operations on collections and objects.
 /// </summary>
@@ -25,6 +26,7 @@ public static class Extensions
     {
         return list == null || list.Count == 0;
     }
+
     /// <summary>
     /// Checks if an <see cref="IEnumerable{T}"/> is null or empty.
     /// </summary>
@@ -120,10 +122,7 @@ public static class Extensions
 
         if (dictionarySecond == null) return dictionary;
 
-        foreach (var item in dictionarySecond)
-        {
-            dictionary.TryAdd(item.Key, item.Value);
-        }
+        foreach (var item in dictionarySecond) dictionary.TryAdd(item.Key, item.Value);
 
         return dictionary;
     }

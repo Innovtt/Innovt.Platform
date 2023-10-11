@@ -11,9 +11,7 @@ public class UserNameAlreadyExistsException : BusinessException
     /// <summary>
     /// Initializes a new instance of the <see cref="UserNameAlreadyExistsException"/> class with a predefined error code.
     /// </summary>
-    public UserNameAlreadyExistsException():base(ErrorCode.UsernameAlreadyExists,ErrorCode.UsernameAlreadyExists)
+    public UserNameAlreadyExistsException() : base(ErrorCode.UsernameAlreadyExists, ErrorCode.UsernameAlreadyExists)
     {
-        
     }
-    
 }

@@ -6,6 +6,7 @@ using Innovt.Data.Model;
 using Microsoft.Extensions.Configuration;
 
 namespace Innovt.Data.DataSources;
+
 /// <summary>
 /// Represents a data source writer that inherits from <see cref="DataSourceBase"/> and implements <see cref="IDataSourceWriter"/>.
 /// </summary>
@@ -21,6 +22,7 @@ public class DataSourceWriter : DataSourceBase, IDataSourceWriter
         connectionString, provider)
     {
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DataSourceWriter"/> class with configuration settings.
     /// </summary>
@@ -32,6 +34,7 @@ public class DataSourceWriter : DataSourceBase, IDataSourceWriter
     {
         Name = nameof(DataSourceWriter);
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DataSourceWriter"/> class with configuration settings and a custom name.
     /// </summary>

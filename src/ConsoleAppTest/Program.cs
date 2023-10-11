@@ -65,8 +65,7 @@ public class Program
         var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json")
             .Build();
 
-        
-        
+
         //var container = new Container();
 
         //container.AddModule(new IocTestModule(configuration));
@@ -78,17 +77,11 @@ public class Program
             var profile = new InstanceProfileAWSCredentials();
 
 
-
             Console.Write(profile.Role);
             var cred = await profile.GetCredentialsAsync();
 
             Console.WriteLine(cred.AccessKey);
             Console.WriteLine(cred.SecretKey);
-
-
-
-
-
 
 
             //var service = new S3FileSystem(container.Resolve<ILogger>(), container.Resolve<IAwsConfiguration>());
@@ -101,7 +94,7 @@ public class Program
             throw;
         }
 
-        
+
         Console.ReadKey();
     }
 }

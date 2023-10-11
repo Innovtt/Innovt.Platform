@@ -30,6 +30,7 @@ public static class Extensions
     {
         return obj == null;
     }
+
     /// <summary>
     /// Converts the specified object to a string or returns an empty string if the object is null.
     /// </summary>
@@ -39,6 +40,7 @@ public static class Extensions
     {
         return obj == null ? string.Empty : obj.ToString();
     }
+
     /// <summary>
     /// Determines whether the specified Guid is empty.
     /// </summary>
@@ -48,6 +50,7 @@ public static class Extensions
     {
         return id == Guid.Empty;
     }
+
     /// <summary>
     /// Determines whether the specified nullable Guid is null or empty.
     /// </summary>
@@ -57,16 +60,17 @@ public static class Extensions
     {
         return id is null || id.Value.IsGuidEmpty();
     }
+
     /// <summary>
     /// Determines whether the specified integer is less than or equal to zero.
     /// </summary>
     /// <param name="id">The integer to check.</param>
     /// <returns>True if the integer is less than or equal to zero; otherwise, false.</returns>
-
     public static bool IsLessThanOrEqualToZero(this int id)
     {
         return id <= 0;
     }
+
     /// <summary>
     /// Determines whether the specified nullable integer is null or less than or equal to zero.
     /// </summary>
@@ -76,6 +80,7 @@ public static class Extensions
     {
         return id.GetValueOrDefault().IsLessThanOrEqualToZero();
     }
+
     /// <summary>
     /// Determines whether the specified long integer is less than or equal to zero.
     /// </summary>
@@ -85,6 +90,7 @@ public static class Extensions
     {
         return id <= 0;
     }
+
     /// <summary>
     /// Determines whether the specified double is less than or equal to zero.
     /// </summary>
@@ -171,6 +177,7 @@ public static class Extensions
         dateTime = dateTime.AddSeconds(fromSeconds).ToLocalTime();
         return dateTime;
     }
+
     /// <summary>
     /// Formats a decimal value as currency.
     /// </summary>
@@ -192,6 +199,7 @@ public static class Extensions
             new DateTime(date.Year, date.Month, DateTime.DaysInMonth(date.Year, date.Month)).AddDays(1)
                 .AddMilliseconds(-1), date.Offset);
     }
+
     /// <summary>
     /// Formats a DateTimeOffset as a human-readable date and time string.
     /// </summary>
@@ -213,6 +221,7 @@ public static class Extensions
         return dia + ", " + value.ToString("dd") + " de " + mes + " de " + value.ToString("yyyy") + ", " +
                value.ToString("t") + "h";
     }
+
     /// <summary>
     /// Formats a DateTimeOffset as a simple date and time string.
     /// </summary>
@@ -226,6 +235,7 @@ public static class Extensions
 
         return dia + " - " + value.Day + "/" + value.Month;
     }
+
     /// <summary>
     /// Formats a date period between two DateTimes as a string.
     /// </summary>
@@ -237,6 +247,7 @@ public static class Extensions
     {
         return FormatToPeriod(new DateTimeOffset(startDate), new DateTimeOffset(endDate), cultureInfo);
     }
+
     /// <summary>
     /// Converts a Unix timestamp (seconds since the Unix epoch) to a DateTime.
     /// </summary>
@@ -249,6 +260,7 @@ public static class Extensions
 
         return baseBase;
     }
+
     /// <summary>
     /// Converts a DateTime to a Unix timestamp (seconds since the Unix epoch).
     /// </summary>
@@ -258,6 +270,7 @@ public static class Extensions
     {
         return dateTime.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
     }
+
     /// <summary>
     /// Converts a DateTimeOffset to a Unix timestamp (seconds since the Unix epoch).
     /// </summary>
@@ -267,6 +280,7 @@ public static class Extensions
     {
         return dateTime.UtcDateTime.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
     }
+
     /// <summary>
     /// Formats a date period between two DateTimeOffset instances as a string, considering culture information.
     /// </summary>
@@ -326,6 +340,7 @@ public static class Extensions
 
         return res;
     }
+
     /// <summary>
     /// Converts a boolean value to a "Sim" (Yes) or "Não" (No) string representation.
     /// </summary>
@@ -349,6 +364,7 @@ public static class Extensions
 
         return res;
     }
+
     /// <summary>
     /// Calculates the start of the week for a given DateTimeOffset based on the specified DayOfWeek.
     /// </summary>
@@ -362,6 +378,7 @@ public static class Extensions
 
         return dt.AddDays(-1 * diff).Date;
     }
+
     /// <summary>
     /// Returns a DateTimeOffset with the same date as the input DateTimeOffset but with the time set to midnight (00:00:00).
     /// </summary>
@@ -371,6 +388,7 @@ public static class Extensions
     {
         return new DateTimeOffset(now.Year, now.Month, now.Day, 0, 0, 0, 0, now.Offset);
     }
+
     /// <summary>
     /// Converts a DateTime to the Brazilian time zone (UTC-3).
     /// </summary>
@@ -382,6 +400,7 @@ public static class Extensions
 
         return dateUtc;
     }
+
     /// <summary>
     /// Masks the credit card number by replacing the middle digits with asterisks.
     /// </summary>
@@ -424,7 +443,39 @@ public static class Extensions
         return (T)obj;
     }
 
+    /// <summary>
+    /// Converts a string to a uri base 64 pattern
+    /// </summary>
+    /// <param name="stream">The Stream file.</param>
+    /// <param name="mimeType">The stream mimeType</param>
+    /// <returns></returns>
+    public static string ToDataUriBase64(this Stream stream, string mimeType)
+    {
+        if (stream == null || string.IsNullOrWhiteSpace(mimeType))
+            return null;
+
+        using var mStream = new MemoryStream();
+        stream.CopyTo(mStream);
+        return "data:" + mimeType + ";base64," + Convert.ToBase64String(mStream.ToArray());
+    }
+
+    /// <summary>
+    /// Converts a stream to a base 64 string
+    /// </summary>
+    /// <param name="stream"></param>
+    /// <returns></returns>
+    public static string ToBase64(this Stream stream)
+    {
+        if (stream == null)
+            return null;
+
+        using var mStream = new MemoryStream();
+        stream.CopyTo(mStream);
+        return Convert.ToBase64String(mStream.ToArray());
+    }
+
     #region [From Net Code]
+
     /// <summary>
     /// Copies data from one stream to another.
     /// </summary>
@@ -438,6 +489,7 @@ public static class Extensions
 
         while ((cnt = src.Read(bytes, 0, bytes.Length)) != 0) dest.Write(bytes, 0, cnt);
     }
+
     /// <summary>
     /// Compresses a string into a byte array using GZip compression.
     /// </summary>
@@ -447,6 +499,7 @@ public static class Extensions
     {
         return Zip(Encoding.UTF8.GetBytes(str));
     }
+
     /// <summary>
     /// Compresses a byte array using GZip compression.
     /// </summary>
@@ -463,6 +516,7 @@ public static class Extensions
 
         return mso.ToArray();
     }
+
     /// <summary>
     /// Decompresses a compressed byte array using GZip compression into a string.
     /// </summary>

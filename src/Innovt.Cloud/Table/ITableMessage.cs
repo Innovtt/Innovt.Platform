@@ -3,6 +3,7 @@
 // Project: Innovt.Cloud
 
 namespace Innovt.Cloud.Table;
+
 /// <summary>
 /// Represents a message associated with a table, defining a unique identifier.
 /// </summary>

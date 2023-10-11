@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Innovt.Core.Collections;
 
 namespace Innovt.Cloud.Table;
+
 /// <summary>
 /// Interface representing a repository for interacting with a table.
 /// </summary>
@@ -23,6 +24,7 @@ public interface ITableRepository
     /// <returns>An item of type T if found; otherwise, null.</returns>
     Task<T> GetByIdAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default)
         where T : ITableMessage;
+
     /// <summary>
     /// Asynchronously deletes an item using its value.
     /// </summary>
@@ -31,6 +33,7 @@ public interface ITableRepository
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous delete operation.</returns>
     Task DeleteAsync<T>(T value, CancellationToken cancellationToken = default) where T : ITableMessage;
+
     /// <summary>
     /// Asynchronously deletes an item using its identifier and optional range key.
     /// </summary>
@@ -50,6 +53,7 @@ public interface ITableRepository
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous add operation.</returns>
     Task AddAsync<T>(T message, CancellationToken cancellationToken = default) where T : ITableMessage;
+
     /// <summary>
     /// Asynchronously adds multiple items to the repository.
     /// </summary>
@@ -58,6 +62,7 @@ public interface ITableRepository
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous add operation.</returns>
     Task AddAsync<T>(IList<T> messages, CancellationToken cancellationToken = default) where T : ITableMessage;
+
     /// <summary>
     /// Asynchronously queries and retrieves the first item of type T by its identifier.
     /// </summary>
@@ -66,6 +71,7 @@ public interface ITableRepository
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>An item of type T if found; otherwise, null.</returns>
     Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default);
+
     /// <summary>
     /// Asynchronously queries and retrieves a list of items of type T by their identifier.
     /// </summary>
@@ -74,6 +80,7 @@ public interface ITableRepository
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A list of items of type T.</returns>
     Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default);
+
     /// <summary>
     /// Asynchronously queries and retrieves a list of items of type T based on the provided query request.
     /// </summary>
@@ -83,6 +90,7 @@ public interface ITableRepository
     /// <returns>A list of items of type T based on the query request.</returns>
     Task<IList<T>> QueryAsync<T>(QueryRequest request,
         CancellationToken cancellationToken = default);
+
     /// <summary>
     /// Asynchronously queries and retrieves the first item of type T based on the provided query request.
     /// </summary>
@@ -91,6 +99,7 @@ public interface ITableRepository
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The first item of type T based on the query request; otherwise, null.</returns>
     Task<T> QueryFirstOrDefaultAsync<T>(QueryRequest request, CancellationToken cancellationToken = default);
+
     /// <summary>
     /// Asynchronously queries and retrieves multiple sets of results from a single query.
     /// </summary>
@@ -103,6 +112,7 @@ public interface ITableRepository
     /// <returns>Tuple containing the first and second result sets.</returns>
     Task<(IList<TResult1> first, IList<TResult2> second)> QueryMultipleAsync<T, TResult1, TResult2>(
         QueryRequest request, string splitBy, CancellationToken cancellationToken = default);
+
     /// <summary>
     /// Asynchronously queries and retrieves multiple sets of results from a single query.
     /// </summary>
@@ -117,6 +127,7 @@ public interface ITableRepository
     Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third)> QueryMultipleAsync<T, TResult1,
         TResult2, TResult3>(QueryRequest request, string[] splitBy,
         CancellationToken cancellationToken = default);
+
     /// <summary>
     /// Asynchronously queries and retrieves multiple sets of results from a single query.
     /// </summary>
@@ -132,6 +143,7 @@ public interface ITableRepository
     Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth)>
         QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4>(QueryRequest request, string[] splitBy,
             CancellationToken cancellationToken = default);
+
     /// <summary>
     /// Asynchronously queries and retrieves multiple sets of results from a single query.
     /// </summary>
@@ -149,6 +161,7 @@ public interface ITableRepository
             fifth)>
         QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4, TResult5>(QueryRequest request, string[] splitBy,
             CancellationToken cancellationToken = default);
+
     /// <summary>
     /// Asynchronously scans and retrieves a list of items of type T based on the provided scan request.
     /// </summary>
@@ -158,6 +171,7 @@ public interface ITableRepository
     /// <returns>A list of items of type T based on the scan request.</returns>
     Task<IList<T>> ScanAsync<T>(ScanRequest request,
         CancellationToken cancellationToken = default);
+
     /// <summary>
     /// Asynchronously scans and retrieves a paged collection of items of type T based on the provided scan request.
     /// </summary>
@@ -167,6 +181,7 @@ public interface ITableRepository
     /// <returns>A paged collection of items of type T based on the scan request.</returns>
     Task<PagedCollection<T>>
         ScanPaginatedByAsync<T>(ScanRequest request, CancellationToken cancellationToken = default);
+
     /// <summary>
     /// Asynchronously queries and retrieves a paged collection of items of type T based on the provided query request.
     /// </summary>
@@ -184,6 +199,7 @@ public interface ITableRepository
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous transactional write operation.</returns>
     Task TransactWriteItemsAsync(TransactionWriteRequest request, CancellationToken cancellationToken);
+
     /// <summary>
     /// Executes an SQL statement asynchronously and retrieves the results.
     /// </summary>
@@ -193,6 +209,7 @@ public interface ITableRepository
     /// <returns>A response containing the results of the SQL statement execution.</returns>
     Task<ExecuteSqlStatementResponse<T>> ExecuteStatementAsync<T>(ExecuteSqlStatementRequest sqlStatementRequest,
         CancellationToken cancellationToken = default) where T : class;
+
     /// <summary>
     /// Asynchronously retrieves multiple items in a batch.
     /// </summary>
@@ -202,6 +219,7 @@ public interface ITableRepository
     /// <returns>A list of items of type T.</returns>
     Task<List<T>> BatchGetItem<T>(BatchGetItemRequest batchGetItemRequest,
         CancellationToken cancellationToken = default);
+
     /// <summary>
     /// Asynchronously performs a batch write operation.
     /// </summary>

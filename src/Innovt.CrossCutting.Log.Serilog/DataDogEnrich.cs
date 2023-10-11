@@ -8,6 +8,7 @@ using Serilog.Core;
 using Serilog.Events;
 
 namespace Innovt.CrossCutting.Log.Serilog;
+
 /// <summary>
 /// Implementation of <see cref="ILogEventEnricher"/> that enriches log events with DataDog tracing information.
 /// </summary>
@@ -33,6 +34,7 @@ public class DataDogEnrich : ILogEventEnricher
         logEvent.AddOrUpdateProperty(new LogEventProperty("dd.trace_id", new ScalarValue(ddTraceId)));
         logEvent.AddOrUpdateProperty(new LogEventProperty("dd.span_id", new ScalarValue(ddSpanId)));
     }
+
     /// <summary>
     /// Gets the current <see cref="Activity"/>.
     /// </summary>

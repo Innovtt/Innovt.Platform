@@ -5,6 +5,7 @@
 using Innovt.Core.Cqrs.Queries;
 
 namespace Innovt.Cqrs.Queries;
+
 /// <summary>
 /// Defines a synchronous query handler for a specific type of filter and result.
 /// </summary>

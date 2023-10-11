@@ -7,7 +7,7 @@ using Innovt.Cloud.Queue;
 
 namespace Innovt.Cloud.AWS.SQS.Tests;
 
-public class SimpleMessage: IQueueMessage
+public class SimpleMessage : IQueueMessage
 {
     public string MessageId { get; set; }
     public string ReceiptHandle { get; set; }

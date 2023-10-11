@@ -9,6 +9,7 @@ using Innovt.Core.Cqrs.Queries;
 using Innovt.Core.Validation;
 
 namespace Innovt.Cqrs.Queries.Decorators;
+
 /// <summary>
 /// Decorates an asynchronous query handler to include validation before handling the query.
 /// </summary>
@@ -18,6 +19,7 @@ public sealed class QueryAsyncValidationDecorator<TFilter, TResult> : IAsyncQuer
     where TFilter : IFilter where TResult : class
 {
     private readonly IAsyncQueryHandler<TFilter, TResult> queryHandler;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="QueryAsyncValidationDecorator{TFilter, TResult}"/> class.
     /// </summary>
@@ -27,6 +29,7 @@ public sealed class QueryAsyncValidationDecorator<TFilter, TResult> : IAsyncQuer
     {
         this.queryHandler = queryHandler ?? throw new ArgumentNullException(nameof(queryHandler));
     }
+
     /// <summary>
     /// Handles the specified query asynchronously after ensuring its validity.
     /// </summary>

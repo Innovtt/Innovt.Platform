@@ -6,6 +6,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Innovt.Core.Attributes;
+
 /// <summary>
 /// Attribute used to validate that a numeric property, field, or parameter is greater than zero.
 /// </summary>

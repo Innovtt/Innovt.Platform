@@ -6,6 +6,7 @@ using System;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Innovt.CrossCutting.IOC;
+
 /// <summary>
 /// Factory for creating an <see cref="IServiceProvider"/> using a <see cref="ContainerBuilder"/>.
 /// </summary>
@@ -20,6 +21,7 @@ public class ServiceProviderFactory : IServiceProviderFactory<ContainerBuilder>
     {
         return new ContainerBuilder(services);
     }
+
     /// <summary>
     /// Creates an <see cref="IServiceProvider"/> using the specified <see cref="ContainerBuilder"/>.
     /// </summary>

@@ -8,12 +8,14 @@ using Innovt.Notification.Core;
 using Innovt.Notification.Core.Domain;
 
 namespace Innovt.Cloud.AWS.Notification;
+
 /// <summary>
 /// Factory for creating notification handlers based on the notification message type.
 /// </summary>
 public class NotificationHandleFactory : INotificationHandleFactory
 {
     private readonly IContainer container;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="NotificationHandleFactory"/> class.
     /// </summary>
@@ -22,6 +24,7 @@ public class NotificationHandleFactory : INotificationHandleFactory
     {
         this.container = container ?? throw new ArgumentNullException(nameof(container));
     }
+
     /// <summary>
     /// Creates a notification handler based on the provided notification message type.
     /// </summary>
@@ -36,6 +39,7 @@ public class NotificationHandleFactory : INotificationHandleFactory
             _ => CreateCustomHandle(notificationMessageType)
         };
     }
+
     /// <summary>
     /// Creates a custom notification handler for the specified message type.
     /// Override this method to implement custom handling for specific message types.

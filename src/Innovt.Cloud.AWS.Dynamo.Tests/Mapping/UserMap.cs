@@ -1,6 +1,8 @@
+using Innovt.Cloud.AWS.Dynamo.Mapping;
 using Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 
-namespace Innovt.Cloud.AWS.Dynamo.Mapping;
+namespace Innovt.Cloud.AWS.Dynamo.Tests.Mapping;
+
 /// <summary>
 /// Implementation of IEntityTypeDataModelMapper for mapping the UserSample entity to its corresponding data model.
 /// </summary>
@@ -13,11 +15,11 @@ public class UserMap : IEntityTypeDataModelMapper<UserSample>
     public void Configure(EntityTypeBuilder<UserSample> builder)
     {
         builder.AutoMap().WithOneTableHashKey().WithOneTableRangeKey().WithTableName(nameof(UserSample));
-        
-        builder.IgnoreProperty(p=>p.Email);
+
+        builder.IgnoreProperty(p => p.Email);
 
         builder.WithProperty(p => p.Name).AsDecimal().HasName("NameID");
-        
+
         builder.WithTableName(nameof(UserSample));
     }
 }

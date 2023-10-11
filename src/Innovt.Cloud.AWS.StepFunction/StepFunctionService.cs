@@ -13,6 +13,7 @@ using Innovt.Cloud.StateMachine;
 using Innovt.Core.CrossCutting.Log;
 
 namespace Innovt.Cloud.AWS.StepFunction;
+
 /// <summary>
 /// Represents a service for interacting with AWS Step Functions.
 /// </summary>
@@ -21,6 +22,7 @@ public class StepFunctionService : AwsBaseService, IStateMachine
     private static readonly ActivitySource StepFunctionActivitySource = new("Innovt.Cloud.AWS.StepFunction");
 
     private AmazonStepFunctionsClient awStepFunctionClient;
+
     /// <summary>
     /// Initializes a new instance of the StepFunctionService class.
     /// </summary>
@@ -29,6 +31,7 @@ public class StepFunctionService : AwsBaseService, IStateMachine
     public StepFunctionService(ILogger logger, IAwsConfiguration configuration) : base(logger, configuration)
     {
     }
+
     /// <summary>
     /// Initializes a new instance of the StepFunctionService class with a specific region.
     /// </summary>
@@ -44,6 +47,7 @@ public class StepFunctionService : AwsBaseService, IStateMachine
     {
         get { return awStepFunctionClient ??= CreateService<AmazonStepFunctionsClient>(); }
     }
+
     /// <summary>
     /// Starts the execution of a state machine.
     /// </summary>
@@ -74,6 +78,7 @@ public class StepFunctionService : AwsBaseService, IStateMachine
                 }, cancellationToken).ConfigureAwait(false))
             .ConfigureAwait(false);
     }
+
     /// <summary>
     /// Sends a success response for a task in the state machine.
     /// </summary>
@@ -99,6 +104,7 @@ public class StepFunctionService : AwsBaseService, IStateMachine
                 }, cancellationToken).ConfigureAwait(false))
             .ConfigureAwait(false);
     }
+
     /// <summary>
     /// Sends a failure response for a task in the state machine.
     /// </summary>
@@ -127,6 +133,7 @@ public class StepFunctionService : AwsBaseService, IStateMachine
                 }, cancellationToken).ConfigureAwait(false))
             .ConfigureAwait(false);
     }
+
     /// <summary>
     /// Sends a heartbeat for a task in the state machine.
     /// </summary>
@@ -149,6 +156,7 @@ public class StepFunctionService : AwsBaseService, IStateMachine
                 }, cancellationToken).ConfigureAwait(false))
             .ConfigureAwait(false);
     }
+
     /// <summary>
     /// Disposes of the Amazon Step Functions client.
     /// </summary>

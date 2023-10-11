@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Innovt.Core.Cqrs.Commands;
 
 namespace Innovt.Cqrs.Commands;
+
 /// <summary>
 /// Defines an asynchronous command handler for a specific type of command.
 /// </summary>
@@ -21,6 +22,7 @@ public interface IAsyncCommandHandler<in T> where T : ICommand
     /// <returns>A task representing the asynchronous handling of the command.</returns>
     Task Handle(T command, CancellationToken cancellationToken = default);
 }
+
 /// <summary>
 /// Defines an asynchronous command handler for a specific type of command with a result.
 /// </summary>

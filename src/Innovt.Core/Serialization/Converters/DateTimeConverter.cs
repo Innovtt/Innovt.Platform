@@ -12,14 +12,16 @@ namespace Innovt.Core.Serialization.Converters;
 /// <summary>
 /// Custom JSON converter for <see cref="DateTime"/> objects with a specified format.
 /// </summary>
-public class DateTimeConverter : JsonConverter<DateTime> {
+public class DateTimeConverter : JsonConverter<DateTime>
+{
     private readonly string format;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="DateTimeConverter"/> class with the specified format.
     /// </summary>
     /// <param name="format">The format string to be used for formatting and parsing <see cref="DateTime"/> objects.</param>
-    public DateTimeConverter(string format) {
+    public DateTimeConverter(string format)
+    {
         this.format = format;
     }
 
@@ -30,7 +32,8 @@ public class DateTimeConverter : JsonConverter<DateTime> {
     /// <param name="typeToConvert">The type to convert (should be <see cref="DateTime"/>).</param>
     /// <param name="options">The JSON serializer options.</param>
     /// <returns>A <see cref="DateTime"/> object parsed from the JSON value.</returns>
-    public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) {
+    public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
         Debug.Assert(typeToConvert == typeof(DateTime));
 
         return DateTime.Parse(reader.GetString());
@@ -42,7 +45,8 @@ public class DateTimeConverter : JsonConverter<DateTime> {
     /// <param name="writer">The JSON writer to write to.</param>
     /// <param name="value">The <see cref="DateTime"/> value to be written.</param>
     /// <param name="options">The JSON serializer options.</param>
-    public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options) {
+    public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
+    {
         writer.WriteStringValue(value.ToString(format));
     }
 }

@@ -1,31 +1,31 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <IsPackable>false</IsPackable>
-    <LangVersion>9.0</LangVersion>
-    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="NSubstitute" Version="5.1.0" />
-    <PackageReference Include="nunit" Version="3.13.3" />
-    <PackageReference Include="NUnit3TestAdapter" Version="4.5.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Innovt.Data.Ado\Innovt.Data.Ado.csproj" />
-  </ItemGroup>
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <IsPackable>false</IsPackable>
+        <LangVersion>9.0</LangVersion>
+        <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="NSubstitute" Version="5.1.0"/>
+        <PackageReference Include="nunit" Version="3.13.3"/>
+        <PackageReference Include="NUnit3TestAdapter" Version="4.5.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2"/>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Innovt.Data.Ado\Innovt.Data.Ado.csproj"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <None Update="AdoTestDB.mdf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="AdoTestDB_log.ldf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+    <ItemGroup>
+        <None Update="AdoTestDB.mdf">
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </None>
+        <None Update="AdoTestDB_log.ldf">
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
 
 </Project>

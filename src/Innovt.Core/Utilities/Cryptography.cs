@@ -32,6 +32,7 @@ public static class Cryptography
 
         return hashedPassword;
     }
+
     /// <summary>
     /// Encrypts a plaintext string using the provided ICryptoTransform.
     /// </summary>
@@ -131,13 +132,13 @@ public static class Cryptography
 
         return Decrypt(cryptoTransform, encryptedText);
     }
+
     /// <summary>
     /// Decrypts an encrypted string using the Rijndael algorithm with a specified key.
     /// </summary>
     /// <param name="encryptedText">The encrypted string to be decrypted.</param>
     /// <param name="keyString">The key for Rijndael decryption.</param>
     /// <returns>The decrypted plaintext string.</returns>
-
     public static string RijndaelDecrypt(string encryptedText, string keyString)
     {
         if (encryptedText == null) throw new ArgumentNullException(nameof(encryptedText));
@@ -151,6 +152,7 @@ public static class Cryptography
 
         return Decrypt(cryptoTransform, encryptedText);
     }
+
     /// <summary>
     /// Computes the MD5 hash of a given plaintext password.
     /// </summary>

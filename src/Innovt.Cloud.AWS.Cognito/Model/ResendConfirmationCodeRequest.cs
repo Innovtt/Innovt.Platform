@@ -17,7 +17,8 @@ public class ResendConfirmationCodeRequest : RequestBase
     /// <summary>
     /// Gets or sets the user's username for whom the confirmation code will be resent.
     /// </summary>
-    [Required] public virtual string UserName { get; set; }
+    [Required]
+    public virtual string UserName { get; set; }
 
     /// <summary>
     /// Validates the request object.

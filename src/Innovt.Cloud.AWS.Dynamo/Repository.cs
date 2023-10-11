@@ -22,6 +22,7 @@ using QueryRequest = Innovt.Cloud.Table.QueryRequest;
 using ScanRequest = Innovt.Cloud.Table.ScanRequest;
 
 namespace Innovt.Cloud.AWS.Dynamo;
+
 /// <summary>
 /// Base repository class for interacting with AWS DynamoDB tables.
 /// </summary>
@@ -31,6 +32,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
     private DynamoDBContext context;
     private AmazonDynamoDBClient dynamoClient;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="Repository"/> class.
     /// </summary>
@@ -39,6 +41,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     protected Repository(ILogger logger, IAwsConfiguration configuration) : base(logger, configuration)
     {
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="Repository"/> class.
     /// </summary>
@@ -49,14 +52,17 @@ public abstract class Repository : AwsBaseService, ITableRepository
         configuration, region)
     {
     }
+
     /// <summary>
     /// Gets the DynamoDB context.
     /// </summary>
     private DynamoDBContext Context => context ??= new DynamoDBContext(DynamoClient);
+
     /// <summary>
     /// Gets the Amazon DynamoDB client.
     /// </summary>
     private AmazonDynamoDBClient DynamoClient => dynamoClient ??= CreateService<AmazonDynamoDBClient>();
+
     /// <summary>
     /// Gets the default operation configuration for DynamoDB operations.
     /// </summary>
@@ -66,6 +72,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             ConsistentRead = true,
             Conversion = DynamoDBEntryConversion.V2
         };
+
     /// <inheritdoc />
     public async Task<T> GetByIdAsync<T>(object id, string rangeKey = null,
         CancellationToken cancellationToken = default) where T : ITableMessage
@@ -86,6 +93,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
                 .ConfigureAwait(false);
         }
     }
+
     /// <inheritdoc />
     public async Task DeleteAsync<T>(T value, CancellationToken cancellationToken = default) where T : ITableMessage
     {
@@ -96,6 +104,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
                 .ConfigureAwait(false);
         }
     }
+
     /// <inheritdoc />
     public async Task DeleteAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default)
         where T : ITableMessage
@@ -108,18 +117,15 @@ public abstract class Repository : AwsBaseService, ITableRepository
         var policy = CreateDefaultRetryAsyncPolicy();
 
         if (string.IsNullOrEmpty(rangeKey))
-        {
             await policy.ExecuteAsync(async () =>
                     await Context.DeleteAsync<T>(id, cancellationToken).ConfigureAwait(false))
                 .ConfigureAwait(false);
-        }
         else
-        {
             await policy.ExecuteAsync(async () =>
                     await Context.DeleteAsync<T>(id, rangeKey, cancellationToken).ConfigureAwait(false))
                 .ConfigureAwait(false);
-        }
     }
+
     /// <inheritdoc />
     public async Task AddAsync<T>(T message, CancellationToken cancellationToken = default) where T : ITableMessage
     {
@@ -131,6 +137,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
                 .ConfigureAwait(false);
         }
     }
+
     /// <summary>
     /// Adds a list of items to the DynamoDB table.
     /// </summary>
@@ -154,6 +161,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
                 .ConfigureAwait(false);
         }
     }
+
     /// <summary>
     /// Queries the DynamoDB table and returns the first item with the specified id.
     /// </summary>
@@ -173,6 +181,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             return result == null ? default : result.FirstOrDefault();
         }
     }
+
     /// <summary>
     /// Queries the DynamoDB table and returns a list of items with the specified id.
     /// </summary>
@@ -192,6 +201,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             return result;
         }
     }
+
     /// <summary>
     /// Queries the DynamoDB table using a query request and returns a list of items.
     /// </summary>
@@ -210,6 +220,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             return Helpers.ConvertAttributesToType<T>(items);
         }
     }
+
     /// <summary>
     /// Queries the DynamoDB table using a query request and splits the results into two types based on a key.
     /// </summary>
@@ -232,6 +243,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             return Helpers.ConvertAttributesToType<TResult1, TResult2>(items, splitBy);
         }
     }
+
     /// <summary>
     /// Queries the DynamoDB table using a query request and splits the results into three types based on specified keys.
     /// </summary>
@@ -257,6 +269,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             return Helpers.ConvertAttributesToType<TResult1, TResult2, TResult3>(items, splitBy);
         }
     }
+
     /// <summary>
     /// Queries the DynamoDB table using a query request and splits the results into four types based on specified keys.
     /// </summary>
@@ -283,6 +296,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             return Helpers.ConvertAttributesToType<TResult1, TResult2, TResult3, TResult4>(items, splitBy);
         }
     }
+
     /// <summary>
     /// Queries the DynamoDB table using a query request and splits the results into five types based on specified keys.
     /// </summary>
@@ -311,6 +325,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             return Helpers.ConvertAttributesToType<TResult1, TResult2, TResult3, TResult4, TResult5>(items, splitBy);
         }
     }
+
     /// <summary>
     /// Queries the DynamoDB table and returns the first or default item based on the query request.
     /// </summary>
@@ -335,6 +350,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             return queryResponse.FirstOrDefault();
         }
     }
+
     /// <summary>
     /// Queries the DynamoDB table using a query request and returns a paginated collection of items.
     /// </summary>
@@ -360,6 +376,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             };
         }
     }
+
     /// <summary>
     /// Writes a batch of transactional write items to the DynamoDB table.
     /// </summary>
@@ -386,13 +403,12 @@ public abstract class Repository : AwsBaseService, ITableRepository
         };
 
         foreach (var transactItem in request.TransactItems)
-        {
             transactRequest.TransactItems.Add(Helpers.CreateTransactionWriteItem(transactItem));
-        }
 
 
         await DynamoClient.TransactWriteItemsAsync(transactRequest, cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Scans the DynamoDB table based on the specified scan request.
     /// </summary>
@@ -502,14 +518,12 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
             var result = new List<T>();
 
-            foreach (var item in response.Responses)
-            {
-                result.AddRange(Helpers.ConvertAttributesToType<T>(item.Value));
-            }
+            foreach (var item in response.Responses) result.AddRange(Helpers.ConvertAttributesToType<T>(item.Value));
 
             return result;
         }
     }
+
     /// <summary>
     /// Writes a batch of items to the DynamoDB table based on the specified batch write item request.
     /// </summary>
@@ -548,6 +562,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             return result;
         }
     }
+
     /// <summary>
     /// Creates the default asynchronous retry policy for handling exceptions during operations.
     /// </summary>
@@ -557,6 +572,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         return base.CreateRetryAsyncPolicy<ProvisionedThroughputExceededException,
             InternalServerErrorException, LimitExceededException, ResourceInUseException>();
     }
+
     /// <summary>
     /// Updates an item in the DynamoDB table based on the provided parameters.
     /// </summary>
@@ -581,6 +597,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
                 .ConfigureAwait(false);
         }
     }
+
     /// <summary>
     /// Updates an item in the DynamoDB table based on the provided update item request.
     /// </summary>
@@ -605,6 +622,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             ? default
             : AttributeConverter.ConvertAttributesToType<T>(response.Attributes);
     }
+
     /// <summary>
     /// Executes an internal query against the DynamoDB table based on the specified query request.
     /// </summary>
@@ -658,7 +676,6 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>A tuple containing the last evaluated key and the list of items retrieved.</returns>
     /// <exception cref="ArgumentNullException">Thrown when request is null.</exception>
-
     private async Task<(Dictionary<string, AttributeValue> ExclusiveStartKey, IList<T> Items)> InternalScanAsync<T>(
         ScanRequest request, CancellationToken cancellationToken = default)
     {
@@ -693,6 +710,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             return (lastEvaluatedKey, items);
         }
     }
+
     /// <summary>
     /// Disposes the DynamoDB context and AmazonDynamoDBClient resources.
     /// </summary>

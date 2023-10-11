@@ -1,24 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <PackageId>Innovt.Data.Migration</PackageId>
-    <PackageVersion>7.0.42</PackageVersion>
-    <Authors>Michel Borges</Authors>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Copyright>Innovt Tecnologia</Copyright>
-    <Description>Migration project to help our team to setup some frameworks.</Description>
-    <LangVersion>latest</LangVersion>
-    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Dapper" Version="2.1.4" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.4">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <PackageId>Innovt.Data.Migration</PackageId>
+        <PackageVersion>7.0.44</PackageVersion>
+        <Authors>Michel Borges</Authors>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Copyright>Innovt Tecnologia</Copyright>
+        <Description>Migration project to help our team to setup some frameworks.</Description>
+        <LangVersion>latest</LangVersion>
+        <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Dapper" Version="2.1.4"/>
+        <PackageReference Include="System.Data.SqlClient" Version="4.8.5"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.4">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
 
 </Project>

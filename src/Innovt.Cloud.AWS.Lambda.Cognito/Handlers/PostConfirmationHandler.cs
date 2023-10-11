@@ -26,5 +26,4 @@ public abstract class PostConfirmationHandler : EventProcessor<PostConfirmationE
     protected PostConfirmationHandler()
     {
     }
- 
 }

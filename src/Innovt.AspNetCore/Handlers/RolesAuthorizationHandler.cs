@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Http;
 
 namespace Innovt.AspNetCore.Handlers;
+
 /// <summary>
 /// Authorization handler for role-based authorization.
 /// </summary>
@@ -21,6 +22,7 @@ public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorization
     private const string contextSeparator = "::";
     private readonly ILogger logger;
     private readonly IAuthorizationRepository securityRepository;
+
     /// <summary>
     /// Constructs a new instance of <see cref="RolesAuthorizationHandler"/>.
     /// </summary>
@@ -31,6 +33,7 @@ public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorization
         this.securityRepository = securityRepository ?? throw new ArgumentNullException(nameof(securityRepository));
         this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
+
     /// <summary>
     /// Gets the user ID from the authorization context.
     /// </summary>
@@ -42,6 +45,7 @@ public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorization
 
         return userId ?? string.Empty;
     }
+
     /// <summary>
     /// Gets the application context from the authorization context.
     /// </summary>
@@ -67,6 +71,7 @@ public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorization
 
         return scope.IsNullOrEmpty() ? applicationContext : $"{applicationContext}{contextSeparator}{scope}";
     }
+
     /// <summary>
     /// Sets the DomainId claim for the authenticated user in the provided authorization context.
     /// </summary>
@@ -76,6 +81,7 @@ public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorization
     {
         context.User.AddIdentity(new ClaimsIdentity(new[] { new Claim(ClaimTypes.Sid, authUser.DomainId) }));
     }
+
     /// <summary>
     /// Checks if the user is authenticated based on the presence of a valid user identity in the authorization context.
     /// </summary>
@@ -85,6 +91,7 @@ public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorization
     {
         return context?.User.Identity is not null && context.User.Identity.IsAuthenticated;
     }
+
     /// <summary>
     /// Logs a warning message and marks the provided authorization context as failed.
     /// </summary>
@@ -95,6 +102,7 @@ public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorization
         logger.Warning(reason);
         context.Fail();
     }
+
     /// <summary>
     /// Extracts a scope from the application context using a specified separator.
     /// </summary>
@@ -104,6 +112,7 @@ public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorization
     {
         return !appContext.Contains(contextSeparator) ? appContext : appContext.Split(contextSeparator)[1];
     }
+
     /// <summary>
     /// Handles the authorization requirement to check user roles.
     /// </summary>
@@ -163,6 +172,7 @@ public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorization
             context.Fail();
         }
     }
+
     /// <summary>
     /// Gets the combined list of roles associated with the specified authenticated user.
     /// This includes both individual roles assigned to the user and roles associated with the user's groups.
@@ -173,12 +183,12 @@ public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorization
     {
         var roles = new List<Role>();
 
-        if (user.Roles is { })
+        if (user.Roles is not null)
             roles.AddRange(user.Roles);
 
         var groupRoles = user.Groups?.SelectMany(g => g.Roles).ToList();
 
-        if (groupRoles is { })
+        if (groupRoles is not null)
             roles.AddRange(groupRoles);
 
         return roles;

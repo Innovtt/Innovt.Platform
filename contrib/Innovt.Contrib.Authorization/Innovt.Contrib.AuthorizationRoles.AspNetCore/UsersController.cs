@@ -8,6 +8,7 @@ using Innovt.Contrib.Authorization.Platform.Application.Commands;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Innovt.Contrib.AuthorizationRoles.AspNetCore;
+
 /// <summary>
 /// Controller for managing users and their roles.
 /// </summary>
@@ -16,6 +17,7 @@ namespace Innovt.Contrib.AuthorizationRoles.AspNetCore;
 public class UsersController : ControllerBase
 {
     private readonly IAuthorizationAppService authorizationAppService;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="UsersController"/> class.
     /// </summary>
@@ -25,6 +27,7 @@ public class UsersController : ControllerBase
         this.authorizationAppService = authorizationAppService ??
                                        throw new ArgumentNullException(nameof(authorizationAppService));
     }
+
     /// <summary>
     /// Adds a new user.
     /// </summary>
@@ -39,6 +42,7 @@ public class UsersController : ControllerBase
 
         return Ok();
     }
+
     /// <summary>
     /// Deletes a user.
     /// </summary>
@@ -68,6 +72,7 @@ public class UsersController : ControllerBase
 
         return Ok();
     }
+
     /// <summary>
     /// Unassigns a role from a user.
     /// </summary>

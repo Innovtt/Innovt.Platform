@@ -16,22 +16,26 @@ public class ConfirmForgotPasswordRequest : RequestBase
     /// <summary>
     /// Gets or sets the user's username.
     /// </summary>
-    [Required] public string UserName { get; set; }
+    [Required]
+    public string UserName { get; set; }
 
     /// <summary>
     /// Gets or sets the new password for the user.
     /// </summary>
-    [Required] public string Password { get; set; }
+    [Required]
+    public string Password { get; set; }
 
     /// <summary>
     /// Gets or sets the confirmation of the new password.
     /// </summary>
-    [Required] public string ConfirmPassword { get; set; }
+    [Required]
+    public string ConfirmPassword { get; set; }
 
     /// <summary>
     /// Gets or sets the confirmation code used for password reset.
     /// </summary>
-    [Required] public string ConfirmationCode { get; set; }
+    [Required]
+    public string ConfirmationCode { get; set; }
 
     /// <summary>
     /// Validates the properties of the <see cref="ConfirmForgotPasswordRequest"/> object.

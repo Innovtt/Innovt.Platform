@@ -19,7 +19,6 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis;
 /// <typeparam name="TBody">The type of messages in the data stream.</typeparam>
 public abstract class KinesisDataProcessorBatch<TBody> : KinesisProcessorBase<TBody> where TBody : class, IDataStream
 {
-
     /// <summary>
     /// Initializes a new instance of the <see cref="KinesisDataProcessorBatch{TBody}"/> class with optional logging and batch failure reporting.
     /// </summary>

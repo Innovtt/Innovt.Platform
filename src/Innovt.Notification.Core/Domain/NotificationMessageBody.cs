@@ -3,6 +3,7 @@
 // Project: Innovt.Notification.Core
 
 namespace Innovt.Notification.Core.Domain;
+
 /// <summary>
 /// Represents the body of a notification message.
 /// </summary>

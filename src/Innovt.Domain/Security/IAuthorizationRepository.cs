@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace Innovt.Domain.Security;
+
 /// <summary>
 /// Represents a repository for authorization-related operations.
 /// </summary>

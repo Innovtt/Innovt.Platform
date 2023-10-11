@@ -1,26 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <PackageId>Innovt.OpenTelemetry</PackageId>
-   <PackageVersion>7.0.42</PackageVersion>
-    <Authors>Michel Borges</Authors>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Copyright>Innovt Tecnologia</Copyright>
-    <Description>Innovt.OpenTelemetry</Description>
-    <LangVersion>latest</LangVersion>
-    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <PackageId>Innovt.OpenTelemetry</PackageId>
+        <PackageVersion>7.0.44</PackageVersion>
+        <Authors>Michel Borges</Authors>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Copyright>Innovt Tecnologia</Copyright>
+        <Description>Innovt.OpenTelemetry</Description>
+        <LangVersion>latest</LangVersion>
+        <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <DocumentationFile>bin\Debug\netstandard2.1\Innovt.OpenTelemetry.xml</DocumentationFile>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="OpenTelemetry.Api" Version="1.6.0" />
-    <PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.6.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj" />
-  </ItemGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+        <DocumentationFile>bin\Debug\netstandard2.1\Innovt.OpenTelemetry.xml</DocumentationFile>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="OpenTelemetry.Api" Version="1.6.0"/>
+        <PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.6.0"/>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj"/>
+    </ItemGroup>
 </Project>

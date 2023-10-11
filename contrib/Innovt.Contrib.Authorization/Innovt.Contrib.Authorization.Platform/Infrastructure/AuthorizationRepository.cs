@@ -18,6 +18,7 @@ using Innovt.Domain.Security;
 using IAuthorizationRepository = Innovt.Contrib.Authorization.Platform.Domain.IAuthorizationRepository;
 
 namespace Innovt.Contrib.Authorization.Platform.Infrastructure;
+
 /// <summary>
 /// Repository for managing authorization-related data and operations.
 /// </summary>
@@ -32,6 +33,7 @@ public class AuthorizationRepository : Repository, IAuthorizationRepository
         awsConfiguration)
     {
     }
+
     /// <inheritdoc />
     public async Task<AdminUser> GetAdminUser(UserFilter userFilter, CancellationToken cancellationToken)
     {
@@ -48,6 +50,7 @@ public class AuthorizationRepository : Repository, IAuthorizationRepository
 
         return AdminUserDataModel.ToUser(user);
     }
+
     /// <inheritdoc />
     public async Task<IList<Role>> GetUserRolesBy(RoleByUserFilter filter, CancellationToken cancellationToken)
     {
@@ -72,6 +75,7 @@ public class AuthorizationRepository : Repository, IAuthorizationRepository
 
         return UserDataModel.ToUser(user)?.Roles;
     }
+
     /// <inheritdoc />
     public async Task Save(AdminUser adminUser, CancellationToken cancellationToken)
     {
@@ -81,6 +85,7 @@ public class AuthorizationRepository : Repository, IAuthorizationRepository
 
         await AddAsync(user, cancellationToken).ConfigureAwait(false);
     }
+
     /// <inheritdoc />
     public async Task<AuthUser> GetUserByExternalId(string externalId,
         CancellationToken cancellationToken = default)
@@ -95,6 +100,7 @@ public class AuthorizationRepository : Repository, IAuthorizationRepository
 
         return UserDataModel.ToUser(user);
     }
+
     /// <inheritdoc />
     public async Task Save(AuthUser user, CancellationToken cancellationToken)
     {
@@ -104,6 +110,7 @@ public class AuthorizationRepository : Repository, IAuthorizationRepository
 
         await AddAsync(authUser, cancellationToken).ConfigureAwait(false);
     }
+
     /// <inheritdoc />
     public async Task RemoveUser(AuthUser user, CancellationToken cancellationToken)
     {

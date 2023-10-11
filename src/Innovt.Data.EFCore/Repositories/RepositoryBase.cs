@@ -14,6 +14,7 @@ using Innovt.Domain.Core.Specification;
 using Microsoft.EntityFrameworkCore;
 
 namespace Innovt.Data.EFCore.Repositories;
+
 /// <summary>
 /// Base repository providing common functionality for accessing and managing entities of type T.
 /// Implements the IRepository interface.
@@ -35,16 +36,19 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     {
         Context = context ?? throw new ArgumentNullException(nameof(context));
     }
+
     /// <inheritdoc/>
     public virtual void Add(T entity)
     {
         Context.Add(entity);
     }
+
     /// <inheritdoc/>
     public virtual void Add(IEnumerable<T> entities)
     {
         Context.Add(entities);
     }
+
     /// <summary>
     /// Asynchronously adds a collection of entities of type T to the repository.
     /// </summary>
@@ -54,6 +58,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     {
         return Context.AddAsync(entities);
     }
+
     /// <summary>
     /// Asynchronously adds an entity of type T to the repository.
     /// </summary>
@@ -63,6 +68,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     {
         return Context.AddAsync(entity);
     }
+
     /// <summary>
     /// Modifies an entity of type T in the repository.
     /// </summary>
@@ -71,6 +77,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     {
         Context.Update(entity);
     }
+
     /// <summary>
     /// Removes a collection of entities of type T from the repository.
     /// </summary>
@@ -79,6 +86,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     {
         Context.Remove(entities);
     }
+
     /// <summary>
     /// Removes an entity of type T from the repository.
     /// </summary>
@@ -87,6 +95,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     {
         Context.Remove(entity);
     }
+
     /// <summary>
     /// Gets the first or default entity of type T based on the provided specification.
     /// </summary>
@@ -99,6 +108,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
 
         return Context.Queryable<T>().AddInclude(includes).FirstOrDefault(specification.SatisfiedBy());
     }
+
     /// <summary>
     /// Asynchronously gets the first or default entity of type T based on the provided specification.
     /// </summary>
@@ -114,6 +124,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
         return await Context.Queryable<T>().AddInclude(includes)
             .FirstOrDefaultAsync(specification.SatisfiedBy(), cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Asynchronously gets the single or default entity of type T based on the provided specification.
     /// </summary>
@@ -142,6 +153,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
 
         return Context.Queryable<T>().AddInclude(includes).SingleOrDefault(specification.SatisfiedBy());
     }
+
     /// <summary>
     /// Finds entities of type T based on the provided specification with optional sorting and pagination.
     /// </summary>
@@ -209,6 +221,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
 
         return await query.ToListAsync(cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Asynchronously finds entities of type T based on the provided specification with optional sorting and pagination.
     /// </summary>
@@ -238,6 +251,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
 
         return await query.ToListAsync(cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Finds paginated entities of type T based on the provided specification.
     /// </summary>
@@ -257,6 +271,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
 
         return result;
     }
+
     /// <summary>
     /// Retrieves a paginated collection of entities based on the provided specification, with optional sorting and included navigation properties.
     /// </summary>
@@ -281,6 +296,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
 
         return result;
     }
+
     /// <summary>
     /// Asynchronously retrieves a paginated collection of entities based on the provided specification, with optional included navigation properties.
     /// </summary>
@@ -302,6 +318,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
 
         return result;
     }
+
     /// <summary>
     /// Asynchronously retrieves a paginated collection of entities based on the provided specification, with optional sorting and included navigation properties.
     /// </summary>
@@ -328,6 +345,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
 
         return result;
     }
+
     /// <summary>
     /// Counts the number of entities that satisfy the specified specification.
     /// </summary>
@@ -339,6 +357,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
 
         return Context.Queryable<T>().Count(specification.SatisfiedBy());
     }
+
     /// <summary>
     /// Counts the number of entities of a specified type that satisfy the specified specification.
     /// </summary>
@@ -351,6 +370,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
 
         return Context.Queryable<TKEntity>().Count(specification.SatisfiedBy());
     }
+
     /// <summary>
     /// Asynchronously counts the number of entities of a specified type that satisfy the specified specification.
     /// </summary>
@@ -366,6 +386,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
         return await Context.Queryable<TKEntity>().CountAsync(specification.SatisfiedBy(), cancellationToken)
             .ConfigureAwait(false);
     }
+
     /// <summary>
     /// Asynchronously counts the number of entities that satisfy the specified specification.
     /// </summary>

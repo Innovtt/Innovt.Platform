@@ -7,6 +7,7 @@ using Innovt.Core.Cqrs.Commands;
 using Innovt.Core.Validation;
 
 namespace Innovt.Cqrs.Commands.Decorators;
+
 /// <summary>
 /// Decorates a command handler to include validation before handling the command.
 /// </summary>
@@ -14,6 +15,7 @@ namespace Innovt.Cqrs.Commands.Decorators;
 public sealed class CommandValidationDecorator<TCommand> : ICommandHandler<TCommand> where TCommand : ICommand
 {
     private readonly ICommandHandler<TCommand> commandHandler;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="CommandValidationDecorator{TCommand}"/> class.
     /// </summary>
@@ -23,6 +25,7 @@ public sealed class CommandValidationDecorator<TCommand> : ICommandHandler<TComm
     {
         this.commandHandler = commandHandler ?? throw new ArgumentNullException(nameof(commandHandler));
     }
+
     /// <summary>
     /// Handles the specified command after ensuring its validity.
     /// </summary>

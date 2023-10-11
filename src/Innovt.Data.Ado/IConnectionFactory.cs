@@ -6,6 +6,7 @@ using System.Data;
 using Innovt.Data.DataSources;
 
 namespace Innovt.Data.Ado;
+
 /// <summary>
 /// Represents an interface for a factory that creates database connections based on a data source.
 /// </summary>

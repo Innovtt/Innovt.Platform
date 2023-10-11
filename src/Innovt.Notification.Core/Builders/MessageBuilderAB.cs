@@ -7,12 +7,14 @@ using Innovt.Notification.Core.Domain;
 using Innovt.Notification.Core.Template;
 
 namespace Innovt.Notification.Core.Builders;
+
 /// <summary>
 /// Abstract base class for message builders.
 /// </summary>
 public abstract class MessageBuilderAB
 {
     private readonly ITemplateParser parser;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="MessageBuilderAB"/> class.
     /// </summary>
@@ -21,6 +23,7 @@ public abstract class MessageBuilderAB
     {
         this.parser = parser ?? throw new ArgumentNullException(nameof(parser));
     }
+
     /// <summary>
     /// Builds a notification message based on the provided notification template and request.
     /// </summary>
@@ -49,6 +52,7 @@ public abstract class MessageBuilderAB
 
         return message;
     }
+
     /// <summary>
     /// Parses the notification message content using the provided payload.
     /// </summary>

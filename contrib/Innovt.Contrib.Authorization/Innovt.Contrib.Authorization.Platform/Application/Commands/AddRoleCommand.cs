@@ -8,6 +8,7 @@ using Innovt.Core.Cqrs.Commands;
 using Innovt.Core.Utilities;
 
 namespace Innovt.Contrib.Authorization.Platform.Application.Commands;
+
 /// <summary>
 /// Represents a command for adding a role.
 /// </summary>
@@ -16,11 +17,15 @@ public class AddRoleCommand : ICommand
     /// <summary>
     /// Gets or sets the role name.
     /// </summary>
-    [Required] public string RoleName { get; set; }
+    [Required]
+    public string RoleName { get; set; }
+
     /// <summary>
     /// Gets or sets the scope of the role.
     /// </summary>
-    [Required] public string Scope { get; set; }
+    [Required]
+    public string Scope { get; set; }
+
     /// <summary>
     /// Validates the command properties.
     /// </summary>

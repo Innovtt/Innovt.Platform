@@ -9,6 +9,7 @@ using Innovt.Contrib.Authorization.Platform.Domain.Filters;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Innovt.Contrib.AuthorizationRoles.AspNetCore;
+
 /// <summary>
 /// API controller for managing roles.
 /// </summary>
@@ -17,6 +18,7 @@ namespace Innovt.Contrib.AuthorizationRoles.AspNetCore;
 public class RolesController : ControllerBase
 {
     private readonly IAuthorizationAppService authorizationAppService;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="RolesController"/> class.
     /// </summary>
@@ -26,6 +28,7 @@ public class RolesController : ControllerBase
         this.authorizationAppService = authorizationAppService ??
                                        throw new ArgumentNullException(nameof(authorizationAppService));
     }
+
     /// <summary>
     /// Gets a list of roles based on the provided filter.
     /// </summary>

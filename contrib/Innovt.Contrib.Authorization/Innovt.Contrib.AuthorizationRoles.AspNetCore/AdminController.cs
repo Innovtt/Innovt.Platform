@@ -8,6 +8,7 @@ using Innovt.Contrib.Authorization.Platform.Application.Commands;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Innovt.Contrib.AuthorizationRoles.AspNetCore;
+
 /// <summary>
 /// API controller for administering authorization operations.
 /// </summary>
@@ -16,6 +17,7 @@ namespace Innovt.Contrib.AuthorizationRoles.AspNetCore;
 public class AdminController : ControllerBase
 {
     private readonly IAuthorizationAppService authorizationAppService;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="AdminController"/> class.
     /// </summary>
@@ -25,6 +27,7 @@ public class AdminController : ControllerBase
         this.authorizationAppService = authorizationAppService ??
                                        throw new ArgumentNullException(nameof(authorizationAppService));
     }
+
     /// <summary>
     /// Registers an admin user.
     /// </summary>

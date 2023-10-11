@@ -54,6 +54,7 @@ public class StopWatchHelper : IDisposable
             Console.WriteLine(e); //todo: colocar no log
         }
     }
+
     /// <summary>
     /// Finalizes an instance of the <see cref="StopWatchHelper"/> class.
     /// </summary>

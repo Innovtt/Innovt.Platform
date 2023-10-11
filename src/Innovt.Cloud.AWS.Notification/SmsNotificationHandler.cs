@@ -14,12 +14,14 @@ using Innovt.Notification.Core;
 using Innovt.Notification.Core.Domain;
 
 namespace Innovt.Cloud.AWS.Notification;
+
 /// <summary>
 /// SMS notification handler using Amazon Simple Notification Service (SNS).
 /// </summary>
 public class SmsNotificationHandler : AwsBaseService, INotificationHandler
 {
     private AmazonSimpleNotificationServiceClient _simpleNotificationClient;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="SmsNotificationHandler"/> class.
     /// </summary>
@@ -28,6 +30,7 @@ public class SmsNotificationHandler : AwsBaseService, INotificationHandler
     public SmsNotificationHandler(ILogger logger, IAwsConfiguration configuration) : base(logger, configuration)
     {
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="SmsNotificationHandler"/> class with a specific AWS region.
     /// </summary>
@@ -38,6 +41,7 @@ public class SmsNotificationHandler : AwsBaseService, INotificationHandler
         configuration, region)
     {
     }
+
     /// <summary>
     /// Gets the Amazon Simple Notification Service client.
     /// </summary>
@@ -51,6 +55,7 @@ public class SmsNotificationHandler : AwsBaseService, INotificationHandler
             return _simpleNotificationClient;
         }
     }
+
     /// <summary>
     /// Sends an SMS notification asynchronously.
     /// </summary>
@@ -84,6 +89,7 @@ public class SmsNotificationHandler : AwsBaseService, INotificationHandler
 
         return deliveryResult;
     }
+
     /// <summary>
     /// Disposes the resources used by the SMS notification handler.
     /// </summary>

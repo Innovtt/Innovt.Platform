@@ -1,6 +1,7 @@
 using Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 
 namespace Innovt.Cloud.AWS.Dynamo.Mapping;
+
 /// <summary>
 /// Interface for configuring the mapping between an entity type and its corresponding data model using an EntityTypeBuilder.
 /// </summary>

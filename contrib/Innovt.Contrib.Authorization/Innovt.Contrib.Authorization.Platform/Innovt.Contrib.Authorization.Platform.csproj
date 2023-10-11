@@ -1,49 +1,49 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-    <PackageId>Innovt.Contrib.Authorization.Platform</PackageId>
-	  <PackageVersion>7.0.42</PackageVersion>
-    <Authors>Michel Borges</Authors>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Copyright>Innovt Tecnologia</Copyright>
-    <Description>Authorization PLatform.</Description>
-    <LangVersion>latest</LangVersion>
-    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.203.1" />
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.4">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+        <PackageId>Innovt.Contrib.Authorization.Platform</PackageId>
+        <PackageVersion>7.0.44</PackageVersion>
+        <Authors>Michel Borges</Authors>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Copyright>Innovt Tecnologia</Copyright>
+        <Description>Authorization PLatform.</Description>
+        <LangVersion>latest</LangVersion>
+        <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.203.1"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.4">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Messages.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Messages.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
+    <ItemGroup>
+        <Compile Update="Messages.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Messages.resx</DependentUpon>
+        </Compile>
+    </ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Update="Messages.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Update="Messages.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+    </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Application\Dtos\" />
-    <Folder Include="Infrastructure\IOC\" />
-  </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Application\Dtos\"/>
+        <Folder Include="Infrastructure\IOC\"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\src\Innovt.Cloud.AWS.Dynamo\Innovt.Cloud.AWS.Dynamo.csproj" />
-    <ProjectReference Include="..\..\..\src\Innovt.CrossCutting.Log.Serilog\Innovt.CrossCutting.Log.Serilog.csproj" />
-    <ProjectReference Include="..\..\..\src\Innovt.Domain\Innovt.Domain.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\src\Innovt.Cloud.AWS.Dynamo\Innovt.Cloud.AWS.Dynamo.csproj"/>
+        <ProjectReference Include="..\..\..\src\Innovt.CrossCutting.Log.Serilog\Innovt.CrossCutting.Log.Serilog.csproj"/>
+        <ProjectReference Include="..\..\..\src\Innovt.Domain\Innovt.Domain.csproj"/>
+    </ItemGroup>
 
 </Project>

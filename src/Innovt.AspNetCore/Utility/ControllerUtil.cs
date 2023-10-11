@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
 
 namespace Innovt.AspNetCore.Utility;
+
 /// <summary>
 /// Utility class for reading and processing MVC controllers and actions.
 /// </summary>

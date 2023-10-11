@@ -42,10 +42,12 @@ public abstract class BaseEventProcessor
     /// Gets or sets the logger for recording processing information.
     /// </summary>
     protected ILogger Logger { get; private set; }
+
     /// <summary>
     /// Gets or sets the Lambda context associated with the event processing.
     /// </summary>
     protected ILambdaContext Context { get; set; }
+
     /// <summary>
     /// Gets or sets the configuration root for accessing application settings.
     /// </summary>
@@ -57,7 +59,7 @@ public abstract class BaseEventProcessor
     /// <param name="logger">An optional logger instance to use.</param>
     protected void InitializeLogger(ILogger logger = null)
     {
-        if (Logger is { } && logger is null)
+        if (Logger is not null && logger is null)
             return;
 
         Logger = logger ?? new LambdaLogger(Context.Logger);

@@ -3,6 +3,7 @@
 // Project: Innovt.AspNetCore
 
 namespace Innovt.AspNetCore.Resources;
+
 /// <summary>
 /// Marker interface for identifying exception resources.
 /// </summary>

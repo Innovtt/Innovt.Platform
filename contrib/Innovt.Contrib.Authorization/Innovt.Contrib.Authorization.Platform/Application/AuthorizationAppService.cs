@@ -18,12 +18,14 @@ using Innovt.Domain.Security;
 using IAuthorizationRepository = Innovt.Contrib.Authorization.Platform.Domain.IAuthorizationRepository;
 
 namespace Innovt.Contrib.Authorization.Platform.Application;
+
 /// <summary>
 /// Application service responsible for handling authorization-related operations.
 /// </summary>
 public class AuthorizationAppService : IAuthorizationAppService
 {
     private readonly IAuthorizationRepository authorizationRepository;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="AuthorizationAppService"/> class.
     /// </summary>
@@ -34,6 +36,7 @@ public class AuthorizationAppService : IAuthorizationAppService
         this.authorizationRepository = authorizationRepository ??
                                        throw new ArgumentNullException(nameof(authorizationRepository));
     }
+
     /// <summary>
     /// Registers an administrator using the provided registration command.
     /// </summary>
@@ -64,6 +67,7 @@ public class AuthorizationAppService : IAuthorizationAppService
 
         await authorizationRepository.Save(adminUser, cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Adds a user using the provided add user command.
     /// </summary>
@@ -78,7 +82,7 @@ public class AuthorizationAppService : IAuthorizationAppService
         var user = await authorizationRepository.GetUserByExternalId(command.Id, cancellationToken)
             .ConfigureAwait(false);
 
-        if (user is { })
+        if (user is not null)
             throw new BusinessException($"User {command.Id} already exist.");
 
         user = new AuthUser
@@ -107,6 +111,7 @@ public class AuthorizationAppService : IAuthorizationAppService
 
         return RoleDto.FromDomain(roles);
     }
+
     /// <summary>
     /// Removes a user using the provided remove user command.
     /// </summary>
@@ -126,6 +131,7 @@ public class AuthorizationAppService : IAuthorizationAppService
 
         await authorizationRepository.RemoveUser(user, cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Assigns roles to a user using the provided assign role command.
     /// </summary>
@@ -147,6 +153,7 @@ public class AuthorizationAppService : IAuthorizationAppService
 
         await authorizationRepository.Save(user, cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Unassigns roles from a user using the provided unassign role command.
     /// </summary>
@@ -168,6 +175,7 @@ public class AuthorizationAppService : IAuthorizationAppService
 
         await authorizationRepository.Save(user, cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Assigns roles to a user based on the provided assign role command.
     /// </summary>

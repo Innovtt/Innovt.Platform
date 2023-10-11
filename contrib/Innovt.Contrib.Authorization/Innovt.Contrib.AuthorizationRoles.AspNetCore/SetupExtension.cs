@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Innovt.Contrib.AuthorizationRoles.AspNetCore;
+
 /// <summary>
 /// Extension methods for configuring authorization services.
 /// </summary>
@@ -24,6 +25,7 @@ public static class SetupExtension
 
         services.AddMvc().AddApplicationPart(typeof(UsersController).Assembly);
     }
+
     /// <summary>
     /// Configures authorization services for Innovt Roles.
     /// </summary>

@@ -7,6 +7,7 @@ using Serilog.Core;
 using Serilog.Events;
 
 namespace Innovt.CrossCutting.Log.Serilog;
+
 /// <summary>
 /// Enriches Serilog log events with log4net log levels.
 /// </summary>

@@ -7,12 +7,14 @@ using Innovt.Core.CrossCutting.Ioc;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Innovt.CrossCutting.IOC;
+
 /// <summary>
 /// Builder for creating an <see cref="IServiceProvider"/> using Lamar IoC container.
 /// </summary>
 public class ContainerBuilder : IDisposable
 {
     private readonly IContainer container;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="ContainerBuilder"/> class using the provided services.
     /// </summary>
@@ -21,10 +23,12 @@ public class ContainerBuilder : IDisposable
     {
         container = new Container(services);
     }
+
     /// <summary>
     /// Gets the configured <see cref="IServiceProvider"/>.
     /// </summary>
     public IServiceProvider GetServiceProvider => new ServiceProvider(container);
+
     /// <summary>
     /// Releases the resources used by the <see cref="ContainerBuilder"/>.
     /// </summary>
@@ -33,6 +37,7 @@ public class ContainerBuilder : IDisposable
         Dispose(true);
         GC.SuppressFinalize(this);
     }
+
     /// <summary>
     /// Releases the resources used by the <see cref="ContainerBuilder"/>.
     /// </summary>

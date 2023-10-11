@@ -7,6 +7,7 @@ using Innovt.Core.CrossCutting.Log;
 using Innovt.Domain.Core.Events;
 
 namespace Innovt.Cloud.AWS.Kinesis;
+
 /// <summary>
 /// The event handler for processing domain events and publishing them to an AWS Kinesis stream.
 /// </summary>
@@ -22,6 +23,7 @@ public class EventHandler : DataProducer<DomainEvent>, IEventHandler
         configuration)
     {
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="EventHandler"/> class with the specified parameters.
     /// </summary>

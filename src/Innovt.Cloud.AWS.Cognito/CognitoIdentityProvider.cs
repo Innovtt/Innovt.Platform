@@ -63,7 +63,8 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     private AmazonCognitoIdentityProviderClient cognitoIdentityProvider;
 
     protected CognitoIdentityProvider(ILogger logger, IAwsConfiguration configuration, string clientId,
-        string userPoolId, string domainEndPoint, string region = null, bool allowAutoConfirmUserWithSocialLogin = false) :
+        string userPoolId, string domainEndPoint, string region = null,
+        bool allowAutoConfirmUserWithSocialLogin = false) :
         base(logger, configuration, region)
     {
         this.clientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
@@ -249,14 +250,12 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         };
 
         if (command.CustomAttributes != null)
-        {
             foreach (var attribute in command.CustomAttributes)
                 signUpRequest.UserAttributes.Add(new AttributeType
                 {
                     Name = $"custom:{attribute.Key}",
                     Value = attribute.Value
                 });
-        }
 
         var excludedProperties = new[]
             { "password", "username", "ipaddress", "serverpath", "servername", "httpheader", "customattributes" };
@@ -285,7 +284,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
             if (!response.UserConfirmed)
                 response.UserConfirmed = await ConfirmUserIfHasSocialUser(signUpRequest.Username, cancellationToken);
-                
+
             return new SignUpResponse { Confirmed = response.UserConfirmed, UUID = response.UserSub };
         }
         catch (Exception ex)
@@ -293,7 +292,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             throw CatchException(ex);
         }
     }
-    
+
     /// <summary>
     /// This implementation is to avoid users with social login to confirm the user.
     /// </summary>
@@ -303,32 +302,32 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     private async Task<bool> ConfirmUserIfHasSocialUser(string username, CancellationToken cancellationToken)
     {
         //Only confirm user if the AllowAutoConfirmUserWithSocialLogin is true
-        if(!allowAutoConfirmUserWithSocialLogin)
+        if (!allowAutoConfirmUserWithSocialLogin)
             return false;
-        
+
         try
         {
             var listUsersResponse = await ListUsersAsync(username, cancellationToken).ConfigureAwait(false);
-            
+
             var hasSocialUser = listUsersResponse.Users.Exists(u => u.UserStatus == "EXTERNAL_PROVIDER");
 
             if (!hasSocialUser)
                 return false;
 
             var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await 
+                    await
                         CognitoProvider.AdminConfirmSignUpAsync(new AdminConfirmSignUpRequest()
                         {
                             UserPoolId = userPoolId,
                             Username = username
                         }, cancellationToken).ConfigureAwait(false))
                 .ConfigureAwait(false);
-            
+
             return response.HttpStatusCode == HttpStatusCode.OK;
         }
         catch (Exception ex)
         {
-           Logger.Error(ex,"Error on confirm user with social login.");
+            Logger.Error(ex, "Error on confirm user with social login.");
         }
 
         return false;
@@ -727,9 +726,9 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     {
         if (!userName.Contains('_'))
             return string.Empty;
-        
+
         var provider = userName.Split("_")[0].ToUpper();
-        return  provider switch
+        return provider switch
         {
             "FACEBOOK" => "USER_FACE",
             _ => $"USER_{provider}"
@@ -767,7 +766,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             new("code", command.Code),
             new("redirect_uri", command.RedirectUri)
         };
-        
+
         OAuth2SignInResponse response;
 
         try
@@ -781,7 +780,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
             if (!responseMessage.IsSuccessStatusCode)
                 throw new BusinessException(ErrorCode.OAuthResponseError);
-            
+
             var responseContent = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             response = JsonSerializer.Deserialize<OAuth2SignInResponse>(responseContent);
@@ -806,7 +805,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
             response.NeedRegister = !hasCognitoUser;
             response.SignInType = GetSocialProviderName(socialUser.Username);
-            
+
 
             response.FirstName = GetUserAttributeValue(socialUser.UserAttributes, "name");
             response.LastName = GetUserAttributeValue(socialUser.UserAttributes, "family_name");
@@ -980,6 +979,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
         return attribute?.Value;
     }
+
     private static Exception CatchException(Exception ex)
     {
         throw ex switch

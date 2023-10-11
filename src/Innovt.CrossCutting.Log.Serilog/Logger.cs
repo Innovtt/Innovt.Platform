@@ -11,6 +11,7 @@ using Serilog.Templates;
 using ILogger = Innovt.Core.CrossCutting.Log.ILogger;
 
 namespace Innovt.CrossCutting.Log.Serilog;
+
 /// <summary>
 /// Implementation of <see cref="ILogger"/> and <see cref="Microsoft.Extensions.Logging.ILogger"/> using Serilog.
 /// </summary>
@@ -23,13 +24,14 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
     private global::Serilog.Core.Logger logger;
 
-   
+
     /// <summary>
     /// Initializes a new instance of the <see cref="Logger"/> class using the default output template and Console sink.
     /// </summary>
     public Logger() : this(DefaultOutputTemplate)
     {
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="Logger"/> class with a specified console output template.
     /// </summary>
@@ -38,6 +40,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
     {
         InitializeDefaultLogger(new LoggerConfiguration(), consoleOutputTemplate: consoleOutputTemplate);
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="Logger"/> class with a specified log event enricher and console output template.
     /// </summary>
@@ -49,6 +52,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
     {
         if (logEventEnricher is null) throw new ArgumentNullException(nameof(logEventEnricher));
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="Logger"/> class with specified log event enrichers and console output template.
     /// </summary>
@@ -74,6 +78,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         InitializeDefaultLogger(configuration, null, consoleOutputTemplate);
     }
+
     /// <summary>
     /// Writes a debug log message.
     /// </summary>
@@ -85,6 +90,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         logger.Debug(message);
     }
+
     /// <summary>
     /// Writes a debug log message using a message template and additional property values.
     /// </summary>
@@ -98,6 +104,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         logger.Debug(messageTemplate, propertyValues);
     }
+
     /// <summary>
     /// Writes a debug log message with an exception and a message template.
     /// </summary>
@@ -111,6 +118,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         logger.Debug(exception, messageTemplate);
     }
+
     /// <summary>
     /// Writes a debug log message with an exception, a message template, and additional property values.
     /// </summary>
@@ -124,6 +132,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         logger.Debug(exception, messageTemplate, propertyValues);
     }
+
     /// <summary>
     /// Writes an error log message.
     /// </summary>
@@ -135,6 +144,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         logger.Error(message);
     }
+
     /// <summary>
     /// Writes an error log message using a message template and additional property values.
     /// </summary>
@@ -147,6 +157,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         logger.Error(messageTemplate, propertyValues);
     }
+
     /// <summary>
     /// Writes an error log message with an exception and a message template.
     /// </summary>
@@ -160,6 +171,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         logger.Error(exception, messageTemplate);
     }
+
     /// <summary>
     /// Writes an error log message with an exception, a message template, and additional property values.
     /// </summary>
@@ -173,6 +185,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         logger.Error(exception, messageTemplate, propertyValues);
     }
+
     /// <summary>
     /// Writes a fatal log message.
     /// </summary>
@@ -185,6 +198,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         logger.Fatal(message);
     }
+
     /// <summary>
     /// Writes a fatal log message using a message template and additional property values.
     /// </summary>
@@ -197,6 +211,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         logger.Fatal(messageTemplate, propertyValues);
     }
+
     /// <summary>
     /// Writes a fatal log message with an exception and a message template.
     /// </summary>
@@ -209,6 +224,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         logger.Fatal(exception, messageTemplate);
     }
+
     /// <summary>
     /// Writes a fatal log message with an exception, a message template, and additional property values.
     /// </summary>
@@ -222,6 +238,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         logger.Fatal(exception, messageTemplate, propertyValues);
     }
+
     /// <summary>
     /// Writes an informational log message.
     /// </summary>
@@ -233,6 +250,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         logger.Information(message);
     }
+
     /// <summary>
     /// Writes an informational log message using a message template and additional property values.
     /// </summary>
@@ -245,6 +263,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         logger.Information(messageTemplate, propertyValues);
     }
+
     /// <summary>
     /// Writes an informational log message with an exception and a message template.
     /// </summary>
@@ -257,6 +276,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         logger.Information(exception, messageTemplate);
     }
+
     /// <summary>
     /// Writes an informational log message with an exception, a message template, and additional property values.
     /// </summary>
@@ -270,6 +290,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         logger.Information(exception, messageTemplate, propertyValues);
     }
+
     /// <summary>
     /// Writes a verbose log message.
     /// </summary>
@@ -281,6 +302,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         logger.Verbose(message);
     }
+
     /// <summary>
     /// Writes a verbose log message using a message template and additional property values.
     /// </summary>
@@ -293,6 +315,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         logger.Verbose(messageTemplate, propertyValues);
     }
+
     /// <summary>
     /// Writes a verbose log message with an exception and a message template.
     /// </summary>
@@ -305,6 +328,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         logger.Verbose(exception, messageTemplate);
     }
+
     /// <summary>
     /// Writes a verbose log message with an exception, a message template, and additional property values.
     /// </summary>
@@ -318,6 +342,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         logger.Verbose(exception, messageTemplate, propertyValues);
     }
+
     /// <summary>
     /// Writes a warning log message.
     /// </summary>
@@ -329,6 +354,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         logger.Warning(message);
     }
+
     /// <summary>
     /// Writes a warning log message using a message template and additional property values.
     /// </summary>
@@ -341,6 +367,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         logger.Warning(messageTemplate, propertyValues);
     }
+
     /// <summary>
     /// Writes a warning log message with an exception and a message template.
     /// </summary>
@@ -353,6 +380,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         logger.Warning(exception, messageTemplate);
     }
+
     /// <summary>
     /// Writes a warning log message with an exception, a message template, and additional property values.
     /// </summary>
@@ -366,6 +394,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         logger.Warning(exception, messageTemplate, propertyValues);
     }
+
     /// <summary>
     /// Writes a log message based on the specified log level, event ID, state, exception, and formatter.
     /// </summary>
@@ -378,10 +407,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
     public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception,
         Func<TState, Exception, string> formatter)
     {
-        if (formatter == null)
-        {
-            throw new ArgumentNullException(nameof(formatter));
-        }
+        if (formatter == null) throw new ArgumentNullException(nameof(formatter));
 
         var message = formatter(state, exception);
 
@@ -408,6 +434,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
                 break;
         }
     }
+
     /// <summary>
     /// Checks if logging is enabled for the specified log level.
     /// </summary>
@@ -417,6 +444,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
     {
         return IsEnabledInternal(logLevel);
     }
+
     /// <summary>
     /// Begins a logical operation scope.
     /// </summary>
@@ -427,6 +455,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
     {
         return NullScope.Instance;
     }
+
     /// <summary>
     /// Initializes the default logger with the specified configuration, enrichers, and console output template.
     /// </summary>
@@ -443,10 +472,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
 
         configuration.WriteTo.Console(new ExpressionTemplate(consoleOutputTemplate));
 
-        if (logEventEnricher != null)
-        {
-            configuration.Enrich.With(logEventEnricher);
-        }
+        if (logEventEnricher != null) configuration.Enrich.With(logEventEnricher);
 
         //default enrich
         configuration.Enrich.With(new LogLevelEnricher()).Enrich.WithActivityEnrich().Enrich.FromLogContext();

@@ -7,6 +7,7 @@ using Innovt.Core.Cqrs.Queries;
 using Innovt.Core.Validation;
 
 namespace Innovt.Cqrs.Queries.Decorators;
+
 /// <summary>
 /// Decorates a query handler to include validation before handling the query.
 /// </summary>
@@ -16,6 +17,7 @@ public sealed class QueryValidationDecorator<TFilter, TResult> : IQueryHandler<T
     where TFilter : IFilter where TResult : class
 {
     private readonly IQueryHandler<TFilter, TResult> queryHandler;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="QueryValidationDecorator{TFilter, TResult}"/> class.
     /// </summary>
@@ -25,6 +27,7 @@ public sealed class QueryValidationDecorator<TFilter, TResult> : IQueryHandler<T
     {
         this.queryHandler = queryHandler ?? throw new ArgumentNullException(nameof(queryHandler));
     }
+
     /// <summary>
     /// Handles the specified query after ensuring its validity.
     /// </summary>

@@ -62,6 +62,7 @@ public static class Check
 
         return 0;
     }
+
     /// <summary>
     /// Checks if the specified array of integers are greater than zero; otherwise, throws a <see cref="BusinessException"/>.
     /// </summary>
@@ -95,6 +96,7 @@ public static class Check
 
         return value;
     }
+
     /// <summary>
     /// Checks if the specified value is not null; otherwise, throws a <see cref="CriticalException"/> with the specified message.
     /// </summary>
@@ -253,6 +255,7 @@ public static class Check
 
         return value;
     }
+
     /// <summary>
     /// Checks if the specified string is null but not empty; otherwise, throws an <see cref="ArgumentException"/>.
     /// </summary>

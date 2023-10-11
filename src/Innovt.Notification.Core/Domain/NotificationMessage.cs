@@ -10,6 +10,7 @@ using Innovt.Core.Collections;
 using Innovt.Core.Utilities;
 
 namespace Innovt.Notification.Core.Domain;
+
 /// <summary>
 /// Represents a notification message.
 /// </summary>
@@ -23,6 +24,7 @@ public class NotificationMessage : IValidatableObject
     {
         Type = type;
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="NotificationMessage"/> class with the specified type, from address, from name, and subject.
     /// </summary>
@@ -38,38 +40,47 @@ public class NotificationMessage : IValidatableObject
 
         if (subject.IsNotNullOrEmpty()) AddSubject(subject);
     }
+
     /// <summary>
     /// Gets or sets the "From" contact information for the notification message.
     /// </summary>
     public NotificationMessageContact From { get; internal set; }
+
     /// <summary>
     /// Gets or sets the list of "To" contact information for the notification message.
     /// </summary>
     public IList<NotificationMessageContact> To { get; internal set; }
+
     /// <summary>
     /// Gets or sets the list of "Bcc" contact information for the notification message.
     /// </summary>
     public IList<NotificationMessageContact> BccTo { get; internal set; }
+
     /// <summary>
     /// Gets or sets the list of "Cc" contact information for the notification message.
     /// </summary>
     public IList<NotificationMessageContact> CcTo { get; internal set; }
+
     /// <summary>
     /// Gets or sets the list of "Reply-To" contact information for the notification message.
     /// </summary>
     public IList<NotificationMessageContact> ReplyToAddresses { get; internal set; }
+
     /// <summary>
     /// Gets or sets the type of the notification message.
     /// </summary>
     public NotificationMessageType Type { get; set; }
+
     /// <summary>
     /// Gets or sets the subject of the notification message.
     /// </summary>
     public NotificationMessageSubject Subject { get; set; }
+
     /// <summary>
     /// Gets or sets the body of the notification message.
     /// </summary>
     public NotificationMessageBody Body { get; set; }
+
     /// <inheritdoc />
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
@@ -90,6 +101,7 @@ public class NotificationMessage : IValidatableObject
                 yield return new ValidationResult(
                     "Invalid value for To that should start with + and E.164 format.", new[] { "To" });
     }
+
     /// <summary>
     /// Adds the subject to the notification message.
     /// </summary>
@@ -103,6 +115,7 @@ public class NotificationMessage : IValidatableObject
 
         return this;
     }
+
     /// <summary>
     /// Adds the "From" contact information to the notification message.
     /// </summary>
@@ -112,6 +125,7 @@ public class NotificationMessage : IValidatableObject
 
         return this;
     }
+
     /// <summary>
     /// Adds "To" contact information to the notification message.
     /// </summary>
@@ -121,6 +135,7 @@ public class NotificationMessage : IValidatableObject
 
         return this;
     }
+
     /// <summary>
     /// Adds "Bcc" contact information to the notification message.
     /// </summary>
@@ -130,6 +145,7 @@ public class NotificationMessage : IValidatableObject
 
         return this;
     }
+
     /// <summary>
     /// Adds "Cc" contact information to the notification message.
     /// </summary>
@@ -139,6 +155,7 @@ public class NotificationMessage : IValidatableObject
 
         return this;
     }
+
     /// <summary>
     /// Adds "Reply-To" contact information to the notification message.
     /// </summary>

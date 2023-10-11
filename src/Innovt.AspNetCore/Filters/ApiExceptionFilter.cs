@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
 
 namespace Innovt.AspNetCore.Filters;
+
 /// <summary>
 /// An exception filter attribute for handling exceptions globally and providing standardized error responses.
 /// </summary>
@@ -24,7 +25,10 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
     /// <summary>
     /// Default Constructor 
     /// </summary>
-    public ApiExceptionFilter() { }
+    public ApiExceptionFilter()
+    {
+    }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="ApiExceptionFilter"/> class with a logger.
     /// </summary>
@@ -33,6 +37,7 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
     {
         Logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="ApiExceptionFilter"/> class with a logger and a string localizer for exception messages.
     /// </summary>
@@ -42,14 +47,17 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
     {
         StringLocalizer = stringLocalizer ?? throw new ArgumentNullException(nameof(stringLocalizer));
     }
+
     /// <summary>
     /// Gets or sets the logger.
     /// </summary>
     public ILogger? Logger { get; private set; }
+
     /// <summary>
     /// Gets the string localizer for localizing exception messages.
     /// </summary>
     public IStringLocalizer<IExceptionResource> StringLocalizer { get; } = null!;
+
     /// <summary>
     /// Translates the given message using the provided string localizer.
     /// If the string localizer is null or the message is not found, the original message is returned.
@@ -60,6 +68,7 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
     {
         return StringLocalizer?[message] ?? message;
     }
+
     /// <summary>
     /// Writes an error log using the provided logger and context.
     /// If the logger is null, the error message is logged to the console.
@@ -81,6 +90,7 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
             Logger.Error(ex, message);
         }
     }
+
     /// <inheritdoc />
     public override void OnException(ExceptionContext context)
     {
@@ -110,8 +120,9 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
             {
                 StatusCode = StatusCodes.Status500InternalServerError
             };
-            WriteLog(context.HttpContext,"InternalServerError", context.Exception);
+            WriteLog(context.HttpContext, "InternalServerError", context.Exception);
         }
+
         Activity.Current?.SetStatus(ActivityStatusCode.Error, baseException.Message);
     }
 }

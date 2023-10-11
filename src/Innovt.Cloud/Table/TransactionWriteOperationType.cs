@@ -3,6 +3,7 @@
 // Project: Innovt.Cloud
 
 namespace Innovt.Cloud.Table;
+
 /// <summary>
 /// Defines the types of write operations within a transaction.
 /// </summary>

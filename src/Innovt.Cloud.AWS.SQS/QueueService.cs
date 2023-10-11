@@ -17,6 +17,7 @@ using Innovt.Core.Exceptions;
 using Innovt.Core.Serialization;
 
 namespace Innovt.Cloud.AWS.SQS;
+
 /// <summary>
 /// Provides functionalities to interact with an Amazon SQS queue for a specified message type <typeparamref name="T"/>.
 /// </summary>
@@ -28,6 +29,7 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
     private ISerializer serializer;
 
     private AmazonSQSClient sqsClient;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="QueueService{T}"/> class.
     /// </summary>
@@ -41,6 +43,7 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
         this.serializer = serializer;
         QueueName = queueName ?? typeof(T).Name;
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="QueueService{T}"/> class.
     /// </summary>
@@ -54,10 +57,12 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
         this.serializer = serializer;
         QueueName = queueName ?? typeof(T).Name;
     }
+
     /// <summary>
     /// Gets the name of the queue.
     /// </summary>
     public string QueueName { get; protected set; }
+
     /// <summary>
     /// Gets the URL of the queue.
     /// </summary>
@@ -149,6 +154,7 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
                 await SqsClient.DeleteMessageAsync(deleteRequest, cancellationToken).ConfigureAwait(false))
             .ConfigureAwait(false);
     }
+
     /// <summary>
     /// Retrieves the approximate message count of the queue asynchronously.
     /// </summary>
@@ -172,6 +178,7 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
 
         return (response?.ApproximateNumberOfMessages).GetValueOrDefault();
     }
+
     /// <summary>
     /// Creates the queue if it does not exist asynchronously.
     /// </summary>
@@ -232,6 +239,7 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
 
         return response.MessageId;
     }
+
     /// <summary>
     /// Enqueues a batch of messages asynchronously to the queue.
     /// </summary>
@@ -290,6 +298,7 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
 
         return result;
     }
+
     /// <summary>
     /// Enriches the message request with additional attributes based on the activity.
     /// </summary>
@@ -311,6 +320,7 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
                 StringValue = activity.RootId
             });
     }
+
     /// <summary>
     /// Gets the queue URL asynchronously based on the queue name.
     /// </summary>

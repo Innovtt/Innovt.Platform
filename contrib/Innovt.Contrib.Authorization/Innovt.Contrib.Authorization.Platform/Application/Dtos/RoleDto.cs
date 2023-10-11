@@ -7,6 +7,7 @@ using System.Linq;
 using Innovt.Domain.Security;
 
 namespace Innovt.Contrib.Authorization.Platform.Application.Dtos;
+
 /// <summary>
 /// Data transfer object (DTO) for a role.
 /// </summary>
@@ -16,6 +17,7 @@ public class RoleDto
     /// Gets or sets the name of the role.
     /// </summary>
     public string Name { get; set; }
+
     /// <summary>
     /// Gets or sets the scope of the role.
     /// </summary>
@@ -30,6 +32,7 @@ public class RoleDto
     {
         return role is null ? null : new RoleDto { Name = role.Name, Scope = role.Scope };
     }
+
     /// <summary>
     /// Creates a list of RoleDto instances from a list of domain Role objects.
     /// </summary>

@@ -6,6 +6,7 @@ using System;
 using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain;
+
 /// <summary>
 /// Represents a base credit card information.
 /// </summary>
@@ -25,6 +26,7 @@ public class BaseCreditCard : ValueObject
         Expiration = expiration;
         SecurityCode = securityCode;
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="BaseCreditCard"/> class with a token and security code.
     /// </summary>
@@ -35,32 +37,39 @@ public class BaseCreditCard : ValueObject
         SecurityCode = securityCode;
         Token = token;
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="BaseCreditCard"/> class.
     /// </summary>
     public BaseCreditCard()
     {
     }
+
     /// <summary>
     /// Gets or sets the credit card number.
     /// </summary>
     public string Number { get; set; }
+
     /// <summary>
     /// Gets or sets the cardholder's name.
     /// </summary>
     public string Holder { get; set; }
+
     /// <summary>
     /// Gets or sets the security code of the credit card.
     /// </summary>
     public string SecurityCode { get; set; }
+
     /// <summary>
     /// Gets or sets the token associated with the credit card.
     /// </summary>
     public string Token { get; set; }
+
     /// <summary>
     /// Gets or sets the expiration date of the credit card.
     /// </summary>
     public DateTime Expiration { get; set; }
+
     /// <summary>
     /// Gets the masked credit card number with only the last four digits visible.
     /// </summary>
@@ -73,6 +82,7 @@ public class BaseCreditCard : ValueObject
             return maskedNumber;
         }
     }
+
     /// <summary>
     /// Generates a masked credit card number with only the first six and last four digits visible.
     /// </summary>

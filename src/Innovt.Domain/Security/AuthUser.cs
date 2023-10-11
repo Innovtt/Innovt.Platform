@@ -9,6 +9,7 @@ using Innovt.Core.Exceptions;
 using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Security;
+
 /// <summary>
 /// Represents a user in the authentication system.
 /// </summary>
@@ -21,26 +22,32 @@ public class AuthUser : Entity
     {
         CreatedAt = DateTimeOffset.UtcNow;
     }
+
     /// <summary>
     /// Gets or sets the user ID.
     /// </summary>
     public new string Id { get; set; }
+
     /// <summary>
     /// Gets or sets the domain ID associated with the user.
     /// </summary>
     public string DomainId { get; set; }
+
     /// <summary>
     /// Gets or sets the name of the user.
     /// </summary>
     public string Name { get; set; }
+
     /// <summary>
     /// Gets or sets the groups associated with the user.
     /// </summary>
     public IList<Group> Groups { get; private set; }
+
     /// <summary>
     /// Gets or sets the roles associated with the user.
     /// </summary>
     public IList<Role> Roles { get; private set; }
+
     /// <summary>
     /// Assigns a role to the user.
     /// </summary>
@@ -58,6 +65,7 @@ public class AuthUser : Entity
 
         Roles.Add(role);
     }
+
     /// <summary>
     /// Unassigns a role from the user.
     /// </summary>
@@ -76,6 +84,7 @@ public class AuthUser : Entity
 
         Roles.Remove(role);
     }
+
     /// <summary>
     /// Assigns a group to the user.
     /// </summary>
@@ -93,6 +102,7 @@ public class AuthUser : Entity
 
         Groups.Add(group);
     }
+
     /// <summary>
     /// Unassigns a group from the user.
     /// </summary>

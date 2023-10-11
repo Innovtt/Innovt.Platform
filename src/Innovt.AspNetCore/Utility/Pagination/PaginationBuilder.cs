@@ -5,6 +5,7 @@
 using Innovt.Core.Collections;
 
 namespace Innovt.AspNetCore.Utility.Pagination;
+
 /// <summary>
 /// Builder class for generating pagination HTML elements.
 /// </summary>
@@ -12,6 +13,7 @@ namespace Innovt.AspNetCore.Utility.Pagination;
 public class PaginationBuilder<T> where T : class
 {
     private readonly string formId;
+
     /// <summary>
     /// Initializes a new instance of the PaginationBuilder class.
     /// </summary>
@@ -22,6 +24,7 @@ public class PaginationBuilder<T> where T : class
         Collection = collection ?? throw new ArgumentNullException(nameof(collection));
         this.formId = formId;
     }
+
     /// <summary>
     /// Gets or sets the paged collection of items.
     /// </summary>
@@ -35,6 +38,7 @@ public class PaginationBuilder<T> where T : class
     {
         return @"<div class=""portlet-body text-center""><ul class=""pagination pagination-large"">";
     }
+
     /// <summary>
     /// Builds the pager script HTML for pagination functionality.
     /// </summary>
@@ -48,6 +52,7 @@ public class PaginationBuilder<T> where T : class
                formId + "').submit()},goToNextPage:function(formId){var form=$('" + formId +
                "');var pageHidden=form.find('#Page');var pageVal=parseInt(pageHidden.val());pageVal+=1;pageHidden.val(pageVal);form.submit()}}}();</script>";
     }
+
     /// <summary>
     /// Builds the footer HTML for pagination.
     /// </summary>
@@ -56,6 +61,7 @@ public class PaginationBuilder<T> where T : class
     {
         return "</ul></div>";
     }
+
     /// <summary>
     /// Builds the HTML for the "Previous" pagination button.
     /// </summary>
@@ -77,6 +83,7 @@ public class PaginationBuilder<T> where T : class
         return
             $@"<li class=""next""><a title=""{nextText}"" href=""javascript:Pager.goToNextPage('{formId}');"">»</a></li>";
     }
+
     /// <summary>
     /// Builds the HTML for a pagination item.
     /// </summary>

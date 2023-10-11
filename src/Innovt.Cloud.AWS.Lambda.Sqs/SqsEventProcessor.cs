@@ -106,11 +106,10 @@ public abstract class SqsEventProcessor<TBody> : EventProcessor<SQSEvent, BatchF
 
         if (message.Records is null)
             return response;
-        
+
         var processedMessages = new List<string>();
 
         foreach (var record in message.Records)
-        {
             try
             {
                 Logger.Info($"Processing SQS Event message ID {record.MessageId}.");
@@ -164,7 +163,6 @@ public abstract class SqsEventProcessor<TBody> : EventProcessor<SQSEvent, BatchF
 
                 response.AddItem(record.MessageId);
             }
-        }
 
         return response;
     }

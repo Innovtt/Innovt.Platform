@@ -1,46 +1,45 @@
 using Innovt.Core.Exceptions;
 using NUnit.Framework;
 
-namespace Innovt.Cloud.AWS.Tests
+namespace Innovt.Cloud.AWS.Tests;
+
+[TestFixture]
+[Ignore("Only local tests")]
+public class DefaultAWSConfigurationTests
 {
-    [TestFixture]
-    [Ignore("Only local tests")]
-    public class DefaultAWSConfigurationTests
+    [Test]
+    public void GetCredentialWithoutProfileReturnDefaultProfile()
     {
-        [Test]
-        public void GetCredentialWithoutProfileReturnDefaultProfile()
-        {
-            var configuration = new Configuration.DefaultAWSConfiguration();
+        var configuration = new Configuration.DefaultAWSConfiguration();
 
-            Assert.IsNotNull(configuration);
+        Assert.IsNotNull(configuration);
 
-            var credentials = configuration.GetCredential();
+        var credentials = configuration.GetCredential();
 
-            Assert.IsNotNull(credentials);
-            Assert.IsNotNull(credentials.GetCredentials());
-        }
+        Assert.IsNotNull(credentials);
+        Assert.IsNotNull(credentials.GetCredentials());
+    }
 
-        [Test]
-        public void GetCredentialWithInvalidProfileThrowsException()
-        {
-            var configuration = new Configuration.DefaultAWSConfiguration("invalidProfile");
+    [Test]
+    public void GetCredentialWithInvalidProfileThrowsException()
+    {
+        var configuration = new Configuration.DefaultAWSConfiguration("invalidProfile");
 
-            Assert.IsNotNull(configuration);
+        Assert.IsNotNull(configuration);
 
-            Assert.Throws<ConfigurationException>(() => configuration.GetCredential());
-        }
+        Assert.Throws<ConfigurationException>(() => configuration.GetCredential());
+    }
 
 
-        [Test]
-        public void GetCredentialWithAccessKeyAnSecretReturnsValidCredential()
-        {
-            var configuration = new Configuration.DefaultAWSConfiguration("accessKey", "secret", "us-east-1");
+    [Test]
+    public void GetCredentialWithAccessKeyAnSecretReturnsValidCredential()
+    {
+        var configuration = new Configuration.DefaultAWSConfiguration("accessKey", "secret", "us-east-1");
 
-            Assert.IsNotNull(configuration);
+        Assert.IsNotNull(configuration);
 
-            var credentials = configuration.GetCredential();
+        var credentials = configuration.GetCredential();
 
-            Assert.IsNotNull(credentials);
-        }
+        Assert.IsNotNull(credentials);
     }
 }

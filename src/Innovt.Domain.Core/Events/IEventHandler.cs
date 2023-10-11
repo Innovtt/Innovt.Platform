@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace Innovt.Domain.Core.Events;
+
 /// <summary>
 /// Defines methods for publishing domain events.
 /// </summary>
@@ -19,6 +20,7 @@ public interface IEventHandler
     /// <param name="cancellationToken">The cancellation token to observe.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
     Task Publish(DomainEvent domainEvent, CancellationToken cancellationToken = default);
+
     /// <summary>
     /// Publishes a collection of domain events.
     /// </summary>

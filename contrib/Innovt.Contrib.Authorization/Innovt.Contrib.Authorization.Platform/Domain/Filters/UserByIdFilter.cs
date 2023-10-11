@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using Innovt.Core.Cqrs.Queries;
 
 namespace Innovt.Contrib.Authorization.Platform.Domain.Filters;
+
 /// <summary>
 /// Represents a filter for retrieving a user by their ID.
 /// </summary>
@@ -22,10 +23,12 @@ public class UserByIdFilter : IFilter
     {
         Id = id ?? throw new ArgumentNullException(nameof(id));
     }
+
     /// <summary>
     /// Gets or sets the ID of the user.
     /// </summary>
     public string Id { get; set; }
+
     /// <summary>
     /// Validates the filter properties.
     /// </summary>

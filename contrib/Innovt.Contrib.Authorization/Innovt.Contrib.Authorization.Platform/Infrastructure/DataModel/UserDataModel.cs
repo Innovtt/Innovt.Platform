@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Innovt.Domain.Security;
 
 namespace Innovt.Contrib.Authorization.Platform.Infrastructure.DataModel;
+
 /// <summary>
 /// Represents a data model for a user.
 /// </summary>
@@ -19,22 +20,27 @@ internal class UserDataModel : DataModelBase
     {
         EntityType = "User";
     }
+
     /// <summary>
     /// Gets or sets the authentication ID of the user.
     /// </summary>
     public string AuthId { get; set; }
+
     /// <summary>
     /// Gets or sets the domain ID of the user.
     /// </summary>
     public string DomainId { get; set; }
+
     /// <summary>
     /// Gets or sets the roles associated with the user.
     /// </summary>
     public List<RoleDataModel> Roles { get; set; }
+
     /// <summary>
     /// Gets or sets the creation date and time of the user.
     /// </summary>
     public DateTime CreatedAt { get; set; }
+
     /// <summary>
     /// Converts a data model instance to an <see cref="AuthUser"/>.
     /// </summary>
@@ -59,6 +65,7 @@ internal class UserDataModel : DataModelBase
 
         return authUser;
     }
+
     /// <summary>
     /// Converts an <see cref="AuthUser"/> instance to a data model.
     /// </summary>

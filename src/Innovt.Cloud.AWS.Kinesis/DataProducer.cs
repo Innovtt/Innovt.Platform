@@ -19,6 +19,7 @@ using Innovt.Core.Utilities;
 using Innovt.Domain.Core.Streams;
 
 namespace Innovt.Cloud.AWS.Kinesis;
+
 /// <summary>
 /// Represents a data producer for publishing data to an Amazon Kinesis stream.
 /// </summary>
@@ -27,6 +28,7 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
 {
     protected static readonly ActivitySource ActivityDataProducer = new("Innovt.Cloud.AWS.KinesisDataProducer");
     private AmazonKinesisClient kinesisClient;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DataProducer{T}"/> class with the specified bus name,
     /// logger, and AWS configuration.
@@ -39,6 +41,7 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
     {
         BusName = busName ?? throw new ArgumentNullException(nameof(busName));
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DataProducer{T}"/> class with the specified bus name,
     /// logger, AWS configuration, and AWS region.
@@ -52,6 +55,7 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
     {
         BusName = busName ?? throw new ArgumentNullException(nameof(busName));
     }
+
     /// <summary>
     /// Gets the name of the Kinesis data stream (bus) to which data will be published.
     /// </summary>
@@ -64,6 +68,7 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
     {
         get { return kinesisClient ??= CreateService<AmazonKinesisClient>(); }
     }
+
     /// <summary>
     /// Creates a list of <see cref="PutRecordsRequestEntry"/> from a collection of data streams.
     /// </summary>
@@ -79,10 +84,7 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
 
         foreach (var data in dataStreams)
         {
-            if (data.TraceId.IsNullOrEmpty() && activity != null)
-            {
-                data.TraceId = activity.TraceId.ToString();
-            }
+            if (data.TraceId.IsNullOrEmpty() && activity != null) data.TraceId = activity.TraceId.ToString();
 
             data.PublishedAt = DateTimeOffset.UtcNow;
 
@@ -100,6 +102,7 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
 
         return request;
     }
+
     /// <summary>
     /// Publishes a collection of data streams to the Kinesis data stream asynchronously.
     /// </summary>
@@ -142,18 +145,14 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
             return;
         }
 
-        foreach (var data in dataStreams)
-        {
-            data.PublishedAt = null;
-        }
+        foreach (var data in dataStreams) data.PublishedAt = null;
 
         var errorRecords = results.Records.Where(r => r.ErrorCode != null);
 
         foreach (var error in errorRecords)
-        {
             Logger.Error($"Error publishing message. Error: {error.ErrorCode}, ErrorMessage: {error.ErrorMessage}");
-        }
     }
+
     /// <summary>
     /// Publishes a single data stream to the Kinesis data stream asynchronously.
     /// </summary>
@@ -164,6 +163,7 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
     {
         await InternalPublish(new List<T> { data }, cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Publishes a collection of data streams to the Kinesis data stream asynchronously.
     /// </summary>
@@ -174,6 +174,7 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
     {
         await InternalPublish(events, cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Disposes the Amazon Kinesis client when the service is no longer needed.
     /// </summary>

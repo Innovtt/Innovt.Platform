@@ -23,6 +23,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Innovt.AspNetCore.Extensions;
+
 /// <summary>
 /// Extension methods for configuring MVC-related functionality.
 /// </summary>
@@ -33,7 +34,8 @@ public static class MvcExtensions
     /// </summary>
     /// <param name="app"></param>
     /// <param name="supportedCultures"></param>
-    public static void UseRequestLocalization(this IApplicationBuilder app, IList<CultureInfo> supportedCultures = null!)
+    public static void UseRequestLocalization(this IApplicationBuilder app,
+        IList<CultureInfo> supportedCultures = null!)
     {
         supportedCultures ??= new List<CultureInfo>
         {
@@ -46,6 +48,7 @@ public static class MvcExtensions
             SupportedCultures = supportedCultures
         });
     }
+
     /// <summary>
     /// Adds the application scope to the request headers.
     /// </summary>
@@ -63,6 +66,7 @@ public static class MvcExtensions
             await next().ConfigureAwait(false);
         });
     }
+
     /// <summary>
     /// Sets the application context header in the request headers.
     /// </summary>
@@ -80,6 +84,7 @@ public static class MvcExtensions
             await next().ConfigureAwait(false);
         });
     }
+
     /// <summary>
     /// Adds Bearer token authentication based on the provided configuration.
     /// </summary>
@@ -90,18 +95,22 @@ public static class MvcExtensions
     /// <param name="validateIssuer">Whether to validate issuer.</param>
     /// <param name="validateLifetime">Whether to validate lifetime.</param>
     /// <param name="validateIssuerSigningKey">Whether to validate issuer signing key.</param>
-    public static void AddBearerAuthorization(this IServiceCollection services, IConfiguration configuration, string configSection = "BearerAuthentication",bool validateAudience=true, 
-        bool validateIssuer=true, bool validateLifetime=true, bool validateIssuerSigningKey=true)
+    public static void AddBearerAuthorization(this IServiceCollection services, IConfiguration configuration,
+        string configSection = "BearerAuthentication", bool validateAudience = true,
+        bool validateIssuer = true, bool validateLifetime = true, bool validateIssuerSigningKey = true)
     {
         if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
         var audienceSection = configuration.GetSection($"{configSection}:Audience");
         var authoritySection = configuration.GetSection($"{configSection}:Authority");
-        
-        if (audienceSection.Value == null) throw new CriticalException($"The Config Section '{configSection}:Audience' not defined.");
-        if (authoritySection.Value == null) throw new CriticalException("The Config Section '{configSection}:Authority' not defined.");
 
-        services.AddBearerAuthorization(audienceSection.Value, authoritySection.Value, validateAudience, validateIssuer, validateLifetime, validateIssuerSigningKey);
+        if (audienceSection.Value == null)
+            throw new CriticalException($"The Config Section '{configSection}:Audience' not defined.");
+        if (authoritySection.Value == null)
+            throw new CriticalException("The Config Section '{configSection}:Authority' not defined.");
+
+        services.AddBearerAuthorization(audienceSection.Value, authoritySection.Value, validateAudience, validateIssuer,
+            validateLifetime, validateIssuerSigningKey);
     }
 
     // ReSharper disable once MemberCanBePrivate.Global
@@ -115,8 +124,9 @@ public static class MvcExtensions
     /// <param name="validateIssuer">Whether to validate issuer.</param>
     /// <param name="validateLifetime">Whether to validate lifetime.</param>
     /// <param name="validateIssuerSigningKey">Whether to validate issuer signing key.</param>
-    public static void AddBearerAuthorization(this IServiceCollection services, string audienceId, string authority, bool validateAudience=true, 
-        bool validateIssuer=true, bool validateLifetime=true, bool validateIssuerSigningKey=true)
+    public static void AddBearerAuthorization(this IServiceCollection services, string audienceId, string authority,
+        bool validateAudience = true,
+        bool validateIssuer = true, bool validateLifetime = true, bool validateIssuerSigningKey = true)
     {
         services.AddAuthorization(options =>
         {
@@ -142,10 +152,11 @@ public static class MvcExtensions
                     ValidateIssuerSigningKey = validateIssuerSigningKey,
                     ValidateAudience = validateAudience,
                     ValidateIssuer = validateIssuer,
-                    ValidateLifetime = validateLifetime,
+                    ValidateLifetime = validateLifetime
                 };
             });
     }
+
     /// <summary>
     /// Generates an HTML pager for pagination.
     /// </summary>
@@ -188,6 +199,7 @@ public static class MvcExtensions
 
         return new HtmlString(html.ToString());
     }
+
     /// <summary>
     /// Creates a select list containing "Ativo" and "Inativo" items.
     /// </summary>
@@ -235,6 +247,7 @@ public static class MvcExtensions
 
         return value ?? string.Empty;
     }
+
     /// <summary>
     /// Checks if the specified action descriptor has a filter of the given type.
     /// </summary>
@@ -275,6 +288,7 @@ public static class MvcExtensions
 
         return false;
     }
+
     /// <summary>
     /// Sets an object in the session after serializing it to JSON.
     /// </summary>
@@ -286,6 +300,7 @@ public static class MvcExtensions
     {
         session?.SetString(key, JsonSerializer.Serialize(value));
     }
+
     /// <summary>
     /// Gets an object from the session and deserializes it from JSON.
     /// </summary>

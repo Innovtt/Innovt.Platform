@@ -7,6 +7,7 @@ using Innovt.Core.Utilities;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace Innovt.Core.Caching;
+
 /// <summary>
 /// Represents a local caching service that implements the <see cref="ICacheService"/> interface
 /// using an in-memory cache provided by <see cref="IMemoryCache"/>.
@@ -30,6 +31,7 @@ public class LocalCache : ICacheService, IDisposable
     {
         this.memoryCache = memoryCache ?? throw new ArgumentNullException(nameof(memoryCache));
     }
+
     /// <inheritdoc />
     public T GetValue<T>(string key)
     {
@@ -37,6 +39,7 @@ public class LocalCache : ICacheService, IDisposable
 
         return memoryCache.Get<T>(key);
     }
+
     /// <inheritdoc />
     public void SetValue<T>(string key, T entity, TimeSpan expiration)
     {
@@ -50,6 +53,7 @@ public class LocalCache : ICacheService, IDisposable
             AbsoluteExpirationRelativeToNow = expiration
         });
     }
+
     /// <inheritdoc />
     public void Remove(string key)
     {
@@ -57,11 +61,13 @@ public class LocalCache : ICacheService, IDisposable
 
         memoryCache.Remove(key);
     }
+
     /// <inheritdoc />
     public void Dispose()
     {
         memoryCache?.Dispose();
     }
+
     /// <summary>
     /// Finalizes an instance of the <see cref="LocalCache"/> class.
     /// </summary>

@@ -21,6 +21,7 @@ using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.S3;
+
 /// <summary>
 /// Amazon S3 file system implementation.
 /// </summary>
@@ -29,6 +30,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     private static readonly ActivitySource S3ActivitySource = new("Innovt.Cloud.AWS.S3.S3FileSystem");
 
     private AmazonS3Client s3Client;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="S3FileSystem"/> class.
     /// </summary>
@@ -37,6 +39,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     public S3FileSystem(ILogger logger, IAwsConfiguration configuration) : base(logger, configuration)
     {
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="S3FileSystem"/> class with a specific AWS region.
     /// </summary>
@@ -47,6 +50,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
         configuration, region)
     {
     }
+
     /// <summary>
     /// Gets the Amazon S3 client instance, creating a new instance if not already initialized.
     /// </summary>
@@ -78,6 +82,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
 
         return (bucket, fileKey);
     }
+
     /// <summary>
     /// Uploads a file to an Amazon S3 bucket.
     /// </summary>
@@ -94,6 +99,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
             await PutObjectAsync(bucketName, filePath, contentType, serverSideEncryptionMethod, fileAcl)
                 .ConfigureAwait(false));
     }
+
     /// <summary>
     /// Uploads a stream to an Amazon S3 bucket.
     /// </summary>
@@ -111,6 +117,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
             await PutObjectAsync(bucketName, stream, fileName, contentType, serverSideEncryptionMethod, fileAcl)
                 .ConfigureAwait(false));
     }
+
     /// <summary>
     /// Asynchronously uploads a stream to an Amazon S3 bucket.
     /// </summary>
@@ -131,6 +138,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
         return PutObjectInternalAsync(bucketName, stream, fileName, contentType, serverSideEncryptionMethod, fileAcl,
             cancellationToken);
     }
+
     /// <summary>
     /// Asynchronously uploads a file to an Amazon S3 bucket.
     /// </summary>
@@ -150,6 +158,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
         return PutObjectInternalAsync(bucketName, filePath, contentType, serverSideEncryptionMethod, fileAcl,
             cancellationToken);
     }
+
     /// <summary>
     /// Downloads a file from an Amazon S3 bucket.
     /// </summary>
@@ -188,6 +197,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
 
         return base.CreateDefaultRetryPolicy().Execute(() => new TransferUtility(S3Client).OpenStream(request));
     }
+
     /// <summary>
     /// Downloads a file from an Amazon S3 bucket as a stream using the provided URL.
     /// </summary>
@@ -199,6 +209,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
 
         return DownloadStream(bucket, fileKey);
     }
+
     /// <summary>
     /// Asynchronously downloads a file from an Amazon S3 bucket as a stream.
     /// </summary>
@@ -224,6 +235,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
                     .ConfigureAwait(false))
             .ConfigureAwait(false);
     }
+
     /// <summary>
     /// Asynchronously downloads a file from an Amazon S3 bucket as a stream using the provided URL.
     /// </summary>
@@ -236,6 +248,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
 
         return DownloadStreamAsync(bucket, fileKey, cancellationToken);
     }
+
     /// <summary>
     /// Asynchronously gets the content of an object from a specified URL with the given encoding.
     /// </summary>
@@ -252,6 +265,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
 
         return await reader.ReadToEndAsync().ConfigureAwait(false);
     }
+
     /// <summary>
     /// Gets the content of an object from a specified URL with the given encoding.
     /// </summary>
@@ -287,6 +301,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
 
         return JsonSerializer.Deserialize<T>(content);
     }
+
     /// <summary>
     /// Gets a pre-signed URL for accessing an object in the S3 bucket.
     /// </summary>
@@ -310,6 +325,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
 
         return base.CreateDefaultRetryPolicy().Execute(() => S3Client.GetPreSignedURL(request));
     }
+
     /// <summary>
     /// Generates a pre-signed URL for accessing an object in the S3 bucket.
     /// </summary>
@@ -329,6 +345,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
         return base.CreateDefaultRetryPolicy().Execute(() =>
             ((IAmazonS3)S3Client).GeneratePreSignedURL(bucketName, key, expiration, additionalProperties));
     }
+
     /// <summary>
     /// Asynchronously uploads a directory to the specified Amazon S3 bucket.
     /// </summary>
@@ -364,6 +381,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
                     .ConfigureAwait(false))
             .ConfigureAwait(false);
     }
+
     /// <summary>
     /// Uploads a file to the specified Amazon S3 bucket from a stream.
     /// </summary>
@@ -388,6 +406,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
 
         return GetObjectUrl(bucketName, fileName);
     }
+
     /// <summary>
     /// Uploads a file to the specified Amazon S3 bucket from a local file path.
     /// </summary>
@@ -406,6 +425,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
 
         return Upload(bucketName, fileToUpload, fileName, metadata, serverSideEncryptionMethod, fileAcl);
     }
+
     /// <summary>
     /// Asynchronously uploads a file to the specified Amazon S3 bucket from a stream.
     /// </summary>
@@ -430,6 +450,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
 
         return GetObjectUrl(bucketName, fileName);
     }
+
     /// <summary>
     /// Asynchronously uploads an object from a local file path to the specified Amazon S3 bucket.
     /// </summary>
@@ -452,6 +473,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
         return UploadAsync(bucketName, fileToUpload, fileName, metadata, serverSideEncryptionMethod, fileAcl,
             cancellationToken);
     }
+
     /// <summary>
     /// Asynchronously checks if a folder exists in the specified Amazon S3 bucket.
     /// </summary>
@@ -466,6 +488,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
 
         return response.MaxKeys > 0;
     }
+
     /// <summary>
     /// Asynchronously checks if a file exists in the specified Amazon S3 bucket.
     /// </summary>
@@ -480,6 +503,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
 
         return response.S3Objects?.Count > 0;
     }
+
     /// <summary>
     /// Synchronously checks if a folder exists in the specified Amazon S3 bucket.
     /// </summary>
@@ -490,6 +514,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     {
         return AsyncHelper.RunSync(async () => await FolderExistsAsync(bucketName, key).ConfigureAwait(false));
     }
+
     /// <summary>
     /// Asynchronously deletes an object (file or folder) from the specified Amazon S3 bucket.
     /// </summary>
@@ -517,6 +542,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
 
         return response.HttpStatusCode == HttpStatusCode.OK;
     }
+
     /// <summary>
     /// Synchronously deletes an object (file or folder) from the specified Amazon S3 bucket.
     /// </summary>
@@ -527,6 +553,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     {
         return AsyncHelper.RunSync(async () => await DeleteObjectAsync(bucketName, key).ConfigureAwait(false));
     }
+
     /// <summary>
     /// Asynchronously copies an object (file or folder) from the source bucket to the destination bucket.
     /// </summary>
@@ -568,6 +595,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
 
         return response.HttpStatusCode == HttpStatusCode.OK;
     }
+
     /// <summary>
     /// Asynchronously uploads an object serialized as JSON to the specified Amazon S3 bucket.
     /// </summary>
@@ -599,6 +627,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
         return await UploadAsync(bucketName, stream, fileName, metadata, serverSideEncryptionMethod, fileAcl,
             cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Asynchronously lists objects in the specified Amazon S3 bucket matching the provided key.
     /// </summary>
@@ -636,6 +665,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     {
         return "https://s3.amazonaws.com/" + $"{bucketName}/{fileKey}";
     }
+
     /// <summary>
     /// Asynchronously puts an object in the specified Amazon S3 bucket from a local file path.
     /// </summary>
@@ -657,6 +687,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
         return await PutObjectAsync(bucketName, stream, fileName, contentType, serverSideEncryptionMethod, fileAcl,
             cancellationToken).ConfigureAwait(false);
     }
+
     /// <summary>
     /// Asynchronously puts an object in the specified Amazon S3 bucket from a stream.
     /// </summary>
@@ -676,7 +707,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
 
         activity?.SetTag("s3.bucket_name", bucketName);
         activity?.SetTag("s3.filename", fileName);
-        
+
         var fileKey = Path.GetFileName(fileName);
 
         var request = new PutObjectRequest

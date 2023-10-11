@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Configuration;
 
 namespace Innovt.AspNetCore.Filters;
+
 /// <summary>
 /// Represents the response received from reCAPTCHA verification.
 /// </summary>
@@ -22,18 +23,22 @@ internal class RecaptchaResponse
     /// Indicates whether the reCAPTCHA verification was successful.
     /// </summary>
     public bool success { get; set; }
+
     /// <summary>
     /// The score obtained from the reCAPTCHA verification.
     /// </summary>
     public decimal score { get; set; }
+
     /// <summary>
     /// The action associated with the reCAPTCHA verification.
     /// </summary>
     public string action { get; set; }
+
     /// <summary>
     /// The timestamp of the challenge.
     /// </summary>
     public string challenge_ts { get; set; }
+
     /// <summary>
     /// The hostname from which the reCAPTCHA verification originated.
     /// </summary>
@@ -49,6 +54,7 @@ internal class RecaptchaResponse
 public sealed class CaptchaValidatorFilterAttribute : ActionFilterAttribute
 {
     private const string CaptchaUri = "https://www.google.com/recaptcha/api/siteverify";
+
     /// <summary>
     /// Initializes a new instance of the <see cref="CaptchaValidatorFilterAttribute"/> class.
     /// </summary>
@@ -56,22 +62,27 @@ public sealed class CaptchaValidatorFilterAttribute : ActionFilterAttribute
     {
         DefaultToken = "inn0ut#";
     }
+
     /// <summary>
     /// Gets or sets the anti-forgery token.
     /// </summary>
     public string AntiForgery { get; }
+
     /// <summary>
     /// Gets or sets the hostname.
     /// </summary>
     public string HostName { get; }
+
     /// <summary>
     /// Gets or sets the secret key for reCAPTCHA validation.
     /// </summary>
     public string SecretKey { get; internal set; }
+
     /// <summary>
     /// Gets or sets the default reCAPTCHA token to accept without validation.
     /// </summary>
     public string DefaultToken { get; set; }
+
     /// <summary>
     /// Reads the reCAPTCHA configuration from the configuration provider.
     /// </summary>
@@ -90,6 +101,7 @@ public sealed class CaptchaValidatorFilterAttribute : ActionFilterAttribute
             throw new ConfigurationException(
                 "Recaptcha section not found.The Recaptcha should contain: Recaptcha:SecretKey");
     }
+
     /// <summary>
     /// Validates the reCAPTCHA token using the Google reCAPTCHA API.
     /// </summary>
@@ -124,6 +136,7 @@ public sealed class CaptchaValidatorFilterAttribute : ActionFilterAttribute
 
         return captchaResponse.success;
     }
+
     /// <summary>
     /// Overrides the <see cref="ActionFilterAttribute.OnActionExecutionAsync"/> method to validate the reCAPTCHA token.
     /// </summary>

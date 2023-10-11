@@ -17,25 +17,28 @@ namespace Innovt.Domain.Contacts;
 /// </summary>
 public class ContactType : ValueObject<int>
 {
-    private ContactType()
-    {
-    }
     /// <summary>
     /// Gets or sets the name of the contact type.
     /// </summary>
-    [Required] public string Name { get; set; }
+    [Required]
+    public string Name { get; set; }
+
     /// <summary>
     /// Gets or sets the description of the contact type.
     /// </summary>
-    [Required] public string Description { get; set; }
+    [Required]
+    public string Description { get; set; }
+
     /// <summary>
     /// Gets or sets the URL to an icon associated with the contact type.
     /// </summary>
     public string IconUrl { get; set; }
+
     /// <summary>
     /// Gets or sets the regular expression for validation of contact values.
     /// </summary>
     public string RegexValidation { get; set; }
+
     /// <summary>
     /// Creates a new contact type with the given name and description.
     /// </summary>
@@ -50,6 +53,25 @@ public class ContactType : ValueObject<int>
             Description = description
         };
     }
+
+    /// <summary>
+    /// Creates a new contact type with the given name, description and regex Validation
+    /// </summary>
+    /// <returns></returns>
+    /// <param name="name">The name of the contact type.</param>
+    /// <param name="description">The description of the contact type.</param>
+    /// <param name="regexValidation">An Regex expression to validate the Value</param>
+    /// <returns>A new <see cref="ContactType"/> instance.</returns>
+    public static ContactType Create(string name, string description, string regexValidation)
+    {
+        return new ContactType
+        {
+            Name = name,
+            Description = description,
+            RegexValidation = regexValidation
+        };
+    }
+
     /// <summary>
     /// Validates a contact value based on the regex validation.
     /// </summary>
