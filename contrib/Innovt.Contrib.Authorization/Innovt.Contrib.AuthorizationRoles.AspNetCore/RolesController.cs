@@ -10,18 +10,31 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Innovt.Contrib.AuthorizationRoles.AspNetCore;
 
+/// <summary>
+/// API controller for managing roles.
+/// </summary>
 [ApiController]
 [Route("Authorization/[controller]")]
 public class RolesController : ControllerBase
 {
     private readonly IAuthorizationAppService authorizationAppService;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RolesController"/> class.
+    /// </summary>
+    /// <param name="authorizationAppService">The authorization application service.</param>
     public RolesController(IAuthorizationAppService authorizationAppService)
     {
         this.authorizationAppService = authorizationAppService ??
                                        throw new ArgumentNullException(nameof(authorizationAppService));
     }
 
+    /// <summary>
+    /// Gets a list of roles based on the provided filter.
+    /// </summary>
+    /// <param name="filter">The filter for role retrieval.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A list of roles based on the filter.</returns>
     [HttpGet]
     [ProducesResponseType(typeof(IList<RoleDto>), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
