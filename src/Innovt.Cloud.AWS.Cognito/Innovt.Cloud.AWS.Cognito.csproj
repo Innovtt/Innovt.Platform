@@ -14,7 +14,7 @@
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="AWSSDK.CognitoIdentityProvider" Version="3.7.203.7"/>
+        <PackageReference Include="AWSSDK.CognitoIdentityProvider" Version="3.7.203.8" />
         <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="7.0.2"/>
         <PackageReference Include="System.Text.Json" Version="7.0.3"/>
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.4">

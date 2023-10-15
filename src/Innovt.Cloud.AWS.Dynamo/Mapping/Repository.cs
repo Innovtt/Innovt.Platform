@@ -1,7 +1,7 @@
 ﻿// Innovt Company
 // Author: Michel Borges
 // Project: Innovt.Cloud.AWS.Dynamo
-/*
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -29,15 +29,20 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
     private DynamoDBContext context;
     private AmazonDynamoDBClient dynamoClient;
-
+    
     protected Repository(ILogger logger, IAwsConfiguration configuration) : base(logger, configuration)
-    {
+    { 
     }
 
     protected Repository(ILogger logger, IAwsConfiguration configuration, string region) : base(logger,
         configuration, region)
     {
     }
+    
+    /// <summary>
+    /// O objetivo é criar um repositorio onde o repositorio passa a resolver o mapping baseado no tipo de entidade.
+    /// Para isso o cliente devera configurar o contexto e adicionar as entidades que ele mapeou.
+    /// </summary>
 
     private DynamoDBContext Context => context ??= new DynamoDBContext(DynamoClient);
     private AmazonDynamoDBClient DynamoClient => dynamoClient ??= CreateService<AmazonDynamoDBClient>();
@@ -52,6 +57,10 @@ public abstract class Repository : AwsBaseService, ITableRepository
     public async Task<T> GetByIdAsync<T>(object id, string rangeKey = null,
         CancellationToken cancellationToken = default) where T : ITableMessage
     {
+        //Aqui seria, se o cliente passar uma entidade,
+        //Pegar a entidade na lista de entities do contexto e o mapping
+        //e fazer o mapping da entidade para o tipo T
+        
         using (ActivityRepository.StartActivity(nameof(GetByIdAsync)))
         {
             var policy = CreateDefaultRetryAsyncPolicy();
@@ -528,5 +537,5 @@ public abstract class Repository : AwsBaseService, ITableRepository
         context?.Dispose();
         dynamoClient?.Dispose();
     }
-}*/
+}
 

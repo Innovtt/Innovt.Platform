@@ -19,9 +19,9 @@
         <PackageReference Include="Amazon.Extensions.Configuration.SystemsManager" Version="6.0.0"/>
         <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="7.0.0"/>
         <PackageReference Include="Amazon.Lambda.Core" Version="2.1.0"/>
-        <PackageReference Include="Amazon.Lambda.RuntimeSupport" Version="1.8.8"/>
+        <PackageReference Include="Amazon.Lambda.RuntimeSupport" Version="1.9.0" />
         <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.3.1"/>
-        <PackageReference Include="AWSSDK.XRay" Version="3.7.201.15"/>
+        <PackageReference Include="AWSSDK.XRay" Version="3.7.201.16" />
     </ItemGroup>
 
 </Project>
