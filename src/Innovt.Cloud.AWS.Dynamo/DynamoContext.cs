@@ -1,39 +1,42 @@
 using System.Collections.Generic;
-using Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
+using System.Diagnostics.CodeAnalysis;
+using Innovt.Cloud.AWS.Dynamo.Mapping;
 
 namespace Innovt.Cloud.AWS.Dynamo;
 
 public abstract class DynamoContext
 {
-    private static ModelBuilder modelBuilder;
+    public bool EnableChangingTracking { get; set; }
     
-    public DynamoContext()
+    private static ModelBuilder _modelBuilder;
+
+    protected DynamoContext()
     {
+        EnableChangingTracking = false;
     }
     
     ~DynamoContext()
     {
-        modelBuilder = null;
+        _modelBuilder = null;
     }
-
     internal void BuildModel()
     {
-        if(modelBuilder is not null)
+        if(_modelBuilder is not null)
             return;
         
-        modelBuilder ??= new ModelBuilder();
+        _modelBuilder ??= new ModelBuilder();
 
-        OnModelCreating(modelBuilder);
+        OnModelCreating(_modelBuilder);
     }
     
-    protected abstract void OnModelCreating(ModelBuilder modelBuilder);
+    protected abstract void OnModelCreating([DisallowNull]ModelBuilder modelBuilder);
 }
 
 public class ModelBuilder
 {
-    private Dictionary<string, object> entities = new();
+    private readonly Dictionary<string, object> entities = new();
     
-    public void AddConfiguration<T>(EntityTypeBuilder<T>  entityTypeBuilder) where T:class
+    public void AddConfiguration<T>(IEntityTypeDataModelMapper<T> entityTypeBuilder) where T:class
     {
         var entityName = typeof(T).Name;
         
@@ -42,7 +45,6 @@ public class ModelBuilder
         
         entities.Add(entityName,entityTypeBuilder);
     }
-
 
     public Dictionary<string, object> Entities => entities;
     
