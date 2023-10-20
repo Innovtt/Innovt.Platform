@@ -458,7 +458,27 @@ public static class Extensions
         stream.CopyTo(mStream);
         return "data:" + mimeType + ";base64," + Convert.ToBase64String(mStream.ToArray());
     }
-
+    
+    /// <summary>
+    /// Returns a string containing the mime type for a given file name.
+    /// </summary>
+    /// <param name="fileName"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentNullException"></exception>
+    public static string GetMimeType(this string fileName)
+    {
+        var fileExtension = Path.GetExtension(fileName);
+        
+        return fileExtension switch
+        {
+            ".png" => "image/png",
+            ".jpg" => "image/jpeg",
+            ".jpeg" => "image/jpeg",
+            ".pdf" => "application/pdf",
+            _ => "application/octet-stream"
+        };
+    }
+    
     /// <summary>
     /// Converts a stream to a base 64 string
     /// </summary>

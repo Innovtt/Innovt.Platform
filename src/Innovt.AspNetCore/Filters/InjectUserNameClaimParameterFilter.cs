@@ -4,6 +4,7 @@
 
 using System.Security.Claims;
 using Innovt.Core.Utilities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Innovt.AspNetCore.Filters;

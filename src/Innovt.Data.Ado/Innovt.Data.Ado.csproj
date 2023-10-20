@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <PackageId>Innovt.Data.Ado</PackageId>
-        <PackageVersion>7.0.44</PackageVersion>
+        <PackageVersion>7.0.45</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -12,7 +12,7 @@
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Dapper" Version="2.1.11" />
+        <PackageReference Include="Dapper" Version="2.1.15" />
         <PackageReference Include="Npgsql" Version="7.0.6"/>
         <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="3.21.120"/>
         <PackageReference Include="System.Data.SqlClient" Version="4.8.5"/>
