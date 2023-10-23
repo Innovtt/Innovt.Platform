@@ -1,0 +1,11 @@
+
+Xcsharpsquid:S6562Ç"5Provide the "DateTimeKind" when creating this object.(‚»úîúÿÿÿÿ
+Scsharpsquid:S6562"5Provide the "DateTimeKind" when creating this object.(è¯»
+Xcsharpsquid:S6562™"5Provide the "DateTimeKind" when creating this object.(†…ŞÕûÿÿÿÿ
+ucsharpsquid:S3776£"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(Î³«ùÿÿÿÿ
+\csharpsquid:S4136ö"9All 'FormatToPeriod' method overloads should be adjacent.(Öòùùÿÿÿÿÿ
+Scsharpsquid:S5773º"5Restrict types of objects allowed to be deserialized.(ö–¨Í
+ccsharpsquid:S6612p"AUse the lambda parameter instead of capturing the argument 'type'(¶‹ŒŸÿÿÿÿÿ
+„csharpsquid:S6588‚"aUse "DateTime.UnixEpoch" instead of creating DateTime instances that point to the unix epoch time(­¤Ì’şÿÿÿÿ
+csharpsquid:S6588"aUse "DateTime.UnixEpoch" instead of creating DateTime instances that point to the unix epoch time(è¯»
+„csharpsquid:S6588™"aUse "DateTime.UnixEpoch" instead of creating DateTime instances that point to the unix epoch time(†…ŞÕûÿÿÿÿ
