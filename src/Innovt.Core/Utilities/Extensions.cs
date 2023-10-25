@@ -393,7 +393,7 @@ public static class Extensions
     /// Converts a DateTime to the Brazilian time zone (UTC-3).
     /// </summary>
     /// <param name="date">The DateTime to convert.</param>
-    /// <returns>The DateTime converted to the Brazilian time zone.</returns
+    /// <returns>The DateTime converted to the Brazilian time zone.</returns>
     public static DateTime ToBrazilianTimeZone(this DateTime date)
     {
         var dateUtc = date.ToUniversalTime().Subtract(TimeSpan.FromHours(3));
@@ -473,7 +473,26 @@ public static class Extensions
         stream.CopyTo(mStream);
         return Convert.ToBase64String(mStream.ToArray());
     }
+    
+    /// <summary>
+    /// Returns a mimetype based on the file extension
+    /// </summary>
+    /// <param name="fileName"></param>
+    /// <returns></returns>
+    public static string GetMimeType(this string fileName)
+    {
+        var fileExtension = Path.GetExtension(fileName);
 
+        return fileExtension switch
+        {
+            ".png" => "image/png",
+            ".jpg" => "image/jpeg",
+            ".jpeg" => "image/jpeg",
+            ".pdf" => "application/pdf",
+            _ => "application/octet-stream"
+        };
+    }
+    
     #region [From Net Code]
 
     /// <summary>
