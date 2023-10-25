@@ -20,7 +20,4 @@
         <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda.Cognito.Events\Innovt.Cloud.AWS.Lambda.Cognito.Events.csproj"/>
         <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda\Innovt.Cloud.AWS.Lambda.csproj"/>
     </ItemGroup>
-    <ItemGroup>
-        <Folder Include="Handlers\"/>
-    </ItemGroup>
 </Project>
