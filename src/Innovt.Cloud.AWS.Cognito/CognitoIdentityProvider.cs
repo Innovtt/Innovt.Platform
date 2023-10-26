@@ -154,6 +154,53 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         }
     }
 
+    /// <summary>
+    /// Link user and social account. This is used to avoid billing issues and other problems.
+    /// </summary>
+    /// <param name="command"></param>
+    /// <param name="cancellationToken"></param>
+    /// <exception cref="Exception"></exception>
+    public async Task LinkSocialUser(LinkSocialAccountRequest command, CancellationToken cancellationToken = default)
+    {
+        command.EnsureIsValid();
+
+        using var activity = CognitoIdentityProviderActivitySource.StartActivity();
+        
+        var users = await ListUsersAsync(command.Email, cancellationToken); 
+       
+        var localUser = users.Users.SingleOrDefault(u => u.UserStatus != "EXTERNAL_PROVIDER");
+        
+        if(localUser is null)
+            return; 
+        
+        var request = new AdminLinkProviderForUserRequest()
+        {
+            UserPoolId = userPoolId,
+            DestinationUser = new ProviderUserIdentifierType()
+            {
+                ProviderName = "Cognito",
+                ProviderAttributeValue = localUser.Username
+            },
+            SourceUser = new ProviderUserIdentifierType()
+            {
+                ProviderName = command.ProviderName,
+                ProviderAttributeName = "Cognito_Subject",
+                ProviderAttributeValue = command.ProviderValue
+            }
+        };
+        
+        try
+        {   
+            await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+                await CognitoProvider.AdminLinkProviderForUserAsync(request, cancellationToken
+                )).ConfigureAwait(false);
+        }
+        catch (Exception ex)
+        {
+            throw CatchException(ex);
+        }
+    }
+
     public virtual async Task<SignInResponse> SignIn(OtpSignInRequest command,
         CancellationToken cancellationToken = default)
     {
