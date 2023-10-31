@@ -121,21 +121,25 @@ public abstract class BaseEventProcessor
     }
 
     /// <summary>
-    /// Sets up the application configuration using environment variables and JSON files.
+    /// Sets up the application configuration using environment variables and JSON files. When the configuration is already set, this method does nothing.
     /// </summary>
     protected virtual void SetupConfiguration()
     {
+        //In this case the configuration is already set.
+        if(Configuration is not null)
+            return;
+        
         var configBuilder = new ConfigurationBuilder();
         configBuilder.AddEnvironmentVariables();
         configBuilder.AddJsonFile("appsettings.json", true);
-
+        
         var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
         if (!string.IsNullOrWhiteSpace(environmentName))
             configBuilder.AddJsonFile($"appsettings.{environmentName.ToLower(CultureInfo.CurrentCulture)}.json", true);
 
         EnrichConfiguration(configBuilder);
-
+        
         Configuration = configBuilder.Build();
     }
 

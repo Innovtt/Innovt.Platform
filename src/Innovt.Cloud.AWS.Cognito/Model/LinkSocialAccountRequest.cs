@@ -19,19 +19,21 @@ public class LinkSocialAccountRequest : RequestBase
    /// </summary>
     [Required]
     public string Email { get; set; }
-    
-   /// <summary>
-   /// The provider name of the user to link the account. Can be Google, Facebook, etc.
-   /// </summary>
+   
     [Required]
-    public string ProviderName { get; set; }
-    
-   /// <summary>
-   /// The parameter value of the user to link the account. Can be the email, the id, sub, etc.
-   /// </summary>
-    [Required]
-    public string ProviderValue { get; set; }
-    
+    public string UserName { get; set; }
+
+
+    public LinkSocialAccountRequest()
+    {
+        
+    }
+
+    public LinkSocialAccountRequest(string email, string userName)
+    {
+        Email = email;
+        UserName = userName;
+    }
     /// <inheritdoc/>
     public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
