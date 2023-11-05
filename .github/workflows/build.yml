@@ -64,5 +64,7 @@ jobs:
         working-directory: src
         run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }}
       - name: PushPackages
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
         #if: github.ref == 'refs/heads/main'
         run: dotnet nuget push "${{ env.NuGetDirectory }}\*.nupkg" --skip-duplicate --no-symbols true  
