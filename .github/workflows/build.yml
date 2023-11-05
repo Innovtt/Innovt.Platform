@@ -28,6 +28,9 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 7.0.302
+          source-url: https://nuget.pkg.github.com/Innovtt/index.json
+        env:
+           NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
         with:
@@ -47,8 +50,8 @@ jobs:
         run: |
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
-      - name: AddNugetSource
-        run: dotnet nuget add source --username USERNAME --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/Innovtt/index.json"
+     # - name: AddNugetSource
+     #   run: dotnet nuget add source --username USERNAME --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/Innovtt/index.json"
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
@@ -60,9 +63,9 @@ jobs:
           dotnet test -c Release --logger trx --results-directory ./testresults /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./testresults/coverage.opencover.xml
           ${{github.workspace}}\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="$SONAR_TOKEN"
       - name: PackProject
-        if: github.ref == 'refs/heads/main'
+        #if: github.ref == 'refs/heads/main'
         working-directory: src
         run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }}
-     # - name: PushPackages
-    #    #if: github.ref == 'refs/heads/main'
-      # run: dotnet nuget push "${{ env.NuGetDirectory }}\*.nupkg" --api-key ${{ secrets.SPRPUBLISH }} --source "github" --skip-duplicate  
+      - name: PushPackages
+        #if: github.ref == 'refs/heads/main'
+        run: dotnet nuget push "${{ env.NuGetDirectory }}\*.nupkg" --source "github" --skip-duplicate --no-symbols true  
