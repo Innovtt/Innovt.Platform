@@ -15,20 +15,7 @@ namespace Innovt.AspNetCore.Filters;
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
 public sealed class InjectClaimParameterFilterAttribute : ActionFilterAttribute
 {   
-    /// <summary>
-    /// Initializes a new instance of the <see cref="InjectClaimParameterFilterAttribute"/> class.
-    /// </summary>
-    /// <param name="defaultAuthorizationProperty">The default authorization property to inject the username.</param>
-    /// <param name="actionParameters">The action parameters to inject the username.</param>
-    public InjectClaimParameterFilterAttribute(string defaultAuthorizationProperty, params string[] actionParameters)
-    {
-        Check.NotNull(defaultAuthorizationProperty, nameof(defaultAuthorizationProperty));
-        Check.NotNull(actionParameters, nameof(actionParameters));
-
-        DefaultAuthorizationProperty = defaultAuthorizationProperty;
-        ActionParameters = actionParameters;
-        ClaimTypeCheck = ClaimTypes.NameIdentifier;
-    }
+    private readonly string[] defaultActionParameters = {"filter", "command"};
 
     /// <summary>
     /// Initializes a new instance of the <see cref="InjectClaimParameterFilterAttribute"/> class.
@@ -39,12 +26,22 @@ public sealed class InjectClaimParameterFilterAttribute : ActionFilterAttribute
     public InjectClaimParameterFilterAttribute(string defaultAuthorizationProperty,string claimTypeCheck, params string[] actionParameters)
     {
         Check.NotNull(defaultAuthorizationProperty, nameof(defaultAuthorizationProperty));
-        Check.NotNull(actionParameters, nameof(actionParameters));
         Check.NotNull(claimTypeCheck, nameof(claimTypeCheck));
 
         DefaultAuthorizationProperty = defaultAuthorizationProperty;
-        ActionParameters = actionParameters;
+        ActionParameters = (actionParameters is null || actionParameters.Length == 0)
+            ? defaultActionParameters
+            : actionParameters;
         ClaimTypeCheck = claimTypeCheck;
+    }
+    
+    /// <summary>
+    /// Initializes a new instance of the <see cref="InjectClaimParameterFilterAttribute"/> class.
+    /// </summary>
+    /// <param name="defaultAuthorizationProperty">The default authorization property to inject the username.</param>
+    /// <param name="actionParameters">The action parameters to inject the username.</param>
+    public InjectClaimParameterFilterAttribute(string defaultAuthorizationProperty, params string[] actionParameters):this(defaultAuthorizationProperty, ClaimTypes.NameIdentifier, actionParameters)
+    {
     }
     
     /// <summary>
@@ -58,7 +55,7 @@ public sealed class InjectClaimParameterFilterAttribute : ActionFilterAttribute
     /// Gets the default authorization property for injecting the username.
     /// </summary>
     public string DefaultAuthorizationProperty { get; }
-    
+
     /// <summary>
     /// Get the default claim type to check.
     /// </summary>
@@ -69,10 +66,10 @@ public sealed class InjectClaimParameterFilterAttribute : ActionFilterAttribute
     /// </summary>
     public string[] ActionParameters { get; }
 
-   /// <summary>
-   /// This method will inject the claim in the action parameter. In case of string it will inject the claim value, in case of other type it will convert the claim value to the type. 
-   /// </summary>
-   /// <param name="context"></param>
+    /// <summary>
+    /// This method will inject the claim in the action parameter. In case of string it will inject the claim value, in case of other type it will convert the claim value to the type. 
+    /// </summary>
+    /// <param name="context"></param>
     private void InjectUserName(ActionExecutingContext? context)
     {
         if (context is null)

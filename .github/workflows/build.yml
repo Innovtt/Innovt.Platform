@@ -1,0 +1,68 @@
+name: SonarCloud
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+env:
+  NuGetDirectory: ${{github.workspace}}\nuget
+  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  SONAR_PROJECTKEY: Innovtt_Innovt.Platform
+  SONAR_ORGANIZATION: innovt
+jobs:
+  build:
+    name: Build and analyze
+    runs-on: windows-latest #ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'zulu' # Alternative distribution options are available.
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.0.302
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v3
+        with:
+          path: ~\sonar\cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Cache SonarCloud scanner
+        id: cache-sonar-scanner
+        uses: actions/cache@v3
+        with:
+          path: .\.sonar\scanner
+          key: ${{ runner.os }}-sonar-scanner
+          restore-keys: ${{ runner.os }}-sonar-scanner
+      - name: Install SonarCloud scanner
+        if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
+        shell: powershell
+        run: |
+          New-Item -Path .\.sonar\scanner -ItemType Directory
+          dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+      - name: AddNugetSource
+        run: dotnet nuget add source --username USERNAME --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/Innovtt/index.json"
+      - name: Build and analyze
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+        shell: powershell
+        working-directory: src
+        run: |
+          ${{github.workspace}}\.sonar\scanner\dotnet-sonarscanner begin /k:"$SONAR_PROJECTKEY" /o:"$SONAR_ORGANIZATION" /d:sonar.token="$SONAR_TOKEN" /d:sonar.host.url="https://sonarcloud.io"
+          dotnet build -c Release
+          dotnet test -c Release --logger trx --results-directory ./testresults /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./testresults/coverage.opencover.xml
+          ${{github.workspace}}\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="$SONAR_TOKEN"
+      - name: PackProject
+        if: github.ref == 'refs/heads/main'
+        working-directory: src
+        run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }}
+     # - name: PushPackages
+    #    #if: github.ref == 'refs/heads/main'
+      # run: dotnet nuget push "${{ env.NuGetDirectory }}\*.nupkg" --api-key ${{ secrets.SPRPUBLISH }} --source "github" --skip-duplicate  
