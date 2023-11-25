@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <IsPackable>false</IsPackable>
     </PropertyGroup>
@@ -26,11 +26,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Datadog.Trace.OpenTracing" Version="2.40.0" />
-        <PackageReference Include="ServiceStack.Redis" Version="6.11.0"/>
+        <PackageReference Include="Datadog.Trace.OpenTracing" Version="2.42.0" />
+        <PackageReference Include="ServiceStack.Redis" Version="8.0.0" />
         <PackageReference Include="OpenTelemetry" Version="1.6.0"/>
-        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="7.0.0"/>
-        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
         <PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.6.0"/>
         <PackageReference Include="OpenTelemetry.Exporter.Jaeger" Version="1.5.1"/>
     </ItemGroup>
