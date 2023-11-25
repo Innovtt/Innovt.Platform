@@ -20,7 +20,6 @@ public abstract class BaseEventProcessor
     /// <summary>
     /// Initializes a new instance of the <see cref="BaseEventProcessor"/> class with an optional logger.
     /// </summary>
-    /// <param name="logger">An optional logger for recording processing information.</param>
     protected static readonly ActivitySource EventProcessorActivitySource =
         new("Innovt.Cloud.AWS.Lambda.EventProcessor");
 
@@ -33,7 +32,26 @@ public abstract class BaseEventProcessor
     {
         Logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
-
+    /// <summary>
+    /// Allows to use the configuration and logger from outside. In This case, the method SetupConfiguration will not be called.
+    /// </summary>
+    /// <param name="logger">The logger provider.</param>
+    /// <param name="configuration">The configuration to be used.</param>
+    /// <exception cref="ArgumentNullException">If the logger or configuration is null.</exception>
+    protected BaseEventProcessor(ILogger logger,IConfigurationRoot configuration):this(logger)
+    {   
+        Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+    }
+    
+    /// <summary>
+    /// Allows to use the configuration from outside. In This case, the method SetupConfiguration will not be called.
+    /// </summary>
+    /// <param name="configuration">The configuration to be used.</param>
+    /// <exception cref="ArgumentNullException">If the logger or configuration is null.</exception>
+    protected BaseEventProcessor(IConfigurationRoot configuration)
+    {
+        Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+    }
     protected BaseEventProcessor()
     {
     }
