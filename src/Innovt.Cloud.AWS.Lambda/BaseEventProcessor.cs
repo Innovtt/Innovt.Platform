@@ -32,17 +32,18 @@ public abstract class BaseEventProcessor
     {
         Logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
+
     /// <summary>
     /// Allows to use the configuration and logger from outside. In This case, the method SetupConfiguration will not be called.
     /// </summary>
     /// <param name="logger">The logger provider.</param>
     /// <param name="configuration">The configuration to be used.</param>
     /// <exception cref="ArgumentNullException">If the logger or configuration is null.</exception>
-    protected BaseEventProcessor(ILogger logger,IConfigurationRoot configuration):this(logger)
-    {   
+    protected BaseEventProcessor(ILogger logger, IConfigurationRoot configuration) : this(logger)
+    {
         Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
     }
-    
+
     /// <summary>
     /// Allows to use the configuration from outside. In This case, the method SetupConfiguration will not be called.
     /// </summary>
@@ -52,6 +53,7 @@ public abstract class BaseEventProcessor
     {
         Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
     }
+
     protected BaseEventProcessor()
     {
     }
@@ -144,20 +146,20 @@ public abstract class BaseEventProcessor
     protected virtual void SetupConfiguration()
     {
         //In this case the configuration is already set.
-        if(Configuration is not null)
+        if (Configuration is not null)
             return;
-        
+
         var configBuilder = new ConfigurationBuilder();
         configBuilder.AddEnvironmentVariables();
         configBuilder.AddJsonFile("appsettings.json", true);
-        
+
         var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
         if (!string.IsNullOrWhiteSpace(environmentName))
             configBuilder.AddJsonFile($"appsettings.{environmentName.ToLower(CultureInfo.CurrentCulture)}.json", true);
 
         EnrichConfiguration(configBuilder);
-        
+
         Configuration = configBuilder.Build();
     }
 

@@ -20,9 +20,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 7.0.302
-          include-prerelease: false
-          fetch-depth: 0
+          dotnet-version: 8.0.100
       - name: Setting Workspace
         working-directory: ${{ github.workspace }}
         run: ls -la

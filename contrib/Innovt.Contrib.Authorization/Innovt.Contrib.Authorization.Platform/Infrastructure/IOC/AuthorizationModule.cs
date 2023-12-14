@@ -16,7 +16,7 @@ namespace Innovt.Contrib.Authorization.Platform.Infrastructure.IOC;
 /// <summary>
 /// Represents a module for configuring authorization-related services in the Inversion of Control (IoC) container.
 /// </summary>
-public class AuthorizationModule : IOCModule
+public class AuthorizationModule : IocModule
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="AuthorizationModule"/> class.

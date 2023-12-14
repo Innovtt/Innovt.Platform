@@ -44,9 +44,9 @@ public sealed class Container : IContainer
     /// </summary>
     /// <param name="iocModule">The IoC module providing services for the container.</param>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="iocModule"/> is null.</exception>
-    public Container(IOCModule iocModule)
+    public Container(IocModule iocModule)
     {
-        if (iocModule is null) throw new ArgumentNullException(nameof(iocModule));
+        ArgumentNullException.ThrowIfNull(iocModule);
 
         container = new Lamar.Container(iocModule.GetServices());
     }
@@ -56,9 +56,9 @@ public sealed class Container : IContainer
     /// </summary>
     /// <param name="iocModule">The IoC module providing services to be added.</param>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="iocModule"/> is null.</exception>
-    public void AddModule(IOCModule iocModule)
+    public void AddModule(IocModule iocModule)
     {
-        if (iocModule is null) throw new ArgumentNullException(nameof(iocModule));
+        ArgumentNullException.ThrowIfNull(iocModule);
 
         var services = iocModule.GetServices();
 

@@ -28,5 +28,5 @@ public class PreSignupRequest : TriggerRequest
     /// </summary>
     [DataMember(Name = "validationData")]
     [JsonPropertyName("validationData")]
-    public Dictionary<string, string> ValidationData { get; set; } = new Dictionary<string, string>();
+    public Dictionary<string, string> ValidationData { get; set; } = new();
 }

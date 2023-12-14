@@ -34,8 +34,8 @@ public class Tests
 
         var result = await processor.Process(new SQSEvent(), lambdaContext);
 
-        Assert.IsNotNull(result);
-        Assert.IsNull(result.BatchItemFailures);
+        Assert.That(result, Is.Not.Null);
+        Assert.That(result.BatchItemFailures, Is.Null);
     }
 
 
@@ -87,10 +87,9 @@ public class Tests
 
         var result = await processor.Process(sQSEvent, lambdaContext);
 
-        Assert.IsNotNull(result);
-        Assert.IsNotNull(result.BatchItemFailures);
-        Assert.AreEqual(result.BatchItemFailures.Count, expectedMessageIdFailed.Count);
-
+        Assert.That(result, Is.Not.Null);
+        Assert.That(result.BatchItemFailures, Is.Not.Null);
+        Assert.That(result.BatchItemFailures.Count, Is.EqualTo(expectedMessageIdFailed.Count));
         foreach (var item in result.BatchItemFailures)
             if (!expectedMessageIdFailed.Contains(item.ItemIdentifier))
                 Assert.Fail(item.ItemIdentifier);
@@ -142,9 +141,9 @@ public class Tests
         //Will fail when person name is not michel
         var result = await processor.Process(sQSEvent, lambdaContext);
 
-        Assert.IsNotNull(result);
-        Assert.IsNotNull(result.BatchItemFailures);
-        Assert.AreEqual(result.BatchItemFailures.Count, expectedMessageIdFailed.Count);
+        Assert.That(result, Is.Not.Null);
+        Assert.That(result.BatchItemFailures, Is.Not.Null);
+        Assert.That(result.BatchItemFailures.Count, Is.EqualTo(expectedMessageIdFailed.Count));
     }
 
     [Test]
@@ -213,15 +212,15 @@ public class Tests
             }
         };
 
-        var sQSEvent = new SQSEvent
+        var sqsEvent = new SQSEvent
         {
             Records = messages
         };
 
         //Will fail when person name is not michel
-        var result = await processor.Process(sQSEvent, lambdaContext);
+        var result = await processor.Process(sqsEvent, lambdaContext);
 
-        Assert.IsNotNull(result);
-        Assert.IsNull(result.BatchItemFailures);
+        Assert.That(result, Is.Not.Null);
+        Assert.That(result.BatchItemFailures, Is.Null);
     }
 }

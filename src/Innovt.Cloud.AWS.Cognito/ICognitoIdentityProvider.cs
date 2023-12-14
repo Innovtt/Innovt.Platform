@@ -117,14 +117,11 @@ public interface ICognitoIdentityProvider
     /// <param name="command">The request object containing the updated user attributes.</param>
     /// <param name="cancellationToken">A token to cancel the operation if needed.</param>
     Task UpdateUserAttributes(UpdateUserAttributeRequest command, CancellationToken cancellationToken = default);
-    
+
     /// <summary>
     /// Link existent user account with a social user account to avoid billing issues and other problems.
     /// </summary>
     /// <param name="command">The request object containing the user poool and email from user.</param>
     /// <param name="cancellationToken">A token to cancel the operation if needed.</param>
     Task LinkSocialUser(LinkSocialAccountRequest command, CancellationToken cancellationToken = default);
-    
-    
-  
 }

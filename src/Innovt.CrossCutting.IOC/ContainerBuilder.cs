@@ -13,7 +13,7 @@ namespace Innovt.CrossCutting.IOC;
 /// </summary>
 public class ContainerBuilder : IDisposable
 {
-    private readonly IContainer container;
+    private readonly Container container;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ContainerBuilder"/> class using the provided services.

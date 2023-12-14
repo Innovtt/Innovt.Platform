@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Innovt.Core.Caching;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Test.Models;
+using Innovt.Core.Utilities;
 using Microsoft.Extensions.Caching.Memory;
 using NUnit.Framework;
 
@@ -61,11 +62,11 @@ public class MultiLayerCacheServiceTests
     {
         var value = cacheService.GetValue<int>("Quantity");
 
-        Assert.AreEqual(0, value);
+        Assert.That(0, Is.EqualTo(value));
 
         var value2 = cacheService.GetValue<object>("User");
 
-        Assert.IsNull(value2);
+        Assert.That(value2, Is.Null);
     }
 
 
@@ -74,8 +75,8 @@ public class MultiLayerCacheServiceTests
     {
         var value = await cacheService.GetValue<A>("Quantity", Factory, CancellationToken.None).ConfigureAwait(false);
 
-        Assert.IsNotNull(value);
-        Assert.AreEqual("Michel", value.Name);
+        Assert.That(value, Is.Not.Null);
+        Assert.That("Michel", Is.EqualTo(value.Name));
     }
 
 
@@ -89,18 +90,18 @@ public class MultiLayerCacheServiceTests
         var value = await cacheService.GetValueOrCreate<A>(key, Factory, expiration, CancellationToken.None)
             .ConfigureAwait(false);
 
-        Assert.IsNotNull(value);
-        Assert.AreEqual(expectedValue, value.Name);
+        Assert.That(value, Is.Not.Null);
+        Assert.That(expectedValue, Is.EqualTo(value.Name));
 
         Thread.Sleep(TimeSpan.FromSeconds(2));
 
         value = cacheService.GetValue<A>(key);
 
-        Assert.IsNotNull(value);
-        Assert.AreEqual(expectedValue, value.Name);
+        Assert.That(value, Is.Not.Null);
+        Assert.That(expectedValue, Is.EqualTo(value.Name));
     }
 
-    public Task<A> Factory(CancellationToken arg)
+    public static Task<A> Factory(CancellationToken arg)
     {
         return Task.FromResult(new A()
         {
@@ -109,7 +110,7 @@ public class MultiLayerCacheServiceTests
     }
 
     [Test]
-    public async Task SetValue()
+    public void SetValue()
     {
         var key = "Quantity";
         var expectedValue = 100;
@@ -118,7 +119,7 @@ public class MultiLayerCacheServiceTests
 
         var value = cacheService.GetValue<int>(key);
 
-        Assert.AreEqual(expectedValue, value);
+        Assert.That(expectedValue, Is.EqualTo(value));
     }
 
     [Test]
@@ -134,7 +135,7 @@ public class MultiLayerCacheServiceTests
 
         var value = cacheService.GetValue<int>(key);
 
-        Assert.AreEqual(expectedValue, value);
+        Assert.That(expectedValue, Is.EqualTo(value));
     }
 
 
@@ -150,6 +151,6 @@ public class MultiLayerCacheServiceTests
 
         var value = cacheService.GetValue<int>(key);
 
-        Assert.AreEqual(expectedValue, value);
+        Assert.That(expectedValue, Is.EqualTo(value));
     }
 }

@@ -32,6 +32,4 @@ public class PreSignupResponse : TriggerResponse
     [DataMember(Name = "autoVerifyEmail")]
     [JsonPropertyName("autoVerifyEmail")]
     public bool AutoVerifyEmail { get; set; }
-    
-    
 }

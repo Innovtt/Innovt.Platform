@@ -56,11 +56,11 @@ public class LocalCacheTests
     {
         var value = cacheService.GetValue<int>("Quantity");
 
-        Assert.AreEqual(0, value);
+        Assert.That(0, Is.EqualTo(value));
 
         var value2 = cacheService.GetValue<object>("User");
 
-        Assert.IsNull(value2);
+        Assert.That(value2, Is.Null);
     }
 
 
@@ -70,7 +70,7 @@ public class LocalCacheTests
         var value = await cacheService.GetValue<int?>("Quantity", Factory, CancellationToken.None)
             .ConfigureAwait(false);
 
-        Assert.AreEqual(10, value);
+        Assert.That(10, Is.EqualTo(value));
     }
 
 
@@ -85,13 +85,13 @@ public class LocalCacheTests
             .GetValueOrCreate<int?>(key, (c) => { return FactoryB(null, c); }, expiration, CancellationToken.None)
             .ConfigureAwait(false);
 
-        Assert.AreEqual(expectedValue, value);
+        Assert.That(expectedValue, Is.EqualTo(value));
 
-        Thread.Sleep(TimeSpan.FromSeconds(2));
+        await Task.Delay(TimeSpan.FromSeconds(2)).ConfigureAwait(false);
 
         value = cacheService.GetValue<int>(key);
 
-        Assert.AreEqual(expectedValue, value);
+        Assert.That(expectedValue, Is.EqualTo(value));
     }
 
 
@@ -101,7 +101,7 @@ public class LocalCacheTests
         return Task.FromResult<int?>(10);
     }
 
-    private Task<int?> FactoryB(object a, CancellationToken cancellation)
+    private static Task<int?> FactoryB(object a, CancellationToken cancellation = default)
     {
         return Task.FromResult<int?>(10);
     }
@@ -116,11 +116,11 @@ public class LocalCacheTests
 
         var value = cacheService.GetValue<int>(key);
 
-        Assert.AreEqual(expectedValue, value);
+        Assert.That(expectedValue, Is.EqualTo(value));
     }
 
     [Test]
-    public void SetValueWithSecondsShouldReturnNullTask()
+    public async Task SetValueWithSecondsShouldReturnNullTask()
     {
         var key = "Quantity";
         var expectedValue = 0;
@@ -128,11 +128,11 @@ public class LocalCacheTests
 
         cacheService.SetValue<int>(key, 100, TimeSpan.FromSeconds(1));
 
-        Thread.Sleep(expiration * 2);
+        await Task.Delay(expiration * 2).ConfigureAwait(false);
 
         var value = cacheService.GetValue<int>(key);
 
-        Assert.AreEqual(expectedValue, value);
+        Assert.That(expectedValue, Is.EqualTo(value));
     }
 
 
@@ -147,7 +147,6 @@ public class LocalCacheTests
         cacheService.Remove(key);
 
         var value = cacheService.GetValue<int>(key);
-
-        Assert.AreEqual(expectedValue, value);
+        Assert.That(expectedValue, Is.EqualTo(value));
     }
 }
