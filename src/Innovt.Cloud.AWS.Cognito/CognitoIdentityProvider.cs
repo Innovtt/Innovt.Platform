@@ -349,7 +349,6 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     /// <param name="request">A <see cref="ConfirmSignUpRequest"/> containing the necessary information to confirm the sign-up.</param>
     /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
     /// <exception cref="ArgumentNullException">Thrown when the <paramref name="request"/> is null.</exception>
-    /// <exception cref="ValidationException">Thrown when the <paramref name="request"/> fails validation.</exception>
     /// <exception cref="CatchException">Thrown when an error occurs while confirming the sign-up.</exception>
     /// <remarks>
     /// This method allows you to confirm the sign-up of a user with the specified confirmation code.
@@ -396,7 +395,6 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     /// <param name="command">A <see cref="ResendConfirmationCodeRequest"/> containing the necessary information to resend the confirmation code.</param>
     /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
     /// <exception cref="ArgumentNullException">Thrown when the <paramref name="command"/> is null.</exception>
-    /// <exception cref="ValidationException">Thrown when the <paramref name="command"/> fails validation.</exception>
     /// <exception cref="CatchException">Thrown when an error occurs while resending the confirmation code.</exception>
     /// <remarks>
     /// This method allows you to resend the confirmation code to a user with the specified username.
@@ -441,7 +439,6 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     /// <param name="command">A <see cref="ChangePasswordRequest"/> containing the necessary information to change the password.</param>
     /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
     /// <exception cref="ArgumentNullException">Thrown when the <paramref name="command"/> is null.</exception>
-    /// <exception cref="ValidationException">Thrown when the <paramref name="command"/> fails validation.</exception>
     /// <exception cref="CatchException">Thrown when an error occurs during password change.</exception>
     /// <remarks>
     /// This method allows you to change the password for a user by providing an access token and the new proposed password.
@@ -482,7 +479,6 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
     /// <returns>An instance of the specified response type containing user information.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the <paramref name="request"/> is null.</exception>
-    /// <exception cref="ValidationException">Thrown when the <paramref name="request"/> fails validation.</exception>
     /// <exception cref="CatchException">Thrown when an error occurs during user retrieval.</exception>
     /// <remarks>
     /// This method allows you to retrieve user information based on the specified request, such as
@@ -520,38 +516,8 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             user.Status = cognitoUser.UserStatus.ToString(cultureInfo);
             user.UserCreateDate = cognitoUser.UserCreateDate;
             user.UserLastModifiedDate = cognitoUser.UserLastModifiedDate;
-
-            foreach (var userAttribute in cognitoUser.Attributes.Where(userAttribute => userAttribute.Name != null))
-            {
-                switch (userAttribute.Name)
-                {
-                    case "name":
-                        user.FirstName = userAttribute.Value;
-                        break;
-                    case "family_name":
-                        user.LastName = userAttribute.Value;
-                        break;
-                    default:
-
-                        var propInfo = typeof(T).GetProperty(userAttribute.Name,
-                            BindingFlags.IgnoreCase | BindingFlags.Instance |
-                            BindingFlags.Public);
-
-                        if (propInfo != null)
-                        {
-                            propInfo.SetValue(user, userAttribute.Value);
-                        }
-                        else
-                        {
-                            user.CustomAttributes ??= new Dictionary<string, string>();
-                            user.CustomAttributes.Add(
-                                userAttribute.Name.Replace("custom:", "", StringComparison.OrdinalIgnoreCase),
-                                userAttribute.Value);
-                        }
-
-                        break;
-                }
-            }
+            
+            ParseUserAttributes(ref user, cognitoUser.Attributes);
 
             return user;
         }
@@ -560,6 +526,87 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             throw CatchException(ex);
         }
     }
+    
+    /// <summary>
+    /// Get user information based on the specified request and response type.
+    /// </summary>
+    /// <param name="accessToken">A valid access token.</param>
+    /// <param name="cancellationToken">A cancellationToken token</param>
+    /// <typeparam name="T">A response of type IGetUserResponse</typeparam>
+    /// <returns>Null or a valid user</returns>
+    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="Exception"></exception>
+    public virtual async Task<T> GetUser<T>(string accessToken, CancellationToken cancellationToken = default) where T : IGetUserResponse
+    {
+        if (accessToken == null) throw new ArgumentNullException(nameof(accessToken));
+
+        using var activity = CognitoIdentityProviderActivitySource.StartActivity();
+        
+        var getUsersRequest = new Amazon.CognitoIdentityProvider.Model.GetUserRequest()
+        {
+            AccessToken = accessToken
+        };
+
+        try
+        {
+            var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+                    await CognitoProvider.GetUserAsync(getUsersRequest, cancellationToken)
+                        .ConfigureAwait(false))
+                .ConfigureAwait(false);
+
+            if(response == null)
+                return default;
+            
+            var user = Activator.CreateInstance<T>();
+            user.UserName = response.Username;
+
+            ParseUserAttributes(ref user, response.UserAttributes);
+
+            return user;
+        }
+        catch (Exception ex)
+        {
+            throw CatchException(ex);
+        }
+    }
+
+    private static void ParseUserAttributes<T>(ref T user, IList<AttributeType> userAttributes)where T : IGetUserResponse
+    {
+        if(user is null) return;
+        if(userAttributes is null) return;
+        
+        foreach (var userAttribute in userAttributes.Where(userAttribute => userAttribute.Name != null))
+        {
+            switch (userAttribute.Name)
+            {
+                case "name":
+                    user.FirstName = userAttribute.Value;
+                    break;
+                case "family_name":
+                    user.LastName = userAttribute.Value;
+                    break;
+                default:
+
+                    var propInfo = typeof(T).GetProperty(userAttribute.Name,
+                        BindingFlags.IgnoreCase | BindingFlags.Instance |
+                        BindingFlags.Public);
+
+                    if (propInfo != null)
+                    {
+                        propInfo.SetValue(user, userAttribute.Value);
+                    }
+                    else
+                    {
+                        user.CustomAttributes ??= new Dictionary<string, string>();
+                        user.CustomAttributes.Add(
+                            userAttribute.Name.Replace("custom:", "", StringComparison.OrdinalIgnoreCase),
+                            userAttribute.Value);
+                    }
+                    break;
+            }
+        }
+    }
+     
 
     /// <summary>
     /// Responds to an authentication challenge with the appropriate challenge responses.
@@ -936,7 +983,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
                     await CognitoProvider.InitiateAuthAsync(authRequest, cancellationToken)
                         .ConfigureAwait(false))
                 .ConfigureAwait(false);
-
+            
             if (response.AuthenticationResult != null)
                 return new SignInResponse
                 {
@@ -945,6 +992,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
                     ExpiresIn = response.AuthenticationResult.ExpiresIn,
                     TokenType = response.AuthenticationResult.TokenType,
                     RefreshToken = response.AuthenticationResult.RefreshToken,
+                    
                     SignInType = "USER_PASSWORD_AUTH"
                 };
 

@@ -49,6 +49,16 @@ public interface ICognitoIdentityProvider
         where T : IGetUserResponse;
 
     /// <summary>
+    /// Retrieve user information based on the access token.
+    /// </summary>
+    /// <typeparam name="T">The response object type containing user information. Must implement the IGetUserResponse interface.</typeparam>
+    /// <param name="accessToken">A valid access token.</param>
+    /// <param name="cancellationToken">A token to cancel the operation if needed.</param>
+    /// <returns>The response object containing user information.</returns>
+    Task<T> GetUser<T>(string accessToken, CancellationToken cancellationToken = default) where T : IGetUserResponse;
+    
+    
+    /// <summary>
     /// Refresh the user's authentication token.
     /// </summary>
     /// <param name="command">The request object containing the refresh token.</param>
