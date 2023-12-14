@@ -42,16 +42,16 @@ public class AuthUserTests
         user.AssignRole(roleB);
         user.AssignRole(roleC);
 
-        Assert.IsNotNull(user.Roles);
-        Assert.IsTrue(user.Roles.Count == 3);
-
+        Assert.That(user.Roles, Is.Not.Null);
+        Assert.That(user.Roles.Count, Is.EqualTo(3));
+        
         user.UnAssignRole(roleB.Scope, roleB.Name);
 
-        Assert.IsNotNull(user.Roles);
-        Assert.IsTrue(user.Roles.Count == 2);
+        Assert.That(user.Roles, Is.Not.Null);
+        Assert.That(user.Roles.Count, Is.EqualTo(2));
+        
 
-        Assert.IsTrue(user.Roles.Count(r => r.Name == roleA.Name) == 1);
-
-        Assert.IsTrue(user.Roles.Count(r => r.Name == roleC.Name) == 1);
+        Assert.That(user.Roles.Count(r => r.Name == roleA.Name), Is.EqualTo(1));
+        Assert.That(user.Roles.Count(r => r.Name == roleC.Name), Is.EqualTo(1));
     }
 }

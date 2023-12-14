@@ -16,15 +16,14 @@ public class EntityTests
         var user = new UserEntity();
 
         var events = user.GetDomainEvents();
-
-        Assert.IsNull(events);
+        
+        Assert.That(events,Is.Null);
 
         user.AddDomainEvent(new UserCreated());
 
         events = user.GetDomainEvents();
 
-        Assert.IsNotNull(events);
-
-        Assert.AreEqual(1, events.Count);
+        Assert.That(events,Is.Not.Null);
+        Assert.That(events.Count,Is.EqualTo(1));
     }
 }

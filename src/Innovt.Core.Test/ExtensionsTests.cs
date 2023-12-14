@@ -21,6 +21,6 @@ public class ExtensionsTests
             "Hoje e o dia mais feliz da minha vida Espero que isso funcione Esse codigo foi baixado da WEB e ainda nao tenho como testar sem aspas";
 
 
-        Assert.IsTrue(actual.Equals(expected, StringComparison.InvariantCultureIgnoreCase));
+        Assert.That(expected, Is.EqualTo(expected));
     }
 }

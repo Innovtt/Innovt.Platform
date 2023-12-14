@@ -62,7 +62,7 @@ public class RolesAuthorizationHandlerTests
         var user = new ClaimsPrincipal();
         var context = CreateContext(user);
         await handle.HandleAsync(context);
-        Assert.IsTrue(context.HasFailed);
+        Assert.That(context.HasFailed,Is.True);
     }
 
     [Test]
@@ -77,7 +77,7 @@ public class RolesAuthorizationHandlerTests
         var principal = new ClaimsPrincipal(identity);
         var context = CreateContext(principal);
         await handle.HandleAsync(context);
-        Assert.IsTrue(context.HasFailed);
+        Assert.That(context.HasFailed,Is.True);
     }
 
     [Test]
@@ -101,7 +101,7 @@ public class RolesAuthorizationHandlerTests
         var context = CreateContext(principal);
 
         await handle.HandleAsync(context);
-        Assert.IsTrue(context.HasFailed);
+        Assert.That(context.HasFailed,Is.True);
 
         await authorizationRepositoryMoq.Received(1)
             .GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
@@ -135,8 +135,8 @@ public class RolesAuthorizationHandlerTests
         var context = CreateContext(principal);
 
         await handle.HandleAsync(context);
-
-        Assert.IsTrue(context.HasFailed);
+        
+        Assert.That(context.HasFailed,Is.True);
 
         await authorizationRepositoryMoq.Received(1)
             .GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
@@ -188,8 +188,9 @@ public class RolesAuthorizationHandlerTests
 
         await handle.HandleAsync(context);
 
-        Assert.IsTrue(context.HasSucceeded == success);
-        Assert.IsTrue(context.HasFailed == !success);
+        
+        Assert.That(context.HasSucceeded,Is.EqualTo(success));
+        Assert.That(context.HasFailed,Is.EqualTo( !success));
 
         await authorizationRepositoryMoq.Received(1)
             .GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
@@ -235,7 +236,7 @@ public class RolesAuthorizationHandlerTests
         var principal = new ClaimsPrincipal(identity);
 
         var httpContext = new DefaultHttpContext();
-        httpContext.Request.Headers.Add("X-Application-Scope", "User");
+        httpContext.Request.Headers.Append("X-Application-Scope", "User");
 
         var context = new AuthorizationHandlerContext(new List<IAuthorizationRequirement>
         {
@@ -244,8 +245,8 @@ public class RolesAuthorizationHandlerTests
 
 
         await handle.HandleAsync(context);
-
-        Assert.IsTrue(context.HasFailed);
+        
+        Assert.That(context.HasFailed,Is.True);
 
         await authorizationRepositoryMoq.Received(1)
             .GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
@@ -292,7 +293,7 @@ public class RolesAuthorizationHandlerTests
         var principal = new ClaimsPrincipal(identity);
 
         var httpContext = new DefaultHttpContext();
-        httpContext.Request.Headers.Add("X-Application-Scope", scope);
+        httpContext.Request.Headers.Append("X-Application-Scope", scope);
 
         var context = new AuthorizationHandlerContext(new List<IAuthorizationRequirement>
         {
@@ -301,8 +302,9 @@ public class RolesAuthorizationHandlerTests
 
         await handle.HandleAsync(context);
 
-        Assert.IsTrue(context.HasSucceeded);
-
+        Assert.That(context.HasSucceeded,Is.True);
+        Assert.That(context.HasFailed,Is.False);
+        
         await authorizationRepositoryMoq.Received(1)
             .GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
     }
@@ -349,9 +351,9 @@ public class RolesAuthorizationHandlerTests
         var principal = new ClaimsPrincipal(identity);
 
         var httpContext = new DefaultHttpContext();
-        httpContext.Request.Headers.Add("X-Application-Scope", scope);
-        httpContext.Request.Headers.Add("X-Application-Context", "company-id");
-        httpContext.Request.Headers.Add("company-id", appCode);
+        httpContext.Request.Headers.Append("X-Application-Scope", scope);
+        httpContext.Request.Headers.Append("X-Application-Context", "company-id");
+        httpContext.Request.Headers.Append("company-id", appCode);
 
         var context = new AuthorizationHandlerContext(new List<IAuthorizationRequirement>
         {
@@ -360,8 +362,8 @@ public class RolesAuthorizationHandlerTests
 
         await handle.HandleAsync(context);
 
-        Assert.IsTrue(context.HasSucceeded == success);
-        Assert.IsTrue(context.HasFailed == !success);
+        Assert.That(context.HasSucceeded,Is.EqualTo(success));
+        Assert.That(context.HasFailed,Is.EqualTo(!success));
 
         await authorizationRepositoryMoq.Received(1)
             .GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
@@ -409,9 +411,9 @@ public class RolesAuthorizationHandlerTests
         var principal = new ClaimsPrincipal(identity);
 
         var httpContext = new DefaultHttpContext();
-        httpContext.Request.Headers.Add("X-Application-Scope", "User");
-        httpContext.Request.Headers.Add("X-Application-Context", "company-id");
-        httpContext.Request.Headers.Add("company-id", appCode);
+        httpContext.Request.Headers.Append("X-Application-Scope", "User");
+        httpContext.Request.Headers.Append("X-Application-Context", "company-id");
+        httpContext.Request.Headers.Append("company-id", appCode);
 
         var context = new AuthorizationHandlerContext(new List<IAuthorizationRequirement>
         {
@@ -419,10 +421,10 @@ public class RolesAuthorizationHandlerTests
         }, principal, httpContext);
 
         await handle.HandleAsync(context);
-
-        Assert.IsTrue(context.HasSucceeded == success);
-        Assert.IsTrue(context.HasFailed == !success);
-
+        
+        Assert.That(context.HasSucceeded,Is.EqualTo(success));
+        Assert.That(context.HasFailed,Is.EqualTo(!success));
+        
         await authorizationRepositoryMoq.Received(1)
             .GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
     }

@@ -30,7 +30,7 @@ public class ServiceProviderFactory : IServiceProviderFactory<ContainerBuilder>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="containerBuilder"/> is null.</exception>
     public IServiceProvider CreateServiceProvider(ContainerBuilder containerBuilder)
     {
-        if (containerBuilder is null) throw new ArgumentNullException(nameof(containerBuilder));
+        ArgumentNullException.ThrowIfNull(containerBuilder);
 
         return containerBuilder.GetServiceProvider;
     }

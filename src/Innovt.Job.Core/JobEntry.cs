@@ -57,7 +57,7 @@ public abstract class JobEntry
 
         container.CheckConfiguration();
 
-        IOCLocator.Initialize(container);
+        IocLocator.Initialize(container);
     }
 
     /// <summary>

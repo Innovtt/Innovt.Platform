@@ -32,11 +32,11 @@ public static class Extensions
 
         if (assembly is null) throw new ArgumentNullException(nameof(assembly));
 
-        var modulesTypes = assembly.DefinedTypes.Where(t => t.IsSubclassOf(typeof(IOCModule))).ToList();
+        var modulesTypes = assembly.DefinedTypes.Where(t => t.IsSubclassOf(typeof(IocModule))).ToList();
 
         foreach (var moduleType in modulesTypes)
         {
-            var module = (IOCModule)Activator.CreateInstance(moduleType.UnderlyingSystemType, services);
+            var module = (IocModule)Activator.CreateInstance(moduleType.UnderlyingSystemType, services);
 
             if (module == null)
                 throw new ConfigurationException("Innovt - IOC Module not found.");
@@ -47,9 +47,9 @@ public static class Extensions
     /// Adds services from the specified <paramref name="module"/> to the <paramref name="services"/> collection.
     /// </summary>
     /// <param name="services">The <see cref="IServiceCollection"/> to which services should be added.</param>
-    /// <param name="module">The <see cref="IOCModule"/> containing services to be added.</param>
+    /// <param name="module">The <see cref="IocModule"/> containing services to be added.</param>
     /// <exception cref="ArgumentNullException">Thrown if <paramref name="services"/> or <paramref name="module"/> is null.</exception>
-    public static void AddModule(this IServiceCollection services, IOCModule module)
+    public static void AddModule(this IServiceCollection services, IocModule module)
     {
         // Implementation of the AddModule method.
         if (services is null) throw new ArgumentNullException(nameof(services));

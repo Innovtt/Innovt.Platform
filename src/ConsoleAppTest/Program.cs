@@ -23,7 +23,7 @@ using OpenTracing.Util;
 
 namespace ConsoleAppTest;
 
-public class IocTestModule : IOCModule
+public class IocTestModule : IocModule
 {
     public IocTestModule(IConfiguration configuration)
     {

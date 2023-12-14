@@ -23,7 +23,7 @@ public class BusinessExceptionTests
     {
         var bex = new BusinessException("E-mail is not valid.");
 
-        Assert.IsNotNull(bex);
+       Assert.That(bex,Is.Not.Null);
 
         Assert.That("E-mail is not valid.", Is.EqualTo(bex.Message));
     }
@@ -36,7 +36,7 @@ public class BusinessExceptionTests
     {
         var bex = new BusinessException("01", "E-mail is not valid.");
 
-        Assert.IsNotNull(bex);
+       Assert.That(bex,Is.Not.Null);
 
         Assert.That("E-mail is not valid.", Is.EqualTo(bex.Message));
         Assert.That("01", Is.EqualTo(bex.Code));
@@ -50,9 +50,9 @@ public class BusinessExceptionTests
     {
         var bex = new BusinessException(new List<ErrorMessage>());
 
-        Assert.IsNotNull(bex);
-        Assert.IsNotNull(bex.Errors);
-        Assert.That(bex.Message, Is.EqualTo("One or more validation errors occurred."));
+       Assert.That(bex,Is.Not.Null);
+       Assert.That(bex.Errors,Is.Not.Null);
+       Assert.That(bex.Message, Is.EqualTo("One or more validation errors occurred."));
     }
 
     /// <summary>
@@ -63,9 +63,9 @@ public class BusinessExceptionTests
     {
         var bex = new BusinessException(new List<ErrorMessage>());
 
-        Assert.IsNotNull(bex);
-        Assert.IsNotNull(bex.Errors);
-        Assert.IsNull(bex.Detail);
+       Assert.That(bex,Is.Not.Null);
+       Assert.That(bex.Errors,Is.Not.Null);
+       Assert.That(bex.Detail,Is.Null);
     }
 
     /// <summary>
@@ -83,8 +83,8 @@ public class BusinessExceptionTests
 
         var bex = new BusinessException(errors);
 
-        Assert.IsNotNull(bex);
-        Assert.IsNotNull(bex.Errors);
+       Assert.That(bex,Is.Not.Null);
+        Assert.That(bex.Errors,Is.Not.Null);
         Assert.That(errors.Count, Is.EqualTo(3));
         Assert.That(JsonSerializer.Serialize(bex.Detail),
             Is.EqualTo(

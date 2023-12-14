@@ -18,10 +18,10 @@ namespace Innovt.Core.CrossCutting.Ioc;
 public interface IContainer : IDisposable
 {
     /// <summary>
-    /// Adds an <see cref="IOCModule"/> to the container.
+    /// Adds an <see cref="IocModule"/> to the container.
     /// </summary>
-    /// <param name="iocModule">The <see cref="IOCModule"/> to be added to the container.</param>
-    void AddModule(IOCModule iocModule);
+    /// <param name="iocModule">The <see cref="IocModule"/> to be added to the container.</param>
+    void AddModule(IocModule iocModule);
 
     /// <summary>
     /// Resolves a service of the specified <paramref name="type"/>.

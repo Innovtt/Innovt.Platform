@@ -198,7 +198,7 @@ public abstract class ApiStartupBase
     /// <param name="services">The service collection to add core services to.</param>
     private void AddCoreServices(IServiceCollection services)
     {
-        if (services == null) throw new ArgumentNullException(nameof(services));
+        ArgumentNullException.ThrowIfNull(services);
 
         services.AddSingleton<ApiExceptionFilter>();
 
