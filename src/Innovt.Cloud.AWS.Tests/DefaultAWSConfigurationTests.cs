@@ -12,12 +12,12 @@ public class DefaultAWSConfigurationTests
     {
         var configuration = new Configuration.DefaultAWSConfiguration();
 
-        Assert.That(configuration,Is.Not.Null);
+        Assert.That(configuration, Is.Not.Null);
 
         var credentials = configuration.GetCredential();
 
-        Assert.That(credentials,Is.Not.Null);
-       Assert.That(credentials.GetCredentials(),Is.Not.Null);
+        Assert.That(credentials, Is.Not.Null);
+        Assert.That(credentials.GetCredentials(), Is.Not.Null);
     }
 
     [Test]
@@ -25,7 +25,7 @@ public class DefaultAWSConfigurationTests
     {
         var configuration = new Configuration.DefaultAWSConfiguration("invalidProfile");
 
-        Assert.That(configuration,Is.Not.Null);
+        Assert.That(configuration, Is.Not.Null);
 
         Assert.Throws<ConfigurationException>(() => configuration.GetCredential());
     }
@@ -36,10 +36,10 @@ public class DefaultAWSConfigurationTests
     {
         var configuration = new Configuration.DefaultAWSConfiguration("accessKey", "secret", "us-east-1");
 
-        Assert.That(configuration,Is.Not.Null);
+        Assert.That(configuration, Is.Not.Null);
 
         var credentials = configuration.GetCredential();
 
-        Assert.That(credentials,Is.Not.Null);
+        Assert.That(credentials, Is.Not.Null);
     }
 }

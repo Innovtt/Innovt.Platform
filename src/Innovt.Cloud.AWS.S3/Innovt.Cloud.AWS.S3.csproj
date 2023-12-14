@@ -13,8 +13,8 @@
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="AWSSDK.S3" Version="3.7.304.7" />
-        <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="8.0.0" />
+        <PackageReference Include="AWSSDK.S3" Version="3.7.304.7"/>
+        <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="8.0.0"/>
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

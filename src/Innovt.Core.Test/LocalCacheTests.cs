@@ -60,7 +60,7 @@ public class LocalCacheTests
 
         var value2 = cacheService.GetValue<object>("User");
 
-        Assert.That(value2,Is.Null);
+        Assert.That(value2, Is.Null);
     }
 
 
@@ -84,11 +84,11 @@ public class LocalCacheTests
         var value = await cacheService
             .GetValueOrCreate<int?>(key, (c) => { return FactoryB(null, c); }, expiration, CancellationToken.None)
             .ConfigureAwait(false);
-        
+
         Assert.That(expectedValue, Is.EqualTo(value));
 
         await Task.Delay(TimeSpan.FromSeconds(2)).ConfigureAwait(false);
-        
+
         value = cacheService.GetValue<int>(key);
 
         Assert.That(expectedValue, Is.EqualTo(value));
@@ -115,7 +115,7 @@ public class LocalCacheTests
         cacheService.SetValue<int>(key, expectedValue, TimeSpan.FromDays(1));
 
         var value = cacheService.GetValue<int>(key);
-        
+
         Assert.That(expectedValue, Is.EqualTo(value));
     }
 
@@ -129,9 +129,9 @@ public class LocalCacheTests
         cacheService.SetValue<int>(key, 100, TimeSpan.FromSeconds(1));
 
         await Task.Delay(expiration * 2).ConfigureAwait(false);
-        
+
         var value = cacheService.GetValue<int>(key);
-        
+
         Assert.That(expectedValue, Is.EqualTo(value));
     }
 

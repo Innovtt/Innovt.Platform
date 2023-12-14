@@ -12,7 +12,7 @@ public class AssumeRoleAWSConfigurationTests
     {
         var configuration = new DefaultAWSConfiguration();
 
-        Assert.That(configuration,Is.Not.Null);
+        Assert.That(configuration, Is.Not.Null);
 
         var roleArn = "mockrolearn";
         var externalId = "mockexternalid";

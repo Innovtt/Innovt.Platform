@@ -37,7 +37,7 @@ public class DeserializerFactoryTests
     {
         var result = DeserializerFactory.Instance.Deserialize("A", null);
 
-        
+
         Assert.That(result, Is.Null);
 
         result = DeserializerFactory.Instance.Deserialize("A", "");
@@ -50,14 +50,14 @@ public class DeserializerFactoryTests
     public void DeserializeShouldReturnNullWhenHasNoMapping()
     {
         var result = DeserializerFactory.Instance.Deserialize("A", "");
-        
+
         Assert.That(result, Is.Null);
 
         //new mapping
         DeserializerFactory.Instance.AddMapping<A>("A");
 
         var result2 = DeserializerFactory.Instance.Deserialize("B", "B");
-        
+
         Assert.That(result2, Is.Null);
     }
 

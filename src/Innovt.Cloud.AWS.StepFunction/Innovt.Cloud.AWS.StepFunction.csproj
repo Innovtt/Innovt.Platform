@@ -13,8 +13,8 @@
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="AWSSDK.StepFunctions" Version="3.7.302.10" />
-        <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="8.0.0" />
+        <PackageReference Include="AWSSDK.StepFunctions" Version="3.7.302.10"/>
+        <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="8.0.0"/>
     </ItemGroup>
 
     <ItemGroup>

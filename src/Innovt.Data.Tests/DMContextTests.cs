@@ -81,7 +81,7 @@ public class DMContextTests
 
         var user = DMContext.Instance().Find<UserDataModel>(userDataModel);
 
-        Assert.That(user,Is.Not.Null);
+        Assert.That(user, Is.Not.Null);
 
         Assert.That(userDataModel.Name, Is.EqualTo(user.Name));
         Assert.That(userDataModel.Id, Is.EqualTo(user.Id));

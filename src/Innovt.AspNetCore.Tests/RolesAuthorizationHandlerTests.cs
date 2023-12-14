@@ -62,7 +62,7 @@ public class RolesAuthorizationHandlerTests
         var user = new ClaimsPrincipal();
         var context = CreateContext(user);
         await handle.HandleAsync(context);
-        Assert.That(context.HasFailed,Is.True);
+        Assert.That(context.HasFailed, Is.True);
     }
 
     [Test]
@@ -77,7 +77,7 @@ public class RolesAuthorizationHandlerTests
         var principal = new ClaimsPrincipal(identity);
         var context = CreateContext(principal);
         await handle.HandleAsync(context);
-        Assert.That(context.HasFailed,Is.True);
+        Assert.That(context.HasFailed, Is.True);
     }
 
     [Test]
@@ -101,7 +101,7 @@ public class RolesAuthorizationHandlerTests
         var context = CreateContext(principal);
 
         await handle.HandleAsync(context);
-        Assert.That(context.HasFailed,Is.True);
+        Assert.That(context.HasFailed, Is.True);
 
         await authorizationRepositoryMoq.Received(1)
             .GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
@@ -135,8 +135,8 @@ public class RolesAuthorizationHandlerTests
         var context = CreateContext(principal);
 
         await handle.HandleAsync(context);
-        
-        Assert.That(context.HasFailed,Is.True);
+
+        Assert.That(context.HasFailed, Is.True);
 
         await authorizationRepositoryMoq.Received(1)
             .GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
@@ -188,9 +188,9 @@ public class RolesAuthorizationHandlerTests
 
         await handle.HandleAsync(context);
 
-        
-        Assert.That(context.HasSucceeded,Is.EqualTo(success));
-        Assert.That(context.HasFailed,Is.EqualTo( !success));
+
+        Assert.That(context.HasSucceeded, Is.EqualTo(success));
+        Assert.That(context.HasFailed, Is.EqualTo(!success));
 
         await authorizationRepositoryMoq.Received(1)
             .GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
@@ -245,8 +245,8 @@ public class RolesAuthorizationHandlerTests
 
 
         await handle.HandleAsync(context);
-        
-        Assert.That(context.HasFailed,Is.True);
+
+        Assert.That(context.HasFailed, Is.True);
 
         await authorizationRepositoryMoq.Received(1)
             .GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
@@ -302,9 +302,9 @@ public class RolesAuthorizationHandlerTests
 
         await handle.HandleAsync(context);
 
-        Assert.That(context.HasSucceeded,Is.True);
-        Assert.That(context.HasFailed,Is.False);
-        
+        Assert.That(context.HasSucceeded, Is.True);
+        Assert.That(context.HasFailed, Is.False);
+
         await authorizationRepositoryMoq.Received(1)
             .GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
     }
@@ -362,8 +362,8 @@ public class RolesAuthorizationHandlerTests
 
         await handle.HandleAsync(context);
 
-        Assert.That(context.HasSucceeded,Is.EqualTo(success));
-        Assert.That(context.HasFailed,Is.EqualTo(!success));
+        Assert.That(context.HasSucceeded, Is.EqualTo(success));
+        Assert.That(context.HasFailed, Is.EqualTo(!success));
 
         await authorizationRepositoryMoq.Received(1)
             .GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
@@ -421,10 +421,10 @@ public class RolesAuthorizationHandlerTests
         }, principal, httpContext);
 
         await handle.HandleAsync(context);
-        
-        Assert.That(context.HasSucceeded,Is.EqualTo(success));
-        Assert.That(context.HasFailed,Is.EqualTo(!success));
-        
+
+        Assert.That(context.HasSucceeded, Is.EqualTo(success));
+        Assert.That(context.HasFailed, Is.EqualTo(!success));
+
         await authorizationRepositoryMoq.Received(1)
             .GetUserByExternalId(Arg.Any<string>(), Arg.Any<CancellationToken>());
     }

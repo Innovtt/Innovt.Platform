@@ -62,7 +62,7 @@ public class SimpleMapTests
         var output = SimpleMapper.Map<SomeDto, SomeDomain>(b);
 
         Assert.That(output, Is.Not.Null);
-        
+
         Assert.That(b.Name, Is.EqualTo(output.Name));
 
         Assert.That(b.Name, Is.EqualTo(output.Name));
@@ -76,9 +76,9 @@ public class SimpleMapTests
 
         var output = SimpleMapper.Map<SomeDto2, SomeDomain>(b);
 
-        Assert.That(output,Is.Not.Null);
+        Assert.That(output, Is.Not.Null);
         Assert.That(b.Name, Is.EqualTo(output.Name));
-        Assert.That(b.Description,Is.EqualTo(output.Description));
+        Assert.That(b.Description, Is.EqualTo(output.Description));
     }
 
     [Test]
@@ -88,7 +88,7 @@ public class SimpleMapTests
 
         var output = SimpleMapper.Map<SomeDto, SomeDomain2>(b);
 
-        Assert.That(output,Is.Not.Null);
+        Assert.That(output, Is.Not.Null);
         Assert.That(b.Name, Is.EqualTo(output.Name));
         Assert.That(b.Description, Is.EqualTo(output.Description));
         Assert.That(0, Is.EqualTo(output.Age));
@@ -102,10 +102,10 @@ public class SimpleMapTests
 
         var output = SimpleMapper.Map<SomeDto3, SomeDomain3>(b);
 
-        Assert.That(output,Is.Not.Null);
-        Assert.That(b.Name,Is.EqualTo(output.Name));
-        Assert.That(b.Description,Is.EqualTo(output.Description));
-        Assert.That(output.Age,Is.Null);
+        Assert.That(output, Is.Not.Null);
+        Assert.That(b.Name, Is.EqualTo(output.Name));
+        Assert.That(b.Description, Is.EqualTo(output.Description));
+        Assert.That(output.Age, Is.Null);
     }
 
 
@@ -116,10 +116,10 @@ public class SimpleMapTests
         var b = new SomeDomain2();
 
         SimpleMapper.Map(a, b);
-        
-        Assert.That(b,Is.Not.Null);
-        Assert.That(a.Name,Is.EqualTo(b.Name));
-        Assert.That(a.Description,Is.EqualTo(b.Description));
+
+        Assert.That(b, Is.Not.Null);
+        Assert.That(a.Name, Is.EqualTo(b.Name));
+        Assert.That(a.Description, Is.EqualTo(b.Description));
     }
 
     [Test]
@@ -170,9 +170,9 @@ public class SimpleMapTests
 
         SimpleMapper.Map(invoice, invoiceDto);
 
-        Assert.That(invoiceDto,Is.Not.Null);
-        
-        Assert.That(invoice.Description,Is.EqualTo(invoiceDto.Description));
+        Assert.That(invoiceDto, Is.Not.Null);
+
+        Assert.That(invoice.Description, Is.EqualTo(invoiceDto.Description));
         Assert.That(invoice.CreatedAt, Is.EqualTo(invoiceDto.CreatedAt));
         Assert.That(invoice.BuyerId, Is.EqualTo(invoiceDto.BuyerId));
         Assert.That(invoice.BuyerName, Is.EqualTo(invoiceDto.BuyerName));
@@ -192,8 +192,8 @@ public class SimpleMapTests
         Assert.That(invoice.InstallmentNumber, Is.EqualTo(invoiceDto.InstallmentNumber));
         Assert.That(invoice.PaymentTypeId, Is.EqualTo(invoiceDto.PaymentTypeId));
         Assert.That(invoice.PaymentType, Is.EqualTo(invoiceDto.PaymentType));
-        Assert.That(invoice.PaymentOrderStatusId,Is.EqualTo( invoiceDto.PaymentOrderStatusId));
-        Assert.That(invoice.PaymentOrderStatus,Is.EqualTo( invoiceDto.PaymentOrderStatus));
+        Assert.That(invoice.PaymentOrderStatusId, Is.EqualTo(invoiceDto.PaymentOrderStatusId));
+        Assert.That(invoice.PaymentOrderStatus, Is.EqualTo(invoiceDto.PaymentOrderStatus));
         Assert.That(invoice.BankSlipBarCode, Is.EqualTo(invoiceDto.BankSlipBarCode));
         Assert.That(invoice.Metadata, Is.EqualTo(invoiceDto.Metadata));
         Assert.That(invoice.DaysToDue, Is.EqualTo(invoiceDto.DaysToDue));

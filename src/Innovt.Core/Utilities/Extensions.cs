@@ -473,7 +473,7 @@ public static class Extensions
         stream.CopyTo(mStream);
         return Convert.ToBase64String(mStream.ToArray());
     }
-    
+
     /// <summary>
     /// Returns a mimetype based on the file extension
     /// </summary>
@@ -492,7 +492,7 @@ public static class Extensions
             _ => "application/octet-stream"
         };
     }
-    
+
     #region [From Net Code]
 
     /// <summary>

@@ -44,12 +44,12 @@ public class AuthUserTests
 
         Assert.That(user.Roles, Is.Not.Null);
         Assert.That(user.Roles.Count, Is.EqualTo(3));
-        
+
         user.UnAssignRole(roleB.Scope, roleB.Name);
 
         Assert.That(user.Roles, Is.Not.Null);
         Assert.That(user.Roles.Count, Is.EqualTo(2));
-        
+
 
         Assert.That(user.Roles.Count(r => r.Name == roleA.Name), Is.EqualTo(1));
         Assert.That(user.Roles.Count(r => r.Name == roleC.Name), Is.EqualTo(1));

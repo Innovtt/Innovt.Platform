@@ -65,7 +65,7 @@ public class MultiLayerCacheServiceTests
         Assert.That(0, Is.EqualTo(value));
 
         var value2 = cacheService.GetValue<object>("User");
-        
+
         Assert.That(value2, Is.Null);
     }
 
@@ -92,7 +92,7 @@ public class MultiLayerCacheServiceTests
 
         Assert.That(value, Is.Not.Null);
         Assert.That(expectedValue, Is.EqualTo(value.Name));
-        
+
         Thread.Sleep(TimeSpan.FromSeconds(2));
 
         value = cacheService.GetValue<A>(key);

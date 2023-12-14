@@ -13,12 +13,12 @@
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.300.18" />
+        <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.300.18"/>
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="8.0.0" />
+        <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="8.0.0"/>
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj"/>
