@@ -15,6 +15,12 @@ public class QueryRequest : BaseRequest, ICloneable
     /// Gets or sets the key condition expression used in the query.
     /// </summary>
     public string KeyConditionExpression { get; set; }
+    
+    
+    /// <summary>
+    /// Gets or sets the attributes that you can customize.
+    /// </summary>
+    public string ExpressionAttributeNames { get; set; }
 
     /// <summary>
     /// Gets or sets a value indicating whether to scan the index forward or backward.
@@ -32,6 +38,7 @@ public class QueryRequest : BaseRequest, ICloneable
             AttributesToGet = AttributesToGet,
             Filter = Filter,
             KeyConditionExpression = KeyConditionExpression,
+            ExpressionAttributeNames = ExpressionAttributeNames,
             FilterExpression = FilterExpression,
             IndexName = IndexName,
             ScanIndexForward = ScanIndexForward,

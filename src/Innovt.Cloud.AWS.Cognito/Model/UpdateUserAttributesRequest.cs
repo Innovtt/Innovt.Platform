@@ -12,7 +12,7 @@ namespace Innovt.Cloud.AWS.Cognito.Model;
 /// <summary>
 /// Represents a request to update user attributes.
 /// </summary>
-public class UpdateUserAttributeRequest : RequestBase
+public class UpdateUserAttributesRequest : RequestBase
 {
     /// <summary>
     /// Gets or sets the access token associated with the user.

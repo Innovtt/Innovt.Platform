@@ -1,0 +1,39 @@
+﻿// Innovt Company
+// Author: Michel Borges
+// Project: Innovt.Cloud.AWS.Cognito
+
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using Innovt.Cloud.AWS.Cognito.Resources;
+using Innovt.Core.Collections;
+
+namespace Innovt.Cloud.AWS.Cognito.Model;
+
+/// <summary>
+/// Represents a request to update user attributes.
+/// </summary>
+public class AdminUpdateUserAttributesRequest : RequestBase
+{
+    /// <summary>
+    /// Gets or sets the username associated with the user.
+    /// </summary>
+    [Required]
+    public string UserName { get; set; }
+
+    /// <summary>
+    /// Gets or sets the attributes to update for the user.
+    /// </summary>
+#pragma warning disable CA2227 // Collection properties should be read only
+    public Dictionary<string, string> Attributes { get; set; }
+#pragma warning restore CA2227 // Collection properties should be read only
+
+    /// <inheritdoc/>
+    public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    {
+        if (UserName.IsNullOrEmpty())
+            yield return new ValidationResult(Messages.AccessTokenIsRequired, new[] { nameof(UserName) });
+
+        if (Attributes.IsNullOrEmpty())
+            yield return new ValidationResult(Messages.AttributesIsRequired, new[] { nameof(Attributes) });
+    }
+}

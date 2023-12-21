@@ -12,16 +12,16 @@ namespace Innovt.Data.DataModels;
 /// <summary>
 /// Represents a context for managing instances of data models and tracking changes.
 /// </summary>
-public class DMContext
+public class DmContext
 {
-    private static DMContext instance;
+    private static DmContext instance;
     private static object objlock = new();
     private Dictionary<string, IBaseDataModel> items;
 
     /// <summary>
     /// Private constructor to ensure singleton pattern and initialize the context.
     /// </summary>
-    private DMContext()
+    private DmContext()
     {
         items = new Dictionary<string, IBaseDataModel>();
     }
@@ -30,11 +30,11 @@ public class DMContext
     /// Gets the singleton instance of the DMContext.
     /// </summary>
     /// <returns>The singleton instance of the DMContext.</returns>
-    public static DMContext Instance()
+    public static DmContext Instance()
     {
         lock (objlock)
         {
-            if (instance is null) instance = new DMContext();
+            if (instance is null) instance = new DmContext();
         }
 
         return instance;

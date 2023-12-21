@@ -25,6 +25,7 @@ using Innovt.Core.Exceptions;
 using Innovt.Core.Http;
 using Innovt.Core.Utilities;
 using Innovt.Core.Validation;
+using AdminUpdateUserAttributesRequest = Amazon.CognitoIdentityProvider.Model.AdminUpdateUserAttributesRequest;
 using ChangePasswordRequest = Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest;
 using CodeMismatchException = Amazon.CognitoIdentityProvider.Model.CodeMismatchException;
 using ConfirmForgotPasswordRequest = Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest;
@@ -37,6 +38,7 @@ using PasswordResetRequiredException = Amazon.CognitoIdentityProvider.Model.Pass
 using ResendConfirmationCodeRequest = Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest;
 using RespondToAuthChallengeRequest = Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest;
 using SignUpResponse = Innovt.Cloud.AWS.Cognito.Model.SignUpResponse;
+using UpdateUserAttributesRequest = Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest;
 using UserNotConfirmedException = Amazon.CognitoIdentityProvider.Model.UserNotConfirmedException;
 using UserNotFoundException = Amazon.CognitoIdentityProvider.Model.UserNotFoundException;
 
@@ -119,9 +121,9 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     /// <summary>
     /// Updates user attributes.
     /// </summary>
-    /// <param name="command">The <see cref="UpdateUserAttributeRequest"/> containing user attributes.</param>
+    /// <param name="command">The <see cref="Model.UpdateUserAttributesRequest"/> containing user attributes.</param>
     /// <param name="cancellationToken">A cancellation token for async tasks.</param>
-    public virtual async Task UpdateUserAttributes(UpdateUserAttributeRequest command,
+    public virtual async Task UpdateUserAttributes(UpdateUserAttributesRequest command,
         CancellationToken cancellationToken = default)
     {
         Check.NotNull(command, nameof(command));
@@ -129,7 +131,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         command.EnsureIsValid();
 
         using var activity = CognitoIdentityProviderActivitySource.StartActivity();
-        var updateUserAttributeRequest = new UpdateUserAttributesRequest
+        var updateUserAttributeRequest = new Amazon.CognitoIdentityProvider.Model.UpdateUserAttributesRequest
         {
             AccessToken = command.AccessToken
         };
@@ -192,11 +194,10 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     /// <param name="request">A <see cref="SignOutRequest"/> object containing the access token to sign out the user.</param>
     /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
     /// <exception cref="ArgumentNullException">Thrown when the <paramref name="request"/> is null.</exception>
-    /// <exception cref="ValidationException">Thrown when the <paramref name="request"/> fails validation.</exception>
     /// <exception cref="CatchException">Thrown when an error occurs during the sign-out process.</exception>
     /// <remarks>
     /// This method allows you to sign out the user associated with the provided access token. Signing out a user invalidates the access
-    /// token, preventing further access to protected resources without reauthentication. Ensure that you provide a valid access token
+    /// token, preventing further access to protected resources without re authentication. Ensure that you provide a valid access token
     /// to successfully sign out the user.
     /// </remarks>
     public async Task SignOut(SignOutRequest request, CancellationToken cancellationToken = default)
@@ -230,7 +231,6 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
     /// <returns>A <see cref="SignUpResponse"/> indicating whether the user was successfully signed up and their UUID (User Sub).</returns>
     /// <exception cref="ArgumentNullException">Thrown when the <paramref name="command"/> is null.</exception>
-    /// <exception cref="ValidationException">Thrown when the <paramref name="command"/> fails validation.</exception>
     /// <exception cref="CatchException">Thrown when an error occurs during the sign-up process.</exception>
     /// <remarks>
     /// This method allows you to sign up a new user with the provided registration information, including username, password,
@@ -615,7 +615,6 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
     /// <returns>An <see cref="AuthChallengeResponse"/> containing the authentication result or metadata.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the <paramref name="command"/> is null.</exception>
-    /// <exception cref="ValidationException">Thrown when the <paramref name="command"/> fails validation.</exception>
     /// <exception cref="CriticalException">Thrown when an unsupported challenge name is encountered.</exception>
     /// <exception cref="CatchException">Thrown when an error occurs during the challenge response process.</exception>
     /// <remarks>
@@ -703,7 +702,6 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
     /// <returns>A task representing the asynchronous confirmation process.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the <paramref name="command"/> is null.</exception>
-    /// <exception cref="ValidationException">Thrown when the <paramref name="command"/> fails validation.</exception>
     /// <exception cref="CatchException">Thrown when an error occurs during the confirmation process.</exception>
     /// <remarks>
     /// This method is used to confirm a user's forgotten password by providing the user's username, a new password,
@@ -851,7 +849,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
             var listUsersResponse = await ListUsersAsync(socialUserEmail, cancellationToken).ConfigureAwait(false);
 
-            var hasCognitoUser = listUsersResponse.Users.Any(u => u.UserStatus != "EXTERNAL_PROVIDER");
+            var hasCognitoUser = listUsersResponse.Users.Exists(u => u.UserStatus != "EXTERNAL_PROVIDER");
 
             response.NeedRegister = !hasCognitoUser;
             response.SignInType = GetSocialProviderName(socialUser.Username);
@@ -1099,6 +1097,39 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                 await CognitoProvider.AdminLinkProviderForUserAsync(request, cancellationToken
                 )).ConfigureAwait(false);
+        }
+        catch (Exception ex)
+        {
+            throw CatchException(ex);
+        }
+    }
+    
+    public async Task AdminUpdateUser(Model.AdminUpdateUserAttributesRequest command, CancellationToken cancellationToken = default)
+    {
+        command.EnsureIsValid();
+
+        using var activity = CognitoIdentityProviderActivitySource.StartActivity();
+
+        var updateRequest =
+            new AdminUpdateUserAttributesRequest()
+            {
+                UserPoolId = userPoolId,
+                Username = command.UserName,
+                UserAttributes = command.Attributes.Select(ua => new AttributeType()
+                {
+                    Name = ua.Key,
+                    Value = ua.Value
+                }).ToList()
+            };
+           
+        try
+        {   
+           var result=  await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+                await CognitoProvider.AdminUpdateUserAttributesAsync(updateRequest, cancellationToken
+                )).ConfigureAwait(false);
+           
+           if(result.HttpStatusCode != HttpStatusCode.OK)
+               throw new InternalException(ErrorCode.InternalServerError);
         }
         catch (Exception ex)
         {

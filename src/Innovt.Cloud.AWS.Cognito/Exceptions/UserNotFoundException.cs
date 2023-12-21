@@ -14,4 +14,5 @@ public class UserNotFoundException : BusinessException
     public UserNotFoundException() : base(ErrorCode.UserNotFound, ErrorCode.UserNotFound)
     {
     }
+
 }

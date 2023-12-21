@@ -23,10 +23,10 @@ public class DataModelTests
 
         userDataModel.EnableTrackingChanges = true;
 
-        Assert.IsFalse(userDataModel.HasChanges);
+        Assert.That(userDataModel.HasChanges,Is.False);
 
         userDataModel.Name = "Marcio";
 
-        Assert.IsTrue(userDataModel.HasChanges);
+        Assert.That(userDataModel.HasChanges,Is.True);
     }
 }
