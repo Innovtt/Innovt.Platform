@@ -3,20 +3,19 @@
 // Project: Innovt.CrossCutting.IOC
 
 using System;
-using Innovt.Core.CrossCutting.Ioc;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Innovt.CrossCutting.IOC;
 
 /// <summary>
-/// Builder for creating an <see cref="IServiceProvider"/> using Lamar IoC container.
+///     Builder for creating an <see cref="IServiceProvider" /> using Lamar IoC container.
 /// </summary>
 public class ContainerBuilder : IDisposable
 {
-    private readonly IContainer container;
+    private readonly Container container;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ContainerBuilder"/> class using the provided services.
+    ///     Initializes a new instance of the <see cref="ContainerBuilder" /> class using the provided services.
     /// </summary>
     /// <param name="services">The collection of services for the container.</param>
     public ContainerBuilder(IServiceCollection services)
@@ -25,12 +24,12 @@ public class ContainerBuilder : IDisposable
     }
 
     /// <summary>
-    /// Gets the configured <see cref="IServiceProvider"/>.
+    ///     Gets the configured <see cref="IServiceProvider" />.
     /// </summary>
     public IServiceProvider GetServiceProvider => new ServiceProvider(container);
 
     /// <summary>
-    /// Releases the resources used by the <see cref="ContainerBuilder"/>.
+    ///     Releases the resources used by the <see cref="ContainerBuilder" />.
     /// </summary>
     public void Dispose()
     {
@@ -39,7 +38,7 @@ public class ContainerBuilder : IDisposable
     }
 
     /// <summary>
-    /// Releases the resources used by the <see cref="ContainerBuilder"/>.
+    ///     Releases the resources used by the <see cref="ContainerBuilder" />.
     /// </summary>
     /// <param name="disposing">True if disposing; otherwise, false.</param>
     protected virtual void Dispose(bool disposing)

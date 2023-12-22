@@ -17,7 +17,7 @@ using Innovt.Data.Model;
 namespace Innovt.Data.Ado;
 
 /// <summary>
-/// Represents a base repository implementation that provides common data access methods.
+///     Represents a base repository implementation that provides common data access methods.
 /// </summary>
 public class RepositoryBase : IRepositoryBase
 {
@@ -25,7 +25,7 @@ public class RepositoryBase : IRepositoryBase
     private readonly IDataSource dataSource;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="RepositoryBase"/> class with the specified data source.
+    ///     Initializes a new instance of the <see cref="RepositoryBase" /> class with the specified data source.
     /// </summary>
     /// <param name="dataSource">The data source to use for database operations.</param>
     public RepositoryBase(IDataSource datasource) : this(datasource, null)
@@ -33,7 +33,8 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="RepositoryBase"/> class with the specified data source and connection factory.
+    ///     Initializes a new instance of the <see cref="RepositoryBase" /> class with the specified data source and connection
+    ///     factory.
     /// </summary>
     /// <param name="dataSource">The data source to use for database operations.</param>
     /// <param name="connectionFactory">The connection factory for creating database connections.</param>
@@ -44,7 +45,8 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Asynchronously retrieves the first result of a query from the specified table based on the provided where clause and optional columns.
+    ///     Asynchronously retrieves the first result of a query from the specified table based on the provided where clause
+    ///     and optional columns.
     /// </summary>
     /// <typeparam name="T">The type of the result.</typeparam>
     /// <param name="tableName">The name of the table.</param>
@@ -53,7 +55,10 @@ public class RepositoryBase : IRepositoryBase
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <param name="columns">The optional columns to select.</param>
     /// <returns>The first result of the query.</returns>
-    /// <exception cref="ArgumentNullException">Thrown when <paramref name="tableName"/> or <paramref name="whereClause"/> is null.</exception>
+    /// <exception cref="ArgumentNullException">
+    ///     Thrown when <paramref name="tableName" /> or <paramref name="whereClause" /> is
+    ///     null.
+    /// </exception>
     public async Task<T> QueryFirstOrDefaultAsync<T>(string tableName, string whereClause, object filter = null,
         CancellationToken cancellationToken = default, params string[] columns)
     {
@@ -65,14 +70,14 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Asynchronously retrieves the first result of a query using the provided SQL statement.
+    ///     Asynchronously retrieves the first result of a query using the provided SQL statement.
     /// </summary>
     /// <typeparam name="T">The type of the result.</typeparam>
     /// <param name="sql">The SQL statement for the query.</param>
     /// <param name="filter">Additional filter parameters for the query.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The first result of the query.</returns>
-    /// <exception cref="ArgumentNullException">Thrown when <paramref name="sql"/> is null.</exception>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="sql" /> is null.</exception>
     public async Task<T> QueryFirstOrDefaultAsync<T>(string sql, object filter = null,
         CancellationToken cancellationToken = default)
     {
@@ -82,15 +87,16 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Asynchronously executes a SQL query and returns a single result of type T, or a default value if no result is found.
+    ///     Asynchronously executes a SQL query and returns a single result of type T, or a default value if no result is
+    ///     found.
     /// </summary>
     /// <typeparam name="T">The type of the result.</typeparam>
     /// <param name="sql">The SQL query to execute.</param>
     /// <param name="filter">An optional object that can be used to pass parameters or filters to the SQL query.</param>
     /// <param name="cancellationToken">A cancellation token that can be used to cancel the operation.</param>
     /// <returns>
-    /// A task representing the asynchronous operation. The task will return the single result of type T if found,
-    /// or the default value for type T if no result is found.
+    ///     A task representing the asynchronous operation. The task will return the single result of type T if found,
+    ///     or the default value for type T if no result is found.
     /// </returns>
     /// <exception cref="ArgumentNullException">Thrown if the 'sql' parameter is null.</exception>
     public async Task<T> QuerySingleOrDefaultAsync<T>(string sql, object filter = null,
@@ -102,7 +108,8 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Asynchronously retrieves a single result from the specified table based on the provided where clause and optional columns.
+    ///     Asynchronously retrieves a single result from the specified table based on the provided where clause and optional
+    ///     columns.
     /// </summary>
     /// <typeparam name="T">The type of the result.</typeparam>
     /// <param name="tableName">The name of the table.</param>
@@ -111,7 +118,10 @@ public class RepositoryBase : IRepositoryBase
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <param name="columns">The optional columns to select.</param>
     /// <returns>A single result from the query.</returns>
-    /// <exception cref="ArgumentNullException">Thrown when <paramref name="tableName"/> or <paramref name="whereClause"/> is null.</exception>
+    /// <exception cref="ArgumentNullException">
+    ///     Thrown when <paramref name="tableName" /> or <paramref name="whereClause" /> is
+    ///     null.
+    /// </exception>
     public async Task<T> QuerySingleOrDefaultAsync<T>(string tableName, string whereClause, object filter = null,
         CancellationToken cancellationToken = default, params string[] columns)
     {
@@ -121,14 +131,15 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Asynchronously executes a SQL query to count records in a specified table.
+    ///     Asynchronously executes a SQL query to count records in a specified table.
     /// </summary>
     /// <param name="tableName">The name of the table to query.</param>
     /// <param name="whereClause">An optional WHERE clause to filter the count.</param>
     /// <param name="filter">An optional object that can be used to pass parameters or filters to the SQL query.</param>
     /// <param name="cancellationToken">A cancellation token that can be used to cancel the operation.</param>
     /// <returns>
-    /// A task representing the asynchronous operation. The task will return the count of records based on the provided criteria.
+    ///     A task representing the asynchronous operation. The task will return the count of records based on the provided
+    ///     criteria.
     /// </returns>
     /// <exception cref="ArgumentNullException">Thrown if the 'tableName' parameter is null.</exception>
     public async Task<int> QueryCountAsync(string tableName, string whereClause = null, object filter = null,
@@ -141,14 +152,15 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Asynchronously executes a SQL query and returns a collection of results of type T.
+    ///     Asynchronously executes a SQL query and returns a collection of results of type T.
     /// </summary>
     /// <typeparam name="T">The type of the result.</typeparam>
     /// <param name="sql">The SQL query to execute.</param>
     /// <param name="filter">An optional object that can be used to pass parameters or filters to the SQL query.</param>
     /// <param name="cancellationToken">A cancellation token that can be used to cancel the operation.</param>
     /// <returns>
-    /// A task representing the asynchronous operation. The task will return a collection of results of type T based on the SQL query.
+    ///     A task representing the asynchronous operation. The task will return a collection of results of type T based on the
+    ///     SQL query.
     /// </returns>
     /// <exception cref="ArgumentNullException">Thrown if the 'sql' parameter is null.</exception>
     public async Task<IEnumerable<T>> QueryAsync<T>(string sql, object filter = null,
@@ -160,7 +172,8 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Asynchronously executes a SQL query and returns a collection of results by mapping to a custom type using a provided function.
+    ///     Asynchronously executes a SQL query and returns a collection of results by mapping to a custom type using a
+    ///     provided function.
     /// </summary>
     /// <typeparam name="TFirst">The type of the first result.</typeparam>
     /// <typeparam name="TSecond">The type of the second result.</typeparam>
@@ -171,7 +184,8 @@ public class RepositoryBase : IRepositoryBase
     /// <param name="splitOn">The column name to split the results on.</param>
     /// <param name="cancellationToken">A cancellation token that can be used to cancel the operation.</param>
     /// <returns>
-    /// A task representing the asynchronous operation. The task will return a collection of results of the specified mapped type.
+    ///     A task representing the asynchronous operation. The task will return a collection of results of the specified
+    ///     mapped type.
     /// </returns>
     /// <exception cref="ArgumentNullException">Thrown if the 'sql' parameter is null.</exception>
     public async Task<IEnumerable<TReturn>> QueryAsync<TFirst, TSecond, TReturn>(string sql, object filter,
@@ -183,7 +197,8 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Asynchronously executes a SQL query and returns a collection of results by mapping to a custom type using a provided function.
+    ///     Asynchronously executes a SQL query and returns a collection of results by mapping to a custom type using a
+    ///     provided function.
     /// </summary>
     /// <typeparam name="TFirst">The type of the first result.</typeparam>
     /// <typeparam name="TSecond">The type of the second result.</typeparam>
@@ -195,7 +210,8 @@ public class RepositoryBase : IRepositoryBase
     /// <param name="splitOn">The column name to split the results on.</param>
     /// <param name="cancellationToken">A cancellation token that can be used to cancel the operation.</param>
     /// <returns>
-    /// A task representing the asynchronous operation. The task will return a collection of results of the specified mapped type.
+    ///     A task representing the asynchronous operation. The task will return a collection of results of the specified
+    ///     mapped type.
     /// </returns>
     /// <exception cref="ArgumentNullException">Thrown if the 'sql' parameter is null.</exception>
     public async Task<IEnumerable<TReturn>> QueryAsync<TFirst, TSecond, TThird, TReturn>(string sql, object filter,
@@ -207,7 +223,8 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Asynchronously executes a SQL query and returns a collection of results by mapping to a custom type using a provided function.
+    ///     Asynchronously executes a SQL query and returns a collection of results by mapping to a custom type using a
+    ///     provided function.
     /// </summary>
     /// <typeparam name="TFirst">The type of the first result.</typeparam>
     /// <typeparam name="TSecond">The type of the second result.</typeparam>
@@ -220,7 +237,8 @@ public class RepositoryBase : IRepositoryBase
     /// <param name="splitOn">The column name to split the results on.</param>
     /// <param name="cancellationToken">A cancellation token that can be used to cancel the operation.</param>
     /// <returns>
-    /// A task representing the asynchronous operation. The task will return a collection of results of the specified mapped type.
+    ///     A task representing the asynchronous operation. The task will return a collection of results of the specified
+    ///     mapped type.
     /// </returns>
     /// <exception cref="ArgumentNullException">Thrown if the 'sql' parameter is null.</exception>
     public async Task<IEnumerable<TReturn>> QueryAsync<TFirst, TSecond, TThird, TFourth, TReturn>(string sql,
@@ -233,7 +251,8 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Asynchronously executes a SQL query and returns a collection of results by mapping to a custom type using a provided function.
+    ///     Asynchronously executes a SQL query and returns a collection of results by mapping to a custom type using a
+    ///     provided function.
     /// </summary>
     /// <typeparam name="TFirst">The type of the first result.</typeparam>
     /// <typeparam name="TSecond">The type of the second result.</typeparam>
@@ -247,7 +266,8 @@ public class RepositoryBase : IRepositoryBase
     /// <param name="splitOn">The column name to split the results on.</param>
     /// <param name="cancellationToken">A cancellation token that can be used to cancel the operation.</param>
     /// <returns>
-    /// A task representing the asynchronous operation. The task will return a collection of results of the specified mapped type.
+    ///     A task representing the asynchronous operation. The task will return a collection of results of the specified
+    ///     mapped type.
     /// </returns>
     /// <exception cref="ArgumentNullException">Thrown if the 'sql' parameter is null.</exception>
     public async Task<IEnumerable<TReturn>> QueryAsync<TFirst, TSecond, TThird, TFourth, TFifth, TReturn>(
@@ -261,7 +281,7 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Asynchronously executes a SQL command and returns a scalar result of type T.
+    ///     Asynchronously executes a SQL command and returns a scalar result of type T.
     /// </summary>
     /// <typeparam name="T">The type of the scalar result.</typeparam>
     /// <param name="sql">The SQL command to execute.</param>
@@ -269,7 +289,8 @@ public class RepositoryBase : IRepositoryBase
     /// <param name="dbTransaction">An optional database transaction for the command.</param>
     /// <param name="cancellationToken">A cancellation token that can be used to cancel the operation.</param>
     /// <returns>
-    /// A task representing the asynchronous operation. The task will return the scalar result of type T from the executed SQL command.
+    ///     A task representing the asynchronous operation. The task will return the scalar result of type T from the executed
+    ///     SQL command.
     /// </returns>
     /// <exception cref="ArgumentNullException">Thrown if the 'sql' parameter is null.</exception>
     public async Task<T> ExecuteScalarAsync<T>(string sql, object filter = null,
@@ -283,14 +304,15 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Asynchronously executes a SQL command and returns the number of affected rows.
+    ///     Asynchronously executes a SQL command and returns the number of affected rows.
     /// </summary>
     /// <param name="sql">The SQL command to execute.</param>
     /// <param name="filter">An optional object that can be used to pass parameters or filters to the SQL command.</param>
     /// <param name="dbTransaction">An optional database transaction for the command.</param>
     /// <param name="cancellationToken">A cancellation token that can be used to cancel the operation.</param>
     /// <returns>
-    /// A task representing the asynchronous operation. The task will return the number of affected rows by the executed SQL command.
+    ///     A task representing the asynchronous operation. The task will return the number of affected rows by the executed
+    ///     SQL command.
     /// </returns>
     /// <exception cref="ArgumentNullException">Thrown if the 'sql' parameter is null.</exception>
     public async Task<int> ExecuteAsync(string sql, object filter = null, IDbTransaction dbTransaction = null,
@@ -302,13 +324,16 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Executes a paged SQL query asynchronously and returns the results as a PagedCollection.
+    ///     Executes a paged SQL query asynchronously and returns the results as a PagedCollection.
     /// </summary>
     /// <typeparam name="T">The type of object to retrieve from the query.</typeparam>
     /// <param name="sql">The SQL query to execute.</param>
     /// <param name="filter">The filter for pagination and ordering.</param>
     /// <param name="useCount">Flag indicating whether to include a total count of records. Defaults to true.</param>
-    /// <param name="cancellationToken">A CancellationToken to cancel the asynchronous operation. Defaults to CancellationToken.None.</param>
+    /// <param name="cancellationToken">
+    ///     A CancellationToken to cancel the asynchronous operation. Defaults to
+    ///     CancellationToken.None.
+    /// </param>
     /// <returns>A PagedCollection containing the results of the query.</returns>
     /// <exception cref="ArgumentNullException">Thrown when sql is null.</exception>
     /// <exception cref="SqlSyntaxException">Thrown when the ORDER BY clause is not found in the SQL query.</exception>
@@ -369,12 +394,15 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Executes a paged SQL query asynchronously and returns the results as an IEnumerable.
+    ///     Executes a paged SQL query asynchronously and returns the results as an IEnumerable.
     /// </summary>
     /// <typeparam name="T">The type of object to retrieve from the query.</typeparam>
     /// <param name="sql">The SQL query to execute.</param>
     /// <param name="filter">The filter for pagination and ordering.</param>
-    /// <param name="cancellationToken">A CancellationToken to cancel the asynchronous operation. Defaults to CancellationToken.None.</param>
+    /// <param name="cancellationToken">
+    ///     A CancellationToken to cancel the asynchronous operation. Defaults to
+    ///     CancellationToken.None.
+    /// </param>
     /// <returns>An IEnumerable containing the results of the query.</returns>
     /// <exception cref="ArgumentNullException">Thrown when sql or filter is null.</exception>
     public async Task<IEnumerable<T>> QueryListPagedAsync<T>(string sql, IPagedFilter filter,
@@ -387,7 +415,7 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Retrieves a database connection for executing queries.
+    ///     Retrieves a database connection for executing queries.
     /// </summary>
     /// <returns>An IDbConnection instance for executing queries.</returns>
     private IDbConnection GetConnection()
@@ -396,12 +424,15 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Executes a SQL query asynchronously and returns the first result or default value of type T.
+    ///     Executes a SQL query asynchronously and returns the first result or default value of type T.
     /// </summary>
     /// <typeparam name="T">The type of object to retrieve from the query.</typeparam>
     /// <param name="sql">The SQL query to execute.</param>
     /// <param name="filter">The filter for the query. Defaults to null.</param>
-    /// <param name="cancellationToken">A CancellationToken to cancel the asynchronous operation. Defaults to CancellationToken.None.</param>
+    /// <param name="cancellationToken">
+    ///     A CancellationToken to cancel the asynchronous operation. Defaults to
+    ///     CancellationToken.None.
+    /// </param>
     /// <returns>The first result of type T from the query, or default(T) if no result is found.</returns>
     private async Task<T> QueryFirstOrDefaultInternalAsync<T>(string sql, object filter = null,
         CancellationToken cancellationToken = default)
@@ -414,13 +445,16 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Executes a SQL query asynchronously and returns the first result or default value of type T.
+    ///     Executes a SQL query asynchronously and returns the first result or default value of type T.
     /// </summary>
     /// <typeparam name="T">The type of object to retrieve from the query.</typeparam>
     /// <param name="tableName">The name of the database table.</param>
     /// <param name="whereClause">The WHERE clause for the query.</param>
     /// <param name="filter">The filter for the query. Defaults to null.</param>
-    /// <param name="cancellationToken">A CancellationToken to cancel the asynchronous operation. Defaults to CancellationToken.None.</param>
+    /// <param name="cancellationToken">
+    ///     A CancellationToken to cancel the asynchronous operation. Defaults to
+    ///     CancellationToken.None.
+    /// </param>
     /// <param name="columns">The columns to select. Defaults to an empty array.</param>
     /// <returns>The first result of type T from the query, or default(T) if no result is found.</returns>
     private async Task<T> QueryFirstOrDefaultInternalAsync<T>(string tableName, string whereClause,
@@ -434,12 +468,15 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Executes a SQL query asynchronously and returns a single result or default value of type T.
+    ///     Executes a SQL query asynchronously and returns a single result or default value of type T.
     /// </summary>
     /// <typeparam name="T">The type of object to retrieve from the query.</typeparam>
     /// <param name="sql">The SQL query to execute.</param>
     /// <param name="filter">The filter for the query. Defaults to null.</param>
-    /// <param name="cancellationToken">A CancellationToken to cancel the asynchronous operation. Defaults to CancellationToken.None.</param>
+    /// <param name="cancellationToken">
+    ///     A CancellationToken to cancel the asynchronous operation. Defaults to
+    ///     CancellationToken.None.
+    /// </param>
     /// <returns>The single result of type T from the query, or default(T) if no result is found.</returns>
     private async Task<T> QuerySingleOrDefaultInternalAsync<T>(string sql, object filter = null,
         CancellationToken cancellationToken = default)
@@ -451,12 +488,15 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Executes a SQL query asynchronously and returns the count of records.
+    ///     Executes a SQL query asynchronously and returns the count of records.
     /// </summary>
     /// <param name="tableName">The name of the database table.</param>
     /// <param name="whereClause">The WHERE clause for the query. Defaults to null.</param>
     /// <param name="filter">The filter for the query. Defaults to null.</param>
-    /// <param name="cancellationToken">A CancellationToken to cancel the asynchronous operation. Defaults to CancellationToken.None.</param>
+    /// <param name="cancellationToken">
+    ///     A CancellationToken to cancel the asynchronous operation. Defaults to
+    ///     CancellationToken.None.
+    /// </param>
     /// <returns>The count of records based on the provided criteria.</returns>
     private async Task<int> QueryCountInternalAsync(string tableName, string whereClause = null,
         object filter = null, CancellationToken cancellationToken = default)
@@ -467,12 +507,15 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Executes a SQL query asynchronously and returns the results as an IEnumerable.
+    ///     Executes a SQL query asynchronously and returns the results as an IEnumerable.
     /// </summary>
     /// <typeparam name="T">The type of object to retrieve from the query.</typeparam>
     /// <param name="sql">The SQL query to execute.</param>
     /// <param name="filter">The filter for the query. Defaults to null.</param>
-    /// <param name="cancellationToken">A CancellationToken to cancel the asynchronous operation. Defaults to CancellationToken.None.</param>
+    /// <param name="cancellationToken">
+    ///     A CancellationToken to cancel the asynchronous operation. Defaults to
+    ///     CancellationToken.None.
+    /// </param>
     /// <returns>An IEnumerable containing the results of the query.</returns>
     private async Task<IEnumerable<T>> QueryInternalAsync<T>(string sql, object filter = null,
         CancellationToken cancellationToken = default)
@@ -483,7 +526,7 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Executes a SQL query asynchronously and returns the results as an IEnumerable using a specified mapping function.
+    ///     Executes a SQL query asynchronously and returns the results as an IEnumerable using a specified mapping function.
     /// </summary>
     /// <typeparam name="TFirst">The type of the first result set.</typeparam>
     /// <typeparam name="TSecond">The type of the second result set.</typeparam>
@@ -492,7 +535,10 @@ public class RepositoryBase : IRepositoryBase
     /// <param name="filter">The filter for the query. Defaults to null.</param>
     /// <param name="func">A mapping function for the query results.</param>
     /// <param name="splitOn">The column to split the results on.</param>
-    /// <param name="cancellationToken">A CancellationToken to cancel the asynchronous operation. Defaults to CancellationToken.None.</param>
+    /// <param name="cancellationToken">
+    ///     A CancellationToken to cancel the asynchronous operation. Defaults to
+    ///     CancellationToken.None.
+    /// </param>
     /// <returns>An IEnumerable containing the mapped results of the query.</returns>
     private async Task<IEnumerable<TReturn>> QueryInternalAsync<TFirst, TSecond, TReturn>(string sql, object filter,
         Func<TFirst, TSecond, TReturn> func, string splitOn, CancellationToken cancellationToken = default)
@@ -504,7 +550,7 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Executes a SQL query asynchronously and returns the results as an IEnumerable using a specified mapping function.
+    ///     Executes a SQL query asynchronously and returns the results as an IEnumerable using a specified mapping function.
     /// </summary>
     /// <typeparam name="TFirst">The type of the first result set.</typeparam>
     /// <typeparam name="TSecond">The type of the second result set.</typeparam>
@@ -514,7 +560,10 @@ public class RepositoryBase : IRepositoryBase
     /// <param name="filter">The filter for the query. Defaults to null.</param>
     /// <param name="func">A mapping function for the query results.</param>
     /// <param name="splitOn">The column to split the results on.</param>
-    /// <param name="cancellationToken">A CancellationToken to cancel the asynchronous operation. Defaults to CancellationToken.None.</param>
+    /// <param name="cancellationToken">
+    ///     A CancellationToken to cancel the asynchronous operation. Defaults to
+    ///     CancellationToken.None.
+    /// </param>
     /// <returns>An IEnumerable containing the mapped results of the query.</returns>
     private async Task<IEnumerable<TReturn>> QueryInternalAsync<TFirst, TSecond, TThird, TReturn>(string sql,
         object filter, Func<TFirst, TSecond, TThird, TReturn> func, string splitOn,
@@ -526,7 +575,7 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Executes a SQL query asynchronously and returns the results as an IEnumerable using a specified mapping function.
+    ///     Executes a SQL query asynchronously and returns the results as an IEnumerable using a specified mapping function.
     /// </summary>
     /// <typeparam name="TFirst">The type of the first result set.</typeparam>
     /// <typeparam name="TSecond">The type of the second result set.</typeparam>
@@ -537,7 +586,10 @@ public class RepositoryBase : IRepositoryBase
     /// <param name="filter">The filter for the query. Defaults to null.</param>
     /// <param name="func">A mapping function for the query results.</param>
     /// <param name="splitOn">The column to split the results on.</param>
-    /// <param name="cancellationToken">A CancellationToken to cancel the asynchronous operation. Defaults to CancellationToken.None.</param>
+    /// <param name="cancellationToken">
+    ///     A CancellationToken to cancel the asynchronous operation. Defaults to
+    ///     CancellationToken.None.
+    /// </param>
     /// <returns>An IEnumerable containing the mapped results of the query.</returns>
     private async Task<IEnumerable<TReturn>> QueryInternalAsync<TFirst, TSecond, TThird, TFourth, TReturn>(
         string sql, object filter, Func<TFirst, TSecond, TThird, TFourth, TReturn> func, string splitOn,
@@ -550,7 +602,7 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Executes a SQL query asynchronously and returns the results as an IEnumerable using a specified mapping function.
+    ///     Executes a SQL query asynchronously and returns the results as an IEnumerable using a specified mapping function.
     /// </summary>
     /// <typeparam name="TFirst">The type of the first result set.</typeparam>
     /// <typeparam name="TSecond">The type of the second result set.</typeparam>
@@ -562,7 +614,10 @@ public class RepositoryBase : IRepositoryBase
     /// <param name="filter">The filter for the query. Defaults to null.</param>
     /// <param name="func">A mapping function for the query results.</param>
     /// <param name="splitOn">The column to split the results on.</param>
-    /// <param name="cancellationToken">A CancellationToken to cancel the asynchronous operation. Defaults to CancellationToken.None.</param>
+    /// <param name="cancellationToken">
+    ///     A CancellationToken to cancel the asynchronous operation. Defaults to
+    ///     CancellationToken.None.
+    /// </param>
     /// <returns>An IEnumerable containing the mapped results of the query.</returns>
     private async Task<IEnumerable<TReturn>> QueryInternalAsync<TFirst, TSecond, TThird, TFourth, TFifth, TReturn>(
         string sql, object filter, Func<TFirst, TSecond, TThird, TFourth, TFifth, TReturn> func, string splitOn,
@@ -575,13 +630,16 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Executes a SQL query asynchronously and returns a scalar result of type T.
+    ///     Executes a SQL query asynchronously and returns a scalar result of type T.
     /// </summary>
     /// <typeparam name="T">The type of the scalar result.</typeparam>
     /// <param name="sql">The SQL query to execute.</param>
     /// <param name="filter">The filter for the query. Defaults to null.</param>
     /// <param name="dbTransaction">The IDbTransaction to use for the query. Defaults to null.</param>
-    /// <param name="cancellationToken">A CancellationToken to cancel the asynchronous operation. Defaults to CancellationToken.None.</param>
+    /// <param name="cancellationToken">
+    ///     A CancellationToken to cancel the asynchronous operation. Defaults to
+    ///     CancellationToken.None.
+    /// </param>
     /// <returns>The scalar result of type T from the query.</returns>
     private async Task<T> ExecuteInternalScalar<T>(string sql, object filter = null,
         IDbTransaction dbTransaction = null, CancellationToken cancellationToken = default)
@@ -594,12 +652,15 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Executes a SQL query asynchronously and returns the number of affected rows.
+    ///     Executes a SQL query asynchronously and returns the number of affected rows.
     /// </summary>
     /// <param name="sql">The SQL query to execute.</param>
     /// <param name="filter">The filter for the query. Defaults to null.</param>
     /// <param name="dbTransaction">The IDbTransaction to use for the query. Defaults to null.</param>
-    /// <param name="cancellationToken">A CancellationToken to cancel the asynchronous operation. Defaults to CancellationToken.None.</param>
+    /// <param name="cancellationToken">
+    ///     A CancellationToken to cancel the asynchronous operation. Defaults to
+    ///     CancellationToken.None.
+    /// </param>
     /// <returns>The number of affected rows from the query.</returns>
     private async Task<int> ExecuteInternalAsync(string sql, object filter = null,
         IDbTransaction dbTransaction = null, CancellationToken cancellationToken = default)
@@ -612,12 +673,15 @@ public class RepositoryBase : IRepositoryBase
     }
 
     /// <summary>
-    /// Executes a paged SQL query asynchronously and returns the results as an IEnumerable.
+    ///     Executes a paged SQL query asynchronously and returns the results as an IEnumerable.
     /// </summary>
     /// <typeparam name="T">The type of object to retrieve from the query.</typeparam>
     /// <param name="sql">The SQL query to execute.</param>
     /// <param name="filter">The filter for pagination and ordering.</param>
-    /// <param name="cancellationToken">A CancellationToken to cancel the asynchronous operation. Defaults to CancellationToken.None.</param>
+    /// <param name="cancellationToken">
+    ///     A CancellationToken to cancel the asynchronous operation. Defaults to
+    ///     CancellationToken.None.
+    /// </param>
     /// <returns>An IEnumerable containing the results of the query.</returns>
     private async Task<IEnumerable<T>> QueryListPagedInternalAsync<T>(string sql, IPagedFilter filter,
         CancellationToken cancellationToken = default)

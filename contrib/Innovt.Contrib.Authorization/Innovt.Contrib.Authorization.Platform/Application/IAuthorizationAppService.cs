@@ -12,12 +12,12 @@ using Innovt.Contrib.Authorization.Platform.Domain.Filters;
 namespace Innovt.Contrib.Authorization.Platform.Application;
 
 /// <summary>
-/// Interface representing the application service responsible for handling authorization-related operations.
+///     Interface representing the application service responsible for handling authorization-related operations.
 /// </summary>
 public interface IAuthorizationAppService
 {
     /// <summary>
-    /// Adds a user using the provided add user command.
+    ///     Adds a user using the provided add user command.
     /// </summary>
     /// <param name="command">The add user command.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
@@ -25,7 +25,7 @@ public interface IAuthorizationAppService
     Task AddUser(AddUserCommand command, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Gets the roles associated with a user based on the provided filter.
+    ///     Gets the roles associated with a user based on the provided filter.
     /// </summary>
     /// <param name="filter">The filter for retrieving roles by user.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
@@ -33,7 +33,7 @@ public interface IAuthorizationAppService
     Task<IList<RoleDto>> GetUserRoles(RoleByUserFilter filter, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Removes a user using the provided remove user command.
+    ///     Removes a user using the provided remove user command.
     /// </summary>
     /// <param name="command">The remove user command.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
@@ -41,7 +41,7 @@ public interface IAuthorizationAppService
     Task RemoveUser(RemoveUserCommand command, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Assigns roles to a user using the provided assign role command.
+    ///     Assigns roles to a user using the provided assign role command.
     /// </summary>
     /// <param name="command">The assign role command.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
@@ -49,7 +49,7 @@ public interface IAuthorizationAppService
     Task AssignRole(AssignRoleCommand command, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Unassigns roles from a user using the provided unassign role command.
+    ///     Unassigns roles from a user using the provided unassign role command.
     /// </summary>
     /// <param name="command">The unassign role command.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
@@ -57,7 +57,7 @@ public interface IAuthorizationAppService
     Task UnAssignRole(UnAssignUserRoleCommand command, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Registers an administrator using the provided registration command.
+    ///     Registers an administrator using the provided registration command.
     /// </summary>
     /// <param name="command">The registration command for the administrator.</param>
     /// <param name="cancellationToken">The cancellation token.</param>

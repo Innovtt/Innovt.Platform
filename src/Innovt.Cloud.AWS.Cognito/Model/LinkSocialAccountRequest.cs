@@ -10,23 +10,12 @@ using Innovt.Core.Collections;
 namespace Innovt.Cloud.AWS.Cognito.Model;
 
 /// <summary>
-/// Represents a request to update user attributes.
+///     Represents a request to update user attributes.
 /// </summary>
 public class LinkSocialAccountRequest : RequestBase
-{   
-   /// <summary>
-   /// The email of the user to link the account.
-   /// </summary>
-    [Required]
-    public string Email { get; set; }
-   
-    [Required]
-    public string UserName { get; set; }
-
-
+{
     public LinkSocialAccountRequest()
     {
-        
     }
 
     public LinkSocialAccountRequest(string email, string userName)
@@ -34,11 +23,19 @@ public class LinkSocialAccountRequest : RequestBase
         Email = email;
         UserName = userName;
     }
-    /// <inheritdoc/>
+
+    /// <summary>
+    ///     The email of the user to link the account.
+    /// </summary>
+    [Required]
+    public string Email { get; set; }
+
+    [Required] public string UserName { get; set; }
+
+    /// <inheritdoc />
     public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
         if (Email.IsNullOrEmpty())
             yield return new ValidationResult(Messages.EmailIsRequired, new[] { nameof(Email) });
-        
     }
 }

@@ -12,13 +12,15 @@ using Innovt.Domain.Core.Streams;
 namespace Innovt.Cloud.AWS.Lambda.Kinesis;
 
 /// <summary>
-/// Represents a base class for processing Kinesis data streams in batch, where each batch consists of messages of type <typeparamref name="TBody"/>.
+///     Represents a base class for processing Kinesis data streams in batch, where each batch consists of messages of type
+///     <typeparamref name="TBody" />.
 /// </summary>
 /// <typeparam name="TBody">The type of messages in the data stream.</typeparam>
 public abstract class KinesisDataProcessor<TBody> : KinesisDataProcessorBatch<TBody> where TBody : class, IDataStream
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="KinesisDataProcessor{TBody}"/> class with optional logging and batch failure reporting.
+    ///     Initializes a new instance of the <see cref="KinesisDataProcessor{TBody}" /> class with optional logging and batch
+    ///     failure reporting.
     /// </summary>
     /// <param name="logger">An optional logger for recording processing information.</param>
     /// <param name="reportBatchFailures">Specifies whether to report batch processing failures.</param>
@@ -27,7 +29,8 @@ public abstract class KinesisDataProcessor<TBody> : KinesisDataProcessorBatch<TB
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="KinesisDataProcessor{TBody}"/> class with optional batch failure reporting.
+    ///     Initializes a new instance of the <see cref="KinesisDataProcessor{TBody}" /> class with optional batch failure
+    ///     reporting.
     /// </summary>
     /// <param name="reportBatchFailures">Specifies whether to report batch processing failures.</param>
     protected KinesisDataProcessor(bool reportBatchFailures = false) : base(reportBatchFailures)
@@ -35,10 +38,10 @@ public abstract class KinesisDataProcessor<TBody> : KinesisDataProcessorBatch<TB
     }
 
     /// <summary>
-    /// Processes a batch of Kinesis messages represented as a list of <typeparamref name="TBody"/> objects.
+    ///     Processes a batch of Kinesis messages represented as a list of <typeparamref name="TBody" /> objects.
     /// </summary>
     /// <param name="messages">The list of Kinesis messages to process.</param>
-    /// <returns>A <see cref="BatchFailureResponse"/> containing information about failed message processing.</returns>
+    /// <returns>A <see cref="BatchFailureResponse" /> containing information about failed message processing.</returns>
     protected override async Task<BatchFailureResponse> ProcessMessages(IList<TBody> messages)
     {
         if (messages == null) throw new ArgumentNullException(nameof(messages));
@@ -81,7 +84,7 @@ public abstract class KinesisDataProcessor<TBody> : KinesisDataProcessorBatch<TB
     }
 
     /// <summary>
-    /// Processes an individual Kinesis message of type <typeparamref name="TBody"/>.
+    ///     Processes an individual Kinesis message of type <typeparamref name="TBody" />.
     /// </summary>
     /// <param name="message">The Kinesis message to process.</param>
     /// <returns>A task representing the asynchronous processing operation.</returns>

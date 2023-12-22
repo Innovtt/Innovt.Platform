@@ -10,16 +10,16 @@ using System.Linq;
 namespace Innovt.Data.DataModels;
 
 /// <summary>
-/// Represents a context for managing instances of data models and tracking changes.
+///     Represents a context for managing instances of data models and tracking changes.
 /// </summary>
 public class DmContext
 {
     private static DmContext instance;
-    private static object objlock = new();
-    private Dictionary<string, IBaseDataModel> items;
+    private static readonly object objlock = new();
+    private readonly Dictionary<string, IBaseDataModel> items;
 
     /// <summary>
-    /// Private constructor to ensure singleton pattern and initialize the context.
+    ///     Private constructor to ensure singleton pattern and initialize the context.
     /// </summary>
     private DmContext()
     {
@@ -27,7 +27,7 @@ public class DmContext
     }
 
     /// <summary>
-    /// Gets the singleton instance of the DMContext.
+    ///     Gets the singleton instance of the DMContext.
     /// </summary>
     /// <returns>The singleton instance of the DMContext.</returns>
     public static DmContext Instance()
@@ -41,7 +41,7 @@ public class DmContext
     }
 
     /// <summary>
-    /// Attaches a data model entity to the context for change tracking.
+    ///     Attaches a data model entity to the context for change tracking.
     /// </summary>
     /// <typeparam name="T">The type of the entity implementing IBaseDataModel.</typeparam>
     /// <param name="entity">The entity to be attached.</param>
@@ -58,7 +58,7 @@ public class DmContext
     }
 
     /// <summary>
-    /// Detaches a data model entity from the context and disables change tracking.
+    ///     Detaches a data model entity from the context and disables change tracking.
     /// </summary>
     /// <typeparam name="T">The type of the entity implementing IBaseDataModel.</typeparam>
     /// <param name="entity">The entity to be detached.</param>
@@ -80,7 +80,7 @@ public class DmContext
     }
 
     /// <summary>
-    /// Finds a data model entity in the context based on its hash code.
+    ///     Finds a data model entity in the context based on its hash code.
     /// </summary>
     /// <typeparam name="T">The type of the entity implementing IBaseDataModel.</typeparam>
     /// <param name="entity">The entity to be found.</param>
@@ -98,7 +98,7 @@ public class DmContext
     }
 
     /// <summary>
-    /// Retrieves a list of data model entities that have changes.
+    ///     Retrieves a list of data model entities that have changes.
     /// </summary>
     /// <returns>A list of data model entities with pending changes.</returns>
     public List<object> GetAllWithChanges()

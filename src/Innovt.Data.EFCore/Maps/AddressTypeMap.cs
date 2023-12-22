@@ -10,12 +10,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Innovt.Data.EFCore.Maps;
 
 /// <summary>
-/// Configuration for mapping the AddressType entity to the database using Entity Framework Core.
+///     Configuration for mapping the AddressType entity to the database using Entity Framework Core.
 /// </summary>
 public class AddressTypeMap : IEntityTypeConfiguration<AddressType>
 {
     /// <summary>
-    /// Configures the mapping for the AddressType entity.
+    ///     Configures the mapping for the AddressType entity.
     /// </summary>
     /// <param name="builder">The entity type builder.</param>
     /// <exception cref="ArgumentNullException">Thrown when the builder parameter is null.</exception>

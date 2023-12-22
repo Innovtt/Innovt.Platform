@@ -11,7 +11,7 @@ using Timer = System.Timers.Timer;
 namespace Innovt.Job.Core;
 
 /// <summary>
-/// Abstract base class for job implementations, providing common functionality for job management.
+///     Abstract base class for job implementations, providing common functionality for job management.
 /// </summary>
 public abstract class JobBase
 {
@@ -19,7 +19,7 @@ public abstract class JobBase
     protected readonly ILogger Logger;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="JobBase"/> class.
+    ///     Initializes a new instance of the <see cref="JobBase" /> class.
     /// </summary>
     /// <param name="jobName">The name of the job.</param>
     /// <param name="logger">The logger to use for logging.</param>
@@ -39,12 +39,12 @@ public abstract class JobBase
     }
 
     /// <summary>
-    /// Gets or sets the name of the job.
+    ///     Gets or sets the name of the job.
     /// </summary>
     public string Name { get; set; }
 
     /// <summary>
-    /// Event handler for the heartbeat.
+    ///     Event handler for the heartbeat.
     /// </summary>
     protected virtual void OnHeartBeat()
     {
@@ -52,7 +52,7 @@ public abstract class JobBase
     }
 
     /// <summary>
-    /// Starts the job.
+    ///     Starts the job.
     /// </summary>
     /// <returns>A task representing the asynchronous operation.</returns>
     public Task Start()
@@ -62,7 +62,7 @@ public abstract class JobBase
     }
 
     /// <summary>
-    /// Stops the job.
+    ///     Stops the job.
     /// </summary>
     /// <returns>A task representing the asynchronous operation.</returns>
     public Task Stop()
@@ -73,14 +73,14 @@ public abstract class JobBase
     }
 
     /// <summary>
-    /// Executes when the job is started.
+    ///     Executes when the job is started.
     /// </summary>
     /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
     protected abstract Task OnStart(CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Executes when the job is stopped.
+    ///     Executes when the job is stopped.
     /// </summary>
     /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>

@@ -10,7 +10,7 @@ using NUnit.Framework;
 namespace Innovt.Data.Tests;
 
 [TestFixture]
-public class DmContextTests
+public class DMContextTests
 {
     [Test]
     public void InstanceCantBeNullWhenUsingSingleton()
@@ -42,7 +42,7 @@ public class DmContextTests
     [Test]
     public void CheckHashCode()
     {
-        var userDataModel = new UserDataModel()
+        var userDataModel = new UserDataModel
         {
             Id = 10,
             Name = "Michel",
@@ -50,9 +50,9 @@ public class DmContextTests
             LastName = "Borges"
         };
 
-        DmContext.Instance().Attach<UserDataModel>(userDataModel);
+        DmContext.Instance().Attach(userDataModel);
 
-        var userDataModel2 = new UserDataModel()
+        var userDataModel2 = new UserDataModel
         {
             Id = 10,
             Name = "Michel",
@@ -60,16 +60,16 @@ public class DmContextTests
             LastName = "Borges"
         };
 
-        DmContext.Instance().Attach<UserDataModel>(userDataModel2);
+        DmContext.Instance().Attach(userDataModel2);
 
-        DmContext.Instance().DeAttach<UserDataModel>(userDataModel);
-        DmContext.Instance().DeAttach<UserDataModel>(userDataModel2);
+        DmContext.Instance().DeAttach(userDataModel);
+        DmContext.Instance().DeAttach(userDataModel2);
     }
 
     [Test]
     public void Attach()
     {
-        var userDataModel = new UserDataModel()
+        var userDataModel = new UserDataModel
         {
             Id = 10,
             Name = "Michel",
@@ -77,15 +77,15 @@ public class DmContextTests
             LastName = "Borges"
         };
 
-        DmContext.Instance().Attach<UserDataModel>(userDataModel);
+        DmContext.Instance().Attach(userDataModel);
 
-        var user = DmContext.Instance().Find<UserDataModel>(userDataModel);
+        var user = DmContext.Instance().Find(userDataModel);
 
         Assert.That(user, Is.Not.Null);
 
-        Assert.That(userDataModel.Name, Is.EqualTo( user.Name));
+        Assert.That(userDataModel.Name, Is.EqualTo(user.Name));
         Assert.That(userDataModel.Id, Is.EqualTo(user.Id));
-        Assert.That(userDataModel.LastName,Is.EqualTo(user.LastName));
-        Assert.That(userDataModel.Address,Is.EqualTo(user.Address));
+        Assert.That(userDataModel.LastName, Is.EqualTo(user.LastName));
+        Assert.That(userDataModel.Address, Is.EqualTo(user.Address));
     }
 }

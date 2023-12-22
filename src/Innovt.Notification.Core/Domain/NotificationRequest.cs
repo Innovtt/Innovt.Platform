@@ -9,12 +9,12 @@ using Innovt.Core.Collections;
 namespace Innovt.Notification.Core.Domain;
 
 /// <summary>
-/// Represents a notification request.
+///     Represents a notification request.
 /// </summary>
 public class NotificationRequest : IValidatableObject
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="NotificationRequest"/> class.
+    ///     Initializes a new instance of the <see cref="NotificationRequest" /> class.
     /// </summary>
     public NotificationRequest()
     {
@@ -22,17 +22,17 @@ public class NotificationRequest : IValidatableObject
     }
 
     /// <summary>
-    /// Gets or sets the template ID.
+    ///     Gets or sets the template ID.
     /// </summary>
     public string TemplateId { get; set; }
 
     /// <summary>
-    /// Gets or sets the list of "To" contacts for the notification request.
+    ///     Gets or sets the list of "To" contacts for the notification request.
     /// </summary>
     public List<NotificationMessageContact> To { get; set; }
 
     /// <summary>
-    /// Gets or sets the payload associated with the notification request.
+    ///     Gets or sets the payload associated with the notification request.
     /// </summary>
     public object PayLoad { get; set; }
 

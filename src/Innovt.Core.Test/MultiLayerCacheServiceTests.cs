@@ -9,6 +9,7 @@ using Innovt.Core.Caching;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Test.Models;
 using Microsoft.Extensions.Caching.Memory;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace Innovt.Core.Test;
@@ -19,9 +20,9 @@ public class MultiLayerCacheServiceTests
     [SetUp]
     public void Setup()
     {
-        loggerMock = NSubstitute.Substitute.For<ILogger>();
+        loggerMock = Substitute.For<ILogger>();
 
-        var defaultCache = new LocalCache(new MemoryCache(new MemoryCacheOptions() { CompactionPercentage = 1 }));
+        var defaultCache = new LocalCache(new MemoryCache(new MemoryCacheOptions { CompactionPercentage = 1 }));
 
         cacheService = new MultiLayerCacheService(defaultCache, loggerMock);
     }
@@ -52,7 +53,7 @@ public class MultiLayerCacheServiceTests
     [Test]
     public void SetValueThrowExceptionIfKeyIsNullOrEmpty()
     {
-        Assert.Throws<ArgumentNullException>(() => cacheService.SetValue<int>(null, 0, TimeSpan.FromSeconds(10)));
+        Assert.Throws<ArgumentNullException>(() => cacheService.SetValue(null, 0, TimeSpan.FromSeconds(10)));
     }
 
 
@@ -61,21 +62,21 @@ public class MultiLayerCacheServiceTests
     {
         var value = cacheService.GetValue<int>("Quantity");
 
-        Assert.AreEqual(0, value);
+        Assert.That(0, Is.EqualTo(value));
 
         var value2 = cacheService.GetValue<object>("User");
 
-        Assert.IsNull(value2);
+        Assert.That(value2, Is.Null);
     }
 
 
     [Test]
     public async Task GetValueWithFactoryReturnsFactoryValue()
     {
-        var value = await cacheService.GetValue<A>("Quantity", Factory, CancellationToken.None).ConfigureAwait(false);
+        var value = await cacheService.GetValue("Quantity", Factory, CancellationToken.None).ConfigureAwait(false);
 
-        Assert.IsNotNull(value);
-        Assert.AreEqual("Michel", value.Name);
+        Assert.That(value, Is.Not.Null);
+        Assert.That("Michel", Is.EqualTo(value.Name));
     }
 
 
@@ -86,39 +87,39 @@ public class MultiLayerCacheServiceTests
         var key = "Quantity";
         var expectedValue = "Michel";
 
-        var value = await cacheService.GetValueOrCreate<A>(key, Factory, expiration, CancellationToken.None)
+        var value = await cacheService.GetValueOrCreate(key, Factory, expiration, CancellationToken.None)
             .ConfigureAwait(false);
 
-        Assert.IsNotNull(value);
-        Assert.AreEqual(expectedValue, value.Name);
+        Assert.That(value, Is.Not.Null);
+        Assert.That(expectedValue, Is.EqualTo(value.Name));
 
         Thread.Sleep(TimeSpan.FromSeconds(2));
 
         value = cacheService.GetValue<A>(key);
 
-        Assert.IsNotNull(value);
-        Assert.AreEqual(expectedValue, value.Name);
+        Assert.That(value, Is.Not.Null);
+        Assert.That(expectedValue, Is.EqualTo(value.Name));
     }
 
-    public Task<A> Factory(CancellationToken arg)
+    public static Task<A> Factory(CancellationToken arg)
     {
-        return Task.FromResult(new A()
+        return Task.FromResult(new A
         {
             Name = "Michel"
         });
     }
 
     [Test]
-    public async Task SetValue()
+    public void SetValue()
     {
         var key = "Quantity";
         var expectedValue = 100;
 
-        cacheService.SetValue<int>(key, expectedValue, TimeSpan.FromDays(1));
+        cacheService.SetValue(key, expectedValue, TimeSpan.FromDays(1));
 
         var value = cacheService.GetValue<int>(key);
 
-        Assert.AreEqual(expectedValue, value);
+        Assert.That(expectedValue, Is.EqualTo(value));
     }
 
     [Test]
@@ -128,13 +129,13 @@ public class MultiLayerCacheServiceTests
         var expectedValue = 0;
         var expiration = TimeSpan.FromSeconds(1);
 
-        cacheService.SetValue<int>(key, 100, TimeSpan.FromSeconds(1));
+        cacheService.SetValue(key, 100, TimeSpan.FromSeconds(1));
 
         Thread.Sleep(expiration * 2);
 
         var value = cacheService.GetValue<int>(key);
 
-        Assert.AreEqual(expectedValue, value);
+        Assert.That(expectedValue, Is.EqualTo(value));
     }
 
 
@@ -144,12 +145,12 @@ public class MultiLayerCacheServiceTests
         var key = "Quantity";
         var expectedValue = 0;
 
-        cacheService.SetValue<int>(key, 100, TimeSpan.FromDays(1));
+        cacheService.SetValue(key, 100, TimeSpan.FromDays(1));
 
         cacheService.Remove(key);
 
         var value = cacheService.GetValue<int>(key);
 
-        Assert.AreEqual(expectedValue, value);
+        Assert.That(expectedValue, Is.EqualTo(value));
     }
 }

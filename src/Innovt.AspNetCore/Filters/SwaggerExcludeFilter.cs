@@ -10,12 +10,12 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 namespace Innovt.AspNetCore.Filters;
 
 /// <summary>
-/// A filter used to exclude specified properties or parameters from Swagger documentation.
+///     A filter used to exclude specified properties or parameters from Swagger documentation.
 /// </summary>
 public class SwaggerExcludeFilter : ISchemaFilter, IOperationFilter
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="SwaggerExcludeFilter"/> class.
+    ///     Initializes a new instance of the <see cref="SwaggerExcludeFilter" /> class.
     /// </summary>
     public SwaggerExcludeFilter()
     {

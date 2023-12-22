@@ -14,7 +14,7 @@ namespace Innovt.Core.Exceptions;
 public class FatalException : BaseException
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="FatalException"/> class with a specified error message.
+    ///     Initializes a new instance of the <see cref="FatalException" /> class with a specified error message.
     /// </summary>
     /// <param name="message">The error message that describes the reason for the exception.</param>
     public FatalException(string message) : base(message)
@@ -22,8 +22,8 @@ public class FatalException : BaseException
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="FatalException"/> class with a specified error message
-    /// and a reference to the inner exception that is the cause of this exception.
+    ///     Initializes a new instance of the <see cref="FatalException" /> class with a specified error message
+    ///     and a reference to the inner exception that is the cause of this exception.
     /// </summary>
     /// <param name="message">The error message that describes the reason for the exception.</param>
     /// <param name="ex">The inner exception that is the cause of this exception.</param>
@@ -32,7 +32,7 @@ public class FatalException : BaseException
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="FatalException"/> class with a specified inner exception.
+    ///     Initializes a new instance of the <see cref="FatalException" /> class with a specified inner exception.
     /// </summary>
     /// <param name="ex">The inner exception that is the cause of this exception.</param>
     public FatalException(Exception ex) : base(ex)

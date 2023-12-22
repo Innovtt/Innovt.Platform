@@ -9,12 +9,12 @@ using System.Reflection;
 namespace Innovt.Core.Utilities;
 
 /// <summary>
-/// Provides simple object mapping functionality between two objects of different types.
+///     Provides simple object mapping functionality between two objects of different types.
 /// </summary>
 public static class SimpleMapper
 {
     /// <summary>
-    /// Maps the public properties with matching names and types from the input object to the output object.
+    ///     Maps the public properties with matching names and types from the input object to the output object.
     /// </summary>
     /// <typeparam name="T1">The type of the input object.</typeparam>
     /// <typeparam name="T2">The type of the output object.</typeparam>
@@ -43,7 +43,7 @@ public static class SimpleMapper
     }
 
     /// <summary>
-    /// Maps the properties from the input object to a new instance of the output object type.
+    ///     Maps the properties from the input object to a new instance of the output object type.
     /// </summary>
     /// <typeparam name="T1">The type of the input object.</typeparam>
     /// <typeparam name="T2">The type of the output object.</typeparam>
@@ -60,7 +60,7 @@ public static class SimpleMapper
     }
 
     /// <summary>
-    /// Maps the properties from the input object to the provided output object instance.
+    ///     Maps the properties from the input object to the provided output object instance.
     /// </summary>
     /// <typeparam name="T1">The type of the input object.</typeparam>
     /// <typeparam name="T2">The type of the output object.</typeparam>

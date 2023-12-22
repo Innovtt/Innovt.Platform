@@ -11,13 +11,13 @@ using Innovt.Core.Exceptions;
 namespace Innovt.Core.Utilities;
 
 /// <summary>
-/// Provides static methods for checking arguments and values.
+///     Provides static methods for checking arguments and values.
 /// </summary>
 [DebuggerStepThrough]
 public static class Check
 {
     /// <summary>
-    /// Checks if the specified value is not null; otherwise, throws an <see cref="ArgumentNullException"/>.
+    ///     Checks if the specified value is not null; otherwise, throws an <see cref="ArgumentNullException" />.
     /// </summary>
     /// <typeparam name="T">The type of the value to check.</typeparam>
     /// <param name="value">The value to check for null.</param>
@@ -34,7 +34,8 @@ public static class Check
     }
 
     /// <summary>
-    /// Checks if the specified nullable integer value is greater than zero; otherwise, throws a <see cref="BusinessException"/>.
+    ///     Checks if the specified nullable integer value is greater than zero; otherwise, throws a
+    ///     <see cref="BusinessException" />.
     /// </summary>
     /// <param name="value">The nullable integer value to check.</param>
     /// <param name="parameterName">The name of the parameter associated with the value.</param>
@@ -49,7 +50,7 @@ public static class Check
     }
 
     /// <summary>
-    /// Checks if the specified integer value is greater than zero; otherwise, throws a <see cref="BusinessException"/>.
+    ///     Checks if the specified integer value is greater than zero; otherwise, throws a <see cref="BusinessException" />.
     /// </summary>
     /// <param name="value">The integer value to check.</param>
     /// <param name="parameterName">The name of the parameter associated with the value.</param>
@@ -64,7 +65,8 @@ public static class Check
     }
 
     /// <summary>
-    /// Checks if the specified array of integers are greater than zero; otherwise, throws a <see cref="BusinessException"/>.
+    ///     Checks if the specified array of integers are greater than zero; otherwise, throws a
+    ///     <see cref="BusinessException" />.
     /// </summary>
     /// <typeparam name="T">The type of the array elements, which must be convertible to an integer.</typeparam>
     /// <param name="value">The array of values to check.</param>
@@ -83,7 +85,8 @@ public static class Check
     }
 
     /// <summary>
-    /// Checks if the specified value is not null; otherwise, throws a <see cref="BusinessException"/> with the specified message.
+    ///     Checks if the specified value is not null; otherwise, throws a <see cref="BusinessException" /> with the specified
+    ///     message.
     /// </summary>
     /// <typeparam name="T">The type of the value to check.</typeparam>
     /// <param name="value">The value to check for null.</param>
@@ -98,7 +101,8 @@ public static class Check
     }
 
     /// <summary>
-    /// Checks if the specified value is not null; otherwise, throws a <see cref="CriticalException"/> with the specified message.
+    ///     Checks if the specified value is not null; otherwise, throws a <see cref="CriticalException" /> with the specified
+    ///     message.
     /// </summary>
     /// <typeparam name="T">The type of the value to check.</typeparam>
     /// <param name="value">The value to check for null.</param>
@@ -113,19 +117,24 @@ public static class Check
     }
 
     /// <summary>
-    /// Checks if two strings are equal while ignoring case sensitivity; otherwise, throws a <see cref="BusinessException"/> with the specified message.
+    ///     Checks if two strings are equal while ignoring case sensitivity; otherwise, throws a
+    ///     <see cref="BusinessException" /> with the specified message.
     /// </summary>
     /// <param name="value">The first string to compare.</param>
     /// <param name="value2">The second string to compare.</param>
     /// <param name="message">The message for the exception if the strings are not equal.</param>
-    /// <exception cref="BusinessException">Thrown if the strings are not equal, ignoring case sensitivity, with the specified message.</exception>
+    /// <exception cref="BusinessException">
+    ///     Thrown if the strings are not equal, ignoring case sensitivity, with the specified
+    ///     message.
+    /// </exception>
     private static bool AreEqualImpl(string value, string value2)
     {
         return value != null && !value.Equals(value2, StringComparison.OrdinalIgnoreCase);
     }
 
     /// <summary>
-    /// Checks if two integer values are equal; otherwise, throws a <see cref="BusinessException"/> with the specified message.
+    ///     Checks if two integer values are equal; otherwise, throws a <see cref="BusinessException" /> with the specified
+    ///     message.
     /// </summary>
     /// <param name="value">The first integer value to compare.</param>
     /// <param name="value2">The second integer value to compare.</param>
@@ -137,7 +146,8 @@ public static class Check
     }
 
     /// <summary>
-    /// Checks if two long values are equal; otherwise, throws a <see cref="BusinessException"/> with the specified message.
+    ///     Checks if two long values are equal; otherwise, throws a <see cref="BusinessException" /> with the specified
+    ///     message.
     /// </summary>
     /// <param name="value">The first long value to compare.</param>
     /// <param name="value2">The second long value to compare.</param>
@@ -149,7 +159,8 @@ public static class Check
     }
 
     /// <summary>
-    /// Checks if two decimal values are equal; otherwise, throws a <see cref="BusinessException"/> with the specified message.
+    ///     Checks if two decimal values are equal; otherwise, throws a <see cref="BusinessException" /> with the specified
+    ///     message.
     /// </summary>
     /// <param name="value">The first decimal value to compare.</param>
     /// <param name="value2">The second decimal value to compare.</param>
@@ -161,7 +172,8 @@ public static class Check
     }
 
     /// <summary>
-    /// Checks if two decimal values are equal; otherwise, throws a <see cref="BusinessException"/> with the specified message.
+    ///     Checks if two decimal values are equal; otherwise, throws a <see cref="BusinessException" /> with the specified
+    ///     message.
     /// </summary>
     /// <param name="value">The first decimal value to compare.</param>
     /// <param name="value2">The second decimal value to compare.</param>
@@ -173,19 +185,24 @@ public static class Check
     }
 
     /// <summary>
-    /// Checks if two strings are not equal while ignoring case sensitivity; otherwise, throws a <see cref="BusinessException"/> with the specified message.
+    ///     Checks if two strings are not equal while ignoring case sensitivity; otherwise, throws a
+    ///     <see cref="BusinessException" /> with the specified message.
     /// </summary>
     /// <param name="value">The first string to compare.</param>
     /// <param name="value2">The second string to compare.</param>
     /// <param name="message">The message for the exception if the strings are equal.</param>
-    /// <exception cref="BusinessException">Thrown if the strings are equal, ignoring case sensitivity, with the specified message.</exception>
+    /// <exception cref="BusinessException">
+    ///     Thrown if the strings are equal, ignoring case sensitivity, with the specified
+    ///     message.
+    /// </exception>
     public static void AreNotEqual(string value, string value2, string message)
     {
         if (!AreEqualImpl(value, value2)) throw new BusinessException(message);
     }
 
     /// <summary>
-    /// Checks if two integer values are not equal; otherwise, throws a <see cref="BusinessException"/> with the specified message.
+    ///     Checks if two integer values are not equal; otherwise, throws a <see cref="BusinessException" /> with the specified
+    ///     message.
     /// </summary>
     /// <param name="value">The first integer value to compare.</param>
     /// <param name="value2">The second integer value to compare.</param>
@@ -197,7 +214,8 @@ public static class Check
     }
 
     /// <summary>
-    /// Checks if two long values are not equal; otherwise, throws a <see cref="BusinessException"/> with the specified message.
+    ///     Checks if two long values are not equal; otherwise, throws a <see cref="BusinessException" /> with the specified
+    ///     message.
     /// </summary>
     /// <param name="value">The first long value to compare.</param>
     /// <param name="value2">The second long value to compare.</param>
@@ -209,7 +227,8 @@ public static class Check
     }
 
     /// <summary>
-    /// Checks if the specified collection is not null and not empty; otherwise, throws an <see cref="ArgumentException"/>.
+    ///     Checks if the specified collection is not null and not empty; otherwise, throws an <see cref="ArgumentException" />
+    ///     .
     /// </summary>
     /// <typeparam name="T">The type of the collection elements.</typeparam>
     /// <param name="value">The collection to check for null and emptiness.</param>
@@ -232,7 +251,8 @@ public static class Check
     }
 
     /// <summary>
-    /// Checks if the specified string is not null and not empty; otherwise, throws an <see cref="ArgumentNullException"/> or <see cref="ArgumentException"/>.
+    ///     Checks if the specified string is not null and not empty; otherwise, throws an <see cref="ArgumentNullException" />
+    ///     or <see cref="ArgumentException" />.
     /// </summary>
     /// <param name="value">The string to check for null and emptiness.</param>
     /// <param name="parameterName">The name of the parameter associated with the string.</param>
@@ -257,7 +277,7 @@ public static class Check
     }
 
     /// <summary>
-    /// Checks if the specified string is null but not empty; otherwise, throws an <see cref="ArgumentException"/>.
+    ///     Checks if the specified string is null but not empty; otherwise, throws an <see cref="ArgumentException" />.
     /// </summary>
     /// <param name="value">The string to check for null but not emptiness.</param>
     /// <param name="parameterName">The name of the parameter associated with the string.</param>

@@ -9,12 +9,12 @@ using Innovt.Domain.Core.Events;
 namespace Innovt.Cloud.AWS.Kinesis;
 
 /// <summary>
-/// The event handler for processing domain events and publishing them to an AWS Kinesis stream.
+///     The event handler for processing domain events and publishing them to an AWS Kinesis stream.
 /// </summary>
 public class EventHandler : DataProducer<DomainEvent>, IEventHandler
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="EventHandler"/> class with the specified parameters.
+    ///     Initializes a new instance of the <see cref="EventHandler" /> class with the specified parameters.
     /// </summary>
     /// <param name="busName">The name of the AWS Kinesis stream to publish events to.</param>
     /// <param name="logger">The logger instance for logging events.</param>
@@ -25,7 +25,7 @@ public class EventHandler : DataProducer<DomainEvent>, IEventHandler
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="EventHandler"/> class with the specified parameters.
+    ///     Initializes a new instance of the <see cref="EventHandler" /> class with the specified parameters.
     /// </summary>
     /// <param name="busName">The name of the AWS Kinesis stream to publish events to.</param>
     /// <param name="logger">The logger instance for logging events.</param>

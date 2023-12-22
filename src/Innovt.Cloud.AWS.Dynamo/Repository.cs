@@ -17,6 +17,8 @@ using Innovt.Core.Collections;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Exceptions;
 using Polly.Retry;
+using BatchGetItemRequest = Innovt.Cloud.Table.BatchGetItemRequest;
+using BatchWriteItemRequest = Innovt.Cloud.Table.BatchWriteItemRequest;
 using BatchWriteItemResponse = Innovt.Cloud.Table.BatchWriteItemResponse;
 using QueryRequest = Innovt.Cloud.Table.QueryRequest;
 using ScanRequest = Innovt.Cloud.Table.ScanRequest;
@@ -24,7 +26,7 @@ using ScanRequest = Innovt.Cloud.Table.ScanRequest;
 namespace Innovt.Cloud.AWS.Dynamo;
 
 /// <summary>
-/// Base repository class for interacting with AWS DynamoDB tables.
+///     Base repository class for interacting with AWS DynamoDB tables.
 /// </summary>
 public abstract class Repository : AwsBaseService, ITableRepository
 {
@@ -34,7 +36,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     private AmazonDynamoDBClient dynamoClient;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Repository"/> class.
+    ///     Initializes a new instance of the <see cref="Repository" /> class.
     /// </summary>
     /// <param name="logger">The logger.</param>
     /// <param name="configuration">AWS configuration.</param>
@@ -43,7 +45,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Repository"/> class.
+    ///     Initializes a new instance of the <see cref="Repository" /> class.
     /// </summary>
     /// <param name="logger">The logger.</param>
     /// <param name="configuration">AWS configuration.</param>
@@ -54,17 +56,17 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <summary>
-    /// Gets the DynamoDB context.
+    ///     Gets the DynamoDB context.
     /// </summary>
     private DynamoDBContext Context => context ??= new DynamoDBContext(DynamoClient);
 
     /// <summary>
-    /// Gets the Amazon DynamoDB client.
+    ///     Gets the Amazon DynamoDB client.
     /// </summary>
     private AmazonDynamoDBClient DynamoClient => dynamoClient ??= CreateService<AmazonDynamoDBClient>();
 
     /// <summary>
-    /// Gets the default operation configuration for DynamoDB operations.
+    ///     Gets the default operation configuration for DynamoDB operations.
     /// </summary>
     private static DynamoDBOperationConfig OperationConfig =>
         new()
@@ -77,7 +79,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     public async Task<T> GetByIdAsync<T>(object id, string rangeKey = null,
         CancellationToken cancellationToken = default) where T : ITableMessage
     {
-        using (ActivityRepository.StartActivity(nameof(GetByIdAsync)))
+        using (ActivityRepository.StartActivity())
         {
             var policy = CreateDefaultRetryAsyncPolicy();
 
@@ -97,7 +99,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <inheritdoc />
     public async Task DeleteAsync<T>(T value, CancellationToken cancellationToken = default) where T : ITableMessage
     {
-        using (ActivityRepository.StartActivity(nameof(DeleteAsync)))
+        using (ActivityRepository.StartActivity())
         {
             await CreateDefaultRetryAsyncPolicy()
                 .ExecuteAsync(async () => await Context.DeleteAsync(value, cancellationToken).ConfigureAwait(false))
@@ -111,7 +113,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     {
         if (id == null) throw new ArgumentNullException(nameof(id));
 
-        using var activity = ActivityRepository.StartActivity(nameof(DeleteAsync));
+        using var activity = ActivityRepository.StartActivity();
         activity?.SetTag("id", id);
 
         var policy = CreateDefaultRetryAsyncPolicy();
@@ -139,7 +141,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <summary>
-    /// Adds a list of items to the DynamoDB table.
+    ///     Adds a list of items to the DynamoDB table.
     /// </summary>
     /// <typeparam name="T">The type of items to add.</typeparam>
     /// <param name="messages">The list of items to add.</param>
@@ -150,7 +152,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     {
         if (messages is null) throw new ArgumentNullException(nameof(messages));
 
-        using (ActivityRepository.StartActivity(nameof(AddAsync)))
+        using (ActivityRepository.StartActivity())
         {
             var batch = Context.CreateBatchWrite<T>(OperationConfig);
 
@@ -163,7 +165,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <summary>
-    /// Queries the DynamoDB table and returns the first item with the specified id.
+    ///     Queries the DynamoDB table and returns the first item with the specified id.
     /// </summary>
     /// <typeparam name="T">The type of item to query.</typeparam>
     /// <param name="id">The id to query.</param>
@@ -171,7 +173,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <returns>The first item found with the specified id.</returns>
     public async Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default)
     {
-        using (ActivityRepository.StartActivity(nameof(QueryFirstAsync)))
+        using (ActivityRepository.StartActivity())
         {
             var result = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                     await Context.QueryAsync<T>(id, OperationConfig).GetNextSetAsync(cancellationToken)
@@ -183,7 +185,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <summary>
-    /// Queries the DynamoDB table and returns a list of items with the specified id.
+    ///     Queries the DynamoDB table and returns a list of items with the specified id.
     /// </summary>
     /// <typeparam name="T">The type of items to query.</typeparam>
     /// <param name="id">The id to query.</param>
@@ -191,7 +193,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <returns>A list of items with the specified id.</returns>
     public async Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default)
     {
-        using (ActivityRepository.StartActivity(nameof(QueryAsync)))
+        using (ActivityRepository.StartActivity())
         {
             var result = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                     await Context.QueryAsync<T>(id, OperationConfig).GetRemainingAsync(cancellationToken)
@@ -203,7 +205,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <summary>
-    /// Queries the DynamoDB table using a query request and returns a list of items.
+    ///     Queries the DynamoDB table using a query request and returns a list of items.
     /// </summary>
     /// <typeparam name="T">The type of items to query.</typeparam>
     /// <param name="request">The query request.</param>
@@ -211,7 +213,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <returns>A list of items based on the query request.</returns>
     public async Task<IList<T>> QueryAsync<T>(QueryRequest request, CancellationToken cancellationToken = default)
     {
-        using (ActivityRepository.StartActivity(nameof(QueryAsync)))
+        using (ActivityRepository.StartActivity())
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
@@ -222,7 +224,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <summary>
-    /// Queries the DynamoDB table using a query request and splits the results into two types based on a key.
+    ///     Queries the DynamoDB table using a query request and splits the results into two types based on a key.
     /// </summary>
     /// <typeparam name="T">The type of items to query.</typeparam>
     /// <typeparam name="TResult1">The first type to split the results into.</typeparam>
@@ -236,7 +238,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
 
-        using (ActivityRepository.StartActivity(nameof(QueryMultipleAsync)))
+        using (ActivityRepository.StartActivity())
         {
             var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
@@ -245,7 +247,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <summary>
-    /// Queries the DynamoDB table using a query request and splits the results into three types based on specified keys.
+    ///     Queries the DynamoDB table using a query request and splits the results into three types based on specified keys.
     /// </summary>
     /// <typeparam name="T">The type of items to query.</typeparam>
     /// <typeparam name="TResult1">The first type to split the results into.</typeparam>
@@ -262,7 +264,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         if (request is null) throw new ArgumentNullException(nameof(request));
         if (splitBy == null) throw new ArgumentNullException(nameof(splitBy));
 
-        using (ActivityRepository.StartActivity(nameof(QueryMultipleAsync)))
+        using (ActivityRepository.StartActivity())
         {
             var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
@@ -271,7 +273,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <summary>
-    /// Queries the DynamoDB table using a query request and splits the results into four types based on specified keys.
+    ///     Queries the DynamoDB table using a query request and splits the results into four types based on specified keys.
     /// </summary>
     /// <typeparam name="T">The type of items to query.</typeparam>
     /// <typeparam name="TResult1">The first type to split the results into.</typeparam>
@@ -289,7 +291,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         if (request is null) throw new ArgumentNullException(nameof(request));
         if (splitBy == null) throw new ArgumentNullException(nameof(splitBy));
 
-        using (ActivityRepository.StartActivity(nameof(QueryMultipleAsync)))
+        using (ActivityRepository.StartActivity())
         {
             var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
@@ -298,7 +300,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <summary>
-    /// Queries the DynamoDB table using a query request and splits the results into five types based on specified keys.
+    ///     Queries the DynamoDB table using a query request and splits the results into five types based on specified keys.
     /// </summary>
     /// <typeparam name="T">The type of items to query.</typeparam>
     /// <typeparam name="TResult1">The first type to split the results into.</typeparam>
@@ -318,7 +320,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         if (request is null) throw new ArgumentNullException(nameof(request));
         if (splitBy == null) throw new ArgumentNullException(nameof(splitBy));
 
-        using (ActivityRepository.StartActivity(nameof(QueryMultipleAsync)))
+        using (ActivityRepository.StartActivity())
         {
             var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
@@ -327,7 +329,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <summary>
-    /// Queries the DynamoDB table and returns the first or default item based on the query request.
+    ///     Queries the DynamoDB table and returns the first or default item based on the query request.
     /// </summary>
     /// <typeparam name="T">The type of item to query.</typeparam>
     /// <param name="request">The query request.</param>
@@ -338,7 +340,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
 
-        using (ActivityRepository.StartActivity(nameof(QueryFirstOrDefaultAsync)))
+        using (ActivityRepository.StartActivity())
         {
             request.PageSize = 1;
             request.Page = null;
@@ -352,7 +354,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <summary>
-    /// Queries the DynamoDB table using a query request and returns a paginated collection of items.
+    ///     Queries the DynamoDB table using a query request and returns a paginated collection of items.
     /// </summary>
     /// <typeparam name="T">The type of items to query.</typeparam>
     /// <param name="request">The query request.</param>
@@ -378,7 +380,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <summary>
-    /// Writes a batch of transactional write items to the DynamoDB table.
+    ///     Writes a batch of transactional write items to the DynamoDB table.
     /// </summary>
     /// <param name="request">The transaction write request.</param>
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
@@ -393,7 +395,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             throw new BusinessException(
                 "The number of transactItems should be greater than 0 and less or equal than 25");
 
-        using var activity = ActivityRepository.StartActivity(nameof(TransactWriteItemsAsync));
+        using var activity = ActivityRepository.StartActivity();
         activity?.SetTag("TransactWriteItems", request.TransactItems.Count);
 
         var transactRequest = new TransactWriteItemsRequest
@@ -410,7 +412,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <summary>
-    /// Scans the DynamoDB table based on the specified scan request.
+    ///     Scans the DynamoDB table based on the specified scan request.
     /// </summary>
     /// <typeparam name="T">The type of items to scan.</typeparam>
     /// <param name="request">The scan request.</param>
@@ -419,14 +421,14 @@ public abstract class Repository : AwsBaseService, ITableRepository
     public async Task<IList<T>> ScanAsync<T>(ScanRequest request,
         CancellationToken cancellationToken = default)
     {
-        using (ActivityRepository.StartActivity(nameof(ScanAsync)))
+        using (ActivityRepository.StartActivity())
         {
             return (await InternalScanAsync<T>(request, cancellationToken).ConfigureAwait(false)).Items;
         }
     }
 
     /// <summary>
-    /// Scans the DynamoDB table based on the specified scan request and returns a paginated collection of items.
+    ///     Scans the DynamoDB table based on the specified scan request and returns a paginated collection of items.
     /// </summary>
     /// <typeparam name="T">The type of items to scan.</typeparam>
     /// <param name="request">The scan request.</param>
@@ -438,7 +440,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
 
-        using (ActivityRepository.StartActivity(nameof(ScanPaginatedByAsync)))
+        using (ActivityRepository.StartActivity())
         {
             var (exclusiveStartKey, items) =
                 await InternalScanAsync<T>(request, cancellationToken).ConfigureAwait(false);
@@ -458,7 +460,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <summary>
-    /// Executes a SQL statement asynchronously and returns the response containing items of type T.
+    ///     Executes a SQL statement asynchronously and returns the response containing items of type T.
     /// </summary>
     /// <typeparam name="T">The type of items to be returned.</typeparam>
     /// <param name="sqlStatementRequest">The SQL statement request.</param>
@@ -493,19 +495,19 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <summary>
-    /// Gets a batch of items from the DynamoDB table based on the specified batch get item request.
+    ///     Gets a batch of items from the DynamoDB table based on the specified batch get item request.
     /// </summary>
     /// <typeparam name="T">The type of items to get.</typeparam>
     /// <param name="batchGetItemRequest">The batch get item request.</param>
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>The list of items retrieved.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the batch get item request is null.</exception>
-    public async Task<List<T>> BatchGetItem<T>(Table.BatchGetItemRequest batchGetItemRequest,
+    public async Task<List<T>> BatchGetItem<T>(BatchGetItemRequest batchGetItemRequest,
         CancellationToken cancellationToken = default)
     {
         if (batchGetItemRequest is null) throw new ArgumentNullException(nameof(batchGetItemRequest));
 
-        using (ActivityRepository.StartActivity(nameof(BatchGetItem)))
+        using (ActivityRepository.StartActivity())
         {
             var items = Helpers.CreateBatchGetItemRequest(batchGetItemRequest);
 
@@ -525,18 +527,18 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <summary>
-    /// Writes a batch of items to the DynamoDB table based on the specified batch write item request.
+    ///     Writes a batch of items to the DynamoDB table based on the specified batch write item request.
     /// </summary>
     /// <param name="batchWriteItemRequest">The batch write item request.</param>
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>The response indicating the result of the batch write operation.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the batch write item request is null.</exception>
-    public async Task<BatchWriteItemResponse> BatchWriteItem(Table.BatchWriteItemRequest batchWriteItemRequest,
+    public async Task<BatchWriteItemResponse> BatchWriteItem(BatchWriteItemRequest batchWriteItemRequest,
         CancellationToken cancellationToken = default)
     {
         if (batchWriteItemRequest is null) throw new ArgumentNullException(nameof(batchWriteItemRequest));
 
-        using (ActivityRepository.StartActivity(nameof(BatchWriteItem)))
+        using (ActivityRepository.StartActivity())
         {
             var request = Helpers.CreateBatchWriteItemRequest(batchWriteItemRequest);
             var result = new BatchWriteItemResponse();
@@ -564,7 +566,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <summary>
-    /// Creates the default asynchronous retry policy for handling exceptions during operations.
+    ///     Creates the default asynchronous retry policy for handling exceptions during operations.
     /// </summary>
     /// <returns>The asynchronous retry policy instance.</returns>
     protected override AsyncRetryPolicy CreateDefaultRetryAsyncPolicy()
@@ -574,7 +576,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <summary>
-    /// Updates an item in the DynamoDB table based on the provided parameters.
+    ///     Updates an item in the DynamoDB table based on the provided parameters.
     /// </summary>
     /// <param name="tableName">The name of the DynamoDB table.</param>
     /// <param name="key">The key of the item to update.</param>
@@ -589,7 +591,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         if (attributeUpdates is null) throw new ArgumentNullException(nameof(attributeUpdates));
 
-        using (ActivityRepository.StartActivity(nameof(UpdateAsync)))
+        using (ActivityRepository.StartActivity())
         {
             await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                     await DynamoClient.UpdateItemAsync(tableName, key, attributeUpdates, cancellationToken)
@@ -599,7 +601,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <summary>
-    /// Updates an item in the DynamoDB table based on the provided update item request.
+    ///     Updates an item in the DynamoDB table based on the provided update item request.
     /// </summary>
     /// <typeparam name="T">The type of item to update.</typeparam>
     /// <param name="updateItemRequest">The update item request.</param>
@@ -612,7 +614,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         if (updateItemRequest is null)
             throw new ArgumentNullException(nameof(updateItemRequest));
 
-        using var activity = ActivityRepository.StartActivity(nameof(UpdateAsync));
+        using var activity = ActivityRepository.StartActivity();
         var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                 await DynamoClient.UpdateItemAsync(updateItemRequest,
                     cancellationToken).ConfigureAwait(false))
@@ -624,7 +626,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <summary>
-    /// Executes an internal query against the DynamoDB table based on the specified query request.
+    ///     Executes an internal query against the DynamoDB table based on the specified query request.
     /// </summary>
     /// <typeparam name="T">The type of items to query.</typeparam>
     /// <param name="request">The query request.</param>
@@ -637,7 +639,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
 
-        using (ActivityRepository.StartActivity(nameof(InternalQueryAsync)))
+        using (ActivityRepository.StartActivity())
         {
             var queryRequest = Helpers.CreateQueryRequest<T>(request);
 
@@ -669,7 +671,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <summary>
-    /// Executes an internal scan against the DynamoDB table based on the specified scan request.
+    ///     Executes an internal scan against the DynamoDB table based on the specified scan request.
     /// </summary>
     /// <typeparam name="T">The type of items to scan.</typeparam>
     /// <param name="request">The scan request.</param>
@@ -681,7 +683,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
 
-        using (ActivityRepository.StartActivity(nameof(InternalScanAsync)))
+        using (ActivityRepository.StartActivity())
         {
             var scanRequest = Helpers.CreateScanRequest<T>(request);
 
@@ -712,7 +714,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <summary>
-    /// Disposes the DynamoDB context and AmazonDynamoDBClient resources.
+    ///     Disposes the DynamoDB context and AmazonDynamoDBClient resources.
     /// </summary>
     protected override void DisposeServices()
     {

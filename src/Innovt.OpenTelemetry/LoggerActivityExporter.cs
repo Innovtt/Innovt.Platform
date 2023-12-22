@@ -6,6 +6,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Utilities;
 using Microsoft.Extensions.DependencyInjection;
 using OpenTelemetry;
@@ -14,17 +15,17 @@ using OpenTelemetry.Resources;
 namespace Innovt.OpenTelemetry;
 
 /// <summary>
-///    This is a simple exporter that logs telemetry to the console.
+///     This is a simple exporter that logs telemetry to the console.
 /// </summary>
 public class LoggerActivityExporter : BaseExporter<Activity>
 {
     private const string StatusCodeKey = "otel.status_code";
     private const string StatusDescriptionKey = "otel.status_description";
-    private static Core.CrossCutting.Log.ILogger logger;
+    private static ILogger logger;
     private readonly IServiceCollection serviceCollection;
 
     /// <summary>
-    ///    Initializes a new instance of the <see cref="LoggerActivityExporter" /> class.
+    ///     Initializes a new instance of the <see cref="LoggerActivityExporter" /> class.
     /// </summary>
     /// <param name="serviceCollection"></param>
     /// <exception cref="ArgumentNullException"></exception>
@@ -38,7 +39,7 @@ public class LoggerActivityExporter : BaseExporter<Activity>
         if (logContent.IsNullOrEmpty())
             return;
 
-        logger ??= serviceCollection.BuildServiceProvider().GetService<Core.CrossCutting.Log.ILogger>();
+        logger ??= serviceCollection.BuildServiceProvider().GetService<ILogger>();
 
         if (logger is null)
             Console.WriteLine(logContent);
@@ -48,7 +49,7 @@ public class LoggerActivityExporter : BaseExporter<Activity>
 
 
     /// <summary>
-    ///   Exports a batch of telemetry data.
+    ///     Exports a batch of telemetry data.
     /// </summary>
     /// <param name="batch"></param>
     /// <returns></returns>

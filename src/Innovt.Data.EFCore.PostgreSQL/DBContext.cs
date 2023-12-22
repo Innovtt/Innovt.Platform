@@ -11,12 +11,12 @@ using Microsoft.Extensions.Logging;
 namespace Innovt.Data.EFCore.PostgreSQL;
 
 /// <summary>
-/// Represents the Entity Framework DbContext for the application.
+///     Represents the Entity Framework DbContext for the application.
 /// </summary>
 public class DBContext : DBContextBase
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="DBContext"/> class using a data source.
+    ///     Initializes a new instance of the <see cref="DBContext" /> class using a data source.
     /// </summary>
     /// <param name="dataSource">The data source to use.</param>
     public DBContext(IDataSource dataSource) : base(dataSource)
@@ -24,7 +24,7 @@ public class DBContext : DBContextBase
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="DBContext"/> class using a data source and logger factory.
+    ///     Initializes a new instance of the <see cref="DBContext" /> class using a data source and logger factory.
     /// </summary>
     /// <param name="dataSource">The data source to use.</param>
     /// <param name="loggerFactory">The logger factory to use.</param
@@ -33,7 +33,7 @@ public class DBContext : DBContextBase
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="DBContext"/> class using DbContext options.
+    ///     Initializes a new instance of the <see cref="DBContext" /> class using DbContext options.
     /// </summary>
     /// <param name="options">The DbContext options.</param>
     protected DBContext(DbContextOptions options) : base(options)
@@ -41,7 +41,7 @@ public class DBContext : DBContextBase
     }
 
     /// <summary>
-    /// Executes a raw SQL command against the database and returns the number of affected entities.
+    ///     Executes a raw SQL command against the database and returns the number of affected entities.
     /// </summary>
     /// <param name="sql">The SQL command to execute.</param>
     /// <param name="parameters">The parameters for the SQL command.</param>
@@ -52,7 +52,7 @@ public class DBContext : DBContextBase
     }
 
     /// <summary>
-    /// Asynchronously executes a raw SQL command against the database and returns the number of affected entities.
+    ///     Asynchronously executes a raw SQL command against the database and returns the number of affected entities.
     /// </summary>
     /// <param name="sql">The SQL command to execute.</param>
     /// <param name="cancellationToken">Cancellation token (optional).</param>
@@ -66,7 +66,7 @@ public class DBContext : DBContextBase
     }
 
     /// <summary>
-    /// Configures the provider-specific options for the DbContext to use Npgsql (PostgreSQL).
+    ///     Configures the provider-specific options for the DbContext to use Npgsql (PostgreSQL).
     /// </summary>
     /// <param name="optionsBuilder">The options builder for configuring DbContext options.</param>
     /// <param name="connectionString">The connection string for the data source.</param>

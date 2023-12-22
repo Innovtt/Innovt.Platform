@@ -4,19 +4,19 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 namespace Innovt.AspNetCore.Filters.Swagger;
 
 /// <summary>
-/// You can use this class to add custom header to swagger.
+///     You can use this class to add custom header to swagger.
 /// </summary>
 public class AddCustomHeaderParameter : IOperationFilter
 {
-    private readonly string name;
     private readonly string? description;
-    private OpenApiSchema? apiSchema;
-    private readonly string schemaType;
-    private readonly string schemaFormat;
+    private readonly string name;
     private readonly bool required;
+    private readonly string schemaFormat;
+    private readonly string schemaType;
+    private OpenApiSchema? apiSchema;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="AddCustomHeaderParameter"/> class.
+    ///     Initializes a new instance of the <see cref="AddCustomHeaderParameter" /> class.
     /// </summary>
     /// <param name="name">The name of the custom header parameter.</param>
     /// <param name="description">The description of the custom header parameter.</param>
@@ -34,7 +34,7 @@ public class AddCustomHeaderParameter : IOperationFilter
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="AddCustomHeaderParameter"/> class using a specified schema.
+    ///     Initializes a new instance of the <see cref="AddCustomHeaderParameter" /> class using a specified schema.
     /// </summary>
     /// <param name="name">The name of the custom header parameter.</param>
     /// <param name="description">The description of the custom header parameter.</param>
@@ -57,17 +57,17 @@ public class AddCustomHeaderParameter : IOperationFilter
 
         operation.Parameters ??= new List<OpenApiParameter>();
 
-        apiSchema ??= new OpenApiSchema()
+        apiSchema ??= new OpenApiSchema
         {
             Type = schemaType,
             Format = schemaFormat
         };
 
-        operation.Parameters.Add(new OpenApiParameter()
+        operation.Parameters.Add(new OpenApiParameter
         {
             Name = name,
             Description = description,
-            In = new ParameterLocation?(ParameterLocation.Header),
+            In = ParameterLocation.Header,
             Schema = apiSchema,
             Required = required
         });

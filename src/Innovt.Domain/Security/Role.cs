@@ -16,7 +16,7 @@ namespace Innovt.Domain.Security;
 public class Role : Entity<Guid>
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="Role"/> class.
+    ///     Initializes a new instance of the <see cref="Role" /> class.
     /// </summary>
     public Role()
     {
@@ -25,27 +25,27 @@ public class Role : Entity<Guid>
     }
 
     /// <summary>
-    /// Gets or sets the name of the role.
+    ///     Gets or sets the name of the role.
     /// </summary>
     public string Name { get; set; }
 
     /// <summary>
-    /// Gets or sets the description of the role.
+    ///     Gets or sets the description of the role.
     /// </summary>
     public string Description { get; set; }
 
     /// <summary>
-    /// Gets or sets the scope of the role.
+    ///     Gets or sets the scope of the role.
     /// </summary>
     public string Scope { get; set; }
 
     /// <summary>
-    /// Gets or sets the list of permissions associated with the role.
+    ///     Gets or sets the list of permissions associated with the role.
     /// </summary>
     public IList<Permission> Permissions { get; set; }
 
     /// <summary>
-    /// Assigns a permission to the role.
+    ///     Assigns a permission to the role.
     /// </summary>
     /// <param name="permission">The permission to be assigned.</param>
     public void AssignPermission(Permission permission)
@@ -63,7 +63,7 @@ public class Role : Entity<Guid>
     }
 
     /// <summary>
-    /// Removes a permission from the role by its identifier.
+    ///     Removes a permission from the role by its identifier.
     /// </summary>
     /// <param name="permissionId">The identifier of the permission to be removed.</param>
     public void RemovePermission(Guid permissionId)
@@ -77,11 +77,11 @@ public class Role : Entity<Guid>
     }
 
     /// <summary>
-    /// Determines whether the current <see cref="Role"/> instance is equal to another object.
+    ///     Determines whether the current <see cref="Role" /> instance is equal to another object.
     /// </summary>
     /// <param name="obj">The object to compare with the current instance.</param>
     /// <returns>
-    /// <c>true</c> if the specified object is equal to the current instance; otherwise, <c>false</c>.
+    ///     <c>true</c> if the specified object is equal to the current instance; otherwise, <c>false</c>.
     /// </returns>
     public override bool Equals(object obj)
     {

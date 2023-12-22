@@ -13,57 +13,57 @@ using Innovt.Domain.Core.Specification;
 namespace Innovt.Domain.Core.Repository;
 
 /// <summary>
-/// Represents a generic repository for data access operations.
+///     Represents a generic repository for data access operations.
 /// </summary>
 /// <typeparam name="T">The entity type.</typeparam>
 public interface IRepository<T> where T : class
 {
     /// <summary>
-    /// Adds a single entity
+    ///     Adds a single entity
     /// </summary>
     /// <param name="entity"></param>
     void Add(T entity);
 
     /// <summary>
-    /// Adds multiple entities
+    ///     Adds multiple entities
     /// </summary>
     /// <param name="entities"></param>
     void Add(IEnumerable<T> entities);
 
     /// <summary>
-    /// Asynchronously adds a single entity
+    ///     Asynchronously adds a single entity
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
     Task AddAsync(T entity);
 
     /// <summary>
-    /// Asynchronously adds multiple entities
+    ///     Asynchronously adds multiple entities
     /// </summary>
     /// <param name="entities"></param>
     /// <returns></returns>
     Task AddAsync(IEnumerable<T> entities);
 
     /// <summary>
-    /// Modifies an entity
+    ///     Modifies an entity
     /// </summary>
     /// <param name="entity"></param>
     void Modify(T entity);
 
     /// <summary>
-    /// Removes multiple entities
+    ///     Removes multiple entities
     /// </summary>
     /// <param name="entities"></param>
     void Remove(IEnumerable<T> entities);
 
     /// <summary>
-    /// Removes a single entity
+    ///     Removes a single entity
     /// </summary>
     /// <param name="entity"></param>
     void Remove(T entity);
 
     /// <summary>
-    /// Gets a single entity based on a specification and includes related entities
+    ///     Gets a single entity based on a specification and includes related entities
     /// </summary>
     /// <param name="specification"></param>
     /// <param name="includes"></param>
@@ -71,7 +71,7 @@ public interface IRepository<T> where T : class
     T GetSingleOrDefault(ISpecification<T> specification, Include includes = null);
 
     /// <summary>
-    /// Asynchronously gets a single entity based on a specification and includes related entities
+    ///     Asynchronously gets a single entity based on a specification and includes related entities
     /// </summary>
     /// <param name="specification"></param>
     /// <param name="includes"></param>
@@ -81,7 +81,7 @@ public interface IRepository<T> where T : class
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Gets the first entity based on a specification and includes related entities
+    ///     Gets the first entity based on a specification and includes related entities
     /// </summary>
     /// <param name="specification"></param>
     /// <param name="includes"></param>
@@ -89,7 +89,7 @@ public interface IRepository<T> where T : class
     T GetFirstOrDefault(ISpecification<T> specification, Include includes = null);
 
     /// <summary>
-    /// Asynchronously gets the first entity based on a specification and includes related entities
+    ///     Asynchronously gets the first entity based on a specification and includes related entities
     /// </summary>
     /// <param name="specification"></param>
     /// <param name="includes"></param>
@@ -99,7 +99,7 @@ public interface IRepository<T> where T : class
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Finds entities based on a specification and includes related entities
+    ///     Finds entities based on a specification and includes related entities
     /// </summary>
     /// <param name="specification"></param>
     /// <param name="includes"></param>
@@ -107,7 +107,7 @@ public interface IRepository<T> where T : class
     IEnumerable<T> FindBy(ISpecification<T> specification, Include includes = null);
 
     /// <summary>
-    /// Finds entities based on a specification, with optional ordering, and includes related entities
+    ///     Finds entities based on a specification, with optional ordering, and includes related entities
     /// </summary>
     /// <typeparam name="TKey"></typeparam>
     /// <param name="specification"></param>
@@ -119,7 +119,7 @@ public interface IRepository<T> where T : class
         bool isOrderByDescending = false, Include includes = null);
 
     /// <summary>
-    /// Asynchronously finds entities based on a specification and includes related entities
+    ///     Asynchronously finds entities based on a specification and includes related entities
     /// </summary>
     /// <param name="specification"></param>
     /// <param name="includes"></param>
@@ -129,7 +129,7 @@ public interface IRepository<T> where T : class
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Asynchronously finds entities based on a specification, with optional ordering, and includes related entities
+    ///     Asynchronously finds entities based on a specification, with optional ordering, and includes related entities
     /// </summary>
     /// <typeparam name="TKey"></typeparam>
     /// <param name="specification"></param>
@@ -143,7 +143,7 @@ public interface IRepository<T> where T : class
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Finds entities based on a specification and returns a paged collection, with optional includes
+    ///     Finds entities based on a specification and returns a paged collection, with optional includes
     /// </summary>
     /// <param name="specification"></param>
     /// <param name="includes"></param>
@@ -151,7 +151,8 @@ public interface IRepository<T> where T : class
     PagedCollection<T> FindPaginatedBy(ISpecification<T> specification, Include includes = null);
 
     /// <summary>
-    /// Finds entities based on a specification, with optional ordering, and returns a paged collection, with optional includes
+    ///     Finds entities based on a specification, with optional ordering, and returns a paged collection, with optional
+    ///     includes
     /// </summary>
     /// <typeparam name="TKey"></typeparam>
     /// <param name="specification"></param>
@@ -164,7 +165,7 @@ public interface IRepository<T> where T : class
         bool isOrderByDescending = false, Include includes = null);
 
     /// <summary>
-    /// Asynchronously finds entities based on a specification and returns a paged collection, with optional includes
+    ///     Asynchronously finds entities based on a specification and returns a paged collection, with optional includes
     /// </summary>
     /// <param name="specification"></param>
     /// <param name="includes"></param>
@@ -174,7 +175,8 @@ public interface IRepository<T> where T : class
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Asynchronously finds entities based on a specification, with optional ordering, and returns a paged collection, with optional includes
+    ///     Asynchronously finds entities based on a specification, with optional ordering, and returns a paged collection,
+    ///     with optional includes
     /// </summary>
     /// <typeparam name="TKey"></typeparam>
     /// <param name="specification"></param>
@@ -188,7 +190,6 @@ public interface IRepository<T> where T : class
         bool isOrderByDescending = false, Include includes = null, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// 
     /// </summary>
     /// <typeparam name="TKEntity"></typeparam>
     /// <param name="specification"></param>
@@ -196,14 +197,14 @@ public interface IRepository<T> where T : class
     int CountBy<TKEntity>(ISpecification<TKEntity> specification) where TKEntity : class;
 
     /// <summary>
-    /// Counts entities based on a specificatio
+    ///     Counts entities based on a specificatio
     /// </summary>
     /// <param name="specification"></param>
     /// <returns></returns>
     int CountBy(ISpecification<T> specification);
 
     /// <summary>
-    /// Asynchronously counts entities based on a specification for a given entity type
+    ///     Asynchronously counts entities based on a specification for a given entity type
     /// </summary>
     /// <typeparam name="TKEntity"></typeparam>
     /// <param name="specification"></param>

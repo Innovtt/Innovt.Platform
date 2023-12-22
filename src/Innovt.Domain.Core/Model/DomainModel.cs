@@ -8,7 +8,7 @@ using System.Linq;
 namespace Innovt.Domain.Core.Model;
 
 /// <summary>
-/// Represents a domain model containing a collection of value objects.
+///     Represents a domain model containing a collection of value objects.
 /// </summary>
 /// <typeparam name="T">The type of value object.</typeparam>
 public class DomainModel<T> : ValueObject where T : ValueObject
@@ -16,7 +16,7 @@ public class DomainModel<T> : ValueObject where T : ValueObject
     private readonly List<T> models = new();
 
     /// <summary>
-    /// Adds a value object to the domain model.
+    ///     Adds a value object to the domain model.
     /// </summary>
     /// <param name="model">The value object to be added.</param>
     protected void AddModel(T model)
@@ -25,7 +25,7 @@ public class DomainModel<T> : ValueObject where T : ValueObject
     }
 
     /// <summary>
-    /// Retrieves a list of all value objects in the domain model.
+    ///     Retrieves a list of all value objects in the domain model.
     /// </summary>
     /// <returns>A list of value objects.</returns>
     public List<T> FindAll()
@@ -34,7 +34,7 @@ public class DomainModel<T> : ValueObject where T : ValueObject
     }
 
     /// <summary>
-    /// Retrieves a value object by its primary key.
+    ///     Retrieves a value object by its primary key.
     /// </summary>
     /// <param name="id">The primary key to search for.</param>
     /// <returns>The value object found, or null if not found.</returns>

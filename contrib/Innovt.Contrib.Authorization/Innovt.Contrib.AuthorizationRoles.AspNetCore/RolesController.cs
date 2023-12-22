@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Innovt.Contrib.AuthorizationRoles.AspNetCore;
 
 /// <summary>
-/// API controller for managing roles.
+///     API controller for managing roles.
 /// </summary>
 [ApiController]
 [Route("Authorization/[controller]")]
@@ -20,7 +20,7 @@ public class RolesController : ControllerBase
     private readonly IAuthorizationAppService authorizationAppService;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="RolesController"/> class.
+    ///     Initializes a new instance of the <see cref="RolesController" /> class.
     /// </summary>
     /// <param name="authorizationAppService">The authorization application service.</param>
     public RolesController(IAuthorizationAppService authorizationAppService)
@@ -30,7 +30,7 @@ public class RolesController : ControllerBase
     }
 
     /// <summary>
-    /// Gets a list of roles based on the provided filter.
+    ///     Gets a list of roles based on the provided filter.
     /// </summary>
     /// <param name="filter">The filter for role retrieval.</param>
     /// <param name="cancellationToken">The cancellation token.</param>

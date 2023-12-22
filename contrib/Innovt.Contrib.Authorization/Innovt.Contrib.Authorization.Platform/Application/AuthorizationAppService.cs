@@ -20,17 +20,17 @@ using IAuthorizationRepository = Innovt.Contrib.Authorization.Platform.Domain.IA
 namespace Innovt.Contrib.Authorization.Platform.Application;
 
 /// <summary>
-/// Application service responsible for handling authorization-related operations.
+///     Application service responsible for handling authorization-related operations.
 /// </summary>
 public class AuthorizationAppService : IAuthorizationAppService
 {
     private readonly IAuthorizationRepository authorizationRepository;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="AuthorizationAppService"/> class.
+    ///     Initializes a new instance of the <see cref="AuthorizationAppService" /> class.
     /// </summary>
     /// <param name="authorizationRepository">The authorization repository.</param>
-    /// <exception cref="ArgumentNullException">Thrown when <paramref name="authorizationRepository"/> is null.</exception>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="authorizationRepository" /> is null.</exception>
     public AuthorizationAppService(IAuthorizationRepository authorizationRepository)
     {
         this.authorizationRepository = authorizationRepository ??
@@ -38,7 +38,7 @@ public class AuthorizationAppService : IAuthorizationAppService
     }
 
     /// <summary>
-    /// Registers an administrator using the provided registration command.
+    ///     Registers an administrator using the provided registration command.
     /// </summary>
     /// <param name="command">The registration command for the administrator.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
@@ -69,7 +69,7 @@ public class AuthorizationAppService : IAuthorizationAppService
     }
 
     /// <summary>
-    /// Adds a user using the provided add user command.
+    ///     Adds a user using the provided add user command.
     /// </summary>
     /// <param name="command">The add user command.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
@@ -98,7 +98,7 @@ public class AuthorizationAppService : IAuthorizationAppService
     }
 
     /// <summary>
-    /// Gets the roles associated with a user based on the provided filter.
+    ///     Gets the roles associated with a user based on the provided filter.
     /// </summary>
     /// <param name="filter">The filter for retrieving roles by user.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
@@ -113,7 +113,7 @@ public class AuthorizationAppService : IAuthorizationAppService
     }
 
     /// <summary>
-    /// Removes a user using the provided remove user command.
+    ///     Removes a user using the provided remove user command.
     /// </summary>
     /// <param name="command">The remove user command.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
@@ -133,7 +133,7 @@ public class AuthorizationAppService : IAuthorizationAppService
     }
 
     /// <summary>
-    /// Assigns roles to a user using the provided assign role command.
+    ///     Assigns roles to a user using the provided assign role command.
     /// </summary>
     /// <param name="command">The assign role command.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
@@ -155,7 +155,7 @@ public class AuthorizationAppService : IAuthorizationAppService
     }
 
     /// <summary>
-    /// Unassigns roles from a user using the provided unassign role command.
+    ///     Unassigns roles from a user using the provided unassign role command.
     /// </summary>
     /// <param name="command">The unassign role command.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
@@ -177,7 +177,7 @@ public class AuthorizationAppService : IAuthorizationAppService
     }
 
     /// <summary>
-    /// Assigns roles to a user based on the provided assign role command.
+    ///     Assigns roles to a user based on the provided assign role command.
     /// </summary>
     /// <param name="user">The user to whom roles will be assigned.</param>
     /// <param name="roleCommands">The list of role commands to assign.</param>

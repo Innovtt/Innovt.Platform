@@ -1,5 +1,4 @@
 using Innovt.Cloud.AWS.Configuration;
-using Innovt.Core.Exceptions;
 using NUnit.Framework;
 
 namespace Innovt.Cloud.AWS.Tests;
@@ -12,7 +11,7 @@ public class AssumeRoleAWSConfigurationTests
     {
         var configuration = new DefaultAWSConfiguration();
 
-        Assert.IsNotNull(configuration);
+        Assert.That(configuration, Is.Not.Null);
 
         var roleArn = "mockrolearn";
         var externalId = "mockexternalid";

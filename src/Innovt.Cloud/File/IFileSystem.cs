@@ -12,12 +12,12 @@ using System.Threading.Tasks;
 namespace Innovt.Cloud.File;
 
 /// <summary>
-///    Interface for File System
+///     Interface for File System
 /// </summary>
 public interface IFileSystem
 {
     /// <summary>
-    ///    Copy a file from one bucket to another
+    ///     Copy a file from one bucket to another
     /// </summary>
     /// <param name="sourceBucket"></param>
     /// <param name="sourceKey"></param>
@@ -31,17 +31,17 @@ public interface IFileSystem
         string serverSideEncryptionMethod = null, string fileAcl = null, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Downloads a file from the specified bucket and saves it to the destination path.
+    ///     Downloads a file from the specified bucket and saves it to the destination path.
     /// </summary>
     void Download(string bucketName, string fileName, string destination);
 
     /// <summary>
-    /// Downloads a file from the provided URL and returns the stream.
+    ///     Downloads a file from the provided URL and returns the stream.
     /// </summary>
     Stream DownloadStream(string url);
 
     /// <summary>
-    /// Downloads a file from the specified bucket and file name synchronously and returns the stream.
+    ///     Downloads a file from the specified bucket and file name synchronously and returns the stream.
     /// </summary>
     /// <param name="bucketName">The name of the bucket.</param>
     /// <param name="fileName">The name of the file to download.</param>
@@ -49,7 +49,7 @@ public interface IFileSystem
     Stream DownloadStream(string bucketName, string fileName);
 
     /// <summary>
-    /// Downloads a file from the provided URL asynchronously and returns the stream.
+    ///     Downloads a file from the provided URL asynchronously and returns the stream.
     /// </summary>
     /// <param name="url">The URL of the file to download.</param>
     /// <param name="cancellationToken">The cancellation token to cancel the asynchronous operation.</param>
@@ -57,7 +57,7 @@ public interface IFileSystem
     Task<Stream> DownloadStreamAsync(string url, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Downloads a file from the specified bucket and file name asynchronously and returns the stream.
+    ///     Downloads a file from the specified bucket and file name asynchronously and returns the stream.
     /// </summary>
     /// <param name="bucketName">The name of the bucket.</param>
     /// <param name="fileName">The name of the file to download.</param>
@@ -67,14 +67,14 @@ public interface IFileSystem
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Extracts the bucket name and file key from the provided URL.
+    ///     Extracts the bucket name and file key from the provided URL.
     /// </summary>
     /// <param name="bucketUrl">The URL containing bucket information.</param>
     /// <returns>A tuple containing the bucket name and file key.</returns>
     (string bucket, string fileKey) ExtractBucketFromGetUrl(string bucketUrl);
 
     /// <summary>
-    /// Checks if a folder exists in the specified bucket.
+    ///     Checks if a folder exists in the specified bucket.
     /// </summary>
     /// <param name="bucketName">The name of the bucket.</param>
     /// <param name="key">The key of the folder.</param>
@@ -82,7 +82,7 @@ public interface IFileSystem
     bool FolderExists(string bucketName, string key);
 
     /// <summary>
-    /// Checks if a folder exists in the specified bucket asynchronously.
+    ///     Checks if a folder exists in the specified bucket asynchronously.
     /// </summary>
     /// <param name="bucketName">The name of the bucket.</param>
     /// <param name="key">The key of the folder.</param>
@@ -91,7 +91,7 @@ public interface IFileSystem
     Task<bool> FolderExistsAsync(string bucketName, string key, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Checks if a file exists in the specified bucket asynchronously.
+    ///     Checks if a file exists in the specified bucket asynchronously.
     /// </summary>
     /// <param name="bucketName">The name of the bucket.</param>
     /// <param name="key">The key of the file.</param>
@@ -101,7 +101,7 @@ public interface IFileSystem
 
 #pragma warning disable CA1055 // URI-like return values should not be strings
     /// <summary>
-    /// Generates a pre-signed URL for accessing the object in the specified bucket.
+    ///     Generates a pre-signed URL for accessing the object in the specified bucket.
     /// </summary>
     /// <param name="bucketName">The name of the bucket.</param>
     /// <param name="key">The key of the object.</param>
@@ -114,7 +114,7 @@ public interface IFileSystem
 
 #pragma warning disable CA1055 // URI-like return values should not be strings
     /// <summary>
-    /// Gets a pre-signed URL for accessing the object in the specified bucket.
+    ///     Gets a pre-signed URL for accessing the object in the specified bucket.
     /// </summary>
     /// <param name="bucketName">The name of the bucket.</param>
     /// <param name="key">The key of the object.</param>
@@ -123,7 +123,7 @@ public interface IFileSystem
     string GetPreSignedUrl(string bucketName, string key, DateTime expires);
 #pragma warning restore CA1055 // URI-like return values should not be strings
     /// <summary>
-    /// Gets the content of the object from the specified URL.
+    ///     Gets the content of the object from the specified URL.
     /// </summary>
     /// <param name="url">The URL of the object.</param>
     /// <param name="encoding">The encoding to use for reading the content.</param>
@@ -131,7 +131,7 @@ public interface IFileSystem
     string GetObjectContent(string url, Encoding encoding);
 
     /// <summary>
-    /// Gets the content of the object from the specified URL asynchronously.
+    ///     Gets the content of the object from the specified URL asynchronously.
     /// </summary>
     /// <param name="url">The URL of the object.</param>
     /// <param name="encoding">The encoding to use for reading the content.</param>
@@ -141,27 +141,27 @@ public interface IFileSystem
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Deserializes a JSON object from the content of a file specified by a URI.
+    ///     Deserializes a JSON object from the content of a file specified by a URI.
     /// </summary>
     /// <typeparam name="T">The type of the object to deserialize to.</typeparam>
     /// <param name="filePath">The URI pointing to the JSON file.</param>
-    /// <returns>The deserialized object of type <typeparamref name="T"/>.</returns>
+    /// <returns>The deserialized object of type <typeparamref name="T" />.</returns>
     T GetObjectFromJson<T>(Uri filePath);
 
     /// <summary>
-    /// Uploads a file from a stream to the specified bucket.
+    ///     Uploads a file from a stream to the specified bucket.
     /// </summary>
     string PutObject(string bucketName, Stream stream, string fileName, string contentType = null,
         string serverSideEncryptionMethod = null, string fileAcl = null);
 
     /// <summary>
-    /// Uploads a file from a local file path to the specified bucket.
+    ///     Uploads a file from a local file path to the specified bucket.
     /// </summary>
     string PutObject(string bucketName, string filePath, string contentType = null,
         string serverSideEncryptionMethod = null, string fileAcl = null);
 
     /// <summary>
-    /// Uploads an object from a stream to the specified bucket asynchronously.
+    ///     Uploads an object from a stream to the specified bucket asynchronously.
     /// </summary>
     /// <param name="bucketName">The name of the bucket.</param>
     /// <param name="stream">The stream containing the object to upload.</param>
@@ -175,7 +175,7 @@ public interface IFileSystem
         string serverSideEncryptionMethod = null, string fileAcl = null, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Uploads an object from a local file to the specified bucket asynchronously.
+    ///     Uploads an object from a local file to the specified bucket asynchronously.
     /// </summary>
     /// <param name="bucketName">The name of the bucket.</param>
     /// <param name="filePath">The local file path of the object to upload.</param>
@@ -188,7 +188,7 @@ public interface IFileSystem
         string serverSideEncryptionMethod = null, string fileAcl = null, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Uploads an object from a stream to the specified bucket synchronously.
+    ///     Uploads an object from a stream to the specified bucket synchronously.
     /// </summary>
     /// <param name="bucketName">The name of the bucket.</param>
     /// <param name="stream">The stream containing the object to upload.</param>
@@ -202,7 +202,7 @@ public interface IFileSystem
         string fileAcl = null);
 
     /// <summary>
-    /// Uploads an object from a local file to the specified bucket synchronously.
+    ///     Uploads an object from a local file to the specified bucket synchronously.
     /// </summary>
     /// <param name="bucketName">The name of the bucket.</param>
     /// <param name="filePath">The local file path of the object to upload.</param>
@@ -215,7 +215,7 @@ public interface IFileSystem
         string fileAcl = null);
 
     /// <summary>
-    /// Uploads an object from a stream to the specified bucket asynchronously.
+    ///     Uploads an object from a stream to the specified bucket asynchronously.
     /// </summary>
     /// <param name="bucketName">The name of the bucket.</param>
     /// <param name="stream">The stream containing the object to upload.</param>
@@ -231,7 +231,7 @@ public interface IFileSystem
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Uploads an object from a local file to the specified bucket asynchronously.
+    ///     Uploads an object from a local file to the specified bucket asynchronously.
     /// </summary>
     /// <param name="bucketName">The name of the bucket.</param>
     /// <param name="filePath">The local file path of the object to upload.</param>
@@ -246,7 +246,7 @@ public interface IFileSystem
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Uploads an object as JSON to the specified bucket.
+    ///     Uploads an object as JSON to the specified bucket.
     /// </summary>
     Task<string> UploadAsJsonAsync<T>(string bucketName, T obj, string fileName,
         IList<KeyValuePair<string, string>> metadata = null, string serverSideEncryptionMethod = null,
@@ -254,19 +254,19 @@ public interface IFileSystem
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Uploads all files in a directory to the specified bucket.
+    ///     Uploads all files in a directory to the specified bucket.
     /// </summary>
     Task UploadDirectoryAsync(string bucketName, string directory, string serverSideEncryptionMethod = null,
         string fileAcl = null,
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Deletes an object from the specified bucket.
+    ///     Deletes an object from the specified bucket.
     /// </summary>
     Task<bool> DeleteObjectAsync(string bucketName, string key, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Deletes an object from the specified bucket.
+    ///     Deletes an object from the specified bucket.
     /// </summary>
     bool DeleteObject(string bucketName, string key);
 }

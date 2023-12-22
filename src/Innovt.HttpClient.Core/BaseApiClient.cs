@@ -15,24 +15,14 @@ using Innovt.Core.Utilities;
 namespace Innovt.HttpClient.Core;
 
 /// <summary>
-/// Base abstract class for an API client.
+///     Base abstract class for an API client.
 /// </summary>
 public abstract class BaseApiClient
 {
     private readonly IHttpClientFactory httpClientFactory;
 
     /// <summary>
-    /// Gets the API context associated with this client.
-    /// </summary>
-    protected ApiContext ApiContext { get; }
-
-    /// <summary>
-    /// Gets the serializer used for serializing and deserializing data.
-    /// </summary>
-    protected ISerializer Serializer { get; }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="BaseApiClient"/> class.
+    ///     Initializes a new instance of the <see cref="BaseApiClient" /> class.
     /// </summary>
     /// <param name="apiContext">The API context associated with this client.</param>
     /// <param name="serializer">The serializer used for data serialization and deserialization.</param>
@@ -43,7 +33,7 @@ public abstract class BaseApiClient
     }
 
     /// <summary>
-    /// This method sends a POST request to the API.
+    ///     This method sends a POST request to the API.
     /// </summary>
     /// <param name="apiContext"></param>
     /// <param name="httpClientFactory"></param>
@@ -56,20 +46,30 @@ public abstract class BaseApiClient
     }
 
     /// <summary>
-    /// Creates a new instance of <see cref="System.Net.Http.HttpClient"/>.
+    ///     Gets the API context associated with this client.
     /// </summary>
-    /// <returns>The created <see cref="System.Net.Http.HttpClient"/>.</returns>
+    protected ApiContext ApiContext { get; }
+
+    /// <summary>
+    ///     Gets the serializer used for serializing and deserializing data.
+    /// </summary>
+    protected ISerializer Serializer { get; }
+
+    /// <summary>
+    ///     Creates a new instance of <see cref="System.Net.Http.HttpClient" />.
+    /// </summary>
+    /// <returns>The created <see cref="System.Net.Http.HttpClient" />.</returns>
     protected virtual System.Net.Http.HttpClient CreateHttpClient()
     {
         return httpClientFactory is not null ? httpClientFactory.CreateClient() : new System.Net.Http.HttpClient();
     }
 
     /// <summary>
-    /// Parses the HTTP response into a strongly-typed object.
+    ///     Parses the HTTP response into a strongly-typed object.
     /// </summary>
     /// <typeparam name="T">The type of the object to parse into.</typeparam>
     /// <param name="response">The HTTP response message.</param>
-    /// <returns>The parsed object of type <typeparamref name="T"/>.</returns>
+    /// <returns>The parsed object of type <typeparamref name="T" />.</returns>
     protected virtual async Task<T> ParseResponse<T>(HttpResponseMessage response)
     {
         var contentResponse = await response.Content.ReadAsStringAsync();
@@ -85,7 +85,7 @@ public abstract class BaseApiClient
     }
 
     /// <summary>
-    /// Parses the HTTP response into a stream.
+    ///     Parses the HTTP response into a stream.
     /// </summary>
     /// <param name="response">The HTTP response message.</param>
     /// <returns>The response stream.</returns>
@@ -97,7 +97,7 @@ public abstract class BaseApiClient
     }
 
     /// <summary>
-    /// Sends a POST request and parses the response into a strongly-typed object.
+    ///     Sends a POST request and parses the response into a strongly-typed object.
     /// </summary>
     /// <typeparam name="T">The type of the object to parse into.</typeparam>
     /// <param name="baseUri">The base URI for the request.</param>
@@ -105,7 +105,7 @@ public abstract class BaseApiClient
     /// <param name="content">The HTTP content to send.</param>
     /// <param name="headerValues">Additional header values for the request.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
-    /// <returns>The parsed object of type <typeparamref name="T"/>.</returns>
+    /// <returns>The parsed object of type <typeparamref name="T" />.</returns>
     private async Task<T> PostAsync<T>(Uri baseUri, string resourceUri, HttpContent content,
         Dictionary<string, string> headerValues = null, CancellationToken cancellationToken = default)
     {
@@ -113,13 +113,13 @@ public abstract class BaseApiClient
 
         InitializeClient(client, headerValues);
 
-        var response = await client.PostAsync($"{baseUri.ToString()}{resourceUri}", content, cancellationToken);
+        var response = await client.PostAsync($"{baseUri}{resourceUri}", content, cancellationToken);
 
         return await ParseResponse<T>(response);
     }
 
     /// <summary>
-    /// Asynchronously sends an HTTP POST request to the specified URI with optional headers and content.
+    ///     Asynchronously sends an HTTP POST request to the specified URI with optional headers and content.
     /// </summary>
     /// <param name="baseUri">The base URI for the request.</param>
     /// <param name="resourceUri">The resource URI to append to the base URI.</param>
@@ -134,13 +134,14 @@ public abstract class BaseApiClient
 
         InitializeClient(client, headerValues);
 
-        var response = await client.PostAsync($"{baseUri.ToString()}{resourceUri}", content, cancellationToken);
+        var response = await client.PostAsync($"{baseUri}{resourceUri}", content, cancellationToken);
 
         return response.StatusCode;
     }
 
     /// <summary>
-    /// Asynchronously sends an HTTP POST request to the specified URI with optional headers and content, and deserializes the response to a strongly typed object of type T.
+    ///     Asynchronously sends an HTTP POST request to the specified URI with optional headers and content, and deserializes
+    ///     the response to a strongly typed object of type T.
     /// </summary>
     /// <param name="baseUri">The base URI for the request.</param>
     /// <param name="resourceUri">The resource URI to append to the base URI.</param>
@@ -154,7 +155,7 @@ public abstract class BaseApiClient
     }
 
     /// <summary>
-    /// Asynchronously sends an HTTP POST request to the specified URI with content and optional headers.
+    ///     Asynchronously sends an HTTP POST request to the specified URI with content and optional headers.
     /// </summary>
     /// <param name="baseUri">The base URI for the request.</param>
     /// <param name="resourceUri">The resource URI to append to the base URI.</param>
@@ -168,7 +169,8 @@ public abstract class BaseApiClient
     }
 
     /// <summary>
-    /// Asynchronously sends an HTTP PUT request to the specified URI with optional headers and content, and deserializes the response to a strongly typed object of type T.
+    ///     Asynchronously sends an HTTP PUT request to the specified URI with optional headers and content, and deserializes
+    ///     the response to a strongly typed object of type T.
     /// </summary>
     /// <param name="baseUri">The base URI for the request.</param>
     /// <param name="resourceUri">The resource URI to append to the base URI.</param>
@@ -183,13 +185,14 @@ public abstract class BaseApiClient
 
         InitializeClient(client, headerValues);
 
-        var response = await client.PutAsync($"{baseUri.ToString()}{resourceUri}", content, cancellationToken);
+        var response = await client.PutAsync($"{baseUri}{resourceUri}", content, cancellationToken);
 
         return await ParseResponse<T>(response);
     }
 
     /// <summary>
-    /// Asynchronously sends an HTTP PUT request to the specified URI with optional headers and content, and deserializes the response to a strongly typed object of type T.
+    ///     Asynchronously sends an HTTP PUT request to the specified URI with optional headers and content, and deserializes
+    ///     the response to a strongly typed object of type T.
     /// </summary>
     /// <param name="baseUri">The base URI for the request.</param>
     /// <param name="resourceUri">The resource URI to append to the base URI.</param>
@@ -203,7 +206,7 @@ public abstract class BaseApiClient
     }
 
     /// <summary>
-    /// Initializes the HTTP client with optional headers for authorization and additional custom headers.
+    ///     Initializes the HTTP client with optional headers for authorization and additional custom headers.
     /// </summary>
     /// <param name="client">The HTTP client to initialize.</param>
     /// <param name="headerValues">Optional headers to set on the client.</param>
@@ -219,7 +222,8 @@ public abstract class BaseApiClient
     }
 
     /// <summary>
-    /// Asynchronously sends an HTTP GET request to the specified URI with optional headers and deserializes the response to a strongly typed object of type T.
+    ///     Asynchronously sends an HTTP GET request to the specified URI with optional headers and deserializes the response
+    ///     to a strongly typed object of type T.
     /// </summary>
     /// <param name="baseUri">The base URI for the request.</param>
     /// <param name="resourceUri">The resource URI to append to the base URI.</param>
@@ -233,13 +237,14 @@ public abstract class BaseApiClient
 
         InitializeClient(client, headerValues);
 
-        var response = await client.GetAsync($"{baseUri.ToString()}{resourceUri}", cancellationToken);
+        var response = await client.GetAsync($"{baseUri}{resourceUri}", cancellationToken);
 
         return await ParseResponse<T>(response);
     }
 
     /// <summary>
-    /// Asynchronously sends an HTTP GET request to the specified URI with optional headers and deserializes the response to a strongly typed object of type T.
+    ///     Asynchronously sends an HTTP GET request to the specified URI with optional headers and deserializes the response
+    ///     to a strongly typed object of type T.
     /// </summary>
     /// <param name="baseUri">The base URI for the request.</param>
     /// <param name="resourceUri">The resource URI to append to the base URI.</param>
@@ -251,7 +256,8 @@ public abstract class BaseApiClient
     }
 
     /// <summary>
-    /// Asynchronously sends an HTTP GET request to the specified URI with optional headers and returns the response as a stream.
+    ///     Asynchronously sends an HTTP GET request to the specified URI with optional headers and returns the response as a
+    ///     stream.
     /// </summary>
     /// <param name="baseUri">The base URI for the request.</param>
     /// <param name="resourceUri">The resource URI to append to the base URI.</param>
@@ -265,13 +271,14 @@ public abstract class BaseApiClient
 
         InitializeClient(client, headerValues);
 
-        var response = await client.GetAsync($"{baseUri.ToString()}{resourceUri}", cancellationToken);
+        var response = await client.GetAsync($"{baseUri}{resourceUri}", cancellationToken);
 
         return await ParseStreamResponse(response);
     }
 
     /// <summary>
-    /// Asynchronously sends an HTTP GET request to the specified URI with optional headers and returns the response as a stream.
+    ///     Asynchronously sends an HTTP GET request to the specified URI with optional headers and returns the response as a
+    ///     stream.
     /// </summary>
     /// <param name="baseUri">The base URI for the request.</param>
     /// <param name="resourceUri">The resource URI to append to the base URI.</param>
@@ -285,13 +292,14 @@ public abstract class BaseApiClient
 }
 
 /// <summary>
-/// Abstract base class for API clients, providing common functionality for sending HTTP requests and handling responses.
+///     Abstract base class for API clients, providing common functionality for sending HTTP requests and handling
+///     responses.
 /// </summary>
 /// <typeparam name="TErrorResponse">Type representing the error response in case of non-successful HTTP requests.</typeparam>
 public abstract class BaseApiClient<TErrorResponse> : BaseApiClient where TErrorResponse : class
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="BaseApiClient{TErrorResponse}"/> class.
+    ///     Initializes a new instance of the <see cref="BaseApiClient{TErrorResponse}" /> class.
     /// </summary>
     /// <param name="apiContext">The API context containing necessary information like access token and token type.</param>
     /// <param name="httpClientFactory">The factory for creating HTTP clients.</param>
@@ -302,7 +310,7 @@ public abstract class BaseApiClient<TErrorResponse> : BaseApiClient where TError
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="BaseApiClient{TErrorResponse}"/> class.
+    ///     Initializes a new instance of the <see cref="BaseApiClient{TErrorResponse}" /> class.
     /// </summary>
     /// <param name="apiContext">The API context containing necessary information like access token and token type.</param>
     /// <param name="serializer">The serializer used to deserialize response data.</param>
@@ -311,7 +319,7 @@ public abstract class BaseApiClient<TErrorResponse> : BaseApiClient where TError
     }
 
     /// <summary>
-    /// Parses the HTTP response message and handles success or error based on the status code.
+    ///     Parses the HTTP response message and handles success or error based on the status code.
     /// </summary>
     /// <typeparam name="T">Type representing the success response.</typeparam>
     /// <param name="response">The HTTP response message to parse.</param>
@@ -328,7 +336,8 @@ public abstract class BaseApiClient<TErrorResponse> : BaseApiClient where TError
     }
 
     /// <summary>
-    /// Parses the HTTP response message and handles success or error based on the status code, returning the response as a stream.
+    ///     Parses the HTTP response message and handles success or error based on the status code, returning the response as a
+    ///     stream.
     /// </summary>
     /// <param name="response">The HTTP response message to parse.</param>
     /// <returns>A stream representing the response data.</returns>

@@ -12,7 +12,7 @@ public class ContactTests
     [Test]
     public void ContactValidate_Should_Return_Error_When_ContactType_Is_Null()
     {
-        var contact = new Contact()
+        var contact = new Contact
         {
             Name = "Innovt",
             Description = "Phone Test",
@@ -30,7 +30,7 @@ public class ContactTests
     {
         var contactType = ContactType.Create("Phone", "The phone number");
 
-        var contact = new Contact()
+        var contact = new Contact
         {
             Name = "Innovt",
             Description = "Phone Test",
@@ -49,7 +49,7 @@ public class ContactTests
         var contactType = ContactType.Create("Email", "The email");
         contactType.RegexValidation = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
 
-        var contact = new Contact()
+        var contact = new Contact
         {
             Name = "Innovt",
             Description = "Phone Test",

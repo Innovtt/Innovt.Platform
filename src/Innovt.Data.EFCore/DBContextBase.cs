@@ -17,7 +17,7 @@ using Microsoft.Extensions.Logging;
 namespace Innovt.Data.EFCore;
 
 /// <summary>
-/// Abstract base class for Entity Framework DbContext implementing the extended unit of work interface.
+///     Abstract base class for Entity Framework DbContext implementing the extended unit of work interface.
 /// </summary>
 public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
 {
@@ -25,7 +25,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     private readonly ILoggerFactory loggerFactory;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="DBContextBase"/> class using a data source.
+    ///     Initializes a new instance of the <see cref="DBContextBase" /> class using a data source.
     /// </summary>
     /// <param name="dataSource">The data source to use.</param>
     /// <exception cref="ArgumentNullException">Thrown when the data source is null.</exception>
@@ -36,7 +36,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="DBContextBase"/> class using a data source and logger factory.
+    ///     Initializes a new instance of the <see cref="DBContextBase" /> class using a data source and logger factory.
     /// </summary>
     /// <param name="dataSource">The data source to use.</param>
     /// <param name="loggerFactory">The logger factory to use.</param>
@@ -47,7 +47,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="DBContextBase"/> class using DbContext options.
+    ///     Initializes a new instance of the <see cref="DBContextBase" /> class using DbContext options.
     /// </summary>
     /// <param name="options">The DbContext options.</param>
     protected DBContextBase(DbContextOptions options) : base(options)
@@ -56,17 +56,17 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     }
 
     /// <summary>
-    /// Gets or sets the maximum number of retries for a transaction.
+    ///     Gets or sets the maximum number of retries for a transaction.
     /// </summary>
     public int? MaxRetryCount { get; set; }
 
     /// <summary>
-    /// Gets or sets the maximum delay between retries for a transaction.
+    ///     Gets or sets the maximum delay between retries for a transaction.
     /// </summary>
     public TimeSpan? MaxRetryDelay { get; set; }
 
     /// <summary>
-    /// Commits the changes made in the unit of work to the database.
+    ///     Commits the changes made in the unit of work to the database.
     /// </summary>
     /// <returns>The number of entities written to the database.</returns>
     public int Commit()
@@ -75,7 +75,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     }
 
     /// <summary>
-    /// Asynchronously commits the changes made in the unit of work to the database.
+    ///     Asynchronously commits the changes made in the unit of work to the database.
     /// </summary>
     /// <param name="cancellationToken">Cancellation token (optional).</param>
     /// <returns>The number of entities written to the database.</returns>
@@ -85,7 +85,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     }
 
     /// <summary>
-    /// Rolls back the changes made in the unit of work by setting all entries to an unchanged state.
+    ///     Rolls back the changes made in the unit of work by setting all entries to an unchanged state.
     /// </summary>
     public void Rollback()
     {
@@ -95,7 +95,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     }
 
     /// <summary>
-    /// Adds an entity to the DbContext.
+    ///     Adds an entity to the DbContext.
     /// </summary>
     /// <typeparam name="T">The type of entity to add.</typeparam>
     /// <param name="entity">The entity to add.</param>
@@ -105,7 +105,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     }
 
     /// <summary>
-    /// Adds a collection of entities to the DbContext.
+    ///     Adds a collection of entities to the DbContext.
     /// </summary>
     /// <typeparam name="T">The type of entities to add.</typeparam>
     /// <param name="entities">The collection of entities to add.</param>
@@ -115,7 +115,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     }
 
     /// <summary>
-    /// Asynchronously adds an entity to the DbContext.
+    ///     Asynchronously adds an entity to the DbContext.
     /// </summary>
     /// <typeparam name="T">The type of entity to add.</typeparam>
     /// <param name="entity">The entity to add.</param>
@@ -127,7 +127,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     }
 
     /// <summary>
-    /// Asynchronously adds a collection of entities to the DbContext.
+    ///     Asynchronously adds a collection of entities to the DbContext.
     /// </summary>
     /// <typeparam name="T">The type of entities to add.</typeparam>
     /// <param name="entities">The collection of entities to add.</param>
@@ -140,7 +140,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     }
 
     /// <summary>
-    /// Removes an entity from the DbContext.
+    ///     Removes an entity from the DbContext.
     /// </summary>
     /// <typeparam name="T">The type of entity to remove.</typeparam>
     /// <param name="entity">The entity to remove.</param
@@ -150,7 +150,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     }
 
     /// <summary>
-    /// Removes a collection of entities from the DbContext.
+    ///     Removes a collection of entities from the DbContext.
     /// </summary>
     /// <typeparam name="T">The type of entities to remove.</typeparam>
     /// <param name="entities">The collection of entities to remove.</param>
@@ -160,7 +160,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     }
 
     /// <summary>
-    /// Updates the specified entity in the DbContext.
+    ///     Updates the specified entity in the DbContext.
     /// </summary>
     /// <typeparam name="T">The type of entity to update.</typeparam>
     /// <param name="entity">The entity to update.</param>
@@ -170,7 +170,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     }
 
     /// <summary>
-    /// Attaches the specified entity to the DbContext.
+    ///     Attaches the specified entity to the DbContext.
     /// </summary>
     /// <typeparam name="T">The type of entity to attach.</typeparam>
     /// <param name="entity">The entity to attach.</param>
@@ -180,7 +180,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     }
 
     /// <summary>
-    /// Detaches an entity from the DbContext.
+    ///     Detaches an entity from the DbContext.
     /// </summary>
     /// <typeparam name="T">The type of entity to detach.</typeparam>
     /// <param name="entity">The entity to detach.</param>
@@ -190,17 +190,17 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     }
 
     /// <summary>
-    /// Gets a queryable representation of a specific entity type.
+    ///     Gets a queryable representation of a specific entity type.
     /// </summary>
     /// <typeparam name="T">The type of entity.</typeparam>
-    /// <returns>An <see cref="IQueryable{T}"/> representing the entity type.</returns>
+    /// <returns>An <see cref="IQueryable{T}" /> representing the entity type.</returns>
     public IQueryable<T> Queryable<T>() where T : class
     {
         return base.Set<T>();
     }
 
     /// <summary>
-    /// Executes a SQL command against the database.
+    ///     Executes a SQL command against the database.
     /// </summary>
     /// <param name="sql">The SQL command to execute.</param>
     /// <param name="parameters">The parameters for the SQL command.</param>
@@ -208,17 +208,20 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     public abstract int ExecuteSqlCommand(string sql, params object[] parameters);
 
     /// <summary>
-    /// Asynchronously executes a SQL command against the database.
+    ///     Asynchronously executes a SQL command against the database.
     /// </summary>
     /// <param name="sql">The SQL command to execute.</param>
     /// <param name="cancellationToken">Cancellation token (optional).</param>
     /// <param name="parameters">The parameters for the SQL command.</param>
-    /// <returns>A task representing the asynchronous operation and yielding the number of entities affected by the SQL command.</returns>
+    /// <returns>
+    ///     A task representing the asynchronous operation and yielding the number of entities affected by the SQL
+    ///     command.
+    /// </returns>
     public abstract Task<int> ExecuteSqlCommandAsync(string sql, CancellationToken cancellationToken = default,
         params object[] parameters);
 
     /// <summary>
-    /// Overrides the configuration of DbContext options.
+    ///     Overrides the configuration of DbContext options.
     /// </summary>
     /// <param name="optionsBuilder">The options builder for configuring DbContext options.</param>
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -245,7 +248,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     }
 
     /// <summary>
-    /// Configures the provider-specific options for the DbContext.
+    ///     Configures the provider-specific options for the DbContext.
     /// </summary>
     /// <param name="optionsBuilder">The options builder for configuring DbContext options.</param>
     /// <param name="connectionString">The connection string for the data source.</param>

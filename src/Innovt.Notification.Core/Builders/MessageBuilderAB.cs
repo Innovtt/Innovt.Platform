@@ -9,14 +9,14 @@ using Innovt.Notification.Core.Template;
 namespace Innovt.Notification.Core.Builders;
 
 /// <summary>
-/// Abstract base class for message builders.
+///     Abstract base class for message builders.
 /// </summary>
 public abstract class MessageBuilderAB
 {
     private readonly ITemplateParser parser;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="MessageBuilderAB"/> class.
+    ///     Initializes a new instance of the <see cref="MessageBuilderAB" /> class.
     /// </summary>
     /// <param name="parser">The template parser.</param>
     protected MessageBuilderAB(ITemplateParser parser)
@@ -25,7 +25,7 @@ public abstract class MessageBuilderAB
     }
 
     /// <summary>
-    /// Builds a notification message based on the provided notification template and request.
+    ///     Builds a notification message based on the provided notification template and request.
     /// </summary>
     /// <param name="template">The notification template.</param>
     /// <param name="request">The notification request.</param>
@@ -54,7 +54,7 @@ public abstract class MessageBuilderAB
     }
 
     /// <summary>
-    /// Parses the notification message content using the provided payload.
+    ///     Parses the notification message content using the provided payload.
     /// </summary>
     protected virtual void ParseMessage(NotificationMessage message, object payLoad)
     {

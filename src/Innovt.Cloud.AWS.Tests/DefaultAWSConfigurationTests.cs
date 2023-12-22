@@ -1,3 +1,4 @@
+using Innovt.Cloud.AWS.Configuration;
 using Innovt.Core.Exceptions;
 using NUnit.Framework;
 
@@ -10,22 +11,22 @@ public class DefaultAWSConfigurationTests
     [Test]
     public void GetCredentialWithoutProfileReturnDefaultProfile()
     {
-        var configuration = new Configuration.DefaultAWSConfiguration();
+        var configuration = new DefaultAWSConfiguration();
 
-        Assert.IsNotNull(configuration);
+        Assert.That(configuration, Is.Not.Null);
 
         var credentials = configuration.GetCredential();
 
-        Assert.IsNotNull(credentials);
-        Assert.IsNotNull(credentials.GetCredentials());
+        Assert.That(credentials, Is.Not.Null);
+        Assert.That(credentials.GetCredentials(), Is.Not.Null);
     }
 
     [Test]
     public void GetCredentialWithInvalidProfileThrowsException()
     {
-        var configuration = new Configuration.DefaultAWSConfiguration("invalidProfile");
+        var configuration = new DefaultAWSConfiguration("invalidProfile");
 
-        Assert.IsNotNull(configuration);
+        Assert.That(configuration, Is.Not.Null);
 
         Assert.Throws<ConfigurationException>(() => configuration.GetCredential());
     }
@@ -34,12 +35,12 @@ public class DefaultAWSConfigurationTests
     [Test]
     public void GetCredentialWithAccessKeyAnSecretReturnsValidCredential()
     {
-        var configuration = new Configuration.DefaultAWSConfiguration("accessKey", "secret", "us-east-1");
+        var configuration = new DefaultAWSConfiguration("accessKey", "secret", "us-east-1");
 
-        Assert.IsNotNull(configuration);
+        Assert.That(configuration, Is.Not.Null);
 
         var credentials = configuration.GetCredential();
 
-        Assert.IsNotNull(credentials);
+        Assert.That(credentials, Is.Not.Null);
     }
 }

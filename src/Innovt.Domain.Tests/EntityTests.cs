@@ -23,8 +23,7 @@ public class EntityTests
 
         events = user.GetDomainEvents();
 
-        Assert.That(events,Is.Not.Null);
-
-        Assert.That(events.Count,Has.Count.EqualTo(1));
+        Assert.That(events, Is.Not.Null);
+        Assert.That(events.Count, Is.EqualTo(1));
     }
 }

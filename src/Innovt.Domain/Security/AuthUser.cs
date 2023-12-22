@@ -11,12 +11,12 @@ using Innovt.Domain.Core.Model;
 namespace Innovt.Domain.Security;
 
 /// <summary>
-/// Represents a user in the authentication system.
+///     Represents a user in the authentication system.
 /// </summary>
 public class AuthUser : Entity
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="AuthUser"/> class.
+    ///     Initializes a new instance of the <see cref="AuthUser" /> class.
     /// </summary>
     public AuthUser()
     {
@@ -24,32 +24,32 @@ public class AuthUser : Entity
     }
 
     /// <summary>
-    /// Gets or sets the user ID.
+    ///     Gets or sets the user ID.
     /// </summary>
     public new string Id { get; set; }
 
     /// <summary>
-    /// Gets or sets the domain ID associated with the user.
+    ///     Gets or sets the domain ID associated with the user.
     /// </summary>
     public string DomainId { get; set; }
 
     /// <summary>
-    /// Gets or sets the name of the user.
+    ///     Gets or sets the name of the user.
     /// </summary>
     public string Name { get; set; }
 
     /// <summary>
-    /// Gets or sets the groups associated with the user.
+    ///     Gets or sets the groups associated with the user.
     /// </summary>
     public IList<Group> Groups { get; private set; }
 
     /// <summary>
-    /// Gets or sets the roles associated with the user.
+    ///     Gets or sets the roles associated with the user.
     /// </summary>
     public IList<Role> Roles { get; private set; }
 
     /// <summary>
-    /// Assigns a role to the user.
+    ///     Assigns a role to the user.
     /// </summary>
     /// <param name="role">The role to assign.</param>
     public void AssignRole(Role role)
@@ -67,7 +67,7 @@ public class AuthUser : Entity
     }
 
     /// <summary>
-    /// Unassigns a role from the user.
+    ///     Unassigns a role from the user.
     /// </summary>
     /// <param name="scope">The scope of the role.</param>
     /// <param name="roleName">The name of the role.</param>
@@ -86,7 +86,7 @@ public class AuthUser : Entity
     }
 
     /// <summary>
-    /// Assigns a group to the user.
+    ///     Assigns a group to the user.
     /// </summary>
     /// <param name="group">The group to assign.</param>
     public void AssignGroup(Group group)
@@ -104,7 +104,7 @@ public class AuthUser : Entity
     }
 
     /// <summary>
-    /// Unassigns a group from the user.
+    ///     Unassigns a group from the user.
     /// </summary>
     /// <param name="groupName">The name of the group.</param>
     public void UnAssignGroup(string groupName)

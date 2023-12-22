@@ -19,38 +19,38 @@ namespace Innovt.Core.Collections;
 public interface IPagedCollection<T>
 {
     /// <summary>
-    /// Gets or sets the collection of items in the current page.
+    ///     Gets or sets the collection of items in the current page.
     /// </summary>
     IEnumerable<T> Items { get; set; }
 
     /// <summary>
-    /// Gets or sets the current page number.
+    ///     Gets or sets the current page number.
     /// </summary>
     string Page { get; set; }
 
     /// <summary>
-    /// Gets the total number of pages in the paged collection.
+    ///     Gets the total number of pages in the paged collection.
     /// </summary>
     int PageCount { get; }
 
     /// <summary>
-    /// Gets or sets the number of items per page.
+    ///     Gets or sets the number of items per page.
     /// </summary>
     int PageSize { get; set; }
 
     /// <summary>
-    /// Gets or sets the total number of records in the entire collection.
+    ///     Gets or sets the total number of records in the entire collection.
     /// </summary>
     int TotalRecords { get; set; }
 
     /// <summary>
-    /// Determines whether there is a next page in the paged collection.
+    ///     Determines whether there is a next page in the paged collection.
     /// </summary>
     /// <returns><c>true</c> if there is a next page; otherwise, <c>false</c>.</returns>
     bool HasNext();
 
     /// <summary>
-    /// Determines whether there is a previous page in the paged collection.
+    ///     Determines whether there is a previous page in the paged collection.
     /// </summary>
     /// <returns><c>true</c> if there is a previous page; otherwise, <c>false</c>.</returns>
     bool HasPrevious();

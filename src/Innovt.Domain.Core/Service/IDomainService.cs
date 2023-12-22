@@ -4,7 +4,6 @@
 
 namespace Innovt.Domain.Core.Service;
 
-
 // public interface IDomainService
 // {
 // }

@@ -10,7 +10,6 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
@@ -21,12 +20,12 @@ using Innovt.Core.Utilities;
 namespace Innovt.Cloud.AWS.Dynamo;
 
 /// <summary>
-/// A utility class for converting between different attribute types.
+///     A utility class for converting between different attribute types.
 /// </summary>
 internal static class AttributeConverter
 {
     /// <summary>
-    /// An array containing primitive types that can be represented as attributes.
+    ///     An array containing primitive types that can be represented as attributes.
     /// </summary>
     private static readonly Type[] primitiveTypesArray = new Type[19]
     {
@@ -52,8 +51,8 @@ internal static class AttributeConverter
     };
 
     private static readonly HashSet<ITypeInfo> PrimitiveTypeInfos =
-        new(((IEnumerable<Type>)primitiveTypesArray).Select<Type, ITypeInfo>(
-            (Func<Type, ITypeInfo>)TypeFactory.GetTypeInfo));
+        new(primitiveTypesArray.Select(
+            TypeFactory.GetTypeInfo));
 
     // <summary>
     /// Checks if a given type is a primitive DynamoDB type.
@@ -63,11 +62,11 @@ internal static class AttributeConverter
     public static bool IsPrimitive(Type type)
     {
         var typeWrapper = TypeFactory.GetTypeInfo(type);
-        return PrimitiveTypeInfos.Any<ITypeInfo>((Func<ITypeInfo, bool>)(ti => typeWrapper.IsAssignableFrom(ti)));
+        return PrimitiveTypeInfos.Any(ti => typeWrapper.IsAssignableFrom(ti));
     }
 
     /// <summary>
-    /// Checks if a given type is a collection (array or IEnumerable).
+    ///     Checks if a given type is a collection (array or IEnumerable).
     /// </summary>
     /// <param name="type">The type to check.</param>
     /// <returns>True if the type is a collection; otherwise, false.</returns>
@@ -77,7 +76,7 @@ internal static class AttributeConverter
     }
 
     /// <summary>
-    /// Checks if a given type is a dictionary.
+    ///     Checks if a given type is a dictionary.
     /// </summary>
     /// <param name="type">The type to check.</param>
     /// <returns>True if the type is a dictionary; otherwise, false.</returns>
@@ -88,7 +87,7 @@ internal static class AttributeConverter
     }
 
     /// <summary>
-    /// Converts a dictionary of string and object pairs to DynamoDB AttributeValues.
+    ///     Converts a dictionary of string and object pairs to DynamoDB AttributeValues.
     /// </summary>
     /// <param name="items">The dictionary to convert.</param>
     /// <returns>A dictionary of string and AttributeValue pairs.</returns>
@@ -103,7 +102,7 @@ internal static class AttributeConverter
     }
 
     /// <summary>
-    /// Conversion from object to attribute Value
+    ///     Conversion from object to attribute Value
     /// </summary>
     /// <param name="value">Any object</param>
     /// <returns></returns>
@@ -120,7 +119,7 @@ internal static class AttributeConverter
             case List<MemoryStream> streams:
                 return new AttributeValue { BS = streams };
             case List<string> list:
-                return new AttributeValue() { SS = list };
+                return new AttributeValue { SS = list };
             case int or double or float or decimal or long:
                 return new AttributeValue { N = value.ToString() };
             case DateTime time:
@@ -147,12 +146,12 @@ internal static class AttributeConverter
     }
 
     /// <summary>
-    /// Converts a DynamoDB AttributeValue to an object of the specified desiredType.
+    ///     Converts a DynamoDB AttributeValue to an object of the specified desiredType.
     /// </summary>
     /// <param name="value">The DynamoDB AttributeValue to convert.</param>
     /// <param name="desiredType">The desired Type to convert to.</param>
     /// <returns>
-    /// An object of the specified desiredType containing the converted value from the AttributeValue.
+    ///     An object of the specified desiredType containing the converted value from the AttributeValue.
     /// </returns>
     internal static object CreateAttributeValueToObject(AttributeValue value, Type desiredType)
     {
@@ -167,17 +166,12 @@ internal static class AttributeConverter
         //Nested Type
         if (value.IsMSet)
         {
-            if (IsDictionary(desiredType))
-            {
-                return ItemsToDictionary(desiredType, value.M);
-            }
-            else
-            {
-                var method = typeof(AttributeConverter).GetMethod(nameof(ConvertAttributesToType),
-                    BindingFlags.Static | BindingFlags.NonPublic, null,
-                    new Type[] { typeof(Dictionary<string, AttributeValue>) }, null);
-                return method?.MakeGenericMethod(desiredType).Invoke(null, new object[] { value.M });
-            }
+            if (IsDictionary(desiredType)) return ItemsToDictionary(desiredType, value.M);
+
+            var method = typeof(AttributeConverter).GetMethod(nameof(ConvertAttributesToType),
+                BindingFlags.Static | BindingFlags.NonPublic, null,
+                new[] { typeof(Dictionary<string, AttributeValue>) }, null);
+            return method?.MakeGenericMethod(desiredType).Invoke(null, new object[] { value.M });
         }
 
         if (value.BS.IsNotNullOrEmpty()) return value.BS;
@@ -192,12 +186,12 @@ internal static class AttributeConverter
     }
 
     /// <summary>
-    /// Converts a collection of items to the specified target type.
+    ///     Converts a collection of items to the specified target type.
     /// </summary>
     /// <param name="targetType">The desired Type to convert the items to.</param>
     /// <param name="items">The collection of items to convert.</param>
     /// <returns>
-    /// An object of the specified target type containing the converted items.
+    ///     An object of the specified target type containing the converted items.
     /// </returns>
     public static object ItemsToCollection(Type targetType, IEnumerable<object> items)
     {
@@ -205,12 +199,13 @@ internal static class AttributeConverter
     }
 
     /// <summary>
-    /// Converts a dictionary of items to the specified target dictionary type.
+    ///     Converts a dictionary of items to the specified target dictionary type.
     /// </summary>
     /// <param name="targetType">The desired dictionary Type to convert the items to.</param>
     /// <param name="items">The dictionary of items to convert.</param>
     /// <returns>
-    /// An object of the specified target dictionary type containing the converted items, or null if the conversion is not supported.
+    ///     An object of the specified target dictionary type containing the converted items, or null if the conversion is not
+    ///     supported.
     /// </returns>
     public static object ItemsToDictionary(Type targetType, Dictionary<string, AttributeValue> items)
     {
@@ -236,15 +231,18 @@ internal static class AttributeConverter
     }
 
     /// <summary>
-    /// Retrieves the element type of a collection or array type.
+    ///     Retrieves the element type of a collection or array type.
     /// </summary>
     /// <param name="collectionType">The Type representing a collection or array.</param>
-    /// <returns>The Type of the elements contained within the collection or array, or null if the element type could not be determined.</returns>
+    /// <returns>
+    ///     The Type of the elements contained within the collection or array, or null if the element type could not be
+    ///     determined.
+    /// </returns>
     private static Type GetElementType(Type collectionType)
     {
         var elementType = collectionType.GetElementType();
 
-        if (elementType == (Type)null)
+        if (elementType == null)
         {
             var genericArguments = TypeFactory.GetTypeInfo(collectionType).GetGenericArguments();
             if (genericArguments is { Length: 1 })
@@ -255,17 +253,20 @@ internal static class AttributeConverter
     }
 
     /// <summary>
-    /// Converts a collection of objects to an array of the specified target type.
+    ///     Converts a collection of objects to an array of the specified target type.
     /// </summary>
     /// <param name="targetType">The Type representing the target array type.</param>
     /// <param name="items">The collection of objects to convert to an array.</param>
-    /// <returns>An array of the specified target type containing the converted objects, or null if the input collection is null.</returns>
+    /// <returns>
+    ///     An array of the specified target type containing the converted objects, or null if the input collection is
+    ///     null.
+    /// </returns>
     private static object ItemsToArray(Type targetType, IEnumerable<object> items)
     {
         if (items is null)
             return null;
 
-        var list = items.ToList<object>();
+        var list = items.ToList();
         var array = (Array)Activator.CreateInstance(targetType, list.Count);
 
         var elementType = GetElementType(targetType);
@@ -273,17 +274,17 @@ internal static class AttributeConverter
         for (var index = 0; index < list.Count; ++index)
             array.SetValue(IsPrimitive(elementType) ? ConvertType(elementType, list[index]) : list[index], index);
 
-        return (object)array;
+        return array;
     }
 
     /// <summary>
-    /// Converts a collection of objects to an instance of the specified target type that implements IList.
+    ///     Converts a collection of objects to an instance of the specified target type that implements IList.
     /// </summary>
     /// <param name="targetType">The Type representing the target list type.</param>
     /// <param name="items">The collection of objects to convert to a list.</param>
     /// <returns>
-    /// An instance of the specified target type containing the converted objects,
-    /// or null if the input collection is null or the target type cannot be instantiated.
+    ///     An instance of the specified target type containing the converted objects,
+    ///     or null if the input collection is null or the target type cannot be instantiated.
     /// </returns>
     private static object ItemsToIList(Type targetType, IEnumerable<object> items)
     {
@@ -299,7 +300,7 @@ internal static class AttributeConverter
 
         var method = TypeFactory.GetTypeInfo(targetType).GetMethod("Add");
 
-        if (method != (MethodInfo)null)
+        if (method != null)
         {
             foreach (var obj in items)
                 method.Invoke(result, new object[1]
@@ -314,14 +315,16 @@ internal static class AttributeConverter
     }
 
     /// <summary>
-    /// Gets the PropertyInfo for a property with the specified name in the given set of properties, considering case-insensitive matches and custom attributes.
+    ///     Gets the PropertyInfo for a property with the specified name in the given set of properties, considering
+    ///     case-insensitive matches and custom attributes.
     /// </summary>
     /// <param name="properties">The array of PropertyInfo objects to search for the property.</param>
     /// <param name="propertyName">The name of the property to find.</param>
     /// <param name="declaringType">The Type that declares the property, used to disambiguate properties with the same name.</param>
     /// <returns>
-    /// The PropertyInfo for the property with the specified name, considering case-insensitive matches and custom attributes,
-    /// or null if the property is not found or cannot be written to.
+    ///     The PropertyInfo for the property with the specified name, considering case-insensitive matches and custom
+    ///     attributes,
+    ///     or null if the property is not found or cannot be written to.
     /// </returns>
     private static PropertyInfo GetProperty(PropertyInfo[] properties, string propertyName, Type declaringType)
     {
@@ -346,12 +349,13 @@ internal static class AttributeConverter
     }
 
     /// <summary>
-    /// Converts a value to the specified property type, considering type conversion and compatibility workarounds.
+    ///     Converts a value to the specified property type, considering type conversion and compatibility workarounds.
     /// </summary>
     /// <param name="propertyType">The target property type to convert the value to.</param>
     /// <param name="value">The value to be converted.</param>
     /// <returns>
-    /// The converted value of the specified property type, or the default value of the property type if the input value is null.
+    ///     The converted value of the specified property type, or the default value of the property type if the input value is
+    ///     null.
     /// </returns>
     private static object ConvertType(Type propertyType, object value)
     {
@@ -376,11 +380,11 @@ internal static class AttributeConverter
     }
 
     /// <summary>
-    /// Converts an AttributeValue to a DynamoDBEntry, handling different data types.
+    ///     Converts an AttributeValue to a DynamoDBEntry, handling different data types.
     /// </summary>
     /// <param name="attributeValue">The AttributeValue to be converted.</param>
     /// <returns>
-    /// A DynamoDBEntry representing the converted AttributeValue, or a DynamoDBNull if the input is null.
+    ///     A DynamoDBEntry representing the converted AttributeValue, or a DynamoDBNull if the input is null.
     /// </returns>
     internal static DynamoDBEntry ConvertAttributeValue(AttributeValue attributeValue)
     {
@@ -400,13 +404,14 @@ internal static class AttributeConverter
     }
 
     /// <summary>
-    /// Converts a non-primitive property value to the desired type, considering custom converters.
+    ///     Converts a non-primitive property value to the desired type, considering custom converters.
     /// </summary>
     /// <param name="property">The PropertyInfo object representing the property.</param>
     /// <param name="attributeValue">The AttributeValue to be converted.</param>
     /// <param name="value">The current value of the property.</param>
     /// <returns>
-    /// The converted value of the property, considering custom converters if available, or the original value if no custom converter is found.
+    ///     The converted value of the property, considering custom converters if available, or the original value if no custom
+    ///     converter is found.
     /// </returns>
     internal static object ConvertNonPrimitiveType(PropertyInfo property, AttributeValue attributeValue, object value)
     {
@@ -431,7 +436,7 @@ internal static class AttributeConverter
     }
 
     /// <summary>
-    /// Convert an attribute array to specific type
+    ///     Convert an attribute array to specific type
     /// </summary>
     /// <typeparam name="T">The desired Type </typeparam>
     /// <param name="items"></param>

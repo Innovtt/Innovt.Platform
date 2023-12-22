@@ -40,7 +40,7 @@ public class UserDataModel : BaseDataModel<User, UserDataModel>
 
     public override User ParseToDomain(UserDataModel dataModel)
     {
-        return new User()
+        return new User
         {
             Name = dataModel.Name,
             LastName = dataModel.LastName,
@@ -51,7 +51,7 @@ public class UserDataModel : BaseDataModel<User, UserDataModel>
 
     public override UserDataModel ParseToDataModel(User domainModel)
     {
-        return new UserDataModel()
+        return new UserDataModel
         {
             Name = domainModel.Name,
             LastName = domainModel.LastName,

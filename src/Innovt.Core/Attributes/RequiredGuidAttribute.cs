@@ -18,11 +18,11 @@ namespace Innovt.Core.Attributes;
 public sealed class RequiredGuidAttribute : RequiredAttribute
 {
     /// <summary>
-    /// Determines whether the specified value is a non-empty Guid.
+    ///     Determines whether the specified value is a non-empty Guid.
     /// </summary>
     /// <param name="value">The value to validate.</param>
     /// <returns>
-    ///   <c>true</c> if the value is a non-empty Guid; otherwise, <c>false</c>.
+    ///     <c>true</c> if the value is a non-empty Guid; otherwise, <c>false</c>.
     /// </returns>
     public override bool IsValid(object value)
     {

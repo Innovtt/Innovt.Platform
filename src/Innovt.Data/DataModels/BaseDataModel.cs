@@ -10,7 +10,7 @@ using System.Runtime.CompilerServices;
 namespace Innovt.Data.DataModels;
 
 /// <summary>
-/// The base abstract class for data model classes that facilitate communication between domain models and data models.
+///     The base abstract class for data model classes that facilitate communication between domain models and data models.
 /// </summary>
 /// <typeparam name="TDomain">The type representing the domain model.</typeparam>
 /// <typeparam name="TDataModel">The type representing the data model.</typeparam>
@@ -18,10 +18,9 @@ public abstract class BaseDataModel<TDomain, TDataModel> : INotifyPropertyChange
     where TDomain : class where TDataModel : class
 {
     private bool enableTrackingChanges;
-    private bool hasChanges;
 
     /// <summary>
-    /// Gets or sets a value indicating whether change tracking is enabled.
+    ///     Gets or sets a value indicating whether change tracking is enabled.
     /// </summary>
     public bool EnableTrackingChanges
     {
@@ -29,33 +28,33 @@ public abstract class BaseDataModel<TDomain, TDataModel> : INotifyPropertyChange
         set
         {
             enableTrackingChanges = value;
-            hasChanges = false;
+            HasChanges = false;
         }
     }
 
     /// <summary>
-    /// Gets a value indicating whether there are pending changes in the data model.
+    ///     Gets a value indicating whether there are pending changes in the data model.
     /// </summary>
-    public bool HasChanges => hasChanges;
+    public bool HasChanges { get; private set; }
 
     /// <summary>
-    /// Event that is raised when a property value changes.
+    ///     Event that is raised when a property value changes.
     /// </summary>
     public event PropertyChangedEventHandler PropertyChanged;
 
     /// <summary>
-    /// Raises the PropertyChanged event and updates the change tracking if enabled.
+    ///     Raises the PropertyChanged event and updates the change tracking if enabled.
     /// </summary>
     /// <param name="propertyName">The name of the property that changed (auto-populated).</param>
     protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-        if (EnableTrackingChanges) hasChanges = true;
+        if (EnableTrackingChanges) HasChanges = true;
     }
 
     /// <summary>
-    /// Sets the value of a property and raises the PropertyChanged event if the value changes.
+    ///     Sets the value of a property and raises the PropertyChanged event if the value changes.
     /// </summary>
     /// <typeparam name="T">The property type.</typeparam>
     /// <param name="field">Reference to the property's backing field.</param>
@@ -75,21 +74,21 @@ public abstract class BaseDataModel<TDomain, TDataModel> : INotifyPropertyChange
     }
 
     /// <summary>
-    /// Converts a data model instance to a domain model instance.
+    ///     Converts a data model instance to a domain model instance.
     /// </summary>
     /// <param name="dataModel">The data model instance to convert.</param>
     /// <returns>The corresponding domain model instance.</returns>
     public abstract TDomain ParseToDomain(TDataModel dataModel);
 
     /// <summary>
-    /// Converts a domain model instance to a data model instance.
+    ///     Converts a domain model instance to a data model instance.
     /// </summary>
     /// <param name="domainModel">The domain model instance to convert.</param>
     /// <returns>The corresponding data model instance.</returns>
     public abstract TDataModel ParseToDataModel(TDomain domainModel);
 
     /// <summary>
-    /// Converts a list of data model instances to a list of domain model instances.
+    ///     Converts a list of data model instances to a list of domain model instances.
     /// </summary>
     /// <param name="dataModels">The list of data model instances to convert.</param>
     /// <returns>A list of corresponding domain model instances.</returns>
@@ -99,7 +98,7 @@ public abstract class BaseDataModel<TDomain, TDataModel> : INotifyPropertyChange
     }
 
     /// <summary>
-    /// Converts a list of domain model instances to a list of data model instances.
+    ///     Converts a list of domain model instances to a list of data model instances.
     /// </summary>
     /// <param name="domainModels">The list of domain model instances to convert.</param>
     /// <returns>A list of corresponding data model instances.</returns>

@@ -10,71 +10,71 @@ using NUnit.Framework;
 namespace Innovt.Core.Test.Exceptions;
 
 /// <summary>
-/// Unit tests for the <see cref="BusinessException"/> class.
+///     Unit tests for the <see cref="BusinessException" /> class.
 /// </summary>
 [TestFixture]
 public class BusinessExceptionTests
 {
     /// <summary>
-    /// Verifies that the exception message is set correctly.
+    ///     Verifies that the exception message is set correctly.
     /// </summary>
     [Test]
     public void CheckMessage()
     {
         var bex = new BusinessException("E-mail is not valid.");
 
-        Assert.IsNotNull(bex);
+        Assert.That(bex, Is.Not.Null);
 
         Assert.That("E-mail is not valid.", Is.EqualTo(bex.Message));
     }
 
     /// <summary>
-    /// Verifies that the exception code and message are set correctly.
+    ///     Verifies that the exception code and message are set correctly.
     /// </summary>
     [Test]
     public void CheckCode()
     {
         var bex = new BusinessException("01", "E-mail is not valid.");
 
-        Assert.IsNotNull(bex);
+        Assert.That(bex, Is.Not.Null);
 
         Assert.That("E-mail is not valid.", Is.EqualTo(bex.Message));
         Assert.That("01", Is.EqualTo(bex.Code));
     }
 
     /// <summary>
-    /// Verifies that the exception message is set to a default value when the error list is empty.
+    ///     Verifies that the exception message is set to a default value when the error list is empty.
     /// </summary>
     [Test]
     public void MessageIsEmptyWhenErrorListIsEmpty()
     {
         var bex = new BusinessException(new List<ErrorMessage>());
 
-        Assert.IsNotNull(bex);
-        Assert.IsNotNull(bex.Errors);
+        Assert.That(bex, Is.Not.Null);
+        Assert.That(bex.Errors, Is.Not.Null);
         Assert.That(bex.Message, Is.EqualTo("One or more validation errors occurred."));
     }
 
     /// <summary>
-    /// Verifies that the exception detail is null when the error list is empty.
+    ///     Verifies that the exception detail is null when the error list is empty.
     /// </summary>
     [Test]
     public void DetailShouldBeNullWhenErrorListIsEmpty()
     {
         var bex = new BusinessException(new List<ErrorMessage>());
 
-        Assert.IsNotNull(bex);
-        Assert.IsNotNull(bex.Errors);
-        Assert.IsNull(bex.Detail);
+        Assert.That(bex, Is.Not.Null);
+        Assert.That(bex.Errors, Is.Not.Null);
+        Assert.That(bex.Detail, Is.Null);
     }
 
     /// <summary>
-    /// Verifies that the exception is created correctly with a list of error messages.
+    ///     Verifies that the exception is created correctly with a list of error messages.
     /// </summary>
     [Test]
     public void CheckValidationPattern()
     {
-        var errors = new List<ErrorMessage>()
+        var errors = new List<ErrorMessage>
         {
             new("e-mail is required", "Email", "01"),
             new("invalid e-mail", "Email", "02"),
@@ -83,8 +83,8 @@ public class BusinessExceptionTests
 
         var bex = new BusinessException(errors);
 
-        Assert.IsNotNull(bex);
-        Assert.IsNotNull(bex.Errors);
+        Assert.That(bex, Is.Not.Null);
+        Assert.That(bex.Errors, Is.Not.Null);
         Assert.That(errors.Count, Is.EqualTo(3));
         Assert.That(JsonSerializer.Serialize(bex.Detail),
             Is.EqualTo(
