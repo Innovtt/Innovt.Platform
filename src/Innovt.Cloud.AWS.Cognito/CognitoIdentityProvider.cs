@@ -63,7 +63,8 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     private AmazonCognitoIdentityProviderClient cognitoIdentityProvider;
 
     protected CognitoIdentityProvider(ILogger logger, IAwsConfiguration configuration, string clientId,
-        string userPoolId, string domainEndPoint, string region = null, bool allowAutoConfirmUserWithSocialLogin = false) :
+        string userPoolId, string domainEndPoint, string region = null,
+        bool allowAutoConfirmUserWithSocialLogin = false) :
         base(logger, configuration, region)
     {
         this.clientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
@@ -153,6 +154,12 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         }
     }
 
+    /// <summary>
+    /// Signs in a user with the provided request for OTP process authentication.
+    /// </summary>
+    /// <param name="command"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>A SignInResponse with a valid token or null</returns>
     public virtual async Task<SignInResponse> SignIn(OtpSignInRequest command,
         CancellationToken cancellationToken = default)
     {
@@ -161,7 +168,12 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         return await SignIn(AuthFlowType.CUSTOM_AUTH, command, null, cancellationToken).ConfigureAwait(false);
     }
 
-
+    /// <summary>
+    /// Signs in a user with the provided authentication information.
+    /// </summary>
+    /// <param name="command"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     public virtual async Task<SignInResponse> SignIn(SignInRequest command,
         CancellationToken cancellationToken = default)
     {
@@ -249,14 +261,12 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         };
 
         if (command.CustomAttributes != null)
-        {
             foreach (var attribute in command.CustomAttributes)
                 signUpRequest.UserAttributes.Add(new AttributeType
                 {
                     Name = $"custom:{attribute.Key}",
                     Value = attribute.Value
                 });
-        }
 
         var excludedProperties = new[]
             { "password", "username", "ipaddress", "serverpath", "servername", "httpheader", "customattributes" };
@@ -285,7 +295,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
             if (!response.UserConfirmed)
                 response.UserConfirmed = await ConfirmUserIfHasSocialUser(signUpRequest.Username, cancellationToken);
-                
+
             return new SignUpResponse { Confirmed = response.UserConfirmed, UUID = response.UserSub };
         }
         catch (Exception ex)
@@ -293,7 +303,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             throw CatchException(ex);
         }
     }
-    
+
     /// <summary>
     /// This implementation is to avoid users with social login to confirm the user.
     /// </summary>
@@ -303,32 +313,32 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     private async Task<bool> ConfirmUserIfHasSocialUser(string username, CancellationToken cancellationToken)
     {
         //Only confirm user if the AllowAutoConfirmUserWithSocialLogin is true
-        if(!allowAutoConfirmUserWithSocialLogin)
+        if (!allowAutoConfirmUserWithSocialLogin)
             return false;
-        
+
         try
         {
             var listUsersResponse = await ListUsersAsync(username, cancellationToken).ConfigureAwait(false);
-            
+
             var hasSocialUser = listUsersResponse.Users.Exists(u => u.UserStatus == "EXTERNAL_PROVIDER");
 
             if (!hasSocialUser)
                 return false;
 
             var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await 
+                    await
                         CognitoProvider.AdminConfirmSignUpAsync(new AdminConfirmSignUpRequest()
                         {
                             UserPoolId = userPoolId,
                             Username = username
                         }, cancellationToken).ConfigureAwait(false))
                 .ConfigureAwait(false);
-            
+
             return response.HttpStatusCode == HttpStatusCode.OK;
         }
         catch (Exception ex)
         {
-           Logger.Error(ex,"Error on confirm user with social login.");
+            Logger.Error(ex, "Error on confirm user with social login.");
         }
 
         return false;
@@ -482,11 +492,9 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     /// a structured representation of user data. The method returns an instance of the specified
     /// response type populated with user information.
     /// </remarks>
-    public virtual async Task<T> GetUser<T>(GetUserRequest request,
-        CancellationToken cancellationToken = default) where T : IGetUserResponse
+    public virtual async Task<T> GetUser<T>(GetUserRequest request, CancellationToken cancellationToken = default)
+        where T : IGetUserResponse
     {
-        Check.NotNull(request, nameof(request));
-
         request.EnsureIsValid();
 
         using var activity = CognitoIdentityProviderActivitySource.StartActivity();
@@ -503,8 +511,9 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
                         .ConfigureAwait(false))
                 .ConfigureAwait(false);
 
-            var cognitoUser = response?.Users.FirstOrDefault(u =>
-                request.ExcludeExternalUser && u.UserStatus != "EXTERNAL_PROVIDER");
+            var cognitoUser =
+                response?.Users.SingleOrDefault(u =>
+                    request.ExcludeExternalUser && u.UserStatus != "EXTERNAL_PROVIDER");
 
             if (cognitoUser == null)
                 return default;
@@ -516,11 +525,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             user.UserCreateDate = cognitoUser.UserCreateDate;
             user.UserLastModifiedDate = cognitoUser.UserLastModifiedDate;
 
-            foreach (var userAttribute in cognitoUser.Attributes)
-            {
-                if (userAttribute.Name == null)
-                    continue;
-
+            foreach (var userAttribute in cognitoUser.Attributes.Where(userAttribute => userAttribute.Name != null))
                 switch (userAttribute.Name)
                 {
                     case "name":
@@ -549,7 +554,6 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
                         break;
                 }
-            }
 
             return user;
         }
@@ -727,9 +731,9 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     {
         if (!userName.Contains('_'))
             return string.Empty;
-        
+
         var provider = userName.Split("_")[0].ToUpper();
-        return  provider switch
+        return provider switch
         {
             "FACEBOOK" => "USER_FACE",
             _ => $"USER_{provider}"
@@ -767,7 +771,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             new("code", command.Code),
             new("redirect_uri", command.RedirectUri)
         };
-        
+
         OAuth2SignInResponse response;
 
         try
@@ -781,7 +785,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
             if (!responseMessage.IsSuccessStatusCode)
                 throw new BusinessException(ErrorCode.OAuthResponseError);
-            
+
             var responseContent = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             response = JsonSerializer.Deserialize<OAuth2SignInResponse>(responseContent);
@@ -806,7 +810,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
             response.NeedRegister = !hasCognitoUser;
             response.SignInType = GetSocialProviderName(socialUser.Username);
-            
+
 
             response.FirstName = GetUserAttributeValue(socialUser.UserAttributes, "name");
             response.LastName = GetUserAttributeValue(socialUser.UserAttributes, "family_name");
@@ -980,6 +984,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
         return attribute?.Value;
     }
+
     private static Exception CatchException(Exception ex)
     {
         throw ex switch
@@ -1001,6 +1006,58 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             BusinessException _ => ex,
             _ => new InternalException(ErrorCode.InternalServerError, ex)
         };
+    }
+
+
+    /// <summary>
+    /// Link user and social account. This is used to avoid billing issues and other problems.
+    /// </summary>
+    /// <param name="command"></param>
+    /// <param name="cancellationToken"></param>
+    /// <exception cref="Exception"></exception>
+    public async Task LinkSocialUser(LinkSocialAccountRequest command, CancellationToken cancellationToken = default)
+    {
+        command.EnsureIsValid();
+
+        using var activity = CognitoIdentityProviderActivitySource.StartActivity();
+
+        var users = await ListUsersAsync(command.Email, cancellationToken);
+
+        var localUser = users.Users.SingleOrDefault(u => u.UserStatus != "EXTERNAL_PROVIDER");
+
+        if (localUser is null)
+            return;
+
+        //Check if the user is a federated user PS: Google_1234567890
+        var providerName = command.UserName.Split('_')[0];
+        var providerValue = command.UserName.Split('_')[1];
+
+        var request = new AdminLinkProviderForUserRequest()
+        {
+            UserPoolId = userPoolId,
+            DestinationUser = new ProviderUserIdentifierType()
+            {
+                ProviderName = "Cognito",
+                ProviderAttributeValue = localUser.Username
+            },
+            SourceUser = new ProviderUserIdentifierType()
+            {
+                ProviderName = providerName,
+                ProviderAttributeName = "Cognito_Subject",
+                ProviderAttributeValue = providerValue
+            }
+        };
+
+        try
+        {
+            await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+                await CognitoProvider.AdminLinkProviderForUserAsync(request, cancellationToken
+                )).ConfigureAwait(false);
+        }
+        catch (Exception ex)
+        {
+            throw CatchException(ex);
+        }
     }
 
     /// <summary>

@@ -29,6 +29,7 @@ public static class EfExtensions
             ? query
             : includes.Includes.Aggregate(query, (current, include) => current.Include(include));
     }
+
     /// <summary>
     /// Adds navigation properties to include in the query using string-based includes.
     /// </summary>
@@ -40,6 +41,7 @@ public static class EfExtensions
     {
         return includes is null ? query : includes.Aggregate(query, (current, include) => current.Include(include));
     }
+
     /// <summary>
     /// Adds a navigation property to include in the query using a string.
     /// </summary>
@@ -51,6 +53,7 @@ public static class EfExtensions
     {
         return include == null ? query : query.Include(include);
     }
+
     /// <summary>
     /// Applies pagination to the query based on page number and page size.
     /// </summary>
@@ -67,6 +70,7 @@ public static class EfExtensions
 
         return query;
     }
+
     /// <summary>
     /// Applies pagination to the query based on an ISpecification.
     /// </summary>
@@ -81,6 +85,7 @@ public static class EfExtensions
 
         return query.ApplyPagination(specification.Page, specification.PageSize);
     }
+
     /// <summary>
     /// Adds an entity type configuration to the ModelBuilder.
     /// </summary>
@@ -96,6 +101,7 @@ public static class EfExtensions
 
         configuration.Configure(modelBuilder.Entity<TEntity>());
     }
+
     /// <summary>
     /// Adds a list of entity type configurations to the ModelBuilder.
     /// </summary>

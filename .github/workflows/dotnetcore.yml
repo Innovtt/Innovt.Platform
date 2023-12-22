@@ -8,7 +8,7 @@ on:
 env:
   SONAR_HOST: https://sonarcloud.io
   SONAR_ORGANIZATION: innovt
-  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  
+  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   SONAR_PROJECTKEY: Innovtt_Innovt.Platform
 
 jobs:
@@ -16,25 +16,23 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 7.0.302
-        include-prerelease: false
-        fetch-depth: 0        
-    - name: Setting Workspace
-      working-directory: ${{ github.workspace }}
-      run: ls -la
-    - name: Install dependencies
-      working-directory: src
-      run: dotnet restore    
-    - name: Install Sonnar Scaner        
-      run: dotnet tool install -g dotnet-sonarscanner
-    - name: Build
-      working-directory: src
-      run: | 
-            dotnet sonarscanner begin /d:sonar.login=$SONAR_TOKEN /d:sonar.host.url=$SONAR_HOST /o:$SONAR_ORGANIZATION /k:"$SONAR_PROJECTKEY" /d:sonar.cs.opencover.reportsPaths="**/testresults/coverage.opencover.xml" /d:sonar.coverage.exclusions=**Test*.cs /d:sonar.cs.vstest.reportsPaths=./testresults/*.trx ;
-            dotnet build -c Release
-            dotnet test -c Release --logger trx --results-directory ./testresults /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./testresults/coverage.opencover.xml
-            dotnet sonarscanner end /d:sonar.login=$SONAR_TOKEN
+      - uses: actions/checkout@v3
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.100
+      - name: Setting Workspace
+        working-directory: ${{ github.workspace }}
+        run: ls -la
+      - name: Install dependencies
+        working-directory: src
+        run: dotnet restore
+      - name: Install Sonnar Scaner
+        run: dotnet tool install -g dotnet-sonarscanner
+      - name: Build
+        working-directory: src
+        run: |
+          dotnet sonarscanner begin /d:sonar.login=$SONAR_TOKEN /d:sonar.host.url=$SONAR_HOST /o:$SONAR_ORGANIZATION /k:"$SONAR_PROJECTKEY" /d:sonar.cs.opencover.reportsPaths="**/testresults/coverage.opencover.xml" /d:sonar.coverage.exclusions=**Test*.cs /d:sonar.cs.vstest.reportsPaths=./testresults/*.trx ;
+          dotnet build -c Release
+          dotnet test -c Release --logger trx --results-directory ./testresults /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./testresults/coverage.opencover.xml
+          dotnet sonarscanner end /d:sonar.login=$SONAR_TOKEN

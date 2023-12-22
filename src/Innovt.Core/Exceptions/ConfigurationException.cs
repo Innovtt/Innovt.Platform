@@ -8,7 +8,6 @@ using System.Runtime.Serialization;
 namespace Innovt.Core.Exceptions;
 
 [Serializable]
-
 /// <summary>
 /// Represents an exception that occurs when there is an issue with configuration settings.
 /// </summary>
@@ -38,6 +37,7 @@ public class ConfigurationException : BaseException
     public ConfigurationException(Exception ex) : base(ex)
     {
     }
+
     // Private constructor to prevent instantiation without parameters
     private ConfigurationException()
     {

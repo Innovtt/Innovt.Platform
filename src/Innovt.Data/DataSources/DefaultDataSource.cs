@@ -6,6 +6,7 @@ using Innovt.Data.Model;
 using Microsoft.Extensions.Configuration;
 
 namespace Innovt.Data.DataSources;
+
 /// <summary>
 /// Represents a default data source that inherits from <see cref="DataSourceBase"/>.
 /// </summary>
@@ -21,6 +22,7 @@ public class DefaultDataSource : DataSourceBase
         connectionString, provider)
     {
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DefaultDataSource"/> class with configuration settings.
     /// </summary>
@@ -32,6 +34,7 @@ public class DefaultDataSource : DataSourceBase
     {
         Name = nameof(DefaultDataSource);
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DefaultDataSource"/> class with configuration settings and a custom name.
     /// </summary>

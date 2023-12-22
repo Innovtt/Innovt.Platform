@@ -5,6 +5,7 @@
 using Innovt.Domain.Core.Repository;
 
 namespace Innovt.Data.EFCore.Repositories;
+
 /// <summary>
 /// Generic repository implementation for accessing and managing entities of type T.
 /// Inherits from RepositoryBase for shared functionality and extends for specific entity type.

@@ -11,6 +11,9 @@ using Quartz;
 
 namespace Innovt.Job.Quartz;
 
+/// <summary>
+/// Abstract base class for Quartz job implementations, providing common functionality for scheduling and executing jobs using Quartz framework.
+/// </summary>
 public abstract class QuartzJobBase : JobBase, IJob // where T : IJob
 {
     private readonly int intervalInMinutes;
@@ -18,6 +21,14 @@ public abstract class QuartzJobBase : JobBase, IJob // where T : IJob
     private readonly IScheduler scheduler;
     private DateTimeOffset nextScheduleExecution = DateTimeOffset.MinValue;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="QuartzJobBase"/> class.
+    /// </summary>
+    /// <param name="name">The name of the job.</param>
+    /// <param name="heartBeatInterval">The interval for the heartbeat in milliseconds.</param>
+    /// <param name="logger">The logger to use for logging.</param>
+    /// <param name="scheduler">The Quartz scheduler instance.</param>
+    /// <param name="intervalInMinutes">The interval in minutes for job execution.</param>
     protected QuartzJobBase(string name, double heartBeatInterval, ILogger logger, IScheduler scheduler,
         int intervalInMinutes) : base(name, logger, heartBeatInterval)
     {
@@ -26,21 +37,41 @@ public abstract class QuartzJobBase : JobBase, IJob // where T : IJob
         key = new JobKey(Name + "Key");
     }
 
+    /// <summary>
+    /// Executes the Quartz job.
+    /// </summary>
+    /// <param name="context">The Quartz job execution context.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
     public Task Execute(IJobExecutionContext context)
     {
         return OnExecute();
     }
 
+    /// <summary>
+    /// Executes when the job is started.
+    /// </summary>
+    /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
     protected override Task OnStart(CancellationToken cancellationToken = default)
     {
         return Schedule(cancellationToken);
     }
 
+    /// <summary>
+    /// Executes when the job is stopped.
+    /// </summary>
+    /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
     protected override Task OnStop(CancellationToken cancellationToken = default)
     {
         return scheduler.Shutdown(true, cancellationToken);
     }
 
+    /// <summary>
+    /// Schedules the Quartz job for execution.
+    /// </summary>
+    /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
     public virtual async Task Schedule(CancellationToken cancellationToken = default)
     {
         //first execution
@@ -67,5 +98,9 @@ public abstract class QuartzJobBase : JobBase, IJob // where T : IJob
         }
     }
 
+    /// <summary>
+    /// Executes the Quartz job logic.
+    /// </summary>
+    /// <returns>A task representing the asynchronous operation.</returns>
     protected abstract Task OnExecute();
 }

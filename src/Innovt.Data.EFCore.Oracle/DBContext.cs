@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace Innovt.Data.EFCore.Oracle;
+
 /// <summary>
 /// Represents the Entity Framework DbContext for the application.
 /// </summary>
@@ -21,6 +22,7 @@ public class DBContext : DBContextBase
     public DBContext(IDataSource dataSource) : base(dataSource)
     {
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DBContext"/> class using a data source and logger factory.
     /// </summary>
@@ -29,6 +31,7 @@ public class DBContext : DBContextBase
     protected DBContext(IDataSource dataSource, ILoggerFactory loggerFactory) : base(dataSource, loggerFactory)
     {
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DBContext"/> class using DbContext options.
     /// </summary>
@@ -47,6 +50,7 @@ public class DBContext : DBContextBase
     {
         return base.Database.ExecuteSqlRaw(sql, parameters);
     }
+
     /// <summary>
     /// Asynchronously executes a raw SQL command against the database and returns the number of affected entities.
     /// </summary>

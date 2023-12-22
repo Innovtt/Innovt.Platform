@@ -1,6 +1,5 @@
-﻿namespace ConsoleAppTest.TestCase01
+﻿namespace ConsoleAppTest.TestCase01;
+
+public interface ITestErpTaskIntegrationDataRepository
 {
-    public interface ITestErpTaskIntegrationDataRepository
-    {
-    }
 }

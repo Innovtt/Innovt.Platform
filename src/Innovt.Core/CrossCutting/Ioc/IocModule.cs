@@ -14,23 +14,23 @@ namespace Innovt.Core.CrossCutting.Ioc;
 /// Developers can create custom modules to configure and add services to the container, making it easier to organize
 /// and maintain the service registration code.
 /// </remarks>
-public class IOCModule
+public class IocModule
 {
     private readonly IServiceCollection services;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="IOCModule"/> class with a new <see cref="ServiceCollection"/>.
+    /// Initializes a new instance of the <see cref="IocModule"/> class with a new <see cref="ServiceCollection"/>.
     /// </summary>
-    public IOCModule()
+    public IocModule()
     {
         services = new ServiceCollection();
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="IOCModule"/> class with the provided <paramref name="services"/>.
+    /// Initializes a new instance of the <see cref="IocModule"/> class with the provided <paramref name="services"/>.
     /// </summary>
     /// <param name="services">The <see cref="IServiceCollection"/> to be used for service registration.</param>
-    public IOCModule(IServiceCollection services)
+    public IocModule(IServiceCollection services)
     {
         this.services = services;
     }
@@ -59,10 +59,7 @@ public class IOCModule
         if (externalServices == null)
             return services;
 
-        foreach (var serviceDescriptor in externalServices)
-        {
-            services.Add(serviceDescriptor);
-        }
+        foreach (var serviceDescriptor in externalServices) services.Add(serviceDescriptor);
 
         return services;
     }

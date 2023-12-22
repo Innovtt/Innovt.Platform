@@ -14,7 +14,8 @@ namespace Innovt.Core.Serialization;
 /// <summary>
 /// Provides JSON serialization and deserialization using System.Text.Json.
 /// </summary>
-public class JsonSerializer : ISerializer {
+public class JsonSerializer : ISerializer
+{
     private readonly JsonSerializerOptions options;
 
     /// <summary>
@@ -25,8 +26,10 @@ public class JsonSerializer : ISerializer {
     /// <param name="propertyNameCaseInsensitive">Indicates whether property name casing should be treated as case-insensitive.</param>
     /// <param name="converters">A list of custom JSON converters to be used during serialization and deserialization.</param>
     public JsonSerializer(bool ignoreNullValues = true, bool ignoreReadOnlyProperties = true,
-        bool propertyNameCaseInsensitive = true, IList<JsonConverter> converters = null) {
-        options = new JsonSerializerOptions {
+        bool propertyNameCaseInsensitive = true, IList<JsonConverter> converters = null)
+    {
+        options = new JsonSerializerOptions
+        {
             IgnoreReadOnlyProperties = ignoreReadOnlyProperties,
             PropertyNameCaseInsensitive = propertyNameCaseInsensitive
         };
@@ -44,7 +47,9 @@ public class JsonSerializer : ISerializer {
     /// <returns>The deserialized object of type <typeparamref name="T"/>.</returns>
     public T DeserializeObject<T>(string serializedObject)
     {
-        return serializedObject.IsNullOrEmpty() ? default(T) : System.Text.Json.JsonSerializer.Deserialize<T>(serializedObject, options);
+        return serializedObject.IsNullOrEmpty()
+            ? default
+            : System.Text.Json.JsonSerializer.Deserialize<T>(serializedObject, options);
     }
 
     /// <summary>
@@ -54,7 +59,8 @@ public class JsonSerializer : ISerializer {
     /// <param name="obj">The object to serialize.</param>
     /// <returns>The serialized object as a JSON string.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the <paramref name="obj"/> parameter is null.</exception>
-    public string SerializeObject<T>(T obj) {
+    public string SerializeObject<T>(T obj)
+    {
         if (obj == null) throw new ArgumentNullException(nameof(obj));
 
         return System.Text.Json.JsonSerializer.Serialize(obj, options);

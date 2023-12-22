@@ -1,23 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-	<TargetFramework>net7.0</TargetFramework>
-	<PackageId>Innovt.Data.EFCore.Oracle</PackageId>
-	 <PackageVersion>7.0.39</PackageVersion>
-	<Authors>Michel Borges</Authors>
-	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-	<Copyright>Innovt Tecnologia</Copyright>
-	<Description>EF core project for oracle provider.</Description>
-	<LangVersion>latest</LangVersion>
-	<AnalysisMode>AllEnabledByDefault</AnalysisMode>
-	<OutputType>Library</OutputType>
-    
-  </PropertyGroup>
-	<ItemGroup>
-		<PackageReference Include="Oracle.EntityFrameworkCore" Version="7.21.11" />
-	</ItemGroup>
-	<ItemGroup>
-	  <ProjectReference Include="..\Innovt.Data.EFCore\Innovt.Data.EFCore.csproj" />
-	</ItemGroup>
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <PackageId>Innovt.Data.EFCore.Oracle</PackageId>
+        <PackageVersion>8.0.0</PackageVersion>
+        <Authors>Michel Borges</Authors>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Copyright>Innovt Tecnologia</Copyright>
+        <Description>EF core project for oracle provider.</Description>
+        <LangVersion>latest</LangVersion>
+        <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+        <OutputType>Library</OutputType>
+
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Oracle.EntityFrameworkCore" Version="8.21.121"/>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Innovt.Data.EFCore\Innovt.Data.EFCore.csproj"/>
+    </ItemGroup>
 </Project>

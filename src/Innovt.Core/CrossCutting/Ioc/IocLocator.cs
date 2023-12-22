@@ -18,7 +18,7 @@ namespace Innovt.Core.CrossCutting.Ioc;
 /// It provides methods for initializing the container, resolving services, adding modules, releasing resources,
 /// creating service scopes, and checking container configuration.
 /// </remarks
-public static class IOCLocator
+public static class IocLocator
 {
     private static IContainer container;
 
@@ -98,11 +98,11 @@ public static class IOCLocator
     }
 
     /// <summary>
-    /// Adds an <see cref="IOCModule"/> to the container.
+    /// Adds an <see cref="IocModule"/> to the container.
     /// </summary>
-    /// <param name="module">The <see cref="IOCModule"/> to be added to the container.</param>
+    /// <param name="module">The <see cref="IocModule"/> to be added to the container.</param>
     /// <exception cref="ArgumentNullException">Thrown if <paramref name="module"/> is null.</exception>
-    public static void AddModule(IOCModule module)
+    public static void AddModule(IocModule module)
     {
         // Implementation of the AddModule method.
         if (module == null) throw new ArgumentNullException(nameof(module));
@@ -148,12 +148,12 @@ public static class IOCLocator
 
         ThrowExceptionIfContainerIsNotInitialized();
 
-        var moduleType = typeof(IOCModule);
+        var moduleType = typeof(IocModule);
         var modules = assembly.GetTypes().Where(t => t.GetTypeInfo().IsSubclassOf(moduleType)).ToList();
 
         foreach (var module in modules)
         {
-            var moduleInstance = (IOCModule)Activator.CreateInstance(module);
+            var moduleInstance = (IocModule)Activator.CreateInstance(module);
 
             container.AddModule(moduleInstance);
         }

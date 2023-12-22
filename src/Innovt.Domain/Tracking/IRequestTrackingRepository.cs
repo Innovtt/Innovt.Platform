@@ -5,6 +5,7 @@
 using System.Threading.Tasks;
 
 namespace Innovt.Domain.Tracking;
+
 /// <summary>
 /// Interface for a repository responsible for request tracking operations.
 /// </summary>

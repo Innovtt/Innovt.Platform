@@ -14,13 +14,12 @@ namespace Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge;
 /// </summary>
 public class DefineAuthChallengeRequest : TriggerRequest
 {
-
     /// <summary>
     /// Gets or sets the client-specific metadata associated with the request.
     /// </summary>
     [DataMember(Name = "clientMetadata")]
     [JsonPropertyName("clientMetadata")]
-    public Dictionary<string, string> ClientMetadata { get; set; } = new Dictionary<string, string>();
+    public Dictionary<string, string> ClientMetadata { get; set; } = new();
 
 
     /// <summary>
@@ -28,7 +27,7 @@ public class DefineAuthChallengeRequest : TriggerRequest
     /// </summary>
     [DataMember(Name = "session")]
     [JsonPropertyName("session")]
-    public List<ChallengeResultItem> Session { get; set; } = new List<ChallengeResultItem>();
+    public List<ChallengeResultItem> Session { get; set; } = new();
 
 
     /// <summary>

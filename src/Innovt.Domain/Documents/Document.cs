@@ -5,6 +5,7 @@
 using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Documents;
+
 /// <summary>
 /// Represents a document entity.
 /// </summary>
@@ -16,6 +17,7 @@ public class Document : ValueObject
     public Document()
     {
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="Document"/> class with the specified number and document type.
     /// </summary>
@@ -26,14 +28,17 @@ public class Document : ValueObject
         DocumentTypeId = documentTypeId;
         Number = number;
     }
+
     /// <summary>
     /// Gets or sets the ID of the document type associated with this document.
     /// </summary>
     public int DocumentTypeId { get; set; }
+
     /// <summary>
     /// Gets or sets the document type associated with this document.
     /// </summary>
     public DocumentType DocumentType { get; set; }
+
     /// <summary>
     /// Gets or sets the document number.
     /// </summary>

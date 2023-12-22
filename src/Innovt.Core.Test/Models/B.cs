@@ -9,7 +9,8 @@ namespace Innovt.Core.Test.Models;
 /// <summary>
 /// Represents a class 'B' with properties for Id, Role, and Document.
 /// </summary>
-public class B {
+public class B
+{
     /// <summary>
     /// Gets or sets the unique identifier for an instance of class 'B'.
     /// </summary>

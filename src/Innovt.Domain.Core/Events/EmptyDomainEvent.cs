@@ -5,6 +5,7 @@
 using Innovt.Domain.Core.Streams;
 
 namespace Innovt.Domain.Core.Events;
+
 /// <summary>
 /// Represents an empty domain event used for specific partition in the system.
 /// </summary>

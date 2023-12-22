@@ -8,12 +8,14 @@ using System.Linq;
 using Innovt.Domain.Core.Events;
 
 namespace Innovt.Domain.Core.Model;
+
 /// <summary>
 /// Represents an abstract base class for entities in the domain model.
 /// </summary>
 public abstract class Entity
 {
     private List<DomainEvent> domainEvents;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="Entity"/> class.
     /// </summary>
@@ -21,6 +23,7 @@ public abstract class Entity
     {
         CreatedAt = DateTimeOffset.UtcNow;
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="Entity"/> class with a specific identifier.
     /// </summary>
@@ -29,14 +32,17 @@ public abstract class Entity
     {
         Id = id;
     }
+
     /// <summary>
     /// Gets or sets the unique identifier for the entity.
     /// </summary>
     public virtual int Id { get; set; }
+
     /// <summary>
     /// Gets or sets the date and time when the entity was created.
     /// </summary>
     public DateTimeOffset? CreatedAt { get; set; }
+
     /// <summary>
     /// Checks if the entity is new (i.e., not persisted in the database yet).
     /// </summary>
@@ -45,6 +51,7 @@ public abstract class Entity
     {
         return Id == 0;
     }
+
     /// <inheritdoc/>
     public override int GetHashCode()
     {
@@ -73,6 +80,7 @@ public abstract class Entity
 
         domainEvents.Add(domainEvent);
     }
+
     /// <summary>
     /// Gets the list of unprocessed domain events associated with the entity.
     /// </summary>
@@ -82,6 +90,7 @@ public abstract class Entity
         return domainEvents?.Where(d => d.PublishedAt is null).ToList().AsReadOnly();
     }
 }
+
 /// <summary>
 /// Represents an abstract base class for entities in the domain model with a specific type for the identifier.
 /// </summary>

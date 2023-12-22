@@ -3,12 +3,11 @@ using Innovt.Core.CrossCutting.Log;
 
 namespace Innovt.Cloud.AWS.Cognito.Tests;
 
-public class BaseIdentityProvider: CognitoIdentityProvider
+public class BaseIdentityProvider : CognitoIdentityProvider
 {
-    public BaseIdentityProvider(ILogger logger, IAwsConfiguration configuration, string clientId, string userPoolId, 
-        string domainEndPoint, string? region) 
+    public BaseIdentityProvider(ILogger logger, IAwsConfiguration configuration, string clientId, string userPoolId,
+        string domainEndPoint, string? region)
         : base(logger, configuration, clientId, userPoolId, domainEndPoint, region)
     {
-        
     }
 }

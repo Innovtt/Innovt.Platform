@@ -13,12 +13,26 @@ using Microsoft.Extensions.Options;
 
 namespace Innovt.AspNetCore.Handlers;
 
+/// <summary>
+/// Custom authentication handler for handling basic authentication in ASP.NET Core.
+/// </summary>
 public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
 {
+    /// <summary>
+    /// The scheme name for basic authentication.
+    /// </summary>
     public const string SchemeName = "BasicAuthentication";
 
     private readonly IBasicAuthService authService;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="BasicAuthenticationHandler"/> class.
+    /// </summary>
+    /// <param name="options">The options for the authentication scheme.</param>
+    /// <param name="logger">The logger factory.</param>
+    /// <param name="encoder">The URL encoder.</param>
+    /// <param name="clock">The system clock.</param>
+    /// <param name="authService">The custom basic authentication service.</param>
     public BasicAuthenticationHandler(IOptionsMonitor<AuthenticationSchemeOptions> options, ILoggerFactory logger,
         UrlEncoder encoder, ISystemClock clock, IBasicAuthService authService) : base(options, logger, encoder,
         clock)
@@ -26,11 +40,21 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
         this.authService = authService ?? throw new ArgumentNullException(nameof(authService));
     }
 
+    /// <summary>
+    /// Generates an authentication failure response.
+    /// </summary>
+    /// <param name="reason">The reason for the failure.</param>
+    /// <returns>An authentication result indicating failure.</returns>
     private static AuthenticateResult Fail(string reason)
     {
         return AuthenticateResult.Fail(reason);
     }
 
+    /// <summary>
+    /// Generates an authentication success response.
+    /// </summary>
+    /// <param name="username">The authenticated username.</param>
+    /// <returns>An authentication result indicating success.</returns>
     private static AuthenticateResult Success(string username)
     {
         var claims = new[] { new Claim(ClaimTypes.Name, username) };
@@ -40,6 +64,7 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
         return AuthenticateResult.Success(new AuthenticationTicket(principal, SchemeName));
     }
 
+    /// <inheritdoc/>
     protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
     {
         if (!Request.Headers.ContainsKey("Authorization"))

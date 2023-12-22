@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Innovt.AspNetCore.Infrastructure;
 
+/// <summary>
+/// Helper class for creating a custom bad request result with validation error details.
+/// </summary>
 public static class InvalidModelStateResponse
 {
     /// <summary>

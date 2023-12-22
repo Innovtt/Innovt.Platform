@@ -1,29 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<TargetFramework>netstandard2.1</TargetFramework>
-		<PackageId>Innovt.Cloud.AWS.Lambda.Kinesis</PackageId>
-   <PackageVersion>7.0.39</PackageVersion>
-		<Authors>Michel Borges</Authors>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-		<Copyright>Innovt Tecnologia</Copyright>
-		<Description>AWS implementation for lambda and Kinesis events.</Description>
-    <LangVersion>latest</LangVersion>
-    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-	</PropertyGroup>
-	
-	<ItemGroup>
-		<PackageReference Include="Amazon.Lambda.KinesisEvents" Version="2.1.0" />
-		<PackageReference Include="System.Text.Json" Version="7.0.3" />
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.4">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-	</ItemGroup>
-	<ItemGroup>
-	  <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda\Innovt.Cloud.AWS.Lambda.csproj" />
-	  <ProjectReference Include="..\Innovt.Domain.Core\Innovt.Domain.Core.csproj" />
-	</ItemGroup>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <PackageId>Innovt.Cloud.AWS.Lambda.Kinesis</PackageId>
+        <PackageVersion>8.0.0</PackageVersion>
+        <Authors>Michel Borges</Authors>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Copyright>Innovt Tecnologia</Copyright>
+        <Description>AWS implementation for lambda and Kinesis events.</Description>
+        <LangVersion>latest</LangVersion>
+        <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Amazon.Lambda.KinesisEvents" Version="2.2.0"/>
+        <PackageReference Include="System.Text.Json" Version="8.0.0"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda\Innovt.Cloud.AWS.Lambda.csproj"/>
+        <ProjectReference Include="..\Innovt.Domain.Core\Innovt.Domain.Core.csproj"/>
+    </ItemGroup>
 
 </Project>

@@ -12,7 +12,6 @@ using Innovt.Core.Collections;
 namespace Innovt.Core.Exceptions;
 
 [Serializable]
-
 /// <summary>
 /// Represents an exception that is thrown when a business rule is violated or validation errors occur.
 /// </summary>
@@ -108,10 +107,12 @@ public class BusinessException : BaseException, ISerializable
     /// Gets or sets a code associated with the exception.
     /// </summary>
     public string Code { get; protected set; }
+
     /// <summary>
     /// Gets or sets a list of validation error messages.
     /// </summary>
     public IEnumerable<ErrorMessage> Errors { get; set; }
+
     /// <summary>
     /// Gets the detail information associated with the exception.
     /// </summary>
@@ -157,7 +158,7 @@ public class BusinessException : BaseException, ISerializable
                     select new
                     {
                         Code = e.Code,
-                        Message = e.Message,
+                        Message = e.Message
                     }
             }).ToList();
 

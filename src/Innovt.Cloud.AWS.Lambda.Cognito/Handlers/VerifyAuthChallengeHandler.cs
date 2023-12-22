@@ -1,6 +1,7 @@
 ﻿// Innovt Company
 // Author: Michel Borges
 // Project: Innovt.Cloud.AWS.Lambda.Cognito
+
 using Innovt.Cloud.AWS.Lambda.Cognito.Events.VerifyAuthChallenge;
 using Innovt.Core.CrossCutting.Log;
 

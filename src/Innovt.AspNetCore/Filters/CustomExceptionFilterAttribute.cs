@@ -8,8 +8,15 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Innovt.AspNetCore.Filters;
 
+/// <summary>
+/// An exception filter that handles exceptions of type <see cref="BusinessException"/>.
+/// </summary>
 public sealed class CustomExceptionFilterAttribute : ExceptionFilterAttribute
 {
+    /// <summary>
+    /// Overrides the <see cref="ExceptionFilterAttribute.OnException"/> method to handle <see cref="BusinessException"/>.
+    /// </summary>
+    /// <param name="context">The exception context.</param>
     public override void OnException(ExceptionContext context)
     {
         if (context is null || context.ExceptionHandled) return;

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Innovt.Domain.Core.Model;
+
 /// <summary>
 /// Represents a domain model containing a collection of value objects.
 /// </summary>
@@ -13,6 +14,7 @@ namespace Innovt.Domain.Core.Model;
 public class DomainModel<T> : ValueObject where T : ValueObject
 {
     private readonly List<T> models = new();
+
     /// <summary>
     /// Adds a value object to the domain model.
     /// </summary>
@@ -21,6 +23,7 @@ public class DomainModel<T> : ValueObject where T : ValueObject
     {
         models.Add(model);
     }
+
     /// <summary>
     /// Retrieves a list of all value objects in the domain model.
     /// </summary>
@@ -29,6 +32,7 @@ public class DomainModel<T> : ValueObject where T : ValueObject
     {
         return models;
     }
+
     /// <summary>
     /// Retrieves a value object by its primary key.
     /// </summary>

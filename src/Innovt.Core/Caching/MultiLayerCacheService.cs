@@ -8,6 +8,7 @@ using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Utilities;
 
 namespace Innovt.Core.Caching;
+
 /// <summary>
 /// Represents a multi-layer caching service that implements the <see cref="ICacheService"/> interface.
 /// </summary>
@@ -60,7 +61,6 @@ public class MultiLayerCacheService : ICacheService, IDisposable
         if (key.IsNullOrEmpty()) throw new ArgumentNullException(nameof(key));
 
         foreach (var cacheService in cacheServices)
-        {
             try
             {
                 var value = cacheService.GetValue<T>(key);
@@ -72,17 +72,16 @@ public class MultiLayerCacheService : ICacheService, IDisposable
             {
                 logger.Error(ex, $"Error getting the cache value for key {key} and provider {cacheService.GetType()}");
             }
-        }
 
         return default;
     }
+
     /// <inheritdoc />
     public void SetValue<T>(string key, T entity, TimeSpan expiration)
     {
         if (key.IsNullOrEmpty()) throw new ArgumentNullException(nameof(key));
 
         foreach (var cacheService in cacheServices)
-        {
             try
             {
                 cacheService.SetValue(key, entity, expiration);
@@ -91,15 +90,14 @@ public class MultiLayerCacheService : ICacheService, IDisposable
             {
                 logger.Error(ex, $"Error setting value for cache {cacheService.GetType()}");
             }
-        }
     }
+
     /// <inheritdoc />
     public void Remove(string key)
     {
         if (key.IsNullOrEmpty()) throw new ArgumentNullException(nameof(key));
 
         foreach (var cacheService in cacheServices)
-        {
             try
             {
                 cacheService.Remove(key);
@@ -108,8 +106,8 @@ public class MultiLayerCacheService : ICacheService, IDisposable
             {
                 logger.Error(ex, $"Error removing value for cache {cacheService.GetType()}");
             }
-        }
     }
+
     /// <inheritdoc />
     public void Dispose()
     {

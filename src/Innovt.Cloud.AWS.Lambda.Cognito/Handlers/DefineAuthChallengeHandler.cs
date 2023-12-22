@@ -12,7 +12,6 @@ namespace Innovt.Cloud.AWS.Lambda.Cognito.Handlers;
 /// </summary>
 public abstract class DefineAuthChallengeHandler : EventProcessor<DefineAuthChallengeEvent, DefineAuthChallengeEvent>
 {
-
     /// <summary>
     /// Initializes a new instance of the <see cref="DefineAuthChallengeHandler"/> class with a logger.
     /// </summary>
@@ -27,5 +26,4 @@ public abstract class DefineAuthChallengeHandler : EventProcessor<DefineAuthChal
     protected DefineAuthChallengeHandler()
     {
     }
-
 }

@@ -43,6 +43,7 @@ public class PagedCollection<T> : IPagedCollection<T>
         Page = page;
         PageSize = pageSize.GetValueOrDefault();
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="PagedCollection{T}"/> class with the specified collection of items.
     /// </summary>
@@ -63,16 +64,22 @@ public class PagedCollection<T> : IPagedCollection<T>
     /// Gets a value indicating whether the page number is a valid numeric representation.
     /// </summary>
     public bool IsNumberPagination => Page.IsNumber();
+
     /// <inheritdoc />
     public IEnumerable<T> Items { get; set; }
+
     /// <inheritdoc />
     public int TotalRecords { get; set; }
+
     /// <inheritdoc />
     public string Page { get; set; }
+
     /// <inheritdoc />
     public int PageSize { get; set; }
+
     /// <inheritdoc />
     public int PageCount => PageSize <= 0 ? 0 : TotalRecords / PageSize;
+
     /// <inheritdoc />
     public bool HasNext()
     {
@@ -84,6 +91,7 @@ public class PagedCollection<T> : IPagedCollection<T>
 
         return TotalRecords > actualPage;
     }
+
     /// <inheritdoc />
     public bool HasPrevious()
     {

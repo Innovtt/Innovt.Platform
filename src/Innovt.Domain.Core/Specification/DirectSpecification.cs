@@ -35,6 +35,7 @@ public sealed class DirectSpecification<TEntity>
     }
 
     #endregion
+
     /// <summary>
     /// Creates a direct specification for a given entity type based on provided matching criteria.
     /// </summary>

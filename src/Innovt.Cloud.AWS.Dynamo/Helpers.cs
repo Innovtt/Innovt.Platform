@@ -198,7 +198,6 @@ internal static class Helpers
         var result = new Dictionary<string, KeysAndAttributes>();
 
         foreach (var item in request.Items)
-        {
             result.Add(item.Key, new KeysAndAttributes()
             {
                 ConsistentRead = item.Value.ConsistentRead,
@@ -206,7 +205,6 @@ internal static class Helpers
                 ProjectionExpression = item.Value.ProjectionExpression,
                 Keys = item.Value.Keys.Select(AttributeConverter.ConvertToAttributeValues).ToList()
             });
-        }
 
         return result;
     }
@@ -304,14 +302,10 @@ internal static class Helpers
         var result2 = new List<T2>();
 
         foreach (var item in items)
-        {
             if (item.ContainsKey(EntitySplitter) && item["EntityType"].S == splitBy)
-            {
                 result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item));
-            }
             else
                 result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item));
-        }
 
         return (result1, result2);
     }
@@ -438,6 +432,17 @@ internal static class Helpers
         return (result1, result2, result3, result4);
     }
 
+    /// <summary>
+    /// Converts a list of dictionaries containing attribute values into five separate lists of specified types, based on the "EntityType" attribute value.
+    /// </summary>
+    /// <typeparam name="T1">Type for the first entity.</typeparam>
+    /// <typeparam name="T2">Type for the second entity.</typeparam>
+    /// <typeparam name="T3">Type for the third entity.</typeparam>
+    /// <typeparam name="T4">Type for the fourth entity.</typeparam>
+    /// <typeparam name="T5">Type for the fifth entity.</typeparam>
+    /// <param name="items">List of dictionaries containing attribute values.</param>
+    /// <param name="splitBy">An array of strings used to split the entities based on the "EntityType" attribute value.</param>
+    /// <returns>A tuple containing five lists of specified entity types.</returns>
     internal static (IList<T1> first, IList<T2> seccond, IList<T3> third, IList<T4> fourth, IList<T5> fifth)
         ConvertAttributesToType<T1, T2, T3, T4, T5>(
             IList<Dictionary<string, AttributeValue>> items, string[] splitBy)
@@ -486,6 +491,11 @@ internal static class Helpers
         return (result1, result2, result3, result4, result5);
     }
 
+    /// <summary>
+    /// Creates a pagination token from a dictionary of attribute values.
+    /// </summary>
+    /// <param name="lastEvaluatedKey">Dictionary of attribute values representing the last evaluated key.</param>
+    /// <returns>The pagination token as a string.</returns>
     internal static string CreatePaginationToken(Dictionary<string, AttributeValue> lastEvaluatedKey)
     {
         if (lastEvaluatedKey.IsNullOrEmpty())
@@ -503,6 +513,11 @@ internal static class Helpers
         return Convert.ToBase64String(stringBuilder.ToString().Zip()).UrlEncode();
     }
 
+    /// <summary>
+    /// Converts a pagination token string into a dictionary of attribute values.
+    /// </summary>
+    /// <param name="paginationToken">Pagination token string to convert.</param>
+    /// <returns>A dictionary of attribute values representing the pagination token.</returns>
     private static Dictionary<string, AttributeValue> PaginationTokenToDictionary(string paginationToken)
     {
         if (paginationToken is null)
@@ -538,6 +553,11 @@ internal static class Helpers
         return result;
     }
 
+    /// <summary>
+    /// Creates a Put operation for a transactional write item.
+    /// </summary>
+    /// <param name="transactionWriteItem">Transactional write item information.</param>
+    /// <returns>A Put operation if the operation type is Put; otherwise, null.</returns>
     private static Put CreatePutTransactItem(TransactionWriteItem transactionWriteItem)
     {
         if (transactionWriteItem.OperationType != TransactionWriteOperationType.Put)
@@ -553,7 +573,11 @@ internal static class Helpers
         };
     }
 
-
+    /// <summary>
+    /// Creates a ConditionCheck operation for a transactional write item.
+    /// </summary>
+    /// <param name="transactionWriteItem">Transactional write item information.</param>
+    /// <returns>A ConditionCheck operation if the operation type is Check; otherwise, null.</returns>
     private static ConditionCheck CreateConditionCheckTransactItem(TransactionWriteItem transactionWriteItem)
     {
         if (transactionWriteItem.OperationType != TransactionWriteOperationType.Check)
@@ -569,6 +593,11 @@ internal static class Helpers
         };
     }
 
+    /// <summary>
+    /// Creates a Delete operation for a transactional write item.
+    /// </summary>
+    /// <param name="transactionWriteItem">Transactional write item information.</param>
+    /// <returns>A Delete operation if the operation type is Delete; otherwise, null.</returns>
     private static Delete CreateDeleteTransactItem(TransactionWriteItem transactionWriteItem)
     {
         if (transactionWriteItem.OperationType != TransactionWriteOperationType.Delete)
@@ -584,6 +613,11 @@ internal static class Helpers
         };
     }
 
+    /// <summary>
+    /// Creates an Update operation for a transactional write item.
+    /// </summary>
+    /// <param name="transactionWriteItem">Transactional write item information.</param>
+    /// <returns>An Update operation if the operation type is Update; otherwise, null.</returns>
     private static Update CreateUpdateTransactItem(TransactionWriteItem transactionWriteItem)
     {
         if (transactionWriteItem.OperationType != TransactionWriteOperationType.Update)
@@ -600,6 +634,11 @@ internal static class Helpers
         };
     }
 
+    /// <summary>
+    /// Creates a TransactWriteItem based on the transactional write item information.
+    /// </summary>
+    /// <param name="transactionWriteItem">Transactional write item information.</param>
+    /// <returns>A TransactWriteItem based on the provided transaction write item.</returns>
     internal static TransactWriteItem CreateTransactionWriteItem(TransactionWriteItem transactionWriteItem)
     {
         if (transactionWriteItem is null) throw new ArgumentNullException(nameof(transactionWriteItem));
@@ -613,7 +652,11 @@ internal static class Helpers
         };
     }
 
-
+    /// <summary>
+    /// Creates a TransactGetItem based on the transactional write item information.
+    /// </summary>
+    /// <param name="transactionWriteItem">Transactional write item information.</param>
+    /// <returns>A TransactGetItem based on the provided transaction write item.</returns>
     internal static TransactGetItem CreateTransactionGetItem(TransactionWriteItem transactionWriteItem)
     {
         if (transactionWriteItem is null) throw new ArgumentNullException(nameof(transactionWriteItem));

@@ -7,6 +7,7 @@ using Innovt.Data.Model;
 using Microsoft.Extensions.Configuration;
 
 namespace Innovt.Data.DataSources;
+
 /// <summary>
 /// Represents a data source reader that inherits from <see cref="DataSourceBase"/> and implements <see cref="IDataSourceReader"/>.
 /// </summary>
@@ -22,6 +23,7 @@ public class DataSourceReader : DataSourceBase, IDataSourceReader
         Provider provider = Provider.MsSql) : base(name, connectionString, provider)
     {
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DataSourceReader"/> class with configuration settings.
     /// </summary>
@@ -33,6 +35,7 @@ public class DataSourceReader : DataSourceBase, IDataSourceReader
     {
         Name = nameof(DataSourceReader);
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DataSourceReader"/> class with configuration settings and a custom name.
     /// </summary>

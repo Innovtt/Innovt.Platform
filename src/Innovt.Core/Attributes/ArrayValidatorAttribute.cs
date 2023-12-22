@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace Innovt.Core.Attributes;
+
 /// <summary>
 /// Custom validation attribute for arrays.
 /// </summary>

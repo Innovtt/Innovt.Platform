@@ -3,6 +3,7 @@
 // Project: Innovt.Domain.Core
 
 namespace Innovt.Domain.Core.Model;
+
 /// <summary>
 /// Represents an aggregate root in the domain model with a specific type for the identifier.
 /// </summary>
@@ -14,6 +15,7 @@ public interface IAggregateRoot<T>
     /// </summary>
     public T Id { get; set; }
 }
+
 /// <summary>
 /// Represents an aggregate root in the domain model with an integer identifier.
 /// </summary>

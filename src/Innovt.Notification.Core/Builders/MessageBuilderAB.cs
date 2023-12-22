@@ -8,15 +8,28 @@ using Innovt.Notification.Core.Template;
 
 namespace Innovt.Notification.Core.Builders;
 
+/// <summary>
+/// Abstract base class for message builders.
+/// </summary>
 public abstract class MessageBuilderAB
 {
     private readonly ITemplateParser parser;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MessageBuilderAB"/> class.
+    /// </summary>
+    /// <param name="parser">The template parser.</param>
     protected MessageBuilderAB(ITemplateParser parser)
     {
         this.parser = parser ?? throw new ArgumentNullException(nameof(parser));
     }
 
+    /// <summary>
+    /// Builds a notification message based on the provided notification template and request.
+    /// </summary>
+    /// <param name="template">The notification template.</param>
+    /// <param name="request">The notification request.</param>
+    /// <returns>The built notification message.</returns>
     public virtual NotificationMessage Build(NotificationTemplate template, NotificationRequest request)
     {
         if (template == null) throw new ArgumentNullException(nameof(template));
@@ -40,6 +53,9 @@ public abstract class MessageBuilderAB
         return message;
     }
 
+    /// <summary>
+    /// Parses the notification message content using the provided payload.
+    /// </summary>
     protected virtual void ParseMessage(NotificationMessage message, object payLoad)
     {
         if (message.Body == null && message.To == null && message.Subject == null)

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Innovt.Data.EFCore.Maps;
+
 /// <summary>
 /// Configuration for mapping the Address entity to the database using Entity Framework Core.
 /// </summary>
@@ -16,6 +17,7 @@ public class AddressMap : IEntityTypeConfiguration<Address>
     private readonly bool ignoreCity;
     private readonly bool ignoreCoordinate;
     private readonly bool ignoreType;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="AddressMap"/> class.
     /// </summary>

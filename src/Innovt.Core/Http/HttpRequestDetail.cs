@@ -21,30 +21,37 @@ public class HttpRequestDetail
     {
         Id = Guid.NewGuid();
     }
+
     /// <summary>
     /// Gets or sets the unique identifier for the HTTP request detail.
     /// </summary>
     public Guid Id { get; set; }
+
     /// <summary>
     /// Gets or sets the URL of the HTTP request.
     /// </summary>
     public string Url { get; set; }
+
     /// <summary>
     /// Gets or sets the HTTP method used in the request (e.g., GET, POST, PUT).
     /// </summary>
     public string Method { get; set; }
+
     /// <summary>
     /// Gets or sets the collection of headers associated with the HTTP request.
     /// </summary>
     public NameValueCollection Header { get; set; }
+
     /// <summary>
     /// Gets or sets the raw content of the HTTP request.
     /// </summary>
     public string RawRequest { get; set; }
+
     /// <summary>
     /// Gets or sets the raw content of the HTTP response.
     /// </summary>
     public string RawResponse { get; set; }
+
     /// <summary>
     /// Gets or sets the HTTP status code of the response.
     /// </summary>

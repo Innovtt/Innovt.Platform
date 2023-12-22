@@ -45,6 +45,7 @@ public abstract class DataSourceBase : IDataSource
         Provider = provider;
         SetConnectionString(configuration, connectionStringName);
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DataSourceBase"/> class with configuration settings and a custom name.
     /// </summary>
@@ -60,14 +61,17 @@ public abstract class DataSourceBase : IDataSource
 
         SetConnectionString(configuration, connectionStringName);
     }
+
     /// <summary>
     /// Gets or sets the name of the data source.
     /// </summary>
     public string Name { get; set; }
+
     /// <summary>
     /// Gets the provider for the data source.
     /// </summary>
     public Provider Provider { get; }
+
     /// <summary>
     /// Retrieves the connection string for the data source.
     /// </summary>
@@ -76,6 +80,7 @@ public abstract class DataSourceBase : IDataSource
     {
         return connectionString;
     }
+
     /// <summary>
     /// Sets the connection string for the data source based on the provided configuration and connection string name.
     /// </summary>

@@ -3,6 +3,7 @@
 // Project: Innovt.Domain.Core
 
 namespace Innovt.Domain.Core.Model;
+
 /// <summary>
 /// Represents a simple value object with a generic identifier type.
 /// </summary>
@@ -15,6 +16,7 @@ public class SimpleVo<T> : ValueObject<T> where T : struct
     public SimpleVo()
     {
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="SimpleVo{T}"/> class with the specified identifier and description.
     /// </summary>
@@ -25,6 +27,7 @@ public class SimpleVo<T> : ValueObject<T> where T : struct
         Id = id;
         Description = description;
     }
+
     /// <summary>
     /// Gets or sets the description of the value object.
     /// </summary>

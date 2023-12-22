@@ -6,6 +6,7 @@ using System;
 using Innovt.Domain.Core.Model;
 
 namespace Innovt.Domain.Security;
+
 /// <summary>
 /// Represents a permission entity.
 /// </summary>

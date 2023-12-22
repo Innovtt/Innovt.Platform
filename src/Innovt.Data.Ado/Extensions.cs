@@ -8,6 +8,7 @@ using Innovt.Data.DataSources;
 using Innovt.Data.Model;
 
 namespace Innovt.Data.Ado;
+
 /// <summary>
 /// Provides extension methods for SQL query manipulation.
 /// </summary>
@@ -44,6 +45,7 @@ internal static class Extensions
                 return $"{rawSql} OFFSET {recordStart} ROWS FETCH NEXT @PageSize ROWS ONLY";
         }
     }
+
     /// <summary>
     /// Adds a NOLOCK hint to the raw SQL query based on the specified data source.
     /// </summary>
@@ -58,6 +60,7 @@ internal static class Extensions
             _ => rawSql + " WITH (NOLOCK) "
         };
     }
+
     /// <summary>
     /// Adds a WHERE clause to the raw SQL query based on the specified WHERE clause string.
     /// </summary>

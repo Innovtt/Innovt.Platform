@@ -64,12 +64,12 @@ public abstract class TriggerEvent<TRequest, TResponse>
     /// </summary>
     [DataMember(Name = "request")]
     [JsonPropertyName("request")]
-    public TRequest Request { get; set; } = new TRequest();
+    public TRequest Request { get; set; } = new();
 
     /// <summary>
     /// Gets or sets the response associated with the event.
     /// </summary>
     [DataMember(Name = "response")]
     [JsonPropertyName("response")]
-    public TResponse Response { get; set; } = new TResponse();
+    public TResponse Response { get; set; } = new();
 }

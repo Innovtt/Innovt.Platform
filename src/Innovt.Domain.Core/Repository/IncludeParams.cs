@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Innovt.Domain.Core.Repository;
+
 /// <summary>
 /// Represents a class for managing entity inclusion paths for Entity Framework queries.
 /// </summary>
@@ -18,6 +19,7 @@ public class Include
     {
         Includes = new List<string>();
     }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="Include"/> class with specified include paths.
     /// </summary>
@@ -26,10 +28,12 @@ public class Include
     {
         Includes.AddRange(includes);
     }
+
     /// <summary>
     /// Gets the list of include paths.
     /// </summary>
     public List<string> Includes { get; }
+
     /// <summary>
     /// Checks if the include list is empty.
     /// </summary>
@@ -38,6 +42,7 @@ public class Include
     {
         return Includes == null || !Includes.Any();
     }
+
     /// <summary>
     /// Adds an include path.
     /// </summary>
@@ -48,6 +53,7 @@ public class Include
         Includes.Add(param);
         return this;
     }
+
     /// <summary>
     /// Adds multiple include paths.
     /// </summary>
@@ -58,6 +64,7 @@ public class Include
         Includes.AddRange(parameters);
         return this;
     }
+
     /// <summary>
     /// Creates a new instance of <see cref="Include"/> with specified include paths.
     /// </summary>

@@ -35,4 +35,3 @@ public class ChallengeResultItem
     [JsonPropertyName("challengeMetadata")]
     public string ChallengeMetadata { get; set; }
 }
-

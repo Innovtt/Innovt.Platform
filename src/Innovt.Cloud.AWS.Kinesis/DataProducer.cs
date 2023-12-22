@@ -20,30 +20,61 @@ using Innovt.Domain.Core.Streams;
 
 namespace Innovt.Cloud.AWS.Kinesis;
 
+/// <summary>
+/// Represents a data producer for publishing data to an Amazon Kinesis stream.
+/// </summary>
+/// <typeparam name="T">The type of data streams to be published.</typeparam>
 public class DataProducer<T> : AwsBaseService where T : class, IDataStream
 {
     protected static readonly ActivitySource ActivityDataProducer = new("Innovt.Cloud.AWS.KinesisDataProducer");
     private AmazonKinesisClient kinesisClient;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DataProducer{T}"/> class with the specified bus name,
+    /// logger, and AWS configuration.
+    /// </summary>
+    /// <param name="busName">The name of the Kinesis data stream (bus) to which data will be published.</param>
+    /// <param name="logger">The logger for logging informational and error messages.</param>
+    /// <param name="configuration">The AWS configuration used to create AWS service clients.</param>
     protected DataProducer(string busName, ILogger logger, IAwsConfiguration configuration) : base(logger,
         configuration)
     {
         BusName = busName ?? throw new ArgumentNullException(nameof(busName));
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DataProducer{T}"/> class with the specified bus name,
+    /// logger, AWS configuration, and AWS region.
+    /// </summary>
+    /// <param name="busName">The name of the Kinesis data stream (bus) to which data will be published.</param>
+    /// <param name="logger">The logger for logging informational and error messages.</param>
+    /// <param name="configuration">The AWS configuration used to create AWS service clients.</param>
+    /// <param name="region">The AWS region in which the Kinesis data stream is located.</param>
     protected DataProducer(string busName, ILogger logger, IAwsConfiguration configuration,
         string region) : base(logger, configuration, region)
     {
         BusName = busName ?? throw new ArgumentNullException(nameof(busName));
     }
 
+    /// <summary>
+    /// Gets the name of the Kinesis data stream (bus) to which data will be published.
+    /// </summary>
     private string BusName { get; }
 
+    /// <summary>
+    /// Gets the Amazon Kinesis client for interacting with Kinesis streams.
+    /// </summary>
     private AmazonKinesisClient KinesisClient
     {
         get { return kinesisClient ??= CreateService<AmazonKinesisClient>(); }
     }
 
+    /// <summary>
+    /// Creates a list of <see cref="PutRecordsRequestEntry"/> from a collection of data streams.
+    /// </summary>
+    /// <param name="dataStreams">The collection of data streams to be converted.</param>
+    /// <param name="activity">The activity used for tracing purposes.</param>
+    /// <returns>A list of <see cref="PutRecordsRequestEntry"/> representing the data streams.</returns>
     private static List<PutRecordsRequestEntry> CreatePutRecords(IList<T> dataStreams, Activity activity)
     {
         if (dataStreams == null)
@@ -53,10 +84,7 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
 
         foreach (var data in dataStreams)
         {
-            if (data.TraceId.IsNullOrEmpty() && activity != null)
-            {
-                data.TraceId = activity.TraceId.ToString();
-            }
+            if (data.TraceId.IsNullOrEmpty() && activity != null) data.TraceId = activity.TraceId.ToString();
 
             data.PublishedAt = DateTimeOffset.UtcNow;
 
@@ -75,6 +103,11 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
         return request;
     }
 
+    /// <summary>
+    /// Publishes a collection of data streams to the Kinesis data stream asynchronously.
+    /// </summary>
+    /// <param name="dataList">The collection of data streams to be published.</param>
+    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     private async Task InternalPublish(IEnumerable<T> dataList, CancellationToken cancellationToken = default)
     {
         Logger.Info("Kinesis Publisher Started");
@@ -112,29 +145,39 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
             return;
         }
 
-        foreach (var data in dataStreams)
-        {
-            data.PublishedAt = null;
-        }
+        foreach (var data in dataStreams) data.PublishedAt = null;
 
         var errorRecords = results.Records.Where(r => r.ErrorCode != null);
 
         foreach (var error in errorRecords)
-        {
             Logger.Error($"Error publishing message. Error: {error.ErrorCode}, ErrorMessage: {error.ErrorMessage}");
-        }
     }
 
+    /// <summary>
+    /// Publishes a single data stream to the Kinesis data stream asynchronously.
+    /// </summary>
+    /// <param name="data">The data stream to be published.</param>
+    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
+    /// <returns>Task representing the asynchronous publish operation.</returns>
     public async Task Publish(T data, CancellationToken cancellationToken = default)
     {
         await InternalPublish(new List<T> { data }, cancellationToken).ConfigureAwait(false);
     }
 
+    /// <summary>
+    /// Publishes a collection of data streams to the Kinesis data stream asynchronously.
+    /// </summary>
+    /// <param name="events">The collection of data streams to be published.</param>
+    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
+    /// <returns>Task representing the asynchronous publish operation.</returns>
     public async Task Publish(IEnumerable<T> events, CancellationToken cancellationToken = default)
     {
         await InternalPublish(events, cancellationToken).ConfigureAwait(false);
     }
 
+    /// <summary>
+    /// Disposes the Amazon Kinesis client when the service is no longer needed.
+    /// </summary>
     protected override void DisposeServices()
     {
         kinesisClient?.Dispose();

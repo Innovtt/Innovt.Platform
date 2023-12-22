@@ -8,12 +8,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Innovt.Data.EFCore.Maps;
+
 /// <summary>
 /// Configuration for mapping the Document entity to the database using Entity Framework Core.
 /// </summary>
 public class DocumentMap : IEntityTypeConfiguration<Document>
 {
     private readonly bool ignoreDocumentType;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DocumentMap"/> class.
     /// </summary>
@@ -22,6 +24,7 @@ public class DocumentMap : IEntityTypeConfiguration<Document>
     {
         this.ignoreDocumentType = ignoreDocumentType;
     }
+
     /// <summary>
     /// Configures the mapping for the Document entity.
     /// </summary>

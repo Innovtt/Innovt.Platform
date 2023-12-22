@@ -51,6 +51,7 @@ public static class PasswordHelper
     {
         return Convert.ToBase64String(InternalRandomSalt());
     }
+
     /// <summary>
     /// Hashes a plain text password using the provided salt.
     /// </summary>

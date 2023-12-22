@@ -7,7 +7,8 @@ namespace Innovt.Core.Serialization;
 /// <summary>
 /// Represents an interface for serializing and deserializing objects.
 /// </summary>
-public interface ISerializer {
+public interface ISerializer
+{
     /// <summary>
     /// Deserializes a serialized object of type <typeparamref name="T"/>.
     /// </summary>

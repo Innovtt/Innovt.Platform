@@ -8,7 +8,6 @@ using System.Runtime.Serialization;
 namespace Innovt.Core.Exceptions;
 
 [Serializable]
-
 /// <summary>
 /// Represents a base exception class that can be used as a foundation for custom exceptions.
 /// </summary>

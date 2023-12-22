@@ -57,16 +57,13 @@ public static class Extensions
         var result = obj.Validate(context)?.ToList();
 
         if (result?.Any() == true)
-        {
             foreach (var item in result)
-            {
                 if (validationResults.All(r => r.ErrorMessage != item.ErrorMessage))
                     validationResults.Add(item);
-            }
-        }
 
         return validationResults.Distinct().ToList();
     }
+
     /// <summary>
     /// Checks whether an object implementing the <see cref="IValidatableObject"/> interface is valid.
     /// </summary>
@@ -82,6 +79,7 @@ public static class Extensions
 
         return !result.Any();
     }
+
     /// <summary>
     /// Ensures that an object implementing the <see cref="IValidatableObject"/> interface is valid; otherwise, throws a <see cref="BusinessException"/> with validation errors.
     /// </summary>
@@ -100,6 +98,7 @@ public static class Extensions
 
         throw new BusinessException(errors.ToList());
     }
+
     /// <summary>
     /// Ensures that a command object is valid by treating it as an <see cref="IValidatableObject"/>; otherwise, throws a <see cref="BusinessException"/> with validation errors.
     /// </summary>
@@ -111,6 +110,7 @@ public static class Extensions
 
         EnsureIsValid((IValidatableObject)command, context);
     }
+
     /// <summary>
     /// Ensures that a command object is valid by treating it as an <see cref="IValidatableObject"/>; otherwise, throws a <see cref="BusinessException"/> with validation errors.
     /// </summary>
