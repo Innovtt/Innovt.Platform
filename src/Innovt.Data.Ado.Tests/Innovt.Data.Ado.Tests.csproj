@@ -7,8 +7,8 @@
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="NSubstitute" Version="5.1.0"/>
-        <PackageReference Include="nunit" Version="3.14.0" />
+        <PackageReference Include="NSubstitute" Version="5.1.0" />
+        <PackageReference Include="nunit" Version="4.0.1" />
         <PackageReference Include="NUnit3TestAdapter" Version="4.5.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -16,7 +16,7 @@
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\Innovt.Data.Ado\Innovt.Data.Ado.csproj"/>
+        <ProjectReference Include="..\Innovt.Data.Ado\Innovt.Data.Ado.csproj" />
     </ItemGroup>
 
     <ItemGroup>

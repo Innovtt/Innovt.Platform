@@ -136,7 +136,7 @@ public sealed class Container : IContainer
     /// <returns>A new service scope.</returns>
     public IServiceScope CreateScope()
     {
-        return container.CreateScope();
+        return container.ServiceProvider?.CreateScope();
     }
 
     /// <summary>

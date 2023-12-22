@@ -15,7 +15,7 @@
 
     <ItemGroup>
         <PackageReference Include="Amazon.Lambda.KinesisEvents" Version="2.2.0" />
-        <PackageReference Include="System.Text.Json" Version="7.0.3"/>
+        <PackageReference Include="System.Text.Json" Version="7.0.4"/>
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.4">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -24,6 +24,6 @@
     <ItemGroup>
         <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda\Innovt.Cloud.AWS.Lambda.csproj"/>
         <ProjectReference Include="..\Innovt.Domain.Core\Innovt.Domain.Core.csproj"/>
-    </ItemGroup>
+    </ItemGroup> 
 
 </Project>

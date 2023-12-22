@@ -13,8 +13,8 @@
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.300.19" />
-        <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.7.300.19" />
+        <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.300.24" />
+        <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.7.300.24" />
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.4">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
