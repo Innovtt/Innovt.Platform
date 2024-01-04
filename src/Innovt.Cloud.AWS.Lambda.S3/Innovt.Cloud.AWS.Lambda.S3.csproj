@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
         <PackageId>Innovt.Cloud.AWS.Lambda.S3</PackageId>
-        <PackageVersion>7.0.59</PackageVersion>
+        <PackageVersion>7.0.60</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
