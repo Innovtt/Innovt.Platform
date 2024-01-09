@@ -2,6 +2,7 @@
 // Author: Michel Borges
 // Project: Innovt.AspNetCore
 
+using System.Text.Json;
 using Innovt.AspNetCore.Filters;
 using Innovt.AspNetCore.Infrastructure;
 using Innovt.AspNetCore.Model;
@@ -84,6 +85,10 @@ public abstract class ApiStartupBase
     /// </summary>
     protected DefaultApiLocalization Localization { get; set; }
 
+    /// <summary>
+    /// If true will set default Json Options(JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase) etc
+    /// </summary>
+    protected bool SetDefaultJsonOptions { get; set; } = true;
     /// <summary>
     ///     Gets the configuration for the application.
     /// </summary>
@@ -194,6 +199,20 @@ public abstract class ApiStartupBase
     }
 
     /// <summary>
+    /// Apply the default Json Options if the parameter SetDefaultJsonOptions is true
+    /// </summary>
+    /// <param name="mvcBuilder"></param>
+    private void ApplyDefaultJsonOptions(IMvcBuilder mvcBuilder)
+    {
+        if(!SetDefaultJsonOptions)
+            return;
+            
+        mvcBuilder.AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+        });
+    }
+    /// <summary>
     ///     Adds core services needed for API configuration.
     /// </summary>
     /// <param name="services">The service collection to add core services to.</param>
@@ -209,6 +228,8 @@ public abstract class ApiStartupBase
         {
             op.Filters.Add(provider.GetService<ApiExceptionFilter>() ?? throw new InvalidOperationException());
         });
+
+        ApplyDefaultJsonOptions(mvcBuilder);
 
         AddLocalization(mvcBuilder, services);
     }

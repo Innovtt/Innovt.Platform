@@ -103,14 +103,15 @@ public static class MvcExtensions
 
         var audienceSection = configuration.GetSection($"{configSection}:Audience");
         var authoritySection = configuration.GetSection($"{configSection}:Authority");
+        var audiences = configuration.GetSection($"{configSection}:ValidAudiences").Get<string[]>();
 
         if (audienceSection.Value == null)
             throw new CriticalException($"The Config Section '{configSection}:Audience' not defined.");
         if (authoritySection.Value == null)
             throw new CriticalException("The Config Section '{configSection}:Authority' not defined.");
 
-        services.AddBearerAuthorization(audienceSection.Value, authoritySection.Value, validateAudience, validateIssuer,
-            validateLifetime, validateIssuerSigningKey);
+        services.AddBearerAuthorization(audienceSection.Value, authoritySection.Value, validateAudience: validateAudience, validateIssuer,
+            validateLifetime, validateIssuerSigningKey, validAudiences:audiences);
     }
 
     // ReSharper disable once MemberCanBePrivate.Global
@@ -124,9 +125,10 @@ public static class MvcExtensions
     /// <param name="validateIssuer">Whether to validate issuer.</param>
     /// <param name="validateLifetime">Whether to validate lifetime.</param>
     /// <param name="validateIssuerSigningKey">Whether to validate issuer signing key.</param>
+    /// <param name="validAudiences">The valid token audiences if you want to validate it.</param>
     public static void AddBearerAuthorization(this IServiceCollection services, string audienceId, string authority,
         bool validateAudience = true,
-        bool validateIssuer = true, bool validateLifetime = true, bool validateIssuerSigningKey = true)
+        bool validateIssuer = true, bool validateLifetime = true, bool validateIssuerSigningKey = true, string[]? validAudiences = null)
     {
         services.AddAuthorization(options =>
         {
@@ -151,6 +153,7 @@ public static class MvcExtensions
                 {
                     ValidateIssuerSigningKey = validateIssuerSigningKey,
                     ValidateAudience = validateAudience,
+                    ValidAudiences = validAudiences,
                     ValidateIssuer = validateIssuer,
                     ValidateLifetime = validateLifetime
                 };

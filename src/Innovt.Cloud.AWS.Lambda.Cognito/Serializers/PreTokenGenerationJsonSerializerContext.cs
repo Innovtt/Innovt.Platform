@@ -13,6 +13,4 @@ namespace Innovt.Cloud.AWS.Lambda.Cognito.Serializers;
 [JsonSerializable(typeof(PreTokenGenerationEvent))]
 [JsonSerializable(typeof(PreTokenGenerationRequest))]
 [JsonSerializable(typeof(PreTokenGenerationResponse))]
-public partial class PreTokenGenerationJsonSerializerContext : JsonSerializerContext
-{
-}
+public partial class PreTokenGenerationJsonSerializerContext : JsonSerializerContext;

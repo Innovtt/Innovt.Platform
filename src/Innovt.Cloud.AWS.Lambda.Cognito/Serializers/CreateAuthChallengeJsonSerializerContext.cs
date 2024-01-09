@@ -13,6 +13,4 @@ namespace Innovt.Cloud.AWS.Lambda.Cognito.Serializers;
 [JsonSerializable(typeof(CreateAuthChallengeEvent))]
 [JsonSerializable(typeof(CreateAuthChallengeRequest))]
 [JsonSerializable(typeof(CreateAuthChallengeResponse))]
-public partial class CreateAuthChallengeJsonSerializerContext : JsonSerializerContext
-{
-}
+public partial class CreateAuthChallengeJsonSerializerContext : JsonSerializerContext;

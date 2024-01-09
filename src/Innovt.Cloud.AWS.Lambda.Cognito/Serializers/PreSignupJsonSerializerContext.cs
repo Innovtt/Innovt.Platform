@@ -13,6 +13,4 @@ namespace Innovt.Cloud.AWS.Lambda.Cognito.Serializers;
 [JsonSerializable(typeof(PreSignupEvent))]
 [JsonSerializable(typeof(PreSignupRequest))]
 [JsonSerializable(typeof(PreSignupResponse))]
-public partial class PreSignupJsonSerializerContext : JsonSerializerContext
-{
-}
+public partial class PreSignupJsonSerializerContext : JsonSerializerContext;

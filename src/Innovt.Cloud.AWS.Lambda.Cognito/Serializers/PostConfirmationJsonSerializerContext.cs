@@ -13,6 +13,4 @@ namespace Innovt.Cloud.AWS.Lambda.Cognito.Serializers;
 [JsonSerializable(typeof(PostConfirmationEvent))]
 [JsonSerializable(typeof(PostConfirmationRequest))]
 [JsonSerializable(typeof(PostConfirmationResponse))]
-public partial class PostConfirmationJsonSerializerContext : JsonSerializerContext
-{
-}
+public partial class PostConfirmationJsonSerializerContext : JsonSerializerContext;
