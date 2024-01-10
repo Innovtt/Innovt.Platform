@@ -6,13 +6,15 @@ using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.Dynamo.Mapping;
 
+/// <summary>
+/// A base class for all data models.
+/// </summary>
 public  class BaseDataModel : ITableMessage
 {   
     /// <summary>
     ///     Gets or sets the unique identifier.
     /// </summary>
     public string Id { get; set; }
-    
     /// <summary>
     ///     Gets or sets the partition key for DynamoDB.
     /// </summary>

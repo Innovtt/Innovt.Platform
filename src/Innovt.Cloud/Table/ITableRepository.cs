@@ -64,6 +64,15 @@ public interface ITableRepository
     Task AddAsync<T>(IList<T> messages, CancellationToken cancellationToken = default) where T : ITableMessage;
 
     /// <summary>
+    /// If you want to add a list of objects that are not the same type.
+    /// </summary>
+    /// <param name="messages"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task AddAsync(IList<object> messages, CancellationToken cancellationToken = default);
+
+
+    /// <summary>
     ///     Asynchronously queries and retrieves the first item of type T by its identifier.
     /// </summary>
     /// <typeparam name="T">The type of item to retrieve.</typeparam>
