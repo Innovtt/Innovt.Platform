@@ -6,13 +6,13 @@ using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.Dynamo.Mapping;
 
-/// <summary>
-///     Base abstract class representing a data model that can be mapped to/from a domain model.
-/// </summary>
-/// <typeparam name="TDataModel">The type of the data model.</typeparam>
-/// <typeparam name="TDomain">The type of the domain model.</typeparam>
-public abstract class BaseDataModel<TDataModel, TDomain> : ITableMessage where TDataModel : class where TDomain : class
-{
+public  class BaseDataModel : ITableMessage
+{   
+    /// <summary>
+    ///     Gets or sets the unique identifier.
+    /// </summary>
+    public string Id { get; set; }
+    
     /// <summary>
     ///     Gets or sets the partition key for DynamoDB.
     /// </summary>
@@ -24,7 +24,16 @@ public abstract class BaseDataModel<TDataModel, TDomain> : ITableMessage where T
     /// </summary>
     [DynamoDBRangeKey("SK")]
     public string Sk { get; set; }
+}
 
+
+/// <summary>
+///     Base abstract class representing a data model that can be mapped to/from a domain model.
+/// </summary>
+/// <typeparam name="TDataModel">The type of the data model.</typeparam>
+/// <typeparam name="TDomain">The type of the domain model.</typeparam>
+public abstract class BaseDataModel<TDataModel, TDomain> : BaseDataModel where TDataModel : class where TDomain : class
+{
     /// <summary>
     ///     Gets or sets the entity type.
     /// </summary>
@@ -34,11 +43,6 @@ public abstract class BaseDataModel<TDataModel, TDomain> : ITableMessage where T
         get => GetEntityType(); // We have to keep it because of the DyanmoDB SDK
         set => _ = value;
     }
-
-    /// <summary>
-    ///     Gets or sets the unique identifier.
-    /// </summary>
-    public string Id { get; set; }
 
     /// <summary>
     ///     Protected abstract method to get the entity type.

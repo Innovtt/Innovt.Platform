@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
         <PackageId>Innovt.Data.EFCore.PostgreSQL</PackageId>
-        <PackageVersion>7.0.62</PackageVersion>
+        <PackageVersion>7.0.63</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
