@@ -88,7 +88,7 @@ public abstract class ApiStartupBase
     /// <summary>
     /// If true will set default Json Options(JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase) etc
     /// </summary>
-    protected bool SetDefaultJsonOptions { get; set; } = true;
+    public bool SetDefaultJsonOptions { get; set; }
     /// <summary>
     ///     Gets the configuration for the application.
     /// </summary>
@@ -103,20 +103,14 @@ public abstract class ApiStartupBase
     ///     Checks if Swagger documentation is enabled.
     /// </summary>
     /// <returns>True if Swagger documentation is enabled; otherwise, false.</returns>
-    private bool IsSwaggerEnabled()
-    {
-        return Documentation is not null;
-    }
+    private bool IsSwaggerEnabled() => Documentation is not null;
 
     /// <summary>
     ///     Checks if the application is running in a development environment.
     /// </summary>
     /// <returns>True if the application is in development; otherwise, false.</returns>
-    protected bool IsDevelopmentEnvironment()
-    {
-        return Environment.IsDevelopment();
-    }
-
+    protected bool IsDevelopmentEnvironment() => Environment.IsDevelopment();
+    
     /// <summary>
     ///     Adds Swagger generation to the specified services.
     /// </summary>
@@ -203,13 +197,11 @@ public abstract class ApiStartupBase
     /// </summary>
     /// <param name="mvcBuilder"></param>
     private void ApplyDefaultJsonOptions(IMvcBuilder mvcBuilder)
-    {
-        if(!SetDefaultJsonOptions)
-            return;
-            
+    {      
         mvcBuilder.AddJsonOptions(options =>
         {
-            options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+            options.JsonSerializerOptions.PropertyNamingPolicy =
+                SetDefaultJsonOptions ? JsonNamingPolicy.CamelCase : null;
         });
     }
     /// <summary>

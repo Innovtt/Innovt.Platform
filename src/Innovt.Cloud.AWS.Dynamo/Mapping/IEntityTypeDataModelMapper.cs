@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 
 namespace Innovt.Cloud.AWS.Dynamo.Mapping;
@@ -14,5 +15,5 @@ public interface IEntityTypeDataModelMapper<T> where T : class
     ///     EntityTypeBuilder.
     /// </summary>
     /// <param name="builder">The EntityTypeBuilder used to configure the mapping.</param>
-    public void Configure(EntityTypeBuilder<T> builder);
+    public void Configure([NotNull]EntityTypeBuilder<T> builder);
 }

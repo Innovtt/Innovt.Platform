@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
+// ReSharper disable MemberCanBePrivate.Global
 
 namespace Innovt.Core.Utilities;
 
@@ -316,23 +317,23 @@ public static class StringExtensions
     }
 
     /// <summary>
-    ///     Converts a string to title case using the current culture's rules.
-    /// </summary>
-    /// <param name="str">The string to convert to title case.</param>
-    /// <returns>The string in title case format.</returns>
-    public static string ToTitleCase(this string str)
-    {
-        return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(str);
-    }
-
-    /// <summary>
-    ///     Converts a string to camel case by applying title case.
+    ///  Converts a string to camel case by applying title case.
     /// </summary>
     /// <param name="str">The string to convert to camel case.</param>
     /// <returns>The string in camel case format.</returns>
     public static string ToCamelCase(this string str)
     {
-        return str.ToTitleCase();
+        return str.IsNullOrEmpty() ? string.Empty : str.ToLowerInvariant().ToTitleCase();
+    }
+    
+    /// <summary>
+    ///   Converts a string to title case using the current culture's rules.
+    /// </summary>
+    /// <param name="str">The string to convert to title case.</param>
+    /// <returns>The string in title case format.</returns>
+    public static string ToTitleCase(this string str)
+    {
+        return str.IsNullOrEmpty() ? string.Empty : CultureInfo.CurrentCulture.TextInfo.ToTitleCase(str);
     }
 
     /// <summary>

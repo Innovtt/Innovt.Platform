@@ -7,10 +7,12 @@ using Innovt.Core.Utilities;
 namespace Innovt.Cloud.AWS.Dynamo.Mapping;
 
 /// <summary>
-/// A base class for all data models.
+///     Base abstract class representing a data model that can be mapped to/from a domain model.
 /// </summary>
-public  class BaseDataModel : ITableMessage
-{   
+/// <typeparam name="TDataModel">The type of the data model.</typeparam>
+/// <typeparam name="TDomain">The type of the domain model.</typeparam>
+public abstract class BaseDataModel<TDataModel, TDomain> : ITableMessage where TDataModel : class where TDomain : class
+{
     /// <summary>
     ///     Gets or sets the unique identifier.
     /// </summary>
@@ -26,16 +28,6 @@ public  class BaseDataModel : ITableMessage
     /// </summary>
     [DynamoDBRangeKey("SK")]
     public string Sk { get; set; }
-}
-
-
-/// <summary>
-///     Base abstract class representing a data model that can be mapped to/from a domain model.
-/// </summary>
-/// <typeparam name="TDataModel">The type of the data model.</typeparam>
-/// <typeparam name="TDomain">The type of the domain model.</typeparam>
-public abstract class BaseDataModel<TDataModel, TDomain> : BaseDataModel where TDataModel : class where TDomain : class
-{
     /// <summary>
     ///     Gets or sets the entity type.
     /// </summary>

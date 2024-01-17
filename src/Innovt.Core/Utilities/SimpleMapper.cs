@@ -3,6 +3,7 @@
 // Project: Innovt.Core
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
@@ -21,7 +22,7 @@ public static class SimpleMapper
     /// <param name="input">The input object to map from.</param>
     /// <param name="output">The output object to map to.</param>
     /// <returns>The output object with properties mapped from the input object.</returns>
-    internal static T2 MapProperties<T1, T2>(T1 input, T2 output) where T1 : class
+    private static T2 MapProperties<T1, T2>(T1 input, T2 output) where T1 : class
     {
         if (input == null)
             return default;
@@ -33,7 +34,7 @@ public static class SimpleMapper
 
         foreach (var property in properties)
         {
-            var outProperty = outputProperties.LastOrDefault(p => p.Name == property.Name);
+            var outProperty = outputProperties.LastOrDefault(p => p.Name == property.Name && p.PropertyType == property.PropertyType);
 
             if (outProperty != null && outProperty.PropertyType == property.PropertyType)
                 outProperty.SetValue(output, property.GetValue(input, null), null);
@@ -58,7 +59,7 @@ public static class SimpleMapper
 
         return MapProperties(input, output);
     }
-
+    
     /// <summary>
     ///     Maps the properties from the input object to the provided output object instance.
     /// </summary>
@@ -73,4 +74,44 @@ public static class SimpleMapper
 
         MapProperties(inputInstance, outputInstance);
     }
+    
+     /// <summary>
+     /// Extension method to map object to another object 
+     /// </summary>
+     /// <param name="inputInstance">The instance that you want to map</param>
+     /// <typeparam name="T1">The final type</typeparam>
+     /// <returns></returns>
+    public static T1 MapTo<T1>(this object inputInstance) where T1 : class
+    {
+        if (inputInstance is null)
+            return default;
+
+        var outputInstance = Activator.CreateInstance<T1>();
+        
+        return MapProperties(inputInstance, outputInstance);
+    }
+    
+     /// <summary>
+     /// Extension method to map object list to another object list
+     /// </summary>
+     /// <param name="inputInstance">The list that you want to convert.</param>
+     /// <typeparam name="T1">The final type</typeparam>
+     /// <returns></returns>
+    public static IList<T1> MapToList<T1>(this IEnumerable<object> inputInstance) where T1 : class
+    {
+        if (inputInstance is null)
+            return new List<T1>();
+
+        var result = new List<T1>();
+        
+        foreach (var item in inputInstance)
+        {
+            var outputInstance = Activator.CreateInstance<T1>();
+            result.Add(MapProperties(item, outputInstance));
+        }
+        
+        return result;
+    }
+    
+
 }
