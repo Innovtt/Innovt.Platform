@@ -148,5 +148,5 @@ public interface ICognitoIdentityProvider
     /// </summary>
     /// <param name="command">The request object containing the user pool and email from user.</param>
     /// <param name="cancellationToken">A token to cancel the operation if needed.</param>
-    Task LinkSocialUser(LinkSocialAccountRequest command, CancellationToken cancellationToken = default);
+    Task<bool> LinkSocialUser(LinkSocialAccountRequest command, CancellationToken cancellationToken = default);
 }

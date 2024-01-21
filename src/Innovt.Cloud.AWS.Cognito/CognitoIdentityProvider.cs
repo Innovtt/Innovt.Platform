@@ -822,7 +822,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     /// <param name="command"></param>
     /// <param name="cancellationToken"></param>
     /// <exception cref="Exception"></exception>
-    public async Task LinkSocialUser(LinkSocialAccountRequest command, CancellationToken cancellationToken = default)
+    public async Task<bool> LinkSocialUser(LinkSocialAccountRequest command, CancellationToken cancellationToken = default)
     {
         command.EnsureIsValid();
 
@@ -834,15 +834,15 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         var localUser = users.Users.SingleOrDefault(u => u.UserStatus != "EXTERNAL_PROVIDER");
 
         if (localUser is null)
-            return;
+            return false;
         
         try
         {
             //Check if the user is a federated user PS: Google_1234567890
             var userNameAndProvider = command.UserName.Split('_');
-        
+
             if (userNameAndProvider.Length < 2)
-                return;
+                return false;
             
             var providerName = userNameAndProvider[0];
             var providerValue = userNameAndProvider[1];
@@ -863,10 +863,12 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
                 }
             };
             
-            await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+           var result = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                 await CognitoProvider.AdminLinkProviderForUserAsync(request, cancellationToken
                 )).ConfigureAwait(false);
-            
+
+
+           return result.HttpStatusCode == HttpStatusCode.OK;
         }
         catch (Exception ex)
         {
