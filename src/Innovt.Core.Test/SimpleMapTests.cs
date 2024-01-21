@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Innovt.Core.Test.Models;
 using Innovt.Core.Utilities;
+using Innovt.Core.Utilities.Mapper;
 using NUnit.Framework;
 
 namespace Innovt.Core.Test;

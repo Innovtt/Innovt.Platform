@@ -118,41 +118,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         }
     }
 
-    /// <summary>
-    ///     Updates user attributes.
-    /// </summary>
-    /// <param name="command">The <see cref="UpdateUserAttributeRequest" /> containing user attributes.</param>
-    /// <param name="cancellationToken">A cancellation token for async tasks.</param>
-    public virtual async Task UpdateUserAttributes(UpdateUserAttributesRequest command,
-        CancellationToken cancellationToken = default)
-    {
-        command.EnsureIsValid();
-
-        using var activity = CognitoIdentityProviderActivitySource.StartActivity();
-        var updateUserAttributeRequest = new Amazon.CognitoIdentityProvider.Model.UpdateUserAttributesRequest
-        {
-            AccessToken = command.AccessToken
-        };
-
-        foreach (var (key, value) in command.Attributes)
-            updateUserAttributeRequest.UserAttributes.Add(new AttributeType
-            {
-                Name = key,
-                Value = value
-            });
-
-        try
-        {
-            await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                await CognitoProvider.UpdateUserAttributesAsync(updateUserAttributeRequest,
-                    cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
-        }
-        catch (Exception ex)
-        {
-            throw CatchException(ex);
-        }
-    }
-
+   
     /// <summary>
     ///     Signs in a user with the provided request for OTP process authentication.
     /// </summary>
@@ -192,7 +158,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     /// <param name="request">A <see cref="SignOutRequest" /> object containing the access token to sign out the user.</param>
     /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
     /// <exception cref="ArgumentNullException">Thrown when the <paramref name="request" /> is null.</exception>
-    /// <exception cref="ValidationException">Thrown when the <paramref name="request" /> fails validation.</exception>
+    /// <exception cref="BusinessException">Thrown when the <paramref name="request" /> fails validation.</exception>
     /// <exception cref="CatchException">Thrown when an error occurs during the sign-out process.</exception>
     /// <remarks>
     ///     This method allows you to sign out the user associated with the provided access token. Signing out a user
@@ -204,7 +170,6 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     public async Task SignOut(SignOutRequest request, CancellationToken cancellationToken = default)
     {
         Check.NotNull(request, nameof(request));
-
         request.EnsureIsValid();
 
         using var activity = CognitoIdentityProviderActivitySource.StartActivity();
@@ -235,7 +200,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     ///     Sub).
     /// </returns>
     /// <exception cref="ArgumentNullException">Thrown when the <paramref name="command" /> is null.</exception>
-    /// <exception cref="ValidationException">Thrown when the <paramref name="command" /> fails validation.</exception>
+    /// <exception cref="BusinessException">Thrown when the <paramref name="command" /> fails validation.</exception>
     /// <exception cref="CatchException">Thrown when an error occurs during the sign-up process.</exception>
     /// <remarks>
     ///     This method allows you to sign up a new user with the provided registration information, including username,
@@ -319,7 +284,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     /// </param>
     /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
     /// <exception cref="ArgumentNullException">Thrown when the <paramref name="request" /> is null.</exception>
-    /// <exception cref="ValidationException">Thrown when the <paramref name="request" /> fails validation.</exception>
+    /// <exception cref="BusinessException">Thrown when the <paramref name="request" /> fails validation.</exception>
     /// <exception cref="CatchException">Thrown when an error occurs while confirming the sign-up.</exception>
     /// <remarks>
     ///     This method allows you to confirm the sign-up of a user with the specified confirmation code.
@@ -369,7 +334,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     /// </param>
     /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
     /// <exception cref="ArgumentNullException">Thrown when the <paramref name="command" /> is null.</exception>
-    /// <exception cref="ValidationException">Thrown when the <paramref name="command" /> fails validation.</exception>
+    /// <exception cref="BusinessException">Thrown when the <paramref name="command" /> fails validation.</exception>
     /// <exception cref="CatchException">Thrown when an error occurs while resending the confirmation code.</exception>
     /// <remarks>
     ///     This method allows you to resend the confirmation code to a user with the specified username.
@@ -418,7 +383,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     /// </param>
     /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
     /// <exception cref="ArgumentNullException">Thrown when the <paramref name="command" /> is null.</exception>
-    /// <exception cref="ValidationException">Thrown when the <paramref name="command" /> fails validation.</exception>
+    /// <exception cref="BusinessException">Thrown when the <paramref name="command" /> fails validation.</exception>
     /// <exception cref="CatchException">Thrown when an error occurs during password change.</exception>
     /// <remarks>
     ///     This method allows you to change the password for a user by providing an access token and the new proposed
@@ -461,7 +426,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
     /// <returns>An instance of the specified response type containing user information.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the <paramref name="request" /> is null.</exception>
-    /// <exception cref="ValidationException">Thrown when the <paramref name="request" /> fails validation.</exception>
+    /// <exception cref="BusinessException">Thrown when the <paramref name="request" /> fails validation.</exception>
     /// <exception cref="CatchException">Thrown when an error occurs during user retrieval.</exception>
     /// <remarks>
     ///     This method allows you to retrieve user information based on the specified request, such as
@@ -567,7 +532,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
     /// <returns>An <see cref="AuthChallengeResponse" /> containing the authentication result or metadata.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the <paramref name="command" /> is null.</exception>
-    /// <exception cref="ValidationException">Thrown when the <paramref name="command" /> fails validation.</exception>
+    /// <exception cref="BusinessException">Thrown when the <paramref name="command" /> fails validation.</exception>
     /// <exception cref="CriticalException">Thrown when an unsupported challenge name is encountered.</exception>
     /// <exception cref="CatchException">Thrown when an error occurs during the challenge response process.</exception>
     /// <remarks>
@@ -658,7 +623,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     /// <param name="cancellationToken">A cancellation token for cancelling the operation.</param>
     /// <returns>A task representing the asynchronous confirmation process.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the <paramref name="command" /> is null.</exception>
-    /// <exception cref="ValidationException">Thrown when the <paramref name="command" /> fails validation.</exception>
+    /// <exception cref="BusinessException">Thrown when the <paramref name="command" /> fails validation.</exception>
     /// <exception cref="CatchException">Thrown when an error occurs during the confirmation process.</exception>
     /// <remarks>
     ///     This method is used to confirm a user's forgotten password by providing the user's username, a new password,
@@ -768,7 +733,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
             var listUsersResponse = await ListUsersAsync(socialUserEmail, cancellationToken).ConfigureAwait(false);
 
-            var hasCognitoUser = listUsersResponse.Users.Any(u => u.UserStatus != "EXTERNAL_PROVIDER");
+            var hasCognitoUser = listUsersResponse.Users.Exists(u => u.UserStatus != "EXTERNAL_PROVIDER");
 
             response.NeedRegister = !hasCognitoUser;
             response.SignInType = GetSocialProviderName(socialUser.Username);
@@ -863,38 +828,45 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
         using var activity = CognitoIdentityProviderActivitySource.StartActivity();
 
+        //get users with this email
         var users = await ListUsersAsync(command.Email, cancellationToken);
-
+        //Check if the user has a local user, what mean UserStatus!=EXTERNAL Provider
         var localUser = users.Users.SingleOrDefault(u => u.UserStatus != "EXTERNAL_PROVIDER");
 
         if (localUser is null)
             return;
-
-        //Check if the user is a federated user PS: Google_1234567890
-        var providerName = command.UserName.Split('_')[0];
-        var providerValue = command.UserName.Split('_')[1];
-
-        var request = new AdminLinkProviderForUserRequest
-        {
-            UserPoolId = userPoolId,
-            DestinationUser = new ProviderUserIdentifierType
-            {
-                ProviderName = "Cognito",
-                ProviderAttributeValue = localUser.Username
-            },
-            SourceUser = new ProviderUserIdentifierType
-            {
-                ProviderName = providerName,
-                ProviderAttributeName = "Cognito_Subject",
-                ProviderAttributeValue = providerValue
-            }
-        };
-
+        
         try
         {
+            //Check if the user is a federated user PS: Google_1234567890
+            var userNameAndProvider = command.UserName.Split('_');
+        
+            if (userNameAndProvider.Length < 2)
+                return;
+            
+            var providerName = userNameAndProvider[0];
+            var providerValue = userNameAndProvider[1];
+
+            var request = new AdminLinkProviderForUserRequest
+            {
+                UserPoolId = userPoolId,
+                DestinationUser = new ProviderUserIdentifierType
+                {
+                    ProviderName = "Cognito",
+                    ProviderAttributeValue = localUser.Username
+                },
+                SourceUser = new ProviderUserIdentifierType
+                {
+                    ProviderName = providerName,
+                    ProviderAttributeName = "Cognito_Subject",
+                    ProviderAttributeValue = providerValue
+                }
+            };
+            
             await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                 await CognitoProvider.AdminLinkProviderForUserAsync(request, cancellationToken
                 )).ConfigureAwait(false);
+            
         }
         catch (Exception ex)
         {
@@ -934,6 +906,42 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             throw CatchException(ex);
         }
     }
+    
+    /// <summary>
+    ///     Updates user attributes.
+    /// </summary>
+    /// <param name="command">The <see cref="UpdateUserAttributesRequest" /> containing user attributes.</param>
+    /// <param name="cancellationToken">A cancellation token for async tasks.</param>
+    public virtual async Task UpdateUserAttributes(UpdateUserAttributesRequest command,
+        CancellationToken cancellationToken = default)
+    {
+        command.EnsureIsValid();
+
+        using var activity = CognitoIdentityProviderActivitySource.StartActivity();
+        var updateUserAttributeRequest = new Amazon.CognitoIdentityProvider.Model.UpdateUserAttributesRequest
+        {
+            AccessToken = command.AccessToken
+        };
+
+        foreach (var (key, value) in command.Attributes)
+            updateUserAttributeRequest.UserAttributes.Add(new AttributeType
+            {
+                Name = key,
+                Value = value
+            });
+
+        try
+        {
+            await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+                await CognitoProvider.UpdateUserAttributesAsync(updateUserAttributeRequest,
+                    cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
+        }
+        catch (Exception ex)
+        {
+            throw CatchException(ex);
+        }
+    }
+
 
     /// <summary>
     ///     This implementation is to avoid users with social login to confirm the user.

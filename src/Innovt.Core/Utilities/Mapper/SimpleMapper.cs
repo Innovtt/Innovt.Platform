@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Innovt.Core.Utilities;
+namespace Innovt.Core.Utilities.Mapper;
 
 /// <summary>
 ///     Provides simple object mapping functionality between two objects of different types.
@@ -29,7 +29,8 @@ public static class SimpleMapper
 
         var properties = input.GetType()
             .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.IgnoreCase);
-        var outputProperties = output.GetType()
+        var outputType = output.GetType();
+        var outputProperties = outputType
             .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.IgnoreCase);
 
         foreach (var property in properties)
@@ -39,7 +40,7 @@ public static class SimpleMapper
             if (outProperty != null && outProperty.PropertyType == property.PropertyType)
                 outProperty.SetValue(output, property.GetValue(input, null), null);
         }
-
+        
         return output;
     }
 

@@ -3,6 +3,7 @@ using System.Linq;
 using Amazon.DynamoDBv2.DataModel;
 using Innovt.Cloud.Table;
 using Innovt.Core.Utilities;
+using Innovt.Core.Utilities.Mapper;
 
 namespace Innovt.Cloud.AWS.Dynamo.Mapping;
 
