@@ -2,6 +2,8 @@
 // Author: Michel Borges
 // Project: Innovt.Cloud
 
+using System.Collections.Generic;
+
 namespace Innovt.Cloud.Table;
 
 /// <summary>
@@ -38,4 +40,11 @@ public class BaseRequest
     ///     Gets or sets the filter expression for the query or scan.
     /// </summary>
     public string FilterExpression { get; set; }
+
+    /// <summary>
+    /// Used to define the attributes that you can customize.
+    /// </summary>
+    public Dictionary<string,string> ExpressionAttributeNames { get; set; }
+    
+        
 }

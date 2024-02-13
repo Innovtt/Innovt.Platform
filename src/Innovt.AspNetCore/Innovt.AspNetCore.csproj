@@ -4,7 +4,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <PackageId>Innovt.AspNetCore</PackageId>
-        <PackageVersion>7.0.70</PackageVersion>
+        <PackageVersion>7.0.72</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -22,8 +22,8 @@
         <PackageReference Include="OpenTelemetry" Version="1.7.0"/>
         <PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.7.0"/>
         <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.7.0"/>
-        <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.7.0"/>
-        <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.7.0"/>
+        <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.7.1" />
+        <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.7.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0"/>
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.4">

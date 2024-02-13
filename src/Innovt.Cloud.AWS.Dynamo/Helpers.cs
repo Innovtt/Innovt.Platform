@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -77,23 +78,55 @@ internal static class Helpers
 
         var properties = filter.GetType().GetProperties();
 
-        if (properties.Length <= 0) return attributeValues;
+        if (properties.Length == 0 && filter is ExpandoObject expando) 
+            return CreateExpressionAttributeValues(expando, attributes);
 
         foreach (var item in properties)
         {
             var key = $":{item.Name}".ToLower(CultureInfo.CurrentCulture);
 
-            if (attributes.Contains(key, StringComparison.InvariantCultureIgnoreCase) &&
-                !attributeValues.ContainsKey(key))
-            {
-                var value = item.GetValue(filter);
-                attributeValues.Add(key, AttributeConverter.CreateAttributeValue(value));
-            }
+            if (!attributes.Contains(key, StringComparison.InvariantCultureIgnoreCase) ||
+                attributeValues.ContainsKey(key)) continue;
+            
+            var value = item.GetValue(filter);
+            attributeValues.Add(key, AttributeConverter.CreateAttributeValue(value));
         }
 
         return attributeValues;
     }
+    
+    /// <summary>
+    /// Create a list of attribute values based on the Expando object filter and attribute names.
+    /// </summary>
+    /// <param name="filter"></param>
+    /// <param name="attributes"></param>
+    /// <returns></returns>
 
+    private static Dictionary<string, AttributeValue> CreateExpressionAttributeValues(ExpandoObject filter, string attributes)
+    {
+        if (filter == null)
+            return new Dictionary<string, AttributeValue>();
+
+        var attributeValues = new Dictionary<string, AttributeValue>();
+
+        var properties = filter as IDictionary<string, object>;
+                
+        if (properties.Count <= 0)
+            return attributeValues;
+
+        foreach (var (name, value) in properties)
+        {
+            var key = $":{name}".ToLower(CultureInfo.CurrentCulture);
+
+            if (attributes.Contains(key, StringComparison.InvariantCultureIgnoreCase) &&
+                !attributeValues.ContainsKey(key))
+            {
+                attributeValues.Add(key, AttributeConverter.CreateAttributeValue(value));
+            }   
+        }
+
+        return attributeValues;
+    }
     /// <summary>
     ///     Creates a QueryRequest object based on the provided Table.QueryRequest and generic type T.
     /// </summary>
@@ -129,8 +162,8 @@ internal static class Helpers
             KeyConditionExpression = request.KeyConditionExpression,
             ProjectionExpression = request.AttributesToGet,
             ExclusiveStartKey = PaginationTokenToDictionary(request.Page),
-            ExpressionAttributeValues = CreateExpressionAttributeValues(request.Filter,
-                string.Join(',', request.KeyConditionExpression, request.FilterExpression))
+            ExpressionAttributeValues = CreateExpressionAttributeValues(request.Filter, string.Join(',', request.KeyConditionExpression, request.FilterExpression)),
+            ExpressionAttributeNames = request.ExpressionAttributeNames
         };
 
         if (request.PageSize.HasValue)
@@ -171,7 +204,8 @@ internal static class Helpers
             ProjectionExpression = request.AttributesToGet,
             ExclusiveStartKey = PaginationTokenToDictionary(request.Page),
             ExpressionAttributeValues =
-                CreateExpressionAttributeValues(request.Filter, string.Join(',', request.FilterExpression))
+                CreateExpressionAttributeValues(request.Filter, string.Join(',', request.FilterExpression)),
+            ExpressionAttributeNames = request.ExpressionAttributeNames
         };
 
         if (request.PageSize.HasValue)
