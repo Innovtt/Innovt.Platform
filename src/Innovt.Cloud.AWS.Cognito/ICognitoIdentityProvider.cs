@@ -149,4 +149,12 @@ public interface ICognitoIdentityProvider
     /// <param name="command">The request object containing the user pool and email from user.</param>
     /// <param name="cancellationToken">A token to cancel the operation if needed.</param>
     Task<bool> LinkSocialUser(LinkSocialAccountRequest command, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// This method allow you to delete a user account from the user pool.
+    /// </summary>
+    /// <param name="command"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<bool> DeleteUser(DeleteUserAccountRequest command, CancellationToken cancellationToken = default);
 }

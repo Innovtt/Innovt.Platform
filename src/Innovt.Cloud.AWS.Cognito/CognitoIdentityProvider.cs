@@ -875,6 +875,38 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             throw CatchException(ex);
         }
     }
+    
+    /// <summary>
+    /// This method will delete the user using the username and the user pool id. It's important to have the admin delete user permission.
+    /// </summary>
+    /// <param name="command"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public async Task<bool> DeleteUser(DeleteUserAccountRequest command, CancellationToken cancellationToken = default)
+    {
+        command.EnsureIsValid();
+
+        using var activity = CognitoIdentityProviderActivitySource.StartActivity();
+
+        var deleteRequest = new Amazon.CognitoIdentityProvider.Model.AdminDeleteUserRequest()
+        {  
+            UserPoolId = userPoolId,
+            Username = command.UserName,
+        };
+        try
+        {
+            var result = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+                await CognitoProvider.AdminDeleteUserAsync(deleteRequest, cancellationToken
+                )).ConfigureAwait(false);
+
+            return result.HttpStatusCode != HttpStatusCode.OK;
+        }
+        catch (Exception ex)
+        {
+            throw CatchException(ex);
+        }
+    }
 
     public async Task UpdateUserAttributes(AdminUpdateUserAttributesRequest command,
         CancellationToken cancellationToken = default)
