@@ -165,15 +165,7 @@ public static class StringExtensions
         return cnpj.EndsWith(digit);
     }
 
-    /// <summary>
-    ///     Determines whether a string is null, empty, or consists only of white-space characters.
-    /// </summary>
-    /// <param name="str">The string to check.</param>
-    /// <returns>True if the string is null, empty, or consists only of white-space characters; otherwise, false.</returns>
-    public static bool IsNullOrEmpty(this string str)
-    {
-        return string.IsNullOrWhiteSpace(str);
-    }
+
 
     /// <summary>
     ///     Determines whether a Guid is empty (all zeros).
@@ -203,6 +195,16 @@ public static class StringExtensions
     public static bool IsNullOrEmpty(this Guid? yourGuid)
     {
         return IsEmpty(yourGuid.GetValueOrDefault());
+    }
+    
+    /// <summary>
+    ///     Determines whether a string is null, empty, or consists only of white-space characters.
+    /// </summary>
+    /// <param name="str">The string to check.</param>
+    /// <returns>True if the string is null, empty, or consists only of white-space characters; otherwise, false.</returns>
+    public static bool IsNullOrEmpty(this string str)
+    {
+        return string.IsNullOrWhiteSpace(str);
     }
 
     /// <summary>
@@ -248,7 +250,6 @@ public static class StringExtensions
     {
         if (!str.IsNullOrEmpty())
             return str;
-
 
         if (defaultValue.IsNotNullOrEmpty())
             return defaultValue;
@@ -363,7 +364,7 @@ public static class StringExtensions
     public static string OnlyNumber(this string value)
     {
         if (value.IsNullOrEmpty())
-            return value;
+            return string.Empty;
 
         return Regex.Replace(value, "[^0-9]+?", "");
     }
@@ -376,7 +377,7 @@ public static class StringExtensions
     public static string NormalizeText(this string str)
     {
         if (str.IsNullOrEmpty())
-            return str;
+            return string.Empty;
 
         var result = str.RemoveAccents().RemoveSpecialCharacter().TrimStart().TrimEnd();
 
@@ -391,7 +392,7 @@ public static class StringExtensions
     public static string RemoveSpecialCharacter(this string str)
     {
         if (str.IsNullOrEmpty())
-            return str;
+            return string.Empty;;
 
         return Regex.Replace(str, "[^0-9a-zA-Z]+", " ");
     }
@@ -404,7 +405,7 @@ public static class StringExtensions
     public static string RemoveAccents(this string str)
     {
         if (str.IsNullOrEmpty())
-            return str;
+            return string.Empty;
 
         //code from Web: https://www.codegrepper.com/code-examples/csharp/c%23+remove+accents
         var sbReturn = new StringBuilder();
@@ -424,7 +425,7 @@ public static class StringExtensions
     public static string FormatCpf(this string cpf)
     {
         if (cpf.IsNullOrEmpty())
-            return cpf;
+            return string.Empty;;
 
         cpf = cpf.PadLeft(11, '0');
         return FormatByMask(cpf, @"{0:000\.000\.000\-00}");
@@ -472,7 +473,7 @@ public static class StringExtensions
     public static string FormatCnpj(this string cnpj)
     {
         if (cnpj.IsNullOrEmpty())
-            return null;
+            return string.Empty;;
 
         cnpj = cnpj.PadLeft(14, '0');
 
@@ -487,7 +488,7 @@ public static class StringExtensions
     public static string ToUpperFirstLetter(this string value)
     {
         if (value.IsNullOrEmpty())
-            return value;
+            return string.Empty;
 
         var firstLetter = value[0].ToString().ToUpper();
         var tail = value[1..];
@@ -530,7 +531,7 @@ public static class StringExtensions
     public static string ToBase64(this string toEncode, Encoding encoding = null)
     {
         if (toEncode == null)
-            return null;
+            return string.Empty;
 
         encoding ??= Encoding.ASCII;
 
@@ -548,7 +549,7 @@ public static class StringExtensions
     public static string FromBase64(this string toDecode, Encoding encoding = null)
     {
         if (toDecode == null)
-            return null;
+            return string.Empty;
 
         encoding ??= Encoding.ASCII;
 
@@ -565,7 +566,7 @@ public static class StringExtensions
     public static string ApplyQuotes(this string value)
     {
         if (string.IsNullOrEmpty(value))
-            return value;
+            return string.Empty;
 
         if (!value.Contains(" "))
             return value;

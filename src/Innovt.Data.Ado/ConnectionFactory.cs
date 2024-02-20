@@ -9,6 +9,7 @@ using Innovt.Core.Utilities;
 using Innovt.Data.DataSources;
 using Innovt.Data.Exceptions;
 using Innovt.Data.Model;
+using MySql.Data.MySqlClient;
 using Npgsql;
 using Oracle.ManagedDataAccess.Client;
 
@@ -39,6 +40,7 @@ public class ConnectionFactory : IConnectionFactory
         {
             Provider.PostgreSqL => new NpgsqlConnection(connectionString),
             Provider.Oracle => new OracleConnection(connectionString),
+            Provider.MySql => new MySqlConnection(connectionString),
             _ => new SqlConnection(connectionString)
         };
     }

@@ -11,5 +11,6 @@ public enum Provider
 {
     MsSql,
     PostgreSqL,
-    Oracle
+    Oracle,
+    MySql
 }
