@@ -13,7 +13,7 @@ env:
   SONAR_HOST: https://sonarcloud.io
   SONAR_ORGANIZATION: innovt
   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-  SONAR_PROJECTKEY: Innovtt_Innovt.Platform
+  SONAR_PROJECT_KEY: Innovtt_Innovt.Platform
 
 jobs:
   build:
