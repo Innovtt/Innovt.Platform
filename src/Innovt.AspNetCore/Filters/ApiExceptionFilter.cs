@@ -95,7 +95,7 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
     /// <inheritdoc />
     public override void OnException(ExceptionContext context)
     {
-        if (context == null) throw new ArgumentNullException(nameof(context));
+        ArgumentNullException.ThrowIfNull(context);
 
         var baseException = context.Exception;
 

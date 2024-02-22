@@ -24,9 +24,10 @@ public class SampleController : BaseApiController
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType((int)HttpStatusCode.Created)]
     //[ModelExcludeFilter(excludeAttributes: new[]{ "ExternalId", "UserId"})]
-    public async Task<IActionResult> Add([FromRoute] Guid userId, [FromBody] AddUserViewModel command,
+    public IActionResult Add([FromRoute] Guid userId, [FromBody] AddUserViewModel command,
         CancellationToken cancellationToken = default)
     {
+        
         return Ok();
     }
 }

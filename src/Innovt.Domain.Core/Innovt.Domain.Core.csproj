@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <PackageId>Innovt.Domain.Core</PackageId>
-        <PackageVersion>8.0.0-preview</PackageVersion>/PackageVersion>
+        <PackageVersion>8.0.0-preview</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -11,6 +11,7 @@
         <Description>Domain core.</Description>
         <LangVersion>latest</LangVersion>
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>

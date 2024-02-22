@@ -21,8 +21,8 @@ namespace Innovt.Data.EFCore;
 /// </summary>
 public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
 {
-    private readonly IDataSource dataSource;
-    private readonly ILoggerFactory loggerFactory;
+    private readonly IDataSource? dataSource;
+    private readonly ILoggerFactory? loggerFactory;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="DBContextBase" /> class using a data source.
@@ -226,7 +226,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     /// <param name="optionsBuilder">The options builder for configuring DbContext options.</param>
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        if (optionsBuilder == null) throw new ArgumentNullException(nameof(optionsBuilder));
+        ArgumentNullException.ThrowIfNull(optionsBuilder);
 
         optionsBuilder.EnableSensitiveDataLogging(false);
         optionsBuilder.EnableDetailedErrors();
@@ -239,7 +239,6 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
 
             if (connectionString.IsNullOrEmpty())
                 throw new ConnectionStringException($"Connection string for datasource {dataSource.Name} is empty.");
-
 
             ConfigureProvider(optionsBuilder, connectionString);
         }

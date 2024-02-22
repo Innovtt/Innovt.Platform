@@ -55,28 +55,33 @@ public sealed class CaptchaValidatorFilterAttribute : ActionFilterAttribute
 {
     private const string CaptchaUri = "https://www.google.com/recaptcha/api/siteverify";
 
+    private JsonSerializerOptions serializerSettings;
     /// <summary>
     ///     Initializes a new instance of the <see cref="CaptchaValidatorFilterAttribute" /> class.
     /// </summary>
     public CaptchaValidatorFilterAttribute()
     {
         DefaultToken = "inn0ut#";
+        serializerSettings = new JsonSerializerOptions
+        {
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
     }
 
     /// <summary>
     ///     Gets or sets the anti-forgery token.
     /// </summary>
-    public string AntiForgery { get; }
+    public string? AntiForgery { get; }
 
     /// <summary>
     ///     Gets or sets the hostname.
     /// </summary>
-    public string HostName { get; }
+    public string? HostName { get; }
 
     /// <summary>
     ///     Gets or sets the secret key for reCAPTCHA validation.
     /// </summary>
-    public string SecretKey { get; internal set; }
+    public string? SecretKey { get; internal set; }
 
     /// <summary>
     ///     Gets or sets the default reCAPTCHA token to accept without validation.
@@ -111,7 +116,7 @@ public sealed class CaptchaValidatorFilterAttribute : ActionFilterAttribute
     ///     A <see cref="Task" /> representing the asynchronous operation. The task result contains a boolean indicating
     ///     whether the reCAPTCHA is valid.
     /// </returns>
-    private async Task<bool> IsValid(string token, HttpContext context)
+    private async Task<bool> IsValid(string? token, HttpContext context)
     {
         if (string.IsNullOrEmpty(token))
             return false;
@@ -126,18 +131,10 @@ public sealed class CaptchaValidatorFilterAttribute : ActionFilterAttribute
         var stringAsync = await httpClient
             .GetStringAsync(new Uri($"{CaptchaUri}?secret={SecretKey}&response={token}"))
             .ConfigureAwait(false);
-
-        var serializerSettings = new JsonSerializerOptions
-        {
-            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-        };
-
+        
         var captchaResponse = JsonSerializer.Deserialize<RecaptchaResponse>(stringAsync, serializerSettings);
 
-        if (captchaResponse is null)
-            return false;
-
-        return captchaResponse.success;
+        return captchaResponse is not null && captchaResponse.success;
     }
 
     /// <summary>
@@ -146,7 +143,7 @@ public sealed class CaptchaValidatorFilterAttribute : ActionFilterAttribute
     /// <param name="context">The action executing context.</param>
     /// <param name="next">The action execution delegate.</param>
     /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
-    public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+    public override async Task OnActionExecutionAsync(ActionExecutingContext? context, ActionExecutionDelegate next)
     {
         if (context is null) return;
 

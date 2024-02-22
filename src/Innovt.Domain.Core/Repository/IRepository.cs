@@ -68,7 +68,7 @@ public interface IRepository<T> where T : class
     /// <param name="specification"></param>
     /// <param name="includes"></param>
     /// <returns></returns>
-    T GetSingleOrDefault(ISpecification<T> specification, Include includes = null);
+    T? GetSingleOrDefault(ISpecification<T> specification, Include? includes = null);
 
     /// <summary>
     ///     Asynchronously gets a single entity based on a specification and includes related entities
@@ -77,7 +77,7 @@ public interface IRepository<T> where T : class
     /// <param name="includes"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<T> GetSingleOrDefaultAsync(ISpecification<T> specification, Include includes = null,
+    Task<T?> GetSingleOrDefaultAsync(ISpecification<T> specification, Include? includes = null,
         CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -86,7 +86,7 @@ public interface IRepository<T> where T : class
     /// <param name="specification"></param>
     /// <param name="includes"></param>
     /// <returns></returns>
-    T GetFirstOrDefault(ISpecification<T> specification, Include includes = null);
+    T? GetFirstOrDefault(ISpecification<T> specification, Include? includes = null);
 
     /// <summary>
     ///     Asynchronously gets the first entity based on a specification and includes related entities
@@ -95,7 +95,7 @@ public interface IRepository<T> where T : class
     /// <param name="includes"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<T> GetFirstOrDefaultAsync(ISpecification<T> specification, Include includes = null,
+    Task<T?> GetFirstOrDefaultAsync(ISpecification<T> specification, Include? includes = null,
         CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -104,7 +104,7 @@ public interface IRepository<T> where T : class
     /// <param name="specification"></param>
     /// <param name="includes"></param>
     /// <returns></returns>
-    IEnumerable<T> FindBy(ISpecification<T> specification, Include includes = null);
+    IEnumerable<T> FindBy(ISpecification<T> specification, Include? includes = null);
 
     /// <summary>
     ///     Finds entities based on a specification, with optional ordering, and includes related entities
@@ -115,8 +115,8 @@ public interface IRepository<T> where T : class
     /// <param name="isOrderByDescending"></param>
     /// <param name="includes"></param>
     /// <returns></returns>
-    IEnumerable<T> FindBy<TKey>(ISpecification<T> specification, Expression<Func<T, TKey>> orderBy = null,
-        bool isOrderByDescending = false, Include includes = null);
+    IEnumerable<T> FindBy<TKey>(ISpecification<T> specification, Expression<Func<T, TKey>>? orderBy = null,
+        bool isOrderByDescending = false, Include? includes = null);
 
     /// <summary>
     ///     Asynchronously finds entities based on a specification and includes related entities
@@ -125,7 +125,7 @@ public interface IRepository<T> where T : class
     /// <param name="includes"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<IEnumerable<T>> FindByAsync(ISpecification<T> specification, Include includes = null,
+    Task<IEnumerable<T>> FindByAsync(ISpecification<T> specification, Include? includes = null,
         CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -139,7 +139,7 @@ public interface IRepository<T> where T : class
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     Task<IEnumerable<T>> FindByAsync<TKey>(ISpecification<T> specification,
-        Expression<Func<T, TKey>> orderBy = null, bool isOrderByDescending = false, Include includes = null,
+        Expression<Func<T, TKey>>? orderBy = null, bool isOrderByDescending = false, Include? includes = null,
         CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -148,7 +148,7 @@ public interface IRepository<T> where T : class
     /// <param name="specification"></param>
     /// <param name="includes"></param>
     /// <returns></returns>
-    PagedCollection<T> FindPaginatedBy(ISpecification<T> specification, Include includes = null);
+    PagedCollection<T> FindPaginatedBy(ISpecification<T> specification, Include? includes = null);
 
     /// <summary>
     ///     Finds entities based on a specification, with optional ordering, and returns a paged collection, with optional
@@ -161,8 +161,8 @@ public interface IRepository<T> where T : class
     /// <param name="includes"></param>
     /// <returns></returns>
     PagedCollection<T> FindPaginatedBy<TKey>(ISpecification<T> specification,
-        Expression<Func<T, TKey>> orderBy = null,
-        bool isOrderByDescending = false, Include includes = null);
+        Expression<Func<T, TKey>>? orderBy = null,
+        bool isOrderByDescending = false, Include? includes = null);
 
     /// <summary>
     ///     Asynchronously finds entities based on a specification and returns a paged collection, with optional includes
@@ -171,7 +171,7 @@ public interface IRepository<T> where T : class
     /// <param name="includes"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<PagedCollection<T>> FindPaginatedByAsync(ISpecification<T> specification, Include includes = null,
+    Task<PagedCollection<T>> FindPaginatedByAsync(ISpecification<T> specification, Include? includes = null,
         CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -186,8 +186,8 @@ public interface IRepository<T> where T : class
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     Task<PagedCollection<T>> FindPaginatedByAsync<TKey>(ISpecification<T> specification,
-        Expression<Func<T, TKey>> orderBy = null,
-        bool isOrderByDescending = false, Include includes = null, CancellationToken cancellationToken = default);
+        Expression<Func<T, TKey>>? orderBy = null,
+        bool isOrderByDescending = false, Include? includes = null, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// </summary>
@@ -210,6 +210,7 @@ public interface IRepository<T> where T : class
     /// <param name="specification"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<int> CountByAsync<TKEntity>(ISpecification<TKEntity> specification,
-        CancellationToken cancellationToken = default) where TKEntity : class;
+    Task<int> CountByAsync<TKEntity>(ISpecification<TKEntity> specification, CancellationToken cancellationToken = default) where TKEntity : class;
+
+    Task<int> CountByAsync(ISpecification<T> specification, CancellationToken cancellationToken = default);
 }

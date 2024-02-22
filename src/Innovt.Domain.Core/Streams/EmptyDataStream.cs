@@ -27,12 +27,12 @@ internal class EmptyDataStream : IEmptyDataStream
     /// <summary>
     ///     Gets or sets the event identifier associated with the empty data stream.
     /// </summary>
-    public string EventId { get; set; }
+    public string? EventId { get; set; }
 
     /// <summary>
     ///     Gets or sets the partition identifier of the empty data stream.
     /// </summary>
-    public string Partition { get; set; }
+    public string? Partition { get; set; }
 
     /// <summary>
     ///     Gets or sets the date and time when the empty data stream was published.
@@ -42,7 +42,7 @@ internal class EmptyDataStream : IEmptyDataStream
     /// <summary>
     ///     Gets or sets the trace identifier associated with the empty data stream.
     /// </summary>
-    public string TraceId { get; set; }
+    public string? TraceId { get; set; }
 
     /// <summary>
     ///     Gets or sets the approximate arrival timestamp of the empty data stream.

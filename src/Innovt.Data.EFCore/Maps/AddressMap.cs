@@ -38,7 +38,7 @@ public class AddressMap : IEntityTypeConfiguration<Address>
     /// <exception cref="ArgumentNullException">Thrown when the builder parameter is null.</exception>
     public void Configure(EntityTypeBuilder<Address> builder)
     {
-        if (builder == null) throw new ArgumentNullException(nameof(builder));
+        ArgumentNullException.ThrowIfNull(builder);
 
 
         builder.HasKey(u => u.Id);

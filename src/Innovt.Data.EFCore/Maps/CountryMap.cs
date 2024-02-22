@@ -32,7 +32,7 @@ public class CountryMap : IEntityTypeConfiguration<Country>
     /// <exception cref="ArgumentNullException">Thrown when the builder parameter is null.</exception>
     public void Configure(EntityTypeBuilder<Country> builder)
     {
-        if (builder is null) throw new ArgumentNullException(nameof(builder));
+        ArgumentNullException.ThrowIfNull(builder);
 
         builder.HasKey(c => c.Id);
 

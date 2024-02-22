@@ -36,7 +36,7 @@ public class MvcControllerViewModel : ViewModelBase
     /// <exception cref="ArgumentNullException">Thrown if the actions list is null.</exception>
     public void AddActions(IList<MvcActionViewModel> actions)
     {
-        if (actions == null) throw new ArgumentNullException(nameof(actions));
+        ArgumentNullException.ThrowIfNull(actions);
 
         Actions ??= new List<MvcActionViewModel>();
 

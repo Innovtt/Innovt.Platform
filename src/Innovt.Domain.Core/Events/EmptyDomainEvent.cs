@@ -15,7 +15,7 @@ internal class EmptyDomainEvent : DomainEvent, IEmptyDataStream
     ///     Initializes a new instance of the <see cref="EmptyDomainEvent" /> class with a specified partition.
     /// </summary>
     /// <param name="partition">The partition associated with the event.</param>
-    public EmptyDomainEvent(string partition) : base("empty", partition)
+    public EmptyDomainEvent(string? partition) : base("empty", partition)
     {
     }
 }
