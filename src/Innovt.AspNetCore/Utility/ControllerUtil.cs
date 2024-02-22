@@ -26,7 +26,7 @@ public static class ControllerUtil
     public static IList<MvcControllerViewModel> ReadControllers(
         IActionDescriptorCollectionProvider actionDescriptorProvider)
     {
-        if (actionDescriptorProvider == null) throw new ArgumentNullException(nameof(actionDescriptorProvider));
+        ArgumentNullException.ThrowIfNull(actionDescriptorProvider);
 
 
         var controllers = new List<MvcControllerViewModel>();

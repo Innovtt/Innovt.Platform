@@ -17,9 +17,9 @@ namespace Innovt.AspNetCore.Handlers;
 /// <summary>
 ///     Authorization handler for role-based authorization.
 /// </summary>
-public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorizationRequirement>, IAuthorizationHandler
+public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorizationRequirement>
 {
-    private const string contextSeparator = "::";
+    private const string ContextSeparator = "::";
     private readonly ILogger logger;
     private readonly IAuthorizationRepository securityRepository;
 
@@ -69,7 +69,7 @@ public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorization
         if (applicationContext.IsNullOrEmpty())
             return scope;
 
-        return scope.IsNullOrEmpty() ? applicationContext : $"{applicationContext}{contextSeparator}{scope}";
+        return scope.IsNullOrEmpty() ? applicationContext : $"{applicationContext}{ContextSeparator}{scope}";
     }
 
     /// <summary>
@@ -108,9 +108,9 @@ public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorization
     /// </summary>
     /// <param name="appContext">The application context.</param>
     /// <returns>The extracted scope or the original context if the separator is not present.</returns>
-    private string ExtractScope(string appContext)
+    private static string ExtractScope(string appContext)
     {
-        return !appContext.Contains(contextSeparator) ? appContext : appContext.Split(contextSeparator)[1];
+        return !appContext.Contains(ContextSeparator,StringComparison.InvariantCultureIgnoreCase) ? appContext : appContext.Split(ContextSeparator)[1];
     }
 
     /// <summary>

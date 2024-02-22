@@ -18,7 +18,7 @@ public abstract class DomainEvent : IDataStream
     /// <param name="name">The name of the domain event.</param>
     /// <param name="version">The version of the domain event.</param>
     /// <param name="partition">The partition associated with the event.</param>
-    protected DomainEvent(string name, string version, string partition)
+    protected DomainEvent(string name, string version, string? partition)
     {
         Name = name;
         Version = version;
@@ -27,15 +27,12 @@ public abstract class DomainEvent : IDataStream
     }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="DomainEvent" /> class with a specified name and partition.
+    ///     Initializes a new instance of the <see cref="DomainEvent" /> class with a specified name and partition. The default version here is 1.0.0
     /// </summary>
     /// <param name="name">The name of the domain event.</param>
     /// <param name="partition">The partition associated with the event.</param>
-    protected DomainEvent(string name, string partition)
+    protected DomainEvent(string name, string? partition):this(name, "1.0.0", partition)
     {
-        Name = name;
-        Partition = partition;
-        CreatedAt = DateTime.UtcNow;
     }
 
     /// <summary>
@@ -51,7 +48,7 @@ public abstract class DomainEvent : IDataStream
     /// <summary>
     ///     Gets or sets the event ID associated with the domain event.
     /// </summary>
-    public string EventId { get; set; }
+    public string? EventId { get; set; }
 
     /// <summary>
     ///     Gets or sets the version of the domain event.
@@ -61,7 +58,7 @@ public abstract class DomainEvent : IDataStream
     /// <summary>
     ///     Gets or sets the partition associated with the domain event.
     /// </summary>
-    public string Partition { get; set; }
+    public string? Partition { get; set; }
 
     /// <summary>
     ///     Gets or sets the date and time when the domain event was published.
@@ -71,7 +68,7 @@ public abstract class DomainEvent : IDataStream
     /// <summary>
     ///     Gets or sets the trace ID associated with the domain event.
     /// </summary>
-    public string TraceId { get; set; }
+    public string? TraceId { get; set; }
 
     /// <summary>
     ///     Gets or sets the approximate arrival timestamp of the domain event.
@@ -83,7 +80,7 @@ public abstract class DomainEvent : IDataStream
     /// </summary>
     /// <param name="partition">The partition associated with the event.</param>
     /// <returns>An instance of <see cref="DomainEvent" /> representing an empty domain event.</returns>
-    public static DomainEvent Empty(string partition)
+    public static DomainEvent Empty(string? partition)
     {
         return new EmptyDomainEvent(partition);
     }

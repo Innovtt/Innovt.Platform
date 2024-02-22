@@ -99,7 +99,7 @@ public static class MvcExtensions
         string configSection = "BearerAuthentication", bool validateAudience = true,
         bool validateIssuer = true, bool validateLifetime = true, bool validateIssuerSigningKey = true)
     {
-        if (configuration == null) throw new ArgumentNullException(nameof(configuration));
+        ArgumentNullException.ThrowIfNull(configuration);
 
         var audienceSection = configuration.GetSection($"{configSection}:Audience");
         var authoritySection = configuration.GetSection($"{configSection}:Authority");
@@ -170,10 +170,8 @@ public static class MvcExtensions
     /// <returns>The HTML pager content.</returns>
     public static IHtmlContent Pager<T>(this IHtmlHelper helper, PaginationBuilder<T> builder) where T : class
     {
-        if (helper is null) throw new ArgumentNullException(nameof(helper));
-
-
-        if (builder == null) throw new ArgumentNullException(nameof(builder));
+        ArgumentNullException.ThrowIfNull(helper);
+        ArgumentNullException.ThrowIfNull(builder);
 
         if (builder.Collection.TotalRecords < builder.Collection.PageSize &&
             builder.Collection.IsNumberPagination && builder.Collection.Page != null && int.Parse(
@@ -275,7 +273,7 @@ public static class MvcExtensions
     /// <returns></returns>
     public static bool IsLocal(this HttpContext context)
     {
-        if (context == null) throw new ArgumentNullException(nameof(context));
+        ArgumentNullException.ThrowIfNull(context);
 
         var remoteIp = context.Connection?.RemoteIpAddress;
         var localIp = context.Connection?.LocalIpAddress;

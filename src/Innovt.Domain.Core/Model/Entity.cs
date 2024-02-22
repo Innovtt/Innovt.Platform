@@ -22,13 +22,14 @@ public abstract class Entity
     protected Entity()
     {
         CreatedAt = DateTimeOffset.UtcNow;
+        domainEvents = new List<DomainEvent>();
     }
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="Entity" /> class with a specific identifier.
     /// </summary>
     /// <param name="id">The identifier for the entity.</param>
-    protected Entity(int id)
+    protected Entity(int id):this()
     {
         Id = id;
     }
@@ -74,8 +75,6 @@ public abstract class Entity
     {
         if (domainEvent == null) throw new ArgumentNullException(nameof(domainEvent));
 
-        domainEvents ??= new List<DomainEvent>();
-
         domainEvent.PublishedAt = null;
 
         domainEvents.Add(domainEvent);
@@ -87,7 +86,7 @@ public abstract class Entity
     /// <returns>A read-only list of unprocessed domain events.</returns>
     public IReadOnlyList<DomainEvent> GetDomainEvents()
     {
-        return domainEvents?.Where(d => d.PublishedAt is null).ToList().AsReadOnly();
+        return domainEvents.Where(d => d.PublishedAt is null).ToList().AsReadOnly();
     }
 }
 

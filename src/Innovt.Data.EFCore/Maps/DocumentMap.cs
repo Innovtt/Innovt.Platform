@@ -32,7 +32,7 @@ public class DocumentMap : IEntityTypeConfiguration<Document>
     /// <exception cref="ArgumentNullException">Thrown when the builder parameter is null.</exception>
     public void Configure(EntityTypeBuilder<Document> builder)
     {
-        if (builder is null) throw new ArgumentNullException(nameof(builder));
+        ArgumentNullException.ThrowIfNull(builder);
 
         builder.HasKey(d => d.Id);
         builder.Property(e => e.Number).HasMaxLength(20).IsRequired();

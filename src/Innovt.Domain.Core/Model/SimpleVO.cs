@@ -22,7 +22,7 @@ public class SimpleVo<T> : ValueObject<T> where T : struct
     /// </summary>
     /// <param name="id">The identifier.</param>
     /// <param name="description">The description.</param>
-    public SimpleVo(T id, string description)
+    public SimpleVo(T id, string? description)
     {
         Id = id;
         Description = description;
@@ -31,5 +31,5 @@ public class SimpleVo<T> : ValueObject<T> where T : struct
     /// <summary>
     ///     Gets or sets the description of the value object.
     /// </summary>
-    public string Description { get; set; }
+    public string? Description { get; set; }
 }

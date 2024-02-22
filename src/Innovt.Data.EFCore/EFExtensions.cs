@@ -81,7 +81,7 @@ public static class EfExtensions
     public static IQueryable<T> ApplyPagination<T>(this IQueryable<T> query, ISpecification<T> specification)
         where T : class
     {
-        if (specification == null) throw new ArgumentNullException(nameof(specification));
+        ArgumentNullException.ThrowIfNull(specification);
 
         return query.ApplyPagination(specification.Page, specification.PageSize);
     }
@@ -96,8 +96,8 @@ public static class EfExtensions
         IEntityTypeConfiguration<TEntity> configuration)
         where TEntity : class
     {
-        if (modelBuilder == null) throw new ArgumentNullException(nameof(modelBuilder));
-        if (configuration == null) throw new ArgumentNullException(nameof(configuration));
+        ArgumentNullException.ThrowIfNull(modelBuilder);
+        ArgumentNullException.ThrowIfNull(configuration);
 
         configuration.Configure(modelBuilder.Entity<TEntity>());
     }
@@ -112,8 +112,8 @@ public static class EfExtensions
         IList<IEntityTypeConfiguration<TEntity>> configurationList)
         where TEntity : class
     {
-        if (modelBuilder == null) throw new ArgumentNullException(nameof(modelBuilder));
-        if (configurationList == null) throw new ArgumentNullException(nameof(configurationList));
+        ArgumentNullException.ThrowIfNull(modelBuilder);
+        ArgumentNullException.ThrowIfNull(configurationList);
 
         foreach (var item in configurationList) modelBuilder.AddConfiguration(item);
     }

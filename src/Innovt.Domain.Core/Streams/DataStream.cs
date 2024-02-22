@@ -26,7 +26,7 @@ public class DataStream<T> : IDataStream<T> where T : class
     /// <param name="partition">The partition identifier of the data stream.</param>
     /// <param name="traceId">The trace identifier associated with the data stream.</param>
     /// <param name="body">The body of the data stream.</param>
-    public DataStream(string version, string partition, string traceId, T body)
+    public DataStream(string version, string? partition, string? traceId, T body)
     {
         Version = version;
         Partition = partition;
@@ -37,17 +37,17 @@ public class DataStream<T> : IDataStream<T> where T : class
     /// <summary>
     ///     Gets or sets the version of the data stream.
     /// </summary>
-    public string Version { get; set; }
+    public string Version { get; set; } = null!;
 
     /// <summary>
     ///     Gets or sets the event identifier associated with the data stream.
     /// </summary>
-    public string EventId { get; set; }
+    public string? EventId { get; set; } = null!;
 
     /// <summary>
     ///     Gets or sets the partition identifier of the data stream.
     /// </summary>
-    public string Partition { get; set; }
+    public string? Partition { get; set; } = null!;
 
     /// <summary>
     ///     Gets or sets the date and time when the data stream was published.
@@ -57,7 +57,7 @@ public class DataStream<T> : IDataStream<T> where T : class
     /// <summary>
     ///     Gets or sets the trace identifier associated with the data stream.
     /// </summary>
-    public string TraceId { get; set; }
+    public string? TraceId { get; set; } = null!;
 
     /// <summary>
     ///     Gets or sets the approximate arrival timestamp of the data stream.
@@ -67,7 +67,7 @@ public class DataStream<T> : IDataStream<T> where T : class
     /// <summary>
     ///     Gets or sets the body of the data stream.
     /// </summary>
-    public T Body { get; set; }
+    public T Body { get; set; } = null!;
 
     /// <summary>
     ///     Creates an empty data stream with no body.
