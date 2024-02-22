@@ -158,7 +158,6 @@ public abstract class AwsBaseService : IDisposable
     ///     Creates a default retry policy for handling AmazonServiceException exceptions
     ///     with specific HTTP status codes(ServiceUnavailable or InternalServerError).
     /// </summary>
-    /// <returns>Política de repetição.</returns
     protected virtual RetryPolicy CreateDefaultRetryPolicy()
     {
         return Policy.Handle<AmazonServiceException>(r =>
