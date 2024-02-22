@@ -97,8 +97,6 @@ public class PagedCollection<T> : IPagedCollection<T>
     {
         if (TotalRecords <= 0 || !IsNumberPagination)
             return false;
-
-        IPagedCollection<T> a = null;
         
         return int.Parse(Page) > 1;
     }

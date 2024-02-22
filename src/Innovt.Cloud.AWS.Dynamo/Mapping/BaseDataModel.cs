@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Amazon.DynamoDBv2.DataModel;
 using Innovt.Cloud.Table;
-using Innovt.Core.Utilities;
 using Innovt.Core.Utilities.Mapper;
+// ReSharper disable MemberCanBeProtected.Global
 
 namespace Innovt.Cloud.AWS.Dynamo.Mapping;
 
@@ -50,7 +50,7 @@ public abstract class BaseDataModel<TDataModel, TDomain> : ITableMessage where T
     /// </summary>
     /// <param name="domain">The domain model to convert.</param>
     /// <returns>The converted data model.</returns>
-    public TDataModel ToDataModel(TDomain domain)
+    public virtual TDataModel ToDataModel(TDomain domain)
     {
         if (domain == null) return null;
 
@@ -76,7 +76,7 @@ public abstract class BaseDataModel<TDataModel, TDomain> : ITableMessage where T
     /// </summary>
     /// <param name="dataModel">The data model to convert.</param>
     /// <returns>The converted domain model.</returns>
-    public TDomain ToDomain(TDataModel dataModel)
+    public virtual TDomain ToDomain(TDataModel dataModel)
     {
         if (dataModel == null) return null;
 

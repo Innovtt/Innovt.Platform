@@ -20,12 +20,15 @@ namespace Innovt.Core.Utilities;
 public static class StringExtensions
 {
     /// <summary>
-    ///     Determines whether the string represents a valid email address.
+    ///  Determines whether the string represents a valid email address.
     /// </summary>
     /// <param name="value">The string to validate as an email address.</param>
     /// <returns>True if the string is a valid email address; otherwise, false.</returns>
     public static bool IsEmail(this string value)
     {
+        if (value.IsNullOrEmpty())
+            return false;
+        
         var isValid = new EmailAddressAttribute().IsValid(value);
 
         return isValid;
@@ -38,10 +41,7 @@ public static class StringExtensions
     /// <returns>True if the string consists of numeric characters only; otherwise, false.</returns>
     public static bool IsNumber(this string value)
     {
-        if (value == null)
-            return false;
-
-        return value.All(char.IsNumber);
+        return value != null && value.All(char.IsNumber);
     }
 
     /// <summary>
