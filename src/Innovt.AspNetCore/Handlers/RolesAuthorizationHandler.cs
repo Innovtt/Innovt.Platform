@@ -156,8 +156,8 @@ public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorization
         var scope = ExtractScope(appContext);
 
         var hasPermission = appContext.IsNullOrEmpty()
-            ? roles.Any(r => requirement.AllowedRoles.Contains(r.Name, StringComparer.OrdinalIgnoreCase))
-            : roles.Any(r => (r.Scope == appContext || r.Scope == "*" || r.Scope == $"*::{scope}") &&
+            ? roles.Exists(r => requirement.AllowedRoles.Contains(r.Name, StringComparer.OrdinalIgnoreCase))
+            : roles.Exists(r => (r.Scope == appContext || r.Scope == "*" || r.Scope == $"*::{scope}") &&
                              requirement.AllowedRoles.Contains(r.Name, StringComparer.OrdinalIgnoreCase));
 
         if (hasPermission)

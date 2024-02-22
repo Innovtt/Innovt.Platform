@@ -87,6 +87,16 @@ public class AuthorizationRepository : Repository, IAuthorizationRepository
     }
 
     /// <inheritdoc />
+    public async Task Save(AuthUser user, CancellationToken cancellationToken)
+    {
+        if (user is null) throw new ArgumentNullException(nameof(user));
+
+        var authUser = UserDataModel.FromUser(user);
+
+        await AddAsync(authUser, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc />
     public async Task<AuthUser> GetUserByExternalId(string externalId,
         CancellationToken cancellationToken = default)
     {
@@ -99,16 +109,6 @@ public class AuthorizationRepository : Repository, IAuthorizationRepository
         var user = await QueryFirstOrDefaultAsync<UserDataModel>(request, cancellationToken).ConfigureAwait(false);
 
         return UserDataModel.ToUser(user);
-    }
-
-    /// <inheritdoc />
-    public async Task Save(AuthUser user, CancellationToken cancellationToken)
-    {
-        if (user is null) throw new ArgumentNullException(nameof(user));
-
-        var authUser = UserDataModel.FromUser(user);
-
-        await AddAsync(authUser, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc />

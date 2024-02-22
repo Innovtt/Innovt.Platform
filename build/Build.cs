@@ -26,15 +26,15 @@ class Build : NukeBuild
     [GitVersion] readonly GitVersion GitVersion;
 
     [Solution] readonly Solution Solution;
-    [Parameter] string NugetApiKey;
+    [Parameter] readonly string NugetApiKey;
 
-    [Parameter] string NugetApiUrl = "https://nuget.pkg.github.com/Innovtt/index.json";
+    [Parameter] readonly string NugetApiUrl = "https://nuget.pkg.github.com/Innovtt/index.json";
 
-    AbsolutePath SourceDirectory => RootDirectory / "src";
-    AbsolutePath ArtifactsDirectory => RootDirectory / "artifacts";
+    static AbsolutePath SourceDirectory => RootDirectory / "src";
 
+    static AbsolutePath ArtifactsDirectory => RootDirectory / "artifacts";
 
-    Target Clean => _ => _
+    static Target Clean => _ => _
         .Executes(() =>
         {
             SourceDirectory.GlobDirectories("**/bin", "**/obj").ForEach(a=> a.DeleteDirectory());
@@ -83,14 +83,14 @@ class Build : NukeBuild
                 .ForEach(x =>
                 {
                     //try
-                    //{
+                    
                     DotNetNuGetPush(s => s
                         .EnableSkipDuplicate()
                         .SetTargetPath(x)
                         .SetSource(NugetApiUrl)
                         .SetApiKey(NugetApiKey)
                     );
-                    //}
+                    
                     //catch (Exception e)
                     //{
                     //    Console.WriteLine("Publish Error");

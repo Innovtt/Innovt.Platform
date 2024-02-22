@@ -17,32 +17,32 @@ namespace Innovt.AspNetCore.Filters;
 /// <summary>
 ///     Represents the response received from reCAPTCHA verification.
 /// </summary>
-internal class RecaptchaResponse
+sealed class RecaptchaResponse
 {
     /// <summary>
     ///     Indicates whether the reCAPTCHA verification was successful.
     /// </summary>
-    public bool success { get; set; }
+    public bool Success { get; set; }
 
     /// <summary>
     ///     The score obtained from the reCAPTCHA verification.
     /// </summary>
-    public decimal score { get; set; }
+    public decimal Score { get; set; }
 
     /// <summary>
     ///     The action associated with the reCAPTCHA verification.
     /// </summary>
-    public string action { get; set; }
+    public string? Action { get; set; }
 
     /// <summary>
     ///     The timestamp of the challenge.
     /// </summary>
-    public string challenge_ts { get; set; }
+    public string? Challenge_ts { get; set; }
 
     /// <summary>
     ///     The hostname from which the reCAPTCHA verification originated.
     /// </summary>
-    public string hostname { get; set; }
+    public string? Hostname { get; set; }
 }
 
 /// <summary>
@@ -55,7 +55,7 @@ public sealed class CaptchaValidatorFilterAttribute : ActionFilterAttribute
 {
     private const string CaptchaUri = "https://www.google.com/recaptcha/api/siteverify";
 
-    private JsonSerializerOptions serializerSettings;
+    private readonly JsonSerializerOptions serializerSettings;
     /// <summary>
     ///     Initializes a new instance of the <see cref="CaptchaValidatorFilterAttribute" /> class.
     /// </summary>
@@ -86,7 +86,7 @@ public sealed class CaptchaValidatorFilterAttribute : ActionFilterAttribute
     /// <summary>
     ///     Gets or sets the default reCAPTCHA token to accept without validation.
     /// </summary>
-    public string DefaultToken { get; set; }
+    public string? DefaultToken { get; set; }
 
     /// <summary>
     ///     Reads the reCAPTCHA configuration from the configuration provider.
@@ -134,7 +134,7 @@ public sealed class CaptchaValidatorFilterAttribute : ActionFilterAttribute
         
         var captchaResponse = JsonSerializer.Deserialize<RecaptchaResponse>(stringAsync, serializerSettings);
 
-        return captchaResponse is not null && captchaResponse.success;
+        return captchaResponse is not null && captchaResponse.Success;
     }
 
     /// <summary>

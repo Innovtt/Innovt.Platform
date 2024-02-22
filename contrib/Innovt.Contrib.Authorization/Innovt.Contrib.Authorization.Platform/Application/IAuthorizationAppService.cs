@@ -62,5 +62,5 @@ public interface IAuthorizationAppService
     /// <param name="command">The registration command for the administrator.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    Task RegisterAdmin(RegisterAdminCommand command, CancellationToken cancellationToken);
+    Task RegisterAdmin(RegisterAdminCommand command, CancellationToken cancellationToken = default);
 }
