@@ -13,12 +13,13 @@ using Microsoft.Extensions.Configuration;
 namespace Innovt.Cloud.AWS.Lambda;
 
 /// <summary>
-/// Represents a base class for event processors with common functionality such as logging, IOC container setup, and configuration.
+///     Represents a base class for event processors with common functionality such as logging, IOC container setup, and
+///     configuration.
 /// </summary>
 public abstract class BaseEventProcessor
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="BaseEventProcessor"/> class with an optional logger.
+    ///     Initializes a new instance of the <see cref="BaseEventProcessor" /> class with an optional logger.
     /// </summary>
     protected static readonly ActivitySource EventProcessorActivitySource =
         new("Innovt.Cloud.AWS.Lambda.EventProcessor");
@@ -26,7 +27,7 @@ public abstract class BaseEventProcessor
     private bool isIocContainerInitialized;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="BaseEventProcessor"/> class.
+    ///     Initializes a new instance of the <see cref="BaseEventProcessor" /> class.
     /// </summary>
     protected BaseEventProcessor(ILogger logger)
     {
@@ -34,7 +35,8 @@ public abstract class BaseEventProcessor
     }
 
     /// <summary>
-    /// Allows to use the configuration and logger from outside. In This case, the method SetupConfiguration will not be called.
+    ///     Allows to use the configuration and logger from outside. In This case, the method SetupConfiguration will not be
+    ///     called.
     /// </summary>
     /// <param name="logger">The logger provider.</param>
     /// <param name="configuration">The configuration to be used.</param>
@@ -45,7 +47,7 @@ public abstract class BaseEventProcessor
     }
 
     /// <summary>
-    /// Allows to use the configuration from outside. In This case, the method SetupConfiguration will not be called.
+    ///     Allows to use the configuration from outside. In This case, the method SetupConfiguration will not be called.
     /// </summary>
     /// <param name="configuration">The configuration to be used.</param>
     /// <exception cref="ArgumentNullException">If the logger or configuration is null.</exception>
@@ -59,22 +61,22 @@ public abstract class BaseEventProcessor
     }
 
     /// <summary>
-    /// Gets or sets the logger for recording processing information.
+    ///     Gets or sets the logger for recording processing information.
     /// </summary>
     protected ILogger Logger { get; private set; }
 
     /// <summary>
-    /// Gets or sets the Lambda context associated with the event processing.
+    ///     Gets or sets the Lambda context associated with the event processing.
     /// </summary>
     protected ILambdaContext Context { get; set; }
 
     /// <summary>
-    /// Gets or sets the configuration root for accessing application settings.
+    ///     Gets or sets the configuration root for accessing application settings.
     /// </summary>
     protected IConfigurationRoot Configuration { get; set; }
 
     /// <summary>
-    /// Initializes the logger with an optional logger instance or creates a new logger if not provided.
+    ///     Initializes the logger with an optional logger instance or creates a new logger if not provided.
     /// </summary>
     /// <param name="logger">An optional logger instance to use.</param>
     protected void InitializeLogger(ILogger logger = null)
@@ -86,7 +88,7 @@ public abstract class BaseEventProcessor
     }
 
     /// <summary>
-    /// Sets up the Inversion of Control (IOC) container for managing dependencies.
+    ///     Sets up the Inversion of Control (IOC) container for managing dependencies.
     /// </summary>
     protected void SetupIoc()
     {
@@ -114,10 +116,10 @@ public abstract class BaseEventProcessor
     }
 
     /// <summary>
-    /// Starts a new activity for tracing and adds relevant tags and baggage information.
+    ///     Starts a new activity for tracing and adds relevant tags and baggage information.
     /// </summary>
     /// <param name="activityName">The name of the activity to start.</param>
-    /// <returns>The started <see cref="Activity"/>.</returns>
+    /// <returns>The started <see cref="Activity" />.</returns>
     protected Activity StartBaseActivity(string activityName)
     {
         if (activityName is null) throw new ArgumentNullException(nameof(activityName));
@@ -141,7 +143,8 @@ public abstract class BaseEventProcessor
     }
 
     /// <summary>
-    /// Sets up the application configuration using environment variables and JSON files. When the configuration is already set, this method does nothing.
+    ///     Sets up the application configuration using environment variables and JSON files. When the configuration is already
+    ///     set, this method does nothing.
     /// </summary>
     protected virtual void SetupConfiguration()
     {
@@ -164,13 +167,13 @@ public abstract class BaseEventProcessor
     }
 
     /// <summary>
-    /// Sets up the Inversion of Control (IOC) container for managing dependencies.
+    ///     Sets up the Inversion of Control (IOC) container for managing dependencies.
     /// </summary>
     /// <returns>The configured IOC container.</returns>
     protected abstract IContainer SetupIocContainer();
 
     /// <summary>
-    /// Configures additional sources for enriching the application configuration.
+    ///     Configures additional sources for enriching the application configuration.
     /// </summary>
     /// <param name="configurationBuilder">The configuration builder to which additional sources can be added.</param>
     protected virtual void EnrichConfiguration(ConfigurationBuilder configurationBuilder)

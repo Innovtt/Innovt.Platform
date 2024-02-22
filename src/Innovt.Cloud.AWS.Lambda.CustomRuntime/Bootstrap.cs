@@ -9,7 +9,7 @@ using Amazon.Lambda.Serialization.SystemTextJson;
 namespace Innovt.Cloud.AWS.Lambda.CustomRuntime;
 
 /// <summary>
-/// The Bootstrap class provides a method to run asynchronous Lambda functions.
+///     The Bootstrap class provides a method to run asynchronous Lambda functions.
 /// </summary>
 public static class Bootstrap
 {

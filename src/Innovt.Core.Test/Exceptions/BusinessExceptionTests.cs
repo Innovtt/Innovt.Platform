@@ -10,13 +10,13 @@ using NUnit.Framework;
 namespace Innovt.Core.Test.Exceptions;
 
 /// <summary>
-/// Unit tests for the <see cref="BusinessException"/> class.
+///     Unit tests for the <see cref="BusinessException" /> class.
 /// </summary>
 [TestFixture]
 public class BusinessExceptionTests
 {
     /// <summary>
-    /// Verifies that the exception message is set correctly.
+    ///     Verifies that the exception message is set correctly.
     /// </summary>
     [Test]
     public void CheckMessage()
@@ -29,7 +29,7 @@ public class BusinessExceptionTests
     }
 
     /// <summary>
-    /// Verifies that the exception code and message are set correctly.
+    ///     Verifies that the exception code and message are set correctly.
     /// </summary>
     [Test]
     public void CheckCode()
@@ -43,7 +43,7 @@ public class BusinessExceptionTests
     }
 
     /// <summary>
-    /// Verifies that the exception message is set to a default value when the error list is empty.
+    ///     Verifies that the exception message is set to a default value when the error list is empty.
     /// </summary>
     [Test]
     public void MessageIsEmptyWhenErrorListIsEmpty()
@@ -56,7 +56,7 @@ public class BusinessExceptionTests
     }
 
     /// <summary>
-    /// Verifies that the exception detail is null when the error list is empty.
+    ///     Verifies that the exception detail is null when the error list is empty.
     /// </summary>
     [Test]
     public void DetailShouldBeNullWhenErrorListIsEmpty()
@@ -69,12 +69,12 @@ public class BusinessExceptionTests
     }
 
     /// <summary>
-    /// Verifies that the exception is created correctly with a list of error messages.
+    ///     Verifies that the exception is created correctly with a list of error messages.
     /// </summary>
     [Test]
     public void CheckValidationPattern()
     {
-        var errors = new List<ErrorMessage>()
+        var errors = new List<ErrorMessage>
         {
             new("e-mail is required", "Email", "01"),
             new("invalid e-mail", "Email", "02"),

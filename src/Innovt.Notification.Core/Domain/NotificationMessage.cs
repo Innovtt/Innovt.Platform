@@ -12,12 +12,12 @@ using Innovt.Core.Utilities;
 namespace Innovt.Notification.Core.Domain;
 
 /// <summary>
-/// Represents a notification message.
+///     Represents a notification message.
 /// </summary>
 public class NotificationMessage : IValidatableObject
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="NotificationMessage"/> class with the specified type.
+    ///     Initializes a new instance of the <see cref="NotificationMessage" /> class with the specified type.
     /// </summary>
     /// <param name="type">The type of the notification message.</param>
     public NotificationMessage(NotificationMessageType type)
@@ -26,7 +26,8 @@ public class NotificationMessage : IValidatableObject
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="NotificationMessage"/> class with the specified type, from address, from name, and subject.
+    ///     Initializes a new instance of the <see cref="NotificationMessage" /> class with the specified type, from address,
+    ///     from name, and subject.
     /// </summary>
     /// <param name="type">The type of the notification message.</param>
     /// <param name="fromAddress">The "From" address.</param>
@@ -42,42 +43,42 @@ public class NotificationMessage : IValidatableObject
     }
 
     /// <summary>
-    /// Gets or sets the "From" contact information for the notification message.
+    ///     Gets or sets the "From" contact information for the notification message.
     /// </summary>
     public NotificationMessageContact From { get; internal set; }
 
     /// <summary>
-    /// Gets or sets the list of "To" contact information for the notification message.
+    ///     Gets or sets the list of "To" contact information for the notification message.
     /// </summary>
     public IList<NotificationMessageContact> To { get; internal set; }
 
     /// <summary>
-    /// Gets or sets the list of "Bcc" contact information for the notification message.
+    ///     Gets or sets the list of "Bcc" contact information for the notification message.
     /// </summary>
     public IList<NotificationMessageContact> BccTo { get; internal set; }
 
     /// <summary>
-    /// Gets or sets the list of "Cc" contact information for the notification message.
+    ///     Gets or sets the list of "Cc" contact information for the notification message.
     /// </summary>
     public IList<NotificationMessageContact> CcTo { get; internal set; }
 
     /// <summary>
-    /// Gets or sets the list of "Reply-To" contact information for the notification message.
+    ///     Gets or sets the list of "Reply-To" contact information for the notification message.
     /// </summary>
     public IList<NotificationMessageContact> ReplyToAddresses { get; internal set; }
 
     /// <summary>
-    /// Gets or sets the type of the notification message.
+    ///     Gets or sets the type of the notification message.
     /// </summary>
     public NotificationMessageType Type { get; set; }
 
     /// <summary>
-    /// Gets or sets the subject of the notification message.
+    ///     Gets or sets the subject of the notification message.
     /// </summary>
     public NotificationMessageSubject Subject { get; set; }
 
     /// <summary>
-    /// Gets or sets the body of the notification message.
+    ///     Gets or sets the body of the notification message.
     /// </summary>
     public NotificationMessageBody Body { get; set; }
 
@@ -103,7 +104,7 @@ public class NotificationMessage : IValidatableObject
     }
 
     /// <summary>
-    /// Adds the subject to the notification message.
+    ///     Adds the subject to the notification message.
     /// </summary>
     public NotificationMessage AddSubject(string subject, string charset = null)
     {
@@ -117,7 +118,7 @@ public class NotificationMessage : IValidatableObject
     }
 
     /// <summary>
-    /// Adds the "From" contact information to the notification message.
+    ///     Adds the "From" contact information to the notification message.
     /// </summary>
     public NotificationMessage AddFrom(string address, string name = null)
     {
@@ -127,7 +128,7 @@ public class NotificationMessage : IValidatableObject
     }
 
     /// <summary>
-    /// Adds "To" contact information to the notification message.
+    ///     Adds "To" contact information to the notification message.
     /// </summary>
     public NotificationMessage AddTo(string address, string name = null)
     {
@@ -137,7 +138,7 @@ public class NotificationMessage : IValidatableObject
     }
 
     /// <summary>
-    /// Adds "Bcc" contact information to the notification message.
+    ///     Adds "Bcc" contact information to the notification message.
     /// </summary>
     public virtual NotificationMessage AddBccTo(string address, string name = null)
     {
@@ -147,7 +148,7 @@ public class NotificationMessage : IValidatableObject
     }
 
     /// <summary>
-    /// Adds "Cc" contact information to the notification message.
+    ///     Adds "Cc" contact information to the notification message.
     /// </summary>
     public virtual NotificationMessage AddCcTo(string address, string name = null)
     {
@@ -157,7 +158,7 @@ public class NotificationMessage : IValidatableObject
     }
 
     /// <summary>
-    /// Adds "Reply-To" contact information to the notification message.
+    ///     Adds "Reply-To" contact information to the notification message.
     /// </summary>
     public virtual NotificationMessage AddReplyTo(string address, string name = null)
     {

@@ -5,20 +5,20 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 namespace Innovt.AspNetCore.Extensions;
 
 /// <summary>
-/// Extension methods for configuring Swagger authorization schemes.
+///     Extension methods for configuring Swagger authorization schemes.
 /// </summary>
 public static class SwaggerExtensions
 {
     /// <summary>
-    /// Creates a Bearer type security scheme for Swagger.
+    ///     Creates a Bearer type security scheme for Swagger.
     /// </summary>
     /// <param name="name">The name of the scheme.</param>
     /// <param name="description">The description of the scheme.</param>
     /// <param name="scheme">The scheme type (e.g., "bearer").</param>
-    /// <returns>An <see cref="OpenApiSecurityScheme"/> object representing the scheme.</returns>
+    /// <returns>An <see cref="OpenApiSecurityScheme" /> object representing the scheme.</returns>
     private static OpenApiSecurityScheme CreateScheme(string name, string description, string scheme)
     {
-        return new OpenApiSecurityScheme()
+        return new OpenApiSecurityScheme
         {
             Name = name,
             Type = SecuritySchemeType.Http,
@@ -29,22 +29,22 @@ public static class SwaggerExtensions
     }
 
     /// <summary>
-    /// Creates a security requirement for Swagger.
+    ///     Creates a security requirement for Swagger.
     /// </summary>
     /// <param name="id">The ID of the security scheme.</param>
     /// <param name="name">The name of the security scheme.</param>
     /// <param name="scheme">The scheme type (e.g., "oauth2").</param>
-    /// <returns>An <see cref="OpenApiSecurityRequirement"/> object representing the security requirement.</returns>
+    /// <returns>An <see cref="OpenApiSecurityRequirement" /> object representing the security requirement.</returns>
     private static OpenApiSecurityRequirement CreateSecurityRequirement(string id, string name, string? scheme)
     {
-        return new OpenApiSecurityRequirement()
+        return new OpenApiSecurityRequirement
         {
             {
-                new OpenApiSecurityScheme()
+                new OpenApiSecurityScheme
                 {
-                    Reference = new OpenApiReference()
+                    Reference = new OpenApiReference
                     {
-                        Type = new ReferenceType?(ReferenceType.SecurityScheme),
+                        Type = ReferenceType.SecurityScheme,
                         Id = id
                     },
                     Scheme = scheme,
@@ -57,9 +57,9 @@ public static class SwaggerExtensions
     }
 
     /// <summary>
-    /// Configures Bearer token authorization for Swagger.
+    ///     Configures Bearer token authorization for Swagger.
     /// </summary>
-    /// <param name="services">The <see cref="IServiceCollection"/> instance.</param>
+    /// <param name="services">The <see cref="IServiceCollection" /> instance.</param>
     /// <param name="customOptions">Custom options for Swagger configuration.</param>
     public static void ConfigureBearerAuthorization(this IServiceCollection services,
         Action<SwaggerGenOptions>? customOptions = null)
@@ -78,9 +78,9 @@ public static class SwaggerExtensions
     }
 
     /// <summary>
-    /// Configures Basic authentication for Swagger.
+    ///     Configures Basic authentication for Swagger.
     /// </summary>
-    /// <param name="services">The <see cref="IServiceCollection"/> instance.</param>
+    /// <param name="services">The <see cref="IServiceCollection" /> instance.</param>
     /// <param name="customOptions">Custom options for Swagger configuration.</param>
     public static void ConfigureBasicAuthorization(this IServiceCollection services,
         Action<SwaggerGenOptions>? customOptions = null)

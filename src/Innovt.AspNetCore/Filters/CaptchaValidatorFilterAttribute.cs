@@ -15,32 +15,32 @@ using Microsoft.Extensions.Configuration;
 namespace Innovt.AspNetCore.Filters;
 
 /// <summary>
-/// Represents the response received from reCAPTCHA verification.
+///     Represents the response received from reCAPTCHA verification.
 /// </summary>
 internal class RecaptchaResponse
 {
     /// <summary>
-    /// Indicates whether the reCAPTCHA verification was successful.
+    ///     Indicates whether the reCAPTCHA verification was successful.
     /// </summary>
     public bool success { get; set; }
 
     /// <summary>
-    /// The score obtained from the reCAPTCHA verification.
+    ///     The score obtained from the reCAPTCHA verification.
     /// </summary>
     public decimal score { get; set; }
 
     /// <summary>
-    /// The action associated with the reCAPTCHA verification.
+    ///     The action associated with the reCAPTCHA verification.
     /// </summary>
     public string action { get; set; }
 
     /// <summary>
-    /// The timestamp of the challenge.
+    ///     The timestamp of the challenge.
     /// </summary>
     public string challenge_ts { get; set; }
 
     /// <summary>
-    /// The hostname from which the reCAPTCHA verification originated.
+    ///     The hostname from which the reCAPTCHA verification originated.
     /// </summary>
     public string hostname { get; set; }
 }
@@ -49,42 +49,47 @@ internal class RecaptchaResponse
 ///     Code by Rafael Cruzeiro: https://github.com/rcruzeiro/Core.Framework/tree/master/Core.Framework.reCAPTCHA
 /// </summary>
 /// <summary>
-/// Action filter attribute for validating reCAPTCHA tokens.
+///     Action filter attribute for validating reCAPTCHA tokens.
 /// </summary>
 public sealed class CaptchaValidatorFilterAttribute : ActionFilterAttribute
 {
     private const string CaptchaUri = "https://www.google.com/recaptcha/api/siteverify";
 
+    private JsonSerializerOptions serializerSettings;
     /// <summary>
-    /// Initializes a new instance of the <see cref="CaptchaValidatorFilterAttribute"/> class.
+    ///     Initializes a new instance of the <see cref="CaptchaValidatorFilterAttribute" /> class.
     /// </summary>
     public CaptchaValidatorFilterAttribute()
     {
         DefaultToken = "inn0ut#";
+        serializerSettings = new JsonSerializerOptions
+        {
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
     }
 
     /// <summary>
-    /// Gets or sets the anti-forgery token.
+    ///     Gets or sets the anti-forgery token.
     /// </summary>
-    public string AntiForgery { get; }
+    public string? AntiForgery { get; }
 
     /// <summary>
-    /// Gets or sets the hostname.
+    ///     Gets or sets the hostname.
     /// </summary>
-    public string HostName { get; }
+    public string? HostName { get; }
 
     /// <summary>
-    /// Gets or sets the secret key for reCAPTCHA validation.
+    ///     Gets or sets the secret key for reCAPTCHA validation.
     /// </summary>
-    public string SecretKey { get; internal set; }
+    public string? SecretKey { get; internal set; }
 
     /// <summary>
-    /// Gets or sets the default reCAPTCHA token to accept without validation.
+    ///     Gets or sets the default reCAPTCHA token to accept without validation.
     /// </summary>
     public string DefaultToken { get; set; }
 
     /// <summary>
-    /// Reads the reCAPTCHA configuration from the configuration provider.
+    ///     Reads the reCAPTCHA configuration from the configuration provider.
     /// </summary>
     /// <param name="context">The HTTP context.</param>
     private void ReadConfig(HttpContext context)
@@ -103,12 +108,15 @@ public sealed class CaptchaValidatorFilterAttribute : ActionFilterAttribute
     }
 
     /// <summary>
-    /// Validates the reCAPTCHA token using the Google reCAPTCHA API.
+    ///     Validates the reCAPTCHA token using the Google reCAPTCHA API.
     /// </summary>
     /// <param name="token">The reCAPTCHA token.</param>
     /// <param name="context">The HTTP context.</param>
-    /// <returns>A <see cref="Task"/> representing the asynchronous operation. The task result contains a boolean indicating whether the reCAPTCHA is valid.</returns>
-    private async Task<bool> IsValid(string token, HttpContext context)
+    /// <returns>
+    ///     A <see cref="Task" /> representing the asynchronous operation. The task result contains a boolean indicating
+    ///     whether the reCAPTCHA is valid.
+    /// </returns>
+    private async Task<bool> IsValid(string? token, HttpContext context)
     {
         if (string.IsNullOrEmpty(token))
             return false;
@@ -123,27 +131,19 @@ public sealed class CaptchaValidatorFilterAttribute : ActionFilterAttribute
         var stringAsync = await httpClient
             .GetStringAsync(new Uri($"{CaptchaUri}?secret={SecretKey}&response={token}"))
             .ConfigureAwait(false);
-
-        var serializerSettings = new JsonSerializerOptions
-        {
-            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-        };
-
+        
         var captchaResponse = JsonSerializer.Deserialize<RecaptchaResponse>(stringAsync, serializerSettings);
 
-        if (captchaResponse is null)
-            return false;
-
-        return captchaResponse.success;
+        return captchaResponse is not null && captchaResponse.success;
     }
 
     /// <summary>
-    /// Overrides the <see cref="ActionFilterAttribute.OnActionExecutionAsync"/> method to validate the reCAPTCHA token.
+    ///     Overrides the <see cref="ActionFilterAttribute.OnActionExecutionAsync" /> method to validate the reCAPTCHA token.
     /// </summary>
     /// <param name="context">The action executing context.</param>
     /// <param name="next">The action execution delegate.</param>
-    /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
-    public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+    /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
+    public override async Task OnActionExecutionAsync(ActionExecutingContext? context, ActionExecutionDelegate next)
     {
         if (context is null) return;
 

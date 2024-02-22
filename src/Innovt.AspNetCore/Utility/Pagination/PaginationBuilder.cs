@@ -7,7 +7,7 @@ using Innovt.Core.Collections;
 namespace Innovt.AspNetCore.Utility.Pagination;
 
 /// <summary>
-/// Builder class for generating pagination HTML elements.
+///     Builder class for generating pagination HTML elements.
 /// </summary>
 /// <typeparam name="T">Type of items in the collection.</typeparam>
 public class PaginationBuilder<T> where T : class
@@ -15,7 +15,7 @@ public class PaginationBuilder<T> where T : class
     private readonly string formId;
 
     /// <summary>
-    /// Initializes a new instance of the PaginationBuilder class.
+    ///     Initializes a new instance of the PaginationBuilder class.
     /// </summary>
     /// <param name="collection">The paged collection of items.</param>
     /// <param name="formId">The ID of the HTML form associated with the pagination.</param>
@@ -26,12 +26,12 @@ public class PaginationBuilder<T> where T : class
     }
 
     /// <summary>
-    /// Gets or sets the paged collection of items.
+    ///     Gets or sets the paged collection of items.
     /// </summary>
     public PagedCollection<T> Collection { get; set; }
 
     /// <summary>
-    /// Builds the header HTML for pagination.
+    ///     Builds the header HTML for pagination.
     /// </summary>
     /// <returns>The HTML for the pagination header.</returns
     public virtual string BuildHeader()
@@ -40,7 +40,7 @@ public class PaginationBuilder<T> where T : class
     }
 
     /// <summary>
-    /// Builds the pager script HTML for pagination functionality.
+    ///     Builds the pager script HTML for pagination functionality.
     /// </summary>
     /// <returns>The HTML for the pagination script.</returns>
     public virtual string BuildPagerScript()
@@ -54,7 +54,7 @@ public class PaginationBuilder<T> where T : class
     }
 
     /// <summary>
-    /// Builds the footer HTML for pagination.
+    ///     Builds the footer HTML for pagination.
     /// </summary>
     /// <returns>The HTML for the pagination footer.</returns>
     public virtual string BuildFooter()
@@ -63,7 +63,7 @@ public class PaginationBuilder<T> where T : class
     }
 
     /// <summary>
-    /// Builds the HTML for the "Previous" pagination button.
+    ///     Builds the HTML for the "Previous" pagination button.
     /// </summary>
     /// <param name="previousText">The text to display for the "Previous" button (default is "Anterior").</param>
     /// <returns>The HTML for the "Previous" button.</returns>
@@ -74,7 +74,7 @@ public class PaginationBuilder<T> where T : class
     }
 
     /// <summary>
-    /// Builds the HTML for the "Next" pagination button.
+    ///     Builds the HTML for the "Next" pagination button.
     /// </summary>
     /// <param name="nextText">The text to display for the "Next" button (default is "Próximo").</param>
     /// <returns>The HTML for the "Next" button.</returns>
@@ -85,7 +85,7 @@ public class PaginationBuilder<T> where T : class
     }
 
     /// <summary>
-    /// Builds the HTML for a pagination item.
+    ///     Builds the HTML for a pagination item.
     /// </summary>
     /// <param name="page">The page number associated with the item.</param>
     /// <param name="isCurrent">Indicates whether the item represents the current page.</param>

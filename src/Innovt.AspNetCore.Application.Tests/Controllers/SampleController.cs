@@ -1,7 +1,6 @@
 using System.Net;
 using Innovt.AspNetCore.Application.Tests.ViewModels;
 using Innovt.AspNetCore.Controllers;
-using Innovt.Core.Attributes;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using ILogger = Innovt.Core.CrossCutting.Log.ILogger;
@@ -25,9 +24,10 @@ public class SampleController : BaseApiController
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType((int)HttpStatusCode.Created)]
     //[ModelExcludeFilter(excludeAttributes: new[]{ "ExternalId", "UserId"})]
-    public async Task<IActionResult> Add([FromRoute] Guid userId, [FromBody] AddUserViewModel command,
+    public IActionResult Add([FromRoute] Guid userId, [FromBody] AddUserViewModel command,
         CancellationToken cancellationToken = default)
     {
+        
         return Ok();
     }
 }

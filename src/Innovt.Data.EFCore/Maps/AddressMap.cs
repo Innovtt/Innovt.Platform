@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Innovt.Data.EFCore.Maps;
 
 /// <summary>
-/// Configuration for mapping the Address entity to the database using Entity Framework Core.
+///     Configuration for mapping the Address entity to the database using Entity Framework Core.
 /// </summary>
 public class AddressMap : IEntityTypeConfiguration<Address>
 {
@@ -19,7 +19,7 @@ public class AddressMap : IEntityTypeConfiguration<Address>
     private readonly bool ignoreType;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="AddressMap"/> class.
+    ///     Initializes a new instance of the <see cref="AddressMap" /> class.
     /// </summary>
     /// <param name="ignoreCoordinate">Flag indicating whether to ignore coordinate mapping. Defaults to false.</param>
     /// <param name="ignoreCity">Flag indicating whether to ignore city mapping. Defaults to false.</param>
@@ -32,13 +32,13 @@ public class AddressMap : IEntityTypeConfiguration<Address>
     }
 
     /// <summary>
-    /// Configures the mapping for the Address entity.
+    ///     Configures the mapping for the Address entity.
     /// </summary>
     /// <param name="builder">The entity type builder.</param>
     /// <exception cref="ArgumentNullException">Thrown when the builder parameter is null.</exception>
     public void Configure(EntityTypeBuilder<Address> builder)
     {
-        if (builder == null) throw new ArgumentNullException(nameof(builder));
+        ArgumentNullException.ThrowIfNull(builder);
 
 
         builder.HasKey(u => u.Id);

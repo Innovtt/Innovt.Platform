@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 using Innovt.Core.Caching;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Test.Models;
-using Innovt.Core.Utilities;
 using Microsoft.Extensions.Caching.Memory;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace Innovt.Core.Test;
@@ -20,9 +20,9 @@ public class MultiLayerCacheServiceTests
     [SetUp]
     public void Setup()
     {
-        loggerMock = NSubstitute.Substitute.For<ILogger>();
+        loggerMock = Substitute.For<ILogger>();
 
-        var defaultCache = new LocalCache(new MemoryCache(new MemoryCacheOptions() { CompactionPercentage = 1 }));
+        var defaultCache = new LocalCache(new MemoryCache(new MemoryCacheOptions { CompactionPercentage = 1 }));
 
         cacheService = new MultiLayerCacheService(defaultCache, loggerMock);
     }
@@ -53,7 +53,7 @@ public class MultiLayerCacheServiceTests
     [Test]
     public void SetValueThrowExceptionIfKeyIsNullOrEmpty()
     {
-        Assert.Throws<ArgumentNullException>(() => cacheService.SetValue<int>(null, 0, TimeSpan.FromSeconds(10)));
+        Assert.Throws<ArgumentNullException>(() => cacheService.SetValue(null, 0, TimeSpan.FromSeconds(10)));
     }
 
 
@@ -73,7 +73,7 @@ public class MultiLayerCacheServiceTests
     [Test]
     public async Task GetValueWithFactoryReturnsFactoryValue()
     {
-        var value = await cacheService.GetValue<A>("Quantity", Factory, CancellationToken.None).ConfigureAwait(false);
+        var value = await cacheService.GetValue("Quantity", Factory, CancellationToken.None).ConfigureAwait(false);
 
         Assert.That(value, Is.Not.Null);
         Assert.That("Michel", Is.EqualTo(value.Name));
@@ -87,7 +87,7 @@ public class MultiLayerCacheServiceTests
         var key = "Quantity";
         var expectedValue = "Michel";
 
-        var value = await cacheService.GetValueOrCreate<A>(key, Factory, expiration, CancellationToken.None)
+        var value = await cacheService.GetValueOrCreate(key, Factory, expiration, CancellationToken.None)
             .ConfigureAwait(false);
 
         Assert.That(value, Is.Not.Null);
@@ -103,7 +103,7 @@ public class MultiLayerCacheServiceTests
 
     public static Task<A> Factory(CancellationToken arg)
     {
-        return Task.FromResult(new A()
+        return Task.FromResult(new A
         {
             Name = "Michel"
         });
@@ -115,7 +115,7 @@ public class MultiLayerCacheServiceTests
         var key = "Quantity";
         var expectedValue = 100;
 
-        cacheService.SetValue<int>(key, expectedValue, TimeSpan.FromDays(1));
+        cacheService.SetValue(key, expectedValue, TimeSpan.FromDays(1));
 
         var value = cacheService.GetValue<int>(key);
 
@@ -129,7 +129,7 @@ public class MultiLayerCacheServiceTests
         var expectedValue = 0;
         var expiration = TimeSpan.FromSeconds(1);
 
-        cacheService.SetValue<int>(key, 100, TimeSpan.FromSeconds(1));
+        cacheService.SetValue(key, 100, TimeSpan.FromSeconds(1));
 
         Thread.Sleep(expiration * 2);
 
@@ -145,7 +145,7 @@ public class MultiLayerCacheServiceTests
         var key = "Quantity";
         var expectedValue = 0;
 
-        cacheService.SetValue<int>(key, 100, TimeSpan.FromDays(1));
+        cacheService.SetValue(key, 100, TimeSpan.FromDays(1));
 
         cacheService.Remove(key);
 

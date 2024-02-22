@@ -20,7 +20,7 @@ public class Program
             .CaptureStartupErrors(true).UseContentRoot(Directory.GetCurrentDirectory())
             .ConfigureAppConfiguration((hostingContext, builder) =>
             {
-                builder.AddJsonFile($"appsettings.json");
+                builder.AddJsonFile("appsettings.json");
                 builder.AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName.ToLower()}.json");
 
                 builder.AddEnvironmentVariables();

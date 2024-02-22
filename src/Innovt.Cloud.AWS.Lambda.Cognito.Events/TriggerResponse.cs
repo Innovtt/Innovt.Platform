@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 namespace Innovt.Cloud.AWS.Lambda.Cognito.Events;
 
 /// <summary>
-/// Represents a base class for trigger response objects.
+///     Represents a base class for trigger response objects.
 /// </summary>
 [DataContract]
 public abstract class TriggerResponse

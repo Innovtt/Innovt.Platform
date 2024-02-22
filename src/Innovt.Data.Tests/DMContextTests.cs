@@ -15,7 +15,7 @@ public class DMContextTests
     [Test]
     public void InstanceCantBeNullWhenUsingSingleton()
     {
-        var instance = DMContext.Instance();
+        var instance = DmContext.Instance();
         Assert.That(instance, Is.Not.Null);
     }
 
@@ -23,26 +23,26 @@ public class DMContextTests
     [Test]
     public void AttachThrowExceptionIfObjectIsNull()
     {
-        Assert.Throws<ArgumentNullException>(() => DMContext.Instance().Attach<UserDataModel>(null));
+        Assert.Throws<ArgumentNullException>(() => DmContext.Instance().Attach<UserDataModel>(null));
     }
 
 
     [Test]
     public void DeAttachThrowExceptionIfObjectIsNull()
     {
-        Assert.Throws<ArgumentNullException>(() => DMContext.Instance().DeAttach<UserDataModel>(null));
+        Assert.Throws<ArgumentNullException>(() => DmContext.Instance().DeAttach<UserDataModel>(null));
     }
 
     [Test]
     public void FindThrowExceptionIfObjectIsNull()
     {
-        Assert.Throws<ArgumentNullException>(() => DMContext.Instance().Find<UserDataModel>(null));
+        Assert.Throws<ArgumentNullException>(() => DmContext.Instance().Find<UserDataModel>(null));
     }
 
     [Test]
     public void CheckHashCode()
     {
-        var userDataModel = new UserDataModel()
+        var userDataModel = new UserDataModel
         {
             Id = 10,
             Name = "Michel",
@@ -50,9 +50,9 @@ public class DMContextTests
             LastName = "Borges"
         };
 
-        DMContext.Instance().Attach<UserDataModel>(userDataModel);
+        DmContext.Instance().Attach(userDataModel);
 
-        var userDataModel2 = new UserDataModel()
+        var userDataModel2 = new UserDataModel
         {
             Id = 10,
             Name = "Michel",
@@ -60,16 +60,16 @@ public class DMContextTests
             LastName = "Borges"
         };
 
-        DMContext.Instance().Attach<UserDataModel>(userDataModel2);
+        DmContext.Instance().Attach(userDataModel2);
 
-        DMContext.Instance().DeAttach<UserDataModel>(userDataModel);
-        DMContext.Instance().DeAttach<UserDataModel>(userDataModel2);
+        DmContext.Instance().DeAttach(userDataModel);
+        DmContext.Instance().DeAttach(userDataModel2);
     }
 
     [Test]
     public void Attach()
     {
-        var userDataModel = new UserDataModel()
+        var userDataModel = new UserDataModel
         {
             Id = 10,
             Name = "Michel",
@@ -77,9 +77,9 @@ public class DMContextTests
             LastName = "Borges"
         };
 
-        DMContext.Instance().Attach<UserDataModel>(userDataModel);
+        DmContext.Instance().Attach(userDataModel);
 
-        var user = DMContext.Instance().Find<UserDataModel>(userDataModel);
+        var user = DmContext.Instance().Find(userDataModel);
 
         Assert.That(user, Is.Not.Null);
 

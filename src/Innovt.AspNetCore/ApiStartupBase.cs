@@ -2,12 +2,11 @@
 // Author: Michel Borges
 // Project: Innovt.AspNetCore
 
+using System.Text.Json;
 using Innovt.AspNetCore.Filters;
 using Innovt.AspNetCore.Infrastructure;
 using Innovt.AspNetCore.Model;
-using Innovt.Core.Utilities;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
@@ -23,12 +22,12 @@ using OpenTelemetry.Trace;
 namespace Innovt.AspNetCore;
 
 /// <summary>
-/// Base class for configuring API startup settings and dependencies.
+///     Base class for configuring API startup settings and dependencies.
 /// </summary>
 public abstract class ApiStartupBase
 {
     /// <summary>
-    /// Initializes a new instance of the ApiStartupBase class with the specified configuration and environment.
+    ///     Initializes a new instance of the ApiStartupBase class with the specified configuration and environment.
     /// </summary>
     /// <param name="configuration">The configuration for the application.</param>
     /// <param name="environment">The hosting environment for the application.</param>
@@ -44,7 +43,7 @@ public abstract class ApiStartupBase
     }
 
     /// <summary>
-    /// Initializes a new instance of the ApiStartupBase class with additional API documentation details.
+    ///     Initializes a new instance of the ApiStartupBase class with additional API documentation details.
     /// </summary>
     /// <param name="configuration">The configuration for the application.</param>
     /// <param name="environment">The hosting environment for the application.</param>
@@ -54,7 +53,10 @@ public abstract class ApiStartupBase
     /// <param name="apiVersion">The version of the API.</param>
     /// <param name="contactName">The name of the API contact (optional).</param>
     /// <param name="contactEmail">The email of the API contact (optional).</param>
-    /// <exception cref="ArgumentNullException">Thrown if configuration, environment, appName, apiTitle, apiDescription, or apiVersion is null.</exception>
+    /// <exception cref="ArgumentNullException">
+    ///     Thrown if configuration, environment, appName, apiTitle, apiDescription, or
+    ///     apiVersion is null.
+    /// </exception>
     protected ApiStartupBase(IConfiguration configuration, IWebHostEnvironment environment, string appName,
         string apiTitle, string apiDescription,
         string apiVersion, string? contactName = null, string? contactEmail = null) : this(configuration, environment,
@@ -64,37 +66,42 @@ public abstract class ApiStartupBase
     }
 
     /// <summary>
-    /// Gets the name of the application.
+    ///     Gets the name of the application.
     /// </summary>
     public string AppName { get; }
 
     /// <summary>
-    /// Gets or sets the default health path for the application.
+    ///     Gets or sets the default health path for the application.
     /// </summary>
     protected string DefaultHealthPath { get; set; }
 
     /// <summary>
-    /// Gets or sets the API documentation details.
+    ///     Gets or sets the API documentation details.
     /// </summary>
     protected DefaultApiDocumentation Documentation { get; set; }
 
     /// <summary>
-    /// Gets or sets the localization settings for the API.
+    ///     Gets or sets the localization settings for the API.
     /// </summary>
     protected DefaultApiLocalization Localization { get; set; }
 
     /// <summary>
-    /// Gets the configuration for the application.
+    ///     If true will set default Json Options(JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase) etc
+    /// </summary>
+    public bool SetDefaultJsonOptions { get; set; }
+
+    /// <summary>
+    ///     Gets the configuration for the application.
     /// </summary>
     public IConfiguration Configuration { get; }
 
     /// <summary>
-    /// Gets the hosting environment for the application.
+    ///     Gets the hosting environment for the application.
     /// </summary>
     public IWebHostEnvironment Environment { get; }
 
     /// <summary>
-    /// Checks if Swagger documentation is enabled.
+    ///     Checks if Swagger documentation is enabled.
     /// </summary>
     /// <returns>True if Swagger documentation is enabled; otherwise, false.</returns>
     private bool IsSwaggerEnabled()
@@ -103,7 +110,7 @@ public abstract class ApiStartupBase
     }
 
     /// <summary>
-    /// Checks if the application is running in a development environment.
+    ///     Checks if the application is running in a development environment.
     /// </summary>
     /// <returns>True if the application is in development; otherwise, false.</returns>
     protected bool IsDevelopmentEnvironment()
@@ -112,7 +119,7 @@ public abstract class ApiStartupBase
     }
 
     /// <summary>
-    /// Adds Swagger generation to the specified services.
+    ///     Adds Swagger generation to the specified services.
     /// </summary>
     /// <param name="services">The service collection to add Swagger to.</param>
     protected virtual void AddSwagger(IServiceCollection services)
@@ -154,7 +161,7 @@ public abstract class ApiStartupBase
     }
 
     /// <summary>
-    /// Adds tracing and telemetry to the specified services.
+    ///     Adds tracing and telemetry to the specified services.
     /// </summary>
     /// <param name="services">The service collection to add tracing to.</param>
     protected virtual void AddTracing(IServiceCollection services)
@@ -170,7 +177,7 @@ public abstract class ApiStartupBase
     }
 
     /// <summary>
-    /// Adds localization services to the specified MVC builder and service collection.
+    ///     Adds localization services to the specified MVC builder and service collection.
     /// </summary>
     /// <param name="mvcBuilder">The MVC builder to add localization to.</param>
     /// <param name="services">The service collection to add localization to.</param>
@@ -193,7 +200,20 @@ public abstract class ApiStartupBase
     }
 
     /// <summary>
-    /// Adds core services needed for API configuration.
+    ///     Apply the default Json Options if the parameter SetDefaultJsonOptions is true
+    /// </summary>
+    /// <param name="mvcBuilder"></param>
+    private void ApplyDefaultJsonOptions(IMvcBuilder mvcBuilder)
+    {
+        mvcBuilder.AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.PropertyNamingPolicy =
+                SetDefaultJsonOptions ? JsonNamingPolicy.CamelCase : null;
+        });
+    }
+
+    /// <summary>
+    ///     Adds core services needed for API configuration.
     /// </summary>
     /// <param name="services">The service collection to add core services to.</param>
     private void AddCoreServices(IServiceCollection services)
@@ -208,6 +228,8 @@ public abstract class ApiStartupBase
         {
             op.Filters.Add(provider.GetService<ApiExceptionFilter>() ?? throw new InvalidOperationException());
         });
+
+        ApplyDefaultJsonOptions(mvcBuilder);
 
         AddLocalization(mvcBuilder, services);
     }
@@ -235,7 +257,7 @@ public abstract class ApiStartupBase
     }
 
     /// <summary>
-    /// Configures Swagger UI for API documentation.
+    ///     Configures Swagger UI for API documentation.
     /// </summary>
     /// <param name="app">The application builder.</param>
     /// <param name="env">The hosting environment.</param>
@@ -254,7 +276,7 @@ public abstract class ApiStartupBase
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     /// <summary>
-    ///  Configure Will Add All main Services as Default for Api and MVC Applications
+    ///     Configure Will Add All main Services as Default for Api and MVC Applications
     /// </summary>
     /// <param name="app"></param>
     /// <param name="env"></param>
@@ -279,9 +301,9 @@ public abstract class ApiStartupBase
     }
 
     /// <summary>
-    /// Configures API behavior options.
+    ///     Configures API behavior options.
     /// </summary>
-    /// <returns>An action that configures <see cref="ApiBehaviorOptions"/>.</returns>
+    /// <returns>An action that configures <see cref="ApiBehaviorOptions" />.</returns>
     protected virtual Action<ApiBehaviorOptions> ConfigureApiBehavior()
     {
         return options =>
@@ -293,7 +315,7 @@ public abstract class ApiStartupBase
     }
 
     /// <summary>
-    /// Configures request cultures for the application.
+    ///     Configures request cultures for the application.
     /// </summary>
     /// <param name="app">The application builder.</param>
     protected virtual void ConfigureCultures(IApplicationBuilder app)
@@ -307,19 +329,19 @@ public abstract class ApiStartupBase
     }
 
     /// <summary>
-    /// Adds default services to the service collection.
+    ///     Adds default services to the service collection.
     /// </summary>
     /// <param name="services">The service collection to add default services to.</param>
     protected abstract void AddDefaultServices(IServiceCollection services);
 
     /// <summary>
-    /// Configures the IoC container for the application.
+    ///     Configures the IoC container for the application.
     /// </summary>
     /// <param name="services">The service collection to configure for IoC.</param>
     protected abstract void ConfigureIoC(IServiceCollection services);
 
     /// <summary>
-    /// Configures the application.
+    ///     Configures the application.
     /// </summary>
     /// <param name="app">The application builder.</param>
     /// <param name="env">The hosting environment.</param>
@@ -328,7 +350,7 @@ public abstract class ApiStartupBase
     public abstract void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory);
 
     /// <summary>
-    /// Configures OpenTelemetry for tracing.
+    ///     Configures OpenTelemetry for tracing.
     /// </summary>
     /// <param name="builder">The TracerProviderBuilder for configuring tracing.</param>
     protected abstract void ConfigureOpenTelemetry(TracerProviderBuilder builder);

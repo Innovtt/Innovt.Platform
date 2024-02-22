@@ -19,9 +19,10 @@ using Innovt.Core.Serialization;
 namespace Innovt.Cloud.AWS.SQS;
 
 /// <summary>
-/// Provides functionalities to interact with an Amazon SQS queue for a specified message type <typeparamref name="T"/>.
+///     Provides functionalities to interact with an Amazon SQS queue for a specified message type
+///     <typeparamref name="T" />.
 /// </summary>
-/// <typeparam name="T">Type of the messages in the queue, must implement <see cref="IQueueMessage"/>.</typeparam>
+/// <typeparam name="T">Type of the messages in the queue, must implement <see cref="IQueueMessage" />.</typeparam>
 public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueueMessage
 {
     private static readonly ActivitySource QueueActivitySource = new("Innovt.Cloud.AWS.SQS.QueueService");
@@ -31,11 +32,11 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
     private AmazonSQSClient sqsClient;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="QueueService{T}"/> class.
+    ///     Initializes a new instance of the <see cref="QueueService{T}" /> class.
     /// </summary>
     /// <param name="logger">Logger instance.</param>
     /// <param name="configuration">AWS configuration.</param>
-    /// <param name="queueName">Optional queue name, defaults to the name of type <typeparamref name="T"/>.</param>
+    /// <param name="queueName">Optional queue name, defaults to the name of type <typeparamref name="T" />.</param>
     /// <param name="serializer">Custom serializer (optional).</param>
     public QueueService(ILogger logger, IAwsConfiguration configuration, string queueName = null,
         ISerializer serializer = null) : base(logger, configuration)
@@ -45,11 +46,11 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="QueueService{T}"/> class.
+    ///     Initializes a new instance of the <see cref="QueueService{T}" /> class.
     /// </summary>
     /// <param name="logger">Logger instance.</param>
     /// <param name="configuration">AWS configuration.</param>
-    /// <param name="queueName">Optional queue name, defaults to the name of type <typeparamref name="T"/>.</param>
+    /// <param name="queueName">Optional queue name, defaults to the name of type <typeparamref name="T" />.</param>
     /// <param name="serializer">Custom serializer (optional).</param>
     public QueueService(ILogger logger, IAwsConfiguration configuration, string region, string queueName = null,
         ISerializer serializer = null) : base(logger, configuration, region)
@@ -59,23 +60,23 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
     }
 
     /// <summary>
-    /// Gets the name of the queue.
+    ///     Gets the name of the queue.
     /// </summary>
     public string QueueName { get; protected set; }
 
     /// <summary>
-    /// Gets the URL of the queue.
+    ///     Gets the URL of the queue.
     /// </summary>
 #pragma warning disable CA1056 // URI-like properties should not be strings
     public string QueueUrl { get; private set; }
 #pragma warning restore CA1056 // URI-like properties should not be strings
     /// <summary>
-    /// Gets the Amazon SQS client for queue operations.
+    ///     Gets the Amazon SQS client for queue operations.
     /// </summary>
     private AmazonSQSClient SqsClient => sqsClient ??= CreateService<AmazonSQSClient>();
 
     /// <summary>
-    /// Gets the serializer for message serialization/deserialization.
+    ///     Gets the serializer for message serialization/deserialization.
     /// </summary>
     private ISerializer Serializer => serializer ??= new JsonSerializer();
 
@@ -136,7 +137,7 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
 
 
     /// <summary>
-    /// Dequeues a message asynchronously from the queue using the provided pop receipt.
+    ///     Dequeues a message asynchronously from the queue using the provided pop receipt.
     /// </summary>
     /// <param name="popReceipt">The pop receipt of the message to be dequeued.</param>
     /// <param name="cancellationToken">Cancellation token (optional).</param>
@@ -156,7 +157,7 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
     }
 
     /// <summary>
-    /// Retrieves the approximate message count of the queue asynchronously.
+    ///     Retrieves the approximate message count of the queue asynchronously.
     /// </summary>
     /// <param name="cancellationToken">Cancellation token (optional).</param>
     /// <returns>The approximate message count of the queue.</returns>
@@ -180,7 +181,7 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
     }
 
     /// <summary>
-    /// Creates the queue if it does not exist asynchronously.
+    ///     Creates the queue if it does not exist asynchronously.
     /// </summary>
     /// <param name="cancellationToken">Cancellation token (optional).</param>
     /// <returns>A task representing the asynchronous operation.</return
@@ -241,7 +242,7 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
     }
 
     /// <summary>
-    /// Enqueues a batch of messages asynchronously to the queue.
+    ///     Enqueues a batch of messages asynchronously to the queue.
     /// </summary>
     /// <param name="message">The messages to be enqueued.</param>
     /// <param name="delaySeconds">The delay in seconds for message delivery (optional).</param>
@@ -300,7 +301,7 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
     }
 
     /// <summary>
-    /// Enriches the message request with additional attributes based on the activity.
+    ///     Enriches the message request with additional attributes based on the activity.
     /// </summary>
     /// <param name="activity">The activity associated with the message.</param>
     /// <param name="messageRequest">The message request to be enriched.</param>
@@ -322,7 +323,7 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
     }
 
     /// <summary>
-    /// Gets the queue URL asynchronously based on the queue name.
+    ///     Gets the queue URL asynchronously based on the queue name.
     /// </summary>
     /// <returns>The URL of the queue.</returns>
     private async Task<string> GetQueueUrlAsync()
@@ -343,7 +344,7 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
     }
 
     /// <summary>
-    /// Disposes of the Amazon SQS client.
+    ///     Disposes of the Amazon SQS client.
     /// </summary>
     protected override void DisposeServices()
     {

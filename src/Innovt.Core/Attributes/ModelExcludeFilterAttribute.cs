@@ -21,7 +21,7 @@ namespace Innovt.Core.Attributes;
 public sealed class ModelExcludeFilterAttribute : Attribute
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="ModelExcludeFilterAttribute"/> class.
+    ///     Initializes a new instance of the <see cref="ModelExcludeFilterAttribute" /> class.
     /// </summary>
     /// <param name="propertyName">The name of the property to be excluded (optional).</param>
     public ModelExcludeFilterAttribute([CallerMemberName] string propertyName = null)
@@ -30,7 +30,7 @@ public sealed class ModelExcludeFilterAttribute : Attribute
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ModelExcludeFilterAttribute"/> class.
+    ///     Initializes a new instance of the <see cref="ModelExcludeFilterAttribute" /> class.
     /// </summary>
     /// <param name="excludeAttributes">An array of property names to be excluded.</param>
     public ModelExcludeFilterAttribute(params string[] excludeAttributes)
@@ -39,7 +39,7 @@ public sealed class ModelExcludeFilterAttribute : Attribute
     }
 
     /// <summary>
-    /// Gets or sets an array of property names to be excluded when applying filters.
+    ///     Gets or sets an array of property names to be excluded when applying filters.
     /// </summary>
     public string[] ExcludeAttributes { get; internal set; }
 }

@@ -25,7 +25,7 @@ using Microsoft.IdentityModel.Tokens;
 namespace Innovt.AspNetCore.Extensions;
 
 /// <summary>
-/// Extension methods for configuring MVC-related functionality.
+///     Extension methods for configuring MVC-related functionality.
 /// </summary>
 public static class MvcExtensions
 {
@@ -50,7 +50,7 @@ public static class MvcExtensions
     }
 
     /// <summary>
-    /// Adds the application scope to the request headers.
+    ///     Adds the application scope to the request headers.
     /// </summary>
     /// <param name="app">The application builder.</param>
     /// <param name="scope">The application scope.</param>
@@ -68,7 +68,7 @@ public static class MvcExtensions
     }
 
     /// <summary>
-    /// Sets the application context header in the request headers.
+    ///     Sets the application context header in the request headers.
     /// </summary>
     /// <param name="app">The application builder.</param>
     /// <param name="headerContext">The header context value.</param>
@@ -86,7 +86,7 @@ public static class MvcExtensions
     }
 
     /// <summary>
-    /// Adds Bearer token authentication based on the provided configuration.
+    ///     Adds Bearer token authentication based on the provided configuration.
     /// </summary>
     /// <param name="services">The service collection.</param>
     /// <param name="configuration">The configuration.</param>
@@ -99,10 +99,11 @@ public static class MvcExtensions
         string configSection = "BearerAuthentication", bool validateAudience = true,
         bool validateIssuer = true, bool validateLifetime = true, bool validateIssuerSigningKey = true)
     {
-        if (configuration == null) throw new ArgumentNullException(nameof(configuration));
+        ArgumentNullException.ThrowIfNull(configuration);
 
         var audienceSection = configuration.GetSection($"{configSection}:Audience");
         var authoritySection = configuration.GetSection($"{configSection}:Authority");
+        var audiences = configuration.GetSection($"{configSection}:ValidAudiences").Get<string[]>();
 
         if (audienceSection.Value == null)
             throw new CriticalException($"The Config Section '{configSection}:Audience' not defined.");
@@ -110,12 +111,12 @@ public static class MvcExtensions
             throw new CriticalException("The Config Section '{configSection}:Authority' not defined.");
 
         services.AddBearerAuthorization(audienceSection.Value, authoritySection.Value, validateAudience, validateIssuer,
-            validateLifetime, validateIssuerSigningKey);
+            validateLifetime, validateIssuerSigningKey, audiences);
     }
 
     // ReSharper disable once MemberCanBePrivate.Global
     /// <summary>
-    /// Adds Bearer token authentication.
+    ///     Adds Bearer token authentication.
     /// </summary>
     /// <param name="services">The service collection.</param>
     /// <param name="audienceId">The audience ID.</param>
@@ -124,9 +125,11 @@ public static class MvcExtensions
     /// <param name="validateIssuer">Whether to validate issuer.</param>
     /// <param name="validateLifetime">Whether to validate lifetime.</param>
     /// <param name="validateIssuerSigningKey">Whether to validate issuer signing key.</param>
+    /// <param name="validAudiences">The valid token audiences if you want to validate it.</param>
     public static void AddBearerAuthorization(this IServiceCollection services, string audienceId, string authority,
         bool validateAudience = true,
-        bool validateIssuer = true, bool validateLifetime = true, bool validateIssuerSigningKey = true)
+        bool validateIssuer = true, bool validateLifetime = true, bool validateIssuerSigningKey = true,
+        string[]? validAudiences = null)
     {
         services.AddAuthorization(options =>
         {
@@ -151,6 +154,7 @@ public static class MvcExtensions
                 {
                     ValidateIssuerSigningKey = validateIssuerSigningKey,
                     ValidateAudience = validateAudience,
+                    ValidAudiences = validAudiences,
                     ValidateIssuer = validateIssuer,
                     ValidateLifetime = validateLifetime
                 };
@@ -158,7 +162,7 @@ public static class MvcExtensions
     }
 
     /// <summary>
-    /// Generates an HTML pager for pagination.
+    ///     Generates an HTML pager for pagination.
     /// </summary>
     /// <typeparam name="T">The type of items being paginated.</typeparam>
     /// <param name="helper">The HTML helper.</param>
@@ -166,10 +170,8 @@ public static class MvcExtensions
     /// <returns>The HTML pager content.</returns>
     public static IHtmlContent Pager<T>(this IHtmlHelper helper, PaginationBuilder<T> builder) where T : class
     {
-        if (helper is null) throw new ArgumentNullException(nameof(helper));
-
-
-        if (builder == null) throw new ArgumentNullException(nameof(builder));
+        ArgumentNullException.ThrowIfNull(helper);
+        ArgumentNullException.ThrowIfNull(builder);
 
         if (builder.Collection.TotalRecords < builder.Collection.PageSize &&
             builder.Collection.IsNumberPagination && builder.Collection.Page != null && int.Parse(
@@ -201,7 +203,7 @@ public static class MvcExtensions
     }
 
     /// <summary>
-    /// Creates a select list containing "Ativo" and "Inativo" items.
+    ///     Creates a select list containing "Ativo" and "Inativo" items.
     /// </summary>
     /// <returns>The select list.</returns>
     public static SelectList ActiveAndInactiveList()
@@ -216,7 +218,7 @@ public static class MvcExtensions
     }
 
     /// <summary>
-    /// Creates a select list containing "Sim" and "Não" items.
+    ///     Creates a select list containing "Sim" and "Não" items.
     /// </summary>
     /// <returns>The select list.</returns>
     public static SelectList YesAndNoList()
@@ -231,7 +233,7 @@ public static class MvcExtensions
     }
 
     /// <summary>
-    /// Gets the value of a claim from the user's claims principal.
+    ///     Gets the value of a claim from the user's claims principal.
     /// </summary>
     /// <param name="user">The claims principal.</param>
     /// <param name="type">The claim type (default is ClaimTypes.Email).</param>
@@ -249,7 +251,7 @@ public static class MvcExtensions
     }
 
     /// <summary>
-    /// Checks if the specified action descriptor has a filter of the given type.
+    ///     Checks if the specified action descriptor has a filter of the given type.
     /// </summary>
     /// <param name="action">The action descriptor.</param>
     /// <param name="filter">The type of filter to check for.</param>
@@ -271,7 +273,7 @@ public static class MvcExtensions
     /// <returns></returns>
     public static bool IsLocal(this HttpContext context)
     {
-        if (context == null) throw new ArgumentNullException(nameof(context));
+        ArgumentNullException.ThrowIfNull(context);
 
         var remoteIp = context.Connection?.RemoteIpAddress;
         var localIp = context.Connection?.LocalIpAddress;
@@ -290,7 +292,7 @@ public static class MvcExtensions
     }
 
     /// <summary>
-    /// Sets an object in the session after serializing it to JSON.
+    ///     Sets an object in the session after serializing it to JSON.
     /// </summary>
     /// <typeparam name="T">The type of the object to be stored.</typeparam>
     /// <param name="session">The session object.</param>
@@ -302,7 +304,7 @@ public static class MvcExtensions
     }
 
     /// <summary>
-    /// Gets an object from the session and deserializes it from JSON.
+    ///     Gets an object from the session and deserializes it from JSON.
     /// </summary>
     /// <typeparam name="T">The type of the object to be retrieved.</typeparam>
     /// <param name="session">The session object.</param>

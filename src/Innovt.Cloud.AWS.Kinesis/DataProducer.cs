@@ -21,7 +21,7 @@ using Innovt.Domain.Core.Streams;
 namespace Innovt.Cloud.AWS.Kinesis;
 
 /// <summary>
-/// Represents a data producer for publishing data to an Amazon Kinesis stream.
+///     Represents a data producer for publishing data to an Amazon Kinesis stream.
 /// </summary>
 /// <typeparam name="T">The type of data streams to be published.</typeparam>
 public class DataProducer<T> : AwsBaseService where T : class, IDataStream
@@ -30,8 +30,8 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
     private AmazonKinesisClient kinesisClient;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="DataProducer{T}"/> class with the specified bus name,
-    /// logger, and AWS configuration.
+    ///     Initializes a new instance of the <see cref="DataProducer{T}" /> class with the specified bus name,
+    ///     logger, and AWS configuration.
     /// </summary>
     /// <param name="busName">The name of the Kinesis data stream (bus) to which data will be published.</param>
     /// <param name="logger">The logger for logging informational and error messages.</param>
@@ -43,8 +43,8 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="DataProducer{T}"/> class with the specified bus name,
-    /// logger, AWS configuration, and AWS region.
+    ///     Initializes a new instance of the <see cref="DataProducer{T}" /> class with the specified bus name,
+    ///     logger, AWS configuration, and AWS region.
     /// </summary>
     /// <param name="busName">The name of the Kinesis data stream (bus) to which data will be published.</param>
     /// <param name="logger">The logger for logging informational and error messages.</param>
@@ -57,12 +57,12 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
     }
 
     /// <summary>
-    /// Gets the name of the Kinesis data stream (bus) to which data will be published.
+    ///     Gets the name of the Kinesis data stream (bus) to which data will be published.
     /// </summary>
     private string BusName { get; }
 
     /// <summary>
-    /// Gets the Amazon Kinesis client for interacting with Kinesis streams.
+    ///     Gets the Amazon Kinesis client for interacting with Kinesis streams.
     /// </summary>
     private AmazonKinesisClient KinesisClient
     {
@@ -70,11 +70,11 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
     }
 
     /// <summary>
-    /// Creates a list of <see cref="PutRecordsRequestEntry"/> from a collection of data streams.
+    ///     Creates a list of <see cref="PutRecordsRequestEntry" /> from a collection of data streams.
     /// </summary>
     /// <param name="dataStreams">The collection of data streams to be converted.</param>
     /// <param name="activity">The activity used for tracing purposes.</param>
-    /// <returns>A list of <see cref="PutRecordsRequestEntry"/> representing the data streams.</returns>
+    /// <returns>A list of <see cref="PutRecordsRequestEntry" /> representing the data streams.</returns>
     private static List<PutRecordsRequestEntry> CreatePutRecords(IList<T> dataStreams, Activity activity)
     {
         if (dataStreams == null)
@@ -104,7 +104,7 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
     }
 
     /// <summary>
-    /// Publishes a collection of data streams to the Kinesis data stream asynchronously.
+    ///     Publishes a collection of data streams to the Kinesis data stream asynchronously.
     /// </summary>
     /// <param name="dataList">The collection of data streams to be published.</param>
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
@@ -122,7 +122,7 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
 
         if (dataStreams.Count > 500) throw new InvalidEventLimitException();
 
-        using var activity = ActivityDataProducer.StartActivity(nameof(InternalPublish));
+        using var activity = ActivityDataProducer.StartActivity();
         activity?.SetTag("BusName", BusName);
 
         var request = new PutRecordsRequest
@@ -154,7 +154,7 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
     }
 
     /// <summary>
-    /// Publishes a single data stream to the Kinesis data stream asynchronously.
+    ///     Publishes a single data stream to the Kinesis data stream asynchronously.
     /// </summary>
     /// <param name="data">The data stream to be published.</param>
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
@@ -165,7 +165,7 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
     }
 
     /// <summary>
-    /// Publishes a collection of data streams to the Kinesis data stream asynchronously.
+    ///     Publishes a collection of data streams to the Kinesis data stream asynchronously.
     /// </summary>
     /// <param name="events">The collection of data streams to be published.</param>
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
@@ -176,7 +176,7 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
     }
 
     /// <summary>
-    /// Disposes the Amazon Kinesis client when the service is no longer needed.
+    ///     Disposes the Amazon Kinesis client when the service is no longer needed.
     /// </summary>
     protected override void DisposeServices()
     {

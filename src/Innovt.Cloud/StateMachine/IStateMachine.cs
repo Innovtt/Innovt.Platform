@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 namespace Innovt.Cloud.StateMachine;
 
 /// <summary>
-/// Represents a state machine interface.
+///     Represents a state machine interface.
 /// </summary>
 public interface IStateMachine
 {
     /// <summary>
-    /// Starts the execution of the state machine.
+    ///     Starts the execution of the state machine.
     /// </summary>
     /// <param name="input">The input for the state machine.</param>
     /// <param name="stateMachineArn">The Amazon Resource Name (ARN) of the state machine.</param>
@@ -23,7 +23,7 @@ public interface IStateMachine
     Task StartExecution(object input, string stateMachineArn, string executionId, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Sends a success signal for a task to the state machine.
+    ///     Sends a success signal for a task to the state machine.
     /// </summary>
     /// <param name="taskToken">The token representing the task.</param>
     /// <param name="output">The output of the task.</param>
@@ -32,7 +32,7 @@ public interface IStateMachine
     Task SendTaskSuccess(string taskToken, object output, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Sends a failure signal for a task to the state machine.
+    ///     Sends a failure signal for a task to the state machine.
     /// </summary>
     /// <param name="taskToken">The token representing the task.</param>
     /// <param name="reason">The reason for task failure.</param>
@@ -42,7 +42,7 @@ public interface IStateMachine
     Task SendTaskFailure(string taskToken, string reason, string taskError, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Sends a heartbeat signal for a task to the state machine.
+    ///     Sends a heartbeat signal for a task to the state machine.
     /// </summary>
     /// <param name="taskToken">The token representing the task.</param>
     /// <param name="cancellationToken">The cancellation token to cancel the asynchronous operation.</param>

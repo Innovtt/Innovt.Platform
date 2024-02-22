@@ -17,20 +17,20 @@ using Microsoft.Extensions.Localization;
 namespace Innovt.AspNetCore.Filters;
 
 /// <summary>
-/// An exception filter attribute for handling exceptions globally and providing standardized error responses.
+///     An exception filter attribute for handling exceptions globally and providing standardized error responses.
 /// </summary>
 [AttributeUsage(AttributeTargets.All)]
 public sealed class ApiExceptionFilter : ExceptionFilterAttribute
 {
     /// <summary>
-    /// Default Constructor 
+    ///     Default Constructor
     /// </summary>
     public ApiExceptionFilter()
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ApiExceptionFilter"/> class with a logger.
+    ///     Initializes a new instance of the <see cref="ApiExceptionFilter" /> class with a logger.
     /// </summary>
     /// <param name="logger">The logger to use for logging exceptions.</param>
     public ApiExceptionFilter(ILogger logger)
@@ -39,7 +39,8 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ApiExceptionFilter"/> class with a logger and a string localizer for exception messages.
+    ///     Initializes a new instance of the <see cref="ApiExceptionFilter" /> class with a logger and a string localizer for
+    ///     exception messages.
     /// </summary>
     /// <param name="logger">The logger to use for logging exceptions.</param>
     /// <param name="stringLocalizer">The string localizer for localizing exception messages.</param>
@@ -49,18 +50,18 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
     }
 
     /// <summary>
-    /// Gets or sets the logger.
+    ///     Gets or sets the logger.
     /// </summary>
     public ILogger? Logger { get; private set; }
 
     /// <summary>
-    /// Gets the string localizer for localizing exception messages.
+    ///     Gets the string localizer for localizing exception messages.
     /// </summary>
     public IStringLocalizer<IExceptionResource> StringLocalizer { get; } = null!;
 
     /// <summary>
-    /// Translates the given message using the provided string localizer.
-    /// If the string localizer is null or the message is not found, the original message is returned.
+    ///     Translates the given message using the provided string localizer.
+    ///     If the string localizer is null or the message is not found, the original message is returned.
     /// </summary>
     /// <param name="message">The message to translate.</param>
     /// <returns>The translated message or the original message if not found.</returns>
@@ -70,8 +71,8 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
     }
 
     /// <summary>
-    /// Writes an error log using the provided logger and context.
-    /// If the logger is null, the error message is logged to the console.
+    ///     Writes an error log using the provided logger and context.
+    ///     If the logger is null, the error message is logged to the console.
     /// </summary>
     /// <param name="context">The HTTP context.</param>
     /// <param name="message">The error message.</param>
@@ -94,7 +95,7 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
     /// <inheritdoc />
     public override void OnException(ExceptionContext context)
     {
-        if (context == null) throw new ArgumentNullException(nameof(context));
+        ArgumentNullException.ThrowIfNull(context);
 
         var baseException = context.Exception;
 

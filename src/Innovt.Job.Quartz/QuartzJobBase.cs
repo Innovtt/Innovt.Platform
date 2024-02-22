@@ -12,7 +12,8 @@ using Quartz;
 namespace Innovt.Job.Quartz;
 
 /// <summary>
-/// Abstract base class for Quartz job implementations, providing common functionality for scheduling and executing jobs using Quartz framework.
+///     Abstract base class for Quartz job implementations, providing common functionality for scheduling and executing
+///     jobs using Quartz framework.
 /// </summary>
 public abstract class QuartzJobBase : JobBase, IJob // where T : IJob
 {
@@ -22,7 +23,7 @@ public abstract class QuartzJobBase : JobBase, IJob // where T : IJob
     private DateTimeOffset nextScheduleExecution = DateTimeOffset.MinValue;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="QuartzJobBase"/> class.
+    ///     Initializes a new instance of the <see cref="QuartzJobBase" /> class.
     /// </summary>
     /// <param name="name">The name of the job.</param>
     /// <param name="heartBeatInterval">The interval for the heartbeat in milliseconds.</param>
@@ -38,7 +39,7 @@ public abstract class QuartzJobBase : JobBase, IJob // where T : IJob
     }
 
     /// <summary>
-    /// Executes the Quartz job.
+    ///     Executes the Quartz job.
     /// </summary>
     /// <param name="context">The Quartz job execution context.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
@@ -48,7 +49,7 @@ public abstract class QuartzJobBase : JobBase, IJob // where T : IJob
     }
 
     /// <summary>
-    /// Executes when the job is started.
+    ///     Executes when the job is started.
     /// </summary>
     /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
@@ -58,7 +59,7 @@ public abstract class QuartzJobBase : JobBase, IJob // where T : IJob
     }
 
     /// <summary>
-    /// Executes when the job is stopped.
+    ///     Executes when the job is stopped.
     /// </summary>
     /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
@@ -68,7 +69,7 @@ public abstract class QuartzJobBase : JobBase, IJob // where T : IJob
     }
 
     /// <summary>
-    /// Schedules the Quartz job for execution.
+    ///     Schedules the Quartz job for execution.
     /// </summary>
     /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
@@ -99,7 +100,7 @@ public abstract class QuartzJobBase : JobBase, IJob // where T : IJob
     }
 
     /// <summary>
-    /// Executes the Quartz job logic.
+    ///     Executes the Quartz job logic.
     /// </summary>
     /// <returns>A task representing the asynchronous operation.</returns>
     protected abstract Task OnExecute();

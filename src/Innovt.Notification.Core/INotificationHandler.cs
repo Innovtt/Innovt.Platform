@@ -9,12 +9,12 @@ using Innovt.Notification.Core.Domain;
 namespace Innovt.Notification.Core;
 
 /// <summary>
-/// Interface for a notification handler.
+///     Interface for a notification handler.
 /// </summary>
 public interface INotificationHandler
 {
     /// <summary>
-    /// Sends a notification message asynchronously.
+    ///     Sends a notification message asynchronously.
     /// </summary>
     /// <param name="message">The notification message to send.</param>
     /// <param name="cancellationToken">The cancellation token.</param>

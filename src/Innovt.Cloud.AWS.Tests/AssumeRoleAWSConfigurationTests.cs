@@ -1,5 +1,4 @@
 using Innovt.Cloud.AWS.Configuration;
-using Innovt.Core.Exceptions;
 using NUnit.Framework;
 
 namespace Innovt.Cloud.AWS.Tests;

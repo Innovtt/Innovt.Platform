@@ -16,7 +16,7 @@ public class KinesisDomainEventEmptyInvoiceProcessor : KinesisDomainEventProcess
         serviceMock = domainEventServiceMock ?? throw new ArgumentNullException(nameof(domainEventServiceMock));
     }
 
-    protected override DomainEvent DeserializeBody(string content, string partition)
+    protected override DomainEvent DeserializeBody(string content, string? partition)
     {
         return DomainEvent.Empty(partition);
     }

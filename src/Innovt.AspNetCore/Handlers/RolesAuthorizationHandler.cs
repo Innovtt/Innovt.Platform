@@ -15,16 +15,16 @@ using Microsoft.AspNetCore.Http;
 namespace Innovt.AspNetCore.Handlers;
 
 /// <summary>
-/// Authorization handler for role-based authorization.
+///     Authorization handler for role-based authorization.
 /// </summary>
-public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorizationRequirement>, IAuthorizationHandler
+public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorizationRequirement>
 {
-    private const string contextSeparator = "::";
+    private const string ContextSeparator = "::";
     private readonly ILogger logger;
     private readonly IAuthorizationRepository securityRepository;
 
     /// <summary>
-    /// Constructs a new instance of <see cref="RolesAuthorizationHandler"/>.
+    ///     Constructs a new instance of <see cref="RolesAuthorizationHandler" />.
     /// </summary>
     /// <param name="securityRepository">The security repository for retrieving user information.</param>
     /// <param name="logger">The logger for logging messages.</param>
@@ -35,7 +35,7 @@ public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorization
     }
 
     /// <summary>
-    /// Gets the user ID from the authorization context.
+    ///     Gets the user ID from the authorization context.
     /// </summary>
     /// <param name="context">The authorization context.</param>
     /// <returns>The user ID or an empty string if not found.</returns>
@@ -47,7 +47,7 @@ public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorization
     }
 
     /// <summary>
-    /// Gets the application context from the authorization context.
+    ///     Gets the application context from the authorization context.
     /// </summary>
     /// <param name="context">The authorization context.</param>
     /// <returns>The application context.</returns>
@@ -69,11 +69,11 @@ public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorization
         if (applicationContext.IsNullOrEmpty())
             return scope;
 
-        return scope.IsNullOrEmpty() ? applicationContext : $"{applicationContext}{contextSeparator}{scope}";
+        return scope.IsNullOrEmpty() ? applicationContext : $"{applicationContext}{ContextSeparator}{scope}";
     }
 
     /// <summary>
-    /// Sets the DomainId claim for the authenticated user in the provided authorization context.
+    ///     Sets the DomainId claim for the authenticated user in the provided authorization context.
     /// </summary>
     /// <param name="authUser">The authenticated user.</param>
     /// <param name="context">The authorization context.</param>
@@ -83,7 +83,7 @@ public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorization
     }
 
     /// <summary>
-    /// Checks if the user is authenticated based on the presence of a valid user identity in the authorization context.
+    ///     Checks if the user is authenticated based on the presence of a valid user identity in the authorization context.
     /// </summary>
     /// <param name="context">The authorization context.</param>
     /// <returns>True if the user is authenticated; otherwise, false.</returns>
@@ -93,7 +93,7 @@ public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorization
     }
 
     /// <summary>
-    /// Logs a warning message and marks the provided authorization context as failed.
+    ///     Logs a warning message and marks the provided authorization context as failed.
     /// </summary>
     /// <param name="context">The authorization context.</param>
     /// <param name="reason">The reason for the failure.</param>
@@ -104,17 +104,17 @@ public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorization
     }
 
     /// <summary>
-    /// Extracts a scope from the application context using a specified separator.
+    ///     Extracts a scope from the application context using a specified separator.
     /// </summary>
     /// <param name="appContext">The application context.</param>
     /// <returns>The extracted scope or the original context if the separator is not present.</returns>
-    private string ExtractScope(string appContext)
+    private static string ExtractScope(string appContext)
     {
-        return !appContext.Contains(contextSeparator) ? appContext : appContext.Split(contextSeparator)[1];
+        return !appContext.Contains(ContextSeparator,StringComparison.InvariantCultureIgnoreCase) ? appContext : appContext.Split(ContextSeparator)[1];
     }
 
     /// <summary>
-    /// Handles the authorization requirement to check user roles.
+    ///     Handles the authorization requirement to check user roles.
     /// </summary>
     /// <param name="context">The authorization context.</param>
     /// <param name="requirement">The authorization requirement.</param>
@@ -174,8 +174,8 @@ public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorization
     }
 
     /// <summary>
-    /// Gets the combined list of roles associated with the specified authenticated user.
-    /// This includes both individual roles assigned to the user and roles associated with the user's groups.
+    ///     Gets the combined list of roles associated with the specified authenticated user.
+    ///     This includes both individual roles assigned to the user and roles associated with the user's groups.
     /// </summary>
     /// <param name="user">The authenticated user.</param>
     /// <returns>A list of roles associated with the user.</returns>

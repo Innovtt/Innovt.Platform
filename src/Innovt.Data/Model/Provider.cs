@@ -5,11 +5,12 @@
 namespace Innovt.Data.Model;
 
 /// <summary>
-/// Enumeration representing different database providers.
+///     Enumeration representing different database providers.
 /// </summary>
 public enum Provider
 {
     MsSql,
     PostgreSqL,
-    Oracle
+    Oracle,
+    MySql
 }

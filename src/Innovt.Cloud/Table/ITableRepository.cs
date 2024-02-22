@@ -10,12 +10,12 @@ using Innovt.Core.Collections;
 namespace Innovt.Cloud.Table;
 
 /// <summary>
-/// Interface representing a repository for interacting with a table.
+///     Interface representing a repository for interacting with a table.
 /// </summary>
 public interface ITableRepository
 {
     /// <summary>
-    /// Asynchronously retrieves an item by its identifier.
+    ///     Asynchronously retrieves an item by its identifier.
     /// </summary>
     /// <typeparam name="T">The type of item to retrieve.</typeparam>
     /// <param name="id">The identifier of the item.</param>
@@ -26,7 +26,7 @@ public interface ITableRepository
         where T : ITableMessage;
 
     /// <summary>
-    /// Asynchronously deletes an item using its value.
+    ///     Asynchronously deletes an item using its value.
     /// </summary>
     /// <typeparam name="T">The type of item to delete.</typeparam>
     /// <param name="value">The item to delete.</param>
@@ -35,7 +35,7 @@ public interface ITableRepository
     Task DeleteAsync<T>(T value, CancellationToken cancellationToken = default) where T : ITableMessage;
 
     /// <summary>
-    /// Asynchronously deletes an item using its identifier and optional range key.
+    ///     Asynchronously deletes an item using its identifier and optional range key.
     /// </summary>
     /// <typeparam name="T">The type of item to delete.</typeparam>
     /// <param name="id">The identifier of the item.</param>
@@ -46,7 +46,7 @@ public interface ITableRepository
         where T : ITableMessage;
 
     /// <summary>
-    /// Asynchronously adds a single item to the repository.
+    ///     Asynchronously adds a single item to the repository.
     /// </summary>
     /// <typeparam name="T">The type of item to add.</typeparam>
     /// <param name="message">The item to add.</param>
@@ -55,7 +55,7 @@ public interface ITableRepository
     Task AddAsync<T>(T message, CancellationToken cancellationToken = default) where T : ITableMessage;
 
     /// <summary>
-    /// Asynchronously adds multiple items to the repository.
+    ///     Asynchronously adds multiple items to the repository.
     /// </summary>
     /// <typeparam name="T">The type of items to add.</typeparam>
     /// <param name="messages">The list of items to add.</param>
@@ -64,7 +64,16 @@ public interface ITableRepository
     Task AddAsync<T>(IList<T> messages, CancellationToken cancellationToken = default) where T : ITableMessage;
 
     /// <summary>
-    /// Asynchronously queries and retrieves the first item of type T by its identifier.
+    ///     If you want to add a list of objects that are not the same type.
+    /// </summary>
+    /// <param name="messages"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task AddAsync(IList<object> messages, CancellationToken cancellationToken = default);
+
+
+    /// <summary>
+    ///     Asynchronously queries and retrieves the first item of type T by its identifier.
     /// </summary>
     /// <typeparam name="T">The type of item to retrieve.</typeparam>
     /// <param name="id">The identifier of the item.</param>
@@ -73,7 +82,7 @@ public interface ITableRepository
     Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Asynchronously queries and retrieves a list of items of type T by their identifier.
+    ///     Asynchronously queries and retrieves a list of items of type T by their identifier.
     /// </summary>
     /// <typeparam name="T">The type of items to retrieve.</typeparam>
     /// <param name="id">The identifier of the items.</param>
@@ -82,7 +91,7 @@ public interface ITableRepository
     Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Asynchronously queries and retrieves a list of items of type T based on the provided query request.
+    ///     Asynchronously queries and retrieves a list of items of type T based on the provided query request.
     /// </summary>
     /// <typeparam name="T">The type of items to retrieve.</typeparam>
     /// <param name="request">The query request specifying the query parameters.</param>
@@ -92,7 +101,7 @@ public interface ITableRepository
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Asynchronously queries and retrieves the first item of type T based on the provided query request.
+    ///     Asynchronously queries and retrieves the first item of type T based on the provided query request.
     /// </summary>
     /// <typeparam name="T">The type of item to retrieve.</typeparam>
     /// <param name="request">The query request specifying the query parameters.</param>
@@ -101,7 +110,7 @@ public interface ITableRepository
     Task<T> QueryFirstOrDefaultAsync<T>(QueryRequest request, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Asynchronously queries and retrieves multiple sets of results from a single query.
+    ///     Asynchronously queries and retrieves multiple sets of results from a single query.
     /// </summary>
     /// <typeparam name="T">The type of items to retrieve.</typeparam>
     /// <typeparam name="TResult1">The type of the first result set.</typeparam>
@@ -114,7 +123,7 @@ public interface ITableRepository
         QueryRequest request, string splitBy, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Asynchronously queries and retrieves multiple sets of results from a single query.
+    ///     Asynchronously queries and retrieves multiple sets of results from a single query.
     /// </summary>
     /// <typeparam name="T">The type of items to retrieve.</typeparam>
     /// <typeparam name="TResult1">The type of the first result set.</typeparam>
@@ -129,7 +138,7 @@ public interface ITableRepository
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Asynchronously queries and retrieves multiple sets of results from a single query.
+    ///     Asynchronously queries and retrieves multiple sets of results from a single query.
     /// </summary>
     /// <typeparam name="T">The type of items to retrieve.</typeparam>
     /// <typeparam name="TResult1">The type of the first result set.</typeparam>
@@ -145,7 +154,7 @@ public interface ITableRepository
             CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Asynchronously queries and retrieves multiple sets of results from a single query.
+    ///     Asynchronously queries and retrieves multiple sets of results from a single query.
     /// </summary>
     /// <typeparam name="T">The type of items to retrieve.</typeparam>
     /// <typeparam name="TResult1">The type of the first result set.</typeparam>
@@ -163,7 +172,7 @@ public interface ITableRepository
             CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Asynchronously scans and retrieves a list of items of type T based on the provided scan request.
+    ///     Asynchronously scans and retrieves a list of items of type T based on the provided scan request.
     /// </summary>
     /// <typeparam name="T">The type of items to retrieve.</typeparam>
     /// <param name="request">The scan request specifying the scan parameters.</param>
@@ -173,7 +182,7 @@ public interface ITableRepository
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Asynchronously scans and retrieves a paged collection of items of type T based on the provided scan request.
+    ///     Asynchronously scans and retrieves a paged collection of items of type T based on the provided scan request.
     /// </summary>
     /// <typeparam name="T">The type of items to retrieve.</typeparam>
     /// <param name="request">The scan request specifying the scan parameters.</param>
@@ -183,7 +192,7 @@ public interface ITableRepository
         ScanPaginatedByAsync<T>(ScanRequest request, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Asynchronously queries and retrieves a paged collection of items of type T based on the provided query request.
+    ///     Asynchronously queries and retrieves a paged collection of items of type T based on the provided query request.
     /// </summary>
     /// <typeparam name="T">The type of items to retrieve.</typeparam>
     /// <param name="request">The query request specifying the query parameters.</param>
@@ -193,7 +202,7 @@ public interface ITableRepository
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Asynchronously performs a transactional write of items.
+    ///     Asynchronously performs a transactional write of items.
     /// </summary>
     /// <param name="request">The transaction write request specifying the items to write.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
@@ -201,7 +210,7 @@ public interface ITableRepository
     Task TransactWriteItemsAsync(TransactionWriteRequest request, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Executes an SQL statement asynchronously and retrieves the results.
+    ///     Executes an SQL statement asynchronously and retrieves the results.
     /// </summary>
     /// <typeparam name="T">The type of results to expect.</typeparam>
     /// <param name="sqlStatementRequest">The SQL statement request.</param>
@@ -211,7 +220,7 @@ public interface ITableRepository
         CancellationToken cancellationToken = default) where T : class;
 
     /// <summary>
-    /// Asynchronously retrieves multiple items in a batch.
+    ///     Asynchronously retrieves multiple items in a batch.
     /// </summary>
     /// <typeparam name="T">The type of items to retrieve.</typeparam>
     /// <param name="batchGetItemRequest">The batch get item request.</param>
@@ -221,7 +230,7 @@ public interface ITableRepository
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Asynchronously performs a batch write operation.
+    ///     Asynchronously performs a batch write operation.
     /// </summary>
     /// <param name="batchWriteItemRequest">The batch write item request.</param>
     /// <param name="cancellationToken">The cancellation token.</param>

@@ -14,7 +14,7 @@ namespace Innovt.Core.Exceptions;
 public class ConfigurationException : BaseException
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="ConfigurationException"/> class with a specified error message.
+    ///     Initializes a new instance of the <see cref="ConfigurationException" /> class with a specified error message.
     /// </summary>
     /// <param name="message">The error message that describes the issue with the configuration.</param>
     public ConfigurationException(string message) : base(message)
@@ -22,7 +22,8 @@ public class ConfigurationException : BaseException
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ConfigurationException"/> class with a specified error message and inner exception.
+    ///     Initializes a new instance of the <see cref="ConfigurationException" /> class with a specified error message and
+    ///     inner exception.
     /// </summary>
     /// <param name="message">The error message that describes the issue with the configuration.</param>
     /// <param name="ex">The inner exception that caused the configuration issue.</param>
@@ -31,7 +32,7 @@ public class ConfigurationException : BaseException
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ConfigurationException"/> class with a specified inner exception.
+    ///     Initializes a new instance of the <see cref="ConfigurationException" /> class with a specified inner exception.
     /// </summary>
     /// <param name="ex">The inner exception that caused the configuration issue.</param>
     public ConfigurationException(Exception ex) : base(ex)
@@ -44,10 +45,13 @@ public class ConfigurationException : BaseException
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ConfigurationException"/> class with serialized data.
+    ///     Initializes a new instance of the <see cref="ConfigurationException" /> class with serialized data.
     /// </summary>
-    /// <param name="serializationInfo">The <see cref="SerializationInfo"/> containing serialized object data.</param>
-    /// <param name="streamingContext">The <see cref="StreamingContext"/> representing the source or destination of the serialized data.</param>
+    /// <param name="serializationInfo">The <see cref="SerializationInfo" /> containing serialized object data.</param>
+    /// <param name="streamingContext">
+    ///     The <see cref="StreamingContext" /> representing the source or destination of the
+    ///     serialized data.
+    /// </param>
     protected ConfigurationException(SerializationInfo serializationInfo,
         StreamingContext streamingContext) : base(serializationInfo, streamingContext)
     {

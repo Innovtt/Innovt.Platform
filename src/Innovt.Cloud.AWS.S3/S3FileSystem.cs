@@ -23,7 +23,7 @@ using Innovt.Core.Utilities;
 namespace Innovt.Cloud.AWS.S3;
 
 /// <summary>
-/// Amazon S3 file system implementation.
+///     Amazon S3 file system implementation.
 /// </summary>
 public class S3FileSystem : AwsBaseService, IFileSystem
 {
@@ -32,7 +32,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     private AmazonS3Client s3Client;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="S3FileSystem"/> class.
+    ///     Initializes a new instance of the <see cref="S3FileSystem" /> class.
     /// </summary>
     /// <param name="logger">The logger.</param>
     /// <param name="configuration">The AWS configuration.</param>
@@ -41,7 +41,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="S3FileSystem"/> class with a specific AWS region.
+    ///     Initializes a new instance of the <see cref="S3FileSystem" /> class with a specific AWS region.
     /// </summary>
     /// <param name="logger">The logger.</param>
     /// <param name="configuration">The AWS configuration.</param>
@@ -52,7 +52,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Gets the Amazon S3 client instance, creating a new instance if not already initialized.
+    ///     Gets the Amazon S3 client instance, creating a new instance if not already initialized.
     /// </summary>
     private AmazonS3Client S3Client
     {
@@ -60,7 +60,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Extracts bucket name and file key from the S3 bucket URL.
+    ///     Extracts bucket name and file key from the S3 bucket URL.
     /// </summary>
     /// <param name="bucketUrl">The S3 bucket URL.</param>
     /// <returns>A tuple containing the bucket name and the file key.</returns>
@@ -84,7 +84,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Uploads a file to an Amazon S3 bucket.
+    ///     Uploads a file to an Amazon S3 bucket.
     /// </summary>
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="filePath">The local file path of the file to upload.</param>
@@ -101,7 +101,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Uploads a stream to an Amazon S3 bucket.
+    ///     Uploads a stream to an Amazon S3 bucket.
     /// </summary>
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="stream">The stream to upload.</param>
@@ -119,7 +119,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Asynchronously uploads a stream to an Amazon S3 bucket.
+    ///     Asynchronously uploads a stream to an Amazon S3 bucket.
     /// </summary>
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="stream">The stream to upload.</param>
@@ -140,7 +140,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Asynchronously uploads a file to an Amazon S3 bucket.
+    ///     Asynchronously uploads a file to an Amazon S3 bucket.
     /// </summary>
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="filePath">The local file path of the file to upload.</param>
@@ -160,7 +160,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Downloads a file from an Amazon S3 bucket.
+    ///     Downloads a file from an Amazon S3 bucket.
     /// </summary>
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="fileName">The name of the file to download.</param>
@@ -178,7 +178,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Downloads a file from an Amazon S3 bucket as a stream.
+    ///     Downloads a file from an Amazon S3 bucket as a stream.
     /// </summary>
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="fileName">The name of the file to download.</param>
@@ -199,7 +199,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Downloads a file from an Amazon S3 bucket as a stream using the provided URL.
+    ///     Downloads a file from an Amazon S3 bucket as a stream using the provided URL.
     /// </summary>
     /// <param name="url">The URL of the file to download from Amazon S3.</param>
     /// <returns>A stream containing the downloaded file's content.</returns>
@@ -211,7 +211,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Asynchronously downloads a file from an Amazon S3 bucket as a stream.
+    ///     Asynchronously downloads a file from an Amazon S3 bucket as a stream.
     /// </summary>
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="fileName">The name of the file to download.</param>
@@ -237,7 +237,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Asynchronously downloads a file from an Amazon S3 bucket as a stream using the provided URL.
+    ///     Asynchronously downloads a file from an Amazon S3 bucket as a stream using the provided URL.
     /// </summary>
     /// <param name="url">The URL of the file to download from Amazon S3.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation (optional).</param>
@@ -250,7 +250,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Asynchronously gets the content of an object from a specified URL with the given encoding.
+    ///     Asynchronously gets the content of an object from a specified URL with the given encoding.
     /// </summary>
     /// <param name="url">The URL of the object to retrieve.</param>
     /// <param name="encoding">The encoding to use for reading the object's content.</param>
@@ -267,7 +267,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Gets the content of an object from a specified URL with the given encoding.
+    ///     Gets the content of an object from a specified URL with the given encoding.
     /// </summary>
     /// <param name="url">The URL of the object to retrieve.</param>
     /// <param name="encoding">The encoding to use for reading the object's content.</param>
@@ -303,7 +303,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Gets a pre-signed URL for accessing an object in the S3 bucket.
+    ///     Gets a pre-signed URL for accessing an object in the S3 bucket.
     /// </summary>
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="key">The key of the object in the S3 bucket.</param>
@@ -327,7 +327,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Generates a pre-signed URL for accessing an object in the S3 bucket.
+    ///     Generates a pre-signed URL for accessing an object in the S3 bucket.
     /// </summary>
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="key">The key of the object in the S3 bucket.</param>
@@ -347,7 +347,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Asynchronously uploads a directory to the specified Amazon S3 bucket.
+    ///     Asynchronously uploads a directory to the specified Amazon S3 bucket.
     /// </summary>
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="directory">The path of the local directory to upload.</param>
@@ -383,7 +383,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Uploads a file to the specified Amazon S3 bucket from a stream.
+    ///     Uploads a file to the specified Amazon S3 bucket from a stream.
     /// </summary>
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="stream">The stream containing the file content to upload.</param>
@@ -408,7 +408,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Uploads a file to the specified Amazon S3 bucket from a local file path.
+    ///     Uploads a file to the specified Amazon S3 bucket from a local file path.
     /// </summary>
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="filePath">The local file path to upload.</param>
@@ -427,7 +427,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Asynchronously uploads a file to the specified Amazon S3 bucket from a stream.
+    ///     Asynchronously uploads a file to the specified Amazon S3 bucket from a stream.
     /// </summary>
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="stream">The stream containing the file content to upload.</param>
@@ -452,7 +452,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Asynchronously uploads an object from a local file path to the specified Amazon S3 bucket.
+    ///     Asynchronously uploads an object from a local file path to the specified Amazon S3 bucket.
     /// </summary>
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="filePath">The local file path to upload.</param>
@@ -475,7 +475,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Asynchronously checks if a folder exists in the specified Amazon S3 bucket.
+    ///     Asynchronously checks if a folder exists in the specified Amazon S3 bucket.
     /// </summary>
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="key">The key representing the folder in the S3 bucket.</param>
@@ -490,7 +490,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Asynchronously checks if a file exists in the specified Amazon S3 bucket.
+    ///     Asynchronously checks if a file exists in the specified Amazon S3 bucket.
     /// </summary>
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="key">The key representing the file in the S3 bucket.</param>
@@ -505,7 +505,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Synchronously checks if a folder exists in the specified Amazon S3 bucket.
+    ///     Synchronously checks if a folder exists in the specified Amazon S3 bucket.
     /// </summary>
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="key">The key representing the folder in the S3 bucket.</param>
@@ -516,7 +516,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Asynchronously deletes an object (file or folder) from the specified Amazon S3 bucket.
+    ///     Asynchronously deletes an object (file or folder) from the specified Amazon S3 bucket.
     /// </summary>
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="key">The key of the object to delete.</param>
@@ -544,7 +544,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Synchronously deletes an object (file or folder) from the specified Amazon S3 bucket.
+    ///     Synchronously deletes an object (file or folder) from the specified Amazon S3 bucket.
     /// </summary>
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="key">The key of the object to delete.</param>
@@ -555,7 +555,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Asynchronously copies an object (file or folder) from the source bucket to the destination bucket.
+    ///     Asynchronously copies an object (file or folder) from the source bucket to the destination bucket.
     /// </summary>
     /// <param name="sourceBucket">The source bucket name.</param>
     /// <param name="sourceKey">The source key of the object to copy.</param>
@@ -597,7 +597,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Asynchronously uploads an object serialized as JSON to the specified Amazon S3 bucket.
+    ///     Asynchronously uploads an object serialized as JSON to the specified Amazon S3 bucket.
     /// </summary>
     /// <typeparam name="T">The type of the object to serialize.</typeparam>
     /// <param name="bucketName">The name of the S3 bucket.</param>
@@ -629,7 +629,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Asynchronously lists objects in the specified Amazon S3 bucket matching the provided key.
+    ///     Asynchronously lists objects in the specified Amazon S3 bucket matching the provided key.
     /// </summary>
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="key">The prefix to use for filtering objects.</param>
@@ -656,7 +656,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Gets the URL for accessing the object in the specified bucket.
+    ///     Gets the URL for accessing the object in the specified bucket.
     /// </summary>
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="fileKey">The key for the object in the bucket.</param>
@@ -667,7 +667,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Asynchronously puts an object in the specified Amazon S3 bucket from a local file path.
+    ///     Asynchronously puts an object in the specified Amazon S3 bucket from a local file path.
     /// </summary>
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="filePath">The local file path of the object to upload.</param>
@@ -689,7 +689,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Asynchronously puts an object in the specified Amazon S3 bucket from a stream.
+    ///     Asynchronously puts an object in the specified Amazon S3 bucket from a stream.
     /// </summary>
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="stream">The stream to read the object data from.</param>
@@ -735,7 +735,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Creates a TransferUtilityUploadRequest for uploading an object to the specified Amazon S3 bucket from a stream.
+    ///     Creates a TransferUtilityUploadRequest for uploading an object to the specified Amazon S3 bucket from a stream.
     /// </summary>
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="stream">The stream to read the object data from.</param>
@@ -775,7 +775,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     }
 
     /// <summary>
-    /// Disposes the S3 client instance.
+    ///     Disposes the S3 client instance.
     /// </summary>
     protected override void DisposeServices()
     {

@@ -10,12 +10,12 @@ using Innovt.Core.Collections;
 namespace Innovt.Cloud.AWS.Cognito.Model;
 
 /// <summary>
-/// Represents a request for one-time password (OTP) sign-in.
+///     Represents a request for one-time password (OTP) sign-in.
 /// </summary>
 public class OtpSignInRequest : SignInRequestBase
 {
     /// <summary>
-    /// Validates the request data.
+    ///     Validates the request data.
     /// </summary>
     /// <param name="validationContext">The validation context.</param>
     /// <returns>An enumerable collection of validation results.</returns>

@@ -11,12 +11,12 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Innovt.Core.CrossCutting.Ioc;
 
 /// <summary>
-/// Provides a locator for resolving services and managing dependency injection containers.
+///     Provides a locator for resolving services and managing dependency injection containers.
 /// </summary>
 /// <remarks>
-/// This static class acts as a locator for resolving services and managing dependency injection containers.
-/// It provides methods for initializing the container, resolving services, adding modules, releasing resources,
-/// creating service scopes, and checking container configuration.
+///     This static class acts as a locator for resolving services and managing dependency injection containers.
+///     It provides methods for initializing the container, resolving services, adding modules, releasing resources,
+///     creating service scopes, and checking container configuration.
 /// </remarks
 public static class IocLocator
 {
@@ -24,10 +24,10 @@ public static class IocLocator
 
 
     /// <summary>
-    /// Initializes the locator with the specified main dependency injection container.
+    ///     Initializes the locator with the specified main dependency injection container.
     /// </summary>
-    /// <param name="mainContainer">The main <see cref="IContainer"/> to be used for service resolution.</param>
-    /// <exception cref="ArgumentNullException">Thrown if <paramref name="mainContainer"/> is null.</exception>
+    /// <param name="mainContainer">The main <see cref="IContainer" /> to be used for service resolution.</param>
+    /// <exception cref="ArgumentNullException">Thrown if <paramref name="mainContainer" /> is null.</exception>
     public static void Initialize(IContainer mainContainer)
     {
         // Implementation of the Initialize method.
@@ -43,9 +43,9 @@ public static class IocLocator
 
 
     /// <summary>
-    /// Resolves a service of the specified <paramref name="type"/>.
+    ///     Resolves a service of the specified <paramref name="type" />.
     /// </summary>
-    /// <param name="type">The <see cref="Type"/> of the service to resolve.</param>
+    /// <param name="type">The <see cref="Type" /> of the service to resolve.</param>
     /// <returns>The resolved service object.</returns>
     public static object Resolve(Type type)
     {
@@ -57,10 +57,10 @@ public static class IocLocator
 
 
     /// <summary>
-    /// Resolves a service of type <typeparamref name="TService"/> with the specified <paramref name="type"/>.
+    ///     Resolves a service of type <typeparamref name="TService" /> with the specified <paramref name="type" />.
     /// </summary>
     /// <typeparam name="TService">The type of service to resolve.</typeparam>
-    /// <param name="type">The <see cref="Type"/> of the service implementation to resolve.</param>
+    /// <param name="type">The <see cref="Type" /> of the service implementation to resolve.</param>
     /// <returns>The resolved service object.</returns>
     public static TService Resolve<TService>(Type type)
     {
@@ -71,7 +71,7 @@ public static class IocLocator
     }
 
     /// <summary>
-    /// Resolves a named instance of a service of type <typeparamref name="TService"/>.
+    ///     Resolves a named instance of a service of type <typeparamref name="TService" />.
     /// </summary>
     /// <typeparam name="TService">The type of service to resolve.</typeparam>
     /// <param name="intanceKey">The key identifying the named instance to resolve.</param>
@@ -85,7 +85,7 @@ public static class IocLocator
     }
 
     /// <summary>
-    /// Resolves a service of type <typeparamref name="TService"/>.
+    ///     Resolves a service of type <typeparamref name="TService" />.
     /// </summary>
     /// <typeparam name="TService">The type of service to resolve.</typeparam>
     /// <returns>The resolved service object.</returns>
@@ -98,10 +98,10 @@ public static class IocLocator
     }
 
     /// <summary>
-    /// Adds an <see cref="IocModule"/> to the container.
+    ///     Adds an <see cref="IocModule" /> to the container.
     /// </summary>
-    /// <param name="module">The <see cref="IocModule"/> to be added to the container.</param>
-    /// <exception cref="ArgumentNullException">Thrown if <paramref name="module"/> is null.</exception>
+    /// <param name="module">The <see cref="IocModule" /> to be added to the container.</param>
+    /// <exception cref="ArgumentNullException">Thrown if <paramref name="module" /> is null.</exception>
     public static void AddModule(IocModule module)
     {
         // Implementation of the AddModule method.
@@ -113,7 +113,7 @@ public static class IocLocator
     }
 
     /// <summary>
-    /// Releases the specified object and frees associated resources.
+    ///     Releases the specified object and frees associated resources.
     /// </summary>
     /// <param name="obj">The object to release.</param>
     public static void Release(object obj)
@@ -125,9 +125,9 @@ public static class IocLocator
     }
 
     /// <summary>
-    /// Creates and returns a new service scope.
+    ///     Creates and returns a new service scope.
     /// </summary>
-    /// <returns>An <see cref="IServiceScope"/> representing the new service scope.</returns>
+    /// <returns>An <see cref="IServiceScope" /> representing the new service scope.</returns>
     public static IServiceScope CreateScope()
     {
         // Implementation of the CreateScope method.
@@ -137,10 +137,10 @@ public static class IocLocator
     }
 
     /// <summary>
-    /// Adds modules from the specified <paramref name="assembly"/> to the container.
+    ///     Adds modules from the specified <paramref name="assembly" /> to the container.
     /// </summary>
     /// <param name="assembly">The assembly containing modules to be added.</param>
-    /// <exception cref="ArgumentNullException">Thrown if <paramref name="assembly"/> is null.</exception>
+    /// <exception cref="ArgumentNullException">Thrown if <paramref name="assembly" /> is null.</exception>
     public static void AddModuleFromAssembly(Assembly assembly)
     {
         // Implementation of the AddModuleFromAssembly method.
@@ -161,7 +161,7 @@ public static class IocLocator
 
 
     /// <summary>
-    /// Checks the configuration of the container.
+    ///     Checks the configuration of the container.
     /// </summary>
     public static void CheckConfiguration()
     {

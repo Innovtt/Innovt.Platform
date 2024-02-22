@@ -2,7 +2,6 @@
 // Author: Michel Borges
 // Project: Innovt.Cloud.AWS.Lambda.Tests
 
-using System.ComponentModel;
 using Amazon.Lambda.Core;
 using Innovt.Core.CrossCutting.Log;
 using Microsoft.Extensions.Configuration;

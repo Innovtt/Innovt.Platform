@@ -8,12 +8,12 @@ using Innovt.Domain.Core.Model;
 namespace Innovt.Domain.Security;
 
 /// <summary>
-/// Represents a permission entity.
+///     Represents a permission entity.
 /// </summary>
 public class Permission : ValueObject<Guid>
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="Permission"/> class.
+    ///     Initializes a new instance of the <see cref="Permission" /> class.
     /// </summary>
     public Permission()
     {

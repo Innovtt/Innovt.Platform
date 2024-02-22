@@ -8,14 +8,14 @@ using System.Security.Cryptography;
 namespace Innovt.Core.Utilities;
 
 /// <summary>
-/// Provides utility methods for handling password hashing and validation.
+///     Provides utility methods for handling password hashing and validation.
 /// </summary>
 public static class PasswordHelper
 {
     private const int SaltSize = 128 / 8; // 128 bits
 
     /// <summary>
-    /// Checks if a decoded password matches its hashed representation using the provided salt.
+    ///     Checks if a decoded password matches its hashed representation using the provided salt.
     /// </summary>
     /// <param name="decodedPassword">The plain text password to validate.</param>
     /// <param name="hashedPassword">The hashed password to compare against.</param>
@@ -29,7 +29,7 @@ public static class PasswordHelper
     }
 
     /// <summary>
-    /// Generates a cryptographically secure random salt of the specified size in bytes.
+    ///     Generates a cryptographically secure random salt of the specified size in bytes.
     /// </summary>
     /// <returns>An array of bytes representing the random salt.</returns>
     private static byte[] InternalRandomSalt()
@@ -44,7 +44,7 @@ public static class PasswordHelper
     }
 
     /// <summary>
-    /// Generates a random salt and returns it as a Base64-encoded string.
+    ///     Generates a random salt and returns it as a Base64-encoded string.
     /// </summary>
     /// <returns>A Base64-encoded salt.</returns>
     public static string RandomSalt()
@@ -53,7 +53,7 @@ public static class PasswordHelper
     }
 
     /// <summary>
-    /// Hashes a plain text password using the provided salt.
+    ///     Hashes a plain text password using the provided salt.
     /// </summary>
     /// <param name="plainPassword">The plain text password to hash.</param>
     /// <param name="salt">The salt used for hashing the password.</param>
@@ -67,7 +67,7 @@ public static class PasswordHelper
     }
 
     /// <summary>
-    /// Hashes a plain text password using a randomly generated salt and returns both the hashed password and the salt.
+    ///     Hashes a plain text password using a randomly generated salt and returns both the hashed password and the salt.
     /// </summary>
     /// <param name="plainPassword">The plain text password to hash.</param>
     /// <returns>A tuple containing the hashed password and the salt used.</returns>

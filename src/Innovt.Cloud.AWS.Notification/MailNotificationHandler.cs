@@ -16,14 +16,14 @@ using Innovt.Notification.Core.Domain;
 namespace Innovt.Cloud.AWS.Notification;
 
 /// <summary>
-/// Handles sending notifications via email using Amazon Simple Email Service (SES).
+///     Handles sending notifications via email using Amazon Simple Email Service (SES).
 /// </summary>
 public class MailNotificationHandler : AwsBaseService, INotificationHandler
 {
     private AmazonSimpleEmailServiceClient _simpleEmailClient;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="MailNotificationHandler"/> class.
+    ///     Initializes a new instance of the <see cref="MailNotificationHandler" /> class.
     /// </summary>
     /// <param name="logger">The logger.</param>
     /// <param name="configuration">The AWS configuration.</param>
@@ -32,7 +32,7 @@ public class MailNotificationHandler : AwsBaseService, INotificationHandler
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="MailNotificationHandler"/> class with a specified region.
+    ///     Initializes a new instance of the <see cref="MailNotificationHandler" /> class with a specified region.
     /// </summary>
     /// <param name="logger">The logger.</param>
     /// <param name="configuration">The AWS configuration.</param>
@@ -43,12 +43,12 @@ public class MailNotificationHandler : AwsBaseService, INotificationHandler
     }
 
     /// <summary>
-    /// Gets or sets the default charset for the email.
+    ///     Gets or sets the default charset for the email.
     /// </summary>
     public string DefaultCharset { get; set; } = "UTF-8";
 
     /// <summary>
-    /// Gets the Amazon Simple Email Service (SES) client instance.
+    ///     Gets the Amazon Simple Email Service (SES) client instance.
     /// </summary>
     private AmazonSimpleEmailServiceClient SimpleEmailClient
     {
@@ -61,7 +61,7 @@ public class MailNotificationHandler : AwsBaseService, INotificationHandler
     }
 
     /// <summary>
-    /// Sends a notification via email asynchronously.
+    ///     Sends a notification via email asynchronously.
     /// </summary>
     /// <param name="message">The notification message.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
@@ -128,7 +128,7 @@ public class MailNotificationHandler : AwsBaseService, INotificationHandler
     }
 
     /// <summary>
-    /// Disposes of the Amazon Simple Email Service (SES) client instance.
+    ///     Disposes of the Amazon Simple Email Service (SES) client instance.
     /// </summary>
     protected override void DisposeServices()
     {

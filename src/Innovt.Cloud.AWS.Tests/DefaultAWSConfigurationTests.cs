@@ -1,3 +1,4 @@
+using Innovt.Cloud.AWS.Configuration;
 using Innovt.Core.Exceptions;
 using NUnit.Framework;
 
@@ -10,7 +11,7 @@ public class DefaultAWSConfigurationTests
     [Test]
     public void GetCredentialWithoutProfileReturnDefaultProfile()
     {
-        var configuration = new Configuration.DefaultAWSConfiguration();
+        var configuration = new DefaultAWSConfiguration();
 
         Assert.That(configuration, Is.Not.Null);
 
@@ -23,7 +24,7 @@ public class DefaultAWSConfigurationTests
     [Test]
     public void GetCredentialWithInvalidProfileThrowsException()
     {
-        var configuration = new Configuration.DefaultAWSConfiguration("invalidProfile");
+        var configuration = new DefaultAWSConfiguration("invalidProfile");
 
         Assert.That(configuration, Is.Not.Null);
 
@@ -34,7 +35,7 @@ public class DefaultAWSConfigurationTests
     [Test]
     public void GetCredentialWithAccessKeyAnSecretReturnsValidCredential()
     {
-        var configuration = new Configuration.DefaultAWSConfiguration("accessKey", "secret", "us-east-1");
+        var configuration = new DefaultAWSConfiguration("accessKey", "secret", "us-east-1");
 
         Assert.That(configuration, Is.Not.Null);
 
