@@ -17,7 +17,7 @@ public class EntityTests
 
         var events = user.GetDomainEvents();
 
-        Assert.That(events, Is.Null);
+        Assert.That(events, Is.Empty);
 
         user.AddDomainEvent(new UserCreated());
 
