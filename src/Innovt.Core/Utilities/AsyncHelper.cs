@@ -14,7 +14,7 @@ namespace Innovt.Core.Utilities;
 ///     Reference https://cpratt.co/async-tips-tricks/
 /// </summary>
 /// <summary>
-/// Provides helper methods for synchronously executing asynchronous tasks.
+///     Provides helper methods for synchronously executing asynchronous tasks.
 /// </summary>
 public static class AsyncHelper
 {
@@ -25,7 +25,7 @@ public static class AsyncHelper
         TaskScheduler.Default);
 
     /// <summary>
-    /// Runs an asynchronous function synchronously and returns its result.
+    ///     Runs an asynchronous function synchronously and returns its result.
     /// </summary>
     /// <typeparam name="TResult">The type of the result returned by the asynchronous function.</typeparam>
     /// <param name="func">The asynchronous function to run synchronously.</param>
@@ -41,7 +41,7 @@ public static class AsyncHelper
     }
 
     /// <summary>
-    /// Runs an asynchronous action synchronously.
+    ///     Runs an asynchronous action synchronously.
     /// </summary>
     /// <param name="func">The asynchronous action to run synchronously.</param>
     /// <param name="cancellationToken">An optional cancellation token for the operation.</param>

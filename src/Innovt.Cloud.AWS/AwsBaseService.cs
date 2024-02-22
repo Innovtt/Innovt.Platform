@@ -11,13 +11,13 @@ using Innovt.Core.CrossCutting.Log;
 using Polly;
 using Polly.CircuitBreaker;
 using Polly.Retry;
-using static System.Net.WebRequestMethods;
 using RetryPolicy = Polly.Retry.RetryPolicy;
 
 namespace Innovt.Cloud.AWS;
 
 /// <summary>
-/// An abstract base class for AWS services with common functionality for managing AWS service configurations, retries, and circuit breakers.
+///     An abstract base class for AWS services with common functionality for managing AWS service configurations, retries,
+///     and circuit breakers.
 /// </summary>
 public abstract class AwsBaseService : IDisposable
 {
@@ -26,7 +26,7 @@ public abstract class AwsBaseService : IDisposable
     private bool disposed;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="AwsBaseService"/> class.
+    ///     Initializes a new instance of the <see cref="AwsBaseService" /> class.
     /// </summary>
     private AwsBaseService()
     {
@@ -36,7 +36,9 @@ public abstract class AwsBaseService : IDisposable
     }
 
     // <summary>
-    /// Initializes a new instance of the <see cref="AwsBaseService"/> class with a logger and AWS configuration.
+    /// Initializes a new instance of the
+    /// <see cref="AwsBaseService" />
+    /// class with a logger and AWS configuration.
     /// </summary>
     /// <param name="logger">The logger for logging service activities.</param>
     /// <param name="configuration">The AWS configuration for the service.</param>
@@ -47,7 +49,8 @@ public abstract class AwsBaseService : IDisposable
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="AwsBaseService"/> class with a logger, AWS configuration, and AWS region.
+    ///     Initializes a new instance of the <see cref="AwsBaseService" /> class with a logger, AWS configuration, and AWS
+    ///     region.
     /// </summary>
     /// <param name="logger">The logger for logging service activities.</param>
     /// <param name="configuration">The AWS configuration for the service.</param>
@@ -65,27 +68,27 @@ public abstract class AwsBaseService : IDisposable
     private string Region { get; }
 
     /// <summary>
-    /// Gets or sets the number of retry attempts for AWS service calls.
+    ///     Gets or sets the number of retry attempts for AWS service calls.
     /// </summary>
     public int RetryCount { get; set; }
 
     /// <summary>
-    /// Gets or sets the number of allowed exceptions before the circuit breaker opens.
+    ///     Gets or sets the number of allowed exceptions before the circuit breaker opens.
     /// </summary>
     protected int CircuitBreakerAllowedExceptions { get; set; }
 
     /// <summary>
-    /// Gets or sets the duration of the circuit breaker break when it opens.
+    ///     Gets or sets the duration of the circuit breaker break when it opens.
     /// </summary>
     protected TimeSpan CircuitBreakerDurationOfBreak { get; set; }
 
     /// <summary>
-    /// Gets the logger for logging service activities.
+    ///     Gets the logger for logging service activities.
     /// </summary>
     protected ILogger Logger { get; }
 
     /// <summary>
-    /// Disposes of the resources used by the service.
+    ///     Disposes of the resources used by the service.
     /// </summary>
     public void Dispose()
     {
@@ -94,7 +97,7 @@ public abstract class AwsBaseService : IDisposable
     }
 
     /// <summary>
-    /// Gets the AWS service region endpoint based on the configured region.
+    ///     Gets the AWS service region endpoint based on the configured region.
     /// </summary>
     /// <returns>The AWS service region endpoint.</returns>
     protected RegionEndpoint GetServiceRegionEndPoint()
@@ -126,7 +129,7 @@ public abstract class AwsBaseService : IDisposable
     }
 
     /// <summary>
-    /// Generates an action to record replay attempt information for resiliency purposes.
+    ///     Generates an action to record replay attempt information for resiliency purposes.
     /// </summary>
     /// <returns>Ação para registro de informações de repetição.</returns>
     private Action<Exception, TimeSpan, int, Context> LogResiliencyRetry()
@@ -152,8 +155,8 @@ public abstract class AwsBaseService : IDisposable
     }
 
     /// <summary>
-    /// Creates a default retry policy for handling AmazonServiceException exceptions
-    /// with specific HTTP status codes(ServiceUnavailable or InternalServerError).
+    ///     Creates a default retry policy for handling AmazonServiceException exceptions
+    ///     with specific HTTP status codes(ServiceUnavailable or InternalServerError).
     /// </summary>
     /// <returns>Política de repetição.</returns
     protected virtual RetryPolicy CreateDefaultRetryPolicy()
@@ -165,7 +168,7 @@ public abstract class AwsBaseService : IDisposable
     }
 
     /// <summary>
-    /// Creates an asynchronous retry policy for handling exceptions of type T.
+    ///     Creates an asynchronous retry policy for handling exceptions of type T.
     /// </summary>
     /// <typeparam name="T">The type of exception to handle.</typeparam>
     /// <returns>An asynchronous retry policy.</returns>
@@ -176,7 +179,7 @@ public abstract class AwsBaseService : IDisposable
     }
 
     /// <summary>
-    /// Creates an asynchronous retry policy for handling exceptions of type T and T1.
+    ///     Creates an asynchronous retry policy for handling exceptions of type T and T1.
     /// </summary>
     /// <typeparam name="T">The first type of exception to handle.</typeparam>
     /// <typeparam name="T1">The second type of exception to handle.</typeparam>
@@ -224,7 +227,7 @@ public abstract class AwsBaseService : IDisposable
     }
 
     /// <summary>
-    /// Disposes of resources used by the AwsBaseService.
+    ///     Disposes of resources used by the AwsBaseService.
     /// </summary>
     /// <param name="disposing">True if called from the Dispose method; false if called from the finalizer.</param>
     protected virtual void Dispose(bool disposing)
@@ -238,7 +241,7 @@ public abstract class AwsBaseService : IDisposable
     }
 
     /// <summary>
-    /// Finalizer for AwsBaseService.
+    ///     Finalizer for AwsBaseService.
     /// </summary>
     ~AwsBaseService()
     {
@@ -246,7 +249,7 @@ public abstract class AwsBaseService : IDisposable
     }
 
     /// <summary>
-    /// Disposes of any services used by the AwsBaseService.
+    ///     Disposes of any services used by the AwsBaseService.
     /// </summary>
     protected abstract void DisposeServices();
 }

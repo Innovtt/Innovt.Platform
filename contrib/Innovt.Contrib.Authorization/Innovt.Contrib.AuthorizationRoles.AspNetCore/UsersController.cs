@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Innovt.Contrib.AuthorizationRoles.AspNetCore;
 
 /// <summary>
-/// Controller for managing users and their roles.
+///     Controller for managing users and their roles.
 /// </summary>
 [ApiController]
 [Route("Authorization/[controller]")]
@@ -19,7 +19,7 @@ public class UsersController : ControllerBase
     private readonly IAuthorizationAppService authorizationAppService;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="UsersController"/> class.
+    ///     Initializes a new instance of the <see cref="UsersController" /> class.
     /// </summary>
     /// <param name="authorizationAppService">The authorization application service.</param>
     public UsersController(IAuthorizationAppService authorizationAppService)
@@ -29,7 +29,7 @@ public class UsersController : ControllerBase
     }
 
     /// <summary>
-    /// Adds a new user.
+    ///     Adds a new user.
     /// </summary>
     [HttpPost]
     [ProducesResponseType((int)HttpStatusCode.OK)]
@@ -44,7 +44,7 @@ public class UsersController : ControllerBase
     }
 
     /// <summary>
-    /// Deletes a user.
+    ///     Deletes a user.
     /// </summary>
     [HttpDelete]
     [ProducesResponseType((int)HttpStatusCode.OK)]
@@ -59,7 +59,7 @@ public class UsersController : ControllerBase
     }
 
     /// <summary>
-    /// Assigns a role to a user.
+    ///     Assigns a role to a user.
     /// </summary>
     [HttpPut("AssignRole")]
     [ProducesResponseType((int)HttpStatusCode.OK)]
@@ -74,7 +74,7 @@ public class UsersController : ControllerBase
     }
 
     /// <summary>
-    /// Unassigns a role from a user.
+    ///     Unassigns a role from a user.
     /// </summary>
     [HttpPut("UnAssignRole")]
     [ProducesResponseType((int)HttpStatusCode.OK)]

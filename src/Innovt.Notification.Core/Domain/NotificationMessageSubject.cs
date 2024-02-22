@@ -5,7 +5,7 @@
 namespace Innovt.Notification.Core.Domain;
 
 /// <summary>
-/// Represents the subject of a notification message.
+///     Represents the subject of a notification message.
 /// </summary>
 public class NotificationMessageSubject : NotificationMessageContent
 {

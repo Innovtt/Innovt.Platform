@@ -11,12 +11,12 @@ using Innovt.Domain.Core.Model;
 namespace Innovt.Domain.Security;
 
 /// <summary>
-/// Represents a group entity.
+///     Represents a group entity.
 /// </summary>
 public class Group : Entity<Guid>
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="Group"/> class.
+    ///     Initializes a new instance of the <see cref="Group" /> class.
     /// </summary>
     public Group()
     {
@@ -25,22 +25,22 @@ public class Group : Entity<Guid>
     }
 
     /// <summary>
-    /// Gets or sets the name of the group.
+    ///     Gets or sets the name of the group.
     /// </summary>
     public string Name { get; set; }
 
     /// <summary>
-    /// Gets or sets the description of the group.
+    ///     Gets or sets the description of the group.
     /// </summary>
     public string Description { get; set; }
 
     /// <summary>
-    /// Gets the list of roles associated with the group.
+    ///     Gets the list of roles associated with the group.
     /// </summary>
     public IList<Role> Roles { get; private set; }
 
     /// <summary>
-    /// Assigns a role to the group.
+    ///     Assigns a role to the group.
     /// </summary>
     /// <param name="role">The role to assign.</param>
     public void AssignRole(Role role)
@@ -58,7 +58,7 @@ public class Group : Entity<Guid>
     }
 
     /// <summary>
-    /// Unassigns a role from the group.
+    ///     Unassigns a role from the group.
     /// </summary>
     /// <param name="role">The role to unassign.</param>
     public void UnAssignRole(Role role)

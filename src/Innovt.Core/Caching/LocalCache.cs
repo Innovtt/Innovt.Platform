@@ -9,12 +9,12 @@ using Microsoft.Extensions.Caching.Memory;
 namespace Innovt.Core.Caching;
 
 /// <summary>
-/// Represents a local caching service that implements the <see cref="ICacheService"/> interface
-/// using an in-memory cache provided by <see cref="IMemoryCache"/>.
+///     Represents a local caching service that implements the <see cref="ICacheService" /> interface
+///     using an in-memory cache provided by <see cref="IMemoryCache" />.
 /// </summary>
 /// <remarks>
-/// This class provides a concrete implementation of the <see cref="ICacheService"/> interface using
-/// an in-memory cache for storing and retrieving data. It is designed for local caching within an application.
+///     This class provides a concrete implementation of the <see cref="ICacheService" /> interface using
+///     an in-memory cache for storing and retrieving data. It is designed for local caching within an application.
 /// </remarks>
 public class LocalCache : ICacheService, IDisposable
 {
@@ -23,10 +23,10 @@ public class LocalCache : ICacheService, IDisposable
     private bool disposed;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="LocalCache"/> class with the specified <see cref="IMemoryCache"/>.
+    ///     Initializes a new instance of the <see cref="LocalCache" /> class with the specified <see cref="IMemoryCache" />.
     /// </summary>
-    /// <param name="memoryCache">The in-memory cache implementation provided by <see cref="IMemoryCache"/>.</param>
-    /// <exception cref="ArgumentNullException">Thrown when <paramref name="memoryCache"/> is null.</exception>
+    /// <param name="memoryCache">The in-memory cache implementation provided by <see cref="IMemoryCache" />.</param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="memoryCache" /> is null.</exception>
     public LocalCache(IMemoryCache memoryCache)
     {
         this.memoryCache = memoryCache ?? throw new ArgumentNullException(nameof(memoryCache));
@@ -48,7 +48,7 @@ public class LocalCache : ICacheService, IDisposable
         if (entity is null)
             return;
 
-        memoryCache.Set<T>(key, entity, new MemoryCacheEntryOptions()
+        memoryCache.Set(key, entity, new MemoryCacheEntryOptions
         {
             AbsoluteExpirationRelativeToNow = expiration
         });
@@ -69,7 +69,7 @@ public class LocalCache : ICacheService, IDisposable
     }
 
     /// <summary>
-    /// Finalizes an instance of the <see cref="LocalCache"/> class.
+    ///     Finalizes an instance of the <see cref="LocalCache" /> class.
     /// </summary>
     ~LocalCache()
     {
@@ -77,12 +77,12 @@ public class LocalCache : ICacheService, IDisposable
     }
 
     /// <summary>
-    /// Releases the unmanaged resources used by the <see cref="LocalCache"/> class
-    /// and optionally releases the managed resources.
+    ///     Releases the unmanaged resources used by the <see cref="LocalCache" /> class
+    ///     and optionally releases the managed resources.
     /// </summary>
     /// <param name="disposing">
-    ///   <c>true</c> to release both managed and unmanaged resources;
-    ///   <c>false</c> to release only unmanaged resources.
+    ///     <c>true</c> to release both managed and unmanaged resources;
+    ///     <c>false</c> to release only unmanaged resources.
     /// </param>
     protected virtual void Dispose(bool disposing)
     {

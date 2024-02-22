@@ -10,23 +10,23 @@ using Innovt.Core.Cqrs.Commands;
 namespace Innovt.Contrib.Authorization.Platform.Application.Commands;
 
 /// <summary>
-/// Represents a command for assigning roles to a user.
+///     Represents a command for assigning roles to a user.
 /// </summary>
 public class AssignRoleCommand : ICommand
 {
     /// <summary>
-    /// Gets or sets the ID of the user to whom roles will be assigned.
+    ///     Gets or sets the ID of the user to whom roles will be assigned.
     /// </summary>
     [Required]
     public string UserId { get; set; }
 
     /// <summary>
-    /// Gets or sets the list of roles to be assigned to the user.
+    ///     Gets or sets the list of roles to be assigned to the user.
     /// </summary>
     public IList<AddRoleCommand> Roles { get; set; }
 
     /// <summary>
-    /// Validates the command properties, including roles.
+    ///     Validates the command properties, including roles.
     /// </summary>
     /// <param name="validationContext">The validation context.</param>
     /// <returns>A collection of validation results.</returns>

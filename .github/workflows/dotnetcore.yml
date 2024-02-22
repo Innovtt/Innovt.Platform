@@ -2,10 +2,14 @@ name: .NET Core
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
+      - dev
   pull_request:
-    branches: [ master ]
+    types: [ opened, synchronize, reopened ]
+
 env:
+  NuGetDirectory: ${{github.workspace}}/nuget
   SONAR_HOST: https://sonarcloud.io
   SONAR_ORGANIZATION: innovt
   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -13,26 +17,35 @@ env:
 
 jobs:
   build:
-
+    name: Build and analyze
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu' # See 'Supported distributions' for available options
+          java-version: '21'
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 8.0.100
-      - name: Setting Workspace
-        working-directory: ${{ github.workspace }}
-        run: ls -la
-      - name: Install dependencies
-        working-directory: src
-        run: dotnet restore
+          dotnet-version: 8.0.201
+      - name: AddNugetSource
+        run: dotnet nuget add source --username USERNAME --password ${{ secrets.NUGET_API_KEY }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/Innovtt/index.json"
       - name: Install Sonnar Scaner
-        run: dotnet tool install -g dotnet-sonarscanner
+        run: dotnet tool install --global dotnet-sonarscanner
       - name: Build
         working-directory: src
         run: |
-          dotnet sonarscanner begin /d:sonar.login=$SONAR_TOKEN /d:sonar.host.url=$SONAR_HOST /o:$SONAR_ORGANIZATION /k:"$SONAR_PROJECTKEY" /d:sonar.cs.opencover.reportsPaths="**/testresults/coverage.opencover.xml" /d:sonar.coverage.exclusions=**Test*.cs /d:sonar.cs.vstest.reportsPaths=./testresults/*.trx ;
+          dotnet sonarscanner begin /d:sonar.token=$SONAR_TOKEN /d:sonar.host.url=$SONAR_HOST /o:$SONAR_ORGANIZATION /k:$SONAR_PROJECT_KEY /d:sonar.cs.opencover.reportsPaths="**/testresults/coverage.opencover.xml" /d:sonar.coverage.exclusions=**Test*.cs /d:sonar.cs.vstest.reportsPaths=./testresults/*.trx ;
           dotnet build -c Release
           dotnet test -c Release --logger trx --results-directory ./testresults /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./testresults/coverage.opencover.xml
-          dotnet sonarscanner end /d:sonar.login=$SONAR_TOKEN
+          dotnet sonarscanner end /d:sonar.token=$SONAR_TOKEN  
+      - name: PackProject
+        if: github.ref == 'refs/heads/master'
+        working-directory: src
+        run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }}
+      - name: PushPackages
+        if: github.ref == 'refs/heads/master'
+        run: dotnet nuget push "${{ env.NuGetDirectory }}/*.nupkg"  --api-key ${{ secrets.NUGET_API_KEY }} --source "github" --skip-duplicate   

@@ -14,7 +14,7 @@ using System.Text;
 namespace Innovt.Core.Utilities;
 
 /// <summary>
-/// Provides extension methods for various data types and operations.
+///     Provides extension methods for various data types and operations.
 /// </summary>
 public static class Extensions
 {
@@ -22,7 +22,7 @@ public static class Extensions
         new();
 
     /// <summary>
-    /// Determines whether the specified object is null.
+    ///     Determines whether the specified object is null.
     /// </summary>
     /// <param name="obj">The object to check for null.</param>
     /// <returns>True if the object is null; otherwise, false.</returns>
@@ -32,7 +32,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Converts the specified object to a string or returns an empty string if the object is null.
+    ///     Converts the specified object to a string or returns an empty string if the object is null.
     /// </summary>
     /// <param name="obj">The object to convert to a string.</param>
     /// <returns>The string representation of the object or an empty string if the object is null.</returns>
@@ -42,7 +42,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Determines whether the specified Guid is empty.
+    ///     Determines whether the specified Guid is empty.
     /// </summary>
     /// <param name="id">The Guid to check for emptiness.</param>
     /// <returns>True if the Guid is empty; otherwise, false.</returns>
@@ -52,7 +52,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Determines whether the specified nullable Guid is null or empty.
+    ///     Determines whether the specified nullable Guid is null or empty.
     /// </summary>
     /// <param name="id">The nullable Guid to check for null or emptiness.</param>
     /// <returns>True if the Guid is null or empty; otherwise, false.</returns>
@@ -62,7 +62,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Determines whether the specified integer is less than or equal to zero.
+    ///     Determines whether the specified integer is less than or equal to zero.
     /// </summary>
     /// <param name="id">The integer to check.</param>
     /// <returns>True if the integer is less than or equal to zero; otherwise, false.</returns>
@@ -72,7 +72,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Determines whether the specified nullable integer is null or less than or equal to zero.
+    ///     Determines whether the specified nullable integer is null or less than or equal to zero.
     /// </summary>
     /// <param name="id">The nullable integer to check.</param>
     /// <returns>True if the integer is null or less than or equal to zero; otherwise, false.</returns>
@@ -82,7 +82,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Determines whether the specified long integer is less than or equal to zero.
+    ///     Determines whether the specified long integer is less than or equal to zero.
     /// </summary>
     /// <param name="id">The long integer to check.</param>
     /// <returns>True if the long integer is less than or equal to zero; otherwise, false.</returns>
@@ -92,7 +92,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Determines whether the specified double is less than or equal to zero.
+    ///     Determines whether the specified double is less than or equal to zero.
     /// </summary>
     /// <param name="id">The double to check.</param>
     /// <returns>True if the double is less than or equal to zero; otherwise, false.</returns>
@@ -103,7 +103,7 @@ public static class Extensions
 
     //From Stack Owverlow: https://stackoverflow.com/questions/2442534/how-to-test-if-type-is-primitive
     /// <summary>
-    /// Determines whether the specified type is a primitive data type.
+    ///     Determines whether the specified type is a primitive data type.
     /// </summary>
     /// <param name="type">The Type to check.</param>
     /// <returns>True if the type is a primitive data type; otherwise, false.</returns>
@@ -128,7 +128,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Extracts latitude and longitude coordinates from a string.
+    ///     Extracts latitude and longitude coordinates from a string.
     /// </summary>
     /// <param name="str">The string containing coordinates.</param>
     /// <param name="splittedBy">The character used to split latitude and longitude values.</param>
@@ -167,7 +167,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Converts a double value representing milliseconds since the Unix epoch to a DateTimeOffset.
+    ///     Converts a double value representing milliseconds since the Unix epoch to a DateTimeOffset.
     /// </summary>
     /// <param name="fromSeconds">The double value representing milliseconds since the Unix epoch.</param>
     /// <returns>A DateTimeOffset representing the converted date and time.</returns>
@@ -179,7 +179,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Formats a decimal value as currency.
+    ///     Formats a decimal value as currency.
     /// </summary>
     /// <param name="value">The decimal value to format.</param>
     /// <returns>A string representation of the decimal value in currency format.</returns>
@@ -189,7 +189,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Returns the last day of the month for a given DateTimeOffset.
+    ///     Returns the last day of the month for a given DateTimeOffset.
     /// </summary>
     /// <param name="date">The DateTimeOffset for which to find the last day of the month.</param>
     /// <returns>The DateTimeOffset representing the last day of the month.</returns>
@@ -201,7 +201,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Formats a DateTimeOffset as a human-readable date and time string.
+    ///     Formats a DateTimeOffset as a human-readable date and time string.
     /// </summary>
     /// <param name="value">The DateTimeOffset to format.</param>
     /// <returns>A string representation of the DateTimeOffset in a custom format.</returns>
@@ -223,7 +223,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Formats a DateTimeOffset as a simple date and time string.
+    ///     Formats a DateTimeOffset as a simple date and time string.
     /// </summary>
     /// <param name="value">The DateTimeOffset to format.</param>
     /// <returns>A string representation of the DateTimeOffset in a simple format.</returns>
@@ -237,7 +237,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Formats a date period between two DateTimes as a string.
+    ///     Formats a date period between two DateTimes as a string.
     /// </summary>
     /// <param name="startDate">The start date of the period.</param>
     /// <param name="endDate">The end date of the period.</param>
@@ -249,7 +249,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Converts a Unix timestamp (seconds since the Unix epoch) to a DateTime.
+    ///     Converts a Unix timestamp (seconds since the Unix epoch) to a DateTime.
     /// </summary>
     /// <param name="unixTimestamp">The Unix timestamp to convert.</param>
     /// <returns>A DateTime representing the converted date and time.</returns>
@@ -262,7 +262,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Converts a DateTime to a Unix timestamp (seconds since the Unix epoch).
+    ///     Converts a DateTime to a Unix timestamp (seconds since the Unix epoch).
     /// </summary>
     /// <param name="dateTime">The DateTime to convert.</param>
     /// <returns>A double representing the Unix timestamp.</returns>
@@ -272,7 +272,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Converts a DateTimeOffset to a Unix timestamp (seconds since the Unix epoch).
+    ///     Converts a DateTimeOffset to a Unix timestamp (seconds since the Unix epoch).
     /// </summary>
     /// <param name="dateTime">The DateTimeOffset to convert.</param>
     /// <returns>A double representing the Unix timestamp.</returns>
@@ -282,7 +282,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Formats a date period between two DateTimeOffset instances as a string, considering culture information.
+    ///     Formats a date period between two DateTimeOffset instances as a string, considering culture information.
     /// </summary>
     /// <param name="startDate">The start date of the period.</param>
     /// <param name="endDate">The end date of the period.</param>
@@ -342,7 +342,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Converts a boolean value to a "Sim" (Yes) or "Não" (No) string representation.
+    ///     Converts a boolean value to a "Sim" (Yes) or "Não" (No) string representation.
     /// </summary>
     /// <param name="value">The boolean value to convert.</param>
     /// <returns>"Sim" if the value is true; otherwise, "Não".</returns>
@@ -352,7 +352,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Converts an integer value to a string array containing numbers from 0 to the specified value.
+    ///     Converts an integer value to a string array containing numbers from 0 to the specified value.
     /// </summary>
     /// <param name="value">The integer value specifying the upper bound of the array.</param>
     /// <returns>An array of strings containing numbers from 0 to the specified value.</returns>
@@ -366,7 +366,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Calculates the start of the week for a given DateTimeOffset based on the specified DayOfWeek.
+    ///     Calculates the start of the week for a given DateTimeOffset based on the specified DayOfWeek.
     /// </summary>
     /// <param name="dt">The DateTimeOffset for which to find the start of the week.</param>
     /// <param name="startOfWeek">The DayOfWeek that defines the start of the week.</param>
@@ -380,7 +380,8 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Returns a DateTimeOffset with the same date as the input DateTimeOffset but with the time set to midnight (00:00:00).
+    ///     Returns a DateTimeOffset with the same date as the input DateTimeOffset but with the time set to midnight
+    ///     (00:00:00).
     /// </summary>
     /// <param name="now">The input DateTimeOffset.</param>
     /// <returns>A DateTimeOffset with the same date and midnight time.</returns>
@@ -390,7 +391,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Converts a DateTime to the Brazilian time zone (UTC-3).
+    ///     Converts a DateTime to the Brazilian time zone (UTC-3).
     /// </summary>
     /// <param name="date">The DateTime to convert.</param>
     /// <returns>The DateTime converted to the Brazilian time zone.</returns>
@@ -402,7 +403,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Masks the credit card number by replacing the middle digits with asterisks.
+    ///     Masks the credit card number by replacing the middle digits with asterisks.
     /// </summary>
     /// <param name="number">The credit card number to mask.</param>
     /// <returns>The masked credit card number.</returns>
@@ -427,7 +428,7 @@ public static class Extensions
 
     //From Stackoverflow
     /// <summary>
-    /// Deserializes a byte array into an object of the specified type.
+    ///     Deserializes a byte array into an object of the specified type.
     /// </summary>
     /// <typeparam name="T">The type of object to deserialize into.</typeparam>
     /// <param name="data">The byte array containing serialized data.</param>
@@ -444,7 +445,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Converts a string to a uri base 64 pattern
+    ///     Converts a string to a uri base 64 pattern
     /// </summary>
     /// <param name="stream">The Stream file.</param>
     /// <param name="mimeType">The stream mimeType</param>
@@ -460,7 +461,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Converts a stream to a base 64 string
+    ///     Converts a stream to a base 64 string
     /// </summary>
     /// <param name="stream"></param>
     /// <returns></returns>
@@ -475,7 +476,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Returns a mimetype based on the file extension
+    ///     Returns a mimetype based on the file extension
     /// </summary>
     /// <param name="fileName"></param>
     /// <returns></returns>
@@ -496,7 +497,7 @@ public static class Extensions
     #region [From Net Code]
 
     /// <summary>
-    /// Copies data from one stream to another.
+    ///     Copies data from one stream to another.
     /// </summary>
     /// <param name="src">The source stream to copy from.</param>
     /// <param name="dest">The destination stream to copy to.</param>
@@ -510,7 +511,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Compresses a string into a byte array using GZip compression.
+    ///     Compresses a string into a byte array using GZip compression.
     /// </summary>
     /// <param name="str">The string to compress.</param>
     /// <returns>The compressed byte array.</returns>
@@ -520,7 +521,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Compresses a byte array using GZip compression.
+    ///     Compresses a byte array using GZip compression.
     /// </summary>
     /// <param name="bytes">The byte array to compress.</param>
     /// <returns>The compressed byte array.</returns>
@@ -537,7 +538,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Decompresses a compressed byte array using GZip compression into a string.
+    ///     Decompresses a compressed byte array using GZip compression into a string.
     /// </summary>
     /// <param name="bytes">The compressed byte array to decompress.</param>
     /// <returns>The decompressed string.</returns>

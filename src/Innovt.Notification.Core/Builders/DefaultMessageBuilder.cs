@@ -11,7 +11,7 @@ using Innovt.Notification.Core.Template;
 namespace Innovt.Notification.Core.Builders;
 
 /// <summary>
-/// Default implementation of the message builder interface.
+///     Default implementation of the message builder interface.
 /// </summary>
 public class DefaultMessageBuilder : IMessageBuilder
 {
@@ -55,7 +55,7 @@ public class DefaultMessageBuilder : IMessageBuilder
     }
 
     /// <summary>
-    /// Builds the subject for the notification message.
+    ///     Builds the subject for the notification message.
     /// </summary>
     protected virtual NotificationMessageSubject BuildSubject(NotificationTemplate template,
         NotificationRequest request)
@@ -70,7 +70,7 @@ public class DefaultMessageBuilder : IMessageBuilder
     }
 
     /// <summary>
-    /// Builds the body for the notification message.
+    ///     Builds the body for the notification message.
     /// </summary>
     protected virtual NotificationMessageBody BuildBody(NotificationTemplate notificationTemplate,
         NotificationRequest request)
@@ -86,7 +86,7 @@ public class DefaultMessageBuilder : IMessageBuilder
     }
 
     /// <summary>
-    /// Builds the recipient list for the notification message.
+    ///     Builds the recipient list for the notification message.
     /// </summary>
     protected virtual List<NotificationMessageContact> BuildTo(NotificationTemplate notificationTemplate,
         NotificationRequest request)
@@ -102,7 +102,7 @@ public class DefaultMessageBuilder : IMessageBuilder
     }
 
     /// <summary>
-    /// Builds the sender for the notification message.
+    ///     Builds the sender for the notification message.
     /// </summary>
     protected virtual NotificationMessageContact BuildFrom(NotificationTemplate notificationTemplate,
         NotificationRequest request)
@@ -114,7 +114,7 @@ public class DefaultMessageBuilder : IMessageBuilder
     }
 
     /// <summary>
-    /// Builds the Bcc recipient list for the notification message.
+    ///     Builds the Bcc recipient list for the notification message.
     /// </summary>
     protected virtual List<NotificationMessageContact> BuildBccTo(NotificationTemplate template,
         NotificationRequest request)
@@ -123,7 +123,7 @@ public class DefaultMessageBuilder : IMessageBuilder
     }
 
     /// <summary>
-    /// Builds the Cc recipient list for the notification message.
+    ///     Builds the Cc recipient list for the notification message.
     /// </summary>
     protected virtual List<NotificationMessageContact> BuildCcTo(NotificationTemplate template,
         NotificationRequest request)
@@ -132,7 +132,7 @@ public class DefaultMessageBuilder : IMessageBuilder
     }
 
     /// <summary>
-    /// Builds the Reply-To recipient list for the notification message.
+    ///     Builds the Reply-To recipient list for the notification message.
     /// </summary>
     protected virtual List<NotificationMessageContact> BuildReplyTo(NotificationTemplate template,
         NotificationRequest request)
@@ -141,7 +141,7 @@ public class DefaultMessageBuilder : IMessageBuilder
     }
 
     /// <summary>
-    /// Parses the notification message content using the provided payload.
+    ///     Parses the notification message content using the provided payload.
     /// </summary>
     protected virtual void ParseMessage(NotificationMessage notificationMessage, object payLoad)
     {

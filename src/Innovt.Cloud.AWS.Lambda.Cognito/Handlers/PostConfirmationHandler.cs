@@ -8,20 +8,20 @@ using Innovt.Core.CrossCutting.Log;
 namespace Innovt.Cloud.AWS.Lambda.Cognito.Handlers;
 
 /// <summary>
-/// An abstract base class for handling post-confirmation events.
+///     An abstract base class for handling post-confirmation events.
 /// </summary>
 public abstract class PostConfirmationHandler : EventProcessor<PostConfirmationEvent, PostConfirmationEvent>
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="PostConfirmationHandler"/> class with a logger.
+    ///     Initializes a new instance of the <see cref="PostConfirmationHandler" /> class with a logger.
     /// </summary>
-    /// <param name="logger">An <see cref="ILogger"/> instance for logging.</param>
+    /// <param name="logger">An <see cref="ILogger" /> instance for logging.</param>
     protected PostConfirmationHandler(ILogger logger) : base(logger)
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="PostConfirmationHandler"/> class.
+    ///     Initializes a new instance of the <see cref="PostConfirmationHandler" /> class.
     /// </summary>
     protected PostConfirmationHandler()
     {

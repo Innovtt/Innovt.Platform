@@ -11,12 +11,12 @@ using System.Text;
 namespace Innovt.Core.Http;
 
 /// <summary>
-/// Provides a set of extension methods for working with URIs and HTTP requests.
+///     Provides a set of extension methods for working with URIs and HTTP requests.
 /// </summary>
 public static class Extensions
 {
     /// <summary>
-    /// Appends a resource path to the base URI.
+    ///     Appends a resource path to the base URI.
     /// </summary>
     /// <param name="baseUri">The base URI to which the resource path will be appended.</param>
     /// <param name="resource">The resource path to append.</param>
@@ -34,7 +34,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Adds headers to an HTTP request.
+    ///     Adds headers to an HTTP request.
     /// </summary>
     /// <param name="request">The HTTP request to which headers will be added.</param>
     /// <param name="headerData">The collection of headers to add to the request.</param>
@@ -64,7 +64,7 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Adds a request body to an HTTP request.
+    ///     Adds a request body to an HTTP request.
     /// </summary>
     /// <param name="request">The HTTP request to which the body will be added.</param>
     /// <param name="dataToSend">The data to include in the request body.</param>

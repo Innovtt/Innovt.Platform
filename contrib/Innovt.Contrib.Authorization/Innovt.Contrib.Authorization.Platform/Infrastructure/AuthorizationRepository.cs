@@ -20,12 +20,12 @@ using IAuthorizationRepository = Innovt.Contrib.Authorization.Platform.Domain.IA
 namespace Innovt.Contrib.Authorization.Platform.Infrastructure;
 
 /// <summary>
-/// Repository for managing authorization-related data and operations.
+///     Repository for managing authorization-related data and operations.
 /// </summary>
 public class AuthorizationRepository : Repository, IAuthorizationRepository
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="AuthorizationRepository"/> class.
+    ///     Initializes a new instance of the <see cref="AuthorizationRepository" /> class.
     /// </summary>
     /// <param name="logger">The logger instance.</param>
     /// <param name="awsConfiguration">The AWS configuration instance.</param>

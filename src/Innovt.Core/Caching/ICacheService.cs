@@ -10,16 +10,16 @@ using Innovt.Core.Utilities;
 namespace Innovt.Core.Caching;
 
 /// <summary>
-/// Represents a caching service interface for storing and retrieving data.
+///     Represents a caching service interface for storing and retrieving data.
 /// </summary>
 /// <remarks>
-/// This interface defines methods for retrieving and caching data, as well as removing cached data.
-/// Implement this interface to create a caching service for your application.
+///     This interface defines methods for retrieving and caching data, as well as removing cached data.
+///     Implement this interface to create a caching service for your application.
 /// </remarks>
 public interface ICacheService
 {
     /// <summary>
-    /// Gets the cached value associated with the specified key.
+    ///     Gets the cached value associated with the specified key.
     /// </summary>
     /// <typeparam name="T">The type of the cached value.</typeparam>
     /// <param name="key">The unique identifier for the cached item.</param>
@@ -43,7 +43,7 @@ public interface ICacheService
     }
 
     /// <summary>
-    /// Asynchronously retrieves a cached value associated with the specified key, or creates and caches it if not found.
+    ///     Asynchronously retrieves a cached value associated with the specified key, or creates and caches it if not found.
     /// </summary>
     /// <typeparam name="T">The type of the cached value.</typeparam>
     /// <param name="key">The unique identifier for the cached item.</param>
@@ -51,7 +51,7 @@ public interface ICacheService
     /// <param name="expiration">The time duration for which the value should be cached.</param>
     /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>
-    /// The cached value if found, or a newly created value from the factory function if not found.
+    ///     The cached value if found, or a newly created value from the factory function if not found.
     /// </returns>
     public async Task<T> GetValueOrCreate<T>(string key, Func<CancellationToken, Task<T>> factory, TimeSpan expiration,
         CancellationToken cancellationToken)
@@ -72,7 +72,7 @@ public interface ICacheService
     }
 
     /// <summary>
-    /// Sets a value in the cache with the specified key and expiration duration.
+    ///     Sets a value in the cache with the specified key and expiration duration.
     /// </summary>
     /// <typeparam name="T">The type of the value to be cached.</typeparam>
     /// <param name="key">The unique identifier for the cached item.</param>
@@ -81,7 +81,7 @@ public interface ICacheService
     void SetValue<T>(string key, T entity, TimeSpan expiration);
 
     /// <summary>
-    /// Removes a cached value associated with the specified key.
+    ///     Removes a cached value associated with the specified key.
     /// </summary>
     /// <param name="key">The unique identifier for the cached item to be removed.</param>
     void Remove(string key);

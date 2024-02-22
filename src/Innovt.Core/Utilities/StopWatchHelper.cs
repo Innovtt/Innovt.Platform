@@ -9,7 +9,7 @@ using Innovt.Core.CrossCutting.Log;
 namespace Innovt.Core.Utilities;
 
 /// <summary>
-/// A helper class for measuring and logging the execution time of an action using a stopwatch.
+///     A helper class for measuring and logging the execution time of an action using a stopwatch.
 /// </summary>
 public class StopWatchHelper : IDisposable
 {
@@ -18,7 +18,7 @@ public class StopWatchHelper : IDisposable
     private Stopwatch stopwatch;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="StopWatchHelper"/> class with a logger and an action description.
+    ///     Initializes a new instance of the <see cref="StopWatchHelper" /> class with a logger and an action description.
     /// </summary>
     /// <param name="logger">The logger used to log the elapsed time.</param>
     /// <param name="action">A description of the action being measured.</param>
@@ -30,7 +30,7 @@ public class StopWatchHelper : IDisposable
     }
 
     /// <summary>
-    /// Releases the resources used by the <see cref="StopWatchHelper"/> instance and logs the elapsed time.
+    ///     Releases the resources used by the <see cref="StopWatchHelper" /> instance and logs the elapsed time.
     /// </summary>
     public void Dispose()
     {
@@ -39,9 +39,9 @@ public class StopWatchHelper : IDisposable
     }
 
     /// <summary>
-    /// Releases the resources used by the <see cref="StopWatchHelper"/> instance and logs the elapsed time.
+    ///     Releases the resources used by the <see cref="StopWatchHelper" /> instance and logs the elapsed time.
     /// </summary>
-    /// <param name="disposing">True if called from the <see cref="Dispose"/> method, false if called from the finalizer.</param>
+    /// <param name="disposing">True if called from the <see cref="Dispose" /> method, false if called from the finalizer.</param>
     protected virtual void Dispose(bool disposing)
     {
         try
@@ -56,7 +56,7 @@ public class StopWatchHelper : IDisposable
     }
 
     /// <summary>
-    /// Finalizes an instance of the <see cref="StopWatchHelper"/> class.
+    ///     Finalizes an instance of the <see cref="StopWatchHelper" /> class.
     /// </summary>
     ~StopWatchHelper()
     {

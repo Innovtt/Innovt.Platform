@@ -16,8 +16,8 @@
         <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj"/>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Polly" Version="8.2.0"/>
-        <PackageReference Include="System.Data.SqlClient" Version="4.8.5"/>
+        <PackageReference Include="Polly" Version="8.3.0"/>
+        <PackageReference Include="System.Data.SqlClient" Version="4.8.6"/>
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">

@@ -5,12 +5,12 @@
 namespace Innovt.AspNetCore.Model;
 
 /// <summary>
-/// Represents default documentation information for an API.
+///     Represents default documentation information for an API.
 /// </summary>
 public class DefaultApiDocumentation
 {
     /// <summary>
-    /// Initializes a new instance of the DefaultApiDocumentation class with the specified API details.
+    ///     Initializes a new instance of the DefaultApiDocumentation class with the specified API details.
     /// </summary>
     /// <param name="apiTitle">The title of the API.</param>
     /// <param name="apiDescription">The description of the API.</param>
@@ -28,27 +28,27 @@ public class DefaultApiDocumentation
     }
 
     /// <summary>
-    /// Gets or sets the title of the API.
+    ///     Gets or sets the title of the API.
     /// </summary>
     public string ApiTitle { get; set; }
 
     /// <summary>
-    /// Gets or sets the description of the API.
+    ///     Gets or sets the description of the API.
     /// </summary>
     public string ApiDescription { get; set; }
 
     /// <summary>
-    /// Gets or sets the version of the API.
+    ///     Gets or sets the version of the API.
     /// </summary>
     public string ApiVersion { get; set; }
 
     /// <summary>
-    /// Gets or sets the name of the contact person for the API (optional).
+    ///     Gets or sets the name of the contact person for the API (optional).
     /// </summary>
     public string? ContactName { get; set; }
 
     /// <summary>
-    /// Gets or sets the email of the contact person for the API (optional).
+    ///     Gets or sets the email of the contact person for the API (optional).
     /// </summary>
     public string? ContactEmail { get; set; }
 }

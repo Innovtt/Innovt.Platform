@@ -11,44 +11,49 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 
+// ReSharper disable MemberCanBePrivate.Global
+
 namespace Innovt.Core.Utilities;
 
 /// <summary>
-/// Provides a collection of extension methods for string manipulation and validation.
+///     Provides a collection of extension methods for string manipulation and validation.
 /// </summary
 public static class StringExtensions
 {
     /// <summary>
-    /// Determines whether the string represents a valid email address.
+    ///     Determines whether the string represents a valid email address.
     /// </summary>
     /// <param name="value">The string to validate as an email address.</param>
     /// <returns>True if the string is a valid email address; otherwise, false.</returns>
     public static bool IsEmail(this string value)
     {
+        if (value.IsNullOrEmpty())
+            return false;
+
         var isValid = new EmailAddressAttribute().IsValid(value);
 
         return isValid;
     }
 
     /// <summary>
-    /// Determines whether the string consists of numeric characters only.
+    ///     Determines whether the string consists of numeric characters only.
     /// </summary>
     /// <param name="value">The string to validate as a number.</param>
     /// <returns>True if the string consists of numeric characters only; otherwise, false.</returns>
     public static bool IsNumber(this string value)
     {
-        if (value == null)
-            return false;
-
-        return value.All(char.IsNumber);
+        return value != null && value.All(char.IsNumber);
     }
 
     /// <summary>
-    /// Truncates the string to a specified maximum length.
+    ///     Truncates the string to a specified maximum length.
     /// </summary>
     /// <param name="value">The string to truncate.</param>
     /// <param name="maxLength">The maximum length of the truncated string.</param>
-    /// <returns>The truncated string, or the original string if its length is less than or equal to the specified maximum length.</returns>
+    /// <returns>
+    ///     The truncated string, or the original string if its length is less than or equal to the specified maximum
+    ///     length.
+    /// </returns>
     public static string Truncate(this string value, int maxLength)
     {
         if (string.IsNullOrEmpty(value)) return value;
@@ -57,7 +62,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Determines whether the string is a valid CPF (Cadastro de Pessoas Físicas) number.
+    ///     Determines whether the string is a valid CPF (Cadastro de Pessoas Físicas) number.
     /// </summary>
     /// <param name="value">The string to validate as a CPF number.</param>
     /// <returns>True if the string is a valid CPF number; otherwise, false.</returns>
@@ -118,7 +123,7 @@ public static class StringExtensions
 
     //Codigo referencia http://www.macoratti.net/11/09/c_val1.htm
     /// <summary>
-    /// Determines whether the string is a valid CNPJ (Cadastro Nacional da Pessoa Jurídica) number.
+    ///     Determines whether the string is a valid CNPJ (Cadastro Nacional da Pessoa Jurídica) number.
     /// </summary>
     /// <param name="cnpj">The string to validate as a CNPJ number.</param>
     /// <returns>True if the string is a valid CNPJ number; otherwise, false.</returns>
@@ -161,18 +166,9 @@ public static class StringExtensions
         return cnpj.EndsWith(digit);
     }
 
-    /// <summary>
-    /// Determines whether a string is null, empty, or consists only of white-space characters.
-    /// </summary>
-    /// <param name="str">The string to check.</param>
-    /// <returns>True if the string is null, empty, or consists only of white-space characters; otherwise, false.</returns>
-    public static bool IsNullOrEmpty(this string str)
-    {
-        return string.IsNullOrWhiteSpace(str);
-    }
 
     /// <summary>
-    /// Determines whether a Guid is empty (all zeros).
+    ///     Determines whether a Guid is empty (all zeros).
     /// </summary>
     /// <param name="yourGuid">The Guid to check.</param>
     /// <returns>True if the Guid is empty; otherwise, false.</returns>
@@ -182,7 +178,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Determines whether a Guid is not empty (contains non-zero values).
+    ///     Determines whether a Guid is not empty (contains non-zero values).
     /// </summary>
     /// <param name="yourGuid">The Guid to check.</param>
     /// <returns>True if the Guid is not empty; otherwise, false.</returns>
@@ -192,7 +188,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Determines whether a nullable Guid is null or empty.
+    ///     Determines whether a nullable Guid is null or empty.
     /// </summary>
     /// <param name="yourGuid">The nullable Guid to check.</param>
     /// <returns>True if the nullable Guid is null or empty; otherwise, false.</returns>
@@ -202,7 +198,17 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Determines whether a nullable Guid is not null or empty.
+    ///     Determines whether a string is null, empty, or consists only of white-space characters.
+    /// </summary>
+    /// <param name="str">The string to check.</param>
+    /// <returns>True if the string is null, empty, or consists only of white-space characters; otherwise, false.</returns>
+    public static bool IsNullOrEmpty(this string str)
+    {
+        return string.IsNullOrWhiteSpace(str);
+    }
+
+    /// <summary>
+    ///     Determines whether a nullable Guid is not null or empty.
     /// </summary>
     /// <param name="yourGuid">The nullable Guid to check.</param>
     /// <returns>True if the nullable Guid is not null or empty; otherwise, false.</returns>
@@ -212,7 +218,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Encodes a string for safe use in a URL, using UTF-8 encoding.
+    ///     Encodes a string for safe use in a URL, using UTF-8 encoding.
     /// </summary>
     /// <param name="str">The string to encode.</param>
     /// <returns>The URL-encoded string, or the original string if it is null or empty.</returns>
@@ -222,7 +228,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Decodes a URL-encoded string using UTF-8 encoding.
+    ///     Decodes a URL-encoded string using UTF-8 encoding.
     /// </summary>
     /// <param name="str">The URL-encoded string to decode.</param>
     /// <returns>The decoded string, or the original string if it is null or empty.</returns>
@@ -232,16 +238,18 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Gets the value of a string or a default value if the string is null or empty.
+    ///     Gets the value of a string or a default value if the string is null or empty.
     /// </summary>
     /// <param name="str">The string to check.</param>
     /// <param name="defaultValue">The default value to return if the string is null or empty (optional).</param>
-    /// <returns>The original string if it is not null or empty; otherwise, the default value if provided; otherwise, an empty string.</returns>
+    /// <returns>
+    ///     The original string if it is not null or empty; otherwise, the default value if provided; otherwise, an empty
+    ///     string.
+    /// </returns>
     public static string GetValueOrDefault(this string str, string defaultValue = null)
     {
         if (!str.IsNullOrEmpty())
             return str;
-
 
         if (defaultValue.IsNotNullOrEmpty())
             return defaultValue;
@@ -250,7 +258,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Trims leading and trailing white-space characters from a string.
+    ///     Trims leading and trailing white-space characters from a string.
     /// </summary>
     /// <param name="str">The string to trim.</param>
     /// <returns>The trimmed string or null if the input string is null.</returns>
@@ -283,17 +291,20 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Determines whether a string is not null, empty, or consists only of white-space characters.
+    ///     Determines whether a string is not null, empty, or consists only of white-space characters.
     /// </summary>
     /// <param name="str">The string to check.</param>
-    /// <returns>True if the string is not null, not empty, and not consisting only of white-space characters; otherwise, false.</returns>
+    /// <returns>
+    ///     True if the string is not null, not empty, and not consisting only of white-space characters; otherwise,
+    ///     false.
+    /// </returns>
     public static bool IsNotNullOrEmpty(this string str)
     {
         return !string.IsNullOrWhiteSpace(str);
     }
 
     /// <summary>
-    /// Converts a delimited string into a list of strings using the specified separator character.
+    ///     Converts a delimited string into a list of strings using the specified separator character.
     /// </summary>
     /// <param name="str">The delimited string to convert.</param>
     /// <param name="separator">The character used to separate values in the string.</param>
@@ -307,27 +318,27 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Converts a string to title case using the current culture's rules.
-    /// </summary>
-    /// <param name="str">The string to convert to title case.</param>
-    /// <returns>The string in title case format.</returns>
-    public static string ToTitleCase(this string str)
-    {
-        return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(str);
-    }
-
-    /// <summary>
-    /// Converts a string to camel case by applying title case.
+    ///     Converts a string to camel case by applying title case.
     /// </summary>
     /// <param name="str">The string to convert to camel case.</param>
     /// <returns>The string in camel case format.</returns>
     public static string ToCamelCase(this string str)
     {
-        return str.ToTitleCase();
+        return str.IsNullOrEmpty() ? string.Empty : str.ToLowerInvariant().ToTitleCase();
     }
 
     /// <summary>
-    /// Removes specified special characters from a string.
+    ///     Converts a string to title case using the current culture's rules.
+    /// </summary>
+    /// <param name="str">The string to convert to title case.</param>
+    /// <returns>The string in title case format.</returns>
+    public static string ToTitleCase(this string str)
+    {
+        return str.IsNullOrEmpty() ? string.Empty : CultureInfo.CurrentCulture.TextInfo.ToTitleCase(str);
+    }
+
+    /// <summary>
+    ///     Removes specified special characters from a string.
     /// </summary>
     /// <param name="value">The string to remove special characters from.</param>
     /// <returns>The string with specified special characters removed.</returns>
@@ -346,27 +357,27 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Removes all non-numeric characters from a string.
+    ///     Removes all non-numeric characters from a string.
     /// </summary>
     /// <param name="value">The string to remove non-numeric characters from.</param>
     /// <returns>The string containing only numeric characters.</returns>
     public static string OnlyNumber(this string value)
     {
         if (value.IsNullOrEmpty())
-            return value;
+            return string.Empty;
 
         return Regex.Replace(value, "[^0-9]+?", "");
     }
 
     /// <summary>
-    /// Normalizes a string by removing accents, special characters, and trimming whitespace.
+    ///     Normalizes a string by removing accents, special characters, and trimming whitespace.
     /// </summary>
     /// <param name="str">The string to normalize.</param>
     /// <returns>The normalized string.</returns>
     public static string NormalizeText(this string str)
     {
         if (str.IsNullOrEmpty())
-            return str;
+            return string.Empty;
 
         var result = str.RemoveAccents().RemoveSpecialCharacter().TrimStart().TrimEnd();
 
@@ -374,27 +385,28 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Removes all special characters from a string.
+    ///     Removes all special characters from a string.
     /// </summary>
     /// <param name="str">The string to remove special characters from.</param>
     /// <returns>The string with special characters replaced by spaces.</returns>
     public static string RemoveSpecialCharacter(this string str)
     {
         if (str.IsNullOrEmpty())
-            return str;
+            return string.Empty;
+        ;
 
         return Regex.Replace(str, "[^0-9a-zA-Z]+", " ");
     }
 
     /// <summary>
-    /// Removes accents from a string.
+    ///     Removes accents from a string.
     /// </summary>
     /// <param name="str">The string to remove accents from.</param>
     /// <returns>The string with accents removed.</returns>
     public static string RemoveAccents(this string str)
     {
         if (str.IsNullOrEmpty())
-            return str;
+            return string.Empty;
 
         //code from Web: https://www.codegrepper.com/code-examples/csharp/c%23+remove+accents
         var sbReturn = new StringBuilder();
@@ -407,14 +419,15 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Formats a string as a CPF (Cadastro de Pessoas Físicas) number with a mask (e.g., "000.000.000-00").
+    ///     Formats a string as a CPF (Cadastro de Pessoas Físicas) number with a mask (e.g., "000.000.000-00").
     /// </summary>
     /// <param name="cpf">The string to format as a CPF.</param>
     /// <returns>The formatted CPF string or the original string if it is null or empty.</returns>
     public static string FormatCpf(this string cpf)
     {
         if (cpf.IsNullOrEmpty())
-            return cpf;
+            return string.Empty;
+        ;
 
         cpf = cpf.PadLeft(11, '0');
         return FormatByMask(cpf, @"{0:000\.000\.000\-00}");
@@ -435,7 +448,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Formats a string as a cell phone number with a mask (e.g., "(00)00000-0000").
+    ///     Formats a string as a cell phone number with a mask (e.g., "(00)00000-0000").
     /// </summary>
     /// <param name="celPhone">The string to format as a cell phone number.</param>
     /// <returns>The formatted cell phone number string or the original string if it is null or empty.</returns>
@@ -445,7 +458,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Formats a string as a phone number with a mask (e.g., "(00)000-0000").
+    ///     Formats a string as a phone number with a mask (e.g., "(00)000-0000").
     /// </summary>
     /// <param name="phoneNumber">The string to format as a phone number.</param>
     /// <returns>The formatted phone number string or the original string if it is null or empty.</returns>
@@ -455,14 +468,15 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Formats a string as a CNPJ (Cadastro Nacional da Pessoa Jurídica) number with a mask (e.g., "00.000.000/0000-00").
+    ///     Formats a string as a CNPJ (Cadastro Nacional da Pessoa Jurídica) number with a mask (e.g., "00.000.000/0000-00").
     /// </summary>
     /// <param name="cnpj">The string to format as a CNPJ number.</param>
     /// <returns>The formatted CNPJ string or null if the input is null or empty.</returns>
     public static string FormatCnpj(this string cnpj)
     {
         if (cnpj.IsNullOrEmpty())
-            return null;
+            return string.Empty;
+        ;
 
         cnpj = cnpj.PadLeft(14, '0');
 
@@ -470,14 +484,14 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Converts the first letter of a string to uppercase.
+    ///     Converts the first letter of a string to uppercase.
     /// </summary>
     /// <param name="value">The string to convert.</param>
     /// <returns>The string with its first letter in uppercase or the original string if it is null or empty.</returns>
     public static string ToUpperFirstLetter(this string value)
     {
         if (value.IsNullOrEmpty())
-            return value;
+            return string.Empty;
 
         var firstLetter = value[0].ToString().ToUpper();
         var tail = value[1..];
@@ -486,7 +500,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Formats a string as a zip code with a mask (e.g., "00000-000").
+    ///     Formats a string as a zip code with a mask (e.g., "00000-000").
     /// </summary>
     /// <param name="cep">The string to format as a zip code.</param>
     /// <returns>The formatted zip code string or the original string if it is null or empty.</returns>
@@ -496,7 +510,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Formats a string using a specified mask by extracting numeric characters from the input string.
+    ///     Formats a string using a specified mask by extracting numeric characters from the input string.
     /// </summary>
     /// <param name="value">The string to format.</param>
     /// <param name="mascara">The mask to apply.</param>
@@ -520,7 +534,7 @@ public static class StringExtensions
     public static string ToBase64(this string toEncode, Encoding encoding = null)
     {
         if (toEncode == null)
-            return null;
+            return string.Empty;
 
         encoding ??= Encoding.ASCII;
 
@@ -538,7 +552,7 @@ public static class StringExtensions
     public static string FromBase64(this string toDecode, Encoding encoding = null)
     {
         if (toDecode == null)
-            return null;
+            return string.Empty;
 
         encoding ??= Encoding.ASCII;
 
@@ -548,14 +562,14 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Encloses a string in double quotes if it contains spaces.
+    ///     Encloses a string in double quotes if it contains spaces.
     /// </summary>
     /// <param name="value">The string to enclose in double quotes.</param>
     /// <returns>The original string if it does not contain spaces; otherwise, the string enclosed in double quotes.</returns>
     public static string ApplyQuotes(this string value)
     {
         if (string.IsNullOrEmpty(value))
-            return value;
+            return string.Empty;
 
         if (!value.Contains(" "))
             return value;
@@ -564,7 +578,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Converts a string to an integer, using a specified default value if the string is null or empty.
+    ///     Converts a string to an integer, using a specified default value if the string is null or empty.
     /// </summary>
     /// <param name="str">The string to convert to an integer.</param>
     /// <param name="defaultValue">The default value to return if the string is null or empty (optional).</param>
@@ -578,7 +592,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Converts a string to a nullable integer, using a specified default value if the string is null or empty.
+    ///     Converts a string to a nullable integer, using a specified default value if the string is null or empty.
     /// </summary>
     /// <param name="str">The string to convert to a nullable integer.</param>
     /// <param name="defaultValue">The default value to return if the string is null or empty (optional).</param>
@@ -595,7 +609,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Converts a string to a decimal, using a specified default value if the string is null or empty.
+    ///     Converts a string to a decimal, using a specified default value if the string is null or empty.
     /// </summary>
     /// <param name="str">The string to convert to a decimal.</param>
     /// <param name="defaultValue">The default value to return if the string is null or empty (optional).</param>
@@ -609,7 +623,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Converts a string to a nullable decimal, using a specified default value if the string is null or empty.
+    ///     Converts a string to a nullable decimal, using a specified default value if the string is null or empty.
     /// </summary>
     /// <param name="str">The string to convert to a nullable decimal.</param>
     /// <param name="defaultValue">The default value to return if the string is null or empty (optional).</param>
@@ -627,7 +641,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Converts a string to a double, using a specified default value if the string is null or empty.
+    ///     Converts a string to a double, using a specified default value if the string is null or empty.
     /// </summary>
     /// <param name="str">The string to convert to a double.</param>
     /// <param name="defaultValue">The default value to return if the string is null or empty (optional).</param>
@@ -645,7 +659,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Converts a string to a nullable double, using a specified default value if the string is null or empty.
+    ///     Converts a string to a nullable double, using a specified default value if the string is null or empty.
     /// </summary>
     /// <param name="str">The string to convert to a nullable double.</param>
     /// <param name="defaultValue">The default value to return if the string is null or empty (optional).</param>
@@ -663,7 +677,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Converts a string to a float, using a specified default value if the string is null or empty.
+    ///     Converts a string to a float, using a specified default value if the string is null or empty.
     /// </summary>
     /// <param name="str">The string to convert to a float.</param>
     /// <param name="defaultValue">The default value to return if the string is null or empty (optional).</param>
@@ -680,7 +694,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Converts a string to a nullable float, using a specified default value if the string is null or empty.
+    ///     Converts a string to a nullable float, using a specified default value if the string is null or empty.
     /// </summary>
     /// <param name="str">The string to convert to a nullable float.</param>
     /// <param name="defaultValue">The default value to return if the string is null or empty (optional).</param>
@@ -697,7 +711,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Converts a string to a boolean, using a specified default value if the string is null or empty.
+    ///     Converts a string to a boolean, using a specified default value if the string is null or empty.
     /// </summary>
     /// <param name="str">The string to convert to a boolean.</param>
     /// <param name="defaultValue">The default value to return if the string is null or empty (optional).</param>
@@ -714,12 +728,12 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Converts a string to a boolean value, using a specified default value if the string is null or empty.
+    ///     Converts a string to a boolean value, using a specified default value if the string is null or empty.
     /// </summary>
     /// <param name="str">The string to convert to a boolean.</param>
     /// <param name="defaultValue">The default value to return if the string is null or empty (optional).</param>
     /// <returns>
-    /// The boolean value of the string if it represents a valid boolean; otherwise, the default value.
+    ///     The boolean value of the string if it represents a valid boolean; otherwise, the default value.
     /// </returns>
     public static bool? ToBoolean(this string str, bool? defaultValue = null)
     {
@@ -733,7 +747,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Converts a string to a DateTime, using a specified default value if the string is null or empty.
+    ///     Converts a string to a DateTime, using a specified default value if the string is null or empty.
     /// </summary>
     /// <param name="str">The string to convert to a DateTime.</param>
     /// <param name="defaultValue">The default value to return if the string is null or empty (optional).</param>
@@ -750,7 +764,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Converts a string to a nullable DateTime, using a specified default value if the string is null or empty.
+    ///     Converts a string to a nullable DateTime, using a specified default value if the string is null or empty.
     /// </summary>
     /// <param name="str">The string to convert to a nullable DateTime.</param>
     /// <param name="defaultValue">The default value to return if the string is null or empty (optional).</param>
@@ -768,7 +782,7 @@ public static class StringExtensions
 
 
     /// <summary>
-    /// Converts a string to a DateTimeOffset, using a specified default value if the string is null or empty.
+    ///     Converts a string to a DateTimeOffset, using a specified default value if the string is null or empty.
     /// </summary>
     /// <param name="str">The string to convert to a DateTimeOffset.</param>
     /// <param name="defaultValue">The default value to return if the string is null or empty (optional).</param>
@@ -786,7 +800,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Converts a string to a nullable DateTimeOffset, using a specified default value if the string is null or empty.
+    ///     Converts a string to a nullable DateTimeOffset, using a specified default value if the string is null or empty.
     /// </summary>
     /// <param name="str">The string to convert to a nullable DateTimeOffset.</param>
     /// <param name="defaultValue">The default value to return if the string is null or empty (optional).</param>
@@ -803,7 +817,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Converts a string to a Guid.
+    ///     Converts a string to a Guid.
     /// </summary>
     /// <param name="str">The string to convert to a Guid.</param>
     /// <returns>The Guid value of the string.</returns>
@@ -813,7 +827,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Converts a string to a Guid or returns Guid.Empty if the conversion fails.
+    ///     Converts a string to a Guid or returns Guid.Empty if the conversion fails.
     /// </summary>
     /// <param name="str">The string to convert to a Guid.</param>
     /// <returns>The Guid value of the string or Guid.Empty if the conversion fails.</returns>

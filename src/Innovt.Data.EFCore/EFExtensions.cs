@@ -12,12 +12,12 @@ using Microsoft.EntityFrameworkCore;
 namespace Innovt.Data.EFCore;
 #nullable enable
 /// <summary>
-/// Extension methods for Entity Framework IQueryable to facilitate query operations.
+///     Extension methods for Entity Framework IQueryable to facilitate query operations.
 /// </summary>
 public static class EfExtensions
 {
     /// <summary>
-    /// Adds navigation properties to include in the query.
+    ///     Adds navigation properties to include in the query.
     /// </summary>
     /// <typeparam name="T">The type of entity.</typeparam>
     /// <param name="query">The IQueryable to which includes are added.</param>
@@ -31,7 +31,7 @@ public static class EfExtensions
     }
 
     /// <summary>
-    /// Adds navigation properties to include in the query using string-based includes.
+    ///     Adds navigation properties to include in the query using string-based includes.
     /// </summary>
     /// <typeparam name="T">The type of entity.</typeparam>
     /// <param name="query">The IQueryable to which includes are added.</param>
@@ -43,7 +43,7 @@ public static class EfExtensions
     }
 
     /// <summary>
-    /// Adds a navigation property to include in the query using a string.
+    ///     Adds a navigation property to include in the query using a string.
     /// </summary>
     /// <typeparam name="T">The type of entity.</typeparam>
     /// <param name="query">The IQueryable to which the include is added.</param>
@@ -55,7 +55,7 @@ public static class EfExtensions
     }
 
     /// <summary>
-    /// Applies pagination to the query based on page number and page size.
+    ///     Applies pagination to the query based on page number and page size.
     /// </summary>
     /// <typeparam name="T">The type of entity.</typeparam>
     /// <param name="query">The IQueryable to which pagination is applied.</param>
@@ -72,7 +72,7 @@ public static class EfExtensions
     }
 
     /// <summary>
-    /// Applies pagination to the query based on an ISpecification.
+    ///     Applies pagination to the query based on an ISpecification.
     /// </summary>
     /// <typeparam name="T">The type of entity.</typeparam>
     /// <param name="query">The IQueryable to which pagination is applied.</param>
@@ -87,7 +87,7 @@ public static class EfExtensions
     }
 
     /// <summary>
-    /// Adds an entity type configuration to the ModelBuilder.
+    ///     Adds an entity type configuration to the ModelBuilder.
     /// </summary>
     /// <typeparam name="TEntity">The entity type.</typeparam>
     /// <param name="modelBuilder">The ModelBuilder to which the configuration is added.</param>
@@ -103,7 +103,7 @@ public static class EfExtensions
     }
 
     /// <summary>
-    /// Adds a list of entity type configurations to the ModelBuilder.
+    ///     Adds a list of entity type configurations to the ModelBuilder.
     /// </summary>
     /// <typeparam name="TEntity">The entity type.</typeparam>
     /// <param name="modelBuilder">The ModelBuilder to which the configurations are added.</param>

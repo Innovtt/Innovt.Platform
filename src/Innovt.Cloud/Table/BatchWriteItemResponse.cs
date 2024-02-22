@@ -7,12 +7,12 @@ using System.Collections.Generic;
 namespace Innovt.Cloud.Table;
 
 /// <summary>
-/// Represents a response from a batch write items operation.
+///     Represents a response from a batch write items operation.
 /// </summary>
 public class BatchWriteItemResponse
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="BatchWriteItemResponse"/> class.
+    ///     Initializes a new instance of the <see cref="BatchWriteItemResponse" /> class.
     /// </summary>
     public BatchWriteItemResponse()
     {
@@ -20,12 +20,12 @@ public class BatchWriteItemResponse
     }
 
     /// <summary>
-    /// Gets the unprocessed items from the batch write operation, grouped by table name.
+    ///     Gets the unprocessed items from the batch write operation, grouped by table name.
     /// </summary>
-    public Dictionary<string, List<BatchWriteItem>> UnprocessedItems { get; private set; }
+    public Dictionary<string, List<BatchWriteItem>> UnprocessedItems { get; }
 
     /// <summary>
-    /// Gets a value indicating whether the batch write operation was successful.
+    ///     Gets a value indicating whether the batch write operation was successful.
     /// </summary>
     public bool Success => UnprocessedItems is null || UnprocessedItems.Count == 0;
 }

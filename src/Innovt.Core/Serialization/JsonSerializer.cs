@@ -12,14 +12,14 @@ using Innovt.Core.Utilities;
 namespace Innovt.Core.Serialization;
 
 /// <summary>
-/// Provides JSON serialization and deserialization using System.Text.Json.
+///     Provides JSON serialization and deserialization using System.Text.Json.
 /// </summary>
 public class JsonSerializer : ISerializer
 {
     private readonly JsonSerializerOptions options;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="JsonSerializer"/> class with specified options.
+    ///     Initializes a new instance of the <see cref="JsonSerializer" /> class with specified options.
     /// </summary>
     /// <param name="ignoreNullValues">Indicates whether null values should be ignored during serialization.</param>
     /// <param name="ignoreReadOnlyProperties">Indicates whether read-only properties should be ignored during serialization.</param>
@@ -40,11 +40,11 @@ public class JsonSerializer : ISerializer
     }
 
     /// <summary>
-    /// Deserializes a JSON string into an object of type <typeparamref name="T"/>.
+    ///     Deserializes a JSON string into an object of type <typeparamref name="T" />.
     /// </summary>
     /// <typeparam name="T">The type of object to deserialize.</typeparam>
     /// <param name="serializedObject">The JSON string to deserialize.</param>
-    /// <returns>The deserialized object of type <typeparamref name="T"/>.</returns>
+    /// <returns>The deserialized object of type <typeparamref name="T" />.</returns>
     public T DeserializeObject<T>(string serializedObject)
     {
         return serializedObject.IsNullOrEmpty()
@@ -53,12 +53,12 @@ public class JsonSerializer : ISerializer
     }
 
     /// <summary>
-    /// Serializes an object of type <typeparamref name="T"/> into a JSON string.
+    ///     Serializes an object of type <typeparamref name="T" /> into a JSON string.
     /// </summary>
     /// <typeparam name="T">The type of object to serialize.</typeparam>
     /// <param name="obj">The object to serialize.</param>
     /// <returns>The serialized object as a JSON string.</returns>
-    /// <exception cref="ArgumentNullException">Thrown when the <paramref name="obj"/> parameter is null.</exception>
+    /// <exception cref="ArgumentNullException">Thrown when the <paramref name="obj" /> parameter is null.</exception>
     public string SerializeObject<T>(T obj)
     {
         if (obj == null) throw new ArgumentNullException(nameof(obj));

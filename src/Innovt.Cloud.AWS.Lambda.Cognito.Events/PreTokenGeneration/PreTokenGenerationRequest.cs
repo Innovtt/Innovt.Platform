@@ -5,24 +5,23 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
-using System.Xml.Linq;
 
 namespace Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration;
 
 /// <summary>
-/// Represents a request for pre-token generation actions.
+///     Represents a request for pre-token generation actions.
 /// </summary>
 public class PreTokenGenerationRequest : TriggerRequest
 {
     /// <summary>
-    /// Gets or sets the group configuration associated with the request.
+    ///     Gets or sets the group configuration associated with the request.
     /// </summary>
     [DataMember(Name = "groupConfiguration")]
     [JsonPropertyName("groupConfiguration")]
     public GroupConfiguration GroupConfiguration { get; set; } = new();
 
     /// <summary>
-    /// Gets or sets the client-specific metadata associated with the request.
+    ///     Gets or sets the client-specific metadata associated with the request.
     /// </summary>
     [DataMember(Name = "clientMetadata")]
     [JsonPropertyName("clientMetadata")]

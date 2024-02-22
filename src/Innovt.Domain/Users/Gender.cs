@@ -7,7 +7,7 @@ using Innovt.Domain.Core.Model;
 namespace Innovt.Domain.Users;
 
 /// <summary>
-/// Represents a gender domain model.
+///     Represents a gender domain model.
 /// </summary>
 public class Gender : DomainModel<Gender>
 {
@@ -15,14 +15,14 @@ public class Gender : DomainModel<Gender>
     public static Gender Female = new(2, 'F', "Feminino");
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Gender"/> class.
+    ///     Initializes a new instance of the <see cref="Gender" /> class.
     /// </summary>
     public Gender()
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Gender"/> class with the specified parameters.
+    ///     Initializes a new instance of the <see cref="Gender" /> class with the specified parameters.
     /// </summary>
     /// <param name="id">The unique identifier for the gender.</param>
     /// <param name="acronym">The acronym representing the gender.</param>
@@ -36,12 +36,12 @@ public class Gender : DomainModel<Gender>
     }
 
     /// <summary>
-    /// Gets or sets the acronym representing the gender.
+    ///     Gets or sets the acronym representing the gender.
     /// </summary>
     public char Acronym { get; set; }
 
     /// <summary>
-    /// Gets or sets the description of the gender.
+    ///     Gets or sets the description of the gender.
     /// </summary>
     public string Description { get; set; }
 }

@@ -12,11 +12,11 @@
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="AWSSDK.Core" Version="3.7.300.18"/>
-        <PackageReference Include="AWSSDK.SecurityToken" Version="3.7.300.19"/>
-        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.0"/>
-        <PackageReference Include="Polly" Version="8.2.0"/>
-        <PackageReference Include="System.Text.Json" Version="8.0.0"/>
+        <PackageReference Include="AWSSDK.Core" Version="3.7.302.12"/>
+        <PackageReference Include="AWSSDK.SecurityToken" Version="3.7.300.53"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.1"/>
+        <PackageReference Include="Polly" Version="8.3.0"/>
+        <PackageReference Include="System.Text.Json" Version="8.0.2"/>
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

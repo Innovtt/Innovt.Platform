@@ -14,7 +14,7 @@ namespace Innovt.Core.Exceptions;
 public class CriticalException : BaseException
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="CriticalException"/> class with a specified error message.
+    ///     Initializes a new instance of the <see cref="CriticalException" /> class with a specified error message.
     /// </summary>
     /// <param name="message">The error message that describes the critical issue.</param>
     public CriticalException(string message) : base(message)
@@ -22,7 +22,8 @@ public class CriticalException : BaseException
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="CriticalException"/> class with a specified error message and inner exception.
+    ///     Initializes a new instance of the <see cref="CriticalException" /> class with a specified error message and inner
+    ///     exception.
     /// </summary>
     /// <param name="message">The error message that describes the critical issue.</param>
     /// <param name="ex">The inner exception that caused the critical issue.</param>
@@ -31,7 +32,7 @@ public class CriticalException : BaseException
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="CriticalException"/> class with a specified inner exception.
+    ///     Initializes a new instance of the <see cref="CriticalException" /> class with a specified inner exception.
     /// </summary>
     /// <param name="ex">The inner exception that caused the critical issue.</param>
     public CriticalException(Exception ex) : base(ex)
@@ -44,10 +45,13 @@ public class CriticalException : BaseException
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="CriticalException"/> class with serialized data.
+    ///     Initializes a new instance of the <see cref="CriticalException" /> class with serialized data.
     /// </summary>
-    /// <param name="serializationInfo">The <see cref="SerializationInfo"/> containing serialized object data.</param>
-    /// <param name="streamingContext">The <see cref="StreamingContext"/> representing the source or destination of the serialized data.</param>
+    /// <param name="serializationInfo">The <see cref="SerializationInfo" /> containing serialized object data.</param>
+    /// <param name="streamingContext">
+    ///     The <see cref="StreamingContext" /> representing the source or destination of the
+    ///     serialized data.
+    /// </param>
     protected CriticalException(SerializationInfo serializationInfo,
         StreamingContext streamingContext) : base(serializationInfo, streamingContext)
     {

@@ -10,12 +10,12 @@ using Innovt.Data.Model;
 namespace Innovt.Data.Ado;
 
 /// <summary>
-/// Provides extension methods for SQL query manipulation.
+///     Provides extension methods for SQL query manipulation.
 /// </summary>
 internal static class Extensions
 {
     /// <summary>
-    /// Adds pagination clauses to the raw SQL query based on the specified paged filter and data source.
+    ///     Adds pagination clauses to the raw SQL query based on the specified paged filter and data source.
     /// </summary>
     /// <param name="rawSql">The raw SQL query to modify.</param>
     /// <param name="pagedFilter">The paged filter containing pagination parameters.</param>
@@ -47,7 +47,7 @@ internal static class Extensions
     }
 
     /// <summary>
-    /// Adds a NOLOCK hint to the raw SQL query based on the specified data source.
+    ///     Adds a NOLOCK hint to the raw SQL query based on the specified data source.
     /// </summary>
     /// <param name="rawSql">The raw SQL query to modify.</param>
     /// <param name="dataSource">The data source used to determine the database provider.</param>
@@ -62,7 +62,7 @@ internal static class Extensions
     }
 
     /// <summary>
-    /// Adds a WHERE clause to the raw SQL query based on the specified WHERE clause string.
+    ///     Adds a WHERE clause to the raw SQL query based on the specified WHERE clause string.
     /// </summary>
     /// <param name="rawSql">The raw SQL query to modify.</param>
     /// <param name="whereClause">The WHERE clause to append.</param>

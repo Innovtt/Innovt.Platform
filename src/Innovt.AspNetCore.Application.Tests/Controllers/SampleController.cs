@@ -1,7 +1,6 @@
 using System.Net;
 using Innovt.AspNetCore.Application.Tests.ViewModels;
 using Innovt.AspNetCore.Controllers;
-using Innovt.Core.Attributes;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using ILogger = Innovt.Core.CrossCutting.Log.ILogger;

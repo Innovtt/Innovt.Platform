@@ -8,20 +8,20 @@ using Innovt.Core.CrossCutting.Log;
 namespace Innovt.Cloud.AWS.Lambda.Cognito.Handlers;
 
 /// <summary>
-/// An abstract base class for handling the definition of authentication challenges.
+///     An abstract base class for handling the definition of authentication challenges.
 /// </summary>
 public abstract class DefineAuthChallengeHandler : EventProcessor<DefineAuthChallengeEvent, DefineAuthChallengeEvent>
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="DefineAuthChallengeHandler"/> class with a logger.
+    ///     Initializes a new instance of the <see cref="DefineAuthChallengeHandler" /> class with a logger.
     /// </summary>
-    /// <param name="logger">An <see cref="ILogger"/> instance for logging.</param>
+    /// <param name="logger">An <see cref="ILogger" /> instance for logging.</param>
     protected DefineAuthChallengeHandler(ILogger logger) : base(logger)
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="DefineAuthChallengeHandler"/> class.
+    ///     Initializes a new instance of the <see cref="DefineAuthChallengeHandler" /> class.
     /// </summary>
     protected DefineAuthChallengeHandler()
     {

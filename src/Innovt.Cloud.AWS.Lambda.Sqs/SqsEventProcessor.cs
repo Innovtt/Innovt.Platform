@@ -34,7 +34,8 @@ public abstract class SqsEventProcessor<TBody> : EventProcessor<SQSEvent, BatchF
     private ISerializer serializer;
 
     /// <summary>
-    /// Initializes a new instance of the SqsEventProcessor class with the specified FIFO queue setting and report batch failures setting.
+    ///     Initializes a new instance of the SqsEventProcessor class with the specified FIFO queue setting and report batch
+    ///     failures setting.
     /// </summary>
     /// <param name="isFifo">A boolean indicating whether the SQS queue is FIFO (First-In-First-Out).</param>
     /// <param name="reportBatchFailures">A boolean indicating whether to report batch processing failures.</param>
@@ -45,7 +46,8 @@ public abstract class SqsEventProcessor<TBody> : EventProcessor<SQSEvent, BatchF
     }
 
     /// <summary>
-    /// Initializes a new instance of the SqsEventProcessor class with the specified logger, FIFO queue setting, and report batch failures setting.
+    ///     Initializes a new instance of the SqsEventProcessor class with the specified logger, FIFO queue setting, and report
+    ///     batch failures setting.
     /// </summary>
     /// <param name="logger">The logger used for logging events and messages.</param>
     /// <param name="isFifo">A boolean indicating whether the SQS queue is FIFO (First-In-First-Out).</param>
@@ -58,7 +60,8 @@ public abstract class SqsEventProcessor<TBody> : EventProcessor<SQSEvent, BatchF
 
 
     /// <summary>
-    /// Initializes a new instance of the SqsEventProcessor class with the specified logger, serializer, FIFO queue setting, and report batch failures setting.
+    ///     Initializes a new instance of the SqsEventProcessor class with the specified logger, serializer, FIFO queue
+    ///     setting, and report batch failures setting.
     /// </summary>
     /// <param name="logger">The logger used for logging events and messages.</param>
     /// <param name="serializer">The serializer used for message deserialization.</param>
@@ -71,12 +74,12 @@ public abstract class SqsEventProcessor<TBody> : EventProcessor<SQSEvent, BatchF
     }
 
     /// <summary>
-    /// Gets or sets a boolean indicating whether to report batch processing failures.
+    ///     Gets or sets a boolean indicating whether to report batch processing failures.
     /// </summary>
     protected bool ReportBatchFailures { get; set; }
 
     /// <summary>
-    /// Gets or sets the serializer used for message deserialization.
+    ///     Gets or sets the serializer used for message deserialization.
     /// </summary>
     private ISerializer Serializer
     {
@@ -86,7 +89,7 @@ public abstract class SqsEventProcessor<TBody> : EventProcessor<SQSEvent, BatchF
     }
 
     /// <summary>
-    /// Handles the processing of an incoming SQSEvent, which may contain multiple SQS event records.
+    ///     Handles the processing of an incoming SQSEvent, which may contain multiple SQS event records.
     /// </summary>
     /// <param name="message">The SQSEvent containing one or more SQS event records.</param>
     /// <param name="context">The ILambdaContext providing information about the Lambda function's execution environment.</param>
@@ -101,7 +104,7 @@ public abstract class SqsEventProcessor<TBody> : EventProcessor<SQSEvent, BatchF
 
         if (message?.Records == null || message.Records.Count == 0) return response;
 
-        using var activity = EventProcessorActivitySource.StartActivity(nameof(Handle));
+        using var activity = EventProcessorActivitySource.StartActivity();
         activity?.SetTag("SqsMessageRecordsCount", message?.Records?.Count);
 
         if (message.Records is null)
@@ -168,7 +171,7 @@ public abstract class SqsEventProcessor<TBody> : EventProcessor<SQSEvent, BatchF
     }
 
     /// <summary>
-    /// Gets the remaining messages in the SQSEvent that were not processed successfully.
+    ///     Gets the remaining messages in the SQSEvent that were not processed successfully.
     /// </summary>
     /// <param name="message">The SQSEvent containing one or more SQS event records.</param>
     /// <param name="processedMessages">A list of processed message IDs.</param>
@@ -179,7 +182,7 @@ public abstract class SqsEventProcessor<TBody> : EventProcessor<SQSEvent, BatchF
     }
 
     /// <summary>
-    /// Handles the processing of an individual SQS message.
+    ///     Handles the processing of an individual SQS message.
     /// </summary>
     /// <param name="message">The QueueMessage object containing information about the SQS message.</param>
     /// <returns>A Task representing the asynchronous processing operation.</returns>

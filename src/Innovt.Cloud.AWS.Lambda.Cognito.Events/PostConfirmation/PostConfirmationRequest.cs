@@ -10,12 +10,12 @@ using System.Text.Json.Serialization;
 namespace Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation;
 
 /// <summary>
-/// Represents a request for post-confirmation actions.
+///     Represents a request for post-confirmation actions.
 /// </summary>
 public class PostConfirmationRequest : TriggerRequest
 {
     /// <summary>
-    /// Gets or sets the client-specific metadata associated with the request.
+    ///     Gets or sets the client-specific metadata associated with the request.
     /// </summary>
     [DataMember(Name = "clientMetadata")]
     [JsonPropertyName("clientMetadata")]

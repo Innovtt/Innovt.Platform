@@ -7,60 +7,58 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Innovt.Core.CrossCutting.Ioc;
 
 /// <summary>
-/// Represents a module for configuring and managing services within a dependency injection container.
+///     Represents a module for configuring and managing services within a dependency injection container.
 /// </summary>
 /// <remarks>
-/// This class provides a way to define and manage services within a dependency injection container.
-/// Developers can create custom modules to configure and add services to the container, making it easier to organize
-/// and maintain the service registration code.
+///     This class provides a way to define and manage services within a dependency injection container.
+///     Developers can create custom modules to configure and add services to the container, making it easier to organize
+///     and maintain the service registration code.
 /// </remarks>
 public class IocModule
 {
-    private readonly IServiceCollection services;
-
     /// <summary>
-    /// Initializes a new instance of the <see cref="IocModule"/> class with a new <see cref="ServiceCollection"/>.
+    ///     Initializes a new instance of the <see cref="IocModule" /> class with a new <see cref="ServiceCollection" />.
     /// </summary>
     public IocModule()
     {
-        services = new ServiceCollection();
+        Services = new ServiceCollection();
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="IocModule"/> class with the provided <paramref name="services"/>.
+    ///     Initializes a new instance of the <see cref="IocModule" /> class with the provided <paramref name="services" />.
     /// </summary>
-    /// <param name="services">The <see cref="IServiceCollection"/> to be used for service registration.</param>
+    /// <param name="services">The <see cref="IServiceCollection" /> to be used for service registration.</param>
     public IocModule(IServiceCollection services)
     {
-        this.services = services;
+        Services = services;
     }
 
     /// <summary>
-    /// Gets the <see cref="IServiceCollection"/> used for service registration and configuration.
+    ///     Gets the <see cref="IServiceCollection" /> used for service registration and configuration.
     /// </summary>
-    /// <returns>The <see cref="IServiceCollection"/> associated with this module.</returns>
+    public IServiceCollection Services { get; }
+
+    /// <summary>
+    ///     Gets the <see cref="IServiceCollection" /> used for service registration and configuration.
+    /// </summary>
+    /// <returns>The <see cref="IServiceCollection" /> associated with this module.</returns>
     public IServiceCollection GetServices()
     {
-        return services;
+        return Services;
     }
 
     /// <summary>
-    /// Gets the <see cref="IServiceCollection"/> used for service registration and configuration.
+    ///     Appends services from an external <see cref="IServiceCollection" /> to the module's services.
     /// </summary>
-    public IServiceCollection Services => services;
-
-    /// <summary>
-    /// Appends services from an external <see cref="IServiceCollection"/> to the module's services.
-    /// </summary>
-    /// <param name="externalServices">The external <see cref="IServiceCollection"/> containing services to append.</param>
-    /// <returns>The updated <see cref="IServiceCollection"/> after appending external services.</returns>
+    /// <param name="externalServices">The external <see cref="IServiceCollection" /> containing services to append.</param>
+    /// <returns>The updated <see cref="IServiceCollection" /> after appending external services.</returns>
     public IServiceCollection AppendServices(IServiceCollection externalServices)
     {
         if (externalServices == null)
-            return services;
+            return Services;
 
-        foreach (var serviceDescriptor in externalServices) services.Add(serviceDescriptor);
+        foreach (var serviceDescriptor in externalServices) Services.Add(serviceDescriptor);
 
-        return services;
+        return Services;
     }
 }

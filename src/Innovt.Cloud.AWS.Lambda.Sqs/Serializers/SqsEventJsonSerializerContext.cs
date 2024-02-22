@@ -8,7 +8,7 @@ using Amazon.Lambda.SQSEvents;
 namespace Innovt.Cloud.AWS.Lambda.Sqs.Serializers;
 
 /// <summary>
-/// Represents a JSON serializer context for Sqs Serializer for AOT Support
+///     Represents a JSON serializer context for Sqs Serializer for AOT Support
 /// </summary>
 [JsonSerializable(typeof(SQSEvent))]
 [JsonSerializable(typeof(BatchFailureResponse))]

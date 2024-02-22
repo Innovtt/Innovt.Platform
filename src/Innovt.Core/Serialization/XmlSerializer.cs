@@ -2,28 +2,27 @@
 // Author: Michel Borges
 // Project: Innovt.Core
 
-using Innovt.Core.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
+using Innovt.Core.Exceptions;
 
 namespace Innovt.Core.Serialization;
 
 /// <summary>
-/// Provides XML serialization and deserialization using System.Xml.Serialization.
+///     Provides XML serialization and deserialization using System.Xml.Serialization.
 /// </summary>
 public class XmlSerializer : ISerializer
 {
     /// <summary>
-    /// Deserializes an XML string into an object of type <typeparamref name="T"/>.
+    ///     Deserializes an XML string into an object of type <typeparamref name="T" />.
     /// </summary>
     /// <typeparam name="T">The type of object to deserialize.</typeparam>
     /// <param name="serializedObject">The XML string to deserialize.</param>
-    /// <returns>The deserialized object of type <typeparamref name="T"/>.</returns>
+    /// <returns>The deserialized object of type <typeparamref name="T" />.</returns>
     public T DeserializeObject<T>(string serializedObject)
     {
         using var xmlReader = XmlReader.Create(new StringReader(serializedObject));
@@ -33,7 +32,7 @@ public class XmlSerializer : ISerializer
     }
 
     /// <summary>
-    /// Serializes an object of type <typeparamref name="T"/> into an XML string.
+    ///     Serializes an object of type <typeparamref name="T" /> into an XML string.
     /// </summary>
     /// <typeparam name="T">The type of object to serialize.</typeparam>
     /// <param name="obj">The object to serialize.</param>
@@ -44,7 +43,7 @@ public class XmlSerializer : ISerializer
     }
 
     /// <summary>
-    /// Serializes an object of type <typeparamref name="T"/> into an XML string with optional namespaces.
+    ///     Serializes an object of type <typeparamref name="T" /> into an XML string with optional namespaces.
     /// </summary>
     /// <typeparam name="T">The type of object to serialize.</typeparam>
     /// <param name="obj">The object to serialize.</param>

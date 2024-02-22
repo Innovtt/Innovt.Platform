@@ -14,19 +14,19 @@ using Microsoft.Extensions.Options;
 namespace Innovt.AspNetCore.Handlers;
 
 /// <summary>
-/// Custom authentication handler for handling basic authentication in ASP.NET Core.
+///     Custom authentication handler for handling basic authentication in ASP.NET Core.
 /// </summary>
 public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
 {
     /// <summary>
-    /// The scheme name for basic authentication.
+    ///     The scheme name for basic authentication.
     /// </summary>
     public const string SchemeName = "BasicAuthentication";
 
     private readonly IBasicAuthService authService;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="BasicAuthenticationHandler"/> class.
+    ///     Initializes a new instance of the <see cref="BasicAuthenticationHandler" /> class.
     /// </summary>
     /// <param name="options">The options for the authentication scheme.</param>
     /// <param name="logger">The logger factory.</param>
@@ -41,7 +41,7 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
     }
 
     /// <summary>
-    /// Generates an authentication failure response.
+    ///     Generates an authentication failure response.
     /// </summary>
     /// <param name="reason">The reason for the failure.</param>
     /// <returns>An authentication result indicating failure.</returns>
@@ -51,7 +51,7 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
     }
 
     /// <summary>
-    /// Generates an authentication success response.
+    ///     Generates an authentication success response.
     /// </summary>
     /// <param name="username">The authenticated username.</param>
     /// <returns>An authentication result indicating success.</returns>
@@ -64,7 +64,7 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
         return AuthenticateResult.Success(new AuthenticationTicket(principal, SchemeName));
     }
 
-    /// <inheritdoc/>
+    /// <inheritdoc />
     protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
     {
         if (!Request.Headers.ContainsKey("Authorization"))

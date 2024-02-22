@@ -17,7 +17,7 @@ public class LocalCacheTests
     [SetUp]
     public void Setup()
     {
-        cacheService = new LocalCache(new MemoryCache(new MemoryCacheOptions() { CompactionPercentage = 1 }));
+        cacheService = new LocalCache(new MemoryCache(new MemoryCacheOptions { CompactionPercentage = 1 }));
     }
 
 
@@ -47,7 +47,7 @@ public class LocalCacheTests
     [Test]
     public void SetValueThrowExceptionIfKeyIsNullOrEmpty()
     {
-        Assert.Throws<ArgumentNullException>(() => cacheService.SetValue<int>(null, 0, TimeSpan.FromSeconds(10)));
+        Assert.Throws<ArgumentNullException>(() => cacheService.SetValue(null, 0, TimeSpan.FromSeconds(10)));
     }
 
 
@@ -67,7 +67,7 @@ public class LocalCacheTests
     [Test]
     public async Task GetValueWithFactoryReturnsFactoryValue()
     {
-        var value = await cacheService.GetValue<int?>("Quantity", Factory, CancellationToken.None)
+        var value = await cacheService.GetValue("Quantity", Factory, CancellationToken.None)
             .ConfigureAwait(false);
 
         Assert.That(10, Is.EqualTo(value));
@@ -82,7 +82,7 @@ public class LocalCacheTests
         var expectedValue = 10;
 
         var value = await cacheService
-            .GetValueOrCreate<int?>(key, (c) => { return FactoryB(null, c); }, expiration, CancellationToken.None)
+            .GetValueOrCreate(key, c => { return FactoryB(null, c); }, expiration, CancellationToken.None)
             .ConfigureAwait(false);
 
         Assert.That(expectedValue, Is.EqualTo(value));
@@ -112,7 +112,7 @@ public class LocalCacheTests
         var key = "Quantity";
         var expectedValue = 100;
 
-        cacheService.SetValue<int>(key, expectedValue, TimeSpan.FromDays(1));
+        cacheService.SetValue(key, expectedValue, TimeSpan.FromDays(1));
 
         var value = cacheService.GetValue<int>(key);
 
@@ -126,7 +126,7 @@ public class LocalCacheTests
         var expectedValue = 0;
         var expiration = TimeSpan.FromSeconds(1);
 
-        cacheService.SetValue<int>(key, 100, TimeSpan.FromSeconds(1));
+        cacheService.SetValue(key, 100, TimeSpan.FromSeconds(1));
 
         await Task.Delay(expiration * 2).ConfigureAwait(false);
 
@@ -142,7 +142,7 @@ public class LocalCacheTests
         var key = "Quantity";
         var expectedValue = 0;
 
-        cacheService.SetValue<int>(key, 100, TimeSpan.FromDays(1));
+        cacheService.SetValue(key, 100, TimeSpan.FromDays(1));
 
         cacheService.Remove(key);
 

@@ -4,6 +4,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Amazon.StepFunctions;
@@ -15,7 +16,7 @@ using Innovt.Core.CrossCutting.Log;
 namespace Innovt.Cloud.AWS.StepFunction;
 
 /// <summary>
-/// Represents a service for interacting with AWS Step Functions.
+///     Represents a service for interacting with AWS Step Functions.
 /// </summary>
 public class StepFunctionService : AwsBaseService, IStateMachine
 {
@@ -24,7 +25,7 @@ public class StepFunctionService : AwsBaseService, IStateMachine
     private AmazonStepFunctionsClient awStepFunctionClient;
 
     /// <summary>
-    /// Initializes a new instance of the StepFunctionService class.
+    ///     Initializes a new instance of the StepFunctionService class.
     /// </summary>
     /// <param name="logger">The logger instance.</param>
     /// <param name="configuration">The AWS configuration instance.</param>
@@ -33,7 +34,7 @@ public class StepFunctionService : AwsBaseService, IStateMachine
     }
 
     /// <summary>
-    /// Initializes a new instance of the StepFunctionService class with a specific region.
+    ///     Initializes a new instance of the StepFunctionService class with a specific region.
     /// </summary>
     /// <param name="logger">The logger instance.</param>
     /// <param name="configuration">The AWS configuration instance.</param>
@@ -49,7 +50,7 @@ public class StepFunctionService : AwsBaseService, IStateMachine
     }
 
     /// <summary>
-    /// Starts the execution of a state machine.
+    ///     Starts the execution of a state machine.
     /// </summary>
     /// <param name="input">The input for the execution.</param>
     /// <param name="stateMachineArn">The ARN of the state machine.</param>
@@ -70,9 +71,9 @@ public class StepFunctionService : AwsBaseService, IStateMachine
         var policy = base.CreateDefaultRetryAsyncPolicy();
 
         await policy.ExecuteAsync(async () =>
-                await StepFunctionClient.StartExecutionAsync(new StartExecutionRequest()
+                await StepFunctionClient.StartExecutionAsync(new StartExecutionRequest
                 {
-                    Input = System.Text.Json.JsonSerializer.Serialize(input),
+                    Input = JsonSerializer.Serialize(input),
                     StateMachineArn = stateMachineArn,
                     Name = executionId
                 }, cancellationToken).ConfigureAwait(false))
@@ -80,7 +81,7 @@ public class StepFunctionService : AwsBaseService, IStateMachine
     }
 
     /// <summary>
-    /// Sends a success response for a task in the state machine.
+    ///     Sends a success response for a task in the state machine.
     /// </summary>
     /// <param name="taskToken">The token for the task.</param>
     /// <param name="output">The output of the task.</param>
@@ -97,16 +98,16 @@ public class StepFunctionService : AwsBaseService, IStateMachine
         var policy = base.CreateDefaultRetryAsyncPolicy();
 
         await policy.ExecuteAsync(async () =>
-                await StepFunctionClient.SendTaskSuccessAsync(new SendTaskSuccessRequest()
+                await StepFunctionClient.SendTaskSuccessAsync(new SendTaskSuccessRequest
                 {
                     TaskToken = taskToken,
-                    Output = System.Text.Json.JsonSerializer.Serialize(output)
+                    Output = JsonSerializer.Serialize(output)
                 }, cancellationToken).ConfigureAwait(false))
             .ConfigureAwait(false);
     }
 
     /// <summary>
-    /// Sends a failure response for a task in the state machine.
+    ///     Sends a failure response for a task in the state machine.
     /// </summary>
     /// <param name="taskToken">The token for the task.</param>
     /// <param name="reason">The reason for the failure.</param>
@@ -125,7 +126,7 @@ public class StepFunctionService : AwsBaseService, IStateMachine
         var policy = base.CreateDefaultRetryAsyncPolicy();
 
         await policy.ExecuteAsync(async () =>
-                await StepFunctionClient.SendTaskFailureAsync(new SendTaskFailureRequest()
+                await StepFunctionClient.SendTaskFailureAsync(new SendTaskFailureRequest
                 {
                     TaskToken = taskToken,
                     Cause = reason,
@@ -135,7 +136,7 @@ public class StepFunctionService : AwsBaseService, IStateMachine
     }
 
     /// <summary>
-    /// Sends a heartbeat for a task in the state machine.
+    ///     Sends a heartbeat for a task in the state machine.
     /// </summary>
     /// <param name="taskToken">The token for the task.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
@@ -150,7 +151,7 @@ public class StepFunctionService : AwsBaseService, IStateMachine
         var policy = base.CreateDefaultRetryAsyncPolicy();
 
         await policy.ExecuteAsync(async () =>
-                await StepFunctionClient.SendTaskHeartbeatAsync(new SendTaskHeartbeatRequest()
+                await StepFunctionClient.SendTaskHeartbeatAsync(new SendTaskHeartbeatRequest
                 {
                     TaskToken = taskToken
                 }, cancellationToken).ConfigureAwait(false))
@@ -158,7 +159,7 @@ public class StepFunctionService : AwsBaseService, IStateMachine
     }
 
     /// <summary>
-    /// Disposes of the Amazon Step Functions client.
+    ///     Disposes of the Amazon Step Functions client.
     /// </summary>
     protected override void DisposeServices()
     {

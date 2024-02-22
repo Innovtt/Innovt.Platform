@@ -17,7 +17,7 @@ public abstract class DataSourceBase : IDataSource
     private string connectionString;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="DataSourceBase"/> class with the specified parameters.
+    ///     Initializes a new instance of the <see cref="DataSourceBase" /> class with the specified parameters.
     /// </summary>
     /// <param name="name">The name of the data source.</param>
     /// <param name="connectionString">The connection string for the data source.</param>
@@ -30,7 +30,7 @@ public abstract class DataSourceBase : IDataSource
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="DataSourceBase"/> class with configuration settings.
+    ///     Initializes a new instance of the <see cref="DataSourceBase" /> class with configuration settings.
     /// </summary>
     /// <param name="configuration">The configuration containing connection string settings.</param>
     /// <param name="connectionStringName">The name of the connection string.</param>
@@ -47,7 +47,8 @@ public abstract class DataSourceBase : IDataSource
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="DataSourceBase"/> class with configuration settings and a custom name.
+    ///     Initializes a new instance of the <see cref="DataSourceBase" /> class with configuration settings and a custom
+    ///     name.
     /// </summary>
     /// <param name="configuration">The configuration containing connection string settings.</param>
     /// <param name="name">The custom name of the data source.</param>
@@ -63,17 +64,17 @@ public abstract class DataSourceBase : IDataSource
     }
 
     /// <summary>
-    /// Gets or sets the name of the data source.
+    ///     Gets or sets the name of the data source.
     /// </summary>
     public string Name { get; set; }
 
     /// <summary>
-    /// Gets the provider for the data source.
+    ///     Gets the provider for the data source.
     /// </summary>
     public Provider Provider { get; }
 
     /// <summary>
-    /// Retrieves the connection string for the data source.
+    ///     Retrieves the connection string for the data source.
     /// </summary>
     /// <returns>The connection string for the data source.</returns>
     public string GetConnectionString()
@@ -82,11 +83,14 @@ public abstract class DataSourceBase : IDataSource
     }
 
     /// <summary>
-    /// Sets the connection string for the data source based on the provided configuration and connection string name.
+    ///     Sets the connection string for the data source based on the provided configuration and connection string name.
     /// </summary>
     /// <param name="configuration">The configuration containing connection string settings.</param>
     /// <param name="name">The name of the connection string.</param>
-    /// <exception cref="ArgumentNullException">Thrown when <paramref name="configuration"/> or <paramref name="name"/> is null.</exception>
+    /// <exception cref="ArgumentNullException">
+    ///     Thrown when <paramref name="configuration" /> or <paramref name="name" /> is
+    ///     null.
+    /// </exception>
     /// <exception cref="ConnectionStringException">Thrown when the connection string is not found or null.</exception>
     private void SetConnectionString(IConfiguration configuration, string name)
     {

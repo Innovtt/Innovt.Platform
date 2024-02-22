@@ -13,7 +13,7 @@
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="AWSSDK.SQS" Version="3.7.300.18"/>
+        <PackageReference Include="AWSSDK.SQS" Version="3.7.300.52"/>
         <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="8.0.0"/>
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">
             <PrivateAssets>all</PrivateAssets>

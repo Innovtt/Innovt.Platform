@@ -1,50 +1,50 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 
 /// <summary>
-/// A builder for defining the entity type and its properties for use with DynamoDB.
+///     A builder for defining the entity type and its properties for use with DynamoDB.
 /// </summary>
 /// <typeparam name="T">The type of the entity being defined.</typeparam>
 public sealed class EntityTypeBuilder<T> where T : class
 {
     /// <summary>
-    /// Gets or sets the table name associated with the entity type.
+    ///     Gets or sets the table name associated with the entity type.
     /// </summary>
     public string TableName { get; private set; }
 
     /// <summary>
-    /// Gets or sets the partition key for the DynamoDB table.
+    ///     Gets or sets the partition key for the DynamoDB table.
     /// </summary>
     public string Pk { get; private set; }
 
     /// <summary>
-    /// Gets or sets the sort key for the DynamoDB table.
+    ///     Gets or sets the sort key for the DynamoDB table.
     /// </summary>
     public string Sk { get; private set; }
 
     /// <summary>
-    /// Gets or sets the entity type for the DynamoDB table.
+    ///     Gets or sets the entity type for the DynamoDB table.
     /// </summary>
     public string EntityType { get; private set; }
 
     /// <summary>
-    /// Gets or sets the list of ignored property names for mapping.
+    ///     Gets or sets the list of ignored property names for mapping.
     /// </summary>
-    private List<string> IgnoredProperties { get; set; } = new();
+    private List<string> IgnoredProperties { get; } = new();
 
     /// <summary>
-    /// Gets or sets the list of property type builders for defining properties.
+    ///     Gets or sets the list of property type builders for defining properties.
     /// </summary>
-    private List<PropertyTypeBuilder<T>> Properties { get; set; } = new();
+    private List<PropertyTypeBuilder<T>> Properties { get; } = new();
 
     /// <summary>
-    /// Sets the table name associated with the entity type.
+    ///     Sets the table name associated with the entity type.
     /// </summary>
     /// <param name="tableName">The table name to set.</param>
-    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}"/>.</returns>
+    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
     public EntityTypeBuilder<T> WithTableName(string tableName)
     {
         TableName = tableName;
@@ -52,29 +52,29 @@ public sealed class EntityTypeBuilder<T> where T : class
     }
 
     /// <summary>
-    /// Sets the partition key for the DynamoDB table to "PK".
+    ///     Sets the partition key for the DynamoDB table to "PK".
     /// </summary>
-    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}"/>.</returns>
+    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
     public EntityTypeBuilder<T> WithOneTableHashKey()
     {
         return HasHashKey("PK");
     }
 
     /// <summary>
-    /// Sets the partition key for the DynamoDB table using a provided hash key function.
+    ///     Sets the partition key for the DynamoDB table using a provided hash key function.
     /// </summary>
     /// <param name="hashKey">The hash key function to generate the partition key.</param>
-    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}"/>.</returns>
+    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
     public EntityTypeBuilder<T> HasHashKey(Func<T, string> hashKey)
     {
         return HasHashKey(hashKey.Invoke(default));
     }
 
     /// <summary>
-    /// Sets the partition key for the DynamoDB table using a specified partition key.
+    ///     Sets the partition key for the DynamoDB table using a specified partition key.
     /// </summary>
     /// <param name="hashKey">The partition key to set.</param>
-    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}"/>.</returns>
+    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
     public EntityTypeBuilder<T> HasHashKey(string hashKey)
     {
         Pk = hashKey;
@@ -82,29 +82,29 @@ public sealed class EntityTypeBuilder<T> where T : class
     }
 
     /// <summary>
-    /// Sets the sort key for the DynamoDB table to "PK".
+    ///     Sets the sort key for the DynamoDB table to "PK".
     /// </summary>
-    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}"/>.</returns>
+    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
     public EntityTypeBuilder<T> WithOneTableRangeKey()
     {
         return HasRangeKey("PK");
     }
 
     /// <summary>
-    /// Sets the sort key for the DynamoDB table using a provided range key function.
+    ///     Sets the sort key for the DynamoDB table using a provided range key function.
     /// </summary>
     /// <param name="rangeKey">The range key function to generate the sort key.</param>
-    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}"/>.</returns>
+    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
     public EntityTypeBuilder<T> HasRangeKey(Func<T, string> rangeKey)
     {
         return HasRangeKey(rangeKey.Invoke(default));
     }
 
     /// <summary>
-    /// Sets the sort key for the DynamoDB table using a specified sort key.
+    ///     Sets the sort key for the DynamoDB table using a specified sort key.
     /// </summary>
     /// <param name="rangeKey">The sort key to set.</param>
-    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}"/>.</returns>
+    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
     public EntityTypeBuilder<T> HasRangeKey(string rangeKey)
     {
         Sk = rangeKey;
@@ -112,20 +112,20 @@ public sealed class EntityTypeBuilder<T> where T : class
     }
 
     /// <summary>
-    /// Sets the entity type for the DynamoDB table using a provided entity type function.
+    ///     Sets the entity type for the DynamoDB table using a provided entity type function.
     /// </summary>
     /// <param name="entityTypeName">The entity type function to generate the entity type.</param>
-    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}"/>.</returns>
+    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
     public EntityTypeBuilder<T> WithEntityType(Func<T, string> entityTypeName)
     {
         return WithEntityType(entityTypeName.Invoke(default));
     }
 
     /// <summary>
-    /// Sets the entity type for the DynamoDB table using a specified entity type.
+    ///     Sets the entity type for the DynamoDB table using a specified entity type.
     /// </summary>
     /// <param name="entityTypeName">The entity type to set.</param>
-    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}"/>.</returns>
+    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
     public EntityTypeBuilder<T> WithEntityType(string entityTypeName)
     {
         EntityType = entityTypeName;
@@ -133,7 +133,7 @@ public sealed class EntityTypeBuilder<T> where T : class
     }
 
     /// <summary>
-    /// Defines a property for the entity using a provided property function.
+    ///     Defines a property for the entity using a provided property function.
     /// </summary>
     /// <param name="property">The property function to generate the property.</param>
     /// <returns>The property type builder for further property configuration.</returns>
@@ -143,7 +143,7 @@ public sealed class EntityTypeBuilder<T> where T : class
     }
 
     /// <summary>
-    /// Defines a property for the entity using a specified property name.
+    ///     Defines a property for the entity using a specified property name.
     /// </summary>
     /// <param name="name">The name of the property.</param>
     /// <returns>The property type builder for further property configuration.</returns>
@@ -157,20 +157,20 @@ public sealed class EntityTypeBuilder<T> where T : class
     }
 
     /// <summary>
-    /// Ignores a property during mapping.
+    ///     Ignores a property during mapping.
     /// </summary>
     /// <param name="property">The property to ignore.</param>
-    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}"/>.</returns>
+    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
     public EntityTypeBuilder<T> IgnoreProperty(Func<T, string> property)
     {
         return IgnoreProperty(property.Invoke(default));
     }
 
     /// <summary>
-    /// Ignores a property by name during mapping.
+    ///     Ignores a property by name during mapping.
     /// </summary>
     /// <param name="name">The name of the property to ignore.</param>
-    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}"/>.</returns>
+    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
     public EntityTypeBuilder<T> IgnoreProperty(string name)
     {
         if (IgnoredProperties.Any(p => p.Equals(name, StringComparison.InvariantCultureIgnoreCase)))
@@ -181,10 +181,11 @@ public sealed class EntityTypeBuilder<T> where T : class
         return this;
     }
 
-    /// /// <summary>
-    /// Starts a reflection process to auto map all properties of the entity type.
+    /// ///
+    /// <summary>
+    ///     Starts a reflection process to auto map all properties of the entity type.
     /// </summary>
-    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}"/>.</returns>
+    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
     public EntityTypeBuilder<T> AutoMap()
     {
         var item = typeof(T).GetProperties();

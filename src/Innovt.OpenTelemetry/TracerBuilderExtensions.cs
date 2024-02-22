@@ -8,12 +8,12 @@ using OpenTelemetry.Trace;
 namespace Innovt.OpenTelemetry;
 
 /// <summary>
-///  This is a simple exporter that logs telemetry to the console.
+///     This is a simple exporter that logs telemetry to the console.
 /// </summary>
 public static class TracerBuilderExtensions
 {
     /// <summary>
-    /// Adds a simple activity exporter that logs telemetry to the console.
+    ///     Adds a simple activity exporter that logs telemetry to the console.
     /// </summary>
     /// <param name="builder"></param>
     /// <returns></returns>

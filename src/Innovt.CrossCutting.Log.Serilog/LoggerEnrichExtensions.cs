@@ -9,12 +9,12 @@ using Serilog.Configuration;
 namespace Innovt.CrossCutting.Log.Serilog;
 
 /// <summary>
-/// Provides extension methods to enrich Serilog log events with specific enrichers.
+///     Provides extension methods to enrich Serilog log events with specific enrichers.
 /// </summary>
 public static class LoggerEnrichExtensions
 {
     /// <summary>
-    /// Enriches log events with DataDog trace and span IDs.
+    ///     Enriches log events with DataDog trace and span IDs.
     /// </summary>
     /// <param name="enrichmentConfiguration">The logger enrichment configuration.</param>
     /// <returns>The updated logger configuration.</returns>
@@ -26,7 +26,7 @@ public static class LoggerEnrichExtensions
     }
 
     /// <summary>
-    /// Enriches log events with activity trace and span IDs.
+    ///     Enriches log events with activity trace and span IDs.
     /// </summary>
     /// <param name="enrichmentConfiguration">The logger enrichment configuration.</param>
     /// <returns>The updated logger configuration.</returns>

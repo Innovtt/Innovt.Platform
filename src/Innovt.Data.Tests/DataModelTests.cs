@@ -13,7 +13,7 @@ public class DataModelTests
     [Test]
     public void Attach()
     {
-        var userDataModel = new UserDataModel()
+        var userDataModel = new UserDataModel
         {
             Id = 10,
             Name = "Michel",

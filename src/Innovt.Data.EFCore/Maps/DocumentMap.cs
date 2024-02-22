@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Innovt.Data.EFCore.Maps;
 
 /// <summary>
-/// Configuration for mapping the Document entity to the database using Entity Framework Core.
+///     Configuration for mapping the Document entity to the database using Entity Framework Core.
 /// </summary>
 public class DocumentMap : IEntityTypeConfiguration<Document>
 {
     private readonly bool ignoreDocumentType;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="DocumentMap"/> class.
+    ///     Initializes a new instance of the <see cref="DocumentMap" /> class.
     /// </summary>
     /// <param name="ignoreDocumentType">Flag indicating whether to ignore document type mapping. Defaults to false.</param>
     public DocumentMap(bool ignoreDocumentType = false)
@@ -26,7 +26,7 @@ public class DocumentMap : IEntityTypeConfiguration<Document>
     }
 
     /// <summary>
-    /// Configures the mapping for the Document entity.
+    ///     Configures the mapping for the Document entity.
     /// </summary>
     /// <param name="builder">The entity type builder.</param>
     /// <exception cref="ArgumentNullException">Thrown when the builder parameter is null.</exception>

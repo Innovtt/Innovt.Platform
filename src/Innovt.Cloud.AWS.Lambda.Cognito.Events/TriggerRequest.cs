@@ -9,13 +9,13 @@ using System.Text.Json.Serialization;
 namespace Innovt.Cloud.AWS.Lambda.Cognito.Events;
 
 /// <summary>
-/// Represents a base class for trigger request objects.
+///     Represents a base class for trigger request objects.
 /// </summary>
 [DataContract]
 public abstract class TriggerRequest
 {
     /// <summary>
-    /// Gets or sets user attributes associated with the request.
+    ///     Gets or sets user attributes associated with the request.
     /// </summary>
     [DataMember(Name = "userAttributes")]
     [JsonPropertyName("userAttributes")]

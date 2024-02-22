@@ -16,19 +16,19 @@ using Microsoft.EntityFrameworkCore;
 namespace Innovt.Data.EFCore.Repositories;
 
 /// <summary>
-/// Base repository providing common functionality for accessing and managing entities of type T.
-/// Implements the IRepository interface.
+///     Base repository providing common functionality for accessing and managing entities of type T.
+///     Implements the IRepository interface.
 /// </summary>
 /// <typeparam name="T">The entity type.</typeparam>
 public class RepositoryBase<T> : IRepository<T> where T : class
 {
     /// <summary>
-    /// The extended unit of work context for interacting with the database.
+    ///     The extended unit of work context for interacting with the database.
     /// </summary>
     protected IExtendedUnitOfWork Context;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="RepositoryBase{T}"/> class.
+    ///     Initializes a new instance of the <see cref="RepositoryBase{T}" /> class.
     /// </summary>
     /// <param name="context">The extended unit of work context.</param>
     /// <exception cref="ArgumentNullException">Thrown when the context parameter is null.</exception>
@@ -37,20 +37,20 @@ public class RepositoryBase<T> : IRepository<T> where T : class
         Context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public virtual void Add(T entity)
     {
         Context.Add(entity);
     }
 
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public virtual void Add(IEnumerable<T> entities)
     {
         Context.Add(entities);
     }
 
     /// <summary>
-    /// Asynchronously adds a collection of entities of type T to the repository.
+    ///     Asynchronously adds a collection of entities of type T to the repository.
     /// </summary>
     /// <param name="entities">The collection of entities to add.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
@@ -60,7 +60,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     }
 
     /// <summary>
-    /// Asynchronously adds an entity of type T to the repository.
+    ///     Asynchronously adds an entity of type T to the repository.
     /// </summary>
     /// <param name="entity">The entity to add.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
@@ -70,7 +70,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     }
 
     /// <summary>
-    /// Modifies an entity of type T in the repository.
+    ///     Modifies an entity of type T in the repository.
     /// </summary>
     /// <param name="entity">The entity to modify.</param>
     public virtual void Modify(T entity)
@@ -79,7 +79,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     }
 
     /// <summary>
-    /// Removes a collection of entities of type T from the repository.
+    ///     Removes a collection of entities of type T from the repository.
     /// </summary>
     /// <param name="entities">The collection of entities to remove.</param>
     public virtual void Remove(IEnumerable<T> entities)
@@ -88,7 +88,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     }
 
     /// <summary>
-    /// Removes an entity of type T from the repository.
+    ///     Removes an entity of type T from the repository.
     /// </summary>
     /// <param name="entity">The entity to remove.</param>
     public virtual void Remove(T entity)
@@ -97,7 +97,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     }
 
     /// <summary>
-    /// Gets the first or default entity of type T based on the provided specification.
+    ///     Gets the first or default entity of type T based on the provided specification.
     /// </summary>
     /// <param name="specification">The specification used to filter the entity.</param>
     /// <param name="includes">The related entities to include in the query.</param>
@@ -110,7 +110,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     }
 
     /// <summary>
-    /// Asynchronously gets the first or default entity of type T based on the provided specification.
+    ///     Asynchronously gets the first or default entity of type T based on the provided specification.
     /// </summary>
     /// <param name="specification">The specification used to filter the entity.</param>
     /// <param name="includes">The related entities to include in the query.</param>
@@ -126,7 +126,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     }
 
     /// <summary>
-    /// Asynchronously gets the single or default entity of type T based on the provided specification.
+    ///     Asynchronously gets the single or default entity of type T based on the provided specification.
     /// </summary>
     /// <param name="specification">The specification used to filter the entity.</param>
     /// <param name="includes">The related entities to include in the query.</param>
@@ -142,7 +142,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     }
 
     /// <summary>
-    /// Gets the single or default entity of type T based on the provided specification.
+    ///     Gets the single or default entity of type T based on the provided specification.
     /// </summary>
     /// <param name="specification">The specification used to filter the entity.</param>
     /// <param name="includes">The related entities to include in the query.</param>
@@ -155,7 +155,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     }
 
     /// <summary>
-    /// Finds entities of type T based on the provided specification with optional sorting and pagination.
+    ///     Finds entities of type T based on the provided specification with optional sorting and pagination.
     /// </summary>
     /// <typeparam name="TKey">The type of the sorting key.</typeparam>
     /// <param name="specification">The specification used to filter the entities.</param>
@@ -175,7 +175,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     }
 
     /// <summary>
-    /// Finds entities of type T based on the provided specification with optional sorting and pagination.
+    ///     Finds entities of type T based on the provided specification with optional sorting and pagination.
     /// </summary>
     /// <typeparam name="TKey">The type of the sorting key.</typeparam>
     /// <param name="specification">The specification used to filter the entities.</param>
@@ -203,7 +203,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     }
 
     /// <summary>
-    /// Asynchronously finds entities of type T based on the provided specification with optional sorting and pagination.
+    ///     Asynchronously finds entities of type T based on the provided specification with optional sorting and pagination.
     /// </summary>
     /// <param name="specification">The specification used to filter the entities.</param>
     /// <param name="includes">The related entities to include in the query.</param>
@@ -223,7 +223,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     }
 
     /// <summary>
-    /// Asynchronously finds entities of type T based on the provided specification with optional sorting and pagination.
+    ///     Asynchronously finds entities of type T based on the provided specification with optional sorting and pagination.
     /// </summary>
     /// <typeparam name="TKey">The type of the sorting key.</typeparam>
     /// <param name="specification">The specification used to filter the entities.</param>
@@ -231,7 +231,10 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     /// <param name="isOrderByDescending">A flag indicating whether the sorting is in descending order.</param>
     /// <param name="includes">The related entities to include in the query.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
-    /// <returns>A task representing the asynchronous operation and an enumerable of entities matching the specification with optional sorting.</returns>
+    /// <returns>
+    ///     A task representing the asynchronous operation and an enumerable of entities matching the specification with
+    ///     optional sorting.
+    /// </returns>
     public virtual async Task<IEnumerable<T>> FindByAsync<TKey>(ISpecification<T> specification,
         Expression<Func<T, TKey>>? orderBy = null,
         bool isOrderByDescending = false, Include includes = null,
@@ -253,7 +256,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     }
 
     /// <summary>
-    /// Finds paginated entities of type T based on the provided specification.
+    ///     Finds paginated entities of type T based on the provided specification.
     /// </summary>
     /// <param name="specification">The specification used to filter the entities.</param>
     /// <param name="includes">The related entities to include in the query.</param>
@@ -273,7 +276,8 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     }
 
     /// <summary>
-    /// Retrieves a paginated collection of entities based on the provided specification, with optional sorting and included navigation properties.
+    ///     Retrieves a paginated collection of entities based on the provided specification, with optional sorting and
+    ///     included navigation properties.
     /// </summary>
     /// <typeparam name="TKey">The type of the key used for sorting.</typeparam>
     /// <param name="specification">The specification to filter the entities.</param>
@@ -298,12 +302,16 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     }
 
     /// <summary>
-    /// Asynchronously retrieves a paginated collection of entities based on the provided specification, with optional included navigation properties.
+    ///     Asynchronously retrieves a paginated collection of entities based on the provided specification, with optional
+    ///     included navigation properties.
     /// </summary>
     /// <param name="specification">The specification to filter the entities.</param>
     /// <param name="includes">Navigation properties to include (optional).</param>
     /// <param name="cancellationToken">Cancellation token (optional).</param>
-    /// <returns>A task that represents the asynchronous operation, yielding a paged collection of entities satisfying the specified criteria.</returns>
+    /// <returns>
+    ///     A task that represents the asynchronous operation, yielding a paged collection of entities satisfying the
+    ///     specified criteria.
+    /// </returns>
     public virtual async Task<PagedCollection<T>> FindPaginatedByAsync(ISpecification<T> specification,
         Include includes = null, CancellationToken cancellationToken = default)
     {
@@ -320,7 +328,8 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     }
 
     /// <summary>
-    /// Asynchronously retrieves a paginated collection of entities based on the provided specification, with optional sorting and included navigation properties.
+    ///     Asynchronously retrieves a paginated collection of entities based on the provided specification, with optional
+    ///     sorting and included navigation properties.
     /// </summary>
     /// <typeparam name="TKey">The type of the key used for sorting.</typeparam>
     /// <param name="specification">The specification to filter the entities.</param>
@@ -328,7 +337,10 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     /// <param name="isOrderByDescending">Flag to determine descending order for sorting (default: ascending).</param>
     /// <param name="includes">Navigation properties to include (optional).</param>
     /// <param name="cancellationToken">Cancellation token (optional).</param>
-    /// <returns>A task that represents the asynchronous operation, yielding a paged collection of entities satisfying the specified criteria.</returns>
+    /// <returns>
+    ///     A task that represents the asynchronous operation, yielding a paged collection of entities satisfying the
+    ///     specified criteria.
+    /// </returns>
     public virtual async Task<PagedCollection<T>> FindPaginatedByAsync<TKey>(ISpecification<T> specification,
         Expression<Func<T, TKey>>? orderBy = null, bool isOrderByDescending = false,
         Include includes = null, CancellationToken cancellationToken = default)
@@ -347,7 +359,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     }
 
     /// <summary>
-    /// Counts the number of entities that satisfy the specified specification.
+    ///     Counts the number of entities that satisfy the specified specification.
     /// </summary>
     /// <param name="specification">The specification to filter the entities.</param>
     /// <returns>The total count of entities satisfying the specified criteria.</returns>
@@ -359,7 +371,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     }
 
     /// <summary>
-    /// Counts the number of entities of a specified type that satisfy the specified specification.
+    ///     Counts the number of entities of a specified type that satisfy the specified specification.
     /// </summary>
     /// <typeparam name="TKEntity">The type of the entity to count.</typeparam>
     /// <param name="specification">The specification to filter the entities.</param>
@@ -372,12 +384,15 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     }
 
     /// <summary>
-    /// Asynchronously counts the number of entities of a specified type that satisfy the specified specification.
+    ///     Asynchronously counts the number of entities of a specified type that satisfy the specified specification.
     /// </summary>
     /// <typeparam name="TKEntity">The type of the entity to count.</typeparam>
     /// <param name="specification">The specification to filter the entities.</param>
     /// <param name="cancellationToken">Cancellation token (optional).</param>
-    /// <returns>A task that represents the asynchronous operation, yielding the total count of entities satisfying the specified criteria.</returns>
+    /// <returns>
+    ///     A task that represents the asynchronous operation, yielding the total count of entities satisfying the
+    ///     specified criteria.
+    /// </returns>
     public virtual async Task<int> CountByAsync<TKEntity>(ISpecification<TKEntity> specification,
         CancellationToken cancellationToken = default) where TKEntity : class
     {
@@ -388,11 +403,14 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     }
 
     /// <summary>
-    /// Asynchronously counts the number of entities that satisfy the specified specification.
+    ///     Asynchronously counts the number of entities that satisfy the specified specification.
     /// </summary>
     /// <param name="specification">The specification to filter the entities.</param>
     /// <param name="cancellationToken">Cancellation token (optional).</param>
-    /// <returns>A task that represents the asynchronous operation, yielding the total count of entities satisfying the specified criteria.</returns>
+    /// <returns>
+    ///     A task that represents the asynchronous operation, yielding the total count of entities satisfying the
+    ///     specified criteria.
+    /// </returns>
     public async Task<int> CountByAsync(ISpecification<T> specification,
         CancellationToken cancellationToken = default)
     {

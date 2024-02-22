@@ -12,12 +12,12 @@ using Microsoft.Extensions.Configuration;
 namespace Innovt.Job.Core;
 
 /// <summary>
-/// Abstract base class for job entry implementations, providing common functionality for setting up and running jobs.
+///     Abstract base class for job entry implementations, providing common functionality for setting up and running jobs.
 /// </summary>
 public abstract class JobEntry
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="JobEntry"/> class.
+    ///     Initializes a new instance of the <see cref="JobEntry" /> class.
     /// </summary>
     /// <param name="args">The command-line arguments.</param>
     /// <param name="jobName">The name of the job.</param>
@@ -27,17 +27,17 @@ public abstract class JobEntry
     }
 
     /// <summary>
-    /// Gets the name of the job.
+    ///     Gets the name of the job.
     /// </summary>
     public string JobName { get; }
 
     /// <summary>
-    /// Gets or sets the configuration.
+    ///     Gets or sets the configuration.
     /// </summary>
     public IConfiguration Configuration { get; protected set; }
 
     /// <summary>
-    /// Sets up the configuration using appsettings.json.
+    ///     Sets up the configuration using appsettings.json.
     /// </summary>
     protected virtual void SetupConfiguration()
     {
@@ -49,7 +49,7 @@ public abstract class JobEntry
 
 
     /// <summary>
-    /// Sets up the IoC container.
+    ///     Sets up the IoC container.
     /// </summary>
     private void SetupContainer()
     {
@@ -61,19 +61,19 @@ public abstract class JobEntry
     }
 
     /// <summary>
-    /// Creates the IoC container.
+    ///     Creates the IoC container.
     /// </summary>
     /// <returns>The IoC container.</returns>
     protected abstract IContainer CreateIocContainer();
 
     /// <summary>
-    /// Creates the job instance.
+    ///     Creates the job instance.
     /// </summary>
     /// <returns>The job instance.</returns>
     protected abstract JobBase CreateJob();
 
     /// <summary>
-    /// Runs the job.
+    ///     Runs the job.
     /// </summary>
     public void Run()
 
