@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <PackageId>Innovt.Cloud.AWS.Lambda.Kinesis</PackageId>
-        <PackageVersion>7.0.75</PackageVersion>
+        <PackageVersion>8.0.0</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -15,8 +15,8 @@
 
     <ItemGroup>
         <PackageReference Include="Amazon.Lambda.KinesisEvents" Version="2.2.0"/>
-        <PackageReference Include="System.Text.Json" Version="8.0.2" />
-        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.4">
+        <PackageReference Include="System.Text.Json" Version="8.0.2"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>

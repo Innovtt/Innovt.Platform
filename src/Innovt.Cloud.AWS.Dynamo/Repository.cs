@@ -155,7 +155,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         using (ActivityRepository.StartActivity())
         {
             var batch = Context.CreateBatchWrite<T>(OperationConfig);
-            
+
             batch.AddPutItems(messages);
 
             await CreateDefaultRetryAsyncPolicy()
@@ -165,7 +165,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <summary>
-    /// When you don't know the type of the object to add or if you want to ad a list of different types
+    ///     When you don't know the type of the object to add or if you want to ad a list of different types
     /// </summary>
     /// <param name="messages"></param>
     /// <param name="cancellationToken"></param>
@@ -177,7 +177,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         using (ActivityRepository.StartActivity())
         {
             var batch = Context.CreateBatchWrite<object>(OperationConfig);
-            
+
             batch.AddPutItems(messages);
 
             await CreateDefaultRetryAsyncPolicy()
@@ -185,7 +185,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
                 .ConfigureAwait(false);
         }
     }
-    
+
     /// <summary>
     ///     Queries the DynamoDB table and returns the first item with the specified id.
     /// </summary>

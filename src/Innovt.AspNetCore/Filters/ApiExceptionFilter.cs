@@ -106,7 +106,7 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
             Message = "Internal server error.Please try again or contact your system administrator.",
             TraceId = requestId
         };
-        
+
         if (baseException is BusinessException bex)
         {
             result.Message = Translate(bex.Message);

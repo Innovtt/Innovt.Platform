@@ -42,9 +42,7 @@ public class BaseRequest
     public string FilterExpression { get; set; }
 
     /// <summary>
-    /// Used to define the attributes that you can customize.
+    ///     Used to define the attributes that you can customize.
     /// </summary>
-    public Dictionary<string,string> ExpressionAttributeNames { get; set; }
-    
-        
+    public Dictionary<string, string> ExpressionAttributeNames { get; set; }
 }

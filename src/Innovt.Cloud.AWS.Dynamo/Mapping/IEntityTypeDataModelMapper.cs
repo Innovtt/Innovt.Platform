@@ -15,5 +15,5 @@ public interface IEntityTypeDataModelMapper<T> where T : class
     ///     EntityTypeBuilder.
     /// </summary>
     /// <param name="builder">The EntityTypeBuilder used to configure the mapping.</param>
-    public void Configure([NotNull]EntityTypeBuilder<T> builder);
+    public void Configure([NotNull] EntityTypeBuilder<T> builder);
 }

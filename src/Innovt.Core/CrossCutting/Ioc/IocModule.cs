@@ -30,7 +30,7 @@ public class IocModule
     /// <param name="services">The <see cref="IServiceCollection" /> to be used for service registration.</param>
     public IocModule(IServiceCollection services)
     {
-        this.Services = services;
+        Services = services;
     }
 
     /// <summary>

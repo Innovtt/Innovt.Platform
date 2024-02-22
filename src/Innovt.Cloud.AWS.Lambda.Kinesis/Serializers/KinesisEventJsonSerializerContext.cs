@@ -12,7 +12,6 @@ namespace Innovt.Cloud.AWS.Lambda.Kinesis.Serializers;
 /// </summary>
 [JsonSerializable(typeof(KinesisEvent))]
 [JsonSerializable(typeof(BatchFailureResponse))]
-public partial class KinesisEventJsonSerializerContext: JsonSerializerContext
+public partial class KinesisEventJsonSerializerContext : JsonSerializerContext
 {
-    
 }

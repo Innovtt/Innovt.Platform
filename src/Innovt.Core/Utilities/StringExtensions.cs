@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
+
 // ReSharper disable MemberCanBePrivate.Global
 
 namespace Innovt.Core.Utilities;
@@ -20,7 +21,7 @@ namespace Innovt.Core.Utilities;
 public static class StringExtensions
 {
     /// <summary>
-    ///  Determines whether the string represents a valid email address.
+    ///     Determines whether the string represents a valid email address.
     /// </summary>
     /// <param name="value">The string to validate as an email address.</param>
     /// <returns>True if the string is a valid email address; otherwise, false.</returns>
@@ -28,7 +29,7 @@ public static class StringExtensions
     {
         if (value.IsNullOrEmpty())
             return false;
-        
+
         var isValid = new EmailAddressAttribute().IsValid(value);
 
         return isValid;
@@ -166,7 +167,6 @@ public static class StringExtensions
     }
 
 
-
     /// <summary>
     ///     Determines whether a Guid is empty (all zeros).
     /// </summary>
@@ -196,7 +196,7 @@ public static class StringExtensions
     {
         return IsEmpty(yourGuid.GetValueOrDefault());
     }
-    
+
     /// <summary>
     ///     Determines whether a string is null, empty, or consists only of white-space characters.
     /// </summary>
@@ -318,7 +318,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    ///  Converts a string to camel case by applying title case.
+    ///     Converts a string to camel case by applying title case.
     /// </summary>
     /// <param name="str">The string to convert to camel case.</param>
     /// <returns>The string in camel case format.</returns>
@@ -326,9 +326,9 @@ public static class StringExtensions
     {
         return str.IsNullOrEmpty() ? string.Empty : str.ToLowerInvariant().ToTitleCase();
     }
-    
+
     /// <summary>
-    ///   Converts a string to title case using the current culture's rules.
+    ///     Converts a string to title case using the current culture's rules.
     /// </summary>
     /// <param name="str">The string to convert to title case.</param>
     /// <returns>The string in title case format.</returns>
@@ -392,7 +392,8 @@ public static class StringExtensions
     public static string RemoveSpecialCharacter(this string str)
     {
         if (str.IsNullOrEmpty())
-            return string.Empty;;
+            return string.Empty;
+        ;
 
         return Regex.Replace(str, "[^0-9a-zA-Z]+", " ");
     }
@@ -425,7 +426,8 @@ public static class StringExtensions
     public static string FormatCpf(this string cpf)
     {
         if (cpf.IsNullOrEmpty())
-            return string.Empty;;
+            return string.Empty;
+        ;
 
         cpf = cpf.PadLeft(11, '0');
         return FormatByMask(cpf, @"{0:000\.000\.000\-00}");
@@ -473,7 +475,8 @@ public static class StringExtensions
     public static string FormatCnpj(this string cnpj)
     {
         if (cnpj.IsNullOrEmpty())
-            return string.Empty;;
+            return string.Empty;
+        ;
 
         cnpj = cnpj.PadLeft(14, '0');
 

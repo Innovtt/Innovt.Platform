@@ -86,9 +86,10 @@ public abstract class ApiStartupBase
     protected DefaultApiLocalization Localization { get; set; }
 
     /// <summary>
-    /// If true will set default Json Options(JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase) etc
+    ///     If true will set default Json Options(JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase) etc
     /// </summary>
     public bool SetDefaultJsonOptions { get; set; }
+
     /// <summary>
     ///     Gets the configuration for the application.
     /// </summary>
@@ -103,14 +104,20 @@ public abstract class ApiStartupBase
     ///     Checks if Swagger documentation is enabled.
     /// </summary>
     /// <returns>True if Swagger documentation is enabled; otherwise, false.</returns>
-    private bool IsSwaggerEnabled() => Documentation is not null;
+    private bool IsSwaggerEnabled()
+    {
+        return Documentation is not null;
+    }
 
     /// <summary>
     ///     Checks if the application is running in a development environment.
     /// </summary>
     /// <returns>True if the application is in development; otherwise, false.</returns>
-    protected bool IsDevelopmentEnvironment() => Environment.IsDevelopment();
-    
+    protected bool IsDevelopmentEnvironment()
+    {
+        return Environment.IsDevelopment();
+    }
+
     /// <summary>
     ///     Adds Swagger generation to the specified services.
     /// </summary>
@@ -193,17 +200,18 @@ public abstract class ApiStartupBase
     }
 
     /// <summary>
-    /// Apply the default Json Options if the parameter SetDefaultJsonOptions is true
+    ///     Apply the default Json Options if the parameter SetDefaultJsonOptions is true
     /// </summary>
     /// <param name="mvcBuilder"></param>
     private void ApplyDefaultJsonOptions(IMvcBuilder mvcBuilder)
-    {      
+    {
         mvcBuilder.AddJsonOptions(options =>
         {
             options.JsonSerializerOptions.PropertyNamingPolicy =
                 SetDefaultJsonOptions ? JsonNamingPolicy.CamelCase : null;
         });
     }
+
     /// <summary>
     ///     Adds core services needed for API configuration.
     /// </summary>

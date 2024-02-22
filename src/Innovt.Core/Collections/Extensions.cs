@@ -4,7 +4,6 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using Innovt.Core.Utilities;
 using Innovt.Core.Utilities.Mapper;
 
 namespace Innovt.Core.Collections;
@@ -130,18 +129,19 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Using a simple mapper to map an page collection of objects to another page collection of objects
+    ///     Using a simple mapper to map an page collection of objects to another page collection of objects
     /// </summary>
     /// <param name="pageCollection"></param>
     /// <typeparam name="T"></typeparam>
     /// <typeparam name="T2"></typeparam>
     /// <returns></returns>
-    public static PagedCollection<T2> MapToPagedCollection<T,T2>(this IPagedCollection<T> pageCollection) where T : class where T2 : class
+    public static PagedCollection<T2> MapToPagedCollection<T, T2>(this IPagedCollection<T> pageCollection)
+        where T : class where T2 : class
     {
         if (pageCollection is null)
             return new PagedCollection<T2>();
-           
-        return new PagedCollection<T2>()
+
+        return new PagedCollection<T2>
         {
             Page = pageCollection.Page,
             PageSize = pageCollection.PageSize,

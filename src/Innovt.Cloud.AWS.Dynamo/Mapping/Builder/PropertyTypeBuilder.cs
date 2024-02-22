@@ -1,5 +1,4 @@
 using System;
-using Amazon.DynamoDBv2.DocumentModel;
 
 namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 
@@ -9,8 +8,6 @@ namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 /// <typeparam name="T">The type of the entity.</typeparam>
 public class PropertyTypeBuilder<T> where T : class
 {
-    private DynamoDBEntry entry;
-
     /// <summary>
     ///     Initializes a new instance of the <see cref="PropertyTypeBuilder{T}" /> class with a specified property name and
     ///     type.

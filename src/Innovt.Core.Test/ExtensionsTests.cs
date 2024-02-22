@@ -27,18 +27,18 @@ public class ExtensionsTests
 
         Assert.That(expected, Is.EqualTo(actual));
     }
-    
+
     [Test]
     public void PagedCollectionMapShouldReturnEmptyListWhenArrayIsNull()
-    {   
-        PagedCollection<Invoice>  invoices = null;
-        
-        var invoiceDtoPagedCollection = invoices.MapToPagedCollection<Invoice,InvoiceDto>();
+    {
+        PagedCollection<Invoice> invoices = null;
+
+        var invoiceDtoPagedCollection = invoices.MapToPagedCollection<Invoice, InvoiceDto>();
 
         Assert.That(invoiceDtoPagedCollection, Is.Not.Null);
     }
-    
-    
+
+
     [Test]
     public void PagedCollectionMap()
     {
@@ -49,25 +49,25 @@ public class ExtensionsTests
             BidId = Guid.NewGuid(),
             ErpId = "ErpId",
             BuyerId = Guid.NewGuid(),
-            BuyerName = "michel",
+            BuyerName = "michel"
         };
 
-        var invoices = new List<Invoice>()
+        var invoices = new List<Invoice>
         {
             invoice
         };
-        
-        var invoicePagedConnection = new PagedCollection<Invoice>(invoices,1,10);
-        
-        var invoiceDtoPagedCollection = invoicePagedConnection.MapToPagedCollection<Invoice,InvoiceDto>();
-        
+
+        var invoicePagedConnection = new PagedCollection<Invoice>(invoices, 1, 10);
+
+        var invoiceDtoPagedCollection = invoicePagedConnection.MapToPagedCollection<Invoice, InvoiceDto>();
+
 
         Assert.That(invoiceDtoPagedCollection, Is.Not.Null);
         Assert.That(invoiceDtoPagedCollection.Page, Is.EqualTo(invoicePagedConnection.Page));
         Assert.That(invoiceDtoPagedCollection.PageSize, Is.EqualTo(invoicePagedConnection.PageSize));
         Assert.That(invoiceDtoPagedCollection.TotalRecords, Is.EqualTo(invoicePagedConnection.TotalRecords));
         Assert.That(invoiceDtoPagedCollection.Items, Has.Exactly(1).Items);
-       
+
         var invoiceDto = invoiceDtoPagedCollection.Items.SingleOrDefault();
         Assert.That(invoiceDto, Is.Not.Null);
         Assert.That(invoiceDto.Id, Is.EqualTo(invoice.Id));

@@ -3,7 +3,6 @@
 // Project: Innovt.Cloud
 
 using System;
-using System.Collections.Generic;
 
 namespace Innovt.Cloud.Table;
 
@@ -17,11 +16,6 @@ public class QueryRequest : BaseRequest, ICloneable
     /// </summary>
     public string KeyConditionExpression { get; set; }
 
-
-    /// <summary>
-    ///     Gets or sets the attributes that you can customize.
-    /// </summary>
-    public Dictionary<string,string> ExpressionAttributeNames { get; set; }
 
     /// <summary>
     ///     Gets or sets a value indicating whether to scan the index forward or backward.

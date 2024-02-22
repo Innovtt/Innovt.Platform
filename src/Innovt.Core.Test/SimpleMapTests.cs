@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Innovt.Core.Test.Models;
-using Innovt.Core.Utilities;
 using Innovt.Core.Utilities.Mapper;
 using NUnit.Framework;
 
@@ -209,9 +208,9 @@ public class SimpleMapTests
         Assert.That(invoice.PaymentValue, Is.EqualTo(invoiceDto.PaymentValue));
         Assert.That(invoice.UpdatedAt, Is.EqualTo(invoiceDto.UpdatedAt));
     }
-    
-    
-     [Test]
+
+
+    [Test]
     public void MapToExtension()
     {
         //maps one o
@@ -255,9 +254,9 @@ public class SimpleMapTests
             PaymentValue = 100,
             UpdatedAt = DateTime.Now
         };
-        
+
         var invoiceDto = invoice.MapTo<InvoiceDto>();
-        
+
         Assert.That(invoiceDto, Is.Not.Null);
 
         Assert.That(invoice.Description, Is.EqualTo(invoiceDto.Description));
@@ -300,18 +299,18 @@ public class SimpleMapTests
     public void MapToListWhenSourceListIsNullOrEmptyReturnsEmpty()
     {
         var invoices = new List<Invoice>();
-        
+
         var invoicesDto = invoices.MapToList<InvoiceDto>();
-        
+
         Assert.That(invoicesDto, Is.Not.Null);
         Assert.That(invoicesDto, Is.Empty);
-        
-        
+
+
         invoices = null;
-        
+
         // ReSharper disable once ExpressionIsAlwaysNull
         invoicesDto = invoices.MapToList<InvoiceDto>();
-        
+
         Assert.That(invoicesDto, Is.Not.Null);
         Assert.That(invoicesDto, Is.Empty);
     }
@@ -322,7 +321,7 @@ public class SimpleMapTests
         //maps one o
         var invoices = new List<Invoice>
         {
-            new Invoice
+            new()
             {
                 Id = Guid.NewGuid(),
                 CreatedAt = DateTimeOffset.Now,
@@ -365,13 +364,13 @@ public class SimpleMapTests
         };
 
         var invoicesDto = invoices.MapToList<InvoiceDto>();
-        
+
         Assert.That(invoicesDto, Is.Not.Null);
         Assert.That(invoicesDto.SingleOrDefault(), Is.Not.Null);
-        
+
         var invoice = invoices.SingleOrDefault();
         var invoiceDto = invoicesDto.SingleOrDefault();
-            
+
         Assert.That(invoice, Is.Not.Null);
         Assert.That(invoiceDto, Is.Not.Null);
         Assert.That(invoice.Description, Is.EqualTo(invoiceDto.Description));

@@ -118,7 +118,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         }
     }
 
-   
+
     /// <summary>
     ///     Signs in a user with the provided request for OTP process authentication.
     /// </summary>
@@ -822,7 +822,8 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     /// <param name="command"></param>
     /// <param name="cancellationToken"></param>
     /// <exception cref="Exception"></exception>
-    public async Task<bool> LinkSocialUser(LinkSocialAccountRequest command, CancellationToken cancellationToken = default)
+    public async Task<bool> LinkSocialUser(LinkSocialAccountRequest command,
+        CancellationToken cancellationToken = default)
     {
         command.EnsureIsValid();
 
@@ -835,7 +836,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
         if (localUser is null)
             return false;
-        
+
         try
         {
             //Check if the user is a federated user PS: Google_1234567890
@@ -843,7 +844,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
             if (userNameAndProvider.Length < 2)
                 return false;
-            
+
             var providerName = userNameAndProvider[0];
             var providerValue = userNameAndProvider[1];
 
@@ -862,22 +863,23 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
                     ProviderAttributeValue = providerValue
                 }
             };
-            
-           var result = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+
+            var result = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                 await CognitoProvider.AdminLinkProviderForUserAsync(request, cancellationToken
                 )).ConfigureAwait(false);
 
 
-           return result.HttpStatusCode == HttpStatusCode.OK;
+            return result.HttpStatusCode == HttpStatusCode.OK;
         }
         catch (Exception ex)
         {
             throw CatchException(ex);
         }
     }
-    
+
     /// <summary>
-    /// This method will delete the user using the username and the user pool id. It's important to have the admin delete user permission.
+    ///     This method will delete the user using the username and the user pool id. It's important to have the admin delete
+    ///     user permission.
     /// </summary>
     /// <param name="command"></param>
     /// <param name="cancellationToken"></param>
@@ -889,10 +891,10 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
         using var activity = CognitoIdentityProviderActivitySource.StartActivity();
 
-        var deleteRequest = new Amazon.CognitoIdentityProvider.Model.AdminDeleteUserRequest()
-        {  
+        var deleteRequest = new AdminDeleteUserRequest
+        {
             UserPoolId = userPoolId,
-            Username = command.UserName,
+            Username = command.UserName
         };
         try
         {
@@ -940,7 +942,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             throw CatchException(ex);
         }
     }
-    
+
     /// <summary>
     ///     Updates user attributes.
     /// </summary>

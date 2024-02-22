@@ -110,8 +110,8 @@ public static class MvcExtensions
         if (authoritySection.Value == null)
             throw new CriticalException("The Config Section '{configSection}:Authority' not defined.");
 
-        services.AddBearerAuthorization(audienceSection.Value, authoritySection.Value, validateAudience: validateAudience, validateIssuer,
-            validateLifetime, validateIssuerSigningKey, validAudiences:audiences);
+        services.AddBearerAuthorization(audienceSection.Value, authoritySection.Value, validateAudience, validateIssuer,
+            validateLifetime, validateIssuerSigningKey, audiences);
     }
 
     // ReSharper disable once MemberCanBePrivate.Global
@@ -128,7 +128,8 @@ public static class MvcExtensions
     /// <param name="validAudiences">The valid token audiences if you want to validate it.</param>
     public static void AddBearerAuthorization(this IServiceCollection services, string audienceId, string authority,
         bool validateAudience = true,
-        bool validateIssuer = true, bool validateLifetime = true, bool validateIssuerSigningKey = true, string[]? validAudiences = null)
+        bool validateIssuer = true, bool validateLifetime = true, bool validateIssuerSigningKey = true,
+        string[]? validAudiences = null)
     {
         services.AddAuthorization(options =>
         {

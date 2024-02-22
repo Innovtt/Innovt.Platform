@@ -13,7 +13,6 @@ using System.Reflection;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
-using Amazon.Util.Internal;
 using Innovt.Core.Collections;
 using Innovt.Core.Utilities;
 
@@ -27,7 +26,7 @@ internal static class AttributeConverter
     /// <summary>
     ///     An array containing primitive types that can be represented as attributes.
     /// </summary>
-    private static readonly Type[] primitiveTypesArray = new Type[19]
+    private static readonly Type[] PrimitiveTypesArray = new Type[19]
     {
         typeof(bool),
         typeof(byte),
@@ -50,18 +49,20 @@ internal static class AttributeConverter
         typeof(Primitive)
     };
 
-    private static readonly HashSet<ITypeInfo> PrimitiveTypeInfos =
-        new(primitiveTypesArray.Select(
-            TypeFactory.GetTypeInfo));
 
-    // <summary>
-    /// Checks if a given type is a primitive DynamoDB type.
+    private static readonly HashSet<TypeInfo> PrimitiveTypeInfos =
+    [
+        ..PrimitiveTypesArray.Select(t => t.GetTypeInfo())
+    ];
+
+    /// <summary>
+    ///     Checks if a given type is a primitive DynamoDB type.
     /// </summary>
     /// <param name="type">The type to check.</param>
     /// <returns>True if the type is primitive; otherwise, false.</returns>
     public static bool IsPrimitive(Type type)
     {
-        var typeWrapper = TypeFactory.GetTypeInfo(type);
+        var typeWrapper = type.GetTypeInfo();
         return PrimitiveTypeInfos.Any(ti => typeWrapper.IsAssignableFrom(ti));
     }
 
@@ -244,7 +245,7 @@ internal static class AttributeConverter
 
         if (elementType == null)
         {
-            var genericArguments = TypeFactory.GetTypeInfo(collectionType).GetGenericArguments();
+            var genericArguments = collectionType.GetTypeInfo().GetGenericArguments();
             if (genericArguments is { Length: 1 })
                 elementType = genericArguments[0];
         }
@@ -298,20 +299,18 @@ internal static class AttributeConverter
             return result;
         }
 
-        var method = TypeFactory.GetTypeInfo(targetType).GetMethod("Add");
+        var method = targetType.GetTypeInfo().GetMethod("Add");
 
-        if (method != null)
-        {
-            foreach (var obj in items)
-                method.Invoke(result, new object[1]
-                {
-                    IsPrimitive(elementType) ? ConvertType(elementType, obj) : obj
-                });
+        if (method == null) return null;
 
-            return result;
-        }
 
-        return null;
+        foreach (var obj in items)
+            method.Invoke(result, new object[1]
+            {
+                IsPrimitive(elementType) ? ConvertType(elementType, obj) : obj
+            });
+
+        return result;
     }
 
     /// <summary>

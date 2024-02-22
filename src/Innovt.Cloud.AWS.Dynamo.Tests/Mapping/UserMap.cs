@@ -14,7 +14,7 @@ public class UserMap : IEntityTypeDataModelMapper<UserSample>
     ///     EntityTypeBuilder.
     /// </summary>
     /// <param name="builder">The EntityTypeBuilder used to configure the mapping.</param>
-    public void Configure([NotNull]EntityTypeBuilder<UserSample> builder)
+    public void Configure([NotNull] EntityTypeBuilder<UserSample> builder)
     {
         builder.AutoMap().WithOneTableHashKey().WithOneTableRangeKey().WithTableName(nameof(UserSample));
 

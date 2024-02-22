@@ -10,7 +10,7 @@ using Innovt.Core.Collections;
 namespace Innovt.Cloud.AWS.Cognito.Model;
 
 /// <summary>
-/// Represents a request to update user attributes.
+///     Represents a request to update user attributes.
 /// </summary>
 public class DeleteUserAccountRequest : RequestBase
 {

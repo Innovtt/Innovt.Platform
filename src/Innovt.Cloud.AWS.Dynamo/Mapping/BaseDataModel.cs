@@ -3,6 +3,7 @@ using System.Linq;
 using Amazon.DynamoDBv2.DataModel;
 using Innovt.Cloud.Table;
 using Innovt.Core.Utilities.Mapper;
+
 // ReSharper disable MemberCanBeProtected.Global
 
 namespace Innovt.Cloud.AWS.Dynamo.Mapping;
@@ -15,10 +16,6 @@ namespace Innovt.Cloud.AWS.Dynamo.Mapping;
 public abstract class BaseDataModel<TDataModel, TDomain> : ITableMessage where TDataModel : class where TDomain : class
 {
     /// <summary>
-    ///     Gets or sets the unique identifier.
-    /// </summary>
-    public string Id { get; set; }
-    /// <summary>
     ///     Gets or sets the partition key for DynamoDB.
     /// </summary>
     [DynamoDBHashKey("PK")]
@@ -29,6 +26,7 @@ public abstract class BaseDataModel<TDataModel, TDomain> : ITableMessage where T
     /// </summary>
     [DynamoDBRangeKey("SK")]
     public string Sk { get; set; }
+
     /// <summary>
     ///     Gets or sets the entity type.
     /// </summary>
@@ -38,6 +36,11 @@ public abstract class BaseDataModel<TDataModel, TDomain> : ITableMessage where T
         get => GetEntityType(); // We have to keep it because of the DyanmoDB SDK
         set => _ = value;
     }
+
+    /// <summary>
+    ///     Gets or sets the unique identifier.
+    /// </summary>
+    public string Id { get; set; }
 
     /// <summary>
     ///     Protected abstract method to get the entity type.

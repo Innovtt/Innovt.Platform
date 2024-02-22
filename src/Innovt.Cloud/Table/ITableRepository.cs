@@ -64,7 +64,7 @@ public interface ITableRepository
     Task AddAsync<T>(IList<T> messages, CancellationToken cancellationToken = default) where T : ITableMessage;
 
     /// <summary>
-    /// If you want to add a list of objects that are not the same type.
+    ///     If you want to add a list of objects that are not the same type.
     /// </summary>
     /// <param name="messages"></param>
     /// <param name="cancellationToken"></param>
