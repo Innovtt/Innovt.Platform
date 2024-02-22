@@ -2,11 +2,14 @@
 // Author: Michel Borges
 // Project: Innovt.Cloud
 
+using System;
+
 namespace Innovt.Cloud;
 
 /// <summary>
 ///     Interface to be used for configuration
 /// </summary>
+[CLSCompliant(true)]
 public interface IConfiguration
 {
     /// <summary>

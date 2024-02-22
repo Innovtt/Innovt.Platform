@@ -11,6 +11,7 @@
         <Description>Cloud interfaces.</Description>
         <LangVersion>latest</LangVersion>
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+		<ClsCompliant>true</ClsCompliant>
     </PropertyGroup>
 
     <ItemGroup>

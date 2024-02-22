@@ -16,7 +16,7 @@ namespace Innovt.Core.Caching;
 ///     This class provides a concrete implementation of the <see cref="ICacheService" /> interface using
 ///     an in-memory cache for storing and retrieving data. It is designed for local caching within an application.
 /// </remarks>
-public class LocalCache : ICacheService, IDisposable
+public sealed class LocalCache : ICacheService
 {
     private readonly IMemoryCache memoryCache;
 
@@ -84,7 +84,7 @@ public class LocalCache : ICacheService, IDisposable
     ///     <c>true</c> to release both managed and unmanaged resources;
     ///     <c>false</c> to release only unmanaged resources.
     /// </param>
-    protected virtual void Dispose(bool disposing)
+    private void Dispose(bool disposing)
     {
         if (disposed || !disposing)
             return;

@@ -16,7 +16,7 @@ namespace Innovt.Core.Caching;
 ///     This class provides a caching service that supports multiple caching layers. It allows data retrieval and storage
 ///     through a series of cache layers, falling back to subsequent layers if data is not found in earlier layers.
 /// </remarks>
-public class MultiLayerCacheService : ICacheService, IDisposable
+public sealed class MultiLayerCacheService : ICacheService, IDisposable
 {
     private readonly ILogger logger;
     private List<ICacheService> cacheServices;
@@ -136,7 +136,7 @@ public class MultiLayerCacheService : ICacheService, IDisposable
     ///     <c>true</c> to release both managed and unmanaged resources;
     ///     <c>false</c> to release only unmanaged resources.
     /// </param>
-    protected virtual void Dispose(bool disposing)
+    private void Dispose(bool disposing)
     {
         if (disposed || !disposing)
             return;

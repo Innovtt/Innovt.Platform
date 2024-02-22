@@ -13,21 +13,21 @@ namespace Innovt.Core.Test;
 
 [TestFixture]
 public class LocalCacheTests
-{
+{   
+    private ICacheService cacheService;
+    
     [SetUp]
     public void Setup()
     {
         cacheService = new LocalCache(new MemoryCache(new MemoryCacheOptions { CompactionPercentage = 1 }));
     }
-
-
+    
     [TearDown]
     public void TearDown()
     {
-        cacheService = null;
+        cacheService.Dispose();
     }
 
-    private ICacheService cacheService;
 
     [Test]
     public void GetValueThrowExceptionIfKeyIsNullOrEmpty()
@@ -39,8 +39,7 @@ public class LocalCacheTests
                 .ConfigureAwait(false));
 
         Assert.ThrowsAsync<ArgumentNullException>(async () =>
-            await cacheService
-                .GetValueOrCreate(null, token => Task.FromResult(10), TimeSpan.FromSeconds(10), CancellationToken.None)
+            await cacheService.GetValueOrCreate(null, token => Task.FromResult(10), TimeSpan.FromSeconds(10), CancellationToken.None)
                 .ConfigureAwait(false));
     }
 
