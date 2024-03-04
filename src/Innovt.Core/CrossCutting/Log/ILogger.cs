@@ -9,6 +9,7 @@ namespace Innovt.Core.CrossCutting.Log;
 /// <summary>
 ///     Provides an interface for logging messages with different log levels and message formatting options.
 /// </summary>
+[CLSCompliant(true)]
 public interface ILogger
 {
     /// <summary>

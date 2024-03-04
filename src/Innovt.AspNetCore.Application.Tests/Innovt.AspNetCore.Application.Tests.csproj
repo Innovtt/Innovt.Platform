@@ -9,4 +9,6 @@
         <ProjectReference Include="..\Innovt.AspNetCore\Innovt.AspNetCore.csproj"/>
         <ProjectReference Include="..\Innovt.CrossCutting.Log.Serilog\Innovt.CrossCutting.Log.Serilog.csproj"/>
     </ItemGroup>
+    
+    
 </Project>

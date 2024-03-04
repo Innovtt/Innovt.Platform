@@ -17,6 +17,9 @@ namespace Innovt.Core.Test;
 [TestFixture]
 public class MultiLayerCacheServiceTests
 {
+    private ILogger loggerMock;
+    private ICacheService cacheService;
+    
     [SetUp]
     public void Setup()
     {
@@ -31,11 +34,10 @@ public class MultiLayerCacheServiceTests
     [TearDown]
     public void TearDown()
     {
-        cacheService = null;
+        cacheService.Dispose();
     }
 
-    private ILogger loggerMock;
-    private ICacheService cacheService;
+
 
     [Test]
     public void GetValueThrowExceptionIfKeyIsNullOrEmpty()
