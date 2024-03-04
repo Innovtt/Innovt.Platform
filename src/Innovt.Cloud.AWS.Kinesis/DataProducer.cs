@@ -90,14 +90,12 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
 
             var dataAsBytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize<object>(data));
 
-            using (var ms = new MemoryStream(dataAsBytes))
+            using var ms = new MemoryStream(dataAsBytes);
+            request.Add(new PutRecordsRequestEntry
             {
-                request.Add(new PutRecordsRequestEntry
-                {
-                    Data = ms,
-                    PartitionKey = data.Partition
-                });
-            }
+                Data = ms,
+                PartitionKey = data.Partition
+            });
         }
 
         return request;

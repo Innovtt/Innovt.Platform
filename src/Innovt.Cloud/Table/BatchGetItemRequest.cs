@@ -17,7 +17,7 @@ public class BatchGetItemRequest
     /// </summary>
     public BatchGetItemRequest()
     {
-        Items = new Dictionary<string, BatchGetItem>();
+        Items = [];
     }
 
     /// <summary>

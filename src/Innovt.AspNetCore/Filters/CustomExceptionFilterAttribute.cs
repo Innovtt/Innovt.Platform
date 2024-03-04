@@ -22,7 +22,7 @@ public sealed class CustomExceptionFilterAttribute : ExceptionFilterAttribute
     {
         if (context is null || context.ExceptionHandled) return;
 
-        if (!(context.Exception is BusinessException)) return;
+        if (context.Exception is not BusinessException) return;
 
         var bEx = (BusinessException)context.Exception;
 

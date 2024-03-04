@@ -102,7 +102,7 @@ public static class SimpleMapper
     public static IList<T1> MapToList<T1>(this IEnumerable<object> inputInstance) where T1 : class
     {
         if (inputInstance is null)
-            return new List<T1>();
+            return [];
 
         var result = new List<T1>();
 

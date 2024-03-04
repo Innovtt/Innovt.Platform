@@ -37,7 +37,7 @@ public class MultiLayerCacheService : ICacheService, IDisposable
         if (cacheDefaultLayer == null) throw new ArgumentNullException(nameof(cacheDefaultLayer));
 
         this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        cacheServices = new List<ICacheService> { cacheDefaultLayer };
+        cacheServices = [cacheDefaultLayer];
     }
 
     /// <summary>
@@ -55,7 +55,7 @@ public class MultiLayerCacheService : ICacheService, IDisposable
         if (cacheDefaultLayer == null) throw new ArgumentNullException(nameof(cacheDefaultLayer));
         if (cacheSecondLayer == null) throw new ArgumentNullException(nameof(cacheSecondLayer));
 
-        cacheServices = new List<ICacheService> { cacheDefaultLayer, cacheSecondLayer };
+        cacheServices = [cacheDefaultLayer, cacheSecondLayer];
 
         this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }

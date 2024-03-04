@@ -19,5 +19,5 @@ public class PostConfirmationRequest : TriggerRequest
     /// </summary>
     [DataMember(Name = "clientMetadata")]
     [JsonPropertyName("clientMetadata")]
-    public Dictionary<string, string> ClientMetadata { get; set; } = new();
+    public Dictionary<string, string> ClientMetadata { get; set; } = [];
 }

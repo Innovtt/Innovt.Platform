@@ -16,7 +16,7 @@ public class TransactionWriteRequest
     /// </summary>
     public TransactionWriteRequest()
     {
-        TransactItems = new List<TransactionWriteItem>();
+        TransactItems = [];
     }
 
     /// <summary>

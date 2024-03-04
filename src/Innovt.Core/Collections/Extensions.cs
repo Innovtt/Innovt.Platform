@@ -83,7 +83,7 @@ public static class Extensions
     /// <returns></returns>
     public static IList<T> AddFluent<T>(this IList<T> list, T value) where T : class
     {
-        list ??= new List<T>();
+        list ??= [];
 
         list.Add(value);
 
@@ -101,7 +101,7 @@ public static class Extensions
     public static Dictionary<TKey, TValue> AddFluent<TKey, TValue>(this Dictionary<TKey, TValue> dictionary,
         TKey key, TValue value)
     {
-        dictionary ??= new Dictionary<TKey, TValue>();
+        dictionary ??= [];
 
         dictionary.Add(key, value);
 
@@ -119,7 +119,7 @@ public static class Extensions
     public static Dictionary<TKey, TValue> Merge<TKey, TValue>(this Dictionary<TKey, TValue> dictionary,
         Dictionary<TKey, TValue> dictionarySecond)
     {
-        dictionary ??= new Dictionary<TKey, TValue>();
+        dictionary ??= [];
 
         if (dictionarySecond == null) return dictionary;
 

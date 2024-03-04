@@ -60,6 +60,6 @@ public class PagedFilterBase<T> : IPagedFilter
     public virtual IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
         // Implement validation logic specific to this paged filter if needed.
-        return new List<ValidationResult>();
+        return [];
     }
 }

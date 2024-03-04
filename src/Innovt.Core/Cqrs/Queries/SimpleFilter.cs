@@ -36,6 +36,6 @@ public class SimpleFilter<T> : IFilter
     public virtual IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
         // Implement validation logic specific to this filter if needed.
-        return new List<ValidationResult>();
+        return [];
     }
 }

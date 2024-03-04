@@ -312,9 +312,9 @@ public static class StringExtensions
     public static List<string> ToList(this string str, char separator)
     {
         if (str.IsNullOrEmpty())
-            return new List<string>();
+            return [];
 
-        return str.Split(separator).ToList();
+        return [.. str.Split(separator)];
     }
 
     /// <summary>

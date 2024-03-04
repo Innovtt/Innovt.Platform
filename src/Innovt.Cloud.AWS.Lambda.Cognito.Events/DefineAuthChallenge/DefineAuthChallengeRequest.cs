@@ -18,7 +18,7 @@ public class DefineAuthChallengeRequest : TriggerRequest
     /// </summary>
     [DataMember(Name = "clientMetadata")]
     [JsonPropertyName("clientMetadata")]
-    public Dictionary<string, string> ClientMetadata { get; set; } = new();
+    public Dictionary<string, string> ClientMetadata { get; set; } = [];
 
 
     /// <summary>
@@ -26,7 +26,7 @@ public class DefineAuthChallengeRequest : TriggerRequest
     /// </summary>
     [DataMember(Name = "session")]
     [JsonPropertyName("session")]
-    public List<ChallengeResultItem> Session { get; set; } = new();
+    public List<ChallengeResultItem> Session { get; set; } = [];
 
 
     /// <summary>
