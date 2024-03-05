@@ -15,20 +15,15 @@ namespace Innovt.Cqrs.Queries.Decorators;
 /// </summary>
 /// <typeparam name="TFilter">The type of filter for the query.</typeparam>
 /// <typeparam name="TResult">The type of result expected from the query.</typeparam>
-public sealed class QueryAsyncValidationDecorator<TFilter, TResult> : IAsyncQueryHandler<TFilter, TResult>
+/// <remarks>
+///     Initializes a new instance of the <see cref="QueryAsyncValidationDecorator{TFilter, TResult}" /> class.
+/// </remarks>
+/// <param name="queryHandler">The asynchronous query handler to be decorated.</param>
+/// <exception cref="ArgumentNullException">Thrown when <paramref name="queryHandler" /> is null.</exception>
+public sealed class QueryAsyncValidationDecorator<TFilter, TResult>(IAsyncQueryHandler<TFilter, TResult> queryHandler) : IAsyncQueryHandler<TFilter, TResult>
     where TFilter : IFilter where TResult : class
 {
-    private readonly IAsyncQueryHandler<TFilter, TResult> queryHandler;
-
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="QueryAsyncValidationDecorator{TFilter, TResult}" /> class.
-    /// </summary>
-    /// <param name="queryHandler">The asynchronous query handler to be decorated.</param>
-    /// <exception cref="ArgumentNullException">Thrown when <paramref name="queryHandler" /> is null.</exception>
-    public QueryAsyncValidationDecorator(IAsyncQueryHandler<TFilter, TResult> queryHandler)
-    {
-        this.queryHandler = queryHandler ?? throw new ArgumentNullException(nameof(queryHandler));
-    }
+    private readonly IAsyncQueryHandler<TFilter, TResult> queryHandler = queryHandler ?? throw new ArgumentNullException(nameof(queryHandler));
 
     /// <summary>
     ///     Handles the specified query asynchronously after ensuring its validity.

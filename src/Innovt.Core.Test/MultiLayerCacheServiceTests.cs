@@ -64,7 +64,7 @@ public class MultiLayerCacheServiceTests
     {
         var value = cacheService.GetValue<int>("Quantity");
 
-        Assert.That(0, Is.EqualTo(value));
+        Assert.That(value, Is.EqualTo(0));
 
         var value2 = cacheService.GetValue<object>("User");
 
@@ -78,7 +78,7 @@ public class MultiLayerCacheServiceTests
         var value = await cacheService.GetValue("Quantity", Factory, CancellationToken.None).ConfigureAwait(false);
 
         Assert.That(value, Is.Not.Null);
-        Assert.That("Michel", Is.EqualTo(value.Name));
+        Assert.That(value.Name, Is.EqualTo("Michel"));
     }
 
 

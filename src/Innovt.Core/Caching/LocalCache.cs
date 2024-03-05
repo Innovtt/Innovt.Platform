@@ -16,21 +16,16 @@ namespace Innovt.Core.Caching;
 ///     This class provides a concrete implementation of the <see cref="ICacheService" /> interface using
 ///     an in-memory cache for storing and retrieving data. It is designed for local caching within an application.
 /// </remarks>
-public sealed class LocalCache : ICacheService
+/// <remarks>
+///     Initializes a new instance of the <see cref="LocalCache" /> class with the specified <see cref="IMemoryCache" />.
+/// </remarks>
+/// <param name="memoryCache">The in-memory cache implementation provided by <see cref="IMemoryCache" />.</param>
+/// <exception cref="ArgumentNullException">Thrown when <paramref name="memoryCache" /> is null.</exception>
+public sealed class LocalCache(IMemoryCache memoryCache) : ICacheService
 {
-    private readonly IMemoryCache memoryCache;
+    private readonly IMemoryCache memoryCache = memoryCache ?? throw new ArgumentNullException(nameof(memoryCache));
 
     private bool disposed;
-
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="LocalCache" /> class with the specified <see cref="IMemoryCache" />.
-    /// </summary>
-    /// <param name="memoryCache">The in-memory cache implementation provided by <see cref="IMemoryCache" />.</param>
-    /// <exception cref="ArgumentNullException">Thrown when <paramref name="memoryCache" /> is null.</exception>
-    public LocalCache(IMemoryCache memoryCache)
-    {
-        this.memoryCache = memoryCache ?? throw new ArgumentNullException(nameof(memoryCache));
-    }
 
     /// <inheritdoc />
     public T GetValue<T>(string key)

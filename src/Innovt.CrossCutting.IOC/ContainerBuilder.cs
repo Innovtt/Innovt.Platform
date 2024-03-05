@@ -10,18 +10,13 @@ namespace Innovt.CrossCutting.IOC;
 /// <summary>
 ///     Builder for creating an <see cref="IServiceProvider" /> using Lamar IoC container.
 /// </summary>
-public class ContainerBuilder : IDisposable
+/// <remarks>
+///     Initializes a new instance of the <see cref="ContainerBuilder" /> class using the provided services.
+/// </remarks>
+/// <param name="services">The collection of services for the container.</param>
+public class ContainerBuilder(IServiceCollection services) : IDisposable
 {
-    private readonly Container container;
-
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="ContainerBuilder" /> class using the provided services.
-    /// </summary>
-    /// <param name="services">The collection of services for the container.</param>
-    public ContainerBuilder(IServiceCollection services)
-    {
-        container = new Container(services);
-    }
+    private readonly Container container = new Container(services);
 
     /// <summary>
     ///     Gets the configured <see cref="IServiceProvider" />.

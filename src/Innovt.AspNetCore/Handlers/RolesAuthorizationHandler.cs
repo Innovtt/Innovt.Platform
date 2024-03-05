@@ -51,7 +51,7 @@ public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorization
     /// </summary>
     /// <param name="context">The authorization context.</param>
     /// <returns>The application context.</returns>
-    private static string GetApplicationContext(AuthorizationHandlerContext context)
+    private static string? GetApplicationContext(AuthorizationHandlerContext context)
     {
         var scope = string.Empty;
 

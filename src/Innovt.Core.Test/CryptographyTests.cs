@@ -28,8 +28,11 @@ public class CryptographyTests
 
         var encrypted = Cryptography.AesEncrypt(plainText, key);
 
-        Assert.That(encrypted, Is.Not.Null);
-        Assert.That("+CSp39EM8HoEjSn4nOAbnw==", Is.EqualTo(encrypted));
+        Assert.Multiple(() =>
+        {
+            Assert.That(encrypted, Is.Not.Null);
+            Assert.That(encrypted, Is.EqualTo("+CSp39EM8HoEjSn4nOAbnw=="));
+        });
     }
 
 
@@ -43,8 +46,11 @@ public class CryptographyTests
 
         var decrypted = Cryptography.AesDecrypt(encrypted, key);
 
-        Assert.That(decrypted, Is.Not.Null);
-        Assert.That(plainText, Is.EqualTo(decrypted));
+        Assert.Multiple(() =>
+        {
+            Assert.That(decrypted, Is.Not.Null);
+            Assert.That(plainText, Is.EqualTo(decrypted));
+        });
     }
 
     [Test]
@@ -55,8 +61,11 @@ public class CryptographyTests
 
         var encrypted = Cryptography.RijndaelEncrypt(plainText, key);
 
-        Assert.That(encrypted, Is.Not.Null);
-        Assert.That("+CSp39EM8HoEjSn4nOAbnw==", Is.EqualTo(encrypted));
+        Assert.Multiple(() =>
+        {
+            Assert.That(encrypted, Is.Not.Null);
+            Assert.That(encrypted, Is.EqualTo("+CSp39EM8HoEjSn4nOAbnw=="));
+        });
     }
 
 
@@ -70,7 +79,10 @@ public class CryptographyTests
 
         var decrypted = Cryptography.RijndaelDecrypt(encrypted, key);
 
-        Assert.That(decrypted, Is.Not.Null);
-        Assert.That(plainText, Is.EqualTo(decrypted));
+        Assert.Multiple(() =>
+        {
+            Assert.That(decrypted, Is.Not.Null);
+            Assert.That(plainText, Is.EqualTo(decrypted));
+        });
     }
 }
