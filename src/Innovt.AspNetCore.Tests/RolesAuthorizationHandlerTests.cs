@@ -46,7 +46,7 @@ public class RolesAuthorizationHandlerTests
         Assert.Throws<ArgumentNullException>(() => new RolesAuthorizationHandler(authorizationRepositoryMoq, null));
     }
 
-    private AuthorizationHandlerContext CreateContext(ClaimsPrincipal user)
+    private static AuthorizationHandlerContext CreateContext(ClaimsPrincipal user)
     {
         return new AuthorizationHandlerContext(new List<IAuthorizationRequirement>
         {

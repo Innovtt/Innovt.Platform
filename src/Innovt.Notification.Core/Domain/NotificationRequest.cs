@@ -18,7 +18,7 @@ public class NotificationRequest : IValidatableObject
     /// </summary>
     public NotificationRequest()
     {
-        To = new List<NotificationMessageContact>();
+        To = [];
     }
 
     /// <summary>

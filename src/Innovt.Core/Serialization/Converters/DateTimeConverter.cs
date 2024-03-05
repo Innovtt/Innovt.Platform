@@ -12,18 +12,13 @@ namespace Innovt.Core.Serialization.Converters;
 /// <summary>
 ///     Custom JSON converter for <see cref="DateTime" /> objects with a specified format.
 /// </summary>
-public class DateTimeConverter : JsonConverter<DateTime>
+/// <remarks>
+///     Initializes a new instance of the <see cref="DateTimeConverter" /> class with the specified format.
+/// </remarks>
+/// <param name="format">The format string to be used for formatting and parsing <see cref="DateTime" /> objects.</param>
+public class DateTimeConverter(string format) : JsonConverter<DateTime>
 {
-    private readonly string format;
-
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="DateTimeConverter" /> class with the specified format.
-    /// </summary>
-    /// <param name="format">The format string to be used for formatting and parsing <see cref="DateTime" /> objects.</param>
-    public DateTimeConverter(string format)
-    {
-        this.format = format;
-    }
+    private readonly string format = format;
 
     /// <summary>
     ///     Reads and converts a JSON value to a <see cref="DateTime" /> object.

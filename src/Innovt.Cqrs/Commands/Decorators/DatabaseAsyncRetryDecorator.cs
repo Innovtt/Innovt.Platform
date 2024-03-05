@@ -15,27 +15,21 @@ namespace Innovt.Cqrs.Commands.Decorators;
 ///     Decorates an asynchronous command handler to include retry logic in case of failures.
 /// </summary>
 /// <typeparam name="TCommand">The type of command to be handled.</typeparam>
-public sealed class DatabaseAsyncRetryDecorator<TCommand> : BaseDatabaseRetryDecorator,
+/// <remarks>
+///     Initializes a new instance of the <see cref="DatabaseAsyncRetryDecorator{TCommand}" /> class.
+/// </remarks>
+/// <param name="commandHandler">The asynchronous command handler to be decorated.</param>
+/// <param name="logger">The logger for capturing retry attempts.</param>
+/// <param name="retryCount">The number of retry attempts (default is 3).</param>
+/// <exception cref="ArgumentNullException">
+///     Thrown when <paramref name="commandHandler" /> or <paramref name="logger" /> is
+///     null.
+/// </exception>
+public sealed class DatabaseAsyncRetryDecorator<TCommand>(IAsyncCommandHandler<TCommand> commandHandler, ILogger logger,
+    int retryCount = 3) : BaseDatabaseRetryDecorator(logger, retryCount),
     IAsyncCommandHandler<TCommand> where TCommand : ICommand
 {
-    private readonly IAsyncCommandHandler<TCommand> asyncCommandHandler;
-
-
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="DatabaseAsyncRetryDecorator{TCommand}" /> class.
-    /// </summary>
-    /// <param name="commandHandler">The asynchronous command handler to be decorated.</param>
-    /// <param name="logger">The logger for capturing retry attempts.</param>
-    /// <param name="retryCount">The number of retry attempts (default is 3).</param>
-    /// <exception cref="ArgumentNullException">
-    ///     Thrown when <paramref name="commandHandler" /> or <paramref name="logger" /> is
-    ///     null.
-    /// </exception>
-    public DatabaseAsyncRetryDecorator(IAsyncCommandHandler<TCommand> commandHandler, ILogger logger,
-        int retryCount = 3) : base(logger, retryCount)
-    {
-        asyncCommandHandler = commandHandler ?? throw new ArgumentNullException(nameof(commandHandler));
-    }
+    private readonly IAsyncCommandHandler<TCommand> asyncCommandHandler = commandHandler ?? throw new ArgumentNullException(nameof(commandHandler));
 
     /// <summary>
     ///     Handles the specified command asynchronously with retry logic in case of failures.

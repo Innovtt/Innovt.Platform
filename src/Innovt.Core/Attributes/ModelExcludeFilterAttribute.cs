@@ -26,7 +26,7 @@ public sealed class ModelExcludeFilterAttribute : Attribute
     /// <param name="propertyName">The name of the property to be excluded (optional).</param>
     public ModelExcludeFilterAttribute([CallerMemberName] string propertyName = null)
     {
-        ExcludeAttributes = new[] { propertyName };
+        ExcludeAttributes = [propertyName];
     }
 
     /// <summary>

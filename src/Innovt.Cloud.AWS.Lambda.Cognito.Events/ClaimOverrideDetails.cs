@@ -15,14 +15,14 @@ public class ClaimOverrideDetails
     /// </summary>
     [DataMember(Name = "claimsToAddOrOverride")]
     [JsonPropertyName("claimsToAddOrOverride")]
-    public Dictionary<string, string> ClaimsToAddOrOverride { get; set; } = new();
+    public Dictionary<string, string> ClaimsToAddOrOverride { get; set; } = [];
 
     /// <summary>
     ///     Gets or sets the claims to suppress in the token.
     /// </summary>
     [DataMember(Name = "claimsToSuppress")]
     [JsonPropertyName("claimsToSuppress")]
-    public List<string> ClaimsToSuppress { get; set; } = new();
+    public List<string> ClaimsToSuppress { get; set; } = [];
 
     /// <summary>
     ///     Gets or sets group override details associated with the token.

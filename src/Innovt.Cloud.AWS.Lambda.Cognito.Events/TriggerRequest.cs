@@ -19,5 +19,5 @@ public abstract class TriggerRequest
     /// </summary>
     [DataMember(Name = "userAttributes")]
     [JsonPropertyName("userAttributes")]
-    public Dictionary<string, string> UserAttributes { get; set; } = new();
+    public Dictionary<string, string> UserAttributes { get; set; } = [];
 }

@@ -48,7 +48,7 @@ public sealed class NotSpecification<TEntity>
     public NotSpecification(ISpecification<TEntity> originalSpecification)
     {
         if (originalSpecification == null)
-            throw new ArgumentNullException("originalSpecification");
+            throw new ArgumentNullException(nameof(originalSpecification));
 
         originalCriteria = originalSpecification.SatisfiedBy();
     }
@@ -59,7 +59,7 @@ public sealed class NotSpecification<TEntity>
     /// <param name="originalSpecification">Original specificaiton</param>
     public NotSpecification(Expression<Func<TEntity, bool>> originalSpecification)
     {
-        originalCriteria = originalSpecification ?? throw new ArgumentNullException("originalSpecification");
+        originalCriteria = originalSpecification ?? throw new ArgumentNullException(nameof(originalSpecification));
     }
 
     #endregion

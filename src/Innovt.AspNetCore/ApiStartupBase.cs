@@ -220,13 +220,13 @@ public abstract class ApiStartupBase
     {
         ArgumentNullException.ThrowIfNull(services);
 
-        services.AddSingleton<ApiExceptionFilter>();
+        services.AddSingleton<ApiExceptionFilterAttribute>();
 
         var provider = services.BuildServiceProvider();
 
         var mvcBuilder = services.AddControllers(op =>
         {
-            op.Filters.Add(provider.GetService<ApiExceptionFilter>() ?? throw new InvalidOperationException());
+            op.Filters.Add(provider.GetService<ApiExceptionFilterAttribute>() ?? throw new InvalidOperationException());
         });
 
         ApplyDefaultJsonOptions(mvcBuilder);
