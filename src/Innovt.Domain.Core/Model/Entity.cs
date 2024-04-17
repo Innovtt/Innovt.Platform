@@ -14,7 +14,7 @@ namespace Innovt.Domain.Core.Model;
 /// </summary>
 public abstract class Entity
 {
-    private List<DomainEvent> domainEvents;
+    private readonly List<DomainEvent> domainEvents;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="Entity" /> class.
@@ -71,13 +71,14 @@ public abstract class Entity
     ///     Adds a domain event to the entity.
     /// </summary>
     /// <param name="domainEvent">The domain event to add.</param>
-    public void AddDomainEvent(DomainEvent domainEvent)
+    public Entity AddDomainEvent(DomainEvent domainEvent)
     {
         if (domainEvent == null) throw new ArgumentNullException(nameof(domainEvent));
 
         domainEvent.PublishedAt = null;
-
+        domainEvent.CreatedAt = DateTime.UtcNow;
         domainEvents.Add(domainEvent);
+        return this;
     }
 
     /// <summary>
