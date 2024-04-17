@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <PackageId>Innovt.Cloud.AWS.Lambda.Cognito</PackageId>
-        <PackageVersion>8.0.3</PackageVersion>
+        <PackageVersion>8.0.4</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -14,7 +14,7 @@
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="System.Text.Json" Version="8.0.3" />
-        <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.4.1"/>
+        <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.4.2" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda.Cognito.Events\Innovt.Cloud.AWS.Lambda.Cognito.Events.csproj"/>
