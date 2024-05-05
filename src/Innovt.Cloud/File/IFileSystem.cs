@@ -121,14 +121,6 @@ public interface IFileSystem
     /// <param name="expires">The expiration date and time for the pre-signed URL.</param>
     /// <returns>The pre-signed URL for accessing the object.</returns>
     string GetPreSignedUrl(string bucketName, string key, DateTime expires);
-#pragma warning restore CA1055 // URI-like return values should not be strings
-    /// <summary>
-    ///     Gets the content of the object from the specified URL.
-    /// </summary>
-    /// <param name="url">The URL of the object.</param>
-    /// <param name="encoding">The encoding to use for reading the content.</param>
-    /// <returns>The content of the object as a string.</returns>
-    string GetObjectContent(string url, Encoding encoding);
 
     /// <summary>
     ///     Gets the content of the object from the specified URL asynchronously.
@@ -137,16 +129,26 @@ public interface IFileSystem
     /// <param name="encoding">The encoding to use for reading the content.</param>
     /// <param name="cancellationToken">The cancellation token to cancel the asynchronous operation.</param>
     /// <returns>The content of the object as a string.</returns>
-    Task<string> GetObjectContentAsync(string url, Encoding encoding,
-        CancellationToken cancellationToken = default);
+    Task<string> GetObjectContentAsync(string url, Encoding encoding, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    ///  Gets the content of the object from the specified URL asynchronously.
+    /// </summary>
+    /// <param name="bucketName">The Bucket name.</param>
+    /// <param name="key">The file url</param>
+    /// <param name="encoding"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<string> GetObjectContentAsync(string bucketName, string key, Encoding encoding, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Deserializes a JSON object from the content of a file specified by a URI.
     /// </summary>
     /// <typeparam name="T">The type of the object to deserialize to.</typeparam>
     /// <param name="filePath">The URI pointing to the JSON file.</param>
+    /// <param name="cancellationToken"></param>
     /// <returns>The deserialized object of type <typeparamref name="T" />.</returns>
-    T GetObjectFromJson<T>(Uri filePath);
+    Task<T> GetObjectFromJsonAsync<T>(Uri filePath,CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Uploads a file from a stream to the specified bucket.
