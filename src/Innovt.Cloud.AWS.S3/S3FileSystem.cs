@@ -261,24 +261,23 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     {
         var stream = await DownloadStreamAsync(url, cancellationToken).ConfigureAwait(false);
 
+        return await ReadStream(stream, encoding);
+    }
+    public async Task<string> GetObjectContentAsync(string bucketName, string key, Encoding encoding,
+        CancellationToken cancellationToken = default)
+    {
+        var stream = await DownloadStreamAsync(bucketName,key, cancellationToken).ConfigureAwait(false);
+
+        return await ReadStream(stream, encoding);
+    }
+    
+    private static async Task<string> ReadStream(Stream stream, Encoding encoding)
+    {
+        if (stream is null) return null;
+        
         using var reader = new StreamReader(stream, encoding);
 
         return await reader.ReadToEndAsync().ConfigureAwait(false);
-    }
-
-    /// <summary>
-    ///     Gets the content of an object from a specified URL with the given encoding.
-    /// </summary>
-    /// <param name="url">The URL of the object to retrieve.</param>
-    /// <param name="encoding">The encoding to use for reading the object's content.</param>
-    /// <returns>The content of the object as a string.</returns>
-    public string GetObjectContent(string url, Encoding encoding)
-    {
-        var stream = DownloadStream(url);
-
-        using var reader = new StreamReader(stream, encoding);
-
-        return reader.ReadToEnd();
     }
 
     /// <summary>
@@ -287,14 +286,14 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     /// <typeparam name="T"></typeparam>
     /// <param name="url"></param>
     /// <returns></returns>
-    public T GetObjectFromJson<T>(Uri filePath)
+    public async Task<T> GetObjectFromJsonAsync<T>(Uri filePath,CancellationToken cancellationToken = default )
     {
         if (filePath is null) throw new ArgumentNullException(nameof(filePath));
 
         using var activity = S3ActivitySource.StartActivity();
         activity?.SetTag("s3.url", filePath);
 
-        var content = GetObjectContent(filePath.ToString(), Encoding.UTF8);
+        var content = await GetObjectContentAsync(filePath.ToString(), Encoding.UTF8, cancellationToken);
 
         if (content is null)
             return default;
