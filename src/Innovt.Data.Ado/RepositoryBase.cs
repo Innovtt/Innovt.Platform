@@ -299,7 +299,6 @@ public class RepositoryBase : IRepositoryBase
     {
         if (sql is null) throw new ArgumentNullException(nameof(sql));
 
-
         return await ExecuteInternalScalar<T>(sql, filter, dbTransaction, cancellationToken).ConfigureAwait(false);
     }
 
@@ -418,9 +417,9 @@ public class RepositoryBase : IRepositoryBase
     ///     Retrieves a database connection for executing queries.
     /// </summary>
     /// <returns>An IDbConnection instance for executing queries.</returns>
-    private IDbConnection GetConnection()
+    private IDbConnection GetConnection(IDbTransaction dbTransaction=null)
     {
-        return connectionFactory.Create(dataSource);
+        return dbTransaction != null ? dbTransaction.Connection : connectionFactory.Create(dataSource);
     }
 
     /// <summary>
@@ -644,7 +643,7 @@ public class RepositoryBase : IRepositoryBase
     private async Task<T> ExecuteInternalScalar<T>(string sql, object filter = null,
         IDbTransaction dbTransaction = null, CancellationToken cancellationToken = default)
     {
-        using var con = GetConnection();
+        using var con = GetConnection(dbTransaction);
 
         return await con
             .ExecuteScalarAsync<T>(new CommandDefinition(sql, filter, dbTransaction,
@@ -665,7 +664,7 @@ public class RepositoryBase : IRepositoryBase
     private async Task<int> ExecuteInternalAsync(string sql, object filter = null,
         IDbTransaction dbTransaction = null, CancellationToken cancellationToken = default)
     {
-        using var con = GetConnection();
+        using var con = GetConnection(dbTransaction);
 
         return await con
             .ExecuteAsync(new CommandDefinition(sql, filter, dbTransaction, cancellationToken: cancellationToken))
