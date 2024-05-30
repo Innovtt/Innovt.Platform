@@ -12,5 +12,6 @@ public enum Provider
     MsSql,
     PostgreSqL,
     Oracle,
-    MySql
+    MySql,
+    SqLite
 }
