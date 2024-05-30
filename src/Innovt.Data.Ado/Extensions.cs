@@ -42,11 +42,13 @@ internal static class Extensions
                 return $"{rawSql} LIMIT @PageSize OFFSET {recordStart}";
             case Provider.MsSql:
                 return $"{rawSql} OFFSET {recordStart} ROWS FETCH NEXT @PageSize ROWS ONLY";
+            case Provider.SqLite:
+                return $"{rawSql} OFFSET ({recordStart}) LIMIT @PageSize ";
             default:
                 return $"{rawSql} OFFSET {recordStart} ROWS FETCH NEXT @PageSize ROWS ONLY";
         }
     }
-
+    
     /// <summary>
     ///     Adds a NOLOCK hint to the raw SQL query based on the specified data source.
     /// </summary>
