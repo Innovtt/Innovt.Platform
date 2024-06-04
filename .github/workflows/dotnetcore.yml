@@ -3,7 +3,7 @@ name: .NET Core
 on:
   push:
     branches:
-      - master
+      - main
       - dev
   pull_request:
     types: [ opened, synchronize, reopened ]
@@ -43,7 +43,7 @@ jobs:
           dotnet test -c Release --logger trx --results-directory ./testresults /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./testresults/coverage.opencover.xml
           dotnet sonarscanner end /d:sonar.token=$SONAR_TOKEN  
       - name: PackProject
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
         working-directory: src
         run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }}
       - name: PushPackages
