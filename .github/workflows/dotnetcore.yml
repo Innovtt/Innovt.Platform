@@ -47,5 +47,5 @@ jobs:
         working-directory: src
         run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }}
       - name: PushPackages
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
         run: dotnet nuget push "${{ env.NuGetDirectory }}/*.nupkg"  --api-key ${{ secrets.NUGET_API_KEY }} --source "github" --skip-duplicate   
