@@ -92,6 +92,15 @@ public sealed class Container : IContainer
     {
         return container.GetInstance<TService>();
     }
+    /// <summary>
+    /// Try to resolve a service. If the service is not registered, return null.
+    /// </summary>
+    /// <typeparam name="TService"></typeparam>
+    /// <returns></returns>
+    public TService TryToResolve<TService>()
+    {
+        return container.TryGetInstance<TService>();
+    }
 
     /// <summary>
     ///     Resolves an instance of the specified type.
@@ -102,6 +111,16 @@ public sealed class Container : IContainer
     public TService Resolve<TService>(Type type)
     {
         return (TService)container.GetInstance(type);
+    }
+    /// <summary>
+    /// This method will not throw an exception if the service is not registered. Return null instead.
+    /// </summary>
+    /// <param name="type">The type that you want to get an instance</param>
+    /// <typeparam name="TService"></typeparam>
+    /// <returns>Null or an instance of your type</returns>
+    public TService TryToResolve<TService>(Type type)
+    {
+       return (TService)container.TryGetInstance(type);
     }
 
     /// <summary>

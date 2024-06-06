@@ -103,7 +103,7 @@ public abstract class BaseEventProcessor
         {
             container.CheckConfiguration();
 
-            InitializeLogger(container.Resolve<ILogger>());
+            InitializeLogger(container.TryToResolve<ILogger>());
 
             Logger.Info("IOC Container Initialized.");
         }
