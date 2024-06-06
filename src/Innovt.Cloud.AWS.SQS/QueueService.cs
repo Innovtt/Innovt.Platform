@@ -100,7 +100,7 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
         var request = new ReceiveMessageRequest
         {
             MaxNumberOfMessages = quantity,
-            AttributeNames = new List<string> { "All" },
+            MessageSystemAttributeNames = ["All"],
             QueueUrl = await GetQueueUrlAsync().ConfigureAwait(false)
         };
 

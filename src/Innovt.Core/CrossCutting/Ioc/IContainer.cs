@@ -36,6 +36,13 @@ public interface IContainer : IDisposable
     /// <typeparam name="TService">The type of service to resolve.</typeparam>
     /// <returns>The resolved service object.</returns>
     TService Resolve<TService>();
+    
+    /// <summary>
+    /// Try to resolve a service. If the service is not registered, return null.
+    /// </summary>
+    /// <typeparam name="TService"></typeparam>
+    /// <returns></returns>
+    TService TryToResolve<TService>();
 
     /// <summary>
     ///     Resolves a service of type <typeparamref name="TService" /> with the specified <paramref name="type" />.
@@ -44,6 +51,14 @@ public interface IContainer : IDisposable
     /// <param name="type">The <see cref="Type" /> of the service implementation to resolve.</param>
     /// <returns>The resolved service object.</returns>
     TService Resolve<TService>(Type type);
+    
+    /// <summary>
+    /// This method will not throw an exception if the service is not registered. Return null instead.
+    /// </summary>
+    /// <param name="type">The type that you want to get an instance</param>
+    /// <typeparam name="TService"></typeparam>
+    /// <returns>Null or an instance of your type</returns>
+    TService TryToResolve<TService>(Type type);
 
     /// <summary>
     ///     Resolves a named instance of a service of type <typeparamref name="TService" />.
