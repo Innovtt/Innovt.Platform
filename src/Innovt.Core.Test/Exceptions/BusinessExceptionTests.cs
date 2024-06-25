@@ -25,7 +25,7 @@ public class BusinessExceptionTests
 
         Assert.That(bex, Is.Not.Null);
 
-        Assert.That("E-mail is not valid.", Is.EqualTo(bex.Message));
+        Assert.That(bex.Message, Is.EqualTo("E-mail is not valid."));
     }
 
     /// <summary>
@@ -38,8 +38,11 @@ public class BusinessExceptionTests
 
         Assert.That(bex, Is.Not.Null);
 
-        Assert.That("E-mail is not valid.", Is.EqualTo(bex.Message));
-        Assert.That("01", Is.EqualTo(bex.Code));
+        Assert.Multiple(() =>
+        {
+            Assert.That(bex.Message, Is.EqualTo("E-mail is not valid."));
+            Assert.That(bex.Code, Is.EqualTo("01"));
+        });
     }
 
     /// <summary>

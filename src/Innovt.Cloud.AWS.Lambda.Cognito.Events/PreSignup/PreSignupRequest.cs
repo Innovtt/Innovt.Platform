@@ -19,7 +19,7 @@ public class PreSignupRequest : TriggerRequest
     /// </summary>
     [DataMember(Name = "clientMetadata")]
     [JsonPropertyName("clientMetadata")]
-    public Dictionary<string, string> ClientMetadata { get; set; } = new();
+    public Dictionary<string, string> ClientMetadata { get; set; } = [];
 
     /// <summary>
     ///     One or more name-value pairs containing the validation data in the request to register a user.
@@ -29,5 +29,5 @@ public class PreSignupRequest : TriggerRequest
     /// </summary>
     [DataMember(Name = "validationData")]
     [JsonPropertyName("validationData")]
-    public Dictionary<string, string> ValidationData { get; set; } = new();
+    public Dictionary<string, string> ValidationData { get; set; } = [];
 }

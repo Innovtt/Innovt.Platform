@@ -19,7 +19,7 @@ public class DeserializerFactory
 
     private DeserializerFactory()
     {
-        mapping = new Dictionary<string, Type>();
+        mapping = [];
     }
 
     /// <summary>

@@ -57,7 +57,7 @@ public class PagedCollection<T> : IPagedCollection<T>
     /// </summary>
     public PagedCollection()
     {
-        Items = new List<T>();
+        Items = [];
     }
 
     /// <summary>

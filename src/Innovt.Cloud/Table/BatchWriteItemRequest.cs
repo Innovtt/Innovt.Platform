@@ -17,7 +17,7 @@ public class BatchWriteItemRequest
     /// </summary>
     public BatchWriteItemRequest()
     {
-        Items = new Dictionary<string, List<BatchWriteItem>>();
+        Items = [];
         MaxRetry = 3;
         RetryDelay = TimeSpan.FromSeconds(1);
     }
@@ -59,10 +59,10 @@ public class BatchWriteItemRequest
         if (batchRequestItem is null) throw new ArgumentNullException(nameof(batchRequestItem));
 
         if (!Items.ContainsKey(tableName))
-            Items.Add(tableName, new List<BatchWriteItem>
-            {
+            Items.Add(tableName,
+            [
                 batchRequestItem
-            });
+            ]);
         else
             Items[tableName].Add(batchRequestItem);
     }

@@ -14,20 +14,15 @@ namespace Innovt.Cqrs.Commands.Decorators;
 ///     Decorates an asynchronous command handler to include validation before handling the command.
 /// </summary>
 /// <typeparam name="TCommand">The type of command to be handled.</typeparam>
-public sealed class CommandAsyncValidationDecorator<TCommand> : IAsyncCommandHandler<TCommand>
+/// <remarks>
+///     Initializes a new instance of the <see cref="CommandAsyncValidationDecorator{TCommand}" /> class.
+/// </remarks>
+/// <param name="commandHandler">The asynchronous command handler to be decorated.</param>
+/// <exception cref="ArgumentNullException">Thrown when <paramref name="commandHandler" /> is null.</exception>
+public sealed class CommandAsyncValidationDecorator<TCommand>(IAsyncCommandHandler<TCommand> commandHandler) : IAsyncCommandHandler<TCommand>
     where TCommand : ICommand
 {
-    private readonly IAsyncCommandHandler<TCommand> asyncCommandHandler;
-
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="CommandAsyncValidationDecorator{TCommand}" /> class.
-    /// </summary>
-    /// <param name="commandHandler">The asynchronous command handler to be decorated.</param>
-    /// <exception cref="ArgumentNullException">Thrown when <paramref name="commandHandler" /> is null.</exception>
-    public CommandAsyncValidationDecorator(IAsyncCommandHandler<TCommand> commandHandler)
-    {
-        asyncCommandHandler = commandHandler ?? throw new ArgumentNullException(nameof(commandHandler));
-    }
+    private readonly IAsyncCommandHandler<TCommand> asyncCommandHandler = commandHandler ?? throw new ArgumentNullException(nameof(commandHandler));
 
     /// <summary>
     ///     Handles the specified command asynchronously after ensuring its validity.

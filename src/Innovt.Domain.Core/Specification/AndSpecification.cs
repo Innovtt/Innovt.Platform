@@ -24,8 +24,8 @@ public sealed class AndSpecification<T>
     /// <param name="rightSide">Right side specification</param>
     public AndSpecification(ISpecification<T> leftSide, ISpecification<T> rightSide)
     {
-        LeftSideSpecification = leftSide ?? throw new ArgumentNullException("leftSide");
-        RightSideSpecification = rightSide ?? throw new ArgumentNullException("rightSide");
+        LeftSideSpecification = leftSide ?? throw new ArgumentNullException(nameof(leftSide));
+        RightSideSpecification = rightSide ?? throw new ArgumentNullException(nameof(rightSide));
     }
 
     #endregion

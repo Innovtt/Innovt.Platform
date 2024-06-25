@@ -24,11 +24,11 @@ public static class InvalidModelStateResponse
         {
             TraceId = actionContext.HttpContext.TraceIdentifier,
             Message = "One or more validation errors occurred.",
-            Detail = actionContext.ModelState.Where(modelError => modelError.Value.Errors.Count > 0)
+            Detail = actionContext.ModelState.Where(modelError => modelError.Value?.Errors.Count > 0)
                 .Select(modelError => new
                 {
                     Property = modelError.Key,
-                    Errors = modelError.Value.Errors.Select(e => e.ErrorMessage).ToList()
+                    Errors = modelError.Value?.Errors.Select(e => e.ErrorMessage).ToList()
                 }).ToList()
         };
 

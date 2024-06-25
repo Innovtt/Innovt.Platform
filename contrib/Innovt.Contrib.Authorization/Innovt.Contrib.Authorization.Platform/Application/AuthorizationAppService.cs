@@ -124,10 +124,7 @@ public class AuthorizationAppService : IAuthorizationAppService
         command.EnsureIsValid();
 
         var user = await authorizationRepository.GetUserByExternalId(command.Id, cancellationToken)
-            .ConfigureAwait(false);
-
-        if (user is null)
-            throw new BusinessException($"User {command.Id} doesn't exist.");
+            .ConfigureAwait(false) ?? throw new BusinessException($"User {command.Id} doesn't exist.");
 
         await authorizationRepository.RemoveUser(user, cancellationToken).ConfigureAwait(false);
     }
@@ -144,10 +141,7 @@ public class AuthorizationAppService : IAuthorizationAppService
         command.EnsureIsValid();
 
         var user = await authorizationRepository.GetUserByExternalId(command.UserId, cancellationToken)
-            .ConfigureAwait(false);
-
-        if (user is null)
-            throw new BusinessException($"User {command.UserId} doesn't exist.");
+            .ConfigureAwait(false) ?? throw new BusinessException($"User {command.UserId} doesn't exist.");
 
         AssignRole(user, command.Roles);
 

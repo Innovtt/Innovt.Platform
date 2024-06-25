@@ -176,7 +176,7 @@ public abstract class SqsEventProcessor<TBody> : EventProcessor<SQSEvent, BatchF
     /// <param name="message">The SQSEvent containing one or more SQS event records.</param>
     /// <param name="processedMessages">A list of processed message IDs.</param>
     /// <returns>An IEnumerable of message IDs representing the remaining unprocessed messages.</returns>
-    private static IEnumerable<string> GetRemainingMessages(SQSEvent message, IList<string> processedMessages)
+    private static IEnumerable<string> GetRemainingMessages(SQSEvent message, List<string> processedMessages)
     {
         return message.Records.Where(r => !processedMessages.Contains(r.MessageId)).Distinct().Select(r => r.MessageId);
     }

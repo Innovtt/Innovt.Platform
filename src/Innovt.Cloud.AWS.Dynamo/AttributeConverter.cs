@@ -262,7 +262,7 @@ internal static class AttributeConverter
     ///     An array of the specified target type containing the converted objects, or null if the input collection is
     ///     null.
     /// </returns>
-    private static object ItemsToArray(Type targetType, IEnumerable<object> items)
+    private static Array ItemsToArray(Type targetType, IEnumerable<object> items)
     {
         if (items is null)
             return null;

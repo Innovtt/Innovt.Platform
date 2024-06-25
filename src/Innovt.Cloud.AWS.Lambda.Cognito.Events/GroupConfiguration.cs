@@ -15,14 +15,14 @@ public class GroupConfiguration
     /// </summary>
     [DataMember(Name = "groupsToOverride")]
     [JsonPropertyName("groupsToOverride")]
-    public List<string> GroupsToOverride { get; set; } = new();
+    public List<string> GroupsToOverride { get; set; } = [];
 
     /// <summary>
     ///     Gets or sets the list of IAM roles to override.
     /// </summary>
     [DataMember(Name = "iamRolesToOverride")]
     [JsonPropertyName("iamRolesToOverride")]
-    public List<string> IamRolesToOverride { get; set; } = new();
+    public List<string> IamRolesToOverride { get; set; } = [];
 
     /// <summary>
     ///     Gets or sets the preferred role.

@@ -18,14 +18,14 @@ public class CreateAuthChallengeResponse : TriggerResponse
     /// </summary>
     [DataMember(Name = "publicChallengeParameters")]
     [JsonPropertyName("publicChallengeParameters")]
-    public Dictionary<string, string> PublicChallengeParameters { get; set; } = new();
+    public Dictionary<string, string> PublicChallengeParameters { get; set; } = [];
 
     /// <summary>
     ///     Gets or sets the private challenge parameters associated with the response.
     /// </summary>
     [DataMember(Name = "privateChallengeParameters")]
     [JsonPropertyName("privateChallengeParameters")]
-    public Dictionary<string, string> PrivateChallengeParameters { get; set; } = new();
+    public Dictionary<string, string> PrivateChallengeParameters { get; set; } = [];
 
     /// <summary>
     ///     Gets or sets metadata associated with the authentication challenge.

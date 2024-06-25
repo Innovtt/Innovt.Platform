@@ -55,7 +55,7 @@ public class LocalCacheTests
     {
         var value = cacheService.GetValue<int>("Quantity");
 
-        Assert.That(0, Is.EqualTo(value));
+        Assert.That(value, Is.EqualTo(0));
 
         var value2 = cacheService.GetValue<object>("User");
 
@@ -69,7 +69,7 @@ public class LocalCacheTests
         var value = await cacheService.GetValue("Quantity", Factory, CancellationToken.None)
             .ConfigureAwait(false);
 
-        Assert.That(10, Is.EqualTo(value));
+        Assert.That(value, Is.EqualTo(10));
     }
 
 
