@@ -88,7 +88,7 @@ public abstract class ApiStartupBase
     /// <summary>
     ///     If true will set default Json Options(JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase) etc
     /// </summary>
-    public bool SetDefaultJsonOptions { get; set; }
+    public bool SetDefaultJsonOptions { get; set; } = true;
 
     /// <summary>
     ///     Gets the configuration for the application.
