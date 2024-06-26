@@ -2,17 +2,20 @@
 // Author: Michel Borges
 // Project: Innovt.Domain.Core
 
+using System;
+using System.Collections.Generic;
+
 namespace Innovt.Domain.Core.Model;
 
 /// <summary>
 ///     Represents a base class for value objects.
 /// </summary>
-public abstract class ValueObject
+public abstract class ValueObject<T> where T : struct
 {
     /// <summary>
     ///     Gets or sets the identifier for the value object.
     /// </summary>
-    public virtual int Id { get; set; }
+    public T Id { get; set; }
 
     /// <summary>
     ///     Determines whether the current value object is equal to another object.
@@ -24,7 +27,8 @@ public abstract class ValueObject
         if (ReferenceEquals(this, obj)) return true;
         if (obj is null) return false;
 
-        return (obj as ValueObject)?.Id == Id;
+        return obj is ValueObject<T> @object &&
+            EqualityComparer<T>.Default.Equals(Id, @object.Id);
     }
 
     /// <summary>
@@ -33,7 +37,7 @@ public abstract class ValueObject
     /// <returns>A hash code for the current value object.</returns>
     public override int GetHashCode()
     {
-        return base.GetHashCode();
+        return HashCode.Combine(Id);
     }
 }
 
@@ -41,10 +45,6 @@ public abstract class ValueObject
 ///     Represents a base class for value objects with a generic identifier type.
 /// </summary>
 /// <typeparam name="T">The type of the identifier.</typeparam>
-public abstract class ValueObject<T> : ValueObject where T : struct
+public abstract class ValueObject : ValueObject<int>
 {
-    /// <summary>
-    ///     Gets or sets the identifier for the value object.
-    /// </summary>
-    public new T Id { get; set; }
 }
