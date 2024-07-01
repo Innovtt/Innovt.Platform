@@ -5,6 +5,7 @@
 using Amazon.Kinesis;
 using Amazon.Kinesis.Model;
 using Innovt.Cloud.AWS.Configuration;
+using Innovt.Core.Collections;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Utilities;
 using Innovt.Domain.Core.Streams;
@@ -77,7 +78,7 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
     /// <returns>A list of <see cref="PutRecordsRequestEntry" /> representing the data streams.</returns>
     private static List<PutRecordsRequestEntry> CreatePutRecords(IList<T> dataStreams, Activity activity)
     {
-        if (dataStreams == null || !dataStreams.Any())
+        if (dataStreams.IsNullOrEmpty())
             return null;
 
         var request = new List<PutRecordsRequestEntry>();
@@ -112,7 +113,7 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
     {
         Logger.Info("Kinesis Publisher Started");
 
-        if (dataList is null || !dataList.Any())
+        if (dataList.IsNullOrEmpty())
         {
             Logger.Info("The event list is empty or null.");
             return;
