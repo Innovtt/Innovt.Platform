@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <PackageId>Innovt.Cloud.AWS.SQS</PackageId>
-        <PackageVersion>8.0.10</PackageVersion>
+        <PackageVersion>8.0.11</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -13,7 +13,7 @@
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="AWSSDK.SQS" Version="3.7.301.14" />
+        <PackageReference Include="AWSSDK.SQS" Version="3.7.301.30" />
         <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="8.0.1" />
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">
             <PrivateAssets>all</PrivateAssets>
