@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -192,7 +193,7 @@ public static class StringExtensions
     /// </summary>
     /// <param name="yourGuid">The nullable Guid to check.</param>
     /// <returns>True if the nullable Guid is null or empty; otherwise, false.</returns>
-    public static bool IsNullOrEmpty(this Guid? yourGuid)
+    public static bool IsNullOrEmpty([NotNullWhen(false)]this Guid? yourGuid)
     {
         return IsEmpty(yourGuid.GetValueOrDefault());
     }
@@ -202,7 +203,7 @@ public static class StringExtensions
     /// </summary>
     /// <param name="str">The string to check.</param>
     /// <returns>True if the string is null, empty, or consists only of white-space characters; otherwise, false.</returns>
-    public static bool IsNullOrEmpty(this string str)
+    public static bool IsNullOrEmpty([NotNullWhen(false)] this string str)
     {
         return string.IsNullOrWhiteSpace(str);
     }
@@ -212,7 +213,7 @@ public static class StringExtensions
     /// </summary>
     /// <param name="yourGuid">The nullable Guid to check.</param>
     /// <returns>True if the nullable Guid is not null or empty; otherwise, false.</returns>
-    public static bool IsNotNullOrEmpty(this Guid? yourGuid)
+    public static bool IsNotNullOrEmpty([NotNullWhen(false)]this Guid? yourGuid)
     {
         return !IsNullOrEmpty(yourGuid);
     }
