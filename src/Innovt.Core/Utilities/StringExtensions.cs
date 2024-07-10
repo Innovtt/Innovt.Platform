@@ -18,7 +18,7 @@ namespace Innovt.Core.Utilities;
 
 /// <summary>
 ///     Provides a collection of extension methods for string manipulation and validation.
-/// </summary
+/// </summary>
 public static class StringExtensions
 {
     /// <summary>
@@ -167,17 +167,6 @@ public static class StringExtensions
         return cnpj.EndsWith(digit);
     }
 
-
-    /// <summary>
-    ///     Determines whether a Guid is empty (all zeros).
-    /// </summary>
-    /// <param name="yourGuid">The Guid to check.</param>
-    /// <returns>True if the Guid is empty; otherwise, false.</returns>
-    public static bool IsEmpty(this Guid yourGuid)
-    {
-        return yourGuid == Guid.Empty;
-    }
-
     /// <summary>
     ///     Determines whether a Guid is not empty (contains non-zero values).
     /// </summary>
@@ -187,27 +176,17 @@ public static class StringExtensions
     {
         return !IsEmpty(yourGuid);
     }
-
+    
     /// <summary>
-    ///     Determines whether a nullable Guid is null or empty.
+    ///     Determines whether a Guid is empty (all zeros).
     /// </summary>
-    /// <param name="yourGuid">The nullable Guid to check.</param>
-    /// <returns>True if the nullable Guid is null or empty; otherwise, false.</returns>
-    public static bool IsNullOrEmpty([NotNullWhen(false)]this Guid? yourGuid)
+    /// <param name="yourGuid">The Guid to check.</param>
+    /// <returns>True if the Guid is empty; otherwise, false.</returns>
+    public static bool IsEmpty(this Guid yourGuid)
     {
-        return IsEmpty(yourGuid.GetValueOrDefault());
+        return yourGuid == Guid.Empty;
     }
-
-    /// <summary>
-    ///     Determines whether a string is null, empty, or consists only of white-space characters.
-    /// </summary>
-    /// <param name="str">The string to check.</param>
-    /// <returns>True if the string is null, empty, or consists only of white-space characters; otherwise, false.</returns>
-    public static bool IsNullOrEmpty([NotNullWhen(false)] this string str)
-    {
-        return string.IsNullOrWhiteSpace(str);
-    }
-
+    
     /// <summary>
     ///     Determines whether a nullable Guid is not null or empty.
     /// </summary>
@@ -217,7 +196,39 @@ public static class StringExtensions
     {
         return !IsNullOrEmpty(yourGuid);
     }
+    
+    /// <summary>
+    ///     Determines whether a nullable Guid is null or empty.
+    /// </summary>
+    /// <param name="yourGuid">The nullable Guid to check.</param>
+    /// <returns>True if the nullable Guid is null or empty; otherwise, false.</returns>
+    public static bool IsNullOrEmpty([NotNullWhen(false)]this Guid? yourGuid)
+    {
+        return yourGuid is null || IsEmpty(yourGuid.GetValueOrDefault());
+    }
 
+    /// <summary>
+    ///  Determines whether a string is null, empty, or consists only of white-space characters.
+    /// </summary>
+    /// <param name="str">The string to check.</param>
+    /// <returns>True if the string is null, empty, or consists only of white-space characters; otherwise, false.</returns>
+    public static bool IsNullOrEmpty([NotNullWhen(false)] this string str)
+    {
+        return string.IsNullOrWhiteSpace(str);
+    }
+    /// <summary>
+    ///     Determines whether a string is not null, empty, or consists only of white-space characters.
+    /// </summary>
+    /// <param name="str">The string to check.</param>
+    /// <returns>
+    ///     True if the string is not null, not empty, and not consisting only of white-space characters; otherwise,
+    ///     false.
+    /// </returns>
+    public static bool IsNotNullOrEmpty([NotNullWhen(false)]this string str)
+    {
+        return !string.IsNullOrWhiteSpace(str);
+    }
+    
     /// <summary>
     ///     Encodes a string for safe use in a URL, using UTF-8 encoding.
     /// </summary>
@@ -252,10 +263,7 @@ public static class StringExtensions
         if (!str.IsNullOrEmpty())
             return str;
 
-        if (defaultValue.IsNotNullOrEmpty())
-            return defaultValue;
-
-        return string.Empty;
+        return defaultValue.IsNotNullOrEmpty() ? defaultValue : string.Empty;
     }
 
     /// <summary>
@@ -291,18 +299,7 @@ public static class StringExtensions
         return result;
     }
 
-    /// <summary>
-    ///     Determines whether a string is not null, empty, or consists only of white-space characters.
-    /// </summary>
-    /// <param name="str">The string to check.</param>
-    /// <returns>
-    ///     True if the string is not null, not empty, and not consisting only of white-space characters; otherwise,
-    ///     false.
-    /// </returns>
-    public static bool IsNotNullOrEmpty(this string str)
-    {
-        return !string.IsNullOrWhiteSpace(str);
-    }
+   
 
     /// <summary>
     ///     Converts a delimited string into a list of strings using the specified separator character.
@@ -312,10 +309,7 @@ public static class StringExtensions
     /// <returns>A list of strings containing the individual values from the delimited string.</returns>
     public static List<string> ToList(this string str, char separator)
     {
-        if (str.IsNullOrEmpty())
-            return new List<string>();
-
-        return str.Split(separator).ToList();
+        return str.IsNullOrEmpty() ? [] : str.Split(separator).ToList();
     }
 
     /// <summary>
@@ -394,7 +388,6 @@ public static class StringExtensions
     {
         if (str.IsNullOrEmpty())
             return string.Empty;
-        ;
 
         return Regex.Replace(str, "[^0-9a-zA-Z]+", " ");
     }
@@ -428,8 +421,7 @@ public static class StringExtensions
     {
         if (cpf.IsNullOrEmpty())
             return string.Empty;
-        ;
-
+        
         cpf = cpf.PadLeft(11, '0');
         return FormatByMask(cpf, @"{0:000\.000\.000\-00}");
     }
@@ -477,7 +469,6 @@ public static class StringExtensions
     {
         if (cnpj.IsNullOrEmpty())
             return string.Empty;
-        ;
 
         cnpj = cnpj.PadLeft(14, '0');
 
