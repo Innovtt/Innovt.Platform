@@ -4,6 +4,7 @@
 
 using System;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace Innovt.Core.Utilities;
 
@@ -13,6 +14,7 @@ namespace Innovt.Core.Utilities;
 public static class PasswordHelper
 {
     private const int SaltSize = 128 / 8; // 128 bits
+    private static readonly char[] passwordChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()".ToCharArray();
 
     /// <summary>
     ///     Checks if a decoded password matches its hashed representation using the provided salt.
@@ -81,5 +83,31 @@ public static class PasswordHelper
         var hashedPassword = plainPassword.ShaHash(salt);
 
         return (hashedPassword, salt);
+    }
+
+    /// <summary>
+    ///     Generates a random password of specified length using cryptographic randomness to ensure security.
+    /// </summary>
+    /// <param name="passwordLength">(int): The desired length of the generated password. If the specified length is less than 6, the method defaults to a minimum length of 6 to ensure a reasonable level of security.</param>
+    /// <returns>(string) A randomly generated password consisting of characters chosen from a predefined set.</returns>
+    public static string GeneratePassword(int passwordLength)
+    {
+        if (passwordLength < 6) passwordLength = 6;
+
+        var passwordBuilder = new StringBuilder(passwordLength);
+        using (var rng = RandomNumberGenerator.Create())
+        {
+            var randomBytes = new byte[passwordLength];
+
+            rng.GetBytes(randomBytes);
+
+            for (var i = 0; i < passwordLength; i++)
+            {
+                var randomChar = passwordChars[randomBytes[i] % passwordChars.Length];
+                passwordBuilder.Append(randomChar);
+            }
+        }
+
+        return passwordBuilder.ToString();
     }
 }
