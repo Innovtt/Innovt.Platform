@@ -15,7 +15,7 @@ namespace Innovt.Core.Test
             password = PasswordHelper.GeneratePassword(passwordLength);
 
             Assert.That(password, Is.Not.Null);
-            Assert.That(password.Length, Is.EqualTo(passwordLength));
+            Assert.That(password, Has.Length.EqualTo(passwordLength));
         }
 
         [Test]
@@ -27,7 +27,7 @@ namespace Innovt.Core.Test
             password = PasswordHelper.GeneratePassword(passwordLength);
 
             Assert.That(password, Is.Not.Null);
-            Assert.That(password.Length, Is.EqualTo(6));
+            Assert.That(password, Has.Length.EqualTo(6));
         }
     }
 }
