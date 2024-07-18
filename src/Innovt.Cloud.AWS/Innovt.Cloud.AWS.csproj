@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <PackageId>Innovt.Cloud.AWS</PackageId>
-        <PackageVersion>8.0.12</PackageVersion>
+        <PackageVersion>8.0.13</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -10,6 +10,7 @@
         <Description>AWS implementation for cloud features.</Description>
         <LangVersion>latest</LangVersion>
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+        <ClsCompliant>true</ClsCompliant>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="AWSSDK.Core" Version="3.7.304.29" />
