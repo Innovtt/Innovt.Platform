@@ -3,10 +3,8 @@
 // Project: Innovt.Cloud.AWS
 
 using Amazon.Runtime;
-using System;
 
 namespace Innovt.Cloud.AWS.Configuration;
-[CLSCompliant(true)]
 public interface IAwsConfiguration : IConfiguration
 {
     string AccountNumber { get; set; }
