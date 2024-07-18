@@ -3,7 +3,7 @@
         <TargetFramework>netstandard2.1</TargetFramework>
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
         <PackageId>Innovt.Contrib.Authorization.Platform</PackageId>
-        <PackageVersion>8.0.12</PackageVersion>
+        <PackageVersion>8.0.13</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
