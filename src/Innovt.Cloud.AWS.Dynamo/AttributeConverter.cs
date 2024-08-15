@@ -154,7 +154,7 @@ internal static class AttributeConverter
     /// <returns>
     ///     An object of the specified desiredType containing the converted value from the AttributeValue.
     /// </returns>
-    internal static object CreateAttributeValueToObject(AttributeValue value, Type desiredType)
+    private static object CreateAttributeValueToObject(AttributeValue value, Type desiredType)
     {
         if (value is null)
             return default;
@@ -385,7 +385,7 @@ internal static class AttributeConverter
     /// <returns>
     ///     A DynamoDBEntry representing the converted AttributeValue, or a DynamoDBNull if the input is null.
     /// </returns>
-    internal static DynamoDBEntry ConvertAttributeValue(AttributeValue attributeValue)
+    private static DynamoDBEntry ConvertAttributeValue(AttributeValue attributeValue)
     {
         if (attributeValue is null)
             return new DynamoDBNull();
@@ -395,11 +395,8 @@ internal static class AttributeConverter
 
         if (attributeValue.B is not null)
             return new Primitive(attributeValue.B);
-
-        if (attributeValue.N is not null)
-            return new Primitive(attributeValue.N, true);
-
-        return new Primitive(attributeValue.S);
+        
+        return attributeValue.N is not null ? new Primitive(attributeValue.N, true) : new Primitive(attributeValue.S);
     }
 
     /// <summary>
@@ -408,59 +405,72 @@ internal static class AttributeConverter
     /// <param name="property">The PropertyInfo object representing the property.</param>
     /// <param name="attributeValue">The AttributeValue to be converted.</param>
     /// <param name="value">The current value of the property.</param>
+    /// <param name="propertyConverter">The converter for custom converters.</param>
     /// <returns>
     ///     The converted value of the property, considering custom converters if available, or the original value if no custom
     ///     converter is found.
     /// </returns>
-    internal static object ConvertNonPrimitiveType(PropertyInfo property, AttributeValue attributeValue, object value)
+    private static object ConvertNonPrimitiveType(PropertyInfo property, AttributeValue attributeValue, object value, IPropertyConverter propertyConverter = null)
     {
         if (property.PropertyType.IsEnum)
             return Enum.Parse(property.PropertyType, value.ToString(), true);
 
-        //has converter? 
-        var customConverter = property.GetCustomAttributes<DynamoDBPropertyAttribute>()
-            .SingleOrDefault(a => a.Converter != null);
+        var customConverter = propertyConverter ?? property.GetCustomAttributes<DynamoDBPropertyAttribute>()
+            .SingleOrDefault(a => a.Converter != null)?.Converter as IPropertyConverter;
 
-        if (customConverter is null) return value;
-
+        if (customConverter is null)
+            return value;
+        
         var convertedEntry = ConvertAttributeValue(attributeValue);
 
         if (convertedEntry is null)
             return null;
 
-        if (Activator.CreateInstance(customConverter.Converter) is not IPropertyConverter converterInstance)
-            return null;
-
-        return converterInstance.FromEntry(convertedEntry);
+        return Activator.CreateInstance(customConverter.GetType()) is not IPropertyConverter converterInstance ? null : converterInstance.FromEntry(convertedEntry);
     }
-
+    
     /// <summary>
     ///     Convert an attribute array to specific type
     /// </summary>
     /// <typeparam name="T">The desired Type </typeparam>
     /// <param name="items"></param>
+    /// <param name="context"></param>
     /// <returns></returns>
-    internal static T ConvertAttributesToType<T>(Dictionary<string, AttributeValue> items)
+    internal static T ConvertAttributesToType<T>(Dictionary<string, AttributeValue> items, DynamoContext context = null)
     {
         if (items is null) return default;
 
         var instance = Activator.CreateInstance<T>();
+        
         var properties = instance.GetType()
             .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.SetProperty);
 
-        if (!properties.Any())
+        if (properties.Length == 0)
             return instance;
-
+                
+        //Iterating over the attributes from dynamoDB
         foreach (var attributeValue in items)
         {
-            var prop = GetProperty(properties, attributeValue.Key, instance.GetType());
+            var propertyKey = attributeValue.Key;//The default property name is the one from the database.
+            var propertyTypeBuilder = context?.GetTypeBuilder<T>().GetProperty(propertyKey);
+            
+            //This will guarantee that only mapped(No ignored) Columns will be filled.
+            if(propertyTypeBuilder is null && context!=null)
+                continue;
+            
+            if(propertyTypeBuilder is not null)
+            {
+                propertyKey = propertyTypeBuilder.Name; // get the object property name
+            }
+            
+            var prop = GetProperty(properties, propertyKey, instance.GetType());
 
             if (prop is null)
                 continue;
 
-            object convertedValue = null;
+            object convertedValue;
             var value = CreateAttributeValueToObject(attributeValue.Value, prop.PropertyType);
-
+            
             if (IsPrimitive(prop.PropertyType))
             {
                 convertedValue = ConvertType(prop.PropertyType, value);
@@ -472,13 +482,21 @@ internal static class AttributeConverter
                         ? value
                         : ItemsToCollection(prop.PropertyType, (IEnumerable<object>)value);
                 else
-                    convertedValue = ConvertNonPrimitiveType(prop, attributeValue.Value, value);
+                    convertedValue = ConvertNonPrimitiveType(prop, attributeValue.Value, value,context?.GetPropertyConverter(prop.PropertyType));
             }
-
+            
             //setting the converted value
             prop.SetValue(instance, convertedValue, null);
         }
+        
+        //All mapping properties that has action mapping will be called here
+        foreach (var property in properties)
+        {
+            var propertyTypeBuilder = context?.GetTypeBuilder<T>().GetProperty(property.Name);
 
+            propertyTypeBuilder?.InvokeMaps(instance);
+        }
+        
         return instance;
     }
 }

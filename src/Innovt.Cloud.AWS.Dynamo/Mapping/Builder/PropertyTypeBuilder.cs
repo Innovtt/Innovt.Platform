@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 
@@ -6,8 +7,10 @@ namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 ///     Represents a builder for defining the properties of an entity type.
 /// </summary>
 /// <typeparam name="T">The type of the entity.</typeparam>
-public class PropertyTypeBuilder<T> where T : class
+public class PropertyTypeBuilder<T>
 {
+    
+    private List<Action<T>> mapActions = [];
     /// <summary>
     ///     Initializes a new instance of the <see cref="PropertyTypeBuilder{T}" /> class with a specified property name and
     ///     type.
@@ -38,32 +41,47 @@ public class PropertyTypeBuilder<T> where T : class
     /// <summary>
     ///     Gets a value indicating whether the property is of string type.
     /// </summary>
-    internal bool IsString { get; private set; }
+    public bool IsString { get; private set; }
 
     /// <summary>
     ///     Gets a value indicating whether the property is of decimal type.
     /// </summary>
-    internal bool IsDecimal { get; private set; }
+    public bool IsDecimal { get; private set; }
+    
+    /// <summary>
+    /// Gets a value if the field is required.
+    /// </summary>
+    public bool Required { get; private set; }
+    
+    /// <summary>
+    /// Has map actions is when you need to map some property.
+    /// </summary>
+    public bool HasMapAction => mapActions.Count > 0;
 
     /// <summary>
     ///     Gets the name of the property.
     /// </summary>
-    internal string Name { get; private set; }
+    public string Name { get; private set; }
 
     /// <summary>
     ///     Gets the type of the property.
     /// </summary>
-    internal Type Type { get; private set; }
+    public Type Type { get; private set; }
 
     /// <summary>
     ///     Gets or sets the column name associated with the property.
     /// </summary>
-    internal string ColumnName { get; private set; }
+    public string ColumnName { get; private set; }
 
     /// <summary>
     ///     Gets a value indicating whether the property is of binary type.
     /// </summary>
-    internal bool IsBinary { get; private set; }
+    public bool IsBinary { get; private set; }
+    
+    /// <summary>
+    /// The max length of the property
+    /// </summary>
+    public int MaxLength { get; private set; }
 
     /// <summary>
     ///     Specifies that the property is of string type.
@@ -105,17 +123,49 @@ public class PropertyTypeBuilder<T> where T : class
         ColumnName = columnName;
         return this;
     }
+    
+    /// <summary>
+    ///     Specifies that the property is of decimal type.
+    /// </summary>
+    /// <returns>The current instance of <see cref="PropertyTypeBuilder{T}" />.</returns>
+    public PropertyTypeBuilder<T> HasMaxLength(int maxLength)
+    {
+        MaxLength = maxLength;
+        return this;
+    }
 
+    /// <summary>
+    /// Define when a fi
+    /// </summary>eld will be required during save operations
+    /// <param name="isRequired">Default value if true.</param>
+    /// <returns></returns>
+    public PropertyTypeBuilder<T> IsRequired(bool isRequired = true)
+    {
+        Required = isRequired;
+        return this;
+    }
+    
     /// <summary>
     ///     Specifies a custom converter for the property.
     /// </summary>
     /// <param name="parserDelegate">The action to parse the property.</param>
     /// <returns>The current instance of <see cref="PropertyTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<T> HasConverter(Action<T, object> parserDelegate)
+    public void HasMap(Action<T> parserDelegate)
     {
-        //Como converter do que vem do banco para o que esta na classe
+        if (parserDelegate == null) throw new ArgumentNullException(nameof(parserDelegate));
 
-
-        return this;
+        mapActions.Add(parserDelegate);
     }
+    
+    public void InvokeMaps(T entity)
+    {
+        if(!HasMapAction)
+            return;
+        
+        foreach (var action in mapActions)
+        {
+            action(entity);
+        }
+    }
+    
 }

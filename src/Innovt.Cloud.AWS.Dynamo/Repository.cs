@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -32,11 +33,12 @@ public abstract class Repository : AwsBaseService, ITableRepository
 {
     private static readonly ActivitySource ActivityRepository = new("Innovt.Cloud.AWS.Dynamo.Repository");
 
-    private DynamoDBContext context;
+    private DynamoDBContext dynamoDbContext;
     private AmazonDynamoDBClient dynamoClient;
+    private DynamoContext context;
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="Repository" /> class.
+    /// Initializes a new instance of the <see cref="Repository" /> class.
     /// </summary>
     /// <param name="logger">The logger.</param>
     /// <param name="configuration">AWS configuration.</param>
@@ -44,6 +46,18 @@ public abstract class Repository : AwsBaseService, ITableRepository
     {
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Repository" /> class using a context map.
+    /// </summary>
+    /// <param name="logger"></param>
+    /// <param name="configuration"></param>
+    /// <param name="context"></param>
+    /// <exception cref="ArgumentNullException"></exception>
+    protected Repository(ILogger logger, IAwsConfiguration configuration,DynamoContext context) : base(logger, configuration)
+    {
+        this.context = context ??throw new ArgumentNullException(nameof(context));
+    }
+    
     /// <summary>
     ///     Initializes a new instance of the <see cref="Repository" /> class.
     /// </summary>
@@ -54,11 +68,12 @@ public abstract class Repository : AwsBaseService, ITableRepository
         configuration, region)
     {
     }
+    
 
     /// <summary>
     ///     Gets the DynamoDB context.
     /// </summary>
-    private DynamoDBContext Context => context ??= new DynamoDBContext(DynamoClient);
+    private DynamoDBContext Context => dynamoDbContext ??= new DynamoDBContext(DynamoClient);
 
     /// <summary>
     ///     Gets the Amazon DynamoDB client.
@@ -77,7 +92,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
     /// <inheritdoc />
     public async Task<T> GetByIdAsync<T>(object id, string rangeKey = null,
-        CancellationToken cancellationToken = default) where T : ITableMessage
+        CancellationToken cancellationToken = default) where T : class, ITableMessage
     {
         using (ActivityRepository.StartActivity())
         {
@@ -97,7 +112,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <inheritdoc />
-    public async Task DeleteAsync<T>(T value, CancellationToken cancellationToken = default) where T : ITableMessage
+    public async Task DeleteAsync<T>(T value, CancellationToken cancellationToken = default) where T : class, ITableMessage
     {
         using (ActivityRepository.StartActivity())
         {
@@ -109,7 +124,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
     /// <inheritdoc />
     public async Task DeleteAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default)
-        where T : ITableMessage
+        where T : class, ITableMessage
     {
         if (id == null) throw new ArgumentNullException(nameof(id));
 
@@ -129,7 +144,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <inheritdoc />
-    public async Task AddAsync<T>(T message, CancellationToken cancellationToken = default) where T : ITableMessage
+    public async Task AddAsync<T>(T message, CancellationToken cancellationToken = default) where T : class, ITableMessage
     {
         using (ActivityRepository.StartActivity(nameof(DeleteAsync)))
         {
@@ -148,7 +163,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <exception cref="ArgumentNullException">Thrown if the messages parameter is null.</exception>
     public async Task AddAsync<T>(IList<T> messages, CancellationToken cancellationToken = default)
-        where T : ITableMessage
+        where T : class, ITableMessage
     {
         if (messages is null) throw new ArgumentNullException(nameof(messages));
 
@@ -213,7 +228,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="id">The id to query.</param>
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>A list of items with the specified id.</returns>
-    public async Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default)
+    public async Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default) where T : class
     {
         using (ActivityRepository.StartActivity())
         {
@@ -233,15 +248,30 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="request">The query request.</param>
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>A list of items based on the query request.</returns>
-    public async Task<IList<T>> QueryAsync<T>(QueryRequest request, CancellationToken cancellationToken = default)
+    public async Task<IList<T>> QueryAsync<T>(QueryRequest request, CancellationToken cancellationToken = default) where T : class
     {
         using (ActivityRepository.StartActivity())
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
-            var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
+            //var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
-            return Helpers.ConvertAttributesToType<T>(items);
+            var values = new Dictionary<string, AttributeValue>();
+            
+            values.Add("Name2", new AttributeValue("Michel"));
+            values.Add("JobPositionId", new AttributeValue("1"));
+            values.Add("Email", new AttributeValue("michelmob@gmail.com"));
+            values.Add("EmailToBeIgnored", new AttributeValue("michelmob2@gmail.com"));
+            values.Add("Id", new AttributeValue(){N = "1"});
+            values.Add("CorrelationId", new AttributeValue(Guid.NewGuid().ToString()));
+            values.Add("CreatedAt", new AttributeValue(DateTime.Now.ToString(CultureInfo.InvariantCulture)));
+            
+            var items = new List<Dictionary<string, AttributeValue>>()
+            {
+                values
+            };
+            
+            return Helpers.ConvertAttributesToType<T>(items,context);
         }
     }
 
@@ -256,7 +286,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>Tuple containing lists of items split based on the specified key.</returns>
     public async Task<(IList<TResult1> first, IList<TResult2> second)> QueryMultipleAsync<T, TResult1, TResult2>(
-        QueryRequest request, string splitBy, CancellationToken cancellationToken = default)
+        QueryRequest request, string splitBy, CancellationToken cancellationToken = default) where T : class
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
 
@@ -281,7 +311,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <returns>Tuple containing lists of items split based on the specified keys.</returns>
     public async Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third)>
         QueryMultipleAsync<T, TResult1, TResult2, TResult3>(QueryRequest request, string[] splitBy,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default) where T : class
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
         if (splitBy == null) throw new ArgumentNullException(nameof(splitBy));
@@ -308,7 +338,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <returns>Tuple containing lists of items split based on the specified keys.</returns>
     public async Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth)>
         QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4>(QueryRequest request, string[] splitBy,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default) where T : class
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
         if (splitBy == null) throw new ArgumentNullException(nameof(splitBy));
@@ -337,7 +367,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     public async Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth,
             IList<TResult5> fifth)>
         QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4, TResult5>(QueryRequest request, string[] splitBy,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default) where T : class
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
         if (splitBy == null) throw new ArgumentNullException(nameof(splitBy));
@@ -358,7 +388,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>The first or default item based on the query request.</returns>
     public async Task<T> QueryFirstOrDefaultAsync<T>(QueryRequest request,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default) where T : class
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
 
@@ -383,7 +413,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>A paginated collection of items based on the query request.</returns>
     public async Task<PagedCollection<T>> QueryPaginatedByAsync<T>(QueryRequest request,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default) where T : class
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
 
@@ -441,7 +471,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>The list of scanned items.</returns>
     public async Task<IList<T>> ScanAsync<T>(ScanRequest request,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default) where T : class
     {
         using (ActivityRepository.StartActivity())
         {
@@ -458,7 +488,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <returns>A paginated collection of items based on the scan request.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the request is null.</exception>
     public async Task<PagedCollection<T>> ScanPaginatedByAsync<T>(ScanRequest request,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default) where T : class
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
 
@@ -525,7 +555,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <returns>The list of items retrieved.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the batch get item request is null.</exception>
     public async Task<List<T>> BatchGetItem<T>(BatchGetItemRequest batchGetItemRequest,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default) where T : class
     {
         if (batchGetItemRequest is null) throw new ArgumentNullException(nameof(batchGetItemRequest));
 
@@ -657,13 +687,13 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <exception cref="ArgumentNullException">Thrown when request is null.</exception>
     private async
         Task<(Dictionary<string, AttributeValue> LastEvaluatedKey, IList<Dictionary<string, AttributeValue>> Items)>
-        InternalQueryAsync<T>(QueryRequest request, CancellationToken cancellationToken = default)
+        InternalQueryAsync<T>(QueryRequest request, CancellationToken cancellationToken = default) where T : class
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
 
         using (ActivityRepository.StartActivity())
         {
-            var queryRequest = Helpers.CreateQueryRequest<T>(request);
+            var queryRequest = Helpers.CreateQueryRequest<T>(request,context);
 
             var items = new List<Dictionary<string, AttributeValue>>();
             var remaining = request.PageSize;
@@ -701,7 +731,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <returns>A tuple containing the last evaluated key and the list of items retrieved.</returns>
     /// <exception cref="ArgumentNullException">Thrown when request is null.</exception>
     private async Task<(Dictionary<string, AttributeValue> ExclusiveStartKey, IList<T> Items)> InternalScanAsync<T>(
-        ScanRequest request, CancellationToken cancellationToken = default)
+        ScanRequest request, CancellationToken cancellationToken = default) where T : class
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
 
@@ -740,7 +770,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// </summary>
     protected override void DisposeServices()
     {
-        context?.Dispose();
+        dynamoDbContext?.Dispose();
         dynamoClient?.Dispose();
     }
 }

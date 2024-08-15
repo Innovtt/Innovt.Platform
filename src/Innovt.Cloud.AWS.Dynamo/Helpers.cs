@@ -45,13 +45,15 @@ internal static class Helpers
     ///     The DynamoDB table name associated with the type <typeparamref name="T" />.
     ///     If no table name attribute is defined, it returns the name of the type <typeparamref name="T" />.
     /// </returns>
-    private static string GetTableName<T>()
+    private static string GetTableName<T>(DynamoContext context = null) where T:class
     {
-        if (Attribute.GetCustomAttribute(typeof(T), typeof(DynamoDBTableAttribute)) is not DynamoDBTableAttribute
-            attribute)
-            return typeof(T).Name;
-
-        return attribute.TableName;
+        if (context != null)
+        {
+            return context.GetTypeBuilder<T>().TableName;
+        }
+        
+        return Attribute.GetCustomAttribute(typeof(T), typeof(DynamoDBTableAttribute)) is not DynamoDBTableAttribute
+            attribute ? typeof(T).Name : attribute.TableName;
     }
 
     /// <summary>
@@ -131,6 +133,7 @@ internal static class Helpers
     /// </summary>
     /// <typeparam name="T">The type representing the DynamoDB table.</typeparam>
     /// <param name="request">The Table.QueryRequest object containing query parameters.</param>
+    /// <param name="context">The DynamoContext.</param>
     /// <returns>A QueryRequest object configured based on the provided Table.QueryRequest.</returns>
     /// <remarks>
     ///     This method creates a QueryRequest object for querying a DynamoDB table based on the provided query parameters.
@@ -146,15 +149,13 @@ internal static class Helpers
     ///     If a PageSize is specified in the request, the Limit property is set accordingly.
     /// </remarks>
     /// <seealso cref="GetTableName{T}" />
-    /// <seealso cref="CreateExpressionAttributeValues" />
     /// <seealso cref="Table.QueryRequest" />
-    internal static QueryRequest CreateQueryRequest<T>(
-        Table.QueryRequest request)
-    {
+    internal static QueryRequest CreateQueryRequest<T>(Table.QueryRequest request, DynamoContext context =null) where T:class
+    { 
         var queryRequest = new QueryRequest
         {
             IndexName = request.IndexName,
-            TableName = GetTableName<T>(),
+            TableName = GetTableName<T>(context),
             ConsistentRead = request.IndexName == null,
             FilterExpression = request.FilterExpression,
             ScanIndexForward = request.ScanIndexForward,
@@ -191,14 +192,13 @@ internal static class Helpers
     ///     If a PageSize is specified in the request, the Limit property is set accordingly.
     /// </remarks>
     /// <seealso cref="GetTableName{T}" />
-    /// <seealso cref="CreateExpressionAttributeValues" />
     /// <seealso cref="Table.ScanRequest" />
-    internal static ScanRequest CreateScanRequest<T>(Table.ScanRequest request)
+    internal static ScanRequest CreateScanRequest<T>(Table.ScanRequest request, DynamoContext context = null) where T:class
     {
         var scanRequest = new ScanRequest
         {
             IndexName = request.IndexName,
-            TableName = GetTableName<T>(),
+            TableName = GetTableName<T>(context),
             ConsistentRead = request.IndexName == null,
             FilterExpression = request.FilterExpression,
             ProjectionExpression = request.AttributesToGet,
@@ -296,6 +296,7 @@ internal static class Helpers
     /// </summary>
     /// <typeparam name="T">The desired type to convert each dictionary to.</typeparam>
     /// <param name="items">A list of dictionaries, where each dictionary represents a set of attribute values for an item.</param>
+    /// <param name="context">A dynamo context.</param>
     /// <returns>
     ///     A list of strongly typed objects of type T, where each object is created by mapping the attribute values
     ///     from the corresponding dictionary to the properties of the type T.
@@ -308,9 +309,9 @@ internal static class Helpers
     ///     is used to perform the conversion for each dictionary.
     ///     If the input list is null, an empty list of type T is returned.
     /// </remarks>
-    internal static IList<T> ConvertAttributesToType<T>(IList<Dictionary<string, AttributeValue>> items)
+    internal static IList<T> ConvertAttributesToType<T>(IList<Dictionary<string, AttributeValue>> items, DynamoContext context=null)
     {
-        return items is null ? new List<T>() : items.Select(AttributeConverter.ConvertAttributesToType<T>).ToList();
+        return items is null ? [] : items.Select(i=>AttributeConverter.ConvertAttributesToType<T>(i,context)).ToList();
     }
 
     /// <summary>
@@ -469,7 +470,7 @@ internal static class Helpers
     {
         if (items is null)
             return (null, null, null, null);
-
+        
         var result1 = new List<T1>();
         var result2 = new List<T2>();
         var result3 = new List<T3>();
