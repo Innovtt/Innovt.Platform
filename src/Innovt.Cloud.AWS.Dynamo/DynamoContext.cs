@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Amazon.DynamoDBv2.DataModel;
+using Innovt.Cloud.AWS.Dynamo.Exceptions;
 using Innovt.Cloud.AWS.Dynamo.Mapping;
 using Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 
@@ -35,15 +36,22 @@ public abstract class DynamoContext
         }
     }
     
+    public bool HasTypeBuilder<T>()
+    {
+        var entityName = typeof(T).Name;
+
+        return Entities.TryGetValue(entityName, out var value);
+    }
+    
     public EntityTypeBuilder<T> GetTypeBuilder<T>()
     {
         var entityName = typeof(T).Name;
 
         if (!Entities.TryGetValue(entityName, out var value))
-            throw new InvalidOperationException($"Entity {entityName} not found in model");
+            throw new MissingEntityMapException(entityName);
 
         if (value is not EntityTypeBuilder<T> entityTypeBuilder)
-            throw new InvalidOperationException($"Entity {entityName} not found in model");
+            throw new MissingEntityMapException(entityName);
         
         return entityTypeBuilder;
     }

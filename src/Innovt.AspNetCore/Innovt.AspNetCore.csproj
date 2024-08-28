@@ -18,13 +18,13 @@
         <FrameworkReference Include="Microsoft.AspNetCore.App"/>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.7" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.8" />
         <PackageReference Include="OpenTelemetry" Version="1.9.0" />
         <PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.9.0" />
         <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.9.0" />
         <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.9.0" />
         <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.9.0" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.1" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0"/>
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">
             <PrivateAssets>all</PrivateAssets>

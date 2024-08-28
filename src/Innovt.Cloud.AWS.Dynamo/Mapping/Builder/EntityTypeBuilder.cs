@@ -23,6 +23,11 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     public string Pk { get; private set; }
     
     public string HashKeyPrefix { get; private set; }
+    
+    /// <summary>
+    /// Define the key prefix separator
+    /// </summary>
+    public string KeySeparator { get; private set; }
 
     /// <summary>
     ///     Gets or sets the sort key for the DynamoDB table.
@@ -48,10 +53,12 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     ///     Sets the table name associated with the entity type.
     /// </summary>
     /// <param name="tableName">The table name to set.</param>
+    /// <param name="keySeparator">If you want to define a key prefix like USER#ID the separator will be #</param>
     /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public EntityTypeBuilder<TEntity> WithTableName(string tableName)
+    public EntityTypeBuilder<TEntity> WithTableName(string tableName, string keySeparator = null)
     {
         TableName = tableName;
+        KeySeparator = keySeparator;
         return this;
     }
 
@@ -82,6 +89,7 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     public EntityTypeBuilder<TEntity> HasHashKey(string hashKey)
     {
         Pk = hashKey;
+        Property(Pk);
         return this;
     }
 
@@ -119,6 +127,7 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     public EntityTypeBuilder<TEntity> HasSortKey(string sortKey)
     {
         Sk = sortKey;
+        Property(Sk);
         return this;
     }
     
@@ -159,9 +168,9 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     /// </summary>
     /// <param name="propertyExpression">The property function to generate the property.</param>
     /// <returns>The property type builder for further property configuration.</returns>
-    public PropertyTypeBuilder<TEntity> WithProperty<TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression)
+    public PropertyTypeBuilder<TEntity> Property<TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression)
     {
-        return WithProperty(GetPropertyName(propertyExpression));
+        return Property(GetPropertyName(propertyExpression));
     }
 
     /// <summary>
@@ -169,7 +178,7 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     /// </summary>
     /// <param name="name">The name of the property.</param>
     /// <returns>The property type builder for further property configuration.</returns>
-    public PropertyTypeBuilder<TEntity> WithProperty(string name)
+    public PropertyTypeBuilder<TEntity> Property(string name)
     {   
         if (name == null) throw new ArgumentNullException(nameof(name));
         

@@ -32,14 +32,16 @@ public abstract class ApiStartupBase
     /// <param name="configuration">The configuration for the application.</param>
     /// <param name="environment">The hosting environment for the application.</param>
     /// <param name="appName">The name of the application.</param>
+    /// <param name="setDefaultJsonOptions">This is the default convention for Serialization/Deserialization</param>
     /// <exception cref="ArgumentNullException">Thrown if configuration, environment, or appName is null.</exception>
-    protected ApiStartupBase(IConfiguration configuration, IWebHostEnvironment environment, string appName)
+    protected ApiStartupBase(IConfiguration configuration, IWebHostEnvironment environment, string appName,bool setDefaultJsonOptions = true)
     {
         Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         Environment = environment ?? throw new ArgumentNullException(nameof(environment));
         AppName = appName ?? throw new ArgumentNullException(nameof(appName));
         Localization = new DefaultApiLocalization();
         DefaultHealthPath = "/health";
+        SetDefaultJsonOptions = setDefaultJsonOptions;
     }
 
     /// <summary>
@@ -53,14 +55,15 @@ public abstract class ApiStartupBase
     /// <param name="apiVersion">The version of the API.</param>
     /// <param name="contactName">The name of the API contact (optional).</param>
     /// <param name="contactEmail">The email of the API contact (optional).</param>
+    /// <param name="setDefaultJsonOptions">This is the default convention for Serialization/Deserialization</param>
     /// <exception cref="ArgumentNullException">
     ///     Thrown if configuration, environment, appName, apiTitle, apiDescription, or
     ///     apiVersion is null.
     /// </exception>
     protected ApiStartupBase(IConfiguration configuration, IWebHostEnvironment environment, string appName,
         string apiTitle, string apiDescription,
-        string apiVersion, string? contactName = null, string? contactEmail = null) : this(configuration, environment,
-        appName)
+        string apiVersion, string? contactName = null, string? contactEmail = null,bool setDefaultJsonOptions = true) : this(configuration, environment,
+        appName,setDefaultJsonOptions)
     {
         Documentation = new DefaultApiDocumentation(apiTitle, apiDescription, apiVersion, contactName, contactEmail);
     }
@@ -78,7 +81,7 @@ public abstract class ApiStartupBase
     /// <summary>
     ///     Gets or sets the API documentation details.
     /// </summary>
-    protected DefaultApiDocumentation Documentation { get; set; }
+    protected DefaultApiDocumentation Documentation { get; set; } = null!;
 
     /// <summary>
     ///     Gets or sets the localization settings for the API.
@@ -166,12 +169,13 @@ public abstract class ApiStartupBase
     /// <param name="services">The service collection to add tracing to.</param>
     protected virtual void AddTracing(IServiceCollection services)
     {
-        services.AddOpenTelemetry().WithTracing(builder =>
+        services.AddOpenTelemetry().
+            WithTracing(builder =>
         {
             builder.AddSource(AppName).SetResourceBuilder(ResourceBuilder.CreateDefault()
                     .AddService(AppName))
                 .SetErrorStatusOnException();
-
+            
             ConfigureOpenTelemetry(builder);
         });
     }

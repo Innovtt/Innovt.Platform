@@ -19,9 +19,8 @@ public class ModelBuilder
         
         entityTypeDataModelMapper.Configure(entityTypeBuilder);
         
-        //TODO:Add validation
         entities.TryAdd(typeof(T).Name, entityTypeBuilder);
-
+        
         return this;
     }
     
@@ -35,6 +34,16 @@ public class ModelBuilder
 
         return this;
     }
+    
+    public EntityTypeBuilder<TEntity> Entity<TEntity>() where TEntity:class
+    {   
+        var entityTypeBuilder = new EntityTypeBuilder<TEntity>();
+        
+        entities.TryAdd(typeof(TEntity).Name, entityTypeBuilder);
+
+        return entityTypeBuilder;
+    }
+    
     public Dictionary<string, object> Entities => entities;
     
     public Dictionary<Type, IPropertyConverter> Converters => converters;

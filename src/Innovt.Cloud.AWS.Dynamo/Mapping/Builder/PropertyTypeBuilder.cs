@@ -68,10 +68,16 @@ public class PropertyTypeBuilder<T>
     /// </summary>
     public Type Type { get; private set; }
 
+    private string columnName;
+
     /// <summary>
-    ///     Gets or sets the column name associated with the property.
+    ///     Gets or sets the column name associated with the property. if the column name is not set, the property name is used.
     /// </summary>
-    public string ColumnName { get; private set; }
+    public string ColumnName
+    {
+        get => columnName ?? Name;
+        private set => columnName = value;
+    }
 
     /// <summary>
     ///     Gets a value indicating whether the property is of binary type.
@@ -118,7 +124,7 @@ public class PropertyTypeBuilder<T>
     /// </summary>
     /// <param name="columnName">The custom column name.</param>
     /// <returns>The current instance of <see cref="PropertyTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<T> HasName(string columnName)
+    public PropertyTypeBuilder<T> HasColumnName(string columnName)
     {
         ColumnName = columnName;
         return this;

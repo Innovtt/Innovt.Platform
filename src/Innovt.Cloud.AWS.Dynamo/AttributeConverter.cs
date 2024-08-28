@@ -10,6 +10,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
@@ -125,6 +126,7 @@ internal static class AttributeConverter
                 return new AttributeValue { N = value.ToString() };
             case DateTime time:
                 return new AttributeValue { S = time.ToString("s") };
+            
             case IList<int> or IList<double> or IList<float> or IList<decimal> or IList<long>:
             {
                 var array = (value as IList).Cast<object>().Select(o => o.ToString()).ToList();
@@ -232,7 +234,7 @@ internal static class AttributeConverter
     }
 
     /// <summary>
-    ///     Retrieves the element type of a collection or array type.
+    ///     Retrieves the element of type a collection or array type.
     /// </summary>
     /// <param name="collectionType">The Type representing a collection or array.</param>
     /// <returns>
@@ -243,12 +245,11 @@ internal static class AttributeConverter
     {
         var elementType = collectionType.GetElementType();
 
-        if (elementType == null)
-        {
-            var genericArguments = collectionType.GetTypeInfo().GetGenericArguments();
-            if (genericArguments is { Length: 1 })
-                elementType = genericArguments[0];
-        }
+        if (elementType != null) return elementType;
+        
+        var genericArguments = collectionType.GetTypeInfo().GetGenericArguments();
+        if (genericArguments is { Length: 1 })
+            elementType = genericArguments[0];
 
         return elementType;
     }
@@ -262,7 +263,7 @@ internal static class AttributeConverter
     ///     An array of the specified target type containing the converted objects, or null if the input collection is
     ///     null.
     /// </returns>
-    private static object ItemsToArray(Type targetType, IEnumerable<object> items)
+    private static Array ItemsToArray(Type targetType, IEnumerable<object> items)
     {
         if (items is null)
             return null;
@@ -305,10 +306,9 @@ internal static class AttributeConverter
 
 
         foreach (var obj in items)
-            method.Invoke(result, new object[1]
-            {
+            method.Invoke(result, [
                 IsPrimitive(elementType) ? ConvertType(elementType, obj) : obj
-            });
+            ]);
 
         return result;
     }
@@ -489,14 +489,101 @@ internal static class AttributeConverter
             prop.SetValue(instance, convertedValue, null);
         }
         
+        InvokeMappedProperties(context, properties, instance);
+
+        return instance;
+    }
+
+    /// <summary>
+    /// Invoke all mapped properties to fill the object
+    /// </summary>
+    /// <param name="context"></param>
+    /// <param name="properties"></param>
+    /// <param name="instance"></param>
+    /// <typeparam name="T"></typeparam>
+    private static void InvokeMappedProperties<T>(DynamoContext context, PropertyInfo[] properties, T instance)
+    {
+        if(context is null || properties is null || instance is null)
+            return;
+        
+        if(!context.HasTypeBuilder<T>())
+            return;
+        
+        var typeBuilder = context.GetTypeBuilder<T>();
+        
         //All mapping properties that has action mapping will be called here
         foreach (var property in properties)
         {
-            var propertyTypeBuilder = context?.GetTypeBuilder<T>().GetProperty(property.Name);
+            var propertyTypeBuilder = typeBuilder.GetProperty(property.Name);
 
             propertyTypeBuilder?.InvokeMaps(instance);
         }
-        
-        return instance;
     }
+
+    /// <summary>
+    /// Converts a type to a dictionary of attributes.
+    /// </summary>
+    /// <param name="instance"></param>
+    /// <param name="context"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    internal static Dictionary<string, AttributeValue> ConvertTypeToAttributes<T>(T instance, DynamoContext context = null) where T:class
+    {
+        Check.NotNull(instance, nameof(instance));
+        
+        var properties = instance.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.GetProperty);
+
+        if (properties.Length == 0)
+            return default;
+        
+        //Considering all the mapped properties is has map. The system will get from the map and fill the attributes
+        InvokeMappedProperties(context, properties, instance);
+        
+        var attributes = new Dictionary<string, AttributeValue>();
+        
+        var typeBuilder = context?.HasTypeBuilder<T>() == true ? context.GetTypeBuilder<T>() : null;
+        
+        if (typeBuilder is null)
+        {
+            foreach (var property in properties)
+            {
+                attributes.Add(property.Name, CreateAttributeValue(property.GetValue(instance)));
+            }
+        }
+        else
+        {
+            foreach (var mappedProperty in typeBuilder.GetProperties())
+            {
+                var propertyKey = mappedProperty.Name;
+
+                var propertyTypeBuilder = typeBuilder.GetProperty(propertyKey);
+
+                //This will guarantee that only mapped (No ignored) Columns will be filled.
+                if (propertyTypeBuilder is null)
+                    continue;
+                
+                var property = properties.FirstOrDefault(p => p.Name == propertyKey);
+
+                if (property != null)
+                {
+                    //como eu vou mapear as propriedades de pk e como vou mapear os atributos na volta.
+                    
+                    var converter = context?.GetPropertyConverter(property.PropertyType);
+
+                    if (converter is not null)
+                    {
+                        var value = converter.ToEntry(new DateTime().Date).AsPrimitive().Value;
+                    }
+                    //Se ele eh datetimeoffSet eu preciso pegar um converter para ele
+                    //convertedValue = ConvertNonPrimitiveType(prop, attributeValue.Value, value,context?.GetPropertyConverter(prop.PropertyType));
+                    
+                    
+                    attributes.Add(mappedProperty.ColumnName, CreateAttributeValue(property.GetValue(instance)));
+                }
+            }
+        }
+        
+        return attributes;
+    }
+    
 }

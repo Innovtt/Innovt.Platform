@@ -1,6 +1,5 @@
 using System;
 using Innovt.Cloud.Table;
-using Innovt.Domain.Security;
 
 namespace Innovt.Cloud.AWS.Dynamo.Tests.Mapping;
 
@@ -9,19 +8,19 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests.Mapping;
 /// </summary>
 public class User:ITableMessage
 {
-    public string Name { get; set; }
-    
+    public string PictureUrl { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
     public string Email { get; set; }
-    
-    public int JobPosition { get; set; }
-    public string EmailToBeIgnored { get; set; }
-    
-    public DateTimeOffset CreatedAt { get; set; }
 
+    public string Context { get; set; }
+
+    public bool IsActive { get; set; }
+
+    public DateTime? LastAccess { get; set; }
+    
+    public DateTime? CreatedAt { get; set; }
+
+    public int JobPositionId { get; set; }
     public string Id { get; set; }
-    public Role Role { get; set; }
-    
-    public int RoleId { get; set; }
-    
-    public Guid CorrelationId { get; set; }
 }

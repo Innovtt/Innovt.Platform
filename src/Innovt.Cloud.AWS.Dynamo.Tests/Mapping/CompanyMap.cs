@@ -18,7 +18,7 @@ public class CompanyMap : IEntityTypeDataModelMapper<Company>
     {
         builder.AutoMap().WithOneTableHashKey().WithOneTableRangeKey().WithTableName(nameof(Company));
 
-        builder.WithProperty(p => p.Name).AsDecimal().HasName("Name2");
+        builder.Property(p => p.Name).AsDecimal().HasColumnName("Name2");
 
         builder.WithTableName(nameof(Company));
     }
