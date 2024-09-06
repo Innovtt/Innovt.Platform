@@ -476,7 +476,6 @@ public abstract class Repository : AwsBaseService, ITableRepository
         foreach (var transactItem in request.TransactItems)
             transactRequest.TransactItems.Add(Helpers.CreateTransactionWriteItem(transactItem));
 
-
         await DynamoClient.TransactWriteItemsAsync(transactRequest, cancellationToken).ConfigureAwait(false);
     }
 

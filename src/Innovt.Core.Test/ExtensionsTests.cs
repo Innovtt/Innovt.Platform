@@ -27,6 +27,19 @@ public class ExtensionsTests
 
         Assert.That(expected, Is.EqualTo(actual));
     }
+    
+    [Test]
+    public void CheckHasSpecialCharacter()
+    {
+        const string invalidCharacters = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+
+        foreach (var character in invalidCharacters)
+        {
+            Assert.That(("name" + character).HasSpecialCharacter(), Is.True);
+        }
+        
+        Assert.That("name".HasSpecialCharacter(), Is.False);
+    }
 
     [Test]
     public void PagedCollectionMapShouldReturnEmptyListWhenArrayIsNull()

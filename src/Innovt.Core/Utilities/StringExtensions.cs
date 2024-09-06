@@ -384,10 +384,17 @@ public static class StringExtensions
     /// <returns>The string with special characters replaced by spaces.</returns>
     public static string RemoveSpecialCharacter(this string str)
     {
-        if (str.IsNullOrEmpty())
-            return string.Empty;
-
-        return Regex.Replace(str, "[^0-9a-zA-Z]+", " ");
+        return str.IsNullOrEmpty() ? string.Empty : Regex.Replace(str, "[^0-9a-zA-Z]+", " ",RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
+    }
+    
+    /// <summary>
+    /// Check is a string has special characters
+    /// </summary>
+    /// <param name="str"></param>
+    /// <returns></returns>
+    public static bool HasSpecialCharacter(this string str)
+    {
+        return !str.IsNullOrEmpty() && Regex.IsMatch(str, "[^0-9a-zA-Z]+", RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
     }
 
     /// <summary>
