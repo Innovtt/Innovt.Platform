@@ -30,6 +30,7 @@ public class UserMap : IEntityTypeDataModelMapper<User>
         });
 
         builder.WithOneTableRangeKey().WithValue("PROFILE");
+        builder.Property(u => u.Email).WithMaxLength(50).IsRequired();
         
         
         

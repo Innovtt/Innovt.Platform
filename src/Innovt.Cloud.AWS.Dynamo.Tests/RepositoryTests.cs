@@ -194,57 +194,15 @@ public class RepositoryTests
             Console.WriteLine(e);
             throw;
         }
-    } 
-    
+    }
+
     [Test]
     public async Task UpdateOperation()
     {
         var context = new SampleDynamoContext();
-        
-        var awsConfiguration = new DefaultAWSConfiguration("c2g-dev");
-        
-        repository = new SampleRepository(context, loggerMock, awsConfiguration);
-        
-        try
-        {
-            var userId = "24a874d8-d0a1-7032-b572-3c3383ff4ba9";
-            var userSortKey = "PROFILE";
-            
-            var queryRequest = new QueryRequest
-            {
-                KeyConditionExpression = "PK=:pk AND SK=:sk",
-                Filter = new
-                {
-                    pk =  $"USER#{userId}",
-                    sk =  userSortKey
-                }
-            };
-            
-            var user = (await repository.QueryAsync<User>(queryRequest, default).ConfigureAwait(false)).SingleOrDefault();
-            
-          
-            Assert.That(user, Is.Not.Null);
-            
-            user.FirstName = "Rafaela";
-            user.LastName = "Borges";
-            
-            await repository.UpdateAsync(user, default).ConfigureAwait(false);
 
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
-    } 
-    
-    [Test]
-    public async Task AddListOfObjects()
-    {
-        var context = new SampleDynamoContext();
-        
         var awsConfiguration = new DefaultAWSConfiguration("c2g-dev");
-        
+
         repository = new SampleRepository(context, loggerMock, awsConfiguration);
 
         try
@@ -265,28 +223,13 @@ public class RepositoryTests
             var user =
                 (await repository.QueryAsync<User>(queryRequest, default).ConfigureAwait(false)).SingleOrDefault();
 
-            var users = new List<object>();
 
             Assert.That(user, Is.Not.Null);
 
-            for (int i = 0; i < 5; i++)
-            {
-                var user1 = new User
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    Email = user.Id, //to keep the reference of the user
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    CreatedAt = DateTime.Now,
-                    Picture = user.Picture,
-                    JobPositionId = user.JobPositionId,
-                    Context = user.Context,
-                    IsActive = user.IsActive
-                };
-                users.Add(user1);
-            }
-            
-            await repository.AddAsync(users, default).ConfigureAwait(false);
+            user.FirstName = "Rafaela";
+            user.LastName = "Borges";
+
+            await repository.UpdateAsync(user, default).ConfigureAwait(false);
 
         }
         catch (Exception e)
@@ -294,5 +237,6 @@ public class RepositoryTests
             Console.WriteLine(e);
             throw;
         }
-    } 
+    }
+
 }

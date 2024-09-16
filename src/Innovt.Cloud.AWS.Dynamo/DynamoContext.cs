@@ -1,13 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Amazon.DynamoDBv2.DataModel;
 using Innovt.Cloud.AWS.Dynamo.Exceptions;
 using Innovt.Cloud.AWS.Dynamo.Mapping;
 using Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
-using Innovt.Core.Collections;
 
 namespace Innovt.Cloud.AWS.Dynamo;
 
@@ -40,45 +37,34 @@ public abstract class DynamoContext
         }
     }
     
-    private static Type GetEntityType<T>(object instance=null)
+    private static Type GetEntityType<T>()
     {
-        var instanceType = typeof(T);
         
-        switch (instance)
-        {
-            case null:
-                return instanceType;
-            case ICollection<object> list:
-                instanceType = list.HasItems() ? list.First().GetType() :  list.GetType().GetGenericArguments()[0];
-                break;
-            default:
-                instanceType = instance.GetType();
-                break;
-        }
-        return instanceType;
+        return typeof(T);
     }
-    private static string GetEntityName<T>(object instance=null)
+    
+    private static string GetEntityName<T>()
     {
-        var instanceType = GetEntityType<T>(instance);
+        var instanceType = GetEntityType<T>();
         
         return instanceType.Name;
     }
     
-    public bool HasTypeBuilder<T>(object instance=null)
+    public bool HasTypeBuilder<T>()
     {
-        var entityName = GetEntityName<T>(instance);
+        var entityName = GetEntityName<T>();
 
         return Entities.TryGetValue(entityName, out var value);
     }
     
-    public EntityTypeBuilder<T> GetTypeBuilder<T>(object instance=null)
+    public EntityTypeBuilder<T> GetTypeBuilder<T>()
     {
-        var entityName = GetEntityName<T>(instance);
+        var entityName = GetEntityName<T>();
         
         if (!Entities.TryGetValue(entityName, out var value))
             throw new MissingEntityMapException(entityName);
         
-        if(instance is null && value is EntityTypeBuilder<T> entityTypeBuilder)
+        if(value is EntityTypeBuilder<T> entityTypeBuilder)
         {
             return entityTypeBuilder;
         }

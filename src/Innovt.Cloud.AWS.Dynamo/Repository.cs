@@ -32,8 +32,7 @@ namespace Innovt.Cloud.AWS.Dynamo;
 public abstract class Repository : AwsBaseService, ITableRepository
 {
     private static readonly ActivitySource ActivityRepository = new("Innovt.Cloud.AWS.Dynamo.Repository");
-
-   // private DynamoDBContext dynamoDbContext;
+    
     private AmazonDynamoDBClient dynamoClient;
     private readonly DynamoContext context;
 
@@ -72,11 +71,6 @@ public abstract class Repository : AwsBaseService, ITableRepository
     #endregion
 
     #region [Configuration]
-    /// <summary>
-    ///     Gets the DynamoDB context.
-    /// </summary>
-   // private DynamoDBContext Context => dynamoDbContext ??= new DynamoDBContext(DynamoClient);
-
     /// <summary>
     ///     Gets the Amazon DynamoDB client.
     /// </summary>
@@ -133,7 +127,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         using var activity = ActivityRepository.StartActivity();
         activity?.SetTag("messages", messages.Count);
         
-        var tableName = DynamoHelper.GetTableName<T>(context,messages);
+        var tableName = DynamoHelper.GetTableName<T>(context);
 
         var writeRequest = messages.Select(message => new WriteRequest { PutRequest = new PutRequest { Item = AttributeConverter.ConvertTypeToAttributes(message, context) } }).ToList();
 

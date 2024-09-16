@@ -45,11 +45,11 @@ internal static class DynamoHelper
     ///     The DynamoDB table name associated with the type <typeparamref name="T" />.
     ///     If no table name attribute is defined, it returns the name of the type <typeparamref name="T" />.
     /// </returns>
-    internal static string GetTableName<T>(DynamoContext context = null,object instance=null) where T:class
+    internal static string GetTableName<T>(DynamoContext context = null) where T:class
     {   
-        if (context != null && context.HasTypeBuilder<T>(instance))
+        if (context != null && context.HasTypeBuilder<T>())
         {
-            return context.GetTypeBuilder<T>(instance).TableName;
+            return context.GetTypeBuilder<T>().TableName;
         }
 
         return Attribute.GetCustomAttribute(typeof(T), typeof(DynamoDBTableAttribute)) is not DynamoDBTableAttribute
