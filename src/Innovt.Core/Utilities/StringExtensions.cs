@@ -299,8 +299,6 @@ public static class StringExtensions
         return result;
     }
 
-   
-
     /// <summary>
     ///     Converts a delimited string into a list of strings using the specified separator character.
     /// </summary>

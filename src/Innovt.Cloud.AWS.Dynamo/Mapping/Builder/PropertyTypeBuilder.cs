@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 
@@ -6,8 +7,11 @@ namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 ///     Represents a builder for defining the properties of an entity type.
 /// </summary>
 /// <typeparam name="T">The type of the entity.</typeparam>
-public class PropertyTypeBuilder<T> where T : class
-{
+public class PropertyTypeBuilder<T>
+{   
+    private readonly List<Action<T>> mapActions = [];
+    private Func<T, object> setValueDelegate;
+    
     /// <summary>
     ///     Initializes a new instance of the <see cref="PropertyTypeBuilder{T}" /> class with a specified property name and
     ///     type.
@@ -26,6 +30,7 @@ public class PropertyTypeBuilder<T> where T : class
     public PropertyTypeBuilder(Func<T, string> propertyName)
     {
         Name = propertyName.Invoke(default);
+        Type = propertyName.Invoke(default).GetType();
     }
 
     /// <summary>
@@ -34,36 +39,51 @@ public class PropertyTypeBuilder<T> where T : class
     public PropertyTypeBuilder()
     {
     }
-
     /// <summary>
-    ///     Gets a value indicating whether the property is of string type.
+    /// Gets a value if the field is required.
     /// </summary>
-    internal bool IsString { get; private set; }
-
+    public bool Required { get; private set; }
+    
     /// <summary>
-    ///     Gets a value indicating whether the property is of decimal type.
+    /// Has map actions is when you need to map some property.
     /// </summary>
-    internal bool IsDecimal { get; private set; }
+    public bool HasMapAction => mapActions.Count > 0;
 
     /// <summary>
     ///     Gets the name of the property.
     /// </summary>
-    internal string Name { get; private set; }
-
+    public string Name { get; private set; }
+    
+    /// <summary>
+    /// Get the value of the property.
+    /// </summary>
+    private object Value { get; set; }
+    
     /// <summary>
     ///     Gets the type of the property.
     /// </summary>
-    internal Type Type { get; private set; }
+    public Type Type { get; private set; }
+
+    private string columnName;
 
     /// <summary>
-    ///     Gets or sets the column name associated with the property.
+    ///     Gets or sets the column name associated with the property. if the column name is not set, the property name is used.
     /// </summary>
-    internal string ColumnName { get; private set; }
-
+    public string ColumnName 
+    {
+        get => columnName ?? Name;
+        private set => columnName = value;
+    }
+    
     /// <summary>
-    ///     Gets a value indicating whether the property is of binary type.
+    /// The max length of the property
     /// </summary>
-    internal bool IsBinary { get; private set; }
+    public int MaxLength { get; private set; }
+    
+    /// <summary>
+    /// This template property will be user to create values for the property dynamicaly.
+    /// </summary>
+    public string Template { get; private set; }
 
     /// <summary>
     ///     Specifies that the property is of string type.
@@ -71,7 +91,7 @@ public class PropertyTypeBuilder<T> where T : class
     /// <returns>The current instance of <see cref="PropertyTypeBuilder{T}" />.</returns>
     public PropertyTypeBuilder<T> AsString()
     {
-        IsString = true;
+        Type = typeof(string);
         return this;
     }
 
@@ -81,7 +101,7 @@ public class PropertyTypeBuilder<T> where T : class
     /// <returns>The current instance of <see cref="PropertyTypeBuilder{T}" />.</returns>
     public PropertyTypeBuilder<T> AsDecimal()
     {
-        IsDecimal = true;
+        Type = typeof(decimal);
         return this;
     }
 
@@ -91,31 +111,105 @@ public class PropertyTypeBuilder<T> where T : class
     /// <returns>The current instance of <see cref="PropertyTypeBuilder{T}" />.</returns>
     public PropertyTypeBuilder<T> AsBinary()
     {
-        IsBinary = true;
+        Type = typeof(byte[]);
         return this;
     }
 
     /// <summary>
     ///     Specifies a custom column name for the property in the database.
     /// </summary>
-    /// <param name="columnName">The custom column name.</param>
+    /// <param name="name">The custom column name.</param>
     /// <returns>The current instance of <see cref="PropertyTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<T> HasName(string columnName)
+    public PropertyTypeBuilder<T> WithColumnName(string name)
     {
-        ColumnName = columnName;
+        ColumnName = name;
+        return this;
+    }
+    
+    /// <summary>
+    ///     Specifies that the property is of decimal type.
+    /// </summary>
+    /// <returns>The current instance of <see cref="PropertyTypeBuilder{T}" />.</returns>
+    public PropertyTypeBuilder<T> WithMaxLength(int maxLength)
+    {
+        MaxLength = maxLength;
         return this;
     }
 
+    //Set a default value for the property. Use HasMappedValue to set a value based on the entity.
+    public PropertyTypeBuilder<T> WithValue(object value)
+    {
+        Value = value;
+        return this;
+    }
+    
     /// <summary>
-    ///     Specifies a custom converter for the property.
+    /// Define when a fi
+    /// </summary>eld will be required during save operations
+    /// <param name="isRequired">Default value if true.</param>
+    /// <returns></returns>
+    public PropertyTypeBuilder<T> IsRequired(bool isRequired = true)
+    {
+        Required = isRequired;
+        return this;
+    }
+    
+    public PropertyTypeBuilder<T> WithTemplate(string template)
+    {
+        Template = template;
+        return this;
+    }
+    
+    /// <summary>
+    ///   Define a delegate to parse the property.
     /// </summary>
     /// <param name="parserDelegate">The action to parse the property.</param>
     /// <returns>The current instance of <see cref="PropertyTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<T> HasConverter(Action<T, object> parserDelegate)
+    public PropertyTypeBuilder<T>  WithMap(Action<T> parserDelegate)
     {
-        //Como converter do que vem do banco para o que esta na classe
+        if (parserDelegate == null) throw new ArgumentNullException(nameof(parserDelegate));
 
-
+        mapActions.Add(parserDelegate);
+        
         return this;
     }
+    
+    /// <summary>
+    /// Define a delegate to set the value of the property based on the entity.
+    /// </summary>
+    /// <param name="valueDelegate"></param>
+    /// <exception cref="ArgumentNullException"></exception>
+    public PropertyTypeBuilder<T> SetDynamicValueDelegate(Func<T,object> valueDelegate)
+    {
+        setValueDelegate = valueDelegate ?? throw new ArgumentNullException(nameof(valueDelegate));
+        
+        return this;
+    }
+    
+    public void InvokeMaps(T entity)
+    {
+        if(!HasMapAction)
+            return;
+        
+        foreach (var action in mapActions)
+        {
+            action(entity);
+        }
+    }
+    
+    /// <summary>
+    /// Get the instance value using a fixed value or a delegate.
+    /// </summary>
+    /// <param name="entity"></param>
+    /// <returns></returns>
+    public object GetValue(T entity)
+    {   
+        if(setValueDelegate != null)
+            Value = setValueDelegate(entity);
+        
+        Type = Value?.GetType() ?? Type;
+        
+        return Value;
+    }
+    
 }

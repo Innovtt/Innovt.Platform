@@ -1,51 +1,78 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using Amazon.DynamoDBv2.DataModel;
+using Innovt.Cloud.AWS.Dynamo.Exceptions;
 using Innovt.Cloud.AWS.Dynamo.Mapping;
+using Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 
 namespace Innovt.Cloud.AWS.Dynamo;
 
+/// <summary>
+/// This class is responsible for managing the context of the DynamoDB for Code First strategy.
+/// </summary>
 public abstract class DynamoContext
 {
-    public bool EnableChangingTracking { get; set; }
+    private static ModelBuilder modelBuilder = null!;
     
-    private static ModelBuilder _modelBuilder;
-
+    private static readonly object ObjLock = new();
+    
     protected DynamoContext()
+    {   
+        BuildModel();
+    }
+    public Dictionary<string, object> Entities => modelBuilder.Entities;
+
+    private void BuildModel()
     {
-        EnableChangingTracking = false;
+        lock (ObjLock)
+        {
+            if (modelBuilder != null)
+                return;
+           
+            modelBuilder = new ModelBuilder();
+            OnModelCreating(modelBuilder);
+        }
     }
     
-    ~DynamoContext()
+    private static Type GetEntityType<T>()
     {
-        _modelBuilder = null;
-    }
-    internal void BuildModel()
-    {
-        if(_modelBuilder is not null)
-            return;
         
-        _modelBuilder ??= new ModelBuilder();
+        return typeof(T);
+    }
+    
+    private static string GetEntityName<T>()
+    {
+        var instanceType = GetEntityType<T>();
+        
+        return instanceType.Name;
+    }
+    
+    public bool HasTypeBuilder<T>()
+    {
+        var entityName = GetEntityName<T>();
 
-        OnModelCreating(_modelBuilder);
+        return Entities.TryGetValue(entityName, out var value);
+    }
+    
+    public EntityTypeBuilder<T> GetTypeBuilder<T>()
+    {
+        var entityName = GetEntityName<T>();
+        
+        if (!Entities.TryGetValue(entityName, out var value))
+            throw new MissingEntityMapException(entityName);
+        
+        if(value is EntityTypeBuilder<T> entityTypeBuilder)
+        {
+            return entityTypeBuilder;
+        }
+        
+        throw new MissingEntityMapException(entityName);
+    }
+    public IPropertyConverter GetPropertyConverter(Type type)
+    {
+        return modelBuilder?.Converters?.GetValueOrDefault(type);
     }
     
     protected abstract void OnModelCreating([DisallowNull]ModelBuilder modelBuilder);
-}
-
-public class ModelBuilder
-{
-    private readonly Dictionary<string, object> entities = new();
-    
-    public void AddConfiguration<T>(IEntityTypeDataModelMapper<T> entityTypeBuilder) where T:class
-    {
-        var entityName = typeof(T).Name;
-        
-        if(entities.ContainsKey(entityName))
-            return;
-        
-        entities.Add(entityName,entityTypeBuilder);
-    }
-
-    public Dictionary<string, object> Entities => entities;
-    
 }

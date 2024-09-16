@@ -12,7 +12,7 @@ using NUnit.Framework;
 namespace Innovt.Cloud.AWS.Dynamo.Tests;
 
 [TestFixture]
-public class HelperTests
+public class DynamoHelperTests
 {
     private static Dictionary<string, AttributeValue> CreateExpressionAttributeValues(ExpandoObject filter,
         string attributes)
@@ -70,7 +70,7 @@ public class HelperTests
     }
 
     [Test]
-    public void DDD()
+    public void CreateExpressionAttributeValues()
     {
         /* var filter = new
          {

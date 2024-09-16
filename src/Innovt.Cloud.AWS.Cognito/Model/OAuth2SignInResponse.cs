@@ -1,9 +1,6 @@
 ﻿// Innovt Company
 // Author: Michel Borges
 // Project: Innovt.Cloud.AWS.Cognito
-
-using System.Text.Json.Serialization;
-
 namespace Innovt.Cloud.AWS.Cognito.Model;
 
 /// <summary>
@@ -11,7 +8,7 @@ namespace Innovt.Cloud.AWS.Cognito.Model;
 /// </summary>
 public class OAuth2SignInResponse : SignInResponse
 {
-    [JsonPropertyName("error")] public string Error { get; set; }
+    public string Error { get; set; }
 
     /// <summary>
     ///     Gets or sets a flag indicating whether the user needs to register.
