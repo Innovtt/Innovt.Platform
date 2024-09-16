@@ -14,7 +14,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="ServiceStack.Redis" Version="8.3.0" />
+        <PackageReference Include="ServiceStack.Redis" Version="8.4.0" />
         <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="8.0.1" />
         <PackageReference Include="System.Text.Json" Version="8.0.4" />
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">

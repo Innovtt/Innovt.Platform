@@ -10,7 +10,6 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
@@ -87,22 +86,35 @@ internal static class AttributeConverter
         return type.IsArray || (type.IsGenericType && typeof(IDictionary<,>).IsAssignableFrom(type)) ||
                typeof(IDictionary).IsAssignableFrom(type);
     }
+    
+    
 
     /// <summary>
     ///     Converts a dictionary of string and object pairs to DynamoDB AttributeValues.
     /// </summary>
     /// <param name="items">The dictionary to convert.</param>
+    /// <param name="context"></param>
     /// <returns>A dictionary of string and AttributeValue pairs.</returns>
-    internal static Dictionary<string, AttributeValue> ConvertToAttributeValues(Dictionary<string, object> items)
-    {
+    internal static Dictionary<string, AttributeValue> ConvertToAttributeValues(Dictionary<string, object> items,DynamoContext context=null)
+    {   
+        if(context is null)
+            return items?.Select(i =>
+                new
+                {
+                    i.Key,
+                    Value = CreateAttributeValue(i.Value)
+                }).ToDictionary(x => x.Key, x => x.Value);
+        
+        //aqui sao tabelas e objetos, ele manda uma lista de tabelas e objetos.
         return items?.Select(i =>
             new
             {
                 i.Key,
-                Value = CreateAttributeValue(i.Value)
-            }).ToDictionary(x => x.Key, x => x.Value);
+                Value = ConvertTypeToAttributes(i.Value, context)
+            }).ToDictionary(x => x.Key, x => new AttributeValue { M = x.Value });
+        
     }
-
+    
     /// <summary>
     ///     Conversion from object to attribute Value
     /// </summary>
@@ -520,6 +532,57 @@ internal static class AttributeConverter
         }
     }
 
+    /*
+    /// <summary>
+    /// This is an internal method that will convert a list of objects to a list of attributes. This will use cached methods to improve performance.
+    /// </summary>
+    /// <param name="instances"></param>
+    /// <param name="context"></param>
+    /// <returns></returns>
+    internal static List<Dictionary<string, AttributeValue>> ConvertTypeToAttributes(List<object> instances, DynamoContext context=null)
+    {
+        Check.NotNull(instances, nameof(instances));
+        
+        var methodCache = new Dictionary<Type, MethodInfo>();
+
+        var attributes = new List<Dictionary<string, AttributeValue>>();
+        foreach (var instance in instances)
+        {
+            var type = instance.GetType();
+            
+            if(!methodCache.TryGetValue(type, out var method))
+            {
+                method = typeof(AttributeConverter).GetMethod(nameof(ConvertTypeToAttributes), BindingFlags.Static | BindingFlags.NonPublic);
+                
+                methodCache.Add(type, method);
+            }
+            attributes.Add(ConvertTypeToAttributes(instance, context, method));
+        }
+        
+        return attributes;
+    }
+    
+    /// <summary>
+    /// This overload will convert a dictionary of string and object to a specific type
+    /// </summary>
+    /// <param name="instance"></param>
+    /// <param name="context"></param>
+    /// <param name="method"></param>
+    /// <returns></returns>
+    internal static Dictionary<string, AttributeValue> ConvertTypeToAttributes(object instance, DynamoContext context=null, MethodInfo method = null)
+    {
+        Check.NotNull(instance, nameof(instance));
+        
+        // Get the generic method
+        method ??= typeof(AttributeConverter).GetMethod(nameof(ConvertTypeToAttributes),
+            BindingFlags.Static | BindingFlags.NonPublic);
+        
+        var genericMethod = method!.MakeGenericMethod(instance.GetType());
+        
+        return genericMethod.Invoke(null, [instance, context]) as Dictionary<string, AttributeValue>;
+    }
+  
+*/
     /// <summary>
     /// Converts a type to a dictionary of attributes.
     /// </summary>
@@ -527,7 +590,7 @@ internal static class AttributeConverter
     /// <param name="context"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    internal static Dictionary<string, AttributeValue> ConvertTypeToAttributes<T>(T instance, DynamoContext context = null) where T:class
+    internal static Dictionary<string, AttributeValue> ConvertTypeToAttributes<T>(T instance, DynamoContext context = null) where T:class   
     {
         Check.NotNull(instance, nameof(instance));
         
@@ -536,13 +599,11 @@ internal static class AttributeConverter
         if (properties.Length == 0)
             return default;
         
-        //Considering all the mapped properties is has map. The system will get from the map and fill the attributes
-        InvokeMappedProperties(context, properties, instance);
-        
         var attributes = new Dictionary<string, AttributeValue>();
         
         var typeBuilder = context?.HasTypeBuilder<T>() == true ? context.GetTypeBuilder<T>() : null;
         
+        //No Mapped properties - All properties will be filled using only the object properties
         if (typeBuilder is null)
         {
             foreach (var property in properties)
@@ -552,6 +613,10 @@ internal static class AttributeConverter
         }
         else
         {
+            //Considering all the mapped properties is has map. The system will get from the map and fill the attributes
+            InvokeMappedProperties(context, properties, instance);
+
+            //get the mapped properties
             foreach (var mappedProperty in typeBuilder.GetProperties())
             {
                 var propertyKey = mappedProperty.Name;
@@ -564,22 +629,31 @@ internal static class AttributeConverter
                 
                 var property = properties.FirstOrDefault(p => p.Name == propertyKey);
 
-                if (property != null)
+                var propertyType = property?.PropertyType;
+                var propertyValue = property?.GetValue(instance);
+                
+                //Virtual Property - Mean that exists only in the mapping and database but not in the object
+                if (property is null)
                 {
-                    //como eu vou mapear as propriedades de pk e como vou mapear os atributos na volta.
-                    
-                    var converter = context?.GetPropertyConverter(property.PropertyType);
-
-                    if (converter is not null)
-                    {
-                        var value = converter.ToEntry(new DateTime().Date).AsPrimitive().Value;
-                    }
-                    //Se ele eh datetimeoffSet eu preciso pegar um converter para ele
-                    //convertedValue = ConvertNonPrimitiveType(prop, attributeValue.Value, value,context?.GetPropertyConverter(prop.PropertyType));
-                    
-                    
-                    attributes.Add(mappedProperty.ColumnName, CreateAttributeValue(property.GetValue(instance)));
+                    //Invoke the map action to get the value.
+                    propertyValue = mappedProperty.GetValue(instance);
+                    propertyType = mappedProperty.Type;
                 }
+                
+                //This is a property that is not mapped and not in the object
+                if(propertyValue is null && propertyType is null)
+                    continue;
+                
+                var converter = context?.GetPropertyConverter(propertyType);
+                
+                if (converter is not null)
+                {
+                    //Vou converter de datetimeoffset para DateTime
+                    propertyValue =  converter.ToEntry(propertyValue).AsPrimitive();
+                }
+                
+                attributes.Add(mappedProperty.ColumnName, CreateAttributeValue(propertyValue));
+                
             }
         }
         

@@ -29,7 +29,7 @@ public class EntityTypeBuilderTests
         var properties = builder.GetProperties();
         
         Assert.That(properties, Is.Not.Null);
-        Assert.That(properties, Has.Count.EqualTo(6)); // Because we ignored the Email property
+        Assert.That(properties, Has.Count.EqualTo(12)); // Because we ignored the Email property
 
         var emailProperty = builder.GetProperty("Email");
         

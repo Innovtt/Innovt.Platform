@@ -23,7 +23,7 @@ namespace Innovt.Cloud.AWS.Dynamo;
 /// <summary>
 ///     A utility class providing helper methods for various tasks.
 /// </summary>
-internal static class Helpers
+internal static class DynamoHelper
 {
     /// <summary>
     ///     A constant string used as a separator for pagination tokens.
@@ -45,13 +45,13 @@ internal static class Helpers
     ///     The DynamoDB table name associated with the type <typeparamref name="T" />.
     ///     If no table name attribute is defined, it returns the name of the type <typeparamref name="T" />.
     /// </returns>
-    internal static string GetTableName<T>(DynamoContext context = null) where T:class
+    internal static string GetTableName<T>(DynamoContext context = null,object instance=null) where T:class
     {   
-        if (context != null && context.HasTypeBuilder<T>())
+        if (context != null && context.HasTypeBuilder<T>(instance))
         {
-            return context.GetTypeBuilder<T>().TableName;
+            return context.GetTypeBuilder<T>(instance).TableName;
         }
-        
+
         return Attribute.GetCustomAttribute(typeof(T), typeof(DynamoDBTableAttribute)) is not DynamoDBTableAttribute
             attribute ? typeof(T).Name : attribute.TableName;
     }
@@ -97,7 +97,7 @@ internal static class Helpers
     /// <param name="context">The context can be null and the system will get the DynamoDb Default Attributes</param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    internal static string GetDefaultKeyExpression<T>(bool hasRangeKeyValue = false, DynamoContext context = null) where T:class
+    internal static string BuildDefaultKeyExpression<T>(bool hasRangeKeyValue = false, DynamoContext context = null) where T:class
     {   
         var hashKeyName = GetHashKeyName<T>(context);
         var rangeKeyName = GetRangeKeyName<T>(context);
@@ -117,43 +117,111 @@ internal static class Helpers
     {
         Check.NotNull(value, nameof(value));
         
+        var keyValues = GetKeyValues(value, context);
+        
+        return ExtractKeysToDictionary<T>(keyValues.HashKey, keyValues.RangeKey, context);
+    }
+    
+    /// <summary>
+    /// This method gets the value of a mapped key from the specified type.
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="context"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    internal static (object HashKey,object RangeKey) GetKeyValues<T>(T value, DynamoContext context = null) where T:class
+    {
+        Check.NotNull(value, nameof(value));
+        
         var hashKeyName = GetHashKeyName<T>(context);
         var rangeKeyName = GetRangeKeyName<T>(context);
         
+        // the default value will be from the type
         var entityType = value.GetType();
+        
         var hashKeyValue = entityType.GetProperty(hashKeyName)?.GetValue(value);
         var rangeKeyValue = entityType.GetProperty(rangeKeyName)?.GetValue(value);
         
-        return ExtractKeys<T>(hashKeyValue, rangeKeyValue, context);
-    }
+        if(context is null || !context.HasTypeBuilder<T>())
+            return (hashKeyValue, rangeKeyValue);
+        
+        //It will build the value from the delegate using the type builder
+        var entityBuilder = context.GetTypeBuilder<T>();
+        hashKeyValue = entityBuilder.GetProperty(hashKeyName)?.GetValue(value);
+        rangeKeyValue = entityBuilder.GetProperty(rangeKeyName)?.GetValue(value);
+        
 
+        return (hashKeyValue, rangeKeyValue);
+    }
+    
     /// <summary>
     /// Extract the hash keys and range keys from the specified value.
     /// </summary>
+    /// <param name="id"></param>
+    /// <param name="rangeKeyValue"></param>
+    /// <param name="context"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    internal static Dictionary<string, AttributeValue> ExtractKeysToDictionary<T>(object id, object rangeKeyValue=null, DynamoContext context = null) where T:class
+    {
+        var tupleKeys = ExtractKeys<T>(id, rangeKeyValue, context);
+        
+        var keys = new Dictionary<string, AttributeValue> { { tupleKeys.HashKey.Name, tupleKeys.HashKey.Value } };
+
+        if (tupleKeys.RangeKey.HasValue)
+        {
+            keys.Add(tupleKeys.RangeKey.Value.Name, tupleKeys.RangeKey.Value.Value);
+        }
+
+        return keys;
+    }
+    
+    /// <summary>
+    /// 
+    /// Extract the hash keys and range keys from the specified value.
+    /// </summary>
     /// <param name="id">The entity hash key value</param>
-    /// <param name="rangeKey">The entity range/sort key value</param>
+    /// <param name="rangeKeyValue">The entity range key value</param>
     /// <param name="context">The current context if available</param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    internal static Dictionary<string, AttributeValue> ExtractKeys<T>(object id, object rangeKey=null, DynamoContext context = null) where T:class
+    internal static ((string Name,AttributeValue Value) HashKey,(string Name,AttributeValue Value)? RangeKey)
+        ExtractKeys<T>(object id, object rangeKeyValue=null, DynamoContext context = null) where T:class
     {
-        var hashKeyName = GetHashKeyName<T>(context);
-        var hashKeyPrefix = context?.GetTypeBuilder<T>()?.HashKeyPrefix;
+        Check.NotNull(id, nameof(id));
         
-        var entityKeys = new Dictionary<string, AttributeValue> {
-            //the hash key is always required
-            { hashKeyName, new AttributeValue($"{hashKeyPrefix}{id}") }
-        };
+        var entityBuilder = context?.GetTypeBuilder<T>();
+        var hashKeyPrefix = entityBuilder?.HashKeyPrefix;
+        var keySeparator = entityBuilder?.KeySeparator;
+        //como 
+        hashKeyPrefix = hashKeyPrefix.IsNotNullOrEmpty() ? $"{hashKeyPrefix}{keySeparator}" : string.Empty;
 
-        if (rangeKey == null) return entityKeys;
+        //To avoid situations where the id is already prefixed
+        if (id.ToString().Contains(hashKeyPrefix))
+        {
+            hashKeyPrefix = string.Empty;
+        }
         
+        //Get the name of the hash key
+        var hashKey = (GetHashKeyName<T>(context), new AttributeValue($"{hashKeyPrefix}{id}"));
+        
+          if (rangeKeyValue == null) 
+              return (hashKey,null);
+                  
         var rangeKeyName = GetRangeKeyName<T>(context);
-        var rangeKeyPrefix = context?.GetTypeBuilder<T>()?.SortKeyPrefix;
+        var rangeKeyPrefix = entityBuilder?.RangeKeyPrefix;
+              
+        rangeKeyPrefix = rangeKeyPrefix.IsNotNullOrEmpty() ? $"{rangeKeyPrefix}{keySeparator}" : string.Empty;
         
-        //Adding range key
-        entityKeys.Add(rangeKeyName, new AttributeValue($"{rangeKeyPrefix}{rangeKey}"));
+        if (rangeKeyValue.ToString().Contains(rangeKeyPrefix))
+        {
+            rangeKeyPrefix = string.Empty;
+        }
+        
+        var rangeKey = (rangeKeyName, new AttributeValue($"{rangeKeyPrefix}{rangeKeyValue}"));
 
-        return entityKeys;
+        return (hashKey, rangeKey);
+
     }
     
     /// <summary>
@@ -278,6 +346,7 @@ internal static class Helpers
     /// </summary>
     /// <typeparam name="T">The type representing the DynamoDB table.</typeparam>
     /// <param name="request">The Table.ScanRequest object containing scan parameters.</param>
+    /// <param name="context">The repository context</param>
     /// <returns>A ScanRequest object configured based on the provided Table.ScanRequest.</returns>
     /// <remarks>
     ///     This method creates a ScanRequest object for scanning a DynamoDB table based on the provided scan parameters.
@@ -318,6 +387,7 @@ internal static class Helpers
     ///     Creates a dictionary of KeysAndAttributes for BatchGetItem based on the provided Table.BatchGetItemRequest.
     /// </summary>
     /// <param name="request">The Table.BatchGetItemRequest object containing batch get item parameters.</param>
+    /// <param name="context">Ths repository context for dynamo.</param>
     /// <returns>A dictionary where the key is the table name and the value is a KeysAndAttributes object.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the input request is null.</exception>
     /// <remarks>
@@ -330,10 +400,10 @@ internal static class Helpers
     ///     The Keys are derived by converting the provided attribute values to AttributeValue objects.
     /// </remarks>
     /// <seealso cref="Table.BatchGetItemRequest" />
-    internal static Dictionary<string, KeysAndAttributes> CreateBatchGetItemRequest(BatchGetItemRequest request)
+    internal static Dictionary<string, KeysAndAttributes> CreateBatchGetItemRequest(BatchGetItemRequest request, DynamoContext context=null)
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
-
+        
         var result = new Dictionary<string, KeysAndAttributes>();
 
         foreach (var item in request.Items)
@@ -342,7 +412,7 @@ internal static class Helpers
                 ConsistentRead = item.Value.ConsistentRead,
                 ExpressionAttributeNames = item.Value.ExpressionAttributeNames,
                 ProjectionExpression = item.Value.ProjectionExpression,
-                Keys = item.Value.Keys.Select(AttributeConverter.ConvertToAttributeValues).ToList()
+                Keys = item.Value.Keys.Select(k=>  AttributeConverter.ConvertToAttributeValues(k,context)).ToList()
             });
 
         return result;
@@ -352,6 +422,7 @@ internal static class Helpers
     ///     Creates a BatchWriteItemRequest based on the provided Table.BatchWriteItemRequest.
     /// </summary>
     /// <param name="request">The Table.BatchWriteItemRequest object containing batch write item parameters.</param>
+    /// <param name="context">The dynamo db context that can contain the entities map.</param>
     /// <returns>A BatchWriteItemRequest object representing the batch write item request.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the input request is null.</exception>
     /// <remarks>
@@ -363,7 +434,7 @@ internal static class Helpers
     ///     AttributeValue objects.
     /// </remarks>
     /// <seealso cref="Table.BatchWriteItemRequest" />
-    internal static BatchWriteItemRequest CreateBatchWriteItemRequest(Table.BatchWriteItemRequest request)
+    internal static BatchWriteItemRequest CreateBatchWriteItemRequest(Table.BatchWriteItemRequest request, DynamoContext context=null)
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
 
@@ -371,18 +442,18 @@ internal static class Helpers
         {
             RequestItems = new Dictionary<string, List<WriteRequest>>()
         };
-
+        
         foreach (var item in request.Items)
-        {
+        { 
             var writeRequests = (from r in item.Value
                 select new WriteRequest
                 {
                     DeleteRequest = r.DeleteRequest is null
                         ? null
-                        : new DeleteRequest(AttributeConverter.ConvertToAttributeValues(r.DeleteRequest)),
+                        : new DeleteRequest(AttributeConverter.ConvertToAttributeValues(r.DeleteRequest,context)),
                     PutRequest = r.PutRequest is null
                         ? null
-                        : new PutRequest(AttributeConverter.ConvertToAttributeValues(r.PutRequest))
+                        : new PutRequest(AttributeConverter.ConvertToAttributeValues(r.PutRequest,context))
                 }).ToList();
 
             writeRequest.RequestItems.Add(item.Key, writeRequests);

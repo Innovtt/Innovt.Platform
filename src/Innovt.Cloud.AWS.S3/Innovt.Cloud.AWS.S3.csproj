@@ -13,11 +13,7 @@
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
-<<<<<<< HEAD
-        <PackageReference Include="AWSSDK.S3" Version="3.7.402.1" />
-=======
-        <PackageReference Include="AWSSDK.S3" Version="3.7.402.6" />
->>>>>>> feature/AddStringExtensionToChekSpecialCaracters
+        <PackageReference Include="AWSSDK.S3" Version="3.7.402.11" />
         <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="8.0.1" />
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">
             <PrivateAssets>all</PrivateAssets>

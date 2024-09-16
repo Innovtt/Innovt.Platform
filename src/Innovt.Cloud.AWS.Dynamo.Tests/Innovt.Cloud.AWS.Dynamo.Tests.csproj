@@ -8,13 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-<<<<<<< HEAD
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.0" />
-        <PackageReference Include="NUnit" Version="4.1.0" />
-=======
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
         <PackageReference Include="NUnit" Version="4.2.2" />
->>>>>>> feature/AddStringExtensionToChekSpecialCaracters
+
         <PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
         <PackageReference Include="NSubstitute" Version="5.1.0" />
         <PackageReference Include="NUnit.Analyzers" Version="4.3.0">
@@ -35,7 +31,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="AWSSDK.SSO" Version="3.7.400.10" />
-        <PackageReference Include="AWSSDK.SSOOIDC" Version="3.7.400.10" />
+        <PackageReference Include="AWSSDK.SSO" Version="3.7.400.20" />
+        <PackageReference Include="AWSSDK.SSOOIDC" Version="3.7.400.20" />
     </ItemGroup>
 </Project>

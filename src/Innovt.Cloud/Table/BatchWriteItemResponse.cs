@@ -22,7 +22,7 @@ public class BatchWriteItemResponse
     /// <summary>
     ///     Gets the unprocessed items from the batch write operation, grouped by table name.
     /// </summary>
-    public Dictionary<string, List<BatchWriteItem>> UnprocessedItems { get; }
+    public Dictionary<string, List<BatchWriteItem>> UnprocessedItems { get; set; }
 
     /// <summary>
     ///     Gets a value indicating whether the batch write operation was successful.

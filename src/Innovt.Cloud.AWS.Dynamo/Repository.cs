@@ -16,6 +16,7 @@ using Innovt.Cloud.Table;
 using Innovt.Core.Collections;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Exceptions;
+using Innovt.Core.Utilities;
 using Polly.Retry;
 using BatchGetItemRequest = Innovt.Cloud.Table.BatchGetItemRequest;
 using BatchWriteItemRequest = Innovt.Cloud.Table.BatchWriteItemRequest;
@@ -32,10 +33,11 @@ public abstract class Repository : AwsBaseService, ITableRepository
 {
     private static readonly ActivitySource ActivityRepository = new("Innovt.Cloud.AWS.Dynamo.Repository");
 
-    private DynamoDBContext dynamoDbContext;
+   // private DynamoDBContext dynamoDbContext;
     private AmazonDynamoDBClient dynamoClient;
-    private DynamoContext context;
+    private readonly DynamoContext context;
 
+    #region [Constructors]
     /// <summary>
     /// Initializes a new instance of the <see cref="Repository" /> class.
     /// </summary>
@@ -67,12 +69,13 @@ public abstract class Repository : AwsBaseService, ITableRepository
         configuration, region)
     {
     }
-    
+    #endregion
 
+    #region [Configuration]
     /// <summary>
     ///     Gets the DynamoDB context.
     /// </summary>
-    private DynamoDBContext Context => dynamoDbContext ??= new DynamoDBContext(DynamoClient);
+   // private DynamoDBContext Context => dynamoDbContext ??= new DynamoDBContext(DynamoClient);
 
     /// <summary>
     ///     Gets the Amazon DynamoDB client.
@@ -89,92 +92,20 @@ public abstract class Repository : AwsBaseService, ITableRepository
             Conversion = DynamoDBEntryConversion.V2
         };
     
+    #endregion
 
-    /// <inheritdoc />
-    public async Task<T> GetByIdAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default) where T : class, ITableMessage
-    {
-        if (id == null) throw new ArgumentNullException(nameof(id));
-        
-        using (ActivityRepository.StartActivity())
-        {   
-            var typeBuilder = context?.GetTypeBuilder<T>();
-            
-            var queryRequest = new QueryRequest
-            {
-                KeyConditionExpression = Helpers.GetDefaultKeyExpression<T>(rangeKey!=null,context),
-                Filter = new
-                {
-                    pk = $"{typeBuilder?.HashKeyPrefix}{id}",
-                    sk = $"{typeBuilder?.SortKeyPrefix}{rangeKey}",
-                }
-            };
-                
-            var result = await QueryAsync<T>(queryRequest, cancellationToken);
-
-            return result.SingleOrDefault();
-
-        }
-    }
-
-    /// <inheritdoc />
-    public async Task DeleteAsync<T>(T value, CancellationToken cancellationToken = default) where T : class, ITableMessage
-    {
-        using (ActivityRepository.StartActivity())
-        {
-            var deleteRequest = new DeleteItemRequest()
-            {
-                TableName = Helpers.GetTableName<T>(context),
-                Key = Helpers.ExtractKeys(value, context) 
-            };
-            
-            await CreateDefaultRetryAsyncPolicy()
-                .ExecuteAsync(async () => await dynamoClient.DeleteItemAsync(deleteRequest,cancellationToken).ConfigureAwait(false))
-                .ConfigureAwait(false);
-        }
-    }
-
-    /// <inheritdoc />
-    public async Task DeleteAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default)
-        where T : class, ITableMessage
-    {
-        if (id == null) throw new ArgumentNullException(nameof(id));
-
-        using var activity = ActivityRepository.StartActivity();
-        activity?.SetTag("id", id);
-        activity?.SetTag("rangeKey", rangeKey);
-        
-        var deleteRequest = new DeleteItemRequest()
-        {
-            TableName = Helpers.GetTableName<T>(context),
-            Key = Helpers.ExtractKeys<T>(id,rangeKey, context) 
-        };
-        
-        await CreateDefaultRetryAsyncPolicy()
-            .ExecuteAsync(async () => await dynamoClient.DeleteItemAsync(deleteRequest,cancellationToken).ConfigureAwait(false))
-            .ConfigureAwait(false);
-    }
-
+    #region [Add]
     /// <inheritdoc />
     public async Task AddAsync<T>(T message, CancellationToken cancellationToken = default)
         where T : class, ITableMessage
     {
-        using var activity = ActivityRepository.StartActivity(nameof(DeleteAsync));
-
-        //This will keep the legacy implementation working(datamodel or DynamoDbAttributes)
-        if (context == null)
-        {
-            await CreateDefaultRetryAsyncPolicy()
-                .ExecuteAsync(async () =>
-                    await Context.SaveAsync(message, OperationConfig, cancellationToken).ConfigureAwait(false))
-                .ConfigureAwait(false);
-            
-            return;
-        }
+        Check.NotNull(message, nameof(message));
         
-        //de um objeto ele vai extrair todos os atributos e valores
+        using var activity = ActivityRepository.StartActivity();
+     
         var putRequest = new PutItemRequest
         {
-            TableName = Helpers.GetTableName<T>(context),
+            TableName = DynamoHelper.GetTableName<T>(context),
             Item = AttributeConverter.ConvertTypeToAttributes(message,context)
         };
         
@@ -185,6 +116,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         activity?.SetTag("consumedCapacity", resp.ConsumedCapacity);
         activity?.SetTag("statusCode", resp.HttpStatusCode);
+        activity?.SetTag("requestId", resp.ResponseMetadata.RequestId);
     }
 
     /// <summary>
@@ -195,259 +127,24 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <exception cref="ArgumentNullException">Thrown if the messages parameter is null.</exception>
     public async Task AddAsync<T>(IList<T> messages, CancellationToken cancellationToken = default)
-        where T : class, ITableMessage
+        where T : class
     {
-        if (messages is null) throw new ArgumentNullException(nameof(messages));
+        Check.NotNull(messages, nameof(messages));
+        using var activity = ActivityRepository.StartActivity();
+        activity?.SetTag("messages", messages.Count);
+        
+        var tableName = DynamoHelper.GetTableName<T>(context,messages);
 
-        using (ActivityRepository.StartActivity())
-        {
-            var batch = Context.CreateBatchWrite<T>(OperationConfig);
+        var writeRequest = messages.Select(message => new WriteRequest { PutRequest = new PutRequest { Item = AttributeConverter.ConvertTypeToAttributes(message, context) } }).ToList();
 
-            batch.AddPutItems(messages);
+        var batchRequest = new Dictionary<string, List<WriteRequest>> { { tableName, writeRequest } };
 
-            await CreateDefaultRetryAsyncPolicy()
-                .ExecuteAsync(async () => await batch.ExecuteAsync(cancellationToken).ConfigureAwait(false))
-                .ConfigureAwait(false);
-        }
+        var response = await InternalBatchWriteItemAsync<T>(batchRequest, cancellationToken:cancellationToken).ConfigureAwait(false);
+        
+        if(response.HasItems())
+            throw new CriticalException("Some items could not be added to the table");
     }
-
-    /// <summary>
-    ///     When you don't know the type of the object to add or if you want to add a list of different types
-    /// </summary>
-    /// <param name="messages"></param>
-    /// <param name="cancellationToken"></param>
-    /// <exception cref="ArgumentNullException"></exception>
-    public async Task AddAsync(IList<object> messages, CancellationToken cancellationToken = default)
-    {
-        if (messages is null) throw new ArgumentNullException(nameof(messages));
-
-        using (ActivityRepository.StartActivity())
-        {
-            var batch = Context.CreateBatchWrite<object>(OperationConfig);
-
-            batch.AddPutItems(messages);
-
-            await CreateDefaultRetryAsyncPolicy()
-                .ExecuteAsync(async () => await batch.ExecuteAsync(cancellationToken).ConfigureAwait(false))
-                .ConfigureAwait(false);
-        }
-    }
-
-    /// <summary>
-    ///     Queries the DynamoDB table and returns the first item with the specified id.
-    /// </summary>
-    /// <typeparam name="T">The type of item to query.</typeparam>
-    /// <param name="id">The id to query.</param>
-    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
-    /// <returns>The first item found with the specified id.</returns>
-    public async Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default)
-    {
-        using (ActivityRepository.StartActivity())
-        {
-            var result = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await Context.QueryAsync<T>(id, OperationConfig).GetNextSetAsync(cancellationToken)
-                        .ConfigureAwait(false))
-                .ConfigureAwait(false);
-
-            return result == null ? default : result.FirstOrDefault();
-        }
-    }
-
-    /// <summary>
-    ///     Queries the DynamoDB table and returns a list of items with the specified id.
-    /// </summary>
-    /// <typeparam name="T">The type of items to query.</typeparam>
-    /// <param name="id">The id to query.</param>
-    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
-    /// <returns>A list of items with the specified id.</returns>
-    public async Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default) where T : class
-    {
-        using (ActivityRepository.StartActivity())
-        {
-            var result = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await Context.QueryAsync<T>(id, OperationConfig).GetRemainingAsync(cancellationToken)
-                        .ConfigureAwait(false))
-                .ConfigureAwait(false);
-
-            return result;
-        }
-    }
-
-    /// <summary>
-    ///     Queries the DynamoDB table using a query request and returns a list of items.
-    /// </summary>
-    /// <typeparam name="T">The type of items to query.</typeparam>
-    /// <param name="request">The query request.</param>
-    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
-    /// <returns>A list of items based on the query request.</returns>
-    public async Task<IList<T>> QueryAsync<T>(QueryRequest request, CancellationToken cancellationToken = default) where T : class
-    {
-        using (ActivityRepository.StartActivity())
-        {
-            if (request is null) throw new ArgumentNullException(nameof(request));
-
-            var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
-            
-            return Helpers.ConvertAttributesToType<T>(items,context);
-        }
-    }
-
-    /// <summary>
-    ///     Queries the DynamoDB table using a query request and splits the results into two types based on a key.
-    /// </summary>
-    /// <typeparam name="T">The type of items to query.</typeparam>
-    /// <typeparam name="TResult1">The first type to split the results into.</typeparam>
-    /// <typeparam name="TResult2">The second type to split the results into.</typeparam>
-    /// <param name="request">The query request.</param>
-    /// <param name="splitBy">The key to split the results.</param>
-    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
-    /// <returns>Tuple containing lists of items split based on the specified key.</returns>
-    public async Task<(IList<TResult1> first, IList<TResult2> second)> QueryMultipleAsync<T, TResult1, TResult2>(
-        QueryRequest request, string splitBy, CancellationToken cancellationToken = default) where T : class
-    {
-        if (request is null) throw new ArgumentNullException(nameof(request));
-
-        using (ActivityRepository.StartActivity())
-        {
-            var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
-
-            return Helpers.ConvertAttributesToType<TResult1, TResult2>(items, splitBy);
-        }
-    }
-
-    /// <summary>
-    ///     Queries the DynamoDB table using a query request and splits the results into three types based on specified keys.
-    /// </summary>
-    /// <typeparam name="T">The type of items to query.</typeparam>
-    /// <typeparam name="TResult1">The first type to split the results into.</typeparam>
-    /// <typeparam name="TResult2">The second type to split the results into.</typeparam>
-    /// <typeparam name="TResult3">The third type to split the results into.</typeparam>
-    /// <param name="request">The query request.</param>
-    /// <param name="splitBy">The keys to split the results.</param>
-    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
-    /// <returns>Tuple containing lists of items split based on the specified keys.</returns>
-    public async Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third)>
-        QueryMultipleAsync<T, TResult1, TResult2, TResult3>(QueryRequest request, string[] splitBy,
-            CancellationToken cancellationToken = default) where T : class
-    {
-        if (request is null) throw new ArgumentNullException(nameof(request));
-        if (splitBy == null) throw new ArgumentNullException(nameof(splitBy));
-
-        using (ActivityRepository.StartActivity())
-        {
-            var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
-
-            return Helpers.ConvertAttributesToType<TResult1, TResult2, TResult3>(items, splitBy);
-        }
-    }
-
-    /// <summary>
-    ///     Queries the DynamoDB table using a query request and splits the results into four types based on specified keys.
-    /// </summary>
-    /// <typeparam name="T">The type of items to query.</typeparam>
-    /// <typeparam name="TResult1">The first type to split the results into.</typeparam>
-    /// <typeparam name="TResult2">The second type to split the results into.</typeparam>
-    /// <typeparam name="TResult3">The third type to split the results into.</typeparam>
-    /// <typeparam name="TResult4">The fourth type to split the results into.</typeparam>
-    /// <param name="request">The query request.</param>
-    /// <param name="splitBy">The keys to split the results.</param>
-    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
-    /// <returns>Tuple containing lists of items split based on the specified keys.</returns>
-    public async Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth)>
-        QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4>(QueryRequest request, string[] splitBy,
-            CancellationToken cancellationToken = default) where T : class
-    {
-        if (request is null) throw new ArgumentNullException(nameof(request));
-        if (splitBy == null) throw new ArgumentNullException(nameof(splitBy));
-
-        using (ActivityRepository.StartActivity())
-        {
-            var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
-
-            return Helpers.ConvertAttributesToType<TResult1, TResult2, TResult3, TResult4>(items, splitBy);
-        }
-    }
-
-    /// <summary>
-    ///     Queries the DynamoDB table using a query request and splits the results into five types based on specified keys.
-    /// </summary>
-    /// <typeparam name="T">The type of items to query.</typeparam>
-    /// <typeparam name="TResult1">The first type to split the results into.</typeparam>
-    /// <typeparam name="TResult2">The second type to split the results into.</typeparam>
-    /// <typeparam name="TResult3">The third type to split the results into.</typeparam>
-    /// <typeparam name="TResult4">The fourth type to split the results into.</typeparam>
-    /// <typeparam name="TResult5">The fifth type to split the results into.</typeparam>
-    /// <param name="request">The query request.</param>
-    /// <param name="splitBy">The keys to split the results.</param>
-    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
-    /// <returns>Tuple containing lists of items split based on the specified keys.</returns>
-    public async Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth,
-            IList<TResult5> fifth)>
-        QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4, TResult5>(QueryRequest request, string[] splitBy,
-            CancellationToken cancellationToken = default) where T : class
-    {
-        if (request is null) throw new ArgumentNullException(nameof(request));
-        if (splitBy == null) throw new ArgumentNullException(nameof(splitBy));
-
-        using (ActivityRepository.StartActivity())
-        {
-            var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
-
-            return Helpers.ConvertAttributesToType<TResult1, TResult2, TResult3, TResult4, TResult5>(items, splitBy);
-        }
-    }
-
-    /// <summary>
-    ///     Queries the DynamoDB table and returns the first or default item based on the query request.
-    /// </summary>
-    /// <typeparam name="T">The type of item to query.</typeparam>
-    /// <param name="request">The query request.</param>
-    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
-    /// <returns>The first or default item based on the query request.</returns>
-    public async Task<T> QueryFirstOrDefaultAsync<T>(QueryRequest request,
-        CancellationToken cancellationToken = default) where T : class
-    {
-        if (request is null) throw new ArgumentNullException(nameof(request));
-
-        using (ActivityRepository.StartActivity())
-        {
-            request.PageSize = 1;
-            request.Page = null;
-
-            var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
-
-            var queryResponse = Helpers.ConvertAttributesToType<T>(items,context);
-
-            return queryResponse.FirstOrDefault();
-        }
-    }
-
-    /// <summary>
-    ///     Queries the DynamoDB table using a query request and returns a paginated collection of items.
-    /// </summary>
-    /// <typeparam name="T">The type of items to query.</typeparam>
-    /// <param name="request">The query request.</param>
-    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
-    /// <returns>A paginated collection of items based on the query request.</returns>
-    public async Task<PagedCollection<T>> QueryPaginatedByAsync<T>(QueryRequest request,
-        CancellationToken cancellationToken = default) where T : class
-    {
-        if (request is null) throw new ArgumentNullException(nameof(request));
-
-        using (ActivityRepository.StartActivity(nameof(QueryFirstOrDefaultAsync)))
-        {
-            var (lastEvaluatedKey, items) =
-                await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
-
-            return new PagedCollection<T>
-            {
-                Items = Helpers.ConvertAttributesToType<T>(items,context),
-                Page = Helpers.CreatePaginationToken(lastEvaluatedKey),
-                PageSize = request.PageSize.GetValueOrDefault()
-            };
-        }
-    }
-
+    
     /// <summary>
     ///     Writes a batch of transactional write items to the DynamoDB table.
     /// </summary>
@@ -458,7 +155,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <exception cref="BusinessException">Thrown when the number of transactItems is invalid.</exception>
     public async Task TransactWriteItemsAsync(TransactionWriteRequest request, CancellationToken cancellationToken)
     {
-        if (request is null) throw new ArgumentNullException(nameof(request));
+        Check.NotNull(request, nameof(request));
 
         if (request.TransactItems is null || request.TransactItems.Count is > 25 or 0)
             throw new BusinessException(
@@ -470,131 +167,15 @@ public abstract class Repository : AwsBaseService, ITableRepository
         var transactRequest = new TransactWriteItemsRequest
         {
             ClientRequestToken = request.ClientRequestToken,
-            TransactItems = new List<TransactWriteItem>()
+            TransactItems = []
         };
 
         foreach (var transactItem in request.TransactItems)
-            transactRequest.TransactItems.Add(Helpers.CreateTransactionWriteItem(transactItem));
+            transactRequest.TransactItems.Add(DynamoHelper.CreateTransactionWriteItem(transactItem));
 
         await DynamoClient.TransactWriteItemsAsync(transactRequest, cancellationToken).ConfigureAwait(false);
     }
-
-    /// <summary>
-    ///     Scans the DynamoDB table based on the specified scan request.
-    /// </summary>
-    /// <typeparam name="T">The type of items to scan.</typeparam>
-    /// <param name="request">The scan request.</param>
-    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
-    /// <returns>The list of scanned items.</returns>
-    public async Task<IList<T>> ScanAsync<T>(ScanRequest request,
-        CancellationToken cancellationToken = default) where T : class
-    {
-        using (ActivityRepository.StartActivity())
-        {
-            return (await InternalScanAsync<T>(request, cancellationToken).ConfigureAwait(false)).Items;
-        }
-    }
-
-    /// <summary>
-    ///     Scans the DynamoDB table based on the specified scan request and returns a paginated collection of items.
-    /// </summary>
-    /// <typeparam name="T">The type of items to scan.</typeparam>
-    /// <param name="request">The scan request.</param>
-    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
-    /// <returns>A paginated collection of items based on the scan request.</returns>
-    /// <exception cref="ArgumentNullException">Thrown when the request is null.</exception>
-    public async Task<PagedCollection<T>> ScanPaginatedByAsync<T>(ScanRequest request,
-        CancellationToken cancellationToken = default) where T : class
-    {
-        if (request is null) throw new ArgumentNullException(nameof(request));
-
-        using (ActivityRepository.StartActivity())
-        {
-            var (exclusiveStartKey, items) =
-                await InternalScanAsync<T>(request, cancellationToken).ConfigureAwait(false);
-
-            if (items?.Count == 0)
-                return new PagedCollection<T>();
-
-            var response = new PagedCollection<T>
-            {
-                Items = items,
-                Page = Helpers.CreatePaginationToken(exclusiveStartKey),
-                PageSize = request.PageSize.GetValueOrDefault()
-            };
-
-            return response;
-        }
-    }
-
-    /// <summary>
-    ///     Executes a SQL statement asynchronously and returns the response containing items of type T.
-    /// </summary>
-    /// <typeparam name="T">The type of items to be returned.</typeparam>
-    /// <param name="sqlStatementRequest">The SQL statement request.</param>
-    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
-    /// <returns>The response containing items of type T.</returns>
-    /// <exception cref="ArgumentNullException">Thrown when the SQL statement request is null.</exception>
-    public async Task<ExecuteSqlStatementResponse<T>> ExecuteStatementAsync<T>(
-        ExecuteSqlStatementRequest sqlStatementRequest, CancellationToken cancellationToken = default) where T : class
-    {
-        if (sqlStatementRequest is null) throw new ArgumentNullException(nameof(sqlStatementRequest));
-
-        using (ActivityRepository.StartActivity(nameof(UpdateAsync)))
-        {
-            var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                await DynamoClient.ExecuteStatementAsync(new ExecuteStatementRequest
-                {
-                    ConsistentRead = sqlStatementRequest.ConsistentRead,
-                    NextToken = sqlStatementRequest.NextToken,
-                    Statement = sqlStatementRequest.Statment
-                }, cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
-
-
-            if (response is null)
-                return null;
-
-            return new ExecuteSqlStatementResponse<T>
-            {
-                NextToken = sqlStatementRequest.NextToken,
-                Items = Helpers.ConvertAttributesToType<T>(response.Items,context)
-            };
-        }
-    }
-
-    /// <summary>
-    ///     Gets a batch of items from the DynamoDB table based on the specified batch get item request.
-    /// </summary>
-    /// <typeparam name="T">The type of items to get.</typeparam>
-    /// <param name="batchGetItemRequest">The batch get item request.</param>
-    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
-    /// <returns>The list of items retrieved.</returns>
-    /// <exception cref="ArgumentNullException">Thrown when the batch get item request is null.</exception>
-    public async Task<List<T>> BatchGetItem<T>(BatchGetItemRequest batchGetItemRequest,
-        CancellationToken cancellationToken = default) where T : class
-    {
-        if (batchGetItemRequest is null) throw new ArgumentNullException(nameof(batchGetItemRequest));
-
-        using (ActivityRepository.StartActivity())
-        {
-            var items = Helpers.CreateBatchGetItemRequest(batchGetItemRequest);
-
-            var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await DynamoClient.BatchGetItemAsync(items, cancellationToken).ConfigureAwait(false))
-                .ConfigureAwait(false);
-
-            if (response.Responses is null)
-                return null;
-
-            var result = new List<T>();
-
-            foreach (var item in response.Responses) 
-                result.AddRange(Helpers.ConvertAttributesToType<T>(item.Value,context));
-
-            return result;
-        }
-    }
-
+    
     /// <summary>
     ///     Writes a batch of items to the DynamoDB table based on the specified batch write item request.
     /// </summary>
@@ -605,15 +186,15 @@ public abstract class Repository : AwsBaseService, ITableRepository
     public async Task<BatchWriteItemResponse> BatchWriteItem(BatchWriteItemRequest batchWriteItemRequest,
         CancellationToken cancellationToken = default)
     {
-        if (batchWriteItemRequest is null) throw new ArgumentNullException(nameof(batchWriteItemRequest));
+        Check.NotNull(batchWriteItemRequest, nameof(batchWriteItemRequest));
 
         using (ActivityRepository.StartActivity())
         {
-            var request = Helpers.CreateBatchWriteItemRequest(batchWriteItemRequest);
+            var request = DynamoHelper.CreateBatchWriteItemRequest(batchWriteItemRequest,context);
             var result = new BatchWriteItemResponse();
             var attempts = 0;
             var backOfficeRandom = new Random(1);
-
+            
             do
             {
                 var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
@@ -626,24 +207,124 @@ public abstract class Repository : AwsBaseService, ITableRepository
                 request.RequestItems = response.UnprocessedItems;
                 attempts++;
 
-                Thread.Sleep(
-                    TimeSpan.FromSeconds(batchWriteItemRequest.RetryDelay.Seconds * backOfficeRandom.Next(1, 3)));
+                //sleeps for a while before retrying
+                if(request.RequestItems.Count != 0)
+                    Thread.Sleep(TimeSpan.FromSeconds(batchWriteItemRequest.RetryDelay.Seconds * backOfficeRandom.Next(1, 3)));
+                
             } while (attempts < batchWriteItemRequest.MaxRetry);
 
             return result;
         }
     }
 
-    /// <summary>
-    ///     Creates the default asynchronous retry policy for handling exceptions during operations.
-    /// </summary>
-    /// <returns>The asynchronous retry policy instance.</returns>
-    protected override AsyncRetryPolicy CreateDefaultRetryAsyncPolicy()
+     
+
+    #endregion
+    
+    #region [Delete]
+    
+    /// <inheritdoc />
+    public async Task DeleteAsync<T>(T message, CancellationToken cancellationToken = default) where T : class, ITableMessage
     {
-        return base.CreateRetryAsyncPolicy<ProvisionedThroughputExceededException,
-            InternalServerErrorException, LimitExceededException, ResourceInUseException>();
+        Check.NotNull(message, nameof(message));
+        
+        using (ActivityRepository.StartActivity())
+        {
+            var keys = DynamoHelper.GetKeyValues(message, context);
+            
+            await DeleteAsync<T>(keys.HashKey, keys.RangeKey?.ToString(), cancellationToken);
+        }
+    }
+    public async Task DeleteAsync<T>(List<T> messages, CancellationToken cancellationToken = default) where T : class
+    {
+        Check.NotNull(messages, nameof(messages));
+        
+        using (ActivityRepository.StartActivity())
+        {
+            var tableName = DynamoHelper.GetTableName<T>(context);
+
+            var writeRequest = messages.Select(message => new WriteRequest { DeleteRequest = 
+                new DeleteRequest()
+                {
+                    Key = DynamoHelper.ExtractKeys(message, context)
+                } }).ToList();
+            
+            var response = await InternalBatchWriteItemAsync<T>(new Dictionary<string, List<WriteRequest>>
+            {
+                { tableName, writeRequest }
+            }, cancellationToken:cancellationToken).ConfigureAwait(false);
+        
+            if(response.HasItems())
+                throw new CriticalException("Some items could not be deleted from the table");
+        }
     }
 
+    /// <inheritdoc />
+    public async Task DeleteAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default)
+        where T : class, ITableMessage
+    {
+        Check.NotNull(id, nameof(id));
+
+        using var activity = ActivityRepository.StartActivity();
+        activity?.SetTag("id", id);
+        activity?.SetTag("rangeKey", rangeKey);
+        
+        var deleteRequest = new DeleteItemRequest()
+        {
+            TableName = DynamoHelper.GetTableName<T>(context),
+            Key = DynamoHelper.ExtractKeysToDictionary<T>(id,rangeKey, context),
+        };
+        
+        var response = await CreateDefaultRetryAsyncPolicy()
+            .ExecuteAsync(async () => await dynamoClient.DeleteItemAsync(deleteRequest,cancellationToken).ConfigureAwait(false))
+            .ConfigureAwait(false);
+        
+        activity?.SetTag("consumedCapacity", response.ConsumedCapacity);
+        activity?.SetTag("statusCode", response.HttpStatusCode);
+        activity?.SetTag("requestId", response.ResponseMetadata?.RequestId);
+    }
+    #endregion
+
+    #region [Update]
+    /// <exception cref="ArgumentNullException"></exception>
+    /// <inheritdoc />
+    public async Task<T> UpdateAsync<T>(T instance, CancellationToken cancellationToken = default) where T:class
+    {
+        Check.NotNull(instance, nameof(instance));
+      
+        using (ActivityRepository.StartActivity())
+        {
+            var tableName = DynamoHelper.GetTableName<T>(context);
+            var keys = DynamoHelper.ExtractKeys(instance, context);
+            var attributesToUpdate = AttributeConverter.ConvertTypeToAttributes(instance, context);
+
+            if(attributesToUpdate is null) throw new CriticalException("Attributes to update is null");
+            
+            //Remove keys from attributes to update
+            foreach (var key in keys)
+            {
+                attributesToUpdate.Remove(key.Key);
+            }
+            
+            var updateItemRequest = new UpdateItemRequest
+            {
+                TableName = tableName,
+                Key = keys,
+                //Converts to a dictionary of AttributeValueUpdate
+                AttributeUpdates = attributesToUpdate.ToDictionary(x => x.Key, x => new AttributeValueUpdate()
+                {
+                    Action = AttributeAction.PUT,
+                    Value = x.Value
+                })
+            };
+            
+            //If the user request a return value
+            var newInstance =  await UpdateAsync<T>(updateItemRequest, cancellationToken);
+
+            return newInstance ?? instance;
+        }
+    }
+    
     /// <summary>
     ///     Updates an item in the DynamoDB table based on the provided parameters.
     /// </summary>
@@ -680,20 +361,436 @@ public abstract class Repository : AwsBaseService, ITableRepository
     protected async Task<T> UpdateAsync<T>(UpdateItemRequest updateItemRequest,
         CancellationToken cancellationToken = default)
     {
-        if (updateItemRequest is null)
-            throw new ArgumentNullException(nameof(updateItemRequest));
+        Check.NotNull(updateItemRequest, nameof(updateItemRequest));
 
         using var activity = ActivityRepository.StartActivity();
+        activity?.SetTag("tableName", updateItemRequest.TableName);
+        
         var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                 await DynamoClient.UpdateItemAsync(updateItemRequest,
                     cancellationToken).ConfigureAwait(false))
             .ConfigureAwait(false);
 
+        activity?.SetTag("consumedCapacity", response.ConsumedCapacity);
+        activity?.SetTag("statusCode", response.HttpStatusCode);
+        activity?.SetTag("requestId", response.ResponseMetadata.RequestId);
+        
         return response.Attributes.IsNullOrEmpty()
             ? default
             : AttributeConverter.ConvertAttributesToType<T>(response.Attributes,context);
     }
 
+    #endregion
+    
+    #region [Queries] 
+    /// <inheritdoc />
+    public async Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default) where T : class
+    {
+        using (ActivityRepository.StartActivity())
+        {
+            var queryRequest = new QueryRequest
+            {
+                KeyConditionExpression = DynamoHelper.BuildDefaultKeyExpression<T>(false,context),
+                Filter = new
+                {
+                    pk = id,
+                }
+            };
+
+            var result = await QueryAsync<T>(queryRequest, cancellationToken).ConfigureAwait(false);
+            
+            return result?.FirstOrDefault();
+        }
+    }
+
+    /// <inheritdoc />
+    public async Task<T> GetByIdAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default) where T : class, ITableMessage
+    {
+        if (id == null) throw new ArgumentNullException(nameof(id));
+        
+        using (ActivityRepository.StartActivity())
+        {  
+            var queryRequest = new QueryRequest
+            {
+                KeyConditionExpression = DynamoHelper.BuildDefaultKeyExpression<T>(rangeKey!=null,context),
+                Filter = new
+                {
+                    pk = id,
+                    sk = rangeKey
+                }
+            };
+                
+            var result = await QueryAsync<T>(queryRequest, cancellationToken);
+
+            return result?.SingleOrDefault();
+        }
+    }
+    
+    /// <summary>
+    ///     Queries the DynamoDB table and returns a list of items with the specified id.
+    /// </summary>
+    /// <typeparam name="T">The type of items to query.</typeparam>
+    /// <param name="id">The id to query.</param>
+    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
+    /// <returns>A list of items with the specified id.</returns>
+    public async Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default) where T : class
+    {
+        using (ActivityRepository.StartActivity())
+        {
+            var queryRequest = new QueryRequest
+            {
+                KeyConditionExpression = DynamoHelper.BuildDefaultKeyExpression<T>(false, context),
+                Filter = new
+                {
+                    pk = id
+                }
+            };
+
+            return await QueryAsync<T>(queryRequest, cancellationToken);
+        }
+    }
+
+    /// <summary>
+    ///     Queries the DynamoDB table using a query request and returns a list of items.
+    /// </summary>
+    /// <typeparam name="T">The type of items to query.</typeparam>
+    /// <param name="request">The query request.</param>
+    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
+    /// <returns>A list of items based on the query request.</returns>
+    public async Task<IList<T>> QueryAsync<T>(QueryRequest request, CancellationToken cancellationToken = default) where T : class
+    {
+        using (ActivityRepository.StartActivity())
+        {
+            if (request is null) throw new ArgumentNullException(nameof(request));
+
+            var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
+            
+            return DynamoHelper.ConvertAttributesToType<T>(items,context);
+        }
+    }
+
+    /// <summary>
+    ///     Queries the DynamoDB table using a query request and splits the results into two types based on a key.
+    /// </summary>
+    /// <typeparam name="T">The type of items to query.</typeparam>
+    /// <typeparam name="TResult1">The first type to split the results into.</typeparam>
+    /// <typeparam name="TResult2">The second type to split the results into.</typeparam>
+    /// <param name="request">The query request.</param>
+    /// <param name="splitBy">The key to split the results.</param>
+    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
+    /// <returns>Tuple containing lists of items split based on the specified key.</returns>
+    public async Task<(IList<TResult1> first, IList<TResult2> second)> QueryMultipleAsync<T, TResult1, TResult2>(
+        QueryRequest request, string splitBy, CancellationToken cancellationToken = default) where T : class
+    {
+        if (request is null) throw new ArgumentNullException(nameof(request));
+
+        using (ActivityRepository.StartActivity())
+        {
+            var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
+
+            return DynamoHelper.ConvertAttributesToType<TResult1, TResult2>(items, splitBy,context);
+        }
+    }
+
+    /// <summary>
+    ///     Queries the DynamoDB table using a query request and splits the results into three types based on specified keys.
+    /// </summary>
+    /// <typeparam name="T">The type of items to query.</typeparam>
+    /// <typeparam name="TResult1">The first type to split the results into.</typeparam>
+    /// <typeparam name="TResult2">The second type to split the results into.</typeparam>
+    /// <typeparam name="TResult3">The third type to split the results into.</typeparam>
+    /// <param name="request">The query request.</param>
+    /// <param name="splitBy">The keys to split the results.</param>
+    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
+    /// <returns>Tuple containing lists of items split based on the specified keys.</returns>
+    public async Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third)>
+        QueryMultipleAsync<T, TResult1, TResult2, TResult3>(QueryRequest request, string[] splitBy,
+            CancellationToken cancellationToken = default) where T : class
+    {
+        if (request is null) throw new ArgumentNullException(nameof(request));
+        if (splitBy == null) throw new ArgumentNullException(nameof(splitBy));
+
+        using (ActivityRepository.StartActivity())
+        {
+            var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
+
+            return DynamoHelper.ConvertAttributesToType<TResult1, TResult2, TResult3>(items, splitBy,context);
+        }
+    }
+
+    /// <summary>
+    ///     Queries the DynamoDB table using a query request and splits the results into four types based on specified keys.
+    /// </summary>
+    /// <typeparam name="T">The type of items to query.</typeparam>
+    /// <typeparam name="TResult1">The first type to split the results into.</typeparam>
+    /// <typeparam name="TResult2">The second type to split the results into.</typeparam>
+    /// <typeparam name="TResult3">The third type to split the results into.</typeparam>
+    /// <typeparam name="TResult4">The fourth type to split the results into.</typeparam>
+    /// <param name="request">The query request.</param>
+    /// <param name="splitBy">The keys to split the results.</param>
+    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
+    /// <returns>Tuple containing lists of items split based on the specified keys.</returns>
+    public async Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth)>
+        QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4>(QueryRequest request, string[] splitBy,
+            CancellationToken cancellationToken = default) where T : class
+    {
+        if (request is null) throw new ArgumentNullException(nameof(request));
+        if (splitBy == null) throw new ArgumentNullException(nameof(splitBy));
+
+        using (ActivityRepository.StartActivity())
+        {
+            var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
+
+            return DynamoHelper.ConvertAttributesToType<TResult1, TResult2, TResult3, TResult4>(items, splitBy,context);
+        }
+    }
+
+    /// <summary>
+    ///     Queries the DynamoDB table using a query request and splits the results into five types based on specified keys.
+    /// </summary>
+    /// <typeparam name="T">The type of items to query.</typeparam>
+    /// <typeparam name="TResult1">The first type to split the results into.</typeparam>
+    /// <typeparam name="TResult2">The second type to split the results into.</typeparam>
+    /// <typeparam name="TResult3">The third type to split the results into.</typeparam>
+    /// <typeparam name="TResult4">The fourth type to split the results into.</typeparam>
+    /// <typeparam name="TResult5">The fifth type to split the results into.</typeparam>
+    /// <param name="request">The query request.</param>
+    /// <param name="splitBy">The keys to split the results.</param>
+    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
+    /// <returns>Tuple containing lists of items split based on the specified keys.</returns>
+    public async Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth,
+            IList<TResult5> fifth)>
+        QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4, TResult5>(QueryRequest request, string[] splitBy,
+            CancellationToken cancellationToken = default) where T : class
+    {
+        if (request is null) throw new ArgumentNullException(nameof(request));
+        if (splitBy == null) throw new ArgumentNullException(nameof(splitBy));
+
+        using (ActivityRepository.StartActivity())
+        {
+            var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
+
+            return DynamoHelper.ConvertAttributesToType<TResult1, TResult2, TResult3, TResult4, TResult5>(items, splitBy,context);
+        }
+    }
+
+    /// <summary>
+    ///     Queries the DynamoDB table and returns the first or default item based on the query request.
+    /// </summary>
+    /// <typeparam name="T">The type of item to query.</typeparam>
+    /// <param name="request">The query request.</param>
+    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
+    /// <returns>The first or default item based on the query request.</returns>
+    public async Task<T> QueryFirstOrDefaultAsync<T>(QueryRequest request,
+        CancellationToken cancellationToken = default) where T : class
+    {
+        if (request is null) throw new ArgumentNullException(nameof(request));
+
+        using (ActivityRepository.StartActivity())
+        {
+            request.PageSize = 1;
+            request.Page = null;
+
+            var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
+
+            var queryResponse = DynamoHelper.ConvertAttributesToType<T>(items,context);
+
+            return queryResponse.FirstOrDefault();
+        }
+    }
+
+    /// <summary>
+    ///     Queries the DynamoDB table using a query request and returns a paginated collection of items.
+    /// </summary>
+    /// <typeparam name="T">The type of items to query.</typeparam>
+    /// <param name="request">The query request.</param>
+    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
+    /// <returns>A paginated collection of items based on the query request.</returns>
+    public async Task<PagedCollection<T>> QueryPaginatedByAsync<T>(QueryRequest request,
+        CancellationToken cancellationToken = default) where T : class
+    {
+        if (request is null) throw new ArgumentNullException(nameof(request));
+
+        using (ActivityRepository.StartActivity())
+        {
+            var (lastEvaluatedKey, items) =
+                await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
+
+            return new PagedCollection<T>
+            {
+                Items = DynamoHelper.ConvertAttributesToType<T>(items,context),
+                Page = DynamoHelper.CreatePaginationToken(lastEvaluatedKey),
+                PageSize = request.PageSize.GetValueOrDefault()
+            };
+        }
+    }
+    #endregion
+
+    #region  [Scans]
+    /// <summary>
+    ///     Scans the DynamoDB table based on the specified scan request.
+    /// </summary>
+    /// <typeparam name="T">The type of items to scan.</typeparam>
+    /// <param name="request">The scan request.</param>
+    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
+    /// <returns>The list of scanned items.</returns>
+    public async Task<IList<T>> ScanAsync<T>(ScanRequest request,
+        CancellationToken cancellationToken = default) where T : class
+    {
+        using (ActivityRepository.StartActivity())
+        {
+            var response  = await InternalScanAsync<T>(request, cancellationToken).ConfigureAwait(false);
+
+            //This implementation hides pagination and returns all items
+            
+            return response.Items;
+        }
+    }
+
+    /// <summary>
+    ///     Scans the DynamoDB table based on the specified scan request and returns a paginated collection of items.
+    /// </summary>
+    /// <typeparam name="T">The type of items to scan.</typeparam>
+    /// <param name="request">The scan request.</param>
+    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
+    /// <returns>A paginated collection of items based on the scan request.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when the request is null.</exception>
+    public async Task<PagedCollection<T>> ScanPaginatedByAsync<T>(ScanRequest request,
+        CancellationToken cancellationToken = default) where T : class
+    {
+        if (request is null) throw new ArgumentNullException(nameof(request));
+
+        using (ActivityRepository.StartActivity())
+        {
+            var (exclusiveStartKey, items) =
+                await InternalScanAsync<T>(request, cancellationToken).ConfigureAwait(false);
+
+            if (items?.Count == 0)
+                return new PagedCollection<T>();
+
+            var response = new PagedCollection<T>
+            {
+                Items = items,
+                Page = DynamoHelper.CreatePaginationToken(exclusiveStartKey),
+                PageSize = request.PageSize.GetValueOrDefault()
+            };
+
+            return response;
+        }
+    }
+    #endregion
+    
+    /// <summary>
+    ///     Executes a SQL statement asynchronously and returns the response containing items of type T.
+    /// </summary>
+    /// <typeparam name="T">The type of items to be returned.</typeparam>
+    /// <param name="sqlStatementRequest">The SQL statement request.</param>
+    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
+    /// <returns>The response containing items of type T.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when the SQL statement request is null.</exception>
+    public async Task<ExecuteSqlStatementResponse<T>> ExecuteStatementAsync<T>(
+        ExecuteSqlStatementRequest sqlStatementRequest, CancellationToken cancellationToken = default) where T : class
+    {
+        if (sqlStatementRequest is null) throw new ArgumentNullException(nameof(sqlStatementRequest));
+
+        using (ActivityRepository.StartActivity())
+        {
+            var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+                await DynamoClient.ExecuteStatementAsync(new ExecuteStatementRequest
+                {
+                    ConsistentRead = sqlStatementRequest.ConsistentRead,
+                    NextToken = sqlStatementRequest.NextToken,
+                    Statement = sqlStatementRequest.Statment
+                }, cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
+
+
+            if (response is null)
+                return null;
+
+            return new ExecuteSqlStatementResponse<T>
+            {
+                NextToken = sqlStatementRequest.NextToken,
+                Items = DynamoHelper.ConvertAttributesToType<T>(response.Items,context)
+            };
+        }
+    }
+
+    /// <summary>
+    ///     Gets a batch of items from the DynamoDB table based on the specified batch get item request.
+    /// </summary>
+    /// <typeparam name="T">The type of items to get.</typeparam>
+    /// <param name="batchGetItemRequest">The batch get item request.</param>
+    /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
+    /// <returns>The list of items retrieved.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when the batch get item request is null.</exception>
+    public async Task<List<T>> BatchGetItem<T>(BatchGetItemRequest batchGetItemRequest,
+        CancellationToken cancellationToken = default) where T : class
+    {
+        if (batchGetItemRequest is null) throw new ArgumentNullException(nameof(batchGetItemRequest));
+
+        using (ActivityRepository.StartActivity())
+        {
+            var items = DynamoHelper.CreateBatchGetItemRequest(batchGetItemRequest);
+
+            var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+                    await DynamoClient.BatchGetItemAsync(items, cancellationToken).ConfigureAwait(false))
+                .ConfigureAwait(false);
+
+            if (response.Responses is null)
+                return null;
+
+            var result = new List<T>();
+
+            foreach (var item in response.Responses) 
+                result.AddRange(DynamoHelper.ConvertAttributesToType<T>(item.Value,context));
+
+            return result;
+        }
+    }
+    
+    /// <summary>
+    /// Execute a batch write item request returning the unprocessed items after some retries
+    /// </summary>
+    /// <param name="batchWriteItemRequest"></param>
+    /// <param name="maxRetry"></param>
+    /// <param name="cancellationToken"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    private async Task<Dictionary<string, List<WriteRequest>>> InternalBatchWriteItemAsync<T>(
+        Dictionary<string, List<WriteRequest>> batchWriteItemRequest,
+        int maxRetry = 3, CancellationToken cancellationToken = default) where T : class
+    {
+        Check.NotNull(batchWriteItemRequest, nameof(batchWriteItemRequest));
+
+        using var activity = ActivityRepository.StartActivity();
+
+        var attempts = 0;
+        var remainingItems = batchWriteItemRequest;
+
+        do
+        {
+            var items = remainingItems;
+
+            var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+                    await DynamoClient.BatchWriteItemAsync(items, cancellationToken).ConfigureAwait(false))
+                .ConfigureAwait(false);
+
+            remainingItems = response.UnprocessedItems;
+            
+            if (!response.UnprocessedItems.HasItems())
+                break;
+            
+            attempts++;
+
+            activity?.SetTag("consumedCapacity", response.ConsumedCapacity);
+            activity?.SetTag("statusCode", response.HttpStatusCode);
+            activity?.SetTag("requestId", response.ResponseMetadata.RequestId);
+
+        } while (attempts < maxRetry);
+     
+        return remainingItems;
+    }
+    
     /// <summary>
     ///     Executes an internal query against the DynamoDB table based on the specified query request.
     /// </summary>
@@ -710,7 +807,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         using (ActivityRepository.StartActivity())
         {
-            var queryRequest = Helpers.CreateQueryRequest<T>(request,context);
+            var queryRequest = DynamoHelper.CreateQueryRequest<T>(request,context);
 
             var items = new List<Dictionary<string, AttributeValue>>();
             var remaining = request.PageSize;
@@ -754,7 +851,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         using (ActivityRepository.StartActivity())
         {
-            var scanRequest = Helpers.CreateScanRequest<T>(request);
+            var scanRequest = DynamoHelper.CreateScanRequest<T>(request,context);
 
             Dictionary<string, AttributeValue> lastEvaluatedKey = null;
 
@@ -771,7 +868,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
                 if (iterator.Current == null)
                     break;
 
-                items.AddRange(Helpers.ConvertAttributesToType<T>(iterator.Current.Items,context));
+                items.AddRange(DynamoHelper.ConvertAttributesToType<T>(iterator.Current.Items,context));
                 scanRequest.ExclusiveStartKey = lastEvaluatedKey = iterator.Current.LastEvaluatedKey;
                 remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
 
@@ -781,13 +878,23 @@ public abstract class Repository : AwsBaseService, ITableRepository
             return (lastEvaluatedKey, items);
         }
     }
+    
+    
+    /// <summary>
+    ///     Creates the default asynchronous retry policy for handling exceptions during operations.
+    /// </summary>
+    /// <returns>The asynchronous retry policy instance.</returns>
+    protected override AsyncRetryPolicy CreateDefaultRetryAsyncPolicy()
+    {
+        return base.CreateRetryAsyncPolicy<ProvisionedThroughputExceededException,
+            InternalServerErrorException, LimitExceededException, ResourceInUseException>();
+    }
 
     /// <summary>
     ///     Disposes the DynamoDB context and AmazonDynamoDBClient resources.
     /// </summary>
     protected override void DisposeServices()
     {
-        dynamoDbContext?.Dispose();
         dynamoClient?.Dispose();
     }
 }

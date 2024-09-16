@@ -35,9 +35,9 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     public string Sk { get; private set; }
     
     /// <summary>
-    /// Gets or sets the sort key prefix for the DynamoDB table.
+    /// Gets or sets the range key prefix for the DynamoDB table.
     /// </summary>
-    public string SortKeyPrefix { get; private set; }
+    public string RangeKeyPrefix { get; private set; }
 
     /// <summary>
     ///     Gets or sets the entity type for the DynamoDB table.
@@ -66,7 +66,7 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     ///     Sets the partition key for the DynamoDB table to "PK".
     /// </summary>
     /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public EntityTypeBuilder<TEntity> WithOneTableHashKey()
+    public PropertyTypeBuilder<TEntity> WithOneTableHashKey()
     {
         return HasHashKey("PK");
     }
@@ -76,7 +76,7 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     /// </summary>
     /// <param name="expression">The hash key function to generate the partition key.</param>
     /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public EntityTypeBuilder<TEntity> HasHashKey<TProperty>(Expression<Func<TEntity, TProperty>> expression)
+    public PropertyTypeBuilder<TEntity> HasHashKey<TProperty>(Expression<Func<TEntity, TProperty>> expression)
     {
         return HasHashKey(GetPropertyName(expression));
     }
@@ -86,13 +86,12 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     /// </summary>
     /// <param name="hashKey">The partition key to set.</param>
     /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public EntityTypeBuilder<TEntity> HasHashKey(string hashKey)
+    public PropertyTypeBuilder<TEntity> HasHashKey(string hashKey)
     {
         Pk = hashKey;
-        Property(Pk);
-        return this;
+        return Property(Pk);
     }
-
+    
     public EntityTypeBuilder<TEntity> HasHashKeyPrefix(string hashKeyPrefix)
     {
         HashKeyPrefix = hashKeyPrefix;
@@ -104,9 +103,9 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     ///     Sets the sort key for the DynamoDB table to "SK".
     /// </summary>
     /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public EntityTypeBuilder<TEntity> WithOneTableRangeKey()
+    public PropertyTypeBuilder<TEntity> WithOneTableRangeKey()
     {
-        return HasSortKey("SK");
+        return WithRangeKey("SK");
     }
 
     /// <summary>
@@ -114,31 +113,30 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     /// </summary>
     /// <param name="expression">The sort key function to generate the sort key.</param>
     /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public EntityTypeBuilder<TEntity> HasSortKey<TProperty>(Expression<Func<TEntity, TProperty>> expression)
+    public PropertyTypeBuilder<TEntity> WithRangeKey<TProperty>(Expression<Func<TEntity, TProperty>> expression)
     {
-        return HasSortKey(GetPropertyName(expression));
+        return WithRangeKey(GetPropertyName(expression));
     }
 
     /// <summary>
-    ///     Sets the sort key for the DynamoDB table using a specified sort key.
+    ///     Sets the range key for the DynamoDB table using a specified sort key.
     /// </summary>
-    /// <param name="sortKey">The sort key to set.</param>
+    /// <param name="rangeKey">The sort key to set.</param>
     /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public EntityTypeBuilder<TEntity> HasSortKey(string sortKey)
+    public PropertyTypeBuilder<TEntity> WithRangeKey(string rangeKey)
     {
-        Sk = sortKey;
-        Property(Sk);
-        return this;
+        Sk = rangeKey;
+        return Property(Sk);
     }
     
     /// <summary>
-    /// Sets the sort key prefix for the DynamoDB table.
+    /// Sets the sort/Range key prefix for the DynamoDB table.
     /// </summary>
-    /// <param name="sortKeyPrefix"></param>
+    /// <param name="rangeKeyPrefix"></param>
     /// <returns></returns>
-    public EntityTypeBuilder<TEntity> HasSortKeyPrefix(string sortKeyPrefix)
+    public EntityTypeBuilder<TEntity> WithRangeKeyPrefix(string rangeKeyPrefix)
     {
-        SortKeyPrefix = sortKeyPrefix;
+        RangeKeyPrefix = rangeKeyPrefix;
         return this;
     }
     
@@ -162,7 +160,7 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
         EntityType = entityTypeName;
         return this;
     }
-
+    
     /// <summary>
     ///     Defines a property for the entity using a provided property function.
     /// </summary>

@@ -1,10 +1,13 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Amazon.DynamoDBv2.DataModel;
 using Innovt.Cloud.AWS.Dynamo.Exceptions;
 using Innovt.Cloud.AWS.Dynamo.Mapping;
 using Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
+using Innovt.Core.Collections;
 
 namespace Innovt.Cloud.AWS.Dynamo;
 
@@ -16,6 +19,7 @@ public abstract class DynamoContext
     public bool EnableChangingTracking { get; set; } = false;
 
     private static ModelBuilder modelBuilder = null!;
+    
     private static readonly object ObjLock = new();
     
     protected DynamoContext()
@@ -36,24 +40,50 @@ public abstract class DynamoContext
         }
     }
     
-    public bool HasTypeBuilder<T>()
+    private static Type GetEntityType<T>(object instance=null)
     {
-        var entityName = typeof(T).Name;
+        var instanceType = typeof(T);
+        
+        switch (instance)
+        {
+            case null:
+                return instanceType;
+            case ICollection<object> list:
+                instanceType = list.HasItems() ? list.First().GetType() :  list.GetType().GetGenericArguments()[0];
+                break;
+            default:
+                instanceType = instance.GetType();
+                break;
+        }
+        return instanceType;
+    }
+    private static string GetEntityName<T>(object instance=null)
+    {
+        var instanceType = GetEntityType<T>(instance);
+        
+        return instanceType.Name;
+    }
+    
+    public bool HasTypeBuilder<T>(object instance=null)
+    {
+        var entityName = GetEntityName<T>(instance);
 
         return Entities.TryGetValue(entityName, out var value);
     }
     
-    public EntityTypeBuilder<T> GetTypeBuilder<T>()
+    public EntityTypeBuilder<T> GetTypeBuilder<T>(object instance=null)
     {
-        var entityName = typeof(T).Name;
-
+        var entityName = GetEntityName<T>(instance);
+        
         if (!Entities.TryGetValue(entityName, out var value))
             throw new MissingEntityMapException(entityName);
-
-        if (value is not EntityTypeBuilder<T> entityTypeBuilder)
-            throw new MissingEntityMapException(entityName);
         
-        return entityTypeBuilder;
+        if(instance is null && value is EntityTypeBuilder<T> entityTypeBuilder)
+        {
+            return entityTypeBuilder;
+        }
+        
+        throw new MissingEntityMapException(entityName);
     }
     public IPropertyConverter GetPropertyConverter(Type type)
     {
