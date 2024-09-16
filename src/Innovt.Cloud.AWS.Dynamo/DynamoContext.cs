@@ -13,8 +13,6 @@ namespace Innovt.Cloud.AWS.Dynamo;
 /// </summary>
 public abstract class DynamoContext
 {
-    public bool EnableChangingTracking { get; set; } = false;
-
     private static ModelBuilder modelBuilder = null!;
     
     private static readonly object ObjLock = new();
