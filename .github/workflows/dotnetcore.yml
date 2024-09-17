@@ -30,7 +30,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 8.0.201
+          dotnet-version: 8.0.401
       - name: AddNugetSource
         run: dotnet nuget add source --username USERNAME --password ${{ secrets.NUGET_API_KEY }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/Innovtt/index.json"
       - name: Install Sonnar Scaner
@@ -38,7 +38,7 @@ jobs:
       - name: Build
         working-directory: src
         run: |
-          dotnet sonarscanner begin /d:sonar.token=$SONAR_TOKEN /d:sonar.host.url=$SONAR_HOST /o:$SONAR_ORGANIZATION /k:$SONAR_PROJECT_KEY /d:sonar.cs.opencover.reportsPaths="**/testresults/coverage.opencover.xml" /d:sonar.coverage.exclusions=**Test*.cs /d:sonar.cs.vstest.reportsPaths=./testresults/*.trx ;
+          dotnet sonarscanner begin /d:sonar.token=$SONAR_TOKEN /d:sonar.host.url=$SONAR_HOST /o:$SONAR_ORGANIZATION /k:$SONAR_PROJECT_KEY /d:sonar.scanner.scanAll=false /d:sonar.cs.opencover.reportsPaths="**/testresults/coverage.opencover.xml" /d:sonar.coverage.exclusions=**Test*.cs /d:sonar.cs.vstest.reportsPaths=./testresults/*.trx ;
           dotnet build -c Release
           dotnet test -c Release --logger trx --results-directory ./testresults /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./testresults/coverage.opencover.xml
           dotnet sonarscanner end /d:sonar.token=$SONAR_TOKEN  

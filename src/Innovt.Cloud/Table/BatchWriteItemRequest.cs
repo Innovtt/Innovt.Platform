@@ -23,17 +23,6 @@ public class BatchWriteItemRequest
     }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="BatchWriteItemRequest" /> class with a table name and batch write
-    ///     item.
-    /// </summary>
-    /// <param name="tableName">The name of the table.</param>
-    /// <param name="batchWriteItem">The batch write item for the specified table.</param>
-    public BatchWriteItemRequest(string tableName, BatchWriteItem batchWriteItem) : this()
-    {
-        AddItem(tableName, batchWriteItem);
-    }
-
-    /// <summary>
     ///     Gets the items to be written in the batch, grouped by table name.
     /// </summary>
     public Dictionary<string, List<BatchWriteItem>> Items { get; }
@@ -59,10 +48,7 @@ public class BatchWriteItemRequest
         if (batchRequestItem is null) throw new ArgumentNullException(nameof(batchRequestItem));
 
         if (!Items.ContainsKey(tableName))
-            Items.Add(tableName, new List<BatchWriteItem>
-            {
-                batchRequestItem
-            });
+            Items.Add(tableName, [batchRequestItem]);
         else
             Items[tableName].Add(batchRequestItem);
     }
