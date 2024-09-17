@@ -13,7 +13,7 @@ namespace Innovt.Cloud.AWS.Dynamo;
 /// </summary>
 public abstract class DynamoContext
 {
-    private static ModelBuilder modelBuilder = null!;
+    private ModelBuilder modelBuilder = null!;
     
     private static readonly object ObjLock = new();
     
@@ -31,13 +31,13 @@ public abstract class DynamoContext
                 return;
            
             modelBuilder = new ModelBuilder();
+            
             OnModelCreating(modelBuilder);
         }
     }
     
     private static Type GetEntityType<T>()
     {
-        
         return typeof(T);
     }
     

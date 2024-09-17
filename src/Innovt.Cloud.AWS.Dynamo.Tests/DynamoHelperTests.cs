@@ -27,43 +27,14 @@ public class DynamoHelperTests
         if (properties.Count <= 0)
             return attributeValues;
 
-        foreach (var item in properties)
+        foreach (var (s, value) in properties)
         {
-            var key = $":{item.Key}".ToLower(CultureInfo.CurrentCulture);
+            var key = $":{s}".ToLower(CultureInfo.CurrentCulture);
 
-            if (attributes.Contains(key, StringComparison.InvariantCultureIgnoreCase) &&
-                !attributeValues.ContainsKey(key))
-            {
-                var value = item.Value;
-                attributeValues.Add(key, value == null ? new AttributeValue { NULL = true } : new AttributeValue());
-            }
-        }
+            if (!attributes.Contains(key, StringComparison.InvariantCultureIgnoreCase) ||
+                attributeValues.ContainsKey(key)) continue;
 
-        return attributeValues;
-    }
-
-    private static Dictionary<string, AttributeValue> CreateExpressionAttributeValues(object filter, string attributes)
-    {
-        if (filter == null)
-            return new Dictionary<string, AttributeValue>();
-
-        var attributeValues = new Dictionary<string, AttributeValue>();
-
-        var properties = filter.GetType().GetProperties();
-
-        if (properties.Length <= 0 && filter is ExpandoObject expando)
-            return CreateExpressionAttributeValues(expando, attributes);
-
-        foreach (var item in properties)
-        {
-            var key = $":{item.Name}".ToLower(CultureInfo.CurrentCulture);
-
-            if (attributes.Contains(key, StringComparison.InvariantCultureIgnoreCase) &&
-                !attributeValues.ContainsKey(key))
-            {
-                var value = item.GetValue(filter);
-                attributeValues.Add(key, value == null ? new AttributeValue { NULL = true } : new AttributeValue());
-            }
+            attributeValues.Add(key, value == null ? new AttributeValue { NULL = true } : new AttributeValue());
         }
 
         return attributeValues;
@@ -85,5 +56,8 @@ public class DynamoHelperTests
         filter.TryAdd("ids", "1,2,3");
 
         var result = CreateExpressionAttributeValues(filter, ":pk,:sk,:ids");
+        
+        
+        Assert.That(result, Is.Not.Null);
     }
 }

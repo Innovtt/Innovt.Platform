@@ -12,7 +12,7 @@ public class DateTimeOffsetConverter:IPropertyConverter
         if (value is null)
             return new DynamoDBNull();
 
-        return new Primitive(((DateTimeOffset)value).ToString(CultureInfo.InvariantCulture));
+        return new Primitive(((DateTimeOffset)value).ToString(CultureInfo.CurrentCulture));
     }
 
     /// <summary>
