@@ -17,7 +17,7 @@ public class RepositoryTests
 {
     private ILogger loggerMock;
     private IAwsConfiguration awsConfigurationMock;
-    private ITableRepository repository;
+    private SampleRepository repository;
 
     [SetUp]
     public void TearUp()

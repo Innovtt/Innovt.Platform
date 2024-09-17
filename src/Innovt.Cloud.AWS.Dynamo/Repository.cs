@@ -31,6 +31,11 @@ namespace Innovt.Cloud.AWS.Dynamo;
 /// </summary>
 public abstract class Repository : AwsBaseService, ITableRepository
 {
+    //log constants 
+    private const string RequestId = "requestId";
+    private const string ConsumedCapacity = "consumedCapacity";
+    private const string StatusCode = "statusCode";
+    
     private static readonly ActivitySource ActivityRepository = new("Innovt.Cloud.AWS.Dynamo.Repository");
     
     private AmazonDynamoDBClient dynamoClient;
@@ -75,17 +80,6 @@ public abstract class Repository : AwsBaseService, ITableRepository
     ///     Gets the Amazon DynamoDB client.
     /// </summary>
     private AmazonDynamoDBClient DynamoClient => dynamoClient ??= CreateService<AmazonDynamoDBClient>();
-
-    /// <summary>
-    ///     Gets the default operation configuration for DynamoDB operations.
-    /// </summary>
-    private static DynamoDBOperationConfig OperationConfig =>
-        new()
-        {
-            ConsistentRead = true,
-            Conversion = DynamoDBEntryConversion.V2
-        };
-    
     #endregion
 
     #region [Add]
@@ -108,9 +102,9 @@ public abstract class Repository : AwsBaseService, ITableRepository
                 await dynamoClient.PutItemAsync(putRequest, cancellationToken).ConfigureAwait(false))
             .ConfigureAwait(false);
 
-        activity?.SetTag("consumedCapacity", resp.ConsumedCapacity);
-        activity?.SetTag("statusCode", resp.HttpStatusCode);
-        activity?.SetTag("requestId", resp.ResponseMetadata.RequestId);
+        activity?.SetTag(ConsumedCapacity, resp.ConsumedCapacity);
+        activity?.SetTag(StatusCode, resp.HttpStatusCode);
+        activity?.SetTag(RequestId, resp.ResponseMetadata.RequestId);
     }
 
     /// <summary>
@@ -133,7 +127,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         var batchRequest = new Dictionary<string, List<WriteRequest>> { { tableName, writeRequest } };
 
-        var response = await InternalBatchWriteItemAsync<T>(batchRequest, cancellationToken:cancellationToken).ConfigureAwait(false);
+        var response = await InternalBatchWriteItemAsync(batchRequest, cancellationToken:cancellationToken).ConfigureAwait(false);
         
         if(response.HasItems())
             throw new CriticalException("Some items could not be added to the table");
@@ -243,7 +237,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
                     Key = DynamoHelper.ExtractKeys(message, context)
                 } }).ToList();
             
-            var response = await InternalBatchWriteItemAsync<T>(new Dictionary<string, List<WriteRequest>>
+            var response = await InternalBatchWriteItemAsync(new Dictionary<string, List<WriteRequest>>
             {
                 { tableName, writeRequest }
             }, cancellationToken:cancellationToken).ConfigureAwait(false);
@@ -273,9 +267,9 @@ public abstract class Repository : AwsBaseService, ITableRepository
             .ExecuteAsync(async () => await dynamoClient.DeleteItemAsync(deleteRequest,cancellationToken).ConfigureAwait(false))
             .ConfigureAwait(false);
         
-        activity?.SetTag("consumedCapacity", response.ConsumedCapacity);
-        activity?.SetTag("statusCode", response.HttpStatusCode);
-        activity?.SetTag("requestId", response.ResponseMetadata?.RequestId);
+        activity?.SetTag(ConsumedCapacity, response.ConsumedCapacity);
+        activity?.SetTag(StatusCode, response.HttpStatusCode);
+        activity?.SetTag(RequestId, response.ResponseMetadata.RequestId);
     }
     #endregion
 
@@ -335,13 +329,17 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         if (attributeUpdates is null) throw new ArgumentNullException(nameof(attributeUpdates));
 
-        using (ActivityRepository.StartActivity())
-        {
-            await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await DynamoClient.UpdateItemAsync(tableName, key, attributeUpdates, cancellationToken)
-                        .ConfigureAwait(false))
-                .ConfigureAwait(false);
-        }
+        using var activity = ActivityRepository.StartActivity();
+        
+       var response =  await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+                await DynamoClient.UpdateItemAsync(tableName, key, attributeUpdates, cancellationToken)
+                    .ConfigureAwait(false))
+            .ConfigureAwait(false);
+       
+       activity?.SetTag(ConsumedCapacity, response.ConsumedCapacity);
+       activity?.SetTag(StatusCode, response.HttpStatusCode);
+       activity?.SetTag(RequestId, response.ResponseMetadata.RequestId);
+
     }
 
     /// <summary>
@@ -365,9 +363,9 @@ public abstract class Repository : AwsBaseService, ITableRepository
                     cancellationToken).ConfigureAwait(false))
             .ConfigureAwait(false);
 
-        activity?.SetTag("consumedCapacity", response.ConsumedCapacity);
-        activity?.SetTag("statusCode", response.HttpStatusCode);
-        activity?.SetTag("requestId", response.ResponseMetadata.RequestId);
+        activity?.SetTag(ConsumedCapacity, response.ConsumedCapacity);
+        activity?.SetTag(StatusCode, response.HttpStatusCode);
+        activity?.SetTag(RequestId, response.ResponseMetadata.RequestId);
         
         return response.Attributes.IsNullOrEmpty()
             ? default
@@ -748,11 +746,9 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="batchWriteItemRequest"></param>
     /// <param name="maxRetry"></param>
     /// <param name="cancellationToken"></param>
-    /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    private async Task<Dictionary<string, List<WriteRequest>>> InternalBatchWriteItemAsync<T>(
-        Dictionary<string, List<WriteRequest>> batchWriteItemRequest,
-        int maxRetry = 3, CancellationToken cancellationToken = default) where T : class
+    private async Task<Dictionary<string, List<WriteRequest>>> InternalBatchWriteItemAsync(Dictionary<string, List<WriteRequest>> batchWriteItemRequest,
+        int maxRetry = 3, CancellationToken cancellationToken = default)
     {
         Check.NotNull(batchWriteItemRequest, nameof(batchWriteItemRequest));
 
@@ -776,10 +772,10 @@ public abstract class Repository : AwsBaseService, ITableRepository
             
             attempts++;
 
-            activity?.SetTag("consumedCapacity", response.ConsumedCapacity);
-            activity?.SetTag("statusCode", response.HttpStatusCode);
-            activity?.SetTag("requestId", response.ResponseMetadata.RequestId);
-
+            activity?.SetTag(ConsumedCapacity, response.ConsumedCapacity);
+            activity?.SetTag(StatusCode, response.HttpStatusCode);
+            activity?.SetTag(RequestId, response.ResponseMetadata.RequestId);
+            
         } while (attempts < maxRetry);
      
         return remainingItems;

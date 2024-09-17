@@ -644,11 +644,10 @@ internal static class AttributeConverter
                 if(propertyValue is null && propertyType is null)
                     continue;
                 
-                var converter = context?.GetPropertyConverter(propertyType);
+                var converter = context.GetPropertyConverter(propertyType);
                 
                 if (converter is not null)
                 {
-                    //Vou converter de datetimeoffset para DateTime
                     propertyValue =  converter.ToEntry(propertyValue).AsPrimitive();
                 }
                 

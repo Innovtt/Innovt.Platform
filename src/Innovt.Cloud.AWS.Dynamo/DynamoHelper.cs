@@ -104,23 +104,6 @@ internal static class DynamoHelper
         
         return hasRangeKeyValue ? $"{hashKeyName}=:pk AND {rangeKeyName}=:sk" : $"{hashKeyName}=:pk";
     }
-
-
-    /// <summary>
-    /// Extract the hash keys and range keys from the specified value.
-    /// </summary>
-    /// <param name="value"></param>
-    /// <param name="context"></param>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-    internal static Dictionary<string, AttributeValue> ExtractKeys<T>(T value, DynamoContext context = null) where T:class
-    {
-        Check.NotNull(value, nameof(value));
-        
-        var keyValues = GetKeyValues(value, context);
-        
-        return ExtractKeysToDictionary<T>(keyValues.HashKey, keyValues.RangeKey, context);
-    }
     
     /// <summary>
     /// This method gets the value of a mapped key from the specified type.
@@ -185,7 +168,7 @@ internal static class DynamoHelper
     /// <param name="context">The current context if available</param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    internal static ((string Name,AttributeValue Value) HashKey,(string Name,AttributeValue Value)? RangeKey)
+    private static ((string Name,AttributeValue Value) HashKey,(string Name,AttributeValue Value)? RangeKey)
         ExtractKeys<T>(object id, object rangeKeyValue=null, DynamoContext context = null) where T:class
     {
         Check.NotNull(id, nameof(id));
@@ -222,6 +205,22 @@ internal static class DynamoHelper
 
         return (hashKey, rangeKey);
 
+    }
+    
+    /// <summary>
+    /// Extract the hash keys and range keys from the specified value.
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="context"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    internal static Dictionary<string, AttributeValue> ExtractKeys<T>(T value, DynamoContext context = null) where T:class
+    {
+        Check.NotNull(value, nameof(value));
+        
+        var keyValues = GetKeyValues(value, context);
+        
+        return ExtractKeysToDictionary<T>(keyValues.HashKey, keyValues.RangeKey, context);
     }
     
     /// <summary>
@@ -521,10 +520,12 @@ internal static class DynamoHelper
         var result2 = new List<T2>();
 
         foreach (var item in items)
-            if (item.ContainsKey(EntitySplitter) && item["EntityType"].S == splitBy)
-                result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item,context));
+        {
+            if (item.TryGetValue(EntitySplitter, out var value) && value.S == splitBy)
+                result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item, context));
             else
-                result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item,context));
+                result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item, context));
+        }
 
         return (result1, result2);
     }
@@ -577,16 +578,16 @@ internal static class DynamoHelper
 
         foreach (var item in items)
         {
-            if (!item.ContainsKey("EntityType"))
+            if (!item.ContainsKey(EntitySplitter))
                 continue;
 
-            if (item["EntityType"].S == splitBy[0])
+            if (item[EntitySplitter].S == splitBy[0])
             {
                 result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item,context));
             }
             else
             {
-                if (item["EntityType"].S == splitBy[1])
+                if (item[EntitySplitter].S == splitBy[1])
                     result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item,context));
                 else
                     result3.Add(AttributeConverter.ConvertAttributesToType<T3>(item,context));
@@ -652,22 +653,22 @@ internal static class DynamoHelper
 
         foreach (var item in items)
         {
-            if (!item.ContainsKey("EntityType"))
+            if (!item.ContainsKey(EntitySplitter))
                 continue;
 
-            if (item["EntityType"].S == splitBy[0])
+            if (item[EntitySplitter].S == splitBy[0])
             {
                 result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item,context));
             }
             else
             {
-                if (item["EntityType"].S == splitBy[1])
+                if (item[EntitySplitter].S == splitBy[1])
                 {
                     result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item,context));
                 }
                 else
                 {
-                    if (item["EntityType"].S == splitBy[2])
+                    if (item[EntitySplitter].S == splitBy[2])
                         result3.Add(AttributeConverter.ConvertAttributesToType<T3>(item,context));
                     else
                         result4.Add(AttributeConverter.ConvertAttributesToType<T4>(item,context));
@@ -706,28 +707,28 @@ internal static class DynamoHelper
 
         foreach (var item in items)
         {
-            if (!item.ContainsKey("EntityType"))
+            if (!item.ContainsKey(EntitySplitter))
                 continue;
 
-            if (item["EntityType"].S == splitBy[0])
+            if (item[EntitySplitter].S == splitBy[0])
             {
                 result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item,context));
             }
             else
             {
-                if (item["EntityType"].S == splitBy[1])
+                if (item[EntitySplitter].S == splitBy[1])
                 {
                     result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item,context));
                 }
                 else
                 {
-                    if (item["EntityType"].S == splitBy[2])
+                    if (item[EntitySplitter].S == splitBy[2])
                     {
                         result3.Add(AttributeConverter.ConvertAttributesToType<T3>(item,context));
                     }
                     else
                     {
-                        if (item["EntityType"].S == splitBy[3])
+                        if (item[EntitySplitter].S == splitBy[3])
                             result4.Add(AttributeConverter.ConvertAttributesToType<T4>(item,context));
                         else
                             result5.Add(AttributeConverter.ConvertAttributesToType<T5>(item,context));
@@ -768,12 +769,12 @@ internal static class DynamoHelper
     /// <returns>A dictionary of attribute values representing the pagination token.</returns>
     private static Dictionary<string, AttributeValue> PaginationTokenToDictionary(string paginationToken)
     {
+        var result = new Dictionary<string, AttributeValue>();
+
         if (paginationToken is null)
-            return null;
+            return result;
 
         var decryptedToken = Convert.FromBase64String(paginationToken.UrlDecode()).Unzip();
-
-        var result = new Dictionary<string, AttributeValue>();
 
         var keys = decryptedToken.Split("\\r\\n");
 
