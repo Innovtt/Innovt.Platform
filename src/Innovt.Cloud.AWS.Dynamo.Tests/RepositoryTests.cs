@@ -65,11 +65,8 @@ public class RepositoryTests
             
             var userByIdAndSort = await repository.GetByIdAsync<User>($"USER#{userId}", userSortKey).ConfigureAwait(false);
 
-            Assert.Multiple(() =>
-            {
-                Assert.That(user1, Is.Not.Null);
-                Assert.That(userByIdAndSort, Is.Not.Null);
-            });
+            Assert.That(user1, Is.Not.Null);
+            Assert.That(userByIdAndSort, Is.Not.Null);
             
             Assert.Multiple(() =>
             {
@@ -109,15 +106,19 @@ public class RepositoryTests
 
             Assert.That(user3, Is.Not.Null);
             
-            Assert.That(user2.Email, Is.EqualTo(user3.Email));
-            Assert.That(user2.Email, Is.EqualTo(user3.Email));
-            Assert.That(user2.FirstName, Is.EqualTo(user3.FirstName));
-            Assert.That(user2.FirstName, Is.EqualTo(user3.FirstName));
-            Assert.That(user2.LastName, Is.EqualTo(user3.LastName));
-            Assert.That(user2.LastName, Is.EqualTo(user3.LastName));
-            Assert.That(user2.Id, Is.EqualTo(user3.Id));
-            Assert.That(user2.Id, Is.EqualTo(user3.Id));
-            
+            Assert.Multiple(() =>
+            {
+                Assert.That(user2.Email, Is.EqualTo(user3.Email));
+                Assert.That(user2.Email, Is.EqualTo(user3.Email));
+                Assert.That(user2.FirstName, Is.EqualTo(user3.FirstName));
+                Assert.That(user2.FirstName, Is.EqualTo(user3.FirstName));
+                Assert.That(user2.LastName, Is.EqualTo(user3.LastName));
+                Assert.That(user2.LastName, Is.EqualTo(user3.LastName));
+                Assert.That(user2.Id, Is.EqualTo(user3.Id));
+                Assert.That(user2.Id, Is.EqualTo(user3.Id));
+
+            });
+        
 
         }
         catch (Exception e)
