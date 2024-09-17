@@ -65,11 +65,12 @@ public class RepositoryTests
             
             var userByIdAndSort = await repository.GetByIdAsync<User>($"USER#{userId}", userSortKey).ConfigureAwait(false);
 
-            Assert.That(user1, Is.Not.Null);
-            Assert.That(userByIdAndSort, Is.Not.Null);
+          
             
             Assert.Multiple(() =>
             {
+                Assert.That(user1, Is.Not.Null);
+                Assert.That(userByIdAndSort, Is.Not.Null);
                 Assert.That(user1.Email, Is.EqualTo(userByIdAndSort.Email));
 
                 Assert.That(user1.FirstName, Is.EqualTo(userByIdAndSort.FirstName));
