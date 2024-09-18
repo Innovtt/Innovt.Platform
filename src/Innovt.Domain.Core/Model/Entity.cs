@@ -29,7 +29,7 @@ public abstract class Entity
     ///     Initializes a new instance of the <see cref="Entity" /> class with a specific identifier.
     /// </summary>
     /// <param name="id">The identifier for the entity.</param>
-    protected Entity(int id):this()
+    protected Entity(int id) : this()
     {
         Id = id;
     }

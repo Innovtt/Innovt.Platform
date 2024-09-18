@@ -3,7 +3,6 @@
 // Project: Innovt.Core
 
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Innovt.Core.Utilities.Mapper;
 
@@ -74,20 +73,20 @@ public static class Extensions
         return !collection.IsNullOrEmpty();
     }
 
-     /// <summary>
-     /// Returns if the collection has more items
-     /// </summary>
-     /// <param name="collection"></param>
-     /// <typeparam name="T"></typeparam>
-     /// <returns><c>true</c> if the collection has more items; otherwise, <c>false</c>.</returns>
+    /// <summary>
+    ///     Returns if the collection has more items
+    /// </summary>
+    /// <param name="collection"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns><c>true</c> if the collection has more items; otherwise, <c>false</c>.</returns>
     public static bool HasItems<T>(this ICollection<T> collection)
     {
-        if(collection.IsNullOrEmpty())
+        if (collection.IsNullOrEmpty())
             return false;
-        
-        return collection.Count >0;
+
+        return collection.Count > 0;
     }
-    
+
 
     /// <summary>
     ///     Initialize the collection if is null, so you don't have to check it

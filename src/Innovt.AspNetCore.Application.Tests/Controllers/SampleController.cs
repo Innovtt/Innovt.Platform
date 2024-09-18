@@ -27,7 +27,6 @@ public class SampleController : BaseApiController
     public IActionResult Add([FromRoute] Guid userId, [FromBody] AddUserViewModel command,
         CancellationToken cancellationToken = default)
     {
-        
         return Ok();
     }
 }

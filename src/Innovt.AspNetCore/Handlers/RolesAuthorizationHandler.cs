@@ -110,7 +110,9 @@ public class RolesAuthorizationHandler : AuthorizationHandler<RolesAuthorization
     /// <returns>The extracted scope or the original context if the separator is not present.</returns>
     private static string ExtractScope(string appContext)
     {
-        return !appContext.Contains(ContextSeparator,StringComparison.InvariantCultureIgnoreCase) ? appContext : appContext.Split(ContextSeparator)[1];
+        return !appContext.Contains(ContextSeparator, StringComparison.InvariantCultureIgnoreCase)
+            ? appContext
+            : appContext.Split(ContextSeparator)[1];
     }
 
     /// <summary>

@@ -37,7 +37,8 @@ internal static class Extensions
                 return $"{rawSql} OFFSET ({recordStart}) LIMIT @PageSize ";
             case Provider.Oracle:
                 pagedFilter.Page = pagedFilter.Page <= 0 ? 1 : pagedFilter.Page;
-                return $" SELECT * FROM (SELECT a.*, rownum r_  FROM ({rawSql}) a WHERE rownum < (({pagedFilter.Page} * {pagedFilter.PageSize}) + 1) ) WHERE r_ >=  ((({pagedFilter.Page} - 1) * {pagedFilter.PageSize}) + 1)";
+                return
+                    $" SELECT * FROM (SELECT a.*, rownum r_  FROM ({rawSql}) a WHERE rownum < (({pagedFilter.Page} * {pagedFilter.PageSize}) + 1) ) WHERE r_ >=  ((({pagedFilter.Page} - 1) * {pagedFilter.PageSize}) + 1)";
             case Provider.MySql:
                 return $"{rawSql} LIMIT @PageSize OFFSET {recordStart}";
             case Provider.MsSql:
@@ -48,7 +49,7 @@ internal static class Extensions
                 return $"{rawSql} OFFSET {recordStart} ROWS FETCH NEXT @PageSize ROWS ONLY";
         }
     }
-    
+
     /// <summary>
     ///     Adds a NOLOCK hint to the raw SQL query based on the specified data source.
     /// </summary>

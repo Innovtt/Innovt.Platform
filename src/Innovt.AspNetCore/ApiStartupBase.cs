@@ -34,7 +34,8 @@ public abstract class ApiStartupBase
     /// <param name="appName">The name of the application.</param>
     /// <param name="setDefaultJsonOptions">This is the default convention for Serialization/Deserialization</param>
     /// <exception cref="ArgumentNullException">Thrown if configuration, environment, or appName is null.</exception>
-    protected ApiStartupBase(IConfiguration configuration, IWebHostEnvironment environment, string appName,bool setDefaultJsonOptions = true)
+    protected ApiStartupBase(IConfiguration configuration, IWebHostEnvironment environment, string appName,
+        bool setDefaultJsonOptions = true)
     {
         Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         Environment = environment ?? throw new ArgumentNullException(nameof(environment));
@@ -62,8 +63,9 @@ public abstract class ApiStartupBase
     /// </exception>
     protected ApiStartupBase(IConfiguration configuration, IWebHostEnvironment environment, string appName,
         string apiTitle, string apiDescription,
-        string apiVersion, string? contactName = null, string? contactEmail = null,bool setDefaultJsonOptions = true) : this(configuration, environment,
-        appName,setDefaultJsonOptions)
+        string apiVersion, string? contactName = null, string? contactEmail = null,
+        bool setDefaultJsonOptions = true) : this(configuration, environment,
+        appName, setDefaultJsonOptions)
     {
         Documentation = new DefaultApiDocumentation(apiTitle, apiDescription, apiVersion, contactName, contactEmail);
     }
@@ -169,13 +171,12 @@ public abstract class ApiStartupBase
     /// <param name="services">The service collection to add tracing to.</param>
     protected virtual void AddTracing(IServiceCollection services)
     {
-        services.AddOpenTelemetry().
-            WithTracing(builder =>
+        services.AddOpenTelemetry().WithTracing(builder =>
         {
             builder.AddSource(AppName).SetResourceBuilder(ResourceBuilder.CreateDefault()
                     .AddService(AppName))
                 .SetErrorStatusOnException();
-            
+
             ConfigureOpenTelemetry(builder);
         });
     }

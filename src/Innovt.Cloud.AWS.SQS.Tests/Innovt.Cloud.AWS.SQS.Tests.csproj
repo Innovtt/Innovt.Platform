@@ -6,10 +6,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
-        <PackageReference Include="NUnit" Version="4.2.2" />
-        <PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
-        <PackageReference Include="Amazon.Lambda.TestUtilities" Version="2.0.0" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1"/>
+        <PackageReference Include="NUnit" Version="4.2.2"/>
+        <PackageReference Include="NUnit3TestAdapter" Version="4.6.0"/>
+        <PackageReference Include="Amazon.Lambda.TestUtilities" Version="2.0.0"/>
         <PackageReference Include="NUnit.Analyzers" Version="4.3.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -23,12 +23,12 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
-    
+
 
     <ItemGroup>
-        <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda.Sqs\Innovt.Cloud.AWS.Lambda.Sqs.csproj" />
-        <ProjectReference Include="..\Innovt.Cloud.AWS.SQS\Innovt.Cloud.AWS.SQS.csproj" />
-        <ProjectReference Include="..\Innovt.CrossCutting.Log.Serilog\Innovt.CrossCutting.Log.Serilog.csproj" />
+        <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda.Sqs\Innovt.Cloud.AWS.Lambda.Sqs.csproj"/>
+        <ProjectReference Include="..\Innovt.Cloud.AWS.SQS\Innovt.Cloud.AWS.SQS.csproj"/>
+        <ProjectReference Include="..\Innovt.CrossCutting.Log.Serilog\Innovt.CrossCutting.Log.Serilog.csproj"/>
     </ItemGroup>
 
 </Project>

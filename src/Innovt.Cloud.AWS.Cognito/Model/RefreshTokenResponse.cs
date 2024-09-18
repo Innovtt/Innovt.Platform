@@ -2,8 +2,6 @@
 // Author: Michel Borges
 // Project: Innovt.Cloud.AWS.Cognito
 
-using System.Text.Json.Serialization;
-
 namespace Innovt.Cloud.AWS.Cognito.Model;
 
 /// <summary>

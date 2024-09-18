@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <PackageId>Innovt.Cloud</PackageId>
-        <PackageVersion>8.1.0-preview</PackageVersion>
+        <PackageVersion>8.1.1-preview</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -11,7 +11,7 @@
         <Description>Cloud interfaces.</Description>
         <LangVersion>latest</LangVersion>
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-		<ClsCompliant>true</ClsCompliant>
+        <ClsCompliant>true</ClsCompliant>
     </PropertyGroup>
 
     <ItemGroup>

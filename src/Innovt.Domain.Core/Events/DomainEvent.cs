@@ -27,11 +27,12 @@ public abstract class DomainEvent : IDataStream
     }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="DomainEvent" /> class with a specified name and partition. The default version here is 1.0.0
+    ///     Initializes a new instance of the <see cref="DomainEvent" /> class with a specified name and partition. The default
+    ///     version here is 1.0.0
     /// </summary>
     /// <param name="name">The name of the domain event.</param>
     /// <param name="partition">The partition associated with the event.</param>
-    protected DomainEvent(string name, string? partition):this(name, "1.0.0", partition)
+    protected DomainEvent(string name, string? partition) : this(name, "1.0.0", partition)
     {
     }
 

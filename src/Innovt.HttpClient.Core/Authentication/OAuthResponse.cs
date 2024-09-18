@@ -1,5 +1,4 @@
-﻿
-namespace Innovt.HttpClient.Core.Authentication;
+﻿namespace Innovt.HttpClient.Core.Authentication;
 
 /// <summary>
 ///     Represents the response from an OAuth authentication request.

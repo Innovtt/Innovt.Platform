@@ -17,9 +17,6 @@ namespace Innovt.Core.Test;
 [TestFixture]
 public class MultiLayerCacheServiceTests
 {
-    private ILogger loggerMock;
-    private ICacheService cacheService;
-    
     [SetUp]
     public void Setup()
     {
@@ -37,6 +34,8 @@ public class MultiLayerCacheServiceTests
         cacheService.Dispose();
     }
 
+    private ILogger loggerMock;
+    private ICacheService cacheService;
 
 
     [Test]

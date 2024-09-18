@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <PackageId>Innovt.Data.EFCore.Oracle</PackageId>
-        <PackageVersion>8.1.0-preview</PackageVersion>
+        <PackageVersion>8.1.1-preview</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -15,7 +15,7 @@
 
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Oracle.EntityFrameworkCore" Version="8.23.50" />
+        <PackageReference Include="Oracle.EntityFrameworkCore" Version="8.23.50"/>
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\Innovt.Data.EFCore\Innovt.Data.EFCore.csproj"/>

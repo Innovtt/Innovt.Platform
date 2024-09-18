@@ -40,7 +40,7 @@ public abstract class DataSourceBase : IDataSource
     {
         if (configuration == null) throw new ArgumentNullException(nameof(configuration));
         if (connectionStringName == null) throw new ArgumentNullException(nameof(connectionStringName));
-        
+
         Provider = provider;
         SetConnectionString(configuration, connectionStringName);
     }
