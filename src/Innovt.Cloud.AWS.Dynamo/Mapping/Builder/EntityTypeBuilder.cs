@@ -239,10 +239,11 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
     public EntityTypeBuilder<TEntity> AutoMap()
     {
-        var item = typeof(TEntity).GetProperties(BindingFlags.Instance | BindingFlags.Public |
+        var properties = typeof(TEntity).GetProperties(
+                                                 BindingFlags.Public | BindingFlags.Instance |
                                                  BindingFlags.SetProperty | BindingFlags.GetProperty);
-
-        foreach (var propertyInfo in item)
+        
+        foreach (var propertyInfo in properties)
         {
             AddProperty(propertyInfo.Name, propertyInfo.GetType());
         }
