@@ -210,7 +210,8 @@ public interface IRepository<T> where T : class
     /// <param name="specification"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<int> CountByAsync<TKEntity>(ISpecification<TKEntity> specification, CancellationToken cancellationToken = default) where TKEntity : class;
+    Task<int> CountByAsync<TKEntity>(ISpecification<TKEntity> specification,
+        CancellationToken cancellationToken = default) where TKEntity : class;
 
     Task<int> CountByAsync(ISpecification<T> specification, CancellationToken cancellationToken = default);
 }

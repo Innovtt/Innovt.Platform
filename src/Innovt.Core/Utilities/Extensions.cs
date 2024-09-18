@@ -342,31 +342,31 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Converts one timezone to another using the offset difference.
+    ///     Converts one timezone to another using the offset difference.
     /// </summary>
     /// <param name="sourceDateTime">The datetime without timezone</param>
     /// <param name="sourceOffset">The offset from the source</param>
     /// <param name="targetOffset">The final offset.</param>
     /// <returns>A DateTime with the difference.</returns>
     public static DateTime ToTimeZone(this DateTime sourceDateTime, TimeSpan sourceOffset, TimeSpan targetOffset)
-    {   
+    {
         var offsetDifference = targetOffset - sourceOffset;
 
         // Adjust the source DateTime by the offset difference
         return sourceDateTime + offsetDifference;
     }
-    
+
     /// <summary>
-    /// Converts one timezone to another using the offset difference.
+    ///     Converts one timezone to another using the offset difference.
     /// </summary>
     /// <param name="sourceDateTime">The datetime without timezone</param>
     /// <param name="targetOffset">The final offset.</param>
     /// <returns>A DateTime with the difference.</returns>
     public static DateTime ToTimeZone(this DateTimeOffset sourceDateTime, TimeSpan targetOffset)
-    {   
+    {
         return ToTimeZone(sourceDateTime.DateTime, sourceDateTime.Offset, targetOffset);
     }
-    
+
     /// <summary>
     ///     Converts a boolean value to a "Sim" (Yes) or "Não" (No) string representation.
     /// </summary>

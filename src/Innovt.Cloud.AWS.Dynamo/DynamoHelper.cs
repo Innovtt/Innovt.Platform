@@ -45,134 +45,137 @@ internal static class DynamoHelper
     ///     The DynamoDB table name associated with the type <typeparamref name="T" />.
     ///     If no table name attribute is defined, it returns the name of the type <typeparamref name="T" />.
     /// </returns>
-    internal static string GetTableName<T>(DynamoContext context = null) where T:class
-    {   
-        if (context != null && context.HasTypeBuilder<T>())
-        {
-            return context.GetTypeBuilder<T>().TableName;
-        }
+    internal static string GetTableName<T>(DynamoContext context = null) where T : class
+    {
+        if (context != null && context.HasTypeBuilder<T>()) return context.GetTypeBuilder<T>().TableName;
 
         return Attribute.GetCustomAttribute(typeof(T), typeof(DynamoDBTableAttribute)) is not DynamoDBTableAttribute
-            attribute ? typeof(T).Name : attribute.TableName;
-    }
-    
-    /// <summary>
-    /// Get the hash key name for the specified type <typeparamref name="T" />.
-    /// </summary>
-    /// <param name="context">If the context is not null, it will get from the context otherwise from the DynamoDBHashKeyAttribute</param>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-    internal static string GetHashKeyName<T>(DynamoContext context = null) where T:class
-    {
-        if (context != null && context.HasTypeBuilder<T>())
-        {
-            return context.GetTypeBuilder<T>().Pk;
-        }
-        
-        return Attribute.GetCustomAttribute(typeof(T), typeof(DynamoDBHashKeyAttribute)) is not DynamoDBHashKeyAttribute
-            attribute ? typeof(T).Name : attribute.AttributeName;
-    }
-    
-    /// <summary>
-    /// Get the range key name for the specified type <typeparamref name="T" />.
-    /// </summary>
-    /// <param name="context">If the context is not null, it will get from the context otherwise from the DynamoDBRangeKeyAttribute</param>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-    internal static string GetRangeKeyName<T>(DynamoContext context = null) where T:class
-    {
-        if (context != null && context.HasTypeBuilder<T>())
-        {
-            return context.GetTypeBuilder<T>().Sk;
-        }
-        
-        return Attribute.GetCustomAttribute(typeof(T), typeof(DynamoDBRangeKeyAttribute)) is not DynamoDBRangeKeyAttribute
-            attribute ? typeof(T).Name : attribute.AttributeName;
+            attribute
+            ? typeof(T).Name
+            : attribute.TableName;
     }
 
     /// <summary>
-    /// The default key expression is a pk and sk if the range key is not null. It returns a PkName=:pk AND SkName=:sk
+    ///     Get the hash key name for the specified type <typeparamref name="T" />.
+    /// </summary>
+    /// <param name="context">
+    ///     If the context is not null, it will get from the context otherwise from the
+    ///     DynamoDBHashKeyAttribute
+    /// </param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    internal static string GetHashKeyName<T>(DynamoContext context = null) where T : class
+    {
+        if (context != null && context.HasTypeBuilder<T>()) return context.GetTypeBuilder<T>().Pk;
+
+        return Attribute.GetCustomAttribute(typeof(T), typeof(DynamoDBHashKeyAttribute)) is not DynamoDBHashKeyAttribute
+            attribute
+            ? typeof(T).Name
+            : attribute.AttributeName;
+    }
+
+    /// <summary>
+    ///     Get the range key name for the specified type <typeparamref name="T" />.
+    /// </summary>
+    /// <param name="context">
+    ///     If the context is not null, it will get from the context otherwise from the
+    ///     DynamoDBRangeKeyAttribute
+    /// </param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    internal static string GetRangeKeyName<T>(DynamoContext context = null) where T : class
+    {
+        if (context != null && context.HasTypeBuilder<T>()) return context.GetTypeBuilder<T>().Sk;
+
+        return Attribute.GetCustomAttribute(typeof(T), typeof(DynamoDBRangeKeyAttribute)) is not
+            DynamoDBRangeKeyAttribute
+            attribute
+            ? typeof(T).Name
+            : attribute.AttributeName;
+    }
+
+    /// <summary>
+    ///     The default key expression is a pk and sk if the range key is not null. It returns a PkName=:pk AND SkName=:sk
     /// </summary>
     /// <param name="hasRangeKeyValue"></param>
     /// <param name="context">The context can be null and the system will get the DynamoDb Default Attributes</param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    internal static string BuildDefaultKeyExpression<T>(bool hasRangeKeyValue = false, DynamoContext context = null) where T:class
-    {   
+    internal static string BuildDefaultKeyExpression<T>(bool hasRangeKeyValue = false, DynamoContext context = null)
+        where T : class
+    {
         var hashKeyName = GetHashKeyName<T>(context);
         var rangeKeyName = GetRangeKeyName<T>(context);
-        
+
         return hasRangeKeyValue ? $"{hashKeyName}=:pk AND {rangeKeyName}=:sk" : $"{hashKeyName}=:pk";
     }
-    
+
     /// <summary>
-    /// This method gets the value of a mapped key from the specified type.
+    ///     This method gets the value of a mapped key from the specified type.
     /// </summary>
     /// <param name="value"></param>
     /// <param name="context"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    internal static (object HashKey,object RangeKey) GetKeyValues<T>(T value, DynamoContext context = null) where T:class
+    internal static (object HashKey, object RangeKey) GetKeyValues<T>(T value, DynamoContext context = null)
+        where T : class
     {
         Check.NotNull(value, nameof(value));
-        
+
         var hashKeyName = GetHashKeyName<T>(context);
         var rangeKeyName = GetRangeKeyName<T>(context);
-        
+
         // the default value will be from the type
         var entityType = value.GetType();
-        
+
         var hashKeyValue = entityType.GetProperty(hashKeyName)?.GetValue(value);
         var rangeKeyValue = entityType.GetProperty(rangeKeyName)?.GetValue(value);
-        
-        if(context is null || !context.HasTypeBuilder<T>())
+
+        if (context is null || !context.HasTypeBuilder<T>())
             return (hashKeyValue, rangeKeyValue);
-        
+
         //It will build the value from the delegate using the type builder
         var entityBuilder = context.GetTypeBuilder<T>();
         hashKeyValue = entityBuilder.GetProperty(hashKeyName)?.GetValue(value);
         rangeKeyValue = entityBuilder.GetProperty(rangeKeyName)?.GetValue(value);
-        
+
 
         return (hashKeyValue, rangeKeyValue);
     }
-    
+
     /// <summary>
-    /// Extract the hash keys and range keys from the specified value.
+    ///     Extract the hash keys and range keys from the specified value.
     /// </summary>
     /// <param name="id"></param>
     /// <param name="rangeKeyValue"></param>
     /// <param name="context"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    internal static Dictionary<string, AttributeValue> ExtractKeysToDictionary<T>(object id, object rangeKeyValue=null, DynamoContext context = null) where T:class
+    internal static Dictionary<string, AttributeValue> ExtractKeysToDictionary<T>(object id,
+        object rangeKeyValue = null, DynamoContext context = null) where T : class
     {
         var tupleKeys = ExtractKeys<T>(id, rangeKeyValue, context);
-        
+
         var keys = new Dictionary<string, AttributeValue> { { tupleKeys.HashKey.Name, tupleKeys.HashKey.Value } };
 
-        if (tupleKeys.RangeKey.HasValue)
-        {
-            keys.Add(tupleKeys.RangeKey.Value.Name, tupleKeys.RangeKey.Value.Value);
-        }
+        if (tupleKeys.RangeKey.HasValue) keys.Add(tupleKeys.RangeKey.Value.Name, tupleKeys.RangeKey.Value.Value);
 
         return keys;
     }
-    
+
     /// <summary>
-    /// 
-    /// Extract the hash keys and range keys from the specified value.
+    ///     Extract the hash keys and range keys from the specified value.
     /// </summary>
     /// <param name="id">The entity hash key value</param>
     /// <param name="rangeKeyValue">The entity range key value</param>
     /// <param name="context">The current context if available</param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    private static ((string Name,AttributeValue Value) HashKey,(string Name,AttributeValue Value)? RangeKey)
-        ExtractKeys<T>(object id, object rangeKeyValue=null, DynamoContext context = null) where T:class
+    private static ((string Name, AttributeValue Value) HashKey, (string Name, AttributeValue Value)? RangeKey)
+        ExtractKeys<T>(object id, object rangeKeyValue = null, DynamoContext context = null) where T : class
     {
         Check.NotNull(id, nameof(id));
-        
+
         var entityBuilder = context?.GetTypeBuilder<T>();
         var hashKeyPrefix = entityBuilder?.HashKeyPrefix;
         var keySeparator = entityBuilder?.KeySeparator;
@@ -180,49 +183,43 @@ internal static class DynamoHelper
         hashKeyPrefix = hashKeyPrefix.IsNotNullOrEmpty() ? $"{hashKeyPrefix}{keySeparator}" : string.Empty;
 
         //To avoid situations where the id is already prefixed
-        if (id.ToString().Contains(hashKeyPrefix))
-        {
-            hashKeyPrefix = string.Empty;
-        }
-        
+        if (id.ToString().Contains(hashKeyPrefix)) hashKeyPrefix = string.Empty;
+
         //Get the name of the hash key
         var hashKey = (GetHashKeyName<T>(context), new AttributeValue($"{hashKeyPrefix}{id}"));
-        
-          if (rangeKeyValue == null) 
-              return (hashKey,null);
-                  
+
+        if (rangeKeyValue == null)
+            return (hashKey, null);
+
         var rangeKeyName = GetRangeKeyName<T>(context);
         var rangeKeyPrefix = entityBuilder?.RangeKeyPrefix;
-              
+
         rangeKeyPrefix = rangeKeyPrefix.IsNotNullOrEmpty() ? $"{rangeKeyPrefix}{keySeparator}" : string.Empty;
-        
-        if (rangeKeyValue.ToString().Contains(rangeKeyPrefix))
-        {
-            rangeKeyPrefix = string.Empty;
-        }
-        
+
+        if (rangeKeyValue.ToString().Contains(rangeKeyPrefix)) rangeKeyPrefix = string.Empty;
+
         var rangeKey = (rangeKeyName, new AttributeValue($"{rangeKeyPrefix}{rangeKeyValue}"));
 
         return (hashKey, rangeKey);
-
     }
-    
+
     /// <summary>
-    /// Extract the hash keys and range keys from the specified value.
+    ///     Extract the hash keys and range keys from the specified value.
     /// </summary>
     /// <param name="value"></param>
     /// <param name="context"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    internal static Dictionary<string, AttributeValue> ExtractKeys<T>(T value, DynamoContext context = null) where T:class
+    internal static Dictionary<string, AttributeValue> ExtractKeys<T>(T value, DynamoContext context = null)
+        where T : class
     {
         Check.NotNull(value, nameof(value));
-        
+
         var keyValues = GetKeyValues(value, context);
-        
+
         return ExtractKeysToDictionary<T>(keyValues.HashKey, keyValues.RangeKey, context);
     }
-    
+
     /// <summary>
     ///     Creates a dictionary of expression attribute values based on the provided filter object and attribute names.
     /// </summary>
@@ -317,8 +314,9 @@ internal static class DynamoHelper
     /// </remarks>
     /// <seealso cref="GetTableName{T}" />
     /// <seealso cref="Table.QueryRequest" />
-    internal static QueryRequest CreateQueryRequest<T>(Table.QueryRequest request, DynamoContext context =null) where T:class
-    { 
+    internal static QueryRequest CreateQueryRequest<T>(Table.QueryRequest request, DynamoContext context = null)
+        where T : class
+    {
         var queryRequest = new QueryRequest
         {
             IndexName = request.IndexName,
@@ -361,7 +359,8 @@ internal static class DynamoHelper
     /// </remarks>
     /// <seealso cref="GetTableName{T}" />
     /// <seealso cref="Table.ScanRequest" />
-    internal static ScanRequest CreateScanRequest<T>(Table.ScanRequest request, DynamoContext context = null) where T:class
+    internal static ScanRequest CreateScanRequest<T>(Table.ScanRequest request, DynamoContext context = null)
+        where T : class
     {
         var scanRequest = new ScanRequest
         {
@@ -399,10 +398,11 @@ internal static class DynamoHelper
     ///     The Keys are derived by converting the provided attribute values to AttributeValue objects.
     /// </remarks>
     /// <seealso cref="Table.BatchGetItemRequest" />
-    internal static Dictionary<string, KeysAndAttributes> CreateBatchGetItemRequest(BatchGetItemRequest request, DynamoContext context=null)
+    internal static Dictionary<string, KeysAndAttributes> CreateBatchGetItemRequest(BatchGetItemRequest request,
+        DynamoContext context = null)
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
-        
+
         var result = new Dictionary<string, KeysAndAttributes>();
 
         foreach (var item in request.Items)
@@ -411,7 +411,7 @@ internal static class DynamoHelper
                 ConsistentRead = item.Value.ConsistentRead,
                 ExpressionAttributeNames = item.Value.ExpressionAttributeNames,
                 ProjectionExpression = item.Value.ProjectionExpression,
-                Keys = item.Value.Keys.Select(k=>  AttributeConverter.ConvertToAttributeValues(k,context)).ToList()
+                Keys = item.Value.Keys.Select(k => AttributeConverter.ConvertToAttributeValues(k, context)).ToList()
             });
 
         return result;
@@ -433,7 +433,8 @@ internal static class DynamoHelper
     ///     AttributeValue objects.
     /// </remarks>
     /// <seealso cref="Table.BatchWriteItemRequest" />
-    internal static BatchWriteItemRequest CreateBatchWriteItemRequest(Table.BatchWriteItemRequest request, DynamoContext context=null)
+    internal static BatchWriteItemRequest CreateBatchWriteItemRequest(Table.BatchWriteItemRequest request,
+        DynamoContext context = null)
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
 
@@ -441,18 +442,18 @@ internal static class DynamoHelper
         {
             RequestItems = new Dictionary<string, List<WriteRequest>>()
         };
-        
+
         foreach (var item in request.Items)
-        { 
+        {
             var writeRequests = (from r in item.Value
                 select new WriteRequest
                 {
                     DeleteRequest = r.DeleteRequest is null
                         ? null
-                        : new DeleteRequest(AttributeConverter.ConvertToAttributeValues(r.DeleteRequest,context)),
+                        : new DeleteRequest(AttributeConverter.ConvertToAttributeValues(r.DeleteRequest, context)),
                     PutRequest = r.PutRequest is null
                         ? null
-                        : new PutRequest(AttributeConverter.ConvertToAttributeValues(r.PutRequest,context))
+                        : new PutRequest(AttributeConverter.ConvertToAttributeValues(r.PutRequest, context))
                 }).ToList();
 
             writeRequest.RequestItems.Add(item.Key, writeRequests);
@@ -479,9 +480,12 @@ internal static class DynamoHelper
     ///     is used to perform the conversion for each dictionary.
     ///     If the input list is null, an empty list of type T is returned.
     /// </remarks>
-    internal static IList<T> ConvertAttributesToType<T>(IList<Dictionary<string, AttributeValue>> items, DynamoContext context=null)
+    internal static IList<T> ConvertAttributesToType<T>(IList<Dictionary<string, AttributeValue>> items,
+        DynamoContext context = null)
     {
-        return items is null ? [] : items.Select(i=>AttributeConverter.ConvertAttributesToType<T>(i,context)).ToList();
+        return items is null
+            ? []
+            : items.Select(i => AttributeConverter.ConvertAttributesToType<T>(i, context)).ToList();
     }
 
     /// <summary>
@@ -511,7 +515,7 @@ internal static class DynamoHelper
     ///     If the input list is null, the method returns a tuple with two null lists.
     /// </remarks>
     internal static (IList<T1> first, IList<T2> seccond) ConvertAttributesToType<T1, T2>(
-        IList<Dictionary<string, AttributeValue>> items, string splitBy,DynamoContext context=null)
+        IList<Dictionary<string, AttributeValue>> items, string splitBy, DynamoContext context = null)
     {
         if (items is null)
             return (null, null);
@@ -520,12 +524,10 @@ internal static class DynamoHelper
         var result2 = new List<T2>();
 
         foreach (var item in items)
-        {
             if (item.TryGetValue(EntitySplitter, out var value) && value.S == splitBy)
                 result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item, context));
             else
                 result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item, context));
-        }
 
         return (result1, result2);
     }
@@ -567,7 +569,7 @@ internal static class DynamoHelper
     ///     If the input list is null, the method returns a tuple with three null lists.
     /// </remarks>
     internal static (List<T1> first, IList<T2> seccond, IList<T3> third) ConvertAttributesToType<T1, T2, T3>(
-        IList<Dictionary<string, AttributeValue>> items, string[] splitBy,DynamoContext context=null)
+        IList<Dictionary<string, AttributeValue>> items, string[] splitBy, DynamoContext context = null)
     {
         if (items is null)
             return (null, null, null);
@@ -583,14 +585,14 @@ internal static class DynamoHelper
 
             if (item[EntitySplitter].S == splitBy[0])
             {
-                result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item,context));
+                result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item, context));
             }
             else
             {
                 if (item[EntitySplitter].S == splitBy[1])
-                    result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item,context));
+                    result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item, context));
                 else
-                    result3.Add(AttributeConverter.ConvertAttributesToType<T3>(item,context));
+                    result3.Add(AttributeConverter.ConvertAttributesToType<T3>(item, context));
             }
         }
 
@@ -641,11 +643,11 @@ internal static class DynamoHelper
     /// </remarks>
     internal static (IList<T1> first, IList<T2> seccond, IList<T3> third, IList<T4> fourth) ConvertAttributesToType<T1,
         T2, T3, T4>(
-        IList<Dictionary<string, AttributeValue>> items, string[] splitBy,DynamoContext context=null)
+        IList<Dictionary<string, AttributeValue>> items, string[] splitBy, DynamoContext context = null)
     {
         if (items is null)
             return (null, null, null, null);
-        
+
         var result1 = new List<T1>();
         var result2 = new List<T2>();
         var result3 = new List<T3>();
@@ -658,20 +660,20 @@ internal static class DynamoHelper
 
             if (item[EntitySplitter].S == splitBy[0])
             {
-                result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item,context));
+                result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item, context));
             }
             else
             {
                 if (item[EntitySplitter].S == splitBy[1])
                 {
-                    result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item,context));
+                    result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item, context));
                 }
                 else
                 {
                     if (item[EntitySplitter].S == splitBy[2])
-                        result3.Add(AttributeConverter.ConvertAttributesToType<T3>(item,context));
+                        result3.Add(AttributeConverter.ConvertAttributesToType<T3>(item, context));
                     else
-                        result4.Add(AttributeConverter.ConvertAttributesToType<T4>(item,context));
+                        result4.Add(AttributeConverter.ConvertAttributesToType<T4>(item, context));
                 }
             }
         }
@@ -694,7 +696,7 @@ internal static class DynamoHelper
     /// <returns>A tuple containing five lists of specified entity types.</returns>
     internal static (IList<T1> first, IList<T2> seccond, IList<T3> third, IList<T4> fourth, IList<T5> fifth)
         ConvertAttributesToType<T1, T2, T3, T4, T5>(
-            IList<Dictionary<string, AttributeValue>> items, string[] splitBy,DynamoContext context=null)
+            IList<Dictionary<string, AttributeValue>> items, string[] splitBy, DynamoContext context = null)
     {
         if (items is null)
             return (null, null, null, null, null);
@@ -712,26 +714,26 @@ internal static class DynamoHelper
 
             if (item[EntitySplitter].S == splitBy[0])
             {
-                result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item,context));
+                result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item, context));
             }
             else
             {
                 if (item[EntitySplitter].S == splitBy[1])
                 {
-                    result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item,context));
+                    result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item, context));
                 }
                 else
                 {
                     if (item[EntitySplitter].S == splitBy[2])
                     {
-                        result3.Add(AttributeConverter.ConvertAttributesToType<T3>(item,context));
+                        result3.Add(AttributeConverter.ConvertAttributesToType<T3>(item, context));
                     }
                     else
                     {
                         if (item[EntitySplitter].S == splitBy[3])
-                            result4.Add(AttributeConverter.ConvertAttributesToType<T4>(item,context));
+                            result4.Add(AttributeConverter.ConvertAttributesToType<T4>(item, context));
                         else
-                            result5.Add(AttributeConverter.ConvertAttributesToType<T5>(item,context));
+                            result5.Add(AttributeConverter.ConvertAttributesToType<T5>(item, context));
                     }
                 }
             }
@@ -900,5 +902,4 @@ internal static class DynamoHelper
             Update = CreateUpdateTransactItem(transactionWriteItem)
         };
     }
-    
 }

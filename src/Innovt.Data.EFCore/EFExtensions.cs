@@ -10,7 +10,7 @@ using Innovt.Domain.Core.Specification;
 using Microsoft.EntityFrameworkCore;
 
 namespace Innovt.Data.EFCore;
-#nullable enable
+
 /// <summary>
 ///     Extension methods for Entity Framework IQueryable to facilitate query operations.
 /// </summary>

@@ -5,6 +5,7 @@
 using Amazon.Runtime;
 
 namespace Innovt.Cloud.AWS.Configuration;
+
 public interface IAwsConfiguration : IConfiguration
 {
     string AccountNumber { get; set; }

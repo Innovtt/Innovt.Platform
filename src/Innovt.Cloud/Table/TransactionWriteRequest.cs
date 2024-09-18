@@ -31,16 +31,15 @@ public class TransactionWriteRequest
     /// </summary>
     public IList<TransactionWriteItem> TransactItems { get; set; }
 #pragma warning restore CA2227 // Collection properties should be read only
-    
+
     /// <summary>
-    /// Add a new item to the transaction
+    ///     Add a new item to the transaction
     /// </summary>
     /// <param name="item"></param>
     public void AddItem(TransactionWriteItem item)
     {
         if (item == null) throw new ArgumentNullException(nameof(item));
-        
+
         TransactItems.Add(item);
     }
-    
 }

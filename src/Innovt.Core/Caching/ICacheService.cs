@@ -16,7 +16,7 @@ namespace Innovt.Core.Caching;
 ///     This interface defines methods for retrieving and caching data, as well as removing cached data.
 ///     Implement this interface to create a caching service for your application.
 /// </remarks>
-public interface ICacheService :IDisposable
+public interface ICacheService : IDisposable
 {
     /// <summary>
     ///     Gets the cached value associated with the specified key.

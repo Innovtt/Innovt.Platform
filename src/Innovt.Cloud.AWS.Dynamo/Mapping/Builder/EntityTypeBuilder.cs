@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
@@ -21,11 +22,11 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     ///     Gets or sets the partition key for the DynamoDB table.
     /// </summary>
     public string Pk { get; private set; }
-    
+
     public string HashKeyPrefix { get; private set; }
-    
+
     /// <summary>
-    /// Define the key prefix separator
+    ///     Define the key prefix separator
     /// </summary>
     public string KeySeparator { get; private set; }
 
@@ -33,9 +34,9 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     ///     Gets or sets the sort key for the DynamoDB table.
     /// </summary>
     public string Sk { get; private set; }
-    
+
     /// <summary>
-    /// Gets or sets the range key prefix for the DynamoDB table.
+    ///     Gets or sets the range key prefix for the DynamoDB table.
     /// </summary>
     public string RangeKeyPrefix { get; private set; }
 
@@ -91,14 +92,14 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
         Pk = hashKey;
         return Property(Pk);
     }
-    
+
     public EntityTypeBuilder<TEntity> HasHashKeyPrefix(string hashKeyPrefix)
     {
         HashKeyPrefix = hashKeyPrefix;
         return this;
     }
-    
-    
+
+
     /// <summary>
     ///     Sets the sort key for the DynamoDB table to "SK".
     /// </summary>
@@ -128,9 +129,9 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
         Sk = rangeKey;
         return Property(Sk);
     }
-    
+
     /// <summary>
-    /// Sets the sort/Range key prefix for the DynamoDB table.
+    ///     Sets the sort/Range key prefix for the DynamoDB table.
     /// </summary>
     /// <param name="rangeKeyPrefix"></param>
     /// <returns></returns>
@@ -139,7 +140,7 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
         RangeKeyPrefix = rangeKeyPrefix;
         return this;
     }
-    
+
     /// <summary>
     ///     Sets the entity type for the DynamoDB table using a provided entity type function.
     /// </summary>
@@ -160,7 +161,7 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
         EntityType = entityTypeName;
         return this;
     }
-    
+
     /// <summary>
     ///     Defines a property for the entity using a provided property function.
     /// </summary>
@@ -177,33 +178,36 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     /// <param name="name">The name of the property.</param>
     /// <returns>The property type builder for further property configuration.</returns>
     public PropertyTypeBuilder<TEntity> Property(string name)
-    {   
+    {
+        return AddProperty(name);
+    }
+    
+    private PropertyTypeBuilder<TEntity> AddProperty(string name, Type type=null)
+    {
         if (name == null) throw new ArgumentNullException(nameof(name));
-        
-        var currentProperty = Properties.SingleOrDefault(p => p.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
-        
-        if(currentProperty !=null)
+
+        var currentProperty =
+            Properties.SingleOrDefault(p => p.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
+
+        if (currentProperty != null)
             return currentProperty;
-        
-        var builder = new PropertyTypeBuilder<TEntity>(p => name);
-        
+
+        var builder = new PropertyTypeBuilder<TEntity>(p => name, type);
+
         Properties.Add(builder);
 
         return builder;
     }
-    
+
     private static string GetPropertyName<TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression)
     {
-        Check.NotNull(propertyExpression, nameof (propertyExpression));
-            
-        if (propertyExpression.Body is MemberExpression memberExpression)
-        {
-            return memberExpression.Member.Name;
-        }
+        Check.NotNull(propertyExpression, nameof(propertyExpression));
+
+        if (propertyExpression.Body is MemberExpression memberExpression) return memberExpression.Member.Name;
 
         throw new ArgumentException("The expression is not a member access expression.", nameof(propertyExpression));
     }
-    
+
     /// <summary>
     ///     Ignores a property during mapping.
     /// </summary>
@@ -221,10 +225,10 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     public void IgnoreProperty(string name)
     {
         var property = GetProperty(name);
-        
+
         if (property is null)
             return;
-        
+
         Properties.Remove(property);
     }
 
@@ -235,38 +239,39 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
     public EntityTypeBuilder<TEntity> AutoMap()
     {
-        var item = typeof(TEntity).GetProperties();
+        var item = typeof(TEntity).GetProperties(BindingFlags.Instance | BindingFlags.Public |
+                                                 BindingFlags.SetProperty | BindingFlags.GetProperty);
 
         foreach (var propertyInfo in item)
         {
-            var prop = new PropertyTypeBuilder<TEntity>(p => propertyInfo.Name, propertyInfo.GetType());
-
-            Properties.Add(prop);
+            AddProperty(propertyInfo.Name, propertyInfo.GetType());
         }
 
         return this;
     }
-    
+
     /// <summary>
-    /// Returns all properties defined for the entity type.
+    ///     Returns all properties defined for the entity type.
     /// </summary>
     /// <returns></returns>
     public IReadOnlyCollection<PropertyTypeBuilder<TEntity>> GetProperties()
-    {   
+    {
         return Properties.AsReadOnly();
     }
-    
+
     /// <summary>
-    /// Gets a property by its column name or Name 
+    ///     Gets a property by its column name or Name
     /// </summary>
     /// <param name="name"></param>
     /// <returns></returns>
     public PropertyTypeBuilder<TEntity> GetProperty(string name)
-    {   
-        var property = Properties?.SingleOrDefault(p => p.Name!=null &&p.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)) ??
-                       Properties?.SingleOrDefault(p => p.ColumnName!=null && p.ColumnName.Equals(name, StringComparison.InvariantCultureIgnoreCase));
-        
+    {
+        var property = Properties?.SingleOrDefault(p =>
+                           p.Name != null && p.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)) ??
+                       Properties?.SingleOrDefault(p =>
+                           p.ColumnName != null &&
+                           p.ColumnName.Equals(name, StringComparison.InvariantCultureIgnoreCase));
+
         return property;
     }
-    
 }

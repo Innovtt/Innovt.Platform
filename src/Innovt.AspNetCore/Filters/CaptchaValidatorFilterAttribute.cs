@@ -55,7 +55,8 @@ public sealed class CaptchaValidatorFilterAttribute : ActionFilterAttribute
 {
     private const string CaptchaUri = "https://www.google.com/recaptcha/api/siteverify";
 
-    private JsonSerializerOptions serializerSettings;
+    private readonly JsonSerializerOptions serializerSettings;
+
     /// <summary>
     ///     Initializes a new instance of the <see cref="CaptchaValidatorFilterAttribute" /> class.
     /// </summary>
@@ -131,7 +132,7 @@ public sealed class CaptchaValidatorFilterAttribute : ActionFilterAttribute
         var stringAsync = await httpClient
             .GetStringAsync(new Uri($"{CaptchaUri}?secret={SecretKey}&response={token}"))
             .ConfigureAwait(false);
-        
+
         var captchaResponse = JsonSerializer.Deserialize<RecaptchaResponse>(stringAsync, serializerSettings);
 
         return captchaResponse is not null && captchaResponse.success;

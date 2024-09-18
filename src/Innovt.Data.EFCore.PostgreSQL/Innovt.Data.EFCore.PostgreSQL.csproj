@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <PackageId>Innovt.Data.EFCore.PostgreSQL</PackageId>
-        <PackageVersion>8.1.0-preview</PackageVersion>
+        <PackageVersion>8.1.1-preview</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -18,7 +18,7 @@
         <ProjectReference Include="..\Innovt.Data.EFCore\Innovt.Data.EFCore.csproj"/>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4"/>
     </ItemGroup>
 
 </Project>

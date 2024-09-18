@@ -1,33 +1,32 @@
 ﻿using Innovt.Core.Utilities;
 using NUnit.Framework;
 
-namespace Innovt.Core.Test
+namespace Innovt.Core.Test;
+
+[TestFixture]
+public class PasswordHelperTests
 {
-    [TestFixture]
-    public class PasswordHelperTests
+    [Test]
+    public void GeneratePassword()
     {
-        [Test]
-        public void GeneratePassword()
-        {
-            string password;
-            var passwordLength = 20;
+        string password;
+        var passwordLength = 20;
 
-            password = PasswordHelper.GeneratePassword(passwordLength);
+        password = PasswordHelper.GeneratePassword(passwordLength);
 
-            Assert.That(password, Is.Not.Null);
-            Assert.That(password, Has.Length.EqualTo(passwordLength));
-        }
+        Assert.That(password, Is.Not.Null);
+        Assert.That(password, Has.Length.EqualTo(passwordLength));
+    }
 
-        [Test]
-        public void GeneratePasswordShouldGeneratePasswordOfLength6IfPasswordSizeIsLessThan6()
-        {
-            string password;
-            var passwordLength = 4;
+    [Test]
+    public void GeneratePasswordShouldGeneratePasswordOfLength6IfPasswordSizeIsLessThan6()
+    {
+        string password;
+        var passwordLength = 4;
 
-            password = PasswordHelper.GeneratePassword(passwordLength);
+        password = PasswordHelper.GeneratePassword(passwordLength);
 
-            Assert.That(password, Is.Not.Null);
-            Assert.That(password, Has.Length.EqualTo(6));
-        }
+        Assert.That(password, Is.Not.Null);
+        Assert.That(password, Has.Length.EqualTo(6));
     }
 }

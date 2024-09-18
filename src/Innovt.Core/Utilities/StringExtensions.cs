@@ -176,7 +176,7 @@ public static class StringExtensions
     {
         return !IsEmpty(yourGuid);
     }
-    
+
     /// <summary>
     ///     Determines whether a Guid is empty (all zeros).
     /// </summary>
@@ -186,29 +186,29 @@ public static class StringExtensions
     {
         return yourGuid == Guid.Empty;
     }
-    
+
     /// <summary>
     ///     Determines whether a nullable Guid is not null or empty.
     /// </summary>
     /// <param name="yourGuid">The nullable Guid to check.</param>
     /// <returns>True if the nullable Guid is not null or empty; otherwise, false.</returns>
-    public static bool IsNotNullOrEmpty([NotNullWhen(false)]this Guid? yourGuid)
+    public static bool IsNotNullOrEmpty([NotNullWhen(false)] this Guid? yourGuid)
     {
         return !IsNullOrEmpty(yourGuid);
     }
-    
+
     /// <summary>
     ///     Determines whether a nullable Guid is null or empty.
     /// </summary>
     /// <param name="yourGuid">The nullable Guid to check.</param>
     /// <returns>True if the nullable Guid is null or empty; otherwise, false.</returns>
-    public static bool IsNullOrEmpty([NotNullWhen(false)]this Guid? yourGuid)
+    public static bool IsNullOrEmpty([NotNullWhen(false)] this Guid? yourGuid)
     {
         return yourGuid is null || IsEmpty(yourGuid.GetValueOrDefault());
     }
 
     /// <summary>
-    ///  Determines whether a string is null, empty, or consists only of white-space characters.
+    ///     Determines whether a string is null, empty, or consists only of white-space characters.
     /// </summary>
     /// <param name="str">The string to check.</param>
     /// <returns>True if the string is null, empty, or consists only of white-space characters; otherwise, false.</returns>
@@ -216,6 +216,7 @@ public static class StringExtensions
     {
         return string.IsNullOrWhiteSpace(str);
     }
+
     /// <summary>
     ///     Determines whether a string is not null, empty, or consists only of white-space characters.
     /// </summary>
@@ -224,11 +225,11 @@ public static class StringExtensions
     ///     True if the string is not null, not empty, and not consisting only of white-space characters; otherwise,
     ///     false.
     /// </returns>
-    public static bool IsNotNullOrEmpty([NotNullWhen(false)]this string str)
+    public static bool IsNotNullOrEmpty([NotNullWhen(false)] this string str)
     {
         return !string.IsNullOrWhiteSpace(str);
     }
-    
+
     /// <summary>
     ///     Encodes a string for safe use in a URL, using UTF-8 encoding.
     /// </summary>
@@ -384,17 +385,20 @@ public static class StringExtensions
     /// <returns>The string with special characters replaced by spaces.</returns>
     public static string RemoveSpecialCharacter(this string str)
     {
-        return str.IsNullOrEmpty() ? string.Empty : Regex.Replace(str, "[^0-9a-zA-Z]+", " ",RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
+        return str.IsNullOrEmpty()
+            ? string.Empty
+            : Regex.Replace(str, "[^0-9a-zA-Z]+", " ", RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
     }
-    
+
     /// <summary>
-    /// Check is a string has special characters
+    ///     Check is a string has special characters
     /// </summary>
     /// <param name="str"></param>
     /// <returns></returns>
     public static bool HasSpecialCharacter(this string str)
     {
-        return !str.IsNullOrEmpty() && Regex.IsMatch(str, "[^0-9a-zA-Z]+", RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
+        return !str.IsNullOrEmpty() &&
+               Regex.IsMatch(str, "[^0-9a-zA-Z]+", RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
     }
 
     /// <summary>
@@ -426,7 +430,7 @@ public static class StringExtensions
     {
         if (cpf.IsNullOrEmpty())
             return string.Empty;
-        
+
         cpf = cpf.PadLeft(11, '0');
         return FormatByMask(cpf, @"{0:000\.000\.000\-00}");
     }
