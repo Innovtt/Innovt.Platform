@@ -56,8 +56,8 @@ public class DynamoHelperTests
         filter.TryAdd("ids", "1,2,3");
 
         var result = CreateExpressionAttributeValues(filter, ":pk,:sk,:ids");
-        
-        
+
+
         Assert.That(result, Is.Not.Null);
     }
 }

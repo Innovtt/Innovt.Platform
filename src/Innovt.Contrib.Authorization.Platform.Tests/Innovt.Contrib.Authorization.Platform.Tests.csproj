@@ -6,11 +6,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
-        <PackageReference Include="NUnit" Version="4.2.2" />
-        <PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
-        <PackageReference Include="Amazon.Lambda.TestUtilities" Version="2.0.0" />
-        <PackageReference Include="NSubstitute" Version="5.1.0" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1"/>
+        <PackageReference Include="NUnit" Version="4.2.2"/>
+        <PackageReference Include="NUnit3TestAdapter" Version="4.6.0"/>
+        <PackageReference Include="Amazon.Lambda.TestUtilities" Version="2.0.0"/>
+        <PackageReference Include="NSubstitute" Version="5.1.0"/>
         <PackageReference Include="NUnit.Analyzers" Version="4.3.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -26,8 +26,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\contrib\Innovt.Contrib.Authorization\Innovt.Contrib.Authorization.Platform\Innovt.Contrib.Authorization.Platform.csproj" />
-        <ProjectReference Include="..\Innovt.CrossCutting.IOC\Innovt.CrossCutting.IOC.csproj" />
+        <ProjectReference Include="..\..\contrib\Innovt.Contrib.Authorization\Innovt.Contrib.Authorization.Platform\Innovt.Contrib.Authorization.Platform.csproj"/>
+        <ProjectReference Include="..\Innovt.CrossCutting.IOC\Innovt.CrossCutting.IOC.csproj"/>
     </ItemGroup>
 
 </Project>

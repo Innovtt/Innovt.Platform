@@ -3,7 +3,6 @@
 // Project: Innovt.Cloud.AWS.Cognito
 
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace Innovt.Cloud.AWS.Cognito.Model;
 

@@ -9,18 +9,18 @@ using Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 namespace Innovt.Cloud.AWS.Dynamo;
 
 /// <summary>
-/// This class is responsible for managing the context of the DynamoDB for Code First strategy.
+///     This class is responsible for managing the context of the DynamoDB for Code First strategy.
 /// </summary>
 public abstract class DynamoContext
 {
-    private ModelBuilder modelBuilder = null!;
-    
     private static readonly object ObjLock = new();
-    
+    private ModelBuilder modelBuilder = null!;
+
     protected DynamoContext()
-    {   
+    {
         BuildModel();
     }
+
     public Dictionary<string, object> Entities => modelBuilder.Entities;
 
     private void BuildModel()
@@ -29,50 +29,48 @@ public abstract class DynamoContext
         {
             if (modelBuilder != null)
                 return;
-           
+
             modelBuilder = new ModelBuilder();
-            
+
             OnModelCreating(modelBuilder);
         }
     }
-    
+
     private static Type GetEntityType<T>()
     {
         return typeof(T);
     }
-    
+
     private static string GetEntityName<T>()
     {
         var instanceType = GetEntityType<T>();
-        
+
         return instanceType.Name;
     }
-    
+
     public bool HasTypeBuilder<T>()
     {
         var entityName = GetEntityName<T>();
 
         return Entities.TryGetValue(entityName, out var value);
     }
-    
+
     public EntityTypeBuilder<T> GetTypeBuilder<T>()
     {
         var entityName = GetEntityName<T>();
-        
+
         if (!Entities.TryGetValue(entityName, out var value))
             throw new MissingEntityMapException(entityName);
-        
-        if(value is EntityTypeBuilder<T> entityTypeBuilder)
-        {
-            return entityTypeBuilder;
-        }
-        
+
+        if (value is EntityTypeBuilder<T> entityTypeBuilder) return entityTypeBuilder;
+
         throw new MissingEntityMapException(entityName);
     }
+
     public IPropertyConverter GetPropertyConverter(Type type)
     {
         return modelBuilder?.Converters?.GetValueOrDefault(type);
     }
-    
-    protected abstract void OnModelCreating([DisallowNull]ModelBuilder modelBuilder);
+
+    protected abstract void OnModelCreating([DisallowNull] ModelBuilder modelBuilder);
 }

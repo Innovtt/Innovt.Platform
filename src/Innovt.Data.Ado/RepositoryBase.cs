@@ -417,7 +417,7 @@ public class RepositoryBase : IRepositoryBase
     ///     Retrieves a database connection for executing queries.
     /// </summary>
     /// <returns>An IDbConnection instance for executing queries.</returns>
-    private IDbConnection GetConnection(IDbTransaction dbTransaction=null)
+    private IDbConnection GetConnection(IDbTransaction dbTransaction = null)
     {
         return dbTransaction != null ? dbTransaction.Connection : connectionFactory.Create(dataSource);
     }

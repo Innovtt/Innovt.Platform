@@ -13,7 +13,7 @@ namespace Innovt.Cloud.Table;
 /// <summary>
 ///     Interface representing a repository for interacting with a table.
 /// </summary>
-public interface ITableRepository:IDisposable
+public interface ITableRepository : IDisposable
 {
     /// <summary>
     ///     Asynchronously adds a single item to the repository.
@@ -22,7 +22,7 @@ public interface ITableRepository:IDisposable
     /// <param name="message">The item to add.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous add operation.</returns>
-    Task AddAsync<T>(T message, CancellationToken cancellationToken = default) where T : class, ITableMessage;
+    Task AddAsync<T>(T message, CancellationToken cancellationToken = default) where T : class;
 
     /// <summary>
     ///     Asynchronously adds multiple items to the repository.
@@ -34,14 +34,15 @@ public interface ITableRepository:IDisposable
     Task AddAsync<T>(IList<T> messages, CancellationToken cancellationToken = default) where T : class;
 
     /// <summary>
-    /// This method will perform an update operation on the table. The operation is based on the primary key and type is PUT.
+    ///     This method will perform an update operation on the table. The operation is based on the primary key and type is
+    ///     PUT.
     /// </summary>
     /// <param name="instance">The instance that you want to update</param>
     /// <param name="cancellationToken">A cancellation token.</param>
     /// <typeparam name="T">The instance updated.</typeparam>
     /// <returns></returns>
     Task<T> UpdateAsync<T>(T instance, CancellationToken cancellationToken = default) where T : class;
-    
+
     /// <summary>
     ///     Asynchronously performs a transactional write of items.
     /// </summary>
@@ -58,7 +59,7 @@ public interface ITableRepository:IDisposable
     /// <returns>A response from the batch write operation.</returns>
     Task<BatchWriteItemResponse> BatchWriteItem(BatchWriteItemRequest batchWriteItemRequest,
         CancellationToken cancellationToken = default);
-    
+
 
     /// <summary>
     ///     Asynchronously deletes an item using its value.
@@ -67,17 +68,17 @@ public interface ITableRepository:IDisposable
     /// <param name="message">The item to delete.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous delete operation.</returns>
-    Task DeleteAsync<T>(T message, CancellationToken cancellationToken = default) where T : class, ITableMessage;
+    Task DeleteAsync<T>(T message, CancellationToken cancellationToken = default) where T : class;
 
     /// <summary>
-    /// Asynchronously a list of item that are from the same type.
+    ///     Asynchronously a list of item that are from the same type.
     /// </summary>
     /// <param name="messages"></param>
     /// <param name="cancellationToken"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     Task DeleteAsync<T>(List<T> messages, CancellationToken cancellationToken = default) where T : class;
-    
+
     /// <summary>
     ///     Asynchronously deletes an item using its identifier and optional range key.
     /// </summary>
@@ -87,8 +88,8 @@ public interface ITableRepository:IDisposable
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous delete operation.</returns>
     Task DeleteAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default)
-        where T : class, ITableMessage;
-    
+        where T : class;
+
     /// <summary>
     ///     Asynchronously retrieves an item by its identifier.
     /// </summary>
@@ -98,7 +99,7 @@ public interface ITableRepository:IDisposable
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>An item of type T if found; otherwise, null.</returns>
     Task<T> GetByIdAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default)
-        where T : class, ITableMessage;
+        where T : class;
 
     /// <summary>
     ///     Asynchronously queries and retrieves the first item of type T by its identifier.
@@ -229,7 +230,7 @@ public interface ITableRepository:IDisposable
     /// <returns>A paged collection of items of type T based on the query request.</returns>
     Task<PagedCollection<T>> QueryPaginatedByAsync<T>(QueryRequest request,
         CancellationToken cancellationToken = default) where T : class;
-    
+
 
     /// <summary>
     ///     Executes an SQL statement asynchronously and retrieves the results.
@@ -250,5 +251,4 @@ public interface ITableRepository:IDisposable
     /// <returns>A list of items of type T.</returns>
     Task<List<T>> BatchGetItem<T>(BatchGetItemRequest batchGetItemRequest,
         CancellationToken cancellationToken = default) where T : class;
-
 }

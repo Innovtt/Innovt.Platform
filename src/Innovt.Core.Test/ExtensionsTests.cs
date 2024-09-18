@@ -27,17 +27,14 @@ public class ExtensionsTests
 
         Assert.That(expected, Is.EqualTo(actual));
     }
-    
+
     [Test]
     public void CheckHasSpecialCharacter()
     {
         const string invalidCharacters = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
-        foreach (var character in invalidCharacters)
-        {
-            Assert.That(("name" + character).HasSpecialCharacter(), Is.True);
-        }
-        
+        foreach (var character in invalidCharacters) Assert.That(("name" + character).HasSpecialCharacter(), Is.True);
+
         Assert.That("name".HasSpecialCharacter(), Is.False);
     }
 
@@ -98,21 +95,22 @@ public class ExtensionsTests
         var dateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 7, 0, 0, DateTimeKind.Utc);
         var fromOffSet = new TimeSpan(-3, 0, 0); //Brazil is UTC -3
         var destinationTimeZoneId = new TimeSpan(2, 0, 0); //Spain is UTC +2
-        
+
         var convertedDateTime = dateTime.ToTimeZone(fromOffSet, destinationTimeZoneId);
-        
+
         Assert.That(convertedDateTime, Is.EqualTo(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
             12, 0, 0, DateTimeKind.Utc)));
     }
-    
+
     [Test]
     public void ConvertDateTimeOffSetBetweenTimeZones()
     {
-        var dateTime = new DateTimeOffset(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 7, 0, 0, new TimeSpan(-3, 0, 0));
+        var dateTime = new DateTimeOffset(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 7, 0, 0,
+            new TimeSpan(-3, 0, 0));
         var destinationTimeZone = new TimeSpan(2, 0, 0); //Spain is UTC +2
-        
+
         var convertedDateTime = dateTime.ToTimeZone(destinationTimeZone);
-        
+
         Assert.That(convertedDateTime, Is.EqualTo(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
             12, 0, 0, DateTimeKind.Utc)));
     }

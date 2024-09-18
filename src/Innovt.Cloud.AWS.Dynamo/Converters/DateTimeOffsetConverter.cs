@@ -5,7 +5,7 @@ using Amazon.DynamoDBv2.DocumentModel;
 
 namespace Innovt.Cloud.AWS.Dynamo.Converters;
 
-public class DateTimeOffsetConverter:IPropertyConverter
+public class DateTimeOffsetConverter : IPropertyConverter
 {
     public DynamoDBEntry ToEntry(object value)
     {
@@ -16,7 +16,7 @@ public class DateTimeOffsetConverter:IPropertyConverter
     }
 
     /// <summary>
-    /// Here is from DateTimeOffSet to Date
+    ///     Here is from DateTimeOffSet to Date
     /// </summary>
     /// <param name="entry"></param>
     /// <returns></returns>
@@ -30,7 +30,7 @@ public class DateTimeOffsetConverter:IPropertyConverter
 
         if (DateTime.TryParse(entry.ToString(), out var valueDate))
             return valueDate;
-        
+
         return null;
     }
 }

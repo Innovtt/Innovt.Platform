@@ -32,5 +32,4 @@ public class CustomEventProcessor : EventProcessor<Person>
     {
         return null!;
     }
-    
 }

@@ -263,21 +263,13 @@ public class S3FileSystem : AwsBaseService, IFileSystem
 
         return await ReadStream(stream, encoding);
     }
+
     public async Task<string> GetObjectContentAsync(string bucketName, string key, Encoding encoding,
         CancellationToken cancellationToken = default)
     {
-        var stream = await DownloadStreamAsync(bucketName,key, cancellationToken).ConfigureAwait(false);
+        var stream = await DownloadStreamAsync(bucketName, key, cancellationToken).ConfigureAwait(false);
 
         return await ReadStream(stream, encoding);
-    }
-    
-    private static async Task<string> ReadStream(Stream stream, Encoding encoding)
-    {
-        if (stream is null) return null;
-        
-        using var reader = new StreamReader(stream, encoding);
-
-        return await reader.ReadToEndAsync().ConfigureAwait(false);
     }
 
     /// <summary>
@@ -286,7 +278,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     /// <typeparam name="T"></typeparam>
     /// <param name="url"></param>
     /// <returns></returns>
-    public async Task<T> GetObjectFromJsonAsync<T>(Uri filePath,CancellationToken cancellationToken = default )
+    public async Task<T> GetObjectFromJsonAsync<T>(Uri filePath, CancellationToken cancellationToken = default)
     {
         if (filePath is null) throw new ArgumentNullException(nameof(filePath));
 
@@ -625,6 +617,15 @@ public class S3FileSystem : AwsBaseService, IFileSystem
 
         return await UploadAsync(bucketName, stream, fileName, metadata, serverSideEncryptionMethod, fileAcl,
             cancellationToken).ConfigureAwait(false);
+    }
+
+    private static async Task<string> ReadStream(Stream stream, Encoding encoding)
+    {
+        if (stream is null) return null;
+
+        using var reader = new StreamReader(stream, encoding);
+
+        return await reader.ReadToEndAsync().ConfigureAwait(false);
     }
 
     /// <summary>

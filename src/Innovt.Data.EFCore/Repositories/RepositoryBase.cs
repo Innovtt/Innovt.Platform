@@ -23,11 +23,6 @@ namespace Innovt.Data.EFCore.Repositories;
 public class RepositoryBase<T> : IRepository<T> where T : class
 {
     /// <summary>
-    ///     The extended unit of work context for interacting with the database.
-    /// </summary>
-    protected IExtendedUnitOfWork Context { get; }
-
-    /// <summary>
     ///     Initializes a new instance of the <see cref="RepositoryBase{T}" /> class.
     /// </summary>
     /// <param name="context">The extended unit of work context.</param>
@@ -36,6 +31,11 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     {
         Context = context ?? throw new ArgumentNullException(nameof(context));
     }
+
+    /// <summary>
+    ///     The extended unit of work context for interacting with the database.
+    /// </summary>
+    protected IExtendedUnitOfWork Context { get; }
 
     /// <inheritdoc />
     public virtual void Add(T entity)

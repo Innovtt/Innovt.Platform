@@ -111,7 +111,6 @@ public interface IFileSystem
     string GeneratePreSignedUrl(string bucketName, string key, DateTime expiration,
 #pragma warning restore CA1055 // URI-like return values should not be strings
         IDictionary<string, object> additionalProperties);
-
 #pragma warning disable CA1055 // URI-like return values should not be strings
     /// <summary>
     ///     Gets a pre-signed URL for accessing the object in the specified bucket.
@@ -130,16 +129,17 @@ public interface IFileSystem
     /// <param name="cancellationToken">The cancellation token to cancel the asynchronous operation.</param>
     /// <returns>The content of the object as a string.</returns>
     Task<string> GetObjectContentAsync(string url, Encoding encoding, CancellationToken cancellationToken = default);
-    
+
     /// <summary>
-    ///  Gets the content of the object from the specified URL asynchronously.
+    ///     Gets the content of the object from the specified URL asynchronously.
     /// </summary>
     /// <param name="bucketName">The Bucket name.</param>
     /// <param name="key">The file url</param>
     /// <param name="encoding"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<string> GetObjectContentAsync(string bucketName, string key, Encoding encoding, CancellationToken cancellationToken = default);
+    Task<string> GetObjectContentAsync(string bucketName, string key, Encoding encoding,
+        CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Deserializes a JSON object from the content of a file specified by a URI.
@@ -148,7 +148,7 @@ public interface IFileSystem
     /// <param name="filePath">The URI pointing to the JSON file.</param>
     /// <param name="cancellationToken"></param>
     /// <returns>The deserialized object of type <typeparamref name="T" />.</returns>
-    Task<T> GetObjectFromJsonAsync<T>(Uri filePath,CancellationToken cancellationToken = default);
+    Task<T> GetObjectFromJsonAsync<T>(Uri filePath, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Uploads a file from a stream to the specified bucket.
