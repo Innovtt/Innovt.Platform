@@ -62,25 +62,27 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
         KeySeparator = keySeparator;
         return this;
     }
-
+    
     /// <summary>
-    ///     Sets the partition key for the DynamoDB table to "PK".
+    /// Initializes a new instance of the <see cref="EntityTypeBuilder{TEntity}" /> class.
+    /// In this case the default PK and SK will be created
     /// </summary>
-    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<TEntity> WithOneTableHashKey(string pk = "PK")
+    /// <returns></returns>
+    public EntityTypeBuilder<TEntity> WithDefaultKeys()
     {
-        return HasHashKey(pk);
+        WithHashKey();
+        WithRangeKey();
+        return this;
     }
-   
 
     /// <summary>
     ///     Sets the partition key for the DynamoDB table using a provided hash key function.
     /// </summary>
     /// <param name="expression">The hash key function to generate the partition key.</param>
     /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<TEntity> HasHashKey<TProperty>(Expression<Func<TEntity, TProperty>> expression)
+    public PropertyTypeBuilder<TEntity> WithHashKey<TProperty>(Expression<Func<TEntity, TProperty>> expression)
     {
-        return HasHashKey(GetPropertyName(expression));
+        return WithHashKey(GetPropertyName(expression));
     }
 
     /// <summary>
@@ -88,26 +90,16 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     /// </summary>
     /// <param name="hashKey">The partition key to set.</param>
     /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<TEntity> HasHashKey(string hashKey = "PK")
+    public PropertyTypeBuilder<TEntity> WithHashKey(string hashKey = "PK")
     {
         Pk = hashKey;
         return Property(Pk);
     }
 
-    public EntityTypeBuilder<TEntity> HasHashKeyPrefix(string hashKeyPrefix)
+    public EntityTypeBuilder<TEntity> WithHashKeyPrefix(string hashKeyPrefix)
     {
         HashKeyPrefix = hashKeyPrefix;
         return this;
-    }
-
-
-    /// <summary>
-    ///     Sets the sort key for the DynamoDB table to "SK".
-    /// </summary>
-    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<TEntity> WithOneTableRangeKey(string sk = "SK")
-    {
-        return WithRangeKey(sk);
     }
 
     /// <summary>
@@ -238,9 +230,14 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     ///     Starts a reflection process to auto map all properties of the entity type.
     /// </summary>
     /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public EntityTypeBuilder<TEntity> AutoMap()
+    public EntityTypeBuilder<TEntity> AutoMap(bool withDefaultKeys = true)
     {
-        var properties = typeof(TEntity).GetProperties(
+        var entityType = typeof(TEntity);
+        
+        //Set the table name as the entity name
+        TableName = entityType.Name;
+        
+        var properties = entityType.GetProperties(
                 BindingFlags.Public | BindingFlags.Instance |
                 BindingFlags.SetProperty | BindingFlags.GetProperty)
             .Where(p => p.DeclaringType == typeof(TEntity));
@@ -249,6 +246,9 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
         {
             AddProperty(propertyInfo.Name, propertyInfo.GetType());
         }
+        
+        if (withDefaultKeys)
+            WithDefaultKeys();
 
         return this;
     }

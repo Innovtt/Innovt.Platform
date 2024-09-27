@@ -16,8 +16,8 @@ public class CompanyMap : IEntityTypeDataModelMapper<Company>
     /// <param name="builder">The EntityTypeBuilder used to configure the mapping.</param>
     public void Configure([NotNull] EntityTypeBuilder<Company> builder)
     {
-        builder.AutoMap().WithTableName(nameof(Company)).WithOneTableHashKey();
-        builder.WithOneTableRangeKey();
+        builder.AutoMap().WithTableName(nameof(Company)).WithHashKey();
+        builder.WithRangeKey();
 
         builder.Property(p => p.Name).AsDecimal().WithColumnName("Name2");
         builder.Property("Name").AsDecimal();

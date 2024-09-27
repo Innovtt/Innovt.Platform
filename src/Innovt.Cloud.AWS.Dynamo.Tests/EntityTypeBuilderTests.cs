@@ -56,6 +56,7 @@ public class EntityTypeBuilderTests
         
         Assert.That(builder, Is.Not.Null);
         Assert.That(builder.EntityType, Is.Not.Null);
+        Assert.That(builder.TableName, Is.EqualTo("Users"));
 
         var properties = builder.GetProperties();
         
