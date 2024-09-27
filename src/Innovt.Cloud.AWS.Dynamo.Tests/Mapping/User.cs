@@ -9,10 +9,10 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests.Mapping;
 /// </summary>
 public class BaseUser:Entity
 {
-    public new string Id { get; set; }
+    public string Picture2 { get; set; }
 }
 
-public class User :BaseUser
+public class User:BaseUser
 {
     public string Picture { get; set; }
     public string FirstName { get; set; }
@@ -22,7 +22,7 @@ public class User :BaseUser
     public bool IsActive { get; set; }
 
     public DateTime? LastAccess { get; set; }
-    public DateTimeOffset? CreatedAt { get; set; }
+    public new DateTimeOffset? CreatedAt { get; set; }
     public int JobPositionId { get; set; }
-   // public new string Id { get; set; }
+    public new string Id { get; set; }
 }

@@ -29,7 +29,7 @@ public interface IPagedFilter : IFilter
 {
     /// <summary>
     ///     Gets or sets the page number for pagination.
-    /// </summary
+    /// </summary>
     int Page { get; set; }
 
     /// <summary>

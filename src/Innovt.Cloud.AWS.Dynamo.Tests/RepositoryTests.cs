@@ -75,7 +75,7 @@ public class RepositoryTests
             });
 
             var user2 = user1;
-            user2.Id = "59c6be94-eeea-4185-ab59-fc66207cf387";
+            //user2.Id = "59c6be94-eeea-4185-ab59-fc66207cf387";
             user2.FirstName = "Michel";
             user2.LastName = "Borges";
 

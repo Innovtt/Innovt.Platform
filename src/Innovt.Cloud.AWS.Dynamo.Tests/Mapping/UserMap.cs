@@ -16,15 +16,16 @@ public class UserMap : IEntityTypeDataModelMapper<User>
     /// <param name="builder">The EntityTypeBuilder used to configure the mapping.</param>
     public void Configure([NotNull] EntityTypeBuilder<User> builder)
     {
-        builder.AutoMap().WithTableName("Users", "#");
-        builder.WithOneTableHashKey().SetDynamicValueDelegate(u => { return "USER#" + u.Id; });
+        builder.AutoMap().WithDefaultKeys().WithTableName("Users", "#");
+        builder.WithHashKey().SetDynamicValue(u => "USER#" + u.Id);
 
-        builder.WithOneTableRangeKey().WithValue("PROFILE");
+        builder.WithRangeKey().WithValue("PROFILE");
         builder.Property(u => u.Email).WithMaxLength(50).IsRequired();
+        
 
         //Como vou setar aqui a propriedade Id como chave primária, não preciso setar o nome da propriedade
-        builder.IgnoreProperty("Name");
+        builder.Ignore("Name");
         
-        builder.HasHashKeyPrefix("USER");
+        builder.WithHashKeyPrefix("USER");
     }
 }
