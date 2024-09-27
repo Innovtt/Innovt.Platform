@@ -67,10 +67,11 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     ///     Sets the partition key for the DynamoDB table to "PK".
     /// </summary>
     /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<TEntity> WithOneTableHashKey()
+    public PropertyTypeBuilder<TEntity> WithOneTableHashKey(string pk = "PK")
     {
-        return HasHashKey("PK");
+        return HasHashKey(pk);
     }
+   
 
     /// <summary>
     ///     Sets the partition key for the DynamoDB table using a provided hash key function.
@@ -87,7 +88,7 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     /// </summary>
     /// <param name="hashKey">The partition key to set.</param>
     /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<TEntity> HasHashKey(string hashKey)
+    public PropertyTypeBuilder<TEntity> HasHashKey(string hashKey = "PK")
     {
         Pk = hashKey;
         return Property(Pk);
@@ -104,9 +105,9 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     ///     Sets the sort key for the DynamoDB table to "SK".
     /// </summary>
     /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<TEntity> WithOneTableRangeKey()
+    public PropertyTypeBuilder<TEntity> WithOneTableRangeKey(string sk = "SK")
     {
-        return WithRangeKey("SK");
+        return WithRangeKey(sk);
     }
 
     /// <summary>
@@ -124,7 +125,7 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     /// </summary>
     /// <param name="rangeKey">The sort key to set.</param>
     /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<TEntity> WithRangeKey(string rangeKey)
+    public PropertyTypeBuilder<TEntity> WithRangeKey(string rangeKey = "SK")
     {
         Sk = rangeKey;
         return Property(Sk);
@@ -192,7 +193,7 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
         if (currentProperty != null)
             return currentProperty;
 
-        var builder = new PropertyTypeBuilder<TEntity>(p => name, type);
+        var builder = new PropertyTypeBuilder<TEntity>(p => name, type, this);
 
         Properties.Add(builder);
 
@@ -212,9 +213,9 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     ///     Ignores a property during mapping.
     /// </summary>
     /// <param name="expression">The property to ignore.</param>
-    public void IgnoreProperty<TProperty>(Expression<Func<TEntity, TProperty>> expression)
+    public EntityTypeBuilder<TEntity> Ignore<TProperty>(Expression<Func<TEntity, TProperty>> expression)
     {
-        IgnoreProperty(GetPropertyName(expression));
+        return Ignore(GetPropertyName(expression));
     }
 
     /// <summary>
@@ -222,14 +223,14 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     /// </summary>
     /// <param name="name">The name of the property to ignore.</param>
     /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public void IgnoreProperty(string name)
+    public EntityTypeBuilder<TEntity> Ignore(string name)
     {
         var property = GetProperty(name);
 
-        if (property is null)
-            return;
+        if (property is not null)
+            Properties.Remove(property);
 
-        Properties.Remove(property);
+        return this;
     }
 
     /// ///
@@ -240,8 +241,9 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     public EntityTypeBuilder<TEntity> AutoMap()
     {
         var properties = typeof(TEntity).GetProperties(
-                                                 BindingFlags.Public | BindingFlags.Instance |
-                                                 BindingFlags.SetProperty | BindingFlags.GetProperty);
+                BindingFlags.Public | BindingFlags.Instance |
+                BindingFlags.SetProperty | BindingFlags.GetProperty)
+            .Where(p => p.DeclaringType == typeof(TEntity));
         
         foreach (var propertyInfo in properties)
         {

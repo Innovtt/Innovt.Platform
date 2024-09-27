@@ -22,7 +22,7 @@ public class User:BaseUser
     public bool IsActive { get; set; }
 
     public DateTime? LastAccess { get; set; }
-    public DateTimeOffset? CreatedAt { get; set; }
+    public new DateTimeOffset? CreatedAt { get; set; }
     public int JobPositionId { get; set; }
     public new string Id { get; set; }
 }

@@ -14,13 +14,15 @@ public class PropertyTypeBuilder<T>
     private string columnName;
     private Func<T, object> setValueDelegate;
 
+
     /// <summary>
     ///     Initializes a new instance of the <see cref="PropertyTypeBuilder{T}" /> class with a specified property name and
     ///     type.
     /// </summary>
     /// <param name="propertyName">The function to retrieve the property name.</param>
     /// <param name="propertyType">The type of the property.</param>
-    public PropertyTypeBuilder(Func<T, string> propertyName, Type propertyType) : this(propertyName)
+    /// <param name="builder">This is the main build to help the user with fluent api</param>
+    public PropertyTypeBuilder(Func<T, string> propertyName, Type propertyType,EntityTypeBuilder<T> builder) : this(propertyName,builder)
     {
         Type = propertyType;
     }
@@ -29,19 +31,17 @@ public class PropertyTypeBuilder<T>
     ///     Initializes a new instance of the <see cref="PropertyTypeBuilder{T}" /> class with a specified property name.
     /// </summary>
     /// <param name="propertyName">The function to retrieve the property name.</param>
-    public PropertyTypeBuilder(Func<T, string> propertyName)
+    /// <param name="builder">This is the main build to help the user with fluent api</param>
+    public PropertyTypeBuilder(Func<T, string> propertyName, EntityTypeBuilder<T> builder)
     {
         Name = propertyName.Invoke(default);
         Type = propertyName.Invoke(default).GetType();
+        Builder = builder;
     }
 
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="PropertyTypeBuilder{T}" /> class.
-    /// </summary>
-    public PropertyTypeBuilder()
-    {
-    }
-
+   
+    public EntityTypeBuilder<T> Builder { get; set; }
+    
     /// <summary>
     ///     Gets a value if the field is required.
     /// </summary>
@@ -171,7 +171,7 @@ public class PropertyTypeBuilder<T>
     public PropertyTypeBuilder<T> WithMap(Action<T> parserDelegate)
     {
         if (parserDelegate == null) throw new ArgumentNullException(nameof(parserDelegate));
-
+  
         mapActions.Add(parserDelegate);
 
         return this;
@@ -182,7 +182,7 @@ public class PropertyTypeBuilder<T>
     /// </summary>
     /// <param name="valueDelegate"></param>
     /// <exception cref="ArgumentNullException"></exception>
-    public PropertyTypeBuilder<T> SetDynamicValueDelegate(Func<T, object> valueDelegate)
+    public PropertyTypeBuilder<T> SetDynamicValue(Func<T, object> valueDelegate)
     {
         setValueDelegate = valueDelegate ?? throw new ArgumentNullException(nameof(valueDelegate));
 
