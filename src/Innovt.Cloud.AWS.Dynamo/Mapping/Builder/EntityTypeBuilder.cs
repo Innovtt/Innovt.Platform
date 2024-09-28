@@ -95,7 +95,7 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
         Pk = hashKey;
         return Property(Pk);
     }
-
+    
     public EntityTypeBuilder<TEntity> WithHashKeyPrefix(string hashKeyPrefix)
     {
         HashKeyPrefix = hashKeyPrefix;
@@ -236,11 +236,9 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
         
         //Set the table name as the entity name
         TableName = entityType.Name;
-        
+
         var properties = entityType.GetProperties(
-                BindingFlags.Public | BindingFlags.Instance |
-                BindingFlags.SetProperty | BindingFlags.GetProperty)
-            .Where(p => p.DeclaringType == typeof(TEntity));
+            BindingFlags.Public | BindingFlags.Instance);
         
         foreach (var propertyInfo in properties)
         {
