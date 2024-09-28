@@ -1,0 +1,1634 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.Kinesis.EventHandler
+  commentId: T:Innovt.Cloud.AWS.Kinesis.EventHandler
+  id: EventHandler
+  parent: Innovt.Cloud.AWS.Kinesis
+  children:
+  - Innovt.Cloud.AWS.Kinesis.EventHandler.#ctor(System.String,Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration)
+  - Innovt.Cloud.AWS.Kinesis.EventHandler.#ctor(System.String,Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String)
+  langs:
+  - csharp
+  - vb
+  name: EventHandler
+  nameWithType: EventHandler
+  fullName: Innovt.Cloud.AWS.Kinesis.EventHandler
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Kinesis/EventHandler.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: EventHandler
+    path: Innovt.Cloud.AWS.Kinesis/EventHandler.cs
+    startLine: 13
+  assemblies:
+  - Innovt.Cloud.AWS.Kinesis
+  namespace: Innovt.Cloud.AWS.Kinesis
+  summary: The event handler for processing domain events and publishing them to an AWS Kinesis stream.
+  example: []
+  syntax:
+    content: 'public class EventHandler : DataProducer<DomainEvent>, IDisposable, IEventHandler'
+    content.vb: Public Class EventHandler Inherits DataProducer(Of DomainEvent) Implements IDisposable, IEventHandler
+  inheritance:
+  - System.Object
+  - Innovt.Cloud.AWS.AwsBaseService
+  - Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}
+  implements:
+  - System.IDisposable
+  - Innovt.Domain.Core.Events.IEventHandler
+  inheritedMembers:
+  - Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}.ActivityDataProducer
+  - Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}.Publish(Innovt.Domain.Core.Events.DomainEvent,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}.Publish(System.Collections.Generic.IEnumerable{Innovt.Domain.Core.Events.DomainEvent},System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}.DisposeServices
+  - Innovt.Cloud.AWS.AwsBaseService.Configuration
+  - Innovt.Cloud.AWS.AwsBaseService.RetryCount
+  - Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerAllowedExceptions
+  - Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerDurationOfBreak
+  - Innovt.Cloud.AWS.AwsBaseService.Logger
+  - Innovt.Cloud.AWS.AwsBaseService.Dispose
+  - Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+  - Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+  - Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryAsyncPolicy
+  - Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+  - Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+  - Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+- uid: Innovt.Cloud.AWS.Kinesis.EventHandler.#ctor(System.String,Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration)
+  commentId: M:Innovt.Cloud.AWS.Kinesis.EventHandler.#ctor(System.String,Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration)
+  id: '#ctor(System.String,Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration)'
+  parent: Innovt.Cloud.AWS.Kinesis.EventHandler
+  langs:
+  - csharp
+  - vb
+  name: EventHandler(string, ILogger, IAwsConfiguration)
+  nameWithType: EventHandler.EventHandler(string, ILogger, IAwsConfiguration)
+  fullName: Innovt.Cloud.AWS.Kinesis.EventHandler.EventHandler(string, Innovt.Core.CrossCutting.Log.ILogger, Innovt.Cloud.AWS.Configuration.IAwsConfiguration)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Kinesis/EventHandler.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: Innovt.Cloud.AWS.Kinesis/EventHandler.cs
+    startLine: 21
+  assemblies:
+  - Innovt.Cloud.AWS.Kinesis
+  namespace: Innovt.Cloud.AWS.Kinesis
+  summary: Initializes a new instance of the <xref href="Innovt.Cloud.AWS.Kinesis.EventHandler" data-throw-if-not-resolved="false"></xref> class with the specified parameters.
+  example: []
+  syntax:
+    content: public EventHandler(string busName, ILogger logger, IAwsConfiguration configuration)
+    parameters:
+    - id: busName
+      type: System.String
+      description: The name of the AWS Kinesis stream to publish events to.
+    - id: logger
+      type: Innovt.Core.CrossCutting.Log.ILogger
+      description: The logger instance for logging events.
+    - id: configuration
+      type: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+      description: The AWS configuration for accessing AWS services.
+    content.vb: Public Sub New(busName As String, logger As ILogger, configuration As IAwsConfiguration)
+  overload: Innovt.Cloud.AWS.Kinesis.EventHandler.#ctor*
+  nameWithType.vb: EventHandler.New(String, ILogger, IAwsConfiguration)
+  fullName.vb: Innovt.Cloud.AWS.Kinesis.EventHandler.New(String, Innovt.Core.CrossCutting.Log.ILogger, Innovt.Cloud.AWS.Configuration.IAwsConfiguration)
+  name.vb: New(String, ILogger, IAwsConfiguration)
+- uid: Innovt.Cloud.AWS.Kinesis.EventHandler.#ctor(System.String,Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String)
+  commentId: M:Innovt.Cloud.AWS.Kinesis.EventHandler.#ctor(System.String,Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String)
+  id: '#ctor(System.String,Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String)'
+  parent: Innovt.Cloud.AWS.Kinesis.EventHandler
+  langs:
+  - csharp
+  - vb
+  name: EventHandler(string, ILogger, IAwsConfiguration, string)
+  nameWithType: EventHandler.EventHandler(string, ILogger, IAwsConfiguration, string)
+  fullName: Innovt.Cloud.AWS.Kinesis.EventHandler.EventHandler(string, Innovt.Core.CrossCutting.Log.ILogger, Innovt.Cloud.AWS.Configuration.IAwsConfiguration, string)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Kinesis/EventHandler.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: Innovt.Cloud.AWS.Kinesis/EventHandler.cs
+    startLine: 33
+  assemblies:
+  - Innovt.Cloud.AWS.Kinesis
+  namespace: Innovt.Cloud.AWS.Kinesis
+  summary: Initializes a new instance of the <xref href="Innovt.Cloud.AWS.Kinesis.EventHandler" data-throw-if-not-resolved="false"></xref> class with the specified parameters.
+  example: []
+  syntax:
+    content: public EventHandler(string busName, ILogger logger, IAwsConfiguration configuration, string region)
+    parameters:
+    - id: busName
+      type: System.String
+      description: The name of the AWS Kinesis stream to publish events to.
+    - id: logger
+      type: Innovt.Core.CrossCutting.Log.ILogger
+      description: The logger instance for logging events.
+    - id: configuration
+      type: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+      description: The AWS configuration for accessing AWS services.
+    - id: region
+      type: System.String
+      description: The AWS region to use.
+    content.vb: Public Sub New(busName As String, logger As ILogger, configuration As IAwsConfiguration, region As String)
+  overload: Innovt.Cloud.AWS.Kinesis.EventHandler.#ctor*
+  nameWithType.vb: EventHandler.New(String, ILogger, IAwsConfiguration, String)
+  fullName.vb: Innovt.Cloud.AWS.Kinesis.EventHandler.New(String, Innovt.Core.CrossCutting.Log.ILogger, Innovt.Cloud.AWS.Configuration.IAwsConfiguration, String)
+  name.vb: New(String, ILogger, IAwsConfiguration, String)
+references:
+- uid: Innovt.Cloud.AWS.Kinesis
+  commentId: N:Innovt.Cloud.AWS.Kinesis
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Kinesis
+  nameWithType: Innovt.Cloud.AWS.Kinesis
+  fullName: Innovt.Cloud.AWS.Kinesis
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Kinesis
+    name: Kinesis
+    href: Innovt.Cloud.AWS.Kinesis.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Kinesis
+    name: Kinesis
+    href: Innovt.Cloud.AWS.Kinesis.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Innovt.Cloud.AWS.AwsBaseService
+  commentId: T:Innovt.Cloud.AWS.AwsBaseService
+  parent: Innovt.Cloud.AWS
+  href: Innovt.Cloud.AWS.AwsBaseService.html
+  name: AwsBaseService
+  nameWithType: AwsBaseService
+  fullName: Innovt.Cloud.AWS.AwsBaseService
+- uid: Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}
+  commentId: T:Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}
+  parent: Innovt.Cloud.AWS.Kinesis
+  definition: Innovt.Cloud.AWS.Kinesis.DataProducer`1
+  href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html
+  name: DataProducer<DomainEvent>
+  nameWithType: DataProducer<DomainEvent>
+  fullName: Innovt.Cloud.AWS.Kinesis.DataProducer<Innovt.Domain.Core.Events.DomainEvent>
+  nameWithType.vb: DataProducer(Of DomainEvent)
+  fullName.vb: Innovt.Cloud.AWS.Kinesis.DataProducer(Of Innovt.Domain.Core.Events.DomainEvent)
+  name.vb: DataProducer(Of DomainEvent)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Kinesis.DataProducer`1
+    name: DataProducer
+    href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html
+  - name: <
+  - uid: Innovt.Domain.Core.Events.DomainEvent
+    name: DomainEvent
+    href: Innovt.Domain.Core.Events.DomainEvent.html
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Kinesis.DataProducer`1
+    name: DataProducer
+    href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Domain.Core.Events.DomainEvent
+    name: DomainEvent
+    href: Innovt.Domain.Core.Events.DomainEvent.html
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Innovt.Domain.Core.Events.IEventHandler
+  commentId: T:Innovt.Domain.Core.Events.IEventHandler
+  parent: Innovt.Domain.Core.Events
+  href: Innovt.Domain.Core.Events.IEventHandler.html
+  name: IEventHandler
+  nameWithType: IEventHandler
+  fullName: Innovt.Domain.Core.Events.IEventHandler
+- uid: Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}.ActivityDataProducer
+  commentId: F:Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}.ActivityDataProducer
+  parent: Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}
+  definition: Innovt.Cloud.AWS.Kinesis.DataProducer`1.ActivityDataProducer
+  href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html#Innovt_Cloud_AWS_Kinesis_DataProducer_1_ActivityDataProducer
+  name: ActivityDataProducer
+  nameWithType: DataProducer<DomainEvent>.ActivityDataProducer
+  fullName: Innovt.Cloud.AWS.Kinesis.DataProducer<Innovt.Domain.Core.Events.DomainEvent>.ActivityDataProducer
+  nameWithType.vb: DataProducer(Of DomainEvent).ActivityDataProducer
+  fullName.vb: Innovt.Cloud.AWS.Kinesis.DataProducer(Of Innovt.Domain.Core.Events.DomainEvent).ActivityDataProducer
+- uid: Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}.Publish(Innovt.Domain.Core.Events.DomainEvent,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}.Publish(Innovt.Domain.Core.Events.DomainEvent,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}
+  definition: Innovt.Cloud.AWS.Kinesis.DataProducer`1.Publish(`0,System.Threading.CancellationToken)
+  href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html#Innovt_Cloud_AWS_Kinesis_DataProducer_1_Publish__0_System_Threading_CancellationToken_
+  name: Publish(DomainEvent, CancellationToken)
+  nameWithType: DataProducer<DomainEvent>.Publish(DomainEvent, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Kinesis.DataProducer<Innovt.Domain.Core.Events.DomainEvent>.Publish(Innovt.Domain.Core.Events.DomainEvent, System.Threading.CancellationToken)
+  nameWithType.vb: DataProducer(Of DomainEvent).Publish(DomainEvent, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Kinesis.DataProducer(Of Innovt.Domain.Core.Events.DomainEvent).Publish(Innovt.Domain.Core.Events.DomainEvent, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}.Publish(Innovt.Domain.Core.Events.DomainEvent,System.Threading.CancellationToken)
+    name: Publish
+    href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html#Innovt_Cloud_AWS_Kinesis_DataProducer_1_Publish__0_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Domain.Core.Events.DomainEvent
+    name: DomainEvent
+    href: Innovt.Domain.Core.Events.DomainEvent.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}.Publish(Innovt.Domain.Core.Events.DomainEvent,System.Threading.CancellationToken)
+    name: Publish
+    href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html#Innovt_Cloud_AWS_Kinesis_DataProducer_1_Publish__0_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Domain.Core.Events.DomainEvent
+    name: DomainEvent
+    href: Innovt.Domain.Core.Events.DomainEvent.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}.Publish(System.Collections.Generic.IEnumerable{Innovt.Domain.Core.Events.DomainEvent},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}.Publish(System.Collections.Generic.IEnumerable{Innovt.Domain.Core.Events.DomainEvent},System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}
+  definition: Innovt.Cloud.AWS.Kinesis.DataProducer`1.Publish(System.Collections.Generic.IEnumerable{`0},System.Threading.CancellationToken)
+  href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html#Innovt_Cloud_AWS_Kinesis_DataProducer_1_Publish_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken_
+  name: Publish(IEnumerable<DomainEvent>, CancellationToken)
+  nameWithType: DataProducer<DomainEvent>.Publish(IEnumerable<DomainEvent>, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Kinesis.DataProducer<Innovt.Domain.Core.Events.DomainEvent>.Publish(System.Collections.Generic.IEnumerable<Innovt.Domain.Core.Events.DomainEvent>, System.Threading.CancellationToken)
+  nameWithType.vb: DataProducer(Of DomainEvent).Publish(IEnumerable(Of DomainEvent), CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Kinesis.DataProducer(Of Innovt.Domain.Core.Events.DomainEvent).Publish(System.Collections.Generic.IEnumerable(Of Innovt.Domain.Core.Events.DomainEvent), System.Threading.CancellationToken)
+  name.vb: Publish(IEnumerable(Of DomainEvent), CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}.Publish(System.Collections.Generic.IEnumerable{Innovt.Domain.Core.Events.DomainEvent},System.Threading.CancellationToken)
+    name: Publish
+    href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html#Innovt_Cloud_AWS_Kinesis_DataProducer_1_Publish_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Innovt.Domain.Core.Events.DomainEvent
+    name: DomainEvent
+    href: Innovt.Domain.Core.Events.DomainEvent.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}.Publish(System.Collections.Generic.IEnumerable{Innovt.Domain.Core.Events.DomainEvent},System.Threading.CancellationToken)
+    name: Publish
+    href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html#Innovt_Cloud_AWS_Kinesis_DataProducer_1_Publish_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Domain.Core.Events.DomainEvent
+    name: DomainEvent
+    href: Innovt.Domain.Core.Events.DomainEvent.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}.DisposeServices
+  commentId: M:Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}.DisposeServices
+  parent: Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}
+  definition: Innovt.Cloud.AWS.Kinesis.DataProducer`1.DisposeServices
+  href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html#Innovt_Cloud_AWS_Kinesis_DataProducer_1_DisposeServices
+  name: DisposeServices()
+  nameWithType: DataProducer<DomainEvent>.DisposeServices()
+  fullName: Innovt.Cloud.AWS.Kinesis.DataProducer<Innovt.Domain.Core.Events.DomainEvent>.DisposeServices()
+  nameWithType.vb: DataProducer(Of DomainEvent).DisposeServices()
+  fullName.vb: Innovt.Cloud.AWS.Kinesis.DataProducer(Of Innovt.Domain.Core.Events.DomainEvent).DisposeServices()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}.DisposeServices
+    name: DisposeServices
+    href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html#Innovt_Cloud_AWS_Kinesis_DataProducer_1_DisposeServices
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Kinesis.DataProducer{Innovt.Domain.Core.Events.DomainEvent}.DisposeServices
+    name: DisposeServices
+    href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html#Innovt_Cloud_AWS_Kinesis_DataProducer_1_DisposeServices
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.Configuration
+  commentId: F:Innovt.Cloud.AWS.AwsBaseService.Configuration
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Configuration
+  name: Configuration
+  nameWithType: AwsBaseService.Configuration
+  fullName: Innovt.Cloud.AWS.AwsBaseService.Configuration
+- uid: Innovt.Cloud.AWS.AwsBaseService.RetryCount
+  commentId: P:Innovt.Cloud.AWS.AwsBaseService.RetryCount
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_RetryCount
+  name: RetryCount
+  nameWithType: AwsBaseService.RetryCount
+  fullName: Innovt.Cloud.AWS.AwsBaseService.RetryCount
+- uid: Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerAllowedExceptions
+  commentId: P:Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerAllowedExceptions
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CircuitBreakerAllowedExceptions
+  name: CircuitBreakerAllowedExceptions
+  nameWithType: AwsBaseService.CircuitBreakerAllowedExceptions
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerAllowedExceptions
+- uid: Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerDurationOfBreak
+  commentId: P:Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerDurationOfBreak
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CircuitBreakerDurationOfBreak
+  name: CircuitBreakerDurationOfBreak
+  nameWithType: AwsBaseService.CircuitBreakerDurationOfBreak
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerDurationOfBreak
+- uid: Innovt.Cloud.AWS.AwsBaseService.Logger
+  commentId: P:Innovt.Cloud.AWS.AwsBaseService.Logger
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Logger
+  name: Logger
+  nameWithType: AwsBaseService.Logger
+  fullName: Innovt.Cloud.AWS.AwsBaseService.Logger
+- uid: Innovt.Cloud.AWS.AwsBaseService.Dispose
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.Dispose
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose
+  name: Dispose()
+  nameWithType: AwsBaseService.Dispose()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.Dispose()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.Dispose
+    name: Dispose
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.Dispose
+    name: Dispose
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_GetServiceRegionEndPoint
+  name: GetServiceRegionEndPoint()
+  nameWithType: AwsBaseService.GetServiceRegionEndPoint()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+    name: GetServiceRegionEndPoint
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_GetServiceRegionEndPoint
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+    name: GetServiceRegionEndPoint
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_GetServiceRegionEndPoint
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateService__1
+  name: CreateService<T>()
+  nameWithType: AwsBaseService.CreateService<T>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateService<T>()
+  nameWithType.vb: AwsBaseService.CreateService(Of T)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateService(Of T)()
+  name.vb: CreateService(Of T)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+    name: CreateService
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateService__1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+    name: CreateService
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateService__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryAsyncPolicy
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryAsyncPolicy
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryAsyncPolicy
+  name: CreateDefaultRetryAsyncPolicy()
+  nameWithType: AwsBaseService.CreateDefaultRetryAsyncPolicy()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryAsyncPolicy()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryAsyncPolicy
+    name: CreateDefaultRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryAsyncPolicy
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryAsyncPolicy
+    name: CreateDefaultRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryAsyncPolicy
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryPolicy
+  name: CreateDefaultRetryPolicy()
+  nameWithType: AwsBaseService.CreateDefaultRetryPolicy()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+    name: CreateDefaultRetryPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryPolicy
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+    name: CreateDefaultRetryPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryPolicy
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__1
+  name: CreateRetryAsyncPolicy<T>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T)()
+  name.vb: CreateRetryAsyncPolicy(Of T)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__2
+  name: CreateRetryAsyncPolicy<T, T1>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T, T1>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T, T1>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T, T1)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T, T1)()
+  name.vb: CreateRetryAsyncPolicy(Of T, T1)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__3
+  name: CreateRetryAsyncPolicy<T, T1, T2>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2)()
+  name.vb: CreateRetryAsyncPolicy(Of T, T1, T2)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__3
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__3
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__4
+  name: CreateRetryAsyncPolicy<T, T1, T2, T3>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2, T3>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2, T3>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2, T3)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2, T3)()
+  name.vb: CreateRetryAsyncPolicy(Of T, T1, T2, T3)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__4
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__4
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__5
+  name: CreateRetryAsyncPolicy<T, T1, T2, T3, T4>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2, T3, T4>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2, T3, T4>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2, T3, T4)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2, T3, T4)()
+  name.vb: CreateRetryAsyncPolicy(Of T, T1, T2, T3, T4)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__5
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__5
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateCircuitBreaker__2
+  name: CreateCircuitBreaker<T, T1>()
+  nameWithType: AwsBaseService.CreateCircuitBreaker<T, T1>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker<T, T1>()
+  nameWithType.vb: AwsBaseService.CreateCircuitBreaker(Of T, T1)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker(Of T, T1)()
+  name.vb: CreateCircuitBreaker(Of T, T1)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+    name: CreateCircuitBreaker
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateCircuitBreaker__2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+    name: CreateCircuitBreaker
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateCircuitBreaker__2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  isExternal: true
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose_System_Boolean_
+  name: Dispose(bool)
+  nameWithType: AwsBaseService.Dispose(bool)
+  fullName: Innovt.Cloud.AWS.AwsBaseService.Dispose(bool)
+  nameWithType.vb: AwsBaseService.Dispose(Boolean)
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+    name: Dispose
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+    name: Dispose
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Cloud.AWS
+  commentId: N:Innovt.Cloud.AWS
+  href: Innovt.html
+  name: Innovt.Cloud.AWS
+  nameWithType: Innovt.Cloud.AWS
+  fullName: Innovt.Cloud.AWS
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+- uid: Innovt.Cloud.AWS.Kinesis.DataProducer`1
+  commentId: T:Innovt.Cloud.AWS.Kinesis.DataProducer`1
+  href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html
+  name: DataProducer<T>
+  nameWithType: DataProducer<T>
+  fullName: Innovt.Cloud.AWS.Kinesis.DataProducer<T>
+  nameWithType.vb: DataProducer(Of T)
+  fullName.vb: Innovt.Cloud.AWS.Kinesis.DataProducer(Of T)
+  name.vb: DataProducer(Of T)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Kinesis.DataProducer`1
+    name: DataProducer
+    href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Kinesis.DataProducer`1
+    name: DataProducer
+    href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Domain.Core.Events
+  commentId: N:Innovt.Domain.Core.Events
+  href: Innovt.html
+  name: Innovt.Domain.Core.Events
+  nameWithType: Innovt.Domain.Core.Events
+  fullName: Innovt.Domain.Core.Events
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Events
+    name: Events
+    href: Innovt.Domain.Core.Events.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Events
+    name: Events
+    href: Innovt.Domain.Core.Events.html
+- uid: Innovt.Cloud.AWS.Kinesis.DataProducer`1.ActivityDataProducer
+  commentId: F:Innovt.Cloud.AWS.Kinesis.DataProducer`1.ActivityDataProducer
+  href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html#Innovt_Cloud_AWS_Kinesis_DataProducer_1_ActivityDataProducer
+  name: ActivityDataProducer
+  nameWithType: DataProducer<T>.ActivityDataProducer
+  fullName: Innovt.Cloud.AWS.Kinesis.DataProducer<T>.ActivityDataProducer
+  nameWithType.vb: DataProducer(Of T).ActivityDataProducer
+  fullName.vb: Innovt.Cloud.AWS.Kinesis.DataProducer(Of T).ActivityDataProducer
+- uid: Innovt.Cloud.AWS.Kinesis.DataProducer`1.Publish(`0,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Kinesis.DataProducer`1.Publish(`0,System.Threading.CancellationToken)
+  isExternal: true
+  href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html#Innovt_Cloud_AWS_Kinesis_DataProducer_1_Publish__0_System_Threading_CancellationToken_
+  name: Publish(T, CancellationToken)
+  nameWithType: DataProducer<T>.Publish(T, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Kinesis.DataProducer<T>.Publish(T, System.Threading.CancellationToken)
+  nameWithType.vb: DataProducer(Of T).Publish(T, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Kinesis.DataProducer(Of T).Publish(T, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Kinesis.DataProducer`1.Publish(`0,System.Threading.CancellationToken)
+    name: Publish
+    href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html#Innovt_Cloud_AWS_Kinesis_DataProducer_1_Publish__0_System_Threading_CancellationToken_
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Kinesis.DataProducer`1.Publish(`0,System.Threading.CancellationToken)
+    name: Publish
+    href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html#Innovt_Cloud_AWS_Kinesis_DataProducer_1_Publish__0_System_Threading_CancellationToken_
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Kinesis.DataProducer`1.Publish(System.Collections.Generic.IEnumerable{`0},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Kinesis.DataProducer`1.Publish(System.Collections.Generic.IEnumerable{`0},System.Threading.CancellationToken)
+  isExternal: true
+  href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html#Innovt_Cloud_AWS_Kinesis_DataProducer_1_Publish_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken_
+  name: Publish(IEnumerable<T>, CancellationToken)
+  nameWithType: DataProducer<T>.Publish(IEnumerable<T>, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Kinesis.DataProducer<T>.Publish(System.Collections.Generic.IEnumerable<T>, System.Threading.CancellationToken)
+  nameWithType.vb: DataProducer(Of T).Publish(IEnumerable(Of T), CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Kinesis.DataProducer(Of T).Publish(System.Collections.Generic.IEnumerable(Of T), System.Threading.CancellationToken)
+  name.vb: Publish(IEnumerable(Of T), CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Kinesis.DataProducer`1.Publish(System.Collections.Generic.IEnumerable{`0},System.Threading.CancellationToken)
+    name: Publish
+    href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html#Innovt_Cloud_AWS_Kinesis_DataProducer_1_Publish_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Kinesis.DataProducer`1.Publish(System.Collections.Generic.IEnumerable{`0},System.Threading.CancellationToken)
+    name: Publish
+    href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html#Innovt_Cloud_AWS_Kinesis_DataProducer_1_Publish_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Kinesis.DataProducer`1.DisposeServices
+  commentId: M:Innovt.Cloud.AWS.Kinesis.DataProducer`1.DisposeServices
+  href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html#Innovt_Cloud_AWS_Kinesis_DataProducer_1_DisposeServices
+  name: DisposeServices()
+  nameWithType: DataProducer<T>.DisposeServices()
+  fullName: Innovt.Cloud.AWS.Kinesis.DataProducer<T>.DisposeServices()
+  nameWithType.vb: DataProducer(Of T).DisposeServices()
+  fullName.vb: Innovt.Cloud.AWS.Kinesis.DataProducer(Of T).DisposeServices()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Kinesis.DataProducer`1.DisposeServices
+    name: DisposeServices
+    href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html#Innovt_Cloud_AWS_Kinesis_DataProducer_1_DisposeServices
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Kinesis.DataProducer`1.DisposeServices
+    name: DisposeServices
+    href: Innovt.Cloud.AWS.Kinesis.DataProducer-1.html#Innovt_Cloud_AWS_Kinesis_DataProducer_1_DisposeServices
+  - name: (
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Cloud.AWS.Kinesis.EventHandler
+  commentId: T:Innovt.Cloud.AWS.Kinesis.EventHandler
+  href: Innovt.Cloud.AWS.Kinesis.EventHandler.html
+  name: EventHandler
+  nameWithType: EventHandler
+  fullName: Innovt.Cloud.AWS.Kinesis.EventHandler
+- uid: Innovt.Cloud.AWS.Kinesis.EventHandler.#ctor*
+  commentId: Overload:Innovt.Cloud.AWS.Kinesis.EventHandler.#ctor
+  href: Innovt.Cloud.AWS.Kinesis.EventHandler.html#Innovt_Cloud_AWS_Kinesis_EventHandler__ctor_System_String_Innovt_Core_CrossCutting_Log_ILogger_Innovt_Cloud_AWS_Configuration_IAwsConfiguration_
+  name: EventHandler
+  nameWithType: EventHandler.EventHandler
+  fullName: Innovt.Cloud.AWS.Kinesis.EventHandler.EventHandler
+  nameWithType.vb: EventHandler.New
+  fullName.vb: Innovt.Cloud.AWS.Kinesis.EventHandler.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Innovt.Core.CrossCutting.Log.ILogger
+  commentId: T:Innovt.Core.CrossCutting.Log.ILogger
+  parent: Innovt.Core.CrossCutting.Log
+  href: Innovt.Core.CrossCutting.Log.ILogger.html
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Innovt.Core.CrossCutting.Log.ILogger
+- uid: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+  commentId: T:Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+  parent: Innovt.Cloud.AWS.Configuration
+  href: Innovt.Cloud.AWS.Configuration.IAwsConfiguration.html
+  name: IAwsConfiguration
+  nameWithType: IAwsConfiguration
+  fullName: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+- uid: Innovt.Core.CrossCutting.Log
+  commentId: N:Innovt.Core.CrossCutting.Log
+  href: Innovt.html
+  name: Innovt.Core.CrossCutting.Log
+  nameWithType: Innovt.Core.CrossCutting.Log
+  fullName: Innovt.Core.CrossCutting.Log
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Log
+    name: Log
+    href: Innovt.Core.CrossCutting.Log.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Log
+    name: Log
+    href: Innovt.Core.CrossCutting.Log.html
+- uid: Innovt.Cloud.AWS.Configuration
+  commentId: N:Innovt.Cloud.AWS.Configuration
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Configuration
+  nameWithType: Innovt.Cloud.AWS.Configuration
+  fullName: Innovt.Cloud.AWS.Configuration
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Configuration
+    name: Configuration
+    href: Innovt.Cloud.AWS.Configuration.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Configuration
+    name: Configuration
+    href: Innovt.Cloud.AWS.Configuration.html

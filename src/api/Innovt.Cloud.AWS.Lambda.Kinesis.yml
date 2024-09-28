@@ -1,0 +1,146 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis
+  commentId: N:Innovt.Cloud.AWS.Lambda.Kinesis
+  id: Innovt.Cloud.AWS.Lambda.Kinesis
+  children:
+  - Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDataProcessorBatch`1
+  - Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDataProcessor`1
+  - Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDomainEventProcessorBatch`1
+  - Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDomainEventProcessor`1
+  - Innovt.Cloud.AWS.Lambda.Kinesis.KinesisProcessorBase`1
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Cloud.AWS.Lambda.Kinesis
+  nameWithType: Innovt.Cloud.AWS.Lambda.Kinesis
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis
+  type: Namespace
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Kinesis
+references:
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDataProcessor`1
+  commentId: T:Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDataProcessor`1
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDataProcessor-1.html
+  name: KinesisDataProcessor<TBody>
+  nameWithType: KinesisDataProcessor<TBody>
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDataProcessor<TBody>
+  nameWithType.vb: KinesisDataProcessor(Of TBody)
+  fullName.vb: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDataProcessor(Of TBody)
+  name.vb: KinesisDataProcessor(Of TBody)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDataProcessor`1
+    name: KinesisDataProcessor
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDataProcessor-1.html
+  - name: <
+  - name: TBody
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDataProcessor`1
+    name: KinesisDataProcessor
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDataProcessor-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TBody
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDataProcessorBatch`1
+  commentId: T:Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDataProcessorBatch`1
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDataProcessorBatch-1.html
+  name: KinesisDataProcessorBatch<TBody>
+  nameWithType: KinesisDataProcessorBatch<TBody>
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDataProcessorBatch<TBody>
+  nameWithType.vb: KinesisDataProcessorBatch(Of TBody)
+  fullName.vb: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDataProcessorBatch(Of TBody)
+  name.vb: KinesisDataProcessorBatch(Of TBody)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDataProcessorBatch`1
+    name: KinesisDataProcessorBatch
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDataProcessorBatch-1.html
+  - name: <
+  - name: TBody
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDataProcessorBatch`1
+    name: KinesisDataProcessorBatch
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDataProcessorBatch-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TBody
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDomainEventProcessor`1
+  commentId: T:Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDomainEventProcessor`1
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDomainEventProcessor-1.html
+  name: KinesisDomainEventProcessor<TBody>
+  nameWithType: KinesisDomainEventProcessor<TBody>
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDomainEventProcessor<TBody>
+  nameWithType.vb: KinesisDomainEventProcessor(Of TBody)
+  fullName.vb: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDomainEventProcessor(Of TBody)
+  name.vb: KinesisDomainEventProcessor(Of TBody)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDomainEventProcessor`1
+    name: KinesisDomainEventProcessor
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDomainEventProcessor-1.html
+  - name: <
+  - name: TBody
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDomainEventProcessor`1
+    name: KinesisDomainEventProcessor
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDomainEventProcessor-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TBody
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDomainEventProcessorBatch`1
+  commentId: T:Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDomainEventProcessorBatch`1
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDomainEventProcessorBatch-1.html
+  name: KinesisDomainEventProcessorBatch<TBody>
+  nameWithType: KinesisDomainEventProcessorBatch<TBody>
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDomainEventProcessorBatch<TBody>
+  nameWithType.vb: KinesisDomainEventProcessorBatch(Of TBody)
+  fullName.vb: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDomainEventProcessorBatch(Of TBody)
+  name.vb: KinesisDomainEventProcessorBatch(Of TBody)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDomainEventProcessorBatch`1
+    name: KinesisDomainEventProcessorBatch
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDomainEventProcessorBatch-1.html
+  - name: <
+  - name: TBody
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDomainEventProcessorBatch`1
+    name: KinesisDomainEventProcessorBatch
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDomainEventProcessorBatch-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TBody
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisProcessorBase`1
+  commentId: T:Innovt.Cloud.AWS.Lambda.Kinesis.KinesisProcessorBase`1
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisProcessorBase-1.html
+  name: KinesisProcessorBase<TBody>
+  nameWithType: KinesisProcessorBase<TBody>
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisProcessorBase<TBody>
+  nameWithType.vb: KinesisProcessorBase(Of TBody)
+  fullName.vb: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisProcessorBase(Of TBody)
+  name.vb: KinesisProcessorBase(Of TBody)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisProcessorBase`1
+    name: KinesisProcessorBase
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisProcessorBase-1.html
+  - name: <
+  - name: TBody
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisProcessorBase`1
+    name: KinesisProcessorBase
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.KinesisProcessorBase-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TBody
+  - name: )

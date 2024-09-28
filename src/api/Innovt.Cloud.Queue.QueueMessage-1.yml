@@ -1,0 +1,1448 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.Queue.QueueMessage`1
+  commentId: T:Innovt.Cloud.Queue.QueueMessage`1
+  id: QueueMessage`1
+  parent: Innovt.Cloud.Queue
+  children:
+  - Innovt.Cloud.Queue.QueueMessage`1.#ctor
+  - Innovt.Cloud.Queue.QueueMessage`1.#ctor(System.Collections.Generic.Dictionary{System.String,System.String})
+  - Innovt.Cloud.Queue.QueueMessage`1.#ctor(`0)
+  - Innovt.Cloud.Queue.QueueMessage`1.ApproximateFirstReceiveTimestamp
+  - Innovt.Cloud.Queue.QueueMessage`1.ApproximateReceiveCount
+  - Innovt.Cloud.Queue.QueueMessage`1.Attributes
+  - Innovt.Cloud.Queue.QueueMessage`1.Body
+  - Innovt.Cloud.Queue.QueueMessage`1.MessageId
+  - Innovt.Cloud.Queue.QueueMessage`1.ReceiptHandle
+  - Innovt.Cloud.Queue.QueueMessage`1.TraceId
+  langs:
+  - csharp
+  - vb
+  name: QueueMessage<T>
+  nameWithType: QueueMessage<T>
+  fullName: Innovt.Cloud.Queue.QueueMessage<T>
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Cloud/Queue/QueueMessage.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: QueueMessage
+    path: Innovt.Cloud/Queue/QueueMessage.cs
+    startLine: 12
+  assemblies:
+  - Innovt.Cloud
+  namespace: Innovt.Cloud.Queue
+  summary: Represents a message in a queue with a specified body type.
+  example: []
+  syntax:
+    content: 'public class QueueMessage<T> : IQueueMessage'
+    typeParameters:
+    - id: T
+      description: The type of the message body.
+    content.vb: Public Class QueueMessage(Of T) Implements IQueueMessage
+  inheritance:
+  - System.Object
+  implements:
+  - Innovt.Cloud.Queue.IQueueMessage
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - Innovt.Cloud.Queue.IQueueMessage.Innovt.Cloud.Queue.QueueExtensions.ParseQueueAttributes(System.Collections.Generic.Dictionary{System.String,System.String})
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  nameWithType.vb: QueueMessage(Of T)
+  fullName.vb: Innovt.Cloud.Queue.QueueMessage(Of T)
+  name.vb: QueueMessage(Of T)
+- uid: Innovt.Cloud.Queue.QueueMessage`1.#ctor
+  commentId: M:Innovt.Cloud.Queue.QueueMessage`1.#ctor
+  id: '#ctor'
+  parent: Innovt.Cloud.Queue.QueueMessage`1
+  langs:
+  - csharp
+  - vb
+  name: QueueMessage()
+  nameWithType: QueueMessage<T>.QueueMessage()
+  fullName: Innovt.Cloud.Queue.QueueMessage<T>.QueueMessage()
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Cloud/Queue/QueueMessage.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: Innovt.Cloud/Queue/QueueMessage.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud
+  namespace: Innovt.Cloud.Queue
+  summary: Initializes a new instance of the <xref href="Innovt.Cloud.Queue.QueueMessage%601" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public QueueMessage()
+    content.vb: Public Sub New()
+  overload: Innovt.Cloud.Queue.QueueMessage`1.#ctor*
+  nameWithType.vb: QueueMessage(Of T).New()
+  fullName.vb: Innovt.Cloud.Queue.QueueMessage(Of T).New()
+  name.vb: New()
+- uid: Innovt.Cloud.Queue.QueueMessage`1.#ctor(`0)
+  commentId: M:Innovt.Cloud.Queue.QueueMessage`1.#ctor(`0)
+  id: '#ctor(`0)'
+  parent: Innovt.Cloud.Queue.QueueMessage`1
+  langs:
+  - csharp
+  - vb
+  name: QueueMessage(T)
+  nameWithType: QueueMessage<T>.QueueMessage(T)
+  fullName: Innovt.Cloud.Queue.QueueMessage<T>.QueueMessage(T)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Cloud/Queue/QueueMessage.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: Innovt.Cloud/Queue/QueueMessage.cs
+    startLine: 25
+  assemblies:
+  - Innovt.Cloud
+  namespace: Innovt.Cloud.Queue
+  summary: Initializes a new instance of the <xref href="Innovt.Cloud.Queue.QueueMessage%601" data-throw-if-not-resolved="false"></xref> class with a specified body.
+  example: []
+  syntax:
+    content: public QueueMessage(T body)
+    parameters:
+    - id: body
+      type: '{T}'
+      description: The body of the message.
+    content.vb: Public Sub New(body As T)
+  overload: Innovt.Cloud.Queue.QueueMessage`1.#ctor*
+  nameWithType.vb: QueueMessage(Of T).New(T)
+  fullName.vb: Innovt.Cloud.Queue.QueueMessage(Of T).New(T)
+  name.vb: New(T)
+- uid: Innovt.Cloud.Queue.QueueMessage`1.#ctor(System.Collections.Generic.Dictionary{System.String,System.String})
+  commentId: M:Innovt.Cloud.Queue.QueueMessage`1.#ctor(System.Collections.Generic.Dictionary{System.String,System.String})
+  id: '#ctor(System.Collections.Generic.Dictionary{System.String,System.String})'
+  parent: Innovt.Cloud.Queue.QueueMessage`1
+  langs:
+  - csharp
+  - vb
+  name: QueueMessage(Dictionary<string, string>)
+  nameWithType: QueueMessage<T>.QueueMessage(Dictionary<string, string>)
+  fullName: Innovt.Cloud.Queue.QueueMessage<T>.QueueMessage(System.Collections.Generic.Dictionary<string, string>)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Cloud/Queue/QueueMessage.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: Innovt.Cloud/Queue/QueueMessage.cs
+    startLine: 34
+  assemblies:
+  - Innovt.Cloud
+  namespace: Innovt.Cloud.Queue
+  summary: Initializes a new instance of the <xref href="Innovt.Cloud.Queue.QueueMessage%601" data-throw-if-not-resolved="false"></xref> class with specified attributes.
+  example: []
+  syntax:
+    content: public QueueMessage(Dictionary<string, string> attributes)
+    parameters:
+    - id: attributes
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: The attributes associated with the message.
+    content.vb: Public Sub New(attributes As Dictionary(Of String, String))
+  overload: Innovt.Cloud.Queue.QueueMessage`1.#ctor*
+  nameWithType.vb: QueueMessage(Of T).New(Dictionary(Of String, String))
+  fullName.vb: Innovt.Cloud.Queue.QueueMessage(Of T).New(System.Collections.Generic.Dictionary(Of String, String))
+  name.vb: New(Dictionary(Of String, String))
+- uid: Innovt.Cloud.Queue.QueueMessage`1.Body
+  commentId: P:Innovt.Cloud.Queue.QueueMessage`1.Body
+  id: Body
+  parent: Innovt.Cloud.Queue.QueueMessage`1
+  langs:
+  - csharp
+  - vb
+  name: Body
+  nameWithType: QueueMessage<T>.Body
+  fullName: Innovt.Cloud.Queue.QueueMessage<T>.Body
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud/Queue/QueueMessage.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Body
+    path: Innovt.Cloud/Queue/QueueMessage.cs
+    startLine: 42
+  assemblies:
+  - Innovt.Cloud
+  namespace: Innovt.Cloud.Queue
+  summary: Gets or sets the body of the message.
+  example: []
+  syntax:
+    content: public T Body { get; set; }
+    parameters: []
+    return:
+      type: '{T}'
+    content.vb: Public Property Body As T
+  overload: Innovt.Cloud.Queue.QueueMessage`1.Body*
+  nameWithType.vb: QueueMessage(Of T).Body
+  fullName.vb: Innovt.Cloud.Queue.QueueMessage(Of T).Body
+- uid: Innovt.Cloud.Queue.QueueMessage`1.MessageId
+  commentId: P:Innovt.Cloud.Queue.QueueMessage`1.MessageId
+  id: MessageId
+  parent: Innovt.Cloud.Queue.QueueMessage`1
+  langs:
+  - csharp
+  - vb
+  name: MessageId
+  nameWithType: QueueMessage<T>.MessageId
+  fullName: Innovt.Cloud.Queue.QueueMessage<T>.MessageId
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud/Queue/QueueMessage.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: MessageId
+    path: Innovt.Cloud/Queue/QueueMessage.cs
+    startLine: 47
+  assemblies:
+  - Innovt.Cloud
+  namespace: Innovt.Cloud.Queue
+  summary: Gets or sets the ID associated with the message.
+  example: []
+  syntax:
+    content: public string MessageId { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property MessageId As String
+  overload: Innovt.Cloud.Queue.QueueMessage`1.MessageId*
+  implements:
+  - Innovt.Cloud.Queue.IQueueMessage.MessageId
+  nameWithType.vb: QueueMessage(Of T).MessageId
+  fullName.vb: Innovt.Cloud.Queue.QueueMessage(Of T).MessageId
+- uid: Innovt.Cloud.Queue.QueueMessage`1.ReceiptHandle
+  commentId: P:Innovt.Cloud.Queue.QueueMessage`1.ReceiptHandle
+  id: ReceiptHandle
+  parent: Innovt.Cloud.Queue.QueueMessage`1
+  langs:
+  - csharp
+  - vb
+  name: ReceiptHandle
+  nameWithType: QueueMessage<T>.ReceiptHandle
+  fullName: Innovt.Cloud.Queue.QueueMessage<T>.ReceiptHandle
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud/Queue/QueueMessage.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ReceiptHandle
+    path: Innovt.Cloud/Queue/QueueMessage.cs
+    startLine: 52
+  assemblies:
+  - Innovt.Cloud
+  namespace: Innovt.Cloud.Queue
+  summary: Gets or sets the receipt handle for the message.
+  example: []
+  syntax:
+    content: public string ReceiptHandle { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ReceiptHandle As String
+  overload: Innovt.Cloud.Queue.QueueMessage`1.ReceiptHandle*
+  implements:
+  - Innovt.Cloud.Queue.IQueueMessage.ReceiptHandle
+  nameWithType.vb: QueueMessage(Of T).ReceiptHandle
+  fullName.vb: Innovt.Cloud.Queue.QueueMessage(Of T).ReceiptHandle
+- uid: Innovt.Cloud.Queue.QueueMessage`1.TraceId
+  commentId: P:Innovt.Cloud.Queue.QueueMessage`1.TraceId
+  id: TraceId
+  parent: Innovt.Cloud.Queue.QueueMessage`1
+  langs:
+  - csharp
+  - vb
+  name: TraceId
+  nameWithType: QueueMessage<T>.TraceId
+  fullName: Innovt.Cloud.Queue.QueueMessage<T>.TraceId
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud/Queue/QueueMessage.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: TraceId
+    path: Innovt.Cloud/Queue/QueueMessage.cs
+    startLine: 57
+  assemblies:
+  - Innovt.Cloud
+  namespace: Innovt.Cloud.Queue
+  summary: Gets or sets the trace ID associated with the message.
+  example: []
+  syntax:
+    content: public string TraceId { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property TraceId As String
+  overload: Innovt.Cloud.Queue.QueueMessage`1.TraceId*
+  implements:
+  - Innovt.Cloud.Queue.IQueueMessage.TraceId
+  nameWithType.vb: QueueMessage(Of T).TraceId
+  fullName.vb: Innovt.Cloud.Queue.QueueMessage(Of T).TraceId
+- uid: Innovt.Cloud.Queue.QueueMessage`1.ApproximateFirstReceiveTimestamp
+  commentId: P:Innovt.Cloud.Queue.QueueMessage`1.ApproximateFirstReceiveTimestamp
+  id: ApproximateFirstReceiveTimestamp
+  parent: Innovt.Cloud.Queue.QueueMessage`1
+  langs:
+  - csharp
+  - vb
+  name: ApproximateFirstReceiveTimestamp
+  nameWithType: QueueMessage<T>.ApproximateFirstReceiveTimestamp
+  fullName: Innovt.Cloud.Queue.QueueMessage<T>.ApproximateFirstReceiveTimestamp
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud/Queue/QueueMessage.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ApproximateFirstReceiveTimestamp
+    path: Innovt.Cloud/Queue/QueueMessage.cs
+    startLine: 62
+  assemblies:
+  - Innovt.Cloud
+  namespace: Innovt.Cloud.Queue
+  summary: Gets or sets the approximate timestamp when the message was first received.
+  example: []
+  syntax:
+    content: public double? ApproximateFirstReceiveTimestamp { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Double}
+    content.vb: Public Property ApproximateFirstReceiveTimestamp As Double?
+  overload: Innovt.Cloud.Queue.QueueMessage`1.ApproximateFirstReceiveTimestamp*
+  implements:
+  - Innovt.Cloud.Queue.IQueueMessage.ApproximateFirstReceiveTimestamp
+  nameWithType.vb: QueueMessage(Of T).ApproximateFirstReceiveTimestamp
+  fullName.vb: Innovt.Cloud.Queue.QueueMessage(Of T).ApproximateFirstReceiveTimestamp
+- uid: Innovt.Cloud.Queue.QueueMessage`1.ApproximateReceiveCount
+  commentId: P:Innovt.Cloud.Queue.QueueMessage`1.ApproximateReceiveCount
+  id: ApproximateReceiveCount
+  parent: Innovt.Cloud.Queue.QueueMessage`1
+  langs:
+  - csharp
+  - vb
+  name: ApproximateReceiveCount
+  nameWithType: QueueMessage<T>.ApproximateReceiveCount
+  fullName: Innovt.Cloud.Queue.QueueMessage<T>.ApproximateReceiveCount
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud/Queue/QueueMessage.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ApproximateReceiveCount
+    path: Innovt.Cloud/Queue/QueueMessage.cs
+    startLine: 67
+  assemblies:
+  - Innovt.Cloud
+  namespace: Innovt.Cloud.Queue
+  summary: Gets or sets the approximate number of times the message has been received.
+  example: []
+  syntax:
+    content: public int? ApproximateReceiveCount { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public Property ApproximateReceiveCount As Integer?
+  overload: Innovt.Cloud.Queue.QueueMessage`1.ApproximateReceiveCount*
+  implements:
+  - Innovt.Cloud.Queue.IQueueMessage.ApproximateReceiveCount
+  nameWithType.vb: QueueMessage(Of T).ApproximateReceiveCount
+  fullName.vb: Innovt.Cloud.Queue.QueueMessage(Of T).ApproximateReceiveCount
+- uid: Innovt.Cloud.Queue.QueueMessage`1.Attributes
+  commentId: P:Innovt.Cloud.Queue.QueueMessage`1.Attributes
+  id: Attributes
+  parent: Innovt.Cloud.Queue.QueueMessage`1
+  langs:
+  - csharp
+  - vb
+  name: Attributes
+  nameWithType: QueueMessage<T>.Attributes
+  fullName: Innovt.Cloud.Queue.QueueMessage<T>.Attributes
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud/Queue/QueueMessage.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Attributes
+    path: Innovt.Cloud/Queue/QueueMessage.cs
+    startLine: 73
+  assemblies:
+  - Innovt.Cloud
+  namespace: Innovt.Cloud.Queue
+  summary: Gets or sets the attributes associated with the message in the form of key-value pairs.
+  example: []
+  syntax:
+    content: public Dictionary<string, string> Attributes { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+    content.vb: Public Property Attributes As Dictionary(Of String, String)
+  overload: Innovt.Cloud.Queue.QueueMessage`1.Attributes*
+  implements:
+  - Innovt.Cloud.Queue.IQueueMessage.Attributes
+  nameWithType.vb: QueueMessage(Of T).Attributes
+  fullName.vb: Innovt.Cloud.Queue.QueueMessage(Of T).Attributes
+references:
+- uid: Innovt.Cloud.Queue
+  commentId: N:Innovt.Cloud.Queue
+  href: Innovt.html
+  name: Innovt.Cloud.Queue
+  nameWithType: Innovt.Cloud.Queue
+  fullName: Innovt.Cloud.Queue
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.Queue
+    name: Queue
+    href: Innovt.Cloud.Queue.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.Queue
+    name: Queue
+    href: Innovt.Cloud.Queue.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Innovt.Cloud.Queue.IQueueMessage
+  commentId: T:Innovt.Cloud.Queue.IQueueMessage
+  parent: Innovt.Cloud.Queue
+  href: Innovt.Cloud.Queue.IQueueMessage.html
+  name: IQueueMessage
+  nameWithType: IQueueMessage
+  fullName: Innovt.Cloud.Queue.IQueueMessage
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.Queue.IQueueMessage.Innovt.Cloud.Queue.QueueExtensions.ParseQueueAttributes(System.Collections.Generic.Dictionary{System.String,System.String})
+  commentId: M:Innovt.Cloud.Queue.QueueExtensions.ParseQueueAttributes(Innovt.Cloud.Queue.IQueueMessage,System.Collections.Generic.Dictionary{System.String,System.String})
+  parent: Innovt.Cloud.Queue.QueueExtensions
+  definition: Innovt.Cloud.Queue.QueueExtensions.ParseQueueAttributes(Innovt.Cloud.Queue.IQueueMessage,System.Collections.Generic.Dictionary{System.String,System.String})
+  href: Innovt.Cloud.Queue.QueueExtensions.html#Innovt_Cloud_Queue_QueueExtensions_ParseQueueAttributes_Innovt_Cloud_Queue_IQueueMessage_System_Collections_Generic_Dictionary_System_String_System_String__
+  name: ParseQueueAttributes(IQueueMessage, Dictionary<string, string>)
+  nameWithType: QueueExtensions.ParseQueueAttributes(IQueueMessage, Dictionary<string, string>)
+  fullName: Innovt.Cloud.Queue.QueueExtensions.ParseQueueAttributes(Innovt.Cloud.Queue.IQueueMessage, System.Collections.Generic.Dictionary<string, string>)
+  nameWithType.vb: QueueExtensions.ParseQueueAttributes(IQueueMessage, Dictionary(Of String, String))
+  fullName.vb: Innovt.Cloud.Queue.QueueExtensions.ParseQueueAttributes(Innovt.Cloud.Queue.IQueueMessage, System.Collections.Generic.Dictionary(Of String, String))
+  name.vb: ParseQueueAttributes(IQueueMessage, Dictionary(Of String, String))
+  spec.csharp:
+  - uid: Innovt.Cloud.Queue.QueueExtensions.ParseQueueAttributes(Innovt.Cloud.Queue.IQueueMessage,System.Collections.Generic.Dictionary{System.String,System.String})
+    name: ParseQueueAttributes
+    href: Innovt.Cloud.Queue.QueueExtensions.html#Innovt_Cloud_Queue_QueueExtensions_ParseQueueAttributes_Innovt_Cloud_Queue_IQueueMessage_System_Collections_Generic_Dictionary_System_String_System_String__
+  - name: (
+  - uid: Innovt.Cloud.Queue.IQueueMessage
+    name: IQueueMessage
+    href: Innovt.Cloud.Queue.IQueueMessage.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.Queue.QueueExtensions.ParseQueueAttributes(Innovt.Cloud.Queue.IQueueMessage,System.Collections.Generic.Dictionary{System.String,System.String})
+    name: ParseQueueAttributes
+    href: Innovt.Cloud.Queue.QueueExtensions.html#Innovt_Cloud_Queue_QueueExtensions_ParseQueueAttributes_Innovt_Cloud_Queue_IQueueMessage_System_Collections_Generic_Dictionary_System_String_System_String__
+  - name: (
+  - uid: Innovt.Cloud.Queue.IQueueMessage
+    name: IQueueMessage
+    href: Innovt.Cloud.Queue.IQueueMessage.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Cloud.Queue.QueueExtensions.ParseQueueAttributes(Innovt.Cloud.Queue.IQueueMessage,System.Collections.Generic.Dictionary{System.String,System.String})
+  commentId: M:Innovt.Cloud.Queue.QueueExtensions.ParseQueueAttributes(Innovt.Cloud.Queue.IQueueMessage,System.Collections.Generic.Dictionary{System.String,System.String})
+  isExternal: true
+  href: Innovt.Cloud.Queue.QueueExtensions.html#Innovt_Cloud_Queue_QueueExtensions_ParseQueueAttributes_Innovt_Cloud_Queue_IQueueMessage_System_Collections_Generic_Dictionary_System_String_System_String__
+  name: ParseQueueAttributes(IQueueMessage, Dictionary<string, string>)
+  nameWithType: QueueExtensions.ParseQueueAttributes(IQueueMessage, Dictionary<string, string>)
+  fullName: Innovt.Cloud.Queue.QueueExtensions.ParseQueueAttributes(Innovt.Cloud.Queue.IQueueMessage, System.Collections.Generic.Dictionary<string, string>)
+  nameWithType.vb: QueueExtensions.ParseQueueAttributes(IQueueMessage, Dictionary(Of String, String))
+  fullName.vb: Innovt.Cloud.Queue.QueueExtensions.ParseQueueAttributes(Innovt.Cloud.Queue.IQueueMessage, System.Collections.Generic.Dictionary(Of String, String))
+  name.vb: ParseQueueAttributes(IQueueMessage, Dictionary(Of String, String))
+  spec.csharp:
+  - uid: Innovt.Cloud.Queue.QueueExtensions.ParseQueueAttributes(Innovt.Cloud.Queue.IQueueMessage,System.Collections.Generic.Dictionary{System.String,System.String})
+    name: ParseQueueAttributes
+    href: Innovt.Cloud.Queue.QueueExtensions.html#Innovt_Cloud_Queue_QueueExtensions_ParseQueueAttributes_Innovt_Cloud_Queue_IQueueMessage_System_Collections_Generic_Dictionary_System_String_System_String__
+  - name: (
+  - uid: Innovt.Cloud.Queue.IQueueMessage
+    name: IQueueMessage
+    href: Innovt.Cloud.Queue.IQueueMessage.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.Queue.QueueExtensions.ParseQueueAttributes(Innovt.Cloud.Queue.IQueueMessage,System.Collections.Generic.Dictionary{System.String,System.String})
+    name: ParseQueueAttributes
+    href: Innovt.Cloud.Queue.QueueExtensions.html#Innovt_Cloud_Queue_QueueExtensions_ParseQueueAttributes_Innovt_Cloud_Queue_IQueueMessage_System_Collections_Generic_Dictionary_System_String_System_String__
+  - name: (
+  - uid: Innovt.Cloud.Queue.IQueueMessage
+    name: IQueueMessage
+    href: Innovt.Cloud.Queue.IQueueMessage.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: Innovt.Cloud.Queue.QueueExtensions
+  commentId: T:Innovt.Cloud.Queue.QueueExtensions
+  parent: Innovt.Cloud.Queue
+  href: Innovt.Cloud.Queue.QueueExtensions.html
+  name: QueueExtensions
+  nameWithType: QueueExtensions
+  fullName: Innovt.Cloud.Queue.QueueExtensions
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Cloud.Queue.QueueMessage`1
+  commentId: T:Innovt.Cloud.Queue.QueueMessage`1
+  href: Innovt.Cloud.Queue.QueueMessage-1.html
+  name: QueueMessage<T>
+  nameWithType: QueueMessage<T>
+  fullName: Innovt.Cloud.Queue.QueueMessage<T>
+  nameWithType.vb: QueueMessage(Of T)
+  fullName.vb: Innovt.Cloud.Queue.QueueMessage(Of T)
+  name.vb: QueueMessage(Of T)
+  spec.csharp:
+  - uid: Innovt.Cloud.Queue.QueueMessage`1
+    name: QueueMessage
+    href: Innovt.Cloud.Queue.QueueMessage-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cloud.Queue.QueueMessage`1
+    name: QueueMessage
+    href: Innovt.Cloud.Queue.QueueMessage-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Cloud.Queue.QueueMessage`1.#ctor*
+  commentId: Overload:Innovt.Cloud.Queue.QueueMessage`1.#ctor
+  href: Innovt.Cloud.Queue.QueueMessage-1.html#Innovt_Cloud_Queue_QueueMessage_1__ctor
+  name: QueueMessage
+  nameWithType: QueueMessage<T>.QueueMessage
+  fullName: Innovt.Cloud.Queue.QueueMessage<T>.QueueMessage
+  nameWithType.vb: QueueMessage(Of T).New
+  fullName.vb: Innovt.Cloud.Queue.QueueMessage(Of T).New
+  name.vb: New
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Collections.Generic.Dictionary{System.String,System.String}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, string>
+  nameWithType: Dictionary<string, string>
+  fullName: System.Collections.Generic.Dictionary<string, string>
+  nameWithType.vb: Dictionary(Of String, String)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, String)
+  name.vb: Dictionary(Of String, String)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Innovt.Cloud.Queue.QueueMessage`1.Body*
+  commentId: Overload:Innovt.Cloud.Queue.QueueMessage`1.Body
+  href: Innovt.Cloud.Queue.QueueMessage-1.html#Innovt_Cloud_Queue_QueueMessage_1_Body
+  name: Body
+  nameWithType: QueueMessage<T>.Body
+  fullName: Innovt.Cloud.Queue.QueueMessage<T>.Body
+  nameWithType.vb: QueueMessage(Of T).Body
+  fullName.vb: Innovt.Cloud.Queue.QueueMessage(Of T).Body
+- uid: Innovt.Cloud.Queue.QueueMessage`1.MessageId*
+  commentId: Overload:Innovt.Cloud.Queue.QueueMessage`1.MessageId
+  href: Innovt.Cloud.Queue.QueueMessage-1.html#Innovt_Cloud_Queue_QueueMessage_1_MessageId
+  name: MessageId
+  nameWithType: QueueMessage<T>.MessageId
+  fullName: Innovt.Cloud.Queue.QueueMessage<T>.MessageId
+  nameWithType.vb: QueueMessage(Of T).MessageId
+  fullName.vb: Innovt.Cloud.Queue.QueueMessage(Of T).MessageId
+- uid: Innovt.Cloud.Queue.IQueueMessage.MessageId
+  commentId: P:Innovt.Cloud.Queue.IQueueMessage.MessageId
+  parent: Innovt.Cloud.Queue.IQueueMessage
+  href: Innovt.Cloud.Queue.IQueueMessage.html#Innovt_Cloud_Queue_IQueueMessage_MessageId
+  name: MessageId
+  nameWithType: IQueueMessage.MessageId
+  fullName: Innovt.Cloud.Queue.IQueueMessage.MessageId
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Innovt.Cloud.Queue.QueueMessage`1.ReceiptHandle*
+  commentId: Overload:Innovt.Cloud.Queue.QueueMessage`1.ReceiptHandle
+  href: Innovt.Cloud.Queue.QueueMessage-1.html#Innovt_Cloud_Queue_QueueMessage_1_ReceiptHandle
+  name: ReceiptHandle
+  nameWithType: QueueMessage<T>.ReceiptHandle
+  fullName: Innovt.Cloud.Queue.QueueMessage<T>.ReceiptHandle
+  nameWithType.vb: QueueMessage(Of T).ReceiptHandle
+  fullName.vb: Innovt.Cloud.Queue.QueueMessage(Of T).ReceiptHandle
+- uid: Innovt.Cloud.Queue.IQueueMessage.ReceiptHandle
+  commentId: P:Innovt.Cloud.Queue.IQueueMessage.ReceiptHandle
+  parent: Innovt.Cloud.Queue.IQueueMessage
+  href: Innovt.Cloud.Queue.IQueueMessage.html#Innovt_Cloud_Queue_IQueueMessage_ReceiptHandle
+  name: ReceiptHandle
+  nameWithType: IQueueMessage.ReceiptHandle
+  fullName: Innovt.Cloud.Queue.IQueueMessage.ReceiptHandle
+- uid: Innovt.Cloud.Queue.QueueMessage`1.TraceId*
+  commentId: Overload:Innovt.Cloud.Queue.QueueMessage`1.TraceId
+  href: Innovt.Cloud.Queue.QueueMessage-1.html#Innovt_Cloud_Queue_QueueMessage_1_TraceId
+  name: TraceId
+  nameWithType: QueueMessage<T>.TraceId
+  fullName: Innovt.Cloud.Queue.QueueMessage<T>.TraceId
+  nameWithType.vb: QueueMessage(Of T).TraceId
+  fullName.vb: Innovt.Cloud.Queue.QueueMessage(Of T).TraceId
+- uid: Innovt.Cloud.Queue.IQueueMessage.TraceId
+  commentId: P:Innovt.Cloud.Queue.IQueueMessage.TraceId
+  parent: Innovt.Cloud.Queue.IQueueMessage
+  href: Innovt.Cloud.Queue.IQueueMessage.html#Innovt_Cloud_Queue_IQueueMessage_TraceId
+  name: TraceId
+  nameWithType: IQueueMessage.TraceId
+  fullName: Innovt.Cloud.Queue.IQueueMessage.TraceId
+- uid: Innovt.Cloud.Queue.QueueMessage`1.ApproximateFirstReceiveTimestamp*
+  commentId: Overload:Innovt.Cloud.Queue.QueueMessage`1.ApproximateFirstReceiveTimestamp
+  href: Innovt.Cloud.Queue.QueueMessage-1.html#Innovt_Cloud_Queue_QueueMessage_1_ApproximateFirstReceiveTimestamp
+  name: ApproximateFirstReceiveTimestamp
+  nameWithType: QueueMessage<T>.ApproximateFirstReceiveTimestamp
+  fullName: Innovt.Cloud.Queue.QueueMessage<T>.ApproximateFirstReceiveTimestamp
+  nameWithType.vb: QueueMessage(Of T).ApproximateFirstReceiveTimestamp
+  fullName.vb: Innovt.Cloud.Queue.QueueMessage(Of T).ApproximateFirstReceiveTimestamp
+- uid: Innovt.Cloud.Queue.IQueueMessage.ApproximateFirstReceiveTimestamp
+  commentId: P:Innovt.Cloud.Queue.IQueueMessage.ApproximateFirstReceiveTimestamp
+  parent: Innovt.Cloud.Queue.IQueueMessage
+  href: Innovt.Cloud.Queue.IQueueMessage.html#Innovt_Cloud_Queue_IQueueMessage_ApproximateFirstReceiveTimestamp
+  name: ApproximateFirstReceiveTimestamp
+  nameWithType: IQueueMessage.ApproximateFirstReceiveTimestamp
+  fullName: Innovt.Cloud.Queue.IQueueMessage.ApproximateFirstReceiveTimestamp
+- uid: System.Nullable{System.Double}
+  commentId: T:System.Nullable{System.Double}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double?
+  nameWithType: double?
+  fullName: double?
+  nameWithType.vb: Double?
+  fullName.vb: Double?
+  name.vb: Double?
+  spec.csharp:
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '?'
+  spec.vb:
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Cloud.Queue.QueueMessage`1.ApproximateReceiveCount*
+  commentId: Overload:Innovt.Cloud.Queue.QueueMessage`1.ApproximateReceiveCount
+  href: Innovt.Cloud.Queue.QueueMessage-1.html#Innovt_Cloud_Queue_QueueMessage_1_ApproximateReceiveCount
+  name: ApproximateReceiveCount
+  nameWithType: QueueMessage<T>.ApproximateReceiveCount
+  fullName: Innovt.Cloud.Queue.QueueMessage<T>.ApproximateReceiveCount
+  nameWithType.vb: QueueMessage(Of T).ApproximateReceiveCount
+  fullName.vb: Innovt.Cloud.Queue.QueueMessage(Of T).ApproximateReceiveCount
+- uid: Innovt.Cloud.Queue.IQueueMessage.ApproximateReceiveCount
+  commentId: P:Innovt.Cloud.Queue.IQueueMessage.ApproximateReceiveCount
+  parent: Innovt.Cloud.Queue.IQueueMessage
+  href: Innovt.Cloud.Queue.IQueueMessage.html#Innovt_Cloud_Queue_IQueueMessage_ApproximateReceiveCount
+  name: ApproximateReceiveCount
+  nameWithType: IQueueMessage.ApproximateReceiveCount
+  fullName: Innovt.Cloud.Queue.IQueueMessage.ApproximateReceiveCount
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: Innovt.Cloud.Queue.QueueMessage`1.Attributes*
+  commentId: Overload:Innovt.Cloud.Queue.QueueMessage`1.Attributes
+  href: Innovt.Cloud.Queue.QueueMessage-1.html#Innovt_Cloud_Queue_QueueMessage_1_Attributes
+  name: Attributes
+  nameWithType: QueueMessage<T>.Attributes
+  fullName: Innovt.Cloud.Queue.QueueMessage<T>.Attributes
+  nameWithType.vb: QueueMessage(Of T).Attributes
+  fullName.vb: Innovt.Cloud.Queue.QueueMessage(Of T).Attributes
+- uid: Innovt.Cloud.Queue.IQueueMessage.Attributes
+  commentId: P:Innovt.Cloud.Queue.IQueueMessage.Attributes
+  parent: Innovt.Cloud.Queue.IQueueMessage
+  href: Innovt.Cloud.Queue.IQueueMessage.html#Innovt_Cloud_Queue_IQueueMessage_Attributes
+  name: Attributes
+  nameWithType: IQueueMessage.Attributes
+  fullName: Innovt.Cloud.Queue.IQueueMessage.Attributes

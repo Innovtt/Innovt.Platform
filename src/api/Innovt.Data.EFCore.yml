@@ -1,0 +1,61 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Data.EFCore
+  commentId: N:Innovt.Data.EFCore
+  id: Innovt.Data.EFCore
+  children:
+  - Innovt.Data.EFCore.DBContextBase
+  - Innovt.Data.EFCore.EfExtensions
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Data.EFCore
+  nameWithType: Innovt.Data.EFCore
+  fullName: Innovt.Data.EFCore
+  type: Namespace
+  assemblies:
+  - Innovt.Data.EFCore
+references:
+- uid: Innovt.Data.EFCore.DBContextBase
+  commentId: T:Innovt.Data.EFCore.DBContextBase
+  parent: Innovt.Data.EFCore
+  href: Innovt.Data.EFCore.DBContextBase.html
+  name: DBContextBase
+  nameWithType: DBContextBase
+  fullName: Innovt.Data.EFCore.DBContextBase
+- uid: Innovt.Data.EFCore.EfExtensions
+  commentId: T:Innovt.Data.EFCore.EfExtensions
+  href: Innovt.Data.EFCore.EfExtensions.html
+  name: EfExtensions
+  nameWithType: EfExtensions
+  fullName: Innovt.Data.EFCore.EfExtensions
+- uid: Innovt.Data.EFCore
+  commentId: N:Innovt.Data.EFCore
+  href: Innovt.html
+  name: Innovt.Data.EFCore
+  nameWithType: Innovt.Data.EFCore
+  fullName: Innovt.Data.EFCore
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Data
+    name: Data
+    href: Innovt.Data.html
+  - name: .
+  - uid: Innovt.Data.EFCore
+    name: EFCore
+    href: Innovt.Data.EFCore.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Data
+    name: Data
+    href: Innovt.Data.html
+  - name: .
+  - uid: Innovt.Data.EFCore
+    name: EFCore
+    href: Innovt.Data.EFCore.html

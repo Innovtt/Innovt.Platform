@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.Tests
+  commentId: N:Innovt.Cloud.AWS.Tests
+  id: Innovt.Cloud.AWS.Tests
+  children:
+  - Innovt.Cloud.AWS.Tests.AssumeRoleAWSConfigurationTests
+  - Innovt.Cloud.AWS.Tests.DefaultAWSConfigurationTests
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Cloud.AWS.Tests
+  nameWithType: Innovt.Cloud.AWS.Tests
+  fullName: Innovt.Cloud.AWS.Tests
+  type: Namespace
+  assemblies:
+  - Innovt.Cloud.AWS.Tests
+references:
+- uid: Innovt.Cloud.AWS.Tests.AssumeRoleAWSConfigurationTests
+  commentId: T:Innovt.Cloud.AWS.Tests.AssumeRoleAWSConfigurationTests
+  href: Innovt.Cloud.AWS.Tests.AssumeRoleAWSConfigurationTests.html
+  name: AssumeRoleAWSConfigurationTests
+  nameWithType: AssumeRoleAWSConfigurationTests
+  fullName: Innovt.Cloud.AWS.Tests.AssumeRoleAWSConfigurationTests
+- uid: Innovt.Cloud.AWS.Tests.DefaultAWSConfigurationTests
+  commentId: T:Innovt.Cloud.AWS.Tests.DefaultAWSConfigurationTests
+  href: Innovt.Cloud.AWS.Tests.DefaultAWSConfigurationTests.html
+  name: DefaultAWSConfigurationTests
+  nameWithType: DefaultAWSConfigurationTests
+  fullName: Innovt.Cloud.AWS.Tests.DefaultAWSConfigurationTests

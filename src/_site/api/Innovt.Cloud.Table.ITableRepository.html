@@ -1,0 +1,1269 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface ITableRepository | Innovt Platform </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface ITableRepository | Innovt Platform ">
+      
+      <meta name="description" content="Interface representing a repository for interacting with a table.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_Table_ITableRepository.md&amp;value=---%0Auid%3A%20Innovt.Cloud.Table.ITableRepository%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Innovt Platform">
+            Innovt Platform
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Innovt.Cloud.Table.ITableRepository">
+
+
+
+  <h1 id="Innovt_Cloud_Table_ITableRepository" data-uid="Innovt.Cloud.Table.ITableRepository" class="text-break">
+Interface ITableRepository  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/Table/ITableRepository.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Innovt.html">Innovt</a>.<a class="xref" href="Innovt.Cloud.html">Cloud</a>.<a class="xref" href="Innovt.Cloud.Table.html">Table</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Innovt.Cloud.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Interface representing a repository for interacting with a table.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ITableRepository : IDisposable</code></pre>
+  </div>
+
+
+
+
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable.dispose">IDisposable.Dispose()</a>
+    </div>
+  </dd></dl>
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_">Extensions.IsNull(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_">Extensions.ToStringOrDefault(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_">SimpleMapper.MapTo&lt;T1&gt;(object)</a>
+  </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Innovt_Cloud_Table_ITableRepository_AddAsync_" data-uid="Innovt.Cloud.Table.ITableRepository.AddAsync*"></a>
+
+  <h3 id="Innovt_Cloud_Table_ITableRepository_AddAsync__1_System_Collections_Generic_IList___0__System_Threading_CancellationToken_" data-uid="Innovt.Cloud.Table.ITableRepository.AddAsync``1(System.Collections.Generic.IList{``0},System.Threading.CancellationToken)">
+  AddAsync&lt;T&gt;(IList&lt;T&gt;, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/Table/ITableRepository.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously adds multiple items to the repository.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task AddAsync&lt;T&gt;(IList&lt;T&gt; messages, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>messages</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;T&gt;</dt>
+    <dd><p>The list of items to add.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A task representing the asynchronous add operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of items to add.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_Table_ITableRepository_AddAsync_" data-uid="Innovt.Cloud.Table.ITableRepository.AddAsync*"></a>
+
+  <h3 id="Innovt_Cloud_Table_ITableRepository_AddAsync__1___0_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.Table.ITableRepository.AddAsync``1(``0,System.Threading.CancellationToken)">
+  AddAsync&lt;T&gt;(T, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/Table/ITableRepository.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously adds a single item to the repository.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task AddAsync&lt;T&gt;(T message, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <span class="xref">T</span></dt>
+    <dd><p>The item to add.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A task representing the asynchronous add operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of item to add.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_Table_ITableRepository_BatchGetItem_" data-uid="Innovt.Cloud.Table.ITableRepository.BatchGetItem*"></a>
+
+  <h3 id="Innovt_Cloud_Table_ITableRepository_BatchGetItem__1_Innovt_Cloud_Table_BatchGetItemRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.Table.ITableRepository.BatchGetItem``1(Innovt.Cloud.Table.BatchGetItemRequest,System.Threading.CancellationToken)">
+  BatchGetItem&lt;T&gt;(BatchGetItemRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/Table/ITableRepository.cs/#L252"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously retrieves multiple items in a batch.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;List&lt;T&gt;&gt; BatchGetItem&lt;T&gt;(BatchGetItemRequest batchGetItemRequest, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>batchGetItemRequest</code> <a class="xref" href="Innovt.Cloud.Table.BatchGetItemRequest.html">BatchGetItemRequest</a></dt>
+    <dd><p>The batch get item request.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;&gt;</dt>
+    <dd><p>A list of items of type T.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of items to retrieve.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_Table_ITableRepository_BatchWriteItem_" data-uid="Innovt.Cloud.Table.ITableRepository.BatchWriteItem*"></a>
+
+  <h3 id="Innovt_Cloud_Table_ITableRepository_BatchWriteItem_Innovt_Cloud_Table_BatchWriteItemRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.Table.ITableRepository.BatchWriteItem(Innovt.Cloud.Table.BatchWriteItemRequest,System.Threading.CancellationToken)">
+  BatchWriteItem(BatchWriteItemRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/Table/ITableRepository.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously performs a batch write operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;BatchWriteItemResponse&gt; BatchWriteItem(BatchWriteItemRequest batchWriteItemRequest, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>batchWriteItemRequest</code> <a class="xref" href="Innovt.Cloud.Table.BatchWriteItemRequest.html">BatchWriteItemRequest</a></dt>
+    <dd><p>The batch write item request.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Cloud.Table.BatchWriteItemResponse.html">BatchWriteItemResponse</a>&gt;</dt>
+    <dd><p>A response from the batch write operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_Table_ITableRepository_DeleteAsync_" data-uid="Innovt.Cloud.Table.ITableRepository.DeleteAsync*"></a>
+
+  <h3 id="Innovt_Cloud_Table_ITableRepository_DeleteAsync__1_System_Collections_Generic_List___0__System_Threading_CancellationToken_" data-uid="Innovt.Cloud.Table.ITableRepository.DeleteAsync``1(System.Collections.Generic.List{``0},System.Threading.CancellationToken)">
+  DeleteAsync&lt;T&gt;(List&lt;T&gt;, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/Table/ITableRepository.cs/#L80"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously a list of item that are from the same type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task DeleteAsync&lt;T&gt;(List&lt;T&gt; messages, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>messages</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_Table_ITableRepository_DeleteAsync_" data-uid="Innovt.Cloud.Table.ITableRepository.DeleteAsync*"></a>
+
+  <h3 id="Innovt_Cloud_Table_ITableRepository_DeleteAsync__1_System_Object_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.Table.ITableRepository.DeleteAsync``1(System.Object,System.String,System.Threading.CancellationToken)">
+  DeleteAsync&lt;T&gt;(object, string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/Table/ITableRepository.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously deletes an item using its identifier and optional range key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task DeleteAsync&lt;T&gt;(object id, string rangeKey = null, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The identifier of the item.</p>
+</dd>
+    <dt><code>rangeKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The range key for the item (optional).</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A task representing the asynchronous delete operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of item to delete.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_Table_ITableRepository_DeleteAsync_" data-uid="Innovt.Cloud.Table.ITableRepository.DeleteAsync*"></a>
+
+  <h3 id="Innovt_Cloud_Table_ITableRepository_DeleteAsync__1___0_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.Table.ITableRepository.DeleteAsync``1(``0,System.Threading.CancellationToken)">
+  DeleteAsync&lt;T&gt;(T, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/Table/ITableRepository.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously deletes an item using its value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task DeleteAsync&lt;T&gt;(T message, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <span class="xref">T</span></dt>
+    <dd><p>The item to delete.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A task representing the asynchronous delete operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of item to delete.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_Table_ITableRepository_ExecuteStatementAsync_" data-uid="Innovt.Cloud.Table.ITableRepository.ExecuteStatementAsync*"></a>
+
+  <h3 id="Innovt_Cloud_Table_ITableRepository_ExecuteStatementAsync__1_Innovt_Cloud_Table_ExecuteSqlStatementRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.Table.ITableRepository.ExecuteStatementAsync``1(Innovt.Cloud.Table.ExecuteSqlStatementRequest,System.Threading.CancellationToken)">
+  ExecuteStatementAsync&lt;T&gt;(ExecuteSqlStatementRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/Table/ITableRepository.cs/#L242"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Executes an SQL statement asynchronously and retrieves the results.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ExecuteSqlStatementResponse&lt;T&gt;&gt; ExecuteStatementAsync&lt;T&gt;(ExecuteSqlStatementRequest sqlStatementRequest, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sqlStatementRequest</code> <a class="xref" href="Innovt.Cloud.Table.ExecuteSqlStatementRequest.html">ExecuteSqlStatementRequest</a></dt>
+    <dd><p>The SQL statement request.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Cloud.Table.ExecuteSqlStatementResponse-1.html">ExecuteSqlStatementResponse</a>&lt;T&gt;&gt;</dt>
+    <dd><p>A response containing the results of the SQL statement execution.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of results to expect.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_Table_ITableRepository_GetByIdAsync_" data-uid="Innovt.Cloud.Table.ITableRepository.GetByIdAsync*"></a>
+
+  <h3 id="Innovt_Cloud_Table_ITableRepository_GetByIdAsync__1_System_Object_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.Table.ITableRepository.GetByIdAsync``1(System.Object,System.String,System.Threading.CancellationToken)">
+  GetByIdAsync&lt;T&gt;(object, string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/Table/ITableRepository.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously retrieves an item by its identifier.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; GetByIdAsync&lt;T&gt;(object id, string rangeKey = null, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The identifier of the item.</p>
+</dd>
+    <dt><code>rangeKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The range key for the item (optional).</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</dt>
+    <dd><p>An item of type T if found; otherwise, null.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of item to retrieve.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_Table_ITableRepository_QueryAsync_" data-uid="Innovt.Cloud.Table.ITableRepository.QueryAsync*"></a>
+
+  <h3 id="Innovt_Cloud_Table_ITableRepository_QueryAsync__1_Innovt_Cloud_Table_QueryRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.Table.ITableRepository.QueryAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)">
+  QueryAsync&lt;T&gt;(QueryRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/Table/ITableRepository.cs/#L129"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously queries and retrieves a list of items of type T based on the provided query request.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IList&lt;T&gt;&gt; QueryAsync&lt;T&gt;(QueryRequest request, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Innovt.Cloud.Table.QueryRequest.html">QueryRequest</a></dt>
+    <dd><p>The query request specifying the query parameters.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;T&gt;&gt;</dt>
+    <dd><p>A list of items of type T based on the query request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of items to retrieve.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_Table_ITableRepository_QueryAsync_" data-uid="Innovt.Cloud.Table.ITableRepository.QueryAsync*"></a>
+
+  <h3 id="Innovt_Cloud_Table_ITableRepository_QueryAsync__1_System_Object_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.Table.ITableRepository.QueryAsync``1(System.Object,System.Threading.CancellationToken)">
+  QueryAsync&lt;T&gt;(object, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/Table/ITableRepository.cs/#L120"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously queries and retrieves a list of items of type T by their identifier.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IList&lt;T&gt;&gt; QueryAsync&lt;T&gt;(object id, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The identifier of the items.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;T&gt;&gt;</dt>
+    <dd><p>A list of items of type T.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of items to retrieve.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_Table_ITableRepository_QueryFirstAsync_" data-uid="Innovt.Cloud.Table.ITableRepository.QueryFirstAsync*"></a>
+
+  <h3 id="Innovt_Cloud_Table_ITableRepository_QueryFirstAsync__1_System_Object_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.Table.ITableRepository.QueryFirstAsync``1(System.Object,System.Threading.CancellationToken)">
+  QueryFirstAsync&lt;T&gt;(object, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/Table/ITableRepository.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously queries and retrieves the first item of type T by its identifier.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; QueryFirstAsync&lt;T&gt;(object id, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The identifier of the item.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</dt>
+    <dd><p>An item of type T if found; otherwise, null.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of item to retrieve.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_Table_ITableRepository_QueryFirstOrDefaultAsync_" data-uid="Innovt.Cloud.Table.ITableRepository.QueryFirstOrDefaultAsync*"></a>
+
+  <h3 id="Innovt_Cloud_Table_ITableRepository_QueryFirstOrDefaultAsync__1_Innovt_Cloud_Table_QueryRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.Table.ITableRepository.QueryFirstOrDefaultAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)">
+  QueryFirstOrDefaultAsync&lt;T&gt;(QueryRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/Table/ITableRepository.cs/#L139"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously queries and retrieves the first item of type T based on the provided query request.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; QueryFirstOrDefaultAsync&lt;T&gt;(QueryRequest request, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Innovt.Cloud.Table.QueryRequest.html">QueryRequest</a></dt>
+    <dd><p>The query request specifying the query parameters.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</dt>
+    <dd><p>The first item of type T based on the query request; otherwise, null.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of item to retrieve.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_Table_ITableRepository_QueryMultipleAsync_" data-uid="Innovt.Cloud.Table.ITableRepository.QueryMultipleAsync*"></a>
+
+  <h3 id="Innovt_Cloud_Table_ITableRepository_QueryMultipleAsync__3_Innovt_Cloud_Table_QueryRequest_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.Table.ITableRepository.QueryMultipleAsync``3(Innovt.Cloud.Table.QueryRequest,System.String,System.Threading.CancellationToken)">
+  QueryMultipleAsync&lt;T, TResult1, TResult2&gt;(QueryRequest, string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/Table/ITableRepository.cs/#L152"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously queries and retrieves multiple sets of results from a single query.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;(IList&lt;TResult1&gt; first, IList&lt;TResult2&gt; second)&gt; QueryMultipleAsync&lt;T, TResult1, TResult2&gt;(QueryRequest request, string splitBy, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Innovt.Cloud.Table.QueryRequest.html">QueryRequest</a></dt>
+    <dd><p>The query request.</p>
+</dd>
+    <dt><code>splitBy</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The parameter to split the results by.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult1&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2--.first">first</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult2&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2--.second">second</a>)&gt;</dt>
+    <dd><p>Tuple containing the first and second result sets.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of items to retrieve.</p>
+</dd>
+    <dt><code>TResult1</code></dt>
+    <dd><p>The type of the first result set.</p>
+</dd>
+    <dt><code>TResult2</code></dt>
+    <dd><p>The type of the second result set.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_Table_ITableRepository_QueryMultipleAsync_" data-uid="Innovt.Cloud.Table.ITableRepository.QueryMultipleAsync*"></a>
+
+  <h3 id="Innovt_Cloud_Table_ITableRepository_QueryMultipleAsync__4_Innovt_Cloud_Table_QueryRequest_System_String___System_Threading_CancellationToken_" data-uid="Innovt.Cloud.Table.ITableRepository.QueryMultipleAsync``4(Innovt.Cloud.Table.QueryRequest,System.String[],System.Threading.CancellationToken)">
+  QueryMultipleAsync&lt;T, TResult1, TResult2, TResult3&gt;(QueryRequest, string[], CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/Table/ITableRepository.cs/#L166"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously queries and retrieves multiple sets of results from a single query.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;(IList&lt;TResult1&gt; first, IList&lt;TResult2&gt; second, IList&lt;TResult3&gt; third)&gt; QueryMultipleAsync&lt;T, TResult1, TResult2, TResult3&gt;(QueryRequest request, string[] splitBy, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Innovt.Cloud.Table.QueryRequest.html">QueryRequest</a></dt>
+    <dd><p>The query request specifying the query parameters.</p>
+</dd>
+    <dt><code>splitBy</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>The parameter to split the results by.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult1&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2-,system.collections.generic.ilist---3--.first">first</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult2&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2-,system.collections.generic.ilist---3--.second">second</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult3&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2-,system.collections.generic.ilist---3--.third">third</a>)&gt;</dt>
+    <dd><p>Tuple containing the first, second, and third result sets.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of items to retrieve.</p>
+</dd>
+    <dt><code>TResult1</code></dt>
+    <dd><p>The type of the first result set.</p>
+</dd>
+    <dt><code>TResult2</code></dt>
+    <dd><p>The type of the second result set.</p>
+</dd>
+    <dt><code>TResult3</code></dt>
+    <dd><p>The type of the third result set.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_Table_ITableRepository_QueryMultipleAsync_" data-uid="Innovt.Cloud.Table.ITableRepository.QueryMultipleAsync*"></a>
+
+  <h3 id="Innovt_Cloud_Table_ITableRepository_QueryMultipleAsync__5_Innovt_Cloud_Table_QueryRequest_System_String___System_Threading_CancellationToken_" data-uid="Innovt.Cloud.Table.ITableRepository.QueryMultipleAsync``5(Innovt.Cloud.Table.QueryRequest,System.String[],System.Threading.CancellationToken)">
+  QueryMultipleAsync&lt;T, TResult1, TResult2, TResult3, TResult4&gt;(QueryRequest, string[], CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/Table/ITableRepository.cs/#L182"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously queries and retrieves multiple sets of results from a single query.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;(IList&lt;TResult1&gt; first, IList&lt;TResult2&gt; second, IList&lt;TResult3&gt; third, IList&lt;TResult4&gt; fourth)&gt; QueryMultipleAsync&lt;T, TResult1, TResult2, TResult3, TResult4&gt;(QueryRequest request, string[] splitBy, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Innovt.Cloud.Table.QueryRequest.html">QueryRequest</a></dt>
+    <dd><p>The query request specifying the query parameters.</p>
+</dd>
+    <dt><code>splitBy</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>The parameter to split the results by.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult1&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2-,system.collections.generic.ilist---3-,system.collections.generic.ilist---4--.first">first</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult2&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2-,system.collections.generic.ilist---3-,system.collections.generic.ilist---4--.second">second</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult3&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2-,system.collections.generic.ilist---3-,system.collections.generic.ilist---4--.third">third</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult4&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2-,system.collections.generic.ilist---3-,system.collections.generic.ilist---4--.fourth">fourth</a>)&gt;</dt>
+    <dd><p>Tuple containing the first, second, third, and fourth result sets.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of items to retrieve.</p>
+</dd>
+    <dt><code>TResult1</code></dt>
+    <dd><p>The type of the first result set.</p>
+</dd>
+    <dt><code>TResult2</code></dt>
+    <dd><p>The type of the second result set.</p>
+</dd>
+    <dt><code>TResult3</code></dt>
+    <dd><p>The type of the third result set.</p>
+</dd>
+    <dt><code>TResult4</code></dt>
+    <dd><p>The type of the fourth result set.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_Table_ITableRepository_QueryMultipleAsync_" data-uid="Innovt.Cloud.Table.ITableRepository.QueryMultipleAsync*"></a>
+
+  <h3 id="Innovt_Cloud_Table_ITableRepository_QueryMultipleAsync__6_Innovt_Cloud_Table_QueryRequest_System_String___System_Threading_CancellationToken_" data-uid="Innovt.Cloud.Table.ITableRepository.QueryMultipleAsync``6(Innovt.Cloud.Table.QueryRequest,System.String[],System.Threading.CancellationToken)">
+  QueryMultipleAsync&lt;T, TResult1, TResult2, TResult3, TResult4, TResult5&gt;(QueryRequest, string[], CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/Table/ITableRepository.cs/#L199"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously queries and retrieves multiple sets of results from a single query.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;(IList&lt;TResult1&gt; first, IList&lt;TResult2&gt; second, IList&lt;TResult3&gt; third, IList&lt;TResult4&gt; fourth, IList&lt;TResult5&gt; fifth)&gt; QueryMultipleAsync&lt;T, TResult1, TResult2, TResult3, TResult4, TResult5&gt;(QueryRequest request, string[] splitBy, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Innovt.Cloud.Table.QueryRequest.html">QueryRequest</a></dt>
+    <dd><p>The query request specifying the query parameters.</p>
+</dd>
+    <dt><code>splitBy</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>The parameter to split the results by.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult1&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2-,system.collections.generic.ilist---3-,system.collections.generic.ilist---4-,system.collections.generic.ilist---5--.first">first</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult2&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2-,system.collections.generic.ilist---3-,system.collections.generic.ilist---4-,system.collections.generic.ilist---5--.second">second</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult3&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2-,system.collections.generic.ilist---3-,system.collections.generic.ilist---4-,system.collections.generic.ilist---5--.third">third</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult4&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2-,system.collections.generic.ilist---3-,system.collections.generic.ilist---4-,system.collections.generic.ilist---5--.fourth">fourth</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult5&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2-,system.collections.generic.ilist---3-,system.collections.generic.ilist---4-,system.collections.generic.ilist---5--.fifth">fifth</a>)&gt;</dt>
+    <dd><p>Tuple containing the first, second, third, fourth, and fifth result sets.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of items to retrieve.</p>
+</dd>
+    <dt><code>TResult1</code></dt>
+    <dd><p>The type of the first result set.</p>
+</dd>
+    <dt><code>TResult2</code></dt>
+    <dd><p>The type of the second result set.</p>
+</dd>
+    <dt><code>TResult3</code></dt>
+    <dd><p>The type of the third result set.</p>
+</dd>
+    <dt><code>TResult4</code></dt>
+    <dd><p>The type of the fourth result set.</p>
+</dd>
+    <dt><code>TResult5</code></dt>
+    <dd><p>The type of the fifth result set.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_Table_ITableRepository_QueryPaginatedByAsync_" data-uid="Innovt.Cloud.Table.ITableRepository.QueryPaginatedByAsync*"></a>
+
+  <h3 id="Innovt_Cloud_Table_ITableRepository_QueryPaginatedByAsync__1_Innovt_Cloud_Table_QueryRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.Table.ITableRepository.QueryPaginatedByAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)">
+  QueryPaginatedByAsync&lt;T&gt;(QueryRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/Table/ITableRepository.cs/#L231"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously queries and retrieves a paged collection of items of type T based on the provided query request.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;PagedCollection&lt;T&gt;&gt; QueryPaginatedByAsync&lt;T&gt;(QueryRequest request, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Innovt.Cloud.Table.QueryRequest.html">QueryRequest</a></dt>
+    <dd><p>The query request specifying the query parameters.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Core.Collections.PagedCollection-1.html">PagedCollection</a>&lt;T&gt;&gt;</dt>
+    <dd><p>A paged collection of items of type T based on the query request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of items to retrieve.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_Table_ITableRepository_ScanAsync_" data-uid="Innovt.Cloud.Table.ITableRepository.ScanAsync*"></a>
+
+  <h3 id="Innovt_Cloud_Table_ITableRepository_ScanAsync__1_Innovt_Cloud_Table_ScanRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.Table.ITableRepository.ScanAsync``1(Innovt.Cloud.Table.ScanRequest,System.Threading.CancellationToken)">
+  ScanAsync&lt;T&gt;(ScanRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/Table/ITableRepository.cs/#L211"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously scans and retrieves a list of items of type T based on the provided scan request.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IList&lt;T&gt;&gt; ScanAsync&lt;T&gt;(ScanRequest request, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Innovt.Cloud.Table.ScanRequest.html">ScanRequest</a></dt>
+    <dd><p>The scan request specifying the scan parameters.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;T&gt;&gt;</dt>
+    <dd><p>A list of items of type T based on the scan request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of items to retrieve.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_Table_ITableRepository_ScanPaginatedByAsync_" data-uid="Innovt.Cloud.Table.ITableRepository.ScanPaginatedByAsync*"></a>
+
+  <h3 id="Innovt_Cloud_Table_ITableRepository_ScanPaginatedByAsync__1_Innovt_Cloud_Table_ScanRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.Table.ITableRepository.ScanPaginatedByAsync``1(Innovt.Cloud.Table.ScanRequest,System.Threading.CancellationToken)">
+  ScanPaginatedByAsync&lt;T&gt;(ScanRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/Table/ITableRepository.cs/#L221"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously scans and retrieves a paged collection of items of type T based on the provided scan request.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;PagedCollection&lt;T&gt;&gt; ScanPaginatedByAsync&lt;T&gt;(ScanRequest request, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Innovt.Cloud.Table.ScanRequest.html">ScanRequest</a></dt>
+    <dd><p>The scan request specifying the scan parameters.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Core.Collections.PagedCollection-1.html">PagedCollection</a>&lt;T&gt;&gt;</dt>
+    <dd><p>A paged collection of items of type T based on the scan request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of items to retrieve.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_Table_ITableRepository_TransactWriteItemsAsync_" data-uid="Innovt.Cloud.Table.ITableRepository.TransactWriteItemsAsync*"></a>
+
+  <h3 id="Innovt_Cloud_Table_ITableRepository_TransactWriteItemsAsync_Innovt_Cloud_Table_TransactionWriteRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.Table.ITableRepository.TransactWriteItemsAsync(Innovt.Cloud.Table.TransactionWriteRequest,System.Threading.CancellationToken)">
+  TransactWriteItemsAsync(TransactionWriteRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/Table/ITableRepository.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously performs a transactional write of items.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task TransactWriteItemsAsync(TransactionWriteRequest request, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Innovt.Cloud.Table.TransactionWriteRequest.html">TransactionWriteRequest</a></dt>
+    <dd><p>The transaction write request specifying the items to write.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A task representing the asynchronous transactional write operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_Table_ITableRepository_UpdateAsync_" data-uid="Innovt.Cloud.Table.ITableRepository.UpdateAsync*"></a>
+
+  <h3 id="Innovt_Cloud_Table_ITableRepository_UpdateAsync__1___0_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.Table.ITableRepository.UpdateAsync``1(``0,System.Threading.CancellationToken)">
+  UpdateAsync&lt;T&gt;(T, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/Table/ITableRepository.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method will perform an update operation on the table. The operation is based on the primary key and type is
+PUT.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; UpdateAsync&lt;T&gt;(T instance, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>instance</code> <span class="xref">T</span></dt>
+    <dd><p>The instance that you want to update</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The instance updated.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/Table/ITableRepository.cs/#L16" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

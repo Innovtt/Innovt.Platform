@@ -1,0 +1,1179 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+  id: ModelBuilder
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping
+  children:
+  - Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.AddConfiguration``1(Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper{``0})
+  - Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.AddPropertyConverter(System.Type,Amazon.DynamoDBv2.DataModel.IPropertyConverter)
+  - Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Converters
+  - Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Entities
+  - Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Entity``1
+  langs:
+  - csharp
+  - vb
+  name: ModelBuilder
+  nameWithType: ModelBuilder
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/ModelBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ModelBuilder
+    path: Innovt.Cloud.AWS.Dynamo/Mapping/ModelBuilder.cs
+    startLine: 8
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping
+  syntax:
+    content: public class ModelBuilder
+    content.vb: Public Class ModelBuilder
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Entities
+  commentId: P:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Entities
+  id: Entities
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+  langs:
+  - csharp
+  - vb
+  name: Entities
+  nameWithType: ModelBuilder.Entities
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Entities
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/ModelBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Entities
+    path: Innovt.Cloud.AWS.Dynamo/Mapping/ModelBuilder.cs
+    startLine: 10
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping
+  syntax:
+    content: public Dictionary<string, object> Entities { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.Object}
+    content.vb: Public ReadOnly Property Entities As Dictionary(Of String, Object)
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Entities*
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Converters
+  commentId: P:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Converters
+  id: Converters
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+  langs:
+  - csharp
+  - vb
+  name: Converters
+  nameWithType: ModelBuilder.Converters
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Converters
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/ModelBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Converters
+    path: Innovt.Cloud.AWS.Dynamo/Mapping/ModelBuilder.cs
+    startLine: 12
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping
+  syntax:
+    content: public Dictionary<Type, IPropertyConverter> Converters { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.Type,Amazon.DynamoDBv2.DataModel.IPropertyConverter}
+    content.vb: Public ReadOnly Property Converters As Dictionary(Of Type, IPropertyConverter)
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Converters*
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.AddConfiguration``1(Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper{``0})
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.AddConfiguration``1(Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper{``0})
+  id: AddConfiguration``1(Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper{``0})
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+  langs:
+  - csharp
+  - vb
+  name: AddConfiguration<T>(IEntityTypeDataModelMapper<T>)
+  nameWithType: ModelBuilder.AddConfiguration<T>(IEntityTypeDataModelMapper<T>)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.AddConfiguration<T>(Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper<T>)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/ModelBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: AddConfiguration
+    path: Innovt.Cloud.AWS.Dynamo/Mapping/ModelBuilder.cs
+    startLine: 14
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping
+  syntax:
+    content: 'public ModelBuilder AddConfiguration<T>(IEntityTypeDataModelMapper<T> entityTypeDataModelMapper) where T : class'
+    parameters:
+    - id: entityTypeDataModelMapper
+      type: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper{{T}}
+    typeParameters:
+    - id: T
+    return:
+      type: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+    content.vb: Public Function AddConfiguration(Of T As Class)(entityTypeDataModelMapper As IEntityTypeDataModelMapper(Of T)) As ModelBuilder
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.AddConfiguration*
+  nameWithType.vb: ModelBuilder.AddConfiguration(Of T)(IEntityTypeDataModelMapper(Of T))
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.AddConfiguration(Of T)(Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper(Of T))
+  name.vb: AddConfiguration(Of T)(IEntityTypeDataModelMapper(Of T))
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.AddPropertyConverter(System.Type,Amazon.DynamoDBv2.DataModel.IPropertyConverter)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.AddPropertyConverter(System.Type,Amazon.DynamoDBv2.DataModel.IPropertyConverter)
+  id: AddPropertyConverter(System.Type,Amazon.DynamoDBv2.DataModel.IPropertyConverter)
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+  langs:
+  - csharp
+  - vb
+  name: AddPropertyConverter(Type, IPropertyConverter)
+  nameWithType: ModelBuilder.AddPropertyConverter(Type, IPropertyConverter)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.AddPropertyConverter(System.Type, Amazon.DynamoDBv2.DataModel.IPropertyConverter)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/ModelBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: AddPropertyConverter
+    path: Innovt.Cloud.AWS.Dynamo/Mapping/ModelBuilder.cs
+    startLine: 28
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping
+  syntax:
+    content: public ModelBuilder AddPropertyConverter(Type type, IPropertyConverter converter)
+    parameters:
+    - id: type
+      type: System.Type
+    - id: converter
+      type: Amazon.DynamoDBv2.DataModel.IPropertyConverter
+    return:
+      type: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+    content.vb: Public Function AddPropertyConverter(type As Type, converter As IPropertyConverter) As ModelBuilder
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.AddPropertyConverter*
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Entity``1
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Entity``1
+  id: Entity``1
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+  langs:
+  - csharp
+  - vb
+  name: Entity<TEntity>()
+  nameWithType: ModelBuilder.Entity<TEntity>()
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Entity<TEntity>()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/ModelBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Entity
+    path: Innovt.Cloud.AWS.Dynamo/Mapping/ModelBuilder.cs
+    startLine: 38
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping
+  syntax:
+    content: 'public EntityTypeBuilder<TEntity> Entity<TEntity>() where TEntity : class'
+    typeParameters:
+    - id: TEntity
+    return:
+      type: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder{{TEntity}}
+    content.vb: Public Function Entity(Of TEntity As Class)() As EntityTypeBuilder(Of TEntity)
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Entity*
+  nameWithType.vb: ModelBuilder.Entity(Of TEntity)()
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Entity(Of TEntity)()
+  name.vb: Entity(Of TEntity)()
+references:
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping
+  commentId: N:Innovt.Cloud.AWS.Dynamo.Mapping
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Dynamo.Mapping
+  nameWithType: Innovt.Cloud.AWS.Dynamo.Mapping
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo
+    name: Dynamo
+    href: Innovt.Cloud.AWS.Dynamo.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping
+    name: Mapping
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo
+    name: Dynamo
+    href: Innovt.Cloud.AWS.Dynamo.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping
+    name: Mapping
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Entities*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Entities
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.html#Innovt_Cloud_AWS_Dynamo_Mapping_ModelBuilder_Entities
+  name: Entities
+  nameWithType: ModelBuilder.Entities
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Entities
+- uid: System.Collections.Generic.Dictionary{System.String,System.Object}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Object}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, object>
+  nameWithType: Dictionary<string, object>
+  fullName: System.Collections.Generic.Dictionary<string, object>
+  nameWithType.vb: Dictionary(Of String, Object)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Object)
+  name.vb: Dictionary(Of String, Object)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Converters*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Converters
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.html#Innovt_Cloud_AWS_Dynamo_Mapping_ModelBuilder_Converters
+  name: Converters
+  nameWithType: ModelBuilder.Converters
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Converters
+- uid: System.Collections.Generic.Dictionary{System.Type,Amazon.DynamoDBv2.DataModel.IPropertyConverter}
+  commentId: T:System.Collections.Generic.Dictionary{System.Type,Amazon.DynamoDBv2.DataModel.IPropertyConverter}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<Type, IPropertyConverter>
+  nameWithType: Dictionary<Type, IPropertyConverter>
+  fullName: System.Collections.Generic.Dictionary<System.Type, Amazon.DynamoDBv2.DataModel.IPropertyConverter>
+  nameWithType.vb: Dictionary(Of Type, IPropertyConverter)
+  fullName.vb: System.Collections.Generic.Dictionary(Of System.Type, Amazon.DynamoDBv2.DataModel.IPropertyConverter)
+  name.vb: Dictionary(Of Type, IPropertyConverter)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: Amazon.DynamoDBv2.DataModel.IPropertyConverter
+    name: IPropertyConverter
+    isExternal: true
+    href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: Amazon.DynamoDBv2.DataModel.IPropertyConverter
+    name: IPropertyConverter
+    isExternal: true
+    href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.AddConfiguration*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.AddConfiguration
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.html#Innovt_Cloud_AWS_Dynamo_Mapping_ModelBuilder_AddConfiguration__1_Innovt_Cloud_AWS_Dynamo_Mapping_IEntityTypeDataModelMapper___0__
+  name: AddConfiguration
+  nameWithType: ModelBuilder.AddConfiguration
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.AddConfiguration
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper{{T}}
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper{``0}
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping
+  definition: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper`1
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper-1.html
+  name: IEntityTypeDataModelMapper<T>
+  nameWithType: IEntityTypeDataModelMapper<T>
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper<T>
+  nameWithType.vb: IEntityTypeDataModelMapper(Of T)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper(Of T)
+  name.vb: IEntityTypeDataModelMapper(Of T)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper`1
+    name: IEntityTypeDataModelMapper
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper`1
+    name: IEntityTypeDataModelMapper
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.html
+  name: ModelBuilder
+  nameWithType: ModelBuilder
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper`1
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper`1
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper-1.html
+  name: IEntityTypeDataModelMapper<T>
+  nameWithType: IEntityTypeDataModelMapper<T>
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper<T>
+  nameWithType.vb: IEntityTypeDataModelMapper(Of T)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper(Of T)
+  name.vb: IEntityTypeDataModelMapper(Of T)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper`1
+    name: IEntityTypeDataModelMapper
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper`1
+    name: IEntityTypeDataModelMapper
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.AddPropertyConverter*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.AddPropertyConverter
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.html#Innovt_Cloud_AWS_Dynamo_Mapping_ModelBuilder_AddPropertyConverter_System_Type_Amazon_DynamoDBv2_DataModel_IPropertyConverter_
+  name: AddPropertyConverter
+  nameWithType: ModelBuilder.AddPropertyConverter
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.AddPropertyConverter
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: Amazon.DynamoDBv2.DataModel.IPropertyConverter
+  commentId: T:Amazon.DynamoDBv2.DataModel.IPropertyConverter
+  parent: Amazon.DynamoDBv2.DataModel
+  isExternal: true
+  href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
+  name: IPropertyConverter
+  nameWithType: IPropertyConverter
+  fullName: Amazon.DynamoDBv2.DataModel.IPropertyConverter
+- uid: Amazon.DynamoDBv2.DataModel
+  commentId: N:Amazon.DynamoDBv2.DataModel
+  isExternal: true
+  name: Amazon.DynamoDBv2.DataModel
+  nameWithType: Amazon.DynamoDBv2.DataModel
+  fullName: Amazon.DynamoDBv2.DataModel
+  spec.csharp:
+  - uid: Amazon
+    name: Amazon
+    isExternal: true
+  - name: .
+  - uid: Amazon.DynamoDBv2
+    name: DynamoDBv2
+    isExternal: true
+  - name: .
+  - uid: Amazon.DynamoDBv2.DataModel
+    name: DataModel
+    isExternal: true
+  spec.vb:
+  - uid: Amazon
+    name: Amazon
+    isExternal: true
+  - name: .
+  - uid: Amazon.DynamoDBv2
+    name: DynamoDBv2
+    isExternal: true
+  - name: .
+  - uid: Amazon.DynamoDBv2.DataModel
+    name: DataModel
+    isExternal: true
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Entity*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Entity
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.html#Innovt_Cloud_AWS_Dynamo_Mapping_ModelBuilder_Entity__1
+  name: Entity
+  nameWithType: ModelBuilder.Entity
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Entity
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder{{TEntity}}
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder{``0}
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  definition: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html
+  name: EntityTypeBuilder<TEntity>
+  nameWithType: EntityTypeBuilder<TEntity>
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>
+  nameWithType.vb: EntityTypeBuilder(Of TEntity)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity)
+  name.vb: EntityTypeBuilder(Of TEntity)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+    name: EntityTypeBuilder
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html
+  - name: <
+  - name: TEntity
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+    name: EntityTypeBuilder
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html
+  name: EntityTypeBuilder<TEntity>
+  nameWithType: EntityTypeBuilder<TEntity>
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>
+  nameWithType.vb: EntityTypeBuilder(Of TEntity)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity)
+  name.vb: EntityTypeBuilder(Of TEntity)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+    name: EntityTypeBuilder
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html
+  - name: <
+  - name: TEntity
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+    name: EntityTypeBuilder
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  commentId: N:Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  nameWithType: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo
+    name: Dynamo
+    href: Innovt.Cloud.AWS.Dynamo.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping
+    name: Mapping
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+    name: Builder
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo
+    name: Dynamo
+    href: Innovt.Cloud.AWS.Dynamo.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping
+    name: Mapping
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+    name: Builder
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.html

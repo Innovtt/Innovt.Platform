@@ -1,0 +1,1552 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Core.Exceptions.BusinessException
+  commentId: T:Innovt.Core.Exceptions.BusinessException
+  id: BusinessException
+  parent: Innovt.Core.Exceptions
+  children:
+  - Innovt.Core.Exceptions.BusinessException.#ctor
+  - Innovt.Core.Exceptions.BusinessException.#ctor(Innovt.Core.Exceptions.ErrorMessage)
+  - Innovt.Core.Exceptions.BusinessException.#ctor(Innovt.Core.Exceptions.ErrorMessage[])
+  - Innovt.Core.Exceptions.BusinessException.#ctor(System.Collections.Generic.IList{Innovt.Core.Exceptions.ErrorMessage})
+  - Innovt.Core.Exceptions.BusinessException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - Innovt.Core.Exceptions.BusinessException.#ctor(System.String)
+  - Innovt.Core.Exceptions.BusinessException.#ctor(System.String,System.Exception)
+  - Innovt.Core.Exceptions.BusinessException.#ctor(System.String,System.String)
+  - Innovt.Core.Exceptions.BusinessException.#ctor(System.String,System.String,System.Exception)
+  - Innovt.Core.Exceptions.BusinessException.Code
+  - Innovt.Core.Exceptions.BusinessException.Detail
+  - Innovt.Core.Exceptions.BusinessException.Errors
+  - Innovt.Core.Exceptions.BusinessException.ReadFullErrors
+  langs:
+  - csharp
+  - vb
+  name: BusinessException
+  nameWithType: BusinessException
+  fullName: Innovt.Core.Exceptions.BusinessException
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Core/Exceptions/BusinessException.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: BusinessException
+    path: Innovt.Core/Exceptions/BusinessException.cs
+    startLine: 11
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Exceptions
+  syntax:
+    content: >-
+      [Serializable]
+
+      public class BusinessException : BaseException, ISerializable
+    content.vb: >-
+      <Serializable>
+
+      Public Class BusinessException Inherits BaseException Implements ISerializable
+  inheritance:
+  - System.Object
+  - System.Exception
+  - Innovt.Core.Exceptions.BaseException
+  derivedClasses:
+  - Innovt.Cloud.AWS.Cognito.Exceptions.CodeMismatchException
+  - Innovt.Cloud.AWS.Cognito.Exceptions.ExpiredCodeException
+  - Innovt.Cloud.AWS.Cognito.Exceptions.InvalidPasswordException
+  - Innovt.Cloud.AWS.Cognito.Exceptions.PasswordResetRequiredException
+  - Innovt.Cloud.AWS.Cognito.Exceptions.UserNameAlreadyExistsException
+  - Innovt.Cloud.AWS.Cognito.Exceptions.UserNotAuthorizedException
+  - Innovt.Cloud.AWS.Cognito.Exceptions.UserNotConfirmedException
+  - Innovt.Cloud.AWS.Cognito.Exceptions.UserNotFoundException
+  implements:
+  - System.Runtime.Serialization.ISerializable
+  inheritedMembers:
+  - System.Exception.GetBaseException
+  - System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - System.Exception.GetType
+  - System.Exception.ToString
+  - System.Exception.Data
+  - System.Exception.HelpLink
+  - System.Exception.HResult
+  - System.Exception.InnerException
+  - System.Exception.Message
+  - System.Exception.Source
+  - System.Exception.StackTrace
+  - System.Exception.TargetSite
+  - System.Exception.SerializeObjectState
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: Innovt.Core.Exceptions.BusinessException.#ctor(System.String)
+  commentId: M:Innovt.Core.Exceptions.BusinessException.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: Innovt.Core.Exceptions.BusinessException
+  langs:
+  - csharp
+  - vb
+  name: BusinessException(string)
+  nameWithType: BusinessException.BusinessException(string)
+  fullName: Innovt.Core.Exceptions.BusinessException.BusinessException(string)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Core/Exceptions/BusinessException.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: Innovt.Core/Exceptions/BusinessException.cs
+    startLine: 23
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Exceptions
+  summary: Initializes a new instance of the <xref href="Innovt.Core.Exceptions.BusinessException" data-throw-if-not-resolved="false"></xref> class with a specified error message.
+  example: []
+  syntax:
+    content: public BusinessException(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: The error message that explains the reason for the exception.
+    content.vb: Public Sub New(message As String)
+  overload: Innovt.Core.Exceptions.BusinessException.#ctor*
+  nameWithType.vb: BusinessException.New(String)
+  fullName.vb: Innovt.Core.Exceptions.BusinessException.New(String)
+  name.vb: New(String)
+- uid: Innovt.Core.Exceptions.BusinessException.#ctor(System.String,System.Exception)
+  commentId: M:Innovt.Core.Exceptions.BusinessException.#ctor(System.String,System.Exception)
+  id: '#ctor(System.String,System.Exception)'
+  parent: Innovt.Core.Exceptions.BusinessException
+  langs:
+  - csharp
+  - vb
+  name: BusinessException(string, Exception)
+  nameWithType: BusinessException.BusinessException(string, Exception)
+  fullName: Innovt.Core.Exceptions.BusinessException.BusinessException(string, System.Exception)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Core/Exceptions/BusinessException.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: Innovt.Core/Exceptions/BusinessException.cs
+    startLine: 36
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Exceptions
+  summary: >-
+    Initializes a new instance of the <xref href="Innovt.Core.Exceptions.BusinessException" data-throw-if-not-resolved="false"></xref> class with a specified error message
+
+    and a reference to the inner exception that is the cause of this exception.
+  example: []
+  syntax:
+    content: public BusinessException(string message, Exception ex)
+    parameters:
+    - id: message
+      type: System.String
+      description: The error message that explains the reason for the exception.
+    - id: ex
+      type: System.Exception
+      description: >-
+        The exception that is the cause of the current exception, or a null reference if no inner exception is
+
+        specified.
+    content.vb: Public Sub New(message As String, ex As Exception)
+  overload: Innovt.Core.Exceptions.BusinessException.#ctor*
+  nameWithType.vb: BusinessException.New(String, Exception)
+  fullName.vb: Innovt.Core.Exceptions.BusinessException.New(String, System.Exception)
+  name.vb: New(String, Exception)
+- uid: Innovt.Core.Exceptions.BusinessException.#ctor(System.String,System.String)
+  commentId: M:Innovt.Core.Exceptions.BusinessException.#ctor(System.String,System.String)
+  id: '#ctor(System.String,System.String)'
+  parent: Innovt.Core.Exceptions.BusinessException
+  langs:
+  - csharp
+  - vb
+  name: BusinessException(string, string)
+  nameWithType: BusinessException.BusinessException(string, string)
+  fullName: Innovt.Core.Exceptions.BusinessException.BusinessException(string, string)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Core/Exceptions/BusinessException.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: Innovt.Core/Exceptions/BusinessException.cs
+    startLine: 45
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Exceptions
+  summary: Initializes a new instance of the <xref href="Innovt.Core.Exceptions.BusinessException" data-throw-if-not-resolved="false"></xref> class with a code and a specified error message.
+  example: []
+  syntax:
+    content: public BusinessException(string code, string message)
+    parameters:
+    - id: code
+      type: System.String
+      description: A code associated with the exception.
+    - id: message
+      type: System.String
+      description: The error message that explains the reason for the exception.
+    content.vb: Public Sub New(code As String, message As String)
+  overload: Innovt.Core.Exceptions.BusinessException.#ctor*
+  nameWithType.vb: BusinessException.New(String, String)
+  fullName.vb: Innovt.Core.Exceptions.BusinessException.New(String, String)
+  name.vb: New(String, String)
+- uid: Innovt.Core.Exceptions.BusinessException.#ctor(System.String,System.String,System.Exception)
+  commentId: M:Innovt.Core.Exceptions.BusinessException.#ctor(System.String,System.String,System.Exception)
+  id: '#ctor(System.String,System.String,System.Exception)'
+  parent: Innovt.Core.Exceptions.BusinessException
+  langs:
+  - csharp
+  - vb
+  name: BusinessException(string, string, Exception)
+  nameWithType: BusinessException.BusinessException(string, string, Exception)
+  fullName: Innovt.Core.Exceptions.BusinessException.BusinessException(string, string, System.Exception)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Core/Exceptions/BusinessException.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: Innovt.Core/Exceptions/BusinessException.cs
+    startLine: 60
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Exceptions
+  summary: >-
+    Initializes a new instance of the <xref href="Innovt.Core.Exceptions.BusinessException" data-throw-if-not-resolved="false"></xref> class with a code, a specified error message,
+
+    and a reference to the inner exception that is the cause of this exception.
+  example: []
+  syntax:
+    content: public BusinessException(string code, string message, Exception ex)
+    parameters:
+    - id: code
+      type: System.String
+      description: A code associated with the exception.
+    - id: message
+      type: System.String
+      description: The error message that explains the reason for the exception.
+    - id: ex
+      type: System.Exception
+      description: >-
+        The exception that is the cause of the current exception, or a null reference if no inner exception is
+
+        specified.
+    content.vb: Public Sub New(code As String, message As String, ex As Exception)
+  overload: Innovt.Core.Exceptions.BusinessException.#ctor*
+  nameWithType.vb: BusinessException.New(String, String, Exception)
+  fullName.vb: Innovt.Core.Exceptions.BusinessException.New(String, String, System.Exception)
+  name.vb: New(String, String, Exception)
+- uid: Innovt.Core.Exceptions.BusinessException.#ctor(System.Collections.Generic.IList{Innovt.Core.Exceptions.ErrorMessage})
+  commentId: M:Innovt.Core.Exceptions.BusinessException.#ctor(System.Collections.Generic.IList{Innovt.Core.Exceptions.ErrorMessage})
+  id: '#ctor(System.Collections.Generic.IList{Innovt.Core.Exceptions.ErrorMessage})'
+  parent: Innovt.Core.Exceptions.BusinessException
+  langs:
+  - csharp
+  - vb
+  name: BusinessException(IList<ErrorMessage>)
+  nameWithType: BusinessException.BusinessException(IList<ErrorMessage>)
+  fullName: Innovt.Core.Exceptions.BusinessException.BusinessException(System.Collections.Generic.IList<Innovt.Core.Exceptions.ErrorMessage>)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Core/Exceptions/BusinessException.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: Innovt.Core/Exceptions/BusinessException.cs
+    startLine: 69
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Exceptions
+  summary: Initializes a new instance of the <xref href="Innovt.Core.Exceptions.BusinessException" data-throw-if-not-resolved="false"></xref> class with a list of validation errors.
+  example: []
+  syntax:
+    content: public BusinessException(IList<ErrorMessage> errors)
+    parameters:
+    - id: errors
+      type: System.Collections.Generic.IList{Innovt.Core.Exceptions.ErrorMessage}
+      description: A list of validation error messages.
+    content.vb: Public Sub New(errors As IList(Of ErrorMessage))
+  overload: Innovt.Core.Exceptions.BusinessException.#ctor*
+  nameWithType.vb: BusinessException.New(IList(Of ErrorMessage))
+  fullName.vb: Innovt.Core.Exceptions.BusinessException.New(System.Collections.Generic.IList(Of Innovt.Core.Exceptions.ErrorMessage))
+  name.vb: New(IList(Of ErrorMessage))
+- uid: Innovt.Core.Exceptions.BusinessException.#ctor(Innovt.Core.Exceptions.ErrorMessage[])
+  commentId: M:Innovt.Core.Exceptions.BusinessException.#ctor(Innovt.Core.Exceptions.ErrorMessage[])
+  id: '#ctor(Innovt.Core.Exceptions.ErrorMessage[])'
+  parent: Innovt.Core.Exceptions.BusinessException
+  langs:
+  - csharp
+  - vb
+  name: BusinessException(ErrorMessage[])
+  nameWithType: BusinessException.BusinessException(ErrorMessage[])
+  fullName: Innovt.Core.Exceptions.BusinessException.BusinessException(Innovt.Core.Exceptions.ErrorMessage[])
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Core/Exceptions/BusinessException.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: Innovt.Core/Exceptions/BusinessException.cs
+    startLine: 78
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Exceptions
+  summary: Initializes a new instance of the <xref href="Innovt.Core.Exceptions.BusinessException" data-throw-if-not-resolved="false"></xref> class with an array of validation errors.
+  example: []
+  syntax:
+    content: public BusinessException(ErrorMessage[] errors)
+    parameters:
+    - id: errors
+      type: Innovt.Core.Exceptions.ErrorMessage[]
+      description: An array of validation error messages.
+    content.vb: Public Sub New(errors As ErrorMessage())
+  overload: Innovt.Core.Exceptions.BusinessException.#ctor*
+  nameWithType.vb: BusinessException.New(ErrorMessage())
+  fullName.vb: Innovt.Core.Exceptions.BusinessException.New(Innovt.Core.Exceptions.ErrorMessage())
+  name.vb: New(ErrorMessage())
+- uid: Innovt.Core.Exceptions.BusinessException.#ctor(Innovt.Core.Exceptions.ErrorMessage)
+  commentId: M:Innovt.Core.Exceptions.BusinessException.#ctor(Innovt.Core.Exceptions.ErrorMessage)
+  id: '#ctor(Innovt.Core.Exceptions.ErrorMessage)'
+  parent: Innovt.Core.Exceptions.BusinessException
+  langs:
+  - csharp
+  - vb
+  name: BusinessException(ErrorMessage)
+  nameWithType: BusinessException.BusinessException(ErrorMessage)
+  fullName: Innovt.Core.Exceptions.BusinessException.BusinessException(Innovt.Core.Exceptions.ErrorMessage)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Core/Exceptions/BusinessException.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: Innovt.Core/Exceptions/BusinessException.cs
+    startLine: 87
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Exceptions
+  summary: Initializes a new instance of the <xref href="Innovt.Core.Exceptions.BusinessException" data-throw-if-not-resolved="false"></xref> class with a single validation error.
+  example: []
+  syntax:
+    content: public BusinessException(ErrorMessage error)
+    parameters:
+    - id: error
+      type: Innovt.Core.Exceptions.ErrorMessage
+      description: A single validation error message.
+    content.vb: Public Sub New([error] As ErrorMessage)
+  overload: Innovt.Core.Exceptions.BusinessException.#ctor*
+  nameWithType.vb: BusinessException.New(ErrorMessage)
+  fullName.vb: Innovt.Core.Exceptions.BusinessException.New(Innovt.Core.Exceptions.ErrorMessage)
+  name.vb: New(ErrorMessage)
+- uid: Innovt.Core.Exceptions.BusinessException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  commentId: M:Innovt.Core.Exceptions.BusinessException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  id: '#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)'
+  parent: Innovt.Core.Exceptions.BusinessException
+  langs:
+  - csharp
+  - vb
+  name: BusinessException(SerializationInfo, StreamingContext)
+  nameWithType: BusinessException.BusinessException(SerializationInfo, StreamingContext)
+  fullName: Innovt.Core.Exceptions.BusinessException.BusinessException(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Core/Exceptions/BusinessException.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: Innovt.Core/Exceptions/BusinessException.cs
+    startLine: 102
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Exceptions
+  summary: Initializes a new instance of the <xref href="Innovt.Core.Exceptions.BusinessException" data-throw-if-not-resolved="false"></xref> class with serialized data.
+  example: []
+  syntax:
+    content: protected BusinessException(SerializationInfo serializationInfo, StreamingContext streamingContext)
+    parameters:
+    - id: serializationInfo
+      type: System.Runtime.Serialization.SerializationInfo
+      description: >-
+        The <xref href="System.Runtime.Serialization.SerializationInfo" data-throw-if-not-resolved="false"></xref> that holds the
+
+        serialized object data about the exception being thrown.
+    - id: streamingContext
+      type: System.Runtime.Serialization.StreamingContext
+      description: >-
+        The <xref href="System.Runtime.Serialization.StreamingContext" data-throw-if-not-resolved="false"></xref> that contains
+
+        contextual information about the source or destination.
+    content.vb: Protected Sub New(serializationInfo As SerializationInfo, streamingContext As StreamingContext)
+  overload: Innovt.Core.Exceptions.BusinessException.#ctor*
+  nameWithType.vb: BusinessException.New(SerializationInfo, StreamingContext)
+  fullName.vb: Innovt.Core.Exceptions.BusinessException.New(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  name.vb: New(SerializationInfo, StreamingContext)
+- uid: Innovt.Core.Exceptions.BusinessException.#ctor
+  commentId: M:Innovt.Core.Exceptions.BusinessException.#ctor
+  id: '#ctor'
+  parent: Innovt.Core.Exceptions.BusinessException
+  langs:
+  - csharp
+  - vb
+  name: BusinessException()
+  nameWithType: BusinessException.BusinessException()
+  fullName: Innovt.Core.Exceptions.BusinessException.BusinessException()
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Core/Exceptions/BusinessException.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: Innovt.Core/Exceptions/BusinessException.cs
+    startLine: 111
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Exceptions
+  summary: Initializes a new instance of the <xref href="Innovt.Core.Exceptions.BusinessException" data-throw-if-not-resolved="false"></xref> class with no specified error message.
+  example: []
+  syntax:
+    content: public BusinessException()
+    content.vb: Public Sub New()
+  overload: Innovt.Core.Exceptions.BusinessException.#ctor*
+  nameWithType.vb: BusinessException.New()
+  fullName.vb: Innovt.Core.Exceptions.BusinessException.New()
+  name.vb: New()
+- uid: Innovt.Core.Exceptions.BusinessException.Code
+  commentId: P:Innovt.Core.Exceptions.BusinessException.Code
+  id: Code
+  parent: Innovt.Core.Exceptions.BusinessException
+  langs:
+  - csharp
+  - vb
+  name: Code
+  nameWithType: BusinessException.Code
+  fullName: Innovt.Core.Exceptions.BusinessException.Code
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Core/Exceptions/BusinessException.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Code
+    path: Innovt.Core/Exceptions/BusinessException.cs
+    startLine: 118
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Exceptions
+  summary: Gets or sets a code associated with the exception.
+  example: []
+  syntax:
+    content: public string Code { get; protected set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Code As String
+  overload: Innovt.Core.Exceptions.BusinessException.Code*
+- uid: Innovt.Core.Exceptions.BusinessException.Errors
+  commentId: P:Innovt.Core.Exceptions.BusinessException.Errors
+  id: Errors
+  parent: Innovt.Core.Exceptions.BusinessException
+  langs:
+  - csharp
+  - vb
+  name: Errors
+  nameWithType: BusinessException.Errors
+  fullName: Innovt.Core.Exceptions.BusinessException.Errors
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Core/Exceptions/BusinessException.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Errors
+    path: Innovt.Core/Exceptions/BusinessException.cs
+    startLine: 123
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Exceptions
+  summary: Gets or sets a list of validation error messages.
+  example: []
+  syntax:
+    content: public IEnumerable<ErrorMessage> Errors { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IEnumerable{Innovt.Core.Exceptions.ErrorMessage}
+    content.vb: Public Property Errors As IEnumerable(Of ErrorMessage)
+  overload: Innovt.Core.Exceptions.BusinessException.Errors*
+- uid: Innovt.Core.Exceptions.BusinessException.Detail
+  commentId: P:Innovt.Core.Exceptions.BusinessException.Detail
+  id: Detail
+  parent: Innovt.Core.Exceptions.BusinessException
+  langs:
+  - csharp
+  - vb
+  name: Detail
+  nameWithType: BusinessException.Detail
+  fullName: Innovt.Core.Exceptions.BusinessException.Detail
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Core/Exceptions/BusinessException.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Detail
+    path: Innovt.Core/Exceptions/BusinessException.cs
+    startLine: 128
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Exceptions
+  summary: Gets the detail information associated with the exception.
+  example: []
+  syntax:
+    content: public object Detail { get; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Public ReadOnly Property Detail As Object
+  overload: Innovt.Core.Exceptions.BusinessException.Detail*
+- uid: Innovt.Core.Exceptions.BusinessException.ReadFullErrors
+  commentId: M:Innovt.Core.Exceptions.BusinessException.ReadFullErrors
+  id: ReadFullErrors
+  parent: Innovt.Core.Exceptions.BusinessException
+  langs:
+  - csharp
+  - vb
+  name: ReadFullErrors()
+  nameWithType: BusinessException.ReadFullErrors()
+  fullName: Innovt.Core.Exceptions.BusinessException.ReadFullErrors()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/Exceptions/BusinessException.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ReadFullErrors
+    path: Innovt.Core/Exceptions/BusinessException.cs
+    startLine: 134
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Exceptions
+  summary: Reads the full validation error messages.
+  example: []
+  syntax:
+    content: public string ReadFullErrors()
+    return:
+      type: System.String
+      description: A concatenated string of validation error messages.
+    content.vb: Public Function ReadFullErrors() As String
+  overload: Innovt.Core.Exceptions.BusinessException.ReadFullErrors*
+references:
+- uid: Innovt.Core.Exceptions
+  commentId: N:Innovt.Core.Exceptions
+  href: Innovt.html
+  name: Innovt.Core.Exceptions
+  nameWithType: Innovt.Core.Exceptions
+  fullName: Innovt.Core.Exceptions
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Exceptions
+    name: Exceptions
+    href: Innovt.Core.Exceptions.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Exceptions
+    name: Exceptions
+    href: Innovt.Core.Exceptions.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: Innovt.Core.Exceptions.BaseException
+  commentId: T:Innovt.Core.Exceptions.BaseException
+  parent: Innovt.Core.Exceptions
+  href: Innovt.Core.Exceptions.BaseException.html
+  name: BaseException
+  nameWithType: BaseException
+  fullName: Innovt.Core.Exceptions.BaseException
+- uid: System.Runtime.Serialization.ISerializable
+  commentId: T:System.Runtime.Serialization.ISerializable
+  parent: System.Runtime.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.iserializable
+  name: ISerializable
+  nameWithType: ISerializable
+  fullName: System.Runtime.Serialization.ISerializable
+- uid: System.Exception.GetBaseException
+  commentId: M:System.Exception.GetBaseException
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.getbaseexception
+  name: GetBaseException()
+  nameWithType: Exception.GetBaseException()
+  fullName: System.Exception.GetBaseException()
+  spec.csharp:
+  - uid: System.Exception.GetBaseException
+    name: GetBaseException
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.getbaseexception
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Exception.GetBaseException
+    name: GetBaseException
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.getbaseexception
+  - name: (
+  - name: )
+- uid: System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  commentId: M:System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.getobjectdata
+  name: GetObjectData(SerializationInfo, StreamingContext)
+  nameWithType: Exception.GetObjectData(SerializationInfo, StreamingContext)
+  fullName: System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  spec.csharp:
+  - uid: System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+    name: GetObjectData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.getobjectdata
+  - name: (
+  - uid: System.Runtime.Serialization.SerializationInfo
+    name: SerializationInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.serializationinfo
+  - name: ','
+  - name: " "
+  - uid: System.Runtime.Serialization.StreamingContext
+    name: StreamingContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.streamingcontext
+  - name: )
+  spec.vb:
+  - uid: System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+    name: GetObjectData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.getobjectdata
+  - name: (
+  - uid: System.Runtime.Serialization.SerializationInfo
+    name: SerializationInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.serializationinfo
+  - name: ','
+  - name: " "
+  - uid: System.Runtime.Serialization.StreamingContext
+    name: StreamingContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.streamingcontext
+  - name: )
+- uid: System.Exception.GetType
+  commentId: M:System.Exception.GetType
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.gettype
+  name: GetType()
+  nameWithType: Exception.GetType()
+  fullName: System.Exception.GetType()
+  spec.csharp:
+  - uid: System.Exception.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Exception.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.gettype
+  - name: (
+  - name: )
+- uid: System.Exception.ToString
+  commentId: M:System.Exception.ToString
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.tostring
+  name: ToString()
+  nameWithType: Exception.ToString()
+  fullName: System.Exception.ToString()
+  spec.csharp:
+  - uid: System.Exception.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Exception.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.tostring
+  - name: (
+  - name: )
+- uid: System.Exception.Data
+  commentId: P:System.Exception.Data
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.data
+  name: Data
+  nameWithType: Exception.Data
+  fullName: System.Exception.Data
+- uid: System.Exception.HelpLink
+  commentId: P:System.Exception.HelpLink
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.helplink
+  name: HelpLink
+  nameWithType: Exception.HelpLink
+  fullName: System.Exception.HelpLink
+- uid: System.Exception.HResult
+  commentId: P:System.Exception.HResult
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.hresult
+  name: HResult
+  nameWithType: Exception.HResult
+  fullName: System.Exception.HResult
+- uid: System.Exception.InnerException
+  commentId: P:System.Exception.InnerException
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.innerexception
+  name: InnerException
+  nameWithType: Exception.InnerException
+  fullName: System.Exception.InnerException
+- uid: System.Exception.Message
+  commentId: P:System.Exception.Message
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.message
+  name: Message
+  nameWithType: Exception.Message
+  fullName: System.Exception.Message
+- uid: System.Exception.Source
+  commentId: P:System.Exception.Source
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.source
+  name: Source
+  nameWithType: Exception.Source
+  fullName: System.Exception.Source
+- uid: System.Exception.StackTrace
+  commentId: P:System.Exception.StackTrace
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.stacktrace
+  name: StackTrace
+  nameWithType: Exception.StackTrace
+  fullName: System.Exception.StackTrace
+- uid: System.Exception.TargetSite
+  commentId: P:System.Exception.TargetSite
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.targetsite
+  name: TargetSite
+  nameWithType: Exception.TargetSite
+  fullName: System.Exception.TargetSite
+- uid: System.Exception.SerializeObjectState
+  commentId: E:System.Exception.SerializeObjectState
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.serializeobjectstate
+  name: SerializeObjectState
+  nameWithType: Exception.SerializeObjectState
+  fullName: System.Exception.SerializeObjectState
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Runtime.Serialization
+  commentId: N:System.Runtime.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Runtime.Serialization
+  nameWithType: System.Runtime.Serialization
+  fullName: System.Runtime.Serialization
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Runtime
+    name: Runtime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime
+  - name: .
+  - uid: System.Runtime.Serialization
+    name: Serialization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Runtime
+    name: Runtime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime
+  - name: .
+  - uid: System.Runtime.Serialization
+    name: Serialization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Core.Exceptions.BusinessException
+  commentId: T:Innovt.Core.Exceptions.BusinessException
+  parent: Innovt.Core.Exceptions
+  href: Innovt.Core.Exceptions.BusinessException.html
+  name: BusinessException
+  nameWithType: BusinessException
+  fullName: Innovt.Core.Exceptions.BusinessException
+- uid: Innovt.Core.Exceptions.BusinessException.#ctor*
+  commentId: Overload:Innovt.Core.Exceptions.BusinessException.#ctor
+  href: Innovt.Core.Exceptions.BusinessException.html#Innovt_Core_Exceptions_BusinessException__ctor_System_String_
+  name: BusinessException
+  nameWithType: BusinessException.BusinessException
+  fullName: Innovt.Core.Exceptions.BusinessException.BusinessException
+  nameWithType.vb: BusinessException.New
+  fullName.vb: Innovt.Core.Exceptions.BusinessException.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Collections.Generic.IList{Innovt.Core.Exceptions.ErrorMessage}
+  commentId: T:System.Collections.Generic.IList{Innovt.Core.Exceptions.ErrorMessage}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<ErrorMessage>
+  nameWithType: IList<ErrorMessage>
+  fullName: System.Collections.Generic.IList<Innovt.Core.Exceptions.ErrorMessage>
+  nameWithType.vb: IList(Of ErrorMessage)
+  fullName.vb: System.Collections.Generic.IList(Of Innovt.Core.Exceptions.ErrorMessage)
+  name.vb: IList(Of ErrorMessage)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: Innovt.Core.Exceptions.ErrorMessage
+    name: ErrorMessage
+    href: Innovt.Core.Exceptions.ErrorMessage.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Core.Exceptions.ErrorMessage
+    name: ErrorMessage
+    href: Innovt.Core.Exceptions.ErrorMessage.html
+  - name: )
+- uid: System.Collections.Generic.IList`1
+  commentId: T:System.Collections.Generic.IList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<T>
+  nameWithType: IList<T>
+  fullName: System.Collections.Generic.IList<T>
+  nameWithType.vb: IList(Of T)
+  fullName.vb: System.Collections.Generic.IList(Of T)
+  name.vb: IList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Innovt.Core.Exceptions.ErrorMessage[]
+  isExternal: true
+  href: Innovt.Core.Exceptions.ErrorMessage.html
+  name: ErrorMessage[]
+  nameWithType: ErrorMessage[]
+  fullName: Innovt.Core.Exceptions.ErrorMessage[]
+  nameWithType.vb: ErrorMessage()
+  fullName.vb: Innovt.Core.Exceptions.ErrorMessage()
+  name.vb: ErrorMessage()
+  spec.csharp:
+  - uid: Innovt.Core.Exceptions.ErrorMessage
+    name: ErrorMessage
+    href: Innovt.Core.Exceptions.ErrorMessage.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Innovt.Core.Exceptions.ErrorMessage
+    name: ErrorMessage
+    href: Innovt.Core.Exceptions.ErrorMessage.html
+  - name: (
+  - name: )
+- uid: Innovt.Core.Exceptions.ErrorMessage
+  commentId: T:Innovt.Core.Exceptions.ErrorMessage
+  parent: Innovt.Core.Exceptions
+  href: Innovt.Core.Exceptions.ErrorMessage.html
+  name: ErrorMessage
+  nameWithType: ErrorMessage
+  fullName: Innovt.Core.Exceptions.ErrorMessage
+- uid: System.Runtime.Serialization.SerializationInfo
+  commentId: T:System.Runtime.Serialization.SerializationInfo
+  parent: System.Runtime.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.serializationinfo
+  name: SerializationInfo
+  nameWithType: SerializationInfo
+  fullName: System.Runtime.Serialization.SerializationInfo
+- uid: System.Runtime.Serialization.StreamingContext
+  commentId: T:System.Runtime.Serialization.StreamingContext
+  parent: System.Runtime.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.streamingcontext
+  name: StreamingContext
+  nameWithType: StreamingContext
+  fullName: System.Runtime.Serialization.StreamingContext
+- uid: Innovt.Core.Exceptions.BusinessException.Code*
+  commentId: Overload:Innovt.Core.Exceptions.BusinessException.Code
+  href: Innovt.Core.Exceptions.BusinessException.html#Innovt_Core_Exceptions_BusinessException_Code
+  name: Code
+  nameWithType: BusinessException.Code
+  fullName: Innovt.Core.Exceptions.BusinessException.Code
+- uid: Innovt.Core.Exceptions.BusinessException.Errors*
+  commentId: Overload:Innovt.Core.Exceptions.BusinessException.Errors
+  href: Innovt.Core.Exceptions.BusinessException.html#Innovt_Core_Exceptions_BusinessException_Errors
+  name: Errors
+  nameWithType: BusinessException.Errors
+  fullName: Innovt.Core.Exceptions.BusinessException.Errors
+- uid: System.Collections.Generic.IEnumerable{Innovt.Core.Exceptions.ErrorMessage}
+  commentId: T:System.Collections.Generic.IEnumerable{Innovt.Core.Exceptions.ErrorMessage}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<ErrorMessage>
+  nameWithType: IEnumerable<ErrorMessage>
+  fullName: System.Collections.Generic.IEnumerable<Innovt.Core.Exceptions.ErrorMessage>
+  nameWithType.vb: IEnumerable(Of ErrorMessage)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Innovt.Core.Exceptions.ErrorMessage)
+  name.vb: IEnumerable(Of ErrorMessage)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Innovt.Core.Exceptions.ErrorMessage
+    name: ErrorMessage
+    href: Innovt.Core.Exceptions.ErrorMessage.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Core.Exceptions.ErrorMessage
+    name: ErrorMessage
+    href: Innovt.Core.Exceptions.ErrorMessage.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Core.Exceptions.BusinessException.Detail*
+  commentId: Overload:Innovt.Core.Exceptions.BusinessException.Detail
+  href: Innovt.Core.Exceptions.BusinessException.html#Innovt_Core_Exceptions_BusinessException_Detail
+  name: Detail
+  nameWithType: BusinessException.Detail
+  fullName: Innovt.Core.Exceptions.BusinessException.Detail
+- uid: Innovt.Core.Exceptions.BusinessException.ReadFullErrors*
+  commentId: Overload:Innovt.Core.Exceptions.BusinessException.ReadFullErrors
+  href: Innovt.Core.Exceptions.BusinessException.html#Innovt_Core_Exceptions_BusinessException_ReadFullErrors
+  name: ReadFullErrors
+  nameWithType: BusinessException.ReadFullErrors
+  fullName: Innovt.Core.Exceptions.BusinessException.ReadFullErrors

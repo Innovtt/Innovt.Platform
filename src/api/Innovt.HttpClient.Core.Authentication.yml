@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.HttpClient.Core.Authentication
+  commentId: N:Innovt.HttpClient.Core.Authentication
+  id: Innovt.HttpClient.Core.Authentication
+  children:
+  - Innovt.HttpClient.Core.Authentication.OAuthClient
+  - Innovt.HttpClient.Core.Authentication.OAuthResponse
+  langs:
+  - csharp
+  - vb
+  name: Innovt.HttpClient.Core.Authentication
+  nameWithType: Innovt.HttpClient.Core.Authentication
+  fullName: Innovt.HttpClient.Core.Authentication
+  type: Namespace
+  assemblies:
+  - Innovt.HttpClient.Core
+references:
+- uid: Innovt.HttpClient.Core.Authentication.OAuthClient
+  commentId: T:Innovt.HttpClient.Core.Authentication.OAuthClient
+  href: Innovt.HttpClient.Core.Authentication.OAuthClient.html
+  name: OAuthClient
+  nameWithType: OAuthClient
+  fullName: Innovt.HttpClient.Core.Authentication.OAuthClient
+- uid: Innovt.HttpClient.Core.Authentication.OAuthResponse
+  commentId: T:Innovt.HttpClient.Core.Authentication.OAuthResponse
+  href: Innovt.HttpClient.Core.Authentication.OAuthResponse.html
+  name: OAuthResponse
+  nameWithType: OAuthResponse
+  fullName: Innovt.HttpClient.Core.Authentication.OAuthResponse

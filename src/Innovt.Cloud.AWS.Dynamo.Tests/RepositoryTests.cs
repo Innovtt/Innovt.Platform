@@ -22,7 +22,7 @@ public class RepositoryTests
         awsConfigurationMock = Substitute.For<IAwsConfiguration>();
         repository = new SampleRepository(new SampleDynamoContext(), loggerMock, awsConfigurationMock);
     }
-    
+
     [TearDown]
     public void TearDown()
     {
@@ -37,8 +37,7 @@ public class RepositoryTests
 
     [Test]
     public async Task AddDeleteAndQuery()
-    {    
-            
+    {
         var context = new SampleDynamoContext();
 
         var awsConfiguration = new DefaultAWSConfiguration("c2g-dev");

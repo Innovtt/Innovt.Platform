@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Core.Test.Exceptions
+  commentId: N:Innovt.Core.Test.Exceptions
+  id: Innovt.Core.Test.Exceptions
+  children:
+  - Innovt.Core.Test.Exceptions.BusinessExceptionTests
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Core.Test.Exceptions
+  nameWithType: Innovt.Core.Test.Exceptions
+  fullName: Innovt.Core.Test.Exceptions
+  type: Namespace
+  assemblies:
+  - Innovt.Core.Test
+references:
+- uid: Innovt.Core.Test.Exceptions.BusinessExceptionTests
+  commentId: T:Innovt.Core.Test.Exceptions.BusinessExceptionTests
+  href: Innovt.Core.Test.Exceptions.BusinessExceptionTests.html
+  name: BusinessExceptionTests
+  nameWithType: BusinessExceptionTests
+  fullName: Innovt.Core.Test.Exceptions.BusinessExceptionTests

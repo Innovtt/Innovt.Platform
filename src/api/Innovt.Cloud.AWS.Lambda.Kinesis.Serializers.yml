@@ -1,0 +1,78 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
+  commentId: N:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
+  id: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
+  children:
+  - Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
+  nameWithType: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
+  type: Namespace
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Kinesis
+references:
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
+  commentId: T:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
+  parent: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html
+  name: KinesisEventJsonSerializerContext
+  nameWithType: KinesisEventJsonSerializerContext
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
+  commentId: N:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
+  nameWithType: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda
+    name: Lambda
+    href: Innovt.Cloud.AWS.Lambda.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis
+    name: Kinesis
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
+    name: Serializers
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda
+    name: Lambda
+    href: Innovt.Cloud.AWS.Lambda.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis
+    name: Kinesis
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
+    name: Serializers
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.html

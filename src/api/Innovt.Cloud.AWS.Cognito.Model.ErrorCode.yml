@@ -1,0 +1,829 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode
+  commentId: T:Innovt.Cloud.AWS.Cognito.Model.ErrorCode
+  id: ErrorCode
+  parent: Innovt.Cloud.AWS.Cognito.Model
+  children:
+  - Innovt.Cloud.AWS.Cognito.Model.ErrorCode.ChallengeNotAvailable
+  - Innovt.Cloud.AWS.Cognito.Model.ErrorCode.CodeMismatch
+  - Innovt.Cloud.AWS.Cognito.Model.ErrorCode.ExpiredCode
+  - Innovt.Cloud.AWS.Cognito.Model.ErrorCode.InternalServerError
+  - Innovt.Cloud.AWS.Cognito.Model.ErrorCode.InvalidPassword
+  - Innovt.Cloud.AWS.Cognito.Model.ErrorCode.LimitExceeded
+  - Innovt.Cloud.AWS.Cognito.Model.ErrorCode.NotAuthorized
+  - Innovt.Cloud.AWS.Cognito.Model.ErrorCode.OAuthResponseError
+  - Innovt.Cloud.AWS.Cognito.Model.ErrorCode.PasswordResetRequired
+  - Innovt.Cloud.AWS.Cognito.Model.ErrorCode.TooManyRequests
+  - Innovt.Cloud.AWS.Cognito.Model.ErrorCode.UserNotConfirmed
+  - Innovt.Cloud.AWS.Cognito.Model.ErrorCode.UserNotFound
+  - Innovt.Cloud.AWS.Cognito.Model.ErrorCode.UsernameAlreadyExists
+  langs:
+  - csharp
+  - vb
+  name: ErrorCode
+  nameWithType: ErrorCode
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ErrorCode
+    path: Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+    startLine: 9
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito.Model
+  summary: Provides a collection of error codes used in the application.
+  example: []
+  syntax:
+    content: public static class ErrorCode
+    content.vb: Public Module ErrorCode
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.UsernameAlreadyExists
+  commentId: P:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.UsernameAlreadyExists
+  id: UsernameAlreadyExists
+  parent: Innovt.Cloud.AWS.Cognito.Model.ErrorCode
+  langs:
+  - csharp
+  - vb
+  name: UsernameAlreadyExists
+  nameWithType: ErrorCode.UsernameAlreadyExists
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.UsernameAlreadyExists
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: UsernameAlreadyExists
+    path: Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+    startLine: 14
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito.Model
+  summary: Gets the error code for "UsernameAlreadyExists".
+  example: []
+  syntax:
+    content: public static string UsernameAlreadyExists { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property UsernameAlreadyExists As String
+  overload: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.UsernameAlreadyExists*
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.NotAuthorized
+  commentId: P:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.NotAuthorized
+  id: NotAuthorized
+  parent: Innovt.Cloud.AWS.Cognito.Model.ErrorCode
+  langs:
+  - csharp
+  - vb
+  name: NotAuthorized
+  nameWithType: ErrorCode.NotAuthorized
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.NotAuthorized
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: NotAuthorized
+    path: Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+    startLine: 19
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito.Model
+  summary: Gets the error code for "NotAuthorized".
+  example: []
+  syntax:
+    content: public static string NotAuthorized { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property NotAuthorized As String
+  overload: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.NotAuthorized*
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.TooManyRequests
+  commentId: P:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.TooManyRequests
+  id: TooManyRequests
+  parent: Innovt.Cloud.AWS.Cognito.Model.ErrorCode
+  langs:
+  - csharp
+  - vb
+  name: TooManyRequests
+  nameWithType: ErrorCode.TooManyRequests
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.TooManyRequests
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: TooManyRequests
+    path: Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+    startLine: 24
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito.Model
+  summary: Gets the error code for "TooManyRequests".
+  example: []
+  syntax:
+    content: public static string TooManyRequests { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property TooManyRequests As String
+  overload: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.TooManyRequests*
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.PasswordResetRequired
+  commentId: P:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.PasswordResetRequired
+  id: PasswordResetRequired
+  parent: Innovt.Cloud.AWS.Cognito.Model.ErrorCode
+  langs:
+  - csharp
+  - vb
+  name: PasswordResetRequired
+  nameWithType: ErrorCode.PasswordResetRequired
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.PasswordResetRequired
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: PasswordResetRequired
+    path: Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+    startLine: 29
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito.Model
+  summary: Gets the error code for "PasswordResetRequired".
+  example: []
+  syntax:
+    content: public static string PasswordResetRequired { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property PasswordResetRequired As String
+  overload: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.PasswordResetRequired*
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.UserNotFound
+  commentId: P:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.UserNotFound
+  id: UserNotFound
+  parent: Innovt.Cloud.AWS.Cognito.Model.ErrorCode
+  langs:
+  - csharp
+  - vb
+  name: UserNotFound
+  nameWithType: ErrorCode.UserNotFound
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.UserNotFound
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: UserNotFound
+    path: Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+    startLine: 34
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito.Model
+  summary: Gets the error code for "UserNotFound".
+  example: []
+  syntax:
+    content: public static string UserNotFound { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property UserNotFound As String
+  overload: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.UserNotFound*
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.UserNotConfirmed
+  commentId: P:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.UserNotConfirmed
+  id: UserNotConfirmed
+  parent: Innovt.Cloud.AWS.Cognito.Model.ErrorCode
+  langs:
+  - csharp
+  - vb
+  name: UserNotConfirmed
+  nameWithType: ErrorCode.UserNotConfirmed
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.UserNotConfirmed
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: UserNotConfirmed
+    path: Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+    startLine: 39
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito.Model
+  summary: Gets the error code for "UserNotConfirmed".
+  example: []
+  syntax:
+    content: public static string UserNotConfirmed { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property UserNotConfirmed As String
+  overload: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.UserNotConfirmed*
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.InvalidPassword
+  commentId: P:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.InvalidPassword
+  id: InvalidPassword
+  parent: Innovt.Cloud.AWS.Cognito.Model.ErrorCode
+  langs:
+  - csharp
+  - vb
+  name: InvalidPassword
+  nameWithType: ErrorCode.InvalidPassword
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.InvalidPassword
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: InvalidPassword
+    path: Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+    startLine: 44
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito.Model
+  summary: Gets the error code for "InvalidPassword".
+  example: []
+  syntax:
+    content: public static string InvalidPassword { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property InvalidPassword As String
+  overload: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.InvalidPassword*
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.CodeMismatch
+  commentId: P:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.CodeMismatch
+  id: CodeMismatch
+  parent: Innovt.Cloud.AWS.Cognito.Model.ErrorCode
+  langs:
+  - csharp
+  - vb
+  name: CodeMismatch
+  nameWithType: ErrorCode.CodeMismatch
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.CodeMismatch
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: CodeMismatch
+    path: Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+    startLine: 49
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito.Model
+  summary: Gets the error code for "CodeMismatch".
+  example: []
+  syntax:
+    content: public static string CodeMismatch { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property CodeMismatch As String
+  overload: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.CodeMismatch*
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.ExpiredCode
+  commentId: P:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.ExpiredCode
+  id: ExpiredCode
+  parent: Innovt.Cloud.AWS.Cognito.Model.ErrorCode
+  langs:
+  - csharp
+  - vb
+  name: ExpiredCode
+  nameWithType: ErrorCode.ExpiredCode
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.ExpiredCode
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ExpiredCode
+    path: Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+    startLine: 54
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito.Model
+  summary: Gets the error code for "ExpiredCode".
+  example: []
+  syntax:
+    content: public static string ExpiredCode { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property ExpiredCode As String
+  overload: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.ExpiredCode*
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.LimitExceeded
+  commentId: P:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.LimitExceeded
+  id: LimitExceeded
+  parent: Innovt.Cloud.AWS.Cognito.Model.ErrorCode
+  langs:
+  - csharp
+  - vb
+  name: LimitExceeded
+  nameWithType: ErrorCode.LimitExceeded
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.LimitExceeded
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: LimitExceeded
+    path: Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+    startLine: 59
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito.Model
+  summary: Gets the error code for "LimitExceeded".
+  example: []
+  syntax:
+    content: public static string LimitExceeded { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property LimitExceeded As String
+  overload: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.LimitExceeded*
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.InternalServerError
+  commentId: P:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.InternalServerError
+  id: InternalServerError
+  parent: Innovt.Cloud.AWS.Cognito.Model.ErrorCode
+  langs:
+  - csharp
+  - vb
+  name: InternalServerError
+  nameWithType: ErrorCode.InternalServerError
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.InternalServerError
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: InternalServerError
+    path: Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+    startLine: 64
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito.Model
+  summary: Gets the error code for "InternalServerError".
+  example: []
+  syntax:
+    content: public static string InternalServerError { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property InternalServerError As String
+  overload: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.InternalServerError*
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.OAuthResponseError
+  commentId: P:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.OAuthResponseError
+  id: OAuthResponseError
+  parent: Innovt.Cloud.AWS.Cognito.Model.ErrorCode
+  langs:
+  - csharp
+  - vb
+  name: OAuthResponseError
+  nameWithType: ErrorCode.OAuthResponseError
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.OAuthResponseError
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: OAuthResponseError
+    path: Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+    startLine: 69
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito.Model
+  summary: Gets the error code for "OAuthResponseError".
+  example: []
+  syntax:
+    content: public static string OAuthResponseError { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property OAuthResponseError As String
+  overload: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.OAuthResponseError*
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.ChallengeNotAvailable
+  commentId: P:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.ChallengeNotAvailable
+  id: ChallengeNotAvailable
+  parent: Innovt.Cloud.AWS.Cognito.Model.ErrorCode
+  langs:
+  - csharp
+  - vb
+  name: ChallengeNotAvailable
+  nameWithType: ErrorCode.ChallengeNotAvailable
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.ChallengeNotAvailable
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ChallengeNotAvailable
+    path: Innovt.Cloud.AWS.Cognito/Model/ErrorCode.cs
+    startLine: 74
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito.Model
+  summary: Gets the error code for "ChallengeNotAvailable".
+  example: []
+  syntax:
+    content: public static string ChallengeNotAvailable { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property ChallengeNotAvailable As String
+  overload: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.ChallengeNotAvailable*
+references:
+- uid: Innovt.Cloud.AWS.Cognito.Model
+  commentId: N:Innovt.Cloud.AWS.Cognito.Model
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Cognito.Model
+  nameWithType: Innovt.Cloud.AWS.Cognito.Model
+  fullName: Innovt.Cloud.AWS.Cognito.Model
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Cognito
+    name: Cognito
+    href: Innovt.Cloud.AWS.Cognito.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Cognito.Model
+    name: Model
+    href: Innovt.Cloud.AWS.Cognito.Model.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Cognito
+    name: Cognito
+    href: Innovt.Cloud.AWS.Cognito.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Cognito.Model
+    name: Model
+    href: Innovt.Cloud.AWS.Cognito.Model.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.UsernameAlreadyExists*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.UsernameAlreadyExists
+  href: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.html#Innovt_Cloud_AWS_Cognito_Model_ErrorCode_UsernameAlreadyExists
+  name: UsernameAlreadyExists
+  nameWithType: ErrorCode.UsernameAlreadyExists
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.UsernameAlreadyExists
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.NotAuthorized*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.NotAuthorized
+  href: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.html#Innovt_Cloud_AWS_Cognito_Model_ErrorCode_NotAuthorized
+  name: NotAuthorized
+  nameWithType: ErrorCode.NotAuthorized
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.NotAuthorized
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.TooManyRequests*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.TooManyRequests
+  href: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.html#Innovt_Cloud_AWS_Cognito_Model_ErrorCode_TooManyRequests
+  name: TooManyRequests
+  nameWithType: ErrorCode.TooManyRequests
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.TooManyRequests
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.PasswordResetRequired*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.PasswordResetRequired
+  href: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.html#Innovt_Cloud_AWS_Cognito_Model_ErrorCode_PasswordResetRequired
+  name: PasswordResetRequired
+  nameWithType: ErrorCode.PasswordResetRequired
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.PasswordResetRequired
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.UserNotFound*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.UserNotFound
+  href: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.html#Innovt_Cloud_AWS_Cognito_Model_ErrorCode_UserNotFound
+  name: UserNotFound
+  nameWithType: ErrorCode.UserNotFound
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.UserNotFound
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.UserNotConfirmed*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.UserNotConfirmed
+  href: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.html#Innovt_Cloud_AWS_Cognito_Model_ErrorCode_UserNotConfirmed
+  name: UserNotConfirmed
+  nameWithType: ErrorCode.UserNotConfirmed
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.UserNotConfirmed
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.InvalidPassword*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.InvalidPassword
+  href: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.html#Innovt_Cloud_AWS_Cognito_Model_ErrorCode_InvalidPassword
+  name: InvalidPassword
+  nameWithType: ErrorCode.InvalidPassword
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.InvalidPassword
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.CodeMismatch*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.CodeMismatch
+  href: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.html#Innovt_Cloud_AWS_Cognito_Model_ErrorCode_CodeMismatch
+  name: CodeMismatch
+  nameWithType: ErrorCode.CodeMismatch
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.CodeMismatch
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.ExpiredCode*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.ExpiredCode
+  href: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.html#Innovt_Cloud_AWS_Cognito_Model_ErrorCode_ExpiredCode
+  name: ExpiredCode
+  nameWithType: ErrorCode.ExpiredCode
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.ExpiredCode
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.LimitExceeded*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.LimitExceeded
+  href: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.html#Innovt_Cloud_AWS_Cognito_Model_ErrorCode_LimitExceeded
+  name: LimitExceeded
+  nameWithType: ErrorCode.LimitExceeded
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.LimitExceeded
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.InternalServerError*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.InternalServerError
+  href: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.html#Innovt_Cloud_AWS_Cognito_Model_ErrorCode_InternalServerError
+  name: InternalServerError
+  nameWithType: ErrorCode.InternalServerError
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.InternalServerError
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.OAuthResponseError*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.OAuthResponseError
+  href: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.html#Innovt_Cloud_AWS_Cognito_Model_ErrorCode_OAuthResponseError
+  name: OAuthResponseError
+  nameWithType: ErrorCode.OAuthResponseError
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.OAuthResponseError
+- uid: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.ChallengeNotAvailable*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.Model.ErrorCode.ChallengeNotAvailable
+  href: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.html#Innovt_Cloud_AWS_Cognito_Model_ErrorCode_ChallengeNotAvailable
+  name: ChallengeNotAvailable
+  nameWithType: ErrorCode.ChallengeNotAvailable
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ErrorCode.ChallengeNotAvailable

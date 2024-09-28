@@ -1,0 +1,1601 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.AspNetCore.Application.Tests.Startup
+  commentId: T:Innovt.AspNetCore.Application.Tests.Startup
+  id: Startup
+  parent: Innovt.AspNetCore.Application.Tests
+  children:
+  - Innovt.AspNetCore.Application.Tests.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)
+  - Innovt.AspNetCore.Application.Tests.Startup.AddDefaultServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  - Innovt.AspNetCore.Application.Tests.Startup.AddSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  - Innovt.AspNetCore.Application.Tests.Startup.ConfigureApp(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)
+  - Innovt.AspNetCore.Application.Tests.Startup.ConfigureIoC(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  - Innovt.AspNetCore.Application.Tests.Startup.ConfigureOpenTelemetry(OpenTelemetry.Trace.TracerProviderBuilder)
+  langs:
+  - csharp
+  - vb
+  name: Startup
+  nameWithType: Startup
+  fullName: Innovt.AspNetCore.Application.Tests.Startup
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.AspNetCore.Application.Tests/Startup.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Startup
+    path: Innovt.AspNetCore.Application.Tests/Startup.cs
+    startLine: 8
+  assemblies:
+  - Innovt.AspNetCore.Application.Tests
+  namespace: Innovt.AspNetCore.Application.Tests
+  syntax:
+    content: 'public class Startup : ApiStartupBase'
+    content.vb: Public Class Startup Inherits ApiStartupBase
+  inheritance:
+  - System.Object
+  - Innovt.AspNetCore.ApiStartupBase
+  inheritedMembers:
+  - Innovt.AspNetCore.ApiStartupBase.AppName
+  - Innovt.AspNetCore.ApiStartupBase.DefaultHealthPath
+  - Innovt.AspNetCore.ApiStartupBase.Documentation
+  - Innovt.AspNetCore.ApiStartupBase.Localization
+  - Innovt.AspNetCore.ApiStartupBase.SetDefaultJsonOptions
+  - Innovt.AspNetCore.ApiStartupBase.Configuration
+  - Innovt.AspNetCore.ApiStartupBase.Environment
+  - Innovt.AspNetCore.ApiStartupBase.IsDevelopmentEnvironment
+  - Innovt.AspNetCore.ApiStartupBase.ConfigureHealthChecks(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  - Innovt.AspNetCore.ApiStartupBase.AddTracing(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  - Innovt.AspNetCore.ApiStartupBase.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  - Innovt.AspNetCore.ApiStartupBase.ConfigureSwaggerUi(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)
+  - Innovt.AspNetCore.ApiStartupBase.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)
+  - Innovt.AspNetCore.ApiStartupBase.ConfigureApiBehavior
+  - Innovt.AspNetCore.ApiStartupBase.ConfigureCultures(Microsoft.AspNetCore.Builder.IApplicationBuilder)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+- uid: Innovt.AspNetCore.Application.Tests.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)
+  commentId: M:Innovt.AspNetCore.Application.Tests.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)
+  id: '#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)'
+  parent: Innovt.AspNetCore.Application.Tests.Startup
+  langs:
+  - csharp
+  - vb
+  name: Startup(IConfiguration, IWebHostEnvironment)
+  nameWithType: Startup.Startup(IConfiguration, IWebHostEnvironment)
+  fullName: Innovt.AspNetCore.Application.Tests.Startup.Startup(Microsoft.Extensions.Configuration.IConfiguration, Microsoft.AspNetCore.Hosting.IWebHostEnvironment)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.AspNetCore.Application.Tests/Startup.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: Innovt.AspNetCore.Application.Tests/Startup.cs
+    startLine: 10
+  assemblies:
+  - Innovt.AspNetCore.Application.Tests
+  namespace: Innovt.AspNetCore.Application.Tests
+  syntax:
+    content: public Startup(IConfiguration configuration, IWebHostEnvironment env)
+    parameters:
+    - id: configuration
+      type: Microsoft.Extensions.Configuration.IConfiguration
+    - id: env
+      type: Microsoft.AspNetCore.Hosting.IWebHostEnvironment
+    content.vb: Public Sub New(configuration As IConfiguration, env As IWebHostEnvironment)
+  overload: Innovt.AspNetCore.Application.Tests.Startup.#ctor*
+  nameWithType.vb: Startup.New(IConfiguration, IWebHostEnvironment)
+  fullName.vb: Innovt.AspNetCore.Application.Tests.Startup.New(Microsoft.Extensions.Configuration.IConfiguration, Microsoft.AspNetCore.Hosting.IWebHostEnvironment)
+  name.vb: New(IConfiguration, IWebHostEnvironment)
+- uid: Innovt.AspNetCore.Application.Tests.Startup.AddDefaultServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  commentId: M:Innovt.AspNetCore.Application.Tests.Startup.AddDefaultServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  id: AddDefaultServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  parent: Innovt.AspNetCore.Application.Tests.Startup
+  langs:
+  - csharp
+  - vb
+  name: AddDefaultServices(IServiceCollection)
+  nameWithType: Startup.AddDefaultServices(IServiceCollection)
+  fullName: Innovt.AspNetCore.Application.Tests.Startup.AddDefaultServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.AspNetCore.Application.Tests/Startup.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: AddDefaultServices
+    path: Innovt.AspNetCore.Application.Tests/Startup.cs
+    startLine: 15
+  assemblies:
+  - Innovt.AspNetCore.Application.Tests
+  namespace: Innovt.AspNetCore.Application.Tests
+  summary: Adds default services to the service collection.
+  example: []
+  syntax:
+    content: protected override void AddDefaultServices(IServiceCollection services)
+    parameters:
+    - id: services
+      type: Microsoft.Extensions.DependencyInjection.IServiceCollection
+      description: The service collection to add default services to.
+    content.vb: Protected Overrides Sub AddDefaultServices(services As IServiceCollection)
+  overridden: Innovt.AspNetCore.ApiStartupBase.AddDefaultServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  overload: Innovt.AspNetCore.Application.Tests.Startup.AddDefaultServices*
+- uid: Innovt.AspNetCore.Application.Tests.Startup.ConfigureIoC(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  commentId: M:Innovt.AspNetCore.Application.Tests.Startup.ConfigureIoC(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  id: ConfigureIoC(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  parent: Innovt.AspNetCore.Application.Tests.Startup
+  langs:
+  - csharp
+  - vb
+  name: ConfigureIoC(IServiceCollection)
+  nameWithType: Startup.ConfigureIoC(IServiceCollection)
+  fullName: Innovt.AspNetCore.Application.Tests.Startup.ConfigureIoC(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.AspNetCore.Application.Tests/Startup.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ConfigureIoC
+    path: Innovt.AspNetCore.Application.Tests/Startup.cs
+    startLine: 20
+  assemblies:
+  - Innovt.AspNetCore.Application.Tests
+  namespace: Innovt.AspNetCore.Application.Tests
+  summary: Configures the IoC container for the application.
+  example: []
+  syntax:
+    content: protected override void ConfigureIoC(IServiceCollection services)
+    parameters:
+    - id: services
+      type: Microsoft.Extensions.DependencyInjection.IServiceCollection
+      description: The service collection to configure for IoC.
+    content.vb: Protected Overrides Sub ConfigureIoC(services As IServiceCollection)
+  overridden: Innovt.AspNetCore.ApiStartupBase.ConfigureIoC(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  overload: Innovt.AspNetCore.Application.Tests.Startup.ConfigureIoC*
+- uid: Innovt.AspNetCore.Application.Tests.Startup.AddSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  commentId: M:Innovt.AspNetCore.Application.Tests.Startup.AddSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  id: AddSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  parent: Innovt.AspNetCore.Application.Tests.Startup
+  langs:
+  - csharp
+  - vb
+  name: AddSwagger(IServiceCollection)
+  nameWithType: Startup.AddSwagger(IServiceCollection)
+  fullName: Innovt.AspNetCore.Application.Tests.Startup.AddSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.AspNetCore.Application.Tests/Startup.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: AddSwagger
+    path: Innovt.AspNetCore.Application.Tests/Startup.cs
+    startLine: 24
+  assemblies:
+  - Innovt.AspNetCore.Application.Tests
+  namespace: Innovt.AspNetCore.Application.Tests
+  summary: Adds Swagger generation to the specified services.
+  example: []
+  syntax:
+    content: protected override void AddSwagger(IServiceCollection services)
+    parameters:
+    - id: services
+      type: Microsoft.Extensions.DependencyInjection.IServiceCollection
+      description: The service collection to add Swagger to.
+    content.vb: Protected Overrides Sub AddSwagger(services As IServiceCollection)
+  overridden: Innovt.AspNetCore.ApiStartupBase.AddSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  overload: Innovt.AspNetCore.Application.Tests.Startup.AddSwagger*
+- uid: Innovt.AspNetCore.Application.Tests.Startup.ConfigureApp(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)
+  commentId: M:Innovt.AspNetCore.Application.Tests.Startup.ConfigureApp(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)
+  id: ConfigureApp(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)
+  parent: Innovt.AspNetCore.Application.Tests.Startup
+  langs:
+  - csharp
+  - vb
+  name: ConfigureApp(IApplicationBuilder, IWebHostEnvironment, ILoggerFactory)
+  nameWithType: Startup.ConfigureApp(IApplicationBuilder, IWebHostEnvironment, ILoggerFactory)
+  fullName: Innovt.AspNetCore.Application.Tests.Startup.ConfigureApp(Microsoft.AspNetCore.Builder.IApplicationBuilder, Microsoft.AspNetCore.Hosting.IWebHostEnvironment, Microsoft.Extensions.Logging.ILoggerFactory)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.AspNetCore.Application.Tests/Startup.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ConfigureApp
+    path: Innovt.AspNetCore.Application.Tests/Startup.cs
+    startLine: 37
+  assemblies:
+  - Innovt.AspNetCore.Application.Tests
+  namespace: Innovt.AspNetCore.Application.Tests
+  summary: Configures the application.
+  example: []
+  syntax:
+    content: public override void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
+    parameters:
+    - id: app
+      type: Microsoft.AspNetCore.Builder.IApplicationBuilder
+      description: The application builder.
+    - id: env
+      type: Microsoft.AspNetCore.Hosting.IWebHostEnvironment
+      description: The hosting environment.
+    - id: loggerFactory
+      type: Microsoft.Extensions.Logging.ILoggerFactory
+      description: The logger factory.
+    content.vb: Public Overrides Sub ConfigureApp(app As IApplicationBuilder, env As IWebHostEnvironment, loggerFactory As ILoggerFactory)
+  overridden: Innovt.AspNetCore.ApiStartupBase.ConfigureApp(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)
+  overload: Innovt.AspNetCore.Application.Tests.Startup.ConfigureApp*
+- uid: Innovt.AspNetCore.Application.Tests.Startup.ConfigureOpenTelemetry(OpenTelemetry.Trace.TracerProviderBuilder)
+  commentId: M:Innovt.AspNetCore.Application.Tests.Startup.ConfigureOpenTelemetry(OpenTelemetry.Trace.TracerProviderBuilder)
+  id: ConfigureOpenTelemetry(OpenTelemetry.Trace.TracerProviderBuilder)
+  parent: Innovt.AspNetCore.Application.Tests.Startup
+  langs:
+  - csharp
+  - vb
+  name: ConfigureOpenTelemetry(TracerProviderBuilder)
+  nameWithType: Startup.ConfigureOpenTelemetry(TracerProviderBuilder)
+  fullName: Innovt.AspNetCore.Application.Tests.Startup.ConfigureOpenTelemetry(OpenTelemetry.Trace.TracerProviderBuilder)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.AspNetCore.Application.Tests/Startup.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ConfigureOpenTelemetry
+    path: Innovt.AspNetCore.Application.Tests/Startup.cs
+    startLine: 41
+  assemblies:
+  - Innovt.AspNetCore.Application.Tests
+  namespace: Innovt.AspNetCore.Application.Tests
+  summary: Configures OpenTelemetry for tracing.
+  example: []
+  syntax:
+    content: protected override void ConfigureOpenTelemetry(TracerProviderBuilder builder)
+    parameters:
+    - id: builder
+      type: OpenTelemetry.Trace.TracerProviderBuilder
+      description: The TracerProviderBuilder for configuring tracing.
+    content.vb: Protected Overrides Sub ConfigureOpenTelemetry(builder As TracerProviderBuilder)
+  overridden: Innovt.AspNetCore.ApiStartupBase.ConfigureOpenTelemetry(OpenTelemetry.Trace.TracerProviderBuilder)
+  overload: Innovt.AspNetCore.Application.Tests.Startup.ConfigureOpenTelemetry*
+references:
+- uid: Innovt.AspNetCore.Application.Tests
+  commentId: N:Innovt.AspNetCore.Application.Tests
+  href: Innovt.html
+  name: Innovt.AspNetCore.Application.Tests
+  nameWithType: Innovt.AspNetCore.Application.Tests
+  fullName: Innovt.AspNetCore.Application.Tests
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.AspNetCore
+    name: AspNetCore
+    href: Innovt.AspNetCore.html
+  - name: .
+  - uid: Innovt.AspNetCore.Application
+    name: Application
+    href: Innovt.AspNetCore.Application.html
+  - name: .
+  - uid: Innovt.AspNetCore.Application.Tests
+    name: Tests
+    href: Innovt.AspNetCore.Application.Tests.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.AspNetCore
+    name: AspNetCore
+    href: Innovt.AspNetCore.html
+  - name: .
+  - uid: Innovt.AspNetCore.Application
+    name: Application
+    href: Innovt.AspNetCore.Application.html
+  - name: .
+  - uid: Innovt.AspNetCore.Application.Tests
+    name: Tests
+    href: Innovt.AspNetCore.Application.Tests.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Innovt.AspNetCore.ApiStartupBase
+  commentId: T:Innovt.AspNetCore.ApiStartupBase
+  parent: Innovt.AspNetCore
+  href: Innovt.AspNetCore.ApiStartupBase.html
+  name: ApiStartupBase
+  nameWithType: ApiStartupBase
+  fullName: Innovt.AspNetCore.ApiStartupBase
+- uid: Innovt.AspNetCore.ApiStartupBase.AppName
+  commentId: P:Innovt.AspNetCore.ApiStartupBase.AppName
+  parent: Innovt.AspNetCore.ApiStartupBase
+  href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_AppName
+  name: AppName
+  nameWithType: ApiStartupBase.AppName
+  fullName: Innovt.AspNetCore.ApiStartupBase.AppName
+- uid: Innovt.AspNetCore.ApiStartupBase.DefaultHealthPath
+  commentId: P:Innovt.AspNetCore.ApiStartupBase.DefaultHealthPath
+  parent: Innovt.AspNetCore.ApiStartupBase
+  href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_DefaultHealthPath
+  name: DefaultHealthPath
+  nameWithType: ApiStartupBase.DefaultHealthPath
+  fullName: Innovt.AspNetCore.ApiStartupBase.DefaultHealthPath
+- uid: Innovt.AspNetCore.ApiStartupBase.Documentation
+  commentId: P:Innovt.AspNetCore.ApiStartupBase.Documentation
+  parent: Innovt.AspNetCore.ApiStartupBase
+  href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_Documentation
+  name: Documentation
+  nameWithType: ApiStartupBase.Documentation
+  fullName: Innovt.AspNetCore.ApiStartupBase.Documentation
+- uid: Innovt.AspNetCore.ApiStartupBase.Localization
+  commentId: P:Innovt.AspNetCore.ApiStartupBase.Localization
+  parent: Innovt.AspNetCore.ApiStartupBase
+  href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_Localization
+  name: Localization
+  nameWithType: ApiStartupBase.Localization
+  fullName: Innovt.AspNetCore.ApiStartupBase.Localization
+- uid: Innovt.AspNetCore.ApiStartupBase.SetDefaultJsonOptions
+  commentId: P:Innovt.AspNetCore.ApiStartupBase.SetDefaultJsonOptions
+  parent: Innovt.AspNetCore.ApiStartupBase
+  href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_SetDefaultJsonOptions
+  name: SetDefaultJsonOptions
+  nameWithType: ApiStartupBase.SetDefaultJsonOptions
+  fullName: Innovt.AspNetCore.ApiStartupBase.SetDefaultJsonOptions
+- uid: Innovt.AspNetCore.ApiStartupBase.Configuration
+  commentId: P:Innovt.AspNetCore.ApiStartupBase.Configuration
+  parent: Innovt.AspNetCore.ApiStartupBase
+  href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_Configuration
+  name: Configuration
+  nameWithType: ApiStartupBase.Configuration
+  fullName: Innovt.AspNetCore.ApiStartupBase.Configuration
+- uid: Innovt.AspNetCore.ApiStartupBase.Environment
+  commentId: P:Innovt.AspNetCore.ApiStartupBase.Environment
+  parent: Innovt.AspNetCore.ApiStartupBase
+  href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_Environment
+  name: Environment
+  nameWithType: ApiStartupBase.Environment
+  fullName: Innovt.AspNetCore.ApiStartupBase.Environment
+- uid: Innovt.AspNetCore.ApiStartupBase.IsDevelopmentEnvironment
+  commentId: M:Innovt.AspNetCore.ApiStartupBase.IsDevelopmentEnvironment
+  parent: Innovt.AspNetCore.ApiStartupBase
+  href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_IsDevelopmentEnvironment
+  name: IsDevelopmentEnvironment()
+  nameWithType: ApiStartupBase.IsDevelopmentEnvironment()
+  fullName: Innovt.AspNetCore.ApiStartupBase.IsDevelopmentEnvironment()
+  spec.csharp:
+  - uid: Innovt.AspNetCore.ApiStartupBase.IsDevelopmentEnvironment
+    name: IsDevelopmentEnvironment
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_IsDevelopmentEnvironment
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.AspNetCore.ApiStartupBase.IsDevelopmentEnvironment
+    name: IsDevelopmentEnvironment
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_IsDevelopmentEnvironment
+  - name: (
+  - name: )
+- uid: Innovt.AspNetCore.ApiStartupBase.ConfigureHealthChecks(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  commentId: M:Innovt.AspNetCore.ApiStartupBase.ConfigureHealthChecks(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  parent: Innovt.AspNetCore.ApiStartupBase
+  isExternal: true
+  href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_ConfigureHealthChecks_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  name: ConfigureHealthChecks(IServiceCollection)
+  nameWithType: ApiStartupBase.ConfigureHealthChecks(IServiceCollection)
+  fullName: Innovt.AspNetCore.ApiStartupBase.ConfigureHealthChecks(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  spec.csharp:
+  - uid: Innovt.AspNetCore.ApiStartupBase.ConfigureHealthChecks(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+    name: ConfigureHealthChecks
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_ConfigureHealthChecks_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  - name: (
+  - uid: Microsoft.Extensions.DependencyInjection.IServiceCollection
+    name: IServiceCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
+  - name: )
+  spec.vb:
+  - uid: Innovt.AspNetCore.ApiStartupBase.ConfigureHealthChecks(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+    name: ConfigureHealthChecks
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_ConfigureHealthChecks_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  - name: (
+  - uid: Microsoft.Extensions.DependencyInjection.IServiceCollection
+    name: IServiceCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
+  - name: )
+- uid: Innovt.AspNetCore.ApiStartupBase.AddTracing(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  commentId: M:Innovt.AspNetCore.ApiStartupBase.AddTracing(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  parent: Innovt.AspNetCore.ApiStartupBase
+  isExternal: true
+  href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_AddTracing_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  name: AddTracing(IServiceCollection)
+  nameWithType: ApiStartupBase.AddTracing(IServiceCollection)
+  fullName: Innovt.AspNetCore.ApiStartupBase.AddTracing(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  spec.csharp:
+  - uid: Innovt.AspNetCore.ApiStartupBase.AddTracing(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+    name: AddTracing
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_AddTracing_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  - name: (
+  - uid: Microsoft.Extensions.DependencyInjection.IServiceCollection
+    name: IServiceCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
+  - name: )
+  spec.vb:
+  - uid: Innovt.AspNetCore.ApiStartupBase.AddTracing(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+    name: AddTracing
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_AddTracing_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  - name: (
+  - uid: Microsoft.Extensions.DependencyInjection.IServiceCollection
+    name: IServiceCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
+  - name: )
+- uid: Innovt.AspNetCore.ApiStartupBase.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  commentId: M:Innovt.AspNetCore.ApiStartupBase.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  parent: Innovt.AspNetCore.ApiStartupBase
+  isExternal: true
+  href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_ConfigureServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  name: ConfigureServices(IServiceCollection)
+  nameWithType: ApiStartupBase.ConfigureServices(IServiceCollection)
+  fullName: Innovt.AspNetCore.ApiStartupBase.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  spec.csharp:
+  - uid: Innovt.AspNetCore.ApiStartupBase.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+    name: ConfigureServices
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_ConfigureServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  - name: (
+  - uid: Microsoft.Extensions.DependencyInjection.IServiceCollection
+    name: IServiceCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
+  - name: )
+  spec.vb:
+  - uid: Innovt.AspNetCore.ApiStartupBase.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+    name: ConfigureServices
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_ConfigureServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  - name: (
+  - uid: Microsoft.Extensions.DependencyInjection.IServiceCollection
+    name: IServiceCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
+  - name: )
+- uid: Innovt.AspNetCore.ApiStartupBase.ConfigureSwaggerUi(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)
+  commentId: M:Innovt.AspNetCore.ApiStartupBase.ConfigureSwaggerUi(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)
+  parent: Innovt.AspNetCore.ApiStartupBase
+  isExternal: true
+  href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_ConfigureSwaggerUi_Microsoft_AspNetCore_Builder_IApplicationBuilder_Microsoft_AspNetCore_Hosting_IWebHostEnvironment_
+  name: ConfigureSwaggerUi(IApplicationBuilder, IWebHostEnvironment)
+  nameWithType: ApiStartupBase.ConfigureSwaggerUi(IApplicationBuilder, IWebHostEnvironment)
+  fullName: Innovt.AspNetCore.ApiStartupBase.ConfigureSwaggerUi(Microsoft.AspNetCore.Builder.IApplicationBuilder, Microsoft.AspNetCore.Hosting.IWebHostEnvironment)
+  spec.csharp:
+  - uid: Innovt.AspNetCore.ApiStartupBase.ConfigureSwaggerUi(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)
+    name: ConfigureSwaggerUi
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_ConfigureSwaggerUi_Microsoft_AspNetCore_Builder_IApplicationBuilder_Microsoft_AspNetCore_Hosting_IWebHostEnvironment_
+  - name: (
+  - uid: Microsoft.AspNetCore.Builder.IApplicationBuilder
+    name: IApplicationBuilder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder
+  - name: ','
+  - name: " "
+  - uid: Microsoft.AspNetCore.Hosting.IWebHostEnvironment
+    name: IWebHostEnvironment
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.iwebhostenvironment
+  - name: )
+  spec.vb:
+  - uid: Innovt.AspNetCore.ApiStartupBase.ConfigureSwaggerUi(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)
+    name: ConfigureSwaggerUi
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_ConfigureSwaggerUi_Microsoft_AspNetCore_Builder_IApplicationBuilder_Microsoft_AspNetCore_Hosting_IWebHostEnvironment_
+  - name: (
+  - uid: Microsoft.AspNetCore.Builder.IApplicationBuilder
+    name: IApplicationBuilder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder
+  - name: ','
+  - name: " "
+  - uid: Microsoft.AspNetCore.Hosting.IWebHostEnvironment
+    name: IWebHostEnvironment
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.iwebhostenvironment
+  - name: )
+- uid: Innovt.AspNetCore.ApiStartupBase.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)
+  commentId: M:Innovt.AspNetCore.ApiStartupBase.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)
+  parent: Innovt.AspNetCore.ApiStartupBase
+  isExternal: true
+  href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_Configure_Microsoft_AspNetCore_Builder_IApplicationBuilder_Microsoft_AspNetCore_Hosting_IWebHostEnvironment_Microsoft_Extensions_Logging_ILoggerFactory_
+  name: Configure(IApplicationBuilder, IWebHostEnvironment, ILoggerFactory)
+  nameWithType: ApiStartupBase.Configure(IApplicationBuilder, IWebHostEnvironment, ILoggerFactory)
+  fullName: Innovt.AspNetCore.ApiStartupBase.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder, Microsoft.AspNetCore.Hosting.IWebHostEnvironment, Microsoft.Extensions.Logging.ILoggerFactory)
+  spec.csharp:
+  - uid: Innovt.AspNetCore.ApiStartupBase.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)
+    name: Configure
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_Configure_Microsoft_AspNetCore_Builder_IApplicationBuilder_Microsoft_AspNetCore_Hosting_IWebHostEnvironment_Microsoft_Extensions_Logging_ILoggerFactory_
+  - name: (
+  - uid: Microsoft.AspNetCore.Builder.IApplicationBuilder
+    name: IApplicationBuilder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder
+  - name: ','
+  - name: " "
+  - uid: Microsoft.AspNetCore.Hosting.IWebHostEnvironment
+    name: IWebHostEnvironment
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.iwebhostenvironment
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Extensions.Logging.ILoggerFactory
+    name: ILoggerFactory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory
+  - name: )
+  spec.vb:
+  - uid: Innovt.AspNetCore.ApiStartupBase.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)
+    name: Configure
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_Configure_Microsoft_AspNetCore_Builder_IApplicationBuilder_Microsoft_AspNetCore_Hosting_IWebHostEnvironment_Microsoft_Extensions_Logging_ILoggerFactory_
+  - name: (
+  - uid: Microsoft.AspNetCore.Builder.IApplicationBuilder
+    name: IApplicationBuilder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder
+  - name: ','
+  - name: " "
+  - uid: Microsoft.AspNetCore.Hosting.IWebHostEnvironment
+    name: IWebHostEnvironment
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.iwebhostenvironment
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Extensions.Logging.ILoggerFactory
+    name: ILoggerFactory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory
+  - name: )
+- uid: Innovt.AspNetCore.ApiStartupBase.ConfigureApiBehavior
+  commentId: M:Innovt.AspNetCore.ApiStartupBase.ConfigureApiBehavior
+  parent: Innovt.AspNetCore.ApiStartupBase
+  href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_ConfigureApiBehavior
+  name: ConfigureApiBehavior()
+  nameWithType: ApiStartupBase.ConfigureApiBehavior()
+  fullName: Innovt.AspNetCore.ApiStartupBase.ConfigureApiBehavior()
+  spec.csharp:
+  - uid: Innovt.AspNetCore.ApiStartupBase.ConfigureApiBehavior
+    name: ConfigureApiBehavior
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_ConfigureApiBehavior
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.AspNetCore.ApiStartupBase.ConfigureApiBehavior
+    name: ConfigureApiBehavior
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_ConfigureApiBehavior
+  - name: (
+  - name: )
+- uid: Innovt.AspNetCore.ApiStartupBase.ConfigureCultures(Microsoft.AspNetCore.Builder.IApplicationBuilder)
+  commentId: M:Innovt.AspNetCore.ApiStartupBase.ConfigureCultures(Microsoft.AspNetCore.Builder.IApplicationBuilder)
+  parent: Innovt.AspNetCore.ApiStartupBase
+  isExternal: true
+  href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_ConfigureCultures_Microsoft_AspNetCore_Builder_IApplicationBuilder_
+  name: ConfigureCultures(IApplicationBuilder)
+  nameWithType: ApiStartupBase.ConfigureCultures(IApplicationBuilder)
+  fullName: Innovt.AspNetCore.ApiStartupBase.ConfigureCultures(Microsoft.AspNetCore.Builder.IApplicationBuilder)
+  spec.csharp:
+  - uid: Innovt.AspNetCore.ApiStartupBase.ConfigureCultures(Microsoft.AspNetCore.Builder.IApplicationBuilder)
+    name: ConfigureCultures
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_ConfigureCultures_Microsoft_AspNetCore_Builder_IApplicationBuilder_
+  - name: (
+  - uid: Microsoft.AspNetCore.Builder.IApplicationBuilder
+    name: IApplicationBuilder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder
+  - name: )
+  spec.vb:
+  - uid: Innovt.AspNetCore.ApiStartupBase.ConfigureCultures(Microsoft.AspNetCore.Builder.IApplicationBuilder)
+    name: ConfigureCultures
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_ConfigureCultures_Microsoft_AspNetCore_Builder_IApplicationBuilder_
+  - name: (
+  - uid: Microsoft.AspNetCore.Builder.IApplicationBuilder
+    name: IApplicationBuilder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.AspNetCore
+  commentId: N:Innovt.AspNetCore
+  href: Innovt.html
+  name: Innovt.AspNetCore
+  nameWithType: Innovt.AspNetCore
+  fullName: Innovt.AspNetCore
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.AspNetCore
+    name: AspNetCore
+    href: Innovt.AspNetCore.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.AspNetCore
+    name: AspNetCore
+    href: Innovt.AspNetCore.html
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.AspNetCore.Application.Tests.Startup.#ctor*
+  commentId: Overload:Innovt.AspNetCore.Application.Tests.Startup.#ctor
+  href: Innovt.AspNetCore.Application.Tests.Startup.html#Innovt_AspNetCore_Application_Tests_Startup__ctor_Microsoft_Extensions_Configuration_IConfiguration_Microsoft_AspNetCore_Hosting_IWebHostEnvironment_
+  name: Startup
+  nameWithType: Startup.Startup
+  fullName: Innovt.AspNetCore.Application.Tests.Startup.Startup
+  nameWithType.vb: Startup.New
+  fullName.vb: Innovt.AspNetCore.Application.Tests.Startup.New
+  name.vb: New
+- uid: Microsoft.Extensions.Configuration.IConfiguration
+  commentId: T:Microsoft.Extensions.Configuration.IConfiguration
+  parent: Microsoft.Extensions.Configuration
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration.iconfiguration
+  name: IConfiguration
+  nameWithType: IConfiguration
+  fullName: Microsoft.Extensions.Configuration.IConfiguration
+- uid: Microsoft.AspNetCore.Hosting.IWebHostEnvironment
+  commentId: T:Microsoft.AspNetCore.Hosting.IWebHostEnvironment
+  parent: Microsoft.AspNetCore.Hosting
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.iwebhostenvironment
+  name: IWebHostEnvironment
+  nameWithType: IWebHostEnvironment
+  fullName: Microsoft.AspNetCore.Hosting.IWebHostEnvironment
+- uid: Microsoft.Extensions.Configuration
+  commentId: N:Microsoft.Extensions.Configuration
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Configuration
+  nameWithType: Microsoft.Extensions.Configuration
+  fullName: Microsoft.Extensions.Configuration
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Configuration
+    name: Configuration
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Configuration
+    name: Configuration
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration
+- uid: Microsoft.AspNetCore.Hosting
+  commentId: N:Microsoft.AspNetCore.Hosting
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.AspNetCore.Hosting
+  nameWithType: Microsoft.AspNetCore.Hosting
+  fullName: Microsoft.AspNetCore.Hosting
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore
+  - name: .
+  - uid: Microsoft.AspNetCore.Hosting
+    name: Hosting
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore
+  - name: .
+  - uid: Microsoft.AspNetCore.Hosting
+    name: Hosting
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting
+- uid: Innovt.AspNetCore.ApiStartupBase.AddDefaultServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  commentId: M:Innovt.AspNetCore.ApiStartupBase.AddDefaultServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  parent: Innovt.AspNetCore.ApiStartupBase
+  isExternal: true
+  href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_AddDefaultServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  name: AddDefaultServices(IServiceCollection)
+  nameWithType: ApiStartupBase.AddDefaultServices(IServiceCollection)
+  fullName: Innovt.AspNetCore.ApiStartupBase.AddDefaultServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  spec.csharp:
+  - uid: Innovt.AspNetCore.ApiStartupBase.AddDefaultServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+    name: AddDefaultServices
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_AddDefaultServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  - name: (
+  - uid: Microsoft.Extensions.DependencyInjection.IServiceCollection
+    name: IServiceCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
+  - name: )
+  spec.vb:
+  - uid: Innovt.AspNetCore.ApiStartupBase.AddDefaultServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+    name: AddDefaultServices
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_AddDefaultServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  - name: (
+  - uid: Microsoft.Extensions.DependencyInjection.IServiceCollection
+    name: IServiceCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
+  - name: )
+- uid: Innovt.AspNetCore.Application.Tests.Startup.AddDefaultServices*
+  commentId: Overload:Innovt.AspNetCore.Application.Tests.Startup.AddDefaultServices
+  href: Innovt.AspNetCore.Application.Tests.Startup.html#Innovt_AspNetCore_Application_Tests_Startup_AddDefaultServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  name: AddDefaultServices
+  nameWithType: Startup.AddDefaultServices
+  fullName: Innovt.AspNetCore.Application.Tests.Startup.AddDefaultServices
+- uid: Microsoft.Extensions.DependencyInjection.IServiceCollection
+  commentId: T:Microsoft.Extensions.DependencyInjection.IServiceCollection
+  parent: Microsoft.Extensions.DependencyInjection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
+  name: IServiceCollection
+  nameWithType: IServiceCollection
+  fullName: Microsoft.Extensions.DependencyInjection.IServiceCollection
+- uid: Microsoft.Extensions.DependencyInjection
+  commentId: N:Microsoft.Extensions.DependencyInjection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.DependencyInjection
+  nameWithType: Microsoft.Extensions.DependencyInjection
+  fullName: Microsoft.Extensions.DependencyInjection
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection
+- uid: Innovt.AspNetCore.ApiStartupBase.ConfigureIoC(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  commentId: M:Innovt.AspNetCore.ApiStartupBase.ConfigureIoC(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  parent: Innovt.AspNetCore.ApiStartupBase
+  isExternal: true
+  href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_ConfigureIoC_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  name: ConfigureIoC(IServiceCollection)
+  nameWithType: ApiStartupBase.ConfigureIoC(IServiceCollection)
+  fullName: Innovt.AspNetCore.ApiStartupBase.ConfigureIoC(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  spec.csharp:
+  - uid: Innovt.AspNetCore.ApiStartupBase.ConfigureIoC(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+    name: ConfigureIoC
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_ConfigureIoC_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  - name: (
+  - uid: Microsoft.Extensions.DependencyInjection.IServiceCollection
+    name: IServiceCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
+  - name: )
+  spec.vb:
+  - uid: Innovt.AspNetCore.ApiStartupBase.ConfigureIoC(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+    name: ConfigureIoC
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_ConfigureIoC_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  - name: (
+  - uid: Microsoft.Extensions.DependencyInjection.IServiceCollection
+    name: IServiceCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
+  - name: )
+- uid: Innovt.AspNetCore.Application.Tests.Startup.ConfigureIoC*
+  commentId: Overload:Innovt.AspNetCore.Application.Tests.Startup.ConfigureIoC
+  href: Innovt.AspNetCore.Application.Tests.Startup.html#Innovt_AspNetCore_Application_Tests_Startup_ConfigureIoC_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  name: ConfigureIoC
+  nameWithType: Startup.ConfigureIoC
+  fullName: Innovt.AspNetCore.Application.Tests.Startup.ConfigureIoC
+- uid: Innovt.AspNetCore.ApiStartupBase.AddSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  commentId: M:Innovt.AspNetCore.ApiStartupBase.AddSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  parent: Innovt.AspNetCore.ApiStartupBase
+  isExternal: true
+  href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_AddSwagger_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  name: AddSwagger(IServiceCollection)
+  nameWithType: ApiStartupBase.AddSwagger(IServiceCollection)
+  fullName: Innovt.AspNetCore.ApiStartupBase.AddSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  spec.csharp:
+  - uid: Innovt.AspNetCore.ApiStartupBase.AddSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+    name: AddSwagger
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_AddSwagger_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  - name: (
+  - uid: Microsoft.Extensions.DependencyInjection.IServiceCollection
+    name: IServiceCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
+  - name: )
+  spec.vb:
+  - uid: Innovt.AspNetCore.ApiStartupBase.AddSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+    name: AddSwagger
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_AddSwagger_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  - name: (
+  - uid: Microsoft.Extensions.DependencyInjection.IServiceCollection
+    name: IServiceCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
+  - name: )
+- uid: Innovt.AspNetCore.Application.Tests.Startup.AddSwagger*
+  commentId: Overload:Innovt.AspNetCore.Application.Tests.Startup.AddSwagger
+  href: Innovt.AspNetCore.Application.Tests.Startup.html#Innovt_AspNetCore_Application_Tests_Startup_AddSwagger_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  name: AddSwagger
+  nameWithType: Startup.AddSwagger
+  fullName: Innovt.AspNetCore.Application.Tests.Startup.AddSwagger
+- uid: Innovt.AspNetCore.ApiStartupBase.ConfigureApp(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)
+  commentId: M:Innovt.AspNetCore.ApiStartupBase.ConfigureApp(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)
+  parent: Innovt.AspNetCore.ApiStartupBase
+  isExternal: true
+  href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_ConfigureApp_Microsoft_AspNetCore_Builder_IApplicationBuilder_Microsoft_AspNetCore_Hosting_IWebHostEnvironment_Microsoft_Extensions_Logging_ILoggerFactory_
+  name: ConfigureApp(IApplicationBuilder, IWebHostEnvironment, ILoggerFactory)
+  nameWithType: ApiStartupBase.ConfigureApp(IApplicationBuilder, IWebHostEnvironment, ILoggerFactory)
+  fullName: Innovt.AspNetCore.ApiStartupBase.ConfigureApp(Microsoft.AspNetCore.Builder.IApplicationBuilder, Microsoft.AspNetCore.Hosting.IWebHostEnvironment, Microsoft.Extensions.Logging.ILoggerFactory)
+  spec.csharp:
+  - uid: Innovt.AspNetCore.ApiStartupBase.ConfigureApp(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)
+    name: ConfigureApp
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_ConfigureApp_Microsoft_AspNetCore_Builder_IApplicationBuilder_Microsoft_AspNetCore_Hosting_IWebHostEnvironment_Microsoft_Extensions_Logging_ILoggerFactory_
+  - name: (
+  - uid: Microsoft.AspNetCore.Builder.IApplicationBuilder
+    name: IApplicationBuilder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder
+  - name: ','
+  - name: " "
+  - uid: Microsoft.AspNetCore.Hosting.IWebHostEnvironment
+    name: IWebHostEnvironment
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.iwebhostenvironment
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Extensions.Logging.ILoggerFactory
+    name: ILoggerFactory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory
+  - name: )
+  spec.vb:
+  - uid: Innovt.AspNetCore.ApiStartupBase.ConfigureApp(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)
+    name: ConfigureApp
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_ConfigureApp_Microsoft_AspNetCore_Builder_IApplicationBuilder_Microsoft_AspNetCore_Hosting_IWebHostEnvironment_Microsoft_Extensions_Logging_ILoggerFactory_
+  - name: (
+  - uid: Microsoft.AspNetCore.Builder.IApplicationBuilder
+    name: IApplicationBuilder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder
+  - name: ','
+  - name: " "
+  - uid: Microsoft.AspNetCore.Hosting.IWebHostEnvironment
+    name: IWebHostEnvironment
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.iwebhostenvironment
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Extensions.Logging.ILoggerFactory
+    name: ILoggerFactory
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory
+  - name: )
+- uid: Innovt.AspNetCore.Application.Tests.Startup.ConfigureApp*
+  commentId: Overload:Innovt.AspNetCore.Application.Tests.Startup.ConfigureApp
+  href: Innovt.AspNetCore.Application.Tests.Startup.html#Innovt_AspNetCore_Application_Tests_Startup_ConfigureApp_Microsoft_AspNetCore_Builder_IApplicationBuilder_Microsoft_AspNetCore_Hosting_IWebHostEnvironment_Microsoft_Extensions_Logging_ILoggerFactory_
+  name: ConfigureApp
+  nameWithType: Startup.ConfigureApp
+  fullName: Innovt.AspNetCore.Application.Tests.Startup.ConfigureApp
+- uid: Microsoft.AspNetCore.Builder.IApplicationBuilder
+  commentId: T:Microsoft.AspNetCore.Builder.IApplicationBuilder
+  parent: Microsoft.AspNetCore.Builder
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder
+  name: IApplicationBuilder
+  nameWithType: IApplicationBuilder
+  fullName: Microsoft.AspNetCore.Builder.IApplicationBuilder
+- uid: Microsoft.Extensions.Logging.ILoggerFactory
+  commentId: T:Microsoft.Extensions.Logging.ILoggerFactory
+  parent: Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory
+  name: ILoggerFactory
+  nameWithType: ILoggerFactory
+  fullName: Microsoft.Extensions.Logging.ILoggerFactory
+- uid: Microsoft.AspNetCore.Builder
+  commentId: N:Microsoft.AspNetCore.Builder
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.AspNetCore.Builder
+  nameWithType: Microsoft.AspNetCore.Builder
+  fullName: Microsoft.AspNetCore.Builder
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore
+  - name: .
+  - uid: Microsoft.AspNetCore.Builder
+    name: Builder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore
+  - name: .
+  - uid: Microsoft.AspNetCore.Builder
+    name: Builder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder
+- uid: Microsoft.Extensions.Logging
+  commentId: N:Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Logging
+  nameWithType: Microsoft.Extensions.Logging
+  fullName: Microsoft.Extensions.Logging
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+- uid: Innovt.AspNetCore.ApiStartupBase.ConfigureOpenTelemetry(OpenTelemetry.Trace.TracerProviderBuilder)
+  commentId: M:Innovt.AspNetCore.ApiStartupBase.ConfigureOpenTelemetry(OpenTelemetry.Trace.TracerProviderBuilder)
+  parent: Innovt.AspNetCore.ApiStartupBase
+  isExternal: true
+  href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_ConfigureOpenTelemetry_OpenTelemetry_Trace_TracerProviderBuilder_
+  name: ConfigureOpenTelemetry(TracerProviderBuilder)
+  nameWithType: ApiStartupBase.ConfigureOpenTelemetry(TracerProviderBuilder)
+  fullName: Innovt.AspNetCore.ApiStartupBase.ConfigureOpenTelemetry(OpenTelemetry.Trace.TracerProviderBuilder)
+  spec.csharp:
+  - uid: Innovt.AspNetCore.ApiStartupBase.ConfigureOpenTelemetry(OpenTelemetry.Trace.TracerProviderBuilder)
+    name: ConfigureOpenTelemetry
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_ConfigureOpenTelemetry_OpenTelemetry_Trace_TracerProviderBuilder_
+  - name: (
+  - uid: OpenTelemetry.Trace.TracerProviderBuilder
+    name: TracerProviderBuilder
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Innovt.AspNetCore.ApiStartupBase.ConfigureOpenTelemetry(OpenTelemetry.Trace.TracerProviderBuilder)
+    name: ConfigureOpenTelemetry
+    href: Innovt.AspNetCore.ApiStartupBase.html#Innovt_AspNetCore_ApiStartupBase_ConfigureOpenTelemetry_OpenTelemetry_Trace_TracerProviderBuilder_
+  - name: (
+  - uid: OpenTelemetry.Trace.TracerProviderBuilder
+    name: TracerProviderBuilder
+    isExternal: true
+  - name: )
+- uid: Innovt.AspNetCore.Application.Tests.Startup.ConfigureOpenTelemetry*
+  commentId: Overload:Innovt.AspNetCore.Application.Tests.Startup.ConfigureOpenTelemetry
+  href: Innovt.AspNetCore.Application.Tests.Startup.html#Innovt_AspNetCore_Application_Tests_Startup_ConfigureOpenTelemetry_OpenTelemetry_Trace_TracerProviderBuilder_
+  name: ConfigureOpenTelemetry
+  nameWithType: Startup.ConfigureOpenTelemetry
+  fullName: Innovt.AspNetCore.Application.Tests.Startup.ConfigureOpenTelemetry
+- uid: OpenTelemetry.Trace.TracerProviderBuilder
+  commentId: T:OpenTelemetry.Trace.TracerProviderBuilder
+  parent: OpenTelemetry.Trace
+  isExternal: true
+  name: TracerProviderBuilder
+  nameWithType: TracerProviderBuilder
+  fullName: OpenTelemetry.Trace.TracerProviderBuilder
+- uid: OpenTelemetry.Trace
+  commentId: N:OpenTelemetry.Trace
+  isExternal: true
+  name: OpenTelemetry.Trace
+  nameWithType: OpenTelemetry.Trace
+  fullName: OpenTelemetry.Trace
+  spec.csharp:
+  - uid: OpenTelemetry
+    name: OpenTelemetry
+    isExternal: true
+  - name: .
+  - uid: OpenTelemetry.Trace
+    name: Trace
+    isExternal: true
+  spec.vb:
+  - uid: OpenTelemetry
+    name: OpenTelemetry
+    isExternal: true
+  - name: .
+  - uid: OpenTelemetry.Trace
+    name: Trace
+    isExternal: true

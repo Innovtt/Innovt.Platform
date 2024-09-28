@@ -62,10 +62,10 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
         KeySeparator = keySeparator;
         return this;
     }
-    
+
     /// <summary>
-    /// Initializes a new instance of the <see cref="EntityTypeBuilder{TEntity}" /> class.
-    /// In this case the default PK and SK will be created
+    ///     Initializes a new instance of the <see cref="EntityTypeBuilder{TEntity}" /> class.
+    ///     In this case the default PK and SK will be created
     /// </summary>
     /// <returns></returns>
     public EntityTypeBuilder<TEntity> WithDefaultKeys()
@@ -95,7 +95,7 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
         Pk = hashKey;
         return Property(Pk);
     }
-    
+
     public EntityTypeBuilder<TEntity> WithHashKeyPrefix(string hashKeyPrefix)
     {
         HashKeyPrefix = hashKeyPrefix;
@@ -174,8 +174,8 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     {
         return AddProperty(name);
     }
-    
-    private PropertyTypeBuilder<TEntity> AddProperty(string name, Type type=null)
+
+    private PropertyTypeBuilder<TEntity> AddProperty(string name, Type type = null)
     {
         if (name == null) throw new ArgumentNullException(nameof(name));
 
@@ -233,18 +233,15 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     public EntityTypeBuilder<TEntity> AutoMap(bool withDefaultKeys = true)
     {
         var entityType = typeof(TEntity);
-        
+
         //Set the table name as the entity name
         TableName = entityType.Name;
 
         var properties = entityType.GetProperties(
             BindingFlags.Public | BindingFlags.Instance);
-        
-        foreach (var propertyInfo in properties)
-        {
-            AddProperty(propertyInfo.Name, propertyInfo.GetType());
-        }
-        
+
+        foreach (var propertyInfo in properties) AddProperty(propertyInfo.Name, propertyInfo.GetType());
+
         if (withDefaultKeys)
             WithDefaultKeys();
 

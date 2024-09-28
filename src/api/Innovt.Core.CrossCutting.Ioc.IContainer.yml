@@ -1,0 +1,895 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Core.CrossCutting.Ioc.IContainer
+  commentId: T:Innovt.Core.CrossCutting.Ioc.IContainer
+  id: IContainer
+  parent: Innovt.Core.CrossCutting.Ioc
+  children:
+  - Innovt.Core.CrossCutting.Ioc.IContainer.AddModule(Innovt.Core.CrossCutting.Ioc.IocModule)
+  - Innovt.Core.CrossCutting.Ioc.IContainer.CheckConfiguration
+  - Innovt.Core.CrossCutting.Ioc.IContainer.CreateScope
+  - Innovt.Core.CrossCutting.Ioc.IContainer.Release(System.Object)
+  - Innovt.Core.CrossCutting.Ioc.IContainer.Resolve(System.Type)
+  - Innovt.Core.CrossCutting.Ioc.IContainer.Resolve``1
+  - Innovt.Core.CrossCutting.Ioc.IContainer.Resolve``1(System.String)
+  - Innovt.Core.CrossCutting.Ioc.IContainer.Resolve``1(System.Type)
+  - Innovt.Core.CrossCutting.Ioc.IContainer.TryToResolve``1
+  - Innovt.Core.CrossCutting.Ioc.IContainer.TryToResolve``1(System.Type)
+  langs:
+  - csharp
+  - vb
+  name: IContainer
+  nameWithType: IContainer
+  fullName: Innovt.Core.CrossCutting.Ioc.IContainer
+  type: Interface
+  source:
+    remote:
+      path: src/Innovt.Core/CrossCutting/Ioc/IContainer.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: IContainer
+    path: Innovt.Core/CrossCutting/Ioc/IContainer.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.CrossCutting.Ioc
+  summary: Represents an interface for a dependency injection container.
+  remarks: >-
+    This interface defines a contract for a dependency injection container that provides methods for
+
+    registering modules, resolving services, releasing resources, and creating service scopes.
+
+    It also includes a method for checking container configuration.
+  example: []
+  syntax:
+    content: 'public interface IContainer : IDisposable'
+    content.vb: Public Interface IContainer Inherits IDisposable
+  inheritedMembers:
+  - System.IDisposable.Dispose
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+- uid: Innovt.Core.CrossCutting.Ioc.IContainer.AddModule(Innovt.Core.CrossCutting.Ioc.IocModule)
+  commentId: M:Innovt.Core.CrossCutting.Ioc.IContainer.AddModule(Innovt.Core.CrossCutting.Ioc.IocModule)
+  id: AddModule(Innovt.Core.CrossCutting.Ioc.IocModule)
+  parent: Innovt.Core.CrossCutting.Ioc.IContainer
+  langs:
+  - csharp
+  - vb
+  name: AddModule(IocModule)
+  nameWithType: IContainer.AddModule(IocModule)
+  fullName: Innovt.Core.CrossCutting.Ioc.IContainer.AddModule(Innovt.Core.CrossCutting.Ioc.IocModule)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/CrossCutting/Ioc/IContainer.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: AddModule
+    path: Innovt.Core/CrossCutting/Ioc/IContainer.cs
+    startLine: 23
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.CrossCutting.Ioc
+  summary: Adds an <xref href="Innovt.Core.CrossCutting.Ioc.IocModule" data-throw-if-not-resolved="false"></xref> to the container.
+  example: []
+  syntax:
+    content: void AddModule(IocModule iocModule)
+    parameters:
+    - id: iocModule
+      type: Innovt.Core.CrossCutting.Ioc.IocModule
+      description: The <xref href="Innovt.Core.CrossCutting.Ioc.IocModule" data-throw-if-not-resolved="false"></xref> to be added to the container.
+    content.vb: Sub AddModule(iocModule As IocModule)
+  overload: Innovt.Core.CrossCutting.Ioc.IContainer.AddModule*
+- uid: Innovt.Core.CrossCutting.Ioc.IContainer.Resolve(System.Type)
+  commentId: M:Innovt.Core.CrossCutting.Ioc.IContainer.Resolve(System.Type)
+  id: Resolve(System.Type)
+  parent: Innovt.Core.CrossCutting.Ioc.IContainer
+  langs:
+  - csharp
+  - vb
+  name: Resolve(Type)
+  nameWithType: IContainer.Resolve(Type)
+  fullName: Innovt.Core.CrossCutting.Ioc.IContainer.Resolve(System.Type)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/CrossCutting/Ioc/IContainer.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Resolve
+    path: Innovt.Core/CrossCutting/Ioc/IContainer.cs
+    startLine: 30
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.CrossCutting.Ioc
+  summary: Resolves a service of the specified <code class="paramref">type</code>.
+  example: []
+  syntax:
+    content: object Resolve(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: The <xref href="System.Type" data-throw-if-not-resolved="false"></xref> of the service to resolve.
+    return:
+      type: System.Object
+      description: The resolved service object.
+    content.vb: Function Resolve(type As Type) As Object
+  overload: Innovt.Core.CrossCutting.Ioc.IContainer.Resolve*
+- uid: Innovt.Core.CrossCutting.Ioc.IContainer.Resolve``1
+  commentId: M:Innovt.Core.CrossCutting.Ioc.IContainer.Resolve``1
+  id: Resolve``1
+  parent: Innovt.Core.CrossCutting.Ioc.IContainer
+  langs:
+  - csharp
+  - vb
+  name: Resolve<TService>()
+  nameWithType: IContainer.Resolve<TService>()
+  fullName: Innovt.Core.CrossCutting.Ioc.IContainer.Resolve<TService>()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/CrossCutting/Ioc/IContainer.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Resolve
+    path: Innovt.Core/CrossCutting/Ioc/IContainer.cs
+    startLine: 37
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.CrossCutting.Ioc
+  summary: Resolves a service of type <code class="typeparamref">TService</code>.
+  example: []
+  syntax:
+    content: TService Resolve<TService>()
+    typeParameters:
+    - id: TService
+      description: The type of service to resolve.
+    return:
+      type: '{TService}'
+      description: The resolved service object.
+    content.vb: Function Resolve(Of TService)() As TService
+  overload: Innovt.Core.CrossCutting.Ioc.IContainer.Resolve*
+  nameWithType.vb: IContainer.Resolve(Of TService)()
+  fullName.vb: Innovt.Core.CrossCutting.Ioc.IContainer.Resolve(Of TService)()
+  name.vb: Resolve(Of TService)()
+- uid: Innovt.Core.CrossCutting.Ioc.IContainer.TryToResolve``1
+  commentId: M:Innovt.Core.CrossCutting.Ioc.IContainer.TryToResolve``1
+  id: TryToResolve``1
+  parent: Innovt.Core.CrossCutting.Ioc.IContainer
+  langs:
+  - csharp
+  - vb
+  name: TryToResolve<TService>()
+  nameWithType: IContainer.TryToResolve<TService>()
+  fullName: Innovt.Core.CrossCutting.Ioc.IContainer.TryToResolve<TService>()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/CrossCutting/Ioc/IContainer.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: TryToResolve
+    path: Innovt.Core/CrossCutting/Ioc/IContainer.cs
+    startLine: 44
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.CrossCutting.Ioc
+  summary: Try to resolve a service. If the service is not registered, return null.
+  example: []
+  syntax:
+    content: TService TryToResolve<TService>()
+    typeParameters:
+    - id: TService
+      description: ''
+    return:
+      type: '{TService}'
+      description: ''
+    content.vb: Function TryToResolve(Of TService)() As TService
+  overload: Innovt.Core.CrossCutting.Ioc.IContainer.TryToResolve*
+  nameWithType.vb: IContainer.TryToResolve(Of TService)()
+  fullName.vb: Innovt.Core.CrossCutting.Ioc.IContainer.TryToResolve(Of TService)()
+  name.vb: TryToResolve(Of TService)()
+- uid: Innovt.Core.CrossCutting.Ioc.IContainer.Resolve``1(System.Type)
+  commentId: M:Innovt.Core.CrossCutting.Ioc.IContainer.Resolve``1(System.Type)
+  id: Resolve``1(System.Type)
+  parent: Innovt.Core.CrossCutting.Ioc.IContainer
+  langs:
+  - csharp
+  - vb
+  name: Resolve<TService>(Type)
+  nameWithType: IContainer.Resolve<TService>(Type)
+  fullName: Innovt.Core.CrossCutting.Ioc.IContainer.Resolve<TService>(System.Type)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/CrossCutting/Ioc/IContainer.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Resolve
+    path: Innovt.Core/CrossCutting/Ioc/IContainer.cs
+    startLine: 52
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.CrossCutting.Ioc
+  summary: Resolves a service of type <code class="typeparamref">TService</code> with the specified <code class="paramref">type</code>.
+  example: []
+  syntax:
+    content: TService Resolve<TService>(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: The <xref href="System.Type" data-throw-if-not-resolved="false"></xref> of the service implementation to resolve.
+    typeParameters:
+    - id: TService
+      description: The type of service to resolve.
+    return:
+      type: '{TService}'
+      description: The resolved service object.
+    content.vb: Function Resolve(Of TService)(type As Type) As TService
+  overload: Innovt.Core.CrossCutting.Ioc.IContainer.Resolve*
+  nameWithType.vb: IContainer.Resolve(Of TService)(Type)
+  fullName.vb: Innovt.Core.CrossCutting.Ioc.IContainer.Resolve(Of TService)(System.Type)
+  name.vb: Resolve(Of TService)(Type)
+- uid: Innovt.Core.CrossCutting.Ioc.IContainer.TryToResolve``1(System.Type)
+  commentId: M:Innovt.Core.CrossCutting.Ioc.IContainer.TryToResolve``1(System.Type)
+  id: TryToResolve``1(System.Type)
+  parent: Innovt.Core.CrossCutting.Ioc.IContainer
+  langs:
+  - csharp
+  - vb
+  name: TryToResolve<TService>(Type)
+  nameWithType: IContainer.TryToResolve<TService>(Type)
+  fullName: Innovt.Core.CrossCutting.Ioc.IContainer.TryToResolve<TService>(System.Type)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/CrossCutting/Ioc/IContainer.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: TryToResolve
+    path: Innovt.Core/CrossCutting/Ioc/IContainer.cs
+    startLine: 60
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.CrossCutting.Ioc
+  summary: This method will not throw an exception if the service is not registered. Return null instead.
+  example: []
+  syntax:
+    content: TService TryToResolve<TService>(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: The type that you want to get an instance
+    typeParameters:
+    - id: TService
+      description: ''
+    return:
+      type: '{TService}'
+      description: Null or an instance of your type
+    content.vb: Function TryToResolve(Of TService)(type As Type) As TService
+  overload: Innovt.Core.CrossCutting.Ioc.IContainer.TryToResolve*
+  nameWithType.vb: IContainer.TryToResolve(Of TService)(Type)
+  fullName.vb: Innovt.Core.CrossCutting.Ioc.IContainer.TryToResolve(Of TService)(System.Type)
+  name.vb: TryToResolve(Of TService)(Type)
+- uid: Innovt.Core.CrossCutting.Ioc.IContainer.Resolve``1(System.String)
+  commentId: M:Innovt.Core.CrossCutting.Ioc.IContainer.Resolve``1(System.String)
+  id: Resolve``1(System.String)
+  parent: Innovt.Core.CrossCutting.Ioc.IContainer
+  langs:
+  - csharp
+  - vb
+  name: Resolve<TService>(string)
+  nameWithType: IContainer.Resolve<TService>(string)
+  fullName: Innovt.Core.CrossCutting.Ioc.IContainer.Resolve<TService>(string)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/CrossCutting/Ioc/IContainer.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Resolve
+    path: Innovt.Core/CrossCutting/Ioc/IContainer.cs
+    startLine: 68
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.CrossCutting.Ioc
+  summary: Resolves a named instance of a service of type <code class="typeparamref">TService</code>.
+  example: []
+  syntax:
+    content: TService Resolve<TService>(string instanceKey)
+    parameters:
+    - id: instanceKey
+      type: System.String
+      description: The key identifying the named instance to resolve.
+    typeParameters:
+    - id: TService
+      description: The type of service to resolve.
+    return:
+      type: '{TService}'
+      description: The resolved service object.
+    content.vb: Function Resolve(Of TService)(instanceKey As String) As TService
+  overload: Innovt.Core.CrossCutting.Ioc.IContainer.Resolve*
+  nameWithType.vb: IContainer.Resolve(Of TService)(String)
+  fullName.vb: Innovt.Core.CrossCutting.Ioc.IContainer.Resolve(Of TService)(String)
+  name.vb: Resolve(Of TService)(String)
+- uid: Innovt.Core.CrossCutting.Ioc.IContainer.Release(System.Object)
+  commentId: M:Innovt.Core.CrossCutting.Ioc.IContainer.Release(System.Object)
+  id: Release(System.Object)
+  parent: Innovt.Core.CrossCutting.Ioc.IContainer
+  langs:
+  - csharp
+  - vb
+  name: Release(object)
+  nameWithType: IContainer.Release(object)
+  fullName: Innovt.Core.CrossCutting.Ioc.IContainer.Release(object)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/CrossCutting/Ioc/IContainer.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Release
+    path: Innovt.Core/CrossCutting/Ioc/IContainer.cs
+    startLine: 74
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.CrossCutting.Ioc
+  summary: Releases the specified object and frees associated resources.
+  example: []
+  syntax:
+    content: void Release(object obj)
+    parameters:
+    - id: obj
+      type: System.Object
+      description: The object to release.
+    content.vb: Sub Release(obj As Object)
+  overload: Innovt.Core.CrossCutting.Ioc.IContainer.Release*
+  nameWithType.vb: IContainer.Release(Object)
+  fullName.vb: Innovt.Core.CrossCutting.Ioc.IContainer.Release(Object)
+  name.vb: Release(Object)
+- uid: Innovt.Core.CrossCutting.Ioc.IContainer.CreateScope
+  commentId: M:Innovt.Core.CrossCutting.Ioc.IContainer.CreateScope
+  id: CreateScope
+  parent: Innovt.Core.CrossCutting.Ioc.IContainer
+  langs:
+  - csharp
+  - vb
+  name: CreateScope()
+  nameWithType: IContainer.CreateScope()
+  fullName: Innovt.Core.CrossCutting.Ioc.IContainer.CreateScope()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/CrossCutting/Ioc/IContainer.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: CreateScope
+    path: Innovt.Core/CrossCutting/Ioc/IContainer.cs
+    startLine: 81
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.CrossCutting.Ioc
+  summary: Creates and returns a new service scope.
+  example: []
+  syntax:
+    content: IServiceScope CreateScope()
+    return:
+      type: Microsoft.Extensions.DependencyInjection.IServiceScope
+      description: An <xref href="Microsoft.Extensions.DependencyInjection.IServiceScope" data-throw-if-not-resolved="false"></xref> representing the new service scope.
+    content.vb: Function CreateScope() As IServiceScope
+  overload: Innovt.Core.CrossCutting.Ioc.IContainer.CreateScope*
+- uid: Innovt.Core.CrossCutting.Ioc.IContainer.CheckConfiguration
+  commentId: M:Innovt.Core.CrossCutting.Ioc.IContainer.CheckConfiguration
+  id: CheckConfiguration
+  parent: Innovt.Core.CrossCutting.Ioc.IContainer
+  langs:
+  - csharp
+  - vb
+  name: CheckConfiguration()
+  nameWithType: IContainer.CheckConfiguration()
+  fullName: Innovt.Core.CrossCutting.Ioc.IContainer.CheckConfiguration()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/CrossCutting/Ioc/IContainer.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: CheckConfiguration
+    path: Innovt.Core/CrossCutting/Ioc/IContainer.cs
+    startLine: 86
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.CrossCutting.Ioc
+  summary: Checks the configuration of the container.
+  example: []
+  syntax:
+    content: void CheckConfiguration()
+    content.vb: Sub CheckConfiguration()
+  overload: Innovt.Core.CrossCutting.Ioc.IContainer.CheckConfiguration*
+references:
+- uid: Innovt.Core.CrossCutting.Ioc
+  commentId: N:Innovt.Core.CrossCutting.Ioc
+  href: Innovt.html
+  name: Innovt.Core.CrossCutting.Ioc
+  nameWithType: Innovt.Core.CrossCutting.Ioc
+  fullName: Innovt.Core.CrossCutting.Ioc
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Ioc
+    name: Ioc
+    href: Innovt.Core.CrossCutting.Ioc.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Ioc
+    name: Ioc
+    href: Innovt.Core.CrossCutting.Ioc.html
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Core.CrossCutting.Ioc.IocModule
+  commentId: T:Innovt.Core.CrossCutting.Ioc.IocModule
+  parent: Innovt.Core.CrossCutting.Ioc
+  href: Innovt.Core.CrossCutting.Ioc.IocModule.html
+  name: IocModule
+  nameWithType: IocModule
+  fullName: Innovt.Core.CrossCutting.Ioc.IocModule
+- uid: Innovt.Core.CrossCutting.Ioc.IContainer.AddModule*
+  commentId: Overload:Innovt.Core.CrossCutting.Ioc.IContainer.AddModule
+  href: Innovt.Core.CrossCutting.Ioc.IContainer.html#Innovt_Core_CrossCutting_Ioc_IContainer_AddModule_Innovt_Core_CrossCutting_Ioc_IocModule_
+  name: AddModule
+  nameWithType: IContainer.AddModule
+  fullName: Innovt.Core.CrossCutting.Ioc.IContainer.AddModule
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: Innovt.Core.CrossCutting.Ioc.IContainer.Resolve*
+  commentId: Overload:Innovt.Core.CrossCutting.Ioc.IContainer.Resolve
+  href: Innovt.Core.CrossCutting.Ioc.IContainer.html#Innovt_Core_CrossCutting_Ioc_IContainer_Resolve_System_Type_
+  name: Resolve
+  nameWithType: IContainer.Resolve
+  fullName: Innovt.Core.CrossCutting.Ioc.IContainer.Resolve
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: '{TService}'
+  commentId: '!:TService'
+  definition: TService
+  name: TService
+  nameWithType: TService
+  fullName: TService
+- uid: TService
+  name: TService
+  nameWithType: TService
+  fullName: TService
+- uid: Innovt.Core.CrossCutting.Ioc.IContainer.TryToResolve*
+  commentId: Overload:Innovt.Core.CrossCutting.Ioc.IContainer.TryToResolve
+  href: Innovt.Core.CrossCutting.Ioc.IContainer.html#Innovt_Core_CrossCutting_Ioc_IContainer_TryToResolve__1
+  name: TryToResolve
+  nameWithType: IContainer.TryToResolve
+  fullName: Innovt.Core.CrossCutting.Ioc.IContainer.TryToResolve
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Innovt.Core.CrossCutting.Ioc.IContainer.Release*
+  commentId: Overload:Innovt.Core.CrossCutting.Ioc.IContainer.Release
+  href: Innovt.Core.CrossCutting.Ioc.IContainer.html#Innovt_Core_CrossCutting_Ioc_IContainer_Release_System_Object_
+  name: Release
+  nameWithType: IContainer.Release
+  fullName: Innovt.Core.CrossCutting.Ioc.IContainer.Release
+- uid: Microsoft.Extensions.DependencyInjection.IServiceScope
+  commentId: T:Microsoft.Extensions.DependencyInjection.IServiceScope
+  parent: Microsoft.Extensions.DependencyInjection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicescope
+  name: IServiceScope
+  nameWithType: IServiceScope
+  fullName: Microsoft.Extensions.DependencyInjection.IServiceScope
+- uid: Innovt.Core.CrossCutting.Ioc.IContainer.CreateScope*
+  commentId: Overload:Innovt.Core.CrossCutting.Ioc.IContainer.CreateScope
+  href: Innovt.Core.CrossCutting.Ioc.IContainer.html#Innovt_Core_CrossCutting_Ioc_IContainer_CreateScope
+  name: CreateScope
+  nameWithType: IContainer.CreateScope
+  fullName: Innovt.Core.CrossCutting.Ioc.IContainer.CreateScope
+- uid: Microsoft.Extensions.DependencyInjection
+  commentId: N:Microsoft.Extensions.DependencyInjection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.DependencyInjection
+  nameWithType: Microsoft.Extensions.DependencyInjection
+  fullName: Microsoft.Extensions.DependencyInjection
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection
+- uid: Innovt.Core.CrossCutting.Ioc.IContainer.CheckConfiguration*
+  commentId: Overload:Innovt.Core.CrossCutting.Ioc.IContainer.CheckConfiguration
+  href: Innovt.Core.CrossCutting.Ioc.IContainer.html#Innovt_Core_CrossCutting_Ioc_IContainer_CheckConfiguration
+  name: CheckConfiguration
+  nameWithType: IContainer.CheckConfiguration
+  fullName: Innovt.Core.CrossCutting.Ioc.IContainer.CheckConfiguration

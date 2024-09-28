@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Data.Ado.Tests
+  commentId: N:Innovt.Data.Ado.Tests
+  id: Innovt.Data.Ado.Tests
+  children:
+  - Innovt.Data.Ado.Tests.RepositoryBaseTests
+  - Innovt.Data.Ado.Tests.UserRepository
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Data.Ado.Tests
+  nameWithType: Innovt.Data.Ado.Tests
+  fullName: Innovt.Data.Ado.Tests
+  type: Namespace
+  assemblies:
+  - Innovt.Data.Ado.Tests
+references:
+- uid: Innovt.Data.Ado.Tests.RepositoryBaseTests
+  commentId: T:Innovt.Data.Ado.Tests.RepositoryBaseTests
+  href: Innovt.Data.Ado.Tests.RepositoryBaseTests.html
+  name: RepositoryBaseTests
+  nameWithType: RepositoryBaseTests
+  fullName: Innovt.Data.Ado.Tests.RepositoryBaseTests
+- uid: Innovt.Data.Ado.Tests.UserRepository
+  commentId: T:Innovt.Data.Ado.Tests.UserRepository
+  href: Innovt.Data.Ado.Tests.UserRepository.html
+  name: UserRepository
+  nameWithType: UserRepository
+  fullName: Innovt.Data.Ado.Tests.UserRepository

@@ -184,7 +184,7 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
     ///     Creates the queue if it does not exist asynchronously.
     /// </summary>
     /// <param name="cancellationToken">Cancellation token (optional).</param>
-    /// <returns>A task representing the asynchronous operation.</return
+    /// <returns>A task representing the asynchronous operation.</returns>
     public async Task CreateIfNotExistAsync(CancellationToken cancellationToken = default)
     {
         using var activity = QueueActivitySource.StartActivity();

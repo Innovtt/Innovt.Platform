@@ -1,0 +1,1156 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Domain.Core.Specification.OrSpecification`1
+  commentId: T:Innovt.Domain.Core.Specification.OrSpecification`1
+  id: OrSpecification`1
+  parent: Innovt.Domain.Core.Specification
+  children:
+  - Innovt.Domain.Core.Specification.OrSpecification`1.#ctor(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Specification.ISpecification{`0})
+  - Innovt.Domain.Core.Specification.OrSpecification`1.LeftSideSpecification
+  - Innovt.Domain.Core.Specification.OrSpecification`1.RightSideSpecification
+  - Innovt.Domain.Core.Specification.OrSpecification`1.SatisfiedBy
+  langs:
+  - csharp
+  - vb
+  name: OrSpecification<T>
+  nameWithType: OrSpecification<T>
+  fullName: Innovt.Domain.Core.Specification.OrSpecification<T>
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Specification/OrSpecification.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: OrSpecification
+    path: Innovt.Domain.Core/Specification/OrSpecification.cs
+    startLine: 13
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Specification
+  summary: A Logic OR Specification
+  example: []
+  syntax:
+    content: 'public sealed class OrSpecification<T> : CompositeSpecification<T>, ISpecification<T> where T : class'
+    typeParameters:
+    - id: T
+      description: Type of entity that check this specification
+    content.vb: Public NotInheritable Class OrSpecification(Of T As Class) Inherits CompositeSpecification(Of T) Implements ISpecification(Of T)
+  inheritance:
+  - System.Object
+  - Innovt.Domain.Core.Specification.Specification{{T}}
+  - Innovt.Domain.Core.Specification.CompositeSpecification{{T}}
+  implements:
+  - Innovt.Domain.Core.Specification.ISpecification{{T}}
+  inheritedMembers:
+  - Innovt.Domain.Core.Specification.Specification{{T}}.Page
+  - Innovt.Domain.Core.Specification.Specification{{T}}.PageSize
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  nameWithType.vb: OrSpecification(Of T)
+  fullName.vb: Innovt.Domain.Core.Specification.OrSpecification(Of T)
+  name.vb: OrSpecification(Of T)
+- uid: Innovt.Domain.Core.Specification.OrSpecification`1.#ctor(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Specification.ISpecification{`0})
+  commentId: M:Innovt.Domain.Core.Specification.OrSpecification`1.#ctor(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Specification.ISpecification{`0})
+  id: '#ctor(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Specification.ISpecification{`0})'
+  parent: Innovt.Domain.Core.Specification.OrSpecification`1
+  langs:
+  - csharp
+  - vb
+  name: OrSpecification(ISpecification<T>, ISpecification<T>)
+  nameWithType: OrSpecification<T>.OrSpecification(ISpecification<T>, ISpecification<T>)
+  fullName: Innovt.Domain.Core.Specification.OrSpecification<T>.OrSpecification(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Specification.ISpecification<T>)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Specification/OrSpecification.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: Innovt.Domain.Core/Specification/OrSpecification.cs
+    startLine: 24
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Specification
+  summary: Default constructor for AndSpecification
+  example: []
+  syntax:
+    content: public OrSpecification(ISpecification<T> leftSide, ISpecification<T> rightSide)
+    parameters:
+    - id: leftSide
+      type: Innovt.Domain.Core.Specification.ISpecification{{T}}
+      description: Left side specification
+    - id: rightSide
+      type: Innovt.Domain.Core.Specification.ISpecification{{T}}
+      description: Right side specification
+    content.vb: Public Sub New(leftSide As ISpecification(Of T), rightSide As ISpecification(Of T))
+  overload: Innovt.Domain.Core.Specification.OrSpecification`1.#ctor*
+  nameWithType.vb: OrSpecification(Of T).New(ISpecification(Of T), ISpecification(Of T))
+  fullName.vb: Innovt.Domain.Core.Specification.OrSpecification(Of T).New(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Specification.ISpecification(Of T))
+  name.vb: New(ISpecification(Of T), ISpecification(Of T))
+- uid: Innovt.Domain.Core.Specification.OrSpecification`1.LeftSideSpecification
+  commentId: P:Innovt.Domain.Core.Specification.OrSpecification`1.LeftSideSpecification
+  id: LeftSideSpecification
+  parent: Innovt.Domain.Core.Specification.OrSpecification`1
+  langs:
+  - csharp
+  - vb
+  name: LeftSideSpecification
+  nameWithType: OrSpecification<T>.LeftSideSpecification
+  fullName: Innovt.Domain.Core.Specification.OrSpecification<T>.LeftSideSpecification
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Specification/OrSpecification.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: LeftSideSpecification
+    path: Innovt.Domain.Core/Specification/OrSpecification.cs
+    startLine: 41
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Specification
+  summary: Left side specification
+  example: []
+  syntax:
+    content: public override ISpecification<T> LeftSideSpecification { get; }
+    parameters: []
+    return:
+      type: Innovt.Domain.Core.Specification.ISpecification{{T}}
+    content.vb: Public Overrides ReadOnly Property LeftSideSpecification As ISpecification(Of T)
+  overridden: Innovt.Domain.Core.Specification.CompositeSpecification{{T}}.LeftSideSpecification
+  overload: Innovt.Domain.Core.Specification.OrSpecification`1.LeftSideSpecification*
+  nameWithType.vb: OrSpecification(Of T).LeftSideSpecification
+  fullName.vb: Innovt.Domain.Core.Specification.OrSpecification(Of T).LeftSideSpecification
+- uid: Innovt.Domain.Core.Specification.OrSpecification`1.RightSideSpecification
+  commentId: P:Innovt.Domain.Core.Specification.OrSpecification`1.RightSideSpecification
+  id: RightSideSpecification
+  parent: Innovt.Domain.Core.Specification.OrSpecification`1
+  langs:
+  - csharp
+  - vb
+  name: RightSideSpecification
+  nameWithType: OrSpecification<T>.RightSideSpecification
+  fullName: Innovt.Domain.Core.Specification.OrSpecification<T>.RightSideSpecification
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Specification/OrSpecification.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: RightSideSpecification
+    path: Innovt.Domain.Core/Specification/OrSpecification.cs
+    startLine: 46
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Specification
+  summary: Righ side specification
+  example: []
+  syntax:
+    content: public override ISpecification<T> RightSideSpecification { get; }
+    parameters: []
+    return:
+      type: Innovt.Domain.Core.Specification.ISpecification{{T}}
+    content.vb: Public Overrides ReadOnly Property RightSideSpecification As ISpecification(Of T)
+  overridden: Innovt.Domain.Core.Specification.CompositeSpecification{{T}}.RightSideSpecification
+  overload: Innovt.Domain.Core.Specification.OrSpecification`1.RightSideSpecification*
+  nameWithType.vb: OrSpecification(Of T).RightSideSpecification
+  fullName.vb: Innovt.Domain.Core.Specification.OrSpecification(Of T).RightSideSpecification
+- uid: Innovt.Domain.Core.Specification.OrSpecification`1.SatisfiedBy
+  commentId: M:Innovt.Domain.Core.Specification.OrSpecification`1.SatisfiedBy
+  id: SatisfiedBy
+  parent: Innovt.Domain.Core.Specification.OrSpecification`1
+  langs:
+  - csharp
+  - vb
+  name: SatisfiedBy()
+  nameWithType: OrSpecification<T>.SatisfiedBy()
+  fullName: Innovt.Domain.Core.Specification.OrSpecification<T>.SatisfiedBy()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Specification/OrSpecification.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: SatisfiedBy
+    path: Innovt.Domain.Core/Specification/OrSpecification.cs
+    startLine: 54
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Specification
+  summary: <xref href="Innovt.Domain.Core.Specification.ISpecification%601" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public override Expression<Func<T, bool>> SatisfiedBy()
+    return:
+      type: System.Linq.Expressions.Expression{System.Func{{T},System.Boolean}}
+      description: <xref href="Innovt.Domain.Core.Specification.ISpecification%601" data-throw-if-not-resolved="false"></xref>
+    content.vb: Public Overrides Function SatisfiedBy() As Expression(Of Func(Of T, Boolean))
+  overridden: Innovt.Domain.Core.Specification.Specification{{T}}.SatisfiedBy
+  overload: Innovt.Domain.Core.Specification.OrSpecification`1.SatisfiedBy*
+  nameWithType.vb: OrSpecification(Of T).SatisfiedBy()
+  fullName.vb: Innovt.Domain.Core.Specification.OrSpecification(Of T).SatisfiedBy()
+references:
+- uid: Innovt.Domain.Core.Specification
+  commentId: N:Innovt.Domain.Core.Specification
+  href: Innovt.html
+  name: Innovt.Domain.Core.Specification
+  nameWithType: Innovt.Domain.Core.Specification
+  fullName: Innovt.Domain.Core.Specification
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Specification
+    name: Specification
+    href: Innovt.Domain.Core.Specification.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Specification
+    name: Specification
+    href: Innovt.Domain.Core.Specification.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Innovt.Domain.Core.Specification.Specification{{T}}
+  commentId: T:Innovt.Domain.Core.Specification.Specification{`0}
+  parent: Innovt.Domain.Core.Specification
+  definition: Innovt.Domain.Core.Specification.Specification`1
+  href: Innovt.Domain.Core.Specification.Specification-1.html
+  name: Specification<T>
+  nameWithType: Specification<T>
+  fullName: Innovt.Domain.Core.Specification.Specification<T>
+  nameWithType.vb: Specification(Of T)
+  fullName.vb: Innovt.Domain.Core.Specification.Specification(Of T)
+  name.vb: Specification(Of T)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.Specification`1
+    name: Specification
+    href: Innovt.Domain.Core.Specification.Specification-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.Specification`1
+    name: Specification
+    href: Innovt.Domain.Core.Specification.Specification-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Domain.Core.Specification.CompositeSpecification{{T}}
+  commentId: T:Innovt.Domain.Core.Specification.CompositeSpecification{`0}
+  parent: Innovt.Domain.Core.Specification
+  definition: Innovt.Domain.Core.Specification.CompositeSpecification`1
+  href: Innovt.Domain.Core.Specification.CompositeSpecification-1.html
+  name: CompositeSpecification<T>
+  nameWithType: CompositeSpecification<T>
+  fullName: Innovt.Domain.Core.Specification.CompositeSpecification<T>
+  nameWithType.vb: CompositeSpecification(Of T)
+  fullName.vb: Innovt.Domain.Core.Specification.CompositeSpecification(Of T)
+  name.vb: CompositeSpecification(Of T)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.CompositeSpecification`1
+    name: CompositeSpecification
+    href: Innovt.Domain.Core.Specification.CompositeSpecification-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.CompositeSpecification`1
+    name: CompositeSpecification
+    href: Innovt.Domain.Core.Specification.CompositeSpecification-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Domain.Core.Specification.ISpecification{{T}}
+  commentId: T:Innovt.Domain.Core.Specification.ISpecification{``0}
+  parent: Innovt.Domain.Core.Specification
+  definition: Innovt.Domain.Core.Specification.ISpecification`1
+  href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  name: ISpecification<T>
+  nameWithType: ISpecification<T>
+  fullName: Innovt.Domain.Core.Specification.ISpecification<T>
+  nameWithType.vb: ISpecification(Of T)
+  fullName.vb: Innovt.Domain.Core.Specification.ISpecification(Of T)
+  name.vb: ISpecification(Of T)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+    href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+    href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Domain.Core.Specification.Specification{{T}}.Page
+  commentId: P:Innovt.Domain.Core.Specification.Specification{`0}.Page
+  parent: Innovt.Domain.Core.Specification.Specification{{T}}
+  definition: Innovt.Domain.Core.Specification.Specification`1.Page
+  href: Innovt.Domain.Core.Specification.Specification-1.html#Innovt_Domain_Core_Specification_Specification_1_Page
+  name: Page
+  nameWithType: Specification<T>.Page
+  fullName: Innovt.Domain.Core.Specification.Specification<T>.Page
+  nameWithType.vb: Specification(Of T).Page
+  fullName.vb: Innovt.Domain.Core.Specification.Specification(Of T).Page
+- uid: Innovt.Domain.Core.Specification.Specification{{T}}.PageSize
+  commentId: P:Innovt.Domain.Core.Specification.Specification{`0}.PageSize
+  parent: Innovt.Domain.Core.Specification.Specification{{T}}
+  definition: Innovt.Domain.Core.Specification.Specification`1.PageSize
+  href: Innovt.Domain.Core.Specification.Specification-1.html#Innovt_Domain_Core_Specification_Specification_1_PageSize
+  name: PageSize
+  nameWithType: Specification<T>.PageSize
+  fullName: Innovt.Domain.Core.Specification.Specification<T>.PageSize
+  nameWithType.vb: Specification(Of T).PageSize
+  fullName.vb: Innovt.Domain.Core.Specification.Specification(Of T).PageSize
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Domain.Core.Specification.Specification`1
+  commentId: T:Innovt.Domain.Core.Specification.Specification`1
+  parent: Innovt.Domain.Core.Specification
+  href: Innovt.Domain.Core.Specification.Specification-1.html
+  name: Specification<TEntity>
+  nameWithType: Specification<TEntity>
+  fullName: Innovt.Domain.Core.Specification.Specification<TEntity>
+  nameWithType.vb: Specification(Of TEntity)
+  fullName.vb: Innovt.Domain.Core.Specification.Specification(Of TEntity)
+  name.vb: Specification(Of TEntity)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.Specification`1
+    name: Specification
+    href: Innovt.Domain.Core.Specification.Specification-1.html
+  - name: <
+  - name: TEntity
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.Specification`1
+    name: Specification
+    href: Innovt.Domain.Core.Specification.Specification-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+- uid: Innovt.Domain.Core.Specification.CompositeSpecification`1
+  commentId: T:Innovt.Domain.Core.Specification.CompositeSpecification`1
+  href: Innovt.Domain.Core.Specification.CompositeSpecification-1.html
+  name: CompositeSpecification<TEntity>
+  nameWithType: CompositeSpecification<TEntity>
+  fullName: Innovt.Domain.Core.Specification.CompositeSpecification<TEntity>
+  nameWithType.vb: CompositeSpecification(Of TEntity)
+  fullName.vb: Innovt.Domain.Core.Specification.CompositeSpecification(Of TEntity)
+  name.vb: CompositeSpecification(Of TEntity)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.CompositeSpecification`1
+    name: CompositeSpecification
+    href: Innovt.Domain.Core.Specification.CompositeSpecification-1.html
+  - name: <
+  - name: TEntity
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.CompositeSpecification`1
+    name: CompositeSpecification
+    href: Innovt.Domain.Core.Specification.CompositeSpecification-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+- uid: Innovt.Domain.Core.Specification.ISpecification`1
+  commentId: T:Innovt.Domain.Core.Specification.ISpecification`1
+  href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  name: ISpecification<TEntity>
+  nameWithType: ISpecification<TEntity>
+  fullName: Innovt.Domain.Core.Specification.ISpecification<TEntity>
+  nameWithType.vb: ISpecification(Of TEntity)
+  fullName.vb: Innovt.Domain.Core.Specification.ISpecification(Of TEntity)
+  name.vb: ISpecification(Of TEntity)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+    href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  - name: <
+  - name: TEntity
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+    href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+- uid: Innovt.Domain.Core.Specification.Specification`1.Page
+  commentId: P:Innovt.Domain.Core.Specification.Specification`1.Page
+  href: Innovt.Domain.Core.Specification.Specification-1.html#Innovt_Domain_Core_Specification_Specification_1_Page
+  name: Page
+  nameWithType: Specification<TEntity>.Page
+  fullName: Innovt.Domain.Core.Specification.Specification<TEntity>.Page
+  nameWithType.vb: Specification(Of TEntity).Page
+  fullName.vb: Innovt.Domain.Core.Specification.Specification(Of TEntity).Page
+- uid: Innovt.Domain.Core.Specification.Specification`1.PageSize
+  commentId: P:Innovt.Domain.Core.Specification.Specification`1.PageSize
+  href: Innovt.Domain.Core.Specification.Specification-1.html#Innovt_Domain_Core_Specification_Specification_1_PageSize
+  name: PageSize
+  nameWithType: Specification<TEntity>.PageSize
+  fullName: Innovt.Domain.Core.Specification.Specification<TEntity>.PageSize
+  nameWithType.vb: Specification(Of TEntity).PageSize
+  fullName.vb: Innovt.Domain.Core.Specification.Specification(Of TEntity).PageSize
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Domain.Core.Specification.OrSpecification`1.#ctor*
+  commentId: Overload:Innovt.Domain.Core.Specification.OrSpecification`1.#ctor
+  href: Innovt.Domain.Core.Specification.OrSpecification-1.html#Innovt_Domain_Core_Specification_OrSpecification_1__ctor_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Specification_ISpecification__0__
+  name: OrSpecification
+  nameWithType: OrSpecification<T>.OrSpecification
+  fullName: Innovt.Domain.Core.Specification.OrSpecification<T>.OrSpecification
+  nameWithType.vb: OrSpecification(Of T).New
+  fullName.vb: Innovt.Domain.Core.Specification.OrSpecification(Of T).New
+  name.vb: New
+- uid: Innovt.Domain.Core.Specification.CompositeSpecification{{T}}.LeftSideSpecification
+  commentId: P:Innovt.Domain.Core.Specification.CompositeSpecification{`0}.LeftSideSpecification
+  parent: Innovt.Domain.Core.Specification.CompositeSpecification{{T}}
+  definition: Innovt.Domain.Core.Specification.CompositeSpecification`1.LeftSideSpecification
+  href: Innovt.Domain.Core.Specification.CompositeSpecification-1.html#Innovt_Domain_Core_Specification_CompositeSpecification_1_LeftSideSpecification
+  name: LeftSideSpecification
+  nameWithType: CompositeSpecification<T>.LeftSideSpecification
+  fullName: Innovt.Domain.Core.Specification.CompositeSpecification<T>.LeftSideSpecification
+  nameWithType.vb: CompositeSpecification(Of T).LeftSideSpecification
+  fullName.vb: Innovt.Domain.Core.Specification.CompositeSpecification(Of T).LeftSideSpecification
+- uid: Innovt.Domain.Core.Specification.OrSpecification`1.LeftSideSpecification*
+  commentId: Overload:Innovt.Domain.Core.Specification.OrSpecification`1.LeftSideSpecification
+  href: Innovt.Domain.Core.Specification.OrSpecification-1.html#Innovt_Domain_Core_Specification_OrSpecification_1_LeftSideSpecification
+  name: LeftSideSpecification
+  nameWithType: OrSpecification<T>.LeftSideSpecification
+  fullName: Innovt.Domain.Core.Specification.OrSpecification<T>.LeftSideSpecification
+  nameWithType.vb: OrSpecification(Of T).LeftSideSpecification
+  fullName.vb: Innovt.Domain.Core.Specification.OrSpecification(Of T).LeftSideSpecification
+- uid: Innovt.Domain.Core.Specification.CompositeSpecification`1.LeftSideSpecification
+  commentId: P:Innovt.Domain.Core.Specification.CompositeSpecification`1.LeftSideSpecification
+  href: Innovt.Domain.Core.Specification.CompositeSpecification-1.html#Innovt_Domain_Core_Specification_CompositeSpecification_1_LeftSideSpecification
+  name: LeftSideSpecification
+  nameWithType: CompositeSpecification<TEntity>.LeftSideSpecification
+  fullName: Innovt.Domain.Core.Specification.CompositeSpecification<TEntity>.LeftSideSpecification
+  nameWithType.vb: CompositeSpecification(Of TEntity).LeftSideSpecification
+  fullName.vb: Innovt.Domain.Core.Specification.CompositeSpecification(Of TEntity).LeftSideSpecification
+- uid: Innovt.Domain.Core.Specification.CompositeSpecification{{T}}.RightSideSpecification
+  commentId: P:Innovt.Domain.Core.Specification.CompositeSpecification{`0}.RightSideSpecification
+  parent: Innovt.Domain.Core.Specification.CompositeSpecification{{T}}
+  definition: Innovt.Domain.Core.Specification.CompositeSpecification`1.RightSideSpecification
+  href: Innovt.Domain.Core.Specification.CompositeSpecification-1.html#Innovt_Domain_Core_Specification_CompositeSpecification_1_RightSideSpecification
+  name: RightSideSpecification
+  nameWithType: CompositeSpecification<T>.RightSideSpecification
+  fullName: Innovt.Domain.Core.Specification.CompositeSpecification<T>.RightSideSpecification
+  nameWithType.vb: CompositeSpecification(Of T).RightSideSpecification
+  fullName.vb: Innovt.Domain.Core.Specification.CompositeSpecification(Of T).RightSideSpecification
+- uid: Innovt.Domain.Core.Specification.OrSpecification`1.RightSideSpecification*
+  commentId: Overload:Innovt.Domain.Core.Specification.OrSpecification`1.RightSideSpecification
+  href: Innovt.Domain.Core.Specification.OrSpecification-1.html#Innovt_Domain_Core_Specification_OrSpecification_1_RightSideSpecification
+  name: RightSideSpecification
+  nameWithType: OrSpecification<T>.RightSideSpecification
+  fullName: Innovt.Domain.Core.Specification.OrSpecification<T>.RightSideSpecification
+  nameWithType.vb: OrSpecification(Of T).RightSideSpecification
+  fullName.vb: Innovt.Domain.Core.Specification.OrSpecification(Of T).RightSideSpecification
+- uid: Innovt.Domain.Core.Specification.CompositeSpecification`1.RightSideSpecification
+  commentId: P:Innovt.Domain.Core.Specification.CompositeSpecification`1.RightSideSpecification
+  href: Innovt.Domain.Core.Specification.CompositeSpecification-1.html#Innovt_Domain_Core_Specification_CompositeSpecification_1_RightSideSpecification
+  name: RightSideSpecification
+  nameWithType: CompositeSpecification<TEntity>.RightSideSpecification
+  fullName: Innovt.Domain.Core.Specification.CompositeSpecification<TEntity>.RightSideSpecification
+  nameWithType.vb: CompositeSpecification(Of TEntity).RightSideSpecification
+  fullName.vb: Innovt.Domain.Core.Specification.CompositeSpecification(Of TEntity).RightSideSpecification
+- uid: Innovt.Domain.Core.Specification.Specification{{T}}.SatisfiedBy
+  commentId: M:Innovt.Domain.Core.Specification.Specification{`0}.SatisfiedBy
+  parent: Innovt.Domain.Core.Specification.Specification{{T}}
+  definition: Innovt.Domain.Core.Specification.Specification`1.SatisfiedBy
+  href: Innovt.Domain.Core.Specification.Specification-1.html#Innovt_Domain_Core_Specification_Specification_1_SatisfiedBy
+  name: SatisfiedBy()
+  nameWithType: Specification<T>.SatisfiedBy()
+  fullName: Innovt.Domain.Core.Specification.Specification<T>.SatisfiedBy()
+  nameWithType.vb: Specification(Of T).SatisfiedBy()
+  fullName.vb: Innovt.Domain.Core.Specification.Specification(Of T).SatisfiedBy()
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.Specification{`0}.SatisfiedBy
+    name: SatisfiedBy
+    href: Innovt.Domain.Core.Specification.Specification-1.html#Innovt_Domain_Core_Specification_Specification_1_SatisfiedBy
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.Specification{`0}.SatisfiedBy
+    name: SatisfiedBy
+    href: Innovt.Domain.Core.Specification.Specification-1.html#Innovt_Domain_Core_Specification_Specification_1_SatisfiedBy
+  - name: (
+  - name: )
+- uid: Innovt.Domain.Core.Specification.OrSpecification`1.SatisfiedBy*
+  commentId: Overload:Innovt.Domain.Core.Specification.OrSpecification`1.SatisfiedBy
+  href: Innovt.Domain.Core.Specification.OrSpecification-1.html#Innovt_Domain_Core_Specification_OrSpecification_1_SatisfiedBy
+  name: SatisfiedBy
+  nameWithType: OrSpecification<T>.SatisfiedBy
+  fullName: Innovt.Domain.Core.Specification.OrSpecification<T>.SatisfiedBy
+  nameWithType.vb: OrSpecification(Of T).SatisfiedBy
+  fullName.vb: Innovt.Domain.Core.Specification.OrSpecification(Of T).SatisfiedBy
+- uid: System.Linq.Expressions.Expression{System.Func{{T},System.Boolean}}
+  commentId: T:System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}}
+  parent: System.Linq.Expressions
+  definition: System.Linq.Expressions.Expression`1
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  name: Expression<Func<T, bool>>
+  nameWithType: Expression<Func<T, bool>>
+  fullName: System.Linq.Expressions.Expression<System.Func<T, bool>>
+  nameWithType.vb: Expression(Of Func(Of T, Boolean))
+  fullName.vb: System.Linq.Expressions.Expression(Of System.Func(Of T, Boolean))
+  name.vb: Expression(Of Func(Of T, Boolean))
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  - name: )
+- uid: Innovt.Domain.Core.Specification.Specification`1.SatisfiedBy
+  commentId: M:Innovt.Domain.Core.Specification.Specification`1.SatisfiedBy
+  href: Innovt.Domain.Core.Specification.Specification-1.html#Innovt_Domain_Core_Specification_Specification_1_SatisfiedBy
+  name: SatisfiedBy()
+  nameWithType: Specification<TEntity>.SatisfiedBy()
+  fullName: Innovt.Domain.Core.Specification.Specification<TEntity>.SatisfiedBy()
+  nameWithType.vb: Specification(Of TEntity).SatisfiedBy()
+  fullName.vb: Innovt.Domain.Core.Specification.Specification(Of TEntity).SatisfiedBy()
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.Specification`1.SatisfiedBy
+    name: SatisfiedBy
+    href: Innovt.Domain.Core.Specification.Specification-1.html#Innovt_Domain_Core_Specification_Specification_1_SatisfiedBy
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.Specification`1.SatisfiedBy
+    name: SatisfiedBy
+    href: Innovt.Domain.Core.Specification.Specification-1.html#Innovt_Domain_Core_Specification_Specification_1_SatisfiedBy
+  - name: (
+  - name: )
+- uid: System.Linq.Expressions.Expression`1
+  commentId: T:System.Linq.Expressions.Expression`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  name: Expression<TDelegate>
+  nameWithType: Expression<TDelegate>
+  fullName: System.Linq.Expressions.Expression<TDelegate>
+  nameWithType.vb: Expression(Of TDelegate)
+  fullName.vb: System.Linq.Expressions.Expression(Of TDelegate)
+  name.vb: Expression(Of TDelegate)
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - name: TDelegate
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDelegate
+  - name: )
+- uid: System.Linq.Expressions
+  commentId: N:System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Linq.Expressions
+  nameWithType: System.Linq.Expressions
+  fullName: System.Linq.Expressions
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq
+  - name: .
+  - uid: System.Linq.Expressions
+    name: Expressions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq
+  - name: .
+  - uid: System.Linq.Expressions
+    name: Expressions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions

@@ -1,0 +1,895 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Core.Test.CryptographyTests
+  commentId: T:Innovt.Core.Test.CryptographyTests
+  id: CryptographyTests
+  parent: Innovt.Core.Test
+  children:
+  - Innovt.Core.Test.CryptographyTests.AesDecrypt(System.String,System.String)
+  - Innovt.Core.Test.CryptographyTests.AesEncryptCryptography(System.String)
+  - Innovt.Core.Test.CryptographyTests.AesEncryptShouldThrowExceptionWhenTextIsNull
+  - Innovt.Core.Test.CryptographyTests.RijndaelDecrypt(System.String,System.String)
+  - Innovt.Core.Test.CryptographyTests.RijndaelEncrypt(System.String)
+  langs:
+  - csharp
+  - vb
+  name: CryptographyTests
+  nameWithType: CryptographyTests
+  fullName: Innovt.Core.Test.CryptographyTests
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Core.Test/CryptographyTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: CryptographyTests
+    path: Innovt.Core.Test/CryptographyTests.cs
+    startLine: 10
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: >-
+      [TestFixture]
+
+      public class CryptographyTests
+    content.vb: >-
+      <TestFixture>
+
+      Public Class CryptographyTests
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  attributes:
+  - type: NUnit.Framework.TestFixtureAttribute
+    ctor: NUnit.Framework.TestFixtureAttribute.#ctor
+    arguments: []
+- uid: Innovt.Core.Test.CryptographyTests.AesEncryptShouldThrowExceptionWhenTextIsNull
+  commentId: M:Innovt.Core.Test.CryptographyTests.AesEncryptShouldThrowExceptionWhenTextIsNull
+  id: AesEncryptShouldThrowExceptionWhenTextIsNull
+  parent: Innovt.Core.Test.CryptographyTests
+  langs:
+  - csharp
+  - vb
+  name: AesEncryptShouldThrowExceptionWhenTextIsNull()
+  nameWithType: CryptographyTests.AesEncryptShouldThrowExceptionWhenTextIsNull()
+  fullName: Innovt.Core.Test.CryptographyTests.AesEncryptShouldThrowExceptionWhenTextIsNull()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core.Test/CryptographyTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: AesEncryptShouldThrowExceptionWhenTextIsNull
+    path: Innovt.Core.Test/CryptographyTests.cs
+    startLine: 13
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: >-
+      [Test]
+
+      public void AesEncryptShouldThrowExceptionWhenTextIsNull()
+    content.vb: >-
+      <Test>
+
+      Public Sub AesEncryptShouldThrowExceptionWhenTextIsNull()
+  overload: Innovt.Core.Test.CryptographyTests.AesEncryptShouldThrowExceptionWhenTextIsNull*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+- uid: Innovt.Core.Test.CryptographyTests.AesEncryptCryptography(System.String)
+  commentId: M:Innovt.Core.Test.CryptographyTests.AesEncryptCryptography(System.String)
+  id: AesEncryptCryptography(System.String)
+  parent: Innovt.Core.Test.CryptographyTests
+  langs:
+  - csharp
+  - vb
+  name: AesEncryptCryptography(string)
+  nameWithType: CryptographyTests.AesEncryptCryptography(string)
+  fullName: Innovt.Core.Test.CryptographyTests.AesEncryptCryptography(string)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core.Test/CryptographyTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: AesEncryptCryptography
+    path: Innovt.Core.Test/CryptographyTests.cs
+    startLine: 22
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: >-
+      [Test]
+
+      [TestCase("michel borges")]
+
+      public void AesEncryptCryptography(string plainText)
+    parameters:
+    - id: plainText
+      type: System.String
+    content.vb: >-
+      <Test>
+
+      <TestCase("michel borges")>
+
+      Public Sub AesEncryptCryptography(plainText As String)
+  overload: Innovt.Core.Test.CryptographyTests.AesEncryptCryptography*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+  - type: NUnit.Framework.TestCaseAttribute
+    ctor: NUnit.Framework.TestCaseAttribute.#ctor(System.Object)
+    arguments:
+    - type: System.String
+      value: michel borges
+  nameWithType.vb: CryptographyTests.AesEncryptCryptography(String)
+  fullName.vb: Innovt.Core.Test.CryptographyTests.AesEncryptCryptography(String)
+  name.vb: AesEncryptCryptography(String)
+- uid: Innovt.Core.Test.CryptographyTests.AesDecrypt(System.String,System.String)
+  commentId: M:Innovt.Core.Test.CryptographyTests.AesDecrypt(System.String,System.String)
+  id: AesDecrypt(System.String,System.String)
+  parent: Innovt.Core.Test.CryptographyTests
+  langs:
+  - csharp
+  - vb
+  name: AesDecrypt(string, string)
+  nameWithType: CryptographyTests.AesDecrypt(string, string)
+  fullName: Innovt.Core.Test.CryptographyTests.AesDecrypt(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core.Test/CryptographyTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: AesDecrypt
+    path: Innovt.Core.Test/CryptographyTests.cs
+    startLine: 35
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: >-
+      [Test]
+
+      [TestCase("michel borges", "e37306c1755548f79bfac21185d5a6ef")]
+
+      public void AesDecrypt(string plainText, string key)
+    parameters:
+    - id: plainText
+      type: System.String
+    - id: key
+      type: System.String
+    content.vb: >-
+      <Test>
+
+      <TestCase("michel borges", "e37306c1755548f79bfac21185d5a6ef")>
+
+      Public Sub AesDecrypt(plainText As String, key As String)
+  overload: Innovt.Core.Test.CryptographyTests.AesDecrypt*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+  - type: NUnit.Framework.TestCaseAttribute
+    ctor: NUnit.Framework.TestCaseAttribute.#ctor(System.Object,System.Object)
+    arguments:
+    - type: System.String
+      value: michel borges
+    - type: System.String
+      value: e37306c1755548f79bfac21185d5a6ef
+  nameWithType.vb: CryptographyTests.AesDecrypt(String, String)
+  fullName.vb: Innovt.Core.Test.CryptographyTests.AesDecrypt(String, String)
+  name.vb: AesDecrypt(String, String)
+- uid: Innovt.Core.Test.CryptographyTests.RijndaelEncrypt(System.String)
+  commentId: M:Innovt.Core.Test.CryptographyTests.RijndaelEncrypt(System.String)
+  id: RijndaelEncrypt(System.String)
+  parent: Innovt.Core.Test.CryptographyTests
+  langs:
+  - csharp
+  - vb
+  name: RijndaelEncrypt(string)
+  nameWithType: CryptographyTests.RijndaelEncrypt(string)
+  fullName: Innovt.Core.Test.CryptographyTests.RijndaelEncrypt(string)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core.Test/CryptographyTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: RijndaelEncrypt
+    path: Innovt.Core.Test/CryptographyTests.cs
+    startLine: 49
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: >-
+      [Test]
+
+      [TestCase("michel borges")]
+
+      public void RijndaelEncrypt(string plainText)
+    parameters:
+    - id: plainText
+      type: System.String
+    content.vb: >-
+      <Test>
+
+      <TestCase("michel borges")>
+
+      Public Sub RijndaelEncrypt(plainText As String)
+  overload: Innovt.Core.Test.CryptographyTests.RijndaelEncrypt*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+  - type: NUnit.Framework.TestCaseAttribute
+    ctor: NUnit.Framework.TestCaseAttribute.#ctor(System.Object)
+    arguments:
+    - type: System.String
+      value: michel borges
+  nameWithType.vb: CryptographyTests.RijndaelEncrypt(String)
+  fullName.vb: Innovt.Core.Test.CryptographyTests.RijndaelEncrypt(String)
+  name.vb: RijndaelEncrypt(String)
+- uid: Innovt.Core.Test.CryptographyTests.RijndaelDecrypt(System.String,System.String)
+  commentId: M:Innovt.Core.Test.CryptographyTests.RijndaelDecrypt(System.String,System.String)
+  id: RijndaelDecrypt(System.String,System.String)
+  parent: Innovt.Core.Test.CryptographyTests
+  langs:
+  - csharp
+  - vb
+  name: RijndaelDecrypt(string, string)
+  nameWithType: CryptographyTests.RijndaelDecrypt(string, string)
+  fullName: Innovt.Core.Test.CryptographyTests.RijndaelDecrypt(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core.Test/CryptographyTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: RijndaelDecrypt
+    path: Innovt.Core.Test/CryptographyTests.cs
+    startLine: 62
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: >-
+      [Test]
+
+      [TestCase("michel borges", "e37306c1755548f79bfac21185d5a6ef")]
+
+      public void RijndaelDecrypt(string plainText, string key)
+    parameters:
+    - id: plainText
+      type: System.String
+    - id: key
+      type: System.String
+    content.vb: >-
+      <Test>
+
+      <TestCase("michel borges", "e37306c1755548f79bfac21185d5a6ef")>
+
+      Public Sub RijndaelDecrypt(plainText As String, key As String)
+  overload: Innovt.Core.Test.CryptographyTests.RijndaelDecrypt*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+  - type: NUnit.Framework.TestCaseAttribute
+    ctor: NUnit.Framework.TestCaseAttribute.#ctor(System.Object,System.Object)
+    arguments:
+    - type: System.String
+      value: michel borges
+    - type: System.String
+      value: e37306c1755548f79bfac21185d5a6ef
+  nameWithType.vb: CryptographyTests.RijndaelDecrypt(String, String)
+  fullName.vb: Innovt.Core.Test.CryptographyTests.RijndaelDecrypt(String, String)
+  name.vb: RijndaelDecrypt(String, String)
+references:
+- uid: Innovt.Core.Test
+  commentId: N:Innovt.Core.Test
+  href: Innovt.html
+  name: Innovt.Core.Test
+  nameWithType: Innovt.Core.Test
+  fullName: Innovt.Core.Test
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Test
+    name: Test
+    href: Innovt.Core.Test.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Test
+    name: Test
+    href: Innovt.Core.Test.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Core.Test.CryptographyTests.AesEncryptShouldThrowExceptionWhenTextIsNull*
+  commentId: Overload:Innovt.Core.Test.CryptographyTests.AesEncryptShouldThrowExceptionWhenTextIsNull
+  href: Innovt.Core.Test.CryptographyTests.html#Innovt_Core_Test_CryptographyTests_AesEncryptShouldThrowExceptionWhenTextIsNull
+  name: AesEncryptShouldThrowExceptionWhenTextIsNull
+  nameWithType: CryptographyTests.AesEncryptShouldThrowExceptionWhenTextIsNull
+  fullName: Innovt.Core.Test.CryptographyTests.AesEncryptShouldThrowExceptionWhenTextIsNull
+- uid: Innovt.Core.Test.CryptographyTests.AesEncryptCryptography*
+  commentId: Overload:Innovt.Core.Test.CryptographyTests.AesEncryptCryptography
+  href: Innovt.Core.Test.CryptographyTests.html#Innovt_Core_Test_CryptographyTests_AesEncryptCryptography_System_String_
+  name: AesEncryptCryptography
+  nameWithType: CryptographyTests.AesEncryptCryptography
+  fullName: Innovt.Core.Test.CryptographyTests.AesEncryptCryptography
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Innovt.Core.Test.CryptographyTests.AesDecrypt*
+  commentId: Overload:Innovt.Core.Test.CryptographyTests.AesDecrypt
+  href: Innovt.Core.Test.CryptographyTests.html#Innovt_Core_Test_CryptographyTests_AesDecrypt_System_String_System_String_
+  name: AesDecrypt
+  nameWithType: CryptographyTests.AesDecrypt
+  fullName: Innovt.Core.Test.CryptographyTests.AesDecrypt
+- uid: Innovt.Core.Test.CryptographyTests.RijndaelEncrypt*
+  commentId: Overload:Innovt.Core.Test.CryptographyTests.RijndaelEncrypt
+  href: Innovt.Core.Test.CryptographyTests.html#Innovt_Core_Test_CryptographyTests_RijndaelEncrypt_System_String_
+  name: RijndaelEncrypt
+  nameWithType: CryptographyTests.RijndaelEncrypt
+  fullName: Innovt.Core.Test.CryptographyTests.RijndaelEncrypt
+- uid: Innovt.Core.Test.CryptographyTests.RijndaelDecrypt*
+  commentId: Overload:Innovt.Core.Test.CryptographyTests.RijndaelDecrypt
+  href: Innovt.Core.Test.CryptographyTests.html#Innovt_Core_Test_CryptographyTests_RijndaelDecrypt_System_String_System_String_
+  name: RijndaelDecrypt
+  nameWithType: CryptographyTests.RijndaelDecrypt
+  fullName: Innovt.Core.Test.CryptographyTests.RijndaelDecrypt

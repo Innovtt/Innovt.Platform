@@ -2,8 +2,10 @@
 // Author: Michel Borges
 // Project: Innovt.Data.Ado
 
+using System;
 using System.Data;
 using Innovt.Data.DataSources;
+using Innovt.Data.Exceptions;
 
 namespace Innovt.Data.Ado;
 

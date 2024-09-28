@@ -1,0 +1,507 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock`1
+  commentId: T:Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock`1
+  id: IDomainEventServiceMock`1
+  parent: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+  children:
+  - Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock`1.InicializeIoc
+  - Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock`1.ProcessMessage(`0)
+  langs:
+  - csharp
+  - vb
+  name: IDomainEventServiceMock<T>
+  nameWithType: IDomainEventServiceMock<T>
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock<T>
+  type: Interface
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Lambda.Kinesis.Tests/IDomainEventServiceMock.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: IDomainEventServiceMock
+    path: Innovt.Cloud.AWS.Lambda.Kinesis.Tests/IDomainEventServiceMock.cs
+    startLine: 8
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+  namespace: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+  syntax:
+    content: 'public interface IDomainEventServiceMock<T> where T : DomainEvent'
+    typeParameters:
+    - id: T
+    content.vb: Public Interface IDomainEventServiceMock(Of T As DomainEvent)
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  nameWithType.vb: IDomainEventServiceMock(Of T)
+  fullName.vb: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock(Of T)
+  name.vb: IDomainEventServiceMock(Of T)
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock`1.InicializeIoc
+  commentId: M:Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock`1.InicializeIoc
+  id: InicializeIoc
+  parent: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock`1
+  langs:
+  - csharp
+  - vb
+  name: InicializeIoc()
+  nameWithType: IDomainEventServiceMock<T>.InicializeIoc()
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock<T>.InicializeIoc()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Lambda.Kinesis.Tests/IDomainEventServiceMock.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: InicializeIoc
+    path: Innovt.Cloud.AWS.Lambda.Kinesis.Tests/IDomainEventServiceMock.cs
+    startLine: 10
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+  namespace: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+  syntax:
+    content: void InicializeIoc()
+    content.vb: Sub InicializeIoc()
+  overload: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock`1.InicializeIoc*
+  nameWithType.vb: IDomainEventServiceMock(Of T).InicializeIoc()
+  fullName.vb: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock(Of T).InicializeIoc()
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock`1.ProcessMessage(`0)
+  commentId: M:Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock`1.ProcessMessage(`0)
+  id: ProcessMessage(`0)
+  parent: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock`1
+  langs:
+  - csharp
+  - vb
+  name: ProcessMessage(T)
+  nameWithType: IDomainEventServiceMock<T>.ProcessMessage(T)
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock<T>.ProcessMessage(T)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Lambda.Kinesis.Tests/IDomainEventServiceMock.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ProcessMessage
+    path: Innovt.Cloud.AWS.Lambda.Kinesis.Tests/IDomainEventServiceMock.cs
+    startLine: 11
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+  namespace: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+  syntax:
+    content: BatchFailureResponse ProcessMessage(T domainEvent)
+    parameters:
+    - id: domainEvent
+      type: '{T}'
+    return:
+      type: Innovt.Cloud.AWS.Lambda.BatchFailureResponse
+    content.vb: Function ProcessMessage(domainEvent As T) As BatchFailureResponse
+  overload: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock`1.ProcessMessage*
+  nameWithType.vb: IDomainEventServiceMock(Of T).ProcessMessage(T)
+  fullName.vb: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock(Of T).ProcessMessage(T)
+references:
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+  commentId: N:Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+  nameWithType: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda
+    name: Lambda
+    href: Innovt.Cloud.AWS.Lambda.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis
+    name: Kinesis
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+    name: Tests
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda
+    name: Lambda
+    href: Innovt.Cloud.AWS.Lambda.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis
+    name: Kinesis
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+    name: Tests
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.html
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock`1.InicializeIoc*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock`1.InicializeIoc
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock-1.html#Innovt_Cloud_AWS_Lambda_Kinesis_Tests_IDomainEventServiceMock_1_InicializeIoc
+  name: InicializeIoc
+  nameWithType: IDomainEventServiceMock<T>.InicializeIoc
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock<T>.InicializeIoc
+  nameWithType.vb: IDomainEventServiceMock(Of T).InicializeIoc
+  fullName.vb: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock(Of T).InicializeIoc
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock`1.ProcessMessage*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock`1.ProcessMessage
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock-1.html#Innovt_Cloud_AWS_Lambda_Kinesis_Tests_IDomainEventServiceMock_1_ProcessMessage__0_
+  name: ProcessMessage
+  nameWithType: IDomainEventServiceMock<T>.ProcessMessage
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock<T>.ProcessMessage
+  nameWithType.vb: IDomainEventServiceMock(Of T).ProcessMessage
+  fullName.vb: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock(Of T).ProcessMessage
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Innovt.Cloud.AWS.Lambda.BatchFailureResponse
+  commentId: T:Innovt.Cloud.AWS.Lambda.BatchFailureResponse
+  parent: Innovt.Cloud.AWS.Lambda
+  href: Innovt.Cloud.AWS.Lambda.BatchFailureResponse.html
+  name: BatchFailureResponse
+  nameWithType: BatchFailureResponse
+  fullName: Innovt.Cloud.AWS.Lambda.BatchFailureResponse
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Innovt.Cloud.AWS.Lambda
+  commentId: N:Innovt.Cloud.AWS.Lambda
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Lambda
+  nameWithType: Innovt.Cloud.AWS.Lambda
+  fullName: Innovt.Cloud.AWS.Lambda
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda
+    name: Lambda
+    href: Innovt.Cloud.AWS.Lambda.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda
+    name: Lambda
+    href: Innovt.Cloud.AWS.Lambda.html

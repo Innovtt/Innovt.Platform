@@ -1,0 +1,118 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Notification.Core.Domain
+  commentId: N:Innovt.Notification.Core.Domain
+  id: Innovt.Notification.Core.Domain
+  children:
+  - Innovt.Notification.Core.Domain.NotificationMessage
+  - Innovt.Notification.Core.Domain.NotificationMessageBody
+  - Innovt.Notification.Core.Domain.NotificationMessageContact
+  - Innovt.Notification.Core.Domain.NotificationMessageContent
+  - Innovt.Notification.Core.Domain.NotificationMessageSubject
+  - Innovt.Notification.Core.Domain.NotificationMessageType
+  - Innovt.Notification.Core.Domain.NotificationRequest
+  - Innovt.Notification.Core.Domain.NotificationTemplate
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Notification.Core.Domain
+  nameWithType: Innovt.Notification.Core.Domain
+  fullName: Innovt.Notification.Core.Domain
+  type: Namespace
+  assemblies:
+  - Innovt.Notification.Core
+references:
+- uid: Innovt.Notification.Core.Domain.NotificationMessage
+  commentId: T:Innovt.Notification.Core.Domain.NotificationMessage
+  parent: Innovt.Notification.Core.Domain
+  href: Innovt.Notification.Core.Domain.NotificationMessage.html
+  name: NotificationMessage
+  nameWithType: NotificationMessage
+  fullName: Innovt.Notification.Core.Domain.NotificationMessage
+- uid: Innovt.Notification.Core.Domain.NotificationMessageBody
+  commentId: T:Innovt.Notification.Core.Domain.NotificationMessageBody
+  parent: Innovt.Notification.Core.Domain
+  href: Innovt.Notification.Core.Domain.NotificationMessageBody.html
+  name: NotificationMessageBody
+  nameWithType: NotificationMessageBody
+  fullName: Innovt.Notification.Core.Domain.NotificationMessageBody
+- uid: Innovt.Notification.Core.Domain.NotificationMessageContact
+  commentId: T:Innovt.Notification.Core.Domain.NotificationMessageContact
+  parent: Innovt.Notification.Core.Domain
+  href: Innovt.Notification.Core.Domain.NotificationMessageContact.html
+  name: NotificationMessageContact
+  nameWithType: NotificationMessageContact
+  fullName: Innovt.Notification.Core.Domain.NotificationMessageContact
+- uid: Innovt.Notification.Core.Domain.NotificationMessageContent
+  commentId: T:Innovt.Notification.Core.Domain.NotificationMessageContent
+  parent: Innovt.Notification.Core.Domain
+  href: Innovt.Notification.Core.Domain.NotificationMessageContent.html
+  name: NotificationMessageContent
+  nameWithType: NotificationMessageContent
+  fullName: Innovt.Notification.Core.Domain.NotificationMessageContent
+- uid: Innovt.Notification.Core.Domain.NotificationMessageSubject
+  commentId: T:Innovt.Notification.Core.Domain.NotificationMessageSubject
+  parent: Innovt.Notification.Core.Domain
+  href: Innovt.Notification.Core.Domain.NotificationMessageSubject.html
+  name: NotificationMessageSubject
+  nameWithType: NotificationMessageSubject
+  fullName: Innovt.Notification.Core.Domain.NotificationMessageSubject
+- uid: Innovt.Notification.Core.Domain.NotificationMessageType
+  commentId: T:Innovt.Notification.Core.Domain.NotificationMessageType
+  parent: Innovt.Notification.Core.Domain
+  href: Innovt.Notification.Core.Domain.NotificationMessageType.html
+  name: NotificationMessageType
+  nameWithType: NotificationMessageType
+  fullName: Innovt.Notification.Core.Domain.NotificationMessageType
+- uid: Innovt.Notification.Core.Domain.NotificationRequest
+  commentId: T:Innovt.Notification.Core.Domain.NotificationRequest
+  parent: Innovt.Notification.Core.Domain
+  href: Innovt.Notification.Core.Domain.NotificationRequest.html
+  name: NotificationRequest
+  nameWithType: NotificationRequest
+  fullName: Innovt.Notification.Core.Domain.NotificationRequest
+- uid: Innovt.Notification.Core.Domain.NotificationTemplate
+  commentId: T:Innovt.Notification.Core.Domain.NotificationTemplate
+  parent: Innovt.Notification.Core.Domain
+  href: Innovt.Notification.Core.Domain.NotificationTemplate.html
+  name: NotificationTemplate
+  nameWithType: NotificationTemplate
+  fullName: Innovt.Notification.Core.Domain.NotificationTemplate
+- uid: Innovt.Notification.Core.Domain
+  commentId: N:Innovt.Notification.Core.Domain
+  href: Innovt.html
+  name: Innovt.Notification.Core.Domain
+  nameWithType: Innovt.Notification.Core.Domain
+  fullName: Innovt.Notification.Core.Domain
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Notification
+    name: Notification
+    href: Innovt.Notification.html
+  - name: .
+  - uid: Innovt.Notification.Core
+    name: Core
+    href: Innovt.Notification.Core.html
+  - name: .
+  - uid: Innovt.Notification.Core.Domain
+    name: Domain
+    href: Innovt.Notification.Core.Domain.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Notification
+    name: Notification
+    href: Innovt.Notification.html
+  - name: .
+  - uid: Innovt.Notification.Core
+    name: Core
+    href: Innovt.Notification.Core.html
+  - name: .
+  - uid: Innovt.Notification.Core.Domain
+    name: Domain
+    href: Innovt.Notification.Core.Domain.html

@@ -1,0 +1,54 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Core.Validation
+  commentId: N:Innovt.Core.Validation
+  id: Innovt.Core.Validation
+  children:
+  - Innovt.Core.Validation.Extensions
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Core.Validation
+  nameWithType: Innovt.Core.Validation
+  fullName: Innovt.Core.Validation
+  type: Namespace
+  assemblies:
+  - Innovt.Core
+references:
+- uid: Innovt.Core.Validation.Extensions
+  commentId: T:Innovt.Core.Validation.Extensions
+  parent: Innovt.Core.Validation
+  href: Innovt.Core.Validation.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Validation.Extensions
+- uid: Innovt.Core.Validation
+  commentId: N:Innovt.Core.Validation
+  href: Innovt.html
+  name: Innovt.Core.Validation
+  nameWithType: Innovt.Core.Validation
+  fullName: Innovt.Core.Validation
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Validation
+    name: Validation
+    href: Innovt.Core.Validation.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Validation
+    name: Validation
+    href: Innovt.Core.Validation.html

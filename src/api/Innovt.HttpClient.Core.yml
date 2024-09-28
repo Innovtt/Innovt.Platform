@@ -1,0 +1,137 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.HttpClient.Core
+  commentId: N:Innovt.HttpClient.Core
+  id: Innovt.HttpClient.Core
+  children:
+  - Innovt.HttpClient.Core.ApiContext
+  - Innovt.HttpClient.Core.ApiException`1
+  - Innovt.HttpClient.Core.BaseApiClient
+  - Innovt.HttpClient.Core.BaseApiClient`1
+  - Innovt.HttpClient.Core.BaseConstants
+  - Innovt.HttpClient.Core.BasicCredential
+  - Innovt.HttpClient.Core.IEnvironment
+  langs:
+  - csharp
+  - vb
+  name: Innovt.HttpClient.Core
+  nameWithType: Innovt.HttpClient.Core
+  fullName: Innovt.HttpClient.Core
+  type: Namespace
+  assemblies:
+  - Innovt.HttpClient.Core
+references:
+- uid: Innovt.HttpClient.Core.ApiContext
+  commentId: T:Innovt.HttpClient.Core.ApiContext
+  parent: Innovt.HttpClient.Core
+  href: Innovt.HttpClient.Core.ApiContext.html
+  name: ApiContext
+  nameWithType: ApiContext
+  fullName: Innovt.HttpClient.Core.ApiContext
+- uid: Innovt.HttpClient.Core.ApiException`1
+  commentId: T:Innovt.HttpClient.Core.ApiException`1
+  href: Innovt.HttpClient.Core.ApiException-1.html
+  name: ApiException<T>
+  nameWithType: ApiException<T>
+  fullName: Innovt.HttpClient.Core.ApiException<T>
+  nameWithType.vb: ApiException(Of T)
+  fullName.vb: Innovt.HttpClient.Core.ApiException(Of T)
+  name.vb: ApiException(Of T)
+  spec.csharp:
+  - uid: Innovt.HttpClient.Core.ApiException`1
+    name: ApiException
+    href: Innovt.HttpClient.Core.ApiException-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.HttpClient.Core.ApiException`1
+    name: ApiException
+    href: Innovt.HttpClient.Core.ApiException-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.HttpClient.Core.BaseApiClient
+  commentId: T:Innovt.HttpClient.Core.BaseApiClient
+  parent: Innovt.HttpClient.Core
+  href: Innovt.HttpClient.Core.BaseApiClient.html
+  name: BaseApiClient
+  nameWithType: BaseApiClient
+  fullName: Innovt.HttpClient.Core.BaseApiClient
+- uid: Innovt.HttpClient.Core.BaseApiClient`1
+  commentId: T:Innovt.HttpClient.Core.BaseApiClient`1
+  href: Innovt.HttpClient.Core.BaseApiClient-1.html
+  name: BaseApiClient<TErrorResponse>
+  nameWithType: BaseApiClient<TErrorResponse>
+  fullName: Innovt.HttpClient.Core.BaseApiClient<TErrorResponse>
+  nameWithType.vb: BaseApiClient(Of TErrorResponse)
+  fullName.vb: Innovt.HttpClient.Core.BaseApiClient(Of TErrorResponse)
+  name.vb: BaseApiClient(Of TErrorResponse)
+  spec.csharp:
+  - uid: Innovt.HttpClient.Core.BaseApiClient`1
+    name: BaseApiClient
+    href: Innovt.HttpClient.Core.BaseApiClient-1.html
+  - name: <
+  - name: TErrorResponse
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.HttpClient.Core.BaseApiClient`1
+    name: BaseApiClient
+    href: Innovt.HttpClient.Core.BaseApiClient-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TErrorResponse
+  - name: )
+- uid: Innovt.HttpClient.Core.BaseConstants
+  commentId: T:Innovt.HttpClient.Core.BaseConstants
+  href: Innovt.HttpClient.Core.BaseConstants.html
+  name: BaseConstants
+  nameWithType: BaseConstants
+  fullName: Innovt.HttpClient.Core.BaseConstants
+- uid: Innovt.HttpClient.Core.BasicCredential
+  commentId: T:Innovt.HttpClient.Core.BasicCredential
+  parent: Innovt.HttpClient.Core
+  href: Innovt.HttpClient.Core.BasicCredential.html
+  name: BasicCredential
+  nameWithType: BasicCredential
+  fullName: Innovt.HttpClient.Core.BasicCredential
+- uid: Innovt.HttpClient.Core.IEnvironment
+  commentId: T:Innovt.HttpClient.Core.IEnvironment
+  parent: Innovt.HttpClient.Core
+  href: Innovt.HttpClient.Core.IEnvironment.html
+  name: IEnvironment
+  nameWithType: IEnvironment
+  fullName: Innovt.HttpClient.Core.IEnvironment
+- uid: Innovt.HttpClient.Core
+  commentId: N:Innovt.HttpClient.Core
+  href: Innovt.html
+  name: Innovt.HttpClient.Core
+  nameWithType: Innovt.HttpClient.Core
+  fullName: Innovt.HttpClient.Core
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.HttpClient
+    name: HttpClient
+    href: Innovt.HttpClient.html
+  - name: .
+  - uid: Innovt.HttpClient.Core
+    name: Core
+    href: Innovt.HttpClient.Core.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.HttpClient
+    name: HttpClient
+    href: Innovt.HttpClient.html
+  - name: .
+  - uid: Innovt.HttpClient.Core
+    name: Core
+    href: Innovt.HttpClient.Core.html

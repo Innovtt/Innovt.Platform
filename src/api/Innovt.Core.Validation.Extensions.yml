@@ -1,0 +1,837 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Core.Validation.Extensions
+  commentId: T:Innovt.Core.Validation.Extensions
+  id: Extensions
+  parent: Innovt.Core.Validation
+  children:
+  - Innovt.Core.Validation.Extensions.EnsureIsValid(Innovt.Core.Cqrs.Commands.ICommand,System.ComponentModel.DataAnnotations.ValidationContext)
+  - Innovt.Core.Validation.Extensions.EnsureIsValid(Innovt.Core.Cqrs.Commands.ICommand,System.String)
+  - Innovt.Core.Validation.Extensions.EnsureIsValid(System.ComponentModel.DataAnnotations.IValidatableObject,System.ComponentModel.DataAnnotations.ValidationContext)
+  - Innovt.Core.Validation.Extensions.IsValid(System.ComponentModel.DataAnnotations.IValidatableObject,System.ComponentModel.DataAnnotations.ValidationContext)
+  - Innovt.Core.Validation.Extensions.Validate(System.Collections.Generic.IEnumerable{System.ComponentModel.DataAnnotations.IValidatableObject},System.ComponentModel.DataAnnotations.ValidationContext)
+  langs:
+  - csharp
+  - vb
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Validation.Extensions
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Core/Validation/Extensions.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Extensions
+    path: Innovt.Core/Validation/Extensions.cs
+    startLine: 18
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Validation
+  summary: >-
+    A static class containing extension methods for validating objects that implement the
+
+    <xref href="System.ComponentModel.DataAnnotations.IValidatableObject" data-throw-if-not-resolved="false"></xref> interface.
+  example: []
+  syntax:
+    content: public static class Extensions
+    content.vb: Public Module Extensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Innovt.Core.Validation.Extensions.Validate(System.Collections.Generic.IEnumerable{System.ComponentModel.DataAnnotations.IValidatableObject},System.ComponentModel.DataAnnotations.ValidationContext)
+  commentId: M:Innovt.Core.Validation.Extensions.Validate(System.Collections.Generic.IEnumerable{System.ComponentModel.DataAnnotations.IValidatableObject},System.ComponentModel.DataAnnotations.ValidationContext)
+  id: Validate(System.Collections.Generic.IEnumerable{System.ComponentModel.DataAnnotations.IValidatableObject},System.ComponentModel.DataAnnotations.ValidationContext)
+  isExtensionMethod: true
+  parent: Innovt.Core.Validation.Extensions
+  langs:
+  - csharp
+  - vb
+  name: Validate(IEnumerable<IValidatableObject>, ValidationContext)
+  nameWithType: Extensions.Validate(IEnumerable<IValidatableObject>, ValidationContext)
+  fullName: Innovt.Core.Validation.Extensions.Validate(System.Collections.Generic.IEnumerable<System.ComponentModel.DataAnnotations.IValidatableObject>, System.ComponentModel.DataAnnotations.ValidationContext)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/Validation/Extensions.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Validate
+    path: Innovt.Core/Validation/Extensions.cs
+    startLine: 27
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Validation
+  summary: >-
+    Validates a collection of objects implementing the <xref href="System.ComponentModel.DataAnnotations.IValidatableObject" data-throw-if-not-resolved="false"></xref> interface and returns a
+
+    collection of <xref href="System.ComponentModel.DataAnnotations.ValidationResult" data-throw-if-not-resolved="false"></xref> objects.
+  example: []
+  syntax:
+    content: public static IEnumerable<ValidationResult> Validate(this IEnumerable<IValidatableObject> array, ValidationContext context = null)
+    parameters:
+    - id: array
+      type: System.Collections.Generic.IEnumerable{System.ComponentModel.DataAnnotations.IValidatableObject}
+      description: The collection of objects to validate.
+    - id: context
+      type: System.ComponentModel.DataAnnotations.ValidationContext
+      description: An optional <xref href="System.ComponentModel.DataAnnotations.ValidationContext" data-throw-if-not-resolved="false"></xref> to specify validation context.
+    return:
+      type: System.Collections.Generic.IEnumerable{System.ComponentModel.DataAnnotations.ValidationResult}
+      description: A collection of <xref href="System.ComponentModel.DataAnnotations.ValidationResult" data-throw-if-not-resolved="false"></xref> objects containing validation errors.
+    content.vb: Public Shared Function Validate(array As IEnumerable(Of IValidatableObject), context As ValidationContext = Nothing) As IEnumerable(Of ValidationResult)
+  overload: Innovt.Core.Validation.Extensions.Validate*
+  nameWithType.vb: Extensions.Validate(IEnumerable(Of IValidatableObject), ValidationContext)
+  fullName.vb: Innovt.Core.Validation.Extensions.Validate(System.Collections.Generic.IEnumerable(Of System.ComponentModel.DataAnnotations.IValidatableObject), System.ComponentModel.DataAnnotations.ValidationContext)
+  name.vb: Validate(IEnumerable(Of IValidatableObject), ValidationContext)
+- uid: Innovt.Core.Validation.Extensions.IsValid(System.ComponentModel.DataAnnotations.IValidatableObject,System.ComponentModel.DataAnnotations.ValidationContext)
+  commentId: M:Innovt.Core.Validation.Extensions.IsValid(System.ComponentModel.DataAnnotations.IValidatableObject,System.ComponentModel.DataAnnotations.ValidationContext)
+  id: IsValid(System.ComponentModel.DataAnnotations.IValidatableObject,System.ComponentModel.DataAnnotations.ValidationContext)
+  isExtensionMethod: true
+  parent: Innovt.Core.Validation.Extensions
+  langs:
+  - csharp
+  - vb
+  name: IsValid(IValidatableObject, ValidationContext)
+  nameWithType: Extensions.IsValid(IValidatableObject, ValidationContext)
+  fullName: Innovt.Core.Validation.Extensions.IsValid(System.ComponentModel.DataAnnotations.IValidatableObject, System.ComponentModel.DataAnnotations.ValidationContext)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/Validation/Extensions.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: IsValid
+    path: Innovt.Core/Validation/Extensions.cs
+    startLine: 74
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Validation
+  summary: Checks whether an object implementing the <xref href="System.ComponentModel.DataAnnotations.IValidatableObject" data-throw-if-not-resolved="false"></xref> interface is valid.
+  example: []
+  syntax:
+    content: public static bool IsValid(this IValidatableObject obj, ValidationContext context = null)
+    parameters:
+    - id: obj
+      type: System.ComponentModel.DataAnnotations.IValidatableObject
+      description: The object to validate.
+    - id: context
+      type: System.ComponentModel.DataAnnotations.ValidationContext
+      description: An optional <xref href="System.ComponentModel.DataAnnotations.ValidationContext" data-throw-if-not-resolved="false"></xref> to specify validation context.
+    return:
+      type: System.Boolean
+      description: True if the object is valid; otherwise, false.
+    content.vb: Public Shared Function IsValid(obj As IValidatableObject, context As ValidationContext = Nothing) As Boolean
+  overload: Innovt.Core.Validation.Extensions.IsValid*
+- uid: Innovt.Core.Validation.Extensions.EnsureIsValid(System.ComponentModel.DataAnnotations.IValidatableObject,System.ComponentModel.DataAnnotations.ValidationContext)
+  commentId: M:Innovt.Core.Validation.Extensions.EnsureIsValid(System.ComponentModel.DataAnnotations.IValidatableObject,System.ComponentModel.DataAnnotations.ValidationContext)
+  id: EnsureIsValid(System.ComponentModel.DataAnnotations.IValidatableObject,System.ComponentModel.DataAnnotations.ValidationContext)
+  isExtensionMethod: true
+  parent: Innovt.Core.Validation.Extensions
+  langs:
+  - csharp
+  - vb
+  name: EnsureIsValid(IValidatableObject, ValidationContext)
+  nameWithType: Extensions.EnsureIsValid(IValidatableObject, ValidationContext)
+  fullName: Innovt.Core.Validation.Extensions.EnsureIsValid(System.ComponentModel.DataAnnotations.IValidatableObject, System.ComponentModel.DataAnnotations.ValidationContext)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/Validation/Extensions.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: EnsureIsValid
+    path: Innovt.Core/Validation/Extensions.cs
+    startLine: 90
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Validation
+  summary: >-
+    Ensures that an object implementing the <xref href="System.ComponentModel.DataAnnotations.IValidatableObject" data-throw-if-not-resolved="false"></xref> interface is valid; otherwise, throws a
+
+    <xref href="Innovt.Core.Exceptions.BusinessException" data-throw-if-not-resolved="false"></xref> with validation errors.
+  example: []
+  syntax:
+    content: public static void EnsureIsValid(this IValidatableObject obj, ValidationContext context = null)
+    parameters:
+    - id: obj
+      type: System.ComponentModel.DataAnnotations.IValidatableObject
+      description: The object to validate.
+    - id: context
+      type: System.ComponentModel.DataAnnotations.ValidationContext
+      description: An optional <xref href="System.ComponentModel.DataAnnotations.ValidationContext" data-throw-if-not-resolved="false"></xref> to specify validation context.
+    content.vb: Public Shared Sub EnsureIsValid(obj As IValidatableObject, context As ValidationContext = Nothing)
+  overload: Innovt.Core.Validation.Extensions.EnsureIsValid*
+- uid: Innovt.Core.Validation.Extensions.EnsureIsValid(Innovt.Core.Cqrs.Commands.ICommand,System.ComponentModel.DataAnnotations.ValidationContext)
+  commentId: M:Innovt.Core.Validation.Extensions.EnsureIsValid(Innovt.Core.Cqrs.Commands.ICommand,System.ComponentModel.DataAnnotations.ValidationContext)
+  id: EnsureIsValid(Innovt.Core.Cqrs.Commands.ICommand,System.ComponentModel.DataAnnotations.ValidationContext)
+  isExtensionMethod: true
+  parent: Innovt.Core.Validation.Extensions
+  langs:
+  - csharp
+  - vb
+  name: EnsureIsValid(ICommand, ValidationContext)
+  nameWithType: Extensions.EnsureIsValid(ICommand, ValidationContext)
+  fullName: Innovt.Core.Validation.Extensions.EnsureIsValid(Innovt.Core.Cqrs.Commands.ICommand, System.ComponentModel.DataAnnotations.ValidationContext)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/Validation/Extensions.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: EnsureIsValid
+    path: Innovt.Core/Validation/Extensions.cs
+    startLine: 110
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Validation
+  summary: >-
+    Ensures that a command object is valid by treating it as an <xref href="System.ComponentModel.DataAnnotations.IValidatableObject" data-throw-if-not-resolved="false"></xref>; otherwise, throws a
+
+    <xref href="Innovt.Core.Exceptions.BusinessException" data-throw-if-not-resolved="false"></xref> with validation errors.
+  example: []
+  syntax:
+    content: public static void EnsureIsValid(this ICommand command, ValidationContext context = null)
+    parameters:
+    - id: command
+      type: Innovt.Core.Cqrs.Commands.ICommand
+      description: The command to validate.
+    - id: context
+      type: System.ComponentModel.DataAnnotations.ValidationContext
+      description: An optional <xref href="System.ComponentModel.DataAnnotations.ValidationContext" data-throw-if-not-resolved="false"></xref> to specify validation context.
+    content.vb: Public Shared Sub EnsureIsValid(command As ICommand, context As ValidationContext = Nothing)
+  overload: Innovt.Core.Validation.Extensions.EnsureIsValid*
+- uid: Innovt.Core.Validation.Extensions.EnsureIsValid(Innovt.Core.Cqrs.Commands.ICommand,System.String)
+  commentId: M:Innovt.Core.Validation.Extensions.EnsureIsValid(Innovt.Core.Cqrs.Commands.ICommand,System.String)
+  id: EnsureIsValid(Innovt.Core.Cqrs.Commands.ICommand,System.String)
+  isExtensionMethod: true
+  parent: Innovt.Core.Validation.Extensions
+  langs:
+  - csharp
+  - vb
+  name: EnsureIsValid(ICommand, string)
+  nameWithType: Extensions.EnsureIsValid(ICommand, string)
+  fullName: Innovt.Core.Validation.Extensions.EnsureIsValid(Innovt.Core.Cqrs.Commands.ICommand, string)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/Validation/Extensions.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: EnsureIsValid
+    path: Innovt.Core/Validation/Extensions.cs
+    startLine: 123
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Validation
+  summary: >-
+    Ensures that a command object is valid by treating it as an <xref href="System.ComponentModel.DataAnnotations.IValidatableObject" data-throw-if-not-resolved="false"></xref>; otherwise, throws a
+
+    <xref href="Innovt.Core.Exceptions.BusinessException" data-throw-if-not-resolved="false"></xref> with validation errors.
+  example: []
+  syntax:
+    content: public static void EnsureIsValid(this ICommand command, string contextName)
+    parameters:
+    - id: command
+      type: Innovt.Core.Cqrs.Commands.ICommand
+      description: The command to validate.
+    - id: contextName
+      type: System.String
+      description: The name of the validation context.
+    content.vb: Public Shared Sub EnsureIsValid(command As ICommand, contextName As String)
+  overload: Innovt.Core.Validation.Extensions.EnsureIsValid*
+  nameWithType.vb: Extensions.EnsureIsValid(ICommand, String)
+  fullName.vb: Innovt.Core.Validation.Extensions.EnsureIsValid(Innovt.Core.Cqrs.Commands.ICommand, String)
+  name.vb: EnsureIsValid(ICommand, String)
+references:
+- uid: System.ComponentModel.DataAnnotations.IValidatableObject
+  commentId: T:System.ComponentModel.DataAnnotations.IValidatableObject
+  parent: System.ComponentModel.DataAnnotations
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.ivalidatableobject
+  name: IValidatableObject
+  nameWithType: IValidatableObject
+  fullName: System.ComponentModel.DataAnnotations.IValidatableObject
+- uid: Innovt.Core.Validation
+  commentId: N:Innovt.Core.Validation
+  href: Innovt.html
+  name: Innovt.Core.Validation
+  nameWithType: Innovt.Core.Validation
+  fullName: Innovt.Core.Validation
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Validation
+    name: Validation
+    href: Innovt.Core.Validation.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Validation
+    name: Validation
+    href: Innovt.Core.Validation.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.ComponentModel.DataAnnotations
+  commentId: N:System.ComponentModel.DataAnnotations
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.ComponentModel.DataAnnotations
+  nameWithType: System.ComponentModel.DataAnnotations
+  fullName: System.ComponentModel.DataAnnotations
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+  - name: .
+  - uid: System.ComponentModel.DataAnnotations
+    name: DataAnnotations
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+  - name: .
+  - uid: System.ComponentModel.DataAnnotations
+    name: DataAnnotations
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ComponentModel.DataAnnotations.ValidationResult
+  commentId: T:System.ComponentModel.DataAnnotations.ValidationResult
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.validationresult
+  name: ValidationResult
+  nameWithType: ValidationResult
+  fullName: System.ComponentModel.DataAnnotations.ValidationResult
+- uid: System.ComponentModel.DataAnnotations.ValidationContext
+  commentId: T:System.ComponentModel.DataAnnotations.ValidationContext
+  parent: System.ComponentModel.DataAnnotations
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.validationcontext
+  name: ValidationContext
+  nameWithType: ValidationContext
+  fullName: System.ComponentModel.DataAnnotations.ValidationContext
+- uid: Innovt.Core.Validation.Extensions.Validate*
+  commentId: Overload:Innovt.Core.Validation.Extensions.Validate
+  href: Innovt.Core.Validation.Extensions.html#Innovt_Core_Validation_Extensions_Validate_System_Collections_Generic_IEnumerable_System_ComponentModel_DataAnnotations_IValidatableObject__System_ComponentModel_DataAnnotations_ValidationContext_
+  name: Validate
+  nameWithType: Extensions.Validate
+  fullName: Innovt.Core.Validation.Extensions.Validate
+- uid: System.Collections.Generic.IEnumerable{System.ComponentModel.DataAnnotations.IValidatableObject}
+  commentId: T:System.Collections.Generic.IEnumerable{System.ComponentModel.DataAnnotations.IValidatableObject}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<IValidatableObject>
+  nameWithType: IEnumerable<IValidatableObject>
+  fullName: System.Collections.Generic.IEnumerable<System.ComponentModel.DataAnnotations.IValidatableObject>
+  nameWithType.vb: IEnumerable(Of IValidatableObject)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.ComponentModel.DataAnnotations.IValidatableObject)
+  name.vb: IEnumerable(Of IValidatableObject)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.ComponentModel.DataAnnotations.IValidatableObject
+    name: IValidatableObject
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.ivalidatableobject
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.ComponentModel.DataAnnotations.IValidatableObject
+    name: IValidatableObject
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.ivalidatableobject
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.ComponentModel.DataAnnotations.ValidationResult}
+  commentId: T:System.Collections.Generic.IEnumerable{System.ComponentModel.DataAnnotations.ValidationResult}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<ValidationResult>
+  nameWithType: IEnumerable<ValidationResult>
+  fullName: System.Collections.Generic.IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult>
+  nameWithType.vb: IEnumerable(Of ValidationResult)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.ComponentModel.DataAnnotations.ValidationResult)
+  name.vb: IEnumerable(Of ValidationResult)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.ComponentModel.DataAnnotations.ValidationResult
+    name: ValidationResult
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.validationresult
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.ComponentModel.DataAnnotations.ValidationResult
+    name: ValidationResult
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.validationresult
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Innovt.Core.Validation.Extensions.IsValid*
+  commentId: Overload:Innovt.Core.Validation.Extensions.IsValid
+  href: Innovt.Core.Validation.Extensions.html#Innovt_Core_Validation_Extensions_IsValid_System_ComponentModel_DataAnnotations_IValidatableObject_System_ComponentModel_DataAnnotations_ValidationContext_
+  name: IsValid
+  nameWithType: Extensions.IsValid
+  fullName: Innovt.Core.Validation.Extensions.IsValid
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Innovt.Core.Exceptions.BusinessException
+  commentId: T:Innovt.Core.Exceptions.BusinessException
+  parent: Innovt.Core.Exceptions
+  href: Innovt.Core.Exceptions.BusinessException.html
+  name: BusinessException
+  nameWithType: BusinessException
+  fullName: Innovt.Core.Exceptions.BusinessException
+- uid: Innovt.Core.Validation.Extensions.EnsureIsValid*
+  commentId: Overload:Innovt.Core.Validation.Extensions.EnsureIsValid
+  href: Innovt.Core.Validation.Extensions.html#Innovt_Core_Validation_Extensions_EnsureIsValid_System_ComponentModel_DataAnnotations_IValidatableObject_System_ComponentModel_DataAnnotations_ValidationContext_
+  name: EnsureIsValid
+  nameWithType: Extensions.EnsureIsValid
+  fullName: Innovt.Core.Validation.Extensions.EnsureIsValid
+- uid: Innovt.Core.Exceptions
+  commentId: N:Innovt.Core.Exceptions
+  href: Innovt.html
+  name: Innovt.Core.Exceptions
+  nameWithType: Innovt.Core.Exceptions
+  fullName: Innovt.Core.Exceptions
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Exceptions
+    name: Exceptions
+    href: Innovt.Core.Exceptions.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Exceptions
+    name: Exceptions
+    href: Innovt.Core.Exceptions.html
+- uid: Innovt.Core.Cqrs.Commands.ICommand
+  commentId: T:Innovt.Core.Cqrs.Commands.ICommand
+  parent: Innovt.Core.Cqrs.Commands
+  href: Innovt.Core.Cqrs.Commands.ICommand.html
+  name: ICommand
+  nameWithType: ICommand
+  fullName: Innovt.Core.Cqrs.Commands.ICommand
+- uid: Innovt.Core.Cqrs.Commands
+  commentId: N:Innovt.Core.Cqrs.Commands
+  href: Innovt.html
+  name: Innovt.Core.Cqrs.Commands
+  nameWithType: Innovt.Core.Cqrs.Commands
+  fullName: Innovt.Core.Cqrs.Commands
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Cqrs
+    name: Cqrs
+    href: Innovt.Core.Cqrs.html
+  - name: .
+  - uid: Innovt.Core.Cqrs.Commands
+    name: Commands
+    href: Innovt.Core.Cqrs.Commands.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Cqrs
+    name: Cqrs
+    href: Innovt.Core.Cqrs.html
+  - name: .
+  - uid: Innovt.Core.Cqrs.Commands
+    name: Commands
+    href: Innovt.Core.Cqrs.Commands.html
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

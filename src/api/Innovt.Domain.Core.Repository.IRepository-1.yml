@@ -1,0 +1,2162 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Domain.Core.Repository.IRepository`1
+  commentId: T:Innovt.Domain.Core.Repository.IRepository`1
+  id: IRepository`1
+  parent: Innovt.Domain.Core.Repository
+  children:
+  - Innovt.Domain.Core.Repository.IRepository`1.Add(System.Collections.Generic.IEnumerable{`0})
+  - Innovt.Domain.Core.Repository.IRepository`1.Add(`0)
+  - Innovt.Domain.Core.Repository.IRepository`1.AddAsync(System.Collections.Generic.IEnumerable{`0})
+  - Innovt.Domain.Core.Repository.IRepository`1.AddAsync(`0)
+  - Innovt.Domain.Core.Repository.IRepository`1.CountBy(Innovt.Domain.Core.Specification.ISpecification{`0})
+  - Innovt.Domain.Core.Repository.IRepository`1.CountByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},System.Threading.CancellationToken)
+  - Innovt.Domain.Core.Repository.IRepository`1.CountByAsync``1(Innovt.Domain.Core.Specification.ISpecification{``0},System.Threading.CancellationToken)
+  - Innovt.Domain.Core.Repository.IRepository`1.CountBy``1(Innovt.Domain.Core.Specification.ISpecification{``0})
+  - Innovt.Domain.Core.Repository.IRepository`1.FindBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  - Innovt.Domain.Core.Repository.IRepository`1.FindByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  - Innovt.Domain.Core.Repository.IRepository`1.FindByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  - Innovt.Domain.Core.Repository.IRepository`1.FindBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+  - Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  - Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  - Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  - Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+  - Innovt.Domain.Core.Repository.IRepository`1.GetFirstOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  - Innovt.Domain.Core.Repository.IRepository`1.GetFirstOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  - Innovt.Domain.Core.Repository.IRepository`1.GetSingleOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  - Innovt.Domain.Core.Repository.IRepository`1.GetSingleOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  - Innovt.Domain.Core.Repository.IRepository`1.Modify(`0)
+  - Innovt.Domain.Core.Repository.IRepository`1.Remove(System.Collections.Generic.IEnumerable{`0})
+  - Innovt.Domain.Core.Repository.IRepository`1.Remove(`0)
+  langs:
+  - csharp
+  - vb
+  name: IRepository<T>
+  nameWithType: IRepository<T>
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>
+  type: Interface
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Repository/IRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: IRepository
+    path: Innovt.Domain.Core/Repository/IRepository.cs
+    startLine: 18
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Repository
+  summary: Represents a generic repository for data access operations.
+  example: []
+  syntax:
+    content: 'public interface IRepository<T> where T : class'
+    typeParameters:
+    - id: T
+      description: The entity type.
+    content.vb: Public Interface IRepository(Of T As Class)
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  nameWithType.vb: IRepository(Of T)
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T)
+  name.vb: IRepository(Of T)
+- uid: Innovt.Domain.Core.Repository.IRepository`1.Add(`0)
+  commentId: M:Innovt.Domain.Core.Repository.IRepository`1.Add(`0)
+  id: Add(`0)
+  parent: Innovt.Domain.Core.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: Add(T)
+  nameWithType: IRepository<T>.Add(T)
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.Add(T)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Repository/IRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Add
+    path: Innovt.Domain.Core/Repository/IRepository.cs
+    startLine: 24
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Repository
+  summary: Adds a single entity
+  example: []
+  syntax:
+    content: void Add(T entity)
+    parameters:
+    - id: entity
+      type: '{T}'
+      description: ''
+    content.vb: Sub Add(entity As T)
+  overload: Innovt.Domain.Core.Repository.IRepository`1.Add*
+  nameWithType.vb: IRepository(Of T).Add(T)
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).Add(T)
+- uid: Innovt.Domain.Core.Repository.IRepository`1.Add(System.Collections.Generic.IEnumerable{`0})
+  commentId: M:Innovt.Domain.Core.Repository.IRepository`1.Add(System.Collections.Generic.IEnumerable{`0})
+  id: Add(System.Collections.Generic.IEnumerable{`0})
+  parent: Innovt.Domain.Core.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: Add(IEnumerable<T>)
+  nameWithType: IRepository<T>.Add(IEnumerable<T>)
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.Add(System.Collections.Generic.IEnumerable<T>)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Repository/IRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Add
+    path: Innovt.Domain.Core/Repository/IRepository.cs
+    startLine: 30
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Repository
+  summary: Adds multiple entities
+  example: []
+  syntax:
+    content: void Add(IEnumerable<T> entities)
+    parameters:
+    - id: entities
+      type: System.Collections.Generic.IEnumerable{{T}}
+      description: ''
+    content.vb: Sub Add(entities As IEnumerable(Of T))
+  overload: Innovt.Domain.Core.Repository.IRepository`1.Add*
+  nameWithType.vb: IRepository(Of T).Add(IEnumerable(Of T))
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).Add(System.Collections.Generic.IEnumerable(Of T))
+  name.vb: Add(IEnumerable(Of T))
+- uid: Innovt.Domain.Core.Repository.IRepository`1.AddAsync(`0)
+  commentId: M:Innovt.Domain.Core.Repository.IRepository`1.AddAsync(`0)
+  id: AddAsync(`0)
+  parent: Innovt.Domain.Core.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: AddAsync(T)
+  nameWithType: IRepository<T>.AddAsync(T)
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.AddAsync(T)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Repository/IRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: AddAsync
+    path: Innovt.Domain.Core/Repository/IRepository.cs
+    startLine: 37
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Repository
+  summary: Asynchronously adds a single entity
+  example: []
+  syntax:
+    content: Task AddAsync(T entity)
+    parameters:
+    - id: entity
+      type: '{T}'
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task
+      description: ''
+    content.vb: Function AddAsync(entity As T) As Task
+  overload: Innovt.Domain.Core.Repository.IRepository`1.AddAsync*
+  nameWithType.vb: IRepository(Of T).AddAsync(T)
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).AddAsync(T)
+- uid: Innovt.Domain.Core.Repository.IRepository`1.AddAsync(System.Collections.Generic.IEnumerable{`0})
+  commentId: M:Innovt.Domain.Core.Repository.IRepository`1.AddAsync(System.Collections.Generic.IEnumerable{`0})
+  id: AddAsync(System.Collections.Generic.IEnumerable{`0})
+  parent: Innovt.Domain.Core.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: AddAsync(IEnumerable<T>)
+  nameWithType: IRepository<T>.AddAsync(IEnumerable<T>)
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.AddAsync(System.Collections.Generic.IEnumerable<T>)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Repository/IRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: AddAsync
+    path: Innovt.Domain.Core/Repository/IRepository.cs
+    startLine: 44
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Repository
+  summary: Asynchronously adds multiple entities
+  example: []
+  syntax:
+    content: Task AddAsync(IEnumerable<T> entities)
+    parameters:
+    - id: entities
+      type: System.Collections.Generic.IEnumerable{{T}}
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task
+      description: ''
+    content.vb: Function AddAsync(entities As IEnumerable(Of T)) As Task
+  overload: Innovt.Domain.Core.Repository.IRepository`1.AddAsync*
+  nameWithType.vb: IRepository(Of T).AddAsync(IEnumerable(Of T))
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).AddAsync(System.Collections.Generic.IEnumerable(Of T))
+  name.vb: AddAsync(IEnumerable(Of T))
+- uid: Innovt.Domain.Core.Repository.IRepository`1.Modify(`0)
+  commentId: M:Innovt.Domain.Core.Repository.IRepository`1.Modify(`0)
+  id: Modify(`0)
+  parent: Innovt.Domain.Core.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: Modify(T)
+  nameWithType: IRepository<T>.Modify(T)
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.Modify(T)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Repository/IRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Modify
+    path: Innovt.Domain.Core/Repository/IRepository.cs
+    startLine: 50
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Repository
+  summary: Modifies an entity
+  example: []
+  syntax:
+    content: void Modify(T entity)
+    parameters:
+    - id: entity
+      type: '{T}'
+      description: ''
+    content.vb: Sub Modify(entity As T)
+  overload: Innovt.Domain.Core.Repository.IRepository`1.Modify*
+  nameWithType.vb: IRepository(Of T).Modify(T)
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).Modify(T)
+- uid: Innovt.Domain.Core.Repository.IRepository`1.Remove(System.Collections.Generic.IEnumerable{`0})
+  commentId: M:Innovt.Domain.Core.Repository.IRepository`1.Remove(System.Collections.Generic.IEnumerable{`0})
+  id: Remove(System.Collections.Generic.IEnumerable{`0})
+  parent: Innovt.Domain.Core.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: Remove(IEnumerable<T>)
+  nameWithType: IRepository<T>.Remove(IEnumerable<T>)
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.Remove(System.Collections.Generic.IEnumerable<T>)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Repository/IRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Remove
+    path: Innovt.Domain.Core/Repository/IRepository.cs
+    startLine: 56
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Repository
+  summary: Removes multiple entities
+  example: []
+  syntax:
+    content: void Remove(IEnumerable<T> entities)
+    parameters:
+    - id: entities
+      type: System.Collections.Generic.IEnumerable{{T}}
+      description: ''
+    content.vb: Sub Remove(entities As IEnumerable(Of T))
+  overload: Innovt.Domain.Core.Repository.IRepository`1.Remove*
+  nameWithType.vb: IRepository(Of T).Remove(IEnumerable(Of T))
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).Remove(System.Collections.Generic.IEnumerable(Of T))
+  name.vb: Remove(IEnumerable(Of T))
+- uid: Innovt.Domain.Core.Repository.IRepository`1.Remove(`0)
+  commentId: M:Innovt.Domain.Core.Repository.IRepository`1.Remove(`0)
+  id: Remove(`0)
+  parent: Innovt.Domain.Core.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: Remove(T)
+  nameWithType: IRepository<T>.Remove(T)
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.Remove(T)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Repository/IRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Remove
+    path: Innovt.Domain.Core/Repository/IRepository.cs
+    startLine: 62
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Repository
+  summary: Removes a single entity
+  example: []
+  syntax:
+    content: void Remove(T entity)
+    parameters:
+    - id: entity
+      type: '{T}'
+      description: ''
+    content.vb: Sub Remove(entity As T)
+  overload: Innovt.Domain.Core.Repository.IRepository`1.Remove*
+  nameWithType.vb: IRepository(Of T).Remove(T)
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).Remove(T)
+- uid: Innovt.Domain.Core.Repository.IRepository`1.GetSingleOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  commentId: M:Innovt.Domain.Core.Repository.IRepository`1.GetSingleOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  id: GetSingleOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  parent: Innovt.Domain.Core.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: GetSingleOrDefault(ISpecification<T>, Include?)
+  nameWithType: IRepository<T>.GetSingleOrDefault(ISpecification<T>, Include?)
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.GetSingleOrDefault(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Repository.Include?)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Repository/IRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: GetSingleOrDefault
+    path: Innovt.Domain.Core/Repository/IRepository.cs
+    startLine: 70
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Repository
+  summary: Gets a single entity based on a specification and includes related entities
+  example: []
+  syntax:
+    content: T? GetSingleOrDefault(ISpecification<T> specification, Include? includes = null)
+    parameters:
+    - id: specification
+      type: Innovt.Domain.Core.Specification.ISpecification{{T}}
+      description: ''
+    - id: includes
+      type: Innovt.Domain.Core.Repository.Include
+      description: ''
+    return:
+      type: '{T}'
+      description: ''
+    content.vb: Function GetSingleOrDefault(specification As ISpecification(Of T), includes As Include = Nothing) As T
+  overload: Innovt.Domain.Core.Repository.IRepository`1.GetSingleOrDefault*
+  nameWithType.vb: IRepository(Of T).GetSingleOrDefault(ISpecification(Of T), Include)
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).GetSingleOrDefault(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Repository.Include)
+  name.vb: GetSingleOrDefault(ISpecification(Of T), Include)
+- uid: Innovt.Domain.Core.Repository.IRepository`1.GetSingleOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  commentId: M:Innovt.Domain.Core.Repository.IRepository`1.GetSingleOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  id: GetSingleOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  parent: Innovt.Domain.Core.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: GetSingleOrDefaultAsync(ISpecification<T>, Include?, CancellationToken)
+  nameWithType: IRepository<T>.GetSingleOrDefaultAsync(ISpecification<T>, Include?, CancellationToken)
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.GetSingleOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Repository.Include?, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Repository/IRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: GetSingleOrDefaultAsync
+    path: Innovt.Domain.Core/Repository/IRepository.cs
+    startLine: 79
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Repository
+  summary: Asynchronously gets a single entity based on a specification and includes related entities
+  example: []
+  syntax:
+    content: Task<T?> GetSingleOrDefaultAsync(ISpecification<T> specification, Include? includes = null, CancellationToken cancellationToken = default)
+    parameters:
+    - id: specification
+      type: Innovt.Domain.Core.Specification.ISpecification{{T}}
+      description: ''
+    - id: includes
+      type: Innovt.Domain.Core.Repository.Include
+      description: ''
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{{T}}
+      description: ''
+    content.vb: Function GetSingleOrDefaultAsync(specification As ISpecification(Of T), includes As Include = Nothing, cancellationToken As CancellationToken = Nothing) As Task(Of T)
+  overload: Innovt.Domain.Core.Repository.IRepository`1.GetSingleOrDefaultAsync*
+  nameWithType.vb: IRepository(Of T).GetSingleOrDefaultAsync(ISpecification(Of T), Include, CancellationToken)
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).GetSingleOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  name.vb: GetSingleOrDefaultAsync(ISpecification(Of T), Include, CancellationToken)
+- uid: Innovt.Domain.Core.Repository.IRepository`1.GetFirstOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  commentId: M:Innovt.Domain.Core.Repository.IRepository`1.GetFirstOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  id: GetFirstOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  parent: Innovt.Domain.Core.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: GetFirstOrDefault(ISpecification<T>, Include?)
+  nameWithType: IRepository<T>.GetFirstOrDefault(ISpecification<T>, Include?)
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.GetFirstOrDefault(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Repository.Include?)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Repository/IRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: GetFirstOrDefault
+    path: Innovt.Domain.Core/Repository/IRepository.cs
+    startLine: 88
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Repository
+  summary: Gets the first entity based on a specification and includes related entities
+  example: []
+  syntax:
+    content: T? GetFirstOrDefault(ISpecification<T> specification, Include? includes = null)
+    parameters:
+    - id: specification
+      type: Innovt.Domain.Core.Specification.ISpecification{{T}}
+      description: ''
+    - id: includes
+      type: Innovt.Domain.Core.Repository.Include
+      description: ''
+    return:
+      type: '{T}'
+      description: ''
+    content.vb: Function GetFirstOrDefault(specification As ISpecification(Of T), includes As Include = Nothing) As T
+  overload: Innovt.Domain.Core.Repository.IRepository`1.GetFirstOrDefault*
+  nameWithType.vb: IRepository(Of T).GetFirstOrDefault(ISpecification(Of T), Include)
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).GetFirstOrDefault(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Repository.Include)
+  name.vb: GetFirstOrDefault(ISpecification(Of T), Include)
+- uid: Innovt.Domain.Core.Repository.IRepository`1.GetFirstOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  commentId: M:Innovt.Domain.Core.Repository.IRepository`1.GetFirstOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  id: GetFirstOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  parent: Innovt.Domain.Core.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: GetFirstOrDefaultAsync(ISpecification<T>, Include?, CancellationToken)
+  nameWithType: IRepository<T>.GetFirstOrDefaultAsync(ISpecification<T>, Include?, CancellationToken)
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.GetFirstOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Repository.Include?, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Repository/IRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: GetFirstOrDefaultAsync
+    path: Innovt.Domain.Core/Repository/IRepository.cs
+    startLine: 97
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Repository
+  summary: Asynchronously gets the first entity based on a specification and includes related entities
+  example: []
+  syntax:
+    content: Task<T?> GetFirstOrDefaultAsync(ISpecification<T> specification, Include? includes = null, CancellationToken cancellationToken = default)
+    parameters:
+    - id: specification
+      type: Innovt.Domain.Core.Specification.ISpecification{{T}}
+      description: ''
+    - id: includes
+      type: Innovt.Domain.Core.Repository.Include
+      description: ''
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{{T}}
+      description: ''
+    content.vb: Function GetFirstOrDefaultAsync(specification As ISpecification(Of T), includes As Include = Nothing, cancellationToken As CancellationToken = Nothing) As Task(Of T)
+  overload: Innovt.Domain.Core.Repository.IRepository`1.GetFirstOrDefaultAsync*
+  nameWithType.vb: IRepository(Of T).GetFirstOrDefaultAsync(ISpecification(Of T), Include, CancellationToken)
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).GetFirstOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  name.vb: GetFirstOrDefaultAsync(ISpecification(Of T), Include, CancellationToken)
+- uid: Innovt.Domain.Core.Repository.IRepository`1.FindBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  commentId: M:Innovt.Domain.Core.Repository.IRepository`1.FindBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  id: FindBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  parent: Innovt.Domain.Core.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: FindBy(ISpecification<T>, Include?)
+  nameWithType: IRepository<T>.FindBy(ISpecification<T>, Include?)
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.FindBy(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Repository.Include?)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Repository/IRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: FindBy
+    path: Innovt.Domain.Core/Repository/IRepository.cs
+    startLine: 106
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Repository
+  summary: Finds entities based on a specification and includes related entities
+  example: []
+  syntax:
+    content: IEnumerable<T> FindBy(ISpecification<T> specification, Include? includes = null)
+    parameters:
+    - id: specification
+      type: Innovt.Domain.Core.Specification.ISpecification{{T}}
+      description: ''
+    - id: includes
+      type: Innovt.Domain.Core.Repository.Include
+      description: ''
+    return:
+      type: System.Collections.Generic.IEnumerable{{T}}
+      description: ''
+    content.vb: Function FindBy(specification As ISpecification(Of T), includes As Include = Nothing) As IEnumerable(Of T)
+  overload: Innovt.Domain.Core.Repository.IRepository`1.FindBy*
+  nameWithType.vb: IRepository(Of T).FindBy(ISpecification(Of T), Include)
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).FindBy(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Repository.Include)
+  name.vb: FindBy(ISpecification(Of T), Include)
+- uid: Innovt.Domain.Core.Repository.IRepository`1.FindBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+  commentId: M:Innovt.Domain.Core.Repository.IRepository`1.FindBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+  id: FindBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+  parent: Innovt.Domain.Core.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: FindBy<TKey>(ISpecification<T>, Expression<Func<T, TKey>>?, bool, Include?)
+  nameWithType: IRepository<T>.FindBy<TKey>(ISpecification<T>, Expression<Func<T, TKey>>?, bool, Include?)
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.FindBy<TKey>(Innovt.Domain.Core.Specification.ISpecification<T>, System.Linq.Expressions.Expression<System.Func<T, TKey>>?, bool, Innovt.Domain.Core.Repository.Include?)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Repository/IRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: FindBy
+    path: Innovt.Domain.Core/Repository/IRepository.cs
+    startLine: 117
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Repository
+  summary: Finds entities based on a specification, with optional ordering, and includes related entities
+  example: []
+  syntax:
+    content: IEnumerable<T> FindBy<TKey>(ISpecification<T> specification, Expression<Func<T, TKey>>? orderBy = null, bool isOrderByDescending = false, Include? includes = null)
+    parameters:
+    - id: specification
+      type: Innovt.Domain.Core.Specification.ISpecification{{T}}
+      description: ''
+    - id: orderBy
+      type: System.Linq.Expressions.Expression{System.Func{{T},{TKey}}}
+      description: ''
+    - id: isOrderByDescending
+      type: System.Boolean
+      description: ''
+    - id: includes
+      type: Innovt.Domain.Core.Repository.Include
+      description: ''
+    typeParameters:
+    - id: TKey
+      description: ''
+    return:
+      type: System.Collections.Generic.IEnumerable{{T}}
+      description: ''
+    content.vb: Function FindBy(Of TKey)(specification As ISpecification(Of T), orderBy As Expression(Of Func(Of T, TKey)) = Nothing, isOrderByDescending As Boolean = False, includes As Include = Nothing) As IEnumerable(Of T)
+  overload: Innovt.Domain.Core.Repository.IRepository`1.FindBy*
+  nameWithType.vb: IRepository(Of T).FindBy(Of TKey)(ISpecification(Of T), Expression(Of Func(Of T, TKey)), Boolean, Include)
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).FindBy(Of TKey)(Innovt.Domain.Core.Specification.ISpecification(Of T), System.Linq.Expressions.Expression(Of System.Func(Of T, TKey)), Boolean, Innovt.Domain.Core.Repository.Include)
+  name.vb: FindBy(Of TKey)(ISpecification(Of T), Expression(Of Func(Of T, TKey)), Boolean, Include)
+- uid: Innovt.Domain.Core.Repository.IRepository`1.FindByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  commentId: M:Innovt.Domain.Core.Repository.IRepository`1.FindByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  id: FindByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  parent: Innovt.Domain.Core.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: FindByAsync(ISpecification<T>, Include?, CancellationToken)
+  nameWithType: IRepository<T>.FindByAsync(ISpecification<T>, Include?, CancellationToken)
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.FindByAsync(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Repository.Include?, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Repository/IRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: FindByAsync
+    path: Innovt.Domain.Core/Repository/IRepository.cs
+    startLine: 127
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Repository
+  summary: Asynchronously finds entities based on a specification and includes related entities
+  example: []
+  syntax:
+    content: Task<IEnumerable<T>> FindByAsync(ISpecification<T> specification, Include? includes = null, CancellationToken cancellationToken = default)
+    parameters:
+    - id: specification
+      type: Innovt.Domain.Core.Specification.ISpecification{{T}}
+      description: ''
+    - id: includes
+      type: Innovt.Domain.Core.Repository.Include
+      description: ''
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{{T}}}
+      description: ''
+    content.vb: Function FindByAsync(specification As ISpecification(Of T), includes As Include = Nothing, cancellationToken As CancellationToken = Nothing) As Task(Of IEnumerable(Of T))
+  overload: Innovt.Domain.Core.Repository.IRepository`1.FindByAsync*
+  nameWithType.vb: IRepository(Of T).FindByAsync(ISpecification(Of T), Include, CancellationToken)
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).FindByAsync(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  name.vb: FindByAsync(ISpecification(Of T), Include, CancellationToken)
+- uid: Innovt.Domain.Core.Repository.IRepository`1.FindByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  commentId: M:Innovt.Domain.Core.Repository.IRepository`1.FindByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  id: FindByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  parent: Innovt.Domain.Core.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: FindByAsync<TKey>(ISpecification<T>, Expression<Func<T, TKey>>?, bool, Include?, CancellationToken)
+  nameWithType: IRepository<T>.FindByAsync<TKey>(ISpecification<T>, Expression<Func<T, TKey>>?, bool, Include?, CancellationToken)
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.FindByAsync<TKey>(Innovt.Domain.Core.Specification.ISpecification<T>, System.Linq.Expressions.Expression<System.Func<T, TKey>>?, bool, Innovt.Domain.Core.Repository.Include?, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Repository/IRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: FindByAsync
+    path: Innovt.Domain.Core/Repository/IRepository.cs
+    startLine: 140
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Repository
+  summary: Asynchronously finds entities based on a specification, with optional ordering, and includes related entities
+  example: []
+  syntax:
+    content: Task<IEnumerable<T>> FindByAsync<TKey>(ISpecification<T> specification, Expression<Func<T, TKey>>? orderBy = null, bool isOrderByDescending = false, Include? includes = null, CancellationToken cancellationToken = default)
+    parameters:
+    - id: specification
+      type: Innovt.Domain.Core.Specification.ISpecification{{T}}
+      description: ''
+    - id: orderBy
+      type: System.Linq.Expressions.Expression{System.Func{{T},{TKey}}}
+      description: ''
+    - id: isOrderByDescending
+      type: System.Boolean
+      description: ''
+    - id: includes
+      type: Innovt.Domain.Core.Repository.Include
+      description: ''
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: ''
+    typeParameters:
+    - id: TKey
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{{T}}}
+      description: ''
+    content.vb: Function FindByAsync(Of TKey)(specification As ISpecification(Of T), orderBy As Expression(Of Func(Of T, TKey)) = Nothing, isOrderByDescending As Boolean = False, includes As Include = Nothing, cancellationToken As CancellationToken = Nothing) As Task(Of IEnumerable(Of T))
+  overload: Innovt.Domain.Core.Repository.IRepository`1.FindByAsync*
+  nameWithType.vb: IRepository(Of T).FindByAsync(Of TKey)(ISpecification(Of T), Expression(Of Func(Of T, TKey)), Boolean, Include, CancellationToken)
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).FindByAsync(Of TKey)(Innovt.Domain.Core.Specification.ISpecification(Of T), System.Linq.Expressions.Expression(Of System.Func(Of T, TKey)), Boolean, Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  name.vb: FindByAsync(Of TKey)(ISpecification(Of T), Expression(Of Func(Of T, TKey)), Boolean, Include, CancellationToken)
+- uid: Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  commentId: M:Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  id: FindPaginatedBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  parent: Innovt.Domain.Core.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: FindPaginatedBy(ISpecification<T>, Include?)
+  nameWithType: IRepository<T>.FindPaginatedBy(ISpecification<T>, Include?)
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.FindPaginatedBy(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Repository.Include?)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Repository/IRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: FindPaginatedBy
+    path: Innovt.Domain.Core/Repository/IRepository.cs
+    startLine: 150
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Repository
+  summary: Finds entities based on a specification and returns a paged collection, with optional includes
+  example: []
+  syntax:
+    content: PagedCollection<T> FindPaginatedBy(ISpecification<T> specification, Include? includes = null)
+    parameters:
+    - id: specification
+      type: Innovt.Domain.Core.Specification.ISpecification{{T}}
+      description: ''
+    - id: includes
+      type: Innovt.Domain.Core.Repository.Include
+      description: ''
+    return:
+      type: Innovt.Core.Collections.PagedCollection{{T}}
+      description: ''
+    content.vb: Function FindPaginatedBy(specification As ISpecification(Of T), includes As Include = Nothing) As PagedCollection(Of T)
+  overload: Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedBy*
+  nameWithType.vb: IRepository(Of T).FindPaginatedBy(ISpecification(Of T), Include)
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).FindPaginatedBy(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Repository.Include)
+  name.vb: FindPaginatedBy(ISpecification(Of T), Include)
+- uid: Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+  commentId: M:Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+  id: FindPaginatedBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+  parent: Innovt.Domain.Core.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: FindPaginatedBy<TKey>(ISpecification<T>, Expression<Func<T, TKey>>?, bool, Include?)
+  nameWithType: IRepository<T>.FindPaginatedBy<TKey>(ISpecification<T>, Expression<Func<T, TKey>>?, bool, Include?)
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.FindPaginatedBy<TKey>(Innovt.Domain.Core.Specification.ISpecification<T>, System.Linq.Expressions.Expression<System.Func<T, TKey>>?, bool, Innovt.Domain.Core.Repository.Include?)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Repository/IRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: FindPaginatedBy
+    path: Innovt.Domain.Core/Repository/IRepository.cs
+    startLine: 162
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Repository
+  summary: >-
+    Finds entities based on a specification, with optional ordering, and returns a paged collection, with optional
+
+    includes
+  example: []
+  syntax:
+    content: PagedCollection<T> FindPaginatedBy<TKey>(ISpecification<T> specification, Expression<Func<T, TKey>>? orderBy = null, bool isOrderByDescending = false, Include? includes = null)
+    parameters:
+    - id: specification
+      type: Innovt.Domain.Core.Specification.ISpecification{{T}}
+      description: ''
+    - id: orderBy
+      type: System.Linq.Expressions.Expression{System.Func{{T},{TKey}}}
+      description: ''
+    - id: isOrderByDescending
+      type: System.Boolean
+      description: ''
+    - id: includes
+      type: Innovt.Domain.Core.Repository.Include
+      description: ''
+    typeParameters:
+    - id: TKey
+      description: ''
+    return:
+      type: Innovt.Core.Collections.PagedCollection{{T}}
+      description: ''
+    content.vb: Function FindPaginatedBy(Of TKey)(specification As ISpecification(Of T), orderBy As Expression(Of Func(Of T, TKey)) = Nothing, isOrderByDescending As Boolean = False, includes As Include = Nothing) As PagedCollection(Of T)
+  overload: Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedBy*
+  nameWithType.vb: IRepository(Of T).FindPaginatedBy(Of TKey)(ISpecification(Of T), Expression(Of Func(Of T, TKey)), Boolean, Include)
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).FindPaginatedBy(Of TKey)(Innovt.Domain.Core.Specification.ISpecification(Of T), System.Linq.Expressions.Expression(Of System.Func(Of T, TKey)), Boolean, Innovt.Domain.Core.Repository.Include)
+  name.vb: FindPaginatedBy(Of TKey)(ISpecification(Of T), Expression(Of Func(Of T, TKey)), Boolean, Include)
+- uid: Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  commentId: M:Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  id: FindPaginatedByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  parent: Innovt.Domain.Core.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: FindPaginatedByAsync(ISpecification<T>, Include?, CancellationToken)
+  nameWithType: IRepository<T>.FindPaginatedByAsync(ISpecification<T>, Include?, CancellationToken)
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.FindPaginatedByAsync(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Repository.Include?, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Repository/IRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: FindPaginatedByAsync
+    path: Innovt.Domain.Core/Repository/IRepository.cs
+    startLine: 173
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Repository
+  summary: Asynchronously finds entities based on a specification and returns a paged collection, with optional includes
+  example: []
+  syntax:
+    content: Task<PagedCollection<T>> FindPaginatedByAsync(ISpecification<T> specification, Include? includes = null, CancellationToken cancellationToken = default)
+    parameters:
+    - id: specification
+      type: Innovt.Domain.Core.Specification.ISpecification{{T}}
+      description: ''
+    - id: includes
+      type: Innovt.Domain.Core.Repository.Include
+      description: ''
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{Innovt.Core.Collections.PagedCollection{{T}}}
+      description: ''
+    content.vb: Function FindPaginatedByAsync(specification As ISpecification(Of T), includes As Include = Nothing, cancellationToken As CancellationToken = Nothing) As Task(Of PagedCollection(Of T))
+  overload: Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedByAsync*
+  nameWithType.vb: IRepository(Of T).FindPaginatedByAsync(ISpecification(Of T), Include, CancellationToken)
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).FindPaginatedByAsync(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  name.vb: FindPaginatedByAsync(ISpecification(Of T), Include, CancellationToken)
+- uid: Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  commentId: M:Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  id: FindPaginatedByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  parent: Innovt.Domain.Core.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: FindPaginatedByAsync<TKey>(ISpecification<T>, Expression<Func<T, TKey>>?, bool, Include?, CancellationToken)
+  nameWithType: IRepository<T>.FindPaginatedByAsync<TKey>(ISpecification<T>, Expression<Func<T, TKey>>?, bool, Include?, CancellationToken)
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.FindPaginatedByAsync<TKey>(Innovt.Domain.Core.Specification.ISpecification<T>, System.Linq.Expressions.Expression<System.Func<T, TKey>>?, bool, Innovt.Domain.Core.Repository.Include?, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Repository/IRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: FindPaginatedByAsync
+    path: Innovt.Domain.Core/Repository/IRepository.cs
+    startLine: 187
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Repository
+  summary: >-
+    Asynchronously finds entities based on a specification, with optional ordering, and returns a paged collection,
+
+    with optional includes
+  example: []
+  syntax:
+    content: Task<PagedCollection<T>> FindPaginatedByAsync<TKey>(ISpecification<T> specification, Expression<Func<T, TKey>>? orderBy = null, bool isOrderByDescending = false, Include? includes = null, CancellationToken cancellationToken = default)
+    parameters:
+    - id: specification
+      type: Innovt.Domain.Core.Specification.ISpecification{{T}}
+      description: ''
+    - id: orderBy
+      type: System.Linq.Expressions.Expression{System.Func{{T},{TKey}}}
+      description: ''
+    - id: isOrderByDescending
+      type: System.Boolean
+      description: ''
+    - id: includes
+      type: Innovt.Domain.Core.Repository.Include
+      description: ''
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: ''
+    typeParameters:
+    - id: TKey
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{Innovt.Core.Collections.PagedCollection{{T}}}
+      description: ''
+    content.vb: Function FindPaginatedByAsync(Of TKey)(specification As ISpecification(Of T), orderBy As Expression(Of Func(Of T, TKey)) = Nothing, isOrderByDescending As Boolean = False, includes As Include = Nothing, cancellationToken As CancellationToken = Nothing) As Task(Of PagedCollection(Of T))
+  overload: Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedByAsync*
+  nameWithType.vb: IRepository(Of T).FindPaginatedByAsync(Of TKey)(ISpecification(Of T), Expression(Of Func(Of T, TKey)), Boolean, Include, CancellationToken)
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).FindPaginatedByAsync(Of TKey)(Innovt.Domain.Core.Specification.ISpecification(Of T), System.Linq.Expressions.Expression(Of System.Func(Of T, TKey)), Boolean, Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  name.vb: FindPaginatedByAsync(Of TKey)(ISpecification(Of T), Expression(Of Func(Of T, TKey)), Boolean, Include, CancellationToken)
+- uid: Innovt.Domain.Core.Repository.IRepository`1.CountBy``1(Innovt.Domain.Core.Specification.ISpecification{``0})
+  commentId: M:Innovt.Domain.Core.Repository.IRepository`1.CountBy``1(Innovt.Domain.Core.Specification.ISpecification{``0})
+  id: CountBy``1(Innovt.Domain.Core.Specification.ISpecification{``0})
+  parent: Innovt.Domain.Core.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: CountBy<TKEntity>(ISpecification<TKEntity>)
+  nameWithType: IRepository<T>.CountBy<TKEntity>(ISpecification<TKEntity>)
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.CountBy<TKEntity>(Innovt.Domain.Core.Specification.ISpecification<TKEntity>)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Repository/IRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: CountBy
+    path: Innovt.Domain.Core/Repository/IRepository.cs
+    startLine: 196
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Repository
+  summary: ''
+  example: []
+  syntax:
+    content: 'int CountBy<TKEntity>(ISpecification<TKEntity> specification) where TKEntity : class'
+    parameters:
+    - id: specification
+      type: Innovt.Domain.Core.Specification.ISpecification{{TKEntity}}
+      description: ''
+    typeParameters:
+    - id: TKEntity
+      description: ''
+    return:
+      type: System.Int32
+      description: ''
+    content.vb: Function CountBy(Of TKEntity As Class)(specification As ISpecification(Of TKEntity)) As Integer
+  overload: Innovt.Domain.Core.Repository.IRepository`1.CountBy*
+  nameWithType.vb: IRepository(Of T).CountBy(Of TKEntity)(ISpecification(Of TKEntity))
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).CountBy(Of TKEntity)(Innovt.Domain.Core.Specification.ISpecification(Of TKEntity))
+  name.vb: CountBy(Of TKEntity)(ISpecification(Of TKEntity))
+- uid: Innovt.Domain.Core.Repository.IRepository`1.CountBy(Innovt.Domain.Core.Specification.ISpecification{`0})
+  commentId: M:Innovt.Domain.Core.Repository.IRepository`1.CountBy(Innovt.Domain.Core.Specification.ISpecification{`0})
+  id: CountBy(Innovt.Domain.Core.Specification.ISpecification{`0})
+  parent: Innovt.Domain.Core.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: CountBy(ISpecification<T>)
+  nameWithType: IRepository<T>.CountBy(ISpecification<T>)
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.CountBy(Innovt.Domain.Core.Specification.ISpecification<T>)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Repository/IRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: CountBy
+    path: Innovt.Domain.Core/Repository/IRepository.cs
+    startLine: 203
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Repository
+  summary: Counts entities based on a specificatio
+  example: []
+  syntax:
+    content: int CountBy(ISpecification<T> specification)
+    parameters:
+    - id: specification
+      type: Innovt.Domain.Core.Specification.ISpecification{{T}}
+      description: ''
+    return:
+      type: System.Int32
+      description: ''
+    content.vb: Function CountBy(specification As ISpecification(Of T)) As Integer
+  overload: Innovt.Domain.Core.Repository.IRepository`1.CountBy*
+  nameWithType.vb: IRepository(Of T).CountBy(ISpecification(Of T))
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).CountBy(Innovt.Domain.Core.Specification.ISpecification(Of T))
+  name.vb: CountBy(ISpecification(Of T))
+- uid: Innovt.Domain.Core.Repository.IRepository`1.CountByAsync``1(Innovt.Domain.Core.Specification.ISpecification{``0},System.Threading.CancellationToken)
+  commentId: M:Innovt.Domain.Core.Repository.IRepository`1.CountByAsync``1(Innovt.Domain.Core.Specification.ISpecification{``0},System.Threading.CancellationToken)
+  id: CountByAsync``1(Innovt.Domain.Core.Specification.ISpecification{``0},System.Threading.CancellationToken)
+  parent: Innovt.Domain.Core.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: CountByAsync<TKEntity>(ISpecification<TKEntity>, CancellationToken)
+  nameWithType: IRepository<T>.CountByAsync<TKEntity>(ISpecification<TKEntity>, CancellationToken)
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.CountByAsync<TKEntity>(Innovt.Domain.Core.Specification.ISpecification<TKEntity>, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Repository/IRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: CountByAsync
+    path: Innovt.Domain.Core/Repository/IRepository.cs
+    startLine: 212
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Repository
+  summary: Asynchronously counts entities based on a specification for a given entity type
+  example: []
+  syntax:
+    content: 'Task<int> CountByAsync<TKEntity>(ISpecification<TKEntity> specification, CancellationToken cancellationToken = default) where TKEntity : class'
+    parameters:
+    - id: specification
+      type: Innovt.Domain.Core.Specification.ISpecification{{TKEntity}}
+      description: ''
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: ''
+    typeParameters:
+    - id: TKEntity
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+      description: ''
+    content.vb: Function CountByAsync(Of TKEntity As Class)(specification As ISpecification(Of TKEntity), cancellationToken As CancellationToken = Nothing) As Task(Of Integer)
+  overload: Innovt.Domain.Core.Repository.IRepository`1.CountByAsync*
+  nameWithType.vb: IRepository(Of T).CountByAsync(Of TKEntity)(ISpecification(Of TKEntity), CancellationToken)
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).CountByAsync(Of TKEntity)(Innovt.Domain.Core.Specification.ISpecification(Of TKEntity), System.Threading.CancellationToken)
+  name.vb: CountByAsync(Of TKEntity)(ISpecification(Of TKEntity), CancellationToken)
+- uid: Innovt.Domain.Core.Repository.IRepository`1.CountByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},System.Threading.CancellationToken)
+  commentId: M:Innovt.Domain.Core.Repository.IRepository`1.CountByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},System.Threading.CancellationToken)
+  id: CountByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},System.Threading.CancellationToken)
+  parent: Innovt.Domain.Core.Repository.IRepository`1
+  langs:
+  - csharp
+  - vb
+  name: CountByAsync(ISpecification<T>, CancellationToken)
+  nameWithType: IRepository<T>.CountByAsync(ISpecification<T>, CancellationToken)
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.CountByAsync(Innovt.Domain.Core.Specification.ISpecification<T>, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Repository/IRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: CountByAsync
+    path: Innovt.Domain.Core/Repository/IRepository.cs
+    startLine: 215
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Repository
+  syntax:
+    content: Task<int> CountByAsync(ISpecification<T> specification, CancellationToken cancellationToken = default)
+    parameters:
+    - id: specification
+      type: Innovt.Domain.Core.Specification.ISpecification{{T}}
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+    content.vb: Function CountByAsync(specification As ISpecification(Of T), cancellationToken As CancellationToken = Nothing) As Task(Of Integer)
+  overload: Innovt.Domain.Core.Repository.IRepository`1.CountByAsync*
+  nameWithType.vb: IRepository(Of T).CountByAsync(ISpecification(Of T), CancellationToken)
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).CountByAsync(Innovt.Domain.Core.Specification.ISpecification(Of T), System.Threading.CancellationToken)
+  name.vb: CountByAsync(ISpecification(Of T), CancellationToken)
+references:
+- uid: Innovt.Domain.Core.Repository
+  commentId: N:Innovt.Domain.Core.Repository
+  href: Innovt.html
+  name: Innovt.Domain.Core.Repository
+  nameWithType: Innovt.Domain.Core.Repository
+  fullName: Innovt.Domain.Core.Repository
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Repository
+    name: Repository
+    href: Innovt.Domain.Core.Repository.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Repository
+    name: Repository
+    href: Innovt.Domain.Core.Repository.html
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Domain.Core.Repository.IRepository`1.Add*
+  commentId: Overload:Innovt.Domain.Core.Repository.IRepository`1.Add
+  href: Innovt.Domain.Core.Repository.IRepository-1.html#Innovt_Domain_Core_Repository_IRepository_1_Add__0_
+  name: Add
+  nameWithType: IRepository<T>.Add
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.Add
+  nameWithType.vb: IRepository(Of T).Add
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).Add
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Collections.Generic.IEnumerable{{T}}
+  commentId: T:System.Collections.Generic.IEnumerable{``0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Innovt.Domain.Core.Repository.IRepository`1.AddAsync*
+  commentId: Overload:Innovt.Domain.Core.Repository.IRepository`1.AddAsync
+  href: Innovt.Domain.Core.Repository.IRepository-1.html#Innovt_Domain_Core_Repository_IRepository_1_AddAsync__0_
+  name: AddAsync
+  nameWithType: IRepository<T>.AddAsync
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.AddAsync
+  nameWithType.vb: IRepository(Of T).AddAsync
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).AddAsync
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Innovt.Domain.Core.Repository.IRepository`1.Modify*
+  commentId: Overload:Innovt.Domain.Core.Repository.IRepository`1.Modify
+  href: Innovt.Domain.Core.Repository.IRepository-1.html#Innovt_Domain_Core_Repository_IRepository_1_Modify__0_
+  name: Modify
+  nameWithType: IRepository<T>.Modify
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.Modify
+  nameWithType.vb: IRepository(Of T).Modify
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).Modify
+- uid: Innovt.Domain.Core.Repository.IRepository`1.Remove*
+  commentId: Overload:Innovt.Domain.Core.Repository.IRepository`1.Remove
+  href: Innovt.Domain.Core.Repository.IRepository-1.html#Innovt_Domain_Core_Repository_IRepository_1_Remove_System_Collections_Generic_IEnumerable__0__
+  name: Remove
+  nameWithType: IRepository<T>.Remove
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.Remove
+  nameWithType.vb: IRepository(Of T).Remove
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).Remove
+- uid: Innovt.Domain.Core.Repository.IRepository`1.GetSingleOrDefault*
+  commentId: Overload:Innovt.Domain.Core.Repository.IRepository`1.GetSingleOrDefault
+  href: Innovt.Domain.Core.Repository.IRepository-1.html#Innovt_Domain_Core_Repository_IRepository_1_GetSingleOrDefault_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  name: GetSingleOrDefault
+  nameWithType: IRepository<T>.GetSingleOrDefault
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.GetSingleOrDefault
+  nameWithType.vb: IRepository(Of T).GetSingleOrDefault
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).GetSingleOrDefault
+- uid: Innovt.Domain.Core.Specification.ISpecification{{T}}
+  commentId: T:Innovt.Domain.Core.Specification.ISpecification{``0}
+  parent: Innovt.Domain.Core.Specification
+  definition: Innovt.Domain.Core.Specification.ISpecification`1
+  href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  name: ISpecification<T>
+  nameWithType: ISpecification<T>
+  fullName: Innovt.Domain.Core.Specification.ISpecification<T>
+  nameWithType.vb: ISpecification(Of T)
+  fullName.vb: Innovt.Domain.Core.Specification.ISpecification(Of T)
+  name.vb: ISpecification(Of T)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+    href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+    href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Domain.Core.Repository.Include
+  commentId: T:Innovt.Domain.Core.Repository.Include
+  parent: Innovt.Domain.Core.Repository
+  href: Innovt.Domain.Core.Repository.Include.html
+  name: Include
+  nameWithType: Include
+  fullName: Innovt.Domain.Core.Repository.Include
+- uid: Innovt.Domain.Core.Specification.ISpecification`1
+  commentId: T:Innovt.Domain.Core.Specification.ISpecification`1
+  href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  name: ISpecification<TEntity>
+  nameWithType: ISpecification<TEntity>
+  fullName: Innovt.Domain.Core.Specification.ISpecification<TEntity>
+  nameWithType.vb: ISpecification(Of TEntity)
+  fullName.vb: Innovt.Domain.Core.Specification.ISpecification(Of TEntity)
+  name.vb: ISpecification(Of TEntity)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+    href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  - name: <
+  - name: TEntity
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+    href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+- uid: Innovt.Domain.Core.Specification
+  commentId: N:Innovt.Domain.Core.Specification
+  href: Innovt.html
+  name: Innovt.Domain.Core.Specification
+  nameWithType: Innovt.Domain.Core.Specification
+  fullName: Innovt.Domain.Core.Specification
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Specification
+    name: Specification
+    href: Innovt.Domain.Core.Specification.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Specification
+    name: Specification
+    href: Innovt.Domain.Core.Specification.html
+- uid: Innovt.Domain.Core.Repository.IRepository`1.GetSingleOrDefaultAsync*
+  commentId: Overload:Innovt.Domain.Core.Repository.IRepository`1.GetSingleOrDefaultAsync
+  href: Innovt.Domain.Core.Repository.IRepository-1.html#Innovt_Domain_Core_Repository_IRepository_1_GetSingleOrDefaultAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  name: GetSingleOrDefaultAsync
+  nameWithType: IRepository<T>.GetSingleOrDefaultAsync
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.GetSingleOrDefaultAsync
+  nameWithType.vb: IRepository(Of T).GetSingleOrDefaultAsync
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).GetSingleOrDefaultAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{{T}}
+  commentId: T:System.Threading.Tasks.Task{``0}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<T>
+  nameWithType: Task<T>
+  fullName: System.Threading.Tasks.Task<T>
+  nameWithType.vb: Task(Of T)
+  fullName.vb: System.Threading.Tasks.Task(Of T)
+  name.vb: Task(Of T)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: Innovt.Domain.Core.Repository.IRepository`1.GetFirstOrDefault*
+  commentId: Overload:Innovt.Domain.Core.Repository.IRepository`1.GetFirstOrDefault
+  href: Innovt.Domain.Core.Repository.IRepository-1.html#Innovt_Domain_Core_Repository_IRepository_1_GetFirstOrDefault_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  name: GetFirstOrDefault
+  nameWithType: IRepository<T>.GetFirstOrDefault
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.GetFirstOrDefault
+  nameWithType.vb: IRepository(Of T).GetFirstOrDefault
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).GetFirstOrDefault
+- uid: Innovt.Domain.Core.Repository.IRepository`1.GetFirstOrDefaultAsync*
+  commentId: Overload:Innovt.Domain.Core.Repository.IRepository`1.GetFirstOrDefaultAsync
+  href: Innovt.Domain.Core.Repository.IRepository-1.html#Innovt_Domain_Core_Repository_IRepository_1_GetFirstOrDefaultAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  name: GetFirstOrDefaultAsync
+  nameWithType: IRepository<T>.GetFirstOrDefaultAsync
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.GetFirstOrDefaultAsync
+  nameWithType.vb: IRepository(Of T).GetFirstOrDefaultAsync
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).GetFirstOrDefaultAsync
+- uid: Innovt.Domain.Core.Repository.IRepository`1.FindBy*
+  commentId: Overload:Innovt.Domain.Core.Repository.IRepository`1.FindBy
+  href: Innovt.Domain.Core.Repository.IRepository-1.html#Innovt_Domain_Core_Repository_IRepository_1_FindBy_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  name: FindBy
+  nameWithType: IRepository<T>.FindBy
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.FindBy
+  nameWithType.vb: IRepository(Of T).FindBy
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).FindBy
+- uid: System.Linq.Expressions.Expression{System.Func{{T},{TKey}}}
+  commentId: T:System.Linq.Expressions.Expression{System.Func{`0,``0}}
+  parent: System.Linq.Expressions
+  definition: System.Linq.Expressions.Expression`1
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  name: Expression<Func<T, TKey>>
+  nameWithType: Expression<Func<T, TKey>>
+  fullName: System.Linq.Expressions.Expression<System.Func<T, TKey>>
+  nameWithType.vb: Expression(Of Func(Of T, TKey))
+  fullName.vb: System.Linq.Expressions.Expression(Of System.Func(Of T, TKey))
+  name.vb: Expression(Of Func(Of T, TKey))
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Linq.Expressions.Expression`1
+  commentId: T:System.Linq.Expressions.Expression`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  name: Expression<TDelegate>
+  nameWithType: Expression<TDelegate>
+  fullName: System.Linq.Expressions.Expression<TDelegate>
+  nameWithType.vb: Expression(Of TDelegate)
+  fullName.vb: System.Linq.Expressions.Expression(Of TDelegate)
+  name.vb: Expression(Of TDelegate)
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - name: TDelegate
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDelegate
+  - name: )
+- uid: System.Linq.Expressions
+  commentId: N:System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Linq.Expressions
+  nameWithType: System.Linq.Expressions
+  fullName: System.Linq.Expressions
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq
+  - name: .
+  - uid: System.Linq.Expressions
+    name: Expressions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq
+  - name: .
+  - uid: System.Linq.Expressions
+    name: Expressions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Domain.Core.Repository.IRepository`1.FindByAsync*
+  commentId: Overload:Innovt.Domain.Core.Repository.IRepository`1.FindByAsync
+  href: Innovt.Domain.Core.Repository.IRepository-1.html#Innovt_Domain_Core_Repository_IRepository_1_FindByAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  name: FindByAsync
+  nameWithType: IRepository<T>.FindByAsync
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.FindByAsync
+  nameWithType.vb: IRepository(Of T).FindByAsync
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).FindByAsync
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{{T}}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{`0}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IEnumerable<T>>
+  nameWithType: Task<IEnumerable<T>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<T>>
+  nameWithType.vb: Task(Of IEnumerable(Of T))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IEnumerable(Of T))
+  name.vb: Task(Of IEnumerable(Of T))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedBy*
+  commentId: Overload:Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedBy
+  href: Innovt.Domain.Core.Repository.IRepository-1.html#Innovt_Domain_Core_Repository_IRepository_1_FindPaginatedBy_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  name: FindPaginatedBy
+  nameWithType: IRepository<T>.FindPaginatedBy
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.FindPaginatedBy
+  nameWithType.vb: IRepository(Of T).FindPaginatedBy
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).FindPaginatedBy
+- uid: Innovt.Core.Collections.PagedCollection{{T}}
+  commentId: T:Innovt.Core.Collections.PagedCollection{`0}
+  parent: Innovt.Core.Collections
+  definition: Innovt.Core.Collections.PagedCollection`1
+  href: Innovt.Core.Collections.PagedCollection-1.html
+  name: PagedCollection<T>
+  nameWithType: PagedCollection<T>
+  fullName: Innovt.Core.Collections.PagedCollection<T>
+  nameWithType.vb: PagedCollection(Of T)
+  fullName.vb: Innovt.Core.Collections.PagedCollection(Of T)
+  name.vb: PagedCollection(Of T)
+  spec.csharp:
+  - uid: Innovt.Core.Collections.PagedCollection`1
+    name: PagedCollection
+    href: Innovt.Core.Collections.PagedCollection-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Core.Collections.PagedCollection`1
+    name: PagedCollection
+    href: Innovt.Core.Collections.PagedCollection-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Core.Collections.PagedCollection`1
+  commentId: T:Innovt.Core.Collections.PagedCollection`1
+  href: Innovt.Core.Collections.PagedCollection-1.html
+  name: PagedCollection<T>
+  nameWithType: PagedCollection<T>
+  fullName: Innovt.Core.Collections.PagedCollection<T>
+  nameWithType.vb: PagedCollection(Of T)
+  fullName.vb: Innovt.Core.Collections.PagedCollection(Of T)
+  name.vb: PagedCollection(Of T)
+  spec.csharp:
+  - uid: Innovt.Core.Collections.PagedCollection`1
+    name: PagedCollection
+    href: Innovt.Core.Collections.PagedCollection-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Core.Collections.PagedCollection`1
+    name: PagedCollection
+    href: Innovt.Core.Collections.PagedCollection-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Core.Collections
+  commentId: N:Innovt.Core.Collections
+  href: Innovt.html
+  name: Innovt.Core.Collections
+  nameWithType: Innovt.Core.Collections
+  fullName: Innovt.Core.Collections
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Collections
+    name: Collections
+    href: Innovt.Core.Collections.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Collections
+    name: Collections
+    href: Innovt.Core.Collections.html
+- uid: Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedByAsync*
+  commentId: Overload:Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedByAsync
+  href: Innovt.Domain.Core.Repository.IRepository-1.html#Innovt_Domain_Core_Repository_IRepository_1_FindPaginatedByAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  name: FindPaginatedByAsync
+  nameWithType: IRepository<T>.FindPaginatedByAsync
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.FindPaginatedByAsync
+  nameWithType.vb: IRepository(Of T).FindPaginatedByAsync
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).FindPaginatedByAsync
+- uid: System.Threading.Tasks.Task{Innovt.Core.Collections.PagedCollection{{T}}}
+  commentId: T:System.Threading.Tasks.Task{Innovt.Core.Collections.PagedCollection{`0}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<PagedCollection<T>>
+  nameWithType: Task<PagedCollection<T>>
+  fullName: System.Threading.Tasks.Task<Innovt.Core.Collections.PagedCollection<T>>
+  nameWithType.vb: Task(Of PagedCollection(Of T))
+  fullName.vb: System.Threading.Tasks.Task(Of Innovt.Core.Collections.PagedCollection(Of T))
+  name.vb: Task(Of PagedCollection(Of T))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Innovt.Core.Collections.PagedCollection`1
+    name: PagedCollection
+    href: Innovt.Core.Collections.PagedCollection-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Core.Collections.PagedCollection`1
+    name: PagedCollection
+    href: Innovt.Core.Collections.PagedCollection-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Innovt.Domain.Core.Repository.IRepository`1.CountBy*
+  commentId: Overload:Innovt.Domain.Core.Repository.IRepository`1.CountBy
+  href: Innovt.Domain.Core.Repository.IRepository-1.html#Innovt_Domain_Core_Repository_IRepository_1_CountBy__1_Innovt_Domain_Core_Specification_ISpecification___0__
+  name: CountBy
+  nameWithType: IRepository<T>.CountBy
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.CountBy
+  nameWithType.vb: IRepository(Of T).CountBy
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).CountBy
+- uid: Innovt.Domain.Core.Specification.ISpecification{{TKEntity}}
+  commentId: T:Innovt.Domain.Core.Specification.ISpecification{``0}
+  parent: Innovt.Domain.Core.Specification
+  definition: Innovt.Domain.Core.Specification.ISpecification`1
+  href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  name: ISpecification<TKEntity>
+  nameWithType: ISpecification<TKEntity>
+  fullName: Innovt.Domain.Core.Specification.ISpecification<TKEntity>
+  nameWithType.vb: ISpecification(Of TKEntity)
+  fullName.vb: Innovt.Domain.Core.Specification.ISpecification(Of TKEntity)
+  name.vb: ISpecification(Of TKEntity)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+    href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  - name: <
+  - name: TKEntity
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+    href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKEntity
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Innovt.Domain.Core.Repository.IRepository`1.CountByAsync*
+  commentId: Overload:Innovt.Domain.Core.Repository.IRepository`1.CountByAsync
+  href: Innovt.Domain.Core.Repository.IRepository-1.html#Innovt_Domain_Core_Repository_IRepository_1_CountByAsync__1_Innovt_Domain_Core_Specification_ISpecification___0__System_Threading_CancellationToken_
+  name: CountByAsync
+  nameWithType: IRepository<T>.CountByAsync
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>.CountByAsync
+  nameWithType.vb: IRepository(Of T).CountByAsync
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T).CountByAsync
+- uid: System.Threading.Tasks.Task{System.Int32}
+  commentId: T:System.Threading.Tasks.Task{System.Int32}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<int>
+  nameWithType: Task<int>
+  fullName: System.Threading.Tasks.Task<int>
+  nameWithType.vb: Task(Of Integer)
+  fullName.vb: System.Threading.Tasks.Task(Of Integer)
+  name.vb: Task(Of Integer)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )

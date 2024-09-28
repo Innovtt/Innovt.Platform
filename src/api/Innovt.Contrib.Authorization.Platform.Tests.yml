@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Contrib.Authorization.Platform.Tests
+  commentId: N:Innovt.Contrib.Authorization.Platform.Tests
+  id: Innovt.Contrib.Authorization.Platform.Tests
+  children:
+  - Innovt.Contrib.Authorization.Platform.Tests.Tests
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Contrib.Authorization.Platform.Tests
+  nameWithType: Innovt.Contrib.Authorization.Platform.Tests
+  fullName: Innovt.Contrib.Authorization.Platform.Tests
+  type: Namespace
+  assemblies:
+  - Innovt.Contrib.Authorization.Platform.Tests
+references:
+- uid: Innovt.Contrib.Authorization.Platform.Tests.Tests
+  commentId: T:Innovt.Contrib.Authorization.Platform.Tests.Tests
+  href: Innovt.Contrib.Authorization.Platform.Tests.Tests.html
+  name: Tests
+  nameWithType: Tests
+  fullName: Innovt.Contrib.Authorization.Platform.Tests.Tests

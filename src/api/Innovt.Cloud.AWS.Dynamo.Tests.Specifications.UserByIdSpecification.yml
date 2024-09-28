@@ -1,0 +1,1164 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification
+  id: UserByIdSpecification
+  parent: Innovt.Cloud.AWS.Dynamo.Tests.Specifications
+  children:
+  - Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.#ctor(System.Guid)
+  - Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.Id
+  - Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.Page
+  - Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.PageSize
+  - Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.SatisfiedBy
+  langs:
+  - csharp
+  - vb
+  name: UserByIdSpecification
+  nameWithType: UserByIdSpecification
+  fullName: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo.Tests/Specifications/UserByIdSpecification.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: UserByIdSpecification
+    path: Innovt.Cloud.AWS.Dynamo.Tests/Specifications/UserByIdSpecification.cs
+    startLine: 7
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo.Tests
+  namespace: Innovt.Cloud.AWS.Dynamo.Tests.Specifications
+  syntax:
+    content: 'public class UserByIdSpecification : ISpecification<User>'
+    content.vb: Public Class UserByIdSpecification Implements ISpecification(Of User)
+  inheritance:
+  - System.Object
+  implements:
+  - Innovt.Domain.Core.Specification.ISpecification{Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+- uid: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.#ctor(System.Guid)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.#ctor(System.Guid)
+  id: '#ctor(System.Guid)'
+  parent: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification
+  langs:
+  - csharp
+  - vb
+  name: UserByIdSpecification(Guid)
+  nameWithType: UserByIdSpecification.UserByIdSpecification(Guid)
+  fullName: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.UserByIdSpecification(System.Guid)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo.Tests/Specifications/UserByIdSpecification.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: Innovt.Cloud.AWS.Dynamo.Tests/Specifications/UserByIdSpecification.cs
+    startLine: 9
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo.Tests
+  namespace: Innovt.Cloud.AWS.Dynamo.Tests.Specifications
+  syntax:
+    content: public UserByIdSpecification(Guid id)
+    parameters:
+    - id: id
+      type: System.Guid
+    content.vb: Public Sub New(id As Guid)
+  overload: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.#ctor*
+  nameWithType.vb: UserByIdSpecification.New(Guid)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.New(System.Guid)
+  name.vb: New(Guid)
+- uid: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.Id
+  commentId: P:Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.Id
+  id: Id
+  parent: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: UserByIdSpecification.Id
+  fullName: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.Id
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo.Tests/Specifications/UserByIdSpecification.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Id
+    path: Innovt.Cloud.AWS.Dynamo.Tests/Specifications/UserByIdSpecification.cs
+    startLine: 14
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo.Tests
+  namespace: Innovt.Cloud.AWS.Dynamo.Tests.Specifications
+  syntax:
+    content: public Guid Id { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property Id As Guid
+  overload: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.Id*
+- uid: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.Page
+  commentId: P:Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.Page
+  id: Page
+  parent: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification
+  langs:
+  - csharp
+  - vb
+  name: Page
+  nameWithType: UserByIdSpecification.Page
+  fullName: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.Page
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo.Tests/Specifications/UserByIdSpecification.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Page
+    path: Innovt.Cloud.AWS.Dynamo.Tests/Specifications/UserByIdSpecification.cs
+    startLine: 15
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo.Tests
+  namespace: Innovt.Cloud.AWS.Dynamo.Tests.Specifications
+  example: []
+  syntax:
+    content: public int? Page { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public Property Page As Integer?
+  overload: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.Page*
+  implements:
+  - Innovt.Domain.Core.Specification.ISpecification{Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User}.Page
+- uid: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.PageSize
+  commentId: P:Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.PageSize
+  id: PageSize
+  parent: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification
+  langs:
+  - csharp
+  - vb
+  name: PageSize
+  nameWithType: UserByIdSpecification.PageSize
+  fullName: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.PageSize
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo.Tests/Specifications/UserByIdSpecification.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: PageSize
+    path: Innovt.Cloud.AWS.Dynamo.Tests/Specifications/UserByIdSpecification.cs
+    startLine: 16
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo.Tests
+  namespace: Innovt.Cloud.AWS.Dynamo.Tests.Specifications
+  example: []
+  syntax:
+    content: public int? PageSize { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public Property PageSize As Integer?
+  overload: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.PageSize*
+  implements:
+  - Innovt.Domain.Core.Specification.ISpecification{Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User}.PageSize
+- uid: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.SatisfiedBy
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.SatisfiedBy
+  id: SatisfiedBy
+  parent: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification
+  langs:
+  - csharp
+  - vb
+  name: SatisfiedBy()
+  nameWithType: UserByIdSpecification.SatisfiedBy()
+  fullName: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.SatisfiedBy()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo.Tests/Specifications/UserByIdSpecification.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: SatisfiedBy
+    path: Innovt.Cloud.AWS.Dynamo.Tests/Specifications/UserByIdSpecification.cs
+    startLine: 18
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo.Tests
+  namespace: Innovt.Cloud.AWS.Dynamo.Tests.Specifications
+  summary: >-
+    Check if this specification is satisfied by a
+
+    specific expression lambda
+  example: []
+  syntax:
+    content: public Expression<Func<User, bool>> SatisfiedBy()
+    return:
+      type: System.Linq.Expressions.Expression{System.Func{Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User,System.Boolean}}
+      description: ''
+    content.vb: Public Function SatisfiedBy() As Expression(Of Func(Of User, Boolean))
+  overload: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.SatisfiedBy*
+  implements:
+  - Innovt.Domain.Core.Specification.ISpecification{Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User}.SatisfiedBy
+references:
+- uid: Innovt.Cloud.AWS.Dynamo.Tests.Specifications
+  commentId: N:Innovt.Cloud.AWS.Dynamo.Tests.Specifications
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Dynamo.Tests.Specifications
+  nameWithType: Innovt.Cloud.AWS.Dynamo.Tests.Specifications
+  fullName: Innovt.Cloud.AWS.Dynamo.Tests.Specifications
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo
+    name: Dynamo
+    href: Innovt.Cloud.AWS.Dynamo.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo.Tests
+    name: Tests
+    href: Innovt.Cloud.AWS.Dynamo.Tests.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo.Tests.Specifications
+    name: Specifications
+    href: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo
+    name: Dynamo
+    href: Innovt.Cloud.AWS.Dynamo.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo.Tests
+    name: Tests
+    href: Innovt.Cloud.AWS.Dynamo.Tests.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo.Tests.Specifications
+    name: Specifications
+    href: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Innovt.Domain.Core.Specification.ISpecification{Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User}
+  commentId: T:Innovt.Domain.Core.Specification.ISpecification{Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User}
+  parent: Innovt.Domain.Core.Specification
+  definition: Innovt.Domain.Core.Specification.ISpecification`1
+  href: Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User.html
+  name: ISpecification<User>
+  nameWithType: ISpecification<User>
+  fullName: Innovt.Domain.Core.Specification.ISpecification<Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User>
+  nameWithType.vb: ISpecification(Of User)
+  fullName.vb: Innovt.Domain.Core.Specification.ISpecification(Of Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User)
+  name.vb: ISpecification(Of User)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - uid: Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User
+    name: User
+    href: Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User.html
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User
+    name: User
+    href: Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Domain.Core.Specification.ISpecification`1
+  commentId: T:Innovt.Domain.Core.Specification.ISpecification`1
+  href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  name: ISpecification<TEntity>
+  nameWithType: ISpecification<TEntity>
+  fullName: Innovt.Domain.Core.Specification.ISpecification<TEntity>
+  nameWithType.vb: ISpecification(Of TEntity)
+  fullName.vb: Innovt.Domain.Core.Specification.ISpecification(Of TEntity)
+  name.vb: ISpecification(Of TEntity)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+    href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  - name: <
+  - name: TEntity
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+    href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+- uid: Innovt.Domain.Core.Specification
+  commentId: N:Innovt.Domain.Core.Specification
+  href: Innovt.html
+  name: Innovt.Domain.Core.Specification
+  nameWithType: Innovt.Domain.Core.Specification
+  fullName: Innovt.Domain.Core.Specification
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Specification
+    name: Specification
+    href: Innovt.Domain.Core.Specification.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Specification
+    name: Specification
+    href: Innovt.Domain.Core.Specification.html
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.#ctor*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.#ctor
+  href: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.html#Innovt_Cloud_AWS_Dynamo_Tests_Specifications_UserByIdSpecification__ctor_System_Guid_
+  name: UserByIdSpecification
+  nameWithType: UserByIdSpecification.UserByIdSpecification
+  fullName: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.UserByIdSpecification
+  nameWithType.vb: UserByIdSpecification.New
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.New
+  name.vb: New
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.Id*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.Id
+  href: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.html#Innovt_Cloud_AWS_Dynamo_Tests_Specifications_UserByIdSpecification_Id
+  name: Id
+  nameWithType: UserByIdSpecification.Id
+  fullName: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.Id
+- uid: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.Page*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.Page
+  href: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.html#Innovt_Cloud_AWS_Dynamo_Tests_Specifications_UserByIdSpecification_Page
+  name: Page
+  nameWithType: UserByIdSpecification.Page
+  fullName: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.Page
+- uid: Innovt.Domain.Core.Specification.ISpecification{Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User}.Page
+  commentId: P:Innovt.Domain.Core.Specification.ISpecification{Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User}.Page
+  parent: Innovt.Domain.Core.Specification.ISpecification{Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User}
+  definition: Innovt.Domain.Core.Specification.ISpecification`1.Page
+  name: Page
+  nameWithType: ISpecification<User>.Page
+  fullName: Innovt.Domain.Core.Specification.ISpecification<Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User>.Page
+  nameWithType.vb: ISpecification(Of User).Page
+  fullName.vb: Innovt.Domain.Core.Specification.ISpecification(Of Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User).Page
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: Innovt.Domain.Core.Specification.ISpecification`1.Page
+  commentId: P:Innovt.Domain.Core.Specification.ISpecification`1.Page
+  href: Innovt.Domain.Core.Specification.ISpecification-1.html#Innovt_Domain_Core_Specification_ISpecification_1_Page
+  name: Page
+  nameWithType: ISpecification<TEntity>.Page
+  fullName: Innovt.Domain.Core.Specification.ISpecification<TEntity>.Page
+  nameWithType.vb: ISpecification(Of TEntity).Page
+  fullName.vb: Innovt.Domain.Core.Specification.ISpecification(Of TEntity).Page
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.PageSize*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.PageSize
+  href: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.html#Innovt_Cloud_AWS_Dynamo_Tests_Specifications_UserByIdSpecification_PageSize
+  name: PageSize
+  nameWithType: UserByIdSpecification.PageSize
+  fullName: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.PageSize
+- uid: Innovt.Domain.Core.Specification.ISpecification{Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User}.PageSize
+  commentId: P:Innovt.Domain.Core.Specification.ISpecification{Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User}.PageSize
+  parent: Innovt.Domain.Core.Specification.ISpecification{Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User}
+  definition: Innovt.Domain.Core.Specification.ISpecification`1.PageSize
+  name: PageSize
+  nameWithType: ISpecification<User>.PageSize
+  fullName: Innovt.Domain.Core.Specification.ISpecification<Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User>.PageSize
+  nameWithType.vb: ISpecification(Of User).PageSize
+  fullName.vb: Innovt.Domain.Core.Specification.ISpecification(Of Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User).PageSize
+- uid: Innovt.Domain.Core.Specification.ISpecification`1.PageSize
+  commentId: P:Innovt.Domain.Core.Specification.ISpecification`1.PageSize
+  href: Innovt.Domain.Core.Specification.ISpecification-1.html#Innovt_Domain_Core_Specification_ISpecification_1_PageSize
+  name: PageSize
+  nameWithType: ISpecification<TEntity>.PageSize
+  fullName: Innovt.Domain.Core.Specification.ISpecification<TEntity>.PageSize
+  nameWithType.vb: ISpecification(Of TEntity).PageSize
+  fullName.vb: Innovt.Domain.Core.Specification.ISpecification(Of TEntity).PageSize
+- uid: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.SatisfiedBy*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.SatisfiedBy
+  href: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.html#Innovt_Cloud_AWS_Dynamo_Tests_Specifications_UserByIdSpecification_SatisfiedBy
+  name: SatisfiedBy
+  nameWithType: UserByIdSpecification.SatisfiedBy
+  fullName: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.SatisfiedBy
+- uid: Innovt.Domain.Core.Specification.ISpecification{Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User}.SatisfiedBy
+  commentId: M:Innovt.Domain.Core.Specification.ISpecification{Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User}.SatisfiedBy
+  parent: Innovt.Domain.Core.Specification.ISpecification{Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User}
+  definition: Innovt.Domain.Core.Specification.ISpecification`1.SatisfiedBy
+  name: SatisfiedBy()
+  nameWithType: ISpecification<User>.SatisfiedBy()
+  fullName: Innovt.Domain.Core.Specification.ISpecification<Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User>.SatisfiedBy()
+  nameWithType.vb: ISpecification(Of User).SatisfiedBy()
+  fullName.vb: Innovt.Domain.Core.Specification.ISpecification(Of Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User).SatisfiedBy()
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.ISpecification{Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User}.SatisfiedBy
+    name: SatisfiedBy
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.ISpecification{Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User}.SatisfiedBy
+    name: SatisfiedBy
+  - name: (
+  - name: )
+- uid: System.Linq.Expressions.Expression{System.Func{Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User,System.Boolean}}
+  commentId: T:System.Linq.Expressions.Expression{System.Func{Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User,System.Boolean}}
+  parent: System.Linq.Expressions
+  definition: System.Linq.Expressions.Expression`1
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  name: Expression<Func<User, bool>>
+  nameWithType: Expression<Func<User, bool>>
+  fullName: System.Linq.Expressions.Expression<System.Func<Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User, bool>>
+  nameWithType.vb: Expression(Of Func(Of User, Boolean))
+  fullName.vb: System.Linq.Expressions.Expression(Of System.Func(Of Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User, Boolean))
+  name.vb: Expression(Of Func(Of User, Boolean))
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User
+    name: User
+    href: Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User
+    name: User
+    href: Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  - name: )
+- uid: Innovt.Domain.Core.Specification.ISpecification`1.SatisfiedBy
+  commentId: M:Innovt.Domain.Core.Specification.ISpecification`1.SatisfiedBy
+  href: Innovt.Domain.Core.Specification.ISpecification-1.html#Innovt_Domain_Core_Specification_ISpecification_1_SatisfiedBy
+  name: SatisfiedBy()
+  nameWithType: ISpecification<TEntity>.SatisfiedBy()
+  fullName: Innovt.Domain.Core.Specification.ISpecification<TEntity>.SatisfiedBy()
+  nameWithType.vb: ISpecification(Of TEntity).SatisfiedBy()
+  fullName.vb: Innovt.Domain.Core.Specification.ISpecification(Of TEntity).SatisfiedBy()
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1.SatisfiedBy
+    name: SatisfiedBy
+    href: Innovt.Domain.Core.Specification.ISpecification-1.html#Innovt_Domain_Core_Specification_ISpecification_1_SatisfiedBy
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1.SatisfiedBy
+    name: SatisfiedBy
+    href: Innovt.Domain.Core.Specification.ISpecification-1.html#Innovt_Domain_Core_Specification_ISpecification_1_SatisfiedBy
+  - name: (
+  - name: )
+- uid: System.Linq.Expressions.Expression`1
+  commentId: T:System.Linq.Expressions.Expression`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  name: Expression<TDelegate>
+  nameWithType: Expression<TDelegate>
+  fullName: System.Linq.Expressions.Expression<TDelegate>
+  nameWithType.vb: Expression(Of TDelegate)
+  fullName.vb: System.Linq.Expressions.Expression(Of TDelegate)
+  name.vb: Expression(Of TDelegate)
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - name: TDelegate
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDelegate
+  - name: )
+- uid: System.Linq.Expressions
+  commentId: N:System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Linq.Expressions
+  nameWithType: System.Linq.Expressions
+  fullName: System.Linq.Expressions
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq
+  - name: .
+  - uid: System.Linq.Expressions
+    name: Expressions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq
+  - name: .
+  - uid: System.Linq.Expressions
+    name: Expressions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions

@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.Dynamo.Tests.Specifications
+  commentId: N:Innovt.Cloud.AWS.Dynamo.Tests.Specifications
+  id: Innovt.Cloud.AWS.Dynamo.Tests.Specifications
+  children:
+  - Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Cloud.AWS.Dynamo.Tests.Specifications
+  nameWithType: Innovt.Cloud.AWS.Dynamo.Tests.Specifications
+  fullName: Innovt.Cloud.AWS.Dynamo.Tests.Specifications
+  type: Namespace
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo.Tests
+references:
+- uid: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification
+  href: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification.html
+  name: UserByIdSpecification
+  nameWithType: UserByIdSpecification
+  fullName: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification

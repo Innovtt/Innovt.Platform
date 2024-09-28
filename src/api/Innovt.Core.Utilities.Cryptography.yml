@@ -1,0 +1,606 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Core.Utilities.Cryptography
+  commentId: T:Innovt.Core.Utilities.Cryptography
+  id: Cryptography
+  parent: Innovt.Core.Utilities
+  children:
+  - Innovt.Core.Utilities.Cryptography.AesDecrypt(System.String,System.String)
+  - Innovt.Core.Utilities.Cryptography.AesEncrypt(System.String,System.String)
+  - Innovt.Core.Utilities.Cryptography.Md5Hash(System.String)
+  - Innovt.Core.Utilities.Cryptography.RijndaelDecrypt(System.String,System.String)
+  - Innovt.Core.Utilities.Cryptography.RijndaelEncrypt(System.String,System.String)
+  - Innovt.Core.Utilities.Cryptography.ShaHash(System.String,System.String)
+  langs:
+  - csharp
+  - vb
+  name: Cryptography
+  nameWithType: Cryptography
+  fullName: Innovt.Core.Utilities.Cryptography
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Core/Utilities/Cryptography.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Cryptography
+    path: Innovt.Core/Utilities/Cryptography.cs
+    startLine: 14
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Utilities
+  summary: Provides methods for cryptographic operations, including hashing and encryption.
+  example: []
+  syntax:
+    content: public static class Cryptography
+    content.vb: Public Module Cryptography
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Innovt.Core.Utilities.Cryptography.ShaHash(System.String,System.String)
+  commentId: M:Innovt.Core.Utilities.Cryptography.ShaHash(System.String,System.String)
+  id: ShaHash(System.String,System.String)
+  isExtensionMethod: true
+  parent: Innovt.Core.Utilities.Cryptography
+  langs:
+  - csharp
+  - vb
+  name: ShaHash(string, string)
+  nameWithType: Cryptography.ShaHash(string, string)
+  fullName: Innovt.Core.Utilities.Cryptography.ShaHash(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/Utilities/Cryptography.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ShaHash
+    path: Innovt.Core/Utilities/Cryptography.cs
+    startLine: 22
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Utilities
+  summary: Computes the SHA-256 hash of a given plaintext password with an optional salt.
+  example: []
+  syntax:
+    content: public static string ShaHash(this string plainPassword, string salt = "")
+    parameters:
+    - id: plainPassword
+      type: System.String
+      description: The plaintext password to be hashed.
+    - id: salt
+      type: System.String
+      description: An optional salt value to add to the plaintext before hashing.
+    return:
+      type: System.String
+      description: The SHA-256 hash of the plaintext password.
+    content.vb: Public Shared Function ShaHash(plainPassword As String, salt As String = "") As String
+  overload: Innovt.Core.Utilities.Cryptography.ShaHash*
+  nameWithType.vb: Cryptography.ShaHash(String, String)
+  fullName.vb: Innovt.Core.Utilities.Cryptography.ShaHash(String, String)
+  name.vb: ShaHash(String, String)
+- uid: Innovt.Core.Utilities.Cryptography.AesEncrypt(System.String,System.String)
+  commentId: M:Innovt.Core.Utilities.Cryptography.AesEncrypt(System.String,System.String)
+  id: AesEncrypt(System.String,System.String)
+  parent: Innovt.Core.Utilities.Cryptography
+  langs:
+  - csharp
+  - vb
+  name: AesEncrypt(string, string)
+  nameWithType: Cryptography.AesEncrypt(string, string)
+  fullName: Innovt.Core.Utilities.Cryptography.AesEncrypt(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/Utilities/Cryptography.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: AesEncrypt
+    path: Innovt.Core/Utilities/Cryptography.cs
+    startLine: 80
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Utilities
+  summary: Encrypts a plaintext string using the AES algorithm with a specified key.
+  example: []
+  syntax:
+    content: public static string AesEncrypt(string plainText, string keyString)
+    parameters:
+    - id: plainText
+      type: System.String
+      description: The plaintext string to be encrypted.
+    - id: keyString
+      type: System.String
+      description: The key for AES encryption.
+    return:
+      type: System.String
+      description: The encrypted string.
+    content.vb: Public Shared Function AesEncrypt(plainText As String, keyString As String) As String
+  overload: Innovt.Core.Utilities.Cryptography.AesEncrypt*
+  nameWithType.vb: Cryptography.AesEncrypt(String, String)
+  fullName.vb: Innovt.Core.Utilities.Cryptography.AesEncrypt(String, String)
+  name.vb: AesEncrypt(String, String)
+- uid: Innovt.Core.Utilities.Cryptography.RijndaelEncrypt(System.String,System.String)
+  commentId: M:Innovt.Core.Utilities.Cryptography.RijndaelEncrypt(System.String,System.String)
+  id: RijndaelEncrypt(System.String,System.String)
+  parent: Innovt.Core.Utilities.Cryptography
+  langs:
+  - csharp
+  - vb
+  name: RijndaelEncrypt(string, string)
+  nameWithType: Cryptography.RijndaelEncrypt(string, string)
+  fullName: Innovt.Core.Utilities.Cryptography.RijndaelEncrypt(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/Utilities/Cryptography.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: RijndaelEncrypt
+    path: Innovt.Core/Utilities/Cryptography.cs
+    startLine: 100
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Utilities
+  summary: Encrypts a plaintext string using the Rijndael algorithm with a specified key.
+  example: []
+  syntax:
+    content: public static string RijndaelEncrypt(string plainText, string keyString)
+    parameters:
+    - id: plainText
+      type: System.String
+      description: The plaintext string to be encrypted.
+    - id: keyString
+      type: System.String
+      description: The key for Rijndael encryption.
+    return:
+      type: System.String
+      description: The encrypted string.
+    content.vb: Public Shared Function RijndaelEncrypt(plainText As String, keyString As String) As String
+  overload: Innovt.Core.Utilities.Cryptography.RijndaelEncrypt*
+  nameWithType.vb: Cryptography.RijndaelEncrypt(String, String)
+  fullName.vb: Innovt.Core.Utilities.Cryptography.RijndaelEncrypt(String, String)
+  name.vb: RijndaelEncrypt(String, String)
+- uid: Innovt.Core.Utilities.Cryptography.AesDecrypt(System.String,System.String)
+  commentId: M:Innovt.Core.Utilities.Cryptography.AesDecrypt(System.String,System.String)
+  id: AesDecrypt(System.String,System.String)
+  parent: Innovt.Core.Utilities.Cryptography
+  langs:
+  - csharp
+  - vb
+  name: AesDecrypt(string, string)
+  nameWithType: Cryptography.AesDecrypt(string, string)
+  fullName: Innovt.Core.Utilities.Cryptography.AesDecrypt(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/Utilities/Cryptography.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: AesDecrypt
+    path: Innovt.Core/Utilities/Cryptography.cs
+    startLine: 120
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Utilities
+  summary: Decrypts an encrypted string using the AES algorithm with a specified key.
+  example: []
+  syntax:
+    content: public static string AesDecrypt(string encryptedText, string keyString)
+    parameters:
+    - id: encryptedText
+      type: System.String
+      description: The encrypted string to be decrypted.
+    - id: keyString
+      type: System.String
+      description: The key for AES decryption.
+    return:
+      type: System.String
+      description: The decrypted plaintext string.
+    content.vb: Public Shared Function AesDecrypt(encryptedText As String, keyString As String) As String
+  overload: Innovt.Core.Utilities.Cryptography.AesDecrypt*
+  nameWithType.vb: Cryptography.AesDecrypt(String, String)
+  fullName.vb: Innovt.Core.Utilities.Cryptography.AesDecrypt(String, String)
+  name.vb: AesDecrypt(String, String)
+- uid: Innovt.Core.Utilities.Cryptography.RijndaelDecrypt(System.String,System.String)
+  commentId: M:Innovt.Core.Utilities.Cryptography.RijndaelDecrypt(System.String,System.String)
+  id: RijndaelDecrypt(System.String,System.String)
+  parent: Innovt.Core.Utilities.Cryptography
+  langs:
+  - csharp
+  - vb
+  name: RijndaelDecrypt(string, string)
+  nameWithType: Cryptography.RijndaelDecrypt(string, string)
+  fullName: Innovt.Core.Utilities.Cryptography.RijndaelDecrypt(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/Utilities/Cryptography.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: RijndaelDecrypt
+    path: Innovt.Core/Utilities/Cryptography.cs
+    startLine: 141
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Utilities
+  summary: Decrypts an encrypted string using the Rijndael algorithm with a specified key.
+  example: []
+  syntax:
+    content: public static string RijndaelDecrypt(string encryptedText, string keyString)
+    parameters:
+    - id: encryptedText
+      type: System.String
+      description: The encrypted string to be decrypted.
+    - id: keyString
+      type: System.String
+      description: The key for Rijndael decryption.
+    return:
+      type: System.String
+      description: The decrypted plaintext string.
+    content.vb: Public Shared Function RijndaelDecrypt(encryptedText As String, keyString As String) As String
+  overload: Innovt.Core.Utilities.Cryptography.RijndaelDecrypt*
+  nameWithType.vb: Cryptography.RijndaelDecrypt(String, String)
+  fullName.vb: Innovt.Core.Utilities.Cryptography.RijndaelDecrypt(String, String)
+  name.vb: RijndaelDecrypt(String, String)
+- uid: Innovt.Core.Utilities.Cryptography.Md5Hash(System.String)
+  commentId: M:Innovt.Core.Utilities.Cryptography.Md5Hash(System.String)
+  id: Md5Hash(System.String)
+  isExtensionMethod: true
+  parent: Innovt.Core.Utilities.Cryptography
+  langs:
+  - csharp
+  - vb
+  name: Md5Hash(string)
+  nameWithType: Cryptography.Md5Hash(string)
+  fullName: Innovt.Core.Utilities.Cryptography.Md5Hash(string)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/Utilities/Cryptography.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Md5Hash
+    path: Innovt.Core/Utilities/Cryptography.cs
+    startLine: 160
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.Utilities
+  summary: Computes the MD5 hash of a given plaintext password.
+  example: []
+  syntax:
+    content: public static string Md5Hash(this string plainPassword)
+    parameters:
+    - id: plainPassword
+      type: System.String
+      description: The plaintext password to be hashed.
+    return:
+      type: System.String
+      description: The MD5 hash of the plaintext password.
+    content.vb: Public Shared Function Md5Hash(plainPassword As String) As String
+  overload: Innovt.Core.Utilities.Cryptography.Md5Hash*
+  nameWithType.vb: Cryptography.Md5Hash(String)
+  fullName.vb: Innovt.Core.Utilities.Cryptography.Md5Hash(String)
+  name.vb: Md5Hash(String)
+references:
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Core.Utilities.Cryptography.ShaHash*
+  commentId: Overload:Innovt.Core.Utilities.Cryptography.ShaHash
+  href: Innovt.Core.Utilities.Cryptography.html#Innovt_Core_Utilities_Cryptography_ShaHash_System_String_System_String_
+  name: ShaHash
+  nameWithType: Cryptography.ShaHash
+  fullName: Innovt.Core.Utilities.Cryptography.ShaHash
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Innovt.Core.Utilities.Cryptography.AesEncrypt*
+  commentId: Overload:Innovt.Core.Utilities.Cryptography.AesEncrypt
+  href: Innovt.Core.Utilities.Cryptography.html#Innovt_Core_Utilities_Cryptography_AesEncrypt_System_String_System_String_
+  name: AesEncrypt
+  nameWithType: Cryptography.AesEncrypt
+  fullName: Innovt.Core.Utilities.Cryptography.AesEncrypt
+- uid: Innovt.Core.Utilities.Cryptography.RijndaelEncrypt*
+  commentId: Overload:Innovt.Core.Utilities.Cryptography.RijndaelEncrypt
+  href: Innovt.Core.Utilities.Cryptography.html#Innovt_Core_Utilities_Cryptography_RijndaelEncrypt_System_String_System_String_
+  name: RijndaelEncrypt
+  nameWithType: Cryptography.RijndaelEncrypt
+  fullName: Innovt.Core.Utilities.Cryptography.RijndaelEncrypt
+- uid: Innovt.Core.Utilities.Cryptography.AesDecrypt*
+  commentId: Overload:Innovt.Core.Utilities.Cryptography.AesDecrypt
+  href: Innovt.Core.Utilities.Cryptography.html#Innovt_Core_Utilities_Cryptography_AesDecrypt_System_String_System_String_
+  name: AesDecrypt
+  nameWithType: Cryptography.AesDecrypt
+  fullName: Innovt.Core.Utilities.Cryptography.AesDecrypt
+- uid: Innovt.Core.Utilities.Cryptography.RijndaelDecrypt*
+  commentId: Overload:Innovt.Core.Utilities.Cryptography.RijndaelDecrypt
+  href: Innovt.Core.Utilities.Cryptography.html#Innovt_Core_Utilities_Cryptography_RijndaelDecrypt_System_String_System_String_
+  name: RijndaelDecrypt
+  nameWithType: Cryptography.RijndaelDecrypt
+  fullName: Innovt.Core.Utilities.Cryptography.RijndaelDecrypt
+- uid: Innovt.Core.Utilities.Cryptography.Md5Hash*
+  commentId: Overload:Innovt.Core.Utilities.Cryptography.Md5Hash
+  href: Innovt.Core.Utilities.Cryptography.html#Innovt_Core_Utilities_Cryptography_Md5Hash_System_String_
+  name: Md5Hash
+  nameWithType: Cryptography.Md5Hash
+  fullName: Innovt.Core.Utilities.Cryptography.Md5Hash

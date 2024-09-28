@@ -11,7 +11,7 @@ public class EntityTypeBuilderTests
     public void CheckMaxLength()
     {
         var builder = new EntityTypeBuilder<User>();
-        
+
         var userMap = new UserMap();
 
         userMap.Configure(builder);
@@ -27,16 +27,16 @@ public class EntityTypeBuilderTests
             Assert.That(emailProperty.Required, Is.True);
         });
     }
-    
+
     [Test]
     public void ConfigureShouldReturnAllMappedAttributes()
     {
         var builder = new EntityTypeBuilder<User>();
-        
+
         var userMap = new UserMap();
 
         userMap.Configure(builder);
-        
+
         Assert.That(builder, Is.Not.Null);
         Assert.That(builder.EntityType, Is.Not.Null);
         Assert.Multiple(() =>
@@ -48,7 +48,7 @@ public class EntityTypeBuilderTests
         });
 
         var properties = builder.GetProperties();
-        
+
         Assert.That(properties, Is.Not.Null);
         Assert.That(properties, Has.Count.EqualTo(13));
 
@@ -61,48 +61,49 @@ public class EntityTypeBuilderTests
             Assert.That(emailProperty.Required, Is.True);
         });
     }
+
     [Test]
     public void IgnoringProperties()
     {
         var builder = new EntityTypeBuilder<User>();
 
         builder.AutoMap();
-        
-        var properties = builder.GetProperties();//Should have 13 properties
-        
+
+        var properties = builder.GetProperties(); //Should have 13 properties
+
         Assert.That(properties, Is.Not.Null);
         Assert.That(properties, Has.Count.EqualTo(13)); // Because we ignored the Email property
-        
+
         //Adding the same property should be ignored
-        builder.Ignore(u => u.FirstName);//Should have 12 properties
-        
-        properties = builder.GetProperties();//Should have 12 properties
+        builder.Ignore(u => u.FirstName); //Should have 12 properties
+
+        properties = builder.GetProperties(); //Should have 12 properties
 
         Assert.That(properties, Is.Not.Null);
         Assert.That(properties, Has.Count.EqualTo(12)); // Because we ignored the Email property
 
-        builder.Ignore("NameAndDate");//Ignoring a property that does not exist should be ignored
-        
-        properties = builder.GetProperties();//Should have 12 properties
+        builder.Ignore("NameAndDate"); //Ignoring a property that does not exist should be ignored
+
+        properties = builder.GetProperties(); //Should have 12 properties
 
         Assert.That(properties, Is.Not.Null);
         Assert.That(properties, Has.Count.EqualTo(12)); // Because we ignored the Email property
     }
-    
+
     [Test]
     public void AddTheSamePropertyShouldBeIgnored()
     {
         var builder = new EntityTypeBuilder<User>(); // 13 properties from UserMap
 
-        var userMap = new UserMap(); 
+        var userMap = new UserMap();
 
         userMap.Configure(builder);
-        
+
         //Adding the same property should be ignored
         builder.Property(u => u.FirstName);
-        
+
         var properties = builder.GetProperties();
-        
+
         Assert.That(properties, Is.Not.Null);
         Assert.That(properties, Has.Count.EqualTo(13)); // Because we ignored the Email property
     }

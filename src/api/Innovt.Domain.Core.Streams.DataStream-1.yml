@@ -1,0 +1,1252 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Domain.Core.Streams.DataStream`1
+  commentId: T:Innovt.Domain.Core.Streams.DataStream`1
+  id: DataStream`1
+  parent: Innovt.Domain.Core.Streams
+  children:
+  - Innovt.Domain.Core.Streams.DataStream`1.#ctor
+  - Innovt.Domain.Core.Streams.DataStream`1.#ctor(System.String,System.String,System.String,`0)
+  - Innovt.Domain.Core.Streams.DataStream`1.ApproximateArrivalTimestamp
+  - Innovt.Domain.Core.Streams.DataStream`1.Body
+  - Innovt.Domain.Core.Streams.DataStream`1.Empty
+  - Innovt.Domain.Core.Streams.DataStream`1.EventId
+  - Innovt.Domain.Core.Streams.DataStream`1.Partition
+  - Innovt.Domain.Core.Streams.DataStream`1.PublishedAt
+  - Innovt.Domain.Core.Streams.DataStream`1.TraceId
+  - Innovt.Domain.Core.Streams.DataStream`1.Version
+  langs:
+  - csharp
+  - vb
+  name: DataStream<T>
+  nameWithType: DataStream<T>
+  fullName: Innovt.Domain.Core.Streams.DataStream<T>
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Streams/DataStream.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: DataStream
+    path: Innovt.Domain.Core/Streams/DataStream.cs
+    startLine: 12
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Streams
+  summary: Represents a data stream with a specific type of body.
+  example: []
+  syntax:
+    content: 'public class DataStream<T> : IDataStream<T>, IDataStream where T : class'
+    typeParameters:
+    - id: T
+      description: The type of the body.
+    content.vb: Public Class DataStream(Of T As Class) Implements IDataStream(Of T), IDataStream
+  inheritance:
+  - System.Object
+  implements:
+  - Innovt.Domain.Core.Streams.IDataStream{{T}}
+  - Innovt.Domain.Core.Streams.IDataStream
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  nameWithType.vb: DataStream(Of T)
+  fullName.vb: Innovt.Domain.Core.Streams.DataStream(Of T)
+  name.vb: DataStream(Of T)
+- uid: Innovt.Domain.Core.Streams.DataStream`1.#ctor
+  commentId: M:Innovt.Domain.Core.Streams.DataStream`1.#ctor
+  id: '#ctor'
+  parent: Innovt.Domain.Core.Streams.DataStream`1
+  langs:
+  - csharp
+  - vb
+  name: DataStream()
+  nameWithType: DataStream<T>.DataStream()
+  fullName: Innovt.Domain.Core.Streams.DataStream<T>.DataStream()
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Streams/DataStream.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: Innovt.Domain.Core/Streams/DataStream.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Streams
+  summary: Default constructor for DataStream.
+  example: []
+  syntax:
+    content: public DataStream()
+    content.vb: Public Sub New()
+  overload: Innovt.Domain.Core.Streams.DataStream`1.#ctor*
+  nameWithType.vb: DataStream(Of T).New()
+  fullName.vb: Innovt.Domain.Core.Streams.DataStream(Of T).New()
+  name.vb: New()
+- uid: Innovt.Domain.Core.Streams.DataStream`1.#ctor(System.String,System.String,System.String,`0)
+  commentId: M:Innovt.Domain.Core.Streams.DataStream`1.#ctor(System.String,System.String,System.String,`0)
+  id: '#ctor(System.String,System.String,System.String,`0)'
+  parent: Innovt.Domain.Core.Streams.DataStream`1
+  langs:
+  - csharp
+  - vb
+  name: DataStream(string, string?, string?, T)
+  nameWithType: DataStream<T>.DataStream(string, string?, string?, T)
+  fullName: Innovt.Domain.Core.Streams.DataStream<T>.DataStream(string, string?, string?, T)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Streams/DataStream.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: Innovt.Domain.Core/Streams/DataStream.cs
+    startLine: 28
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Streams
+  summary: Initializes a new instance of the DataStream class with specified properties.
+  example: []
+  syntax:
+    content: public DataStream(string version, string? partition, string? traceId, T body)
+    parameters:
+    - id: version
+      type: System.String
+      description: The version of the data stream.
+    - id: partition
+      type: System.String
+      description: The partition identifier of the data stream.
+    - id: traceId
+      type: System.String
+      description: The trace identifier associated with the data stream.
+    - id: body
+      type: '{T}'
+      description: The body of the data stream.
+    content.vb: Public Sub New(version As String, partition As String, traceId As String, body As T)
+  overload: Innovt.Domain.Core.Streams.DataStream`1.#ctor*
+  nameWithType.vb: DataStream(Of T).New(String, String, String, T)
+  fullName.vb: Innovt.Domain.Core.Streams.DataStream(Of T).New(String, String, String, T)
+  name.vb: New(String, String, String, T)
+- uid: Innovt.Domain.Core.Streams.DataStream`1.Version
+  commentId: P:Innovt.Domain.Core.Streams.DataStream`1.Version
+  id: Version
+  parent: Innovt.Domain.Core.Streams.DataStream`1
+  langs:
+  - csharp
+  - vb
+  name: Version
+  nameWithType: DataStream<T>.Version
+  fullName: Innovt.Domain.Core.Streams.DataStream<T>.Version
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Streams/DataStream.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Version
+    path: Innovt.Domain.Core/Streams/DataStream.cs
+    startLine: 39
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Streams
+  summary: Gets or sets the version of the data stream.
+  example: []
+  syntax:
+    content: public string Version { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Version As String
+  overload: Innovt.Domain.Core.Streams.DataStream`1.Version*
+  implements:
+  - Innovt.Domain.Core.Streams.IDataStream.Version
+  nameWithType.vb: DataStream(Of T).Version
+  fullName.vb: Innovt.Domain.Core.Streams.DataStream(Of T).Version
+- uid: Innovt.Domain.Core.Streams.DataStream`1.EventId
+  commentId: P:Innovt.Domain.Core.Streams.DataStream`1.EventId
+  id: EventId
+  parent: Innovt.Domain.Core.Streams.DataStream`1
+  langs:
+  - csharp
+  - vb
+  name: EventId
+  nameWithType: DataStream<T>.EventId
+  fullName: Innovt.Domain.Core.Streams.DataStream<T>.EventId
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Streams/DataStream.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: EventId
+    path: Innovt.Domain.Core/Streams/DataStream.cs
+    startLine: 44
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Streams
+  summary: Gets or sets the event identifier associated with the data stream.
+  example: []
+  syntax:
+    content: public string? EventId { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property EventId As String
+  overload: Innovt.Domain.Core.Streams.DataStream`1.EventId*
+  implements:
+  - Innovt.Domain.Core.Streams.IDataStream.EventId
+  nameWithType.vb: DataStream(Of T).EventId
+  fullName.vb: Innovt.Domain.Core.Streams.DataStream(Of T).EventId
+- uid: Innovt.Domain.Core.Streams.DataStream`1.Partition
+  commentId: P:Innovt.Domain.Core.Streams.DataStream`1.Partition
+  id: Partition
+  parent: Innovt.Domain.Core.Streams.DataStream`1
+  langs:
+  - csharp
+  - vb
+  name: Partition
+  nameWithType: DataStream<T>.Partition
+  fullName: Innovt.Domain.Core.Streams.DataStream<T>.Partition
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Streams/DataStream.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Partition
+    path: Innovt.Domain.Core/Streams/DataStream.cs
+    startLine: 49
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Streams
+  summary: Gets or sets the partition identifier of the data stream.
+  example: []
+  syntax:
+    content: public string? Partition { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Partition As String
+  overload: Innovt.Domain.Core.Streams.DataStream`1.Partition*
+  implements:
+  - Innovt.Domain.Core.Streams.IDataStream.Partition
+  nameWithType.vb: DataStream(Of T).Partition
+  fullName.vb: Innovt.Domain.Core.Streams.DataStream(Of T).Partition
+- uid: Innovt.Domain.Core.Streams.DataStream`1.PublishedAt
+  commentId: P:Innovt.Domain.Core.Streams.DataStream`1.PublishedAt
+  id: PublishedAt
+  parent: Innovt.Domain.Core.Streams.DataStream`1
+  langs:
+  - csharp
+  - vb
+  name: PublishedAt
+  nameWithType: DataStream<T>.PublishedAt
+  fullName: Innovt.Domain.Core.Streams.DataStream<T>.PublishedAt
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Streams/DataStream.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: PublishedAt
+    path: Innovt.Domain.Core/Streams/DataStream.cs
+    startLine: 54
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Streams
+  summary: Gets or sets the date and time when the data stream was published.
+  example: []
+  syntax:
+    content: public DateTimeOffset? PublishedAt { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTimeOffset}
+    content.vb: Public Property PublishedAt As DateTimeOffset?
+  overload: Innovt.Domain.Core.Streams.DataStream`1.PublishedAt*
+  implements:
+  - Innovt.Domain.Core.Streams.IDataStream.PublishedAt
+  nameWithType.vb: DataStream(Of T).PublishedAt
+  fullName.vb: Innovt.Domain.Core.Streams.DataStream(Of T).PublishedAt
+- uid: Innovt.Domain.Core.Streams.DataStream`1.TraceId
+  commentId: P:Innovt.Domain.Core.Streams.DataStream`1.TraceId
+  id: TraceId
+  parent: Innovt.Domain.Core.Streams.DataStream`1
+  langs:
+  - csharp
+  - vb
+  name: TraceId
+  nameWithType: DataStream<T>.TraceId
+  fullName: Innovt.Domain.Core.Streams.DataStream<T>.TraceId
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Streams/DataStream.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: TraceId
+    path: Innovt.Domain.Core/Streams/DataStream.cs
+    startLine: 59
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Streams
+  summary: Gets or sets the trace identifier associated with the data stream.
+  example: []
+  syntax:
+    content: public string? TraceId { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property TraceId As String
+  overload: Innovt.Domain.Core.Streams.DataStream`1.TraceId*
+  implements:
+  - Innovt.Domain.Core.Streams.IDataStream.TraceId
+  nameWithType.vb: DataStream(Of T).TraceId
+  fullName.vb: Innovt.Domain.Core.Streams.DataStream(Of T).TraceId
+- uid: Innovt.Domain.Core.Streams.DataStream`1.ApproximateArrivalTimestamp
+  commentId: P:Innovt.Domain.Core.Streams.DataStream`1.ApproximateArrivalTimestamp
+  id: ApproximateArrivalTimestamp
+  parent: Innovt.Domain.Core.Streams.DataStream`1
+  langs:
+  - csharp
+  - vb
+  name: ApproximateArrivalTimestamp
+  nameWithType: DataStream<T>.ApproximateArrivalTimestamp
+  fullName: Innovt.Domain.Core.Streams.DataStream<T>.ApproximateArrivalTimestamp
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Streams/DataStream.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ApproximateArrivalTimestamp
+    path: Innovt.Domain.Core/Streams/DataStream.cs
+    startLine: 64
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Streams
+  summary: Gets or sets the approximate arrival timestamp of the data stream.
+  example: []
+  syntax:
+    content: public DateTime ApproximateArrivalTimestamp { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public Property ApproximateArrivalTimestamp As Date
+  overload: Innovt.Domain.Core.Streams.DataStream`1.ApproximateArrivalTimestamp*
+  implements:
+  - Innovt.Domain.Core.Streams.IDataStream.ApproximateArrivalTimestamp
+  nameWithType.vb: DataStream(Of T).ApproximateArrivalTimestamp
+  fullName.vb: Innovt.Domain.Core.Streams.DataStream(Of T).ApproximateArrivalTimestamp
+- uid: Innovt.Domain.Core.Streams.DataStream`1.Body
+  commentId: P:Innovt.Domain.Core.Streams.DataStream`1.Body
+  id: Body
+  parent: Innovt.Domain.Core.Streams.DataStream`1
+  langs:
+  - csharp
+  - vb
+  name: Body
+  nameWithType: DataStream<T>.Body
+  fullName: Innovt.Domain.Core.Streams.DataStream<T>.Body
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Streams/DataStream.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Body
+    path: Innovt.Domain.Core/Streams/DataStream.cs
+    startLine: 69
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Streams
+  summary: Gets or sets the body of the data stream.
+  example: []
+  syntax:
+    content: public T Body { get; set; }
+    parameters: []
+    return:
+      type: '{T}'
+    content.vb: Public Property Body As T
+  overload: Innovt.Domain.Core.Streams.DataStream`1.Body*
+  implements:
+  - Innovt.Domain.Core.Streams.IDataStream{{T}}.Body
+  nameWithType.vb: DataStream(Of T).Body
+  fullName.vb: Innovt.Domain.Core.Streams.DataStream(Of T).Body
+- uid: Innovt.Domain.Core.Streams.DataStream`1.Empty
+  commentId: M:Innovt.Domain.Core.Streams.DataStream`1.Empty
+  id: Empty
+  parent: Innovt.Domain.Core.Streams.DataStream`1
+  langs:
+  - csharp
+  - vb
+  name: Empty()
+  nameWithType: DataStream<T>.Empty()
+  fullName: Innovt.Domain.Core.Streams.DataStream<T>.Empty()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Streams/DataStream.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Empty
+    path: Innovt.Domain.Core/Streams/DataStream.cs
+    startLine: 75
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Streams
+  summary: Creates an empty data stream with no body.
+  example: []
+  syntax:
+    content: public static IEmptyDataStream Empty()
+    return:
+      type: Innovt.Domain.Core.Streams.IEmptyDataStream
+      description: An instance of an empty data stream.
+    content.vb: Public Shared Function Empty() As IEmptyDataStream
+  overload: Innovt.Domain.Core.Streams.DataStream`1.Empty*
+  nameWithType.vb: DataStream(Of T).Empty()
+  fullName.vb: Innovt.Domain.Core.Streams.DataStream(Of T).Empty()
+references:
+- uid: Innovt.Domain.Core.Streams
+  commentId: N:Innovt.Domain.Core.Streams
+  href: Innovt.html
+  name: Innovt.Domain.Core.Streams
+  nameWithType: Innovt.Domain.Core.Streams
+  fullName: Innovt.Domain.Core.Streams
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Streams
+    name: Streams
+    href: Innovt.Domain.Core.Streams.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Streams
+    name: Streams
+    href: Innovt.Domain.Core.Streams.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Innovt.Domain.Core.Streams.IDataStream{{T}}
+  commentId: T:Innovt.Domain.Core.Streams.IDataStream{`0}
+  parent: Innovt.Domain.Core.Streams
+  definition: Innovt.Domain.Core.Streams.IDataStream`1
+  href: Innovt.Domain.Core.Streams.IDataStream-1.html
+  name: IDataStream<T>
+  nameWithType: IDataStream<T>
+  fullName: Innovt.Domain.Core.Streams.IDataStream<T>
+  nameWithType.vb: IDataStream(Of T)
+  fullName.vb: Innovt.Domain.Core.Streams.IDataStream(Of T)
+  name.vb: IDataStream(Of T)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Streams.IDataStream`1
+    name: IDataStream
+    href: Innovt.Domain.Core.Streams.IDataStream-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Streams.IDataStream`1
+    name: IDataStream
+    href: Innovt.Domain.Core.Streams.IDataStream-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Domain.Core.Streams.IDataStream
+  commentId: T:Innovt.Domain.Core.Streams.IDataStream
+  parent: Innovt.Domain.Core.Streams
+  href: Innovt.Domain.Core.Streams.IDataStream.html
+  name: IDataStream
+  nameWithType: IDataStream
+  fullName: Innovt.Domain.Core.Streams.IDataStream
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Domain.Core.Streams.IDataStream`1
+  commentId: T:Innovt.Domain.Core.Streams.IDataStream`1
+  href: Innovt.Domain.Core.Streams.IDataStream-1.html
+  name: IDataStream<T>
+  nameWithType: IDataStream<T>
+  fullName: Innovt.Domain.Core.Streams.IDataStream<T>
+  nameWithType.vb: IDataStream(Of T)
+  fullName.vb: Innovt.Domain.Core.Streams.IDataStream(Of T)
+  name.vb: IDataStream(Of T)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Streams.IDataStream`1
+    name: IDataStream
+    href: Innovt.Domain.Core.Streams.IDataStream-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Streams.IDataStream`1
+    name: IDataStream
+    href: Innovt.Domain.Core.Streams.IDataStream-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Domain.Core.Streams.DataStream`1.#ctor*
+  commentId: Overload:Innovt.Domain.Core.Streams.DataStream`1.#ctor
+  href: Innovt.Domain.Core.Streams.DataStream-1.html#Innovt_Domain_Core_Streams_DataStream_1__ctor
+  name: DataStream
+  nameWithType: DataStream<T>.DataStream
+  fullName: Innovt.Domain.Core.Streams.DataStream<T>.DataStream
+  nameWithType.vb: DataStream(Of T).New
+  fullName.vb: Innovt.Domain.Core.Streams.DataStream(Of T).New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Innovt.Domain.Core.Streams.DataStream`1.Version*
+  commentId: Overload:Innovt.Domain.Core.Streams.DataStream`1.Version
+  href: Innovt.Domain.Core.Streams.DataStream-1.html#Innovt_Domain_Core_Streams_DataStream_1_Version
+  name: Version
+  nameWithType: DataStream<T>.Version
+  fullName: Innovt.Domain.Core.Streams.DataStream<T>.Version
+  nameWithType.vb: DataStream(Of T).Version
+  fullName.vb: Innovt.Domain.Core.Streams.DataStream(Of T).Version
+- uid: Innovt.Domain.Core.Streams.IDataStream.Version
+  commentId: P:Innovt.Domain.Core.Streams.IDataStream.Version
+  parent: Innovt.Domain.Core.Streams.IDataStream
+  href: Innovt.Domain.Core.Streams.IDataStream.html#Innovt_Domain_Core_Streams_IDataStream_Version
+  name: Version
+  nameWithType: IDataStream.Version
+  fullName: Innovt.Domain.Core.Streams.IDataStream.Version
+- uid: Innovt.Domain.Core.Streams.DataStream`1.EventId*
+  commentId: Overload:Innovt.Domain.Core.Streams.DataStream`1.EventId
+  href: Innovt.Domain.Core.Streams.DataStream-1.html#Innovt_Domain_Core_Streams_DataStream_1_EventId
+  name: EventId
+  nameWithType: DataStream<T>.EventId
+  fullName: Innovt.Domain.Core.Streams.DataStream<T>.EventId
+  nameWithType.vb: DataStream(Of T).EventId
+  fullName.vb: Innovt.Domain.Core.Streams.DataStream(Of T).EventId
+- uid: Innovt.Domain.Core.Streams.IDataStream.EventId
+  commentId: P:Innovt.Domain.Core.Streams.IDataStream.EventId
+  parent: Innovt.Domain.Core.Streams.IDataStream
+  href: Innovt.Domain.Core.Streams.IDataStream.html#Innovt_Domain_Core_Streams_IDataStream_EventId
+  name: EventId
+  nameWithType: IDataStream.EventId
+  fullName: Innovt.Domain.Core.Streams.IDataStream.EventId
+- uid: Innovt.Domain.Core.Streams.DataStream`1.Partition*
+  commentId: Overload:Innovt.Domain.Core.Streams.DataStream`1.Partition
+  href: Innovt.Domain.Core.Streams.DataStream-1.html#Innovt_Domain_Core_Streams_DataStream_1_Partition
+  name: Partition
+  nameWithType: DataStream<T>.Partition
+  fullName: Innovt.Domain.Core.Streams.DataStream<T>.Partition
+  nameWithType.vb: DataStream(Of T).Partition
+  fullName.vb: Innovt.Domain.Core.Streams.DataStream(Of T).Partition
+- uid: Innovt.Domain.Core.Streams.IDataStream.Partition
+  commentId: P:Innovt.Domain.Core.Streams.IDataStream.Partition
+  parent: Innovt.Domain.Core.Streams.IDataStream
+  href: Innovt.Domain.Core.Streams.IDataStream.html#Innovt_Domain_Core_Streams_IDataStream_Partition
+  name: Partition
+  nameWithType: IDataStream.Partition
+  fullName: Innovt.Domain.Core.Streams.IDataStream.Partition
+- uid: Innovt.Domain.Core.Streams.DataStream`1.PublishedAt*
+  commentId: Overload:Innovt.Domain.Core.Streams.DataStream`1.PublishedAt
+  href: Innovt.Domain.Core.Streams.DataStream-1.html#Innovt_Domain_Core_Streams_DataStream_1_PublishedAt
+  name: PublishedAt
+  nameWithType: DataStream<T>.PublishedAt
+  fullName: Innovt.Domain.Core.Streams.DataStream<T>.PublishedAt
+  nameWithType.vb: DataStream(Of T).PublishedAt
+  fullName.vb: Innovt.Domain.Core.Streams.DataStream(Of T).PublishedAt
+- uid: Innovt.Domain.Core.Streams.IDataStream.PublishedAt
+  commentId: P:Innovt.Domain.Core.Streams.IDataStream.PublishedAt
+  parent: Innovt.Domain.Core.Streams.IDataStream
+  href: Innovt.Domain.Core.Streams.IDataStream.html#Innovt_Domain_Core_Streams_IDataStream_PublishedAt
+  name: PublishedAt
+  nameWithType: IDataStream.PublishedAt
+  fullName: Innovt.Domain.Core.Streams.IDataStream.PublishedAt
+- uid: System.Nullable{System.DateTimeOffset}
+  commentId: T:System.Nullable{System.DateTimeOffset}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset?
+  nameWithType: DateTimeOffset?
+  fullName: System.DateTimeOffset?
+  spec.csharp:
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+  spec.vb:
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Domain.Core.Streams.DataStream`1.TraceId*
+  commentId: Overload:Innovt.Domain.Core.Streams.DataStream`1.TraceId
+  href: Innovt.Domain.Core.Streams.DataStream-1.html#Innovt_Domain_Core_Streams_DataStream_1_TraceId
+  name: TraceId
+  nameWithType: DataStream<T>.TraceId
+  fullName: Innovt.Domain.Core.Streams.DataStream<T>.TraceId
+  nameWithType.vb: DataStream(Of T).TraceId
+  fullName.vb: Innovt.Domain.Core.Streams.DataStream(Of T).TraceId
+- uid: Innovt.Domain.Core.Streams.IDataStream.TraceId
+  commentId: P:Innovt.Domain.Core.Streams.IDataStream.TraceId
+  parent: Innovt.Domain.Core.Streams.IDataStream
+  href: Innovt.Domain.Core.Streams.IDataStream.html#Innovt_Domain_Core_Streams_IDataStream_TraceId
+  name: TraceId
+  nameWithType: IDataStream.TraceId
+  fullName: Innovt.Domain.Core.Streams.IDataStream.TraceId
+- uid: Innovt.Domain.Core.Streams.DataStream`1.ApproximateArrivalTimestamp*
+  commentId: Overload:Innovt.Domain.Core.Streams.DataStream`1.ApproximateArrivalTimestamp
+  href: Innovt.Domain.Core.Streams.DataStream-1.html#Innovt_Domain_Core_Streams_DataStream_1_ApproximateArrivalTimestamp
+  name: ApproximateArrivalTimestamp
+  nameWithType: DataStream<T>.ApproximateArrivalTimestamp
+  fullName: Innovt.Domain.Core.Streams.DataStream<T>.ApproximateArrivalTimestamp
+  nameWithType.vb: DataStream(Of T).ApproximateArrivalTimestamp
+  fullName.vb: Innovt.Domain.Core.Streams.DataStream(Of T).ApproximateArrivalTimestamp
+- uid: Innovt.Domain.Core.Streams.IDataStream.ApproximateArrivalTimestamp
+  commentId: P:Innovt.Domain.Core.Streams.IDataStream.ApproximateArrivalTimestamp
+  parent: Innovt.Domain.Core.Streams.IDataStream
+  href: Innovt.Domain.Core.Streams.IDataStream.html#Innovt_Domain_Core_Streams_IDataStream_ApproximateArrivalTimestamp
+  name: ApproximateArrivalTimestamp
+  nameWithType: IDataStream.ApproximateArrivalTimestamp
+  fullName: Innovt.Domain.Core.Streams.IDataStream.ApproximateArrivalTimestamp
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
+- uid: Innovt.Domain.Core.Streams.DataStream`1.Body*
+  commentId: Overload:Innovt.Domain.Core.Streams.DataStream`1.Body
+  href: Innovt.Domain.Core.Streams.DataStream-1.html#Innovt_Domain_Core_Streams_DataStream_1_Body
+  name: Body
+  nameWithType: DataStream<T>.Body
+  fullName: Innovt.Domain.Core.Streams.DataStream<T>.Body
+  nameWithType.vb: DataStream(Of T).Body
+  fullName.vb: Innovt.Domain.Core.Streams.DataStream(Of T).Body
+- uid: Innovt.Domain.Core.Streams.IDataStream{{T}}.Body
+  commentId: P:Innovt.Domain.Core.Streams.IDataStream{`0}.Body
+  parent: Innovt.Domain.Core.Streams.IDataStream{{T}}
+  definition: Innovt.Domain.Core.Streams.IDataStream`1.Body
+  href: Innovt.Domain.Core.Streams.IDataStream-1.html#Innovt_Domain_Core_Streams_IDataStream_1_Body
+  name: Body
+  nameWithType: IDataStream<T>.Body
+  fullName: Innovt.Domain.Core.Streams.IDataStream<T>.Body
+  nameWithType.vb: IDataStream(Of T).Body
+  fullName.vb: Innovt.Domain.Core.Streams.IDataStream(Of T).Body
+- uid: Innovt.Domain.Core.Streams.IDataStream`1.Body
+  commentId: P:Innovt.Domain.Core.Streams.IDataStream`1.Body
+  href: Innovt.Domain.Core.Streams.IDataStream-1.html#Innovt_Domain_Core_Streams_IDataStream_1_Body
+  name: Body
+  nameWithType: IDataStream<T>.Body
+  fullName: Innovt.Domain.Core.Streams.IDataStream<T>.Body
+  nameWithType.vb: IDataStream(Of T).Body
+  fullName.vb: Innovt.Domain.Core.Streams.IDataStream(Of T).Body
+- uid: Innovt.Domain.Core.Streams.DataStream`1.Empty*
+  commentId: Overload:Innovt.Domain.Core.Streams.DataStream`1.Empty
+  href: Innovt.Domain.Core.Streams.DataStream-1.html#Innovt_Domain_Core_Streams_DataStream_1_Empty
+  name: Empty
+  nameWithType: DataStream<T>.Empty
+  fullName: Innovt.Domain.Core.Streams.DataStream<T>.Empty
+  nameWithType.vb: DataStream(Of T).Empty
+  fullName.vb: Innovt.Domain.Core.Streams.DataStream(Of T).Empty
+- uid: Innovt.Domain.Core.Streams.IEmptyDataStream
+  commentId: T:Innovt.Domain.Core.Streams.IEmptyDataStream
+  parent: Innovt.Domain.Core.Streams
+  href: Innovt.Domain.Core.Streams.IEmptyDataStream.html
+  name: IEmptyDataStream
+  nameWithType: IEmptyDataStream
+  fullName: Innovt.Domain.Core.Streams.IEmptyDataStream

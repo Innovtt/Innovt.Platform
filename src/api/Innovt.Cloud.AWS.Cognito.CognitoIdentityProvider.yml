@@ -1,0 +1,3669 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
+  commentId: T:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
+  id: CognitoIdentityProvider
+  parent: Innovt.Cloud.AWS.Cognito
+  children:
+  - Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String,System.String,System.String,System.String,System.Boolean)
+  - Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ChangePassword(Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmSignUp(Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DeleteUser(Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DisposeServices
+  - Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser``1(Innovt.Cloud.AWS.Cognito.Model.GetUserRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser``1(System.String,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.LinkSocialUser(Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RefreshToken(Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ResendConfirmationCode(Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RespondToAuthChallenge(Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.SignInRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignOut(Innovt.Cloud.AWS.Cognito.Model.SignOutRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignUp(Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SocialSignIn(Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: CognitoIdentityProvider
+  nameWithType: CognitoIdentityProvider
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: CognitoIdentityProvider
+    path: Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+    startLine: 49
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito
+  summary: Provides functionality for user management and authentication with Amazon Cognito Identity Provider.
+  example: []
+  syntax:
+    content: 'public abstract class CognitoIdentityProvider : AwsBaseService, IDisposable, ICognitoIdentityProvider'
+    content.vb: Public MustInherit Class CognitoIdentityProvider Inherits AwsBaseService Implements IDisposable, ICognitoIdentityProvider
+  inheritance:
+  - System.Object
+  - Innovt.Cloud.AWS.AwsBaseService
+  derivedClasses:
+  - Innovt.Cloud.AWS.Cognito.Tests.BaseIdentityProvider
+  implements:
+  - System.IDisposable
+  - Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider
+  inheritedMembers:
+  - Innovt.Cloud.AWS.AwsBaseService.Configuration
+  - Innovt.Cloud.AWS.AwsBaseService.RetryCount
+  - Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerAllowedExceptions
+  - Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerDurationOfBreak
+  - Innovt.Cloud.AWS.AwsBaseService.Logger
+  - Innovt.Cloud.AWS.AwsBaseService.Dispose
+  - Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+  - Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+  - Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryAsyncPolicy
+  - Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+  - Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+  - Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String,System.String,System.String,System.String,System.Boolean)
+  commentId: M:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String,System.String,System.String,System.String,System.Boolean)
+  id: '#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String,System.String,System.String,System.String,System.Boolean)'
+  parent: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
+  langs:
+  - csharp
+  - vb
+  name: CognitoIdentityProvider(ILogger, IAwsConfiguration, string, string, string, string, bool)
+  nameWithType: CognitoIdentityProvider.CognitoIdentityProvider(ILogger, IAwsConfiguration, string, string, string, string, bool)
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.CognitoIdentityProvider(Innovt.Core.CrossCutting.Log.ILogger, Innovt.Cloud.AWS.Configuration.IAwsConfiguration, string, string, string, string, bool)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+    startLine: 66
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito
+  syntax:
+    content: protected CognitoIdentityProvider(ILogger logger, IAwsConfiguration configuration, string clientId, string userPoolId, string domainEndPoint, string region = null, bool allowAutoConfirmUserWithSocialLogin = false)
+    parameters:
+    - id: logger
+      type: Innovt.Core.CrossCutting.Log.ILogger
+    - id: configuration
+      type: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+    - id: clientId
+      type: System.String
+    - id: userPoolId
+      type: System.String
+    - id: domainEndPoint
+      type: System.String
+    - id: region
+      type: System.String
+    - id: allowAutoConfirmUserWithSocialLogin
+      type: System.Boolean
+    content.vb: Protected Sub New(logger As ILogger, configuration As IAwsConfiguration, clientId As String, userPoolId As String, domainEndPoint As String, region As String = Nothing, allowAutoConfirmUserWithSocialLogin As Boolean = False)
+  overload: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.#ctor*
+  nameWithType.vb: CognitoIdentityProvider.New(ILogger, IAwsConfiguration, String, String, String, String, Boolean)
+  fullName.vb: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.New(Innovt.Core.CrossCutting.Log.ILogger, Innovt.Cloud.AWS.Configuration.IAwsConfiguration, String, String, String, String, Boolean)
+  name.vb: New(ILogger, IAwsConfiguration, String, String, String, String, Boolean)
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest,System.Threading.CancellationToken)
+  id: ForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
+  langs:
+  - csharp
+  - vb
+  name: ForgotPassword(ForgotPasswordRequest, CancellationToken)
+  nameWithType: CognitoIdentityProvider.ForgotPassword(ForgotPasswordRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ForgotPassword
+    path: Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+    startLine: 89
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito
+  summary: Sends a forgot password request for a user.
+  example: []
+  syntax:
+    content: public virtual Task ForgotPassword(ForgotPasswordRequest command, CancellationToken cancellationToken = default)
+    parameters:
+    - id: command
+      type: Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest
+      description: The <xref href="Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest" data-throw-if-not-resolved="false"></xref> containing user information.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A cancellation token for async tasks.
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Overridable Function ForgotPassword(command As ForgotPasswordRequest, cancellationToken As CancellationToken = Nothing) As Task
+  overload: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ForgotPassword*
+  implements:
+  - Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest,System.Threading.CancellationToken)
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest,System.Threading.CancellationToken)
+  id: SignIn(Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
+  langs:
+  - csharp
+  - vb
+  name: SignIn(OtpSignInRequest, CancellationToken)
+  nameWithType: CognitoIdentityProvider.SignIn(OtpSignInRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: SignIn
+    path: Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+    startLine: 127
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito
+  summary: Signs in a user with the provided request for OTP process authentication.
+  example: []
+  syntax:
+    content: public virtual Task<SignInResponse> SignIn(OtpSignInRequest command, CancellationToken cancellationToken = default)
+    parameters:
+    - id: command
+      type: Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest
+      description: ''
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{Innovt.Cloud.AWS.Cognito.Model.SignInResponse}
+      description: A SignInResponse with a valid token or null
+    content.vb: Public Overridable Function SignIn(command As OtpSignInRequest, cancellationToken As CancellationToken = Nothing) As Task(Of SignInResponse)
+  overload: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignIn*
+  implements:
+  - Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest,System.Threading.CancellationToken)
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.SignInRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.SignInRequest,System.Threading.CancellationToken)
+  id: SignIn(Innovt.Cloud.AWS.Cognito.Model.SignInRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
+  langs:
+  - csharp
+  - vb
+  name: SignIn(SignInRequest, CancellationToken)
+  nameWithType: CognitoIdentityProvider.SignIn(SignInRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.SignInRequest, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: SignIn
+    path: Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+    startLine: 141
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito
+  summary: Signs in a user with the provided authentication information.
+  example: []
+  syntax:
+    content: public virtual Task<SignInResponse> SignIn(SignInRequest command, CancellationToken cancellationToken = default)
+    parameters:
+    - id: command
+      type: Innovt.Cloud.AWS.Cognito.Model.SignInRequest
+      description: ''
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{Innovt.Cloud.AWS.Cognito.Model.SignInResponse}
+      description: ''
+    content.vb: Public Overridable Function SignIn(command As SignInRequest, cancellationToken As CancellationToken = Nothing) As Task(Of SignInResponse)
+  overload: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignIn*
+  implements:
+  - Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.SignInRequest,System.Threading.CancellationToken)
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignOut(Innovt.Cloud.AWS.Cognito.Model.SignOutRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignOut(Innovt.Cloud.AWS.Cognito.Model.SignOutRequest,System.Threading.CancellationToken)
+  id: SignOut(Innovt.Cloud.AWS.Cognito.Model.SignOutRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
+  langs:
+  - csharp
+  - vb
+  name: SignOut(SignOutRequest, CancellationToken)
+  nameWithType: CognitoIdentityProvider.SignOut(SignOutRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignOut(Innovt.Cloud.AWS.Cognito.Model.SignOutRequest, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: SignOut
+    path: Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+    startLine: 169
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito
+  summary: Signs out the user associated with the provided access token.
+  remarks: >-
+    This method allows you to sign out the user associated with the provided access token. Signing out a user
+
+    invalidates the access
+
+    token, preventing further access to protected resources without reauthentication. Ensure that you provide a valid
+
+    access token
+
+    to successfully sign out the user.
+  example: []
+  syntax:
+    content: public Task SignOut(SignOutRequest request, CancellationToken cancellationToken = default)
+    parameters:
+    - id: request
+      type: Innovt.Cloud.AWS.Cognito.Model.SignOutRequest
+      description: A <xref href="Innovt.Cloud.AWS.Cognito.Model.SignOutRequest" data-throw-if-not-resolved="false"></xref> object containing the access token to sign out the user.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A cancellation token for cancelling the operation.
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function SignOut(request As SignOutRequest, cancellationToken As CancellationToken = Nothing) As Task
+  overload: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignOut*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when the <code class="paramref">request</code> is null.
+  - type: Innovt.Core.Exceptions.BusinessException
+    commentId: T:Innovt.Core.Exceptions.BusinessException
+    description: Thrown when the <code class="paramref">request</code> fails validation.
+  implements:
+  - Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SignOut(Innovt.Cloud.AWS.Cognito.Model.SignOutRequest,System.Threading.CancellationToken)
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignUp(Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignUp(Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest,System.Threading.CancellationToken)
+  id: SignUp(Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
+  langs:
+  - csharp
+  - vb
+  name: SignUp(ISignUpRequest, CancellationToken)
+  nameWithType: CognitoIdentityProvider.SignUp(ISignUpRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignUp(Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: SignUp
+    path: Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+    startLine: 211
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito
+  summary: Signs up a new user with the provided registration information.
+  remarks: >-
+    This method allows you to sign up a new user with the provided registration information, including username,
+
+    password,
+
+    custom attributes, and other optional properties. After successful sign-up, the user may need to confirm their
+
+    registration
+
+    depending on the authentication flow and configuration.
+  example: []
+  syntax:
+    content: public virtual Task<SignUpResponse> SignUp(ISignUpRequest command, CancellationToken cancellationToken = default)
+    parameters:
+    - id: command
+      type: Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest
+      description: An <xref href="Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest" data-throw-if-not-resolved="false"></xref> object containing the user's registration information.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A cancellation token for cancelling the operation.
+    return:
+      type: System.Threading.Tasks.Task{Innovt.Cloud.AWS.Cognito.Model.SignUpResponse}
+      description: >-
+        A <xref href="Innovt.Cloud.AWS.Cognito.Model.SignUpResponse" data-throw-if-not-resolved="false"></xref> indicating whether the user was successfully signed up and their UUID (User
+
+        Sub).
+    content.vb: Public Overridable Function SignUp(command As ISignUpRequest, cancellationToken As CancellationToken = Nothing) As Task(Of SignUpResponse)
+  overload: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignUp*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when the <code class="paramref">command</code> is null.
+  - type: Innovt.Core.Exceptions.BusinessException
+    commentId: T:Innovt.Core.Exceptions.BusinessException
+    description: Thrown when the <code class="paramref">command</code> fails validation.
+  implements:
+  - Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SignUp(Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest,System.Threading.CancellationToken)
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmSignUp(Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmSignUp(Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest,System.Threading.CancellationToken)
+  id: ConfirmSignUp(Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
+  langs:
+  - csharp
+  - vb
+  name: ConfirmSignUp(ConfirmSignUpRequest, CancellationToken)
+  nameWithType: CognitoIdentityProvider.ConfirmSignUp(ConfirmSignUpRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmSignUp(Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ConfirmSignUp
+    path: Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+    startLine: 293
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito
+  summary: Confirms the sign-up of a user with the specified confirmation code.
+  remarks: >-
+    This method allows you to confirm the sign-up of a user with the specified confirmation code.
+
+    The confirmation code is typically sent to the user's email or phone number during the registration process.
+
+    After successful confirmation, the user becomes active and can log in.
+  example: []
+  syntax:
+    content: public virtual Task ConfirmSignUp(ConfirmSignUpRequest request, CancellationToken cancellationToken = default)
+    parameters:
+    - id: request
+      type: Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest
+      description: >-
+        A <xref href="Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest" data-throw-if-not-resolved="false"></xref> containing the necessary information to confirm the
+
+        sign-up.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A cancellation token for cancelling the operation.
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Overridable Function ConfirmSignUp(request As ConfirmSignUpRequest, cancellationToken As CancellationToken = Nothing) As Task
+  overload: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmSignUp*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when the <code class="paramref">request</code> is null.
+  - type: Innovt.Core.Exceptions.BusinessException
+    commentId: T:Innovt.Core.Exceptions.BusinessException
+    description: Thrown when the <code class="paramref">request</code> fails validation.
+  implements:
+  - Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ConfirmSignUp(Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest,System.Threading.CancellationToken)
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ResendConfirmationCode(Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ResendConfirmationCode(Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest,System.Threading.CancellationToken)
+  id: ResendConfirmationCode(Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
+  langs:
+  - csharp
+  - vb
+  name: ResendConfirmationCode(ResendConfirmationCodeRequest, CancellationToken)
+  nameWithType: CognitoIdentityProvider.ResendConfirmationCode(ResendConfirmationCodeRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ResendConfirmationCode(Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ResendConfirmationCode
+    path: Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+    startLine: 343
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito
+  summary: Resends the confirmation code to a user with the specified username.
+  remarks: >-
+    This method allows you to resend the confirmation code to a user with the specified username.
+
+    The confirmation code is typically used during the user registration process to verify the user's email or phone
+
+    number.
+  example: []
+  syntax:
+    content: public virtual Task ResendConfirmationCode(ResendConfirmationCodeRequest command, CancellationToken cancellationToken = default)
+    parameters:
+    - id: command
+      type: Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest
+      description: >-
+        A <xref href="Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest" data-throw-if-not-resolved="false"></xref> containing the necessary information to resend the
+
+        confirmation code.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A cancellation token for cancelling the operation.
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Overridable Function ResendConfirmationCode(command As ResendConfirmationCodeRequest, cancellationToken As CancellationToken = Nothing) As Task
+  overload: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ResendConfirmationCode*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when the <code class="paramref">command</code> is null.
+  - type: Innovt.Core.Exceptions.BusinessException
+    commentId: T:Innovt.Core.Exceptions.BusinessException
+    description: Thrown when the <code class="paramref">command</code> fails validation.
+  implements:
+  - Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ResendConfirmationCode(Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest,System.Threading.CancellationToken)
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ChangePassword(Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ChangePassword(Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest,System.Threading.CancellationToken)
+  id: ChangePassword(Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
+  langs:
+  - csharp
+  - vb
+  name: ChangePassword(ChangePasswordRequest, CancellationToken)
+  nameWithType: CognitoIdentityProvider.ChangePassword(ChangePasswordRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ChangePassword(Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ChangePassword
+    path: Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+    startLine: 393
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito
+  summary: Changes the password for a user with the specified access token.
+  remarks: >-
+    This method allows you to change the password for a user by providing an access token and the new proposed
+
+    password.
+
+    The previous password is also required for security verification. If successful, the user's password will be
+
+    updated.
+  example: []
+  syntax:
+    content: public virtual Task ChangePassword(ChangePasswordRequest command, CancellationToken cancellationToken = default)
+    parameters:
+    - id: command
+      type: Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest
+      description: >-
+        A <xref href="Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest" data-throw-if-not-resolved="false"></xref> containing the necessary information to change the
+
+        password.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A cancellation token for cancelling the operation.
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Overridable Function ChangePassword(command As ChangePasswordRequest, cancellationToken As CancellationToken = Nothing) As Task
+  overload: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ChangePassword*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when the <code class="paramref">command</code> is null.
+  - type: Innovt.Core.Exceptions.BusinessException
+    commentId: T:Innovt.Core.Exceptions.BusinessException
+    description: Thrown when the <code class="paramref">command</code> fails validation.
+  implements:
+  - Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ChangePassword(Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest,System.Threading.CancellationToken)
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser``1(Innovt.Cloud.AWS.Cognito.Model.GetUserRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser``1(Innovt.Cloud.AWS.Cognito.Model.GetUserRequest,System.Threading.CancellationToken)
+  id: GetUser``1(Innovt.Cloud.AWS.Cognito.Model.GetUserRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
+  langs:
+  - csharp
+  - vb
+  name: GetUser<T>(GetUserRequest, CancellationToken)
+  nameWithType: CognitoIdentityProvider.GetUser<T>(GetUserRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser<T>(Innovt.Cloud.AWS.Cognito.Model.GetUserRequest, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: GetUser
+    path: Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+    startLine: 437
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito
+  summary: Retrieves user information based on the specified request and response type.
+  remarks: >-
+    This method allows you to retrieve user information based on the specified request, such as
+
+    the user's username or other custom fields. You can specify the response type as a generic
+
+    parameter, which should implement the <xref href="Innovt.Cloud.AWS.Cognito.Model.IGetUserResponse" data-throw-if-not-resolved="false"></xref> interface to provide
+
+    a structured representation of user data. The method returns an instance of the specified
+
+    response type populated with user information.
+  example: []
+  syntax:
+    content: 'public virtual Task<T> GetUser<T>(GetUserRequest request, CancellationToken cancellationToken = default) where T : IGetUserResponse'
+    parameters:
+    - id: request
+      type: Innovt.Cloud.AWS.Cognito.Model.GetUserRequest
+      description: A <xref href="Innovt.Cloud.AWS.Cognito.Model.GetUserRequest" data-throw-if-not-resolved="false"></xref> containing the criteria for retrieving user information.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A cancellation token for cancelling the operation.
+    typeParameters:
+    - id: T
+      description: The type of response implementing <xref href="Innovt.Cloud.AWS.Cognito.Model.IGetUserResponse" data-throw-if-not-resolved="false"></xref> to return.
+    return:
+      type: System.Threading.Tasks.Task{{T}}
+      description: An instance of the specified response type containing user information.
+    content.vb: Public Overridable Function GetUser(Of T As IGetUserResponse)(request As GetUserRequest, cancellationToken As CancellationToken = Nothing) As Task(Of T)
+  overload: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when the <code class="paramref">request</code> is null.
+  - type: Innovt.Core.Exceptions.BusinessException
+    commentId: T:Innovt.Core.Exceptions.BusinessException
+    description: Thrown when the <code class="paramref">request</code> fails validation.
+  implements:
+  - Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.GetUser``1(Innovt.Cloud.AWS.Cognito.Model.GetUserRequest,System.Threading.CancellationToken)
+  nameWithType.vb: CognitoIdentityProvider.GetUser(Of T)(GetUserRequest, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser(Of T)(Innovt.Cloud.AWS.Cognito.Model.GetUserRequest, System.Threading.CancellationToken)
+  name.vb: GetUser(Of T)(GetUserRequest, CancellationToken)
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser``1(System.String,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser``1(System.String,System.Threading.CancellationToken)
+  id: GetUser``1(System.String,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
+  langs:
+  - csharp
+  - vb
+  name: GetUser<T>(string, CancellationToken)
+  nameWithType: CognitoIdentityProvider.GetUser<T>(string, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser<T>(string, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: GetUser
+    path: Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+    startLine: 489
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito
+  summary: Get user information based on the specified request and response type.
+  example: []
+  syntax:
+    content: 'public virtual Task<T> GetUser<T>(string accessToken, CancellationToken cancellationToken = default) where T : IGetUserResponse'
+    parameters:
+    - id: accessToken
+      type: System.String
+      description: A valid access token.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A cancellationToken token
+    typeParameters:
+    - id: T
+      description: A response of type IGetUserResponse
+    return:
+      type: System.Threading.Tasks.Task{{T}}
+      description: Null or a valid user
+    content.vb: Public Overridable Function GetUser(Of T As IGetUserResponse)(accessToken As String, cancellationToken As CancellationToken = Nothing) As Task(Of T)
+  overload: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: ''
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: ''
+  implements:
+  - Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.GetUser``1(System.String,System.Threading.CancellationToken)
+  nameWithType.vb: CognitoIdentityProvider.GetUser(Of T)(String, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser(Of T)(String, System.Threading.CancellationToken)
+  name.vb: GetUser(Of T)(String, CancellationToken)
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RespondToAuthChallenge(Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RespondToAuthChallenge(Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest,System.Threading.CancellationToken)
+  id: RespondToAuthChallenge(Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
+  langs:
+  - csharp
+  - vb
+  name: RespondToAuthChallenge(RespondToAuthChallengeRequest, CancellationToken)
+  nameWithType: CognitoIdentityProvider.RespondToAuthChallenge(RespondToAuthChallengeRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RespondToAuthChallenge(Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: RespondToAuthChallenge
+    path: Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+    startLine: 542
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito
+  summary: Responds to an authentication challenge with the appropriate challenge responses.
+  remarks: >-
+    This method is used to respond to various authentication challenges such as custom challenges,
+
+    SMS Multi-Factor Authentication (MFA), and new password requirements. It provides the appropriate
+
+    challenge responses based on the challenge type and returns authentication results or metadata.
+  example: []
+  syntax:
+    content: public Task<AuthChallengeResponse> RespondToAuthChallenge(RespondToAuthChallengeRequest command, CancellationToken cancellationToken = default)
+    parameters:
+    - id: command
+      type: Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest
+      description: >-
+        A <xref href="Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest" data-throw-if-not-resolved="false"></xref> containing the necessary information for the
+
+        challenge response.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A cancellation token for cancelling the operation.
+    return:
+      type: System.Threading.Tasks.Task{Innovt.Cloud.AWS.Cognito.Model.AuthChallengeResponse}
+      description: An <xref href="Innovt.Cloud.AWS.Cognito.Model.AuthChallengeResponse" data-throw-if-not-resolved="false"></xref> containing the authentication result or metadata.
+    content.vb: Public Function RespondToAuthChallenge(command As RespondToAuthChallengeRequest, cancellationToken As CancellationToken = Nothing) As Task(Of AuthChallengeResponse)
+  overload: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RespondToAuthChallenge*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when the <code class="paramref">command</code> is null.
+  - type: Innovt.Core.Exceptions.BusinessException
+    commentId: T:Innovt.Core.Exceptions.BusinessException
+    description: Thrown when the <code class="paramref">command</code> fails validation.
+  - type: Innovt.Core.Exceptions.CriticalException
+    commentId: T:Innovt.Core.Exceptions.CriticalException
+    description: Thrown when an unsupported challenge name is encountered.
+  implements:
+  - Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.RespondToAuthChallenge(Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest,System.Threading.CancellationToken)
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest,System.Threading.CancellationToken)
+  id: ConfirmForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
+  langs:
+  - csharp
+  - vb
+  name: ConfirmForgotPassword(ConfirmForgotPasswordRequest, CancellationToken)
+  nameWithType: CognitoIdentityProvider.ConfirmForgotPassword(ConfirmForgotPasswordRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ConfirmForgotPassword
+    path: Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+    startLine: 632
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito
+  summary: Confirms a user's forgotten password and sets a new password for the user.
+  remarks: >-
+    This method is used to confirm a user's forgotten password by providing the user's username, a new password,
+
+    and a confirmation code received by the user. It sets the new password for the user if the confirmation is
+
+    successful.
+  example: []
+  syntax:
+    content: public Task ConfirmForgotPassword(ConfirmForgotPasswordRequest command, CancellationToken cancellationToken = default)
+    parameters:
+    - id: command
+      type: Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest
+      description: >-
+        A <xref href="Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest" data-throw-if-not-resolved="false"></xref> containing the necessary information for
+
+        confirmation.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A cancellation token for cancelling the operation.
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task representing the asynchronous confirmation process.
+    content.vb: Public Function ConfirmForgotPassword(command As ConfirmForgotPasswordRequest, cancellationToken As CancellationToken = Nothing) As Task
+  overload: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmForgotPassword*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when the <code class="paramref">command</code> is null.
+  - type: Innovt.Core.Exceptions.BusinessException
+    commentId: T:Innovt.Core.Exceptions.BusinessException
+    description: Thrown when the <code class="paramref">command</code> fails validation.
+  implements:
+  - Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ConfirmForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest,System.Threading.CancellationToken)
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SocialSignIn(Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SocialSignIn(Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest,System.Threading.CancellationToken)
+  id: SocialSignIn(Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
+  langs:
+  - csharp
+  - vb
+  name: SocialSignIn(SocialSignInRequest, CancellationToken)
+  nameWithType: CognitoIdentityProvider.SocialSignIn(SocialSignInRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SocialSignIn(Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: SocialSignIn
+    path: Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+    startLine: 685
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito
+  summary: Performs social sign-in using an authorization code obtained from an external identity provider.
+  remarks: >-
+    This method is used to perform social sign-in using an authorization code obtained from an external identity
+
+    provider.
+
+    It constructs an OAuth2 token request, sends it to the identity provider, and handles the response to authenticate
+
+    the user.
+
+    The method also retrieves user information and determines if the user needs to be registered in the system.
+  example: []
+  syntax:
+    content: public virtual Task<OAuth2SignInResponse> SocialSignIn(SocialSignInRequest command, CancellationToken cancellationToken)
+    parameters:
+    - id: command
+      type: Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest
+      description: The request containing the authorization code and context information.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A cancellation token for cancelling the operation.
+    return:
+      type: System.Threading.Tasks.Task{Innovt.Cloud.AWS.Cognito.Model.OAuth2SignInResponse}
+      description: A <xref href="Innovt.Cloud.AWS.Cognito.Model.OAuth2SignInResponse" data-throw-if-not-resolved="false"></xref> containing user information and tokens for authentication.
+    content.vb: Public Overridable Function SocialSignIn(command As SocialSignInRequest, cancellationToken As CancellationToken) As Task(Of OAuth2SignInResponse)
+  overload: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SocialSignIn*
+  exceptions:
+  - type: Innovt.Core.Exceptions.BusinessException
+    commentId: T:Innovt.Core.Exceptions.BusinessException
+    description: Thrown when there is an error in the OAuth2 response.
+  - type: Innovt.Core.Exceptions.CriticalException
+    commentId: T:Innovt.Core.Exceptions.CriticalException
+    description: Thrown when the user is not found in the system.
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown for other exceptions during the social sign-in process.
+  implements:
+  - Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SocialSignIn(Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest,System.Threading.CancellationToken)
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RefreshToken(Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RefreshToken(Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest,System.Threading.CancellationToken)
+  id: RefreshToken(Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
+  langs:
+  - csharp
+  - vb
+  name: RefreshToken(RefreshTokenRequest, CancellationToken)
+  nameWithType: CognitoIdentityProvider.RefreshToken(RefreshTokenRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RefreshToken(Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: RefreshToken
+    path: Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+    startLine: 772
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito
+  summary: Refreshes an expired access token using a refresh token, allowing the user to remain authenticated.
+  remarks: >-
+    This method is used to refresh an expired access token using a refresh token, allowing the user to
+
+    remain authenticated without the need for re-entering credentials. The method constructs a refresh token
+
+    authentication request, including user context data, and sends it to the Amazon Cognito Identity Provider
+
+    service. The response contains the refreshed access token and related information.
+  example: []
+  syntax:
+    content: public virtual Task<RefreshTokenResponse> RefreshToken(RefreshTokenRequest command, CancellationToken cancellationToken = default)
+    parameters:
+    - id: command
+      type: Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest
+      description: The request containing the refresh token and context information.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A cancellation token for cancelling the operation.
+    return:
+      type: System.Threading.Tasks.Task{Innovt.Cloud.AWS.Cognito.Model.RefreshTokenResponse}
+      description: A <xref href="Innovt.Cloud.AWS.Cognito.Model.RefreshTokenResponse" data-throw-if-not-resolved="false"></xref> containing the refreshed access token and associated details.
+    content.vb: Public Overridable Function RefreshToken(command As RefreshTokenRequest, cancellationToken As CancellationToken = Nothing) As Task(Of RefreshTokenResponse)
+  overload: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RefreshToken*
+  exceptions:
+  - type: Innovt.Core.Exceptions.BusinessException
+    commentId: T:Innovt.Core.Exceptions.BusinessException
+    description: Thrown when the refresh token operation is not authorized.
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown for other exceptions during the refresh token operation.
+  implements:
+  - Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.RefreshToken(Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest,System.Threading.CancellationToken)
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.LinkSocialUser(Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.LinkSocialUser(Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest,System.Threading.CancellationToken)
+  id: LinkSocialUser(Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
+  langs:
+  - csharp
+  - vb
+  name: LinkSocialUser(LinkSocialAccountRequest, CancellationToken)
+  nameWithType: CognitoIdentityProvider.LinkSocialUser(LinkSocialAccountRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.LinkSocialUser(Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: LinkSocialUser
+    path: Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+    startLine: 824
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito
+  summary: Link user and social account. This is used to avoid billing issues and other problems.
+  example: []
+  syntax:
+    content: public Task<bool> LinkSocialUser(LinkSocialAccountRequest command, CancellationToken cancellationToken = default)
+    parameters:
+    - id: command
+      type: Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest
+      description: ''
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function LinkSocialUser(command As LinkSocialAccountRequest, cancellationToken As CancellationToken = Nothing) As Task(Of Boolean)
+  overload: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.LinkSocialUser*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: ''
+  implements:
+  - Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.LinkSocialUser(Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest,System.Threading.CancellationToken)
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DeleteUser(Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DeleteUser(Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest,System.Threading.CancellationToken)
+  id: DeleteUser(Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
+  langs:
+  - csharp
+  - vb
+  name: DeleteUser(DeleteUserAccountRequest, CancellationToken)
+  nameWithType: CognitoIdentityProvider.DeleteUser(DeleteUserAccountRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DeleteUser(Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: DeleteUser
+    path: Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+    startLine: 887
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito
+  summary: >-
+    This method will delete the user using the username and the user pool id. It's important to have the admin delete
+
+    user permission.
+  example: []
+  syntax:
+    content: public Task<bool> DeleteUser(DeleteUserAccountRequest command, CancellationToken cancellationToken = default)
+    parameters:
+    - id: command
+      type: Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest
+      description: ''
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: ''
+    content.vb: Public Function DeleteUser(command As DeleteUserAccountRequest, cancellationToken As CancellationToken = Nothing) As Task(Of Boolean)
+  overload: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DeleteUser*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: ''
+  implements:
+  - Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.DeleteUser(Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest,System.Threading.CancellationToken)
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest,System.Threading.CancellationToken)
+  id: UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
+  langs:
+  - csharp
+  - vb
+  name: UpdateUserAttributes(AdminUpdateUserAttributesRequest, CancellationToken)
+  nameWithType: CognitoIdentityProvider.UpdateUserAttributes(AdminUpdateUserAttributesRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: UpdateUserAttributes
+    path: Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+    startLine: 912
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito
+  summary: >-
+    This method allow you to update user attributes without sending a token. Internally we are calling Admin Update
+
+    User Attributes.
+  example: []
+  syntax:
+    content: public Task UpdateUserAttributes(AdminUpdateUserAttributesRequest command, CancellationToken cancellationToken = default)
+    parameters:
+    - id: command
+      type: Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest
+      description: ''
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task
+      description: ''
+    content.vb: Public Function UpdateUserAttributes(command As AdminUpdateUserAttributesRequest, cancellationToken As CancellationToken = Nothing) As Task
+  overload: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.UpdateUserAttributes*
+  implements:
+  - Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest,System.Threading.CancellationToken)
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest,System.Threading.CancellationToken)
+  id: UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
+  langs:
+  - csharp
+  - vb
+  name: UpdateUserAttributes(UpdateUserAttributesRequest, CancellationToken)
+  nameWithType: CognitoIdentityProvider.UpdateUserAttributes(UpdateUserAttributesRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: UpdateUserAttributes
+    path: Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+    startLine: 950
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito
+  summary: Updates user attributes.
+  example: []
+  syntax:
+    content: public virtual Task UpdateUserAttributes(UpdateUserAttributesRequest command, CancellationToken cancellationToken = default)
+    parameters:
+    - id: command
+      type: Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest
+      description: The <xref href="Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest" data-throw-if-not-resolved="false"></xref> containing user attributes.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A cancellation token for async tasks.
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Overridable Function UpdateUserAttributes(command As UpdateUserAttributesRequest, cancellationToken As CancellationToken = Nothing) As Task
+  overload: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.UpdateUserAttributes*
+  implements:
+  - Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest,System.Threading.CancellationToken)
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DisposeServices
+  commentId: M:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DisposeServices
+  id: DisposeServices
+  parent: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
+  langs:
+  - csharp
+  - vb
+  name: DisposeServices()
+  nameWithType: CognitoIdentityProvider.DisposeServices()
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DisposeServices()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: DisposeServices
+    path: Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs
+    startLine: 1222
+  assemblies:
+  - Innovt.Cloud.AWS.Cognito
+  namespace: Innovt.Cloud.AWS.Cognito
+  summary: Disposes of resources when they are no longer needed.
+  example: []
+  syntax:
+    content: protected override void DisposeServices()
+    content.vb: Protected Overrides Sub DisposeServices()
+  overridden: Innovt.Cloud.AWS.AwsBaseService.DisposeServices
+  overload: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DisposeServices*
+references:
+- uid: Innovt.Cloud.AWS.Cognito
+  commentId: N:Innovt.Cloud.AWS.Cognito
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Cognito
+  nameWithType: Innovt.Cloud.AWS.Cognito
+  fullName: Innovt.Cloud.AWS.Cognito
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Cognito
+    name: Cognito
+    href: Innovt.Cloud.AWS.Cognito.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Cognito
+    name: Cognito
+    href: Innovt.Cloud.AWS.Cognito.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Innovt.Cloud.AWS.AwsBaseService
+  commentId: T:Innovt.Cloud.AWS.AwsBaseService
+  parent: Innovt.Cloud.AWS
+  href: Innovt.Cloud.AWS.AwsBaseService.html
+  name: AwsBaseService
+  nameWithType: AwsBaseService
+  fullName: Innovt.Cloud.AWS.AwsBaseService
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider
+  commentId: T:Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider
+  parent: Innovt.Cloud.AWS.Cognito
+  href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html
+  name: ICognitoIdentityProvider
+  nameWithType: ICognitoIdentityProvider
+  fullName: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider
+- uid: Innovt.Cloud.AWS.AwsBaseService.Configuration
+  commentId: F:Innovt.Cloud.AWS.AwsBaseService.Configuration
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Configuration
+  name: Configuration
+  nameWithType: AwsBaseService.Configuration
+  fullName: Innovt.Cloud.AWS.AwsBaseService.Configuration
+- uid: Innovt.Cloud.AWS.AwsBaseService.RetryCount
+  commentId: P:Innovt.Cloud.AWS.AwsBaseService.RetryCount
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_RetryCount
+  name: RetryCount
+  nameWithType: AwsBaseService.RetryCount
+  fullName: Innovt.Cloud.AWS.AwsBaseService.RetryCount
+- uid: Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerAllowedExceptions
+  commentId: P:Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerAllowedExceptions
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CircuitBreakerAllowedExceptions
+  name: CircuitBreakerAllowedExceptions
+  nameWithType: AwsBaseService.CircuitBreakerAllowedExceptions
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerAllowedExceptions
+- uid: Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerDurationOfBreak
+  commentId: P:Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerDurationOfBreak
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CircuitBreakerDurationOfBreak
+  name: CircuitBreakerDurationOfBreak
+  nameWithType: AwsBaseService.CircuitBreakerDurationOfBreak
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerDurationOfBreak
+- uid: Innovt.Cloud.AWS.AwsBaseService.Logger
+  commentId: P:Innovt.Cloud.AWS.AwsBaseService.Logger
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Logger
+  name: Logger
+  nameWithType: AwsBaseService.Logger
+  fullName: Innovt.Cloud.AWS.AwsBaseService.Logger
+- uid: Innovt.Cloud.AWS.AwsBaseService.Dispose
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.Dispose
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose
+  name: Dispose()
+  nameWithType: AwsBaseService.Dispose()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.Dispose()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.Dispose
+    name: Dispose
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.Dispose
+    name: Dispose
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_GetServiceRegionEndPoint
+  name: GetServiceRegionEndPoint()
+  nameWithType: AwsBaseService.GetServiceRegionEndPoint()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+    name: GetServiceRegionEndPoint
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_GetServiceRegionEndPoint
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+    name: GetServiceRegionEndPoint
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_GetServiceRegionEndPoint
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateService__1
+  name: CreateService<T>()
+  nameWithType: AwsBaseService.CreateService<T>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateService<T>()
+  nameWithType.vb: AwsBaseService.CreateService(Of T)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateService(Of T)()
+  name.vb: CreateService(Of T)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+    name: CreateService
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateService__1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+    name: CreateService
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateService__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryAsyncPolicy
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryAsyncPolicy
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryAsyncPolicy
+  name: CreateDefaultRetryAsyncPolicy()
+  nameWithType: AwsBaseService.CreateDefaultRetryAsyncPolicy()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryAsyncPolicy()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryAsyncPolicy
+    name: CreateDefaultRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryAsyncPolicy
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryAsyncPolicy
+    name: CreateDefaultRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryAsyncPolicy
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryPolicy
+  name: CreateDefaultRetryPolicy()
+  nameWithType: AwsBaseService.CreateDefaultRetryPolicy()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+    name: CreateDefaultRetryPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryPolicy
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+    name: CreateDefaultRetryPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryPolicy
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__1
+  name: CreateRetryAsyncPolicy<T>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T)()
+  name.vb: CreateRetryAsyncPolicy(Of T)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__2
+  name: CreateRetryAsyncPolicy<T, T1>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T, T1>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T, T1>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T, T1)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T, T1)()
+  name.vb: CreateRetryAsyncPolicy(Of T, T1)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__3
+  name: CreateRetryAsyncPolicy<T, T1, T2>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2)()
+  name.vb: CreateRetryAsyncPolicy(Of T, T1, T2)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__3
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__3
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__4
+  name: CreateRetryAsyncPolicy<T, T1, T2, T3>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2, T3>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2, T3>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2, T3)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2, T3)()
+  name.vb: CreateRetryAsyncPolicy(Of T, T1, T2, T3)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__4
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__4
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__5
+  name: CreateRetryAsyncPolicy<T, T1, T2, T3, T4>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2, T3, T4>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2, T3, T4>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2, T3, T4)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2, T3, T4)()
+  name.vb: CreateRetryAsyncPolicy(Of T, T1, T2, T3, T4)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__5
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__5
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateCircuitBreaker__2
+  name: CreateCircuitBreaker<T, T1>()
+  nameWithType: AwsBaseService.CreateCircuitBreaker<T, T1>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker<T, T1>()
+  nameWithType.vb: AwsBaseService.CreateCircuitBreaker(Of T, T1)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker(Of T, T1)()
+  name.vb: CreateCircuitBreaker(Of T, T1)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+    name: CreateCircuitBreaker
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateCircuitBreaker__2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+    name: CreateCircuitBreaker
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateCircuitBreaker__2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  isExternal: true
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose_System_Boolean_
+  name: Dispose(bool)
+  nameWithType: AwsBaseService.Dispose(bool)
+  fullName: Innovt.Cloud.AWS.AwsBaseService.Dispose(bool)
+  nameWithType.vb: AwsBaseService.Dispose(Boolean)
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+    name: Dispose
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+    name: Dispose
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Cloud.AWS
+  commentId: N:Innovt.Cloud.AWS
+  href: Innovt.html
+  name: Innovt.Cloud.AWS
+  nameWithType: Innovt.Cloud.AWS
+  fullName: Innovt.Cloud.AWS
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.#ctor*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.#ctor
+  href: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider__ctor_Innovt_Core_CrossCutting_Log_ILogger_Innovt_Cloud_AWS_Configuration_IAwsConfiguration_System_String_System_String_System_String_System_String_System_Boolean_
+  name: CognitoIdentityProvider
+  nameWithType: CognitoIdentityProvider.CognitoIdentityProvider
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.CognitoIdentityProvider
+  nameWithType.vb: CognitoIdentityProvider.New
+  fullName.vb: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.New
+  name.vb: New
+- uid: Innovt.Core.CrossCutting.Log.ILogger
+  commentId: T:Innovt.Core.CrossCutting.Log.ILogger
+  parent: Innovt.Core.CrossCutting.Log
+  href: Innovt.Core.CrossCutting.Log.ILogger.html
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Innovt.Core.CrossCutting.Log.ILogger
+- uid: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+  commentId: T:Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+  parent: Innovt.Cloud.AWS.Configuration
+  href: Innovt.Cloud.AWS.Configuration.IAwsConfiguration.html
+  name: IAwsConfiguration
+  nameWithType: IAwsConfiguration
+  fullName: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Innovt.Core.CrossCutting.Log
+  commentId: N:Innovt.Core.CrossCutting.Log
+  href: Innovt.html
+  name: Innovt.Core.CrossCutting.Log
+  nameWithType: Innovt.Core.CrossCutting.Log
+  fullName: Innovt.Core.CrossCutting.Log
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Log
+    name: Log
+    href: Innovt.Core.CrossCutting.Log.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Log
+    name: Log
+    href: Innovt.Core.CrossCutting.Log.html
+- uid: Innovt.Cloud.AWS.Configuration
+  commentId: N:Innovt.Cloud.AWS.Configuration
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Configuration
+  nameWithType: Innovt.Cloud.AWS.Configuration
+  fullName: Innovt.Cloud.AWS.Configuration
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Configuration
+    name: Configuration
+    href: Innovt.Cloud.AWS.Configuration.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Configuration
+    name: Configuration
+    href: Innovt.Cloud.AWS.Configuration.html
+- uid: Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest
+  commentId: T:Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest
+  parent: Innovt.Cloud.AWS.Cognito.Model
+  href: Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest.html
+  name: ForgotPasswordRequest
+  nameWithType: ForgotPasswordRequest
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ForgotPassword*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ForgotPassword
+  href: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ForgotPassword_Innovt_Cloud_AWS_Cognito_Model_ForgotPasswordRequest_System_Threading_CancellationToken_
+  name: ForgotPassword
+  nameWithType: CognitoIdentityProvider.ForgotPassword
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ForgotPassword
+- uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider
+  isExternal: true
+  href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_ForgotPassword_Innovt_Cloud_AWS_Cognito_Model_ForgotPasswordRequest_System_Threading_CancellationToken_
+  name: ForgotPassword(ForgotPasswordRequest, CancellationToken)
+  nameWithType: ICognitoIdentityProvider.ForgotPassword(ForgotPasswordRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest,System.Threading.CancellationToken)
+    name: ForgotPassword
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_ForgotPassword_Innovt_Cloud_AWS_Cognito_Model_ForgotPasswordRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest
+    name: ForgotPasswordRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest,System.Threading.CancellationToken)
+    name: ForgotPassword
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_ForgotPassword_Innovt_Cloud_AWS_Cognito_Model_ForgotPasswordRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest
+    name: ForgotPasswordRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: Innovt.Cloud.AWS.Cognito.Model
+  commentId: N:Innovt.Cloud.AWS.Cognito.Model
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Cognito.Model
+  nameWithType: Innovt.Cloud.AWS.Cognito.Model
+  fullName: Innovt.Cloud.AWS.Cognito.Model
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Cognito
+    name: Cognito
+    href: Innovt.Cloud.AWS.Cognito.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Cognito.Model
+    name: Model
+    href: Innovt.Cloud.AWS.Cognito.Model.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Cognito
+    name: Cognito
+    href: Innovt.Cloud.AWS.Cognito.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Cognito.Model
+    name: Model
+    href: Innovt.Cloud.AWS.Cognito.Model.html
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignIn*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignIn
+  href: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignIn_Innovt_Cloud_AWS_Cognito_Model_OtpSignInRequest_System_Threading_CancellationToken_
+  name: SignIn
+  nameWithType: CognitoIdentityProvider.SignIn
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignIn
+- uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider
+  isExternal: true
+  href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_SignIn_Innovt_Cloud_AWS_Cognito_Model_OtpSignInRequest_System_Threading_CancellationToken_
+  name: SignIn(OtpSignInRequest, CancellationToken)
+  nameWithType: ICognitoIdentityProvider.SignIn(OtpSignInRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest,System.Threading.CancellationToken)
+    name: SignIn
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_SignIn_Innovt_Cloud_AWS_Cognito_Model_OtpSignInRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest
+    name: OtpSignInRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest,System.Threading.CancellationToken)
+    name: SignIn
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_SignIn_Innovt_Cloud_AWS_Cognito_Model_OtpSignInRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest
+    name: OtpSignInRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest
+  commentId: T:Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest
+  parent: Innovt.Cloud.AWS.Cognito.Model
+  href: Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest.html
+  name: OtpSignInRequest
+  nameWithType: OtpSignInRequest
+  fullName: Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest
+- uid: System.Threading.Tasks.Task{Innovt.Cloud.AWS.Cognito.Model.SignInResponse}
+  commentId: T:System.Threading.Tasks.Task{Innovt.Cloud.AWS.Cognito.Model.SignInResponse}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<SignInResponse>
+  nameWithType: Task<SignInResponse>
+  fullName: System.Threading.Tasks.Task<Innovt.Cloud.AWS.Cognito.Model.SignInResponse>
+  nameWithType.vb: Task(Of SignInResponse)
+  fullName.vb: System.Threading.Tasks.Task(Of Innovt.Cloud.AWS.Cognito.Model.SignInResponse)
+  name.vb: Task(Of SignInResponse)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Innovt.Cloud.AWS.Cognito.Model.SignInResponse
+    name: SignInResponse
+    href: Innovt.Cloud.AWS.Cognito.Model.SignInResponse.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.AWS.Cognito.Model.SignInResponse
+    name: SignInResponse
+    href: Innovt.Cloud.AWS.Cognito.Model.SignInResponse.html
+  - name: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.SignInRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.SignInRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider
+  isExternal: true
+  href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_SignIn_Innovt_Cloud_AWS_Cognito_Model_SignInRequest_System_Threading_CancellationToken_
+  name: SignIn(SignInRequest, CancellationToken)
+  nameWithType: ICognitoIdentityProvider.SignIn(SignInRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.SignInRequest, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.SignInRequest,System.Threading.CancellationToken)
+    name: SignIn
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_SignIn_Innovt_Cloud_AWS_Cognito_Model_SignInRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.SignInRequest
+    name: SignInRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.SignInRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.SignInRequest,System.Threading.CancellationToken)
+    name: SignIn
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_SignIn_Innovt_Cloud_AWS_Cognito_Model_SignInRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.SignInRequest
+    name: SignInRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.SignInRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Cognito.Model.SignInRequest
+  commentId: T:Innovt.Cloud.AWS.Cognito.Model.SignInRequest
+  parent: Innovt.Cloud.AWS.Cognito.Model
+  href: Innovt.Cloud.AWS.Cognito.Model.SignInRequest.html
+  name: SignInRequest
+  nameWithType: SignInRequest
+  fullName: Innovt.Cloud.AWS.Cognito.Model.SignInRequest
+- uid: Innovt.Cloud.AWS.Cognito.Model.SignOutRequest
+  commentId: T:Innovt.Cloud.AWS.Cognito.Model.SignOutRequest
+  parent: Innovt.Cloud.AWS.Cognito.Model
+  href: Innovt.Cloud.AWS.Cognito.Model.SignOutRequest.html
+  name: SignOutRequest
+  nameWithType: SignOutRequest
+  fullName: Innovt.Cloud.AWS.Cognito.Model.SignOutRequest
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: Innovt.Core.Exceptions.BusinessException
+  commentId: T:Innovt.Core.Exceptions.BusinessException
+  parent: Innovt.Core.Exceptions
+  href: Innovt.Core.Exceptions.BusinessException.html
+  name: BusinessException
+  nameWithType: BusinessException
+  fullName: Innovt.Core.Exceptions.BusinessException
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.CatchException(System.Exception)
+  commentId: M:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.CatchException(System.Exception)
+  isExternal: true
+  href: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_CatchException_System_Exception_
+  name: CatchException(Exception)
+  nameWithType: CognitoIdentityProvider.CatchException(Exception)
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.CatchException(System.Exception)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.CatchException(System.Exception)
+    name: CatchException
+    href: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_CatchException_System_Exception_
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.CatchException(System.Exception)
+    name: CatchException
+    href: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_CatchException_System_Exception_
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: )
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignOut*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignOut
+  href: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignOut_Innovt_Cloud_AWS_Cognito_Model_SignOutRequest_System_Threading_CancellationToken_
+  name: SignOut
+  nameWithType: CognitoIdentityProvider.SignOut
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignOut
+- uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SignOut(Innovt.Cloud.AWS.Cognito.Model.SignOutRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SignOut(Innovt.Cloud.AWS.Cognito.Model.SignOutRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider
+  isExternal: true
+  href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_SignOut_Innovt_Cloud_AWS_Cognito_Model_SignOutRequest_System_Threading_CancellationToken_
+  name: SignOut(SignOutRequest, CancellationToken)
+  nameWithType: ICognitoIdentityProvider.SignOut(SignOutRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SignOut(Innovt.Cloud.AWS.Cognito.Model.SignOutRequest, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SignOut(Innovt.Cloud.AWS.Cognito.Model.SignOutRequest,System.Threading.CancellationToken)
+    name: SignOut
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_SignOut_Innovt_Cloud_AWS_Cognito_Model_SignOutRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.SignOutRequest
+    name: SignOutRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.SignOutRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SignOut(Innovt.Cloud.AWS.Cognito.Model.SignOutRequest,System.Threading.CancellationToken)
+    name: SignOut
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_SignOut_Innovt_Cloud_AWS_Cognito_Model_SignOutRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.SignOutRequest
+    name: SignOutRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.SignOutRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Core.Exceptions
+  commentId: N:Innovt.Core.Exceptions
+  href: Innovt.html
+  name: Innovt.Core.Exceptions
+  nameWithType: Innovt.Core.Exceptions
+  fullName: Innovt.Core.Exceptions
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Exceptions
+    name: Exceptions
+    href: Innovt.Core.Exceptions.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Exceptions
+    name: Exceptions
+    href: Innovt.Core.Exceptions.html
+- uid: Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest
+  commentId: T:Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest
+  parent: Innovt.Cloud.AWS.Cognito.Model
+  href: Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest.html
+  name: ISignUpRequest
+  nameWithType: ISignUpRequest
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest
+- uid: Innovt.Cloud.AWS.Cognito.Model.SignUpResponse
+  commentId: T:Innovt.Cloud.AWS.Cognito.Model.SignUpResponse
+  href: Innovt.Cloud.AWS.Cognito.Model.SignUpResponse.html
+  name: SignUpResponse
+  nameWithType: SignUpResponse
+  fullName: Innovt.Cloud.AWS.Cognito.Model.SignUpResponse
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignUp*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignUp
+  href: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignUp_Innovt_Cloud_AWS_Cognito_Model_ISignUpRequest_System_Threading_CancellationToken_
+  name: SignUp
+  nameWithType: CognitoIdentityProvider.SignUp
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignUp
+- uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SignUp(Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SignUp(Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider
+  isExternal: true
+  href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_SignUp_Innovt_Cloud_AWS_Cognito_Model_ISignUpRequest_System_Threading_CancellationToken_
+  name: SignUp(ISignUpRequest, CancellationToken)
+  nameWithType: ICognitoIdentityProvider.SignUp(ISignUpRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SignUp(Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SignUp(Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest,System.Threading.CancellationToken)
+    name: SignUp
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_SignUp_Innovt_Cloud_AWS_Cognito_Model_ISignUpRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest
+    name: ISignUpRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SignUp(Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest,System.Threading.CancellationToken)
+    name: SignUp
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_SignUp_Innovt_Cloud_AWS_Cognito_Model_ISignUpRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest
+    name: ISignUpRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Threading.Tasks.Task{Innovt.Cloud.AWS.Cognito.Model.SignUpResponse}
+  commentId: T:System.Threading.Tasks.Task{Innovt.Cloud.AWS.Cognito.Model.SignUpResponse}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<SignUpResponse>
+  nameWithType: Task<SignUpResponse>
+  fullName: System.Threading.Tasks.Task<Innovt.Cloud.AWS.Cognito.Model.SignUpResponse>
+  nameWithType.vb: Task(Of SignUpResponse)
+  fullName.vb: System.Threading.Tasks.Task(Of Innovt.Cloud.AWS.Cognito.Model.SignUpResponse)
+  name.vb: Task(Of SignUpResponse)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Innovt.Cloud.AWS.Cognito.Model.SignUpResponse
+    name: SignUpResponse
+    href: Innovt.Cloud.AWS.Cognito.Model.SignUpResponse.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.AWS.Cognito.Model.SignUpResponse
+    name: SignUpResponse
+    href: Innovt.Cloud.AWS.Cognito.Model.SignUpResponse.html
+  - name: )
+- uid: Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest
+  commentId: T:Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest
+  parent: Innovt.Cloud.AWS.Cognito.Model
+  href: Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest.html
+  name: ConfirmSignUpRequest
+  nameWithType: ConfirmSignUpRequest
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmSignUp*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmSignUp
+  href: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ConfirmSignUp_Innovt_Cloud_AWS_Cognito_Model_ConfirmSignUpRequest_System_Threading_CancellationToken_
+  name: ConfirmSignUp
+  nameWithType: CognitoIdentityProvider.ConfirmSignUp
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmSignUp
+- uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ConfirmSignUp(Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ConfirmSignUp(Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider
+  isExternal: true
+  href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_ConfirmSignUp_Innovt_Cloud_AWS_Cognito_Model_ConfirmSignUpRequest_System_Threading_CancellationToken_
+  name: ConfirmSignUp(ConfirmSignUpRequest, CancellationToken)
+  nameWithType: ICognitoIdentityProvider.ConfirmSignUp(ConfirmSignUpRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ConfirmSignUp(Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ConfirmSignUp(Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest,System.Threading.CancellationToken)
+    name: ConfirmSignUp
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_ConfirmSignUp_Innovt_Cloud_AWS_Cognito_Model_ConfirmSignUpRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest
+    name: ConfirmSignUpRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ConfirmSignUp(Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest,System.Threading.CancellationToken)
+    name: ConfirmSignUp
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_ConfirmSignUp_Innovt_Cloud_AWS_Cognito_Model_ConfirmSignUpRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest
+    name: ConfirmSignUpRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest
+  commentId: T:Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest
+  parent: Innovt.Cloud.AWS.Cognito.Model
+  href: Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest.html
+  name: ResendConfirmationCodeRequest
+  nameWithType: ResendConfirmationCodeRequest
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ResendConfirmationCode*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ResendConfirmationCode
+  href: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ResendConfirmationCode_Innovt_Cloud_AWS_Cognito_Model_ResendConfirmationCodeRequest_System_Threading_CancellationToken_
+  name: ResendConfirmationCode
+  nameWithType: CognitoIdentityProvider.ResendConfirmationCode
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ResendConfirmationCode
+- uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ResendConfirmationCode(Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ResendConfirmationCode(Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider
+  isExternal: true
+  href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_ResendConfirmationCode_Innovt_Cloud_AWS_Cognito_Model_ResendConfirmationCodeRequest_System_Threading_CancellationToken_
+  name: ResendConfirmationCode(ResendConfirmationCodeRequest, CancellationToken)
+  nameWithType: ICognitoIdentityProvider.ResendConfirmationCode(ResendConfirmationCodeRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ResendConfirmationCode(Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ResendConfirmationCode(Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest,System.Threading.CancellationToken)
+    name: ResendConfirmationCode
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_ResendConfirmationCode_Innovt_Cloud_AWS_Cognito_Model_ResendConfirmationCodeRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest
+    name: ResendConfirmationCodeRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ResendConfirmationCode(Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest,System.Threading.CancellationToken)
+    name: ResendConfirmationCode
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_ResendConfirmationCode_Innovt_Cloud_AWS_Cognito_Model_ResendConfirmationCodeRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest
+    name: ResendConfirmationCodeRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest
+  commentId: T:Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest
+  parent: Innovt.Cloud.AWS.Cognito.Model
+  href: Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest.html
+  name: ChangePasswordRequest
+  nameWithType: ChangePasswordRequest
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ChangePassword*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ChangePassword
+  href: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ChangePassword_Innovt_Cloud_AWS_Cognito_Model_ChangePasswordRequest_System_Threading_CancellationToken_
+  name: ChangePassword
+  nameWithType: CognitoIdentityProvider.ChangePassword
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ChangePassword
+- uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ChangePassword(Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ChangePassword(Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider
+  isExternal: true
+  href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_ChangePassword_Innovt_Cloud_AWS_Cognito_Model_ChangePasswordRequest_System_Threading_CancellationToken_
+  name: ChangePassword(ChangePasswordRequest, CancellationToken)
+  nameWithType: ICognitoIdentityProvider.ChangePassword(ChangePasswordRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ChangePassword(Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ChangePassword(Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest,System.Threading.CancellationToken)
+    name: ChangePassword
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_ChangePassword_Innovt_Cloud_AWS_Cognito_Model_ChangePasswordRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest
+    name: ChangePasswordRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ChangePassword(Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest,System.Threading.CancellationToken)
+    name: ChangePassword
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_ChangePassword_Innovt_Cloud_AWS_Cognito_Model_ChangePasswordRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest
+    name: ChangePasswordRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Cognito.Model.IGetUserResponse
+  commentId: T:Innovt.Cloud.AWS.Cognito.Model.IGetUserResponse
+  href: Innovt.Cloud.AWS.Cognito.Model.IGetUserResponse.html
+  name: IGetUserResponse
+  nameWithType: IGetUserResponse
+  fullName: Innovt.Cloud.AWS.Cognito.Model.IGetUserResponse
+- uid: Innovt.Cloud.AWS.Cognito.Model.GetUserRequest
+  commentId: T:Innovt.Cloud.AWS.Cognito.Model.GetUserRequest
+  parent: Innovt.Cloud.AWS.Cognito.Model
+  href: Innovt.Cloud.AWS.Cognito.Model.GetUserRequest.html
+  name: GetUserRequest
+  nameWithType: GetUserRequest
+  fullName: Innovt.Cloud.AWS.Cognito.Model.GetUserRequest
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser
+  href: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_GetUser__1_Innovt_Cloud_AWS_Cognito_Model_GetUserRequest_System_Threading_CancellationToken_
+  name: GetUser
+  nameWithType: CognitoIdentityProvider.GetUser
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser
+- uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.GetUser``1(Innovt.Cloud.AWS.Cognito.Model.GetUserRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.GetUser``1(Innovt.Cloud.AWS.Cognito.Model.GetUserRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider
+  isExternal: true
+  href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_GetUser__1_Innovt_Cloud_AWS_Cognito_Model_GetUserRequest_System_Threading_CancellationToken_
+  name: GetUser<T>(GetUserRequest, CancellationToken)
+  nameWithType: ICognitoIdentityProvider.GetUser<T>(GetUserRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.GetUser<T>(Innovt.Cloud.AWS.Cognito.Model.GetUserRequest, System.Threading.CancellationToken)
+  nameWithType.vb: ICognitoIdentityProvider.GetUser(Of T)(GetUserRequest, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.GetUser(Of T)(Innovt.Cloud.AWS.Cognito.Model.GetUserRequest, System.Threading.CancellationToken)
+  name.vb: GetUser(Of T)(GetUserRequest, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.GetUser``1(Innovt.Cloud.AWS.Cognito.Model.GetUserRequest,System.Threading.CancellationToken)
+    name: GetUser
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_GetUser__1_Innovt_Cloud_AWS_Cognito_Model_GetUserRequest_System_Threading_CancellationToken_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.GetUserRequest
+    name: GetUserRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.GetUserRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.GetUser``1(Innovt.Cloud.AWS.Cognito.Model.GetUserRequest,System.Threading.CancellationToken)
+    name: GetUser
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_GetUser__1_Innovt_Cloud_AWS_Cognito_Model_GetUserRequest_System_Threading_CancellationToken_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.GetUserRequest
+    name: GetUserRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.GetUserRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Threading.Tasks.Task{{T}}
+  commentId: T:System.Threading.Tasks.Task{``0}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<T>
+  nameWithType: Task<T>
+  fullName: System.Threading.Tasks.Task<T>
+  nameWithType.vb: Task(Of T)
+  fullName.vb: System.Threading.Tasks.Task(Of T)
+  name.vb: Task(Of T)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.GetUser``1(System.String,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.GetUser``1(System.String,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider
+  isExternal: true
+  href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_GetUser__1_System_String_System_Threading_CancellationToken_
+  name: GetUser<T>(string, CancellationToken)
+  nameWithType: ICognitoIdentityProvider.GetUser<T>(string, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.GetUser<T>(string, System.Threading.CancellationToken)
+  nameWithType.vb: ICognitoIdentityProvider.GetUser(Of T)(String, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.GetUser(Of T)(String, System.Threading.CancellationToken)
+  name.vb: GetUser(Of T)(String, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.GetUser``1(System.String,System.Threading.CancellationToken)
+    name: GetUser
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_GetUser__1_System_String_System_Threading_CancellationToken_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.GetUser``1(System.String,System.Threading.CancellationToken)
+    name: GetUser
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_GetUser__1_System_String_System_Threading_CancellationToken_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest
+  commentId: T:Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest
+  parent: Innovt.Cloud.AWS.Cognito.Model
+  href: Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest.html
+  name: RespondToAuthChallengeRequest
+  nameWithType: RespondToAuthChallengeRequest
+  fullName: Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest
+- uid: Innovt.Cloud.AWS.Cognito.Model.AuthChallengeResponse
+  commentId: T:Innovt.Cloud.AWS.Cognito.Model.AuthChallengeResponse
+  href: Innovt.Cloud.AWS.Cognito.Model.AuthChallengeResponse.html
+  name: AuthChallengeResponse
+  nameWithType: AuthChallengeResponse
+  fullName: Innovt.Cloud.AWS.Cognito.Model.AuthChallengeResponse
+- uid: Innovt.Core.Exceptions.CriticalException
+  commentId: T:Innovt.Core.Exceptions.CriticalException
+  parent: Innovt.Core.Exceptions
+  href: Innovt.Core.Exceptions.CriticalException.html
+  name: CriticalException
+  nameWithType: CriticalException
+  fullName: Innovt.Core.Exceptions.CriticalException
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RespondToAuthChallenge*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RespondToAuthChallenge
+  href: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_RespondToAuthChallenge_Innovt_Cloud_AWS_Cognito_Model_RespondToAuthChallengeRequest_System_Threading_CancellationToken_
+  name: RespondToAuthChallenge
+  nameWithType: CognitoIdentityProvider.RespondToAuthChallenge
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RespondToAuthChallenge
+- uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.RespondToAuthChallenge(Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.RespondToAuthChallenge(Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider
+  isExternal: true
+  href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_RespondToAuthChallenge_Innovt_Cloud_AWS_Cognito_Model_RespondToAuthChallengeRequest_System_Threading_CancellationToken_
+  name: RespondToAuthChallenge(RespondToAuthChallengeRequest, CancellationToken)
+  nameWithType: ICognitoIdentityProvider.RespondToAuthChallenge(RespondToAuthChallengeRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.RespondToAuthChallenge(Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.RespondToAuthChallenge(Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest,System.Threading.CancellationToken)
+    name: RespondToAuthChallenge
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_RespondToAuthChallenge_Innovt_Cloud_AWS_Cognito_Model_RespondToAuthChallengeRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest
+    name: RespondToAuthChallengeRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.RespondToAuthChallenge(Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest,System.Threading.CancellationToken)
+    name: RespondToAuthChallenge
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_RespondToAuthChallenge_Innovt_Cloud_AWS_Cognito_Model_RespondToAuthChallengeRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest
+    name: RespondToAuthChallengeRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Threading.Tasks.Task{Innovt.Cloud.AWS.Cognito.Model.AuthChallengeResponse}
+  commentId: T:System.Threading.Tasks.Task{Innovt.Cloud.AWS.Cognito.Model.AuthChallengeResponse}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<AuthChallengeResponse>
+  nameWithType: Task<AuthChallengeResponse>
+  fullName: System.Threading.Tasks.Task<Innovt.Cloud.AWS.Cognito.Model.AuthChallengeResponse>
+  nameWithType.vb: Task(Of AuthChallengeResponse)
+  fullName.vb: System.Threading.Tasks.Task(Of Innovt.Cloud.AWS.Cognito.Model.AuthChallengeResponse)
+  name.vb: Task(Of AuthChallengeResponse)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Innovt.Cloud.AWS.Cognito.Model.AuthChallengeResponse
+    name: AuthChallengeResponse
+    href: Innovt.Cloud.AWS.Cognito.Model.AuthChallengeResponse.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.AWS.Cognito.Model.AuthChallengeResponse
+    name: AuthChallengeResponse
+    href: Innovt.Cloud.AWS.Cognito.Model.AuthChallengeResponse.html
+  - name: )
+- uid: Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest
+  commentId: T:Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest
+  parent: Innovt.Cloud.AWS.Cognito.Model
+  href: Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest.html
+  name: ConfirmForgotPasswordRequest
+  nameWithType: ConfirmForgotPasswordRequest
+  fullName: Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmForgotPassword*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmForgotPassword
+  href: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ConfirmForgotPassword_Innovt_Cloud_AWS_Cognito_Model_ConfirmForgotPasswordRequest_System_Threading_CancellationToken_
+  name: ConfirmForgotPassword
+  nameWithType: CognitoIdentityProvider.ConfirmForgotPassword
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmForgotPassword
+- uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ConfirmForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ConfirmForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider
+  isExternal: true
+  href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_ConfirmForgotPassword_Innovt_Cloud_AWS_Cognito_Model_ConfirmForgotPasswordRequest_System_Threading_CancellationToken_
+  name: ConfirmForgotPassword(ConfirmForgotPasswordRequest, CancellationToken)
+  nameWithType: ICognitoIdentityProvider.ConfirmForgotPassword(ConfirmForgotPasswordRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ConfirmForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ConfirmForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest,System.Threading.CancellationToken)
+    name: ConfirmForgotPassword
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_ConfirmForgotPassword_Innovt_Cloud_AWS_Cognito_Model_ConfirmForgotPasswordRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest
+    name: ConfirmForgotPasswordRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.ConfirmForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest,System.Threading.CancellationToken)
+    name: ConfirmForgotPassword
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_ConfirmForgotPassword_Innovt_Cloud_AWS_Cognito_Model_ConfirmForgotPasswordRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest
+    name: ConfirmForgotPasswordRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Cognito.Model.OAuth2SignInResponse
+  commentId: T:Innovt.Cloud.AWS.Cognito.Model.OAuth2SignInResponse
+  href: Innovt.Cloud.AWS.Cognito.Model.OAuth2SignInResponse.html
+  name: OAuth2SignInResponse
+  nameWithType: OAuth2SignInResponse
+  fullName: Innovt.Cloud.AWS.Cognito.Model.OAuth2SignInResponse
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SocialSignIn*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SocialSignIn
+  href: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SocialSignIn_Innovt_Cloud_AWS_Cognito_Model_SocialSignInRequest_System_Threading_CancellationToken_
+  name: SocialSignIn
+  nameWithType: CognitoIdentityProvider.SocialSignIn
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SocialSignIn
+- uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SocialSignIn(Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SocialSignIn(Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider
+  isExternal: true
+  href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_SocialSignIn_Innovt_Cloud_AWS_Cognito_Model_SocialSignInRequest_System_Threading_CancellationToken_
+  name: SocialSignIn(SocialSignInRequest, CancellationToken)
+  nameWithType: ICognitoIdentityProvider.SocialSignIn(SocialSignInRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SocialSignIn(Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SocialSignIn(Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest,System.Threading.CancellationToken)
+    name: SocialSignIn
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_SocialSignIn_Innovt_Cloud_AWS_Cognito_Model_SocialSignInRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest
+    name: SocialSignInRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.SocialSignIn(Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest,System.Threading.CancellationToken)
+    name: SocialSignIn
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_SocialSignIn_Innovt_Cloud_AWS_Cognito_Model_SocialSignInRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest
+    name: SocialSignInRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest
+  commentId: T:Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest
+  parent: Innovt.Cloud.AWS.Cognito.Model
+  href: Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest.html
+  name: SocialSignInRequest
+  nameWithType: SocialSignInRequest
+  fullName: Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest
+- uid: System.Threading.Tasks.Task{Innovt.Cloud.AWS.Cognito.Model.OAuth2SignInResponse}
+  commentId: T:System.Threading.Tasks.Task{Innovt.Cloud.AWS.Cognito.Model.OAuth2SignInResponse}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<OAuth2SignInResponse>
+  nameWithType: Task<OAuth2SignInResponse>
+  fullName: System.Threading.Tasks.Task<Innovt.Cloud.AWS.Cognito.Model.OAuth2SignInResponse>
+  nameWithType.vb: Task(Of OAuth2SignInResponse)
+  fullName.vb: System.Threading.Tasks.Task(Of Innovt.Cloud.AWS.Cognito.Model.OAuth2SignInResponse)
+  name.vb: Task(Of OAuth2SignInResponse)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Innovt.Cloud.AWS.Cognito.Model.OAuth2SignInResponse
+    name: OAuth2SignInResponse
+    href: Innovt.Cloud.AWS.Cognito.Model.OAuth2SignInResponse.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.AWS.Cognito.Model.OAuth2SignInResponse
+    name: OAuth2SignInResponse
+    href: Innovt.Cloud.AWS.Cognito.Model.OAuth2SignInResponse.html
+  - name: )
+- uid: Innovt.Cloud.AWS.Cognito.Model.RefreshTokenResponse
+  commentId: T:Innovt.Cloud.AWS.Cognito.Model.RefreshTokenResponse
+  href: Innovt.Cloud.AWS.Cognito.Model.RefreshTokenResponse.html
+  name: RefreshTokenResponse
+  nameWithType: RefreshTokenResponse
+  fullName: Innovt.Cloud.AWS.Cognito.Model.RefreshTokenResponse
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RefreshToken*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RefreshToken
+  href: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_RefreshToken_Innovt_Cloud_AWS_Cognito_Model_RefreshTokenRequest_System_Threading_CancellationToken_
+  name: RefreshToken
+  nameWithType: CognitoIdentityProvider.RefreshToken
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RefreshToken
+- uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.RefreshToken(Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.RefreshToken(Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider
+  isExternal: true
+  href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_RefreshToken_Innovt_Cloud_AWS_Cognito_Model_RefreshTokenRequest_System_Threading_CancellationToken_
+  name: RefreshToken(RefreshTokenRequest, CancellationToken)
+  nameWithType: ICognitoIdentityProvider.RefreshToken(RefreshTokenRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.RefreshToken(Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.RefreshToken(Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest,System.Threading.CancellationToken)
+    name: RefreshToken
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_RefreshToken_Innovt_Cloud_AWS_Cognito_Model_RefreshTokenRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest
+    name: RefreshTokenRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.RefreshToken(Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest,System.Threading.CancellationToken)
+    name: RefreshToken
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_RefreshToken_Innovt_Cloud_AWS_Cognito_Model_RefreshTokenRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest
+    name: RefreshTokenRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest
+  commentId: T:Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest
+  parent: Innovt.Cloud.AWS.Cognito.Model
+  href: Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest.html
+  name: RefreshTokenRequest
+  nameWithType: RefreshTokenRequest
+  fullName: Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest
+- uid: System.Threading.Tasks.Task{Innovt.Cloud.AWS.Cognito.Model.RefreshTokenResponse}
+  commentId: T:System.Threading.Tasks.Task{Innovt.Cloud.AWS.Cognito.Model.RefreshTokenResponse}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<RefreshTokenResponse>
+  nameWithType: Task<RefreshTokenResponse>
+  fullName: System.Threading.Tasks.Task<Innovt.Cloud.AWS.Cognito.Model.RefreshTokenResponse>
+  nameWithType.vb: Task(Of RefreshTokenResponse)
+  fullName.vb: System.Threading.Tasks.Task(Of Innovt.Cloud.AWS.Cognito.Model.RefreshTokenResponse)
+  name.vb: Task(Of RefreshTokenResponse)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Innovt.Cloud.AWS.Cognito.Model.RefreshTokenResponse
+    name: RefreshTokenResponse
+    href: Innovt.Cloud.AWS.Cognito.Model.RefreshTokenResponse.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.AWS.Cognito.Model.RefreshTokenResponse
+    name: RefreshTokenResponse
+    href: Innovt.Cloud.AWS.Cognito.Model.RefreshTokenResponse.html
+  - name: )
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.LinkSocialUser*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.LinkSocialUser
+  href: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_LinkSocialUser_Innovt_Cloud_AWS_Cognito_Model_LinkSocialAccountRequest_System_Threading_CancellationToken_
+  name: LinkSocialUser
+  nameWithType: CognitoIdentityProvider.LinkSocialUser
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.LinkSocialUser
+- uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.LinkSocialUser(Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.LinkSocialUser(Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider
+  isExternal: true
+  href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_LinkSocialUser_Innovt_Cloud_AWS_Cognito_Model_LinkSocialAccountRequest_System_Threading_CancellationToken_
+  name: LinkSocialUser(LinkSocialAccountRequest, CancellationToken)
+  nameWithType: ICognitoIdentityProvider.LinkSocialUser(LinkSocialAccountRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.LinkSocialUser(Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.LinkSocialUser(Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest,System.Threading.CancellationToken)
+    name: LinkSocialUser
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_LinkSocialUser_Innovt_Cloud_AWS_Cognito_Model_LinkSocialAccountRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest
+    name: LinkSocialAccountRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.LinkSocialUser(Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest,System.Threading.CancellationToken)
+    name: LinkSocialUser
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_LinkSocialUser_Innovt_Cloud_AWS_Cognito_Model_LinkSocialAccountRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest
+    name: LinkSocialAccountRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest
+  commentId: T:Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest
+  parent: Innovt.Cloud.AWS.Cognito.Model
+  href: Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest.html
+  name: LinkSocialAccountRequest
+  nameWithType: LinkSocialAccountRequest
+  fullName: Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<bool>
+  nameWithType: Task<bool>
+  fullName: System.Threading.Tasks.Task<bool>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DeleteUser*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DeleteUser
+  href: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_DeleteUser_Innovt_Cloud_AWS_Cognito_Model_DeleteUserAccountRequest_System_Threading_CancellationToken_
+  name: DeleteUser
+  nameWithType: CognitoIdentityProvider.DeleteUser
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DeleteUser
+- uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.DeleteUser(Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.DeleteUser(Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider
+  isExternal: true
+  href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_DeleteUser_Innovt_Cloud_AWS_Cognito_Model_DeleteUserAccountRequest_System_Threading_CancellationToken_
+  name: DeleteUser(DeleteUserAccountRequest, CancellationToken)
+  nameWithType: ICognitoIdentityProvider.DeleteUser(DeleteUserAccountRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.DeleteUser(Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.DeleteUser(Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest,System.Threading.CancellationToken)
+    name: DeleteUser
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_DeleteUser_Innovt_Cloud_AWS_Cognito_Model_DeleteUserAccountRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest
+    name: DeleteUserAccountRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.DeleteUser(Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest,System.Threading.CancellationToken)
+    name: DeleteUser
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_DeleteUser_Innovt_Cloud_AWS_Cognito_Model_DeleteUserAccountRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest
+    name: DeleteUserAccountRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest
+  commentId: T:Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest
+  parent: Innovt.Cloud.AWS.Cognito.Model
+  href: Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest.html
+  name: DeleteUserAccountRequest
+  nameWithType: DeleteUserAccountRequest
+  fullName: Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.UpdateUserAttributes*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.UpdateUserAttributes
+  href: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_UpdateUserAttributes_Innovt_Cloud_AWS_Cognito_Model_AdminUpdateUserAttributesRequest_System_Threading_CancellationToken_
+  name: UpdateUserAttributes
+  nameWithType: CognitoIdentityProvider.UpdateUserAttributes
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.UpdateUserAttributes
+- uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider
+  isExternal: true
+  href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_UpdateUserAttributes_Innovt_Cloud_AWS_Cognito_Model_AdminUpdateUserAttributesRequest_System_Threading_CancellationToken_
+  name: UpdateUserAttributes(AdminUpdateUserAttributesRequest, CancellationToken)
+  nameWithType: ICognitoIdentityProvider.UpdateUserAttributes(AdminUpdateUserAttributesRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest,System.Threading.CancellationToken)
+    name: UpdateUserAttributes
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_UpdateUserAttributes_Innovt_Cloud_AWS_Cognito_Model_AdminUpdateUserAttributesRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest
+    name: AdminUpdateUserAttributesRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest,System.Threading.CancellationToken)
+    name: UpdateUserAttributes
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_UpdateUserAttributes_Innovt_Cloud_AWS_Cognito_Model_AdminUpdateUserAttributesRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest
+    name: AdminUpdateUserAttributesRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest
+  commentId: T:Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest
+  parent: Innovt.Cloud.AWS.Cognito.Model
+  href: Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest.html
+  name: AdminUpdateUserAttributesRequest
+  nameWithType: AdminUpdateUserAttributesRequest
+  fullName: Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest
+- uid: Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest
+  commentId: T:Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest
+  parent: Innovt.Cloud.AWS.Cognito.Model
+  href: Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest.html
+  name: UpdateUserAttributesRequest
+  nameWithType: UpdateUserAttributesRequest
+  fullName: Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest
+- uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider
+  isExternal: true
+  href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_UpdateUserAttributes_Innovt_Cloud_AWS_Cognito_Model_UpdateUserAttributesRequest_System_Threading_CancellationToken_
+  name: UpdateUserAttributes(UpdateUserAttributesRequest, CancellationToken)
+  nameWithType: ICognitoIdentityProvider.UpdateUserAttributes(UpdateUserAttributesRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest,System.Threading.CancellationToken)
+    name: UpdateUserAttributes
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_UpdateUserAttributes_Innovt_Cloud_AWS_Cognito_Model_UpdateUserAttributesRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest
+    name: UpdateUserAttributesRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest,System.Threading.CancellationToken)
+    name: UpdateUserAttributes
+    href: Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_ICognitoIdentityProvider_UpdateUserAttributes_Innovt_Cloud_AWS_Cognito_Model_UpdateUserAttributesRequest_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest
+    name: UpdateUserAttributesRequest
+    href: Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.DisposeServices
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.DisposeServices
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_DisposeServices
+  name: DisposeServices()
+  nameWithType: AwsBaseService.DisposeServices()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.DisposeServices()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.DisposeServices
+    name: DisposeServices
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_DisposeServices
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.DisposeServices
+    name: DisposeServices
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_DisposeServices
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DisposeServices*
+  commentId: Overload:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DisposeServices
+  href: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.html#Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_DisposeServices
+  name: DisposeServices
+  nameWithType: CognitoIdentityProvider.DisposeServices
+  fullName: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DisposeServices

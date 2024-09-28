@@ -1,0 +1,304 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Domain.Core.Specification
+  commentId: N:Innovt.Domain.Core.Specification
+  id: Innovt.Domain.Core.Specification
+  children:
+  - Innovt.Domain.Core.Specification.AndSpecification`1
+  - Innovt.Domain.Core.Specification.ByPkSpecification`1
+  - Innovt.Domain.Core.Specification.CompositeSpecification`1
+  - Innovt.Domain.Core.Specification.DirectSpecification`1
+  - Innovt.Domain.Core.Specification.ExpressionBuilder
+  - Innovt.Domain.Core.Specification.ISpecification`1
+  - Innovt.Domain.Core.Specification.NotSpecification`1
+  - Innovt.Domain.Core.Specification.OrSpecification`1
+  - Innovt.Domain.Core.Specification.ParameterRebinder
+  - Innovt.Domain.Core.Specification.Specification`1
+  - Innovt.Domain.Core.Specification.TrueSpecification`1
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Domain.Core.Specification
+  nameWithType: Innovt.Domain.Core.Specification
+  fullName: Innovt.Domain.Core.Specification
+  type: Namespace
+  assemblies:
+  - Innovt.Domain.Core
+references:
+- uid: Innovt.Domain.Core.Specification.AndSpecification`1
+  commentId: T:Innovt.Domain.Core.Specification.AndSpecification`1
+  href: Innovt.Domain.Core.Specification.AndSpecification-1.html
+  name: AndSpecification<T>
+  nameWithType: AndSpecification<T>
+  fullName: Innovt.Domain.Core.Specification.AndSpecification<T>
+  nameWithType.vb: AndSpecification(Of T)
+  fullName.vb: Innovt.Domain.Core.Specification.AndSpecification(Of T)
+  name.vb: AndSpecification(Of T)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.AndSpecification`1
+    name: AndSpecification
+    href: Innovt.Domain.Core.Specification.AndSpecification-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.AndSpecification`1
+    name: AndSpecification
+    href: Innovt.Domain.Core.Specification.AndSpecification-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Domain.Core.Specification.ByPkSpecification`1
+  commentId: T:Innovt.Domain.Core.Specification.ByPkSpecification`1
+  href: Innovt.Domain.Core.Specification.ByPkSpecification-1.html
+  name: ByPkSpecification<T>
+  nameWithType: ByPkSpecification<T>
+  fullName: Innovt.Domain.Core.Specification.ByPkSpecification<T>
+  nameWithType.vb: ByPkSpecification(Of T)
+  fullName.vb: Innovt.Domain.Core.Specification.ByPkSpecification(Of T)
+  name.vb: ByPkSpecification(Of T)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.ByPkSpecification`1
+    name: ByPkSpecification
+    href: Innovt.Domain.Core.Specification.ByPkSpecification-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.ByPkSpecification`1
+    name: ByPkSpecification
+    href: Innovt.Domain.Core.Specification.ByPkSpecification-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Domain.Core.Specification.CompositeSpecification`1
+  commentId: T:Innovt.Domain.Core.Specification.CompositeSpecification`1
+  href: Innovt.Domain.Core.Specification.CompositeSpecification-1.html
+  name: CompositeSpecification<TEntity>
+  nameWithType: CompositeSpecification<TEntity>
+  fullName: Innovt.Domain.Core.Specification.CompositeSpecification<TEntity>
+  nameWithType.vb: CompositeSpecification(Of TEntity)
+  fullName.vb: Innovt.Domain.Core.Specification.CompositeSpecification(Of TEntity)
+  name.vb: CompositeSpecification(Of TEntity)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.CompositeSpecification`1
+    name: CompositeSpecification
+    href: Innovt.Domain.Core.Specification.CompositeSpecification-1.html
+  - name: <
+  - name: TEntity
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.CompositeSpecification`1
+    name: CompositeSpecification
+    href: Innovt.Domain.Core.Specification.CompositeSpecification-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+- uid: Innovt.Domain.Core.Specification.DirectSpecification`1
+  commentId: T:Innovt.Domain.Core.Specification.DirectSpecification`1
+  parent: Innovt.Domain.Core.Specification
+  href: Innovt.Domain.Core.Specification.DirectSpecification-1.html
+  name: DirectSpecification<TEntity>
+  nameWithType: DirectSpecification<TEntity>
+  fullName: Innovt.Domain.Core.Specification.DirectSpecification<TEntity>
+  nameWithType.vb: DirectSpecification(Of TEntity)
+  fullName.vb: Innovt.Domain.Core.Specification.DirectSpecification(Of TEntity)
+  name.vb: DirectSpecification(Of TEntity)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.DirectSpecification`1
+    name: DirectSpecification
+    href: Innovt.Domain.Core.Specification.DirectSpecification-1.html
+  - name: <
+  - name: TEntity
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.DirectSpecification`1
+    name: DirectSpecification
+    href: Innovt.Domain.Core.Specification.DirectSpecification-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+- uid: Innovt.Domain.Core.Specification.ExpressionBuilder
+  commentId: T:Innovt.Domain.Core.Specification.ExpressionBuilder
+  href: Innovt.Domain.Core.Specification.ExpressionBuilder.html
+  name: ExpressionBuilder
+  nameWithType: ExpressionBuilder
+  fullName: Innovt.Domain.Core.Specification.ExpressionBuilder
+- uid: Innovt.Domain.Core.Specification.ISpecification`1
+  commentId: T:Innovt.Domain.Core.Specification.ISpecification`1
+  href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  name: ISpecification<TEntity>
+  nameWithType: ISpecification<TEntity>
+  fullName: Innovt.Domain.Core.Specification.ISpecification<TEntity>
+  nameWithType.vb: ISpecification(Of TEntity)
+  fullName.vb: Innovt.Domain.Core.Specification.ISpecification(Of TEntity)
+  name.vb: ISpecification(Of TEntity)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+    href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  - name: <
+  - name: TEntity
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+    href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+- uid: Innovt.Domain.Core.Specification.NotSpecification`1
+  commentId: T:Innovt.Domain.Core.Specification.NotSpecification`1
+  href: Innovt.Domain.Core.Specification.NotSpecification-1.html
+  name: NotSpecification<TEntity>
+  nameWithType: NotSpecification<TEntity>
+  fullName: Innovt.Domain.Core.Specification.NotSpecification<TEntity>
+  nameWithType.vb: NotSpecification(Of TEntity)
+  fullName.vb: Innovt.Domain.Core.Specification.NotSpecification(Of TEntity)
+  name.vb: NotSpecification(Of TEntity)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.NotSpecification`1
+    name: NotSpecification
+    href: Innovt.Domain.Core.Specification.NotSpecification-1.html
+  - name: <
+  - name: TEntity
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.NotSpecification`1
+    name: NotSpecification
+    href: Innovt.Domain.Core.Specification.NotSpecification-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+- uid: Innovt.Domain.Core.Specification.OrSpecification`1
+  commentId: T:Innovt.Domain.Core.Specification.OrSpecification`1
+  href: Innovt.Domain.Core.Specification.OrSpecification-1.html
+  name: OrSpecification<T>
+  nameWithType: OrSpecification<T>
+  fullName: Innovt.Domain.Core.Specification.OrSpecification<T>
+  nameWithType.vb: OrSpecification(Of T)
+  fullName.vb: Innovt.Domain.Core.Specification.OrSpecification(Of T)
+  name.vb: OrSpecification(Of T)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.OrSpecification`1
+    name: OrSpecification
+    href: Innovt.Domain.Core.Specification.OrSpecification-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.OrSpecification`1
+    name: OrSpecification
+    href: Innovt.Domain.Core.Specification.OrSpecification-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Domain.Core.Specification.ParameterRebinder
+  commentId: T:Innovt.Domain.Core.Specification.ParameterRebinder
+  href: Innovt.Domain.Core.Specification.ParameterRebinder.html
+  name: ParameterRebinder
+  nameWithType: ParameterRebinder
+  fullName: Innovt.Domain.Core.Specification.ParameterRebinder
+- uid: Innovt.Domain.Core.Specification.Specification`1
+  commentId: T:Innovt.Domain.Core.Specification.Specification`1
+  parent: Innovt.Domain.Core.Specification
+  href: Innovt.Domain.Core.Specification.Specification-1.html
+  name: Specification<TEntity>
+  nameWithType: Specification<TEntity>
+  fullName: Innovt.Domain.Core.Specification.Specification<TEntity>
+  nameWithType.vb: Specification(Of TEntity)
+  fullName.vb: Innovt.Domain.Core.Specification.Specification(Of TEntity)
+  name.vb: Specification(Of TEntity)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.Specification`1
+    name: Specification
+    href: Innovt.Domain.Core.Specification.Specification-1.html
+  - name: <
+  - name: TEntity
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.Specification`1
+    name: Specification
+    href: Innovt.Domain.Core.Specification.Specification-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+- uid: Innovt.Domain.Core.Specification.TrueSpecification`1
+  commentId: T:Innovt.Domain.Core.Specification.TrueSpecification`1
+  href: Innovt.Domain.Core.Specification.TrueSpecification-1.html
+  name: TrueSpecification<TEntity>
+  nameWithType: TrueSpecification<TEntity>
+  fullName: Innovt.Domain.Core.Specification.TrueSpecification<TEntity>
+  nameWithType.vb: TrueSpecification(Of TEntity)
+  fullName.vb: Innovt.Domain.Core.Specification.TrueSpecification(Of TEntity)
+  name.vb: TrueSpecification(Of TEntity)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.TrueSpecification`1
+    name: TrueSpecification
+    href: Innovt.Domain.Core.Specification.TrueSpecification-1.html
+  - name: <
+  - name: TEntity
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.TrueSpecification`1
+    name: TrueSpecification
+    href: Innovt.Domain.Core.Specification.TrueSpecification-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+- uid: Innovt.Domain.Core.Specification
+  commentId: N:Innovt.Domain.Core.Specification
+  href: Innovt.html
+  name: Innovt.Domain.Core.Specification
+  nameWithType: Innovt.Domain.Core.Specification
+  fullName: Innovt.Domain.Core.Specification
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Specification
+    name: Specification
+    href: Innovt.Domain.Core.Specification.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Specification
+    name: Specification
+    href: Innovt.Domain.Core.Specification.html

@@ -1,0 +1,62 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Core.Cqrs.Commands
+  commentId: N:Innovt.Core.Cqrs.Commands
+  id: Innovt.Core.Cqrs.Commands
+  children:
+  - Innovt.Core.Cqrs.Commands.ICommand
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Core.Cqrs.Commands
+  nameWithType: Innovt.Core.Cqrs.Commands
+  fullName: Innovt.Core.Cqrs.Commands
+  type: Namespace
+  assemblies:
+  - Innovt.Core
+references:
+- uid: Innovt.Core.Cqrs.Commands.ICommand
+  commentId: T:Innovt.Core.Cqrs.Commands.ICommand
+  parent: Innovt.Core.Cqrs.Commands
+  href: Innovt.Core.Cqrs.Commands.ICommand.html
+  name: ICommand
+  nameWithType: ICommand
+  fullName: Innovt.Core.Cqrs.Commands.ICommand
+- uid: Innovt.Core.Cqrs.Commands
+  commentId: N:Innovt.Core.Cqrs.Commands
+  href: Innovt.html
+  name: Innovt.Core.Cqrs.Commands
+  nameWithType: Innovt.Core.Cqrs.Commands
+  fullName: Innovt.Core.Cqrs.Commands
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Cqrs
+    name: Cqrs
+    href: Innovt.Core.Cqrs.html
+  - name: .
+  - uid: Innovt.Core.Cqrs.Commands
+    name: Commands
+    href: Innovt.Core.Cqrs.Commands.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Cqrs
+    name: Cqrs
+    href: Innovt.Core.Cqrs.html
+  - name: .
+  - uid: Innovt.Core.Cqrs.Commands
+    name: Commands
+    href: Innovt.Core.Cqrs.Commands.html

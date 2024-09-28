@@ -1,0 +1,1325 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2
+  id: BaseDataModel`2
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping
+  children:
+  - Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.CustomDataModelMap(`0,`1)
+  - Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.CustomDomainMap(`1,`0)
+  - Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.EntityType
+  - Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.GetEntityType
+  - Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.Id
+  - Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.Pk
+  - Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.Sk
+  - Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.ToDataModel(System.Collections.Generic.IList{`1})
+  - Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.ToDataModel(`1)
+  - Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.ToDomain(System.Collections.Generic.IList{`0})
+  - Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.ToDomain(`0)
+  langs:
+  - csharp
+  - vb
+  name: BaseDataModel<TDataModel, TDomain>
+  nameWithType: BaseDataModel<TDataModel, TDomain>
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel<TDataModel, TDomain>
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/BaseDataModel.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: BaseDataModel
+    path: Innovt.Cloud.AWS.Dynamo/Mapping/BaseDataModel.cs
+    startLine: 15
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping
+  summary: Base abstract class representing a data model that can be mapped to/from a domain model.
+  example: []
+  syntax:
+    content: 'public abstract class BaseDataModel<TDataModel, TDomain> : ITableMessage where TDataModel : class where TDomain : class'
+    typeParameters:
+    - id: TDataModel
+      description: The type of the data model.
+    - id: TDomain
+      description: The type of the domain model.
+    content.vb: Public MustInherit Class BaseDataModel(Of TDataModel As Class, TDomain As Class) Implements ITableMessage
+  inheritance:
+  - System.Object
+  implements:
+  - Innovt.Cloud.Table.ITableMessage
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  nameWithType.vb: BaseDataModel(Of TDataModel, TDomain)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel(Of TDataModel, TDomain)
+  name.vb: BaseDataModel(Of TDataModel, TDomain)
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.Pk
+  commentId: P:Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.Pk
+  id: Pk
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2
+  langs:
+  - csharp
+  - vb
+  name: Pk
+  nameWithType: BaseDataModel<TDataModel, TDomain>.Pk
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel<TDataModel, TDomain>.Pk
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/BaseDataModel.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Pk
+    path: Innovt.Cloud.AWS.Dynamo/Mapping/BaseDataModel.cs
+    startLine: 20
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping
+  summary: Gets or sets the partition key for DynamoDB.
+  example: []
+  syntax:
+    content: >-
+      [DynamoDBHashKey("PK")]
+
+      public string Pk { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <DynamoDBHashKey("PK")>
+
+      Public Property Pk As String
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.Pk*
+  attributes:
+  - type: Amazon.DynamoDBv2.DataModel.DynamoDBHashKeyAttribute
+    ctor: Amazon.DynamoDBv2.DataModel.DynamoDBHashKeyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: PK
+  nameWithType.vb: BaseDataModel(Of TDataModel, TDomain).Pk
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel(Of TDataModel, TDomain).Pk
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.Sk
+  commentId: P:Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.Sk
+  id: Sk
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2
+  langs:
+  - csharp
+  - vb
+  name: Sk
+  nameWithType: BaseDataModel<TDataModel, TDomain>.Sk
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel<TDataModel, TDomain>.Sk
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/BaseDataModel.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Sk
+    path: Innovt.Cloud.AWS.Dynamo/Mapping/BaseDataModel.cs
+    startLine: 26
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping
+  summary: Gets or sets the sort key for DynamoDB.
+  example: []
+  syntax:
+    content: >-
+      [DynamoDBRangeKey("SK")]
+
+      public string Sk { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <DynamoDBRangeKey("SK")>
+
+      Public Property Sk As String
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.Sk*
+  attributes:
+  - type: Amazon.DynamoDBv2.DataModel.DynamoDBRangeKeyAttribute
+    ctor: Amazon.DynamoDBv2.DataModel.DynamoDBRangeKeyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: SK
+  nameWithType.vb: BaseDataModel(Of TDataModel, TDomain).Sk
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel(Of TDataModel, TDomain).Sk
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.EntityType
+  commentId: P:Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.EntityType
+  id: EntityType
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2
+  langs:
+  - csharp
+  - vb
+  name: EntityType
+  nameWithType: BaseDataModel<TDataModel, TDomain>.EntityType
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel<TDataModel, TDomain>.EntityType
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/BaseDataModel.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: EntityType
+    path: Innovt.Cloud.AWS.Dynamo/Mapping/BaseDataModel.cs
+    startLine: 32
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping
+  summary: Gets or sets the entity type.
+  example: []
+  syntax:
+    content: >-
+      [DynamoDBProperty]
+
+      public string EntityType { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <DynamoDBProperty>
+
+      Public Property EntityType As String
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.EntityType*
+  attributes:
+  - type: Amazon.DynamoDBv2.DataModel.DynamoDBPropertyAttribute
+    ctor: Amazon.DynamoDBv2.DataModel.DynamoDBPropertyAttribute.#ctor
+    arguments: []
+  nameWithType.vb: BaseDataModel(Of TDataModel, TDomain).EntityType
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel(Of TDataModel, TDomain).EntityType
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.Id
+  commentId: P:Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.Id
+  id: Id
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: BaseDataModel<TDataModel, TDomain>.Id
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel<TDataModel, TDomain>.Id
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/BaseDataModel.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Id
+    path: Innovt.Cloud.AWS.Dynamo/Mapping/BaseDataModel.cs
+    startLine: 42
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping
+  summary: Gets or sets the unique identifier.
+  example: []
+  syntax:
+    content: public string Id { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Id As String
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.Id*
+  implements:
+  - Innovt.Cloud.Table.ITableMessage.Id
+  nameWithType.vb: BaseDataModel(Of TDataModel, TDomain).Id
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel(Of TDataModel, TDomain).Id
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.GetEntityType
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.GetEntityType
+  id: GetEntityType
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2
+  langs:
+  - csharp
+  - vb
+  name: GetEntityType()
+  nameWithType: BaseDataModel<TDataModel, TDomain>.GetEntityType()
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel<TDataModel, TDomain>.GetEntityType()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/BaseDataModel.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: GetEntityType
+    path: Innovt.Cloud.AWS.Dynamo/Mapping/BaseDataModel.cs
+    startLine: 48
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping
+  summary: Protected abstract method to get the entity type.
+  example: []
+  syntax:
+    content: protected abstract string GetEntityType()
+    return:
+      type: System.String
+      description: The entity type.
+    content.vb: Protected MustOverride Function GetEntityType() As String
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.GetEntityType*
+  nameWithType.vb: BaseDataModel(Of TDataModel, TDomain).GetEntityType()
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel(Of TDataModel, TDomain).GetEntityType()
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.ToDataModel(`1)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.ToDataModel(`1)
+  id: ToDataModel(`1)
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2
+  langs:
+  - csharp
+  - vb
+  name: ToDataModel(TDomain)
+  nameWithType: BaseDataModel<TDataModel, TDomain>.ToDataModel(TDomain)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel<TDataModel, TDomain>.ToDataModel(TDomain)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/BaseDataModel.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ToDataModel
+    path: Innovt.Cloud.AWS.Dynamo/Mapping/BaseDataModel.cs
+    startLine: 55
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping
+  summary: Converts a domain model to a data model.
+  example: []
+  syntax:
+    content: public virtual TDataModel ToDataModel(TDomain domain)
+    parameters:
+    - id: domain
+      type: '{TDomain}'
+      description: The domain model to convert.
+    return:
+      type: '{TDataModel}'
+      description: The converted data model.
+    content.vb: Public Overridable Function ToDataModel(domain As TDomain) As TDataModel
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.ToDataModel*
+  nameWithType.vb: BaseDataModel(Of TDataModel, TDomain).ToDataModel(TDomain)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel(Of TDataModel, TDomain).ToDataModel(TDomain)
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.ToDataModel(System.Collections.Generic.IList{`1})
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.ToDataModel(System.Collections.Generic.IList{`1})
+  id: ToDataModel(System.Collections.Generic.IList{`1})
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2
+  langs:
+  - csharp
+  - vb
+  name: ToDataModel(IList<TDomain>)
+  nameWithType: BaseDataModel<TDataModel, TDomain>.ToDataModel(IList<TDomain>)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel<TDataModel, TDomain>.ToDataModel(System.Collections.Generic.IList<TDomain>)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/BaseDataModel.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ToDataModel
+    path: Innovt.Cloud.AWS.Dynamo/Mapping/BaseDataModel.cs
+    startLine: 71
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping
+  summary: Converts a list of domain models to a list of data models.
+  example: []
+  syntax:
+    content: public IList<TDataModel> ToDataModel(IList<TDomain> domains)
+    parameters:
+    - id: domains
+      type: System.Collections.Generic.IList{{TDomain}}
+      description: The list of domain models to convert.
+    return:
+      type: System.Collections.Generic.IList{{TDataModel}}
+      description: The converted list of data models.
+    content.vb: Public Function ToDataModel(domains As IList(Of TDomain)) As IList(Of TDataModel)
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.ToDataModel*
+  nameWithType.vb: BaseDataModel(Of TDataModel, TDomain).ToDataModel(IList(Of TDomain))
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel(Of TDataModel, TDomain).ToDataModel(System.Collections.Generic.IList(Of TDomain))
+  name.vb: ToDataModel(IList(Of TDomain))
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.ToDomain(`0)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.ToDomain(`0)
+  id: ToDomain(`0)
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2
+  langs:
+  - csharp
+  - vb
+  name: ToDomain(TDataModel)
+  nameWithType: BaseDataModel<TDataModel, TDomain>.ToDomain(TDataModel)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel<TDataModel, TDomain>.ToDomain(TDataModel)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/BaseDataModel.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ToDomain
+    path: Innovt.Cloud.AWS.Dynamo/Mapping/BaseDataModel.cs
+    startLine: 81
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping
+  summary: Converts a data model to a domain model.
+  example: []
+  syntax:
+    content: public virtual TDomain ToDomain(TDataModel dataModel)
+    parameters:
+    - id: dataModel
+      type: '{TDataModel}'
+      description: The data model to convert.
+    return:
+      type: '{TDomain}'
+      description: The converted domain model.
+    content.vb: Public Overridable Function ToDomain(dataModel As TDataModel) As TDomain
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.ToDomain*
+  nameWithType.vb: BaseDataModel(Of TDataModel, TDomain).ToDomain(TDataModel)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel(Of TDataModel, TDomain).ToDomain(TDataModel)
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.ToDomain(System.Collections.Generic.IList{`0})
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.ToDomain(System.Collections.Generic.IList{`0})
+  id: ToDomain(System.Collections.Generic.IList{`0})
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2
+  langs:
+  - csharp
+  - vb
+  name: ToDomain(IList<TDataModel>)
+  nameWithType: BaseDataModel<TDataModel, TDomain>.ToDomain(IList<TDataModel>)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel<TDataModel, TDomain>.ToDomain(System.Collections.Generic.IList<TDataModel>)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/BaseDataModel.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ToDomain
+    path: Innovt.Cloud.AWS.Dynamo/Mapping/BaseDataModel.cs
+    startLine: 97
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping
+  summary: Converts a list of data models to a list of domain models.
+  example: []
+  syntax:
+    content: public IList<TDomain> ToDomain(IList<TDataModel> dataModels)
+    parameters:
+    - id: dataModels
+      type: System.Collections.Generic.IList{{TDataModel}}
+      description: The list of data models to convert.
+    return:
+      type: System.Collections.Generic.IList{{TDomain}}
+      description: The converted list of domain models.
+    content.vb: Public Function ToDomain(dataModels As IList(Of TDataModel)) As IList(Of TDomain)
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.ToDomain*
+  nameWithType.vb: BaseDataModel(Of TDataModel, TDomain).ToDomain(IList(Of TDataModel))
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel(Of TDataModel, TDomain).ToDomain(System.Collections.Generic.IList(Of TDataModel))
+  name.vb: ToDomain(IList(Of TDataModel))
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.CustomDataModelMap(`0,`1)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.CustomDataModelMap(`0,`1)
+  id: CustomDataModelMap(`0,`1)
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2
+  langs:
+  - csharp
+  - vb
+  name: CustomDataModelMap(TDataModel, TDomain)
+  nameWithType: BaseDataModel<TDataModel, TDomain>.CustomDataModelMap(TDataModel, TDomain)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel<TDataModel, TDomain>.CustomDataModelMap(TDataModel, TDomain)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/BaseDataModel.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: CustomDataModelMap
+    path: Innovt.Cloud.AWS.Dynamo/Mapping/BaseDataModel.cs
+    startLine: 107
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping
+  summary: Custom mapping logic from domain model to data model.
+  example: []
+  syntax:
+    content: protected abstract void CustomDataModelMap(TDataModel dataModel, TDomain domain)
+    parameters:
+    - id: dataModel
+      type: '{TDataModel}'
+      description: The data model.
+    - id: domain
+      type: '{TDomain}'
+      description: The domain model.
+    content.vb: Protected MustOverride Sub CustomDataModelMap(dataModel As TDataModel, domain As TDomain)
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.CustomDataModelMap*
+  nameWithType.vb: BaseDataModel(Of TDataModel, TDomain).CustomDataModelMap(TDataModel, TDomain)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel(Of TDataModel, TDomain).CustomDataModelMap(TDataModel, TDomain)
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.CustomDomainMap(`1,`0)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.CustomDomainMap(`1,`0)
+  id: CustomDomainMap(`1,`0)
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2
+  langs:
+  - csharp
+  - vb
+  name: CustomDomainMap(TDomain, TDataModel)
+  nameWithType: BaseDataModel<TDataModel, TDomain>.CustomDomainMap(TDomain, TDataModel)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel<TDataModel, TDomain>.CustomDomainMap(TDomain, TDataModel)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/BaseDataModel.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: CustomDomainMap
+    path: Innovt.Cloud.AWS.Dynamo/Mapping/BaseDataModel.cs
+    startLine: 114
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping
+  summary: Custom mapping logic from data model to domain model.
+  example: []
+  syntax:
+    content: protected abstract void CustomDomainMap(TDomain tDomain, TDataModel dataModel)
+    parameters:
+    - id: tDomain
+      type: '{TDomain}'
+      description: The domain model.
+    - id: dataModel
+      type: '{TDataModel}'
+      description: The data model.
+    content.vb: Protected MustOverride Sub CustomDomainMap(tDomain As TDomain, dataModel As TDataModel)
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.CustomDomainMap*
+  nameWithType.vb: BaseDataModel(Of TDataModel, TDomain).CustomDomainMap(TDomain, TDataModel)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel(Of TDataModel, TDomain).CustomDomainMap(TDomain, TDataModel)
+references:
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping
+  commentId: N:Innovt.Cloud.AWS.Dynamo.Mapping
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Dynamo.Mapping
+  nameWithType: Innovt.Cloud.AWS.Dynamo.Mapping
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo
+    name: Dynamo
+    href: Innovt.Cloud.AWS.Dynamo.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping
+    name: Mapping
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo
+    name: Dynamo
+    href: Innovt.Cloud.AWS.Dynamo.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping
+    name: Mapping
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Innovt.Cloud.Table.ITableMessage
+  commentId: T:Innovt.Cloud.Table.ITableMessage
+  parent: Innovt.Cloud.Table
+  href: Innovt.Cloud.Table.ITableMessage.html
+  name: ITableMessage
+  nameWithType: ITableMessage
+  fullName: Innovt.Cloud.Table.ITableMessage
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Cloud.Table
+  commentId: N:Innovt.Cloud.Table
+  href: Innovt.html
+  name: Innovt.Cloud.Table
+  nameWithType: Innovt.Cloud.Table
+  fullName: Innovt.Cloud.Table
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.Table
+    name: Table
+    href: Innovt.Cloud.Table.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.Table
+    name: Table
+    href: Innovt.Cloud.Table.html
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.Pk*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.Pk
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel-2.html#Innovt_Cloud_AWS_Dynamo_Mapping_BaseDataModel_2_Pk
+  name: Pk
+  nameWithType: BaseDataModel<TDataModel, TDomain>.Pk
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel<TDataModel, TDomain>.Pk
+  nameWithType.vb: BaseDataModel(Of TDataModel, TDomain).Pk
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel(Of TDataModel, TDomain).Pk
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.Sk*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.Sk
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel-2.html#Innovt_Cloud_AWS_Dynamo_Mapping_BaseDataModel_2_Sk
+  name: Sk
+  nameWithType: BaseDataModel<TDataModel, TDomain>.Sk
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel<TDataModel, TDomain>.Sk
+  nameWithType.vb: BaseDataModel(Of TDataModel, TDomain).Sk
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel(Of TDataModel, TDomain).Sk
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.EntityType*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.EntityType
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel-2.html#Innovt_Cloud_AWS_Dynamo_Mapping_BaseDataModel_2_EntityType
+  name: EntityType
+  nameWithType: BaseDataModel<TDataModel, TDomain>.EntityType
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel<TDataModel, TDomain>.EntityType
+  nameWithType.vb: BaseDataModel(Of TDataModel, TDomain).EntityType
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel(Of TDataModel, TDomain).EntityType
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.Id*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.Id
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel-2.html#Innovt_Cloud_AWS_Dynamo_Mapping_BaseDataModel_2_Id
+  name: Id
+  nameWithType: BaseDataModel<TDataModel, TDomain>.Id
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel<TDataModel, TDomain>.Id
+  nameWithType.vb: BaseDataModel(Of TDataModel, TDomain).Id
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel(Of TDataModel, TDomain).Id
+- uid: Innovt.Cloud.Table.ITableMessage.Id
+  commentId: P:Innovt.Cloud.Table.ITableMessage.Id
+  parent: Innovt.Cloud.Table.ITableMessage
+  href: Innovt.Cloud.Table.ITableMessage.html#Innovt_Cloud_Table_ITableMessage_Id
+  name: Id
+  nameWithType: ITableMessage.Id
+  fullName: Innovt.Cloud.Table.ITableMessage.Id
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.GetEntityType*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.GetEntityType
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel-2.html#Innovt_Cloud_AWS_Dynamo_Mapping_BaseDataModel_2_GetEntityType
+  name: GetEntityType
+  nameWithType: BaseDataModel<TDataModel, TDomain>.GetEntityType
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel<TDataModel, TDomain>.GetEntityType
+  nameWithType.vb: BaseDataModel(Of TDataModel, TDomain).GetEntityType
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel(Of TDataModel, TDomain).GetEntityType
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.ToDataModel*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.ToDataModel
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel-2.html#Innovt_Cloud_AWS_Dynamo_Mapping_BaseDataModel_2_ToDataModel__1_
+  name: ToDataModel
+  nameWithType: BaseDataModel<TDataModel, TDomain>.ToDataModel
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel<TDataModel, TDomain>.ToDataModel
+  nameWithType.vb: BaseDataModel(Of TDataModel, TDomain).ToDataModel
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel(Of TDataModel, TDomain).ToDataModel
+- uid: '{TDomain}'
+  commentId: '!:TDomain'
+  definition: TDomain
+  name: TDomain
+  nameWithType: TDomain
+  fullName: TDomain
+- uid: '{TDataModel}'
+  commentId: '!:TDataModel'
+  definition: TDataModel
+  name: TDataModel
+  nameWithType: TDataModel
+  fullName: TDataModel
+- uid: TDomain
+  name: TDomain
+  nameWithType: TDomain
+  fullName: TDomain
+- uid: TDataModel
+  name: TDataModel
+  nameWithType: TDataModel
+  fullName: TDataModel
+- uid: System.Collections.Generic.IList{{TDomain}}
+  commentId: T:System.Collections.Generic.IList{`1}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<TDomain>
+  nameWithType: IList<TDomain>
+  fullName: System.Collections.Generic.IList<TDomain>
+  nameWithType.vb: IList(Of TDomain)
+  fullName.vb: System.Collections.Generic.IList(Of TDomain)
+  name.vb: IList(Of TDomain)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - name: TDomain
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDomain
+  - name: )
+- uid: System.Collections.Generic.IList{{TDataModel}}
+  commentId: T:System.Collections.Generic.IList{`0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<TDataModel>
+  nameWithType: IList<TDataModel>
+  fullName: System.Collections.Generic.IList<TDataModel>
+  nameWithType.vb: IList(Of TDataModel)
+  fullName.vb: System.Collections.Generic.IList(Of TDataModel)
+  name.vb: IList(Of TDataModel)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - name: TDataModel
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDataModel
+  - name: )
+- uid: System.Collections.Generic.IList`1
+  commentId: T:System.Collections.Generic.IList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<T>
+  nameWithType: IList<T>
+  fullName: System.Collections.Generic.IList<T>
+  nameWithType.vb: IList(Of T)
+  fullName.vb: System.Collections.Generic.IList(Of T)
+  name.vb: IList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.ToDomain*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.ToDomain
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel-2.html#Innovt_Cloud_AWS_Dynamo_Mapping_BaseDataModel_2_ToDomain__0_
+  name: ToDomain
+  nameWithType: BaseDataModel<TDataModel, TDomain>.ToDomain
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel<TDataModel, TDomain>.ToDomain
+  nameWithType.vb: BaseDataModel(Of TDataModel, TDomain).ToDomain
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel(Of TDataModel, TDomain).ToDomain
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.CustomDataModelMap*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.CustomDataModelMap
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel-2.html#Innovt_Cloud_AWS_Dynamo_Mapping_BaseDataModel_2_CustomDataModelMap__0__1_
+  name: CustomDataModelMap
+  nameWithType: BaseDataModel<TDataModel, TDomain>.CustomDataModelMap
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel<TDataModel, TDomain>.CustomDataModelMap
+  nameWithType.vb: BaseDataModel(Of TDataModel, TDomain).CustomDataModelMap
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel(Of TDataModel, TDomain).CustomDataModelMap
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.CustomDomainMap*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2.CustomDomainMap
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel-2.html#Innovt_Cloud_AWS_Dynamo_Mapping_BaseDataModel_2_CustomDomainMap__1__0_
+  name: CustomDomainMap
+  nameWithType: BaseDataModel<TDataModel, TDomain>.CustomDomainMap
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel<TDataModel, TDomain>.CustomDomainMap
+  nameWithType.vb: BaseDataModel(Of TDataModel, TDomain).CustomDomainMap
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel(Of TDataModel, TDomain).CustomDomainMap

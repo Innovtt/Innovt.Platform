@@ -1,0 +1,1058 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Domain.BaseCreditCard
+  commentId: T:Innovt.Domain.BaseCreditCard
+  id: BaseCreditCard
+  parent: Innovt.Domain
+  children:
+  - Innovt.Domain.BaseCreditCard.#ctor
+  - Innovt.Domain.BaseCreditCard.#ctor(System.String,System.String)
+  - Innovt.Domain.BaseCreditCard.#ctor(System.String,System.String,System.DateTime,System.String)
+  - Innovt.Domain.BaseCreditCard.Expiration
+  - Innovt.Domain.BaseCreditCard.GetMaskedCreditCard(System.String)
+  - Innovt.Domain.BaseCreditCard.Holder
+  - Innovt.Domain.BaseCreditCard.MaskedNumber
+  - Innovt.Domain.BaseCreditCard.Number
+  - Innovt.Domain.BaseCreditCard.SecurityCode
+  - Innovt.Domain.BaseCreditCard.Token
+  langs:
+  - csharp
+  - vb
+  name: BaseCreditCard
+  nameWithType: BaseCreditCard
+  fullName: Innovt.Domain.BaseCreditCard
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Domain/BaseCreditCard.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: BaseCreditCard
+    path: Innovt.Domain/BaseCreditCard.cs
+    startLine: 12
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain
+  summary: Represents a base credit card information.
+  example: []
+  syntax:
+    content: 'public class BaseCreditCard : ValueObject'
+    content.vb: Public Class BaseCreditCard Inherits ValueObject
+  inheritance:
+  - System.Object
+  - Innovt.Domain.Core.Model.ValueObject
+  inheritedMembers:
+  - Innovt.Domain.Core.Model.ValueObject.Id
+  - Innovt.Domain.Core.Model.ValueObject.Equals(System.Object)
+  - Innovt.Domain.Core.Model.ValueObject.GetHashCode
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+- uid: Innovt.Domain.BaseCreditCard.#ctor(System.String,System.String,System.DateTime,System.String)
+  commentId: M:Innovt.Domain.BaseCreditCard.#ctor(System.String,System.String,System.DateTime,System.String)
+  id: '#ctor(System.String,System.String,System.DateTime,System.String)'
+  parent: Innovt.Domain.BaseCreditCard
+  langs:
+  - csharp
+  - vb
+  name: BaseCreditCard(string, string, DateTime, string)
+  nameWithType: BaseCreditCard.BaseCreditCard(string, string, DateTime, string)
+  fullName: Innovt.Domain.BaseCreditCard.BaseCreditCard(string, string, System.DateTime, string)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Domain/BaseCreditCard.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: Innovt.Domain/BaseCreditCard.cs
+    startLine: 21
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain
+  summary: Initializes a new instance of the <xref href="Innovt.Domain.BaseCreditCard" data-throw-if-not-resolved="false"></xref> class with credit card details.
+  example: []
+  syntax:
+    content: public BaseCreditCard(string number, string holder, DateTime expiration, string securityCode)
+    parameters:
+    - id: number
+      type: System.String
+      description: The credit card number.
+    - id: holder
+      type: System.String
+      description: The cardholder's name.
+    - id: expiration
+      type: System.DateTime
+      description: The expiration date of the credit card.
+    - id: securityCode
+      type: System.String
+      description: The security code of the credit card.
+    content.vb: Public Sub New(number As String, holder As String, expiration As Date, securityCode As String)
+  overload: Innovt.Domain.BaseCreditCard.#ctor*
+  nameWithType.vb: BaseCreditCard.New(String, String, Date, String)
+  fullName.vb: Innovt.Domain.BaseCreditCard.New(String, String, Date, String)
+  name.vb: New(String, String, Date, String)
+- uid: Innovt.Domain.BaseCreditCard.#ctor(System.String,System.String)
+  commentId: M:Innovt.Domain.BaseCreditCard.#ctor(System.String,System.String)
+  id: '#ctor(System.String,System.String)'
+  parent: Innovt.Domain.BaseCreditCard
+  langs:
+  - csharp
+  - vb
+  name: BaseCreditCard(string, string)
+  nameWithType: BaseCreditCard.BaseCreditCard(string, string)
+  fullName: Innovt.Domain.BaseCreditCard.BaseCreditCard(string, string)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Domain/BaseCreditCard.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: Innovt.Domain/BaseCreditCard.cs
+    startLine: 34
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain
+  summary: Initializes a new instance of the <xref href="Innovt.Domain.BaseCreditCard" data-throw-if-not-resolved="false"></xref> class with a token and security code.
+  example: []
+  syntax:
+    content: public BaseCreditCard(string token, string securityCode)
+    parameters:
+    - id: token
+      type: System.String
+      description: The token associated with the credit card.
+    - id: securityCode
+      type: System.String
+      description: The security code of the credit card.
+    content.vb: Public Sub New(token As String, securityCode As String)
+  overload: Innovt.Domain.BaseCreditCard.#ctor*
+  nameWithType.vb: BaseCreditCard.New(String, String)
+  fullName.vb: Innovt.Domain.BaseCreditCard.New(String, String)
+  name.vb: New(String, String)
+- uid: Innovt.Domain.BaseCreditCard.#ctor
+  commentId: M:Innovt.Domain.BaseCreditCard.#ctor
+  id: '#ctor'
+  parent: Innovt.Domain.BaseCreditCard
+  langs:
+  - csharp
+  - vb
+  name: BaseCreditCard()
+  nameWithType: BaseCreditCard.BaseCreditCard()
+  fullName: Innovt.Domain.BaseCreditCard.BaseCreditCard()
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Domain/BaseCreditCard.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: Innovt.Domain/BaseCreditCard.cs
+    startLine: 43
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain
+  summary: Initializes a new instance of the <xref href="Innovt.Domain.BaseCreditCard" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public BaseCreditCard()
+    content.vb: Public Sub New()
+  overload: Innovt.Domain.BaseCreditCard.#ctor*
+  nameWithType.vb: BaseCreditCard.New()
+  fullName.vb: Innovt.Domain.BaseCreditCard.New()
+  name.vb: New()
+- uid: Innovt.Domain.BaseCreditCard.Number
+  commentId: P:Innovt.Domain.BaseCreditCard.Number
+  id: Number
+  parent: Innovt.Domain.BaseCreditCard
+  langs:
+  - csharp
+  - vb
+  name: Number
+  nameWithType: BaseCreditCard.Number
+  fullName: Innovt.Domain.BaseCreditCard.Number
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Domain/BaseCreditCard.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Number
+    path: Innovt.Domain/BaseCreditCard.cs
+    startLine: 50
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain
+  summary: Gets or sets the credit card number.
+  example: []
+  syntax:
+    content: public string Number { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Number As String
+  overload: Innovt.Domain.BaseCreditCard.Number*
+- uid: Innovt.Domain.BaseCreditCard.Holder
+  commentId: P:Innovt.Domain.BaseCreditCard.Holder
+  id: Holder
+  parent: Innovt.Domain.BaseCreditCard
+  langs:
+  - csharp
+  - vb
+  name: Holder
+  nameWithType: BaseCreditCard.Holder
+  fullName: Innovt.Domain.BaseCreditCard.Holder
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Domain/BaseCreditCard.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Holder
+    path: Innovt.Domain/BaseCreditCard.cs
+    startLine: 55
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain
+  summary: Gets or sets the cardholder's name.
+  example: []
+  syntax:
+    content: public string Holder { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Holder As String
+  overload: Innovt.Domain.BaseCreditCard.Holder*
+- uid: Innovt.Domain.BaseCreditCard.SecurityCode
+  commentId: P:Innovt.Domain.BaseCreditCard.SecurityCode
+  id: SecurityCode
+  parent: Innovt.Domain.BaseCreditCard
+  langs:
+  - csharp
+  - vb
+  name: SecurityCode
+  nameWithType: BaseCreditCard.SecurityCode
+  fullName: Innovt.Domain.BaseCreditCard.SecurityCode
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Domain/BaseCreditCard.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: SecurityCode
+    path: Innovt.Domain/BaseCreditCard.cs
+    startLine: 60
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain
+  summary: Gets or sets the security code of the credit card.
+  example: []
+  syntax:
+    content: public string SecurityCode { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property SecurityCode As String
+  overload: Innovt.Domain.BaseCreditCard.SecurityCode*
+- uid: Innovt.Domain.BaseCreditCard.Token
+  commentId: P:Innovt.Domain.BaseCreditCard.Token
+  id: Token
+  parent: Innovt.Domain.BaseCreditCard
+  langs:
+  - csharp
+  - vb
+  name: Token
+  nameWithType: BaseCreditCard.Token
+  fullName: Innovt.Domain.BaseCreditCard.Token
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Domain/BaseCreditCard.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Token
+    path: Innovt.Domain/BaseCreditCard.cs
+    startLine: 65
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain
+  summary: Gets or sets the token associated with the credit card.
+  example: []
+  syntax:
+    content: public string Token { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Token As String
+  overload: Innovt.Domain.BaseCreditCard.Token*
+- uid: Innovt.Domain.BaseCreditCard.Expiration
+  commentId: P:Innovt.Domain.BaseCreditCard.Expiration
+  id: Expiration
+  parent: Innovt.Domain.BaseCreditCard
+  langs:
+  - csharp
+  - vb
+  name: Expiration
+  nameWithType: BaseCreditCard.Expiration
+  fullName: Innovt.Domain.BaseCreditCard.Expiration
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Domain/BaseCreditCard.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Expiration
+    path: Innovt.Domain/BaseCreditCard.cs
+    startLine: 70
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain
+  summary: Gets or sets the expiration date of the credit card.
+  example: []
+  syntax:
+    content: public DateTime Expiration { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public Property Expiration As Date
+  overload: Innovt.Domain.BaseCreditCard.Expiration*
+- uid: Innovt.Domain.BaseCreditCard.MaskedNumber
+  commentId: P:Innovt.Domain.BaseCreditCard.MaskedNumber
+  id: MaskedNumber
+  parent: Innovt.Domain.BaseCreditCard
+  langs:
+  - csharp
+  - vb
+  name: MaskedNumber
+  nameWithType: BaseCreditCard.MaskedNumber
+  fullName: Innovt.Domain.BaseCreditCard.MaskedNumber
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Domain/BaseCreditCard.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: MaskedNumber
+    path: Innovt.Domain/BaseCreditCard.cs
+    startLine: 75
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain
+  summary: Gets the masked credit card number with only the last four digits visible.
+  example: []
+  syntax:
+    content: public string MaskedNumber { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property MaskedNumber As String
+  overload: Innovt.Domain.BaseCreditCard.MaskedNumber*
+- uid: Innovt.Domain.BaseCreditCard.GetMaskedCreditCard(System.String)
+  commentId: M:Innovt.Domain.BaseCreditCard.GetMaskedCreditCard(System.String)
+  id: GetMaskedCreditCard(System.String)
+  parent: Innovt.Domain.BaseCreditCard
+  langs:
+  - csharp
+  - vb
+  name: GetMaskedCreditCard(string)
+  nameWithType: BaseCreditCard.GetMaskedCreditCard(string)
+  fullName: Innovt.Domain.BaseCreditCard.GetMaskedCreditCard(string)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain/BaseCreditCard.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: GetMaskedCreditCard
+    path: Innovt.Domain/BaseCreditCard.cs
+    startLine: 90
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain
+  summary: Generates a masked credit card number with only the first six and last four digits visible.
+  example: []
+  syntax:
+    content: public static string GetMaskedCreditCard(string number)
+    parameters:
+    - id: number
+      type: System.String
+      description: The original credit card number.
+    return:
+      type: System.String
+      description: The masked credit card number.
+    content.vb: Public Shared Function GetMaskedCreditCard(number As String) As String
+  overload: Innovt.Domain.BaseCreditCard.GetMaskedCreditCard*
+  nameWithType.vb: BaseCreditCard.GetMaskedCreditCard(String)
+  fullName.vb: Innovt.Domain.BaseCreditCard.GetMaskedCreditCard(String)
+  name.vb: GetMaskedCreditCard(String)
+references:
+- uid: Innovt.Domain
+  commentId: N:Innovt.Domain
+  href: Innovt.html
+  name: Innovt.Domain
+  nameWithType: Innovt.Domain
+  fullName: Innovt.Domain
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Innovt.Domain.Core.Model.ValueObject
+  commentId: T:Innovt.Domain.Core.Model.ValueObject
+  parent: Innovt.Domain.Core.Model
+  href: Innovt.Domain.Core.Model.ValueObject.html
+  name: ValueObject
+  nameWithType: ValueObject
+  fullName: Innovt.Domain.Core.Model.ValueObject
+- uid: Innovt.Domain.Core.Model.ValueObject.Id
+  commentId: P:Innovt.Domain.Core.Model.ValueObject.Id
+  parent: Innovt.Domain.Core.Model.ValueObject
+  href: Innovt.Domain.Core.Model.ValueObject.html#Innovt_Domain_Core_Model_ValueObject_Id
+  name: Id
+  nameWithType: ValueObject.Id
+  fullName: Innovt.Domain.Core.Model.ValueObject.Id
+- uid: Innovt.Domain.Core.Model.ValueObject.Equals(System.Object)
+  commentId: M:Innovt.Domain.Core.Model.ValueObject.Equals(System.Object)
+  parent: Innovt.Domain.Core.Model.ValueObject
+  isExternal: true
+  href: Innovt.Domain.Core.Model.ValueObject.html#Innovt_Domain_Core_Model_ValueObject_Equals_System_Object_
+  name: Equals(object)
+  nameWithType: ValueObject.Equals(object)
+  fullName: Innovt.Domain.Core.Model.ValueObject.Equals(object)
+  nameWithType.vb: ValueObject.Equals(Object)
+  fullName.vb: Innovt.Domain.Core.Model.ValueObject.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Model.ValueObject.Equals(System.Object)
+    name: Equals
+    href: Innovt.Domain.Core.Model.ValueObject.html#Innovt_Domain_Core_Model_ValueObject_Equals_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Domain.Core.Model.ValueObject.Equals(System.Object)
+    name: Equals
+    href: Innovt.Domain.Core.Model.ValueObject.html#Innovt_Domain_Core_Model_ValueObject_Equals_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Domain.Core.Model.ValueObject.GetHashCode
+  commentId: M:Innovt.Domain.Core.Model.ValueObject.GetHashCode
+  parent: Innovt.Domain.Core.Model.ValueObject
+  href: Innovt.Domain.Core.Model.ValueObject.html#Innovt_Domain_Core_Model_ValueObject_GetHashCode
+  name: GetHashCode()
+  nameWithType: ValueObject.GetHashCode()
+  fullName: Innovt.Domain.Core.Model.ValueObject.GetHashCode()
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Model.ValueObject.GetHashCode
+    name: GetHashCode
+    href: Innovt.Domain.Core.Model.ValueObject.html#Innovt_Domain_Core_Model_ValueObject_GetHashCode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Domain.Core.Model.ValueObject.GetHashCode
+    name: GetHashCode
+    href: Innovt.Domain.Core.Model.ValueObject.html#Innovt_Domain_Core_Model_ValueObject_GetHashCode
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Domain.Core.Model
+  commentId: N:Innovt.Domain.Core.Model
+  href: Innovt.html
+  name: Innovt.Domain.Core.Model
+  nameWithType: Innovt.Domain.Core.Model
+  fullName: Innovt.Domain.Core.Model
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Model
+    name: Model
+    href: Innovt.Domain.Core.Model.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Model
+    name: Model
+    href: Innovt.Domain.Core.Model.html
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Domain.BaseCreditCard
+  commentId: T:Innovt.Domain.BaseCreditCard
+  href: Innovt.Domain.BaseCreditCard.html
+  name: BaseCreditCard
+  nameWithType: BaseCreditCard
+  fullName: Innovt.Domain.BaseCreditCard
+- uid: Innovt.Domain.BaseCreditCard.#ctor*
+  commentId: Overload:Innovt.Domain.BaseCreditCard.#ctor
+  href: Innovt.Domain.BaseCreditCard.html#Innovt_Domain_BaseCreditCard__ctor_System_String_System_String_System_DateTime_System_String_
+  name: BaseCreditCard
+  nameWithType: BaseCreditCard.BaseCreditCard
+  fullName: Innovt.Domain.BaseCreditCard.BaseCreditCard
+  nameWithType.vb: BaseCreditCard.New
+  fullName.vb: Innovt.Domain.BaseCreditCard.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
+- uid: Innovt.Domain.BaseCreditCard.Number*
+  commentId: Overload:Innovt.Domain.BaseCreditCard.Number
+  href: Innovt.Domain.BaseCreditCard.html#Innovt_Domain_BaseCreditCard_Number
+  name: Number
+  nameWithType: BaseCreditCard.Number
+  fullName: Innovt.Domain.BaseCreditCard.Number
+- uid: Innovt.Domain.BaseCreditCard.Holder*
+  commentId: Overload:Innovt.Domain.BaseCreditCard.Holder
+  href: Innovt.Domain.BaseCreditCard.html#Innovt_Domain_BaseCreditCard_Holder
+  name: Holder
+  nameWithType: BaseCreditCard.Holder
+  fullName: Innovt.Domain.BaseCreditCard.Holder
+- uid: Innovt.Domain.BaseCreditCard.SecurityCode*
+  commentId: Overload:Innovt.Domain.BaseCreditCard.SecurityCode
+  href: Innovt.Domain.BaseCreditCard.html#Innovt_Domain_BaseCreditCard_SecurityCode
+  name: SecurityCode
+  nameWithType: BaseCreditCard.SecurityCode
+  fullName: Innovt.Domain.BaseCreditCard.SecurityCode
+- uid: Innovt.Domain.BaseCreditCard.Token*
+  commentId: Overload:Innovt.Domain.BaseCreditCard.Token
+  href: Innovt.Domain.BaseCreditCard.html#Innovt_Domain_BaseCreditCard_Token
+  name: Token
+  nameWithType: BaseCreditCard.Token
+  fullName: Innovt.Domain.BaseCreditCard.Token
+- uid: Innovt.Domain.BaseCreditCard.Expiration*
+  commentId: Overload:Innovt.Domain.BaseCreditCard.Expiration
+  href: Innovt.Domain.BaseCreditCard.html#Innovt_Domain_BaseCreditCard_Expiration
+  name: Expiration
+  nameWithType: BaseCreditCard.Expiration
+  fullName: Innovt.Domain.BaseCreditCard.Expiration
+- uid: Innovt.Domain.BaseCreditCard.MaskedNumber*
+  commentId: Overload:Innovt.Domain.BaseCreditCard.MaskedNumber
+  href: Innovt.Domain.BaseCreditCard.html#Innovt_Domain_BaseCreditCard_MaskedNumber
+  name: MaskedNumber
+  nameWithType: BaseCreditCard.MaskedNumber
+  fullName: Innovt.Domain.BaseCreditCard.MaskedNumber
+- uid: Innovt.Domain.BaseCreditCard.GetMaskedCreditCard*
+  commentId: Overload:Innovt.Domain.BaseCreditCard.GetMaskedCreditCard
+  href: Innovt.Domain.BaseCreditCard.html#Innovt_Domain_BaseCreditCard_GetMaskedCreditCard_System_String_
+  name: GetMaskedCreditCard
+  nameWithType: BaseCreditCard.GetMaskedCreditCard
+  fullName: Innovt.Domain.BaseCreditCard.GetMaskedCreditCard

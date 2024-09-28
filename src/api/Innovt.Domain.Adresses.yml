@@ -1,0 +1,93 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Domain.Adresses
+  commentId: N:Innovt.Domain.Adresses
+  id: Innovt.Domain.Adresses
+  children:
+  - Innovt.Domain.Adresses.Address
+  - Innovt.Domain.Adresses.AddressType
+  - Innovt.Domain.Adresses.City
+  - Innovt.Domain.Adresses.Coordinate
+  - Innovt.Domain.Adresses.Country
+  - Innovt.Domain.Adresses.State
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Domain.Adresses
+  nameWithType: Innovt.Domain.Adresses
+  fullName: Innovt.Domain.Adresses
+  type: Namespace
+  assemblies:
+  - Innovt.Domain
+references:
+- uid: Innovt.Domain.Adresses.Address
+  commentId: T:Innovt.Domain.Adresses.Address
+  href: Innovt.Domain.Adresses.Address.html
+  name: Address
+  nameWithType: Address
+  fullName: Innovt.Domain.Adresses.Address
+- uid: Innovt.Domain.Adresses.AddressType
+  commentId: T:Innovt.Domain.Adresses.AddressType
+  parent: Innovt.Domain.Adresses
+  href: Innovt.Domain.Adresses.AddressType.html
+  name: AddressType
+  nameWithType: AddressType
+  fullName: Innovt.Domain.Adresses.AddressType
+- uid: Innovt.Domain.Adresses.City
+  commentId: T:Innovt.Domain.Adresses.City
+  parent: Innovt.Domain.Adresses
+  href: Innovt.Domain.Adresses.City.html
+  name: City
+  nameWithType: City
+  fullName: Innovt.Domain.Adresses.City
+- uid: Innovt.Domain.Adresses.Coordinate
+  commentId: T:Innovt.Domain.Adresses.Coordinate
+  parent: Innovt.Domain.Adresses
+  href: Innovt.Domain.Adresses.Coordinate.html
+  name: Coordinate
+  nameWithType: Coordinate
+  fullName: Innovt.Domain.Adresses.Coordinate
+- uid: Innovt.Domain.Adresses.Country
+  commentId: T:Innovt.Domain.Adresses.Country
+  parent: Innovt.Domain.Adresses
+  href: Innovt.Domain.Adresses.Country.html
+  name: Country
+  nameWithType: Country
+  fullName: Innovt.Domain.Adresses.Country
+- uid: Innovt.Domain.Adresses.State
+  commentId: T:Innovt.Domain.Adresses.State
+  parent: Innovt.Domain.Adresses
+  href: Innovt.Domain.Adresses.State.html
+  name: State
+  nameWithType: State
+  fullName: Innovt.Domain.Adresses.State
+- uid: Innovt.Domain.Adresses
+  commentId: N:Innovt.Domain.Adresses
+  href: Innovt.html
+  name: Innovt.Domain.Adresses
+  nameWithType: Innovt.Domain.Adresses
+  fullName: Innovt.Domain.Adresses
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Adresses
+    name: Adresses
+    href: Innovt.Domain.Adresses.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Adresses
+    name: Adresses
+    href: Innovt.Domain.Adresses.html

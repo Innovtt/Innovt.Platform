@@ -1,0 +1,1061 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Job.Core.JobBase
+  commentId: T:Innovt.Job.Core.JobBase
+  id: JobBase
+  parent: Innovt.Job.Core
+  children:
+  - Innovt.Job.Core.JobBase.#ctor(System.String,Innovt.Core.CrossCutting.Log.ILogger,System.Double)
+  - Innovt.Job.Core.JobBase.Logger
+  - Innovt.Job.Core.JobBase.Name
+  - Innovt.Job.Core.JobBase.OnHeartBeat
+  - Innovt.Job.Core.JobBase.OnStart(System.Threading.CancellationToken)
+  - Innovt.Job.Core.JobBase.OnStop(System.Threading.CancellationToken)
+  - Innovt.Job.Core.JobBase.Start
+  - Innovt.Job.Core.JobBase.Stop
+  langs:
+  - csharp
+  - vb
+  name: JobBase
+  nameWithType: JobBase
+  fullName: Innovt.Job.Core.JobBase
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Job.Core/JobBase.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: JobBase
+    path: Innovt.Job.Core/JobBase.cs
+    startLine: 15
+  assemblies:
+  - Innovt.Job.Core
+  namespace: Innovt.Job.Core
+  summary: Abstract base class for job implementations, providing common functionality for job management.
+  example: []
+  syntax:
+    content: public abstract class JobBase
+    content.vb: Public MustInherit Class JobBase
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Innovt.Job.Quartz.QuartzJobBase
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+- uid: Innovt.Job.Core.JobBase.Logger
+  commentId: F:Innovt.Job.Core.JobBase.Logger
+  id: Logger
+  parent: Innovt.Job.Core.JobBase
+  langs:
+  - csharp
+  - vb
+  name: Logger
+  nameWithType: JobBase.Logger
+  fullName: Innovt.Job.Core.JobBase.Logger
+  type: Field
+  source:
+    remote:
+      path: src/Innovt.Job.Core/JobBase.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Logger
+    path: Innovt.Job.Core/JobBase.cs
+    startLine: 18
+  assemblies:
+  - Innovt.Job.Core
+  namespace: Innovt.Job.Core
+  syntax:
+    content: protected readonly ILogger Logger
+    return:
+      type: Innovt.Core.CrossCutting.Log.ILogger
+    content.vb: Protected ReadOnly Logger As ILogger
+- uid: Innovt.Job.Core.JobBase.#ctor(System.String,Innovt.Core.CrossCutting.Log.ILogger,System.Double)
+  commentId: M:Innovt.Job.Core.JobBase.#ctor(System.String,Innovt.Core.CrossCutting.Log.ILogger,System.Double)
+  id: '#ctor(System.String,Innovt.Core.CrossCutting.Log.ILogger,System.Double)'
+  parent: Innovt.Job.Core.JobBase
+  langs:
+  - csharp
+  - vb
+  name: JobBase(string, ILogger, double)
+  nameWithType: JobBase.JobBase(string, ILogger, double)
+  fullName: Innovt.Job.Core.JobBase.JobBase(string, Innovt.Core.CrossCutting.Log.ILogger, double)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Job.Core/JobBase.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: Innovt.Job.Core/JobBase.cs
+    startLine: 26
+  assemblies:
+  - Innovt.Job.Core
+  namespace: Innovt.Job.Core
+  summary: Initializes a new instance of the <xref href="Innovt.Job.Core.JobBase" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: protected JobBase(string jobName, ILogger logger, double heartBeatIntervalInMiliSeconds)
+    parameters:
+    - id: jobName
+      type: System.String
+      description: The name of the job.
+    - id: logger
+      type: Innovt.Core.CrossCutting.Log.ILogger
+      description: The logger to use for logging.
+    - id: heartBeatIntervalInMiliSeconds
+      type: System.Double
+      description: The interval for the heartbeat in milliseconds.
+    content.vb: Protected Sub New(jobName As String, logger As ILogger, heartBeatIntervalInMiliSeconds As Double)
+  overload: Innovt.Job.Core.JobBase.#ctor*
+  nameWithType.vb: JobBase.New(String, ILogger, Double)
+  fullName.vb: Innovt.Job.Core.JobBase.New(String, Innovt.Core.CrossCutting.Log.ILogger, Double)
+  name.vb: New(String, ILogger, Double)
+- uid: Innovt.Job.Core.JobBase.Name
+  commentId: P:Innovt.Job.Core.JobBase.Name
+  id: Name
+  parent: Innovt.Job.Core.JobBase
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: JobBase.Name
+  fullName: Innovt.Job.Core.JobBase.Name
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Job.Core/JobBase.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Name
+    path: Innovt.Job.Core/JobBase.cs
+    startLine: 43
+  assemblies:
+  - Innovt.Job.Core
+  namespace: Innovt.Job.Core
+  summary: Gets or sets the name of the job.
+  example: []
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: Innovt.Job.Core.JobBase.Name*
+- uid: Innovt.Job.Core.JobBase.OnHeartBeat
+  commentId: M:Innovt.Job.Core.JobBase.OnHeartBeat
+  id: OnHeartBeat
+  parent: Innovt.Job.Core.JobBase
+  langs:
+  - csharp
+  - vb
+  name: OnHeartBeat()
+  nameWithType: JobBase.OnHeartBeat()
+  fullName: Innovt.Job.Core.JobBase.OnHeartBeat()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Job.Core/JobBase.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: OnHeartBeat
+    path: Innovt.Job.Core/JobBase.cs
+    startLine: 48
+  assemblies:
+  - Innovt.Job.Core
+  namespace: Innovt.Job.Core
+  summary: Event handler for the heartbeat.
+  example: []
+  syntax:
+    content: protected virtual void OnHeartBeat()
+    content.vb: Protected Overridable Sub OnHeartBeat()
+  overload: Innovt.Job.Core.JobBase.OnHeartBeat*
+- uid: Innovt.Job.Core.JobBase.Start
+  commentId: M:Innovt.Job.Core.JobBase.Start
+  id: Start
+  parent: Innovt.Job.Core.JobBase
+  langs:
+  - csharp
+  - vb
+  name: Start()
+  nameWithType: JobBase.Start()
+  fullName: Innovt.Job.Core.JobBase.Start()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Job.Core/JobBase.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Start
+    path: Innovt.Job.Core/JobBase.cs
+    startLine: 57
+  assemblies:
+  - Innovt.Job.Core
+  namespace: Innovt.Job.Core
+  summary: Starts the job.
+  example: []
+  syntax:
+    content: public Task Start()
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task representing the asynchronous operation.
+    content.vb: Public Function Start() As Task
+  overload: Innovt.Job.Core.JobBase.Start*
+- uid: Innovt.Job.Core.JobBase.Stop
+  commentId: M:Innovt.Job.Core.JobBase.Stop
+  id: Stop
+  parent: Innovt.Job.Core.JobBase
+  langs:
+  - csharp
+  - vb
+  name: Stop()
+  nameWithType: JobBase.Stop()
+  fullName: Innovt.Job.Core.JobBase.Stop()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Job.Core/JobBase.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Stop
+    path: Innovt.Job.Core/JobBase.cs
+    startLine: 67
+  assemblies:
+  - Innovt.Job.Core
+  namespace: Innovt.Job.Core
+  summary: Stops the job.
+  example: []
+  syntax:
+    content: public Task Stop()
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task representing the asynchronous operation.
+    content.vb: Public Function [Stop]() As Task
+  overload: Innovt.Job.Core.JobBase.Stop*
+- uid: Innovt.Job.Core.JobBase.OnStart(System.Threading.CancellationToken)
+  commentId: M:Innovt.Job.Core.JobBase.OnStart(System.Threading.CancellationToken)
+  id: OnStart(System.Threading.CancellationToken)
+  parent: Innovt.Job.Core.JobBase
+  langs:
+  - csharp
+  - vb
+  name: OnStart(CancellationToken)
+  nameWithType: JobBase.OnStart(CancellationToken)
+  fullName: Innovt.Job.Core.JobBase.OnStart(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Job.Core/JobBase.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: OnStart
+    path: Innovt.Job.Core/JobBase.cs
+    startLine: 79
+  assemblies:
+  - Innovt.Job.Core
+  namespace: Innovt.Job.Core
+  summary: Executes when the job is started.
+  example: []
+  syntax:
+    content: protected abstract Task OnStart(CancellationToken cancellationToken = default)
+    parameters:
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A cancellation token to cancel the operation.
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task representing the asynchronous operation.
+    content.vb: Protected MustOverride Function OnStart(cancellationToken As CancellationToken = Nothing) As Task
+  overload: Innovt.Job.Core.JobBase.OnStart*
+- uid: Innovt.Job.Core.JobBase.OnStop(System.Threading.CancellationToken)
+  commentId: M:Innovt.Job.Core.JobBase.OnStop(System.Threading.CancellationToken)
+  id: OnStop(System.Threading.CancellationToken)
+  parent: Innovt.Job.Core.JobBase
+  langs:
+  - csharp
+  - vb
+  name: OnStop(CancellationToken)
+  nameWithType: JobBase.OnStop(CancellationToken)
+  fullName: Innovt.Job.Core.JobBase.OnStop(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Job.Core/JobBase.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: OnStop
+    path: Innovt.Job.Core/JobBase.cs
+    startLine: 86
+  assemblies:
+  - Innovt.Job.Core
+  namespace: Innovt.Job.Core
+  summary: Executes when the job is stopped.
+  example: []
+  syntax:
+    content: protected abstract Task OnStop(CancellationToken cancellationToken = default)
+    parameters:
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A cancellation token to cancel the operation.
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task representing the asynchronous operation.
+    content.vb: Protected MustOverride Function OnStop(cancellationToken As CancellationToken = Nothing) As Task
+  overload: Innovt.Job.Core.JobBase.OnStop*
+references:
+- uid: Innovt.Job.Core
+  commentId: N:Innovt.Job.Core
+  href: Innovt.html
+  name: Innovt.Job.Core
+  nameWithType: Innovt.Job.Core
+  fullName: Innovt.Job.Core
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Job
+    name: Job
+    href: Innovt.Job.html
+  - name: .
+  - uid: Innovt.Job.Core
+    name: Core
+    href: Innovt.Job.Core.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Job
+    name: Job
+    href: Innovt.Job.html
+  - name: .
+  - uid: Innovt.Job.Core
+    name: Core
+    href: Innovt.Job.Core.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Core.CrossCutting.Log.ILogger
+  commentId: T:Innovt.Core.CrossCutting.Log.ILogger
+  parent: Innovt.Core.CrossCutting.Log
+  href: Innovt.Core.CrossCutting.Log.ILogger.html
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Innovt.Core.CrossCutting.Log.ILogger
+- uid: Innovt.Core.CrossCutting.Log
+  commentId: N:Innovt.Core.CrossCutting.Log
+  href: Innovt.html
+  name: Innovt.Core.CrossCutting.Log
+  nameWithType: Innovt.Core.CrossCutting.Log
+  fullName: Innovt.Core.CrossCutting.Log
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Log
+    name: Log
+    href: Innovt.Core.CrossCutting.Log.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Log
+    name: Log
+    href: Innovt.Core.CrossCutting.Log.html
+- uid: Innovt.Job.Core.JobBase
+  commentId: T:Innovt.Job.Core.JobBase
+  parent: Innovt.Job.Core
+  href: Innovt.Job.Core.JobBase.html
+  name: JobBase
+  nameWithType: JobBase
+  fullName: Innovt.Job.Core.JobBase
+- uid: Innovt.Job.Core.JobBase.#ctor*
+  commentId: Overload:Innovt.Job.Core.JobBase.#ctor
+  href: Innovt.Job.Core.JobBase.html#Innovt_Job_Core_JobBase__ctor_System_String_Innovt_Core_CrossCutting_Log_ILogger_System_Double_
+  name: JobBase
+  nameWithType: JobBase.JobBase
+  fullName: Innovt.Job.Core.JobBase.JobBase
+  nameWithType.vb: JobBase.New
+  fullName.vb: Innovt.Job.Core.JobBase.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: Innovt.Job.Core.JobBase.Name*
+  commentId: Overload:Innovt.Job.Core.JobBase.Name
+  href: Innovt.Job.Core.JobBase.html#Innovt_Job_Core_JobBase_Name
+  name: Name
+  nameWithType: JobBase.Name
+  fullName: Innovt.Job.Core.JobBase.Name
+- uid: Innovt.Job.Core.JobBase.OnHeartBeat*
+  commentId: Overload:Innovt.Job.Core.JobBase.OnHeartBeat
+  href: Innovt.Job.Core.JobBase.html#Innovt_Job_Core_JobBase_OnHeartBeat
+  name: OnHeartBeat
+  nameWithType: JobBase.OnHeartBeat
+  fullName: Innovt.Job.Core.JobBase.OnHeartBeat
+- uid: Innovt.Job.Core.JobBase.Start*
+  commentId: Overload:Innovt.Job.Core.JobBase.Start
+  href: Innovt.Job.Core.JobBase.html#Innovt_Job_Core_JobBase_Start
+  name: Start
+  nameWithType: JobBase.Start
+  fullName: Innovt.Job.Core.JobBase.Start
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Innovt.Job.Core.JobBase.Stop*
+  commentId: Overload:Innovt.Job.Core.JobBase.Stop
+  href: Innovt.Job.Core.JobBase.html#Innovt_Job_Core_JobBase_Stop
+  name: Stop
+  nameWithType: JobBase.Stop
+  fullName: Innovt.Job.Core.JobBase.Stop
+- uid: Innovt.Job.Core.JobBase.OnStart*
+  commentId: Overload:Innovt.Job.Core.JobBase.OnStart
+  href: Innovt.Job.Core.JobBase.html#Innovt_Job_Core_JobBase_OnStart_System_Threading_CancellationToken_
+  name: OnStart
+  nameWithType: JobBase.OnStart
+  fullName: Innovt.Job.Core.JobBase.OnStart
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: Innovt.Job.Core.JobBase.OnStop*
+  commentId: Overload:Innovt.Job.Core.JobBase.OnStop
+  href: Innovt.Job.Core.JobBase.html#Innovt_Job_Core_JobBase_OnStop_System_Threading_CancellationToken_
+  name: OnStop
+  nameWithType: JobBase.OnStop
+  fullName: Innovt.Job.Core.JobBase.OnStop
