@@ -18,13 +18,9 @@ public class UserMap : IEntityTypeDataModelMapper<User>
     {
         builder.AutoMap().WithDefaultKeys().WithTableName("Users", "#");
         builder.WithHashKey().SetDynamicValue(u => "USER#" + u.Id);
-
+        
         builder.WithRangeKey().WithValue("PROFILE");
         builder.Property(u => u.Email).WithMaxLength(50).IsRequired();
-        
-
-        //Como vou setar aqui a propriedade Id como chave primária, não preciso setar o nome da propriedade
-        builder.Ignore("Name");
         
         builder.WithHashKeyPrefix("USER");
     }
