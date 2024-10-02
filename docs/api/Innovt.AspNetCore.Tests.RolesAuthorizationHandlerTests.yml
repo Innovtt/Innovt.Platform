@@ -1,0 +1,1317 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests
+  commentId: T:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests
+  id: RolesAuthorizationHandlerTests
+  parent: Innovt.AspNetCore.Tests
+  children:
+  - Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.ConstructorShould_ThrowException_If_Parameters_Is_NUll
+  - Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Does_Not_Exist
+  - Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_HasNoId
+  - Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_HasNoRoles
+  - Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Has_NoMatting_Role(System.String,System.Boolean)
+  - Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Has_NoMatting_Scope
+  - Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Is_Not_Authenticated
+  - Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Succeed_If_User_Has_Scope_And_Role
+  - Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode(System.String,System.String,System.Boolean)
+  - Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_When_User_Has_WildCard_Scope(System.String,System.String,System.Boolean)
+  - Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.Setup
+  - Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.TearDown
+  langs:
+  - csharp
+  - vb
+  name: RolesAuthorizationHandlerTests
+  nameWithType: RolesAuthorizationHandlerTests
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: RolesAuthorizationHandlerTests
+    path: ../src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+    startLine: 20
+  assemblies:
+  - Innovt.AspNetCore.Tests
+  namespace: Innovt.AspNetCore.Tests
+  syntax:
+    content: >-
+      [TestFixture]
+
+      public class RolesAuthorizationHandlerTests
+    content.vb: >-
+      <TestFixture>
+
+      Public Class RolesAuthorizationHandlerTests
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  attributes:
+  - type: NUnit.Framework.TestFixtureAttribute
+    ctor: NUnit.Framework.TestFixtureAttribute.#ctor
+    arguments: []
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.Setup
+  commentId: M:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.Setup
+  id: Setup
+  parent: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests
+  langs:
+  - csharp
+  - vb
+  name: Setup()
+  nameWithType: RolesAuthorizationHandlerTests.Setup()
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.Setup()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Setup
+    path: ../src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+    startLine: 23
+  assemblies:
+  - Innovt.AspNetCore.Tests
+  namespace: Innovt.AspNetCore.Tests
+  syntax:
+    content: >-
+      [SetUp]
+
+      public void Setup()
+    content.vb: >-
+      <SetUp>
+
+      Public Sub Setup()
+  overload: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.Setup*
+  attributes:
+  - type: NUnit.Framework.SetUpAttribute
+    ctor: NUnit.Framework.SetUpAttribute.#ctor
+    arguments: []
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.TearDown
+  commentId: M:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.TearDown
+  id: TearDown
+  parent: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests
+  langs:
+  - csharp
+  - vb
+  name: TearDown()
+  nameWithType: RolesAuthorizationHandlerTests.TearDown()
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.TearDown()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: TearDown
+    path: ../src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+    startLine: 30
+  assemblies:
+  - Innovt.AspNetCore.Tests
+  namespace: Innovt.AspNetCore.Tests
+  syntax:
+    content: >-
+      [TearDown]
+
+      public void TearDown()
+    content.vb: >-
+      <TearDown>
+
+      Public Sub TearDown()
+  overload: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.TearDown*
+  attributes:
+  - type: NUnit.Framework.TearDownAttribute
+    ctor: NUnit.Framework.TearDownAttribute.#ctor
+    arguments: []
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.ConstructorShould_ThrowException_If_Parameters_Is_NUll
+  commentId: M:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.ConstructorShould_ThrowException_If_Parameters_Is_NUll
+  id: ConstructorShould_ThrowException_If_Parameters_Is_NUll
+  parent: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests
+  langs:
+  - csharp
+  - vb
+  name: ConstructorShould_ThrowException_If_Parameters_Is_NUll()
+  nameWithType: RolesAuthorizationHandlerTests.ConstructorShould_ThrowException_If_Parameters_Is_NUll()
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.ConstructorShould_ThrowException_If_Parameters_Is_NUll()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ConstructorShould_ThrowException_If_Parameters_Is_NUll
+    path: ../src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+    startLine: 40
+  assemblies:
+  - Innovt.AspNetCore.Tests
+  namespace: Innovt.AspNetCore.Tests
+  syntax:
+    content: >-
+      [Test]
+
+      public void ConstructorShould_ThrowException_If_Parameters_Is_NUll()
+    content.vb: >-
+      <Test>
+
+      Public Sub ConstructorShould_ThrowException_If_Parameters_Is_NUll()
+  overload: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.ConstructorShould_ThrowException_If_Parameters_Is_NUll*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Is_Not_Authenticated
+  commentId: M:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Is_Not_Authenticated
+  id: HandleAsync_Fail_If_User_Is_Not_Authenticated
+  parent: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests
+  langs:
+  - csharp
+  - vb
+  name: HandleAsync_Fail_If_User_Is_Not_Authenticated()
+  nameWithType: RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Is_Not_Authenticated()
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Is_Not_Authenticated()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: HandleAsync_Fail_If_User_Is_Not_Authenticated
+    path: ../src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+    startLine: 56
+  assemblies:
+  - Innovt.AspNetCore.Tests
+  namespace: Innovt.AspNetCore.Tests
+  syntax:
+    content: >-
+      [Test]
+
+      public Task HandleAsync_Fail_If_User_Is_Not_Authenticated()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: >-
+      <Test>
+
+      Public Function HandleAsync_Fail_If_User_Is_Not_Authenticated() As Task
+  overload: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Is_Not_Authenticated*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_HasNoId
+  commentId: M:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_HasNoId
+  id: HandleAsync_Fail_If_User_HasNoId
+  parent: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests
+  langs:
+  - csharp
+  - vb
+  name: HandleAsync_Fail_If_User_HasNoId()
+  nameWithType: RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_HasNoId()
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_HasNoId()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: HandleAsync_Fail_If_User_HasNoId
+    path: ../src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+    startLine: 67
+  assemblies:
+  - Innovt.AspNetCore.Tests
+  namespace: Innovt.AspNetCore.Tests
+  syntax:
+    content: >-
+      [Test]
+
+      public Task HandleAsync_Fail_If_User_HasNoId()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: >-
+      <Test>
+
+      Public Function HandleAsync_Fail_If_User_HasNoId() As Task
+  overload: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_HasNoId*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Does_Not_Exist
+  commentId: M:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Does_Not_Exist
+  id: HandleAsync_Fail_If_User_Does_Not_Exist
+  parent: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests
+  langs:
+  - csharp
+  - vb
+  name: HandleAsync_Fail_If_User_Does_Not_Exist()
+  nameWithType: RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Does_Not_Exist()
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Does_Not_Exist()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: HandleAsync_Fail_If_User_Does_Not_Exist
+    path: ../src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+    startLine: 82
+  assemblies:
+  - Innovt.AspNetCore.Tests
+  namespace: Innovt.AspNetCore.Tests
+  syntax:
+    content: >-
+      [Test]
+
+      public Task HandleAsync_Fail_If_User_Does_Not_Exist()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: >-
+      <Test>
+
+      Public Function HandleAsync_Fail_If_User_Does_Not_Exist() As Task
+  overload: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Does_Not_Exist*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_HasNoRoles
+  commentId: M:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_HasNoRoles
+  id: HandleAsync_Fail_If_User_HasNoRoles
+  parent: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests
+  langs:
+  - csharp
+  - vb
+  name: HandleAsync_Fail_If_User_HasNoRoles()
+  nameWithType: RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_HasNoRoles()
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_HasNoRoles()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: HandleAsync_Fail_If_User_HasNoRoles
+    path: ../src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+    startLine: 109
+  assemblies:
+  - Innovt.AspNetCore.Tests
+  namespace: Innovt.AspNetCore.Tests
+  syntax:
+    content: >-
+      [Test]
+
+      public Task HandleAsync_Fail_If_User_HasNoRoles()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: >-
+      <Test>
+
+      Public Function HandleAsync_Fail_If_User_HasNoRoles() As Task
+  overload: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_HasNoRoles*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Has_NoMatting_Role(System.String,System.Boolean)
+  commentId: M:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Has_NoMatting_Role(System.String,System.Boolean)
+  id: HandleAsync_Fail_If_User_Has_NoMatting_Role(System.String,System.Boolean)
+  parent: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests
+  langs:
+  - csharp
+  - vb
+  name: HandleAsync_Fail_If_User_Has_NoMatting_Role(string, bool)
+  nameWithType: RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Has_NoMatting_Role(string, bool)
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Has_NoMatting_Role(string, bool)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: HandleAsync_Fail_If_User_Has_NoMatting_Role
+    path: ../src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+    startLine: 146
+  assemblies:
+  - Innovt.AspNetCore.Tests
+  namespace: Innovt.AspNetCore.Tests
+  syntax:
+    content: >-
+      [Test]
+
+      [TestCase("Admin", true)]
+
+      [TestCase("User", false)]
+
+      public Task HandleAsync_Fail_If_User_Has_NoMatting_Role(string role, bool success)
+    parameters:
+    - id: role
+      type: System.String
+    - id: success
+      type: System.Boolean
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: >-
+      <Test>
+
+      <TestCase("Admin", True)>
+
+      <TestCase("User", False)>
+
+      Public Function HandleAsync_Fail_If_User_Has_NoMatting_Role(role As String, success As Boolean) As Task
+  overload: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Has_NoMatting_Role*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+  - type: NUnit.Framework.TestCaseAttribute
+    ctor: NUnit.Framework.TestCaseAttribute.#ctor(System.Object,System.Object)
+    arguments:
+    - type: System.String
+      value: Admin
+    - type: System.Boolean
+      value: true
+  - type: NUnit.Framework.TestCaseAttribute
+    ctor: NUnit.Framework.TestCaseAttribute.#ctor(System.Object,System.Object)
+    arguments:
+    - type: System.String
+      value: User
+    - type: System.Boolean
+      value: false
+  nameWithType.vb: RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Has_NoMatting_Role(String, Boolean)
+  fullName.vb: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Has_NoMatting_Role(String, Boolean)
+  name.vb: HandleAsync_Fail_If_User_Has_NoMatting_Role(String, Boolean)
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Has_NoMatting_Scope
+  commentId: M:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Has_NoMatting_Scope
+  id: HandleAsync_Fail_If_User_Has_NoMatting_Scope
+  parent: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests
+  langs:
+  - csharp
+  - vb
+  name: HandleAsync_Fail_If_User_Has_NoMatting_Scope()
+  nameWithType: RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Has_NoMatting_Scope()
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Has_NoMatting_Scope()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: HandleAsync_Fail_If_User_Has_NoMatting_Scope
+    path: ../src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+    startLine: 199
+  assemblies:
+  - Innovt.AspNetCore.Tests
+  namespace: Innovt.AspNetCore.Tests
+  syntax:
+    content: >-
+      [Test]
+
+      public Task HandleAsync_Fail_If_User_Has_NoMatting_Scope()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: >-
+      <Test>
+
+      Public Function HandleAsync_Fail_If_User_Has_NoMatting_Scope() As Task
+  overload: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Has_NoMatting_Scope*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Succeed_If_User_Has_Scope_And_Role
+  commentId: M:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Succeed_If_User_Has_Scope_And_Role
+  id: HandleAsync_Succeed_If_User_Has_Scope_And_Role
+  parent: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests
+  langs:
+  - csharp
+  - vb
+  name: HandleAsync_Succeed_If_User_Has_Scope_And_Role()
+  nameWithType: RolesAuthorizationHandlerTests.HandleAsync_Succeed_If_User_Has_Scope_And_Role()
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Succeed_If_User_Has_Scope_And_Role()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: HandleAsync_Succeed_If_User_Has_Scope_And_Role
+    path: ../src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+    startLine: 255
+  assemblies:
+  - Innovt.AspNetCore.Tests
+  namespace: Innovt.AspNetCore.Tests
+  syntax:
+    content: >-
+      [Test]
+
+      public Task HandleAsync_Succeed_If_User_Has_Scope_And_Role()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: >-
+      <Test>
+
+      Public Function HandleAsync_Succeed_If_User_Has_Scope_And_Role() As Task
+  overload: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Succeed_If_User_Has_Scope_And_Role*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode(System.String,System.String,System.Boolean)
+  commentId: M:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode(System.String,System.String,System.Boolean)
+  id: HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode(System.String,System.String,System.Boolean)
+  parent: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests
+  langs:
+  - csharp
+  - vb
+  name: HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode(string, string, bool)
+  nameWithType: RolesAuthorizationHandlerTests.HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode(string, string, bool)
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode(string, string, bool)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode
+    path: ../src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+    startLine: 311
+  assemblies:
+  - Innovt.AspNetCore.Tests
+  namespace: Innovt.AspNetCore.Tests
+  syntax:
+    content: >-
+      [Test]
+
+      [TestCase("Buyer", "123456", true)]
+
+      [TestCase("User", "123456", false)]
+
+      public Task HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode(string scope, string appCode, bool success)
+    parameters:
+    - id: scope
+      type: System.String
+    - id: appCode
+      type: System.String
+    - id: success
+      type: System.Boolean
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: >-
+      <Test>
+
+      <TestCase("Buyer", "123456", True)>
+
+      <TestCase("User", "123456", False)>
+
+      Public Function HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode(scope As String, appCode As String, success As Boolean) As Task
+  overload: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+  - type: NUnit.Framework.TestCaseAttribute
+    ctor: NUnit.Framework.TestCaseAttribute.#ctor(System.Object,System.Object,System.Object)
+    arguments:
+    - type: System.String
+      value: Buyer
+    - type: System.String
+      value: "123456"
+    - type: System.Boolean
+      value: true
+  - type: NUnit.Framework.TestCaseAttribute
+    ctor: NUnit.Framework.TestCaseAttribute.#ctor(System.Object,System.Object,System.Object)
+    arguments:
+    - type: System.String
+      value: User
+    - type: System.String
+      value: "123456"
+    - type: System.Boolean
+      value: false
+  nameWithType.vb: RolesAuthorizationHandlerTests.HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode(String, String, Boolean)
+  fullName.vb: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode(String, String, Boolean)
+  name.vb: HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode(String, String, Boolean)
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_When_User_Has_WildCard_Scope(System.String,System.String,System.Boolean)
+  commentId: M:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_When_User_Has_WildCard_Scope(System.String,System.String,System.Boolean)
+  id: HandleAsync_When_User_Has_WildCard_Scope(System.String,System.String,System.Boolean)
+  parent: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests
+  langs:
+  - csharp
+  - vb
+  name: HandleAsync_When_User_Has_WildCard_Scope(string, string, bool)
+  nameWithType: RolesAuthorizationHandlerTests.HandleAsync_When_User_Has_WildCard_Scope(string, string, bool)
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_When_User_Has_WildCard_Scope(string, string, bool)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: HandleAsync_When_User_Has_WildCard_Scope
+    path: ../src/Innovt.AspNetCore.Tests/RolesAuthorizationHandlerTests.cs
+    startLine: 371
+  assemblies:
+  - Innovt.AspNetCore.Tests
+  namespace: Innovt.AspNetCore.Tests
+  syntax:
+    content: >-
+      [Test]
+
+      [TestCase("*", "123456", true)]
+
+      [TestCase("*::User", "123456", true)]
+
+      [TestCase("User", "123456", false)]
+
+      public Task HandleAsync_When_User_Has_WildCard_Scope(string scope, string appCode, bool success)
+    parameters:
+    - id: scope
+      type: System.String
+    - id: appCode
+      type: System.String
+    - id: success
+      type: System.Boolean
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: >-
+      <Test>
+
+      <TestCase("*", "123456", True)>
+
+      <TestCase("*::User", "123456", True)>
+
+      <TestCase("User", "123456", False)>
+
+      Public Function HandleAsync_When_User_Has_WildCard_Scope(scope As String, appCode As String, success As Boolean) As Task
+  overload: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_When_User_Has_WildCard_Scope*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+  - type: NUnit.Framework.TestCaseAttribute
+    ctor: NUnit.Framework.TestCaseAttribute.#ctor(System.Object,System.Object,System.Object)
+    arguments:
+    - type: System.String
+      value: '*'
+    - type: System.String
+      value: "123456"
+    - type: System.Boolean
+      value: true
+  - type: NUnit.Framework.TestCaseAttribute
+    ctor: NUnit.Framework.TestCaseAttribute.#ctor(System.Object,System.Object,System.Object)
+    arguments:
+    - type: System.String
+      value: '*::User'
+    - type: System.String
+      value: "123456"
+    - type: System.Boolean
+      value: true
+  - type: NUnit.Framework.TestCaseAttribute
+    ctor: NUnit.Framework.TestCaseAttribute.#ctor(System.Object,System.Object,System.Object)
+    arguments:
+    - type: System.String
+      value: User
+    - type: System.String
+      value: "123456"
+    - type: System.Boolean
+      value: false
+  nameWithType.vb: RolesAuthorizationHandlerTests.HandleAsync_When_User_Has_WildCard_Scope(String, String, Boolean)
+  fullName.vb: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_When_User_Has_WildCard_Scope(String, String, Boolean)
+  name.vb: HandleAsync_When_User_Has_WildCard_Scope(String, String, Boolean)
+references:
+- uid: Innovt.AspNetCore.Tests
+  commentId: N:Innovt.AspNetCore.Tests
+  href: Innovt.html
+  name: Innovt.AspNetCore.Tests
+  nameWithType: Innovt.AspNetCore.Tests
+  fullName: Innovt.AspNetCore.Tests
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.AspNetCore
+    name: AspNetCore
+    href: Innovt.AspNetCore.html
+  - name: .
+  - uid: Innovt.AspNetCore.Tests
+    name: Tests
+    href: Innovt.AspNetCore.Tests.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.AspNetCore
+    name: AspNetCore
+    href: Innovt.AspNetCore.html
+  - name: .
+  - uid: Innovt.AspNetCore.Tests
+    name: Tests
+    href: Innovt.AspNetCore.Tests.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.Setup*
+  commentId: Overload:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.Setup
+  href: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.html#Innovt_AspNetCore_Tests_RolesAuthorizationHandlerTests_Setup
+  name: Setup
+  nameWithType: RolesAuthorizationHandlerTests.Setup
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.Setup
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.TearDown*
+  commentId: Overload:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.TearDown
+  href: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.html#Innovt_AspNetCore_Tests_RolesAuthorizationHandlerTests_TearDown
+  name: TearDown
+  nameWithType: RolesAuthorizationHandlerTests.TearDown
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.TearDown
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.ConstructorShould_ThrowException_If_Parameters_Is_NUll*
+  commentId: Overload:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.ConstructorShould_ThrowException_If_Parameters_Is_NUll
+  href: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.html#Innovt_AspNetCore_Tests_RolesAuthorizationHandlerTests_ConstructorShould_ThrowException_If_Parameters_Is_NUll
+  name: ConstructorShould_ThrowException_If_Parameters_Is_NUll
+  nameWithType: RolesAuthorizationHandlerTests.ConstructorShould_ThrowException_If_Parameters_Is_NUll
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.ConstructorShould_ThrowException_If_Parameters_Is_NUll
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Is_Not_Authenticated*
+  commentId: Overload:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Is_Not_Authenticated
+  href: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.html#Innovt_AspNetCore_Tests_RolesAuthorizationHandlerTests_HandleAsync_Fail_If_User_Is_Not_Authenticated
+  name: HandleAsync_Fail_If_User_Is_Not_Authenticated
+  nameWithType: RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Is_Not_Authenticated
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Is_Not_Authenticated
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_HasNoId*
+  commentId: Overload:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_HasNoId
+  href: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.html#Innovt_AspNetCore_Tests_RolesAuthorizationHandlerTests_HandleAsync_Fail_If_User_HasNoId
+  name: HandleAsync_Fail_If_User_HasNoId
+  nameWithType: RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_HasNoId
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_HasNoId
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Does_Not_Exist*
+  commentId: Overload:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Does_Not_Exist
+  href: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.html#Innovt_AspNetCore_Tests_RolesAuthorizationHandlerTests_HandleAsync_Fail_If_User_Does_Not_Exist
+  name: HandleAsync_Fail_If_User_Does_Not_Exist
+  nameWithType: RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Does_Not_Exist
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Does_Not_Exist
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_HasNoRoles*
+  commentId: Overload:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_HasNoRoles
+  href: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.html#Innovt_AspNetCore_Tests_RolesAuthorizationHandlerTests_HandleAsync_Fail_If_User_HasNoRoles
+  name: HandleAsync_Fail_If_User_HasNoRoles
+  nameWithType: RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_HasNoRoles
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_HasNoRoles
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Has_NoMatting_Role*
+  commentId: Overload:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Has_NoMatting_Role
+  href: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.html#Innovt_AspNetCore_Tests_RolesAuthorizationHandlerTests_HandleAsync_Fail_If_User_Has_NoMatting_Role_System_String_System_Boolean_
+  name: HandleAsync_Fail_If_User_Has_NoMatting_Role
+  nameWithType: RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Has_NoMatting_Role
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Has_NoMatting_Role
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Has_NoMatting_Scope*
+  commentId: Overload:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Has_NoMatting_Scope
+  href: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.html#Innovt_AspNetCore_Tests_RolesAuthorizationHandlerTests_HandleAsync_Fail_If_User_Has_NoMatting_Scope
+  name: HandleAsync_Fail_If_User_Has_NoMatting_Scope
+  nameWithType: RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Has_NoMatting_Scope
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Fail_If_User_Has_NoMatting_Scope
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Succeed_If_User_Has_Scope_And_Role*
+  commentId: Overload:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Succeed_If_User_Has_Scope_And_Role
+  href: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.html#Innovt_AspNetCore_Tests_RolesAuthorizationHandlerTests_HandleAsync_Succeed_If_User_Has_Scope_And_Role
+  name: HandleAsync_Succeed_If_User_Has_Scope_And_Role
+  nameWithType: RolesAuthorizationHandlerTests.HandleAsync_Succeed_If_User_Has_Scope_And_Role
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_Succeed_If_User_Has_Scope_And_Role
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode*
+  commentId: Overload:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode
+  href: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.html#Innovt_AspNetCore_Tests_RolesAuthorizationHandlerTests_HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode_System_String_System_String_System_Boolean_
+  name: HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode
+  nameWithType: RolesAuthorizationHandlerTests.HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_When_User_Has_Scope_And_Role_And_ApplicationCode
+- uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_When_User_Has_WildCard_Scope*
+  commentId: Overload:Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_When_User_Has_WildCard_Scope
+  href: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.html#Innovt_AspNetCore_Tests_RolesAuthorizationHandlerTests_HandleAsync_When_User_Has_WildCard_Scope_System_String_System_String_System_Boolean_
+  name: HandleAsync_When_User_Has_WildCard_Scope
+  nameWithType: RolesAuthorizationHandlerTests.HandleAsync_When_User_Has_WildCard_Scope
+  fullName: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests.HandleAsync_When_User_Has_WildCard_Scope

@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.AspNetCore.Extensions
+  commentId: N:Innovt.AspNetCore.Extensions
+  id: Innovt.AspNetCore.Extensions
+  children:
+  - Innovt.AspNetCore.Extensions.MvcExtensions
+  - Innovt.AspNetCore.Extensions.SwaggerExtensions
+  langs:
+  - csharp
+  - vb
+  name: Innovt.AspNetCore.Extensions
+  nameWithType: Innovt.AspNetCore.Extensions
+  fullName: Innovt.AspNetCore.Extensions
+  type: Namespace
+  assemblies:
+  - Innovt.AspNetCore
+references:
+- uid: Innovt.AspNetCore.Extensions.MvcExtensions
+  commentId: T:Innovt.AspNetCore.Extensions.MvcExtensions
+  href: Innovt.AspNetCore.Extensions.MvcExtensions.html
+  name: MvcExtensions
+  nameWithType: MvcExtensions
+  fullName: Innovt.AspNetCore.Extensions.MvcExtensions
+- uid: Innovt.AspNetCore.Extensions.SwaggerExtensions
+  commentId: T:Innovt.AspNetCore.Extensions.SwaggerExtensions
+  href: Innovt.AspNetCore.Extensions.SwaggerExtensions.html
+  name: SwaggerExtensions
+  nameWithType: SwaggerExtensions
+  fullName: Innovt.AspNetCore.Extensions.SwaggerExtensions

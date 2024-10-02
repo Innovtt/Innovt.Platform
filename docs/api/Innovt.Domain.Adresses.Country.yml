@@ -1,0 +1,851 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Domain.Adresses.Country
+  commentId: T:Innovt.Domain.Adresses.Country
+  id: Country
+  parent: Innovt.Domain.Adresses
+  children:
+  - Innovt.Domain.Adresses.Country.Brazil
+  - Innovt.Domain.Adresses.Country.Code
+  - Innovt.Domain.Adresses.Country.ISOCode
+  - Innovt.Domain.Adresses.Country.Name
+  - Innovt.Domain.Adresses.Country.Nationality
+  langs:
+  - csharp
+  - vb
+  name: Country
+  nameWithType: Country
+  fullName: Innovt.Domain.Adresses.Country
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Domain/Adresses/Country.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Country
+    path: ../src/Innovt.Domain/Adresses/Country.cs
+    startLine: 11
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain.Adresses
+  summary: Represents a country entity.
+  example: []
+  syntax:
+    content: 'public class Country : ValueObject'
+    content.vb: Public Class Country Inherits ValueObject
+  inheritance:
+  - System.Object
+  - Innovt.Domain.Core.Model.ValueObject
+  inheritedMembers:
+  - Innovt.Domain.Core.Model.ValueObject.Id
+  - Innovt.Domain.Core.Model.ValueObject.Equals(System.Object)
+  - Innovt.Domain.Core.Model.ValueObject.GetHashCode
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+- uid: Innovt.Domain.Adresses.Country.Brazil
+  commentId: F:Innovt.Domain.Adresses.Country.Brazil
+  id: Brazil
+  parent: Innovt.Domain.Adresses.Country
+  langs:
+  - csharp
+  - vb
+  name: Brazil
+  nameWithType: Country.Brazil
+  fullName: Innovt.Domain.Adresses.Country.Brazil
+  type: Field
+  source:
+    remote:
+      path: src/Innovt.Domain/Adresses/Country.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Brazil
+    path: ../src/Innovt.Domain/Adresses/Country.cs
+    startLine: 16
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain.Adresses
+  summary: 'Predefined country: Brazil.'
+  example: []
+  syntax:
+    content: public static Country Brazil
+    return:
+      type: Innovt.Domain.Adresses.Country
+    content.vb: Public Shared Brazil As Country
+- uid: Innovt.Domain.Adresses.Country.Name
+  commentId: P:Innovt.Domain.Adresses.Country.Name
+  id: Name
+  parent: Innovt.Domain.Adresses.Country
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: Country.Name
+  fullName: Innovt.Domain.Adresses.Country.Name
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Domain/Adresses/Country.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Name
+    path: ../src/Innovt.Domain/Adresses/Country.cs
+    startLine: 21
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain.Adresses
+  summary: Gets or sets the name of the country.
+  example: []
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: Innovt.Domain.Adresses.Country.Name*
+- uid: Innovt.Domain.Adresses.Country.Code
+  commentId: P:Innovt.Domain.Adresses.Country.Code
+  id: Code
+  parent: Innovt.Domain.Adresses.Country
+  langs:
+  - csharp
+  - vb
+  name: Code
+  nameWithType: Country.Code
+  fullName: Innovt.Domain.Adresses.Country.Code
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Domain/Adresses/Country.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Code
+    path: ../src/Innovt.Domain/Adresses/Country.cs
+    startLine: 26
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain.Adresses
+  summary: Gets or sets the country calling code.
+  example: []
+  syntax:
+    content: public int Code { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Code As Integer
+  overload: Innovt.Domain.Adresses.Country.Code*
+- uid: Innovt.Domain.Adresses.Country.ISOCode
+  commentId: P:Innovt.Domain.Adresses.Country.ISOCode
+  id: ISOCode
+  parent: Innovt.Domain.Adresses.Country
+  langs:
+  - csharp
+  - vb
+  name: ISOCode
+  nameWithType: Country.ISOCode
+  fullName: Innovt.Domain.Adresses.Country.ISOCode
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Domain/Adresses/Country.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ISOCode
+    path: ../src/Innovt.Domain/Adresses/Country.cs
+    startLine: 31
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain.Adresses
+  summary: Gets or sets the ISO country code.
+  example: []
+  syntax:
+    content: public string ISOCode { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ISOCode As String
+  overload: Innovt.Domain.Adresses.Country.ISOCode*
+- uid: Innovt.Domain.Adresses.Country.Nationality
+  commentId: P:Innovt.Domain.Adresses.Country.Nationality
+  id: Nationality
+  parent: Innovt.Domain.Adresses.Country
+  langs:
+  - csharp
+  - vb
+  name: Nationality
+  nameWithType: Country.Nationality
+  fullName: Innovt.Domain.Adresses.Country.Nationality
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Domain/Adresses/Country.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Nationality
+    path: ../src/Innovt.Domain/Adresses/Country.cs
+    startLine: 36
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain.Adresses
+  summary: Gets or sets the nationality associated with the country.
+  example: []
+  syntax:
+    content: public string Nationality { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Nationality As String
+  overload: Innovt.Domain.Adresses.Country.Nationality*
+references:
+- uid: Innovt.Domain.Adresses
+  commentId: N:Innovt.Domain.Adresses
+  href: Innovt.html
+  name: Innovt.Domain.Adresses
+  nameWithType: Innovt.Domain.Adresses
+  fullName: Innovt.Domain.Adresses
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Adresses
+    name: Adresses
+    href: Innovt.Domain.Adresses.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Adresses
+    name: Adresses
+    href: Innovt.Domain.Adresses.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Innovt.Domain.Core.Model.ValueObject
+  commentId: T:Innovt.Domain.Core.Model.ValueObject
+  parent: Innovt.Domain.Core.Model
+  href: Innovt.Domain.Core.Model.ValueObject.html
+  name: ValueObject
+  nameWithType: ValueObject
+  fullName: Innovt.Domain.Core.Model.ValueObject
+- uid: Innovt.Domain.Core.Model.ValueObject.Id
+  commentId: P:Innovt.Domain.Core.Model.ValueObject.Id
+  parent: Innovt.Domain.Core.Model.ValueObject
+  href: Innovt.Domain.Core.Model.ValueObject.html#Innovt_Domain_Core_Model_ValueObject_Id
+  name: Id
+  nameWithType: ValueObject.Id
+  fullName: Innovt.Domain.Core.Model.ValueObject.Id
+- uid: Innovt.Domain.Core.Model.ValueObject.Equals(System.Object)
+  commentId: M:Innovt.Domain.Core.Model.ValueObject.Equals(System.Object)
+  parent: Innovt.Domain.Core.Model.ValueObject
+  isExternal: true
+  href: Innovt.Domain.Core.Model.ValueObject.html#Innovt_Domain_Core_Model_ValueObject_Equals_System_Object_
+  name: Equals(object)
+  nameWithType: ValueObject.Equals(object)
+  fullName: Innovt.Domain.Core.Model.ValueObject.Equals(object)
+  nameWithType.vb: ValueObject.Equals(Object)
+  fullName.vb: Innovt.Domain.Core.Model.ValueObject.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Model.ValueObject.Equals(System.Object)
+    name: Equals
+    href: Innovt.Domain.Core.Model.ValueObject.html#Innovt_Domain_Core_Model_ValueObject_Equals_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Domain.Core.Model.ValueObject.Equals(System.Object)
+    name: Equals
+    href: Innovt.Domain.Core.Model.ValueObject.html#Innovt_Domain_Core_Model_ValueObject_Equals_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Domain.Core.Model.ValueObject.GetHashCode
+  commentId: M:Innovt.Domain.Core.Model.ValueObject.GetHashCode
+  parent: Innovt.Domain.Core.Model.ValueObject
+  href: Innovt.Domain.Core.Model.ValueObject.html#Innovt_Domain_Core_Model_ValueObject_GetHashCode
+  name: GetHashCode()
+  nameWithType: ValueObject.GetHashCode()
+  fullName: Innovt.Domain.Core.Model.ValueObject.GetHashCode()
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Model.ValueObject.GetHashCode
+    name: GetHashCode
+    href: Innovt.Domain.Core.Model.ValueObject.html#Innovt_Domain_Core_Model_ValueObject_GetHashCode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Domain.Core.Model.ValueObject.GetHashCode
+    name: GetHashCode
+    href: Innovt.Domain.Core.Model.ValueObject.html#Innovt_Domain_Core_Model_ValueObject_GetHashCode
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Domain.Core.Model
+  commentId: N:Innovt.Domain.Core.Model
+  href: Innovt.html
+  name: Innovt.Domain.Core.Model
+  nameWithType: Innovt.Domain.Core.Model
+  fullName: Innovt.Domain.Core.Model
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Model
+    name: Model
+    href: Innovt.Domain.Core.Model.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Model
+    name: Model
+    href: Innovt.Domain.Core.Model.html
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Domain.Adresses.Country
+  commentId: T:Innovt.Domain.Adresses.Country
+  parent: Innovt.Domain.Adresses
+  href: Innovt.Domain.Adresses.Country.html
+  name: Country
+  nameWithType: Country
+  fullName: Innovt.Domain.Adresses.Country
+- uid: Innovt.Domain.Adresses.Country.Name*
+  commentId: Overload:Innovt.Domain.Adresses.Country.Name
+  href: Innovt.Domain.Adresses.Country.html#Innovt_Domain_Adresses_Country_Name
+  name: Name
+  nameWithType: Country.Name
+  fullName: Innovt.Domain.Adresses.Country.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Innovt.Domain.Adresses.Country.Code*
+  commentId: Overload:Innovt.Domain.Adresses.Country.Code
+  href: Innovt.Domain.Adresses.Country.html#Innovt_Domain_Adresses_Country_Code
+  name: Code
+  nameWithType: Country.Code
+  fullName: Innovt.Domain.Adresses.Country.Code
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Innovt.Domain.Adresses.Country.ISOCode*
+  commentId: Overload:Innovt.Domain.Adresses.Country.ISOCode
+  href: Innovt.Domain.Adresses.Country.html#Innovt_Domain_Adresses_Country_ISOCode
+  name: ISOCode
+  nameWithType: Country.ISOCode
+  fullName: Innovt.Domain.Adresses.Country.ISOCode
+- uid: Innovt.Domain.Adresses.Country.Nationality*
+  commentId: Overload:Innovt.Domain.Adresses.Country.Nationality
+  href: Innovt.Domain.Adresses.Country.html#Innovt_Domain_Adresses_Country_Nationality
+  name: Nationality
+  nameWithType: Country.Nationality
+  fullName: Innovt.Domain.Adresses.Country.Nationality

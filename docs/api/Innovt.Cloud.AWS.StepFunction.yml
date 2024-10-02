@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.StepFunction
+  commentId: N:Innovt.Cloud.AWS.StepFunction
+  id: Innovt.Cloud.AWS.StepFunction
+  children:
+  - Innovt.Cloud.AWS.StepFunction.StepFunctionService
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Cloud.AWS.StepFunction
+  nameWithType: Innovt.Cloud.AWS.StepFunction
+  fullName: Innovt.Cloud.AWS.StepFunction
+  type: Namespace
+  assemblies:
+  - Innovt.Cloud.AWS.StepFunction
+references:
+- uid: Innovt.Cloud.AWS.StepFunction.StepFunctionService
+  commentId: T:Innovt.Cloud.AWS.StepFunction.StepFunctionService
+  href: Innovt.Cloud.AWS.StepFunction.StepFunctionService.html
+  name: StepFunctionService
+  nameWithType: StepFunctionService
+  fullName: Innovt.Cloud.AWS.StepFunction.StepFunctionService

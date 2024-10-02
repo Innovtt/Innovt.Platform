@@ -1,0 +1,1149 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Data.EFCore.EfExtensions
+  commentId: T:Innovt.Data.EFCore.EfExtensions
+  id: EfExtensions
+  parent: Innovt.Data.EFCore
+  children:
+  - Innovt.Data.EFCore.EfExtensions.AddConfiguration``1(Microsoft.EntityFrameworkCore.ModelBuilder,Microsoft.EntityFrameworkCore.IEntityTypeConfiguration{``0})
+  - Innovt.Data.EFCore.EfExtensions.AddConfiguration``1(Microsoft.EntityFrameworkCore.ModelBuilder,System.Collections.Generic.IList{Microsoft.EntityFrameworkCore.IEntityTypeConfiguration{``0}})
+  - Innovt.Data.EFCore.EfExtensions.AddInclude``1(System.Linq.IQueryable{``0},Innovt.Domain.Core.Repository.Include)
+  - Innovt.Data.EFCore.EfExtensions.AddInclude``1(System.Linq.IQueryable{``0},System.String)
+  - Innovt.Data.EFCore.EfExtensions.AddInclude``1(System.Linq.IQueryable{``0},System.String[])
+  - Innovt.Data.EFCore.EfExtensions.ApplyPagination``1(System.Linq.IQueryable{``0},Innovt.Domain.Core.Specification.ISpecification{``0})
+  - Innovt.Data.EFCore.EfExtensions.ApplyPagination``1(System.Linq.IQueryable{``0},System.Nullable{System.Int32},System.Nullable{System.Int32})
+  langs:
+  - csharp
+  - vb
+  name: EfExtensions
+  nameWithType: EfExtensions
+  fullName: Innovt.Data.EFCore.EfExtensions
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Data.EFCore/EFExtensions.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: EfExtensions
+    path: ../src/Innovt.Data.EFCore/EFExtensions.cs
+    startLine: 16
+  assemblies:
+  - Innovt.Data.EFCore
+  namespace: Innovt.Data.EFCore
+  summary: Extension methods for Entity Framework IQueryable to facilitate query operations.
+  example: []
+  syntax:
+    content: public static class EfExtensions
+    content.vb: Public Module EfExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Innovt.Data.EFCore.EfExtensions.AddInclude``1(System.Linq.IQueryable{``0},Innovt.Domain.Core.Repository.Include)
+  commentId: M:Innovt.Data.EFCore.EfExtensions.AddInclude``1(System.Linq.IQueryable{``0},Innovt.Domain.Core.Repository.Include)
+  id: AddInclude``1(System.Linq.IQueryable{``0},Innovt.Domain.Core.Repository.Include)
+  isExtensionMethod: true
+  parent: Innovt.Data.EFCore.EfExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddInclude<T>(IQueryable<T>, Include?)
+  nameWithType: EfExtensions.AddInclude<T>(IQueryable<T>, Include?)
+  fullName: Innovt.Data.EFCore.EfExtensions.AddInclude<T>(System.Linq.IQueryable<T>, Innovt.Domain.Core.Repository.Include?)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Data.EFCore/EFExtensions.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: AddInclude
+    path: ../src/Innovt.Data.EFCore/EFExtensions.cs
+    startLine: 25
+  assemblies:
+  - Innovt.Data.EFCore
+  namespace: Innovt.Data.EFCore
+  summary: Adds navigation properties to include in the query.
+  example: []
+  syntax:
+    content: 'public static IQueryable<T> AddInclude<T>(this IQueryable<T> query, Include? includes) where T : class'
+    parameters:
+    - id: query
+      type: System.Linq.IQueryable{{T}}
+      description: The IQueryable to which includes are added.
+    - id: includes
+      type: Innovt.Domain.Core.Repository.Include
+      description: The navigation properties to include.
+    typeParameters:
+    - id: T
+      description: The type of entity.
+    return:
+      type: System.Linq.IQueryable{{T}}
+      description: The IQueryable with added includes.
+    content.vb: Public Shared Function AddInclude(Of T As Class)(query As IQueryable(Of T), includes As Include) As IQueryable(Of T)
+  overload: Innovt.Data.EFCore.EfExtensions.AddInclude*
+  nameWithType.vb: EfExtensions.AddInclude(Of T)(IQueryable(Of T), Include)
+  fullName.vb: Innovt.Data.EFCore.EfExtensions.AddInclude(Of T)(System.Linq.IQueryable(Of T), Innovt.Domain.Core.Repository.Include)
+  name.vb: AddInclude(Of T)(IQueryable(Of T), Include)
+- uid: Innovt.Data.EFCore.EfExtensions.AddInclude``1(System.Linq.IQueryable{``0},System.String[])
+  commentId: M:Innovt.Data.EFCore.EfExtensions.AddInclude``1(System.Linq.IQueryable{``0},System.String[])
+  id: AddInclude``1(System.Linq.IQueryable{``0},System.String[])
+  isExtensionMethod: true
+  parent: Innovt.Data.EFCore.EfExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddInclude<T>(IQueryable<T>, params string[])
+  nameWithType: EfExtensions.AddInclude<T>(IQueryable<T>, params string[])
+  fullName: Innovt.Data.EFCore.EfExtensions.AddInclude<T>(System.Linq.IQueryable<T>, params string[])
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Data.EFCore/EFExtensions.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: AddInclude
+    path: ../src/Innovt.Data.EFCore/EFExtensions.cs
+    startLine: 39
+  assemblies:
+  - Innovt.Data.EFCore
+  namespace: Innovt.Data.EFCore
+  summary: Adds navigation properties to include in the query using string-based includes.
+  example: []
+  syntax:
+    content: 'public static IQueryable<T> AddInclude<T>(this IQueryable<T> query, params string[] includes) where T : class'
+    parameters:
+    - id: query
+      type: System.Linq.IQueryable{{T}}
+      description: The IQueryable to which includes are added.
+    - id: includes
+      type: System.String[]
+      description: Array of navigation properties to include.
+    typeParameters:
+    - id: T
+      description: The type of entity.
+    return:
+      type: System.Linq.IQueryable{{T}}
+      description: The IQueryable with added includes.
+    content.vb: Public Shared Function AddInclude(Of T As Class)(query As IQueryable(Of T), ParamArray includes As String()) As IQueryable(Of T)
+  overload: Innovt.Data.EFCore.EfExtensions.AddInclude*
+  nameWithType.vb: EfExtensions.AddInclude(Of T)(IQueryable(Of T), ParamArray String())
+  fullName.vb: Innovt.Data.EFCore.EfExtensions.AddInclude(Of T)(System.Linq.IQueryable(Of T), ParamArray String())
+  name.vb: AddInclude(Of T)(IQueryable(Of T), ParamArray String())
+- uid: Innovt.Data.EFCore.EfExtensions.AddInclude``1(System.Linq.IQueryable{``0},System.String)
+  commentId: M:Innovt.Data.EFCore.EfExtensions.AddInclude``1(System.Linq.IQueryable{``0},System.String)
+  id: AddInclude``1(System.Linq.IQueryable{``0},System.String)
+  isExtensionMethod: true
+  parent: Innovt.Data.EFCore.EfExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddInclude<T>(IQueryable<T>, string?)
+  nameWithType: EfExtensions.AddInclude<T>(IQueryable<T>, string?)
+  fullName: Innovt.Data.EFCore.EfExtensions.AddInclude<T>(System.Linq.IQueryable<T>, string?)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Data.EFCore/EFExtensions.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: AddInclude
+    path: ../src/Innovt.Data.EFCore/EFExtensions.cs
+    startLine: 51
+  assemblies:
+  - Innovt.Data.EFCore
+  namespace: Innovt.Data.EFCore
+  summary: Adds a navigation property to include in the query using a string.
+  example: []
+  syntax:
+    content: 'public static IQueryable<T> AddInclude<T>(this IQueryable<T> query, string? include) where T : class'
+    parameters:
+    - id: query
+      type: System.Linq.IQueryable{{T}}
+      description: The IQueryable to which the include is added.
+    - id: include
+      type: System.String
+      description: The navigation property to include.
+    typeParameters:
+    - id: T
+      description: The type of entity.
+    return:
+      type: System.Linq.IQueryable{{T}}
+      description: The IQueryable with added include.
+    content.vb: Public Shared Function AddInclude(Of T As Class)(query As IQueryable(Of T), include As String) As IQueryable(Of T)
+  overload: Innovt.Data.EFCore.EfExtensions.AddInclude*
+  nameWithType.vb: EfExtensions.AddInclude(Of T)(IQueryable(Of T), String)
+  fullName.vb: Innovt.Data.EFCore.EfExtensions.AddInclude(Of T)(System.Linq.IQueryable(Of T), String)
+  name.vb: AddInclude(Of T)(IQueryable(Of T), String)
+- uid: Innovt.Data.EFCore.EfExtensions.ApplyPagination``1(System.Linq.IQueryable{``0},System.Nullable{System.Int32},System.Nullable{System.Int32})
+  commentId: M:Innovt.Data.EFCore.EfExtensions.ApplyPagination``1(System.Linq.IQueryable{``0},System.Nullable{System.Int32},System.Nullable{System.Int32})
+  id: ApplyPagination``1(System.Linq.IQueryable{``0},System.Nullable{System.Int32},System.Nullable{System.Int32})
+  isExtensionMethod: true
+  parent: Innovt.Data.EFCore.EfExtensions
+  langs:
+  - csharp
+  - vb
+  name: ApplyPagination<T>(IQueryable<T>, int?, int?)
+  nameWithType: EfExtensions.ApplyPagination<T>(IQueryable<T>, int?, int?)
+  fullName: Innovt.Data.EFCore.EfExtensions.ApplyPagination<T>(System.Linq.IQueryable<T>, int?, int?)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Data.EFCore/EFExtensions.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ApplyPagination
+    path: ../src/Innovt.Data.EFCore/EFExtensions.cs
+    startLine: 64
+  assemblies:
+  - Innovt.Data.EFCore
+  namespace: Innovt.Data.EFCore
+  summary: Applies pagination to the query based on page number and page size.
+  example: []
+  syntax:
+    content: 'public static IQueryable<T> ApplyPagination<T>(this IQueryable<T> query, int? page, int? pageSize) where T : class'
+    parameters:
+    - id: query
+      type: System.Linq.IQueryable{{T}}
+      description: The IQueryable to which pagination is applied.
+    - id: page
+      type: System.Nullable{System.Int32}
+      description: The page number.
+    - id: pageSize
+      type: System.Nullable{System.Int32}
+      description: The page size.
+    typeParameters:
+    - id: T
+      description: The type of entity.
+    return:
+      type: System.Linq.IQueryable{{T}}
+      description: The IQueryable with applied pagination.
+    content.vb: Public Shared Function ApplyPagination(Of T As Class)(query As IQueryable(Of T), page As Integer?, pageSize As Integer?) As IQueryable(Of T)
+  overload: Innovt.Data.EFCore.EfExtensions.ApplyPagination*
+  nameWithType.vb: EfExtensions.ApplyPagination(Of T)(IQueryable(Of T), Integer?, Integer?)
+  fullName.vb: Innovt.Data.EFCore.EfExtensions.ApplyPagination(Of T)(System.Linq.IQueryable(Of T), Integer?, Integer?)
+  name.vb: ApplyPagination(Of T)(IQueryable(Of T), Integer?, Integer?)
+- uid: Innovt.Data.EFCore.EfExtensions.ApplyPagination``1(System.Linq.IQueryable{``0},Innovt.Domain.Core.Specification.ISpecification{``0})
+  commentId: M:Innovt.Data.EFCore.EfExtensions.ApplyPagination``1(System.Linq.IQueryable{``0},Innovt.Domain.Core.Specification.ISpecification{``0})
+  id: ApplyPagination``1(System.Linq.IQueryable{``0},Innovt.Domain.Core.Specification.ISpecification{``0})
+  isExtensionMethod: true
+  parent: Innovt.Data.EFCore.EfExtensions
+  langs:
+  - csharp
+  - vb
+  name: ApplyPagination<T>(IQueryable<T>, ISpecification<T>)
+  nameWithType: EfExtensions.ApplyPagination<T>(IQueryable<T>, ISpecification<T>)
+  fullName: Innovt.Data.EFCore.EfExtensions.ApplyPagination<T>(System.Linq.IQueryable<T>, Innovt.Domain.Core.Specification.ISpecification<T>)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Data.EFCore/EFExtensions.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ApplyPagination
+    path: ../src/Innovt.Data.EFCore/EFExtensions.cs
+    startLine: 80
+  assemblies:
+  - Innovt.Data.EFCore
+  namespace: Innovt.Data.EFCore
+  summary: Applies pagination to the query based on an ISpecification.
+  example: []
+  syntax:
+    content: 'public static IQueryable<T> ApplyPagination<T>(this IQueryable<T> query, ISpecification<T> specification) where T : class'
+    parameters:
+    - id: query
+      type: System.Linq.IQueryable{{T}}
+      description: The IQueryable to which pagination is applied.
+    - id: specification
+      type: Innovt.Domain.Core.Specification.ISpecification{{T}}
+      description: The specification containing pagination details.
+    typeParameters:
+    - id: T
+      description: The type of entity.
+    return:
+      type: System.Linq.IQueryable{{T}}
+      description: The IQueryable with applied pagination.
+    content.vb: Public Shared Function ApplyPagination(Of T As Class)(query As IQueryable(Of T), specification As ISpecification(Of T)) As IQueryable(Of T)
+  overload: Innovt.Data.EFCore.EfExtensions.ApplyPagination*
+  nameWithType.vb: EfExtensions.ApplyPagination(Of T)(IQueryable(Of T), ISpecification(Of T))
+  fullName.vb: Innovt.Data.EFCore.EfExtensions.ApplyPagination(Of T)(System.Linq.IQueryable(Of T), Innovt.Domain.Core.Specification.ISpecification(Of T))
+  name.vb: ApplyPagination(Of T)(IQueryable(Of T), ISpecification(Of T))
+- uid: Innovt.Data.EFCore.EfExtensions.AddConfiguration``1(Microsoft.EntityFrameworkCore.ModelBuilder,Microsoft.EntityFrameworkCore.IEntityTypeConfiguration{``0})
+  commentId: M:Innovt.Data.EFCore.EfExtensions.AddConfiguration``1(Microsoft.EntityFrameworkCore.ModelBuilder,Microsoft.EntityFrameworkCore.IEntityTypeConfiguration{``0})
+  id: AddConfiguration``1(Microsoft.EntityFrameworkCore.ModelBuilder,Microsoft.EntityFrameworkCore.IEntityTypeConfiguration{``0})
+  isExtensionMethod: true
+  parent: Innovt.Data.EFCore.EfExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddConfiguration<TEntity>(ModelBuilder, IEntityTypeConfiguration<TEntity>)
+  nameWithType: EfExtensions.AddConfiguration<TEntity>(ModelBuilder, IEntityTypeConfiguration<TEntity>)
+  fullName: Innovt.Data.EFCore.EfExtensions.AddConfiguration<TEntity>(Microsoft.EntityFrameworkCore.ModelBuilder, Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<TEntity>)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Data.EFCore/EFExtensions.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: AddConfiguration
+    path: ../src/Innovt.Data.EFCore/EFExtensions.cs
+    startLine: 94
+  assemblies:
+  - Innovt.Data.EFCore
+  namespace: Innovt.Data.EFCore
+  summary: Adds an entity type configuration to the ModelBuilder.
+  example: []
+  syntax:
+    content: 'public static void AddConfiguration<TEntity>(this ModelBuilder modelBuilder, IEntityTypeConfiguration<TEntity> configuration) where TEntity : class'
+    parameters:
+    - id: modelBuilder
+      type: Microsoft.EntityFrameworkCore.ModelBuilder
+      description: The ModelBuilder to which the configuration is added.
+    - id: configuration
+      type: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration{{TEntity}}
+      description: The entity type configuration.
+    typeParameters:
+    - id: TEntity
+      description: The entity type.
+    content.vb: Public Shared Sub AddConfiguration(Of TEntity As Class)(modelBuilder As ModelBuilder, configuration As IEntityTypeConfiguration(Of TEntity))
+  overload: Innovt.Data.EFCore.EfExtensions.AddConfiguration*
+  nameWithType.vb: EfExtensions.AddConfiguration(Of TEntity)(ModelBuilder, IEntityTypeConfiguration(Of TEntity))
+  fullName.vb: Innovt.Data.EFCore.EfExtensions.AddConfiguration(Of TEntity)(Microsoft.EntityFrameworkCore.ModelBuilder, Microsoft.EntityFrameworkCore.IEntityTypeConfiguration(Of TEntity))
+  name.vb: AddConfiguration(Of TEntity)(ModelBuilder, IEntityTypeConfiguration(Of TEntity))
+- uid: Innovt.Data.EFCore.EfExtensions.AddConfiguration``1(Microsoft.EntityFrameworkCore.ModelBuilder,System.Collections.Generic.IList{Microsoft.EntityFrameworkCore.IEntityTypeConfiguration{``0}})
+  commentId: M:Innovt.Data.EFCore.EfExtensions.AddConfiguration``1(Microsoft.EntityFrameworkCore.ModelBuilder,System.Collections.Generic.IList{Microsoft.EntityFrameworkCore.IEntityTypeConfiguration{``0}})
+  id: AddConfiguration``1(Microsoft.EntityFrameworkCore.ModelBuilder,System.Collections.Generic.IList{Microsoft.EntityFrameworkCore.IEntityTypeConfiguration{``0}})
+  isExtensionMethod: true
+  parent: Innovt.Data.EFCore.EfExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddConfiguration<TEntity>(ModelBuilder, IList<IEntityTypeConfiguration<TEntity>>)
+  nameWithType: EfExtensions.AddConfiguration<TEntity>(ModelBuilder, IList<IEntityTypeConfiguration<TEntity>>)
+  fullName: Innovt.Data.EFCore.EfExtensions.AddConfiguration<TEntity>(Microsoft.EntityFrameworkCore.ModelBuilder, System.Collections.Generic.IList<Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<TEntity>>)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Data.EFCore/EFExtensions.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: AddConfiguration
+    path: ../src/Innovt.Data.EFCore/EFExtensions.cs
+    startLine: 110
+  assemblies:
+  - Innovt.Data.EFCore
+  namespace: Innovt.Data.EFCore
+  summary: Adds a list of entity type configurations to the ModelBuilder.
+  example: []
+  syntax:
+    content: 'public static void AddConfiguration<TEntity>(this ModelBuilder modelBuilder, IList<IEntityTypeConfiguration<TEntity>> configurationList) where TEntity : class'
+    parameters:
+    - id: modelBuilder
+      type: Microsoft.EntityFrameworkCore.ModelBuilder
+      description: The ModelBuilder to which the configurations are added.
+    - id: configurationList
+      type: System.Collections.Generic.IList{Microsoft.EntityFrameworkCore.IEntityTypeConfiguration{{TEntity}}}
+      description: The list of entity type configurations.
+    typeParameters:
+    - id: TEntity
+      description: The entity type.
+    content.vb: Public Shared Sub AddConfiguration(Of TEntity As Class)(modelBuilder As ModelBuilder, configurationList As IList(Of IEntityTypeConfiguration(Of TEntity)))
+  overload: Innovt.Data.EFCore.EfExtensions.AddConfiguration*
+  nameWithType.vb: EfExtensions.AddConfiguration(Of TEntity)(ModelBuilder, IList(Of IEntityTypeConfiguration(Of TEntity)))
+  fullName.vb: Innovt.Data.EFCore.EfExtensions.AddConfiguration(Of TEntity)(Microsoft.EntityFrameworkCore.ModelBuilder, System.Collections.Generic.IList(Of Microsoft.EntityFrameworkCore.IEntityTypeConfiguration(Of TEntity)))
+  name.vb: AddConfiguration(Of TEntity)(ModelBuilder, IList(Of IEntityTypeConfiguration(Of TEntity)))
+references:
+- uid: Innovt.Data.EFCore
+  commentId: N:Innovt.Data.EFCore
+  href: Innovt.html
+  name: Innovt.Data.EFCore
+  nameWithType: Innovt.Data.EFCore
+  fullName: Innovt.Data.EFCore
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Data
+    name: Data
+    href: Innovt.Data.html
+  - name: .
+  - uid: Innovt.Data.EFCore
+    name: EFCore
+    href: Innovt.Data.EFCore.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Data
+    name: Data
+    href: Innovt.Data.html
+  - name: .
+  - uid: Innovt.Data.EFCore
+    name: EFCore
+    href: Innovt.Data.EFCore.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Data.EFCore.EfExtensions.AddInclude*
+  commentId: Overload:Innovt.Data.EFCore.EfExtensions.AddInclude
+  href: Innovt.Data.EFCore.EfExtensions.html#Innovt_Data_EFCore_EfExtensions_AddInclude__1_System_Linq_IQueryable___0__Innovt_Domain_Core_Repository_Include_
+  name: AddInclude
+  nameWithType: EfExtensions.AddInclude
+  fullName: Innovt.Data.EFCore.EfExtensions.AddInclude
+- uid: System.Linq.IQueryable{{T}}
+  commentId: T:System.Linq.IQueryable{``0}
+  parent: System.Linq
+  definition: System.Linq.IQueryable`1
+  href: https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1
+  name: IQueryable<T>
+  nameWithType: IQueryable<T>
+  fullName: System.Linq.IQueryable<T>
+  nameWithType.vb: IQueryable(Of T)
+  fullName.vb: System.Linq.IQueryable(Of T)
+  name.vb: IQueryable(Of T)
+  spec.csharp:
+  - uid: System.Linq.IQueryable`1
+    name: IQueryable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.IQueryable`1
+    name: IQueryable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Domain.Core.Repository.Include
+  commentId: T:Innovt.Domain.Core.Repository.Include
+  parent: Innovt.Domain.Core.Repository
+  href: Innovt.Domain.Core.Repository.Include.html
+  name: Include
+  nameWithType: Include
+  fullName: Innovt.Domain.Core.Repository.Include
+- uid: System.Linq.IQueryable`1
+  commentId: T:System.Linq.IQueryable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1
+  name: IQueryable<T>
+  nameWithType: IQueryable<T>
+  fullName: System.Linq.IQueryable<T>
+  nameWithType.vb: IQueryable(Of T)
+  fullName.vb: System.Linq.IQueryable(Of T)
+  name.vb: IQueryable(Of T)
+  spec.csharp:
+  - uid: System.Linq.IQueryable`1
+    name: IQueryable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.IQueryable`1
+    name: IQueryable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Linq
+  commentId: N:System.Linq
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Linq
+  nameWithType: System.Linq
+  fullName: System.Linq
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq
+- uid: Innovt.Domain.Core.Repository
+  commentId: N:Innovt.Domain.Core.Repository
+  href: Innovt.html
+  name: Innovt.Domain.Core.Repository
+  nameWithType: Innovt.Domain.Core.Repository
+  fullName: Innovt.Domain.Core.Repository
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Repository
+    name: Repository
+    href: Innovt.Domain.Core.Repository.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Repository
+    name: Repository
+    href: Innovt.Domain.Core.Repository.html
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Innovt.Data.EFCore.EfExtensions.ApplyPagination*
+  commentId: Overload:Innovt.Data.EFCore.EfExtensions.ApplyPagination
+  href: Innovt.Data.EFCore.EfExtensions.html#Innovt_Data_EFCore_EfExtensions_ApplyPagination__1_System_Linq_IQueryable___0__System_Nullable_System_Int32__System_Nullable_System_Int32__
+  name: ApplyPagination
+  nameWithType: EfExtensions.ApplyPagination
+  fullName: Innovt.Data.EFCore.EfExtensions.ApplyPagination
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Domain.Core.Specification.ISpecification{{T}}
+  commentId: T:Innovt.Domain.Core.Specification.ISpecification{``0}
+  parent: Innovt.Domain.Core.Specification
+  definition: Innovt.Domain.Core.Specification.ISpecification`1
+  href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  name: ISpecification<T>
+  nameWithType: ISpecification<T>
+  fullName: Innovt.Domain.Core.Specification.ISpecification<T>
+  nameWithType.vb: ISpecification(Of T)
+  fullName.vb: Innovt.Domain.Core.Specification.ISpecification(Of T)
+  name.vb: ISpecification(Of T)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+    href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+    href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Domain.Core.Specification.ISpecification`1
+  commentId: T:Innovt.Domain.Core.Specification.ISpecification`1
+  href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  name: ISpecification<TEntity>
+  nameWithType: ISpecification<TEntity>
+  fullName: Innovt.Domain.Core.Specification.ISpecification<TEntity>
+  nameWithType.vb: ISpecification(Of TEntity)
+  fullName.vb: Innovt.Domain.Core.Specification.ISpecification(Of TEntity)
+  name.vb: ISpecification(Of TEntity)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+    href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  - name: <
+  - name: TEntity
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+    href: Innovt.Domain.Core.Specification.ISpecification-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+- uid: Innovt.Domain.Core.Specification
+  commentId: N:Innovt.Domain.Core.Specification
+  href: Innovt.html
+  name: Innovt.Domain.Core.Specification
+  nameWithType: Innovt.Domain.Core.Specification
+  fullName: Innovt.Domain.Core.Specification
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Specification
+    name: Specification
+    href: Innovt.Domain.Core.Specification.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Specification
+    name: Specification
+    href: Innovt.Domain.Core.Specification.html
+- uid: Innovt.Data.EFCore.EfExtensions.AddConfiguration*
+  commentId: Overload:Innovt.Data.EFCore.EfExtensions.AddConfiguration
+  href: Innovt.Data.EFCore.EfExtensions.html#Innovt_Data_EFCore_EfExtensions_AddConfiguration__1_Microsoft_EntityFrameworkCore_ModelBuilder_Microsoft_EntityFrameworkCore_IEntityTypeConfiguration___0__
+  name: AddConfiguration
+  nameWithType: EfExtensions.AddConfiguration
+  fullName: Innovt.Data.EFCore.EfExtensions.AddConfiguration
+- uid: Microsoft.EntityFrameworkCore.ModelBuilder
+  commentId: T:Microsoft.EntityFrameworkCore.ModelBuilder
+  parent: Microsoft.EntityFrameworkCore
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.modelbuilder
+  name: ModelBuilder
+  nameWithType: ModelBuilder
+  fullName: Microsoft.EntityFrameworkCore.ModelBuilder
+- uid: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration{{TEntity}}
+  commentId: T:Microsoft.EntityFrameworkCore.IEntityTypeConfiguration{``0}
+  parent: Microsoft.EntityFrameworkCore
+  definition: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.ientitytypeconfiguration-1
+  name: IEntityTypeConfiguration<TEntity>
+  nameWithType: IEntityTypeConfiguration<TEntity>
+  fullName: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<TEntity>
+  nameWithType.vb: IEntityTypeConfiguration(Of TEntity)
+  fullName.vb: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration(Of TEntity)
+  name.vb: IEntityTypeConfiguration(Of TEntity)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1
+    name: IEntityTypeConfiguration
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.ientitytypeconfiguration-1
+  - name: <
+  - name: TEntity
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1
+    name: IEntityTypeConfiguration
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.ientitytypeconfiguration-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+- uid: Microsoft.EntityFrameworkCore
+  commentId: N:Microsoft.EntityFrameworkCore
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.EntityFrameworkCore
+  nameWithType: Microsoft.EntityFrameworkCore
+  fullName: Microsoft.EntityFrameworkCore
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.EntityFrameworkCore
+    name: EntityFrameworkCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.EntityFrameworkCore
+    name: EntityFrameworkCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
+- uid: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1
+  commentId: T:Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.ientitytypeconfiguration-1
+  name: IEntityTypeConfiguration<TEntity>
+  nameWithType: IEntityTypeConfiguration<TEntity>
+  fullName: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<TEntity>
+  nameWithType.vb: IEntityTypeConfiguration(Of TEntity)
+  fullName.vb: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration(Of TEntity)
+  name.vb: IEntityTypeConfiguration(Of TEntity)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1
+    name: IEntityTypeConfiguration
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.ientitytypeconfiguration-1
+  - name: <
+  - name: TEntity
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1
+    name: IEntityTypeConfiguration
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.ientitytypeconfiguration-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+- uid: System.Collections.Generic.IList{Microsoft.EntityFrameworkCore.IEntityTypeConfiguration{{TEntity}}}
+  commentId: T:System.Collections.Generic.IList{Microsoft.EntityFrameworkCore.IEntityTypeConfiguration{``0}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<IEntityTypeConfiguration<TEntity>>
+  nameWithType: IList<IEntityTypeConfiguration<TEntity>>
+  fullName: System.Collections.Generic.IList<Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<TEntity>>
+  nameWithType.vb: IList(Of IEntityTypeConfiguration(Of TEntity))
+  fullName.vb: System.Collections.Generic.IList(Of Microsoft.EntityFrameworkCore.IEntityTypeConfiguration(Of TEntity))
+  name.vb: IList(Of IEntityTypeConfiguration(Of TEntity))
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1
+    name: IEntityTypeConfiguration
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.ientitytypeconfiguration-1
+  - name: <
+  - name: TEntity
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1
+    name: IEntityTypeConfiguration
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.ientitytypeconfiguration-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IList`1
+  commentId: T:System.Collections.Generic.IList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<T>
+  nameWithType: IList<T>
+  fullName: System.Collections.Generic.IList<T>
+  nameWithType.vb: IList(Of T)
+  fullName.vb: System.Collections.Generic.IList(Of T)
+  name.vb: IList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.AspNetCore.Infrastructure
+  commentId: N:Innovt.AspNetCore.Infrastructure
+  id: Innovt.AspNetCore.Infrastructure
+  children:
+  - Innovt.AspNetCore.Infrastructure.InvalidModelStateResponse
+  langs:
+  - csharp
+  - vb
+  name: Innovt.AspNetCore.Infrastructure
+  nameWithType: Innovt.AspNetCore.Infrastructure
+  fullName: Innovt.AspNetCore.Infrastructure
+  type: Namespace
+  assemblies:
+  - Innovt.AspNetCore
+references:
+- uid: Innovt.AspNetCore.Infrastructure.InvalidModelStateResponse
+  commentId: T:Innovt.AspNetCore.Infrastructure.InvalidModelStateResponse
+  href: Innovt.AspNetCore.Infrastructure.InvalidModelStateResponse.html
+  name: InvalidModelStateResponse
+  nameWithType: InvalidModelStateResponse
+  fullName: Innovt.AspNetCore.Infrastructure.InvalidModelStateResponse

@@ -1,0 +1,101 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Core.Collections
+  commentId: N:Innovt.Core.Collections
+  id: Innovt.Core.Collections
+  children:
+  - Innovt.Core.Collections.Extensions
+  - Innovt.Core.Collections.IPagedCollection`1
+  - Innovt.Core.Collections.PagedCollection`1
+  - Innovt.Core.Collections.ParamsWrappers`1
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Core.Collections
+  nameWithType: Innovt.Core.Collections
+  fullName: Innovt.Core.Collections
+  type: Namespace
+  assemblies:
+  - Innovt.Core
+references:
+- uid: Innovt.Core.Collections.Extensions
+  commentId: T:Innovt.Core.Collections.Extensions
+  href: Innovt.Core.Collections.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Collections.Extensions
+- uid: Innovt.Core.Collections.IPagedCollection`1
+  commentId: T:Innovt.Core.Collections.IPagedCollection`1
+  href: Innovt.Core.Collections.IPagedCollection-1.html
+  name: IPagedCollection<T>
+  nameWithType: IPagedCollection<T>
+  fullName: Innovt.Core.Collections.IPagedCollection<T>
+  nameWithType.vb: IPagedCollection(Of T)
+  fullName.vb: Innovt.Core.Collections.IPagedCollection(Of T)
+  name.vb: IPagedCollection(Of T)
+  spec.csharp:
+  - uid: Innovt.Core.Collections.IPagedCollection`1
+    name: IPagedCollection
+    href: Innovt.Core.Collections.IPagedCollection-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Core.Collections.IPagedCollection`1
+    name: IPagedCollection
+    href: Innovt.Core.Collections.IPagedCollection-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Core.Collections.PagedCollection`1
+  commentId: T:Innovt.Core.Collections.PagedCollection`1
+  href: Innovt.Core.Collections.PagedCollection-1.html
+  name: PagedCollection<T>
+  nameWithType: PagedCollection<T>
+  fullName: Innovt.Core.Collections.PagedCollection<T>
+  nameWithType.vb: PagedCollection(Of T)
+  fullName.vb: Innovt.Core.Collections.PagedCollection(Of T)
+  name.vb: PagedCollection(Of T)
+  spec.csharp:
+  - uid: Innovt.Core.Collections.PagedCollection`1
+    name: PagedCollection
+    href: Innovt.Core.Collections.PagedCollection-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Core.Collections.PagedCollection`1
+    name: PagedCollection
+    href: Innovt.Core.Collections.PagedCollection-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Core.Collections.ParamsWrappers`1
+  commentId: T:Innovt.Core.Collections.ParamsWrappers`1
+  href: Innovt.Core.Collections.ParamsWrappers-1.html
+  name: ParamsWrappers<T>
+  nameWithType: ParamsWrappers<T>
+  fullName: Innovt.Core.Collections.ParamsWrappers<T>
+  nameWithType.vb: ParamsWrappers(Of T)
+  fullName.vb: Innovt.Core.Collections.ParamsWrappers(Of T)
+  name.vb: ParamsWrappers(Of T)
+  spec.csharp:
+  - uid: Innovt.Core.Collections.ParamsWrappers`1
+    name: ParamsWrappers
+    href: Innovt.Core.Collections.ParamsWrappers-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Core.Collections.ParamsWrappers`1
+    name: ParamsWrappers
+    href: Innovt.Core.Collections.ParamsWrappers-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

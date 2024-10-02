@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.Dynamo.Converters
+  commentId: N:Innovt.Cloud.AWS.Dynamo.Converters
+  id: Innovt.Cloud.AWS.Dynamo.Converters
+  children:
+  - Innovt.Cloud.AWS.Dynamo.Converters.DateTimeOffsetConverter
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Cloud.AWS.Dynamo.Converters
+  nameWithType: Innovt.Cloud.AWS.Dynamo.Converters
+  fullName: Innovt.Cloud.AWS.Dynamo.Converters
+  type: Namespace
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+references:
+- uid: Innovt.Cloud.AWS.Dynamo.Converters.DateTimeOffsetConverter
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Converters.DateTimeOffsetConverter
+  href: Innovt.Cloud.AWS.Dynamo.Converters.DateTimeOffsetConverter.html
+  name: DateTimeOffsetConverter
+  nameWithType: DateTimeOffsetConverter
+  fullName: Innovt.Cloud.AWS.Dynamo.Converters.DateTimeOffsetConverter

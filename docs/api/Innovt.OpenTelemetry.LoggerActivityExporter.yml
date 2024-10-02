@@ -1,0 +1,1330 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.OpenTelemetry.LoggerActivityExporter
+  commentId: T:Innovt.OpenTelemetry.LoggerActivityExporter
+  id: LoggerActivityExporter
+  parent: Innovt.OpenTelemetry
+  children:
+  - Innovt.OpenTelemetry.LoggerActivityExporter.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  - Innovt.OpenTelemetry.LoggerActivityExporter.Export(OpenTelemetry.Batch{System.Diagnostics.Activity}@)
+  langs:
+  - csharp
+  - vb
+  name: LoggerActivityExporter
+  nameWithType: LoggerActivityExporter
+  fullName: Innovt.OpenTelemetry.LoggerActivityExporter
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.OpenTelemetry/LoggerActivityExporter.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: LoggerActivityExporter
+    path: ../src/Innovt.OpenTelemetry/LoggerActivityExporter.cs
+    startLine: 19
+  assemblies:
+  - Innovt.OpenTelemetry
+  namespace: Innovt.OpenTelemetry
+  summary: This is a simple exporter that logs telemetry to the console.
+  example: []
+  syntax:
+    content: 'public class LoggerActivityExporter : BaseExporter<Activity>, IDisposable'
+    content.vb: Public Class LoggerActivityExporter Inherits BaseExporter(Of Activity) Implements IDisposable
+  inheritance:
+  - System.Object
+  - OpenTelemetry.BaseExporter{System.Diagnostics.Activity}
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.ForceFlush(System.Int32)
+  - OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.Shutdown(System.Int32)
+  - OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.Dispose
+  - OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.OnForceFlush(System.Int32)
+  - OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.OnShutdown(System.Int32)
+  - OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.Dispose(System.Boolean)
+  - OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.ParentProvider
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+- uid: Innovt.OpenTelemetry.LoggerActivityExporter.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  commentId: M:Innovt.OpenTelemetry.LoggerActivityExporter.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  id: '#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection)'
+  parent: Innovt.OpenTelemetry.LoggerActivityExporter
+  langs:
+  - csharp
+  - vb
+  name: LoggerActivityExporter(IServiceCollection)
+  nameWithType: LoggerActivityExporter.LoggerActivityExporter(IServiceCollection)
+  fullName: Innovt.OpenTelemetry.LoggerActivityExporter.LoggerActivityExporter(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.OpenTelemetry/LoggerActivityExporter.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: ../src/Innovt.OpenTelemetry/LoggerActivityExporter.cs
+    startLine: 31
+  assemblies:
+  - Innovt.OpenTelemetry
+  namespace: Innovt.OpenTelemetry
+  summary: Initializes a new instance of the <xref href="Innovt.OpenTelemetry.LoggerActivityExporter" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public LoggerActivityExporter(IServiceCollection serviceCollection)
+    parameters:
+    - id: serviceCollection
+      type: Microsoft.Extensions.DependencyInjection.IServiceCollection
+      description: ''
+    content.vb: Public Sub New(serviceCollection As IServiceCollection)
+  overload: Innovt.OpenTelemetry.LoggerActivityExporter.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: ''
+  nameWithType.vb: LoggerActivityExporter.New(IServiceCollection)
+  fullName.vb: Innovt.OpenTelemetry.LoggerActivityExporter.New(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  name.vb: New(IServiceCollection)
+- uid: Innovt.OpenTelemetry.LoggerActivityExporter.Export(OpenTelemetry.Batch{System.Diagnostics.Activity}@)
+  commentId: M:Innovt.OpenTelemetry.LoggerActivityExporter.Export(OpenTelemetry.Batch{System.Diagnostics.Activity}@)
+  id: Export(OpenTelemetry.Batch{System.Diagnostics.Activity}@)
+  parent: Innovt.OpenTelemetry.LoggerActivityExporter
+  langs:
+  - csharp
+  - vb
+  name: Export(in Batch<Activity>)
+  nameWithType: LoggerActivityExporter.Export(in Batch<Activity>)
+  fullName: Innovt.OpenTelemetry.LoggerActivityExporter.Export(in OpenTelemetry.Batch<System.Diagnostics.Activity>)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.OpenTelemetry/LoggerActivityExporter.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Export
+    path: ../src/Innovt.OpenTelemetry/LoggerActivityExporter.cs
+    startLine: 55
+  assemblies:
+  - Innovt.OpenTelemetry
+  namespace: Innovt.OpenTelemetry
+  summary: Exports a batch of telemetry data.
+  example: []
+  syntax:
+    content: public override ExportResult Export(in Batch<Activity> batch)
+    parameters:
+    - id: batch
+      type: OpenTelemetry.Batch{System.Diagnostics.Activity}
+      description: ''
+    return:
+      type: OpenTelemetry.ExportResult
+      description: ''
+    content.vb: Public Overrides Function Export(batch As Batch(Of Activity)) As ExportResult
+  overridden: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.Export(OpenTelemetry.Batch{System.Diagnostics.Activity}@)
+  overload: Innovt.OpenTelemetry.LoggerActivityExporter.Export*
+  nameWithType.vb: LoggerActivityExporter.Export(Batch(Of Activity))
+  fullName.vb: Innovt.OpenTelemetry.LoggerActivityExporter.Export(OpenTelemetry.Batch(Of System.Diagnostics.Activity))
+  name.vb: Export(Batch(Of Activity))
+references:
+- uid: Innovt.OpenTelemetry
+  commentId: N:Innovt.OpenTelemetry
+  href: Innovt.html
+  name: Innovt.OpenTelemetry
+  nameWithType: Innovt.OpenTelemetry
+  fullName: Innovt.OpenTelemetry
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.OpenTelemetry
+    name: OpenTelemetry
+    href: Innovt.OpenTelemetry.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.OpenTelemetry
+    name: OpenTelemetry
+    href: Innovt.OpenTelemetry.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}
+  commentId: T:OpenTelemetry.BaseExporter{System.Diagnostics.Activity}
+  parent: OpenTelemetry
+  definition: OpenTelemetry.BaseExporter`1
+  href: https://learn.microsoft.com/dotnet/api/system.diagnostics.activity
+  name: BaseExporter<Activity>
+  nameWithType: BaseExporter<Activity>
+  fullName: OpenTelemetry.BaseExporter<System.Diagnostics.Activity>
+  nameWithType.vb: BaseExporter(Of Activity)
+  fullName.vb: OpenTelemetry.BaseExporter(Of System.Diagnostics.Activity)
+  name.vb: BaseExporter(Of Activity)
+  spec.csharp:
+  - uid: OpenTelemetry.BaseExporter`1
+    name: BaseExporter
+    isExternal: true
+  - name: <
+  - uid: System.Diagnostics.Activity
+    name: Activity
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.diagnostics.activity
+  - name: '>'
+  spec.vb:
+  - uid: OpenTelemetry.BaseExporter`1
+    name: BaseExporter
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Diagnostics.Activity
+    name: Activity
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.diagnostics.activity
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.ForceFlush(System.Int32)
+  commentId: M:OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.ForceFlush(System.Int32)
+  parent: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}
+  definition: OpenTelemetry.BaseExporter`1.ForceFlush(System.Int32)
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: ForceFlush(int)
+  nameWithType: BaseExporter<Activity>.ForceFlush(int)
+  fullName: OpenTelemetry.BaseExporter<System.Diagnostics.Activity>.ForceFlush(int)
+  nameWithType.vb: BaseExporter(Of Activity).ForceFlush(Integer)
+  fullName.vb: OpenTelemetry.BaseExporter(Of System.Diagnostics.Activity).ForceFlush(Integer)
+  name.vb: ForceFlush(Integer)
+  spec.csharp:
+  - uid: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.ForceFlush(System.Int32)
+    name: ForceFlush
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.ForceFlush(System.Int32)
+    name: ForceFlush
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.Shutdown(System.Int32)
+  commentId: M:OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.Shutdown(System.Int32)
+  parent: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}
+  definition: OpenTelemetry.BaseExporter`1.Shutdown(System.Int32)
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: Shutdown(int)
+  nameWithType: BaseExporter<Activity>.Shutdown(int)
+  fullName: OpenTelemetry.BaseExporter<System.Diagnostics.Activity>.Shutdown(int)
+  nameWithType.vb: BaseExporter(Of Activity).Shutdown(Integer)
+  fullName.vb: OpenTelemetry.BaseExporter(Of System.Diagnostics.Activity).Shutdown(Integer)
+  name.vb: Shutdown(Integer)
+  spec.csharp:
+  - uid: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.Shutdown(System.Int32)
+    name: Shutdown
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.Shutdown(System.Int32)
+    name: Shutdown
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.Dispose
+  commentId: M:OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.Dispose
+  parent: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}
+  definition: OpenTelemetry.BaseExporter`1.Dispose
+  name: Dispose()
+  nameWithType: BaseExporter<Activity>.Dispose()
+  fullName: OpenTelemetry.BaseExporter<System.Diagnostics.Activity>.Dispose()
+  nameWithType.vb: BaseExporter(Of Activity).Dispose()
+  fullName.vb: OpenTelemetry.BaseExporter(Of System.Diagnostics.Activity).Dispose()
+  spec.csharp:
+  - uid: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.Dispose
+    name: Dispose
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.Dispose
+    name: Dispose
+    isExternal: true
+  - name: (
+  - name: )
+- uid: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.OnForceFlush(System.Int32)
+  commentId: M:OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.OnForceFlush(System.Int32)
+  parent: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}
+  definition: OpenTelemetry.BaseExporter`1.OnForceFlush(System.Int32)
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: OnForceFlush(int)
+  nameWithType: BaseExporter<Activity>.OnForceFlush(int)
+  fullName: OpenTelemetry.BaseExporter<System.Diagnostics.Activity>.OnForceFlush(int)
+  nameWithType.vb: BaseExporter(Of Activity).OnForceFlush(Integer)
+  fullName.vb: OpenTelemetry.BaseExporter(Of System.Diagnostics.Activity).OnForceFlush(Integer)
+  name.vb: OnForceFlush(Integer)
+  spec.csharp:
+  - uid: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.OnForceFlush(System.Int32)
+    name: OnForceFlush
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.OnForceFlush(System.Int32)
+    name: OnForceFlush
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.OnShutdown(System.Int32)
+  commentId: M:OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.OnShutdown(System.Int32)
+  parent: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}
+  definition: OpenTelemetry.BaseExporter`1.OnShutdown(System.Int32)
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: OnShutdown(int)
+  nameWithType: BaseExporter<Activity>.OnShutdown(int)
+  fullName: OpenTelemetry.BaseExporter<System.Diagnostics.Activity>.OnShutdown(int)
+  nameWithType.vb: BaseExporter(Of Activity).OnShutdown(Integer)
+  fullName.vb: OpenTelemetry.BaseExporter(Of System.Diagnostics.Activity).OnShutdown(Integer)
+  name.vb: OnShutdown(Integer)
+  spec.csharp:
+  - uid: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.OnShutdown(System.Int32)
+    name: OnShutdown
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.OnShutdown(System.Int32)
+    name: OnShutdown
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.Dispose(System.Boolean)
+  commentId: M:OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.Dispose(System.Boolean)
+  parent: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}
+  definition: OpenTelemetry.BaseExporter`1.Dispose(System.Boolean)
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: Dispose(bool)
+  nameWithType: BaseExporter<Activity>.Dispose(bool)
+  fullName: OpenTelemetry.BaseExporter<System.Diagnostics.Activity>.Dispose(bool)
+  nameWithType.vb: BaseExporter(Of Activity).Dispose(Boolean)
+  fullName.vb: OpenTelemetry.BaseExporter(Of System.Diagnostics.Activity).Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+  spec.csharp:
+  - uid: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.Dispose(System.Boolean)
+    name: Dispose
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.Dispose(System.Boolean)
+    name: Dispose
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.ParentProvider
+  commentId: P:OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.ParentProvider
+  parent: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}
+  definition: OpenTelemetry.BaseExporter`1.ParentProvider
+  name: ParentProvider
+  nameWithType: BaseExporter<Activity>.ParentProvider
+  fullName: OpenTelemetry.BaseExporter<System.Diagnostics.Activity>.ParentProvider
+  nameWithType.vb: BaseExporter(Of Activity).ParentProvider
+  fullName.vb: OpenTelemetry.BaseExporter(Of System.Diagnostics.Activity).ParentProvider
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: OpenTelemetry.BaseExporter`1
+  commentId: T:OpenTelemetry.BaseExporter`1
+  isExternal: true
+  name: BaseExporter<T>
+  nameWithType: BaseExporter<T>
+  fullName: OpenTelemetry.BaseExporter<T>
+  nameWithType.vb: BaseExporter(Of T)
+  fullName.vb: OpenTelemetry.BaseExporter(Of T)
+  name.vb: BaseExporter(Of T)
+  spec.csharp:
+  - uid: OpenTelemetry.BaseExporter`1
+    name: BaseExporter
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: OpenTelemetry.BaseExporter`1
+    name: BaseExporter
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: OpenTelemetry
+  commentId: N:OpenTelemetry
+  isExternal: true
+  name: OpenTelemetry
+  nameWithType: OpenTelemetry
+  fullName: OpenTelemetry
+- uid: OpenTelemetry.BaseExporter`1.ForceFlush(System.Int32)
+  commentId: M:OpenTelemetry.BaseExporter`1.ForceFlush(System.Int32)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: ForceFlush(int)
+  nameWithType: BaseExporter<T>.ForceFlush(int)
+  fullName: OpenTelemetry.BaseExporter<T>.ForceFlush(int)
+  nameWithType.vb: BaseExporter(Of T).ForceFlush(Integer)
+  fullName.vb: OpenTelemetry.BaseExporter(Of T).ForceFlush(Integer)
+  name.vb: ForceFlush(Integer)
+  spec.csharp:
+  - uid: OpenTelemetry.BaseExporter`1.ForceFlush(System.Int32)
+    name: ForceFlush
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: OpenTelemetry.BaseExporter`1.ForceFlush(System.Int32)
+    name: ForceFlush
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: OpenTelemetry.BaseExporter`1.Shutdown(System.Int32)
+  commentId: M:OpenTelemetry.BaseExporter`1.Shutdown(System.Int32)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: Shutdown(int)
+  nameWithType: BaseExporter<T>.Shutdown(int)
+  fullName: OpenTelemetry.BaseExporter<T>.Shutdown(int)
+  nameWithType.vb: BaseExporter(Of T).Shutdown(Integer)
+  fullName.vb: OpenTelemetry.BaseExporter(Of T).Shutdown(Integer)
+  name.vb: Shutdown(Integer)
+  spec.csharp:
+  - uid: OpenTelemetry.BaseExporter`1.Shutdown(System.Int32)
+    name: Shutdown
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: OpenTelemetry.BaseExporter`1.Shutdown(System.Int32)
+    name: Shutdown
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: OpenTelemetry.BaseExporter`1.Dispose
+  commentId: M:OpenTelemetry.BaseExporter`1.Dispose
+  isExternal: true
+  name: Dispose()
+  nameWithType: BaseExporter<T>.Dispose()
+  fullName: OpenTelemetry.BaseExporter<T>.Dispose()
+  nameWithType.vb: BaseExporter(Of T).Dispose()
+  fullName.vb: OpenTelemetry.BaseExporter(Of T).Dispose()
+  spec.csharp:
+  - uid: OpenTelemetry.BaseExporter`1.Dispose
+    name: Dispose
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: OpenTelemetry.BaseExporter`1.Dispose
+    name: Dispose
+    isExternal: true
+  - name: (
+  - name: )
+- uid: OpenTelemetry.BaseExporter`1.OnForceFlush(System.Int32)
+  commentId: M:OpenTelemetry.BaseExporter`1.OnForceFlush(System.Int32)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: OnForceFlush(int)
+  nameWithType: BaseExporter<T>.OnForceFlush(int)
+  fullName: OpenTelemetry.BaseExporter<T>.OnForceFlush(int)
+  nameWithType.vb: BaseExporter(Of T).OnForceFlush(Integer)
+  fullName.vb: OpenTelemetry.BaseExporter(Of T).OnForceFlush(Integer)
+  name.vb: OnForceFlush(Integer)
+  spec.csharp:
+  - uid: OpenTelemetry.BaseExporter`1.OnForceFlush(System.Int32)
+    name: OnForceFlush
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: OpenTelemetry.BaseExporter`1.OnForceFlush(System.Int32)
+    name: OnForceFlush
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: OpenTelemetry.BaseExporter`1.OnShutdown(System.Int32)
+  commentId: M:OpenTelemetry.BaseExporter`1.OnShutdown(System.Int32)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: OnShutdown(int)
+  nameWithType: BaseExporter<T>.OnShutdown(int)
+  fullName: OpenTelemetry.BaseExporter<T>.OnShutdown(int)
+  nameWithType.vb: BaseExporter(Of T).OnShutdown(Integer)
+  fullName.vb: OpenTelemetry.BaseExporter(Of T).OnShutdown(Integer)
+  name.vb: OnShutdown(Integer)
+  spec.csharp:
+  - uid: OpenTelemetry.BaseExporter`1.OnShutdown(System.Int32)
+    name: OnShutdown
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: OpenTelemetry.BaseExporter`1.OnShutdown(System.Int32)
+    name: OnShutdown
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: OpenTelemetry.BaseExporter`1.Dispose(System.Boolean)
+  commentId: M:OpenTelemetry.BaseExporter`1.Dispose(System.Boolean)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: Dispose(bool)
+  nameWithType: BaseExporter<T>.Dispose(bool)
+  fullName: OpenTelemetry.BaseExporter<T>.Dispose(bool)
+  nameWithType.vb: BaseExporter(Of T).Dispose(Boolean)
+  fullName.vb: OpenTelemetry.BaseExporter(Of T).Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+  spec.csharp:
+  - uid: OpenTelemetry.BaseExporter`1.Dispose(System.Boolean)
+    name: Dispose
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: OpenTelemetry.BaseExporter`1.Dispose(System.Boolean)
+    name: Dispose
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: OpenTelemetry.BaseExporter`1.ParentProvider
+  commentId: P:OpenTelemetry.BaseExporter`1.ParentProvider
+  isExternal: true
+  name: ParentProvider
+  nameWithType: BaseExporter<T>.ParentProvider
+  fullName: OpenTelemetry.BaseExporter<T>.ParentProvider
+  nameWithType.vb: BaseExporter(Of T).ParentProvider
+  fullName.vb: OpenTelemetry.BaseExporter(Of T).ParentProvider
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.OpenTelemetry.LoggerActivityExporter
+  commentId: T:Innovt.OpenTelemetry.LoggerActivityExporter
+  href: Innovt.OpenTelemetry.LoggerActivityExporter.html
+  name: LoggerActivityExporter
+  nameWithType: LoggerActivityExporter
+  fullName: Innovt.OpenTelemetry.LoggerActivityExporter
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: Innovt.OpenTelemetry.LoggerActivityExporter.#ctor*
+  commentId: Overload:Innovt.OpenTelemetry.LoggerActivityExporter.#ctor
+  href: Innovt.OpenTelemetry.LoggerActivityExporter.html#Innovt_OpenTelemetry_LoggerActivityExporter__ctor_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  name: LoggerActivityExporter
+  nameWithType: LoggerActivityExporter.LoggerActivityExporter
+  fullName: Innovt.OpenTelemetry.LoggerActivityExporter.LoggerActivityExporter
+  nameWithType.vb: LoggerActivityExporter.New
+  fullName.vb: Innovt.OpenTelemetry.LoggerActivityExporter.New
+  name.vb: New
+- uid: Microsoft.Extensions.DependencyInjection.IServiceCollection
+  commentId: T:Microsoft.Extensions.DependencyInjection.IServiceCollection
+  parent: Microsoft.Extensions.DependencyInjection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
+  name: IServiceCollection
+  nameWithType: IServiceCollection
+  fullName: Microsoft.Extensions.DependencyInjection.IServiceCollection
+- uid: Microsoft.Extensions.DependencyInjection
+  commentId: N:Microsoft.Extensions.DependencyInjection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.DependencyInjection
+  nameWithType: Microsoft.Extensions.DependencyInjection
+  fullName: Microsoft.Extensions.DependencyInjection
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection
+- uid: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.Export(OpenTelemetry.Batch{System.Diagnostics.Activity}@)
+  commentId: M:OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.Export(OpenTelemetry.Batch{System.Diagnostics.Activity}@)
+  parent: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}
+  definition: OpenTelemetry.BaseExporter`1.Export(OpenTelemetry.Batch{`0}@)
+  href: https://learn.microsoft.com/dotnet/api/system.diagnostics.activity
+  name: Export(in Batch<Activity>)
+  nameWithType: BaseExporter<Activity>.Export(in Batch<Activity>)
+  fullName: OpenTelemetry.BaseExporter<System.Diagnostics.Activity>.Export(in OpenTelemetry.Batch<System.Diagnostics.Activity>)
+  nameWithType.vb: BaseExporter(Of Activity).Export(Batch(Of Activity))
+  fullName.vb: OpenTelemetry.BaseExporter(Of System.Diagnostics.Activity).Export(OpenTelemetry.Batch(Of System.Diagnostics.Activity))
+  name.vb: Export(Batch(Of Activity))
+  spec.csharp:
+  - uid: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.Export(OpenTelemetry.Batch{System.Diagnostics.Activity}@)
+    name: Export
+    isExternal: true
+  - name: (
+  - name: in
+  - name: " "
+  - uid: OpenTelemetry.Batch`1
+    name: Batch
+    isExternal: true
+  - name: <
+  - uid: System.Diagnostics.Activity
+    name: Activity
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.diagnostics.activity
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: OpenTelemetry.BaseExporter{System.Diagnostics.Activity}.Export(OpenTelemetry.Batch{System.Diagnostics.Activity}@)
+    name: Export
+    isExternal: true
+  - name: (
+  - uid: OpenTelemetry.Batch`1
+    name: Batch
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Diagnostics.Activity
+    name: Activity
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.diagnostics.activity
+  - name: )
+  - name: )
+- uid: Innovt.OpenTelemetry.LoggerActivityExporter.Export*
+  commentId: Overload:Innovt.OpenTelemetry.LoggerActivityExporter.Export
+  href: Innovt.OpenTelemetry.LoggerActivityExporter.html#Innovt_OpenTelemetry_LoggerActivityExporter_Export_OpenTelemetry_Batch_System_Diagnostics_Activity___
+  name: Export
+  nameWithType: LoggerActivityExporter.Export
+  fullName: Innovt.OpenTelemetry.LoggerActivityExporter.Export
+- uid: OpenTelemetry.Batch{System.Diagnostics.Activity}
+  commentId: T:OpenTelemetry.Batch{System.Diagnostics.Activity}
+  parent: OpenTelemetry
+  definition: OpenTelemetry.Batch`1
+  href: https://learn.microsoft.com/dotnet/api/system.diagnostics.activity
+  name: Batch<Activity>
+  nameWithType: Batch<Activity>
+  fullName: OpenTelemetry.Batch<System.Diagnostics.Activity>
+  nameWithType.vb: Batch(Of Activity)
+  fullName.vb: OpenTelemetry.Batch(Of System.Diagnostics.Activity)
+  name.vb: Batch(Of Activity)
+  spec.csharp:
+  - uid: OpenTelemetry.Batch`1
+    name: Batch
+    isExternal: true
+  - name: <
+  - uid: System.Diagnostics.Activity
+    name: Activity
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.diagnostics.activity
+  - name: '>'
+  spec.vb:
+  - uid: OpenTelemetry.Batch`1
+    name: Batch
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Diagnostics.Activity
+    name: Activity
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.diagnostics.activity
+  - name: )
+- uid: OpenTelemetry.ExportResult
+  commentId: T:OpenTelemetry.ExportResult
+  parent: OpenTelemetry
+  isExternal: true
+  name: ExportResult
+  nameWithType: ExportResult
+  fullName: OpenTelemetry.ExportResult
+- uid: OpenTelemetry.BaseExporter`1.Export(OpenTelemetry.Batch{`0}@)
+  commentId: M:OpenTelemetry.BaseExporter`1.Export(OpenTelemetry.Batch{`0}@)
+  isExternal: true
+  name: Export(in Batch<T>)
+  nameWithType: BaseExporter<T>.Export(in Batch<T>)
+  fullName: OpenTelemetry.BaseExporter<T>.Export(in OpenTelemetry.Batch<T>)
+  nameWithType.vb: BaseExporter(Of T).Export(Batch(Of T))
+  fullName.vb: OpenTelemetry.BaseExporter(Of T).Export(OpenTelemetry.Batch(Of T))
+  name.vb: Export(Batch(Of T))
+  spec.csharp:
+  - uid: OpenTelemetry.BaseExporter`1.Export(OpenTelemetry.Batch{`0}@)
+    name: Export
+    isExternal: true
+  - name: (
+  - name: in
+  - name: " "
+  - uid: OpenTelemetry.Batch`1
+    name: Batch
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: OpenTelemetry.BaseExporter`1.Export(OpenTelemetry.Batch{`0}@)
+    name: Export
+    isExternal: true
+  - name: (
+  - uid: OpenTelemetry.Batch`1
+    name: Batch
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: OpenTelemetry.Batch`1
+  commentId: T:OpenTelemetry.Batch`1
+  isExternal: true
+  name: Batch<T>
+  nameWithType: Batch<T>
+  fullName: OpenTelemetry.Batch<T>
+  nameWithType.vb: Batch(Of T)
+  fullName.vb: OpenTelemetry.Batch(Of T)
+  name.vb: Batch(Of T)
+  spec.csharp:
+  - uid: OpenTelemetry.Batch`1
+    name: Batch
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: OpenTelemetry.Batch`1
+    name: Batch
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

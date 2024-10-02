@@ -1,0 +1,53 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.AspNetCore
+  commentId: N:Innovt.AspNetCore
+  id: Innovt.AspNetCore
+  children:
+  - Innovt.AspNetCore.ApiStartupBase
+  - Innovt.AspNetCore.Constants
+  langs:
+  - csharp
+  - vb
+  name: Innovt.AspNetCore
+  nameWithType: Innovt.AspNetCore
+  fullName: Innovt.AspNetCore
+  type: Namespace
+  assemblies:
+  - Innovt.AspNetCore
+references:
+- uid: Innovt.AspNetCore.ApiStartupBase
+  commentId: T:Innovt.AspNetCore.ApiStartupBase
+  parent: Innovt.AspNetCore
+  href: Innovt.AspNetCore.ApiStartupBase.html
+  name: ApiStartupBase
+  nameWithType: ApiStartupBase
+  fullName: Innovt.AspNetCore.ApiStartupBase
+- uid: Innovt.AspNetCore.Constants
+  commentId: T:Innovt.AspNetCore.Constants
+  href: Innovt.AspNetCore.Constants.html
+  name: Constants
+  nameWithType: Constants
+  fullName: Innovt.AspNetCore.Constants
+- uid: Innovt.AspNetCore
+  commentId: N:Innovt.AspNetCore
+  href: Innovt.html
+  name: Innovt.AspNetCore
+  nameWithType: Innovt.AspNetCore
+  fullName: Innovt.AspNetCore
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.AspNetCore
+    name: AspNetCore
+    href: Innovt.AspNetCore.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.AspNetCore
+    name: AspNetCore
+    href: Innovt.AspNetCore.html

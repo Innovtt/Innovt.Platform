@@ -80,7 +80,7 @@ internal class RoleDataModel : DataModelBase
             Name = role.Name,
             Scope = role.Scope,
             Description = role.Description,
-            CreatedAt = role.CreatedAt.GetValueOrDefault().UtcDateTime,
+            CreatedAt = role.CreatedAt.UtcDateTime,
             RoleId = role.Id,
             Id = $"R#{role.Name}",
             Sk = $"S#{role.Scope}"

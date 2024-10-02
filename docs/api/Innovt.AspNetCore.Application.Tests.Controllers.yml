@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.AspNetCore.Application.Tests.Controllers
+  commentId: N:Innovt.AspNetCore.Application.Tests.Controllers
+  id: Innovt.AspNetCore.Application.Tests.Controllers
+  children:
+  - Innovt.AspNetCore.Application.Tests.Controllers.SampleController
+  langs:
+  - csharp
+  - vb
+  name: Innovt.AspNetCore.Application.Tests.Controllers
+  nameWithType: Innovt.AspNetCore.Application.Tests.Controllers
+  fullName: Innovt.AspNetCore.Application.Tests.Controllers
+  type: Namespace
+  assemblies:
+  - Innovt.AspNetCore.Application.Tests
+references:
+- uid: Innovt.AspNetCore.Application.Tests.Controllers.SampleController
+  commentId: T:Innovt.AspNetCore.Application.Tests.Controllers.SampleController
+  href: Innovt.AspNetCore.Application.Tests.Controllers.SampleController.html
+  name: SampleController
+  nameWithType: SampleController
+  fullName: Innovt.AspNetCore.Application.Tests.Controllers.SampleController

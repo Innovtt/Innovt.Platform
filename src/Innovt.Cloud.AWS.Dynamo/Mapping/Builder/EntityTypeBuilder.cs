@@ -43,7 +43,7 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     /// <summary>
     ///     Gets or sets the entity type for the DynamoDB table.
     /// </summary>
-    public string EntityType { get; private set; } = typeof(TEntity).Name;
+    public string EntityType { get; private set; } = typeof(TEntity).Name.ToUpper();
 
     /// <summary>
     ///     Gets or sets the list of property type builders for defining properties.
@@ -236,7 +236,7 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
 
         //Set the table name as the entity name
         TableName = entityType.Name;
-
+        
         var properties = entityType.GetProperties(
             BindingFlags.Public | BindingFlags.Instance);
 

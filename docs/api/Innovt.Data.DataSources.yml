@@ -1,0 +1,99 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Data.DataSources
+  commentId: N:Innovt.Data.DataSources
+  id: Innovt.Data.DataSources
+  children:
+  - Innovt.Data.DataSources.DataSourceBase
+  - Innovt.Data.DataSources.DataSourceReader
+  - Innovt.Data.DataSources.DataSourceWriter
+  - Innovt.Data.DataSources.DefaultDataSource
+  - Innovt.Data.DataSources.IDataSource
+  - Innovt.Data.DataSources.IDataSourceReader
+  - Innovt.Data.DataSources.IDataSourceWriter
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Data.DataSources
+  nameWithType: Innovt.Data.DataSources
+  fullName: Innovt.Data.DataSources
+  type: Namespace
+  assemblies:
+  - Innovt.Data
+references:
+- uid: Innovt.Data.DataSources.DataSourceBase
+  commentId: T:Innovt.Data.DataSources.DataSourceBase
+  parent: Innovt.Data.DataSources
+  href: Innovt.Data.DataSources.DataSourceBase.html
+  name: DataSourceBase
+  nameWithType: DataSourceBase
+  fullName: Innovt.Data.DataSources.DataSourceBase
+- uid: Innovt.Data.DataSources.DataSourceReader
+  commentId: T:Innovt.Data.DataSources.DataSourceReader
+  href: Innovt.Data.DataSources.DataSourceReader.html
+  name: DataSourceReader
+  nameWithType: DataSourceReader
+  fullName: Innovt.Data.DataSources.DataSourceReader
+- uid: Innovt.Data.DataSources.DataSourceWriter
+  commentId: T:Innovt.Data.DataSources.DataSourceWriter
+  href: Innovt.Data.DataSources.DataSourceWriter.html
+  name: DataSourceWriter
+  nameWithType: DataSourceWriter
+  fullName: Innovt.Data.DataSources.DataSourceWriter
+- uid: Innovt.Data.DataSources.DefaultDataSource
+  commentId: T:Innovt.Data.DataSources.DefaultDataSource
+  href: Innovt.Data.DataSources.DefaultDataSource.html
+  name: DefaultDataSource
+  nameWithType: DefaultDataSource
+  fullName: Innovt.Data.DataSources.DefaultDataSource
+- uid: Innovt.Data.DataSources.IDataSource
+  commentId: T:Innovt.Data.DataSources.IDataSource
+  parent: Innovt.Data.DataSources
+  href: Innovt.Data.DataSources.IDataSource.html
+  name: IDataSource
+  nameWithType: IDataSource
+  fullName: Innovt.Data.DataSources.IDataSource
+- uid: Innovt.Data.DataSources.IDataSourceReader
+  commentId: T:Innovt.Data.DataSources.IDataSourceReader
+  parent: Innovt.Data.DataSources
+  href: Innovt.Data.DataSources.IDataSourceReader.html
+  name: IDataSourceReader
+  nameWithType: IDataSourceReader
+  fullName: Innovt.Data.DataSources.IDataSourceReader
+- uid: Innovt.Data.DataSources.IDataSourceWriter
+  commentId: T:Innovt.Data.DataSources.IDataSourceWriter
+  parent: Innovt.Data.DataSources
+  href: Innovt.Data.DataSources.IDataSourceWriter.html
+  name: IDataSourceWriter
+  nameWithType: IDataSourceWriter
+  fullName: Innovt.Data.DataSources.IDataSourceWriter
+- uid: Innovt.Data.DataSources
+  commentId: N:Innovt.Data.DataSources
+  href: Innovt.html
+  name: Innovt.Data.DataSources
+  nameWithType: Innovt.Data.DataSources
+  fullName: Innovt.Data.DataSources
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Data
+    name: Data
+    href: Innovt.Data.html
+  - name: .
+  - uid: Innovt.Data.DataSources
+    name: DataSources
+    href: Innovt.Data.DataSources.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Data
+    name: Data
+    href: Innovt.Data.html
+  - name: .
+  - uid: Innovt.Data.DataSources
+    name: DataSources
+    href: Innovt.Data.DataSources.html

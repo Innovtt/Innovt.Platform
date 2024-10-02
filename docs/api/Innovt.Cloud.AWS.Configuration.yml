@@ -1,0 +1,84 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.Configuration
+  commentId: N:Innovt.Cloud.AWS.Configuration
+  id: Innovt.Cloud.AWS.Configuration
+  children:
+  - Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration
+  - Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
+  - Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration
+  - Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Cloud.AWS.Configuration
+  nameWithType: Innovt.Cloud.AWS.Configuration
+  fullName: Innovt.Cloud.AWS.Configuration
+  type: Namespace
+  assemblies:
+  - Innovt.Cloud.AWS
+references:
+- uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration
+  commentId: T:Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration
+  href: Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.html
+  name: AssumeRoleAWSConfiguration
+  nameWithType: AssumeRoleAWSConfiguration
+  fullName: Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration
+- uid: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
+  commentId: T:Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
+  href: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html
+  name: DefaultAWSConfiguration
+  nameWithType: DefaultAWSConfiguration
+  fullName: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
+- uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration
+  commentId: T:Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration
+  parent: Innovt.Cloud.AWS.Configuration
+  href: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.html
+  name: IAssumeRoleAWSConfiguration
+  nameWithType: IAssumeRoleAWSConfiguration
+  fullName: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration
+- uid: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+  commentId: T:Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+  parent: Innovt.Cloud.AWS.Configuration
+  href: Innovt.Cloud.AWS.Configuration.IAwsConfiguration.html
+  name: IAwsConfiguration
+  nameWithType: IAwsConfiguration
+  fullName: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+- uid: Innovt.Cloud.AWS.Configuration
+  commentId: N:Innovt.Cloud.AWS.Configuration
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Configuration
+  nameWithType: Innovt.Cloud.AWS.Configuration
+  fullName: Innovt.Cloud.AWS.Configuration
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Configuration
+    name: Configuration
+    href: Innovt.Cloud.AWS.Configuration.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Configuration
+    name: Configuration
+    href: Innovt.Cloud.AWS.Configuration.html

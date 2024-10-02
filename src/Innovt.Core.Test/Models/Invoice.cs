@@ -183,10 +183,5 @@ public class Invoice : Entity<Guid>
     ///     Gets or sets the amount paid for the invoice. This property can be null if the payment has not been made yet.
     /// </summary>
     public decimal? PaymentValue { get; set; }
-
-    /// <summary>
-    ///     Gets or sets the date when the invoice was last updated in the system. This property can be null if the invoice has
-    ///     not been updated.
-    /// </summary>
-    public DateTime? UpdatedAt { get; set; }
+    
 }

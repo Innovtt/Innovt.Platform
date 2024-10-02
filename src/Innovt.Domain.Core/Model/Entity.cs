@@ -15,6 +15,7 @@ namespace Innovt.Domain.Core.Model;
 public abstract class Entity
 {
     private readonly List<DomainEvent> domainEvents;
+    private bool isNew = false;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="Entity" /> class.
@@ -22,6 +23,7 @@ public abstract class Entity
     protected Entity()
     {
         CreatedAt = DateTimeOffset.UtcNow;
+        UpdatedAt = DateTimeOffset.UtcNow;
         domainEvents = new List<DomainEvent>();
     }
 
@@ -42,7 +44,12 @@ public abstract class Entity
     /// <summary>
     ///     Gets or sets the date and time when the entity was created.
     /// </summary>
-    public DateTimeOffset? CreatedAt { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
+    
+    /// <summary>
+    /// Gets or sets the date and time when the entity was last updated.
+    /// </summary>
+    public DateTimeOffset UpdatedAt { get; set; }
 
     /// <summary>
     ///     Checks if the entity is new (i.e., not persisted in the database yet).
@@ -50,7 +57,16 @@ public abstract class Entity
     /// <returns><c>true</c> if the entity is new; otherwise, <c>false</c>.</returns>
     public bool IsNew()
     {
-        return Id == 0;
+        return Id == 0 || isNew;
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    public Entity SetAsNew()
+    {
+        isNew = true;
+        return this;
     }
 
     /// <inheritdoc />
@@ -60,7 +76,7 @@ public abstract class Entity
     }
 
     /// <inheritdoc />
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         var anotherEntity = obj as Entity;
 
@@ -91,11 +107,11 @@ public abstract class Entity
     }
 }
 
-/// <summary>
-///     Represents an abstract base class for entities in the domain model with a specific type for the identifier.
-/// </summary>
-/// <typeparam name="T">The type of the identifier.</typeparam>
-public abstract class Entity<T> : Entity where T : struct
-{
-    public new T Id { get; set; }
-}
+    /// <summary>
+    ///     Represents an abstract base class for entities in the domain model with a specific type for the identifier.
+    /// </summary>
+    /// <typeparam name="T">The type of the identifier.</typeparam>
+    public abstract class Entity<T> : Entity where T : struct
+    {
+        public new T Id { get; set; }
+    }

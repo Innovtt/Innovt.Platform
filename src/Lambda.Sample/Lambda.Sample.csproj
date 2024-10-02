@@ -3,8 +3,6 @@
     <PropertyGroup>
         <OutputType>Library</OutputType>
         <TargetFramework>net8.0</TargetFramework>
-        <ApplicationIcon/>
-        <StartupObject/>
         <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
         <AWSProjectType>Lambda</AWSProjectType>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

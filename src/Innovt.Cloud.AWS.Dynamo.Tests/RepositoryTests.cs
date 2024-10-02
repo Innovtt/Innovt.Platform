@@ -133,7 +133,7 @@ public class RepositoryTests
             var userId = "24a874d8-d0a1-7032-b572-3c3383ff4ba9";
             var userSortKey = "PROFILE";
 
-            var queryRequest = new QueryRequest
+           var queryRequest = new QueryRequest
             {
                 KeyConditionExpression = "PK=:pk AND SK=:sk",
                 Filter = new
@@ -166,8 +166,8 @@ public class RepositoryTests
                 users.Add(user1);
             }
 
-            await repository.AddAsync(users).ConfigureAwait(false);
-
+            await repository.AddListAsync(users).ConfigureAwait(false);
+            
             //scan all users
             var scanRequest = new ScanRequest
             {
@@ -180,7 +180,7 @@ public class RepositoryTests
 
             var usersList = (await repository.ScanAsync<User>(scanRequest).ConfigureAwait(false)).ToList();
 
-            await repository.DeleteAsync(usersList).ConfigureAwait(false);
+            await repository.DeleteListAsync(usersList).ConfigureAwait(false);
         }
         catch (Exception e)
         {
@@ -223,6 +223,46 @@ public class RepositoryTests
             user.LastName = "Borges";
 
             await repository.UpdateAsync(user).ConfigureAwait(false);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    
+    
+    [Test]
+    public async Task QueryPaginatedBy()
+    {   
+        try
+        {
+            var context = new SampleDynamoContext();
+
+            var awsConfiguration = new DefaultAWSConfiguration("c2g-dev");
+
+            repository = new SampleRepository(context, loggerMock, awsConfiguration);
+
+            
+            var queryRequest = new QueryRequest
+            {
+                KeyConditionExpression = "PK=:pk AND begins_with(SK,:sk)",
+                FilterExpression = "contains(#Name, :name)",
+                ExpressionAttributeNames = new Dictionary<string, string> { { "#Name", "Name" } },
+                Filter = new
+                {
+                    pk = "SKILL",
+                    sk = "SKILL#",
+                    name = "CLOUD"
+                },
+                Page = null,
+                PageSize = 10
+            };
+
+            var skills = await repository.QueryPaginatedByAsync<Skill>(queryRequest).ConfigureAwait(false);
+
+            Assert.That(skills, Is.Not.Null);
+            
         }
         catch (Exception e)
         {

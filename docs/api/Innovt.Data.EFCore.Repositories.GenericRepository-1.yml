@@ -1,0 +1,3280 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Data.EFCore.Repositories.GenericRepository`1
+  commentId: T:Innovt.Data.EFCore.Repositories.GenericRepository`1
+  id: GenericRepository`1
+  parent: Innovt.Data.EFCore.Repositories
+  children:
+  - Innovt.Data.EFCore.Repositories.GenericRepository`1.#ctor(Innovt.Domain.Core.Repository.IExtendedUnitOfWork)
+  langs:
+  - csharp
+  - vb
+  name: GenericRepository<T>
+  nameWithType: GenericRepository<T>
+  fullName: Innovt.Data.EFCore.Repositories.GenericRepository<T>
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Data.EFCore/Repositories/GenericRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: GenericRepository
+    path: ../src/Innovt.Data.EFCore/Repositories/GenericRepository.cs
+    startLine: 13
+  assemblies:
+  - Innovt.Data.EFCore
+  namespace: Innovt.Data.EFCore.Repositories
+  summary: >-
+    Generic repository implementation for accessing and managing entities of type T.
+
+    Inherits from RepositoryBase for shared functionality and extends for specific entity type.
+  example: []
+  syntax:
+    content: 'public class GenericRepository<T> : RepositoryBase<T>, IRepository<T> where T : class'
+    typeParameters:
+    - id: T
+      description: The entity type.
+    content.vb: Public Class GenericRepository(Of T As Class) Inherits RepositoryBase(Of T) Implements IRepository(Of T)
+  inheritance:
+  - System.Object
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  implements:
+  - Innovt.Domain.Core.Repository.IRepository{{T}}
+  inheritedMembers:
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.Context
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.Add({T})
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.Add(System.Collections.Generic.IEnumerable{{T}})
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.AddAsync(System.Collections.Generic.IEnumerable{{T}})
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.AddAsync({T})
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.Modify({T})
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.Remove(System.Collections.Generic.IEnumerable{{T}})
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.Remove({T})
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.GetFirstOrDefault(Innovt.Domain.Core.Specification.ISpecification{{T}},Innovt.Domain.Core.Repository.Include)
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.GetFirstOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{{T}},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.GetSingleOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{{T}},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.GetSingleOrDefault(Innovt.Domain.Core.Specification.ISpecification{{T}},Innovt.Domain.Core.Repository.Include)
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.FindBy(Innovt.Domain.Core.Specification.ISpecification{{T}},Innovt.Domain.Core.Repository.Include)
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.FindBy``1(Innovt.Domain.Core.Specification.ISpecification{{T}},System.Linq.Expressions.Expression{System.Func{{T},{TKey}}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.FindByAsync(Innovt.Domain.Core.Specification.ISpecification{{T}},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.FindByAsync``1(Innovt.Domain.Core.Specification.ISpecification{{T}},System.Linq.Expressions.Expression{System.Func{{T},{TKey}}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.FindPaginatedBy(Innovt.Domain.Core.Specification.ISpecification{{T}},Innovt.Domain.Core.Repository.Include)
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.FindPaginatedBy``1(Innovt.Domain.Core.Specification.ISpecification{{T}},System.Linq.Expressions.Expression{System.Func{{T},{TKey}}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.FindPaginatedByAsync(Innovt.Domain.Core.Specification.ISpecification{{T}},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.FindPaginatedByAsync``1(Innovt.Domain.Core.Specification.ISpecification{{T}},System.Linq.Expressions.Expression{System.Func{{T},{TKey}}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.CountBy(Innovt.Domain.Core.Specification.ISpecification{{T}})
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.CountBy``1(Innovt.Domain.Core.Specification.ISpecification{{TKEntity}})
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.CountByAsync``1(Innovt.Domain.Core.Specification.ISpecification{{TKEntity}},System.Threading.CancellationToken)
+  - Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.CountByAsync(Innovt.Domain.Core.Specification.ISpecification{{T}},System.Threading.CancellationToken)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  nameWithType.vb: GenericRepository(Of T)
+  fullName.vb: Innovt.Data.EFCore.Repositories.GenericRepository(Of T)
+  name.vb: GenericRepository(Of T)
+- uid: Innovt.Data.EFCore.Repositories.GenericRepository`1.#ctor(Innovt.Domain.Core.Repository.IExtendedUnitOfWork)
+  commentId: M:Innovt.Data.EFCore.Repositories.GenericRepository`1.#ctor(Innovt.Domain.Core.Repository.IExtendedUnitOfWork)
+  id: '#ctor(Innovt.Domain.Core.Repository.IExtendedUnitOfWork)'
+  parent: Innovt.Data.EFCore.Repositories.GenericRepository`1
+  langs:
+  - csharp
+  - vb
+  name: GenericRepository(IExtendedUnitOfWork)
+  nameWithType: GenericRepository<T>.GenericRepository(IExtendedUnitOfWork)
+  fullName: Innovt.Data.EFCore.Repositories.GenericRepository<T>.GenericRepository(Innovt.Domain.Core.Repository.IExtendedUnitOfWork)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Data.EFCore/Repositories/GenericRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: ../src/Innovt.Data.EFCore/Repositories/GenericRepository.cs
+    startLine: 19
+  assemblies:
+  - Innovt.Data.EFCore
+  namespace: Innovt.Data.EFCore.Repositories
+  summary: Initializes a new instance of the <xref href="Innovt.Data.EFCore.Repositories.GenericRepository%601" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public GenericRepository(IExtendedUnitOfWork context)
+    parameters:
+    - id: context
+      type: Innovt.Domain.Core.Repository.IExtendedUnitOfWork
+      description: The extended unit of work context.
+    content.vb: Public Sub New(context As IExtendedUnitOfWork)
+  overload: Innovt.Data.EFCore.Repositories.GenericRepository`1.#ctor*
+  nameWithType.vb: GenericRepository(Of T).New(IExtendedUnitOfWork)
+  fullName.vb: Innovt.Data.EFCore.Repositories.GenericRepository(Of T).New(Innovt.Domain.Core.Repository.IExtendedUnitOfWork)
+  name.vb: New(IExtendedUnitOfWork)
+references:
+- uid: Innovt.Data.EFCore.Repositories
+  commentId: N:Innovt.Data.EFCore.Repositories
+  href: Innovt.html
+  name: Innovt.Data.EFCore.Repositories
+  nameWithType: Innovt.Data.EFCore.Repositories
+  fullName: Innovt.Data.EFCore.Repositories
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Data
+    name: Data
+    href: Innovt.Data.html
+  - name: .
+  - uid: Innovt.Data.EFCore
+    name: EFCore
+    href: Innovt.Data.EFCore.html
+  - name: .
+  - uid: Innovt.Data.EFCore.Repositories
+    name: Repositories
+    href: Innovt.Data.EFCore.Repositories.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Data
+    name: Data
+    href: Innovt.Data.html
+  - name: .
+  - uid: Innovt.Data.EFCore
+    name: EFCore
+    href: Innovt.Data.EFCore.html
+  - name: .
+  - uid: Innovt.Data.EFCore.Repositories
+    name: Repositories
+    href: Innovt.Data.EFCore.Repositories.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  commentId: T:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}
+  parent: Innovt.Data.EFCore.Repositories
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html
+  name: RepositoryBase<T>
+  nameWithType: RepositoryBase<T>
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>
+  nameWithType.vb: RepositoryBase(Of T)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T)
+  name.vb: RepositoryBase(Of T)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1
+    name: RepositoryBase
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1
+    name: RepositoryBase
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Domain.Core.Repository.IRepository{{T}}
+  commentId: T:Innovt.Domain.Core.Repository.IRepository{`0}
+  parent: Innovt.Domain.Core.Repository
+  definition: Innovt.Domain.Core.Repository.IRepository`1
+  name: IRepository<T>
+  nameWithType: IRepository<T>
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>
+  nameWithType.vb: IRepository(Of T)
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T)
+  name.vb: IRepository(Of T)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Repository.IRepository`1
+    name: IRepository
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Repository.IRepository`1
+    name: IRepository
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.Context
+  commentId: P:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.Context
+  parent: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1.Context
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Context
+  name: Context
+  nameWithType: RepositoryBase<T>.Context
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.Context
+  nameWithType.vb: RepositoryBase(Of T).Context
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).Context
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.Add({T})
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.Add(`0)
+  parent: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1.Add(`0)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Add__0_
+  name: Add(T)
+  nameWithType: RepositoryBase<T>.Add(T)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.Add(T)
+  nameWithType.vb: RepositoryBase(Of T).Add(T)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).Add(T)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.Add(`0)
+    name: Add
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Add__0_
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.Add(`0)
+    name: Add
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Add__0_
+  - name: (
+  - name: T
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.Add(System.Collections.Generic.IEnumerable{{T}})
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.Add(System.Collections.Generic.IEnumerable{`0})
+  parent: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1.Add(System.Collections.Generic.IEnumerable{`0})
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Add_System_Collections_Generic_IEnumerable__0__
+  name: Add(IEnumerable<T>)
+  nameWithType: RepositoryBase<T>.Add(IEnumerable<T>)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.Add(System.Collections.Generic.IEnumerable<T>)
+  nameWithType.vb: RepositoryBase(Of T).Add(IEnumerable(Of T))
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).Add(System.Collections.Generic.IEnumerable(Of T))
+  name.vb: Add(IEnumerable(Of T))
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.Add(System.Collections.Generic.IEnumerable{`0})
+    name: Add
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Add_System_Collections_Generic_IEnumerable__0__
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.Add(System.Collections.Generic.IEnumerable{`0})
+    name: Add
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Add_System_Collections_Generic_IEnumerable__0__
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.AddAsync(System.Collections.Generic.IEnumerable{{T}})
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.AddAsync(System.Collections.Generic.IEnumerable{`0})
+  parent: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1.AddAsync(System.Collections.Generic.IEnumerable{`0})
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_AddAsync_System_Collections_Generic_IEnumerable__0__
+  name: AddAsync(IEnumerable<T>)
+  nameWithType: RepositoryBase<T>.AddAsync(IEnumerable<T>)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.AddAsync(System.Collections.Generic.IEnumerable<T>)
+  nameWithType.vb: RepositoryBase(Of T).AddAsync(IEnumerable(Of T))
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).AddAsync(System.Collections.Generic.IEnumerable(Of T))
+  name.vb: AddAsync(IEnumerable(Of T))
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.AddAsync(System.Collections.Generic.IEnumerable{`0})
+    name: AddAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_AddAsync_System_Collections_Generic_IEnumerable__0__
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.AddAsync(System.Collections.Generic.IEnumerable{`0})
+    name: AddAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_AddAsync_System_Collections_Generic_IEnumerable__0__
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.AddAsync({T})
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.AddAsync(`0)
+  parent: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1.AddAsync(`0)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_AddAsync__0_
+  name: AddAsync(T)
+  nameWithType: RepositoryBase<T>.AddAsync(T)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.AddAsync(T)
+  nameWithType.vb: RepositoryBase(Of T).AddAsync(T)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).AddAsync(T)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.AddAsync(`0)
+    name: AddAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_AddAsync__0_
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.AddAsync(`0)
+    name: AddAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_AddAsync__0_
+  - name: (
+  - name: T
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.Modify({T})
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.Modify(`0)
+  parent: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1.Modify(`0)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Modify__0_
+  name: Modify(T)
+  nameWithType: RepositoryBase<T>.Modify(T)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.Modify(T)
+  nameWithType.vb: RepositoryBase(Of T).Modify(T)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).Modify(T)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.Modify(`0)
+    name: Modify
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Modify__0_
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.Modify(`0)
+    name: Modify
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Modify__0_
+  - name: (
+  - name: T
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.Remove(System.Collections.Generic.IEnumerable{{T}})
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.Remove(System.Collections.Generic.IEnumerable{`0})
+  parent: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1.Remove(System.Collections.Generic.IEnumerable{`0})
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Remove_System_Collections_Generic_IEnumerable__0__
+  name: Remove(IEnumerable<T>)
+  nameWithType: RepositoryBase<T>.Remove(IEnumerable<T>)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.Remove(System.Collections.Generic.IEnumerable<T>)
+  nameWithType.vb: RepositoryBase(Of T).Remove(IEnumerable(Of T))
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).Remove(System.Collections.Generic.IEnumerable(Of T))
+  name.vb: Remove(IEnumerable(Of T))
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.Remove(System.Collections.Generic.IEnumerable{`0})
+    name: Remove
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Remove_System_Collections_Generic_IEnumerable__0__
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.Remove(System.Collections.Generic.IEnumerable{`0})
+    name: Remove
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Remove_System_Collections_Generic_IEnumerable__0__
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.Remove({T})
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.Remove(`0)
+  parent: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1.Remove(`0)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Remove__0_
+  name: Remove(T)
+  nameWithType: RepositoryBase<T>.Remove(T)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.Remove(T)
+  nameWithType.vb: RepositoryBase(Of T).Remove(T)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).Remove(T)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.Remove(`0)
+    name: Remove
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Remove__0_
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.Remove(`0)
+    name: Remove
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Remove__0_
+  - name: (
+  - name: T
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.GetFirstOrDefault(Innovt.Domain.Core.Specification.ISpecification{{T}},Innovt.Domain.Core.Repository.Include)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.GetFirstOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  parent: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1.GetFirstOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_GetFirstOrDefault_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  name: GetFirstOrDefault(ISpecification<T>, Include)
+  nameWithType: RepositoryBase<T>.GetFirstOrDefault(ISpecification<T>, Include)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.GetFirstOrDefault(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Repository.Include)
+  nameWithType.vb: RepositoryBase(Of T).GetFirstOrDefault(ISpecification(Of T), Include)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).GetFirstOrDefault(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Repository.Include)
+  name.vb: GetFirstOrDefault(ISpecification(Of T), Include)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.GetFirstOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+    name: GetFirstOrDefault
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_GetFirstOrDefault_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.GetFirstOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+    name: GetFirstOrDefault
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_GetFirstOrDefault_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.GetFirstOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{{T}},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.GetFirstOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  parent: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1.GetFirstOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_GetFirstOrDefaultAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  name: GetFirstOrDefaultAsync(ISpecification<T>, Include, CancellationToken)
+  nameWithType: RepositoryBase<T>.GetFirstOrDefaultAsync(ISpecification<T>, Include, CancellationToken)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.GetFirstOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  nameWithType.vb: RepositoryBase(Of T).GetFirstOrDefaultAsync(ISpecification(Of T), Include, CancellationToken)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).GetFirstOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  name.vb: GetFirstOrDefaultAsync(ISpecification(Of T), Include, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.GetFirstOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+    name: GetFirstOrDefaultAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_GetFirstOrDefaultAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.GetFirstOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+    name: GetFirstOrDefaultAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_GetFirstOrDefaultAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.GetSingleOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{{T}},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.GetSingleOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  parent: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1.GetSingleOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_GetSingleOrDefaultAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  name: GetSingleOrDefaultAsync(ISpecification<T>, Include, CancellationToken)
+  nameWithType: RepositoryBase<T>.GetSingleOrDefaultAsync(ISpecification<T>, Include, CancellationToken)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.GetSingleOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  nameWithType.vb: RepositoryBase(Of T).GetSingleOrDefaultAsync(ISpecification(Of T), Include, CancellationToken)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).GetSingleOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  name.vb: GetSingleOrDefaultAsync(ISpecification(Of T), Include, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.GetSingleOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+    name: GetSingleOrDefaultAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_GetSingleOrDefaultAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.GetSingleOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+    name: GetSingleOrDefaultAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_GetSingleOrDefaultAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.GetSingleOrDefault(Innovt.Domain.Core.Specification.ISpecification{{T}},Innovt.Domain.Core.Repository.Include)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.GetSingleOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  parent: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1.GetSingleOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_GetSingleOrDefault_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  name: GetSingleOrDefault(ISpecification<T>, Include)
+  nameWithType: RepositoryBase<T>.GetSingleOrDefault(ISpecification<T>, Include)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.GetSingleOrDefault(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Repository.Include)
+  nameWithType.vb: RepositoryBase(Of T).GetSingleOrDefault(ISpecification(Of T), Include)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).GetSingleOrDefault(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Repository.Include)
+  name.vb: GetSingleOrDefault(ISpecification(Of T), Include)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.GetSingleOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+    name: GetSingleOrDefault
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_GetSingleOrDefault_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.GetSingleOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+    name: GetSingleOrDefault
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_GetSingleOrDefault_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.FindBy(Innovt.Domain.Core.Specification.ISpecification{{T}},Innovt.Domain.Core.Repository.Include)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.FindBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  parent: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindBy_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  name: FindBy(ISpecification<T>, Include)
+  nameWithType: RepositoryBase<T>.FindBy(ISpecification<T>, Include)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.FindBy(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Repository.Include)
+  nameWithType.vb: RepositoryBase(Of T).FindBy(ISpecification(Of T), Include)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).FindBy(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Repository.Include)
+  name.vb: FindBy(ISpecification(Of T), Include)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.FindBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+    name: FindBy
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindBy_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.FindBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+    name: FindBy
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindBy_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.FindBy``1(Innovt.Domain.Core.Specification.ISpecification{{T}},System.Linq.Expressions.Expression{System.Func{{T},{TKey}}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.FindBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+  parent: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindBy__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_
+  name: FindBy<TKey>(ISpecification<T>, Expression<Func<T, TKey>>, bool, Include)
+  nameWithType: RepositoryBase<T>.FindBy<TKey>(ISpecification<T>, Expression<Func<T, TKey>>, bool, Include)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.FindBy<TKey>(Innovt.Domain.Core.Specification.ISpecification<T>, System.Linq.Expressions.Expression<System.Func<T, TKey>>, bool, Innovt.Domain.Core.Repository.Include)
+  nameWithType.vb: RepositoryBase(Of T).FindBy(Of TKey)(ISpecification(Of T), Expression(Of Func(Of T, TKey)), Boolean, Include)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).FindBy(Of TKey)(Innovt.Domain.Core.Specification.ISpecification(Of T), System.Linq.Expressions.Expression(Of System.Func(Of T, TKey)), Boolean, Innovt.Domain.Core.Repository.Include)
+  name.vb: FindBy(Of TKey)(ISpecification(Of T), Expression(Of Func(Of T, TKey)), Boolean, Include)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.FindBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+    name: FindBy
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindBy__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_
+  - name: <
+  - name: TKey
+  - name: '>'
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.FindBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+    name: FindBy
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindBy__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.FindByAsync(Innovt.Domain.Core.Specification.ISpecification{{T}},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.FindByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  parent: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindByAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  name: FindByAsync(ISpecification<T>, Include, CancellationToken)
+  nameWithType: RepositoryBase<T>.FindByAsync(ISpecification<T>, Include, CancellationToken)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.FindByAsync(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  nameWithType.vb: RepositoryBase(Of T).FindByAsync(ISpecification(Of T), Include, CancellationToken)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).FindByAsync(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  name.vb: FindByAsync(ISpecification(Of T), Include, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.FindByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+    name: FindByAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindByAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.FindByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+    name: FindByAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindByAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.FindByAsync``1(Innovt.Domain.Core.Specification.ISpecification{{T}},System.Linq.Expressions.Expression{System.Func{{T},{TKey}}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.FindByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  parent: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindByAsync__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  name: FindByAsync<TKey>(ISpecification<T>, Expression<Func<T, TKey>>, bool, Include, CancellationToken)
+  nameWithType: RepositoryBase<T>.FindByAsync<TKey>(ISpecification<T>, Expression<Func<T, TKey>>, bool, Include, CancellationToken)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.FindByAsync<TKey>(Innovt.Domain.Core.Specification.ISpecification<T>, System.Linq.Expressions.Expression<System.Func<T, TKey>>, bool, Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  nameWithType.vb: RepositoryBase(Of T).FindByAsync(Of TKey)(ISpecification(Of T), Expression(Of Func(Of T, TKey)), Boolean, Include, CancellationToken)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).FindByAsync(Of TKey)(Innovt.Domain.Core.Specification.ISpecification(Of T), System.Linq.Expressions.Expression(Of System.Func(Of T, TKey)), Boolean, Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  name.vb: FindByAsync(Of TKey)(ISpecification(Of T), Expression(Of Func(Of T, TKey)), Boolean, Include, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.FindByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+    name: FindByAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindByAsync__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  - name: <
+  - name: TKey
+  - name: '>'
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.FindByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+    name: FindByAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindByAsync__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.FindPaginatedBy(Innovt.Domain.Core.Specification.ISpecification{{T}},Innovt.Domain.Core.Repository.Include)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.FindPaginatedBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  parent: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindPaginatedBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindPaginatedBy_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  name: FindPaginatedBy(ISpecification<T>, Include)
+  nameWithType: RepositoryBase<T>.FindPaginatedBy(ISpecification<T>, Include)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.FindPaginatedBy(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Repository.Include)
+  nameWithType.vb: RepositoryBase(Of T).FindPaginatedBy(ISpecification(Of T), Include)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).FindPaginatedBy(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Repository.Include)
+  name.vb: FindPaginatedBy(ISpecification(Of T), Include)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.FindPaginatedBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+    name: FindPaginatedBy
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindPaginatedBy_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.FindPaginatedBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+    name: FindPaginatedBy
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindPaginatedBy_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.FindPaginatedBy``1(Innovt.Domain.Core.Specification.ISpecification{{T}},System.Linq.Expressions.Expression{System.Func{{T},{TKey}}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.FindPaginatedBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+  parent: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindPaginatedBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindPaginatedBy__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_
+  name: FindPaginatedBy<TKey>(ISpecification<T>, Expression<Func<T, TKey>>, bool, Include)
+  nameWithType: RepositoryBase<T>.FindPaginatedBy<TKey>(ISpecification<T>, Expression<Func<T, TKey>>, bool, Include)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.FindPaginatedBy<TKey>(Innovt.Domain.Core.Specification.ISpecification<T>, System.Linq.Expressions.Expression<System.Func<T, TKey>>, bool, Innovt.Domain.Core.Repository.Include)
+  nameWithType.vb: RepositoryBase(Of T).FindPaginatedBy(Of TKey)(ISpecification(Of T), Expression(Of Func(Of T, TKey)), Boolean, Include)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).FindPaginatedBy(Of TKey)(Innovt.Domain.Core.Specification.ISpecification(Of T), System.Linq.Expressions.Expression(Of System.Func(Of T, TKey)), Boolean, Innovt.Domain.Core.Repository.Include)
+  name.vb: FindPaginatedBy(Of TKey)(ISpecification(Of T), Expression(Of Func(Of T, TKey)), Boolean, Include)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.FindPaginatedBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+    name: FindPaginatedBy
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindPaginatedBy__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_
+  - name: <
+  - name: TKey
+  - name: '>'
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.FindPaginatedBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+    name: FindPaginatedBy
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindPaginatedBy__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.FindPaginatedByAsync(Innovt.Domain.Core.Specification.ISpecification{{T}},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.FindPaginatedByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  parent: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindPaginatedByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindPaginatedByAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  name: FindPaginatedByAsync(ISpecification<T>, Include, CancellationToken)
+  nameWithType: RepositoryBase<T>.FindPaginatedByAsync(ISpecification<T>, Include, CancellationToken)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.FindPaginatedByAsync(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  nameWithType.vb: RepositoryBase(Of T).FindPaginatedByAsync(ISpecification(Of T), Include, CancellationToken)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).FindPaginatedByAsync(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  name.vb: FindPaginatedByAsync(ISpecification(Of T), Include, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.FindPaginatedByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+    name: FindPaginatedByAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindPaginatedByAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.FindPaginatedByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+    name: FindPaginatedByAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindPaginatedByAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.FindPaginatedByAsync``1(Innovt.Domain.Core.Specification.ISpecification{{T}},System.Linq.Expressions.Expression{System.Func{{T},{TKey}}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.FindPaginatedByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  parent: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindPaginatedByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindPaginatedByAsync__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  name: FindPaginatedByAsync<TKey>(ISpecification<T>, Expression<Func<T, TKey>>, bool, Include, CancellationToken)
+  nameWithType: RepositoryBase<T>.FindPaginatedByAsync<TKey>(ISpecification<T>, Expression<Func<T, TKey>>, bool, Include, CancellationToken)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.FindPaginatedByAsync<TKey>(Innovt.Domain.Core.Specification.ISpecification<T>, System.Linq.Expressions.Expression<System.Func<T, TKey>>, bool, Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  nameWithType.vb: RepositoryBase(Of T).FindPaginatedByAsync(Of TKey)(ISpecification(Of T), Expression(Of Func(Of T, TKey)), Boolean, Include, CancellationToken)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).FindPaginatedByAsync(Of TKey)(Innovt.Domain.Core.Specification.ISpecification(Of T), System.Linq.Expressions.Expression(Of System.Func(Of T, TKey)), Boolean, Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  name.vb: FindPaginatedByAsync(Of TKey)(ISpecification(Of T), Expression(Of Func(Of T, TKey)), Boolean, Include, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.FindPaginatedByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+    name: FindPaginatedByAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindPaginatedByAsync__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  - name: <
+  - name: TKey
+  - name: '>'
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.FindPaginatedByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+    name: FindPaginatedByAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindPaginatedByAsync__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.CountBy(Innovt.Domain.Core.Specification.ISpecification{{T}})
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.CountBy(Innovt.Domain.Core.Specification.ISpecification{`0})
+  parent: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1.CountBy(Innovt.Domain.Core.Specification.ISpecification{`0})
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_CountBy_Innovt_Domain_Core_Specification_ISpecification__0__
+  name: CountBy(ISpecification<T>)
+  nameWithType: RepositoryBase<T>.CountBy(ISpecification<T>)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.CountBy(Innovt.Domain.Core.Specification.ISpecification<T>)
+  nameWithType.vb: RepositoryBase(Of T).CountBy(ISpecification(Of T))
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).CountBy(Innovt.Domain.Core.Specification.ISpecification(Of T))
+  name.vb: CountBy(ISpecification(Of T))
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.CountBy(Innovt.Domain.Core.Specification.ISpecification{`0})
+    name: CountBy
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_CountBy_Innovt_Domain_Core_Specification_ISpecification__0__
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.CountBy(Innovt.Domain.Core.Specification.ISpecification{`0})
+    name: CountBy
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_CountBy_Innovt_Domain_Core_Specification_ISpecification__0__
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.CountBy``1(Innovt.Domain.Core.Specification.ISpecification{{TKEntity}})
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.CountBy``1(Innovt.Domain.Core.Specification.ISpecification{``0})
+  parent: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1.CountBy``1(Innovt.Domain.Core.Specification.ISpecification{``0})
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_CountBy__1_Innovt_Domain_Core_Specification_ISpecification___0__
+  name: CountBy<TKEntity>(ISpecification<TKEntity>)
+  nameWithType: RepositoryBase<T>.CountBy<TKEntity>(ISpecification<TKEntity>)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.CountBy<TKEntity>(Innovt.Domain.Core.Specification.ISpecification<TKEntity>)
+  nameWithType.vb: RepositoryBase(Of T).CountBy(Of TKEntity)(ISpecification(Of TKEntity))
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).CountBy(Of TKEntity)(Innovt.Domain.Core.Specification.ISpecification(Of TKEntity))
+  name.vb: CountBy(Of TKEntity)(ISpecification(Of TKEntity))
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.CountBy``1(Innovt.Domain.Core.Specification.ISpecification{``0})
+    name: CountBy
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_CountBy__1_Innovt_Domain_Core_Specification_ISpecification___0__
+  - name: <
+  - name: TKEntity
+  - name: '>'
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: TKEntity
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.CountBy``1(Innovt.Domain.Core.Specification.ISpecification{``0})
+    name: CountBy
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_CountBy__1_Innovt_Domain_Core_Specification_ISpecification___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKEntity
+  - name: )
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKEntity
+  - name: )
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.CountByAsync``1(Innovt.Domain.Core.Specification.ISpecification{{TKEntity}},System.Threading.CancellationToken)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.CountByAsync``1(Innovt.Domain.Core.Specification.ISpecification{``0},System.Threading.CancellationToken)
+  parent: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1.CountByAsync``1(Innovt.Domain.Core.Specification.ISpecification{``0},System.Threading.CancellationToken)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_CountByAsync__1_Innovt_Domain_Core_Specification_ISpecification___0__System_Threading_CancellationToken_
+  name: CountByAsync<TKEntity>(ISpecification<TKEntity>, CancellationToken)
+  nameWithType: RepositoryBase<T>.CountByAsync<TKEntity>(ISpecification<TKEntity>, CancellationToken)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.CountByAsync<TKEntity>(Innovt.Domain.Core.Specification.ISpecification<TKEntity>, System.Threading.CancellationToken)
+  nameWithType.vb: RepositoryBase(Of T).CountByAsync(Of TKEntity)(ISpecification(Of TKEntity), CancellationToken)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).CountByAsync(Of TKEntity)(Innovt.Domain.Core.Specification.ISpecification(Of TKEntity), System.Threading.CancellationToken)
+  name.vb: CountByAsync(Of TKEntity)(ISpecification(Of TKEntity), CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.CountByAsync``1(Innovt.Domain.Core.Specification.ISpecification{``0},System.Threading.CancellationToken)
+    name: CountByAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_CountByAsync__1_Innovt_Domain_Core_Specification_ISpecification___0__System_Threading_CancellationToken_
+  - name: <
+  - name: TKEntity
+  - name: '>'
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: TKEntity
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.CountByAsync``1(Innovt.Domain.Core.Specification.ISpecification{``0},System.Threading.CancellationToken)
+    name: CountByAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_CountByAsync__1_Innovt_Domain_Core_Specification_ISpecification___0__System_Threading_CancellationToken_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKEntity
+  - name: )
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKEntity
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}.CountByAsync(Innovt.Domain.Core.Specification.ISpecification{{T}},System.Threading.CancellationToken)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.CountByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},System.Threading.CancellationToken)
+  parent: Innovt.Data.EFCore.Repositories.RepositoryBase{{T}}
+  definition: Innovt.Data.EFCore.Repositories.RepositoryBase`1.CountByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},System.Threading.CancellationToken)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_CountByAsync_Innovt_Domain_Core_Specification_ISpecification__0__System_Threading_CancellationToken_
+  name: CountByAsync(ISpecification<T>, CancellationToken)
+  nameWithType: RepositoryBase<T>.CountByAsync(ISpecification<T>, CancellationToken)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.CountByAsync(Innovt.Domain.Core.Specification.ISpecification<T>, System.Threading.CancellationToken)
+  nameWithType.vb: RepositoryBase(Of T).CountByAsync(ISpecification(Of T), CancellationToken)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).CountByAsync(Innovt.Domain.Core.Specification.ISpecification(Of T), System.Threading.CancellationToken)
+  name.vb: CountByAsync(ISpecification(Of T), CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.CountByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},System.Threading.CancellationToken)
+    name: CountByAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_CountByAsync_Innovt_Domain_Core_Specification_ISpecification__0__System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase{`0}.CountByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},System.Threading.CancellationToken)
+    name: CountByAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_CountByAsync_Innovt_Domain_Core_Specification_ISpecification__0__System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1
+  commentId: T:Innovt.Data.EFCore.Repositories.RepositoryBase`1
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html
+  name: RepositoryBase<T>
+  nameWithType: RepositoryBase<T>
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>
+  nameWithType.vb: RepositoryBase(Of T)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T)
+  name.vb: RepositoryBase(Of T)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1
+    name: RepositoryBase
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1
+    name: RepositoryBase
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Domain.Core.Repository.IRepository`1
+  commentId: T:Innovt.Domain.Core.Repository.IRepository`1
+  href: Innovt.Domain.Core.Repository.IRepository-1.html
+  name: IRepository<T>
+  nameWithType: IRepository<T>
+  fullName: Innovt.Domain.Core.Repository.IRepository<T>
+  nameWithType.vb: IRepository(Of T)
+  fullName.vb: Innovt.Domain.Core.Repository.IRepository(Of T)
+  name.vb: IRepository(Of T)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Repository.IRepository`1
+    name: IRepository
+    href: Innovt.Domain.Core.Repository.IRepository-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Repository.IRepository`1
+    name: IRepository
+    href: Innovt.Domain.Core.Repository.IRepository-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Domain.Core.Repository
+  commentId: N:Innovt.Domain.Core.Repository
+  href: Innovt.html
+  name: Innovt.Domain.Core.Repository
+  nameWithType: Innovt.Domain.Core.Repository
+  fullName: Innovt.Domain.Core.Repository
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Repository
+    name: Repository
+    href: Innovt.Domain.Core.Repository.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Repository
+    name: Repository
+    href: Innovt.Domain.Core.Repository.html
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.Context
+  commentId: P:Innovt.Data.EFCore.Repositories.RepositoryBase`1.Context
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Context
+  name: Context
+  nameWithType: RepositoryBase<T>.Context
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.Context
+  nameWithType.vb: RepositoryBase(Of T).Context
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).Context
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.Add(`0)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase`1.Add(`0)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Add__0_
+  name: Add(T)
+  nameWithType: RepositoryBase<T>.Add(T)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.Add(T)
+  nameWithType.vb: RepositoryBase(Of T).Add(T)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).Add(T)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.Add(`0)
+    name: Add
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Add__0_
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.Add(`0)
+    name: Add
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Add__0_
+  - name: (
+  - name: T
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.Add(System.Collections.Generic.IEnumerable{`0})
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase`1.Add(System.Collections.Generic.IEnumerable{`0})
+  isExternal: true
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Add_System_Collections_Generic_IEnumerable__0__
+  name: Add(IEnumerable<T>)
+  nameWithType: RepositoryBase<T>.Add(IEnumerable<T>)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.Add(System.Collections.Generic.IEnumerable<T>)
+  nameWithType.vb: RepositoryBase(Of T).Add(IEnumerable(Of T))
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).Add(System.Collections.Generic.IEnumerable(Of T))
+  name.vb: Add(IEnumerable(Of T))
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.Add(System.Collections.Generic.IEnumerable{`0})
+    name: Add
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Add_System_Collections_Generic_IEnumerable__0__
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.Add(System.Collections.Generic.IEnumerable{`0})
+    name: Add
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Add_System_Collections_Generic_IEnumerable__0__
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.AddAsync(System.Collections.Generic.IEnumerable{`0})
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase`1.AddAsync(System.Collections.Generic.IEnumerable{`0})
+  isExternal: true
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_AddAsync_System_Collections_Generic_IEnumerable__0__
+  name: AddAsync(IEnumerable<T>)
+  nameWithType: RepositoryBase<T>.AddAsync(IEnumerable<T>)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.AddAsync(System.Collections.Generic.IEnumerable<T>)
+  nameWithType.vb: RepositoryBase(Of T).AddAsync(IEnumerable(Of T))
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).AddAsync(System.Collections.Generic.IEnumerable(Of T))
+  name.vb: AddAsync(IEnumerable(Of T))
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.AddAsync(System.Collections.Generic.IEnumerable{`0})
+    name: AddAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_AddAsync_System_Collections_Generic_IEnumerable__0__
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.AddAsync(System.Collections.Generic.IEnumerable{`0})
+    name: AddAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_AddAsync_System_Collections_Generic_IEnumerable__0__
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.AddAsync(`0)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase`1.AddAsync(`0)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_AddAsync__0_
+  name: AddAsync(T)
+  nameWithType: RepositoryBase<T>.AddAsync(T)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.AddAsync(T)
+  nameWithType.vb: RepositoryBase(Of T).AddAsync(T)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).AddAsync(T)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.AddAsync(`0)
+    name: AddAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_AddAsync__0_
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.AddAsync(`0)
+    name: AddAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_AddAsync__0_
+  - name: (
+  - name: T
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.Modify(`0)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase`1.Modify(`0)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Modify__0_
+  name: Modify(T)
+  nameWithType: RepositoryBase<T>.Modify(T)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.Modify(T)
+  nameWithType.vb: RepositoryBase(Of T).Modify(T)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).Modify(T)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.Modify(`0)
+    name: Modify
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Modify__0_
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.Modify(`0)
+    name: Modify
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Modify__0_
+  - name: (
+  - name: T
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.Remove(System.Collections.Generic.IEnumerable{`0})
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase`1.Remove(System.Collections.Generic.IEnumerable{`0})
+  isExternal: true
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Remove_System_Collections_Generic_IEnumerable__0__
+  name: Remove(IEnumerable<T>)
+  nameWithType: RepositoryBase<T>.Remove(IEnumerable<T>)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.Remove(System.Collections.Generic.IEnumerable<T>)
+  nameWithType.vb: RepositoryBase(Of T).Remove(IEnumerable(Of T))
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).Remove(System.Collections.Generic.IEnumerable(Of T))
+  name.vb: Remove(IEnumerable(Of T))
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.Remove(System.Collections.Generic.IEnumerable{`0})
+    name: Remove
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Remove_System_Collections_Generic_IEnumerable__0__
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.Remove(System.Collections.Generic.IEnumerable{`0})
+    name: Remove
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Remove_System_Collections_Generic_IEnumerable__0__
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.Remove(`0)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase`1.Remove(`0)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Remove__0_
+  name: Remove(T)
+  nameWithType: RepositoryBase<T>.Remove(T)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.Remove(T)
+  nameWithType.vb: RepositoryBase(Of T).Remove(T)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).Remove(T)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.Remove(`0)
+    name: Remove
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Remove__0_
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.Remove(`0)
+    name: Remove
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_Remove__0_
+  - name: (
+  - name: T
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.GetFirstOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase`1.GetFirstOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_GetFirstOrDefault_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  name: GetFirstOrDefault(ISpecification<T>, Include)
+  nameWithType: RepositoryBase<T>.GetFirstOrDefault(ISpecification<T>, Include)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.GetFirstOrDefault(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Repository.Include)
+  nameWithType.vb: RepositoryBase(Of T).GetFirstOrDefault(ISpecification(Of T), Include)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).GetFirstOrDefault(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Repository.Include)
+  name.vb: GetFirstOrDefault(ISpecification(Of T), Include)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.GetFirstOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+    name: GetFirstOrDefault
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_GetFirstOrDefault_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.GetFirstOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+    name: GetFirstOrDefault
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_GetFirstOrDefault_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.GetFirstOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase`1.GetFirstOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  isExternal: true
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_GetFirstOrDefaultAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  name: GetFirstOrDefaultAsync(ISpecification<T>, Include, CancellationToken)
+  nameWithType: RepositoryBase<T>.GetFirstOrDefaultAsync(ISpecification<T>, Include, CancellationToken)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.GetFirstOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  nameWithType.vb: RepositoryBase(Of T).GetFirstOrDefaultAsync(ISpecification(Of T), Include, CancellationToken)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).GetFirstOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  name.vb: GetFirstOrDefaultAsync(ISpecification(Of T), Include, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.GetFirstOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+    name: GetFirstOrDefaultAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_GetFirstOrDefaultAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.GetFirstOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+    name: GetFirstOrDefaultAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_GetFirstOrDefaultAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.GetSingleOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase`1.GetSingleOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  isExternal: true
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_GetSingleOrDefaultAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  name: GetSingleOrDefaultAsync(ISpecification<T>, Include, CancellationToken)
+  nameWithType: RepositoryBase<T>.GetSingleOrDefaultAsync(ISpecification<T>, Include, CancellationToken)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.GetSingleOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  nameWithType.vb: RepositoryBase(Of T).GetSingleOrDefaultAsync(ISpecification(Of T), Include, CancellationToken)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).GetSingleOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  name.vb: GetSingleOrDefaultAsync(ISpecification(Of T), Include, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.GetSingleOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+    name: GetSingleOrDefaultAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_GetSingleOrDefaultAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.GetSingleOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+    name: GetSingleOrDefaultAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_GetSingleOrDefaultAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.GetSingleOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase`1.GetSingleOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_GetSingleOrDefault_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  name: GetSingleOrDefault(ISpecification<T>, Include)
+  nameWithType: RepositoryBase<T>.GetSingleOrDefault(ISpecification<T>, Include)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.GetSingleOrDefault(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Repository.Include)
+  nameWithType.vb: RepositoryBase(Of T).GetSingleOrDefault(ISpecification(Of T), Include)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).GetSingleOrDefault(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Repository.Include)
+  name.vb: GetSingleOrDefault(ISpecification(Of T), Include)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.GetSingleOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+    name: GetSingleOrDefault
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_GetSingleOrDefault_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.GetSingleOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+    name: GetSingleOrDefault
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_GetSingleOrDefault_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindBy_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  name: FindBy(ISpecification<T>, Include)
+  nameWithType: RepositoryBase<T>.FindBy(ISpecification<T>, Include)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.FindBy(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Repository.Include)
+  nameWithType.vb: RepositoryBase(Of T).FindBy(ISpecification(Of T), Include)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).FindBy(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Repository.Include)
+  name.vb: FindBy(ISpecification(Of T), Include)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+    name: FindBy
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindBy_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+    name: FindBy
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindBy_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+  isExternal: true
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindBy__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_
+  name: FindBy<TKey>(ISpecification<T>, Expression<Func<T, TKey>>, bool, Include)
+  nameWithType: RepositoryBase<T>.FindBy<TKey>(ISpecification<T>, Expression<Func<T, TKey>>, bool, Include)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.FindBy<TKey>(Innovt.Domain.Core.Specification.ISpecification<T>, System.Linq.Expressions.Expression<System.Func<T, TKey>>, bool, Innovt.Domain.Core.Repository.Include)
+  nameWithType.vb: RepositoryBase(Of T).FindBy(Of TKey)(ISpecification(Of T), Expression(Of Func(Of T, TKey)), Boolean, Include)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).FindBy(Of TKey)(Innovt.Domain.Core.Specification.ISpecification(Of T), System.Linq.Expressions.Expression(Of System.Func(Of T, TKey)), Boolean, Innovt.Domain.Core.Repository.Include)
+  name.vb: FindBy(Of TKey)(ISpecification(Of T), Expression(Of Func(Of T, TKey)), Boolean, Include)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+    name: FindBy
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindBy__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_
+  - name: <
+  - name: TKey
+  - name: '>'
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+    name: FindBy
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindBy__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  isExternal: true
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindByAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  name: FindByAsync(ISpecification<T>, Include, CancellationToken)
+  nameWithType: RepositoryBase<T>.FindByAsync(ISpecification<T>, Include, CancellationToken)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.FindByAsync(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  nameWithType.vb: RepositoryBase(Of T).FindByAsync(ISpecification(Of T), Include, CancellationToken)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).FindByAsync(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  name.vb: FindByAsync(ISpecification(Of T), Include, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+    name: FindByAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindByAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+    name: FindByAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindByAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  isExternal: true
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindByAsync__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  name: FindByAsync<TKey>(ISpecification<T>, Expression<Func<T, TKey>>, bool, Include, CancellationToken)
+  nameWithType: RepositoryBase<T>.FindByAsync<TKey>(ISpecification<T>, Expression<Func<T, TKey>>, bool, Include, CancellationToken)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.FindByAsync<TKey>(Innovt.Domain.Core.Specification.ISpecification<T>, System.Linq.Expressions.Expression<System.Func<T, TKey>>, bool, Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  nameWithType.vb: RepositoryBase(Of T).FindByAsync(Of TKey)(ISpecification(Of T), Expression(Of Func(Of T, TKey)), Boolean, Include, CancellationToken)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).FindByAsync(Of TKey)(Innovt.Domain.Core.Specification.ISpecification(Of T), System.Linq.Expressions.Expression(Of System.Func(Of T, TKey)), Boolean, Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  name.vb: FindByAsync(Of TKey)(ISpecification(Of T), Expression(Of Func(Of T, TKey)), Boolean, Include, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+    name: FindByAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindByAsync__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  - name: <
+  - name: TKey
+  - name: '>'
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+    name: FindByAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindByAsync__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindPaginatedBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindPaginatedBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindPaginatedBy_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  name: FindPaginatedBy(ISpecification<T>, Include)
+  nameWithType: RepositoryBase<T>.FindPaginatedBy(ISpecification<T>, Include)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.FindPaginatedBy(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Repository.Include)
+  nameWithType.vb: RepositoryBase(Of T).FindPaginatedBy(ISpecification(Of T), Include)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).FindPaginatedBy(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Repository.Include)
+  name.vb: FindPaginatedBy(ISpecification(Of T), Include)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindPaginatedBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+    name: FindPaginatedBy
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindPaginatedBy_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindPaginatedBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)
+    name: FindPaginatedBy
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindPaginatedBy_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindPaginatedBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindPaginatedBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+  isExternal: true
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindPaginatedBy__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_
+  name: FindPaginatedBy<TKey>(ISpecification<T>, Expression<Func<T, TKey>>, bool, Include)
+  nameWithType: RepositoryBase<T>.FindPaginatedBy<TKey>(ISpecification<T>, Expression<Func<T, TKey>>, bool, Include)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.FindPaginatedBy<TKey>(Innovt.Domain.Core.Specification.ISpecification<T>, System.Linq.Expressions.Expression<System.Func<T, TKey>>, bool, Innovt.Domain.Core.Repository.Include)
+  nameWithType.vb: RepositoryBase(Of T).FindPaginatedBy(Of TKey)(ISpecification(Of T), Expression(Of Func(Of T, TKey)), Boolean, Include)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).FindPaginatedBy(Of TKey)(Innovt.Domain.Core.Specification.ISpecification(Of T), System.Linq.Expressions.Expression(Of System.Func(Of T, TKey)), Boolean, Innovt.Domain.Core.Repository.Include)
+  name.vb: FindPaginatedBy(Of TKey)(ISpecification(Of T), Expression(Of Func(Of T, TKey)), Boolean, Include)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindPaginatedBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+    name: FindPaginatedBy
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindPaginatedBy__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_
+  - name: <
+  - name: TKey
+  - name: '>'
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindPaginatedBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)
+    name: FindPaginatedBy
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindPaginatedBy__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindPaginatedByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindPaginatedByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  isExternal: true
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindPaginatedByAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  name: FindPaginatedByAsync(ISpecification<T>, Include, CancellationToken)
+  nameWithType: RepositoryBase<T>.FindPaginatedByAsync(ISpecification<T>, Include, CancellationToken)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.FindPaginatedByAsync(Innovt.Domain.Core.Specification.ISpecification<T>, Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  nameWithType.vb: RepositoryBase(Of T).FindPaginatedByAsync(ISpecification(Of T), Include, CancellationToken)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).FindPaginatedByAsync(Innovt.Domain.Core.Specification.ISpecification(Of T), Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  name.vb: FindPaginatedByAsync(ISpecification(Of T), Include, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindPaginatedByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+    name: FindPaginatedByAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindPaginatedByAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindPaginatedByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+    name: FindPaginatedByAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindPaginatedByAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindPaginatedByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindPaginatedByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+  isExternal: true
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindPaginatedByAsync__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  name: FindPaginatedByAsync<TKey>(ISpecification<T>, Expression<Func<T, TKey>>, bool, Include, CancellationToken)
+  nameWithType: RepositoryBase<T>.FindPaginatedByAsync<TKey>(ISpecification<T>, Expression<Func<T, TKey>>, bool, Include, CancellationToken)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.FindPaginatedByAsync<TKey>(Innovt.Domain.Core.Specification.ISpecification<T>, System.Linq.Expressions.Expression<System.Func<T, TKey>>, bool, Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  nameWithType.vb: RepositoryBase(Of T).FindPaginatedByAsync(Of TKey)(ISpecification(Of T), Expression(Of Func(Of T, TKey)), Boolean, Include, CancellationToken)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).FindPaginatedByAsync(Of TKey)(Innovt.Domain.Core.Specification.ISpecification(Of T), System.Linq.Expressions.Expression(Of System.Func(Of T, TKey)), Boolean, Innovt.Domain.Core.Repository.Include, System.Threading.CancellationToken)
+  name.vb: FindPaginatedByAsync(Of TKey)(ISpecification(Of T), Expression(Of Func(Of T, TKey)), Boolean, Include, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindPaginatedByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+    name: FindPaginatedByAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindPaginatedByAsync__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  - name: <
+  - name: TKey
+  - name: '>'
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.FindPaginatedByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)
+    name: FindPaginatedByAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_FindPaginatedByAsync__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: Innovt.Domain.Core.Repository.Include
+    name: Include
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.CountBy(Innovt.Domain.Core.Specification.ISpecification{`0})
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase`1.CountBy(Innovt.Domain.Core.Specification.ISpecification{`0})
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_CountBy_Innovt_Domain_Core_Specification_ISpecification__0__
+  name: CountBy(ISpecification<T>)
+  nameWithType: RepositoryBase<T>.CountBy(ISpecification<T>)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.CountBy(Innovt.Domain.Core.Specification.ISpecification<T>)
+  nameWithType.vb: RepositoryBase(Of T).CountBy(ISpecification(Of T))
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).CountBy(Innovt.Domain.Core.Specification.ISpecification(Of T))
+  name.vb: CountBy(ISpecification(Of T))
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.CountBy(Innovt.Domain.Core.Specification.ISpecification{`0})
+    name: CountBy
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_CountBy_Innovt_Domain_Core_Specification_ISpecification__0__
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.CountBy(Innovt.Domain.Core.Specification.ISpecification{`0})
+    name: CountBy
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_CountBy_Innovt_Domain_Core_Specification_ISpecification__0__
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.CountBy``1(Innovt.Domain.Core.Specification.ISpecification{``0})
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase`1.CountBy``1(Innovt.Domain.Core.Specification.ISpecification{``0})
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_CountBy__1_Innovt_Domain_Core_Specification_ISpecification___0__
+  name: CountBy<TKEntity>(ISpecification<TKEntity>)
+  nameWithType: RepositoryBase<T>.CountBy<TKEntity>(ISpecification<TKEntity>)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.CountBy<TKEntity>(Innovt.Domain.Core.Specification.ISpecification<TKEntity>)
+  nameWithType.vb: RepositoryBase(Of T).CountBy(Of TKEntity)(ISpecification(Of TKEntity))
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).CountBy(Of TKEntity)(Innovt.Domain.Core.Specification.ISpecification(Of TKEntity))
+  name.vb: CountBy(Of TKEntity)(ISpecification(Of TKEntity))
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.CountBy``1(Innovt.Domain.Core.Specification.ISpecification{``0})
+    name: CountBy
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_CountBy__1_Innovt_Domain_Core_Specification_ISpecification___0__
+  - name: <
+  - name: TKEntity
+  - name: '>'
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: TKEntity
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.CountBy``1(Innovt.Domain.Core.Specification.ISpecification{``0})
+    name: CountBy
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_CountBy__1_Innovt_Domain_Core_Specification_ISpecification___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKEntity
+  - name: )
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKEntity
+  - name: )
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.CountByAsync``1(Innovt.Domain.Core.Specification.ISpecification{``0},System.Threading.CancellationToken)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase`1.CountByAsync``1(Innovt.Domain.Core.Specification.ISpecification{``0},System.Threading.CancellationToken)
+  isExternal: true
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_CountByAsync__1_Innovt_Domain_Core_Specification_ISpecification___0__System_Threading_CancellationToken_
+  name: CountByAsync<TKEntity>(ISpecification<TKEntity>, CancellationToken)
+  nameWithType: RepositoryBase<T>.CountByAsync<TKEntity>(ISpecification<TKEntity>, CancellationToken)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.CountByAsync<TKEntity>(Innovt.Domain.Core.Specification.ISpecification<TKEntity>, System.Threading.CancellationToken)
+  nameWithType.vb: RepositoryBase(Of T).CountByAsync(Of TKEntity)(ISpecification(Of TKEntity), CancellationToken)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).CountByAsync(Of TKEntity)(Innovt.Domain.Core.Specification.ISpecification(Of TKEntity), System.Threading.CancellationToken)
+  name.vb: CountByAsync(Of TKEntity)(ISpecification(Of TKEntity), CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.CountByAsync``1(Innovt.Domain.Core.Specification.ISpecification{``0},System.Threading.CancellationToken)
+    name: CountByAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_CountByAsync__1_Innovt_Domain_Core_Specification_ISpecification___0__System_Threading_CancellationToken_
+  - name: <
+  - name: TKEntity
+  - name: '>'
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: TKEntity
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.CountByAsync``1(Innovt.Domain.Core.Specification.ISpecification{``0},System.Threading.CancellationToken)
+    name: CountByAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_CountByAsync__1_Innovt_Domain_Core_Specification_ISpecification___0__System_Threading_CancellationToken_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKEntity
+  - name: )
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKEntity
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.CountByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},System.Threading.CancellationToken)
+  commentId: M:Innovt.Data.EFCore.Repositories.RepositoryBase`1.CountByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},System.Threading.CancellationToken)
+  isExternal: true
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_CountByAsync_Innovt_Domain_Core_Specification_ISpecification__0__System_Threading_CancellationToken_
+  name: CountByAsync(ISpecification<T>, CancellationToken)
+  nameWithType: RepositoryBase<T>.CountByAsync(ISpecification<T>, CancellationToken)
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>.CountByAsync(Innovt.Domain.Core.Specification.ISpecification<T>, System.Threading.CancellationToken)
+  nameWithType.vb: RepositoryBase(Of T).CountByAsync(ISpecification(Of T), CancellationToken)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T).CountByAsync(Innovt.Domain.Core.Specification.ISpecification(Of T), System.Threading.CancellationToken)
+  name.vb: CountByAsync(ISpecification(Of T), CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.CountByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},System.Threading.CancellationToken)
+    name: CountByAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_CountByAsync_Innovt_Domain_Core_Specification_ISpecification__0__System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1.CountByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},System.Threading.CancellationToken)
+    name: CountByAsync
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html#Innovt_Data_EFCore_Repositories_RepositoryBase_1_CountByAsync_Innovt_Domain_Core_Specification_ISpecification__0__System_Threading_CancellationToken_
+  - name: (
+  - uid: Innovt.Domain.Core.Specification.ISpecification`1
+    name: ISpecification
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Data.EFCore.Repositories.GenericRepository`1
+  commentId: T:Innovt.Data.EFCore.Repositories.GenericRepository`1
+  href: Innovt.Data.EFCore.Repositories.GenericRepository-1.html
+  name: GenericRepository<T>
+  nameWithType: GenericRepository<T>
+  fullName: Innovt.Data.EFCore.Repositories.GenericRepository<T>
+  nameWithType.vb: GenericRepository(Of T)
+  fullName.vb: Innovt.Data.EFCore.Repositories.GenericRepository(Of T)
+  name.vb: GenericRepository(Of T)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.GenericRepository`1
+    name: GenericRepository
+    href: Innovt.Data.EFCore.Repositories.GenericRepository-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.GenericRepository`1
+    name: GenericRepository
+    href: Innovt.Data.EFCore.Repositories.GenericRepository-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.GenericRepository`1.#ctor*
+  commentId: Overload:Innovt.Data.EFCore.Repositories.GenericRepository`1.#ctor
+  href: Innovt.Data.EFCore.Repositories.GenericRepository-1.html#Innovt_Data_EFCore_Repositories_GenericRepository_1__ctor_Innovt_Domain_Core_Repository_IExtendedUnitOfWork_
+  name: GenericRepository
+  nameWithType: GenericRepository<T>.GenericRepository
+  fullName: Innovt.Data.EFCore.Repositories.GenericRepository<T>.GenericRepository
+  nameWithType.vb: GenericRepository(Of T).New
+  fullName.vb: Innovt.Data.EFCore.Repositories.GenericRepository(Of T).New
+  name.vb: New
+- uid: Innovt.Domain.Core.Repository.IExtendedUnitOfWork
+  commentId: T:Innovt.Domain.Core.Repository.IExtendedUnitOfWork
+  parent: Innovt.Domain.Core.Repository
+  href: Innovt.Domain.Core.Repository.IExtendedUnitOfWork.html
+  name: IExtendedUnitOfWork
+  nameWithType: IExtendedUnitOfWork
+  fullName: Innovt.Domain.Core.Repository.IExtendedUnitOfWork

@@ -1,0 +1,1393 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor
+  commentId: T:Innovt.Cloud.AWS.Lambda.BaseEventProcessor
+  id: BaseEventProcessor
+  parent: Innovt.Cloud.AWS.Lambda
+  children:
+  - Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor
+  - Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor(Innovt.Core.CrossCutting.Log.ILogger)
+  - Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Microsoft.Extensions.Configuration.IConfigurationRoot)
+  - Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor(Microsoft.Extensions.Configuration.IConfigurationRoot)
+  - Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Configuration
+  - Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Context
+  - Innovt.Cloud.AWS.Lambda.BaseEventProcessor.EnrichConfiguration(Microsoft.Extensions.Configuration.ConfigurationBuilder)
+  - Innovt.Cloud.AWS.Lambda.BaseEventProcessor.EventProcessorActivitySource
+  - Innovt.Cloud.AWS.Lambda.BaseEventProcessor.InitializeLogger(Innovt.Core.CrossCutting.Ioc.IContainer)
+  - Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Logger
+  - Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupConfiguration
+  - Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIoc
+  - Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIocContainer
+  - Innovt.Cloud.AWS.Lambda.BaseEventProcessor.StartBaseActivity(System.String)
+  langs:
+  - csharp
+  - vb
+  name: BaseEventProcessor
+  nameWithType: BaseEventProcessor
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: BaseEventProcessor
+    path: ../src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+    startLine: 18
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda
+  namespace: Innovt.Cloud.AWS.Lambda
+  summary: >-
+    Represents a base class for event processors with common functionality such as logging, IOC container setup, and
+
+    configuration.
+  example: []
+  syntax:
+    content: public abstract class BaseEventProcessor
+    content.vb: Public MustInherit Class BaseEventProcessor
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Innovt.Cloud.AWS.Lambda.EventProcessor`1
+  - Innovt.Cloud.AWS.Lambda.EventProcessor`2
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.EventProcessorActivitySource
+  commentId: F:Innovt.Cloud.AWS.Lambda.BaseEventProcessor.EventProcessorActivitySource
+  id: EventProcessorActivitySource
+  parent: Innovt.Cloud.AWS.Lambda.BaseEventProcessor
+  langs:
+  - csharp
+  - vb
+  name: EventProcessorActivitySource
+  nameWithType: BaseEventProcessor.EventProcessorActivitySource
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.EventProcessorActivitySource
+  type: Field
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: EventProcessorActivitySource
+    path: ../src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+    startLine: 23
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda
+  namespace: Innovt.Cloud.AWS.Lambda
+  summary: Initializes a new instance of the <xref href="Innovt.Cloud.AWS.Lambda.BaseEventProcessor" data-throw-if-not-resolved="false"></xref> class with an optional logger.
+  example: []
+  syntax:
+    content: protected static readonly ActivitySource EventProcessorActivitySource
+    return:
+      type: System.Diagnostics.ActivitySource
+    content.vb: Protected Shared ReadOnly EventProcessorActivitySource As ActivitySource
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor(Innovt.Core.CrossCutting.Log.ILogger)
+  commentId: M:Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor(Innovt.Core.CrossCutting.Log.ILogger)
+  id: '#ctor(Innovt.Core.CrossCutting.Log.ILogger)'
+  parent: Innovt.Cloud.AWS.Lambda.BaseEventProcessor
+  langs:
+  - csharp
+  - vb
+  name: BaseEventProcessor(ILogger)
+  nameWithType: BaseEventProcessor.BaseEventProcessor(ILogger)
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.BaseEventProcessor(Innovt.Core.CrossCutting.Log.ILogger)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: ../src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+    startLine: 31
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda
+  namespace: Innovt.Cloud.AWS.Lambda
+  summary: Initializes a new instance of the <xref href="Innovt.Cloud.AWS.Lambda.BaseEventProcessor" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: protected BaseEventProcessor(ILogger logger)
+    parameters:
+    - id: logger
+      type: Innovt.Core.CrossCutting.Log.ILogger
+    content.vb: Protected Sub New(logger As ILogger)
+  overload: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor*
+  nameWithType.vb: BaseEventProcessor.New(ILogger)
+  fullName.vb: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.New(Innovt.Core.CrossCutting.Log.ILogger)
+  name.vb: New(ILogger)
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Microsoft.Extensions.Configuration.IConfigurationRoot)
+  commentId: M:Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Microsoft.Extensions.Configuration.IConfigurationRoot)
+  id: '#ctor(Innovt.Core.CrossCutting.Log.ILogger,Microsoft.Extensions.Configuration.IConfigurationRoot)'
+  parent: Innovt.Cloud.AWS.Lambda.BaseEventProcessor
+  langs:
+  - csharp
+  - vb
+  name: BaseEventProcessor(ILogger, IConfigurationRoot)
+  nameWithType: BaseEventProcessor.BaseEventProcessor(ILogger, IConfigurationRoot)
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.BaseEventProcessor(Innovt.Core.CrossCutting.Log.ILogger, Microsoft.Extensions.Configuration.IConfigurationRoot)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: ../src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+    startLine: 43
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda
+  namespace: Innovt.Cloud.AWS.Lambda
+  summary: >-
+    Allows to use the configuration and logger from outside. In This case, the method SetupConfiguration will not be
+
+    called.
+  example: []
+  syntax:
+    content: protected BaseEventProcessor(ILogger logger, IConfigurationRoot configuration)
+    parameters:
+    - id: logger
+      type: Innovt.Core.CrossCutting.Log.ILogger
+      description: The logger provider.
+    - id: configuration
+      type: Microsoft.Extensions.Configuration.IConfigurationRoot
+      description: The configuration to be used.
+    content.vb: Protected Sub New(logger As ILogger, configuration As IConfigurationRoot)
+  overload: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: If the logger or configuration is null.
+  nameWithType.vb: BaseEventProcessor.New(ILogger, IConfigurationRoot)
+  fullName.vb: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.New(Innovt.Core.CrossCutting.Log.ILogger, Microsoft.Extensions.Configuration.IConfigurationRoot)
+  name.vb: New(ILogger, IConfigurationRoot)
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor(Microsoft.Extensions.Configuration.IConfigurationRoot)
+  commentId: M:Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor(Microsoft.Extensions.Configuration.IConfigurationRoot)
+  id: '#ctor(Microsoft.Extensions.Configuration.IConfigurationRoot)'
+  parent: Innovt.Cloud.AWS.Lambda.BaseEventProcessor
+  langs:
+  - csharp
+  - vb
+  name: BaseEventProcessor(IConfigurationRoot)
+  nameWithType: BaseEventProcessor.BaseEventProcessor(IConfigurationRoot)
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.BaseEventProcessor(Microsoft.Extensions.Configuration.IConfigurationRoot)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: ../src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+    startLine: 53
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda
+  namespace: Innovt.Cloud.AWS.Lambda
+  summary: Allows to use the configuration from outside. In This case, the method SetupConfiguration will not be called.
+  example: []
+  syntax:
+    content: protected BaseEventProcessor(IConfigurationRoot configuration)
+    parameters:
+    - id: configuration
+      type: Microsoft.Extensions.Configuration.IConfigurationRoot
+      description: The configuration to be used.
+    content.vb: Protected Sub New(configuration As IConfigurationRoot)
+  overload: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: If the logger or configuration is null.
+  nameWithType.vb: BaseEventProcessor.New(IConfigurationRoot)
+  fullName.vb: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.New(Microsoft.Extensions.Configuration.IConfigurationRoot)
+  name.vb: New(IConfigurationRoot)
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor
+  commentId: M:Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor
+  id: '#ctor'
+  parent: Innovt.Cloud.AWS.Lambda.BaseEventProcessor
+  langs:
+  - csharp
+  - vb
+  name: BaseEventProcessor()
+  nameWithType: BaseEventProcessor.BaseEventProcessor()
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.BaseEventProcessor()
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: ../src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+    startLine: 58
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda
+  namespace: Innovt.Cloud.AWS.Lambda
+  syntax:
+    content: protected BaseEventProcessor()
+    content.vb: Protected Sub New()
+  overload: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor*
+  nameWithType.vb: BaseEventProcessor.New()
+  fullName.vb: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.New()
+  name.vb: New()
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Logger
+  commentId: P:Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Logger
+  id: Logger
+  parent: Innovt.Cloud.AWS.Lambda.BaseEventProcessor
+  langs:
+  - csharp
+  - vb
+  name: Logger
+  nameWithType: BaseEventProcessor.Logger
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Logger
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Logger
+    path: ../src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+    startLine: 65
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda
+  namespace: Innovt.Cloud.AWS.Lambda
+  summary: Gets or sets the logger for recording processing information.
+  example: []
+  syntax:
+    content: protected ILogger Logger { get; }
+    parameters: []
+    return:
+      type: Innovt.Core.CrossCutting.Log.ILogger
+    content.vb: Protected Property Logger As ILogger
+  overload: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Logger*
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Context
+  commentId: P:Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Context
+  id: Context
+  parent: Innovt.Cloud.AWS.Lambda.BaseEventProcessor
+  langs:
+  - csharp
+  - vb
+  name: Context
+  nameWithType: BaseEventProcessor.Context
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Context
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Context
+    path: ../src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+    startLine: 70
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda
+  namespace: Innovt.Cloud.AWS.Lambda
+  summary: Gets or sets the Lambda context associated with the event processing.
+  example: []
+  syntax:
+    content: protected ILambdaContext Context { get; set; }
+    parameters: []
+    return:
+      type: Amazon.Lambda.Core.ILambdaContext
+    content.vb: Protected Property Context As ILambdaContext
+  overload: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Context*
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Configuration
+  commentId: P:Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Configuration
+  id: Configuration
+  parent: Innovt.Cloud.AWS.Lambda.BaseEventProcessor
+  langs:
+  - csharp
+  - vb
+  name: Configuration
+  nameWithType: BaseEventProcessor.Configuration
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Configuration
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Configuration
+    path: ../src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+    startLine: 75
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda
+  namespace: Innovt.Cloud.AWS.Lambda
+  summary: Gets or sets the configuration root for accessing application settings.
+  example: []
+  syntax:
+    content: protected IConfigurationRoot Configuration { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.Extensions.Configuration.IConfigurationRoot
+    content.vb: Protected Property Configuration As IConfigurationRoot
+  overload: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Configuration*
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.InitializeLogger(Innovt.Core.CrossCutting.Ioc.IContainer)
+  commentId: M:Innovt.Cloud.AWS.Lambda.BaseEventProcessor.InitializeLogger(Innovt.Core.CrossCutting.Ioc.IContainer)
+  id: InitializeLogger(Innovt.Core.CrossCutting.Ioc.IContainer)
+  parent: Innovt.Cloud.AWS.Lambda.BaseEventProcessor
+  langs:
+  - csharp
+  - vb
+  name: InitializeLogger(IContainer)
+  nameWithType: BaseEventProcessor.InitializeLogger(IContainer)
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.InitializeLogger(Innovt.Core.CrossCutting.Ioc.IContainer)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: InitializeLogger
+    path: ../src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+    startLine: 81
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda
+  namespace: Innovt.Cloud.AWS.Lambda
+  summary: Initializes the logger with an optional logger instance or creates a new logger if not provided.
+  example: []
+  syntax:
+    content: protected void InitializeLogger(IContainer iocContainer = null)
+    parameters:
+    - id: iocContainer
+      type: Innovt.Core.CrossCutting.Ioc.IContainer
+      description: An optional logger instance to use.
+    content.vb: Protected Sub InitializeLogger(iocContainer As IContainer = Nothing)
+  overload: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.InitializeLogger*
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIoc
+  commentId: M:Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIoc
+  id: SetupIoc
+  parent: Innovt.Cloud.AWS.Lambda.BaseEventProcessor
+  langs:
+  - csharp
+  - vb
+  name: SetupIoc()
+  nameWithType: BaseEventProcessor.SetupIoc()
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIoc()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: SetupIoc
+    path: ../src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+    startLine: 95
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda
+  namespace: Innovt.Cloud.AWS.Lambda
+  summary: Sets up the Inversion of Control (IOC) container for managing dependencies.
+  example: []
+  syntax:
+    content: protected void SetupIoc()
+    content.vb: Protected Sub SetupIoc()
+  overload: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIoc*
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.StartBaseActivity(System.String)
+  commentId: M:Innovt.Cloud.AWS.Lambda.BaseEventProcessor.StartBaseActivity(System.String)
+  id: StartBaseActivity(System.String)
+  parent: Innovt.Cloud.AWS.Lambda.BaseEventProcessor
+  langs:
+  - csharp
+  - vb
+  name: StartBaseActivity(string)
+  nameWithType: BaseEventProcessor.StartBaseActivity(string)
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.StartBaseActivity(string)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: StartBaseActivity
+    path: ../src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+    startLine: 125
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda
+  namespace: Innovt.Cloud.AWS.Lambda
+  summary: Starts a new activity for tracing and adds relevant tags and baggage information.
+  example: []
+  syntax:
+    content: protected Activity StartBaseActivity(string activityName)
+    parameters:
+    - id: activityName
+      type: System.String
+      description: The name of the activity to start.
+    return:
+      type: System.Diagnostics.Activity
+      description: The started <xref href="System.Diagnostics.Activity" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Protected Function StartBaseActivity(activityName As String) As Activity
+  overload: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.StartBaseActivity*
+  nameWithType.vb: BaseEventProcessor.StartBaseActivity(String)
+  fullName.vb: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.StartBaseActivity(String)
+  name.vb: StartBaseActivity(String)
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupConfiguration
+  commentId: M:Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupConfiguration
+  id: SetupConfiguration
+  parent: Innovt.Cloud.AWS.Lambda.BaseEventProcessor
+  langs:
+  - csharp
+  - vb
+  name: SetupConfiguration()
+  nameWithType: BaseEventProcessor.SetupConfiguration()
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupConfiguration()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: SetupConfiguration
+    path: ../src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+    startLine: 151
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda
+  namespace: Innovt.Cloud.AWS.Lambda
+  summary: >-
+    Sets up the application configuration using environment variables and JSON files. When the configuration is already
+
+    set, this method does nothing.
+  example: []
+  syntax:
+    content: protected virtual void SetupConfiguration()
+    content.vb: Protected Overridable Sub SetupConfiguration()
+  overload: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupConfiguration*
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIocContainer
+  commentId: M:Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIocContainer
+  id: SetupIocContainer
+  parent: Innovt.Cloud.AWS.Lambda.BaseEventProcessor
+  langs:
+  - csharp
+  - vb
+  name: SetupIocContainer()
+  nameWithType: BaseEventProcessor.SetupIocContainer()
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIocContainer()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: SetupIocContainer
+    path: ../src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+    startLine: 175
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda
+  namespace: Innovt.Cloud.AWS.Lambda
+  summary: Sets up the Inversion of Control (IOC) container for managing dependencies.
+  example: []
+  syntax:
+    content: protected abstract IContainer SetupIocContainer()
+    return:
+      type: Innovt.Core.CrossCutting.Ioc.IContainer
+      description: The configured IOC container.
+    content.vb: Protected MustOverride Function SetupIocContainer() As IContainer
+  overload: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIocContainer*
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.EnrichConfiguration(Microsoft.Extensions.Configuration.ConfigurationBuilder)
+  commentId: M:Innovt.Cloud.AWS.Lambda.BaseEventProcessor.EnrichConfiguration(Microsoft.Extensions.Configuration.ConfigurationBuilder)
+  id: EnrichConfiguration(Microsoft.Extensions.Configuration.ConfigurationBuilder)
+  parent: Innovt.Cloud.AWS.Lambda.BaseEventProcessor
+  langs:
+  - csharp
+  - vb
+  name: EnrichConfiguration(ConfigurationBuilder)
+  nameWithType: BaseEventProcessor.EnrichConfiguration(ConfigurationBuilder)
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.EnrichConfiguration(Microsoft.Extensions.Configuration.ConfigurationBuilder)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: EnrichConfiguration
+    path: ../src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs
+    startLine: 181
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda
+  namespace: Innovt.Cloud.AWS.Lambda
+  summary: Configures additional sources for enriching the application configuration.
+  example: []
+  syntax:
+    content: protected virtual void EnrichConfiguration(ConfigurationBuilder configurationBuilder)
+    parameters:
+    - id: configurationBuilder
+      type: Microsoft.Extensions.Configuration.ConfigurationBuilder
+      description: The configuration builder to which additional sources can be added.
+    content.vb: Protected Overridable Sub EnrichConfiguration(configurationBuilder As ConfigurationBuilder)
+  overload: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.EnrichConfiguration*
+references:
+- uid: Innovt.Cloud.AWS.Lambda
+  commentId: N:Innovt.Cloud.AWS.Lambda
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Lambda
+  nameWithType: Innovt.Cloud.AWS.Lambda
+  fullName: Innovt.Cloud.AWS.Lambda
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda
+    name: Lambda
+    href: Innovt.Cloud.AWS.Lambda.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda
+    name: Lambda
+    href: Innovt.Cloud.AWS.Lambda.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor
+  commentId: T:Innovt.Cloud.AWS.Lambda.BaseEventProcessor
+  parent: Innovt.Cloud.AWS.Lambda
+  href: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.html
+  name: BaseEventProcessor
+  nameWithType: BaseEventProcessor
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor
+- uid: System.Diagnostics.ActivitySource
+  commentId: T:System.Diagnostics.ActivitySource
+  parent: System.Diagnostics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.diagnostics.activitysource
+  name: ActivitySource
+  nameWithType: ActivitySource
+  fullName: System.Diagnostics.ActivitySource
+- uid: System.Diagnostics
+  commentId: N:System.Diagnostics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Diagnostics
+  nameWithType: System.Diagnostics
+  fullName: System.Diagnostics
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Diagnostics
+    name: Diagnostics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.diagnostics
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Diagnostics
+    name: Diagnostics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.diagnostics
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor
+  href: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.html#Innovt_Cloud_AWS_Lambda_BaseEventProcessor__ctor_Innovt_Core_CrossCutting_Log_ILogger_
+  name: BaseEventProcessor
+  nameWithType: BaseEventProcessor.BaseEventProcessor
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.BaseEventProcessor
+  nameWithType.vb: BaseEventProcessor.New
+  fullName.vb: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.New
+  name.vb: New
+- uid: Innovt.Core.CrossCutting.Log.ILogger
+  commentId: T:Innovt.Core.CrossCutting.Log.ILogger
+  parent: Innovt.Core.CrossCutting.Log
+  href: Innovt.Core.CrossCutting.Log.ILogger.html
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Innovt.Core.CrossCutting.Log.ILogger
+- uid: Innovt.Core.CrossCutting.Log
+  commentId: N:Innovt.Core.CrossCutting.Log
+  href: Innovt.html
+  name: Innovt.Core.CrossCutting.Log
+  nameWithType: Innovt.Core.CrossCutting.Log
+  fullName: Innovt.Core.CrossCutting.Log
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Log
+    name: Log
+    href: Innovt.Core.CrossCutting.Log.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Log
+    name: Log
+    href: Innovt.Core.CrossCutting.Log.html
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: Microsoft.Extensions.Configuration.IConfigurationRoot
+  commentId: T:Microsoft.Extensions.Configuration.IConfigurationRoot
+  parent: Microsoft.Extensions.Configuration
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration.iconfigurationroot
+  name: IConfigurationRoot
+  nameWithType: IConfigurationRoot
+  fullName: Microsoft.Extensions.Configuration.IConfigurationRoot
+- uid: Microsoft.Extensions.Configuration
+  commentId: N:Microsoft.Extensions.Configuration
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Configuration
+  nameWithType: Microsoft.Extensions.Configuration
+  fullName: Microsoft.Extensions.Configuration
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Configuration
+    name: Configuration
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Configuration
+    name: Configuration
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Logger*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Logger
+  href: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.html#Innovt_Cloud_AWS_Lambda_BaseEventProcessor_Logger
+  name: Logger
+  nameWithType: BaseEventProcessor.Logger
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Logger
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Context*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Context
+  href: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.html#Innovt_Cloud_AWS_Lambda_BaseEventProcessor_Context
+  name: Context
+  nameWithType: BaseEventProcessor.Context
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Context
+- uid: Amazon.Lambda.Core.ILambdaContext
+  commentId: T:Amazon.Lambda.Core.ILambdaContext
+  parent: Amazon.Lambda.Core
+  isExternal: true
+  name: ILambdaContext
+  nameWithType: ILambdaContext
+  fullName: Amazon.Lambda.Core.ILambdaContext
+- uid: Amazon.Lambda.Core
+  commentId: N:Amazon.Lambda.Core
+  isExternal: true
+  name: Amazon.Lambda.Core
+  nameWithType: Amazon.Lambda.Core
+  fullName: Amazon.Lambda.Core
+  spec.csharp:
+  - uid: Amazon
+    name: Amazon
+    isExternal: true
+  - name: .
+  - uid: Amazon.Lambda
+    name: Lambda
+    isExternal: true
+  - name: .
+  - uid: Amazon.Lambda.Core
+    name: Core
+    isExternal: true
+  spec.vb:
+  - uid: Amazon
+    name: Amazon
+    isExternal: true
+  - name: .
+  - uid: Amazon.Lambda
+    name: Lambda
+    isExternal: true
+  - name: .
+  - uid: Amazon.Lambda.Core
+    name: Core
+    isExternal: true
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Configuration*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Configuration
+  href: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.html#Innovt_Cloud_AWS_Lambda_BaseEventProcessor_Configuration
+  name: Configuration
+  nameWithType: BaseEventProcessor.Configuration
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Configuration
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.InitializeLogger*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.BaseEventProcessor.InitializeLogger
+  href: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.html#Innovt_Cloud_AWS_Lambda_BaseEventProcessor_InitializeLogger_Innovt_Core_CrossCutting_Ioc_IContainer_
+  name: InitializeLogger
+  nameWithType: BaseEventProcessor.InitializeLogger
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.InitializeLogger
+- uid: Innovt.Core.CrossCutting.Ioc.IContainer
+  commentId: T:Innovt.Core.CrossCutting.Ioc.IContainer
+  parent: Innovt.Core.CrossCutting.Ioc
+  href: Innovt.Core.CrossCutting.Ioc.IContainer.html
+  name: IContainer
+  nameWithType: IContainer
+  fullName: Innovt.Core.CrossCutting.Ioc.IContainer
+- uid: Innovt.Core.CrossCutting.Ioc
+  commentId: N:Innovt.Core.CrossCutting.Ioc
+  href: Innovt.html
+  name: Innovt.Core.CrossCutting.Ioc
+  nameWithType: Innovt.Core.CrossCutting.Ioc
+  fullName: Innovt.Core.CrossCutting.Ioc
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Ioc
+    name: Ioc
+    href: Innovt.Core.CrossCutting.Ioc.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Ioc
+    name: Ioc
+    href: Innovt.Core.CrossCutting.Ioc.html
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIoc*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIoc
+  href: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.html#Innovt_Cloud_AWS_Lambda_BaseEventProcessor_SetupIoc
+  name: SetupIoc
+  nameWithType: BaseEventProcessor.SetupIoc
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIoc
+- uid: System.Diagnostics.Activity
+  commentId: T:System.Diagnostics.Activity
+  parent: System.Diagnostics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.diagnostics.activity
+  name: Activity
+  nameWithType: Activity
+  fullName: System.Diagnostics.Activity
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.StartBaseActivity*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.BaseEventProcessor.StartBaseActivity
+  href: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.html#Innovt_Cloud_AWS_Lambda_BaseEventProcessor_StartBaseActivity_System_String_
+  name: StartBaseActivity
+  nameWithType: BaseEventProcessor.StartBaseActivity
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.StartBaseActivity
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupConfiguration*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupConfiguration
+  href: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.html#Innovt_Cloud_AWS_Lambda_BaseEventProcessor_SetupConfiguration
+  name: SetupConfiguration
+  nameWithType: BaseEventProcessor.SetupConfiguration
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupConfiguration
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIocContainer*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIocContainer
+  href: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.html#Innovt_Cloud_AWS_Lambda_BaseEventProcessor_SetupIocContainer
+  name: SetupIocContainer
+  nameWithType: BaseEventProcessor.SetupIocContainer
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIocContainer
+- uid: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.EnrichConfiguration*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.BaseEventProcessor.EnrichConfiguration
+  href: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.html#Innovt_Cloud_AWS_Lambda_BaseEventProcessor_EnrichConfiguration_Microsoft_Extensions_Configuration_ConfigurationBuilder_
+  name: EnrichConfiguration
+  nameWithType: BaseEventProcessor.EnrichConfiguration
+  fullName: Innovt.Cloud.AWS.Lambda.BaseEventProcessor.EnrichConfiguration
+- uid: Microsoft.Extensions.Configuration.ConfigurationBuilder
+  commentId: T:Microsoft.Extensions.Configuration.ConfigurationBuilder
+  parent: Microsoft.Extensions.Configuration
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration.configurationbuilder
+  name: ConfigurationBuilder
+  nameWithType: ConfigurationBuilder
+  fullName: Microsoft.Extensions.Configuration.ConfigurationBuilder

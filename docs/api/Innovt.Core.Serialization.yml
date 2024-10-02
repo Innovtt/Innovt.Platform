@@ -1,0 +1,83 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Core.Serialization
+  commentId: N:Innovt.Core.Serialization
+  id: Innovt.Core.Serialization
+  children:
+  - Innovt.Core.Serialization.DeserializerFactory
+  - Innovt.Core.Serialization.ISerializer
+  - Innovt.Core.Serialization.JsonFormatAttribute
+  - Innovt.Core.Serialization.JsonSerializer
+  - Innovt.Core.Serialization.XmlSerializer
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Core.Serialization
+  nameWithType: Innovt.Core.Serialization
+  fullName: Innovt.Core.Serialization
+  type: Namespace
+  assemblies:
+  - Innovt.Core
+references:
+- uid: Innovt.Core.Serialization.DeserializerFactory
+  commentId: T:Innovt.Core.Serialization.DeserializerFactory
+  parent: Innovt.Core.Serialization
+  href: Innovt.Core.Serialization.DeserializerFactory.html
+  name: DeserializerFactory
+  nameWithType: DeserializerFactory
+  fullName: Innovt.Core.Serialization.DeserializerFactory
+- uid: Innovt.Core.Serialization.ISerializer
+  commentId: T:Innovt.Core.Serialization.ISerializer
+  parent: Innovt.Core.Serialization
+  href: Innovt.Core.Serialization.ISerializer.html
+  name: ISerializer
+  nameWithType: ISerializer
+  fullName: Innovt.Core.Serialization.ISerializer
+- uid: Innovt.Core.Serialization.JsonFormatAttribute
+  commentId: T:Innovt.Core.Serialization.JsonFormatAttribute
+  href: Innovt.Core.Serialization.JsonFormatAttribute.html
+  name: JsonFormatAttribute
+  nameWithType: JsonFormatAttribute
+  fullName: Innovt.Core.Serialization.JsonFormatAttribute
+- uid: Innovt.Core.Serialization.JsonSerializer
+  commentId: T:Innovt.Core.Serialization.JsonSerializer
+  href: Innovt.Core.Serialization.JsonSerializer.html
+  name: JsonSerializer
+  nameWithType: JsonSerializer
+  fullName: Innovt.Core.Serialization.JsonSerializer
+- uid: Innovt.Core.Serialization.XmlSerializer
+  commentId: T:Innovt.Core.Serialization.XmlSerializer
+  href: Innovt.Core.Serialization.XmlSerializer.html
+  name: XmlSerializer
+  nameWithType: XmlSerializer
+  fullName: Innovt.Core.Serialization.XmlSerializer
+- uid: Innovt.Core.Serialization
+  commentId: N:Innovt.Core.Serialization
+  href: Innovt.html
+  name: Innovt.Core.Serialization
+  nameWithType: Innovt.Core.Serialization
+  fullName: Innovt.Core.Serialization
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Serialization
+    name: Serialization
+    href: Innovt.Core.Serialization.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Serialization
+    name: Serialization
+    href: Innovt.Core.Serialization.html

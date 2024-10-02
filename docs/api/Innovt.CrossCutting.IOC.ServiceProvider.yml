@@ -1,0 +1,1041 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.CrossCutting.IOC.ServiceProvider
+  commentId: T:Innovt.CrossCutting.IOC.ServiceProvider
+  id: ServiceProvider
+  parent: Innovt.CrossCutting.IOC
+  children:
+  - Innovt.CrossCutting.IOC.ServiceProvider.#ctor(Innovt.Core.CrossCutting.Ioc.IContainer)
+  - Innovt.CrossCutting.IOC.ServiceProvider.Dispose
+  - Innovt.CrossCutting.IOC.ServiceProvider.Dispose(System.Boolean)
+  - Innovt.CrossCutting.IOC.ServiceProvider.GetRequiredService(System.Type)
+  - Innovt.CrossCutting.IOC.ServiceProvider.GetService(System.Type)
+  langs:
+  - csharp
+  - vb
+  name: ServiceProvider
+  nameWithType: ServiceProvider
+  fullName: Innovt.CrossCutting.IOC.ServiceProvider
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.CrossCutting.IOC/ServiceProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ServiceProvider
+    path: ../src/Innovt.CrossCutting.IOC/ServiceProvider.cs
+    startLine: 14
+  assemblies:
+  - Innovt.CrossCutting.IOC
+  namespace: Innovt.CrossCutting.IOC
+  summary: >-
+    Implementation of the <xref href="System.IServiceProvider" data-throw-if-not-resolved="false"></xref> and <xref href="Microsoft.Extensions.DependencyInjection.ISupportRequiredService" data-throw-if-not-resolved="false"></xref> interfaces using
+
+    Lamar IoC container.
+  example: []
+  syntax:
+    content: 'public class ServiceProvider : IServiceProvider, ISupportRequiredService, IDisposable'
+    content.vb: Public Class ServiceProvider Implements IServiceProvider, ISupportRequiredService, IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IServiceProvider
+  - Microsoft.Extensions.DependencyInjection.ISupportRequiredService
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+- uid: Innovt.CrossCutting.IOC.ServiceProvider.#ctor(Innovt.Core.CrossCutting.Ioc.IContainer)
+  commentId: M:Innovt.CrossCutting.IOC.ServiceProvider.#ctor(Innovt.Core.CrossCutting.Ioc.IContainer)
+  id: '#ctor(Innovt.Core.CrossCutting.Ioc.IContainer)'
+  parent: Innovt.CrossCutting.IOC.ServiceProvider
+  langs:
+  - csharp
+  - vb
+  name: ServiceProvider(IContainer)
+  nameWithType: ServiceProvider.ServiceProvider(IContainer)
+  fullName: Innovt.CrossCutting.IOC.ServiceProvider.ServiceProvider(Innovt.Core.CrossCutting.Ioc.IContainer)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.CrossCutting.IOC/ServiceProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: ../src/Innovt.CrossCutting.IOC/ServiceProvider.cs
+    startLine: 24
+  assemblies:
+  - Innovt.CrossCutting.IOC
+  namespace: Innovt.CrossCutting.IOC
+  summary: Initializes a new instance of the <xref href="Innovt.CrossCutting.IOC.ServiceProvider" data-throw-if-not-resolved="false"></xref> class using the provided Lamar IoC container.
+  example: []
+  syntax:
+    content: public ServiceProvider(IContainer container)
+    parameters:
+    - id: container
+      type: Innovt.Core.CrossCutting.Ioc.IContainer
+      description: The Lamar IoC container.
+    content.vb: Public Sub New(container As IContainer)
+  overload: Innovt.CrossCutting.IOC.ServiceProvider.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when <code class="paramref">container</code> is null.
+  nameWithType.vb: ServiceProvider.New(IContainer)
+  fullName.vb: Innovt.CrossCutting.IOC.ServiceProvider.New(Innovt.Core.CrossCutting.Ioc.IContainer)
+  name.vb: New(IContainer)
+- uid: Innovt.CrossCutting.IOC.ServiceProvider.Dispose
+  commentId: M:Innovt.CrossCutting.IOC.ServiceProvider.Dispose
+  id: Dispose
+  parent: Innovt.CrossCutting.IOC.ServiceProvider
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: ServiceProvider.Dispose()
+  fullName: Innovt.CrossCutting.IOC.ServiceProvider.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.CrossCutting.IOC/ServiceProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Dispose
+    path: ../src/Innovt.CrossCutting.IOC/ServiceProvider.cs
+    startLine: 32
+  assemblies:
+  - Innovt.CrossCutting.IOC
+  namespace: Innovt.CrossCutting.IOC
+  summary: Releases the resources used by the <xref href="Innovt.CrossCutting.IOC.ServiceProvider" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Innovt.CrossCutting.IOC.ServiceProvider.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+- uid: Innovt.CrossCutting.IOC.ServiceProvider.GetService(System.Type)
+  commentId: M:Innovt.CrossCutting.IOC.ServiceProvider.GetService(System.Type)
+  id: GetService(System.Type)
+  parent: Innovt.CrossCutting.IOC.ServiceProvider
+  langs:
+  - csharp
+  - vb
+  name: GetService(Type)
+  nameWithType: ServiceProvider.GetService(Type)
+  fullName: Innovt.CrossCutting.IOC.ServiceProvider.GetService(System.Type)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.CrossCutting.IOC/ServiceProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: GetService
+    path: ../src/Innovt.CrossCutting.IOC/ServiceProvider.cs
+    startLine: 43
+  assemblies:
+  - Innovt.CrossCutting.IOC
+  namespace: Innovt.CrossCutting.IOC
+  summary: Gets the service of the specified type from the Lamar IoC container.
+  example: []
+  syntax:
+    content: public object GetService(Type serviceType)
+    parameters:
+    - id: serviceType
+      type: System.Type
+      description: The type of service to get.
+    return:
+      type: System.Object
+      description: The service object, or null if there is no service of the specified type.
+    content.vb: Public Function GetService(serviceType As Type) As Object
+  overload: Innovt.CrossCutting.IOC.ServiceProvider.GetService*
+  implements:
+  - System.IServiceProvider.GetService(System.Type)
+- uid: Innovt.CrossCutting.IOC.ServiceProvider.GetRequiredService(System.Type)
+  commentId: M:Innovt.CrossCutting.IOC.ServiceProvider.GetRequiredService(System.Type)
+  id: GetRequiredService(System.Type)
+  parent: Innovt.CrossCutting.IOC.ServiceProvider
+  langs:
+  - csharp
+  - vb
+  name: GetRequiredService(Type)
+  nameWithType: ServiceProvider.GetRequiredService(Type)
+  fullName: Innovt.CrossCutting.IOC.ServiceProvider.GetRequiredService(System.Type)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.CrossCutting.IOC/ServiceProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: GetRequiredService
+    path: ../src/Innovt.CrossCutting.IOC/ServiceProvider.cs
+    startLine: 54
+  assemblies:
+  - Innovt.CrossCutting.IOC
+  namespace: Innovt.CrossCutting.IOC
+  summary: Gets the service of the specified type from the Lamar IoC container.
+  example: []
+  syntax:
+    content: public object GetRequiredService(Type serviceType)
+    parameters:
+    - id: serviceType
+      type: System.Type
+      description: The type of service to get.
+    return:
+      type: System.Object
+      description: The service object.
+    content.vb: Public Function GetRequiredService(serviceType As Type) As Object
+  overload: Innovt.CrossCutting.IOC.ServiceProvider.GetRequiredService*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when there is no service of the specified type.
+  implements:
+  - Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(System.Type)
+- uid: Innovt.CrossCutting.IOC.ServiceProvider.Dispose(System.Boolean)
+  commentId: M:Innovt.CrossCutting.IOC.ServiceProvider.Dispose(System.Boolean)
+  id: Dispose(System.Boolean)
+  parent: Innovt.CrossCutting.IOC.ServiceProvider
+  langs:
+  - csharp
+  - vb
+  name: Dispose(bool)
+  nameWithType: ServiceProvider.Dispose(bool)
+  fullName: Innovt.CrossCutting.IOC.ServiceProvider.Dispose(bool)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.CrossCutting.IOC/ServiceProvider.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Dispose
+    path: ../src/Innovt.CrossCutting.IOC/ServiceProvider.cs
+    startLine: 63
+  assemblies:
+  - Innovt.CrossCutting.IOC
+  namespace: Innovt.CrossCutting.IOC
+  summary: Releases the resources used by the <xref href="Innovt.CrossCutting.IOC.ServiceProvider" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: protected virtual void Dispose(bool disposing)
+    parameters:
+    - id: disposing
+      type: System.Boolean
+      description: True if disposing; otherwise, false.
+    content.vb: Protected Overridable Sub Dispose(disposing As Boolean)
+  overload: Innovt.CrossCutting.IOC.ServiceProvider.Dispose*
+  nameWithType.vb: ServiceProvider.Dispose(Boolean)
+  fullName.vb: Innovt.CrossCutting.IOC.ServiceProvider.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+references:
+- uid: System.IServiceProvider
+  commentId: T:System.IServiceProvider
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iserviceprovider
+  name: IServiceProvider
+  nameWithType: IServiceProvider
+  fullName: System.IServiceProvider
+- uid: Microsoft.Extensions.DependencyInjection.ISupportRequiredService
+  commentId: T:Microsoft.Extensions.DependencyInjection.ISupportRequiredService
+  parent: Microsoft.Extensions.DependencyInjection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.isupportrequiredservice
+  name: ISupportRequiredService
+  nameWithType: ISupportRequiredService
+  fullName: Microsoft.Extensions.DependencyInjection.ISupportRequiredService
+- uid: Innovt.CrossCutting.IOC
+  commentId: N:Innovt.CrossCutting.IOC
+  href: Innovt.html
+  name: Innovt.CrossCutting.IOC
+  nameWithType: Innovt.CrossCutting.IOC
+  fullName: Innovt.CrossCutting.IOC
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.CrossCutting
+    name: CrossCutting
+    href: Innovt.CrossCutting.html
+  - name: .
+  - uid: Innovt.CrossCutting.IOC
+    name: IOC
+    href: Innovt.CrossCutting.IOC.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.CrossCutting
+    name: CrossCutting
+    href: Innovt.CrossCutting.html
+  - name: .
+  - uid: Innovt.CrossCutting.IOC
+    name: IOC
+    href: Innovt.CrossCutting.IOC.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.Extensions.DependencyInjection
+  commentId: N:Microsoft.Extensions.DependencyInjection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.DependencyInjection
+  nameWithType: Microsoft.Extensions.DependencyInjection
+  fullName: Microsoft.Extensions.DependencyInjection
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.CrossCutting.IOC.ServiceProvider
+  commentId: T:Innovt.CrossCutting.IOC.ServiceProvider
+  href: Innovt.CrossCutting.IOC.ServiceProvider.html
+  name: ServiceProvider
+  nameWithType: ServiceProvider
+  fullName: Innovt.CrossCutting.IOC.ServiceProvider
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: Innovt.CrossCutting.IOC.ServiceProvider.#ctor*
+  commentId: Overload:Innovt.CrossCutting.IOC.ServiceProvider.#ctor
+  href: Innovt.CrossCutting.IOC.ServiceProvider.html#Innovt_CrossCutting_IOC_ServiceProvider__ctor_Innovt_Core_CrossCutting_Ioc_IContainer_
+  name: ServiceProvider
+  nameWithType: ServiceProvider.ServiceProvider
+  fullName: Innovt.CrossCutting.IOC.ServiceProvider.ServiceProvider
+  nameWithType.vb: ServiceProvider.New
+  fullName.vb: Innovt.CrossCutting.IOC.ServiceProvider.New
+  name.vb: New
+- uid: Innovt.Core.CrossCutting.Ioc.IContainer
+  commentId: T:Innovt.Core.CrossCutting.Ioc.IContainer
+  parent: Innovt.Core.CrossCutting.Ioc
+  href: Innovt.Core.CrossCutting.Ioc.IContainer.html
+  name: IContainer
+  nameWithType: IContainer
+  fullName: Innovt.Core.CrossCutting.Ioc.IContainer
+- uid: Innovt.Core.CrossCutting.Ioc
+  commentId: N:Innovt.Core.CrossCutting.Ioc
+  href: Innovt.html
+  name: Innovt.Core.CrossCutting.Ioc
+  nameWithType: Innovt.Core.CrossCutting.Ioc
+  fullName: Innovt.Core.CrossCutting.Ioc
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Ioc
+    name: Ioc
+    href: Innovt.Core.CrossCutting.Ioc.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Ioc
+    name: Ioc
+    href: Innovt.Core.CrossCutting.Ioc.html
+- uid: Innovt.CrossCutting.IOC.ServiceProvider.Dispose*
+  commentId: Overload:Innovt.CrossCutting.IOC.ServiceProvider.Dispose
+  href: Innovt.CrossCutting.IOC.ServiceProvider.html#Innovt_CrossCutting_IOC_ServiceProvider_Dispose
+  name: Dispose
+  nameWithType: ServiceProvider.Dispose
+  fullName: Innovt.CrossCutting.IOC.ServiceProvider.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: Innovt.CrossCutting.IOC.ServiceProvider.GetService*
+  commentId: Overload:Innovt.CrossCutting.IOC.ServiceProvider.GetService
+  href: Innovt.CrossCutting.IOC.ServiceProvider.html#Innovt_CrossCutting_IOC_ServiceProvider_GetService_System_Type_
+  name: GetService
+  nameWithType: ServiceProvider.GetService
+  fullName: Innovt.CrossCutting.IOC.ServiceProvider.GetService
+- uid: System.IServiceProvider.GetService(System.Type)
+  commentId: M:System.IServiceProvider.GetService(System.Type)
+  parent: System.IServiceProvider
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iserviceprovider.getservice
+  name: GetService(Type)
+  nameWithType: IServiceProvider.GetService(Type)
+  fullName: System.IServiceProvider.GetService(System.Type)
+  spec.csharp:
+  - uid: System.IServiceProvider.GetService(System.Type)
+    name: GetService
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iserviceprovider.getservice
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: System.IServiceProvider.GetService(System.Type)
+    name: GetService
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iserviceprovider.getservice
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: Innovt.CrossCutting.IOC.ServiceProvider.GetRequiredService*
+  commentId: Overload:Innovt.CrossCutting.IOC.ServiceProvider.GetRequiredService
+  href: Innovt.CrossCutting.IOC.ServiceProvider.html#Innovt_CrossCutting_IOC_ServiceProvider_GetRequiredService_System_Type_
+  name: GetRequiredService
+  nameWithType: ServiceProvider.GetRequiredService
+  fullName: Innovt.CrossCutting.IOC.ServiceProvider.GetRequiredService
+- uid: Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(System.Type)
+  commentId: M:Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(System.Type)
+  parent: Microsoft.Extensions.DependencyInjection.ISupportRequiredService
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.isupportrequiredservice.getrequiredservice
+  name: GetRequiredService(Type)
+  nameWithType: ISupportRequiredService.GetRequiredService(Type)
+  fullName: Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(System.Type)
+  spec.csharp:
+  - uid: Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(System.Type)
+    name: GetRequiredService
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.isupportrequiredservice.getrequiredservice
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(System.Type)
+    name: GetRequiredService
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.isupportrequiredservice.getrequiredservice
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

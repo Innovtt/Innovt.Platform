@@ -17,6 +17,10 @@ public class SampleDynamoContext : DynamoContext
 
         modelBuilder.AddConfiguration(new UserMap());
         modelBuilder.AddConfiguration(new CompanyMap());
+        
+        modelBuilder.Entity<Skill>().AutoMap().WithTableName("CloudExperts")
+            .WithHashKey().SetDynamicValue(c => "SKILL").Builder
+            .WithRangeKey().SetDynamicValue(c => "SKILL#" + c.Id);
 
         modelBuilder.AddPropertyConverter(typeof(DateTimeOffset), new DateTimeOffsetConverter());
         modelBuilder.AddPropertyConverter(typeof(DateTimeOffset?), new DateTimeOffsetConverter());

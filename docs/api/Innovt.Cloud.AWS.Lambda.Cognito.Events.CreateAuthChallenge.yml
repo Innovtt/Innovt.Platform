@@ -1,0 +1,102 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge
+  commentId: N:Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge
+  id: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge
+  children:
+  - Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge.CreateAuthChallengeEvent
+  - Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge.CreateAuthChallengeRequest
+  - Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge.CreateAuthChallengeResponse
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge
+  nameWithType: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge
+  type: Namespace
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Cognito.Events
+references:
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge.CreateAuthChallengeEvent
+  commentId: T:Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge.CreateAuthChallengeEvent
+  parent: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge.CreateAuthChallengeEvent.html
+  name: CreateAuthChallengeEvent
+  nameWithType: CreateAuthChallengeEvent
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge.CreateAuthChallengeEvent
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge.CreateAuthChallengeRequest
+  commentId: T:Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge.CreateAuthChallengeRequest
+  parent: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge.CreateAuthChallengeRequest.html
+  name: CreateAuthChallengeRequest
+  nameWithType: CreateAuthChallengeRequest
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge.CreateAuthChallengeRequest
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge.CreateAuthChallengeResponse
+  commentId: T:Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge.CreateAuthChallengeResponse
+  parent: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge.CreateAuthChallengeResponse.html
+  name: CreateAuthChallengeResponse
+  nameWithType: CreateAuthChallengeResponse
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge.CreateAuthChallengeResponse
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge
+  commentId: N:Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge
+  nameWithType: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda
+    name: Lambda
+    href: Innovt.Cloud.AWS.Lambda.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito
+    name: Cognito
+    href: Innovt.Cloud.AWS.Lambda.Cognito.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events
+    name: Events
+    href: Innovt.Cloud.AWS.Lambda.Cognito.Events.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge
+    name: CreateAuthChallenge
+    href: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda
+    name: Lambda
+    href: Innovt.Cloud.AWS.Lambda.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito
+    name: Cognito
+    href: Innovt.Cloud.AWS.Lambda.Cognito.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events
+    name: Events
+    href: Innovt.Cloud.AWS.Lambda.Cognito.Events.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge
+    name: CreateAuthChallenge
+    href: Innovt.Cloud.AWS.Lambda.Cognito.Events.CreateAuthChallenge.html

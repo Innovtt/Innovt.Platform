@@ -1,0 +1,897 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Data.DataSources.DataSourceReader
+  commentId: T:Innovt.Data.DataSources.DataSourceReader
+  id: DataSourceReader
+  parent: Innovt.Data.DataSources
+  children:
+  - Innovt.Data.DataSources.DataSourceReader.#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.String,Innovt.Data.Model.Provider)
+  - Innovt.Data.DataSources.DataSourceReader.#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.String,System.String,Innovt.Data.Model.Provider)
+  - Innovt.Data.DataSources.DataSourceReader.#ctor(System.String,System.String,Innovt.Data.Model.Provider)
+  langs:
+  - csharp
+  - vb
+  name: DataSourceReader
+  nameWithType: DataSourceReader
+  fullName: Innovt.Data.DataSources.DataSourceReader
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Data/DataSources/DataSourceReader.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: DataSourceReader
+    path: ../src/Innovt.Data/DataSources/DataSourceReader.cs
+    startLine: 14
+  assemblies:
+  - Innovt.Data
+  namespace: Innovt.Data.DataSources
+  summary: >-
+    Represents a data source reader that inherits from <xref href="Innovt.Data.DataSources.DataSourceBase" data-throw-if-not-resolved="false"></xref> and implements
+
+    <xref href="Innovt.Data.DataSources.IDataSourceReader" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: 'public class DataSourceReader : DataSourceBase, IDataSourceReader, IDataSource'
+    content.vb: Public Class DataSourceReader Inherits DataSourceBase Implements IDataSourceReader, IDataSource
+  inheritance:
+  - System.Object
+  - Innovt.Data.DataSources.DataSourceBase
+  implements:
+  - Innovt.Data.DataSources.IDataSourceReader
+  - Innovt.Data.DataSources.IDataSource
+  inheritedMembers:
+  - Innovt.Data.DataSources.DataSourceBase.Name
+  - Innovt.Data.DataSources.DataSourceBase.Provider
+  - Innovt.Data.DataSources.DataSourceBase.GetConnectionString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+- uid: Innovt.Data.DataSources.DataSourceReader.#ctor(System.String,System.String,Innovt.Data.Model.Provider)
+  commentId: M:Innovt.Data.DataSources.DataSourceReader.#ctor(System.String,System.String,Innovt.Data.Model.Provider)
+  id: '#ctor(System.String,System.String,Innovt.Data.Model.Provider)'
+  parent: Innovt.Data.DataSources.DataSourceReader
+  langs:
+  - csharp
+  - vb
+  name: DataSourceReader(string, string, Provider)
+  nameWithType: DataSourceReader.DataSourceReader(string, string, Provider)
+  fullName: Innovt.Data.DataSources.DataSourceReader.DataSourceReader(string, string, Innovt.Data.Model.Provider)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Data/DataSources/DataSourceReader.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: ../src/Innovt.Data/DataSources/DataSourceReader.cs
+    startLine: 22
+  assemblies:
+  - Innovt.Data
+  namespace: Innovt.Data.DataSources
+  summary: Initializes a new instance of the <xref href="Innovt.Data.DataSources.DataSourceReader" data-throw-if-not-resolved="false"></xref> class with the specified parameters.
+  example: []
+  syntax:
+    content: public DataSourceReader(string name, string connectionString, Provider provider = Provider.MsSql)
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the data source.
+    - id: connectionString
+      type: System.String
+      description: The connection string for the data source.
+    - id: provider
+      type: Innovt.Data.Model.Provider
+      description: The provider for the data source (default is MsSql).
+    content.vb: Public Sub New(name As String, connectionString As String, provider As Provider = Provider.MsSql)
+  overload: Innovt.Data.DataSources.DataSourceReader.#ctor*
+  nameWithType.vb: DataSourceReader.New(String, String, Provider)
+  fullName.vb: Innovt.Data.DataSources.DataSourceReader.New(String, String, Innovt.Data.Model.Provider)
+  name.vb: New(String, String, Provider)
+- uid: Innovt.Data.DataSources.DataSourceReader.#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.String,Innovt.Data.Model.Provider)
+  commentId: M:Innovt.Data.DataSources.DataSourceReader.#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.String,Innovt.Data.Model.Provider)
+  id: '#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.String,Innovt.Data.Model.Provider)'
+  parent: Innovt.Data.DataSources.DataSourceReader
+  langs:
+  - csharp
+  - vb
+  name: DataSourceReader(IConfiguration, string, Provider)
+  nameWithType: DataSourceReader.DataSourceReader(IConfiguration, string, Provider)
+  fullName: Innovt.Data.DataSources.DataSourceReader.DataSourceReader(Microsoft.Extensions.Configuration.IConfiguration, string, Innovt.Data.Model.Provider)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Data/DataSources/DataSourceReader.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: ../src/Innovt.Data/DataSources/DataSourceReader.cs
+    startLine: 33
+  assemblies:
+  - Innovt.Data
+  namespace: Innovt.Data.DataSources
+  summary: Initializes a new instance of the <xref href="Innovt.Data.DataSources.DataSourceReader" data-throw-if-not-resolved="false"></xref> class with configuration settings.
+  example: []
+  syntax:
+    content: public DataSourceReader(IConfiguration configuration, string connectionStringName, Provider provider = Provider.MsSql)
+    parameters:
+    - id: configuration
+      type: Microsoft.Extensions.Configuration.IConfiguration
+      description: The configuration containing connection string settings.
+    - id: connectionStringName
+      type: System.String
+      description: The name of the connection string.
+    - id: provider
+      type: Innovt.Data.Model.Provider
+      description: The provider for the data source (default is MsSql).
+    content.vb: Public Sub New(configuration As IConfiguration, connectionStringName As String, provider As Provider = Provider.MsSql)
+  overload: Innovt.Data.DataSources.DataSourceReader.#ctor*
+  nameWithType.vb: DataSourceReader.New(IConfiguration, String, Provider)
+  fullName.vb: Innovt.Data.DataSources.DataSourceReader.New(Microsoft.Extensions.Configuration.IConfiguration, String, Innovt.Data.Model.Provider)
+  name.vb: New(IConfiguration, String, Provider)
+- uid: Innovt.Data.DataSources.DataSourceReader.#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.String,System.String,Innovt.Data.Model.Provider)
+  commentId: M:Innovt.Data.DataSources.DataSourceReader.#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.String,System.String,Innovt.Data.Model.Provider)
+  id: '#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.String,System.String,Innovt.Data.Model.Provider)'
+  parent: Innovt.Data.DataSources.DataSourceReader
+  langs:
+  - csharp
+  - vb
+  name: DataSourceReader(IConfiguration, string, string, Provider)
+  nameWithType: DataSourceReader.DataSourceReader(IConfiguration, string, string, Provider)
+  fullName: Innovt.Data.DataSources.DataSourceReader.DataSourceReader(Microsoft.Extensions.Configuration.IConfiguration, string, string, Innovt.Data.Model.Provider)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Data/DataSources/DataSourceReader.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: ../src/Innovt.Data/DataSources/DataSourceReader.cs
+    startLine: 47
+  assemblies:
+  - Innovt.Data
+  namespace: Innovt.Data.DataSources
+  summary: >-
+    Initializes a new instance of the <xref href="Innovt.Data.DataSources.DataSourceReader" data-throw-if-not-resolved="false"></xref> class with configuration settings and a custom
+
+    name.
+  example: []
+  syntax:
+    content: public DataSourceReader(IConfiguration configuration, string name, string connectionStringName, Provider provider = Provider.MsSql)
+    parameters:
+    - id: configuration
+      type: Microsoft.Extensions.Configuration.IConfiguration
+      description: The configuration containing connection string settings.
+    - id: name
+      type: System.String
+      description: The custom name of the data source.
+    - id: connectionStringName
+      type: System.String
+      description: The name of the connection string.
+    - id: provider
+      type: Innovt.Data.Model.Provider
+      description: The provider for the data source (default is MsSql).
+    content.vb: Public Sub New(configuration As IConfiguration, name As String, connectionStringName As String, provider As Provider = Provider.MsSql)
+  overload: Innovt.Data.DataSources.DataSourceReader.#ctor*
+  nameWithType.vb: DataSourceReader.New(IConfiguration, String, String, Provider)
+  fullName.vb: Innovt.Data.DataSources.DataSourceReader.New(Microsoft.Extensions.Configuration.IConfiguration, String, String, Innovt.Data.Model.Provider)
+  name.vb: New(IConfiguration, String, String, Provider)
+references:
+- uid: Innovt.Data.DataSources.DataSourceBase
+  commentId: T:Innovt.Data.DataSources.DataSourceBase
+  parent: Innovt.Data.DataSources
+  href: Innovt.Data.DataSources.DataSourceBase.html
+  name: DataSourceBase
+  nameWithType: DataSourceBase
+  fullName: Innovt.Data.DataSources.DataSourceBase
+- uid: Innovt.Data.DataSources.IDataSourceReader
+  commentId: T:Innovt.Data.DataSources.IDataSourceReader
+  parent: Innovt.Data.DataSources
+  href: Innovt.Data.DataSources.IDataSourceReader.html
+  name: IDataSourceReader
+  nameWithType: IDataSourceReader
+  fullName: Innovt.Data.DataSources.IDataSourceReader
+- uid: Innovt.Data.DataSources
+  commentId: N:Innovt.Data.DataSources
+  href: Innovt.html
+  name: Innovt.Data.DataSources
+  nameWithType: Innovt.Data.DataSources
+  fullName: Innovt.Data.DataSources
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Data
+    name: Data
+    href: Innovt.Data.html
+  - name: .
+  - uid: Innovt.Data.DataSources
+    name: DataSources
+    href: Innovt.Data.DataSources.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Data
+    name: Data
+    href: Innovt.Data.html
+  - name: .
+  - uid: Innovt.Data.DataSources
+    name: DataSources
+    href: Innovt.Data.DataSources.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Innovt.Data.DataSources.IDataSource
+  commentId: T:Innovt.Data.DataSources.IDataSource
+  parent: Innovt.Data.DataSources
+  href: Innovt.Data.DataSources.IDataSource.html
+  name: IDataSource
+  nameWithType: IDataSource
+  fullName: Innovt.Data.DataSources.IDataSource
+- uid: Innovt.Data.DataSources.DataSourceBase.Name
+  commentId: P:Innovt.Data.DataSources.DataSourceBase.Name
+  parent: Innovt.Data.DataSources.DataSourceBase
+  href: Innovt.Data.DataSources.DataSourceBase.html#Innovt_Data_DataSources_DataSourceBase_Name
+  name: Name
+  nameWithType: DataSourceBase.Name
+  fullName: Innovt.Data.DataSources.DataSourceBase.Name
+- uid: Innovt.Data.DataSources.DataSourceBase.Provider
+  commentId: P:Innovt.Data.DataSources.DataSourceBase.Provider
+  parent: Innovt.Data.DataSources.DataSourceBase
+  href: Innovt.Data.DataSources.DataSourceBase.html#Innovt_Data_DataSources_DataSourceBase_Provider
+  name: Provider
+  nameWithType: DataSourceBase.Provider
+  fullName: Innovt.Data.DataSources.DataSourceBase.Provider
+- uid: Innovt.Data.DataSources.DataSourceBase.GetConnectionString
+  commentId: M:Innovt.Data.DataSources.DataSourceBase.GetConnectionString
+  parent: Innovt.Data.DataSources.DataSourceBase
+  href: Innovt.Data.DataSources.DataSourceBase.html#Innovt_Data_DataSources_DataSourceBase_GetConnectionString
+  name: GetConnectionString()
+  nameWithType: DataSourceBase.GetConnectionString()
+  fullName: Innovt.Data.DataSources.DataSourceBase.GetConnectionString()
+  spec.csharp:
+  - uid: Innovt.Data.DataSources.DataSourceBase.GetConnectionString
+    name: GetConnectionString
+    href: Innovt.Data.DataSources.DataSourceBase.html#Innovt_Data_DataSources_DataSourceBase_GetConnectionString
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Data.DataSources.DataSourceBase.GetConnectionString
+    name: GetConnectionString
+    href: Innovt.Data.DataSources.DataSourceBase.html#Innovt_Data_DataSources_DataSourceBase_GetConnectionString
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Data.DataSources.DataSourceReader
+  commentId: T:Innovt.Data.DataSources.DataSourceReader
+  href: Innovt.Data.DataSources.DataSourceReader.html
+  name: DataSourceReader
+  nameWithType: DataSourceReader
+  fullName: Innovt.Data.DataSources.DataSourceReader
+- uid: Innovt.Data.DataSources.DataSourceReader.#ctor*
+  commentId: Overload:Innovt.Data.DataSources.DataSourceReader.#ctor
+  href: Innovt.Data.DataSources.DataSourceReader.html#Innovt_Data_DataSources_DataSourceReader__ctor_System_String_System_String_Innovt_Data_Model_Provider_
+  name: DataSourceReader
+  nameWithType: DataSourceReader.DataSourceReader
+  fullName: Innovt.Data.DataSources.DataSourceReader.DataSourceReader
+  nameWithType.vb: DataSourceReader.New
+  fullName.vb: Innovt.Data.DataSources.DataSourceReader.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Innovt.Data.Model.Provider
+  commentId: T:Innovt.Data.Model.Provider
+  parent: Innovt.Data.Model
+  href: Innovt.Data.Model.Provider.html
+  name: Provider
+  nameWithType: Provider
+  fullName: Innovt.Data.Model.Provider
+- uid: Innovt.Data.Model
+  commentId: N:Innovt.Data.Model
+  href: Innovt.html
+  name: Innovt.Data.Model
+  nameWithType: Innovt.Data.Model
+  fullName: Innovt.Data.Model
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Data
+    name: Data
+    href: Innovt.Data.html
+  - name: .
+  - uid: Innovt.Data.Model
+    name: Model
+    href: Innovt.Data.Model.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Data
+    name: Data
+    href: Innovt.Data.html
+  - name: .
+  - uid: Innovt.Data.Model
+    name: Model
+    href: Innovt.Data.Model.html
+- uid: Microsoft.Extensions.Configuration.IConfiguration
+  commentId: T:Microsoft.Extensions.Configuration.IConfiguration
+  parent: Microsoft.Extensions.Configuration
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration.iconfiguration
+  name: IConfiguration
+  nameWithType: IConfiguration
+  fullName: Microsoft.Extensions.Configuration.IConfiguration
+- uid: Microsoft.Extensions.Configuration
+  commentId: N:Microsoft.Extensions.Configuration
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Configuration
+  nameWithType: Microsoft.Extensions.Configuration
+  fullName: Microsoft.Extensions.Configuration
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Configuration
+    name: Configuration
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Configuration
+    name: Configuration
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration

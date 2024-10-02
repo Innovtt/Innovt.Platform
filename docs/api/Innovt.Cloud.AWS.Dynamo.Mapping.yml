@@ -1,0 +1,128 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping
+  commentId: N:Innovt.Cloud.AWS.Dynamo.Mapping
+  id: Innovt.Cloud.AWS.Dynamo.Mapping
+  children:
+  - Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2
+  - Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper`1
+  - Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Cloud.AWS.Dynamo.Mapping
+  nameWithType: Innovt.Cloud.AWS.Dynamo.Mapping
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping
+  type: Namespace
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+references:
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel-2.html
+  name: BaseDataModel<TDataModel, TDomain>
+  nameWithType: BaseDataModel<TDataModel, TDomain>
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel<TDataModel, TDomain>
+  nameWithType.vb: BaseDataModel(Of TDataModel, TDomain)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel(Of TDataModel, TDomain)
+  name.vb: BaseDataModel(Of TDataModel, TDomain)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2
+    name: BaseDataModel
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel-2.html
+  - name: <
+  - name: TDataModel
+  - name: ','
+  - name: " "
+  - name: TDomain
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel`2
+    name: BaseDataModel
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.BaseDataModel-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDataModel
+  - name: ','
+  - name: " "
+  - name: TDomain
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper`1
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper`1
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper-1.html
+  name: IEntityTypeDataModelMapper<T>
+  nameWithType: IEntityTypeDataModelMapper<T>
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper<T>
+  nameWithType.vb: IEntityTypeDataModelMapper(Of T)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper(Of T)
+  name.vb: IEntityTypeDataModelMapper(Of T)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper`1
+    name: IEntityTypeDataModelMapper
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper`1
+    name: IEntityTypeDataModelMapper
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.IEntityTypeDataModelMapper-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.html
+  name: ModelBuilder
+  nameWithType: ModelBuilder
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping
+  commentId: N:Innovt.Cloud.AWS.Dynamo.Mapping
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Dynamo.Mapping
+  nameWithType: Innovt.Cloud.AWS.Dynamo.Mapping
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo
+    name: Dynamo
+    href: Innovt.Cloud.AWS.Dynamo.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping
+    name: Mapping
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo
+    name: Dynamo
+    href: Innovt.Cloud.AWS.Dynamo.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping
+    name: Mapping
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.html

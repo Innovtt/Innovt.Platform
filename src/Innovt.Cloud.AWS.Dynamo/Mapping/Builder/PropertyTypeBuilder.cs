@@ -190,12 +190,14 @@ public class PropertyTypeBuilder<T>
         return this;
     }
 
-    public void InvokeMaps(T entity)
+    public PropertyTypeBuilder<T> InvokeMaps(T entity)
     {
         if (!HasMapAction)
-            return;
+            return this;
 
         foreach (var action in mapActions) action(entity);
+
+        return this;
     }
 
     /// <summary>

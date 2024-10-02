@@ -1,0 +1,407 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.HttpClient.Core.BaseConstants
+  commentId: T:Innovt.HttpClient.Core.BaseConstants
+  id: BaseConstants
+  parent: Innovt.HttpClient.Core
+  children:
+  - Innovt.HttpClient.Core.BaseConstants.AuthorizationHeader
+  - Innovt.HttpClient.Core.BaseConstants.ContentTypeApplicationJson
+  - Innovt.HttpClient.Core.BaseConstants.ContentTypeHeaderFormUrlEncoded
+  langs:
+  - csharp
+  - vb
+  name: BaseConstants
+  nameWithType: BaseConstants
+  fullName: Innovt.HttpClient.Core.BaseConstants
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.HttpClient.Core/BaseConstants.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: BaseConstants
+    path: ../src/Innovt.HttpClient.Core/BaseConstants.cs
+    startLine: 2
+  assemblies:
+  - Innovt.HttpClient.Core
+  namespace: Innovt.HttpClient.Core
+  syntax:
+    content: public static class BaseConstants
+    content.vb: Public Module BaseConstants
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Innovt.HttpClient.Core.BaseConstants.ContentTypeApplicationJson
+  commentId: F:Innovt.HttpClient.Core.BaseConstants.ContentTypeApplicationJson
+  id: ContentTypeApplicationJson
+  parent: Innovt.HttpClient.Core.BaseConstants
+  langs:
+  - csharp
+  - vb
+  name: ContentTypeApplicationJson
+  nameWithType: BaseConstants.ContentTypeApplicationJson
+  fullName: Innovt.HttpClient.Core.BaseConstants.ContentTypeApplicationJson
+  type: Field
+  source:
+    remote:
+      path: src/Innovt.HttpClient.Core/BaseConstants.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ContentTypeApplicationJson
+    path: ../src/Innovt.HttpClient.Core/BaseConstants.cs
+    startLine: 7
+  assemblies:
+  - Innovt.HttpClient.Core
+  namespace: Innovt.HttpClient.Core
+  summary: Represents the content type for application/json.
+  example: []
+  syntax:
+    content: public const string ContentTypeApplicationJson = "application/json"
+    return:
+      type: System.String
+    content.vb: Public Const ContentTypeApplicationJson As String = "application/json"
+- uid: Innovt.HttpClient.Core.BaseConstants.ContentTypeHeaderFormUrlEncoded
+  commentId: F:Innovt.HttpClient.Core.BaseConstants.ContentTypeHeaderFormUrlEncoded
+  id: ContentTypeHeaderFormUrlEncoded
+  parent: Innovt.HttpClient.Core.BaseConstants
+  langs:
+  - csharp
+  - vb
+  name: ContentTypeHeaderFormUrlEncoded
+  nameWithType: BaseConstants.ContentTypeHeaderFormUrlEncoded
+  fullName: Innovt.HttpClient.Core.BaseConstants.ContentTypeHeaderFormUrlEncoded
+  type: Field
+  source:
+    remote:
+      path: src/Innovt.HttpClient.Core/BaseConstants.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ContentTypeHeaderFormUrlEncoded
+    path: ../src/Innovt.HttpClient.Core/BaseConstants.cs
+    startLine: 12
+  assemblies:
+  - Innovt.HttpClient.Core
+  namespace: Innovt.HttpClient.Core
+  summary: Represents the content type for application/x-www-form-urlencoded.
+  example: []
+  syntax:
+    content: public const string ContentTypeHeaderFormUrlEncoded = "application/x-www-form-urlencoded"
+    return:
+      type: System.String
+    content.vb: Public Const ContentTypeHeaderFormUrlEncoded As String = "application/x-www-form-urlencoded"
+- uid: Innovt.HttpClient.Core.BaseConstants.AuthorizationHeader
+  commentId: F:Innovt.HttpClient.Core.BaseConstants.AuthorizationHeader
+  id: AuthorizationHeader
+  parent: Innovt.HttpClient.Core.BaseConstants
+  langs:
+  - csharp
+  - vb
+  name: AuthorizationHeader
+  nameWithType: BaseConstants.AuthorizationHeader
+  fullName: Innovt.HttpClient.Core.BaseConstants.AuthorizationHeader
+  type: Field
+  source:
+    remote:
+      path: src/Innovt.HttpClient.Core/BaseConstants.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: AuthorizationHeader
+    path: ../src/Innovt.HttpClient.Core/BaseConstants.cs
+    startLine: 17
+  assemblies:
+  - Innovt.HttpClient.Core
+  namespace: Innovt.HttpClient.Core
+  summary: Represents the authorization header.
+  example: []
+  syntax:
+    content: public const string AuthorizationHeader = "Authorization"
+    return:
+      type: System.String
+    content.vb: Public Const AuthorizationHeader As String = "Authorization"
+references:
+- uid: Innovt.HttpClient.Core
+  commentId: N:Innovt.HttpClient.Core
+  href: Innovt.html
+  name: Innovt.HttpClient.Core
+  nameWithType: Innovt.HttpClient.Core
+  fullName: Innovt.HttpClient.Core
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.HttpClient
+    name: HttpClient
+    href: Innovt.HttpClient.html
+  - name: .
+  - uid: Innovt.HttpClient.Core
+    name: Core
+    href: Innovt.HttpClient.Core.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.HttpClient
+    name: HttpClient
+    href: Innovt.HttpClient.html
+  - name: .
+  - uid: Innovt.HttpClient.Core
+    name: Core
+    href: Innovt.HttpClient.Core.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

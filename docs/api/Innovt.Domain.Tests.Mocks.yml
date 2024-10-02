@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Domain.Tests.Mocks
+  commentId: N:Innovt.Domain.Tests.Mocks
+  id: Innovt.Domain.Tests.Mocks
+  children:
+  - Innovt.Domain.Tests.Mocks.UserCreated
+  - Innovt.Domain.Tests.Mocks.UserEntity
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Domain.Tests.Mocks
+  nameWithType: Innovt.Domain.Tests.Mocks
+  fullName: Innovt.Domain.Tests.Mocks
+  type: Namespace
+  assemblies:
+  - Innovt.Domain.Tests
+references:
+- uid: Innovt.Domain.Tests.Mocks.UserCreated
+  commentId: T:Innovt.Domain.Tests.Mocks.UserCreated
+  href: Innovt.Domain.Tests.Mocks.UserCreated.html
+  name: UserCreated
+  nameWithType: UserCreated
+  fullName: Innovt.Domain.Tests.Mocks.UserCreated
+- uid: Innovt.Domain.Tests.Mocks.UserEntity
+  commentId: T:Innovt.Domain.Tests.Mocks.UserEntity
+  href: Innovt.Domain.Tests.Mocks.UserEntity.html
+  name: UserEntity
+  nameWithType: UserEntity
+  fullName: Innovt.Domain.Tests.Mocks.UserEntity

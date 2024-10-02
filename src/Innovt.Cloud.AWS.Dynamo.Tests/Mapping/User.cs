@@ -12,8 +12,8 @@ public class BaseUserOne : Entity<Guid>
 /// </summary>
 public class BaseUser : BaseUserOne
 {
-    public string Picture2 { get; set; }
-    public string Picture { get; set; }
+    public string Picture2 { get; set; }// 13
+    public string Picture { get; set; }//14
 }
 
 public class User : BaseUser
@@ -21,8 +21,10 @@ public class User : BaseUser
     public User()
     {
         //Properties from BaseUser
-        Picture = "test"; //10
-        Picture2 = "test"; //11 
+        Picture = "test"; //9
+        Picture2 = "test"; //10 
+        CreatedAt = DateTime.Now; //11
+        UpdatedAt = DateTime.Now; //12
     }
 
     public string FirstName { get; set; } //1
@@ -32,7 +34,7 @@ public class User : BaseUser
     public bool IsActive { get; set; } //5
 
     public DateTime? LastAccess { get; set; } //6
-    public new DateTimeOffset? CreatedAt { get; set; } //7
-    public int JobPositionId { get; set; } //8
-    public new string Id { get; set; } //9
+    public int JobPositionId { get; set; } //7
+    public new string Id { get; set; } //8
+
 }

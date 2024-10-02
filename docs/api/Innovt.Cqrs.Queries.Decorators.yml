@@ -1,0 +1,144 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cqrs.Queries.Decorators
+  commentId: N:Innovt.Cqrs.Queries.Decorators
+  id: Innovt.Cqrs.Queries.Decorators
+  children:
+  - Innovt.Cqrs.Queries.Decorators.DatabaseAsyncRetryDecorator`2
+  - Innovt.Cqrs.Queries.Decorators.DatabaseRetryDecorator`2
+  - Innovt.Cqrs.Queries.Decorators.QueryAsyncValidationDecorator`2
+  - Innovt.Cqrs.Queries.Decorators.QueryValidationDecorator`2
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Cqrs.Queries.Decorators
+  nameWithType: Innovt.Cqrs.Queries.Decorators
+  fullName: Innovt.Cqrs.Queries.Decorators
+  type: Namespace
+  assemblies:
+  - Innovt.Cqrs
+references:
+- uid: Innovt.Cqrs.Queries.Decorators.DatabaseAsyncRetryDecorator`2
+  commentId: T:Innovt.Cqrs.Queries.Decorators.DatabaseAsyncRetryDecorator`2
+  href: Innovt.Cqrs.Queries.Decorators.DatabaseAsyncRetryDecorator-2.html
+  name: DatabaseAsyncRetryDecorator<TFilter, TResult>
+  nameWithType: DatabaseAsyncRetryDecorator<TFilter, TResult>
+  fullName: Innovt.Cqrs.Queries.Decorators.DatabaseAsyncRetryDecorator<TFilter, TResult>
+  nameWithType.vb: DatabaseAsyncRetryDecorator(Of TFilter, TResult)
+  fullName.vb: Innovt.Cqrs.Queries.Decorators.DatabaseAsyncRetryDecorator(Of TFilter, TResult)
+  name.vb: DatabaseAsyncRetryDecorator(Of TFilter, TResult)
+  spec.csharp:
+  - uid: Innovt.Cqrs.Queries.Decorators.DatabaseAsyncRetryDecorator`2
+    name: DatabaseAsyncRetryDecorator
+    href: Innovt.Cqrs.Queries.Decorators.DatabaseAsyncRetryDecorator-2.html
+  - name: <
+  - name: TFilter
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cqrs.Queries.Decorators.DatabaseAsyncRetryDecorator`2
+    name: DatabaseAsyncRetryDecorator
+    href: Innovt.Cqrs.Queries.Decorators.DatabaseAsyncRetryDecorator-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TFilter
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: Innovt.Cqrs.Queries.Decorators.DatabaseRetryDecorator`2
+  commentId: T:Innovt.Cqrs.Queries.Decorators.DatabaseRetryDecorator`2
+  href: Innovt.Cqrs.Queries.Decorators.DatabaseRetryDecorator-2.html
+  name: DatabaseRetryDecorator<TFilter, TResult>
+  nameWithType: DatabaseRetryDecorator<TFilter, TResult>
+  fullName: Innovt.Cqrs.Queries.Decorators.DatabaseRetryDecorator<TFilter, TResult>
+  nameWithType.vb: DatabaseRetryDecorator(Of TFilter, TResult)
+  fullName.vb: Innovt.Cqrs.Queries.Decorators.DatabaseRetryDecorator(Of TFilter, TResult)
+  name.vb: DatabaseRetryDecorator(Of TFilter, TResult)
+  spec.csharp:
+  - uid: Innovt.Cqrs.Queries.Decorators.DatabaseRetryDecorator`2
+    name: DatabaseRetryDecorator
+    href: Innovt.Cqrs.Queries.Decorators.DatabaseRetryDecorator-2.html
+  - name: <
+  - name: TFilter
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cqrs.Queries.Decorators.DatabaseRetryDecorator`2
+    name: DatabaseRetryDecorator
+    href: Innovt.Cqrs.Queries.Decorators.DatabaseRetryDecorator-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TFilter
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: Innovt.Cqrs.Queries.Decorators.QueryAsyncValidationDecorator`2
+  commentId: T:Innovt.Cqrs.Queries.Decorators.QueryAsyncValidationDecorator`2
+  href: Innovt.Cqrs.Queries.Decorators.QueryAsyncValidationDecorator-2.html
+  name: QueryAsyncValidationDecorator<TFilter, TResult>
+  nameWithType: QueryAsyncValidationDecorator<TFilter, TResult>
+  fullName: Innovt.Cqrs.Queries.Decorators.QueryAsyncValidationDecorator<TFilter, TResult>
+  nameWithType.vb: QueryAsyncValidationDecorator(Of TFilter, TResult)
+  fullName.vb: Innovt.Cqrs.Queries.Decorators.QueryAsyncValidationDecorator(Of TFilter, TResult)
+  name.vb: QueryAsyncValidationDecorator(Of TFilter, TResult)
+  spec.csharp:
+  - uid: Innovt.Cqrs.Queries.Decorators.QueryAsyncValidationDecorator`2
+    name: QueryAsyncValidationDecorator
+    href: Innovt.Cqrs.Queries.Decorators.QueryAsyncValidationDecorator-2.html
+  - name: <
+  - name: TFilter
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cqrs.Queries.Decorators.QueryAsyncValidationDecorator`2
+    name: QueryAsyncValidationDecorator
+    href: Innovt.Cqrs.Queries.Decorators.QueryAsyncValidationDecorator-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TFilter
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: Innovt.Cqrs.Queries.Decorators.QueryValidationDecorator`2
+  commentId: T:Innovt.Cqrs.Queries.Decorators.QueryValidationDecorator`2
+  href: Innovt.Cqrs.Queries.Decorators.QueryValidationDecorator-2.html
+  name: QueryValidationDecorator<TFilter, TResult>
+  nameWithType: QueryValidationDecorator<TFilter, TResult>
+  fullName: Innovt.Cqrs.Queries.Decorators.QueryValidationDecorator<TFilter, TResult>
+  nameWithType.vb: QueryValidationDecorator(Of TFilter, TResult)
+  fullName.vb: Innovt.Cqrs.Queries.Decorators.QueryValidationDecorator(Of TFilter, TResult)
+  name.vb: QueryValidationDecorator(Of TFilter, TResult)
+  spec.csharp:
+  - uid: Innovt.Cqrs.Queries.Decorators.QueryValidationDecorator`2
+    name: QueryValidationDecorator
+    href: Innovt.Cqrs.Queries.Decorators.QueryValidationDecorator-2.html
+  - name: <
+  - name: TFilter
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cqrs.Queries.Decorators.QueryValidationDecorator`2
+    name: QueryValidationDecorator
+    href: Innovt.Cqrs.Queries.Decorators.QueryValidationDecorator-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TFilter
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )

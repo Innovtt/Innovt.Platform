@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.Model;
 using Innovt.Cloud.AWS.Configuration;
+using Innovt.Cloud.AWS.Dynamo.Converters;
+using Innovt.Cloud.AWS.Dynamo.Helpers;
 using Innovt.Cloud.Table;
 using Innovt.Core.Collections;
 using Innovt.Core.CrossCutting.Log;
@@ -79,7 +81,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             return new ExecuteSqlStatementResponse<T>
             {
                 NextToken = sqlStatementRequest.NextToken,
-                Items = DynamoHelper.ConvertAttributesToType<T>(response.Items, context)
+                Items = QueryHelper.ConvertAttributesToType<T>(response.Items, context)
             };
         }
     }
@@ -99,7 +101,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         using (ActivityRepository.StartActivity())
         {
-            var items = DynamoHelper.CreateBatchGetItemRequest(batchGetItemRequest);
+            var items = QueryHelper.CreateBatchGetItemRequest(batchGetItemRequest);
 
             var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                     await DynamoClient.BatchGetItemAsync(items, cancellationToken).ConfigureAwait(false))
@@ -111,10 +113,32 @@ public abstract class Repository : AwsBaseService, ITableRepository
             var result = new List<T>();
 
             foreach (var item in response.Responses)
-                result.AddRange(DynamoHelper.ConvertAttributesToType<T>(item.Value, context));
+                result.AddRange(QueryHelper.ConvertAttributesToType<T>(item.Value, context));
 
             return result;
         }
+    }
+
+    public TransactionWriteItem CreateTransactionWriteItem<T>(T instance) where T : class
+    {
+        if (instance == null) throw new ArgumentNullException(nameof(instance));
+        
+        var keys = TableHelper.ExtractKeyAttributeValueMap(instance, context);
+        var attributes = AttributeConverter.ConvertToAttributeMap(instance, context);
+        
+        //Remove Key Attributes from Attributes
+        attributes = attributes.Where(x => 
+                    !keys.ContainsKey(x.Key))
+                    .ToDictionary(x => x.Key, x => x.Value);  
+        
+        return  new TransactionWriteItem
+        {
+            TableName = TableHelper.GetTableName<T>(context),
+            Items = attributes,
+            Keys = keys.ToDictionary(x =>
+                x.Key, x => (object)x.Value.S)
+            
+        };
     }
 
     /// <summary>
@@ -172,36 +196,47 @@ public abstract class Repository : AwsBaseService, ITableRepository
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
 
-        using (ActivityRepository.StartActivity())
+        using var activity = ActivityRepository.StartActivity();
+        
+        var queryRequest = QueryHelper.CreateQueryRequest<T>(request, context);
+        activity?.SetTag("TableName", queryRequest.TableName);  
+        activity?.SetTag("Page", request.Page);  
+        activity?.SetTag("PageSize", request.PageSize);  
+        
+        var items = new List<Dictionary<string, AttributeValue>>();
+        var remaining = request.PageSize;
+
+        var iterator = DynamoClient.Paginators.Query(queryRequest).Responses
+            .GetAsyncEnumerator(cancellationToken);
+        
+        Dictionary<string, AttributeValue> lastEvaluatedKey = null;
+
+        do
         {
-            var queryRequest = DynamoHelper.CreateQueryRequest<T>(request, context);
+            await iterator.MoveNextAsync().ConfigureAwait(false);
 
-            var items = new List<Dictionary<string, AttributeValue>>();
-            var remaining = request.PageSize;
+            if (iterator.Current == null)
+                break;
+            
+            activity?.SetTag("HttpStatusCode", iterator.Current.HttpStatusCode);  
+            activity?.SetTag("RequestId", iterator.Current.ResponseMetadata?.RequestId);  
 
-            var iterator = DynamoClient.Paginators.Query(queryRequest).Responses
-                .GetAsyncEnumerator(cancellationToken);
+            items.AddRange(iterator.Current.Items);
+            
+            queryRequest.ExclusiveStartKey = lastEvaluatedKey = iterator.Current.LastEvaluatedKey;
 
-            Dictionary<string, AttributeValue> lastEvaluatedKey = null;
+            remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
+            
+            activity?.SetTag("Remaining", remaining);  
+            
+            if (remaining > 0) queryRequest.Limit = remaining.Value;
+            
+        } while (ShouldContinue(lastEvaluatedKey, remaining));
 
-            do
-            {
-                await iterator.MoveNextAsync().ConfigureAwait(false);
-
-                if (iterator.Current == null)
-                    break;
-
-                items.AddRange(iterator.Current.Items);
-                queryRequest.ExclusiveStartKey = lastEvaluatedKey = iterator.Current.LastEvaluatedKey;
-
-                remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
-
-                if (remaining > 0) queryRequest.Limit = remaining.Value;
-            } while (lastEvaluatedKey.Count > 0 && remaining > 0);
-
-            return (lastEvaluatedKey, items);
-        }
+        return (lastEvaluatedKey, items);
     }
+    
+   
 
     /// <summary>
     ///     Executes an internal scan against the DynamoDB table based on the specified scan request.
@@ -218,7 +253,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         using (ActivityRepository.StartActivity())
         {
-            var scanRequest = DynamoHelper.CreateScanRequest<T>(request, context);
+            var scanRequest = QueryHelper.CreateScanRequest<T>(request, context);
 
             Dictionary<string, AttributeValue> lastEvaluatedKey = null;
 
@@ -235,15 +270,21 @@ public abstract class Repository : AwsBaseService, ITableRepository
                 if (iterator.Current == null)
                     break;
 
-                items.AddRange(DynamoHelper.ConvertAttributesToType<T>(iterator.Current.Items, context));
+                items.AddRange(QueryHelper.ConvertAttributesToType<T>(iterator.Current.Items, context));
                 scanRequest.ExclusiveStartKey = lastEvaluatedKey = iterator.Current.LastEvaluatedKey;
                 remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
 
                 if (remaining > 0) scanRequest.Limit = remaining.Value;
-            } while (lastEvaluatedKey.Count > 0 && remaining > 0);
-
+                
+            } while (ShouldContinue(lastEvaluatedKey, remaining));
+            
             return (lastEvaluatedKey, items);
         }
+    }
+    
+    private static bool ShouldContinue(Dictionary<string, AttributeValue> lastEvaluatedKey, int? remaining)
+    {
+        return lastEvaluatedKey?.Count > 0 && remaining > 0;
     }
 
 
@@ -314,8 +355,8 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         var putRequest = new PutItemRequest
         {
-            TableName = DynamoHelper.GetTableName<T>(context),
-            Item = AttributeConverter.ConvertTypeToAttributes(message, context)
+            TableName = TableHelper.GetTableName<T>(context),
+            Item = AttributeConverter.ConvertToAttributeValueMap(message, context)
         };
 
         var resp = await CreateDefaultRetryAsyncPolicy()
@@ -335,17 +376,17 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="messages">The list of items to add.</param>
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <exception cref="ArgumentNullException">Thrown if the messages parameter is null.</exception>
-    public async Task AddAsync<T>(IList<T> messages, CancellationToken cancellationToken = default)
+    public async Task AddListAsync<T>(ICollection<T> messages, CancellationToken cancellationToken = default)
         where T : class
     {
         Check.NotNull(messages, nameof(messages));
         using var activity = ActivityRepository.StartActivity();
         activity?.SetTag("messages", messages.Count);
 
-        var tableName = DynamoHelper.GetTableName<T>(context);
+        var tableName = TableHelper.GetTableName<T>(context);
 
         var writeRequest = messages.Select(message => new WriteRequest
-                { PutRequest = new PutRequest { Item = AttributeConverter.ConvertTypeToAttributes(message, context) } })
+                { PutRequest = new PutRequest { Item = AttributeConverter.ConvertToAttributeValueMap(message, context) } })
             .ToList();
 
         var batchRequest = new Dictionary<string, List<WriteRequest>> { { tableName, writeRequest } };
@@ -383,7 +424,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         };
 
         foreach (var transactItem in request.TransactItems)
-            transactRequest.TransactItems.Add(DynamoHelper.CreateTransactionWriteItem(transactItem));
+            transactRequest.TransactItems.Add(QueryHelper.CreateTransactionWriteItem(transactItem));
 
         await DynamoClient.TransactWriteItemsAsync(transactRequest, cancellationToken).ConfigureAwait(false);
     }
@@ -402,7 +443,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         using (ActivityRepository.StartActivity())
         {
-            var request = DynamoHelper.CreateBatchWriteItemRequest(batchWriteItemRequest, context);
+            var request = QueryHelper.CreateBatchWriteItemRequest(batchWriteItemRequest, context);
             var result = new BatchWriteItemResponse();
             var attempts = 0;
             var backOfficeRandom = new Random(1);
@@ -430,7 +471,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     #endregion
-
+    
     #region [Delete]
 
     /// <inheritdoc />
@@ -441,26 +482,29 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         using (ActivityRepository.StartActivity())
         {
-            var keys = DynamoHelper.GetKeyValues(message, context);
+            var keys = TableHelper.GetKeyValues(message, context);
 
             await DeleteAsync<T>(keys.HashKey, keys.RangeKey?.ToString(), cancellationToken);
         }
     }
-
-    public async Task DeleteAsync<T>(List<T> messages, CancellationToken cancellationToken = default) where T : class
+    /// <inheritdoc />
+    public async Task DeleteListAsync<T>(ICollection<T> messages, CancellationToken cancellationToken = default) where T : class
     {
         Check.NotNull(messages, nameof(messages));
+        
+      
+        
 
         using (ActivityRepository.StartActivity())
         {
-            var tableName = DynamoHelper.GetTableName<T>(context);
+            var tableName = TableHelper.GetTableName<T>(context);
 
             var writeRequest = messages.Select(message => new WriteRequest
             {
                 DeleteRequest =
                     new DeleteRequest
                     {
-                        Key = DynamoHelper.ExtractKeys(message, context)
+                        Key = TableHelper.ExtractKeyAttributeValueMap(message, context)
                     }
             }).ToList();
 
@@ -486,8 +530,8 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         var deleteRequest = new DeleteItemRequest
         {
-            TableName = DynamoHelper.GetTableName<T>(context),
-            Key = DynamoHelper.ExtractKeysToDictionary<T>(id, rangeKey, context)
+            TableName = TableHelper.GetTableName<T>(context),
+            Key = TableHelper.ParseKeysToAttributeValueMap<T>(id, rangeKey, context)
         };
 
         var response = await CreateDefaultRetryAsyncPolicy()
@@ -512,9 +556,11 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         using (ActivityRepository.StartActivity())
         {
-            var tableName = DynamoHelper.GetTableName<T>(context);
-            var keys = DynamoHelper.ExtractKeys(instance, context);
-            var attributesToUpdate = AttributeConverter.ConvertTypeToAttributes(instance, context);
+            var tableName = TableHelper.GetTableName<T>(context);
+            
+            var keys = TableHelper.ExtractKeyAttributeValueMap(instance, context);
+            
+            var attributesToUpdate = AttributeConverter.ConvertToAttributeValueMap(instance, context);
 
             if (attributesToUpdate is null) throw new CriticalException("Attributes to update is null");
 
@@ -609,13 +655,13 @@ public abstract class Repository : AwsBaseService, ITableRepository
         {
             var queryRequest = new QueryRequest
             {
-                KeyConditionExpression = DynamoHelper.BuildDefaultKeyExpression<T>(false, context),
+                KeyConditionExpression = TableHelper.BuildDefaultKeyExpression<T>(false, context),
                 Filter = new
                 {
                     pk = id
                 }
             };
-
+            
             var result = await QueryAsync<T>(queryRequest, cancellationToken).ConfigureAwait(false);
 
             return result?.FirstOrDefault();
@@ -632,7 +678,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         {
             var queryRequest = new QueryRequest
             {
-                KeyConditionExpression = DynamoHelper.BuildDefaultKeyExpression<T>(rangeKey != null, context),
+                KeyConditionExpression = TableHelper.BuildDefaultKeyExpression<T>(rangeKey != null, context),
                 Filter = new
                 {
                     pk = id,
@@ -659,7 +705,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         {
             var queryRequest = new QueryRequest
             {
-                KeyConditionExpression = DynamoHelper.BuildDefaultKeyExpression<T>(false, context),
+                KeyConditionExpression = TableHelper.BuildDefaultKeyExpression<T>(false, context),
                 Filter = new
                 {
                     pk = id
@@ -686,7 +732,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
             var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
-            return DynamoHelper.ConvertAttributesToType<T>(items, context);
+            return QueryHelper.ConvertAttributesToType<T>(items, context);
         }
     }
 
@@ -709,7 +755,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         {
             var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
-            return DynamoHelper.ConvertAttributesToType<TResult1, TResult2>(items, splitBy, context);
+            return QueryHelper.ConvertAttributesToType<TResult1, TResult2>(items, splitBy, context);
         }
     }
 
@@ -735,7 +781,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         {
             var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
-            return DynamoHelper.ConvertAttributesToType<TResult1, TResult2, TResult3>(items, splitBy, context);
+            return QueryHelper.ConvertAttributesToType<TResult1, TResult2, TResult3>(items, splitBy, context);
         }
     }
 
@@ -762,7 +808,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         {
             var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
-            return DynamoHelper
+            return QueryHelper
                 .ConvertAttributesToType<TResult1, TResult2, TResult3, TResult4>(items, splitBy, context);
         }
     }
@@ -792,7 +838,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         {
             var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
-            return DynamoHelper.ConvertAttributesToType<TResult1, TResult2, TResult3, TResult4, TResult5>(items,
+            return QueryHelper.ConvertAttributesToType<TResult1, TResult2, TResult3, TResult4, TResult5>(items,
                 splitBy, context);
         }
     }
@@ -816,7 +862,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
             var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
-            var queryResponse = DynamoHelper.ConvertAttributesToType<T>(items, context);
+            var queryResponse = QueryHelper.ConvertAttributesToType<T>(items, context);
 
             return queryResponse.FirstOrDefault();
         }
@@ -841,8 +887,8 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
             return new PagedCollection<T>
             {
-                Items = DynamoHelper.ConvertAttributesToType<T>(items, context),
-                Page = DynamoHelper.CreatePaginationToken(lastEvaluatedKey),
+                Items = QueryHelper.ConvertAttributesToType<T>(items, context),
+                Page = QueryHelper.CreatePaginationToken(lastEvaluatedKey),
                 PageSize = request.PageSize.GetValueOrDefault()
             };
         }
@@ -896,7 +942,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             var response = new PagedCollection<T>
             {
                 Items = items,
-                Page = DynamoHelper.CreatePaginationToken(exclusiveStartKey),
+                Page = QueryHelper.CreatePaginationToken(exclusiveStartKey),
                 PageSize = request.PageSize.GetValueOrDefault()
             };
 

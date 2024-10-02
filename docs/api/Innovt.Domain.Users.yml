@@ -1,0 +1,61 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Domain.Users
+  commentId: N:Innovt.Domain.Users
+  id: Innovt.Domain.Users
+  children:
+  - Innovt.Domain.Users.BaseUser
+  - Innovt.Domain.Users.Gender
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Domain.Users
+  nameWithType: Innovt.Domain.Users
+  fullName: Innovt.Domain.Users
+  type: Namespace
+  assemblies:
+  - Innovt.Domain
+references:
+- uid: Innovt.Domain.Users.BaseUser
+  commentId: T:Innovt.Domain.Users.BaseUser
+  href: Innovt.Domain.Users.BaseUser.html
+  name: BaseUser
+  nameWithType: BaseUser
+  fullName: Innovt.Domain.Users.BaseUser
+- uid: Innovt.Domain.Users.Gender
+  commentId: T:Innovt.Domain.Users.Gender
+  parent: Innovt.Domain.Users
+  href: Innovt.Domain.Users.Gender.html
+  name: Gender
+  nameWithType: Gender
+  fullName: Innovt.Domain.Users.Gender
+- uid: Innovt.Domain.Users
+  commentId: N:Innovt.Domain.Users
+  href: Innovt.html
+  name: Innovt.Domain.Users
+  nameWithType: Innovt.Domain.Users
+  fullName: Innovt.Domain.Users
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Users
+    name: Users
+    href: Innovt.Domain.Users.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Users
+    name: Users
+    href: Innovt.Domain.Users.html

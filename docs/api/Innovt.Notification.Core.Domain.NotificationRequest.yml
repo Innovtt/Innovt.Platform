@@ -1,0 +1,1261 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Notification.Core.Domain.NotificationRequest
+  commentId: T:Innovt.Notification.Core.Domain.NotificationRequest
+  id: NotificationRequest
+  parent: Innovt.Notification.Core.Domain
+  children:
+  - Innovt.Notification.Core.Domain.NotificationRequest.#ctor
+  - Innovt.Notification.Core.Domain.NotificationRequest.PayLoad
+  - Innovt.Notification.Core.Domain.NotificationRequest.TemplateId
+  - Innovt.Notification.Core.Domain.NotificationRequest.To
+  - Innovt.Notification.Core.Domain.NotificationRequest.Validate(System.ComponentModel.DataAnnotations.ValidationContext)
+  langs:
+  - csharp
+  - vb
+  name: NotificationRequest
+  nameWithType: NotificationRequest
+  fullName: Innovt.Notification.Core.Domain.NotificationRequest
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Notification.Core/Domain/NotificationRequest.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: NotificationRequest
+    path: ../src/Innovt.Notification.Core/Domain/NotificationRequest.cs
+    startLine: 13
+  assemblies:
+  - Innovt.Notification.Core
+  namespace: Innovt.Notification.Core.Domain
+  summary: Represents a notification request.
+  example: []
+  syntax:
+    content: 'public class NotificationRequest : IValidatableObject'
+    content.vb: Public Class NotificationRequest Implements IValidatableObject
+  inheritance:
+  - System.Object
+  implements:
+  - System.ComponentModel.DataAnnotations.IValidatableObject
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.ComponentModel.DataAnnotations.IValidatableObject.Innovt.Core.Validation.Extensions.EnsureIsValid(System.ComponentModel.DataAnnotations.ValidationContext)
+  - System.ComponentModel.DataAnnotations.IValidatableObject.Innovt.Core.Validation.Extensions.IsValid(System.ComponentModel.DataAnnotations.ValidationContext)
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+- uid: Innovt.Notification.Core.Domain.NotificationRequest.#ctor
+  commentId: M:Innovt.Notification.Core.Domain.NotificationRequest.#ctor
+  id: '#ctor'
+  parent: Innovt.Notification.Core.Domain.NotificationRequest
+  langs:
+  - csharp
+  - vb
+  name: NotificationRequest()
+  nameWithType: NotificationRequest.NotificationRequest()
+  fullName: Innovt.Notification.Core.Domain.NotificationRequest.NotificationRequest()
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Notification.Core/Domain/NotificationRequest.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: ../src/Innovt.Notification.Core/Domain/NotificationRequest.cs
+    startLine: 18
+  assemblies:
+  - Innovt.Notification.Core
+  namespace: Innovt.Notification.Core.Domain
+  summary: Initializes a new instance of the <xref href="Innovt.Notification.Core.Domain.NotificationRequest" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public NotificationRequest()
+    content.vb: Public Sub New()
+  overload: Innovt.Notification.Core.Domain.NotificationRequest.#ctor*
+  nameWithType.vb: NotificationRequest.New()
+  fullName.vb: Innovt.Notification.Core.Domain.NotificationRequest.New()
+  name.vb: New()
+- uid: Innovt.Notification.Core.Domain.NotificationRequest.TemplateId
+  commentId: P:Innovt.Notification.Core.Domain.NotificationRequest.TemplateId
+  id: TemplateId
+  parent: Innovt.Notification.Core.Domain.NotificationRequest
+  langs:
+  - csharp
+  - vb
+  name: TemplateId
+  nameWithType: NotificationRequest.TemplateId
+  fullName: Innovt.Notification.Core.Domain.NotificationRequest.TemplateId
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Notification.Core/Domain/NotificationRequest.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: TemplateId
+    path: ../src/Innovt.Notification.Core/Domain/NotificationRequest.cs
+    startLine: 26
+  assemblies:
+  - Innovt.Notification.Core
+  namespace: Innovt.Notification.Core.Domain
+  summary: Gets or sets the template ID.
+  example: []
+  syntax:
+    content: public string TemplateId { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property TemplateId As String
+  overload: Innovt.Notification.Core.Domain.NotificationRequest.TemplateId*
+- uid: Innovt.Notification.Core.Domain.NotificationRequest.To
+  commentId: P:Innovt.Notification.Core.Domain.NotificationRequest.To
+  id: To
+  parent: Innovt.Notification.Core.Domain.NotificationRequest
+  langs:
+  - csharp
+  - vb
+  name: To
+  nameWithType: NotificationRequest.To
+  fullName: Innovt.Notification.Core.Domain.NotificationRequest.To
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Notification.Core/Domain/NotificationRequest.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: To
+    path: ../src/Innovt.Notification.Core/Domain/NotificationRequest.cs
+    startLine: 31
+  assemblies:
+  - Innovt.Notification.Core
+  namespace: Innovt.Notification.Core.Domain
+  summary: Gets or sets the list of "To" contacts for the notification request.
+  example: []
+  syntax:
+    content: public List<NotificationMessageContact> To { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{Innovt.Notification.Core.Domain.NotificationMessageContact}
+    content.vb: Public Property [To] As List(Of NotificationMessageContact)
+  overload: Innovt.Notification.Core.Domain.NotificationRequest.To*
+- uid: Innovt.Notification.Core.Domain.NotificationRequest.PayLoad
+  commentId: P:Innovt.Notification.Core.Domain.NotificationRequest.PayLoad
+  id: PayLoad
+  parent: Innovt.Notification.Core.Domain.NotificationRequest
+  langs:
+  - csharp
+  - vb
+  name: PayLoad
+  nameWithType: NotificationRequest.PayLoad
+  fullName: Innovt.Notification.Core.Domain.NotificationRequest.PayLoad
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Notification.Core/Domain/NotificationRequest.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: PayLoad
+    path: ../src/Innovt.Notification.Core/Domain/NotificationRequest.cs
+    startLine: 36
+  assemblies:
+  - Innovt.Notification.Core
+  namespace: Innovt.Notification.Core.Domain
+  summary: Gets or sets the payload associated with the notification request.
+  example: []
+  syntax:
+    content: public object PayLoad { get; set; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Public Property PayLoad As Object
+  overload: Innovt.Notification.Core.Domain.NotificationRequest.PayLoad*
+- uid: Innovt.Notification.Core.Domain.NotificationRequest.Validate(System.ComponentModel.DataAnnotations.ValidationContext)
+  commentId: M:Innovt.Notification.Core.Domain.NotificationRequest.Validate(System.ComponentModel.DataAnnotations.ValidationContext)
+  id: Validate(System.ComponentModel.DataAnnotations.ValidationContext)
+  parent: Innovt.Notification.Core.Domain.NotificationRequest
+  langs:
+  - csharp
+  - vb
+  name: Validate(ValidationContext)
+  nameWithType: NotificationRequest.Validate(ValidationContext)
+  fullName: Innovt.Notification.Core.Domain.NotificationRequest.Validate(System.ComponentModel.DataAnnotations.ValidationContext)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Notification.Core/Domain/NotificationRequest.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Validate
+    path: ../src/Innovt.Notification.Core/Domain/NotificationRequest.cs
+    startLine: 39
+  assemblies:
+  - Innovt.Notification.Core
+  namespace: Innovt.Notification.Core.Domain
+  summary: Determines whether the specified object is valid.
+  example: []
+  syntax:
+    content: public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    parameters:
+    - id: validationContext
+      type: System.ComponentModel.DataAnnotations.ValidationContext
+      description: The validation context.
+    return:
+      type: System.Collections.Generic.IEnumerable{System.ComponentModel.DataAnnotations.ValidationResult}
+      description: A collection that holds failed-validation information.
+    content.vb: Public Function Validate(validationContext As ValidationContext) As IEnumerable(Of ValidationResult)
+  overload: Innovt.Notification.Core.Domain.NotificationRequest.Validate*
+  implements:
+  - System.ComponentModel.DataAnnotations.IValidatableObject.Validate(System.ComponentModel.DataAnnotations.ValidationContext)
+references:
+- uid: Innovt.Notification.Core.Domain
+  commentId: N:Innovt.Notification.Core.Domain
+  href: Innovt.html
+  name: Innovt.Notification.Core.Domain
+  nameWithType: Innovt.Notification.Core.Domain
+  fullName: Innovt.Notification.Core.Domain
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Notification
+    name: Notification
+    href: Innovt.Notification.html
+  - name: .
+  - uid: Innovt.Notification.Core
+    name: Core
+    href: Innovt.Notification.Core.html
+  - name: .
+  - uid: Innovt.Notification.Core.Domain
+    name: Domain
+    href: Innovt.Notification.Core.Domain.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Notification
+    name: Notification
+    href: Innovt.Notification.html
+  - name: .
+  - uid: Innovt.Notification.Core
+    name: Core
+    href: Innovt.Notification.Core.html
+  - name: .
+  - uid: Innovt.Notification.Core.Domain
+    name: Domain
+    href: Innovt.Notification.Core.Domain.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.ComponentModel.DataAnnotations.IValidatableObject
+  commentId: T:System.ComponentModel.DataAnnotations.IValidatableObject
+  parent: System.ComponentModel.DataAnnotations
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.ivalidatableobject
+  name: IValidatableObject
+  nameWithType: IValidatableObject
+  fullName: System.ComponentModel.DataAnnotations.IValidatableObject
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.ComponentModel.DataAnnotations.IValidatableObject.Innovt.Core.Validation.Extensions.EnsureIsValid(System.ComponentModel.DataAnnotations.ValidationContext)
+  commentId: M:Innovt.Core.Validation.Extensions.EnsureIsValid(System.ComponentModel.DataAnnotations.IValidatableObject,System.ComponentModel.DataAnnotations.ValidationContext)
+  parent: Innovt.Core.Validation.Extensions
+  definition: Innovt.Core.Validation.Extensions.EnsureIsValid(System.ComponentModel.DataAnnotations.IValidatableObject,System.ComponentModel.DataAnnotations.ValidationContext)
+  href: Innovt.Core.Validation.Extensions.html#Innovt_Core_Validation_Extensions_EnsureIsValid_System_ComponentModel_DataAnnotations_IValidatableObject_System_ComponentModel_DataAnnotations_ValidationContext_
+  name: EnsureIsValid(IValidatableObject, ValidationContext)
+  nameWithType: Extensions.EnsureIsValid(IValidatableObject, ValidationContext)
+  fullName: Innovt.Core.Validation.Extensions.EnsureIsValid(System.ComponentModel.DataAnnotations.IValidatableObject, System.ComponentModel.DataAnnotations.ValidationContext)
+  spec.csharp:
+  - uid: Innovt.Core.Validation.Extensions.EnsureIsValid(System.ComponentModel.DataAnnotations.IValidatableObject,System.ComponentModel.DataAnnotations.ValidationContext)
+    name: EnsureIsValid
+    href: Innovt.Core.Validation.Extensions.html#Innovt_Core_Validation_Extensions_EnsureIsValid_System_ComponentModel_DataAnnotations_IValidatableObject_System_ComponentModel_DataAnnotations_ValidationContext_
+  - name: (
+  - uid: System.ComponentModel.DataAnnotations.IValidatableObject
+    name: IValidatableObject
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.ivalidatableobject
+  - name: ','
+  - name: " "
+  - uid: System.ComponentModel.DataAnnotations.ValidationContext
+    name: ValidationContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.validationcontext
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Validation.Extensions.EnsureIsValid(System.ComponentModel.DataAnnotations.IValidatableObject,System.ComponentModel.DataAnnotations.ValidationContext)
+    name: EnsureIsValid
+    href: Innovt.Core.Validation.Extensions.html#Innovt_Core_Validation_Extensions_EnsureIsValid_System_ComponentModel_DataAnnotations_IValidatableObject_System_ComponentModel_DataAnnotations_ValidationContext_
+  - name: (
+  - uid: System.ComponentModel.DataAnnotations.IValidatableObject
+    name: IValidatableObject
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.ivalidatableobject
+  - name: ','
+  - name: " "
+  - uid: System.ComponentModel.DataAnnotations.ValidationContext
+    name: ValidationContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.validationcontext
+  - name: )
+- uid: System.ComponentModel.DataAnnotations.IValidatableObject.Innovt.Core.Validation.Extensions.IsValid(System.ComponentModel.DataAnnotations.ValidationContext)
+  commentId: M:Innovt.Core.Validation.Extensions.IsValid(System.ComponentModel.DataAnnotations.IValidatableObject,System.ComponentModel.DataAnnotations.ValidationContext)
+  parent: Innovt.Core.Validation.Extensions
+  definition: Innovt.Core.Validation.Extensions.IsValid(System.ComponentModel.DataAnnotations.IValidatableObject,System.ComponentModel.DataAnnotations.ValidationContext)
+  href: Innovt.Core.Validation.Extensions.html#Innovt_Core_Validation_Extensions_IsValid_System_ComponentModel_DataAnnotations_IValidatableObject_System_ComponentModel_DataAnnotations_ValidationContext_
+  name: IsValid(IValidatableObject, ValidationContext)
+  nameWithType: Extensions.IsValid(IValidatableObject, ValidationContext)
+  fullName: Innovt.Core.Validation.Extensions.IsValid(System.ComponentModel.DataAnnotations.IValidatableObject, System.ComponentModel.DataAnnotations.ValidationContext)
+  spec.csharp:
+  - uid: Innovt.Core.Validation.Extensions.IsValid(System.ComponentModel.DataAnnotations.IValidatableObject,System.ComponentModel.DataAnnotations.ValidationContext)
+    name: IsValid
+    href: Innovt.Core.Validation.Extensions.html#Innovt_Core_Validation_Extensions_IsValid_System_ComponentModel_DataAnnotations_IValidatableObject_System_ComponentModel_DataAnnotations_ValidationContext_
+  - name: (
+  - uid: System.ComponentModel.DataAnnotations.IValidatableObject
+    name: IValidatableObject
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.ivalidatableobject
+  - name: ','
+  - name: " "
+  - uid: System.ComponentModel.DataAnnotations.ValidationContext
+    name: ValidationContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.validationcontext
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Validation.Extensions.IsValid(System.ComponentModel.DataAnnotations.IValidatableObject,System.ComponentModel.DataAnnotations.ValidationContext)
+    name: IsValid
+    href: Innovt.Core.Validation.Extensions.html#Innovt_Core_Validation_Extensions_IsValid_System_ComponentModel_DataAnnotations_IValidatableObject_System_ComponentModel_DataAnnotations_ValidationContext_
+  - name: (
+  - uid: System.ComponentModel.DataAnnotations.IValidatableObject
+    name: IValidatableObject
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.ivalidatableobject
+  - name: ','
+  - name: " "
+  - uid: System.ComponentModel.DataAnnotations.ValidationContext
+    name: ValidationContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.validationcontext
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ComponentModel.DataAnnotations
+  commentId: N:System.ComponentModel.DataAnnotations
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.ComponentModel.DataAnnotations
+  nameWithType: System.ComponentModel.DataAnnotations
+  fullName: System.ComponentModel.DataAnnotations
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+  - name: .
+  - uid: System.ComponentModel.DataAnnotations
+    name: DataAnnotations
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+  - name: .
+  - uid: System.ComponentModel.DataAnnotations
+    name: DataAnnotations
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations
+- uid: Innovt.Core.Validation.Extensions.EnsureIsValid(System.ComponentModel.DataAnnotations.IValidatableObject,System.ComponentModel.DataAnnotations.ValidationContext)
+  commentId: M:Innovt.Core.Validation.Extensions.EnsureIsValid(System.ComponentModel.DataAnnotations.IValidatableObject,System.ComponentModel.DataAnnotations.ValidationContext)
+  isExternal: true
+  href: Innovt.Core.Validation.Extensions.html#Innovt_Core_Validation_Extensions_EnsureIsValid_System_ComponentModel_DataAnnotations_IValidatableObject_System_ComponentModel_DataAnnotations_ValidationContext_
+  name: EnsureIsValid(IValidatableObject, ValidationContext)
+  nameWithType: Extensions.EnsureIsValid(IValidatableObject, ValidationContext)
+  fullName: Innovt.Core.Validation.Extensions.EnsureIsValid(System.ComponentModel.DataAnnotations.IValidatableObject, System.ComponentModel.DataAnnotations.ValidationContext)
+  spec.csharp:
+  - uid: Innovt.Core.Validation.Extensions.EnsureIsValid(System.ComponentModel.DataAnnotations.IValidatableObject,System.ComponentModel.DataAnnotations.ValidationContext)
+    name: EnsureIsValid
+    href: Innovt.Core.Validation.Extensions.html#Innovt_Core_Validation_Extensions_EnsureIsValid_System_ComponentModel_DataAnnotations_IValidatableObject_System_ComponentModel_DataAnnotations_ValidationContext_
+  - name: (
+  - uid: System.ComponentModel.DataAnnotations.IValidatableObject
+    name: IValidatableObject
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.ivalidatableobject
+  - name: ','
+  - name: " "
+  - uid: System.ComponentModel.DataAnnotations.ValidationContext
+    name: ValidationContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.validationcontext
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Validation.Extensions.EnsureIsValid(System.ComponentModel.DataAnnotations.IValidatableObject,System.ComponentModel.DataAnnotations.ValidationContext)
+    name: EnsureIsValid
+    href: Innovt.Core.Validation.Extensions.html#Innovt_Core_Validation_Extensions_EnsureIsValid_System_ComponentModel_DataAnnotations_IValidatableObject_System_ComponentModel_DataAnnotations_ValidationContext_
+  - name: (
+  - uid: System.ComponentModel.DataAnnotations.IValidatableObject
+    name: IValidatableObject
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.ivalidatableobject
+  - name: ','
+  - name: " "
+  - uid: System.ComponentModel.DataAnnotations.ValidationContext
+    name: ValidationContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.validationcontext
+  - name: )
+- uid: Innovt.Core.Validation.Extensions
+  commentId: T:Innovt.Core.Validation.Extensions
+  parent: Innovt.Core.Validation
+  href: Innovt.Core.Validation.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Validation.Extensions
+- uid: Innovt.Core.Validation.Extensions.IsValid(System.ComponentModel.DataAnnotations.IValidatableObject,System.ComponentModel.DataAnnotations.ValidationContext)
+  commentId: M:Innovt.Core.Validation.Extensions.IsValid(System.ComponentModel.DataAnnotations.IValidatableObject,System.ComponentModel.DataAnnotations.ValidationContext)
+  isExternal: true
+  href: Innovt.Core.Validation.Extensions.html#Innovt_Core_Validation_Extensions_IsValid_System_ComponentModel_DataAnnotations_IValidatableObject_System_ComponentModel_DataAnnotations_ValidationContext_
+  name: IsValid(IValidatableObject, ValidationContext)
+  nameWithType: Extensions.IsValid(IValidatableObject, ValidationContext)
+  fullName: Innovt.Core.Validation.Extensions.IsValid(System.ComponentModel.DataAnnotations.IValidatableObject, System.ComponentModel.DataAnnotations.ValidationContext)
+  spec.csharp:
+  - uid: Innovt.Core.Validation.Extensions.IsValid(System.ComponentModel.DataAnnotations.IValidatableObject,System.ComponentModel.DataAnnotations.ValidationContext)
+    name: IsValid
+    href: Innovt.Core.Validation.Extensions.html#Innovt_Core_Validation_Extensions_IsValid_System_ComponentModel_DataAnnotations_IValidatableObject_System_ComponentModel_DataAnnotations_ValidationContext_
+  - name: (
+  - uid: System.ComponentModel.DataAnnotations.IValidatableObject
+    name: IValidatableObject
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.ivalidatableobject
+  - name: ','
+  - name: " "
+  - uid: System.ComponentModel.DataAnnotations.ValidationContext
+    name: ValidationContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.validationcontext
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Validation.Extensions.IsValid(System.ComponentModel.DataAnnotations.IValidatableObject,System.ComponentModel.DataAnnotations.ValidationContext)
+    name: IsValid
+    href: Innovt.Core.Validation.Extensions.html#Innovt_Core_Validation_Extensions_IsValid_System_ComponentModel_DataAnnotations_IValidatableObject_System_ComponentModel_DataAnnotations_ValidationContext_
+  - name: (
+  - uid: System.ComponentModel.DataAnnotations.IValidatableObject
+    name: IValidatableObject
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.ivalidatableobject
+  - name: ','
+  - name: " "
+  - uid: System.ComponentModel.DataAnnotations.ValidationContext
+    name: ValidationContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.validationcontext
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Validation
+  commentId: N:Innovt.Core.Validation
+  href: Innovt.html
+  name: Innovt.Core.Validation
+  nameWithType: Innovt.Core.Validation
+  fullName: Innovt.Core.Validation
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Validation
+    name: Validation
+    href: Innovt.Core.Validation.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Validation
+    name: Validation
+    href: Innovt.Core.Validation.html
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Notification.Core.Domain.NotificationRequest
+  commentId: T:Innovt.Notification.Core.Domain.NotificationRequest
+  parent: Innovt.Notification.Core.Domain
+  href: Innovt.Notification.Core.Domain.NotificationRequest.html
+  name: NotificationRequest
+  nameWithType: NotificationRequest
+  fullName: Innovt.Notification.Core.Domain.NotificationRequest
+- uid: Innovt.Notification.Core.Domain.NotificationRequest.#ctor*
+  commentId: Overload:Innovt.Notification.Core.Domain.NotificationRequest.#ctor
+  href: Innovt.Notification.Core.Domain.NotificationRequest.html#Innovt_Notification_Core_Domain_NotificationRequest__ctor
+  name: NotificationRequest
+  nameWithType: NotificationRequest.NotificationRequest
+  fullName: Innovt.Notification.Core.Domain.NotificationRequest.NotificationRequest
+  nameWithType.vb: NotificationRequest.New
+  fullName.vb: Innovt.Notification.Core.Domain.NotificationRequest.New
+  name.vb: New
+- uid: Innovt.Notification.Core.Domain.NotificationRequest.TemplateId*
+  commentId: Overload:Innovt.Notification.Core.Domain.NotificationRequest.TemplateId
+  href: Innovt.Notification.Core.Domain.NotificationRequest.html#Innovt_Notification_Core_Domain_NotificationRequest_TemplateId
+  name: TemplateId
+  nameWithType: NotificationRequest.TemplateId
+  fullName: Innovt.Notification.Core.Domain.NotificationRequest.TemplateId
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Innovt.Notification.Core.Domain.NotificationRequest.To*
+  commentId: Overload:Innovt.Notification.Core.Domain.NotificationRequest.To
+  href: Innovt.Notification.Core.Domain.NotificationRequest.html#Innovt_Notification_Core_Domain_NotificationRequest_To
+  name: To
+  nameWithType: NotificationRequest.To
+  fullName: Innovt.Notification.Core.Domain.NotificationRequest.To
+- uid: System.Collections.Generic.List{Innovt.Notification.Core.Domain.NotificationMessageContact}
+  commentId: T:System.Collections.Generic.List{Innovt.Notification.Core.Domain.NotificationMessageContact}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<NotificationMessageContact>
+  nameWithType: List<NotificationMessageContact>
+  fullName: System.Collections.Generic.List<Innovt.Notification.Core.Domain.NotificationMessageContact>
+  nameWithType.vb: List(Of NotificationMessageContact)
+  fullName.vb: System.Collections.Generic.List(Of Innovt.Notification.Core.Domain.NotificationMessageContact)
+  name.vb: List(Of NotificationMessageContact)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Innovt.Notification.Core.Domain.NotificationMessageContact
+    name: NotificationMessageContact
+    href: Innovt.Notification.Core.Domain.NotificationMessageContact.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Notification.Core.Domain.NotificationMessageContact
+    name: NotificationMessageContact
+    href: Innovt.Notification.Core.Domain.NotificationMessageContact.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Innovt.Notification.Core.Domain.NotificationRequest.PayLoad*
+  commentId: Overload:Innovt.Notification.Core.Domain.NotificationRequest.PayLoad
+  href: Innovt.Notification.Core.Domain.NotificationRequest.html#Innovt_Notification_Core_Domain_NotificationRequest_PayLoad
+  name: PayLoad
+  nameWithType: NotificationRequest.PayLoad
+  fullName: Innovt.Notification.Core.Domain.NotificationRequest.PayLoad
+- uid: Innovt.Notification.Core.Domain.NotificationRequest.Validate*
+  commentId: Overload:Innovt.Notification.Core.Domain.NotificationRequest.Validate
+  href: Innovt.Notification.Core.Domain.NotificationRequest.html#Innovt_Notification_Core_Domain_NotificationRequest_Validate_System_ComponentModel_DataAnnotations_ValidationContext_
+  name: Validate
+  nameWithType: NotificationRequest.Validate
+  fullName: Innovt.Notification.Core.Domain.NotificationRequest.Validate
+- uid: System.ComponentModel.DataAnnotations.IValidatableObject.Validate(System.ComponentModel.DataAnnotations.ValidationContext)
+  commentId: M:System.ComponentModel.DataAnnotations.IValidatableObject.Validate(System.ComponentModel.DataAnnotations.ValidationContext)
+  parent: System.ComponentModel.DataAnnotations.IValidatableObject
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.ivalidatableobject.validate
+  name: Validate(ValidationContext)
+  nameWithType: IValidatableObject.Validate(ValidationContext)
+  fullName: System.ComponentModel.DataAnnotations.IValidatableObject.Validate(System.ComponentModel.DataAnnotations.ValidationContext)
+  spec.csharp:
+  - uid: System.ComponentModel.DataAnnotations.IValidatableObject.Validate(System.ComponentModel.DataAnnotations.ValidationContext)
+    name: Validate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.ivalidatableobject.validate
+  - name: (
+  - uid: System.ComponentModel.DataAnnotations.ValidationContext
+    name: ValidationContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.validationcontext
+  - name: )
+  spec.vb:
+  - uid: System.ComponentModel.DataAnnotations.IValidatableObject.Validate(System.ComponentModel.DataAnnotations.ValidationContext)
+    name: Validate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.ivalidatableobject.validate
+  - name: (
+  - uid: System.ComponentModel.DataAnnotations.ValidationContext
+    name: ValidationContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.validationcontext
+  - name: )
+- uid: System.ComponentModel.DataAnnotations.ValidationContext
+  commentId: T:System.ComponentModel.DataAnnotations.ValidationContext
+  parent: System.ComponentModel.DataAnnotations
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.validationcontext
+  name: ValidationContext
+  nameWithType: ValidationContext
+  fullName: System.ComponentModel.DataAnnotations.ValidationContext
+- uid: System.Collections.Generic.IEnumerable{System.ComponentModel.DataAnnotations.ValidationResult}
+  commentId: T:System.Collections.Generic.IEnumerable{System.ComponentModel.DataAnnotations.ValidationResult}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<ValidationResult>
+  nameWithType: IEnumerable<ValidationResult>
+  fullName: System.Collections.Generic.IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult>
+  nameWithType.vb: IEnumerable(Of ValidationResult)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.ComponentModel.DataAnnotations.ValidationResult)
+  name.vb: IEnumerable(Of ValidationResult)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.ComponentModel.DataAnnotations.ValidationResult
+    name: ValidationResult
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.validationresult
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.ComponentModel.DataAnnotations.ValidationResult
+    name: ValidationResult
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel.dataannotations.validationresult
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

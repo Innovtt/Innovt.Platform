@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Data.Exceptions
+  commentId: N:Innovt.Data.Exceptions
+  id: Innovt.Data.Exceptions
+  children:
+  - Innovt.Data.Exceptions.ConnectionStringException
+  - Innovt.Data.Exceptions.SqlSyntaxException
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Data.Exceptions
+  nameWithType: Innovt.Data.Exceptions
+  fullName: Innovt.Data.Exceptions
+  type: Namespace
+  assemblies:
+  - Innovt.Data
+references:
+- uid: Innovt.Data.Exceptions.ConnectionStringException
+  commentId: T:Innovt.Data.Exceptions.ConnectionStringException
+  href: Innovt.Data.Exceptions.ConnectionStringException.html
+  name: ConnectionStringException
+  nameWithType: ConnectionStringException
+  fullName: Innovt.Data.Exceptions.ConnectionStringException
+- uid: Innovt.Data.Exceptions.SqlSyntaxException
+  commentId: T:Innovt.Data.Exceptions.SqlSyntaxException
+  href: Innovt.Data.Exceptions.SqlSyntaxException.html
+  name: SqlSyntaxException
+  nameWithType: SqlSyntaxException
+  fullName: Innovt.Data.Exceptions.SqlSyntaxException

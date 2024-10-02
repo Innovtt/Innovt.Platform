@@ -28,8 +28,11 @@ public class CryptographyTests
 
         var encrypted = Cryptography.AesEncrypt(plainText, key);
 
-        Assert.That(encrypted, Is.Not.Null);
-        Assert.That("+CSp39EM8HoEjSn4nOAbnw==", Is.EqualTo(encrypted));
+        Assert.Multiple(() =>
+        {
+            Assert.That(encrypted, Is.Not.Null);
+            Assert.That("+CSp39EM8HoEjSn4nOAbnw==", Is.EqualTo(encrypted));
+        });
     }
 
 
