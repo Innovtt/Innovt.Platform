@@ -6,7 +6,7 @@ namespace Innovt.Data.DataSources;
 
 /// <summary>
 ///     Represents an interface for a data source reader, inheriting from <see cref="IDataSource" />.
-/// </summary
+/// </summary>
 public interface IDataSourceReader : IDataSource
 {
 }

@@ -13,10 +13,8 @@ using Innovt.Domain.Core.Events;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis;
 
-// <summary>
-/// Represents a base class for processing batches of domain-specific Kinesis events, where each event is of type
-/// <typeparamref name="TBody" />
-/// .
+/// <summary>
+///     Represents a base class for processing batches of domain-specific Kinesis events, where each event is of type
 /// </summary>
 /// <typeparam name="TBody">The type of domain-specific events to process.</typeparam>
 public abstract class KinesisDomainEventProcessorBatch<TBody> : KinesisProcessorBase<TBody> where TBody : DomainEvent

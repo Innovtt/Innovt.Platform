@@ -1,0 +1,207 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Domain.Core.Model
+  commentId: N:Innovt.Domain.Core.Model
+  id: Innovt.Domain.Core.Model
+  children:
+  - Innovt.Domain.Core.Model.DomainModel`1
+  - Innovt.Domain.Core.Model.Entity
+  - Innovt.Domain.Core.Model.Entity`1
+  - Innovt.Domain.Core.Model.IAggregateRoot
+  - Innovt.Domain.Core.Model.IAggregateRoot`1
+  - Innovt.Domain.Core.Model.SimpleVo`1
+  - Innovt.Domain.Core.Model.ValueObject
+  - Innovt.Domain.Core.Model.ValueObject`1
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Domain.Core.Model
+  nameWithType: Innovt.Domain.Core.Model
+  fullName: Innovt.Domain.Core.Model
+  type: Namespace
+  assemblies:
+  - Innovt.Domain.Core
+references:
+- uid: Innovt.Domain.Core.Model.DomainModel`1
+  commentId: T:Innovt.Domain.Core.Model.DomainModel`1
+  href: Innovt.Domain.Core.Model.DomainModel-1.html
+  name: DomainModel<T>
+  nameWithType: DomainModel<T>
+  fullName: Innovt.Domain.Core.Model.DomainModel<T>
+  nameWithType.vb: DomainModel(Of T)
+  fullName.vb: Innovt.Domain.Core.Model.DomainModel(Of T)
+  name.vb: DomainModel(Of T)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Model.DomainModel`1
+    name: DomainModel
+    href: Innovt.Domain.Core.Model.DomainModel-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Model.DomainModel`1
+    name: DomainModel
+    href: Innovt.Domain.Core.Model.DomainModel-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Domain.Core.Model.Entity
+  commentId: T:Innovt.Domain.Core.Model.Entity
+  parent: Innovt.Domain.Core.Model
+  href: Innovt.Domain.Core.Model.Entity.html
+  name: Entity
+  nameWithType: Entity
+  fullName: Innovt.Domain.Core.Model.Entity
+- uid: Innovt.Domain.Core.Model.Entity`1
+  commentId: T:Innovt.Domain.Core.Model.Entity`1
+  href: Innovt.Domain.Core.Model.Entity-1.html
+  name: Entity<T>
+  nameWithType: Entity<T>
+  fullName: Innovt.Domain.Core.Model.Entity<T>
+  nameWithType.vb: Entity(Of T)
+  fullName.vb: Innovt.Domain.Core.Model.Entity(Of T)
+  name.vb: Entity(Of T)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Model.Entity`1
+    name: Entity
+    href: Innovt.Domain.Core.Model.Entity-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Model.Entity`1
+    name: Entity
+    href: Innovt.Domain.Core.Model.Entity-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Domain.Core.Model.IAggregateRoot`1
+  commentId: T:Innovt.Domain.Core.Model.IAggregateRoot`1
+  href: Innovt.Domain.Core.Model.IAggregateRoot-1.html
+  name: IAggregateRoot<T>
+  nameWithType: IAggregateRoot<T>
+  fullName: Innovt.Domain.Core.Model.IAggregateRoot<T>
+  nameWithType.vb: IAggregateRoot(Of T)
+  fullName.vb: Innovt.Domain.Core.Model.IAggregateRoot(Of T)
+  name.vb: IAggregateRoot(Of T)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Model.IAggregateRoot`1
+    name: IAggregateRoot
+    href: Innovt.Domain.Core.Model.IAggregateRoot-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Model.IAggregateRoot`1
+    name: IAggregateRoot
+    href: Innovt.Domain.Core.Model.IAggregateRoot-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Domain.Core.Model.IAggregateRoot
+  commentId: T:Innovt.Domain.Core.Model.IAggregateRoot
+  href: Innovt.Domain.Core.Model.IAggregateRoot.html
+  name: IAggregateRoot
+  nameWithType: IAggregateRoot
+  fullName: Innovt.Domain.Core.Model.IAggregateRoot
+- uid: Innovt.Domain.Core.Model.SimpleVo`1
+  commentId: T:Innovt.Domain.Core.Model.SimpleVo`1
+  href: Innovt.Domain.Core.Model.SimpleVo-1.html
+  name: SimpleVo<T>
+  nameWithType: SimpleVo<T>
+  fullName: Innovt.Domain.Core.Model.SimpleVo<T>
+  nameWithType.vb: SimpleVo(Of T)
+  fullName.vb: Innovt.Domain.Core.Model.SimpleVo(Of T)
+  name.vb: SimpleVo(Of T)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Model.SimpleVo`1
+    name: SimpleVo
+    href: Innovt.Domain.Core.Model.SimpleVo-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Model.SimpleVo`1
+    name: SimpleVo
+    href: Innovt.Domain.Core.Model.SimpleVo-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Domain.Core.Model.ValueObject
+  commentId: T:Innovt.Domain.Core.Model.ValueObject
+  parent: Innovt.Domain.Core.Model
+  href: Innovt.Domain.Core.Model.ValueObject.html
+  name: ValueObject
+  nameWithType: ValueObject
+  fullName: Innovt.Domain.Core.Model.ValueObject
+- uid: Innovt.Domain.Core.Model.ValueObject`1
+  commentId: T:Innovt.Domain.Core.Model.ValueObject`1
+  href: Innovt.Domain.Core.Model.ValueObject-1.html
+  name: ValueObject<T>
+  nameWithType: ValueObject<T>
+  fullName: Innovt.Domain.Core.Model.ValueObject<T>
+  nameWithType.vb: ValueObject(Of T)
+  fullName.vb: Innovt.Domain.Core.Model.ValueObject(Of T)
+  name.vb: ValueObject(Of T)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Model.ValueObject`1
+    name: ValueObject
+    href: Innovt.Domain.Core.Model.ValueObject-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Model.ValueObject`1
+    name: ValueObject
+    href: Innovt.Domain.Core.Model.ValueObject-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Domain.Core.Model
+  commentId: N:Innovt.Domain.Core.Model
+  href: Innovt.html
+  name: Innovt.Domain.Core.Model
+  nameWithType: Innovt.Domain.Core.Model
+  fullName: Innovt.Domain.Core.Model
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Model
+    name: Model
+    href: Innovt.Domain.Core.Model.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Model
+    name: Model
+    href: Innovt.Domain.Core.Model.html

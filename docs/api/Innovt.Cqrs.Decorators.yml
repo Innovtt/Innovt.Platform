@@ -1,0 +1,54 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cqrs.Decorators
+  commentId: N:Innovt.Cqrs.Decorators
+  id: Innovt.Cqrs.Decorators
+  children:
+  - Innovt.Cqrs.Decorators.BaseDatabaseRetryDecorator
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Cqrs.Decorators
+  nameWithType: Innovt.Cqrs.Decorators
+  fullName: Innovt.Cqrs.Decorators
+  type: Namespace
+  assemblies:
+  - Innovt.Cqrs
+references:
+- uid: Innovt.Cqrs.Decorators.BaseDatabaseRetryDecorator
+  commentId: T:Innovt.Cqrs.Decorators.BaseDatabaseRetryDecorator
+  parent: Innovt.Cqrs.Decorators
+  href: Innovt.Cqrs.Decorators.BaseDatabaseRetryDecorator.html
+  name: BaseDatabaseRetryDecorator
+  nameWithType: BaseDatabaseRetryDecorator
+  fullName: Innovt.Cqrs.Decorators.BaseDatabaseRetryDecorator
+- uid: Innovt.Cqrs.Decorators
+  commentId: N:Innovt.Cqrs.Decorators
+  href: Innovt.html
+  name: Innovt.Cqrs.Decorators
+  nameWithType: Innovt.Cqrs.Decorators
+  fullName: Innovt.Cqrs.Decorators
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cqrs
+    name: Cqrs
+    href: Innovt.Cqrs.html
+  - name: .
+  - uid: Innovt.Cqrs.Decorators
+    name: Decorators
+    href: Innovt.Cqrs.Decorators.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cqrs
+    name: Cqrs
+    href: Innovt.Cqrs.html
+  - name: .
+  - uid: Innovt.Cqrs.Decorators
+    name: Decorators
+    href: Innovt.Cqrs.Decorators.html

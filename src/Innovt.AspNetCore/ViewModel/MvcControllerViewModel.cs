@@ -38,7 +38,7 @@ public class MvcControllerViewModel : ViewModelBase
     {
         ArgumentNullException.ThrowIfNull(actions);
 
-        Actions ??= new List<MvcActionViewModel>();
+        Actions ??= [];
 
         Actions.AddRange(actions);
     }

@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.Dynamo.Exceptions
+  commentId: N:Innovt.Cloud.AWS.Dynamo.Exceptions
+  id: Innovt.Cloud.AWS.Dynamo.Exceptions
+  children:
+  - Innovt.Cloud.AWS.Dynamo.Exceptions.MissingEntityMapException
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Cloud.AWS.Dynamo.Exceptions
+  nameWithType: Innovt.Cloud.AWS.Dynamo.Exceptions
+  fullName: Innovt.Cloud.AWS.Dynamo.Exceptions
+  type: Namespace
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+references:
+- uid: Innovt.Cloud.AWS.Dynamo.Exceptions.MissingEntityMapException
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Exceptions.MissingEntityMapException
+  href: Innovt.Cloud.AWS.Dynamo.Exceptions.MissingEntityMapException.html
+  name: MissingEntityMapException
+  nameWithType: MissingEntityMapException
+  fullName: Innovt.Cloud.AWS.Dynamo.Exceptions.MissingEntityMapException

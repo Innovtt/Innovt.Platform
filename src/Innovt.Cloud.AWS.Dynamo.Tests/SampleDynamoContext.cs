@@ -13,11 +13,15 @@ public class SampleDynamoContext : DynamoContext
 
         //tenho que dizer que a propriedade do pk sera o campo x +
         //modelBuilder.Entity<User>().AutoMap()
-          // .WithOneTableHashKey();
-          
+        // .WithOneTableHashKey();
+
         modelBuilder.AddConfiguration(new UserMap());
         modelBuilder.AddConfiguration(new CompanyMap());
         
+        modelBuilder.Entity<Skill>().AutoMap().WithTableName("CloudExperts")
+            .WithHashKey().SetDynamicValue(c => "SKILL").Builder
+            .WithRangeKey().SetDynamicValue(c => "SKILL#" + c.Id);
+
         modelBuilder.AddPropertyConverter(typeof(DateTimeOffset), new DateTimeOffsetConverter());
         modelBuilder.AddPropertyConverter(typeof(DateTimeOffset?), new DateTimeOffsetConverter());
     }

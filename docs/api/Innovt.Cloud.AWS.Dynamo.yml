@@ -1,0 +1,70 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.Dynamo
+  commentId: N:Innovt.Cloud.AWS.Dynamo
+  id: Innovt.Cloud.AWS.Dynamo
+  children:
+  - Innovt.Cloud.AWS.Dynamo.DynamoContext
+  - Innovt.Cloud.AWS.Dynamo.Repository
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Cloud.AWS.Dynamo
+  nameWithType: Innovt.Cloud.AWS.Dynamo
+  fullName: Innovt.Cloud.AWS.Dynamo
+  type: Namespace
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+references:
+- uid: Innovt.Cloud.AWS.Dynamo.DynamoContext
+  commentId: T:Innovt.Cloud.AWS.Dynamo.DynamoContext
+  parent: Innovt.Cloud.AWS.Dynamo
+  href: Innovt.Cloud.AWS.Dynamo.DynamoContext.html
+  name: DynamoContext
+  nameWithType: DynamoContext
+  fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext
+- uid: Innovt.Cloud.AWS.Dynamo.Repository
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Repository
+  parent: Innovt.Cloud.AWS.Dynamo
+  href: Innovt.Cloud.AWS.Dynamo.Repository.html
+  name: Repository
+  nameWithType: Repository
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository
+- uid: Innovt.Cloud.AWS.Dynamo
+  commentId: N:Innovt.Cloud.AWS.Dynamo
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Dynamo
+  nameWithType: Innovt.Cloud.AWS.Dynamo
+  fullName: Innovt.Cloud.AWS.Dynamo
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo
+    name: Dynamo
+    href: Innovt.Cloud.AWS.Dynamo.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo
+    name: Dynamo
+    href: Innovt.Cloud.AWS.Dynamo.html

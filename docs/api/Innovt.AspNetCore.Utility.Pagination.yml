@@ -1,0 +1,42 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.AspNetCore.Utility.Pagination
+  commentId: N:Innovt.AspNetCore.Utility.Pagination
+  id: Innovt.AspNetCore.Utility.Pagination
+  children:
+  - Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: Innovt.AspNetCore.Utility.Pagination
+  nameWithType: Innovt.AspNetCore.Utility.Pagination
+  fullName: Innovt.AspNetCore.Utility.Pagination
+  type: Namespace
+  assemblies:
+  - Innovt.AspNetCore
+references:
+- uid: Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1
+  commentId: T:Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1
+  href: Innovt.AspNetCore.Utility.Pagination.PaginationBuilder-1.html
+  name: PaginationBuilder<T>
+  nameWithType: PaginationBuilder<T>
+  fullName: Innovt.AspNetCore.Utility.Pagination.PaginationBuilder<T>
+  nameWithType.vb: PaginationBuilder(Of T)
+  fullName.vb: Innovt.AspNetCore.Utility.Pagination.PaginationBuilder(Of T)
+  name.vb: PaginationBuilder(Of T)
+  spec.csharp:
+  - uid: Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1
+    name: PaginationBuilder
+    href: Innovt.AspNetCore.Utility.Pagination.PaginationBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1
+    name: PaginationBuilder
+    href: Innovt.AspNetCore.Utility.Pagination.PaginationBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

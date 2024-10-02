@@ -1,0 +1,68 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Core.Caching
+  commentId: N:Innovt.Core.Caching
+  id: Innovt.Core.Caching
+  children:
+  - Innovt.Core.Caching.ICacheService
+  - Innovt.Core.Caching.LocalCache
+  - Innovt.Core.Caching.MultiLayerCacheService
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Core.Caching
+  nameWithType: Innovt.Core.Caching
+  fullName: Innovt.Core.Caching
+  type: Namespace
+  assemblies:
+  - Innovt.Core
+references:
+- uid: Innovt.Core.Caching.ICacheService
+  commentId: T:Innovt.Core.Caching.ICacheService
+  parent: Innovt.Core.Caching
+  href: Innovt.Core.Caching.ICacheService.html
+  name: ICacheService
+  nameWithType: ICacheService
+  fullName: Innovt.Core.Caching.ICacheService
+- uid: Innovt.Core.Caching.LocalCache
+  commentId: T:Innovt.Core.Caching.LocalCache
+  href: Innovt.Core.Caching.LocalCache.html
+  name: LocalCache
+  nameWithType: LocalCache
+  fullName: Innovt.Core.Caching.LocalCache
+- uid: Innovt.Core.Caching.MultiLayerCacheService
+  commentId: T:Innovt.Core.Caching.MultiLayerCacheService
+  href: Innovt.Core.Caching.MultiLayerCacheService.html
+  name: MultiLayerCacheService
+  nameWithType: MultiLayerCacheService
+  fullName: Innovt.Core.Caching.MultiLayerCacheService
+- uid: Innovt.Core.Caching
+  commentId: N:Innovt.Core.Caching
+  href: Innovt.html
+  name: Innovt.Core.Caching
+  nameWithType: Innovt.Core.Caching
+  fullName: Innovt.Core.Caching
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Caching
+    name: Caching
+    href: Innovt.Core.Caching.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Caching
+    name: Caching
+    href: Innovt.Core.Caching.html

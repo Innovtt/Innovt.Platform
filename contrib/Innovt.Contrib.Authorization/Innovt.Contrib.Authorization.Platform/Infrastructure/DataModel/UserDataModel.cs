@@ -82,7 +82,7 @@ internal class UserDataModel : DataModelBase
             Sk = $"DID#{user.DomainId}",
             AuthId = user.Id,
             DomainId = user.DomainId,
-            CreatedAt = user.CreatedAt.GetValueOrDefault().UtcDateTime
+            CreatedAt = user.CreatedAt.UtcDateTime
         };
 
         if (user.Roles == null) return dataModel;

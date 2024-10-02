@@ -257,41 +257,44 @@ public class SimpleMapTests
 
         var invoiceDto = invoice.MapTo<InvoiceDto>();
 
-        Assert.That(invoiceDto, Is.Not.Null);
+        Assert.Multiple(() =>
+        {
+            Assert.That(invoiceDto, Is.Not.Null);
 
-        Assert.That(invoice.Description, Is.EqualTo(invoiceDto.Description));
-        Assert.That(invoice.CreatedAt, Is.EqualTo(invoiceDto.CreatedAt));
-        Assert.That(invoice.BuyerId, Is.EqualTo(invoiceDto.BuyerId));
-        Assert.That(invoice.BuyerName, Is.EqualTo(invoiceDto.BuyerName));
-        Assert.That(invoice.BuyerErpId, Is.EqualTo(invoiceDto.BuyerErpId));
-        Assert.That(invoice.BuyerDocument, Is.EqualTo(invoiceDto.BuyerDocument));
-        Assert.That(invoice.BuyerGroupId, Is.EqualTo(invoiceDto.BuyerGroupId));
-        Assert.That(invoice.SupplierId, Is.EqualTo(invoiceDto.SupplierId));
-        Assert.That(invoice.SupplierName, Is.EqualTo(invoiceDto.SupplierName));
-        Assert.That(invoice.SupplierErpId, Is.EqualTo(invoiceDto.SupplierErpId));
-        Assert.That(invoice.SupplierDocument, Is.EqualTo(invoiceDto.SupplierDocument));
-        Assert.That(invoice.CurrencyId, Is.EqualTo(invoiceDto.CurrencyId));
-        Assert.That(invoice.Currency, Is.EqualTo(invoiceDto.Currency));
-        Assert.That(invoice.Interest, Is.EqualTo(invoiceDto.Interest));
-        Assert.That(invoice.Fine, Is.EqualTo(invoiceDto.Fine));
-        Assert.That(invoice.Tax, Is.EqualTo(invoiceDto.Tax));
-        Assert.That(invoice.FiscalDocumentNumbers, Is.EqualTo(invoiceDto.FiscalDocumentNumbers));
-        Assert.That(invoice.InstallmentNumber, Is.EqualTo(invoiceDto.InstallmentNumber));
-        Assert.That(invoice.PaymentTypeId, Is.EqualTo(invoiceDto.PaymentTypeId));
-        Assert.That(invoice.PaymentType, Is.EqualTo(invoiceDto.PaymentType));
-        Assert.That(invoice.PaymentOrderStatusId, Is.EqualTo(invoiceDto.PaymentOrderStatusId));
-        Assert.That(invoice.PaymentOrderStatus, Is.EqualTo(invoiceDto.PaymentOrderStatus));
-        Assert.That(invoice.BankSlipBarCode, Is.EqualTo(invoiceDto.BankSlipBarCode));
-        Assert.That(invoice.Metadata, Is.EqualTo(invoiceDto.Metadata));
-        Assert.That(invoice.DaysToDue, Is.EqualTo(invoiceDto.DaysToDue));
-        Assert.That(invoice.IssueDate, Is.EqualTo(invoiceDto.IssueDate));
-        Assert.That(invoice.DueDate, Is.EqualTo(invoiceDto.DueDate));
-        Assert.That(invoice.Discount, Is.EqualTo(invoiceDto.Discount));
-        Assert.That(invoice.Value, Is.EqualTo(invoiceDto.Value));
-        Assert.That(invoice.NetValue, Is.EqualTo(invoiceDto.NetValue));
-        Assert.That(invoice.PaymentDate, Is.EqualTo(invoiceDto.PaymentDate));
-        Assert.That(invoice.PaymentValue, Is.EqualTo(invoiceDto.PaymentValue));
-        Assert.That(invoice.UpdatedAt, Is.EqualTo(invoiceDto.UpdatedAt));
+            Assert.That(invoice.Description, Is.EqualTo(invoiceDto.Description));
+            Assert.That(invoice.CreatedAt, Is.EqualTo(invoiceDto.CreatedAt));
+            Assert.That(invoice.BuyerId, Is.EqualTo(invoiceDto.BuyerId));
+            Assert.That(invoice.BuyerName, Is.EqualTo(invoiceDto.BuyerName));
+            Assert.That(invoice.BuyerErpId, Is.EqualTo(invoiceDto.BuyerErpId));
+            Assert.That(invoice.BuyerDocument, Is.EqualTo(invoiceDto.BuyerDocument));
+            Assert.That(invoice.BuyerGroupId, Is.EqualTo(invoiceDto.BuyerGroupId));
+            Assert.That(invoice.SupplierId, Is.EqualTo(invoiceDto.SupplierId));
+            Assert.That(invoice.SupplierName, Is.EqualTo(invoiceDto.SupplierName));
+            Assert.That(invoice.SupplierErpId, Is.EqualTo(invoiceDto.SupplierErpId));
+            Assert.That(invoice.SupplierDocument, Is.EqualTo(invoiceDto.SupplierDocument));
+            Assert.That(invoice.CurrencyId, Is.EqualTo(invoiceDto.CurrencyId));
+            Assert.That(invoice.Currency, Is.EqualTo(invoiceDto.Currency));
+            Assert.That(invoice.Interest, Is.EqualTo(invoiceDto.Interest));
+            Assert.That(invoice.Fine, Is.EqualTo(invoiceDto.Fine));
+            Assert.That(invoice.Tax, Is.EqualTo(invoiceDto.Tax));
+            Assert.That(invoice.FiscalDocumentNumbers, Is.EqualTo(invoiceDto.FiscalDocumentNumbers));
+            Assert.That(invoice.InstallmentNumber, Is.EqualTo(invoiceDto.InstallmentNumber));
+            Assert.That(invoice.PaymentTypeId, Is.EqualTo(invoiceDto.PaymentTypeId));
+            Assert.That(invoice.PaymentType, Is.EqualTo(invoiceDto.PaymentType));
+            Assert.That(invoice.PaymentOrderStatusId, Is.EqualTo(invoiceDto.PaymentOrderStatusId));
+            Assert.That(invoice.PaymentOrderStatus, Is.EqualTo(invoiceDto.PaymentOrderStatus));
+            Assert.That(invoice.BankSlipBarCode, Is.EqualTo(invoiceDto.BankSlipBarCode));
+            Assert.That(invoice.Metadata, Is.EqualTo(invoiceDto.Metadata));
+            Assert.That(invoice.DaysToDue, Is.EqualTo(invoiceDto.DaysToDue));
+            Assert.That(invoice.IssueDate, Is.EqualTo(invoiceDto.IssueDate));
+            Assert.That(invoice.DueDate, Is.EqualTo(invoiceDto.DueDate));
+            Assert.That(invoice.Discount, Is.EqualTo(invoiceDto.Discount));
+            Assert.That(invoice.Value, Is.EqualTo(invoiceDto.Value));
+            Assert.That(invoice.NetValue, Is.EqualTo(invoiceDto.NetValue));
+            Assert.That(invoice.PaymentDate, Is.EqualTo(invoiceDto.PaymentDate));
+            Assert.That(invoice.PaymentValue, Is.EqualTo(invoiceDto.PaymentValue));
+            Assert.That(invoice.UpdatedAt, Is.EqualTo(invoiceDto.UpdatedAt));
+        });
     }
 
 

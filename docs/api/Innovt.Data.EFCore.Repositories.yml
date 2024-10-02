@@ -1,0 +1,75 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Data.EFCore.Repositories
+  commentId: N:Innovt.Data.EFCore.Repositories
+  id: Innovt.Data.EFCore.Repositories
+  children:
+  - Innovt.Data.EFCore.Repositories.GenericRepository`1
+  - Innovt.Data.EFCore.Repositories.RepositoryBase`1
+  - Innovt.Data.EFCore.Repositories.RequestTrackingRepository
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Data.EFCore.Repositories
+  nameWithType: Innovt.Data.EFCore.Repositories
+  fullName: Innovt.Data.EFCore.Repositories
+  type: Namespace
+  assemblies:
+  - Innovt.Data.EFCore
+references:
+- uid: Innovt.Data.EFCore.Repositories.GenericRepository`1
+  commentId: T:Innovt.Data.EFCore.Repositories.GenericRepository`1
+  href: Innovt.Data.EFCore.Repositories.GenericRepository-1.html
+  name: GenericRepository<T>
+  nameWithType: GenericRepository<T>
+  fullName: Innovt.Data.EFCore.Repositories.GenericRepository<T>
+  nameWithType.vb: GenericRepository(Of T)
+  fullName.vb: Innovt.Data.EFCore.Repositories.GenericRepository(Of T)
+  name.vb: GenericRepository(Of T)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.GenericRepository`1
+    name: GenericRepository
+    href: Innovt.Data.EFCore.Repositories.GenericRepository-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.GenericRepository`1
+    name: GenericRepository
+    href: Innovt.Data.EFCore.Repositories.GenericRepository-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1
+  commentId: T:Innovt.Data.EFCore.Repositories.RepositoryBase`1
+  href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html
+  name: RepositoryBase<T>
+  nameWithType: RepositoryBase<T>
+  fullName: Innovt.Data.EFCore.Repositories.RepositoryBase<T>
+  nameWithType.vb: RepositoryBase(Of T)
+  fullName.vb: Innovt.Data.EFCore.Repositories.RepositoryBase(Of T)
+  name.vb: RepositoryBase(Of T)
+  spec.csharp:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1
+    name: RepositoryBase
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Data.EFCore.Repositories.RepositoryBase`1
+    name: RepositoryBase
+    href: Innovt.Data.EFCore.Repositories.RepositoryBase-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Data.EFCore.Repositories.RequestTrackingRepository
+  commentId: T:Innovt.Data.EFCore.Repositories.RequestTrackingRepository
+  href: Innovt.Data.EFCore.Repositories.RequestTrackingRepository.html
+  name: RequestTrackingRepository
+  nameWithType: RequestTrackingRepository
+  fullName: Innovt.Data.EFCore.Repositories.RequestTrackingRepository

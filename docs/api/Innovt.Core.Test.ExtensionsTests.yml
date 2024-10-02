@@ -1,0 +1,859 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Core.Test.ExtensionsTests
+  commentId: T:Innovt.Core.Test.ExtensionsTests
+  id: ExtensionsTests
+  parent: Innovt.Core.Test
+  children:
+  - Innovt.Core.Test.ExtensionsTests.CheckHasSpecialCharacter
+  - Innovt.Core.Test.ExtensionsTests.CheckRemoveAccents
+  - Innovt.Core.Test.ExtensionsTests.ConvertDateTimeBetweenTimeZones
+  - Innovt.Core.Test.ExtensionsTests.ConvertDateTimeOffSetBetweenTimeZones
+  - Innovt.Core.Test.ExtensionsTests.PagedCollectionMap
+  - Innovt.Core.Test.ExtensionsTests.PagedCollectionMapShouldReturnEmptyListWhenArrayIsNull
+  langs:
+  - csharp
+  - vb
+  name: ExtensionsTests
+  nameWithType: ExtensionsTests
+  fullName: Innovt.Core.Test.ExtensionsTests
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Core.Test/ExtensionsTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ExtensionsTests
+    path: ../src/Innovt.Core.Test/ExtensionsTests.cs
+    startLine: 14
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: >-
+      [TestFixture]
+
+      public class ExtensionsTests
+    content.vb: >-
+      <TestFixture>
+
+      Public Class ExtensionsTests
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  attributes:
+  - type: NUnit.Framework.TestFixtureAttribute
+    ctor: NUnit.Framework.TestFixtureAttribute.#ctor
+    arguments: []
+- uid: Innovt.Core.Test.ExtensionsTests.CheckRemoveAccents
+  commentId: M:Innovt.Core.Test.ExtensionsTests.CheckRemoveAccents
+  id: CheckRemoveAccents
+  parent: Innovt.Core.Test.ExtensionsTests
+  langs:
+  - csharp
+  - vb
+  name: CheckRemoveAccents()
+  nameWithType: ExtensionsTests.CheckRemoveAccents()
+  fullName: Innovt.Core.Test.ExtensionsTests.CheckRemoveAccents()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core.Test/ExtensionsTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: CheckRemoveAccents
+    path: ../src/Innovt.Core.Test/ExtensionsTests.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: >-
+      [Test]
+
+      public void CheckRemoveAccents()
+    content.vb: >-
+      <Test>
+
+      Public Sub CheckRemoveAccents()
+  overload: Innovt.Core.Test.ExtensionsTests.CheckRemoveAccents*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+- uid: Innovt.Core.Test.ExtensionsTests.CheckHasSpecialCharacter
+  commentId: M:Innovt.Core.Test.ExtensionsTests.CheckHasSpecialCharacter
+  id: CheckHasSpecialCharacter
+  parent: Innovt.Core.Test.ExtensionsTests
+  langs:
+  - csharp
+  - vb
+  name: CheckHasSpecialCharacter()
+  nameWithType: ExtensionsTests.CheckHasSpecialCharacter()
+  fullName: Innovt.Core.Test.ExtensionsTests.CheckHasSpecialCharacter()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core.Test/ExtensionsTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: CheckHasSpecialCharacter
+    path: ../src/Innovt.Core.Test/ExtensionsTests.cs
+    startLine: 30
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: >-
+      [Test]
+
+      public void CheckHasSpecialCharacter()
+    content.vb: >-
+      <Test>
+
+      Public Sub CheckHasSpecialCharacter()
+  overload: Innovt.Core.Test.ExtensionsTests.CheckHasSpecialCharacter*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+- uid: Innovt.Core.Test.ExtensionsTests.PagedCollectionMapShouldReturnEmptyListWhenArrayIsNull
+  commentId: M:Innovt.Core.Test.ExtensionsTests.PagedCollectionMapShouldReturnEmptyListWhenArrayIsNull
+  id: PagedCollectionMapShouldReturnEmptyListWhenArrayIsNull
+  parent: Innovt.Core.Test.ExtensionsTests
+  langs:
+  - csharp
+  - vb
+  name: PagedCollectionMapShouldReturnEmptyListWhenArrayIsNull()
+  nameWithType: ExtensionsTests.PagedCollectionMapShouldReturnEmptyListWhenArrayIsNull()
+  fullName: Innovt.Core.Test.ExtensionsTests.PagedCollectionMapShouldReturnEmptyListWhenArrayIsNull()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core.Test/ExtensionsTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: PagedCollectionMapShouldReturnEmptyListWhenArrayIsNull
+    path: ../src/Innovt.Core.Test/ExtensionsTests.cs
+    startLine: 40
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: >-
+      [Test]
+
+      public void PagedCollectionMapShouldReturnEmptyListWhenArrayIsNull()
+    content.vb: >-
+      <Test>
+
+      Public Sub PagedCollectionMapShouldReturnEmptyListWhenArrayIsNull()
+  overload: Innovt.Core.Test.ExtensionsTests.PagedCollectionMapShouldReturnEmptyListWhenArrayIsNull*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+- uid: Innovt.Core.Test.ExtensionsTests.PagedCollectionMap
+  commentId: M:Innovt.Core.Test.ExtensionsTests.PagedCollectionMap
+  id: PagedCollectionMap
+  parent: Innovt.Core.Test.ExtensionsTests
+  langs:
+  - csharp
+  - vb
+  name: PagedCollectionMap()
+  nameWithType: ExtensionsTests.PagedCollectionMap()
+  fullName: Innovt.Core.Test.ExtensionsTests.PagedCollectionMap()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core.Test/ExtensionsTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: PagedCollectionMap
+    path: ../src/Innovt.Core.Test/ExtensionsTests.cs
+    startLine: 51
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: >-
+      [Test]
+
+      public void PagedCollectionMap()
+    content.vb: >-
+      <Test>
+
+      Public Sub PagedCollectionMap()
+  overload: Innovt.Core.Test.ExtensionsTests.PagedCollectionMap*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+- uid: Innovt.Core.Test.ExtensionsTests.ConvertDateTimeBetweenTimeZones
+  commentId: M:Innovt.Core.Test.ExtensionsTests.ConvertDateTimeBetweenTimeZones
+  id: ConvertDateTimeBetweenTimeZones
+  parent: Innovt.Core.Test.ExtensionsTests
+  langs:
+  - csharp
+  - vb
+  name: ConvertDateTimeBetweenTimeZones()
+  nameWithType: ExtensionsTests.ConvertDateTimeBetweenTimeZones()
+  fullName: Innovt.Core.Test.ExtensionsTests.ConvertDateTimeBetweenTimeZones()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core.Test/ExtensionsTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ConvertDateTimeBetweenTimeZones
+    path: ../src/Innovt.Core.Test/ExtensionsTests.cs
+    startLine: 91
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: >-
+      [Test]
+
+      public void ConvertDateTimeBetweenTimeZones()
+    content.vb: >-
+      <Test>
+
+      Public Sub ConvertDateTimeBetweenTimeZones()
+  overload: Innovt.Core.Test.ExtensionsTests.ConvertDateTimeBetweenTimeZones*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+- uid: Innovt.Core.Test.ExtensionsTests.ConvertDateTimeOffSetBetweenTimeZones
+  commentId: M:Innovt.Core.Test.ExtensionsTests.ConvertDateTimeOffSetBetweenTimeZones
+  id: ConvertDateTimeOffSetBetweenTimeZones
+  parent: Innovt.Core.Test.ExtensionsTests
+  langs:
+  - csharp
+  - vb
+  name: ConvertDateTimeOffSetBetweenTimeZones()
+  nameWithType: ExtensionsTests.ConvertDateTimeOffSetBetweenTimeZones()
+  fullName: Innovt.Core.Test.ExtensionsTests.ConvertDateTimeOffSetBetweenTimeZones()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core.Test/ExtensionsTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ConvertDateTimeOffSetBetweenTimeZones
+    path: ../src/Innovt.Core.Test/ExtensionsTests.cs
+    startLine: 104
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: >-
+      [Test]
+
+      public void ConvertDateTimeOffSetBetweenTimeZones()
+    content.vb: >-
+      <Test>
+
+      Public Sub ConvertDateTimeOffSetBetweenTimeZones()
+  overload: Innovt.Core.Test.ExtensionsTests.ConvertDateTimeOffSetBetweenTimeZones*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+references:
+- uid: Innovt.Core.Test
+  commentId: N:Innovt.Core.Test
+  href: Innovt.html
+  name: Innovt.Core.Test
+  nameWithType: Innovt.Core.Test
+  fullName: Innovt.Core.Test
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Test
+    name: Test
+    href: Innovt.Core.Test.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Test
+    name: Test
+    href: Innovt.Core.Test.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Core.Test.ExtensionsTests.CheckRemoveAccents*
+  commentId: Overload:Innovt.Core.Test.ExtensionsTests.CheckRemoveAccents
+  href: Innovt.Core.Test.ExtensionsTests.html#Innovt_Core_Test_ExtensionsTests_CheckRemoveAccents
+  name: CheckRemoveAccents
+  nameWithType: ExtensionsTests.CheckRemoveAccents
+  fullName: Innovt.Core.Test.ExtensionsTests.CheckRemoveAccents
+- uid: Innovt.Core.Test.ExtensionsTests.CheckHasSpecialCharacter*
+  commentId: Overload:Innovt.Core.Test.ExtensionsTests.CheckHasSpecialCharacter
+  href: Innovt.Core.Test.ExtensionsTests.html#Innovt_Core_Test_ExtensionsTests_CheckHasSpecialCharacter
+  name: CheckHasSpecialCharacter
+  nameWithType: ExtensionsTests.CheckHasSpecialCharacter
+  fullName: Innovt.Core.Test.ExtensionsTests.CheckHasSpecialCharacter
+- uid: Innovt.Core.Test.ExtensionsTests.PagedCollectionMapShouldReturnEmptyListWhenArrayIsNull*
+  commentId: Overload:Innovt.Core.Test.ExtensionsTests.PagedCollectionMapShouldReturnEmptyListWhenArrayIsNull
+  href: Innovt.Core.Test.ExtensionsTests.html#Innovt_Core_Test_ExtensionsTests_PagedCollectionMapShouldReturnEmptyListWhenArrayIsNull
+  name: PagedCollectionMapShouldReturnEmptyListWhenArrayIsNull
+  nameWithType: ExtensionsTests.PagedCollectionMapShouldReturnEmptyListWhenArrayIsNull
+  fullName: Innovt.Core.Test.ExtensionsTests.PagedCollectionMapShouldReturnEmptyListWhenArrayIsNull
+- uid: Innovt.Core.Test.ExtensionsTests.PagedCollectionMap*
+  commentId: Overload:Innovt.Core.Test.ExtensionsTests.PagedCollectionMap
+  href: Innovt.Core.Test.ExtensionsTests.html#Innovt_Core_Test_ExtensionsTests_PagedCollectionMap
+  name: PagedCollectionMap
+  nameWithType: ExtensionsTests.PagedCollectionMap
+  fullName: Innovt.Core.Test.ExtensionsTests.PagedCollectionMap
+- uid: Innovt.Core.Test.ExtensionsTests.ConvertDateTimeBetweenTimeZones*
+  commentId: Overload:Innovt.Core.Test.ExtensionsTests.ConvertDateTimeBetweenTimeZones
+  href: Innovt.Core.Test.ExtensionsTests.html#Innovt_Core_Test_ExtensionsTests_ConvertDateTimeBetweenTimeZones
+  name: ConvertDateTimeBetweenTimeZones
+  nameWithType: ExtensionsTests.ConvertDateTimeBetweenTimeZones
+  fullName: Innovt.Core.Test.ExtensionsTests.ConvertDateTimeBetweenTimeZones
+- uid: Innovt.Core.Test.ExtensionsTests.ConvertDateTimeOffSetBetweenTimeZones*
+  commentId: Overload:Innovt.Core.Test.ExtensionsTests.ConvertDateTimeOffSetBetweenTimeZones
+  href: Innovt.Core.Test.ExtensionsTests.html#Innovt_Core_Test_ExtensionsTests_ConvertDateTimeOffSetBetweenTimeZones
+  name: ConvertDateTimeOffSetBetweenTimeZones
+  nameWithType: ExtensionsTests.ConvertDateTimeOffSetBetweenTimeZones
+  fullName: Innovt.Core.Test.ExtensionsTests.ConvertDateTimeOffSetBetweenTimeZones

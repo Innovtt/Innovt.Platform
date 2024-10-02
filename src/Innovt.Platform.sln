@@ -73,8 +73,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".tests", ".tests", "{B9D67F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Cloud.AWS.Dynamo.Tests", "Innovt.Cloud.AWS.Dynamo.Tests\Innovt.Cloud.AWS.Dynamo.Tests.csproj", "{B2305000-D0E2-4514-B792-BE05908BA10A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{20C03968-5CA7-4B66-BCAC-2549FCE7DA48}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AspNet", "AspNet", "{E4691D09-94FB-47D1-9EBA-550A6649178C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innovt.Cloud.AWS.Lambda.CustomRuntime", "Innovt.Cloud.AWS.Lambda.CustomRuntime\Innovt.Cloud.AWS.Lambda.CustomRuntime.csproj", "{59F66B5A-E0B0-41E7-BB2E-8263A094DCC8}"

@@ -143,7 +143,7 @@ public abstract class DBContextBase : DbContext, IExtendedUnitOfWork
     ///     Removes an entity from the DbContext.
     /// </summary>
     /// <typeparam name="T">The type of entity to remove.</typeparam>
-    /// <param name="entity">The entity to remove.</param
+    /// <param name="entity">The entity to remove.</param>
     public new void Remove<T>(T entity) where T : class
     {
         base.Remove(entity);

@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Core.Serialization.Converters
+  commentId: N:Innovt.Core.Serialization.Converters
+  id: Innovt.Core.Serialization.Converters
+  children:
+  - Innovt.Core.Serialization.Converters.DateTimeConverter
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Core.Serialization.Converters
+  nameWithType: Innovt.Core.Serialization.Converters
+  fullName: Innovt.Core.Serialization.Converters
+  type: Namespace
+  assemblies:
+  - Innovt.Core
+references:
+- uid: Innovt.Core.Serialization.Converters.DateTimeConverter
+  commentId: T:Innovt.Core.Serialization.Converters.DateTimeConverter
+  href: Innovt.Core.Serialization.Converters.DateTimeConverter.html
+  name: DateTimeConverter
+  nameWithType: DateTimeConverter
+  fullName: Innovt.Core.Serialization.Converters.DateTimeConverter

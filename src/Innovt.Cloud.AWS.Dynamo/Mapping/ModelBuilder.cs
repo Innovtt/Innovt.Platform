@@ -19,8 +19,8 @@ public class ModelBuilder
         var entityTypeBuilder = new EntityTypeBuilder<T>();
 
         entityTypeDataModelMapper.Configure(entityTypeBuilder);
-
-        Entities.TryAdd(typeof(T).Name, entityTypeBuilder);
+        
+        AddTypeBuilder(entityTypeBuilder);
 
         return this;
     }
@@ -35,10 +35,27 @@ public class ModelBuilder
 
         return this;
     }
-
+    
     public EntityTypeBuilder<TEntity> Entity<TEntity>() where TEntity : class
     {
-        var entityTypeBuilder = new EntityTypeBuilder<TEntity>();
+        return AddTypeBuilder<TEntity>();
+    }
+    
+    /// <summary>
+    /// Manage the EntityTypeBuilder creation for each entity.
+    /// </summary>
+    /// <param name="entityTypeBuilder"></param>
+    /// <typeparam name="TEntity"></typeparam>
+    /// <returns></returns>
+    private EntityTypeBuilder<TEntity> AddTypeBuilder<TEntity>(EntityTypeBuilder<TEntity> entityTypeBuilder=null) where TEntity : class
+    {
+        var entityName = typeof(TEntity).Name;
+        
+        if (Entities.TryGetValue(entityName, out var entity))
+            return (EntityTypeBuilder<TEntity>) entity;
+        
+        //Initialize the entityTypeBuilder if it is null
+        entityTypeBuilder ??= new EntityTypeBuilder<TEntity>();
 
         Entities.TryAdd(typeof(TEntity).Name, entityTypeBuilder);
 

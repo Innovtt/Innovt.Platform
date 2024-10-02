@@ -143,7 +143,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         CancellationToken cancellationToken = default)
     {
         Check.NotNull(command, nameof(command));
-        
+
         command.EnsureIsValid();
 
         var parameters = new Dictionary<string, string> { { "PASSWORD", command.Password } };
@@ -1120,7 +1120,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         Dictionary<string, string> authParameters = null, CancellationToken cancellationToken = default)
     {
         Check.NotNull(request, nameof(request));
-        
+
         using var activity = CognitoIdentityProviderActivitySource.StartActivity();
         activity?.SetTag("UserName", request.UserName);
 
@@ -1142,7 +1142,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
                 authRequest.AuthParameters.Add(key, value);
 
         try
-        {   
+        {
             var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                     await CognitoProvider.InitiateAuthAsync(authRequest, cancellationToken)
                         .ConfigureAwait(false))

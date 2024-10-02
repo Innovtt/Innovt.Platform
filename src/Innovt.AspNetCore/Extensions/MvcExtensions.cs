@@ -62,7 +62,7 @@ public static class MvcExtensions
 
         return app.Use(async (context, next) =>
         {
-            context.Request.Headers.Add(Constants.HeaderApplicationScope, scope);
+            context.Request.Headers.Append(Constants.HeaderApplicationScope, scope);
             await next().ConfigureAwait(false);
         });
     }

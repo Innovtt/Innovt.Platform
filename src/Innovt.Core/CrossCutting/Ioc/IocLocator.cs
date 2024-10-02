@@ -17,7 +17,7 @@ namespace Innovt.Core.CrossCutting.Ioc;
 ///     This static class acts as a locator for resolving services and managing dependency injection containers.
 ///     It provides methods for initializing the container, resolving services, adding modules, releasing resources,
 ///     creating service scopes, and checking container configuration.
-/// </remarks
+/// </remarks>
 public static class IocLocator
 {
     private static IContainer container;

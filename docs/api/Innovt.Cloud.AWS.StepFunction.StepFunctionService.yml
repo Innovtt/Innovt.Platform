@@ -1,0 +1,1895 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.StepFunction.StepFunctionService
+  commentId: T:Innovt.Cloud.AWS.StepFunction.StepFunctionService
+  id: StepFunctionService
+  parent: Innovt.Cloud.AWS.StepFunction
+  children:
+  - Innovt.Cloud.AWS.StepFunction.StepFunctionService.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration)
+  - Innovt.Cloud.AWS.StepFunction.StepFunctionService.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String)
+  - Innovt.Cloud.AWS.StepFunction.StepFunctionService.DisposeServices
+  - Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskFailure(System.String,System.String,System.String,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskHeartbeat(System.String,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskSuccess(System.String,System.Object,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.StepFunction.StepFunctionService.StartExecution(System.Object,System.String,System.String,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: StepFunctionService
+  nameWithType: StepFunctionService
+  fullName: Innovt.Cloud.AWS.StepFunction.StepFunctionService
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.StepFunction/StepFunctionService.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: StepFunctionService
+    path: ../src/Innovt.Cloud.AWS.StepFunction/StepFunctionService.cs
+    startLine: 20
+  assemblies:
+  - Innovt.Cloud.AWS.StepFunction
+  namespace: Innovt.Cloud.AWS.StepFunction
+  summary: Represents a service for interacting with AWS Step Functions.
+  example: []
+  syntax:
+    content: 'public class StepFunctionService : AwsBaseService, IDisposable, IStateMachine'
+    content.vb: Public Class StepFunctionService Inherits AwsBaseService Implements IDisposable, IStateMachine
+  inheritance:
+  - System.Object
+  - Innovt.Cloud.AWS.AwsBaseService
+  implements:
+  - System.IDisposable
+  - Innovt.Cloud.StateMachine.IStateMachine
+  inheritedMembers:
+  - Innovt.Cloud.AWS.AwsBaseService.Configuration
+  - Innovt.Cloud.AWS.AwsBaseService.RetryCount
+  - Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerAllowedExceptions
+  - Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerDurationOfBreak
+  - Innovt.Cloud.AWS.AwsBaseService.Logger
+  - Innovt.Cloud.AWS.AwsBaseService.Dispose
+  - Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+  - Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+  - Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryAsyncPolicy
+  - Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+  - Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+  - Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+- uid: Innovt.Cloud.AWS.StepFunction.StepFunctionService.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration)
+  commentId: M:Innovt.Cloud.AWS.StepFunction.StepFunctionService.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration)
+  id: '#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration)'
+  parent: Innovt.Cloud.AWS.StepFunction.StepFunctionService
+  langs:
+  - csharp
+  - vb
+  name: StepFunctionService(ILogger, IAwsConfiguration)
+  nameWithType: StepFunctionService.StepFunctionService(ILogger, IAwsConfiguration)
+  fullName: Innovt.Cloud.AWS.StepFunction.StepFunctionService.StepFunctionService(Innovt.Core.CrossCutting.Log.ILogger, Innovt.Cloud.AWS.Configuration.IAwsConfiguration)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.StepFunction/StepFunctionService.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: ../src/Innovt.Cloud.AWS.StepFunction/StepFunctionService.cs
+    startLine: 31
+  assemblies:
+  - Innovt.Cloud.AWS.StepFunction
+  namespace: Innovt.Cloud.AWS.StepFunction
+  summary: Initializes a new instance of the StepFunctionService class.
+  example: []
+  syntax:
+    content: public StepFunctionService(ILogger logger, IAwsConfiguration configuration)
+    parameters:
+    - id: logger
+      type: Innovt.Core.CrossCutting.Log.ILogger
+      description: The logger instance.
+    - id: configuration
+      type: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+      description: The AWS configuration instance.
+    content.vb: Public Sub New(logger As ILogger, configuration As IAwsConfiguration)
+  overload: Innovt.Cloud.AWS.StepFunction.StepFunctionService.#ctor*
+  nameWithType.vb: StepFunctionService.New(ILogger, IAwsConfiguration)
+  fullName.vb: Innovt.Cloud.AWS.StepFunction.StepFunctionService.New(Innovt.Core.CrossCutting.Log.ILogger, Innovt.Cloud.AWS.Configuration.IAwsConfiguration)
+  name.vb: New(ILogger, IAwsConfiguration)
+- uid: Innovt.Cloud.AWS.StepFunction.StepFunctionService.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String)
+  commentId: M:Innovt.Cloud.AWS.StepFunction.StepFunctionService.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String)
+  id: '#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String)'
+  parent: Innovt.Cloud.AWS.StepFunction.StepFunctionService
+  langs:
+  - csharp
+  - vb
+  name: StepFunctionService(ILogger, IAwsConfiguration, string)
+  nameWithType: StepFunctionService.StepFunctionService(ILogger, IAwsConfiguration, string)
+  fullName: Innovt.Cloud.AWS.StepFunction.StepFunctionService.StepFunctionService(Innovt.Core.CrossCutting.Log.ILogger, Innovt.Cloud.AWS.Configuration.IAwsConfiguration, string)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.StepFunction/StepFunctionService.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: ../src/Innovt.Cloud.AWS.StepFunction/StepFunctionService.cs
+    startLine: 41
+  assemblies:
+  - Innovt.Cloud.AWS.StepFunction
+  namespace: Innovt.Cloud.AWS.StepFunction
+  summary: Initializes a new instance of the StepFunctionService class with a specific region.
+  example: []
+  syntax:
+    content: public StepFunctionService(ILogger logger, IAwsConfiguration configuration, string region)
+    parameters:
+    - id: logger
+      type: Innovt.Core.CrossCutting.Log.ILogger
+      description: The logger instance.
+    - id: configuration
+      type: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+      description: The AWS configuration instance.
+    - id: region
+      type: System.String
+      description: The AWS region.
+    content.vb: Public Sub New(logger As ILogger, configuration As IAwsConfiguration, region As String)
+  overload: Innovt.Cloud.AWS.StepFunction.StepFunctionService.#ctor*
+  nameWithType.vb: StepFunctionService.New(ILogger, IAwsConfiguration, String)
+  fullName.vb: Innovt.Cloud.AWS.StepFunction.StepFunctionService.New(Innovt.Core.CrossCutting.Log.ILogger, Innovt.Cloud.AWS.Configuration.IAwsConfiguration, String)
+  name.vb: New(ILogger, IAwsConfiguration, String)
+- uid: Innovt.Cloud.AWS.StepFunction.StepFunctionService.StartExecution(System.Object,System.String,System.String,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.StepFunction.StepFunctionService.StartExecution(System.Object,System.String,System.String,System.Threading.CancellationToken)
+  id: StartExecution(System.Object,System.String,System.String,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.StepFunction.StepFunctionService
+  langs:
+  - csharp
+  - vb
+  name: StartExecution(object, string, string, CancellationToken)
+  nameWithType: StepFunctionService.StartExecution(object, string, string, CancellationToken)
+  fullName: Innovt.Cloud.AWS.StepFunction.StepFunctionService.StartExecution(object, string, string, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.StepFunction/StepFunctionService.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: StartExecution
+    path: ../src/Innovt.Cloud.AWS.StepFunction/StepFunctionService.cs
+    startLine: 59
+  assemblies:
+  - Innovt.Cloud.AWS.StepFunction
+  namespace: Innovt.Cloud.AWS.StepFunction
+  summary: Starts the execution of a state machine.
+  example: []
+  syntax:
+    content: public Task StartExecution(object input, string stateMachineArn, string executionId, CancellationToken cancellationToken)
+    parameters:
+    - id: input
+      type: System.Object
+      description: The input for the execution.
+    - id: stateMachineArn
+      type: System.String
+      description: The ARN of the state machine.
+    - id: executionId
+      type: System.String
+      description: The execution ID.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task representing the asynchronous operation.
+    content.vb: Public Function StartExecution(input As Object, stateMachineArn As String, executionId As String, cancellationToken As CancellationToken) As Task
+  overload: Innovt.Cloud.AWS.StepFunction.StepFunctionService.StartExecution*
+  implements:
+  - Innovt.Cloud.StateMachine.IStateMachine.StartExecution(System.Object,System.String,System.String,System.Threading.CancellationToken)
+  nameWithType.vb: StepFunctionService.StartExecution(Object, String, String, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.StepFunction.StepFunctionService.StartExecution(Object, String, String, System.Threading.CancellationToken)
+  name.vb: StartExecution(Object, String, String, CancellationToken)
+- uid: Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskSuccess(System.String,System.Object,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskSuccess(System.String,System.Object,System.Threading.CancellationToken)
+  id: SendTaskSuccess(System.String,System.Object,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.StepFunction.StepFunctionService
+  langs:
+  - csharp
+  - vb
+  name: SendTaskSuccess(string, object, CancellationToken)
+  nameWithType: StepFunctionService.SendTaskSuccess(string, object, CancellationToken)
+  fullName: Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskSuccess(string, object, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.StepFunction/StepFunctionService.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: SendTaskSuccess
+    path: ../src/Innovt.Cloud.AWS.StepFunction/StepFunctionService.cs
+    startLine: 89
+  assemblies:
+  - Innovt.Cloud.AWS.StepFunction
+  namespace: Innovt.Cloud.AWS.StepFunction
+  summary: Sends a success response for a task in the state machine.
+  example: []
+  syntax:
+    content: public Task SendTaskSuccess(string taskToken, object output, CancellationToken cancellationToken)
+    parameters:
+    - id: taskToken
+      type: System.String
+      description: The token for the task.
+    - id: output
+      type: System.Object
+      description: The output of the task.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task representing the asynchronous operation.
+    content.vb: Public Function SendTaskSuccess(taskToken As String, output As Object, cancellationToken As CancellationToken) As Task
+  overload: Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskSuccess*
+  implements:
+  - Innovt.Cloud.StateMachine.IStateMachine.SendTaskSuccess(System.String,System.Object,System.Threading.CancellationToken)
+  nameWithType.vb: StepFunctionService.SendTaskSuccess(String, Object, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskSuccess(String, Object, System.Threading.CancellationToken)
+  name.vb: SendTaskSuccess(String, Object, CancellationToken)
+- uid: Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskFailure(System.String,System.String,System.String,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskFailure(System.String,System.String,System.String,System.Threading.CancellationToken)
+  id: SendTaskFailure(System.String,System.String,System.String,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.StepFunction.StepFunctionService
+  langs:
+  - csharp
+  - vb
+  name: SendTaskFailure(string, string, string, CancellationToken)
+  nameWithType: StepFunctionService.SendTaskFailure(string, string, string, CancellationToken)
+  fullName: Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskFailure(string, string, string, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.StepFunction/StepFunctionService.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: SendTaskFailure
+    path: ../src/Innovt.Cloud.AWS.StepFunction/StepFunctionService.cs
+    startLine: 116
+  assemblies:
+  - Innovt.Cloud.AWS.StepFunction
+  namespace: Innovt.Cloud.AWS.StepFunction
+  summary: Sends a failure response for a task in the state machine.
+  example: []
+  syntax:
+    content: public Task SendTaskFailure(string taskToken, string reason, string taskError, CancellationToken cancellationToken)
+    parameters:
+    - id: taskToken
+      type: System.String
+      description: The token for the task.
+    - id: reason
+      type: System.String
+      description: The reason for the failure.
+    - id: taskError
+      type: System.String
+      description: The error associated with the failure.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task representing the asynchronous operation.
+    content.vb: Public Function SendTaskFailure(taskToken As String, reason As String, taskError As String, cancellationToken As CancellationToken) As Task
+  overload: Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskFailure*
+  implements:
+  - Innovt.Cloud.StateMachine.IStateMachine.SendTaskFailure(System.String,System.String,System.String,System.Threading.CancellationToken)
+  nameWithType.vb: StepFunctionService.SendTaskFailure(String, String, String, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskFailure(String, String, String, System.Threading.CancellationToken)
+  name.vb: SendTaskFailure(String, String, String, CancellationToken)
+- uid: Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskHeartbeat(System.String,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskHeartbeat(System.String,System.Threading.CancellationToken)
+  id: SendTaskHeartbeat(System.String,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.StepFunction.StepFunctionService
+  langs:
+  - csharp
+  - vb
+  name: SendTaskHeartbeat(string, CancellationToken)
+  nameWithType: StepFunctionService.SendTaskHeartbeat(string, CancellationToken)
+  fullName: Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskHeartbeat(string, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.StepFunction/StepFunctionService.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: SendTaskHeartbeat
+    path: ../src/Innovt.Cloud.AWS.StepFunction/StepFunctionService.cs
+    startLine: 143
+  assemblies:
+  - Innovt.Cloud.AWS.StepFunction
+  namespace: Innovt.Cloud.AWS.StepFunction
+  summary: Sends a heartbeat for a task in the state machine.
+  example: []
+  syntax:
+    content: public Task SendTaskHeartbeat(string taskToken, CancellationToken cancellationToken)
+    parameters:
+    - id: taskToken
+      type: System.String
+      description: The token for the task.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task representing the asynchronous operation.
+    content.vb: Public Function SendTaskHeartbeat(taskToken As String, cancellationToken As CancellationToken) As Task
+  overload: Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskHeartbeat*
+  implements:
+  - Innovt.Cloud.StateMachine.IStateMachine.SendTaskHeartbeat(System.String,System.Threading.CancellationToken)
+  nameWithType.vb: StepFunctionService.SendTaskHeartbeat(String, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskHeartbeat(String, System.Threading.CancellationToken)
+  name.vb: SendTaskHeartbeat(String, CancellationToken)
+- uid: Innovt.Cloud.AWS.StepFunction.StepFunctionService.DisposeServices
+  commentId: M:Innovt.Cloud.AWS.StepFunction.StepFunctionService.DisposeServices
+  id: DisposeServices
+  parent: Innovt.Cloud.AWS.StepFunction.StepFunctionService
+  langs:
+  - csharp
+  - vb
+  name: DisposeServices()
+  nameWithType: StepFunctionService.DisposeServices()
+  fullName: Innovt.Cloud.AWS.StepFunction.StepFunctionService.DisposeServices()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.StepFunction/StepFunctionService.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: DisposeServices
+    path: ../src/Innovt.Cloud.AWS.StepFunction/StepFunctionService.cs
+    startLine: 163
+  assemblies:
+  - Innovt.Cloud.AWS.StepFunction
+  namespace: Innovt.Cloud.AWS.StepFunction
+  summary: Disposes of the Amazon Step Functions client.
+  example: []
+  syntax:
+    content: protected override void DisposeServices()
+    content.vb: Protected Overrides Sub DisposeServices()
+  overridden: Innovt.Cloud.AWS.AwsBaseService.DisposeServices
+  overload: Innovt.Cloud.AWS.StepFunction.StepFunctionService.DisposeServices*
+references:
+- uid: Innovt.Cloud.AWS.StepFunction
+  commentId: N:Innovt.Cloud.AWS.StepFunction
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.StepFunction
+  nameWithType: Innovt.Cloud.AWS.StepFunction
+  fullName: Innovt.Cloud.AWS.StepFunction
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.StepFunction
+    name: StepFunction
+    href: Innovt.Cloud.AWS.StepFunction.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.StepFunction
+    name: StepFunction
+    href: Innovt.Cloud.AWS.StepFunction.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Innovt.Cloud.AWS.AwsBaseService
+  commentId: T:Innovt.Cloud.AWS.AwsBaseService
+  parent: Innovt.Cloud.AWS
+  href: Innovt.Cloud.AWS.AwsBaseService.html
+  name: AwsBaseService
+  nameWithType: AwsBaseService
+  fullName: Innovt.Cloud.AWS.AwsBaseService
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Innovt.Cloud.StateMachine.IStateMachine
+  commentId: T:Innovt.Cloud.StateMachine.IStateMachine
+  parent: Innovt.Cloud.StateMachine
+  href: Innovt.Cloud.StateMachine.IStateMachine.html
+  name: IStateMachine
+  nameWithType: IStateMachine
+  fullName: Innovt.Cloud.StateMachine.IStateMachine
+- uid: Innovt.Cloud.AWS.AwsBaseService.Configuration
+  commentId: F:Innovt.Cloud.AWS.AwsBaseService.Configuration
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Configuration
+  name: Configuration
+  nameWithType: AwsBaseService.Configuration
+  fullName: Innovt.Cloud.AWS.AwsBaseService.Configuration
+- uid: Innovt.Cloud.AWS.AwsBaseService.RetryCount
+  commentId: P:Innovt.Cloud.AWS.AwsBaseService.RetryCount
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_RetryCount
+  name: RetryCount
+  nameWithType: AwsBaseService.RetryCount
+  fullName: Innovt.Cloud.AWS.AwsBaseService.RetryCount
+- uid: Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerAllowedExceptions
+  commentId: P:Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerAllowedExceptions
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CircuitBreakerAllowedExceptions
+  name: CircuitBreakerAllowedExceptions
+  nameWithType: AwsBaseService.CircuitBreakerAllowedExceptions
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerAllowedExceptions
+- uid: Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerDurationOfBreak
+  commentId: P:Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerDurationOfBreak
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CircuitBreakerDurationOfBreak
+  name: CircuitBreakerDurationOfBreak
+  nameWithType: AwsBaseService.CircuitBreakerDurationOfBreak
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerDurationOfBreak
+- uid: Innovt.Cloud.AWS.AwsBaseService.Logger
+  commentId: P:Innovt.Cloud.AWS.AwsBaseService.Logger
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Logger
+  name: Logger
+  nameWithType: AwsBaseService.Logger
+  fullName: Innovt.Cloud.AWS.AwsBaseService.Logger
+- uid: Innovt.Cloud.AWS.AwsBaseService.Dispose
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.Dispose
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose
+  name: Dispose()
+  nameWithType: AwsBaseService.Dispose()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.Dispose()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.Dispose
+    name: Dispose
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.Dispose
+    name: Dispose
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_GetServiceRegionEndPoint
+  name: GetServiceRegionEndPoint()
+  nameWithType: AwsBaseService.GetServiceRegionEndPoint()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+    name: GetServiceRegionEndPoint
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_GetServiceRegionEndPoint
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+    name: GetServiceRegionEndPoint
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_GetServiceRegionEndPoint
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateService__1
+  name: CreateService<T>()
+  nameWithType: AwsBaseService.CreateService<T>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateService<T>()
+  nameWithType.vb: AwsBaseService.CreateService(Of T)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateService(Of T)()
+  name.vb: CreateService(Of T)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+    name: CreateService
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateService__1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+    name: CreateService
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateService__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryAsyncPolicy
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryAsyncPolicy
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryAsyncPolicy
+  name: CreateDefaultRetryAsyncPolicy()
+  nameWithType: AwsBaseService.CreateDefaultRetryAsyncPolicy()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryAsyncPolicy()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryAsyncPolicy
+    name: CreateDefaultRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryAsyncPolicy
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryAsyncPolicy
+    name: CreateDefaultRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryAsyncPolicy
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryPolicy
+  name: CreateDefaultRetryPolicy()
+  nameWithType: AwsBaseService.CreateDefaultRetryPolicy()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+    name: CreateDefaultRetryPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryPolicy
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+    name: CreateDefaultRetryPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryPolicy
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__1
+  name: CreateRetryAsyncPolicy<T>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T)()
+  name.vb: CreateRetryAsyncPolicy(Of T)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__2
+  name: CreateRetryAsyncPolicy<T, T1>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T, T1>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T, T1>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T, T1)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T, T1)()
+  name.vb: CreateRetryAsyncPolicy(Of T, T1)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__3
+  name: CreateRetryAsyncPolicy<T, T1, T2>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2)()
+  name.vb: CreateRetryAsyncPolicy(Of T, T1, T2)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__3
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__3
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__4
+  name: CreateRetryAsyncPolicy<T, T1, T2, T3>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2, T3>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2, T3>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2, T3)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2, T3)()
+  name.vb: CreateRetryAsyncPolicy(Of T, T1, T2, T3)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__4
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__4
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__5
+  name: CreateRetryAsyncPolicy<T, T1, T2, T3, T4>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2, T3, T4>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2, T3, T4>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2, T3, T4)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2, T3, T4)()
+  name.vb: CreateRetryAsyncPolicy(Of T, T1, T2, T3, T4)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__5
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__5
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateCircuitBreaker__2
+  name: CreateCircuitBreaker<T, T1>()
+  nameWithType: AwsBaseService.CreateCircuitBreaker<T, T1>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker<T, T1>()
+  nameWithType.vb: AwsBaseService.CreateCircuitBreaker(Of T, T1)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker(Of T, T1)()
+  name.vb: CreateCircuitBreaker(Of T, T1)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+    name: CreateCircuitBreaker
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateCircuitBreaker__2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+    name: CreateCircuitBreaker
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateCircuitBreaker__2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  isExternal: true
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose_System_Boolean_
+  name: Dispose(bool)
+  nameWithType: AwsBaseService.Dispose(bool)
+  fullName: Innovt.Cloud.AWS.AwsBaseService.Dispose(bool)
+  nameWithType.vb: AwsBaseService.Dispose(Boolean)
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+    name: Dispose
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+    name: Dispose
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Cloud.AWS
+  commentId: N:Innovt.Cloud.AWS
+  href: Innovt.html
+  name: Innovt.Cloud.AWS
+  nameWithType: Innovt.Cloud.AWS
+  fullName: Innovt.Cloud.AWS
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+- uid: Innovt.Cloud.StateMachine
+  commentId: N:Innovt.Cloud.StateMachine
+  href: Innovt.html
+  name: Innovt.Cloud.StateMachine
+  nameWithType: Innovt.Cloud.StateMachine
+  fullName: Innovt.Cloud.StateMachine
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.StateMachine
+    name: StateMachine
+    href: Innovt.Cloud.StateMachine.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.StateMachine
+    name: StateMachine
+    href: Innovt.Cloud.StateMachine.html
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Cloud.AWS.StepFunction.StepFunctionService.#ctor*
+  commentId: Overload:Innovt.Cloud.AWS.StepFunction.StepFunctionService.#ctor
+  href: Innovt.Cloud.AWS.StepFunction.StepFunctionService.html#Innovt_Cloud_AWS_StepFunction_StepFunctionService__ctor_Innovt_Core_CrossCutting_Log_ILogger_Innovt_Cloud_AWS_Configuration_IAwsConfiguration_
+  name: StepFunctionService
+  nameWithType: StepFunctionService.StepFunctionService
+  fullName: Innovt.Cloud.AWS.StepFunction.StepFunctionService.StepFunctionService
+  nameWithType.vb: StepFunctionService.New
+  fullName.vb: Innovt.Cloud.AWS.StepFunction.StepFunctionService.New
+  name.vb: New
+- uid: Innovt.Core.CrossCutting.Log.ILogger
+  commentId: T:Innovt.Core.CrossCutting.Log.ILogger
+  parent: Innovt.Core.CrossCutting.Log
+  href: Innovt.Core.CrossCutting.Log.ILogger.html
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Innovt.Core.CrossCutting.Log.ILogger
+- uid: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+  commentId: T:Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+  parent: Innovt.Cloud.AWS.Configuration
+  href: Innovt.Cloud.AWS.Configuration.IAwsConfiguration.html
+  name: IAwsConfiguration
+  nameWithType: IAwsConfiguration
+  fullName: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+- uid: Innovt.Core.CrossCutting.Log
+  commentId: N:Innovt.Core.CrossCutting.Log
+  href: Innovt.html
+  name: Innovt.Core.CrossCutting.Log
+  nameWithType: Innovt.Core.CrossCutting.Log
+  fullName: Innovt.Core.CrossCutting.Log
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Log
+    name: Log
+    href: Innovt.Core.CrossCutting.Log.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Log
+    name: Log
+    href: Innovt.Core.CrossCutting.Log.html
+- uid: Innovt.Cloud.AWS.Configuration
+  commentId: N:Innovt.Cloud.AWS.Configuration
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Configuration
+  nameWithType: Innovt.Cloud.AWS.Configuration
+  fullName: Innovt.Cloud.AWS.Configuration
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Configuration
+    name: Configuration
+    href: Innovt.Cloud.AWS.Configuration.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Configuration
+    name: Configuration
+    href: Innovt.Cloud.AWS.Configuration.html
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Innovt.Cloud.AWS.StepFunction.StepFunctionService.StartExecution*
+  commentId: Overload:Innovt.Cloud.AWS.StepFunction.StepFunctionService.StartExecution
+  href: Innovt.Cloud.AWS.StepFunction.StepFunctionService.html#Innovt_Cloud_AWS_StepFunction_StepFunctionService_StartExecution_System_Object_System_String_System_String_System_Threading_CancellationToken_
+  name: StartExecution
+  nameWithType: StepFunctionService.StartExecution
+  fullName: Innovt.Cloud.AWS.StepFunction.StepFunctionService.StartExecution
+- uid: Innovt.Cloud.StateMachine.IStateMachine.StartExecution(System.Object,System.String,System.String,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.StateMachine.IStateMachine.StartExecution(System.Object,System.String,System.String,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.StateMachine.IStateMachine
+  isExternal: true
+  href: Innovt.Cloud.StateMachine.IStateMachine.html#Innovt_Cloud_StateMachine_IStateMachine_StartExecution_System_Object_System_String_System_String_System_Threading_CancellationToken_
+  name: StartExecution(object, string, string, CancellationToken)
+  nameWithType: IStateMachine.StartExecution(object, string, string, CancellationToken)
+  fullName: Innovt.Cloud.StateMachine.IStateMachine.StartExecution(object, string, string, System.Threading.CancellationToken)
+  nameWithType.vb: IStateMachine.StartExecution(Object, String, String, CancellationToken)
+  fullName.vb: Innovt.Cloud.StateMachine.IStateMachine.StartExecution(Object, String, String, System.Threading.CancellationToken)
+  name.vb: StartExecution(Object, String, String, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.StateMachine.IStateMachine.StartExecution(System.Object,System.String,System.String,System.Threading.CancellationToken)
+    name: StartExecution
+    href: Innovt.Cloud.StateMachine.IStateMachine.html#Innovt_Cloud_StateMachine_IStateMachine_StartExecution_System_Object_System_String_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.StateMachine.IStateMachine.StartExecution(System.Object,System.String,System.String,System.Threading.CancellationToken)
+    name: StartExecution
+    href: Innovt.Cloud.StateMachine.IStateMachine.html#Innovt_Cloud_StateMachine_IStateMachine_StartExecution_System_Object_System_String_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskSuccess*
+  commentId: Overload:Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskSuccess
+  href: Innovt.Cloud.AWS.StepFunction.StepFunctionService.html#Innovt_Cloud_AWS_StepFunction_StepFunctionService_SendTaskSuccess_System_String_System_Object_System_Threading_CancellationToken_
+  name: SendTaskSuccess
+  nameWithType: StepFunctionService.SendTaskSuccess
+  fullName: Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskSuccess
+- uid: Innovt.Cloud.StateMachine.IStateMachine.SendTaskSuccess(System.String,System.Object,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.StateMachine.IStateMachine.SendTaskSuccess(System.String,System.Object,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.StateMachine.IStateMachine
+  isExternal: true
+  href: Innovt.Cloud.StateMachine.IStateMachine.html#Innovt_Cloud_StateMachine_IStateMachine_SendTaskSuccess_System_String_System_Object_System_Threading_CancellationToken_
+  name: SendTaskSuccess(string, object, CancellationToken)
+  nameWithType: IStateMachine.SendTaskSuccess(string, object, CancellationToken)
+  fullName: Innovt.Cloud.StateMachine.IStateMachine.SendTaskSuccess(string, object, System.Threading.CancellationToken)
+  nameWithType.vb: IStateMachine.SendTaskSuccess(String, Object, CancellationToken)
+  fullName.vb: Innovt.Cloud.StateMachine.IStateMachine.SendTaskSuccess(String, Object, System.Threading.CancellationToken)
+  name.vb: SendTaskSuccess(String, Object, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.StateMachine.IStateMachine.SendTaskSuccess(System.String,System.Object,System.Threading.CancellationToken)
+    name: SendTaskSuccess
+    href: Innovt.Cloud.StateMachine.IStateMachine.html#Innovt_Cloud_StateMachine_IStateMachine_SendTaskSuccess_System_String_System_Object_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.StateMachine.IStateMachine.SendTaskSuccess(System.String,System.Object,System.Threading.CancellationToken)
+    name: SendTaskSuccess
+    href: Innovt.Cloud.StateMachine.IStateMachine.html#Innovt_Cloud_StateMachine_IStateMachine_SendTaskSuccess_System_String_System_Object_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskFailure*
+  commentId: Overload:Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskFailure
+  href: Innovt.Cloud.AWS.StepFunction.StepFunctionService.html#Innovt_Cloud_AWS_StepFunction_StepFunctionService_SendTaskFailure_System_String_System_String_System_String_System_Threading_CancellationToken_
+  name: SendTaskFailure
+  nameWithType: StepFunctionService.SendTaskFailure
+  fullName: Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskFailure
+- uid: Innovt.Cloud.StateMachine.IStateMachine.SendTaskFailure(System.String,System.String,System.String,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.StateMachine.IStateMachine.SendTaskFailure(System.String,System.String,System.String,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.StateMachine.IStateMachine
+  isExternal: true
+  href: Innovt.Cloud.StateMachine.IStateMachine.html#Innovt_Cloud_StateMachine_IStateMachine_SendTaskFailure_System_String_System_String_System_String_System_Threading_CancellationToken_
+  name: SendTaskFailure(string, string, string, CancellationToken)
+  nameWithType: IStateMachine.SendTaskFailure(string, string, string, CancellationToken)
+  fullName: Innovt.Cloud.StateMachine.IStateMachine.SendTaskFailure(string, string, string, System.Threading.CancellationToken)
+  nameWithType.vb: IStateMachine.SendTaskFailure(String, String, String, CancellationToken)
+  fullName.vb: Innovt.Cloud.StateMachine.IStateMachine.SendTaskFailure(String, String, String, System.Threading.CancellationToken)
+  name.vb: SendTaskFailure(String, String, String, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.StateMachine.IStateMachine.SendTaskFailure(System.String,System.String,System.String,System.Threading.CancellationToken)
+    name: SendTaskFailure
+    href: Innovt.Cloud.StateMachine.IStateMachine.html#Innovt_Cloud_StateMachine_IStateMachine_SendTaskFailure_System_String_System_String_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.StateMachine.IStateMachine.SendTaskFailure(System.String,System.String,System.String,System.Threading.CancellationToken)
+    name: SendTaskFailure
+    href: Innovt.Cloud.StateMachine.IStateMachine.html#Innovt_Cloud_StateMachine_IStateMachine_SendTaskFailure_System_String_System_String_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskHeartbeat*
+  commentId: Overload:Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskHeartbeat
+  href: Innovt.Cloud.AWS.StepFunction.StepFunctionService.html#Innovt_Cloud_AWS_StepFunction_StepFunctionService_SendTaskHeartbeat_System_String_System_Threading_CancellationToken_
+  name: SendTaskHeartbeat
+  nameWithType: StepFunctionService.SendTaskHeartbeat
+  fullName: Innovt.Cloud.AWS.StepFunction.StepFunctionService.SendTaskHeartbeat
+- uid: Innovt.Cloud.StateMachine.IStateMachine.SendTaskHeartbeat(System.String,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.StateMachine.IStateMachine.SendTaskHeartbeat(System.String,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.StateMachine.IStateMachine
+  isExternal: true
+  href: Innovt.Cloud.StateMachine.IStateMachine.html#Innovt_Cloud_StateMachine_IStateMachine_SendTaskHeartbeat_System_String_System_Threading_CancellationToken_
+  name: SendTaskHeartbeat(string, CancellationToken)
+  nameWithType: IStateMachine.SendTaskHeartbeat(string, CancellationToken)
+  fullName: Innovt.Cloud.StateMachine.IStateMachine.SendTaskHeartbeat(string, System.Threading.CancellationToken)
+  nameWithType.vb: IStateMachine.SendTaskHeartbeat(String, CancellationToken)
+  fullName.vb: Innovt.Cloud.StateMachine.IStateMachine.SendTaskHeartbeat(String, System.Threading.CancellationToken)
+  name.vb: SendTaskHeartbeat(String, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.StateMachine.IStateMachine.SendTaskHeartbeat(System.String,System.Threading.CancellationToken)
+    name: SendTaskHeartbeat
+    href: Innovt.Cloud.StateMachine.IStateMachine.html#Innovt_Cloud_StateMachine_IStateMachine_SendTaskHeartbeat_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.StateMachine.IStateMachine.SendTaskHeartbeat(System.String,System.Threading.CancellationToken)
+    name: SendTaskHeartbeat
+    href: Innovt.Cloud.StateMachine.IStateMachine.html#Innovt_Cloud_StateMachine_IStateMachine_SendTaskHeartbeat_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.DisposeServices
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.DisposeServices
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_DisposeServices
+  name: DisposeServices()
+  nameWithType: AwsBaseService.DisposeServices()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.DisposeServices()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.DisposeServices
+    name: DisposeServices
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_DisposeServices
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.DisposeServices
+    name: DisposeServices
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_DisposeServices
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.StepFunction.StepFunctionService.DisposeServices*
+  commentId: Overload:Innovt.Cloud.AWS.StepFunction.StepFunctionService.DisposeServices
+  href: Innovt.Cloud.AWS.StepFunction.StepFunctionService.html#Innovt_Cloud_AWS_StepFunction_StepFunctionService_DisposeServices
+  name: DisposeServices
+  nameWithType: StepFunctionService.DisposeServices
+  fullName: Innovt.Cloud.AWS.StepFunction.StepFunctionService.DisposeServices

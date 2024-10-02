@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.S3
+  commentId: N:Innovt.Cloud.AWS.S3
+  id: Innovt.Cloud.AWS.S3
+  children:
+  - Innovt.Cloud.AWS.S3.S3FileSystem
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Cloud.AWS.S3
+  nameWithType: Innovt.Cloud.AWS.S3
+  fullName: Innovt.Cloud.AWS.S3
+  type: Namespace
+  assemblies:
+  - Innovt.Cloud.AWS.S3
+references:
+- uid: Innovt.Cloud.AWS.S3.S3FileSystem
+  commentId: T:Innovt.Cloud.AWS.S3.S3FileSystem
+  href: Innovt.Cloud.AWS.S3.S3FileSystem.html
+  name: S3FileSystem
+  nameWithType: S3FileSystem
+  fullName: Innovt.Cloud.AWS.S3.S3FileSystem

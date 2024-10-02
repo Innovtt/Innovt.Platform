@@ -1,0 +1,1520 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Core.CrossCutting.Log.ILogger`1
+  commentId: T:Innovt.Core.CrossCutting.Log.ILogger`1
+  id: ILogger`1
+  parent: Innovt.Core.CrossCutting.Log
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: ILogger<T>
+  nameWithType: ILogger<T>
+  fullName: Innovt.Core.CrossCutting.Log.ILogger<T>
+  type: Interface
+  source:
+    remote:
+      path: src/Innovt.Core/CrossCutting/Log/ILogger.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ILogger
+    path: ../src/Innovt.Core/CrossCutting/Log/ILogger.cs
+    startLine: 188
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.CrossCutting.Log
+  summary: Provides a typed logging interface that inherits from <xref href="Innovt.Core.CrossCutting.Log.ILogger" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: 'public interface ILogger<T> : ILogger'
+    typeParameters:
+    - id: T
+      description: The type associated with the logger.
+    content.vb: Public Interface ILogger(Of T) Inherits ILogger
+  inheritedMembers:
+  - Innovt.Core.CrossCutting.Log.ILogger.Debug(System.String)
+  - Innovt.Core.CrossCutting.Log.ILogger.Debug(System.String,System.Object[])
+  - Innovt.Core.CrossCutting.Log.ILogger.Debug(System.Exception,System.String)
+  - Innovt.Core.CrossCutting.Log.ILogger.Debug(System.Exception,System.String,System.Object[])
+  - Innovt.Core.CrossCutting.Log.ILogger.Error(System.String)
+  - Innovt.Core.CrossCutting.Log.ILogger.Error(System.String,System.Object[])
+  - Innovt.Core.CrossCutting.Log.ILogger.Error(System.Exception,System.String)
+  - Innovt.Core.CrossCutting.Log.ILogger.Error(System.Exception,System.String,System.Object[])
+  - Innovt.Core.CrossCutting.Log.ILogger.Fatal(System.String)
+  - Innovt.Core.CrossCutting.Log.ILogger.Fatal(System.String,System.Object[])
+  - Innovt.Core.CrossCutting.Log.ILogger.Fatal(System.Exception,System.String)
+  - Innovt.Core.CrossCutting.Log.ILogger.Fatal(System.Exception,System.String,System.Object[])
+  - Innovt.Core.CrossCutting.Log.ILogger.Info(System.String)
+  - Innovt.Core.CrossCutting.Log.ILogger.Info(System.String,System.Object[])
+  - Innovt.Core.CrossCutting.Log.ILogger.Info(System.Exception,System.String)
+  - Innovt.Core.CrossCutting.Log.ILogger.Info(System.Exception,System.String,System.Object[])
+  - Innovt.Core.CrossCutting.Log.ILogger.Verbose(System.String)
+  - Innovt.Core.CrossCutting.Log.ILogger.Verbose(System.String,System.Object[])
+  - Innovt.Core.CrossCutting.Log.ILogger.Verbose(System.Exception,System.String)
+  - Innovt.Core.CrossCutting.Log.ILogger.Verbose(System.Exception,System.String,System.Object[])
+  - Innovt.Core.CrossCutting.Log.ILogger.Warning(System.String)
+  - Innovt.Core.CrossCutting.Log.ILogger.Warning(System.String,System.Object[])
+  - Innovt.Core.CrossCutting.Log.ILogger.Warning(System.Exception,System.String)
+  - Innovt.Core.CrossCutting.Log.ILogger.Warning(System.Exception,System.String,System.Object[])
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  nameWithType.vb: ILogger(Of T)
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger(Of T)
+  name.vb: ILogger(Of T)
+references:
+- uid: Innovt.Core.CrossCutting.Log.ILogger
+  commentId: T:Innovt.Core.CrossCutting.Log.ILogger
+  parent: Innovt.Core.CrossCutting.Log
+  href: Innovt.Core.CrossCutting.Log.ILogger.html
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Innovt.Core.CrossCutting.Log.ILogger
+- uid: Innovt.Core.CrossCutting.Log
+  commentId: N:Innovt.Core.CrossCutting.Log
+  href: Innovt.html
+  name: Innovt.Core.CrossCutting.Log
+  nameWithType: Innovt.Core.CrossCutting.Log
+  fullName: Innovt.Core.CrossCutting.Log
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Log
+    name: Log
+    href: Innovt.Core.CrossCutting.Log.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Log
+    name: Log
+    href: Innovt.Core.CrossCutting.Log.html
+- uid: Innovt.Core.CrossCutting.Log.ILogger.Debug(System.String)
+  commentId: M:Innovt.Core.CrossCutting.Log.ILogger.Debug(System.String)
+  parent: Innovt.Core.CrossCutting.Log.ILogger
+  isExternal: true
+  href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Debug_System_String_
+  name: Debug(string)
+  nameWithType: ILogger.Debug(string)
+  fullName: Innovt.Core.CrossCutting.Log.ILogger.Debug(string)
+  nameWithType.vb: ILogger.Debug(String)
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger.Debug(String)
+  name.vb: Debug(String)
+  spec.csharp:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Debug(System.String)
+    name: Debug
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Debug_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Debug(System.String)
+    name: Debug
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Debug_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Innovt.Core.CrossCutting.Log.ILogger.Debug(System.String,System.Object[])
+  commentId: M:Innovt.Core.CrossCutting.Log.ILogger.Debug(System.String,System.Object[])
+  parent: Innovt.Core.CrossCutting.Log.ILogger
+  isExternal: true
+  href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Debug_System_String_System_Object___
+  name: Debug(string, params object[])
+  nameWithType: ILogger.Debug(string, params object[])
+  fullName: Innovt.Core.CrossCutting.Log.ILogger.Debug(string, params object[])
+  nameWithType.vb: ILogger.Debug(String, ParamArray Object())
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger.Debug(String, ParamArray Object())
+  name.vb: Debug(String, ParamArray Object())
+  spec.csharp:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Debug(System.String,System.Object[])
+    name: Debug
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Debug_System_String_System_Object___
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Debug(System.String,System.Object[])
+    name: Debug
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Debug_System_String_System_Object___
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: )
+- uid: Innovt.Core.CrossCutting.Log.ILogger.Debug(System.Exception,System.String)
+  commentId: M:Innovt.Core.CrossCutting.Log.ILogger.Debug(System.Exception,System.String)
+  parent: Innovt.Core.CrossCutting.Log.ILogger
+  isExternal: true
+  href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Debug_System_Exception_System_String_
+  name: Debug(Exception, string)
+  nameWithType: ILogger.Debug(Exception, string)
+  fullName: Innovt.Core.CrossCutting.Log.ILogger.Debug(System.Exception, string)
+  nameWithType.vb: ILogger.Debug(Exception, String)
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger.Debug(System.Exception, String)
+  name.vb: Debug(Exception, String)
+  spec.csharp:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Debug(System.Exception,System.String)
+    name: Debug
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Debug_System_Exception_System_String_
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Debug(System.Exception,System.String)
+    name: Debug
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Debug_System_Exception_System_String_
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Innovt.Core.CrossCutting.Log.ILogger.Debug(System.Exception,System.String,System.Object[])
+  commentId: M:Innovt.Core.CrossCutting.Log.ILogger.Debug(System.Exception,System.String,System.Object[])
+  parent: Innovt.Core.CrossCutting.Log.ILogger
+  isExternal: true
+  href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Debug_System_Exception_System_String_System_Object___
+  name: Debug(Exception, string, params object[])
+  nameWithType: ILogger.Debug(Exception, string, params object[])
+  fullName: Innovt.Core.CrossCutting.Log.ILogger.Debug(System.Exception, string, params object[])
+  nameWithType.vb: ILogger.Debug(Exception, String, ParamArray Object())
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger.Debug(System.Exception, String, ParamArray Object())
+  name.vb: Debug(Exception, String, ParamArray Object())
+  spec.csharp:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Debug(System.Exception,System.String,System.Object[])
+    name: Debug
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Debug_System_Exception_System_String_System_Object___
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Debug(System.Exception,System.String,System.Object[])
+    name: Debug
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Debug_System_Exception_System_String_System_Object___
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: )
+- uid: Innovt.Core.CrossCutting.Log.ILogger.Error(System.String)
+  commentId: M:Innovt.Core.CrossCutting.Log.ILogger.Error(System.String)
+  parent: Innovt.Core.CrossCutting.Log.ILogger
+  isExternal: true
+  href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Error_System_String_
+  name: Error(string)
+  nameWithType: ILogger.Error(string)
+  fullName: Innovt.Core.CrossCutting.Log.ILogger.Error(string)
+  nameWithType.vb: ILogger.Error(String)
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger.Error(String)
+  name.vb: Error(String)
+  spec.csharp:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Error(System.String)
+    name: Error
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Error_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Error(System.String)
+    name: Error
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Error_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Innovt.Core.CrossCutting.Log.ILogger.Error(System.String,System.Object[])
+  commentId: M:Innovt.Core.CrossCutting.Log.ILogger.Error(System.String,System.Object[])
+  parent: Innovt.Core.CrossCutting.Log.ILogger
+  isExternal: true
+  href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Error_System_String_System_Object___
+  name: Error(string, params object[])
+  nameWithType: ILogger.Error(string, params object[])
+  fullName: Innovt.Core.CrossCutting.Log.ILogger.Error(string, params object[])
+  nameWithType.vb: ILogger.Error(String, ParamArray Object())
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger.Error(String, ParamArray Object())
+  name.vb: Error(String, ParamArray Object())
+  spec.csharp:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Error(System.String,System.Object[])
+    name: Error
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Error_System_String_System_Object___
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Error(System.String,System.Object[])
+    name: Error
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Error_System_String_System_Object___
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: )
+- uid: Innovt.Core.CrossCutting.Log.ILogger.Error(System.Exception,System.String)
+  commentId: M:Innovt.Core.CrossCutting.Log.ILogger.Error(System.Exception,System.String)
+  parent: Innovt.Core.CrossCutting.Log.ILogger
+  isExternal: true
+  href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Error_System_Exception_System_String_
+  name: Error(Exception, string)
+  nameWithType: ILogger.Error(Exception, string)
+  fullName: Innovt.Core.CrossCutting.Log.ILogger.Error(System.Exception, string)
+  nameWithType.vb: ILogger.Error(Exception, String)
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger.Error(System.Exception, String)
+  name.vb: Error(Exception, String)
+  spec.csharp:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Error(System.Exception,System.String)
+    name: Error
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Error_System_Exception_System_String_
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Error(System.Exception,System.String)
+    name: Error
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Error_System_Exception_System_String_
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Innovt.Core.CrossCutting.Log.ILogger.Error(System.Exception,System.String,System.Object[])
+  commentId: M:Innovt.Core.CrossCutting.Log.ILogger.Error(System.Exception,System.String,System.Object[])
+  parent: Innovt.Core.CrossCutting.Log.ILogger
+  isExternal: true
+  href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Error_System_Exception_System_String_System_Object___
+  name: Error(Exception, string, params object[])
+  nameWithType: ILogger.Error(Exception, string, params object[])
+  fullName: Innovt.Core.CrossCutting.Log.ILogger.Error(System.Exception, string, params object[])
+  nameWithType.vb: ILogger.Error(Exception, String, ParamArray Object())
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger.Error(System.Exception, String, ParamArray Object())
+  name.vb: Error(Exception, String, ParamArray Object())
+  spec.csharp:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Error(System.Exception,System.String,System.Object[])
+    name: Error
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Error_System_Exception_System_String_System_Object___
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Error(System.Exception,System.String,System.Object[])
+    name: Error
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Error_System_Exception_System_String_System_Object___
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: )
+- uid: Innovt.Core.CrossCutting.Log.ILogger.Fatal(System.String)
+  commentId: M:Innovt.Core.CrossCutting.Log.ILogger.Fatal(System.String)
+  parent: Innovt.Core.CrossCutting.Log.ILogger
+  isExternal: true
+  href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Fatal_System_String_
+  name: Fatal(string)
+  nameWithType: ILogger.Fatal(string)
+  fullName: Innovt.Core.CrossCutting.Log.ILogger.Fatal(string)
+  nameWithType.vb: ILogger.Fatal(String)
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger.Fatal(String)
+  name.vb: Fatal(String)
+  spec.csharp:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Fatal(System.String)
+    name: Fatal
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Fatal_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Fatal(System.String)
+    name: Fatal
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Fatal_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Innovt.Core.CrossCutting.Log.ILogger.Fatal(System.String,System.Object[])
+  commentId: M:Innovt.Core.CrossCutting.Log.ILogger.Fatal(System.String,System.Object[])
+  parent: Innovt.Core.CrossCutting.Log.ILogger
+  isExternal: true
+  href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Fatal_System_String_System_Object___
+  name: Fatal(string, params object[])
+  nameWithType: ILogger.Fatal(string, params object[])
+  fullName: Innovt.Core.CrossCutting.Log.ILogger.Fatal(string, params object[])
+  nameWithType.vb: ILogger.Fatal(String, ParamArray Object())
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger.Fatal(String, ParamArray Object())
+  name.vb: Fatal(String, ParamArray Object())
+  spec.csharp:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Fatal(System.String,System.Object[])
+    name: Fatal
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Fatal_System_String_System_Object___
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Fatal(System.String,System.Object[])
+    name: Fatal
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Fatal_System_String_System_Object___
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: )
+- uid: Innovt.Core.CrossCutting.Log.ILogger.Fatal(System.Exception,System.String)
+  commentId: M:Innovt.Core.CrossCutting.Log.ILogger.Fatal(System.Exception,System.String)
+  parent: Innovt.Core.CrossCutting.Log.ILogger
+  isExternal: true
+  href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Fatal_System_Exception_System_String_
+  name: Fatal(Exception, string)
+  nameWithType: ILogger.Fatal(Exception, string)
+  fullName: Innovt.Core.CrossCutting.Log.ILogger.Fatal(System.Exception, string)
+  nameWithType.vb: ILogger.Fatal(Exception, String)
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger.Fatal(System.Exception, String)
+  name.vb: Fatal(Exception, String)
+  spec.csharp:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Fatal(System.Exception,System.String)
+    name: Fatal
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Fatal_System_Exception_System_String_
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Fatal(System.Exception,System.String)
+    name: Fatal
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Fatal_System_Exception_System_String_
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Innovt.Core.CrossCutting.Log.ILogger.Fatal(System.Exception,System.String,System.Object[])
+  commentId: M:Innovt.Core.CrossCutting.Log.ILogger.Fatal(System.Exception,System.String,System.Object[])
+  parent: Innovt.Core.CrossCutting.Log.ILogger
+  isExternal: true
+  href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Fatal_System_Exception_System_String_System_Object___
+  name: Fatal(Exception, string, params object[])
+  nameWithType: ILogger.Fatal(Exception, string, params object[])
+  fullName: Innovt.Core.CrossCutting.Log.ILogger.Fatal(System.Exception, string, params object[])
+  nameWithType.vb: ILogger.Fatal(Exception, String, ParamArray Object())
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger.Fatal(System.Exception, String, ParamArray Object())
+  name.vb: Fatal(Exception, String, ParamArray Object())
+  spec.csharp:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Fatal(System.Exception,System.String,System.Object[])
+    name: Fatal
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Fatal_System_Exception_System_String_System_Object___
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Fatal(System.Exception,System.String,System.Object[])
+    name: Fatal
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Fatal_System_Exception_System_String_System_Object___
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: )
+- uid: Innovt.Core.CrossCutting.Log.ILogger.Info(System.String)
+  commentId: M:Innovt.Core.CrossCutting.Log.ILogger.Info(System.String)
+  parent: Innovt.Core.CrossCutting.Log.ILogger
+  isExternal: true
+  href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Info_System_String_
+  name: Info(string)
+  nameWithType: ILogger.Info(string)
+  fullName: Innovt.Core.CrossCutting.Log.ILogger.Info(string)
+  nameWithType.vb: ILogger.Info(String)
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger.Info(String)
+  name.vb: Info(String)
+  spec.csharp:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Info(System.String)
+    name: Info
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Info_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Info(System.String)
+    name: Info
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Info_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Innovt.Core.CrossCutting.Log.ILogger.Info(System.String,System.Object[])
+  commentId: M:Innovt.Core.CrossCutting.Log.ILogger.Info(System.String,System.Object[])
+  parent: Innovt.Core.CrossCutting.Log.ILogger
+  isExternal: true
+  href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Info_System_String_System_Object___
+  name: Info(string, params object[])
+  nameWithType: ILogger.Info(string, params object[])
+  fullName: Innovt.Core.CrossCutting.Log.ILogger.Info(string, params object[])
+  nameWithType.vb: ILogger.Info(String, ParamArray Object())
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger.Info(String, ParamArray Object())
+  name.vb: Info(String, ParamArray Object())
+  spec.csharp:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Info(System.String,System.Object[])
+    name: Info
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Info_System_String_System_Object___
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Info(System.String,System.Object[])
+    name: Info
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Info_System_String_System_Object___
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: )
+- uid: Innovt.Core.CrossCutting.Log.ILogger.Info(System.Exception,System.String)
+  commentId: M:Innovt.Core.CrossCutting.Log.ILogger.Info(System.Exception,System.String)
+  parent: Innovt.Core.CrossCutting.Log.ILogger
+  isExternal: true
+  href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Info_System_Exception_System_String_
+  name: Info(Exception, string)
+  nameWithType: ILogger.Info(Exception, string)
+  fullName: Innovt.Core.CrossCutting.Log.ILogger.Info(System.Exception, string)
+  nameWithType.vb: ILogger.Info(Exception, String)
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger.Info(System.Exception, String)
+  name.vb: Info(Exception, String)
+  spec.csharp:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Info(System.Exception,System.String)
+    name: Info
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Info_System_Exception_System_String_
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Info(System.Exception,System.String)
+    name: Info
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Info_System_Exception_System_String_
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Innovt.Core.CrossCutting.Log.ILogger.Info(System.Exception,System.String,System.Object[])
+  commentId: M:Innovt.Core.CrossCutting.Log.ILogger.Info(System.Exception,System.String,System.Object[])
+  parent: Innovt.Core.CrossCutting.Log.ILogger
+  isExternal: true
+  href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Info_System_Exception_System_String_System_Object___
+  name: Info(Exception, string, params object[])
+  nameWithType: ILogger.Info(Exception, string, params object[])
+  fullName: Innovt.Core.CrossCutting.Log.ILogger.Info(System.Exception, string, params object[])
+  nameWithType.vb: ILogger.Info(Exception, String, ParamArray Object())
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger.Info(System.Exception, String, ParamArray Object())
+  name.vb: Info(Exception, String, ParamArray Object())
+  spec.csharp:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Info(System.Exception,System.String,System.Object[])
+    name: Info
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Info_System_Exception_System_String_System_Object___
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Info(System.Exception,System.String,System.Object[])
+    name: Info
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Info_System_Exception_System_String_System_Object___
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: )
+- uid: Innovt.Core.CrossCutting.Log.ILogger.Verbose(System.String)
+  commentId: M:Innovt.Core.CrossCutting.Log.ILogger.Verbose(System.String)
+  parent: Innovt.Core.CrossCutting.Log.ILogger
+  isExternal: true
+  href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Verbose_System_String_
+  name: Verbose(string)
+  nameWithType: ILogger.Verbose(string)
+  fullName: Innovt.Core.CrossCutting.Log.ILogger.Verbose(string)
+  nameWithType.vb: ILogger.Verbose(String)
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger.Verbose(String)
+  name.vb: Verbose(String)
+  spec.csharp:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Verbose(System.String)
+    name: Verbose
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Verbose_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Verbose(System.String)
+    name: Verbose
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Verbose_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Innovt.Core.CrossCutting.Log.ILogger.Verbose(System.String,System.Object[])
+  commentId: M:Innovt.Core.CrossCutting.Log.ILogger.Verbose(System.String,System.Object[])
+  parent: Innovt.Core.CrossCutting.Log.ILogger
+  isExternal: true
+  href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Verbose_System_String_System_Object___
+  name: Verbose(string, params object[])
+  nameWithType: ILogger.Verbose(string, params object[])
+  fullName: Innovt.Core.CrossCutting.Log.ILogger.Verbose(string, params object[])
+  nameWithType.vb: ILogger.Verbose(String, ParamArray Object())
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger.Verbose(String, ParamArray Object())
+  name.vb: Verbose(String, ParamArray Object())
+  spec.csharp:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Verbose(System.String,System.Object[])
+    name: Verbose
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Verbose_System_String_System_Object___
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Verbose(System.String,System.Object[])
+    name: Verbose
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Verbose_System_String_System_Object___
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: )
+- uid: Innovt.Core.CrossCutting.Log.ILogger.Verbose(System.Exception,System.String)
+  commentId: M:Innovt.Core.CrossCutting.Log.ILogger.Verbose(System.Exception,System.String)
+  parent: Innovt.Core.CrossCutting.Log.ILogger
+  isExternal: true
+  href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Verbose_System_Exception_System_String_
+  name: Verbose(Exception, string)
+  nameWithType: ILogger.Verbose(Exception, string)
+  fullName: Innovt.Core.CrossCutting.Log.ILogger.Verbose(System.Exception, string)
+  nameWithType.vb: ILogger.Verbose(Exception, String)
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger.Verbose(System.Exception, String)
+  name.vb: Verbose(Exception, String)
+  spec.csharp:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Verbose(System.Exception,System.String)
+    name: Verbose
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Verbose_System_Exception_System_String_
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Verbose(System.Exception,System.String)
+    name: Verbose
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Verbose_System_Exception_System_String_
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Innovt.Core.CrossCutting.Log.ILogger.Verbose(System.Exception,System.String,System.Object[])
+  commentId: M:Innovt.Core.CrossCutting.Log.ILogger.Verbose(System.Exception,System.String,System.Object[])
+  parent: Innovt.Core.CrossCutting.Log.ILogger
+  isExternal: true
+  href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Verbose_System_Exception_System_String_System_Object___
+  name: Verbose(Exception, string, params object[])
+  nameWithType: ILogger.Verbose(Exception, string, params object[])
+  fullName: Innovt.Core.CrossCutting.Log.ILogger.Verbose(System.Exception, string, params object[])
+  nameWithType.vb: ILogger.Verbose(Exception, String, ParamArray Object())
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger.Verbose(System.Exception, String, ParamArray Object())
+  name.vb: Verbose(Exception, String, ParamArray Object())
+  spec.csharp:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Verbose(System.Exception,System.String,System.Object[])
+    name: Verbose
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Verbose_System_Exception_System_String_System_Object___
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Verbose(System.Exception,System.String,System.Object[])
+    name: Verbose
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Verbose_System_Exception_System_String_System_Object___
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: )
+- uid: Innovt.Core.CrossCutting.Log.ILogger.Warning(System.String)
+  commentId: M:Innovt.Core.CrossCutting.Log.ILogger.Warning(System.String)
+  parent: Innovt.Core.CrossCutting.Log.ILogger
+  isExternal: true
+  href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Warning_System_String_
+  name: Warning(string)
+  nameWithType: ILogger.Warning(string)
+  fullName: Innovt.Core.CrossCutting.Log.ILogger.Warning(string)
+  nameWithType.vb: ILogger.Warning(String)
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger.Warning(String)
+  name.vb: Warning(String)
+  spec.csharp:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Warning(System.String)
+    name: Warning
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Warning_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Warning(System.String)
+    name: Warning
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Warning_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Innovt.Core.CrossCutting.Log.ILogger.Warning(System.String,System.Object[])
+  commentId: M:Innovt.Core.CrossCutting.Log.ILogger.Warning(System.String,System.Object[])
+  parent: Innovt.Core.CrossCutting.Log.ILogger
+  isExternal: true
+  href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Warning_System_String_System_Object___
+  name: Warning(string, params object[])
+  nameWithType: ILogger.Warning(string, params object[])
+  fullName: Innovt.Core.CrossCutting.Log.ILogger.Warning(string, params object[])
+  nameWithType.vb: ILogger.Warning(String, ParamArray Object())
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger.Warning(String, ParamArray Object())
+  name.vb: Warning(String, ParamArray Object())
+  spec.csharp:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Warning(System.String,System.Object[])
+    name: Warning
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Warning_System_String_System_Object___
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Warning(System.String,System.Object[])
+    name: Warning
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Warning_System_String_System_Object___
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: )
+- uid: Innovt.Core.CrossCutting.Log.ILogger.Warning(System.Exception,System.String)
+  commentId: M:Innovt.Core.CrossCutting.Log.ILogger.Warning(System.Exception,System.String)
+  parent: Innovt.Core.CrossCutting.Log.ILogger
+  isExternal: true
+  href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Warning_System_Exception_System_String_
+  name: Warning(Exception, string)
+  nameWithType: ILogger.Warning(Exception, string)
+  fullName: Innovt.Core.CrossCutting.Log.ILogger.Warning(System.Exception, string)
+  nameWithType.vb: ILogger.Warning(Exception, String)
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger.Warning(System.Exception, String)
+  name.vb: Warning(Exception, String)
+  spec.csharp:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Warning(System.Exception,System.String)
+    name: Warning
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Warning_System_Exception_System_String_
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Warning(System.Exception,System.String)
+    name: Warning
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Warning_System_Exception_System_String_
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Innovt.Core.CrossCutting.Log.ILogger.Warning(System.Exception,System.String,System.Object[])
+  commentId: M:Innovt.Core.CrossCutting.Log.ILogger.Warning(System.Exception,System.String,System.Object[])
+  parent: Innovt.Core.CrossCutting.Log.ILogger
+  isExternal: true
+  href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Warning_System_Exception_System_String_System_Object___
+  name: Warning(Exception, string, params object[])
+  nameWithType: ILogger.Warning(Exception, string, params object[])
+  fullName: Innovt.Core.CrossCutting.Log.ILogger.Warning(System.Exception, string, params object[])
+  nameWithType.vb: ILogger.Warning(Exception, String, ParamArray Object())
+  fullName.vb: Innovt.Core.CrossCutting.Log.ILogger.Warning(System.Exception, String, ParamArray Object())
+  name.vb: Warning(Exception, String, ParamArray Object())
+  spec.csharp:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Warning(System.Exception,System.String,System.Object[])
+    name: Warning
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Warning_System_Exception_System_String_System_Object___
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.CrossCutting.Log.ILogger.Warning(System.Exception,System.String,System.Object[])
+    name: Warning
+    href: Innovt.Core.CrossCutting.Log.ILogger.html#Innovt_Core_CrossCutting_Log_ILogger_Warning_System_Exception_System_String_System_Object___
+  - name: (
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
