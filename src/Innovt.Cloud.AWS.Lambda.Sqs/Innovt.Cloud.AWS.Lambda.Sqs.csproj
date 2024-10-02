@@ -11,6 +11,7 @@
         <Description>AWS implementation for lambda and Sqs events.</Description>
         <LangVersion>latest</LangVersion>
         <AnalysisMode>AllEnabledByFDefault</AnalysisMode>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Amazon.Lambda.SQSEvents" Version="2.2.0"/>

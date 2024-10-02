@@ -33,7 +33,7 @@ public class PaginationBuilder<T> where T : class
     /// <summary>
     ///     Builds the header HTML for pagination.
     /// </summary>
-    /// <returns>The HTML for the pagination header.</returns
+    /// <returns>The HTML for the pagination header.</returns>
     public virtual string BuildHeader()
     {
         return @"<div class=""portlet-body text-center""><ul class=""pagination pagination-large"">";

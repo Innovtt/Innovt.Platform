@@ -1,0 +1,1717 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class Repository | Innovt Platform </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Repository | Innovt Platform ">
+      
+      <meta name="description" content="Base repository class for interacting with AWS DynamoDB tables.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Dynamo_Repository.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Dynamo.Repository%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Innovt Platform">
+            Innovt Platform
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Innovt.Cloud.AWS.Dynamo.Repository">
+
+
+
+  <h1 id="Innovt_Cloud_AWS_Dynamo_Repository" data-uid="Innovt.Cloud.AWS.Dynamo.Repository" class="text-break">
+Class Repository  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Innovt.html">Innovt</a>.<a class="xref" href="Innovt.Cloud.html">Cloud</a>.<a class="xref" href="Innovt.Cloud.AWS.html">AWS</a>.<a class="xref" href="Innovt.Cloud.AWS.Dynamo.html">Dynamo</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Innovt.Cloud.AWS.Dynamo.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Base repository class for interacting with AWS DynamoDB tables.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class Repository : AwsBaseService, ITableRepository, IDisposable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="Innovt.Cloud.AWS.AwsBaseService.html">AwsBaseService</a></div>
+      <div><span class="xref">Repository</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Innovt.Cloud.Table.ITableRepository.html">ITableRepository</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Configuration">AwsBaseService.Configuration</a>
+    </div>
+    <div>
+      <a class="xref" href="Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Logger">AwsBaseService.Logger</a>
+    </div>
+    <div>
+      <a class="xref" href="Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose">AwsBaseService.Dispose()</a>
+    </div>
+    <div>
+      <a class="xref" href="Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_GetServiceRegionEndPoint">AwsBaseService.GetServiceRegionEndPoint()</a>
+    </div>
+    <div>
+      <a class="xref" href="Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateService__1">AwsBaseService.CreateService&lt;T&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryPolicy">AwsBaseService.CreateDefaultRetryPolicy()</a>
+    </div>
+    <div>
+      <a class="xref" href="Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__1">AwsBaseService.CreateRetryAsyncPolicy&lt;T&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__2">AwsBaseService.CreateRetryAsyncPolicy&lt;T, T1&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__3">AwsBaseService.CreateRetryAsyncPolicy&lt;T, T1, T2&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__4">AwsBaseService.CreateRetryAsyncPolicy&lt;T, T1, T2, T3&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__5">AwsBaseService.CreateRetryAsyncPolicy&lt;T, T1, T2, T3, T4&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateCircuitBreaker__2">AwsBaseService.CreateCircuitBreaker&lt;T, T1&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose_System_Boolean_">AwsBaseService.Dispose(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_">Extensions.IsNull(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_">Extensions.ToStringOrDefault(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_">SimpleMapper.MapTo&lt;T1&gt;(object)</a>
+  </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository__ctor_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.#ctor*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository__ctor_Innovt_Core_CrossCutting_Log_ILogger_Innovt_Cloud_AWS_Configuration_IAwsConfiguration_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration)">
+  Repository(ILogger, IAwsConfiguration)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L316"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Innovt.Cloud.AWS.Dynamo.Repository.html">Repository</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Repository(ILogger logger, IAwsConfiguration configuration)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>logger</code> <a class="xref" href="Innovt.Core.CrossCutting.Log.ILogger.html">ILogger</a></dt>
+    <dd><p>The logger.</p>
+</dd>
+    <dt><code>configuration</code> <a class="xref" href="Innovt.Cloud.AWS.Configuration.IAwsConfiguration.html">IAwsConfiguration</a></dt>
+    <dd><p>AWS configuration.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository__ctor_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.#ctor*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository__ctor_Innovt_Core_CrossCutting_Log_ILogger_Innovt_Cloud_AWS_Configuration_IAwsConfiguration_Innovt_Cloud_AWS_Dynamo_DynamoContext_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,Innovt.Cloud.AWS.Dynamo.DynamoContext)">
+  Repository(ILogger, IAwsConfiguration, DynamoContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L327"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Innovt.Cloud.AWS.Dynamo.Repository.html">Repository</a> class using a context map.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Repository(ILogger logger, IAwsConfiguration configuration, DynamoContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>logger</code> <a class="xref" href="Innovt.Core.CrossCutting.Log.ILogger.html">ILogger</a></dt>
+    <dd></dd>
+    <dt><code>configuration</code> <a class="xref" href="Innovt.Cloud.AWS.Configuration.IAwsConfiguration.html">IAwsConfiguration</a></dt>
+    <dd></dd>
+    <dt><code>context</code> <a class="xref" href="Innovt.Cloud.AWS.Dynamo.DynamoContext.html">DynamoContext</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository__ctor_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.#ctor*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository__ctor_Innovt_Core_CrossCutting_Log_ILogger_Innovt_Cloud_AWS_Configuration_IAwsConfiguration_System_String_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String)">
+  Repository(ILogger, IAwsConfiguration, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L339"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Innovt.Cloud.AWS.Dynamo.Repository.html">Repository</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Repository(ILogger logger, IAwsConfiguration configuration, string region)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>logger</code> <a class="xref" href="Innovt.Core.CrossCutting.Log.ILogger.html">ILogger</a></dt>
+    <dd><p>The logger.</p>
+</dd>
+    <dt><code>configuration</code> <a class="xref" href="Innovt.Cloud.AWS.Configuration.IAwsConfiguration.html">IAwsConfiguration</a></dt>
+    <dd><p>AWS configuration.</p>
+</dd>
+    <dt><code>region</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The AWS region.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_AddAsync_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.AddAsync*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_AddAsync__1___0_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.AddAsync``1(``0,System.Threading.CancellationToken)">
+  AddAsync&lt;T&gt;(T, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L349"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously adds a single item to the repository.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task AddAsync&lt;T&gt;(T message, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <span class="xref">T</span></dt>
+    <dd><p>The item to add.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A task representing the asynchronous add operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of item to add.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_AddListAsync_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.AddListAsync*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_AddListAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.AddListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)">
+  AddListAsync&lt;T&gt;(ICollection&lt;T&gt;, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L379"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds a list of items to the DynamoDB table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task AddListAsync&lt;T&gt;(ICollection&lt;T&gt; messages, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>messages</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;</dt>
+    <dd><p>The list of items to add.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of items to add.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown if the messages parameter is null.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_BatchGetItem_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.BatchGetItem*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_BatchGetItem__1_Innovt_Cloud_Table_BatchGetItemRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.BatchGetItem``1(Innovt.Cloud.Table.BatchGetItemRequest,System.Threading.CancellationToken)">
+  BatchGetItem&lt;T&gt;(BatchGetItemRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a batch of items from the DynamoDB table based on the specified batch get item request.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;T&gt;&gt; BatchGetItem&lt;T&gt;(BatchGetItemRequest batchGetItemRequest, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>batchGetItemRequest</code> <a class="xref" href="Innovt.Cloud.Table.BatchGetItemRequest.html">BatchGetItemRequest</a></dt>
+    <dd><p>The batch get item request.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;&gt;</dt>
+    <dd><p>The list of items retrieved.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of items to get.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown when the batch get item request is null.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_BatchWriteItem_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.BatchWriteItem*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_BatchWriteItem_Innovt_Cloud_Table_BatchWriteItemRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.BatchWriteItem(Innovt.Cloud.Table.BatchWriteItemRequest,System.Threading.CancellationToken)">
+  BatchWriteItem(BatchWriteItemRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L439"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes a batch of items to the DynamoDB table based on the specified batch write item request.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;BatchWriteItemResponse&gt; BatchWriteItem(BatchWriteItemRequest batchWriteItemRequest, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>batchWriteItemRequest</code> <a class="xref" href="Innovt.Cloud.Table.BatchWriteItemRequest.html">BatchWriteItemRequest</a></dt>
+    <dd><p>The batch write item request.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Cloud.Table.BatchWriteItemResponse.html">BatchWriteItemResponse</a>&gt;</dt>
+    <dd><p>The response indicating the result of the batch write operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown when the batch write item request is null.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_CreateDefaultRetryAsyncPolicy_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.CreateDefaultRetryAsyncPolicy*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_CreateDefaultRetryAsyncPolicy" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.CreateDefaultRetryAsyncPolicy">
+  CreateDefaultRetryAsyncPolicy()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L295"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates the default asynchronous retry policy for handling exceptions during operations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override AsyncRetryPolicy CreateDefaultRetryAsyncPolicy()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/App-vNext/Polly/blob/077cf388fc5a85a7f6cd0fdcb2b68d17a898019e/src/Polly/Retry/AsyncRetryPolicy.cs">AsyncRetryPolicy</a></dt>
+    <dd><p>The asynchronous retry policy instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_CreateTransactionWriteItem_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_CreateTransactionWriteItem__1___0_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem``1(``0)">
+  CreateTransactionWriteItem&lt;T&gt;(T)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L122"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create a transaction write item based on the instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TransactionWriteItem CreateTransactionWriteItem&lt;T&gt;(T instance) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>instance</code> <span class="xref">T</span></dt>
+    <dd><p>A mapped instance with context.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Innovt.Cloud.Table.TransactionWriteItem.html">TransactionWriteItem</a></dt>
+    <dd><p>A incomplete transaction write item with properties mapped.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>A typed mapped entity</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_DeleteAsync_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_DeleteAsync__1_System_Object_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(System.Object,System.String,System.Threading.CancellationToken)">
+  DeleteAsync&lt;T&gt;(object, string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L522"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously deletes an item using its identifier and optional range key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DeleteAsync&lt;T&gt;(object id, string rangeKey = null, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The identifier of the item.</p>
+</dd>
+    <dt><code>rangeKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The range key for the item (optional).</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A task representing the asynchronous delete operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of item to delete.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_DeleteAsync_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_DeleteAsync__1___0_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(``0,System.Threading.CancellationToken)">
+  DeleteAsync&lt;T&gt;(T, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L478"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously deletes an item using its value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DeleteAsync&lt;T&gt;(T message, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <span class="xref">T</span></dt>
+    <dd><p>The item to delete.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A task representing the asynchronous delete operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of item to delete.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_DeleteListAsync_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.DeleteListAsync*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_DeleteListAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.DeleteListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)">
+  DeleteListAsync&lt;T&gt;(ICollection&lt;T&gt;, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L491"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously a list of item that are from the same type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DeleteListAsync&lt;T&gt;(ICollection&lt;T&gt; messages, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>messages</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;</dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_DisposeServices_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.DisposeServices*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_DisposeServices" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.DisposeServices">
+  DisposeServices()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L304"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Disposes the DynamoDB context and AmazonDynamoDBClient resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void DisposeServices()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_ExecuteStatementAsync_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.ExecuteStatementAsync*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_ExecuteStatementAsync__1_Innovt_Cloud_Table_ExecuteSqlStatementRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.ExecuteStatementAsync``1(Innovt.Cloud.Table.ExecuteSqlStatementRequest,System.Threading.CancellationToken)">
+  ExecuteStatementAsync&lt;T&gt;(ExecuteSqlStatementRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Executes a SQL statement asynchronously and returns the response containing items of type T.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ExecuteSqlStatementResponse&lt;T&gt;&gt; ExecuteStatementAsync&lt;T&gt;(ExecuteSqlStatementRequest sqlStatementRequest, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sqlStatementRequest</code> <a class="xref" href="Innovt.Cloud.Table.ExecuteSqlStatementRequest.html">ExecuteSqlStatementRequest</a></dt>
+    <dd><p>The SQL statement request.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Cloud.Table.ExecuteSqlStatementResponse-1.html">ExecuteSqlStatementResponse</a>&lt;T&gt;&gt;</dt>
+    <dd><p>The response containing items of type T.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of items to be returned.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown when the SQL statement request is null.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_GetByIdAsync_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.GetByIdAsync*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_GetByIdAsync__1_System_Object_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.GetByIdAsync``1(System.Object,System.String,System.Threading.CancellationToken)">
+  GetByIdAsync&lt;T&gt;(object, string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L672"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously retrieves an item by its identifier.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;T&gt; GetByIdAsync&lt;T&gt;(object id, string rangeKey = null, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The identifier of the item.</p>
+</dd>
+    <dt><code>rangeKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The range key for the item (optional).</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</dt>
+    <dd><p>An item of type T if found; otherwise, null.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of item to retrieve.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_QueryAsync_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.QueryAsync*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_QueryAsync__1_Innovt_Cloud_Table_QueryRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.QueryAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)">
+  QueryAsync&lt;T&gt;(QueryRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L726"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Queries the DynamoDB table using a query request and returns a list of items.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;T&gt;&gt; QueryAsync&lt;T&gt;(QueryRequest request, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Innovt.Cloud.Table.QueryRequest.html">QueryRequest</a></dt>
+    <dd><p>The query request.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;T&gt;&gt;</dt>
+    <dd><p>A list of items based on the query request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of items to query.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_QueryAsync_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.QueryAsync*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_QueryAsync__1_System_Object_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.QueryAsync``1(System.Object,System.Threading.CancellationToken)">
+  QueryAsync&lt;T&gt;(object, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L702"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Queries the DynamoDB table and returns a list of items with the specified id.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;T&gt;&gt; QueryAsync&lt;T&gt;(object id, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The id to query.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;T&gt;&gt;</dt>
+    <dd><p>A list of items with the specified id.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of items to query.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_QueryFirstAsync_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.QueryFirstAsync*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_QueryFirstAsync__1_System_Object_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.QueryFirstAsync``1(System.Object,System.Threading.CancellationToken)">
+  QueryFirstAsync&lt;T&gt;(object, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L652"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronously queries and retrieves the first item of type T by its identifier.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;T&gt; QueryFirstAsync&lt;T&gt;(object id, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The identifier of the item.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</dt>
+    <dd><p>An item of type T if found; otherwise, null.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of item to retrieve.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_QueryFirstOrDefaultAsync_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.QueryFirstOrDefaultAsync*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_QueryFirstOrDefaultAsync__1_Innovt_Cloud_Table_QueryRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.QueryFirstOrDefaultAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)">
+  QueryFirstOrDefaultAsync&lt;T&gt;(QueryRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L853"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Queries the DynamoDB table and returns the first or default item based on the query request.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;T&gt; QueryFirstOrDefaultAsync&lt;T&gt;(QueryRequest request, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Innovt.Cloud.Table.QueryRequest.html">QueryRequest</a></dt>
+    <dd><p>The query request.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</dt>
+    <dd><p>The first or default item based on the query request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of item to query.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_QueryMultipleAsync_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_QueryMultipleAsync__3_Innovt_Cloud_Table_QueryRequest_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync``3(Innovt.Cloud.Table.QueryRequest,System.String,System.Threading.CancellationToken)">
+  QueryMultipleAsync&lt;T, TResult1, TResult2&gt;(QueryRequest, string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L749"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Queries the DynamoDB table using a query request and splits the results into two types based on a key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(IList&lt;TResult1&gt; first, IList&lt;TResult2&gt; second)&gt; QueryMultipleAsync&lt;T, TResult1, TResult2&gt;(QueryRequest request, string splitBy, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Innovt.Cloud.Table.QueryRequest.html">QueryRequest</a></dt>
+    <dd><p>The query request.</p>
+</dd>
+    <dt><code>splitBy</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The key to split the results.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult1&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2--.first">first</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult2&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2--.second">second</a>)&gt;</dt>
+    <dd><p>Tuple containing lists of items split based on the specified key.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of items to query.</p>
+</dd>
+    <dt><code>TResult1</code></dt>
+    <dd><p>The first type to split the results into.</p>
+</dd>
+    <dt><code>TResult2</code></dt>
+    <dd><p>The second type to split the results into.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_QueryMultipleAsync_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_QueryMultipleAsync__4_Innovt_Cloud_Table_QueryRequest_System_String___System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync``4(Innovt.Cloud.Table.QueryRequest,System.String[],System.Threading.CancellationToken)">
+  QueryMultipleAsync&lt;T, TResult1, TResult2, TResult3&gt;(QueryRequest, string[], CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L773"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Queries the DynamoDB table using a query request and splits the results into three types based on specified keys.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(IList&lt;TResult1&gt; first, IList&lt;TResult2&gt; second, IList&lt;TResult3&gt; third)&gt; QueryMultipleAsync&lt;T, TResult1, TResult2, TResult3&gt;(QueryRequest request, string[] splitBy, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Innovt.Cloud.Table.QueryRequest.html">QueryRequest</a></dt>
+    <dd><p>The query request.</p>
+</dd>
+    <dt><code>splitBy</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>The keys to split the results.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult1&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2-,system.collections.generic.ilist---3--.first">first</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult2&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2-,system.collections.generic.ilist---3--.second">second</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult3&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2-,system.collections.generic.ilist---3--.third">third</a>)&gt;</dt>
+    <dd><p>Tuple containing lists of items split based on the specified keys.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of items to query.</p>
+</dd>
+    <dt><code>TResult1</code></dt>
+    <dd><p>The first type to split the results into.</p>
+</dd>
+    <dt><code>TResult2</code></dt>
+    <dd><p>The second type to split the results into.</p>
+</dd>
+    <dt><code>TResult3</code></dt>
+    <dd><p>The third type to split the results into.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_QueryMultipleAsync_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_QueryMultipleAsync__5_Innovt_Cloud_Table_QueryRequest_System_String___System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync``5(Innovt.Cloud.Table.QueryRequest,System.String[],System.Threading.CancellationToken)">
+  QueryMultipleAsync&lt;T, TResult1, TResult2, TResult3, TResult4&gt;(QueryRequest, string[], CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L800"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Queries the DynamoDB table using a query request and splits the results into four types based on specified keys.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(IList&lt;TResult1&gt; first, IList&lt;TResult2&gt; second, IList&lt;TResult3&gt; third, IList&lt;TResult4&gt; fourth)&gt; QueryMultipleAsync&lt;T, TResult1, TResult2, TResult3, TResult4&gt;(QueryRequest request, string[] splitBy, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Innovt.Cloud.Table.QueryRequest.html">QueryRequest</a></dt>
+    <dd><p>The query request.</p>
+</dd>
+    <dt><code>splitBy</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>The keys to split the results.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult1&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2-,system.collections.generic.ilist---3-,system.collections.generic.ilist---4--.first">first</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult2&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2-,system.collections.generic.ilist---3-,system.collections.generic.ilist---4--.second">second</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult3&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2-,system.collections.generic.ilist---3-,system.collections.generic.ilist---4--.third">third</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult4&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2-,system.collections.generic.ilist---3-,system.collections.generic.ilist---4--.fourth">fourth</a>)&gt;</dt>
+    <dd><p>Tuple containing lists of items split based on the specified keys.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of items to query.</p>
+</dd>
+    <dt><code>TResult1</code></dt>
+    <dd><p>The first type to split the results into.</p>
+</dd>
+    <dt><code>TResult2</code></dt>
+    <dd><p>The second type to split the results into.</p>
+</dd>
+    <dt><code>TResult3</code></dt>
+    <dd><p>The third type to split the results into.</p>
+</dd>
+    <dt><code>TResult4</code></dt>
+    <dd><p>The fourth type to split the results into.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_QueryMultipleAsync_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_QueryMultipleAsync__6_Innovt_Cloud_Table_QueryRequest_System_String___System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync``6(Innovt.Cloud.Table.QueryRequest,System.String[],System.Threading.CancellationToken)">
+  QueryMultipleAsync&lt;T, TResult1, TResult2, TResult3, TResult4, TResult5&gt;(QueryRequest, string[], CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L829"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Queries the DynamoDB table using a query request and splits the results into five types based on specified keys.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;(IList&lt;TResult1&gt; first, IList&lt;TResult2&gt; second, IList&lt;TResult3&gt; third, IList&lt;TResult4&gt; fourth, IList&lt;TResult5&gt; fifth)&gt; QueryMultipleAsync&lt;T, TResult1, TResult2, TResult3, TResult4, TResult5&gt;(QueryRequest request, string[] splitBy, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Innovt.Cloud.Table.QueryRequest.html">QueryRequest</a></dt>
+    <dd><p>The query request.</p>
+</dd>
+    <dt><code>splitBy</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>The keys to split the results.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult1&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2-,system.collections.generic.ilist---3-,system.collections.generic.ilist---4-,system.collections.generic.ilist---5--.first">first</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult2&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2-,system.collections.generic.ilist---3-,system.collections.generic.ilist---4-,system.collections.generic.ilist---5--.second">second</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult3&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2-,system.collections.generic.ilist---3-,system.collections.generic.ilist---4-,system.collections.generic.ilist---5--.third">third</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult4&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2-,system.collections.generic.ilist---3-,system.collections.generic.ilist---4-,system.collections.generic.ilist---5--.fourth">fourth</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TResult5&gt; <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.collections.generic.ilist---1-,system.collections.generic.ilist---2-,system.collections.generic.ilist---3-,system.collections.generic.ilist---4-,system.collections.generic.ilist---5--.fifth">fifth</a>)&gt;</dt>
+    <dd><p>Tuple containing lists of items split based on the specified keys.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of items to query.</p>
+</dd>
+    <dt><code>TResult1</code></dt>
+    <dd><p>The first type to split the results into.</p>
+</dd>
+    <dt><code>TResult2</code></dt>
+    <dd><p>The second type to split the results into.</p>
+</dd>
+    <dt><code>TResult3</code></dt>
+    <dd><p>The third type to split the results into.</p>
+</dd>
+    <dt><code>TResult4</code></dt>
+    <dd><p>The fourth type to split the results into.</p>
+</dd>
+    <dt><code>TResult5</code></dt>
+    <dd><p>The fifth type to split the results into.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_QueryPaginatedByAsync_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.QueryPaginatedByAsync*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_QueryPaginatedByAsync__1_Innovt_Cloud_Table_QueryRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.QueryPaginatedByAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)">
+  QueryPaginatedByAsync&lt;T&gt;(QueryRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L878"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Queries the DynamoDB table using a query request and returns a paginated collection of items.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;PagedCollection&lt;T&gt;&gt; QueryPaginatedByAsync&lt;T&gt;(QueryRequest request, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Innovt.Cloud.Table.QueryRequest.html">QueryRequest</a></dt>
+    <dd><p>The query request.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Core.Collections.PagedCollection-1.html">PagedCollection</a>&lt;T&gt;&gt;</dt>
+    <dd><p>A paginated collection of items based on the query request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of items to query.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_ScanAsync_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.ScanAsync*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_ScanAsync__1_Innovt_Cloud_Table_ScanRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.ScanAsync``1(Innovt.Cloud.Table.ScanRequest,System.Threading.CancellationToken)">
+  ScanAsync&lt;T&gt;(ScanRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L908"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Scans the DynamoDB table based on the specified scan request.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;T&gt;&gt; ScanAsync&lt;T&gt;(ScanRequest request, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Innovt.Cloud.Table.ScanRequest.html">ScanRequest</a></dt>
+    <dd><p>The scan request.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;T&gt;&gt;</dt>
+    <dd><p>The list of scanned items.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of items to scan.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_ScanPaginatedByAsync_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.ScanPaginatedByAsync*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_ScanPaginatedByAsync__1_Innovt_Cloud_Table_ScanRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.ScanPaginatedByAsync``1(Innovt.Cloud.Table.ScanRequest,System.Threading.CancellationToken)">
+  ScanPaginatedByAsync&lt;T&gt;(ScanRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L929"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Scans the DynamoDB table based on the specified scan request and returns a paginated collection of items.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;PagedCollection&lt;T&gt;&gt; ScanPaginatedByAsync&lt;T&gt;(ScanRequest request, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Innovt.Cloud.Table.ScanRequest.html">ScanRequest</a></dt>
+    <dd><p>The scan request.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Core.Collections.PagedCollection-1.html">PagedCollection</a>&lt;T&gt;&gt;</dt>
+    <dd><p>A paginated collection of items based on the scan request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of items to scan.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown when the request is null.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_TransactWriteItemsAsync_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.TransactWriteItemsAsync*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_TransactWriteItemsAsync_Innovt_Cloud_Table_TransactionWriteRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.TransactWriteItemsAsync(Innovt.Cloud.Table.TransactionWriteRequest,System.Threading.CancellationToken)">
+  TransactWriteItemsAsync(TransactionWriteRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L409"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes a batch of transactional write items to the DynamoDB table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task TransactWriteItemsAsync(TransactionWriteRequest request, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Innovt.Cloud.Table.TransactionWriteRequest.html">TransactionWriteRequest</a></dt>
+    <dd><p>The transaction write request.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>Task representing the asynchronous operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown when the request is null.</p>
+</dd>
+    <dt><a class="xref" href="Innovt.Core.Exceptions.BusinessException.html">BusinessException</a></dt>
+    <dd><p>Thrown when the number of transactItems is invalid.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_UpdateAsync_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_UpdateAsync_System_String_System_Collections_Generic_Dictionary_System_String_Amazon_DynamoDBv2_Model_AttributeValue__System_Collections_Generic_Dictionary_System_String_Amazon_DynamoDBv2_Model_AttributeValueUpdate__System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync(System.String,System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValue},System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValueUpdate},System.Threading.CancellationToken)">
+  UpdateAsync(string, Dictionary&lt;string, AttributeValue&gt;, Dictionary&lt;string, AttributeValueUpdate&gt;, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L598"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates an item in the DynamoDB table based on the provided parameters.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Task UpdateAsync(string tableName, Dictionary&lt;string, AttributeValue&gt; key, Dictionary&lt;string, AttributeValueUpdate&gt; attributeUpdates, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tableName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the DynamoDB table.</p>
+</dd>
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Generated/Model/AttributeValue.cs">AttributeValue</a>&gt;</dt>
+    <dd><p>The key of the item to update.</p>
+</dd>
+    <dt><code>attributeUpdates</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Generated/Model/AttributeValueUpdate.cs">AttributeValueUpdate</a>&gt;</dt>
+    <dd><p>The attribute updates for the item.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>Task representing the asynchronous update operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown when key or attributeUpdates is null.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_UpdateAsync_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_UpdateAsync__1_Amazon_DynamoDBv2_Model_UpdateItemRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1(Amazon.DynamoDBv2.Model.UpdateItemRequest,System.Threading.CancellationToken)">
+  UpdateAsync&lt;T&gt;(UpdateItemRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L625"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates an item in the DynamoDB table based on the provided update item request.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Task&lt;T&gt; UpdateAsync&lt;T&gt;(UpdateItemRequest updateItemRequest, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>updateItemRequest</code> <a class="xref" href="https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Generated/Model/UpdateItemRequest.cs">UpdateItemRequest</a></dt>
+    <dd><p>The update item request.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</dt>
+    <dd><p>The updated item of type T.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of item to update.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown when updateItemRequest is null.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Innovt_Cloud_AWS_Dynamo_Repository_UpdateAsync_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync*"></a>
+
+  <h3 id="Innovt_Cloud_AWS_Dynamo_Repository_UpdateAsync__1___0_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1(``0,System.Threading.CancellationToken)">
+  UpdateAsync&lt;T&gt;(T, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L553"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method will perform an update operation on the table. The operation is based on the primary key and type is
+PUT.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;T&gt; UpdateAsync&lt;T&gt;(T instance, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>instance</code> <span class="xref">T</span></dt>
+    <dd><p>The instance that you want to update</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The instance updated.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Dynamo/Repository.cs/#L33" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

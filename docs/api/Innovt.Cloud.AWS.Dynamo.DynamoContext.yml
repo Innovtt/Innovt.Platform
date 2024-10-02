@@ -36,8 +36,6 @@ items:
     content.vb: Public MustInherit Class DynamoContext
   inheritance:
   - System.Object
-  derivedClasses:
-  - Innovt.Cloud.AWS.Dynamo.Tests.SampleDynamoContext
   inheritedMembers:
   - System.Object.Equals(System.Object)
   - System.Object.Equals(System.Object,System.Object)

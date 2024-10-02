@@ -226,7 +226,7 @@ references:
   commentId: T:Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter
   parent: Swashbuckle.AspNetCore.SwaggerGen
   isExternal: true
-  href: https://github.com/domaindrivendev/Swashbuckle.AspNetCore/blob/c3fd84b97e7b130d8728b82c0d33f0432dafb91e/src/Swashbuckle.AspNetCore.SwaggerGen/SwaggerGenerator/IOperationFilter.cs
+  href: https://github.com/domaindrivendev/Swashbuckle.AspNetCore/blob/e9bdab9d810295dc1962070f53770578cdc05c4e/src/Swashbuckle.AspNetCore.SwaggerGen/SwaggerGenerator/IOperationFilter.cs
   name: IOperationFilter
   nameWithType: IOperationFilter
   fullName: Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter
@@ -852,7 +852,7 @@ references:
   commentId: M:Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)
   parent: Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter
   isExternal: true
-  href: https://github.com/domaindrivendev/Swashbuckle.AspNetCore/blob/c3fd84b97e7b130d8728b82c0d33f0432dafb91e/src/Swashbuckle.AspNetCore.SwaggerGen/SwaggerGenerator/IOperationFilter.cs
+  href: https://github.com/domaindrivendev/Swashbuckle.AspNetCore/blob/e9bdab9d810295dc1962070f53770578cdc05c4e/src/Swashbuckle.AspNetCore.SwaggerGen/SwaggerGenerator/IOperationFilter.cs
   name: Apply(OpenApiOperation, OperationFilterContext)
   nameWithType: IOperationFilter.Apply(OpenApiOperation, OperationFilterContext)
   fullName: Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation, Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)
@@ -860,7 +860,7 @@ references:
   - uid: Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)
     name: Apply
     isExternal: true
-    href: https://github.com/domaindrivendev/Swashbuckle.AspNetCore/blob/c3fd84b97e7b130d8728b82c0d33f0432dafb91e/src/Swashbuckle.AspNetCore.SwaggerGen/SwaggerGenerator/IOperationFilter.cs
+    href: https://github.com/domaindrivendev/Swashbuckle.AspNetCore/blob/e9bdab9d810295dc1962070f53770578cdc05c4e/src/Swashbuckle.AspNetCore.SwaggerGen/SwaggerGenerator/IOperationFilter.cs
   - name: (
   - uid: Microsoft.OpenApi.Models.OpenApiOperation
     name: OpenApiOperation
@@ -871,13 +871,13 @@ references:
   - uid: Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext
     name: OperationFilterContext
     isExternal: true
-    href: https://github.com/domaindrivendev/Swashbuckle.AspNetCore/blob/c3fd84b97e7b130d8728b82c0d33f0432dafb91e/src/Swashbuckle.AspNetCore.SwaggerGen/SwaggerGenerator/IOperationFilter.cs
+    href: https://github.com/domaindrivendev/Swashbuckle.AspNetCore/blob/e9bdab9d810295dc1962070f53770578cdc05c4e/src/Swashbuckle.AspNetCore.SwaggerGen/SwaggerGenerator/IOperationFilter.cs
   - name: )
   spec.vb:
   - uid: Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)
     name: Apply
     isExternal: true
-    href: https://github.com/domaindrivendev/Swashbuckle.AspNetCore/blob/c3fd84b97e7b130d8728b82c0d33f0432dafb91e/src/Swashbuckle.AspNetCore.SwaggerGen/SwaggerGenerator/IOperationFilter.cs
+    href: https://github.com/domaindrivendev/Swashbuckle.AspNetCore/blob/e9bdab9d810295dc1962070f53770578cdc05c4e/src/Swashbuckle.AspNetCore.SwaggerGen/SwaggerGenerator/IOperationFilter.cs
   - name: (
   - uid: Microsoft.OpenApi.Models.OpenApiOperation
     name: OpenApiOperation
@@ -888,7 +888,7 @@ references:
   - uid: Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext
     name: OperationFilterContext
     isExternal: true
-    href: https://github.com/domaindrivendev/Swashbuckle.AspNetCore/blob/c3fd84b97e7b130d8728b82c0d33f0432dafb91e/src/Swashbuckle.AspNetCore.SwaggerGen/SwaggerGenerator/IOperationFilter.cs
+    href: https://github.com/domaindrivendev/Swashbuckle.AspNetCore/blob/e9bdab9d810295dc1962070f53770578cdc05c4e/src/Swashbuckle.AspNetCore.SwaggerGen/SwaggerGenerator/IOperationFilter.cs
   - name: )
 - uid: Microsoft.OpenApi.Models.OpenApiOperation
   commentId: T:Microsoft.OpenApi.Models.OpenApiOperation
@@ -902,7 +902,7 @@ references:
   commentId: T:Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext
   parent: Swashbuckle.AspNetCore.SwaggerGen
   isExternal: true
-  href: https://github.com/domaindrivendev/Swashbuckle.AspNetCore/blob/c3fd84b97e7b130d8728b82c0d33f0432dafb91e/src/Swashbuckle.AspNetCore.SwaggerGen/SwaggerGenerator/IOperationFilter.cs
+  href: https://github.com/domaindrivendev/Swashbuckle.AspNetCore/blob/e9bdab9d810295dc1962070f53770578cdc05c4e/src/Swashbuckle.AspNetCore.SwaggerGen/SwaggerGenerator/IOperationFilter.cs
   name: OperationFilterContext
   nameWithType: OperationFilterContext
   fullName: Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext

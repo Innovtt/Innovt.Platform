@@ -41,9 +41,6 @@ items:
     content.vb: Public MustInherit Class DomainEvent Implements IDataStream
   inheritance:
   - System.Object
-  derivedClasses:
-  - Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors.InvoiceDomainEvent
-  - Innovt.Domain.Tests.Mocks.UserCreated
   implements:
   - Innovt.Domain.Core.Streams.IDataStream
   inheritedMembers:

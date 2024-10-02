@@ -44,8 +44,6 @@ items:
     content.vb: Public MustInherit Class BaseDataModel(Of TDomain As Class, TDataModel As Class) Implements INotifyPropertyChanged, IBaseDataModel
   inheritance:
   - System.Object
-  derivedClasses:
-  - Innovt.Data.Tests.DataModel.UserDataModel
   implements:
   - System.ComponentModel.INotifyPropertyChanged
   - Innovt.Data.DataModels.IBaseDataModel

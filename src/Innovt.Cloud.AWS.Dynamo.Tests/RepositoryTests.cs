@@ -40,7 +40,7 @@ public class RepositoryTests
     {
         var context = new SampleDynamoContext();
 
-        var awsConfiguration = new DefaultAWSConfiguration("c2g-dev");
+        var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
 
         repository = new SampleRepository(context, loggerMock, awsConfiguration);
         try
@@ -124,7 +124,7 @@ public class RepositoryTests
     {
         var context = new SampleDynamoContext();
 
-        var awsConfiguration = new DefaultAWSConfiguration("c2g-dev");
+        var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
 
         repository = new SampleRepository(context, loggerMock, awsConfiguration);
 
@@ -194,7 +194,7 @@ public class RepositoryTests
     {
         var context = new SampleDynamoContext();
 
-        var awsConfiguration = new DefaultAWSConfiguration("c2g-dev");
+        var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
 
         repository = new SampleRepository(context, loggerMock, awsConfiguration);
 
@@ -239,7 +239,7 @@ public class RepositoryTests
         {
             var context = new SampleDynamoContext();
 
-            var awsConfiguration = new DefaultAWSConfiguration("c2g-dev");
+            var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
 
             repository = new SampleRepository(context, loggerMock, awsConfiguration);
 

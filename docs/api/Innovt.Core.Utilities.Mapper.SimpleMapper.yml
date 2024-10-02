@@ -23,7 +23,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: SimpleMapper
     path: ../src/Innovt.Core/Utilities/Mapper/SimpleMapper.cs
-    startLine: 14
+    startLine: 17
   assemblies:
   - Innovt.Core
   namespace: Innovt.Core.Utilities.Mapper
@@ -60,14 +60,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: Map
     path: ../src/Innovt.Core/Utilities/Mapper/SimpleMapper.cs
-    startLine: 54
+    startLine: 64
   assemblies:
   - Innovt.Core
   namespace: Innovt.Core.Utilities.Mapper
   summary: Maps the properties from the input object to a new instance of the output object type.
   example: []
   syntax:
-    content: 'public static T2 Map<T1, T2>(T1 input) where T1 : class'
+    content: 'public static T2 Map<T1, T2>(T1 input) where T1 : class where T2 : class'
     parameters:
     - id: input
       type: '{T1}'
@@ -80,7 +80,7 @@ items:
     return:
       type: '{T2}'
       description: A new instance of the output object type with properties mapped from the input object.
-    content.vb: Public Shared Function Map(Of T1 As Class, T2)(input As T1) As T2
+    content.vb: Public Shared Function Map(Of T1 As Class, T2 As Class)(input As T1) As T2
   overload: Innovt.Core.Utilities.Mapper.SimpleMapper.Map*
   nameWithType.vb: SimpleMapper.Map(Of T1, T2)(T1)
   fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.Map(Of T1, T2)(T1)
@@ -103,14 +103,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: Map
     path: ../src/Innovt.Core/Utilities/Mapper/SimpleMapper.cs
-    startLine: 71
+    startLine: 81
   assemblies:
   - Innovt.Core
   namespace: Innovt.Core.Utilities.Mapper
   summary: Maps the properties from the input object to the provided output object instance.
   example: []
   syntax:
-    content: 'public static void Map<T1, T2>(T1 inputInstance, T2 outputInstance) where T1 : class'
+    content: 'public static void Map<T1, T2>(T1 inputInstance, T2 outputInstance) where T1 : class where T2 : class'
     parameters:
     - id: inputInstance
       type: '{T1}'
@@ -123,7 +123,7 @@ items:
       description: The type of the input object.
     - id: T2
       description: The type of the output object.
-    content.vb: Public Shared Sub Map(Of T1 As Class, T2)(inputInstance As T1, outputInstance As T2)
+    content.vb: Public Shared Sub Map(Of T1 As Class, T2 As Class)(inputInstance As T1, outputInstance As T2)
   overload: Innovt.Core.Utilities.Mapper.SimpleMapper.Map*
   nameWithType.vb: SimpleMapper.Map(Of T1, T2)(T1, T2)
   fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.Map(Of T1, T2)(T1, T2)
@@ -147,7 +147,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: MapTo
     path: ../src/Innovt.Core/Utilities/Mapper/SimpleMapper.cs
-    startLine: 85
+    startLine: 95
   assemblies:
   - Innovt.Core
   namespace: Innovt.Core.Utilities.Mapper
@@ -189,7 +189,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: MapToList
     path: ../src/Innovt.Core/Utilities/Mapper/SimpleMapper.cs
-    startLine: 101
+    startLine: 111
   assemblies:
   - Innovt.Core
   namespace: Innovt.Core.Utilities.Mapper

@@ -52,8 +52,6 @@ items:
     content.vb: Public MustInherit Class ApiStartupBase
   inheritance:
   - System.Object
-  derivedClasses:
-  - Innovt.AspNetCore.Application.Tests.Startup
   inheritedMembers:
   - System.Object.Equals(System.Object)
   - System.Object.Equals(System.Object,System.Object)

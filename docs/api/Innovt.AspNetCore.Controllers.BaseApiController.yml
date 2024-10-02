@@ -39,8 +39,6 @@ items:
   inheritance:
   - System.Object
   - Microsoft.AspNetCore.Mvc.ControllerBase
-  derivedClasses:
-  - Innovt.AspNetCore.Application.Tests.Controllers.SampleController
   inheritedMembers:
   - Microsoft.AspNetCore.Mvc.ControllerBase.StatusCode(System.Int32)
   - Microsoft.AspNetCore.Mvc.ControllerBase.StatusCode(System.Int32,System.Object)
@@ -9575,7 +9573,6 @@ references:
     href: Innovt.Core.Utilities.Mapper.html
 - uid: Innovt.AspNetCore.Controllers.BaseApiController
   commentId: T:Innovt.AspNetCore.Controllers.BaseApiController
-  parent: Innovt.AspNetCore.Controllers
   href: Innovt.AspNetCore.Controllers.BaseApiController.html
   name: BaseApiController
   nameWithType: BaseApiController

@@ -41,7 +41,9 @@ items:
   inheritedMembers:
   - Innovt.Domain.Core.Model.Entity.Id
   - Innovt.Domain.Core.Model.Entity.CreatedAt
+  - Innovt.Domain.Core.Model.Entity.UpdatedAt
   - Innovt.Domain.Core.Model.Entity.IsNew
+  - Innovt.Domain.Core.Model.Entity.SetAsNew
   - Innovt.Domain.Core.Model.Entity.GetHashCode
   - Innovt.Domain.Core.Model.Entity.Equals(System.Object)
   - Innovt.Domain.Core.Model.Entity.AddDomainEvent(Innovt.Domain.Core.Events.DomainEvent)
@@ -335,6 +337,13 @@ references:
   name: CreatedAt
   nameWithType: Entity.CreatedAt
   fullName: Innovt.Domain.Core.Model.Entity.CreatedAt
+- uid: Innovt.Domain.Core.Model.Entity.UpdatedAt
+  commentId: P:Innovt.Domain.Core.Model.Entity.UpdatedAt
+  parent: Innovt.Domain.Core.Model.Entity
+  href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_UpdatedAt
+  name: UpdatedAt
+  nameWithType: Entity.UpdatedAt
+  fullName: Innovt.Domain.Core.Model.Entity.UpdatedAt
 - uid: Innovt.Domain.Core.Model.Entity.IsNew
   commentId: M:Innovt.Domain.Core.Model.Entity.IsNew
   parent: Innovt.Domain.Core.Model.Entity
@@ -352,6 +361,25 @@ references:
   - uid: Innovt.Domain.Core.Model.Entity.IsNew
     name: IsNew
     href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_IsNew
+  - name: (
+  - name: )
+- uid: Innovt.Domain.Core.Model.Entity.SetAsNew
+  commentId: M:Innovt.Domain.Core.Model.Entity.SetAsNew
+  parent: Innovt.Domain.Core.Model.Entity
+  href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_SetAsNew
+  name: SetAsNew()
+  nameWithType: Entity.SetAsNew()
+  fullName: Innovt.Domain.Core.Model.Entity.SetAsNew()
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Model.Entity.SetAsNew
+    name: SetAsNew
+    href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_SetAsNew
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Domain.Core.Model.Entity.SetAsNew
+    name: SetAsNew
+    href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_SetAsNew
   - name: (
   - name: )
 - uid: Innovt.Domain.Core.Model.Entity.GetHashCode

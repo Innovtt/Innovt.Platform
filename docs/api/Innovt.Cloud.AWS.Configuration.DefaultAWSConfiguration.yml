@@ -1,35 +1,35 @@
 ### YamlMime:ManagedReference
 items:
-- uid: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
-  commentId: T:Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
-  id: DefaultAWSConfiguration
+- uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
+  commentId: T:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
+  id: DefaultAwsConfiguration
   parent: Innovt.Cloud.AWS.Configuration
   children:
-  - Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.#ctor
-  - Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.String)
-  - Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.#ctor(System.String)
-  - Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.#ctor(System.String,System.String,System.String,System.String,System.String)
-  - Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.AccessKey
-  - Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.AccountNumber
-  - Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.GetCredential
-  - Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.Profile
-  - Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.Region
-  - Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.SecretKey
-  - Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.SessionToken
+  - Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor
+  - Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.String)
+  - Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor(System.String)
+  - Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor(System.String,System.String,System.String,System.String,System.String)
+  - Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccessKey
+  - Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccountNumber
+  - Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.GetCredential
+  - Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Profile
+  - Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Region
+  - Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SecretKey
+  - Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SessionToken
   langs:
   - csharp
   - vb
-  name: DefaultAWSConfiguration
-  nameWithType: DefaultAWSConfiguration
-  fullName: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
+  name: DefaultAwsConfiguration
+  nameWithType: DefaultAwsConfiguration
+  fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
   type: Class
   source:
     remote:
-      path: src/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs
+      path: src/Innovt.Cloud.AWS/Configuration/DefaultAwsConfiguration.cs
       branch: feature/ImproveDynamoMapping
       repo: https://github.com/Innovtt/Innovt.Platform.git
-    id: DefaultAWSConfiguration
-    path: ../src/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs
+    id: DefaultAwsConfiguration
+    path: ../src/Innovt.Cloud.AWS/Configuration/DefaultAwsConfiguration.cs
     startLine: 16
   assemblies:
   - Innovt.Cloud.AWS
@@ -37,8 +37,14 @@ items:
   summary: Represents the default AWS configuration used for AWS authentication and credentials.
   example: []
   syntax:
-    content: 'public class DefaultAWSConfiguration : IAwsConfiguration, IConfiguration'
-    content.vb: Public Class DefaultAWSConfiguration Implements IAwsConfiguration, IConfiguration
+    content: >-
+      [CLSCompliant(false)]
+
+      public class DefaultAwsConfiguration : IAwsConfiguration, IConfiguration
+    content.vb: >-
+      <CLSCompliant(False)>
+
+      Public Class DefaultAwsConfiguration Implements IAwsConfiguration, IConfiguration
   inheritance:
   - System.Object
   implements:
@@ -56,102 +62,108 @@ items:
   - System.Object.Innovt.Core.Utilities.Extensions.IsNull
   - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
   - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
-- uid: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.#ctor(System.String)
-  commentId: M:Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.#ctor(System.String)
+  attributes:
+  - type: System.CLSCompliantAttribute
+    ctor: System.CLSCompliantAttribute.#ctor(System.Boolean)
+    arguments:
+    - type: System.Boolean
+      value: false
+- uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor(System.String)
+  commentId: M:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor(System.String)
   id: '#ctor(System.String)'
-  parent: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
+  parent: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
   langs:
   - csharp
   - vb
-  name: DefaultAWSConfiguration(string)
-  nameWithType: DefaultAWSConfiguration.DefaultAWSConfiguration(string)
-  fullName: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.DefaultAWSConfiguration(string)
+  name: DefaultAwsConfiguration(string)
+  nameWithType: DefaultAwsConfiguration.DefaultAwsConfiguration(string)
+  fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.DefaultAwsConfiguration(string)
   type: Constructor
   source:
     remote:
-      path: src/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs
+      path: src/Innovt.Cloud.AWS/Configuration/DefaultAwsConfiguration.cs
       branch: feature/ImproveDynamoMapping
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: .ctor
-    path: ../src/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs
-    startLine: 25
+    path: ../src/Innovt.Cloud.AWS/Configuration/DefaultAwsConfiguration.cs
+    startLine: 26
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS.Configuration
   summary: The default profile name
   example: []
   syntax:
-    content: public DefaultAWSConfiguration(string profileName)
+    content: public DefaultAwsConfiguration(string profileName)
     parameters:
     - id: profileName
       type: System.String
       description: ''
     content.vb: Public Sub New(profileName As String)
-  overload: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.#ctor*
+  overload: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: ''
-  nameWithType.vb: DefaultAWSConfiguration.New(String)
-  fullName.vb: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.New(String)
+  nameWithType.vb: DefaultAwsConfiguration.New(String)
+  fullName.vb: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.New(String)
   name.vb: New(String)
-- uid: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.#ctor
-  commentId: M:Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.#ctor
+- uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor
+  commentId: M:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor
   id: '#ctor'
-  parent: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
+  parent: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
   langs:
   - csharp
   - vb
-  name: DefaultAWSConfiguration()
-  nameWithType: DefaultAWSConfiguration.DefaultAWSConfiguration()
-  fullName: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.DefaultAWSConfiguration()
+  name: DefaultAwsConfiguration()
+  nameWithType: DefaultAwsConfiguration.DefaultAwsConfiguration()
+  fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.DefaultAwsConfiguration()
   type: Constructor
   source:
     remote:
-      path: src/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs
+      path: src/Innovt.Cloud.AWS/Configuration/DefaultAwsConfiguration.cs
       branch: feature/ImproveDynamoMapping
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: .ctor
-    path: ../src/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs
-    startLine: 33
+    path: ../src/Innovt.Cloud.AWS/Configuration/DefaultAwsConfiguration.cs
+    startLine: 34
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS.Configuration
-  summary: Initializes a new instance of the <xref href="Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration" data-throw-if-not-resolved="false"></xref> class.
+  summary: Initializes a new instance of the <xref href="Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration" data-throw-if-not-resolved="false"></xref> class.
   example: []
   syntax:
-    content: public DefaultAWSConfiguration()
+    content: public DefaultAwsConfiguration()
     content.vb: Public Sub New()
-  overload: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.#ctor*
-  nameWithType.vb: DefaultAWSConfiguration.New()
-  fullName.vb: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.New()
+  overload: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor*
+  nameWithType.vb: DefaultAwsConfiguration.New()
+  fullName.vb: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.New()
   name.vb: New()
-- uid: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.String)
-  commentId: M:Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.String)
+- uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.String)
+  commentId: M:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.String)
   id: '#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.String)'
-  parent: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
+  parent: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
   langs:
   - csharp
   - vb
-  name: DefaultAWSConfiguration(IConfiguration, string)
-  nameWithType: DefaultAWSConfiguration.DefaultAWSConfiguration(IConfiguration, string)
-  fullName: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.DefaultAWSConfiguration(Microsoft.Extensions.Configuration.IConfiguration, string)
+  name: DefaultAwsConfiguration(IConfiguration, string)
+  nameWithType: DefaultAwsConfiguration.DefaultAwsConfiguration(IConfiguration, string)
+  fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.DefaultAwsConfiguration(Microsoft.Extensions.Configuration.IConfiguration, string)
   type: Constructor
   source:
     remote:
-      path: src/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs
+      path: src/Innovt.Cloud.AWS/Configuration/DefaultAwsConfiguration.cs
       branch: feature/ImproveDynamoMapping
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: .ctor
-    path: ../src/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs
-    startLine: 42
+    path: ../src/Innovt.Cloud.AWS/Configuration/DefaultAwsConfiguration.cs
+    startLine: 43
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS.Configuration
   summary: This Constructor will use the Autobind from GetSection.
   example: []
   syntax:
-    content: public DefaultAWSConfiguration(IConfiguration configuration, string sectionName = "AWS")
+    content: public DefaultAwsConfiguration(IConfiguration configuration, string sectionName = "AWS")
     parameters:
     - id: configuration
       type: Microsoft.Extensions.Configuration.IConfiguration
@@ -160,36 +172,36 @@ items:
       type: System.String
       description: The default is AWS.
     content.vb: Public Sub New(configuration As IConfiguration, sectionName As String = "AWS")
-  overload: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.#ctor*
-  nameWithType.vb: DefaultAWSConfiguration.New(IConfiguration, String)
-  fullName.vb: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.New(Microsoft.Extensions.Configuration.IConfiguration, String)
+  overload: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor*
+  nameWithType.vb: DefaultAwsConfiguration.New(IConfiguration, String)
+  fullName.vb: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.New(Microsoft.Extensions.Configuration.IConfiguration, String)
   name.vb: New(IConfiguration, String)
-- uid: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.#ctor(System.String,System.String,System.String,System.String,System.String)
-  commentId: M:Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.#ctor(System.String,System.String,System.String,System.String,System.String)
+- uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor(System.String,System.String,System.String,System.String,System.String)
+  commentId: M:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor(System.String,System.String,System.String,System.String,System.String)
   id: '#ctor(System.String,System.String,System.String,System.String,System.String)'
-  parent: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
+  parent: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
   langs:
   - csharp
   - vb
-  name: DefaultAWSConfiguration(string, string, string, string, string)
-  nameWithType: DefaultAWSConfiguration.DefaultAWSConfiguration(string, string, string, string, string)
-  fullName: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.DefaultAWSConfiguration(string, string, string, string, string)
+  name: DefaultAwsConfiguration(string, string, string, string, string)
+  nameWithType: DefaultAwsConfiguration.DefaultAwsConfiguration(string, string, string, string, string)
+  fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.DefaultAwsConfiguration(string, string, string, string, string)
   type: Constructor
   source:
     remote:
-      path: src/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs
+      path: src/Innovt.Cloud.AWS/Configuration/DefaultAwsConfiguration.cs
       branch: feature/ImproveDynamoMapping
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: .ctor
-    path: ../src/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs
-    startLine: 66
+    path: ../src/Innovt.Cloud.AWS/Configuration/DefaultAwsConfiguration.cs
+    startLine: 68
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS.Configuration
-  summary: Initializes a new instance of the <xref href="Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration" data-throw-if-not-resolved="false"></xref> class with provided credentials.
+  summary: Initializes a new instance of the <xref href="Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration" data-throw-if-not-resolved="false"></xref> class with provided credentials.
   example: []
   syntax:
-    content: public DefaultAWSConfiguration(string accessKey, string secretKey, string region, string accountNumber = null, string sessionToken = null)
+    content: public DefaultAwsConfiguration(string accessKey, string secretKey, string region, string accountNumber = null, string sessionToken = null)
     parameters:
     - id: accessKey
       type: System.String
@@ -207,7 +219,7 @@ items:
       type: System.String
       description: The AWS session token (optional).
     content.vb: Public Sub New(accessKey As String, secretKey As String, region As String, accountNumber As String = Nothing, sessionToken As String = Nothing)
-  overload: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.#ctor*
+  overload: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
@@ -215,28 +227,28 @@ items:
       Thrown when <code class="paramref">accessKey</code>, <code class="paramref">secretKey</code>, or
 
       <code class="paramref">region</code> is null.
-  nameWithType.vb: DefaultAWSConfiguration.New(String, String, String, String, String)
-  fullName.vb: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.New(String, String, String, String, String)
+  nameWithType.vb: DefaultAwsConfiguration.New(String, String, String, String, String)
+  fullName.vb: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.New(String, String, String, String, String)
   name.vb: New(String, String, String, String, String)
-- uid: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.SessionToken
-  commentId: P:Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.SessionToken
+- uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SessionToken
+  commentId: P:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SessionToken
   id: SessionToken
-  parent: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
+  parent: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
   langs:
   - csharp
   - vb
   name: SessionToken
-  nameWithType: DefaultAWSConfiguration.SessionToken
-  fullName: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.SessionToken
+  nameWithType: DefaultAwsConfiguration.SessionToken
+  fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SessionToken
   type: Property
   source:
     remote:
-      path: src/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs
+      path: src/Innovt.Cloud.AWS/Configuration/DefaultAwsConfiguration.cs
       branch: feature/ImproveDynamoMapping
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: SessionToken
-    path: ../src/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs
-    startLine: 83
+    path: ../src/Innovt.Cloud.AWS/Configuration/DefaultAwsConfiguration.cs
+    startLine: 85
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS.Configuration
@@ -248,26 +260,26 @@ items:
     return:
       type: System.String
     content.vb: Public Property SessionToken As String
-  overload: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.SessionToken*
-- uid: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.AccountNumber
-  commentId: P:Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.AccountNumber
+  overload: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SessionToken*
+- uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccountNumber
+  commentId: P:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccountNumber
   id: AccountNumber
-  parent: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
+  parent: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
   langs:
   - csharp
   - vb
   name: AccountNumber
-  nameWithType: DefaultAWSConfiguration.AccountNumber
-  fullName: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.AccountNumber
+  nameWithType: DefaultAwsConfiguration.AccountNumber
+  fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccountNumber
   type: Property
   source:
     remote:
-      path: src/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs
+      path: src/Innovt.Cloud.AWS/Configuration/DefaultAwsConfiguration.cs
       branch: feature/ImproveDynamoMapping
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: AccountNumber
-    path: ../src/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs
-    startLine: 88
+    path: ../src/Innovt.Cloud.AWS/Configuration/DefaultAwsConfiguration.cs
+    startLine: 90
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS.Configuration
@@ -279,28 +291,28 @@ items:
     return:
       type: System.String
     content.vb: Public Property AccountNumber As String
-  overload: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.AccountNumber*
+  overload: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccountNumber*
   implements:
   - Innovt.Cloud.AWS.Configuration.IAwsConfiguration.AccountNumber
-- uid: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.SecretKey
-  commentId: P:Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.SecretKey
+- uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SecretKey
+  commentId: P:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SecretKey
   id: SecretKey
-  parent: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
+  parent: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
   langs:
   - csharp
   - vb
   name: SecretKey
-  nameWithType: DefaultAWSConfiguration.SecretKey
-  fullName: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.SecretKey
+  nameWithType: DefaultAwsConfiguration.SecretKey
+  fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SecretKey
   type: Property
   source:
     remote:
-      path: src/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs
+      path: src/Innovt.Cloud.AWS/Configuration/DefaultAwsConfiguration.cs
       branch: feature/ImproveDynamoMapping
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: SecretKey
-    path: ../src/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs
-    startLine: 93
+    path: ../src/Innovt.Cloud.AWS/Configuration/DefaultAwsConfiguration.cs
+    startLine: 95
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS.Configuration
@@ -312,28 +324,28 @@ items:
     return:
       type: System.String
     content.vb: Public Property SecretKey As String
-  overload: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.SecretKey*
+  overload: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SecretKey*
   implements:
   - Innovt.Cloud.IConfiguration.SecretKey
-- uid: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.AccessKey
-  commentId: P:Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.AccessKey
+- uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccessKey
+  commentId: P:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccessKey
   id: AccessKey
-  parent: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
+  parent: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
   langs:
   - csharp
   - vb
   name: AccessKey
-  nameWithType: DefaultAWSConfiguration.AccessKey
-  fullName: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.AccessKey
+  nameWithType: DefaultAwsConfiguration.AccessKey
+  fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccessKey
   type: Property
   source:
     remote:
-      path: src/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs
+      path: src/Innovt.Cloud.AWS/Configuration/DefaultAwsConfiguration.cs
       branch: feature/ImproveDynamoMapping
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: AccessKey
-    path: ../src/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs
-    startLine: 98
+    path: ../src/Innovt.Cloud.AWS/Configuration/DefaultAwsConfiguration.cs
+    startLine: 100
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS.Configuration
@@ -345,28 +357,28 @@ items:
     return:
       type: System.String
     content.vb: Public Property AccessKey As String
-  overload: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.AccessKey*
+  overload: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccessKey*
   implements:
   - Innovt.Cloud.IConfiguration.AccessKey
-- uid: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.Region
-  commentId: P:Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.Region
+- uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Region
+  commentId: P:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Region
   id: Region
-  parent: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
+  parent: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
   langs:
   - csharp
   - vb
   name: Region
-  nameWithType: DefaultAWSConfiguration.Region
-  fullName: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.Region
+  nameWithType: DefaultAwsConfiguration.Region
+  fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Region
   type: Property
   source:
     remote:
-      path: src/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs
+      path: src/Innovt.Cloud.AWS/Configuration/DefaultAwsConfiguration.cs
       branch: feature/ImproveDynamoMapping
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: Region
-    path: ../src/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs
-    startLine: 103
+    path: ../src/Innovt.Cloud.AWS/Configuration/DefaultAwsConfiguration.cs
+    startLine: 105
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS.Configuration
@@ -378,28 +390,28 @@ items:
     return:
       type: System.String
     content.vb: Public Property Region As String
-  overload: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.Region*
+  overload: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Region*
   implements:
   - Innovt.Cloud.IConfiguration.Region
-- uid: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.Profile
-  commentId: P:Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.Profile
+- uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Profile
+  commentId: P:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Profile
   id: Profile
-  parent: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
+  parent: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
   langs:
   - csharp
   - vb
   name: Profile
-  nameWithType: DefaultAWSConfiguration.Profile
-  fullName: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.Profile
+  nameWithType: DefaultAwsConfiguration.Profile
+  fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Profile
   type: Property
   source:
     remote:
-      path: src/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs
+      path: src/Innovt.Cloud.AWS/Configuration/DefaultAwsConfiguration.cs
       branch: feature/ImproveDynamoMapping
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: Profile
-    path: ../src/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs
-    startLine: 108
+    path: ../src/Innovt.Cloud.AWS/Configuration/DefaultAwsConfiguration.cs
+    startLine: 110
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS.Configuration
@@ -411,28 +423,28 @@ items:
     return:
       type: System.String
     content.vb: Public Property Profile As String
-  overload: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.Profile*
+  overload: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Profile*
   implements:
   - Innovt.Cloud.AWS.Configuration.IAwsConfiguration.Profile
-- uid: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.GetCredential
-  commentId: M:Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.GetCredential
+- uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.GetCredential
+  commentId: M:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.GetCredential
   id: GetCredential
-  parent: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
+  parent: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
   langs:
   - csharp
   - vb
   name: GetCredential()
-  nameWithType: DefaultAWSConfiguration.GetCredential()
-  fullName: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.GetCredential()
+  nameWithType: DefaultAwsConfiguration.GetCredential()
+  fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.GetCredential()
   type: Method
   source:
     remote:
-      path: src/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs
+      path: src/Innovt.Cloud.AWS/Configuration/DefaultAwsConfiguration.cs
       branch: feature/ImproveDynamoMapping
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: GetCredential
-    path: ../src/Innovt.Cloud.AWS/Configuration/DefaultAWSConfiguration.cs
-    startLine: 114
+    path: ../src/Innovt.Cloud.AWS/Configuration/DefaultAwsConfiguration.cs
+    startLine: 116
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS.Configuration
@@ -444,7 +456,7 @@ items:
       type: Amazon.Runtime.AWSCredentials
       description: The AWS credentials.
     content.vb: Public Function GetCredential() As AWSCredentials
-  overload: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.GetCredential*
+  overload: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.GetCredential*
   implements:
   - Innovt.Cloud.AWS.Configuration.IAwsConfiguration.GetCredential
 references:
@@ -1047,14 +1059,14 @@ references:
   name: ArgumentNullException
   nameWithType: ArgumentNullException
   fullName: System.ArgumentNullException
-- uid: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.#ctor*
-  commentId: Overload:Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.#ctor
-  href: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAWSConfiguration__ctor_System_String_
-  name: DefaultAWSConfiguration
-  nameWithType: DefaultAWSConfiguration.DefaultAWSConfiguration
-  fullName: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.DefaultAWSConfiguration
-  nameWithType.vb: DefaultAWSConfiguration.New
-  fullName.vb: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.New
+- uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor*
+  commentId: Overload:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor
+  href: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration__ctor_System_String_
+  name: DefaultAwsConfiguration
+  nameWithType: DefaultAwsConfiguration.DefaultAwsConfiguration
+  fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.DefaultAwsConfiguration
+  nameWithType.vb: DefaultAwsConfiguration.New
+  fullName.vb: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.New
   name.vb: New
 - uid: System.String
   commentId: T:System.String
@@ -1067,12 +1079,12 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
-- uid: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
-  commentId: T:Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
-  href: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html
-  name: DefaultAWSConfiguration
-  nameWithType: DefaultAWSConfiguration
-  fullName: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
+- uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
+  commentId: T:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
+  href: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html
+  name: DefaultAwsConfiguration
+  nameWithType: DefaultAwsConfiguration
+  fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
 - uid: Microsoft.Extensions.Configuration.IConfiguration
   commentId: T:Microsoft.Extensions.Configuration.IConfiguration
   parent: Microsoft.Extensions.Configuration
@@ -1118,18 +1130,18 @@ references:
     name: Configuration
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration
-- uid: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.SessionToken*
-  commentId: Overload:Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.SessionToken
-  href: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAWSConfiguration_SessionToken
+- uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SessionToken*
+  commentId: Overload:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SessionToken
+  href: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_SessionToken
   name: SessionToken
-  nameWithType: DefaultAWSConfiguration.SessionToken
-  fullName: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.SessionToken
-- uid: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.AccountNumber*
-  commentId: Overload:Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.AccountNumber
-  href: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAWSConfiguration_AccountNumber
+  nameWithType: DefaultAwsConfiguration.SessionToken
+  fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SessionToken
+- uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccountNumber*
+  commentId: Overload:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccountNumber
+  href: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_AccountNumber
   name: AccountNumber
-  nameWithType: DefaultAWSConfiguration.AccountNumber
-  fullName: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.AccountNumber
+  nameWithType: DefaultAwsConfiguration.AccountNumber
+  fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccountNumber
 - uid: Innovt.Cloud.AWS.Configuration.IAwsConfiguration.AccountNumber
   commentId: P:Innovt.Cloud.AWS.Configuration.IAwsConfiguration.AccountNumber
   parent: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
@@ -1137,12 +1149,12 @@ references:
   name: AccountNumber
   nameWithType: IAwsConfiguration.AccountNumber
   fullName: Innovt.Cloud.AWS.Configuration.IAwsConfiguration.AccountNumber
-- uid: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.SecretKey*
-  commentId: Overload:Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.SecretKey
-  href: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAWSConfiguration_SecretKey
+- uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SecretKey*
+  commentId: Overload:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SecretKey
+  href: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_SecretKey
   name: SecretKey
-  nameWithType: DefaultAWSConfiguration.SecretKey
-  fullName: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.SecretKey
+  nameWithType: DefaultAwsConfiguration.SecretKey
+  fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SecretKey
 - uid: Innovt.Cloud.IConfiguration.SecretKey
   commentId: P:Innovt.Cloud.IConfiguration.SecretKey
   parent: Innovt.Cloud.IConfiguration
@@ -1150,12 +1162,12 @@ references:
   name: SecretKey
   nameWithType: IConfiguration.SecretKey
   fullName: Innovt.Cloud.IConfiguration.SecretKey
-- uid: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.AccessKey*
-  commentId: Overload:Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.AccessKey
-  href: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAWSConfiguration_AccessKey
+- uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccessKey*
+  commentId: Overload:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccessKey
+  href: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_AccessKey
   name: AccessKey
-  nameWithType: DefaultAWSConfiguration.AccessKey
-  fullName: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.AccessKey
+  nameWithType: DefaultAwsConfiguration.AccessKey
+  fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccessKey
 - uid: Innovt.Cloud.IConfiguration.AccessKey
   commentId: P:Innovt.Cloud.IConfiguration.AccessKey
   parent: Innovt.Cloud.IConfiguration
@@ -1163,12 +1175,12 @@ references:
   name: AccessKey
   nameWithType: IConfiguration.AccessKey
   fullName: Innovt.Cloud.IConfiguration.AccessKey
-- uid: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.Region*
-  commentId: Overload:Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.Region
-  href: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAWSConfiguration_Region
+- uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Region*
+  commentId: Overload:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Region
+  href: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_Region
   name: Region
-  nameWithType: DefaultAWSConfiguration.Region
-  fullName: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.Region
+  nameWithType: DefaultAwsConfiguration.Region
+  fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Region
 - uid: Innovt.Cloud.IConfiguration.Region
   commentId: P:Innovt.Cloud.IConfiguration.Region
   parent: Innovt.Cloud.IConfiguration
@@ -1176,12 +1188,12 @@ references:
   name: Region
   nameWithType: IConfiguration.Region
   fullName: Innovt.Cloud.IConfiguration.Region
-- uid: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.Profile*
-  commentId: Overload:Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.Profile
-  href: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAWSConfiguration_Profile
+- uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Profile*
+  commentId: Overload:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Profile
+  href: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_Profile
   name: Profile
-  nameWithType: DefaultAWSConfiguration.Profile
-  fullName: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.Profile
+  nameWithType: DefaultAwsConfiguration.Profile
+  fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Profile
 - uid: Innovt.Cloud.AWS.Configuration.IAwsConfiguration.Profile
   commentId: P:Innovt.Cloud.AWS.Configuration.IAwsConfiguration.Profile
   parent: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
@@ -1189,12 +1201,12 @@ references:
   name: Profile
   nameWithType: IAwsConfiguration.Profile
   fullName: Innovt.Cloud.AWS.Configuration.IAwsConfiguration.Profile
-- uid: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.GetCredential*
-  commentId: Overload:Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.GetCredential
-  href: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAWSConfiguration_GetCredential
+- uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.GetCredential*
+  commentId: Overload:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.GetCredential
+  href: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_GetCredential
   name: GetCredential
-  nameWithType: DefaultAWSConfiguration.GetCredential
-  fullName: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.GetCredential
+  nameWithType: DefaultAwsConfiguration.GetCredential
+  fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.GetCredential
 - uid: Innovt.Cloud.AWS.Configuration.IAwsConfiguration.GetCredential
   commentId: M:Innovt.Cloud.AWS.Configuration.IAwsConfiguration.GetCredential
   parent: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
