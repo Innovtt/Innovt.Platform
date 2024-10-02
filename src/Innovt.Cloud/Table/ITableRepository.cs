@@ -31,8 +31,8 @@ public interface ITableRepository : IDisposable
     /// <param name="messages">The list of items to add.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous add operation.</returns>
-    Task AddAsync<T>(IList<T> messages, CancellationToken cancellationToken = default) where T : class;
-
+    Task AddListAsync<T>(ICollection<T> messages, CancellationToken cancellationToken = default) where T : class;
+    
     /// <summary>
     ///     This method will perform an update operation on the table. The operation is based on the primary key and type is
     ///     PUT.
@@ -77,8 +77,8 @@ public interface ITableRepository : IDisposable
     /// <param name="cancellationToken"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    Task DeleteAsync<T>(List<T> messages, CancellationToken cancellationToken = default) where T : class;
-
+    Task DeleteListAsync<T>(ICollection<T> messages, CancellationToken cancellationToken = default) where T : class;
+  
     /// <summary>
     ///     Asynchronously deletes an item using its identifier and optional range key.
     /// </summary>
@@ -251,4 +251,12 @@ public interface ITableRepository : IDisposable
     /// <returns>A list of items of type T.</returns>
     Task<List<T>> BatchGetItem<T>(BatchGetItemRequest batchGetItemRequest,
         CancellationToken cancellationToken = default) where T : class;
+    
+    /// <summary>
+    /// Create a transaction write item based on the instance.
+    /// </summary>
+    /// <param name="instance">A mapped instance with context.</param>
+    /// <typeparam name="T">A typed mapped entity</typeparam>
+    /// <returns>A incomplete transaction write item with properties mapped.</returns>
+    TransactionWriteItem CreateTransactionWriteItem<T>(T instance) where T : class;
 }

@@ -93,7 +93,7 @@ internal class AdminUserDataModel : DataModelBase
             Sk = "ADMINUSER",
             Name = user.Name,
             UserId = user.Id,
-            CreatedAt = user.CreatedAt.GetValueOrDefault().UtcDateTime,
+            CreatedAt = user.CreatedAt.UtcDateTime,
             Email = user.Email,
             PasswordHash = user.PasswordHash,
             IsEnabled = user.IsEnabled,

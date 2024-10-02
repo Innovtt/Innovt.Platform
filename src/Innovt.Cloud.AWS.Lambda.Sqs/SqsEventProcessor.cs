@@ -20,14 +20,10 @@ namespace Innovt.Cloud.AWS.Lambda.Sqs;
 ///     If you're using this feature with a FIFO queue, your function should stop processing messages after the first
 ///     failure and return all failed and unprocessed messages in batchItemFailures. This helps preserve the ordering of
 ///     messages in your queue.
+///     The abstract SqsEventProcessor class serves as the base class for processing Amazon SQS events in AWS Lambda
+///     functions.
 /// </summary>
 /// <typeparam name="TBody"></typeparam>
-/// 
-
-// <summary>
-/// The abstract SqsEventProcessor class serves as the base class for processing Amazon SQS events in AWS Lambda functions.
-/// </summary>
-/// <typeparam name="TBody">The type of the message body within SQS event records.</typeparam>
 public abstract class SqsEventProcessor<TBody> : EventProcessor<SQSEvent, BatchFailureResponse> where TBody : class
 {
     private readonly bool isFifo;

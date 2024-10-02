@@ -1,0 +1,102 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration
+  commentId: N:Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration
+  id: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration
+  children:
+  - Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationEvent
+  - Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationRequest
+  - Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationResponse
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration
+  nameWithType: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration
+  type: Namespace
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Cognito.Events
+references:
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationEvent
+  commentId: T:Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationEvent
+  parent: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationEvent.html
+  name: PreTokenGenerationEvent
+  nameWithType: PreTokenGenerationEvent
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationEvent
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationRequest
+  commentId: T:Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationRequest
+  parent: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationRequest.html
+  name: PreTokenGenerationRequest
+  nameWithType: PreTokenGenerationRequest
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationRequest
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationResponse
+  commentId: T:Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationResponse
+  parent: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationResponse.html
+  name: PreTokenGenerationResponse
+  nameWithType: PreTokenGenerationResponse
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationResponse
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration
+  commentId: N:Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration
+  nameWithType: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda
+    name: Lambda
+    href: Innovt.Cloud.AWS.Lambda.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito
+    name: Cognito
+    href: Innovt.Cloud.AWS.Lambda.Cognito.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events
+    name: Events
+    href: Innovt.Cloud.AWS.Lambda.Cognito.Events.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration
+    name: PreTokenGeneration
+    href: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda
+    name: Lambda
+    href: Innovt.Cloud.AWS.Lambda.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito
+    name: Cognito
+    href: Innovt.Cloud.AWS.Lambda.Cognito.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events
+    name: Events
+    href: Innovt.Cloud.AWS.Lambda.Cognito.Events.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration
+    name: PreTokenGeneration
+    href: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.html

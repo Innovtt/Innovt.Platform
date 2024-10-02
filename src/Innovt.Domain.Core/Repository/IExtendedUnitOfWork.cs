@@ -44,8 +44,6 @@ public interface IExtendedUnitOfWork : IUnitOfWork
     /// <param name="entities">The entities to add.</param>
     /// <param name="cancellationToken">The optional cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    /// e asynchronous operation.
-    /// </returns>
     Task AddAsync<T>(IEnumerable<T> entities, CancellationToken cancellationToken = default) where T : class;
 
     /// <summary>

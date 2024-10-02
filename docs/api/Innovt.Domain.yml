@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Domain
+  commentId: N:Innovt.Domain
+  id: Innovt.Domain
+  children:
+  - Innovt.Domain.BaseCreditCard
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Domain
+  nameWithType: Innovt.Domain
+  fullName: Innovt.Domain
+  type: Namespace
+  assemblies:
+  - Innovt.Domain
+references:
+- uid: Innovt.Domain.BaseCreditCard
+  commentId: T:Innovt.Domain.BaseCreditCard
+  href: Innovt.Domain.BaseCreditCard.html
+  name: BaseCreditCard
+  nameWithType: BaseCreditCard
+  fullName: Innovt.Domain.BaseCreditCard

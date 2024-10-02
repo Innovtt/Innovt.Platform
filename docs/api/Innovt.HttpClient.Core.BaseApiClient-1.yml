@@ -1,0 +1,1609 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.HttpClient.Core.BaseApiClient`1
+  commentId: T:Innovt.HttpClient.Core.BaseApiClient`1
+  id: BaseApiClient`1
+  parent: Innovt.HttpClient.Core
+  children:
+  - Innovt.HttpClient.Core.BaseApiClient`1.#ctor(Innovt.HttpClient.Core.ApiContext,Innovt.Core.Serialization.ISerializer)
+  - Innovt.HttpClient.Core.BaseApiClient`1.#ctor(Innovt.HttpClient.Core.ApiContext,System.Net.Http.IHttpClientFactory,Innovt.Core.Serialization.ISerializer)
+  - Innovt.HttpClient.Core.BaseApiClient`1.ParseResponse``1(System.Net.Http.HttpResponseMessage)
+  - Innovt.HttpClient.Core.BaseApiClient`1.ParseStreamResponse(System.Net.Http.HttpResponseMessage)
+  langs:
+  - csharp
+  - vb
+  name: BaseApiClient<TErrorResponse>
+  nameWithType: BaseApiClient<TErrorResponse>
+  fullName: Innovt.HttpClient.Core.BaseApiClient<TErrorResponse>
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.HttpClient.Core/BaseApiClient.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: BaseApiClient
+    path: ../src/Innovt.HttpClient.Core/BaseApiClient.cs
+    startLine: 298
+  assemblies:
+  - Innovt.HttpClient.Core
+  namespace: Innovt.HttpClient.Core
+  summary: >-
+    Abstract base class for API clients, providing common functionality for sending HTTP requests and handling
+
+    responses.
+  example: []
+  syntax:
+    content: 'public abstract class BaseApiClient<TErrorResponse> : BaseApiClient where TErrorResponse : class'
+    typeParameters:
+    - id: TErrorResponse
+      description: Type representing the error response in case of non-successful HTTP requests.
+    content.vb: Public MustInherit Class BaseApiClient(Of TErrorResponse As Class) Inherits BaseApiClient
+  inheritance:
+  - System.Object
+  - Innovt.HttpClient.Core.BaseApiClient
+  inheritedMembers:
+  - Innovt.HttpClient.Core.BaseApiClient.ApiContext
+  - Innovt.HttpClient.Core.BaseApiClient.Serializer
+  - Innovt.HttpClient.Core.BaseApiClient.CreateHttpClient
+  - Innovt.HttpClient.Core.BaseApiClient.PostAsync``1(System.Uri,System.String,System.Net.Http.HttpContent,System.Threading.CancellationToken)
+  - Innovt.HttpClient.Core.BaseApiClient.PostAsync(System.Uri,System.String,System.Net.Http.HttpContent,System.Threading.CancellationToken)
+  - Innovt.HttpClient.Core.BaseApiClient.PutAsync``1(System.Uri,System.String,System.Net.Http.HttpContent,System.Collections.Generic.Dictionary{System.String,System.String},System.Threading.CancellationToken)
+  - Innovt.HttpClient.Core.BaseApiClient.PutAsync``1(System.Uri,System.String,System.Net.Http.HttpContent,System.Threading.CancellationToken)
+  - Innovt.HttpClient.Core.BaseApiClient.GetAsync``1(System.Uri,System.String,System.Threading.CancellationToken)
+  - Innovt.HttpClient.Core.BaseApiClient.GetStreamAsync(System.Uri,System.String,System.Threading.CancellationToken)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  nameWithType.vb: BaseApiClient(Of TErrorResponse)
+  fullName.vb: Innovt.HttpClient.Core.BaseApiClient(Of TErrorResponse)
+  name.vb: BaseApiClient(Of TErrorResponse)
+- uid: Innovt.HttpClient.Core.BaseApiClient`1.#ctor(Innovt.HttpClient.Core.ApiContext,System.Net.Http.IHttpClientFactory,Innovt.Core.Serialization.ISerializer)
+  commentId: M:Innovt.HttpClient.Core.BaseApiClient`1.#ctor(Innovt.HttpClient.Core.ApiContext,System.Net.Http.IHttpClientFactory,Innovt.Core.Serialization.ISerializer)
+  id: '#ctor(Innovt.HttpClient.Core.ApiContext,System.Net.Http.IHttpClientFactory,Innovt.Core.Serialization.ISerializer)'
+  parent: Innovt.HttpClient.Core.BaseApiClient`1
+  langs:
+  - csharp
+  - vb
+  name: BaseApiClient(ApiContext, IHttpClientFactory, ISerializer)
+  nameWithType: BaseApiClient<TErrorResponse>.BaseApiClient(ApiContext, IHttpClientFactory, ISerializer)
+  fullName: Innovt.HttpClient.Core.BaseApiClient<TErrorResponse>.BaseApiClient(Innovt.HttpClient.Core.ApiContext, System.Net.Http.IHttpClientFactory, Innovt.Core.Serialization.ISerializer)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.HttpClient.Core/BaseApiClient.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: ../src/Innovt.HttpClient.Core/BaseApiClient.cs
+    startLine: 306
+  assemblies:
+  - Innovt.HttpClient.Core
+  namespace: Innovt.HttpClient.Core
+  summary: Initializes a new instance of the <xref href="Innovt.HttpClient.Core.BaseApiClient%601" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: protected BaseApiClient(ApiContext apiContext, IHttpClientFactory httpClientFactory, ISerializer serializer)
+    parameters:
+    - id: apiContext
+      type: Innovt.HttpClient.Core.ApiContext
+      description: The API context containing necessary information like access token and token type.
+    - id: httpClientFactory
+      type: System.Net.Http.IHttpClientFactory
+      description: The factory for creating HTTP clients.
+    - id: serializer
+      type: Innovt.Core.Serialization.ISerializer
+      description: The serializer used to deserialize response data.
+    content.vb: Protected Sub New(apiContext As ApiContext, httpClientFactory As IHttpClientFactory, serializer As ISerializer)
+  overload: Innovt.HttpClient.Core.BaseApiClient`1.#ctor*
+  nameWithType.vb: BaseApiClient(Of TErrorResponse).New(ApiContext, IHttpClientFactory, ISerializer)
+  fullName.vb: Innovt.HttpClient.Core.BaseApiClient(Of TErrorResponse).New(Innovt.HttpClient.Core.ApiContext, System.Net.Http.IHttpClientFactory, Innovt.Core.Serialization.ISerializer)
+  name.vb: New(ApiContext, IHttpClientFactory, ISerializer)
+- uid: Innovt.HttpClient.Core.BaseApiClient`1.#ctor(Innovt.HttpClient.Core.ApiContext,Innovt.Core.Serialization.ISerializer)
+  commentId: M:Innovt.HttpClient.Core.BaseApiClient`1.#ctor(Innovt.HttpClient.Core.ApiContext,Innovt.Core.Serialization.ISerializer)
+  id: '#ctor(Innovt.HttpClient.Core.ApiContext,Innovt.Core.Serialization.ISerializer)'
+  parent: Innovt.HttpClient.Core.BaseApiClient`1
+  langs:
+  - csharp
+  - vb
+  name: BaseApiClient(ApiContext, ISerializer)
+  nameWithType: BaseApiClient<TErrorResponse>.BaseApiClient(ApiContext, ISerializer)
+  fullName: Innovt.HttpClient.Core.BaseApiClient<TErrorResponse>.BaseApiClient(Innovt.HttpClient.Core.ApiContext, Innovt.Core.Serialization.ISerializer)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.HttpClient.Core/BaseApiClient.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: ../src/Innovt.HttpClient.Core/BaseApiClient.cs
+    startLine: 316
+  assemblies:
+  - Innovt.HttpClient.Core
+  namespace: Innovt.HttpClient.Core
+  summary: Initializes a new instance of the <xref href="Innovt.HttpClient.Core.BaseApiClient%601" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: protected BaseApiClient(ApiContext apiContext, ISerializer serializer)
+    parameters:
+    - id: apiContext
+      type: Innovt.HttpClient.Core.ApiContext
+      description: The API context containing necessary information like access token and token type.
+    - id: serializer
+      type: Innovt.Core.Serialization.ISerializer
+      description: The serializer used to deserialize response data.
+    content.vb: Protected Sub New(apiContext As ApiContext, serializer As ISerializer)
+  overload: Innovt.HttpClient.Core.BaseApiClient`1.#ctor*
+  nameWithType.vb: BaseApiClient(Of TErrorResponse).New(ApiContext, ISerializer)
+  fullName.vb: Innovt.HttpClient.Core.BaseApiClient(Of TErrorResponse).New(Innovt.HttpClient.Core.ApiContext, Innovt.Core.Serialization.ISerializer)
+  name.vb: New(ApiContext, ISerializer)
+- uid: Innovt.HttpClient.Core.BaseApiClient`1.ParseResponse``1(System.Net.Http.HttpResponseMessage)
+  commentId: M:Innovt.HttpClient.Core.BaseApiClient`1.ParseResponse``1(System.Net.Http.HttpResponseMessage)
+  id: ParseResponse``1(System.Net.Http.HttpResponseMessage)
+  parent: Innovt.HttpClient.Core.BaseApiClient`1
+  langs:
+  - csharp
+  - vb
+  name: ParseResponse<T>(HttpResponseMessage)
+  nameWithType: BaseApiClient<TErrorResponse>.ParseResponse<T>(HttpResponseMessage)
+  fullName: Innovt.HttpClient.Core.BaseApiClient<TErrorResponse>.ParseResponse<T>(System.Net.Http.HttpResponseMessage)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.HttpClient.Core/BaseApiClient.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ParseResponse
+    path: ../src/Innovt.HttpClient.Core/BaseApiClient.cs
+    startLine: 326
+  assemblies:
+  - Innovt.HttpClient.Core
+  namespace: Innovt.HttpClient.Core
+  summary: Parses the HTTP response message and handles success or error based on the status code.
+  example: []
+  syntax:
+    content: protected override Task<T> ParseResponse<T>(HttpResponseMessage response)
+    parameters:
+    - id: response
+      type: System.Net.Http.HttpResponseMessage
+      description: The HTTP response message to parse.
+    typeParameters:
+    - id: T
+      description: Type representing the success response.
+    return:
+      type: System.Threading.Tasks.Task{{T}}
+      description: The deserialized success response.
+    content.vb: Protected Overrides Function ParseResponse(Of T)(response As HttpResponseMessage) As Task(Of T)
+  overridden: Innovt.HttpClient.Core.BaseApiClient.ParseResponse``1(System.Net.Http.HttpResponseMessage)
+  overload: Innovt.HttpClient.Core.BaseApiClient`1.ParseResponse*
+  nameWithType.vb: BaseApiClient(Of TErrorResponse).ParseResponse(Of T)(HttpResponseMessage)
+  fullName.vb: Innovt.HttpClient.Core.BaseApiClient(Of TErrorResponse).ParseResponse(Of T)(System.Net.Http.HttpResponseMessage)
+  name.vb: ParseResponse(Of T)(HttpResponseMessage)
+- uid: Innovt.HttpClient.Core.BaseApiClient`1.ParseStreamResponse(System.Net.Http.HttpResponseMessage)
+  commentId: M:Innovt.HttpClient.Core.BaseApiClient`1.ParseStreamResponse(System.Net.Http.HttpResponseMessage)
+  id: ParseStreamResponse(System.Net.Http.HttpResponseMessage)
+  parent: Innovt.HttpClient.Core.BaseApiClient`1
+  langs:
+  - csharp
+  - vb
+  name: ParseStreamResponse(HttpResponseMessage)
+  nameWithType: BaseApiClient<TErrorResponse>.ParseStreamResponse(HttpResponseMessage)
+  fullName: Innovt.HttpClient.Core.BaseApiClient<TErrorResponse>.ParseStreamResponse(System.Net.Http.HttpResponseMessage)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.HttpClient.Core/BaseApiClient.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ParseStreamResponse
+    path: ../src/Innovt.HttpClient.Core/BaseApiClient.cs
+    startLine: 343
+  assemblies:
+  - Innovt.HttpClient.Core
+  namespace: Innovt.HttpClient.Core
+  summary: >-
+    Parses the HTTP response message and handles success or error based on the status code, returning the response as a
+
+    stream.
+  example: []
+  syntax:
+    content: protected override Task<Stream> ParseStreamResponse(HttpResponseMessage response)
+    parameters:
+    - id: response
+      type: System.Net.Http.HttpResponseMessage
+      description: The HTTP response message to parse.
+    return:
+      type: System.Threading.Tasks.Task{System.IO.Stream}
+      description: A stream representing the response data.
+    content.vb: Protected Overrides Function ParseStreamResponse(response As HttpResponseMessage) As Task(Of Stream)
+  overridden: Innovt.HttpClient.Core.BaseApiClient.ParseStreamResponse(System.Net.Http.HttpResponseMessage)
+  overload: Innovt.HttpClient.Core.BaseApiClient`1.ParseStreamResponse*
+  nameWithType.vb: BaseApiClient(Of TErrorResponse).ParseStreamResponse(HttpResponseMessage)
+  fullName.vb: Innovt.HttpClient.Core.BaseApiClient(Of TErrorResponse).ParseStreamResponse(System.Net.Http.HttpResponseMessage)
+references:
+- uid: Innovt.HttpClient.Core
+  commentId: N:Innovt.HttpClient.Core
+  href: Innovt.html
+  name: Innovt.HttpClient.Core
+  nameWithType: Innovt.HttpClient.Core
+  fullName: Innovt.HttpClient.Core
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.HttpClient
+    name: HttpClient
+    href: Innovt.HttpClient.html
+  - name: .
+  - uid: Innovt.HttpClient.Core
+    name: Core
+    href: Innovt.HttpClient.Core.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.HttpClient
+    name: HttpClient
+    href: Innovt.HttpClient.html
+  - name: .
+  - uid: Innovt.HttpClient.Core
+    name: Core
+    href: Innovt.HttpClient.Core.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Innovt.HttpClient.Core.BaseApiClient
+  commentId: T:Innovt.HttpClient.Core.BaseApiClient
+  parent: Innovt.HttpClient.Core
+  href: Innovt.HttpClient.Core.BaseApiClient.html
+  name: BaseApiClient
+  nameWithType: BaseApiClient
+  fullName: Innovt.HttpClient.Core.BaseApiClient
+- uid: Innovt.HttpClient.Core.BaseApiClient.ApiContext
+  commentId: P:Innovt.HttpClient.Core.BaseApiClient.ApiContext
+  parent: Innovt.HttpClient.Core.BaseApiClient
+  href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_ApiContext
+  name: ApiContext
+  nameWithType: BaseApiClient.ApiContext
+  fullName: Innovt.HttpClient.Core.BaseApiClient.ApiContext
+- uid: Innovt.HttpClient.Core.BaseApiClient.Serializer
+  commentId: P:Innovt.HttpClient.Core.BaseApiClient.Serializer
+  parent: Innovt.HttpClient.Core.BaseApiClient
+  href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_Serializer
+  name: Serializer
+  nameWithType: BaseApiClient.Serializer
+  fullName: Innovt.HttpClient.Core.BaseApiClient.Serializer
+- uid: Innovt.HttpClient.Core.BaseApiClient.CreateHttpClient
+  commentId: M:Innovt.HttpClient.Core.BaseApiClient.CreateHttpClient
+  parent: Innovt.HttpClient.Core.BaseApiClient
+  href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_CreateHttpClient
+  name: CreateHttpClient()
+  nameWithType: BaseApiClient.CreateHttpClient()
+  fullName: Innovt.HttpClient.Core.BaseApiClient.CreateHttpClient()
+  spec.csharp:
+  - uid: Innovt.HttpClient.Core.BaseApiClient.CreateHttpClient
+    name: CreateHttpClient
+    href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_CreateHttpClient
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.HttpClient.Core.BaseApiClient.CreateHttpClient
+    name: CreateHttpClient
+    href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_CreateHttpClient
+  - name: (
+  - name: )
+- uid: Innovt.HttpClient.Core.BaseApiClient.PostAsync``1(System.Uri,System.String,System.Net.Http.HttpContent,System.Threading.CancellationToken)
+  commentId: M:Innovt.HttpClient.Core.BaseApiClient.PostAsync``1(System.Uri,System.String,System.Net.Http.HttpContent,System.Threading.CancellationToken)
+  parent: Innovt.HttpClient.Core.BaseApiClient
+  isExternal: true
+  href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_PostAsync__1_System_Uri_System_String_System_Net_Http_HttpContent_System_Threading_CancellationToken_
+  name: PostAsync<T>(Uri, string, HttpContent, CancellationToken)
+  nameWithType: BaseApiClient.PostAsync<T>(Uri, string, HttpContent, CancellationToken)
+  fullName: Innovt.HttpClient.Core.BaseApiClient.PostAsync<T>(System.Uri, string, System.Net.Http.HttpContent, System.Threading.CancellationToken)
+  nameWithType.vb: BaseApiClient.PostAsync(Of T)(Uri, String, HttpContent, CancellationToken)
+  fullName.vb: Innovt.HttpClient.Core.BaseApiClient.PostAsync(Of T)(System.Uri, String, System.Net.Http.HttpContent, System.Threading.CancellationToken)
+  name.vb: PostAsync(Of T)(Uri, String, HttpContent, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.HttpClient.Core.BaseApiClient.PostAsync``1(System.Uri,System.String,System.Net.Http.HttpContent,System.Threading.CancellationToken)
+    name: PostAsync
+    href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_PostAsync__1_System_Uri_System_String_System_Net_Http_HttpContent_System_Threading_CancellationToken_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Uri
+    name: Uri
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uri
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Net.Http.HttpContent
+    name: HttpContent
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http.httpcontent
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.HttpClient.Core.BaseApiClient.PostAsync``1(System.Uri,System.String,System.Net.Http.HttpContent,System.Threading.CancellationToken)
+    name: PostAsync
+    href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_PostAsync__1_System_Uri_System_String_System_Net_Http_HttpContent_System_Threading_CancellationToken_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Uri
+    name: Uri
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uri
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Net.Http.HttpContent
+    name: HttpContent
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http.httpcontent
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.HttpClient.Core.BaseApiClient.PostAsync(System.Uri,System.String,System.Net.Http.HttpContent,System.Threading.CancellationToken)
+  commentId: M:Innovt.HttpClient.Core.BaseApiClient.PostAsync(System.Uri,System.String,System.Net.Http.HttpContent,System.Threading.CancellationToken)
+  parent: Innovt.HttpClient.Core.BaseApiClient
+  isExternal: true
+  href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_PostAsync_System_Uri_System_String_System_Net_Http_HttpContent_System_Threading_CancellationToken_
+  name: PostAsync(Uri, string, HttpContent, CancellationToken)
+  nameWithType: BaseApiClient.PostAsync(Uri, string, HttpContent, CancellationToken)
+  fullName: Innovt.HttpClient.Core.BaseApiClient.PostAsync(System.Uri, string, System.Net.Http.HttpContent, System.Threading.CancellationToken)
+  nameWithType.vb: BaseApiClient.PostAsync(Uri, String, HttpContent, CancellationToken)
+  fullName.vb: Innovt.HttpClient.Core.BaseApiClient.PostAsync(System.Uri, String, System.Net.Http.HttpContent, System.Threading.CancellationToken)
+  name.vb: PostAsync(Uri, String, HttpContent, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.HttpClient.Core.BaseApiClient.PostAsync(System.Uri,System.String,System.Net.Http.HttpContent,System.Threading.CancellationToken)
+    name: PostAsync
+    href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_PostAsync_System_Uri_System_String_System_Net_Http_HttpContent_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Uri
+    name: Uri
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uri
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Net.Http.HttpContent
+    name: HttpContent
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http.httpcontent
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.HttpClient.Core.BaseApiClient.PostAsync(System.Uri,System.String,System.Net.Http.HttpContent,System.Threading.CancellationToken)
+    name: PostAsync
+    href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_PostAsync_System_Uri_System_String_System_Net_Http_HttpContent_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Uri
+    name: Uri
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uri
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Net.Http.HttpContent
+    name: HttpContent
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http.httpcontent
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.HttpClient.Core.BaseApiClient.PutAsync``1(System.Uri,System.String,System.Net.Http.HttpContent,System.Collections.Generic.Dictionary{System.String,System.String},System.Threading.CancellationToken)
+  commentId: M:Innovt.HttpClient.Core.BaseApiClient.PutAsync``1(System.Uri,System.String,System.Net.Http.HttpContent,System.Collections.Generic.Dictionary{System.String,System.String},System.Threading.CancellationToken)
+  parent: Innovt.HttpClient.Core.BaseApiClient
+  isExternal: true
+  href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_PutAsync__1_System_Uri_System_String_System_Net_Http_HttpContent_System_Collections_Generic_Dictionary_System_String_System_String__System_Threading_CancellationToken_
+  name: PutAsync<T>(Uri, string, HttpContent, Dictionary<string, string>, CancellationToken)
+  nameWithType: BaseApiClient.PutAsync<T>(Uri, string, HttpContent, Dictionary<string, string>, CancellationToken)
+  fullName: Innovt.HttpClient.Core.BaseApiClient.PutAsync<T>(System.Uri, string, System.Net.Http.HttpContent, System.Collections.Generic.Dictionary<string, string>, System.Threading.CancellationToken)
+  nameWithType.vb: BaseApiClient.PutAsync(Of T)(Uri, String, HttpContent, Dictionary(Of String, String), CancellationToken)
+  fullName.vb: Innovt.HttpClient.Core.BaseApiClient.PutAsync(Of T)(System.Uri, String, System.Net.Http.HttpContent, System.Collections.Generic.Dictionary(Of String, String), System.Threading.CancellationToken)
+  name.vb: PutAsync(Of T)(Uri, String, HttpContent, Dictionary(Of String, String), CancellationToken)
+  spec.csharp:
+  - uid: Innovt.HttpClient.Core.BaseApiClient.PutAsync``1(System.Uri,System.String,System.Net.Http.HttpContent,System.Collections.Generic.Dictionary{System.String,System.String},System.Threading.CancellationToken)
+    name: PutAsync
+    href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_PutAsync__1_System_Uri_System_String_System_Net_Http_HttpContent_System_Collections_Generic_Dictionary_System_String_System_String__System_Threading_CancellationToken_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Uri
+    name: Uri
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uri
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Net.Http.HttpContent
+    name: HttpContent
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http.httpcontent
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.HttpClient.Core.BaseApiClient.PutAsync``1(System.Uri,System.String,System.Net.Http.HttpContent,System.Collections.Generic.Dictionary{System.String,System.String},System.Threading.CancellationToken)
+    name: PutAsync
+    href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_PutAsync__1_System_Uri_System_String_System_Net_Http_HttpContent_System_Collections_Generic_Dictionary_System_String_System_String__System_Threading_CancellationToken_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Uri
+    name: Uri
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uri
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Net.Http.HttpContent
+    name: HttpContent
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http.httpcontent
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.HttpClient.Core.BaseApiClient.PutAsync``1(System.Uri,System.String,System.Net.Http.HttpContent,System.Threading.CancellationToken)
+  commentId: M:Innovt.HttpClient.Core.BaseApiClient.PutAsync``1(System.Uri,System.String,System.Net.Http.HttpContent,System.Threading.CancellationToken)
+  parent: Innovt.HttpClient.Core.BaseApiClient
+  isExternal: true
+  href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_PutAsync__1_System_Uri_System_String_System_Net_Http_HttpContent_System_Threading_CancellationToken_
+  name: PutAsync<T>(Uri, string, HttpContent, CancellationToken)
+  nameWithType: BaseApiClient.PutAsync<T>(Uri, string, HttpContent, CancellationToken)
+  fullName: Innovt.HttpClient.Core.BaseApiClient.PutAsync<T>(System.Uri, string, System.Net.Http.HttpContent, System.Threading.CancellationToken)
+  nameWithType.vb: BaseApiClient.PutAsync(Of T)(Uri, String, HttpContent, CancellationToken)
+  fullName.vb: Innovt.HttpClient.Core.BaseApiClient.PutAsync(Of T)(System.Uri, String, System.Net.Http.HttpContent, System.Threading.CancellationToken)
+  name.vb: PutAsync(Of T)(Uri, String, HttpContent, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.HttpClient.Core.BaseApiClient.PutAsync``1(System.Uri,System.String,System.Net.Http.HttpContent,System.Threading.CancellationToken)
+    name: PutAsync
+    href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_PutAsync__1_System_Uri_System_String_System_Net_Http_HttpContent_System_Threading_CancellationToken_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Uri
+    name: Uri
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uri
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Net.Http.HttpContent
+    name: HttpContent
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http.httpcontent
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.HttpClient.Core.BaseApiClient.PutAsync``1(System.Uri,System.String,System.Net.Http.HttpContent,System.Threading.CancellationToken)
+    name: PutAsync
+    href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_PutAsync__1_System_Uri_System_String_System_Net_Http_HttpContent_System_Threading_CancellationToken_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Uri
+    name: Uri
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uri
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Net.Http.HttpContent
+    name: HttpContent
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http.httpcontent
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.HttpClient.Core.BaseApiClient.GetAsync``1(System.Uri,System.String,System.Threading.CancellationToken)
+  commentId: M:Innovt.HttpClient.Core.BaseApiClient.GetAsync``1(System.Uri,System.String,System.Threading.CancellationToken)
+  parent: Innovt.HttpClient.Core.BaseApiClient
+  isExternal: true
+  href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_GetAsync__1_System_Uri_System_String_System_Threading_CancellationToken_
+  name: GetAsync<T>(Uri, string, CancellationToken)
+  nameWithType: BaseApiClient.GetAsync<T>(Uri, string, CancellationToken)
+  fullName: Innovt.HttpClient.Core.BaseApiClient.GetAsync<T>(System.Uri, string, System.Threading.CancellationToken)
+  nameWithType.vb: BaseApiClient.GetAsync(Of T)(Uri, String, CancellationToken)
+  fullName.vb: Innovt.HttpClient.Core.BaseApiClient.GetAsync(Of T)(System.Uri, String, System.Threading.CancellationToken)
+  name.vb: GetAsync(Of T)(Uri, String, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.HttpClient.Core.BaseApiClient.GetAsync``1(System.Uri,System.String,System.Threading.CancellationToken)
+    name: GetAsync
+    href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_GetAsync__1_System_Uri_System_String_System_Threading_CancellationToken_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Uri
+    name: Uri
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uri
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.HttpClient.Core.BaseApiClient.GetAsync``1(System.Uri,System.String,System.Threading.CancellationToken)
+    name: GetAsync
+    href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_GetAsync__1_System_Uri_System_String_System_Threading_CancellationToken_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Uri
+    name: Uri
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uri
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.HttpClient.Core.BaseApiClient.GetStreamAsync(System.Uri,System.String,System.Threading.CancellationToken)
+  commentId: M:Innovt.HttpClient.Core.BaseApiClient.GetStreamAsync(System.Uri,System.String,System.Threading.CancellationToken)
+  parent: Innovt.HttpClient.Core.BaseApiClient
+  isExternal: true
+  href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_GetStreamAsync_System_Uri_System_String_System_Threading_CancellationToken_
+  name: GetStreamAsync(Uri, string, CancellationToken)
+  nameWithType: BaseApiClient.GetStreamAsync(Uri, string, CancellationToken)
+  fullName: Innovt.HttpClient.Core.BaseApiClient.GetStreamAsync(System.Uri, string, System.Threading.CancellationToken)
+  nameWithType.vb: BaseApiClient.GetStreamAsync(Uri, String, CancellationToken)
+  fullName.vb: Innovt.HttpClient.Core.BaseApiClient.GetStreamAsync(System.Uri, String, System.Threading.CancellationToken)
+  name.vb: GetStreamAsync(Uri, String, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.HttpClient.Core.BaseApiClient.GetStreamAsync(System.Uri,System.String,System.Threading.CancellationToken)
+    name: GetStreamAsync
+    href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_GetStreamAsync_System_Uri_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Uri
+    name: Uri
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uri
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.HttpClient.Core.BaseApiClient.GetStreamAsync(System.Uri,System.String,System.Threading.CancellationToken)
+    name: GetStreamAsync
+    href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_GetStreamAsync_System_Uri_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Uri
+    name: Uri
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uri
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.HttpClient.Core.BaseApiClient`1
+  commentId: T:Innovt.HttpClient.Core.BaseApiClient`1
+  href: Innovt.HttpClient.Core.BaseApiClient-1.html
+  name: BaseApiClient<TErrorResponse>
+  nameWithType: BaseApiClient<TErrorResponse>
+  fullName: Innovt.HttpClient.Core.BaseApiClient<TErrorResponse>
+  nameWithType.vb: BaseApiClient(Of TErrorResponse)
+  fullName.vb: Innovt.HttpClient.Core.BaseApiClient(Of TErrorResponse)
+  name.vb: BaseApiClient(Of TErrorResponse)
+  spec.csharp:
+  - uid: Innovt.HttpClient.Core.BaseApiClient`1
+    name: BaseApiClient
+    href: Innovt.HttpClient.Core.BaseApiClient-1.html
+  - name: <
+  - name: TErrorResponse
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.HttpClient.Core.BaseApiClient`1
+    name: BaseApiClient
+    href: Innovt.HttpClient.Core.BaseApiClient-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TErrorResponse
+  - name: )
+- uid: Innovt.HttpClient.Core.BaseApiClient`1.#ctor*
+  commentId: Overload:Innovt.HttpClient.Core.BaseApiClient`1.#ctor
+  href: Innovt.HttpClient.Core.BaseApiClient-1.html#Innovt_HttpClient_Core_BaseApiClient_1__ctor_Innovt_HttpClient_Core_ApiContext_System_Net_Http_IHttpClientFactory_Innovt_Core_Serialization_ISerializer_
+  name: BaseApiClient
+  nameWithType: BaseApiClient<TErrorResponse>.BaseApiClient
+  fullName: Innovt.HttpClient.Core.BaseApiClient<TErrorResponse>.BaseApiClient
+  nameWithType.vb: BaseApiClient(Of TErrorResponse).New
+  fullName.vb: Innovt.HttpClient.Core.BaseApiClient(Of TErrorResponse).New
+  name.vb: New
+- uid: Innovt.HttpClient.Core.ApiContext
+  commentId: T:Innovt.HttpClient.Core.ApiContext
+  parent: Innovt.HttpClient.Core
+  href: Innovt.HttpClient.Core.ApiContext.html
+  name: ApiContext
+  nameWithType: ApiContext
+  fullName: Innovt.HttpClient.Core.ApiContext
+- uid: System.Net.Http.IHttpClientFactory
+  commentId: T:System.Net.Http.IHttpClientFactory
+  parent: System.Net.Http
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.net.http.ihttpclientfactory
+  name: IHttpClientFactory
+  nameWithType: IHttpClientFactory
+  fullName: System.Net.Http.IHttpClientFactory
+- uid: Innovt.Core.Serialization.ISerializer
+  commentId: T:Innovt.Core.Serialization.ISerializer
+  parent: Innovt.Core.Serialization
+  href: Innovt.Core.Serialization.ISerializer.html
+  name: ISerializer
+  nameWithType: ISerializer
+  fullName: Innovt.Core.Serialization.ISerializer
+- uid: System.Net.Http
+  commentId: N:System.Net.Http
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Net.Http
+  nameWithType: System.Net.Http
+  fullName: System.Net.Http
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  - name: .
+  - uid: System.Net.Http
+    name: Http
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  - name: .
+  - uid: System.Net.Http
+    name: Http
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http
+- uid: Innovt.Core.Serialization
+  commentId: N:Innovt.Core.Serialization
+  href: Innovt.html
+  name: Innovt.Core.Serialization
+  nameWithType: Innovt.Core.Serialization
+  fullName: Innovt.Core.Serialization
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Serialization
+    name: Serialization
+    href: Innovt.Core.Serialization.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Serialization
+    name: Serialization
+    href: Innovt.Core.Serialization.html
+- uid: Innovt.HttpClient.Core.BaseApiClient.ParseResponse``1(System.Net.Http.HttpResponseMessage)
+  commentId: M:Innovt.HttpClient.Core.BaseApiClient.ParseResponse``1(System.Net.Http.HttpResponseMessage)
+  parent: Innovt.HttpClient.Core.BaseApiClient
+  isExternal: true
+  href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_ParseResponse__1_System_Net_Http_HttpResponseMessage_
+  name: ParseResponse<T>(HttpResponseMessage)
+  nameWithType: BaseApiClient.ParseResponse<T>(HttpResponseMessage)
+  fullName: Innovt.HttpClient.Core.BaseApiClient.ParseResponse<T>(System.Net.Http.HttpResponseMessage)
+  nameWithType.vb: BaseApiClient.ParseResponse(Of T)(HttpResponseMessage)
+  fullName.vb: Innovt.HttpClient.Core.BaseApiClient.ParseResponse(Of T)(System.Net.Http.HttpResponseMessage)
+  name.vb: ParseResponse(Of T)(HttpResponseMessage)
+  spec.csharp:
+  - uid: Innovt.HttpClient.Core.BaseApiClient.ParseResponse``1(System.Net.Http.HttpResponseMessage)
+    name: ParseResponse
+    href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_ParseResponse__1_System_Net_Http_HttpResponseMessage_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Net.Http.HttpResponseMessage
+    name: HttpResponseMessage
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http.httpresponsemessage
+  - name: )
+  spec.vb:
+  - uid: Innovt.HttpClient.Core.BaseApiClient.ParseResponse``1(System.Net.Http.HttpResponseMessage)
+    name: ParseResponse
+    href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_ParseResponse__1_System_Net_Http_HttpResponseMessage_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Net.Http.HttpResponseMessage
+    name: HttpResponseMessage
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http.httpresponsemessage
+  - name: )
+- uid: Innovt.HttpClient.Core.BaseApiClient`1.ParseResponse*
+  commentId: Overload:Innovt.HttpClient.Core.BaseApiClient`1.ParseResponse
+  href: Innovt.HttpClient.Core.BaseApiClient-1.html#Innovt_HttpClient_Core_BaseApiClient_1_ParseResponse__1_System_Net_Http_HttpResponseMessage_
+  name: ParseResponse
+  nameWithType: BaseApiClient<TErrorResponse>.ParseResponse
+  fullName: Innovt.HttpClient.Core.BaseApiClient<TErrorResponse>.ParseResponse
+  nameWithType.vb: BaseApiClient(Of TErrorResponse).ParseResponse
+  fullName.vb: Innovt.HttpClient.Core.BaseApiClient(Of TErrorResponse).ParseResponse
+- uid: System.Net.Http.HttpResponseMessage
+  commentId: T:System.Net.Http.HttpResponseMessage
+  parent: System.Net.Http
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.net.http.httpresponsemessage
+  name: HttpResponseMessage
+  nameWithType: HttpResponseMessage
+  fullName: System.Net.Http.HttpResponseMessage
+- uid: System.Threading.Tasks.Task{{T}}
+  commentId: T:System.Threading.Tasks.Task{``0}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<T>
+  nameWithType: Task<T>
+  fullName: System.Threading.Tasks.Task<T>
+  nameWithType.vb: Task(Of T)
+  fullName.vb: System.Threading.Tasks.Task(Of T)
+  name.vb: Task(Of T)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Innovt.HttpClient.Core.BaseApiClient.ParseStreamResponse(System.Net.Http.HttpResponseMessage)
+  commentId: M:Innovt.HttpClient.Core.BaseApiClient.ParseStreamResponse(System.Net.Http.HttpResponseMessage)
+  parent: Innovt.HttpClient.Core.BaseApiClient
+  isExternal: true
+  href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_ParseStreamResponse_System_Net_Http_HttpResponseMessage_
+  name: ParseStreamResponse(HttpResponseMessage)
+  nameWithType: BaseApiClient.ParseStreamResponse(HttpResponseMessage)
+  fullName: Innovt.HttpClient.Core.BaseApiClient.ParseStreamResponse(System.Net.Http.HttpResponseMessage)
+  spec.csharp:
+  - uid: Innovt.HttpClient.Core.BaseApiClient.ParseStreamResponse(System.Net.Http.HttpResponseMessage)
+    name: ParseStreamResponse
+    href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_ParseStreamResponse_System_Net_Http_HttpResponseMessage_
+  - name: (
+  - uid: System.Net.Http.HttpResponseMessage
+    name: HttpResponseMessage
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http.httpresponsemessage
+  - name: )
+  spec.vb:
+  - uid: Innovt.HttpClient.Core.BaseApiClient.ParseStreamResponse(System.Net.Http.HttpResponseMessage)
+    name: ParseStreamResponse
+    href: Innovt.HttpClient.Core.BaseApiClient.html#Innovt_HttpClient_Core_BaseApiClient_ParseStreamResponse_System_Net_Http_HttpResponseMessage_
+  - name: (
+  - uid: System.Net.Http.HttpResponseMessage
+    name: HttpResponseMessage
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http.httpresponsemessage
+  - name: )
+- uid: Innovt.HttpClient.Core.BaseApiClient`1.ParseStreamResponse*
+  commentId: Overload:Innovt.HttpClient.Core.BaseApiClient`1.ParseStreamResponse
+  href: Innovt.HttpClient.Core.BaseApiClient-1.html#Innovt_HttpClient_Core_BaseApiClient_1_ParseStreamResponse_System_Net_Http_HttpResponseMessage_
+  name: ParseStreamResponse
+  nameWithType: BaseApiClient<TErrorResponse>.ParseStreamResponse
+  fullName: Innovt.HttpClient.Core.BaseApiClient<TErrorResponse>.ParseStreamResponse
+  nameWithType.vb: BaseApiClient(Of TErrorResponse).ParseStreamResponse
+  fullName.vb: Innovt.HttpClient.Core.BaseApiClient(Of TErrorResponse).ParseStreamResponse
+- uid: System.Threading.Tasks.Task{System.IO.Stream}
+  commentId: T:System.Threading.Tasks.Task{System.IO.Stream}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<Stream>
+  nameWithType: Task<Stream>
+  fullName: System.Threading.Tasks.Task<System.IO.Stream>
+  nameWithType.vb: Task(Of Stream)
+  fullName.vb: System.Threading.Tasks.Task(Of System.IO.Stream)
+  name.vb: Task(Of Stream)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.IO.Stream
+    name: Stream
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.stream
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.IO.Stream
+    name: Stream
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.stream
+  - name: )

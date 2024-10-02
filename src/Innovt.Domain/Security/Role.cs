@@ -90,4 +90,9 @@ public class Role : Entity<Guid>
 
         return role.Name == Name && Scope == role.Scope;
     }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
 }

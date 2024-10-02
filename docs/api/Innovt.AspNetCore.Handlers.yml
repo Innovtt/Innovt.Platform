@@ -1,0 +1,68 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.AspNetCore.Handlers
+  commentId: N:Innovt.AspNetCore.Handlers
+  id: Innovt.AspNetCore.Handlers
+  children:
+  - Innovt.AspNetCore.Handlers.BasicAuthenticationHandler
+  - Innovt.AspNetCore.Handlers.HasScopeRequirement
+  - Innovt.AspNetCore.Handlers.RolesAuthorizationHandler
+  langs:
+  - csharp
+  - vb
+  name: Innovt.AspNetCore.Handlers
+  nameWithType: Innovt.AspNetCore.Handlers
+  fullName: Innovt.AspNetCore.Handlers
+  type: Namespace
+  assemblies:
+  - Innovt.AspNetCore
+references:
+- uid: Innovt.AspNetCore.Handlers.BasicAuthenticationHandler
+  commentId: T:Innovt.AspNetCore.Handlers.BasicAuthenticationHandler
+  href: Innovt.AspNetCore.Handlers.BasicAuthenticationHandler.html
+  name: BasicAuthenticationHandler
+  nameWithType: BasicAuthenticationHandler
+  fullName: Innovt.AspNetCore.Handlers.BasicAuthenticationHandler
+- uid: Innovt.AspNetCore.Handlers.HasScopeRequirement
+  commentId: T:Innovt.AspNetCore.Handlers.HasScopeRequirement
+  parent: Innovt.AspNetCore.Handlers
+  href: Innovt.AspNetCore.Handlers.HasScopeRequirement.html
+  name: HasScopeRequirement
+  nameWithType: HasScopeRequirement
+  fullName: Innovt.AspNetCore.Handlers.HasScopeRequirement
+- uid: Innovt.AspNetCore.Handlers.RolesAuthorizationHandler
+  commentId: T:Innovt.AspNetCore.Handlers.RolesAuthorizationHandler
+  href: Innovt.AspNetCore.Handlers.RolesAuthorizationHandler.html
+  name: RolesAuthorizationHandler
+  nameWithType: RolesAuthorizationHandler
+  fullName: Innovt.AspNetCore.Handlers.RolesAuthorizationHandler
+- uid: Innovt.AspNetCore.Handlers
+  commentId: N:Innovt.AspNetCore.Handlers
+  href: Innovt.html
+  name: Innovt.AspNetCore.Handlers
+  nameWithType: Innovt.AspNetCore.Handlers
+  fullName: Innovt.AspNetCore.Handlers
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.AspNetCore
+    name: AspNetCore
+    href: Innovt.AspNetCore.html
+  - name: .
+  - uid: Innovt.AspNetCore.Handlers
+    name: Handlers
+    href: Innovt.AspNetCore.Handlers.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.AspNetCore
+    name: AspNetCore
+    href: Innovt.AspNetCore.html
+  - name: .
+  - uid: Innovt.AspNetCore.Handlers
+    name: Handlers
+    href: Innovt.AspNetCore.Handlers.html

@@ -16,11 +16,9 @@ public class UserNotConfirmedException : BusinessException
     {
     }
 
-    // <summary>
-    /// Initializes a new instance of the
-    /// <see cref="UserNotConfirmedException" />
-    /// class with a predefined error code
-    /// and an inner exception.
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="UserNotConfirmedException" /> class with a predefined error code and
+    ///     an inner exception.
     /// </summary>
     /// <param name="ex">The inner exception that caused this exception to be thrown.</param>
     public UserNotConfirmedException(Exception ex) : base(ErrorCode.UserNotConfirmed, ErrorCode.UserNotConfirmed, ex)

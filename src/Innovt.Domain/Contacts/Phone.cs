@@ -23,7 +23,7 @@ public class Phone : ValueObject
 
     /// <summary>
     ///     Gets or sets the main phone number.
-    /// </summary
+    /// </summary>
     public string Number { get; set; }
 
     /// <summary>

@@ -1,0 +1,2929 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.Dynamo.Tests.SampleRepository
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Tests.SampleRepository
+  id: SampleRepository
+  parent: Innovt.Cloud.AWS.Dynamo.Tests
+  children:
+  - Innovt.Cloud.AWS.Dynamo.Tests.SampleRepository.#ctor(Innovt.Cloud.AWS.Dynamo.DynamoContext,Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration)
+  langs:
+  - csharp
+  - vb
+  name: SampleRepository
+  nameWithType: SampleRepository
+  fullName: Innovt.Cloud.AWS.Dynamo.Tests.SampleRepository
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo.Tests/SampleRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: SampleRepository
+    path: ../src/Innovt.Cloud.AWS.Dynamo.Tests/SampleRepository.cs
+    startLine: 5
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo.Tests
+  namespace: Innovt.Cloud.AWS.Dynamo.Tests
+  syntax:
+    content: 'public class SampleRepository : Repository, ITableRepository, IDisposable'
+    content.vb: Public Class SampleRepository Inherits Repository Implements ITableRepository, IDisposable
+  inheritance:
+  - System.Object
+  - Innovt.Cloud.AWS.AwsBaseService
+  - Innovt.Cloud.AWS.Dynamo.Repository
+  implements:
+  - Innovt.Cloud.Table.ITableRepository
+  - System.IDisposable
+  inheritedMembers:
+  - Innovt.Cloud.AWS.Dynamo.Repository.ExecuteStatementAsync``1(Innovt.Cloud.Table.ExecuteSqlStatementRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.BatchGetItem``1(Innovt.Cloud.Table.BatchGetItemRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.CreateDefaultRetryAsyncPolicy
+  - Innovt.Cloud.AWS.Dynamo.Repository.DisposeServices
+  - Innovt.Cloud.AWS.Dynamo.Repository.AddAsync``1({T},System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.AddAsync``1(System.Collections.Generic.IList{{T}},System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.TransactWriteItemsAsync(Innovt.Cloud.Table.TransactionWriteRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.BatchWriteItem(Innovt.Cloud.Table.BatchWriteItemRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1({T},System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(System.Collections.Generic.List{{T}},System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(System.Object,System.String,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1({T},System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync(System.String,System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValue},System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValueUpdate},System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1(Amazon.DynamoDBv2.Model.UpdateItemRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.QueryFirstAsync``1(System.Object,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.GetByIdAsync``1(System.Object,System.String,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.QueryAsync``1(System.Object,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.QueryAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync``3(Innovt.Cloud.Table.QueryRequest,System.String,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync``4(Innovt.Cloud.Table.QueryRequest,System.String[],System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync``5(Innovt.Cloud.Table.QueryRequest,System.String[],System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync``6(Innovt.Cloud.Table.QueryRequest,System.String[],System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.QueryFirstOrDefaultAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.QueryPaginatedByAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.ScanAsync``1(Innovt.Cloud.Table.ScanRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.ScanPaginatedByAsync``1(Innovt.Cloud.Table.ScanRequest,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.AwsBaseService.Configuration
+  - Innovt.Cloud.AWS.AwsBaseService.RetryCount
+  - Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerAllowedExceptions
+  - Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerDurationOfBreak
+  - Innovt.Cloud.AWS.AwsBaseService.Logger
+  - Innovt.Cloud.AWS.AwsBaseService.Dispose
+  - Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+  - Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+  - Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+  - Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+  - Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+- uid: Innovt.Cloud.AWS.Dynamo.Tests.SampleRepository.#ctor(Innovt.Cloud.AWS.Dynamo.DynamoContext,Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Tests.SampleRepository.#ctor(Innovt.Cloud.AWS.Dynamo.DynamoContext,Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration)
+  id: '#ctor(Innovt.Cloud.AWS.Dynamo.DynamoContext,Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration)'
+  parent: Innovt.Cloud.AWS.Dynamo.Tests.SampleRepository
+  langs:
+  - csharp
+  - vb
+  name: SampleRepository(DynamoContext, ILogger, IAwsConfiguration)
+  nameWithType: SampleRepository.SampleRepository(DynamoContext, ILogger, IAwsConfiguration)
+  fullName: Innovt.Cloud.AWS.Dynamo.Tests.SampleRepository.SampleRepository(Innovt.Cloud.AWS.Dynamo.DynamoContext, Innovt.Core.CrossCutting.Log.ILogger, Innovt.Cloud.AWS.Configuration.IAwsConfiguration)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo.Tests/SampleRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: ../src/Innovt.Cloud.AWS.Dynamo.Tests/SampleRepository.cs
+    startLine: 7
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo.Tests
+  namespace: Innovt.Cloud.AWS.Dynamo.Tests
+  syntax:
+    content: public SampleRepository(DynamoContext dynamoContext, ILogger logger, IAwsConfiguration configuration)
+    parameters:
+    - id: dynamoContext
+      type: Innovt.Cloud.AWS.Dynamo.DynamoContext
+    - id: logger
+      type: Innovt.Core.CrossCutting.Log.ILogger
+    - id: configuration
+      type: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+    content.vb: Public Sub New(dynamoContext As DynamoContext, logger As ILogger, configuration As IAwsConfiguration)
+  overload: Innovt.Cloud.AWS.Dynamo.Tests.SampleRepository.#ctor*
+  nameWithType.vb: SampleRepository.New(DynamoContext, ILogger, IAwsConfiguration)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Tests.SampleRepository.New(Innovt.Cloud.AWS.Dynamo.DynamoContext, Innovt.Core.CrossCutting.Log.ILogger, Innovt.Cloud.AWS.Configuration.IAwsConfiguration)
+  name.vb: New(DynamoContext, ILogger, IAwsConfiguration)
+references:
+- uid: Innovt.Cloud.AWS.Dynamo.Tests
+  commentId: N:Innovt.Cloud.AWS.Dynamo.Tests
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Dynamo.Tests
+  nameWithType: Innovt.Cloud.AWS.Dynamo.Tests
+  fullName: Innovt.Cloud.AWS.Dynamo.Tests
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo
+    name: Dynamo
+    href: Innovt.Cloud.AWS.Dynamo.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo.Tests
+    name: Tests
+    href: Innovt.Cloud.AWS.Dynamo.Tests.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo
+    name: Dynamo
+    href: Innovt.Cloud.AWS.Dynamo.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo.Tests
+    name: Tests
+    href: Innovt.Cloud.AWS.Dynamo.Tests.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Innovt.Cloud.AWS.AwsBaseService
+  commentId: T:Innovt.Cloud.AWS.AwsBaseService
+  parent: Innovt.Cloud.AWS
+  href: Innovt.Cloud.AWS.AwsBaseService.html
+  name: AwsBaseService
+  nameWithType: AwsBaseService
+  fullName: Innovt.Cloud.AWS.AwsBaseService
+- uid: Innovt.Cloud.AWS.Dynamo.Repository
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Repository
+  parent: Innovt.Cloud.AWS.Dynamo
+  href: Innovt.Cloud.AWS.Dynamo.Repository.html
+  name: Repository
+  nameWithType: Repository
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository
+- uid: Innovt.Cloud.Table.ITableRepository
+  commentId: T:Innovt.Cloud.Table.ITableRepository
+  parent: Innovt.Cloud.Table
+  href: Innovt.Cloud.Table.ITableRepository.html
+  name: ITableRepository
+  nameWithType: ITableRepository
+  fullName: Innovt.Cloud.Table.ITableRepository
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.ExecuteStatementAsync``1(Innovt.Cloud.Table.ExecuteSqlStatementRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.ExecuteStatementAsync``1(Innovt.Cloud.Table.ExecuteSqlStatementRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: ExecuteStatementAsync<T>(ExecuteSqlStatementRequest, CancellationToken)
+  nameWithType: Repository.ExecuteStatementAsync<T>(ExecuteSqlStatementRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.ExecuteStatementAsync<T>(Innovt.Cloud.Table.ExecuteSqlStatementRequest, System.Threading.CancellationToken)
+  nameWithType.vb: Repository.ExecuteStatementAsync(Of T)(ExecuteSqlStatementRequest, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.ExecuteStatementAsync(Of T)(Innovt.Cloud.Table.ExecuteSqlStatementRequest, System.Threading.CancellationToken)
+  name.vb: ExecuteStatementAsync(Of T)(ExecuteSqlStatementRequest, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.ExecuteStatementAsync``1(Innovt.Cloud.Table.ExecuteSqlStatementRequest,System.Threading.CancellationToken)
+    name: ExecuteStatementAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Innovt.Cloud.Table.ExecuteSqlStatementRequest
+    name: ExecuteSqlStatementRequest
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.ExecuteStatementAsync``1(Innovt.Cloud.Table.ExecuteSqlStatementRequest,System.Threading.CancellationToken)
+    name: ExecuteStatementAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Innovt.Cloud.Table.ExecuteSqlStatementRequest
+    name: ExecuteSqlStatementRequest
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.BatchGetItem``1(Innovt.Cloud.Table.BatchGetItemRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.BatchGetItem``1(Innovt.Cloud.Table.BatchGetItemRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: BatchGetItem<T>(BatchGetItemRequest, CancellationToken)
+  nameWithType: Repository.BatchGetItem<T>(BatchGetItemRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.BatchGetItem<T>(Innovt.Cloud.Table.BatchGetItemRequest, System.Threading.CancellationToken)
+  nameWithType.vb: Repository.BatchGetItem(Of T)(BatchGetItemRequest, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.BatchGetItem(Of T)(Innovt.Cloud.Table.BatchGetItemRequest, System.Threading.CancellationToken)
+  name.vb: BatchGetItem(Of T)(BatchGetItemRequest, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.BatchGetItem``1(Innovt.Cloud.Table.BatchGetItemRequest,System.Threading.CancellationToken)
+    name: BatchGetItem
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Innovt.Cloud.Table.BatchGetItemRequest
+    name: BatchGetItemRequest
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.BatchGetItem``1(Innovt.Cloud.Table.BatchGetItemRequest,System.Threading.CancellationToken)
+    name: BatchGetItem
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Innovt.Cloud.Table.BatchGetItemRequest
+    name: BatchGetItemRequest
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.CreateDefaultRetryAsyncPolicy
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.CreateDefaultRetryAsyncPolicy
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  name: CreateDefaultRetryAsyncPolicy()
+  nameWithType: Repository.CreateDefaultRetryAsyncPolicy()
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.CreateDefaultRetryAsyncPolicy()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.CreateDefaultRetryAsyncPolicy
+    name: CreateDefaultRetryAsyncPolicy
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.CreateDefaultRetryAsyncPolicy
+    name: CreateDefaultRetryAsyncPolicy
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.DisposeServices
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.DisposeServices
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  name: DisposeServices()
+  nameWithType: Repository.DisposeServices()
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.DisposeServices()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.DisposeServices
+    name: DisposeServices
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.DisposeServices
+    name: DisposeServices
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.AddAsync``1({T},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.AddAsync``1(``0,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  definition: Innovt.Cloud.AWS.Dynamo.Repository.AddAsync``1(``0,System.Threading.CancellationToken)
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: AddAsync<T>(T, CancellationToken)
+  nameWithType: Repository.AddAsync<T>(T, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.AddAsync<T>(T, System.Threading.CancellationToken)
+  nameWithType.vb: Repository.AddAsync(Of T)(T, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.AddAsync(Of T)(T, System.Threading.CancellationToken)
+  name.vb: AddAsync(Of T)(T, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.AddAsync``1(``0,System.Threading.CancellationToken)
+    name: AddAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.AddAsync``1(``0,System.Threading.CancellationToken)
+    name: AddAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.AddAsync``1(System.Collections.Generic.IList{{T}},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.AddAsync``1(System.Collections.Generic.IList{``0},System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  definition: Innovt.Cloud.AWS.Dynamo.Repository.AddAsync``1(System.Collections.Generic.IList{``0},System.Threading.CancellationToken)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: AddAsync<T>(IList<T>, CancellationToken)
+  nameWithType: Repository.AddAsync<T>(IList<T>, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.AddAsync<T>(System.Collections.Generic.IList<T>, System.Threading.CancellationToken)
+  nameWithType.vb: Repository.AddAsync(Of T)(IList(Of T), CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.AddAsync(Of T)(System.Collections.Generic.IList(Of T), System.Threading.CancellationToken)
+  name.vb: AddAsync(Of T)(IList(Of T), CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.AddAsync``1(System.Collections.Generic.IList{``0},System.Threading.CancellationToken)
+    name: AddAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.AddAsync``1(System.Collections.Generic.IList{``0},System.Threading.CancellationToken)
+    name: AddAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.TransactWriteItemsAsync(Innovt.Cloud.Table.TransactionWriteRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.TransactWriteItemsAsync(Innovt.Cloud.Table.TransactionWriteRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: TransactWriteItemsAsync(TransactionWriteRequest, CancellationToken)
+  nameWithType: Repository.TransactWriteItemsAsync(TransactionWriteRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.TransactWriteItemsAsync(Innovt.Cloud.Table.TransactionWriteRequest, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.TransactWriteItemsAsync(Innovt.Cloud.Table.TransactionWriteRequest,System.Threading.CancellationToken)
+    name: TransactWriteItemsAsync
+  - name: (
+  - uid: Innovt.Cloud.Table.TransactionWriteRequest
+    name: TransactionWriteRequest
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.TransactWriteItemsAsync(Innovt.Cloud.Table.TransactionWriteRequest,System.Threading.CancellationToken)
+    name: TransactWriteItemsAsync
+  - name: (
+  - uid: Innovt.Cloud.Table.TransactionWriteRequest
+    name: TransactionWriteRequest
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.BatchWriteItem(Innovt.Cloud.Table.BatchWriteItemRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.BatchWriteItem(Innovt.Cloud.Table.BatchWriteItemRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: BatchWriteItem(BatchWriteItemRequest, CancellationToken)
+  nameWithType: Repository.BatchWriteItem(BatchWriteItemRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.BatchWriteItem(Innovt.Cloud.Table.BatchWriteItemRequest, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.BatchWriteItem(Innovt.Cloud.Table.BatchWriteItemRequest,System.Threading.CancellationToken)
+    name: BatchWriteItem
+  - name: (
+  - uid: Innovt.Cloud.Table.BatchWriteItemRequest
+    name: BatchWriteItemRequest
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.BatchWriteItem(Innovt.Cloud.Table.BatchWriteItemRequest,System.Threading.CancellationToken)
+    name: BatchWriteItem
+  - name: (
+  - uid: Innovt.Cloud.Table.BatchWriteItemRequest
+    name: BatchWriteItemRequest
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1({T},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(``0,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  definition: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(``0,System.Threading.CancellationToken)
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: DeleteAsync<T>(T, CancellationToken)
+  nameWithType: Repository.DeleteAsync<T>(T, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync<T>(T, System.Threading.CancellationToken)
+  nameWithType.vb: Repository.DeleteAsync(Of T)(T, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync(Of T)(T, System.Threading.CancellationToken)
+  name.vb: DeleteAsync(Of T)(T, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(``0,System.Threading.CancellationToken)
+    name: DeleteAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(``0,System.Threading.CancellationToken)
+    name: DeleteAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(System.Collections.Generic.List{{T}},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(System.Collections.Generic.List{``0},System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  definition: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(System.Collections.Generic.List{``0},System.Threading.CancellationToken)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: DeleteAsync<T>(List<T>, CancellationToken)
+  nameWithType: Repository.DeleteAsync<T>(List<T>, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync<T>(System.Collections.Generic.List<T>, System.Threading.CancellationToken)
+  nameWithType.vb: Repository.DeleteAsync(Of T)(List(Of T), CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync(Of T)(System.Collections.Generic.List(Of T), System.Threading.CancellationToken)
+  name.vb: DeleteAsync(Of T)(List(Of T), CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(System.Collections.Generic.List{``0},System.Threading.CancellationToken)
+    name: DeleteAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(System.Collections.Generic.List{``0},System.Threading.CancellationToken)
+    name: DeleteAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(System.Object,System.String,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(System.Object,System.String,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: DeleteAsync<T>(object, string, CancellationToken)
+  nameWithType: Repository.DeleteAsync<T>(object, string, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync<T>(object, string, System.Threading.CancellationToken)
+  nameWithType.vb: Repository.DeleteAsync(Of T)(Object, String, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync(Of T)(Object, String, System.Threading.CancellationToken)
+  name.vb: DeleteAsync(Of T)(Object, String, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(System.Object,System.String,System.Threading.CancellationToken)
+    name: DeleteAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(System.Object,System.String,System.Threading.CancellationToken)
+    name: DeleteAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1({T},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1(``0,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  definition: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1(``0,System.Threading.CancellationToken)
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: UpdateAsync<T>(T, CancellationToken)
+  nameWithType: Repository.UpdateAsync<T>(T, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync<T>(T, System.Threading.CancellationToken)
+  nameWithType.vb: Repository.UpdateAsync(Of T)(T, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync(Of T)(T, System.Threading.CancellationToken)
+  name.vb: UpdateAsync(Of T)(T, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1(``0,System.Threading.CancellationToken)
+    name: UpdateAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1(``0,System.Threading.CancellationToken)
+    name: UpdateAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync(System.String,System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValue},System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValueUpdate},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync(System.String,System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValue},System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValueUpdate},System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: UpdateAsync(string, Dictionary<string, AttributeValue>, Dictionary<string, AttributeValueUpdate>, CancellationToken)
+  nameWithType: Repository.UpdateAsync(string, Dictionary<string, AttributeValue>, Dictionary<string, AttributeValueUpdate>, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync(string, System.Collections.Generic.Dictionary<string, Amazon.DynamoDBv2.Model.AttributeValue>, System.Collections.Generic.Dictionary<string, Amazon.DynamoDBv2.Model.AttributeValueUpdate>, System.Threading.CancellationToken)
+  nameWithType.vb: Repository.UpdateAsync(String, Dictionary(Of String, AttributeValue), Dictionary(Of String, AttributeValueUpdate), CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync(String, System.Collections.Generic.Dictionary(Of String, Amazon.DynamoDBv2.Model.AttributeValue), System.Collections.Generic.Dictionary(Of String, Amazon.DynamoDBv2.Model.AttributeValueUpdate), System.Threading.CancellationToken)
+  name.vb: UpdateAsync(String, Dictionary(Of String, AttributeValue), Dictionary(Of String, AttributeValueUpdate), CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync(System.String,System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValue},System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValueUpdate},System.Threading.CancellationToken)
+    name: UpdateAsync
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Amazon.DynamoDBv2.Model.AttributeValue
+    name: AttributeValue
+    isExternal: true
+    href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Generated/Model/AttributeValue.cs
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Amazon.DynamoDBv2.Model.AttributeValueUpdate
+    name: AttributeValueUpdate
+    isExternal: true
+    href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Generated/Model/AttributeValueUpdate.cs
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync(System.String,System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValue},System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValueUpdate},System.Threading.CancellationToken)
+    name: UpdateAsync
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Amazon.DynamoDBv2.Model.AttributeValue
+    name: AttributeValue
+    isExternal: true
+    href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Generated/Model/AttributeValue.cs
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Amazon.DynamoDBv2.Model.AttributeValueUpdate
+    name: AttributeValueUpdate
+    isExternal: true
+    href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Generated/Model/AttributeValueUpdate.cs
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1(Amazon.DynamoDBv2.Model.UpdateItemRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1(Amazon.DynamoDBv2.Model.UpdateItemRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  isExternal: true
+  href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Generated/Model/UpdateItemRequest.cs
+  name: UpdateAsync<T>(UpdateItemRequest, CancellationToken)
+  nameWithType: Repository.UpdateAsync<T>(UpdateItemRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync<T>(Amazon.DynamoDBv2.Model.UpdateItemRequest, System.Threading.CancellationToken)
+  nameWithType.vb: Repository.UpdateAsync(Of T)(UpdateItemRequest, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync(Of T)(Amazon.DynamoDBv2.Model.UpdateItemRequest, System.Threading.CancellationToken)
+  name.vb: UpdateAsync(Of T)(UpdateItemRequest, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1(Amazon.DynamoDBv2.Model.UpdateItemRequest,System.Threading.CancellationToken)
+    name: UpdateAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Amazon.DynamoDBv2.Model.UpdateItemRequest
+    name: UpdateItemRequest
+    isExternal: true
+    href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Generated/Model/UpdateItemRequest.cs
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1(Amazon.DynamoDBv2.Model.UpdateItemRequest,System.Threading.CancellationToken)
+    name: UpdateAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Amazon.DynamoDBv2.Model.UpdateItemRequest
+    name: UpdateItemRequest
+    isExternal: true
+    href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Generated/Model/UpdateItemRequest.cs
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryFirstAsync``1(System.Object,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.QueryFirstAsync``1(System.Object,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: QueryFirstAsync<T>(object, CancellationToken)
+  nameWithType: Repository.QueryFirstAsync<T>(object, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.QueryFirstAsync<T>(object, System.Threading.CancellationToken)
+  nameWithType.vb: Repository.QueryFirstAsync(Of T)(Object, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.QueryFirstAsync(Of T)(Object, System.Threading.CancellationToken)
+  name.vb: QueryFirstAsync(Of T)(Object, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryFirstAsync``1(System.Object,System.Threading.CancellationToken)
+    name: QueryFirstAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryFirstAsync``1(System.Object,System.Threading.CancellationToken)
+    name: QueryFirstAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.GetByIdAsync``1(System.Object,System.String,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.GetByIdAsync``1(System.Object,System.String,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: GetByIdAsync<T>(object, string, CancellationToken)
+  nameWithType: Repository.GetByIdAsync<T>(object, string, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.GetByIdAsync<T>(object, string, System.Threading.CancellationToken)
+  nameWithType.vb: Repository.GetByIdAsync(Of T)(Object, String, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.GetByIdAsync(Of T)(Object, String, System.Threading.CancellationToken)
+  name.vb: GetByIdAsync(Of T)(Object, String, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.GetByIdAsync``1(System.Object,System.String,System.Threading.CancellationToken)
+    name: GetByIdAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.GetByIdAsync``1(System.Object,System.String,System.Threading.CancellationToken)
+    name: GetByIdAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryAsync``1(System.Object,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.QueryAsync``1(System.Object,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: QueryAsync<T>(object, CancellationToken)
+  nameWithType: Repository.QueryAsync<T>(object, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.QueryAsync<T>(object, System.Threading.CancellationToken)
+  nameWithType.vb: Repository.QueryAsync(Of T)(Object, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.QueryAsync(Of T)(Object, System.Threading.CancellationToken)
+  name.vb: QueryAsync(Of T)(Object, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryAsync``1(System.Object,System.Threading.CancellationToken)
+    name: QueryAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryAsync``1(System.Object,System.Threading.CancellationToken)
+    name: QueryAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.QueryAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: QueryAsync<T>(QueryRequest, CancellationToken)
+  nameWithType: Repository.QueryAsync<T>(QueryRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.QueryAsync<T>(Innovt.Cloud.Table.QueryRequest, System.Threading.CancellationToken)
+  nameWithType.vb: Repository.QueryAsync(Of T)(QueryRequest, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.QueryAsync(Of T)(Innovt.Cloud.Table.QueryRequest, System.Threading.CancellationToken)
+  name.vb: QueryAsync(Of T)(QueryRequest, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)
+    name: QueryAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Innovt.Cloud.Table.QueryRequest
+    name: QueryRequest
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)
+    name: QueryAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Innovt.Cloud.Table.QueryRequest
+    name: QueryRequest
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync``3(Innovt.Cloud.Table.QueryRequest,System.String,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync``3(Innovt.Cloud.Table.QueryRequest,System.String,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: QueryMultipleAsync<T, TResult1, TResult2>(QueryRequest, string, CancellationToken)
+  nameWithType: Repository.QueryMultipleAsync<T, TResult1, TResult2>(QueryRequest, string, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync<T, TResult1, TResult2>(Innovt.Cloud.Table.QueryRequest, string, System.Threading.CancellationToken)
+  nameWithType.vb: Repository.QueryMultipleAsync(Of T, TResult1, TResult2)(QueryRequest, String, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync(Of T, TResult1, TResult2)(Innovt.Cloud.Table.QueryRequest, String, System.Threading.CancellationToken)
+  name.vb: QueryMultipleAsync(Of T, TResult1, TResult2)(QueryRequest, String, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync``3(Innovt.Cloud.Table.QueryRequest,System.String,System.Threading.CancellationToken)
+    name: QueryMultipleAsync
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult1
+  - name: ','
+  - name: " "
+  - name: TResult2
+  - name: '>'
+  - name: (
+  - uid: Innovt.Cloud.Table.QueryRequest
+    name: QueryRequest
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync``3(Innovt.Cloud.Table.QueryRequest,System.String,System.Threading.CancellationToken)
+    name: QueryMultipleAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult1
+  - name: ','
+  - name: " "
+  - name: TResult2
+  - name: )
+  - name: (
+  - uid: Innovt.Cloud.Table.QueryRequest
+    name: QueryRequest
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync``4(Innovt.Cloud.Table.QueryRequest,System.String[],System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync``4(Innovt.Cloud.Table.QueryRequest,System.String[],System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: QueryMultipleAsync<T, TResult1, TResult2, TResult3>(QueryRequest, string[], CancellationToken)
+  nameWithType: Repository.QueryMultipleAsync<T, TResult1, TResult2, TResult3>(QueryRequest, string[], CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync<T, TResult1, TResult2, TResult3>(Innovt.Cloud.Table.QueryRequest, string[], System.Threading.CancellationToken)
+  nameWithType.vb: Repository.QueryMultipleAsync(Of T, TResult1, TResult2, TResult3)(QueryRequest, String(), CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync(Of T, TResult1, TResult2, TResult3)(Innovt.Cloud.Table.QueryRequest, String(), System.Threading.CancellationToken)
+  name.vb: QueryMultipleAsync(Of T, TResult1, TResult2, TResult3)(QueryRequest, String(), CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync``4(Innovt.Cloud.Table.QueryRequest,System.String[],System.Threading.CancellationToken)
+    name: QueryMultipleAsync
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult1
+  - name: ','
+  - name: " "
+  - name: TResult2
+  - name: ','
+  - name: " "
+  - name: TResult3
+  - name: '>'
+  - name: (
+  - uid: Innovt.Cloud.Table.QueryRequest
+    name: QueryRequest
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync``4(Innovt.Cloud.Table.QueryRequest,System.String[],System.Threading.CancellationToken)
+    name: QueryMultipleAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult1
+  - name: ','
+  - name: " "
+  - name: TResult2
+  - name: ','
+  - name: " "
+  - name: TResult3
+  - name: )
+  - name: (
+  - uid: Innovt.Cloud.Table.QueryRequest
+    name: QueryRequest
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync``5(Innovt.Cloud.Table.QueryRequest,System.String[],System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync``5(Innovt.Cloud.Table.QueryRequest,System.String[],System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4>(QueryRequest, string[], CancellationToken)
+  nameWithType: Repository.QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4>(QueryRequest, string[], CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4>(Innovt.Cloud.Table.QueryRequest, string[], System.Threading.CancellationToken)
+  nameWithType.vb: Repository.QueryMultipleAsync(Of T, TResult1, TResult2, TResult3, TResult4)(QueryRequest, String(), CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync(Of T, TResult1, TResult2, TResult3, TResult4)(Innovt.Cloud.Table.QueryRequest, String(), System.Threading.CancellationToken)
+  name.vb: QueryMultipleAsync(Of T, TResult1, TResult2, TResult3, TResult4)(QueryRequest, String(), CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync``5(Innovt.Cloud.Table.QueryRequest,System.String[],System.Threading.CancellationToken)
+    name: QueryMultipleAsync
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult1
+  - name: ','
+  - name: " "
+  - name: TResult2
+  - name: ','
+  - name: " "
+  - name: TResult3
+  - name: ','
+  - name: " "
+  - name: TResult4
+  - name: '>'
+  - name: (
+  - uid: Innovt.Cloud.Table.QueryRequest
+    name: QueryRequest
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync``5(Innovt.Cloud.Table.QueryRequest,System.String[],System.Threading.CancellationToken)
+    name: QueryMultipleAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult1
+  - name: ','
+  - name: " "
+  - name: TResult2
+  - name: ','
+  - name: " "
+  - name: TResult3
+  - name: ','
+  - name: " "
+  - name: TResult4
+  - name: )
+  - name: (
+  - uid: Innovt.Cloud.Table.QueryRequest
+    name: QueryRequest
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync``6(Innovt.Cloud.Table.QueryRequest,System.String[],System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync``6(Innovt.Cloud.Table.QueryRequest,System.String[],System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4, TResult5>(QueryRequest, string[], CancellationToken)
+  nameWithType: Repository.QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4, TResult5>(QueryRequest, string[], CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4, TResult5>(Innovt.Cloud.Table.QueryRequest, string[], System.Threading.CancellationToken)
+  nameWithType.vb: Repository.QueryMultipleAsync(Of T, TResult1, TResult2, TResult3, TResult4, TResult5)(QueryRequest, String(), CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync(Of T, TResult1, TResult2, TResult3, TResult4, TResult5)(Innovt.Cloud.Table.QueryRequest, String(), System.Threading.CancellationToken)
+  name.vb: QueryMultipleAsync(Of T, TResult1, TResult2, TResult3, TResult4, TResult5)(QueryRequest, String(), CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync``6(Innovt.Cloud.Table.QueryRequest,System.String[],System.Threading.CancellationToken)
+    name: QueryMultipleAsync
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult1
+  - name: ','
+  - name: " "
+  - name: TResult2
+  - name: ','
+  - name: " "
+  - name: TResult3
+  - name: ','
+  - name: " "
+  - name: TResult4
+  - name: ','
+  - name: " "
+  - name: TResult5
+  - name: '>'
+  - name: (
+  - uid: Innovt.Cloud.Table.QueryRequest
+    name: QueryRequest
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync``6(Innovt.Cloud.Table.QueryRequest,System.String[],System.Threading.CancellationToken)
+    name: QueryMultipleAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult1
+  - name: ','
+  - name: " "
+  - name: TResult2
+  - name: ','
+  - name: " "
+  - name: TResult3
+  - name: ','
+  - name: " "
+  - name: TResult4
+  - name: ','
+  - name: " "
+  - name: TResult5
+  - name: )
+  - name: (
+  - uid: Innovt.Cloud.Table.QueryRequest
+    name: QueryRequest
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryFirstOrDefaultAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.QueryFirstOrDefaultAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: QueryFirstOrDefaultAsync<T>(QueryRequest, CancellationToken)
+  nameWithType: Repository.QueryFirstOrDefaultAsync<T>(QueryRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.QueryFirstOrDefaultAsync<T>(Innovt.Cloud.Table.QueryRequest, System.Threading.CancellationToken)
+  nameWithType.vb: Repository.QueryFirstOrDefaultAsync(Of T)(QueryRequest, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.QueryFirstOrDefaultAsync(Of T)(Innovt.Cloud.Table.QueryRequest, System.Threading.CancellationToken)
+  name.vb: QueryFirstOrDefaultAsync(Of T)(QueryRequest, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryFirstOrDefaultAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)
+    name: QueryFirstOrDefaultAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Innovt.Cloud.Table.QueryRequest
+    name: QueryRequest
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryFirstOrDefaultAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)
+    name: QueryFirstOrDefaultAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Innovt.Cloud.Table.QueryRequest
+    name: QueryRequest
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryPaginatedByAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.QueryPaginatedByAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: QueryPaginatedByAsync<T>(QueryRequest, CancellationToken)
+  nameWithType: Repository.QueryPaginatedByAsync<T>(QueryRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.QueryPaginatedByAsync<T>(Innovt.Cloud.Table.QueryRequest, System.Threading.CancellationToken)
+  nameWithType.vb: Repository.QueryPaginatedByAsync(Of T)(QueryRequest, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.QueryPaginatedByAsync(Of T)(Innovt.Cloud.Table.QueryRequest, System.Threading.CancellationToken)
+  name.vb: QueryPaginatedByAsync(Of T)(QueryRequest, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryPaginatedByAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)
+    name: QueryPaginatedByAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Innovt.Cloud.Table.QueryRequest
+    name: QueryRequest
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryPaginatedByAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)
+    name: QueryPaginatedByAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Innovt.Cloud.Table.QueryRequest
+    name: QueryRequest
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.ScanAsync``1(Innovt.Cloud.Table.ScanRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.ScanAsync``1(Innovt.Cloud.Table.ScanRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: ScanAsync<T>(ScanRequest, CancellationToken)
+  nameWithType: Repository.ScanAsync<T>(ScanRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.ScanAsync<T>(Innovt.Cloud.Table.ScanRequest, System.Threading.CancellationToken)
+  nameWithType.vb: Repository.ScanAsync(Of T)(ScanRequest, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.ScanAsync(Of T)(Innovt.Cloud.Table.ScanRequest, System.Threading.CancellationToken)
+  name.vb: ScanAsync(Of T)(ScanRequest, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.ScanAsync``1(Innovt.Cloud.Table.ScanRequest,System.Threading.CancellationToken)
+    name: ScanAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Innovt.Cloud.Table.ScanRequest
+    name: ScanRequest
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.ScanAsync``1(Innovt.Cloud.Table.ScanRequest,System.Threading.CancellationToken)
+    name: ScanAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Innovt.Cloud.Table.ScanRequest
+    name: ScanRequest
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.ScanPaginatedByAsync``1(Innovt.Cloud.Table.ScanRequest,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.ScanPaginatedByAsync``1(Innovt.Cloud.Table.ScanRequest,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: ScanPaginatedByAsync<T>(ScanRequest, CancellationToken)
+  nameWithType: Repository.ScanPaginatedByAsync<T>(ScanRequest, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.ScanPaginatedByAsync<T>(Innovt.Cloud.Table.ScanRequest, System.Threading.CancellationToken)
+  nameWithType.vb: Repository.ScanPaginatedByAsync(Of T)(ScanRequest, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.ScanPaginatedByAsync(Of T)(Innovt.Cloud.Table.ScanRequest, System.Threading.CancellationToken)
+  name.vb: ScanPaginatedByAsync(Of T)(ScanRequest, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.ScanPaginatedByAsync``1(Innovt.Cloud.Table.ScanRequest,System.Threading.CancellationToken)
+    name: ScanPaginatedByAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Innovt.Cloud.Table.ScanRequest
+    name: ScanRequest
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.ScanPaginatedByAsync``1(Innovt.Cloud.Table.ScanRequest,System.Threading.CancellationToken)
+    name: ScanPaginatedByAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Innovt.Cloud.Table.ScanRequest
+    name: ScanRequest
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.Configuration
+  commentId: F:Innovt.Cloud.AWS.AwsBaseService.Configuration
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Configuration
+  name: Configuration
+  nameWithType: AwsBaseService.Configuration
+  fullName: Innovt.Cloud.AWS.AwsBaseService.Configuration
+- uid: Innovt.Cloud.AWS.AwsBaseService.RetryCount
+  commentId: P:Innovt.Cloud.AWS.AwsBaseService.RetryCount
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_RetryCount
+  name: RetryCount
+  nameWithType: AwsBaseService.RetryCount
+  fullName: Innovt.Cloud.AWS.AwsBaseService.RetryCount
+- uid: Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerAllowedExceptions
+  commentId: P:Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerAllowedExceptions
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CircuitBreakerAllowedExceptions
+  name: CircuitBreakerAllowedExceptions
+  nameWithType: AwsBaseService.CircuitBreakerAllowedExceptions
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerAllowedExceptions
+- uid: Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerDurationOfBreak
+  commentId: P:Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerDurationOfBreak
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CircuitBreakerDurationOfBreak
+  name: CircuitBreakerDurationOfBreak
+  nameWithType: AwsBaseService.CircuitBreakerDurationOfBreak
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerDurationOfBreak
+- uid: Innovt.Cloud.AWS.AwsBaseService.Logger
+  commentId: P:Innovt.Cloud.AWS.AwsBaseService.Logger
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Logger
+  name: Logger
+  nameWithType: AwsBaseService.Logger
+  fullName: Innovt.Cloud.AWS.AwsBaseService.Logger
+- uid: Innovt.Cloud.AWS.AwsBaseService.Dispose
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.Dispose
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose
+  name: Dispose()
+  nameWithType: AwsBaseService.Dispose()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.Dispose()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.Dispose
+    name: Dispose
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.Dispose
+    name: Dispose
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_GetServiceRegionEndPoint
+  name: GetServiceRegionEndPoint()
+  nameWithType: AwsBaseService.GetServiceRegionEndPoint()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+    name: GetServiceRegionEndPoint
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_GetServiceRegionEndPoint
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+    name: GetServiceRegionEndPoint
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_GetServiceRegionEndPoint
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateService__1
+  name: CreateService<T>()
+  nameWithType: AwsBaseService.CreateService<T>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateService<T>()
+  nameWithType.vb: AwsBaseService.CreateService(Of T)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateService(Of T)()
+  name.vb: CreateService(Of T)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+    name: CreateService
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateService__1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+    name: CreateService
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateService__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryPolicy
+  name: CreateDefaultRetryPolicy()
+  nameWithType: AwsBaseService.CreateDefaultRetryPolicy()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+    name: CreateDefaultRetryPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryPolicy
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+    name: CreateDefaultRetryPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryPolicy
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__1
+  name: CreateRetryAsyncPolicy<T>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T)()
+  name.vb: CreateRetryAsyncPolicy(Of T)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__2
+  name: CreateRetryAsyncPolicy<T, T1>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T, T1>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T, T1>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T, T1)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T, T1)()
+  name.vb: CreateRetryAsyncPolicy(Of T, T1)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__3
+  name: CreateRetryAsyncPolicy<T, T1, T2>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2)()
+  name.vb: CreateRetryAsyncPolicy(Of T, T1, T2)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__3
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__3
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__4
+  name: CreateRetryAsyncPolicy<T, T1, T2, T3>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2, T3>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2, T3>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2, T3)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2, T3)()
+  name.vb: CreateRetryAsyncPolicy(Of T, T1, T2, T3)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__4
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__4
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__5
+  name: CreateRetryAsyncPolicy<T, T1, T2, T3, T4>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2, T3, T4>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2, T3, T4>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2, T3, T4)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2, T3, T4)()
+  name.vb: CreateRetryAsyncPolicy(Of T, T1, T2, T3, T4)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__5
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__5
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateCircuitBreaker__2
+  name: CreateCircuitBreaker<T, T1>()
+  nameWithType: AwsBaseService.CreateCircuitBreaker<T, T1>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker<T, T1>()
+  nameWithType.vb: AwsBaseService.CreateCircuitBreaker(Of T, T1)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker(Of T, T1)()
+  name.vb: CreateCircuitBreaker(Of T, T1)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+    name: CreateCircuitBreaker
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateCircuitBreaker__2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+    name: CreateCircuitBreaker
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateCircuitBreaker__2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  isExternal: true
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose_System_Boolean_
+  name: Dispose(bool)
+  nameWithType: AwsBaseService.Dispose(bool)
+  fullName: Innovt.Cloud.AWS.AwsBaseService.Dispose(bool)
+  nameWithType.vb: AwsBaseService.Dispose(Boolean)
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+    name: Dispose
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+    name: Dispose
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Cloud.AWS
+  commentId: N:Innovt.Cloud.AWS
+  href: Innovt.html
+  name: Innovt.Cloud.AWS
+  nameWithType: Innovt.Cloud.AWS
+  fullName: Innovt.Cloud.AWS
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+- uid: Innovt.Cloud.AWS.Dynamo
+  commentId: N:Innovt.Cloud.AWS.Dynamo
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Dynamo
+  nameWithType: Innovt.Cloud.AWS.Dynamo
+  fullName: Innovt.Cloud.AWS.Dynamo
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo
+    name: Dynamo
+    href: Innovt.Cloud.AWS.Dynamo.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo
+    name: Dynamo
+    href: Innovt.Cloud.AWS.Dynamo.html
+- uid: Innovt.Cloud.Table
+  commentId: N:Innovt.Cloud.Table
+  href: Innovt.html
+  name: Innovt.Cloud.Table
+  nameWithType: Innovt.Cloud.Table
+  fullName: Innovt.Cloud.Table
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.Table
+    name: Table
+    href: Innovt.Cloud.Table.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.Table
+    name: Table
+    href: Innovt.Cloud.Table.html
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.AddAsync``1(``0,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.AddAsync``1(``0,System.Threading.CancellationToken)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: AddAsync<T>(T, CancellationToken)
+  nameWithType: Repository.AddAsync<T>(T, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.AddAsync<T>(T, System.Threading.CancellationToken)
+  nameWithType.vb: Repository.AddAsync(Of T)(T, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.AddAsync(Of T)(T, System.Threading.CancellationToken)
+  name.vb: AddAsync(Of T)(T, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.AddAsync``1(``0,System.Threading.CancellationToken)
+    name: AddAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.AddAsync``1(``0,System.Threading.CancellationToken)
+    name: AddAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.AddAsync``1(System.Collections.Generic.IList{``0},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.AddAsync``1(System.Collections.Generic.IList{``0},System.Threading.CancellationToken)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: AddAsync<T>(IList<T>, CancellationToken)
+  nameWithType: Repository.AddAsync<T>(IList<T>, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.AddAsync<T>(System.Collections.Generic.IList<T>, System.Threading.CancellationToken)
+  nameWithType.vb: Repository.AddAsync(Of T)(IList(Of T), CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.AddAsync(Of T)(System.Collections.Generic.IList(Of T), System.Threading.CancellationToken)
+  name.vb: AddAsync(Of T)(IList(Of T), CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.AddAsync``1(System.Collections.Generic.IList{``0},System.Threading.CancellationToken)
+    name: AddAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.AddAsync``1(System.Collections.Generic.IList{``0},System.Threading.CancellationToken)
+    name: AddAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(``0,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(``0,System.Threading.CancellationToken)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: DeleteAsync<T>(T, CancellationToken)
+  nameWithType: Repository.DeleteAsync<T>(T, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync<T>(T, System.Threading.CancellationToken)
+  nameWithType.vb: Repository.DeleteAsync(Of T)(T, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync(Of T)(T, System.Threading.CancellationToken)
+  name.vb: DeleteAsync(Of T)(T, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(``0,System.Threading.CancellationToken)
+    name: DeleteAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(``0,System.Threading.CancellationToken)
+    name: DeleteAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(System.Collections.Generic.List{``0},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(System.Collections.Generic.List{``0},System.Threading.CancellationToken)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: DeleteAsync<T>(List<T>, CancellationToken)
+  nameWithType: Repository.DeleteAsync<T>(List<T>, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync<T>(System.Collections.Generic.List<T>, System.Threading.CancellationToken)
+  nameWithType.vb: Repository.DeleteAsync(Of T)(List(Of T), CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync(Of T)(System.Collections.Generic.List(Of T), System.Threading.CancellationToken)
+  name.vb: DeleteAsync(Of T)(List(Of T), CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(System.Collections.Generic.List{``0},System.Threading.CancellationToken)
+    name: DeleteAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(System.Collections.Generic.List{``0},System.Threading.CancellationToken)
+    name: DeleteAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1(``0,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1(``0,System.Threading.CancellationToken)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: UpdateAsync<T>(T, CancellationToken)
+  nameWithType: Repository.UpdateAsync<T>(T, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync<T>(T, System.Threading.CancellationToken)
+  nameWithType.vb: Repository.UpdateAsync(Of T)(T, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync(Of T)(T, System.Threading.CancellationToken)
+  name.vb: UpdateAsync(Of T)(T, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1(``0,System.Threading.CancellationToken)
+    name: UpdateAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1(``0,System.Threading.CancellationToken)
+    name: UpdateAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Cloud.AWS.Dynamo.Tests.SampleRepository.#ctor*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Tests.SampleRepository.#ctor
+  href: Innovt.Cloud.AWS.Dynamo.Tests.SampleRepository.html#Innovt_Cloud_AWS_Dynamo_Tests_SampleRepository__ctor_Innovt_Cloud_AWS_Dynamo_DynamoContext_Innovt_Core_CrossCutting_Log_ILogger_Innovt_Cloud_AWS_Configuration_IAwsConfiguration_
+  name: SampleRepository
+  nameWithType: SampleRepository.SampleRepository
+  fullName: Innovt.Cloud.AWS.Dynamo.Tests.SampleRepository.SampleRepository
+  nameWithType.vb: SampleRepository.New
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Tests.SampleRepository.New
+  name.vb: New
+- uid: Innovt.Cloud.AWS.Dynamo.DynamoContext
+  commentId: T:Innovt.Cloud.AWS.Dynamo.DynamoContext
+  parent: Innovt.Cloud.AWS.Dynamo
+  href: Innovt.Cloud.AWS.Dynamo.DynamoContext.html
+  name: DynamoContext
+  nameWithType: DynamoContext
+  fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext
+- uid: Innovt.Core.CrossCutting.Log.ILogger
+  commentId: T:Innovt.Core.CrossCutting.Log.ILogger
+  parent: Innovt.Core.CrossCutting.Log
+  href: Innovt.Core.CrossCutting.Log.ILogger.html
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Innovt.Core.CrossCutting.Log.ILogger
+- uid: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+  commentId: T:Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+  parent: Innovt.Cloud.AWS.Configuration
+  href: Innovt.Cloud.AWS.Configuration.IAwsConfiguration.html
+  name: IAwsConfiguration
+  nameWithType: IAwsConfiguration
+  fullName: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+- uid: Innovt.Core.CrossCutting.Log
+  commentId: N:Innovt.Core.CrossCutting.Log
+  href: Innovt.html
+  name: Innovt.Core.CrossCutting.Log
+  nameWithType: Innovt.Core.CrossCutting.Log
+  fullName: Innovt.Core.CrossCutting.Log
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Log
+    name: Log
+    href: Innovt.Core.CrossCutting.Log.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Log
+    name: Log
+    href: Innovt.Core.CrossCutting.Log.html
+- uid: Innovt.Cloud.AWS.Configuration
+  commentId: N:Innovt.Cloud.AWS.Configuration
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Configuration
+  nameWithType: Innovt.Cloud.AWS.Configuration
+  fullName: Innovt.Cloud.AWS.Configuration
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Configuration
+    name: Configuration
+    href: Innovt.Cloud.AWS.Configuration.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Configuration
+    name: Configuration
+    href: Innovt.Cloud.AWS.Configuration.html

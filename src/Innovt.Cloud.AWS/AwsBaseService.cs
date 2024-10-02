@@ -35,13 +35,12 @@ public abstract class AwsBaseService : IDisposable
         CircuitBreakerDurationOfBreak = TimeSpan.FromSeconds(5);
     }
 
-    // <summary>
-    /// Initializes a new instance of the
-    /// <see cref="AwsBaseService" />
-    /// class with a logger and AWS configuration.
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="AwsBaseService" /> class with a logger and AWS configuration.
     /// </summary>
     /// <param name="logger">The logger for logging service activities.</param>
     /// <param name="configuration">The AWS configuration for the service.</param>
+    /// <exception cref="ArgumentNullException"></exception>
     protected AwsBaseService(ILogger logger, IAwsConfiguration configuration) : this()
     {
         Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));

@@ -1,0 +1,2957 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.SQS.QueueService`1
+  commentId: T:Innovt.Cloud.AWS.SQS.QueueService`1
+  id: QueueService`1
+  parent: Innovt.Cloud.AWS.SQS
+  children:
+  - Innovt.Cloud.AWS.SQS.QueueService`1.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String,Innovt.Core.Serialization.ISerializer)
+  - Innovt.Cloud.AWS.SQS.QueueService`1.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String,System.String,Innovt.Core.Serialization.ISerializer)
+  - Innovt.Cloud.AWS.SQS.QueueService`1.ApproximateMessageCountAsync(System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.SQS.QueueService`1.CreateIfNotExistAsync(System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.SQS.QueueService`1.DeQueueAsync(System.String,System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.SQS.QueueService`1.DisposeServices
+  - Innovt.Cloud.AWS.SQS.QueueService`1.EnQueueAsync``1(``0,System.Nullable{System.Int32},System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.SQS.QueueService`1.EnQueueBatchAsync(System.Collections.Generic.IEnumerable{Innovt.Cloud.Queue.MessageBatchRequest},System.Nullable{System.Int32},System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.SQS.QueueService`1.GetMessagesAsync(System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.SQS.QueueService`1.QueueName
+  - Innovt.Cloud.AWS.SQS.QueueService`1.QueueUrl
+  langs:
+  - csharp
+  - vb
+  name: QueueService<T>
+  nameWithType: QueueService<T>
+  fullName: Innovt.Cloud.AWS.SQS.QueueService<T>
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.SQS/QueueService.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: QueueService
+    path: ../src/Innovt.Cloud.AWS.SQS/QueueService.cs
+    startLine: 25
+  assemblies:
+  - Innovt.Cloud.AWS.SQS
+  namespace: Innovt.Cloud.AWS.SQS
+  summary: >-
+    Provides functionalities to interact with an Amazon SQS queue for a specified message type
+
+    <code class="typeparamref">T</code>.
+  example: []
+  syntax:
+    content: 'public class QueueService<T> : AwsBaseService, IDisposable, IQueueService<T> where T : IQueueMessage'
+    typeParameters:
+    - id: T
+      description: Type of the messages in the queue, must implement <xref href="Innovt.Cloud.Queue.IQueueMessage" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Class QueueService(Of T As IQueueMessage) Inherits AwsBaseService Implements IDisposable, IQueueService(Of T)
+  inheritance:
+  - System.Object
+  - Innovt.Cloud.AWS.AwsBaseService
+  implements:
+  - System.IDisposable
+  - Innovt.Cloud.Queue.IQueueService{{T}}
+  inheritedMembers:
+  - Innovt.Cloud.AWS.AwsBaseService.Configuration
+  - Innovt.Cloud.AWS.AwsBaseService.RetryCount
+  - Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerAllowedExceptions
+  - Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerDurationOfBreak
+  - Innovt.Cloud.AWS.AwsBaseService.Logger
+  - Innovt.Cloud.AWS.AwsBaseService.Dispose
+  - Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+  - Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+  - Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryAsyncPolicy
+  - Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+  - Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+  - Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+  - Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  nameWithType.vb: QueueService(Of T)
+  fullName.vb: Innovt.Cloud.AWS.SQS.QueueService(Of T)
+  name.vb: QueueService(Of T)
+- uid: Innovt.Cloud.AWS.SQS.QueueService`1.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String,Innovt.Core.Serialization.ISerializer)
+  commentId: M:Innovt.Cloud.AWS.SQS.QueueService`1.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String,Innovt.Core.Serialization.ISerializer)
+  id: '#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String,Innovt.Core.Serialization.ISerializer)'
+  parent: Innovt.Cloud.AWS.SQS.QueueService`1
+  langs:
+  - csharp
+  - vb
+  name: QueueService(ILogger, IAwsConfiguration, string, ISerializer)
+  nameWithType: QueueService<T>.QueueService(ILogger, IAwsConfiguration, string, ISerializer)
+  fullName: Innovt.Cloud.AWS.SQS.QueueService<T>.QueueService(Innovt.Core.CrossCutting.Log.ILogger, Innovt.Cloud.AWS.Configuration.IAwsConfiguration, string, Innovt.Core.Serialization.ISerializer)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.SQS/QueueService.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: ../src/Innovt.Cloud.AWS.SQS/QueueService.cs
+    startLine: 40
+  assemblies:
+  - Innovt.Cloud.AWS.SQS
+  namespace: Innovt.Cloud.AWS.SQS
+  summary: Initializes a new instance of the <xref href="Innovt.Cloud.AWS.SQS.QueueService%601" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public QueueService(ILogger logger, IAwsConfiguration configuration, string queueName = null, ISerializer serializer = null)
+    parameters:
+    - id: logger
+      type: Innovt.Core.CrossCutting.Log.ILogger
+      description: Logger instance.
+    - id: configuration
+      type: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+      description: AWS configuration.
+    - id: queueName
+      type: System.String
+      description: Optional queue name, defaults to the name of type <code class="typeparamref">T</code>.
+    - id: serializer
+      type: Innovt.Core.Serialization.ISerializer
+      description: Custom serializer (optional).
+    content.vb: Public Sub New(logger As ILogger, configuration As IAwsConfiguration, queueName As String = Nothing, serializer As ISerializer = Nothing)
+  overload: Innovt.Cloud.AWS.SQS.QueueService`1.#ctor*
+  nameWithType.vb: QueueService(Of T).New(ILogger, IAwsConfiguration, String, ISerializer)
+  fullName.vb: Innovt.Cloud.AWS.SQS.QueueService(Of T).New(Innovt.Core.CrossCutting.Log.ILogger, Innovt.Cloud.AWS.Configuration.IAwsConfiguration, String, Innovt.Core.Serialization.ISerializer)
+  name.vb: New(ILogger, IAwsConfiguration, String, ISerializer)
+- uid: Innovt.Cloud.AWS.SQS.QueueService`1.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String,System.String,Innovt.Core.Serialization.ISerializer)
+  commentId: M:Innovt.Cloud.AWS.SQS.QueueService`1.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String,System.String,Innovt.Core.Serialization.ISerializer)
+  id: '#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String,System.String,Innovt.Core.Serialization.ISerializer)'
+  parent: Innovt.Cloud.AWS.SQS.QueueService`1
+  langs:
+  - csharp
+  - vb
+  name: QueueService(ILogger, IAwsConfiguration, string, string, ISerializer)
+  nameWithType: QueueService<T>.QueueService(ILogger, IAwsConfiguration, string, string, ISerializer)
+  fullName: Innovt.Cloud.AWS.SQS.QueueService<T>.QueueService(Innovt.Core.CrossCutting.Log.ILogger, Innovt.Cloud.AWS.Configuration.IAwsConfiguration, string, string, Innovt.Core.Serialization.ISerializer)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.SQS/QueueService.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: ../src/Innovt.Cloud.AWS.SQS/QueueService.cs
+    startLine: 54
+  assemblies:
+  - Innovt.Cloud.AWS.SQS
+  namespace: Innovt.Cloud.AWS.SQS
+  summary: Initializes a new instance of the <xref href="Innovt.Cloud.AWS.SQS.QueueService%601" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public QueueService(ILogger logger, IAwsConfiguration configuration, string region, string queueName = null, ISerializer serializer = null)
+    parameters:
+    - id: logger
+      type: Innovt.Core.CrossCutting.Log.ILogger
+      description: Logger instance.
+    - id: configuration
+      type: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+      description: AWS configuration.
+    - id: region
+      type: System.String
+    - id: queueName
+      type: System.String
+      description: Optional queue name, defaults to the name of type <code class="typeparamref">T</code>.
+    - id: serializer
+      type: Innovt.Core.Serialization.ISerializer
+      description: Custom serializer (optional).
+    content.vb: Public Sub New(logger As ILogger, configuration As IAwsConfiguration, region As String, queueName As String = Nothing, serializer As ISerializer = Nothing)
+  overload: Innovt.Cloud.AWS.SQS.QueueService`1.#ctor*
+  nameWithType.vb: QueueService(Of T).New(ILogger, IAwsConfiguration, String, String, ISerializer)
+  fullName.vb: Innovt.Cloud.AWS.SQS.QueueService(Of T).New(Innovt.Core.CrossCutting.Log.ILogger, Innovt.Cloud.AWS.Configuration.IAwsConfiguration, String, String, Innovt.Core.Serialization.ISerializer)
+  name.vb: New(ILogger, IAwsConfiguration, String, String, ISerializer)
+- uid: Innovt.Cloud.AWS.SQS.QueueService`1.QueueName
+  commentId: P:Innovt.Cloud.AWS.SQS.QueueService`1.QueueName
+  id: QueueName
+  parent: Innovt.Cloud.AWS.SQS.QueueService`1
+  langs:
+  - csharp
+  - vb
+  name: QueueName
+  nameWithType: QueueService<T>.QueueName
+  fullName: Innovt.Cloud.AWS.SQS.QueueService<T>.QueueName
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.SQS/QueueService.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: QueueName
+    path: ../src/Innovt.Cloud.AWS.SQS/QueueService.cs
+    startLine: 64
+  assemblies:
+  - Innovt.Cloud.AWS.SQS
+  namespace: Innovt.Cloud.AWS.SQS
+  summary: Gets the name of the queue.
+  example: []
+  syntax:
+    content: public string QueueName { get; protected set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property QueueName As String
+  overload: Innovt.Cloud.AWS.SQS.QueueService`1.QueueName*
+  nameWithType.vb: QueueService(Of T).QueueName
+  fullName.vb: Innovt.Cloud.AWS.SQS.QueueService(Of T).QueueName
+- uid: Innovt.Cloud.AWS.SQS.QueueService`1.QueueUrl
+  commentId: P:Innovt.Cloud.AWS.SQS.QueueService`1.QueueUrl
+  id: QueueUrl
+  parent: Innovt.Cloud.AWS.SQS.QueueService`1
+  langs:
+  - csharp
+  - vb
+  name: QueueUrl
+  nameWithType: QueueService<T>.QueueUrl
+  fullName: Innovt.Cloud.AWS.SQS.QueueService<T>.QueueUrl
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.SQS/QueueService.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: QueueUrl
+    path: ../src/Innovt.Cloud.AWS.SQS/QueueService.cs
+    startLine: 70
+  assemblies:
+  - Innovt.Cloud.AWS.SQS
+  namespace: Innovt.Cloud.AWS.SQS
+  summary: Gets the URL of the queue.
+  example: []
+  syntax:
+    content: public string QueueUrl { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property QueueUrl As String
+  overload: Innovt.Cloud.AWS.SQS.QueueService`1.QueueUrl*
+  nameWithType.vb: QueueService(Of T).QueueUrl
+  fullName.vb: Innovt.Cloud.AWS.SQS.QueueService(Of T).QueueUrl
+- uid: Innovt.Cloud.AWS.SQS.QueueService`1.GetMessagesAsync(System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.SQS.QueueService`1.GetMessagesAsync(System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)
+  id: GetMessagesAsync(System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.SQS.QueueService`1
+  langs:
+  - csharp
+  - vb
+  name: GetMessagesAsync(int, int?, int?, CancellationToken)
+  nameWithType: QueueService<T>.GetMessagesAsync(int, int?, int?, CancellationToken)
+  fullName: Innovt.Cloud.AWS.SQS.QueueService<T>.GetMessagesAsync(int, int?, int?, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.SQS/QueueService.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: GetMessagesAsync
+    path: ../src/Innovt.Cloud.AWS.SQS/QueueService.cs
+    startLine: 90
+  assemblies:
+  - Innovt.Cloud.AWS.SQS
+  namespace: Innovt.Cloud.AWS.SQS
+  summary: Enable user to receive messages
+  example: []
+  syntax:
+    content: public Task<IList<T>> GetMessagesAsync(int quantity, int? waitTimeInSeconds = null, int? visibilityTimeoutInSeconds = null, CancellationToken cancellationToken = default)
+    parameters:
+    - id: quantity
+      type: System.Int32
+      description: 1-10
+    - id: waitTimeInSeconds
+      type: System.Nullable{System.Int32}
+      description: To enable long pooling
+    - id: visibilityTimeoutInSeconds
+      type: System.Nullable{System.Int32}
+      description: ''
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IList{{T}}}
+      description: ''
+    content.vb: Public Function GetMessagesAsync(quantity As Integer, waitTimeInSeconds As Integer? = Nothing, visibilityTimeoutInSeconds As Integer? = Nothing, cancellationToken As CancellationToken = Nothing) As Task(Of IList(Of T))
+  overload: Innovt.Cloud.AWS.SQS.QueueService`1.GetMessagesAsync*
+  implements:
+  - Innovt.Cloud.Queue.IQueueService{{T}}.GetMessagesAsync(System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)
+  nameWithType.vb: QueueService(Of T).GetMessagesAsync(Integer, Integer?, Integer?, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.SQS.QueueService(Of T).GetMessagesAsync(Integer, Integer?, Integer?, System.Threading.CancellationToken)
+  name.vb: GetMessagesAsync(Integer, Integer?, Integer?, CancellationToken)
+- uid: Innovt.Cloud.AWS.SQS.QueueService`1.DeQueueAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.SQS.QueueService`1.DeQueueAsync(System.String,System.Threading.CancellationToken)
+  id: DeQueueAsync(System.String,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.SQS.QueueService`1
+  langs:
+  - csharp
+  - vb
+  name: DeQueueAsync(string, CancellationToken)
+  nameWithType: QueueService<T>.DeQueueAsync(string, CancellationToken)
+  fullName: Innovt.Cloud.AWS.SQS.QueueService<T>.DeQueueAsync(string, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.SQS/QueueService.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: DeQueueAsync
+    path: ../src/Innovt.Cloud.AWS.SQS/QueueService.cs
+    startLine: 144
+  assemblies:
+  - Innovt.Cloud.AWS.SQS
+  namespace: Innovt.Cloud.AWS.SQS
+  summary: Dequeues a message asynchronously from the queue using the provided pop receipt.
+  example: []
+  syntax:
+    content: public Task DeQueueAsync(string popReceipt, CancellationToken cancellationToken = default)
+    parameters:
+    - id: popReceipt
+      type: System.String
+      description: The pop receipt of the message to be dequeued.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Cancellation token (optional).
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task representing the asynchronous operation.
+    content.vb: Public Function DeQueueAsync(popReceipt As String, cancellationToken As CancellationToken = Nothing) As Task
+  overload: Innovt.Cloud.AWS.SQS.QueueService`1.DeQueueAsync*
+  implements:
+  - Innovt.Cloud.Queue.IQueueService{{T}}.DeQueueAsync(System.String,System.Threading.CancellationToken)
+  nameWithType.vb: QueueService(Of T).DeQueueAsync(String, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.SQS.QueueService(Of T).DeQueueAsync(String, System.Threading.CancellationToken)
+  name.vb: DeQueueAsync(String, CancellationToken)
+- uid: Innovt.Cloud.AWS.SQS.QueueService`1.ApproximateMessageCountAsync(System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.SQS.QueueService`1.ApproximateMessageCountAsync(System.Threading.CancellationToken)
+  id: ApproximateMessageCountAsync(System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.SQS.QueueService`1
+  langs:
+  - csharp
+  - vb
+  name: ApproximateMessageCountAsync(CancellationToken)
+  nameWithType: QueueService<T>.ApproximateMessageCountAsync(CancellationToken)
+  fullName: Innovt.Cloud.AWS.SQS.QueueService<T>.ApproximateMessageCountAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.SQS/QueueService.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ApproximateMessageCountAsync
+    path: ../src/Innovt.Cloud.AWS.SQS/QueueService.cs
+    startLine: 163
+  assemblies:
+  - Innovt.Cloud.AWS.SQS
+  namespace: Innovt.Cloud.AWS.SQS
+  summary: Retrieves the approximate message count of the queue asynchronously.
+  example: []
+  syntax:
+    content: public Task<int> ApproximateMessageCountAsync(CancellationToken cancellationToken = default)
+    parameters:
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Cancellation token (optional).
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+      description: The approximate message count of the queue.
+    content.vb: Public Function ApproximateMessageCountAsync(cancellationToken As CancellationToken = Nothing) As Task(Of Integer)
+  overload: Innovt.Cloud.AWS.SQS.QueueService`1.ApproximateMessageCountAsync*
+  implements:
+  - Innovt.Cloud.Queue.IQueueService{{T}}.ApproximateMessageCountAsync(System.Threading.CancellationToken)
+  nameWithType.vb: QueueService(Of T).ApproximateMessageCountAsync(CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.SQS.QueueService(Of T).ApproximateMessageCountAsync(System.Threading.CancellationToken)
+- uid: Innovt.Cloud.AWS.SQS.QueueService`1.CreateIfNotExistAsync(System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.SQS.QueueService`1.CreateIfNotExistAsync(System.Threading.CancellationToken)
+  id: CreateIfNotExistAsync(System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.SQS.QueueService`1
+  langs:
+  - csharp
+  - vb
+  name: CreateIfNotExistAsync(CancellationToken)
+  nameWithType: QueueService<T>.CreateIfNotExistAsync(CancellationToken)
+  fullName: Innovt.Cloud.AWS.SQS.QueueService<T>.CreateIfNotExistAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.SQS/QueueService.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: CreateIfNotExistAsync
+    path: ../src/Innovt.Cloud.AWS.SQS/QueueService.cs
+    startLine: 187
+  assemblies:
+  - Innovt.Cloud.AWS.SQS
+  namespace: Innovt.Cloud.AWS.SQS
+  summary: Creates the queue if it does not exist asynchronously.
+  example: []
+  syntax:
+    content: public Task CreateIfNotExistAsync(CancellationToken cancellationToken = default)
+    parameters:
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Cancellation token (optional).
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task representing the asynchronous operation.
+    content.vb: Public Function CreateIfNotExistAsync(cancellationToken As CancellationToken = Nothing) As Task
+  overload: Innovt.Cloud.AWS.SQS.QueueService`1.CreateIfNotExistAsync*
+  implements:
+  - Innovt.Cloud.Queue.IQueueService{{T}}.CreateIfNotExistAsync(System.Threading.CancellationToken)
+  nameWithType.vb: QueueService(Of T).CreateIfNotExistAsync(CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.SQS.QueueService(Of T).CreateIfNotExistAsync(System.Threading.CancellationToken)
+- uid: Innovt.Cloud.AWS.SQS.QueueService`1.EnQueueAsync``1(``0,System.Nullable{System.Int32},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.SQS.QueueService`1.EnQueueAsync``1(``0,System.Nullable{System.Int32},System.Threading.CancellationToken)
+  id: EnQueueAsync``1(``0,System.Nullable{System.Int32},System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.SQS.QueueService`1
+  langs:
+  - csharp
+  - vb
+  name: EnQueueAsync<TK>(TK, int?, CancellationToken)
+  nameWithType: QueueService<T>.EnQueueAsync<TK>(TK, int?, CancellationToken)
+  fullName: Innovt.Cloud.AWS.SQS.QueueService<T>.EnQueueAsync<TK>(TK, int?, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.SQS/QueueService.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: EnQueueAsync
+    path: ../src/Innovt.Cloud.AWS.SQS/QueueService.cs
+    startLine: 209
+  assemblies:
+  - Innovt.Cloud.AWS.SQS
+  namespace: Innovt.Cloud.AWS.SQS
+  summary: ''
+  example: []
+  syntax:
+    content: public Task<string> EnQueueAsync<TK>(TK message, int? visibilityTimeoutInSeconds = null, CancellationToken cancellationToken = default)
+    parameters:
+    - id: message
+      type: '{TK}'
+      description: ''
+    - id: visibilityTimeoutInSeconds
+      type: System.Nullable{System.Int32}
+      description: ''
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: >-
+        // Gets and sets the property DelaySeconds.
+
+        The length of time, in seconds, for which to delay a specific message. Valid values:
+
+        0 to 900. Maximum: 15 minutes. Messages with a positive <pre><code class="lang-csharp">DelaySeconds</code></pre>
+
+        value become available for processing after the delay period is finished. If you don't
+
+        specify a value, the default value for the queue applies.
+
+        When you set <pre><code class="lang-csharp">FifoQueue</code></pre>, you can't set <pre><code class="lang-csharp">DelaySeconds</code></pre> per message.
+
+        You can set this parameter only on a queue level.
+    typeParameters:
+    - id: TK
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+      description: ''
+    content.vb: Public Function EnQueueAsync(Of TK)(message As TK, visibilityTimeoutInSeconds As Integer? = Nothing, cancellationToken As CancellationToken = Nothing) As Task(Of String)
+  overload: Innovt.Cloud.AWS.SQS.QueueService`1.EnQueueAsync*
+  implements:
+  - Innovt.Cloud.Queue.IQueueService{{T}}.EnQueueAsync``1({TK},System.Nullable{System.Int32},System.Threading.CancellationToken)
+  nameWithType.vb: QueueService(Of T).EnQueueAsync(Of TK)(TK, Integer?, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.SQS.QueueService(Of T).EnQueueAsync(Of TK)(TK, Integer?, System.Threading.CancellationToken)
+  name.vb: EnQueueAsync(Of TK)(TK, Integer?, CancellationToken)
+- uid: Innovt.Cloud.AWS.SQS.QueueService`1.EnQueueBatchAsync(System.Collections.Generic.IEnumerable{Innovt.Cloud.Queue.MessageBatchRequest},System.Nullable{System.Int32},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.SQS.QueueService`1.EnQueueBatchAsync(System.Collections.Generic.IEnumerable{Innovt.Cloud.Queue.MessageBatchRequest},System.Nullable{System.Int32},System.Threading.CancellationToken)
+  id: EnQueueBatchAsync(System.Collections.Generic.IEnumerable{Innovt.Cloud.Queue.MessageBatchRequest},System.Nullable{System.Int32},System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.SQS.QueueService`1
+  langs:
+  - csharp
+  - vb
+  name: EnQueueBatchAsync(IEnumerable<MessageBatchRequest>, int?, CancellationToken)
+  nameWithType: QueueService<T>.EnQueueBatchAsync(IEnumerable<MessageBatchRequest>, int?, CancellationToken)
+  fullName: Innovt.Cloud.AWS.SQS.QueueService<T>.EnQueueBatchAsync(System.Collections.Generic.IEnumerable<Innovt.Cloud.Queue.MessageBatchRequest>, int?, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.SQS/QueueService.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: EnQueueBatchAsync
+    path: ../src/Innovt.Cloud.AWS.SQS/QueueService.cs
+    startLine: 250
+  assemblies:
+  - Innovt.Cloud.AWS.SQS
+  namespace: Innovt.Cloud.AWS.SQS
+  summary: Enqueues a batch of messages asynchronously to the queue.
+  example: []
+  syntax:
+    content: public Task<IList<MessageQueueResult>> EnQueueBatchAsync(IEnumerable<MessageBatchRequest> message, int? delaySeconds = null, CancellationToken cancellationToken = default)
+    parameters:
+    - id: message
+      type: System.Collections.Generic.IEnumerable{Innovt.Cloud.Queue.MessageBatchRequest}
+      description: The messages to be enqueued.
+    - id: delaySeconds
+      type: System.Nullable{System.Int32}
+      description: The delay in seconds for message delivery (optional).
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Cancellation token (optional).
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IList{Innovt.Cloud.Queue.MessageQueueResult}}
+      description: A list of message queue results indicating success or failure for each message.
+    content.vb: Public Function EnQueueBatchAsync(message As IEnumerable(Of MessageBatchRequest), delaySeconds As Integer? = Nothing, cancellationToken As CancellationToken = Nothing) As Task(Of IList(Of MessageQueueResult))
+  overload: Innovt.Cloud.AWS.SQS.QueueService`1.EnQueueBatchAsync*
+  implements:
+  - Innovt.Cloud.Queue.IQueueService{{T}}.EnQueueBatchAsync(System.Collections.Generic.IEnumerable{Innovt.Cloud.Queue.MessageBatchRequest},System.Nullable{System.Int32},System.Threading.CancellationToken)
+  nameWithType.vb: QueueService(Of T).EnQueueBatchAsync(IEnumerable(Of MessageBatchRequest), Integer?, CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.SQS.QueueService(Of T).EnQueueBatchAsync(System.Collections.Generic.IEnumerable(Of Innovt.Cloud.Queue.MessageBatchRequest), Integer?, System.Threading.CancellationToken)
+  name.vb: EnQueueBatchAsync(IEnumerable(Of MessageBatchRequest), Integer?, CancellationToken)
+- uid: Innovt.Cloud.AWS.SQS.QueueService`1.DisposeServices
+  commentId: M:Innovt.Cloud.AWS.SQS.QueueService`1.DisposeServices
+  id: DisposeServices
+  parent: Innovt.Cloud.AWS.SQS.QueueService`1
+  langs:
+  - csharp
+  - vb
+  name: DisposeServices()
+  nameWithType: QueueService<T>.DisposeServices()
+  fullName: Innovt.Cloud.AWS.SQS.QueueService<T>.DisposeServices()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.SQS/QueueService.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: DisposeServices
+    path: ../src/Innovt.Cloud.AWS.SQS/QueueService.cs
+    startLine: 348
+  assemblies:
+  - Innovt.Cloud.AWS.SQS
+  namespace: Innovt.Cloud.AWS.SQS
+  summary: Disposes of the Amazon SQS client.
+  example: []
+  syntax:
+    content: protected override void DisposeServices()
+    content.vb: Protected Overrides Sub DisposeServices()
+  overridden: Innovt.Cloud.AWS.AwsBaseService.DisposeServices
+  overload: Innovt.Cloud.AWS.SQS.QueueService`1.DisposeServices*
+  nameWithType.vb: QueueService(Of T).DisposeServices()
+  fullName.vb: Innovt.Cloud.AWS.SQS.QueueService(Of T).DisposeServices()
+references:
+- uid: Innovt.Cloud.Queue.IQueueMessage
+  commentId: T:Innovt.Cloud.Queue.IQueueMessage
+  parent: Innovt.Cloud.Queue
+  href: Innovt.Cloud.Queue.IQueueMessage.html
+  name: IQueueMessage
+  nameWithType: IQueueMessage
+  fullName: Innovt.Cloud.Queue.IQueueMessage
+- uid: Innovt.Cloud.AWS.SQS
+  commentId: N:Innovt.Cloud.AWS.SQS
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.SQS
+  nameWithType: Innovt.Cloud.AWS.SQS
+  fullName: Innovt.Cloud.AWS.SQS
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.SQS
+    name: SQS
+    href: Innovt.Cloud.AWS.SQS.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.SQS
+    name: SQS
+    href: Innovt.Cloud.AWS.SQS.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Innovt.Cloud.AWS.AwsBaseService
+  commentId: T:Innovt.Cloud.AWS.AwsBaseService
+  parent: Innovt.Cloud.AWS
+  href: Innovt.Cloud.AWS.AwsBaseService.html
+  name: AwsBaseService
+  nameWithType: AwsBaseService
+  fullName: Innovt.Cloud.AWS.AwsBaseService
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Innovt.Cloud.Queue.IQueueService{{T}}
+  commentId: T:Innovt.Cloud.Queue.IQueueService{`0}
+  parent: Innovt.Cloud.Queue
+  definition: Innovt.Cloud.Queue.IQueueService`1
+  href: Innovt.Cloud.Queue.IQueueService-1.html
+  name: IQueueService<T>
+  nameWithType: IQueueService<T>
+  fullName: Innovt.Cloud.Queue.IQueueService<T>
+  nameWithType.vb: IQueueService(Of T)
+  fullName.vb: Innovt.Cloud.Queue.IQueueService(Of T)
+  name.vb: IQueueService(Of T)
+  spec.csharp:
+  - uid: Innovt.Cloud.Queue.IQueueService`1
+    name: IQueueService
+    href: Innovt.Cloud.Queue.IQueueService-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cloud.Queue.IQueueService`1
+    name: IQueueService
+    href: Innovt.Cloud.Queue.IQueueService-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.Configuration
+  commentId: F:Innovt.Cloud.AWS.AwsBaseService.Configuration
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Configuration
+  name: Configuration
+  nameWithType: AwsBaseService.Configuration
+  fullName: Innovt.Cloud.AWS.AwsBaseService.Configuration
+- uid: Innovt.Cloud.AWS.AwsBaseService.RetryCount
+  commentId: P:Innovt.Cloud.AWS.AwsBaseService.RetryCount
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_RetryCount
+  name: RetryCount
+  nameWithType: AwsBaseService.RetryCount
+  fullName: Innovt.Cloud.AWS.AwsBaseService.RetryCount
+- uid: Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerAllowedExceptions
+  commentId: P:Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerAllowedExceptions
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CircuitBreakerAllowedExceptions
+  name: CircuitBreakerAllowedExceptions
+  nameWithType: AwsBaseService.CircuitBreakerAllowedExceptions
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerAllowedExceptions
+- uid: Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerDurationOfBreak
+  commentId: P:Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerDurationOfBreak
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CircuitBreakerDurationOfBreak
+  name: CircuitBreakerDurationOfBreak
+  nameWithType: AwsBaseService.CircuitBreakerDurationOfBreak
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerDurationOfBreak
+- uid: Innovt.Cloud.AWS.AwsBaseService.Logger
+  commentId: P:Innovt.Cloud.AWS.AwsBaseService.Logger
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Logger
+  name: Logger
+  nameWithType: AwsBaseService.Logger
+  fullName: Innovt.Cloud.AWS.AwsBaseService.Logger
+- uid: Innovt.Cloud.AWS.AwsBaseService.Dispose
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.Dispose
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose
+  name: Dispose()
+  nameWithType: AwsBaseService.Dispose()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.Dispose()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.Dispose
+    name: Dispose
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.Dispose
+    name: Dispose
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_GetServiceRegionEndPoint
+  name: GetServiceRegionEndPoint()
+  nameWithType: AwsBaseService.GetServiceRegionEndPoint()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+    name: GetServiceRegionEndPoint
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_GetServiceRegionEndPoint
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
+    name: GetServiceRegionEndPoint
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_GetServiceRegionEndPoint
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateService__1
+  name: CreateService<T>()
+  nameWithType: AwsBaseService.CreateService<T>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateService<T>()
+  nameWithType.vb: AwsBaseService.CreateService(Of T)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateService(Of T)()
+  name.vb: CreateService(Of T)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+    name: CreateService
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateService__1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateService``1
+    name: CreateService
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateService__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryAsyncPolicy
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryAsyncPolicy
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryAsyncPolicy
+  name: CreateDefaultRetryAsyncPolicy()
+  nameWithType: AwsBaseService.CreateDefaultRetryAsyncPolicy()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryAsyncPolicy()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryAsyncPolicy
+    name: CreateDefaultRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryAsyncPolicy
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryAsyncPolicy
+    name: CreateDefaultRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryAsyncPolicy
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryPolicy
+  name: CreateDefaultRetryPolicy()
+  nameWithType: AwsBaseService.CreateDefaultRetryPolicy()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+    name: CreateDefaultRetryPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryPolicy
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateDefaultRetryPolicy
+    name: CreateDefaultRetryPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateDefaultRetryPolicy
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__1
+  name: CreateRetryAsyncPolicy<T>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T)()
+  name.vb: CreateRetryAsyncPolicy(Of T)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``1
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__2
+  name: CreateRetryAsyncPolicy<T, T1>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T, T1>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T, T1>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T, T1)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T, T1)()
+  name.vb: CreateRetryAsyncPolicy(Of T, T1)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``2
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__3
+  name: CreateRetryAsyncPolicy<T, T1, T2>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2)()
+  name.vb: CreateRetryAsyncPolicy(Of T, T1, T2)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__3
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``3
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__3
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__4
+  name: CreateRetryAsyncPolicy<T, T1, T2, T3>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2, T3>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2, T3>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2, T3)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2, T3)()
+  name.vb: CreateRetryAsyncPolicy(Of T, T1, T2, T3)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__4
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``4
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__4
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__5
+  name: CreateRetryAsyncPolicy<T, T1, T2, T3, T4>()
+  nameWithType: AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2, T3, T4>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy<T, T1, T2, T3, T4>()
+  nameWithType.vb: AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2, T3, T4)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy(Of T, T1, T2, T3, T4)()
+  name.vb: CreateRetryAsyncPolicy(Of T, T1, T2, T3, T4)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__5
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateRetryAsyncPolicy``5
+    name: CreateRetryAsyncPolicy
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateRetryAsyncPolicy__5
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateCircuitBreaker__2
+  name: CreateCircuitBreaker<T, T1>()
+  nameWithType: AwsBaseService.CreateCircuitBreaker<T, T1>()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker<T, T1>()
+  nameWithType.vb: AwsBaseService.CreateCircuitBreaker(Of T, T1)()
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker(Of T, T1)()
+  name.vb: CreateCircuitBreaker(Of T, T1)()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+    name: CreateCircuitBreaker
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateCircuitBreaker__2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.CreateCircuitBreaker``2
+    name: CreateCircuitBreaker
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CreateCircuitBreaker__2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  isExternal: true
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose_System_Boolean_
+  name: Dispose(bool)
+  nameWithType: AwsBaseService.Dispose(bool)
+  fullName: Innovt.Cloud.AWS.AwsBaseService.Dispose(bool)
+  nameWithType.vb: AwsBaseService.Dispose(Boolean)
+  fullName.vb: Innovt.Cloud.AWS.AwsBaseService.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+    name: Dispose
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
+    name: Dispose
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Cloud.Queue
+  commentId: N:Innovt.Cloud.Queue
+  href: Innovt.html
+  name: Innovt.Cloud.Queue
+  nameWithType: Innovt.Cloud.Queue
+  fullName: Innovt.Cloud.Queue
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.Queue
+    name: Queue
+    href: Innovt.Cloud.Queue.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.Queue
+    name: Queue
+    href: Innovt.Cloud.Queue.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Cloud.AWS
+  commentId: N:Innovt.Cloud.AWS
+  href: Innovt.html
+  name: Innovt.Cloud.AWS
+  nameWithType: Innovt.Cloud.AWS
+  fullName: Innovt.Cloud.AWS
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+- uid: Innovt.Cloud.Queue.IQueueService`1
+  commentId: T:Innovt.Cloud.Queue.IQueueService`1
+  href: Innovt.Cloud.Queue.IQueueService-1.html
+  name: IQueueService<T>
+  nameWithType: IQueueService<T>
+  fullName: Innovt.Cloud.Queue.IQueueService<T>
+  nameWithType.vb: IQueueService(Of T)
+  fullName.vb: Innovt.Cloud.Queue.IQueueService(Of T)
+  name.vb: IQueueService(Of T)
+  spec.csharp:
+  - uid: Innovt.Cloud.Queue.IQueueService`1
+    name: IQueueService
+    href: Innovt.Cloud.Queue.IQueueService-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cloud.Queue.IQueueService`1
+    name: IQueueService
+    href: Innovt.Cloud.Queue.IQueueService-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Cloud.AWS.SQS.QueueService`1
+  commentId: T:Innovt.Cloud.AWS.SQS.QueueService`1
+  href: Innovt.Cloud.AWS.SQS.QueueService-1.html
+  name: QueueService<T>
+  nameWithType: QueueService<T>
+  fullName: Innovt.Cloud.AWS.SQS.QueueService<T>
+  nameWithType.vb: QueueService(Of T)
+  fullName.vb: Innovt.Cloud.AWS.SQS.QueueService(Of T)
+  name.vb: QueueService(Of T)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.SQS.QueueService`1
+    name: QueueService
+    href: Innovt.Cloud.AWS.SQS.QueueService-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.SQS.QueueService`1
+    name: QueueService
+    href: Innovt.Cloud.AWS.SQS.QueueService-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Cloud.AWS.SQS.QueueService`1.#ctor*
+  commentId: Overload:Innovt.Cloud.AWS.SQS.QueueService`1.#ctor
+  href: Innovt.Cloud.AWS.SQS.QueueService-1.html#Innovt_Cloud_AWS_SQS_QueueService_1__ctor_Innovt_Core_CrossCutting_Log_ILogger_Innovt_Cloud_AWS_Configuration_IAwsConfiguration_System_String_Innovt_Core_Serialization_ISerializer_
+  name: QueueService
+  nameWithType: QueueService<T>.QueueService
+  fullName: Innovt.Cloud.AWS.SQS.QueueService<T>.QueueService
+  nameWithType.vb: QueueService(Of T).New
+  fullName.vb: Innovt.Cloud.AWS.SQS.QueueService(Of T).New
+  name.vb: New
+- uid: Innovt.Core.CrossCutting.Log.ILogger
+  commentId: T:Innovt.Core.CrossCutting.Log.ILogger
+  parent: Innovt.Core.CrossCutting.Log
+  href: Innovt.Core.CrossCutting.Log.ILogger.html
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Innovt.Core.CrossCutting.Log.ILogger
+- uid: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+  commentId: T:Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+  parent: Innovt.Cloud.AWS.Configuration
+  href: Innovt.Cloud.AWS.Configuration.IAwsConfiguration.html
+  name: IAwsConfiguration
+  nameWithType: IAwsConfiguration
+  fullName: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Innovt.Core.Serialization.ISerializer
+  commentId: T:Innovt.Core.Serialization.ISerializer
+  parent: Innovt.Core.Serialization
+  href: Innovt.Core.Serialization.ISerializer.html
+  name: ISerializer
+  nameWithType: ISerializer
+  fullName: Innovt.Core.Serialization.ISerializer
+- uid: Innovt.Core.CrossCutting.Log
+  commentId: N:Innovt.Core.CrossCutting.Log
+  href: Innovt.html
+  name: Innovt.Core.CrossCutting.Log
+  nameWithType: Innovt.Core.CrossCutting.Log
+  fullName: Innovt.Core.CrossCutting.Log
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Log
+    name: Log
+    href: Innovt.Core.CrossCutting.Log.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Log
+    name: Log
+    href: Innovt.Core.CrossCutting.Log.html
+- uid: Innovt.Cloud.AWS.Configuration
+  commentId: N:Innovt.Cloud.AWS.Configuration
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Configuration
+  nameWithType: Innovt.Cloud.AWS.Configuration
+  fullName: Innovt.Cloud.AWS.Configuration
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Configuration
+    name: Configuration
+    href: Innovt.Cloud.AWS.Configuration.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Configuration
+    name: Configuration
+    href: Innovt.Cloud.AWS.Configuration.html
+- uid: Innovt.Core.Serialization
+  commentId: N:Innovt.Core.Serialization
+  href: Innovt.html
+  name: Innovt.Core.Serialization
+  nameWithType: Innovt.Core.Serialization
+  fullName: Innovt.Core.Serialization
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Serialization
+    name: Serialization
+    href: Innovt.Core.Serialization.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Serialization
+    name: Serialization
+    href: Innovt.Core.Serialization.html
+- uid: Innovt.Cloud.AWS.SQS.QueueService`1.QueueName*
+  commentId: Overload:Innovt.Cloud.AWS.SQS.QueueService`1.QueueName
+  href: Innovt.Cloud.AWS.SQS.QueueService-1.html#Innovt_Cloud_AWS_SQS_QueueService_1_QueueName
+  name: QueueName
+  nameWithType: QueueService<T>.QueueName
+  fullName: Innovt.Cloud.AWS.SQS.QueueService<T>.QueueName
+  nameWithType.vb: QueueService(Of T).QueueName
+  fullName.vb: Innovt.Cloud.AWS.SQS.QueueService(Of T).QueueName
+- uid: Innovt.Cloud.AWS.SQS.QueueService`1.QueueUrl*
+  commentId: Overload:Innovt.Cloud.AWS.SQS.QueueService`1.QueueUrl
+  href: Innovt.Cloud.AWS.SQS.QueueService-1.html#Innovt_Cloud_AWS_SQS_QueueService_1_QueueUrl
+  name: QueueUrl
+  nameWithType: QueueService<T>.QueueUrl
+  fullName: Innovt.Cloud.AWS.SQS.QueueService<T>.QueueUrl
+  nameWithType.vb: QueueService(Of T).QueueUrl
+  fullName.vb: Innovt.Cloud.AWS.SQS.QueueService(Of T).QueueUrl
+- uid: Innovt.Cloud.AWS.SQS.QueueService`1.GetMessagesAsync*
+  commentId: Overload:Innovt.Cloud.AWS.SQS.QueueService`1.GetMessagesAsync
+  href: Innovt.Cloud.AWS.SQS.QueueService-1.html#Innovt_Cloud_AWS_SQS_QueueService_1_GetMessagesAsync_System_Int32_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Threading_CancellationToken_
+  name: GetMessagesAsync
+  nameWithType: QueueService<T>.GetMessagesAsync
+  fullName: Innovt.Cloud.AWS.SQS.QueueService<T>.GetMessagesAsync
+  nameWithType.vb: QueueService(Of T).GetMessagesAsync
+  fullName.vb: Innovt.Cloud.AWS.SQS.QueueService(Of T).GetMessagesAsync
+- uid: Innovt.Cloud.Queue.IQueueService{{T}}.GetMessagesAsync(System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.Queue.IQueueService{`0}.GetMessagesAsync(System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)
+  parent: Innovt.Cloud.Queue.IQueueService{{T}}
+  definition: Innovt.Cloud.Queue.IQueueService`1.GetMessagesAsync(System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)
+  href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_GetMessagesAsync_System_Int32_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Threading_CancellationToken_
+  name: GetMessagesAsync(int, int?, int?, CancellationToken)
+  nameWithType: IQueueService<T>.GetMessagesAsync(int, int?, int?, CancellationToken)
+  fullName: Innovt.Cloud.Queue.IQueueService<T>.GetMessagesAsync(int, int?, int?, System.Threading.CancellationToken)
+  nameWithType.vb: IQueueService(Of T).GetMessagesAsync(Integer, Integer?, Integer?, CancellationToken)
+  fullName.vb: Innovt.Cloud.Queue.IQueueService(Of T).GetMessagesAsync(Integer, Integer?, Integer?, System.Threading.CancellationToken)
+  name.vb: GetMessagesAsync(Integer, Integer?, Integer?, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.Queue.IQueueService{`0}.GetMessagesAsync(System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)
+    name: GetMessagesAsync
+    href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_GetMessagesAsync_System_Int32_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.Queue.IQueueService{`0}.GetMessagesAsync(System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)
+    name: GetMessagesAsync
+    href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_GetMessagesAsync_System_Int32_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IList{{T}}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IList{`0}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IList<T>>
+  nameWithType: Task<IList<T>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IList<T>>
+  nameWithType.vb: Task(Of IList(Of T))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IList(Of T))
+  name.vb: Task(Of IList(Of T))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Innovt.Cloud.Queue.IQueueService`1.GetMessagesAsync(System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.Queue.IQueueService`1.GetMessagesAsync(System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)
+  isExternal: true
+  href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_GetMessagesAsync_System_Int32_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Threading_CancellationToken_
+  name: GetMessagesAsync(int, int?, int?, CancellationToken)
+  nameWithType: IQueueService<T>.GetMessagesAsync(int, int?, int?, CancellationToken)
+  fullName: Innovt.Cloud.Queue.IQueueService<T>.GetMessagesAsync(int, int?, int?, System.Threading.CancellationToken)
+  nameWithType.vb: IQueueService(Of T).GetMessagesAsync(Integer, Integer?, Integer?, CancellationToken)
+  fullName.vb: Innovt.Cloud.Queue.IQueueService(Of T).GetMessagesAsync(Integer, Integer?, Integer?, System.Threading.CancellationToken)
+  name.vb: GetMessagesAsync(Integer, Integer?, Integer?, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.Queue.IQueueService`1.GetMessagesAsync(System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)
+    name: GetMessagesAsync
+    href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_GetMessagesAsync_System_Int32_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.Queue.IQueueService`1.GetMessagesAsync(System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)
+    name: GetMessagesAsync
+    href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_GetMessagesAsync_System_Int32_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Innovt.Cloud.AWS.SQS.QueueService`1.DeQueueAsync*
+  commentId: Overload:Innovt.Cloud.AWS.SQS.QueueService`1.DeQueueAsync
+  href: Innovt.Cloud.AWS.SQS.QueueService-1.html#Innovt_Cloud_AWS_SQS_QueueService_1_DeQueueAsync_System_String_System_Threading_CancellationToken_
+  name: DeQueueAsync
+  nameWithType: QueueService<T>.DeQueueAsync
+  fullName: Innovt.Cloud.AWS.SQS.QueueService<T>.DeQueueAsync
+  nameWithType.vb: QueueService(Of T).DeQueueAsync
+  fullName.vb: Innovt.Cloud.AWS.SQS.QueueService(Of T).DeQueueAsync
+- uid: Innovt.Cloud.Queue.IQueueService{{T}}.DeQueueAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.Queue.IQueueService{`0}.DeQueueAsync(System.String,System.Threading.CancellationToken)
+  parent: Innovt.Cloud.Queue.IQueueService{{T}}
+  definition: Innovt.Cloud.Queue.IQueueService`1.DeQueueAsync(System.String,System.Threading.CancellationToken)
+  href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_DeQueueAsync_System_String_System_Threading_CancellationToken_
+  name: DeQueueAsync(string, CancellationToken)
+  nameWithType: IQueueService<T>.DeQueueAsync(string, CancellationToken)
+  fullName: Innovt.Cloud.Queue.IQueueService<T>.DeQueueAsync(string, System.Threading.CancellationToken)
+  nameWithType.vb: IQueueService(Of T).DeQueueAsync(String, CancellationToken)
+  fullName.vb: Innovt.Cloud.Queue.IQueueService(Of T).DeQueueAsync(String, System.Threading.CancellationToken)
+  name.vb: DeQueueAsync(String, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.Queue.IQueueService{`0}.DeQueueAsync(System.String,System.Threading.CancellationToken)
+    name: DeQueueAsync
+    href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_DeQueueAsync_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.Queue.IQueueService{`0}.DeQueueAsync(System.String,System.Threading.CancellationToken)
+    name: DeQueueAsync
+    href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_DeQueueAsync_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: Innovt.Cloud.Queue.IQueueService`1.DeQueueAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.Queue.IQueueService`1.DeQueueAsync(System.String,System.Threading.CancellationToken)
+  isExternal: true
+  href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_DeQueueAsync_System_String_System_Threading_CancellationToken_
+  name: DeQueueAsync(string, CancellationToken)
+  nameWithType: IQueueService<T>.DeQueueAsync(string, CancellationToken)
+  fullName: Innovt.Cloud.Queue.IQueueService<T>.DeQueueAsync(string, System.Threading.CancellationToken)
+  nameWithType.vb: IQueueService(Of T).DeQueueAsync(String, CancellationToken)
+  fullName.vb: Innovt.Cloud.Queue.IQueueService(Of T).DeQueueAsync(String, System.Threading.CancellationToken)
+  name.vb: DeQueueAsync(String, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.Queue.IQueueService`1.DeQueueAsync(System.String,System.Threading.CancellationToken)
+    name: DeQueueAsync
+    href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_DeQueueAsync_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.Queue.IQueueService`1.DeQueueAsync(System.String,System.Threading.CancellationToken)
+    name: DeQueueAsync
+    href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_DeQueueAsync_System_String_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.SQS.QueueService`1.ApproximateMessageCountAsync*
+  commentId: Overload:Innovt.Cloud.AWS.SQS.QueueService`1.ApproximateMessageCountAsync
+  href: Innovt.Cloud.AWS.SQS.QueueService-1.html#Innovt_Cloud_AWS_SQS_QueueService_1_ApproximateMessageCountAsync_System_Threading_CancellationToken_
+  name: ApproximateMessageCountAsync
+  nameWithType: QueueService<T>.ApproximateMessageCountAsync
+  fullName: Innovt.Cloud.AWS.SQS.QueueService<T>.ApproximateMessageCountAsync
+  nameWithType.vb: QueueService(Of T).ApproximateMessageCountAsync
+  fullName.vb: Innovt.Cloud.AWS.SQS.QueueService(Of T).ApproximateMessageCountAsync
+- uid: Innovt.Cloud.Queue.IQueueService{{T}}.ApproximateMessageCountAsync(System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.Queue.IQueueService{`0}.ApproximateMessageCountAsync(System.Threading.CancellationToken)
+  parent: Innovt.Cloud.Queue.IQueueService{{T}}
+  definition: Innovt.Cloud.Queue.IQueueService`1.ApproximateMessageCountAsync(System.Threading.CancellationToken)
+  href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_ApproximateMessageCountAsync_System_Threading_CancellationToken_
+  name: ApproximateMessageCountAsync(CancellationToken)
+  nameWithType: IQueueService<T>.ApproximateMessageCountAsync(CancellationToken)
+  fullName: Innovt.Cloud.Queue.IQueueService<T>.ApproximateMessageCountAsync(System.Threading.CancellationToken)
+  nameWithType.vb: IQueueService(Of T).ApproximateMessageCountAsync(CancellationToken)
+  fullName.vb: Innovt.Cloud.Queue.IQueueService(Of T).ApproximateMessageCountAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.Queue.IQueueService{`0}.ApproximateMessageCountAsync(System.Threading.CancellationToken)
+    name: ApproximateMessageCountAsync
+    href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_ApproximateMessageCountAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.Queue.IQueueService{`0}.ApproximateMessageCountAsync(System.Threading.CancellationToken)
+    name: ApproximateMessageCountAsync
+    href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_ApproximateMessageCountAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Threading.Tasks.Task{System.Int32}
+  commentId: T:System.Threading.Tasks.Task{System.Int32}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<int>
+  nameWithType: Task<int>
+  fullName: System.Threading.Tasks.Task<int>
+  nameWithType.vb: Task(Of Integer)
+  fullName.vb: System.Threading.Tasks.Task(Of Integer)
+  name.vb: Task(Of Integer)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Innovt.Cloud.Queue.IQueueService`1.ApproximateMessageCountAsync(System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.Queue.IQueueService`1.ApproximateMessageCountAsync(System.Threading.CancellationToken)
+  isExternal: true
+  href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_ApproximateMessageCountAsync_System_Threading_CancellationToken_
+  name: ApproximateMessageCountAsync(CancellationToken)
+  nameWithType: IQueueService<T>.ApproximateMessageCountAsync(CancellationToken)
+  fullName: Innovt.Cloud.Queue.IQueueService<T>.ApproximateMessageCountAsync(System.Threading.CancellationToken)
+  nameWithType.vb: IQueueService(Of T).ApproximateMessageCountAsync(CancellationToken)
+  fullName.vb: Innovt.Cloud.Queue.IQueueService(Of T).ApproximateMessageCountAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.Queue.IQueueService`1.ApproximateMessageCountAsync(System.Threading.CancellationToken)
+    name: ApproximateMessageCountAsync
+    href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_ApproximateMessageCountAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.Queue.IQueueService`1.ApproximateMessageCountAsync(System.Threading.CancellationToken)
+    name: ApproximateMessageCountAsync
+    href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_ApproximateMessageCountAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.SQS.QueueService`1.CreateIfNotExistAsync*
+  commentId: Overload:Innovt.Cloud.AWS.SQS.QueueService`1.CreateIfNotExistAsync
+  href: Innovt.Cloud.AWS.SQS.QueueService-1.html#Innovt_Cloud_AWS_SQS_QueueService_1_CreateIfNotExistAsync_System_Threading_CancellationToken_
+  name: CreateIfNotExistAsync
+  nameWithType: QueueService<T>.CreateIfNotExistAsync
+  fullName: Innovt.Cloud.AWS.SQS.QueueService<T>.CreateIfNotExistAsync
+  nameWithType.vb: QueueService(Of T).CreateIfNotExistAsync
+  fullName.vb: Innovt.Cloud.AWS.SQS.QueueService(Of T).CreateIfNotExistAsync
+- uid: Innovt.Cloud.Queue.IQueueService{{T}}.CreateIfNotExistAsync(System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.Queue.IQueueService{`0}.CreateIfNotExistAsync(System.Threading.CancellationToken)
+  parent: Innovt.Cloud.Queue.IQueueService{{T}}
+  definition: Innovt.Cloud.Queue.IQueueService`1.CreateIfNotExistAsync(System.Threading.CancellationToken)
+  href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_CreateIfNotExistAsync_System_Threading_CancellationToken_
+  name: CreateIfNotExistAsync(CancellationToken)
+  nameWithType: IQueueService<T>.CreateIfNotExistAsync(CancellationToken)
+  fullName: Innovt.Cloud.Queue.IQueueService<T>.CreateIfNotExistAsync(System.Threading.CancellationToken)
+  nameWithType.vb: IQueueService(Of T).CreateIfNotExistAsync(CancellationToken)
+  fullName.vb: Innovt.Cloud.Queue.IQueueService(Of T).CreateIfNotExistAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.Queue.IQueueService{`0}.CreateIfNotExistAsync(System.Threading.CancellationToken)
+    name: CreateIfNotExistAsync
+    href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_CreateIfNotExistAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.Queue.IQueueService{`0}.CreateIfNotExistAsync(System.Threading.CancellationToken)
+    name: CreateIfNotExistAsync
+    href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_CreateIfNotExistAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.Queue.IQueueService`1.CreateIfNotExistAsync(System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.Queue.IQueueService`1.CreateIfNotExistAsync(System.Threading.CancellationToken)
+  isExternal: true
+  href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_CreateIfNotExistAsync_System_Threading_CancellationToken_
+  name: CreateIfNotExistAsync(CancellationToken)
+  nameWithType: IQueueService<T>.CreateIfNotExistAsync(CancellationToken)
+  fullName: Innovt.Cloud.Queue.IQueueService<T>.CreateIfNotExistAsync(System.Threading.CancellationToken)
+  nameWithType.vb: IQueueService(Of T).CreateIfNotExistAsync(CancellationToken)
+  fullName.vb: Innovt.Cloud.Queue.IQueueService(Of T).CreateIfNotExistAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.Queue.IQueueService`1.CreateIfNotExistAsync(System.Threading.CancellationToken)
+    name: CreateIfNotExistAsync
+    href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_CreateIfNotExistAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.Queue.IQueueService`1.CreateIfNotExistAsync(System.Threading.CancellationToken)
+    name: CreateIfNotExistAsync
+    href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_CreateIfNotExistAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.SQS.QueueService`1.EnQueueAsync*
+  commentId: Overload:Innovt.Cloud.AWS.SQS.QueueService`1.EnQueueAsync
+  href: Innovt.Cloud.AWS.SQS.QueueService-1.html#Innovt_Cloud_AWS_SQS_QueueService_1_EnQueueAsync__1___0_System_Nullable_System_Int32__System_Threading_CancellationToken_
+  name: EnQueueAsync
+  nameWithType: QueueService<T>.EnQueueAsync
+  fullName: Innovt.Cloud.AWS.SQS.QueueService<T>.EnQueueAsync
+  nameWithType.vb: QueueService(Of T).EnQueueAsync
+  fullName.vb: Innovt.Cloud.AWS.SQS.QueueService(Of T).EnQueueAsync
+- uid: Innovt.Cloud.Queue.IQueueService{{T}}.EnQueueAsync``1({TK},System.Nullable{System.Int32},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.Queue.IQueueService{`0}.EnQueueAsync``1(``0,System.Nullable{System.Int32},System.Threading.CancellationToken)
+  parent: Innovt.Cloud.Queue.IQueueService{{T}}
+  definition: Innovt.Cloud.Queue.IQueueService`1.EnQueueAsync``1(``0,System.Nullable{System.Int32},System.Threading.CancellationToken)
+  href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_EnQueueAsync__1___0_System_Nullable_System_Int32__System_Threading_CancellationToken_
+  name: EnQueueAsync<TK>(TK, int?, CancellationToken)
+  nameWithType: IQueueService<T>.EnQueueAsync<TK>(TK, int?, CancellationToken)
+  fullName: Innovt.Cloud.Queue.IQueueService<T>.EnQueueAsync<TK>(TK, int?, System.Threading.CancellationToken)
+  nameWithType.vb: IQueueService(Of T).EnQueueAsync(Of TK)(TK, Integer?, CancellationToken)
+  fullName.vb: Innovt.Cloud.Queue.IQueueService(Of T).EnQueueAsync(Of TK)(TK, Integer?, System.Threading.CancellationToken)
+  name.vb: EnQueueAsync(Of TK)(TK, Integer?, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.Queue.IQueueService{`0}.EnQueueAsync``1(``0,System.Nullable{System.Int32},System.Threading.CancellationToken)
+    name: EnQueueAsync
+    href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_EnQueueAsync__1___0_System_Nullable_System_Int32__System_Threading_CancellationToken_
+  - name: <
+  - name: TK
+  - name: '>'
+  - name: (
+  - name: TK
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.Queue.IQueueService{`0}.EnQueueAsync``1(``0,System.Nullable{System.Int32},System.Threading.CancellationToken)
+    name: EnQueueAsync
+    href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_EnQueueAsync__1___0_System_Nullable_System_Int32__System_Threading_CancellationToken_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TK
+  - name: )
+  - name: (
+  - name: TK
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: '{TK}'
+  commentId: '!:TK'
+  definition: TK
+  name: TK
+  nameWithType: TK
+  fullName: TK
+- uid: System.Threading.Tasks.Task{System.String}
+  commentId: T:System.Threading.Tasks.Task{System.String}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<string>
+  nameWithType: Task<string>
+  fullName: System.Threading.Tasks.Task<string>
+  nameWithType.vb: Task(Of String)
+  fullName.vb: System.Threading.Tasks.Task(Of String)
+  name.vb: Task(Of String)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Innovt.Cloud.Queue.IQueueService`1.EnQueueAsync``1(``0,System.Nullable{System.Int32},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.Queue.IQueueService`1.EnQueueAsync``1(``0,System.Nullable{System.Int32},System.Threading.CancellationToken)
+  isExternal: true
+  href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_EnQueueAsync__1___0_System_Nullable_System_Int32__System_Threading_CancellationToken_
+  name: EnQueueAsync<TK>(TK, int?, CancellationToken)
+  nameWithType: IQueueService<T>.EnQueueAsync<TK>(TK, int?, CancellationToken)
+  fullName: Innovt.Cloud.Queue.IQueueService<T>.EnQueueAsync<TK>(TK, int?, System.Threading.CancellationToken)
+  nameWithType.vb: IQueueService(Of T).EnQueueAsync(Of TK)(TK, Integer?, CancellationToken)
+  fullName.vb: Innovt.Cloud.Queue.IQueueService(Of T).EnQueueAsync(Of TK)(TK, Integer?, System.Threading.CancellationToken)
+  name.vb: EnQueueAsync(Of TK)(TK, Integer?, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.Queue.IQueueService`1.EnQueueAsync``1(``0,System.Nullable{System.Int32},System.Threading.CancellationToken)
+    name: EnQueueAsync
+    href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_EnQueueAsync__1___0_System_Nullable_System_Int32__System_Threading_CancellationToken_
+  - name: <
+  - name: TK
+  - name: '>'
+  - name: (
+  - name: TK
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.Queue.IQueueService`1.EnQueueAsync``1(``0,System.Nullable{System.Int32},System.Threading.CancellationToken)
+    name: EnQueueAsync
+    href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_EnQueueAsync__1___0_System_Nullable_System_Int32__System_Threading_CancellationToken_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TK
+  - name: )
+  - name: (
+  - name: TK
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: TK
+  name: TK
+  nameWithType: TK
+  fullName: TK
+- uid: Innovt.Cloud.AWS.SQS.QueueService`1.EnQueueBatchAsync*
+  commentId: Overload:Innovt.Cloud.AWS.SQS.QueueService`1.EnQueueBatchAsync
+  href: Innovt.Cloud.AWS.SQS.QueueService-1.html#Innovt_Cloud_AWS_SQS_QueueService_1_EnQueueBatchAsync_System_Collections_Generic_IEnumerable_Innovt_Cloud_Queue_MessageBatchRequest__System_Nullable_System_Int32__System_Threading_CancellationToken_
+  name: EnQueueBatchAsync
+  nameWithType: QueueService<T>.EnQueueBatchAsync
+  fullName: Innovt.Cloud.AWS.SQS.QueueService<T>.EnQueueBatchAsync
+  nameWithType.vb: QueueService(Of T).EnQueueBatchAsync
+  fullName.vb: Innovt.Cloud.AWS.SQS.QueueService(Of T).EnQueueBatchAsync
+- uid: Innovt.Cloud.Queue.IQueueService{{T}}.EnQueueBatchAsync(System.Collections.Generic.IEnumerable{Innovt.Cloud.Queue.MessageBatchRequest},System.Nullable{System.Int32},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.Queue.IQueueService{`0}.EnQueueBatchAsync(System.Collections.Generic.IEnumerable{Innovt.Cloud.Queue.MessageBatchRequest},System.Nullable{System.Int32},System.Threading.CancellationToken)
+  parent: Innovt.Cloud.Queue.IQueueService{{T}}
+  definition: Innovt.Cloud.Queue.IQueueService`1.EnQueueBatchAsync(System.Collections.Generic.IEnumerable{Innovt.Cloud.Queue.MessageBatchRequest},System.Nullable{System.Int32},System.Threading.CancellationToken)
+  href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_EnQueueBatchAsync_System_Collections_Generic_IEnumerable_Innovt_Cloud_Queue_MessageBatchRequest__System_Nullable_System_Int32__System_Threading_CancellationToken_
+  name: EnQueueBatchAsync(IEnumerable<MessageBatchRequest>, int?, CancellationToken)
+  nameWithType: IQueueService<T>.EnQueueBatchAsync(IEnumerable<MessageBatchRequest>, int?, CancellationToken)
+  fullName: Innovt.Cloud.Queue.IQueueService<T>.EnQueueBatchAsync(System.Collections.Generic.IEnumerable<Innovt.Cloud.Queue.MessageBatchRequest>, int?, System.Threading.CancellationToken)
+  nameWithType.vb: IQueueService(Of T).EnQueueBatchAsync(IEnumerable(Of MessageBatchRequest), Integer?, CancellationToken)
+  fullName.vb: Innovt.Cloud.Queue.IQueueService(Of T).EnQueueBatchAsync(System.Collections.Generic.IEnumerable(Of Innovt.Cloud.Queue.MessageBatchRequest), Integer?, System.Threading.CancellationToken)
+  name.vb: EnQueueBatchAsync(IEnumerable(Of MessageBatchRequest), Integer?, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.Queue.IQueueService{`0}.EnQueueBatchAsync(System.Collections.Generic.IEnumerable{Innovt.Cloud.Queue.MessageBatchRequest},System.Nullable{System.Int32},System.Threading.CancellationToken)
+    name: EnQueueBatchAsync
+    href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_EnQueueBatchAsync_System_Collections_Generic_IEnumerable_Innovt_Cloud_Queue_MessageBatchRequest__System_Nullable_System_Int32__System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Innovt.Cloud.Queue.MessageBatchRequest
+    name: MessageBatchRequest
+    href: Innovt.Cloud.Queue.MessageBatchRequest.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.Queue.IQueueService{`0}.EnQueueBatchAsync(System.Collections.Generic.IEnumerable{Innovt.Cloud.Queue.MessageBatchRequest},System.Nullable{System.Int32},System.Threading.CancellationToken)
+    name: EnQueueBatchAsync
+    href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_EnQueueBatchAsync_System_Collections_Generic_IEnumerable_Innovt_Cloud_Queue_MessageBatchRequest__System_Nullable_System_Int32__System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.Queue.MessageBatchRequest
+    name: MessageBatchRequest
+    href: Innovt.Cloud.Queue.MessageBatchRequest.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{Innovt.Cloud.Queue.MessageBatchRequest}
+  commentId: T:System.Collections.Generic.IEnumerable{Innovt.Cloud.Queue.MessageBatchRequest}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<MessageBatchRequest>
+  nameWithType: IEnumerable<MessageBatchRequest>
+  fullName: System.Collections.Generic.IEnumerable<Innovt.Cloud.Queue.MessageBatchRequest>
+  nameWithType.vb: IEnumerable(Of MessageBatchRequest)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Innovt.Cloud.Queue.MessageBatchRequest)
+  name.vb: IEnumerable(Of MessageBatchRequest)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Innovt.Cloud.Queue.MessageBatchRequest
+    name: MessageBatchRequest
+    href: Innovt.Cloud.Queue.MessageBatchRequest.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.Queue.MessageBatchRequest
+    name: MessageBatchRequest
+    href: Innovt.Cloud.Queue.MessageBatchRequest.html
+  - name: )
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IList{Innovt.Cloud.Queue.MessageQueueResult}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IList{Innovt.Cloud.Queue.MessageQueueResult}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IList<MessageQueueResult>>
+  nameWithType: Task<IList<MessageQueueResult>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IList<Innovt.Cloud.Queue.MessageQueueResult>>
+  nameWithType.vb: Task(Of IList(Of MessageQueueResult))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IList(Of Innovt.Cloud.Queue.MessageQueueResult))
+  name.vb: Task(Of IList(Of MessageQueueResult))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: Innovt.Cloud.Queue.MessageQueueResult
+    name: MessageQueueResult
+    href: Innovt.Cloud.Queue.MessageQueueResult.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.Queue.MessageQueueResult
+    name: MessageQueueResult
+    href: Innovt.Cloud.Queue.MessageQueueResult.html
+  - name: )
+  - name: )
+- uid: Innovt.Cloud.Queue.IQueueService`1.EnQueueBatchAsync(System.Collections.Generic.IEnumerable{Innovt.Cloud.Queue.MessageBatchRequest},System.Nullable{System.Int32},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.Queue.IQueueService`1.EnQueueBatchAsync(System.Collections.Generic.IEnumerable{Innovt.Cloud.Queue.MessageBatchRequest},System.Nullable{System.Int32},System.Threading.CancellationToken)
+  isExternal: true
+  href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_EnQueueBatchAsync_System_Collections_Generic_IEnumerable_Innovt_Cloud_Queue_MessageBatchRequest__System_Nullable_System_Int32__System_Threading_CancellationToken_
+  name: EnQueueBatchAsync(IEnumerable<MessageBatchRequest>, int?, CancellationToken)
+  nameWithType: IQueueService<T>.EnQueueBatchAsync(IEnumerable<MessageBatchRequest>, int?, CancellationToken)
+  fullName: Innovt.Cloud.Queue.IQueueService<T>.EnQueueBatchAsync(System.Collections.Generic.IEnumerable<Innovt.Cloud.Queue.MessageBatchRequest>, int?, System.Threading.CancellationToken)
+  nameWithType.vb: IQueueService(Of T).EnQueueBatchAsync(IEnumerable(Of MessageBatchRequest), Integer?, CancellationToken)
+  fullName.vb: Innovt.Cloud.Queue.IQueueService(Of T).EnQueueBatchAsync(System.Collections.Generic.IEnumerable(Of Innovt.Cloud.Queue.MessageBatchRequest), Integer?, System.Threading.CancellationToken)
+  name.vb: EnQueueBatchAsync(IEnumerable(Of MessageBatchRequest), Integer?, CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.Queue.IQueueService`1.EnQueueBatchAsync(System.Collections.Generic.IEnumerable{Innovt.Cloud.Queue.MessageBatchRequest},System.Nullable{System.Int32},System.Threading.CancellationToken)
+    name: EnQueueBatchAsync
+    href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_EnQueueBatchAsync_System_Collections_Generic_IEnumerable_Innovt_Cloud_Queue_MessageBatchRequest__System_Nullable_System_Int32__System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Innovt.Cloud.Queue.MessageBatchRequest
+    name: MessageBatchRequest
+    href: Innovt.Cloud.Queue.MessageBatchRequest.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.Queue.IQueueService`1.EnQueueBatchAsync(System.Collections.Generic.IEnumerable{Innovt.Cloud.Queue.MessageBatchRequest},System.Nullable{System.Int32},System.Threading.CancellationToken)
+    name: EnQueueBatchAsync
+    href: Innovt.Cloud.Queue.IQueueService-1.html#Innovt_Cloud_Queue_IQueueService_1_EnQueueBatchAsync_System_Collections_Generic_IEnumerable_Innovt_Cloud_Queue_MessageBatchRequest__System_Nullable_System_Int32__System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.Queue.MessageBatchRequest
+    name: MessageBatchRequest
+    href: Innovt.Cloud.Queue.MessageBatchRequest.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Innovt.Cloud.AWS.AwsBaseService.DisposeServices
+  commentId: M:Innovt.Cloud.AWS.AwsBaseService.DisposeServices
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_DisposeServices
+  name: DisposeServices()
+  nameWithType: AwsBaseService.DisposeServices()
+  fullName: Innovt.Cloud.AWS.AwsBaseService.DisposeServices()
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.DisposeServices
+    name: DisposeServices
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_DisposeServices
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.AwsBaseService.DisposeServices
+    name: DisposeServices
+    href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_DisposeServices
+  - name: (
+  - name: )
+- uid: Innovt.Cloud.AWS.SQS.QueueService`1.DisposeServices*
+  commentId: Overload:Innovt.Cloud.AWS.SQS.QueueService`1.DisposeServices
+  href: Innovt.Cloud.AWS.SQS.QueueService-1.html#Innovt_Cloud_AWS_SQS_QueueService_1_DisposeServices
+  name: DisposeServices
+  nameWithType: QueueService<T>.DisposeServices
+  fullName: Innovt.Cloud.AWS.SQS.QueueService<T>.DisposeServices
+  nameWithType.vb: QueueService(Of T).DisposeServices
+  fullName.vb: Innovt.Cloud.AWS.SQS.QueueService(Of T).DisposeServices

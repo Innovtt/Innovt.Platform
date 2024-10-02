@@ -1,0 +1,860 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Core.CrossCutting.Ioc.IocLocator
+  commentId: T:Innovt.Core.CrossCutting.Ioc.IocLocator
+  id: IocLocator
+  parent: Innovt.Core.CrossCutting.Ioc
+  children:
+  - Innovt.Core.CrossCutting.Ioc.IocLocator.AddModule(Innovt.Core.CrossCutting.Ioc.IocModule)
+  - Innovt.Core.CrossCutting.Ioc.IocLocator.AddModuleFromAssembly(System.Reflection.Assembly)
+  - Innovt.Core.CrossCutting.Ioc.IocLocator.CheckConfiguration
+  - Innovt.Core.CrossCutting.Ioc.IocLocator.CreateScope
+  - Innovt.Core.CrossCutting.Ioc.IocLocator.Initialize(Innovt.Core.CrossCutting.Ioc.IContainer)
+  - Innovt.Core.CrossCutting.Ioc.IocLocator.Release(System.Object)
+  - Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve(System.Type)
+  - Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve``1
+  - Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve``1(System.String)
+  - Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve``1(System.Type)
+  langs:
+  - csharp
+  - vb
+  name: IocLocator
+  nameWithType: IocLocator
+  fullName: Innovt.Core.CrossCutting.Ioc.IocLocator
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Core/CrossCutting/Ioc/IocLocator.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: IocLocator
+    path: ../src/Innovt.Core/CrossCutting/Ioc/IocLocator.cs
+    startLine: 20
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.CrossCutting.Ioc
+  summary: Provides a locator for resolving services and managing dependency injection containers.
+  remarks: >-
+    This static class acts as a locator for resolving services and managing dependency injection containers.
+
+    It provides methods for initializing the container, resolving services, adding modules, releasing resources,
+
+    creating service scopes, and checking container configuration.
+  example: []
+  syntax:
+    content: public static class IocLocator
+    content.vb: Public Module IocLocator
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Innovt.Core.CrossCutting.Ioc.IocLocator.Initialize(Innovt.Core.CrossCutting.Ioc.IContainer)
+  commentId: M:Innovt.Core.CrossCutting.Ioc.IocLocator.Initialize(Innovt.Core.CrossCutting.Ioc.IContainer)
+  id: Initialize(Innovt.Core.CrossCutting.Ioc.IContainer)
+  parent: Innovt.Core.CrossCutting.Ioc.IocLocator
+  langs:
+  - csharp
+  - vb
+  name: Initialize(IContainer)
+  nameWithType: IocLocator.Initialize(IContainer)
+  fullName: Innovt.Core.CrossCutting.Ioc.IocLocator.Initialize(Innovt.Core.CrossCutting.Ioc.IContainer)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/CrossCutting/Ioc/IocLocator.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Initialize
+    path: ../src/Innovt.Core/CrossCutting/Ioc/IocLocator.cs
+    startLine: 30
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.CrossCutting.Ioc
+  summary: Initializes the locator with the specified main dependency injection container.
+  example: []
+  syntax:
+    content: public static void Initialize(IContainer mainContainer)
+    parameters:
+    - id: mainContainer
+      type: Innovt.Core.CrossCutting.Ioc.IContainer
+      description: The main <xref href="Innovt.Core.CrossCutting.Ioc.IContainer" data-throw-if-not-resolved="false"></xref> to be used for service resolution.
+    content.vb: Public Shared Sub Initialize(mainContainer As IContainer)
+  overload: Innovt.Core.CrossCutting.Ioc.IocLocator.Initialize*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if <code class="paramref">mainContainer</code> is null.
+- uid: Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve(System.Type)
+  commentId: M:Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve(System.Type)
+  id: Resolve(System.Type)
+  parent: Innovt.Core.CrossCutting.Ioc.IocLocator
+  langs:
+  - csharp
+  - vb
+  name: Resolve(Type)
+  nameWithType: IocLocator.Resolve(Type)
+  fullName: Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve(System.Type)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/CrossCutting/Ioc/IocLocator.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Resolve
+    path: ../src/Innovt.Core/CrossCutting/Ioc/IocLocator.cs
+    startLine: 49
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.CrossCutting.Ioc
+  summary: Resolves a service of the specified <code class="paramref">type</code>.
+  example: []
+  syntax:
+    content: public static object Resolve(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: The <xref href="System.Type" data-throw-if-not-resolved="false"></xref> of the service to resolve.
+    return:
+      type: System.Object
+      description: The resolved service object.
+    content.vb: Public Shared Function Resolve(type As Type) As Object
+  overload: Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve*
+- uid: Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve``1(System.Type)
+  commentId: M:Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve``1(System.Type)
+  id: Resolve``1(System.Type)
+  parent: Innovt.Core.CrossCutting.Ioc.IocLocator
+  langs:
+  - csharp
+  - vb
+  name: Resolve<TService>(Type)
+  nameWithType: IocLocator.Resolve<TService>(Type)
+  fullName: Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve<TService>(System.Type)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/CrossCutting/Ioc/IocLocator.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Resolve
+    path: ../src/Innovt.Core/CrossCutting/Ioc/IocLocator.cs
+    startLine: 64
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.CrossCutting.Ioc
+  summary: Resolves a service of type <code class="typeparamref">TService</code> with the specified <code class="paramref">type</code>.
+  example: []
+  syntax:
+    content: public static TService Resolve<TService>(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: The <xref href="System.Type" data-throw-if-not-resolved="false"></xref> of the service implementation to resolve.
+    typeParameters:
+    - id: TService
+      description: The type of service to resolve.
+    return:
+      type: '{TService}'
+      description: The resolved service object.
+    content.vb: Public Shared Function Resolve(Of TService)(type As Type) As TService
+  overload: Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve*
+  nameWithType.vb: IocLocator.Resolve(Of TService)(Type)
+  fullName.vb: Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve(Of TService)(System.Type)
+  name.vb: Resolve(Of TService)(Type)
+- uid: Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve``1(System.String)
+  commentId: M:Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve``1(System.String)
+  id: Resolve``1(System.String)
+  parent: Innovt.Core.CrossCutting.Ioc.IocLocator
+  langs:
+  - csharp
+  - vb
+  name: Resolve<TService>(string)
+  nameWithType: IocLocator.Resolve<TService>(string)
+  fullName: Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve<TService>(string)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/CrossCutting/Ioc/IocLocator.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Resolve
+    path: ../src/Innovt.Core/CrossCutting/Ioc/IocLocator.cs
+    startLine: 78
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.CrossCutting.Ioc
+  summary: Resolves a named instance of a service of type <code class="typeparamref">TService</code>.
+  example: []
+  syntax:
+    content: public static TService Resolve<TService>(string intanceKey)
+    parameters:
+    - id: intanceKey
+      type: System.String
+      description: The key identifying the named instance to resolve.
+    typeParameters:
+    - id: TService
+      description: The type of service to resolve.
+    return:
+      type: '{TService}'
+      description: The resolved service object.
+    content.vb: Public Shared Function Resolve(Of TService)(intanceKey As String) As TService
+  overload: Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve*
+  nameWithType.vb: IocLocator.Resolve(Of TService)(String)
+  fullName.vb: Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve(Of TService)(String)
+  name.vb: Resolve(Of TService)(String)
+- uid: Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve``1
+  commentId: M:Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve``1
+  id: Resolve``1
+  parent: Innovt.Core.CrossCutting.Ioc.IocLocator
+  langs:
+  - csharp
+  - vb
+  name: Resolve<TService>()
+  nameWithType: IocLocator.Resolve<TService>()
+  fullName: Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve<TService>()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/CrossCutting/Ioc/IocLocator.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Resolve
+    path: ../src/Innovt.Core/CrossCutting/Ioc/IocLocator.cs
+    startLine: 91
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.CrossCutting.Ioc
+  summary: Resolves a service of type <code class="typeparamref">TService</code>.
+  example: []
+  syntax:
+    content: public static TService Resolve<TService>()
+    typeParameters:
+    - id: TService
+      description: The type of service to resolve.
+    return:
+      type: '{TService}'
+      description: The resolved service object.
+    content.vb: Public Shared Function Resolve(Of TService)() As TService
+  overload: Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve*
+  nameWithType.vb: IocLocator.Resolve(Of TService)()
+  fullName.vb: Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve(Of TService)()
+  name.vb: Resolve(Of TService)()
+- uid: Innovt.Core.CrossCutting.Ioc.IocLocator.AddModule(Innovt.Core.CrossCutting.Ioc.IocModule)
+  commentId: M:Innovt.Core.CrossCutting.Ioc.IocLocator.AddModule(Innovt.Core.CrossCutting.Ioc.IocModule)
+  id: AddModule(Innovt.Core.CrossCutting.Ioc.IocModule)
+  parent: Innovt.Core.CrossCutting.Ioc.IocLocator
+  langs:
+  - csharp
+  - vb
+  name: AddModule(IocModule)
+  nameWithType: IocLocator.AddModule(IocModule)
+  fullName: Innovt.Core.CrossCutting.Ioc.IocLocator.AddModule(Innovt.Core.CrossCutting.Ioc.IocModule)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/CrossCutting/Ioc/IocLocator.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: AddModule
+    path: ../src/Innovt.Core/CrossCutting/Ioc/IocLocator.cs
+    startLine: 104
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.CrossCutting.Ioc
+  summary: Adds an <xref href="Innovt.Core.CrossCutting.Ioc.IocModule" data-throw-if-not-resolved="false"></xref> to the container.
+  example: []
+  syntax:
+    content: public static void AddModule(IocModule module)
+    parameters:
+    - id: module
+      type: Innovt.Core.CrossCutting.Ioc.IocModule
+      description: The <xref href="Innovt.Core.CrossCutting.Ioc.IocModule" data-throw-if-not-resolved="false"></xref> to be added to the container.
+    content.vb: Public Shared Sub AddModule([module] As IocModule)
+  overload: Innovt.Core.CrossCutting.Ioc.IocLocator.AddModule*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if <code class="paramref">module</code> is null.
+- uid: Innovt.Core.CrossCutting.Ioc.IocLocator.Release(System.Object)
+  commentId: M:Innovt.Core.CrossCutting.Ioc.IocLocator.Release(System.Object)
+  id: Release(System.Object)
+  parent: Innovt.Core.CrossCutting.Ioc.IocLocator
+  langs:
+  - csharp
+  - vb
+  name: Release(object)
+  nameWithType: IocLocator.Release(object)
+  fullName: Innovt.Core.CrossCutting.Ioc.IocLocator.Release(object)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/CrossCutting/Ioc/IocLocator.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Release
+    path: ../src/Innovt.Core/CrossCutting/Ioc/IocLocator.cs
+    startLine: 118
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.CrossCutting.Ioc
+  summary: Releases the specified object and frees associated resources.
+  example: []
+  syntax:
+    content: public static void Release(object obj)
+    parameters:
+    - id: obj
+      type: System.Object
+      description: The object to release.
+    content.vb: Public Shared Sub Release(obj As Object)
+  overload: Innovt.Core.CrossCutting.Ioc.IocLocator.Release*
+  nameWithType.vb: IocLocator.Release(Object)
+  fullName.vb: Innovt.Core.CrossCutting.Ioc.IocLocator.Release(Object)
+  name.vb: Release(Object)
+- uid: Innovt.Core.CrossCutting.Ioc.IocLocator.CreateScope
+  commentId: M:Innovt.Core.CrossCutting.Ioc.IocLocator.CreateScope
+  id: CreateScope
+  parent: Innovt.Core.CrossCutting.Ioc.IocLocator
+  langs:
+  - csharp
+  - vb
+  name: CreateScope()
+  nameWithType: IocLocator.CreateScope()
+  fullName: Innovt.Core.CrossCutting.Ioc.IocLocator.CreateScope()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/CrossCutting/Ioc/IocLocator.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: CreateScope
+    path: ../src/Innovt.Core/CrossCutting/Ioc/IocLocator.cs
+    startLine: 130
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.CrossCutting.Ioc
+  summary: Creates and returns a new service scope.
+  example: []
+  syntax:
+    content: public static IServiceScope CreateScope()
+    return:
+      type: Microsoft.Extensions.DependencyInjection.IServiceScope
+      description: An <xref href="Microsoft.Extensions.DependencyInjection.IServiceScope" data-throw-if-not-resolved="false"></xref> representing the new service scope.
+    content.vb: Public Shared Function CreateScope() As IServiceScope
+  overload: Innovt.Core.CrossCutting.Ioc.IocLocator.CreateScope*
+- uid: Innovt.Core.CrossCutting.Ioc.IocLocator.AddModuleFromAssembly(System.Reflection.Assembly)
+  commentId: M:Innovt.Core.CrossCutting.Ioc.IocLocator.AddModuleFromAssembly(System.Reflection.Assembly)
+  id: AddModuleFromAssembly(System.Reflection.Assembly)
+  parent: Innovt.Core.CrossCutting.Ioc.IocLocator
+  langs:
+  - csharp
+  - vb
+  name: AddModuleFromAssembly(Assembly)
+  nameWithType: IocLocator.AddModuleFromAssembly(Assembly)
+  fullName: Innovt.Core.CrossCutting.Ioc.IocLocator.AddModuleFromAssembly(System.Reflection.Assembly)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/CrossCutting/Ioc/IocLocator.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: AddModuleFromAssembly
+    path: ../src/Innovt.Core/CrossCutting/Ioc/IocLocator.cs
+    startLine: 143
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.CrossCutting.Ioc
+  summary: Adds modules from the specified <code class="paramref">assembly</code> to the container.
+  example: []
+  syntax:
+    content: public static void AddModuleFromAssembly(Assembly assembly)
+    parameters:
+    - id: assembly
+      type: System.Reflection.Assembly
+      description: The assembly containing modules to be added.
+    content.vb: Public Shared Sub AddModuleFromAssembly(assembly As Assembly)
+  overload: Innovt.Core.CrossCutting.Ioc.IocLocator.AddModuleFromAssembly*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if <code class="paramref">assembly</code> is null.
+- uid: Innovt.Core.CrossCutting.Ioc.IocLocator.CheckConfiguration
+  commentId: M:Innovt.Core.CrossCutting.Ioc.IocLocator.CheckConfiguration
+  id: CheckConfiguration
+  parent: Innovt.Core.CrossCutting.Ioc.IocLocator
+  langs:
+  - csharp
+  - vb
+  name: CheckConfiguration()
+  nameWithType: IocLocator.CheckConfiguration()
+  fullName: Innovt.Core.CrossCutting.Ioc.IocLocator.CheckConfiguration()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core/CrossCutting/Ioc/IocLocator.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: CheckConfiguration
+    path: ../src/Innovt.Core/CrossCutting/Ioc/IocLocator.cs
+    startLine: 165
+  assemblies:
+  - Innovt.Core
+  namespace: Innovt.Core.CrossCutting.Ioc
+  summary: Checks the configuration of the container.
+  example: []
+  syntax:
+    content: public static void CheckConfiguration()
+    content.vb: Public Shared Sub CheckConfiguration()
+  overload: Innovt.Core.CrossCutting.Ioc.IocLocator.CheckConfiguration*
+references:
+- uid: Innovt.Core.CrossCutting.Ioc
+  commentId: N:Innovt.Core.CrossCutting.Ioc
+  href: Innovt.html
+  name: Innovt.Core.CrossCutting.Ioc
+  nameWithType: Innovt.Core.CrossCutting.Ioc
+  fullName: Innovt.Core.CrossCutting.Ioc
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Ioc
+    name: Ioc
+    href: Innovt.Core.CrossCutting.Ioc.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Ioc
+    name: Ioc
+    href: Innovt.Core.CrossCutting.Ioc.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Core.CrossCutting.Ioc.IContainer
+  commentId: T:Innovt.Core.CrossCutting.Ioc.IContainer
+  parent: Innovt.Core.CrossCutting.Ioc
+  href: Innovt.Core.CrossCutting.Ioc.IContainer.html
+  name: IContainer
+  nameWithType: IContainer
+  fullName: Innovt.Core.CrossCutting.Ioc.IContainer
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: Innovt.Core.CrossCutting.Ioc.IocLocator.Initialize*
+  commentId: Overload:Innovt.Core.CrossCutting.Ioc.IocLocator.Initialize
+  href: Innovt.Core.CrossCutting.Ioc.IocLocator.html#Innovt_Core_CrossCutting_Ioc_IocLocator_Initialize_Innovt_Core_CrossCutting_Ioc_IContainer_
+  name: Initialize
+  nameWithType: IocLocator.Initialize
+  fullName: Innovt.Core.CrossCutting.Ioc.IocLocator.Initialize
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve*
+  commentId: Overload:Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve
+  href: Innovt.Core.CrossCutting.Ioc.IocLocator.html#Innovt_Core_CrossCutting_Ioc_IocLocator_Resolve_System_Type_
+  name: Resolve
+  nameWithType: IocLocator.Resolve
+  fullName: Innovt.Core.CrossCutting.Ioc.IocLocator.Resolve
+- uid: '{TService}'
+  commentId: '!:TService'
+  definition: TService
+  name: TService
+  nameWithType: TService
+  fullName: TService
+- uid: TService
+  name: TService
+  nameWithType: TService
+  fullName: TService
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Innovt.Core.CrossCutting.Ioc.IocModule
+  commentId: T:Innovt.Core.CrossCutting.Ioc.IocModule
+  parent: Innovt.Core.CrossCutting.Ioc
+  href: Innovt.Core.CrossCutting.Ioc.IocModule.html
+  name: IocModule
+  nameWithType: IocModule
+  fullName: Innovt.Core.CrossCutting.Ioc.IocModule
+- uid: Innovt.Core.CrossCutting.Ioc.IocLocator.AddModule*
+  commentId: Overload:Innovt.Core.CrossCutting.Ioc.IocLocator.AddModule
+  href: Innovt.Core.CrossCutting.Ioc.IocLocator.html#Innovt_Core_CrossCutting_Ioc_IocLocator_AddModule_Innovt_Core_CrossCutting_Ioc_IocModule_
+  name: AddModule
+  nameWithType: IocLocator.AddModule
+  fullName: Innovt.Core.CrossCutting.Ioc.IocLocator.AddModule
+- uid: Innovt.Core.CrossCutting.Ioc.IocLocator.Release*
+  commentId: Overload:Innovt.Core.CrossCutting.Ioc.IocLocator.Release
+  href: Innovt.Core.CrossCutting.Ioc.IocLocator.html#Innovt_Core_CrossCutting_Ioc_IocLocator_Release_System_Object_
+  name: Release
+  nameWithType: IocLocator.Release
+  fullName: Innovt.Core.CrossCutting.Ioc.IocLocator.Release
+- uid: Microsoft.Extensions.DependencyInjection.IServiceScope
+  commentId: T:Microsoft.Extensions.DependencyInjection.IServiceScope
+  parent: Microsoft.Extensions.DependencyInjection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicescope
+  name: IServiceScope
+  nameWithType: IServiceScope
+  fullName: Microsoft.Extensions.DependencyInjection.IServiceScope
+- uid: Innovt.Core.CrossCutting.Ioc.IocLocator.CreateScope*
+  commentId: Overload:Innovt.Core.CrossCutting.Ioc.IocLocator.CreateScope
+  href: Innovt.Core.CrossCutting.Ioc.IocLocator.html#Innovt_Core_CrossCutting_Ioc_IocLocator_CreateScope
+  name: CreateScope
+  nameWithType: IocLocator.CreateScope
+  fullName: Innovt.Core.CrossCutting.Ioc.IocLocator.CreateScope
+- uid: Microsoft.Extensions.DependencyInjection
+  commentId: N:Microsoft.Extensions.DependencyInjection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.DependencyInjection
+  nameWithType: Microsoft.Extensions.DependencyInjection
+  fullName: Microsoft.Extensions.DependencyInjection
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection
+- uid: Innovt.Core.CrossCutting.Ioc.IocLocator.AddModuleFromAssembly*
+  commentId: Overload:Innovt.Core.CrossCutting.Ioc.IocLocator.AddModuleFromAssembly
+  href: Innovt.Core.CrossCutting.Ioc.IocLocator.html#Innovt_Core_CrossCutting_Ioc_IocLocator_AddModuleFromAssembly_System_Reflection_Assembly_
+  name: AddModuleFromAssembly
+  nameWithType: IocLocator.AddModuleFromAssembly
+  fullName: Innovt.Core.CrossCutting.Ioc.IocLocator.AddModuleFromAssembly
+- uid: System.Reflection.Assembly
+  commentId: T:System.Reflection.Assembly
+  parent: System.Reflection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.reflection.assembly
+  name: Assembly
+  nameWithType: Assembly
+  fullName: System.Reflection.Assembly
+- uid: System.Reflection
+  commentId: N:System.Reflection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Reflection
+  nameWithType: System.Reflection
+  fullName: System.Reflection
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Reflection
+    name: Reflection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Reflection
+    name: Reflection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection
+- uid: Innovt.Core.CrossCutting.Ioc.IocLocator.CheckConfiguration*
+  commentId: Overload:Innovt.Core.CrossCutting.Ioc.IocLocator.CheckConfiguration
+  href: Innovt.Core.CrossCutting.Ioc.IocLocator.html#Innovt_Core_CrossCutting_Ioc_IocLocator_CheckConfiguration
+  name: CheckConfiguration
+  nameWithType: IocLocator.CheckConfiguration
+  fullName: Innovt.Core.CrossCutting.Ioc.IocLocator.CheckConfiguration

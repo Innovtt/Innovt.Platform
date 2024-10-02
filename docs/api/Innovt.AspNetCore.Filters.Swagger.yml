@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.AspNetCore.Filters.Swagger
+  commentId: N:Innovt.AspNetCore.Filters.Swagger
+  id: Innovt.AspNetCore.Filters.Swagger
+  children:
+  - Innovt.AspNetCore.Filters.Swagger.AddCustomHeaderParameter
+  langs:
+  - csharp
+  - vb
+  name: Innovt.AspNetCore.Filters.Swagger
+  nameWithType: Innovt.AspNetCore.Filters.Swagger
+  fullName: Innovt.AspNetCore.Filters.Swagger
+  type: Namespace
+  assemblies:
+  - Innovt.AspNetCore
+references:
+- uid: Innovt.AspNetCore.Filters.Swagger.AddCustomHeaderParameter
+  commentId: T:Innovt.AspNetCore.Filters.Swagger.AddCustomHeaderParameter
+  href: Innovt.AspNetCore.Filters.Swagger.AddCustomHeaderParameter.html
+  name: AddCustomHeaderParameter
+  nameWithType: AddCustomHeaderParameter
+  fullName: Innovt.AspNetCore.Filters.Swagger.AddCustomHeaderParameter

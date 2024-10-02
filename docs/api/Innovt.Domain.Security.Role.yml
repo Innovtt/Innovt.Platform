@@ -1,0 +1,1242 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Domain.Security.Role
+  commentId: T:Innovt.Domain.Security.Role
+  id: Role
+  parent: Innovt.Domain.Security
+  children:
+  - Innovt.Domain.Security.Role.#ctor
+  - Innovt.Domain.Security.Role.AssignPermission(Innovt.Domain.Security.Permission)
+  - Innovt.Domain.Security.Role.Description
+  - Innovt.Domain.Security.Role.Equals(System.Object)
+  - Innovt.Domain.Security.Role.Name
+  - Innovt.Domain.Security.Role.Permissions
+  - Innovt.Domain.Security.Role.RemovePermission(System.Guid)
+  - Innovt.Domain.Security.Role.Scope
+  langs:
+  - csharp
+  - vb
+  name: Role
+  nameWithType: Role
+  fullName: Innovt.Domain.Security.Role
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Domain/Security/Role.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Role
+    path: ../src/Innovt.Domain/Security/Role.cs
+    startLine: 15
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain.Security
+  summary: Define a list of permissions that can be used
+  example: []
+  syntax:
+    content: 'public class Role : Entity<Guid>'
+    content.vb: Public Class Role Inherits Entity(Of Guid)
+  inheritance:
+  - System.Object
+  - Innovt.Domain.Core.Model.Entity
+  - Innovt.Domain.Core.Model.Entity{System.Guid}
+  inheritedMembers:
+  - Innovt.Domain.Core.Model.Entity{System.Guid}.Id
+  - Innovt.Domain.Core.Model.Entity.CreatedAt
+  - Innovt.Domain.Core.Model.Entity.IsNew
+  - Innovt.Domain.Core.Model.Entity.GetHashCode
+  - Innovt.Domain.Core.Model.Entity.AddDomainEvent(Innovt.Domain.Core.Events.DomainEvent)
+  - Innovt.Domain.Core.Model.Entity.GetDomainEvents
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+- uid: Innovt.Domain.Security.Role.#ctor
+  commentId: M:Innovt.Domain.Security.Role.#ctor
+  id: '#ctor'
+  parent: Innovt.Domain.Security.Role
+  langs:
+  - csharp
+  - vb
+  name: Role()
+  nameWithType: Role.Role()
+  fullName: Innovt.Domain.Security.Role.Role()
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Domain/Security/Role.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: ../src/Innovt.Domain/Security/Role.cs
+    startLine: 20
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain.Security
+  summary: Initializes a new instance of the <xref href="Innovt.Domain.Security.Role" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public Role()
+    content.vb: Public Sub New()
+  overload: Innovt.Domain.Security.Role.#ctor*
+  nameWithType.vb: Role.New()
+  fullName.vb: Innovt.Domain.Security.Role.New()
+  name.vb: New()
+- uid: Innovt.Domain.Security.Role.Name
+  commentId: P:Innovt.Domain.Security.Role.Name
+  id: Name
+  parent: Innovt.Domain.Security.Role
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: Role.Name
+  fullName: Innovt.Domain.Security.Role.Name
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Domain/Security/Role.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Name
+    path: ../src/Innovt.Domain/Security/Role.cs
+    startLine: 29
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain.Security
+  summary: Gets or sets the name of the role.
+  example: []
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: Innovt.Domain.Security.Role.Name*
+- uid: Innovt.Domain.Security.Role.Description
+  commentId: P:Innovt.Domain.Security.Role.Description
+  id: Description
+  parent: Innovt.Domain.Security.Role
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: Role.Description
+  fullName: Innovt.Domain.Security.Role.Description
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Domain/Security/Role.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Description
+    path: ../src/Innovt.Domain/Security/Role.cs
+    startLine: 34
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain.Security
+  summary: Gets or sets the description of the role.
+  example: []
+  syntax:
+    content: public string Description { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Description As String
+  overload: Innovt.Domain.Security.Role.Description*
+- uid: Innovt.Domain.Security.Role.Scope
+  commentId: P:Innovt.Domain.Security.Role.Scope
+  id: Scope
+  parent: Innovt.Domain.Security.Role
+  langs:
+  - csharp
+  - vb
+  name: Scope
+  nameWithType: Role.Scope
+  fullName: Innovt.Domain.Security.Role.Scope
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Domain/Security/Role.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Scope
+    path: ../src/Innovt.Domain/Security/Role.cs
+    startLine: 39
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain.Security
+  summary: Gets or sets the scope of the role.
+  example: []
+  syntax:
+    content: public string Scope { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Scope As String
+  overload: Innovt.Domain.Security.Role.Scope*
+- uid: Innovt.Domain.Security.Role.Permissions
+  commentId: P:Innovt.Domain.Security.Role.Permissions
+  id: Permissions
+  parent: Innovt.Domain.Security.Role
+  langs:
+  - csharp
+  - vb
+  name: Permissions
+  nameWithType: Role.Permissions
+  fullName: Innovt.Domain.Security.Role.Permissions
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Domain/Security/Role.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Permissions
+    path: ../src/Innovt.Domain/Security/Role.cs
+    startLine: 44
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain.Security
+  summary: Gets or sets the list of permissions associated with the role.
+  example: []
+  syntax:
+    content: public IList<Permission> Permissions { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IList{Innovt.Domain.Security.Permission}
+    content.vb: Public Property Permissions As IList(Of Permission)
+  overload: Innovt.Domain.Security.Role.Permissions*
+- uid: Innovt.Domain.Security.Role.AssignPermission(Innovt.Domain.Security.Permission)
+  commentId: M:Innovt.Domain.Security.Role.AssignPermission(Innovt.Domain.Security.Permission)
+  id: AssignPermission(Innovt.Domain.Security.Permission)
+  parent: Innovt.Domain.Security.Role
+  langs:
+  - csharp
+  - vb
+  name: AssignPermission(Permission)
+  nameWithType: Role.AssignPermission(Permission)
+  fullName: Innovt.Domain.Security.Role.AssignPermission(Innovt.Domain.Security.Permission)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain/Security/Role.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: AssignPermission
+    path: ../src/Innovt.Domain/Security/Role.cs
+    startLine: 50
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain.Security
+  summary: Assigns a permission to the role.
+  example: []
+  syntax:
+    content: public void AssignPermission(Permission permission)
+    parameters:
+    - id: permission
+      type: Innovt.Domain.Security.Permission
+      description: The permission to be assigned.
+    content.vb: Public Sub AssignPermission(permission As Permission)
+  overload: Innovt.Domain.Security.Role.AssignPermission*
+- uid: Innovt.Domain.Security.Role.RemovePermission(System.Guid)
+  commentId: M:Innovt.Domain.Security.Role.RemovePermission(System.Guid)
+  id: RemovePermission(System.Guid)
+  parent: Innovt.Domain.Security.Role
+  langs:
+  - csharp
+  - vb
+  name: RemovePermission(Guid)
+  nameWithType: Role.RemovePermission(Guid)
+  fullName: Innovt.Domain.Security.Role.RemovePermission(System.Guid)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain/Security/Role.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: RemovePermission
+    path: ../src/Innovt.Domain/Security/Role.cs
+    startLine: 68
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain.Security
+  summary: Removes a permission from the role by its identifier.
+  example: []
+  syntax:
+    content: public void RemovePermission(Guid permissionId)
+    parameters:
+    - id: permissionId
+      type: System.Guid
+      description: The identifier of the permission to be removed.
+    content.vb: Public Sub RemovePermission(permissionId As Guid)
+  overload: Innovt.Domain.Security.Role.RemovePermission*
+- uid: Innovt.Domain.Security.Role.Equals(System.Object)
+  commentId: M:Innovt.Domain.Security.Role.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: Innovt.Domain.Security.Role
+  langs:
+  - csharp
+  - vb
+  name: Equals(object)
+  nameWithType: Role.Equals(object)
+  fullName: Innovt.Domain.Security.Role.Equals(object)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain/Security/Role.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Equals
+    path: ../src/Innovt.Domain/Security/Role.cs
+    startLine: 85
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain.Security
+  summary: Determines whether the current <xref href="Innovt.Domain.Security.Role" data-throw-if-not-resolved="false"></xref> instance is equal to another object.
+  example: []
+  syntax:
+    content: public override bool Equals(object obj)
+    parameters:
+    - id: obj
+      type: System.Object
+      description: The object to compare with the current instance.
+    return:
+      type: System.Boolean
+      description: <code>true</code> if the specified object is equal to the current instance; otherwise, <code>false</code>.
+    content.vb: Public Overrides Function Equals(obj As Object) As Boolean
+  overridden: Innovt.Domain.Core.Model.Entity.Equals(System.Object)
+  overload: Innovt.Domain.Security.Role.Equals*
+  nameWithType.vb: Role.Equals(Object)
+  fullName.vb: Innovt.Domain.Security.Role.Equals(Object)
+  name.vb: Equals(Object)
+references:
+- uid: Innovt.Domain.Security
+  commentId: N:Innovt.Domain.Security
+  href: Innovt.html
+  name: Innovt.Domain.Security
+  nameWithType: Innovt.Domain.Security
+  fullName: Innovt.Domain.Security
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Security
+    name: Security
+    href: Innovt.Domain.Security.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Security
+    name: Security
+    href: Innovt.Domain.Security.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Innovt.Domain.Core.Model.Entity
+  commentId: T:Innovt.Domain.Core.Model.Entity
+  parent: Innovt.Domain.Core.Model
+  href: Innovt.Domain.Core.Model.Entity.html
+  name: Entity
+  nameWithType: Entity
+  fullName: Innovt.Domain.Core.Model.Entity
+- uid: Innovt.Domain.Core.Model.Entity{System.Guid}
+  commentId: T:Innovt.Domain.Core.Model.Entity{System.Guid}
+  parent: Innovt.Domain.Core.Model
+  definition: Innovt.Domain.Core.Model.Entity`1
+  href: Innovt.Domain.Core.Model.Entity-1.html
+  name: Entity<Guid>
+  nameWithType: Entity<Guid>
+  fullName: Innovt.Domain.Core.Model.Entity<System.Guid>
+  nameWithType.vb: Entity(Of Guid)
+  fullName.vb: Innovt.Domain.Core.Model.Entity(Of System.Guid)
+  name.vb: Entity(Of Guid)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Model.Entity`1
+    name: Entity
+    href: Innovt.Domain.Core.Model.Entity-1.html
+  - name: <
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Model.Entity`1
+    name: Entity
+    href: Innovt.Domain.Core.Model.Entity-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: )
+- uid: Innovt.Domain.Core.Model.Entity{System.Guid}.Id
+  commentId: P:Innovt.Domain.Core.Model.Entity{System.Guid}.Id
+  parent: Innovt.Domain.Core.Model.Entity{System.Guid}
+  definition: Innovt.Domain.Core.Model.Entity`1.Id
+  href: Innovt.Domain.Core.Model.Entity-1.html#Innovt_Domain_Core_Model_Entity_1_Id
+  name: Id
+  nameWithType: Entity<Guid>.Id
+  fullName: Innovt.Domain.Core.Model.Entity<System.Guid>.Id
+  nameWithType.vb: Entity(Of Guid).Id
+  fullName.vb: Innovt.Domain.Core.Model.Entity(Of System.Guid).Id
+- uid: Innovt.Domain.Core.Model.Entity.CreatedAt
+  commentId: P:Innovt.Domain.Core.Model.Entity.CreatedAt
+  parent: Innovt.Domain.Core.Model.Entity
+  href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_CreatedAt
+  name: CreatedAt
+  nameWithType: Entity.CreatedAt
+  fullName: Innovt.Domain.Core.Model.Entity.CreatedAt
+- uid: Innovt.Domain.Core.Model.Entity.IsNew
+  commentId: M:Innovt.Domain.Core.Model.Entity.IsNew
+  parent: Innovt.Domain.Core.Model.Entity
+  href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_IsNew
+  name: IsNew()
+  nameWithType: Entity.IsNew()
+  fullName: Innovt.Domain.Core.Model.Entity.IsNew()
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Model.Entity.IsNew
+    name: IsNew
+    href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_IsNew
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Domain.Core.Model.Entity.IsNew
+    name: IsNew
+    href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_IsNew
+  - name: (
+  - name: )
+- uid: Innovt.Domain.Core.Model.Entity.GetHashCode
+  commentId: M:Innovt.Domain.Core.Model.Entity.GetHashCode
+  parent: Innovt.Domain.Core.Model.Entity
+  href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_GetHashCode
+  name: GetHashCode()
+  nameWithType: Entity.GetHashCode()
+  fullName: Innovt.Domain.Core.Model.Entity.GetHashCode()
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Model.Entity.GetHashCode
+    name: GetHashCode
+    href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_GetHashCode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Domain.Core.Model.Entity.GetHashCode
+    name: GetHashCode
+    href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_GetHashCode
+  - name: (
+  - name: )
+- uid: Innovt.Domain.Core.Model.Entity.AddDomainEvent(Innovt.Domain.Core.Events.DomainEvent)
+  commentId: M:Innovt.Domain.Core.Model.Entity.AddDomainEvent(Innovt.Domain.Core.Events.DomainEvent)
+  parent: Innovt.Domain.Core.Model.Entity
+  href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_AddDomainEvent_Innovt_Domain_Core_Events_DomainEvent_
+  name: AddDomainEvent(DomainEvent)
+  nameWithType: Entity.AddDomainEvent(DomainEvent)
+  fullName: Innovt.Domain.Core.Model.Entity.AddDomainEvent(Innovt.Domain.Core.Events.DomainEvent)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Model.Entity.AddDomainEvent(Innovt.Domain.Core.Events.DomainEvent)
+    name: AddDomainEvent
+    href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_AddDomainEvent_Innovt_Domain_Core_Events_DomainEvent_
+  - name: (
+  - uid: Innovt.Domain.Core.Events.DomainEvent
+    name: DomainEvent
+    href: Innovt.Domain.Core.Events.DomainEvent.html
+  - name: )
+  spec.vb:
+  - uid: Innovt.Domain.Core.Model.Entity.AddDomainEvent(Innovt.Domain.Core.Events.DomainEvent)
+    name: AddDomainEvent
+    href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_AddDomainEvent_Innovt_Domain_Core_Events_DomainEvent_
+  - name: (
+  - uid: Innovt.Domain.Core.Events.DomainEvent
+    name: DomainEvent
+    href: Innovt.Domain.Core.Events.DomainEvent.html
+  - name: )
+- uid: Innovt.Domain.Core.Model.Entity.GetDomainEvents
+  commentId: M:Innovt.Domain.Core.Model.Entity.GetDomainEvents
+  parent: Innovt.Domain.Core.Model.Entity
+  href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_GetDomainEvents
+  name: GetDomainEvents()
+  nameWithType: Entity.GetDomainEvents()
+  fullName: Innovt.Domain.Core.Model.Entity.GetDomainEvents()
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Model.Entity.GetDomainEvents
+    name: GetDomainEvents
+    href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_GetDomainEvents
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Domain.Core.Model.Entity.GetDomainEvents
+    name: GetDomainEvents
+    href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_GetDomainEvents
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Domain.Core.Model
+  commentId: N:Innovt.Domain.Core.Model
+  href: Innovt.html
+  name: Innovt.Domain.Core.Model
+  nameWithType: Innovt.Domain.Core.Model
+  fullName: Innovt.Domain.Core.Model
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Model
+    name: Model
+    href: Innovt.Domain.Core.Model.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Domain
+    name: Domain
+    href: Innovt.Domain.html
+  - name: .
+  - uid: Innovt.Domain.Core
+    name: Core
+    href: Innovt.Domain.Core.html
+  - name: .
+  - uid: Innovt.Domain.Core.Model
+    name: Model
+    href: Innovt.Domain.Core.Model.html
+- uid: Innovt.Domain.Core.Model.Entity`1
+  commentId: T:Innovt.Domain.Core.Model.Entity`1
+  href: Innovt.Domain.Core.Model.Entity-1.html
+  name: Entity<T>
+  nameWithType: Entity<T>
+  fullName: Innovt.Domain.Core.Model.Entity<T>
+  nameWithType.vb: Entity(Of T)
+  fullName.vb: Innovt.Domain.Core.Model.Entity(Of T)
+  name.vb: Entity(Of T)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Model.Entity`1
+    name: Entity
+    href: Innovt.Domain.Core.Model.Entity-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Domain.Core.Model.Entity`1
+    name: Entity
+    href: Innovt.Domain.Core.Model.Entity-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Domain.Core.Model.Entity`1.Id
+  commentId: P:Innovt.Domain.Core.Model.Entity`1.Id
+  href: Innovt.Domain.Core.Model.Entity-1.html#Innovt_Domain_Core_Model_Entity_1_Id
+  name: Id
+  nameWithType: Entity<T>.Id
+  fullName: Innovt.Domain.Core.Model.Entity<T>.Id
+  nameWithType.vb: Entity(Of T).Id
+  fullName.vb: Innovt.Domain.Core.Model.Entity(Of T).Id
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Domain.Security.Role
+  commentId: T:Innovt.Domain.Security.Role
+  parent: Innovt.Domain.Security
+  href: Innovt.Domain.Security.Role.html
+  name: Role
+  nameWithType: Role
+  fullName: Innovt.Domain.Security.Role
+- uid: Innovt.Domain.Security.Role.#ctor*
+  commentId: Overload:Innovt.Domain.Security.Role.#ctor
+  href: Innovt.Domain.Security.Role.html#Innovt_Domain_Security_Role__ctor
+  name: Role
+  nameWithType: Role.Role
+  fullName: Innovt.Domain.Security.Role.Role
+  nameWithType.vb: Role.New
+  fullName.vb: Innovt.Domain.Security.Role.New
+  name.vb: New
+- uid: Innovt.Domain.Security.Role.Name*
+  commentId: Overload:Innovt.Domain.Security.Role.Name
+  href: Innovt.Domain.Security.Role.html#Innovt_Domain_Security_Role_Name
+  name: Name
+  nameWithType: Role.Name
+  fullName: Innovt.Domain.Security.Role.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Innovt.Domain.Security.Role.Description*
+  commentId: Overload:Innovt.Domain.Security.Role.Description
+  href: Innovt.Domain.Security.Role.html#Innovt_Domain_Security_Role_Description
+  name: Description
+  nameWithType: Role.Description
+  fullName: Innovt.Domain.Security.Role.Description
+- uid: Innovt.Domain.Security.Role.Scope*
+  commentId: Overload:Innovt.Domain.Security.Role.Scope
+  href: Innovt.Domain.Security.Role.html#Innovt_Domain_Security_Role_Scope
+  name: Scope
+  nameWithType: Role.Scope
+  fullName: Innovt.Domain.Security.Role.Scope
+- uid: Innovt.Domain.Security.Role.Permissions*
+  commentId: Overload:Innovt.Domain.Security.Role.Permissions
+  href: Innovt.Domain.Security.Role.html#Innovt_Domain_Security_Role_Permissions
+  name: Permissions
+  nameWithType: Role.Permissions
+  fullName: Innovt.Domain.Security.Role.Permissions
+- uid: System.Collections.Generic.IList{Innovt.Domain.Security.Permission}
+  commentId: T:System.Collections.Generic.IList{Innovt.Domain.Security.Permission}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<Permission>
+  nameWithType: IList<Permission>
+  fullName: System.Collections.Generic.IList<Innovt.Domain.Security.Permission>
+  nameWithType.vb: IList(Of Permission)
+  fullName.vb: System.Collections.Generic.IList(Of Innovt.Domain.Security.Permission)
+  name.vb: IList(Of Permission)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: Innovt.Domain.Security.Permission
+    name: Permission
+    href: Innovt.Domain.Security.Permission.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Domain.Security.Permission
+    name: Permission
+    href: Innovt.Domain.Security.Permission.html
+  - name: )
+- uid: System.Collections.Generic.IList`1
+  commentId: T:System.Collections.Generic.IList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<T>
+  nameWithType: IList<T>
+  fullName: System.Collections.Generic.IList<T>
+  nameWithType.vb: IList(Of T)
+  fullName.vb: System.Collections.Generic.IList(Of T)
+  name.vb: IList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Innovt.Domain.Security.Role.AssignPermission*
+  commentId: Overload:Innovt.Domain.Security.Role.AssignPermission
+  href: Innovt.Domain.Security.Role.html#Innovt_Domain_Security_Role_AssignPermission_Innovt_Domain_Security_Permission_
+  name: AssignPermission
+  nameWithType: Role.AssignPermission
+  fullName: Innovt.Domain.Security.Role.AssignPermission
+- uid: Innovt.Domain.Security.Permission
+  commentId: T:Innovt.Domain.Security.Permission
+  parent: Innovt.Domain.Security
+  href: Innovt.Domain.Security.Permission.html
+  name: Permission
+  nameWithType: Permission
+  fullName: Innovt.Domain.Security.Permission
+- uid: Innovt.Domain.Security.Role.RemovePermission*
+  commentId: Overload:Innovt.Domain.Security.Role.RemovePermission
+  href: Innovt.Domain.Security.Role.html#Innovt_Domain_Security_Role_RemovePermission_System_Guid_
+  name: RemovePermission
+  nameWithType: Role.RemovePermission
+  fullName: Innovt.Domain.Security.Role.RemovePermission
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Innovt.Domain.Core.Model.Entity.Equals(System.Object)
+  commentId: M:Innovt.Domain.Core.Model.Entity.Equals(System.Object)
+  parent: Innovt.Domain.Core.Model.Entity
+  isExternal: true
+  href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_Equals_System_Object_
+  name: Equals(object)
+  nameWithType: Entity.Equals(object)
+  fullName: Innovt.Domain.Core.Model.Entity.Equals(object)
+  nameWithType.vb: Entity.Equals(Object)
+  fullName.vb: Innovt.Domain.Core.Model.Entity.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Model.Entity.Equals(System.Object)
+    name: Equals
+    href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_Equals_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Domain.Core.Model.Entity.Equals(System.Object)
+    name: Equals
+    href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_Equals_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Domain.Security.Role.Equals*
+  commentId: Overload:Innovt.Domain.Security.Role.Equals
+  href: Innovt.Domain.Security.Role.html#Innovt_Domain_Security_Role_Equals_System_Object_
+  name: Equals
+  nameWithType: Role.Equals
+  fullName: Innovt.Domain.Security.Role.Equals
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

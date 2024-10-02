@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Data.Ado.Tests.Model
+  commentId: N:Innovt.Data.Ado.Tests.Model
+  id: Innovt.Data.Ado.Tests.Model
+  children:
+  - Innovt.Data.Ado.Tests.Model.User
+  - Innovt.Data.Ado.Tests.Model.UserFilter
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Data.Ado.Tests.Model
+  nameWithType: Innovt.Data.Ado.Tests.Model
+  fullName: Innovt.Data.Ado.Tests.Model
+  type: Namespace
+  assemblies:
+  - Innovt.Data.Ado.Tests
+references:
+- uid: Innovt.Data.Ado.Tests.Model.User
+  commentId: T:Innovt.Data.Ado.Tests.Model.User
+  href: Innovt.Data.Ado.Tests.Model.User.html
+  name: User
+  nameWithType: User
+  fullName: Innovt.Data.Ado.Tests.Model.User
+- uid: Innovt.Data.Ado.Tests.Model.UserFilter
+  commentId: T:Innovt.Data.Ado.Tests.Model.UserFilter
+  href: Innovt.Data.Ado.Tests.Model.UserFilter.html
+  name: UserFilter
+  nameWithType: UserFilter
+  fullName: Innovt.Data.Ado.Tests.Model.UserFilter

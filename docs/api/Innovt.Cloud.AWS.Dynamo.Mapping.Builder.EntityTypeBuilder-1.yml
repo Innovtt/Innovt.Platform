@@ -1,0 +1,1970 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  id: EntityTypeBuilder`1
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  children:
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.AutoMap(System.Boolean)
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.EntityType
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.GetProperties
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.GetProperty(System.String)
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.HashKeyPrefix
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Ignore(System.String)
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Ignore``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.KeySeparator
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Pk
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Property(System.String)
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Property``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.RangeKeyPrefix
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Sk
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.TableName
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithDefaultKeys
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithEntityType(System.String)
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithEntityType``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithHashKey(System.String)
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithHashKeyPrefix(System.String)
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithHashKey``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithRangeKey(System.String)
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithRangeKeyPrefix(System.String)
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithRangeKey``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithTableName(System.String,System.String)
+  langs:
+  - csharp
+  - vb
+  name: EntityTypeBuilder<TEntity>
+  nameWithType: EntityTypeBuilder<TEntity>
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: EntityTypeBuilder
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 13
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  summary: A builder for defining the entity type and its properties for use with DynamoDB.
+  example: []
+  syntax:
+    content: public sealed class EntityTypeBuilder<TEntity>
+    typeParameters:
+    - id: TEntity
+      description: The type of the entity being defined.
+    content.vb: Public NotInheritable Class EntityTypeBuilder(Of TEntity)
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  nameWithType.vb: EntityTypeBuilder(Of TEntity)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity)
+  name.vb: EntityTypeBuilder(Of TEntity)
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.TableName
+  commentId: P:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.TableName
+  id: TableName
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: TableName
+  nameWithType: EntityTypeBuilder<TEntity>.TableName
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.TableName
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: TableName
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 18
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  summary: Gets or sets the table name associated with the entity type.
+  example: []
+  syntax:
+    content: public string TableName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property TableName As String
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.TableName*
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).TableName
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).TableName
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Pk
+  commentId: P:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Pk
+  id: Pk
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: Pk
+  nameWithType: EntityTypeBuilder<TEntity>.Pk
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.Pk
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Pk
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 23
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  summary: Gets or sets the partition key for the DynamoDB table.
+  example: []
+  syntax:
+    content: public string Pk { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Pk As String
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Pk*
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).Pk
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).Pk
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.HashKeyPrefix
+  commentId: P:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.HashKeyPrefix
+  id: HashKeyPrefix
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: HashKeyPrefix
+  nameWithType: EntityTypeBuilder<TEntity>.HashKeyPrefix
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.HashKeyPrefix
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: HashKeyPrefix
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 25
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  syntax:
+    content: public string HashKeyPrefix { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property HashKeyPrefix As String
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.HashKeyPrefix*
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).HashKeyPrefix
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).HashKeyPrefix
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.KeySeparator
+  commentId: P:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.KeySeparator
+  id: KeySeparator
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: KeySeparator
+  nameWithType: EntityTypeBuilder<TEntity>.KeySeparator
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.KeySeparator
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: KeySeparator
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 30
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  summary: Define the key prefix separator
+  example: []
+  syntax:
+    content: public string KeySeparator { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property KeySeparator As String
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.KeySeparator*
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).KeySeparator
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).KeySeparator
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Sk
+  commentId: P:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Sk
+  id: Sk
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: Sk
+  nameWithType: EntityTypeBuilder<TEntity>.Sk
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.Sk
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Sk
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 35
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  summary: Gets or sets the sort key for the DynamoDB table.
+  example: []
+  syntax:
+    content: public string Sk { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Sk As String
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Sk*
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).Sk
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).Sk
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.RangeKeyPrefix
+  commentId: P:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.RangeKeyPrefix
+  id: RangeKeyPrefix
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: RangeKeyPrefix
+  nameWithType: EntityTypeBuilder<TEntity>.RangeKeyPrefix
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.RangeKeyPrefix
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: RangeKeyPrefix
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 40
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  summary: Gets or sets the range key prefix for the DynamoDB table.
+  example: []
+  syntax:
+    content: public string RangeKeyPrefix { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property RangeKeyPrefix As String
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.RangeKeyPrefix*
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).RangeKeyPrefix
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).RangeKeyPrefix
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.EntityType
+  commentId: P:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.EntityType
+  id: EntityType
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: EntityType
+  nameWithType: EntityTypeBuilder<TEntity>.EntityType
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.EntityType
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: EntityType
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 45
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  summary: Gets or sets the entity type for the DynamoDB table.
+  example: []
+  syntax:
+    content: public string EntityType { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property EntityType As String
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.EntityType*
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).EntityType
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).EntityType
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithTableName(System.String,System.String)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithTableName(System.String,System.String)
+  id: WithTableName(System.String,System.String)
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: WithTableName(string, string)
+  nameWithType: EntityTypeBuilder<TEntity>.WithTableName(string, string)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.WithTableName(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: WithTableName
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 58
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  summary: Sets the table name associated with the entity type.
+  example: []
+  syntax:
+    content: public EntityTypeBuilder<TEntity> WithTableName(string tableName, string keySeparator = null)
+    parameters:
+    - id: tableName
+      type: System.String
+      description: The table name to set.
+    - id: keySeparator
+      type: System.String
+      description: 'If you want to define a key prefix like USER#ID the separator will be #'
+    return:
+      type: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+      description: The current instance of <xref href="Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder%601" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function WithTableName(tableName As String, keySeparator As String = Nothing) As EntityTypeBuilder(Of TEntity)
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithTableName*
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).WithTableName(String, String)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).WithTableName(String, String)
+  name.vb: WithTableName(String, String)
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithDefaultKeys
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithDefaultKeys
+  id: WithDefaultKeys
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: WithDefaultKeys()
+  nameWithType: EntityTypeBuilder<TEntity>.WithDefaultKeys()
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.WithDefaultKeys()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: WithDefaultKeys
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 70
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  summary: >-
+    Initializes a new instance of the <xref href="Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder%601" data-throw-if-not-resolved="false"></xref> class.
+
+    In this case the default PK and SK will be created
+  example: []
+  syntax:
+    content: public EntityTypeBuilder<TEntity> WithDefaultKeys()
+    return:
+      type: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+      description: ''
+    content.vb: Public Function WithDefaultKeys() As EntityTypeBuilder(Of TEntity)
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithDefaultKeys*
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).WithDefaultKeys()
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).WithDefaultKeys()
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithHashKey``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithHashKey``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  id: WithHashKey``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: WithHashKey<TProperty>(Expression<Func<TEntity, TProperty>>)
+  nameWithType: EntityTypeBuilder<TEntity>.WithHashKey<TProperty>(Expression<Func<TEntity, TProperty>>)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.WithHashKey<TProperty>(System.Linq.Expressions.Expression<System.Func<TEntity, TProperty>>)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: WithHashKey
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 82
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  summary: Sets the partition key for the DynamoDB table using a provided hash key function.
+  example: []
+  syntax:
+    content: public PropertyTypeBuilder<TEntity> WithHashKey<TProperty>(Expression<Func<TEntity, TProperty>> expression)
+    parameters:
+    - id: expression
+      type: System.Linq.Expressions.Expression{System.Func{{TEntity},{TProperty}}}
+      description: The hash key function to generate the partition key.
+    typeParameters:
+    - id: TProperty
+    return:
+      type: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder{{TEntity}}
+      description: The current instance of <xref href="Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder%601" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function WithHashKey(Of TProperty)(expression As Expression(Of Func(Of TEntity, TProperty))) As PropertyTypeBuilder(Of TEntity)
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithHashKey*
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).WithHashKey(Of TProperty)(Expression(Of Func(Of TEntity, TProperty)))
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).WithHashKey(Of TProperty)(System.Linq.Expressions.Expression(Of System.Func(Of TEntity, TProperty)))
+  name.vb: WithHashKey(Of TProperty)(Expression(Of Func(Of TEntity, TProperty)))
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithHashKey(System.String)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithHashKey(System.String)
+  id: WithHashKey(System.String)
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: WithHashKey(string)
+  nameWithType: EntityTypeBuilder<TEntity>.WithHashKey(string)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.WithHashKey(string)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: WithHashKey
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 92
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  summary: Sets the partition key for the DynamoDB table using a specified partition key.
+  example: []
+  syntax:
+    content: public PropertyTypeBuilder<TEntity> WithHashKey(string hashKey = "PK")
+    parameters:
+    - id: hashKey
+      type: System.String
+      description: The partition key to set.
+    return:
+      type: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder{{TEntity}}
+      description: The current instance of <xref href="Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder%601" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function WithHashKey(hashKey As String = "PK") As PropertyTypeBuilder(Of TEntity)
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithHashKey*
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).WithHashKey(String)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).WithHashKey(String)
+  name.vb: WithHashKey(String)
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithHashKeyPrefix(System.String)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithHashKeyPrefix(System.String)
+  id: WithHashKeyPrefix(System.String)
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: WithHashKeyPrefix(string)
+  nameWithType: EntityTypeBuilder<TEntity>.WithHashKeyPrefix(string)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.WithHashKeyPrefix(string)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: WithHashKeyPrefix
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 98
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  syntax:
+    content: public EntityTypeBuilder<TEntity> WithHashKeyPrefix(string hashKeyPrefix)
+    parameters:
+    - id: hashKeyPrefix
+      type: System.String
+    return:
+      type: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+    content.vb: Public Function WithHashKeyPrefix(hashKeyPrefix As String) As EntityTypeBuilder(Of TEntity)
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithHashKeyPrefix*
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).WithHashKeyPrefix(String)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).WithHashKeyPrefix(String)
+  name.vb: WithHashKeyPrefix(String)
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithRangeKey``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithRangeKey``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  id: WithRangeKey``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: WithRangeKey<TProperty>(Expression<Func<TEntity, TProperty>>)
+  nameWithType: EntityTypeBuilder<TEntity>.WithRangeKey<TProperty>(Expression<Func<TEntity, TProperty>>)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.WithRangeKey<TProperty>(System.Linq.Expressions.Expression<System.Func<TEntity, TProperty>>)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: WithRangeKey
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 109
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  summary: Sets the sort key for the DynamoDB table using a provided sort key function.
+  example: []
+  syntax:
+    content: public PropertyTypeBuilder<TEntity> WithRangeKey<TProperty>(Expression<Func<TEntity, TProperty>> expression)
+    parameters:
+    - id: expression
+      type: System.Linq.Expressions.Expression{System.Func{{TEntity},{TProperty}}}
+      description: The sort key function to generate the sort key.
+    typeParameters:
+    - id: TProperty
+    return:
+      type: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder{{TEntity}}
+      description: The current instance of <xref href="Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder%601" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function WithRangeKey(Of TProperty)(expression As Expression(Of Func(Of TEntity, TProperty))) As PropertyTypeBuilder(Of TEntity)
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithRangeKey*
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).WithRangeKey(Of TProperty)(Expression(Of Func(Of TEntity, TProperty)))
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).WithRangeKey(Of TProperty)(System.Linq.Expressions.Expression(Of System.Func(Of TEntity, TProperty)))
+  name.vb: WithRangeKey(Of TProperty)(Expression(Of Func(Of TEntity, TProperty)))
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithRangeKey(System.String)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithRangeKey(System.String)
+  id: WithRangeKey(System.String)
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: WithRangeKey(string)
+  nameWithType: EntityTypeBuilder<TEntity>.WithRangeKey(string)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.WithRangeKey(string)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: WithRangeKey
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 119
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  summary: Sets the range key for the DynamoDB table using a specified sort key.
+  example: []
+  syntax:
+    content: public PropertyTypeBuilder<TEntity> WithRangeKey(string rangeKey = "SK")
+    parameters:
+    - id: rangeKey
+      type: System.String
+      description: The sort key to set.
+    return:
+      type: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder{{TEntity}}
+      description: The current instance of <xref href="Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder%601" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function WithRangeKey(rangeKey As String = "SK") As PropertyTypeBuilder(Of TEntity)
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithRangeKey*
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).WithRangeKey(String)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).WithRangeKey(String)
+  name.vb: WithRangeKey(String)
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithRangeKeyPrefix(System.String)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithRangeKeyPrefix(System.String)
+  id: WithRangeKeyPrefix(System.String)
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: WithRangeKeyPrefix(string)
+  nameWithType: EntityTypeBuilder<TEntity>.WithRangeKeyPrefix(string)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.WithRangeKeyPrefix(string)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: WithRangeKeyPrefix
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 130
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  summary: Sets the sort/Range key prefix for the DynamoDB table.
+  example: []
+  syntax:
+    content: public EntityTypeBuilder<TEntity> WithRangeKeyPrefix(string rangeKeyPrefix)
+    parameters:
+    - id: rangeKeyPrefix
+      type: System.String
+      description: ''
+    return:
+      type: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+      description: ''
+    content.vb: Public Function WithRangeKeyPrefix(rangeKeyPrefix As String) As EntityTypeBuilder(Of TEntity)
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithRangeKeyPrefix*
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).WithRangeKeyPrefix(String)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).WithRangeKeyPrefix(String)
+  name.vb: WithRangeKeyPrefix(String)
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithEntityType``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithEntityType``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  id: WithEntityType``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: WithEntityType<TProperty>(Expression<Func<TEntity, TProperty>>)
+  nameWithType: EntityTypeBuilder<TEntity>.WithEntityType<TProperty>(Expression<Func<TEntity, TProperty>>)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.WithEntityType<TProperty>(System.Linq.Expressions.Expression<System.Func<TEntity, TProperty>>)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: WithEntityType
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 141
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  summary: Sets the entity type for the DynamoDB table using a provided entity type function.
+  example: []
+  syntax:
+    content: public EntityTypeBuilder<TEntity> WithEntityType<TProperty>(Expression<Func<TEntity, TProperty>> expression)
+    parameters:
+    - id: expression
+      type: System.Linq.Expressions.Expression{System.Func{{TEntity},{TProperty}}}
+      description: The entity type function to generate the entity type.
+    typeParameters:
+    - id: TProperty
+    return:
+      type: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+      description: The current instance of <xref href="Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder%601" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function WithEntityType(Of TProperty)(expression As Expression(Of Func(Of TEntity, TProperty))) As EntityTypeBuilder(Of TEntity)
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithEntityType*
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).WithEntityType(Of TProperty)(Expression(Of Func(Of TEntity, TProperty)))
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).WithEntityType(Of TProperty)(System.Linq.Expressions.Expression(Of System.Func(Of TEntity, TProperty)))
+  name.vb: WithEntityType(Of TProperty)(Expression(Of Func(Of TEntity, TProperty)))
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithEntityType(System.String)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithEntityType(System.String)
+  id: WithEntityType(System.String)
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: WithEntityType(string)
+  nameWithType: EntityTypeBuilder<TEntity>.WithEntityType(string)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.WithEntityType(string)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: WithEntityType
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 151
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  summary: Sets the entity type for the DynamoDB table using a specified entity type.
+  example: []
+  syntax:
+    content: public EntityTypeBuilder<TEntity> WithEntityType(string entityTypeName)
+    parameters:
+    - id: entityTypeName
+      type: System.String
+      description: The entity type to set.
+    return:
+      type: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+      description: The current instance of <xref href="Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder%601" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function WithEntityType(entityTypeName As String) As EntityTypeBuilder(Of TEntity)
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithEntityType*
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).WithEntityType(String)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).WithEntityType(String)
+  name.vb: WithEntityType(String)
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Property``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Property``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  id: Property``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: Property<TProperty>(Expression<Func<TEntity, TProperty>>)
+  nameWithType: EntityTypeBuilder<TEntity>.Property<TProperty>(Expression<Func<TEntity, TProperty>>)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.Property<TProperty>(System.Linq.Expressions.Expression<System.Func<TEntity, TProperty>>)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Property
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 162
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  summary: Defines a property for the entity using a provided property function.
+  example: []
+  syntax:
+    content: public PropertyTypeBuilder<TEntity> Property<TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression)
+    parameters:
+    - id: propertyExpression
+      type: System.Linq.Expressions.Expression{System.Func{{TEntity},{TProperty}}}
+      description: The property function to generate the property.
+    typeParameters:
+    - id: TProperty
+    return:
+      type: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder{{TEntity}}
+      description: The property type builder for further property configuration.
+    content.vb: Public Function [Property](Of TProperty)(propertyExpression As Expression(Of Func(Of TEntity, TProperty))) As PropertyTypeBuilder(Of TEntity)
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Property*
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).Property(Of TProperty)(Expression(Of Func(Of TEntity, TProperty)))
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).Property(Of TProperty)(System.Linq.Expressions.Expression(Of System.Func(Of TEntity, TProperty)))
+  name.vb: Property(Of TProperty)(Expression(Of Func(Of TEntity, TProperty)))
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Property(System.String)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Property(System.String)
+  id: Property(System.String)
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: Property(string)
+  nameWithType: EntityTypeBuilder<TEntity>.Property(string)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.Property(string)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Property
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 172
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  summary: Defines a property for the entity using a specified property name.
+  example: []
+  syntax:
+    content: public PropertyTypeBuilder<TEntity> Property(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the property.
+    return:
+      type: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder{{TEntity}}
+      description: The property type builder for further property configuration.
+    content.vb: Public Function [Property](name As String) As PropertyTypeBuilder(Of TEntity)
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Property*
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).Property(String)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).Property(String)
+  name.vb: Property(String)
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Ignore``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Ignore``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  id: Ignore``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: Ignore<TProperty>(Expression<Func<TEntity, TProperty>>)
+  nameWithType: EntityTypeBuilder<TEntity>.Ignore<TProperty>(Expression<Func<TEntity, TProperty>>)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.Ignore<TProperty>(System.Linq.Expressions.Expression<System.Func<TEntity, TProperty>>)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Ignore
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 207
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  summary: Ignores a property during mapping.
+  example: []
+  syntax:
+    content: public EntityTypeBuilder<TEntity> Ignore<TProperty>(Expression<Func<TEntity, TProperty>> expression)
+    parameters:
+    - id: expression
+      type: System.Linq.Expressions.Expression{System.Func{{TEntity},{TProperty}}}
+      description: The property to ignore.
+    typeParameters:
+    - id: TProperty
+    return:
+      type: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+    content.vb: Public Function Ignore(Of TProperty)(expression As Expression(Of Func(Of TEntity, TProperty))) As EntityTypeBuilder(Of TEntity)
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Ignore*
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).Ignore(Of TProperty)(Expression(Of Func(Of TEntity, TProperty)))
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).Ignore(Of TProperty)(System.Linq.Expressions.Expression(Of System.Func(Of TEntity, TProperty)))
+  name.vb: Ignore(Of TProperty)(Expression(Of Func(Of TEntity, TProperty)))
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Ignore(System.String)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Ignore(System.String)
+  id: Ignore(System.String)
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: Ignore(string)
+  nameWithType: EntityTypeBuilder<TEntity>.Ignore(string)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.Ignore(string)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Ignore
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 217
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  summary: Ignores a property by name during mapping.
+  example: []
+  syntax:
+    content: public EntityTypeBuilder<TEntity> Ignore(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the property to ignore.
+    return:
+      type: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+      description: The current instance of <xref href="Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder%601" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function Ignore(name As String) As EntityTypeBuilder(Of TEntity)
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Ignore*
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).Ignore(String)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).Ignore(String)
+  name.vb: Ignore(String)
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.AutoMap(System.Boolean)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.AutoMap(System.Boolean)
+  id: AutoMap(System.Boolean)
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: AutoMap(bool)
+  nameWithType: EntityTypeBuilder<TEntity>.AutoMap(bool)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.AutoMap(bool)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: AutoMap
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 232
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  summary: Starts a reflection process to auto map all properties of the entity type.
+  example: []
+  syntax:
+    content: public EntityTypeBuilder<TEntity> AutoMap(bool withDefaultKeys = true)
+    parameters:
+    - id: withDefaultKeys
+      type: System.Boolean
+    return:
+      type: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+      description: The current instance of <xref href="Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder%601" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function AutoMap(withDefaultKeys As Boolean = True) As EntityTypeBuilder(Of TEntity)
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.AutoMap*
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).AutoMap(Boolean)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).AutoMap(Boolean)
+  name.vb: AutoMap(Boolean)
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.GetProperties
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.GetProperties
+  id: GetProperties
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: GetProperties()
+  nameWithType: EntityTypeBuilder<TEntity>.GetProperties()
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.GetProperties()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: GetProperties
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 254
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  summary: Returns all properties defined for the entity type.
+  example: []
+  syntax:
+    content: public IReadOnlyCollection<PropertyTypeBuilder<TEntity>> GetProperties()
+    return:
+      type: System.Collections.Generic.IReadOnlyCollection{Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder{{TEntity}}}
+      description: ''
+    content.vb: Public Function GetProperties() As IReadOnlyCollection(Of PropertyTypeBuilder(Of TEntity))
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.GetProperties*
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).GetProperties()
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).GetProperties()
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.GetProperty(System.String)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.GetProperty(System.String)
+  id: GetProperty(System.String)
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: GetProperty(string)
+  nameWithType: EntityTypeBuilder<TEntity>.GetProperty(string)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.GetProperty(string)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: GetProperty
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
+    startLine: 264
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  summary: Gets a property by its column name or Name
+  example: []
+  syntax:
+    content: public PropertyTypeBuilder<TEntity> GetProperty(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: ''
+    return:
+      type: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder{{TEntity}}
+      description: ''
+    content.vb: Public Function GetProperty(name As String) As PropertyTypeBuilder(Of TEntity)
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.GetProperty*
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).GetProperty(String)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).GetProperty(String)
+  name.vb: GetProperty(String)
+references:
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  commentId: N:Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  nameWithType: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo
+    name: Dynamo
+    href: Innovt.Cloud.AWS.Dynamo.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping
+    name: Mapping
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+    name: Builder
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo
+    name: Dynamo
+    href: Innovt.Cloud.AWS.Dynamo.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping
+    name: Mapping
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+    name: Builder
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.TableName*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.TableName
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_EntityTypeBuilder_1_TableName
+  name: TableName
+  nameWithType: EntityTypeBuilder<TEntity>.TableName
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.TableName
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).TableName
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).TableName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Pk*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Pk
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_EntityTypeBuilder_1_Pk
+  name: Pk
+  nameWithType: EntityTypeBuilder<TEntity>.Pk
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.Pk
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).Pk
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).Pk
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.HashKeyPrefix*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.HashKeyPrefix
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_EntityTypeBuilder_1_HashKeyPrefix
+  name: HashKeyPrefix
+  nameWithType: EntityTypeBuilder<TEntity>.HashKeyPrefix
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.HashKeyPrefix
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).HashKeyPrefix
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).HashKeyPrefix
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.KeySeparator*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.KeySeparator
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_EntityTypeBuilder_1_KeySeparator
+  name: KeySeparator
+  nameWithType: EntityTypeBuilder<TEntity>.KeySeparator
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.KeySeparator
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).KeySeparator
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).KeySeparator
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Sk*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Sk
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_EntityTypeBuilder_1_Sk
+  name: Sk
+  nameWithType: EntityTypeBuilder<TEntity>.Sk
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.Sk
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).Sk
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).Sk
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.RangeKeyPrefix*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.RangeKeyPrefix
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_EntityTypeBuilder_1_RangeKeyPrefix
+  name: RangeKeyPrefix
+  nameWithType: EntityTypeBuilder<TEntity>.RangeKeyPrefix
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.RangeKeyPrefix
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).RangeKeyPrefix
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).RangeKeyPrefix
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.EntityType*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.EntityType
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_EntityTypeBuilder_1_EntityType
+  name: EntityType
+  nameWithType: EntityTypeBuilder<TEntity>.EntityType
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.EntityType
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).EntityType
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).EntityType
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html
+  name: EntityTypeBuilder<TEntity>
+  nameWithType: EntityTypeBuilder<TEntity>
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>
+  nameWithType.vb: EntityTypeBuilder(Of TEntity)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity)
+  name.vb: EntityTypeBuilder(Of TEntity)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+    name: EntityTypeBuilder
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html
+  - name: <
+  - name: TEntity
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+    name: EntityTypeBuilder
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithTableName*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithTableName
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_EntityTypeBuilder_1_WithTableName_System_String_System_String_
+  name: WithTableName
+  nameWithType: EntityTypeBuilder<TEntity>.WithTableName
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.WithTableName
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).WithTableName
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).WithTableName
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithDefaultKeys*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithDefaultKeys
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_EntityTypeBuilder_1_WithDefaultKeys
+  name: WithDefaultKeys
+  nameWithType: EntityTypeBuilder<TEntity>.WithDefaultKeys
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.WithDefaultKeys
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).WithDefaultKeys
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).WithDefaultKeys
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithHashKey*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithHashKey
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_EntityTypeBuilder_1_WithHashKey__1_System_Linq_Expressions_Expression_System_Func__0___0___
+  name: WithHashKey
+  nameWithType: EntityTypeBuilder<TEntity>.WithHashKey
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.WithHashKey
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).WithHashKey
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).WithHashKey
+- uid: System.Linq.Expressions.Expression{System.Func{{TEntity},{TProperty}}}
+  commentId: T:System.Linq.Expressions.Expression{System.Func{`0,``0}}
+  parent: System.Linq.Expressions
+  definition: System.Linq.Expressions.Expression`1
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  name: Expression<Func<TEntity, TProperty>>
+  nameWithType: Expression<Func<TEntity, TProperty>>
+  fullName: System.Linq.Expressions.Expression<System.Func<TEntity, TProperty>>
+  nameWithType.vb: Expression(Of Func(Of TEntity, TProperty))
+  fullName.vb: System.Linq.Expressions.Expression(Of System.Func(Of TEntity, TProperty))
+  name.vb: Expression(Of Func(Of TEntity, TProperty))
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: TEntity
+  - name: ','
+  - name: " "
+  - name: TProperty
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: ','
+  - name: " "
+  - name: TProperty
+  - name: )
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder{{TEntity}}
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder{`0}
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  definition: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder-1.html
+  name: PropertyTypeBuilder<TEntity>
+  nameWithType: PropertyTypeBuilder<TEntity>
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder<TEntity>
+  nameWithType.vb: PropertyTypeBuilder(Of TEntity)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of TEntity)
+  name.vb: PropertyTypeBuilder(Of TEntity)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1
+    name: PropertyTypeBuilder
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder-1.html
+  - name: <
+  - name: TEntity
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1
+    name: PropertyTypeBuilder
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+- uid: System.Linq.Expressions.Expression`1
+  commentId: T:System.Linq.Expressions.Expression`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  name: Expression<TDelegate>
+  nameWithType: Expression<TDelegate>
+  fullName: System.Linq.Expressions.Expression<TDelegate>
+  nameWithType.vb: Expression(Of TDelegate)
+  fullName.vb: System.Linq.Expressions.Expression(Of TDelegate)
+  name.vb: Expression(Of TDelegate)
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - name: TDelegate
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDelegate
+  - name: )
+- uid: System.Linq.Expressions
+  commentId: N:System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Linq.Expressions
+  nameWithType: System.Linq.Expressions
+  fullName: System.Linq.Expressions
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq
+  - name: .
+  - uid: System.Linq.Expressions
+    name: Expressions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq
+  - name: .
+  - uid: System.Linq.Expressions
+    name: Expressions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder-1.html
+  name: PropertyTypeBuilder<T>
+  nameWithType: PropertyTypeBuilder<T>
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder<T>
+  nameWithType.vb: PropertyTypeBuilder(Of T)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of T)
+  name.vb: PropertyTypeBuilder(Of T)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1
+    name: PropertyTypeBuilder
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1
+    name: PropertyTypeBuilder
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithHashKeyPrefix*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithHashKeyPrefix
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_EntityTypeBuilder_1_WithHashKeyPrefix_System_String_
+  name: WithHashKeyPrefix
+  nameWithType: EntityTypeBuilder<TEntity>.WithHashKeyPrefix
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.WithHashKeyPrefix
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).WithHashKeyPrefix
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).WithHashKeyPrefix
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithRangeKey*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithRangeKey
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_EntityTypeBuilder_1_WithRangeKey__1_System_Linq_Expressions_Expression_System_Func__0___0___
+  name: WithRangeKey
+  nameWithType: EntityTypeBuilder<TEntity>.WithRangeKey
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.WithRangeKey
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).WithRangeKey
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).WithRangeKey
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithRangeKeyPrefix*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithRangeKeyPrefix
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_EntityTypeBuilder_1_WithRangeKeyPrefix_System_String_
+  name: WithRangeKeyPrefix
+  nameWithType: EntityTypeBuilder<TEntity>.WithRangeKeyPrefix
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.WithRangeKeyPrefix
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).WithRangeKeyPrefix
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).WithRangeKeyPrefix
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithEntityType*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.WithEntityType
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_EntityTypeBuilder_1_WithEntityType__1_System_Linq_Expressions_Expression_System_Func__0___0___
+  name: WithEntityType
+  nameWithType: EntityTypeBuilder<TEntity>.WithEntityType
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.WithEntityType
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).WithEntityType
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).WithEntityType
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Property*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Property
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_EntityTypeBuilder_1_Property__1_System_Linq_Expressions_Expression_System_Func__0___0___
+  name: Property
+  nameWithType: EntityTypeBuilder<TEntity>.Property
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.Property
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).Property
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).Property
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Ignore*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.Ignore
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_EntityTypeBuilder_1_Ignore__1_System_Linq_Expressions_Expression_System_Func__0___0___
+  name: Ignore
+  nameWithType: EntityTypeBuilder<TEntity>.Ignore
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.Ignore
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).Ignore
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).Ignore
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.AutoMap*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.AutoMap
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_EntityTypeBuilder_1_AutoMap_System_Boolean_
+  name: AutoMap
+  nameWithType: EntityTypeBuilder<TEntity>.AutoMap
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.AutoMap
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).AutoMap
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).AutoMap
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.GetProperties*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.GetProperties
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_EntityTypeBuilder_1_GetProperties
+  name: GetProperties
+  nameWithType: EntityTypeBuilder<TEntity>.GetProperties
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.GetProperties
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).GetProperties
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).GetProperties
+- uid: System.Collections.Generic.IReadOnlyCollection{Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder{{TEntity}}}
+  commentId: T:System.Collections.Generic.IReadOnlyCollection{Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder{`0}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<PropertyTypeBuilder<TEntity>>
+  nameWithType: IReadOnlyCollection<PropertyTypeBuilder<TEntity>>
+  fullName: System.Collections.Generic.IReadOnlyCollection<Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder<TEntity>>
+  nameWithType.vb: IReadOnlyCollection(Of PropertyTypeBuilder(Of TEntity))
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of TEntity))
+  name.vb: IReadOnlyCollection(Of PropertyTypeBuilder(Of TEntity))
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1
+    name: PropertyTypeBuilder
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder-1.html
+  - name: <
+  - name: TEntity
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1
+    name: PropertyTypeBuilder
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyCollection`1
+  commentId: T:System.Collections.Generic.IReadOnlyCollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<T>
+  nameWithType: IReadOnlyCollection<T>
+  fullName: System.Collections.Generic.IReadOnlyCollection<T>
+  nameWithType.vb: IReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of T)
+  name.vb: IReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.GetProperty*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.GetProperty
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_EntityTypeBuilder_1_GetProperty_System_String_
+  name: GetProperty
+  nameWithType: EntityTypeBuilder<TEntity>.GetProperty
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.GetProperty
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).GetProperty
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).GetProperty

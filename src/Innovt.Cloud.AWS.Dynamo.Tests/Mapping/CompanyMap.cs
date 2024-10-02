@@ -21,7 +21,7 @@ public class CompanyMap : IEntityTypeDataModelMapper<Company>
 
         builder.Property(p => p.Name).AsDecimal().WithColumnName("Name2");
         builder.Property("Name").AsDecimal();
-        
+
         builder.WithTableName(nameof(Company));
     }
 }

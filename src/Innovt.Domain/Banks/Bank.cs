@@ -23,7 +23,7 @@ public class Bank : ValueObject
 
     /// <summary>
     ///     Gets or sets the routing number of the bank.
-    /// </summary
+    /// </summary>
     public string RoutingNumber { get; set; }
 
     /// <summary>

@@ -3,9 +3,12 @@
 // Project: Innovt.Core
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace Innovt.Core.Utilities.Mapper;
 
@@ -27,23 +30,30 @@ public static class SimpleMapper
         if (input == null)
             return default;
 
-        var properties = input.GetType()
+        // Get properties from both input and output
+        var inputProperties = input.GetType()
             .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.IgnoreCase);
         var outputType = output.GetType();
         var outputProperties = outputType
             .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.IgnoreCase);
 
-        foreach (var property in properties)
+        foreach (var property in inputProperties)
         {
-            var outProperty =
-                outputProperties.LastOrDefault(p => p.Name == property.Name && p.PropertyType == property.PropertyType);
+            // Select the most derived version of the output property (the one closest to the derived class)
+            var outProperty = outputProperties
+                .LastOrDefault(p => p.Name == property.Name && p.PropertyType == property.PropertyType);
 
-            if (outProperty != null && outProperty.PropertyType == property.PropertyType)
+            if (outProperty != null)
+            {
+                // Set the value on the output object
                 outProperty.SetValue(output, property.GetValue(input, null), null);
+            }
         }
 
         return output;
     }
+
+    
 
     /// <summary>
     ///     Maps the properties from the input object to a new instance of the output object type.
@@ -52,14 +62,14 @@ public static class SimpleMapper
     /// <typeparam name="T2">The type of the output object.</typeparam>
     /// <param name="input">The input object to map from.</param>
     /// <returns>A new instance of the output object type with properties mapped from the input object.</returns>
-    public static T2 Map<T1, T2>(T1 input) where T1 : class
+    public static T2 Map<T1, T2>(T1 input) where T1 : class where T2 : class
     {
         if (input == null)
             return default;
 
-        var output = Activator.CreateInstance<T2>();
-
-        return MapProperties(input, output);
+        var output = CreateFactory<T2>();
+        
+        return MapProperties(input, output());
     }
 
     /// <summary>
@@ -69,7 +79,7 @@ public static class SimpleMapper
     /// <typeparam name="T2">The type of the output object.</typeparam>
     /// <param name="inputInstance">The input object to map from.</param>
     /// <param name="outputInstance">The output object to map to.</param>
-    public static void Map<T1, T2>(T1 inputInstance, T2 outputInstance) where T1 : class
+    public static void Map<T1, T2>(T1 inputInstance, T2 outputInstance) where T1 : class where T2:class
     {
         if (inputInstance is null || outputInstance is null)
             return;
@@ -88,9 +98,9 @@ public static class SimpleMapper
         if (inputInstance is null)
             return default;
 
-        var outputInstance = Activator.CreateInstance<T1>();
-
-        return MapProperties(inputInstance, outputInstance);
+        var outputInstance =  CreateFactory<T1>();
+        
+        return MapProperties(inputInstance, outputInstance());
     }
 
     /// <summary>
@@ -104,14 +114,41 @@ public static class SimpleMapper
         if (inputInstance is null)
             return new List<T1>();
 
-        var result = new List<T1>();
+        var factory = CreateFactory<T1>();
+        
+        var result = new ConcurrentBag<T1>();
 
-        foreach (var item in inputInstance)
+        Parallel.ForEach(inputInstance, item =>
         {
-            var outputInstance = Activator.CreateInstance<T1>();
+            if (item == null) return;
+
+            var outputInstance = factory();
             result.Add(MapProperties(item, outputInstance));
+        });
+
+        return result.ToList();
+    }
+
+    /// <summary>
+    /// Perform a cache of the compiled expression to create instances of T
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    /// <exception cref="InvalidOperationException"></exception>
+    private static Func<T> CreateFactory<T>() where T : class
+    {
+        // Use compiled expression to create instances of T
+        var ctor = typeof(T).GetConstructor(Type.EmptyTypes);
+        
+        if (ctor == null)
+        {
+            throw new InvalidOperationException($"Type {typeof(T)} does not have a parameterless constructor.");
         }
 
-        return result;
+        var newExpr = Expression.New(ctor);
+        var lambda = Expression.Lambda<Func<T>>(newExpr);
+        
+        return lambda.Compile();
     }
+    
 }

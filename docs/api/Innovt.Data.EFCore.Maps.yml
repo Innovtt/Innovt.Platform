@@ -1,0 +1,65 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Data.EFCore.Maps
+  commentId: N:Innovt.Data.EFCore.Maps
+  id: Innovt.Data.EFCore.Maps
+  children:
+  - Innovt.Data.EFCore.Maps.AddressMap
+  - Innovt.Data.EFCore.Maps.AddressTypeMap
+  - Innovt.Data.EFCore.Maps.BaseUserMap
+  - Innovt.Data.EFCore.Maps.CityMap
+  - Innovt.Data.EFCore.Maps.CountryMap
+  - Innovt.Data.EFCore.Maps.DocumentMap
+  - Innovt.Data.EFCore.Maps.DocumentTypeMap
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Data.EFCore.Maps
+  nameWithType: Innovt.Data.EFCore.Maps
+  fullName: Innovt.Data.EFCore.Maps
+  type: Namespace
+  assemblies:
+  - Innovt.Data.EFCore
+references:
+- uid: Innovt.Data.EFCore.Maps.AddressMap
+  commentId: T:Innovt.Data.EFCore.Maps.AddressMap
+  href: Innovt.Data.EFCore.Maps.AddressMap.html
+  name: AddressMap
+  nameWithType: AddressMap
+  fullName: Innovt.Data.EFCore.Maps.AddressMap
+- uid: Innovt.Data.EFCore.Maps.AddressTypeMap
+  commentId: T:Innovt.Data.EFCore.Maps.AddressTypeMap
+  href: Innovt.Data.EFCore.Maps.AddressTypeMap.html
+  name: AddressTypeMap
+  nameWithType: AddressTypeMap
+  fullName: Innovt.Data.EFCore.Maps.AddressTypeMap
+- uid: Innovt.Data.EFCore.Maps.BaseUserMap
+  commentId: T:Innovt.Data.EFCore.Maps.BaseUserMap
+  href: Innovt.Data.EFCore.Maps.BaseUserMap.html
+  name: BaseUserMap
+  nameWithType: BaseUserMap
+  fullName: Innovt.Data.EFCore.Maps.BaseUserMap
+- uid: Innovt.Data.EFCore.Maps.CityMap
+  commentId: T:Innovt.Data.EFCore.Maps.CityMap
+  href: Innovt.Data.EFCore.Maps.CityMap.html
+  name: CityMap
+  nameWithType: CityMap
+  fullName: Innovt.Data.EFCore.Maps.CityMap
+- uid: Innovt.Data.EFCore.Maps.CountryMap
+  commentId: T:Innovt.Data.EFCore.Maps.CountryMap
+  href: Innovt.Data.EFCore.Maps.CountryMap.html
+  name: CountryMap
+  nameWithType: CountryMap
+  fullName: Innovt.Data.EFCore.Maps.CountryMap
+- uid: Innovt.Data.EFCore.Maps.DocumentMap
+  commentId: T:Innovt.Data.EFCore.Maps.DocumentMap
+  href: Innovt.Data.EFCore.Maps.DocumentMap.html
+  name: DocumentMap
+  nameWithType: DocumentMap
+  fullName: Innovt.Data.EFCore.Maps.DocumentMap
+- uid: Innovt.Data.EFCore.Maps.DocumentTypeMap
+  commentId: T:Innovt.Data.EFCore.Maps.DocumentTypeMap
+  href: Innovt.Data.EFCore.Maps.DocumentTypeMap.html
+  name: DocumentTypeMap
+  nameWithType: DocumentTypeMap
+  fullName: Innovt.Data.EFCore.Maps.DocumentTypeMap

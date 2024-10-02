@@ -1,0 +1,75 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Core.Http
+  commentId: N:Innovt.Core.Http
+  id: Innovt.Core.Http
+  children:
+  - Innovt.Core.Http.Extensions
+  - Innovt.Core.Http.HttpConnection
+  - Innovt.Core.Http.HttpException
+  - Innovt.Core.Http.HttpRequestDetail
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Core.Http
+  nameWithType: Innovt.Core.Http
+  fullName: Innovt.Core.Http
+  type: Namespace
+  assemblies:
+  - Innovt.Core
+references:
+- uid: Innovt.Core.Http.Extensions
+  commentId: T:Innovt.Core.Http.Extensions
+  href: Innovt.Core.Http.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Http.Extensions
+- uid: Innovt.Core.Http.HttpConnection
+  commentId: T:Innovt.Core.Http.HttpConnection
+  href: Innovt.Core.Http.HttpConnection.html
+  name: HttpConnection
+  nameWithType: HttpConnection
+  fullName: Innovt.Core.Http.HttpConnection
+- uid: Innovt.Core.Http.HttpException
+  commentId: T:Innovt.Core.Http.HttpException
+  href: Innovt.Core.Http.HttpException.html
+  name: HttpException
+  nameWithType: HttpException
+  fullName: Innovt.Core.Http.HttpException
+- uid: Innovt.Core.Http.HttpRequestDetail
+  commentId: T:Innovt.Core.Http.HttpRequestDetail
+  parent: Innovt.Core.Http
+  href: Innovt.Core.Http.HttpRequestDetail.html
+  name: HttpRequestDetail
+  nameWithType: HttpRequestDetail
+  fullName: Innovt.Core.Http.HttpRequestDetail
+- uid: Innovt.Core.Http
+  commentId: N:Innovt.Core.Http
+  href: Innovt.html
+  name: Innovt.Core.Http
+  nameWithType: Innovt.Core.Http
+  fullName: Innovt.Core.Http
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Http
+    name: Http
+    href: Innovt.Core.Http.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Http
+    name: Http
+    href: Innovt.Core.Http.html

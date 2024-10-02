@@ -1,0 +1,137 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+  commentId: N:Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+  id: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+  children:
+  - Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDataServiceMock`1
+  - Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock`1
+  - Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IServiceMock
+  - Innovt.Cloud.AWS.Lambda.Kinesis.Tests.KinesisProcessorTests
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+  nameWithType: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+  type: Namespace
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+references:
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDataServiceMock`1
+  commentId: T:Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDataServiceMock`1
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDataServiceMock-1.html
+  name: IDataServiceMock<T>
+  nameWithType: IDataServiceMock<T>
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDataServiceMock<T>
+  nameWithType.vb: IDataServiceMock(Of T)
+  fullName.vb: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDataServiceMock(Of T)
+  name.vb: IDataServiceMock(Of T)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDataServiceMock`1
+    name: IDataServiceMock
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDataServiceMock-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDataServiceMock`1
+    name: IDataServiceMock
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDataServiceMock-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock`1
+  commentId: T:Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock`1
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock-1.html
+  name: IDomainEventServiceMock<T>
+  nameWithType: IDomainEventServiceMock<T>
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock<T>
+  nameWithType.vb: IDomainEventServiceMock(Of T)
+  fullName.vb: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock(Of T)
+  name.vb: IDomainEventServiceMock(Of T)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock`1
+    name: IDomainEventServiceMock
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock`1
+    name: IDomainEventServiceMock
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IServiceMock
+  commentId: T:Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IServiceMock
+  parent: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IServiceMock.html
+  name: IServiceMock
+  nameWithType: IServiceMock
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IServiceMock
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.KinesisProcessorTests
+  commentId: T:Innovt.Cloud.AWS.Lambda.Kinesis.Tests.KinesisProcessorTests
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.KinesisProcessorTests.html
+  name: KinesisProcessorTests
+  nameWithType: KinesisProcessorTests
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.KinesisProcessorTests
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+  commentId: N:Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+  nameWithType: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda
+    name: Lambda
+    href: Innovt.Cloud.AWS.Lambda.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis
+    name: Kinesis
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+    name: Tests
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda
+    name: Lambda
+    href: Innovt.Cloud.AWS.Lambda.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis
+    name: Kinesis
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
+    name: Tests
+    href: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.html

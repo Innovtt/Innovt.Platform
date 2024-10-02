@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.Lambda.CustomRuntime
+  commentId: N:Innovt.Cloud.AWS.Lambda.CustomRuntime
+  id: Innovt.Cloud.AWS.Lambda.CustomRuntime
+  children:
+  - Innovt.Cloud.AWS.Lambda.CustomRuntime.Bootstrap
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Cloud.AWS.Lambda.CustomRuntime
+  nameWithType: Innovt.Cloud.AWS.Lambda.CustomRuntime
+  fullName: Innovt.Cloud.AWS.Lambda.CustomRuntime
+  type: Namespace
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.CustomRuntime
+references:
+- uid: Innovt.Cloud.AWS.Lambda.CustomRuntime.Bootstrap
+  commentId: T:Innovt.Cloud.AWS.Lambda.CustomRuntime.Bootstrap
+  href: Innovt.Cloud.AWS.Lambda.CustomRuntime.Bootstrap.html
+  name: Bootstrap
+  nameWithType: Bootstrap
+  fullName: Innovt.Cloud.AWS.Lambda.CustomRuntime.Bootstrap

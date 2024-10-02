@@ -73,10 +73,13 @@ public class ExtensionsTests
 
 
         Assert.That(invoiceDtoPagedCollection, Is.Not.Null);
-        Assert.That(invoiceDtoPagedCollection.Page, Is.EqualTo(invoicePagedConnection.Page));
-        Assert.That(invoiceDtoPagedCollection.PageSize, Is.EqualTo(invoicePagedConnection.PageSize));
-        Assert.That(invoiceDtoPagedCollection.TotalRecords, Is.EqualTo(invoicePagedConnection.TotalRecords));
-        Assert.That(invoiceDtoPagedCollection.Items, Has.Exactly(1).Items);
+        Assert.Multiple(() =>
+        {
+            Assert.That(invoiceDtoPagedCollection.Page, Is.EqualTo(invoicePagedConnection.Page));
+            Assert.That(invoiceDtoPagedCollection.PageSize, Is.EqualTo(invoicePagedConnection.PageSize));
+            Assert.That(invoiceDtoPagedCollection.TotalRecords, Is.EqualTo(invoicePagedConnection.TotalRecords));
+            Assert.That(invoiceDtoPagedCollection.Items, Has.Exactly(1).Items);
+        });
 
         var invoiceDto = invoiceDtoPagedCollection.Items.SingleOrDefault();
         Assert.That(invoiceDto, Is.Not.Null);

@@ -27,7 +27,7 @@ public class DBContext : DBContextBase
     ///     Initializes a new instance of the <see cref="DBContext" /> class using a data source and logger factory.
     /// </summary>
     /// <param name="dataSource">The data source to use.</param>
-    /// <param name="loggerFactory">The logger factory to use.</param
+    /// <param name="loggerFactory">The logger factory to use.</param>
     protected DBContext(IDataSource dataSource, ILoggerFactory loggerFactory) : base(dataSource, loggerFactory)
     {
     }

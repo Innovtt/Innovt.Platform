@@ -1,0 +1,1214 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Core.Test.MultiLayerCacheServiceTests
+  commentId: T:Innovt.Core.Test.MultiLayerCacheServiceTests
+  id: MultiLayerCacheServiceTests
+  parent: Innovt.Core.Test
+  children:
+  - Innovt.Core.Test.MultiLayerCacheServiceTests.Factory(System.Threading.CancellationToken)
+  - Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueOrCreate
+  - Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueReturnDefaultIfKeyDoesNotExist
+  - Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueThrowExceptionIfKeyIsNullOrEmpty
+  - Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueWithFactoryReturnsFactoryValue
+  - Innovt.Core.Test.MultiLayerCacheServiceTests.Remove
+  - Innovt.Core.Test.MultiLayerCacheServiceTests.SetValue
+  - Innovt.Core.Test.MultiLayerCacheServiceTests.SetValueThrowExceptionIfKeyIsNullOrEmpty
+  - Innovt.Core.Test.MultiLayerCacheServiceTests.SetValueWithSecondsShouldReturnNullTask
+  - Innovt.Core.Test.MultiLayerCacheServiceTests.Setup
+  - Innovt.Core.Test.MultiLayerCacheServiceTests.TearDown
+  langs:
+  - csharp
+  - vb
+  name: MultiLayerCacheServiceTests
+  nameWithType: MultiLayerCacheServiceTests
+  fullName: Innovt.Core.Test.MultiLayerCacheServiceTests
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Core.Test/MultiLayerCacheServiceTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: MultiLayerCacheServiceTests
+    path: ../src/Innovt.Core.Test/MultiLayerCacheServiceTests.cs
+    startLine: 16
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: >-
+      [TestFixture]
+
+      public class MultiLayerCacheServiceTests
+    content.vb: >-
+      <TestFixture>
+
+      Public Class MultiLayerCacheServiceTests
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  attributes:
+  - type: NUnit.Framework.TestFixtureAttribute
+    ctor: NUnit.Framework.TestFixtureAttribute.#ctor
+    arguments: []
+- uid: Innovt.Core.Test.MultiLayerCacheServiceTests.Setup
+  commentId: M:Innovt.Core.Test.MultiLayerCacheServiceTests.Setup
+  id: Setup
+  parent: Innovt.Core.Test.MultiLayerCacheServiceTests
+  langs:
+  - csharp
+  - vb
+  name: Setup()
+  nameWithType: MultiLayerCacheServiceTests.Setup()
+  fullName: Innovt.Core.Test.MultiLayerCacheServiceTests.Setup()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core.Test/MultiLayerCacheServiceTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Setup
+    path: ../src/Innovt.Core.Test/MultiLayerCacheServiceTests.cs
+    startLine: 19
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: >-
+      [SetUp]
+
+      public void Setup()
+    content.vb: >-
+      <SetUp>
+
+      Public Sub Setup()
+  overload: Innovt.Core.Test.MultiLayerCacheServiceTests.Setup*
+  attributes:
+  - type: NUnit.Framework.SetUpAttribute
+    ctor: NUnit.Framework.SetUpAttribute.#ctor
+    arguments: []
+- uid: Innovt.Core.Test.MultiLayerCacheServiceTests.TearDown
+  commentId: M:Innovt.Core.Test.MultiLayerCacheServiceTests.TearDown
+  id: TearDown
+  parent: Innovt.Core.Test.MultiLayerCacheServiceTests
+  langs:
+  - csharp
+  - vb
+  name: TearDown()
+  nameWithType: MultiLayerCacheServiceTests.TearDown()
+  fullName: Innovt.Core.Test.MultiLayerCacheServiceTests.TearDown()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core.Test/MultiLayerCacheServiceTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: TearDown
+    path: ../src/Innovt.Core.Test/MultiLayerCacheServiceTests.cs
+    startLine: 30
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: >-
+      [TearDown]
+
+      public void TearDown()
+    content.vb: >-
+      <TearDown>
+
+      Public Sub TearDown()
+  overload: Innovt.Core.Test.MultiLayerCacheServiceTests.TearDown*
+  attributes:
+  - type: NUnit.Framework.TearDownAttribute
+    ctor: NUnit.Framework.TearDownAttribute.#ctor
+    arguments: []
+- uid: Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueThrowExceptionIfKeyIsNullOrEmpty
+  commentId: M:Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueThrowExceptionIfKeyIsNullOrEmpty
+  id: GetValueThrowExceptionIfKeyIsNullOrEmpty
+  parent: Innovt.Core.Test.MultiLayerCacheServiceTests
+  langs:
+  - csharp
+  - vb
+  name: GetValueThrowExceptionIfKeyIsNullOrEmpty()
+  nameWithType: MultiLayerCacheServiceTests.GetValueThrowExceptionIfKeyIsNullOrEmpty()
+  fullName: Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueThrowExceptionIfKeyIsNullOrEmpty()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core.Test/MultiLayerCacheServiceTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: GetValueThrowExceptionIfKeyIsNullOrEmpty
+    path: ../src/Innovt.Core.Test/MultiLayerCacheServiceTests.cs
+    startLine: 40
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: >-
+      [Test]
+
+      public void GetValueThrowExceptionIfKeyIsNullOrEmpty()
+    content.vb: >-
+      <Test>
+
+      Public Sub GetValueThrowExceptionIfKeyIsNullOrEmpty()
+  overload: Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueThrowExceptionIfKeyIsNullOrEmpty*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+- uid: Innovt.Core.Test.MultiLayerCacheServiceTests.SetValueThrowExceptionIfKeyIsNullOrEmpty
+  commentId: M:Innovt.Core.Test.MultiLayerCacheServiceTests.SetValueThrowExceptionIfKeyIsNullOrEmpty
+  id: SetValueThrowExceptionIfKeyIsNullOrEmpty
+  parent: Innovt.Core.Test.MultiLayerCacheServiceTests
+  langs:
+  - csharp
+  - vb
+  name: SetValueThrowExceptionIfKeyIsNullOrEmpty()
+  nameWithType: MultiLayerCacheServiceTests.SetValueThrowExceptionIfKeyIsNullOrEmpty()
+  fullName: Innovt.Core.Test.MultiLayerCacheServiceTests.SetValueThrowExceptionIfKeyIsNullOrEmpty()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core.Test/MultiLayerCacheServiceTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: SetValueThrowExceptionIfKeyIsNullOrEmpty
+    path: ../src/Innovt.Core.Test/MultiLayerCacheServiceTests.cs
+    startLine: 53
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: >-
+      [Test]
+
+      public void SetValueThrowExceptionIfKeyIsNullOrEmpty()
+    content.vb: >-
+      <Test>
+
+      Public Sub SetValueThrowExceptionIfKeyIsNullOrEmpty()
+  overload: Innovt.Core.Test.MultiLayerCacheServiceTests.SetValueThrowExceptionIfKeyIsNullOrEmpty*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+- uid: Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueReturnDefaultIfKeyDoesNotExist
+  commentId: M:Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueReturnDefaultIfKeyDoesNotExist
+  id: GetValueReturnDefaultIfKeyDoesNotExist
+  parent: Innovt.Core.Test.MultiLayerCacheServiceTests
+  langs:
+  - csharp
+  - vb
+  name: GetValueReturnDefaultIfKeyDoesNotExist()
+  nameWithType: MultiLayerCacheServiceTests.GetValueReturnDefaultIfKeyDoesNotExist()
+  fullName: Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueReturnDefaultIfKeyDoesNotExist()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core.Test/MultiLayerCacheServiceTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: GetValueReturnDefaultIfKeyDoesNotExist
+    path: ../src/Innovt.Core.Test/MultiLayerCacheServiceTests.cs
+    startLine: 60
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: >-
+      [Test]
+
+      public void GetValueReturnDefaultIfKeyDoesNotExist()
+    content.vb: >-
+      <Test>
+
+      Public Sub GetValueReturnDefaultIfKeyDoesNotExist()
+  overload: Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueReturnDefaultIfKeyDoesNotExist*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+- uid: Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueWithFactoryReturnsFactoryValue
+  commentId: M:Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueWithFactoryReturnsFactoryValue
+  id: GetValueWithFactoryReturnsFactoryValue
+  parent: Innovt.Core.Test.MultiLayerCacheServiceTests
+  langs:
+  - csharp
+  - vb
+  name: GetValueWithFactoryReturnsFactoryValue()
+  nameWithType: MultiLayerCacheServiceTests.GetValueWithFactoryReturnsFactoryValue()
+  fullName: Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueWithFactoryReturnsFactoryValue()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core.Test/MultiLayerCacheServiceTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: GetValueWithFactoryReturnsFactoryValue
+    path: ../src/Innovt.Core.Test/MultiLayerCacheServiceTests.cs
+    startLine: 73
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: >-
+      [Test]
+
+      public Task GetValueWithFactoryReturnsFactoryValue()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: >-
+      <Test>
+
+      Public Function GetValueWithFactoryReturnsFactoryValue() As Task
+  overload: Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueWithFactoryReturnsFactoryValue*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+- uid: Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueOrCreate
+  commentId: M:Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueOrCreate
+  id: GetValueOrCreate
+  parent: Innovt.Core.Test.MultiLayerCacheServiceTests
+  langs:
+  - csharp
+  - vb
+  name: GetValueOrCreate()
+  nameWithType: MultiLayerCacheServiceTests.GetValueOrCreate()
+  fullName: Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueOrCreate()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core.Test/MultiLayerCacheServiceTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: GetValueOrCreate
+    path: ../src/Innovt.Core.Test/MultiLayerCacheServiceTests.cs
+    startLine: 83
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: >-
+      [Test]
+
+      public Task GetValueOrCreate()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: >-
+      <Test>
+
+      Public Function GetValueOrCreate() As Task
+  overload: Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueOrCreate*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+- uid: Innovt.Core.Test.MultiLayerCacheServiceTests.Factory(System.Threading.CancellationToken)
+  commentId: M:Innovt.Core.Test.MultiLayerCacheServiceTests.Factory(System.Threading.CancellationToken)
+  id: Factory(System.Threading.CancellationToken)
+  parent: Innovt.Core.Test.MultiLayerCacheServiceTests
+  langs:
+  - csharp
+  - vb
+  name: Factory(CancellationToken)
+  nameWithType: MultiLayerCacheServiceTests.Factory(CancellationToken)
+  fullName: Innovt.Core.Test.MultiLayerCacheServiceTests.Factory(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core.Test/MultiLayerCacheServiceTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Factory
+    path: ../src/Innovt.Core.Test/MultiLayerCacheServiceTests.cs
+    startLine: 104
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: public static Task<A> Factory(CancellationToken arg)
+    parameters:
+    - id: arg
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{Innovt.Core.Test.Models.A}
+    content.vb: Public Shared Function Factory(arg As CancellationToken) As Task(Of A)
+  overload: Innovt.Core.Test.MultiLayerCacheServiceTests.Factory*
+- uid: Innovt.Core.Test.MultiLayerCacheServiceTests.SetValue
+  commentId: M:Innovt.Core.Test.MultiLayerCacheServiceTests.SetValue
+  id: SetValue
+  parent: Innovt.Core.Test.MultiLayerCacheServiceTests
+  langs:
+  - csharp
+  - vb
+  name: SetValue()
+  nameWithType: MultiLayerCacheServiceTests.SetValue()
+  fullName: Innovt.Core.Test.MultiLayerCacheServiceTests.SetValue()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core.Test/MultiLayerCacheServiceTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: SetValue
+    path: ../src/Innovt.Core.Test/MultiLayerCacheServiceTests.cs
+    startLine: 112
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: >-
+      [Test]
+
+      public void SetValue()
+    content.vb: >-
+      <Test>
+
+      Public Sub SetValue()
+  overload: Innovt.Core.Test.MultiLayerCacheServiceTests.SetValue*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+- uid: Innovt.Core.Test.MultiLayerCacheServiceTests.SetValueWithSecondsShouldReturnNullTask
+  commentId: M:Innovt.Core.Test.MultiLayerCacheServiceTests.SetValueWithSecondsShouldReturnNullTask
+  id: SetValueWithSecondsShouldReturnNullTask
+  parent: Innovt.Core.Test.MultiLayerCacheServiceTests
+  langs:
+  - csharp
+  - vb
+  name: SetValueWithSecondsShouldReturnNullTask()
+  nameWithType: MultiLayerCacheServiceTests.SetValueWithSecondsShouldReturnNullTask()
+  fullName: Innovt.Core.Test.MultiLayerCacheServiceTests.SetValueWithSecondsShouldReturnNullTask()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core.Test/MultiLayerCacheServiceTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: SetValueWithSecondsShouldReturnNullTask
+    path: ../src/Innovt.Core.Test/MultiLayerCacheServiceTests.cs
+    startLine: 125
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: >-
+      [Test]
+
+      public void SetValueWithSecondsShouldReturnNullTask()
+    content.vb: >-
+      <Test>
+
+      Public Sub SetValueWithSecondsShouldReturnNullTask()
+  overload: Innovt.Core.Test.MultiLayerCacheServiceTests.SetValueWithSecondsShouldReturnNullTask*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+- uid: Innovt.Core.Test.MultiLayerCacheServiceTests.Remove
+  commentId: M:Innovt.Core.Test.MultiLayerCacheServiceTests.Remove
+  id: Remove
+  parent: Innovt.Core.Test.MultiLayerCacheServiceTests
+  langs:
+  - csharp
+  - vb
+  name: Remove()
+  nameWithType: MultiLayerCacheServiceTests.Remove()
+  fullName: Innovt.Core.Test.MultiLayerCacheServiceTests.Remove()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Core.Test/MultiLayerCacheServiceTests.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Remove
+    path: ../src/Innovt.Core.Test/MultiLayerCacheServiceTests.cs
+    startLine: 142
+  assemblies:
+  - Innovt.Core.Test
+  namespace: Innovt.Core.Test
+  syntax:
+    content: >-
+      [Test]
+
+      public void Remove()
+    content.vb: >-
+      <Test>
+
+      Public Sub Remove()
+  overload: Innovt.Core.Test.MultiLayerCacheServiceTests.Remove*
+  attributes:
+  - type: NUnit.Framework.TestAttribute
+    ctor: NUnit.Framework.TestAttribute.#ctor
+    arguments: []
+references:
+- uid: Innovt.Core.Test
+  commentId: N:Innovt.Core.Test
+  href: Innovt.html
+  name: Innovt.Core.Test
+  nameWithType: Innovt.Core.Test
+  fullName: Innovt.Core.Test
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Test
+    name: Test
+    href: Innovt.Core.Test.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Test
+    name: Test
+    href: Innovt.Core.Test.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Core.Test.MultiLayerCacheServiceTests.Setup*
+  commentId: Overload:Innovt.Core.Test.MultiLayerCacheServiceTests.Setup
+  href: Innovt.Core.Test.MultiLayerCacheServiceTests.html#Innovt_Core_Test_MultiLayerCacheServiceTests_Setup
+  name: Setup
+  nameWithType: MultiLayerCacheServiceTests.Setup
+  fullName: Innovt.Core.Test.MultiLayerCacheServiceTests.Setup
+- uid: Innovt.Core.Test.MultiLayerCacheServiceTests.TearDown*
+  commentId: Overload:Innovt.Core.Test.MultiLayerCacheServiceTests.TearDown
+  href: Innovt.Core.Test.MultiLayerCacheServiceTests.html#Innovt_Core_Test_MultiLayerCacheServiceTests_TearDown
+  name: TearDown
+  nameWithType: MultiLayerCacheServiceTests.TearDown
+  fullName: Innovt.Core.Test.MultiLayerCacheServiceTests.TearDown
+- uid: Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueThrowExceptionIfKeyIsNullOrEmpty*
+  commentId: Overload:Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueThrowExceptionIfKeyIsNullOrEmpty
+  href: Innovt.Core.Test.MultiLayerCacheServiceTests.html#Innovt_Core_Test_MultiLayerCacheServiceTests_GetValueThrowExceptionIfKeyIsNullOrEmpty
+  name: GetValueThrowExceptionIfKeyIsNullOrEmpty
+  nameWithType: MultiLayerCacheServiceTests.GetValueThrowExceptionIfKeyIsNullOrEmpty
+  fullName: Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueThrowExceptionIfKeyIsNullOrEmpty
+- uid: Innovt.Core.Test.MultiLayerCacheServiceTests.SetValueThrowExceptionIfKeyIsNullOrEmpty*
+  commentId: Overload:Innovt.Core.Test.MultiLayerCacheServiceTests.SetValueThrowExceptionIfKeyIsNullOrEmpty
+  href: Innovt.Core.Test.MultiLayerCacheServiceTests.html#Innovt_Core_Test_MultiLayerCacheServiceTests_SetValueThrowExceptionIfKeyIsNullOrEmpty
+  name: SetValueThrowExceptionIfKeyIsNullOrEmpty
+  nameWithType: MultiLayerCacheServiceTests.SetValueThrowExceptionIfKeyIsNullOrEmpty
+  fullName: Innovt.Core.Test.MultiLayerCacheServiceTests.SetValueThrowExceptionIfKeyIsNullOrEmpty
+- uid: Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueReturnDefaultIfKeyDoesNotExist*
+  commentId: Overload:Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueReturnDefaultIfKeyDoesNotExist
+  href: Innovt.Core.Test.MultiLayerCacheServiceTests.html#Innovt_Core_Test_MultiLayerCacheServiceTests_GetValueReturnDefaultIfKeyDoesNotExist
+  name: GetValueReturnDefaultIfKeyDoesNotExist
+  nameWithType: MultiLayerCacheServiceTests.GetValueReturnDefaultIfKeyDoesNotExist
+  fullName: Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueReturnDefaultIfKeyDoesNotExist
+- uid: Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueWithFactoryReturnsFactoryValue*
+  commentId: Overload:Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueWithFactoryReturnsFactoryValue
+  href: Innovt.Core.Test.MultiLayerCacheServiceTests.html#Innovt_Core_Test_MultiLayerCacheServiceTests_GetValueWithFactoryReturnsFactoryValue
+  name: GetValueWithFactoryReturnsFactoryValue
+  nameWithType: MultiLayerCacheServiceTests.GetValueWithFactoryReturnsFactoryValue
+  fullName: Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueWithFactoryReturnsFactoryValue
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueOrCreate*
+  commentId: Overload:Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueOrCreate
+  href: Innovt.Core.Test.MultiLayerCacheServiceTests.html#Innovt_Core_Test_MultiLayerCacheServiceTests_GetValueOrCreate
+  name: GetValueOrCreate
+  nameWithType: MultiLayerCacheServiceTests.GetValueOrCreate
+  fullName: Innovt.Core.Test.MultiLayerCacheServiceTests.GetValueOrCreate
+- uid: Innovt.Core.Test.MultiLayerCacheServiceTests.Factory*
+  commentId: Overload:Innovt.Core.Test.MultiLayerCacheServiceTests.Factory
+  href: Innovt.Core.Test.MultiLayerCacheServiceTests.html#Innovt_Core_Test_MultiLayerCacheServiceTests_Factory_System_Threading_CancellationToken_
+  name: Factory
+  nameWithType: MultiLayerCacheServiceTests.Factory
+  fullName: Innovt.Core.Test.MultiLayerCacheServiceTests.Factory
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{Innovt.Core.Test.Models.A}
+  commentId: T:System.Threading.Tasks.Task{Innovt.Core.Test.Models.A}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<A>
+  nameWithType: Task<A>
+  fullName: System.Threading.Tasks.Task<Innovt.Core.Test.Models.A>
+  nameWithType.vb: Task(Of A)
+  fullName.vb: System.Threading.Tasks.Task(Of Innovt.Core.Test.Models.A)
+  name.vb: Task(Of A)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Innovt.Core.Test.Models.A
+    name: A
+    href: Innovt.Core.Test.Models.A.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Core.Test.Models.A
+    name: A
+    href: Innovt.Core.Test.Models.A.html
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: Innovt.Core.Test.MultiLayerCacheServiceTests.SetValue*
+  commentId: Overload:Innovt.Core.Test.MultiLayerCacheServiceTests.SetValue
+  href: Innovt.Core.Test.MultiLayerCacheServiceTests.html#Innovt_Core_Test_MultiLayerCacheServiceTests_SetValue
+  name: SetValue
+  nameWithType: MultiLayerCacheServiceTests.SetValue
+  fullName: Innovt.Core.Test.MultiLayerCacheServiceTests.SetValue
+- uid: Innovt.Core.Test.MultiLayerCacheServiceTests.SetValueWithSecondsShouldReturnNullTask*
+  commentId: Overload:Innovt.Core.Test.MultiLayerCacheServiceTests.SetValueWithSecondsShouldReturnNullTask
+  href: Innovt.Core.Test.MultiLayerCacheServiceTests.html#Innovt_Core_Test_MultiLayerCacheServiceTests_SetValueWithSecondsShouldReturnNullTask
+  name: SetValueWithSecondsShouldReturnNullTask
+  nameWithType: MultiLayerCacheServiceTests.SetValueWithSecondsShouldReturnNullTask
+  fullName: Innovt.Core.Test.MultiLayerCacheServiceTests.SetValueWithSecondsShouldReturnNullTask
+- uid: Innovt.Core.Test.MultiLayerCacheServiceTests.Remove*
+  commentId: Overload:Innovt.Core.Test.MultiLayerCacheServiceTests.Remove
+  href: Innovt.Core.Test.MultiLayerCacheServiceTests.html#Innovt_Core_Test_MultiLayerCacheServiceTests_Remove
+  name: Remove
+  nameWithType: MultiLayerCacheServiceTests.Remove
+  fullName: Innovt.Core.Test.MultiLayerCacheServiceTests.Remove

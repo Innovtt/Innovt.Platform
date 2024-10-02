@@ -18,10 +18,10 @@ public class UserMap : IEntityTypeDataModelMapper<User>
     {
         builder.AutoMap().WithDefaultKeys().WithTableName("Users", "#");
         builder.WithHashKey().SetDynamicValue(u => "USER#" + u.Id);
-        
+
         builder.WithRangeKey().WithValue("PROFILE");
         builder.Property(u => u.Email).WithMaxLength(50).IsRequired();
-        
+
         builder.WithHashKeyPrefix("USER");
     }
 }

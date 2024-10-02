@@ -1,0 +1,844 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Notification.Core.Builders.MessageBuilderAB
+  commentId: T:Innovt.Notification.Core.Builders.MessageBuilderAB
+  id: MessageBuilderAB
+  parent: Innovt.Notification.Core.Builders
+  children:
+  - Innovt.Notification.Core.Builders.MessageBuilderAB.#ctor(Innovt.Notification.Core.Template.ITemplateParser)
+  - Innovt.Notification.Core.Builders.MessageBuilderAB.Build(Innovt.Notification.Core.Domain.NotificationTemplate,Innovt.Notification.Core.Domain.NotificationRequest)
+  - Innovt.Notification.Core.Builders.MessageBuilderAB.ParseMessage(Innovt.Notification.Core.Domain.NotificationMessage,System.Object)
+  langs:
+  - csharp
+  - vb
+  name: MessageBuilderAB
+  nameWithType: MessageBuilderAB
+  fullName: Innovt.Notification.Core.Builders.MessageBuilderAB
+  type: Class
+  source:
+    remote:
+      path: src/Innovt.Notification.Core/Builders/MessageBuilderAB.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: MessageBuilderAB
+    path: ../src/Innovt.Notification.Core/Builders/MessageBuilderAB.cs
+    startLine: 13
+  assemblies:
+  - Innovt.Notification.Core
+  namespace: Innovt.Notification.Core.Builders
+  summary: Abstract base class for message builders.
+  example: []
+  syntax:
+    content: public abstract class MessageBuilderAB
+    content.vb: Public MustInherit Class MessageBuilderAB
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+- uid: Innovt.Notification.Core.Builders.MessageBuilderAB.#ctor(Innovt.Notification.Core.Template.ITemplateParser)
+  commentId: M:Innovt.Notification.Core.Builders.MessageBuilderAB.#ctor(Innovt.Notification.Core.Template.ITemplateParser)
+  id: '#ctor(Innovt.Notification.Core.Template.ITemplateParser)'
+  parent: Innovt.Notification.Core.Builders.MessageBuilderAB
+  langs:
+  - csharp
+  - vb
+  name: MessageBuilderAB(ITemplateParser)
+  nameWithType: MessageBuilderAB.MessageBuilderAB(ITemplateParser)
+  fullName: Innovt.Notification.Core.Builders.MessageBuilderAB.MessageBuilderAB(Innovt.Notification.Core.Template.ITemplateParser)
+  type: Constructor
+  source:
+    remote:
+      path: src/Innovt.Notification.Core/Builders/MessageBuilderAB.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: .ctor
+    path: ../src/Innovt.Notification.Core/Builders/MessageBuilderAB.cs
+    startLine: 21
+  assemblies:
+  - Innovt.Notification.Core
+  namespace: Innovt.Notification.Core.Builders
+  summary: Initializes a new instance of the <xref href="Innovt.Notification.Core.Builders.MessageBuilderAB" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: protected MessageBuilderAB(ITemplateParser parser)
+    parameters:
+    - id: parser
+      type: Innovt.Notification.Core.Template.ITemplateParser
+      description: The template parser.
+    content.vb: Protected Sub New(parser As ITemplateParser)
+  overload: Innovt.Notification.Core.Builders.MessageBuilderAB.#ctor*
+  nameWithType.vb: MessageBuilderAB.New(ITemplateParser)
+  fullName.vb: Innovt.Notification.Core.Builders.MessageBuilderAB.New(Innovt.Notification.Core.Template.ITemplateParser)
+  name.vb: New(ITemplateParser)
+- uid: Innovt.Notification.Core.Builders.MessageBuilderAB.Build(Innovt.Notification.Core.Domain.NotificationTemplate,Innovt.Notification.Core.Domain.NotificationRequest)
+  commentId: M:Innovt.Notification.Core.Builders.MessageBuilderAB.Build(Innovt.Notification.Core.Domain.NotificationTemplate,Innovt.Notification.Core.Domain.NotificationRequest)
+  id: Build(Innovt.Notification.Core.Domain.NotificationTemplate,Innovt.Notification.Core.Domain.NotificationRequest)
+  parent: Innovt.Notification.Core.Builders.MessageBuilderAB
+  langs:
+  - csharp
+  - vb
+  name: Build(NotificationTemplate, NotificationRequest)
+  nameWithType: MessageBuilderAB.Build(NotificationTemplate, NotificationRequest)
+  fullName: Innovt.Notification.Core.Builders.MessageBuilderAB.Build(Innovt.Notification.Core.Domain.NotificationTemplate, Innovt.Notification.Core.Domain.NotificationRequest)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Notification.Core/Builders/MessageBuilderAB.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: Build
+    path: ../src/Innovt.Notification.Core/Builders/MessageBuilderAB.cs
+    startLine: 32
+  assemblies:
+  - Innovt.Notification.Core
+  namespace: Innovt.Notification.Core.Builders
+  summary: Builds a notification message based on the provided notification template and request.
+  example: []
+  syntax:
+    content: public virtual NotificationMessage Build(NotificationTemplate template, NotificationRequest request)
+    parameters:
+    - id: template
+      type: Innovt.Notification.Core.Domain.NotificationTemplate
+      description: The notification template.
+    - id: request
+      type: Innovt.Notification.Core.Domain.NotificationRequest
+      description: The notification request.
+    return:
+      type: Innovt.Notification.Core.Domain.NotificationMessage
+      description: The built notification message.
+    content.vb: Public Overridable Function Build(template As NotificationTemplate, request As NotificationRequest) As NotificationMessage
+  overload: Innovt.Notification.Core.Builders.MessageBuilderAB.Build*
+- uid: Innovt.Notification.Core.Builders.MessageBuilderAB.ParseMessage(Innovt.Notification.Core.Domain.NotificationMessage,System.Object)
+  commentId: M:Innovt.Notification.Core.Builders.MessageBuilderAB.ParseMessage(Innovt.Notification.Core.Domain.NotificationMessage,System.Object)
+  id: ParseMessage(Innovt.Notification.Core.Domain.NotificationMessage,System.Object)
+  parent: Innovt.Notification.Core.Builders.MessageBuilderAB
+  langs:
+  - csharp
+  - vb
+  name: ParseMessage(NotificationMessage, object)
+  nameWithType: MessageBuilderAB.ParseMessage(NotificationMessage, object)
+  fullName: Innovt.Notification.Core.Builders.MessageBuilderAB.ParseMessage(Innovt.Notification.Core.Domain.NotificationMessage, object)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Notification.Core/Builders/MessageBuilderAB.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ParseMessage
+    path: ../src/Innovt.Notification.Core/Builders/MessageBuilderAB.cs
+    startLine: 58
+  assemblies:
+  - Innovt.Notification.Core
+  namespace: Innovt.Notification.Core.Builders
+  summary: Parses the notification message content using the provided payload.
+  example: []
+  syntax:
+    content: protected virtual void ParseMessage(NotificationMessage message, object payLoad)
+    parameters:
+    - id: message
+      type: Innovt.Notification.Core.Domain.NotificationMessage
+    - id: payLoad
+      type: System.Object
+    content.vb: Protected Overridable Sub ParseMessage(message As NotificationMessage, payLoad As Object)
+  overload: Innovt.Notification.Core.Builders.MessageBuilderAB.ParseMessage*
+  nameWithType.vb: MessageBuilderAB.ParseMessage(NotificationMessage, Object)
+  fullName.vb: Innovt.Notification.Core.Builders.MessageBuilderAB.ParseMessage(Innovt.Notification.Core.Domain.NotificationMessage, Object)
+  name.vb: ParseMessage(NotificationMessage, Object)
+references:
+- uid: Innovt.Notification.Core.Builders
+  commentId: N:Innovt.Notification.Core.Builders
+  href: Innovt.html
+  name: Innovt.Notification.Core.Builders
+  nameWithType: Innovt.Notification.Core.Builders
+  fullName: Innovt.Notification.Core.Builders
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Notification
+    name: Notification
+    href: Innovt.Notification.html
+  - name: .
+  - uid: Innovt.Notification.Core
+    name: Core
+    href: Innovt.Notification.Core.html
+  - name: .
+  - uid: Innovt.Notification.Core.Builders
+    name: Builders
+    href: Innovt.Notification.Core.Builders.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Notification
+    name: Notification
+    href: Innovt.Notification.html
+  - name: .
+  - uid: Innovt.Notification.Core
+    name: Core
+    href: Innovt.Notification.Core.html
+  - name: .
+  - uid: Innovt.Notification.Core.Builders
+    name: Builders
+    href: Innovt.Notification.Core.Builders.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.IsNull
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  parent: Innovt.Core.Utilities.Extensions
+  definition: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  parent: Innovt.Core.Utilities.Mapper.SimpleMapper
+  definition: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  name: IsNull(object)
+  nameWithType: Extensions.IsNull(object)
+  fullName: Innovt.Core.Utilities.Extensions.IsNull(object)
+  nameWithType.vb: Extensions.IsNull(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.IsNull(Object)
+  name.vb: IsNull(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.IsNull(System.Object)
+    name: IsNull
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Extensions
+  commentId: T:Innovt.Core.Utilities.Extensions
+  parent: Innovt.Core.Utilities
+  href: Innovt.Core.Utilities.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.Utilities.Extensions
+- uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  commentId: M:Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  name: ToStringOrDefault(object)
+  nameWithType: Extensions.ToStringOrDefault(object)
+  fullName: Innovt.Core.Utilities.Extensions.ToStringOrDefault(object)
+  nameWithType.vb: Extensions.ToStringOrDefault(Object)
+  fullName.vb: Innovt.Core.Utilities.Extensions.ToStringOrDefault(Object)
+  name.vb: ToStringOrDefault(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Extensions.ToStringOrDefault(System.Object)
+    name: ToStringOrDefault
+    href: Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  commentId: M:Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+  isExternal: true
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  name: MapTo<T1>(object)
+  nameWithType: SimpleMapper.MapTo<T1>(object)
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo<T1>(object)
+  nameWithType.vb: SimpleMapper.MapTo(Of T1)(Object)
+  fullName.vb: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo(Of T1)(Object)
+  name.vb: MapTo(Of T1)(Object)
+  spec.csharp:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: <
+  - name: T1
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1(System.Object)
+    name: MapTo
+    href: Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Innovt.Core.Utilities.Mapper.SimpleMapper
+  commentId: T:Innovt.Core.Utilities.Mapper.SimpleMapper
+  parent: Innovt.Core.Utilities.Mapper
+  href: Innovt.Core.Utilities.Mapper.SimpleMapper.html
+  name: SimpleMapper
+  nameWithType: SimpleMapper
+  fullName: Innovt.Core.Utilities.Mapper.SimpleMapper
+- uid: Innovt.Core.Utilities
+  commentId: N:Innovt.Core.Utilities
+  href: Innovt.html
+  name: Innovt.Core.Utilities
+  nameWithType: Innovt.Core.Utilities
+  fullName: Innovt.Core.Utilities
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+- uid: Innovt.Core.Utilities.Mapper
+  commentId: N:Innovt.Core.Utilities.Mapper
+  href: Innovt.html
+  name: Innovt.Core.Utilities.Mapper
+  nameWithType: Innovt.Core.Utilities.Mapper
+  fullName: Innovt.Core.Utilities.Mapper
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.Utilities
+    name: Utilities
+    href: Innovt.Core.Utilities.html
+  - name: .
+  - uid: Innovt.Core.Utilities.Mapper
+    name: Mapper
+    href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Notification.Core.Builders.MessageBuilderAB
+  commentId: T:Innovt.Notification.Core.Builders.MessageBuilderAB
+  href: Innovt.Notification.Core.Builders.MessageBuilderAB.html
+  name: MessageBuilderAB
+  nameWithType: MessageBuilderAB
+  fullName: Innovt.Notification.Core.Builders.MessageBuilderAB
+- uid: Innovt.Notification.Core.Builders.MessageBuilderAB.#ctor*
+  commentId: Overload:Innovt.Notification.Core.Builders.MessageBuilderAB.#ctor
+  href: Innovt.Notification.Core.Builders.MessageBuilderAB.html#Innovt_Notification_Core_Builders_MessageBuilderAB__ctor_Innovt_Notification_Core_Template_ITemplateParser_
+  name: MessageBuilderAB
+  nameWithType: MessageBuilderAB.MessageBuilderAB
+  fullName: Innovt.Notification.Core.Builders.MessageBuilderAB.MessageBuilderAB
+  nameWithType.vb: MessageBuilderAB.New
+  fullName.vb: Innovt.Notification.Core.Builders.MessageBuilderAB.New
+  name.vb: New
+- uid: Innovt.Notification.Core.Template.ITemplateParser
+  commentId: T:Innovt.Notification.Core.Template.ITemplateParser
+  parent: Innovt.Notification.Core.Template
+  href: Innovt.Notification.Core.Template.ITemplateParser.html
+  name: ITemplateParser
+  nameWithType: ITemplateParser
+  fullName: Innovt.Notification.Core.Template.ITemplateParser
+- uid: Innovt.Notification.Core.Template
+  commentId: N:Innovt.Notification.Core.Template
+  href: Innovt.html
+  name: Innovt.Notification.Core.Template
+  nameWithType: Innovt.Notification.Core.Template
+  fullName: Innovt.Notification.Core.Template
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Notification
+    name: Notification
+    href: Innovt.Notification.html
+  - name: .
+  - uid: Innovt.Notification.Core
+    name: Core
+    href: Innovt.Notification.Core.html
+  - name: .
+  - uid: Innovt.Notification.Core.Template
+    name: Template
+    href: Innovt.Notification.Core.Template.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Notification
+    name: Notification
+    href: Innovt.Notification.html
+  - name: .
+  - uid: Innovt.Notification.Core
+    name: Core
+    href: Innovt.Notification.Core.html
+  - name: .
+  - uid: Innovt.Notification.Core.Template
+    name: Template
+    href: Innovt.Notification.Core.Template.html
+- uid: Innovt.Notification.Core.Builders.MessageBuilderAB.Build*
+  commentId: Overload:Innovt.Notification.Core.Builders.MessageBuilderAB.Build
+  href: Innovt.Notification.Core.Builders.MessageBuilderAB.html#Innovt_Notification_Core_Builders_MessageBuilderAB_Build_Innovt_Notification_Core_Domain_NotificationTemplate_Innovt_Notification_Core_Domain_NotificationRequest_
+  name: Build
+  nameWithType: MessageBuilderAB.Build
+  fullName: Innovt.Notification.Core.Builders.MessageBuilderAB.Build
+- uid: Innovt.Notification.Core.Domain.NotificationTemplate
+  commentId: T:Innovt.Notification.Core.Domain.NotificationTemplate
+  parent: Innovt.Notification.Core.Domain
+  href: Innovt.Notification.Core.Domain.NotificationTemplate.html
+  name: NotificationTemplate
+  nameWithType: NotificationTemplate
+  fullName: Innovt.Notification.Core.Domain.NotificationTemplate
+- uid: Innovt.Notification.Core.Domain.NotificationRequest
+  commentId: T:Innovt.Notification.Core.Domain.NotificationRequest
+  parent: Innovt.Notification.Core.Domain
+  href: Innovt.Notification.Core.Domain.NotificationRequest.html
+  name: NotificationRequest
+  nameWithType: NotificationRequest
+  fullName: Innovt.Notification.Core.Domain.NotificationRequest
+- uid: Innovt.Notification.Core.Domain.NotificationMessage
+  commentId: T:Innovt.Notification.Core.Domain.NotificationMessage
+  parent: Innovt.Notification.Core.Domain
+  href: Innovt.Notification.Core.Domain.NotificationMessage.html
+  name: NotificationMessage
+  nameWithType: NotificationMessage
+  fullName: Innovt.Notification.Core.Domain.NotificationMessage
+- uid: Innovt.Notification.Core.Domain
+  commentId: N:Innovt.Notification.Core.Domain
+  href: Innovt.html
+  name: Innovt.Notification.Core.Domain
+  nameWithType: Innovt.Notification.Core.Domain
+  fullName: Innovt.Notification.Core.Domain
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Notification
+    name: Notification
+    href: Innovt.Notification.html
+  - name: .
+  - uid: Innovt.Notification.Core
+    name: Core
+    href: Innovt.Notification.Core.html
+  - name: .
+  - uid: Innovt.Notification.Core.Domain
+    name: Domain
+    href: Innovt.Notification.Core.Domain.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Notification
+    name: Notification
+    href: Innovt.Notification.html
+  - name: .
+  - uid: Innovt.Notification.Core
+    name: Core
+    href: Innovt.Notification.Core.html
+  - name: .
+  - uid: Innovt.Notification.Core.Domain
+    name: Domain
+    href: Innovt.Notification.Core.Domain.html
+- uid: Innovt.Notification.Core.Builders.MessageBuilderAB.ParseMessage*
+  commentId: Overload:Innovt.Notification.Core.Builders.MessageBuilderAB.ParseMessage
+  href: Innovt.Notification.Core.Builders.MessageBuilderAB.html#Innovt_Notification_Core_Builders_MessageBuilderAB_ParseMessage_Innovt_Notification_Core_Domain_NotificationMessage_System_Object_
+  name: ParseMessage
+  nameWithType: MessageBuilderAB.ParseMessage
+  fullName: Innovt.Notification.Core.Builders.MessageBuilderAB.ParseMessage

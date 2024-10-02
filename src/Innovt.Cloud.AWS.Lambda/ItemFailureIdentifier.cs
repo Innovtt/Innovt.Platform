@@ -11,10 +11,8 @@ namespace Innovt.Cloud.AWS.Lambda;
 /// </summary>
 public sealed class ItemFailureIdentifier
 {
-    // <summary>
-    /// Initializes a new instance of the
-    /// <see cref="ItemFailureIdentifier" />
-    /// class with the specified item identifier.
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="ItemFailureIdentifier" />class with the specified item identifier.
     /// </summary>
     /// <param name="itemIdentifier">The identifier of the failed item.</param>
     public ItemFailureIdentifier(string itemIdentifier)

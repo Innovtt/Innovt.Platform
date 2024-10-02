@@ -22,7 +22,8 @@ public class PropertyTypeBuilder<T>
     /// <param name="propertyName">The function to retrieve the property name.</param>
     /// <param name="propertyType">The type of the property.</param>
     /// <param name="builder">This is the main build to help the user with fluent api</param>
-    public PropertyTypeBuilder(Func<T, string> propertyName, Type propertyType,EntityTypeBuilder<T> builder) : this(propertyName,builder)
+    public PropertyTypeBuilder(Func<T, string> propertyName, Type propertyType, EntityTypeBuilder<T> builder) : this(
+        propertyName, builder)
     {
         Type = propertyType;
     }
@@ -39,9 +40,9 @@ public class PropertyTypeBuilder<T>
         Builder = builder;
     }
 
-   
+
     public EntityTypeBuilder<T> Builder { get; set; }
-    
+
     /// <summary>
     ///     Gets a value if the field is required.
     /// </summary>
@@ -171,7 +172,7 @@ public class PropertyTypeBuilder<T>
     public PropertyTypeBuilder<T> WithMap(Action<T> parserDelegate)
     {
         if (parserDelegate == null) throw new ArgumentNullException(nameof(parserDelegate));
-  
+
         mapActions.Add(parserDelegate);
 
         return this;
@@ -189,12 +190,14 @@ public class PropertyTypeBuilder<T>
         return this;
     }
 
-    public void InvokeMaps(T entity)
+    public PropertyTypeBuilder<T> InvokeMaps(T entity)
     {
         if (!HasMapAction)
-            return;
+            return this;
 
         foreach (var action in mapActions) action(entity);
+
+        return this;
     }
 
     /// <summary>

@@ -1,0 +1,84 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Core.CrossCutting.Ioc
+  commentId: N:Innovt.Core.CrossCutting.Ioc
+  id: Innovt.Core.CrossCutting.Ioc
+  children:
+  - Innovt.Core.CrossCutting.Ioc.Extensions
+  - Innovt.Core.CrossCutting.Ioc.IContainer
+  - Innovt.Core.CrossCutting.Ioc.IocLocator
+  - Innovt.Core.CrossCutting.Ioc.IocModule
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Core.CrossCutting.Ioc
+  nameWithType: Innovt.Core.CrossCutting.Ioc
+  fullName: Innovt.Core.CrossCutting.Ioc
+  type: Namespace
+  assemblies:
+  - Innovt.Core
+references:
+- uid: Innovt.Core.CrossCutting.Ioc.Extensions
+  commentId: T:Innovt.Core.CrossCutting.Ioc.Extensions
+  href: Innovt.Core.CrossCutting.Ioc.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Innovt.Core.CrossCutting.Ioc.Extensions
+- uid: Innovt.Core.CrossCutting.Ioc.IContainer
+  commentId: T:Innovt.Core.CrossCutting.Ioc.IContainer
+  parent: Innovt.Core.CrossCutting.Ioc
+  href: Innovt.Core.CrossCutting.Ioc.IContainer.html
+  name: IContainer
+  nameWithType: IContainer
+  fullName: Innovt.Core.CrossCutting.Ioc.IContainer
+- uid: Innovt.Core.CrossCutting.Ioc.IocLocator
+  commentId: T:Innovt.Core.CrossCutting.Ioc.IocLocator
+  href: Innovt.Core.CrossCutting.Ioc.IocLocator.html
+  name: IocLocator
+  nameWithType: IocLocator
+  fullName: Innovt.Core.CrossCutting.Ioc.IocLocator
+- uid: Innovt.Core.CrossCutting.Ioc.IocModule
+  commentId: T:Innovt.Core.CrossCutting.Ioc.IocModule
+  parent: Innovt.Core.CrossCutting.Ioc
+  href: Innovt.Core.CrossCutting.Ioc.IocModule.html
+  name: IocModule
+  nameWithType: IocModule
+  fullName: Innovt.Core.CrossCutting.Ioc.IocModule
+- uid: Innovt.Core.CrossCutting.Ioc
+  commentId: N:Innovt.Core.CrossCutting.Ioc
+  href: Innovt.html
+  name: Innovt.Core.CrossCutting.Ioc
+  nameWithType: Innovt.Core.CrossCutting.Ioc
+  fullName: Innovt.Core.CrossCutting.Ioc
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Ioc
+    name: Ioc
+    href: Innovt.Core.CrossCutting.Ioc.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Core
+    name: Core
+    href: Innovt.Core.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting
+    name: CrossCutting
+    href: Innovt.Core.CrossCutting.html
+  - name: .
+  - uid: Innovt.Core.CrossCutting.Ioc
+    name: Ioc
+    href: Innovt.Core.CrossCutting.Ioc.html

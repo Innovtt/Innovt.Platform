@@ -1,0 +1,69 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.AspNetCore.Model
+  commentId: N:Innovt.AspNetCore.Model
+  id: Innovt.AspNetCore.Model
+  children:
+  - Innovt.AspNetCore.Model.DefaultApiDocumentation
+  - Innovt.AspNetCore.Model.DefaultApiLocalization
+  - Innovt.AspNetCore.Model.ResponseError
+  langs:
+  - csharp
+  - vb
+  name: Innovt.AspNetCore.Model
+  nameWithType: Innovt.AspNetCore.Model
+  fullName: Innovt.AspNetCore.Model
+  type: Namespace
+  assemblies:
+  - Innovt.AspNetCore
+references:
+- uid: Innovt.AspNetCore.Model.DefaultApiDocumentation
+  commentId: T:Innovt.AspNetCore.Model.DefaultApiDocumentation
+  parent: Innovt.AspNetCore.Model
+  href: Innovt.AspNetCore.Model.DefaultApiDocumentation.html
+  name: DefaultApiDocumentation
+  nameWithType: DefaultApiDocumentation
+  fullName: Innovt.AspNetCore.Model.DefaultApiDocumentation
+- uid: Innovt.AspNetCore.Model.DefaultApiLocalization
+  commentId: T:Innovt.AspNetCore.Model.DefaultApiLocalization
+  parent: Innovt.AspNetCore.Model
+  href: Innovt.AspNetCore.Model.DefaultApiLocalization.html
+  name: DefaultApiLocalization
+  nameWithType: DefaultApiLocalization
+  fullName: Innovt.AspNetCore.Model.DefaultApiLocalization
+- uid: Innovt.AspNetCore.Model.ResponseError
+  commentId: T:Innovt.AspNetCore.Model.ResponseError
+  href: Innovt.AspNetCore.Model.ResponseError.html
+  name: ResponseError
+  nameWithType: ResponseError
+  fullName: Innovt.AspNetCore.Model.ResponseError
+- uid: Innovt.AspNetCore.Model
+  commentId: N:Innovt.AspNetCore.Model
+  href: Innovt.html
+  name: Innovt.AspNetCore.Model
+  nameWithType: Innovt.AspNetCore.Model
+  fullName: Innovt.AspNetCore.Model
+  spec.csharp:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.AspNetCore
+    name: AspNetCore
+    href: Innovt.AspNetCore.html
+  - name: .
+  - uid: Innovt.AspNetCore.Model
+    name: Model
+    href: Innovt.AspNetCore.Model.html
+  spec.vb:
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.AspNetCore
+    name: AspNetCore
+    href: Innovt.AspNetCore.html
+  - name: .
+  - uid: Innovt.AspNetCore.Model
+    name: Model
+    href: Innovt.AspNetCore.Model.html

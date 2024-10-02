@@ -1,0 +1,58 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Handlers
+  commentId: N:Innovt.Cloud.AWS.Lambda.Cognito.Handlers
+  id: Innovt.Cloud.AWS.Lambda.Cognito.Handlers
+  children:
+  - Innovt.Cloud.AWS.Lambda.Cognito.Handlers.CreateAuthChallengeHandler
+  - Innovt.Cloud.AWS.Lambda.Cognito.Handlers.DefineAuthChallengeHandler
+  - Innovt.Cloud.AWS.Lambda.Cognito.Handlers.PostConfirmationHandler
+  - Innovt.Cloud.AWS.Lambda.Cognito.Handlers.PreSignupHandler
+  - Innovt.Cloud.AWS.Lambda.Cognito.Handlers.PreTokenGenerationHandler
+  - Innovt.Cloud.AWS.Lambda.Cognito.Handlers.VerifyAuthChallengeHandler
+  langs:
+  - csharp
+  - vb
+  name: Innovt.Cloud.AWS.Lambda.Cognito.Handlers
+  nameWithType: Innovt.Cloud.AWS.Lambda.Cognito.Handlers
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Handlers
+  type: Namespace
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Cognito
+references:
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Handlers.CreateAuthChallengeHandler
+  commentId: T:Innovt.Cloud.AWS.Lambda.Cognito.Handlers.CreateAuthChallengeHandler
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Handlers.CreateAuthChallengeHandler.html
+  name: CreateAuthChallengeHandler
+  nameWithType: CreateAuthChallengeHandler
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Handlers.CreateAuthChallengeHandler
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Handlers.DefineAuthChallengeHandler
+  commentId: T:Innovt.Cloud.AWS.Lambda.Cognito.Handlers.DefineAuthChallengeHandler
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Handlers.DefineAuthChallengeHandler.html
+  name: DefineAuthChallengeHandler
+  nameWithType: DefineAuthChallengeHandler
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Handlers.DefineAuthChallengeHandler
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Handlers.PostConfirmationHandler
+  commentId: T:Innovt.Cloud.AWS.Lambda.Cognito.Handlers.PostConfirmationHandler
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Handlers.PostConfirmationHandler.html
+  name: PostConfirmationHandler
+  nameWithType: PostConfirmationHandler
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Handlers.PostConfirmationHandler
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Handlers.PreSignupHandler
+  commentId: T:Innovt.Cloud.AWS.Lambda.Cognito.Handlers.PreSignupHandler
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Handlers.PreSignupHandler.html
+  name: PreSignupHandler
+  nameWithType: PreSignupHandler
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Handlers.PreSignupHandler
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Handlers.PreTokenGenerationHandler
+  commentId: T:Innovt.Cloud.AWS.Lambda.Cognito.Handlers.PreTokenGenerationHandler
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Handlers.PreTokenGenerationHandler.html
+  name: PreTokenGenerationHandler
+  nameWithType: PreTokenGenerationHandler
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Handlers.PreTokenGenerationHandler
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Handlers.VerifyAuthChallengeHandler
+  commentId: T:Innovt.Cloud.AWS.Lambda.Cognito.Handlers.VerifyAuthChallengeHandler
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Handlers.VerifyAuthChallengeHandler.html
+  name: VerifyAuthChallengeHandler
+  nameWithType: VerifyAuthChallengeHandler
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Handlers.VerifyAuthChallengeHandler
