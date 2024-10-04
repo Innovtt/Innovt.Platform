@@ -95,6 +95,4 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
 
         return Fail("Invalid user or password");
     }
-
- 
 }

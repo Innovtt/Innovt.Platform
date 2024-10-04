@@ -48,7 +48,7 @@ public class DefaultAwsConfiguration : IAwsConfiguration
 
         var section = configuration.GetSection(sectionName);
 
-        if (section == null || !section.Exists()) 
+        if (section == null || !section.Exists())
             throw new CriticalException($"Section {sectionName} not Found!");
 
         section.Bind(this);

@@ -2,9 +2,8 @@
 // Author: Michel Borges
 // Project: Innovt.Data.Ado.Tests
 
-namespace Innovt.Data.Ado.Tests.Model
+namespace Innovt.Data.Ado.Tests.Model;
+
+public class User
 {
-    public class User
-    {
-    }
 }

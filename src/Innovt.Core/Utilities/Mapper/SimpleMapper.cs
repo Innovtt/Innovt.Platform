@@ -44,16 +44,13 @@ public static class SimpleMapper
                 .LastOrDefault(p => p.Name == property.Name && p.PropertyType == property.PropertyType);
 
             if (outProperty != null)
-            {
                 // Set the value on the output object
                 outProperty.SetValue(output, property.GetValue(input, null), null);
-            }
         }
 
         return output;
     }
 
-    
 
     /// <summary>
     ///     Maps the properties from the input object to a new instance of the output object type.
@@ -68,7 +65,7 @@ public static class SimpleMapper
             return default;
 
         var output = CreateFactory<T2>();
-        
+
         return MapProperties(input, output());
     }
 
@@ -79,7 +76,7 @@ public static class SimpleMapper
     /// <typeparam name="T2">The type of the output object.</typeparam>
     /// <param name="inputInstance">The input object to map from.</param>
     /// <param name="outputInstance">The output object to map to.</param>
-    public static void Map<T1, T2>(T1 inputInstance, T2 outputInstance) where T1 : class where T2:class
+    public static void Map<T1, T2>(T1 inputInstance, T2 outputInstance) where T1 : class where T2 : class
     {
         if (inputInstance is null || outputInstance is null)
             return;
@@ -98,8 +95,8 @@ public static class SimpleMapper
         if (inputInstance is null)
             return default;
 
-        var outputInstance =  CreateFactory<T1>();
-        
+        var outputInstance = CreateFactory<T1>();
+
         return MapProperties(inputInstance, outputInstance());
     }
 
@@ -115,7 +112,7 @@ public static class SimpleMapper
             return new List<T1>();
 
         var factory = CreateFactory<T1>();
-        
+
         var result = new ConcurrentBag<T1>();
 
         Parallel.ForEach(inputInstance, item =>
@@ -130,7 +127,7 @@ public static class SimpleMapper
     }
 
     /// <summary>
-    /// Perform a cache of the compiled expression to create instances of T
+    ///     Perform a cache of the compiled expression to create instances of T
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
@@ -139,16 +136,13 @@ public static class SimpleMapper
     {
         // Use compiled expression to create instances of T
         var ctor = typeof(T).GetConstructor(Type.EmptyTypes);
-        
+
         if (ctor == null)
-        {
             throw new InvalidOperationException($"Type {typeof(T)} does not have a parameterless constructor.");
-        }
 
         var newExpr = Expression.New(ctor);
         var lambda = Expression.Lambda<Func<T>>(newExpr);
-        
+
         return lambda.Compile();
     }
-    
 }

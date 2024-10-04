@@ -15,7 +15,7 @@ namespace Innovt.Domain.Core.Model;
 public abstract class Entity
 {
     private readonly List<DomainEvent> domainEvents;
-    private bool isNew = false;
+    private bool isNew;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="Entity" /> class.
@@ -45,9 +45,9 @@ public abstract class Entity
     ///     Gets or sets the date and time when the entity was created.
     /// </summary>
     public DateTimeOffset CreatedAt { get; set; }
-    
+
     /// <summary>
-    /// Gets or sets the date and time when the entity was last updated.
+    ///     Gets or sets the date and time when the entity was last updated.
     /// </summary>
     public DateTimeOffset UpdatedAt { get; set; }
 
@@ -59,8 +59,8 @@ public abstract class Entity
     {
         return Id == 0 || isNew;
     }
+
     /// <summary>
-    /// 
     /// </summary>
     /// <returns></returns>
     public Entity SetAsNew()
@@ -107,11 +107,11 @@ public abstract class Entity
     }
 }
 
-    /// <summary>
-    ///     Represents an abstract base class for entities in the domain model with a specific type for the identifier.
-    /// </summary>
-    /// <typeparam name="T">The type of the identifier.</typeparam>
-    public abstract class Entity<T> : Entity where T : struct
-    {
-        public new T Id { get; set; }
-    }
+/// <summary>
+///     Represents an abstract base class for entities in the domain model with a specific type for the identifier.
+/// </summary>
+/// <typeparam name="T">The type of the identifier.</typeparam>
+public abstract class Entity<T> : Entity where T : struct
+{
+    public new T Id { get; set; }
+}

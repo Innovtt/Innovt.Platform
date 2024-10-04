@@ -7,16 +7,16 @@ using Innovt.Data.Ado.Tests.Model;
 using Innovt.Data.DataSources;
 using NUnit.Framework;
 
-namespace Innovt.Data.Ado.Tests
+namespace Innovt.Data.Ado.Tests;
+
+[TestFixture]
+public class RepositoryBaseTests
 {
-    [TestFixture]
-    public class RepositoryBaseTests
+    [Test]
+    [Ignore("Only for Local Tests")]
+    public async Task Repository()
     {
-        [Test]
-        [Ignore("Only for Local Tests")]
-        public async Task Repository()
-        {
-            var query = @"SELECT a.*
+        var query = @"SELECT a.*
                                 FROM
                                   (SELECT DISTINCT ar.CorrelationId AS Id,
                                                    ar.Id AS Number,
@@ -64,14 +64,13 @@ namespace Innovt.Data.Ado.Tests
                                    WHERE c.NewId=@CompanyId ) a
                                 WHERE 1=1  ORDER BY a.CreatedOn DESC ";
 
-            var dataSource = new DataSourceReader("FakeDb", "Fake");
+        var dataSource = new DataSourceReader("FakeDb", "Fake");
 
-            var repo = new UserRepository(dataSource);
+        var repo = new UserRepository(dataSource);
 
 
-            var filter = new UserFilter();
+        var filter = new UserFilter();
 
-            var res = await repo.QueryPagedAsync<User>(query, filter).ConfigureAwait(false);
-        }
+        var res = await repo.QueryPagedAsync<User>(query, filter).ConfigureAwait(false);
     }
 }

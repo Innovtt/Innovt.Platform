@@ -49,3 +49,18 @@ jobs:
       - name: PushPackages
         if: github.ref == 'refs/heads/main'
         run: dotnet nuget push "${{ env.NuGetDirectory }}/*.nupkg"  --api-key ${{ secrets.NUGET_API_KEY }} --source "github" --skip-duplicate   
+      - name: GenerateDocs
+        if: github.ref == 'refs/heads/main'
+        working-directory: src
+        run: | 
+          dotnet tool update -g docfx
+          docfx /docs/docfx.json
+      - name: PublishDocs
+        uses: actions/upload-pages-artifact@v3
+        with:
+            # Upload entire repository
+            path: 'docs/_site'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+

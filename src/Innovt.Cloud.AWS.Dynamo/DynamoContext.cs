@@ -16,12 +16,21 @@ public abstract class DynamoContext
     private static readonly object ObjLock = new();
     private ModelBuilder modelBuilder = null!;
 
+
     protected DynamoContext()
     {
         BuildModel();
     }
 
+    /// <summary>
+    ///     Returns the entities that have been mapped.
+    /// </summary>
     public Dictionary<string, object> Entities => modelBuilder.Entities;
+
+    /// <summary>
+    ///     It tells the context to ignore null properties when saving an entity.
+    /// </summary>
+    public bool IgnoreNullValues { get; set; } = true;
 
     private void BuildModel()
     {

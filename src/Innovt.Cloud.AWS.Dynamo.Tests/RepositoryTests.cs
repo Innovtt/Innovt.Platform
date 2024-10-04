@@ -12,7 +12,7 @@ using NUnit.Framework;
 namespace Innovt.Cloud.AWS.Dynamo.Tests;
 
 [TestFixture]
-[Ignore("Only for local tests")]
+//[Ignore("Only for local tests")]
 public class RepositoryTests
 {
     [SetUp]
@@ -77,7 +77,7 @@ public class RepositoryTests
             //user2.Id = "59c6be94-eeea-4185-ab59-fc66207cf387";
             user2.FirstName = "Michel";
             user2.LastName = "Borges";
-
+            
             await repository.DeleteAsync(user2).ConfigureAwait(false);
 
             queryRequest = new QueryRequest
@@ -133,7 +133,7 @@ public class RepositoryTests
             var userId = "24a874d8-d0a1-7032-b572-3c3383ff4ba9";
             var userSortKey = "PROFILE";
 
-           var queryRequest = new QueryRequest
+            var queryRequest = new QueryRequest
             {
                 KeyConditionExpression = "PK=:pk AND SK=:sk",
                 Filter = new
@@ -167,7 +167,7 @@ public class RepositoryTests
             }
 
             await repository.AddListAsync(users).ConfigureAwait(false);
-            
+
             //scan all users
             var scanRequest = new ScanRequest
             {
@@ -230,11 +230,11 @@ public class RepositoryTests
             throw;
         }
     }
-    
-    
+
+
     [Test]
     public async Task QueryPaginatedBy()
-    {   
+    {
         try
         {
             var context = new SampleDynamoContext();
@@ -243,7 +243,7 @@ public class RepositoryTests
 
             repository = new SampleRepository(context, loggerMock, awsConfiguration);
 
-            
+
             var queryRequest = new QueryRequest
             {
                 KeyConditionExpression = "PK=:pk AND begins_with(SK,:sk)",
@@ -262,7 +262,6 @@ public class RepositoryTests
             var skills = await repository.QueryPaginatedByAsync<Skill>(queryRequest).ConfigureAwait(false);
 
             Assert.That(skills, Is.Not.Null);
-            
         }
         catch (Exception e)
         {

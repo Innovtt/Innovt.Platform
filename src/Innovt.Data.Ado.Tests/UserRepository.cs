@@ -7,22 +7,22 @@ using System.Text;
 using System.Threading.Tasks;
 using Innovt.Data.DataSources;
 
-namespace Innovt.Data.Ado.Tests
+namespace Innovt.Data.Ado.Tests;
+
+public class UserRepository : RepositoryBase
 {
-    public class UserRepository : RepositoryBase
+    public UserRepository(IDataSource datasource) : base(datasource)
     {
-        public UserRepository(IDataSource datasource) : base(datasource)
-        {
-        }
+    }
 
-        public UserRepository(IDataSource datasource, IConnectionFactory connectionFactory) : base(datasource,
-            connectionFactory)
-        {
-        }
+    public UserRepository(IDataSource datasource, IConnectionFactory connectionFactory) : base(datasource,
+        connectionFactory)
+    {
+    }
 
-        public async Task<IEnumerable<dynamic>> CountBy()
-        {
-            var query = new StringBuilder(@"SELECT 
+    public async Task<IEnumerable<dynamic>> CountBy()
+    {
+        var query = new StringBuilder(@"SELECT 
                             B.""Id"",
                             BG.""Name"" AS BuyerGroup,
                             BG.""Id"" AS BuyerGroupId,
@@ -39,12 +39,12 @@ namespace Innovt.Data.Ado.Tests
                         INNER JOIN public.""Configuration"" AS C ON B.""ConfigurationId"" = C.""Id""
                         WHERE 1=1  AND B.""Id""='ffc04a95-15d6-4a32-9dcc-381a996e37c5'");
 
-            return await QueryAsync<dynamic>(query.ToString()).ConfigureAwait(true);
-        }
+        return await QueryAsync<dynamic>(query.ToString()).ConfigureAwait(true);
+    }
 
-        public async Task<IEnumerable<dynamic>> GetAll()
-        {
-            var query = new StringBuilder(@"SELECT 
+    public async Task<IEnumerable<dynamic>> GetAll()
+    {
+        var query = new StringBuilder(@"SELECT 
                             B.""Id"",
                             BG.""Name"" AS BuyerGroup,
                             BG.""Id"" AS BuyerGroupId,
@@ -61,7 +61,6 @@ namespace Innovt.Data.Ado.Tests
                         INNER JOIN public.""Configuration"" AS C ON B.""ConfigurationId"" = C.""Id""
                         WHERE 1=1  AND B.""Id""='ffc04a95-15d6-4a32-9dcc-381a996e37c5'");
 
-            return await QueryAsync<dynamic>(query.ToString()).ConfigureAwait(true);
-        }
+        return await QueryAsync<dynamic>(query.ToString()).ConfigureAwait(true);
     }
 }

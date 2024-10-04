@@ -33,9 +33,9 @@ namespace Innovt.Cloud.AWS.Dynamo;
 public abstract class Repository : AwsBaseService, ITableRepository
 {
     //log constants 
-    private const string RequestId = "requestId";
-    private const string ConsumedCapacity = "consumedCapacity";
-    private const string StatusCode = "statusCode";
+    private const string RequestId = "RequestId";
+    private const string ConsumedCapacity = "ConsumedCapacity";
+    private const string StatusCode = "StatusCode";
 
     private static readonly ActivitySource ActivityRepository = new("Innovt.Cloud.AWS.Dynamo.Repository");
     private readonly DynamoContext context;
@@ -60,19 +60,20 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <returns>The response containing items of type T.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the SQL statement request is null.</exception>
     public async Task<ExecuteSqlStatementResponse<T>> ExecuteStatementAsync<T>(
-        ExecuteSqlStatementRequest sqlStatementRequest, CancellationToken cancellationToken = default) where T : class
+        ExecuteSqlStatementRequest sqlStatementRequest, CancellationToken cancellationToken = default)
+        where T : class, new()
     {
         if (sqlStatementRequest is null) throw new ArgumentNullException(nameof(sqlStatementRequest));
 
         using (ActivityRepository.StartActivity())
         {
-            var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                await DynamoClient.ExecuteStatementAsync(new ExecuteStatementRequest
+            var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(ct =>
+                DynamoClient.ExecuteStatementAsync(new ExecuteStatementRequest
                 {
                     ConsistentRead = sqlStatementRequest.ConsistentRead,
                     NextToken = sqlStatementRequest.NextToken,
                     Statement = sqlStatementRequest.Statment
-                }, cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
+                }, ct), cancellationToken).ConfigureAwait(false);
 
 
             if (response is null)
@@ -95,7 +96,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <returns>The list of items retrieved.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the batch get item request is null.</exception>
     public async Task<List<T>> BatchGetItem<T>(BatchGetItemRequest batchGetItemRequest,
-        CancellationToken cancellationToken = default) where T : class
+        CancellationToken cancellationToken = default) where T : class, new()
     {
         if (batchGetItemRequest is null) throw new ArgumentNullException(nameof(batchGetItemRequest));
 
@@ -103,8 +104,8 @@ public abstract class Repository : AwsBaseService, ITableRepository
         {
             var items = QueryHelper.CreateBatchGetItemRequest(batchGetItemRequest);
 
-            var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await DynamoClient.BatchGetItemAsync(items, cancellationToken).ConfigureAwait(false))
+            var response = await CreateDefaultRetryAsyncPolicy()
+                .ExecuteAsync(ct => DynamoClient.BatchGetItemAsync(items, ct), cancellationToken)
                 .ConfigureAwait(false);
 
             if (response.Responses is null)
@@ -119,25 +120,19 @@ public abstract class Repository : AwsBaseService, ITableRepository
         }
     }
 
-    public TransactionWriteItem CreateTransactionWriteItem<T>(T instance) where T : class
+    public TransactionWriteItem CreateTransactionWriteItem<T>(T instance) where T : class, new()
     {
         if (instance == null) throw new ArgumentNullException(nameof(instance));
-        
+
         var keys = TableHelper.ExtractKeyAttributeValueMap(instance, context);
         var attributes = AttributeConverter.ConvertToAttributeMap(instance, context);
-        
-        //Remove Key Attributes from Attributes
-        attributes = attributes.Where(x => 
-                    !keys.ContainsKey(x.Key))
-                    .ToDictionary(x => x.Key, x => x.Value);  
-        
-        return  new TransactionWriteItem
+
+        return new TransactionWriteItem
         {
             TableName = TableHelper.GetTableName<T>(context),
             Items = attributes,
             Keys = keys.ToDictionary(x =>
                 x.Key, x => (object)x.Value.S)
-            
         };
     }
 
@@ -163,8 +158,8 @@ public abstract class Repository : AwsBaseService, ITableRepository
         {
             var items = remainingItems;
 
-            var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await DynamoClient.BatchWriteItemAsync(items, cancellationToken).ConfigureAwait(false))
+            var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(ct =>
+                    DynamoClient.BatchWriteItemAsync(items, ct), cancellationToken)
                 .ConfigureAwait(false);
 
             remainingItems = response.UnprocessedItems;
@@ -197,46 +192,42 @@ public abstract class Repository : AwsBaseService, ITableRepository
         if (request is null) throw new ArgumentNullException(nameof(request));
 
         using var activity = ActivityRepository.StartActivity();
-        
+
         var queryRequest = QueryHelper.CreateQueryRequest<T>(request, context);
-        activity?.SetTag("TableName", queryRequest.TableName);  
-        activity?.SetTag("Page", request.Page);  
-        activity?.SetTag("PageSize", request.PageSize);  
-        
+        activity?.SetTag("TableName", queryRequest.TableName);
+        activity?.SetTag("Page", request.Page);
+        activity?.SetTag("PageSize", request.PageSize);
+
         var items = new List<Dictionary<string, AttributeValue>>();
         var remaining = request.PageSize;
 
-        var iterator = DynamoClient.Paginators.Query(queryRequest).Responses
-            .GetAsyncEnumerator(cancellationToken);
-        
         Dictionary<string, AttributeValue> lastEvaluatedKey = null;
 
         do
         {
-            await iterator.MoveNextAsync().ConfigureAwait(false);
+            var response = await CreateDefaultRetryAsyncPolicy()
+                .ExecuteAsync(ct => DynamoClient.QueryAsync(queryRequest, ct), cancellationToken)
+                .ConfigureAwait(false);
 
-            if (iterator.Current == null)
+            if (response == null)
                 break;
-            
-            activity?.SetTag("HttpStatusCode", iterator.Current.HttpStatusCode);  
-            activity?.SetTag("RequestId", iterator.Current.ResponseMetadata?.RequestId);  
 
-            items.AddRange(iterator.Current.Items);
-            
-            queryRequest.ExclusiveStartKey = lastEvaluatedKey = iterator.Current.LastEvaluatedKey;
+            activity?.SetTag("HttpStatusCode", response.HttpStatusCode);
+            activity?.SetTag("RequestId", response.ResponseMetadata?.RequestId);
+
+            items.AddRange(response.Items);
+
+            queryRequest.ExclusiveStartKey = lastEvaluatedKey = response.LastEvaluatedKey;
 
             remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
-            
-            activity?.SetTag("Remaining", remaining);  
-            
+
+            activity?.SetTag("Remaining", remaining);
+
             if (remaining > 0) queryRequest.Limit = remaining.Value;
-            
         } while (ShouldContinue(lastEvaluatedKey, remaining));
 
         return (lastEvaluatedKey, items);
     }
-    
-   
 
     /// <summary>
     ///     Executes an internal scan against the DynamoDB table based on the specified scan request.
@@ -247,46 +238,53 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <returns>A tuple containing the last evaluated key and the list of items retrieved.</returns>
     /// <exception cref="ArgumentNullException">Thrown when request is null.</exception>
     private async Task<(Dictionary<string, AttributeValue> ExclusiveStartKey, IList<T> Items)> InternalScanAsync<T>(
-        ScanRequest request, CancellationToken cancellationToken = default) where T : class
+        ScanRequest request, CancellationToken cancellationToken = default) where T : class, new()
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
 
-        using (ActivityRepository.StartActivity())
+        using var activity = ActivityRepository.StartActivity();
+
+        var scanRequest = QueryHelper.CreateScanRequest<T>(request, context);
+        activity?.SetTag("TableName", scanRequest.TableName);
+        activity?.SetTag("Page", request.Page);
+        activity?.SetTag("PageSize", request.PageSize);
+
+        Dictionary<string, AttributeValue> lastEvaluatedKey = null;
+
+        var items = new List<T>();
+        var remaining = request.PageSize;
+
+        do
         {
-            var scanRequest = QueryHelper.CreateScanRequest<T>(request, context);
+            var response = await CreateDefaultRetryAsyncPolicy()
+                .ExecuteAsync(ct => DynamoClient.ScanAsync(scanRequest, ct), cancellationToken)
+                .ConfigureAwait(false);
 
-            Dictionary<string, AttributeValue> lastEvaluatedKey = null;
+            if (response == null)
+                break;
 
-            var items = new List<T>();
-            var remaining = request.PageSize;
+            items.AddRange(QueryHelper.ConvertAttributesToType<T>(response.Items, context));
+            scanRequest.ExclusiveStartKey = lastEvaluatedKey = response.LastEvaluatedKey;
+            remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
 
-            var iterator = DynamoClient.Paginators.Scan(scanRequest).Responses.GetAsyncEnumerator(cancellationToken);
+            activity?.SetTag("Remaining", remaining);
 
-            //TODO: Thi code is the same in InternalQuery - Refactory it
-            do
-            {
-                await iterator.MoveNextAsync().ConfigureAwait(false);
+            if (remaining > 0) scanRequest.Limit = remaining.Value;
+        } while (ShouldContinue(lastEvaluatedKey, remaining));
 
-                if (iterator.Current == null)
-                    break;
-
-                items.AddRange(QueryHelper.ConvertAttributesToType<T>(iterator.Current.Items, context));
-                scanRequest.ExclusiveStartKey = lastEvaluatedKey = iterator.Current.LastEvaluatedKey;
-                remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
-
-                if (remaining > 0) scanRequest.Limit = remaining.Value;
-                
-            } while (ShouldContinue(lastEvaluatedKey, remaining));
-            
-            return (lastEvaluatedKey, items);
-        }
+        return (lastEvaluatedKey, items);
     }
-    
+
+    /// <summary>
+    ///     Just evaluates if the last evaluated key is not null and the remaining items are greater than 0
+    /// </summary>
+    /// <param name="lastEvaluatedKey"></param>
+    /// <param name="remaining"></param>
+    /// <returns></returns>
     private static bool ShouldContinue(Dictionary<string, AttributeValue> lastEvaluatedKey, int? remaining)
     {
         return lastEvaluatedKey?.Count > 0 && remaining > 0;
     }
-
 
     /// <summary>
     ///     Creates the default asynchronous retry policy for handling exceptions during operations.
@@ -343,6 +341,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
     #endregion
 
+
     #region [Add]
 
     /// <inheritdoc />
@@ -359,14 +358,13 @@ public abstract class Repository : AwsBaseService, ITableRepository
             Item = AttributeConverter.ConvertToAttributeValueMap(message, context)
         };
 
-        var resp = await CreateDefaultRetryAsyncPolicy()
-            .ExecuteAsync(async () =>
-                await dynamoClient.PutItemAsync(putRequest, cancellationToken).ConfigureAwait(false))
+        var response = await CreateDefaultRetryAsyncPolicy()
+            .ExecuteAsync(ct => DynamoClient.PutItemAsync(putRequest, ct), cancellationToken)
             .ConfigureAwait(false);
 
-        activity?.SetTag(ConsumedCapacity, resp.ConsumedCapacity);
-        activity?.SetTag(StatusCode, resp.HttpStatusCode);
-        activity?.SetTag(RequestId, resp.ResponseMetadata.RequestId);
+        activity?.SetTag(ConsumedCapacity, response.ConsumedCapacity);
+        activity?.SetTag(StatusCode, response.HttpStatusCode);
+        activity?.SetTag(RequestId, response.ResponseMetadata.RequestId);
     }
 
     /// <summary>
@@ -381,12 +379,14 @@ public abstract class Repository : AwsBaseService, ITableRepository
     {
         Check.NotNull(messages, nameof(messages));
         using var activity = ActivityRepository.StartActivity();
-        activity?.SetTag("messages", messages.Count);
+        activity?.SetTag("Messages", messages.Count);
 
         var tableName = TableHelper.GetTableName<T>(context);
 
         var writeRequest = messages.Select(message => new WriteRequest
-                { PutRequest = new PutRequest { Item = AttributeConverter.ConvertToAttributeValueMap(message, context) } })
+            {
+                PutRequest = new PutRequest { Item = AttributeConverter.ConvertToAttributeValueMap(message, context) }
+            })
             .ToList();
 
         var batchRequest = new Dictionary<string, List<WriteRequest>> { { tableName, writeRequest } };
@@ -426,7 +426,9 @@ public abstract class Repository : AwsBaseService, ITableRepository
         foreach (var transactItem in request.TransactItems)
             transactRequest.TransactItems.Add(QueryHelper.CreateTransactionWriteItem(transactItem));
 
-        await DynamoClient.TransactWriteItemsAsync(transactRequest, cancellationToken).ConfigureAwait(false);
+        await CreateDefaultRetryAsyncPolicy().ExecuteAsync(
+                ct => DynamoClient.TransactWriteItemsAsync(transactRequest, ct), cancellationToken)
+            .ConfigureAwait(false);
     }
 
     /// <summary>
@@ -450,8 +452,8 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
             do
             {
-                var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                        await DynamoClient.BatchWriteItemAsync(request, cancellationToken).ConfigureAwait(false))
+                var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(
+                        ct => DynamoClient.BatchWriteItemAsync(request, ct), cancellationToken)
                     .ConfigureAwait(false);
 
                 if (response.UnprocessedItems.IsNullOrEmpty())
@@ -471,7 +473,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     #endregion
-    
+
     #region [Delete]
 
     /// <inheritdoc />
@@ -487,13 +489,12 @@ public abstract class Repository : AwsBaseService, ITableRepository
             await DeleteAsync<T>(keys.HashKey, keys.RangeKey?.ToString(), cancellationToken);
         }
     }
+
     /// <inheritdoc />
-    public async Task DeleteListAsync<T>(ICollection<T> messages, CancellationToken cancellationToken = default) where T : class
+    public async Task DeleteListAsync<T>(ICollection<T> messages, CancellationToken cancellationToken = default)
+        where T : class
     {
         Check.NotNull(messages, nameof(messages));
-        
-      
-        
 
         using (ActivityRepository.StartActivity())
         {
@@ -525,8 +526,8 @@ public abstract class Repository : AwsBaseService, ITableRepository
         Check.NotNull(id, nameof(id));
 
         using var activity = ActivityRepository.StartActivity();
-        activity?.SetTag("id", id);
-        activity?.SetTag("rangeKey", rangeKey);
+        activity?.SetTag("Id", id);
+        activity?.SetTag("RangeKey", rangeKey);
 
         var deleteRequest = new DeleteItemRequest
         {
@@ -535,8 +536,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         };
 
         var response = await CreateDefaultRetryAsyncPolicy()
-            .ExecuteAsync(async () =>
-                await dynamoClient.DeleteItemAsync(deleteRequest, cancellationToken).ConfigureAwait(false))
+            .ExecuteAsync(ct => DynamoClient.DeleteItemAsync(deleteRequest, ct), cancellationToken)
             .ConfigureAwait(false);
 
         activity?.SetTag(ConsumedCapacity, response.ConsumedCapacity);
@@ -550,16 +550,17 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
     /// <exception cref="ArgumentNullException"></exception>
     /// <inheritdoc />
-    public async Task<T> UpdateAsync<T>(T instance, CancellationToken cancellationToken = default) where T : class
+    public async Task<T> UpdateAsync<T>(T instance, CancellationToken cancellationToken = default)
+        where T : class, new()
     {
         Check.NotNull(instance, nameof(instance));
 
         using (ActivityRepository.StartActivity())
         {
             var tableName = TableHelper.GetTableName<T>(context);
-            
+
             var keys = TableHelper.ExtractKeyAttributeValueMap(instance, context);
-            
+
             var attributesToUpdate = AttributeConverter.ConvertToAttributeValueMap(instance, context);
 
             if (attributesToUpdate is null) throw new CriticalException("Attributes to update is null");
@@ -604,9 +605,8 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         using var activity = ActivityRepository.StartActivity();
 
-        var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                await DynamoClient.UpdateItemAsync(tableName, key, attributeUpdates, cancellationToken)
-                    .ConfigureAwait(false))
+        var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(ct =>
+                DynamoClient.UpdateItemAsync(tableName, key, attributeUpdates, ct), cancellationToken)
             .ConfigureAwait(false);
 
         activity?.SetTag(ConsumedCapacity, response.ConsumedCapacity);
@@ -622,17 +622,16 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>The updated item of type T.</returns>
     /// <exception cref="ArgumentNullException">Thrown when updateItemRequest is null.</exception>
-    protected async Task<T> UpdateAsync<T>(UpdateItemRequest updateItemRequest,
-        CancellationToken cancellationToken = default)
+    private async Task<T> UpdateAsync<T>(UpdateItemRequest updateItemRequest,
+        CancellationToken cancellationToken = default) where T : class, new()
     {
         Check.NotNull(updateItemRequest, nameof(updateItemRequest));
 
         using var activity = ActivityRepository.StartActivity();
-        activity?.SetTag("tableName", updateItemRequest.TableName);
+        activity?.SetTag("TableName", updateItemRequest.TableName);
 
-        var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                await DynamoClient.UpdateItemAsync(updateItemRequest,
-                    cancellationToken).ConfigureAwait(false))
+        var response = await CreateDefaultRetryAsyncPolicy()
+            .ExecuteAsync(ct => DynamoClient.UpdateItemAsync(updateItemRequest, ct), cancellationToken)
             .ConfigureAwait(false);
 
         activity?.SetTag(ConsumedCapacity, response.ConsumedCapacity);
@@ -649,7 +648,8 @@ public abstract class Repository : AwsBaseService, ITableRepository
     #region [Queries]
 
     /// <inheritdoc />
-    public async Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default) where T : class
+    public async Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default)
+        where T : class, new()
     {
         using (ActivityRepository.StartActivity())
         {
@@ -661,7 +661,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
                     pk = id
                 }
             };
-            
+
             var result = await QueryAsync<T>(queryRequest, cancellationToken).ConfigureAwait(false);
 
             return result?.FirstOrDefault();
@@ -670,7 +670,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
     /// <inheritdoc />
     public async Task<T> GetByIdAsync<T>(object id, string rangeKey = null,
-        CancellationToken cancellationToken = default) where T : class
+        CancellationToken cancellationToken = default) where T : class, new()
     {
         if (id == null) throw new ArgumentNullException(nameof(id));
 
@@ -699,7 +699,8 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="id">The id to query.</param>
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>A list of items with the specified id.</returns>
-    public async Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default) where T : class
+    public async Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default)
+        where T : class, new()
     {
         using (ActivityRepository.StartActivity())
         {
@@ -724,16 +725,15 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>A list of items based on the query request.</returns>
     public async Task<IList<T>> QueryAsync<T>(QueryRequest request, CancellationToken cancellationToken = default)
-        where T : class
+        where T : class, new()
     {
-        using (ActivityRepository.StartActivity())
-        {
-            if (request is null) throw new ArgumentNullException(nameof(request));
+        using var activity = ActivityRepository.StartActivity();
 
-            var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
+        if (request is null) throw new ArgumentNullException(nameof(request));
 
-            return QueryHelper.ConvertAttributesToType<T>(items, context);
-        }
+        var (_, response) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
+
+        return QueryHelper.ConvertAttributesToType<T>(response, context);
     }
 
     /// <summary>
@@ -747,7 +747,9 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>Tuple containing lists of items split based on the specified key.</returns>
     public async Task<(IList<TResult1> first, IList<TResult2> second)> QueryMultipleAsync<T, TResult1, TResult2>(
-        QueryRequest request, string splitBy, CancellationToken cancellationToken = default) where T : class
+        QueryRequest request, string splitBy, CancellationToken cancellationToken = default) where T : class, new()
+        where TResult1 : class, new()
+        where TResult2 : class, new()
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
 
@@ -772,7 +774,10 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <returns>Tuple containing lists of items split based on the specified keys.</returns>
     public async Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third)>
         QueryMultipleAsync<T, TResult1, TResult2, TResult3>(QueryRequest request, string[] splitBy,
-            CancellationToken cancellationToken = default) where T : class
+            CancellationToken cancellationToken = default) where T : class, new()
+        where TResult1 : class, new()
+        where TResult2 : class, new()
+        where TResult3 : class, new()
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
         if (splitBy == null) throw new ArgumentNullException(nameof(splitBy));
@@ -799,7 +804,11 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <returns>Tuple containing lists of items split based on the specified keys.</returns>
     public async Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth)>
         QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4>(QueryRequest request, string[] splitBy,
-            CancellationToken cancellationToken = default) where T : class
+            CancellationToken cancellationToken = default) where T : class, new()
+        where TResult1 : class, new()
+        where TResult2 : class, new()
+        where TResult3 : class, new()
+        where TResult4 : class, new()
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
         if (splitBy == null) throw new ArgumentNullException(nameof(splitBy));
@@ -829,7 +838,12 @@ public abstract class Repository : AwsBaseService, ITableRepository
     public async Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth,
             IList<TResult5> fifth)>
         QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4, TResult5>(QueryRequest request, string[] splitBy,
-            CancellationToken cancellationToken = default) where T : class
+            CancellationToken cancellationToken = default) where T : class, new()
+        where TResult1 : class, new()
+        where TResult2 : class, new()
+        where TResult3 : class, new()
+        where TResult4 : class, new()
+        where TResult5 : class, new()
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
         if (splitBy == null) throw new ArgumentNullException(nameof(splitBy));
@@ -851,7 +865,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>The first or default item based on the query request.</returns>
     public async Task<T> QueryFirstOrDefaultAsync<T>(QueryRequest request,
-        CancellationToken cancellationToken = default) where T : class
+        CancellationToken cancellationToken = default) where T : class, new()
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
 
@@ -876,7 +890,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>A paginated collection of items based on the query request.</returns>
     public async Task<PagedCollection<T>> QueryPaginatedByAsync<T>(QueryRequest request,
-        CancellationToken cancellationToken = default) where T : class
+        CancellationToken cancellationToken = default) where T : class, new()
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
 
@@ -906,7 +920,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>The list of scanned items.</returns>
     public async Task<IList<T>> ScanAsync<T>(ScanRequest request,
-        CancellationToken cancellationToken = default) where T : class
+        CancellationToken cancellationToken = default) where T : class, new()
     {
         using (ActivityRepository.StartActivity())
         {
@@ -927,7 +941,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <returns>A paginated collection of items based on the scan request.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the request is null.</exception>
     public async Task<PagedCollection<T>> ScanPaginatedByAsync<T>(ScanRequest request,
-        CancellationToken cancellationToken = default) where T : class
+        CancellationToken cancellationToken = default) where T : class, new()
     {
         if (request is null) throw new ArgumentNullException(nameof(request));
 

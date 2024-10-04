@@ -15,7 +15,7 @@
         <PackageReference Include="Dapper" Version="2.1.35"/>
         <PackageReference Include="MySql.Data" Version="9.0.0"/>
         <PackageReference Include="Npgsql" Version="8.0.4"/>
-        <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="23.5.1"/>
+        <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="23.6.0"/>
         <PackageReference Include="System.Data.SqlClient" Version="4.8.6"/>
         <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.8"/>
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">

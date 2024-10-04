@@ -12,38 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Configuration;
 
-namespace Innovt.AspNetCore.Filters;
-
-/// <summary>
-///     Represents the response received from reCAPTCHA verification.
-/// </summary>
-internal class RecaptchaResponse
-{
-    /// <summary>
-    ///     Indicates whether the reCAPTCHA verification was successful.
-    /// </summary>
-    public bool success { get; set; }
-
-    /// <summary>
-    ///     The score obtained from the reCAPTCHA verification.
-    /// </summary>
-    public decimal score { get; set; }
-
-    /// <summary>
-    ///     The action associated with the reCAPTCHA verification.
-    /// </summary>
-    public string action { get; set; }
-
-    /// <summary>
-    ///     The timestamp of the challenge.
-    /// </summary>
-    public string challenge_ts { get; set; }
-
-    /// <summary>
-    ///     The hostname from which the reCAPTCHA verification originated.
-    /// </summary>
-    public string hostname { get; set; }
-}
+namespace Innovt.AspNetCore.Filters.Recaptcha;
 
 /// <summary>
 ///     Code by Rafael Cruzeiro: https://github.com/rcruzeiro/Core.Framework/tree/master/Core.Framework.reCAPTCHA
@@ -135,7 +104,7 @@ public sealed class CaptchaValidatorFilterAttribute : ActionFilterAttribute
 
         var captchaResponse = JsonSerializer.Deserialize<RecaptchaResponse>(stringAsync, serializerSettings);
 
-        return captchaResponse is not null && captchaResponse.success;
+        return captchaResponse is not null && captchaResponse.Success;
     }
 
     /// <summary>

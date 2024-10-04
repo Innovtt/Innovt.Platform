@@ -70,17 +70,17 @@ public abstract class AwsBaseService : IDisposable
     /// <summary>
     ///     Gets or sets the number of retry attempts for AWS service calls.
     /// </summary>
-    private int RetryCount { get; set; }
+    private int RetryCount { get; }
 
     /// <summary>
     ///     Gets or sets the number of allowed exceptions before the circuit breaker opens.
     /// </summary>
-    private int CircuitBreakerAllowedExceptions { get; set; }
+    private int CircuitBreakerAllowedExceptions { get; }
 
     /// <summary>
     ///     Gets or sets the duration of the circuit breaker break when it opens.
     /// </summary>
-    private TimeSpan CircuitBreakerDurationOfBreak { get; set; }
+    private TimeSpan CircuitBreakerDurationOfBreak { get; }
 
     /// <summary>
     ///     Gets the logger for logging service activities.
