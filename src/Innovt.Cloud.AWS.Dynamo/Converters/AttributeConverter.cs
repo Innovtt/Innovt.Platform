@@ -429,7 +429,7 @@ internal static class AttributeConverter
         if (properties.Length == 0)
             return default;
 
-        var attributes = new Dictionary<string, object>();
+        var attributes = new Dictionary<string, AttributeValue>();
 
         var typeBuilder = context?.HasTypeBuilder<T>() == true ? context.GetTypeBuilder<T>() : null;
 
@@ -437,7 +437,7 @@ internal static class AttributeConverter
         if (typeBuilder is null)
         {
             foreach (var property in properties)
-                attributes.Add(property.Name, property.GetValue(instance));
+                attributes.Add(property.Name, CreateAttributeValue(property.GetValue(instance)));
         }
         else
         {
@@ -477,7 +477,12 @@ internal static class AttributeConverter
                 if (CanIgnoreMapping(propertyType, context))
                     continue;
                 
-                attributes.Add(mappedProperty.ColumnName, propertyValue);
+                var converter = context.GetPropertyConverter(propertyType);
+
+                if (converter is not null)
+                    propertyValue = converter.ToEntry(propertyValue).AsPrimitive();
+                
+                attributes.Add(mappedProperty.ColumnName, CreateAttributeValue(propertyValue));
             }
         }
 

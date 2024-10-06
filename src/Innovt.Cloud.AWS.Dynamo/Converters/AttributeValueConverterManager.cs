@@ -5,6 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
 using Innovt.Cloud.AWS.Dynamo.Helpers;
 using Innovt.Core.Utilities;
@@ -61,6 +62,9 @@ public static class AttributeValueConverterManager
         // Initialize the visited objects set if it's not provided
         visitedObjects ??= new HashSet<object>( new ReferenceEqualityComparer());
 
+        if(value is Primitive)
+            return new AttributeValue { S = value.ToString() };
+        
         // Check for circular references. Add the value if it's not already in the set
         if (!visitedObjects.Add(value))
         {
