@@ -243,7 +243,7 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
 
 
         if (ignoreNonNativeTypes)
-            properties = properties.Where(p => TypeUtilities.IsPrimitive(p.PropertyType)).ToArray();
+            properties = properties.Where(p => TypeUtil.IsPrimitive(p.PropertyType)).ToArray();
 
         foreach (var propertyInfo in properties) AddProperty(propertyInfo.Name, propertyInfo.GetType());
 

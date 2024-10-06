@@ -126,7 +126,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         var keys = TableHelper.ExtractKeyAttributeValueMap(instance, context);
         var attributes = AttributeConverter.ConvertToAttributeMap(instance, context);
-
+        
         return new TransactionWriteItem
         {
             TableName = TableHelper.GetTableName<T>(context),

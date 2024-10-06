@@ -2,11 +2,9 @@
 // Author: Michel Borges
 // Project: Innovt.Core
 
-using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -64,7 +62,7 @@ public static class SimpleMapper
         if (input == null)
             return default;
 
-        var output = CreateFactory<T2>();
+        var output = ReflectionTypeUtil.CreateInstance<T2>();
 
         return MapProperties(input, output());
     }
@@ -95,7 +93,7 @@ public static class SimpleMapper
         if (inputInstance is null)
             return default;
 
-        var outputInstance = CreateFactory<T1>();
+        var outputInstance = ReflectionTypeUtil.CreateInstance<T1>();
 
         return MapProperties(inputInstance, outputInstance());
     }
@@ -111,7 +109,7 @@ public static class SimpleMapper
         if (inputInstance is null)
             return new List<T1>();
 
-        var factory = CreateFactory<T1>();
+        var factory = ReflectionTypeUtil.CreateInstance<T1>();
 
         var result = new ConcurrentBag<T1>();
 
@@ -126,23 +124,5 @@ public static class SimpleMapper
         return result.ToList();
     }
 
-    /// <summary>
-    ///     Perform a cache of the compiled expression to create instances of T
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-    /// <exception cref="InvalidOperationException"></exception>
-    private static Func<T> CreateFactory<T>() where T : class
-    {
-        // Use compiled expression to create instances of T
-        var ctor = typeof(T).GetConstructor(Type.EmptyTypes);
-
-        if (ctor == null)
-            throw new InvalidOperationException($"Type {typeof(T)} does not have a parameterless constructor.");
-
-        var newExpr = Expression.New(ctor);
-        var lambda = Expression.Lambda<Func<T>>(newExpr);
-
-        return lambda.Compile();
-    }
+   
 }

@@ -20,7 +20,7 @@ public static class AttributeValueToObjectConverterManager
         {
             "M", (value, desiredType) =>
             {
-                if (TypeUtilities.IsDictionary(desiredType))
+                if (TypeUtil.IsDictionary(desiredType))
                     return ItemsToDictionary(desiredType, value.M);
 
                 var method = typeof(AttributeConverter).GetMethod(nameof(AttributeConverter.ConvertAttributesToType),

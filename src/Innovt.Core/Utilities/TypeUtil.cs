@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace Innovt.Core.Utilities;
 
-public static class TypeUtilities
+public static class TypeUtil
 {
     /// <summary>
     ///     An array containing primitive types that can be represented as attributes.
@@ -18,6 +18,7 @@ public static class TypeUtilities
         typeof(byte),
         typeof(char),
         typeof(DateTime),
+        typeof(DateTime?),
         typeof(decimal),
         typeof(double),
         typeof(int),

@@ -45,25 +45,34 @@ public abstract class DynamoContext
         }
     }
 
-    private static Type GetEntityType<T>()
+    private static Type GetEntityType<T>(object instance=null)
     {
-        return typeof(T);
+        if (instance is null)
+            return typeof(T);
+
+        return instance.GetType();
     }
 
-    private static string GetEntityName<T>()
+    private static string GetEntityName<T>(object instance=null)
     {
-        var instanceType = GetEntityType<T>();
+        var instanceType = GetEntityType<T>(instance);
 
         return instanceType.Name;
     }
 
-    public bool HasTypeBuilder<T>()
+    public bool HasTypeBuilder<T>(object instance=null)
     {
-        var entityName = GetEntityName<T>();
+        var entityName = GetEntityName<T>(instance);
 
         return Entities.TryGetValue(entityName, out var value);
     }
+    public bool HasTypeBuilder(Type type)
+    {
+        var entityName = type.Name;
 
+        return Entities.TryGetValue(entityName, out var value);
+    }
+    
     public EntityTypeBuilder<T> GetTypeBuilder<T>()
     {
         var entityName = GetEntityName<T>();

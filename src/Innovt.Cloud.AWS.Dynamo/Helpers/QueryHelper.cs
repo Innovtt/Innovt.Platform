@@ -647,8 +647,7 @@ internal static class QueryHelper
         {
             ConditionExpression = transactionWriteItem.ConditionExpression,
             TableName = transactionWriteItem.TableName,
-            ExpressionAttributeValues =
-                AttributeConverter.ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
+            ExpressionAttributeValues = AttributeConverter.ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
             Item = AttributeConverter.ConvertToAttributeValues(transactionWriteItem.Items)
         };
     }
