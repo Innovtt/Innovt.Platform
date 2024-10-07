@@ -17,6 +17,9 @@ env:
 
 jobs:
   build:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     name: Build and analyze
     runs-on: ubuntu-latest
     steps:
@@ -49,13 +52,6 @@ jobs:
       - name: PushPackages
         if: github.ref == 'refs/heads/main'
         run: dotnet nuget push "${{ env.NuGetDirectory }}/*.nupkg"  --api-key ${{ secrets.NUGET_API_KEY }} --source "github" --skip-duplicate   
-
-  publishdocs:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
       - name: GenerateDocs
         if: github.ref == 'refs/heads/main'
         working-directory: src
