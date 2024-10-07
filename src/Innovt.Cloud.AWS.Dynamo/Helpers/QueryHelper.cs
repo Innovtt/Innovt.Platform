@@ -34,7 +34,7 @@ internal static class QueryHelper
     ///     A constant string used to denote entity splitting in attribute names.
     /// </summary>
     private const string EntitySplitter = "EntityType";
-    
+
     /// <summary>
     ///     Creates a dictionary of expression attribute values based on the provided filter object and attribute names.
     /// </summary>
@@ -294,11 +294,11 @@ internal static class QueryHelper
     ///     If the input list is null, an empty list of type T is returned.
     /// </remarks>
     internal static IList<T> ConvertAttributesToType<T>(IList<Dictionary<string, AttributeValue>> items,
-        DynamoContext context = null)
+        DynamoContext context = null) where T : class, new()
     {
         return items is null
             ? []
-            : items.Select(i => AttributeConverter.ConvertAttributesToType<T>(i, context)).ToList();
+            : items.Select(i => AttributeConverter.ConvertAttributeValuesToType<T>(i, context)).ToList();
     }
 
     /// <summary>
@@ -329,6 +329,8 @@ internal static class QueryHelper
     /// </remarks>
     internal static (IList<T1> first, IList<T2> seccond) ConvertAttributesToType<T1, T2>(
         IList<Dictionary<string, AttributeValue>> items, string splitBy, DynamoContext context = null)
+        where T1 : class, new()
+        where T2 : class, new()
     {
         if (items is null)
             return (null, null);
@@ -338,9 +340,9 @@ internal static class QueryHelper
 
         foreach (var item in items)
             if (item.TryGetValue(EntitySplitter, out var value) && value.S == splitBy)
-                result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item, context));
+                result1.Add(AttributeConverter.ConvertAttributeValuesToType<T1>(item, context));
             else
-                result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item, context));
+                result2.Add(AttributeConverter.ConvertAttributeValuesToType<T2>(item, context));
 
         return (result1, result2);
     }
@@ -383,6 +385,9 @@ internal static class QueryHelper
     /// </remarks>
     internal static (List<T1> first, IList<T2> seccond, IList<T3> third) ConvertAttributesToType<T1, T2, T3>(
         IList<Dictionary<string, AttributeValue>> items, string[] splitBy, DynamoContext context = null)
+        where T1 : class, new()
+        where T2 : class, new()
+        where T3 : class, new()
     {
         if (items is null)
             return (null, null, null);
@@ -398,14 +403,14 @@ internal static class QueryHelper
 
             if (item[EntitySplitter].S == splitBy[0])
             {
-                result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item, context));
+                result1.Add(AttributeConverter.ConvertAttributeValuesToType<T1>(item, context));
             }
             else
             {
                 if (item[EntitySplitter].S == splitBy[1])
-                    result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item, context));
+                    result2.Add(AttributeConverter.ConvertAttributeValuesToType<T2>(item, context));
                 else
-                    result3.Add(AttributeConverter.ConvertAttributesToType<T3>(item, context));
+                    result3.Add(AttributeConverter.ConvertAttributeValuesToType<T3>(item, context));
             }
         }
 
@@ -457,6 +462,11 @@ internal static class QueryHelper
     internal static (IList<T1> first, IList<T2> seccond, IList<T3> third, IList<T4> fourth) ConvertAttributesToType<T1,
         T2, T3, T4>(
         IList<Dictionary<string, AttributeValue>> items, string[] splitBy, DynamoContext context = null)
+        where T1 : class, new()
+        where T2 : class, new()
+        where T3 : class, new()
+        where T4 : class, new()
+
     {
         if (items is null)
             return (null, null, null, null);
@@ -473,20 +483,20 @@ internal static class QueryHelper
 
             if (item[EntitySplitter].S == splitBy[0])
             {
-                result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item, context));
+                result1.Add(AttributeConverter.ConvertAttributeValuesToType<T1>(item, context));
             }
             else
             {
                 if (item[EntitySplitter].S == splitBy[1])
                 {
-                    result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item, context));
+                    result2.Add(AttributeConverter.ConvertAttributeValuesToType<T2>(item, context));
                 }
                 else
                 {
                     if (item[EntitySplitter].S == splitBy[2])
-                        result3.Add(AttributeConverter.ConvertAttributesToType<T3>(item, context));
+                        result3.Add(AttributeConverter.ConvertAttributeValuesToType<T3>(item, context));
                     else
-                        result4.Add(AttributeConverter.ConvertAttributesToType<T4>(item, context));
+                        result4.Add(AttributeConverter.ConvertAttributeValuesToType<T4>(item, context));
                 }
             }
         }
@@ -510,6 +520,12 @@ internal static class QueryHelper
     internal static (IList<T1> first, IList<T2> seccond, IList<T3> third, IList<T4> fourth, IList<T5> fifth)
         ConvertAttributesToType<T1, T2, T3, T4, T5>(
             IList<Dictionary<string, AttributeValue>> items, string[] splitBy, DynamoContext context = null)
+        where T1 : class, new()
+        where T2 : class, new()
+        where T3 : class, new()
+        where T4 : class, new()
+        where T5 : class, new()
+
     {
         if (items is null)
             return (null, null, null, null, null);
@@ -527,26 +543,26 @@ internal static class QueryHelper
 
             if (item[EntitySplitter].S == splitBy[0])
             {
-                result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item, context));
+                result1.Add(AttributeConverter.ConvertAttributeValuesToType<T1>(item, context));
             }
             else
             {
                 if (item[EntitySplitter].S == splitBy[1])
                 {
-                    result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item, context));
+                    result2.Add(AttributeConverter.ConvertAttributeValuesToType<T2>(item, context));
                 }
                 else
                 {
                     if (item[EntitySplitter].S == splitBy[2])
                     {
-                        result3.Add(AttributeConverter.ConvertAttributesToType<T3>(item, context));
+                        result3.Add(AttributeConverter.ConvertAttributeValuesToType<T3>(item, context));
                     }
                     else
                     {
                         if (item[EntitySplitter].S == splitBy[3])
-                            result4.Add(AttributeConverter.ConvertAttributesToType<T4>(item, context));
+                            result4.Add(AttributeConverter.ConvertAttributeValuesToType<T4>(item, context));
                         else
-                            result5.Add(AttributeConverter.ConvertAttributesToType<T5>(item, context));
+                            result5.Add(AttributeConverter.ConvertAttributeValuesToType<T5>(item, context));
                     }
                 }
             }

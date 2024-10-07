@@ -149,10 +149,13 @@ items:
   assemblies:
   - Innovt.AspNetCore
   namespace: Innovt.AspNetCore.Utility.Pagination
+  summary: Builds the header HTML for pagination.
+  example: []
   syntax:
     content: public virtual string BuildHeader()
     return:
       type: System.String
+      description: The HTML for the pagination header.
     content.vb: Public Overridable Function BuildHeader() As String
   overload: Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildHeader*
   nameWithType.vb: PaginationBuilder(Of T).BuildHeader()

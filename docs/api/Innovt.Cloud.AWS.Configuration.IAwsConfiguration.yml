@@ -22,13 +22,19 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: IAwsConfiguration
     path: ../src/Innovt.Cloud.AWS/Configuration/IAWSConfiguration.cs
-    startLine: 8
+    startLine: 9
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS.Configuration
   syntax:
-    content: 'public interface IAwsConfiguration : IConfiguration'
-    content.vb: Public Interface IAwsConfiguration Inherits IConfiguration
+    content: >-
+      [CLSCompliant(false)]
+
+      public interface IAwsConfiguration : IConfiguration
+    content.vb: >-
+      <CLSCompliant(False)>
+
+      Public Interface IAwsConfiguration Inherits IConfiguration
   inheritedMembers:
   - Innovt.Cloud.IConfiguration.SecretKey
   - Innovt.Cloud.IConfiguration.AccessKey
@@ -37,6 +43,12 @@ items:
   - System.Object.Innovt.Core.Utilities.Extensions.IsNull
   - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
   - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
+  attributes:
+  - type: System.CLSCompliantAttribute
+    ctor: System.CLSCompliantAttribute.#ctor(System.Boolean)
+    arguments:
+    - type: System.Boolean
+      value: false
 - uid: Innovt.Cloud.AWS.Configuration.IAwsConfiguration.AccountNumber
   commentId: P:Innovt.Cloud.AWS.Configuration.IAwsConfiguration.AccountNumber
   id: AccountNumber
@@ -55,7 +67,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: AccountNumber
     path: ../src/Innovt.Cloud.AWS/Configuration/IAWSConfiguration.cs
-    startLine: 10
+    startLine: 12
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS.Configuration
@@ -84,7 +96,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: Profile
     path: ../src/Innovt.Cloud.AWS/Configuration/IAWSConfiguration.cs
-    startLine: 12
+    startLine: 14
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS.Configuration
@@ -113,7 +125,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: GetCredential
     path: ../src/Innovt.Cloud.AWS/Configuration/IAWSConfiguration.cs
-    startLine: 14
+    startLine: 16
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS.Configuration

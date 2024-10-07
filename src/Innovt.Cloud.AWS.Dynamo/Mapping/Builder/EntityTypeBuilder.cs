@@ -225,20 +225,24 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
         return this;
     }
 
-    /// ///
     /// <summary>
     ///     Starts a reflection process to auto map all properties of the entity type.
     /// </summary>
-    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public EntityTypeBuilder<TEntity> AutoMap(bool withDefaultKeys = true)
+    /// <param name="withDefaultKeys">Default keys are PK and SK</param>
+    /// <param name="ignoreNonNativeTypes">Ignore all complex types</param>
+    /// <returns></returns>
+    public EntityTypeBuilder<TEntity> AutoMap(bool withDefaultKeys = true, bool ignoreNonNativeTypes = false)
     {
         var entityType = typeof(TEntity);
 
         //Set the table name as the entity name
         TableName = entityType.Name;
-        
+
         var properties = entityType.GetProperties(
             BindingFlags.Public | BindingFlags.Instance);
+
+        if (ignoreNonNativeTypes)
+            properties = properties.Where(p => TypeUtil.IsPrimitive(p.PropertyType)).ToArray();
 
         foreach (var propertyInfo in properties) AddProperty(propertyInfo.Name, propertyInfo.GetType());
 

@@ -44,9 +44,6 @@ items:
   - Innovt.Cloud.AWS.Lambda.EventProcessor{Amazon.Lambda.KinesisEvents.KinesisEvent,Innovt.Cloud.AWS.Lambda.BatchFailureResponse}
   - Innovt.Cloud.AWS.Lambda.Kinesis.KinesisProcessorBase{{TBody}}
   - Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDomainEventProcessorBatch{{TBody}}
-  derivedClasses:
-  - Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors.KinesisDomainEventEmptyInvoiceProcessor
-  - Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors.KinesisDomainEventInvoiceProcessor
   inheritedMembers:
   - Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDomainEventProcessorBatch{{TBody}}.DeserializeBody(System.String,System.String)
   - Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDomainEventProcessorBatch{{TBody}}.Handle(Amazon.Lambda.KinesisEvents.KinesisEvent,Amazon.Lambda.Core.ILambdaContext)

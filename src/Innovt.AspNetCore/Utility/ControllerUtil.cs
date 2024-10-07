@@ -28,7 +28,6 @@ public static class ControllerUtil
     {
         ArgumentNullException.ThrowIfNull(actionDescriptorProvider);
 
-
         var controllers = new List<MvcControllerViewModel>();
 
         //from web this code
@@ -53,7 +52,7 @@ public static class ControllerUtil
 
             var currentController = new MvcControllerViewModel
             {
-                Area = controllerTypeInfo.GetCustomAttribute<AreaAttribute>()?.RouteValue,
+                Area = controllerTypeInfo?.GetCustomAttribute<AreaAttribute>()?.RouteValue,
                 DisplayName = controllerTypeInfo.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName,
                 Name = actionDescriptor.ControllerName
             };

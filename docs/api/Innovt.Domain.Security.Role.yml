@@ -9,6 +9,7 @@ items:
   - Innovt.Domain.Security.Role.AssignPermission(Innovt.Domain.Security.Permission)
   - Innovt.Domain.Security.Role.Description
   - Innovt.Domain.Security.Role.Equals(System.Object)
+  - Innovt.Domain.Security.Role.GetHashCode
   - Innovt.Domain.Security.Role.Name
   - Innovt.Domain.Security.Role.Permissions
   - Innovt.Domain.Security.Role.RemovePermission(System.Guid)
@@ -43,8 +44,9 @@ items:
   inheritedMembers:
   - Innovt.Domain.Core.Model.Entity{System.Guid}.Id
   - Innovt.Domain.Core.Model.Entity.CreatedAt
+  - Innovt.Domain.Core.Model.Entity.UpdatedAt
   - Innovt.Domain.Core.Model.Entity.IsNew
-  - Innovt.Domain.Core.Model.Entity.GetHashCode
+  - Innovt.Domain.Core.Model.Entity.SetAsNew
   - Innovt.Domain.Core.Model.Entity.AddDomainEvent(Innovt.Domain.Core.Events.DomainEvent)
   - Innovt.Domain.Core.Model.Entity.GetDomainEvents
   - System.Object.Equals(System.Object,System.Object)
@@ -314,6 +316,38 @@ items:
   nameWithType.vb: Role.Equals(Object)
   fullName.vb: Innovt.Domain.Security.Role.Equals(Object)
   name.vb: Equals(Object)
+- uid: Innovt.Domain.Security.Role.GetHashCode
+  commentId: M:Innovt.Domain.Security.Role.GetHashCode
+  id: GetHashCode
+  parent: Innovt.Domain.Security.Role
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: Role.GetHashCode()
+  fullName: Innovt.Domain.Security.Role.GetHashCode()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain/Security/Role.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: GetHashCode
+    path: ../src/Innovt.Domain/Security/Role.cs
+    startLine: 93
+  assemblies:
+  - Innovt.Domain
+  namespace: Innovt.Domain.Security
+  summary: Serves as the default hash function.
+  example: []
+  syntax:
+    content: public override int GetHashCode()
+    return:
+      type: System.Int32
+      description: A hash code for the current object.
+    content.vb: Public Overrides Function GetHashCode() As Integer
+  overridden: Innovt.Domain.Core.Model.Entity.GetHashCode
+  overload: Innovt.Domain.Security.Role.GetHashCode*
 references:
 - uid: Innovt.Domain.Security
   commentId: N:Innovt.Domain.Security
@@ -413,6 +447,13 @@ references:
   name: CreatedAt
   nameWithType: Entity.CreatedAt
   fullName: Innovt.Domain.Core.Model.Entity.CreatedAt
+- uid: Innovt.Domain.Core.Model.Entity.UpdatedAt
+  commentId: P:Innovt.Domain.Core.Model.Entity.UpdatedAt
+  parent: Innovt.Domain.Core.Model.Entity
+  href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_UpdatedAt
+  name: UpdatedAt
+  nameWithType: Entity.UpdatedAt
+  fullName: Innovt.Domain.Core.Model.Entity.UpdatedAt
 - uid: Innovt.Domain.Core.Model.Entity.IsNew
   commentId: M:Innovt.Domain.Core.Model.Entity.IsNew
   parent: Innovt.Domain.Core.Model.Entity
@@ -432,23 +473,23 @@ references:
     href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_IsNew
   - name: (
   - name: )
-- uid: Innovt.Domain.Core.Model.Entity.GetHashCode
-  commentId: M:Innovt.Domain.Core.Model.Entity.GetHashCode
+- uid: Innovt.Domain.Core.Model.Entity.SetAsNew
+  commentId: M:Innovt.Domain.Core.Model.Entity.SetAsNew
   parent: Innovt.Domain.Core.Model.Entity
-  href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_GetHashCode
-  name: GetHashCode()
-  nameWithType: Entity.GetHashCode()
-  fullName: Innovt.Domain.Core.Model.Entity.GetHashCode()
+  href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_SetAsNew
+  name: SetAsNew()
+  nameWithType: Entity.SetAsNew()
+  fullName: Innovt.Domain.Core.Model.Entity.SetAsNew()
   spec.csharp:
-  - uid: Innovt.Domain.Core.Model.Entity.GetHashCode
-    name: GetHashCode
-    href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_GetHashCode
+  - uid: Innovt.Domain.Core.Model.Entity.SetAsNew
+    name: SetAsNew
+    href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_SetAsNew
   - name: (
   - name: )
   spec.vb:
-  - uid: Innovt.Domain.Core.Model.Entity.GetHashCode
-    name: GetHashCode
-    href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_GetHashCode
+  - uid: Innovt.Domain.Core.Model.Entity.SetAsNew
+    name: SetAsNew
+    href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_SetAsNew
   - name: (
   - name: )
 - uid: Innovt.Domain.Core.Model.Entity.AddDomainEvent(Innovt.Domain.Core.Events.DomainEvent)
@@ -1240,3 +1281,39 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
+- uid: Innovt.Domain.Core.Model.Entity.GetHashCode
+  commentId: M:Innovt.Domain.Core.Model.Entity.GetHashCode
+  parent: Innovt.Domain.Core.Model.Entity
+  href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_GetHashCode
+  name: GetHashCode()
+  nameWithType: Entity.GetHashCode()
+  fullName: Innovt.Domain.Core.Model.Entity.GetHashCode()
+  spec.csharp:
+  - uid: Innovt.Domain.Core.Model.Entity.GetHashCode
+    name: GetHashCode
+    href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_GetHashCode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Innovt.Domain.Core.Model.Entity.GetHashCode
+    name: GetHashCode
+    href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_GetHashCode
+  - name: (
+  - name: )
+- uid: Innovt.Domain.Security.Role.GetHashCode*
+  commentId: Overload:Innovt.Domain.Security.Role.GetHashCode
+  href: Innovt.Domain.Security.Role.html#Innovt_Domain_Security_Role_GetHashCode
+  name: GetHashCode
+  nameWithType: Role.GetHashCode
+  fullName: Innovt.Domain.Security.Role.GetHashCode
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer

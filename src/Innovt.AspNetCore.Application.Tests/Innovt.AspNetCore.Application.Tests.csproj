@@ -4,6 +4,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <IsPackable>false</IsPackable>
+        <GenerateDocumentationFile>false</GenerateDocumentationFile>
     </PropertyGroup>
     <ItemGroup>
         <ProjectReference Include="..\Innovt.AspNetCore\Innovt.AspNetCore.csproj"/>

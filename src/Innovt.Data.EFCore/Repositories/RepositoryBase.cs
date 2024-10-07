@@ -27,7 +27,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     /// </summary>
     /// <param name="context">The extended unit of work context.</param>
     /// <exception cref="ArgumentNullException">Thrown when the context parameter is null.</exception>
-    public RepositoryBase(IExtendedUnitOfWork context)
+    protected RepositoryBase(IExtendedUnitOfWork context)
     {
         Context = context ?? throw new ArgumentNullException(nameof(context));
     }

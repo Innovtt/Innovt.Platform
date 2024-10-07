@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.AWS.Dynamo.Tests.Mapping;
@@ -40,7 +41,7 @@ public class RepositoryTests
     {
         var context = new SampleDynamoContext();
 
-        var awsConfiguration = new DefaultAWSConfiguration("c2g-dev");
+        var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
 
         repository = new SampleRepository(context, loggerMock, awsConfiguration);
         try
@@ -124,7 +125,7 @@ public class RepositoryTests
     {
         var context = new SampleDynamoContext();
 
-        var awsConfiguration = new DefaultAWSConfiguration("c2g-dev");
+        var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
 
         repository = new SampleRepository(context, loggerMock, awsConfiguration);
 
@@ -133,7 +134,7 @@ public class RepositoryTests
             var userId = "24a874d8-d0a1-7032-b572-3c3383ff4ba9";
             var userSortKey = "PROFILE";
 
-           var queryRequest = new QueryRequest
+            var queryRequest = new QueryRequest
             {
                 KeyConditionExpression = "PK=:pk AND SK=:sk",
                 Filter = new
@@ -167,7 +168,7 @@ public class RepositoryTests
             }
 
             await repository.AddListAsync(users).ConfigureAwait(false);
-            
+
             //scan all users
             var scanRequest = new ScanRequest
             {
@@ -194,7 +195,7 @@ public class RepositoryTests
     {
         var context = new SampleDynamoContext();
 
-        var awsConfiguration = new DefaultAWSConfiguration("c2g-dev");
+        var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
 
         repository = new SampleRepository(context, loggerMock, awsConfiguration);
 
@@ -216,7 +217,6 @@ public class RepositoryTests
             var user =
                 (await repository.QueryAsync<User>(queryRequest).ConfigureAwait(false)).SingleOrDefault();
 
-
             Assert.That(user, Is.Not.Null);
 
             user.FirstName = "Rafaela";
@@ -230,20 +230,20 @@ public class RepositoryTests
             throw;
         }
     }
-    
-    
+
+
     [Test]
     public async Task QueryPaginatedBy()
-    {   
+    {
         try
         {
             var context = new SampleDynamoContext();
 
-            var awsConfiguration = new DefaultAWSConfiguration("c2g-dev");
+            var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
 
             repository = new SampleRepository(context, loggerMock, awsConfiguration);
 
-            
+
             var queryRequest = new QueryRequest
             {
                 KeyConditionExpression = "PK=:pk AND begins_with(SK,:sk)",
@@ -262,12 +262,52 @@ public class RepositoryTests
             var skills = await repository.QueryPaginatedByAsync<Skill>(queryRequest).ConfigureAwait(false);
 
             Assert.That(skills, Is.Not.Null);
-            
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
             throw;
         }
+    }
+
+    [Test]
+    public async Task TransactionWrite()
+    {
+        var context = new SampleDynamoContext();
+
+        var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
+
+        repository = new SampleRepository(context, loggerMock, awsConfiguration);
+
+        var email = "michelmob@gmail.com";
+
+
+        var users = await repository.ScanAsync<User>(new ScanRequest
+        {
+            FilterExpression = "Email=:email",
+            Filter = new
+            {
+                email
+            }
+        }).ConfigureAwait(false);
+
+        if (users.Any()) await repository.Delete(users.First()).ConfigureAwait(false);
+
+        var user = new User
+        {
+            Id = Guid.NewGuid().ToString(),
+            Email = email,
+            FirstName = "Michel",
+            LastName = "Borges",
+            CreatedAt = DateTime.Now,
+            Picture = "https://www.google.com",
+            JobPositionId = 1,
+            Context = "C2G",
+            IsActive = true
+        };
+
+        await repository.SaveUser(user, CancellationToken.None).ConfigureAwait(false);
+
+        Assert.Pass("Transaction Saved");
     }
 }

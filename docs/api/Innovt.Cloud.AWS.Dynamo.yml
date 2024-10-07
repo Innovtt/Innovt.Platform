@@ -25,7 +25,6 @@ references:
   fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext
 - uid: Innovt.Cloud.AWS.Dynamo.Repository
   commentId: T:Innovt.Cloud.AWS.Dynamo.Repository
-  parent: Innovt.Cloud.AWS.Dynamo
   href: Innovt.Cloud.AWS.Dynamo.Repository.html
   name: Repository
   nameWithType: Repository

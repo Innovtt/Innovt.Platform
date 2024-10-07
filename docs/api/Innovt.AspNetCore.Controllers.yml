@@ -17,38 +17,7 @@ items:
 references:
 - uid: Innovt.AspNetCore.Controllers.BaseApiController
   commentId: T:Innovt.AspNetCore.Controllers.BaseApiController
-  parent: Innovt.AspNetCore.Controllers
   href: Innovt.AspNetCore.Controllers.BaseApiController.html
   name: BaseApiController
   nameWithType: BaseApiController
   fullName: Innovt.AspNetCore.Controllers.BaseApiController
-- uid: Innovt.AspNetCore.Controllers
-  commentId: N:Innovt.AspNetCore.Controllers
-  href: Innovt.html
-  name: Innovt.AspNetCore.Controllers
-  nameWithType: Innovt.AspNetCore.Controllers
-  fullName: Innovt.AspNetCore.Controllers
-  spec.csharp:
-  - uid: Innovt
-    name: Innovt
-    href: Innovt.html
-  - name: .
-  - uid: Innovt.AspNetCore
-    name: AspNetCore
-    href: Innovt.AspNetCore.html
-  - name: .
-  - uid: Innovt.AspNetCore.Controllers
-    name: Controllers
-    href: Innovt.AspNetCore.Controllers.html
-  spec.vb:
-  - uid: Innovt
-    name: Innovt
-    href: Innovt.html
-  - name: .
-  - uid: Innovt.AspNetCore
-    name: AspNetCore
-    href: Innovt.AspNetCore.html
-  - name: .
-  - uid: Innovt.AspNetCore.Controllers
-    name: Controllers
-    href: Innovt.AspNetCore.Controllers.html

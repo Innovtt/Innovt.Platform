@@ -9,7 +9,7 @@ public class AssumeRoleAWSConfigurationTests
     [Test]
     public void AssumeRoleAWSConfigurationShouldReturnProvidedRoleInfos()
     {
-        var configuration = new DefaultAWSConfiguration();
+        var configuration = new DefaultAwsConfiguration();
 
         Assert.That(configuration, Is.Not.Null);
 
@@ -17,7 +17,7 @@ public class AssumeRoleAWSConfigurationTests
         var externalId = "mockexternalid";
         var sessionName = "mockrosession";
 
-        var assumeRoleCredentials = new AssumeRoleAWSConfiguration(configuration, roleArn, sessionName, externalId);
+        var assumeRoleCredentials = new AssumeRoleAwsConfiguration(configuration, roleArn, sessionName, externalId);
 
         Assert.That(assumeRoleCredentials, Is.Not.Null);
         Assert.Multiple(() =>
@@ -32,11 +32,11 @@ public class AssumeRoleAWSConfigurationTests
     [Ignore("Only for local tests")]
     public void GetCredentialWithoutProfileReturnDefaultProfile()
     {
-        var configuration = new DefaultAWSConfiguration();
+        var configuration = new DefaultAwsConfiguration();
 
         Assert.That(configuration, Is.Not.Null);
 
-        var assumeRoleCredentials = new AssumeRoleAWSConfiguration(configuration, "rolearn");
+        var assumeRoleCredentials = new AssumeRoleAwsConfiguration(configuration, "rolearn");
 
         Assert.That(assumeRoleCredentials, Is.Not.Null);
         Assert.That(assumeRoleCredentials.GetCredential(), Is.Not.Null);

@@ -7,23 +7,6 @@ items:
     name: ApiStartupBase
   - uid: Innovt.AspNetCore.Constants
     name: Constants
-- uid: Innovt.AspNetCore.Application.Tests
-  name: Innovt.AspNetCore.Application.Tests
-  items:
-  - uid: Innovt.AspNetCore.Application.Tests.Program
-    name: Program
-  - uid: Innovt.AspNetCore.Application.Tests.Startup
-    name: Startup
-- uid: Innovt.AspNetCore.Application.Tests.Controllers
-  name: Innovt.AspNetCore.Application.Tests.Controllers
-  items:
-  - uid: Innovt.AspNetCore.Application.Tests.Controllers.SampleController
-    name: SampleController
-- uid: Innovt.AspNetCore.Application.Tests.ViewModels
-  name: Innovt.AspNetCore.Application.Tests.ViewModels
-  items:
-  - uid: Innovt.AspNetCore.Application.Tests.ViewModels.AddUserViewModel
-    name: AddUserViewModel
 - uid: Innovt.AspNetCore.Controllers
   name: Innovt.AspNetCore.Controllers
   items:
@@ -82,11 +65,6 @@ items:
   items:
   - uid: Innovt.AspNetCore.Resources.IExceptionResource
     name: IExceptionResource
-- uid: Innovt.AspNetCore.Tests
-  name: Innovt.AspNetCore.Tests
-  items:
-  - uid: Innovt.AspNetCore.Tests.RolesAuthorizationHandlerTests
-    name: RolesAuthorizationHandlerTests
 - uid: Innovt.AspNetCore.Utility
   name: Innovt.AspNetCore.Utility
   items:
@@ -212,22 +190,15 @@ items:
     name: SocialSignInRequest
   - uid: Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest
     name: UpdateUserAttributesRequest
-- uid: Innovt.Cloud.AWS.Cognito.Tests
-  name: Innovt.Cloud.AWS.Cognito.Tests
-  items:
-  - uid: Innovt.Cloud.AWS.Cognito.Tests.BaseIdentityProvider
-    name: BaseIdentityProvider
-  - uid: Innovt.Cloud.AWS.Cognito.Tests.Tests
-    name: Tests
 - uid: Innovt.Cloud.AWS.Configuration
   name: Innovt.Cloud.AWS.Configuration
   items:
-  - uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration
-    name: AssumeRoleAWSConfiguration
-  - uid: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
-    name: DefaultAWSConfiguration
-  - uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration
-    name: IAssumeRoleAWSConfiguration
+  - uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration
+    name: AssumeRoleAwsConfiguration
+  - uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
+    name: DefaultAwsConfiguration
+  - uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration
+    name: IAssumeRoleAwsConfiguration
   - uid: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
     name: IAwsConfiguration
 - uid: Innovt.Cloud.AWS.Dynamo
@@ -263,41 +234,6 @@ items:
     name: EntityTypeBuilder<TEntity>
   - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1
     name: PropertyTypeBuilder<T>
-- uid: Innovt.Cloud.AWS.Dynamo.Tests
-  name: Innovt.Cloud.AWS.Dynamo.Tests
-  items:
-  - uid: Innovt.Cloud.AWS.Dynamo.Tests.DynamoHelperTests
-    name: DynamoHelperTests
-  - uid: Innovt.Cloud.AWS.Dynamo.Tests.EntityTypeBuilderTests
-    name: EntityTypeBuilderTests
-  - uid: Innovt.Cloud.AWS.Dynamo.Tests.RepositoryTests
-    name: RepositoryTests
-  - uid: Innovt.Cloud.AWS.Dynamo.Tests.SampleDynamoContext
-    name: SampleDynamoContext
-  - uid: Innovt.Cloud.AWS.Dynamo.Tests.SampleRepository
-    name: SampleRepository
-- uid: Innovt.Cloud.AWS.Dynamo.Tests.Mapping
-  name: Innovt.Cloud.AWS.Dynamo.Tests.Mapping
-  items:
-  - uid: Innovt.Cloud.AWS.Dynamo.Tests.Mapping.Address
-    name: Address
-  - uid: Innovt.Cloud.AWS.Dynamo.Tests.Mapping.BaseUser
-    name: BaseUser
-  - uid: Innovt.Cloud.AWS.Dynamo.Tests.Mapping.BaseUserOne
-    name: BaseUserOne
-  - uid: Innovt.Cloud.AWS.Dynamo.Tests.Mapping.Company
-    name: Company
-  - uid: Innovt.Cloud.AWS.Dynamo.Tests.Mapping.CompanyMap
-    name: CompanyMap
-  - uid: Innovt.Cloud.AWS.Dynamo.Tests.Mapping.User
-    name: User
-  - uid: Innovt.Cloud.AWS.Dynamo.Tests.Mapping.UserMap
-    name: UserMap
-- uid: Innovt.Cloud.AWS.Dynamo.Tests.Specifications
-  name: Innovt.Cloud.AWS.Dynamo.Tests.Specifications
-  items:
-  - uid: Innovt.Cloud.AWS.Dynamo.Tests.Specifications.UserByIdSpecification
-    name: UserByIdSpecification
 - uid: Innovt.Cloud.AWS.Kinesis
   name: Innovt.Cloud.AWS.Kinesis
   items:
@@ -382,13 +318,6 @@ items:
     name: PreTokenGenerationRequest
   - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationResponse
     name: PreTokenGenerationResponse
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.Tests
-  name: Innovt.Cloud.AWS.Lambda.Cognito.Events.Tests
-  items:
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.Tests.DefineAuthChallengeHandlerTests
-    name: DefineAuthChallengeHandlerTests
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.Tests.VerifyAuthChallengeHandlerTests
-    name: VerifyAuthChallengeHandlerTests
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.VerifyAuthChallenge
   name: Innovt.Cloud.AWS.Lambda.Cognito.Events.VerifyAuthChallenge
   items:
@@ -451,38 +380,6 @@ items:
   items:
   - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
     name: KinesisEventJsonSerializerContext
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
-  name: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
-  items:
-  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDataServiceMock`1
-    name: IDataServiceMock<T>
-  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IDomainEventServiceMock`1
-    name: IDomainEventServiceMock<T>
-  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.IServiceMock
-    name: IServiceMock
-  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.KinesisProcessorTests
-    name: KinesisProcessorTests
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors
-  name: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors
-  items:
-  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors.BaseInvoice
-    name: BaseInvoice
-  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors.Invoice
-    name: Invoice
-  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors.InvoiceDomainEvent
-    name: InvoiceDomainEvent
-  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors.KinesisDataInvoiceProcessor
-    name: KinesisDataInvoiceProcessor
-  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors.KinesisDataInvoiceProcessor2
-    name: KinesisDataInvoiceProcessor2
-  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors.KinesisDataInvoiceProcessorBatch
-    name: KinesisDataInvoiceProcessorBatch
-  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors.KinesisDomainEventEmptyInvoiceProcessor
-    name: KinesisDomainEventEmptyInvoiceProcessor
-  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors.KinesisDomainEventInvoiceProcessor
-    name: KinesisDomainEventInvoiceProcessor
-  - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors.KinesisDomainEventInvoiceProcessorBatch
-    name: KinesisDomainEventInvoiceProcessorBatch
 - uid: Innovt.Cloud.AWS.Lambda.S3
   name: Innovt.Cloud.AWS.Lambda.S3
   items:
@@ -503,24 +400,6 @@ items:
   items:
   - uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
     name: SqsEventJsonSerializerContext
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Tests
-  name: Innovt.Cloud.AWS.Lambda.Sqs.Tests
-  items:
-  - uid: Innovt.Cloud.AWS.Lambda.Sqs.Tests.CustomSqsEventProcessor
-    name: CustomSqsEventProcessor
-  - uid: Innovt.Cloud.AWS.Lambda.Sqs.Tests.Person
-    name: Person
-  - uid: Innovt.Cloud.AWS.Lambda.Sqs.Tests.Tests
-    name: Tests
-- uid: Innovt.Cloud.AWS.Lambda.Tests
-  name: Innovt.Cloud.AWS.Lambda.Tests
-  items:
-  - uid: Innovt.Cloud.AWS.Lambda.Tests.CustomEventProcessor
-    name: CustomEventProcessor
-  - uid: Innovt.Cloud.AWS.Lambda.Tests.Person
-    name: Person
-  - uid: Innovt.Cloud.AWS.Lambda.Tests.Tests
-    name: Tests
 - uid: Innovt.Cloud.AWS.Notification
   name: Innovt.Cloud.AWS.Notification
   items:
@@ -535,35 +414,16 @@ items:
   items:
   - uid: Innovt.Cloud.AWS.S3.S3FileSystem
     name: S3FileSystem
-- uid: Innovt.Cloud.AWS.S3.Tests
-  name: Innovt.Cloud.AWS.S3.Tests
-  items:
-  - uid: Innovt.Cloud.AWS.S3.Tests.Tests
-    name: Tests
-  - uid: Innovt.Cloud.AWS.S3.Tests.UserDto
-    name: UserDto
 - uid: Innovt.Cloud.AWS.SQS
   name: Innovt.Cloud.AWS.SQS
   items:
   - uid: Innovt.Cloud.AWS.SQS.QueueService`1
     name: QueueService<T>
-- uid: Innovt.Cloud.AWS.SQS.Tests
-  name: Innovt.Cloud.AWS.SQS.Tests
-  items:
-  - uid: Innovt.Cloud.AWS.SQS.Tests.SimpleMessage
-    name: SimpleMessage
 - uid: Innovt.Cloud.AWS.StepFunction
   name: Innovt.Cloud.AWS.StepFunction
   items:
   - uid: Innovt.Cloud.AWS.StepFunction.StepFunctionService
     name: StepFunctionService
-- uid: Innovt.Cloud.AWS.Tests
-  name: Innovt.Cloud.AWS.Tests
-  items:
-  - uid: Innovt.Cloud.AWS.Tests.AssumeRoleAWSConfigurationTests
-    name: AssumeRoleAWSConfigurationTests
-  - uid: Innovt.Cloud.AWS.Tests.DefaultAWSConfigurationTests
-    name: DefaultAWSConfigurationTests
 - uid: Innovt.Cloud.File
   name: Innovt.Cloud.File
   items:
@@ -626,11 +486,6 @@ items:
     name: TransactionWriteOperationType
   - uid: Innovt.Cloud.Table.TransactionWriteRequest
     name: TransactionWriteRequest
-- uid: Innovt.Contrib.Authorization.Platform.Tests
-  name: Innovt.Contrib.Authorization.Platform.Tests
-  items:
-  - uid: Innovt.Contrib.Authorization.Platform.Tests.Tests
-    name: Tests
 - uid: Innovt.Core.Attributes
   name: Innovt.Core.Attributes
   items:
@@ -752,41 +607,6 @@ items:
   items:
   - uid: Innovt.Core.Serialization.Converters.DateTimeConverter
     name: DateTimeConverter
-- uid: Innovt.Core.Test
-  name: Innovt.Core.Test
-  items:
-  - uid: Innovt.Core.Test.CryptographyTests
-    name: CryptographyTests
-  - uid: Innovt.Core.Test.DeserializerFactoryTests
-    name: DeserializerFactoryTests
-  - uid: Innovt.Core.Test.ExtensionsTests
-    name: ExtensionsTests
-  - uid: Innovt.Core.Test.LocalCacheTests
-    name: LocalCacheTests
-  - uid: Innovt.Core.Test.MultiLayerCacheServiceTests
-    name: MultiLayerCacheServiceTests
-  - uid: Innovt.Core.Test.PasswordHelperTests
-    name: PasswordHelperTests
-  - uid: Innovt.Core.Test.SimpleMapTests
-    name: SimpleMapTests
-- uid: Innovt.Core.Test.Exceptions
-  name: Innovt.Core.Test.Exceptions
-  items:
-  - uid: Innovt.Core.Test.Exceptions.BusinessExceptionTests
-    name: BusinessExceptionTests
-- uid: Innovt.Core.Test.Models
-  name: Innovt.Core.Test.Models
-  items:
-  - uid: Innovt.Core.Test.Models.A
-    name: A
-  - uid: Innovt.Core.Test.Models.B
-    name: B
-  - uid: Innovt.Core.Test.Models.Invoice
-    name: Invoice
-  - uid: Innovt.Core.Test.Models.InvoiceDto
-    name: InvoiceDto
-  - uid: Innovt.Core.Test.Models.InvoiceDtoWithCustomMapper
-    name: InvoiceDtoWithCustomMapper
 - uid: Innovt.Core.Utilities
   name: Innovt.Core.Utilities
   items:
@@ -879,8 +699,6 @@ items:
 - uid: Innovt.CrossCutting.Log.Serilog
   name: Innovt.CrossCutting.Log.Serilog
   items:
-  - uid: Innovt.CrossCutting.Log.Serilog.ALoggerProvider
-    name: ALoggerProvider
   - uid: Innovt.CrossCutting.Log.Serilog.ActivityEnrich
     name: ActivityEnrich
   - uid: Innovt.CrossCutting.Log.Serilog.DataDogEnrich
@@ -891,11 +709,6 @@ items:
     name: Logger
   - uid: Innovt.CrossCutting.Log.Serilog.LoggerEnrichExtensions
     name: LoggerEnrichExtensions
-- uid: Innovt.CrossCutting.Log.Serilog.Tests
-  name: Innovt.CrossCutting.Log.Serilog.Tests
-  items:
-  - uid: Innovt.CrossCutting.Log.Serilog.Tests.Program
-    name: Program
 - uid: Innovt.Data.Ado
   name: Innovt.Data.Ado
   items:
@@ -907,20 +720,6 @@ items:
     name: IRepositoryBase
   - uid: Innovt.Data.Ado.RepositoryBase
     name: RepositoryBase
-- uid: Innovt.Data.Ado.Tests
-  name: Innovt.Data.Ado.Tests
-  items:
-  - uid: Innovt.Data.Ado.Tests.RepositoryBaseTests
-    name: RepositoryBaseTests
-  - uid: Innovt.Data.Ado.Tests.UserRepository
-    name: UserRepository
-- uid: Innovt.Data.Ado.Tests.Model
-  name: Innovt.Data.Ado.Tests.Model
-  items:
-  - uid: Innovt.Data.Ado.Tests.Model.User
-    name: User
-  - uid: Innovt.Data.Ado.Tests.Model.UserFilter
-    name: UserFilter
 - uid: Innovt.Data.DataModels
   name: Innovt.Data.DataModels
   items:
@@ -1012,23 +811,6 @@ items:
   items:
   - uid: Innovt.Data.Model.Provider
     name: Provider
-- uid: Innovt.Data.Tests
-  name: Innovt.Data.Tests
-  items:
-  - uid: Innovt.Data.Tests.DMContextTests
-    name: DMContextTests
-  - uid: Innovt.Data.Tests.DataModelTests
-    name: DataModelTests
-- uid: Innovt.Data.Tests.DataModel
-  name: Innovt.Data.Tests.DataModel
-  items:
-  - uid: Innovt.Data.Tests.DataModel.UserDataModel
-    name: UserDataModel
-- uid: Innovt.Data.Tests.Model
-  name: Innovt.Data.Tests.Model
-  items:
-  - uid: Innovt.Data.Tests.Model.User
-    name: User
 - uid: Innovt.Domain
   name: Innovt.Domain
   items:
@@ -1160,22 +942,6 @@ items:
     name: Permission
   - uid: Innovt.Domain.Security.Role
     name: Role
-- uid: Innovt.Domain.Tests
-  name: Innovt.Domain.Tests
-  items:
-  - uid: Innovt.Domain.Tests.AuthUserTests
-    name: AuthUserTests
-  - uid: Innovt.Domain.Tests.ContactTests
-    name: ContactTests
-  - uid: Innovt.Domain.Tests.EntityTests
-    name: EntityTests
-- uid: Innovt.Domain.Tests.Mocks
-  name: Innovt.Domain.Tests.Mocks
-  items:
-  - uid: Innovt.Domain.Tests.Mocks.UserCreated
-    name: UserCreated
-  - uid: Innovt.Domain.Tests.Mocks.UserEntity
-    name: UserEntity
 - uid: Innovt.Domain.Tracking
   name: Innovt.Domain.Tracking
   items:
@@ -1279,11 +1045,4 @@ items:
     name: LoggerActivityExporterExtensions
   - uid: Innovt.OpenTelemetry.TracerBuilderExtensions
     name: TracerBuilderExtensions
-- uid: Lambda.Sample
-  name: Lambda.Sample
-  items:
-  - uid: Lambda.Sample.Function
-    name: Function
-  - uid: Lambda.Sample.SampleEvent
-    name: SampleEvent
 memberLayout: SamePage

@@ -11,7 +11,7 @@ public class DefaultAWSConfigurationTests
     [Test]
     public void GetCredentialWithoutProfileReturnDefaultProfile()
     {
-        var configuration = new DefaultAWSConfiguration();
+        var configuration = new DefaultAwsConfiguration();
 
         Assert.That(configuration, Is.Not.Null);
 
@@ -24,7 +24,7 @@ public class DefaultAWSConfigurationTests
     [Test]
     public void GetCredentialWithInvalidProfileThrowsException()
     {
-        var configuration = new DefaultAWSConfiguration("invalidProfile");
+        var configuration = new DefaultAwsConfiguration("invalidProfile");
 
         Assert.That(configuration, Is.Not.Null);
 
@@ -35,7 +35,7 @@ public class DefaultAWSConfigurationTests
     [Test]
     public void GetCredentialWithAccessKeyAnSecretReturnsValidCredential()
     {
-        var configuration = new DefaultAWSConfiguration("accessKey", "secret", "us-east-1");
+        var configuration = new DefaultAwsConfiguration("accessKey", "secret", "us-east-1");
 
         Assert.That(configuration, Is.Not.Null);
 

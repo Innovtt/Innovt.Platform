@@ -46,9 +46,6 @@ items:
   - System.IDisposable
   inheritedMembers:
   - Innovt.Cloud.AWS.AwsBaseService.Configuration
-  - Innovt.Cloud.AWS.AwsBaseService.RetryCount
-  - Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerAllowedExceptions
-  - Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerDurationOfBreak
   - Innovt.Cloud.AWS.AwsBaseService.Logger
   - Innovt.Cloud.AWS.AwsBaseService.Dispose
   - Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
@@ -380,27 +377,6 @@ references:
   name: Configuration
   nameWithType: AwsBaseService.Configuration
   fullName: Innovt.Cloud.AWS.AwsBaseService.Configuration
-- uid: Innovt.Cloud.AWS.AwsBaseService.RetryCount
-  commentId: P:Innovt.Cloud.AWS.AwsBaseService.RetryCount
-  parent: Innovt.Cloud.AWS.AwsBaseService
-  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_RetryCount
-  name: RetryCount
-  nameWithType: AwsBaseService.RetryCount
-  fullName: Innovt.Cloud.AWS.AwsBaseService.RetryCount
-- uid: Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerAllowedExceptions
-  commentId: P:Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerAllowedExceptions
-  parent: Innovt.Cloud.AWS.AwsBaseService
-  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CircuitBreakerAllowedExceptions
-  name: CircuitBreakerAllowedExceptions
-  nameWithType: AwsBaseService.CircuitBreakerAllowedExceptions
-  fullName: Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerAllowedExceptions
-- uid: Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerDurationOfBreak
-  commentId: P:Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerDurationOfBreak
-  parent: Innovt.Cloud.AWS.AwsBaseService
-  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_CircuitBreakerDurationOfBreak
-  name: CircuitBreakerDurationOfBreak
-  nameWithType: AwsBaseService.CircuitBreakerDurationOfBreak
-  fullName: Innovt.Cloud.AWS.AwsBaseService.CircuitBreakerDurationOfBreak
 - uid: Innovt.Cloud.AWS.AwsBaseService.Logger
   commentId: P:Innovt.Cloud.AWS.AwsBaseService.Logger
   parent: Innovt.Cloud.AWS.AwsBaseService

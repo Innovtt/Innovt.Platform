@@ -1,0 +1,1428 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class Logger | Innovt Platform </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Logger | Innovt Platform ">
+      
+      <meta name="description" content="Implementation of  and  using Serilog.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_CrossCutting_Log_Serilog_Logger.md&amp;value=---%0Auid%3A%20Innovt.CrossCutting.Log.Serilog.Logger%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Innovt Platform">
+            Innovt Platform
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Innovt.CrossCutting.Log.Serilog.Logger">
+
+
+
+  <h1 id="Innovt_CrossCutting_Log_Serilog_Logger" data-uid="Innovt.CrossCutting.Log.Serilog.Logger" class="text-break">
+Class Logger  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Innovt.html">Innovt</a>.<a class="xref" href="Innovt.CrossCutting.html">CrossCutting</a>.<a class="xref" href="Innovt.CrossCutting.Log.html">Log</a>.<a class="xref" href="Innovt.CrossCutting.Log.Serilog.html">Serilog</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Innovt.CrossCutting.Log.Serilog.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Implementation of <a class="xref" href="Innovt.Core.CrossCutting.Log.ILogger.html">ILogger</a> and <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger">ILogger</a> using Serilog.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Logger : ILogger, ILogger</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">Logger</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Innovt.Core.CrossCutting.Log.ILogger.html">ILogger</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger">ILogger</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_">Extensions.IsNull(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_ToStringOrDefault_System_Object_">Extensions.ToStringOrDefault(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_">SimpleMapper.MapTo&lt;T1&gt;(object)</a>
+  </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger__ctor_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.#ctor*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger__ctor" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.#ctor">
+  Logger()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Innovt.CrossCutting.Log.Serilog.Logger.html">Logger</a> class using the default output template and Console sink.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Logger()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger__ctor_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.#ctor*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger__ctor_Serilog_Core_ILogEventEnricher_System_String_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.#ctor(Serilog.Core.ILogEventEnricher,System.String)">
+  Logger(ILogEventEnricher, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Innovt.CrossCutting.Log.Serilog.Logger.html">Logger</a> class with a specified log event enricher and console
+output template.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Logger(ILogEventEnricher logEventEnricher, string consoleOutputTemplate = &quot;{ {timestamp:@t, ..rest(), message:@m, eventid:@i, Exception:@x} }\n&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>logEventEnricher</code> <span class="xref">ILogEventEnricher</span></dt>
+    <dd><p>The log event enricher to be applied.</p>
+</dd>
+    <dt><code>consoleOutputTemplate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The console output template for log messages.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown when <code class="paramref">logEventEnricher</code> is null.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger__ctor_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.#ctor*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger__ctor_Serilog_Core_ILogEventEnricher___System_String_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.#ctor(Serilog.Core.ILogEventEnricher[],System.String)">
+  Logger(ILogEventEnricher[], string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Innovt.CrossCutting.Log.Serilog.Logger.html">Logger</a> class with specified log event enrichers and console output
+template.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Logger(ILogEventEnricher[] logEventEnricher, string consoleOutputTemplate = &quot;{ {timestamp:@t, ..rest(), message:@m, eventid:@i, Exception:@x} }\n&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>logEventEnricher</code> <span class="xref">ILogEventEnricher</span>[]</dt>
+    <dd><p>The log event enrichers to be applied.</p>
+</dd>
+    <dt><code>consoleOutputTemplate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The console output template for log messages.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown when <code class="paramref">logEventEnricher</code> is null.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger__ctor_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.#ctor*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger__ctor_Serilog_LoggerConfiguration_System_String_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.#ctor(Serilog.LoggerConfiguration,System.String)">
+  Logger(LoggerConfiguration, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Innovt.CrossCutting.Log.Serilog.Logger.html">Logger</a> class with a specified configuration and console output
+template.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Logger(LoggerConfiguration configuration, string consoleOutputTemplate = &quot;{ {timestamp:@t, ..rest(), message:@m, eventid:@i, Exception:@x} }\n&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>configuration</code> <span class="xref">LoggerConfiguration</span></dt>
+    <dd><p>The Serilog logger configuration.</p>
+</dd>
+    <dt><code>consoleOutputTemplate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The console output template for log messages.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown when <code class="paramref">configuration</code> is null.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger__ctor_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.#ctor*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger__ctor_System_String_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.#ctor(System.String)">
+  Logger(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Innovt.CrossCutting.Log.Serilog.Logger.html">Logger</a> class with a specified console output template.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Logger(string consoleOutputTemplate = &quot;{ {timestamp:@t, ..rest(), message:@m, eventid:@i, Exception:@x} }\n&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>consoleOutputTemplate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The console output template for log messages.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_DefaultOutputTemplate" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.DefaultOutputTemplate">
+  DefaultOutputTemplate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The default output template for log messages.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string DefaultOutputTemplate = &quot;{ {timestamp:@t, ..rest(), message:@m, eventid:@i, Exception:@x} }\n&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_BeginScope_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.BeginScope*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_BeginScope__1___0_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.BeginScope``1(``0)">
+  BeginScope&lt;TState&gt;(TState)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L457"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Begins a logical operation scope.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDisposable BeginScope&lt;TState&gt;(TState state)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>state</code> <span class="xref">TState</span></dt>
+    <dd><p>The state object for the scope.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></dt>
+    <dd><p>An IDisposable that ends the logical operation scope when disposed.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TState</code></dt>
+    <dd><p>The type of the state object.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Debug_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Debug*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Debug_System_Exception_System_String_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Debug(System.Exception,System.String)">
+  Debug(Exception, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L116"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes a debug log message with an exception and a message template.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Debug(Exception exception, string messageTemplate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>exception</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>The exception to include in the log message.</p>
+</dd>
+    <dt><code>messageTemplate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The message template for the log message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Debug_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Debug*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Debug_System_Exception_System_String_System_Object___" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Debug(System.Exception,System.String,System.Object[])">
+  Debug(Exception, string, params object[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L131"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes a debug log message with an exception, a message template, and additional property values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Debug(Exception exception, string messageTemplate, params object[] propertyValues)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>exception</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>The exception to include in the log message.</p>
+</dd>
+    <dt><code>messageTemplate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The message template for the log message.</p>
+</dd>
+    <dt><code>propertyValues</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd><p>Additional property values to include in the log message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Debug_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Debug*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Debug_System_String_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Debug(System.String)">
+  Debug(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L89"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes a debug log message.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Debug(string message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The log message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Debug_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Debug*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Debug_System_String_System_Object___" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Debug(System.String,System.Object[])">
+  Debug(string, params object[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L102"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes a debug log message using a message template and additional property values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Debug(string messageTemplate, params object[] propertyValues)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>messageTemplate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The message template for the log message.</p>
+</dd>
+    <dt><code>propertyValues</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd><p>Additional property values to include in the log message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Error_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Error*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Error_System_Exception_System_String_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Error(System.Exception,System.String)">
+  Error(Exception, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L169"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes an error log message with an exception and a message template.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Error(Exception exception, string messageTemplate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>exception</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>The exception to include in the log message.</p>
+</dd>
+    <dt><code>messageTemplate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The message template for the log message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Error_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Error*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Error_System_Exception_System_String_System_Object___" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Error(System.Exception,System.String,System.Object[])">
+  Error(Exception, string, params object[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L184"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes an error log message with an exception, a message template, and additional property values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Error(Exception exception, string messageTemplate, params object[] propertyValues)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>exception</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>The exception to include in the log message.</p>
+</dd>
+    <dt><code>messageTemplate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The message template for the log message.</p>
+</dd>
+    <dt><code>propertyValues</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd><p>Additional property values to include in the log message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Error_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Error*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Error_System_String_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Error(System.String)">
+  Error(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L143"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes an error log message.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Error(string message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The log message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Error_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Error*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Error_System_String_System_Object___" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Error(System.String,System.Object[])">
+  Error(string, params object[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L156"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes an error log message using a message template and additional property values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Error(string messageTemplate, params object[] propertyValues)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>messageTemplate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The message template for the log message.</p>
+</dd>
+    <dt><code>propertyValues</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd><p>Additional property values to include in the log message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Fatal_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Fatal*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Fatal_System_Exception_System_String_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Fatal(System.Exception,System.String)">
+  Fatal(Exception, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L223"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes a fatal log message with an exception and a message template.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Fatal(Exception exception, string messageTemplate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>exception</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>The exception to include in the log message.</p>
+</dd>
+    <dt><code>messageTemplate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The message template for the log message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Fatal_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Fatal*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Fatal_System_Exception_System_String_System_Object___" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Fatal(System.Exception,System.String,System.Object[])">
+  Fatal(Exception, string, params object[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L237"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes a fatal log message with an exception, a message template, and additional property values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Fatal(Exception exception, string messageTemplate, params object[] propertyValues)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>exception</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>The exception to include in the log message.</p>
+</dd>
+    <dt><code>messageTemplate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The message template for the log message.</p>
+</dd>
+    <dt><code>propertyValues</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd><p>Additional property values to include in the log message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Fatal_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Fatal*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Fatal_System_String_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Fatal(System.String)">
+  Fatal(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L196"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes a fatal log message.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Fatal(string message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The log message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Fatal_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Fatal*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Fatal_System_String_System_Object___" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Fatal(System.String,System.Object[])">
+  Fatal(string, params object[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L210"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes a fatal log message using a message template and additional property values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Fatal(string messageTemplate, params object[] propertyValues)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>messageTemplate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The message template for the log message.</p>
+</dd>
+    <dt><code>propertyValues</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd><p>Additional property values to include in the log message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Info_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Info*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Info_System_Exception_System_String_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Info(System.Exception,System.String)">
+  Info(Exception, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L275"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes an informational log message with an exception and a message template.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Info(Exception exception, string messageTemplate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>exception</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>The exception to include in the log message.</p>
+</dd>
+    <dt><code>messageTemplate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The message template for the log message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Info_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Info*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Info_System_Exception_System_String_System_Object___" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Info(System.Exception,System.String,System.Object[])">
+  Info(Exception, string, params object[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L289"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes an informational log message with an exception, a message template, and additional property values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Info(Exception exception, string messageTemplate, params object[] propertyValues)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>exception</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>The exception to include in the log message.</p>
+</dd>
+    <dt><code>messageTemplate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The message template for the log message.</p>
+</dd>
+    <dt><code>propertyValues</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd><p>Additional property values to include in the log message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Info_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Info*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Info_System_String_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Info(System.String)">
+  Info(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L249"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes an informational log message.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Info(string message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The log message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Info_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Info*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Info_System_String_System_Object___" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Info(System.String,System.Object[])">
+  Info(string, params object[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L262"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes an informational log message using a message template and additional property values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Info(string messageTemplate, params object[] propertyValues)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>messageTemplate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The message template for the log message.</p>
+</dd>
+    <dt><code>propertyValues</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd><p>Additional property values to include in the log message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_IsEnabled_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.IsEnabled*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_IsEnabled_Microsoft_Extensions_Logging_LogLevel_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel)">
+  IsEnabled(LogLevel)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L446"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if logging is enabled for the specified log level.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsEnabled(LogLevel logLevel)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>logLevel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.loglevel">LogLevel</a></dt>
+    <dd><p>The log level to check.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if logging is enabled for the specified log level; otherwise, false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Log_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Log*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Log__1_Microsoft_Extensions_Logging_LogLevel_Microsoft_Extensions_Logging_EventId___0_System_Exception_System_Func___0_System_Exception_System_String__" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})">
+  Log&lt;TState&gt;(LogLevel, EventId, TState, Exception, Func&lt;TState, Exception, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L410"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes a log message based on the specified log level, event ID, state, exception, and formatter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Log&lt;TState&gt;(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func&lt;TState, Exception, string&gt; formatter)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>logLevel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.loglevel">LogLevel</a></dt>
+    <dd><p>The log level.</p>
+</dd>
+    <dt><code>eventId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.eventid">EventId</a></dt>
+    <dd><p>The event ID.</p>
+</dd>
+    <dt><code>state</code> <span class="xref">TState</span></dt>
+    <dd><p>The state object.</p>
+</dd>
+    <dt><code>exception</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>The exception associated with the log message.</p>
+</dd>
+    <dt><code>formatter</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;TState, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>A delegate that formats the log message.</p>
+</dd>
+  </dl>
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TState</code></dt>
+    <dd><p>The type of the state object.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Verbose_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Verbose*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Verbose_System_Exception_System_String_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Verbose(System.Exception,System.String)">
+  Verbose(Exception, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L327"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes a verbose log message with an exception and a message template.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Verbose(Exception exception, string messageTemplate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>exception</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>The exception to include in the log message.</p>
+</dd>
+    <dt><code>messageTemplate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The message template for the log message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Verbose_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Verbose*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Verbose_System_Exception_System_String_System_Object___" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Verbose(System.Exception,System.String,System.Object[])">
+  Verbose(Exception, string, params object[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L341"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes a verbose log message with an exception, a message template, and additional property values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Verbose(Exception exception, string messageTemplate, params object[] propertyValues)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>exception</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>The exception to include in the log message.</p>
+</dd>
+    <dt><code>messageTemplate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The message template for the log message.</p>
+</dd>
+    <dt><code>propertyValues</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd><p>Additional property values to include in the log message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Verbose_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Verbose*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Verbose_System_String_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Verbose(System.String)">
+  Verbose(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L301"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes a verbose log message.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Verbose(string message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The log message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Verbose_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Verbose*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Verbose_System_String_System_Object___" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Verbose(System.String,System.Object[])">
+  Verbose(string, params object[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L314"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes a verbose log message using a message template and additional property values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Verbose(string messageTemplate, params object[] propertyValues)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>messageTemplate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The message template for the log message.</p>
+</dd>
+    <dt><code>propertyValues</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd><p>Additional property values to include in the log message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Warning_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Warning*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Warning_System_Exception_System_String_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Warning(System.Exception,System.String)">
+  Warning(Exception, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L379"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes a warning log message with an exception and a message template.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Warning(Exception exception, string messageTemplate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>exception</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>The exception to include in the log message.</p>
+</dd>
+    <dt><code>messageTemplate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The message template for the log message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Warning_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Warning*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Warning_System_Exception_System_String_System_Object___" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Warning(System.Exception,System.String,System.Object[])">
+  Warning(Exception, string, params object[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L393"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes a warning log message with an exception, a message template, and additional property values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Warning(Exception exception, string messageTemplate, params object[] propertyValues)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>exception</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>The exception to include in the log message.</p>
+</dd>
+    <dt><code>messageTemplate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The message template for the log message.</p>
+</dd>
+    <dt><code>propertyValues</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd><p>Additional property values to include in the log message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Warning_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Warning*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Warning_System_String_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Warning(System.String)">
+  Warning(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L353"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes a warning log message.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Warning(string message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The log message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Innovt_CrossCutting_Log_Serilog_Logger_Warning_" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Warning*"></a>
+
+  <h3 id="Innovt_CrossCutting_Log_Serilog_Logger_Warning_System_String_System_Object___" data-uid="Innovt.CrossCutting.Log.Serilog.Logger.Warning(System.String,System.Object[])">
+  Warning(string, params object[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L366"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes a warning log message using a message template and additional property values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Warning(string messageTemplate, params object[] propertyValues)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>messageTemplate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The message template for the log message.</p>
+</dd>
+    <dt><code>propertyValues</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd><p>Additional property values to include in the log message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.CrossCutting.Log.Serilog/Logger.cs/#L18" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

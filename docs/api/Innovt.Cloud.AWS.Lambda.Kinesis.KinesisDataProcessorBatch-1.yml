@@ -46,7 +46,6 @@ items:
   - Innovt.Cloud.AWS.Lambda.Kinesis.KinesisProcessorBase{{TBody}}
   derivedClasses:
   - Innovt.Cloud.AWS.Lambda.Kinesis.KinesisDataProcessor`1
-  - Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors.KinesisDataInvoiceProcessorBatch
   inheritedMembers:
   - Innovt.Cloud.AWS.Lambda.Kinesis.KinesisProcessorBase{{TBody}}.ReportBatchFailures
   - Innovt.Cloud.AWS.Lambda.Kinesis.KinesisProcessorBase{{TBody}}.IsEmptyMessage({TBody})
