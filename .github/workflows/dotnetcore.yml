@@ -57,7 +57,7 @@ jobs:
         working-directory: src
         run: | 
           dotnet tool update -g docfx
-          docfx /docs/docfx.json
+          docfx "docs/docfx.json"
       - name: PublishDocs
         if: github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3
