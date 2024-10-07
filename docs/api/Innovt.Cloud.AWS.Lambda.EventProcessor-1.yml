@@ -40,7 +40,6 @@ items:
   - Innovt.Cloud.AWS.Lambda.BaseEventProcessor
   derivedClasses:
   - Innovt.Cloud.AWS.Lambda.S3.S3EventProcessor
-  - Innovt.Cloud.AWS.Lambda.Tests.CustomEventProcessor
   inheritedMembers:
   - Innovt.Cloud.AWS.Lambda.BaseEventProcessor.EventProcessorActivitySource
   - Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Logger

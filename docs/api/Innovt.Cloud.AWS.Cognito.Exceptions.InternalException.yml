@@ -83,15 +83,18 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: .ctor
     path: ../src/Innovt.Cloud.AWS.Cognito/Exceptions/InternalException.cs
-    startLine: 18
+    startLine: 16
   assemblies:
   - Innovt.Cloud.AWS.Cognito
   namespace: Innovt.Cloud.AWS.Cognito.Exceptions
+  summary: Initializes a new instance of the <xref href="Innovt.Cloud.AWS.Cognito.Exceptions.InternalException" data-throw-if-not-resolved="false"></xref> class with a specified error message.
+  example: []
   syntax:
     content: public InternalException(string message)
     parameters:
     - id: message
       type: System.String
+      description: The error message that describes the exception.
     content.vb: Public Sub New(message As String)
   overload: Innovt.Cloud.AWS.Cognito.Exceptions.InternalException.#ctor*
   nameWithType.vb: InternalException.New(String)
@@ -115,7 +118,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: .ctor
     path: ../src/Innovt.Cloud.AWS.Cognito/Exceptions/InternalException.cs
-    startLine: 28
+    startLine: 25
   assemblies:
   - Innovt.Cloud.AWS.Cognito
   namespace: Innovt.Cloud.AWS.Cognito.Exceptions
@@ -156,7 +159,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: .ctor
     path: ../src/Innovt.Cloud.AWS.Cognito/Exceptions/InternalException.cs
-    startLine: 37
+    startLine: 34
   assemblies:
   - Innovt.Cloud.AWS.Cognito
   namespace: Innovt.Cloud.AWS.Cognito.Exceptions
@@ -194,7 +197,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: .ctor
     path: ../src/Innovt.Cloud.AWS.Cognito/Exceptions/InternalException.cs
-    startLine: 52
+    startLine: 49
   assemblies:
   - Innovt.Cloud.AWS.Cognito
   namespace: Innovt.Cloud.AWS.Cognito.Exceptions
@@ -1014,6 +1017,12 @@ references:
   - uid: Innovt.Core.Utilities.Mapper
     name: Mapper
     href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Cloud.AWS.Cognito.Exceptions.InternalException
+  commentId: T:Innovt.Cloud.AWS.Cognito.Exceptions.InternalException
+  href: Innovt.Cloud.AWS.Cognito.Exceptions.InternalException.html
+  name: InternalException
+  nameWithType: InternalException
+  fullName: Innovt.Cloud.AWS.Cognito.Exceptions.InternalException
 - uid: Innovt.Cloud.AWS.Cognito.Exceptions.InternalException.#ctor*
   commentId: Overload:Innovt.Cloud.AWS.Cognito.Exceptions.InternalException.#ctor
   href: Innovt.Cloud.AWS.Cognito.Exceptions.InternalException.html#Innovt_Cloud_AWS_Cognito_Exceptions_InternalException__ctor_System_String_
@@ -1034,12 +1043,6 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
-- uid: Innovt.Cloud.AWS.Cognito.Exceptions.InternalException
-  commentId: T:Innovt.Cloud.AWS.Cognito.Exceptions.InternalException
-  href: Innovt.Cloud.AWS.Cognito.Exceptions.InternalException.html
-  name: InternalException
-  nameWithType: InternalException
-  fullName: Innovt.Cloud.AWS.Cognito.Exceptions.InternalException
 - uid: System.Runtime.Serialization.SerializationInfo
   commentId: T:System.Runtime.Serialization.SerializationInfo
   parent: System.Runtime.Serialization

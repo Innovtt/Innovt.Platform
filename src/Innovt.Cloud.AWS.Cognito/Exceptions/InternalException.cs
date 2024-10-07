@@ -10,10 +10,8 @@ namespace Innovt.Cloud.AWS.Cognito.Exceptions;
 /// </summary>
 public class InternalException : CriticalException
 {
-    // <summary>
-    /// Initializes a new instance of the
-    /// <see cref="InternalException" />
-    /// class with a specified error message.
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="InternalException" /> class with a specified error message.
     /// </summary>
     /// <param name="message">The error message that describes the exception.</param>
     public InternalException(string message) : base(message)

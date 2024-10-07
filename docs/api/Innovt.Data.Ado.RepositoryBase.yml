@@ -46,8 +46,6 @@ items:
     content.vb: Public Class RepositoryBase Implements IRepositoryBase
   inheritance:
   - System.Object
-  derivedClasses:
-  - Innovt.Data.Ado.Tests.UserRepository
   implements:
   - Innovt.Data.Ado.IRepositoryBase
   inheritedMembers:
@@ -1570,7 +1568,6 @@ references:
     href: Innovt.Core.Utilities.Mapper.html
 - uid: Innovt.Data.Ado.RepositoryBase
   commentId: T:Innovt.Data.Ado.RepositoryBase
-  parent: Innovt.Data.Ado
   href: Innovt.Data.Ado.RepositoryBase.html
   name: RepositoryBase
   nameWithType: RepositoryBase

@@ -50,9 +50,6 @@ items:
   - System.Object
   - Innovt.Cloud.AWS.Lambda.BaseEventProcessor
   - Innovt.Cloud.AWS.Lambda.EventProcessor{Amazon.Lambda.SQSEvents.SQSEvent,Innovt.Cloud.AWS.Lambda.BatchFailureResponse}
-  derivedClasses:
-  - Innovt.Cloud.AWS.Lambda.Sqs.Tests.CustomSqsEventProcessor
-  - Lambda.Sample.Function
   inheritedMembers:
   - Innovt.Cloud.AWS.Lambda.EventProcessor{Amazon.Lambda.SQSEvents.SQSEvent,Innovt.Cloud.AWS.Lambda.BatchFailureResponse}.Process(Amazon.Lambda.SQSEvents.SQSEvent,Amazon.Lambda.Core.ILambdaContext)
   - Innovt.Cloud.AWS.Lambda.EventProcessor{Amazon.Lambda.SQSEvents.SQSEvent,Innovt.Cloud.AWS.Lambda.BatchFailureResponse}.Handle(Amazon.Lambda.SQSEvents.SQSEvent,Amazon.Lambda.Core.ILambdaContext)

@@ -5,13 +5,19 @@
         {
           "src": "../src",
           "files": [
-            "**/*.csproj",
-            "!**/*Test*.csproj",
-            "!**/*Tests*.csproj"
+            "**/*.csproj"
+          ],
+          "exclude": [
+            "**/*Tests.csproj",
+            "**/*Test.csproj",
+             "**/*Sample.csproj"
           ]
         }
       ],
-      "dest": "api"
+      "dest": "api",
+      "properties": {
+        "ProduceReferenceAssembly": true
+      }
     }
   ],
   "build": {

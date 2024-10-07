@@ -26,7 +26,7 @@ public class AuthorizationModule : IocModule
     {
         Services.AddScoped<IAuthorizationAppService, AuthorizationAppService>();
         Services.AddScoped<IAuthorizationRepository, AuthorizationRepository>();
-        Services.TryAddScoped<IAwsConfiguration, DefaultAWSConfiguration>();
+        Services.TryAddScoped<IAwsConfiguration, DefaultAwsConfiguration>();
         Services.TryAddScoped<ILogger, Logger>();
     }
 }

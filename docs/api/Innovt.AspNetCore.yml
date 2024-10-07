@@ -18,7 +18,6 @@ items:
 references:
 - uid: Innovt.AspNetCore.ApiStartupBase
   commentId: T:Innovt.AspNetCore.ApiStartupBase
-  parent: Innovt.AspNetCore
   href: Innovt.AspNetCore.ApiStartupBase.html
   name: ApiStartupBase
   nameWithType: ApiStartupBase
@@ -29,25 +28,3 @@ references:
   name: Constants
   nameWithType: Constants
   fullName: Innovt.AspNetCore.Constants
-- uid: Innovt.AspNetCore
-  commentId: N:Innovt.AspNetCore
-  href: Innovt.html
-  name: Innovt.AspNetCore
-  nameWithType: Innovt.AspNetCore
-  fullName: Innovt.AspNetCore
-  spec.csharp:
-  - uid: Innovt
-    name: Innovt
-    href: Innovt.html
-  - name: .
-  - uid: Innovt.AspNetCore
-    name: AspNetCore
-    href: Innovt.AspNetCore.html
-  spec.vb:
-  - uid: Innovt
-    name: Innovt
-    href: Innovt.html
-  - name: .
-  - uid: Innovt.AspNetCore
-    name: AspNetCore
-    href: Innovt.AspNetCore.html

@@ -14,6 +14,8 @@ items:
   - Innovt.Domain.Core.Model.Entity.GetHashCode
   - Innovt.Domain.Core.Model.Entity.Id
   - Innovt.Domain.Core.Model.Entity.IsNew
+  - Innovt.Domain.Core.Model.Entity.SetAsNew
+  - Innovt.Domain.Core.Model.Entity.UpdatedAt
   langs:
   - csharp
   - vb
@@ -42,7 +44,6 @@ items:
   derivedClasses:
   - Innovt.Domain.Core.Model.Entity`1
   - Innovt.Domain.Security.AuthUser
-  - Innovt.Domain.Tests.Mocks.UserEntity
   - Innovt.Domain.Users.BaseUser
   inheritedMembers:
   - System.Object.Equals(System.Object,System.Object)
@@ -72,7 +73,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: .ctor
     path: ../src/Innovt.Domain.Core/Model/Entity.cs
-    startLine: 21
+    startLine: 22
   assemblies:
   - Innovt.Domain.Core
   namespace: Innovt.Domain.Core.Model
@@ -103,7 +104,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: .ctor
     path: ../src/Innovt.Domain.Core/Model/Entity.cs
-    startLine: 31
+    startLine: 33
   assemblies:
   - Innovt.Domain.Core
   namespace: Innovt.Domain.Core.Model
@@ -138,7 +139,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: Id
     path: ../src/Innovt.Domain.Core/Model/Entity.cs
-    startLine: 39
+    startLine: 41
   assemblies:
   - Innovt.Domain.Core
   namespace: Innovt.Domain.Core.Model
@@ -169,19 +170,50 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: CreatedAt
     path: ../src/Innovt.Domain.Core/Model/Entity.cs
-    startLine: 44
+    startLine: 46
   assemblies:
   - Innovt.Domain.Core
   namespace: Innovt.Domain.Core.Model
   summary: Gets or sets the date and time when the entity was created.
   example: []
   syntax:
-    content: public DateTimeOffset? CreatedAt { get; set; }
+    content: public DateTimeOffset CreatedAt { get; set; }
     parameters: []
     return:
-      type: System.Nullable{System.DateTimeOffset}
-    content.vb: Public Property CreatedAt As DateTimeOffset?
+      type: System.DateTimeOffset
+    content.vb: Public Property CreatedAt As DateTimeOffset
   overload: Innovt.Domain.Core.Model.Entity.CreatedAt*
+- uid: Innovt.Domain.Core.Model.Entity.UpdatedAt
+  commentId: P:Innovt.Domain.Core.Model.Entity.UpdatedAt
+  id: UpdatedAt
+  parent: Innovt.Domain.Core.Model.Entity
+  langs:
+  - csharp
+  - vb
+  name: UpdatedAt
+  nameWithType: Entity.UpdatedAt
+  fullName: Innovt.Domain.Core.Model.Entity.UpdatedAt
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Model/Entity.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: UpdatedAt
+    path: ../src/Innovt.Domain.Core/Model/Entity.cs
+    startLine: 51
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Model
+  summary: Gets or sets the date and time when the entity was last updated.
+  example: []
+  syntax:
+    content: public DateTimeOffset UpdatedAt { get; set; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property UpdatedAt As DateTimeOffset
+  overload: Innovt.Domain.Core.Model.Entity.UpdatedAt*
 - uid: Innovt.Domain.Core.Model.Entity.IsNew
   commentId: M:Innovt.Domain.Core.Model.Entity.IsNew
   id: IsNew
@@ -200,7 +232,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: IsNew
     path: ../src/Innovt.Domain.Core/Model/Entity.cs
-    startLine: 50
+    startLine: 57
   assemblies:
   - Innovt.Domain.Core
   namespace: Innovt.Domain.Core.Model
@@ -213,6 +245,37 @@ items:
       description: <code>true</code> if the entity is new; otherwise, <code>false</code>.
     content.vb: Public Function IsNew() As Boolean
   overload: Innovt.Domain.Core.Model.Entity.IsNew*
+- uid: Innovt.Domain.Core.Model.Entity.SetAsNew
+  commentId: M:Innovt.Domain.Core.Model.Entity.SetAsNew
+  id: SetAsNew
+  parent: Innovt.Domain.Core.Model.Entity
+  langs:
+  - csharp
+  - vb
+  name: SetAsNew()
+  nameWithType: Entity.SetAsNew()
+  fullName: Innovt.Domain.Core.Model.Entity.SetAsNew()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Domain.Core/Model/Entity.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: SetAsNew
+    path: ../src/Innovt.Domain.Core/Model/Entity.cs
+    startLine: 65
+  assemblies:
+  - Innovt.Domain.Core
+  namespace: Innovt.Domain.Core.Model
+  summary: ''
+  example: []
+  syntax:
+    content: public Entity SetAsNew()
+    return:
+      type: Innovt.Domain.Core.Model.Entity
+      description: ''
+    content.vb: Public Function SetAsNew() As Entity
+  overload: Innovt.Domain.Core.Model.Entity.SetAsNew*
 - uid: Innovt.Domain.Core.Model.Entity.GetHashCode
   commentId: M:Innovt.Domain.Core.Model.Entity.GetHashCode
   id: GetHashCode
@@ -231,7 +294,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: GetHashCode
     path: ../src/Innovt.Domain.Core/Model/Entity.cs
-    startLine: 56
+    startLine: 72
   assemblies:
   - Innovt.Domain.Core
   namespace: Innovt.Domain.Core.Model
@@ -252,9 +315,9 @@ items:
   langs:
   - csharp
   - vb
-  name: Equals(object)
-  nameWithType: Entity.Equals(object)
-  fullName: Innovt.Domain.Core.Model.Entity.Equals(object)
+  name: Equals(object?)
+  nameWithType: Entity.Equals(object?)
+  fullName: Innovt.Domain.Core.Model.Entity.Equals(object?)
   type: Method
   source:
     remote:
@@ -263,14 +326,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: Equals
     path: ../src/Innovt.Domain.Core/Model/Entity.cs
-    startLine: 62
+    startLine: 78
   assemblies:
   - Innovt.Domain.Core
   namespace: Innovt.Domain.Core.Model
   summary: Determines whether the specified object is equal to the current object.
   example: []
   syntax:
-    content: public override bool Equals(object obj)
+    content: public override bool Equals(object? obj)
     parameters:
     - id: obj
       type: System.Object
@@ -302,7 +365,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: AddDomainEvent
     path: ../src/Innovt.Domain.Core/Model/Entity.cs
-    startLine: 73
+    startLine: 89
   assemblies:
   - Innovt.Domain.Core
   namespace: Innovt.Domain.Core.Model
@@ -336,7 +399,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: GetDomainEvents
     path: ../src/Innovt.Domain.Core/Model/Entity.cs
-    startLine: 87
+    startLine: 103
   assemblies:
   - Innovt.Domain.Core
   namespace: Innovt.Domain.Core.Model
@@ -888,54 +951,20 @@ references:
   name: CreatedAt
   nameWithType: Entity.CreatedAt
   fullName: Innovt.Domain.Core.Model.Entity.CreatedAt
-- uid: System.Nullable{System.DateTimeOffset}
-  commentId: T:System.Nullable{System.DateTimeOffset}
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
   parent: System
-  definition: System.Nullable`1
-  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
-  name: DateTimeOffset?
-  nameWithType: DateTimeOffset?
-  fullName: System.DateTimeOffset?
-  spec.csharp:
-  - uid: System.DateTimeOffset
-    name: DateTimeOffset
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
-  - name: '?'
-  spec.vb:
-  - uid: System.DateTimeOffset
-    name: DateTimeOffset
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
-  - name: '?'
-- uid: System.Nullable`1
-  commentId: T:System.Nullable`1
   isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
-  name: Nullable<T>
-  nameWithType: Nullable<T>
-  fullName: System.Nullable<T>
-  nameWithType.vb: Nullable(Of T)
-  fullName.vb: System.Nullable(Of T)
-  name.vb: Nullable(Of T)
-  spec.csharp:
-  - uid: System.Nullable`1
-    name: Nullable
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
-  - name: <
-  - name: T
-  - name: '>'
-  spec.vb:
-  - uid: System.Nullable`1
-    name: Nullable
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: Innovt.Domain.Core.Model.Entity.UpdatedAt*
+  commentId: Overload:Innovt.Domain.Core.Model.Entity.UpdatedAt
+  href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_UpdatedAt
+  name: UpdatedAt
+  nameWithType: Entity.UpdatedAt
+  fullName: Innovt.Domain.Core.Model.Entity.UpdatedAt
 - uid: Innovt.Domain.Core.Model.Entity.IsNew*
   commentId: Overload:Innovt.Domain.Core.Model.Entity.IsNew
   href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_IsNew
@@ -953,6 +982,12 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
+- uid: Innovt.Domain.Core.Model.Entity.SetAsNew*
+  commentId: Overload:Innovt.Domain.Core.Model.Entity.SetAsNew
+  href: Innovt.Domain.Core.Model.Entity.html#Innovt_Domain_Core_Model_Entity_SetAsNew
+  name: SetAsNew
+  nameWithType: Entity.SetAsNew
+  fullName: Innovt.Domain.Core.Model.Entity.SetAsNew
 - uid: System.Object.GetHashCode
   commentId: M:System.Object.GetHashCode
   parent: System.Object

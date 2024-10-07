@@ -22,31 +22,19 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: IConfiguration
     path: ../src/Innovt.Cloud/IConfiguration.cs
-    startLine: 11
+    startLine: 9
   assemblies:
   - Innovt.Cloud
   namespace: Innovt.Cloud
   summary: Interface to be used for configuration
   example: []
   syntax:
-    content: >-
-      [CLSCompliant(true)]
-
-      public interface IConfiguration
-    content.vb: >-
-      <CLSCompliant(True)>
-
-      Public Interface IConfiguration
+    content: public interface IConfiguration
+    content.vb: Public Interface IConfiguration
   extensionMethods:
   - System.Object.Innovt.Core.Utilities.Extensions.IsNull
   - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
   - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
-  attributes:
-  - type: System.CLSCompliantAttribute
-    ctor: System.CLSCompliantAttribute.#ctor(System.Boolean)
-    arguments:
-    - type: System.Boolean
-      value: true
 - uid: Innovt.Cloud.IConfiguration.SecretKey
   commentId: P:Innovt.Cloud.IConfiguration.SecretKey
   id: SecretKey
@@ -65,7 +53,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: SecretKey
     path: ../src/Innovt.Cloud/IConfiguration.cs
-    startLine: 17
+    startLine: 14
   assemblies:
   - Innovt.Cloud
   namespace: Innovt.Cloud
@@ -96,7 +84,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: AccessKey
     path: ../src/Innovt.Cloud/IConfiguration.cs
-    startLine: 22
+    startLine: 19
   assemblies:
   - Innovt.Cloud
   namespace: Innovt.Cloud
@@ -127,7 +115,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: Region
     path: ../src/Innovt.Cloud/IConfiguration.cs
-    startLine: 27
+    startLine: 24
   assemblies:
   - Innovt.Cloud
   namespace: Innovt.Cloud

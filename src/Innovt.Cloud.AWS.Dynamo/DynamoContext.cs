@@ -1,8 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Amazon.DynamoDBv2.DataModel;
-using Innovt.Cloud.AWS.Dynamo.Exceptions;
 using Innovt.Cloud.AWS.Dynamo.Mapping;
 using Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 
@@ -14,63 +12,58 @@ namespace Innovt.Cloud.AWS.Dynamo;
 public abstract class DynamoContext
 {
     private static readonly object ObjLock = new();
-    private ModelBuilder modelBuilder = null!;
 
     protected DynamoContext()
     {
         BuildModel();
     }
 
-    public Dictionary<string, object> Entities => modelBuilder.Entities;
+    public ModelBuilder ModelBuilder { get; private set; }
+
+    /// <summary>
+    ///     It tells the context to ignore null properties when saving an entity.
+    /// </summary>
+    public bool IgnoreNullValues { get; set; } = true;
 
     private void BuildModel()
     {
         lock (ObjLock)
         {
-            if (modelBuilder != null)
+            if (ModelBuilder != null)
                 return;
 
-            modelBuilder = new ModelBuilder();
+            ModelBuilder = new ModelBuilder();
 
-            OnModelCreating(modelBuilder);
+            OnModelCreating(ModelBuilder);
         }
-    }
-
-    private static Type GetEntityType<T>()
-    {
-        return typeof(T);
-    }
-
-    private static string GetEntityName<T>()
-    {
-        var instanceType = GetEntityType<T>();
-
-        return instanceType.Name;
-    }
-
-    public bool HasTypeBuilder<T>()
-    {
-        var entityName = GetEntityName<T>();
-
-        return Entities.TryGetValue(entityName, out var value);
     }
 
     public EntityTypeBuilder<T> GetTypeBuilder<T>()
     {
-        var entityName = GetEntityName<T>();
-
-        if (!Entities.TryGetValue(entityName, out var value))
-            throw new MissingEntityMapException(entityName);
-
-        if (value is EntityTypeBuilder<T> entityTypeBuilder) return entityTypeBuilder;
-
-        throw new MissingEntityMapException(entityName);
+        return ModelBuilder?.GetTypeBuilder<T>();
     }
 
     public IPropertyConverter GetPropertyConverter(Type type)
     {
-        return modelBuilder?.Converters?.GetValueOrDefault(type);
+        return ModelBuilder?.GetPropertyConverter(type);
     }
+
+    public bool HasTypeBuilder(Type type)
+    {
+        return ModelBuilder.HasTypeBuilder(type);
+    }
+
+    /// <summary>
+    ///     Utility method to add a new entity to the context
+    /// </summary>
+    /// <param name="instance"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    public bool HasTypeBuilder<T>(object instance = null)
+    {
+        return ModelBuilder.HasTypeBuilder<T>(instance);
+    }
+
 
     protected abstract void OnModelCreating([DisallowNull] ModelBuilder modelBuilder);
 }

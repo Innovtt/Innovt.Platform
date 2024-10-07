@@ -4,9 +4,9 @@ items:
   commentId: N:Innovt.Cloud.AWS.Configuration
   id: Innovt.Cloud.AWS.Configuration
   children:
-  - Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration
-  - Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
-  - Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration
+  - Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration
+  - Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
+  - Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration
   - Innovt.Cloud.AWS.Configuration.IAwsConfiguration
   langs:
   - csharp
@@ -18,25 +18,25 @@ items:
   assemblies:
   - Innovt.Cloud.AWS
 references:
-- uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration
-  commentId: T:Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration
-  href: Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.html
-  name: AssumeRoleAWSConfiguration
-  nameWithType: AssumeRoleAWSConfiguration
-  fullName: Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration
-- uid: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
-  commentId: T:Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
-  href: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html
-  name: DefaultAWSConfiguration
-  nameWithType: DefaultAWSConfiguration
-  fullName: Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration
-- uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration
-  commentId: T:Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration
+- uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration
+  commentId: T:Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration
+  href: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.html
+  name: AssumeRoleAwsConfiguration
+  nameWithType: AssumeRoleAwsConfiguration
+  fullName: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration
+- uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
+  commentId: T:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
+  href: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html
+  name: DefaultAwsConfiguration
+  nameWithType: DefaultAwsConfiguration
+  fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
+- uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration
+  commentId: T:Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration
   parent: Innovt.Cloud.AWS.Configuration
-  href: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.html
-  name: IAssumeRoleAWSConfiguration
-  nameWithType: IAssumeRoleAWSConfiguration
-  fullName: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration
+  href: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.html
+  name: IAssumeRoleAwsConfiguration
+  nameWithType: IAssumeRoleAwsConfiguration
+  fullName: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration
 - uid: Innovt.Cloud.AWS.Configuration.IAwsConfiguration
   commentId: T:Innovt.Cloud.AWS.Configuration.IAwsConfiguration
   parent: Innovt.Cloud.AWS.Configuration

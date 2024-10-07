@@ -9,5 +9,7 @@ public class Company : ITableMessage
 {
     public string Name { get; set; }
 
+    public User User { get; set; }
+
     public string Id { get; set; }
 }

@@ -2,15 +2,17 @@
 // Author: Michel Borges
 // Project: Innovt.Cloud.AWS
 
+using System;
 using Amazon.Runtime;
 
 namespace Innovt.Cloud.AWS.Configuration;
 
+[CLSCompliant(false)]
 public interface IAwsConfiguration : IConfiguration
 {
-    string AccountNumber { get; set; }
+    public string AccountNumber { get; set; }
 
-    string Profile { get; set; }
+    public string Profile { get; set; }
 
     public AWSCredentials GetCredential();
 }

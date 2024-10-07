@@ -18,7 +18,6 @@ items:
 references:
 - uid: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
   commentId: T:Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider
-  parent: Innovt.Cloud.AWS.Cognito
   href: Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.html
   name: CognitoIdentityProvider
   nameWithType: CognitoIdentityProvider

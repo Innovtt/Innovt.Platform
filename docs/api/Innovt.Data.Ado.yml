@@ -40,7 +40,6 @@ references:
   fullName: Innovt.Data.Ado.IRepositoryBase
 - uid: Innovt.Data.Ado.RepositoryBase
   commentId: T:Innovt.Data.Ado.RepositoryBase
-  parent: Innovt.Data.Ado
   href: Innovt.Data.Ado.RepositoryBase.html
   name: RepositoryBase
   nameWithType: RepositoryBase

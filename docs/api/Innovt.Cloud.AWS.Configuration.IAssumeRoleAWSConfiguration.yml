@@ -1,36 +1,42 @@
 ### YamlMime:ManagedReference
 items:
-- uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration
-  commentId: T:Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration
-  id: IAssumeRoleAWSConfiguration
+- uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration
+  commentId: T:Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration
+  id: IAssumeRoleAwsConfiguration
   parent: Innovt.Cloud.AWS.Configuration
   children:
-  - Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.ExternalId
-  - Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.RoleArn
-  - Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.RoleSessionName
+  - Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.ExternalId
+  - Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleArn
+  - Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleSessionName
   langs:
   - csharp
   - vb
-  name: IAssumeRoleAWSConfiguration
-  nameWithType: IAssumeRoleAWSConfiguration
-  fullName: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration
+  name: IAssumeRoleAwsConfiguration
+  nameWithType: IAssumeRoleAwsConfiguration
+  fullName: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration
   type: Interface
   source:
     remote:
-      path: src/Innovt.Cloud.AWS/Configuration/IAssumeRoleAWSConfiguration.cs
+      path: src/Innovt.Cloud.AWS/Configuration/IAssumeRoleAwsConfiguration.cs
       branch: feature/ImproveDynamoMapping
       repo: https://github.com/Innovtt/Innovt.Platform.git
-    id: IAssumeRoleAWSConfiguration
-    path: ../src/Innovt.Cloud.AWS/Configuration/IAssumeRoleAWSConfiguration.cs
-    startLine: 9
+    id: IAssumeRoleAwsConfiguration
+    path: ../src/Innovt.Cloud.AWS/Configuration/IAssumeRoleAwsConfiguration.cs
+    startLine: 11
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS.Configuration
   summary: Represents the configuration for assuming an AWS IAM role.
   example: []
   syntax:
-    content: 'public interface IAssumeRoleAWSConfiguration : IAwsConfiguration, IConfiguration'
-    content.vb: Public Interface IAssumeRoleAWSConfiguration Inherits IAwsConfiguration, IConfiguration
+    content: >-
+      [CLSCompliant(false)]
+
+      public interface IAssumeRoleAwsConfiguration : IAwsConfiguration, IConfiguration
+    content.vb: >-
+      <CLSCompliant(False)>
+
+      Public Interface IAssumeRoleAwsConfiguration Inherits IAwsConfiguration, IConfiguration
   inheritedMembers:
   - Innovt.Cloud.AWS.Configuration.IAwsConfiguration.AccountNumber
   - Innovt.Cloud.AWS.Configuration.IAwsConfiguration.Profile
@@ -42,25 +48,31 @@ items:
   - System.Object.Innovt.Core.Utilities.Extensions.IsNull
   - System.Object.Innovt.Core.Utilities.Extensions.ToStringOrDefault
   - System.Object.Innovt.Core.Utilities.Mapper.SimpleMapper.MapTo``1
-- uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.RoleArn
-  commentId: P:Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.RoleArn
+  attributes:
+  - type: System.CLSCompliantAttribute
+    ctor: System.CLSCompliantAttribute.#ctor(System.Boolean)
+    arguments:
+    - type: System.Boolean
+      value: false
+- uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleArn
+  commentId: P:Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleArn
   id: RoleArn
-  parent: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration
+  parent: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration
   langs:
   - csharp
   - vb
   name: RoleArn
-  nameWithType: IAssumeRoleAWSConfiguration.RoleArn
-  fullName: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.RoleArn
+  nameWithType: IAssumeRoleAwsConfiguration.RoleArn
+  fullName: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleArn
   type: Property
   source:
     remote:
-      path: src/Innovt.Cloud.AWS/Configuration/IAssumeRoleAWSConfiguration.cs
+      path: src/Innovt.Cloud.AWS/Configuration/IAssumeRoleAwsConfiguration.cs
       branch: feature/ImproveDynamoMapping
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: RoleArn
-    path: ../src/Innovt.Cloud.AWS/Configuration/IAssumeRoleAWSConfiguration.cs
-    startLine: 14
+    path: ../src/Innovt.Cloud.AWS/Configuration/IAssumeRoleAwsConfiguration.cs
+    startLine: 17
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS.Configuration
@@ -72,26 +84,26 @@ items:
     return:
       type: System.String
     content.vb: Property RoleArn As String
-  overload: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.RoleArn*
-- uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.ExternalId
-  commentId: P:Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.ExternalId
+  overload: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleArn*
+- uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.ExternalId
+  commentId: P:Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.ExternalId
   id: ExternalId
-  parent: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration
+  parent: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration
   langs:
   - csharp
   - vb
   name: ExternalId
-  nameWithType: IAssumeRoleAWSConfiguration.ExternalId
-  fullName: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.ExternalId
+  nameWithType: IAssumeRoleAwsConfiguration.ExternalId
+  fullName: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.ExternalId
   type: Property
   source:
     remote:
-      path: src/Innovt.Cloud.AWS/Configuration/IAssumeRoleAWSConfiguration.cs
+      path: src/Innovt.Cloud.AWS/Configuration/IAssumeRoleAwsConfiguration.cs
       branch: feature/ImproveDynamoMapping
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: ExternalId
-    path: ../src/Innovt.Cloud.AWS/Configuration/IAssumeRoleAWSConfiguration.cs
-    startLine: 19
+    path: ../src/Innovt.Cloud.AWS/Configuration/IAssumeRoleAwsConfiguration.cs
+    startLine: 22
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS.Configuration
@@ -103,26 +115,26 @@ items:
     return:
       type: System.String
     content.vb: Property ExternalId As String
-  overload: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.ExternalId*
-- uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.RoleSessionName
-  commentId: P:Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.RoleSessionName
+  overload: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.ExternalId*
+- uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleSessionName
+  commentId: P:Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleSessionName
   id: RoleSessionName
-  parent: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration
+  parent: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration
   langs:
   - csharp
   - vb
   name: RoleSessionName
-  nameWithType: IAssumeRoleAWSConfiguration.RoleSessionName
-  fullName: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.RoleSessionName
+  nameWithType: IAssumeRoleAwsConfiguration.RoleSessionName
+  fullName: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleSessionName
   type: Property
   source:
     remote:
-      path: src/Innovt.Cloud.AWS/Configuration/IAssumeRoleAWSConfiguration.cs
+      path: src/Innovt.Cloud.AWS/Configuration/IAssumeRoleAwsConfiguration.cs
       branch: feature/ImproveDynamoMapping
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: RoleSessionName
-    path: ../src/Innovt.Cloud.AWS/Configuration/IAssumeRoleAWSConfiguration.cs
-    startLine: 24
+    path: ../src/Innovt.Cloud.AWS/Configuration/IAssumeRoleAwsConfiguration.cs
+    startLine: 27
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS.Configuration
@@ -134,7 +146,7 @@ items:
     return:
       type: System.String
     content.vb: Property RoleSessionName As String
-  overload: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.RoleSessionName*
+  overload: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleSessionName*
 references:
 - uid: Innovt.Cloud.AWS.Configuration
   commentId: N:Innovt.Cloud.AWS.Configuration
@@ -545,12 +557,12 @@ references:
   - uid: Innovt.Core.Utilities.Mapper
     name: Mapper
     href: Innovt.Core.Utilities.Mapper.html
-- uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.RoleArn*
-  commentId: Overload:Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.RoleArn
-  href: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_IAssumeRoleAWSConfiguration_RoleArn
+- uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleArn*
+  commentId: Overload:Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleArn
+  href: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_IAssumeRoleAwsConfiguration_RoleArn
   name: RoleArn
-  nameWithType: IAssumeRoleAWSConfiguration.RoleArn
-  fullName: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.RoleArn
+  nameWithType: IAssumeRoleAwsConfiguration.RoleArn
+  fullName: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleArn
 - uid: System.String
   commentId: T:System.String
   parent: System
@@ -569,15 +581,15 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.ExternalId*
-  commentId: Overload:Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.ExternalId
-  href: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_IAssumeRoleAWSConfiguration_ExternalId
+- uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.ExternalId*
+  commentId: Overload:Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.ExternalId
+  href: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_IAssumeRoleAwsConfiguration_ExternalId
   name: ExternalId
-  nameWithType: IAssumeRoleAWSConfiguration.ExternalId
-  fullName: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.ExternalId
-- uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.RoleSessionName*
-  commentId: Overload:Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.RoleSessionName
-  href: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_IAssumeRoleAWSConfiguration_RoleSessionName
+  nameWithType: IAssumeRoleAwsConfiguration.ExternalId
+  fullName: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.ExternalId
+- uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleSessionName*
+  commentId: Overload:Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleSessionName
+  href: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_IAssumeRoleAwsConfiguration_RoleSessionName
   name: RoleSessionName
-  nameWithType: IAssumeRoleAWSConfiguration.RoleSessionName
-  fullName: Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.RoleSessionName
+  nameWithType: IAssumeRoleAwsConfiguration.RoleSessionName
+  fullName: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleSessionName

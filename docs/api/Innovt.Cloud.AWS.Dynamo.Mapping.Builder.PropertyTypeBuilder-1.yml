@@ -799,11 +799,13 @@ items:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
   syntax:
-    content: public void InvokeMaps(T entity)
+    content: public PropertyTypeBuilder<T> InvokeMaps(T entity)
     parameters:
     - id: entity
       type: '{T}'
-    content.vb: Public Sub InvokeMaps(entity As T)
+    return:
+      type: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1
+    content.vb: Public Function InvokeMaps(entity As T) As PropertyTypeBuilder(Of T)
   overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.InvokeMaps*
   nameWithType.vb: PropertyTypeBuilder(Of T).InvokeMaps(T)
   fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of T).InvokeMaps(T)
@@ -825,7 +827,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: GetValue
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-    startLine: 205
+    startLine: 207
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder

@@ -29,7 +29,7 @@ items:
   type: Class
   source:
     id: DefineAuthChallengeJsonSerializerContext
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeEvent.g.cs
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/DefineAuthChallengeJsonSerializerContext.String.g.cs
     startLine: 10
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Cognito
@@ -87,20 +87,20 @@ items:
     arguments:
     - type: System.Type
       value: Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeResponse
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.String
-  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.String
-  id: String
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.TriggerCallerContext
+  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.TriggerCallerContext
+  id: TriggerCallerContext
   parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext
   langs:
   - csharp
   - vb
-  name: String
-  nameWithType: DefineAuthChallengeJsonSerializerContext.String
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.String
+  name: TriggerCallerContext
+  nameWithType: DefineAuthChallengeJsonSerializerContext.TriggerCallerContext
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.TriggerCallerContext
   type: Property
   source:
-    id: String
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/DefineAuthChallengeJsonSerializerContext.String.g.cs
+    id: TriggerCallerContext
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/DefineAuthChallengeJsonSerializerContext.TriggerCallerContext.g.cs
     startLine: 17
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Cognito
@@ -108,12 +108,12 @@ items:
   summary: Defines the source generated JSON serialization contract metadata for a given type.
   example: []
   syntax:
-    content: public JsonTypeInfo<string> String { get; }
+    content: public JsonTypeInfo<TriggerCallerContext> TriggerCallerContext { get; }
     parameters: []
     return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
-    content.vb: Public ReadOnly Property [String] As JsonTypeInfo(Of String)
-  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.String*
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext}
+    content.vb: Public ReadOnly Property TriggerCallerContext As JsonTypeInfo(Of TriggerCallerContext)
+  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.TriggerCallerContext*
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.ChallengeResultItem
   commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.ChallengeResultItem
   id: ChallengeResultItem
@@ -200,33 +200,6 @@ items:
       type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Nullable{System.Boolean}}
     content.vb: Public ReadOnly Property NullableBoolean As JsonTypeInfo(Of Boolean?)
   overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.NullableBoolean*
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.TriggerCallerContext
-  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.TriggerCallerContext
-  id: TriggerCallerContext
-  parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: TriggerCallerContext
-  nameWithType: DefineAuthChallengeJsonSerializerContext.TriggerCallerContext
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.TriggerCallerContext
-  type: Property
-  source:
-    id: TriggerCallerContext
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/DefineAuthChallengeJsonSerializerContext.TriggerCallerContext.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Cognito
-  namespace: Innovt.Cloud.AWS.Lambda.Cognito.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<TriggerCallerContext> TriggerCallerContext { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext}
-    content.vb: Public ReadOnly Property TriggerCallerContext As JsonTypeInfo(Of TriggerCallerContext)
-  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.TriggerCallerContext*
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.Default
   commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.Default
   id: Default
@@ -339,20 +312,20 @@ items:
   nameWithType.vb: DefineAuthChallengeJsonSerializerContext.New(JsonSerializerOptions)
   fullName.vb: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.New(System.Text.Json.JsonSerializerOptions)
   name.vb: New(JsonSerializerOptions)
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.Boolean
-  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.Boolean
-  id: Boolean
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeResponse
+  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeResponse
+  id: DefineAuthChallengeResponse
   parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext
   langs:
   - csharp
   - vb
-  name: Boolean
-  nameWithType: DefineAuthChallengeJsonSerializerContext.Boolean
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.Boolean
+  name: DefineAuthChallengeResponse
+  nameWithType: DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeResponse
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeResponse
   type: Property
   source:
-    id: Boolean
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/DefineAuthChallengeJsonSerializerContext.Boolean.g.cs
+    id: DefineAuthChallengeResponse
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeResponse.g.cs
     startLine: 17
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Cognito
@@ -360,12 +333,12 @@ items:
   summary: Defines the source generated JSON serialization contract metadata for a given type.
   example: []
   syntax:
-    content: public JsonTypeInfo<bool> Boolean { get; }
+    content: public JsonTypeInfo<DefineAuthChallengeResponse> DefineAuthChallengeResponse { get; }
     parameters: []
     return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Boolean}
-    content.vb: Public ReadOnly Property [Boolean] As JsonTypeInfo(Of Boolean)
-  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.Boolean*
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeResponse}
+    content.vb: Public ReadOnly Property DefineAuthChallengeResponse As JsonTypeInfo(Of DefineAuthChallengeResponse)
+  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeResponse*
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeRequest
   commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeRequest
   id: DefineAuthChallengeRequest
@@ -393,6 +366,60 @@ items:
       type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeRequest}
     content.vb: Public ReadOnly Property DefineAuthChallengeRequest As JsonTypeInfo(Of DefineAuthChallengeRequest)
   overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeRequest*
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.Boolean
+  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.Boolean
+  id: Boolean
+  parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: Boolean
+  nameWithType: DefineAuthChallengeJsonSerializerContext.Boolean
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.Boolean
+  type: Property
+  source:
+    id: Boolean
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/DefineAuthChallengeJsonSerializerContext.Boolean.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Cognito
+  namespace: Innovt.Cloud.AWS.Lambda.Cognito.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<bool> Boolean { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Boolean}
+    content.vb: Public ReadOnly Property [Boolean] As JsonTypeInfo(Of Boolean)
+  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.Boolean*
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeEvent
+  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeEvent
+  id: DefineAuthChallengeEvent
+  parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: DefineAuthChallengeEvent
+  nameWithType: DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeEvent
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeEvent
+  type: Property
+  source:
+    id: DefineAuthChallengeEvent
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeEvent.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Cognito
+  namespace: Innovt.Cloud.AWS.Lambda.Cognito.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<DefineAuthChallengeEvent> DefineAuthChallengeEvent { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeEvent}
+    content.vb: Public ReadOnly Property DefineAuthChallengeEvent As JsonTypeInfo(Of DefineAuthChallengeEvent)
+  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeEvent*
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DictionaryStringString
   commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DictionaryStringString
   id: DictionaryStringString
@@ -447,20 +474,20 @@ items:
       type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.List{Innovt.Cloud.AWS.Lambda.Cognito.Events.ChallengeResultItem}}
     content.vb: Public ReadOnly Property ListChallengeResultItem As JsonTypeInfo(Of List(Of ChallengeResultItem))
   overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.ListChallengeResultItem*
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeResponse
-  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeResponse
-  id: DefineAuthChallengeResponse
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.String
+  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.String
+  id: String
   parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext
   langs:
   - csharp
   - vb
-  name: DefineAuthChallengeResponse
-  nameWithType: DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeResponse
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeResponse
+  name: String
+  nameWithType: DefineAuthChallengeJsonSerializerContext.String
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.String
   type: Property
   source:
-    id: DefineAuthChallengeResponse
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeResponse.g.cs
+    id: String
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/DefineAuthChallengeJsonSerializerContext.String.g.cs
     startLine: 17
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Cognito
@@ -468,39 +495,12 @@ items:
   summary: Defines the source generated JSON serialization contract metadata for a given type.
   example: []
   syntax:
-    content: public JsonTypeInfo<DefineAuthChallengeResponse> DefineAuthChallengeResponse { get; }
+    content: public JsonTypeInfo<string> String { get; }
     parameters: []
     return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeResponse}
-    content.vb: Public ReadOnly Property DefineAuthChallengeResponse As JsonTypeInfo(Of DefineAuthChallengeResponse)
-  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeResponse*
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeEvent
-  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeEvent
-  id: DefineAuthChallengeEvent
-  parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: DefineAuthChallengeEvent
-  nameWithType: DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeEvent
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeEvent
-  type: Property
-  source:
-    id: DefineAuthChallengeEvent
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeEvent.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Cognito
-  namespace: Innovt.Cloud.AWS.Lambda.Cognito.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<DefineAuthChallengeEvent> DefineAuthChallengeEvent { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeEvent}
-    content.vb: Public ReadOnly Property DefineAuthChallengeEvent As JsonTypeInfo(Of DefineAuthChallengeEvent)
-  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeEvent*
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
+    content.vb: Public ReadOnly Property [String] As JsonTypeInfo(Of String)
+  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.String*
 references:
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers
   commentId: N:Innovt.Cloud.AWS.Lambda.Cognito.Serializers
@@ -1202,33 +1202,31 @@ references:
   - uid: Innovt.Core.Utilities.Mapper
     name: Mapper
     href: Innovt.Core.Utilities.Mapper.html
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.String*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.String
-  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_DefineAuthChallengeJsonSerializerContext_String
-  name: String
-  nameWithType: DefineAuthChallengeJsonSerializerContext.String
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.String
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.TriggerCallerContext*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.TriggerCallerContext
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_DefineAuthChallengeJsonSerializerContext_TriggerCallerContext
+  name: TriggerCallerContext
+  nameWithType: DefineAuthChallengeJsonSerializerContext.TriggerCallerContext
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.TriggerCallerContext
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext}
   parent: System.Text.Json.Serialization.Metadata
   definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
   href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<string>
-  nameWithType: JsonTypeInfo<string>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<string>
-  nameWithType.vb: JsonTypeInfo(Of String)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of String)
-  name.vb: JsonTypeInfo(Of String)
+  name: JsonTypeInfo<TriggerCallerContext>
+  nameWithType: JsonTypeInfo<TriggerCallerContext>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext>
+  nameWithType.vb: JsonTypeInfo(Of TriggerCallerContext)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext)
+  name.vb: JsonTypeInfo(Of TriggerCallerContext)
   spec.csharp:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
     name: JsonTypeInfo
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
   - name: <
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext
+    name: TriggerCallerContext
   - name: '>'
   spec.vb:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
@@ -1238,10 +1236,8 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext
+    name: TriggerCallerContext
   - name: )
 - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
   commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
@@ -1403,43 +1399,6 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.boolean
   - name: '?'
   - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.TriggerCallerContext*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.TriggerCallerContext
-  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_DefineAuthChallengeJsonSerializerContext_TriggerCallerContext
-  name: TriggerCallerContext
-  nameWithType: DefineAuthChallengeJsonSerializerContext.TriggerCallerContext
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.TriggerCallerContext
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<TriggerCallerContext>
-  nameWithType: JsonTypeInfo<TriggerCallerContext>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext>
-  nameWithType.vb: JsonTypeInfo(Of TriggerCallerContext)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext)
-  name.vb: JsonTypeInfo(Of TriggerCallerContext)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext
-    name: TriggerCallerContext
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext
-    name: TriggerCallerContext
-  - name: )
 - uid: System.Text.Json.JsonSerializerOptions
   commentId: T:System.Text.Json.JsonSerializerOptions
   parent: System.Text.Json
@@ -1521,6 +1480,80 @@ references:
   nameWithType.vb: DefineAuthChallengeJsonSerializerContext.New
   fullName.vb: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.New
   name.vb: New
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeResponse*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeResponse
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_DefineAuthChallengeJsonSerializerContext_DefineAuthChallengeResponse
+  name: DefineAuthChallengeResponse
+  nameWithType: DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeResponse
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeResponse
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeResponse}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeResponse}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<DefineAuthChallengeResponse>
+  nameWithType: JsonTypeInfo<DefineAuthChallengeResponse>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeResponse>
+  nameWithType.vb: JsonTypeInfo(Of DefineAuthChallengeResponse)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeResponse)
+  name.vb: JsonTypeInfo(Of DefineAuthChallengeResponse)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeResponse
+    name: DefineAuthChallengeResponse
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeResponse
+    name: DefineAuthChallengeResponse
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeRequest*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeRequest
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_DefineAuthChallengeJsonSerializerContext_DefineAuthChallengeRequest
+  name: DefineAuthChallengeRequest
+  nameWithType: DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeRequest
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeRequest
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeRequest}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeRequest}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<DefineAuthChallengeRequest>
+  nameWithType: JsonTypeInfo<DefineAuthChallengeRequest>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeRequest>
+  nameWithType.vb: JsonTypeInfo(Of DefineAuthChallengeRequest)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeRequest)
+  name.vb: JsonTypeInfo(Of DefineAuthChallengeRequest)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeRequest
+    name: DefineAuthChallengeRequest
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeRequest
+    name: DefineAuthChallengeRequest
+  - name: )
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.Boolean*
   commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.Boolean
   href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_DefineAuthChallengeJsonSerializerContext_Boolean
@@ -1562,31 +1595,31 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.boolean
   - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeRequest*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeRequest
-  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_DefineAuthChallengeJsonSerializerContext_DefineAuthChallengeRequest
-  name: DefineAuthChallengeRequest
-  nameWithType: DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeRequest
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeRequest
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeRequest}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeRequest}
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeEvent*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeEvent
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_DefineAuthChallengeJsonSerializerContext_DefineAuthChallengeEvent
+  name: DefineAuthChallengeEvent
+  nameWithType: DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeEvent
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeEvent
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeEvent}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeEvent}
   parent: System.Text.Json.Serialization.Metadata
   definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
   href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<DefineAuthChallengeRequest>
-  nameWithType: JsonTypeInfo<DefineAuthChallengeRequest>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeRequest>
-  nameWithType.vb: JsonTypeInfo(Of DefineAuthChallengeRequest)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeRequest)
-  name.vb: JsonTypeInfo(Of DefineAuthChallengeRequest)
+  name: JsonTypeInfo<DefineAuthChallengeEvent>
+  nameWithType: JsonTypeInfo<DefineAuthChallengeEvent>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeEvent>
+  nameWithType.vb: JsonTypeInfo(Of DefineAuthChallengeEvent)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeEvent)
+  name.vb: JsonTypeInfo(Of DefineAuthChallengeEvent)
   spec.csharp:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
     name: JsonTypeInfo
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
   - name: <
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeRequest
-    name: DefineAuthChallengeRequest
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeEvent
+    name: DefineAuthChallengeEvent
   - name: '>'
   spec.vb:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
@@ -1596,8 +1629,8 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeRequest
-    name: DefineAuthChallengeRequest
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeEvent
+    name: DefineAuthChallengeEvent
   - name: )
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DictionaryStringString*
   commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DictionaryStringString
@@ -1717,31 +1750,33 @@ references:
     name: ChallengeResultItem
   - name: )
   - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeResponse*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeResponse
-  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_DefineAuthChallengeJsonSerializerContext_DefineAuthChallengeResponse
-  name: DefineAuthChallengeResponse
-  nameWithType: DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeResponse
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeResponse
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeResponse}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeResponse}
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.String*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.String
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_DefineAuthChallengeJsonSerializerContext_String
+  name: String
+  nameWithType: DefineAuthChallengeJsonSerializerContext.String
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.String
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
   parent: System.Text.Json.Serialization.Metadata
   definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
   href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<DefineAuthChallengeResponse>
-  nameWithType: JsonTypeInfo<DefineAuthChallengeResponse>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeResponse>
-  nameWithType.vb: JsonTypeInfo(Of DefineAuthChallengeResponse)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeResponse)
-  name.vb: JsonTypeInfo(Of DefineAuthChallengeResponse)
+  name: JsonTypeInfo<string>
+  nameWithType: JsonTypeInfo<string>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<string>
+  nameWithType.vb: JsonTypeInfo(Of String)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of String)
+  name.vb: JsonTypeInfo(Of String)
   spec.csharp:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
     name: JsonTypeInfo
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
   - name: <
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeResponse
-    name: DefineAuthChallengeResponse
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
   - name: '>'
   spec.vb:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
@@ -1751,43 +1786,8 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeResponse
-    name: DefineAuthChallengeResponse
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeEvent*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeEvent
-  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_DefineAuthChallengeJsonSerializerContext_DefineAuthChallengeEvent
-  name: DefineAuthChallengeEvent
-  nameWithType: DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeEvent
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.DefineAuthChallengeJsonSerializerContext.DefineAuthChallengeEvent
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeEvent}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeEvent}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<DefineAuthChallengeEvent>
-  nameWithType: JsonTypeInfo<DefineAuthChallengeEvent>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeEvent>
-  nameWithType.vb: JsonTypeInfo(Of DefineAuthChallengeEvent)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeEvent)
-  name.vb: JsonTypeInfo(Of DefineAuthChallengeEvent)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
+  - uid: System.String
+    name: String
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeEvent
-    name: DefineAuthChallengeEvent
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.DefineAuthChallenge.DefineAuthChallengeEvent
-    name: DefineAuthChallengeEvent
+    href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )

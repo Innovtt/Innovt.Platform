@@ -5,7 +5,7 @@ items:
   id: BasicAuthenticationHandler
   parent: Innovt.AspNetCore.Handlers
   children:
-  - Innovt.AspNetCore.Handlers.BasicAuthenticationHandler.#ctor(Microsoft.Extensions.Options.IOptionsMonitor{Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions},Microsoft.Extensions.Logging.ILoggerFactory,System.Text.Encodings.Web.UrlEncoder,Microsoft.AspNetCore.Authentication.ISystemClock,Innovt.Core.Security.IBasicAuthService)
+  - Innovt.AspNetCore.Handlers.BasicAuthenticationHandler.#ctor(Microsoft.Extensions.Options.IOptionsMonitor{Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions},Microsoft.Extensions.Logging.ILoggerFactory,System.Text.Encodings.Web.UrlEncoder,Innovt.Core.Security.IBasicAuthService)
   - Innovt.AspNetCore.Handlers.BasicAuthenticationHandler.HandleAuthenticateAsync
   - Innovt.AspNetCore.Handlers.BasicAuthenticationHandler.SchemeName
   langs:
@@ -105,16 +105,16 @@ items:
     return:
       type: System.String
     content.vb: Public Const SchemeName As String = "BasicAuthentication"
-- uid: Innovt.AspNetCore.Handlers.BasicAuthenticationHandler.#ctor(Microsoft.Extensions.Options.IOptionsMonitor{Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions},Microsoft.Extensions.Logging.ILoggerFactory,System.Text.Encodings.Web.UrlEncoder,Microsoft.AspNetCore.Authentication.ISystemClock,Innovt.Core.Security.IBasicAuthService)
-  commentId: M:Innovt.AspNetCore.Handlers.BasicAuthenticationHandler.#ctor(Microsoft.Extensions.Options.IOptionsMonitor{Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions},Microsoft.Extensions.Logging.ILoggerFactory,System.Text.Encodings.Web.UrlEncoder,Microsoft.AspNetCore.Authentication.ISystemClock,Innovt.Core.Security.IBasicAuthService)
-  id: '#ctor(Microsoft.Extensions.Options.IOptionsMonitor{Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions},Microsoft.Extensions.Logging.ILoggerFactory,System.Text.Encodings.Web.UrlEncoder,Microsoft.AspNetCore.Authentication.ISystemClock,Innovt.Core.Security.IBasicAuthService)'
+- uid: Innovt.AspNetCore.Handlers.BasicAuthenticationHandler.#ctor(Microsoft.Extensions.Options.IOptionsMonitor{Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions},Microsoft.Extensions.Logging.ILoggerFactory,System.Text.Encodings.Web.UrlEncoder,Innovt.Core.Security.IBasicAuthService)
+  commentId: M:Innovt.AspNetCore.Handlers.BasicAuthenticationHandler.#ctor(Microsoft.Extensions.Options.IOptionsMonitor{Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions},Microsoft.Extensions.Logging.ILoggerFactory,System.Text.Encodings.Web.UrlEncoder,Innovt.Core.Security.IBasicAuthService)
+  id: '#ctor(Microsoft.Extensions.Options.IOptionsMonitor{Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions},Microsoft.Extensions.Logging.ILoggerFactory,System.Text.Encodings.Web.UrlEncoder,Innovt.Core.Security.IBasicAuthService)'
   parent: Innovt.AspNetCore.Handlers.BasicAuthenticationHandler
   langs:
   - csharp
   - vb
-  name: BasicAuthenticationHandler(IOptionsMonitor<AuthenticationSchemeOptions>, ILoggerFactory, UrlEncoder, ISystemClock, IBasicAuthService)
-  nameWithType: BasicAuthenticationHandler.BasicAuthenticationHandler(IOptionsMonitor<AuthenticationSchemeOptions>, ILoggerFactory, UrlEncoder, ISystemClock, IBasicAuthService)
-  fullName: Innovt.AspNetCore.Handlers.BasicAuthenticationHandler.BasicAuthenticationHandler(Microsoft.Extensions.Options.IOptionsMonitor<Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions>, Microsoft.Extensions.Logging.ILoggerFactory, System.Text.Encodings.Web.UrlEncoder, Microsoft.AspNetCore.Authentication.ISystemClock, Innovt.Core.Security.IBasicAuthService)
+  name: BasicAuthenticationHandler(IOptionsMonitor<AuthenticationSchemeOptions>, ILoggerFactory, UrlEncoder, IBasicAuthService)
+  nameWithType: BasicAuthenticationHandler.BasicAuthenticationHandler(IOptionsMonitor<AuthenticationSchemeOptions>, ILoggerFactory, UrlEncoder, IBasicAuthService)
+  fullName: Innovt.AspNetCore.Handlers.BasicAuthenticationHandler.BasicAuthenticationHandler(Microsoft.Extensions.Options.IOptionsMonitor<Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions>, Microsoft.Extensions.Logging.ILoggerFactory, System.Text.Encodings.Web.UrlEncoder, Innovt.Core.Security.IBasicAuthService)
   type: Constructor
   source:
     remote:
@@ -123,14 +123,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: .ctor
     path: ../src/Innovt.AspNetCore/Handlers/BasicAuthenticationHandler.cs
-    startLine: 35
+    startLine: 34
   assemblies:
   - Innovt.AspNetCore
   namespace: Innovt.AspNetCore.Handlers
   summary: Initializes a new instance of the <xref href="Innovt.AspNetCore.Handlers.BasicAuthenticationHandler" data-throw-if-not-resolved="false"></xref> class.
   example: []
   syntax:
-    content: public BasicAuthenticationHandler(IOptionsMonitor<AuthenticationSchemeOptions> options, ILoggerFactory logger, UrlEncoder encoder, ISystemClock clock, IBasicAuthService authService)
+    content: public BasicAuthenticationHandler(IOptionsMonitor<AuthenticationSchemeOptions> options, ILoggerFactory logger, UrlEncoder encoder, IBasicAuthService authService)
     parameters:
     - id: options
       type: Microsoft.Extensions.Options.IOptionsMonitor{Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions}
@@ -141,17 +141,14 @@ items:
     - id: encoder
       type: System.Text.Encodings.Web.UrlEncoder
       description: The URL encoder.
-    - id: clock
-      type: Microsoft.AspNetCore.Authentication.ISystemClock
-      description: The system clock.
     - id: authService
       type: Innovt.Core.Security.IBasicAuthService
       description: The custom basic authentication service.
-    content.vb: Public Sub New(options As IOptionsMonitor(Of AuthenticationSchemeOptions), logger As ILoggerFactory, encoder As UrlEncoder, clock As ISystemClock, authService As IBasicAuthService)
+    content.vb: Public Sub New(options As IOptionsMonitor(Of AuthenticationSchemeOptions), logger As ILoggerFactory, encoder As UrlEncoder, authService As IBasicAuthService)
   overload: Innovt.AspNetCore.Handlers.BasicAuthenticationHandler.#ctor*
-  nameWithType.vb: BasicAuthenticationHandler.New(IOptionsMonitor(Of AuthenticationSchemeOptions), ILoggerFactory, UrlEncoder, ISystemClock, IBasicAuthService)
-  fullName.vb: Innovt.AspNetCore.Handlers.BasicAuthenticationHandler.New(Microsoft.Extensions.Options.IOptionsMonitor(Of Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions), Microsoft.Extensions.Logging.ILoggerFactory, System.Text.Encodings.Web.UrlEncoder, Microsoft.AspNetCore.Authentication.ISystemClock, Innovt.Core.Security.IBasicAuthService)
-  name.vb: New(IOptionsMonitor(Of AuthenticationSchemeOptions), ILoggerFactory, UrlEncoder, ISystemClock, IBasicAuthService)
+  nameWithType.vb: BasicAuthenticationHandler.New(IOptionsMonitor(Of AuthenticationSchemeOptions), ILoggerFactory, UrlEncoder, IBasicAuthService)
+  fullName.vb: Innovt.AspNetCore.Handlers.BasicAuthenticationHandler.New(Microsoft.Extensions.Options.IOptionsMonitor(Of Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions), Microsoft.Extensions.Logging.ILoggerFactory, System.Text.Encodings.Web.UrlEncoder, Innovt.Core.Security.IBasicAuthService)
+  name.vb: New(IOptionsMonitor(Of AuthenticationSchemeOptions), ILoggerFactory, UrlEncoder, IBasicAuthService)
 - uid: Innovt.AspNetCore.Handlers.BasicAuthenticationHandler.HandleAuthenticateAsync
   commentId: M:Innovt.AspNetCore.Handlers.BasicAuthenticationHandler.HandleAuthenticateAsync
   id: HandleAuthenticateAsync
@@ -170,7 +167,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: HandleAuthenticateAsync
     path: ../src/Innovt.AspNetCore/Handlers/BasicAuthenticationHandler.cs
-    startLine: 67
+    startLine: 65
   assemblies:
   - Innovt.AspNetCore
   namespace: Innovt.AspNetCore.Handlers
@@ -1896,7 +1893,7 @@ references:
   fullName: Innovt.AspNetCore.Handlers.BasicAuthenticationHandler
 - uid: Innovt.AspNetCore.Handlers.BasicAuthenticationHandler.#ctor*
   commentId: Overload:Innovt.AspNetCore.Handlers.BasicAuthenticationHandler.#ctor
-  href: Innovt.AspNetCore.Handlers.BasicAuthenticationHandler.html#Innovt_AspNetCore_Handlers_BasicAuthenticationHandler__ctor_Microsoft_Extensions_Options_IOptionsMonitor_Microsoft_AspNetCore_Authentication_AuthenticationSchemeOptions__Microsoft_Extensions_Logging_ILoggerFactory_System_Text_Encodings_Web_UrlEncoder_Microsoft_AspNetCore_Authentication_ISystemClock_Innovt_Core_Security_IBasicAuthService_
+  href: Innovt.AspNetCore.Handlers.BasicAuthenticationHandler.html#Innovt_AspNetCore_Handlers_BasicAuthenticationHandler__ctor_Microsoft_Extensions_Options_IOptionsMonitor_Microsoft_AspNetCore_Authentication_AuthenticationSchemeOptions__Microsoft_Extensions_Logging_ILoggerFactory_System_Text_Encodings_Web_UrlEncoder_Innovt_Core_Security_IBasicAuthService_
   name: BasicAuthenticationHandler
   nameWithType: BasicAuthenticationHandler.BasicAuthenticationHandler
   fullName: Innovt.AspNetCore.Handlers.BasicAuthenticationHandler.BasicAuthenticationHandler
@@ -1954,14 +1951,6 @@ references:
   name: UrlEncoder
   nameWithType: UrlEncoder
   fullName: System.Text.Encodings.Web.UrlEncoder
-- uid: Microsoft.AspNetCore.Authentication.ISystemClock
-  commentId: T:Microsoft.AspNetCore.Authentication.ISystemClock
-  parent: Microsoft.AspNetCore.Authentication
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authentication.isystemclock
-  name: ISystemClock
-  nameWithType: ISystemClock
-  fullName: Microsoft.AspNetCore.Authentication.ISystemClock
 - uid: Innovt.Core.Security.IBasicAuthService
   commentId: T:Innovt.Core.Security.IBasicAuthService
   parent: Innovt.Core.Security

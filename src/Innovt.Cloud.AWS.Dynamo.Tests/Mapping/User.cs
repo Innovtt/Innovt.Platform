@@ -12,8 +12,8 @@ public class BaseUserOne : Entity<Guid>
 /// </summary>
 public class BaseUser : BaseUserOne
 {
-    public string Picture2 { get; set; }// 13
-    public string Picture { get; set; }//14
+    public string Picture2 { get; set; } // 13
+    public string Picture { get; set; } //14
 }
 
 public class User : BaseUser
@@ -36,5 +36,4 @@ public class User : BaseUser
     public DateTime? LastAccess { get; set; } //6
     public int JobPositionId { get; set; } //7
     public new string Id { get; set; } //8
-
 }

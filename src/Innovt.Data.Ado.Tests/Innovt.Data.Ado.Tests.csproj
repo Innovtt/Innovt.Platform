@@ -3,7 +3,8 @@
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <IsPackable>false</IsPackable>
-        <LangVersion>9.0</LangVersion>
+        <GenerateDocumentationFile>false</GenerateDocumentationFile>
+        <LangVersion>latest</LangVersion>
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>

@@ -35,7 +35,7 @@ internal static class TableHelper
             ? typeof(T).Name
             : attribute.TableName;
     }
-    
+
     /// <summary>
     ///     Get the hash key name for the specified type <typeparamref name="T" />.
     /// </summary>
@@ -120,7 +120,7 @@ internal static class TableHelper
         //invoke the map action to get the updated value
         hashKeyValue = entityBuilder.GetProperty(hashKeyName)?.InvokeMaps(value).GetValue(value);
         rangeKeyValue = entityBuilder.GetProperty(rangeKeyName)?.InvokeMaps(value).GetValue(value);
-        
+
         return (hashKeyValue, rangeKeyValue);
     }
 
@@ -133,14 +133,15 @@ internal static class TableHelper
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     private static ((string Name, AttributeValue Value) HashKey, (string Name, AttributeValue Value)? RangeKey)
-        BuildKeysAttributeValues<T>(object id, object rangeKeyValue = null, DynamoContext context = null) where T : class
+        BuildKeysAttributeValues<T>(object id, object rangeKeyValue = null, DynamoContext context = null)
+        where T : class
     {
         Check.NotNull(id, nameof(id));
-        
+
         var entityBuilder = context?.GetTypeBuilder<T>();
         var hashKeyPrefix = entityBuilder?.HashKeyPrefix;
         var keySeparator = entityBuilder?.KeySeparator;
-       
+
         hashKeyPrefix = hashKeyPrefix.IsNotNullOrEmpty() ? $"{hashKeyPrefix}{keySeparator}" : string.Empty;
 
         //To avoid situations where the id is already prefixed
@@ -163,7 +164,7 @@ internal static class TableHelper
 
         return (hashKey, rangeKey);
     }
-    
+
     /// <summary>
     ///     Extract the hash keys and range keys from the specified value.
     /// </summary>
@@ -171,7 +172,8 @@ internal static class TableHelper
     /// <param name="context"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    internal static Dictionary<string, AttributeValue> ExtractKeyAttributeValueMap<T>(T value, DynamoContext context = null)
+    internal static Dictionary<string, AttributeValue> ExtractKeyAttributeValueMap<T>(T value,
+        DynamoContext context = null)
         where T : class
     {
         Check.NotNull(value, nameof(value));
@@ -180,7 +182,7 @@ internal static class TableHelper
 
         return ParseKeysToAttributeValueMap<T>(keyValues.HashKey, keyValues.RangeKey, context);
     }
-    
+
     /// <summary>
     ///     Extract the hash keys and range keys from the specified value.
     /// </summary>
@@ -189,19 +191,20 @@ internal static class TableHelper
     /// <param name="context">The context where the system will get information to build the key.</param>
     /// <typeparam name="T">A T type that is mapped to the context.</typeparam>
     /// <returns>The list of key using dynamo attribute value</returns>
-    internal static Dictionary<string, AttributeValue> ParseKeysToAttributeValueMap<T>(object id, object rangeKeyValue = null, DynamoContext context = null) where T : class
+    internal static Dictionary<string, AttributeValue> ParseKeysToAttributeValueMap<T>(object id,
+        object rangeKeyValue = null, DynamoContext context = null) where T : class
     {
         if (id == null) throw new ArgumentNullException(nameof(id));
-        
+
         //Get the name of the PK and Sk converting to attribute values
-        var tupleKeys = BuildKeysAttributeValues<T>(id, rangeKeyValue, context); 
+        var tupleKeys = BuildKeysAttributeValues<T>(id, rangeKeyValue, context);
 
         var keys = new Dictionary<string, AttributeValue>
         {
             { tupleKeys.HashKey.Name, tupleKeys.HashKey.Value }
         };
 
-        if (tupleKeys.RangeKey.HasValue) 
+        if (tupleKeys.RangeKey.HasValue)
             keys.Add(tupleKeys.RangeKey.Value.Name, tupleKeys.RangeKey.Value.Value);
 
         return keys;

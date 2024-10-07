@@ -4,7 +4,6 @@ items:
   commentId: N:Innovt.CrossCutting.Log.Serilog
   id: Innovt.CrossCutting.Log.Serilog
   children:
-  - Innovt.CrossCutting.Log.Serilog.ALoggerProvider
   - Innovt.CrossCutting.Log.Serilog.ActivityEnrich
   - Innovt.CrossCutting.Log.Serilog.DataDogEnrich
   - Innovt.CrossCutting.Log.Serilog.LogLevelEnricher
@@ -26,12 +25,6 @@ references:
   name: ActivityEnrich
   nameWithType: ActivityEnrich
   fullName: Innovt.CrossCutting.Log.Serilog.ActivityEnrich
-- uid: Innovt.CrossCutting.Log.Serilog.ALoggerProvider
-  commentId: T:Innovt.CrossCutting.Log.Serilog.ALoggerProvider
-  href: Innovt.CrossCutting.Log.Serilog.ALoggerProvider.html
-  name: ALoggerProvider
-  nameWithType: ALoggerProvider
-  fullName: Innovt.CrossCutting.Log.Serilog.ALoggerProvider
 - uid: Innovt.CrossCutting.Log.Serilog.DataDogEnrich
   commentId: T:Innovt.CrossCutting.Log.Serilog.DataDogEnrich
   href: Innovt.CrossCutting.Log.Serilog.DataDogEnrich.html

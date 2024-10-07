@@ -31,11 +31,9 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
     /// <param name="options">The options for the authentication scheme.</param>
     /// <param name="logger">The logger factory.</param>
     /// <param name="encoder">The URL encoder.</param>
-    /// <param name="clock">The system clock.</param>
     /// <param name="authService">The custom basic authentication service.</param>
     public BasicAuthenticationHandler(IOptionsMonitor<AuthenticationSchemeOptions> options, ILoggerFactory logger,
-        UrlEncoder encoder, ISystemClock clock, IBasicAuthService authService) : base(options, logger, encoder,
-        clock)
+        UrlEncoder encoder, IBasicAuthService authService) : base(options, logger, encoder)
     {
         this.authService = authService ?? throw new ArgumentNullException(nameof(authService));
     }

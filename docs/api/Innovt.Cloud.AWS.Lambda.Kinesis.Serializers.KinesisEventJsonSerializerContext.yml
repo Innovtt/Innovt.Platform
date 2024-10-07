@@ -33,7 +33,7 @@ items:
   type: Class
   source:
     id: KinesisEventJsonSerializerContext
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/KinesisEventJsonSerializerContext.EncryptionType.g.cs
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/KinesisEventJsonSerializerContext.BatchFailureResponse.g.cs
     startLine: 10
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Kinesis
@@ -82,119 +82,6 @@ items:
     arguments:
     - type: System.Type
       value: Innovt.Cloud.AWS.Lambda.BatchFailureResponse
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.IListKinesisEventRecord
-  commentId: P:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.IListKinesisEventRecord
-  id: IListKinesisEventRecord
-  parent: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: IListKinesisEventRecord
-  nameWithType: KinesisEventJsonSerializerContext.IListKinesisEventRecord
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.IListKinesisEventRecord
-  type: Property
-  source:
-    id: IListKinesisEventRecord
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/KinesisEventJsonSerializerContext.IListKinesisEventRecord.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Kinesis
-  namespace: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<IList<KinesisEvent.KinesisEventRecord>> IListKinesisEventRecord { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.IList{Amazon.Lambda.KinesisEvents.KinesisEvent.KinesisEventRecord}}
-    content.vb: Public ReadOnly Property IListKinesisEventRecord As JsonTypeInfo(Of IList(Of KinesisEvent.KinesisEventRecord))
-  overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.IListKinesisEventRecord*
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.BatchFailureResponse
-  commentId: P:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.BatchFailureResponse
-  id: BatchFailureResponse
-  parent: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: BatchFailureResponse
-  nameWithType: KinesisEventJsonSerializerContext.BatchFailureResponse
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.BatchFailureResponse
-  type: Property
-  source:
-    id: BatchFailureResponse
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/KinesisEventJsonSerializerContext.BatchFailureResponse.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Kinesis
-  namespace: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<BatchFailureResponse> BatchFailureResponse { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.BatchFailureResponse}
-    content.vb: Public ReadOnly Property BatchFailureResponse As JsonTypeInfo(Of BatchFailureResponse)
-  overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.BatchFailureResponse*
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEventRecord
-  commentId: P:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEventRecord
-  id: KinesisEventRecord
-  parent: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: KinesisEventRecord
-  nameWithType: KinesisEventJsonSerializerContext.KinesisEventRecord
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEventRecord
-  type: Property
-  source:
-    id: KinesisEventRecord
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/KinesisEventJsonSerializerContext.KinesisEventRecord.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Kinesis
-  namespace: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<KinesisEvent.KinesisEventRecord> KinesisEventRecord { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.KinesisEvents.KinesisEvent.KinesisEventRecord}
-    content.vb: Public ReadOnly Property KinesisEventRecord As JsonTypeInfo(Of KinesisEvent.KinesisEventRecord)
-  overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEventRecord*
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.GetTypeInfo(System.Type)
-  commentId: M:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.GetTypeInfo(System.Type)
-  id: GetTypeInfo(System.Type)
-  parent: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: GetTypeInfo(Type)
-  nameWithType: KinesisEventJsonSerializerContext.GetTypeInfo(Type)
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.GetTypeInfo(System.Type)
-  type: Method
-  source:
-    id: GetTypeInfo
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/KinesisEventJsonSerializerContext.GetJsonTypeInfo.g.cs
-    startLine: 13
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Kinesis
-  namespace: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
-  summary: Gets metadata for the specified type.
-  example: []
-  syntax:
-    content: public override JsonTypeInfo? GetTypeInfo(Type type)
-    parameters:
-    - id: type
-      type: System.Type
-      description: The type to fetch metadata for.
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo
-      description: The metadata for the specified type, or <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> if the context has no metadata for the type.
-    content.vb: Public Overrides Function GetTypeInfo(type As Type) As JsonTypeInfo
-  overridden: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
-  overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.GetTypeInfo*
 - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Int32
   commentId: P:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Int32
   id: Int32
@@ -222,20 +109,20 @@ items:
       type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Int32}
     content.vb: Public ReadOnly Property Int32 As JsonTypeInfo(Of Integer)
   overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Int32*
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Boolean
-  commentId: P:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Boolean
-  id: Boolean
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Record
+  commentId: P:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Record
+  id: Record
   parent: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
   langs:
   - csharp
   - vb
-  name: Boolean
-  nameWithType: KinesisEventJsonSerializerContext.Boolean
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Boolean
+  name: Record
+  nameWithType: KinesisEventJsonSerializerContext.Record
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Record
   type: Property
   source:
-    id: Boolean
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/KinesisEventJsonSerializerContext.Boolean.g.cs
+    id: Record
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/KinesisEventJsonSerializerContext.Record.g.cs
     startLine: 17
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Kinesis
@@ -243,66 +130,12 @@ items:
   summary: Defines the source generated JSON serialization contract metadata for a given type.
   example: []
   syntax:
-    content: public JsonTypeInfo<bool> Boolean { get; }
+    content: public JsonTypeInfo<KinesisEvent.Record> Record { get; }
     parameters: []
     return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Boolean}
-    content.vb: Public ReadOnly Property [Boolean] As JsonTypeInfo(Of Boolean)
-  overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Boolean*
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Int64
-  commentId: P:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Int64
-  id: Int64
-  parent: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: Int64
-  nameWithType: KinesisEventJsonSerializerContext.Int64
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Int64
-  type: Property
-  source:
-    id: Int64
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/KinesisEventJsonSerializerContext.Int64.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Kinesis
-  namespace: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<long> Int64 { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Int64}
-    content.vb: Public ReadOnly Property Int64 As JsonTypeInfo(Of Long)
-  overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Int64*
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEvent
-  commentId: P:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEvent
-  id: KinesisEvent
-  parent: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: KinesisEvent
-  nameWithType: KinesisEventJsonSerializerContext.KinesisEvent
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEvent
-  type: Property
-  source:
-    id: KinesisEvent
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/KinesisEventJsonSerializerContext.KinesisEvent.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Kinesis
-  namespace: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<KinesisEvent> KinesisEvent { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.KinesisEvents.KinesisEvent}
-    content.vb: Public ReadOnly Property KinesisEvent As JsonTypeInfo(Of KinesisEvent)
-  overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEvent*
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.KinesisEvents.KinesisEvent.Record}
+    content.vb: Public ReadOnly Property Record As JsonTypeInfo(Of KinesisEvent.Record)
+  overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Record*
 - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Default
   commentId: P:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Default
   id: Default
@@ -415,33 +248,6 @@ items:
   nameWithType.vb: KinesisEventJsonSerializerContext.New(JsonSerializerOptions)
   fullName.vb: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.New(System.Text.Json.JsonSerializerOptions)
   name.vb: New(JsonSerializerOptions)
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.String
-  commentId: P:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.String
-  id: String
-  parent: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: String
-  nameWithType: KinesisEventJsonSerializerContext.String
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.String
-  type: Property
-  source:
-    id: String
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/KinesisEventJsonSerializerContext.String.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Kinesis
-  namespace: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<string> String { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
-    content.vb: Public ReadOnly Property [String] As JsonTypeInfo(Of String)
-  overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.String*
 - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.IListItemFailureIdentifier
   commentId: P:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.IListItemFailureIdentifier
   id: IListItemFailureIdentifier
@@ -469,33 +275,6 @@ items:
       type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.IList{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}}
     content.vb: Public ReadOnly Property IListItemFailureIdentifier As JsonTypeInfo(Of IList(Of ItemFailureIdentifier))
   overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.IListItemFailureIdentifier*
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.DateTime
-  commentId: P:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.DateTime
-  id: DateTime
-  parent: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: DateTime
-  nameWithType: KinesisEventJsonSerializerContext.DateTime
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.DateTime
-  type: Property
-  source:
-    id: DateTime
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/KinesisEventJsonSerializerContext.DateTime.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Kinesis
-  namespace: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<DateTime> DateTime { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.DateTime}
-    content.vb: Public ReadOnly Property DateTime As JsonTypeInfo(Of Date)
-  overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.DateTime*
 - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.ItemFailureIdentifier
   commentId: P:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.ItemFailureIdentifier
   id: ItemFailureIdentifier
@@ -523,6 +302,114 @@ items:
       type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}
     content.vb: Public ReadOnly Property ItemFailureIdentifier As JsonTypeInfo(Of ItemFailureIdentifier)
   overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.ItemFailureIdentifier*
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Boolean
+  commentId: P:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Boolean
+  id: Boolean
+  parent: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: Boolean
+  nameWithType: KinesisEventJsonSerializerContext.Boolean
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Boolean
+  type: Property
+  source:
+    id: Boolean
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/KinesisEventJsonSerializerContext.Boolean.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Kinesis
+  namespace: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<bool> Boolean { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Boolean}
+    content.vb: Public ReadOnly Property [Boolean] As JsonTypeInfo(Of Boolean)
+  overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Boolean*
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.String
+  commentId: P:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.String
+  id: String
+  parent: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: String
+  nameWithType: KinesisEventJsonSerializerContext.String
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.String
+  type: Property
+  source:
+    id: String
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/KinesisEventJsonSerializerContext.String.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Kinesis
+  namespace: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<string> String { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
+    content.vb: Public ReadOnly Property [String] As JsonTypeInfo(Of String)
+  overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.String*
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Int64
+  commentId: P:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Int64
+  id: Int64
+  parent: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: Int64
+  nameWithType: KinesisEventJsonSerializerContext.Int64
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Int64
+  type: Property
+  source:
+    id: Int64
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/KinesisEventJsonSerializerContext.Int64.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Kinesis
+  namespace: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<long> Int64 { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Int64}
+    content.vb: Public ReadOnly Property Int64 As JsonTypeInfo(Of Long)
+  overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Int64*
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.IListKinesisEventRecord
+  commentId: P:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.IListKinesisEventRecord
+  id: IListKinesisEventRecord
+  parent: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: IListKinesisEventRecord
+  nameWithType: KinesisEventJsonSerializerContext.IListKinesisEventRecord
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.IListKinesisEventRecord
+  type: Property
+  source:
+    id: IListKinesisEventRecord
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/KinesisEventJsonSerializerContext.IListKinesisEventRecord.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Kinesis
+  namespace: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<IList<KinesisEvent.KinesisEventRecord>> IListKinesisEventRecord { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.IList{Amazon.Lambda.KinesisEvents.KinesisEvent.KinesisEventRecord}}
+    content.vb: Public ReadOnly Property IListKinesisEventRecord As JsonTypeInfo(Of IList(Of KinesisEvent.KinesisEventRecord))
+  overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.IListKinesisEventRecord*
 - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.MemoryStream
   commentId: P:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.MemoryStream
   id: MemoryStream
@@ -550,20 +437,20 @@ items:
       type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.IO.MemoryStream}
     content.vb: Public ReadOnly Property MemoryStream As JsonTypeInfo(Of MemoryStream)
   overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.MemoryStream*
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Record
-  commentId: P:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Record
-  id: Record
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEvent
+  commentId: P:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEvent
+  id: KinesisEvent
   parent: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
   langs:
   - csharp
   - vb
-  name: Record
-  nameWithType: KinesisEventJsonSerializerContext.Record
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Record
+  name: KinesisEvent
+  nameWithType: KinesisEventJsonSerializerContext.KinesisEvent
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEvent
   type: Property
   source:
-    id: Record
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/KinesisEventJsonSerializerContext.Record.g.cs
+    id: KinesisEvent
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/KinesisEventJsonSerializerContext.KinesisEvent.g.cs
     startLine: 17
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Kinesis
@@ -571,12 +458,98 @@ items:
   summary: Defines the source generated JSON serialization contract metadata for a given type.
   example: []
   syntax:
-    content: public JsonTypeInfo<KinesisEvent.Record> Record { get; }
+    content: public JsonTypeInfo<KinesisEvent> KinesisEvent { get; }
     parameters: []
     return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.KinesisEvents.KinesisEvent.Record}
-    content.vb: Public ReadOnly Property Record As JsonTypeInfo(Of KinesisEvent.Record)
-  overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Record*
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.KinesisEvents.KinesisEvent}
+    content.vb: Public ReadOnly Property KinesisEvent As JsonTypeInfo(Of KinesisEvent)
+  overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEvent*
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.DateTime
+  commentId: P:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.DateTime
+  id: DateTime
+  parent: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: DateTime
+  nameWithType: KinesisEventJsonSerializerContext.DateTime
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.DateTime
+  type: Property
+  source:
+    id: DateTime
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/KinesisEventJsonSerializerContext.DateTime.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Kinesis
+  namespace: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<DateTime> DateTime { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.DateTime}
+    content.vb: Public ReadOnly Property DateTime As JsonTypeInfo(Of Date)
+  overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.DateTime*
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEventRecord
+  commentId: P:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEventRecord
+  id: KinesisEventRecord
+  parent: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: KinesisEventRecord
+  nameWithType: KinesisEventJsonSerializerContext.KinesisEventRecord
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEventRecord
+  type: Property
+  source:
+    id: KinesisEventRecord
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/KinesisEventJsonSerializerContext.KinesisEventRecord.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Kinesis
+  namespace: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<KinesisEvent.KinesisEventRecord> KinesisEventRecord { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.KinesisEvents.KinesisEvent.KinesisEventRecord}
+    content.vb: Public ReadOnly Property KinesisEventRecord As JsonTypeInfo(Of KinesisEvent.KinesisEventRecord)
+  overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEventRecord*
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.GetTypeInfo(System.Type)
+  commentId: M:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.GetTypeInfo(System.Type)
+  id: GetTypeInfo(System.Type)
+  parent: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: GetTypeInfo(Type)
+  nameWithType: KinesisEventJsonSerializerContext.GetTypeInfo(Type)
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.GetTypeInfo(System.Type)
+  type: Method
+  source:
+    id: GetTypeInfo
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/KinesisEventJsonSerializerContext.GetJsonTypeInfo.g.cs
+    startLine: 13
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Kinesis
+  namespace: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
+  summary: Gets metadata for the specified type.
+  example: []
+  syntax:
+    content: public override JsonTypeInfo? GetTypeInfo(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: The type to fetch metadata for.
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo
+      description: The metadata for the specified type, or <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> if the context has no metadata for the type.
+    content.vb: Public Overrides Function GetTypeInfo(type As Type) As JsonTypeInfo
+  overridden: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
+  overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.GetTypeInfo*
 - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.EncryptionType
   commentId: P:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.EncryptionType
   id: EncryptionType
@@ -604,6 +577,33 @@ items:
       type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Kinesis.EncryptionType}
     content.vb: Public ReadOnly Property EncryptionType As JsonTypeInfo(Of EncryptionType)
   overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.EncryptionType*
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.BatchFailureResponse
+  commentId: P:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.BatchFailureResponse
+  id: BatchFailureResponse
+  parent: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: BatchFailureResponse
+  nameWithType: KinesisEventJsonSerializerContext.BatchFailureResponse
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.BatchFailureResponse
+  type: Property
+  source:
+    id: BatchFailureResponse
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/KinesisEventJsonSerializerContext.BatchFailureResponse.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Kinesis
+  namespace: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<BatchFailureResponse> BatchFailureResponse { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.BatchFailureResponse}
+    content.vb: Public ReadOnly Property BatchFailureResponse As JsonTypeInfo(Of BatchFailureResponse)
+  overload: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.BatchFailureResponse*
 references:
 - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
   commentId: N:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
@@ -1305,6 +1305,418 @@ references:
   - uid: Innovt.Core.Utilities.Mapper
     name: Mapper
     href: Innovt.Core.Utilities.Mapper.html
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Int32*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Int32
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_Int32
+  name: Int32
+  nameWithType: KinesisEventJsonSerializerContext.Int32
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Int32
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Int32}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Int32}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<int>
+  nameWithType: JsonTypeInfo<int>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<int>
+  nameWithType.vb: JsonTypeInfo(Of Integer)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Integer)
+  name.vb: JsonTypeInfo(Of Integer)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<T>
+  nameWithType: JsonTypeInfo<T>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<T>
+  nameWithType.vb: JsonTypeInfo(Of T)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of T)
+  name.vb: JsonTypeInfo(Of T)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Record*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Record
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_Record
+  name: Record
+  nameWithType: KinesisEventJsonSerializerContext.Record
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Record
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.KinesisEvents.KinesisEvent.Record}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.KinesisEvents.KinesisEvent.Record}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<KinesisEvent.Record>
+  nameWithType: JsonTypeInfo<KinesisEvent.Record>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.KinesisEvents.KinesisEvent.Record>
+  nameWithType.vb: JsonTypeInfo(Of KinesisEvent.Record)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.KinesisEvents.KinesisEvent.Record)
+  name.vb: JsonTypeInfo(Of KinesisEvent.Record)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: Amazon.Lambda.KinesisEvents.KinesisEvent
+    name: KinesisEvent
+    isExternal: true
+  - name: .
+  - uid: Amazon.Lambda.KinesisEvents.KinesisEvent.Record
+    name: Record
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Amazon.Lambda.KinesisEvents.KinesisEvent
+    name: KinesisEvent
+    isExternal: true
+  - name: .
+  - uid: Amazon.Lambda.KinesisEvents.KinesisEvent.Record
+    name: Record
+    isExternal: true
+  - name: )
+- uid: System.Text.Json.JsonSerializerOptions
+  commentId: T:System.Text.Json.JsonSerializerOptions
+  parent: System.Text.Json
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.jsonserializeroptions
+  name: JsonSerializerOptions
+  nameWithType: JsonSerializerOptions
+  fullName: System.Text.Json.JsonSerializerOptions
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Default*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Default
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_Default
+  name: Default
+  nameWithType: KinesisEventJsonSerializerContext.Default
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Default
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
+  commentId: T:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
+  parent: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html
+  name: KinesisEventJsonSerializerContext
+  nameWithType: KinesisEventJsonSerializerContext
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
+- uid: System.Text.Json
+  commentId: N:System.Text.Json
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Text.Json
+  nameWithType: System.Text.Json
+  fullName: System.Text.Json
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+  - name: .
+  - uid: System.Text.Json
+    name: Json
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+  - name: .
+  - uid: System.Text.Json
+    name: Json
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json
+- uid: System.Text.Json.Serialization.JsonSerializerContext.GeneratedSerializerOptions
+  commentId: P:System.Text.Json.Serialization.JsonSerializerContext.GeneratedSerializerOptions
+  parent: System.Text.Json.Serialization.JsonSerializerContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonserializercontext.generatedserializeroptions
+  name: GeneratedSerializerOptions
+  nameWithType: JsonSerializerContext.GeneratedSerializerOptions
+  fullName: System.Text.Json.Serialization.JsonSerializerContext.GeneratedSerializerOptions
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.GeneratedSerializerOptions*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.GeneratedSerializerOptions
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_GeneratedSerializerOptions
+  name: GeneratedSerializerOptions
+  nameWithType: KinesisEventJsonSerializerContext.GeneratedSerializerOptions
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.GeneratedSerializerOptions
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.#ctor*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.#ctor
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext__ctor
+  name: KinesisEventJsonSerializerContext
+  nameWithType: KinesisEventJsonSerializerContext.KinesisEventJsonSerializerContext
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEventJsonSerializerContext
+  nameWithType.vb: KinesisEventJsonSerializerContext.New
+  fullName.vb: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.New
+  name.vb: New
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.IListItemFailureIdentifier*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.IListItemFailureIdentifier
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_IListItemFailureIdentifier
+  name: IListItemFailureIdentifier
+  nameWithType: KinesisEventJsonSerializerContext.IListItemFailureIdentifier
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.IListItemFailureIdentifier
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.IList{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.IList{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<IList<ItemFailureIdentifier>>
+  nameWithType: JsonTypeInfo<IList<ItemFailureIdentifier>>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.Collections.Generic.IList<Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier>>
+  nameWithType.vb: JsonTypeInfo(Of IList(Of ItemFailureIdentifier))
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of System.Collections.Generic.IList(Of Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier))
+  name.vb: JsonTypeInfo(Of IList(Of ItemFailureIdentifier))
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier
+    name: ItemFailureIdentifier
+    href: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier
+    name: ItemFailureIdentifier
+    href: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier.html
+  - name: )
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.ItemFailureIdentifier*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.ItemFailureIdentifier
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_ItemFailureIdentifier
+  name: ItemFailureIdentifier
+  nameWithType: KinesisEventJsonSerializerContext.ItemFailureIdentifier
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.ItemFailureIdentifier
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<ItemFailureIdentifier>
+  nameWithType: JsonTypeInfo<ItemFailureIdentifier>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier>
+  nameWithType.vb: JsonTypeInfo(Of ItemFailureIdentifier)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier)
+  name.vb: JsonTypeInfo(Of ItemFailureIdentifier)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier
+    name: ItemFailureIdentifier
+    href: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier
+    name: ItemFailureIdentifier
+    href: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier.html
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Boolean*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Boolean
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_Boolean
+  name: Boolean
+  nameWithType: KinesisEventJsonSerializerContext.Boolean
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Boolean
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Boolean}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Boolean}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<bool>
+  nameWithType: JsonTypeInfo<bool>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<bool>
+  nameWithType.vb: JsonTypeInfo(Of Boolean)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Boolean)
+  name.vb: JsonTypeInfo(Of Boolean)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.String*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.String
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_String
+  name: String
+  nameWithType: KinesisEventJsonSerializerContext.String
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.String
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<string>
+  nameWithType: JsonTypeInfo<string>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<string>
+  nameWithType.vb: JsonTypeInfo(Of String)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of String)
+  name.vb: JsonTypeInfo(Of String)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Int64*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Int64
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_Int64
+  name: Int64
+  nameWithType: KinesisEventJsonSerializerContext.Int64
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Int64
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Int64}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Int64}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<long>
+  nameWithType: JsonTypeInfo<long>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<long>
+  nameWithType.vb: JsonTypeInfo(Of Long)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Long)
+  name.vb: JsonTypeInfo(Of Long)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
 - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.IListKinesisEventRecord*
   commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.IListKinesisEventRecord
   href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_IListKinesisEventRecord
@@ -1366,60 +1778,33 @@ references:
     isExternal: true
   - name: )
   - name: )
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<T>
-  nameWithType: JsonTypeInfo<T>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<T>
-  nameWithType.vb: JsonTypeInfo(Of T)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of T)
-  name.vb: JsonTypeInfo(Of T)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - name: T
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.BatchFailureResponse*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.BatchFailureResponse
-  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_BatchFailureResponse
-  name: BatchFailureResponse
-  nameWithType: KinesisEventJsonSerializerContext.BatchFailureResponse
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.BatchFailureResponse
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.BatchFailureResponse}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.BatchFailureResponse}
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.MemoryStream*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.MemoryStream
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_MemoryStream
+  name: MemoryStream
+  nameWithType: KinesisEventJsonSerializerContext.MemoryStream
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.MemoryStream
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.IO.MemoryStream}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.IO.MemoryStream}
   parent: System.Text.Json.Serialization.Metadata
   definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
   href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<BatchFailureResponse>
-  nameWithType: JsonTypeInfo<BatchFailureResponse>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.BatchFailureResponse>
-  nameWithType.vb: JsonTypeInfo(Of BatchFailureResponse)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.BatchFailureResponse)
-  name.vb: JsonTypeInfo(Of BatchFailureResponse)
+  name: JsonTypeInfo<MemoryStream>
+  nameWithType: JsonTypeInfo<MemoryStream>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.IO.MemoryStream>
+  nameWithType.vb: JsonTypeInfo(Of MemoryStream)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of System.IO.MemoryStream)
+  name.vb: JsonTypeInfo(Of MemoryStream)
   spec.csharp:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
     name: JsonTypeInfo
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
   - name: <
-  - uid: Innovt.Cloud.AWS.Lambda.BatchFailureResponse
-    name: BatchFailureResponse
-    href: Innovt.Cloud.AWS.Lambda.BatchFailureResponse.html
+  - uid: System.IO.MemoryStream
+    name: MemoryStream
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.memorystream
   - name: '>'
   spec.vb:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
@@ -1429,9 +1814,90 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: Innovt.Cloud.AWS.Lambda.BatchFailureResponse
-    name: BatchFailureResponse
-    href: Innovt.Cloud.AWS.Lambda.BatchFailureResponse.html
+  - uid: System.IO.MemoryStream
+    name: MemoryStream
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.memorystream
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEvent*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEvent
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_KinesisEvent
+  name: KinesisEvent
+  nameWithType: KinesisEventJsonSerializerContext.KinesisEvent
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEvent
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.KinesisEvents.KinesisEvent}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.KinesisEvents.KinesisEvent}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<KinesisEvent>
+  nameWithType: JsonTypeInfo<KinesisEvent>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.KinesisEvents.KinesisEvent>
+  nameWithType.vb: JsonTypeInfo(Of KinesisEvent)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.KinesisEvents.KinesisEvent)
+  name.vb: JsonTypeInfo(Of KinesisEvent)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: Amazon.Lambda.KinesisEvents.KinesisEvent
+    name: KinesisEvent
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Amazon.Lambda.KinesisEvents.KinesisEvent
+    name: KinesisEvent
+    isExternal: true
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.DateTime*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.DateTime
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_DateTime
+  name: DateTime
+  nameWithType: KinesisEventJsonSerializerContext.DateTime
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.DateTime
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.DateTime}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.DateTime}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<DateTime>
+  nameWithType: JsonTypeInfo<DateTime>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.DateTime>
+  nameWithType.vb: JsonTypeInfo(Of Date)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Date)
+  name.vb: JsonTypeInfo(Of Date)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: System.DateTime
+    name: DateTime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.DateTime
+    name: Date
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
   - name: )
 - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEventRecord*
   commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEventRecord
@@ -1532,511 +1998,6 @@ references:
   name: JsonTypeInfo
   nameWithType: JsonTypeInfo
   fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Int32*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Int32
-  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_Int32
-  name: Int32
-  nameWithType: KinesisEventJsonSerializerContext.Int32
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Int32
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Int32}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Int32}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<int>
-  nameWithType: JsonTypeInfo<int>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<int>
-  nameWithType.vb: JsonTypeInfo(Of Integer)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Integer)
-  name.vb: JsonTypeInfo(Of Integer)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: System.Int32
-    name: int
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Int32
-    name: Integer
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Boolean*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Boolean
-  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_Boolean
-  name: Boolean
-  nameWithType: KinesisEventJsonSerializerContext.Boolean
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Boolean
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Boolean}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Boolean}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<bool>
-  nameWithType: JsonTypeInfo<bool>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<bool>
-  nameWithType.vb: JsonTypeInfo(Of Boolean)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Boolean)
-  name.vb: JsonTypeInfo(Of Boolean)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: System.Boolean
-    name: bool
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.boolean
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Boolean
-    name: Boolean
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.boolean
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Int64*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Int64
-  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_Int64
-  name: Int64
-  nameWithType: KinesisEventJsonSerializerContext.Int64
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Int64
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Int64}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Int64}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<long>
-  nameWithType: JsonTypeInfo<long>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<long>
-  nameWithType.vb: JsonTypeInfo(Of Long)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Long)
-  name.vb: JsonTypeInfo(Of Long)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: System.Int64
-    name: long
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int64
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Int64
-    name: Long
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int64
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEvent*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEvent
-  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_KinesisEvent
-  name: KinesisEvent
-  nameWithType: KinesisEventJsonSerializerContext.KinesisEvent
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEvent
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.KinesisEvents.KinesisEvent}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.KinesisEvents.KinesisEvent}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<KinesisEvent>
-  nameWithType: JsonTypeInfo<KinesisEvent>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.KinesisEvents.KinesisEvent>
-  nameWithType.vb: JsonTypeInfo(Of KinesisEvent)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.KinesisEvents.KinesisEvent)
-  name.vb: JsonTypeInfo(Of KinesisEvent)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: Amazon.Lambda.KinesisEvents.KinesisEvent
-    name: KinesisEvent
-    isExternal: true
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Amazon.Lambda.KinesisEvents.KinesisEvent
-    name: KinesisEvent
-    isExternal: true
-  - name: )
-- uid: System.Text.Json.JsonSerializerOptions
-  commentId: T:System.Text.Json.JsonSerializerOptions
-  parent: System.Text.Json
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.jsonserializeroptions
-  name: JsonSerializerOptions
-  nameWithType: JsonSerializerOptions
-  fullName: System.Text.Json.JsonSerializerOptions
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Default*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Default
-  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_Default
-  name: Default
-  nameWithType: KinesisEventJsonSerializerContext.Default
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Default
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
-  commentId: T:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
-  parent: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers
-  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html
-  name: KinesisEventJsonSerializerContext
-  nameWithType: KinesisEventJsonSerializerContext
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext
-- uid: System.Text.Json
-  commentId: N:System.Text.Json
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system
-  name: System.Text.Json
-  nameWithType: System.Text.Json
-  fullName: System.Text.Json
-  spec.csharp:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Text
-    name: Text
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text
-  - name: .
-  - uid: System.Text.Json
-    name: Json
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json
-  spec.vb:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Text
-    name: Text
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text
-  - name: .
-  - uid: System.Text.Json
-    name: Json
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json
-- uid: System.Text.Json.Serialization.JsonSerializerContext.GeneratedSerializerOptions
-  commentId: P:System.Text.Json.Serialization.JsonSerializerContext.GeneratedSerializerOptions
-  parent: System.Text.Json.Serialization.JsonSerializerContext
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonserializercontext.generatedserializeroptions
-  name: GeneratedSerializerOptions
-  nameWithType: JsonSerializerContext.GeneratedSerializerOptions
-  fullName: System.Text.Json.Serialization.JsonSerializerContext.GeneratedSerializerOptions
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.GeneratedSerializerOptions*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.GeneratedSerializerOptions
-  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_GeneratedSerializerOptions
-  name: GeneratedSerializerOptions
-  nameWithType: KinesisEventJsonSerializerContext.GeneratedSerializerOptions
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.GeneratedSerializerOptions
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.#ctor*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.#ctor
-  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext__ctor
-  name: KinesisEventJsonSerializerContext
-  nameWithType: KinesisEventJsonSerializerContext.KinesisEventJsonSerializerContext
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.KinesisEventJsonSerializerContext
-  nameWithType.vb: KinesisEventJsonSerializerContext.New
-  fullName.vb: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.New
-  name.vb: New
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.String*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.String
-  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_String
-  name: String
-  nameWithType: KinesisEventJsonSerializerContext.String
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.String
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<string>
-  nameWithType: JsonTypeInfo<string>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<string>
-  nameWithType.vb: JsonTypeInfo(Of String)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of String)
-  name.vb: JsonTypeInfo(Of String)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.IListItemFailureIdentifier*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.IListItemFailureIdentifier
-  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_IListItemFailureIdentifier
-  name: IListItemFailureIdentifier
-  nameWithType: KinesisEventJsonSerializerContext.IListItemFailureIdentifier
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.IListItemFailureIdentifier
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.IList{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.IList{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<IList<ItemFailureIdentifier>>
-  nameWithType: JsonTypeInfo<IList<ItemFailureIdentifier>>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.Collections.Generic.IList<Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier>>
-  nameWithType.vb: JsonTypeInfo(Of IList(Of ItemFailureIdentifier))
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of System.Collections.Generic.IList(Of Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier))
-  name.vb: JsonTypeInfo(Of IList(Of ItemFailureIdentifier))
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: System.Collections.Generic.IList`1
-    name: IList
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
-  - name: <
-  - uid: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier
-    name: ItemFailureIdentifier
-    href: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier.html
-  - name: '>'
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Collections.Generic.IList`1
-    name: IList
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier
-    name: ItemFailureIdentifier
-    href: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier.html
-  - name: )
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.DateTime*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.DateTime
-  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_DateTime
-  name: DateTime
-  nameWithType: KinesisEventJsonSerializerContext.DateTime
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.DateTime
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.DateTime}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.DateTime}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<DateTime>
-  nameWithType: JsonTypeInfo<DateTime>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.DateTime>
-  nameWithType.vb: JsonTypeInfo(Of Date)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Date)
-  name.vb: JsonTypeInfo(Of Date)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: System.DateTime
-    name: DateTime
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.datetime
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.DateTime
-    name: Date
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.datetime
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.ItemFailureIdentifier*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.ItemFailureIdentifier
-  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_ItemFailureIdentifier
-  name: ItemFailureIdentifier
-  nameWithType: KinesisEventJsonSerializerContext.ItemFailureIdentifier
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.ItemFailureIdentifier
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<ItemFailureIdentifier>
-  nameWithType: JsonTypeInfo<ItemFailureIdentifier>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier>
-  nameWithType.vb: JsonTypeInfo(Of ItemFailureIdentifier)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier)
-  name.vb: JsonTypeInfo(Of ItemFailureIdentifier)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier
-    name: ItemFailureIdentifier
-    href: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier.html
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier
-    name: ItemFailureIdentifier
-    href: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier.html
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.MemoryStream*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.MemoryStream
-  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_MemoryStream
-  name: MemoryStream
-  nameWithType: KinesisEventJsonSerializerContext.MemoryStream
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.MemoryStream
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.IO.MemoryStream}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.IO.MemoryStream}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<MemoryStream>
-  nameWithType: JsonTypeInfo<MemoryStream>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.IO.MemoryStream>
-  nameWithType.vb: JsonTypeInfo(Of MemoryStream)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of System.IO.MemoryStream)
-  name.vb: JsonTypeInfo(Of MemoryStream)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: System.IO.MemoryStream
-    name: MemoryStream
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.io.memorystream
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.IO.MemoryStream
-    name: MemoryStream
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.io.memorystream
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Record*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Record
-  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_Record
-  name: Record
-  nameWithType: KinesisEventJsonSerializerContext.Record
-  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.Record
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.KinesisEvents.KinesisEvent.Record}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.KinesisEvents.KinesisEvent.Record}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<KinesisEvent.Record>
-  nameWithType: JsonTypeInfo<KinesisEvent.Record>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.KinesisEvents.KinesisEvent.Record>
-  nameWithType.vb: JsonTypeInfo(Of KinesisEvent.Record)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.KinesisEvents.KinesisEvent.Record)
-  name.vb: JsonTypeInfo(Of KinesisEvent.Record)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: Amazon.Lambda.KinesisEvents.KinesisEvent
-    name: KinesisEvent
-    isExternal: true
-  - name: .
-  - uid: Amazon.Lambda.KinesisEvents.KinesisEvent.Record
-    name: Record
-    isExternal: true
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Amazon.Lambda.KinesisEvents.KinesisEvent
-    name: KinesisEvent
-    isExternal: true
-  - name: .
-  - uid: Amazon.Lambda.KinesisEvents.KinesisEvent.Record
-    name: Record
-    isExternal: true
-  - name: )
 - uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.EncryptionType*
   commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.EncryptionType
   href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_EncryptionType
@@ -2075,4 +2036,43 @@ references:
   - uid: Amazon.Kinesis.EncryptionType
     name: EncryptionType
     isExternal: true
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.BatchFailureResponse*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.BatchFailureResponse
+  href: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Kinesis_Serializers_KinesisEventJsonSerializerContext_BatchFailureResponse
+  name: BatchFailureResponse
+  nameWithType: KinesisEventJsonSerializerContext.BatchFailureResponse
+  fullName: Innovt.Cloud.AWS.Lambda.Kinesis.Serializers.KinesisEventJsonSerializerContext.BatchFailureResponse
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.BatchFailureResponse}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.BatchFailureResponse}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<BatchFailureResponse>
+  nameWithType: JsonTypeInfo<BatchFailureResponse>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.BatchFailureResponse>
+  nameWithType.vb: JsonTypeInfo(Of BatchFailureResponse)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.BatchFailureResponse)
+  name.vb: JsonTypeInfo(Of BatchFailureResponse)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: Innovt.Cloud.AWS.Lambda.BatchFailureResponse
+    name: BatchFailureResponse
+    href: Innovt.Cloud.AWS.Lambda.BatchFailureResponse.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.AWS.Lambda.BatchFailureResponse
+    name: BatchFailureResponse
+    href: Innovt.Cloud.AWS.Lambda.BatchFailureResponse.html
   - name: )
