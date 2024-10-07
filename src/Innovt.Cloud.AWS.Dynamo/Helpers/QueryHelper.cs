@@ -298,7 +298,7 @@ internal static class QueryHelper
     {
         return items is null
             ? []
-            : items.Select(i => AttributeConverter.ConvertAttributesToType<T>(i, context)).ToList();
+            : items.Select(i => AttributeConverter.ConvertAttributeValuesToType<T>(i, context)).ToList();
     }
 
     /// <summary>
@@ -340,9 +340,9 @@ internal static class QueryHelper
 
         foreach (var item in items)
             if (item.TryGetValue(EntitySplitter, out var value) && value.S == splitBy)
-                result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item, context));
+                result1.Add(AttributeConverter.ConvertAttributeValuesToType<T1>(item, context));
             else
-                result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item, context));
+                result2.Add(AttributeConverter.ConvertAttributeValuesToType<T2>(item, context));
 
         return (result1, result2);
     }
@@ -403,14 +403,14 @@ internal static class QueryHelper
 
             if (item[EntitySplitter].S == splitBy[0])
             {
-                result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item, context));
+                result1.Add(AttributeConverter.ConvertAttributeValuesToType<T1>(item, context));
             }
             else
             {
                 if (item[EntitySplitter].S == splitBy[1])
-                    result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item, context));
+                    result2.Add(AttributeConverter.ConvertAttributeValuesToType<T2>(item, context));
                 else
-                    result3.Add(AttributeConverter.ConvertAttributesToType<T3>(item, context));
+                    result3.Add(AttributeConverter.ConvertAttributeValuesToType<T3>(item, context));
             }
         }
 
@@ -483,20 +483,20 @@ internal static class QueryHelper
 
             if (item[EntitySplitter].S == splitBy[0])
             {
-                result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item, context));
+                result1.Add(AttributeConverter.ConvertAttributeValuesToType<T1>(item, context));
             }
             else
             {
                 if (item[EntitySplitter].S == splitBy[1])
                 {
-                    result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item, context));
+                    result2.Add(AttributeConverter.ConvertAttributeValuesToType<T2>(item, context));
                 }
                 else
                 {
                     if (item[EntitySplitter].S == splitBy[2])
-                        result3.Add(AttributeConverter.ConvertAttributesToType<T3>(item, context));
+                        result3.Add(AttributeConverter.ConvertAttributeValuesToType<T3>(item, context));
                     else
-                        result4.Add(AttributeConverter.ConvertAttributesToType<T4>(item, context));
+                        result4.Add(AttributeConverter.ConvertAttributeValuesToType<T4>(item, context));
                 }
             }
         }
@@ -543,26 +543,26 @@ internal static class QueryHelper
 
             if (item[EntitySplitter].S == splitBy[0])
             {
-                result1.Add(AttributeConverter.ConvertAttributesToType<T1>(item, context));
+                result1.Add(AttributeConverter.ConvertAttributeValuesToType<T1>(item, context));
             }
             else
             {
                 if (item[EntitySplitter].S == splitBy[1])
                 {
-                    result2.Add(AttributeConverter.ConvertAttributesToType<T2>(item, context));
+                    result2.Add(AttributeConverter.ConvertAttributeValuesToType<T2>(item, context));
                 }
                 else
                 {
                     if (item[EntitySplitter].S == splitBy[2])
                     {
-                        result3.Add(AttributeConverter.ConvertAttributesToType<T3>(item, context));
+                        result3.Add(AttributeConverter.ConvertAttributeValuesToType<T3>(item, context));
                     }
                     else
                     {
                         if (item[EntitySplitter].S == splitBy[3])
-                            result4.Add(AttributeConverter.ConvertAttributesToType<T4>(item, context));
+                            result4.Add(AttributeConverter.ConvertAttributeValuesToType<T4>(item, context));
                         else
-                            result5.Add(AttributeConverter.ConvertAttributesToType<T5>(item, context));
+                            result5.Add(AttributeConverter.ConvertAttributeValuesToType<T5>(item, context));
                     }
                 }
             }
@@ -647,7 +647,8 @@ internal static class QueryHelper
         {
             ConditionExpression = transactionWriteItem.ConditionExpression,
             TableName = transactionWriteItem.TableName,
-            ExpressionAttributeValues = AttributeConverter.ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
+            ExpressionAttributeValues =
+                AttributeConverter.ConvertToAttributeValues(transactionWriteItem.ExpressionAttributeValues),
             Item = AttributeConverter.ConvertToAttributeValues(transactionWriteItem.Items)
         };
     }

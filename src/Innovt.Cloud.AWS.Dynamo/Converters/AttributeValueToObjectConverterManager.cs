@@ -23,7 +23,8 @@ public static class AttributeValueToObjectConverterManager
                 if (TypeUtil.IsDictionary(desiredType))
                     return ItemsToDictionary(desiredType, value.M);
 
-                var method = typeof(AttributeConverter).GetMethod(nameof(AttributeConverter.ConvertAttributesToType),
+                var method = typeof(AttributeConverter).GetMethod(
+                    nameof(AttributeConverter.ConvertAttributeValuesToType),
                     BindingFlags.Static | BindingFlags.NonPublic, null,
                     new[] { typeof(Dictionary<string, AttributeValue>) }, null);
                 return method?.MakeGenericMethod(desiredType).Invoke(null, new object[] { value.M });

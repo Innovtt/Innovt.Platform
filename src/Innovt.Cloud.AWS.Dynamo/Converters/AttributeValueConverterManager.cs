@@ -5,7 +5,6 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
 using Innovt.Cloud.AWS.Dynamo.Helpers;
 using Innovt.Core.Utilities;
@@ -15,6 +14,7 @@ namespace Innovt.Cloud.AWS.Dynamo.Converters;
 public static class AttributeValueConverterManager
 {
     #region [Converters]
+
     /// <summary>
     ///     This dictionary strategy will have a complexity of O(1) for the lookup and O(1) for the invocation.
     /// </summary>
@@ -43,6 +43,11 @@ public static class AttributeValueConverterManager
             typeof(DateTime),
             value => new AttributeValue { S = ((DateTime)value).ToString("s", CultureInfo.InvariantCulture) }
         },
+        {
+            typeof(DateTimeOffset),
+            value => new AttributeValue
+                { S = ((DateTimeOffset)value).ToString("o", CultureInfo.InvariantCulture) } // ISO 8601 format
+        },
         { typeof(Guid), value => new AttributeValue { S = value.ToString() } },
         { typeof(TimeSpan), value => new AttributeValue { S = value.ToString() } }
     };
@@ -55,46 +60,47 @@ public static class AttributeValueConverterManager
     /// <param name="value">An object.</param>
     /// <param name="visitedObjects">This is a hash set to control circular reference.</param>
     /// <returns>A dynamo db attribute value.</returns>
-    public static AttributeValue CreateAttributeValue(object value, HashSet<object> visitedObjects = null )
+    public static AttributeValue CreateAttributeValue(object value, HashSet<object> visitedObjects = null)
     {
-        if (value == null) return new AttributeValue { NULL = true };
+        switch (value)
+        {
+            case null:
+                return new AttributeValue { NULL = true };
+            case AttributeValue attributeValue:
+                return attributeValue;
+        }
 
         // Initialize the visited objects set if it's not provided
-        visitedObjects ??= new HashSet<object>( new ReferenceEqualityComparer());
+        visitedObjects ??= new HashSet<object>(new ReferenceEqualityComparer());
 
-        if(value is Primitive)
-            return new AttributeValue { S = value.ToString() };
-        
         // Check for circular references. Add the value if it's not already in the set
-        if (!visitedObjects.Add(value))
-        {
-            return new AttributeValue { NULL = true };
-        }
+        if (!visitedObjects.Add(value)) return new AttributeValue { NULL = true };
 
         var valueType = value.GetType();
 
         // If we have a direct match, use the converter
         if (Converters.TryGetValue(valueType, out var converter)) return converter(value);
 
-        // Handle numeric lists using a custom check
-        if (value is IList list && TypeUtil.IsNumericList(list))
-            return new AttributeValue
-            {
-                NS = list.Cast<object>().Select(o => Convert.ToString(o, CultureInfo.InvariantCulture)).ToList()
-            };
-        
-        if (value is IDictionary<string, object> dict)
-            return new AttributeValue
-            {
-                M = dict.ToDictionary(item => item.Key, item => CreateAttributeValue(item.Value,visitedObjects))
-            };
-        
-        if (value is IList<object> objectList)
-            return new AttributeValue { L = objectList.Select(o=>CreateAttributeValue(o,visitedObjects)).ToList() };
+        switch (value)
+        {
+            // Handle numeric lists using a custom check
+            case IList list when TypeUtil.IsNumericList(list):
+                return new AttributeValue
+                {
+                    NS = list.Cast<object>().Select(o => Convert.ToString(o, CultureInfo.InvariantCulture)).ToList()
+                };
+            case IDictionary<string, object> dict:
+                return new AttributeValue
+                {
+                    M = dict.ToDictionary(item => item.Key, item => CreateAttributeValue(item.Value, visitedObjects))
+                };
+            case IList<object> objectList:
+                return new AttributeValue
+                    { L = objectList.Select(o => CreateAttributeValue(o, visitedObjects)).ToList() };
+        }
 
         // Handle complex objects (non-string classes)
         if (valueType.IsClass && valueType != typeof(string))
-        {   
             return new AttributeValue
             {
                 M = valueType
@@ -107,8 +113,7 @@ public static class AttributeValueConverterManager
                         prop => CreateAttributeValue(prop.GetValue(value), visitedObjects)
                     )
             };
-        }
-        
+
         return new AttributeValue { S = value.ToString() };
     }
 }

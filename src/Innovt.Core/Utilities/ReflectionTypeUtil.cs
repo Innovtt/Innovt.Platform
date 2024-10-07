@@ -25,7 +25,7 @@ public static class ReflectionTypeUtil
 
         return lambda.Compile();
     }
-    
+
     public static Func<object> CreateInstance(Type type)
     {
         // Use compiled expression to create instances of T
@@ -39,14 +39,15 @@ public static class ReflectionTypeUtil
 
         return lambda.Compile();
     }
-    
+
     public static Func<object> CreateInstance(Type type, params object[] args)
     {
         // Use compiled expression to create instances of T
         var ctor = type.GetConstructor(args.Select(a => a.GetType()).ToArray());
 
         if (ctor == null)
-            throw new InvalidOperationException($"Type {type} does not have a constructor with the specified parameters.");
+            throw new InvalidOperationException(
+                $"Type {type} does not have a constructor with the specified parameters.");
 
         var newExpr = Expression.New(ctor, args.Select(Expression.Constant));
         var lambda = Expression.Lambda<Func<Type>>(newExpr);

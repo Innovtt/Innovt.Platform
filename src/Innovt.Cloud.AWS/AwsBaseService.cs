@@ -73,6 +73,11 @@ public abstract class AwsBaseService : IDisposable
     private int RetryCount { get; }
 
     /// <summary>
+    ///     It represents the exponential backoffice in seconds
+    /// </summary>
+    public int ExponentialBackoffInSeconds { get; set; } = 1;
+
+    /// <summary>
     ///     Gets or sets the number of allowed exceptions before the circuit breaker opens.
     /// </summary>
     private int CircuitBreakerAllowedExceptions { get; }
@@ -131,7 +136,7 @@ public abstract class AwsBaseService : IDisposable
     /// <summary>
     ///     Generates an action to record replay attempt information for resiliency purposes.
     /// </summary>
-    /// <returns>Ação para registro de informações de repetição.</returns>
+    /// <returns>An action with a logger call.</returns>
     private Action<Exception, TimeSpan, int, Context> LogResiliencyRetry()
     {
         return (exception, timeSpan, retryCount, context) =>
@@ -148,9 +153,9 @@ public abstract class AwsBaseService : IDisposable
     protected virtual AsyncRetryPolicy CreateDefaultRetryAsyncPolicy()
     {
         return Policy.Handle<AmazonServiceException>(r =>
-            r.StatusCode == HttpStatusCode.ServiceUnavailable ||
-            r.StatusCode == HttpStatusCode.InternalServerError).WaitAndRetryAsync(RetryCount, retryAttempt =>
-            TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
+            r.StatusCode is HttpStatusCode.ServiceUnavailable or HttpStatusCode.InternalServerError).WaitAndRetryAsync(
+            RetryCount, retryAttempt =>
+                TimeSpan.FromSeconds(Math.Pow(ExponentialBackoffInSeconds, retryAttempt)), LogResiliencyRetry());
     }
 
     /// <summary>
@@ -160,9 +165,9 @@ public abstract class AwsBaseService : IDisposable
     protected virtual RetryPolicy CreateDefaultRetryPolicy()
     {
         return Policy.Handle<AmazonServiceException>(r =>
-            r.StatusCode == HttpStatusCode.ServiceUnavailable ||
-            r.StatusCode == HttpStatusCode.InternalServerError).WaitAndRetry(RetryCount, retryAttempt =>
-            TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
+            r.StatusCode is HttpStatusCode.ServiceUnavailable or HttpStatusCode.InternalServerError).WaitAndRetry(
+            RetryCount, retryAttempt =>
+                TimeSpan.FromSeconds(Math.Pow(ExponentialBackoffInSeconds, retryAttempt)), LogResiliencyRetry());
     }
 
     /// <summary>
@@ -173,7 +178,7 @@ public abstract class AwsBaseService : IDisposable
     protected virtual AsyncRetryPolicy CreateRetryAsyncPolicy<T>() where T : Exception
     {
         return Policy.Handle<T>().WaitAndRetryAsync(RetryCount, retryAttempt =>
-            TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
+            TimeSpan.FromSeconds(Math.Pow(ExponentialBackoffInSeconds, retryAttempt)), LogResiliencyRetry());
     }
 
     /// <summary>
@@ -185,7 +190,7 @@ public abstract class AwsBaseService : IDisposable
     protected virtual AsyncRetryPolicy CreateRetryAsyncPolicy<T, T1>() where T : Exception where T1 : Exception
     {
         return Policy.Handle<T>().Or<T1>().WaitAndRetryAsync(RetryCount, retryAttempt =>
-            TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
+            TimeSpan.FromSeconds(Math.Pow(ExponentialBackoffInSeconds, retryAttempt)), LogResiliencyRetry());
     }
 
     protected virtual AsyncRetryPolicy CreateRetryAsyncPolicy<T, T1, T2>()
@@ -193,7 +198,7 @@ public abstract class AwsBaseService : IDisposable
     {
         return Policy.Handle<T>().Or<T1>().Or<T2>()
             .WaitAndRetryAsync(RetryCount, retryAttempt =>
-                TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
+                TimeSpan.FromSeconds(Math.Pow(ExponentialBackoffInSeconds, retryAttempt)), LogResiliencyRetry());
     }
 
     protected virtual AsyncRetryPolicy CreateRetryAsyncPolicy<T, T1, T2, T3>() where T : Exception
@@ -203,7 +208,7 @@ public abstract class AwsBaseService : IDisposable
     {
         return Policy.Handle<T>().Or<T1>().Or<T2>().Or<T3>()
             .WaitAndRetryAsync(RetryCount, retryAttempt =>
-                TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
+                TimeSpan.FromSeconds(Math.Pow(ExponentialBackoffInSeconds, retryAttempt)), LogResiliencyRetry());
     }
 
     protected virtual AsyncRetryPolicy CreateRetryAsyncPolicy<T, T1, T2, T3, T4>() where T : Exception
@@ -214,7 +219,7 @@ public abstract class AwsBaseService : IDisposable
     {
         return Policy.Handle<T>().Or<T1>().Or<T2>().Or<T3>().Or<T4>()
             .WaitAndRetryAsync(RetryCount, retryAttempt =>
-                TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), LogResiliencyRetry());
+                TimeSpan.FromSeconds(Math.Pow(ExponentialBackoffInSeconds, retryAttempt)), LogResiliencyRetry());
     }
 
     protected virtual AsyncCircuitBreakerPolicy CreateCircuitBreaker<T, T1>()

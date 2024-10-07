@@ -63,7 +63,7 @@ internal static class AttributeConverter
     {
         return AttributeValueConverterManager.CreateAttributeValue(value);
     }
-    
+
     /// <summary>
     ///     Converts a DynamoDB AttributeValue to an object of the specified desiredType.
     /// </summary>
@@ -88,39 +88,6 @@ internal static class AttributeConverter
     private static object ItemsToCollection(Type targetType, IEnumerable<object> items)
     {
         return !targetType.IsArray ? ItemsToIList(targetType, items) : ItemsToArray(targetType, items);
-    }
-
-    /// <summary>
-    ///     Converts a dictionary of items to the specified target dictionary type.
-    /// </summary>
-    /// <param name="targetType">The desired dictionary Type to convert the items to.</param>
-    /// <param name="items">The dictionary of items to convert.</param>
-    /// <returns>
-    ///     An object of the specified target dictionary type containing the converted items, or null if the conversion is not
-    ///     supported.
-    /// </returns>
-    private static object ItemsToDictionary(Type targetType, Dictionary<string, AttributeValue> items)
-    {
-        if (items is null || targetType is null)
-            return null;
-
-        var genericArguments = targetType.GetGenericArguments();
-
-        //not supported
-        if (genericArguments.Length != 2)
-            return null;
-
-        var dictionary = ReflectionTypeUtil.CreateInstance(targetType)() as IDictionary;
-
-        if (dictionary is null)
-            return null;
-
-        var valueType = genericArguments[1];
-
-        foreach (var item in items)
-            dictionary.Add(item.Key, CreateAttributeValueToObject(item.Value, valueType));
-
-        return dictionary;
     }
 
     /// <summary>
@@ -160,8 +127,8 @@ internal static class AttributeConverter
 
         var list = items.ToList();
         var elementType = GetElementType(targetType);
-        
-        var array = (Array) ReflectionTypeUtil.CreateInstance(targetType, list.Count)();
+
+        var array = (Array)ReflectionTypeUtil.CreateInstance(targetType, list.Count)();
         for (var index = 0; index < list.Count; ++index)
             array.SetValue(TypeUtil.IsPrimitive(elementType) ? ConvertType(elementType, list[index]) : list[index],
                 index);
@@ -234,7 +201,8 @@ internal static class AttributeConverter
         if (instanceProps.Count == 0)
             return null;
 
-        var prop = instanceProps.FirstOrDefault(p => p.DeclaringType == declaringType) ?? instanceProps.First();
+        var prop = instanceProps.Find(p => p.DeclaringType == declaringType) ??
+                   instanceProps[0];
 
         if (prop is null || !prop.CanWrite) return null;
 
@@ -328,7 +296,8 @@ internal static class AttributeConverter
     /// <param name="items"></param>
     /// <param name="context"></param>
     /// <returns></returns>
-    internal static T ConvertAttributesToType<T>(Dictionary<string, AttributeValue> items, DynamoContext context = null)
+    internal static T ConvertAttributeValuesToType<T>(Dictionary<string, AttributeValue> items,
+        DynamoContext context = null)
         where T : class, new()
     {
         if (items is null) return default;
@@ -410,7 +379,7 @@ internal static class AttributeConverter
             propertyTypeBuilder?.InvokeMaps(instance);
         }
     }
-    
+
     /// <summary>
     ///     Converts a type to a dictionary of attributes and values
     /// </summary>
@@ -418,7 +387,8 @@ internal static class AttributeConverter
     /// <param name="context"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    internal static Dictionary<string, AttributeValue> ConvertToAttributeValueMap<T>(T instance, DynamoContext context = null)
+    internal static Dictionary<string, AttributeValue> ConvertToAttributeValueMap<T>(T instance,
+        DynamoContext context = null)
         where T : class
     {
         Check.NotNull(instance, nameof(instance));
@@ -427,7 +397,7 @@ internal static class AttributeConverter
             .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.GetProperty);
 
         if (properties.Length == 0)
-            return default;
+            return null;
 
         var attributes = new Dictionary<string, AttributeValue>();
 
@@ -469,28 +439,28 @@ internal static class AttributeConverter
                     propertyValue = mappedProperty.GetValue(instance);
                     propertyType = mappedProperty.Type;
                 }
-                
+
                 //This is a property that is not mapped and not in the object
                 if ((context.IgnoreNullValues && propertyValue is null) || propertyType is null)
                     continue;
-                
+
                 if (CanIgnoreMapping(propertyType, context))
                     continue;
-                
+
                 var converter = context.GetPropertyConverter(propertyType);
 
                 if (converter is not null)
-                    propertyValue = converter.ToEntry(propertyValue).AsPrimitive();
-                
+                    propertyValue = converter.ToEntry(propertyValue).ToString();
+
                 attributes.Add(mappedProperty.ColumnName, CreateAttributeValue(propertyValue));
             }
         }
 
         return attributes;
     }
-    
+
     /// <summary>
-    /// Check if the property is a class and has a type builder. In this case it should ignore mappings
+    ///     Check if the property is a class and has a type builder. In this case it should ignore mappings
     /// </summary>
     /// <param name="type">The destination type.</param>
     /// <param name="context">The current dynamo context.</param>

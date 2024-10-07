@@ -241,7 +241,6 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
         var properties = entityType.GetProperties(
             BindingFlags.Public | BindingFlags.Instance);
 
-
         if (ignoreNonNativeTypes)
             properties = properties.Where(p => TypeUtil.IsPrimitive(p.PropertyType)).ToArray();
 

@@ -120,20 +120,29 @@ public abstract class Repository : AwsBaseService, ITableRepository
         }
     }
 
-    public TransactionWriteItem CreateTransactionWriteItem<T>(T instance) where T : class, new()
+    public TransactionWriteItem CreateTransactionWriteItem<T>(T instance,
+        TransactionWriteOperationType operationType = TransactionWriteOperationType.Put) where T : class, new()
     {
         if (instance == null) throw new ArgumentNullException(nameof(instance));
 
+        var attributes = new Dictionary<string, AttributeValue>();
+
+        //Delete operation does not need attributes
+        if (operationType != TransactionWriteOperationType.Delete)
+            attributes = AttributeConverter.ConvertToAttributeValueMap(instance, context);
+
         var keys = TableHelper.ExtractKeyAttributeValueMap(instance, context);
-        var attributes = AttributeConverter.ConvertToAttributeMap(instance, context);
-        
-        return new TransactionWriteItem
+
+        var transaction = new TransactionWriteItem
         {
             TableName = TableHelper.GetTableName<T>(context),
-            Items = attributes,
+            OperationType = operationType,
+            Items = attributes.ToDictionary(x => x.Key, object (x) => x.Value),
             Keys = keys.ToDictionary(x =>
-                x.Key, x => (object)x.Value.S)
+                x.Key, object (x) => x.Value.S)
         };
+
+        return transaction;
     }
 
     /// <summary>
@@ -426,9 +435,13 @@ public abstract class Repository : AwsBaseService, ITableRepository
         foreach (var transactItem in request.TransactItems)
             transactRequest.TransactItems.Add(QueryHelper.CreateTransactionWriteItem(transactItem));
 
-        await CreateDefaultRetryAsyncPolicy().ExecuteAsync(
+        var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(
                 ct => DynamoClient.TransactWriteItemsAsync(transactRequest, ct), cancellationToken)
             .ConfigureAwait(false);
+
+        activity?.SetTag(ConsumedCapacity, response.ConsumedCapacity);
+        activity?.SetTag(StatusCode, response.HttpStatusCode);
+        activity?.SetTag(RequestId, response.ResponseMetadata.RequestId);
     }
 
     /// <summary>
@@ -491,6 +504,31 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <inheritdoc />
+    public async Task DeleteAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default)
+        where T : class
+    {
+        Check.NotNull(id, nameof(id));
+
+        using var activity = ActivityRepository.StartActivity();
+        activity?.SetTag("Id", id);
+        activity?.SetTag("RangeKey", rangeKey);
+
+        var deleteRequest = new DeleteItemRequest
+        {
+            TableName = TableHelper.GetTableName<T>(context),
+            Key = TableHelper.ParseKeysToAttributeValueMap<T>(id, rangeKey, context)
+        };
+
+        var response = await CreateDefaultRetryAsyncPolicy()
+            .ExecuteAsync(ct => DynamoClient.DeleteItemAsync(deleteRequest, ct), cancellationToken)
+            .ConfigureAwait(false);
+
+        activity?.SetTag(ConsumedCapacity, response.ConsumedCapacity);
+        activity?.SetTag(StatusCode, response.HttpStatusCode);
+        activity?.SetTag(RequestId, response.ResponseMetadata.RequestId);
+    }
+
+    /// <inheritdoc />
     public async Task DeleteListAsync<T>(ICollection<T> messages, CancellationToken cancellationToken = default)
         where T : class
     {
@@ -517,31 +555,6 @@ public abstract class Repository : AwsBaseService, ITableRepository
             if (response.HasItems())
                 throw new CriticalException("Some items could not be deleted from the table");
         }
-    }
-
-    /// <inheritdoc />
-    public async Task DeleteAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default)
-        where T : class
-    {
-        Check.NotNull(id, nameof(id));
-
-        using var activity = ActivityRepository.StartActivity();
-        activity?.SetTag("Id", id);
-        activity?.SetTag("RangeKey", rangeKey);
-
-        var deleteRequest = new DeleteItemRequest
-        {
-            TableName = TableHelper.GetTableName<T>(context),
-            Key = TableHelper.ParseKeysToAttributeValueMap<T>(id, rangeKey, context)
-        };
-
-        var response = await CreateDefaultRetryAsyncPolicy()
-            .ExecuteAsync(ct => DynamoClient.DeleteItemAsync(deleteRequest, ct), cancellationToken)
-            .ConfigureAwait(false);
-
-        activity?.SetTag(ConsumedCapacity, response.ConsumedCapacity);
-        activity?.SetTag(StatusCode, response.HttpStatusCode);
-        activity?.SetTag(RequestId, response.ResponseMetadata.RequestId);
     }
 
     #endregion
@@ -640,7 +653,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         return response.Attributes.IsNullOrEmpty()
             ? default
-            : AttributeConverter.ConvertAttributesToType<T>(response.Attributes, context);
+            : AttributeConverter.ConvertAttributeValuesToType<T>(response.Attributes, context);
     }
 
     #endregion

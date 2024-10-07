@@ -123,6 +123,4 @@ public static class SimpleMapper
 
         return result.ToList();
     }
-
-   
 }

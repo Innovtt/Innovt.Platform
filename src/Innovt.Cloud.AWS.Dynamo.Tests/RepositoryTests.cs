@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.AWS.Dynamo.Tests.Mapping;
@@ -12,7 +13,7 @@ using NUnit.Framework;
 namespace Innovt.Cloud.AWS.Dynamo.Tests;
 
 [TestFixture]
-//[Ignore("Only for local tests")]
+[Ignore("Only for local tests")]
 public class RepositoryTests
 {
     [SetUp]
@@ -77,7 +78,7 @@ public class RepositoryTests
             //user2.Id = "59c6be94-eeea-4185-ab59-fc66207cf387";
             user2.FirstName = "Michel";
             user2.LastName = "Borges";
-            
+
             await repository.DeleteAsync(user2).ConfigureAwait(false);
 
             queryRequest = new QueryRequest
@@ -216,7 +217,6 @@ public class RepositoryTests
             var user =
                 (await repository.QueryAsync<User>(queryRequest).ConfigureAwait(false)).SingleOrDefault();
 
-
             Assert.That(user, Is.Not.Null);
 
             user.FirstName = "Rafaela";
@@ -268,5 +268,46 @@ public class RepositoryTests
             Console.WriteLine(e);
             throw;
         }
+    }
+
+    [Test]
+    public async Task TransactionWrite()
+    {
+        var context = new SampleDynamoContext();
+
+        var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
+
+        repository = new SampleRepository(context, loggerMock, awsConfiguration);
+
+        var email = "michelmob@gmail.com";
+
+
+        var users = await repository.ScanAsync<User>(new ScanRequest
+        {
+            FilterExpression = "Email=:email",
+            Filter = new
+            {
+                email
+            }
+        }).ConfigureAwait(false);
+
+        if (users.Any()) await repository.Delete(users.First()).ConfigureAwait(false);
+
+        var user = new User
+        {
+            Id = Guid.NewGuid().ToString(),
+            Email = email,
+            FirstName = "Michel",
+            LastName = "Borges",
+            CreatedAt = DateTime.Now,
+            Picture = "https://www.google.com",
+            JobPositionId = 1,
+            Context = "C2G",
+            IsActive = true
+        };
+
+        await repository.SaveUser(user, CancellationToken.None).ConfigureAwait(false);
+
+        Assert.Pass("Transaction Saved");
     }
 }

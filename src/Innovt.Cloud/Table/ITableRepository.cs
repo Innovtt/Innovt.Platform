@@ -272,7 +272,9 @@ public interface ITableRepository : IDisposable
     ///     Create a transaction write item based on the instance.
     /// </summary>
     /// <param name="instance">A mapped instance with context.</param>
+    /// <param name="operationType">The operation that you want to perform.</param>
     /// <typeparam name="T">A typed mapped entity</typeparam>
     /// <returns>A incomplete transaction write item with properties mapped.</returns>
-    TransactionWriteItem CreateTransactionWriteItem<T>(T instance) where T : class, new();
+    TransactionWriteItem CreateTransactionWriteItem<T>(T instance,
+        TransactionWriteOperationType operationType = TransactionWriteOperationType.Put) where T : class, new();
 }
