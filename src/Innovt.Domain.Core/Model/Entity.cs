@@ -24,7 +24,7 @@ public abstract class Entity
     {
         CreatedAt = DateTimeOffset.UtcNow;
         UpdatedAt = DateTimeOffset.UtcNow;
-        domainEvents = new List<DomainEvent>();
+        domainEvents = [];
     }
 
     /// <summary>
@@ -55,11 +55,8 @@ public abstract class Entity
     ///     Checks if the entity is new (i.e., not persisted in the database yet).
     /// </summary>
     /// <returns><c>true</c> if the entity is new; otherwise, <c>false</c>.</returns>
-    public bool IsNew()
-    {
-        return Id == 0 || isNew;
-    }
-
+    public bool IsNew() => isNew;
+   
     /// <summary>
     /// </summary>
     /// <returns></returns>
