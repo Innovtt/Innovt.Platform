@@ -18,10 +18,13 @@ public class UserMap : IEntityTypeDataModelMapper<User>
     {
         builder.AutoMap().WithDefaultKeys().WithTableName("Users", "#");
         builder.WithHashKey().SetDynamicValue(u => "USER#" + u.Id);
-
         builder.WithRangeKey().WithValue("PROFILE");
         builder.Property(u => u.Email).WithMaxLength(50).IsRequired();
-
         builder.WithHashKeyPrefix("USER");
+
+        //Mapear uma propriedade que nao existe na entidade mas vai existir no banco - OK -  utiliza-se o SetDynamicValue
+        //Mapear uma propriedade que existe no banco e que vc quer setar em um valor da entidade.
+
+
     }
 }

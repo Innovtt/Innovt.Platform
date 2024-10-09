@@ -290,7 +290,7 @@ internal static class AttributeConverter
     }
 
     /// <summary>
-    ///     Convert an attribute array to specific type
+    ///     Convert an attribute array to specific type. The method is called when the object is being retrieved from DynamoDB
     /// </summary>
     /// <typeparam name="T">The desired Type </typeparam>
     /// <param name="items"></param>
@@ -375,13 +375,13 @@ internal static class AttributeConverter
         foreach (var property in properties)
         {
             var propertyTypeBuilder = typeBuilder.GetProperty(property.Name);
-
+            
             propertyTypeBuilder?.InvokeMaps(instance);
         }
     }
 
     /// <summary>
-    ///     Converts a type to a dictionary of attributes and values
+    ///     Converts a type to a dictionary of attributes and values. This happens when we are sending an object to DynamoDB
     /// </summary>
     /// <param name="instance"></param>
     /// <param name="context"></param>
@@ -397,7 +397,7 @@ internal static class AttributeConverter
             .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.GetProperty);
 
         if (properties.Length == 0)
-            return null;
+            return new Dictionary<string, AttributeValue>();
 
         var attributes = new Dictionary<string, AttributeValue>();
 
@@ -413,7 +413,7 @@ internal static class AttributeConverter
         {
             //Considering all the mapped properties is has map. The system will get from the map and fill the attributes
             InvokeMappedProperties(context, properties, instance);
-
+            
             var mappedProperties = typeBuilder.GetProperties();
 
             //get the mapped properties
@@ -444,9 +444,6 @@ internal static class AttributeConverter
                 if ((context.IgnoreNullValues && propertyValue is null) || propertyType is null)
                     continue;
 
-                if (CanIgnoreMapping(propertyType, context))
-                    continue;
-
                 var converter = context.GetPropertyConverter(propertyType);
 
                 if (converter is not null)
@@ -457,16 +454,5 @@ internal static class AttributeConverter
         }
 
         return attributes;
-    }
-
-    /// <summary>
-    ///     Check if the property is a class and has a type builder. In this case it should ignore mappings
-    /// </summary>
-    /// <param name="type">The destination type.</param>
-    /// <param name="context">The current dynamo context.</param>
-    /// <returns></returns>
-    private static bool CanIgnoreMapping(Type type, DynamoContext context)
-    {
-        return type.IsClass && context.HasTypeBuilder(type);
     }
 }
