@@ -375,7 +375,7 @@ internal static class AttributeConverter
         foreach (var property in properties)
         {
             var propertyTypeBuilder = typeBuilder.GetProperty(property.Name);
-
+            
             propertyTypeBuilder?.InvokeMaps(instance);
         }
     }
