@@ -16,12 +16,11 @@ public class UserMap : IEntityTypeDataModelMapper<User>
     /// <param name="builder">The EntityTypeBuilder used to configure the mapping.</param>
     public void Configure([NotNull] EntityTypeBuilder<User> builder)
     {
+        //como fazer com uma propriedade que não existe no objeto?
         builder.AutoMap().WithDefaultKeys().WithTableName("Users", "#");
         builder.WithHashKey().SetDynamicValue(u => "USER#" + u.Id);
-
         builder.WithRangeKey().WithValue("PROFILE");
         builder.Property(u => u.Email).WithMaxLength(50).IsRequired();
-
         builder.WithHashKeyPrefix("USER");
     }
 }

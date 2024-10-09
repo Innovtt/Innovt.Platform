@@ -10,9 +10,10 @@ namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 public class PropertyTypeBuilder<T>
 {
     private readonly List<Action<T>> mapActions = [];
-
-    private string columnName;
     private Func<T, object> setValueDelegate;
+    
+    private string columnName;
+    
 
 
     /// <summary>
@@ -84,11 +85,6 @@ public class PropertyTypeBuilder<T>
     public int MaxLength { get; private set; }
 
     /// <summary>
-    ///     This template property will be user to create values for the property dynamicaly.
-    /// </summary>
-    public string Template { get; private set; }
-
-    /// <summary>
     ///     Specifies that the property is of string type.
     /// </summary>
     /// <returns>The current instance of <see cref="PropertyTypeBuilder{T}" />.</returns>
@@ -158,12 +154,6 @@ public class PropertyTypeBuilder<T>
         return this;
     }
 
-    public PropertyTypeBuilder<T> WithTemplate(string template)
-    {
-        Template = template;
-        return this;
-    }
-
     /// <summary>
     ///     Define a delegate to parse the property.
     /// </summary>
@@ -190,7 +180,12 @@ public class PropertyTypeBuilder<T>
         return this;
     }
 
-    public PropertyTypeBuilder<T> InvokeMaps(T entity)
+    /// <summary>
+    /// Invoke all map actions
+    /// </summary>
+    /// <param name="entity"></param>
+    /// <returns></returns>
+    internal PropertyTypeBuilder<T> InvokeMaps(T entity)
     {
         if (!HasMapAction)
             return this;

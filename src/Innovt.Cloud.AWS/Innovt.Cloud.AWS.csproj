@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <PackageId>Innovt.Cloud.AWS</PackageId>
-        <PackageVersion>8.1.6</PackageVersion>
+        <PackageVersion>8.1.7</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -13,11 +13,11 @@
         <ClsCompliant>true</ClsCompliant>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="AWSSDK.Core" Version="3.7.400.31" />
-        <PackageReference Include="AWSSDK.SecurityToken" Version="3.7.400.31" />
+        <PackageReference Include="AWSSDK.Core" Version="3.7.400.32" />
+        <PackageReference Include="AWSSDK.SecurityToken" Version="3.7.400.32" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.2"/>
         <PackageReference Include="Polly" Version="8.4.2"/>
-        <PackageReference Include="System.Text.Json" Version="8.0.4"/>
+        <PackageReference Include="System.Text.Json" Version="8.0.5" />
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
