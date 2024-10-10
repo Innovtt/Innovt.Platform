@@ -167,7 +167,7 @@ public class RepositoryTests
                 users.Add(user1);
             }
 
-            await repository.AddListAsync(users).ConfigureAwait(false);
+            await repository.AddRangeAsync(users).ConfigureAwait(false);
 
             //scan all users
             var scanRequest = new ScanRequest
@@ -181,7 +181,7 @@ public class RepositoryTests
 
             var usersList = (await repository.ScanAsync<User>(scanRequest).ConfigureAwait(false)).ToList();
 
-            await repository.DeleteListAsync(usersList).ConfigureAwait(false);
+            await repository.DeleteRangeAsync(usersList).ConfigureAwait(false);
         }
         catch (Exception e)
         {
