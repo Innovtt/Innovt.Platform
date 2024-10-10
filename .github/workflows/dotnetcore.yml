@@ -21,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write  # Grant write permission to push changes
+      pages: write   # This grants the necessary permission to deploy GitHub Pages
       id-token: write  # Allow to use the GITHUB_TOKEN to authenticate against the GitHub API
     steps:
       - uses: actions/checkout@v4
