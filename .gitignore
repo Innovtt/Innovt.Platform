@@ -352,3 +352,6 @@ MigrationBackup/
 .DS_Store
 
 .idea
+
+docs/_site/*
+docs/api/*
