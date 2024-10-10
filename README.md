@@ -1,41 +1,32 @@
+
 ![.NET Core](https://github.com/Innovtt/Innovt.Platform/workflows/.NET%20Core/badge.svg)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Innovtt_Innovt.Platform&metric=alert_status)](https://sonarcloud.io/dashboard?id=Innovtt_Innovt.Platform)
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Innovtt_Innovt.Platform&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Innovtt_Innovt.Platform)
+
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Innovtt_Innovt.Platform&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=Innovtt_Innovt.Platform)
+
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=Innovtt_Innovt.Platform&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=Innovtt_Innovt.Platform)
 
 
-## Welcome to GitHub Pages
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Innovtt_Innovt.Platform&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Innovtt_Innovt.Platform)
 
-You can use the [editor on GitHub](https://github.com/Innovtt/Innovt.Platform/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Innovtt_Innovt.Platform&metric=bugs)](https://sonarcloud.io/summary/new_code?id=Innovtt_Innovt.Platform)
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Innovtt_Innovt.Platform&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=Innovtt_Innovt.Platform)
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Innovtt_Innovt.Platform&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Innovtt_Innovt.Platform)
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Innovtt_Innovt.Platform&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=Innovtt_Innovt.Platform)
 
-**Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
-```
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Innovtt_Innovt.Platform&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=Innovtt_Innovt.Platform)
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
+Hi, 
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Innovtt/Innovt.Platform/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+For more information about this project please visit our [docs page](https://innovtt.github.io/Innovt.Platform/api/Innovt.AspNetCore.html) 
