@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Innovt.AspNetCore.Filters.Recaptcha
+  commentId: N:Innovt.AspNetCore.Filters.Recaptcha
+  id: Innovt.AspNetCore.Filters.Recaptcha
+  children:
+  - Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute
+  langs:
+  - csharp
+  - vb
+  name: Innovt.AspNetCore.Filters.Recaptcha
+  nameWithType: Innovt.AspNetCore.Filters.Recaptcha
+  fullName: Innovt.AspNetCore.Filters.Recaptcha
+  type: Namespace
+  assemblies:
+  - Innovt.AspNetCore
+references:
+- uid: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute
+  commentId: T:Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute
+  href: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.html
+  name: CaptchaValidatorFilterAttribute
+  nameWithType: CaptchaValidatorFilterAttribute
+  fullName: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute

@@ -9,14 +9,14 @@ items:
   - Innovt.Cloud.AWS.Dynamo.Repository.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,Innovt.Cloud.AWS.Dynamo.DynamoContext)
   - Innovt.Cloud.AWS.Dynamo.Repository.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String)
   - Innovt.Cloud.AWS.Dynamo.Repository.AddAsync``1(``0,System.Threading.CancellationToken)
-  - Innovt.Cloud.AWS.Dynamo.Repository.AddListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.AddRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
   - Innovt.Cloud.AWS.Dynamo.Repository.BatchGetItem``1(Innovt.Cloud.Table.BatchGetItemRequest,System.Threading.CancellationToken)
   - Innovt.Cloud.AWS.Dynamo.Repository.BatchWriteItem(Innovt.Cloud.Table.BatchWriteItemRequest,System.Threading.CancellationToken)
   - Innovt.Cloud.AWS.Dynamo.Repository.CreateDefaultRetryAsyncPolicy
-  - Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem``1(``0)
+  - Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem``1(``0,Innovt.Cloud.Table.TransactionWriteOperationType)
   - Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(System.Object,System.String,System.Threading.CancellationToken)
   - Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(``0,System.Threading.CancellationToken)
-  - Innovt.Cloud.AWS.Dynamo.Repository.DeleteListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  - Innovt.Cloud.AWS.Dynamo.Repository.DeleteRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
   - Innovt.Cloud.AWS.Dynamo.Repository.DisposeServices
   - Innovt.Cloud.AWS.Dynamo.Repository.ExecuteStatementAsync``1(Innovt.Cloud.Table.ExecuteSqlStatementRequest,System.Threading.CancellationToken)
   - Innovt.Cloud.AWS.Dynamo.Repository.GetByIdAsync``1(System.Object,System.String,System.Threading.CancellationToken)
@@ -33,7 +33,6 @@ items:
   - Innovt.Cloud.AWS.Dynamo.Repository.ScanPaginatedByAsync``1(Innovt.Cloud.Table.ScanRequest,System.Threading.CancellationToken)
   - Innovt.Cloud.AWS.Dynamo.Repository.TransactWriteItemsAsync(Innovt.Cloud.Table.TransactionWriteRequest,System.Threading.CancellationToken)
   - Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync(System.String,System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValue},System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValueUpdate},System.Threading.CancellationToken)
-  - Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1(Amazon.DynamoDBv2.Model.UpdateItemRequest,System.Threading.CancellationToken)
   - Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1(``0,System.Threading.CancellationToken)
   langs:
   - csharp
@@ -66,6 +65,7 @@ items:
   - System.IDisposable
   inheritedMembers:
   - Innovt.Cloud.AWS.AwsBaseService.Configuration
+  - Innovt.Cloud.AWS.AwsBaseService.ExponentialBackoffInSeconds
   - Innovt.Cloud.AWS.AwsBaseService.Logger
   - Innovt.Cloud.AWS.AwsBaseService.Dispose
   - Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
@@ -114,7 +114,7 @@ items:
   summary: Executes a SQL statement asynchronously and returns the response containing items of type T.
   example: []
   syntax:
-    content: 'public Task<ExecuteSqlStatementResponse<T>> ExecuteStatementAsync<T>(ExecuteSqlStatementRequest sqlStatementRequest, CancellationToken cancellationToken = default) where T : class'
+    content: 'public Task<ExecuteSqlStatementResponse<T>> ExecuteStatementAsync<T>(ExecuteSqlStatementRequest sqlStatementRequest, CancellationToken cancellationToken = default) where T : class, new()'
     parameters:
     - id: sqlStatementRequest
       type: Innovt.Cloud.Table.ExecuteSqlStatementRequest
@@ -128,7 +128,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{Innovt.Cloud.Table.ExecuteSqlStatementResponse{{T}}}
       description: The response containing items of type T.
-    content.vb: Public Function ExecuteStatementAsync(Of T As Class)(sqlStatementRequest As ExecuteSqlStatementRequest, cancellationToken As CancellationToken = Nothing) As Task(Of ExecuteSqlStatementResponse(Of T))
+    content.vb: Public Function ExecuteStatementAsync(Of T As {Class, New})(sqlStatementRequest As ExecuteSqlStatementRequest, cancellationToken As CancellationToken = Nothing) As Task(Of ExecuteSqlStatementResponse(Of T))
   overload: Innovt.Cloud.AWS.Dynamo.Repository.ExecuteStatementAsync*
   exceptions:
   - type: System.ArgumentNullException
@@ -157,14 +157,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: BatchGetItem
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 96
+    startLine: 97
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
   summary: Gets a batch of items from the DynamoDB table based on the specified batch get item request.
   example: []
   syntax:
-    content: 'public Task<List<T>> BatchGetItem<T>(BatchGetItemRequest batchGetItemRequest, CancellationToken cancellationToken = default) where T : class'
+    content: 'public Task<List<T>> BatchGetItem<T>(BatchGetItemRequest batchGetItemRequest, CancellationToken cancellationToken = default) where T : class, new()'
     parameters:
     - id: batchGetItemRequest
       type: Innovt.Cloud.Table.BatchGetItemRequest
@@ -178,7 +178,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{System.Collections.Generic.List{{T}}}
       description: The list of items retrieved.
-    content.vb: Public Function BatchGetItem(Of T As Class)(batchGetItemRequest As BatchGetItemRequest, cancellationToken As CancellationToken = Nothing) As Task(Of List(Of T))
+    content.vb: Public Function BatchGetItem(Of T As {Class, New})(batchGetItemRequest As BatchGetItemRequest, cancellationToken As CancellationToken = Nothing) As Task(Of List(Of T))
   overload: Innovt.Cloud.AWS.Dynamo.Repository.BatchGetItem*
   exceptions:
   - type: System.ArgumentNullException
@@ -189,16 +189,16 @@ items:
   nameWithType.vb: Repository.BatchGetItem(Of T)(BatchGetItemRequest, CancellationToken)
   fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.BatchGetItem(Of T)(Innovt.Cloud.Table.BatchGetItemRequest, System.Threading.CancellationToken)
   name.vb: BatchGetItem(Of T)(BatchGetItemRequest, CancellationToken)
-- uid: Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem``1(``0)
-  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem``1(``0)
-  id: CreateTransactionWriteItem``1(``0)
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem``1(``0,Innovt.Cloud.Table.TransactionWriteOperationType)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem``1(``0,Innovt.Cloud.Table.TransactionWriteOperationType)
+  id: CreateTransactionWriteItem``1(``0,Innovt.Cloud.Table.TransactionWriteOperationType)
   parent: Innovt.Cloud.AWS.Dynamo.Repository
   langs:
   - csharp
   - vb
-  name: CreateTransactionWriteItem<T>(T)
-  nameWithType: Repository.CreateTransactionWriteItem<T>(T)
-  fullName: Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem<T>(T)
+  name: CreateTransactionWriteItem<T>(T, TransactionWriteOperationType)
+  nameWithType: Repository.CreateTransactionWriteItem<T>(T, TransactionWriteOperationType)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem<T>(T, Innovt.Cloud.Table.TransactionWriteOperationType)
   type: Method
   source:
     remote:
@@ -207,31 +207,34 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: CreateTransactionWriteItem
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 121
+    startLine: 122
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
   summary: Create a transaction write item based on the instance.
   example: []
   syntax:
-    content: 'public TransactionWriteItem CreateTransactionWriteItem<T>(T instance) where T : class'
+    content: 'public TransactionWriteItem CreateTransactionWriteItem<T>(T instance, TransactionWriteOperationType operationType = TransactionWriteOperationType.Put) where T : class, new()'
     parameters:
     - id: instance
       type: '{T}'
       description: A mapped instance with context.
+    - id: operationType
+      type: Innovt.Cloud.Table.TransactionWriteOperationType
+      description: The operation that you want to perform.
     typeParameters:
     - id: T
       description: A typed mapped entity
     return:
       type: Innovt.Cloud.Table.TransactionWriteItem
       description: A incomplete transaction write item with properties mapped.
-    content.vb: Public Function CreateTransactionWriteItem(Of T As Class)(instance As T) As TransactionWriteItem
+    content.vb: Public Function CreateTransactionWriteItem(Of T As {Class, New})(instance As T, operationType As TransactionWriteOperationType = TransactionWriteOperationType.Put) As TransactionWriteItem
   overload: Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem*
   implements:
-  - Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1({T})
-  nameWithType.vb: Repository.CreateTransactionWriteItem(Of T)(T)
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem(Of T)(T)
-  name.vb: CreateTransactionWriteItem(Of T)(T)
+  - Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1({T},Innovt.Cloud.Table.TransactionWriteOperationType)
+  nameWithType.vb: Repository.CreateTransactionWriteItem(Of T)(T, TransactionWriteOperationType)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem(Of T)(T, Innovt.Cloud.Table.TransactionWriteOperationType)
+  name.vb: CreateTransactionWriteItem(Of T)(T, TransactionWriteOperationType)
 - uid: Innovt.Cloud.AWS.Dynamo.Repository.CreateDefaultRetryAsyncPolicy
   commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.CreateDefaultRetryAsyncPolicy
   id: CreateDefaultRetryAsyncPolicy
@@ -250,7 +253,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: CreateDefaultRetryAsyncPolicy
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 294
+    startLine: 301
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
@@ -282,7 +285,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: DisposeServices
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 303
+    startLine: 310
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
@@ -311,7 +314,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: .ctor
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 315
+    startLine: 322
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
@@ -349,7 +352,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: .ctor
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 326
+    startLine: 333
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
@@ -394,7 +397,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: .ctor
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 338
+    startLine: 345
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
@@ -435,7 +438,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: AddAsync
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 348
+    startLine: 356
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
@@ -463,32 +466,32 @@ items:
   nameWithType.vb: Repository.AddAsync(Of T)(T, CancellationToken)
   fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.AddAsync(Of T)(T, System.Threading.CancellationToken)
   name.vb: AddAsync(Of T)(T, CancellationToken)
-- uid: Innovt.Cloud.AWS.Dynamo.Repository.AddListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.AddListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-  id: AddListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.AddRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.AddRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  id: AddRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
   parent: Innovt.Cloud.AWS.Dynamo.Repository
   langs:
   - csharp
   - vb
-  name: AddListAsync<T>(ICollection<T>, CancellationToken)
-  nameWithType: Repository.AddListAsync<T>(ICollection<T>, CancellationToken)
-  fullName: Innovt.Cloud.AWS.Dynamo.Repository.AddListAsync<T>(System.Collections.Generic.ICollection<T>, System.Threading.CancellationToken)
+  name: AddRangeAsync<T>(ICollection<T>, CancellationToken)
+  nameWithType: Repository.AddRangeAsync<T>(ICollection<T>, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.AddRangeAsync<T>(System.Collections.Generic.ICollection<T>, System.Threading.CancellationToken)
   type: Method
   source:
     remote:
       path: src/Innovt.Cloud.AWS.Dynamo/Repository.cs
       branch: feature/ImproveDynamoMapping
       repo: https://github.com/Innovtt/Innovt.Platform.git
-    id: AddListAsync
+    id: AddRangeAsync
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 378
+    startLine: 385
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
   summary: Adds a list of items to the DynamoDB table.
   example: []
   syntax:
-    content: 'public Task AddListAsync<T>(ICollection<T> messages, CancellationToken cancellationToken = default) where T : class'
+    content: 'public Task AddRangeAsync<T>(ICollection<T> messages, CancellationToken cancellationToken = default) where T : class'
     parameters:
     - id: messages
       type: System.Collections.Generic.ICollection{{T}}
@@ -501,17 +504,17 @@ items:
       description: The type of items to add.
     return:
       type: System.Threading.Tasks.Task
-    content.vb: Public Function AddListAsync(Of T As Class)(messages As ICollection(Of T), cancellationToken As CancellationToken = Nothing) As Task
-  overload: Innovt.Cloud.AWS.Dynamo.Repository.AddListAsync*
+    content.vb: Public Function AddRangeAsync(Of T As Class)(messages As ICollection(Of T), cancellationToken As CancellationToken = Nothing) As Task
+  overload: Innovt.Cloud.AWS.Dynamo.Repository.AddRangeAsync*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: Thrown if the messages parameter is null.
   implements:
-  - Innovt.Cloud.Table.ITableRepository.AddListAsync``1(System.Collections.Generic.ICollection{{T}},System.Threading.CancellationToken)
-  nameWithType.vb: Repository.AddListAsync(Of T)(ICollection(Of T), CancellationToken)
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.AddListAsync(Of T)(System.Collections.Generic.ICollection(Of T), System.Threading.CancellationToken)
-  name.vb: AddListAsync(Of T)(ICollection(Of T), CancellationToken)
+  - Innovt.Cloud.Table.ITableRepository.AddRangeAsync``1(System.Collections.Generic.ICollection{{T}},System.Threading.CancellationToken)
+  nameWithType.vb: Repository.AddRangeAsync(Of T)(ICollection(Of T), CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.AddRangeAsync(Of T)(System.Collections.Generic.ICollection(Of T), System.Threading.CancellationToken)
+  name.vb: AddRangeAsync(Of T)(ICollection(Of T), CancellationToken)
 - uid: Innovt.Cloud.AWS.Dynamo.Repository.TransactWriteItemsAsync(Innovt.Cloud.Table.TransactionWriteRequest,System.Threading.CancellationToken)
   commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.TransactWriteItemsAsync(Innovt.Cloud.Table.TransactionWriteRequest,System.Threading.CancellationToken)
   id: TransactWriteItemsAsync(Innovt.Cloud.Table.TransactionWriteRequest,System.Threading.CancellationToken)
@@ -530,7 +533,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: TransactWriteItemsAsync
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 408
+    startLine: 417
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
@@ -577,7 +580,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: BatchWriteItem
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 438
+    startLine: 453
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
@@ -621,7 +624,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: DeleteAsync
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 477
+    startLine: 492
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
@@ -649,52 +652,6 @@ items:
   nameWithType.vb: Repository.DeleteAsync(Of T)(T, CancellationToken)
   fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync(Of T)(T, System.Threading.CancellationToken)
   name.vb: DeleteAsync(Of T)(T, CancellationToken)
-- uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.DeleteListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-  id: DeleteListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-  parent: Innovt.Cloud.AWS.Dynamo.Repository
-  langs:
-  - csharp
-  - vb
-  name: DeleteListAsync<T>(ICollection<T>, CancellationToken)
-  nameWithType: Repository.DeleteListAsync<T>(ICollection<T>, CancellationToken)
-  fullName: Innovt.Cloud.AWS.Dynamo.Repository.DeleteListAsync<T>(System.Collections.Generic.ICollection<T>, System.Threading.CancellationToken)
-  type: Method
-  source:
-    remote:
-      path: src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-      branch: feature/ImproveDynamoMapping
-      repo: https://github.com/Innovtt/Innovt.Platform.git
-    id: DeleteListAsync
-    path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 490
-  assemblies:
-  - Innovt.Cloud.AWS.Dynamo
-  namespace: Innovt.Cloud.AWS.Dynamo
-  summary: Asynchronously a list of item that are from the same type.
-  example: []
-  syntax:
-    content: 'public Task DeleteListAsync<T>(ICollection<T> messages, CancellationToken cancellationToken = default) where T : class'
-    parameters:
-    - id: messages
-      type: System.Collections.Generic.ICollection{{T}}
-      description: ''
-    - id: cancellationToken
-      type: System.Threading.CancellationToken
-      description: ''
-    typeParameters:
-    - id: T
-      description: ''
-    return:
-      type: System.Threading.Tasks.Task
-      description: ''
-    content.vb: Public Function DeleteListAsync(Of T As Class)(messages As ICollection(Of T), cancellationToken As CancellationToken = Nothing) As Task
-  overload: Innovt.Cloud.AWS.Dynamo.Repository.DeleteListAsync*
-  implements:
-  - Innovt.Cloud.Table.ITableRepository.DeleteListAsync``1(System.Collections.Generic.ICollection{{T}},System.Threading.CancellationToken)
-  nameWithType.vb: Repository.DeleteListAsync(Of T)(ICollection(Of T), CancellationToken)
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.DeleteListAsync(Of T)(System.Collections.Generic.ICollection(Of T), System.Threading.CancellationToken)
-  name.vb: DeleteListAsync(Of T)(ICollection(Of T), CancellationToken)
 - uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(System.Object,System.String,System.Threading.CancellationToken)
   commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync``1(System.Object,System.String,System.Threading.CancellationToken)
   id: DeleteAsync``1(System.Object,System.String,System.Threading.CancellationToken)
@@ -713,7 +670,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: DeleteAsync
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 521
+    startLine: 506
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
@@ -744,6 +701,52 @@ items:
   nameWithType.vb: Repository.DeleteAsync(Of T)(Object, String, CancellationToken)
   fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync(Of T)(Object, String, System.Threading.CancellationToken)
   name.vb: DeleteAsync(Of T)(Object, String, CancellationToken)
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.DeleteRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  id: DeleteRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  parent: Innovt.Cloud.AWS.Dynamo.Repository
+  langs:
+  - csharp
+  - vb
+  name: DeleteRangeAsync<T>(ICollection<T>, CancellationToken)
+  nameWithType: Repository.DeleteRangeAsync<T>(ICollection<T>, CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.DeleteRangeAsync<T>(System.Collections.Generic.ICollection<T>, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Repository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: DeleteRangeAsync
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
+    startLine: 531
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo
+  summary: Asynchronously a list of item that are from the same type.
+  example: []
+  syntax:
+    content: 'public Task DeleteRangeAsync<T>(ICollection<T> messages, CancellationToken cancellationToken = default) where T : class'
+    parameters:
+    - id: messages
+      type: System.Collections.Generic.ICollection{{T}}
+      description: ''
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task
+      description: ''
+    content.vb: Public Function DeleteRangeAsync(Of T As Class)(messages As ICollection(Of T), cancellationToken As CancellationToken = Nothing) As Task
+  overload: Innovt.Cloud.AWS.Dynamo.Repository.DeleteRangeAsync*
+  implements:
+  - Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync``1(System.Collections.Generic.ICollection{{T}},System.Threading.CancellationToken)
+  nameWithType.vb: Repository.DeleteRangeAsync(Of T)(ICollection(Of T), CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.DeleteRangeAsync(Of T)(System.Collections.Generic.ICollection(Of T), System.Threading.CancellationToken)
+  name.vb: DeleteRangeAsync(Of T)(ICollection(Of T), CancellationToken)
 - uid: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1(``0,System.Threading.CancellationToken)
   commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1(``0,System.Threading.CancellationToken)
   id: UpdateAsync``1(``0,System.Threading.CancellationToken)
@@ -762,7 +765,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: UpdateAsync
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 552
+    startLine: 565
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
@@ -772,7 +775,7 @@ items:
     PUT.
   example: []
   syntax:
-    content: 'public Task<T> UpdateAsync<T>(T instance, CancellationToken cancellationToken = default) where T : class'
+    content: 'public Task<T> UpdateAsync<T>(T instance, CancellationToken cancellationToken = default) where T : class, new()'
     parameters:
     - id: instance
       type: '{T}'
@@ -786,7 +789,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{{T}}
       description: ''
-    content.vb: Public Function UpdateAsync(Of T As Class)(instance As T, cancellationToken As CancellationToken = Nothing) As Task(Of T)
+    content.vb: Public Function UpdateAsync(Of T As {Class, New})(instance As T, cancellationToken As CancellationToken = Nothing) As Task(Of T)
   overload: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync*
   exceptions:
   - type: System.ArgumentNullException
@@ -815,7 +818,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: UpdateAsync
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 597
+    startLine: 611
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
@@ -848,54 +851,6 @@ items:
   nameWithType.vb: Repository.UpdateAsync(String, Dictionary(Of String, AttributeValue), Dictionary(Of String, AttributeValueUpdate), CancellationToken)
   fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync(String, System.Collections.Generic.Dictionary(Of String, Amazon.DynamoDBv2.Model.AttributeValue), System.Collections.Generic.Dictionary(Of String, Amazon.DynamoDBv2.Model.AttributeValueUpdate), System.Threading.CancellationToken)
   name.vb: UpdateAsync(String, Dictionary(Of String, AttributeValue), Dictionary(Of String, AttributeValueUpdate), CancellationToken)
-- uid: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1(Amazon.DynamoDBv2.Model.UpdateItemRequest,System.Threading.CancellationToken)
-  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1(Amazon.DynamoDBv2.Model.UpdateItemRequest,System.Threading.CancellationToken)
-  id: UpdateAsync``1(Amazon.DynamoDBv2.Model.UpdateItemRequest,System.Threading.CancellationToken)
-  parent: Innovt.Cloud.AWS.Dynamo.Repository
-  langs:
-  - csharp
-  - vb
-  name: UpdateAsync<T>(UpdateItemRequest, CancellationToken)
-  nameWithType: Repository.UpdateAsync<T>(UpdateItemRequest, CancellationToken)
-  fullName: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync<T>(Amazon.DynamoDBv2.Model.UpdateItemRequest, System.Threading.CancellationToken)
-  type: Method
-  source:
-    remote:
-      path: src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-      branch: feature/ImproveDynamoMapping
-      repo: https://github.com/Innovtt/Innovt.Platform.git
-    id: UpdateAsync
-    path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 624
-  assemblies:
-  - Innovt.Cloud.AWS.Dynamo
-  namespace: Innovt.Cloud.AWS.Dynamo
-  summary: Updates an item in the DynamoDB table based on the provided update item request.
-  example: []
-  syntax:
-    content: protected Task<T> UpdateAsync<T>(UpdateItemRequest updateItemRequest, CancellationToken cancellationToken = default)
-    parameters:
-    - id: updateItemRequest
-      type: Amazon.DynamoDBv2.Model.UpdateItemRequest
-      description: The update item request.
-    - id: cancellationToken
-      type: System.Threading.CancellationToken
-      description: Cancellation token to cancel the operation.
-    typeParameters:
-    - id: T
-      description: The type of item to update.
-    return:
-      type: System.Threading.Tasks.Task{{T}}
-      description: The updated item of type T.
-    content.vb: Protected Function UpdateAsync(Of T)(updateItemRequest As UpdateItemRequest, cancellationToken As CancellationToken = Nothing) As Task(Of T)
-  overload: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync*
-  exceptions:
-  - type: System.ArgumentNullException
-    commentId: T:System.ArgumentNullException
-    description: Thrown when updateItemRequest is null.
-  nameWithType.vb: Repository.UpdateAsync(Of T)(UpdateItemRequest, CancellationToken)
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync(Of T)(Amazon.DynamoDBv2.Model.UpdateItemRequest, System.Threading.CancellationToken)
-  name.vb: UpdateAsync(Of T)(UpdateItemRequest, CancellationToken)
 - uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryFirstAsync``1(System.Object,System.Threading.CancellationToken)
   commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.QueryFirstAsync``1(System.Object,System.Threading.CancellationToken)
   id: QueryFirstAsync``1(System.Object,System.Threading.CancellationToken)
@@ -914,14 +869,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: QueryFirstAsync
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 651
+    startLine: 663
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
   summary: Asynchronously queries and retrieves the first item of type T by its identifier.
   example: []
   syntax:
-    content: 'public Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default) where T : class'
+    content: 'public Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default) where T : class, new()'
     parameters:
     - id: id
       type: System.Object
@@ -935,7 +890,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{{T}}
       description: An item of type T if found; otherwise, null.
-    content.vb: Public Function QueryFirstAsync(Of T As Class)(id As Object, cancellationToken As CancellationToken = Nothing) As Task(Of T)
+    content.vb: Public Function QueryFirstAsync(Of T As {Class, New})(id As Object, cancellationToken As CancellationToken = Nothing) As Task(Of T)
   overload: Innovt.Cloud.AWS.Dynamo.Repository.QueryFirstAsync*
   implements:
   - Innovt.Cloud.Table.ITableRepository.QueryFirstAsync``1(System.Object,System.Threading.CancellationToken)
@@ -960,14 +915,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: GetByIdAsync
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 671
+    startLine: 684
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
   summary: Asynchronously retrieves an item by its identifier.
   example: []
   syntax:
-    content: 'public Task<T> GetByIdAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default) where T : class'
+    content: 'public Task<T> GetByIdAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default) where T : class, new()'
     parameters:
     - id: id
       type: System.Object
@@ -984,7 +939,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{{T}}
       description: An item of type T if found; otherwise, null.
-    content.vb: Public Function GetByIdAsync(Of T As Class)(id As Object, rangeKey As String = Nothing, cancellationToken As CancellationToken = Nothing) As Task(Of T)
+    content.vb: Public Function GetByIdAsync(Of T As {Class, New})(id As Object, rangeKey As String = Nothing, cancellationToken As CancellationToken = Nothing) As Task(Of T)
   overload: Innovt.Cloud.AWS.Dynamo.Repository.GetByIdAsync*
   implements:
   - Innovt.Cloud.Table.ITableRepository.GetByIdAsync``1(System.Object,System.String,System.Threading.CancellationToken)
@@ -1009,14 +964,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: QueryAsync
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 701
+    startLine: 714
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
   summary: Queries the DynamoDB table and returns a list of items with the specified id.
   example: []
   syntax:
-    content: 'public Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default) where T : class'
+    content: 'public Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default) where T : class, new()'
     parameters:
     - id: id
       type: System.Object
@@ -1030,7 +985,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{System.Collections.Generic.IList{{T}}}
       description: A list of items with the specified id.
-    content.vb: Public Function QueryAsync(Of T As Class)(id As Object, cancellationToken As CancellationToken = Nothing) As Task(Of IList(Of T))
+    content.vb: Public Function QueryAsync(Of T As {Class, New})(id As Object, cancellationToken As CancellationToken = Nothing) As Task(Of IList(Of T))
   overload: Innovt.Cloud.AWS.Dynamo.Repository.QueryAsync*
   implements:
   - Innovt.Cloud.Table.ITableRepository.QueryAsync``1(System.Object,System.Threading.CancellationToken)
@@ -1055,14 +1010,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: QueryAsync
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 725
+    startLine: 739
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
   summary: Queries the DynamoDB table using a query request and returns a list of items.
   example: []
   syntax:
-    content: 'public Task<IList<T>> QueryAsync<T>(QueryRequest request, CancellationToken cancellationToken = default) where T : class'
+    content: 'public Task<IList<T>> QueryAsync<T>(QueryRequest request, CancellationToken cancellationToken = default) where T : class, new()'
     parameters:
     - id: request
       type: Innovt.Cloud.Table.QueryRequest
@@ -1076,7 +1031,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{System.Collections.Generic.IList{{T}}}
       description: A list of items based on the query request.
-    content.vb: Public Function QueryAsync(Of T As Class)(request As QueryRequest, cancellationToken As CancellationToken = Nothing) As Task(Of IList(Of T))
+    content.vb: Public Function QueryAsync(Of T As {Class, New})(request As QueryRequest, cancellationToken As CancellationToken = Nothing) As Task(Of IList(Of T))
   overload: Innovt.Cloud.AWS.Dynamo.Repository.QueryAsync*
   implements:
   - Innovt.Cloud.Table.ITableRepository.QueryAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)
@@ -1101,14 +1056,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: QueryMultipleAsync
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 748
+    startLine: 761
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
   summary: Queries the DynamoDB table using a query request and splits the results into two types based on a key.
   example: []
   syntax:
-    content: 'public Task<(IList<TResult1> first, IList<TResult2> second)> QueryMultipleAsync<T, TResult1, TResult2>(QueryRequest request, string splitBy, CancellationToken cancellationToken = default) where T : class'
+    content: 'public Task<(IList<TResult1> first, IList<TResult2> second)> QueryMultipleAsync<T, TResult1, TResult2>(QueryRequest request, string splitBy, CancellationToken cancellationToken = default) where T : class, new() where TResult1 : class, new() where TResult2 : class, new()'
     parameters:
     - id: request
       type: Innovt.Cloud.Table.QueryRequest
@@ -1129,7 +1084,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{System.ValueTuple{System.Collections.Generic.IList{{TResult1}},System.Collections.Generic.IList{{TResult2}}}}
       description: Tuple containing lists of items split based on the specified key.
-    content.vb: Public Function QueryMultipleAsync(Of T As Class, TResult1, TResult2)(request As QueryRequest, splitBy As String, cancellationToken As CancellationToken = Nothing) As Task(Of (first As IList(Of TResult1), second As IList(Of TResult2)))
+    content.vb: Public Function QueryMultipleAsync(Of T As {Class, New}, TResult1 As {Class, New}, TResult2 As {Class, New})(request As QueryRequest, splitBy As String, cancellationToken As CancellationToken = Nothing) As Task(Of (first As IList(Of TResult1), second As IList(Of TResult2)))
   overload: Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync*
   implements:
   - Innovt.Cloud.Table.ITableRepository.QueryMultipleAsync``3(Innovt.Cloud.Table.QueryRequest,System.String,System.Threading.CancellationToken)
@@ -1154,14 +1109,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: QueryMultipleAsync
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 772
+    startLine: 787
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
   summary: Queries the DynamoDB table using a query request and splits the results into three types based on specified keys.
   example: []
   syntax:
-    content: 'public Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third)> QueryMultipleAsync<T, TResult1, TResult2, TResult3>(QueryRequest request, string[] splitBy, CancellationToken cancellationToken = default) where T : class'
+    content: 'public Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third)> QueryMultipleAsync<T, TResult1, TResult2, TResult3>(QueryRequest request, string[] splitBy, CancellationToken cancellationToken = default) where T : class, new() where TResult1 : class, new() where TResult2 : class, new() where TResult3 : class, new()'
     parameters:
     - id: request
       type: Innovt.Cloud.Table.QueryRequest
@@ -1184,7 +1139,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{System.ValueTuple{System.Collections.Generic.IList{{TResult1}},System.Collections.Generic.IList{{TResult2}},System.Collections.Generic.IList{{TResult3}}}}
       description: Tuple containing lists of items split based on the specified keys.
-    content.vb: Public Function QueryMultipleAsync(Of T As Class, TResult1, TResult2, TResult3)(request As QueryRequest, splitBy As String(), cancellationToken As CancellationToken = Nothing) As Task(Of (first As IList(Of TResult1), second As IList(Of TResult2), third As IList(Of TResult3)))
+    content.vb: Public Function QueryMultipleAsync(Of T As {Class, New}, TResult1 As {Class, New}, TResult2 As {Class, New}, TResult3 As {Class, New})(request As QueryRequest, splitBy As String(), cancellationToken As CancellationToken = Nothing) As Task(Of (first As IList(Of TResult1), second As IList(Of TResult2), third As IList(Of TResult3)))
   overload: Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync*
   implements:
   - Innovt.Cloud.Table.ITableRepository.QueryMultipleAsync``4(Innovt.Cloud.Table.QueryRequest,System.String[],System.Threading.CancellationToken)
@@ -1209,14 +1164,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: QueryMultipleAsync
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 799
+    startLine: 817
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
   summary: Queries the DynamoDB table using a query request and splits the results into four types based on specified keys.
   example: []
   syntax:
-    content: 'public Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth)> QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4>(QueryRequest request, string[] splitBy, CancellationToken cancellationToken = default) where T : class'
+    content: 'public Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth)> QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4>(QueryRequest request, string[] splitBy, CancellationToken cancellationToken = default) where T : class, new() where TResult1 : class, new() where TResult2 : class, new() where TResult3 : class, new() where TResult4 : class, new()'
     parameters:
     - id: request
       type: Innovt.Cloud.Table.QueryRequest
@@ -1241,7 +1196,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{System.ValueTuple{System.Collections.Generic.IList{{TResult1}},System.Collections.Generic.IList{{TResult2}},System.Collections.Generic.IList{{TResult3}},System.Collections.Generic.IList{{TResult4}}}}
       description: Tuple containing lists of items split based on the specified keys.
-    content.vb: Public Function QueryMultipleAsync(Of T As Class, TResult1, TResult2, TResult3, TResult4)(request As QueryRequest, splitBy As String(), cancellationToken As CancellationToken = Nothing) As Task(Of (first As IList(Of TResult1), second As IList(Of TResult2), third As IList(Of TResult3), fourth As IList(Of TResult4)))
+    content.vb: Public Function QueryMultipleAsync(Of T As {Class, New}, TResult1 As {Class, New}, TResult2 As {Class, New}, TResult3 As {Class, New}, TResult4 As {Class, New})(request As QueryRequest, splitBy As String(), cancellationToken As CancellationToken = Nothing) As Task(Of (first As IList(Of TResult1), second As IList(Of TResult2), third As IList(Of TResult3), fourth As IList(Of TResult4)))
   overload: Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync*
   implements:
   - Innovt.Cloud.Table.ITableRepository.QueryMultipleAsync``5(Innovt.Cloud.Table.QueryRequest,System.String[],System.Threading.CancellationToken)
@@ -1266,14 +1221,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: QueryMultipleAsync
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 828
+    startLine: 850
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
   summary: Queries the DynamoDB table using a query request and splits the results into five types based on specified keys.
   example: []
   syntax:
-    content: 'public Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth, IList<TResult5> fifth)> QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4, TResult5>(QueryRequest request, string[] splitBy, CancellationToken cancellationToken = default) where T : class'
+    content: 'public Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth, IList<TResult5> fifth)> QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4, TResult5>(QueryRequest request, string[] splitBy, CancellationToken cancellationToken = default) where T : class, new() where TResult1 : class, new() where TResult2 : class, new() where TResult3 : class, new() where TResult4 : class, new() where TResult5 : class, new()'
     parameters:
     - id: request
       type: Innovt.Cloud.Table.QueryRequest
@@ -1300,7 +1255,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{System.ValueTuple{System.Collections.Generic.IList{{TResult1}},System.Collections.Generic.IList{{TResult2}},System.Collections.Generic.IList{{TResult3}},System.Collections.Generic.IList{{TResult4}},System.Collections.Generic.IList{{TResult5}}}}
       description: Tuple containing lists of items split based on the specified keys.
-    content.vb: Public Function QueryMultipleAsync(Of T As Class, TResult1, TResult2, TResult3, TResult4, TResult5)(request As QueryRequest, splitBy As String(), cancellationToken As CancellationToken = Nothing) As Task(Of (first As IList(Of TResult1), second As IList(Of TResult2), third As IList(Of TResult3), fourth As IList(Of TResult4), fifth As IList(Of TResult5)))
+    content.vb: Public Function QueryMultipleAsync(Of T As {Class, New}, TResult1 As {Class, New}, TResult2 As {Class, New}, TResult3 As {Class, New}, TResult4 As {Class, New}, TResult5 As {Class, New})(request As QueryRequest, splitBy As String(), cancellationToken As CancellationToken = Nothing) As Task(Of (first As IList(Of TResult1), second As IList(Of TResult2), third As IList(Of TResult3), fourth As IList(Of TResult4), fifth As IList(Of TResult5)))
   overload: Innovt.Cloud.AWS.Dynamo.Repository.QueryMultipleAsync*
   implements:
   - Innovt.Cloud.Table.ITableRepository.QueryMultipleAsync``6(Innovt.Cloud.Table.QueryRequest,System.String[],System.Threading.CancellationToken)
@@ -1325,14 +1280,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: QueryFirstOrDefaultAsync
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 852
+    startLine: 879
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
   summary: Queries the DynamoDB table and returns the first or default item based on the query request.
   example: []
   syntax:
-    content: 'public Task<T> QueryFirstOrDefaultAsync<T>(QueryRequest request, CancellationToken cancellationToken = default) where T : class'
+    content: 'public Task<T> QueryFirstOrDefaultAsync<T>(QueryRequest request, CancellationToken cancellationToken = default) where T : class, new()'
     parameters:
     - id: request
       type: Innovt.Cloud.Table.QueryRequest
@@ -1346,7 +1301,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{{T}}
       description: The first or default item based on the query request.
-    content.vb: Public Function QueryFirstOrDefaultAsync(Of T As Class)(request As QueryRequest, cancellationToken As CancellationToken = Nothing) As Task(Of T)
+    content.vb: Public Function QueryFirstOrDefaultAsync(Of T As {Class, New})(request As QueryRequest, cancellationToken As CancellationToken = Nothing) As Task(Of T)
   overload: Innovt.Cloud.AWS.Dynamo.Repository.QueryFirstOrDefaultAsync*
   implements:
   - Innovt.Cloud.Table.ITableRepository.QueryFirstOrDefaultAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)
@@ -1371,14 +1326,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: QueryPaginatedByAsync
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 877
+    startLine: 904
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
   summary: Queries the DynamoDB table using a query request and returns a paginated collection of items.
   example: []
   syntax:
-    content: 'public Task<PagedCollection<T>> QueryPaginatedByAsync<T>(QueryRequest request, CancellationToken cancellationToken = default) where T : class'
+    content: 'public Task<PagedCollection<T>> QueryPaginatedByAsync<T>(QueryRequest request, CancellationToken cancellationToken = default) where T : class, new()'
     parameters:
     - id: request
       type: Innovt.Cloud.Table.QueryRequest
@@ -1392,7 +1347,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{Innovt.Core.Collections.PagedCollection{{T}}}
       description: A paginated collection of items based on the query request.
-    content.vb: Public Function QueryPaginatedByAsync(Of T As Class)(request As QueryRequest, cancellationToken As CancellationToken = Nothing) As Task(Of PagedCollection(Of T))
+    content.vb: Public Function QueryPaginatedByAsync(Of T As {Class, New})(request As QueryRequest, cancellationToken As CancellationToken = Nothing) As Task(Of PagedCollection(Of T))
   overload: Innovt.Cloud.AWS.Dynamo.Repository.QueryPaginatedByAsync*
   implements:
   - Innovt.Cloud.Table.ITableRepository.QueryPaginatedByAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)
@@ -1417,14 +1372,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: ScanAsync
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 907
+    startLine: 934
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
   summary: Scans the DynamoDB table based on the specified scan request.
   example: []
   syntax:
-    content: 'public Task<IList<T>> ScanAsync<T>(ScanRequest request, CancellationToken cancellationToken = default) where T : class'
+    content: 'public Task<IList<T>> ScanAsync<T>(ScanRequest request, CancellationToken cancellationToken = default) where T : class, new()'
     parameters:
     - id: request
       type: Innovt.Cloud.Table.ScanRequest
@@ -1438,7 +1393,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{System.Collections.Generic.IList{{T}}}
       description: The list of scanned items.
-    content.vb: Public Function ScanAsync(Of T As Class)(request As ScanRequest, cancellationToken As CancellationToken = Nothing) As Task(Of IList(Of T))
+    content.vb: Public Function ScanAsync(Of T As {Class, New})(request As ScanRequest, cancellationToken As CancellationToken = Nothing) As Task(Of IList(Of T))
   overload: Innovt.Cloud.AWS.Dynamo.Repository.ScanAsync*
   implements:
   - Innovt.Cloud.Table.ITableRepository.ScanAsync``1(Innovt.Cloud.Table.ScanRequest,System.Threading.CancellationToken)
@@ -1463,14 +1418,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: ScanPaginatedByAsync
     path: ../src/Innovt.Cloud.AWS.Dynamo/Repository.cs
-    startLine: 928
+    startLine: 955
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
   summary: Scans the DynamoDB table based on the specified scan request and returns a paginated collection of items.
   example: []
   syntax:
-    content: 'public Task<PagedCollection<T>> ScanPaginatedByAsync<T>(ScanRequest request, CancellationToken cancellationToken = default) where T : class'
+    content: 'public Task<PagedCollection<T>> ScanPaginatedByAsync<T>(ScanRequest request, CancellationToken cancellationToken = default) where T : class, new()'
     parameters:
     - id: request
       type: Innovt.Cloud.Table.ScanRequest
@@ -1484,7 +1439,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{Innovt.Core.Collections.PagedCollection{{T}}}
       description: A paginated collection of items based on the scan request.
-    content.vb: Public Function ScanPaginatedByAsync(Of T As Class)(request As ScanRequest, cancellationToken As CancellationToken = Nothing) As Task(Of PagedCollection(Of T))
+    content.vb: Public Function ScanPaginatedByAsync(Of T As {Class, New})(request As ScanRequest, cancellationToken As CancellationToken = Nothing) As Task(Of PagedCollection(Of T))
   overload: Innovt.Cloud.AWS.Dynamo.Repository.ScanPaginatedByAsync*
   exceptions:
   - type: System.ArgumentNullException
@@ -1574,6 +1529,13 @@ references:
   name: Configuration
   nameWithType: AwsBaseService.Configuration
   fullName: Innovt.Cloud.AWS.AwsBaseService.Configuration
+- uid: Innovt.Cloud.AWS.AwsBaseService.ExponentialBackoffInSeconds
+  commentId: P:Innovt.Cloud.AWS.AwsBaseService.ExponentialBackoffInSeconds
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_ExponentialBackoffInSeconds
+  name: ExponentialBackoffInSeconds
+  nameWithType: AwsBaseService.ExponentialBackoffInSeconds
+  fullName: Innovt.Cloud.AWS.AwsBaseService.ExponentialBackoffInSeconds
 - uid: Innovt.Cloud.AWS.AwsBaseService.Logger
   commentId: P:Innovt.Cloud.AWS.AwsBaseService.Logger
   parent: Innovt.Cloud.AWS.AwsBaseService
@@ -2829,35 +2791,40 @@ references:
   - name: )
 - uid: Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem*
   commentId: Overload:Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem
-  href: Innovt.Cloud.AWS.Dynamo.Repository.html#Innovt_Cloud_AWS_Dynamo_Repository_CreateTransactionWriteItem__1___0_
+  href: Innovt.Cloud.AWS.Dynamo.Repository.html#Innovt_Cloud_AWS_Dynamo_Repository_CreateTransactionWriteItem__1___0_Innovt_Cloud_Table_TransactionWriteOperationType_
   name: CreateTransactionWriteItem
   nameWithType: Repository.CreateTransactionWriteItem
   fullName: Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem
-- uid: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1({T})
-  commentId: M:Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0)
+- uid: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1({T},Innovt.Cloud.Table.TransactionWriteOperationType)
+  commentId: M:Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0,Innovt.Cloud.Table.TransactionWriteOperationType)
   parent: Innovt.Cloud.Table.ITableRepository
-  definition: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0)
-  href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_CreateTransactionWriteItem__1___0_
-  name: CreateTransactionWriteItem<T>(T)
-  nameWithType: ITableRepository.CreateTransactionWriteItem<T>(T)
-  fullName: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem<T>(T)
-  nameWithType.vb: ITableRepository.CreateTransactionWriteItem(Of T)(T)
-  fullName.vb: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem(Of T)(T)
-  name.vb: CreateTransactionWriteItem(Of T)(T)
+  definition: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0,Innovt.Cloud.Table.TransactionWriteOperationType)
+  href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_CreateTransactionWriteItem__1___0_Innovt_Cloud_Table_TransactionWriteOperationType_
+  name: CreateTransactionWriteItem<T>(T, TransactionWriteOperationType)
+  nameWithType: ITableRepository.CreateTransactionWriteItem<T>(T, TransactionWriteOperationType)
+  fullName: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem<T>(T, Innovt.Cloud.Table.TransactionWriteOperationType)
+  nameWithType.vb: ITableRepository.CreateTransactionWriteItem(Of T)(T, TransactionWriteOperationType)
+  fullName.vb: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem(Of T)(T, Innovt.Cloud.Table.TransactionWriteOperationType)
+  name.vb: CreateTransactionWriteItem(Of T)(T, TransactionWriteOperationType)
   spec.csharp:
-  - uid: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0)
+  - uid: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0,Innovt.Cloud.Table.TransactionWriteOperationType)
     name: CreateTransactionWriteItem
-    href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_CreateTransactionWriteItem__1___0_
+    href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_CreateTransactionWriteItem__1___0_Innovt_Cloud_Table_TransactionWriteOperationType_
   - name: <
   - name: T
   - name: '>'
   - name: (
   - name: T
+  - name: ','
+  - name: " "
+  - uid: Innovt.Cloud.Table.TransactionWriteOperationType
+    name: TransactionWriteOperationType
+    href: Innovt.Cloud.Table.TransactionWriteOperationType.html
   - name: )
   spec.vb:
-  - uid: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0)
+  - uid: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0,Innovt.Cloud.Table.TransactionWriteOperationType)
     name: CreateTransactionWriteItem
-    href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_CreateTransactionWriteItem__1___0_
+    href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_CreateTransactionWriteItem__1___0_Innovt_Cloud_Table_TransactionWriteOperationType_
   - name: (
   - name: Of
   - name: " "
@@ -2865,6 +2832,11 @@ references:
   - name: )
   - name: (
   - name: T
+  - name: ','
+  - name: " "
+  - uid: Innovt.Cloud.Table.TransactionWriteOperationType
+    name: TransactionWriteOperationType
+    href: Innovt.Cloud.Table.TransactionWriteOperationType.html
   - name: )
 - uid: '{T}'
   commentId: '!:T'
@@ -2872,6 +2844,13 @@ references:
   name: T
   nameWithType: T
   fullName: T
+- uid: Innovt.Cloud.Table.TransactionWriteOperationType
+  commentId: T:Innovt.Cloud.Table.TransactionWriteOperationType
+  parent: Innovt.Cloud.Table
+  href: Innovt.Cloud.Table.TransactionWriteOperationType.html
+  name: TransactionWriteOperationType
+  nameWithType: TransactionWriteOperationType
+  fullName: Innovt.Cloud.Table.TransactionWriteOperationType
 - uid: Innovt.Cloud.Table.TransactionWriteItem
   commentId: T:Innovt.Cloud.Table.TransactionWriteItem
   parent: Innovt.Cloud.Table
@@ -2879,29 +2858,34 @@ references:
   name: TransactionWriteItem
   nameWithType: TransactionWriteItem
   fullName: Innovt.Cloud.Table.TransactionWriteItem
-- uid: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0)
-  commentId: M:Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0)
-  href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_CreateTransactionWriteItem__1___0_
-  name: CreateTransactionWriteItem<T>(T)
-  nameWithType: ITableRepository.CreateTransactionWriteItem<T>(T)
-  fullName: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem<T>(T)
-  nameWithType.vb: ITableRepository.CreateTransactionWriteItem(Of T)(T)
-  fullName.vb: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem(Of T)(T)
-  name.vb: CreateTransactionWriteItem(Of T)(T)
+- uid: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0,Innovt.Cloud.Table.TransactionWriteOperationType)
+  commentId: M:Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0,Innovt.Cloud.Table.TransactionWriteOperationType)
+  href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_CreateTransactionWriteItem__1___0_Innovt_Cloud_Table_TransactionWriteOperationType_
+  name: CreateTransactionWriteItem<T>(T, TransactionWriteOperationType)
+  nameWithType: ITableRepository.CreateTransactionWriteItem<T>(T, TransactionWriteOperationType)
+  fullName: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem<T>(T, Innovt.Cloud.Table.TransactionWriteOperationType)
+  nameWithType.vb: ITableRepository.CreateTransactionWriteItem(Of T)(T, TransactionWriteOperationType)
+  fullName.vb: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem(Of T)(T, Innovt.Cloud.Table.TransactionWriteOperationType)
+  name.vb: CreateTransactionWriteItem(Of T)(T, TransactionWriteOperationType)
   spec.csharp:
-  - uid: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0)
+  - uid: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0,Innovt.Cloud.Table.TransactionWriteOperationType)
     name: CreateTransactionWriteItem
-    href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_CreateTransactionWriteItem__1___0_
+    href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_CreateTransactionWriteItem__1___0_Innovt_Cloud_Table_TransactionWriteOperationType_
   - name: <
   - name: T
   - name: '>'
   - name: (
   - name: T
+  - name: ','
+  - name: " "
+  - uid: Innovt.Cloud.Table.TransactionWriteOperationType
+    name: TransactionWriteOperationType
+    href: Innovt.Cloud.Table.TransactionWriteOperationType.html
   - name: )
   spec.vb:
-  - uid: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0)
+  - uid: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0,Innovt.Cloud.Table.TransactionWriteOperationType)
     name: CreateTransactionWriteItem
-    href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_CreateTransactionWriteItem__1___0_
+    href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_CreateTransactionWriteItem__1___0_Innovt_Cloud_Table_TransactionWriteOperationType_
   - name: (
   - name: Of
   - name: " "
@@ -2909,6 +2893,11 @@ references:
   - name: )
   - name: (
   - name: T
+  - name: ','
+  - name: " "
+  - uid: Innovt.Cloud.Table.TransactionWriteOperationType
+    name: TransactionWriteOperationType
+    href: Innovt.Cloud.Table.TransactionWriteOperationType.html
   - name: )
 - uid: T
   name: T
@@ -3220,27 +3209,27 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
   - name: )
-- uid: Innovt.Cloud.AWS.Dynamo.Repository.AddListAsync*
-  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Repository.AddListAsync
-  href: Innovt.Cloud.AWS.Dynamo.Repository.html#Innovt_Cloud_AWS_Dynamo_Repository_AddListAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
-  name: AddListAsync
-  nameWithType: Repository.AddListAsync
-  fullName: Innovt.Cloud.AWS.Dynamo.Repository.AddListAsync
-- uid: Innovt.Cloud.Table.ITableRepository.AddListAsync``1(System.Collections.Generic.ICollection{{T}},System.Threading.CancellationToken)
-  commentId: M:Innovt.Cloud.Table.ITableRepository.AddListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.AddRangeAsync*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Repository.AddRangeAsync
+  href: Innovt.Cloud.AWS.Dynamo.Repository.html#Innovt_Cloud_AWS_Dynamo_Repository_AddRangeAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
+  name: AddRangeAsync
+  nameWithType: Repository.AddRangeAsync
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.AddRangeAsync
+- uid: Innovt.Cloud.Table.ITableRepository.AddRangeAsync``1(System.Collections.Generic.ICollection{{T}},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.Table.ITableRepository.AddRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
   parent: Innovt.Cloud.Table.ITableRepository
-  definition: Innovt.Cloud.Table.ITableRepository.AddListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-  href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_AddListAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
-  name: AddListAsync<T>(ICollection<T>, CancellationToken)
-  nameWithType: ITableRepository.AddListAsync<T>(ICollection<T>, CancellationToken)
-  fullName: Innovt.Cloud.Table.ITableRepository.AddListAsync<T>(System.Collections.Generic.ICollection<T>, System.Threading.CancellationToken)
-  nameWithType.vb: ITableRepository.AddListAsync(Of T)(ICollection(Of T), CancellationToken)
-  fullName.vb: Innovt.Cloud.Table.ITableRepository.AddListAsync(Of T)(System.Collections.Generic.ICollection(Of T), System.Threading.CancellationToken)
-  name.vb: AddListAsync(Of T)(ICollection(Of T), CancellationToken)
+  definition: Innovt.Cloud.Table.ITableRepository.AddRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_AddRangeAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
+  name: AddRangeAsync<T>(ICollection<T>, CancellationToken)
+  nameWithType: ITableRepository.AddRangeAsync<T>(ICollection<T>, CancellationToken)
+  fullName: Innovt.Cloud.Table.ITableRepository.AddRangeAsync<T>(System.Collections.Generic.ICollection<T>, System.Threading.CancellationToken)
+  nameWithType.vb: ITableRepository.AddRangeAsync(Of T)(ICollection(Of T), CancellationToken)
+  fullName.vb: Innovt.Cloud.Table.ITableRepository.AddRangeAsync(Of T)(System.Collections.Generic.ICollection(Of T), System.Threading.CancellationToken)
+  name.vb: AddRangeAsync(Of T)(ICollection(Of T), CancellationToken)
   spec.csharp:
-  - uid: Innovt.Cloud.Table.ITableRepository.AddListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-    name: AddListAsync
-    href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_AddListAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
+  - uid: Innovt.Cloud.Table.ITableRepository.AddRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+    name: AddRangeAsync
+    href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_AddRangeAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
   - name: <
   - name: T
   - name: '>'
@@ -3260,9 +3249,9 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
   - name: )
   spec.vb:
-  - uid: Innovt.Cloud.Table.ITableRepository.AddListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-    name: AddListAsync
-    href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_AddListAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
+  - uid: Innovt.Cloud.Table.ITableRepository.AddRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+    name: AddRangeAsync
+    href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_AddRangeAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
   - name: (
   - name: Of
   - name: " "
@@ -3314,20 +3303,20 @@ references:
   - name: " "
   - name: T
   - name: )
-- uid: Innovt.Cloud.Table.ITableRepository.AddListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-  commentId: M:Innovt.Cloud.Table.ITableRepository.AddListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+- uid: Innovt.Cloud.Table.ITableRepository.AddRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.Table.ITableRepository.AddRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
   isExternal: true
-  href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_AddListAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
-  name: AddListAsync<T>(ICollection<T>, CancellationToken)
-  nameWithType: ITableRepository.AddListAsync<T>(ICollection<T>, CancellationToken)
-  fullName: Innovt.Cloud.Table.ITableRepository.AddListAsync<T>(System.Collections.Generic.ICollection<T>, System.Threading.CancellationToken)
-  nameWithType.vb: ITableRepository.AddListAsync(Of T)(ICollection(Of T), CancellationToken)
-  fullName.vb: Innovt.Cloud.Table.ITableRepository.AddListAsync(Of T)(System.Collections.Generic.ICollection(Of T), System.Threading.CancellationToken)
-  name.vb: AddListAsync(Of T)(ICollection(Of T), CancellationToken)
+  href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_AddRangeAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
+  name: AddRangeAsync<T>(ICollection<T>, CancellationToken)
+  nameWithType: ITableRepository.AddRangeAsync<T>(ICollection<T>, CancellationToken)
+  fullName: Innovt.Cloud.Table.ITableRepository.AddRangeAsync<T>(System.Collections.Generic.ICollection<T>, System.Threading.CancellationToken)
+  nameWithType.vb: ITableRepository.AddRangeAsync(Of T)(ICollection(Of T), CancellationToken)
+  fullName.vb: Innovt.Cloud.Table.ITableRepository.AddRangeAsync(Of T)(System.Collections.Generic.ICollection(Of T), System.Threading.CancellationToken)
+  name.vb: AddRangeAsync(Of T)(ICollection(Of T), CancellationToken)
   spec.csharp:
-  - uid: Innovt.Cloud.Table.ITableRepository.AddListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-    name: AddListAsync
-    href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_AddListAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
+  - uid: Innovt.Cloud.Table.ITableRepository.AddRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+    name: AddRangeAsync
+    href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_AddRangeAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
   - name: <
   - name: T
   - name: '>'
@@ -3347,9 +3336,9 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
   - name: )
   spec.vb:
-  - uid: Innovt.Cloud.Table.ITableRepository.AddListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-    name: AddListAsync
-    href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_AddListAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
+  - uid: Innovt.Cloud.Table.ITableRepository.AddRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+    name: AddRangeAsync
+    href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_AddRangeAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
   - name: (
   - name: Of
   - name: " "
@@ -3704,129 +3693,6 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
   - name: )
-- uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteListAsync*
-  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Repository.DeleteListAsync
-  href: Innovt.Cloud.AWS.Dynamo.Repository.html#Innovt_Cloud_AWS_Dynamo_Repository_DeleteListAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
-  name: DeleteListAsync
-  nameWithType: Repository.DeleteListAsync
-  fullName: Innovt.Cloud.AWS.Dynamo.Repository.DeleteListAsync
-- uid: Innovt.Cloud.Table.ITableRepository.DeleteListAsync``1(System.Collections.Generic.ICollection{{T}},System.Threading.CancellationToken)
-  commentId: M:Innovt.Cloud.Table.ITableRepository.DeleteListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-  parent: Innovt.Cloud.Table.ITableRepository
-  definition: Innovt.Cloud.Table.ITableRepository.DeleteListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-  href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_DeleteListAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
-  name: DeleteListAsync<T>(ICollection<T>, CancellationToken)
-  nameWithType: ITableRepository.DeleteListAsync<T>(ICollection<T>, CancellationToken)
-  fullName: Innovt.Cloud.Table.ITableRepository.DeleteListAsync<T>(System.Collections.Generic.ICollection<T>, System.Threading.CancellationToken)
-  nameWithType.vb: ITableRepository.DeleteListAsync(Of T)(ICollection(Of T), CancellationToken)
-  fullName.vb: Innovt.Cloud.Table.ITableRepository.DeleteListAsync(Of T)(System.Collections.Generic.ICollection(Of T), System.Threading.CancellationToken)
-  name.vb: DeleteListAsync(Of T)(ICollection(Of T), CancellationToken)
-  spec.csharp:
-  - uid: Innovt.Cloud.Table.ITableRepository.DeleteListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-    name: DeleteListAsync
-    href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_DeleteListAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
-  - name: <
-  - name: T
-  - name: '>'
-  - name: (
-  - uid: System.Collections.Generic.ICollection`1
-    name: ICollection
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
-  - name: <
-  - name: T
-  - name: '>'
-  - name: ','
-  - name: " "
-  - uid: System.Threading.CancellationToken
-    name: CancellationToken
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
-  - name: )
-  spec.vb:
-  - uid: Innovt.Cloud.Table.ITableRepository.DeleteListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-    name: DeleteListAsync
-    href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_DeleteListAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-  - name: (
-  - uid: System.Collections.Generic.ICollection`1
-    name: ICollection
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-  - name: ','
-  - name: " "
-  - uid: System.Threading.CancellationToken
-    name: CancellationToken
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
-  - name: )
-- uid: Innovt.Cloud.Table.ITableRepository.DeleteListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-  commentId: M:Innovt.Cloud.Table.ITableRepository.DeleteListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-  isExternal: true
-  href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_DeleteListAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
-  name: DeleteListAsync<T>(ICollection<T>, CancellationToken)
-  nameWithType: ITableRepository.DeleteListAsync<T>(ICollection<T>, CancellationToken)
-  fullName: Innovt.Cloud.Table.ITableRepository.DeleteListAsync<T>(System.Collections.Generic.ICollection<T>, System.Threading.CancellationToken)
-  nameWithType.vb: ITableRepository.DeleteListAsync(Of T)(ICollection(Of T), CancellationToken)
-  fullName.vb: Innovt.Cloud.Table.ITableRepository.DeleteListAsync(Of T)(System.Collections.Generic.ICollection(Of T), System.Threading.CancellationToken)
-  name.vb: DeleteListAsync(Of T)(ICollection(Of T), CancellationToken)
-  spec.csharp:
-  - uid: Innovt.Cloud.Table.ITableRepository.DeleteListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-    name: DeleteListAsync
-    href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_DeleteListAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
-  - name: <
-  - name: T
-  - name: '>'
-  - name: (
-  - uid: System.Collections.Generic.ICollection`1
-    name: ICollection
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
-  - name: <
-  - name: T
-  - name: '>'
-  - name: ','
-  - name: " "
-  - uid: System.Threading.CancellationToken
-    name: CancellationToken
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
-  - name: )
-  spec.vb:
-  - uid: Innovt.Cloud.Table.ITableRepository.DeleteListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-    name: DeleteListAsync
-    href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_DeleteListAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-  - name: (
-  - uid: System.Collections.Generic.ICollection`1
-    name: ICollection
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-  - name: ','
-  - name: " "
-  - uid: System.Threading.CancellationToken
-    name: CancellationToken
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
-  - name: )
 - uid: Innovt.Cloud.Table.ITableRepository.DeleteAsync``1(System.Object,System.String,System.Threading.CancellationToken)
   commentId: M:Innovt.Cloud.Table.ITableRepository.DeleteAsync``1(System.Object,System.String,System.Threading.CancellationToken)
   parent: Innovt.Cloud.Table.ITableRepository
@@ -3883,6 +3749,129 @@ references:
     name: String
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteRangeAsync*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Repository.DeleteRangeAsync
+  href: Innovt.Cloud.AWS.Dynamo.Repository.html#Innovt_Cloud_AWS_Dynamo_Repository_DeleteRangeAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
+  name: DeleteRangeAsync
+  nameWithType: Repository.DeleteRangeAsync
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.DeleteRangeAsync
+- uid: Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync``1(System.Collections.Generic.ICollection{{T}},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  parent: Innovt.Cloud.Table.ITableRepository
+  definition: Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_DeleteRangeAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
+  name: DeleteRangeAsync<T>(ICollection<T>, CancellationToken)
+  nameWithType: ITableRepository.DeleteRangeAsync<T>(ICollection<T>, CancellationToken)
+  fullName: Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync<T>(System.Collections.Generic.ICollection<T>, System.Threading.CancellationToken)
+  nameWithType.vb: ITableRepository.DeleteRangeAsync(Of T)(ICollection(Of T), CancellationToken)
+  fullName.vb: Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync(Of T)(System.Collections.Generic.ICollection(Of T), System.Threading.CancellationToken)
+  name.vb: DeleteRangeAsync(Of T)(ICollection(Of T), CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+    name: DeleteRangeAsync
+    href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_DeleteRangeAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+    name: DeleteRangeAsync
+    href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_DeleteRangeAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  isExternal: true
+  href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_DeleteRangeAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
+  name: DeleteRangeAsync<T>(ICollection<T>, CancellationToken)
+  nameWithType: ITableRepository.DeleteRangeAsync<T>(ICollection<T>, CancellationToken)
+  fullName: Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync<T>(System.Collections.Generic.ICollection<T>, System.Threading.CancellationToken)
+  nameWithType.vb: ITableRepository.DeleteRangeAsync(Of T)(ICollection(Of T), CancellationToken)
+  fullName.vb: Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync(Of T)(System.Collections.Generic.ICollection(Of T), System.Threading.CancellationToken)
+  name.vb: DeleteRangeAsync(Of T)(ICollection(Of T), CancellationToken)
+  spec.csharp:
+  - uid: Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+    name: DeleteRangeAsync
+    href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_DeleteRangeAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+    name: DeleteRangeAsync
+    href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_DeleteRangeAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
   - name: ','
   - name: " "
   - uid: System.Threading.CancellationToken
@@ -4040,7 +4029,7 @@ references:
   - uid: Amazon.DynamoDBv2.Model.AttributeValue
     name: AttributeValue
     isExternal: true
-    href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Generated/Model/AttributeValue.cs
+    href: https://github.com/aws/aws-sdk-net/blob/a180df70def2d9b66be5d7ca95bf0ba5fa35d67a/sdk/src/Services/DynamoDBv2/Generated/Model/AttributeValue.cs
   - name: '>'
   spec.vb:
   - uid: System.Collections.Generic.Dictionary`2
@@ -4059,7 +4048,7 @@ references:
   - uid: Amazon.DynamoDBv2.Model.AttributeValue
     name: AttributeValue
     isExternal: true
-    href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Generated/Model/AttributeValue.cs
+    href: https://github.com/aws/aws-sdk-net/blob/a180df70def2d9b66be5d7ca95bf0ba5fa35d67a/sdk/src/Services/DynamoDBv2/Generated/Model/AttributeValue.cs
   - name: )
 - uid: System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValueUpdate}
   commentId: T:System.Collections.Generic.Dictionary{System.String,Amazon.DynamoDBv2.Model.AttributeValueUpdate}
@@ -4087,7 +4076,7 @@ references:
   - uid: Amazon.DynamoDBv2.Model.AttributeValueUpdate
     name: AttributeValueUpdate
     isExternal: true
-    href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Generated/Model/AttributeValueUpdate.cs
+    href: https://github.com/aws/aws-sdk-net/blob/a180df70def2d9b66be5d7ca95bf0ba5fa35d67a/sdk/src/Services/DynamoDBv2/Generated/Model/AttributeValueUpdate.cs
   - name: '>'
   spec.vb:
   - uid: System.Collections.Generic.Dictionary`2
@@ -4106,7 +4095,7 @@ references:
   - uid: Amazon.DynamoDBv2.Model.AttributeValueUpdate
     name: AttributeValueUpdate
     isExternal: true
-    href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Generated/Model/AttributeValueUpdate.cs
+    href: https://github.com/aws/aws-sdk-net/blob/a180df70def2d9b66be5d7ca95bf0ba5fa35d67a/sdk/src/Services/DynamoDBv2/Generated/Model/AttributeValueUpdate.cs
   - name: )
 - uid: System.Collections.Generic.Dictionary`2
   commentId: T:System.Collections.Generic.Dictionary`2
@@ -4142,44 +4131,6 @@ references:
   - name: " "
   - name: TValue
   - name: )
-- uid: Amazon.DynamoDBv2.Model.UpdateItemRequest
-  commentId: T:Amazon.DynamoDBv2.Model.UpdateItemRequest
-  parent: Amazon.DynamoDBv2.Model
-  isExternal: true
-  href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Generated/Model/UpdateItemRequest.cs
-  name: UpdateItemRequest
-  nameWithType: UpdateItemRequest
-  fullName: Amazon.DynamoDBv2.Model.UpdateItemRequest
-- uid: Amazon.DynamoDBv2.Model
-  commentId: N:Amazon.DynamoDBv2.Model
-  isExternal: true
-  name: Amazon.DynamoDBv2.Model
-  nameWithType: Amazon.DynamoDBv2.Model
-  fullName: Amazon.DynamoDBv2.Model
-  spec.csharp:
-  - uid: Amazon
-    name: Amazon
-    isExternal: true
-  - name: .
-  - uid: Amazon.DynamoDBv2
-    name: DynamoDBv2
-    isExternal: true
-  - name: .
-  - uid: Amazon.DynamoDBv2.Model
-    name: Model
-    isExternal: true
-  spec.vb:
-  - uid: Amazon
-    name: Amazon
-    isExternal: true
-  - name: .
-  - uid: Amazon.DynamoDBv2
-    name: DynamoDBv2
-    isExternal: true
-  - name: .
-  - uid: Amazon.DynamoDBv2.Model
-    name: Model
-    isExternal: true
 - uid: Innovt.Cloud.AWS.Dynamo.Repository.QueryFirstAsync*
   commentId: Overload:Innovt.Cloud.AWS.Dynamo.Repository.QueryFirstAsync
   href: Innovt.Cloud.AWS.Dynamo.Repository.html#Innovt_Cloud_AWS_Dynamo_Repository_QueryFirstAsync__1_System_Object_System_Threading_CancellationToken_

@@ -25,7 +25,7 @@ items:
   type: Class
   source:
     id: PostConfirmationJsonSerializerContext
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PostConfirmationJsonSerializerContext.PostConfirmationRequest.g.cs
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PostConfirmationJsonSerializerContext.PostConfirmationResponse.g.cs
     startLine: 10
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Cognito
@@ -83,20 +83,20 @@ items:
     arguments:
     - type: System.Type
       value: Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationResponse
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationEvent
-  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationEvent
-  id: PostConfirmationEvent
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.DictionaryStringString
+  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.DictionaryStringString
+  id: DictionaryStringString
   parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext
   langs:
   - csharp
   - vb
-  name: PostConfirmationEvent
-  nameWithType: PostConfirmationJsonSerializerContext.PostConfirmationEvent
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationEvent
+  name: DictionaryStringString
+  nameWithType: PostConfirmationJsonSerializerContext.DictionaryStringString
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.DictionaryStringString
   type: Property
   source:
-    id: PostConfirmationEvent
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PostConfirmationJsonSerializerContext.PostConfirmationEvent.g.cs
+    id: DictionaryStringString
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PostConfirmationJsonSerializerContext.DictionaryStringString.g.cs
     startLine: 17
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Cognito
@@ -104,12 +104,12 @@ items:
   summary: Defines the source generated JSON serialization contract metadata for a given type.
   example: []
   syntax:
-    content: public JsonTypeInfo<PostConfirmationEvent> PostConfirmationEvent { get; }
+    content: public JsonTypeInfo<Dictionary<string, string>> DictionaryStringString { get; }
     parameters: []
     return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationEvent}
-    content.vb: Public ReadOnly Property PostConfirmationEvent As JsonTypeInfo(Of PostConfirmationEvent)
-  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationEvent*
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.Dictionary{System.String,System.String}}
+    content.vb: Public ReadOnly Property DictionaryStringString As JsonTypeInfo(Of Dictionary(Of String, String))
+  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.DictionaryStringString*
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.String
   commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.String
   id: String
@@ -137,20 +137,20 @@ items:
       type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
     content.vb: Public ReadOnly Property [String] As JsonTypeInfo(Of String)
   overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.String*
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationResponse
-  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationResponse
-  id: PostConfirmationResponse
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.TriggerCallerContext
+  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.TriggerCallerContext
+  id: TriggerCallerContext
   parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext
   langs:
   - csharp
   - vb
-  name: PostConfirmationResponse
-  nameWithType: PostConfirmationJsonSerializerContext.PostConfirmationResponse
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationResponse
+  name: TriggerCallerContext
+  nameWithType: PostConfirmationJsonSerializerContext.TriggerCallerContext
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.TriggerCallerContext
   type: Property
   source:
-    id: PostConfirmationResponse
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PostConfirmationJsonSerializerContext.PostConfirmationResponse.g.cs
+    id: TriggerCallerContext
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PostConfirmationJsonSerializerContext.TriggerCallerContext.g.cs
     startLine: 17
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Cognito
@@ -158,12 +158,12 @@ items:
   summary: Defines the source generated JSON serialization contract metadata for a given type.
   example: []
   syntax:
-    content: public JsonTypeInfo<PostConfirmationResponse> PostConfirmationResponse { get; }
+    content: public JsonTypeInfo<TriggerCallerContext> TriggerCallerContext { get; }
     parameters: []
     return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationResponse}
-    content.vb: Public ReadOnly Property PostConfirmationResponse As JsonTypeInfo(Of PostConfirmationResponse)
-  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationResponse*
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext}
+    content.vb: Public ReadOnly Property TriggerCallerContext As JsonTypeInfo(Of TriggerCallerContext)
+  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.TriggerCallerContext*
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.Default
   commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.Default
   id: Default
@@ -276,20 +276,20 @@ items:
   nameWithType.vb: PostConfirmationJsonSerializerContext.New(JsonSerializerOptions)
   fullName.vb: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.New(System.Text.Json.JsonSerializerOptions)
   name.vb: New(JsonSerializerOptions)
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.DictionaryStringString
-  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.DictionaryStringString
-  id: DictionaryStringString
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationEvent
+  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationEvent
+  id: PostConfirmationEvent
   parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext
   langs:
   - csharp
   - vb
-  name: DictionaryStringString
-  nameWithType: PostConfirmationJsonSerializerContext.DictionaryStringString
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.DictionaryStringString
+  name: PostConfirmationEvent
+  nameWithType: PostConfirmationJsonSerializerContext.PostConfirmationEvent
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationEvent
   type: Property
   source:
-    id: DictionaryStringString
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PostConfirmationJsonSerializerContext.DictionaryStringString.g.cs
+    id: PostConfirmationEvent
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PostConfirmationJsonSerializerContext.PostConfirmationEvent.g.cs
     startLine: 17
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Cognito
@@ -297,12 +297,39 @@ items:
   summary: Defines the source generated JSON serialization contract metadata for a given type.
   example: []
   syntax:
-    content: public JsonTypeInfo<Dictionary<string, string>> DictionaryStringString { get; }
+    content: public JsonTypeInfo<PostConfirmationEvent> PostConfirmationEvent { get; }
     parameters: []
     return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.Dictionary{System.String,System.String}}
-    content.vb: Public ReadOnly Property DictionaryStringString As JsonTypeInfo(Of Dictionary(Of String, String))
-  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.DictionaryStringString*
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationEvent}
+    content.vb: Public ReadOnly Property PostConfirmationEvent As JsonTypeInfo(Of PostConfirmationEvent)
+  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationEvent*
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationRequest
+  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationRequest
+  id: PostConfirmationRequest
+  parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: PostConfirmationRequest
+  nameWithType: PostConfirmationJsonSerializerContext.PostConfirmationRequest
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationRequest
+  type: Property
+  source:
+    id: PostConfirmationRequest
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PostConfirmationJsonSerializerContext.PostConfirmationRequest.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Cognito
+  namespace: Innovt.Cloud.AWS.Lambda.Cognito.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<PostConfirmationRequest> PostConfirmationRequest { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationRequest}
+    content.vb: Public ReadOnly Property PostConfirmationRequest As JsonTypeInfo(Of PostConfirmationRequest)
+  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationRequest*
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.GetTypeInfo(System.Type)
   commentId: M:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.GetTypeInfo(System.Type)
   id: GetTypeInfo(System.Type)
@@ -335,20 +362,20 @@ items:
     content.vb: Public Overrides Function GetTypeInfo(type As Type) As JsonTypeInfo
   overridden: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
   overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.GetTypeInfo*
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.TriggerCallerContext
-  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.TriggerCallerContext
-  id: TriggerCallerContext
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationResponse
+  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationResponse
+  id: PostConfirmationResponse
   parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext
   langs:
   - csharp
   - vb
-  name: TriggerCallerContext
-  nameWithType: PostConfirmationJsonSerializerContext.TriggerCallerContext
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.TriggerCallerContext
+  name: PostConfirmationResponse
+  nameWithType: PostConfirmationJsonSerializerContext.PostConfirmationResponse
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationResponse
   type: Property
   source:
-    id: TriggerCallerContext
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PostConfirmationJsonSerializerContext.TriggerCallerContext.g.cs
+    id: PostConfirmationResponse
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PostConfirmationJsonSerializerContext.PostConfirmationResponse.g.cs
     startLine: 17
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Cognito
@@ -356,39 +383,12 @@ items:
   summary: Defines the source generated JSON serialization contract metadata for a given type.
   example: []
   syntax:
-    content: public JsonTypeInfo<TriggerCallerContext> TriggerCallerContext { get; }
+    content: public JsonTypeInfo<PostConfirmationResponse> PostConfirmationResponse { get; }
     parameters: []
     return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext}
-    content.vb: Public ReadOnly Property TriggerCallerContext As JsonTypeInfo(Of TriggerCallerContext)
-  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.TriggerCallerContext*
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationRequest
-  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationRequest
-  id: PostConfirmationRequest
-  parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: PostConfirmationRequest
-  nameWithType: PostConfirmationJsonSerializerContext.PostConfirmationRequest
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationRequest
-  type: Property
-  source:
-    id: PostConfirmationRequest
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PostConfirmationJsonSerializerContext.PostConfirmationRequest.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Cognito
-  namespace: Innovt.Cloud.AWS.Lambda.Cognito.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<PostConfirmationRequest> PostConfirmationRequest { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationRequest}
-    content.vb: Public ReadOnly Property PostConfirmationRequest As JsonTypeInfo(Of PostConfirmationRequest)
-  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationRequest*
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationResponse}
+    content.vb: Public ReadOnly Property PostConfirmationResponse As JsonTypeInfo(Of PostConfirmationResponse)
+  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationResponse*
 references:
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers
   commentId: N:Innovt.Cloud.AWS.Lambda.Cognito.Serializers
@@ -1090,31 +1090,45 @@ references:
   - uid: Innovt.Core.Utilities.Mapper
     name: Mapper
     href: Innovt.Core.Utilities.Mapper.html
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationEvent*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationEvent
-  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PostConfirmationJsonSerializerContext_PostConfirmationEvent
-  name: PostConfirmationEvent
-  nameWithType: PostConfirmationJsonSerializerContext.PostConfirmationEvent
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationEvent
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationEvent}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationEvent}
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.DictionaryStringString*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.DictionaryStringString
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PostConfirmationJsonSerializerContext_DictionaryStringString
+  name: DictionaryStringString
+  nameWithType: PostConfirmationJsonSerializerContext.DictionaryStringString
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.DictionaryStringString
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.Dictionary{System.String,System.String}}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.Dictionary{System.String,System.String}}
   parent: System.Text.Json.Serialization.Metadata
   definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
   href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<PostConfirmationEvent>
-  nameWithType: JsonTypeInfo<PostConfirmationEvent>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationEvent>
-  nameWithType.vb: JsonTypeInfo(Of PostConfirmationEvent)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationEvent)
-  name.vb: JsonTypeInfo(Of PostConfirmationEvent)
+  name: JsonTypeInfo<Dictionary<string, string>>
+  nameWithType: JsonTypeInfo<Dictionary<string, string>>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.Collections.Generic.Dictionary<string, string>>
+  nameWithType.vb: JsonTypeInfo(Of Dictionary(Of String, String))
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of System.Collections.Generic.Dictionary(Of String, String))
+  name.vb: JsonTypeInfo(Of Dictionary(Of String, String))
   spec.csharp:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
     name: JsonTypeInfo
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
   - name: <
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationEvent
-    name: PostConfirmationEvent
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
   - name: '>'
   spec.vb:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
@@ -1124,8 +1138,24 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationEvent
-    name: PostConfirmationEvent
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
   - name: )
 - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
   commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
@@ -1196,31 +1226,31 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationResponse*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationResponse
-  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PostConfirmationJsonSerializerContext_PostConfirmationResponse
-  name: PostConfirmationResponse
-  nameWithType: PostConfirmationJsonSerializerContext.PostConfirmationResponse
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationResponse
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationResponse}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationResponse}
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.TriggerCallerContext*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.TriggerCallerContext
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PostConfirmationJsonSerializerContext_TriggerCallerContext
+  name: TriggerCallerContext
+  nameWithType: PostConfirmationJsonSerializerContext.TriggerCallerContext
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.TriggerCallerContext
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext}
   parent: System.Text.Json.Serialization.Metadata
   definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
   href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<PostConfirmationResponse>
-  nameWithType: JsonTypeInfo<PostConfirmationResponse>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationResponse>
-  nameWithType.vb: JsonTypeInfo(Of PostConfirmationResponse)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationResponse)
-  name.vb: JsonTypeInfo(Of PostConfirmationResponse)
+  name: JsonTypeInfo<TriggerCallerContext>
+  nameWithType: JsonTypeInfo<TriggerCallerContext>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext>
+  nameWithType.vb: JsonTypeInfo(Of TriggerCallerContext)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext)
+  name.vb: JsonTypeInfo(Of TriggerCallerContext)
   spec.csharp:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
     name: JsonTypeInfo
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
   - name: <
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationResponse
-    name: PostConfirmationResponse
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext
+    name: TriggerCallerContext
   - name: '>'
   spec.vb:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
@@ -1230,8 +1260,8 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationResponse
-    name: PostConfirmationResponse
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext
+    name: TriggerCallerContext
   - name: )
 - uid: System.Text.Json.JsonSerializerOptions
   commentId: T:System.Text.Json.JsonSerializerOptions
@@ -1314,45 +1344,31 @@ references:
   nameWithType.vb: PostConfirmationJsonSerializerContext.New
   fullName.vb: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.New
   name.vb: New
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.DictionaryStringString*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.DictionaryStringString
-  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PostConfirmationJsonSerializerContext_DictionaryStringString
-  name: DictionaryStringString
-  nameWithType: PostConfirmationJsonSerializerContext.DictionaryStringString
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.DictionaryStringString
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.Dictionary{System.String,System.String}}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.Dictionary{System.String,System.String}}
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationEvent*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationEvent
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PostConfirmationJsonSerializerContext_PostConfirmationEvent
+  name: PostConfirmationEvent
+  nameWithType: PostConfirmationJsonSerializerContext.PostConfirmationEvent
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationEvent
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationEvent}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationEvent}
   parent: System.Text.Json.Serialization.Metadata
   definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
   href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<Dictionary<string, string>>
-  nameWithType: JsonTypeInfo<Dictionary<string, string>>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.Collections.Generic.Dictionary<string, string>>
-  nameWithType.vb: JsonTypeInfo(Of Dictionary(Of String, String))
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of System.Collections.Generic.Dictionary(Of String, String))
-  name.vb: JsonTypeInfo(Of Dictionary(Of String, String))
+  name: JsonTypeInfo<PostConfirmationEvent>
+  nameWithType: JsonTypeInfo<PostConfirmationEvent>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationEvent>
+  nameWithType.vb: JsonTypeInfo(Of PostConfirmationEvent)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationEvent)
+  name.vb: JsonTypeInfo(Of PostConfirmationEvent)
   spec.csharp:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
     name: JsonTypeInfo
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
   - name: <
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: <
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: '>'
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationEvent
+    name: PostConfirmationEvent
   - name: '>'
   spec.vb:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
@@ -1362,24 +1378,45 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationEvent
+    name: PostConfirmationEvent
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationRequest*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationRequest
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PostConfirmationJsonSerializerContext_PostConfirmationRequest
+  name: PostConfirmationRequest
+  nameWithType: PostConfirmationJsonSerializerContext.PostConfirmationRequest
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationRequest
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationRequest}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationRequest}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<PostConfirmationRequest>
+  nameWithType: JsonTypeInfo<PostConfirmationRequest>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationRequest>
+  nameWithType.vb: JsonTypeInfo(Of PostConfirmationRequest)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationRequest)
+  name.vb: JsonTypeInfo(Of PostConfirmationRequest)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationRequest
+    name: PostConfirmationRequest
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
   - name: (
   - name: Of
   - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: )
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationRequest
+    name: PostConfirmationRequest
   - name: )
 - uid: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
   commentId: M:System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
@@ -1433,31 +1470,31 @@ references:
   name: JsonTypeInfo
   nameWithType: JsonTypeInfo
   fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.TriggerCallerContext*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.TriggerCallerContext
-  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PostConfirmationJsonSerializerContext_TriggerCallerContext
-  name: TriggerCallerContext
-  nameWithType: PostConfirmationJsonSerializerContext.TriggerCallerContext
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.TriggerCallerContext
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext}
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationResponse*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationResponse
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PostConfirmationJsonSerializerContext_PostConfirmationResponse
+  name: PostConfirmationResponse
+  nameWithType: PostConfirmationJsonSerializerContext.PostConfirmationResponse
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationResponse
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationResponse}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationResponse}
   parent: System.Text.Json.Serialization.Metadata
   definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
   href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<TriggerCallerContext>
-  nameWithType: JsonTypeInfo<TriggerCallerContext>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext>
-  nameWithType.vb: JsonTypeInfo(Of TriggerCallerContext)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext)
-  name.vb: JsonTypeInfo(Of TriggerCallerContext)
+  name: JsonTypeInfo<PostConfirmationResponse>
+  nameWithType: JsonTypeInfo<PostConfirmationResponse>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationResponse>
+  nameWithType.vb: JsonTypeInfo(Of PostConfirmationResponse)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationResponse)
+  name.vb: JsonTypeInfo(Of PostConfirmationResponse)
   spec.csharp:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
     name: JsonTypeInfo
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
   - name: <
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext
-    name: TriggerCallerContext
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationResponse
+    name: PostConfirmationResponse
   - name: '>'
   spec.vb:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
@@ -1467,43 +1504,6 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext
-    name: TriggerCallerContext
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationRequest*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationRequest
-  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PostConfirmationJsonSerializerContext_PostConfirmationRequest
-  name: PostConfirmationRequest
-  nameWithType: PostConfirmationJsonSerializerContext.PostConfirmationRequest
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PostConfirmationJsonSerializerContext.PostConfirmationRequest
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationRequest}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationRequest}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<PostConfirmationRequest>
-  nameWithType: JsonTypeInfo<PostConfirmationRequest>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationRequest>
-  nameWithType.vb: JsonTypeInfo(Of PostConfirmationRequest)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationRequest)
-  name.vb: JsonTypeInfo(Of PostConfirmationRequest)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationRequest
-    name: PostConfirmationRequest
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationRequest
-    name: PostConfirmationRequest
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PostConfirmation.PostConfirmationResponse
+    name: PostConfirmationResponse
   - name: )

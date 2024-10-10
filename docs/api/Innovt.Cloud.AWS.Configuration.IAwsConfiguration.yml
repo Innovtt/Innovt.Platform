@@ -17,11 +17,11 @@ items:
   type: Interface
   source:
     remote:
-      path: src/Innovt.Cloud.AWS/Configuration/IAWSConfiguration.cs
+      path: src/Innovt.Cloud.AWS/Configuration/IAwsConfiguration.cs
       branch: feature/ImproveDynamoMapping
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: IAwsConfiguration
-    path: ../src/Innovt.Cloud.AWS/Configuration/IAWSConfiguration.cs
+    path: ../src/Innovt.Cloud.AWS/Configuration/IAwsConfiguration.cs
     startLine: 9
   assemblies:
   - Innovt.Cloud.AWS
@@ -62,11 +62,11 @@ items:
   type: Property
   source:
     remote:
-      path: src/Innovt.Cloud.AWS/Configuration/IAWSConfiguration.cs
+      path: src/Innovt.Cloud.AWS/Configuration/IAwsConfiguration.cs
       branch: feature/ImproveDynamoMapping
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: AccountNumber
-    path: ../src/Innovt.Cloud.AWS/Configuration/IAWSConfiguration.cs
+    path: ../src/Innovt.Cloud.AWS/Configuration/IAwsConfiguration.cs
     startLine: 12
   assemblies:
   - Innovt.Cloud.AWS
@@ -91,11 +91,11 @@ items:
   type: Property
   source:
     remote:
-      path: src/Innovt.Cloud.AWS/Configuration/IAWSConfiguration.cs
+      path: src/Innovt.Cloud.AWS/Configuration/IAwsConfiguration.cs
       branch: feature/ImproveDynamoMapping
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: Profile
-    path: ../src/Innovt.Cloud.AWS/Configuration/IAWSConfiguration.cs
+    path: ../src/Innovt.Cloud.AWS/Configuration/IAwsConfiguration.cs
     startLine: 14
   assemblies:
   - Innovt.Cloud.AWS
@@ -120,11 +120,11 @@ items:
   type: Method
   source:
     remote:
-      path: src/Innovt.Cloud.AWS/Configuration/IAWSConfiguration.cs
+      path: src/Innovt.Cloud.AWS/Configuration/IAwsConfiguration.cs
       branch: feature/ImproveDynamoMapping
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: GetCredential
-    path: ../src/Innovt.Cloud.AWS/Configuration/IAWSConfiguration.cs
+    path: ../src/Innovt.Cloud.AWS/Configuration/IAwsConfiguration.cs
     startLine: 16
   assemblies:
   - Innovt.Cloud.AWS
@@ -545,7 +545,7 @@ references:
   commentId: T:Amazon.Runtime.AWSCredentials
   parent: Amazon.Runtime
   isExternal: true
-  href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Core/Amazon.Runtime/Credentials/AWSCredentials.cs
+  href: https://github.com/aws/aws-sdk-net/blob/a180df70def2d9b66be5d7ca95bf0ba5fa35d67a/sdk/src/Core/Amazon.Runtime/Credentials/AWSCredentials.cs
   name: AWSCredentials
   nameWithType: AWSCredentials
   fullName: Amazon.Runtime.AWSCredentials

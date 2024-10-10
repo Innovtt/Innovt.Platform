@@ -1,120 +1,1212 @@
 ﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
 <html>
+
   <head>
     <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Interface IRepositoryBase | Innovt Platform </title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width">
       <meta name="title" content="Interface IRepositoryBase | Innovt Platform ">
-      
-      <meta name="description" content="Represents a base interface for repository operations.">
-      <link rel="icon" href="../favicon.ico">
-      <link rel="stylesheet" href="../public/docfx.min.css">
-      <link rel="stylesheet" href="../public/main.css">
-      <meta name="docfx:navrel" content="../toc.html">
-      <meta name="docfx:tocrel" content="toc.html">
-      
-      <meta name="docfx:rel" content="../">
-      
-      
-      <meta name="docfx:docurl" content="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_Ado_IRepositoryBase.md&amp;value=---%0Auid%3A%20Innovt.Data.Ado.IRepositoryBase%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
-      <meta name="loc:inThisArticle" content="In this article">
-      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
-      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
-      <meta name="loc:tocFilter" content="Filter by title">
-      <meta name="loc:nextArticle" content="Next">
-      <meta name="loc:prevArticle" content="Previous">
-      <meta name="loc:themeLight" content="Light">
-      <meta name="loc:themeDark" content="Dark">
-      <meta name="loc:themeAuto" content="Auto">
-      <meta name="loc:changeTheme" content="Change theme">
-      <meta name="loc:copy" content="Copy">
-      <meta name="loc:downloadPdf" content="Download PDF">
-
-      <script type="module" src="./../public/docfx.min.js"></script>
-
-      <script>
-        const theme = localStorage.getItem('theme') || 'auto'
-        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-      </script>
-
+    
+    <meta name="description" content="Represents a base interface for repository operations.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
   </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
 
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
-    <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
-        <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../index.html">
-            <img id="logo" class="svg" src="../logo.svg" alt="Innovt Platform">
-            Innovt Platform
-          </a>
-          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navpanel">
-            <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="Innovt Platform">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
               </form>
             </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
 
-    <main class="container-xxl">
-      <div class="toc-offcanvas">
-        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
           </div>
-          <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
+      <div role="main" class="container body-content hide-when-search">
 
-      <div class="content">
-        <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
-          </button>
-
-          <nav id="breadcrumb"></nav>
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
         </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Innovt.Data.Ado.IRepositoryBase">
 
-        <article data-uid="Innovt.Data.Ado.IRepositoryBase">
 
 
-
-  <h1 id="Innovt_Data_Ado_IRepositoryBase" data-uid="Innovt.Data.Ado.IRepositoryBase" class="text-break">
-Interface IRepositoryBase  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L18"><i class="bi bi-code-slash"></i></a>
-  </h1>
-
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="Innovt.html">Innovt</a>.<a class="xref" href="Innovt.Data.html">Data</a>.<a class="xref" href="Innovt.Data.Ado.html">Ado</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>Innovt.Data.Ado.dll</dd></dl>
-  </div>
-
-  <div class="markdown summary"><p>Represents a base interface for repository operations.</p>
+  <h1 id="Innovt_Data_Ado_IRepositoryBase" data-uid="Innovt.Data.Ado.IRepositoryBase" class="text-break">Interface IRepositoryBase</h1>
+  <div class="markdown level0 summary"><p>Represents a base interface for repository operations.</p>
 </div>
-  <div class="markdown conceptual"></div>
-
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Innovt.html">Innovt</a>.<a class="xref" href="Innovt.Data.html">Data</a>.<a class="xref" href="Innovt.Data.Ado.html">Ado</a></h6>
+  <h6><strong>Assembly</strong>: Innovt.Data.Ado.dll</h6>
+  <h5 id="Innovt_Data_Ado_IRepositoryBase_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IRepositoryBase</code></pre>
   </div>
-
-
-
-
-
-
-
-
-  <dl class="typelist extensionMethods">
-    <dt>Extension Methods</dt>
-    <dd>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_Ado_IRepositoryBase_ExecuteAsync_System_String_System_Object_System_Data_IDbTransaction_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Data.Ado.IRepositoryBase.ExecuteAsync(System.String%2CSystem.Object%2CSystem.Data.IDbTransaction%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L71">View Source</a>
+  </span>
+  <a id="Innovt_Data_Ado_IRepositoryBase_ExecuteAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.ExecuteAsync*"></a>
+  <h4 id="Innovt_Data_Ado_IRepositoryBase_ExecuteAsync_System_String_System_Object_System_Data_IDbTransaction_System_Threading_CancellationToken_" data-uid="Innovt.Data.Ado.IRepositoryBase.ExecuteAsync(System.String,System.Object,System.Data.IDbTransaction,System.Threading.CancellationToken)">ExecuteAsync(string, object, IDbTransaction, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;int&gt; ExecuteAsync(string sql, object filter = null, IDbTransaction dbTransaction = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">sql</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.idbtransaction">IDbTransaction</a></td>
+        <td><span class="parametername">dbTransaction</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_Ado_IRepositoryBase_ExecuteScalarAsync__1_System_String_System_Object_System_Data_IDbTransaction_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Data.Ado.IRepositoryBase.ExecuteScalarAsync%60%601(System.String%2CSystem.Object%2CSystem.Data.IDbTransaction%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L68">View Source</a>
+  </span>
+  <a id="Innovt_Data_Ado_IRepositoryBase_ExecuteScalarAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.ExecuteScalarAsync*"></a>
+  <h4 id="Innovt_Data_Ado_IRepositoryBase_ExecuteScalarAsync__1_System_String_System_Object_System_Data_IDbTransaction_System_Threading_CancellationToken_" data-uid="Innovt.Data.Ado.IRepositoryBase.ExecuteScalarAsync``1(System.String,System.Object,System.Data.IDbTransaction,System.Threading.CancellationToken)">ExecuteScalarAsync&lt;T&gt;(string, object, IDbTransaction, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; ExecuteScalarAsync&lt;T&gt;(string sql, object filter = null, IDbTransaction dbTransaction = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">sql</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.idbtransaction">IDbTransaction</a></td>
+        <td><span class="parametername">dbTransaction</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_Ado_IRepositoryBase_QueryAsync__1_System_String_System_Object_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Data.Ado.IRepositoryBase.QueryAsync%60%601(System.String%2CSystem.Object%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L35">View Source</a>
+  </span>
+  <a id="Innovt_Data_Ado_IRepositoryBase_QueryAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryAsync*"></a>
+  <h4 id="Innovt_Data_Ado_IRepositoryBase_QueryAsync__1_System_String_System_Object_System_Threading_CancellationToken_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryAsync``1(System.String,System.Object,System.Threading.CancellationToken)">QueryAsync&lt;T&gt;(string, object, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IEnumerable&lt;T&gt;&gt; QueryAsync&lt;T&gt;(string sql, object filter = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">sql</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_Ado_IRepositoryBase_QueryAsync__3_System_String_System_Object_System_Func___0___1___2__System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Data.Ado.IRepositoryBase.QueryAsync%60%603(System.String%2CSystem.Object%2CSystem.Func%7B%60%600%2C%60%601%2C%60%602%7D%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L38">View Source</a>
+  </span>
+  <a id="Innovt_Data_Ado_IRepositoryBase_QueryAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryAsync*"></a>
+  <h4 id="Innovt_Data_Ado_IRepositoryBase_QueryAsync__3_System_String_System_Object_System_Func___0___1___2__System_String_System_Threading_CancellationToken_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryAsync``3(System.String,System.Object,System.Func{``0,``1,``2},System.String,System.Threading.CancellationToken)">QueryAsync&lt;TFirst, TSecond, TReturn&gt;(string, object, Func&lt;TFirst, TSecond, TReturn&gt;, string, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IEnumerable&lt;TReturn&gt;&gt; QueryAsync&lt;TFirst, TSecond, TReturn&gt;(string sql, object filter, Func&lt;TFirst, TSecond, TReturn&gt; func, string splitOn, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">sql</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;TFirst, TSecond, TReturn&gt;</td>
+        <td><span class="parametername">func</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">splitOn</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TReturn&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TFirst</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TSecond</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TReturn</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_Ado_IRepositoryBase_QueryAsync__4_System_String_System_Object_System_Func___0___1___2___3__System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Data.Ado.IRepositoryBase.QueryAsync%60%604(System.String%2CSystem.Object%2CSystem.Func%7B%60%600%2C%60%601%2C%60%602%2C%60%603%7D%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L42">View Source</a>
+  </span>
+  <a id="Innovt_Data_Ado_IRepositoryBase_QueryAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryAsync*"></a>
+  <h4 id="Innovt_Data_Ado_IRepositoryBase_QueryAsync__4_System_String_System_Object_System_Func___0___1___2___3__System_String_System_Threading_CancellationToken_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryAsync``4(System.String,System.Object,System.Func{``0,``1,``2,``3},System.String,System.Threading.CancellationToken)">QueryAsync&lt;TFirst, TSecond, TThird, TReturn&gt;(string, object, Func&lt;TFirst, TSecond, TThird, TReturn&gt;, string, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IEnumerable&lt;TReturn&gt;&gt; QueryAsync&lt;TFirst, TSecond, TThird, TReturn&gt;(string sql, object filter, Func&lt;TFirst, TSecond, TThird, TReturn&gt; func, string splitOn, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">sql</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;TFirst, TSecond, TThird, TReturn&gt;</td>
+        <td><span class="parametername">func</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">splitOn</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TReturn&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TFirst</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TSecond</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TThird</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TReturn</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_Ado_IRepositoryBase_QueryAsync__5_System_String_System_Object_System_Func___0___1___2___3___4__System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Data.Ado.IRepositoryBase.QueryAsync%60%605(System.String%2CSystem.Object%2CSystem.Func%7B%60%600%2C%60%601%2C%60%602%2C%60%603%2C%60%604%7D%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L45">View Source</a>
+  </span>
+  <a id="Innovt_Data_Ado_IRepositoryBase_QueryAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryAsync*"></a>
+  <h4 id="Innovt_Data_Ado_IRepositoryBase_QueryAsync__5_System_String_System_Object_System_Func___0___1___2___3___4__System_String_System_Threading_CancellationToken_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryAsync``5(System.String,System.Object,System.Func{``0,``1,``2,``3,``4},System.String,System.Threading.CancellationToken)">QueryAsync&lt;TFirst, TSecond, TThird, TFourth, TReturn&gt;(string, object, Func&lt;TFirst, TSecond, TThird, TFourth, TReturn&gt;, string, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IEnumerable&lt;TReturn&gt;&gt; QueryAsync&lt;TFirst, TSecond, TThird, TFourth, TReturn&gt;(string sql, object filter, Func&lt;TFirst, TSecond, TThird, TFourth, TReturn&gt; func, string splitOn, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">sql</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-5">Func</a>&lt;TFirst, TSecond, TThird, TFourth, TReturn&gt;</td>
+        <td><span class="parametername">func</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">splitOn</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TReturn&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TFirst</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TSecond</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TThird</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TFourth</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TReturn</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_Ado_IRepositoryBase_QueryAsync__6_System_String_System_Object_System_Func___0___1___2___3___4___5__System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Data.Ado.IRepositoryBase.QueryAsync%60%606(System.String%2CSystem.Object%2CSystem.Func%7B%60%600%2C%60%601%2C%60%602%2C%60%603%2C%60%604%2C%60%605%7D%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L49">View Source</a>
+  </span>
+  <a id="Innovt_Data_Ado_IRepositoryBase_QueryAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryAsync*"></a>
+  <h4 id="Innovt_Data_Ado_IRepositoryBase_QueryAsync__6_System_String_System_Object_System_Func___0___1___2___3___4___5__System_String_System_Threading_CancellationToken_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryAsync``6(System.String,System.Object,System.Func{``0,``1,``2,``3,``4,``5},System.String,System.Threading.CancellationToken)">QueryAsync&lt;TFirst, TSecond, TThird, TFourth, TFifth, TReturn&gt;(string, object, Func&lt;TFirst, TSecond, TThird, TFourth, TFifth, TReturn&gt;, string, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IEnumerable&lt;TReturn&gt;&gt; QueryAsync&lt;TFirst, TSecond, TThird, TFourth, TFifth, TReturn&gt;(string sql, object filter, Func&lt;TFirst, TSecond, TThird, TFourth, TFifth, TReturn&gt; func, string splitOn, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">sql</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-6">Func</a>&lt;TFirst, TSecond, TThird, TFourth, TFifth, TReturn&gt;</td>
+        <td><span class="parametername">func</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">splitOn</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TReturn&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TFirst</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TSecond</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TThird</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TFourth</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TFifth</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TReturn</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_Ado_IRepositoryBase_QueryCountAsync_System_String_System_String_System_Object_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Data.Ado.IRepositoryBase.QueryCountAsync(System.String%2CSystem.String%2CSystem.Object%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L32">View Source</a>
+  </span>
+  <a id="Innovt_Data_Ado_IRepositoryBase_QueryCountAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryCountAsync*"></a>
+  <h4 id="Innovt_Data_Ado_IRepositoryBase_QueryCountAsync_System_String_System_String_System_Object_System_Threading_CancellationToken_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryCountAsync(System.String,System.String,System.Object,System.Threading.CancellationToken)">QueryCountAsync(string, string, object, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;int&gt; QueryCountAsync(string tableName, string whereClause = null, object filter = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">tableName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">whereClause</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_Ado_IRepositoryBase_QueryFirstOrDefaultAsync__1_System_String_System_Object_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Data.Ado.IRepositoryBase.QueryFirstOrDefaultAsync%60%601(System.String%2CSystem.Object%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L23">View Source</a>
+  </span>
+  <a id="Innovt_Data_Ado_IRepositoryBase_QueryFirstOrDefaultAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryFirstOrDefaultAsync*"></a>
+  <h4 id="Innovt_Data_Ado_IRepositoryBase_QueryFirstOrDefaultAsync__1_System_String_System_Object_System_Threading_CancellationToken_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryFirstOrDefaultAsync``1(System.String,System.Object,System.Threading.CancellationToken)">QueryFirstOrDefaultAsync&lt;T&gt;(string, object, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; QueryFirstOrDefaultAsync&lt;T&gt;(string sql, object filter = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">sql</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_Ado_IRepositoryBase_QueryFirstOrDefaultAsync__1_System_String_System_String_System_Object_System_Threading_CancellationToken_System_String___.md&amp;value=---%0Auid%3A%20Innovt.Data.Ado.IRepositoryBase.QueryFirstOrDefaultAsync%60%601(System.String%2CSystem.String%2CSystem.Object%2CSystem.Threading.CancellationToken%2CSystem.String%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L20">View Source</a>
+  </span>
+  <a id="Innovt_Data_Ado_IRepositoryBase_QueryFirstOrDefaultAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryFirstOrDefaultAsync*"></a>
+  <h4 id="Innovt_Data_Ado_IRepositoryBase_QueryFirstOrDefaultAsync__1_System_String_System_String_System_Object_System_Threading_CancellationToken_System_String___" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryFirstOrDefaultAsync``1(System.String,System.String,System.Object,System.Threading.CancellationToken,System.String[])">QueryFirstOrDefaultAsync&lt;T&gt;(string, string, object, CancellationToken, params string[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; QueryFirstOrDefaultAsync&lt;T&gt;(string tableName, string whereClause, object filter = null, CancellationToken cancellationToken = default, params string[] columns)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">tableName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">whereClause</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</td>
+        <td><span class="parametername">columns</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_Ado_IRepositoryBase_QueryListPagedAsync__1_System_String_Innovt_Core_Cqrs_Queries_IPagedFilter_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Data.Ado.IRepositoryBase.QueryListPagedAsync%60%601(System.String%2CInnovt.Core.Cqrs.Queries.IPagedFilter%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L57">View Source</a>
+  </span>
+  <a id="Innovt_Data_Ado_IRepositoryBase_QueryListPagedAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryListPagedAsync*"></a>
+  <h4 id="Innovt_Data_Ado_IRepositoryBase_QueryListPagedAsync__1_System_String_Innovt_Core_Cqrs_Queries_IPagedFilter_System_Threading_CancellationToken_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryListPagedAsync``1(System.String,Innovt.Core.Cqrs.Queries.IPagedFilter,System.Threading.CancellationToken)">QueryListPagedAsync&lt;T&gt;(string, IPagedFilter, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IEnumerable&lt;T&gt;&gt; QueryListPagedAsync&lt;T&gt;(string sql, IPagedFilter filter, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">sql</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Core.Cqrs.Queries.IPagedFilter.html">IPagedFilter</a></td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_Ado_IRepositoryBase_QueryPagedAsync__1_System_String_Innovt_Core_Cqrs_Queries_IPagedFilter_System_Boolean_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Data.Ado.IRepositoryBase.QueryPagedAsync%60%601(System.String%2CInnovt.Core.Cqrs.Queries.IPagedFilter%2CSystem.Boolean%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L54">View Source</a>
+  </span>
+  <a id="Innovt_Data_Ado_IRepositoryBase_QueryPagedAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryPagedAsync*"></a>
+  <h4 id="Innovt_Data_Ado_IRepositoryBase_QueryPagedAsync__1_System_String_Innovt_Core_Cqrs_Queries_IPagedFilter_System_Boolean_System_Threading_CancellationToken_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryPagedAsync``1(System.String,Innovt.Core.Cqrs.Queries.IPagedFilter,System.Boolean,System.Threading.CancellationToken)">QueryPagedAsync&lt;T&gt;(string, IPagedFilter, bool, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;PagedCollection&lt;T&gt;&gt; QueryPagedAsync&lt;T&gt;(string sql, IPagedFilter filter, bool useCount = true, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">sql</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Core.Cqrs.Queries.IPagedFilter.html">IPagedFilter</a></td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">useCount</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Core.Collections.PagedCollection-1.html">PagedCollection</a>&lt;T&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_Ado_IRepositoryBase_QuerySingleOrDefaultAsync__1_System_String_System_Object_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Data.Ado.IRepositoryBase.QuerySingleOrDefaultAsync%60%601(System.String%2CSystem.Object%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L26">View Source</a>
+  </span>
+  <a id="Innovt_Data_Ado_IRepositoryBase_QuerySingleOrDefaultAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.QuerySingleOrDefaultAsync*"></a>
+  <h4 id="Innovt_Data_Ado_IRepositoryBase_QuerySingleOrDefaultAsync__1_System_String_System_Object_System_Threading_CancellationToken_" data-uid="Innovt.Data.Ado.IRepositoryBase.QuerySingleOrDefaultAsync``1(System.String,System.Object,System.Threading.CancellationToken)">QuerySingleOrDefaultAsync&lt;T&gt;(string, object, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; QuerySingleOrDefaultAsync&lt;T&gt;(string sql, object filter = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">sql</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_Ado_IRepositoryBase_QuerySingleOrDefaultAsync__1_System_String_System_String_System_Object_System_Threading_CancellationToken_System_String___.md&amp;value=---%0Auid%3A%20Innovt.Data.Ado.IRepositoryBase.QuerySingleOrDefaultAsync%60%601(System.String%2CSystem.String%2CSystem.Object%2CSystem.Threading.CancellationToken%2CSystem.String%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L29">View Source</a>
+  </span>
+  <a id="Innovt_Data_Ado_IRepositoryBase_QuerySingleOrDefaultAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.QuerySingleOrDefaultAsync*"></a>
+  <h4 id="Innovt_Data_Ado_IRepositoryBase_QuerySingleOrDefaultAsync__1_System_String_System_String_System_Object_System_Threading_CancellationToken_System_String___" data-uid="Innovt.Data.Ado.IRepositoryBase.QuerySingleOrDefaultAsync``1(System.String,System.String,System.Object,System.Threading.CancellationToken,System.String[])">QuerySingleOrDefaultAsync&lt;T&gt;(string, string, object, CancellationToken, params string[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; QuerySingleOrDefaultAsync&lt;T&gt;(string tableName, string whereClause, object filter = null, CancellationToken cancellationToken = default, params string[] columns)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">tableName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">whereClause</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</td>
+        <td><span class="parametername">columns</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_">Extensions.IsNull(object)</a>
   </div>
@@ -124,719 +1216,47 @@ Interface IRepositoryBase  <a class="header-action link-secondary" title="View s
   <div>
       <a class="xref" href="Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_">SimpleMapper.MapTo&lt;T1&gt;(object)</a>
   </div>
-  </dd></dl>
-
-
-
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
-  <a id="Innovt_Data_Ado_IRepositoryBase_ExecuteAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.ExecuteAsync*"></a>
-
-  <h3 id="Innovt_Data_Ado_IRepositoryBase_ExecuteAsync_System_String_System_Object_System_Data_IDbTransaction_System_Threading_CancellationToken_" data-uid="Innovt.Data.Ado.IRepositoryBase.ExecuteAsync(System.String,System.Object,System.Data.IDbTransaction,System.Threading.CancellationToken)">
-  ExecuteAsync(string, object, IDbTransaction, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L71"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;int&gt; ExecuteAsync(string sql, object filter = null, IDbTransaction dbTransaction = null, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>sql</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>filter</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd></dd>
-    <dt><code>dbTransaction</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.idbtransaction">IDbTransaction</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_Ado_IRepositoryBase_ExecuteScalarAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.ExecuteScalarAsync*"></a>
-
-  <h3 id="Innovt_Data_Ado_IRepositoryBase_ExecuteScalarAsync__1_System_String_System_Object_System_Data_IDbTransaction_System_Threading_CancellationToken_" data-uid="Innovt.Data.Ado.IRepositoryBase.ExecuteScalarAsync``1(System.String,System.Object,System.Data.IDbTransaction,System.Threading.CancellationToken)">
-  ExecuteScalarAsync&lt;T&gt;(string, object, IDbTransaction, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L68"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;T&gt; ExecuteScalarAsync&lt;T&gt;(string sql, object filter = null, IDbTransaction dbTransaction = null, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>sql</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>filter</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd></dd>
-    <dt><code>dbTransaction</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.idbtransaction">IDbTransaction</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_Ado_IRepositoryBase_QueryAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryAsync*"></a>
-
-  <h3 id="Innovt_Data_Ado_IRepositoryBase_QueryAsync__1_System_String_System_Object_System_Threading_CancellationToken_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryAsync``1(System.String,System.Object,System.Threading.CancellationToken)">
-  QueryAsync&lt;T&gt;(string, object, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L35"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IEnumerable&lt;T&gt;&gt; QueryAsync&lt;T&gt;(string sql, object filter = null, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>sql</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>filter</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_Ado_IRepositoryBase_QueryAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryAsync*"></a>
-
-  <h3 id="Innovt_Data_Ado_IRepositoryBase_QueryAsync__3_System_String_System_Object_System_Func___0___1___2__System_String_System_Threading_CancellationToken_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryAsync``3(System.String,System.Object,System.Func{``0,``1,``2},System.String,System.Threading.CancellationToken)">
-  QueryAsync&lt;TFirst, TSecond, TReturn&gt;(string, object, Func&lt;TFirst, TSecond, TReturn&gt;, string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L38"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IEnumerable&lt;TReturn&gt;&gt; QueryAsync&lt;TFirst, TSecond, TReturn&gt;(string sql, object filter, Func&lt;TFirst, TSecond, TReturn&gt; func, string splitOn, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>sql</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>filter</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd></dd>
-    <dt><code>func</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;TFirst, TSecond, TReturn&gt;</dt>
-    <dd></dd>
-    <dt><code>splitOn</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TReturn&gt;&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>TFirst</code></dt>
-    <dd></dd>
-    <dt><code>TSecond</code></dt>
-    <dd></dd>
-    <dt><code>TReturn</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_Ado_IRepositoryBase_QueryAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryAsync*"></a>
-
-  <h3 id="Innovt_Data_Ado_IRepositoryBase_QueryAsync__4_System_String_System_Object_System_Func___0___1___2___3__System_String_System_Threading_CancellationToken_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryAsync``4(System.String,System.Object,System.Func{``0,``1,``2,``3},System.String,System.Threading.CancellationToken)">
-  QueryAsync&lt;TFirst, TSecond, TThird, TReturn&gt;(string, object, Func&lt;TFirst, TSecond, TThird, TReturn&gt;, string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L42"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IEnumerable&lt;TReturn&gt;&gt; QueryAsync&lt;TFirst, TSecond, TThird, TReturn&gt;(string sql, object filter, Func&lt;TFirst, TSecond, TThird, TReturn&gt; func, string splitOn, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>sql</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>filter</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd></dd>
-    <dt><code>func</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;TFirst, TSecond, TThird, TReturn&gt;</dt>
-    <dd></dd>
-    <dt><code>splitOn</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TReturn&gt;&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>TFirst</code></dt>
-    <dd></dd>
-    <dt><code>TSecond</code></dt>
-    <dd></dd>
-    <dt><code>TThird</code></dt>
-    <dd></dd>
-    <dt><code>TReturn</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_Ado_IRepositoryBase_QueryAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryAsync*"></a>
-
-  <h3 id="Innovt_Data_Ado_IRepositoryBase_QueryAsync__5_System_String_System_Object_System_Func___0___1___2___3___4__System_String_System_Threading_CancellationToken_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryAsync``5(System.String,System.Object,System.Func{``0,``1,``2,``3,``4},System.String,System.Threading.CancellationToken)">
-  QueryAsync&lt;TFirst, TSecond, TThird, TFourth, TReturn&gt;(string, object, Func&lt;TFirst, TSecond, TThird, TFourth, TReturn&gt;, string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L45"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IEnumerable&lt;TReturn&gt;&gt; QueryAsync&lt;TFirst, TSecond, TThird, TFourth, TReturn&gt;(string sql, object filter, Func&lt;TFirst, TSecond, TThird, TFourth, TReturn&gt; func, string splitOn, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>sql</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>filter</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd></dd>
-    <dt><code>func</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-5">Func</a>&lt;TFirst, TSecond, TThird, TFourth, TReturn&gt;</dt>
-    <dd></dd>
-    <dt><code>splitOn</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TReturn&gt;&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>TFirst</code></dt>
-    <dd></dd>
-    <dt><code>TSecond</code></dt>
-    <dd></dd>
-    <dt><code>TThird</code></dt>
-    <dd></dd>
-    <dt><code>TFourth</code></dt>
-    <dd></dd>
-    <dt><code>TReturn</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_Ado_IRepositoryBase_QueryAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryAsync*"></a>
-
-  <h3 id="Innovt_Data_Ado_IRepositoryBase_QueryAsync__6_System_String_System_Object_System_Func___0___1___2___3___4___5__System_String_System_Threading_CancellationToken_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryAsync``6(System.String,System.Object,System.Func{``0,``1,``2,``3,``4,``5},System.String,System.Threading.CancellationToken)">
-  QueryAsync&lt;TFirst, TSecond, TThird, TFourth, TFifth, TReturn&gt;(string, object, Func&lt;TFirst, TSecond, TThird, TFourth, TFifth, TReturn&gt;, string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L49"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IEnumerable&lt;TReturn&gt;&gt; QueryAsync&lt;TFirst, TSecond, TThird, TFourth, TFifth, TReturn&gt;(string sql, object filter, Func&lt;TFirst, TSecond, TThird, TFourth, TFifth, TReturn&gt; func, string splitOn, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>sql</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>filter</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd></dd>
-    <dt><code>func</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-6">Func</a>&lt;TFirst, TSecond, TThird, TFourth, TFifth, TReturn&gt;</dt>
-    <dd></dd>
-    <dt><code>splitOn</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TReturn&gt;&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>TFirst</code></dt>
-    <dd></dd>
-    <dt><code>TSecond</code></dt>
-    <dd></dd>
-    <dt><code>TThird</code></dt>
-    <dd></dd>
-    <dt><code>TFourth</code></dt>
-    <dd></dd>
-    <dt><code>TFifth</code></dt>
-    <dd></dd>
-    <dt><code>TReturn</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_Ado_IRepositoryBase_QueryCountAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryCountAsync*"></a>
-
-  <h3 id="Innovt_Data_Ado_IRepositoryBase_QueryCountAsync_System_String_System_String_System_Object_System_Threading_CancellationToken_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryCountAsync(System.String,System.String,System.Object,System.Threading.CancellationToken)">
-  QueryCountAsync(string, string, object, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L32"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;int&gt; QueryCountAsync(string tableName, string whereClause = null, object filter = null, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>tableName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>whereClause</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>filter</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_Ado_IRepositoryBase_QueryFirstOrDefaultAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryFirstOrDefaultAsync*"></a>
-
-  <h3 id="Innovt_Data_Ado_IRepositoryBase_QueryFirstOrDefaultAsync__1_System_String_System_Object_System_Threading_CancellationToken_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryFirstOrDefaultAsync``1(System.String,System.Object,System.Threading.CancellationToken)">
-  QueryFirstOrDefaultAsync&lt;T&gt;(string, object, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L23"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;T&gt; QueryFirstOrDefaultAsync&lt;T&gt;(string sql, object filter = null, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>sql</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>filter</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_Ado_IRepositoryBase_QueryFirstOrDefaultAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryFirstOrDefaultAsync*"></a>
-
-  <h3 id="Innovt_Data_Ado_IRepositoryBase_QueryFirstOrDefaultAsync__1_System_String_System_String_System_Object_System_Threading_CancellationToken_System_String___" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryFirstOrDefaultAsync``1(System.String,System.String,System.Object,System.Threading.CancellationToken,System.String[])">
-  QueryFirstOrDefaultAsync&lt;T&gt;(string, string, object, CancellationToken, params string[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L20"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;T&gt; QueryFirstOrDefaultAsync&lt;T&gt;(string tableName, string whereClause, object filter = null, CancellationToken cancellationToken = default, params string[] columns)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>tableName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>whereClause</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>filter</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-    <dt><code>columns</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_Ado_IRepositoryBase_QueryListPagedAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryListPagedAsync*"></a>
-
-  <h3 id="Innovt_Data_Ado_IRepositoryBase_QueryListPagedAsync__1_System_String_Innovt_Core_Cqrs_Queries_IPagedFilter_System_Threading_CancellationToken_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryListPagedAsync``1(System.String,Innovt.Core.Cqrs.Queries.IPagedFilter,System.Threading.CancellationToken)">
-  QueryListPagedAsync&lt;T&gt;(string, IPagedFilter, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L57"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IEnumerable&lt;T&gt;&gt; QueryListPagedAsync&lt;T&gt;(string sql, IPagedFilter filter, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>sql</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>filter</code> <a class="xref" href="Innovt.Core.Cqrs.Queries.IPagedFilter.html">IPagedFilter</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_Ado_IRepositoryBase_QueryPagedAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryPagedAsync*"></a>
-
-  <h3 id="Innovt_Data_Ado_IRepositoryBase_QueryPagedAsync__1_System_String_Innovt_Core_Cqrs_Queries_IPagedFilter_System_Boolean_System_Threading_CancellationToken_" data-uid="Innovt.Data.Ado.IRepositoryBase.QueryPagedAsync``1(System.String,Innovt.Core.Cqrs.Queries.IPagedFilter,System.Boolean,System.Threading.CancellationToken)">
-  QueryPagedAsync&lt;T&gt;(string, IPagedFilter, bool, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L54"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;PagedCollection&lt;T&gt;&gt; QueryPagedAsync&lt;T&gt;(string sql, IPagedFilter filter, bool useCount = true, CancellationToken cancellationToken = default) where T : class</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>sql</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>filter</code> <a class="xref" href="Innovt.Core.Cqrs.Queries.IPagedFilter.html">IPagedFilter</a></dt>
-    <dd></dd>
-    <dt><code>useCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Core.Collections.PagedCollection-1.html">PagedCollection</a>&lt;T&gt;&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_Ado_IRepositoryBase_QuerySingleOrDefaultAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.QuerySingleOrDefaultAsync*"></a>
-
-  <h3 id="Innovt_Data_Ado_IRepositoryBase_QuerySingleOrDefaultAsync__1_System_String_System_Object_System_Threading_CancellationToken_" data-uid="Innovt.Data.Ado.IRepositoryBase.QuerySingleOrDefaultAsync``1(System.String,System.Object,System.Threading.CancellationToken)">
-  QuerySingleOrDefaultAsync&lt;T&gt;(string, object, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L26"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;T&gt; QuerySingleOrDefaultAsync&lt;T&gt;(string sql, object filter = null, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>sql</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>filter</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_Ado_IRepositoryBase_QuerySingleOrDefaultAsync_" data-uid="Innovt.Data.Ado.IRepositoryBase.QuerySingleOrDefaultAsync*"></a>
-
-  <h3 id="Innovt_Data_Ado_IRepositoryBase_QuerySingleOrDefaultAsync__1_System_String_System_String_System_Object_System_Threading_CancellationToken_System_String___" data-uid="Innovt.Data.Ado.IRepositoryBase.QuerySingleOrDefaultAsync``1(System.String,System.String,System.Object,System.Threading.CancellationToken,System.String[])">
-  QuerySingleOrDefaultAsync&lt;T&gt;(string, string, object, CancellationToken, params string[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L29"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;T&gt; QuerySingleOrDefaultAsync&lt;T&gt;(string tableName, string whereClause, object filter = null, CancellationToken cancellationToken = default, params string[] columns)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>tableName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>whereClause</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>filter</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-    <dt><code>columns</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
 
 </article>
+          </div>
 
-        <div class="contribution d-print-none">
-          <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L18" class="edit-link">Edit this page</a>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_Ado_IRepositoryBase.md&amp;value=---%0Auid%3A%20Innovt.Data.Ado.IRepositoryBase%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.Ado/IRepositoryBase.cs/#L18" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
         </div>
-
-
       </div>
 
-      <div class="affix">
-        <nav id="affix"></nav>
-      </div>
-    </main>
-
-    <div class="container-xxl search-results" id="search-results"></div>
-
-    <footer class="border-top text-secondary">
-      <div class="container-xxl">
-        <div class="flex-fill">
-          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
   </body>
 </html>

@@ -1,134 +1,99 @@
 ﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
 <html>
+
   <head>
     <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Class BaseEventProcessor | Innovt Platform </title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class BaseEventProcessor | Innovt Platform ">
-      
-      <meta name="description" content="Represents a base class for event processors with common functionality such as logging, IOC container setup, and configuration.">
-      <link rel="icon" href="../favicon.ico">
-      <link rel="stylesheet" href="../public/docfx.min.css">
-      <link rel="stylesheet" href="../public/main.css">
-      <meta name="docfx:navrel" content="../toc.html">
-      <meta name="docfx:tocrel" content="toc.html">
-      
-      <meta name="docfx:rel" content="../">
-      
-      
-      <meta name="docfx:docurl" content="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Lambda_BaseEventProcessor.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Lambda.BaseEventProcessor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
-      <meta name="loc:inThisArticle" content="In this article">
-      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
-      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
-      <meta name="loc:tocFilter" content="Filter by title">
-      <meta name="loc:nextArticle" content="Next">
-      <meta name="loc:prevArticle" content="Previous">
-      <meta name="loc:themeLight" content="Light">
-      <meta name="loc:themeDark" content="Dark">
-      <meta name="loc:themeAuto" content="Auto">
-      <meta name="loc:changeTheme" content="Change theme">
-      <meta name="loc:copy" content="Copy">
-      <meta name="loc:downloadPdf" content="Download PDF">
-
-      <script type="module" src="./../public/docfx.min.js"></script>
-
-      <script>
-        const theme = localStorage.getItem('theme') || 'auto'
-        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-      </script>
-
+    
+    <meta name="description" content="Represents a base class for event processors with common functionality such as logging, IOC container setup, and configuration.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
   </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
 
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
-    <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
-        <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../index.html">
-            <img id="logo" class="svg" src="../logo.svg" alt="Innovt Platform">
-            Innovt Platform
-          </a>
-          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navpanel">
-            <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="Innovt Platform">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
               </form>
             </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
 
-    <main class="container-xxl">
-      <div class="toc-offcanvas">
-        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
           </div>
-          <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
+      <div role="main" class="container body-content hide-when-search">
 
-      <div class="content">
-        <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
-          </button>
-
-          <nav id="breadcrumb"></nav>
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
         </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor">
 
-        <article data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor">
 
 
-
-  <h1 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor" class="text-break">
-Class BaseEventProcessor  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L19"><i class="bi bi-code-slash"></i></a>
-  </h1>
-
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="Innovt.html">Innovt</a>.<a class="xref" href="Innovt.Cloud.html">Cloud</a>.<a class="xref" href="Innovt.Cloud.AWS.html">AWS</a>.<a class="xref" href="Innovt.Cloud.AWS.Lambda.html">Lambda</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>Innovt.Cloud.AWS.Lambda.dll</dd></dl>
-  </div>
-
-  <div class="markdown summary"><p>Represents a base class for event processors with common functionality such as logging, IOC container setup, and
+  <h1 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor" class="text-break">Class BaseEventProcessor</h1>
+  <div class="markdown level0 summary"><p>Represents a base class for event processors with common functionality such as logging, IOC container setup, and
 configuration.</p>
 </div>
-  <div class="markdown conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class BaseEventProcessor</code></pre>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">BaseEventProcessor</span></div>
+      <div class="level2"><a class="xref" href="Innovt.Cloud.AWS.Lambda.EventProcessor-1.html">EventProcessor&lt;T&gt;</a></div>
+      <div class="level2"><a class="xref" href="Innovt.Cloud.AWS.Lambda.EventProcessor-2.html">EventProcessor&lt;T, TResult&gt;</a></div>
   </div>
-
-
-
-
-  <dl class="typelist inheritance">
-    <dt>Inheritance</dt>
-    <dd>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><span class="xref">BaseEventProcessor</span></div>
-    </dd>
-  </dl>
-
-
-  <dl class="typelist derived">
-    <dt>Derived</dt>
-    <dd>
-      <div><a class="xref" href="Innovt.Cloud.AWS.Lambda.EventProcessor-1.html">EventProcessor&lt;T&gt;</a></div>
-      <div><a class="xref" href="Innovt.Cloud.AWS.Lambda.EventProcessor-2.html">EventProcessor&lt;T, TResult&gt;</a></div>
-    </dd>
-  </dl>
-
-  <dl class="typelist inheritedMembers">
-    <dt>Inherited Members</dt>
-    <dd>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -150,11 +115,483 @@ configuration.</p>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </dd></dl>
-
-  <dl class="typelist extensionMethods">
-    <dt>Extension Methods</dt>
-    <dd>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Innovt.html">Innovt</a>.<a class="xref" href="Innovt.Cloud.html">Cloud</a>.<a class="xref" href="Innovt.Cloud.AWS.html">AWS</a>.<a class="xref" href="Innovt.Cloud.AWS.Lambda.html">Lambda</a></h6>
+  <h6><strong>Assembly</strong>: Innovt.Cloud.AWS.Lambda.dll</h6>
+  <h5 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class BaseEventProcessor</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Lambda_BaseEventProcessor__ctor.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Lambda.BaseEventProcessor.%23ctor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L59">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor__ctor_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor*"></a>
+  <h4 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor__ctor" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor">BaseEventProcessor()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected BaseEventProcessor()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Lambda_BaseEventProcessor__ctor_Innovt_Core_CrossCutting_Log_ILogger_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Lambda.BaseEventProcessor.%23ctor(Innovt.Core.CrossCutting.Log.ILogger)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L32">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor__ctor_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor*"></a>
+  <h4 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor__ctor_Innovt_Core_CrossCutting_Log_ILogger_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor(Innovt.Core.CrossCutting.Log.ILogger)">BaseEventProcessor(ILogger)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.html">BaseEventProcessor</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected BaseEventProcessor(ILogger logger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Core.CrossCutting.Log.ILogger.html">ILogger</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Lambda_BaseEventProcessor__ctor_Innovt_Core_CrossCutting_Log_ILogger_Microsoft_Extensions_Configuration_IConfigurationRoot_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Lambda.BaseEventProcessor.%23ctor(Innovt.Core.CrossCutting.Log.ILogger%2CMicrosoft.Extensions.Configuration.IConfigurationRoot)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L44">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor__ctor_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor*"></a>
+  <h4 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor__ctor_Innovt_Core_CrossCutting_Log_ILogger_Microsoft_Extensions_Configuration_IConfigurationRoot_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Microsoft.Extensions.Configuration.IConfigurationRoot)">BaseEventProcessor(ILogger, IConfigurationRoot)</h4>
+  <div class="markdown level1 summary"><p>Allows to use the configuration and logger from outside. In This case, the method SetupConfiguration will not be
+called.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected BaseEventProcessor(ILogger logger, IConfigurationRoot configuration)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Core.CrossCutting.Log.ILogger.html">ILogger</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td><p>The logger provider.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration.iconfigurationroot">IConfigurationRoot</a></td>
+        <td><span class="parametername">configuration</span></td>
+        <td><p>The configuration to be used.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></td>
+        <td><p>If the logger or configuration is null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Lambda_BaseEventProcessor__ctor_Microsoft_Extensions_Configuration_IConfigurationRoot_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Lambda.BaseEventProcessor.%23ctor(Microsoft.Extensions.Configuration.IConfigurationRoot)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L54">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor__ctor_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor*"></a>
+  <h4 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor__ctor_Microsoft_Extensions_Configuration_IConfigurationRoot_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor(Microsoft.Extensions.Configuration.IConfigurationRoot)">BaseEventProcessor(IConfigurationRoot)</h4>
+  <div class="markdown level1 summary"><p>Allows to use the configuration from outside. In This case, the method SetupConfiguration will not be called.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected BaseEventProcessor(IConfigurationRoot configuration)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration.iconfigurationroot">IConfigurationRoot</a></td>
+        <td><span class="parametername">configuration</span></td>
+        <td><p>The configuration to be used.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></td>
+        <td><p>If the logger or configuration is null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Lambda_BaseEventProcessor_EventProcessorActivitySource.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Lambda.BaseEventProcessor.EventProcessorActivitySource%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L24">View Source</a>
+  </span>
+  <h4 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_EventProcessorActivitySource" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.EventProcessorActivitySource">EventProcessorActivitySource</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.html">BaseEventProcessor</a> class with an optional logger.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static readonly ActivitySource EventProcessorActivitySource</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.diagnostics.activitysource">ActivitySource</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Lambda_BaseEventProcessor_Configuration.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Configuration%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L76">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_Configuration_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Configuration*"></a>
+  <h4 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_Configuration" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Configuration">Configuration</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the configuration root for accessing application settings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected IConfigurationRoot Configuration { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration.iconfigurationroot">IConfigurationRoot</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Lambda_BaseEventProcessor_Context.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Context%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L71">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_Context_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Context*"></a>
+  <h4 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_Context" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Context">Context</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the Lambda context associated with the event processing.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ILambdaContext Context { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ILambdaContext</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Lambda_BaseEventProcessor_Logger.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Logger%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L66">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_Logger_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Logger*"></a>
+  <h4 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_Logger" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Logger">Logger</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the logger for recording processing information.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ILogger Logger { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Core.CrossCutting.Log.ILogger.html">ILogger</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Lambda_BaseEventProcessor_EnrichConfiguration_Microsoft_Extensions_Configuration_ConfigurationBuilder_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Lambda.BaseEventProcessor.EnrichConfiguration(Microsoft.Extensions.Configuration.ConfigurationBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L182">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_EnrichConfiguration_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.EnrichConfiguration*"></a>
+  <h4 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_EnrichConfiguration_Microsoft_Extensions_Configuration_ConfigurationBuilder_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.EnrichConfiguration(Microsoft.Extensions.Configuration.ConfigurationBuilder)">EnrichConfiguration(ConfigurationBuilder)</h4>
+  <div class="markdown level1 summary"><p>Configures additional sources for enriching the application configuration.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void EnrichConfiguration(ConfigurationBuilder configurationBuilder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration.configurationbuilder">ConfigurationBuilder</a></td>
+        <td><span class="parametername">configurationBuilder</span></td>
+        <td><p>The configuration builder to which additional sources can be added.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Lambda_BaseEventProcessor_InitializeLogger_Innovt_Core_CrossCutting_Ioc_IContainer_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Lambda.BaseEventProcessor.InitializeLogger(Innovt.Core.CrossCutting.Ioc.IContainer)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L82">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_InitializeLogger_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.InitializeLogger*"></a>
+  <h4 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_InitializeLogger_Innovt_Core_CrossCutting_Ioc_IContainer_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.InitializeLogger(Innovt.Core.CrossCutting.Ioc.IContainer)">InitializeLogger(IContainer)</h4>
+  <div class="markdown level1 summary"><p>Initializes the logger with an optional logger instance or creates a new logger if not provided.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void InitializeLogger(IContainer iocContainer = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Core.CrossCutting.Ioc.IContainer.html">IContainer</a></td>
+        <td><span class="parametername">iocContainer</span></td>
+        <td><p>An optional logger instance to use.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Lambda_BaseEventProcessor_SetupConfiguration.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupConfiguration%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L152">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_SetupConfiguration_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupConfiguration*"></a>
+  <h4 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_SetupConfiguration" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupConfiguration">SetupConfiguration()</h4>
+  <div class="markdown level1 summary"><p>Sets up the application configuration using environment variables and JSON files. When the configuration is already
+set, this method does nothing.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void SetupConfiguration()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Lambda_BaseEventProcessor_SetupIoc.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIoc%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L96">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_SetupIoc_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIoc*"></a>
+  <h4 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_SetupIoc" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIoc">SetupIoc()</h4>
+  <div class="markdown level1 summary"><p>Sets up the Inversion of Control (IOC) container for managing dependencies.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void SetupIoc()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Lambda_BaseEventProcessor_SetupIocContainer.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIocContainer%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L176">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_SetupIocContainer_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIocContainer*"></a>
+  <h4 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_SetupIocContainer" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIocContainer">SetupIocContainer()</h4>
+  <div class="markdown level1 summary"><p>Sets up the Inversion of Control (IOC) container for managing dependencies.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract IContainer SetupIocContainer()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Core.CrossCutting.Ioc.IContainer.html">IContainer</a></td>
+        <td><p>The configured IOC container.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Lambda_BaseEventProcessor_StartBaseActivity_System_String_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Lambda.BaseEventProcessor.StartBaseActivity(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L126">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_StartBaseActivity_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.StartBaseActivity*"></a>
+  <h4 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_StartBaseActivity_System_String_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.StartBaseActivity(System.String)">StartBaseActivity(string)</h4>
+  <div class="markdown level1 summary"><p>Starts a new activity for tracing and adds relevant tags and baggage information.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Activity StartBaseActivity(string activityName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">activityName</span></td>
+        <td><p>The name of the activity to start.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.diagnostics.activity">Activity</a></td>
+        <td><p>The started <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.diagnostics.activity">Activity</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_">Extensions.IsNull(object)</a>
   </div>
@@ -164,511 +601,47 @@ configuration.</p>
   <div>
       <a class="xref" href="Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_">SimpleMapper.MapTo&lt;T1&gt;(object)</a>
   </div>
-  </dd></dl>
-
-
-
-
-
-  <h2 class="section" id="constructors">Constructors
-</h2>
-
-
-  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor__ctor_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor__ctor" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor">
-  BaseEventProcessor()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L59"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected BaseEventProcessor()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor__ctor_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor__ctor_Innovt_Core_CrossCutting_Log_ILogger_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor(Innovt.Core.CrossCutting.Log.ILogger)">
-  BaseEventProcessor(ILogger)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L32"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.html">BaseEventProcessor</a> class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected BaseEventProcessor(ILogger logger)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>logger</code> <a class="xref" href="Innovt.Core.CrossCutting.Log.ILogger.html">ILogger</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor__ctor_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor__ctor_Innovt_Core_CrossCutting_Log_ILogger_Microsoft_Extensions_Configuration_IConfigurationRoot_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Microsoft.Extensions.Configuration.IConfigurationRoot)">
-  BaseEventProcessor(ILogger, IConfigurationRoot)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L44"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Allows to use the configuration and logger from outside. In This case, the method SetupConfiguration will not be
-called.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected BaseEventProcessor(ILogger logger, IConfigurationRoot configuration)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>logger</code> <a class="xref" href="Innovt.Core.CrossCutting.Log.ILogger.html">ILogger</a></dt>
-    <dd><p>The logger provider.</p>
-</dd>
-    <dt><code>configuration</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration.iconfigurationroot">IConfigurationRoot</a></dt>
-    <dd><p>The configuration to be used.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
-    <dd><p>If the logger or configuration is null.</p>
-</dd>
-  </dl>
-
-
-
-  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor__ctor_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor__ctor_Microsoft_Extensions_Configuration_IConfigurationRoot_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.#ctor(Microsoft.Extensions.Configuration.IConfigurationRoot)">
-  BaseEventProcessor(IConfigurationRoot)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L54"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Allows to use the configuration from outside. In This case, the method SetupConfiguration will not be called.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected BaseEventProcessor(IConfigurationRoot configuration)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>configuration</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration.iconfigurationroot">IConfigurationRoot</a></dt>
-    <dd><p>The configuration to be used.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
-    <dd><p>If the logger or configuration is null.</p>
-</dd>
-  </dl>
-
-
-
-  <h2 class="section" id="fields">Fields
-</h2>
-
-
-
-  <h3 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_EventProcessorActivitySource" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.EventProcessorActivitySource">
-  EventProcessorActivitySource
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L24"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.html">BaseEventProcessor</a> class with an optional logger.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected static readonly ActivitySource EventProcessorActivitySource</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.diagnostics.activitysource">ActivitySource</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
-  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_Configuration_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Configuration*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_Configuration" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Configuration">
-  Configuration
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L76"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets or sets the configuration root for accessing application settings.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected IConfigurationRoot Configuration { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration.iconfigurationroot">IConfigurationRoot</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_Context_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Context*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_Context" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Context">
-  Context
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L71"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets or sets the Lambda context associated with the event processing.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected ILambdaContext Context { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">ILambdaContext</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_Logger_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Logger*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_Logger" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.Logger">
-  Logger
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L66"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets or sets the logger for recording processing information.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected ILogger Logger { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Innovt.Core.CrossCutting.Log.ILogger.html">ILogger</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
-  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_EnrichConfiguration_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.EnrichConfiguration*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_EnrichConfiguration_Microsoft_Extensions_Configuration_ConfigurationBuilder_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.EnrichConfiguration(Microsoft.Extensions.Configuration.ConfigurationBuilder)">
-  EnrichConfiguration(ConfigurationBuilder)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L182"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Configures additional sources for enriching the application configuration.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual void EnrichConfiguration(ConfigurationBuilder configurationBuilder)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>configurationBuilder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration.configurationbuilder">ConfigurationBuilder</a></dt>
-    <dd><p>The configuration builder to which additional sources can be added.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_InitializeLogger_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.InitializeLogger*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_InitializeLogger_Innovt_Core_CrossCutting_Ioc_IContainer_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.InitializeLogger(Innovt.Core.CrossCutting.Ioc.IContainer)">
-  InitializeLogger(IContainer)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L82"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes the logger with an optional logger instance or creates a new logger if not provided.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected void InitializeLogger(IContainer iocContainer = null)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>iocContainer</code> <a class="xref" href="Innovt.Core.CrossCutting.Ioc.IContainer.html">IContainer</a></dt>
-    <dd><p>An optional logger instance to use.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_SetupConfiguration_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupConfiguration*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_SetupConfiguration" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupConfiguration">
-  SetupConfiguration()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L152"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Sets up the application configuration using environment variables and JSON files. When the configuration is already
-set, this method does nothing.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual void SetupConfiguration()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_SetupIoc_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIoc*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_SetupIoc" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIoc">
-  SetupIoc()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L96"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Sets up the Inversion of Control (IOC) container for managing dependencies.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected void SetupIoc()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_SetupIocContainer_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIocContainer*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_SetupIocContainer" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.SetupIocContainer">
-  SetupIocContainer()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L176"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Sets up the Inversion of Control (IOC) container for managing dependencies.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected abstract IContainer SetupIocContainer()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Innovt.Core.CrossCutting.Ioc.IContainer.html">IContainer</a></dt>
-    <dd><p>The configured IOC container.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_StartBaseActivity_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.StartBaseActivity*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Lambda_BaseEventProcessor_StartBaseActivity_System_String_" data-uid="Innovt.Cloud.AWS.Lambda.BaseEventProcessor.StartBaseActivity(System.String)">
-  StartBaseActivity(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L126"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Starts a new activity for tracing and adds relevant tags and baggage information.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected Activity StartBaseActivity(string activityName)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>activityName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the activity to start.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.diagnostics.activity">Activity</a></dt>
-    <dd><p>The started <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.diagnostics.activity">Activity</a>.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
 
 </article>
+          </div>
 
-        <div class="contribution d-print-none">
-          <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L19" class="edit-link">Edit this page</a>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Lambda_BaseEventProcessor.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Lambda.BaseEventProcessor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Lambda/BaseEventProcessor.cs/#L19" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
         </div>
-
-
       </div>
 
-      <div class="affix">
-        <nav id="affix"></nav>
-      </div>
-    </main>
-
-    <div class="container-xxl search-results" id="search-results"></div>
-
-    <footer class="border-top text-secondary">
-      <div class="container-xxl">
-        <div class="flex-fill">
-          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
   </body>
 </html>

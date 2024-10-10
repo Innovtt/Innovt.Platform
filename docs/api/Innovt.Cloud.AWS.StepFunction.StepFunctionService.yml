@@ -43,6 +43,7 @@ items:
   - Innovt.Cloud.StateMachine.IStateMachine
   inheritedMembers:
   - Innovt.Cloud.AWS.AwsBaseService.Configuration
+  - Innovt.Cloud.AWS.AwsBaseService.ExponentialBackoffInSeconds
   - Innovt.Cloud.AWS.AwsBaseService.Logger
   - Innovt.Cloud.AWS.AwsBaseService.Dispose
   - Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
@@ -441,6 +442,13 @@ references:
   name: Configuration
   nameWithType: AwsBaseService.Configuration
   fullName: Innovt.Cloud.AWS.AwsBaseService.Configuration
+- uid: Innovt.Cloud.AWS.AwsBaseService.ExponentialBackoffInSeconds
+  commentId: P:Innovt.Cloud.AWS.AwsBaseService.ExponentialBackoffInSeconds
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_ExponentialBackoffInSeconds
+  name: ExponentialBackoffInSeconds
+  nameWithType: AwsBaseService.ExponentialBackoffInSeconds
+  fullName: Innovt.Cloud.AWS.AwsBaseService.ExponentialBackoffInSeconds
 - uid: Innovt.Cloud.AWS.AwsBaseService.Logger
   commentId: P:Innovt.Cloud.AWS.AwsBaseService.Logger
   parent: Innovt.Cloud.AWS.AwsBaseService

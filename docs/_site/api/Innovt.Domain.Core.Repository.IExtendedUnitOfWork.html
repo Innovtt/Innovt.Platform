@@ -1,119 +1,91 @@
 ﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
 <html>
+
   <head>
     <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Interface IExtendedUnitOfWork | Innovt Platform </title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width">
       <meta name="title" content="Interface IExtendedUnitOfWork | Innovt Platform ">
-      
-      <meta name="description" content="Extended Unit of Work Interface To Provide More Features To Unit Of Work When Using Entity Framework">
-      <link rel="icon" href="../favicon.ico">
-      <link rel="stylesheet" href="../public/docfx.min.css">
-      <link rel="stylesheet" href="../public/main.css">
-      <meta name="docfx:navrel" content="../toc.html">
-      <meta name="docfx:tocrel" content="toc.html">
-      
-      <meta name="docfx:rel" content="../">
-      
-      
-      <meta name="docfx:docurl" content="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IExtendedUnitOfWork.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IExtendedUnitOfWork%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
-      <meta name="loc:inThisArticle" content="In this article">
-      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
-      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
-      <meta name="loc:tocFilter" content="Filter by title">
-      <meta name="loc:nextArticle" content="Next">
-      <meta name="loc:prevArticle" content="Previous">
-      <meta name="loc:themeLight" content="Light">
-      <meta name="loc:themeDark" content="Dark">
-      <meta name="loc:themeAuto" content="Auto">
-      <meta name="loc:changeTheme" content="Change theme">
-      <meta name="loc:copy" content="Copy">
-      <meta name="loc:downloadPdf" content="Download PDF">
-
-      <script type="module" src="./../public/docfx.min.js"></script>
-
-      <script>
-        const theme = localStorage.getItem('theme') || 'auto'
-        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-      </script>
-
+    
+    <meta name="description" content="Extended Unit of Work Interface To Provide More Features To Unit Of Work When Using Entity Framework">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
   </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
 
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
-    <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
-        <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../index.html">
-            <img id="logo" class="svg" src="../logo.svg" alt="Innovt Platform">
-            Innovt Platform
-          </a>
-          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navpanel">
-            <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="Innovt Platform">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
               </form>
             </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
 
-    <main class="container-xxl">
-      <div class="toc-offcanvas">
-        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
           </div>
-          <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
+      <div role="main" class="container body-content hide-when-search">
 
-      <div class="content">
-        <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
-          </button>
-
-          <nav id="breadcrumb"></nav>
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
         </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork">
 
-        <article data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork">
 
 
-
-  <h1 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork" class="text-break">
-Interface IExtendedUnitOfWork  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L15"><i class="bi bi-code-slash"></i></a>
-  </h1>
-
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="Innovt.html">Innovt</a>.<a class="xref" href="Innovt.Domain.html">Domain</a>.<a class="xref" href="Innovt.Domain.Core.html">Core</a>.<a class="xref" href="Innovt.Domain.Core.Repository.html">Repository</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>Innovt.Domain.Core.dll</dd></dl>
-  </div>
-
-  <div class="markdown summary"><p>Extended Unit of Work Interface To Provide More Features To Unit Of Work When Using Entity Framework</p>
+  <h1 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork" class="text-break">Interface IExtendedUnitOfWork</h1>
+  <div class="markdown level0 summary"><p>Extended Unit of Work Interface To Provide More Features To Unit Of Work When Using Entity Framework</p>
 </div>
-  <div class="markdown conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IExtendedUnitOfWork : IUnitOfWork, IDisposable</code></pre>
-  </div>
-
-
-
-
-
-
-
-  <dl class="typelist inheritedMembers">
-    <dt>Inherited Members</dt>
-    <dd>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
     <div>
       <a class="xref" href="Innovt.Domain.Core.Repository.IUnitOfWork.html#Innovt_Domain_Core_Repository_IUnitOfWork_Commit">IUnitOfWork.Commit()</a>
     </div>
@@ -126,11 +98,668 @@ Interface IExtendedUnitOfWork  <a class="header-action link-secondary" title="Vi
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable.dispose">IDisposable.Dispose()</a>
     </div>
-  </dd></dl>
-
-  <dl class="typelist extensionMethods">
-    <dt>Extension Methods</dt>
-    <dd>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Innovt.html">Innovt</a>.<a class="xref" href="Innovt.Domain.html">Domain</a>.<a class="xref" href="Innovt.Domain.Core.html">Core</a>.<a class="xref" href="Innovt.Domain.Core.Repository.html">Repository</a></h6>
+  <h6><strong>Assembly</strong>: Innovt.Domain.Core.dll</h6>
+  <h5 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IExtendedUnitOfWork : IUnitOfWork, IDisposable</code></pre>
+  </div>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IExtendedUnitOfWork_AddAsync__1_System_Collections_Generic_IEnumerable___0__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IExtendedUnitOfWork.AddAsync%60%601(System.Collections.Generic.IEnumerable%7B%60%600%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L47">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_AddAsync_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.AddAsync*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_AddAsync__1_System_Collections_Generic_IEnumerable___0__System_Threading_CancellationToken_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.AddAsync``1(System.Collections.Generic.IEnumerable{``0},System.Threading.CancellationToken)">AddAsync&lt;T&gt;(IEnumerable&lt;T&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Asynchronously adds multiple entities of type T to the repository.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task AddAsync&lt;T&gt;(IEnumerable&lt;T&gt; entities, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</td>
+        <td><span class="parametername">entities</span></td>
+        <td><p>The entities to add.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The optional cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td><p>A task representing the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of the entities.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IExtendedUnitOfWork_AddAsync__1___0_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IExtendedUnitOfWork.AddAsync%60%601(%60%600%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L38">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_AddAsync_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.AddAsync*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_AddAsync__1___0_System_Threading_CancellationToken_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.AddAsync``1(``0,System.Threading.CancellationToken)">AddAsync&lt;T&gt;(T, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Asynchronously adds an entity or a collection of entities.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task AddAsync&lt;T&gt;(T entity, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">entity</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Add__1_System_Collections_Generic_IEnumerable___0__.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Add%60%601(System.Collections.Generic.IEnumerable%7B%60%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L29">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Add_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Add*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Add__1_System_Collections_Generic_IEnumerable___0__" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Add``1(System.Collections.Generic.IEnumerable{``0})">Add&lt;T&gt;(IEnumerable&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Add Entities To Unit Of Work Context</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Add&lt;T&gt;(IEnumerable&lt;T&gt; entities) where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</td>
+        <td><span class="parametername">entities</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Add__1___0_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Add%60%601(%60%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L22">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Add_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Add*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Add__1___0_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Add``1(``0)">Add&lt;T&gt;(T)</h4>
+  <div class="markdown level1 summary"><p>Add Entity To Unit Of Work Context</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Add&lt;T&gt;(T entity) where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">entity</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Attach__1___0_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Attach%60%601(%60%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L76">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Attach_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Attach*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Attach__1___0_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Attach``1(``0)">Attach&lt;T&gt;(T)</h4>
+  <div class="markdown level1 summary"><p>Attaches an entity of type T to the repository.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Attach&lt;T&gt;(T entity) where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">entity</span></td>
+        <td><p>The entity to attach.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of the entity.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Detach__1___0_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Detach%60%601(%60%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L83">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Detach_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Detach*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Detach__1___0_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Detach``1(``0)">Detach&lt;T&gt;(T)</h4>
+  <div class="markdown level1 summary"><p>Detaches an entity of type T from the repository.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Detach&lt;T&gt;(T entity) where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">entity</span></td>
+        <td><p>The entity to detach.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of the entity.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IExtendedUnitOfWork_ExecuteSqlCommand_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IExtendedUnitOfWork.ExecuteSqlCommand(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L91">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_ExecuteSqlCommand_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.ExecuteSqlCommand*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_ExecuteSqlCommand_System_String_System_Object___" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.ExecuteSqlCommand(System.String,System.Object[])">ExecuteSqlCommand(string, params object[])</h4>
+  <div class="markdown level1 summary"><p>Executes a SQL command.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int ExecuteSqlCommand(string sql, params object[] parameters)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">sql</span></td>
+        <td><p>The SQL command to execute.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</td>
+        <td><span class="parametername">parameters</span></td>
+        <td><p>The parameters for the SQL command.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><p>The number of affected rows.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IExtendedUnitOfWork_ExecuteSqlCommandAsync_System_String_System_Threading_CancellationToken_System_Object___.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IExtendedUnitOfWork.ExecuteSqlCommandAsync(System.String%2CSystem.Threading.CancellationToken%2CSystem.Object%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L100">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_ExecuteSqlCommandAsync_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.ExecuteSqlCommandAsync*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_ExecuteSqlCommandAsync_System_String_System_Threading_CancellationToken_System_Object___" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.ExecuteSqlCommandAsync(System.String,System.Threading.CancellationToken,System.Object[])">ExecuteSqlCommandAsync(string, CancellationToken, params object[])</h4>
+  <div class="markdown level1 summary"><p>Asynchronously executes a SQL command.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;int&gt; ExecuteSqlCommandAsync(string sql, CancellationToken cancellationToken = default, params object[] parameters)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">sql</span></td>
+        <td><p>The SQL command to execute.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The optional cancellation token.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</td>
+        <td><span class="parametername">parameters</span></td>
+        <td><p>The parameters for the SQL command.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</td>
+        <td><p>A task representing the asynchronous operation, with the number of affected rows.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Queryable__1.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Queryable%60%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L108">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Queryable_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Queryable*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Queryable__1" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Queryable``1">Queryable&lt;T&gt;()</h4>
+  <div class="markdown level1 summary"><p>Returns a queryable interface for entities of type T.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IQueryable&lt;T&gt; Queryable&lt;T&gt;() where T : class</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1">IQueryable</a>&lt;T&gt;</td>
+        <td><p>A queryable interface for the entities.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of the entities.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Remove__1_System_Collections_Generic_IEnumerable___0__.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Remove%60%601(System.Collections.Generic.IEnumerable%7B%60%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L62">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Remove_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Remove*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Remove__1_System_Collections_Generic_IEnumerable___0__" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Remove``1(System.Collections.Generic.IEnumerable{``0})">Remove&lt;T&gt;(IEnumerable&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Removes multiple entities of type T from the repository.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Remove&lt;T&gt;(IEnumerable&lt;T&gt; entities) where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</td>
+        <td><span class="parametername">entities</span></td>
+        <td><p>The entities to remove.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of the entities.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Remove__1___0_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Remove%60%601(%60%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L55">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Remove_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Remove*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Remove__1___0_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Remove``1(``0)">Remove&lt;T&gt;(T)</h4>
+  <div class="markdown level1 summary"><p>Removes an entity of type T from the repository.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Remove&lt;T&gt;(T entity) where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">entity</span></td>
+        <td><p>The entity to remove.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of the entity.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Update__1___0_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Update%60%601(%60%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L69">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Update_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Update*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Update__1___0_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Update``1(``0)">Update&lt;T&gt;(T)</h4>
+  <div class="markdown level1 summary"><p>Updates an entity of type T in the repository.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Update&lt;T&gt;(T entity) where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">entity</span></td>
+        <td><p>The entity to update.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of the entity.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_">Extensions.IsNull(object)</a>
   </div>
@@ -140,526 +769,47 @@ Interface IExtendedUnitOfWork  <a class="header-action link-secondary" title="Vi
   <div>
       <a class="xref" href="Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_">SimpleMapper.MapTo&lt;T1&gt;(object)</a>
   </div>
-  </dd></dl>
-
-
-
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
-  <a id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_AddAsync_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.AddAsync*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_AddAsync__1_System_Collections_Generic_IEnumerable___0__System_Threading_CancellationToken_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.AddAsync``1(System.Collections.Generic.IEnumerable{``0},System.Threading.CancellationToken)">
-  AddAsync&lt;T&gt;(IEnumerable&lt;T&gt;, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L47"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Asynchronously adds multiple entities of type T to the repository.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task AddAsync&lt;T&gt;(IEnumerable&lt;T&gt; entities, CancellationToken cancellationToken = default) where T : class</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entities</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
-    <dd><p>The entities to add.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>The optional cancellation token.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
-    <dd><p>A task representing the asynchronous operation.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>The type of the entities.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_AddAsync_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.AddAsync*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_AddAsync__1___0_System_Threading_CancellationToken_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.AddAsync``1(``0,System.Threading.CancellationToken)">
-  AddAsync&lt;T&gt;(T, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L38"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Asynchronously adds an entity or a collection of entities.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task AddAsync&lt;T&gt;(T entity, CancellationToken cancellationToken = default) where T : class</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entity</code> <span class="xref">T</span></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Add_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Add*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Add__1_System_Collections_Generic_IEnumerable___0__" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Add``1(System.Collections.Generic.IEnumerable{``0})">
-  Add&lt;T&gt;(IEnumerable&lt;T&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L29"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Add Entities To Unit Of Work Context</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Add&lt;T&gt;(IEnumerable&lt;T&gt; entities) where T : class</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entities</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Add_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Add*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Add__1___0_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Add``1(``0)">
-  Add&lt;T&gt;(T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L22"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Add Entity To Unit Of Work Context</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Add&lt;T&gt;(T entity) where T : class</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entity</code> <span class="xref">T</span></dt>
-    <dd></dd>
-  </dl>
-
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Attach_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Attach*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Attach__1___0_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Attach``1(``0)">
-  Attach&lt;T&gt;(T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L76"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Attaches an entity of type T to the repository.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Attach&lt;T&gt;(T entity) where T : class</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entity</code> <span class="xref">T</span></dt>
-    <dd><p>The entity to attach.</p>
-</dd>
-  </dl>
-
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>The type of the entity.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Detach_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Detach*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Detach__1___0_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Detach``1(``0)">
-  Detach&lt;T&gt;(T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L83"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Detaches an entity of type T from the repository.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Detach&lt;T&gt;(T entity) where T : class</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entity</code> <span class="xref">T</span></dt>
-    <dd><p>The entity to detach.</p>
-</dd>
-  </dl>
-
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>The type of the entity.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_ExecuteSqlCommand_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.ExecuteSqlCommand*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_ExecuteSqlCommand_System_String_System_Object___" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.ExecuteSqlCommand(System.String,System.Object[])">
-  ExecuteSqlCommand(string, params object[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L91"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Executes a SQL command.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">int ExecuteSqlCommand(string sql, params object[] parameters)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>sql</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The SQL command to execute.</p>
-</dd>
-    <dt><code>parameters</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
-    <dd><p>The parameters for the SQL command.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The number of affected rows.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_ExecuteSqlCommandAsync_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.ExecuteSqlCommandAsync*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_ExecuteSqlCommandAsync_System_String_System_Threading_CancellationToken_System_Object___" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.ExecuteSqlCommandAsync(System.String,System.Threading.CancellationToken,System.Object[])">
-  ExecuteSqlCommandAsync(string, CancellationToken, params object[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L100"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Asynchronously executes a SQL command.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;int&gt; ExecuteSqlCommandAsync(string sql, CancellationToken cancellationToken = default, params object[] parameters)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>sql</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The SQL command to execute.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>The optional cancellation token.</p>
-</dd>
-    <dt><code>parameters</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
-    <dd><p>The parameters for the SQL command.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
-    <dd><p>A task representing the asynchronous operation, with the number of affected rows.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Queryable_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Queryable*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Queryable__1" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Queryable``1">
-  Queryable&lt;T&gt;()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L108"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Returns a queryable interface for entities of type T.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IQueryable&lt;T&gt; Queryable&lt;T&gt;() where T : class</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1">IQueryable</a>&lt;T&gt;</dt>
-    <dd><p>A queryable interface for the entities.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>The type of the entities.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Remove_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Remove*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Remove__1_System_Collections_Generic_IEnumerable___0__" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Remove``1(System.Collections.Generic.IEnumerable{``0})">
-  Remove&lt;T&gt;(IEnumerable&lt;T&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L62"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Removes multiple entities of type T from the repository.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Remove&lt;T&gt;(IEnumerable&lt;T&gt; entities) where T : class</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entities</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
-    <dd><p>The entities to remove.</p>
-</dd>
-  </dl>
-
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>The type of the entities.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Remove_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Remove*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Remove__1___0_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Remove``1(``0)">
-  Remove&lt;T&gt;(T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L55"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Removes an entity of type T from the repository.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Remove&lt;T&gt;(T entity) where T : class</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entity</code> <span class="xref">T</span></dt>
-    <dd><p>The entity to remove.</p>
-</dd>
-  </dl>
-
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>The type of the entity.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Update_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Update*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IExtendedUnitOfWork_Update__1___0_" data-uid="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.Update``1(``0)">
-  Update&lt;T&gt;(T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L69"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Updates an entity of type T in the repository.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Update&lt;T&gt;(T entity) where T : class</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entity</code> <span class="xref">T</span></dt>
-    <dd><p>The entity to update.</p>
-</dd>
-  </dl>
-
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>The type of the entity.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
 
 </article>
+          </div>
 
-        <div class="contribution d-print-none">
-          <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L15" class="edit-link">Edit this page</a>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IExtendedUnitOfWork.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IExtendedUnitOfWork%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IExtendedUnitOfWork.cs/#L15" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
         </div>
-
-
       </div>
 
-      <div class="affix">
-        <nav id="affix"></nav>
-      </div>
-    </main>
-
-    <div class="container-xxl search-results" id="search-results"></div>
-
-    <footer class="border-top text-secondary">
-      <div class="container-xxl">
-        <div class="flex-fill">
-          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
   </body>
 </html>

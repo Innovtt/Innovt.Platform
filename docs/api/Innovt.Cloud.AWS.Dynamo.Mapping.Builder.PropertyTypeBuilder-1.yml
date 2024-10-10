@@ -14,18 +14,15 @@ items:
   - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.ColumnName
   - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.GetValue(`0)
   - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.HasMapAction
-  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.InvokeMaps(`0)
   - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.IsRequired(System.Boolean)
   - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.MaxLength
   - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.Name
   - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.Required
   - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.SetDynamicValue(System.Func{`0,System.Object})
-  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.Template
   - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.Type
   - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.WithColumnName(System.String)
   - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.WithMap(System.Action{`0})
   - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.WithMaxLength(System.Int32)
-  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.WithTemplate(System.String)
   - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.WithValue(System.Object)
   langs:
   - csharp
@@ -88,7 +85,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: .ctor
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-    startLine: 24
+    startLine: 25
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
@@ -132,7 +129,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: .ctor
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-    startLine: 35
+    startLine: 36
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
@@ -170,7 +167,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: Builder
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-    startLine: 43
+    startLine: 44
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
@@ -201,7 +198,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: Required
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-    startLine: 48
+    startLine: 49
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
@@ -234,7 +231,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: HasMapAction
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-    startLine: 53
+    startLine: 54
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
@@ -267,7 +264,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: Name
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-    startLine: 58
+    startLine: 59
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
@@ -300,7 +297,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: Type
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-    startLine: 68
+    startLine: 69
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
@@ -333,7 +330,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: ColumnName
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-    startLine: 74
+    startLine: 75
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
@@ -369,7 +366,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: MaxLength
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-    startLine: 83
+    startLine: 84
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
@@ -384,39 +381,6 @@ items:
   overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.MaxLength*
   nameWithType.vb: PropertyTypeBuilder(Of T).MaxLength
   fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of T).MaxLength
-- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.Template
-  commentId: P:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.Template
-  id: Template
-  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1
-  langs:
-  - csharp
-  - vb
-  name: Template
-  nameWithType: PropertyTypeBuilder<T>.Template
-  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder<T>.Template
-  type: Property
-  source:
-    remote:
-      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-      branch: feature/ImproveDynamoMapping
-      repo: https://github.com/Innovtt/Innovt.Platform.git
-    id: Template
-    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-    startLine: 88
-  assemblies:
-  - Innovt.Cloud.AWS.Dynamo
-  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
-  summary: This template property will be user to create values for the property dynamicaly.
-  example: []
-  syntax:
-    content: public string Template { get; }
-    parameters: []
-    return:
-      type: System.String
-    content.vb: Public Property Template As String
-  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.Template*
-  nameWithType.vb: PropertyTypeBuilder(Of T).Template
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of T).Template
 - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.AsString
   commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.AsString
   id: AsString
@@ -435,7 +399,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: AsString
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-    startLine: 94
+    startLine: 90
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
@@ -468,7 +432,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: AsDecimal
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-    startLine: 104
+    startLine: 100
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
@@ -501,7 +465,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: AsBinary
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-    startLine: 114
+    startLine: 110
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
@@ -534,7 +498,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: WithColumnName
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-    startLine: 125
+    startLine: 121
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
@@ -572,7 +536,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: WithMaxLength
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-    startLine: 135
+    startLine: 131
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
@@ -609,7 +573,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: WithValue
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-    startLine: 142
+    startLine: 138
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
@@ -643,7 +607,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: IsRequired
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-    startLine: 154
+    startLine: 150
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
@@ -663,40 +627,6 @@ items:
   nameWithType.vb: PropertyTypeBuilder(Of T).IsRequired(Boolean)
   fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of T).IsRequired(Boolean)
   name.vb: IsRequired(Boolean)
-- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.WithTemplate(System.String)
-  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.WithTemplate(System.String)
-  id: WithTemplate(System.String)
-  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1
-  langs:
-  - csharp
-  - vb
-  name: WithTemplate(string)
-  nameWithType: PropertyTypeBuilder<T>.WithTemplate(string)
-  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder<T>.WithTemplate(string)
-  type: Method
-  source:
-    remote:
-      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-      branch: feature/ImproveDynamoMapping
-      repo: https://github.com/Innovtt/Innovt.Platform.git
-    id: WithTemplate
-    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-    startLine: 160
-  assemblies:
-  - Innovt.Cloud.AWS.Dynamo
-  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
-  syntax:
-    content: public PropertyTypeBuilder<T> WithTemplate(string template)
-    parameters:
-    - id: template
-      type: System.String
-    return:
-      type: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1
-    content.vb: Public Function WithTemplate(template As String) As PropertyTypeBuilder(Of T)
-  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.WithTemplate*
-  nameWithType.vb: PropertyTypeBuilder(Of T).WithTemplate(String)
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of T).WithTemplate(String)
-  name.vb: WithTemplate(String)
 - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.WithMap(System.Action{`0})
   commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.WithMap(System.Action{`0})
   id: WithMap(System.Action{`0})
@@ -715,7 +645,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: WithMap
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-    startLine: 171
+    startLine: 161
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
@@ -753,7 +683,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: SetDynamicValue
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-    startLine: 185
+    startLine: 175
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
@@ -776,39 +706,6 @@ items:
   nameWithType.vb: PropertyTypeBuilder(Of T).SetDynamicValue(Func(Of T, Object))
   fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of T).SetDynamicValue(System.Func(Of T, Object))
   name.vb: SetDynamicValue(Func(Of T, Object))
-- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.InvokeMaps(`0)
-  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.InvokeMaps(`0)
-  id: InvokeMaps(`0)
-  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1
-  langs:
-  - csharp
-  - vb
-  name: InvokeMaps(T)
-  nameWithType: PropertyTypeBuilder<T>.InvokeMaps(T)
-  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder<T>.InvokeMaps(T)
-  type: Method
-  source:
-    remote:
-      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-      branch: feature/ImproveDynamoMapping
-      repo: https://github.com/Innovtt/Innovt.Platform.git
-    id: InvokeMaps
-    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-    startLine: 192
-  assemblies:
-  - Innovt.Cloud.AWS.Dynamo
-  namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
-  syntax:
-    content: public PropertyTypeBuilder<T> InvokeMaps(T entity)
-    parameters:
-    - id: entity
-      type: '{T}'
-    return:
-      type: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1
-    content.vb: Public Function InvokeMaps(entity As T) As PropertyTypeBuilder(Of T)
-  overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.InvokeMaps*
-  nameWithType.vb: PropertyTypeBuilder(Of T).InvokeMaps(T)
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of T).InvokeMaps(T)
 - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.GetValue(`0)
   commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.GetValue(`0)
   id: GetValue(`0)
@@ -827,7 +724,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: GetValue
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/PropertyTypeBuilder.cs
-    startLine: 207
+    startLine: 202
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
@@ -1679,14 +1576,6 @@ references:
   nameWithType.vb: Integer
   fullName.vb: Integer
   name.vb: Integer
-- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.Template*
-  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.Template
-  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_PropertyTypeBuilder_1_Template
-  name: Template
-  nameWithType: PropertyTypeBuilder<T>.Template
-  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder<T>.Template
-  nameWithType.vb: PropertyTypeBuilder(Of T).Template
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of T).Template
 - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.AsString*
   commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.AsString
   href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_PropertyTypeBuilder_1_AsString
@@ -1743,14 +1632,6 @@ references:
   fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder<T>.IsRequired
   nameWithType.vb: PropertyTypeBuilder(Of T).IsRequired
   fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of T).IsRequired
-- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.WithTemplate*
-  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.WithTemplate
-  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_PropertyTypeBuilder_1_WithTemplate_System_String_
-  name: WithTemplate
-  nameWithType: PropertyTypeBuilder<T>.WithTemplate
-  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder<T>.WithTemplate
-  nameWithType.vb: PropertyTypeBuilder(Of T).WithTemplate
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of T).WithTemplate
 - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.WithMap*
   commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.WithMap
   href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_PropertyTypeBuilder_1_WithMap_System_Action__0__
@@ -1872,14 +1753,14 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
-- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.InvokeMaps*
-  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.InvokeMaps
-  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_PropertyTypeBuilder_1_InvokeMaps__0_
-  name: InvokeMaps
-  nameWithType: PropertyTypeBuilder<T>.InvokeMaps
-  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder<T>.InvokeMaps
-  nameWithType.vb: PropertyTypeBuilder(Of T).InvokeMaps
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of T).InvokeMaps
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.GetValue*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.GetValue
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_PropertyTypeBuilder_1_GetValue__0_
+  name: GetValue
+  nameWithType: PropertyTypeBuilder<T>.GetValue
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder<T>.GetValue
+  nameWithType.vb: PropertyTypeBuilder(Of T).GetValue
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of T).GetValue
 - uid: '{T}'
   commentId: '!:T'
   definition: T
@@ -1890,11 +1771,3 @@ references:
   name: T
   nameWithType: T
   fullName: T
-- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.GetValue*
-  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.GetValue
-  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_PropertyTypeBuilder_1_GetValue__0_
-  name: GetValue
-  nameWithType: PropertyTypeBuilder<T>.GetValue
-  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder<T>.GetValue
-  nameWithType.vb: PropertyTypeBuilder(Of T).GetValue
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of T).GetValue

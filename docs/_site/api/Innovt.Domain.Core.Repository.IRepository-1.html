@@ -1,126 +1,1373 @@
 ﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
 <html>
+
   <head>
     <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Interface IRepository&lt;T&gt; | Innovt Platform </title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width">
       <meta name="title" content="Interface IRepository&lt;T&gt; | Innovt Platform ">
-      
-      <meta name="description" content="Represents a generic repository for data access operations.">
-      <link rel="icon" href="../favicon.ico">
-      <link rel="stylesheet" href="../public/docfx.min.css">
-      <link rel="stylesheet" href="../public/main.css">
-      <meta name="docfx:navrel" content="../toc.html">
-      <meta name="docfx:tocrel" content="toc.html">
-      
-      <meta name="docfx:rel" content="../">
-      
-      
-      <meta name="docfx:docurl" content="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
-      <meta name="loc:inThisArticle" content="In this article">
-      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
-      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
-      <meta name="loc:tocFilter" content="Filter by title">
-      <meta name="loc:nextArticle" content="Next">
-      <meta name="loc:prevArticle" content="Previous">
-      <meta name="loc:themeLight" content="Light">
-      <meta name="loc:themeDark" content="Dark">
-      <meta name="loc:themeAuto" content="Auto">
-      <meta name="loc:changeTheme" content="Change theme">
-      <meta name="loc:copy" content="Copy">
-      <meta name="loc:downloadPdf" content="Download PDF">
-
-      <script type="module" src="./../public/docfx.min.js"></script>
-
-      <script>
-        const theme = localStorage.getItem('theme') || 'auto'
-        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-      </script>
-
+    
+    <meta name="description" content="Represents a generic repository for data access operations.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
   </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
 
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
-    <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
-        <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../index.html">
-            <img id="logo" class="svg" src="../logo.svg" alt="Innovt Platform">
-            Innovt Platform
-          </a>
-          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navpanel">
-            <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="Innovt Platform">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
               </form>
             </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
 
-    <main class="container-xxl">
-      <div class="toc-offcanvas">
-        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
           </div>
-          <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
+      <div role="main" class="container body-content hide-when-search">
 
-      <div class="content">
-        <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
-          </button>
-
-          <nav id="breadcrumb"></nav>
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
         </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Innovt.Domain.Core.Repository.IRepository`1">
 
-        <article data-uid="Innovt.Domain.Core.Repository.IRepository`1">
 
 
-
-  <h1 id="Innovt_Domain_Core_Repository_IRepository_1" data-uid="Innovt.Domain.Core.Repository.IRepository`1" class="text-break">
-Interface IRepository&lt;T&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L19"><i class="bi bi-code-slash"></i></a>
-  </h1>
-
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="Innovt.html">Innovt</a>.<a class="xref" href="Innovt.Domain.html">Domain</a>.<a class="xref" href="Innovt.Domain.Core.html">Core</a>.<a class="xref" href="Innovt.Domain.Core.Repository.html">Repository</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>Innovt.Domain.Core.dll</dd></dl>
-  </div>
-
-  <div class="markdown summary"><p>Represents a generic repository for data access operations.</p>
+  <h1 id="Innovt_Domain_Core_Repository_IRepository_1" data-uid="Innovt.Domain.Core.Repository.IRepository`1" class="text-break">Interface IRepository&lt;T&gt;</h1>
+  <div class="markdown level0 summary"><p>Represents a generic repository for data access operations.</p>
 </div>
-  <div class="markdown conceptual"></div>
-
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Innovt.html">Innovt</a>.<a class="xref" href="Innovt.Domain.html">Domain</a>.<a class="xref" href="Innovt.Domain.Core.html">Core</a>.<a class="xref" href="Innovt.Domain.Core.Repository.html">Repository</a></h6>
+  <h6><strong>Assembly</strong>: Innovt.Domain.Core.dll</h6>
+  <h5 id="Innovt_Domain_Core_Repository_IRepository_1_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IRepository&lt;T&gt; where T : class</code></pre>
   </div>
-
-
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>The entity type.</p>
-</dd>
-  </dl>
-
-
-
-
-
-  <dl class="typelist extensionMethods">
-    <dt>Extension Methods</dt>
-    <dd>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The entity type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1_Add_System_Collections_Generic_IEnumerable__0__.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601.Add(System.Collections.Generic.IEnumerable%7B%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L31">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IRepository_1_Add_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.Add*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IRepository_1_Add_System_Collections_Generic_IEnumerable__0__" data-uid="Innovt.Domain.Core.Repository.IRepository`1.Add(System.Collections.Generic.IEnumerable{`0})">Add(IEnumerable&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Adds multiple entities</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Add(IEnumerable&lt;T&gt; entities)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</td>
+        <td><span class="parametername">entities</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1_Add__0_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601.Add(%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L25">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IRepository_1_Add_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.Add*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IRepository_1_Add__0_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.Add(`0)">Add(T)</h4>
+  <div class="markdown level1 summary"><p>Adds a single entity</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Add(T entity)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">entity</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1_AddAsync_System_Collections_Generic_IEnumerable__0__.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601.AddAsync(System.Collections.Generic.IEnumerable%7B%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L45">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IRepository_1_AddAsync_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.AddAsync*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IRepository_1_AddAsync_System_Collections_Generic_IEnumerable__0__" data-uid="Innovt.Domain.Core.Repository.IRepository`1.AddAsync(System.Collections.Generic.IEnumerable{`0})">AddAsync(IEnumerable&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Asynchronously adds multiple entities</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task AddAsync(IEnumerable&lt;T&gt; entities)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</td>
+        <td><span class="parametername">entities</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1_AddAsync__0_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601.AddAsync(%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L38">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IRepository_1_AddAsync_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.AddAsync*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IRepository_1_AddAsync__0_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.AddAsync(`0)">AddAsync(T)</h4>
+  <div class="markdown level1 summary"><p>Asynchronously adds a single entity</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task AddAsync(T entity)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">entity</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1_CountBy_Innovt_Domain_Core_Specification_ISpecification__0__.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601.CountBy(Innovt.Domain.Core.Specification.ISpecification%7B%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L204">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IRepository_1_CountBy_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.CountBy*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IRepository_1_CountBy_Innovt_Domain_Core_Specification_ISpecification__0__" data-uid="Innovt.Domain.Core.Repository.IRepository`1.CountBy(Innovt.Domain.Core.Specification.ISpecification{`0})">CountBy(ISpecification&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Counts entities based on a specificatio</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int CountBy(ISpecification&lt;T&gt; specification)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</td>
+        <td><span class="parametername">specification</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1_CountByAsync_Innovt_Domain_Core_Specification_ISpecification__0__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601.CountByAsync(Innovt.Domain.Core.Specification.ISpecification%7B%600%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L216">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IRepository_1_CountByAsync_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.CountByAsync*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IRepository_1_CountByAsync_Innovt_Domain_Core_Specification_ISpecification__0__System_Threading_CancellationToken_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.CountByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},System.Threading.CancellationToken)">CountByAsync(ISpecification&lt;T&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;int&gt; CountByAsync(ISpecification&lt;T&gt; specification, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</td>
+        <td><span class="parametername">specification</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1_CountByAsync__1_Innovt_Domain_Core_Specification_ISpecification___0__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601.CountByAsync%60%601(Innovt.Domain.Core.Specification.ISpecification%7B%60%600%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L213">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IRepository_1_CountByAsync_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.CountByAsync*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IRepository_1_CountByAsync__1_Innovt_Domain_Core_Specification_ISpecification___0__System_Threading_CancellationToken_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.CountByAsync``1(Innovt.Domain.Core.Specification.ISpecification{``0},System.Threading.CancellationToken)">CountByAsync&lt;TKEntity&gt;(ISpecification&lt;TKEntity&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Asynchronously counts entities based on a specification for a given entity type</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;int&gt; CountByAsync&lt;TKEntity&gt;(ISpecification&lt;TKEntity&gt; specification, CancellationToken cancellationToken = default) where TKEntity : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;TKEntity&gt;</td>
+        <td><span class="parametername">specification</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TKEntity</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1_CountBy__1_Innovt_Domain_Core_Specification_ISpecification___0__.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601.CountBy%60%601(Innovt.Domain.Core.Specification.ISpecification%7B%60%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L197">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IRepository_1_CountBy_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.CountBy*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IRepository_1_CountBy__1_Innovt_Domain_Core_Specification_ISpecification___0__" data-uid="Innovt.Domain.Core.Repository.IRepository`1.CountBy``1(Innovt.Domain.Core.Specification.ISpecification{``0})">CountBy&lt;TKEntity&gt;(ISpecification&lt;TKEntity&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int CountBy&lt;TKEntity&gt;(ISpecification&lt;TKEntity&gt; specification) where TKEntity : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;TKEntity&gt;</td>
+        <td><span class="parametername">specification</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TKEntity</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1_FindBy_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601.FindBy(Innovt.Domain.Core.Specification.ISpecification%7B%600%7D%2CInnovt.Domain.Core.Repository.Include)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L107">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IRepository_1_FindBy_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindBy*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IRepository_1_FindBy_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)">FindBy(ISpecification&lt;T&gt;, Include?)</h4>
+  <div class="markdown level1 summary"><p>Finds entities based on a specification and includes related entities</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;T&gt; FindBy(ISpecification&lt;T&gt; specification, Include? includes = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</td>
+        <td><span class="parametername">specification</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Repository.Include.html">Include</a></td>
+        <td><span class="parametername">includes</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1_FindByAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601.FindByAsync(Innovt.Domain.Core.Specification.ISpecification%7B%600%7D%2CInnovt.Domain.Core.Repository.Include%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L128">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IRepository_1_FindByAsync_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindByAsync*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IRepository_1_FindByAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)">FindByAsync(ISpecification&lt;T&gt;, Include?, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Asynchronously finds entities based on a specification and includes related entities</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IEnumerable&lt;T&gt;&gt; FindByAsync(ISpecification&lt;T&gt; specification, Include? includes = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</td>
+        <td><span class="parametername">specification</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Repository.Include.html">Include</a></td>
+        <td><span class="parametername">includes</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1_FindByAsync__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601.FindByAsync%60%601(Innovt.Domain.Core.Specification.ISpecification%7B%600%7D%2CSystem.Linq.Expressions.Expression%7BSystem.Func%7B%600%2C%60%600%7D%7D%2CSystem.Boolean%2CInnovt.Domain.Core.Repository.Include%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L141">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IRepository_1_FindByAsync_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindByAsync*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IRepository_1_FindByAsync__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)">FindByAsync&lt;TKey&gt;(ISpecification&lt;T&gt;, Expression&lt;Func&lt;T, TKey&gt;&gt;?, bool, Include?, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Asynchronously finds entities based on a specification, with optional ordering, and includes related entities</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IEnumerable&lt;T&gt;&gt; FindByAsync&lt;TKey&gt;(ISpecification&lt;T&gt; specification, Expression&lt;Func&lt;T, TKey&gt;&gt;? orderBy = null, bool isOrderByDescending = false, Include? includes = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</td>
+        <td><span class="parametername">specification</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, TKey&gt;&gt;</td>
+        <td><span class="parametername">orderBy</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">isOrderByDescending</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Repository.Include.html">Include</a></td>
+        <td><span class="parametername">includes</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TKey</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1_FindBy__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601.FindBy%60%601(Innovt.Domain.Core.Specification.ISpecification%7B%600%7D%2CSystem.Linq.Expressions.Expression%7BSystem.Func%7B%600%2C%60%600%7D%7D%2CSystem.Boolean%2CInnovt.Domain.Core.Repository.Include)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L118">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IRepository_1_FindBy_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindBy*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IRepository_1_FindBy__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)">FindBy&lt;TKey&gt;(ISpecification&lt;T&gt;, Expression&lt;Func&lt;T, TKey&gt;&gt;?, bool, Include?)</h4>
+  <div class="markdown level1 summary"><p>Finds entities based on a specification, with optional ordering, and includes related entities</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;T&gt; FindBy&lt;TKey&gt;(ISpecification&lt;T&gt; specification, Expression&lt;Func&lt;T, TKey&gt;&gt;? orderBy = null, bool isOrderByDescending = false, Include? includes = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</td>
+        <td><span class="parametername">specification</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, TKey&gt;&gt;</td>
+        <td><span class="parametername">orderBy</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">isOrderByDescending</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Repository.Include.html">Include</a></td>
+        <td><span class="parametername">includes</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TKey</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1_FindPaginatedBy_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601.FindPaginatedBy(Innovt.Domain.Core.Specification.ISpecification%7B%600%7D%2CInnovt.Domain.Core.Repository.Include)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L151">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IRepository_1_FindPaginatedBy_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedBy*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IRepository_1_FindPaginatedBy_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)">FindPaginatedBy(ISpecification&lt;T&gt;, Include?)</h4>
+  <div class="markdown level1 summary"><p>Finds entities based on a specification and returns a paged collection, with optional includes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">PagedCollection&lt;T&gt; FindPaginatedBy(ISpecification&lt;T&gt; specification, Include? includes = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</td>
+        <td><span class="parametername">specification</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Repository.Include.html">Include</a></td>
+        <td><span class="parametername">includes</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Core.Collections.PagedCollection-1.html">PagedCollection</a>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1_FindPaginatedByAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601.FindPaginatedByAsync(Innovt.Domain.Core.Specification.ISpecification%7B%600%7D%2CInnovt.Domain.Core.Repository.Include%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L174">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IRepository_1_FindPaginatedByAsync_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedByAsync*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IRepository_1_FindPaginatedByAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)">FindPaginatedByAsync(ISpecification&lt;T&gt;, Include?, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Asynchronously finds entities based on a specification and returns a paged collection, with optional includes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;PagedCollection&lt;T&gt;&gt; FindPaginatedByAsync(ISpecification&lt;T&gt; specification, Include? includes = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</td>
+        <td><span class="parametername">specification</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Repository.Include.html">Include</a></td>
+        <td><span class="parametername">includes</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Core.Collections.PagedCollection-1.html">PagedCollection</a>&lt;T&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1_FindPaginatedByAsync__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601.FindPaginatedByAsync%60%601(Innovt.Domain.Core.Specification.ISpecification%7B%600%7D%2CSystem.Linq.Expressions.Expression%7BSystem.Func%7B%600%2C%60%600%7D%7D%2CSystem.Boolean%2CInnovt.Domain.Core.Repository.Include%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L188">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IRepository_1_FindPaginatedByAsync_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedByAsync*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IRepository_1_FindPaginatedByAsync__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)">FindPaginatedByAsync&lt;TKey&gt;(ISpecification&lt;T&gt;, Expression&lt;Func&lt;T, TKey&gt;&gt;?, bool, Include?, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Asynchronously finds entities based on a specification, with optional ordering, and returns a paged collection,
+with optional includes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;PagedCollection&lt;T&gt;&gt; FindPaginatedByAsync&lt;TKey&gt;(ISpecification&lt;T&gt; specification, Expression&lt;Func&lt;T, TKey&gt;&gt;? orderBy = null, bool isOrderByDescending = false, Include? includes = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</td>
+        <td><span class="parametername">specification</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, TKey&gt;&gt;</td>
+        <td><span class="parametername">orderBy</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">isOrderByDescending</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Repository.Include.html">Include</a></td>
+        <td><span class="parametername">includes</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Core.Collections.PagedCollection-1.html">PagedCollection</a>&lt;T&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TKey</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1_FindPaginatedBy__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601.FindPaginatedBy%60%601(Innovt.Domain.Core.Specification.ISpecification%7B%600%7D%2CSystem.Linq.Expressions.Expression%7BSystem.Func%7B%600%2C%60%600%7D%7D%2CSystem.Boolean%2CInnovt.Domain.Core.Repository.Include)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L163">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IRepository_1_FindPaginatedBy_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedBy*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IRepository_1_FindPaginatedBy__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)">FindPaginatedBy&lt;TKey&gt;(ISpecification&lt;T&gt;, Expression&lt;Func&lt;T, TKey&gt;&gt;?, bool, Include?)</h4>
+  <div class="markdown level1 summary"><p>Finds entities based on a specification, with optional ordering, and returns a paged collection, with optional
+includes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">PagedCollection&lt;T&gt; FindPaginatedBy&lt;TKey&gt;(ISpecification&lt;T&gt; specification, Expression&lt;Func&lt;T, TKey&gt;&gt;? orderBy = null, bool isOrderByDescending = false, Include? includes = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</td>
+        <td><span class="parametername">specification</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, TKey&gt;&gt;</td>
+        <td><span class="parametername">orderBy</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">isOrderByDescending</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Repository.Include.html">Include</a></td>
+        <td><span class="parametername">includes</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Core.Collections.PagedCollection-1.html">PagedCollection</a>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TKey</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1_GetFirstOrDefault_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601.GetFirstOrDefault(Innovt.Domain.Core.Specification.ISpecification%7B%600%7D%2CInnovt.Domain.Core.Repository.Include)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L89">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IRepository_1_GetFirstOrDefault_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.GetFirstOrDefault*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IRepository_1_GetFirstOrDefault_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.GetFirstOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)">GetFirstOrDefault(ISpecification&lt;T&gt;, Include?)</h4>
+  <div class="markdown level1 summary"><p>Gets the first entity based on a specification and includes related entities</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">T? GetFirstOrDefault(ISpecification&lt;T&gt; specification, Include? includes = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</td>
+        <td><span class="parametername">specification</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Repository.Include.html">Include</a></td>
+        <td><span class="parametername">includes</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1_GetFirstOrDefaultAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601.GetFirstOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification%7B%600%7D%2CInnovt.Domain.Core.Repository.Include%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L98">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IRepository_1_GetFirstOrDefaultAsync_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.GetFirstOrDefaultAsync*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IRepository_1_GetFirstOrDefaultAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.GetFirstOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)">GetFirstOrDefaultAsync(ISpecification&lt;T&gt;, Include?, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Asynchronously gets the first entity based on a specification and includes related entities</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;T?&gt; GetFirstOrDefaultAsync(ISpecification&lt;T&gt; specification, Include? includes = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</td>
+        <td><span class="parametername">specification</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Repository.Include.html">Include</a></td>
+        <td><span class="parametername">includes</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1_GetSingleOrDefault_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601.GetSingleOrDefault(Innovt.Domain.Core.Specification.ISpecification%7B%600%7D%2CInnovt.Domain.Core.Repository.Include)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L71">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IRepository_1_GetSingleOrDefault_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.GetSingleOrDefault*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IRepository_1_GetSingleOrDefault_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.GetSingleOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)">GetSingleOrDefault(ISpecification&lt;T&gt;, Include?)</h4>
+  <div class="markdown level1 summary"><p>Gets a single entity based on a specification and includes related entities</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">T? GetSingleOrDefault(ISpecification&lt;T&gt; specification, Include? includes = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</td>
+        <td><span class="parametername">specification</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Repository.Include.html">Include</a></td>
+        <td><span class="parametername">includes</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1_GetSingleOrDefaultAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601.GetSingleOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification%7B%600%7D%2CInnovt.Domain.Core.Repository.Include%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L80">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IRepository_1_GetSingleOrDefaultAsync_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.GetSingleOrDefaultAsync*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IRepository_1_GetSingleOrDefaultAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.GetSingleOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)">GetSingleOrDefaultAsync(ISpecification&lt;T&gt;, Include?, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Asynchronously gets a single entity based on a specification and includes related entities</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;T?&gt; GetSingleOrDefaultAsync(ISpecification&lt;T&gt; specification, Include? includes = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</td>
+        <td><span class="parametername">specification</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Repository.Include.html">Include</a></td>
+        <td><span class="parametername">includes</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1_Modify__0_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601.Modify(%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L51">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IRepository_1_Modify_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.Modify*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IRepository_1_Modify__0_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.Modify(`0)">Modify(T)</h4>
+  <div class="markdown level1 summary"><p>Modifies an entity</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Modify(T entity)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">entity</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1_Remove_System_Collections_Generic_IEnumerable__0__.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601.Remove(System.Collections.Generic.IEnumerable%7B%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L57">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IRepository_1_Remove_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.Remove*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IRepository_1_Remove_System_Collections_Generic_IEnumerable__0__" data-uid="Innovt.Domain.Core.Repository.IRepository`1.Remove(System.Collections.Generic.IEnumerable{`0})">Remove(IEnumerable&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Removes multiple entities</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Remove(IEnumerable&lt;T&gt; entities)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</td>
+        <td><span class="parametername">entities</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1_Remove__0_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601.Remove(%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L63">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Repository_IRepository_1_Remove_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.Remove*"></a>
+  <h4 id="Innovt_Domain_Core_Repository_IRepository_1_Remove__0_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.Remove(`0)">Remove(T)</h4>
+  <div class="markdown level1 summary"><p>Removes a single entity</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Remove(T entity)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">entity</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_">Extensions.IsNull(object)</a>
   </div>
@@ -130,951 +1377,47 @@ Interface IRepository&lt;T&gt;  <a class="header-action link-secondary" title="V
   <div>
       <a class="xref" href="Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_">SimpleMapper.MapTo&lt;T1&gt;(object)</a>
   </div>
-  </dd></dl>
-
-
-
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
-  <a id="Innovt_Domain_Core_Repository_IRepository_1_Add_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.Add*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IRepository_1_Add_System_Collections_Generic_IEnumerable__0__" data-uid="Innovt.Domain.Core.Repository.IRepository`1.Add(System.Collections.Generic.IEnumerable{`0})">
-  Add(IEnumerable&lt;T&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L31"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Adds multiple entities</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Add(IEnumerable&lt;T&gt; entities)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entities</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IRepository_1_Add_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.Add*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IRepository_1_Add__0_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.Add(`0)">
-  Add(T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L25"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Adds a single entity</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Add(T entity)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entity</code> <span class="xref">T</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IRepository_1_AddAsync_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.AddAsync*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IRepository_1_AddAsync_System_Collections_Generic_IEnumerable__0__" data-uid="Innovt.Domain.Core.Repository.IRepository`1.AddAsync(System.Collections.Generic.IEnumerable{`0})">
-  AddAsync(IEnumerable&lt;T&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L45"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Asynchronously adds multiple entities</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task AddAsync(IEnumerable&lt;T&gt; entities)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entities</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IRepository_1_AddAsync_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.AddAsync*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IRepository_1_AddAsync__0_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.AddAsync(`0)">
-  AddAsync(T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L38"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Asynchronously adds a single entity</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task AddAsync(T entity)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entity</code> <span class="xref">T</span></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IRepository_1_CountBy_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.CountBy*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IRepository_1_CountBy_Innovt_Domain_Core_Specification_ISpecification__0__" data-uid="Innovt.Domain.Core.Repository.IRepository`1.CountBy(Innovt.Domain.Core.Specification.ISpecification{`0})">
-  CountBy(ISpecification&lt;T&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L204"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Counts entities based on a specificatio</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">int CountBy(ISpecification&lt;T&gt; specification)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>specification</code> <a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IRepository_1_CountByAsync_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.CountByAsync*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IRepository_1_CountByAsync_Innovt_Domain_Core_Specification_ISpecification__0__System_Threading_CancellationToken_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.CountByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},System.Threading.CancellationToken)">
-  CountByAsync(ISpecification&lt;T&gt;, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L216"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;int&gt; CountByAsync(ISpecification&lt;T&gt; specification, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>specification</code> <a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IRepository_1_CountByAsync_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.CountByAsync*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IRepository_1_CountByAsync__1_Innovt_Domain_Core_Specification_ISpecification___0__System_Threading_CancellationToken_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.CountByAsync``1(Innovt.Domain.Core.Specification.ISpecification{``0},System.Threading.CancellationToken)">
-  CountByAsync&lt;TKEntity&gt;(ISpecification&lt;TKEntity&gt;, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L213"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Asynchronously counts entities based on a specification for a given entity type</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;int&gt; CountByAsync&lt;TKEntity&gt;(ISpecification&lt;TKEntity&gt; specification, CancellationToken cancellationToken = default) where TKEntity : class</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>specification</code> <a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;TKEntity&gt;</dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>TKEntity</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IRepository_1_CountBy_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.CountBy*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IRepository_1_CountBy__1_Innovt_Domain_Core_Specification_ISpecification___0__" data-uid="Innovt.Domain.Core.Repository.IRepository`1.CountBy``1(Innovt.Domain.Core.Specification.ISpecification{``0})">
-  CountBy&lt;TKEntity&gt;(ISpecification&lt;TKEntity&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L197"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">int CountBy&lt;TKEntity&gt;(ISpecification&lt;TKEntity&gt; specification) where TKEntity : class</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>specification</code> <a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;TKEntity&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>TKEntity</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IRepository_1_FindBy_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindBy*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IRepository_1_FindBy_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)">
-  FindBy(ISpecification&lt;T&gt;, Include?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L107"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Finds entities based on a specification and includes related entities</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IEnumerable&lt;T&gt; FindBy(ISpecification&lt;T&gt; specification, Include? includes = null)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>specification</code> <a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</dt>
-    <dd></dd>
-    <dt><code>includes</code> <a class="xref" href="Innovt.Domain.Core.Repository.Include.html">Include</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IRepository_1_FindByAsync_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindByAsync*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IRepository_1_FindByAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)">
-  FindByAsync(ISpecification&lt;T&gt;, Include?, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L128"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Asynchronously finds entities based on a specification and includes related entities</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IEnumerable&lt;T&gt;&gt; FindByAsync(ISpecification&lt;T&gt; specification, Include? includes = null, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>specification</code> <a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</dt>
-    <dd></dd>
-    <dt><code>includes</code> <a class="xref" href="Innovt.Domain.Core.Repository.Include.html">Include</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IRepository_1_FindByAsync_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindByAsync*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IRepository_1_FindByAsync__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)">
-  FindByAsync&lt;TKey&gt;(ISpecification&lt;T&gt;, Expression&lt;Func&lt;T, TKey&gt;&gt;?, bool, Include?, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L141"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Asynchronously finds entities based on a specification, with optional ordering, and includes related entities</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IEnumerable&lt;T&gt;&gt; FindByAsync&lt;TKey&gt;(ISpecification&lt;T&gt; specification, Expression&lt;Func&lt;T, TKey&gt;&gt;? orderBy = null, bool isOrderByDescending = false, Include? includes = null, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>specification</code> <a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</dt>
-    <dd></dd>
-    <dt><code>orderBy</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, TKey&gt;&gt;</dt>
-    <dd></dd>
-    <dt><code>isOrderByDescending</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-    <dt><code>includes</code> <a class="xref" href="Innovt.Domain.Core.Repository.Include.html">Include</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>TKey</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IRepository_1_FindBy_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindBy*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IRepository_1_FindBy__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)">
-  FindBy&lt;TKey&gt;(ISpecification&lt;T&gt;, Expression&lt;Func&lt;T, TKey&gt;&gt;?, bool, Include?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L118"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Finds entities based on a specification, with optional ordering, and includes related entities</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IEnumerable&lt;T&gt; FindBy&lt;TKey&gt;(ISpecification&lt;T&gt; specification, Expression&lt;Func&lt;T, TKey&gt;&gt;? orderBy = null, bool isOrderByDescending = false, Include? includes = null)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>specification</code> <a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</dt>
-    <dd></dd>
-    <dt><code>orderBy</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, TKey&gt;&gt;</dt>
-    <dd></dd>
-    <dt><code>isOrderByDescending</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-    <dt><code>includes</code> <a class="xref" href="Innovt.Domain.Core.Repository.Include.html">Include</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>TKey</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IRepository_1_FindPaginatedBy_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedBy*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IRepository_1_FindPaginatedBy_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedBy(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)">
-  FindPaginatedBy(ISpecification&lt;T&gt;, Include?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L151"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Finds entities based on a specification and returns a paged collection, with optional includes</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">PagedCollection&lt;T&gt; FindPaginatedBy(ISpecification&lt;T&gt; specification, Include? includes = null)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>specification</code> <a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</dt>
-    <dd></dd>
-    <dt><code>includes</code> <a class="xref" href="Innovt.Domain.Core.Repository.Include.html">Include</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Innovt.Core.Collections.PagedCollection-1.html">PagedCollection</a>&lt;T&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IRepository_1_FindPaginatedByAsync_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedByAsync*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IRepository_1_FindPaginatedByAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedByAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)">
-  FindPaginatedByAsync(ISpecification&lt;T&gt;, Include?, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L174"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Asynchronously finds entities based on a specification and returns a paged collection, with optional includes</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;PagedCollection&lt;T&gt;&gt; FindPaginatedByAsync(ISpecification&lt;T&gt; specification, Include? includes = null, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>specification</code> <a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</dt>
-    <dd></dd>
-    <dt><code>includes</code> <a class="xref" href="Innovt.Domain.Core.Repository.Include.html">Include</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Core.Collections.PagedCollection-1.html">PagedCollection</a>&lt;T&gt;&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IRepository_1_FindPaginatedByAsync_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedByAsync*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IRepository_1_FindPaginatedByAsync__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedByAsync``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)">
-  FindPaginatedByAsync&lt;TKey&gt;(ISpecification&lt;T&gt;, Expression&lt;Func&lt;T, TKey&gt;&gt;?, bool, Include?, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L188"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Asynchronously finds entities based on a specification, with optional ordering, and returns a paged collection,
-with optional includes</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;PagedCollection&lt;T&gt;&gt; FindPaginatedByAsync&lt;TKey&gt;(ISpecification&lt;T&gt; specification, Expression&lt;Func&lt;T, TKey&gt;&gt;? orderBy = null, bool isOrderByDescending = false, Include? includes = null, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>specification</code> <a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</dt>
-    <dd></dd>
-    <dt><code>orderBy</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, TKey&gt;&gt;</dt>
-    <dd></dd>
-    <dt><code>isOrderByDescending</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-    <dt><code>includes</code> <a class="xref" href="Innovt.Domain.Core.Repository.Include.html">Include</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Core.Collections.PagedCollection-1.html">PagedCollection</a>&lt;T&gt;&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>TKey</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IRepository_1_FindPaginatedBy_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedBy*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IRepository_1_FindPaginatedBy__1_Innovt_Domain_Core_Specification_ISpecification__0__System_Linq_Expressions_Expression_System_Func__0___0___System_Boolean_Innovt_Domain_Core_Repository_Include_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.FindPaginatedBy``1(Innovt.Domain.Core.Specification.ISpecification{`0},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,Innovt.Domain.Core.Repository.Include)">
-  FindPaginatedBy&lt;TKey&gt;(ISpecification&lt;T&gt;, Expression&lt;Func&lt;T, TKey&gt;&gt;?, bool, Include?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L163"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Finds entities based on a specification, with optional ordering, and returns a paged collection, with optional
-includes</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">PagedCollection&lt;T&gt; FindPaginatedBy&lt;TKey&gt;(ISpecification&lt;T&gt; specification, Expression&lt;Func&lt;T, TKey&gt;&gt;? orderBy = null, bool isOrderByDescending = false, Include? includes = null)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>specification</code> <a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</dt>
-    <dd></dd>
-    <dt><code>orderBy</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, TKey&gt;&gt;</dt>
-    <dd></dd>
-    <dt><code>isOrderByDescending</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-    <dt><code>includes</code> <a class="xref" href="Innovt.Domain.Core.Repository.Include.html">Include</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Innovt.Core.Collections.PagedCollection-1.html">PagedCollection</a>&lt;T&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>TKey</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IRepository_1_GetFirstOrDefault_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.GetFirstOrDefault*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IRepository_1_GetFirstOrDefault_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.GetFirstOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)">
-  GetFirstOrDefault(ISpecification&lt;T&gt;, Include?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L89"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the first entity based on a specification and includes related entities</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">T? GetFirstOrDefault(ISpecification&lt;T&gt; specification, Include? includes = null)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>specification</code> <a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</dt>
-    <dd></dd>
-    <dt><code>includes</code> <a class="xref" href="Innovt.Domain.Core.Repository.Include.html">Include</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><span class="xref">T</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IRepository_1_GetFirstOrDefaultAsync_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.GetFirstOrDefaultAsync*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IRepository_1_GetFirstOrDefaultAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.GetFirstOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)">
-  GetFirstOrDefaultAsync(ISpecification&lt;T&gt;, Include?, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L98"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Asynchronously gets the first entity based on a specification and includes related entities</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;T?&gt; GetFirstOrDefaultAsync(ISpecification&lt;T&gt; specification, Include? includes = null, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>specification</code> <a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</dt>
-    <dd></dd>
-    <dt><code>includes</code> <a class="xref" href="Innovt.Domain.Core.Repository.Include.html">Include</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IRepository_1_GetSingleOrDefault_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.GetSingleOrDefault*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IRepository_1_GetSingleOrDefault_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.GetSingleOrDefault(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include)">
-  GetSingleOrDefault(ISpecification&lt;T&gt;, Include?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L71"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets a single entity based on a specification and includes related entities</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">T? GetSingleOrDefault(ISpecification&lt;T&gt; specification, Include? includes = null)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>specification</code> <a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</dt>
-    <dd></dd>
-    <dt><code>includes</code> <a class="xref" href="Innovt.Domain.Core.Repository.Include.html">Include</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><span class="xref">T</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IRepository_1_GetSingleOrDefaultAsync_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.GetSingleOrDefaultAsync*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IRepository_1_GetSingleOrDefaultAsync_Innovt_Domain_Core_Specification_ISpecification__0__Innovt_Domain_Core_Repository_Include_System_Threading_CancellationToken_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.GetSingleOrDefaultAsync(Innovt.Domain.Core.Specification.ISpecification{`0},Innovt.Domain.Core.Repository.Include,System.Threading.CancellationToken)">
-  GetSingleOrDefaultAsync(ISpecification&lt;T&gt;, Include?, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L80"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Asynchronously gets a single entity based on a specification and includes related entities</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;T?&gt; GetSingleOrDefaultAsync(ISpecification&lt;T&gt; specification, Include? includes = null, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>specification</code> <a class="xref" href="Innovt.Domain.Core.Specification.ISpecification-1.html">ISpecification</a>&lt;T&gt;</dt>
-    <dd></dd>
-    <dt><code>includes</code> <a class="xref" href="Innovt.Domain.Core.Repository.Include.html">Include</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IRepository_1_Modify_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.Modify*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IRepository_1_Modify__0_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.Modify(`0)">
-  Modify(T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L51"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Modifies an entity</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Modify(T entity)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entity</code> <span class="xref">T</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IRepository_1_Remove_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.Remove*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IRepository_1_Remove_System_Collections_Generic_IEnumerable__0__" data-uid="Innovt.Domain.Core.Repository.IRepository`1.Remove(System.Collections.Generic.IEnumerable{`0})">
-  Remove(IEnumerable&lt;T&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L57"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Removes multiple entities</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Remove(IEnumerable&lt;T&gt; entities)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entities</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Repository_IRepository_1_Remove_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.Remove*"></a>
-
-  <h3 id="Innovt_Domain_Core_Repository_IRepository_1_Remove__0_" data-uid="Innovt.Domain.Core.Repository.IRepository`1.Remove(`0)">
-  Remove(T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L63"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Removes a single entity</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Remove(T entity)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entity</code> <span class="xref">T</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
 
 </article>
+          </div>
 
-        <div class="contribution d-print-none">
-          <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L19" class="edit-link">Edit this page</a>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Repository_IRepository_1.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Repository.IRepository%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Repository/IRepository.cs/#L19" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
         </div>
-
-
       </div>
 
-      <div class="affix">
-        <nav id="affix"></nav>
-      </div>
-    </main>
-
-    <div class="container-xxl search-results" id="search-results"></div>
-
-    <footer class="border-top text-secondary">
-      <div class="container-xxl">
-        <div class="flex-fill">
-          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
   </body>
 </html>

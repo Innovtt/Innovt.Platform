@@ -4,6 +4,8 @@ items:
   commentId: N:Innovt.Cloud.AWS.Dynamo.Converters
   id: Innovt.Cloud.AWS.Dynamo.Converters
   children:
+  - Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueConverterManager
+  - Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueToObjectConverterManager
   - Innovt.Cloud.AWS.Dynamo.Converters.DateTimeOffsetConverter
   langs:
   - csharp
@@ -15,6 +17,18 @@ items:
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
 references:
+- uid: Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueConverterManager
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueConverterManager
+  href: Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueConverterManager.html
+  name: AttributeValueConverterManager
+  nameWithType: AttributeValueConverterManager
+  fullName: Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueConverterManager
+- uid: Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueToObjectConverterManager
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueToObjectConverterManager
+  href: Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueToObjectConverterManager.html
+  name: AttributeValueToObjectConverterManager
+  nameWithType: AttributeValueToObjectConverterManager
+  fullName: Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueToObjectConverterManager
 - uid: Innovt.Cloud.AWS.Dynamo.Converters.DateTimeOffsetConverter
   commentId: T:Innovt.Cloud.AWS.Dynamo.Converters.DateTimeOffsetConverter
   href: Innovt.Cloud.AWS.Dynamo.Converters.DateTimeOffsetConverter.html

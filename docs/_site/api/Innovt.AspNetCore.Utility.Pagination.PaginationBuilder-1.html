@@ -1,132 +1,96 @@
 ﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
 <html>
+
   <head>
     <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Class PaginationBuilder&lt;T&gt; | Innovt Platform </title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class PaginationBuilder&lt;T&gt; | Innovt Platform ">
-      
-      <meta name="description" content="Builder class for generating pagination HTML elements.">
-      <link rel="icon" href="../favicon.ico">
-      <link rel="stylesheet" href="../public/docfx.min.css">
-      <link rel="stylesheet" href="../public/main.css">
-      <meta name="docfx:navrel" content="../toc.html">
-      <meta name="docfx:tocrel" content="toc.html">
-      
-      <meta name="docfx:rel" content="../">
-      
-      
-      <meta name="docfx:docurl" content="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1.md&amp;value=---%0Auid%3A%20Innovt.AspNetCore.Utility.Pagination.PaginationBuilder%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
-      <meta name="loc:inThisArticle" content="In this article">
-      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
-      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
-      <meta name="loc:tocFilter" content="Filter by title">
-      <meta name="loc:nextArticle" content="Next">
-      <meta name="loc:prevArticle" content="Previous">
-      <meta name="loc:themeLight" content="Light">
-      <meta name="loc:themeDark" content="Dark">
-      <meta name="loc:themeAuto" content="Auto">
-      <meta name="loc:changeTheme" content="Change theme">
-      <meta name="loc:copy" content="Copy">
-      <meta name="loc:downloadPdf" content="Download PDF">
-
-      <script type="module" src="./../public/docfx.min.js"></script>
-
-      <script>
-        const theme = localStorage.getItem('theme') || 'auto'
-        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-      </script>
-
+    
+    <meta name="description" content="Builder class for generating pagination HTML elements.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
   </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
 
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
-    <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
-        <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../index.html">
-            <img id="logo" class="svg" src="../logo.svg" alt="Innovt Platform">
-            Innovt Platform
-          </a>
-          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navpanel">
-            <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="Innovt Platform">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
               </form>
             </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
 
-    <main class="container-xxl">
-      <div class="toc-offcanvas">
-        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
           </div>
-          <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
+      <div role="main" class="container body-content hide-when-search">
 
-      <div class="content">
-        <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
-          </button>
-
-          <nav id="breadcrumb"></nav>
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
         </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1">
 
-        <article data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1">
 
 
-
-  <h1 id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1" class="text-break">
-Class PaginationBuilder&lt;T&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Utility/Pagination/PaginationBuilder.cs/#L13"><i class="bi bi-code-slash"></i></a>
-  </h1>
-
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="Innovt.html">Innovt</a>.<a class="xref" href="Innovt.AspNetCore.html">AspNetCore</a>.<a class="xref" href="Innovt.AspNetCore.Utility.html">Utility</a>.<a class="xref" href="Innovt.AspNetCore.Utility.Pagination.html">Pagination</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>Innovt.AspNetCore.dll</dd></dl>
-  </div>
-
-  <div class="markdown summary"><p>Builder class for generating pagination HTML elements.</p>
+  <h1 id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1" class="text-break">Class PaginationBuilder&lt;T&gt;</h1>
+  <div class="markdown level0 summary"><p>Builder class for generating pagination HTML elements.</p>
 </div>
-  <div class="markdown conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class PaginationBuilder&lt;T&gt; where T : class</code></pre>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">PaginationBuilder&lt;T&gt;</span></div>
   </div>
-
-
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>Type of items in the collection.</p>
-</dd>
-  </dl>
-
-  <dl class="typelist inheritance">
-    <dt>Inheritance</dt>
-    <dd>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><span class="xref">PaginationBuilder&lt;T&gt;</span></div>
-    </dd>
-  </dl>
-
-
-
-  <dl class="typelist inheritedMembers">
-    <dt>Inherited Members</dt>
-    <dd>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -148,11 +112,359 @@ Class PaginationBuilder&lt;T&gt;  <a class="header-action link-secondary" title=
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </dd></dl>
-
-  <dl class="typelist extensionMethods">
-    <dt>Extension Methods</dt>
-    <dd>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Innovt.html">Innovt</a>.<a class="xref" href="Innovt.AspNetCore.html">AspNetCore</a>.<a class="xref" href="Innovt.AspNetCore.Utility.html">Utility</a>.<a class="xref" href="Innovt.AspNetCore.Utility.Pagination.html">Pagination</a></h6>
+  <h6><strong>Assembly</strong>: Innovt.AspNetCore.dll</h6>
+  <h5 id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class PaginationBuilder&lt;T&gt; where T : class</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Type of items in the collection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1__ctor_Innovt_Core_Collections_PagedCollection__0__System_String_.md&amp;value=---%0Auid%3A%20Innovt.AspNetCore.Utility.Pagination.PaginationBuilder%601.%23ctor(Innovt.Core.Collections.PagedCollection%7B%600%7D%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Utility/Pagination/PaginationBuilder.cs/#L22">View Source</a>
+  </span>
+  <a id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1__ctor_" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.#ctor*"></a>
+  <h4 id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1__ctor_Innovt_Core_Collections_PagedCollection__0__System_String_" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.#ctor(Innovt.Core.Collections.PagedCollection{`0},System.String)">PaginationBuilder(PagedCollection&lt;T&gt;, string)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the PaginationBuilder class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PaginationBuilder(PagedCollection&lt;T&gt; collection, string formId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Core.Collections.PagedCollection-1.html">PagedCollection</a>&lt;T&gt;</td>
+        <td><span class="parametername">collection</span></td>
+        <td><p>The paged collection of items.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">formId</span></td>
+        <td><p>The ID of the HTML form associated with the pagination.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_Collection.md&amp;value=---%0Auid%3A%20Innovt.AspNetCore.Utility.Pagination.PaginationBuilder%601.Collection%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Utility/Pagination/PaginationBuilder.cs/#L31">View Source</a>
+  </span>
+  <a id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_Collection_" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.Collection*"></a>
+  <h4 id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_Collection" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.Collection">Collection</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the paged collection of items.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PagedCollection&lt;T&gt; Collection { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Core.Collections.PagedCollection-1.html">PagedCollection</a>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildFooter.md&amp;value=---%0Auid%3A%20Innovt.AspNetCore.Utility.Pagination.PaginationBuilder%601.BuildFooter%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Utility/Pagination/PaginationBuilder.cs/#L60">View Source</a>
+  </span>
+  <a id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildFooter_" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildFooter*"></a>
+  <h4 id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildFooter" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildFooter">BuildFooter()</h4>
+  <div class="markdown level1 summary"><p>Builds the footer HTML for pagination.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual string BuildFooter()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>The HTML for the pagination footer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildHeader.md&amp;value=---%0Auid%3A%20Innovt.AspNetCore.Utility.Pagination.PaginationBuilder%601.BuildHeader%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Utility/Pagination/PaginationBuilder.cs/#L37">View Source</a>
+  </span>
+  <a id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildHeader_" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildHeader*"></a>
+  <h4 id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildHeader" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildHeader">BuildHeader()</h4>
+  <div class="markdown level1 summary"><p>Builds the header HTML for pagination.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual string BuildHeader()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>The HTML for the pagination header.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildItem_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20Innovt.AspNetCore.Utility.Pagination.PaginationBuilder%601.BuildItem(System.Int32%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Utility/Pagination/PaginationBuilder.cs/#L93">View Source</a>
+  </span>
+  <a id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildItem_" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildItem*"></a>
+  <h4 id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildItem_System_Int32_System_Boolean_" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildItem(System.Int32,System.Boolean)">BuildItem(int, bool)</h4>
+  <div class="markdown level1 summary"><p>Builds the HTML for a pagination item.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual string BuildItem(int page, bool isCurrent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">page</span></td>
+        <td><p>The page number associated with the item.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">isCurrent</span></td>
+        <td><p>Indicates whether the item represents the current page.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>The HTML for the pagination item.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildNext_System_String_.md&amp;value=---%0Auid%3A%20Innovt.AspNetCore.Utility.Pagination.PaginationBuilder%601.BuildNext(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Utility/Pagination/PaginationBuilder.cs/#L81">View Source</a>
+  </span>
+  <a id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildNext_" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildNext*"></a>
+  <h4 id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildNext_System_String_" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildNext(System.String)">BuildNext(string)</h4>
+  <div class="markdown level1 summary"><p>Builds the HTML for the &quot;Next&quot; pagination button.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual string BuildNext(string nextText = &quot;Pr&#243;ximo&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">nextText</span></td>
+        <td><p>The text to display for the &quot;Next&quot; button (default is &quot;Próximo&quot;).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>The HTML for the &quot;Next&quot; button.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildPagerScript.md&amp;value=---%0Auid%3A%20Innovt.AspNetCore.Utility.Pagination.PaginationBuilder%601.BuildPagerScript%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Utility/Pagination/PaginationBuilder.cs/#L46">View Source</a>
+  </span>
+  <a id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildPagerScript_" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildPagerScript*"></a>
+  <h4 id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildPagerScript" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildPagerScript">BuildPagerScript()</h4>
+  <div class="markdown level1 summary"><p>Builds the pager script HTML for pagination functionality.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual string BuildPagerScript()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>The HTML for the pagination script.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildPrevious_System_String_.md&amp;value=---%0Auid%3A%20Innovt.AspNetCore.Utility.Pagination.PaginationBuilder%601.BuildPrevious(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Utility/Pagination/PaginationBuilder.cs/#L70">View Source</a>
+  </span>
+  <a id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildPrevious_" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildPrevious*"></a>
+  <h4 id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildPrevious_System_String_" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildPrevious(System.String)">BuildPrevious(string)</h4>
+  <div class="markdown level1 summary"><p>Builds the HTML for the &quot;Previous&quot; pagination button.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual string BuildPrevious(string previousText = &quot;Anterior&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">previousText</span></td>
+        <td><p>The text to display for the &quot;Previous&quot; button (default is &quot;Anterior&quot;).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>The HTML for the &quot;Previous&quot; button.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_">Extensions.IsNull(object)</a>
   </div>
@@ -162,334 +474,47 @@ Class PaginationBuilder&lt;T&gt;  <a class="header-action link-secondary" title=
   <div>
       <a class="xref" href="Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_">SimpleMapper.MapTo&lt;T1&gt;(object)</a>
   </div>
-  </dd></dl>
-
-
-
-
-
-  <h2 class="section" id="constructors">Constructors
-</h2>
-
-
-  <a id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1__ctor_" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.#ctor*"></a>
-
-  <h3 id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1__ctor_Innovt_Core_Collections_PagedCollection__0__System_String_" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.#ctor(Innovt.Core.Collections.PagedCollection{`0},System.String)">
-  PaginationBuilder(PagedCollection&lt;T&gt;, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Utility/Pagination/PaginationBuilder.cs/#L22"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the PaginationBuilder class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PaginationBuilder(PagedCollection&lt;T&gt; collection, string formId)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>collection</code> <a class="xref" href="Innovt.Core.Collections.PagedCollection-1.html">PagedCollection</a>&lt;T&gt;</dt>
-    <dd><p>The paged collection of items.</p>
-</dd>
-    <dt><code>formId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The ID of the HTML form associated with the pagination.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
-  <a id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_Collection_" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.Collection*"></a>
-
-  <h3 id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_Collection" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.Collection">
-  Collection
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Utility/Pagination/PaginationBuilder.cs/#L31"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets or sets the paged collection of items.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PagedCollection&lt;T&gt; Collection { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Innovt.Core.Collections.PagedCollection-1.html">PagedCollection</a>&lt;T&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
-  <a id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildFooter_" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildFooter*"></a>
-
-  <h3 id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildFooter" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildFooter">
-  BuildFooter()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Utility/Pagination/PaginationBuilder.cs/#L60"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Builds the footer HTML for pagination.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual string BuildFooter()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The HTML for the pagination footer.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildHeader_" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildHeader*"></a>
-
-  <h3 id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildHeader" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildHeader">
-  BuildHeader()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Utility/Pagination/PaginationBuilder.cs/#L37"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Builds the header HTML for pagination.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual string BuildHeader()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The HTML for the pagination header.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildItem_" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildItem*"></a>
-
-  <h3 id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildItem_System_Int32_System_Boolean_" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildItem(System.Int32,System.Boolean)">
-  BuildItem(int, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Utility/Pagination/PaginationBuilder.cs/#L93"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Builds the HTML for a pagination item.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual string BuildItem(int page, bool isCurrent)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>page</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The page number associated with the item.</p>
-</dd>
-    <dt><code>isCurrent</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>Indicates whether the item represents the current page.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The HTML for the pagination item.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildNext_" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildNext*"></a>
-
-  <h3 id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildNext_System_String_" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildNext(System.String)">
-  BuildNext(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Utility/Pagination/PaginationBuilder.cs/#L81"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Builds the HTML for the &quot;Next&quot; pagination button.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual string BuildNext(string nextText = &quot;Pr&#243;ximo&quot;)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>nextText</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The text to display for the &quot;Next&quot; button (default is &quot;Próximo&quot;).</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The HTML for the &quot;Next&quot; button.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildPagerScript_" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildPagerScript*"></a>
-
-  <h3 id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildPagerScript" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildPagerScript">
-  BuildPagerScript()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Utility/Pagination/PaginationBuilder.cs/#L46"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Builds the pager script HTML for pagination functionality.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual string BuildPagerScript()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The HTML for the pagination script.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildPrevious_" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildPrevious*"></a>
-
-  <h3 id="Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1_BuildPrevious_System_String_" data-uid="Innovt.AspNetCore.Utility.Pagination.PaginationBuilder`1.BuildPrevious(System.String)">
-  BuildPrevious(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Utility/Pagination/PaginationBuilder.cs/#L70"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Builds the HTML for the &quot;Previous&quot; pagination button.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual string BuildPrevious(string previousText = &quot;Anterior&quot;)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>previousText</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The text to display for the &quot;Previous&quot; button (default is &quot;Anterior&quot;).</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The HTML for the &quot;Previous&quot; button.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
 
 </article>
+          </div>
 
-        <div class="contribution d-print-none">
-          <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Utility/Pagination/PaginationBuilder.cs/#L13" class="edit-link">Edit this page</a>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_AspNetCore_Utility_Pagination_PaginationBuilder_1.md&amp;value=---%0Auid%3A%20Innovt.AspNetCore.Utility.Pagination.PaginationBuilder%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Utility/Pagination/PaginationBuilder.cs/#L13" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
         </div>
-
-
       </div>
 
-      <div class="affix">
-        <nav id="affix"></nav>
-      </div>
-    </main>
-
-    <div class="container-xxl search-results" id="search-results"></div>
-
-    <footer class="border-top text-secondary">
-      <div class="container-xxl">
-        <div class="flex-fill">
-          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
   </body>
 </html>

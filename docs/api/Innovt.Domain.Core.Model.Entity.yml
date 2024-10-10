@@ -263,7 +263,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: SetAsNew
     path: ../src/Innovt.Domain.Core/Model/Entity.cs
-    startLine: 65
+    startLine: 62
   assemblies:
   - Innovt.Domain.Core
   namespace: Innovt.Domain.Core.Model
@@ -294,7 +294,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: GetHashCode
     path: ../src/Innovt.Domain.Core/Model/Entity.cs
-    startLine: 72
+    startLine: 69
   assemblies:
   - Innovt.Domain.Core
   namespace: Innovt.Domain.Core.Model
@@ -326,7 +326,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: Equals
     path: ../src/Innovt.Domain.Core/Model/Entity.cs
-    startLine: 78
+    startLine: 75
   assemblies:
   - Innovt.Domain.Core
   namespace: Innovt.Domain.Core.Model
@@ -365,7 +365,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: AddDomainEvent
     path: ../src/Innovt.Domain.Core/Model/Entity.cs
-    startLine: 89
+    startLine: 86
   assemblies:
   - Innovt.Domain.Core
   namespace: Innovt.Domain.Core.Model
@@ -399,7 +399,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: GetDomainEvents
     path: ../src/Innovt.Domain.Core/Model/Entity.cs
-    startLine: 103
+    startLine: 100
   assemblies:
   - Innovt.Domain.Core
   namespace: Innovt.Domain.Core.Model

@@ -6,10 +6,12 @@ items:
   parent: Innovt.Cloud.AWS.Dynamo
   children:
   - Innovt.Cloud.AWS.Dynamo.DynamoContext.#ctor
-  - Innovt.Cloud.AWS.Dynamo.DynamoContext.Entities
   - Innovt.Cloud.AWS.Dynamo.DynamoContext.GetPropertyConverter(System.Type)
   - Innovt.Cloud.AWS.Dynamo.DynamoContext.GetTypeBuilder``1
-  - Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder``1
+  - Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder(System.Type)
+  - Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder``1(System.Object)
+  - Innovt.Cloud.AWS.Dynamo.DynamoContext.IgnoreNullValues
+  - Innovt.Cloud.AWS.Dynamo.DynamoContext.ModelBuilder
   - Innovt.Cloud.AWS.Dynamo.DynamoContext.OnModelCreating(Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder)
   langs:
   - csharp
@@ -25,7 +27,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: DynamoContext
     path: ../src/Innovt.Cloud.AWS.Dynamo/DynamoContext.cs
-    startLine: 13
+    startLine: 11
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
@@ -66,7 +68,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: .ctor
     path: ../src/Innovt.Cloud.AWS.Dynamo/DynamoContext.cs
-    startLine: 18
+    startLine: 15
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
@@ -77,68 +79,66 @@ items:
   nameWithType.vb: DynamoContext.New()
   fullName.vb: Innovt.Cloud.AWS.Dynamo.DynamoContext.New()
   name.vb: New()
-- uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.Entities
-  commentId: P:Innovt.Cloud.AWS.Dynamo.DynamoContext.Entities
-  id: Entities
+- uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.ModelBuilder
+  commentId: P:Innovt.Cloud.AWS.Dynamo.DynamoContext.ModelBuilder
+  id: ModelBuilder
   parent: Innovt.Cloud.AWS.Dynamo.DynamoContext
   langs:
   - csharp
   - vb
-  name: Entities
-  nameWithType: DynamoContext.Entities
-  fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext.Entities
+  name: ModelBuilder
+  nameWithType: DynamoContext.ModelBuilder
+  fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext.ModelBuilder
   type: Property
   source:
     remote:
       path: src/Innovt.Cloud.AWS.Dynamo/DynamoContext.cs
       branch: feature/ImproveDynamoMapping
       repo: https://github.com/Innovtt/Innovt.Platform.git
-    id: Entities
+    id: ModelBuilder
     path: ../src/Innovt.Cloud.AWS.Dynamo/DynamoContext.cs
-    startLine: 23
+    startLine: 20
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
   syntax:
-    content: public Dictionary<string, object> Entities { get; }
+    content: public ModelBuilder ModelBuilder { get; }
     parameters: []
     return:
-      type: System.Collections.Generic.Dictionary{System.String,System.Object}
-    content.vb: Public ReadOnly Property Entities As Dictionary(Of String, Object)
-  overload: Innovt.Cloud.AWS.Dynamo.DynamoContext.Entities*
-- uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder``1
-  commentId: M:Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder``1
-  id: HasTypeBuilder``1
+      type: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+    content.vb: Public Property ModelBuilder As ModelBuilder
+  overload: Innovt.Cloud.AWS.Dynamo.DynamoContext.ModelBuilder*
+- uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.IgnoreNullValues
+  commentId: P:Innovt.Cloud.AWS.Dynamo.DynamoContext.IgnoreNullValues
+  id: IgnoreNullValues
   parent: Innovt.Cloud.AWS.Dynamo.DynamoContext
   langs:
   - csharp
   - vb
-  name: HasTypeBuilder<T>()
-  nameWithType: DynamoContext.HasTypeBuilder<T>()
-  fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder<T>()
-  type: Method
+  name: IgnoreNullValues
+  nameWithType: DynamoContext.IgnoreNullValues
+  fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext.IgnoreNullValues
+  type: Property
   source:
     remote:
       path: src/Innovt.Cloud.AWS.Dynamo/DynamoContext.cs
       branch: feature/ImproveDynamoMapping
       repo: https://github.com/Innovtt/Innovt.Platform.git
-    id: HasTypeBuilder
+    id: IgnoreNullValues
     path: ../src/Innovt.Cloud.AWS.Dynamo/DynamoContext.cs
-    startLine: 50
+    startLine: 25
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
+  summary: It tells the context to ignore null properties when saving an entity.
+  example: []
   syntax:
-    content: public bool HasTypeBuilder<T>()
-    typeParameters:
-    - id: T
+    content: public bool IgnoreNullValues { get; set; }
+    parameters: []
     return:
       type: System.Boolean
-    content.vb: Public Function HasTypeBuilder(Of T)() As Boolean
-  overload: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder*
-  nameWithType.vb: DynamoContext.HasTypeBuilder(Of T)()
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder(Of T)()
-  name.vb: HasTypeBuilder(Of T)()
+    content.vb: Public Property IgnoreNullValues As Boolean
+  overload: Innovt.Cloud.AWS.Dynamo.DynamoContext.IgnoreNullValues*
 - uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.GetTypeBuilder``1
   commentId: M:Innovt.Cloud.AWS.Dynamo.DynamoContext.GetTypeBuilder``1
   id: GetTypeBuilder``1
@@ -157,7 +157,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: GetTypeBuilder
     path: ../src/Innovt.Cloud.AWS.Dynamo/DynamoContext.cs
-    startLine: 57
+    startLine: 40
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
@@ -190,7 +190,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: GetPropertyConverter
     path: ../src/Innovt.Cloud.AWS.Dynamo/DynamoContext.cs
-    startLine: 69
+    startLine: 45
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
@@ -203,6 +203,78 @@ items:
       type: Amazon.DynamoDBv2.DataModel.IPropertyConverter
     content.vb: Public Function GetPropertyConverter(type As Type) As IPropertyConverter
   overload: Innovt.Cloud.AWS.Dynamo.DynamoContext.GetPropertyConverter*
+- uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder(System.Type)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder(System.Type)
+  id: HasTypeBuilder(System.Type)
+  parent: Innovt.Cloud.AWS.Dynamo.DynamoContext
+  langs:
+  - csharp
+  - vb
+  name: HasTypeBuilder(Type)
+  nameWithType: DynamoContext.HasTypeBuilder(Type)
+  fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder(System.Type)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/DynamoContext.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: HasTypeBuilder
+    path: ../src/Innovt.Cloud.AWS.Dynamo/DynamoContext.cs
+    startLine: 50
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo
+  syntax:
+    content: public bool HasTypeBuilder(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+    return:
+      type: System.Boolean
+    content.vb: Public Function HasTypeBuilder(type As Type) As Boolean
+  overload: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder*
+- uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder``1(System.Object)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder``1(System.Object)
+  id: HasTypeBuilder``1(System.Object)
+  parent: Innovt.Cloud.AWS.Dynamo.DynamoContext
+  langs:
+  - csharp
+  - vb
+  name: HasTypeBuilder<T>(object)
+  nameWithType: DynamoContext.HasTypeBuilder<T>(object)
+  fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder<T>(object)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/DynamoContext.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: HasTypeBuilder
+    path: ../src/Innovt.Cloud.AWS.Dynamo/DynamoContext.cs
+    startLine: 61
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo
+  summary: Utility method to add a new entity to the context
+  example: []
+  syntax:
+    content: public bool HasTypeBuilder<T>(object instance = null)
+    parameters:
+    - id: instance
+      type: System.Object
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function HasTypeBuilder(Of T)(instance As Object = Nothing) As Boolean
+  overload: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder*
+  nameWithType.vb: DynamoContext.HasTypeBuilder(Of T)(Object)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder(Of T)(Object)
+  name.vb: HasTypeBuilder(Of T)(Object)
 - uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.OnModelCreating(Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder)
   commentId: M:Innovt.Cloud.AWS.Dynamo.DynamoContext.OnModelCreating(Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder)
   id: OnModelCreating(Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder)
@@ -221,7 +293,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: OnModelCreating
     path: ../src/Innovt.Cloud.AWS.Dynamo/DynamoContext.cs
-    startLine: 74
+    startLine: 67
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo
@@ -798,136 +870,71 @@ references:
   nameWithType.vb: DynamoContext.New
   fullName.vb: Innovt.Cloud.AWS.Dynamo.DynamoContext.New
   name.vb: New
-- uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.Entities*
-  commentId: Overload:Innovt.Cloud.AWS.Dynamo.DynamoContext.Entities
-  href: Innovt.Cloud.AWS.Dynamo.DynamoContext.html#Innovt_Cloud_AWS_Dynamo_DynamoContext_Entities
-  name: Entities
-  nameWithType: DynamoContext.Entities
-  fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext.Entities
-- uid: System.Collections.Generic.Dictionary{System.String,System.Object}
-  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Object}
-  parent: System.Collections.Generic
-  definition: System.Collections.Generic.Dictionary`2
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  name: Dictionary<string, object>
-  nameWithType: Dictionary<string, object>
-  fullName: System.Collections.Generic.Dictionary<string, object>
-  nameWithType.vb: Dictionary(Of String, Object)
-  fullName.vb: System.Collections.Generic.Dictionary(Of String, Object)
-  name.vb: Dictionary(Of String, Object)
+- uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.ModelBuilder*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.DynamoContext.ModelBuilder
+  href: Innovt.Cloud.AWS.Dynamo.DynamoContext.html#Innovt_Cloud_AWS_Dynamo_DynamoContext_ModelBuilder
+  name: ModelBuilder
+  nameWithType: DynamoContext.ModelBuilder
+  fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext.ModelBuilder
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.html
+  name: ModelBuilder
+  nameWithType: ModelBuilder
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping
+  commentId: N:Innovt.Cloud.AWS.Dynamo.Mapping
+  href: Innovt.html
+  name: Innovt.Cloud.AWS.Dynamo.Mapping
+  nameWithType: Innovt.Cloud.AWS.Dynamo.Mapping
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping
   spec.csharp:
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: <
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: System.Object
-    name: object
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object
-  - name: '>'
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
+  - name: .
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
+  - name: .
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo
+    name: Dynamo
+    href: Innovt.Cloud.AWS.Dynamo.html
+  - name: .
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping
+    name: Mapping
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.html
   spec.vb:
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: System.Object
-    name: Object
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object
-  - name: )
-- uid: System.Collections.Generic.Dictionary`2
-  commentId: T:System.Collections.Generic.Dictionary`2
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  name: Dictionary<TKey, TValue>
-  nameWithType: Dictionary<TKey, TValue>
-  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
-  nameWithType.vb: Dictionary(Of TKey, TValue)
-  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
-  name.vb: Dictionary(Of TKey, TValue)
-  spec.csharp:
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: <
-  - name: TKey
-  - name: ','
-  - name: " "
-  - name: TValue
-  - name: '>'
-  spec.vb:
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: (
-  - name: Of
-  - name: " "
-  - name: TKey
-  - name: ','
-  - name: " "
-  - name: TValue
-  - name: )
-- uid: System.Collections.Generic
-  commentId: N:System.Collections.Generic
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system
-  name: System.Collections.Generic
-  nameWithType: System.Collections.Generic
-  fullName: System.Collections.Generic
-  spec.csharp:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
+  - uid: Innovt
+    name: Innovt
+    href: Innovt.html
   - name: .
-  - uid: System.Collections
-    name: Collections
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - uid: Innovt.Cloud
+    name: Cloud
+    href: Innovt.Cloud.html
   - name: .
-  - uid: System.Collections.Generic
-    name: Generic
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
-  spec.vb:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
+  - uid: Innovt.Cloud.AWS
+    name: AWS
+    href: Innovt.Cloud.AWS.html
   - name: .
-  - uid: System.Collections
-    name: Collections
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - uid: Innovt.Cloud.AWS.Dynamo
+    name: Dynamo
+    href: Innovt.Cloud.AWS.Dynamo.html
   - name: .
-  - uid: System.Collections.Generic
-    name: Generic
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
-- uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder*
-  commentId: Overload:Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder
-  href: Innovt.Cloud.AWS.Dynamo.DynamoContext.html#Innovt_Cloud_AWS_Dynamo_DynamoContext_HasTypeBuilder__1
-  name: HasTypeBuilder
-  nameWithType: DynamoContext.HasTypeBuilder
-  fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping
+    name: Mapping
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.html
+- uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.IgnoreNullValues*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.DynamoContext.IgnoreNullValues
+  href: Innovt.Cloud.AWS.Dynamo.DynamoContext.html#Innovt_Cloud_AWS_Dynamo_DynamoContext_IgnoreNullValues
+  name: IgnoreNullValues
+  nameWithType: DynamoContext.IgnoreNullValues
+  fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext.IgnoreNullValues
 - uid: System.Boolean
   commentId: T:System.Boolean
   parent: System
@@ -1070,7 +1077,7 @@ references:
   commentId: T:Amazon.DynamoDBv2.DataModel.IPropertyConverter
   parent: Amazon.DynamoDBv2.DataModel
   isExternal: true
-  href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
+  href: https://github.com/aws/aws-sdk-net/blob/a180df70def2d9b66be5d7ca95bf0ba5fa35d67a/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
   name: IPropertyConverter
   nameWithType: IPropertyConverter
   fullName: Amazon.DynamoDBv2.DataModel.IPropertyConverter
@@ -1104,62 +1111,15 @@ references:
   - uid: Amazon.DynamoDBv2.DataModel
     name: DataModel
     isExternal: true
+- uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder
+  href: Innovt.Cloud.AWS.Dynamo.DynamoContext.html#Innovt_Cloud_AWS_Dynamo_DynamoContext_HasTypeBuilder_System_Type_
+  name: HasTypeBuilder
+  nameWithType: DynamoContext.HasTypeBuilder
+  fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder
 - uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.OnModelCreating*
   commentId: Overload:Innovt.Cloud.AWS.Dynamo.DynamoContext.OnModelCreating
   href: Innovt.Cloud.AWS.Dynamo.DynamoContext.html#Innovt_Cloud_AWS_Dynamo_DynamoContext_OnModelCreating_Innovt_Cloud_AWS_Dynamo_Mapping_ModelBuilder_
   name: OnModelCreating
   nameWithType: DynamoContext.OnModelCreating
   fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext.OnModelCreating
-- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
-  commentId: T:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
-  parent: Innovt.Cloud.AWS.Dynamo.Mapping
-  href: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.html
-  name: ModelBuilder
-  nameWithType: ModelBuilder
-  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
-- uid: Innovt.Cloud.AWS.Dynamo.Mapping
-  commentId: N:Innovt.Cloud.AWS.Dynamo.Mapping
-  href: Innovt.html
-  name: Innovt.Cloud.AWS.Dynamo.Mapping
-  nameWithType: Innovt.Cloud.AWS.Dynamo.Mapping
-  fullName: Innovt.Cloud.AWS.Dynamo.Mapping
-  spec.csharp:
-  - uid: Innovt
-    name: Innovt
-    href: Innovt.html
-  - name: .
-  - uid: Innovt.Cloud
-    name: Cloud
-    href: Innovt.Cloud.html
-  - name: .
-  - uid: Innovt.Cloud.AWS
-    name: AWS
-    href: Innovt.Cloud.AWS.html
-  - name: .
-  - uid: Innovt.Cloud.AWS.Dynamo
-    name: Dynamo
-    href: Innovt.Cloud.AWS.Dynamo.html
-  - name: .
-  - uid: Innovt.Cloud.AWS.Dynamo.Mapping
-    name: Mapping
-    href: Innovt.Cloud.AWS.Dynamo.Mapping.html
-  spec.vb:
-  - uid: Innovt
-    name: Innovt
-    href: Innovt.html
-  - name: .
-  - uid: Innovt.Cloud
-    name: Cloud
-    href: Innovt.Cloud.html
-  - name: .
-  - uid: Innovt.Cloud.AWS
-    name: AWS
-    href: Innovt.Cloud.AWS.html
-  - name: .
-  - uid: Innovt.Cloud.AWS.Dynamo
-    name: Dynamo
-    href: Innovt.Cloud.AWS.Dynamo.html
-  - name: .
-  - uid: Innovt.Cloud.AWS.Dynamo.Mapping
-    name: Mapping
-    href: Innovt.Cloud.AWS.Dynamo.Mapping.html

@@ -23,7 +23,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: SimpleMapper
     path: ../src/Innovt.Core/Utilities/Mapper/SimpleMapper.cs
-    startLine: 17
+    startLine: 15
   assemblies:
   - Innovt.Core
   namespace: Innovt.Core.Utilities.Mapper
@@ -60,7 +60,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: Map
     path: ../src/Innovt.Core/Utilities/Mapper/SimpleMapper.cs
-    startLine: 64
+    startLine: 59
   assemblies:
   - Innovt.Core
   namespace: Innovt.Core.Utilities.Mapper
@@ -103,7 +103,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: Map
     path: ../src/Innovt.Core/Utilities/Mapper/SimpleMapper.cs
-    startLine: 81
+    startLine: 76
   assemblies:
   - Innovt.Core
   namespace: Innovt.Core.Utilities.Mapper
@@ -147,7 +147,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: MapTo
     path: ../src/Innovt.Core/Utilities/Mapper/SimpleMapper.cs
-    startLine: 95
+    startLine: 90
   assemblies:
   - Innovt.Core
   namespace: Innovt.Core.Utilities.Mapper
@@ -189,7 +189,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: MapToList
     path: ../src/Innovt.Core/Utilities/Mapper/SimpleMapper.cs
-    startLine: 111
+    startLine: 106
   assemblies:
   - Innovt.Core
   namespace: Innovt.Core.Utilities.Mapper

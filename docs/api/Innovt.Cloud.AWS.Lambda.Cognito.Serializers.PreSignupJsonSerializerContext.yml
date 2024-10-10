@@ -26,7 +26,7 @@ items:
   type: Class
   source:
     id: PreSignupJsonSerializerContext
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PreSignupJsonSerializerContext.TriggerCallerContext.g.cs
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PreSignupJsonSerializerContext.Boolean.g.cs
     startLine: 10
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Cognito
@@ -84,20 +84,20 @@ items:
     arguments:
     - type: System.Type
       value: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupResponse
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupResponse
-  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupResponse
-  id: PreSignupResponse
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.TriggerCallerContext
+  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.TriggerCallerContext
+  id: TriggerCallerContext
   parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext
   langs:
   - csharp
   - vb
-  name: PreSignupResponse
-  nameWithType: PreSignupJsonSerializerContext.PreSignupResponse
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupResponse
+  name: TriggerCallerContext
+  nameWithType: PreSignupJsonSerializerContext.TriggerCallerContext
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.TriggerCallerContext
   type: Property
   source:
-    id: PreSignupResponse
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PreSignupJsonSerializerContext.PreSignupResponse.g.cs
+    id: TriggerCallerContext
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PreSignupJsonSerializerContext.TriggerCallerContext.g.cs
     startLine: 17
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Cognito
@@ -105,12 +105,12 @@ items:
   summary: Defines the source generated JSON serialization contract metadata for a given type.
   example: []
   syntax:
-    content: public JsonTypeInfo<PreSignupResponse> PreSignupResponse { get; }
+    content: public JsonTypeInfo<TriggerCallerContext> TriggerCallerContext { get; }
     parameters: []
     return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupResponse}
-    content.vb: Public ReadOnly Property PreSignupResponse As JsonTypeInfo(Of PreSignupResponse)
-  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupResponse*
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext}
+    content.vb: Public ReadOnly Property TriggerCallerContext As JsonTypeInfo(Of TriggerCallerContext)
+  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.TriggerCallerContext*
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.DictionaryStringString
   commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.DictionaryStringString
   id: DictionaryStringString
@@ -165,6 +165,33 @@ items:
       type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
     content.vb: Public ReadOnly Property [String] As JsonTypeInfo(Of String)
   overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.String*
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupEvent
+  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupEvent
+  id: PreSignupEvent
+  parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: PreSignupEvent
+  nameWithType: PreSignupJsonSerializerContext.PreSignupEvent
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupEvent
+  type: Property
+  source:
+    id: PreSignupEvent
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PreSignupJsonSerializerContext.PreSignupEvent.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Cognito
+  namespace: Innovt.Cloud.AWS.Lambda.Cognito.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<PreSignupEvent> PreSignupEvent { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupEvent}
+    content.vb: Public ReadOnly Property PreSignupEvent As JsonTypeInfo(Of PreSignupEvent)
+  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupEvent*
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.GetTypeInfo(System.Type)
   commentId: M:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.GetTypeInfo(System.Type)
   id: GetTypeInfo(System.Type)
@@ -197,33 +224,6 @@ items:
     content.vb: Public Overrides Function GetTypeInfo(type As Type) As JsonTypeInfo
   overridden: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
   overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.GetTypeInfo*
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupEvent
-  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupEvent
-  id: PreSignupEvent
-  parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: PreSignupEvent
-  nameWithType: PreSignupJsonSerializerContext.PreSignupEvent
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupEvent
-  type: Property
-  source:
-    id: PreSignupEvent
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PreSignupJsonSerializerContext.PreSignupEvent.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Cognito
-  namespace: Innovt.Cloud.AWS.Lambda.Cognito.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<PreSignupEvent> PreSignupEvent { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupEvent}
-    content.vb: Public ReadOnly Property PreSignupEvent As JsonTypeInfo(Of PreSignupEvent)
-  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupEvent*
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.Default
   commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.Default
   id: Default
@@ -336,20 +336,20 @@ items:
   nameWithType.vb: PreSignupJsonSerializerContext.New(JsonSerializerOptions)
   fullName.vb: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.New(System.Text.Json.JsonSerializerOptions)
   name.vb: New(JsonSerializerOptions)
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.Boolean
-  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.Boolean
-  id: Boolean
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupResponse
+  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupResponse
+  id: PreSignupResponse
   parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext
   langs:
   - csharp
   - vb
-  name: Boolean
-  nameWithType: PreSignupJsonSerializerContext.Boolean
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.Boolean
+  name: PreSignupResponse
+  nameWithType: PreSignupJsonSerializerContext.PreSignupResponse
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupResponse
   type: Property
   source:
-    id: Boolean
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PreSignupJsonSerializerContext.Boolean.g.cs
+    id: PreSignupResponse
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PreSignupJsonSerializerContext.PreSignupResponse.g.cs
     startLine: 17
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Cognito
@@ -357,12 +357,12 @@ items:
   summary: Defines the source generated JSON serialization contract metadata for a given type.
   example: []
   syntax:
-    content: public JsonTypeInfo<bool> Boolean { get; }
+    content: public JsonTypeInfo<PreSignupResponse> PreSignupResponse { get; }
     parameters: []
     return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Boolean}
-    content.vb: Public ReadOnly Property [Boolean] As JsonTypeInfo(Of Boolean)
-  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.Boolean*
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupResponse}
+    content.vb: Public ReadOnly Property PreSignupResponse As JsonTypeInfo(Of PreSignupResponse)
+  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupResponse*
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupRequest
   commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupRequest
   id: PreSignupRequest
@@ -390,20 +390,20 @@ items:
       type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupRequest}
     content.vb: Public ReadOnly Property PreSignupRequest As JsonTypeInfo(Of PreSignupRequest)
   overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupRequest*
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.TriggerCallerContext
-  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.TriggerCallerContext
-  id: TriggerCallerContext
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.Boolean
+  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.Boolean
+  id: Boolean
   parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext
   langs:
   - csharp
   - vb
-  name: TriggerCallerContext
-  nameWithType: PreSignupJsonSerializerContext.TriggerCallerContext
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.TriggerCallerContext
+  name: Boolean
+  nameWithType: PreSignupJsonSerializerContext.Boolean
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.Boolean
   type: Property
   source:
-    id: TriggerCallerContext
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PreSignupJsonSerializerContext.TriggerCallerContext.g.cs
+    id: Boolean
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PreSignupJsonSerializerContext.Boolean.g.cs
     startLine: 17
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Cognito
@@ -411,12 +411,12 @@ items:
   summary: Defines the source generated JSON serialization contract metadata for a given type.
   example: []
   syntax:
-    content: public JsonTypeInfo<TriggerCallerContext> TriggerCallerContext { get; }
+    content: public JsonTypeInfo<bool> Boolean { get; }
     parameters: []
     return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext}
-    content.vb: Public ReadOnly Property TriggerCallerContext As JsonTypeInfo(Of TriggerCallerContext)
-  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.TriggerCallerContext*
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Boolean}
+    content.vb: Public ReadOnly Property [Boolean] As JsonTypeInfo(Of Boolean)
+  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.Boolean*
 references:
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers
   commentId: N:Innovt.Cloud.AWS.Lambda.Cognito.Serializers
@@ -1118,31 +1118,31 @@ references:
   - uid: Innovt.Core.Utilities.Mapper
     name: Mapper
     href: Innovt.Core.Utilities.Mapper.html
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupResponse*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupResponse
-  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PreSignupJsonSerializerContext_PreSignupResponse
-  name: PreSignupResponse
-  nameWithType: PreSignupJsonSerializerContext.PreSignupResponse
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupResponse
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupResponse}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupResponse}
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.TriggerCallerContext*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.TriggerCallerContext
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PreSignupJsonSerializerContext_TriggerCallerContext
+  name: TriggerCallerContext
+  nameWithType: PreSignupJsonSerializerContext.TriggerCallerContext
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.TriggerCallerContext
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext}
   parent: System.Text.Json.Serialization.Metadata
   definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
   href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<PreSignupResponse>
-  nameWithType: JsonTypeInfo<PreSignupResponse>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupResponse>
-  nameWithType.vb: JsonTypeInfo(Of PreSignupResponse)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupResponse)
-  name.vb: JsonTypeInfo(Of PreSignupResponse)
+  name: JsonTypeInfo<TriggerCallerContext>
+  nameWithType: JsonTypeInfo<TriggerCallerContext>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext>
+  nameWithType.vb: JsonTypeInfo(Of TriggerCallerContext)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext)
+  name.vb: JsonTypeInfo(Of TriggerCallerContext)
   spec.csharp:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
     name: JsonTypeInfo
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
   - name: <
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupResponse
-    name: PreSignupResponse
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext
+    name: TriggerCallerContext
   - name: '>'
   spec.vb:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
@@ -1152,8 +1152,8 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupResponse
-    name: PreSignupResponse
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext
+    name: TriggerCallerContext
   - name: )
 - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
   commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
@@ -1291,6 +1291,43 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupEvent*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupEvent
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PreSignupJsonSerializerContext_PreSignupEvent
+  name: PreSignupEvent
+  nameWithType: PreSignupJsonSerializerContext.PreSignupEvent
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupEvent
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupEvent}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupEvent}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<PreSignupEvent>
+  nameWithType: JsonTypeInfo<PreSignupEvent>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupEvent>
+  nameWithType.vb: JsonTypeInfo(Of PreSignupEvent)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupEvent)
+  name.vb: JsonTypeInfo(Of PreSignupEvent)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupEvent
+    name: PreSignupEvent
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupEvent
+    name: PreSignupEvent
+  - name: )
 - uid: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
   commentId: M:System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
   parent: System.Text.Json.Serialization.JsonSerializerContext
@@ -1343,43 +1380,6 @@ references:
   name: JsonTypeInfo
   nameWithType: JsonTypeInfo
   fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupEvent*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupEvent
-  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PreSignupJsonSerializerContext_PreSignupEvent
-  name: PreSignupEvent
-  nameWithType: PreSignupJsonSerializerContext.PreSignupEvent
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupEvent
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupEvent}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupEvent}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<PreSignupEvent>
-  nameWithType: JsonTypeInfo<PreSignupEvent>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupEvent>
-  nameWithType.vb: JsonTypeInfo(Of PreSignupEvent)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupEvent)
-  name.vb: JsonTypeInfo(Of PreSignupEvent)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupEvent
-    name: PreSignupEvent
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupEvent
-    name: PreSignupEvent
-  - name: )
 - uid: System.Text.Json.JsonSerializerOptions
   commentId: T:System.Text.Json.JsonSerializerOptions
   parent: System.Text.Json
@@ -1461,6 +1461,80 @@ references:
   nameWithType.vb: PreSignupJsonSerializerContext.New
   fullName.vb: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.New
   name.vb: New
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupResponse*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupResponse
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PreSignupJsonSerializerContext_PreSignupResponse
+  name: PreSignupResponse
+  nameWithType: PreSignupJsonSerializerContext.PreSignupResponse
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupResponse
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupResponse}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupResponse}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<PreSignupResponse>
+  nameWithType: JsonTypeInfo<PreSignupResponse>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupResponse>
+  nameWithType.vb: JsonTypeInfo(Of PreSignupResponse)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupResponse)
+  name.vb: JsonTypeInfo(Of PreSignupResponse)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupResponse
+    name: PreSignupResponse
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupResponse
+    name: PreSignupResponse
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupRequest*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupRequest
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PreSignupJsonSerializerContext_PreSignupRequest
+  name: PreSignupRequest
+  nameWithType: PreSignupJsonSerializerContext.PreSignupRequest
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupRequest
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupRequest}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupRequest}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<PreSignupRequest>
+  nameWithType: JsonTypeInfo<PreSignupRequest>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupRequest>
+  nameWithType.vb: JsonTypeInfo(Of PreSignupRequest)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupRequest)
+  name.vb: JsonTypeInfo(Of PreSignupRequest)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupRequest
+    name: PreSignupRequest
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupRequest
+    name: PreSignupRequest
+  - name: )
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.Boolean*
   commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.Boolean
   href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PreSignupJsonSerializerContext_Boolean
@@ -1501,78 +1575,4 @@ references:
     name: Boolean
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.boolean
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupRequest*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupRequest
-  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PreSignupJsonSerializerContext_PreSignupRequest
-  name: PreSignupRequest
-  nameWithType: PreSignupJsonSerializerContext.PreSignupRequest
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.PreSignupRequest
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupRequest}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupRequest}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<PreSignupRequest>
-  nameWithType: JsonTypeInfo<PreSignupRequest>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupRequest>
-  nameWithType.vb: JsonTypeInfo(Of PreSignupRequest)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupRequest)
-  name.vb: JsonTypeInfo(Of PreSignupRequest)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupRequest
-    name: PreSignupRequest
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupRequest
-    name: PreSignupRequest
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.TriggerCallerContext*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.TriggerCallerContext
-  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PreSignupJsonSerializerContext_TriggerCallerContext
-  name: TriggerCallerContext
-  nameWithType: PreSignupJsonSerializerContext.TriggerCallerContext
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreSignupJsonSerializerContext.TriggerCallerContext
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<TriggerCallerContext>
-  nameWithType: JsonTypeInfo<TriggerCallerContext>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext>
-  nameWithType.vb: JsonTypeInfo(Of TriggerCallerContext)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext)
-  name.vb: JsonTypeInfo(Of TriggerCallerContext)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext
-    name: TriggerCallerContext
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.TriggerCallerContext
-    name: TriggerCallerContext
   - name: )

@@ -20,6 +20,7 @@ items:
   - Innovt.Cloud.AWS.AwsBaseService.Dispose
   - Innovt.Cloud.AWS.AwsBaseService.Dispose(System.Boolean)
   - Innovt.Cloud.AWS.AwsBaseService.DisposeServices
+  - Innovt.Cloud.AWS.AwsBaseService.ExponentialBackoffInSeconds
   - Innovt.Cloud.AWS.AwsBaseService.Finalize
   - Innovt.Cloud.AWS.AwsBaseService.GetServiceRegionEndPoint
   - Innovt.Cloud.AWS.AwsBaseService.Logger
@@ -200,6 +201,37 @@ items:
   nameWithType.vb: AwsBaseService.New(ILogger, IAwsConfiguration, String)
   fullName.vb: Innovt.Cloud.AWS.AwsBaseService.New(Innovt.Core.CrossCutting.Log.ILogger, Innovt.Cloud.AWS.Configuration.IAwsConfiguration, String)
   name.vb: New(ILogger, IAwsConfiguration, String)
+- uid: Innovt.Cloud.AWS.AwsBaseService.ExponentialBackoffInSeconds
+  commentId: P:Innovt.Cloud.AWS.AwsBaseService.ExponentialBackoffInSeconds
+  id: ExponentialBackoffInSeconds
+  parent: Innovt.Cloud.AWS.AwsBaseService
+  langs:
+  - csharp
+  - vb
+  name: ExponentialBackoffInSeconds
+  nameWithType: AwsBaseService.ExponentialBackoffInSeconds
+  fullName: Innovt.Cloud.AWS.AwsBaseService.ExponentialBackoffInSeconds
+  type: Property
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS/AwsBaseService.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: ExponentialBackoffInSeconds
+    path: ../src/Innovt.Cloud.AWS/AwsBaseService.cs
+    startLine: 77
+  assemblies:
+  - Innovt.Cloud.AWS
+  namespace: Innovt.Cloud.AWS
+  summary: It represents the exponential backoffice in seconds
+  example: []
+  syntax:
+    content: public int ExponentialBackoffInSeconds { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ExponentialBackoffInSeconds As Integer
+  overload: Innovt.Cloud.AWS.AwsBaseService.ExponentialBackoffInSeconds*
 - uid: Innovt.Cloud.AWS.AwsBaseService.Logger
   commentId: P:Innovt.Cloud.AWS.AwsBaseService.Logger
   id: Logger
@@ -218,7 +250,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: Logger
     path: ../src/Innovt.Cloud.AWS/AwsBaseService.cs
-    startLine: 87
+    startLine: 92
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS
@@ -249,7 +281,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: Dispose
     path: ../src/Innovt.Cloud.AWS/AwsBaseService.cs
-    startLine: 92
+    startLine: 97
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS
@@ -279,7 +311,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: GetServiceRegionEndPoint
     path: ../src/Innovt.Cloud.AWS/AwsBaseService.cs
-    startLine: 102
+    startLine: 107
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS
@@ -310,7 +342,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: CreateService
     path: ../src/Innovt.Cloud.AWS/AwsBaseService.cs
-    startLine: 114
+    startLine: 119
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS
@@ -347,7 +379,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: CreateDefaultRetryAsyncPolicy
     path: ../src/Innovt.Cloud.AWS/AwsBaseService.cs
-    startLine: 147
+    startLine: 152
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS
@@ -378,7 +410,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: CreateDefaultRetryPolicy
     path: ../src/Innovt.Cloud.AWS/AwsBaseService.cs
-    startLine: 159
+    startLine: 164
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS
@@ -411,7 +443,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: CreateRetryAsyncPolicy
     path: ../src/Innovt.Cloud.AWS/AwsBaseService.cs
-    startLine: 172
+    startLine: 177
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS
@@ -448,7 +480,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: CreateRetryAsyncPolicy
     path: ../src/Innovt.Cloud.AWS/AwsBaseService.cs
-    startLine: 184
+    startLine: 189
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS
@@ -487,7 +519,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: CreateRetryAsyncPolicy
     path: ../src/Innovt.Cloud.AWS/AwsBaseService.cs
-    startLine: 190
+    startLine: 195
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS
@@ -522,7 +554,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: CreateRetryAsyncPolicy
     path: ../src/Innovt.Cloud.AWS/AwsBaseService.cs
-    startLine: 198
+    startLine: 203
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS
@@ -558,7 +590,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: CreateRetryAsyncPolicy
     path: ../src/Innovt.Cloud.AWS/AwsBaseService.cs
-    startLine: 208
+    startLine: 213
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS
@@ -595,7 +627,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: CreateCircuitBreaker
     path: ../src/Innovt.Cloud.AWS/AwsBaseService.cs
-    startLine: 219
+    startLine: 224
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS
@@ -629,7 +661,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: Dispose
     path: ../src/Innovt.Cloud.AWS/AwsBaseService.cs
-    startLine: 230
+    startLine: 235
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS
@@ -664,7 +696,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: Finalize
     path: ../src/Innovt.Cloud.AWS/AwsBaseService.cs
-    startLine: 243
+    startLine: 248
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS
@@ -695,7 +727,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: DisposeServices
     path: ../src/Innovt.Cloud.AWS/AwsBaseService.cs
-    startLine: 251
+    startLine: 256
   assemblies:
   - Innovt.Cloud.AWS
   namespace: Innovt.Cloud.AWS
@@ -1386,6 +1418,23 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
+- uid: Innovt.Cloud.AWS.AwsBaseService.ExponentialBackoffInSeconds*
+  commentId: Overload:Innovt.Cloud.AWS.AwsBaseService.ExponentialBackoffInSeconds
+  href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_ExponentialBackoffInSeconds
+  name: ExponentialBackoffInSeconds
+  nameWithType: AwsBaseService.ExponentialBackoffInSeconds
+  fullName: Innovt.Cloud.AWS.AwsBaseService.ExponentialBackoffInSeconds
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
 - uid: Innovt.Cloud.AWS.AwsBaseService.Logger*
   commentId: Overload:Innovt.Cloud.AWS.AwsBaseService.Logger
   href: Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Logger
@@ -1430,7 +1479,7 @@ references:
   commentId: T:Amazon.RegionEndpoint
   parent: Amazon
   isExternal: true
-  href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Core/RegionEndpoint/RegionEndpoint.cs
+  href: https://github.com/aws/aws-sdk-net/blob/a180df70def2d9b66be5d7ca95bf0ba5fa35d67a/sdk/src/Core/RegionEndpoint/RegionEndpoint.cs
   name: RegionEndpoint
   nameWithType: RegionEndpoint
   fullName: Amazon.RegionEndpoint

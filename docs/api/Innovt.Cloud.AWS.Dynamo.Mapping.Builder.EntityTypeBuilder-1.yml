@@ -5,7 +5,7 @@ items:
   id: EntityTypeBuilder`1
   parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
   children:
-  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.AutoMap(System.Boolean)
+  - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.AutoMap(System.Boolean,System.Boolean)
   - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.EntityType
   - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.GetProperties
   - Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.GetProperty(System.String)
@@ -838,16 +838,16 @@ items:
   nameWithType.vb: EntityTypeBuilder(Of TEntity).Ignore(String)
   fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).Ignore(String)
   name.vb: Ignore(String)
-- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.AutoMap(System.Boolean)
-  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.AutoMap(System.Boolean)
-  id: AutoMap(System.Boolean)
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.AutoMap(System.Boolean,System.Boolean)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.AutoMap(System.Boolean,System.Boolean)
+  id: AutoMap(System.Boolean,System.Boolean)
   parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
   langs:
   - csharp
   - vb
-  name: AutoMap(bool)
-  nameWithType: EntityTypeBuilder<TEntity>.AutoMap(bool)
-  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.AutoMap(bool)
+  name: AutoMap(bool, bool)
+  nameWithType: EntityTypeBuilder<TEntity>.AutoMap(bool, bool)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.AutoMap(bool, bool)
   type: Method
   source:
     remote:
@@ -856,25 +856,29 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: AutoMap
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
-    startLine: 232
+    startLine: 233
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
   summary: Starts a reflection process to auto map all properties of the entity type.
   example: []
   syntax:
-    content: public EntityTypeBuilder<TEntity> AutoMap(bool withDefaultKeys = true)
+    content: public EntityTypeBuilder<TEntity> AutoMap(bool withDefaultKeys = true, bool ignoreNonNativeTypes = false)
     parameters:
     - id: withDefaultKeys
       type: System.Boolean
+      description: Default keys are PK and SK
+    - id: ignoreNonNativeTypes
+      type: System.Boolean
+      description: Ignore all complex types
     return:
       type: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
-      description: The current instance of <xref href="Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder%601" data-throw-if-not-resolved="false"></xref>.
-    content.vb: Public Function AutoMap(withDefaultKeys As Boolean = True) As EntityTypeBuilder(Of TEntity)
+      description: ''
+    content.vb: Public Function AutoMap(withDefaultKeys As Boolean = True, ignoreNonNativeTypes As Boolean = False) As EntityTypeBuilder(Of TEntity)
   overload: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.AutoMap*
-  nameWithType.vb: EntityTypeBuilder(Of TEntity).AutoMap(Boolean)
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).AutoMap(Boolean)
-  name.vb: AutoMap(Boolean)
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).AutoMap(Boolean, Boolean)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).AutoMap(Boolean, Boolean)
+  name.vb: AutoMap(Boolean, Boolean)
 - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.GetProperties
   commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.GetProperties
   id: GetProperties
@@ -893,7 +897,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: GetProperties
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
-    startLine: 254
+    startLine: 258
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
@@ -926,7 +930,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: GetProperty
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/Builder/EntityTypeBuilder.cs
-    startLine: 264
+    startLine: 268
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
@@ -1829,7 +1833,7 @@ references:
   fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).Ignore
 - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.AutoMap*
   commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.AutoMap
-  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_EntityTypeBuilder_1_AutoMap_System_Boolean_
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_EntityTypeBuilder_1_AutoMap_System_Boolean_System_Boolean_
   name: AutoMap
   nameWithType: EntityTypeBuilder<TEntity>.AutoMap
   fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.AutoMap

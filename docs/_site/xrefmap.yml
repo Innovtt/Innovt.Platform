@@ -898,6 +898,105 @@ references:
   isSpec: "True"
   fullName: Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.OnActionExecutionAsync
   nameWithType: InjectClaimParameterFilterAttribute.OnActionExecutionAsync
+- uid: Innovt.AspNetCore.Filters.Recaptcha
+  name: Innovt.AspNetCore.Filters.Recaptcha
+  href: api/Innovt.AspNetCore.Filters.Recaptcha.html
+  commentId: N:Innovt.AspNetCore.Filters.Recaptcha
+  fullName: Innovt.AspNetCore.Filters.Recaptcha
+  nameWithType: Innovt.AspNetCore.Filters.Recaptcha
+- uid: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute
+  name: CaptchaValidatorFilterAttribute
+  href: api/Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.html
+  commentId: T:Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute
+  fullName: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute
+  nameWithType: CaptchaValidatorFilterAttribute
+- uid: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.#ctor
+  name: CaptchaValidatorFilterAttribute()
+  href: api/Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.html#Innovt_AspNetCore_Filters_Recaptcha_CaptchaValidatorFilterAttribute__ctor
+  commentId: M:Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.#ctor
+  name.vb: New()
+  fullName: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.CaptchaValidatorFilterAttribute()
+  fullName.vb: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.New()
+  nameWithType: CaptchaValidatorFilterAttribute.CaptchaValidatorFilterAttribute()
+  nameWithType.vb: CaptchaValidatorFilterAttribute.New()
+- uid: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.#ctor*
+  name: CaptchaValidatorFilterAttribute
+  href: api/Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.html#Innovt_AspNetCore_Filters_Recaptcha_CaptchaValidatorFilterAttribute__ctor_
+  commentId: Overload:Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.CaptchaValidatorFilterAttribute
+  fullName.vb: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.New
+  nameWithType: CaptchaValidatorFilterAttribute.CaptchaValidatorFilterAttribute
+  nameWithType.vb: CaptchaValidatorFilterAttribute.New
+- uid: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.AntiForgery
+  name: AntiForgery
+  href: api/Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.html#Innovt_AspNetCore_Filters_Recaptcha_CaptchaValidatorFilterAttribute_AntiForgery
+  commentId: P:Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.AntiForgery
+  fullName: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.AntiForgery
+  nameWithType: CaptchaValidatorFilterAttribute.AntiForgery
+- uid: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.AntiForgery*
+  name: AntiForgery
+  href: api/Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.html#Innovt_AspNetCore_Filters_Recaptcha_CaptchaValidatorFilterAttribute_AntiForgery_
+  commentId: Overload:Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.AntiForgery
+  isSpec: "True"
+  fullName: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.AntiForgery
+  nameWithType: CaptchaValidatorFilterAttribute.AntiForgery
+- uid: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.DefaultToken
+  name: DefaultToken
+  href: api/Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.html#Innovt_AspNetCore_Filters_Recaptcha_CaptchaValidatorFilterAttribute_DefaultToken
+  commentId: P:Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.DefaultToken
+  fullName: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.DefaultToken
+  nameWithType: CaptchaValidatorFilterAttribute.DefaultToken
+- uid: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.DefaultToken*
+  name: DefaultToken
+  href: api/Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.html#Innovt_AspNetCore_Filters_Recaptcha_CaptchaValidatorFilterAttribute_DefaultToken_
+  commentId: Overload:Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.DefaultToken
+  isSpec: "True"
+  fullName: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.DefaultToken
+  nameWithType: CaptchaValidatorFilterAttribute.DefaultToken
+- uid: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.HostName
+  name: HostName
+  href: api/Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.html#Innovt_AspNetCore_Filters_Recaptcha_CaptchaValidatorFilterAttribute_HostName
+  commentId: P:Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.HostName
+  fullName: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.HostName
+  nameWithType: CaptchaValidatorFilterAttribute.HostName
+- uid: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.HostName*
+  name: HostName
+  href: api/Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.html#Innovt_AspNetCore_Filters_Recaptcha_CaptchaValidatorFilterAttribute_HostName_
+  commentId: Overload:Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.HostName
+  isSpec: "True"
+  fullName: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.HostName
+  nameWithType: CaptchaValidatorFilterAttribute.HostName
+- uid: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.OnActionExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate)
+  name: OnActionExecutionAsync(ActionExecutingContext?, ActionExecutionDelegate)
+  href: api/Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.html#Innovt_AspNetCore_Filters_Recaptcha_CaptchaValidatorFilterAttribute_OnActionExecutionAsync_Microsoft_AspNetCore_Mvc_Filters_ActionExecutingContext_Microsoft_AspNetCore_Mvc_Filters_ActionExecutionDelegate_
+  commentId: M:Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.OnActionExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate)
+  name.vb: OnActionExecutionAsync(ActionExecutingContext, ActionExecutionDelegate)
+  fullName: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.OnActionExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext?, Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate)
+  fullName.vb: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.OnActionExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext, Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate)
+  nameWithType: CaptchaValidatorFilterAttribute.OnActionExecutionAsync(ActionExecutingContext?, ActionExecutionDelegate)
+  nameWithType.vb: CaptchaValidatorFilterAttribute.OnActionExecutionAsync(ActionExecutingContext, ActionExecutionDelegate)
+- uid: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.OnActionExecutionAsync*
+  name: OnActionExecutionAsync
+  href: api/Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.html#Innovt_AspNetCore_Filters_Recaptcha_CaptchaValidatorFilterAttribute_OnActionExecutionAsync_
+  commentId: Overload:Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.OnActionExecutionAsync
+  isSpec: "True"
+  fullName: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.OnActionExecutionAsync
+  nameWithType: CaptchaValidatorFilterAttribute.OnActionExecutionAsync
+- uid: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.SecretKey
+  name: SecretKey
+  href: api/Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.html#Innovt_AspNetCore_Filters_Recaptcha_CaptchaValidatorFilterAttribute_SecretKey
+  commentId: P:Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.SecretKey
+  fullName: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.SecretKey
+  nameWithType: CaptchaValidatorFilterAttribute.SecretKey
+- uid: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.SecretKey*
+  name: SecretKey
+  href: api/Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.html#Innovt_AspNetCore_Filters_Recaptcha_CaptchaValidatorFilterAttribute_SecretKey_
+  commentId: Overload:Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.SecretKey
+  isSpec: "True"
+  fullName: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.SecretKey
+  nameWithType: CaptchaValidatorFilterAttribute.SecretKey
 - uid: Innovt.AspNetCore.Filters.Swagger
   name: Innovt.AspNetCore.Filters.Swagger
   href: api/Innovt.AspNetCore.Filters.Swagger.html
@@ -2104,6 +2203,19 @@ references:
   isSpec: "True"
   fullName: Innovt.Cloud.AWS.AwsBaseService.DisposeServices
   nameWithType: AwsBaseService.DisposeServices
+- uid: Innovt.Cloud.AWS.AwsBaseService.ExponentialBackoffInSeconds
+  name: ExponentialBackoffInSeconds
+  href: api/Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_ExponentialBackoffInSeconds
+  commentId: P:Innovt.Cloud.AWS.AwsBaseService.ExponentialBackoffInSeconds
+  fullName: Innovt.Cloud.AWS.AwsBaseService.ExponentialBackoffInSeconds
+  nameWithType: AwsBaseService.ExponentialBackoffInSeconds
+- uid: Innovt.Cloud.AWS.AwsBaseService.ExponentialBackoffInSeconds*
+  name: ExponentialBackoffInSeconds
+  href: api/Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_ExponentialBackoffInSeconds_
+  commentId: Overload:Innovt.Cloud.AWS.AwsBaseService.ExponentialBackoffInSeconds
+  isSpec: "True"
+  fullName: Innovt.Cloud.AWS.AwsBaseService.ExponentialBackoffInSeconds
+  nameWithType: AwsBaseService.ExponentialBackoffInSeconds
 - uid: Innovt.Cloud.AWS.AwsBaseService.Finalize
   name: ~AwsBaseService()
   href: api/Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Finalize
@@ -4669,13 +4781,13 @@ references:
   nameWithType: Innovt.Cloud.AWS.Configuration
 - uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration
   name: AssumeRoleAwsConfiguration
-  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.html
+  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.html
   commentId: T:Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration
   fullName: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration
   nameWithType: AssumeRoleAwsConfiguration
 - uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.#ctor(Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String,System.String,System.String)
   name: AssumeRoleAwsConfiguration(IAwsConfiguration, string, string, string)
-  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration__ctor_Innovt_Cloud_AWS_Configuration_IAwsConfiguration_System_String_System_String_System_String_
+  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration__ctor_Innovt_Cloud_AWS_Configuration_IAwsConfiguration_System_String_System_String_System_String_
   commentId: M:Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.#ctor(Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String,System.String,System.String)
   name.vb: New(IAwsConfiguration, String, String, String)
   fullName: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.AssumeRoleAwsConfiguration(Innovt.Cloud.AWS.Configuration.IAwsConfiguration, string, string, string)
@@ -4684,7 +4796,7 @@ references:
   nameWithType.vb: AssumeRoleAwsConfiguration.New(IAwsConfiguration, String, String, String)
 - uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.#ctor*
   name: AssumeRoleAwsConfiguration
-  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration__ctor_
+  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration__ctor_
   commentId: Overload:Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.#ctor
   isSpec: "True"
   name.vb: New
@@ -4694,130 +4806,130 @@ references:
   nameWithType.vb: AssumeRoleAwsConfiguration.New
 - uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.AccessKey
   name: AccessKey
-  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_AccessKey
+  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_AccessKey
   commentId: P:Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.AccessKey
   fullName: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.AccessKey
   nameWithType: AssumeRoleAwsConfiguration.AccessKey
 - uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.AccessKey*
   name: AccessKey
-  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_AccessKey_
+  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_AccessKey_
   commentId: Overload:Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.AccessKey
   isSpec: "True"
   fullName: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.AccessKey
   nameWithType: AssumeRoleAwsConfiguration.AccessKey
 - uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.AccountNumber
   name: AccountNumber
-  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_AccountNumber
+  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_AccountNumber
   commentId: P:Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.AccountNumber
   fullName: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.AccountNumber
   nameWithType: AssumeRoleAwsConfiguration.AccountNumber
 - uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.AccountNumber*
   name: AccountNumber
-  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_AccountNumber_
+  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_AccountNumber_
   commentId: Overload:Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.AccountNumber
   isSpec: "True"
   fullName: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.AccountNumber
   nameWithType: AssumeRoleAwsConfiguration.AccountNumber
 - uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.ExternalId
   name: ExternalId
-  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_ExternalId
+  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_ExternalId
   commentId: P:Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.ExternalId
   fullName: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.ExternalId
   nameWithType: AssumeRoleAwsConfiguration.ExternalId
 - uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.ExternalId*
   name: ExternalId
-  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_ExternalId_
+  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_ExternalId_
   commentId: Overload:Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.ExternalId
   isSpec: "True"
   fullName: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.ExternalId
   nameWithType: AssumeRoleAwsConfiguration.ExternalId
 - uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.GetCredential
   name: GetCredential()
-  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_GetCredential
+  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_GetCredential
   commentId: M:Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.GetCredential
   fullName: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.GetCredential()
   nameWithType: AssumeRoleAwsConfiguration.GetCredential()
 - uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.GetCredential*
   name: GetCredential
-  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_GetCredential_
+  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_GetCredential_
   commentId: Overload:Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.GetCredential
   isSpec: "True"
   fullName: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.GetCredential
   nameWithType: AssumeRoleAwsConfiguration.GetCredential
 - uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.Profile
   name: Profile
-  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_Profile
+  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_Profile
   commentId: P:Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.Profile
   fullName: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.Profile
   nameWithType: AssumeRoleAwsConfiguration.Profile
 - uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.Profile*
   name: Profile
-  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_Profile_
+  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_Profile_
   commentId: Overload:Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.Profile
   isSpec: "True"
   fullName: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.Profile
   nameWithType: AssumeRoleAwsConfiguration.Profile
 - uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.Region
   name: Region
-  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_Region
+  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_Region
   commentId: P:Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.Region
   fullName: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.Region
   nameWithType: AssumeRoleAwsConfiguration.Region
 - uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.Region*
   name: Region
-  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_Region_
+  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_Region_
   commentId: Overload:Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.Region
   isSpec: "True"
   fullName: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.Region
   nameWithType: AssumeRoleAwsConfiguration.Region
 - uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.RoleArn
   name: RoleArn
-  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_RoleArn
+  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_RoleArn
   commentId: P:Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.RoleArn
   fullName: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.RoleArn
   nameWithType: AssumeRoleAwsConfiguration.RoleArn
 - uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.RoleArn*
   name: RoleArn
-  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_RoleArn_
+  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_RoleArn_
   commentId: Overload:Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.RoleArn
   isSpec: "True"
   fullName: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.RoleArn
   nameWithType: AssumeRoleAwsConfiguration.RoleArn
 - uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.RoleSessionName
   name: RoleSessionName
-  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_RoleSessionName
+  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_RoleSessionName
   commentId: P:Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.RoleSessionName
   fullName: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.RoleSessionName
   nameWithType: AssumeRoleAwsConfiguration.RoleSessionName
 - uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.RoleSessionName*
   name: RoleSessionName
-  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_RoleSessionName_
+  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_RoleSessionName_
   commentId: Overload:Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.RoleSessionName
   isSpec: "True"
   fullName: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.RoleSessionName
   nameWithType: AssumeRoleAwsConfiguration.RoleSessionName
 - uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.SecretKey
   name: SecretKey
-  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_SecretKey
+  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_SecretKey
   commentId: P:Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.SecretKey
   fullName: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.SecretKey
   nameWithType: AssumeRoleAwsConfiguration.SecretKey
 - uid: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.SecretKey*
   name: SecretKey
-  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_SecretKey_
+  href: api/Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_AssumeRoleAwsConfiguration_SecretKey_
   commentId: Overload:Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.SecretKey
   isSpec: "True"
   fullName: Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.SecretKey
   nameWithType: AssumeRoleAwsConfiguration.SecretKey
 - uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
   name: DefaultAwsConfiguration
-  href: api/Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html
+  href: api/Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html
   commentId: T:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
   fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration
   nameWithType: DefaultAwsConfiguration
 - uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor
   name: DefaultAwsConfiguration()
-  href: api/Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration__ctor
+  href: api/Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration__ctor
   commentId: M:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor
   name.vb: New()
   fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.DefaultAwsConfiguration()
@@ -4826,7 +4938,7 @@ references:
   nameWithType.vb: DefaultAwsConfiguration.New()
 - uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.String)
   name: DefaultAwsConfiguration(IConfiguration, string)
-  href: api/Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration__ctor_Microsoft_Extensions_Configuration_IConfiguration_System_String_
+  href: api/Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration__ctor_Microsoft_Extensions_Configuration_IConfiguration_System_String_
   commentId: M:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.String)
   name.vb: New(IConfiguration, String)
   fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.DefaultAwsConfiguration(Microsoft.Extensions.Configuration.IConfiguration, string)
@@ -4835,7 +4947,7 @@ references:
   nameWithType.vb: DefaultAwsConfiguration.New(IConfiguration, String)
 - uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor(System.String)
   name: DefaultAwsConfiguration(string)
-  href: api/Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration__ctor_System_String_
+  href: api/Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration__ctor_System_String_
   commentId: M:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor(System.String)
   name.vb: New(String)
   fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.DefaultAwsConfiguration(string)
@@ -4844,7 +4956,7 @@ references:
   nameWithType.vb: DefaultAwsConfiguration.New(String)
 - uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor(System.String,System.String,System.String,System.String,System.String)
   name: DefaultAwsConfiguration(string, string, string, string, string)
-  href: api/Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration__ctor_System_String_System_String_System_String_System_String_System_String_
+  href: api/Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration__ctor_System_String_System_String_System_String_System_String_System_String_
   commentId: M:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor(System.String,System.String,System.String,System.String,System.String)
   name.vb: New(String, String, String, String, String)
   fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.DefaultAwsConfiguration(string, string, string, string, string)
@@ -4853,7 +4965,7 @@ references:
   nameWithType.vb: DefaultAwsConfiguration.New(String, String, String, String, String)
 - uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor*
   name: DefaultAwsConfiguration
-  href: api/Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration__ctor_
+  href: api/Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration__ctor_
   commentId: Overload:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.#ctor
   isSpec: "True"
   name.vb: New
@@ -4863,136 +4975,136 @@ references:
   nameWithType.vb: DefaultAwsConfiguration.New
 - uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccessKey
   name: AccessKey
-  href: api/Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_AccessKey
+  href: api/Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_AccessKey
   commentId: P:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccessKey
   fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccessKey
   nameWithType: DefaultAwsConfiguration.AccessKey
 - uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccessKey*
   name: AccessKey
-  href: api/Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_AccessKey_
+  href: api/Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_AccessKey_
   commentId: Overload:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccessKey
   isSpec: "True"
   fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccessKey
   nameWithType: DefaultAwsConfiguration.AccessKey
 - uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccountNumber
   name: AccountNumber
-  href: api/Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_AccountNumber
+  href: api/Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_AccountNumber
   commentId: P:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccountNumber
   fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccountNumber
   nameWithType: DefaultAwsConfiguration.AccountNumber
 - uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccountNumber*
   name: AccountNumber
-  href: api/Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_AccountNumber_
+  href: api/Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_AccountNumber_
   commentId: Overload:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccountNumber
   isSpec: "True"
   fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.AccountNumber
   nameWithType: DefaultAwsConfiguration.AccountNumber
 - uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.GetCredential
   name: GetCredential()
-  href: api/Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_GetCredential
+  href: api/Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_GetCredential
   commentId: M:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.GetCredential
   fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.GetCredential()
   nameWithType: DefaultAwsConfiguration.GetCredential()
 - uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.GetCredential*
   name: GetCredential
-  href: api/Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_GetCredential_
+  href: api/Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_GetCredential_
   commentId: Overload:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.GetCredential
   isSpec: "True"
   fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.GetCredential
   nameWithType: DefaultAwsConfiguration.GetCredential
 - uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Profile
   name: Profile
-  href: api/Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_Profile
+  href: api/Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_Profile
   commentId: P:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Profile
   fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Profile
   nameWithType: DefaultAwsConfiguration.Profile
 - uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Profile*
   name: Profile
-  href: api/Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_Profile_
+  href: api/Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_Profile_
   commentId: Overload:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Profile
   isSpec: "True"
   fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Profile
   nameWithType: DefaultAwsConfiguration.Profile
 - uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Region
   name: Region
-  href: api/Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_Region
+  href: api/Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_Region
   commentId: P:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Region
   fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Region
   nameWithType: DefaultAwsConfiguration.Region
 - uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Region*
   name: Region
-  href: api/Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_Region_
+  href: api/Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_Region_
   commentId: Overload:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Region
   isSpec: "True"
   fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.Region
   nameWithType: DefaultAwsConfiguration.Region
 - uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SecretKey
   name: SecretKey
-  href: api/Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_SecretKey
+  href: api/Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_SecretKey
   commentId: P:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SecretKey
   fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SecretKey
   nameWithType: DefaultAwsConfiguration.SecretKey
 - uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SecretKey*
   name: SecretKey
-  href: api/Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_SecretKey_
+  href: api/Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_SecretKey_
   commentId: Overload:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SecretKey
   isSpec: "True"
   fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SecretKey
   nameWithType: DefaultAwsConfiguration.SecretKey
 - uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SessionToken
   name: SessionToken
-  href: api/Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_SessionToken
+  href: api/Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_SessionToken
   commentId: P:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SessionToken
   fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SessionToken
   nameWithType: DefaultAwsConfiguration.SessionToken
 - uid: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SessionToken*
   name: SessionToken
-  href: api/Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_SessionToken_
+  href: api/Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_DefaultAwsConfiguration_SessionToken_
   commentId: Overload:Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SessionToken
   isSpec: "True"
   fullName: Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.SessionToken
   nameWithType: DefaultAwsConfiguration.SessionToken
 - uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration
   name: IAssumeRoleAwsConfiguration
-  href: api/Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.html
+  href: api/Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.html
   commentId: T:Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration
   fullName: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration
   nameWithType: IAssumeRoleAwsConfiguration
 - uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.ExternalId
   name: ExternalId
-  href: api/Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_IAssumeRoleAwsConfiguration_ExternalId
+  href: api/Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_IAssumeRoleAwsConfiguration_ExternalId
   commentId: P:Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.ExternalId
   fullName: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.ExternalId
   nameWithType: IAssumeRoleAwsConfiguration.ExternalId
 - uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.ExternalId*
   name: ExternalId
-  href: api/Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_IAssumeRoleAwsConfiguration_ExternalId_
+  href: api/Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_IAssumeRoleAwsConfiguration_ExternalId_
   commentId: Overload:Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.ExternalId
   isSpec: "True"
   fullName: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.ExternalId
   nameWithType: IAssumeRoleAwsConfiguration.ExternalId
 - uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleArn
   name: RoleArn
-  href: api/Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_IAssumeRoleAwsConfiguration_RoleArn
+  href: api/Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_IAssumeRoleAwsConfiguration_RoleArn
   commentId: P:Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleArn
   fullName: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleArn
   nameWithType: IAssumeRoleAwsConfiguration.RoleArn
 - uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleArn*
   name: RoleArn
-  href: api/Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_IAssumeRoleAwsConfiguration_RoleArn_
+  href: api/Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_IAssumeRoleAwsConfiguration_RoleArn_
   commentId: Overload:Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleArn
   isSpec: "True"
   fullName: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleArn
   nameWithType: IAssumeRoleAwsConfiguration.RoleArn
 - uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleSessionName
   name: RoleSessionName
-  href: api/Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_IAssumeRoleAwsConfiguration_RoleSessionName
+  href: api/Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_IAssumeRoleAwsConfiguration_RoleSessionName
   commentId: P:Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleSessionName
   fullName: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleSessionName
   nameWithType: IAssumeRoleAwsConfiguration.RoleSessionName
 - uid: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleSessionName*
   name: RoleSessionName
-  href: api/Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.html#Innovt_Cloud_AWS_Configuration_IAssumeRoleAwsConfiguration_RoleSessionName_
+  href: api/Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.html#Innovt_Cloud_AWS_Configuration_IAssumeRoleAwsConfiguration_RoleSessionName_
   commentId: Overload:Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleSessionName
   isSpec: "True"
   fullName: Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.RoleSessionName
@@ -5054,6 +5166,47 @@ references:
   commentId: N:Innovt.Cloud.AWS.Dynamo.Converters
   fullName: Innovt.Cloud.AWS.Dynamo.Converters
   nameWithType: Innovt.Cloud.AWS.Dynamo.Converters
+- uid: Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueConverterManager
+  name: AttributeValueConverterManager
+  href: api/Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueConverterManager.html
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueConverterManager
+  fullName: Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueConverterManager
+  nameWithType: AttributeValueConverterManager
+- uid: Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueConverterManager.CreateAttributeValue(System.Object,System.Collections.Generic.HashSet{System.Object})
+  name: CreateAttributeValue(object, HashSet<object>)
+  href: api/Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueConverterManager.html#Innovt_Cloud_AWS_Dynamo_Converters_AttributeValueConverterManager_CreateAttributeValue_System_Object_System_Collections_Generic_HashSet_System_Object__
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueConverterManager.CreateAttributeValue(System.Object,System.Collections.Generic.HashSet{System.Object})
+  name.vb: CreateAttributeValue(Object, HashSet(Of Object))
+  fullName: Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueConverterManager.CreateAttributeValue(object, System.Collections.Generic.HashSet<object>)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueConverterManager.CreateAttributeValue(Object, System.Collections.Generic.HashSet(Of Object))
+  nameWithType: AttributeValueConverterManager.CreateAttributeValue(object, HashSet<object>)
+  nameWithType.vb: AttributeValueConverterManager.CreateAttributeValue(Object, HashSet(Of Object))
+- uid: Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueConverterManager.CreateAttributeValue*
+  name: CreateAttributeValue
+  href: api/Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueConverterManager.html#Innovt_Cloud_AWS_Dynamo_Converters_AttributeValueConverterManager_CreateAttributeValue_
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueConverterManager.CreateAttributeValue
+  isSpec: "True"
+  fullName: Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueConverterManager.CreateAttributeValue
+  nameWithType: AttributeValueConverterManager.CreateAttributeValue
+- uid: Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueToObjectConverterManager
+  name: AttributeValueToObjectConverterManager
+  href: api/Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueToObjectConverterManager.html
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueToObjectConverterManager
+  fullName: Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueToObjectConverterManager
+  nameWithType: AttributeValueToObjectConverterManager
+- uid: Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueToObjectConverterManager.CreateAttributeValueToObject(Amazon.DynamoDBv2.Model.AttributeValue,System.Type)
+  name: CreateAttributeValueToObject(AttributeValue, Type)
+  href: api/Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueToObjectConverterManager.html#Innovt_Cloud_AWS_Dynamo_Converters_AttributeValueToObjectConverterManager_CreateAttributeValueToObject_Amazon_DynamoDBv2_Model_AttributeValue_System_Type_
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueToObjectConverterManager.CreateAttributeValueToObject(Amazon.DynamoDBv2.Model.AttributeValue,System.Type)
+  fullName: Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueToObjectConverterManager.CreateAttributeValueToObject(Amazon.DynamoDBv2.Model.AttributeValue, System.Type)
+  nameWithType: AttributeValueToObjectConverterManager.CreateAttributeValueToObject(AttributeValue, Type)
+- uid: Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueToObjectConverterManager.CreateAttributeValueToObject*
+  name: CreateAttributeValueToObject
+  href: api/Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueToObjectConverterManager.html#Innovt_Cloud_AWS_Dynamo_Converters_AttributeValueToObjectConverterManager_CreateAttributeValueToObject_
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueToObjectConverterManager.CreateAttributeValueToObject
+  isSpec: "True"
+  fullName: Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueToObjectConverterManager.CreateAttributeValueToObject
+  nameWithType: AttributeValueToObjectConverterManager.CreateAttributeValueToObject
 - uid: Innovt.Cloud.AWS.Dynamo.Converters.DateTimeOffsetConverter
   name: DateTimeOffsetConverter
   href: api/Innovt.Cloud.AWS.Dynamo.Converters.DateTimeOffsetConverter.html
@@ -5114,19 +5267,6 @@ references:
   fullName.vb: Innovt.Cloud.AWS.Dynamo.DynamoContext.New
   nameWithType: DynamoContext.DynamoContext
   nameWithType.vb: DynamoContext.New
-- uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.Entities
-  name: Entities
-  href: api/Innovt.Cloud.AWS.Dynamo.DynamoContext.html#Innovt_Cloud_AWS_Dynamo_DynamoContext_Entities
-  commentId: P:Innovt.Cloud.AWS.Dynamo.DynamoContext.Entities
-  fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext.Entities
-  nameWithType: DynamoContext.Entities
-- uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.Entities*
-  name: Entities
-  href: api/Innovt.Cloud.AWS.Dynamo.DynamoContext.html#Innovt_Cloud_AWS_Dynamo_DynamoContext_Entities_
-  commentId: Overload:Innovt.Cloud.AWS.Dynamo.DynamoContext.Entities
-  isSpec: "True"
-  fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext.Entities
-  nameWithType: DynamoContext.Entities
 - uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.GetPropertyConverter(System.Type)
   name: GetPropertyConverter(Type)
   href: api/Innovt.Cloud.AWS.Dynamo.DynamoContext.html#Innovt_Cloud_AWS_Dynamo_DynamoContext_GetPropertyConverter_System_Type_
@@ -5156,6 +5296,12 @@ references:
   fullName.vb: Innovt.Cloud.AWS.Dynamo.DynamoContext.GetTypeBuilder(Of T)()
   nameWithType: DynamoContext.GetTypeBuilder<T>()
   nameWithType.vb: DynamoContext.GetTypeBuilder(Of T)()
+- uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder(System.Type)
+  name: HasTypeBuilder(Type)
+  href: api/Innovt.Cloud.AWS.Dynamo.DynamoContext.html#Innovt_Cloud_AWS_Dynamo_DynamoContext_HasTypeBuilder_System_Type_
+  commentId: M:Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder(System.Type)
+  fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder(System.Type)
+  nameWithType: DynamoContext.HasTypeBuilder(Type)
 - uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder*
   name: HasTypeBuilder
   href: api/Innovt.Cloud.AWS.Dynamo.DynamoContext.html#Innovt_Cloud_AWS_Dynamo_DynamoContext_HasTypeBuilder_
@@ -5163,15 +5309,41 @@ references:
   isSpec: "True"
   fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder
   nameWithType: DynamoContext.HasTypeBuilder
-- uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder``1
-  name: HasTypeBuilder<T>()
-  href: api/Innovt.Cloud.AWS.Dynamo.DynamoContext.html#Innovt_Cloud_AWS_Dynamo_DynamoContext_HasTypeBuilder__1
-  commentId: M:Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder``1
-  name.vb: HasTypeBuilder(Of T)()
-  fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder<T>()
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder(Of T)()
-  nameWithType: DynamoContext.HasTypeBuilder<T>()
-  nameWithType.vb: DynamoContext.HasTypeBuilder(Of T)()
+- uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder``1(System.Object)
+  name: HasTypeBuilder<T>(object)
+  href: api/Innovt.Cloud.AWS.Dynamo.DynamoContext.html#Innovt_Cloud_AWS_Dynamo_DynamoContext_HasTypeBuilder__1_System_Object_
+  commentId: M:Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder``1(System.Object)
+  name.vb: HasTypeBuilder(Of T)(Object)
+  fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder<T>(object)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.DynamoContext.HasTypeBuilder(Of T)(Object)
+  nameWithType: DynamoContext.HasTypeBuilder<T>(object)
+  nameWithType.vb: DynamoContext.HasTypeBuilder(Of T)(Object)
+- uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.IgnoreNullValues
+  name: IgnoreNullValues
+  href: api/Innovt.Cloud.AWS.Dynamo.DynamoContext.html#Innovt_Cloud_AWS_Dynamo_DynamoContext_IgnoreNullValues
+  commentId: P:Innovt.Cloud.AWS.Dynamo.DynamoContext.IgnoreNullValues
+  fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext.IgnoreNullValues
+  nameWithType: DynamoContext.IgnoreNullValues
+- uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.IgnoreNullValues*
+  name: IgnoreNullValues
+  href: api/Innovt.Cloud.AWS.Dynamo.DynamoContext.html#Innovt_Cloud_AWS_Dynamo_DynamoContext_IgnoreNullValues_
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.DynamoContext.IgnoreNullValues
+  isSpec: "True"
+  fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext.IgnoreNullValues
+  nameWithType: DynamoContext.IgnoreNullValues
+- uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.ModelBuilder
+  name: ModelBuilder
+  href: api/Innovt.Cloud.AWS.Dynamo.DynamoContext.html#Innovt_Cloud_AWS_Dynamo_DynamoContext_ModelBuilder
+  commentId: P:Innovt.Cloud.AWS.Dynamo.DynamoContext.ModelBuilder
+  fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext.ModelBuilder
+  nameWithType: DynamoContext.ModelBuilder
+- uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.ModelBuilder*
+  name: ModelBuilder
+  href: api/Innovt.Cloud.AWS.Dynamo.DynamoContext.html#Innovt_Cloud_AWS_Dynamo_DynamoContext_ModelBuilder_
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.DynamoContext.ModelBuilder
+  isSpec: "True"
+  fullName: Innovt.Cloud.AWS.Dynamo.DynamoContext.ModelBuilder
+  nameWithType: DynamoContext.ModelBuilder
 - uid: Innovt.Cloud.AWS.Dynamo.DynamoContext.OnModelCreating(Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder)
   name: OnModelCreating(ModelBuilder)
   href: api/Innovt.Cloud.AWS.Dynamo.DynamoContext.html#Innovt_Cloud_AWS_Dynamo_DynamoContext_OnModelCreating_Innovt_Cloud_AWS_Dynamo_Mapping_ModelBuilder_
@@ -5426,15 +5598,15 @@ references:
   fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity)
   nameWithType: EntityTypeBuilder<TEntity>
   nameWithType.vb: EntityTypeBuilder(Of TEntity)
-- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.AutoMap(System.Boolean)
-  name: AutoMap(bool)
-  href: api/Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_EntityTypeBuilder_1_AutoMap_System_Boolean_
-  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.AutoMap(System.Boolean)
-  name.vb: AutoMap(Boolean)
-  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.AutoMap(bool)
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).AutoMap(Boolean)
-  nameWithType: EntityTypeBuilder<TEntity>.AutoMap(bool)
-  nameWithType.vb: EntityTypeBuilder(Of TEntity).AutoMap(Boolean)
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.AutoMap(System.Boolean,System.Boolean)
+  name: AutoMap(bool, bool)
+  href: api/Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_EntityTypeBuilder_1_AutoMap_System_Boolean_System_Boolean_
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.AutoMap(System.Boolean,System.Boolean)
+  name.vb: AutoMap(Boolean, Boolean)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<TEntity>.AutoMap(bool, bool)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of TEntity).AutoMap(Boolean, Boolean)
+  nameWithType: EntityTypeBuilder<TEntity>.AutoMap(bool, bool)
+  nameWithType.vb: EntityTypeBuilder(Of TEntity).AutoMap(Boolean, Boolean)
 - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1.AutoMap*
   name: AutoMap
   href: api/Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_EntityTypeBuilder_1_AutoMap_
@@ -5960,23 +6132,6 @@ references:
   fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of T).HasMapAction
   nameWithType: PropertyTypeBuilder<T>.HasMapAction
   nameWithType.vb: PropertyTypeBuilder(Of T).HasMapAction
-- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.InvokeMaps(`0)
-  name: InvokeMaps(T)
-  href: api/Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_PropertyTypeBuilder_1_InvokeMaps__0_
-  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.InvokeMaps(`0)
-  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder<T>.InvokeMaps(T)
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of T).InvokeMaps(T)
-  nameWithType: PropertyTypeBuilder<T>.InvokeMaps(T)
-  nameWithType.vb: PropertyTypeBuilder(Of T).InvokeMaps(T)
-- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.InvokeMaps*
-  name: InvokeMaps
-  href: api/Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_PropertyTypeBuilder_1_InvokeMaps_
-  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.InvokeMaps
-  isSpec: "True"
-  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder<T>.InvokeMaps
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of T).InvokeMaps
-  nameWithType: PropertyTypeBuilder<T>.InvokeMaps
-  nameWithType.vb: PropertyTypeBuilder(Of T).InvokeMaps
 - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.IsRequired(System.Boolean)
   name: IsRequired(bool)
   href: api/Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_PropertyTypeBuilder_1_IsRequired_System_Boolean_
@@ -6064,23 +6219,6 @@ references:
   fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of T).SetDynamicValue
   nameWithType: PropertyTypeBuilder<T>.SetDynamicValue
   nameWithType.vb: PropertyTypeBuilder(Of T).SetDynamicValue
-- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.Template
-  name: Template
-  href: api/Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_PropertyTypeBuilder_1_Template
-  commentId: P:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.Template
-  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder<T>.Template
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of T).Template
-  nameWithType: PropertyTypeBuilder<T>.Template
-  nameWithType.vb: PropertyTypeBuilder(Of T).Template
-- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.Template*
-  name: Template
-  href: api/Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_PropertyTypeBuilder_1_Template_
-  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.Template
-  isSpec: "True"
-  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder<T>.Template
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of T).Template
-  nameWithType: PropertyTypeBuilder<T>.Template
-  nameWithType.vb: PropertyTypeBuilder(Of T).Template
 - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.Type
   name: Type
   href: api/Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_PropertyTypeBuilder_1_Type
@@ -6152,24 +6290,6 @@ references:
   fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of T).WithMaxLength
   nameWithType: PropertyTypeBuilder<T>.WithMaxLength
   nameWithType.vb: PropertyTypeBuilder(Of T).WithMaxLength
-- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.WithTemplate(System.String)
-  name: WithTemplate(string)
-  href: api/Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_PropertyTypeBuilder_1_WithTemplate_System_String_
-  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.WithTemplate(System.String)
-  name.vb: WithTemplate(String)
-  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder<T>.WithTemplate(string)
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of T).WithTemplate(String)
-  nameWithType: PropertyTypeBuilder<T>.WithTemplate(string)
-  nameWithType.vb: PropertyTypeBuilder(Of T).WithTemplate(String)
-- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.WithTemplate*
-  name: WithTemplate
-  href: api/Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_PropertyTypeBuilder_1_WithTemplate_
-  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.WithTemplate
-  isSpec: "True"
-  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder<T>.WithTemplate
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder(Of T).WithTemplate
-  nameWithType: PropertyTypeBuilder<T>.WithTemplate
-  nameWithType.vb: PropertyTypeBuilder(Of T).WithTemplate
 - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder`1.WithValue(System.Object)
   name: WithValue(object)
   href: api/Innovt.Cloud.AWS.Dynamo.Mapping.Builder.PropertyTypeBuilder-1.html#Innovt_Cloud_AWS_Dynamo_Mapping_Builder_PropertyTypeBuilder_1_WithValue_System_Object_
@@ -6292,6 +6412,57 @@ references:
   fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Entity(Of TEntity)()
   nameWithType: ModelBuilder.Entity<TEntity>()
   nameWithType.vb: ModelBuilder.Entity(Of TEntity)()
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetPropertyConverter(System.Type)
+  name: GetPropertyConverter(Type)
+  href: api/Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.html#Innovt_Cloud_AWS_Dynamo_Mapping_ModelBuilder_GetPropertyConverter_System_Type_
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetPropertyConverter(System.Type)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetPropertyConverter(System.Type)
+  nameWithType: ModelBuilder.GetPropertyConverter(Type)
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetPropertyConverter*
+  name: GetPropertyConverter
+  href: api/Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.html#Innovt_Cloud_AWS_Dynamo_Mapping_ModelBuilder_GetPropertyConverter_
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetPropertyConverter
+  isSpec: "True"
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetPropertyConverter
+  nameWithType: ModelBuilder.GetPropertyConverter
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetTypeBuilder*
+  name: GetTypeBuilder
+  href: api/Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.html#Innovt_Cloud_AWS_Dynamo_Mapping_ModelBuilder_GetTypeBuilder_
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetTypeBuilder
+  isSpec: "True"
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetTypeBuilder
+  nameWithType: ModelBuilder.GetTypeBuilder
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetTypeBuilder``1
+  name: GetTypeBuilder<T>()
+  href: api/Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.html#Innovt_Cloud_AWS_Dynamo_Mapping_ModelBuilder_GetTypeBuilder__1
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetTypeBuilder``1
+  name.vb: GetTypeBuilder(Of T)()
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetTypeBuilder<T>()
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetTypeBuilder(Of T)()
+  nameWithType: ModelBuilder.GetTypeBuilder<T>()
+  nameWithType.vb: ModelBuilder.GetTypeBuilder(Of T)()
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.HasTypeBuilder(System.Type)
+  name: HasTypeBuilder(Type)
+  href: api/Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.html#Innovt_Cloud_AWS_Dynamo_Mapping_ModelBuilder_HasTypeBuilder_System_Type_
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.HasTypeBuilder(System.Type)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.HasTypeBuilder(System.Type)
+  nameWithType: ModelBuilder.HasTypeBuilder(Type)
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.HasTypeBuilder*
+  name: HasTypeBuilder
+  href: api/Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.html#Innovt_Cloud_AWS_Dynamo_Mapping_ModelBuilder_HasTypeBuilder_
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.HasTypeBuilder
+  isSpec: "True"
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.HasTypeBuilder
+  nameWithType: ModelBuilder.HasTypeBuilder
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.HasTypeBuilder``1(System.Object)
+  name: HasTypeBuilder<T>(object)
+  href: api/Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.html#Innovt_Cloud_AWS_Dynamo_Mapping_ModelBuilder_HasTypeBuilder__1_System_Object_
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.HasTypeBuilder``1(System.Object)
+  name.vb: HasTypeBuilder(Of T)(Object)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.HasTypeBuilder<T>(object)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.HasTypeBuilder(Of T)(Object)
+  nameWithType: ModelBuilder.HasTypeBuilder<T>(object)
+  nameWithType.vb: ModelBuilder.HasTypeBuilder(Of T)(Object)
 - uid: Innovt.Cloud.AWS.Dynamo.Repository
   name: Repository
   href: api/Innovt.Cloud.AWS.Dynamo.Repository.html
@@ -6351,22 +6522,22 @@ references:
   fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.AddAsync(Of T)(T, System.Threading.CancellationToken)
   nameWithType: Repository.AddAsync<T>(T, CancellationToken)
   nameWithType.vb: Repository.AddAsync(Of T)(T, CancellationToken)
-- uid: Innovt.Cloud.AWS.Dynamo.Repository.AddListAsync*
-  name: AddListAsync
-  href: api/Innovt.Cloud.AWS.Dynamo.Repository.html#Innovt_Cloud_AWS_Dynamo_Repository_AddListAsync_
-  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Repository.AddListAsync
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.AddRangeAsync*
+  name: AddRangeAsync
+  href: api/Innovt.Cloud.AWS.Dynamo.Repository.html#Innovt_Cloud_AWS_Dynamo_Repository_AddRangeAsync_
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Repository.AddRangeAsync
   isSpec: "True"
-  fullName: Innovt.Cloud.AWS.Dynamo.Repository.AddListAsync
-  nameWithType: Repository.AddListAsync
-- uid: Innovt.Cloud.AWS.Dynamo.Repository.AddListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-  name: AddListAsync<T>(ICollection<T>, CancellationToken)
-  href: api/Innovt.Cloud.AWS.Dynamo.Repository.html#Innovt_Cloud_AWS_Dynamo_Repository_AddListAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
-  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.AddListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-  name.vb: AddListAsync(Of T)(ICollection(Of T), CancellationToken)
-  fullName: Innovt.Cloud.AWS.Dynamo.Repository.AddListAsync<T>(System.Collections.Generic.ICollection<T>, System.Threading.CancellationToken)
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.AddListAsync(Of T)(System.Collections.Generic.ICollection(Of T), System.Threading.CancellationToken)
-  nameWithType: Repository.AddListAsync<T>(ICollection<T>, CancellationToken)
-  nameWithType.vb: Repository.AddListAsync(Of T)(ICollection(Of T), CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.AddRangeAsync
+  nameWithType: Repository.AddRangeAsync
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.AddRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  name: AddRangeAsync<T>(ICollection<T>, CancellationToken)
+  href: api/Innovt.Cloud.AWS.Dynamo.Repository.html#Innovt_Cloud_AWS_Dynamo_Repository_AddRangeAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.AddRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  name.vb: AddRangeAsync(Of T)(ICollection(Of T), CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.AddRangeAsync<T>(System.Collections.Generic.ICollection<T>, System.Threading.CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.AddRangeAsync(Of T)(System.Collections.Generic.ICollection(Of T), System.Threading.CancellationToken)
+  nameWithType: Repository.AddRangeAsync<T>(ICollection<T>, CancellationToken)
+  nameWithType.vb: Repository.AddRangeAsync(Of T)(ICollection(Of T), CancellationToken)
 - uid: Innovt.Cloud.AWS.Dynamo.Repository.BatchGetItem*
   name: BatchGetItem
   href: api/Innovt.Cloud.AWS.Dynamo.Repository.html#Innovt_Cloud_AWS_Dynamo_Repository_BatchGetItem_
@@ -6416,15 +6587,15 @@ references:
   isSpec: "True"
   fullName: Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem
   nameWithType: Repository.CreateTransactionWriteItem
-- uid: Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem``1(``0)
-  name: CreateTransactionWriteItem<T>(T)
-  href: api/Innovt.Cloud.AWS.Dynamo.Repository.html#Innovt_Cloud_AWS_Dynamo_Repository_CreateTransactionWriteItem__1___0_
-  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem``1(``0)
-  name.vb: CreateTransactionWriteItem(Of T)(T)
-  fullName: Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem<T>(T)
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem(Of T)(T)
-  nameWithType: Repository.CreateTransactionWriteItem<T>(T)
-  nameWithType.vb: Repository.CreateTransactionWriteItem(Of T)(T)
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem``1(``0,Innovt.Cloud.Table.TransactionWriteOperationType)
+  name: CreateTransactionWriteItem<T>(T, TransactionWriteOperationType)
+  href: api/Innovt.Cloud.AWS.Dynamo.Repository.html#Innovt_Cloud_AWS_Dynamo_Repository_CreateTransactionWriteItem__1___0_Innovt_Cloud_Table_TransactionWriteOperationType_
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem``1(``0,Innovt.Cloud.Table.TransactionWriteOperationType)
+  name.vb: CreateTransactionWriteItem(Of T)(T, TransactionWriteOperationType)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem<T>(T, Innovt.Cloud.Table.TransactionWriteOperationType)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.CreateTransactionWriteItem(Of T)(T, Innovt.Cloud.Table.TransactionWriteOperationType)
+  nameWithType: Repository.CreateTransactionWriteItem<T>(T, TransactionWriteOperationType)
+  nameWithType.vb: Repository.CreateTransactionWriteItem(Of T)(T, TransactionWriteOperationType)
 - uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync*
   name: DeleteAsync
   href: api/Innovt.Cloud.AWS.Dynamo.Repository.html#Innovt_Cloud_AWS_Dynamo_Repository_DeleteAsync_
@@ -6450,22 +6621,22 @@ references:
   fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.DeleteAsync(Of T)(T, System.Threading.CancellationToken)
   nameWithType: Repository.DeleteAsync<T>(T, CancellationToken)
   nameWithType.vb: Repository.DeleteAsync(Of T)(T, CancellationToken)
-- uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteListAsync*
-  name: DeleteListAsync
-  href: api/Innovt.Cloud.AWS.Dynamo.Repository.html#Innovt_Cloud_AWS_Dynamo_Repository_DeleteListAsync_
-  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Repository.DeleteListAsync
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteRangeAsync*
+  name: DeleteRangeAsync
+  href: api/Innovt.Cloud.AWS.Dynamo.Repository.html#Innovt_Cloud_AWS_Dynamo_Repository_DeleteRangeAsync_
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Repository.DeleteRangeAsync
   isSpec: "True"
-  fullName: Innovt.Cloud.AWS.Dynamo.Repository.DeleteListAsync
-  nameWithType: Repository.DeleteListAsync
-- uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-  name: DeleteListAsync<T>(ICollection<T>, CancellationToken)
-  href: api/Innovt.Cloud.AWS.Dynamo.Repository.html#Innovt_Cloud_AWS_Dynamo_Repository_DeleteListAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
-  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.DeleteListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-  name.vb: DeleteListAsync(Of T)(ICollection(Of T), CancellationToken)
-  fullName: Innovt.Cloud.AWS.Dynamo.Repository.DeleteListAsync<T>(System.Collections.Generic.ICollection<T>, System.Threading.CancellationToken)
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.DeleteListAsync(Of T)(System.Collections.Generic.ICollection(Of T), System.Threading.CancellationToken)
-  nameWithType: Repository.DeleteListAsync<T>(ICollection<T>, CancellationToken)
-  nameWithType.vb: Repository.DeleteListAsync(Of T)(ICollection(Of T), CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.DeleteRangeAsync
+  nameWithType: Repository.DeleteRangeAsync
+- uid: Innovt.Cloud.AWS.Dynamo.Repository.DeleteRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  name: DeleteRangeAsync<T>(ICollection<T>, CancellationToken)
+  href: api/Innovt.Cloud.AWS.Dynamo.Repository.html#Innovt_Cloud_AWS_Dynamo_Repository_DeleteRangeAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.DeleteRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  name.vb: DeleteRangeAsync(Of T)(ICollection(Of T), CancellationToken)
+  fullName: Innovt.Cloud.AWS.Dynamo.Repository.DeleteRangeAsync<T>(System.Collections.Generic.ICollection<T>, System.Threading.CancellationToken)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.DeleteRangeAsync(Of T)(System.Collections.Generic.ICollection(Of T), System.Threading.CancellationToken)
+  nameWithType: Repository.DeleteRangeAsync<T>(ICollection<T>, CancellationToken)
+  nameWithType.vb: Repository.DeleteRangeAsync(Of T)(ICollection(Of T), CancellationToken)
 - uid: Innovt.Cloud.AWS.Dynamo.Repository.DisposeServices
   name: DisposeServices()
   href: api/Innovt.Cloud.AWS.Dynamo.Repository.html#Innovt_Cloud_AWS_Dynamo_Repository_DisposeServices
@@ -6688,15 +6859,6 @@ references:
   isSpec: "True"
   fullName: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync
   nameWithType: Repository.UpdateAsync
-- uid: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1(Amazon.DynamoDBv2.Model.UpdateItemRequest,System.Threading.CancellationToken)
-  name: UpdateAsync<T>(UpdateItemRequest, CancellationToken)
-  href: api/Innovt.Cloud.AWS.Dynamo.Repository.html#Innovt_Cloud_AWS_Dynamo_Repository_UpdateAsync__1_Amazon_DynamoDBv2_Model_UpdateItemRequest_System_Threading_CancellationToken_
-  commentId: M:Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1(Amazon.DynamoDBv2.Model.UpdateItemRequest,System.Threading.CancellationToken)
-  name.vb: UpdateAsync(Of T)(UpdateItemRequest, CancellationToken)
-  fullName: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync<T>(Amazon.DynamoDBv2.Model.UpdateItemRequest, System.Threading.CancellationToken)
-  fullName.vb: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync(Of T)(Amazon.DynamoDBv2.Model.UpdateItemRequest, System.Threading.CancellationToken)
-  nameWithType: Repository.UpdateAsync<T>(UpdateItemRequest, CancellationToken)
-  nameWithType.vb: Repository.UpdateAsync(Of T)(UpdateItemRequest, CancellationToken)
 - uid: Innovt.Cloud.AWS.Dynamo.Repository.UpdateAsync``1(``0,System.Threading.CancellationToken)
   name: UpdateAsync<T>(T, CancellationToken)
   href: api/Innovt.Cloud.AWS.Dynamo.Repository.html#Innovt_Cloud_AWS_Dynamo_Repository_UpdateAsync__1___0_System_Threading_CancellationToken_
@@ -13405,22 +13567,22 @@ references:
   fullName.vb: Innovt.Cloud.Table.ITableRepository.AddAsync(Of T)(T, System.Threading.CancellationToken)
   nameWithType: ITableRepository.AddAsync<T>(T, CancellationToken)
   nameWithType.vb: ITableRepository.AddAsync(Of T)(T, CancellationToken)
-- uid: Innovt.Cloud.Table.ITableRepository.AddListAsync*
-  name: AddListAsync
-  href: api/Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_AddListAsync_
-  commentId: Overload:Innovt.Cloud.Table.ITableRepository.AddListAsync
+- uid: Innovt.Cloud.Table.ITableRepository.AddRangeAsync*
+  name: AddRangeAsync
+  href: api/Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_AddRangeAsync_
+  commentId: Overload:Innovt.Cloud.Table.ITableRepository.AddRangeAsync
   isSpec: "True"
-  fullName: Innovt.Cloud.Table.ITableRepository.AddListAsync
-  nameWithType: ITableRepository.AddListAsync
-- uid: Innovt.Cloud.Table.ITableRepository.AddListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-  name: AddListAsync<T>(ICollection<T>, CancellationToken)
-  href: api/Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_AddListAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
-  commentId: M:Innovt.Cloud.Table.ITableRepository.AddListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-  name.vb: AddListAsync(Of T)(ICollection(Of T), CancellationToken)
-  fullName: Innovt.Cloud.Table.ITableRepository.AddListAsync<T>(System.Collections.Generic.ICollection<T>, System.Threading.CancellationToken)
-  fullName.vb: Innovt.Cloud.Table.ITableRepository.AddListAsync(Of T)(System.Collections.Generic.ICollection(Of T), System.Threading.CancellationToken)
-  nameWithType: ITableRepository.AddListAsync<T>(ICollection<T>, CancellationToken)
-  nameWithType.vb: ITableRepository.AddListAsync(Of T)(ICollection(Of T), CancellationToken)
+  fullName: Innovt.Cloud.Table.ITableRepository.AddRangeAsync
+  nameWithType: ITableRepository.AddRangeAsync
+- uid: Innovt.Cloud.Table.ITableRepository.AddRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  name: AddRangeAsync<T>(ICollection<T>, CancellationToken)
+  href: api/Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_AddRangeAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
+  commentId: M:Innovt.Cloud.Table.ITableRepository.AddRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  name.vb: AddRangeAsync(Of T)(ICollection(Of T), CancellationToken)
+  fullName: Innovt.Cloud.Table.ITableRepository.AddRangeAsync<T>(System.Collections.Generic.ICollection<T>, System.Threading.CancellationToken)
+  fullName.vb: Innovt.Cloud.Table.ITableRepository.AddRangeAsync(Of T)(System.Collections.Generic.ICollection(Of T), System.Threading.CancellationToken)
+  nameWithType: ITableRepository.AddRangeAsync<T>(ICollection<T>, CancellationToken)
+  nameWithType.vb: ITableRepository.AddRangeAsync(Of T)(ICollection(Of T), CancellationToken)
 - uid: Innovt.Cloud.Table.ITableRepository.BatchGetItem*
   name: BatchGetItem
   href: api/Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_BatchGetItem_
@@ -13457,15 +13619,15 @@ references:
   isSpec: "True"
   fullName: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem
   nameWithType: ITableRepository.CreateTransactionWriteItem
-- uid: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0)
-  name: CreateTransactionWriteItem<T>(T)
-  href: api/Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_CreateTransactionWriteItem__1___0_
-  commentId: M:Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0)
-  name.vb: CreateTransactionWriteItem(Of T)(T)
-  fullName: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem<T>(T)
-  fullName.vb: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem(Of T)(T)
-  nameWithType: ITableRepository.CreateTransactionWriteItem<T>(T)
-  nameWithType.vb: ITableRepository.CreateTransactionWriteItem(Of T)(T)
+- uid: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0,Innovt.Cloud.Table.TransactionWriteOperationType)
+  name: CreateTransactionWriteItem<T>(T, TransactionWriteOperationType)
+  href: api/Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_CreateTransactionWriteItem__1___0_Innovt_Cloud_Table_TransactionWriteOperationType_
+  commentId: M:Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0,Innovt.Cloud.Table.TransactionWriteOperationType)
+  name.vb: CreateTransactionWriteItem(Of T)(T, TransactionWriteOperationType)
+  fullName: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem<T>(T, Innovt.Cloud.Table.TransactionWriteOperationType)
+  fullName.vb: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem(Of T)(T, Innovt.Cloud.Table.TransactionWriteOperationType)
+  nameWithType: ITableRepository.CreateTransactionWriteItem<T>(T, TransactionWriteOperationType)
+  nameWithType.vb: ITableRepository.CreateTransactionWriteItem(Of T)(T, TransactionWriteOperationType)
 - uid: Innovt.Cloud.Table.ITableRepository.DeleteAsync*
   name: DeleteAsync
   href: api/Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_DeleteAsync_
@@ -13491,22 +13653,22 @@ references:
   fullName.vb: Innovt.Cloud.Table.ITableRepository.DeleteAsync(Of T)(T, System.Threading.CancellationToken)
   nameWithType: ITableRepository.DeleteAsync<T>(T, CancellationToken)
   nameWithType.vb: ITableRepository.DeleteAsync(Of T)(T, CancellationToken)
-- uid: Innovt.Cloud.Table.ITableRepository.DeleteListAsync*
-  name: DeleteListAsync
-  href: api/Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_DeleteListAsync_
-  commentId: Overload:Innovt.Cloud.Table.ITableRepository.DeleteListAsync
+- uid: Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync*
+  name: DeleteRangeAsync
+  href: api/Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_DeleteRangeAsync_
+  commentId: Overload:Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync
   isSpec: "True"
-  fullName: Innovt.Cloud.Table.ITableRepository.DeleteListAsync
-  nameWithType: ITableRepository.DeleteListAsync
-- uid: Innovt.Cloud.Table.ITableRepository.DeleteListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-  name: DeleteListAsync<T>(ICollection<T>, CancellationToken)
-  href: api/Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_DeleteListAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
-  commentId: M:Innovt.Cloud.Table.ITableRepository.DeleteListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-  name.vb: DeleteListAsync(Of T)(ICollection(Of T), CancellationToken)
-  fullName: Innovt.Cloud.Table.ITableRepository.DeleteListAsync<T>(System.Collections.Generic.ICollection<T>, System.Threading.CancellationToken)
-  fullName.vb: Innovt.Cloud.Table.ITableRepository.DeleteListAsync(Of T)(System.Collections.Generic.ICollection(Of T), System.Threading.CancellationToken)
-  nameWithType: ITableRepository.DeleteListAsync<T>(ICollection<T>, CancellationToken)
-  nameWithType.vb: ITableRepository.DeleteListAsync(Of T)(ICollection(Of T), CancellationToken)
+  fullName: Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync
+  nameWithType: ITableRepository.DeleteRangeAsync
+- uid: Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  name: DeleteRangeAsync<T>(ICollection<T>, CancellationToken)
+  href: api/Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_DeleteRangeAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
+  commentId: M:Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  name.vb: DeleteRangeAsync(Of T)(ICollection(Of T), CancellationToken)
+  fullName: Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync<T>(System.Collections.Generic.ICollection<T>, System.Threading.CancellationToken)
+  fullName.vb: Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync(Of T)(System.Collections.Generic.ICollection(Of T), System.Threading.CancellationToken)
+  nameWithType: ITableRepository.DeleteRangeAsync<T>(ICollection<T>, CancellationToken)
+  nameWithType.vb: ITableRepository.DeleteRangeAsync(Of T)(ICollection(Of T), CancellationToken)
 - uid: Innovt.Cloud.Table.ITableRepository.ExecuteStatementAsync*
   name: ExecuteStatementAsync
   href: api/Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_ExecuteStatementAsync_
@@ -18161,6 +18323,43 @@ references:
   isSpec: "True"
   fullName: Innovt.Core.Utilities.PasswordHelper.RandomSalt
   nameWithType: PasswordHelper.RandomSalt
+- uid: Innovt.Core.Utilities.ReflectionTypeUtil
+  name: ReflectionTypeUtil
+  href: api/Innovt.Core.Utilities.ReflectionTypeUtil.html
+  commentId: T:Innovt.Core.Utilities.ReflectionTypeUtil
+  fullName: Innovt.Core.Utilities.ReflectionTypeUtil
+  nameWithType: ReflectionTypeUtil
+- uid: Innovt.Core.Utilities.ReflectionTypeUtil.CreateInstance(System.Type)
+  name: CreateInstance(Type)
+  href: api/Innovt.Core.Utilities.ReflectionTypeUtil.html#Innovt_Core_Utilities_ReflectionTypeUtil_CreateInstance_System_Type_
+  commentId: M:Innovt.Core.Utilities.ReflectionTypeUtil.CreateInstance(System.Type)
+  fullName: Innovt.Core.Utilities.ReflectionTypeUtil.CreateInstance(System.Type)
+  nameWithType: ReflectionTypeUtil.CreateInstance(Type)
+- uid: Innovt.Core.Utilities.ReflectionTypeUtil.CreateInstance(System.Type,System.Object[])
+  name: CreateInstance(Type, params object[])
+  href: api/Innovt.Core.Utilities.ReflectionTypeUtil.html#Innovt_Core_Utilities_ReflectionTypeUtil_CreateInstance_System_Type_System_Object___
+  commentId: M:Innovt.Core.Utilities.ReflectionTypeUtil.CreateInstance(System.Type,System.Object[])
+  name.vb: CreateInstance(Type, ParamArray Object())
+  fullName: Innovt.Core.Utilities.ReflectionTypeUtil.CreateInstance(System.Type, params object[])
+  fullName.vb: Innovt.Core.Utilities.ReflectionTypeUtil.CreateInstance(System.Type, ParamArray Object())
+  nameWithType: ReflectionTypeUtil.CreateInstance(Type, params object[])
+  nameWithType.vb: ReflectionTypeUtil.CreateInstance(Type, ParamArray Object())
+- uid: Innovt.Core.Utilities.ReflectionTypeUtil.CreateInstance*
+  name: CreateInstance
+  href: api/Innovt.Core.Utilities.ReflectionTypeUtil.html#Innovt_Core_Utilities_ReflectionTypeUtil_CreateInstance_
+  commentId: Overload:Innovt.Core.Utilities.ReflectionTypeUtil.CreateInstance
+  isSpec: "True"
+  fullName: Innovt.Core.Utilities.ReflectionTypeUtil.CreateInstance
+  nameWithType: ReflectionTypeUtil.CreateInstance
+- uid: Innovt.Core.Utilities.ReflectionTypeUtil.CreateInstance``1
+  name: CreateInstance<T>()
+  href: api/Innovt.Core.Utilities.ReflectionTypeUtil.html#Innovt_Core_Utilities_ReflectionTypeUtil_CreateInstance__1
+  commentId: M:Innovt.Core.Utilities.ReflectionTypeUtil.CreateInstance``1
+  name.vb: CreateInstance(Of T)()
+  fullName: Innovt.Core.Utilities.ReflectionTypeUtil.CreateInstance<T>()
+  fullName.vb: Innovt.Core.Utilities.ReflectionTypeUtil.CreateInstance(Of T)()
+  nameWithType: ReflectionTypeUtil.CreateInstance<T>()
+  nameWithType.vb: ReflectionTypeUtil.CreateInstance(Of T)()
 - uid: Innovt.Core.Utilities.StopWatchHelper
   name: StopWatchHelper
   href: api/Innovt.Core.Utilities.StopWatchHelper.html
@@ -18971,6 +19170,77 @@ references:
   isSpec: "True"
   fullName: Innovt.Core.Utilities.StringExtensions.UrlEncode
   nameWithType: StringExtensions.UrlEncode
+- uid: Innovt.Core.Utilities.TypeUtil
+  name: TypeUtil
+  href: api/Innovt.Core.Utilities.TypeUtil.html
+  commentId: T:Innovt.Core.Utilities.TypeUtil
+  fullName: Innovt.Core.Utilities.TypeUtil
+  nameWithType: TypeUtil
+- uid: Innovt.Core.Utilities.TypeUtil.AddPrimitiveType(System.Type)
+  name: AddPrimitiveType(Type)
+  href: api/Innovt.Core.Utilities.TypeUtil.html#Innovt_Core_Utilities_TypeUtil_AddPrimitiveType_System_Type_
+  commentId: M:Innovt.Core.Utilities.TypeUtil.AddPrimitiveType(System.Type)
+  fullName: Innovt.Core.Utilities.TypeUtil.AddPrimitiveType(System.Type)
+  nameWithType: TypeUtil.AddPrimitiveType(Type)
+- uid: Innovt.Core.Utilities.TypeUtil.AddPrimitiveType*
+  name: AddPrimitiveType
+  href: api/Innovt.Core.Utilities.TypeUtil.html#Innovt_Core_Utilities_TypeUtil_AddPrimitiveType_
+  commentId: Overload:Innovt.Core.Utilities.TypeUtil.AddPrimitiveType
+  isSpec: "True"
+  fullName: Innovt.Core.Utilities.TypeUtil.AddPrimitiveType
+  nameWithType: TypeUtil.AddPrimitiveType
+- uid: Innovt.Core.Utilities.TypeUtil.IsCollection(System.Type)
+  name: IsCollection(Type)
+  href: api/Innovt.Core.Utilities.TypeUtil.html#Innovt_Core_Utilities_TypeUtil_IsCollection_System_Type_
+  commentId: M:Innovt.Core.Utilities.TypeUtil.IsCollection(System.Type)
+  fullName: Innovt.Core.Utilities.TypeUtil.IsCollection(System.Type)
+  nameWithType: TypeUtil.IsCollection(Type)
+- uid: Innovt.Core.Utilities.TypeUtil.IsCollection*
+  name: IsCollection
+  href: api/Innovt.Core.Utilities.TypeUtil.html#Innovt_Core_Utilities_TypeUtil_IsCollection_
+  commentId: Overload:Innovt.Core.Utilities.TypeUtil.IsCollection
+  isSpec: "True"
+  fullName: Innovt.Core.Utilities.TypeUtil.IsCollection
+  nameWithType: TypeUtil.IsCollection
+- uid: Innovt.Core.Utilities.TypeUtil.IsDictionary(System.Type)
+  name: IsDictionary(Type)
+  href: api/Innovt.Core.Utilities.TypeUtil.html#Innovt_Core_Utilities_TypeUtil_IsDictionary_System_Type_
+  commentId: M:Innovt.Core.Utilities.TypeUtil.IsDictionary(System.Type)
+  fullName: Innovt.Core.Utilities.TypeUtil.IsDictionary(System.Type)
+  nameWithType: TypeUtil.IsDictionary(Type)
+- uid: Innovt.Core.Utilities.TypeUtil.IsDictionary*
+  name: IsDictionary
+  href: api/Innovt.Core.Utilities.TypeUtil.html#Innovt_Core_Utilities_TypeUtil_IsDictionary_
+  commentId: Overload:Innovt.Core.Utilities.TypeUtil.IsDictionary
+  isSpec: "True"
+  fullName: Innovt.Core.Utilities.TypeUtil.IsDictionary
+  nameWithType: TypeUtil.IsDictionary
+- uid: Innovt.Core.Utilities.TypeUtil.IsNumericList(System.Collections.IList)
+  name: IsNumericList(IList)
+  href: api/Innovt.Core.Utilities.TypeUtil.html#Innovt_Core_Utilities_TypeUtil_IsNumericList_System_Collections_IList_
+  commentId: M:Innovt.Core.Utilities.TypeUtil.IsNumericList(System.Collections.IList)
+  fullName: Innovt.Core.Utilities.TypeUtil.IsNumericList(System.Collections.IList)
+  nameWithType: TypeUtil.IsNumericList(IList)
+- uid: Innovt.Core.Utilities.TypeUtil.IsNumericList*
+  name: IsNumericList
+  href: api/Innovt.Core.Utilities.TypeUtil.html#Innovt_Core_Utilities_TypeUtil_IsNumericList_
+  commentId: Overload:Innovt.Core.Utilities.TypeUtil.IsNumericList
+  isSpec: "True"
+  fullName: Innovt.Core.Utilities.TypeUtil.IsNumericList
+  nameWithType: TypeUtil.IsNumericList
+- uid: Innovt.Core.Utilities.TypeUtil.IsPrimitive(System.Type)
+  name: IsPrimitive(Type)
+  href: api/Innovt.Core.Utilities.TypeUtil.html#Innovt_Core_Utilities_TypeUtil_IsPrimitive_System_Type_
+  commentId: M:Innovt.Core.Utilities.TypeUtil.IsPrimitive(System.Type)
+  fullName: Innovt.Core.Utilities.TypeUtil.IsPrimitive(System.Type)
+  nameWithType: TypeUtil.IsPrimitive(Type)
+- uid: Innovt.Core.Utilities.TypeUtil.IsPrimitive*
+  name: IsPrimitive
+  href: api/Innovt.Core.Utilities.TypeUtil.html#Innovt_Core_Utilities_TypeUtil_IsPrimitive_
+  commentId: Overload:Innovt.Core.Utilities.TypeUtil.IsPrimitive
+  isSpec: "True"
+  fullName: Innovt.Core.Utilities.TypeUtil.IsPrimitive
+  nameWithType: TypeUtil.IsPrimitive
 - uid: Innovt.Core.Validation
   name: Innovt.Core.Validation
   href: api/Innovt.Core.Validation.html

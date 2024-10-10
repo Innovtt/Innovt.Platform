@@ -183,7 +183,7 @@ references:
   commentId: T:Amazon.DynamoDBv2.DataModel.IPropertyConverter
   parent: Amazon.DynamoDBv2.DataModel
   isExternal: true
-  href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
+  href: https://github.com/aws/aws-sdk-net/blob/a180df70def2d9b66be5d7ca95bf0ba5fa35d67a/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
   name: IPropertyConverter
   nameWithType: IPropertyConverter
   fullName: Amazon.DynamoDBv2.DataModel.IPropertyConverter
@@ -734,7 +734,7 @@ references:
   commentId: M:Amazon.DynamoDBv2.DataModel.IPropertyConverter.ToEntry(System.Object)
   parent: Amazon.DynamoDBv2.DataModel.IPropertyConverter
   isExternal: true
-  href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
+  href: https://github.com/aws/aws-sdk-net/blob/a180df70def2d9b66be5d7ca95bf0ba5fa35d67a/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
   name: ToEntry(object)
   nameWithType: IPropertyConverter.ToEntry(object)
   fullName: Amazon.DynamoDBv2.DataModel.IPropertyConverter.ToEntry(object)
@@ -745,7 +745,7 @@ references:
   - uid: Amazon.DynamoDBv2.DataModel.IPropertyConverter.ToEntry(System.Object)
     name: ToEntry
     isExternal: true
-    href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
+    href: https://github.com/aws/aws-sdk-net/blob/a180df70def2d9b66be5d7ca95bf0ba5fa35d67a/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
   - name: (
   - uid: System.Object
     name: object
@@ -756,7 +756,7 @@ references:
   - uid: Amazon.DynamoDBv2.DataModel.IPropertyConverter.ToEntry(System.Object)
     name: ToEntry
     isExternal: true
-    href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
+    href: https://github.com/aws/aws-sdk-net/blob/a180df70def2d9b66be5d7ca95bf0ba5fa35d67a/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
   - name: (
   - uid: System.Object
     name: Object
@@ -767,7 +767,7 @@ references:
   commentId: T:Amazon.DynamoDBv2.DocumentModel.DynamoDBEntry
   parent: Amazon.DynamoDBv2.DocumentModel
   isExternal: true
-  href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Custom/DocumentModel/DynamoDBEntry.cs
+  href: https://github.com/aws/aws-sdk-net/blob/a180df70def2d9b66be5d7ca95bf0ba5fa35d67a/sdk/src/Services/DynamoDBv2/Custom/DocumentModel/DynamoDBEntry.cs
   name: DynamoDBEntry
   nameWithType: DynamoDBEntry
   fullName: Amazon.DynamoDBv2.DocumentModel.DynamoDBEntry
@@ -811,7 +811,7 @@ references:
   commentId: M:Amazon.DynamoDBv2.DataModel.IPropertyConverter.FromEntry(Amazon.DynamoDBv2.DocumentModel.DynamoDBEntry)
   parent: Amazon.DynamoDBv2.DataModel.IPropertyConverter
   isExternal: true
-  href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
+  href: https://github.com/aws/aws-sdk-net/blob/a180df70def2d9b66be5d7ca95bf0ba5fa35d67a/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
   name: FromEntry(DynamoDBEntry)
   nameWithType: IPropertyConverter.FromEntry(DynamoDBEntry)
   fullName: Amazon.DynamoDBv2.DataModel.IPropertyConverter.FromEntry(Amazon.DynamoDBv2.DocumentModel.DynamoDBEntry)
@@ -819,21 +819,21 @@ references:
   - uid: Amazon.DynamoDBv2.DataModel.IPropertyConverter.FromEntry(Amazon.DynamoDBv2.DocumentModel.DynamoDBEntry)
     name: FromEntry
     isExternal: true
-    href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
+    href: https://github.com/aws/aws-sdk-net/blob/a180df70def2d9b66be5d7ca95bf0ba5fa35d67a/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
   - name: (
   - uid: Amazon.DynamoDBv2.DocumentModel.DynamoDBEntry
     name: DynamoDBEntry
     isExternal: true
-    href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Custom/DocumentModel/DynamoDBEntry.cs
+    href: https://github.com/aws/aws-sdk-net/blob/a180df70def2d9b66be5d7ca95bf0ba5fa35d67a/sdk/src/Services/DynamoDBv2/Custom/DocumentModel/DynamoDBEntry.cs
   - name: )
   spec.vb:
   - uid: Amazon.DynamoDBv2.DataModel.IPropertyConverter.FromEntry(Amazon.DynamoDBv2.DocumentModel.DynamoDBEntry)
     name: FromEntry
     isExternal: true
-    href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
+    href: https://github.com/aws/aws-sdk-net/blob/a180df70def2d9b66be5d7ca95bf0ba5fa35d67a/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
   - name: (
   - uid: Amazon.DynamoDBv2.DocumentModel.DynamoDBEntry
     name: DynamoDBEntry
     isExternal: true
-    href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Custom/DocumentModel/DynamoDBEntry.cs
+    href: https://github.com/aws/aws-sdk-net/blob/a180df70def2d9b66be5d7ca95bf0ba5fa35d67a/sdk/src/Services/DynamoDBv2/Custom/DocumentModel/DynamoDBEntry.cs
   - name: )

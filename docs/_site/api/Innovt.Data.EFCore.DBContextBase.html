@@ -1,149 +1,112 @@
 ﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
 <html>
+
   <head>
     <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Class DBContextBase | Innovt Platform </title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class DBContextBase | Innovt Platform ">
-      
-      <meta name="description" content="Abstract base class for Entity Framework DbContext implementing the extended unit of work interface.">
-      <link rel="icon" href="../favicon.ico">
-      <link rel="stylesheet" href="../public/docfx.min.css">
-      <link rel="stylesheet" href="../public/main.css">
-      <meta name="docfx:navrel" content="../toc.html">
-      <meta name="docfx:tocrel" content="toc.html">
-      
-      <meta name="docfx:rel" content="../">
-      
-      
-      <meta name="docfx:docurl" content="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_EFCore_DBContextBase.md&amp;value=---%0Auid%3A%20Innovt.Data.EFCore.DBContextBase%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
-      <meta name="loc:inThisArticle" content="In this article">
-      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
-      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
-      <meta name="loc:tocFilter" content="Filter by title">
-      <meta name="loc:nextArticle" content="Next">
-      <meta name="loc:prevArticle" content="Previous">
-      <meta name="loc:themeLight" content="Light">
-      <meta name="loc:themeDark" content="Dark">
-      <meta name="loc:themeAuto" content="Auto">
-      <meta name="loc:changeTheme" content="Change theme">
-      <meta name="loc:copy" content="Copy">
-      <meta name="loc:downloadPdf" content="Download PDF">
-
-      <script type="module" src="./../public/docfx.min.js"></script>
-
-      <script>
-        const theme = localStorage.getItem('theme') || 'auto'
-        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-      </script>
-
+    
+    <meta name="description" content="Abstract base class for Entity Framework DbContext implementing the extended unit of work interface.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
   </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
 
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
-    <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
-        <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../index.html">
-            <img id="logo" class="svg" src="../logo.svg" alt="Innovt Platform">
-            Innovt Platform
-          </a>
-          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navpanel">
-            <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="Innovt Platform">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
               </form>
             </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
 
-    <main class="container-xxl">
-      <div class="toc-offcanvas">
-        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
           </div>
-          <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
+      <div role="main" class="container body-content hide-when-search">
 
-      <div class="content">
-        <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
-          </button>
-
-          <nav id="breadcrumb"></nav>
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
         </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Innovt.Data.EFCore.DBContextBase">
 
-        <article data-uid="Innovt.Data.EFCore.DBContextBase">
 
 
-
-  <h1 id="Innovt_Data_EFCore_DBContextBase" data-uid="Innovt.Data.EFCore.DBContextBase" class="text-break">
-Class DBContextBase  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L22"><i class="bi bi-code-slash"></i></a>
-  </h1>
-
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="Innovt.html">Innovt</a>.<a class="xref" href="Innovt.Data.html">Data</a>.<a class="xref" href="Innovt.Data.EFCore.html">EFCore</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>Innovt.Data.EFCore.dll</dd></dl>
-  </div>
-
-  <div class="markdown summary"><p>Abstract base class for Entity Framework DbContext implementing the extended unit of work interface.</p>
+  <h1 id="Innovt_Data_EFCore_DBContextBase" data-uid="Innovt.Data.EFCore.DBContextBase" class="text-break">Class DBContextBase</h1>
+  <div class="markdown level0 summary"><p>Abstract base class for Entity Framework DbContext implementing the extended unit of work interface.</p>
 </div>
-  <div class="markdown conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class DBContextBase : DbContext, IInfrastructure&lt;IServiceProvider&gt;, IDbContextDependencies, IDbSetCache, IDbContextPoolable, IResettableService, IAsyncDisposable, IExtendedUnitOfWork, IUnitOfWork, IDisposable</code></pre>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext">DbContext</a></div>
+    <div class="level2"><span class="xref">DBContextBase</span></div>
+      <div class="level3"><a class="xref" href="Innovt.Data.EFCore.MsSql.DBContext.html">DBContext</a></div>
+      <div class="level3"><a class="xref" href="Innovt.Data.EFCore.Oracle.DBContext.html">DBContext</a></div>
+      <div class="level3"><a class="xref" href="Innovt.Data.EFCore.PostgreSQL.DBContext.html">DBContext</a></div>
   </div>
-
-
-
-
-  <dl class="typelist inheritance">
-    <dt>Inheritance</dt>
-    <dd>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext">DbContext</a></div>
-      <div><span class="xref">DBContextBase</span></div>
-    </dd>
-  </dl>
-
-  <dl class="typelist implements">
-    <dt>Implements</dt>
-    <dd>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.infrastructure.iinfrastructure-1">IInfrastructure</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iserviceprovider">IServiceProvider</a>&gt;</div>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.internal.idbcontextdependencies">IDbContextDependencies</a></div>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.internal.idbsetcache">IDbSetCache</a></div>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.internal.idbcontextpoolable">IDbContextPoolable</a></div>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.infrastructure.iresettableservice">IResettableService</a></div>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iasyncdisposable">IAsyncDisposable</a></div>
-      <div><a class="xref" href="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.html">IExtendedUnitOfWork</a></div>
-      <div><a class="xref" href="Innovt.Domain.Core.Repository.IUnitOfWork.html">IUnitOfWork</a></div>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-    </dd>
-  </dl>
-
-  <dl class="typelist derived">
-    <dt>Derived</dt>
-    <dd>
-      <div><a class="xref" href="Innovt.Data.EFCore.MsSql.DBContext.html">DBContext</a></div>
-      <div><a class="xref" href="Innovt.Data.EFCore.Oracle.DBContext.html">DBContext</a></div>
-      <div><a class="xref" href="Innovt.Data.EFCore.PostgreSQL.DBContext.html">DBContext</a></div>
-    </dd>
-  </dl>
-
-  <dl class="typelist inheritedMembers">
-    <dt>Inherited Members</dt>
-    <dd>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.infrastructure.iinfrastructure-1">IInfrastructure</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iserviceprovider">IServiceProvider</a>&gt;</div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.internal.idbcontextdependencies">IDbContextDependencies</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.internal.idbsetcache">IDbSetCache</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.internal.idbcontextpoolable">IDbContextPoolable</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.infrastructure.iresettableservice">IResettableService</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iasyncdisposable">IAsyncDisposable</a></div>
+    <div><a class="xref" href="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.html">IExtendedUnitOfWork</a></div>
+    <div><a class="xref" href="Innovt.Domain.Core.Repository.IUnitOfWork.html">IUnitOfWork</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.set#microsoft-entityframeworkcore-dbcontext-set-1">DbContext.Set&lt;TEntity&gt;()</a>
     </div>
@@ -303,11 +266,1085 @@ Class DBContextBase  <a class="header-action link-secondary" title="View source"
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </dd></dl>
-
-  <dl class="typelist extensionMethods">
-    <dt>Extension Methods</dt>
-    <dd>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Innovt.html">Innovt</a>.<a class="xref" href="Innovt.Data.html">Data</a>.<a class="xref" href="Innovt.Data.EFCore.html">EFCore</a></h6>
+  <h6><strong>Assembly</strong>: Innovt.Data.EFCore.dll</h6>
+  <h5 id="Innovt_Data_EFCore_DBContextBase_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class DBContextBase : DbContext, IInfrastructure&lt;IServiceProvider&gt;, IDbContextDependencies, IDbSetCache, IDbContextPoolable, IResettableService, IAsyncDisposable, IExtendedUnitOfWork, IUnitOfWork, IDisposable</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_EFCore_DBContextBase__ctor_Innovt_Data_DataSources_IDataSource_.md&amp;value=---%0Auid%3A%20Innovt.Data.EFCore.DBContextBase.%23ctor(Innovt.Data.DataSources.IDataSource)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L32">View Source</a>
+  </span>
+  <a id="Innovt_Data_EFCore_DBContextBase__ctor_" data-uid="Innovt.Data.EFCore.DBContextBase.#ctor*"></a>
+  <h4 id="Innovt_Data_EFCore_DBContextBase__ctor_Innovt_Data_DataSources_IDataSource_" data-uid="Innovt.Data.EFCore.DBContextBase.#ctor(Innovt.Data.DataSources.IDataSource)">DBContextBase(IDataSource)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Innovt.Data.EFCore.DBContextBase.html">DBContextBase</a> class using a data source.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected DBContextBase(IDataSource dataSource)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Data.DataSources.IDataSource.html">IDataSource</a></td>
+        <td><span class="parametername">dataSource</span></td>
+        <td><p>The data source to use.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></td>
+        <td><p>Thrown when the data source is null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_EFCore_DBContextBase__ctor_Innovt_Data_DataSources_IDataSource_Microsoft_Extensions_Logging_ILoggerFactory_.md&amp;value=---%0Auid%3A%20Innovt.Data.EFCore.DBContextBase.%23ctor(Innovt.Data.DataSources.IDataSource%2CMicrosoft.Extensions.Logging.ILoggerFactory)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L44">View Source</a>
+  </span>
+  <a id="Innovt_Data_EFCore_DBContextBase__ctor_" data-uid="Innovt.Data.EFCore.DBContextBase.#ctor*"></a>
+  <h4 id="Innovt_Data_EFCore_DBContextBase__ctor_Innovt_Data_DataSources_IDataSource_Microsoft_Extensions_Logging_ILoggerFactory_" data-uid="Innovt.Data.EFCore.DBContextBase.#ctor(Innovt.Data.DataSources.IDataSource,Microsoft.Extensions.Logging.ILoggerFactory)">DBContextBase(IDataSource, ILoggerFactory)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Innovt.Data.EFCore.DBContextBase.html">DBContextBase</a> class using a data source and logger factory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected DBContextBase(IDataSource dataSource, ILoggerFactory loggerFactory)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Data.DataSources.IDataSource.html">IDataSource</a></td>
+        <td><span class="parametername">dataSource</span></td>
+        <td><p>The data source to use.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory">ILoggerFactory</a></td>
+        <td><span class="parametername">loggerFactory</span></td>
+        <td><p>The logger factory to use.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></td>
+        <td><p>Thrown when the data source or logger factory is null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_EFCore_DBContextBase__ctor_Microsoft_EntityFrameworkCore_DbContextOptions_.md&amp;value=---%0Auid%3A%20Innovt.Data.EFCore.DBContextBase.%23ctor(Microsoft.EntityFrameworkCore.DbContextOptions)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L53">View Source</a>
+  </span>
+  <a id="Innovt_Data_EFCore_DBContextBase__ctor_" data-uid="Innovt.Data.EFCore.DBContextBase.#ctor*"></a>
+  <h4 id="Innovt_Data_EFCore_DBContextBase__ctor_Microsoft_EntityFrameworkCore_DbContextOptions_" data-uid="Innovt.Data.EFCore.DBContextBase.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">DBContextBase(DbContextOptions)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Innovt.Data.EFCore.DBContextBase.html">DBContextBase</a> class using DbContext options.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected DBContextBase(DbContextOptions options)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions">DbContextOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td><p>The DbContext options.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_EFCore_DBContextBase_MaxRetryCount.md&amp;value=---%0Auid%3A%20Innovt.Data.EFCore.DBContextBase.MaxRetryCount%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L61">View Source</a>
+  </span>
+  <a id="Innovt_Data_EFCore_DBContextBase_MaxRetryCount_" data-uid="Innovt.Data.EFCore.DBContextBase.MaxRetryCount*"></a>
+  <h4 id="Innovt_Data_EFCore_DBContextBase_MaxRetryCount" data-uid="Innovt.Data.EFCore.DBContextBase.MaxRetryCount">MaxRetryCount</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the maximum number of retries for a transaction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int? MaxRetryCount { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_EFCore_DBContextBase_MaxRetryDelay.md&amp;value=---%0Auid%3A%20Innovt.Data.EFCore.DBContextBase.MaxRetryDelay%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L66">View Source</a>
+  </span>
+  <a id="Innovt_Data_EFCore_DBContextBase_MaxRetryDelay_" data-uid="Innovt.Data.EFCore.DBContextBase.MaxRetryDelay*"></a>
+  <h4 id="Innovt_Data_EFCore_DBContextBase_MaxRetryDelay" data-uid="Innovt.Data.EFCore.DBContextBase.MaxRetryDelay">MaxRetryDelay</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the maximum delay between retries for a transaction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TimeSpan? MaxRetryDelay { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a>?</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_EFCore_DBContextBase_AddAsync__1_System_Collections_Generic_IEnumerable___0__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Data.EFCore.DBContextBase.AddAsync%60%601(System.Collections.Generic.IEnumerable%7B%60%600%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L136">View Source</a>
+  </span>
+  <a id="Innovt_Data_EFCore_DBContextBase_AddAsync_" data-uid="Innovt.Data.EFCore.DBContextBase.AddAsync*"></a>
+  <h4 id="Innovt_Data_EFCore_DBContextBase_AddAsync__1_System_Collections_Generic_IEnumerable___0__System_Threading_CancellationToken_" data-uid="Innovt.Data.EFCore.DBContextBase.AddAsync``1(System.Collections.Generic.IEnumerable{``0},System.Threading.CancellationToken)">AddAsync&lt;T&gt;(IEnumerable&lt;T&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Asynchronously adds a collection of entities to the DbContext.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task AddAsync&lt;T&gt;(IEnumerable&lt;T&gt; entities, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</td>
+        <td><span class="parametername">entities</span></td>
+        <td><p>The collection of entities to add.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Cancellation token (optional).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td><p>A task representing the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of entities to add.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_EFCore_DBContextBase_AddAsync__1___0_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Data.EFCore.DBContextBase.AddAsync%60%601(%60%600%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L124">View Source</a>
+  </span>
+  <a id="Innovt_Data_EFCore_DBContextBase_AddAsync_" data-uid="Innovt.Data.EFCore.DBContextBase.AddAsync*"></a>
+  <h4 id="Innovt_Data_EFCore_DBContextBase_AddAsync__1___0_System_Threading_CancellationToken_" data-uid="Innovt.Data.EFCore.DBContextBase.AddAsync``1(``0,System.Threading.CancellationToken)">AddAsync&lt;T&gt;(T, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Asynchronously adds an entity to the DbContext.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task AddAsync&lt;T&gt;(T entity, CancellationToken cancellationToken = default) where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">entity</span></td>
+        <td><p>The entity to add.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Cancellation token (optional).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td><p>A task representing the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of entity to add.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_EFCore_DBContextBase_Add__1_System_Collections_Generic_IEnumerable___0__.md&amp;value=---%0Auid%3A%20Innovt.Data.EFCore.DBContextBase.Add%60%601(System.Collections.Generic.IEnumerable%7B%60%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L112">View Source</a>
+  </span>
+  <a id="Innovt_Data_EFCore_DBContextBase_Add_" data-uid="Innovt.Data.EFCore.DBContextBase.Add*"></a>
+  <h4 id="Innovt_Data_EFCore_DBContextBase_Add__1_System_Collections_Generic_IEnumerable___0__" data-uid="Innovt.Data.EFCore.DBContextBase.Add``1(System.Collections.Generic.IEnumerable{``0})">Add&lt;T&gt;(IEnumerable&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Adds a collection of entities to the DbContext.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add&lt;T&gt;(IEnumerable&lt;T&gt; entities) where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</td>
+        <td><span class="parametername">entities</span></td>
+        <td><p>The collection of entities to add.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of entities to add.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_EFCore_DBContextBase_Add__1___0_.md&amp;value=---%0Auid%3A%20Innovt.Data.EFCore.DBContextBase.Add%60%601(%60%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L102">View Source</a>
+  </span>
+  <a id="Innovt_Data_EFCore_DBContextBase_Add_" data-uid="Innovt.Data.EFCore.DBContextBase.Add*"></a>
+  <h4 id="Innovt_Data_EFCore_DBContextBase_Add__1___0_" data-uid="Innovt.Data.EFCore.DBContextBase.Add``1(``0)">Add&lt;T&gt;(T)</h4>
+  <div class="markdown level1 summary"><p>Adds an entity to the DbContext.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add&lt;T&gt;(T entity) where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">entity</span></td>
+        <td><p>The entity to add.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of entity to add.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_EFCore_DBContextBase_Attach__1___0_.md&amp;value=---%0Auid%3A%20Innovt.Data.EFCore.DBContextBase.Attach%60%601(%60%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L177">View Source</a>
+  </span>
+  <a id="Innovt_Data_EFCore_DBContextBase_Attach_" data-uid="Innovt.Data.EFCore.DBContextBase.Attach*"></a>
+  <h4 id="Innovt_Data_EFCore_DBContextBase_Attach__1___0_" data-uid="Innovt.Data.EFCore.DBContextBase.Attach``1(``0)">Attach&lt;T&gt;(T)</h4>
+  <div class="markdown level1 summary"><p>Attaches the specified entity to the DbContext.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Attach&lt;T&gt;(T entity) where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">entity</span></td>
+        <td><p>The entity to attach.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of entity to attach.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_EFCore_DBContextBase_Commit.md&amp;value=---%0Auid%3A%20Innovt.Data.EFCore.DBContextBase.Commit%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L72">View Source</a>
+  </span>
+  <a id="Innovt_Data_EFCore_DBContextBase_Commit_" data-uid="Innovt.Data.EFCore.DBContextBase.Commit*"></a>
+  <h4 id="Innovt_Data_EFCore_DBContextBase_Commit" data-uid="Innovt.Data.EFCore.DBContextBase.Commit">Commit()</h4>
+  <div class="markdown level1 summary"><p>Commits the changes made in the unit of work to the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Commit()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><p>The number of entities written to the database.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_EFCore_DBContextBase_CommitAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Data.EFCore.DBContextBase.CommitAsync(System.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L82">View Source</a>
+  </span>
+  <a id="Innovt_Data_EFCore_DBContextBase_CommitAsync_" data-uid="Innovt.Data.EFCore.DBContextBase.CommitAsync*"></a>
+  <h4 id="Innovt_Data_EFCore_DBContextBase_CommitAsync_System_Threading_CancellationToken_" data-uid="Innovt.Data.EFCore.DBContextBase.CommitAsync(System.Threading.CancellationToken)">CommitAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Asynchronously commits the changes made in the unit of work to the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;int&gt; CommitAsync(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Cancellation token (optional).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</td>
+        <td><p>The number of entities written to the database.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_EFCore_DBContextBase_ConfigureProvider_Microsoft_EntityFrameworkCore_DbContextOptionsBuilder_System_String_.md&amp;value=---%0Auid%3A%20Innovt.Data.EFCore.DBContextBase.ConfigureProvider(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L254">View Source</a>
+  </span>
+  <a id="Innovt_Data_EFCore_DBContextBase_ConfigureProvider_" data-uid="Innovt.Data.EFCore.DBContextBase.ConfigureProvider*"></a>
+  <h4 id="Innovt_Data_EFCore_DBContextBase_ConfigureProvider_Microsoft_EntityFrameworkCore_DbContextOptionsBuilder_System_String_" data-uid="Innovt.Data.EFCore.DBContextBase.ConfigureProvider(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder,System.String)">ConfigureProvider(DbContextOptionsBuilder, string)</h4>
+  <div class="markdown level1 summary"><p>Configures the provider-specific options for the DbContext.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract void ConfigureProvider(DbContextOptionsBuilder optionsBuilder, string connectionString)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontextoptionsbuilder">DbContextOptionsBuilder</a></td>
+        <td><span class="parametername">optionsBuilder</span></td>
+        <td><p>The options builder for configuring DbContext options.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">connectionString</span></td>
+        <td><p>The connection string for the data source.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_EFCore_DBContextBase_Detach__1___0_.md&amp;value=---%0Auid%3A%20Innovt.Data.EFCore.DBContextBase.Detach%60%601(%60%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L187">View Source</a>
+  </span>
+  <a id="Innovt_Data_EFCore_DBContextBase_Detach_" data-uid="Innovt.Data.EFCore.DBContextBase.Detach*"></a>
+  <h4 id="Innovt_Data_EFCore_DBContextBase_Detach__1___0_" data-uid="Innovt.Data.EFCore.DBContextBase.Detach``1(``0)">Detach&lt;T&gt;(T)</h4>
+  <div class="markdown level1 summary"><p>Detaches an entity from the DbContext.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Detach&lt;T&gt;(T entity) where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">entity</span></td>
+        <td><p>The entity to detach.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of entity to detach.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_EFCore_DBContextBase_ExecuteSqlCommand_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Innovt.Data.EFCore.DBContextBase.ExecuteSqlCommand(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L208">View Source</a>
+  </span>
+  <a id="Innovt_Data_EFCore_DBContextBase_ExecuteSqlCommand_" data-uid="Innovt.Data.EFCore.DBContextBase.ExecuteSqlCommand*"></a>
+  <h4 id="Innovt_Data_EFCore_DBContextBase_ExecuteSqlCommand_System_String_System_Object___" data-uid="Innovt.Data.EFCore.DBContextBase.ExecuteSqlCommand(System.String,System.Object[])">ExecuteSqlCommand(string, params object[])</h4>
+  <div class="markdown level1 summary"><p>Executes a SQL command against the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract int ExecuteSqlCommand(string sql, params object[] parameters)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">sql</span></td>
+        <td><p>The SQL command to execute.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</td>
+        <td><span class="parametername">parameters</span></td>
+        <td><p>The parameters for the SQL command.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><p>The number of entities affected by the SQL command.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_EFCore_DBContextBase_ExecuteSqlCommandAsync_System_String_System_Threading_CancellationToken_System_Object___.md&amp;value=---%0Auid%3A%20Innovt.Data.EFCore.DBContextBase.ExecuteSqlCommandAsync(System.String%2CSystem.Threading.CancellationToken%2CSystem.Object%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L220">View Source</a>
+  </span>
+  <a id="Innovt_Data_EFCore_DBContextBase_ExecuteSqlCommandAsync_" data-uid="Innovt.Data.EFCore.DBContextBase.ExecuteSqlCommandAsync*"></a>
+  <h4 id="Innovt_Data_EFCore_DBContextBase_ExecuteSqlCommandAsync_System_String_System_Threading_CancellationToken_System_Object___" data-uid="Innovt.Data.EFCore.DBContextBase.ExecuteSqlCommandAsync(System.String,System.Threading.CancellationToken,System.Object[])">ExecuteSqlCommandAsync(string, CancellationToken, params object[])</h4>
+  <div class="markdown level1 summary"><p>Asynchronously executes a SQL command against the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract Task&lt;int&gt; ExecuteSqlCommandAsync(string sql, CancellationToken cancellationToken = default, params object[] parameters)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">sql</span></td>
+        <td><p>The SQL command to execute.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Cancellation token (optional).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</td>
+        <td><span class="parametername">parameters</span></td>
+        <td><p>The parameters for the SQL command.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</td>
+        <td><p>A task representing the asynchronous operation and yielding the number of entities affected by the SQL
+command.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_EFCore_DBContextBase_OnConfiguring_Microsoft_EntityFrameworkCore_DbContextOptionsBuilder_.md&amp;value=---%0Auid%3A%20Innovt.Data.EFCore.DBContextBase.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L227">View Source</a>
+  </span>
+  <a id="Innovt_Data_EFCore_DBContextBase_OnConfiguring_" data-uid="Innovt.Data.EFCore.DBContextBase.OnConfiguring*"></a>
+  <h4 id="Innovt_Data_EFCore_DBContextBase_OnConfiguring_Microsoft_EntityFrameworkCore_DbContextOptionsBuilder_" data-uid="Innovt.Data.EFCore.DBContextBase.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">OnConfiguring(DbContextOptionsBuilder)</h4>
+  <div class="markdown level1 summary"><p>Overrides the configuration of DbContext options.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontextoptionsbuilder">DbContextOptionsBuilder</a></td>
+        <td><span class="parametername">optionsBuilder</span></td>
+        <td><p>The options builder for configuring DbContext options.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.onconfiguring">DbContext.OnConfiguring(DbContextOptionsBuilder)</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_EFCore_DBContextBase_Queryable__1.md&amp;value=---%0Auid%3A%20Innovt.Data.EFCore.DBContextBase.Queryable%60%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L197">View Source</a>
+  </span>
+  <a id="Innovt_Data_EFCore_DBContextBase_Queryable_" data-uid="Innovt.Data.EFCore.DBContextBase.Queryable*"></a>
+  <h4 id="Innovt_Data_EFCore_DBContextBase_Queryable__1" data-uid="Innovt.Data.EFCore.DBContextBase.Queryable``1">Queryable&lt;T&gt;()</h4>
+  <div class="markdown level1 summary"><p>Gets a queryable representation of a specific entity type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IQueryable&lt;T&gt; Queryable&lt;T&gt;() where T : class</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1">IQueryable</a>&lt;T&gt;</td>
+        <td><p>An <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1">IQueryable&lt;T&gt;</a> representing the entity type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of entity.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_EFCore_DBContextBase_Remove__1_System_Collections_Generic_IEnumerable___0__.md&amp;value=---%0Auid%3A%20Innovt.Data.EFCore.DBContextBase.Remove%60%601(System.Collections.Generic.IEnumerable%7B%60%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L157">View Source</a>
+  </span>
+  <a id="Innovt_Data_EFCore_DBContextBase_Remove_" data-uid="Innovt.Data.EFCore.DBContextBase.Remove*"></a>
+  <h4 id="Innovt_Data_EFCore_DBContextBase_Remove__1_System_Collections_Generic_IEnumerable___0__" data-uid="Innovt.Data.EFCore.DBContextBase.Remove``1(System.Collections.Generic.IEnumerable{``0})">Remove&lt;T&gt;(IEnumerable&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Removes a collection of entities from the DbContext.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Remove&lt;T&gt;(IEnumerable&lt;T&gt; entities) where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</td>
+        <td><span class="parametername">entities</span></td>
+        <td><p>The collection of entities to remove.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of entities to remove.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_EFCore_DBContextBase_Remove__1___0_.md&amp;value=---%0Auid%3A%20Innovt.Data.EFCore.DBContextBase.Remove%60%601(%60%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L147">View Source</a>
+  </span>
+  <a id="Innovt_Data_EFCore_DBContextBase_Remove_" data-uid="Innovt.Data.EFCore.DBContextBase.Remove*"></a>
+  <h4 id="Innovt_Data_EFCore_DBContextBase_Remove__1___0_" data-uid="Innovt.Data.EFCore.DBContextBase.Remove``1(``0)">Remove&lt;T&gt;(T)</h4>
+  <div class="markdown level1 summary"><p>Removes an entity from the DbContext.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Remove&lt;T&gt;(T entity) where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">entity</span></td>
+        <td><p>The entity to remove.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of entity to remove.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_EFCore_DBContextBase_Rollback.md&amp;value=---%0Auid%3A%20Innovt.Data.EFCore.DBContextBase.Rollback%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L90">View Source</a>
+  </span>
+  <a id="Innovt_Data_EFCore_DBContextBase_Rollback_" data-uid="Innovt.Data.EFCore.DBContextBase.Rollback*"></a>
+  <h4 id="Innovt_Data_EFCore_DBContextBase_Rollback" data-uid="Innovt.Data.EFCore.DBContextBase.Rollback">Rollback()</h4>
+  <div class="markdown level1 summary"><p>Rolls back the changes made in the unit of work by setting all entries to an unchanged state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Rollback()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_EFCore_DBContextBase_Update__1___0_.md&amp;value=---%0Auid%3A%20Innovt.Data.EFCore.DBContextBase.Update%60%601(%60%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L167">View Source</a>
+  </span>
+  <a id="Innovt_Data_EFCore_DBContextBase_Update_" data-uid="Innovt.Data.EFCore.DBContextBase.Update*"></a>
+  <h4 id="Innovt_Data_EFCore_DBContextBase_Update__1___0_" data-uid="Innovt.Data.EFCore.DBContextBase.Update``1(``0)">Update&lt;T&gt;(T)</h4>
+  <div class="markdown level1 summary"><p>Updates the specified entity in the DbContext.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Update&lt;T&gt;(T entity) where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">entity</span></td>
+        <td><p>The entity to update.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of entity to update.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.infrastructure.iinfrastructure-1">IInfrastructure&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.internal.idbcontextdependencies">IDbContextDependencies</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.internal.idbsetcache">IDbSetCache</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.internal.idbcontextpoolable">IDbContextPoolable</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.infrastructure.iresettableservice">IResettableService</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iasyncdisposable">IAsyncDisposable</a>
+  </div>
+  <div>
+      <a class="xref" href="Innovt.Domain.Core.Repository.IExtendedUnitOfWork.html">IExtendedUnitOfWork</a>
+  </div>
+  <div>
+      <a class="xref" href="Innovt.Domain.Core.Repository.IUnitOfWork.html">IUnitOfWork</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_">Extensions.IsNull(object)</a>
   </div>
@@ -317,889 +1354,47 @@ Class DBContextBase  <a class="header-action link-secondary" title="View source"
   <div>
       <a class="xref" href="Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_">SimpleMapper.MapTo&lt;T1&gt;(object)</a>
   </div>
-  </dd></dl>
-
-
-
-
-
-  <h2 class="section" id="constructors">Constructors
-</h2>
-
-
-  <a id="Innovt_Data_EFCore_DBContextBase__ctor_" data-uid="Innovt.Data.EFCore.DBContextBase.#ctor*"></a>
-
-  <h3 id="Innovt_Data_EFCore_DBContextBase__ctor_Innovt_Data_DataSources_IDataSource_" data-uid="Innovt.Data.EFCore.DBContextBase.#ctor(Innovt.Data.DataSources.IDataSource)">
-  DBContextBase(IDataSource)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L32"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Innovt.Data.EFCore.DBContextBase.html">DBContextBase</a> class using a data source.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected DBContextBase(IDataSource dataSource)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>dataSource</code> <a class="xref" href="Innovt.Data.DataSources.IDataSource.html">IDataSource</a></dt>
-    <dd><p>The data source to use.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
-    <dd><p>Thrown when the data source is null.</p>
-</dd>
-  </dl>
-
-
-
-  <a id="Innovt_Data_EFCore_DBContextBase__ctor_" data-uid="Innovt.Data.EFCore.DBContextBase.#ctor*"></a>
-
-  <h3 id="Innovt_Data_EFCore_DBContextBase__ctor_Innovt_Data_DataSources_IDataSource_Microsoft_Extensions_Logging_ILoggerFactory_" data-uid="Innovt.Data.EFCore.DBContextBase.#ctor(Innovt.Data.DataSources.IDataSource,Microsoft.Extensions.Logging.ILoggerFactory)">
-  DBContextBase(IDataSource, ILoggerFactory)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L44"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Innovt.Data.EFCore.DBContextBase.html">DBContextBase</a> class using a data source and logger factory.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected DBContextBase(IDataSource dataSource, ILoggerFactory loggerFactory)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>dataSource</code> <a class="xref" href="Innovt.Data.DataSources.IDataSource.html">IDataSource</a></dt>
-    <dd><p>The data source to use.</p>
-</dd>
-    <dt><code>loggerFactory</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory">ILoggerFactory</a></dt>
-    <dd><p>The logger factory to use.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
-    <dd><p>Thrown when the data source or logger factory is null.</p>
-</dd>
-  </dl>
-
-
-
-  <a id="Innovt_Data_EFCore_DBContextBase__ctor_" data-uid="Innovt.Data.EFCore.DBContextBase.#ctor*"></a>
-
-  <h3 id="Innovt_Data_EFCore_DBContextBase__ctor_Microsoft_EntityFrameworkCore_DbContextOptions_" data-uid="Innovt.Data.EFCore.DBContextBase.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
-  DBContextBase(DbContextOptions)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L53"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Innovt.Data.EFCore.DBContextBase.html">DBContextBase</a> class using DbContext options.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected DBContextBase(DbContextOptions options)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>options</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions">DbContextOptions</a></dt>
-    <dd><p>The DbContext options.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
-  <a id="Innovt_Data_EFCore_DBContextBase_MaxRetryCount_" data-uid="Innovt.Data.EFCore.DBContextBase.MaxRetryCount*"></a>
-
-  <h3 id="Innovt_Data_EFCore_DBContextBase_MaxRetryCount" data-uid="Innovt.Data.EFCore.DBContextBase.MaxRetryCount">
-  MaxRetryCount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L61"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets or sets the maximum number of retries for a transaction.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int? MaxRetryCount { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_EFCore_DBContextBase_MaxRetryDelay_" data-uid="Innovt.Data.EFCore.DBContextBase.MaxRetryDelay*"></a>
-
-  <h3 id="Innovt_Data_EFCore_DBContextBase_MaxRetryDelay" data-uid="Innovt.Data.EFCore.DBContextBase.MaxRetryDelay">
-  MaxRetryDelay
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L66"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets or sets the maximum delay between retries for a transaction.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TimeSpan? MaxRetryDelay { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a>?</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
-  <a id="Innovt_Data_EFCore_DBContextBase_AddAsync_" data-uid="Innovt.Data.EFCore.DBContextBase.AddAsync*"></a>
-
-  <h3 id="Innovt_Data_EFCore_DBContextBase_AddAsync__1_System_Collections_Generic_IEnumerable___0__System_Threading_CancellationToken_" data-uid="Innovt.Data.EFCore.DBContextBase.AddAsync``1(System.Collections.Generic.IEnumerable{``0},System.Threading.CancellationToken)">
-  AddAsync&lt;T&gt;(IEnumerable&lt;T&gt;, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L136"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Asynchronously adds a collection of entities to the DbContext.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task AddAsync&lt;T&gt;(IEnumerable&lt;T&gt; entities, CancellationToken cancellationToken = default) where T : class</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entities</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
-    <dd><p>The collection of entities to add.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>Cancellation token (optional).</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
-    <dd><p>A task representing the asynchronous operation.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>The type of entities to add.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_EFCore_DBContextBase_AddAsync_" data-uid="Innovt.Data.EFCore.DBContextBase.AddAsync*"></a>
-
-  <h3 id="Innovt_Data_EFCore_DBContextBase_AddAsync__1___0_System_Threading_CancellationToken_" data-uid="Innovt.Data.EFCore.DBContextBase.AddAsync``1(``0,System.Threading.CancellationToken)">
-  AddAsync&lt;T&gt;(T, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L124"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Asynchronously adds an entity to the DbContext.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task AddAsync&lt;T&gt;(T entity, CancellationToken cancellationToken = default) where T : class</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entity</code> <span class="xref">T</span></dt>
-    <dd><p>The entity to add.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>Cancellation token (optional).</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
-    <dd><p>A task representing the asynchronous operation.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>The type of entity to add.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_EFCore_DBContextBase_Add_" data-uid="Innovt.Data.EFCore.DBContextBase.Add*"></a>
-
-  <h3 id="Innovt_Data_EFCore_DBContextBase_Add__1_System_Collections_Generic_IEnumerable___0__" data-uid="Innovt.Data.EFCore.DBContextBase.Add``1(System.Collections.Generic.IEnumerable{``0})">
-  Add&lt;T&gt;(IEnumerable&lt;T&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L112"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Adds a collection of entities to the DbContext.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Add&lt;T&gt;(IEnumerable&lt;T&gt; entities) where T : class</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entities</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
-    <dd><p>The collection of entities to add.</p>
-</dd>
-  </dl>
-
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>The type of entities to add.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_EFCore_DBContextBase_Add_" data-uid="Innovt.Data.EFCore.DBContextBase.Add*"></a>
-
-  <h3 id="Innovt_Data_EFCore_DBContextBase_Add__1___0_" data-uid="Innovt.Data.EFCore.DBContextBase.Add``1(``0)">
-  Add&lt;T&gt;(T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L102"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Adds an entity to the DbContext.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Add&lt;T&gt;(T entity) where T : class</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entity</code> <span class="xref">T</span></dt>
-    <dd><p>The entity to add.</p>
-</dd>
-  </dl>
-
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>The type of entity to add.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_EFCore_DBContextBase_Attach_" data-uid="Innovt.Data.EFCore.DBContextBase.Attach*"></a>
-
-  <h3 id="Innovt_Data_EFCore_DBContextBase_Attach__1___0_" data-uid="Innovt.Data.EFCore.DBContextBase.Attach``1(``0)">
-  Attach&lt;T&gt;(T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L177"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Attaches the specified entity to the DbContext.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Attach&lt;T&gt;(T entity) where T : class</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entity</code> <span class="xref">T</span></dt>
-    <dd><p>The entity to attach.</p>
-</dd>
-  </dl>
-
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>The type of entity to attach.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_EFCore_DBContextBase_Commit_" data-uid="Innovt.Data.EFCore.DBContextBase.Commit*"></a>
-
-  <h3 id="Innovt_Data_EFCore_DBContextBase_Commit" data-uid="Innovt.Data.EFCore.DBContextBase.Commit">
-  Commit()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L72"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Commits the changes made in the unit of work to the database.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Commit()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The number of entities written to the database.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_EFCore_DBContextBase_CommitAsync_" data-uid="Innovt.Data.EFCore.DBContextBase.CommitAsync*"></a>
-
-  <h3 id="Innovt_Data_EFCore_DBContextBase_CommitAsync_System_Threading_CancellationToken_" data-uid="Innovt.Data.EFCore.DBContextBase.CommitAsync(System.Threading.CancellationToken)">
-  CommitAsync(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L82"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Asynchronously commits the changes made in the unit of work to the database.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;int&gt; CommitAsync(CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>Cancellation token (optional).</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
-    <dd><p>The number of entities written to the database.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_EFCore_DBContextBase_ConfigureProvider_" data-uid="Innovt.Data.EFCore.DBContextBase.ConfigureProvider*"></a>
-
-  <h3 id="Innovt_Data_EFCore_DBContextBase_ConfigureProvider_Microsoft_EntityFrameworkCore_DbContextOptionsBuilder_System_String_" data-uid="Innovt.Data.EFCore.DBContextBase.ConfigureProvider(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder,System.String)">
-  ConfigureProvider(DbContextOptionsBuilder, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L254"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Configures the provider-specific options for the DbContext.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected abstract void ConfigureProvider(DbContextOptionsBuilder optionsBuilder, string connectionString)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>optionsBuilder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontextoptionsbuilder">DbContextOptionsBuilder</a></dt>
-    <dd><p>The options builder for configuring DbContext options.</p>
-</dd>
-    <dt><code>connectionString</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The connection string for the data source.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_EFCore_DBContextBase_Detach_" data-uid="Innovt.Data.EFCore.DBContextBase.Detach*"></a>
-
-  <h3 id="Innovt_Data_EFCore_DBContextBase_Detach__1___0_" data-uid="Innovt.Data.EFCore.DBContextBase.Detach``1(``0)">
-  Detach&lt;T&gt;(T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L187"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Detaches an entity from the DbContext.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Detach&lt;T&gt;(T entity) where T : class</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entity</code> <span class="xref">T</span></dt>
-    <dd><p>The entity to detach.</p>
-</dd>
-  </dl>
-
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>The type of entity to detach.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_EFCore_DBContextBase_ExecuteSqlCommand_" data-uid="Innovt.Data.EFCore.DBContextBase.ExecuteSqlCommand*"></a>
-
-  <h3 id="Innovt_Data_EFCore_DBContextBase_ExecuteSqlCommand_System_String_System_Object___" data-uid="Innovt.Data.EFCore.DBContextBase.ExecuteSqlCommand(System.String,System.Object[])">
-  ExecuteSqlCommand(string, params object[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L208"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Executes a SQL command against the database.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract int ExecuteSqlCommand(string sql, params object[] parameters)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>sql</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The SQL command to execute.</p>
-</dd>
-    <dt><code>parameters</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
-    <dd><p>The parameters for the SQL command.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The number of entities affected by the SQL command.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_EFCore_DBContextBase_ExecuteSqlCommandAsync_" data-uid="Innovt.Data.EFCore.DBContextBase.ExecuteSqlCommandAsync*"></a>
-
-  <h3 id="Innovt_Data_EFCore_DBContextBase_ExecuteSqlCommandAsync_System_String_System_Threading_CancellationToken_System_Object___" data-uid="Innovt.Data.EFCore.DBContextBase.ExecuteSqlCommandAsync(System.String,System.Threading.CancellationToken,System.Object[])">
-  ExecuteSqlCommandAsync(string, CancellationToken, params object[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L220"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Asynchronously executes a SQL command against the database.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract Task&lt;int&gt; ExecuteSqlCommandAsync(string sql, CancellationToken cancellationToken = default, params object[] parameters)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>sql</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The SQL command to execute.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>Cancellation token (optional).</p>
-</dd>
-    <dt><code>parameters</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
-    <dd><p>The parameters for the SQL command.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
-    <dd><p>A task representing the asynchronous operation and yielding the number of entities affected by the SQL
-command.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_EFCore_DBContextBase_OnConfiguring_" data-uid="Innovt.Data.EFCore.DBContextBase.OnConfiguring*"></a>
-
-  <h3 id="Innovt_Data_EFCore_DBContextBase_OnConfiguring_Microsoft_EntityFrameworkCore_DbContextOptionsBuilder_" data-uid="Innovt.Data.EFCore.DBContextBase.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
-  OnConfiguring(DbContextOptionsBuilder)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L227"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Overrides the configuration of DbContext options.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>optionsBuilder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontextoptionsbuilder">DbContextOptionsBuilder</a></dt>
-    <dd><p>The options builder for configuring DbContext options.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_EFCore_DBContextBase_Queryable_" data-uid="Innovt.Data.EFCore.DBContextBase.Queryable*"></a>
-
-  <h3 id="Innovt_Data_EFCore_DBContextBase_Queryable__1" data-uid="Innovt.Data.EFCore.DBContextBase.Queryable``1">
-  Queryable&lt;T&gt;()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L197"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets a queryable representation of a specific entity type.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IQueryable&lt;T&gt; Queryable&lt;T&gt;() where T : class</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1">IQueryable</a>&lt;T&gt;</dt>
-    <dd><p>An <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1">IQueryable&lt;T&gt;</a> representing the entity type.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>The type of entity.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_EFCore_DBContextBase_Remove_" data-uid="Innovt.Data.EFCore.DBContextBase.Remove*"></a>
-
-  <h3 id="Innovt_Data_EFCore_DBContextBase_Remove__1_System_Collections_Generic_IEnumerable___0__" data-uid="Innovt.Data.EFCore.DBContextBase.Remove``1(System.Collections.Generic.IEnumerable{``0})">
-  Remove&lt;T&gt;(IEnumerable&lt;T&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L157"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Removes a collection of entities from the DbContext.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Remove&lt;T&gt;(IEnumerable&lt;T&gt; entities) where T : class</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entities</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
-    <dd><p>The collection of entities to remove.</p>
-</dd>
-  </dl>
-
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>The type of entities to remove.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_EFCore_DBContextBase_Remove_" data-uid="Innovt.Data.EFCore.DBContextBase.Remove*"></a>
-
-  <h3 id="Innovt_Data_EFCore_DBContextBase_Remove__1___0_" data-uid="Innovt.Data.EFCore.DBContextBase.Remove``1(``0)">
-  Remove&lt;T&gt;(T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L147"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Removes an entity from the DbContext.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Remove&lt;T&gt;(T entity) where T : class</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entity</code> <span class="xref">T</span></dt>
-    <dd><p>The entity to remove.</p>
-</dd>
-  </dl>
-
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>The type of entity to remove.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_EFCore_DBContextBase_Rollback_" data-uid="Innovt.Data.EFCore.DBContextBase.Rollback*"></a>
-
-  <h3 id="Innovt_Data_EFCore_DBContextBase_Rollback" data-uid="Innovt.Data.EFCore.DBContextBase.Rollback">
-  Rollback()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L90"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Rolls back the changes made in the unit of work by setting all entries to an unchanged state.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Rollback()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Data_EFCore_DBContextBase_Update_" data-uid="Innovt.Data.EFCore.DBContextBase.Update*"></a>
-
-  <h3 id="Innovt_Data_EFCore_DBContextBase_Update__1___0_" data-uid="Innovt.Data.EFCore.DBContextBase.Update``1(``0)">
-  Update&lt;T&gt;(T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L167"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Updates the specified entity in the DbContext.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Update&lt;T&gt;(T entity) where T : class</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entity</code> <span class="xref">T</span></dt>
-    <dd><p>The entity to update.</p>
-</dd>
-  </dl>
-
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>The type of entity to update.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
 
 </article>
+          </div>
 
-        <div class="contribution d-print-none">
-          <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L22" class="edit-link">Edit this page</a>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Data_EFCore_DBContextBase.md&amp;value=---%0Auid%3A%20Innovt.Data.EFCore.DBContextBase%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Data.EFCore/DBContextBase.cs/#L22" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
         </div>
-
-
       </div>
 
-      <div class="affix">
-        <nav id="affix"></nav>
-      </div>
-    </main>
-
-    <div class="container-xxl search-results" id="search-results"></div>
-
-    <footer class="border-top text-secondary">
-      <div class="container-xxl">
-        <div class="flex-fill">
-          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
   </body>
 </html>

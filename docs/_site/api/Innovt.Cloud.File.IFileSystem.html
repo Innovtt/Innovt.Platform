@@ -1,120 +1,1898 @@
 ﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
 <html>
+
   <head>
     <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Interface IFileSystem | Innovt Platform </title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width">
       <meta name="title" content="Interface IFileSystem | Innovt Platform ">
-      
-      <meta name="description" content="Interface for File System">
-      <link rel="icon" href="../favicon.ico">
-      <link rel="stylesheet" href="../public/docfx.min.css">
-      <link rel="stylesheet" href="../public/main.css">
-      <meta name="docfx:navrel" content="../toc.html">
-      <meta name="docfx:tocrel" content="toc.html">
-      
-      <meta name="docfx:rel" content="../">
-      
-      
-      <meta name="docfx:docurl" content="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
-      <meta name="loc:inThisArticle" content="In this article">
-      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
-      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
-      <meta name="loc:tocFilter" content="Filter by title">
-      <meta name="loc:nextArticle" content="Next">
-      <meta name="loc:prevArticle" content="Previous">
-      <meta name="loc:themeLight" content="Light">
-      <meta name="loc:themeDark" content="Dark">
-      <meta name="loc:themeAuto" content="Auto">
-      <meta name="loc:changeTheme" content="Change theme">
-      <meta name="loc:copy" content="Copy">
-      <meta name="loc:downloadPdf" content="Download PDF">
-
-      <script type="module" src="./../public/docfx.min.js"></script>
-
-      <script>
-        const theme = localStorage.getItem('theme') || 'auto'
-        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-      </script>
-
+    
+    <meta name="description" content="Interface for File System">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
   </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
 
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
-    <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
-        <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../index.html">
-            <img id="logo" class="svg" src="../logo.svg" alt="Innovt Platform">
-            Innovt Platform
-          </a>
-          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navpanel">
-            <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="Innovt Platform">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
               </form>
             </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
 
-    <main class="container-xxl">
-      <div class="toc-offcanvas">
-        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
           </div>
-          <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
+      <div role="main" class="container body-content hide-when-search">
 
-      <div class="content">
-        <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
-          </button>
-
-          <nav id="breadcrumb"></nav>
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
         </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Innovt.Cloud.File.IFileSystem">
 
-        <article data-uid="Innovt.Cloud.File.IFileSystem">
 
 
-
-  <h1 id="Innovt_Cloud_File_IFileSystem" data-uid="Innovt.Cloud.File.IFileSystem" class="text-break">
-Interface IFileSystem  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L17"><i class="bi bi-code-slash"></i></a>
-  </h1>
-
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="Innovt.html">Innovt</a>.<a class="xref" href="Innovt.Cloud.html">Cloud</a>.<a class="xref" href="Innovt.Cloud.File.html">File</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>Innovt.Cloud.dll</dd></dl>
-  </div>
-
-  <div class="markdown summary"><p>Interface for File System</p>
+  <h1 id="Innovt_Cloud_File_IFileSystem" data-uid="Innovt.Cloud.File.IFileSystem" class="text-break">Interface IFileSystem</h1>
+  <div class="markdown level0 summary"><p>Interface for File System</p>
 </div>
-  <div class="markdown conceptual"></div>
-
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Innovt.html">Innovt</a>.<a class="xref" href="Innovt.Cloud.html">Cloud</a>.<a class="xref" href="Innovt.Cloud.File.html">File</a></h6>
+  <h6><strong>Assembly</strong>: Innovt.Cloud.dll</h6>
+  <h5 id="Innovt_Cloud_File_IFileSystem_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IFileSystem</code></pre>
   </div>
-
-
-
-
-
-
-
-
-  <dl class="typelist extensionMethods">
-    <dt>Extension Methods</dt>
-    <dd>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_CopyObject_System_String_System_String_System_String_System_String_System_String_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.CopyObject(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L30">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_CopyObject_" data-uid="Innovt.Cloud.File.IFileSystem.CopyObject*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_CopyObject_System_String_System_String_System_String_System_String_System_String_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.CopyObject(System.String,System.String,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">CopyObject(string, string, string, string, string, string, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Copy a file from one bucket to another</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;bool&gt; CopyObject(string sourceBucket, string sourceKey, string destinationBucket, string destinationKey, string serverSideEncryptionMethod = null, string fileAcl = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">sourceBucket</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">sourceKey</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">destinationBucket</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">destinationKey</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">serverSideEncryptionMethod</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">fileAcl</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_DeleteObject_System_String_System_String_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.DeleteObject(System.String%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L273">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_DeleteObject_" data-uid="Innovt.Cloud.File.IFileSystem.DeleteObject*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_DeleteObject_System_String_System_String_" data-uid="Innovt.Cloud.File.IFileSystem.DeleteObject(System.String,System.String)">DeleteObject(string, string)</h4>
+  <div class="markdown level1 summary"><p>Deletes an object from the specified bucket.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool DeleteObject(string bucketName, string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">bucketName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_DeleteObjectAsync_System_String_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.DeleteObjectAsync(System.String%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L268">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_DeleteObjectAsync_" data-uid="Innovt.Cloud.File.IFileSystem.DeleteObjectAsync*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_DeleteObjectAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.DeleteObjectAsync(System.String,System.String,System.Threading.CancellationToken)">DeleteObjectAsync(string, string, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Deletes an object from the specified bucket.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;bool&gt; DeleteObjectAsync(string bucketName, string key, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">bucketName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_Download_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.Download(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L36">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_Download_" data-uid="Innovt.Cloud.File.IFileSystem.Download*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_Download_System_String_System_String_System_String_" data-uid="Innovt.Cloud.File.IFileSystem.Download(System.String,System.String,System.String)">Download(string, string, string)</h4>
+  <div class="markdown level1 summary"><p>Downloads a file from the specified bucket and saves it to the destination path.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Download(string bucketName, string fileName, string destination)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">bucketName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">fileName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">destination</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_DownloadStream_System_String_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.DownloadStream(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L41">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_DownloadStream_" data-uid="Innovt.Cloud.File.IFileSystem.DownloadStream*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_DownloadStream_System_String_" data-uid="Innovt.Cloud.File.IFileSystem.DownloadStream(System.String)">DownloadStream(string)</h4>
+  <div class="markdown level1 summary"><p>Downloads a file from the provided URL and returns the stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Stream DownloadStream(string url)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">url</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_DownloadStream_System_String_System_String_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.DownloadStream(System.String%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L49">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_DownloadStream_" data-uid="Innovt.Cloud.File.IFileSystem.DownloadStream*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_DownloadStream_System_String_System_String_" data-uid="Innovt.Cloud.File.IFileSystem.DownloadStream(System.String,System.String)">DownloadStream(string, string)</h4>
+  <div class="markdown level1 summary"><p>Downloads a file from the specified bucket and file name synchronously and returns the stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Stream DownloadStream(string bucketName, string fileName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">bucketName</span></td>
+        <td><p>The name of the bucket.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">fileName</span></td>
+        <td><p>The name of the file to download.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></td>
+        <td><p>The stream of the downloaded file.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_DownloadStreamAsync_System_String_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.DownloadStreamAsync(System.String%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L66">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_DownloadStreamAsync_" data-uid="Innovt.Cloud.File.IFileSystem.DownloadStreamAsync*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_DownloadStreamAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.DownloadStreamAsync(System.String,System.String,System.Threading.CancellationToken)">DownloadStreamAsync(string, string, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Downloads a file from the specified bucket and file name asynchronously and returns the stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Stream&gt; DownloadStreamAsync(string bucketName, string fileName, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">bucketName</span></td>
+        <td><p>The name of the bucket.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">fileName</span></td>
+        <td><p>The name of the file to download.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a>&gt;</td>
+        <td><p>The stream of the downloaded file.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_DownloadStreamAsync_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.DownloadStreamAsync(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L57">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_DownloadStreamAsync_" data-uid="Innovt.Cloud.File.IFileSystem.DownloadStreamAsync*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_DownloadStreamAsync_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.DownloadStreamAsync(System.String,System.Threading.CancellationToken)">DownloadStreamAsync(string, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Downloads a file from the provided URL asynchronously and returns the stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Stream&gt; DownloadStreamAsync(string url, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>The URL of the file to download.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a>&gt;</td>
+        <td><p>The stream of the downloaded file.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_ExtractBucketFromGetUrl_System_String_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.ExtractBucketFromGetUrl(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L74">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_ExtractBucketFromGetUrl_" data-uid="Innovt.Cloud.File.IFileSystem.ExtractBucketFromGetUrl*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_ExtractBucketFromGetUrl_System_String_" data-uid="Innovt.Cloud.File.IFileSystem.ExtractBucketFromGetUrl(System.String)">ExtractBucketFromGetUrl(string)</h4>
+  <div class="markdown level1 summary"><p>Extracts the bucket name and file key from the provided URL.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">(string bucket, string fileKey) ExtractBucketFromGetUrl(string bucketUrl)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">bucketUrl</span></td>
+        <td><p>The URL containing bucket information.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.bucket">bucket</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.filekey">fileKey</a>)</td>
+        <td><p>A tuple containing the bucket name and file key.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_FileExistsAsync_System_String_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.FileExistsAsync(System.String%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L100">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_FileExistsAsync_" data-uid="Innovt.Cloud.File.IFileSystem.FileExistsAsync*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_FileExistsAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.FileExistsAsync(System.String,System.String,System.Threading.CancellationToken)">FileExistsAsync(string, string, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Checks if a file exists in the specified bucket asynchronously.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;bool&gt; FileExistsAsync(string bucketName, string key, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">bucketName</span></td>
+        <td><p>The name of the bucket.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The key of the file.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</td>
+        <td><p>True if the file exists; otherwise, false.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_FolderExists_System_String_System_String_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.FolderExists(System.String%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L82">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_FolderExists_" data-uid="Innovt.Cloud.File.IFileSystem.FolderExists*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_FolderExists_System_String_System_String_" data-uid="Innovt.Cloud.File.IFileSystem.FolderExists(System.String,System.String)">FolderExists(string, string)</h4>
+  <div class="markdown level1 summary"><p>Checks if a folder exists in the specified bucket.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool FolderExists(string bucketName, string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">bucketName</span></td>
+        <td><p>The name of the bucket.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The key of the folder.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>True if the folder exists; otherwise, false.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_FolderExistsAsync_System_String_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.FolderExistsAsync(System.String%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L91">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_FolderExistsAsync_" data-uid="Innovt.Cloud.File.IFileSystem.FolderExistsAsync*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_FolderExistsAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.FolderExistsAsync(System.String,System.String,System.Threading.CancellationToken)">FolderExistsAsync(string, string, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Checks if a folder exists in the specified bucket asynchronously.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;bool&gt; FolderExistsAsync(string bucketName, string key, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">bucketName</span></td>
+        <td><p>The name of the bucket.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The key of the folder.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</td>
+        <td><p>True if the folder exists; otherwise, false.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_GeneratePreSignedUrl_System_String_System_String_System_DateTime_System_Collections_Generic_IDictionary_System_String_System_Object__.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.GeneratePreSignedUrl(System.String%2CSystem.String%2CSystem.DateTime%2CSystem.Collections.Generic.IDictionary%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L111">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_GeneratePreSignedUrl_" data-uid="Innovt.Cloud.File.IFileSystem.GeneratePreSignedUrl*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_GeneratePreSignedUrl_System_String_System_String_System_DateTime_System_Collections_Generic_IDictionary_System_String_System_Object__" data-uid="Innovt.Cloud.File.IFileSystem.GeneratePreSignedUrl(System.String,System.String,System.DateTime,System.Collections.Generic.IDictionary{System.String,System.Object})">GeneratePreSignedUrl(string, string, DateTime, IDictionary&lt;string, object&gt;)</h4>
+  <div class="markdown level1 summary"><p>Generates a pre-signed URL for accessing the object in the specified bucket.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string GeneratePreSignedUrl(string bucketName, string key, DateTime expiration, IDictionary&lt;string, object&gt; additionalProperties)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">bucketName</span></td>
+        <td><p>The name of the bucket.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The key of the object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></td>
+        <td><span class="parametername">expiration</span></td>
+        <td><p>The expiration date and time for the pre-signed URL.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</td>
+        <td><span class="parametername">additionalProperties</span></td>
+        <td><p>Additional properties for customizing the URL generation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>The pre-signed URL for accessing the object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_GetObjectContentAsync_System_String_System_String_System_Text_Encoding_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.GetObjectContentAsync(System.String%2CSystem.String%2CSystem.Text.Encoding%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L141">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_GetObjectContentAsync_" data-uid="Innovt.Cloud.File.IFileSystem.GetObjectContentAsync*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_GetObjectContentAsync_System_String_System_String_System_Text_Encoding_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.GetObjectContentAsync(System.String,System.String,System.Text.Encoding,System.Threading.CancellationToken)">GetObjectContentAsync(string, string, Encoding, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets the content of the object from the specified URL asynchronously.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;string&gt; GetObjectContentAsync(string bucketName, string key, Encoding encoding, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">bucketName</span></td>
+        <td><p>The Bucket name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The file url</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.encoding">Encoding</a></td>
+        <td><span class="parametername">encoding</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_GetObjectContentAsync_System_String_System_Text_Encoding_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.GetObjectContentAsync(System.String%2CSystem.Text.Encoding%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L131">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_GetObjectContentAsync_" data-uid="Innovt.Cloud.File.IFileSystem.GetObjectContentAsync*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_GetObjectContentAsync_System_String_System_Text_Encoding_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.GetObjectContentAsync(System.String,System.Text.Encoding,System.Threading.CancellationToken)">GetObjectContentAsync(string, Encoding, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets the content of the object from the specified URL asynchronously.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;string&gt; GetObjectContentAsync(string url, Encoding encoding, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>The URL of the object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.encoding">Encoding</a></td>
+        <td><span class="parametername">encoding</span></td>
+        <td><p>The encoding to use for reading the content.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
+        <td><p>The content of the object as a string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_GetObjectFromJsonAsync__1_System_Uri_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.GetObjectFromJsonAsync%60%601(System.Uri%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L151">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_GetObjectFromJsonAsync_" data-uid="Innovt.Cloud.File.IFileSystem.GetObjectFromJsonAsync*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_GetObjectFromJsonAsync__1_System_Uri_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.GetObjectFromJsonAsync``1(System.Uri,System.Threading.CancellationToken)">GetObjectFromJsonAsync&lt;T&gt;(Uri, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Deserializes a JSON object from the content of a file specified by a URI.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; GetObjectFromJsonAsync&lt;T&gt;(Uri filePath, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uri">Uri</a></td>
+        <td><span class="parametername">filePath</span></td>
+        <td><p>The URI pointing to the JSON file.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</td>
+        <td><p>The deserialized object of type <code class="typeparamref">T</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of the object to deserialize to.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_GetPreSignedUrl_System_String_System_String_System_DateTime_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.GetPreSignedUrl(System.String%2CSystem.String%2CSystem.DateTime)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L122">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_GetPreSignedUrl_" data-uid="Innovt.Cloud.File.IFileSystem.GetPreSignedUrl*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_GetPreSignedUrl_System_String_System_String_System_DateTime_" data-uid="Innovt.Cloud.File.IFileSystem.GetPreSignedUrl(System.String,System.String,System.DateTime)">GetPreSignedUrl(string, string, DateTime)</h4>
+  <div class="markdown level1 summary"><p>Gets a pre-signed URL for accessing the object in the specified bucket.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string GetPreSignedUrl(string bucketName, string key, DateTime expires)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">bucketName</span></td>
+        <td><p>The name of the bucket.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The key of the object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></td>
+        <td><span class="parametername">expires</span></td>
+        <td><p>The expiration date and time for the pre-signed URL.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>The pre-signed URL for accessing the object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_PutObject_System_String_System_IO_Stream_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.PutObject(System.String%2CSystem.IO.Stream%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L156">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_PutObject_" data-uid="Innovt.Cloud.File.IFileSystem.PutObject*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_PutObject_System_String_System_IO_Stream_System_String_System_String_System_String_System_String_" data-uid="Innovt.Cloud.File.IFileSystem.PutObject(System.String,System.IO.Stream,System.String,System.String,System.String,System.String)">PutObject(string, Stream, string, string, string, string)</h4>
+  <div class="markdown level1 summary"><p>Uploads a file from a stream to the specified bucket.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string PutObject(string bucketName, Stream stream, string fileName, string contentType = null, string serverSideEncryptionMethod = null, string fileAcl = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">bucketName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></td>
+        <td><span class="parametername">stream</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">fileName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">contentType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">serverSideEncryptionMethod</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">fileAcl</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_PutObject_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.PutObject(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L162">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_PutObject_" data-uid="Innovt.Cloud.File.IFileSystem.PutObject*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_PutObject_System_String_System_String_System_String_System_String_System_String_" data-uid="Innovt.Cloud.File.IFileSystem.PutObject(System.String,System.String,System.String,System.String,System.String)">PutObject(string, string, string, string, string)</h4>
+  <div class="markdown level1 summary"><p>Uploads a file from a local file path to the specified bucket.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string PutObject(string bucketName, string filePath, string contentType = null, string serverSideEncryptionMethod = null, string fileAcl = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">bucketName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">filePath</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">contentType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">serverSideEncryptionMethod</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">fileAcl</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_PutObjectAsync_System_String_System_IO_Stream_System_String_System_String_System_String_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.PutObjectAsync(System.String%2CSystem.IO.Stream%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L176">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_PutObjectAsync_" data-uid="Innovt.Cloud.File.IFileSystem.PutObjectAsync*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_PutObjectAsync_System_String_System_IO_Stream_System_String_System_String_System_String_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.PutObjectAsync(System.String,System.IO.Stream,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">PutObjectAsync(string, Stream, string, string, string, string, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Uploads an object from a stream to the specified bucket asynchronously.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;string&gt; PutObjectAsync(string bucketName, Stream stream, string fileName, string contentType = null, string serverSideEncryptionMethod = null, string fileAcl = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">bucketName</span></td>
+        <td><p>The name of the bucket.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></td>
+        <td><span class="parametername">stream</span></td>
+        <td><p>The stream containing the object to upload.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">fileName</span></td>
+        <td><p>The name of the file to upload.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">contentType</span></td>
+        <td><p>The content type of the object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">serverSideEncryptionMethod</span></td>
+        <td><p>The server-side encryption method to use.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">fileAcl</span></td>
+        <td><p>The access control for the object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
+        <td><p>The unique identifier of the uploaded object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_PutObjectAsync_System_String_System_String_System_String_System_String_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.PutObjectAsync(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L189">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_PutObjectAsync_" data-uid="Innovt.Cloud.File.IFileSystem.PutObjectAsync*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_PutObjectAsync_System_String_System_String_System_String_System_String_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.PutObjectAsync(System.String,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">PutObjectAsync(string, string, string, string, string, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Uploads an object from a local file to the specified bucket asynchronously.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;string&gt; PutObjectAsync(string bucketName, string filePath, string contentType = null, string serverSideEncryptionMethod = null, string fileAcl = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">bucketName</span></td>
+        <td><p>The name of the bucket.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">filePath</span></td>
+        <td><p>The local file path of the object to upload.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">contentType</span></td>
+        <td><p>The content type of the object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">serverSideEncryptionMethod</span></td>
+        <td><p>The server-side encryption method to use.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">fileAcl</span></td>
+        <td><p>The access control for the object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
+        <td><p>The unique identifier of the uploaded object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_Upload_System_String_System_IO_Stream_System_String_System_Collections_Generic_IList_System_Collections_Generic_KeyValuePair_System_String_System_String___System_String_System_String_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.Upload(System.String%2CSystem.IO.Stream%2CSystem.String%2CSystem.Collections.Generic.IList%7BSystem.Collections.Generic.KeyValuePair%7BSystem.String%2CSystem.String%7D%7D%2CSystem.String%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L202">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_Upload_" data-uid="Innovt.Cloud.File.IFileSystem.Upload*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_Upload_System_String_System_IO_Stream_System_String_System_Collections_Generic_IList_System_Collections_Generic_KeyValuePair_System_String_System_String___System_String_System_String_" data-uid="Innovt.Cloud.File.IFileSystem.Upload(System.String,System.IO.Stream,System.String,System.Collections.Generic.IList{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String,System.String)">Upload(string, Stream, string, IList&lt;KeyValuePair&lt;string, string&gt;&gt;, string, string)</h4>
+  <div class="markdown level1 summary"><p>Uploads an object from a stream to the specified bucket synchronously.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Upload(string bucketName, Stream stream, string fileName, IList&lt;KeyValuePair&lt;string, string&gt;&gt; metadata = null, string serverSideEncryptionMethod = null, string fileAcl = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">bucketName</span></td>
+        <td><p>The name of the bucket.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></td>
+        <td><span class="parametername">stream</span></td>
+        <td><p>The stream containing the object to upload.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">fileName</span></td>
+        <td><p>The name of the file to upload.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</td>
+        <td><span class="parametername">metadata</span></td>
+        <td><p>Metadata for the object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">serverSideEncryptionMethod</span></td>
+        <td><p>The server-side encryption method to use.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">fileAcl</span></td>
+        <td><p>The access control for the object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>The unique identifier of the uploaded object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_Upload_System_String_System_String_System_Collections_Generic_IList_System_Collections_Generic_KeyValuePair_System_String_System_String___System_String_System_String_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.Upload(System.String%2CSystem.String%2CSystem.Collections.Generic.IList%7BSystem.Collections.Generic.KeyValuePair%7BSystem.String%2CSystem.String%7D%7D%2CSystem.String%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L215">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_Upload_" data-uid="Innovt.Cloud.File.IFileSystem.Upload*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_Upload_System_String_System_String_System_Collections_Generic_IList_System_Collections_Generic_KeyValuePair_System_String_System_String___System_String_System_String_" data-uid="Innovt.Cloud.File.IFileSystem.Upload(System.String,System.String,System.Collections.Generic.IList{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String,System.String)">Upload(string, string, IList&lt;KeyValuePair&lt;string, string&gt;&gt;, string, string)</h4>
+  <div class="markdown level1 summary"><p>Uploads an object from a local file to the specified bucket synchronously.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Upload(string bucketName, string filePath, IList&lt;KeyValuePair&lt;string, string&gt;&gt; metadata = null, string serverSideEncryptionMethod = null, string fileAcl = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">bucketName</span></td>
+        <td><p>The name of the bucket.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">filePath</span></td>
+        <td><p>The local file path of the object to upload.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</td>
+        <td><span class="parametername">metadata</span></td>
+        <td><p>Metadata for the object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">serverSideEncryptionMethod</span></td>
+        <td><p>The server-side encryption method to use.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">fileAcl</span></td>
+        <td><p>The access control for the object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>The unique identifier of the uploaded object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_UploadAsJsonAsync__1_System_String___0_System_String_System_Collections_Generic_IList_System_Collections_Generic_KeyValuePair_System_String_System_String___System_String_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.UploadAsJsonAsync%60%601(System.String%2C%60%600%2CSystem.String%2CSystem.Collections.Generic.IList%7BSystem.Collections.Generic.KeyValuePair%7BSystem.String%2CSystem.String%7D%7D%2CSystem.String%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L253">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_UploadAsJsonAsync_" data-uid="Innovt.Cloud.File.IFileSystem.UploadAsJsonAsync*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_UploadAsJsonAsync__1_System_String___0_System_String_System_Collections_Generic_IList_System_Collections_Generic_KeyValuePair_System_String_System_String___System_String_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.UploadAsJsonAsync``1(System.String,``0,System.String,System.Collections.Generic.IList{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String,System.String,System.Threading.CancellationToken)">UploadAsJsonAsync&lt;T&gt;(string, T, string, IList&lt;KeyValuePair&lt;string, string&gt;&gt;, string, string, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Uploads an object as JSON to the specified bucket.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;string&gt; UploadAsJsonAsync&lt;T&gt;(string bucketName, T obj, string fileName, IList&lt;KeyValuePair&lt;string, string&gt;&gt; metadata = null, string serverSideEncryptionMethod = null, string fileAcl = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">bucketName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">obj</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">fileName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</td>
+        <td><span class="parametername">metadata</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">serverSideEncryptionMethod</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">fileAcl</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_UploadAsync_System_String_System_IO_Stream_System_String_System_Collections_Generic_IList_System_Collections_Generic_KeyValuePair_System_String_System_String___System_String_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.UploadAsync(System.String%2CSystem.IO.Stream%2CSystem.String%2CSystem.Collections.Generic.IList%7BSystem.Collections.Generic.KeyValuePair%7BSystem.String%2CSystem.String%7D%7D%2CSystem.String%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L230">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_UploadAsync_" data-uid="Innovt.Cloud.File.IFileSystem.UploadAsync*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_UploadAsync_System_String_System_IO_Stream_System_String_System_Collections_Generic_IList_System_Collections_Generic_KeyValuePair_System_String_System_String___System_String_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.UploadAsync(System.String,System.IO.Stream,System.String,System.Collections.Generic.IList{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String,System.String,System.Threading.CancellationToken)">UploadAsync(string, Stream, string, IList&lt;KeyValuePair&lt;string, string&gt;&gt;, string, string, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Uploads an object from a stream to the specified bucket asynchronously.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;string&gt; UploadAsync(string bucketName, Stream stream, string fileName, IList&lt;KeyValuePair&lt;string, string&gt;&gt; metadata = null, string serverSideEncryptionMethod = null, string fileAcl = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">bucketName</span></td>
+        <td><p>The name of the bucket.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></td>
+        <td><span class="parametername">stream</span></td>
+        <td><p>The stream containing the object to upload.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">fileName</span></td>
+        <td><p>The name of the file to upload.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</td>
+        <td><span class="parametername">metadata</span></td>
+        <td><p>Metadata for the object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">serverSideEncryptionMethod</span></td>
+        <td><p>The server-side encryption method to use.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">fileAcl</span></td>
+        <td><p>The access control for the object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
+        <td><p>The unique identifier of the uploaded object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_UploadAsync_System_String_System_String_System_Collections_Generic_IList_System_Collections_Generic_KeyValuePair_System_String_System_String___System_String_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.UploadAsync(System.String%2CSystem.String%2CSystem.Collections.Generic.IList%7BSystem.Collections.Generic.KeyValuePair%7BSystem.String%2CSystem.String%7D%7D%2CSystem.String%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L245">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_UploadAsync_" data-uid="Innovt.Cloud.File.IFileSystem.UploadAsync*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_UploadAsync_System_String_System_String_System_Collections_Generic_IList_System_Collections_Generic_KeyValuePair_System_String_System_String___System_String_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.UploadAsync(System.String,System.String,System.Collections.Generic.IList{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String,System.String,System.Threading.CancellationToken)">UploadAsync(string, string, IList&lt;KeyValuePair&lt;string, string&gt;&gt;, string, string, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Uploads an object from a local file to the specified bucket asynchronously.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;string&gt; UploadAsync(string bucketName, string filePath, IList&lt;KeyValuePair&lt;string, string&gt;&gt; metadata = null, string serverSideEncryptionMethod = null, string fileAcl = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">bucketName</span></td>
+        <td><p>The name of the bucket.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">filePath</span></td>
+        <td><p>The local file path of the object to upload.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</td>
+        <td><span class="parametername">metadata</span></td>
+        <td><p>Metadata for the object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">serverSideEncryptionMethod</span></td>
+        <td><p>The server-side encryption method to use.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">fileAcl</span></td>
+        <td><p>The access control for the object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
+        <td><p>The unique identifier of the uploaded object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem_UploadDirectoryAsync_System_String_System_String_System_String_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem.UploadDirectoryAsync(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L261">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_File_IFileSystem_UploadDirectoryAsync_" data-uid="Innovt.Cloud.File.IFileSystem.UploadDirectoryAsync*"></a>
+  <h4 id="Innovt_Cloud_File_IFileSystem_UploadDirectoryAsync_System_String_System_String_System_String_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.UploadDirectoryAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">UploadDirectoryAsync(string, string, string, string, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Uploads all files in a directory to the specified bucket.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task UploadDirectoryAsync(string bucketName, string directory, string serverSideEncryptionMethod = null, string fileAcl = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">bucketName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">directory</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">serverSideEncryptionMethod</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">fileAcl</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_">Extensions.IsNull(object)</a>
   </div>
@@ -124,1289 +1902,47 @@ Interface IFileSystem  <a class="header-action link-secondary" title="View sourc
   <div>
       <a class="xref" href="Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_">SimpleMapper.MapTo&lt;T1&gt;(object)</a>
   </div>
-  </dd></dl>
-
-
-
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_CopyObject_" data-uid="Innovt.Cloud.File.IFileSystem.CopyObject*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_CopyObject_System_String_System_String_System_String_System_String_System_String_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.CopyObject(System.String,System.String,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
-  CopyObject(string, string, string, string, string, string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L30"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Copy a file from one bucket to another</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;bool&gt; CopyObject(string sourceBucket, string sourceKey, string destinationBucket, string destinationKey, string serverSideEncryptionMethod = null, string fileAcl = null, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>sourceBucket</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>sourceKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>destinationBucket</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>destinationKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>serverSideEncryptionMethod</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>fileAcl</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_DeleteObject_" data-uid="Innovt.Cloud.File.IFileSystem.DeleteObject*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_DeleteObject_System_String_System_String_" data-uid="Innovt.Cloud.File.IFileSystem.DeleteObject(System.String,System.String)">
-  DeleteObject(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L273"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Deletes an object from the specified bucket.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool DeleteObject(string bucketName, string key)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>bucketName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_DeleteObjectAsync_" data-uid="Innovt.Cloud.File.IFileSystem.DeleteObjectAsync*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_DeleteObjectAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.DeleteObjectAsync(System.String,System.String,System.Threading.CancellationToken)">
-  DeleteObjectAsync(string, string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L268"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Deletes an object from the specified bucket.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;bool&gt; DeleteObjectAsync(string bucketName, string key, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>bucketName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_Download_" data-uid="Innovt.Cloud.File.IFileSystem.Download*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_Download_System_String_System_String_System_String_" data-uid="Innovt.Cloud.File.IFileSystem.Download(System.String,System.String,System.String)">
-  Download(string, string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L36"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Downloads a file from the specified bucket and saves it to the destination path.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Download(string bucketName, string fileName, string destination)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>bucketName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>fileName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>destination</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_DownloadStream_" data-uid="Innovt.Cloud.File.IFileSystem.DownloadStream*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_DownloadStream_System_String_" data-uid="Innovt.Cloud.File.IFileSystem.DownloadStream(System.String)">
-  DownloadStream(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L41"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Downloads a file from the provided URL and returns the stream.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Stream DownloadStream(string url)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>url</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_DownloadStream_" data-uid="Innovt.Cloud.File.IFileSystem.DownloadStream*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_DownloadStream_System_String_System_String_" data-uid="Innovt.Cloud.File.IFileSystem.DownloadStream(System.String,System.String)">
-  DownloadStream(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L49"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Downloads a file from the specified bucket and file name synchronously and returns the stream.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Stream DownloadStream(string bucketName, string fileName)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>bucketName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the bucket.</p>
-</dd>
-    <dt><code>fileName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the file to download.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></dt>
-    <dd><p>The stream of the downloaded file.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_DownloadStreamAsync_" data-uid="Innovt.Cloud.File.IFileSystem.DownloadStreamAsync*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_DownloadStreamAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.DownloadStreamAsync(System.String,System.String,System.Threading.CancellationToken)">
-  DownloadStreamAsync(string, string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L66"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Downloads a file from the specified bucket and file name asynchronously and returns the stream.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;Stream&gt; DownloadStreamAsync(string bucketName, string fileName, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>bucketName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the bucket.</p>
-</dd>
-    <dt><code>fileName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the file to download.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>The cancellation token to cancel the asynchronous operation.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a>&gt;</dt>
-    <dd><p>The stream of the downloaded file.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_DownloadStreamAsync_" data-uid="Innovt.Cloud.File.IFileSystem.DownloadStreamAsync*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_DownloadStreamAsync_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.DownloadStreamAsync(System.String,System.Threading.CancellationToken)">
-  DownloadStreamAsync(string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L57"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Downloads a file from the provided URL asynchronously and returns the stream.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;Stream&gt; DownloadStreamAsync(string url, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>url</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The URL of the file to download.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>The cancellation token to cancel the asynchronous operation.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a>&gt;</dt>
-    <dd><p>The stream of the downloaded file.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_ExtractBucketFromGetUrl_" data-uid="Innovt.Cloud.File.IFileSystem.ExtractBucketFromGetUrl*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_ExtractBucketFromGetUrl_System_String_" data-uid="Innovt.Cloud.File.IFileSystem.ExtractBucketFromGetUrl(System.String)">
-  ExtractBucketFromGetUrl(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L74"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Extracts the bucket name and file key from the provided URL.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">(string bucket, string fileKey) ExtractBucketFromGetUrl(string bucketUrl)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>bucketUrl</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The URL containing bucket information.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.bucket">bucket</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.filekey">fileKey</a>)</dt>
-    <dd><p>A tuple containing the bucket name and file key.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_FileExistsAsync_" data-uid="Innovt.Cloud.File.IFileSystem.FileExistsAsync*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_FileExistsAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.FileExistsAsync(System.String,System.String,System.Threading.CancellationToken)">
-  FileExistsAsync(string, string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L100"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Checks if a file exists in the specified bucket asynchronously.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;bool&gt; FileExistsAsync(string bucketName, string key, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>bucketName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the bucket.</p>
-</dd>
-    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The key of the file.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>The cancellation token to cancel the asynchronous operation.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
-    <dd><p>True if the file exists; otherwise, false.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_FolderExists_" data-uid="Innovt.Cloud.File.IFileSystem.FolderExists*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_FolderExists_System_String_System_String_" data-uid="Innovt.Cloud.File.IFileSystem.FolderExists(System.String,System.String)">
-  FolderExists(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L82"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Checks if a folder exists in the specified bucket.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool FolderExists(string bucketName, string key)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>bucketName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the bucket.</p>
-</dd>
-    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The key of the folder.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>True if the folder exists; otherwise, false.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_FolderExistsAsync_" data-uid="Innovt.Cloud.File.IFileSystem.FolderExistsAsync*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_FolderExistsAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.FolderExistsAsync(System.String,System.String,System.Threading.CancellationToken)">
-  FolderExistsAsync(string, string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L91"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Checks if a folder exists in the specified bucket asynchronously.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;bool&gt; FolderExistsAsync(string bucketName, string key, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>bucketName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the bucket.</p>
-</dd>
-    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The key of the folder.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>The cancellation token to cancel the asynchronous operation.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
-    <dd><p>True if the folder exists; otherwise, false.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_GeneratePreSignedUrl_" data-uid="Innovt.Cloud.File.IFileSystem.GeneratePreSignedUrl*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_GeneratePreSignedUrl_System_String_System_String_System_DateTime_System_Collections_Generic_IDictionary_System_String_System_Object__" data-uid="Innovt.Cloud.File.IFileSystem.GeneratePreSignedUrl(System.String,System.String,System.DateTime,System.Collections.Generic.IDictionary{System.String,System.Object})">
-  GeneratePreSignedUrl(string, string, DateTime, IDictionary&lt;string, object&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L111"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Generates a pre-signed URL for accessing the object in the specified bucket.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string GeneratePreSignedUrl(string bucketName, string key, DateTime expiration, IDictionary&lt;string, object&gt; additionalProperties)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>bucketName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the bucket.</p>
-</dd>
-    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The key of the object.</p>
-</dd>
-    <dt><code>expiration</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
-    <dd><p>The expiration date and time for the pre-signed URL.</p>
-</dd>
-    <dt><code>additionalProperties</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</dt>
-    <dd><p>Additional properties for customizing the URL generation.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The pre-signed URL for accessing the object.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_GetObjectContentAsync_" data-uid="Innovt.Cloud.File.IFileSystem.GetObjectContentAsync*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_GetObjectContentAsync_System_String_System_String_System_Text_Encoding_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.GetObjectContentAsync(System.String,System.String,System.Text.Encoding,System.Threading.CancellationToken)">
-  GetObjectContentAsync(string, string, Encoding, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L141"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the content of the object from the specified URL asynchronously.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;string&gt; GetObjectContentAsync(string bucketName, string key, Encoding encoding, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>bucketName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The Bucket name.</p>
-</dd>
-    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The file url</p>
-</dd>
-    <dt><code>encoding</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.encoding">Encoding</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_GetObjectContentAsync_" data-uid="Innovt.Cloud.File.IFileSystem.GetObjectContentAsync*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_GetObjectContentAsync_System_String_System_Text_Encoding_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.GetObjectContentAsync(System.String,System.Text.Encoding,System.Threading.CancellationToken)">
-  GetObjectContentAsync(string, Encoding, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L131"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the content of the object from the specified URL asynchronously.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;string&gt; GetObjectContentAsync(string url, Encoding encoding, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>url</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The URL of the object.</p>
-</dd>
-    <dt><code>encoding</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.encoding">Encoding</a></dt>
-    <dd><p>The encoding to use for reading the content.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>The cancellation token to cancel the asynchronous operation.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
-    <dd><p>The content of the object as a string.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_GetObjectFromJsonAsync_" data-uid="Innovt.Cloud.File.IFileSystem.GetObjectFromJsonAsync*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_GetObjectFromJsonAsync__1_System_Uri_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.GetObjectFromJsonAsync``1(System.Uri,System.Threading.CancellationToken)">
-  GetObjectFromJsonAsync&lt;T&gt;(Uri, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L151"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Deserializes a JSON object from the content of a file specified by a URI.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;T&gt; GetObjectFromJsonAsync&lt;T&gt;(Uri filePath, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>filePath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uri">Uri</a></dt>
-    <dd><p>The URI pointing to the JSON file.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</dt>
-    <dd><p>The deserialized object of type <code class="typeparamref">T</code>.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>The type of the object to deserialize to.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_GetPreSignedUrl_" data-uid="Innovt.Cloud.File.IFileSystem.GetPreSignedUrl*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_GetPreSignedUrl_System_String_System_String_System_DateTime_" data-uid="Innovt.Cloud.File.IFileSystem.GetPreSignedUrl(System.String,System.String,System.DateTime)">
-  GetPreSignedUrl(string, string, DateTime)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L122"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets a pre-signed URL for accessing the object in the specified bucket.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string GetPreSignedUrl(string bucketName, string key, DateTime expires)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>bucketName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the bucket.</p>
-</dd>
-    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The key of the object.</p>
-</dd>
-    <dt><code>expires</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
-    <dd><p>The expiration date and time for the pre-signed URL.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The pre-signed URL for accessing the object.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_PutObject_" data-uid="Innovt.Cloud.File.IFileSystem.PutObject*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_PutObject_System_String_System_IO_Stream_System_String_System_String_System_String_System_String_" data-uid="Innovt.Cloud.File.IFileSystem.PutObject(System.String,System.IO.Stream,System.String,System.String,System.String,System.String)">
-  PutObject(string, Stream, string, string, string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L156"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Uploads a file from a stream to the specified bucket.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string PutObject(string bucketName, Stream stream, string fileName, string contentType = null, string serverSideEncryptionMethod = null, string fileAcl = null)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>bucketName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>stream</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></dt>
-    <dd></dd>
-    <dt><code>fileName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>contentType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>serverSideEncryptionMethod</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>fileAcl</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_PutObject_" data-uid="Innovt.Cloud.File.IFileSystem.PutObject*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_PutObject_System_String_System_String_System_String_System_String_System_String_" data-uid="Innovt.Cloud.File.IFileSystem.PutObject(System.String,System.String,System.String,System.String,System.String)">
-  PutObject(string, string, string, string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L162"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Uploads a file from a local file path to the specified bucket.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string PutObject(string bucketName, string filePath, string contentType = null, string serverSideEncryptionMethod = null, string fileAcl = null)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>bucketName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>filePath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>contentType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>serverSideEncryptionMethod</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>fileAcl</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_PutObjectAsync_" data-uid="Innovt.Cloud.File.IFileSystem.PutObjectAsync*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_PutObjectAsync_System_String_System_IO_Stream_System_String_System_String_System_String_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.PutObjectAsync(System.String,System.IO.Stream,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
-  PutObjectAsync(string, Stream, string, string, string, string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L176"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Uploads an object from a stream to the specified bucket asynchronously.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;string&gt; PutObjectAsync(string bucketName, Stream stream, string fileName, string contentType = null, string serverSideEncryptionMethod = null, string fileAcl = null, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>bucketName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the bucket.</p>
-</dd>
-    <dt><code>stream</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></dt>
-    <dd><p>The stream containing the object to upload.</p>
-</dd>
-    <dt><code>fileName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the file to upload.</p>
-</dd>
-    <dt><code>contentType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The content type of the object.</p>
-</dd>
-    <dt><code>serverSideEncryptionMethod</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The server-side encryption method to use.</p>
-</dd>
-    <dt><code>fileAcl</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The access control for the object.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>The cancellation token to cancel the asynchronous operation.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
-    <dd><p>The unique identifier of the uploaded object.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_PutObjectAsync_" data-uid="Innovt.Cloud.File.IFileSystem.PutObjectAsync*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_PutObjectAsync_System_String_System_String_System_String_System_String_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.PutObjectAsync(System.String,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
-  PutObjectAsync(string, string, string, string, string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L189"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Uploads an object from a local file to the specified bucket asynchronously.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;string&gt; PutObjectAsync(string bucketName, string filePath, string contentType = null, string serverSideEncryptionMethod = null, string fileAcl = null, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>bucketName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the bucket.</p>
-</dd>
-    <dt><code>filePath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The local file path of the object to upload.</p>
-</dd>
-    <dt><code>contentType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The content type of the object.</p>
-</dd>
-    <dt><code>serverSideEncryptionMethod</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The server-side encryption method to use.</p>
-</dd>
-    <dt><code>fileAcl</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The access control for the object.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>The cancellation token to cancel the asynchronous operation.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
-    <dd><p>The unique identifier of the uploaded object.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_Upload_" data-uid="Innovt.Cloud.File.IFileSystem.Upload*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_Upload_System_String_System_IO_Stream_System_String_System_Collections_Generic_IList_System_Collections_Generic_KeyValuePair_System_String_System_String___System_String_System_String_" data-uid="Innovt.Cloud.File.IFileSystem.Upload(System.String,System.IO.Stream,System.String,System.Collections.Generic.IList{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String,System.String)">
-  Upload(string, Stream, string, IList&lt;KeyValuePair&lt;string, string&gt;&gt;, string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L202"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Uploads an object from a stream to the specified bucket synchronously.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string Upload(string bucketName, Stream stream, string fileName, IList&lt;KeyValuePair&lt;string, string&gt;&gt; metadata = null, string serverSideEncryptionMethod = null, string fileAcl = null)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>bucketName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the bucket.</p>
-</dd>
-    <dt><code>stream</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></dt>
-    <dd><p>The stream containing the object to upload.</p>
-</dd>
-    <dt><code>fileName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the file to upload.</p>
-</dd>
-    <dt><code>metadata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
-    <dd><p>Metadata for the object.</p>
-</dd>
-    <dt><code>serverSideEncryptionMethod</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The server-side encryption method to use.</p>
-</dd>
-    <dt><code>fileAcl</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The access control for the object.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The unique identifier of the uploaded object.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_Upload_" data-uid="Innovt.Cloud.File.IFileSystem.Upload*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_Upload_System_String_System_String_System_Collections_Generic_IList_System_Collections_Generic_KeyValuePair_System_String_System_String___System_String_System_String_" data-uid="Innovt.Cloud.File.IFileSystem.Upload(System.String,System.String,System.Collections.Generic.IList{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String,System.String)">
-  Upload(string, string, IList&lt;KeyValuePair&lt;string, string&gt;&gt;, string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L215"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Uploads an object from a local file to the specified bucket synchronously.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string Upload(string bucketName, string filePath, IList&lt;KeyValuePair&lt;string, string&gt;&gt; metadata = null, string serverSideEncryptionMethod = null, string fileAcl = null)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>bucketName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the bucket.</p>
-</dd>
-    <dt><code>filePath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The local file path of the object to upload.</p>
-</dd>
-    <dt><code>metadata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
-    <dd><p>Metadata for the object.</p>
-</dd>
-    <dt><code>serverSideEncryptionMethod</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The server-side encryption method to use.</p>
-</dd>
-    <dt><code>fileAcl</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The access control for the object.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The unique identifier of the uploaded object.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_UploadAsJsonAsync_" data-uid="Innovt.Cloud.File.IFileSystem.UploadAsJsonAsync*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_UploadAsJsonAsync__1_System_String___0_System_String_System_Collections_Generic_IList_System_Collections_Generic_KeyValuePair_System_String_System_String___System_String_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.UploadAsJsonAsync``1(System.String,``0,System.String,System.Collections.Generic.IList{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String,System.String,System.Threading.CancellationToken)">
-  UploadAsJsonAsync&lt;T&gt;(string, T, string, IList&lt;KeyValuePair&lt;string, string&gt;&gt;, string, string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L253"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Uploads an object as JSON to the specified bucket.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;string&gt; UploadAsJsonAsync&lt;T&gt;(string bucketName, T obj, string fileName, IList&lt;KeyValuePair&lt;string, string&gt;&gt; metadata = null, string serverSideEncryptionMethod = null, string fileAcl = null, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>bucketName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>obj</code> <span class="xref">T</span></dt>
-    <dd></dd>
-    <dt><code>fileName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>metadata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
-    <dd></dd>
-    <dt><code>serverSideEncryptionMethod</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>fileAcl</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_UploadAsync_" data-uid="Innovt.Cloud.File.IFileSystem.UploadAsync*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_UploadAsync_System_String_System_IO_Stream_System_String_System_Collections_Generic_IList_System_Collections_Generic_KeyValuePair_System_String_System_String___System_String_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.UploadAsync(System.String,System.IO.Stream,System.String,System.Collections.Generic.IList{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String,System.String,System.Threading.CancellationToken)">
-  UploadAsync(string, Stream, string, IList&lt;KeyValuePair&lt;string, string&gt;&gt;, string, string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L230"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Uploads an object from a stream to the specified bucket asynchronously.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;string&gt; UploadAsync(string bucketName, Stream stream, string fileName, IList&lt;KeyValuePair&lt;string, string&gt;&gt; metadata = null, string serverSideEncryptionMethod = null, string fileAcl = null, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>bucketName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the bucket.</p>
-</dd>
-    <dt><code>stream</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></dt>
-    <dd><p>The stream containing the object to upload.</p>
-</dd>
-    <dt><code>fileName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the file to upload.</p>
-</dd>
-    <dt><code>metadata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
-    <dd><p>Metadata for the object.</p>
-</dd>
-    <dt><code>serverSideEncryptionMethod</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The server-side encryption method to use.</p>
-</dd>
-    <dt><code>fileAcl</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The access control for the object.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>The cancellation token to cancel the asynchronous operation.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
-    <dd><p>The unique identifier of the uploaded object.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_UploadAsync_" data-uid="Innovt.Cloud.File.IFileSystem.UploadAsync*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_UploadAsync_System_String_System_String_System_Collections_Generic_IList_System_Collections_Generic_KeyValuePair_System_String_System_String___System_String_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.UploadAsync(System.String,System.String,System.Collections.Generic.IList{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String,System.String,System.Threading.CancellationToken)">
-  UploadAsync(string, string, IList&lt;KeyValuePair&lt;string, string&gt;&gt;, string, string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L245"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Uploads an object from a local file to the specified bucket asynchronously.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;string&gt; UploadAsync(string bucketName, string filePath, IList&lt;KeyValuePair&lt;string, string&gt;&gt; metadata = null, string serverSideEncryptionMethod = null, string fileAcl = null, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>bucketName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the bucket.</p>
-</dd>
-    <dt><code>filePath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The local file path of the object to upload.</p>
-</dd>
-    <dt><code>metadata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
-    <dd><p>Metadata for the object.</p>
-</dd>
-    <dt><code>serverSideEncryptionMethod</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The server-side encryption method to use.</p>
-</dd>
-    <dt><code>fileAcl</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The access control for the object.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>The cancellation token to cancel the asynchronous operation.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
-    <dd><p>The unique identifier of the uploaded object.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_File_IFileSystem_UploadDirectoryAsync_" data-uid="Innovt.Cloud.File.IFileSystem.UploadDirectoryAsync*"></a>
-
-  <h3 id="Innovt_Cloud_File_IFileSystem_UploadDirectoryAsync_System_String_System_String_System_String_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.File.IFileSystem.UploadDirectoryAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
-  UploadDirectoryAsync(string, string, string, string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L261"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Uploads all files in a directory to the specified bucket.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task UploadDirectoryAsync(string bucketName, string directory, string serverSideEncryptionMethod = null, string fileAcl = null, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>bucketName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>directory</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>serverSideEncryptionMethod</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>fileAcl</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
 
 </article>
+          </div>
 
-        <div class="contribution d-print-none">
-          <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L17" class="edit-link">Edit this page</a>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_File_IFileSystem.md&amp;value=---%0Auid%3A%20Innovt.Cloud.File.IFileSystem%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud/File/IFileSystem.cs/#L17" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
         </div>
-
-
       </div>
 
-      <div class="affix">
-        <nav id="affix"></nav>
-      </div>
-    </main>
-
-    <div class="container-xxl search-results" id="search-results"></div>
-
-    <footer class="border-top text-secondary">
-      <div class="container-xxl">
-        <div class="flex-fill">
-          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
   </body>
 </html>

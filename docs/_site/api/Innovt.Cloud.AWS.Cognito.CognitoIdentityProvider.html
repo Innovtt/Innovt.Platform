@@ -1,136 +1,107 @@
 ﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
 <html>
+
   <head>
     <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Class CognitoIdentityProvider | Innovt Platform </title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class CognitoIdentityProvider | Innovt Platform ">
-      
-      <meta name="description" content="Provides functionality for user management and authentication with Amazon Cognito Identity Provider.">
-      <link rel="icon" href="../favicon.ico">
-      <link rel="stylesheet" href="../public/docfx.min.css">
-      <link rel="stylesheet" href="../public/main.css">
-      <meta name="docfx:navrel" content="../toc.html">
-      <meta name="docfx:tocrel" content="toc.html">
-      
-      <meta name="docfx:rel" content="../">
-      
-      
-      <meta name="docfx:docurl" content="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
-      <meta name="loc:inThisArticle" content="In this article">
-      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
-      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
-      <meta name="loc:tocFilter" content="Filter by title">
-      <meta name="loc:nextArticle" content="Next">
-      <meta name="loc:prevArticle" content="Previous">
-      <meta name="loc:themeLight" content="Light">
-      <meta name="loc:themeDark" content="Dark">
-      <meta name="loc:themeAuto" content="Auto">
-      <meta name="loc:changeTheme" content="Change theme">
-      <meta name="loc:copy" content="Copy">
-      <meta name="loc:downloadPdf" content="Download PDF">
-
-      <script type="module" src="./../public/docfx.min.js"></script>
-
-      <script>
-        const theme = localStorage.getItem('theme') || 'auto'
-        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-      </script>
-
+    
+    <meta name="description" content="Provides functionality for user management and authentication with Amazon Cognito Identity Provider.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
   </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
 
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
-    <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
-        <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../index.html">
-            <img id="logo" class="svg" src="../logo.svg" alt="Innovt Platform">
-            Innovt Platform
-          </a>
-          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navpanel">
-            <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="Innovt Platform">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
               </form>
             </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
 
-    <main class="container-xxl">
-      <div class="toc-offcanvas">
-        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
           </div>
-          <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
+      <div role="main" class="container body-content hide-when-search">
 
-      <div class="content">
-        <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
-          </button>
-
-          <nav id="breadcrumb"></nav>
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
         </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider">
 
-        <article data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider">
 
 
-
-  <h1 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider" class="text-break">
-Class CognitoIdentityProvider  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L50"><i class="bi bi-code-slash"></i></a>
-  </h1>
-
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="Innovt.html">Innovt</a>.<a class="xref" href="Innovt.Cloud.html">Cloud</a>.<a class="xref" href="Innovt.Cloud.AWS.html">AWS</a>.<a class="xref" href="Innovt.Cloud.AWS.Cognito.html">Cognito</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>Innovt.Cloud.AWS.Cognito.dll</dd></dl>
-  </div>
-
-  <div class="markdown summary"><p>Provides functionality for user management and authentication with Amazon Cognito Identity Provider.</p>
+  <h1 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider" class="text-break">Class CognitoIdentityProvider</h1>
+  <div class="markdown level0 summary"><p>Provides functionality for user management and authentication with Amazon Cognito Identity Provider.</p>
 </div>
-  <div class="markdown conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class CognitoIdentityProvider : AwsBaseService, IDisposable, ICognitoIdentityProvider</code></pre>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><a class="xref" href="Innovt.Cloud.AWS.AwsBaseService.html">AwsBaseService</a></div>
+    <div class="level2"><span class="xref">CognitoIdentityProvider</span></div>
   </div>
-
-
-
-
-  <dl class="typelist inheritance">
-    <dt>Inheritance</dt>
-    <dd>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><a class="xref" href="Innovt.Cloud.AWS.AwsBaseService.html">AwsBaseService</a></div>
-      <div><span class="xref">CognitoIdentityProvider</span></div>
-    </dd>
-  </dl>
-
-  <dl class="typelist implements">
-    <dt>Implements</dt>
-    <dd>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-      <div><a class="xref" href="Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html">ICognitoIdentityProvider</a></div>
-    </dd>
-  </dl>
-
-
-  <dl class="typelist inheritedMembers">
-    <dt>Inherited Members</dt>
-    <dd>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    <div><a class="xref" href="Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html">ICognitoIdentityProvider</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
     <div>
       <a class="xref" href="Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Configuration">AwsBaseService.Configuration</a>
+    </div>
+    <div>
+      <a class="xref" href="Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_ExponentialBackoffInSeconds">AwsBaseService.ExponentialBackoffInSeconds</a>
     </div>
     <div>
       <a class="xref" href="Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_Logger">AwsBaseService.Logger</a>
@@ -192,11 +163,1462 @@ Class CognitoIdentityProvider  <a class="header-action link-secondary" title="Vi
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </dd></dl>
-
-  <dl class="typelist extensionMethods">
-    <dt>Extension Methods</dt>
-    <dd>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Innovt.html">Innovt</a>.<a class="xref" href="Innovt.Cloud.html">Cloud</a>.<a class="xref" href="Innovt.Cloud.AWS.html">AWS</a>.<a class="xref" href="Innovt.Cloud.AWS.Cognito.html">Cognito</a></h6>
+  <h6><strong>Assembly</strong>: Innovt.Cloud.AWS.Cognito.dll</h6>
+  <h5 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class CognitoIdentityProvider : AwsBaseService, IDisposable, ICognitoIdentityProvider</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider__ctor_Innovt_Core_CrossCutting_Log_ILogger_Innovt_Cloud_AWS_Configuration_IAwsConfiguration_System_String_System_String_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.%23ctor(Innovt.Core.CrossCutting.Log.ILogger%2CInnovt.Cloud.AWS.Configuration.IAwsConfiguration%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L67">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider__ctor_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.#ctor*"></a>
+  <h4 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider__ctor_Innovt_Core_CrossCutting_Log_ILogger_Innovt_Cloud_AWS_Configuration_IAwsConfiguration_System_String_System_String_System_String_System_String_System_Boolean_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String,System.String,System.String,System.String,System.Boolean)">CognitoIdentityProvider(ILogger, IAwsConfiguration, string, string, string, string, bool)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected CognitoIdentityProvider(ILogger logger, IAwsConfiguration configuration, string clientId, string userPoolId, string domainEndPoint, string region = null, bool allowAutoConfirmUserWithSocialLogin = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Core.CrossCutting.Log.ILogger.html">ILogger</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Cloud.AWS.Configuration.IAwsConfiguration.html">IAwsConfiguration</a></td>
+        <td><span class="parametername">configuration</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">clientId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">userPoolId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">domainEndPoint</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">region</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">allowAutoConfirmUserWithSocialLogin</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ChangePassword_Innovt_Cloud_AWS_Cognito_Model_ChangePasswordRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ChangePassword(Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L394">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ChangePassword_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ChangePassword*"></a>
+  <h4 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ChangePassword_Innovt_Cloud_AWS_Cognito_Model_ChangePasswordRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ChangePassword(Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest,System.Threading.CancellationToken)">ChangePassword(ChangePasswordRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Changes the password for a user with the specified access token.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Task ChangePassword(ChangePasswordRequest command, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest.html">ChangePasswordRequest</a></td>
+        <td><span class="parametername">command</span></td>
+        <td><p>A <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest.html">ChangePasswordRequest</a> containing the necessary information to change the
+password.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token for cancelling the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ChangePassword_Innovt_Cloud_AWS_Cognito_Model_ChangePasswordRequest_System_Threading_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method allows you to change the password for a user by providing an access token and the new proposed
+password.
+The previous password is also required for security verification. If successful, the user's password will be
+updated.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></td>
+        <td><p>Thrown when the <code class="paramref">command</code> is null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Core.Exceptions.BusinessException.html">BusinessException</a></td>
+        <td><p>Thrown when the <code class="paramref">command</code> fails validation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ConfirmForgotPassword_Innovt_Cloud_AWS_Cognito_Model_ConfirmForgotPasswordRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L633">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ConfirmForgotPassword_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmForgotPassword*"></a>
+  <h4 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ConfirmForgotPassword_Innovt_Cloud_AWS_Cognito_Model_ConfirmForgotPasswordRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest,System.Threading.CancellationToken)">ConfirmForgotPassword(ConfirmForgotPasswordRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Confirms a user's forgotten password and sets a new password for the user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ConfirmForgotPassword(ConfirmForgotPasswordRequest command, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest.html">ConfirmForgotPasswordRequest</a></td>
+        <td><span class="parametername">command</span></td>
+        <td><p>A <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest.html">ConfirmForgotPasswordRequest</a> containing the necessary information for
+confirmation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token for cancelling the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td><p>A task representing the asynchronous confirmation process.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ConfirmForgotPassword_Innovt_Cloud_AWS_Cognito_Model_ConfirmForgotPasswordRequest_System_Threading_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method is used to confirm a user's forgotten password by providing the user's username, a new password,
+and a confirmation code received by the user. It sets the new password for the user if the confirmation is
+successful.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></td>
+        <td><p>Thrown when the <code class="paramref">command</code> is null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Core.Exceptions.BusinessException.html">BusinessException</a></td>
+        <td><p>Thrown when the <code class="paramref">command</code> fails validation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ConfirmSignUp_Innovt_Cloud_AWS_Cognito_Model_ConfirmSignUpRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmSignUp(Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L294">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ConfirmSignUp_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmSignUp*"></a>
+  <h4 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ConfirmSignUp_Innovt_Cloud_AWS_Cognito_Model_ConfirmSignUpRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmSignUp(Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest,System.Threading.CancellationToken)">ConfirmSignUp(ConfirmSignUpRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Confirms the sign-up of a user with the specified confirmation code.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Task ConfirmSignUp(ConfirmSignUpRequest request, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest.html">ConfirmSignUpRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>A <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest.html">ConfirmSignUpRequest</a> containing the necessary information to confirm the
+sign-up.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token for cancelling the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ConfirmSignUp_Innovt_Cloud_AWS_Cognito_Model_ConfirmSignUpRequest_System_Threading_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method allows you to confirm the sign-up of a user with the specified confirmation code.
+The confirmation code is typically sent to the user's email or phone number during the registration process.
+After successful confirmation, the user becomes active and can log in.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></td>
+        <td><p>Thrown when the <code class="paramref">request</code> is null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Core.Exceptions.BusinessException.html">BusinessException</a></td>
+        <td><p>Thrown when the <code class="paramref">request</code> fails validation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_DeleteUser_Innovt_Cloud_AWS_Cognito_Model_DeleteUserAccountRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DeleteUser(Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L888">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_DeleteUser_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DeleteUser*"></a>
+  <h4 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_DeleteUser_Innovt_Cloud_AWS_Cognito_Model_DeleteUserAccountRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DeleteUser(Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest,System.Threading.CancellationToken)">DeleteUser(DeleteUserAccountRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>This method will delete the user using the username and the user pool id. It's important to have the admin delete
+user permission.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; DeleteUser(DeleteUserAccountRequest command, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest.html">DeleteUserAccountRequest</a></td>
+        <td><span class="parametername">command</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_DisposeServices.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DisposeServices%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L1223">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_DisposeServices_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DisposeServices*"></a>
+  <h4 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_DisposeServices" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DisposeServices">DisposeServices()</h4>
+  <div class="markdown level1 summary"><p>Disposes of resources when they are no longer needed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void DisposeServices()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Innovt.Cloud.AWS.AwsBaseService.html#Innovt_Cloud_AWS_AwsBaseService_DisposeServices">AwsBaseService.DisposeServices()</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ForgotPassword_Innovt_Cloud_AWS_Cognito_Model_ForgotPasswordRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L90">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ForgotPassword_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ForgotPassword*"></a>
+  <h4 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ForgotPassword_Innovt_Cloud_AWS_Cognito_Model_ForgotPasswordRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest,System.Threading.CancellationToken)">ForgotPassword(ForgotPasswordRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Sends a forgot password request for a user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Task ForgotPassword(ForgotPasswordRequest command, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest.html">ForgotPasswordRequest</a></td>
+        <td><span class="parametername">command</span></td>
+        <td><p>The <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest.html">ForgotPasswordRequest</a> containing user information.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token for async tasks.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_GetUser__1_Innovt_Cloud_AWS_Cognito_Model_GetUserRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser%60%601(Innovt.Cloud.AWS.Cognito.Model.GetUserRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L438">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_GetUser_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser*"></a>
+  <h4 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_GetUser__1_Innovt_Cloud_AWS_Cognito_Model_GetUserRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser``1(Innovt.Cloud.AWS.Cognito.Model.GetUserRequest,System.Threading.CancellationToken)">GetUser&lt;T&gt;(GetUserRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves user information based on the specified request and response type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Task&lt;T&gt; GetUser&lt;T&gt;(GetUserRequest request, CancellationToken cancellationToken = default) where T : IGetUserResponse</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.GetUserRequest.html">GetUserRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>A <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.GetUserRequest.html">GetUserRequest</a> containing the criteria for retrieving user information.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token for cancelling the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</td>
+        <td><p>An instance of the specified response type containing user information.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of response implementing <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.IGetUserResponse.html">IGetUserResponse</a> to return.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_GetUser__1_Innovt_Cloud_AWS_Cognito_Model_GetUserRequest_System_Threading_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method allows you to retrieve user information based on the specified request, such as
+the user's username or other custom fields. You can specify the response type as a generic
+parameter, which should implement the <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.IGetUserResponse.html">IGetUserResponse</a> interface to provide
+a structured representation of user data. The method returns an instance of the specified
+response type populated with user information.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></td>
+        <td><p>Thrown when the <code class="paramref">request</code> is null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Core.Exceptions.BusinessException.html">BusinessException</a></td>
+        <td><p>Thrown when the <code class="paramref">request</code> fails validation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_GetUser__1_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser%60%601(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L490">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_GetUser_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser*"></a>
+  <h4 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_GetUser__1_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser``1(System.String,System.Threading.CancellationToken)">GetUser&lt;T&gt;(string, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Get user information based on the specified request and response type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Task&lt;T&gt; GetUser&lt;T&gt;(string accessToken, CancellationToken cancellationToken = default) where T : IGetUserResponse</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">accessToken</span></td>
+        <td><p>A valid access token.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellationToken token</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</td>
+        <td><p>Null or a valid user</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>A response of type IGetUserResponse</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_LinkSocialUser_Innovt_Cloud_AWS_Cognito_Model_LinkSocialAccountRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.LinkSocialUser(Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L825">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_LinkSocialUser_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.LinkSocialUser*"></a>
+  <h4 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_LinkSocialUser_Innovt_Cloud_AWS_Cognito_Model_LinkSocialAccountRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.LinkSocialUser(Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest,System.Threading.CancellationToken)">LinkSocialUser(LinkSocialAccountRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Link user and social account. This is used to avoid billing issues and other problems.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; LinkSocialUser(LinkSocialAccountRequest command, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest.html">LinkSocialAccountRequest</a></td>
+        <td><span class="parametername">command</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_RefreshToken_Innovt_Cloud_AWS_Cognito_Model_RefreshTokenRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RefreshToken(Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L773">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_RefreshToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RefreshToken*"></a>
+  <h4 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_RefreshToken_Innovt_Cloud_AWS_Cognito_Model_RefreshTokenRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RefreshToken(Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest,System.Threading.CancellationToken)">RefreshToken(RefreshTokenRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Refreshes an expired access token using a refresh token, allowing the user to remain authenticated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Task&lt;RefreshTokenResponse&gt; RefreshToken(RefreshTokenRequest command, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest.html">RefreshTokenRequest</a></td>
+        <td><span class="parametername">command</span></td>
+        <td><p>The request containing the refresh token and context information.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token for cancelling the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.RefreshTokenResponse.html">RefreshTokenResponse</a>&gt;</td>
+        <td><p>A <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.RefreshTokenResponse.html">RefreshTokenResponse</a> containing the refreshed access token and associated details.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_RefreshToken_Innovt_Cloud_AWS_Cognito_Model_RefreshTokenRequest_System_Threading_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method is used to refresh an expired access token using a refresh token, allowing the user to
+remain authenticated without the need for re-entering credentials. The method constructs a refresh token
+authentication request, including user context data, and sends it to the Amazon Cognito Identity Provider
+service. The response contains the refreshed access token and related information.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Core.Exceptions.BusinessException.html">BusinessException</a></td>
+        <td><p>Thrown when the refresh token operation is not authorized.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></td>
+        <td><p>Thrown for other exceptions during the refresh token operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ResendConfirmationCode_Innovt_Cloud_AWS_Cognito_Model_ResendConfirmationCodeRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ResendConfirmationCode(Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L344">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ResendConfirmationCode_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ResendConfirmationCode*"></a>
+  <h4 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ResendConfirmationCode_Innovt_Cloud_AWS_Cognito_Model_ResendConfirmationCodeRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ResendConfirmationCode(Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest,System.Threading.CancellationToken)">ResendConfirmationCode(ResendConfirmationCodeRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Resends the confirmation code to a user with the specified username.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Task ResendConfirmationCode(ResendConfirmationCodeRequest command, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest.html">ResendConfirmationCodeRequest</a></td>
+        <td><span class="parametername">command</span></td>
+        <td><p>A <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest.html">ResendConfirmationCodeRequest</a> containing the necessary information to resend the
+confirmation code.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token for cancelling the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ResendConfirmationCode_Innovt_Cloud_AWS_Cognito_Model_ResendConfirmationCodeRequest_System_Threading_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method allows you to resend the confirmation code to a user with the specified username.
+The confirmation code is typically used during the user registration process to verify the user's email or phone
+number.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></td>
+        <td><p>Thrown when the <code class="paramref">command</code> is null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Core.Exceptions.BusinessException.html">BusinessException</a></td>
+        <td><p>Thrown when the <code class="paramref">command</code> fails validation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_RespondToAuthChallenge_Innovt_Cloud_AWS_Cognito_Model_RespondToAuthChallengeRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RespondToAuthChallenge(Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L543">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_RespondToAuthChallenge_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RespondToAuthChallenge*"></a>
+  <h4 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_RespondToAuthChallenge_Innovt_Cloud_AWS_Cognito_Model_RespondToAuthChallengeRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RespondToAuthChallenge(Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest,System.Threading.CancellationToken)">RespondToAuthChallenge(RespondToAuthChallengeRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Responds to an authentication challenge with the appropriate challenge responses.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;AuthChallengeResponse&gt; RespondToAuthChallenge(RespondToAuthChallengeRequest command, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest.html">RespondToAuthChallengeRequest</a></td>
+        <td><span class="parametername">command</span></td>
+        <td><p>A <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest.html">RespondToAuthChallengeRequest</a> containing the necessary information for the
+challenge response.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token for cancelling the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.AuthChallengeResponse.html">AuthChallengeResponse</a>&gt;</td>
+        <td><p>An <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.AuthChallengeResponse.html">AuthChallengeResponse</a> containing the authentication result or metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_RespondToAuthChallenge_Innovt_Cloud_AWS_Cognito_Model_RespondToAuthChallengeRequest_System_Threading_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method is used to respond to various authentication challenges such as custom challenges,
+SMS Multi-Factor Authentication (MFA), and new password requirements. It provides the appropriate
+challenge responses based on the challenge type and returns authentication results or metadata.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></td>
+        <td><p>Thrown when the <code class="paramref">command</code> is null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Core.Exceptions.BusinessException.html">BusinessException</a></td>
+        <td><p>Thrown when the <code class="paramref">command</code> fails validation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Core.Exceptions.CriticalException.html">CriticalException</a></td>
+        <td><p>Thrown when an unsupported challenge name is encountered.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignIn_Innovt_Cloud_AWS_Cognito_Model_OtpSignInRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L128">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignIn_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignIn*"></a>
+  <h4 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignIn_Innovt_Cloud_AWS_Cognito_Model_OtpSignInRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest,System.Threading.CancellationToken)">SignIn(OtpSignInRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Signs in a user with the provided request for OTP process authentication.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Task&lt;SignInResponse&gt; SignIn(OtpSignInRequest command, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest.html">OtpSignInRequest</a></td>
+        <td><span class="parametername">command</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.SignInResponse.html">SignInResponse</a>&gt;</td>
+        <td><p>A SignInResponse with a valid token or null</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignIn_Innovt_Cloud_AWS_Cognito_Model_SignInRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.SignInRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L142">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignIn_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignIn*"></a>
+  <h4 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignIn_Innovt_Cloud_AWS_Cognito_Model_SignInRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.SignInRequest,System.Threading.CancellationToken)">SignIn(SignInRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Signs in a user with the provided authentication information.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Task&lt;SignInResponse&gt; SignIn(SignInRequest command, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.SignInRequest.html">SignInRequest</a></td>
+        <td><span class="parametername">command</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.SignInResponse.html">SignInResponse</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignOut_Innovt_Cloud_AWS_Cognito_Model_SignOutRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignOut(Innovt.Cloud.AWS.Cognito.Model.SignOutRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L170">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignOut_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignOut*"></a>
+  <h4 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignOut_Innovt_Cloud_AWS_Cognito_Model_SignOutRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignOut(Innovt.Cloud.AWS.Cognito.Model.SignOutRequest,System.Threading.CancellationToken)">SignOut(SignOutRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Signs out the user associated with the provided access token.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task SignOut(SignOutRequest request, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.SignOutRequest.html">SignOutRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>A <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.SignOutRequest.html">SignOutRequest</a> object containing the access token to sign out the user.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token for cancelling the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignOut_Innovt_Cloud_AWS_Cognito_Model_SignOutRequest_System_Threading_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method allows you to sign out the user associated with the provided access token. Signing out a user
+invalidates the access
+token, preventing further access to protected resources without reauthentication. Ensure that you provide a valid
+access token
+to successfully sign out the user.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></td>
+        <td><p>Thrown when the <code class="paramref">request</code> is null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Core.Exceptions.BusinessException.html">BusinessException</a></td>
+        <td><p>Thrown when the <code class="paramref">request</code> fails validation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignUp_Innovt_Cloud_AWS_Cognito_Model_ISignUpRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignUp(Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L212">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignUp_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignUp*"></a>
+  <h4 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignUp_Innovt_Cloud_AWS_Cognito_Model_ISignUpRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignUp(Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest,System.Threading.CancellationToken)">SignUp(ISignUpRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Signs up a new user with the provided registration information.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Task&lt;SignUpResponse&gt; SignUp(ISignUpRequest command, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest.html">ISignUpRequest</a></td>
+        <td><span class="parametername">command</span></td>
+        <td><p>An <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest.html">ISignUpRequest</a> object containing the user's registration information.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token for cancelling the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.SignUpResponse.html">SignUpResponse</a>&gt;</td>
+        <td><p>A <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.SignUpResponse.html">SignUpResponse</a> indicating whether the user was successfully signed up and their UUID (User
+Sub).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignUp_Innovt_Cloud_AWS_Cognito_Model_ISignUpRequest_System_Threading_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method allows you to sign up a new user with the provided registration information, including username,
+password,
+custom attributes, and other optional properties. After successful sign-up, the user may need to confirm their
+registration
+depending on the authentication flow and configuration.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></td>
+        <td><p>Thrown when the <code class="paramref">command</code> is null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Core.Exceptions.BusinessException.html">BusinessException</a></td>
+        <td><p>Thrown when the <code class="paramref">command</code> fails validation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SocialSignIn_Innovt_Cloud_AWS_Cognito_Model_SocialSignInRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SocialSignIn(Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L686">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SocialSignIn_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SocialSignIn*"></a>
+  <h4 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SocialSignIn_Innovt_Cloud_AWS_Cognito_Model_SocialSignInRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SocialSignIn(Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest,System.Threading.CancellationToken)">SocialSignIn(SocialSignInRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Performs social sign-in using an authorization code obtained from an external identity provider.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Task&lt;OAuth2SignInResponse&gt; SocialSignIn(SocialSignInRequest command, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest.html">SocialSignInRequest</a></td>
+        <td><span class="parametername">command</span></td>
+        <td><p>The request containing the authorization code and context information.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token for cancelling the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.OAuth2SignInResponse.html">OAuth2SignInResponse</a>&gt;</td>
+        <td><p>A <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.OAuth2SignInResponse.html">OAuth2SignInResponse</a> containing user information and tokens for authentication.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SocialSignIn_Innovt_Cloud_AWS_Cognito_Model_SocialSignInRequest_System_Threading_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method is used to perform social sign-in using an authorization code obtained from an external identity
+provider.
+It constructs an OAuth2 token request, sends it to the identity provider, and handles the response to authenticate
+the user.
+The method also retrieves user information and determines if the user needs to be registered in the system.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Core.Exceptions.BusinessException.html">BusinessException</a></td>
+        <td><p>Thrown when there is an error in the OAuth2 response.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Innovt.Core.Exceptions.CriticalException.html">CriticalException</a></td>
+        <td><p>Thrown when the user is not found in the system.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></td>
+        <td><p>Thrown for other exceptions during the social sign-in process.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_UpdateUserAttributes_Innovt_Cloud_AWS_Cognito_Model_AdminUpdateUserAttributesRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L913">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_UpdateUserAttributes_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.UpdateUserAttributes*"></a>
+  <h4 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_UpdateUserAttributes_Innovt_Cloud_AWS_Cognito_Model_AdminUpdateUserAttributesRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest,System.Threading.CancellationToken)">UpdateUserAttributes(AdminUpdateUserAttributesRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>This method allow you to update user attributes without sending a token. Internally we are calling Admin Update
+User Attributes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task UpdateUserAttributes(AdminUpdateUserAttributesRequest command, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest.html">AdminUpdateUserAttributesRequest</a></td>
+        <td><span class="parametername">command</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_UpdateUserAttributes_Innovt_Cloud_AWS_Cognito_Model_UpdateUserAttributesRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L951">View Source</a>
+  </span>
+  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_UpdateUserAttributes_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.UpdateUserAttributes*"></a>
+  <h4 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_UpdateUserAttributes_Innovt_Cloud_AWS_Cognito_Model_UpdateUserAttributesRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest,System.Threading.CancellationToken)">UpdateUserAttributes(UpdateUserAttributesRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Updates user attributes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Task UpdateUserAttributes(UpdateUserAttributesRequest command, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest.html">UpdateUserAttributesRequest</a></td>
+        <td><span class="parametername">command</span></td>
+        <td><p>The <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest.html">UpdateUserAttributesRequest</a> containing user attributes.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token for async tasks.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a>
+  </div>
+  <div>
+      <a class="xref" href="Innovt.Cloud.AWS.Cognito.ICognitoIdentityProvider.html">ICognitoIdentityProvider</a>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_">Extensions.IsNull(object)</a>
   </div>
@@ -206,1042 +1628,47 @@ Class CognitoIdentityProvider  <a class="header-action link-secondary" title="Vi
   <div>
       <a class="xref" href="Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_">SimpleMapper.MapTo&lt;T1&gt;(object)</a>
   </div>
-  </dd></dl>
-
-
-
-
-
-  <h2 class="section" id="constructors">Constructors
-</h2>
-
-
-  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider__ctor_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.#ctor*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider__ctor_Innovt_Core_CrossCutting_Log_ILogger_Innovt_Cloud_AWS_Configuration_IAwsConfiguration_System_String_System_String_System_String_System_String_System_Boolean_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.#ctor(Innovt.Core.CrossCutting.Log.ILogger,Innovt.Cloud.AWS.Configuration.IAwsConfiguration,System.String,System.String,System.String,System.String,System.Boolean)">
-  CognitoIdentityProvider(ILogger, IAwsConfiguration, string, string, string, string, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L67"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected CognitoIdentityProvider(ILogger logger, IAwsConfiguration configuration, string clientId, string userPoolId, string domainEndPoint, string region = null, bool allowAutoConfirmUserWithSocialLogin = false)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>logger</code> <a class="xref" href="Innovt.Core.CrossCutting.Log.ILogger.html">ILogger</a></dt>
-    <dd></dd>
-    <dt><code>configuration</code> <a class="xref" href="Innovt.Cloud.AWS.Configuration.IAwsConfiguration.html">IAwsConfiguration</a></dt>
-    <dd></dd>
-    <dt><code>clientId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>userPoolId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>domainEndPoint</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>region</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>allowAutoConfirmUserWithSocialLogin</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
-  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ChangePassword_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ChangePassword*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ChangePassword_Innovt_Cloud_AWS_Cognito_Model_ChangePasswordRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ChangePassword(Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest,System.Threading.CancellationToken)">
-  ChangePassword(ChangePasswordRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L394"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Changes the password for a user with the specified access token.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual Task ChangePassword(ChangePasswordRequest command, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>command</code> <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest.html">ChangePasswordRequest</a></dt>
-    <dd><p>A <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.ChangePasswordRequest.html">ChangePasswordRequest</a> containing the necessary information to change the
-password.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>A cancellation token for cancelling the operation.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-  <h4 class="section" id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ChangePassword_Innovt_Cloud_AWS_Cognito_Model_ChangePasswordRequest_System_Threading_CancellationToken__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method allows you to change the password for a user by providing an access token and the new proposed
-password.
-The previous password is also required for security verification. If successful, the user's password will be
-updated.</p>
-</div>
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
-    <dd><p>Thrown when the <code class="paramref">command</code> is null.</p>
-</dd>
-    <dt><a class="xref" href="Innovt.Core.Exceptions.BusinessException.html">BusinessException</a></dt>
-    <dd><p>Thrown when the <code class="paramref">command</code> fails validation.</p>
-</dd>
-  </dl>
-
-
-
-  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ConfirmForgotPassword_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmForgotPassword*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ConfirmForgotPassword_Innovt_Cloud_AWS_Cognito_Model_ConfirmForgotPasswordRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest,System.Threading.CancellationToken)">
-  ConfirmForgotPassword(ConfirmForgotPasswordRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L633"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Confirms a user's forgotten password and sets a new password for the user.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task ConfirmForgotPassword(ConfirmForgotPasswordRequest command, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>command</code> <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest.html">ConfirmForgotPasswordRequest</a></dt>
-    <dd><p>A <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.ConfirmForgotPasswordRequest.html">ConfirmForgotPasswordRequest</a> containing the necessary information for
-confirmation.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>A cancellation token for cancelling the operation.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
-    <dd><p>A task representing the asynchronous confirmation process.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-  <h4 class="section" id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ConfirmForgotPassword_Innovt_Cloud_AWS_Cognito_Model_ConfirmForgotPasswordRequest_System_Threading_CancellationToken__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method is used to confirm a user's forgotten password by providing the user's username, a new password,
-and a confirmation code received by the user. It sets the new password for the user if the confirmation is
-successful.</p>
-</div>
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
-    <dd><p>Thrown when the <code class="paramref">command</code> is null.</p>
-</dd>
-    <dt><a class="xref" href="Innovt.Core.Exceptions.BusinessException.html">BusinessException</a></dt>
-    <dd><p>Thrown when the <code class="paramref">command</code> fails validation.</p>
-</dd>
-  </dl>
-
-
-
-  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ConfirmSignUp_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmSignUp*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ConfirmSignUp_Innovt_Cloud_AWS_Cognito_Model_ConfirmSignUpRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ConfirmSignUp(Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest,System.Threading.CancellationToken)">
-  ConfirmSignUp(ConfirmSignUpRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L294"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Confirms the sign-up of a user with the specified confirmation code.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual Task ConfirmSignUp(ConfirmSignUpRequest request, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>request</code> <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest.html">ConfirmSignUpRequest</a></dt>
-    <dd><p>A <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.ConfirmSignUpRequest.html">ConfirmSignUpRequest</a> containing the necessary information to confirm the
-sign-up.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>A cancellation token for cancelling the operation.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-  <h4 class="section" id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ConfirmSignUp_Innovt_Cloud_AWS_Cognito_Model_ConfirmSignUpRequest_System_Threading_CancellationToken__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method allows you to confirm the sign-up of a user with the specified confirmation code.
-The confirmation code is typically sent to the user's email or phone number during the registration process.
-After successful confirmation, the user becomes active and can log in.</p>
-</div>
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
-    <dd><p>Thrown when the <code class="paramref">request</code> is null.</p>
-</dd>
-    <dt><a class="xref" href="Innovt.Core.Exceptions.BusinessException.html">BusinessException</a></dt>
-    <dd><p>Thrown when the <code class="paramref">request</code> fails validation.</p>
-</dd>
-  </dl>
-
-
-
-  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_DeleteUser_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DeleteUser*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_DeleteUser_Innovt_Cloud_AWS_Cognito_Model_DeleteUserAccountRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DeleteUser(Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest,System.Threading.CancellationToken)">
-  DeleteUser(DeleteUserAccountRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L888"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>This method will delete the user using the username and the user pool id. It's important to have the admin delete
-user permission.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; DeleteUser(DeleteUserAccountRequest command, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>command</code> <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.DeleteUserAccountRequest.html">DeleteUserAccountRequest</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_DisposeServices_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DisposeServices*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_DisposeServices" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.DisposeServices">
-  DisposeServices()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L1223"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Disposes of resources when they are no longer needed.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override void DisposeServices()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ForgotPassword_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ForgotPassword*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ForgotPassword_Innovt_Cloud_AWS_Cognito_Model_ForgotPasswordRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ForgotPassword(Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest,System.Threading.CancellationToken)">
-  ForgotPassword(ForgotPasswordRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L90"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Sends a forgot password request for a user.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual Task ForgotPassword(ForgotPasswordRequest command, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>command</code> <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest.html">ForgotPasswordRequest</a></dt>
-    <dd><p>The <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.ForgotPasswordRequest.html">ForgotPasswordRequest</a> containing user information.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>A cancellation token for async tasks.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_GetUser_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_GetUser__1_Innovt_Cloud_AWS_Cognito_Model_GetUserRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser``1(Innovt.Cloud.AWS.Cognito.Model.GetUserRequest,System.Threading.CancellationToken)">
-  GetUser&lt;T&gt;(GetUserRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L438"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Retrieves user information based on the specified request and response type.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual Task&lt;T&gt; GetUser&lt;T&gt;(GetUserRequest request, CancellationToken cancellationToken = default) where T : IGetUserResponse</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>request</code> <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.GetUserRequest.html">GetUserRequest</a></dt>
-    <dd><p>A <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.GetUserRequest.html">GetUserRequest</a> containing the criteria for retrieving user information.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>A cancellation token for cancelling the operation.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</dt>
-    <dd><p>An instance of the specified response type containing user information.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>The type of response implementing <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.IGetUserResponse.html">IGetUserResponse</a> to return.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-  <h4 class="section" id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_GetUser__1_Innovt_Cloud_AWS_Cognito_Model_GetUserRequest_System_Threading_CancellationToken__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method allows you to retrieve user information based on the specified request, such as
-the user's username or other custom fields. You can specify the response type as a generic
-parameter, which should implement the <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.IGetUserResponse.html">IGetUserResponse</a> interface to provide
-a structured representation of user data. The method returns an instance of the specified
-response type populated with user information.</p>
-</div>
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
-    <dd><p>Thrown when the <code class="paramref">request</code> is null.</p>
-</dd>
-    <dt><a class="xref" href="Innovt.Core.Exceptions.BusinessException.html">BusinessException</a></dt>
-    <dd><p>Thrown when the <code class="paramref">request</code> fails validation.</p>
-</dd>
-  </dl>
-
-
-
-  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_GetUser_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_GetUser__1_System_String_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.GetUser``1(System.String,System.Threading.CancellationToken)">
-  GetUser&lt;T&gt;(string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L490"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Get user information based on the specified request and response type.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual Task&lt;T&gt; GetUser&lt;T&gt;(string accessToken, CancellationToken cancellationToken = default) where T : IGetUserResponse</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>accessToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>A valid access token.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>A cancellationToken token</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt;</dt>
-    <dd><p>Null or a valid user</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>A response of type IGetUserResponse</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
-    <dd></dd>
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_LinkSocialUser_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.LinkSocialUser*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_LinkSocialUser_Innovt_Cloud_AWS_Cognito_Model_LinkSocialAccountRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.LinkSocialUser(Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest,System.Threading.CancellationToken)">
-  LinkSocialUser(LinkSocialAccountRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L825"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Link user and social account. This is used to avoid billing issues and other problems.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; LinkSocialUser(LinkSocialAccountRequest command, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>command</code> <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.LinkSocialAccountRequest.html">LinkSocialAccountRequest</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_RefreshToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RefreshToken*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_RefreshToken_Innovt_Cloud_AWS_Cognito_Model_RefreshTokenRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RefreshToken(Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest,System.Threading.CancellationToken)">
-  RefreshToken(RefreshTokenRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L773"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Refreshes an expired access token using a refresh token, allowing the user to remain authenticated.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual Task&lt;RefreshTokenResponse&gt; RefreshToken(RefreshTokenRequest command, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>command</code> <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.RefreshTokenRequest.html">RefreshTokenRequest</a></dt>
-    <dd><p>The request containing the refresh token and context information.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>A cancellation token for cancelling the operation.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.RefreshTokenResponse.html">RefreshTokenResponse</a>&gt;</dt>
-    <dd><p>A <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.RefreshTokenResponse.html">RefreshTokenResponse</a> containing the refreshed access token and associated details.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-  <h4 class="section" id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_RefreshToken_Innovt_Cloud_AWS_Cognito_Model_RefreshTokenRequest_System_Threading_CancellationToken__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method is used to refresh an expired access token using a refresh token, allowing the user to
-remain authenticated without the need for re-entering credentials. The method constructs a refresh token
-authentication request, including user context data, and sends it to the Amazon Cognito Identity Provider
-service. The response contains the refreshed access token and related information.</p>
-</div>
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Innovt.Core.Exceptions.BusinessException.html">BusinessException</a></dt>
-    <dd><p>Thrown when the refresh token operation is not authorized.</p>
-</dd>
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
-    <dd><p>Thrown for other exceptions during the refresh token operation.</p>
-</dd>
-  </dl>
-
-
-
-  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ResendConfirmationCode_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ResendConfirmationCode*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ResendConfirmationCode_Innovt_Cloud_AWS_Cognito_Model_ResendConfirmationCodeRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.ResendConfirmationCode(Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest,System.Threading.CancellationToken)">
-  ResendConfirmationCode(ResendConfirmationCodeRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L344"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Resends the confirmation code to a user with the specified username.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual Task ResendConfirmationCode(ResendConfirmationCodeRequest command, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>command</code> <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest.html">ResendConfirmationCodeRequest</a></dt>
-    <dd><p>A <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.ResendConfirmationCodeRequest.html">ResendConfirmationCodeRequest</a> containing the necessary information to resend the
-confirmation code.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>A cancellation token for cancelling the operation.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-  <h4 class="section" id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_ResendConfirmationCode_Innovt_Cloud_AWS_Cognito_Model_ResendConfirmationCodeRequest_System_Threading_CancellationToken__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method allows you to resend the confirmation code to a user with the specified username.
-The confirmation code is typically used during the user registration process to verify the user's email or phone
-number.</p>
-</div>
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
-    <dd><p>Thrown when the <code class="paramref">command</code> is null.</p>
-</dd>
-    <dt><a class="xref" href="Innovt.Core.Exceptions.BusinessException.html">BusinessException</a></dt>
-    <dd><p>Thrown when the <code class="paramref">command</code> fails validation.</p>
-</dd>
-  </dl>
-
-
-
-  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_RespondToAuthChallenge_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RespondToAuthChallenge*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_RespondToAuthChallenge_Innovt_Cloud_AWS_Cognito_Model_RespondToAuthChallengeRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.RespondToAuthChallenge(Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest,System.Threading.CancellationToken)">
-  RespondToAuthChallenge(RespondToAuthChallengeRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L543"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Responds to an authentication challenge with the appropriate challenge responses.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;AuthChallengeResponse&gt; RespondToAuthChallenge(RespondToAuthChallengeRequest command, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>command</code> <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest.html">RespondToAuthChallengeRequest</a></dt>
-    <dd><p>A <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.RespondToAuthChallengeRequest.html">RespondToAuthChallengeRequest</a> containing the necessary information for the
-challenge response.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>A cancellation token for cancelling the operation.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.AuthChallengeResponse.html">AuthChallengeResponse</a>&gt;</dt>
-    <dd><p>An <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.AuthChallengeResponse.html">AuthChallengeResponse</a> containing the authentication result or metadata.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-  <h4 class="section" id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_RespondToAuthChallenge_Innovt_Cloud_AWS_Cognito_Model_RespondToAuthChallengeRequest_System_Threading_CancellationToken__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method is used to respond to various authentication challenges such as custom challenges,
-SMS Multi-Factor Authentication (MFA), and new password requirements. It provides the appropriate
-challenge responses based on the challenge type and returns authentication results or metadata.</p>
-</div>
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
-    <dd><p>Thrown when the <code class="paramref">command</code> is null.</p>
-</dd>
-    <dt><a class="xref" href="Innovt.Core.Exceptions.BusinessException.html">BusinessException</a></dt>
-    <dd><p>Thrown when the <code class="paramref">command</code> fails validation.</p>
-</dd>
-    <dt><a class="xref" href="Innovt.Core.Exceptions.CriticalException.html">CriticalException</a></dt>
-    <dd><p>Thrown when an unsupported challenge name is encountered.</p>
-</dd>
-  </dl>
-
-
-
-  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignIn_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignIn*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignIn_Innovt_Cloud_AWS_Cognito_Model_OtpSignInRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest,System.Threading.CancellationToken)">
-  SignIn(OtpSignInRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L128"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Signs in a user with the provided request for OTP process authentication.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual Task&lt;SignInResponse&gt; SignIn(OtpSignInRequest command, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>command</code> <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.OtpSignInRequest.html">OtpSignInRequest</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.SignInResponse.html">SignInResponse</a>&gt;</dt>
-    <dd><p>A SignInResponse with a valid token or null</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignIn_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignIn*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignIn_Innovt_Cloud_AWS_Cognito_Model_SignInRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignIn(Innovt.Cloud.AWS.Cognito.Model.SignInRequest,System.Threading.CancellationToken)">
-  SignIn(SignInRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L142"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Signs in a user with the provided authentication information.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual Task&lt;SignInResponse&gt; SignIn(SignInRequest command, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>command</code> <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.SignInRequest.html">SignInRequest</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.SignInResponse.html">SignInResponse</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignOut_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignOut*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignOut_Innovt_Cloud_AWS_Cognito_Model_SignOutRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignOut(Innovt.Cloud.AWS.Cognito.Model.SignOutRequest,System.Threading.CancellationToken)">
-  SignOut(SignOutRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L170"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Signs out the user associated with the provided access token.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task SignOut(SignOutRequest request, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>request</code> <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.SignOutRequest.html">SignOutRequest</a></dt>
-    <dd><p>A <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.SignOutRequest.html">SignOutRequest</a> object containing the access token to sign out the user.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>A cancellation token for cancelling the operation.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-  <h4 class="section" id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignOut_Innovt_Cloud_AWS_Cognito_Model_SignOutRequest_System_Threading_CancellationToken__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method allows you to sign out the user associated with the provided access token. Signing out a user
-invalidates the access
-token, preventing further access to protected resources without reauthentication. Ensure that you provide a valid
-access token
-to successfully sign out the user.</p>
-</div>
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
-    <dd><p>Thrown when the <code class="paramref">request</code> is null.</p>
-</dd>
-    <dt><a class="xref" href="Innovt.Core.Exceptions.BusinessException.html">BusinessException</a></dt>
-    <dd><p>Thrown when the <code class="paramref">request</code> fails validation.</p>
-</dd>
-  </dl>
-
-
-
-  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignUp_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignUp*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignUp_Innovt_Cloud_AWS_Cognito_Model_ISignUpRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SignUp(Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest,System.Threading.CancellationToken)">
-  SignUp(ISignUpRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L212"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Signs up a new user with the provided registration information.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual Task&lt;SignUpResponse&gt; SignUp(ISignUpRequest command, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>command</code> <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest.html">ISignUpRequest</a></dt>
-    <dd><p>An <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.ISignUpRequest.html">ISignUpRequest</a> object containing the user's registration information.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>A cancellation token for cancelling the operation.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.SignUpResponse.html">SignUpResponse</a>&gt;</dt>
-    <dd><p>A <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.SignUpResponse.html">SignUpResponse</a> indicating whether the user was successfully signed up and their UUID (User
-Sub).</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-  <h4 class="section" id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SignUp_Innovt_Cloud_AWS_Cognito_Model_ISignUpRequest_System_Threading_CancellationToken__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method allows you to sign up a new user with the provided registration information, including username,
-password,
-custom attributes, and other optional properties. After successful sign-up, the user may need to confirm their
-registration
-depending on the authentication flow and configuration.</p>
-</div>
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
-    <dd><p>Thrown when the <code class="paramref">command</code> is null.</p>
-</dd>
-    <dt><a class="xref" href="Innovt.Core.Exceptions.BusinessException.html">BusinessException</a></dt>
-    <dd><p>Thrown when the <code class="paramref">command</code> fails validation.</p>
-</dd>
-  </dl>
-
-
-
-  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SocialSignIn_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SocialSignIn*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SocialSignIn_Innovt_Cloud_AWS_Cognito_Model_SocialSignInRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.SocialSignIn(Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest,System.Threading.CancellationToken)">
-  SocialSignIn(SocialSignInRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L686"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Performs social sign-in using an authorization code obtained from an external identity provider.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual Task&lt;OAuth2SignInResponse&gt; SocialSignIn(SocialSignInRequest command, CancellationToken cancellationToken)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>command</code> <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.SocialSignInRequest.html">SocialSignInRequest</a></dt>
-    <dd><p>The request containing the authorization code and context information.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>A cancellation token for cancelling the operation.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.OAuth2SignInResponse.html">OAuth2SignInResponse</a>&gt;</dt>
-    <dd><p>A <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.OAuth2SignInResponse.html">OAuth2SignInResponse</a> containing user information and tokens for authentication.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-  <h4 class="section" id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_SocialSignIn_Innovt_Cloud_AWS_Cognito_Model_SocialSignInRequest_System_Threading_CancellationToken__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This method is used to perform social sign-in using an authorization code obtained from an external identity
-provider.
-It constructs an OAuth2 token request, sends it to the identity provider, and handles the response to authenticate
-the user.
-The method also retrieves user information and determines if the user needs to be registered in the system.</p>
-</div>
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Innovt.Core.Exceptions.BusinessException.html">BusinessException</a></dt>
-    <dd><p>Thrown when there is an error in the OAuth2 response.</p>
-</dd>
-    <dt><a class="xref" href="Innovt.Core.Exceptions.CriticalException.html">CriticalException</a></dt>
-    <dd><p>Thrown when the user is not found in the system.</p>
-</dd>
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
-    <dd><p>Thrown for other exceptions during the social sign-in process.</p>
-</dd>
-  </dl>
-
-
-
-  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_UpdateUserAttributes_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.UpdateUserAttributes*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_UpdateUserAttributes_Innovt_Cloud_AWS_Cognito_Model_AdminUpdateUserAttributesRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest,System.Threading.CancellationToken)">
-  UpdateUserAttributes(AdminUpdateUserAttributesRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L913"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>This method allow you to update user attributes without sending a token. Internally we are calling Admin Update
-User Attributes.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task UpdateUserAttributes(AdminUpdateUserAttributesRequest command, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>command</code> <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.AdminUpdateUserAttributesRequest.html">AdminUpdateUserAttributesRequest</a></dt>
-    <dd></dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_UpdateUserAttributes_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.UpdateUserAttributes*"></a>
-
-  <h3 id="Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider_UpdateUserAttributes_Innovt_Cloud_AWS_Cognito_Model_UpdateUserAttributesRequest_System_Threading_CancellationToken_" data-uid="Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider.UpdateUserAttributes(Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest,System.Threading.CancellationToken)">
-  UpdateUserAttributes(UpdateUserAttributesRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L951"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Updates user attributes.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual Task UpdateUserAttributes(UpdateUserAttributesRequest command, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>command</code> <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest.html">UpdateUserAttributesRequest</a></dt>
-    <dd><p>The <a class="xref" href="Innovt.Cloud.AWS.Cognito.Model.UpdateUserAttributesRequest.html">UpdateUserAttributesRequest</a> containing user attributes.</p>
-</dd>
-    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
-    <dd><p>A cancellation token for async tasks.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
 
 </article>
+          </div>
 
-        <div class="contribution d-print-none">
-          <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L50" class="edit-link">Edit this page</a>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Cloud_AWS_Cognito_CognitoIdentityProvider.md&amp;value=---%0Auid%3A%20Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Cloud.AWS.Cognito/CognitoIdentityProvider.cs/#L50" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
         </div>
-
-
       </div>
 
-      <div class="affix">
-        <nav id="affix"></nav>
-      </div>
-    </main>
-
-    <div class="container-xxl search-results" id="search-results"></div>
-
-    <footer class="border-top text-secondary">
-      <div class="container-xxl">
-        <div class="flex-fill">
-          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
   </body>
 </html>

@@ -6,13 +6,13 @@ items:
   parent: Innovt.Cloud.Table
   children:
   - Innovt.Cloud.Table.ITableRepository.AddAsync``1(``0,System.Threading.CancellationToken)
-  - Innovt.Cloud.Table.ITableRepository.AddListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  - Innovt.Cloud.Table.ITableRepository.AddRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
   - Innovt.Cloud.Table.ITableRepository.BatchGetItem``1(Innovt.Cloud.Table.BatchGetItemRequest,System.Threading.CancellationToken)
   - Innovt.Cloud.Table.ITableRepository.BatchWriteItem(Innovt.Cloud.Table.BatchWriteItemRequest,System.Threading.CancellationToken)
-  - Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0)
+  - Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0,Innovt.Cloud.Table.TransactionWriteOperationType)
   - Innovt.Cloud.Table.ITableRepository.DeleteAsync``1(System.Object,System.String,System.Threading.CancellationToken)
   - Innovt.Cloud.Table.ITableRepository.DeleteAsync``1(``0,System.Threading.CancellationToken)
-  - Innovt.Cloud.Table.ITableRepository.DeleteListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  - Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
   - Innovt.Cloud.Table.ITableRepository.ExecuteStatementAsync``1(Innovt.Cloud.Table.ExecuteSqlStatementRequest,System.Threading.CancellationToken)
   - Innovt.Cloud.Table.ITableRepository.GetByIdAsync``1(System.Object,System.String,System.Threading.CancellationToken)
   - Innovt.Cloud.Table.ITableRepository.QueryAsync``1(Innovt.Cloud.Table.QueryRequest,System.Threading.CancellationToken)
@@ -101,23 +101,23 @@ items:
   nameWithType.vb: ITableRepository.AddAsync(Of T)(T, CancellationToken)
   fullName.vb: Innovt.Cloud.Table.ITableRepository.AddAsync(Of T)(T, System.Threading.CancellationToken)
   name.vb: AddAsync(Of T)(T, CancellationToken)
-- uid: Innovt.Cloud.Table.ITableRepository.AddListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-  commentId: M:Innovt.Cloud.Table.ITableRepository.AddListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-  id: AddListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+- uid: Innovt.Cloud.Table.ITableRepository.AddRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.Table.ITableRepository.AddRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  id: AddRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
   parent: Innovt.Cloud.Table.ITableRepository
   langs:
   - csharp
   - vb
-  name: AddListAsync<T>(ICollection<T>, CancellationToken)
-  nameWithType: ITableRepository.AddListAsync<T>(ICollection<T>, CancellationToken)
-  fullName: Innovt.Cloud.Table.ITableRepository.AddListAsync<T>(System.Collections.Generic.ICollection<T>, System.Threading.CancellationToken)
+  name: AddRangeAsync<T>(ICollection<T>, CancellationToken)
+  nameWithType: ITableRepository.AddRangeAsync<T>(ICollection<T>, CancellationToken)
+  fullName: Innovt.Cloud.Table.ITableRepository.AddRangeAsync<T>(System.Collections.Generic.ICollection<T>, System.Threading.CancellationToken)
   type: Method
   source:
     remote:
       path: src/Innovt.Cloud/Table/ITableRepository.cs
       branch: feature/ImproveDynamoMapping
       repo: https://github.com/Innovtt/Innovt.Platform.git
-    id: AddListAsync
+    id: AddRangeAsync
     path: ../src/Innovt.Cloud/Table/ITableRepository.cs
     startLine: 33
   assemblies:
@@ -126,7 +126,7 @@ items:
   summary: Asynchronously adds multiple items to the repository.
   example: []
   syntax:
-    content: 'Task AddListAsync<T>(ICollection<T> messages, CancellationToken cancellationToken = default) where T : class'
+    content: 'Task AddRangeAsync<T>(ICollection<T> messages, CancellationToken cancellationToken = default) where T : class'
     parameters:
     - id: messages
       type: System.Collections.Generic.ICollection{{T}}
@@ -140,11 +140,11 @@ items:
     return:
       type: System.Threading.Tasks.Task
       description: A task representing the asynchronous add operation.
-    content.vb: Function AddListAsync(Of T As Class)(messages As ICollection(Of T), cancellationToken As CancellationToken = Nothing) As Task
-  overload: Innovt.Cloud.Table.ITableRepository.AddListAsync*
-  nameWithType.vb: ITableRepository.AddListAsync(Of T)(ICollection(Of T), CancellationToken)
-  fullName.vb: Innovt.Cloud.Table.ITableRepository.AddListAsync(Of T)(System.Collections.Generic.ICollection(Of T), System.Threading.CancellationToken)
-  name.vb: AddListAsync(Of T)(ICollection(Of T), CancellationToken)
+    content.vb: Function AddRangeAsync(Of T As Class)(messages As ICollection(Of T), cancellationToken As CancellationToken = Nothing) As Task
+  overload: Innovt.Cloud.Table.ITableRepository.AddRangeAsync*
+  nameWithType.vb: ITableRepository.AddRangeAsync(Of T)(ICollection(Of T), CancellationToken)
+  fullName.vb: Innovt.Cloud.Table.ITableRepository.AddRangeAsync(Of T)(System.Collections.Generic.ICollection(Of T), System.Threading.CancellationToken)
+  name.vb: AddRangeAsync(Of T)(ICollection(Of T), CancellationToken)
 - uid: Innovt.Cloud.Table.ITableRepository.UpdateAsync``1(``0,System.Threading.CancellationToken)
   commentId: M:Innovt.Cloud.Table.ITableRepository.UpdateAsync``1(``0,System.Threading.CancellationToken)
   id: UpdateAsync``1(``0,System.Threading.CancellationToken)
@@ -173,7 +173,7 @@ items:
     PUT.
   example: []
   syntax:
-    content: 'Task<T> UpdateAsync<T>(T instance, CancellationToken cancellationToken = default) where T : class'
+    content: 'Task<T> UpdateAsync<T>(T instance, CancellationToken cancellationToken = default) where T : class, new()'
     parameters:
     - id: instance
       type: '{T}'
@@ -187,7 +187,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{{T}}
       description: ''
-    content.vb: Function UpdateAsync(Of T As Class)(instance As T, cancellationToken As CancellationToken = Nothing) As Task(Of T)
+    content.vb: Function UpdateAsync(Of T As {Class, New})(instance As T, cancellationToken As CancellationToken = Nothing) As Task(Of T)
   overload: Innovt.Cloud.Table.ITableRepository.UpdateAsync*
   nameWithType.vb: ITableRepository.UpdateAsync(Of T)(T, CancellationToken)
   fullName.vb: Innovt.Cloud.Table.ITableRepository.UpdateAsync(Of T)(T, System.Threading.CancellationToken)
@@ -312,50 +312,6 @@ items:
   nameWithType.vb: ITableRepository.DeleteAsync(Of T)(T, CancellationToken)
   fullName.vb: Innovt.Cloud.Table.ITableRepository.DeleteAsync(Of T)(T, System.Threading.CancellationToken)
   name.vb: DeleteAsync(Of T)(T, CancellationToken)
-- uid: Innovt.Cloud.Table.ITableRepository.DeleteListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-  commentId: M:Innovt.Cloud.Table.ITableRepository.DeleteListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-  id: DeleteListAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
-  parent: Innovt.Cloud.Table.ITableRepository
-  langs:
-  - csharp
-  - vb
-  name: DeleteListAsync<T>(ICollection<T>, CancellationToken)
-  nameWithType: ITableRepository.DeleteListAsync<T>(ICollection<T>, CancellationToken)
-  fullName: Innovt.Cloud.Table.ITableRepository.DeleteListAsync<T>(System.Collections.Generic.ICollection<T>, System.Threading.CancellationToken)
-  type: Method
-  source:
-    remote:
-      path: src/Innovt.Cloud/Table/ITableRepository.cs
-      branch: feature/ImproveDynamoMapping
-      repo: https://github.com/Innovtt/Innovt.Platform.git
-    id: DeleteListAsync
-    path: ../src/Innovt.Cloud/Table/ITableRepository.cs
-    startLine: 79
-  assemblies:
-  - Innovt.Cloud
-  namespace: Innovt.Cloud.Table
-  summary: Asynchronously a list of item that are from the same type.
-  example: []
-  syntax:
-    content: 'Task DeleteListAsync<T>(ICollection<T> messages, CancellationToken cancellationToken = default) where T : class'
-    parameters:
-    - id: messages
-      type: System.Collections.Generic.ICollection{{T}}
-      description: ''
-    - id: cancellationToken
-      type: System.Threading.CancellationToken
-      description: ''
-    typeParameters:
-    - id: T
-      description: ''
-    return:
-      type: System.Threading.Tasks.Task
-      description: ''
-    content.vb: Function DeleteListAsync(Of T As Class)(messages As ICollection(Of T), cancellationToken As CancellationToken = Nothing) As Task
-  overload: Innovt.Cloud.Table.ITableRepository.DeleteListAsync*
-  nameWithType.vb: ITableRepository.DeleteListAsync(Of T)(ICollection(Of T), CancellationToken)
-  fullName.vb: Innovt.Cloud.Table.ITableRepository.DeleteListAsync(Of T)(System.Collections.Generic.ICollection(Of T), System.Threading.CancellationToken)
-  name.vb: DeleteListAsync(Of T)(ICollection(Of T), CancellationToken)
 - uid: Innovt.Cloud.Table.ITableRepository.DeleteAsync``1(System.Object,System.String,System.Threading.CancellationToken)
   commentId: M:Innovt.Cloud.Table.ITableRepository.DeleteAsync``1(System.Object,System.String,System.Threading.CancellationToken)
   id: DeleteAsync``1(System.Object,System.String,System.Threading.CancellationToken)
@@ -374,7 +330,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: DeleteAsync
     path: ../src/Innovt.Cloud/Table/ITableRepository.cs
-    startLine: 89
+    startLine: 80
   assemblies:
   - Innovt.Cloud
   namespace: Innovt.Cloud.Table
@@ -403,6 +359,50 @@ items:
   nameWithType.vb: ITableRepository.DeleteAsync(Of T)(Object, String, CancellationToken)
   fullName.vb: Innovt.Cloud.Table.ITableRepository.DeleteAsync(Of T)(Object, String, System.Threading.CancellationToken)
   name.vb: DeleteAsync(Of T)(Object, String, CancellationToken)
+- uid: Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  commentId: M:Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  id: DeleteRangeAsync``1(System.Collections.Generic.ICollection{``0},System.Threading.CancellationToken)
+  parent: Innovt.Cloud.Table.ITableRepository
+  langs:
+  - csharp
+  - vb
+  name: DeleteRangeAsync<T>(ICollection<T>, CancellationToken)
+  nameWithType: ITableRepository.DeleteRangeAsync<T>(ICollection<T>, CancellationToken)
+  fullName: Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync<T>(System.Collections.Generic.ICollection<T>, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud/Table/ITableRepository.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: DeleteRangeAsync
+    path: ../src/Innovt.Cloud/Table/ITableRepository.cs
+    startLine: 90
+  assemblies:
+  - Innovt.Cloud
+  namespace: Innovt.Cloud.Table
+  summary: Asynchronously a list of item that are from the same type.
+  example: []
+  syntax:
+    content: 'Task DeleteRangeAsync<T>(ICollection<T> messages, CancellationToken cancellationToken = default) where T : class'
+    parameters:
+    - id: messages
+      type: System.Collections.Generic.ICollection{{T}}
+      description: ''
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task
+      description: ''
+    content.vb: Function DeleteRangeAsync(Of T As Class)(messages As ICollection(Of T), cancellationToken As CancellationToken = Nothing) As Task
+  overload: Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync*
+  nameWithType.vb: ITableRepository.DeleteRangeAsync(Of T)(ICollection(Of T), CancellationToken)
+  fullName.vb: Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync(Of T)(System.Collections.Generic.ICollection(Of T), System.Threading.CancellationToken)
+  name.vb: DeleteRangeAsync(Of T)(ICollection(Of T), CancellationToken)
 - uid: Innovt.Cloud.Table.ITableRepository.GetByIdAsync``1(System.Object,System.String,System.Threading.CancellationToken)
   commentId: M:Innovt.Cloud.Table.ITableRepository.GetByIdAsync``1(System.Object,System.String,System.Threading.CancellationToken)
   id: GetByIdAsync``1(System.Object,System.String,System.Threading.CancellationToken)
@@ -421,14 +421,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: GetByIdAsync
     path: ../src/Innovt.Cloud/Table/ITableRepository.cs
-    startLine: 100
+    startLine: 102
   assemblies:
   - Innovt.Cloud
   namespace: Innovt.Cloud.Table
   summary: Asynchronously retrieves an item by its identifier.
   example: []
   syntax:
-    content: 'Task<T> GetByIdAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default) where T : class'
+    content: 'Task<T> GetByIdAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default) where T : class, new()'
     parameters:
     - id: id
       type: System.Object
@@ -445,7 +445,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{{T}}
       description: An item of type T if found; otherwise, null.
-    content.vb: Function GetByIdAsync(Of T As Class)(id As Object, rangeKey As String = Nothing, cancellationToken As CancellationToken = Nothing) As Task(Of T)
+    content.vb: Function GetByIdAsync(Of T As {Class, New})(id As Object, rangeKey As String = Nothing, cancellationToken As CancellationToken = Nothing) As Task(Of T)
   overload: Innovt.Cloud.Table.ITableRepository.GetByIdAsync*
   nameWithType.vb: ITableRepository.GetByIdAsync(Of T)(Object, String, CancellationToken)
   fullName.vb: Innovt.Cloud.Table.ITableRepository.GetByIdAsync(Of T)(Object, String, System.Threading.CancellationToken)
@@ -468,14 +468,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: QueryFirstAsync
     path: ../src/Innovt.Cloud/Table/ITableRepository.cs
-    startLine: 110
+    startLine: 112
   assemblies:
   - Innovt.Cloud
   namespace: Innovt.Cloud.Table
   summary: Asynchronously queries and retrieves the first item of type T by its identifier.
   example: []
   syntax:
-    content: 'Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default) where T : class'
+    content: 'Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default) where T : class, new()'
     parameters:
     - id: id
       type: System.Object
@@ -489,7 +489,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{{T}}
       description: An item of type T if found; otherwise, null.
-    content.vb: Function QueryFirstAsync(Of T As Class)(id As Object, cancellationToken As CancellationToken = Nothing) As Task(Of T)
+    content.vb: Function QueryFirstAsync(Of T As {Class, New})(id As Object, cancellationToken As CancellationToken = Nothing) As Task(Of T)
   overload: Innovt.Cloud.Table.ITableRepository.QueryFirstAsync*
   nameWithType.vb: ITableRepository.QueryFirstAsync(Of T)(Object, CancellationToken)
   fullName.vb: Innovt.Cloud.Table.ITableRepository.QueryFirstAsync(Of T)(Object, System.Threading.CancellationToken)
@@ -512,14 +512,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: QueryAsync
     path: ../src/Innovt.Cloud/Table/ITableRepository.cs
-    startLine: 119
+    startLine: 121
   assemblies:
   - Innovt.Cloud
   namespace: Innovt.Cloud.Table
   summary: Asynchronously queries and retrieves a list of items of type T by their identifier.
   example: []
   syntax:
-    content: 'Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default) where T : class'
+    content: 'Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default) where T : class, new()'
     parameters:
     - id: id
       type: System.Object
@@ -533,7 +533,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{System.Collections.Generic.IList{{T}}}
       description: A list of items of type T.
-    content.vb: Function QueryAsync(Of T As Class)(id As Object, cancellationToken As CancellationToken = Nothing) As Task(Of IList(Of T))
+    content.vb: Function QueryAsync(Of T As {Class, New})(id As Object, cancellationToken As CancellationToken = Nothing) As Task(Of IList(Of T))
   overload: Innovt.Cloud.Table.ITableRepository.QueryAsync*
   nameWithType.vb: ITableRepository.QueryAsync(Of T)(Object, CancellationToken)
   fullName.vb: Innovt.Cloud.Table.ITableRepository.QueryAsync(Of T)(Object, System.Threading.CancellationToken)
@@ -556,14 +556,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: QueryAsync
     path: ../src/Innovt.Cloud/Table/ITableRepository.cs
-    startLine: 128
+    startLine: 130
   assemblies:
   - Innovt.Cloud
   namespace: Innovt.Cloud.Table
   summary: Asynchronously queries and retrieves a list of items of type T based on the provided query request.
   example: []
   syntax:
-    content: 'Task<IList<T>> QueryAsync<T>(QueryRequest request, CancellationToken cancellationToken = default) where T : class'
+    content: 'Task<IList<T>> QueryAsync<T>(QueryRequest request, CancellationToken cancellationToken = default) where T : class, new()'
     parameters:
     - id: request
       type: Innovt.Cloud.Table.QueryRequest
@@ -577,7 +577,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{System.Collections.Generic.IList{{T}}}
       description: A list of items of type T based on the query request.
-    content.vb: Function QueryAsync(Of T As Class)(request As QueryRequest, cancellationToken As CancellationToken = Nothing) As Task(Of IList(Of T))
+    content.vb: Function QueryAsync(Of T As {Class, New})(request As QueryRequest, cancellationToken As CancellationToken = Nothing) As Task(Of IList(Of T))
   overload: Innovt.Cloud.Table.ITableRepository.QueryAsync*
   nameWithType.vb: ITableRepository.QueryAsync(Of T)(QueryRequest, CancellationToken)
   fullName.vb: Innovt.Cloud.Table.ITableRepository.QueryAsync(Of T)(Innovt.Cloud.Table.QueryRequest, System.Threading.CancellationToken)
@@ -600,14 +600,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: QueryFirstOrDefaultAsync
     path: ../src/Innovt.Cloud/Table/ITableRepository.cs
-    startLine: 138
+    startLine: 140
   assemblies:
   - Innovt.Cloud
   namespace: Innovt.Cloud.Table
   summary: Asynchronously queries and retrieves the first item of type T based on the provided query request.
   example: []
   syntax:
-    content: 'Task<T> QueryFirstOrDefaultAsync<T>(QueryRequest request, CancellationToken cancellationToken = default) where T : class'
+    content: 'Task<T> QueryFirstOrDefaultAsync<T>(QueryRequest request, CancellationToken cancellationToken = default) where T : class, new()'
     parameters:
     - id: request
       type: Innovt.Cloud.Table.QueryRequest
@@ -621,7 +621,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{{T}}
       description: The first item of type T based on the query request; otherwise, null.
-    content.vb: Function QueryFirstOrDefaultAsync(Of T As Class)(request As QueryRequest, cancellationToken As CancellationToken = Nothing) As Task(Of T)
+    content.vb: Function QueryFirstOrDefaultAsync(Of T As {Class, New})(request As QueryRequest, cancellationToken As CancellationToken = Nothing) As Task(Of T)
   overload: Innovt.Cloud.Table.ITableRepository.QueryFirstOrDefaultAsync*
   nameWithType.vb: ITableRepository.QueryFirstOrDefaultAsync(Of T)(QueryRequest, CancellationToken)
   fullName.vb: Innovt.Cloud.Table.ITableRepository.QueryFirstOrDefaultAsync(Of T)(Innovt.Cloud.Table.QueryRequest, System.Threading.CancellationToken)
@@ -644,14 +644,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: QueryMultipleAsync
     path: ../src/Innovt.Cloud/Table/ITableRepository.cs
-    startLine: 151
+    startLine: 153
   assemblies:
   - Innovt.Cloud
   namespace: Innovt.Cloud.Table
   summary: Asynchronously queries and retrieves multiple sets of results from a single query.
   example: []
   syntax:
-    content: 'Task<(IList<TResult1> first, IList<TResult2> second)> QueryMultipleAsync<T, TResult1, TResult2>(QueryRequest request, string splitBy, CancellationToken cancellationToken = default) where T : class'
+    content: 'Task<(IList<TResult1> first, IList<TResult2> second)> QueryMultipleAsync<T, TResult1, TResult2>(QueryRequest request, string splitBy, CancellationToken cancellationToken = default) where T : class, new() where TResult1 : class, new() where TResult2 : class, new()'
     parameters:
     - id: request
       type: Innovt.Cloud.Table.QueryRequest
@@ -672,7 +672,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{System.ValueTuple{System.Collections.Generic.IList{{TResult1}},System.Collections.Generic.IList{{TResult2}}}}
       description: Tuple containing the first and second result sets.
-    content.vb: Function QueryMultipleAsync(Of T As Class, TResult1, TResult2)(request As QueryRequest, splitBy As String, cancellationToken As CancellationToken = Nothing) As Task(Of (first As IList(Of TResult1), second As IList(Of TResult2)))
+    content.vb: Function QueryMultipleAsync(Of T As {Class, New}, TResult1 As {Class, New}, TResult2 As {Class, New})(request As QueryRequest, splitBy As String, cancellationToken As CancellationToken = Nothing) As Task(Of (first As IList(Of TResult1), second As IList(Of TResult2)))
   overload: Innovt.Cloud.Table.ITableRepository.QueryMultipleAsync*
   nameWithType.vb: ITableRepository.QueryMultipleAsync(Of T, TResult1, TResult2)(QueryRequest, String, CancellationToken)
   fullName.vb: Innovt.Cloud.Table.ITableRepository.QueryMultipleAsync(Of T, TResult1, TResult2)(Innovt.Cloud.Table.QueryRequest, String, System.Threading.CancellationToken)
@@ -695,14 +695,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: QueryMultipleAsync
     path: ../src/Innovt.Cloud/Table/ITableRepository.cs
-    startLine: 165
+    startLine: 169
   assemblies:
   - Innovt.Cloud
   namespace: Innovt.Cloud.Table
   summary: Asynchronously queries and retrieves multiple sets of results from a single query.
   example: []
   syntax:
-    content: 'Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third)> QueryMultipleAsync<T, TResult1, TResult2, TResult3>(QueryRequest request, string[] splitBy, CancellationToken cancellationToken = default) where T : class'
+    content: 'Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third)> QueryMultipleAsync<T, TResult1, TResult2, TResult3>(QueryRequest request, string[] splitBy, CancellationToken cancellationToken = default) where T : class, new() where TResult1 : class, new() where TResult2 : class, new() where TResult3 : class, new()'
     parameters:
     - id: request
       type: Innovt.Cloud.Table.QueryRequest
@@ -725,7 +725,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{System.ValueTuple{System.Collections.Generic.IList{{TResult1}},System.Collections.Generic.IList{{TResult2}},System.Collections.Generic.IList{{TResult3}}}}
       description: Tuple containing the first, second, and third result sets.
-    content.vb: Function QueryMultipleAsync(Of T As Class, TResult1, TResult2, TResult3)(request As QueryRequest, splitBy As String(), cancellationToken As CancellationToken = Nothing) As Task(Of (first As IList(Of TResult1), second As IList(Of TResult2), third As IList(Of TResult3)))
+    content.vb: Function QueryMultipleAsync(Of T As {Class, New}, TResult1 As {Class, New}, TResult2 As {Class, New}, TResult3 As {Class, New})(request As QueryRequest, splitBy As String(), cancellationToken As CancellationToken = Nothing) As Task(Of (first As IList(Of TResult1), second As IList(Of TResult2), third As IList(Of TResult3)))
   overload: Innovt.Cloud.Table.ITableRepository.QueryMultipleAsync*
   nameWithType.vb: ITableRepository.QueryMultipleAsync(Of T, TResult1, TResult2, TResult3)(QueryRequest, String(), CancellationToken)
   fullName.vb: Innovt.Cloud.Table.ITableRepository.QueryMultipleAsync(Of T, TResult1, TResult2, TResult3)(Innovt.Cloud.Table.QueryRequest, String(), System.Threading.CancellationToken)
@@ -748,14 +748,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: QueryMultipleAsync
     path: ../src/Innovt.Cloud/Table/ITableRepository.cs
-    startLine: 181
+    startLine: 188
   assemblies:
   - Innovt.Cloud
   namespace: Innovt.Cloud.Table
   summary: Asynchronously queries and retrieves multiple sets of results from a single query.
   example: []
   syntax:
-    content: 'Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth)> QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4>(QueryRequest request, string[] splitBy, CancellationToken cancellationToken = default) where T : class'
+    content: 'Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth)> QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4>(QueryRequest request, string[] splitBy, CancellationToken cancellationToken = default) where T : class, new() where TResult1 : class, new() where TResult2 : class, new() where TResult3 : class, new() where TResult4 : class, new()'
     parameters:
     - id: request
       type: Innovt.Cloud.Table.QueryRequest
@@ -780,7 +780,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{System.ValueTuple{System.Collections.Generic.IList{{TResult1}},System.Collections.Generic.IList{{TResult2}},System.Collections.Generic.IList{{TResult3}},System.Collections.Generic.IList{{TResult4}}}}
       description: Tuple containing the first, second, third, and fourth result sets.
-    content.vb: Function QueryMultipleAsync(Of T As Class, TResult1, TResult2, TResult3, TResult4)(request As QueryRequest, splitBy As String(), cancellationToken As CancellationToken = Nothing) As Task(Of (first As IList(Of TResult1), second As IList(Of TResult2), third As IList(Of TResult3), fourth As IList(Of TResult4)))
+    content.vb: Function QueryMultipleAsync(Of T As {Class, New}, TResult1 As {Class, New}, TResult2 As {Class, New}, TResult3 As {Class, New}, TResult4 As {Class, New})(request As QueryRequest, splitBy As String(), cancellationToken As CancellationToken = Nothing) As Task(Of (first As IList(Of TResult1), second As IList(Of TResult2), third As IList(Of TResult3), fourth As IList(Of TResult4)))
   overload: Innovt.Cloud.Table.ITableRepository.QueryMultipleAsync*
   nameWithType.vb: ITableRepository.QueryMultipleAsync(Of T, TResult1, TResult2, TResult3, TResult4)(QueryRequest, String(), CancellationToken)
   fullName.vb: Innovt.Cloud.Table.ITableRepository.QueryMultipleAsync(Of T, TResult1, TResult2, TResult3, TResult4)(Innovt.Cloud.Table.QueryRequest, String(), System.Threading.CancellationToken)
@@ -803,14 +803,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: QueryMultipleAsync
     path: ../src/Innovt.Cloud/Table/ITableRepository.cs
-    startLine: 198
+    startLine: 209
   assemblies:
   - Innovt.Cloud
   namespace: Innovt.Cloud.Table
   summary: Asynchronously queries and retrieves multiple sets of results from a single query.
   example: []
   syntax:
-    content: 'Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth, IList<TResult5> fifth)> QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4, TResult5>(QueryRequest request, string[] splitBy, CancellationToken cancellationToken = default) where T : class'
+    content: 'Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth, IList<TResult5> fifth)> QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4, TResult5>(QueryRequest request, string[] splitBy, CancellationToken cancellationToken = default) where T : class, new() where TResult1 : class, new() where TResult2 : class, new() where TResult3 : class, new() where TResult4 : class, new() where TResult5 : class, new()'
     parameters:
     - id: request
       type: Innovt.Cloud.Table.QueryRequest
@@ -837,7 +837,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{System.ValueTuple{System.Collections.Generic.IList{{TResult1}},System.Collections.Generic.IList{{TResult2}},System.Collections.Generic.IList{{TResult3}},System.Collections.Generic.IList{{TResult4}},System.Collections.Generic.IList{{TResult5}}}}
       description: Tuple containing the first, second, third, fourth, and fifth result sets.
-    content.vb: Function QueryMultipleAsync(Of T As Class, TResult1, TResult2, TResult3, TResult4, TResult5)(request As QueryRequest, splitBy As String(), cancellationToken As CancellationToken = Nothing) As Task(Of (first As IList(Of TResult1), second As IList(Of TResult2), third As IList(Of TResult3), fourth As IList(Of TResult4), fifth As IList(Of TResult5)))
+    content.vb: Function QueryMultipleAsync(Of T As {Class, New}, TResult1 As {Class, New}, TResult2 As {Class, New}, TResult3 As {Class, New}, TResult4 As {Class, New}, TResult5 As {Class, New})(request As QueryRequest, splitBy As String(), cancellationToken As CancellationToken = Nothing) As Task(Of (first As IList(Of TResult1), second As IList(Of TResult2), third As IList(Of TResult3), fourth As IList(Of TResult4), fifth As IList(Of TResult5)))
   overload: Innovt.Cloud.Table.ITableRepository.QueryMultipleAsync*
   nameWithType.vb: ITableRepository.QueryMultipleAsync(Of T, TResult1, TResult2, TResult3, TResult4, TResult5)(QueryRequest, String(), CancellationToken)
   fullName.vb: Innovt.Cloud.Table.ITableRepository.QueryMultipleAsync(Of T, TResult1, TResult2, TResult3, TResult4, TResult5)(Innovt.Cloud.Table.QueryRequest, String(), System.Threading.CancellationToken)
@@ -860,14 +860,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: ScanAsync
     path: ../src/Innovt.Cloud/Table/ITableRepository.cs
-    startLine: 210
+    startLine: 227
   assemblies:
   - Innovt.Cloud
   namespace: Innovt.Cloud.Table
   summary: Asynchronously scans and retrieves a list of items of type T based on the provided scan request.
   example: []
   syntax:
-    content: 'Task<IList<T>> ScanAsync<T>(ScanRequest request, CancellationToken cancellationToken = default) where T : class'
+    content: 'Task<IList<T>> ScanAsync<T>(ScanRequest request, CancellationToken cancellationToken = default) where T : class, new()'
     parameters:
     - id: request
       type: Innovt.Cloud.Table.ScanRequest
@@ -881,7 +881,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{System.Collections.Generic.IList{{T}}}
       description: A list of items of type T based on the scan request.
-    content.vb: Function ScanAsync(Of T As Class)(request As ScanRequest, cancellationToken As CancellationToken = Nothing) As Task(Of IList(Of T))
+    content.vb: Function ScanAsync(Of T As {Class, New})(request As ScanRequest, cancellationToken As CancellationToken = Nothing) As Task(Of IList(Of T))
   overload: Innovt.Cloud.Table.ITableRepository.ScanAsync*
   nameWithType.vb: ITableRepository.ScanAsync(Of T)(ScanRequest, CancellationToken)
   fullName.vb: Innovt.Cloud.Table.ITableRepository.ScanAsync(Of T)(Innovt.Cloud.Table.ScanRequest, System.Threading.CancellationToken)
@@ -904,14 +904,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: ScanPaginatedByAsync
     path: ../src/Innovt.Cloud/Table/ITableRepository.cs
-    startLine: 220
+    startLine: 237
   assemblies:
   - Innovt.Cloud
   namespace: Innovt.Cloud.Table
   summary: Asynchronously scans and retrieves a paged collection of items of type T based on the provided scan request.
   example: []
   syntax:
-    content: 'Task<PagedCollection<T>> ScanPaginatedByAsync<T>(ScanRequest request, CancellationToken cancellationToken = default) where T : class'
+    content: 'Task<PagedCollection<T>> ScanPaginatedByAsync<T>(ScanRequest request, CancellationToken cancellationToken = default) where T : class, new()'
     parameters:
     - id: request
       type: Innovt.Cloud.Table.ScanRequest
@@ -925,7 +925,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{Innovt.Core.Collections.PagedCollection{{T}}}
       description: A paged collection of items of type T based on the scan request.
-    content.vb: Function ScanPaginatedByAsync(Of T As Class)(request As ScanRequest, cancellationToken As CancellationToken = Nothing) As Task(Of PagedCollection(Of T))
+    content.vb: Function ScanPaginatedByAsync(Of T As {Class, New})(request As ScanRequest, cancellationToken As CancellationToken = Nothing) As Task(Of PagedCollection(Of T))
   overload: Innovt.Cloud.Table.ITableRepository.ScanPaginatedByAsync*
   nameWithType.vb: ITableRepository.ScanPaginatedByAsync(Of T)(ScanRequest, CancellationToken)
   fullName.vb: Innovt.Cloud.Table.ITableRepository.ScanPaginatedByAsync(Of T)(Innovt.Cloud.Table.ScanRequest, System.Threading.CancellationToken)
@@ -948,14 +948,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: QueryPaginatedByAsync
     path: ../src/Innovt.Cloud/Table/ITableRepository.cs
-    startLine: 230
+    startLine: 248
   assemblies:
   - Innovt.Cloud
   namespace: Innovt.Cloud.Table
   summary: Asynchronously queries and retrieves a paged collection of items of type T based on the provided query request.
   example: []
   syntax:
-    content: 'Task<PagedCollection<T>> QueryPaginatedByAsync<T>(QueryRequest request, CancellationToken cancellationToken = default) where T : class'
+    content: 'Task<PagedCollection<T>> QueryPaginatedByAsync<T>(QueryRequest request, CancellationToken cancellationToken = default) where T : class, new()'
     parameters:
     - id: request
       type: Innovt.Cloud.Table.QueryRequest
@@ -969,7 +969,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{Innovt.Core.Collections.PagedCollection{{T}}}
       description: A paged collection of items of type T based on the query request.
-    content.vb: Function QueryPaginatedByAsync(Of T As Class)(request As QueryRequest, cancellationToken As CancellationToken = Nothing) As Task(Of PagedCollection(Of T))
+    content.vb: Function QueryPaginatedByAsync(Of T As {Class, New})(request As QueryRequest, cancellationToken As CancellationToken = Nothing) As Task(Of PagedCollection(Of T))
   overload: Innovt.Cloud.Table.ITableRepository.QueryPaginatedByAsync*
   nameWithType.vb: ITableRepository.QueryPaginatedByAsync(Of T)(QueryRequest, CancellationToken)
   fullName.vb: Innovt.Cloud.Table.ITableRepository.QueryPaginatedByAsync(Of T)(Innovt.Cloud.Table.QueryRequest, System.Threading.CancellationToken)
@@ -992,14 +992,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: ExecuteStatementAsync
     path: ../src/Innovt.Cloud/Table/ITableRepository.cs
-    startLine: 241
+    startLine: 259
   assemblies:
   - Innovt.Cloud
   namespace: Innovt.Cloud.Table
   summary: Executes an SQL statement asynchronously and retrieves the results.
   example: []
   syntax:
-    content: 'Task<ExecuteSqlStatementResponse<T>> ExecuteStatementAsync<T>(ExecuteSqlStatementRequest sqlStatementRequest, CancellationToken cancellationToken = default) where T : class'
+    content: 'Task<ExecuteSqlStatementResponse<T>> ExecuteStatementAsync<T>(ExecuteSqlStatementRequest sqlStatementRequest, CancellationToken cancellationToken = default) where T : class, new()'
     parameters:
     - id: sqlStatementRequest
       type: Innovt.Cloud.Table.ExecuteSqlStatementRequest
@@ -1013,7 +1013,7 @@ items:
     return:
       type: System.Threading.Tasks.Task{Innovt.Cloud.Table.ExecuteSqlStatementResponse{{T}}}
       description: A response containing the results of the SQL statement execution.
-    content.vb: Function ExecuteStatementAsync(Of T As Class)(sqlStatementRequest As ExecuteSqlStatementRequest, cancellationToken As CancellationToken = Nothing) As Task(Of ExecuteSqlStatementResponse(Of T))
+    content.vb: Function ExecuteStatementAsync(Of T As {Class, New})(sqlStatementRequest As ExecuteSqlStatementRequest, cancellationToken As CancellationToken = Nothing) As Task(Of ExecuteSqlStatementResponse(Of T))
   overload: Innovt.Cloud.Table.ITableRepository.ExecuteStatementAsync*
   nameWithType.vb: ITableRepository.ExecuteStatementAsync(Of T)(ExecuteSqlStatementRequest, CancellationToken)
   fullName.vb: Innovt.Cloud.Table.ITableRepository.ExecuteStatementAsync(Of T)(Innovt.Cloud.Table.ExecuteSqlStatementRequest, System.Threading.CancellationToken)
@@ -1036,14 +1036,14 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: BatchGetItem
     path: ../src/Innovt.Cloud/Table/ITableRepository.cs
-    startLine: 251
+    startLine: 269
   assemblies:
   - Innovt.Cloud
   namespace: Innovt.Cloud.Table
   summary: Asynchronously retrieves multiple items in a batch.
   example: []
   syntax:
-    content: 'Task<List<T>> BatchGetItem<T>(BatchGetItemRequest batchGetItemRequest, CancellationToken cancellationToken = default) where T : class'
+    content: 'Task<List<T>> BatchGetItem<T>(BatchGetItemRequest batchGetItemRequest, CancellationToken cancellationToken = default) where T : class, new()'
     parameters:
     - id: batchGetItemRequest
       type: Innovt.Cloud.Table.BatchGetItemRequest
@@ -1057,21 +1057,21 @@ items:
     return:
       type: System.Threading.Tasks.Task{System.Collections.Generic.List{{T}}}
       description: A list of items of type T.
-    content.vb: Function BatchGetItem(Of T As Class)(batchGetItemRequest As BatchGetItemRequest, cancellationToken As CancellationToken = Nothing) As Task(Of List(Of T))
+    content.vb: Function BatchGetItem(Of T As {Class, New})(batchGetItemRequest As BatchGetItemRequest, cancellationToken As CancellationToken = Nothing) As Task(Of List(Of T))
   overload: Innovt.Cloud.Table.ITableRepository.BatchGetItem*
   nameWithType.vb: ITableRepository.BatchGetItem(Of T)(BatchGetItemRequest, CancellationToken)
   fullName.vb: Innovt.Cloud.Table.ITableRepository.BatchGetItem(Of T)(Innovt.Cloud.Table.BatchGetItemRequest, System.Threading.CancellationToken)
   name.vb: BatchGetItem(Of T)(BatchGetItemRequest, CancellationToken)
-- uid: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0)
-  commentId: M:Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0)
-  id: CreateTransactionWriteItem``1(``0)
+- uid: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0,Innovt.Cloud.Table.TransactionWriteOperationType)
+  commentId: M:Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem``1(``0,Innovt.Cloud.Table.TransactionWriteOperationType)
+  id: CreateTransactionWriteItem``1(``0,Innovt.Cloud.Table.TransactionWriteOperationType)
   parent: Innovt.Cloud.Table.ITableRepository
   langs:
   - csharp
   - vb
-  name: CreateTransactionWriteItem<T>(T)
-  nameWithType: ITableRepository.CreateTransactionWriteItem<T>(T)
-  fullName: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem<T>(T)
+  name: CreateTransactionWriteItem<T>(T, TransactionWriteOperationType)
+  nameWithType: ITableRepository.CreateTransactionWriteItem<T>(T, TransactionWriteOperationType)
+  fullName: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem<T>(T, Innovt.Cloud.Table.TransactionWriteOperationType)
   type: Method
   source:
     remote:
@@ -1080,29 +1080,32 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: CreateTransactionWriteItem
     path: ../src/Innovt.Cloud/Table/ITableRepository.cs
-    startLine: 260
+    startLine: 279
   assemblies:
   - Innovt.Cloud
   namespace: Innovt.Cloud.Table
   summary: Create a transaction write item based on the instance.
   example: []
   syntax:
-    content: 'TransactionWriteItem CreateTransactionWriteItem<T>(T instance) where T : class'
+    content: 'TransactionWriteItem CreateTransactionWriteItem<T>(T instance, TransactionWriteOperationType operationType = TransactionWriteOperationType.Put) where T : class, new()'
     parameters:
     - id: instance
       type: '{T}'
       description: A mapped instance with context.
+    - id: operationType
+      type: Innovt.Cloud.Table.TransactionWriteOperationType
+      description: The operation that you want to perform.
     typeParameters:
     - id: T
       description: A typed mapped entity
     return:
       type: Innovt.Cloud.Table.TransactionWriteItem
       description: A incomplete transaction write item with properties mapped.
-    content.vb: Function CreateTransactionWriteItem(Of T As Class)(instance As T) As TransactionWriteItem
+    content.vb: Function CreateTransactionWriteItem(Of T As {Class, New})(instance As T, operationType As TransactionWriteOperationType = TransactionWriteOperationType.Put) As TransactionWriteItem
   overload: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem*
-  nameWithType.vb: ITableRepository.CreateTransactionWriteItem(Of T)(T)
-  fullName.vb: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem(Of T)(T)
-  name.vb: CreateTransactionWriteItem(Of T)(T)
+  nameWithType.vb: ITableRepository.CreateTransactionWriteItem(Of T)(T, TransactionWriteOperationType)
+  fullName.vb: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem(Of T)(T, Innovt.Cloud.Table.TransactionWriteOperationType)
+  name.vb: CreateTransactionWriteItem(Of T)(T, TransactionWriteOperationType)
 references:
 - uid: Innovt.Cloud.Table
   commentId: N:Innovt.Cloud.Table
@@ -1548,12 +1551,12 @@ references:
     name: Tasks
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
-- uid: Innovt.Cloud.Table.ITableRepository.AddListAsync*
-  commentId: Overload:Innovt.Cloud.Table.ITableRepository.AddListAsync
-  href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_AddListAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
-  name: AddListAsync
-  nameWithType: ITableRepository.AddListAsync
-  fullName: Innovt.Cloud.Table.ITableRepository.AddListAsync
+- uid: Innovt.Cloud.Table.ITableRepository.AddRangeAsync*
+  commentId: Overload:Innovt.Cloud.Table.ITableRepository.AddRangeAsync
+  href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_AddRangeAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
+  name: AddRangeAsync
+  nameWithType: ITableRepository.AddRangeAsync
+  fullName: Innovt.Cloud.Table.ITableRepository.AddRangeAsync
 - uid: System.Collections.Generic.ICollection{{T}}
   commentId: T:System.Collections.Generic.ICollection{``0}
   parent: System.Collections.Generic
@@ -1776,12 +1779,6 @@ references:
   name: DeleteAsync
   nameWithType: ITableRepository.DeleteAsync
   fullName: Innovt.Cloud.Table.ITableRepository.DeleteAsync
-- uid: Innovt.Cloud.Table.ITableRepository.DeleteListAsync*
-  commentId: Overload:Innovt.Cloud.Table.ITableRepository.DeleteListAsync
-  href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_DeleteListAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
-  name: DeleteListAsync
-  nameWithType: ITableRepository.DeleteListAsync
-  fullName: Innovt.Cloud.Table.ITableRepository.DeleteListAsync
 - uid: System.Object
   commentId: T:System.Object
   parent: System
@@ -1804,6 +1801,12 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
+- uid: Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync*
+  commentId: Overload:Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync
+  href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_DeleteRangeAsync__1_System_Collections_Generic_ICollection___0__System_Threading_CancellationToken_
+  name: DeleteRangeAsync
+  nameWithType: ITableRepository.DeleteRangeAsync
+  fullName: Innovt.Cloud.Table.ITableRepository.DeleteRangeAsync
 - uid: Innovt.Cloud.Table.ITableRepository.GetByIdAsync*
   commentId: Overload:Innovt.Cloud.Table.ITableRepository.GetByIdAsync
   href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_GetByIdAsync__1_System_Object_System_String_System_Threading_CancellationToken_
@@ -2613,10 +2616,17 @@ references:
   - name: )
 - uid: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem*
   commentId: Overload:Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem
-  href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_CreateTransactionWriteItem__1___0_
+  href: Innovt.Cloud.Table.ITableRepository.html#Innovt_Cloud_Table_ITableRepository_CreateTransactionWriteItem__1___0_Innovt_Cloud_Table_TransactionWriteOperationType_
   name: CreateTransactionWriteItem
   nameWithType: ITableRepository.CreateTransactionWriteItem
   fullName: Innovt.Cloud.Table.ITableRepository.CreateTransactionWriteItem
+- uid: Innovt.Cloud.Table.TransactionWriteOperationType
+  commentId: T:Innovt.Cloud.Table.TransactionWriteOperationType
+  parent: Innovt.Cloud.Table
+  href: Innovt.Cloud.Table.TransactionWriteOperationType.html
+  name: TransactionWriteOperationType
+  nameWithType: TransactionWriteOperationType
+  fullName: Innovt.Cloud.Table.TransactionWriteOperationType
 - uid: Innovt.Cloud.Table.TransactionWriteItem
   commentId: T:Innovt.Cloud.Table.TransactionWriteItem
   parent: Innovt.Cloud.Table

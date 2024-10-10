@@ -35,7 +35,7 @@ items:
   type: Class
   source:
     id: SqsEventJsonSerializerContext
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.g.cs
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.Int64.g.cs
     startLine: 10
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Sqs
@@ -84,389 +84,6 @@ items:
     arguments:
     - type: System.Type
       value: Innovt.Cloud.AWS.Lambda.BatchFailureResponse
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ItemFailureIdentifier
-  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ItemFailureIdentifier
-  id: ItemFailureIdentifier
-  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: ItemFailureIdentifier
-  nameWithType: SqsEventJsonSerializerContext.ItemFailureIdentifier
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ItemFailureIdentifier
-  type: Property
-  source:
-    id: ItemFailureIdentifier
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.ItemFailureIdentifier.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Sqs
-  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<ItemFailureIdentifier> ItemFailureIdentifier { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}
-    content.vb: Public ReadOnly Property ItemFailureIdentifier As JsonTypeInfo(Of ItemFailureIdentifier)
-  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ItemFailureIdentifier*
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.String
-  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.String
-  id: String
-  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: String
-  nameWithType: SqsEventJsonSerializerContext.String
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.String
-  type: Property
-  source:
-    id: String
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.String.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Sqs
-  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<string> String { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
-    content.vb: Public ReadOnly Property [String] As JsonTypeInfo(Of String)
-  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.String*
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringString
-  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringString
-  id: DictionaryStringString
-  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: DictionaryStringString
-  nameWithType: SqsEventJsonSerializerContext.DictionaryStringString
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringString
-  type: Property
-  source:
-    id: DictionaryStringString
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.DictionaryStringString.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Sqs
-  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<Dictionary<string, string>> DictionaryStringString { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.Dictionary{System.String,System.String}}
-    content.vb: Public ReadOnly Property DictionaryStringString As JsonTypeInfo(Of Dictionary(Of String, String))
-  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringString*
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.BatchFailureResponse
-  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.BatchFailureResponse
-  id: BatchFailureResponse
-  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: BatchFailureResponse
-  nameWithType: SqsEventJsonSerializerContext.BatchFailureResponse
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.BatchFailureResponse
-  type: Property
-  source:
-    id: BatchFailureResponse
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.BatchFailureResponse.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Sqs
-  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<BatchFailureResponse> BatchFailureResponse { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.BatchFailureResponse}
-    content.vb: Public ReadOnly Property BatchFailureResponse As JsonTypeInfo(Of BatchFailureResponse)
-  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.BatchFailureResponse*
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.IListItemFailureIdentifier
-  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.IListItemFailureIdentifier
-  id: IListItemFailureIdentifier
-  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: IListItemFailureIdentifier
-  nameWithType: SqsEventJsonSerializerContext.IListItemFailureIdentifier
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.IListItemFailureIdentifier
-  type: Property
-  source:
-    id: IListItemFailureIdentifier
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.IListItemFailureIdentifier.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Sqs
-  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<IList<ItemFailureIdentifier>> IListItemFailureIdentifier { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.IList{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}}
-    content.vb: Public ReadOnly Property IListItemFailureIdentifier As JsonTypeInfo(Of IList(Of ItemFailureIdentifier))
-  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.IListItemFailureIdentifier*
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Boolean
-  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Boolean
-  id: Boolean
-  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: Boolean
-  nameWithType: SqsEventJsonSerializerContext.Boolean
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Boolean
-  type: Property
-  source:
-    id: Boolean
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.Boolean.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Sqs
-  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<bool> Boolean { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Boolean}
-    content.vb: Public ReadOnly Property [Boolean] As JsonTypeInfo(Of Boolean)
-  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Boolean*
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.GetTypeInfo(System.Type)
-  commentId: M:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.GetTypeInfo(System.Type)
-  id: GetTypeInfo(System.Type)
-  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: GetTypeInfo(Type)
-  nameWithType: SqsEventJsonSerializerContext.GetTypeInfo(Type)
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.GetTypeInfo(System.Type)
-  type: Method
-  source:
-    id: GetTypeInfo
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.GetJsonTypeInfo.g.cs
-    startLine: 13
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Sqs
-  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
-  summary: Gets metadata for the specified type.
-  example: []
-  syntax:
-    content: public override JsonTypeInfo? GetTypeInfo(Type type)
-    parameters:
-    - id: type
-      type: System.Type
-      description: The type to fetch metadata for.
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo
-      description: The metadata for the specified type, or <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> if the context has no metadata for the type.
-    content.vb: Public Overrides Function GetTypeInfo(type As Type) As JsonTypeInfo
-  overridden: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
-  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.GetTypeInfo*
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListSQSMessage
-  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListSQSMessage
-  id: ListSQSMessage
-  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: ListSQSMessage
-  nameWithType: SqsEventJsonSerializerContext.ListSQSMessage
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListSQSMessage
-  type: Property
-  source:
-    id: ListSQSMessage
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.ListSQSMessage.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Sqs
-  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<List<SQSEvent.SQSMessage>> ListSQSMessage { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.List{Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage}}
-    content.vb: Public ReadOnly Property ListSQSMessage As JsonTypeInfo(Of List(Of SQSEvent.SQSMessage))
-  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListSQSMessage*
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int32
-  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int32
-  id: Int32
-  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: Int32
-  nameWithType: SqsEventJsonSerializerContext.Int32
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int32
-  type: Property
-  source:
-    id: Int32
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.Int32.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Sqs
-  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<int> Int32 { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Int32}
-    content.vb: Public ReadOnly Property Int32 As JsonTypeInfo(Of Integer)
-  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int32*
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.SQSEvent
-  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.SQSEvent
-  id: SQSEvent
-  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: SQSEvent
-  nameWithType: SqsEventJsonSerializerContext.SQSEvent
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.SQSEvent
-  type: Property
-  source:
-    id: SQSEvent
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.SQSEvent.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Sqs
-  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<SQSEvent> SQSEvent { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.SQSEvents.SQSEvent}
-    content.vb: Public ReadOnly Property SQSEvent As JsonTypeInfo(Of SQSEvent)
-  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.SQSEvent*
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int64
-  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int64
-  id: Int64
-  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: Int64
-  nameWithType: SqsEventJsonSerializerContext.Int64
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int64
-  type: Property
-  source:
-    id: Int64
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.Int64.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Sqs
-  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<long> Int64 { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Int64}
-    content.vb: Public ReadOnly Property Int64 As JsonTypeInfo(Of Long)
-  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int64*
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.MessageAttribute
-  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.MessageAttribute
-  id: MessageAttribute
-  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: MessageAttribute
-  nameWithType: SqsEventJsonSerializerContext.MessageAttribute
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.MessageAttribute
-  type: Property
-  source:
-    id: MessageAttribute
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.MessageAttribute.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Sqs
-  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<SQSEvent.MessageAttribute> MessageAttribute { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute}
-    content.vb: Public ReadOnly Property MessageAttribute As JsonTypeInfo(Of SQSEvent.MessageAttribute)
-  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.MessageAttribute*
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.SQSMessage
-  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.SQSMessage
-  id: SQSMessage
-  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: SQSMessage
-  nameWithType: SqsEventJsonSerializerContext.SQSMessage
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.SQSMessage
-  type: Property
-  source:
-    id: SQSMessage
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.SQSMessage.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Sqs
-  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<SQSEvent.SQSMessage> SQSMessage { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage}
-    content.vb: Public ReadOnly Property SQSMessage As JsonTypeInfo(Of SQSEvent.SQSMessage)
-  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.SQSMessage*
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringMessageAttribute
-  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringMessageAttribute
-  id: DictionaryStringMessageAttribute
-  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: DictionaryStringMessageAttribute
-  nameWithType: SqsEventJsonSerializerContext.DictionaryStringMessageAttribute
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringMessageAttribute
-  type: Property
-  source:
-    id: DictionaryStringMessageAttribute
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.DictionaryStringMessageAttribute.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Sqs
-  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<Dictionary<string, SQSEvent.MessageAttribute>> DictionaryStringMessageAttribute { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.Dictionary{System.String,Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute}}
-    content.vb: Public ReadOnly Property DictionaryStringMessageAttribute As JsonTypeInfo(Of Dictionary(Of String, SQSEvent.MessageAttribute))
-  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringMessageAttribute*
 - uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.MemoryStream
   commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.MemoryStream
   id: MemoryStream
@@ -494,20 +111,20 @@ items:
       type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.IO.MemoryStream}
     content.vb: Public ReadOnly Property MemoryStream As JsonTypeInfo(Of MemoryStream)
   overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.MemoryStream*
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListString
-  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListString
-  id: ListString
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.MessageAttribute
+  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.MessageAttribute
+  id: MessageAttribute
   parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
   langs:
   - csharp
   - vb
-  name: ListString
-  nameWithType: SqsEventJsonSerializerContext.ListString
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListString
+  name: MessageAttribute
+  nameWithType: SqsEventJsonSerializerContext.MessageAttribute
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.MessageAttribute
   type: Property
   source:
-    id: ListString
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.ListString.g.cs
+    id: MessageAttribute
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.MessageAttribute.g.cs
     startLine: 17
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Sqs
@@ -515,26 +132,26 @@ items:
   summary: Defines the source generated JSON serialization contract metadata for a given type.
   example: []
   syntax:
-    content: public JsonTypeInfo<List<string>> ListString { get; }
+    content: public JsonTypeInfo<SQSEvent.MessageAttribute> MessageAttribute { get; }
     parameters: []
     return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.List{System.String}}
-    content.vb: Public ReadOnly Property ListString As JsonTypeInfo(Of List(Of String))
-  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListString*
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListMemoryStream
-  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListMemoryStream
-  id: ListMemoryStream
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute}
+    content.vb: Public ReadOnly Property MessageAttribute As JsonTypeInfo(Of SQSEvent.MessageAttribute)
+  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.MessageAttribute*
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListSQSMessage
+  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListSQSMessage
+  id: ListSQSMessage
   parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
   langs:
   - csharp
   - vb
-  name: ListMemoryStream
-  nameWithType: SqsEventJsonSerializerContext.ListMemoryStream
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListMemoryStream
+  name: ListSQSMessage
+  nameWithType: SqsEventJsonSerializerContext.ListSQSMessage
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListSQSMessage
   type: Property
   source:
-    id: ListMemoryStream
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.ListMemoryStream.g.cs
+    id: ListSQSMessage
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.ListSQSMessage.g.cs
     startLine: 17
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Sqs
@@ -542,12 +159,39 @@ items:
   summary: Defines the source generated JSON serialization contract metadata for a given type.
   example: []
   syntax:
-    content: public JsonTypeInfo<List<MemoryStream>> ListMemoryStream { get; }
+    content: public JsonTypeInfo<List<SQSEvent.SQSMessage>> ListSQSMessage { get; }
     parameters: []
     return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.List{System.IO.MemoryStream}}
-    content.vb: Public ReadOnly Property ListMemoryStream As JsonTypeInfo(Of List(Of MemoryStream))
-  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListMemoryStream*
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.List{Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage}}
+    content.vb: Public ReadOnly Property ListSQSMessage As JsonTypeInfo(Of List(Of SQSEvent.SQSMessage))
+  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListSQSMessage*
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.SQSEvent
+  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.SQSEvent
+  id: SQSEvent
+  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: SQSEvent
+  nameWithType: SqsEventJsonSerializerContext.SQSEvent
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.SQSEvent
+  type: Property
+  source:
+    id: SQSEvent
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.SQSEvent.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Sqs
+  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<SQSEvent> SQSEvent { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.SQSEvents.SQSEvent}
+    content.vb: Public ReadOnly Property SQSEvent As JsonTypeInfo(Of SQSEvent)
+  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.SQSEvent*
 - uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Default
   commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Default
   id: Default
@@ -660,6 +304,362 @@ items:
   nameWithType.vb: SqsEventJsonSerializerContext.New(JsonSerializerOptions)
   fullName.vb: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.New(System.Text.Json.JsonSerializerOptions)
   name.vb: New(JsonSerializerOptions)
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int32
+  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int32
+  id: Int32
+  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: Int32
+  nameWithType: SqsEventJsonSerializerContext.Int32
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int32
+  type: Property
+  source:
+    id: Int32
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.Int32.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Sqs
+  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<int> Int32 { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Int32}
+    content.vb: Public ReadOnly Property Int32 As JsonTypeInfo(Of Integer)
+  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int32*
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.BatchFailureResponse
+  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.BatchFailureResponse
+  id: BatchFailureResponse
+  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: BatchFailureResponse
+  nameWithType: SqsEventJsonSerializerContext.BatchFailureResponse
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.BatchFailureResponse
+  type: Property
+  source:
+    id: BatchFailureResponse
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.BatchFailureResponse.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Sqs
+  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<BatchFailureResponse> BatchFailureResponse { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.BatchFailureResponse}
+    content.vb: Public ReadOnly Property BatchFailureResponse As JsonTypeInfo(Of BatchFailureResponse)
+  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.BatchFailureResponse*
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListMemoryStream
+  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListMemoryStream
+  id: ListMemoryStream
+  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: ListMemoryStream
+  nameWithType: SqsEventJsonSerializerContext.ListMemoryStream
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListMemoryStream
+  type: Property
+  source:
+    id: ListMemoryStream
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.ListMemoryStream.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Sqs
+  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<List<MemoryStream>> ListMemoryStream { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.List{System.IO.MemoryStream}}
+    content.vb: Public ReadOnly Property ListMemoryStream As JsonTypeInfo(Of List(Of MemoryStream))
+  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListMemoryStream*
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ItemFailureIdentifier
+  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ItemFailureIdentifier
+  id: ItemFailureIdentifier
+  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: ItemFailureIdentifier
+  nameWithType: SqsEventJsonSerializerContext.ItemFailureIdentifier
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ItemFailureIdentifier
+  type: Property
+  source:
+    id: ItemFailureIdentifier
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.ItemFailureIdentifier.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Sqs
+  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<ItemFailureIdentifier> ItemFailureIdentifier { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}
+    content.vb: Public ReadOnly Property ItemFailureIdentifier As JsonTypeInfo(Of ItemFailureIdentifier)
+  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ItemFailureIdentifier*
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.SQSMessage
+  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.SQSMessage
+  id: SQSMessage
+  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: SQSMessage
+  nameWithType: SqsEventJsonSerializerContext.SQSMessage
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.SQSMessage
+  type: Property
+  source:
+    id: SQSMessage
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.SQSMessage.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Sqs
+  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<SQSEvent.SQSMessage> SQSMessage { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage}
+    content.vb: Public ReadOnly Property SQSMessage As JsonTypeInfo(Of SQSEvent.SQSMessage)
+  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.SQSMessage*
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.GetTypeInfo(System.Type)
+  commentId: M:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.GetTypeInfo(System.Type)
+  id: GetTypeInfo(System.Type)
+  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: GetTypeInfo(Type)
+  nameWithType: SqsEventJsonSerializerContext.GetTypeInfo(Type)
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.GetTypeInfo(System.Type)
+  type: Method
+  source:
+    id: GetTypeInfo
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.GetJsonTypeInfo.g.cs
+    startLine: 13
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Sqs
+  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
+  summary: Gets metadata for the specified type.
+  example: []
+  syntax:
+    content: public override JsonTypeInfo? GetTypeInfo(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: The type to fetch metadata for.
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo
+      description: The metadata for the specified type, or <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> if the context has no metadata for the type.
+    content.vb: Public Overrides Function GetTypeInfo(type As Type) As JsonTypeInfo
+  overridden: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
+  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.GetTypeInfo*
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Boolean
+  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Boolean
+  id: Boolean
+  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: Boolean
+  nameWithType: SqsEventJsonSerializerContext.Boolean
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Boolean
+  type: Property
+  source:
+    id: Boolean
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.Boolean.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Sqs
+  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<bool> Boolean { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Boolean}
+    content.vb: Public ReadOnly Property [Boolean] As JsonTypeInfo(Of Boolean)
+  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Boolean*
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.String
+  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.String
+  id: String
+  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: String
+  nameWithType: SqsEventJsonSerializerContext.String
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.String
+  type: Property
+  source:
+    id: String
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.String.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Sqs
+  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<string> String { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
+    content.vb: Public ReadOnly Property [String] As JsonTypeInfo(Of String)
+  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.String*
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.IListItemFailureIdentifier
+  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.IListItemFailureIdentifier
+  id: IListItemFailureIdentifier
+  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: IListItemFailureIdentifier
+  nameWithType: SqsEventJsonSerializerContext.IListItemFailureIdentifier
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.IListItemFailureIdentifier
+  type: Property
+  source:
+    id: IListItemFailureIdentifier
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.IListItemFailureIdentifier.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Sqs
+  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<IList<ItemFailureIdentifier>> IListItemFailureIdentifier { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.IList{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}}
+    content.vb: Public ReadOnly Property IListItemFailureIdentifier As JsonTypeInfo(Of IList(Of ItemFailureIdentifier))
+  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.IListItemFailureIdentifier*
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringMessageAttribute
+  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringMessageAttribute
+  id: DictionaryStringMessageAttribute
+  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: DictionaryStringMessageAttribute
+  nameWithType: SqsEventJsonSerializerContext.DictionaryStringMessageAttribute
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringMessageAttribute
+  type: Property
+  source:
+    id: DictionaryStringMessageAttribute
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.DictionaryStringMessageAttribute.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Sqs
+  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<Dictionary<string, SQSEvent.MessageAttribute>> DictionaryStringMessageAttribute { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.Dictionary{System.String,Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute}}
+    content.vb: Public ReadOnly Property DictionaryStringMessageAttribute As JsonTypeInfo(Of Dictionary(Of String, SQSEvent.MessageAttribute))
+  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringMessageAttribute*
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListString
+  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListString
+  id: ListString
+  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: ListString
+  nameWithType: SqsEventJsonSerializerContext.ListString
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListString
+  type: Property
+  source:
+    id: ListString
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.ListString.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Sqs
+  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<List<string>> ListString { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.List{System.String}}
+    content.vb: Public ReadOnly Property ListString As JsonTypeInfo(Of List(Of String))
+  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListString*
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringString
+  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringString
+  id: DictionaryStringString
+  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: DictionaryStringString
+  nameWithType: SqsEventJsonSerializerContext.DictionaryStringString
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringString
+  type: Property
+  source:
+    id: DictionaryStringString
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.DictionaryStringString.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Sqs
+  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<Dictionary<string, string>> DictionaryStringString { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.Dictionary{System.String,System.String}}
+    content.vb: Public ReadOnly Property DictionaryStringString As JsonTypeInfo(Of Dictionary(Of String, String))
+  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringString*
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int64
+  commentId: P:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int64
+  id: Int64
+  parent: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: Int64
+  nameWithType: SqsEventJsonSerializerContext.Int64
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int64
+  type: Property
+  source:
+    id: Int64
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SqsEventJsonSerializerContext.Int64.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Sqs
+  namespace: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<long> Int64 { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Int64}
+    content.vb: Public ReadOnly Property Int64 As JsonTypeInfo(Of Long)
+  overload: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int64*
 references:
 - uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers
   commentId: N:Innovt.Cloud.AWS.Lambda.Sqs.Serializers
@@ -1361,32 +1361,33 @@ references:
   - uid: Innovt.Core.Utilities.Mapper
     name: Mapper
     href: Innovt.Core.Utilities.Mapper.html
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ItemFailureIdentifier*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ItemFailureIdentifier
-  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_ItemFailureIdentifier
-  name: ItemFailureIdentifier
-  nameWithType: SqsEventJsonSerializerContext.ItemFailureIdentifier
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ItemFailureIdentifier
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.MemoryStream*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.MemoryStream
+  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_MemoryStream
+  name: MemoryStream
+  nameWithType: SqsEventJsonSerializerContext.MemoryStream
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.MemoryStream
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.IO.MemoryStream}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.IO.MemoryStream}
   parent: System.Text.Json.Serialization.Metadata
   definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
   href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<ItemFailureIdentifier>
-  nameWithType: JsonTypeInfo<ItemFailureIdentifier>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier>
-  nameWithType.vb: JsonTypeInfo(Of ItemFailureIdentifier)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier)
-  name.vb: JsonTypeInfo(Of ItemFailureIdentifier)
+  name: JsonTypeInfo<MemoryStream>
+  nameWithType: JsonTypeInfo<MemoryStream>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.IO.MemoryStream>
+  nameWithType.vb: JsonTypeInfo(Of MemoryStream)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of System.IO.MemoryStream)
+  name.vb: JsonTypeInfo(Of MemoryStream)
   spec.csharp:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
     name: JsonTypeInfo
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
   - name: <
-  - uid: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier
-    name: ItemFailureIdentifier
-    href: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier.html
+  - uid: System.IO.MemoryStream
+    name: MemoryStream
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.memorystream
   - name: '>'
   spec.vb:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
@@ -1396,9 +1397,10 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier
-    name: ItemFailureIdentifier
-    href: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier.html
+  - uid: System.IO.MemoryStream
+    name: MemoryStream
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.memorystream
   - name: )
 - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
   commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
@@ -1428,33 +1430,36 @@ references:
   - name: " "
   - name: T
   - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.String*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.String
-  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_String
-  name: String
-  nameWithType: SqsEventJsonSerializerContext.String
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.String
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.MessageAttribute*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.MessageAttribute
+  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_MessageAttribute
+  name: MessageAttribute
+  nameWithType: SqsEventJsonSerializerContext.MessageAttribute
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.MessageAttribute
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute}
   parent: System.Text.Json.Serialization.Metadata
   definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
   href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<string>
-  nameWithType: JsonTypeInfo<string>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<string>
-  nameWithType.vb: JsonTypeInfo(Of String)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of String)
-  name.vb: JsonTypeInfo(Of String)
+  name: JsonTypeInfo<SQSEvent.MessageAttribute>
+  nameWithType: JsonTypeInfo<SQSEvent.MessageAttribute>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute>
+  nameWithType.vb: JsonTypeInfo(Of SQSEvent.MessageAttribute)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute)
+  name.vb: JsonTypeInfo(Of SQSEvent.MessageAttribute)
   spec.csharp:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
     name: JsonTypeInfo
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
   - name: <
-  - uid: System.String
-    name: string
+  - uid: Amazon.Lambda.SQSEvents.SQSEvent
+    name: SQSEvent
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: .
+  - uid: Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute
+    name: MessageAttribute
+    isExternal: true
   - name: '>'
   spec.vb:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
@@ -1464,263 +1469,14 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: System.String
-    name: String
+  - uid: Amazon.Lambda.SQSEvents.SQSEvent
+    name: SQSEvent
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: .
+  - uid: Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute
+    name: MessageAttribute
+    isExternal: true
   - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringString*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringString
-  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_DictionaryStringString
-  name: DictionaryStringString
-  nameWithType: SqsEventJsonSerializerContext.DictionaryStringString
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringString
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.Dictionary{System.String,System.String}}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.Dictionary{System.String,System.String}}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<Dictionary<string, string>>
-  nameWithType: JsonTypeInfo<Dictionary<string, string>>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.Collections.Generic.Dictionary<string, string>>
-  nameWithType.vb: JsonTypeInfo(Of Dictionary(Of String, String))
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of System.Collections.Generic.Dictionary(Of String, String))
-  name.vb: JsonTypeInfo(Of Dictionary(Of String, String))
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: <
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: '>'
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: )
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.BatchFailureResponse*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.BatchFailureResponse
-  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_BatchFailureResponse
-  name: BatchFailureResponse
-  nameWithType: SqsEventJsonSerializerContext.BatchFailureResponse
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.BatchFailureResponse
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.BatchFailureResponse}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.BatchFailureResponse}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<BatchFailureResponse>
-  nameWithType: JsonTypeInfo<BatchFailureResponse>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.BatchFailureResponse>
-  nameWithType.vb: JsonTypeInfo(Of BatchFailureResponse)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.BatchFailureResponse)
-  name.vb: JsonTypeInfo(Of BatchFailureResponse)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: Innovt.Cloud.AWS.Lambda.BatchFailureResponse
-    name: BatchFailureResponse
-    href: Innovt.Cloud.AWS.Lambda.BatchFailureResponse.html
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Innovt.Cloud.AWS.Lambda.BatchFailureResponse
-    name: BatchFailureResponse
-    href: Innovt.Cloud.AWS.Lambda.BatchFailureResponse.html
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.IListItemFailureIdentifier*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.IListItemFailureIdentifier
-  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_IListItemFailureIdentifier
-  name: IListItemFailureIdentifier
-  nameWithType: SqsEventJsonSerializerContext.IListItemFailureIdentifier
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.IListItemFailureIdentifier
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.IList{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.IList{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<IList<ItemFailureIdentifier>>
-  nameWithType: JsonTypeInfo<IList<ItemFailureIdentifier>>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.Collections.Generic.IList<Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier>>
-  nameWithType.vb: JsonTypeInfo(Of IList(Of ItemFailureIdentifier))
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of System.Collections.Generic.IList(Of Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier))
-  name.vb: JsonTypeInfo(Of IList(Of ItemFailureIdentifier))
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: System.Collections.Generic.IList`1
-    name: IList
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
-  - name: <
-  - uid: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier
-    name: ItemFailureIdentifier
-    href: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier.html
-  - name: '>'
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Collections.Generic.IList`1
-    name: IList
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier
-    name: ItemFailureIdentifier
-    href: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier.html
-  - name: )
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Boolean*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Boolean
-  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_Boolean
-  name: Boolean
-  nameWithType: SqsEventJsonSerializerContext.Boolean
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Boolean
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Boolean}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Boolean}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<bool>
-  nameWithType: JsonTypeInfo<bool>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<bool>
-  nameWithType.vb: JsonTypeInfo(Of Boolean)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Boolean)
-  name.vb: JsonTypeInfo(Of Boolean)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: System.Boolean
-    name: bool
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.boolean
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Boolean
-    name: Boolean
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.boolean
-  - name: )
-- uid: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
-  commentId: M:System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
-  parent: System.Text.Json.Serialization.JsonSerializerContext
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonserializercontext.gettypeinfo
-  name: GetTypeInfo(Type)
-  nameWithType: JsonSerializerContext.GetTypeInfo(Type)
-  fullName: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
-    name: GetTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonserializercontext.gettypeinfo
-  - name: (
-  - uid: System.Type
-    name: Type
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.type
-  - name: )
-  spec.vb:
-  - uid: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
-    name: GetTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonserializercontext.gettypeinfo
-  - name: (
-  - uid: System.Type
-    name: Type
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.type
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.GetTypeInfo*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.GetTypeInfo
-  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_GetTypeInfo_System_Type_
-  name: GetTypeInfo
-  nameWithType: SqsEventJsonSerializerContext.GetTypeInfo
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.GetTypeInfo
-- uid: System.Type
-  commentId: T:System.Type
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.type
-  name: Type
-  nameWithType: Type
-  fullName: System.Type
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo
-  parent: System.Text.Json.Serialization.Metadata
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo
-  name: JsonTypeInfo
-  nameWithType: JsonTypeInfo
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo
 - uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListSQSMessage*
   commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListSQSMessage
   href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_ListSQSMessage
@@ -1782,47 +1538,6 @@ references:
     isExternal: true
   - name: )
   - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int32*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int32
-  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_Int32
-  name: Int32
-  nameWithType: SqsEventJsonSerializerContext.Int32
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int32
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Int32}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Int32}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<int>
-  nameWithType: JsonTypeInfo<int>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<int>
-  nameWithType.vb: JsonTypeInfo(Of Integer)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Integer)
-  name.vb: JsonTypeInfo(Of Integer)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: System.Int32
-    name: int
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Int32
-    name: Integer
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: )
 - uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.SQSEvent*
   commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.SQSEvent
   href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_SQSEvent
@@ -1861,365 +1576,6 @@ references:
   - uid: Amazon.Lambda.SQSEvents.SQSEvent
     name: SQSEvent
     isExternal: true
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int64*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int64
-  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_Int64
-  name: Int64
-  nameWithType: SqsEventJsonSerializerContext.Int64
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int64
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Int64}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Int64}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<long>
-  nameWithType: JsonTypeInfo<long>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<long>
-  nameWithType.vb: JsonTypeInfo(Of Long)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Long)
-  name.vb: JsonTypeInfo(Of Long)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: System.Int64
-    name: long
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int64
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Int64
-    name: Long
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int64
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.MessageAttribute*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.MessageAttribute
-  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_MessageAttribute
-  name: MessageAttribute
-  nameWithType: SqsEventJsonSerializerContext.MessageAttribute
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.MessageAttribute
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<SQSEvent.MessageAttribute>
-  nameWithType: JsonTypeInfo<SQSEvent.MessageAttribute>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute>
-  nameWithType.vb: JsonTypeInfo(Of SQSEvent.MessageAttribute)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute)
-  name.vb: JsonTypeInfo(Of SQSEvent.MessageAttribute)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: Amazon.Lambda.SQSEvents.SQSEvent
-    name: SQSEvent
-    isExternal: true
-  - name: .
-  - uid: Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute
-    name: MessageAttribute
-    isExternal: true
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Amazon.Lambda.SQSEvents.SQSEvent
-    name: SQSEvent
-    isExternal: true
-  - name: .
-  - uid: Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute
-    name: MessageAttribute
-    isExternal: true
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.SQSMessage*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.SQSMessage
-  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_SQSMessage
-  name: SQSMessage
-  nameWithType: SqsEventJsonSerializerContext.SQSMessage
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.SQSMessage
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<SQSEvent.SQSMessage>
-  nameWithType: JsonTypeInfo<SQSEvent.SQSMessage>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage>
-  nameWithType.vb: JsonTypeInfo(Of SQSEvent.SQSMessage)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage)
-  name.vb: JsonTypeInfo(Of SQSEvent.SQSMessage)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: Amazon.Lambda.SQSEvents.SQSEvent
-    name: SQSEvent
-    isExternal: true
-  - name: .
-  - uid: Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage
-    name: SQSMessage
-    isExternal: true
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Amazon.Lambda.SQSEvents.SQSEvent
-    name: SQSEvent
-    isExternal: true
-  - name: .
-  - uid: Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage
-    name: SQSMessage
-    isExternal: true
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringMessageAttribute*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringMessageAttribute
-  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_DictionaryStringMessageAttribute
-  name: DictionaryStringMessageAttribute
-  nameWithType: SqsEventJsonSerializerContext.DictionaryStringMessageAttribute
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringMessageAttribute
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.Dictionary{System.String,Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute}}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.Dictionary{System.String,Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute}}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<Dictionary<string, SQSEvent.MessageAttribute>>
-  nameWithType: JsonTypeInfo<Dictionary<string, SQSEvent.MessageAttribute>>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.Collections.Generic.Dictionary<string, Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute>>
-  nameWithType.vb: JsonTypeInfo(Of Dictionary(Of String, SQSEvent.MessageAttribute))
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of System.Collections.Generic.Dictionary(Of String, Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute))
-  name.vb: JsonTypeInfo(Of Dictionary(Of String, SQSEvent.MessageAttribute))
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: <
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: Amazon.Lambda.SQSEvents.SQSEvent
-    name: SQSEvent
-    isExternal: true
-  - name: .
-  - uid: Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute
-    name: MessageAttribute
-    isExternal: true
-  - name: '>'
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: Amazon.Lambda.SQSEvents.SQSEvent
-    name: SQSEvent
-    isExternal: true
-  - name: .
-  - uid: Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute
-    name: MessageAttribute
-    isExternal: true
-  - name: )
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.MemoryStream*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.MemoryStream
-  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_MemoryStream
-  name: MemoryStream
-  nameWithType: SqsEventJsonSerializerContext.MemoryStream
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.MemoryStream
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.IO.MemoryStream}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.IO.MemoryStream}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<MemoryStream>
-  nameWithType: JsonTypeInfo<MemoryStream>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.IO.MemoryStream>
-  nameWithType.vb: JsonTypeInfo(Of MemoryStream)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of System.IO.MemoryStream)
-  name.vb: JsonTypeInfo(Of MemoryStream)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: System.IO.MemoryStream
-    name: MemoryStream
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.io.memorystream
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.IO.MemoryStream
-    name: MemoryStream
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.io.memorystream
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListString*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListString
-  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_ListString
-  name: ListString
-  nameWithType: SqsEventJsonSerializerContext.ListString
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListString
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.List{System.String}}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.List{System.String}}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<List<string>>
-  nameWithType: JsonTypeInfo<List<string>>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.Collections.Generic.List<string>>
-  nameWithType.vb: JsonTypeInfo(Of List(Of String))
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of System.Collections.Generic.List(Of String))
-  name.vb: JsonTypeInfo(Of List(Of String))
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: System.Collections.Generic.List`1
-    name: List
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  - name: <
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: '>'
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Collections.Generic.List`1
-    name: List
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: )
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListMemoryStream*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListMemoryStream
-  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_ListMemoryStream
-  name: ListMemoryStream
-  nameWithType: SqsEventJsonSerializerContext.ListMemoryStream
-  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListMemoryStream
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.List{System.IO.MemoryStream}}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.List{System.IO.MemoryStream}}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<List<MemoryStream>>
-  nameWithType: JsonTypeInfo<List<MemoryStream>>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.Collections.Generic.List<System.IO.MemoryStream>>
-  nameWithType.vb: JsonTypeInfo(Of List(Of MemoryStream))
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of System.Collections.Generic.List(Of System.IO.MemoryStream))
-  name.vb: JsonTypeInfo(Of List(Of MemoryStream))
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: System.Collections.Generic.List`1
-    name: List
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  - name: <
-  - uid: System.IO.MemoryStream
-    name: MemoryStream
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.io.memorystream
-  - name: '>'
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Collections.Generic.List`1
-    name: List
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.IO.MemoryStream
-    name: MemoryStream
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.io.memorystream
-  - name: )
   - name: )
 - uid: System.Text.Json.JsonSerializerOptions
   commentId: T:System.Text.Json.JsonSerializerOptions
@@ -2302,3 +1658,647 @@ references:
   nameWithType.vb: SqsEventJsonSerializerContext.New
   fullName.vb: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.New
   name.vb: New
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int32*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int32
+  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_Int32
+  name: Int32
+  nameWithType: SqsEventJsonSerializerContext.Int32
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int32
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Int32}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Int32}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<int>
+  nameWithType: JsonTypeInfo<int>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<int>
+  nameWithType.vb: JsonTypeInfo(Of Integer)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Integer)
+  name.vb: JsonTypeInfo(Of Integer)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.BatchFailureResponse*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.BatchFailureResponse
+  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_BatchFailureResponse
+  name: BatchFailureResponse
+  nameWithType: SqsEventJsonSerializerContext.BatchFailureResponse
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.BatchFailureResponse
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.BatchFailureResponse}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.BatchFailureResponse}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<BatchFailureResponse>
+  nameWithType: JsonTypeInfo<BatchFailureResponse>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.BatchFailureResponse>
+  nameWithType.vb: JsonTypeInfo(Of BatchFailureResponse)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.BatchFailureResponse)
+  name.vb: JsonTypeInfo(Of BatchFailureResponse)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: Innovt.Cloud.AWS.Lambda.BatchFailureResponse
+    name: BatchFailureResponse
+    href: Innovt.Cloud.AWS.Lambda.BatchFailureResponse.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.AWS.Lambda.BatchFailureResponse
+    name: BatchFailureResponse
+    href: Innovt.Cloud.AWS.Lambda.BatchFailureResponse.html
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListMemoryStream*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListMemoryStream
+  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_ListMemoryStream
+  name: ListMemoryStream
+  nameWithType: SqsEventJsonSerializerContext.ListMemoryStream
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListMemoryStream
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.List{System.IO.MemoryStream}}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.List{System.IO.MemoryStream}}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<List<MemoryStream>>
+  nameWithType: JsonTypeInfo<List<MemoryStream>>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.Collections.Generic.List<System.IO.MemoryStream>>
+  nameWithType.vb: JsonTypeInfo(Of List(Of MemoryStream))
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of System.Collections.Generic.List(Of System.IO.MemoryStream))
+  name.vb: JsonTypeInfo(Of List(Of MemoryStream))
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.IO.MemoryStream
+    name: MemoryStream
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.memorystream
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.IO.MemoryStream
+    name: MemoryStream
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.memorystream
+  - name: )
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ItemFailureIdentifier*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ItemFailureIdentifier
+  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_ItemFailureIdentifier
+  name: ItemFailureIdentifier
+  nameWithType: SqsEventJsonSerializerContext.ItemFailureIdentifier
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ItemFailureIdentifier
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<ItemFailureIdentifier>
+  nameWithType: JsonTypeInfo<ItemFailureIdentifier>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier>
+  nameWithType.vb: JsonTypeInfo(Of ItemFailureIdentifier)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier)
+  name.vb: JsonTypeInfo(Of ItemFailureIdentifier)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier
+    name: ItemFailureIdentifier
+    href: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier
+    name: ItemFailureIdentifier
+    href: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier.html
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.SQSMessage*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.SQSMessage
+  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_SQSMessage
+  name: SQSMessage
+  nameWithType: SqsEventJsonSerializerContext.SQSMessage
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.SQSMessage
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<SQSEvent.SQSMessage>
+  nameWithType: JsonTypeInfo<SQSEvent.SQSMessage>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage>
+  nameWithType.vb: JsonTypeInfo(Of SQSEvent.SQSMessage)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage)
+  name.vb: JsonTypeInfo(Of SQSEvent.SQSMessage)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: Amazon.Lambda.SQSEvents.SQSEvent
+    name: SQSEvent
+    isExternal: true
+  - name: .
+  - uid: Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage
+    name: SQSMessage
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Amazon.Lambda.SQSEvents.SQSEvent
+    name: SQSEvent
+    isExternal: true
+  - name: .
+  - uid: Amazon.Lambda.SQSEvents.SQSEvent.SQSMessage
+    name: SQSMessage
+    isExternal: true
+  - name: )
+- uid: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
+  commentId: M:System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
+  parent: System.Text.Json.Serialization.JsonSerializerContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonserializercontext.gettypeinfo
+  name: GetTypeInfo(Type)
+  nameWithType: JsonSerializerContext.GetTypeInfo(Type)
+  fullName: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
+    name: GetTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonserializercontext.gettypeinfo
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
+    name: GetTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonserializercontext.gettypeinfo
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.GetTypeInfo*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.GetTypeInfo
+  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_GetTypeInfo_System_Type_
+  name: GetTypeInfo
+  nameWithType: SqsEventJsonSerializerContext.GetTypeInfo
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.GetTypeInfo
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo
+  parent: System.Text.Json.Serialization.Metadata
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo
+  name: JsonTypeInfo
+  nameWithType: JsonTypeInfo
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Boolean*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Boolean
+  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_Boolean
+  name: Boolean
+  nameWithType: SqsEventJsonSerializerContext.Boolean
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Boolean
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Boolean}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Boolean}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<bool>
+  nameWithType: JsonTypeInfo<bool>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<bool>
+  nameWithType.vb: JsonTypeInfo(Of Boolean)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Boolean)
+  name.vb: JsonTypeInfo(Of Boolean)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.String*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.String
+  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_String
+  name: String
+  nameWithType: SqsEventJsonSerializerContext.String
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.String
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<string>
+  nameWithType: JsonTypeInfo<string>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<string>
+  nameWithType.vb: JsonTypeInfo(Of String)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of String)
+  name.vb: JsonTypeInfo(Of String)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.IListItemFailureIdentifier*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.IListItemFailureIdentifier
+  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_IListItemFailureIdentifier
+  name: IListItemFailureIdentifier
+  nameWithType: SqsEventJsonSerializerContext.IListItemFailureIdentifier
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.IListItemFailureIdentifier
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.IList{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.IList{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<IList<ItemFailureIdentifier>>
+  nameWithType: JsonTypeInfo<IList<ItemFailureIdentifier>>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.Collections.Generic.IList<Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier>>
+  nameWithType.vb: JsonTypeInfo(Of IList(Of ItemFailureIdentifier))
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of System.Collections.Generic.IList(Of Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier))
+  name.vb: JsonTypeInfo(Of IList(Of ItemFailureIdentifier))
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier
+    name: ItemFailureIdentifier
+    href: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier
+    name: ItemFailureIdentifier
+    href: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier.html
+  - name: )
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringMessageAttribute*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringMessageAttribute
+  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_DictionaryStringMessageAttribute
+  name: DictionaryStringMessageAttribute
+  nameWithType: SqsEventJsonSerializerContext.DictionaryStringMessageAttribute
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringMessageAttribute
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.Dictionary{System.String,Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute}}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.Dictionary{System.String,Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute}}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<Dictionary<string, SQSEvent.MessageAttribute>>
+  nameWithType: JsonTypeInfo<Dictionary<string, SQSEvent.MessageAttribute>>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.Collections.Generic.Dictionary<string, Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute>>
+  nameWithType.vb: JsonTypeInfo(Of Dictionary(Of String, SQSEvent.MessageAttribute))
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of System.Collections.Generic.Dictionary(Of String, Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute))
+  name.vb: JsonTypeInfo(Of Dictionary(Of String, SQSEvent.MessageAttribute))
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Amazon.Lambda.SQSEvents.SQSEvent
+    name: SQSEvent
+    isExternal: true
+  - name: .
+  - uid: Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute
+    name: MessageAttribute
+    isExternal: true
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Amazon.Lambda.SQSEvents.SQSEvent
+    name: SQSEvent
+    isExternal: true
+  - name: .
+  - uid: Amazon.Lambda.SQSEvents.SQSEvent.MessageAttribute
+    name: MessageAttribute
+    isExternal: true
+  - name: )
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListString*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListString
+  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_ListString
+  name: ListString
+  nameWithType: SqsEventJsonSerializerContext.ListString
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.ListString
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.List{System.String}}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.List{System.String}}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<List<string>>
+  nameWithType: JsonTypeInfo<List<string>>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.Collections.Generic.List<string>>
+  nameWithType.vb: JsonTypeInfo(Of List(Of String))
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of System.Collections.Generic.List(Of String))
+  name.vb: JsonTypeInfo(Of List(Of String))
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringString*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringString
+  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_DictionaryStringString
+  name: DictionaryStringString
+  nameWithType: SqsEventJsonSerializerContext.DictionaryStringString
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.DictionaryStringString
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.Dictionary{System.String,System.String}}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.Dictionary{System.String,System.String}}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<Dictionary<string, string>>
+  nameWithType: JsonTypeInfo<Dictionary<string, string>>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.Collections.Generic.Dictionary<string, string>>
+  nameWithType.vb: JsonTypeInfo(Of Dictionary(Of String, String))
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of System.Collections.Generic.Dictionary(Of String, String))
+  name.vb: JsonTypeInfo(Of Dictionary(Of String, String))
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int64*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int64
+  href: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Sqs_Serializers_SqsEventJsonSerializerContext_Int64
+  name: Int64
+  nameWithType: SqsEventJsonSerializerContext.Int64
+  fullName: Innovt.Cloud.AWS.Lambda.Sqs.Serializers.SqsEventJsonSerializerContext.Int64
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Int64}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Int64}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<long>
+  nameWithType: JsonTypeInfo<long>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<long>
+  nameWithType.vb: JsonTypeInfo(Of Long)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Long)
+  name.vb: JsonTypeInfo(Of Long)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )

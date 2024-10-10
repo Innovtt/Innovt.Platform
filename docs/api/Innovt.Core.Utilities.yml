@@ -10,8 +10,10 @@ items:
   - Innovt.Core.Utilities.Cryptography
   - Innovt.Core.Utilities.Extensions
   - Innovt.Core.Utilities.PasswordHelper
+  - Innovt.Core.Utilities.ReflectionTypeUtil
   - Innovt.Core.Utilities.StopWatchHelper
   - Innovt.Core.Utilities.StringExtensions
+  - Innovt.Core.Utilities.TypeUtil
   langs:
   - csharp
   - vb
@@ -60,6 +62,12 @@ references:
   name: PasswordHelper
   nameWithType: PasswordHelper
   fullName: Innovt.Core.Utilities.PasswordHelper
+- uid: Innovt.Core.Utilities.ReflectionTypeUtil
+  commentId: T:Innovt.Core.Utilities.ReflectionTypeUtil
+  href: Innovt.Core.Utilities.ReflectionTypeUtil.html
+  name: ReflectionTypeUtil
+  nameWithType: ReflectionTypeUtil
+  fullName: Innovt.Core.Utilities.ReflectionTypeUtil
 - uid: Innovt.Core.Utilities.StopWatchHelper
   commentId: T:Innovt.Core.Utilities.StopWatchHelper
   href: Innovt.Core.Utilities.StopWatchHelper.html
@@ -72,6 +80,12 @@ references:
   name: StringExtensions
   nameWithType: StringExtensions
   fullName: Innovt.Core.Utilities.StringExtensions
+- uid: Innovt.Core.Utilities.TypeUtil
+  commentId: T:Innovt.Core.Utilities.TypeUtil
+  href: Innovt.Core.Utilities.TypeUtil.html
+  name: TypeUtil
+  nameWithType: TypeUtil
+  fullName: Innovt.Core.Utilities.TypeUtil
 - uid: Innovt.Core.Utilities
   commentId: N:Innovt.Core.Utilities
   href: Innovt.html

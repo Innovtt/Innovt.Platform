@@ -1,139 +1,101 @@
 ﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
 <html>
+
   <head>
     <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Class DataStream&lt;T&gt; | Innovt Platform </title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class DataStream&lt;T&gt; | Innovt Platform ">
-      
-      <meta name="description" content="Represents a data stream with a specific type of body.">
-      <link rel="icon" href="../favicon.ico">
-      <link rel="stylesheet" href="../public/docfx.min.css">
-      <link rel="stylesheet" href="../public/main.css">
-      <meta name="docfx:navrel" content="../toc.html">
-      <meta name="docfx:tocrel" content="toc.html">
-      
-      <meta name="docfx:rel" content="../">
-      
-      
-      <meta name="docfx:docurl" content="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Streams_DataStream_1.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Streams.DataStream%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
-      <meta name="loc:inThisArticle" content="In this article">
-      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
-      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
-      <meta name="loc:tocFilter" content="Filter by title">
-      <meta name="loc:nextArticle" content="Next">
-      <meta name="loc:prevArticle" content="Previous">
-      <meta name="loc:themeLight" content="Light">
-      <meta name="loc:themeDark" content="Dark">
-      <meta name="loc:themeAuto" content="Auto">
-      <meta name="loc:changeTheme" content="Change theme">
-      <meta name="loc:copy" content="Copy">
-      <meta name="loc:downloadPdf" content="Download PDF">
-
-      <script type="module" src="./../public/docfx.min.js"></script>
-
-      <script>
-        const theme = localStorage.getItem('theme') || 'auto'
-        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-      </script>
-
+    
+    <meta name="description" content="Represents a data stream with a specific type of body.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
   </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
 
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
-    <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
-        <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../index.html">
-            <img id="logo" class="svg" src="../logo.svg" alt="Innovt Platform">
-            Innovt Platform
-          </a>
-          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navpanel">
-            <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="Innovt Platform">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
               </form>
             </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
 
-    <main class="container-xxl">
-      <div class="toc-offcanvas">
-        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
           </div>
-          <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
+      <div role="main" class="container body-content hide-when-search">
 
-      <div class="content">
-        <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
-          </button>
-
-          <nav id="breadcrumb"></nav>
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
         </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Innovt.Domain.Core.Streams.DataStream`1">
 
-        <article data-uid="Innovt.Domain.Core.Streams.DataStream`1">
 
 
-
-  <h1 id="Innovt_Domain_Core_Streams_DataStream_1" data-uid="Innovt.Domain.Core.Streams.DataStream`1" class="text-break">
-Class DataStream&lt;T&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Streams/DataStream.cs/#L13"><i class="bi bi-code-slash"></i></a>
-  </h1>
-
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="Innovt.html">Innovt</a>.<a class="xref" href="Innovt.Domain.html">Domain</a>.<a class="xref" href="Innovt.Domain.Core.html">Core</a>.<a class="xref" href="Innovt.Domain.Core.Streams.html">Streams</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>Innovt.Domain.Core.dll</dd></dl>
-  </div>
-
-  <div class="markdown summary"><p>Represents a data stream with a specific type of body.</p>
+  <h1 id="Innovt_Domain_Core_Streams_DataStream_1" data-uid="Innovt.Domain.Core.Streams.DataStream`1" class="text-break">Class DataStream&lt;T&gt;</h1>
+  <div class="markdown level0 summary"><p>Represents a data stream with a specific type of body.</p>
 </div>
-  <div class="markdown conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class DataStream&lt;T&gt; : IDataStream&lt;T&gt;, IDataStream where T : class</code></pre>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">DataStream&lt;T&gt;</span></div>
   </div>
-
-
-
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>The type of the body.</p>
-</dd>
-  </dl>
-
-  <dl class="typelist inheritance">
-    <dt>Inheritance</dt>
-    <dd>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><span class="xref">DataStream&lt;T&gt;</span></div>
-    </dd>
-  </dl>
-
-  <dl class="typelist implements">
-    <dt>Implements</dt>
-    <dd>
-      <div><a class="xref" href="Innovt.Domain.Core.Streams.IDataStream-1.html">IDataStream</a>&lt;T&gt;</div>
-      <div><a class="xref" href="Innovt.Domain.Core.Streams.IDataStream.html">IDataStream</a></div>
-    </dd>
-  </dl>
-
-
-  <dl class="typelist inheritedMembers">
-    <dt>Inherited Members</dt>
-    <dd>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Innovt.Domain.Core.Streams.IDataStream-1.html">IDataStream</a>&lt;T&gt;</div>
+    <div><a class="xref" href="Innovt.Domain.Core.Streams.IDataStream.html">IDataStream</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -155,11 +117,360 @@ Class DataStream&lt;T&gt;  <a class="header-action link-secondary" title="View s
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </dd></dl>
-
-  <dl class="typelist extensionMethods">
-    <dt>Extension Methods</dt>
-    <dd>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Innovt.html">Innovt</a>.<a class="xref" href="Innovt.Domain.html">Domain</a>.<a class="xref" href="Innovt.Domain.Core.html">Core</a>.<a class="xref" href="Innovt.Domain.Core.Streams.html">Streams</a></h6>
+  <h6><strong>Assembly</strong>: Innovt.Domain.Core.dll</h6>
+  <h5 id="Innovt_Domain_Core_Streams_DataStream_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class DataStream&lt;T&gt; : IDataStream&lt;T&gt;, IDataStream where T : class</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of the body.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Streams_DataStream_1__ctor.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Streams.DataStream%601.%23ctor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Streams/DataStream.cs/#L18">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Streams_DataStream_1__ctor_" data-uid="Innovt.Domain.Core.Streams.DataStream`1.#ctor*"></a>
+  <h4 id="Innovt_Domain_Core_Streams_DataStream_1__ctor" data-uid="Innovt.Domain.Core.Streams.DataStream`1.#ctor">DataStream()</h4>
+  <div class="markdown level1 summary"><p>Default constructor for DataStream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DataStream()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Streams_DataStream_1__ctor_System_String_System_String_System_String__0_.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Streams.DataStream%601.%23ctor(System.String%2CSystem.String%2CSystem.String%2C%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Streams/DataStream.cs/#L29">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Streams_DataStream_1__ctor_" data-uid="Innovt.Domain.Core.Streams.DataStream`1.#ctor*"></a>
+  <h4 id="Innovt_Domain_Core_Streams_DataStream_1__ctor_System_String_System_String_System_String__0_" data-uid="Innovt.Domain.Core.Streams.DataStream`1.#ctor(System.String,System.String,System.String,`0)">DataStream(string, string?, string?, T)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the DataStream class with specified properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DataStream(string version, string? partition, string? traceId, T body)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">version</span></td>
+        <td><p>The version of the data stream.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">partition</span></td>
+        <td><p>The partition identifier of the data stream.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">traceId</span></td>
+        <td><p>The trace identifier associated with the data stream.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">body</span></td>
+        <td><p>The body of the data stream.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Streams_DataStream_1_ApproximateArrivalTimestamp.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Streams.DataStream%601.ApproximateArrivalTimestamp%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Streams/DataStream.cs/#L65">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Streams_DataStream_1_ApproximateArrivalTimestamp_" data-uid="Innovt.Domain.Core.Streams.DataStream`1.ApproximateArrivalTimestamp*"></a>
+  <h4 id="Innovt_Domain_Core_Streams_DataStream_1_ApproximateArrivalTimestamp" data-uid="Innovt.Domain.Core.Streams.DataStream`1.ApproximateArrivalTimestamp">ApproximateArrivalTimestamp</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the approximate arrival timestamp of the data stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTime ApproximateArrivalTimestamp { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Streams_DataStream_1_Body.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Streams.DataStream%601.Body%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Streams/DataStream.cs/#L70">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Streams_DataStream_1_Body_" data-uid="Innovt.Domain.Core.Streams.DataStream`1.Body*"></a>
+  <h4 id="Innovt_Domain_Core_Streams_DataStream_1_Body" data-uid="Innovt.Domain.Core.Streams.DataStream`1.Body">Body</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the body of the data stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T Body { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Streams_DataStream_1_EventId.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Streams.DataStream%601.EventId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Streams/DataStream.cs/#L45">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Streams_DataStream_1_EventId_" data-uid="Innovt.Domain.Core.Streams.DataStream`1.EventId*"></a>
+  <h4 id="Innovt_Domain_Core_Streams_DataStream_1_EventId" data-uid="Innovt.Domain.Core.Streams.DataStream`1.EventId">EventId</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the event identifier associated with the data stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? EventId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Streams_DataStream_1_Partition.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Streams.DataStream%601.Partition%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Streams/DataStream.cs/#L50">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Streams_DataStream_1_Partition_" data-uid="Innovt.Domain.Core.Streams.DataStream`1.Partition*"></a>
+  <h4 id="Innovt_Domain_Core_Streams_DataStream_1_Partition" data-uid="Innovt.Domain.Core.Streams.DataStream`1.Partition">Partition</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the partition identifier of the data stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? Partition { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Streams_DataStream_1_PublishedAt.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Streams.DataStream%601.PublishedAt%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Streams/DataStream.cs/#L55">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Streams_DataStream_1_PublishedAt_" data-uid="Innovt.Domain.Core.Streams.DataStream`1.PublishedAt*"></a>
+  <h4 id="Innovt_Domain_Core_Streams_DataStream_1_PublishedAt" data-uid="Innovt.Domain.Core.Streams.DataStream`1.PublishedAt">PublishedAt</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the date and time when the data stream was published.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTimeOffset? PublishedAt { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>?</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Streams_DataStream_1_TraceId.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Streams.DataStream%601.TraceId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Streams/DataStream.cs/#L60">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Streams_DataStream_1_TraceId_" data-uid="Innovt.Domain.Core.Streams.DataStream`1.TraceId*"></a>
+  <h4 id="Innovt_Domain_Core_Streams_DataStream_1_TraceId" data-uid="Innovt.Domain.Core.Streams.DataStream`1.TraceId">TraceId</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the trace identifier associated with the data stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? TraceId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Streams_DataStream_1_Version.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Streams.DataStream%601.Version%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Streams/DataStream.cs/#L40">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Streams_DataStream_1_Version_" data-uid="Innovt.Domain.Core.Streams.DataStream`1.Version*"></a>
+  <h4 id="Innovt_Domain_Core_Streams_DataStream_1_Version" data-uid="Innovt.Domain.Core.Streams.DataStream`1.Version">Version</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the version of the data stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Version { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Streams_DataStream_1_Empty.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Streams.DataStream%601.Empty%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Streams/DataStream.cs/#L76">View Source</a>
+  </span>
+  <a id="Innovt_Domain_Core_Streams_DataStream_1_Empty_" data-uid="Innovt.Domain.Core.Streams.DataStream`1.Empty*"></a>
+  <h4 id="Innovt_Domain_Core_Streams_DataStream_1_Empty" data-uid="Innovt.Domain.Core.Streams.DataStream`1.Empty">Empty()</h4>
+  <div class="markdown level1 summary"><p>Creates an empty data stream with no body.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEmptyDataStream Empty()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Innovt.Domain.Core.Streams.IEmptyDataStream.html">IEmptyDataStream</a></td>
+        <td><p>An instance of an empty data stream.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Innovt.Domain.Core.Streams.IDataStream-1.html">IDataStream&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="Innovt.Domain.Core.Streams.IDataStream.html">IDataStream</a>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_">Extensions.IsNull(object)</a>
   </div>
@@ -169,373 +480,47 @@ Class DataStream&lt;T&gt;  <a class="header-action link-secondary" title="View s
   <div>
       <a class="xref" href="Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_">SimpleMapper.MapTo&lt;T1&gt;(object)</a>
   </div>
-  </dd></dl>
-
-
-
-
-
-  <h2 class="section" id="constructors">Constructors
-</h2>
-
-
-  <a id="Innovt_Domain_Core_Streams_DataStream_1__ctor_" data-uid="Innovt.Domain.Core.Streams.DataStream`1.#ctor*"></a>
-
-  <h3 id="Innovt_Domain_Core_Streams_DataStream_1__ctor" data-uid="Innovt.Domain.Core.Streams.DataStream`1.#ctor">
-  DataStream()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Streams/DataStream.cs/#L18"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Default constructor for DataStream.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DataStream()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Streams_DataStream_1__ctor_" data-uid="Innovt.Domain.Core.Streams.DataStream`1.#ctor*"></a>
-
-  <h3 id="Innovt_Domain_Core_Streams_DataStream_1__ctor_System_String_System_String_System_String__0_" data-uid="Innovt.Domain.Core.Streams.DataStream`1.#ctor(System.String,System.String,System.String,`0)">
-  DataStream(string, string?, string?, T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Streams/DataStream.cs/#L29"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the DataStream class with specified properties.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DataStream(string version, string? partition, string? traceId, T body)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>version</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The version of the data stream.</p>
-</dd>
-    <dt><code>partition</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The partition identifier of the data stream.</p>
-</dd>
-    <dt><code>traceId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The trace identifier associated with the data stream.</p>
-</dd>
-    <dt><code>body</code> <span class="xref">T</span></dt>
-    <dd><p>The body of the data stream.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
-  <a id="Innovt_Domain_Core_Streams_DataStream_1_ApproximateArrivalTimestamp_" data-uid="Innovt.Domain.Core.Streams.DataStream`1.ApproximateArrivalTimestamp*"></a>
-
-  <h3 id="Innovt_Domain_Core_Streams_DataStream_1_ApproximateArrivalTimestamp" data-uid="Innovt.Domain.Core.Streams.DataStream`1.ApproximateArrivalTimestamp">
-  ApproximateArrivalTimestamp
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Streams/DataStream.cs/#L65"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets or sets the approximate arrival timestamp of the data stream.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DateTime ApproximateArrivalTimestamp { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Streams_DataStream_1_Body_" data-uid="Innovt.Domain.Core.Streams.DataStream`1.Body*"></a>
-
-  <h3 id="Innovt_Domain_Core_Streams_DataStream_1_Body" data-uid="Innovt.Domain.Core.Streams.DataStream`1.Body">
-  Body
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Streams/DataStream.cs/#L70"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets or sets the body of the data stream.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public T Body { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">T</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Streams_DataStream_1_EventId_" data-uid="Innovt.Domain.Core.Streams.DataStream`1.EventId*"></a>
-
-  <h3 id="Innovt_Domain_Core_Streams_DataStream_1_EventId" data-uid="Innovt.Domain.Core.Streams.DataStream`1.EventId">
-  EventId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Streams/DataStream.cs/#L45"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets or sets the event identifier associated with the data stream.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string? EventId { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Streams_DataStream_1_Partition_" data-uid="Innovt.Domain.Core.Streams.DataStream`1.Partition*"></a>
-
-  <h3 id="Innovt_Domain_Core_Streams_DataStream_1_Partition" data-uid="Innovt.Domain.Core.Streams.DataStream`1.Partition">
-  Partition
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Streams/DataStream.cs/#L50"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets or sets the partition identifier of the data stream.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string? Partition { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Streams_DataStream_1_PublishedAt_" data-uid="Innovt.Domain.Core.Streams.DataStream`1.PublishedAt*"></a>
-
-  <h3 id="Innovt_Domain_Core_Streams_DataStream_1_PublishedAt" data-uid="Innovt.Domain.Core.Streams.DataStream`1.PublishedAt">
-  PublishedAt
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Streams/DataStream.cs/#L55"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets or sets the date and time when the data stream was published.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DateTimeOffset? PublishedAt { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>?</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Streams_DataStream_1_TraceId_" data-uid="Innovt.Domain.Core.Streams.DataStream`1.TraceId*"></a>
-
-  <h3 id="Innovt_Domain_Core_Streams_DataStream_1_TraceId" data-uid="Innovt.Domain.Core.Streams.DataStream`1.TraceId">
-  TraceId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Streams/DataStream.cs/#L60"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets or sets the trace identifier associated with the data stream.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string? TraceId { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Innovt_Domain_Core_Streams_DataStream_1_Version_" data-uid="Innovt.Domain.Core.Streams.DataStream`1.Version*"></a>
-
-  <h3 id="Innovt_Domain_Core_Streams_DataStream_1_Version" data-uid="Innovt.Domain.Core.Streams.DataStream`1.Version">
-  Version
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Streams/DataStream.cs/#L40"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets or sets the version of the data stream.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Version { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
-  <a id="Innovt_Domain_Core_Streams_DataStream_1_Empty_" data-uid="Innovt.Domain.Core.Streams.DataStream`1.Empty*"></a>
-
-  <h3 id="Innovt_Domain_Core_Streams_DataStream_1_Empty" data-uid="Innovt.Domain.Core.Streams.DataStream`1.Empty">
-  Empty()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Streams/DataStream.cs/#L76"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Creates an empty data stream with no body.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IEmptyDataStream Empty()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Innovt.Domain.Core.Streams.IEmptyDataStream.html">IEmptyDataStream</a></dt>
-    <dd><p>An instance of an empty data stream.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
 
 </article>
+          </div>
 
-        <div class="contribution d-print-none">
-          <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Streams/DataStream.cs/#L13" class="edit-link">Edit this page</a>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_Domain_Core_Streams_DataStream_1.md&amp;value=---%0Auid%3A%20Innovt.Domain.Core.Streams.DataStream%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.Domain.Core/Streams/DataStream.cs/#L13" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
         </div>
-
-
       </div>
 
-      <div class="affix">
-        <nav id="affix"></nav>
-      </div>
-    </main>
-
-    <div class="container-xxl search-results" id="search-results"></div>
-
-    <footer class="border-top text-secondary">
-      <div class="container-xxl">
-        <div class="flex-fill">
-          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
   </body>
 </html>

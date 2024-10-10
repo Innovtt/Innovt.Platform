@@ -122,6 +122,26 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Innovt.AspNetCore.Filters.Recaptcha.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Innovt.AspNetCore.Filters.Recaptcha.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Innovt.AspNetCore.Filters.Swagger.AddCustomHeaderParameter.yml",
       "output": {
         ".html": {
@@ -842,30 +862,30 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.yml",
+      "source_relative_path": "api/Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Innovt.Cloud.AWS.Configuration.AssumeRoleAwsConfiguration.html"
+          "relative_path": "api/Innovt.Cloud.AWS.Configuration.AssumeRoleAWSConfiguration.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.yml",
+      "source_relative_path": "api/Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Innovt.Cloud.AWS.Configuration.DefaultAwsConfiguration.html"
+          "relative_path": "api/Innovt.Cloud.AWS.Configuration.DefaultAWSConfiguration.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.yml",
+      "source_relative_path": "api/Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Innovt.Cloud.AWS.Configuration.IAssumeRoleAwsConfiguration.html"
+          "relative_path": "api/Innovt.Cloud.AWS.Configuration.IAssumeRoleAWSConfiguration.html"
         }
       },
       "version": ""
@@ -886,6 +906,26 @@
       "output": {
         ".html": {
           "relative_path": "api/Innovt.Cloud.AWS.Configuration.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueConverterManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueConverterManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueToObjectConverterManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueToObjectConverterManager.html"
         }
       },
       "version": ""
@@ -2812,6 +2852,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Innovt.Core.Utilities.ReflectionTypeUtil.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Innovt.Core.Utilities.ReflectionTypeUtil.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Innovt.Core.Utilities.StopWatchHelper.yml",
       "output": {
         ".html": {
@@ -2826,6 +2876,16 @@
       "output": {
         ".html": {
           "relative_path": "api/Innovt.Core.Utilities.StringExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Innovt.Core.Utilities.TypeUtil.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Innovt.Core.Utilities.TypeUtil.html"
         }
       },
       "version": ""

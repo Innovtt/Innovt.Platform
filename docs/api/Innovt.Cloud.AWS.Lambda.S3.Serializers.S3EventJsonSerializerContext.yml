@@ -36,7 +36,7 @@ items:
   type: Class
   source:
     id: S3EventJsonSerializerContext
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.S3Event.g.cs
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.RequestParametersEntity.g.cs
     startLine: 10
   assemblies:
   - Innovt.Cloud.AWS.Lambda.S3
@@ -85,20 +85,20 @@ items:
     arguments:
     - type: System.Type
       value: Innovt.Cloud.AWS.Lambda.BatchFailureResponse
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.UserIdentityEntity
-  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.UserIdentityEntity
-  id: UserIdentityEntity
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ResponseElementsEntity
+  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ResponseElementsEntity
+  id: ResponseElementsEntity
   parent: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext
   langs:
   - csharp
   - vb
-  name: UserIdentityEntity
-  nameWithType: S3EventJsonSerializerContext.UserIdentityEntity
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.UserIdentityEntity
+  name: ResponseElementsEntity
+  nameWithType: S3EventJsonSerializerContext.ResponseElementsEntity
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ResponseElementsEntity
   type: Property
   source:
-    id: UserIdentityEntity
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.UserIdentityEntity.g.cs
+    id: ResponseElementsEntity
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.ResponseElementsEntity.g.cs
     startLine: 17
   assemblies:
   - Innovt.Cloud.AWS.Lambda.S3
@@ -106,26 +106,26 @@ items:
   summary: Defines the source generated JSON serialization contract metadata for a given type.
   example: []
   syntax:
-    content: public JsonTypeInfo<S3Event.UserIdentityEntity> UserIdentityEntity { get; }
+    content: public JsonTypeInfo<S3Event.ResponseElementsEntity> ResponseElementsEntity { get; }
     parameters: []
     return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.UserIdentityEntity}
-    content.vb: Public ReadOnly Property UserIdentityEntity As JsonTypeInfo(Of S3Event.UserIdentityEntity)
-  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.UserIdentityEntity*
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3EventNotificationRecord
-  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3EventNotificationRecord
-  id: S3EventNotificationRecord
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.ResponseElementsEntity}
+    content.vb: Public ReadOnly Property ResponseElementsEntity As JsonTypeInfo(Of S3Event.ResponseElementsEntity)
+  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ResponseElementsEntity*
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3ObjectEntity
+  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3ObjectEntity
+  id: S3ObjectEntity
   parent: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext
   langs:
   - csharp
   - vb
-  name: S3EventNotificationRecord
-  nameWithType: S3EventJsonSerializerContext.S3EventNotificationRecord
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3EventNotificationRecord
+  name: S3ObjectEntity
+  nameWithType: S3EventJsonSerializerContext.S3ObjectEntity
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3ObjectEntity
   type: Property
   source:
-    id: S3EventNotificationRecord
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.S3EventNotificationRecord.g.cs
+    id: S3ObjectEntity
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.S3ObjectEntity.g.cs
     startLine: 17
   assemblies:
   - Innovt.Cloud.AWS.Lambda.S3
@@ -133,26 +133,26 @@ items:
   summary: Defines the source generated JSON serialization contract metadata for a given type.
   example: []
   syntax:
-    content: public JsonTypeInfo<S3Event.S3EventNotificationRecord> S3EventNotificationRecord { get; }
+    content: public JsonTypeInfo<S3Event.S3ObjectEntity> S3ObjectEntity { get; }
     parameters: []
     return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3EventNotificationRecord}
-    content.vb: Public ReadOnly Property S3EventNotificationRecord As JsonTypeInfo(Of S3Event.S3EventNotificationRecord)
-  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3EventNotificationRecord*
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Entity
-  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Entity
-  id: S3Entity
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3ObjectEntity}
+    content.vb: Public ReadOnly Property S3ObjectEntity As JsonTypeInfo(Of S3Event.S3ObjectEntity)
+  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3ObjectEntity*
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3GlacierEventDataEntity
+  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3GlacierEventDataEntity
+  id: S3GlacierEventDataEntity
   parent: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext
   langs:
   - csharp
   - vb
-  name: S3Entity
-  nameWithType: S3EventJsonSerializerContext.S3Entity
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Entity
+  name: S3GlacierEventDataEntity
+  nameWithType: S3EventJsonSerializerContext.S3GlacierEventDataEntity
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3GlacierEventDataEntity
   type: Property
   source:
-    id: S3Entity
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.S3Entity.g.cs
+    id: S3GlacierEventDataEntity
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.S3GlacierEventDataEntity.g.cs
     startLine: 17
   assemblies:
   - Innovt.Cloud.AWS.Lambda.S3
@@ -160,66 +160,12 @@ items:
   summary: Defines the source generated JSON serialization contract metadata for a given type.
   example: []
   syntax:
-    content: public JsonTypeInfo<S3Event.S3Entity> S3Entity { get; }
+    content: public JsonTypeInfo<S3Event.S3GlacierEventDataEntity> S3GlacierEventDataEntity { get; }
     parameters: []
     return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3Entity}
-    content.vb: Public ReadOnly Property S3Entity As JsonTypeInfo(Of S3Event.S3Entity)
-  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Entity*
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.String
-  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.String
-  id: String
-  parent: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: String
-  nameWithType: S3EventJsonSerializerContext.String
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.String
-  type: Property
-  source:
-    id: String
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.String.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.S3
-  namespace: Innovt.Cloud.AWS.Lambda.S3.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<string> String { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
-    content.vb: Public ReadOnly Property [String] As JsonTypeInfo(Of String)
-  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.String*
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3BucketEntity
-  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3BucketEntity
-  id: S3BucketEntity
-  parent: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: S3BucketEntity
-  nameWithType: S3EventJsonSerializerContext.S3BucketEntity
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3BucketEntity
-  type: Property
-  source:
-    id: S3BucketEntity
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.S3BucketEntity.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.S3
-  namespace: Innovt.Cloud.AWS.Lambda.S3.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<S3Event.S3BucketEntity> S3BucketEntity { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3BucketEntity}
-    content.vb: Public ReadOnly Property S3BucketEntity As JsonTypeInfo(Of S3Event.S3BucketEntity)
-  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3BucketEntity*
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3GlacierEventDataEntity}
+    content.vb: Public ReadOnly Property S3GlacierEventDataEntity As JsonTypeInfo(Of S3Event.S3GlacierEventDataEntity)
+  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3GlacierEventDataEntity*
 - uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ItemFailureIdentifier
   commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ItemFailureIdentifier
   id: ItemFailureIdentifier
@@ -247,20 +193,20 @@ items:
       type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}
     content.vb: Public ReadOnly Property ItemFailureIdentifier As JsonTypeInfo(Of ItemFailureIdentifier)
   overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ItemFailureIdentifier*
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.RequestParametersEntity
-  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.RequestParametersEntity
-  id: RequestParametersEntity
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3BucketEntity
+  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3BucketEntity
+  id: S3BucketEntity
   parent: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext
   langs:
   - csharp
   - vb
-  name: RequestParametersEntity
-  nameWithType: S3EventJsonSerializerContext.RequestParametersEntity
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.RequestParametersEntity
+  name: S3BucketEntity
+  nameWithType: S3EventJsonSerializerContext.S3BucketEntity
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3BucketEntity
   type: Property
   source:
-    id: RequestParametersEntity
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.RequestParametersEntity.g.cs
+    id: S3BucketEntity
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.S3BucketEntity.g.cs
     startLine: 17
   assemblies:
   - Innovt.Cloud.AWS.Lambda.S3
@@ -268,12 +214,12 @@ items:
   summary: Defines the source generated JSON serialization contract metadata for a given type.
   example: []
   syntax:
-    content: public JsonTypeInfo<S3Event.RequestParametersEntity> RequestParametersEntity { get; }
+    content: public JsonTypeInfo<S3Event.S3BucketEntity> S3BucketEntity { get; }
     parameters: []
     return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.RequestParametersEntity}
-    content.vb: Public ReadOnly Property RequestParametersEntity As JsonTypeInfo(Of S3Event.RequestParametersEntity)
-  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.RequestParametersEntity*
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3BucketEntity}
+    content.vb: Public ReadOnly Property S3BucketEntity As JsonTypeInfo(Of S3Event.S3BucketEntity)
+  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3BucketEntity*
 - uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.GetTypeInfo(System.Type)
   commentId: M:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.GetTypeInfo(System.Type)
   id: GetTypeInfo(System.Type)
@@ -306,20 +252,20 @@ items:
     content.vb: Public Overrides Function GetTypeInfo(type As Type) As JsonTypeInfo
   overridden: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
   overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.GetTypeInfo*
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ListS3EventNotificationRecord
-  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ListS3EventNotificationRecord
-  id: ListS3EventNotificationRecord
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Entity
+  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Entity
+  id: S3Entity
   parent: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext
   langs:
   - csharp
   - vb
-  name: ListS3EventNotificationRecord
-  nameWithType: S3EventJsonSerializerContext.ListS3EventNotificationRecord
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ListS3EventNotificationRecord
+  name: S3Entity
+  nameWithType: S3EventJsonSerializerContext.S3Entity
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Entity
   type: Property
   source:
-    id: ListS3EventNotificationRecord
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.ListS3EventNotificationRecord.g.cs
+    id: S3Entity
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.S3Entity.g.cs
     startLine: 17
   assemblies:
   - Innovt.Cloud.AWS.Lambda.S3
@@ -327,12 +273,120 @@ items:
   summary: Defines the source generated JSON serialization contract metadata for a given type.
   example: []
   syntax:
-    content: public JsonTypeInfo<List<S3Event.S3EventNotificationRecord>> ListS3EventNotificationRecord { get; }
+    content: public JsonTypeInfo<S3Event.S3Entity> S3Entity { get; }
     parameters: []
     return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.List{Amazon.Lambda.S3Events.S3Event.S3EventNotificationRecord}}
-    content.vb: Public ReadOnly Property ListS3EventNotificationRecord As JsonTypeInfo(Of List(Of S3Event.S3EventNotificationRecord))
-  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ListS3EventNotificationRecord*
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3Entity}
+    content.vb: Public ReadOnly Property S3Entity As JsonTypeInfo(Of S3Event.S3Entity)
+  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Entity*
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.UserIdentityEntity
+  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.UserIdentityEntity
+  id: UserIdentityEntity
+  parent: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: UserIdentityEntity
+  nameWithType: S3EventJsonSerializerContext.UserIdentityEntity
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.UserIdentityEntity
+  type: Property
+  source:
+    id: UserIdentityEntity
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.UserIdentityEntity.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.S3
+  namespace: Innovt.Cloud.AWS.Lambda.S3.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<S3Event.UserIdentityEntity> UserIdentityEntity { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.UserIdentityEntity}
+    content.vb: Public ReadOnly Property UserIdentityEntity As JsonTypeInfo(Of S3Event.UserIdentityEntity)
+  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.UserIdentityEntity*
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3RestoreEventDataEntity
+  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3RestoreEventDataEntity
+  id: S3RestoreEventDataEntity
+  parent: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: S3RestoreEventDataEntity
+  nameWithType: S3EventJsonSerializerContext.S3RestoreEventDataEntity
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3RestoreEventDataEntity
+  type: Property
+  source:
+    id: S3RestoreEventDataEntity
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.S3RestoreEventDataEntity.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.S3
+  namespace: Innovt.Cloud.AWS.Lambda.S3.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<S3Event.S3RestoreEventDataEntity> S3RestoreEventDataEntity { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3RestoreEventDataEntity}
+    content.vb: Public ReadOnly Property S3RestoreEventDataEntity As JsonTypeInfo(Of S3Event.S3RestoreEventDataEntity)
+  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3RestoreEventDataEntity*
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Event
+  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Event
+  id: S3Event
+  parent: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: S3Event
+  nameWithType: S3EventJsonSerializerContext.S3Event
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Event
+  type: Property
+  source:
+    id: S3Event
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.S3Event.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.S3
+  namespace: Innovt.Cloud.AWS.Lambda.S3.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<S3Event> S3Event { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event}
+    content.vb: Public ReadOnly Property S3Event As JsonTypeInfo(Of S3Event)
+  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Event*
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.DateTime
+  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.DateTime
+  id: DateTime
+  parent: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: DateTime
+  nameWithType: S3EventJsonSerializerContext.DateTime
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.DateTime
+  type: Property
+  source:
+    id: DateTime
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.DateTime.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.S3
+  namespace: Innovt.Cloud.AWS.Lambda.S3.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<DateTime> DateTime { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.DateTime}
+    content.vb: Public ReadOnly Property DateTime As JsonTypeInfo(Of Date)
+  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.DateTime*
 - uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.IListItemFailureIdentifier
   commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.IListItemFailureIdentifier
   id: IListItemFailureIdentifier
@@ -360,6 +414,33 @@ items:
       type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.IList{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}}
     content.vb: Public ReadOnly Property IListItemFailureIdentifier As JsonTypeInfo(Of IList(Of ItemFailureIdentifier))
   overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.IListItemFailureIdentifier*
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3EventNotificationRecord
+  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3EventNotificationRecord
+  id: S3EventNotificationRecord
+  parent: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: S3EventNotificationRecord
+  nameWithType: S3EventJsonSerializerContext.S3EventNotificationRecord
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3EventNotificationRecord
+  type: Property
+  source:
+    id: S3EventNotificationRecord
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.S3EventNotificationRecord.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.S3
+  namespace: Innovt.Cloud.AWS.Lambda.S3.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<S3Event.S3EventNotificationRecord> S3EventNotificationRecord { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3EventNotificationRecord}
+    content.vb: Public ReadOnly Property S3EventNotificationRecord As JsonTypeInfo(Of S3Event.S3EventNotificationRecord)
+  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3EventNotificationRecord*
 - uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.BatchFailureResponse
   commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.BatchFailureResponse
   id: BatchFailureResponse
@@ -387,20 +468,20 @@ items:
       type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.BatchFailureResponse}
     content.vb: Public ReadOnly Property BatchFailureResponse As JsonTypeInfo(Of BatchFailureResponse)
   overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.BatchFailureResponse*
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3GlacierEventDataEntity
-  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3GlacierEventDataEntity
-  id: S3GlacierEventDataEntity
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ListS3EventNotificationRecord
+  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ListS3EventNotificationRecord
+  id: ListS3EventNotificationRecord
   parent: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext
   langs:
   - csharp
   - vb
-  name: S3GlacierEventDataEntity
-  nameWithType: S3EventJsonSerializerContext.S3GlacierEventDataEntity
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3GlacierEventDataEntity
+  name: ListS3EventNotificationRecord
+  nameWithType: S3EventJsonSerializerContext.ListS3EventNotificationRecord
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ListS3EventNotificationRecord
   type: Property
   source:
-    id: S3GlacierEventDataEntity
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.S3GlacierEventDataEntity.g.cs
+    id: ListS3EventNotificationRecord
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.ListS3EventNotificationRecord.g.cs
     startLine: 17
   assemblies:
   - Innovt.Cloud.AWS.Lambda.S3
@@ -408,12 +489,39 @@ items:
   summary: Defines the source generated JSON serialization contract metadata for a given type.
   example: []
   syntax:
-    content: public JsonTypeInfo<S3Event.S3GlacierEventDataEntity> S3GlacierEventDataEntity { get; }
+    content: public JsonTypeInfo<List<S3Event.S3EventNotificationRecord>> ListS3EventNotificationRecord { get; }
     parameters: []
     return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3GlacierEventDataEntity}
-    content.vb: Public ReadOnly Property S3GlacierEventDataEntity As JsonTypeInfo(Of S3Event.S3GlacierEventDataEntity)
-  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3GlacierEventDataEntity*
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.List{Amazon.Lambda.S3Events.S3Event.S3EventNotificationRecord}}
+    content.vb: Public ReadOnly Property ListS3EventNotificationRecord As JsonTypeInfo(Of List(Of S3Event.S3EventNotificationRecord))
+  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ListS3EventNotificationRecord*
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.String
+  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.String
+  id: String
+  parent: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: String
+  nameWithType: S3EventJsonSerializerContext.String
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.String
+  type: Property
+  source:
+    id: String
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.String.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.S3
+  namespace: Innovt.Cloud.AWS.Lambda.S3.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<string> String { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
+    content.vb: Public ReadOnly Property [String] As JsonTypeInfo(Of String)
+  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.String*
 - uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.Int64
   commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.Int64
   id: Int64
@@ -553,20 +661,20 @@ items:
   nameWithType.vb: S3EventJsonSerializerContext.New(JsonSerializerOptions)
   fullName.vb: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.New(System.Text.Json.JsonSerializerOptions)
   name.vb: New(JsonSerializerOptions)
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ResponseElementsEntity
-  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ResponseElementsEntity
-  id: ResponseElementsEntity
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.RequestParametersEntity
+  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.RequestParametersEntity
+  id: RequestParametersEntity
   parent: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext
   langs:
   - csharp
   - vb
-  name: ResponseElementsEntity
-  nameWithType: S3EventJsonSerializerContext.ResponseElementsEntity
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ResponseElementsEntity
+  name: RequestParametersEntity
+  nameWithType: S3EventJsonSerializerContext.RequestParametersEntity
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.RequestParametersEntity
   type: Property
   source:
-    id: ResponseElementsEntity
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.ResponseElementsEntity.g.cs
+    id: RequestParametersEntity
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.RequestParametersEntity.g.cs
     startLine: 17
   assemblies:
   - Innovt.Cloud.AWS.Lambda.S3
@@ -574,120 +682,12 @@ items:
   summary: Defines the source generated JSON serialization contract metadata for a given type.
   example: []
   syntax:
-    content: public JsonTypeInfo<S3Event.ResponseElementsEntity> ResponseElementsEntity { get; }
+    content: public JsonTypeInfo<S3Event.RequestParametersEntity> RequestParametersEntity { get; }
     parameters: []
     return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.ResponseElementsEntity}
-    content.vb: Public ReadOnly Property ResponseElementsEntity As JsonTypeInfo(Of S3Event.ResponseElementsEntity)
-  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ResponseElementsEntity*
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3RestoreEventDataEntity
-  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3RestoreEventDataEntity
-  id: S3RestoreEventDataEntity
-  parent: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: S3RestoreEventDataEntity
-  nameWithType: S3EventJsonSerializerContext.S3RestoreEventDataEntity
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3RestoreEventDataEntity
-  type: Property
-  source:
-    id: S3RestoreEventDataEntity
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.S3RestoreEventDataEntity.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.S3
-  namespace: Innovt.Cloud.AWS.Lambda.S3.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<S3Event.S3RestoreEventDataEntity> S3RestoreEventDataEntity { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3RestoreEventDataEntity}
-    content.vb: Public ReadOnly Property S3RestoreEventDataEntity As JsonTypeInfo(Of S3Event.S3RestoreEventDataEntity)
-  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3RestoreEventDataEntity*
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.DateTime
-  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.DateTime
-  id: DateTime
-  parent: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: DateTime
-  nameWithType: S3EventJsonSerializerContext.DateTime
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.DateTime
-  type: Property
-  source:
-    id: DateTime
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.DateTime.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.S3
-  namespace: Innovt.Cloud.AWS.Lambda.S3.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<DateTime> DateTime { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.DateTime}
-    content.vb: Public ReadOnly Property DateTime As JsonTypeInfo(Of Date)
-  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.DateTime*
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3ObjectEntity
-  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3ObjectEntity
-  id: S3ObjectEntity
-  parent: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: S3ObjectEntity
-  nameWithType: S3EventJsonSerializerContext.S3ObjectEntity
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3ObjectEntity
-  type: Property
-  source:
-    id: S3ObjectEntity
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.S3ObjectEntity.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.S3
-  namespace: Innovt.Cloud.AWS.Lambda.S3.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<S3Event.S3ObjectEntity> S3ObjectEntity { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3ObjectEntity}
-    content.vb: Public ReadOnly Property S3ObjectEntity As JsonTypeInfo(Of S3Event.S3ObjectEntity)
-  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3ObjectEntity*
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Event
-  commentId: P:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Event
-  id: S3Event
-  parent: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: S3Event
-  nameWithType: S3EventJsonSerializerContext.S3Event
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Event
-  type: Property
-  source:
-    id: S3Event
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/S3EventJsonSerializerContext.S3Event.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.S3
-  namespace: Innovt.Cloud.AWS.Lambda.S3.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<S3Event> S3Event { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event}
-    content.vb: Public ReadOnly Property S3Event As JsonTypeInfo(Of S3Event)
-  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Event*
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.RequestParametersEntity}
+    content.vb: Public ReadOnly Property RequestParametersEntity As JsonTypeInfo(Of S3Event.RequestParametersEntity)
+  overload: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.RequestParametersEntity*
 references:
 - uid: Innovt.Cloud.AWS.Lambda.S3.Serializers
   commentId: N:Innovt.Cloud.AWS.Lambda.S3.Serializers
@@ -1389,23 +1389,23 @@ references:
   - uid: Innovt.Core.Utilities.Mapper
     name: Mapper
     href: Innovt.Core.Utilities.Mapper.html
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.UserIdentityEntity*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.UserIdentityEntity
-  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_UserIdentityEntity
-  name: UserIdentityEntity
-  nameWithType: S3EventJsonSerializerContext.UserIdentityEntity
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.UserIdentityEntity
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.UserIdentityEntity}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.UserIdentityEntity}
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ResponseElementsEntity*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ResponseElementsEntity
+  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_ResponseElementsEntity
+  name: ResponseElementsEntity
+  nameWithType: S3EventJsonSerializerContext.ResponseElementsEntity
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ResponseElementsEntity
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.ResponseElementsEntity}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.ResponseElementsEntity}
   parent: System.Text.Json.Serialization.Metadata
   definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
   href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<S3Event.UserIdentityEntity>
-  nameWithType: JsonTypeInfo<S3Event.UserIdentityEntity>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.S3Events.S3Event.UserIdentityEntity>
-  nameWithType.vb: JsonTypeInfo(Of S3Event.UserIdentityEntity)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.S3Events.S3Event.UserIdentityEntity)
-  name.vb: JsonTypeInfo(Of S3Event.UserIdentityEntity)
+  name: JsonTypeInfo<S3Event.ResponseElementsEntity>
+  nameWithType: JsonTypeInfo<S3Event.ResponseElementsEntity>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.S3Events.S3Event.ResponseElementsEntity>
+  nameWithType.vb: JsonTypeInfo(Of S3Event.ResponseElementsEntity)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.S3Events.S3Event.ResponseElementsEntity)
+  name.vb: JsonTypeInfo(Of S3Event.ResponseElementsEntity)
   spec.csharp:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
     name: JsonTypeInfo
@@ -1416,8 +1416,8 @@ references:
     name: S3Event
     isExternal: true
   - name: .
-  - uid: Amazon.Lambda.S3Events.S3Event.UserIdentityEntity
-    name: UserIdentityEntity
+  - uid: Amazon.Lambda.S3Events.S3Event.ResponseElementsEntity
+    name: ResponseElementsEntity
     isExternal: true
   - name: '>'
   spec.vb:
@@ -1432,8 +1432,8 @@ references:
     name: S3Event
     isExternal: true
   - name: .
-  - uid: Amazon.Lambda.S3Events.S3Event.UserIdentityEntity
-    name: UserIdentityEntity
+  - uid: Amazon.Lambda.S3Events.S3Event.ResponseElementsEntity
+    name: ResponseElementsEntity
     isExternal: true
   - name: )
 - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
@@ -1464,23 +1464,23 @@ references:
   - name: " "
   - name: T
   - name: )
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3EventNotificationRecord*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3EventNotificationRecord
-  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_S3EventNotificationRecord
-  name: S3EventNotificationRecord
-  nameWithType: S3EventJsonSerializerContext.S3EventNotificationRecord
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3EventNotificationRecord
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3EventNotificationRecord}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3EventNotificationRecord}
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3ObjectEntity*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3ObjectEntity
+  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_S3ObjectEntity
+  name: S3ObjectEntity
+  nameWithType: S3EventJsonSerializerContext.S3ObjectEntity
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3ObjectEntity
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3ObjectEntity}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3ObjectEntity}
   parent: System.Text.Json.Serialization.Metadata
   definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
   href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<S3Event.S3EventNotificationRecord>
-  nameWithType: JsonTypeInfo<S3Event.S3EventNotificationRecord>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.S3Events.S3Event.S3EventNotificationRecord>
-  nameWithType.vb: JsonTypeInfo(Of S3Event.S3EventNotificationRecord)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.S3Events.S3Event.S3EventNotificationRecord)
-  name.vb: JsonTypeInfo(Of S3Event.S3EventNotificationRecord)
+  name: JsonTypeInfo<S3Event.S3ObjectEntity>
+  nameWithType: JsonTypeInfo<S3Event.S3ObjectEntity>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.S3Events.S3Event.S3ObjectEntity>
+  nameWithType.vb: JsonTypeInfo(Of S3Event.S3ObjectEntity)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.S3Events.S3Event.S3ObjectEntity)
+  name.vb: JsonTypeInfo(Of S3Event.S3ObjectEntity)
   spec.csharp:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
     name: JsonTypeInfo
@@ -1491,8 +1491,8 @@ references:
     name: S3Event
     isExternal: true
   - name: .
-  - uid: Amazon.Lambda.S3Events.S3Event.S3EventNotificationRecord
-    name: S3EventNotificationRecord
+  - uid: Amazon.Lambda.S3Events.S3Event.S3ObjectEntity
+    name: S3ObjectEntity
     isExternal: true
   - name: '>'
   spec.vb:
@@ -1507,27 +1507,27 @@ references:
     name: S3Event
     isExternal: true
   - name: .
-  - uid: Amazon.Lambda.S3Events.S3Event.S3EventNotificationRecord
-    name: S3EventNotificationRecord
+  - uid: Amazon.Lambda.S3Events.S3Event.S3ObjectEntity
+    name: S3ObjectEntity
     isExternal: true
   - name: )
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Entity*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Entity
-  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_S3Entity
-  name: S3Entity
-  nameWithType: S3EventJsonSerializerContext.S3Entity
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Entity
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3Entity}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3Entity}
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3GlacierEventDataEntity*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3GlacierEventDataEntity
+  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_S3GlacierEventDataEntity
+  name: S3GlacierEventDataEntity
+  nameWithType: S3EventJsonSerializerContext.S3GlacierEventDataEntity
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3GlacierEventDataEntity
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3GlacierEventDataEntity}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3GlacierEventDataEntity}
   parent: System.Text.Json.Serialization.Metadata
   definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
   href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<S3Event.S3Entity>
-  nameWithType: JsonTypeInfo<S3Event.S3Entity>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.S3Events.S3Event.S3Entity>
-  nameWithType.vb: JsonTypeInfo(Of S3Event.S3Entity)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.S3Events.S3Event.S3Entity)
-  name.vb: JsonTypeInfo(Of S3Event.S3Entity)
+  name: JsonTypeInfo<S3Event.S3GlacierEventDataEntity>
+  nameWithType: JsonTypeInfo<S3Event.S3GlacierEventDataEntity>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.S3Events.S3Event.S3GlacierEventDataEntity>
+  nameWithType.vb: JsonTypeInfo(Of S3Event.S3GlacierEventDataEntity)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.S3Events.S3Event.S3GlacierEventDataEntity)
+  name.vb: JsonTypeInfo(Of S3Event.S3GlacierEventDataEntity)
   spec.csharp:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
     name: JsonTypeInfo
@@ -1538,8 +1538,8 @@ references:
     name: S3Event
     isExternal: true
   - name: .
-  - uid: Amazon.Lambda.S3Events.S3Event.S3Entity
-    name: S3Entity
+  - uid: Amazon.Lambda.S3Events.S3Event.S3GlacierEventDataEntity
+    name: S3GlacierEventDataEntity
     isExternal: true
   - name: '>'
   spec.vb:
@@ -1554,37 +1554,36 @@ references:
     name: S3Event
     isExternal: true
   - name: .
-  - uid: Amazon.Lambda.S3Events.S3Event.S3Entity
-    name: S3Entity
+  - uid: Amazon.Lambda.S3Events.S3Event.S3GlacierEventDataEntity
+    name: S3GlacierEventDataEntity
     isExternal: true
   - name: )
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.String*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.String
-  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_String
-  name: String
-  nameWithType: S3EventJsonSerializerContext.String
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.String
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ItemFailureIdentifier*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ItemFailureIdentifier
+  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_ItemFailureIdentifier
+  name: ItemFailureIdentifier
+  nameWithType: S3EventJsonSerializerContext.ItemFailureIdentifier
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ItemFailureIdentifier
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}
   parent: System.Text.Json.Serialization.Metadata
   definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
   href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<string>
-  nameWithType: JsonTypeInfo<string>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<string>
-  nameWithType.vb: JsonTypeInfo(Of String)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of String)
-  name.vb: JsonTypeInfo(Of String)
+  name: JsonTypeInfo<ItemFailureIdentifier>
+  nameWithType: JsonTypeInfo<ItemFailureIdentifier>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier>
+  nameWithType.vb: JsonTypeInfo(Of ItemFailureIdentifier)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier)
+  name.vb: JsonTypeInfo(Of ItemFailureIdentifier)
   spec.csharp:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
     name: JsonTypeInfo
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
   - name: <
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
+  - uid: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier
+    name: ItemFailureIdentifier
+    href: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier.html
   - name: '>'
   spec.vb:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
@@ -1594,10 +1593,9 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
+  - uid: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier
+    name: ItemFailureIdentifier
+    href: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier.html
   - name: )
 - uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3BucketEntity*
   commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3BucketEntity
@@ -1644,92 +1642,6 @@ references:
   - name: .
   - uid: Amazon.Lambda.S3Events.S3Event.S3BucketEntity
     name: S3BucketEntity
-    isExternal: true
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ItemFailureIdentifier*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ItemFailureIdentifier
-  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_ItemFailureIdentifier
-  name: ItemFailureIdentifier
-  nameWithType: S3EventJsonSerializerContext.ItemFailureIdentifier
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ItemFailureIdentifier
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<ItemFailureIdentifier>
-  nameWithType: JsonTypeInfo<ItemFailureIdentifier>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier>
-  nameWithType.vb: JsonTypeInfo(Of ItemFailureIdentifier)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier)
-  name.vb: JsonTypeInfo(Of ItemFailureIdentifier)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier
-    name: ItemFailureIdentifier
-    href: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier.html
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier
-    name: ItemFailureIdentifier
-    href: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier.html
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.RequestParametersEntity*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.RequestParametersEntity
-  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_RequestParametersEntity
-  name: RequestParametersEntity
-  nameWithType: S3EventJsonSerializerContext.RequestParametersEntity
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.RequestParametersEntity
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.RequestParametersEntity}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.RequestParametersEntity}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<S3Event.RequestParametersEntity>
-  nameWithType: JsonTypeInfo<S3Event.RequestParametersEntity>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.S3Events.S3Event.RequestParametersEntity>
-  nameWithType.vb: JsonTypeInfo(Of S3Event.RequestParametersEntity)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.S3Events.S3Event.RequestParametersEntity)
-  name.vb: JsonTypeInfo(Of S3Event.RequestParametersEntity)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: Amazon.Lambda.S3Events.S3Event
-    name: S3Event
-    isExternal: true
-  - name: .
-  - uid: Amazon.Lambda.S3Events.S3Event.RequestParametersEntity
-    name: RequestParametersEntity
-    isExternal: true
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Amazon.Lambda.S3Events.S3Event
-    name: S3Event
-    isExternal: true
-  - name: .
-  - uid: Amazon.Lambda.S3Events.S3Event.RequestParametersEntity
-    name: RequestParametersEntity
     isExternal: true
   - name: )
 - uid: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
@@ -1784,6 +1696,366 @@ references:
   name: JsonTypeInfo
   nameWithType: JsonTypeInfo
   fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Entity*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Entity
+  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_S3Entity
+  name: S3Entity
+  nameWithType: S3EventJsonSerializerContext.S3Entity
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Entity
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3Entity}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3Entity}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<S3Event.S3Entity>
+  nameWithType: JsonTypeInfo<S3Event.S3Entity>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.S3Events.S3Event.S3Entity>
+  nameWithType.vb: JsonTypeInfo(Of S3Event.S3Entity)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.S3Events.S3Event.S3Entity)
+  name.vb: JsonTypeInfo(Of S3Event.S3Entity)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: Amazon.Lambda.S3Events.S3Event
+    name: S3Event
+    isExternal: true
+  - name: .
+  - uid: Amazon.Lambda.S3Events.S3Event.S3Entity
+    name: S3Entity
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Amazon.Lambda.S3Events.S3Event
+    name: S3Event
+    isExternal: true
+  - name: .
+  - uid: Amazon.Lambda.S3Events.S3Event.S3Entity
+    name: S3Entity
+    isExternal: true
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.UserIdentityEntity*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.UserIdentityEntity
+  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_UserIdentityEntity
+  name: UserIdentityEntity
+  nameWithType: S3EventJsonSerializerContext.UserIdentityEntity
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.UserIdentityEntity
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.UserIdentityEntity}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.UserIdentityEntity}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<S3Event.UserIdentityEntity>
+  nameWithType: JsonTypeInfo<S3Event.UserIdentityEntity>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.S3Events.S3Event.UserIdentityEntity>
+  nameWithType.vb: JsonTypeInfo(Of S3Event.UserIdentityEntity)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.S3Events.S3Event.UserIdentityEntity)
+  name.vb: JsonTypeInfo(Of S3Event.UserIdentityEntity)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: Amazon.Lambda.S3Events.S3Event
+    name: S3Event
+    isExternal: true
+  - name: .
+  - uid: Amazon.Lambda.S3Events.S3Event.UserIdentityEntity
+    name: UserIdentityEntity
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Amazon.Lambda.S3Events.S3Event
+    name: S3Event
+    isExternal: true
+  - name: .
+  - uid: Amazon.Lambda.S3Events.S3Event.UserIdentityEntity
+    name: UserIdentityEntity
+    isExternal: true
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3RestoreEventDataEntity*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3RestoreEventDataEntity
+  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_S3RestoreEventDataEntity
+  name: S3RestoreEventDataEntity
+  nameWithType: S3EventJsonSerializerContext.S3RestoreEventDataEntity
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3RestoreEventDataEntity
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3RestoreEventDataEntity}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3RestoreEventDataEntity}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<S3Event.S3RestoreEventDataEntity>
+  nameWithType: JsonTypeInfo<S3Event.S3RestoreEventDataEntity>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.S3Events.S3Event.S3RestoreEventDataEntity>
+  nameWithType.vb: JsonTypeInfo(Of S3Event.S3RestoreEventDataEntity)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.S3Events.S3Event.S3RestoreEventDataEntity)
+  name.vb: JsonTypeInfo(Of S3Event.S3RestoreEventDataEntity)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: Amazon.Lambda.S3Events.S3Event
+    name: S3Event
+    isExternal: true
+  - name: .
+  - uid: Amazon.Lambda.S3Events.S3Event.S3RestoreEventDataEntity
+    name: S3RestoreEventDataEntity
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Amazon.Lambda.S3Events.S3Event
+    name: S3Event
+    isExternal: true
+  - name: .
+  - uid: Amazon.Lambda.S3Events.S3Event.S3RestoreEventDataEntity
+    name: S3RestoreEventDataEntity
+    isExternal: true
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Event*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Event
+  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_S3Event
+  name: S3Event
+  nameWithType: S3EventJsonSerializerContext.S3Event
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Event
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<S3Event>
+  nameWithType: JsonTypeInfo<S3Event>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.S3Events.S3Event>
+  nameWithType.vb: JsonTypeInfo(Of S3Event)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.S3Events.S3Event)
+  name.vb: JsonTypeInfo(Of S3Event)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: Amazon.Lambda.S3Events.S3Event
+    name: S3Event
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Amazon.Lambda.S3Events.S3Event
+    name: S3Event
+    isExternal: true
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.DateTime*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.DateTime
+  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_DateTime
+  name: DateTime
+  nameWithType: S3EventJsonSerializerContext.DateTime
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.DateTime
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.DateTime}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.DateTime}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<DateTime>
+  nameWithType: JsonTypeInfo<DateTime>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.DateTime>
+  nameWithType.vb: JsonTypeInfo(Of Date)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Date)
+  name.vb: JsonTypeInfo(Of Date)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: System.DateTime
+    name: DateTime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.DateTime
+    name: Date
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.IListItemFailureIdentifier*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.IListItemFailureIdentifier
+  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_IListItemFailureIdentifier
+  name: IListItemFailureIdentifier
+  nameWithType: S3EventJsonSerializerContext.IListItemFailureIdentifier
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.IListItemFailureIdentifier
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.IList{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.IList{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<IList<ItemFailureIdentifier>>
+  nameWithType: JsonTypeInfo<IList<ItemFailureIdentifier>>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.Collections.Generic.IList<Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier>>
+  nameWithType.vb: JsonTypeInfo(Of IList(Of ItemFailureIdentifier))
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of System.Collections.Generic.IList(Of Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier))
+  name.vb: JsonTypeInfo(Of IList(Of ItemFailureIdentifier))
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier
+    name: ItemFailureIdentifier
+    href: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier
+    name: ItemFailureIdentifier
+    href: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier.html
+  - name: )
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3EventNotificationRecord*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3EventNotificationRecord
+  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_S3EventNotificationRecord
+  name: S3EventNotificationRecord
+  nameWithType: S3EventJsonSerializerContext.S3EventNotificationRecord
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3EventNotificationRecord
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3EventNotificationRecord}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3EventNotificationRecord}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<S3Event.S3EventNotificationRecord>
+  nameWithType: JsonTypeInfo<S3Event.S3EventNotificationRecord>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.S3Events.S3Event.S3EventNotificationRecord>
+  nameWithType.vb: JsonTypeInfo(Of S3Event.S3EventNotificationRecord)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.S3Events.S3Event.S3EventNotificationRecord)
+  name.vb: JsonTypeInfo(Of S3Event.S3EventNotificationRecord)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: Amazon.Lambda.S3Events.S3Event
+    name: S3Event
+    isExternal: true
+  - name: .
+  - uid: Amazon.Lambda.S3Events.S3Event.S3EventNotificationRecord
+    name: S3EventNotificationRecord
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Amazon.Lambda.S3Events.S3Event
+    name: S3Event
+    isExternal: true
+  - name: .
+  - uid: Amazon.Lambda.S3Events.S3Event.S3EventNotificationRecord
+    name: S3EventNotificationRecord
+    isExternal: true
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.BatchFailureResponse*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.BatchFailureResponse
+  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_BatchFailureResponse
+  name: BatchFailureResponse
+  nameWithType: S3EventJsonSerializerContext.BatchFailureResponse
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.BatchFailureResponse
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.BatchFailureResponse}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.BatchFailureResponse}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<BatchFailureResponse>
+  nameWithType: JsonTypeInfo<BatchFailureResponse>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.BatchFailureResponse>
+  nameWithType.vb: JsonTypeInfo(Of BatchFailureResponse)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.BatchFailureResponse)
+  name.vb: JsonTypeInfo(Of BatchFailureResponse)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: Innovt.Cloud.AWS.Lambda.BatchFailureResponse
+    name: BatchFailureResponse
+    href: Innovt.Cloud.AWS.Lambda.BatchFailureResponse.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.AWS.Lambda.BatchFailureResponse
+    name: BatchFailureResponse
+    href: Innovt.Cloud.AWS.Lambda.BatchFailureResponse.html
+  - name: )
 - uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ListS3EventNotificationRecord*
   commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ListS3EventNotificationRecord
   href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_ListS3EventNotificationRecord
@@ -1845,38 +2117,33 @@ references:
     isExternal: true
   - name: )
   - name: )
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.IListItemFailureIdentifier*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.IListItemFailureIdentifier
-  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_IListItemFailureIdentifier
-  name: IListItemFailureIdentifier
-  nameWithType: S3EventJsonSerializerContext.IListItemFailureIdentifier
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.IListItemFailureIdentifier
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.IList{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.IList{Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier}}
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.String*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.String
+  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_String
+  name: String
+  nameWithType: S3EventJsonSerializerContext.String
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.String
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
   parent: System.Text.Json.Serialization.Metadata
   definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
   href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<IList<ItemFailureIdentifier>>
-  nameWithType: JsonTypeInfo<IList<ItemFailureIdentifier>>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.Collections.Generic.IList<Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier>>
-  nameWithType.vb: JsonTypeInfo(Of IList(Of ItemFailureIdentifier))
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of System.Collections.Generic.IList(Of Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier))
-  name.vb: JsonTypeInfo(Of IList(Of ItemFailureIdentifier))
+  name: JsonTypeInfo<string>
+  nameWithType: JsonTypeInfo<string>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<string>
+  nameWithType.vb: JsonTypeInfo(Of String)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of String)
+  name.vb: JsonTypeInfo(Of String)
   spec.csharp:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
     name: JsonTypeInfo
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
   - name: <
-  - uid: System.Collections.Generic.IList`1
-    name: IList
+  - uid: System.String
+    name: string
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
-  - name: <
-  - uid: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier
-    name: ItemFailureIdentifier
-    href: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier.html
-  - name: '>'
+    href: https://learn.microsoft.com/dotnet/api/system.string
   - name: '>'
   spec.vb:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
@@ -1886,103 +2153,10 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: System.Collections.Generic.IList`1
-    name: IList
+  - uid: System.String
+    name: String
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier
-    name: ItemFailureIdentifier
-    href: Innovt.Cloud.AWS.Lambda.ItemFailureIdentifier.html
-  - name: )
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.BatchFailureResponse*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.BatchFailureResponse
-  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_BatchFailureResponse
-  name: BatchFailureResponse
-  nameWithType: S3EventJsonSerializerContext.BatchFailureResponse
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.BatchFailureResponse
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.BatchFailureResponse}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.BatchFailureResponse}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<BatchFailureResponse>
-  nameWithType: JsonTypeInfo<BatchFailureResponse>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.BatchFailureResponse>
-  nameWithType.vb: JsonTypeInfo(Of BatchFailureResponse)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.BatchFailureResponse)
-  name.vb: JsonTypeInfo(Of BatchFailureResponse)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: Innovt.Cloud.AWS.Lambda.BatchFailureResponse
-    name: BatchFailureResponse
-    href: Innovt.Cloud.AWS.Lambda.BatchFailureResponse.html
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Innovt.Cloud.AWS.Lambda.BatchFailureResponse
-    name: BatchFailureResponse
-    href: Innovt.Cloud.AWS.Lambda.BatchFailureResponse.html
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3GlacierEventDataEntity*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3GlacierEventDataEntity
-  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_S3GlacierEventDataEntity
-  name: S3GlacierEventDataEntity
-  nameWithType: S3EventJsonSerializerContext.S3GlacierEventDataEntity
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3GlacierEventDataEntity
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3GlacierEventDataEntity}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3GlacierEventDataEntity}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<S3Event.S3GlacierEventDataEntity>
-  nameWithType: JsonTypeInfo<S3Event.S3GlacierEventDataEntity>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.S3Events.S3Event.S3GlacierEventDataEntity>
-  nameWithType.vb: JsonTypeInfo(Of S3Event.S3GlacierEventDataEntity)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.S3Events.S3Event.S3GlacierEventDataEntity)
-  name.vb: JsonTypeInfo(Of S3Event.S3GlacierEventDataEntity)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: Amazon.Lambda.S3Events.S3Event
-    name: S3Event
-    isExternal: true
-  - name: .
-  - uid: Amazon.Lambda.S3Events.S3Event.S3GlacierEventDataEntity
-    name: S3GlacierEventDataEntity
-    isExternal: true
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Amazon.Lambda.S3Events.S3Event
-    name: S3Event
-    isExternal: true
-  - name: .
-  - uid: Amazon.Lambda.S3Events.S3Event.S3GlacierEventDataEntity
-    name: S3GlacierEventDataEntity
-    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )
 - uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.Int64*
   commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.Int64
@@ -2106,23 +2280,23 @@ references:
   nameWithType.vb: S3EventJsonSerializerContext.New
   fullName.vb: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.New
   name.vb: New
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ResponseElementsEntity*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ResponseElementsEntity
-  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_ResponseElementsEntity
-  name: ResponseElementsEntity
-  nameWithType: S3EventJsonSerializerContext.ResponseElementsEntity
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.ResponseElementsEntity
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.ResponseElementsEntity}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.ResponseElementsEntity}
+- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.RequestParametersEntity*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.RequestParametersEntity
+  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_RequestParametersEntity
+  name: RequestParametersEntity
+  nameWithType: S3EventJsonSerializerContext.RequestParametersEntity
+  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.RequestParametersEntity
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.RequestParametersEntity}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.RequestParametersEntity}
   parent: System.Text.Json.Serialization.Metadata
   definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
   href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<S3Event.ResponseElementsEntity>
-  nameWithType: JsonTypeInfo<S3Event.ResponseElementsEntity>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.S3Events.S3Event.ResponseElementsEntity>
-  nameWithType.vb: JsonTypeInfo(Of S3Event.ResponseElementsEntity)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.S3Events.S3Event.ResponseElementsEntity)
-  name.vb: JsonTypeInfo(Of S3Event.ResponseElementsEntity)
+  name: JsonTypeInfo<S3Event.RequestParametersEntity>
+  nameWithType: JsonTypeInfo<S3Event.RequestParametersEntity>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.S3Events.S3Event.RequestParametersEntity>
+  nameWithType.vb: JsonTypeInfo(Of S3Event.RequestParametersEntity)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.S3Events.S3Event.RequestParametersEntity)
+  name.vb: JsonTypeInfo(Of S3Event.RequestParametersEntity)
   spec.csharp:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
     name: JsonTypeInfo
@@ -2133,8 +2307,8 @@ references:
     name: S3Event
     isExternal: true
   - name: .
-  - uid: Amazon.Lambda.S3Events.S3Event.ResponseElementsEntity
-    name: ResponseElementsEntity
+  - uid: Amazon.Lambda.S3Events.S3Event.RequestParametersEntity
+    name: RequestParametersEntity
     isExternal: true
   - name: '>'
   spec.vb:
@@ -2149,181 +2323,7 @@ references:
     name: S3Event
     isExternal: true
   - name: .
-  - uid: Amazon.Lambda.S3Events.S3Event.ResponseElementsEntity
-    name: ResponseElementsEntity
-    isExternal: true
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3RestoreEventDataEntity*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3RestoreEventDataEntity
-  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_S3RestoreEventDataEntity
-  name: S3RestoreEventDataEntity
-  nameWithType: S3EventJsonSerializerContext.S3RestoreEventDataEntity
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3RestoreEventDataEntity
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3RestoreEventDataEntity}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3RestoreEventDataEntity}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<S3Event.S3RestoreEventDataEntity>
-  nameWithType: JsonTypeInfo<S3Event.S3RestoreEventDataEntity>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.S3Events.S3Event.S3RestoreEventDataEntity>
-  nameWithType.vb: JsonTypeInfo(Of S3Event.S3RestoreEventDataEntity)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.S3Events.S3Event.S3RestoreEventDataEntity)
-  name.vb: JsonTypeInfo(Of S3Event.S3RestoreEventDataEntity)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: Amazon.Lambda.S3Events.S3Event
-    name: S3Event
-    isExternal: true
-  - name: .
-  - uid: Amazon.Lambda.S3Events.S3Event.S3RestoreEventDataEntity
-    name: S3RestoreEventDataEntity
-    isExternal: true
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Amazon.Lambda.S3Events.S3Event
-    name: S3Event
-    isExternal: true
-  - name: .
-  - uid: Amazon.Lambda.S3Events.S3Event.S3RestoreEventDataEntity
-    name: S3RestoreEventDataEntity
-    isExternal: true
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.DateTime*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.DateTime
-  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_DateTime
-  name: DateTime
-  nameWithType: S3EventJsonSerializerContext.DateTime
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.DateTime
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.DateTime}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.DateTime}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<DateTime>
-  nameWithType: JsonTypeInfo<DateTime>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.DateTime>
-  nameWithType.vb: JsonTypeInfo(Of Date)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Date)
-  name.vb: JsonTypeInfo(Of Date)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: System.DateTime
-    name: DateTime
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.datetime
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.DateTime
-    name: Date
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.datetime
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3ObjectEntity*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3ObjectEntity
-  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_S3ObjectEntity
-  name: S3ObjectEntity
-  nameWithType: S3EventJsonSerializerContext.S3ObjectEntity
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3ObjectEntity
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3ObjectEntity}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event.S3ObjectEntity}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<S3Event.S3ObjectEntity>
-  nameWithType: JsonTypeInfo<S3Event.S3ObjectEntity>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.S3Events.S3Event.S3ObjectEntity>
-  nameWithType.vb: JsonTypeInfo(Of S3Event.S3ObjectEntity)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.S3Events.S3Event.S3ObjectEntity)
-  name.vb: JsonTypeInfo(Of S3Event.S3ObjectEntity)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: Amazon.Lambda.S3Events.S3Event
-    name: S3Event
-    isExternal: true
-  - name: .
-  - uid: Amazon.Lambda.S3Events.S3Event.S3ObjectEntity
-    name: S3ObjectEntity
-    isExternal: true
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Amazon.Lambda.S3Events.S3Event
-    name: S3Event
-    isExternal: true
-  - name: .
-  - uid: Amazon.Lambda.S3Events.S3Event.S3ObjectEntity
-    name: S3ObjectEntity
-    isExternal: true
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Event*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Event
-  href: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_S3_Serializers_S3EventJsonSerializerContext_S3Event
-  name: S3Event
-  nameWithType: S3EventJsonSerializerContext.S3Event
-  fullName: Innovt.Cloud.AWS.Lambda.S3.Serializers.S3EventJsonSerializerContext.S3Event
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Amazon.Lambda.S3Events.S3Event}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<S3Event>
-  nameWithType: JsonTypeInfo<S3Event>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Amazon.Lambda.S3Events.S3Event>
-  nameWithType.vb: JsonTypeInfo(Of S3Event)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Amazon.Lambda.S3Events.S3Event)
-  name.vb: JsonTypeInfo(Of S3Event)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: Amazon.Lambda.S3Events.S3Event
-    name: S3Event
-    isExternal: true
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Amazon.Lambda.S3Events.S3Event
-    name: S3Event
+  - uid: Amazon.Lambda.S3Events.S3Event.RequestParametersEntity
+    name: RequestParametersEntity
     isExternal: true
   - name: )

@@ -22,7 +22,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: PreSignupResponse
     path: ../src/Innovt.Cloud.AWS.Lambda.Cognito.Events/PreSignup/PreSignupResponse.cs
-    startLine: 9
+    startLine: 12
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Cognito.Events
   namespace: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup
@@ -64,19 +64,42 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: AutoConfirmUser
     path: ../src/Innovt.Cloud.AWS.Lambda.Cognito.Events/PreSignup/PreSignupResponse.cs
-    startLine: 14
+    startLine: 17
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Cognito.Events
   namespace: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup
   summary: Set to true to auto-confirm the user, or false otherwise.
   example: []
   syntax:
-    content: public bool AutoConfirmUser { get; set; }
+    content: >-
+      [DataMember(Name = "autoConfirmUser")]
+
+      [JsonPropertyName("autoConfirmUser")]
+
+      public bool AutoConfirmUser { get; set; }
     parameters: []
     return:
       type: System.Boolean
-    content.vb: Public Property AutoConfirmUser As Boolean
+    content.vb: >-
+      <DataMember(Name:="autoConfirmUser")>
+
+      <JsonPropertyName("autoConfirmUser")>
+
+      Public Property AutoConfirmUser As Boolean
   overload: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupResponse.AutoConfirmUser*
+  attributes:
+  - type: System.Runtime.Serialization.DataMemberAttribute
+    ctor: System.Runtime.Serialization.DataMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: autoConfirmUser
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: autoConfirmUser
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupResponse.AutoVerifyPhone
   commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupResponse.AutoVerifyPhone
   id: AutoVerifyPhone
@@ -95,7 +118,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: AutoVerifyPhone
     path: ../src/Innovt.Cloud.AWS.Lambda.Cognito.Events/PreSignup/PreSignupResponse.cs
-    startLine: 21
+    startLine: 26
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Cognito.Events
   namespace: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup
@@ -107,12 +130,35 @@ items:
     be able to complete sign-up.
   example: []
   syntax:
-    content: public bool AutoVerifyPhone { get; set; }
+    content: >-
+      [DataMember(Name = "autoVerifyPhone")]
+
+      [JsonPropertyName("autoVerifyPhone")]
+
+      public bool AutoVerifyPhone { get; set; }
     parameters: []
     return:
       type: System.Boolean
-    content.vb: Public Property AutoVerifyPhone As Boolean
+    content.vb: >-
+      <DataMember(Name:="autoVerifyPhone")>
+
+      <JsonPropertyName("autoVerifyPhone")>
+
+      Public Property AutoVerifyPhone As Boolean
   overload: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupResponse.AutoVerifyPhone*
+  attributes:
+  - type: System.Runtime.Serialization.DataMemberAttribute
+    ctor: System.Runtime.Serialization.DataMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: autoVerifyPhone
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: autoVerifyPhone
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupResponse.AutoVerifyEmail
   commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupResponse.AutoVerifyEmail
   id: AutoVerifyEmail
@@ -131,7 +177,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: AutoVerifyEmail
     path: ../src/Innovt.Cloud.AWS.Lambda.Cognito.Events/PreSignup/PreSignupResponse.cs
-    startLine: 28
+    startLine: 35
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Cognito.Events
   namespace: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup
@@ -143,12 +189,35 @@ items:
     user will not be able to complete sign-up.
   example: []
   syntax:
-    content: public bool AutoVerifyEmail { get; set; }
+    content: >-
+      [DataMember(Name = "autoVerifyEmail")]
+
+      [JsonPropertyName("autoVerifyEmail")]
+
+      public bool AutoVerifyEmail { get; set; }
     parameters: []
     return:
       type: System.Boolean
-    content.vb: Public Property AutoVerifyEmail As Boolean
+    content.vb: >-
+      <DataMember(Name:="autoVerifyEmail")>
+
+      <JsonPropertyName("autoVerifyEmail")>
+
+      Public Property AutoVerifyEmail As Boolean
   overload: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup.PreSignupResponse.AutoVerifyEmail*
+  attributes:
+  - type: System.Runtime.Serialization.DataMemberAttribute
+    ctor: System.Runtime.Serialization.DataMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: autoVerifyEmail
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: autoVerifyEmail
 references:
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup
   commentId: N:Innovt.Cloud.AWS.Lambda.Cognito.Events.PreSignup

@@ -20,7 +20,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: Entity
     path: ../src/Innovt.Domain.Core/Model/Entity.cs
-    startLine: 113
+    startLine: 110
   assemblies:
   - Innovt.Domain.Core
   namespace: Innovt.Domain.Core.Model
@@ -77,7 +77,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: Id
     path: ../src/Innovt.Domain.Core/Model/Entity.cs
-    startLine: 115
+    startLine: 112
   assemblies:
   - Innovt.Domain.Core
   namespace: Innovt.Domain.Core.Model

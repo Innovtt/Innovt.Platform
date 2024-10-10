@@ -105,12 +105,12 @@ items:
   summary: Initializes a new instance of the <xref href="Innovt.Data.EFCore.Repositories.RepositoryBase%601" data-throw-if-not-resolved="false"></xref> class.
   example: []
   syntax:
-    content: public RepositoryBase(IExtendedUnitOfWork context)
+    content: protected RepositoryBase(IExtendedUnitOfWork context)
     parameters:
     - id: context
       type: Innovt.Domain.Core.Repository.IExtendedUnitOfWork
       description: The extended unit of work context.
-    content.vb: Public Sub New(context As IExtendedUnitOfWork)
+    content.vb: Protected Sub New(context As IExtendedUnitOfWork)
   overload: Innovt.Data.EFCore.Repositories.RepositoryBase`1.#ctor*
   exceptions:
   - type: System.ArgumentNullException

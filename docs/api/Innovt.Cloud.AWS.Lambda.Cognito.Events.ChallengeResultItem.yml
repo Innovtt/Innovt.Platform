@@ -22,7 +22,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: ChallengeResultItem
     path: ../src/Innovt.Cloud.AWS.Lambda.Cognito.Events/ChallengeResultItem.cs
-    startLine: 11
+    startLine: 12
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Cognito.Events
   namespace: Innovt.Cloud.AWS.Lambda.Cognito.Events
@@ -73,19 +73,42 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: ChallengeName
     path: ../src/Innovt.Cloud.AWS.Lambda.Cognito.Events/ChallengeResultItem.cs
-    startLine: 17
+    startLine: 18
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Cognito.Events
   namespace: Innovt.Cloud.AWS.Lambda.Cognito.Events
   summary: Gets or sets the name of the challenge.
   example: []
   syntax:
-    content: public string ChallengeName { get; set; }
+    content: >-
+      [DataMember(Name = "challengeName")]
+
+      [JsonPropertyName("challengeName")]
+
+      public string ChallengeName { get; set; }
     parameters: []
     return:
       type: System.String
-    content.vb: Public Property ChallengeName As String
+    content.vb: >-
+      <DataMember(Name:="challengeName")>
+
+      <JsonPropertyName("challengeName")>
+
+      Public Property ChallengeName As String
   overload: Innovt.Cloud.AWS.Lambda.Cognito.Events.ChallengeResultItem.ChallengeName*
+  attributes:
+  - type: System.Runtime.Serialization.DataMemberAttribute
+    ctor: System.Runtime.Serialization.DataMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: challengeName
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: challengeName
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.ChallengeResultItem.ChallengeResult
   commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Events.ChallengeResultItem.ChallengeResult
   id: ChallengeResult
@@ -104,19 +127,42 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: ChallengeResult
     path: ../src/Innovt.Cloud.AWS.Lambda.Cognito.Events/ChallengeResultItem.cs
-    startLine: 22
+    startLine: 25
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Cognito.Events
   namespace: Innovt.Cloud.AWS.Lambda.Cognito.Events
   summary: Gets or sets a value indicating whether the challenge was successful.
   example: []
   syntax:
-    content: public bool ChallengeResult { get; set; }
+    content: >-
+      [DataMember(Name = "challengeResult")]
+
+      [JsonPropertyName("challengeResult")]
+
+      public bool ChallengeResult { get; set; }
     parameters: []
     return:
       type: System.Boolean
-    content.vb: Public Property ChallengeResult As Boolean
+    content.vb: >-
+      <DataMember(Name:="challengeResult")>
+
+      <JsonPropertyName("challengeResult")>
+
+      Public Property ChallengeResult As Boolean
   overload: Innovt.Cloud.AWS.Lambda.Cognito.Events.ChallengeResultItem.ChallengeResult*
+  attributes:
+  - type: System.Runtime.Serialization.DataMemberAttribute
+    ctor: System.Runtime.Serialization.DataMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: challengeResult
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: challengeResult
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.ChallengeResultItem.ChallengeMetadata
   commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Events.ChallengeResultItem.ChallengeMetadata
   id: ChallengeMetadata
@@ -135,19 +181,42 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: ChallengeMetadata
     path: ../src/Innovt.Cloud.AWS.Lambda.Cognito.Events/ChallengeResultItem.cs
-    startLine: 27
+    startLine: 32
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Cognito.Events
   namespace: Innovt.Cloud.AWS.Lambda.Cognito.Events
   summary: Gets or sets metadata associated with the challenge.
   example: []
   syntax:
-    content: public string ChallengeMetadata { get; set; }
+    content: >-
+      [DataMember(Name = "challengeMetadata")]
+
+      [JsonPropertyName("challengeMetadata")]
+
+      public string ChallengeMetadata { get; set; }
     parameters: []
     return:
       type: System.String
-    content.vb: Public Property ChallengeMetadata As String
+    content.vb: >-
+      <DataMember(Name:="challengeMetadata")>
+
+      <JsonPropertyName("challengeMetadata")>
+
+      Public Property ChallengeMetadata As String
   overload: Innovt.Cloud.AWS.Lambda.Cognito.Events.ChallengeResultItem.ChallengeMetadata*
+  attributes:
+  - type: System.Runtime.Serialization.DataMemberAttribute
+    ctor: System.Runtime.Serialization.DataMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: challengeMetadata
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: challengeMetadata
 references:
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events
   commentId: N:Innovt.Cloud.AWS.Lambda.Cognito.Events

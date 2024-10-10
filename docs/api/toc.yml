@@ -24,14 +24,17 @@ items:
   items:
   - uid: Innovt.AspNetCore.Filters.ApiExceptionFilter
     name: ApiExceptionFilter
-  - uid: Innovt.AspNetCore.Filters.CaptchaValidatorFilterAttribute
-    name: CaptchaValidatorFilterAttribute
   - uid: Innovt.AspNetCore.Filters.CustomExceptionFilterAttribute
     name: CustomExceptionFilterAttribute
   - uid: Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute
     name: InjectClaimParameterFilterAttribute
   - uid: Innovt.AspNetCore.Filters.SwaggerExcludeFilter
     name: SwaggerExcludeFilter
+- uid: Innovt.AspNetCore.Filters.Recaptcha
+  name: Innovt.AspNetCore.Filters.Recaptcha
+  items:
+  - uid: Innovt.AspNetCore.Filters.Recaptcha.CaptchaValidatorFilterAttribute
+    name: CaptchaValidatorFilterAttribute
 - uid: Innovt.AspNetCore.Filters.Swagger
   name: Innovt.AspNetCore.Filters.Swagger
   items:
@@ -211,6 +214,10 @@ items:
 - uid: Innovt.Cloud.AWS.Dynamo.Converters
   name: Innovt.Cloud.AWS.Dynamo.Converters
   items:
+  - uid: Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueConverterManager
+    name: AttributeValueConverterManager
+  - uid: Innovt.Cloud.AWS.Dynamo.Converters.AttributeValueToObjectConverterManager
+    name: AttributeValueToObjectConverterManager
   - uid: Innovt.Cloud.AWS.Dynamo.Converters.DateTimeOffsetConverter
     name: DateTimeOffsetConverter
 - uid: Innovt.Cloud.AWS.Dynamo.Exceptions
@@ -622,10 +629,14 @@ items:
     name: Extensions
   - uid: Innovt.Core.Utilities.PasswordHelper
     name: PasswordHelper
+  - uid: Innovt.Core.Utilities.ReflectionTypeUtil
+    name: ReflectionTypeUtil
   - uid: Innovt.Core.Utilities.StopWatchHelper
     name: StopWatchHelper
   - uid: Innovt.Core.Utilities.StringExtensions
     name: StringExtensions
+  - uid: Innovt.Core.Utilities.TypeUtil
+    name: TypeUtil
 - uid: Innovt.Core.Utilities.Mapper
   name: Innovt.Core.Utilities.Mapper
   items:

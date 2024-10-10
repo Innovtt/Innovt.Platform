@@ -10,6 +10,10 @@ items:
   - Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Converters
   - Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Entities
   - Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Entity``1
+  - Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetPropertyConverter(System.Type)
+  - Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetTypeBuilder``1
+  - Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.HasTypeBuilder(System.Type)
+  - Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.HasTypeBuilder``1(System.Object)
   langs:
   - csharp
   - vb
@@ -24,7 +28,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: ModelBuilder
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/ModelBuilder.cs
-    startLine: 8
+    startLine: 9
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping
@@ -63,7 +67,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: Entities
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/ModelBuilder.cs
-    startLine: 10
+    startLine: 11
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping
@@ -157,7 +161,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: AddPropertyConverter
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/ModelBuilder.cs
-    startLine: 28
+    startLine: 27
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping
@@ -190,7 +194,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: Entity
     path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/ModelBuilder.cs
-    startLine: 38
+    startLine: 37
   assemblies:
   - Innovt.Cloud.AWS.Dynamo
   namespace: Innovt.Cloud.AWS.Dynamo.Mapping
@@ -205,6 +209,154 @@ items:
   nameWithType.vb: ModelBuilder.Entity(Of TEntity)()
   fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.Entity(Of TEntity)()
   name.vb: Entity(Of TEntity)()
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetPropertyConverter(System.Type)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetPropertyConverter(System.Type)
+  id: GetPropertyConverter(System.Type)
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+  langs:
+  - csharp
+  - vb
+  name: GetPropertyConverter(Type)
+  nameWithType: ModelBuilder.GetPropertyConverter(Type)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetPropertyConverter(System.Type)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/ModelBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: GetPropertyConverter
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/ModelBuilder.cs
+    startLine: 47
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping
+  summary: Return the PropertyConverter for the given type.
+  example: []
+  syntax:
+    content: public IPropertyConverter GetPropertyConverter(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: A type that the system will search for a converter
+    return:
+      type: Amazon.DynamoDBv2.DataModel.IPropertyConverter
+      description: Returns a converter or null.
+    content.vb: Public Function GetPropertyConverter(type As Type) As IPropertyConverter
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetPropertyConverter*
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.HasTypeBuilder(System.Type)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.HasTypeBuilder(System.Type)
+  id: HasTypeBuilder(System.Type)
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+  langs:
+  - csharp
+  - vb
+  name: HasTypeBuilder(Type)
+  nameWithType: ModelBuilder.HasTypeBuilder(Type)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.HasTypeBuilder(System.Type)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/ModelBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: HasTypeBuilder
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/ModelBuilder.cs
+    startLine: 76
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping
+  syntax:
+    content: public bool HasTypeBuilder(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+    return:
+      type: System.Boolean
+    content.vb: Public Function HasTypeBuilder(type As Type) As Boolean
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.HasTypeBuilder*
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.HasTypeBuilder``1(System.Object)
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.HasTypeBuilder``1(System.Object)
+  id: HasTypeBuilder``1(System.Object)
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+  langs:
+  - csharp
+  - vb
+  name: HasTypeBuilder<T>(object)
+  nameWithType: ModelBuilder.HasTypeBuilder<T>(object)
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.HasTypeBuilder<T>(object)
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/ModelBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: HasTypeBuilder
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/ModelBuilder.cs
+    startLine: 89
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping
+  summary: Utility method to add a new entity to the context
+  example: []
+  syntax:
+    content: public bool HasTypeBuilder<T>(object instance = null)
+    parameters:
+    - id: instance
+      type: System.Object
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function HasTypeBuilder(Of T)(instance As Object = Nothing) As Boolean
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.HasTypeBuilder*
+  nameWithType.vb: ModelBuilder.HasTypeBuilder(Of T)(Object)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.HasTypeBuilder(Of T)(Object)
+  name.vb: HasTypeBuilder(Of T)(Object)
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetTypeBuilder``1
+  commentId: M:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetTypeBuilder``1
+  id: GetTypeBuilder``1
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder
+  langs:
+  - csharp
+  - vb
+  name: GetTypeBuilder<T>()
+  nameWithType: ModelBuilder.GetTypeBuilder<T>()
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetTypeBuilder<T>()
+  type: Method
+  source:
+    remote:
+      path: src/Innovt.Cloud.AWS.Dynamo/Mapping/ModelBuilder.cs
+      branch: feature/ImproveDynamoMapping
+      repo: https://github.com/Innovtt/Innovt.Platform.git
+    id: GetTypeBuilder
+    path: ../src/Innovt.Cloud.AWS.Dynamo/Mapping/ModelBuilder.cs
+    startLine: 124
+  assemblies:
+  - Innovt.Cloud.AWS.Dynamo
+  namespace: Innovt.Cloud.AWS.Dynamo.Mapping
+  summary: It returns a EntityTypeBuilder for the given entity.
+  example: []
+  syntax:
+    content: public EntityTypeBuilder<T> GetTypeBuilder<T>()
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder{{T}}
+      description: ''
+    content.vb: Public Function GetTypeBuilder(Of T)() As EntityTypeBuilder(Of T)
+  overload: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetTypeBuilder*
+  exceptions:
+  - type: Innovt.Cloud.AWS.Dynamo.Exceptions.MissingEntityMapException
+    commentId: T:Innovt.Cloud.AWS.Dynamo.Exceptions.MissingEntityMapException
+    description: ''
+  nameWithType.vb: ModelBuilder.GetTypeBuilder(Of T)()
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetTypeBuilder(Of T)()
+  name.vb: GetTypeBuilder(Of T)()
 references:
 - uid: Innovt.Cloud.AWS.Dynamo.Mapping
   commentId: N:Innovt.Cloud.AWS.Dynamo.Mapping
@@ -926,7 +1078,7 @@ references:
   - uid: Amazon.DynamoDBv2.DataModel.IPropertyConverter
     name: IPropertyConverter
     isExternal: true
-    href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
+    href: https://github.com/aws/aws-sdk-net/blob/a180df70def2d9b66be5d7ca95bf0ba5fa35d67a/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
   - name: '>'
   spec.vb:
   - uid: System.Collections.Generic.Dictionary`2
@@ -945,7 +1097,7 @@ references:
   - uid: Amazon.DynamoDBv2.DataModel.IPropertyConverter
     name: IPropertyConverter
     isExternal: true
-    href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
+    href: https://github.com/aws/aws-sdk-net/blob/a180df70def2d9b66be5d7ca95bf0ba5fa35d67a/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
   - name: )
 - uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.AddConfiguration*
   commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.AddConfiguration
@@ -1030,7 +1182,7 @@ references:
   commentId: T:Amazon.DynamoDBv2.DataModel.IPropertyConverter
   parent: Amazon.DynamoDBv2.DataModel
   isExternal: true
-  href: https://github.com/aws/aws-sdk-net/blob/a788abb2804fb6dcd6d388500ac88b23e539e280/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
+  href: https://github.com/aws/aws-sdk-net/blob/a180df70def2d9b66be5d7ca95bf0ba5fa35d67a/sdk/src/Services/DynamoDBv2/Custom/DataModel/Configs.cs
   name: IPropertyConverter
   nameWithType: IPropertyConverter
   fullName: Amazon.DynamoDBv2.DataModel.IPropertyConverter
@@ -1177,3 +1329,65 @@ references:
   - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
     name: Builder
     href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.html
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetPropertyConverter*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetPropertyConverter
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.html#Innovt_Cloud_AWS_Dynamo_Mapping_ModelBuilder_GetPropertyConverter_System_Type_
+  name: GetPropertyConverter
+  nameWithType: ModelBuilder.GetPropertyConverter
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetPropertyConverter
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.HasTypeBuilder*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.HasTypeBuilder
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.html#Innovt_Cloud_AWS_Dynamo_Mapping_ModelBuilder_HasTypeBuilder_System_Type_
+  name: HasTypeBuilder
+  nameWithType: ModelBuilder.HasTypeBuilder
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.HasTypeBuilder
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Innovt.Cloud.AWS.Dynamo.Exceptions.MissingEntityMapException
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Exceptions.MissingEntityMapException
+  href: Innovt.Cloud.AWS.Dynamo.Exceptions.MissingEntityMapException.html
+  name: MissingEntityMapException
+  nameWithType: MissingEntityMapException
+  fullName: Innovt.Cloud.AWS.Dynamo.Exceptions.MissingEntityMapException
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetTypeBuilder*
+  commentId: Overload:Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetTypeBuilder
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.html#Innovt_Cloud_AWS_Dynamo_Mapping_ModelBuilder_GetTypeBuilder__1
+  name: GetTypeBuilder
+  nameWithType: ModelBuilder.GetTypeBuilder
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.ModelBuilder.GetTypeBuilder
+- uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder{{T}}
+  commentId: T:Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder{``0}
+  parent: Innovt.Cloud.AWS.Dynamo.Mapping.Builder
+  definition: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+  href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html
+  name: EntityTypeBuilder<T>
+  nameWithType: EntityTypeBuilder<T>
+  fullName: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder<T>
+  nameWithType.vb: EntityTypeBuilder(Of T)
+  fullName.vb: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder(Of T)
+  name.vb: EntityTypeBuilder(Of T)
+  spec.csharp:
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+    name: EntityTypeBuilder
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder`1
+    name: EntityTypeBuilder
+    href: Innovt.Cloud.AWS.Dynamo.Mapping.Builder.EntityTypeBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

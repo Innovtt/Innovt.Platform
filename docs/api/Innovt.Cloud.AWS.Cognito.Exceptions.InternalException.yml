@@ -118,7 +118,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: .ctor
     path: ../src/Innovt.Cloud.AWS.Cognito/Exceptions/InternalException.cs
-    startLine: 25
+    startLine: 26
   assemblies:
   - Innovt.Cloud.AWS.Cognito
   namespace: Innovt.Cloud.AWS.Cognito.Exceptions
@@ -159,7 +159,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: .ctor
     path: ../src/Innovt.Cloud.AWS.Cognito/Exceptions/InternalException.cs
-    startLine: 34
+    startLine: 35
   assemblies:
   - Innovt.Cloud.AWS.Cognito
   namespace: Innovt.Cloud.AWS.Cognito.Exceptions
@@ -197,7 +197,7 @@ items:
       repo: https://github.com/Innovtt/Innovt.Platform.git
     id: .ctor
     path: ../src/Innovt.Cloud.AWS.Cognito/Exceptions/InternalException.cs
-    startLine: 49
+    startLine: 50
   assemblies:
   - Innovt.Cloud.AWS.Cognito
   namespace: Innovt.Cloud.AWS.Cognito.Exceptions

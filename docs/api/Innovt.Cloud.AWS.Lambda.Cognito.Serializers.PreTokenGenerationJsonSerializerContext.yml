@@ -86,6 +86,38 @@ items:
     arguments:
     - type: System.Type
       value: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationResponse
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.GetTypeInfo(System.Type)
+  commentId: M:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.GetTypeInfo(System.Type)
+  id: GetTypeInfo(System.Type)
+  parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: GetTypeInfo(Type)
+  nameWithType: PreTokenGenerationJsonSerializerContext.GetTypeInfo(Type)
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.GetTypeInfo(System.Type)
+  type: Method
+  source:
+    id: GetTypeInfo
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PreTokenGenerationJsonSerializerContext.GetJsonTypeInfo.g.cs
+    startLine: 13
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Cognito
+  namespace: Innovt.Cloud.AWS.Lambda.Cognito.Serializers
+  summary: Gets metadata for the specified type.
+  example: []
+  syntax:
+    content: public override JsonTypeInfo? GetTypeInfo(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: The type to fetch metadata for.
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo
+      description: The metadata for the specified type, or <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> if the context has no metadata for the type.
+    content.vb: Public Overrides Function GetTypeInfo(type As Type) As JsonTypeInfo
+  overridden: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
+  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.GetTypeInfo*
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.ListString
   commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.ListString
   id: ListString
@@ -113,6 +145,60 @@ items:
       type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.List{System.String}}
     content.vb: Public ReadOnly Property ListString As JsonTypeInfo(Of List(Of String))
   overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.ListString*
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.String
+  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.String
+  id: String
+  parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: String
+  nameWithType: PreTokenGenerationJsonSerializerContext.String
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.String
+  type: Property
+  source:
+    id: String
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PreTokenGenerationJsonSerializerContext.String.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Cognito
+  namespace: Innovt.Cloud.AWS.Lambda.Cognito.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<string> String { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
+    content.vb: Public ReadOnly Property [String] As JsonTypeInfo(Of String)
+  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.String*
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.DictionaryStringString
+  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.DictionaryStringString
+  id: DictionaryStringString
+  parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: DictionaryStringString
+  nameWithType: PreTokenGenerationJsonSerializerContext.DictionaryStringString
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.DictionaryStringString
+  type: Property
+  source:
+    id: DictionaryStringString
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PreTokenGenerationJsonSerializerContext.DictionaryStringString.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Cognito
+  namespace: Innovt.Cloud.AWS.Lambda.Cognito.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<Dictionary<string, string>> DictionaryStringString { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.Dictionary{System.String,System.String}}
+    content.vb: Public ReadOnly Property DictionaryStringString As JsonTypeInfo(Of Dictionary(Of String, String))
+  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.DictionaryStringString*
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.GroupConfiguration
   commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.GroupConfiguration
   id: GroupConfiguration
@@ -167,146 +253,6 @@ items:
       type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationRequest}
     content.vb: Public ReadOnly Property PreTokenGenerationRequest As JsonTypeInfo(Of PreTokenGenerationRequest)
   overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationRequest*
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationResponse
-  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationResponse
-  id: PreTokenGenerationResponse
-  parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: PreTokenGenerationResponse
-  nameWithType: PreTokenGenerationJsonSerializerContext.PreTokenGenerationResponse
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationResponse
-  type: Property
-  source:
-    id: PreTokenGenerationResponse
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PreTokenGenerationJsonSerializerContext.PreTokenGenerationResponse.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Cognito
-  namespace: Innovt.Cloud.AWS.Lambda.Cognito.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<PreTokenGenerationResponse> PreTokenGenerationResponse { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationResponse}
-    content.vb: Public ReadOnly Property PreTokenGenerationResponse As JsonTypeInfo(Of PreTokenGenerationResponse)
-  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationResponse*
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.DictionaryStringString
-  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.DictionaryStringString
-  id: DictionaryStringString
-  parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: DictionaryStringString
-  nameWithType: PreTokenGenerationJsonSerializerContext.DictionaryStringString
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.DictionaryStringString
-  type: Property
-  source:
-    id: DictionaryStringString
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PreTokenGenerationJsonSerializerContext.DictionaryStringString.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Cognito
-  namespace: Innovt.Cloud.AWS.Lambda.Cognito.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<Dictionary<string, string>> DictionaryStringString { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.Dictionary{System.String,System.String}}
-    content.vb: Public ReadOnly Property DictionaryStringString As JsonTypeInfo(Of Dictionary(Of String, String))
-  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.DictionaryStringString*
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.GetTypeInfo(System.Type)
-  commentId: M:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.GetTypeInfo(System.Type)
-  id: GetTypeInfo(System.Type)
-  parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: GetTypeInfo(Type)
-  nameWithType: PreTokenGenerationJsonSerializerContext.GetTypeInfo(Type)
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.GetTypeInfo(System.Type)
-  type: Method
-  source:
-    id: GetTypeInfo
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PreTokenGenerationJsonSerializerContext.GetJsonTypeInfo.g.cs
-    startLine: 13
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Cognito
-  namespace: Innovt.Cloud.AWS.Lambda.Cognito.Serializers
-  summary: Gets metadata for the specified type.
-  example: []
-  syntax:
-    content: public override JsonTypeInfo? GetTypeInfo(Type type)
-    parameters:
-    - id: type
-      type: System.Type
-      description: The type to fetch metadata for.
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo
-      description: The metadata for the specified type, or <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> if the context has no metadata for the type.
-    content.vb: Public Overrides Function GetTypeInfo(type As Type) As JsonTypeInfo
-  overridden: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
-  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.GetTypeInfo*
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.ClaimOverrideDetails
-  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.ClaimOverrideDetails
-  id: ClaimOverrideDetails
-  parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: ClaimOverrideDetails
-  nameWithType: PreTokenGenerationJsonSerializerContext.ClaimOverrideDetails
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.ClaimOverrideDetails
-  type: Property
-  source:
-    id: ClaimOverrideDetails
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PreTokenGenerationJsonSerializerContext.ClaimOverrideDetails.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Cognito
-  namespace: Innovt.Cloud.AWS.Lambda.Cognito.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<ClaimOverrideDetails> ClaimOverrideDetails { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.ClaimOverrideDetails}
-    content.vb: Public ReadOnly Property ClaimOverrideDetails As JsonTypeInfo(Of ClaimOverrideDetails)
-  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.ClaimOverrideDetails*
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationEvent
-  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationEvent
-  id: PreTokenGenerationEvent
-  parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext
-  langs:
-  - csharp
-  - vb
-  name: PreTokenGenerationEvent
-  nameWithType: PreTokenGenerationJsonSerializerContext.PreTokenGenerationEvent
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationEvent
-  type: Property
-  source:
-    id: PreTokenGenerationEvent
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PreTokenGenerationJsonSerializerContext.PreTokenGenerationEvent.g.cs
-    startLine: 17
-  assemblies:
-  - Innovt.Cloud.AWS.Lambda.Cognito
-  namespace: Innovt.Cloud.AWS.Lambda.Cognito.Serializers
-  summary: Defines the source generated JSON serialization contract metadata for a given type.
-  example: []
-  syntax:
-    content: public JsonTypeInfo<PreTokenGenerationEvent> PreTokenGenerationEvent { get; }
-    parameters: []
-    return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationEvent}
-    content.vb: Public ReadOnly Property PreTokenGenerationEvent As JsonTypeInfo(Of PreTokenGenerationEvent)
-  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationEvent*
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.Default
   commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.Default
   id: Default
@@ -419,20 +365,20 @@ items:
   nameWithType.vb: PreTokenGenerationJsonSerializerContext.New(JsonSerializerOptions)
   fullName.vb: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.New(System.Text.Json.JsonSerializerOptions)
   name.vb: New(JsonSerializerOptions)
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.String
-  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.String
-  id: String
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.ClaimOverrideDetails
+  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.ClaimOverrideDetails
+  id: ClaimOverrideDetails
   parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext
   langs:
   - csharp
   - vb
-  name: String
-  nameWithType: PreTokenGenerationJsonSerializerContext.String
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.String
+  name: ClaimOverrideDetails
+  nameWithType: PreTokenGenerationJsonSerializerContext.ClaimOverrideDetails
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.ClaimOverrideDetails
   type: Property
   source:
-    id: String
-    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PreTokenGenerationJsonSerializerContext.String.g.cs
+    id: ClaimOverrideDetails
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PreTokenGenerationJsonSerializerContext.ClaimOverrideDetails.g.cs
     startLine: 17
   assemblies:
   - Innovt.Cloud.AWS.Lambda.Cognito
@@ -440,12 +386,66 @@ items:
   summary: Defines the source generated JSON serialization contract metadata for a given type.
   example: []
   syntax:
-    content: public JsonTypeInfo<string> String { get; }
+    content: public JsonTypeInfo<ClaimOverrideDetails> ClaimOverrideDetails { get; }
     parameters: []
     return:
-      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
-    content.vb: Public ReadOnly Property [String] As JsonTypeInfo(Of String)
-  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.String*
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.ClaimOverrideDetails}
+    content.vb: Public ReadOnly Property ClaimOverrideDetails As JsonTypeInfo(Of ClaimOverrideDetails)
+  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.ClaimOverrideDetails*
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationResponse
+  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationResponse
+  id: PreTokenGenerationResponse
+  parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: PreTokenGenerationResponse
+  nameWithType: PreTokenGenerationJsonSerializerContext.PreTokenGenerationResponse
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationResponse
+  type: Property
+  source:
+    id: PreTokenGenerationResponse
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PreTokenGenerationJsonSerializerContext.PreTokenGenerationResponse.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Cognito
+  namespace: Innovt.Cloud.AWS.Lambda.Cognito.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<PreTokenGenerationResponse> PreTokenGenerationResponse { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationResponse}
+    content.vb: Public ReadOnly Property PreTokenGenerationResponse As JsonTypeInfo(Of PreTokenGenerationResponse)
+  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationResponse*
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationEvent
+  commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationEvent
+  id: PreTokenGenerationEvent
+  parent: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext
+  langs:
+  - csharp
+  - vb
+  name: PreTokenGenerationEvent
+  nameWithType: PreTokenGenerationJsonSerializerContext.PreTokenGenerationEvent
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationEvent
+  type: Property
+  source:
+    id: PreTokenGenerationEvent
+    path: System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/PreTokenGenerationJsonSerializerContext.PreTokenGenerationEvent.g.cs
+    startLine: 17
+  assemblies:
+  - Innovt.Cloud.AWS.Lambda.Cognito
+  namespace: Innovt.Cloud.AWS.Lambda.Cognito.Serializers
+  summary: Defines the source generated JSON serialization contract metadata for a given type.
+  example: []
+  syntax:
+    content: public JsonTypeInfo<PreTokenGenerationEvent> PreTokenGenerationEvent { get; }
+    parameters: []
+    return:
+      type: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationEvent}
+    content.vb: Public ReadOnly Property PreTokenGenerationEvent As JsonTypeInfo(Of PreTokenGenerationEvent)
+  overload: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationEvent*
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.TriggerCallerContext
   commentId: P:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.TriggerCallerContext
   id: TriggerCallerContext
@@ -1174,6 +1174,58 @@ references:
   - uid: Innovt.Core.Utilities.Mapper
     name: Mapper
     href: Innovt.Core.Utilities.Mapper.html
+- uid: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
+  commentId: M:System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
+  parent: System.Text.Json.Serialization.JsonSerializerContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonserializercontext.gettypeinfo
+  name: GetTypeInfo(Type)
+  nameWithType: JsonSerializerContext.GetTypeInfo(Type)
+  fullName: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
+    name: GetTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonserializercontext.gettypeinfo
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
+    name: GetTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonserializercontext.gettypeinfo
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.GetTypeInfo*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.GetTypeInfo
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PreTokenGenerationJsonSerializerContext_GetTypeInfo_System_Type_
+  name: GetTypeInfo
+  nameWithType: PreTokenGenerationJsonSerializerContext.GetTypeInfo
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.GetTypeInfo
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo
+  parent: System.Text.Json.Serialization.Metadata
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo
+  name: JsonTypeInfo
+  nameWithType: JsonTypeInfo
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.ListString*
   commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.ListString
   href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PreTokenGenerationJsonSerializerContext_ListString
@@ -1257,6 +1309,114 @@ references:
   - name: " "
   - name: T
   - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.String*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.String
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PreTokenGenerationJsonSerializerContext_String
+  name: String
+  nameWithType: PreTokenGenerationJsonSerializerContext.String
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.String
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<string>
+  nameWithType: JsonTypeInfo<string>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<string>
+  nameWithType.vb: JsonTypeInfo(Of String)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of String)
+  name.vb: JsonTypeInfo(Of String)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.DictionaryStringString*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.DictionaryStringString
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PreTokenGenerationJsonSerializerContext_DictionaryStringString
+  name: DictionaryStringString
+  nameWithType: PreTokenGenerationJsonSerializerContext.DictionaryStringString
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.DictionaryStringString
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.Dictionary{System.String,System.String}}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.Dictionary{System.String,System.String}}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<Dictionary<string, string>>
+  nameWithType: JsonTypeInfo<Dictionary<string, string>>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.Collections.Generic.Dictionary<string, string>>
+  nameWithType.vb: JsonTypeInfo(Of Dictionary(Of String, String))
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of System.Collections.Generic.Dictionary(Of String, String))
+  name.vb: JsonTypeInfo(Of Dictionary(Of String, String))
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.GroupConfiguration*
   commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.GroupConfiguration
   href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PreTokenGenerationJsonSerializerContext_GroupConfiguration
@@ -1330,236 +1490,6 @@ references:
   - name: " "
   - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationRequest
     name: PreTokenGenerationRequest
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationResponse*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationResponse
-  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PreTokenGenerationJsonSerializerContext_PreTokenGenerationResponse
-  name: PreTokenGenerationResponse
-  nameWithType: PreTokenGenerationJsonSerializerContext.PreTokenGenerationResponse
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationResponse
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationResponse}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationResponse}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<PreTokenGenerationResponse>
-  nameWithType: JsonTypeInfo<PreTokenGenerationResponse>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationResponse>
-  nameWithType.vb: JsonTypeInfo(Of PreTokenGenerationResponse)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationResponse)
-  name.vb: JsonTypeInfo(Of PreTokenGenerationResponse)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationResponse
-    name: PreTokenGenerationResponse
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationResponse
-    name: PreTokenGenerationResponse
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.DictionaryStringString*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.DictionaryStringString
-  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PreTokenGenerationJsonSerializerContext_DictionaryStringString
-  name: DictionaryStringString
-  nameWithType: PreTokenGenerationJsonSerializerContext.DictionaryStringString
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.DictionaryStringString
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.Dictionary{System.String,System.String}}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.Collections.Generic.Dictionary{System.String,System.String}}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<Dictionary<string, string>>
-  nameWithType: JsonTypeInfo<Dictionary<string, string>>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<System.Collections.Generic.Dictionary<string, string>>
-  nameWithType.vb: JsonTypeInfo(Of Dictionary(Of String, String))
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of System.Collections.Generic.Dictionary(Of String, String))
-  name.vb: JsonTypeInfo(Of Dictionary(Of String, String))
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: <
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: '>'
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: )
-  - name: )
-- uid: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
-  commentId: M:System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
-  parent: System.Text.Json.Serialization.JsonSerializerContext
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonserializercontext.gettypeinfo
-  name: GetTypeInfo(Type)
-  nameWithType: JsonSerializerContext.GetTypeInfo(Type)
-  fullName: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
-    name: GetTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonserializercontext.gettypeinfo
-  - name: (
-  - uid: System.Type
-    name: Type
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.type
-  - name: )
-  spec.vb:
-  - uid: System.Text.Json.Serialization.JsonSerializerContext.GetTypeInfo(System.Type)
-    name: GetTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonserializercontext.gettypeinfo
-  - name: (
-  - uid: System.Type
-    name: Type
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.type
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.GetTypeInfo*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.GetTypeInfo
-  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PreTokenGenerationJsonSerializerContext_GetTypeInfo_System_Type_
-  name: GetTypeInfo
-  nameWithType: PreTokenGenerationJsonSerializerContext.GetTypeInfo
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.GetTypeInfo
-- uid: System.Type
-  commentId: T:System.Type
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.type
-  name: Type
-  nameWithType: Type
-  fullName: System.Type
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo
-  parent: System.Text.Json.Serialization.Metadata
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo
-  name: JsonTypeInfo
-  nameWithType: JsonTypeInfo
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.ClaimOverrideDetails*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.ClaimOverrideDetails
-  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PreTokenGenerationJsonSerializerContext_ClaimOverrideDetails
-  name: ClaimOverrideDetails
-  nameWithType: PreTokenGenerationJsonSerializerContext.ClaimOverrideDetails
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.ClaimOverrideDetails
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.ClaimOverrideDetails}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.ClaimOverrideDetails}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<ClaimOverrideDetails>
-  nameWithType: JsonTypeInfo<ClaimOverrideDetails>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.ClaimOverrideDetails>
-  nameWithType.vb: JsonTypeInfo(Of ClaimOverrideDetails)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.ClaimOverrideDetails)
-  name.vb: JsonTypeInfo(Of ClaimOverrideDetails)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.ClaimOverrideDetails
-    name: ClaimOverrideDetails
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.ClaimOverrideDetails
-    name: ClaimOverrideDetails
-  - name: )
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationEvent*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationEvent
-  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PreTokenGenerationJsonSerializerContext_PreTokenGenerationEvent
-  name: PreTokenGenerationEvent
-  nameWithType: PreTokenGenerationJsonSerializerContext.PreTokenGenerationEvent
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationEvent
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationEvent}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationEvent}
-  parent: System.Text.Json.Serialization.Metadata
-  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<PreTokenGenerationEvent>
-  nameWithType: JsonTypeInfo<PreTokenGenerationEvent>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationEvent>
-  nameWithType.vb: JsonTypeInfo(Of PreTokenGenerationEvent)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationEvent)
-  name.vb: JsonTypeInfo(Of PreTokenGenerationEvent)
-  spec.csharp:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: <
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationEvent
-    name: PreTokenGenerationEvent
-  - name: '>'
-  spec.vb:
-  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
-    name: JsonTypeInfo
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationEvent
-    name: PreTokenGenerationEvent
   - name: )
 - uid: System.Text.Json.JsonSerializerOptions
   commentId: T:System.Text.Json.JsonSerializerOptions
@@ -1642,33 +1572,31 @@ references:
   nameWithType.vb: PreTokenGenerationJsonSerializerContext.New
   fullName.vb: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.New
   name.vb: New
-- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.String*
-  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.String
-  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PreTokenGenerationJsonSerializerContext_String
-  name: String
-  nameWithType: PreTokenGenerationJsonSerializerContext.String
-  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.String
-- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
-  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{System.String}
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.ClaimOverrideDetails*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.ClaimOverrideDetails
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PreTokenGenerationJsonSerializerContext_ClaimOverrideDetails
+  name: ClaimOverrideDetails
+  nameWithType: PreTokenGenerationJsonSerializerContext.ClaimOverrideDetails
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.ClaimOverrideDetails
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.ClaimOverrideDetails}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.ClaimOverrideDetails}
   parent: System.Text.Json.Serialization.Metadata
   definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
   href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
-  name: JsonTypeInfo<string>
-  nameWithType: JsonTypeInfo<string>
-  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<string>
-  nameWithType.vb: JsonTypeInfo(Of String)
-  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of String)
-  name.vb: JsonTypeInfo(Of String)
+  name: JsonTypeInfo<ClaimOverrideDetails>
+  nameWithType: JsonTypeInfo<ClaimOverrideDetails>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.ClaimOverrideDetails>
+  nameWithType.vb: JsonTypeInfo(Of ClaimOverrideDetails)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.ClaimOverrideDetails)
+  name.vb: JsonTypeInfo(Of ClaimOverrideDetails)
   spec.csharp:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
     name: JsonTypeInfo
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
   - name: <
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.ClaimOverrideDetails
+    name: ClaimOverrideDetails
   - name: '>'
   spec.vb:
   - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
@@ -1678,10 +1606,82 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: System.String
-    name: String
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.ClaimOverrideDetails
+    name: ClaimOverrideDetails
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationResponse*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationResponse
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PreTokenGenerationJsonSerializerContext_PreTokenGenerationResponse
+  name: PreTokenGenerationResponse
+  nameWithType: PreTokenGenerationJsonSerializerContext.PreTokenGenerationResponse
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationResponse
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationResponse}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationResponse}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<PreTokenGenerationResponse>
+  nameWithType: JsonTypeInfo<PreTokenGenerationResponse>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationResponse>
+  nameWithType.vb: JsonTypeInfo(Of PreTokenGenerationResponse)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationResponse)
+  name.vb: JsonTypeInfo(Of PreTokenGenerationResponse)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationResponse
+    name: PreTokenGenerationResponse
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationResponse
+    name: PreTokenGenerationResponse
+  - name: )
+- uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationEvent*
+  commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationEvent
+  href: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.html#Innovt_Cloud_AWS_Lambda_Cognito_Serializers_PreTokenGenerationJsonSerializerContext_PreTokenGenerationEvent
+  name: PreTokenGenerationEvent
+  nameWithType: PreTokenGenerationJsonSerializerContext.PreTokenGenerationEvent
+  fullName: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.PreTokenGenerationEvent
+- uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationEvent}
+  commentId: T:System.Text.Json.Serialization.Metadata.JsonTypeInfo{Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationEvent}
+  parent: System.Text.Json.Serialization.Metadata
+  definition: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  name: JsonTypeInfo<PreTokenGenerationEvent>
+  nameWithType: JsonTypeInfo<PreTokenGenerationEvent>
+  fullName: System.Text.Json.Serialization.Metadata.JsonTypeInfo<Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationEvent>
+  nameWithType.vb: JsonTypeInfo(Of PreTokenGenerationEvent)
+  fullName.vb: System.Text.Json.Serialization.Metadata.JsonTypeInfo(Of Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationEvent)
+  name.vb: JsonTypeInfo(Of PreTokenGenerationEvent)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: <
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationEvent
+    name: PreTokenGenerationEvent
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.Metadata.JsonTypeInfo`1
+    name: JsonTypeInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.metadata.jsontypeinfo-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Innovt.Cloud.AWS.Lambda.Cognito.Events.PreTokenGeneration.PreTokenGenerationEvent
+    name: PreTokenGenerationEvent
   - name: )
 - uid: Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.TriggerCallerContext*
   commentId: Overload:Innovt.Cloud.AWS.Lambda.Cognito.Serializers.PreTokenGenerationJsonSerializerContext.TriggerCallerContext

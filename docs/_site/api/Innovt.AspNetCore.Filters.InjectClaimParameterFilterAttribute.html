@@ -1,140 +1,107 @@
 ﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
 <html>
+
   <head>
     <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Class InjectClaimParameterFilterAttribute | Innovt Platform </title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class InjectClaimParameterFilterAttribute | Innovt Platform ">
-      
-      <meta name="description" content="This Filter Will inject the username claim in the action Parameters">
-      <link rel="icon" href="../favicon.ico">
-      <link rel="stylesheet" href="../public/docfx.min.css">
-      <link rel="stylesheet" href="../public/main.css">
-      <meta name="docfx:navrel" content="../toc.html">
-      <meta name="docfx:tocrel" content="toc.html">
-      
-      <meta name="docfx:rel" content="../">
-      
-      
-      <meta name="docfx:docurl" content="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute.md&amp;value=---%0Auid%3A%20Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
-      <meta name="loc:inThisArticle" content="In this article">
-      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
-      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
-      <meta name="loc:tocFilter" content="Filter by title">
-      <meta name="loc:nextArticle" content="Next">
-      <meta name="loc:prevArticle" content="Previous">
-      <meta name="loc:themeLight" content="Light">
-      <meta name="loc:themeDark" content="Dark">
-      <meta name="loc:themeAuto" content="Auto">
-      <meta name="loc:changeTheme" content="Change theme">
-      <meta name="loc:copy" content="Copy">
-      <meta name="loc:downloadPdf" content="Download PDF">
-
-      <script type="module" src="./../public/docfx.min.js"></script>
-
-      <script>
-        const theme = localStorage.getItem('theme') || 'auto'
-        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-      </script>
-
+    
+    <meta name="description" content="This Filter Will inject the username claim in the action Parameters">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
   </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
 
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
-    <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
-        <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../index.html">
-            <img id="logo" class="svg" src="../logo.svg" alt="Innovt Platform">
-            Innovt Platform
-          </a>
-          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navpanel">
-            <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="Innovt Platform">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
               </form>
             </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
 
-    <main class="container-xxl">
-      <div class="toc-offcanvas">
-        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
           </div>
-          <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
+      <div role="main" class="container body-content hide-when-search">
 
-      <div class="content">
-        <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
-          </button>
-
-          <nav id="breadcrumb"></nav>
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
         </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute">
 
-        <article data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute">
 
 
-
-  <h1 id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute" class="text-break">
-Class InjectClaimParameterFilterAttribute  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Filters/InjectClaimParameterFilterAttribute.cs/#L15"><i class="bi bi-code-slash"></i></a>
-  </h1>
-
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="Innovt.html">Innovt</a>.<a class="xref" href="Innovt.AspNetCore.html">AspNetCore</a>.<a class="xref" href="Innovt.AspNetCore.Filters.html">Filters</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>Innovt.AspNetCore.dll</dd></dl>
-  </div>
-
-  <div class="markdown summary"><p>This Filter Will inject the username claim in the action Parameters</p>
+  <h1 id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute" class="text-break">Class InjectClaimParameterFilterAttribute</h1>
+  <div class="markdown level0 summary"><p>This Filter Will inject the username claim in the action Parameters</p>
 </div>
-  <div class="markdown conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[AttributeUsage(AttributeTargets.Class|AttributeTargets.Method)]
-public sealed class InjectClaimParameterFilterAttribute : ActionFilterAttribute, IActionFilter, IAsyncActionFilter, IResultFilter, IAsyncResultFilter, IOrderedFilter, IFilterMetadata</code></pre>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.attribute">Attribute</a></div>
+    <div class="level2"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.actionfilterattribute">ActionFilterAttribute</a></div>
+    <div class="level3"><span class="xref">InjectClaimParameterFilterAttribute</span></div>
   </div>
-
-
-
-
-  <dl class="typelist inheritance">
-    <dt>Inheritance</dt>
-    <dd>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.attribute">Attribute</a></div>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.actionfilterattribute">ActionFilterAttribute</a></div>
-      <div><span class="xref">InjectClaimParameterFilterAttribute</span></div>
-    </dd>
-  </dl>
-
-  <dl class="typelist implements">
-    <dt>Implements</dt>
-    <dd>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.iactionfilter">IActionFilter</a></div>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncactionfilter">IAsyncActionFilter</a></div>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.iresultfilter">IResultFilter</a></div>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncresultfilter">IAsyncResultFilter</a></div>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.iorderedfilter">IOrderedFilter</a></div>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.ifiltermetadata">IFilterMetadata</a></div>
-    </dd>
-  </dl>
-
-
-  <dl class="typelist inheritedMembers">
-    <dt>Inherited Members</dt>
-    <dd>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.iactionfilter">IActionFilter</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncactionfilter">IAsyncActionFilter</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.iresultfilter">IResultFilter</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncresultfilter">IAsyncResultFilter</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.iorderedfilter">IOrderedFilter</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.ifiltermetadata">IFilterMetadata</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.actionfilterattribute.onactionexecuted">ActionFilterAttribute.OnActionExecuted(ActionExecutedContext)</a>
     </div>
@@ -273,11 +240,329 @@ public sealed class InjectClaimParameterFilterAttribute : ActionFilterAttribute,
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </dd></dl>
-
-  <dl class="typelist extensionMethods">
-    <dt>Extension Methods</dt>
-    <dd>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Innovt.html">Innovt</a>.<a class="xref" href="Innovt.AspNetCore.html">AspNetCore</a>.<a class="xref" href="Innovt.AspNetCore.Filters.html">Filters</a></h6>
+  <h6><strong>Assembly</strong>: Innovt.AspNetCore.dll</h6>
+  <h5 id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[AttributeUsage(AttributeTargets.Class|AttributeTargets.Method)]
+public sealed class InjectClaimParameterFilterAttribute : ActionFilterAttribute, IActionFilter, IAsyncActionFilter, IResultFilter, IAsyncResultFilter, IOrderedFilter, IFilterMetadata</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute__ctor.md&amp;value=---%0Auid%3A%20Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.%23ctor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Filters/InjectClaimParameterFilterAttribute.cs/#L54">View Source</a>
+  </span>
+  <a id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute__ctor_" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.#ctor*"></a>
+  <h4 id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute__ctor" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.#ctor">InjectClaimParameterFilterAttribute()</h4>
+  <div class="markdown level1 summary"><p>Using defaults: ExternalId  and &quot;filter&quot;,&quot;command&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public InjectClaimParameterFilterAttribute()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute__ctor_System_String_System_String_System_String___.md&amp;value=---%0Auid%3A%20Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.%23ctor(System.String%2CSystem.String%2CSystem.String%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Filters/InjectClaimParameterFilterAttribute.cs/#L39">View Source</a>
+  </span>
+  <a id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute__ctor_" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.#ctor*"></a>
+  <h4 id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute__ctor_System_String_System_String_System_String___" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.#ctor(System.String,System.String,System.String[])">InjectClaimParameterFilterAttribute(string, string, params string[])</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.html">InjectClaimParameterFilterAttribute</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public InjectClaimParameterFilterAttribute(string defaultAuthorizationProperty, string claimTypeCheck, params string[] actionParameters)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">defaultAuthorizationProperty</span></td>
+        <td><p>The default authorization property to inject the username.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">claimTypeCheck</span></td>
+        <td><p>The claim type that will be used to get the value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</td>
+        <td><span class="parametername">actionParameters</span></td>
+        <td><p>The action parameters to inject the username.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute__ctor_System_String_System_String___.md&amp;value=---%0Auid%3A%20Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.%23ctor(System.String%2CSystem.String%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Filters/InjectClaimParameterFilterAttribute.cs/#L23">View Source</a>
+  </span>
+  <a id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute__ctor_" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.#ctor*"></a>
+  <h4 id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute__ctor_System_String_System_String___" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.#ctor(System.String,System.String[])">InjectClaimParameterFilterAttribute(string, params string[])</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.html">InjectClaimParameterFilterAttribute</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public InjectClaimParameterFilterAttribute(string defaultAuthorizationProperty, params string[] actionParameters)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">defaultAuthorizationProperty</span></td>
+        <td><p>The default authorization property to inject the username.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</td>
+        <td><span class="parametername">actionParameters</span></td>
+        <td><p>The action parameters to inject the username.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_ActionParameters.md&amp;value=---%0Auid%3A%20Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.ActionParameters%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Filters/InjectClaimParameterFilterAttribute.cs/#L71">View Source</a>
+  </span>
+  <a id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_ActionParameters_" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.ActionParameters*"></a>
+  <h4 id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_ActionParameters" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.ActionParameters">ActionParameters</h4>
+  <div class="markdown level1 summary"><p>Gets the action parameters to inject the username.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string[] ActionParameters { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_ClaimTypeCheck.md&amp;value=---%0Auid%3A%20Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.ClaimTypeCheck%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Filters/InjectClaimParameterFilterAttribute.cs/#L66">View Source</a>
+  </span>
+  <a id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_ClaimTypeCheck_" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.ClaimTypeCheck*"></a>
+  <h4 id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_ClaimTypeCheck" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.ClaimTypeCheck">ClaimTypeCheck</h4>
+  <div class="markdown level1 summary"><p>Get the default claim type to check.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ClaimTypeCheck { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_DefaultAuthorizationProperty.md&amp;value=---%0Auid%3A%20Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.DefaultAuthorizationProperty%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Filters/InjectClaimParameterFilterAttribute.cs/#L61">View Source</a>
+  </span>
+  <a id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_DefaultAuthorizationProperty_" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.DefaultAuthorizationProperty*"></a>
+  <h4 id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_DefaultAuthorizationProperty" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.DefaultAuthorizationProperty">DefaultAuthorizationProperty</h4>
+  <div class="markdown level1 summary"><p>Gets the default authorization property for injecting the username.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string DefaultAuthorizationProperty { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_OnActionExecuting_Microsoft_AspNetCore_Mvc_Filters_ActionExecutingContext_.md&amp;value=---%0Auid%3A%20Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Filters/InjectClaimParameterFilterAttribute.cs/#L108">View Source</a>
+  </span>
+  <a id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_OnActionExecuting_" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.OnActionExecuting*"></a>
+  <h4 id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_OnActionExecuting_Microsoft_AspNetCore_Mvc_Filters_ActionExecutingContext_" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">OnActionExecuting(ActionExecutingContext)</h4>
+  <div class="markdown level1 summary"><p>Called before the action executes, after model binding is complete.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnActionExecuting(ActionExecutingContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.actionexecutingcontext">ActionExecutingContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.actionexecutingcontext">ActionExecutingContext</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.actionfilterattribute.onactionexecuting">ActionFilterAttribute.OnActionExecuting(ActionExecutingContext)</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_OnActionExecutionAsync_Microsoft_AspNetCore_Mvc_Filters_ActionExecutingContext_Microsoft_AspNetCore_Mvc_Filters_ActionExecutionDelegate_.md&amp;value=---%0Auid%3A%20Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.OnActionExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext%2CMicrosoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Filters/InjectClaimParameterFilterAttribute.cs/#L116">View Source</a>
+  </span>
+  <a id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_OnActionExecutionAsync_" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.OnActionExecutionAsync*"></a>
+  <h4 id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_OnActionExecutionAsync_Microsoft_AspNetCore_Mvc_Filters_ActionExecutingContext_Microsoft_AspNetCore_Mvc_Filters_ActionExecutionDelegate_" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.OnActionExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate)">OnActionExecutionAsync(ActionExecutingContext, ActionExecutionDelegate)</h4>
+  <div class="markdown level1 summary"><p>Called asynchronously before the action, after model binding is complete.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.actionexecutingcontext">ActionExecutingContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.actionexecutingcontext">ActionExecutingContext</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.actionexecutiondelegate">ActionExecutionDelegate</a></td>
+        <td><span class="parametername">next</span></td>
+        <td><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.actionexecutiondelegate">ActionExecutionDelegate</a>. Invoked to execute the next action filter or the action itself.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that on completion indicates the filter has executed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.actionfilterattribute.onactionexecutionasync">ActionFilterAttribute.OnActionExecutionAsync(ActionExecutingContext, ActionExecutionDelegate)</a></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.iactionfilter">IActionFilter</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncactionfilter">IAsyncActionFilter</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.iresultfilter">IResultFilter</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncresultfilter">IAsyncResultFilter</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.iorderedfilter">IOrderedFilter</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.ifiltermetadata">IFilterMetadata</a>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="Innovt.Core.Utilities.Extensions.html#Innovt_Core_Utilities_Extensions_IsNull_System_Object_">Extensions.IsNull(object)</a>
   </div>
@@ -287,320 +572,47 @@ public sealed class InjectClaimParameterFilterAttribute : ActionFilterAttribute,
   <div>
       <a class="xref" href="Innovt.Core.Utilities.Mapper.SimpleMapper.html#Innovt_Core_Utilities_Mapper_SimpleMapper_MapTo__1_System_Object_">SimpleMapper.MapTo&lt;T1&gt;(object)</a>
   </div>
-  </dd></dl>
-
-
-
-
-
-  <h2 class="section" id="constructors">Constructors
-</h2>
-
-
-  <a id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute__ctor_" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.#ctor*"></a>
-
-  <h3 id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute__ctor" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.#ctor">
-  InjectClaimParameterFilterAttribute()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Filters/InjectClaimParameterFilterAttribute.cs/#L54"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Using defaults: ExternalId  and &quot;filter&quot;,&quot;command&quot;</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public InjectClaimParameterFilterAttribute()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute__ctor_" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.#ctor*"></a>
-
-  <h3 id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute__ctor_System_String_System_String_System_String___" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.#ctor(System.String,System.String,System.String[])">
-  InjectClaimParameterFilterAttribute(string, string, params string[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Filters/InjectClaimParameterFilterAttribute.cs/#L39"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.html">InjectClaimParameterFilterAttribute</a> class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public InjectClaimParameterFilterAttribute(string defaultAuthorizationProperty, string claimTypeCheck, params string[] actionParameters)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>defaultAuthorizationProperty</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The default authorization property to inject the username.</p>
-</dd>
-    <dt><code>claimTypeCheck</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The claim type that will be used to get the value.</p>
-</dd>
-    <dt><code>actionParameters</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
-    <dd><p>The action parameters to inject the username.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute__ctor_" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.#ctor*"></a>
-
-  <h3 id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute__ctor_System_String_System_String___" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.#ctor(System.String,System.String[])">
-  InjectClaimParameterFilterAttribute(string, params string[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Filters/InjectClaimParameterFilterAttribute.cs/#L23"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.html">InjectClaimParameterFilterAttribute</a> class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public InjectClaimParameterFilterAttribute(string defaultAuthorizationProperty, params string[] actionParameters)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>defaultAuthorizationProperty</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The default authorization property to inject the username.</p>
-</dd>
-    <dt><code>actionParameters</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
-    <dd><p>The action parameters to inject the username.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
-  <a id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_ActionParameters_" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.ActionParameters*"></a>
-
-  <h3 id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_ActionParameters" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.ActionParameters">
-  ActionParameters
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Filters/InjectClaimParameterFilterAttribute.cs/#L71"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the action parameters to inject the username.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string[] ActionParameters { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_ClaimTypeCheck_" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.ClaimTypeCheck*"></a>
-
-  <h3 id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_ClaimTypeCheck" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.ClaimTypeCheck">
-  ClaimTypeCheck
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Filters/InjectClaimParameterFilterAttribute.cs/#L66"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Get the default claim type to check.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ClaimTypeCheck { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_DefaultAuthorizationProperty_" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.DefaultAuthorizationProperty*"></a>
-
-  <h3 id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_DefaultAuthorizationProperty" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.DefaultAuthorizationProperty">
-  DefaultAuthorizationProperty
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Filters/InjectClaimParameterFilterAttribute.cs/#L61"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the default authorization property for injecting the username.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string DefaultAuthorizationProperty { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
-  <a id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_OnActionExecuting_" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.OnActionExecuting*"></a>
-
-  <h3 id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_OnActionExecuting_Microsoft_AspNetCore_Mvc_Filters_ActionExecutingContext_" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
-  OnActionExecuting(ActionExecutingContext)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Filters/InjectClaimParameterFilterAttribute.cs/#L108"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called before the action executes, after model binding is complete.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void OnActionExecuting(ActionExecutingContext context)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>context</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.actionexecutingcontext">ActionExecutingContext</a></dt>
-    <dd><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.actionexecutingcontext">ActionExecutingContext</a>.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_OnActionExecutionAsync_" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.OnActionExecutionAsync*"></a>
-
-  <h3 id="Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute_OnActionExecutionAsync_Microsoft_AspNetCore_Mvc_Filters_ActionExecutingContext_Microsoft_AspNetCore_Mvc_Filters_ActionExecutionDelegate_" data-uid="Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute.OnActionExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate)">
-  OnActionExecutionAsync(ActionExecutingContext, ActionExecutionDelegate)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Filters/InjectClaimParameterFilterAttribute.cs/#L116"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called asynchronously before the action, after model binding is complete.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>context</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.actionexecutingcontext">ActionExecutingContext</a></dt>
-    <dd><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.actionexecutingcontext">ActionExecutingContext</a>.</p>
-</dd>
-    <dt><code>next</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.actionexecutiondelegate">ActionExecutionDelegate</a></dt>
-    <dd><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.filters.actionexecutiondelegate">ActionExecutionDelegate</a>. Invoked to execute the next action filter or the action itself.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
-    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that on completion indicates the filter has executed.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
 
 </article>
+          </div>
 
-        <div class="contribution d-print-none">
-          <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Filters/InjectClaimParameterFilterAttribute.cs/#L15" class="edit-link">Edit this page</a>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Innovtt/Innovt.Platform/new/feature/ImproveDynamoMapping/apiSpec/new?filename=Innovt_AspNetCore_Filters_InjectClaimParameterFilterAttribute.md&amp;value=---%0Auid%3A%20Innovt.AspNetCore.Filters.InjectClaimParameterFilterAttribute%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Innovtt/Innovt.Platform/blob/feature/ImproveDynamoMapping/src/Innovt.AspNetCore/Filters/InjectClaimParameterFilterAttribute.cs/#L15" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
         </div>
-
-
       </div>
 
-      <div class="affix">
-        <nav id="affix"></nav>
-      </div>
-    </main>
-
-    <div class="container-xxl search-results" id="search-results"></div>
-
-    <footer class="border-top text-secondary">
-      <div class="container-xxl">
-        <div class="flex-fill">
-          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
   </body>
 </html>
