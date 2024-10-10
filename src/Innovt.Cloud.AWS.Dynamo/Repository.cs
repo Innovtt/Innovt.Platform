@@ -383,7 +383,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="messages">The list of items to add.</param>
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <exception cref="ArgumentNullException">Thrown if the messages parameter is null.</exception>
-    public async Task AddListAsync<T>(ICollection<T> messages, CancellationToken cancellationToken = default)
+    public async Task AddRangeAsync<T>(ICollection<T> messages, CancellationToken cancellationToken = default)
         where T : class
     {
         Check.NotNull(messages, nameof(messages));
@@ -529,7 +529,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <inheritdoc />
-    public async Task DeleteListAsync<T>(ICollection<T> messages, CancellationToken cancellationToken = default)
+    public async Task DeleteRangeAsync<T>(ICollection<T> messages, CancellationToken cancellationToken = default)
         where T : class
     {
         Check.NotNull(messages, nameof(messages));
