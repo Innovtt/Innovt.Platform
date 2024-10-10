@@ -10,31 +10,31 @@ namespace Innovt.Cloud.AWS.Dynamo.Converters;
 
 public static class AttributeValueToObjectConverterManager
 {
-    private static readonly Dictionary<string, Func<AttributeValue, Type, object>> Converters = new()
+    private static readonly Dictionary<string, Func<AttributeValue, Type,DynamoContext, object>> Converters = new()
     {
-        { "BOOL", (value, _) => value.BOOL },
+        { "BOOL", (value,_,_) => value.BOOL },
         {
-            "L", (value, desiredType) =>
-                value.L.Select(l => CreateAttributeValueToObject(l, desiredType.GetGenericArguments()[0])).ToList()
+            "L", (value, desiredType,context) =>
+                value.L.Select(l => CreateAttributeValueToObject(l, desiredType.GetGenericArguments()[0],context)).ToList()
         },
         {
-            "M", (value, desiredType) =>
+            "M", (value, desiredType,context) =>
             {
                 if (TypeUtil.IsDictionary(desiredType))
                     return ItemsToDictionary(desiredType, value.M);
-
+                
                 var method = typeof(AttributeConverter).GetMethod(
                     nameof(AttributeConverter.ConvertAttributeValuesToType),
-                    BindingFlags.Static | BindingFlags.NonPublic, null,
-                    new[] { typeof(Dictionary<string, AttributeValue>) }, null);
-                return method?.MakeGenericMethod(desiredType).Invoke(null, new object[] { value.M });
+                    BindingFlags.Static | BindingFlags.Public);
+                
+                return method?.MakeGenericMethod(desiredType).Invoke(null, [value.M, context]);
             }
         },
-        { "BS", (value, _) => value.BS },
-        { "N", (value, _) => value.N },
-        { "NS", (value, _) => value.NS },
-        { "SS", (value, _) => value.SS },
-        { "S", (value, _) => value.S }
+        { "BS", (value, _,_) => value.BS },
+        { "N", (value, _,_) => value.N },
+        { "NS", (value, _,_) => value.NS },
+        { "SS", (value, _,_) => value.SS },
+        { "S", (value, _,_) => value.S }
     };
 
     // Create a unique key to determine which characteristic of AttributeValue is set
@@ -57,13 +57,14 @@ public static class AttributeValueToObjectConverterManager
     /// <param name="value">The dynamo db attribute value.</param>
     /// <param name="desiredType">Thy desired type to match with the property.</param>
     /// <returns>An object.</returns>
-    public static object CreateAttributeValueToObject(AttributeValue value, Type desiredType)
+    public static object CreateAttributeValueToObject(AttributeValue value, Type desiredType, DynamoContext context = null)
     {
         if (value == null)
             return default;
 
         var key = GetKeyForAttributeValue(value);
-        if (key != null && Converters.TryGetValue(key, out var converter)) return converter(value, desiredType);
+        if (key != null && Converters.TryGetValue(key, out var converter)) 
+            return converter(value, desiredType,context);
 
         // If no match is found, return default value
         return default;

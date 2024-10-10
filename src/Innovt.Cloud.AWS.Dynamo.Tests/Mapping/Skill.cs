@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using Innovt.Domain.Core.Model;
 
 namespace Innovt.Cloud.AWS.Dynamo.Tests.Mapping;
