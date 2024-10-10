@@ -69,12 +69,13 @@ internal static class AttributeConverter
     /// </summary>
     /// <param name="value">The DynamoDB AttributeValue to convert.</param>
     /// <param name="desiredType">The desired Type to convert to.</param>
+    /// <param name="context">The current dynamo context.</param>
     /// <returns>
     ///     An object of the specified desiredType containing the converted value from the AttributeValue.
     /// </returns>
-    private static object CreateAttributeValueToObject(AttributeValue value, Type desiredType)
+    private static object CreateAttributeValueToObject(AttributeValue value, Type desiredType, DynamoContext context = null)
     {
-        return AttributeValueToObjectConverterManager.CreateAttributeValueToObject(value, desiredType);
+        return AttributeValueToObjectConverterManager.CreateAttributeValueToObject(value, desiredType,context);
     }
 
     /// <summary>
@@ -288,7 +289,7 @@ internal static class AttributeConverter
 
         return convertedEntry is null ? null : customConverter.FromEntry(convertedEntry);
     }
-
+    
     /// <summary>
     ///     Convert an attribute array to specific type. The method is called when the object is being retrieved from DynamoDB
     /// </summary>
@@ -296,8 +297,7 @@ internal static class AttributeConverter
     /// <param name="items"></param>
     /// <param name="context"></param>
     /// <returns></returns>
-    internal static T ConvertAttributeValuesToType<T>(Dictionary<string, AttributeValue> items,
-        DynamoContext context = null)
+    public static T ConvertAttributeValuesToType<T>(Dictionary<string, AttributeValue> items, DynamoContext context = null)
         where T : class, new()
     {
         if (items is null) return default;
@@ -328,7 +328,7 @@ internal static class AttributeConverter
                 continue;
 
             object convertedValue;
-            var value = CreateAttributeValueToObject(attributeValue.Value, prop.PropertyType);
+            var value = CreateAttributeValueToObject(attributeValue.Value, prop.PropertyType, context);
 
             if (TypeUtil.IsPrimitive(prop.PropertyType))
             {

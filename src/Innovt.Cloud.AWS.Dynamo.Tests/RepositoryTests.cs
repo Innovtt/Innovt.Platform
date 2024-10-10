@@ -13,7 +13,7 @@ using NUnit.Framework;
 namespace Innovt.Cloud.AWS.Dynamo.Tests;
 
 [TestFixture]
-[Ignore("Only for local tests")]
+//[Ignore("Only for local tests")]
 public class RepositoryTests
 {
     [SetUp]
@@ -309,5 +309,38 @@ public class RepositoryTests
         await repository.SaveUser(user, CancellationToken.None).ConfigureAwait(false);
 
         Assert.Pass("Transaction Saved");
+    }
+    
+    
+    [Test]
+    public async Task QuerySkill()
+    {
+        try
+        {
+            var context = new SampleDynamoContext();
+
+            var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
+
+            repository = new SampleRepository(context, loggerMock, awsConfiguration);
+
+            var queryRequest = new QueryRequest
+            {
+                KeyConditionExpression = "PK=:pk AND begins_with(SK,:sk)",
+                Filter = new
+                {
+                    pk = $"CE#6f9d96c5-3639-4a78-96d5-50293c30a83e",
+                    sk = "CE#SKILL#"
+                }
+            };
+            
+            var expertSkills = await repository.QueryAsync<CloudExpertSkill>(queryRequest, CancellationToken.None).ConfigureAwait(false);
+            
+            Assert.That(expertSkills, Is.Not.Null);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 }
