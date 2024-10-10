@@ -17,11 +17,11 @@ env:
 
 jobs:
   build:
-    #environment:
-      #url: {{ steps.deployment.outputs.page_url }}
-      ## name: github-pages
     name: Build and analyze
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Grant write permission to push changes
+      id-token: write  # Allow to use the GITHUB_TOKEN to authenticate against the GitHub API
     steps:
       - uses: actions/checkout@v4
         with:
