@@ -31,7 +31,7 @@ public interface ITableRepository : IDisposable
     /// <param name="messages">The list of items to add.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous add operation.</returns>
-    Task AddListAsync<T>(ICollection<T> messages, CancellationToken cancellationToken = default) where T : class;
+    Task AddRangeAsync<T>(ICollection<T> messages, CancellationToken cancellationToken = default) where T : class;
 
     /// <summary>
     ///     This method will perform an update operation on the table. The operation is based on the primary key and type is
@@ -71,15 +71,6 @@ public interface ITableRepository : IDisposable
     Task DeleteAsync<T>(T message, CancellationToken cancellationToken = default) where T : class;
 
     /// <summary>
-    ///     Asynchronously a list of item that are from the same type.
-    /// </summary>
-    /// <param name="messages"></param>
-    /// <param name="cancellationToken"></param>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-    Task DeleteListAsync<T>(ICollection<T> messages, CancellationToken cancellationToken = default) where T : class;
-
-    /// <summary>
     ///     Asynchronously deletes an item using its identifier and optional range key.
     /// </summary>
     /// <typeparam name="T">The type of item to delete.</typeparam>
@@ -89,6 +80,17 @@ public interface ITableRepository : IDisposable
     /// <returns>A task representing the asynchronous delete operation.</returns>
     Task DeleteAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default)
         where T : class;
+    
+    /// <summary>
+    ///     Asynchronously a list of item that are from the same type.
+    /// </summary>
+    /// <param name="messages"></param>
+    /// <param name="cancellationToken"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    Task DeleteRangeAsync<T>(ICollection<T> messages, CancellationToken cancellationToken = default) where T : class;
+
+
 
     /// <summary>
     ///     Asynchronously retrieves an item by its identifier.
