@@ -14,8 +14,6 @@ public class PropertyTypeBuilder<T>
     
     private string columnName;
     
-
-
     /// <summary>
     ///     Initializes a new instance of the <see cref="PropertyTypeBuilder{T}" /> class with a specified property name and
     ///     type.
@@ -40,7 +38,6 @@ public class PropertyTypeBuilder<T>
         Type = propertyName.Invoke(default).GetType();
         Builder = builder;
     }
-
 
     public EntityTypeBuilder<T> Builder { get; set; }
 
@@ -85,36 +82,6 @@ public class PropertyTypeBuilder<T>
     public int MaxLength { get; private set; }
 
     /// <summary>
-    ///     Specifies that the property is of string type.
-    /// </summary>
-    /// <returns>The current instance of <see cref="PropertyTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<T> AsString()
-    {
-        Type = typeof(string);
-        return this;
-    }
-
-    /// <summary>
-    ///     Specifies that the property is of decimal type.
-    /// </summary>
-    /// <returns>The current instance of <see cref="PropertyTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<T> AsDecimal()
-    {
-        Type = typeof(decimal);
-        return this;
-    }
-
-    /// <summary>
-    ///     Specifies that the property is of binary type.
-    /// </summary>
-    /// <returns>The current instance of <see cref="PropertyTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<T> AsBinary()
-    {
-        Type = typeof(byte[]);
-        return this;
-    }
-
-    /// <summary>
     ///     Specifies a custom column name for the property in the database.
     /// </summary>
     /// <param name="name">The custom column name.</param>
@@ -134,8 +101,12 @@ public class PropertyTypeBuilder<T>
         MaxLength = maxLength;
         return this;
     }
-
-    //Set a default value for the property. Use HasMappedValue to set a value based on the entity.
+    
+    /// <summary>
+    /// It set a value for property. 
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
     public PropertyTypeBuilder<T> WithValue(object value)
     {
         Value = value;

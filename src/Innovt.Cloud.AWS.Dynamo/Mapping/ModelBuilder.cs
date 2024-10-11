@@ -7,8 +7,12 @@ using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.Dynamo.Mapping;
 
-public class ModelBuilder
+/// <summary>
+/// Determine how to build the model and the relation with all mapped entities.
+/// </summary>
+public sealed class ModelBuilder
 {
+    public bool IgnoreNonNativeTypes { get; set; }
     public Dictionary<string, object> Entities { get; } = new();
     public Dictionary<Type, IPropertyConverter> Converters { get; } = new();
 
@@ -16,7 +20,7 @@ public class ModelBuilder
     {
         if (entityTypeDataModelMapper == null) throw new ArgumentNullException(nameof(entityTypeDataModelMapper));
 
-        var entityTypeBuilder = new EntityTypeBuilder<T>();
+        var entityTypeBuilder = new EntityTypeBuilder<T>(IgnoreNonNativeTypes);
 
         entityTypeDataModelMapper.Configure(entityTypeBuilder);
 
@@ -109,8 +113,8 @@ public class ModelBuilder
             return (EntityTypeBuilder<TEntity>)entity;
 
         //Initialize the entityTypeBuilder if it is null
-        entityTypeBuilder ??= new EntityTypeBuilder<TEntity>();
-
+        entityTypeBuilder ??= new EntityTypeBuilder<TEntity>(IgnoreNonNativeTypes);
+        
         Entities.TryAdd(typeof(TEntity).Name, entityTypeBuilder);
 
         return entityTypeBuilder;

@@ -13,6 +13,8 @@ namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 /// <typeparam name="TEntity">The type of the entity being defined.</typeparam>
 public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
 {
+ 
+    
     /// <summary>
     ///     Gets or sets the table name associated with the entity type.
     /// </summary>
@@ -50,6 +52,21 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     /// </summary>
     private List<PropertyTypeBuilder<TEntity>> Properties { get; } = [];
 
+    /// <summary>
+    /// Tell the auto-map method to ignore all non-native types
+    /// </summary>
+    private bool IgnoreNonNativeTypes { get; }
+    
+    public EntityTypeBuilder(bool ignoreNonNativeTypes)
+    {
+        IgnoreNonNativeTypes = ignoreNonNativeTypes;
+    }
+    
+    //Keep it for reflection
+    public EntityTypeBuilder()
+    {
+    }
+    
     /// <summary>
     ///     Sets the table name associated with the entity type.
     /// </summary>
@@ -224,14 +241,24 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
 
         return this;
     }
-
+    
+    /// <summary>
+    /// Check if complex types should be ignored. The default is true and can be changed by the user for each entity.
+    /// </summary>
+    /// <param name="ignoreNonNativeTypes"></param>
+    /// <returns></returns>
+    private bool ShouldIgnoreNonNativeTypes(bool? ignoreNonNativeTypes)
+    {
+        return ignoreNonNativeTypes ?? IgnoreNonNativeTypes;
+    }
+    
     /// <summary>
     ///     Starts a reflection process to auto map all properties of the entity type.
     /// </summary>
     /// <param name="withDefaultKeys">Default keys are PK and SK</param>
     /// <param name="ignoreNonNativeTypes">Ignore all complex types</param>
     /// <returns></returns>
-    public EntityTypeBuilder<TEntity> AutoMap(bool withDefaultKeys = true, bool ignoreNonNativeTypes = false)
+    public EntityTypeBuilder<TEntity> AutoMap(bool withDefaultKeys = true, bool? ignoreNonNativeTypes = null)
     {
         var entityType = typeof(TEntity);
 
@@ -240,8 +267,8 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
 
         var properties = entityType.GetProperties(
             BindingFlags.Public | BindingFlags.Instance);
-
-        if (ignoreNonNativeTypes)
+        
+        if (ShouldIgnoreNonNativeTypes(ignoreNonNativeTypes))
             properties = properties.Where(p => TypeUtil.IsPrimitive(p.PropertyType)).ToArray();
 
         foreach (var propertyInfo in properties) AddProperty(propertyInfo.Name, propertyInfo.GetType());

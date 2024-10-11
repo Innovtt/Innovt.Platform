@@ -54,33 +54,35 @@ public static class AttributeValueConverterManager
 
     #endregion
 
+    private static AttributeValue NullAttributeValue () => new() { NULL = true };
     /// <summary>
-    ///     Creates a dynamo db attribute value from an object.
+    ///  Creates a dynamo db attribute value from an object.
     /// </summary>
     /// <param name="value">An object.</param>
     /// <param name="visitedObjects">This is a hash set to control circular reference.</param>
     /// <returns>A dynamo db attribute value.</returns>
     public static AttributeValue CreateAttributeValue(object value, HashSet<object> visitedObjects = null)
     {
-        switch (value)
-        {
-            case null:
-                return new AttributeValue { NULL = true };
-            case AttributeValue attributeValue:
-                return attributeValue;
-        }
-
+        if(value is null)
+            return NullAttributeValue();
+        
+        if(value is AttributeValue attributeValue)
+            return attributeValue;
+        
         // Initialize the visited objects set if it's not provided
         visitedObjects ??= new HashSet<object>(new ReferenceEqualityComparer());
 
         // Check for circular references. Add the value if it's not already in the set
-        if (!visitedObjects.Add(value)) return new AttributeValue { NULL = true };
+        if (!visitedObjects.Add(value)) return NullAttributeValue();
 
         var valueType = value.GetType();
 
         // If we have a direct match, use the converter
         if (Converters.TryGetValue(valueType, out var converter)) return converter(value);
 
+        
+        //verifica se é um 
+        
         switch (value)
         {
             // Handle numeric lists using a custom check
@@ -97,10 +99,15 @@ public static class AttributeValueConverterManager
             case IList<object> objectList:
                 return new AttributeValue
                     { L = objectList.Select(o => CreateAttributeValue(o, visitedObjects)).ToList() };
+            
+            case IEnumerable<object> objectList:
+                return new AttributeValue
+                    { L = objectList.Select(o => CreateAttributeValue(o, visitedObjects)).ToList() };
         }
-
+        
         // Handle complex objects (non-string classes)
         if (valueType.IsClass && valueType != typeof(string))
+        {
             return new AttributeValue
             {
                 M = valueType
@@ -113,6 +120,8 @@ public static class AttributeValueConverterManager
                         prop => CreateAttributeValue(prop.GetValue(value), visitedObjects)
                     )
             };
+        }
+
 
         return new AttributeValue { S = value.ToString() };
     }

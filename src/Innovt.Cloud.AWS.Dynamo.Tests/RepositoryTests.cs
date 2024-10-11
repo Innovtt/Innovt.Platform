@@ -13,7 +13,7 @@ using NUnit.Framework;
 namespace Innovt.Cloud.AWS.Dynamo.Tests;
 
 [TestFixture]
-[Ignore("Only for local tests")]
+//[Ignore("Only for local tests")]
 public class RepositoryTests
 {
     [SetUp]
@@ -336,6 +336,44 @@ public class RepositoryTests
             var expertSkills = await repository.QueryAsync<CloudExpertSkill>(queryRequest, CancellationToken.None).ConfigureAwait(false);
             
             Assert.That(expertSkills, Is.Not.Null);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    
+    
+    [Test]
+    public async Task AddAvailability()
+    {
+        try
+        {
+            var context = new SampleDynamoContext();
+
+            var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
+
+            repository = new SampleRepository(context, loggerMock, awsConfiguration);
+
+            var availablity = new Availability();
+            availablity.OwnerId = Guid.Parse("6f9d96c5-3639-4a78-96d5-50293c30a83e");
+            availablity.TimeZoneId = 3;
+            availablity.Days = new List<AvailabilityDay>()
+            {
+                new AvailabilityDay()
+                {
+                    StartTime = TimeOnly.MaxValue,
+                    AvailableDays = new List<int>() { 1, 2}
+                },
+                new AvailabilityDay()
+                {
+                    StartTime = TimeOnly.MaxValue,
+                    AvailableDays = new List<int>() { 3, 4}
+                }
+            };
+            
+           await repository.AddAsync(availablity, CancellationToken.None).ConfigureAwait(false);
         }
         catch (Exception e)
         {
