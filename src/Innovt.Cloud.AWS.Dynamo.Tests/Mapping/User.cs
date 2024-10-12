@@ -36,4 +36,6 @@ public class User : BaseUser
     public DateTime? LastAccess { get; set; } //6
     public int JobPositionId { get; set; } //7
     public new string Id { get; set; } //8
+
+    public Company Company { get; set; }
 }

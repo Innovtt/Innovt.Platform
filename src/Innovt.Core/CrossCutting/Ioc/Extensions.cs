@@ -29,9 +29,8 @@ public static class Extensions
     public static void AddModule(this IServiceCollection services, Assembly assembly)
     {
         // Implementation of the AddModule method.
-        if (services is null) throw new ArgumentNullException(nameof(services));
-
-        if (assembly is null) throw new ArgumentNullException(nameof(assembly));
+        ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(assembly);
 
         var modulesTypes = assembly.DefinedTypes.Where(t => t.IsSubclassOf(typeof(IocModule))).ToList();
 
@@ -53,16 +52,15 @@ public static class Extensions
     public static void AddModule(this IServiceCollection services, IocModule module)
     {
         // Implementation of the AddModule method.
-        if (services is null) throw new ArgumentNullException(nameof(services));
-
-        if (module is null) throw new ArgumentNullException(nameof(module));
+        ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(module);
 
         var servicesModule = module.GetServices();
 
-
-        if (servicesModule != null)
-            foreach (var service in servicesModule)
-                if (!services.Contains(service))
-                    services.Add(service);
+        if (servicesModule == null) return;
+        
+        foreach (var service in servicesModule)
+            if (!services.Contains(service))
+                services.Add(service);
     }
 }

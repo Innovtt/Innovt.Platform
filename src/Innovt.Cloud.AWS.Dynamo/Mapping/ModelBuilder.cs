@@ -13,8 +13,8 @@ namespace Innovt.Cloud.AWS.Dynamo.Mapping;
 public sealed class ModelBuilder
 {
     public bool IgnoreNonNativeTypes { get; set; }
-    public Dictionary<string, object> Entities { get; } = new();
-    public Dictionary<Type, IPropertyConverter> Converters { get; } = new();
+    private Dictionary<string, object> Entities { get; } = new();
+    private Dictionary<Type, IPropertyConverter> Converters { get; } = new();
 
     public ModelBuilder AddConfiguration<T>(IEntityTypeDataModelMapper<T> entityTypeDataModelMapper) where T : class
     {

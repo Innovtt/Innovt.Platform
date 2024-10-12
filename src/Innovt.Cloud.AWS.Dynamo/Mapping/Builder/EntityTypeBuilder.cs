@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using Innovt.Core.Collections;
 using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
@@ -13,8 +14,6 @@ namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 /// <typeparam name="TEntity">The type of the entity being defined.</typeparam>
 public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
 {
- 
-    
     /// <summary>
     ///     Gets or sets the table name associated with the entity type.
     /// </summary>
@@ -46,7 +45,9 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     ///     Gets or sets the entity type for the DynamoDB table.
     /// </summary>
     public string EntityType { get; private set; } = typeof(TEntity).Name.ToUpper();
-
+    
+    public string EntityTypeColumnName { get; private set; } = "EntityType";
+    
     /// <summary>
     ///     Gets or sets the list of property type builders for defining properties.
     /// </summary>
@@ -57,7 +58,7 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     /// </summary>
     private bool IgnoreNonNativeTypes { get; }
     
-    public EntityTypeBuilder(bool ignoreNonNativeTypes)
+    public EntityTypeBuilder(bool ignoreNonNativeTypes):this()
     {
         IgnoreNonNativeTypes = ignoreNonNativeTypes;
     }
@@ -66,6 +67,7 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     public EntityTypeBuilder()
     {
     }
+    
     
     /// <summary>
     ///     Sets the table name associated with the entity type.
@@ -152,16 +154,6 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     }
 
     /// <summary>
-    ///     Sets the entity type for the DynamoDB table using a provided entity type function.
-    /// </summary>
-    /// <param name="expression">The entity type function to generate the entity type.</param>
-    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public EntityTypeBuilder<TEntity> WithEntityType<TProperty>(Expression<Func<TEntity, TProperty>> expression)
-    {
-        return WithEntityType(GetPropertyName(expression));
-    }
-
-    /// <summary>
     ///     Sets the entity type for the DynamoDB table using a specified entity type.
     /// </summary>
     /// <param name="entityTypeName">The entity type to set.</param>
@@ -172,6 +164,17 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
         return this;
     }
 
+    /// <summary>
+    /// The default entity type column name is EntityType. This is used to split the entities in the same table.
+    /// </summary>
+    /// <param name="entityTypeColumnName">The name of your customized entity type column</param>
+    /// <returns></returns>
+    public EntityTypeBuilder<TEntity> WithEntityTypeColumnName(string entityTypeColumnName="EntityType")
+    {
+        EntityTypeColumnName = entityTypeColumnName;
+        return this;
+    }
+    
     /// <summary>
     ///     Defines a property for the entity using a provided property function.
     /// </summary>
@@ -275,6 +278,10 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
 
         if (withDefaultKeys)
             WithDefaultKeys();
+        
+        //Set the entity type as the entity name
+        if(EntityTypeColumnName.IsNotNullOrEmpty())
+            Property(EntityTypeColumnName).SetDynamicValue(p=>EntityType);
 
         return this;
     }
@@ -284,7 +291,7 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     /// </summary>
     /// <returns></returns>
     public IReadOnlyCollection<PropertyTypeBuilder<TEntity>> GetProperties()
-    {
+    {  
         return Properties.AsReadOnly();
     }
 

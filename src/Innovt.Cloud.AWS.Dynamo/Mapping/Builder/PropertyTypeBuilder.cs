@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Innovt.Core.Collections;
 
 namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 
@@ -9,8 +10,10 @@ namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 /// <typeparam name="T">The type of the entity.</typeparam>
 public class PropertyTypeBuilder<T>
 {
-    private readonly List<Action<T>> mapActions = [];
+    private readonly List<Action<T,Dictionary<string,object>>> mappedShadowActions = [];
+    private readonly List<Action<T>> mappedActions = [];
     private Func<T, object> setValueDelegate;
+    private readonly List<string> shadowProperties = [];
     
     private string columnName;
     
@@ -34,6 +37,7 @@ public class PropertyTypeBuilder<T>
     /// <param name="builder">This is the main build to help the user with fluent api</param>
     public PropertyTypeBuilder(Func<T, string> propertyName, EntityTypeBuilder<T> builder)
     {
+        ArgumentNullException.ThrowIfNull(propertyName);
         Name = propertyName.Invoke(default);
         Type = propertyName.Invoke(default).GetType();
         Builder = builder;
@@ -49,7 +53,7 @@ public class PropertyTypeBuilder<T>
     /// <summary>
     ///     Has map actions is when you need to map some property.
     /// </summary>
-    public bool HasMapAction => mapActions.Count > 0;
+    public bool HasMapAction => mappedActions.Count > 0 || mappedShadowActions.Count > 0;
 
     /// <summary>
     ///     Gets the name of the property.
@@ -114,6 +118,21 @@ public class PropertyTypeBuilder<T>
     }
 
     /// <summary>
+    /// During the map and load from the database, the property will be filled with the value of the shadow property.
+    /// </summary>
+    /// <param name="shadowPropertyName"></param>
+    /// <returns></returns>
+    public PropertyTypeBuilder<T> WithShadowProperty(string shadowPropertyName)
+    {
+        ArgumentNullException.ThrowIfNull(shadowPropertyName);
+        
+        if(!shadowProperties.Contains(shadowPropertyName))
+            shadowProperties.Add(shadowPropertyName);
+        
+        return this;
+    }
+
+    /// <summary>
     ///     Define when a fi
     /// </summary>
     /// eld will be required during save operations
@@ -128,16 +147,26 @@ public class PropertyTypeBuilder<T>
     /// <summary>
     ///     Define a delegate to parse the property.
     /// </summary>
-    /// <param name="parserDelegate">The action to parse the property.</param>
+    /// <param name="actionMap">The action to parse the property.</param>
     /// <returns>The current instance of <see cref="PropertyTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<T> WithMap(Action<T> parserDelegate)
+    public PropertyTypeBuilder<T> WithMap(Action<T> actionMap)
     {
-        if (parserDelegate == null) throw new ArgumentNullException(nameof(parserDelegate));
+        ArgumentNullException.ThrowIfNull(actionMap);
 
-        mapActions.Add(parserDelegate);
+        mappedActions.Add(actionMap);
+        
+        return this;
+    }
+    
+    public PropertyTypeBuilder<T> WithMap(Action<T,Dictionary<string,object>> actionMap)
+    {
+        ArgumentNullException.ThrowIfNull(actionMap);
+
+        mappedShadowActions.Add(actionMap);
 
         return this;
     }
+    
 
     /// <summary>
     ///     Define a delegate to set the value of the property based on the entity.
@@ -155,13 +184,20 @@ public class PropertyTypeBuilder<T>
     /// Invoke all map actions
     /// </summary>
     /// <param name="entity"></param>
+    /// <param name="shadowValues"></param>
     /// <returns></returns>
-    internal PropertyTypeBuilder<T> InvokeMaps(T entity)
+    internal PropertyTypeBuilder<T> InvokeMaps(T entity,Dictionary<string,object> shadowValues=null)
     {
         if (!HasMapAction)
             return this;
 
-        foreach (var action in mapActions) action(entity);
+        foreach (var action in mappedActions) 
+            action(entity);
+
+        if (shadowValues.IsNullOrEmpty()) return this;
+        
+        foreach (var action in mappedShadowActions) 
+            action(entity,shadowValues);
 
         return this;
     }
@@ -179,5 +215,10 @@ public class PropertyTypeBuilder<T>
         Type = Value?.GetType() ?? Type;
 
         return Value;
+    }
+    
+    public IList<string> GetShadowProperties()
+    {
+        return shadowProperties.AsReadOnly();
     }
 }

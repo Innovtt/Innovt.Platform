@@ -28,7 +28,10 @@ public class SampleDynamoContext : DynamoContext
 
         modelBuilder.Entity<Availability>().AutoMap().WithTableName("CloudExperts")
             .WithHashKey().SetDynamicValue(c => "CE#" + c.OwnerId).Builder
-            .WithRangeKey().SetDynamicValue(c => "CE#AVAILABILITY");
+            .WithRangeKey().SetDynamicValue(c => "CE#AVAILABILITY").Builder
+            .Ignore(p=>p.DayOfWeek);
+        
+        
             
         modelBuilder.AddPropertyConverter(typeof(DateTimeOffset), new DateTimeOffsetConverter());
         modelBuilder.AddPropertyConverter(typeof(DateTimeOffset?), new DateTimeOffsetConverter());

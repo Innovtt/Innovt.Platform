@@ -37,6 +37,7 @@ public class Availability : Entity<Guid>, IValidatableObject
     ///     Gets or sets the identifier of the owner of this availability.
     /// </summary>
     public Guid OwnerId { get; set; }
+    public int DayOfWeek { get; set; }
     
     /// <summary>
     ///     Performs validation on the Availability instance and returns validation results.

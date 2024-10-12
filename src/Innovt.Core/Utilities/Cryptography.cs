@@ -120,9 +120,8 @@ public static class Cryptography
     /// <returns>The decrypted plaintext string.</returns>
     public static string AesDecrypt(string encryptedText, string keyString)
     {
-        if (encryptedText == null) throw new ArgumentNullException(nameof(encryptedText));
-        if (keyString == null) throw new ArgumentNullException(nameof(keyString));
-
+        ArgumentNullException.ThrowIfNull(encryptedText);
+        ArgumentNullException.ThrowIfNull(keyString);
 
         using var aesAlg = Aes.Create();
         aesAlg.Key = Encoding.UTF8.GetBytes(keyString);
@@ -139,10 +138,11 @@ public static class Cryptography
     /// <param name="encryptedText">The encrypted string to be decrypted.</param>
     /// <param name="keyString">The key for Rijndael decryption.</param>
     /// <returns>The decrypted plaintext string.</returns>
+    [Obsolete("Obsolete")]
     public static string RijndaelDecrypt(string encryptedText, string keyString)
     {
-        if (encryptedText == null) throw new ArgumentNullException(nameof(encryptedText));
-        if (keyString == null) throw new ArgumentNullException(nameof(keyString));
+        ArgumentNullException.ThrowIfNull(encryptedText);
+        ArgumentNullException.ThrowIfNull(keyString);
 
         using var rijndael = Rijndael.Create();
         rijndael.Key = Encoding.UTF8.GetBytes(keyString);

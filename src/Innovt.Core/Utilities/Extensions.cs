@@ -452,24 +452,6 @@ public static class Extensions
         return result;
     }
 
-    //From Stackoverflow
-    /// <summary>
-    ///     Deserializes a byte array into an object of the specified type.
-    /// </summary>
-    /// <typeparam name="T">The type of object to deserialize into.</typeparam>
-    /// <param name="data">The byte array containing serialized data.</param>
-    /// <returns>The deserialized object of type T.</returns>
-    public static T FromByteArray<T>(this byte[] data)
-    {
-        if (data == null)
-            return default;
-
-        var bf = new BinaryFormatter();
-        using var ms = new MemoryStream(data);
-        var obj = bf.Deserialize(ms);
-        return (T)obj;
-    }
-
     /// <summary>
     ///     Converts a string to a uri base 64 pattern
     /// </summary>
