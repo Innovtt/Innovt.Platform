@@ -16,7 +16,7 @@ namespace Innovt.Core.Caching;
 ///     This class provides a caching service that supports multiple caching layers. It allows data retrieval and storage
 ///     through a series of cache layers, falling back to subsequent layers if data is not found in earlier layers.
 /// </remarks>
-public sealed class MultiLayerCacheService : ICacheService, IDisposable
+public sealed class MultiLayerCacheService : ICacheService
 {
     private readonly ILogger logger;
     private List<ICacheService> cacheServices;
@@ -34,10 +34,10 @@ public sealed class MultiLayerCacheService : ICacheService, IDisposable
     /// </exception>
     public MultiLayerCacheService(ICacheService cacheDefaultLayer, ILogger logger)
     {
-        if (cacheDefaultLayer == null) throw new ArgumentNullException(nameof(cacheDefaultLayer));
+        Check.NotNull(cacheDefaultLayer);
 
         this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        cacheServices = new List<ICacheService> { cacheDefaultLayer };
+        cacheServices = [cacheDefaultLayer];
     }
 
     /// <summary>
@@ -52,10 +52,10 @@ public sealed class MultiLayerCacheService : ICacheService, IDisposable
     /// </exception>
     public MultiLayerCacheService(ICacheService cacheDefaultLayer, ICacheService cacheSecondLayer, ILogger logger)
     {
-        if (cacheDefaultLayer == null) throw new ArgumentNullException(nameof(cacheDefaultLayer));
-        if (cacheSecondLayer == null) throw new ArgumentNullException(nameof(cacheSecondLayer));
+        Check.NotNull(cacheDefaultLayer);
+        Check.NotNull(cacheSecondLayer);
 
-        cacheServices = new List<ICacheService> { cacheDefaultLayer, cacheSecondLayer };
+        cacheServices = [cacheDefaultLayer, cacheSecondLayer];
 
         this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }

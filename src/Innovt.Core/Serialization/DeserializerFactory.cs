@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using Innovt.Core.Utilities;
 
 namespace Innovt.Core.Serialization;
 
@@ -60,7 +61,7 @@ public class DeserializerFactory
     /// </returns>
     public object Deserialize([NotNull] string key, string content)
     {
-        if (key == null) throw new ArgumentNullException(nameof(key));
+        Check.NotNull(key);
 
         if (string.IsNullOrEmpty(content))
             return null;

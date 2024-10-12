@@ -37,7 +37,7 @@ public class AuthorizationRepository : Repository, IAuthorizationRepository
     /// <inheritdoc />
     public async Task<AdminUser> GetAdminUser(UserFilter userFilter, CancellationToken cancellationToken)
     {
-        if (userFilter is null) throw new ArgumentNullException(nameof(userFilter));
+        ArgumentNullException.ThrowIfNull(userFilter);
 
         var request = new QueryRequest
         {
@@ -54,7 +54,7 @@ public class AuthorizationRepository : Repository, IAuthorizationRepository
     /// <inheritdoc />
     public async Task<IList<Role>> GetUserRolesBy(RoleByUserFilter filter, CancellationToken cancellationToken)
     {
-        if (filter is null) throw new ArgumentNullException(nameof(filter));
+        ArgumentNullException.ThrowIfNull(filter);
 
         var request = new QueryRequest
         {
@@ -79,7 +79,7 @@ public class AuthorizationRepository : Repository, IAuthorizationRepository
     /// <inheritdoc />
     public async Task Save(AdminUser adminUser, CancellationToken cancellationToken)
     {
-        if (adminUser is null) throw new ArgumentNullException(nameof(adminUser));
+        ArgumentNullException.ThrowIfNull(adminUser);
 
         var user = AdminUserDataModel.FromUser(adminUser);
 
@@ -104,7 +104,7 @@ public class AuthorizationRepository : Repository, IAuthorizationRepository
     /// <inheritdoc />
     public async Task Save(AuthUser user, CancellationToken cancellationToken)
     {
-        if (user is null) throw new ArgumentNullException(nameof(user));
+        ArgumentNullException.ThrowIfNull(user);
 
         var authUser = UserDataModel.FromUser(user);
 
@@ -114,7 +114,7 @@ public class AuthorizationRepository : Repository, IAuthorizationRepository
     /// <inheritdoc />
     public async Task RemoveUser(AuthUser user, CancellationToken cancellationToken)
     {
-        if (user is null) throw new ArgumentNullException(nameof(user));
+        ArgumentNullException.ThrowIfNull(user);
 
         var authUser = UserDataModel.FromUser(user);
 

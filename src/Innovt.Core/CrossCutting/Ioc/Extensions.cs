@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 using Innovt.Core.Exceptions;
+using Innovt.Core.Utilities;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Innovt.Core.CrossCutting.Ioc;
@@ -29,10 +30,9 @@ public static class Extensions
     public static void AddModule(this IServiceCollection services, Assembly assembly)
     {
         // Implementation of the AddModule method.
-        if (services is null) throw new ArgumentNullException(nameof(services));
-
-        if (assembly is null) throw new ArgumentNullException(nameof(assembly));
-
+        Check.NotNull(services);
+        Check.NotNull(assembly);
+        
         var modulesTypes = assembly.DefinedTypes.Where(t => t.IsSubclassOf(typeof(IocModule))).ToList();
 
         foreach (var moduleType in modulesTypes)
@@ -53,16 +53,15 @@ public static class Extensions
     public static void AddModule(this IServiceCollection services, IocModule module)
     {
         // Implementation of the AddModule method.
-        if (services is null) throw new ArgumentNullException(nameof(services));
-
-        if (module is null) throw new ArgumentNullException(nameof(module));
+        Check.NotNull(services);
+        Check.NotNull(module);
 
         var servicesModule = module.GetServices();
 
+        if (servicesModule == null) return;
 
-        if (servicesModule != null)
-            foreach (var service in servicesModule)
-                if (!services.Contains(service))
-                    services.Add(service);
+        foreach (var service in servicesModule)
+            if (!services.Contains(service))
+                services.Add(service);
     }
 }

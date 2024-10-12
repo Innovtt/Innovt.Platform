@@ -23,13 +23,13 @@ public static class QueueExtensions
         if (queueMessage is null || queueAttributes == null)
             return;
 
-        if (queueAttributes.ContainsKey("ApproximateReceiveCount"))
-            queueMessage.ApproximateReceiveCount = int.Parse(queueAttributes["ApproximateReceiveCount"],
+        if (queueAttributes.TryGetValue("ApproximateReceiveCount", out var approximateReceiveCount))
+            queueMessage.ApproximateReceiveCount = int.Parse(approximateReceiveCount,
                 NumberStyles.Integer, CultureInfo.InvariantCulture);
 
-        if (queueAttributes.ContainsKey("ApproximateFirstReceiveTimestamp"))
+        if (queueAttributes.TryGetValue("ApproximateFirstReceiveTimestamp", out var approximateFirstReceiveTimestamp))
             queueMessage.ApproximateFirstReceiveTimestamp =
-                double.Parse(queueAttributes["ApproximateFirstReceiveTimestamp"], NumberStyles.Number,
+                double.Parse(approximateFirstReceiveTimestamp, NumberStyles.Number,
                     CultureInfo.InvariantCulture);
     }
 }

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using Innovt.Core.Exceptions;
 
 namespace Innovt.Core.Utilities;
@@ -24,9 +25,9 @@ public static class Check
     /// <param name="parameterName">The name of the parameter associated with the value.</param>
     /// <returns>The original value if it is not null.</returns>
     /// <exception cref="ArgumentNullException">Thrown if the value is null.</exception>
-    public static T NotNull<T>([AllowNull] [NotNull] T value, string parameterName)
+    public static T NotNull<T>([AllowNull] [NotNull] T value,[CallerMemberName]string parameterName=null)
     {
-        if (value != null) return value;
+        if (!Equals(value, default(T))) return value;
 
         NotEmpty(parameterName, nameof(parameterName));
 
