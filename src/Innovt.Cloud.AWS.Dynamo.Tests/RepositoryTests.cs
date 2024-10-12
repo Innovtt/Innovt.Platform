@@ -13,7 +13,7 @@ using NUnit.Framework;
 namespace Innovt.Cloud.AWS.Dynamo.Tests;
 
 [TestFixture]
-//[Ignore("Only for local tests")]
+[Ignore("Only for local tests")]
 public class RepositoryTests
 {
     [SetUp]
