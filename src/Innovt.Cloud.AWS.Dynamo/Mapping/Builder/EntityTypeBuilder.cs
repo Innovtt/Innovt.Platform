@@ -13,6 +13,16 @@ namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 /// <typeparam name="TEntity">The type of the entity being defined.</typeparam>
 public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
 {
+    public EntityTypeBuilder(bool ignoreNonNativeTypes) : this()
+    {
+        IgnoreNonNativeTypes = ignoreNonNativeTypes;
+    }
+
+    //Keep it for reflection
+    public EntityTypeBuilder()
+    {
+    }
+
     /// <summary>
     ///     Gets or sets the table name associated with the entity type.
     /// </summary>
@@ -45,10 +55,18 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     /// </summary>
     public string EntityType { get; private set; } = typeof(TEntity).Name.ToUpper();
 
+    public string EntityTypeColumnName { get; private set; } = "EntityType";
+
     /// <summary>
     ///     Gets or sets the list of property type builders for defining properties.
     /// </summary>
     private List<PropertyTypeBuilder<TEntity>> Properties { get; } = [];
+
+    /// <summary>
+    ///     Tell the auto-map method to ignore all non-native types
+    /// </summary>
+    private bool IgnoreNonNativeTypes { get; }
+
 
     /// <summary>
     ///     Sets the table name associated with the entity type.
@@ -135,16 +153,6 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     }
 
     /// <summary>
-    ///     Sets the entity type for the DynamoDB table using a provided entity type function.
-    /// </summary>
-    /// <param name="expression">The entity type function to generate the entity type.</param>
-    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public EntityTypeBuilder<TEntity> WithEntityType<TProperty>(Expression<Func<TEntity, TProperty>> expression)
-    {
-        return WithEntityType(GetPropertyName(expression));
-    }
-
-    /// <summary>
     ///     Sets the entity type for the DynamoDB table using a specified entity type.
     /// </summary>
     /// <param name="entityTypeName">The entity type to set.</param>
@@ -152,6 +160,17 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     public EntityTypeBuilder<TEntity> WithEntityType(string entityTypeName)
     {
         EntityType = entityTypeName;
+        return this;
+    }
+
+    /// <summary>
+    ///     The default entity type column name is EntityType. This is used to split the entities in the same table.
+    /// </summary>
+    /// <param name="entityTypeColumnName">The name of your customized entity type column</param>
+    /// <returns></returns>
+    public EntityTypeBuilder<TEntity> WithEntityTypeColumnName(string entityTypeColumnName = "EntityType")
+    {
+        EntityTypeColumnName = entityTypeColumnName;
         return this;
     }
 
@@ -226,12 +245,22 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     }
 
     /// <summary>
+    ///     Check if complex types should be ignored. The default is true and can be changed by the user for each entity.
+    /// </summary>
+    /// <param name="ignoreNonNativeTypes"></param>
+    /// <returns></returns>
+    private bool ShouldIgnoreNonNativeTypes(bool? ignoreNonNativeTypes)
+    {
+        return ignoreNonNativeTypes ?? IgnoreNonNativeTypes;
+    }
+
+    /// <summary>
     ///     Starts a reflection process to auto map all properties of the entity type.
     /// </summary>
     /// <param name="withDefaultKeys">Default keys are PK and SK</param>
     /// <param name="ignoreNonNativeTypes">Ignore all complex types</param>
     /// <returns></returns>
-    public EntityTypeBuilder<TEntity> AutoMap(bool withDefaultKeys = true, bool ignoreNonNativeTypes = false)
+    public EntityTypeBuilder<TEntity> AutoMap(bool withDefaultKeys = true, bool? ignoreNonNativeTypes = null)
     {
         var entityType = typeof(TEntity);
 
@@ -241,13 +270,17 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
         var properties = entityType.GetProperties(
             BindingFlags.Public | BindingFlags.Instance);
 
-        if (ignoreNonNativeTypes)
+        if (ShouldIgnoreNonNativeTypes(ignoreNonNativeTypes))
             properties = properties.Where(p => TypeUtil.IsPrimitive(p.PropertyType)).ToArray();
 
         foreach (var propertyInfo in properties) AddProperty(propertyInfo.Name, propertyInfo.GetType());
 
         if (withDefaultKeys)
             WithDefaultKeys();
+
+        //Set the entity type as the entity name
+        if (EntityTypeColumnName.IsNotNullOrEmpty())
+            Property(EntityTypeColumnName).SetDynamicValue(p => EntityType);
 
         return this;
     }

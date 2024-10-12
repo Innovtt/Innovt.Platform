@@ -8,7 +8,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.IO.Compression;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
 namespace Innovt.Core.Utilities;
@@ -207,19 +206,19 @@ public static class Extensions
     /// <returns>A string representation of the DateTimeOffset in a custom format.</returns>
     public static string FormatToExtensionDateTime(this DateTimeOffset value)
     {
-        var weekDay = value.ToString("dddd").Split('-');
+        var weekDay = value.ToString("dddd",CultureInfo.DefaultThreadCurrentCulture).Split('-');
 
-        var dia = weekDay[0][..1].ToUpper() + weekDay[0][1..];
+        var dia = weekDay[0][..1].ToUpper(CultureInfo.DefaultThreadCurrentCulture) + weekDay[0][1..];
 
         if (weekDay.Length == 2)
-            dia += "-" + weekDay[1][..1].ToUpper() + weekDay[1][1..];
+            dia += "-" + weekDay[1][..1].ToUpper(CultureInfo.DefaultThreadCurrentCulture) + weekDay[1][1..];
 
-        var mes = value.ToString("MMMM");
+        var mes = value.ToString("MMMM",CultureInfo.DefaultThreadCurrentCulture);
 
-        mes = mes[..1].ToUpper() + mes[1..];
+        mes = mes[..1].ToUpper(CultureInfo.DefaultThreadCurrentCulture) + mes[1..];
 
-        return dia + ", " + value.ToString("dd") + " de " + mes + " de " + value.ToString("yyyy") + ", " +
-               value.ToString("t") + "h";
+        return dia + ", " + value.ToString("dd",CultureInfo.DefaultThreadCurrentCulture) + " de " + mes + " de " + value.ToString("yyyy",CultureInfo.DefaultThreadCurrentCulture) + ", " +
+               value.ToString("t",CultureInfo.DefaultThreadCurrentCulture) + "h";
     }
 
     /// <summary>
@@ -450,24 +449,6 @@ public static class Extensions
         result = result.PadRight(middleLength, '*');
 
         return result;
-    }
-
-    //From Stackoverflow
-    /// <summary>
-    ///     Deserializes a byte array into an object of the specified type.
-    /// </summary>
-    /// <typeparam name="T">The type of object to deserialize into.</typeparam>
-    /// <param name="data">The byte array containing serialized data.</param>
-    /// <returns>The deserialized object of type T.</returns>
-    public static T FromByteArray<T>(this byte[] data)
-    {
-        if (data == null)
-            return default;
-
-        var bf = new BinaryFormatter();
-        using var ms = new MemoryStream(data);
-        var obj = bf.Deserialize(ms);
-        return (T)obj;
     }
 
     /// <summary>

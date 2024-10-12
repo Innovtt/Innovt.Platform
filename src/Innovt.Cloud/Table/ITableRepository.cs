@@ -80,7 +80,7 @@ public interface ITableRepository : IDisposable
     /// <returns>A task representing the asynchronous delete operation.</returns>
     Task DeleteAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default)
         where T : class;
-    
+
     /// <summary>
     ///     Asynchronously a list of item that are from the same type.
     /// </summary>
@@ -89,7 +89,6 @@ public interface ITableRepository : IDisposable
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     Task DeleteRangeAsync<T>(ICollection<T> messages, CancellationToken cancellationToken = default) where T : class;
-
 
 
     /// <summary>

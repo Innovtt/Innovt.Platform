@@ -5,6 +5,7 @@
 using System;
 using System.Data.SqlClient;
 using Dapper;
+using Innovt.Core.Utilities;
 
 namespace Innovt.Data.Migration;
 
@@ -20,7 +21,7 @@ public static class SecurityMigration
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="connectionString" /> is null.</exception>
     public static void CreateTablesIfNotExist(string connectionString)
     {
-        if (connectionString == null) throw new ArgumentNullException(nameof(connectionString));
+        Check.NotNull(connectionString);
 
         var query = @" /****** Object:  Table [dbo].[Permission] Script Date: 10/1/2018 2:58:00 PM ******/
                           IF OBJECT_ID (N'Permission', N'U') IS NULL 

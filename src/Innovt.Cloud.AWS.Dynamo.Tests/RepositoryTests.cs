@@ -74,6 +74,12 @@ public class RepositoryTests
                 Assert.That(user1.Id, Is.EqualTo(userByIdAndSort.Id));
             });
 
+            if (user1 == null)
+            {
+                Assert.Fail("User not found");
+                return;
+            }
+
             var user2 = user1;
             //user2.Id = "59c6be94-eeea-4185-ab59-fc66207cf387";
             user2.FirstName = "Michel";
@@ -310,8 +316,8 @@ public class RepositoryTests
 
         Assert.Pass("Transaction Saved");
     }
-    
-    
+
+
     [Test]
     public async Task QuerySkill()
     {
@@ -328,13 +334,67 @@ public class RepositoryTests
                 KeyConditionExpression = "PK=:pk AND begins_with(SK,:sk)",
                 Filter = new
                 {
-                    pk = $"CE#6f9d96c5-3639-4a78-96d5-50293c30a83e",
+                    pk = "CE#6f9d96c5-3639-4a78-96d5-50293c30a83e",
                     sk = "CE#SKILL#"
                 }
             };
-            
-            var expertSkills = await repository.QueryAsync<CloudExpertSkill>(queryRequest, CancellationToken.None).ConfigureAwait(false);
-            
+
+            var expertSkills = await repository.QueryAsync<CloudExpertSkill>(queryRequest, CancellationToken.None)
+                .ConfigureAwait(false);
+
+            Assert.That(expertSkills, Is.Not.Null);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
+
+    [Test]
+    public async Task AddAvailability()
+    {
+        try
+        {
+            var context = new SampleDynamoContext();
+
+            var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
+
+            repository = new SampleRepository(context, loggerMock, awsConfiguration);
+
+            var availablity = new Availability();
+            availablity.OwnerId = Guid.Parse("6f9d96c5-3639-4a78-96d5-50293c30a83e");
+            availablity.TimeZoneId = 3;
+            availablity.Days = new List<AvailabilityDay>
+            {
+                new()
+                {
+                    StartTime = TimeOnly.MaxValue,
+                    AvailableDays = new List<int> { 1, 2 }
+                },
+                new()
+                {
+                    StartTime = TimeOnly.MaxValue,
+                    AvailableDays = new List<int> { 3, 4 }
+                }
+            };
+
+            //await repository.AddAsync(availablity, CancellationToken.None).ConfigureAwait(false);
+
+            var queryRequest = new QueryRequest
+            {
+                KeyConditionExpression = "PK=:pk AND SK=:sk",
+                Filter = new
+                {
+                    pk = "CE#6f9d96c5-3639-4a78-96d5-50293c30a83e",
+                    sk = "CE#AVAILABILITY"
+                }
+            };
+
+            var expertSkills = await repository.QueryAsync<Availability>(queryRequest, CancellationToken.None)
+                .ConfigureAwait(false);
+
             Assert.That(expertSkills, Is.Not.Null);
         }
         catch (Exception e)

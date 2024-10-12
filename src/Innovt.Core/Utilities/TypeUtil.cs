@@ -32,7 +32,26 @@ public static class TypeUtil
         typeof(ushort),
         typeof(Guid),
         typeof(byte[]),
-        typeof(MemoryStream)
+        typeof(MemoryStream),
+        typeof(Stream),
+        typeof(TimeSpan),
+        typeof(DateTimeOffset),
+        typeof(DateTimeOffset?),
+        typeof(bool?),
+        typeof(byte?),
+        typeof(char?),
+        typeof(decimal?),
+        typeof(double?),
+        typeof(int?),
+        typeof(long?),
+        typeof(sbyte?),
+        typeof(short?),
+        typeof(float?),
+        typeof(uint?),
+        typeof(ulong?),
+        typeof(ushort?),
+        typeof(Guid?),
+        typeof(TimeSpan?)
     ];
 
 
@@ -46,7 +65,7 @@ public static class TypeUtil
     /// <param name="type">The type to add.</param>
     public static void AddPrimitiveType(Type type)
     {
-        if (type == null) throw new ArgumentNullException(nameof(type));
+        Check.NotNull(type);
 
         if (PrimitiveTypesList.Contains(type)) return;
 
@@ -73,6 +92,8 @@ public static class TypeUtil
     /// <returns>True if the type is a collection; otherwise, false.</returns>
     public static bool IsCollection(Type type)
     {
+        if (type == null) return false;
+
         return type.IsArray || (type.IsGenericType && typeof(IEnumerable).IsAssignableFrom(type));
     }
 
@@ -83,6 +104,8 @@ public static class TypeUtil
     /// <returns>True if the type is a dictionary; otherwise, false.</returns>
     public static bool IsDictionary(Type type)
     {
+        if (type == null) return false;
+
         return type.IsArray || (type.IsGenericType && typeof(IDictionary<,>).IsAssignableFrom(type)) ||
                typeof(IDictionary).IsAssignableFrom(type);
     }
@@ -94,6 +117,7 @@ public static class TypeUtil
     /// <returns></returns>
     public static bool IsNumericList(IList list)
     {
+        if (list == null) return false;
         if (list.Count == 0) return false;
 
         var type = list[0].GetType();

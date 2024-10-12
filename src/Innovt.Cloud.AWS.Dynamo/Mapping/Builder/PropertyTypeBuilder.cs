@@ -9,12 +9,10 @@ namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 /// <typeparam name="T">The type of the entity.</typeparam>
 public class PropertyTypeBuilder<T>
 {
-    private readonly List<Action<T>> mapActions = [];
-    private Func<T, object> setValueDelegate;
-    
-    private string columnName;
-    
+    private readonly List<Action<T>> mappedActions = [];
 
+    private string columnName;
+    private Func<T, object> setValueDelegate;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="PropertyTypeBuilder{T}" /> class with a specified property name and
@@ -36,11 +34,11 @@ public class PropertyTypeBuilder<T>
     /// <param name="builder">This is the main build to help the user with fluent api</param>
     public PropertyTypeBuilder(Func<T, string> propertyName, EntityTypeBuilder<T> builder)
     {
+        ArgumentNullException.ThrowIfNull(propertyName);
         Name = propertyName.Invoke(default);
         Type = propertyName.Invoke(default).GetType();
         Builder = builder;
     }
-
 
     public EntityTypeBuilder<T> Builder { get; set; }
 
@@ -52,7 +50,7 @@ public class PropertyTypeBuilder<T>
     /// <summary>
     ///     Has map actions is when you need to map some property.
     /// </summary>
-    public bool HasMapAction => mapActions.Count > 0;
+    public bool HasMapAction => mappedActions.Count > 0;
 
     /// <summary>
     ///     Gets the name of the property.
@@ -85,36 +83,6 @@ public class PropertyTypeBuilder<T>
     public int MaxLength { get; private set; }
 
     /// <summary>
-    ///     Specifies that the property is of string type.
-    /// </summary>
-    /// <returns>The current instance of <see cref="PropertyTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<T> AsString()
-    {
-        Type = typeof(string);
-        return this;
-    }
-
-    /// <summary>
-    ///     Specifies that the property is of decimal type.
-    /// </summary>
-    /// <returns>The current instance of <see cref="PropertyTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<T> AsDecimal()
-    {
-        Type = typeof(decimal);
-        return this;
-    }
-
-    /// <summary>
-    ///     Specifies that the property is of binary type.
-    /// </summary>
-    /// <returns>The current instance of <see cref="PropertyTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<T> AsBinary()
-    {
-        Type = typeof(byte[]);
-        return this;
-    }
-
-    /// <summary>
     ///     Specifies a custom column name for the property in the database.
     /// </summary>
     /// <param name="name">The custom column name.</param>
@@ -135,7 +103,11 @@ public class PropertyTypeBuilder<T>
         return this;
     }
 
-    //Set a default value for the property. Use HasMappedValue to set a value based on the entity.
+    /// <summary>
+    ///     It set a value for property.
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
     public PropertyTypeBuilder<T> WithValue(object value)
     {
         Value = value;
@@ -157,16 +129,17 @@ public class PropertyTypeBuilder<T>
     /// <summary>
     ///     Define a delegate to parse the property.
     /// </summary>
-    /// <param name="parserDelegate">The action to parse the property.</param>
+    /// <param name="actionMap">The action to parse the property.</param>
     /// <returns>The current instance of <see cref="PropertyTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<T> WithMap(Action<T> parserDelegate)
+    public PropertyTypeBuilder<T> WithMap(Action<T> actionMap)
     {
-        if (parserDelegate == null) throw new ArgumentNullException(nameof(parserDelegate));
+        ArgumentNullException.ThrowIfNull(actionMap);
 
-        mapActions.Add(parserDelegate);
+        mappedActions.Add(actionMap);
 
         return this;
     }
+
 
     /// <summary>
     ///     Define a delegate to set the value of the property based on the entity.
@@ -181,7 +154,7 @@ public class PropertyTypeBuilder<T>
     }
 
     /// <summary>
-    /// Invoke all map actions
+    ///     Invoke all map actions
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
@@ -190,7 +163,8 @@ public class PropertyTypeBuilder<T>
         if (!HasMapAction)
             return this;
 
-        foreach (var action in mapActions) action(entity);
+        foreach (var action in mappedActions)
+            action(entity);
 
         return this;
     }

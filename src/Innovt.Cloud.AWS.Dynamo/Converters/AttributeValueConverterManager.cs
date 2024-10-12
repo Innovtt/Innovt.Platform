@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Amazon.DynamoDBv2.Model;
-using Innovt.Cloud.AWS.Dynamo.Helpers;
 using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.Dynamo.Converters;
@@ -37,7 +36,8 @@ public static class AttributeValueConverterManager
         { typeof(long), value => new AttributeValue { N = Convert.ToString(value, CultureInfo.InvariantCulture) } },
         {
             typeof(HashSet<int>),
-            value => new AttributeValue { NS = ((HashSet<int>)value).Select(i => i.ToString()).ToList() }
+            value => new AttributeValue
+                { NS = ((HashSet<int>)value).Select(i => i.ToString(CultureInfo.InvariantCulture)).ToList() }
         },
         {
             typeof(DateTime),
@@ -54,6 +54,11 @@ public static class AttributeValueConverterManager
 
     #endregion
 
+    private static AttributeValue NullAttributeValue()
+    {
+        return new AttributeValue { NULL = true };
+    }
+
     /// <summary>
     ///     Creates a dynamo db attribute value from an object.
     /// </summary>
@@ -62,58 +67,78 @@ public static class AttributeValueConverterManager
     /// <returns>A dynamo db attribute value.</returns>
     public static AttributeValue CreateAttributeValue(object value, HashSet<object> visitedObjects = null)
     {
-        switch (value)
-        {
-            case null:
-                return new AttributeValue { NULL = true };
-            case AttributeValue attributeValue:
-                return attributeValue;
-        }
+        if (value is null)
+            return NullAttributeValue();
+
+        if (value is AttributeValue attributeValue)
+            return attributeValue;
 
         // Initialize the visited objects set if it's not provided
-        visitedObjects ??= new HashSet<object>(new ReferenceEqualityComparer());
+        visitedObjects ??= new HashSet<object>(ReferenceEqualityComparer.Instance);
 
         // Check for circular references. Add the value if it's not already in the set
-        if (!visitedObjects.Add(value)) return new AttributeValue { NULL = true };
+        if (!visitedObjects.Add(value))
+            return NullAttributeValue();
 
         var valueType = value.GetType();
 
         // If we have a direct match, use the converter
-        if (Converters.TryGetValue(valueType, out var converter)) return converter(value);
+        if (Converters.TryGetValue(valueType, out var converter))
+            return converter(value);
 
-        switch (value)
+        var result = TryConvertComplexEnumerable(value, visitedObjects);
+
+        result ??= TryConvertComplexType(value, visitedObjects, valueType);
+
+        return result ?? new AttributeValue { S = value.ToString() };
+    }
+
+    /// <summary>
+    ///     This method will handle only complex enumerable types.
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="visitedObjects"></param>
+    /// <returns></returns>
+    private static AttributeValue TryConvertComplexEnumerable(object value, HashSet<object> visitedObjects)
+    {
+        return value switch
         {
             // Handle numeric lists using a custom check
-            case IList list when TypeUtil.IsNumericList(list):
-                return new AttributeValue
-                {
-                    NS = list.Cast<object>().Select(o => Convert.ToString(o, CultureInfo.InvariantCulture)).ToList()
-                };
-            case IDictionary<string, object> dict:
-                return new AttributeValue
-                {
-                    M = dict.ToDictionary(item => item.Key, item => CreateAttributeValue(item.Value, visitedObjects))
-                };
-            case IList<object> objectList:
-                return new AttributeValue
-                    { L = objectList.Select(o => CreateAttributeValue(o, visitedObjects)).ToList() };
-        }
-
-        // Handle complex objects (non-string classes)
-        if (valueType.IsClass && valueType != typeof(string))
-            return new AttributeValue
+            IList list when TypeUtil.IsNumericList(list) => new AttributeValue
             {
-                M = valueType
-                    .GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                    .Where(prop => prop.CanRead)
-                    .GroupBy(prop => prop.Name)
-                    .Select(group => group.First())
-                    .ToDictionary(
-                        prop => prop.Name,
-                        prop => CreateAttributeValue(prop.GetValue(value), visitedObjects)
-                    )
-            };
+                NS = list.Cast<object>().Select(o => Convert.ToString(o, CultureInfo.InvariantCulture)).ToList()
+            },
+            IDictionary<string, object> dict => new AttributeValue
+            {
+                M = dict.ToDictionary(item => item.Key, item => CreateAttributeValue(item.Value, visitedObjects))
+            },
+            IList<object> objectList => new AttributeValue
+            {
+                L = objectList.Select(o => CreateAttributeValue(o, visitedObjects)).ToList()
+            },
+            IEnumerable<object> objectList => new AttributeValue
+            {
+                L = objectList.Select(o => CreateAttributeValue(o, visitedObjects)).ToList()
+            },
+            _ => null
+        };
+    }
 
-        return new AttributeValue { S = value.ToString() };
+    private static AttributeValue TryConvertComplexType(object value, HashSet<object> visitedObjects, Type valueType)
+    {
+        if (!valueType.IsClass || valueType == typeof(string)) return null;
+
+        return new AttributeValue
+        {
+            M = valueType
+                .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                .Where(prop => prop.CanRead)
+                .GroupBy(prop => prop.Name)
+                .Select(group => group.First())
+                .ToDictionary(
+                    prop => prop.Name,
+                    prop => CreateAttributeValue(prop.GetValue(value), visitedObjects)
+                )
+        };
     }
 }

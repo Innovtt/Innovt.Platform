@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 using Innovt.Core.Exceptions;
+using Innovt.Core.Utilities;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Innovt.Core.CrossCutting.Ioc;
@@ -105,7 +106,7 @@ public static class IocLocator
     public static void AddModule(IocModule module)
     {
         // Implementation of the AddModule method.
-        if (module == null) throw new ArgumentNullException(nameof(module));
+        Check.NotNull(module);
 
         ThrowExceptionIfContainerIsNotInitialized();
 
@@ -144,7 +145,7 @@ public static class IocLocator
     public static void AddModuleFromAssembly(Assembly assembly)
     {
         // Implementation of the AddModuleFromAssembly method.
-        if (assembly == null) throw new ArgumentNullException(nameof(assembly));
+        Check.NotNull(assembly);
 
         ThrowExceptionIfContainerIsNotInitialized();
 

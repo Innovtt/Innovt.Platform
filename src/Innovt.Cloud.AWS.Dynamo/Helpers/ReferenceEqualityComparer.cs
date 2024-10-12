@@ -1,8 +1,6 @@
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-
 namespace Innovt.Cloud.AWS.Dynamo.Helpers;
 
+/*
 internal sealed class ReferenceEqualityComparer : IEqualityComparer<object>
 {
     public new bool Equals(object x, object y)
@@ -15,3 +13,4 @@ internal sealed class ReferenceEqualityComparer : IEqualityComparer<object>
         return RuntimeHelpers.GetHashCode(obj);
     }
 }
+*/

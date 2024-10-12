@@ -55,8 +55,11 @@ public abstract class Entity
     ///     Checks if the entity is new (i.e., not persisted in the database yet).
     /// </summary>
     /// <returns><c>true</c> if the entity is new; otherwise, <c>false</c>.</returns>
-    public bool IsNew() => isNew;
-   
+    public bool IsNew()
+    {
+        return isNew;
+    }
+
     /// <summary>
     /// </summary>
     /// <returns></returns>

@@ -41,7 +41,7 @@ public static class Cryptography
     /// <returns>The encrypted string.</returns>
     internal static string Encrypt(ICryptoTransform cryptoTransform, string plainText)
     {
-        if (plainText == null) throw new ArgumentNullException(nameof(plainText));
+        Check.NotNull(plainText);
 
         using var resultStream = new MemoryStream();
         using (var sWriter =
@@ -63,7 +63,7 @@ public static class Cryptography
     /// <returns>The decrypted plaintext string.</returns>
     internal static string Decrypt(ICryptoTransform cryptoTransform, string encrypted)
     {
-        if (encrypted == null) throw new ArgumentNullException(nameof(encrypted));
+        Check.NotNull(encrypted);
 
         var buffer = Convert.FromBase64String(encrypted);
 
@@ -80,9 +80,9 @@ public static class Cryptography
     /// <returns>The encrypted string.</returns>
     public static string AesEncrypt(string plainText, string keyString)
     {
-        if (plainText == null) throw new ArgumentNullException(nameof(plainText));
-        if (keyString == null) throw new ArgumentNullException(nameof(keyString));
-
+        Check.NotNull(plainText);
+        Check.NotNull(keyString);
+        
         using var aesAlg = Aes.Create();
         aesAlg.Key = Encoding.UTF8.GetBytes(keyString);
         aesAlg.IV = new byte[16];
@@ -100,8 +100,8 @@ public static class Cryptography
     /// <returns>The encrypted string.</returns>
     public static string RijndaelEncrypt(string plainText, string keyString)
     {
-        if (plainText == null) throw new ArgumentNullException(nameof(plainText));
-        if (keyString == null) throw new ArgumentNullException(nameof(keyString));
+        Check.NotNull(plainText);
+        Check.NotNull(keyString);
 
         using var rijndael = Rijndael.Create();
         rijndael.Key = Encoding.UTF8.GetBytes(keyString);
@@ -120,9 +120,8 @@ public static class Cryptography
     /// <returns>The decrypted plaintext string.</returns>
     public static string AesDecrypt(string encryptedText, string keyString)
     {
-        if (encryptedText == null) throw new ArgumentNullException(nameof(encryptedText));
-        if (keyString == null) throw new ArgumentNullException(nameof(keyString));
-
+        Check.NotNull(encryptedText);
+        Check.NotNull(keyString);
 
         using var aesAlg = Aes.Create();
         aesAlg.Key = Encoding.UTF8.GetBytes(keyString);
@@ -139,10 +138,11 @@ public static class Cryptography
     /// <param name="encryptedText">The encrypted string to be decrypted.</param>
     /// <param name="keyString">The key for Rijndael decryption.</param>
     /// <returns>The decrypted plaintext string.</returns>
+    [Obsolete("Obsolete")]
     public static string RijndaelDecrypt(string encryptedText, string keyString)
     {
-        if (encryptedText == null) throw new ArgumentNullException(nameof(encryptedText));
-        if (keyString == null) throw new ArgumentNullException(nameof(keyString));
+        Check.NotNull(encryptedText);
+        Check.NotNull(keyString);
 
         using var rijndael = Rijndael.Create();
         rijndael.Key = Encoding.UTF8.GetBytes(keyString);
