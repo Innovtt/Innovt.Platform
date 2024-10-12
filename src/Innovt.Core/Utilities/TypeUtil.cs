@@ -51,9 +51,7 @@ public static class TypeUtil
         typeof(ulong?),
         typeof(ushort?),
         typeof(Guid?),
-        typeof(TimeSpan?),
-        typeof(TimeOnly),
-        typeof(TimeOnly?)
+        typeof(TimeSpan?)
     ];
 
 
@@ -67,7 +65,7 @@ public static class TypeUtil
     /// <param name="type">The type to add.</param>
     public static void AddPrimitiveType(Type type)
     {
-        ArgumentNullException.ThrowIfNull(type);
+        Check.NotNull(type);
 
         if (PrimitiveTypesList.Contains(type)) return;
 

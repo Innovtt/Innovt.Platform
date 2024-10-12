@@ -8,6 +8,7 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using Innovt.Core.Serialization;
+using Innovt.Core.Utilities;
 
 namespace Innovt.Core.Http;
 
@@ -168,8 +169,8 @@ public static class HttpConnection
     public static T Post<T>(Uri endpoint, string dataToSend, ISerializer serializer,
         NameValueCollection headerData = null, int? connectionTimeout = null) where T : class
     {
-        ArgumentNullException.ThrowIfNull(serializer);
-
+        Check.NotNull(serializer);
+        
         var response = SendHttpWebRequest(endpoint, HttpMethod.Post.Method, dataToSend, headerData,
             connectionTimeout);
 

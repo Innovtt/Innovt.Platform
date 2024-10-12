@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.Table;
 
@@ -38,7 +39,7 @@ public class TransactionWriteRequest
     /// <param name="item"></param>
     public void AddItem(TransactionWriteItem item)
     {
-        ArgumentNullException.ThrowIfNull(item);
+        Check.NotNull(item);
 
         TransactItems.Add(item);
     }

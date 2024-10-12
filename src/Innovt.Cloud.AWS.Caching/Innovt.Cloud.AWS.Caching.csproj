@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.1</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <PackageId>Innovt.Cloud.AWS.Caching</PackageId>
         <PackageVersion>8.1.9</PackageVersion>
         <Authors>Michel Borges</Authors>

@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.Table;
 
@@ -45,7 +46,7 @@ public class BatchWriteItemRequest
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="batchRequestItem" /> is null.</exception>
     public void AddItem(string tableName, BatchWriteItem batchRequestItem)
     {
-        ArgumentNullException.ThrowIfNull(batchRequestItem);
+        Check.NotNull(batchRequestItem);
 
         if (!Items.TryGetValue(tableName, out var item))
             Items.Add(tableName, [batchRequestItem]);

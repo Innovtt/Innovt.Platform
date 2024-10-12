@@ -28,6 +28,8 @@ internal static class AttributeConverter
     static AttributeConverter()
     {
         TypeUtil.AddPrimitiveType(typeof(Primitive));
+        TypeUtil.AddPrimitiveType(typeof(TimeOnly));
+        TypeUtil.AddPrimitiveType(typeof(TimeOnly?));
     }
 
     /// <summary>

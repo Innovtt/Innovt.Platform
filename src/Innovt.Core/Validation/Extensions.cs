@@ -9,6 +9,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Innovt.Core.Cqrs.Commands;
 using Innovt.Core.Exceptions;
+using Innovt.Core.Utilities;
 
 namespace Innovt.Core.Validation;
 
@@ -28,7 +29,7 @@ public static class Extensions
     public static IEnumerable<ValidationResult> Validate(this IEnumerable<IValidatableObject> array,
         ValidationContext context = null)
     {
-        ArgumentNullException.ThrowIfNull(array);
+        Check.NotNull(array);
 
         var validationResult = new List<ValidationResult>();
 
@@ -110,7 +111,7 @@ public static class Extensions
     /// <param name="context">An optional <see cref="ValidationContext" /> to specify validation context.</param>
     public static void EnsureIsValid([NotNull] this ICommand command, ValidationContext context = null)
     {
-        ArgumentNullException.ThrowIfNull(command);
+        Check.NotNull(command);
 
         EnsureIsValid((IValidatableObject)command, context);
     }
@@ -123,7 +124,7 @@ public static class Extensions
     /// <param name="contextName">The name of the validation context.</param>
     public static void EnsureIsValid([NotNull] this ICommand command, string contextName)
     {
-        ArgumentNullException.ThrowIfNull(command);
+        Check.NotNull(command);
 
         EnsureIsValid((IValidatableObject)command,
             new ValidationContext(command) { MemberName = contextName, DisplayName = contextName });

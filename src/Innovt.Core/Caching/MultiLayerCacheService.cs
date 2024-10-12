@@ -34,7 +34,7 @@ public sealed class MultiLayerCacheService : ICacheService
     /// </exception>
     public MultiLayerCacheService(ICacheService cacheDefaultLayer, ILogger logger)
     {
-        ArgumentNullException.ThrowIfNull(cacheDefaultLayer);
+        Check.NotNull(cacheDefaultLayer);
 
         this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
         cacheServices = [cacheDefaultLayer];
@@ -52,8 +52,8 @@ public sealed class MultiLayerCacheService : ICacheService
     /// </exception>
     public MultiLayerCacheService(ICacheService cacheDefaultLayer, ICacheService cacheSecondLayer, ILogger logger)
     {
-        ArgumentNullException.ThrowIfNull(cacheDefaultLayer);
-        ArgumentNullException.ThrowIfNull(cacheSecondLayer);
+        Check.NotNull(cacheDefaultLayer);
+        Check.NotNull(cacheSecondLayer);
 
         cacheServices = [cacheDefaultLayer, cacheSecondLayer];
 
