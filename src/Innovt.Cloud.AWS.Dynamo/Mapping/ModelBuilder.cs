@@ -8,7 +8,7 @@ using Innovt.Core.Utilities;
 namespace Innovt.Cloud.AWS.Dynamo.Mapping;
 
 /// <summary>
-/// Determine how to build the model and the relation with all mapped entities.
+///     Determine how to build the model and the relation with all mapped entities.
 /// </summary>
 public sealed class ModelBuilder
 {
@@ -114,7 +114,7 @@ public sealed class ModelBuilder
 
         //Initialize the entityTypeBuilder if it is null
         entityTypeBuilder ??= new EntityTypeBuilder<TEntity>(IgnoreNonNativeTypes);
-        
+
         Entities.TryAdd(typeof(TEntity).Name, entityTypeBuilder);
 
         return entityTypeBuilder;

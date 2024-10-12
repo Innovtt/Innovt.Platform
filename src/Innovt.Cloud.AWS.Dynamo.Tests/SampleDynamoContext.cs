@@ -7,12 +7,8 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests;
 
 public class SampleDynamoContext : DynamoContext
 {
-    public SampleDynamoContext()
-    {
-        
-    }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {   
+    {
         ArgumentNullException.ThrowIfNull(modelBuilder);
 
         //modelBuilder.IgnoreNonNativeTypes = true;
@@ -24,15 +20,14 @@ public class SampleDynamoContext : DynamoContext
 
         modelBuilder.Entity<CloudExpertSkill>().AutoMap().WithTableName("CloudExperts")
             .WithHashKey().SetDynamicValue(c => "CE#" + c.OwnerId).Builder
-            .WithRangeKey().SetDynamicValue(c => $"CE#SKILL#" + c.Id);
+            .WithRangeKey().SetDynamicValue(c => "CE#SKILL#" + c.Id);
 
         modelBuilder.Entity<Availability>().AutoMap().WithTableName("CloudExperts")
             .WithHashKey().SetDynamicValue(c => "CE#" + c.OwnerId).Builder
             .WithRangeKey().SetDynamicValue(c => "CE#AVAILABILITY").Builder
-            .Ignore(p=>p.DayOfWeek);
-        
-        
-            
+            .Ignore(p => p.DayOfWeek);
+
+
         modelBuilder.AddPropertyConverter(typeof(DateTimeOffset), new DateTimeOffsetConverter());
         modelBuilder.AddPropertyConverter(typeof(DateTimeOffset?), new DateTimeOffsetConverter());
     }

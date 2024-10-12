@@ -44,7 +44,7 @@ public class BatchGetItemRequest
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="batchRequestItem" /> is null.</exception>
     public void AddItem(string tableName, BatchGetItem batchRequestItem)
     {
-        if (batchRequestItem is null) throw new ArgumentNullException(nameof(batchRequestItem));
+        ArgumentNullException.ThrowIfNull(batchRequestItem);
 
         if (Items.TryGetValue(tableName, out var tableItem))
             tableItem.Keys.AddRange(batchRequestItem.Keys);

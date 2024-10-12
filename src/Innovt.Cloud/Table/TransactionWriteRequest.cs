@@ -38,7 +38,7 @@ public class TransactionWriteRequest
     /// <param name="item"></param>
     public void AddItem(TransactionWriteItem item)
     {
-        if (item == null) throw new ArgumentNullException(nameof(item));
+        ArgumentNullException.ThrowIfNull(item);
 
         TransactItems.Add(item);
     }

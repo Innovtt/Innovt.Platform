@@ -58,7 +58,7 @@ public static class Extensions
         var servicesModule = module.GetServices();
 
         if (servicesModule == null) return;
-        
+
         foreach (var service in servicesModule)
             if (!services.Contains(service))
                 services.Add(service);

@@ -107,7 +107,7 @@ public class EntityTypeBuilderTests
         Assert.That(properties, Is.Not.Null);
         Assert.That(properties, Has.Count.EqualTo(16));
     }
-    
+
     [Test]
     public void EntityTypeBuilderShouldIgnoreComplexEntities()
     {

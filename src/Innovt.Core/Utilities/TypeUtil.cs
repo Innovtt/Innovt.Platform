@@ -95,7 +95,7 @@ public static class TypeUtil
     public static bool IsCollection(Type type)
     {
         if (type == null) return false;
-        
+
         return type.IsArray || (type.IsGenericType && typeof(IEnumerable).IsAssignableFrom(type));
     }
 
@@ -107,7 +107,7 @@ public static class TypeUtil
     public static bool IsDictionary(Type type)
     {
         if (type == null) return false;
-        
+
         return type.IsArray || (type.IsGenericType && typeof(IDictionary<,>).IsAssignableFrom(type)) ||
                typeof(IDictionary).IsAssignableFrom(type);
     }
@@ -121,7 +121,7 @@ public static class TypeUtil
     {
         if (list == null) return false;
         if (list.Count == 0) return false;
-        
+
         var type = list[0].GetType();
         return type == typeof(int) || type == typeof(double) || type == typeof(float) ||
                type == typeof(decimal) || type == typeof(long);

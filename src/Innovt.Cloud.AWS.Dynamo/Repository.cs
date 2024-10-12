@@ -64,7 +64,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         where T : class, new()
     {
         if (sqlStatementRequest is null) throw new ArgumentNullException(nameof(sqlStatementRequest));
-
+        
         using (ActivityRepository.StartActivity())
         {
             var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(ct =>

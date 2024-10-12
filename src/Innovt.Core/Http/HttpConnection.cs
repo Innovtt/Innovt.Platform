@@ -168,7 +168,7 @@ public static class HttpConnection
     public static T Post<T>(Uri endpoint, string dataToSend, ISerializer serializer,
         NameValueCollection headerData = null, int? connectionTimeout = null) where T : class
     {
-        if (serializer == null) throw new ArgumentNullException(nameof(serializer));
+        ArgumentNullException.ThrowIfNull(serializer);
 
         var response = SendHttpWebRequest(endpoint, HttpMethod.Post.Method, dataToSend, headerData,
             connectionTimeout);

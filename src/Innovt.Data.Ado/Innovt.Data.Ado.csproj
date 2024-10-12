@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFramework>net8</TargetFramework>
         <PackageId>Innovt.Data.Ado</PackageId>
-        <PackageVersion>8.1.9</PackageVersion>
+        <PackageVersion>8.1.10</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -17,7 +17,7 @@
         <PackageReference Include="Npgsql" Version="8.0.4"/>
         <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="23.6.0"/>
         <PackageReference Include="System.Data.SqlClient" Version="4.8.6"/>
-        <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.10" />
+        <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.10"/>
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

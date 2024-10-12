@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Innovt.Core.Collections;
 
 namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 
@@ -10,13 +9,11 @@ namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 /// <typeparam name="T">The type of the entity.</typeparam>
 public class PropertyTypeBuilder<T>
 {
-    private readonly List<Action<T,Dictionary<string,object>>> mappedShadowActions = [];
     private readonly List<Action<T>> mappedActions = [];
-    private Func<T, object> setValueDelegate;
-    private readonly List<string> shadowProperties = [];
-    
+
     private string columnName;
-    
+    private Func<T, object> setValueDelegate;
+
     /// <summary>
     ///     Initializes a new instance of the <see cref="PropertyTypeBuilder{T}" /> class with a specified property name and
     ///     type.
@@ -53,7 +50,7 @@ public class PropertyTypeBuilder<T>
     /// <summary>
     ///     Has map actions is when you need to map some property.
     /// </summary>
-    public bool HasMapAction => mappedActions.Count > 0 || mappedShadowActions.Count > 0;
+    public bool HasMapAction => mappedActions.Count > 0;
 
     /// <summary>
     ///     Gets the name of the property.
@@ -105,30 +102,15 @@ public class PropertyTypeBuilder<T>
         MaxLength = maxLength;
         return this;
     }
-    
+
     /// <summary>
-    /// It set a value for property. 
+    ///     It set a value for property.
     /// </summary>
     /// <param name="value"></param>
     /// <returns></returns>
     public PropertyTypeBuilder<T> WithValue(object value)
     {
         Value = value;
-        return this;
-    }
-
-    /// <summary>
-    /// During the map and load from the database, the property will be filled with the value of the shadow property.
-    /// </summary>
-    /// <param name="shadowPropertyName"></param>
-    /// <returns></returns>
-    public PropertyTypeBuilder<T> WithShadowProperty(string shadowPropertyName)
-    {
-        ArgumentNullException.ThrowIfNull(shadowPropertyName);
-        
-        if(!shadowProperties.Contains(shadowPropertyName))
-            shadowProperties.Add(shadowPropertyName);
-        
         return this;
     }
 
@@ -154,19 +136,10 @@ public class PropertyTypeBuilder<T>
         ArgumentNullException.ThrowIfNull(actionMap);
 
         mappedActions.Add(actionMap);
-        
-        return this;
-    }
-    
-    public PropertyTypeBuilder<T> WithMap(Action<T,Dictionary<string,object>> actionMap)
-    {
-        ArgumentNullException.ThrowIfNull(actionMap);
-
-        mappedShadowActions.Add(actionMap);
 
         return this;
     }
-    
+
 
     /// <summary>
     ///     Define a delegate to set the value of the property based on the entity.
@@ -181,23 +154,17 @@ public class PropertyTypeBuilder<T>
     }
 
     /// <summary>
-    /// Invoke all map actions
+    ///     Invoke all map actions
     /// </summary>
     /// <param name="entity"></param>
-    /// <param name="shadowValues"></param>
     /// <returns></returns>
-    internal PropertyTypeBuilder<T> InvokeMaps(T entity,Dictionary<string,object> shadowValues=null)
+    internal PropertyTypeBuilder<T> InvokeMaps(T entity)
     {
         if (!HasMapAction)
             return this;
 
-        foreach (var action in mappedActions) 
+        foreach (var action in mappedActions)
             action(entity);
-
-        if (shadowValues.IsNullOrEmpty()) return this;
-        
-        foreach (var action in mappedShadowActions) 
-            action(entity,shadowValues);
 
         return this;
     }
@@ -215,10 +182,5 @@ public class PropertyTypeBuilder<T>
         Type = Value?.GetType() ?? Type;
 
         return Value;
-    }
-    
-    public IList<string> GetShadowProperties()
-    {
-        return shadowProperties.AsReadOnly();
     }
 }

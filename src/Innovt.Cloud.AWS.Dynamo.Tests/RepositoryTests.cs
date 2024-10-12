@@ -13,7 +13,7 @@ using NUnit.Framework;
 namespace Innovt.Cloud.AWS.Dynamo.Tests;
 
 [TestFixture]
-//[Ignore("Only for local tests")]
+[Ignore("Only for local tests")]
 public class RepositoryTests
 {
     [SetUp]
@@ -316,8 +316,8 @@ public class RepositoryTests
 
         Assert.Pass("Transaction Saved");
     }
-    
-    
+
+
     [Test]
     public async Task QuerySkill()
     {
@@ -334,13 +334,14 @@ public class RepositoryTests
                 KeyConditionExpression = "PK=:pk AND begins_with(SK,:sk)",
                 Filter = new
                 {
-                    pk = $"CE#6f9d96c5-3639-4a78-96d5-50293c30a83e",
+                    pk = "CE#6f9d96c5-3639-4a78-96d5-50293c30a83e",
                     sk = "CE#SKILL#"
                 }
             };
-            
-            var expertSkills = await repository.QueryAsync<CloudExpertSkill>(queryRequest, CancellationToken.None).ConfigureAwait(false);
-            
+
+            var expertSkills = await repository.QueryAsync<CloudExpertSkill>(queryRequest, CancellationToken.None)
+                .ConfigureAwait(false);
+
             Assert.That(expertSkills, Is.Not.Null);
         }
         catch (Exception e)
@@ -349,8 +350,8 @@ public class RepositoryTests
             throw;
         }
     }
-    
-    
+
+
     [Test]
     public async Task AddAvailability()
     {
@@ -365,37 +366,36 @@ public class RepositoryTests
             var availablity = new Availability();
             availablity.OwnerId = Guid.Parse("6f9d96c5-3639-4a78-96d5-50293c30a83e");
             availablity.TimeZoneId = 3;
-            availablity.Days = new List<AvailabilityDay>()
+            availablity.Days = new List<AvailabilityDay>
             {
-                new AvailabilityDay()
+                new()
                 {
                     StartTime = TimeOnly.MaxValue,
-                    AvailableDays = new List<int>() { 1, 2}
+                    AvailableDays = new List<int> { 1, 2 }
                 },
-                new AvailabilityDay()
+                new()
                 {
                     StartTime = TimeOnly.MaxValue,
-                    AvailableDays = new List<int>() { 3, 4}
+                    AvailableDays = new List<int> { 3, 4 }
                 }
             };
-            
-           //await repository.AddAsync(availablity, CancellationToken.None).ConfigureAwait(false);
-           
-           var queryRequest = new QueryRequest
-           {
-               KeyConditionExpression = "PK=:pk AND SK=:sk",
-               Filter = new
-               {
-                   pk = $"CE#6f9d96c5-3639-4a78-96d5-50293c30a83e",
-                   sk = "CE#AVAILABILITY"
-               }
-           };
-            
-           var expertSkills = await repository.QueryAsync<Availability>(queryRequest, CancellationToken.None).ConfigureAwait(false);
-            
-           Assert.That(expertSkills, Is.Not.Null);
-           
-           
+
+            //await repository.AddAsync(availablity, CancellationToken.None).ConfigureAwait(false);
+
+            var queryRequest = new QueryRequest
+            {
+                KeyConditionExpression = "PK=:pk AND SK=:sk",
+                Filter = new
+                {
+                    pk = "CE#6f9d96c5-3639-4a78-96d5-50293c30a83e",
+                    sk = "CE#AVAILABILITY"
+                }
+            };
+
+            var expertSkills = await repository.QueryAsync<Availability>(queryRequest, CancellationToken.None)
+                .ConfigureAwait(false);
+
+            Assert.That(expertSkills, Is.Not.Null);
         }
         catch (Exception e)
         {

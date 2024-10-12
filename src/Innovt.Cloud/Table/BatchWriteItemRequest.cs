@@ -45,11 +45,11 @@ public class BatchWriteItemRequest
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="batchRequestItem" /> is null.</exception>
     public void AddItem(string tableName, BatchWriteItem batchRequestItem)
     {
-        if (batchRequestItem is null) throw new ArgumentNullException(nameof(batchRequestItem));
+        ArgumentNullException.ThrowIfNull(batchRequestItem);
 
-        if (!Items.ContainsKey(tableName))
+        if (!Items.TryGetValue(tableName, out var item))
             Items.Add(tableName, [batchRequestItem]);
         else
-            Items[tableName].Add(batchRequestItem);
+            item.Add(batchRequestItem);
     }
 }

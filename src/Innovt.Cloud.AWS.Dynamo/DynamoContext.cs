@@ -21,10 +21,10 @@ public abstract class DynamoContext
     public ModelBuilder ModelBuilder { get; private set; }
 
     /// <summary>
-    ///    It tells the context to ignore null properties when saving an entity.
+    ///     It tells the context to ignore null properties when saving an entity.
     /// </summary>
     public bool IgnoreNullValues { get; set; } = true;
-    
+
     private void BuildModel()
     {
         lock (ObjLock)

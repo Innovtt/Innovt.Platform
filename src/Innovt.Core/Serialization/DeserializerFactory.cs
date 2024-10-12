@@ -60,7 +60,7 @@ public class DeserializerFactory
     /// </returns>
     public object Deserialize([NotNull] string key, string content)
     {
-        if (key == null) throw new ArgumentNullException(nameof(key));
+        ArgumentNullException.ThrowIfNull(key);
 
         if (string.IsNullOrEmpty(content))
             return null;

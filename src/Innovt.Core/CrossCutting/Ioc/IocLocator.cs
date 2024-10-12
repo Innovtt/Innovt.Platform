@@ -105,7 +105,7 @@ public static class IocLocator
     public static void AddModule(IocModule module)
     {
         // Implementation of the AddModule method.
-        if (module == null) throw new ArgumentNullException(nameof(module));
+        ArgumentNullException.ThrowIfNull(module);
 
         ThrowExceptionIfContainerIsNotInitialized();
 
@@ -144,7 +144,7 @@ public static class IocLocator
     public static void AddModuleFromAssembly(Assembly assembly)
     {
         // Implementation of the AddModuleFromAssembly method.
-        if (assembly == null) throw new ArgumentNullException(nameof(assembly));
+        ArgumentNullException.ThrowIfNull(assembly);
 
         ThrowExceptionIfContainerIsNotInitialized();
 

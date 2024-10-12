@@ -13,7 +13,6 @@ using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
 using Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
-using Innovt.Core.Collections;
 using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.Dynamo.Converters;
@@ -30,7 +29,7 @@ internal static class AttributeConverter
     {
         TypeUtil.AddPrimitiveType(typeof(Primitive));
     }
-    
+
     /// <summary>
     ///     Converts a dictionary of string and object pairs to DynamoDB AttributeValues.
     /// </summary>
@@ -75,9 +74,10 @@ internal static class AttributeConverter
     /// <returns>
     ///     An object of the specified desiredType containing the converted value from the AttributeValue.
     /// </returns>
-    private static object CreateAttributeValueToObject(AttributeValue value, Type desiredType, DynamoContext context = null)
+    private static object CreateAttributeValueToObject(AttributeValue value, Type desiredType,
+        DynamoContext context = null)
     {
-        return AttributeValueToObjectConverterManager.CreateAttributeValueToObject(value, desiredType,context);
+        return AttributeValueToObjectConverterManager.CreateAttributeValueToObject(value, desiredType, context);
     }
 
     /// <summary>
@@ -198,7 +198,7 @@ internal static class AttributeConverter
         if (instanceProps.Count == 0)
             instanceProps = properties.Where(p => p.GetCustomAttribute<DynamoDBPropertyAttribute>() != null &&
                                                   propertyName.Equals(
-                                                      p.GetCustomAttribute<DynamoDBPropertyAttribute>().AttributeName,
+                                                      p.GetCustomAttribute<DynamoDBPropertyAttribute>()?.AttributeName,
                                                       StringComparison.OrdinalIgnoreCase)).ToList();
 
         if (instanceProps.Count == 0)
@@ -278,9 +278,13 @@ internal static class AttributeConverter
     private static object ConvertNonPrimitiveType(PropertyInfo property, AttributeValue attributeValue, object value,
         IPropertyConverter propertyConverter = null)
     {
-        if (property.PropertyType.IsEnum)
-            return Enum.Parse(property.PropertyType, value.ToString(), true);
+        if (value is null)
+            return null;
 
+        if (property.PropertyType.IsEnum)
+            return Enum.Parse(property.PropertyType, value.ToString()!, true);
+
+        // ReSharper disable once SuspiciousTypeConversion.Global
         var customConverter = propertyConverter ?? property.GetCustomAttributes<DynamoDBPropertyAttribute>()
             .FirstOrDefault(a => a.Converter != null)?.Converter as IPropertyConverter;
 
@@ -291,7 +295,7 @@ internal static class AttributeConverter
 
         return convertedEntry is null ? null : customConverter.FromEntry(convertedEntry);
     }
-    
+
     /// <summary>
     ///     Convert an attribute array to specific type. The method is called when the object is being retrieved from DynamoDB
     /// </summary>
@@ -299,7 +303,8 @@ internal static class AttributeConverter
     /// <param name="items"></param>
     /// <param name="context"></param>
     /// <returns></returns>
-    public static T ConvertAttributeValuesToType<T>(Dictionary<string, AttributeValue> items, DynamoContext context = null)
+    public static T ConvertAttributeValuesToType<T>(Dictionary<string, AttributeValue> items,
+        DynamoContext context = null)
         where T : class, new()
     {
         if (items is null) return default;
@@ -314,51 +319,48 @@ internal static class AttributeConverter
 
         //Check if has type builder to decide how will be filled the object
         var typeBuilder = context?.HasTypeBuilder<T>() == true ? context.GetTypeBuilder<T>() : null;
-           
+
         //Iterating over the attributes from dynamoDB
         foreach (var attributeValue in items)
         {
             var propertyKey = attributeValue.Key; //The default property name is the one from the database.
             var newPropertyKey = typeBuilder?.GetProperty(propertyKey)?.Name;
-             
+
             if (newPropertyKey != null)
                 propertyKey = newPropertyKey;
-            
+
             var property = GetProperty(properties, propertyKey, instance.GetType());
 
             if (property is null)
                 continue;
 
             var convertedValue = ConvertAttributeValueToObject(attributeValue.Value, property, context);
-            
+
             //setting the converted value
             property.SetValue(instance, convertedValue, null);
         }
-        
+
         InvokeMappedProperties(context, properties, instance);
 
         return instance;
     }
-    
-    private static object ConvertAttributeValueToObject(AttributeValue attributeValue, PropertyInfo property, DynamoContext context=null)
+
+    private static object ConvertAttributeValueToObject(AttributeValue attributeValue, PropertyInfo property,
+        DynamoContext context = null)
     {
         // Convert the attribute value to an object based on its type
         var value = CreateAttributeValueToObject(attributeValue, property.PropertyType, context);
 
         // Determine how to convert the value based on the property type
         if (TypeUtil.IsPrimitive(property.PropertyType))
-        {
             // Handle primitive types (e.g., int, string, bool)
             return ConvertType(property.PropertyType, value);
-        }
 
         // Handle collections or dictionaries
         if (TypeUtil.IsCollection(property.PropertyType))
-        {
             return TypeUtil.IsDictionary(property.PropertyType)
                 ? value // If it's a dictionary, use the value as-is
                 : ItemsToCollection(property.PropertyType, (IEnumerable<object>)value); // Convert to collection
-        }
 
         // Handle non-primitive types (e.g., custom objects, complex types)
         return ConvertNonPrimitiveType(property, attributeValue, value,
@@ -391,21 +393,7 @@ internal static class AttributeConverter
             if (propertyTypeBuilder is null)
                 continue;
 
-            var shadowProperties = propertyTypeBuilder.GetShadowProperties();
-            
-            if (dbValues is null || shadowProperties.IsNullOrEmpty())
-            {
-                propertyTypeBuilder.InvokeMaps(instance);
-                continue;
-            }
-
-            // Collect relevant shadow property values from dbValues
-            var shadowPropertyValues = shadowProperties
-                .Where(shadowProperty => dbValues.TryGetValue(shadowProperty, out _))
-                .ToDictionary(shadowProperty => shadowProperty, shadowProperty => dbValues[shadowProperty]);
-
-            // Invoke mappings with the collected shadow property values
-            propertyTypeBuilder.InvokeMaps(instance, shadowPropertyValues);
+            propertyTypeBuilder.InvokeMaps(instance);
         }
     }
 
@@ -434,24 +422,21 @@ internal static class AttributeConverter
 
         //No Mapped properties - All properties will be filled using only the object properties
         if (typeBuilder is null)
-        {
             foreach (var property in properties)
                 attributes.Add(property.Name, CreateAttributeValue(property.GetValue(instance)));
-        }
         else
-        {
             ConvertToAttributeValueMapWithContext(instance, context, properties, typeBuilder, attributes);
-        }
 
         return attributes;
     }
 
-    private static void ConvertToAttributeValueMapWithContext<T>(T instance, DynamoContext context, 
-        PropertyInfo[] properties, EntityTypeBuilder<T> typeBuilder, Dictionary<string, AttributeValue> attributes) where T : class
+    private static void ConvertToAttributeValueMapWithContext<T>(T instance, DynamoContext context,
+        PropertyInfo[] properties, EntityTypeBuilder<T> typeBuilder, Dictionary<string, AttributeValue> attributes)
+        where T : class
     {
         //Invoke the mapped properties to get the value.
         InvokeMappedProperties(context, properties, instance);
-            
+
         var mappedProperties = typeBuilder.GetProperties();
 
         foreach (var mappedProperty in mappedProperties)
@@ -462,9 +447,9 @@ internal static class AttributeConverter
             //This will guarantee that only mapped (No ignored) Columns will be filled.
             if (propertyTypeBuilder is null)
                 continue;
-            
+
             var property = Array.Find(properties, p => p.Name == propertyKey);
-            
+
             var propertyType = property?.PropertyType;
             var propertyValue = property?.GetValue(instance);
 

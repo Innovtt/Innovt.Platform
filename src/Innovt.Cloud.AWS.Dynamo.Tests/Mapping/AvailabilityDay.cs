@@ -7,6 +7,6 @@ public class AvailabilityDay
 {
     public List<int> AvailableDays { get; set; }
     public TimeOnly StartTime { get; set; }
-    
+
     public TimeOnly EndingTime { get; set; }
 }

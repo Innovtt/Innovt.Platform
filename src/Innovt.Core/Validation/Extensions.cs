@@ -28,7 +28,7 @@ public static class Extensions
     public static IEnumerable<ValidationResult> Validate(this IEnumerable<IValidatableObject> array,
         ValidationContext context = null)
     {
-        if (array == null) throw new ArgumentNullException(nameof(array));
+        ArgumentNullException.ThrowIfNull(array);
 
         var validationResult = new List<ValidationResult>();
 
@@ -110,7 +110,7 @@ public static class Extensions
     /// <param name="context">An optional <see cref="ValidationContext" /> to specify validation context.</param>
     public static void EnsureIsValid([NotNull] this ICommand command, ValidationContext context = null)
     {
-        if (command == null) throw new ArgumentNullException(nameof(command));
+        ArgumentNullException.ThrowIfNull(command);
 
         EnsureIsValid((IValidatableObject)command, context);
     }
@@ -123,7 +123,7 @@ public static class Extensions
     /// <param name="contextName">The name of the validation context.</param>
     public static void EnsureIsValid([NotNull] this ICommand command, string contextName)
     {
-        if (command == null) throw new ArgumentNullException(nameof(command));
+        ArgumentNullException.ThrowIfNull(command);
 
         EnsureIsValid((IValidatableObject)command,
             new ValidationContext(command) { MemberName = contextName, DisplayName = contextName });
