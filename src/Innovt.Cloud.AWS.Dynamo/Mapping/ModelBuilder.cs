@@ -18,7 +18,7 @@ public sealed class ModelBuilder
 
     public ModelBuilder AddConfiguration<T>(IEntityTypeDataModelMapper<T> entityTypeDataModelMapper) where T : class
     {
-        if (entityTypeDataModelMapper == null) throw new ArgumentNullException(nameof(entityTypeDataModelMapper));
+        ArgumentNullException.ThrowIfNull(entityTypeDataModelMapper);
 
         var entityTypeBuilder = new EntityTypeBuilder<T>(IgnoreNonNativeTypes);
 
@@ -80,9 +80,11 @@ public sealed class ModelBuilder
 
     public bool HasTypeBuilder(Type type)
     {
+        ArgumentNullException.ThrowIfNull(type);
+        
         var entityName = type.Name;
 
-        return Entities.TryGetValue(entityName, out var value);
+        return Entities.TryGetValue(entityName, out _);
     }
 
     /// <summary>
@@ -95,7 +97,7 @@ public sealed class ModelBuilder
     {
         var entityName = GetEntityName<T>(instance);
 
-        return Entities.TryGetValue(entityName, out var value);
+        return Entities.TryGetValue(entityName, out _);
     }
 
     /// <summary>

@@ -33,7 +33,7 @@ public class User : BaseUser
     public string Context { get; set; } //4
     public bool IsActive { get; set; } //5
 
-    public DateTime? LastAccess { get; set; } //6
+    public DateTimeOffset? LastAccess { get; set; } //6
     public int JobPositionId { get; set; } //7
     public new string Id { get; set; } //8
 

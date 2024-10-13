@@ -63,8 +63,8 @@ public abstract class Repository : AwsBaseService, ITableRepository
         ExecuteSqlStatementRequest sqlStatementRequest, CancellationToken cancellationToken = default)
         where T : class, new()
     {
-        if (sqlStatementRequest is null) throw new ArgumentNullException(nameof(sqlStatementRequest));
-        
+        ArgumentNullException.ThrowIfNull(sqlStatementRequest);
+
         using (ActivityRepository.StartActivity())
         {
             var response = await CreateDefaultRetryAsyncPolicy().ExecuteAsync(ct =>
@@ -98,7 +98,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     public async Task<List<T>> BatchGetItem<T>(BatchGetItemRequest batchGetItemRequest,
         CancellationToken cancellationToken = default) where T : class, new()
     {
-        if (batchGetItemRequest is null) throw new ArgumentNullException(nameof(batchGetItemRequest));
+        ArgumentNullException.ThrowIfNull(batchGetItemRequest);
 
         using (ActivityRepository.StartActivity())
         {
@@ -123,7 +123,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     public TransactionWriteItem CreateTransactionWriteItem<T>(T instance,
         TransactionWriteOperationType operationType = TransactionWriteOperationType.Put) where T : class, new()
     {
-        if (instance == null) throw new ArgumentNullException(nameof(instance));
+        ArgumentNullException.ThrowIfNull(instance);
 
         var attributes = new Dictionary<string, AttributeValue>();
 
@@ -198,7 +198,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         Task<(Dictionary<string, AttributeValue> LastEvaluatedKey, IList<Dictionary<string, AttributeValue>> Items)>
         InternalQueryAsync<T>(QueryRequest request, CancellationToken cancellationToken = default) where T : class
     {
-        if (request is null) throw new ArgumentNullException(nameof(request));
+        ArgumentNullException.ThrowIfNull(request);
 
         using var activity = ActivityRepository.StartActivity();
 
@@ -249,7 +249,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     private async Task<(Dictionary<string, AttributeValue> ExclusiveStartKey, IList<T> Items)> InternalScanAsync<T>(
         ScanRequest request, CancellationToken cancellationToken = default) where T : class, new()
     {
-        if (request is null) throw new ArgumentNullException(nameof(request));
+        ArgumentNullException.ThrowIfNull(request);
 
         using var activity = ActivityRepository.StartActivity();
 
@@ -499,7 +499,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         {
             var keys = TableHelper.GetKeyValues(message, context);
 
-            await DeleteAsync<T>(keys.HashKey, keys.RangeKey?.ToString(), cancellationToken);
+            await DeleteAsync<T>(keys.HashKey, keys.RangeKey?.ToString(), cancellationToken).ConfigureAwait(false);
         }
     }
 
@@ -594,7 +594,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             };
 
             //If the user request a return value
-            var newInstance = await UpdateAsync<T>(updateItemRequest, cancellationToken);
+            var newInstance = await UpdateAsync<T>(updateItemRequest, cancellationToken).ConfigureAwait(false);
 
             return newInstance ?? instance;
         }
@@ -612,9 +612,8 @@ public abstract class Repository : AwsBaseService, ITableRepository
     protected async Task UpdateAsync(string tableName, Dictionary<string, AttributeValue> key,
         Dictionary<string, AttributeValueUpdate> attributeUpdates, CancellationToken cancellationToken = default)
     {
-        if (key is null) throw new ArgumentNullException(nameof(key));
-
-        if (attributeUpdates is null) throw new ArgumentNullException(nameof(attributeUpdates));
+        ArgumentNullException.ThrowIfNull(key);
+        ArgumentNullException.ThrowIfNull(attributeUpdates);
 
         using var activity = ActivityRepository.StartActivity();
 
@@ -685,7 +684,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     public async Task<T> GetByIdAsync<T>(object id, string rangeKey = null,
         CancellationToken cancellationToken = default) where T : class, new()
     {
-        if (id == null) throw new ArgumentNullException(nameof(id));
+        ArgumentNullException.ThrowIfNull(id);
 
         using (ActivityRepository.StartActivity())
         {
@@ -699,7 +698,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
                 }
             };
 
-            var result = await QueryAsync<T>(queryRequest, cancellationToken);
+            var result = await QueryAsync<T>(queryRequest, cancellationToken).ConfigureAwait(false);
 
             return result?.SingleOrDefault();
         }
@@ -726,7 +725,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
                 }
             };
 
-            return await QueryAsync<T>(queryRequest, cancellationToken);
+            return await QueryAsync<T>(queryRequest, cancellationToken).ConfigureAwait(false);
         }
     }
 
@@ -742,7 +741,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     {
         using var activity = ActivityRepository.StartActivity();
 
-        if (request is null) throw new ArgumentNullException(nameof(request));
+        ArgumentNullException.ThrowIfNull(request);
 
         var (_, response) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
@@ -764,7 +763,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         where TResult1 : class, new()
         where TResult2 : class, new()
     {
-        if (request is null) throw new ArgumentNullException(nameof(request));
+        ArgumentNullException.ThrowIfNull(request);
 
         using (ActivityRepository.StartActivity())
         {
@@ -792,8 +791,8 @@ public abstract class Repository : AwsBaseService, ITableRepository
         where TResult2 : class, new()
         where TResult3 : class, new()
     {
-        if (request is null) throw new ArgumentNullException(nameof(request));
-        if (splitBy == null) throw new ArgumentNullException(nameof(splitBy));
+        ArgumentNullException.ThrowIfNull(request);
+        ArgumentNullException.ThrowIfNull(splitBy);
 
         using (ActivityRepository.StartActivity())
         {
@@ -823,8 +822,8 @@ public abstract class Repository : AwsBaseService, ITableRepository
         where TResult3 : class, new()
         where TResult4 : class, new()
     {
-        if (request is null) throw new ArgumentNullException(nameof(request));
-        if (splitBy == null) throw new ArgumentNullException(nameof(splitBy));
+        ArgumentNullException.ThrowIfNull(request);
+        ArgumentNullException.ThrowIfNull(splitBy);
 
         using (ActivityRepository.StartActivity())
         {
@@ -858,8 +857,8 @@ public abstract class Repository : AwsBaseService, ITableRepository
         where TResult4 : class, new()
         where TResult5 : class, new()
     {
-        if (request is null) throw new ArgumentNullException(nameof(request));
-        if (splitBy == null) throw new ArgumentNullException(nameof(splitBy));
+        ArgumentNullException.ThrowIfNull(request);
+        ArgumentNullException.ThrowIfNull(splitBy);
 
         using (ActivityRepository.StartActivity())
         {
@@ -880,7 +879,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     public async Task<T> QueryFirstOrDefaultAsync<T>(QueryRequest request,
         CancellationToken cancellationToken = default) where T : class, new()
     {
-        if (request is null) throw new ArgumentNullException(nameof(request));
+        ArgumentNullException.ThrowIfNull(request);
 
         using (ActivityRepository.StartActivity())
         {
@@ -905,7 +904,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     public async Task<PagedCollection<T>> QueryPaginatedByAsync<T>(QueryRequest request,
         CancellationToken cancellationToken = default) where T : class, new()
     {
-        if (request is null) throw new ArgumentNullException(nameof(request));
+        ArgumentNullException.ThrowIfNull(request);
 
         using (ActivityRepository.StartActivity())
         {
@@ -956,7 +955,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     public async Task<PagedCollection<T>> ScanPaginatedByAsync<T>(ScanRequest request,
         CancellationToken cancellationToken = default) where T : class, new()
     {
-        if (request is null) throw new ArgumentNullException(nameof(request));
+        ArgumentNullException.ThrowIfNull(request);
 
         using (ActivityRepository.StartActivity())
         {

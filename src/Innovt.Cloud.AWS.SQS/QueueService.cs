@@ -251,9 +251,9 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
     public async Task<IList<MessageQueueResult>> EnQueueBatchAsync(IEnumerable<MessageBatchRequest> message,
         int? delaySeconds = null, CancellationToken cancellationToken = default)
     {
-        if (message == null) throw new ArgumentNullException(nameof(message));
+        ArgumentNullException.ThrowIfNull(message);
 
-        using var activity = QueueActivitySource.StartActivity("QueueBatchAsync");
+        using var activity = QueueActivitySource.StartActivity();
         activity?.SetTag("sqs.delay_seconds", delaySeconds);
 
         var messageRequest = new SendMessageBatchRequest

@@ -31,7 +31,7 @@ public class RedisCacheService : AwsBaseService, ICacheService
     public RedisCacheService(ILogger logger, IAwsConfiguration configuration,
         RedisProviderConfiguration providerConfiguration) : base(logger, configuration)
     {
-        if (providerConfiguration == null) throw new ArgumentNullException(nameof(providerConfiguration));
+        ArgumentNullException.ThrowIfNull(providerConfiguration);
 
         redisClientManager =
             new PooledRedisClientManager(providerConfiguration.ReadWriteHosts, providerConfiguration.ReadOnlyHosts)

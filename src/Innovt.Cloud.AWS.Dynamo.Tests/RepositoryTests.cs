@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,7 +15,7 @@ using NUnit.Framework;
 namespace Innovt.Cloud.AWS.Dynamo.Tests;
 
 [TestFixture]
-[Ignore("Only for local tests")]
+//[Ignore("Only for local tests")]
 public class RepositoryTests
 {
     [SetUp]
@@ -403,4 +405,38 @@ public class RepositoryTests
             throw;
         }
     }
+    
+    [Test]
+    public async Task QueryUserWithDateTimeOffSetColumn()
+    {
+        try
+        {
+            var context = new SampleDynamoContext();
+
+            var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
+
+            repository = new SampleRepository(context, loggerMock, awsConfiguration);
+            
+            var queryRequest = new QueryRequest
+            {
+                KeyConditionExpression = "PK=:pk AND begins_with(SK,:sk)",
+                Filter = new
+                {
+                    pk = $"USER#34d824f8-a021-7070-e070-e65e7f27107e",
+                    sk = "PROFILE"
+                }
+            };
+            
+            var expertSkills = await repository.QueryAsync<User>(queryRequest, CancellationToken.None)
+                .ConfigureAwait(false);
+
+            Assert.That(expertSkills, Is.Not.Null);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
 }
