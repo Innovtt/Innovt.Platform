@@ -4,6 +4,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -36,7 +37,7 @@ public class DateTimeConverter : JsonConverter<DateTime>
     {
         Debug.Assert(typeToConvert == typeof(DateTime));
 
-        return DateTime.Parse(reader.GetString());
+        return DateTime.Parse(reader.GetString(),CultureInfo.InvariantCulture);
     }
 
     /// <summary>

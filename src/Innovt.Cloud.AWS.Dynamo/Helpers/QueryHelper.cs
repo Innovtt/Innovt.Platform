@@ -214,7 +214,7 @@ internal static class QueryHelper
     internal static Dictionary<string, KeysAndAttributes> CreateBatchGetItemRequest(BatchGetItemRequest request,
         DynamoContext context = null)
     {
-        if (request is null) throw new ArgumentNullException(nameof(request));
+        ArgumentNullException.ThrowIfNull(request);
 
         var result = new Dictionary<string, KeysAndAttributes>();
 
@@ -249,7 +249,7 @@ internal static class QueryHelper
     internal static BatchWriteItemRequest CreateBatchWriteItemRequest(Table.BatchWriteItemRequest request,
         DynamoContext context = null)
     {
-        if (request is null) throw new ArgumentNullException(nameof(request));
+        ArgumentNullException.ThrowIfNull(request);
 
         var writeRequest = new BatchWriteItemRequest
         {
@@ -587,7 +587,9 @@ internal static class QueryHelper
         {
             var value = attributeValue.S != null ? $"S:{attributeValue.S}" : $"N:{attributeValue.N}";
 
-            stringBuilder.Append($"{attributeKey}{PaginationTokenSeparator}{value}\\r\\n");
+            var token = $@"{attributeKey}{PaginationTokenSeparator}{value}\r\n";
+            
+            stringBuilder.Append(token);
         }
 
         return Convert.ToBase64String(stringBuilder.ToString().Zip()).UrlEncode();
@@ -721,7 +723,7 @@ internal static class QueryHelper
     /// <returns>A TransactWriteItem based on the provided transaction write item.</returns>
     internal static TransactWriteItem CreateTransactionWriteItem(TransactionWriteItem transactionWriteItem)
     {
-        if (transactionWriteItem is null) throw new ArgumentNullException(nameof(transactionWriteItem));
+        ArgumentNullException.ThrowIfNull(transactionWriteItem);
 
         return new TransactWriteItem
         {

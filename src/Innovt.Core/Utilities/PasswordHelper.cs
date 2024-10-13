@@ -39,11 +39,8 @@ public static class PasswordHelper
     private static byte[] InternalRandomSalt()
     {
         var salt = new byte[SaltSize];
-        using (var rng = RandomNumberGenerator.Create())
-        {
-            rng.GetBytes(salt);
-        }
-
+        using var rng = RandomNumberGenerator.Create();
+        rng.GetBytes(salt);
         return salt;
     }
 

@@ -25,8 +25,8 @@ public static class Check
     /// <param name="parameterName">The name of the parameter associated with the value.</param>
     /// <returns>The original value if it is not null.</returns>
     /// <exception cref="ArgumentNullException">Thrown if the value is null.</exception>
-    public static T NotNull<T>([AllowNull] [NotNull] T value,[CallerMemberName]string parameterName=null)
-    {
+    public static T NotNull<T>([NotNull] T value,[CallerMemberName]string parameterName=null)
+    {   
         if (!Equals(value, default(T))) return value;
 
         NotEmpty(parameterName, nameof(parameterName));

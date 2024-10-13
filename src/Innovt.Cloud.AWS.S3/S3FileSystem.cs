@@ -67,7 +67,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     //only if in the same region
     public (string bucket, string fileKey) ExtractBucketFromGetUrl(string bucketUrl)
     {
-        if (bucketUrl == null) throw new ArgumentNullException(nameof(bucketUrl));
+        ArgumentNullException.ThrowIfNull(bucketUrl);
 
         var amazonPrefix = ".amazonaws.com/";
 
@@ -132,8 +132,8 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     public Task<string> PutObjectAsync(string bucketName, Stream stream, string fileName, string contentType = null,
         string serverSideEncryptionMethod = null, string fileAcl = null, CancellationToken cancellationToken = default)
     {
-        if (bucketName == null) throw new ArgumentNullException(nameof(bucketName));
-        if (stream == null) throw new ArgumentNullException(nameof(stream));
+        ArgumentNullException.ThrowIfNull(bucketName);
+        ArgumentNullException.ThrowIfNull(stream);
 
         return PutObjectInternalAsync(bucketName, stream, fileName, contentType, serverSideEncryptionMethod, fileAcl,
             cancellationToken);
@@ -153,7 +153,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
         string serverSideEncryptionMethod = null, string fileAcl = null,
         CancellationToken cancellationToken = default)
     {
-        if (filePath == null) throw new ArgumentNullException(nameof(filePath));
+        ArgumentNullException.ThrowIfNull(filePath);
 
         return PutObjectInternalAsync(bucketName, filePath, contentType, serverSideEncryptionMethod, fileAcl,
             cancellationToken);
@@ -661,10 +661,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="fileKey">The key for the object in the bucket.</param>
     /// <returns>The URL to access the object.</returns>
-    private string GetObjectUrl(string bucketName, string fileKey)
-    {
-        return "https://s3.amazonaws.com/" + $"{bucketName}/{fileKey}";
-    }
+    private  static string GetObjectUrl(string bucketName, string fileKey) => "https://s3.amazonaws.com/" + $"{bucketName}/{fileKey}";
 
     /// <summary>
     ///     Asynchronously puts an object in the specified Amazon S3 bucket from a local file path.

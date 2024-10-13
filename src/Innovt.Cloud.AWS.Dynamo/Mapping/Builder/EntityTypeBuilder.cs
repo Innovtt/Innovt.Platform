@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -53,7 +54,7 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     /// <summary>
     ///     Gets or sets the entity type for the DynamoDB table.
     /// </summary>
-    public string EntityType { get; private set; } = typeof(TEntity).Name.ToUpper();
+    public string EntityType { get; private set; } = typeof(TEntity).Name.ToUpper(CultureInfo.InvariantCulture);
 
     public string EntityTypeColumnName { get; private set; } = "EntityType";
 
@@ -196,10 +197,10 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
 
     private PropertyTypeBuilder<TEntity> AddProperty(string name, Type type = null)
     {
-        if (name == null) throw new ArgumentNullException(nameof(name));
+        ArgumentNullException.ThrowIfNull(name);
 
         var currentProperty =
-            Properties.SingleOrDefault(p => p.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
+            Properties.SingleOrDefault(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
 
         if (currentProperty != null)
             return currentProperty;
@@ -302,10 +303,10 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     public PropertyTypeBuilder<TEntity> GetProperty(string name)
     {
         var property = Properties?.SingleOrDefault(p =>
-                           p.Name != null && p.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)) ??
+                           p.Name != null && p.Name.Equals(name, StringComparison.OrdinalIgnoreCase)) ??
                        Properties?.SingleOrDefault(p =>
                            p.ColumnName != null &&
-                           p.ColumnName.Equals(name, StringComparison.InvariantCultureIgnoreCase));
+                           p.ColumnName.Equals(name, StringComparison.OrdinalIgnoreCase));
 
         return property;
     }

@@ -136,7 +136,7 @@ internal static class TableHelper
         BuildKeysAttributeValues<T>(object id, object rangeKeyValue = null, DynamoContext context = null)
         where T : class
     {
-        Check.NotNull(id, nameof(id));
+        ArgumentNullException.ThrowIfNull(id);
 
         var entityBuilder = context?.GetTypeBuilder<T>();
         var hashKeyPrefix = entityBuilder?.HashKeyPrefix;
@@ -145,7 +145,7 @@ internal static class TableHelper
         hashKeyPrefix = hashKeyPrefix.IsNotNullOrEmpty() ? $"{hashKeyPrefix}{keySeparator}" : string.Empty;
 
         //To avoid situations where the id is already prefixed
-        if (id.ToString().Contains(hashKeyPrefix)) hashKeyPrefix = string.Empty;
+        if (id.ToStringOrDefault().Contains(hashKeyPrefix,StringComparison.CurrentCultureIgnoreCase)) hashKeyPrefix = string.Empty;
 
         //Get the name of the hash key
         var hashKey = (GetHashKeyName<T>(context), new AttributeValue($"{hashKeyPrefix}{id}"));
@@ -158,7 +158,7 @@ internal static class TableHelper
 
         rangeKeyPrefix = rangeKeyPrefix.IsNotNullOrEmpty() ? $"{rangeKeyPrefix}{keySeparator}" : string.Empty;
 
-        if (rangeKeyValue.ToString().Contains(rangeKeyPrefix)) rangeKeyPrefix = string.Empty;
+        if (rangeKeyValue.ToStringOrDefault().Contains(rangeKeyPrefix,StringComparison.CurrentCultureIgnoreCase)) rangeKeyPrefix = string.Empty;
 
         var rangeKey = (rangeKeyName, new AttributeValue($"{rangeKeyPrefix}{rangeKeyValue}"));
 
@@ -194,7 +194,7 @@ internal static class TableHelper
     internal static Dictionary<string, AttributeValue> ParseKeysToAttributeValueMap<T>(object id,
         object rangeKeyValue = null, DynamoContext context = null) where T : class
     {
-        if (id == null) throw new ArgumentNullException(nameof(id));
+        ArgumentNullException.ThrowIfNull(id);
 
         //Get the name of the PK and Sk converting to attribute values
         var tupleKeys = BuildKeysAttributeValues<T>(id, rangeKeyValue, context);
