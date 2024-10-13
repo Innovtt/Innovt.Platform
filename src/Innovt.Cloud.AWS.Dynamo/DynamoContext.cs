@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using Amazon.DynamoDBv2.DataModel;
 using Innovt.Cloud.AWS.Dynamo.Mapping;
 using Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
@@ -13,12 +14,14 @@ public abstract class DynamoContext
 {
     private static readonly object ObjLock = new();
 
+    public CultureInfo DefaultCulture { get; set; } = CultureInfo.CurrentCulture;
+    
     protected DynamoContext()
     {
         BuildModel();
     }
 
-    public ModelBuilder ModelBuilder { get; private set; }
+    private ModelBuilder ModelBuilder { get; set; }
 
     /// <summary>
     ///     It tells the context to ignore null properties when saving an entity.

@@ -27,8 +27,7 @@ public class SampleDynamoContext : DynamoContext
             .WithRangeKey().SetDynamicValue(c => "CE#AVAILABILITY").Builder
             .Ignore(p => p.DayOfWeek);
 
-
-        modelBuilder.AddPropertyConverter(typeof(DateTimeOffset), new DateTimeOffsetConverter());
-        modelBuilder.AddPropertyConverter(typeof(DateTimeOffset?), new DateTimeOffsetConverter());
+        //modelBuilder.AddPropertyConverter(typeof(DateTimeOffset), new DateTimeOffsetConverter());
+        //modelBuilder.AddPropertyConverter(typeof(DateTimeOffset?), new DateTimeOffsetConverter());
     }
 }
