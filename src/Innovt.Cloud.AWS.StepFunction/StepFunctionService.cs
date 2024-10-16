@@ -60,9 +60,9 @@ public class StepFunctionService : AwsBaseService, IStateMachine
     public async Task StartExecution(object input, string stateMachineArn, string executionId,
         CancellationToken cancellationToken)
     {
-        if (input == null) throw new ArgumentNullException(nameof(input));
-        if (stateMachineArn == null) throw new ArgumentNullException(nameof(stateMachineArn));
-        if (executionId == null) throw new ArgumentNullException(nameof(executionId));
+        ArgumentNullException.ThrowIfNull(input);
+        ArgumentNullException.ThrowIfNull(stateMachineArn);
+        ArgumentNullException.ThrowIfNull(executionId);
 
         using var activity = StepFunctionActivitySource.StartActivity();
         activity?.SetTag("StateMachine.Arn", stateMachineArn);
@@ -89,8 +89,8 @@ public class StepFunctionService : AwsBaseService, IStateMachine
     /// <returns>A task representing the asynchronous operation.</returns>
     public async Task SendTaskSuccess(string taskToken, object output, CancellationToken cancellationToken)
     {
-        if (taskToken == null) throw new ArgumentNullException(nameof(taskToken));
-        if (output == null) throw new ArgumentNullException(nameof(output));
+        ArgumentNullException.ThrowIfNull(taskToken);
+        ArgumentNullException.ThrowIfNull(output);
 
         using var activity = StepFunctionActivitySource.StartActivity();
         activity?.SetTag("StateMachine.SendTaskSuccess", taskToken);
@@ -117,8 +117,8 @@ public class StepFunctionService : AwsBaseService, IStateMachine
     public async Task SendTaskFailure(string taskToken, string reason, string taskError,
         CancellationToken cancellationToken)
     {
-        if (taskToken == null) throw new ArgumentNullException(nameof(taskToken));
-        if (reason == null) throw new ArgumentNullException(nameof(reason));
+        ArgumentNullException.ThrowIfNull(taskToken);
+        ArgumentNullException.ThrowIfNull(reason);
 
         using var activity = StepFunctionActivitySource.StartActivity();
         activity?.SetTag("StateMachine.SendTaskFailure", taskToken);
@@ -143,7 +143,7 @@ public class StepFunctionService : AwsBaseService, IStateMachine
     /// <returns>A task representing the asynchronous operation.</returns>
     public async Task SendTaskHeartbeat(string taskToken, CancellationToken cancellationToken)
     {
-        if (taskToken == null) throw new ArgumentNullException(nameof(taskToken));
+        ArgumentNullException.ThrowIfNull(taskToken);
 
         using var activity = StepFunctionActivitySource.StartActivity();
         activity?.SetTag("StateMachine.SendTaskFailure", taskToken);

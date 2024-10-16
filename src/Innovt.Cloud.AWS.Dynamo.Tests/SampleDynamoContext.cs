@@ -1,5 +1,4 @@
 using System;
-using Innovt.Cloud.AWS.Dynamo.Converters;
 using Innovt.Cloud.AWS.Dynamo.Mapping;
 using Innovt.Cloud.AWS.Dynamo.Tests.Mapping;
 
@@ -17,7 +16,8 @@ public class SampleDynamoContext : DynamoContext
         modelBuilder.Entity<Skill>().AutoMap().WithTableName("CloudExperts")
             .WithHashKey().SetDynamicValue(c => "SKILL").Builder
             .WithRangeKey().SetDynamicValue(c => "SKILL#" + c.Id);
-
+        
+            
         modelBuilder.Entity<CloudExpertSkill>().AutoMap().WithTableName("CloudExperts")
             .WithHashKey().SetDynamicValue(c => "CE#" + c.OwnerId).Builder
             .WithRangeKey().SetDynamicValue(c => "CE#SKILL#" + c.Id);

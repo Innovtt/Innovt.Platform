@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.Threading;
 using Amazon.DynamoDBv2.DataModel;
 using Innovt.Cloud.AWS.Dynamo.Mapping;
 using Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
@@ -14,7 +15,7 @@ public abstract class DynamoContext
 {
     private static readonly object ObjLock = new();
 
-    public CultureInfo DefaultCulture { get; set; } = CultureInfo.CurrentCulture;
+    public CultureInfo DefaultCulture { get; private set; } = CultureInfo.CurrentCulture;
     
     protected DynamoContext()
     {
@@ -51,6 +52,23 @@ public abstract class DynamoContext
         return ModelBuilder?.GetPropertyConverter(type);
     }
 
+    /// <summary>
+    /// Set the culture that will be used to convert the properties.
+    /// </summary>
+    /// <param name="cultureInfo"></param>
+    /// <returns></returns>
+    public bool SetCulture(CultureInfo cultureInfo)
+    {
+        if (cultureInfo == null)
+            return false;
+
+        DefaultCulture = cultureInfo;
+        
+        Thread.CurrentThread.CurrentCulture = DefaultCulture;
+        
+        return true;
+    }
+    
     public bool HasTypeBuilder(Type type)
     {
         return ModelBuilder.HasTypeBuilder(type);
@@ -66,7 +84,6 @@ public abstract class DynamoContext
     {
         return ModelBuilder.HasTypeBuilder<T>(instance);
     }
-
-
+    
     protected abstract void OnModelCreating([DisallowNull] ModelBuilder modelBuilder);
 }

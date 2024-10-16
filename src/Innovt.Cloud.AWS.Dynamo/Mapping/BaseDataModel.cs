@@ -31,11 +31,7 @@ public abstract class BaseDataModel<TDataModel, TDomain> : ITableMessage where T
     ///     Gets or sets the entity type.
     /// </summary>
     [DynamoDBProperty]
-    public string EntityType
-    {
-        get => GetEntityType(); // We have to keep it because of the DyanmoDB SDK
-        set => _ = value;
-    }
+    public string EntityType => GetEntityType(); // We have to keep it because of the DyanmoDB SDK
 
     /// <summary>
     ///     Gets or sets the unique identifier.
