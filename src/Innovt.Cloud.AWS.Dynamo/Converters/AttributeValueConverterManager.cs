@@ -85,7 +85,7 @@ public static class AttributeValueConverterManager
         // If we have a direct match, use the converter
         if (Converters.TryGetValue(valueType, out var converter))
             return converter(value);
-
+        
         var result = TryConvertComplexEnumerable(value, visitedObjects);
 
         result ??= TryConvertComplexType(value, visitedObjects, valueType);

@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -500,7 +498,21 @@ public class RepositoryTests
             phone.Name = "Michel";
             phone.CountryCode = "55";
             
-           // await repository.AddAsync(phone).ConfigureAwait(false);
+            //O que vai acontecer eh que ele nao vai cneontrar o tipo pelo nome.
+            await repository.AddAsync(phone).ConfigureAwait(false);
+            
+            var queryRequest = new QueryRequest
+            {
+                KeyConditionExpression = "PK=:pk AND begins_with(SK,:sk)",
+                Filter = new
+                {
+                    pk = $"CONTACT",
+                    sk = "CONTACT#"
+                }
+            };
+            
+            var contact = await repository.QueryAsync<DynamoContact>(queryRequest, CancellationToken.None)
+                .ConfigureAwait(false);
             
         }
         catch (Exception e)
