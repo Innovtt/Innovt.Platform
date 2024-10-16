@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.AWS.Dynamo.Tests.Mapping;
+using Innovt.Cloud.AWS.Dynamo.Tests.Mapping.Contacts;
 using Innovt.Cloud.Table;
 using Innovt.Core.CrossCutting.Log;
 using NSubstitute;
@@ -18,6 +19,8 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests;
 [Ignore("Only for local tests")]
 public class RepositoryTests
 {
+    private string fakeUserId = "24a874d8-d0a1-7032-b572-3c3383ff4ba9";
+    
     [SetUp]
     public void TearUp()
     {
@@ -38,6 +41,44 @@ public class RepositoryTests
     private IAwsConfiguration awsConfigurationMock;
     private SampleRepository repository;
 
+    private async Task<User> AddUserIfNotExist()
+    { 
+        var userSortKey = "PROFILE";
+            
+        var queryRequest = new QueryRequest
+        {
+            KeyConditionExpression = "PK=:pk AND SK=:sk",
+            Filter = new
+            {
+                pk = $"USER#{fakeUserId}",
+                sk = userSortKey
+            }
+        };
+
+        var user = (await repository.QueryAsync<User>(queryRequest).ConfigureAwait(false)).SingleOrDefault();
+        
+        if (user is not null)
+            return user;
+        
+        user = new User
+        {
+            Id = fakeUserId,
+            Email = "michelmob@gmail.com",
+            FirstName = "MichelMock",
+            LastName = "BorgesMock",
+            CreatedAt = DateTime.Now,
+            Picture = "https://www.google.com",
+            JobPositionId = 1,
+            Context = "C2G",
+            IsActive = true
+            
+        };
+        
+        await repository.AddAsync(user).ConfigureAwait(false);
+
+        return user;
+    }
+
     [Test]
     public async Task AddDeleteAndQuery()
     {
@@ -46,17 +87,19 @@ public class RepositoryTests
         var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
 
         repository = new SampleRepository(context, loggerMock, awsConfiguration);
+        
         try
         {
-            var userId = "24a874d8-d0a1-7032-b572-3c3383ff4ba9";
+            await AddUserIfNotExist().ConfigureAwait(false);
+            
             var userSortKey = "PROFILE";
-
+            
             var queryRequest = new QueryRequest
             {
                 KeyConditionExpression = "PK=:pk AND SK=:sk",
                 Filter = new
                 {
-                    pk = $"USER#{userId}",
+                    pk = $"USER#{fakeUserId}",
                     sk = userSortKey
                 }
             };
@@ -64,7 +107,7 @@ public class RepositoryTests
             var user1 = (await repository.QueryAsync<User>(queryRequest).ConfigureAwait(false)).SingleOrDefault();
 
             var userByIdAndSort =
-                await repository.GetByIdAsync<User>($"USER#{userId}", userSortKey).ConfigureAwait(false);
+                await repository.GetByIdAsync<User>($"USER#{fakeUserId}", userSortKey).ConfigureAwait(false);
 
             Assert.Multiple(() =>
             {
@@ -83,7 +126,6 @@ public class RepositoryTests
             }
 
             var user2 = user1;
-            //user2.Id = "59c6be94-eeea-4185-ab59-fc66207cf387";
             user2.FirstName = "Michel";
             user2.LastName = "Borges";
 
@@ -139,7 +181,8 @@ public class RepositoryTests
 
         try
         {
-            var userId = "24a874d8-d0a1-7032-b572-3c3383ff4ba9";
+            await AddUserIfNotExist().ConfigureAwait(false);
+            
             var userSortKey = "PROFILE";
 
             var queryRequest = new QueryRequest
@@ -147,7 +190,7 @@ public class RepositoryTests
                 KeyConditionExpression = "PK=:pk AND SK=:sk",
                 Filter = new
                 {
-                    pk = $"USER#{userId}",
+                    pk = $"USER#{fakeUserId}",
                     sk = userSortKey
                 }
             };
@@ -209,7 +252,7 @@ public class RepositoryTests
 
         try
         {
-            var userId = "24a874d8-d0a1-7032-b572-3c3383ff4ba9";
+            await AddUserIfNotExist().ConfigureAwait(false);
             var userSortKey = "PROFILE";
 
             var queryRequest = new QueryRequest
@@ -217,7 +260,7 @@ public class RepositoryTests
                 KeyConditionExpression = "PK=:pk AND SK=:sk",
                 Filter = new
                 {
-                    pk = $"USER#{userId}",
+                    pk = $"USER#{fakeUserId}",
                     sk = userSortKey
                 }
             };
@@ -250,7 +293,6 @@ public class RepositoryTests
             var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
 
             repository = new SampleRepository(context, loggerMock, awsConfiguration);
-
 
             var queryRequest = new QueryRequest
             {
@@ -289,7 +331,6 @@ public class RepositoryTests
 
         var email = "michelmob@gmail.com";
 
-
         var users = await repository.ScanAsync<User>(new ScanRequest
         {
             FilterExpression = "Email=:email",
@@ -299,7 +340,13 @@ public class RepositoryTests
             }
         }).ConfigureAwait(false);
 
-        if (users.Any()) await repository.Delete(users.First()).ConfigureAwait(false);
+        if (users.Any())
+        {
+            foreach (var userToBeDeleted in users)
+            {
+                await repository.Delete(userToBeDeleted).ConfigureAwait(false);
+            }
+        }
 
         var user = new User
         {
@@ -311,7 +358,7 @@ public class RepositoryTests
             Picture = "https://www.google.com",
             JobPositionId = 1,
             Context = "C2G",
-            IsActive = true
+            IsActive = true,
         };
 
         await repository.SaveUser(user, CancellationToken.None).ConfigureAwait(false);
@@ -382,8 +429,6 @@ public class RepositoryTests
                 }
             };
 
-            //await repository.AddAsync(availablity, CancellationToken.None).ConfigureAwait(false);
-
             var queryRequest = new QueryRequest
             {
                 KeyConditionExpression = "PK=:pk AND SK=:sk",
@@ -438,5 +483,32 @@ public class RepositoryTests
             throw;
         }
     }
+    
+    
+    [Test]
+    public async Task AddContactTestingDiscriminator()
+    {
+        try
+        {
+            var context = new SampleDynamoContext();
+
+            var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
+
+            repository = new SampleRepository(context, loggerMock, awsConfiguration);
+
+            var phone = new DynamoPhoneContact();
+            phone.Name = "Michel";
+            phone.CountryCode = "55";
+            
+           // await repository.AddAsync(phone).ConfigureAwait(false);
+            
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
 
 }

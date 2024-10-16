@@ -1,8 +1,10 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Innovt.Core.Exceptions;
 
 namespace Innovt.Cloud.AWS.Dynamo.Exceptions;
 
+[SuppressMessage("Usage", "CA2237:Mark ISerializable types with serializable")]
 public class MissingEntityMapException : CriticalException
 {
     public MissingEntityMapException(Type type) : base(

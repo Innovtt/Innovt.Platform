@@ -77,6 +77,13 @@ public class PropertyTypeBuilder<T>
         private set => columnName = value;
     }
 
+    public void Ignore()
+    {
+        Ignored = true;
+    }
+
+    public bool Ignored { get; private set; }
+
     /// <summary>
     ///     The max length of the property
     /// </summary>
@@ -108,11 +115,11 @@ public class PropertyTypeBuilder<T>
     /// </summary>
     /// <param name="value"></param>
     /// <returns></returns>
-    public PropertyTypeBuilder<T> WithValue(object value)
+    public PropertyTypeBuilder<T> HasDefaultValue(object value)
     {
         Value = value;
         return this;
-    }
+    }   
 
     /// <summary>
     ///     Define when a fi
@@ -125,7 +132,7 @@ public class PropertyTypeBuilder<T>
         Required = isRequired;
         return this;
     }
-
+    
     /// <summary>
     ///     Define a delegate to parse the property.
     /// </summary>
@@ -168,7 +175,7 @@ public class PropertyTypeBuilder<T>
 
         return this;
     }
-
+    
     /// <summary>
     ///     Get the instance value using a fixed value or a delegate.
     /// </summary>
