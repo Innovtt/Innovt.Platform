@@ -182,9 +182,9 @@ public sealed class EntityTypeBuilder<TEntity> // where TEntity:class
     /// </summary>
     /// <param name="name">The name of the column that will be used to check the value.</param>
     /// <returns></returns>
-    public DiscriminatorBuilder<TEntity> HasDiscriminator<T>(string name)
+    public DiscriminatorBuilder<TEntity> HasDiscriminator(string name)
     {
-        Discriminator ??= new DiscriminatorBuilder<TEntity>(name,typeof(T),this);
+        Discriminator ??= new DiscriminatorBuilder<TEntity>(name,this);
         
         return Discriminator;
     }

@@ -23,7 +23,7 @@ public abstract class DomainEvent : IDataStream
         Name = name;
         Version = version;
         Partition = partition;
-        CreatedAt = DateTime.UtcNow;
+        CreatedAt = DateTimeOffset.UtcNow;
     }
 
     /// <summary>
@@ -44,7 +44,7 @@ public abstract class DomainEvent : IDataStream
     /// <summary>
     ///     Gets or sets the date and time when the domain event was created.
     /// </summary>
-    public DateTime CreatedAt { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     ///     Gets or sets the event ID associated with the domain event.

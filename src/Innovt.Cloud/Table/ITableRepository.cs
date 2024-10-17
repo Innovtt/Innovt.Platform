@@ -100,7 +100,7 @@ public interface ITableRepository : IDisposable
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>An item of type T if found; otherwise, null.</returns>
     Task<T> GetByIdAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default)
-        where T : class, new();
+        where T : class;
 
     /// <summary>
     ///     Asynchronously queries and retrieves the first item of type T by its identifier.
@@ -109,7 +109,7 @@ public interface ITableRepository : IDisposable
     /// <param name="id">The identifier of the item.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>An item of type T if found; otherwise, null.</returns>
-    Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default) where T : class, new();
+    Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default) where T : class;
 
     /// <summary>
     ///     Asynchronously queries and retrieves a list of items of type T by their identifier.
@@ -118,7 +118,7 @@ public interface ITableRepository : IDisposable
     /// <param name="id">The identifier of the items.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A list of items of type T.</returns>
-    Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default) where T : class, new();
+    Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default) where T : class;
 
     /// <summary>
     ///     Asynchronously queries and retrieves a list of items of type T based on the provided query request.
@@ -128,7 +128,7 @@ public interface ITableRepository : IDisposable
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A list of items of type T based on the query request.</returns>
     Task<IList<T>> QueryAsync<T>(QueryRequest request,
-        CancellationToken cancellationToken = default) where T : class, new();
+        CancellationToken cancellationToken = default) where T : class;
 
     /// <summary>
     ///     Asynchronously queries and retrieves the first item of type T based on the provided query request.
@@ -138,7 +138,7 @@ public interface ITableRepository : IDisposable
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The first item of type T based on the query request; otherwise, null.</returns>
     Task<T> QueryFirstOrDefaultAsync<T>(QueryRequest request, CancellationToken cancellationToken = default)
-        where T : class, new();
+        where T : class;
 
     /// <summary>
     ///     Asynchronously queries and retrieves multiple sets of results from a single query.
@@ -151,9 +151,9 @@ public interface ITableRepository : IDisposable
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>Tuple containing the first and second result sets.</returns>
     Task<(IList<TResult1> first, IList<TResult2> second)> QueryMultipleAsync<T, TResult1, TResult2>(
-        QueryRequest request, string splitBy, CancellationToken cancellationToken = default) where T : class, new()
-        where TResult1 : class, new()
-        where TResult2 : class, new();
+        QueryRequest request, string splitBy, CancellationToken cancellationToken = default) where T : class
+        where TResult1 : class
+        where TResult2 : class;
 
     /// <summary>
     ///     Asynchronously queries and retrieves multiple sets of results from a single query.
@@ -168,10 +168,10 @@ public interface ITableRepository : IDisposable
     /// <returns>Tuple containing the first, second, and third result sets.</returns>
     Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third)> QueryMultipleAsync<T, TResult1,
         TResult2, TResult3>(QueryRequest request, string[] splitBy,
-        CancellationToken cancellationToken = default) where T : class, new()
-        where TResult1 : class, new()
-        where TResult2 : class, new()
-        where TResult3 : class, new();
+        CancellationToken cancellationToken = default) where T : class
+        where TResult1 : class
+        where TResult2 : class
+        where TResult3 : class;
 
     /// <summary>
     ///     Asynchronously queries and retrieves multiple sets of results from a single query.
@@ -187,11 +187,11 @@ public interface ITableRepository : IDisposable
     /// <returns>Tuple containing the first, second, third, and fourth result sets.</returns>
     Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth)>
         QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4>(QueryRequest request, string[] splitBy,
-            CancellationToken cancellationToken = default) where T : class, new()
-        where TResult1 : class, new()
-        where TResult2 : class, new()
-        where TResult3 : class, new()
-        where TResult4 : class, new();
+            CancellationToken cancellationToken = default) where T : class
+        where TResult1 : class
+        where TResult2 : class
+        where TResult3 : class
+        where TResult4 : class;
 
     /// <summary>
     ///     Asynchronously queries and retrieves multiple sets of results from a single query.
@@ -209,12 +209,12 @@ public interface ITableRepository : IDisposable
     Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth, IList<TResult5>
             fifth)>
         QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4, TResult5>(QueryRequest request, string[] splitBy,
-            CancellationToken cancellationToken = default) where T : class, new()
-        where TResult1 : class, new()
-        where TResult2 : class, new()
-        where TResult3 : class, new()
-        where TResult4 : class, new()
-        where TResult5 : class, new();
+            CancellationToken cancellationToken = default) where T : class
+        where TResult1 : class
+        where TResult2 : class
+        where TResult3 : class
+        where TResult4 : class
+        where TResult5 : class;
 
 
     /// <summary>
@@ -225,7 +225,7 @@ public interface ITableRepository : IDisposable
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A list of items of type T based on the scan request.</returns>
     Task<IList<T>> ScanAsync<T>(ScanRequest request,
-        CancellationToken cancellationToken = default) where T : class, new();
+        CancellationToken cancellationToken = default) where T : class;
 
     /// <summary>
     ///     Asynchronously scans and retrieves a paged collection of items of type T based on the provided scan request.
@@ -236,7 +236,7 @@ public interface ITableRepository : IDisposable
     /// <returns>A paged collection of items of type T based on the scan request.</returns>
     Task<PagedCollection<T>>
         ScanPaginatedByAsync<T>(ScanRequest request, CancellationToken cancellationToken = default)
-        where T : class, new();
+        where T : class;
 
     /// <summary>
     ///     Asynchronously queries and retrieves a paged collection of items of type T based on the provided query request.
@@ -246,7 +246,7 @@ public interface ITableRepository : IDisposable
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A paged collection of items of type T based on the query request.</returns>
     Task<PagedCollection<T>> QueryPaginatedByAsync<T>(QueryRequest request,
-        CancellationToken cancellationToken = default) where T : class, new();
+        CancellationToken cancellationToken = default) where T : class;
 
 
     /// <summary>
@@ -267,7 +267,7 @@ public interface ITableRepository : IDisposable
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A list of items of type T.</returns>
     Task<List<T>> BatchGetItem<T>(BatchGetItemRequest batchGetItemRequest,
-        CancellationToken cancellationToken = default) where T : class, new();
+        CancellationToken cancellationToken = default) where T : class;
 
     /// <summary>
     ///     Create a transaction write item based on the instance.
