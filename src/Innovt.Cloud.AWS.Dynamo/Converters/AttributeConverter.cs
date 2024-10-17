@@ -416,16 +416,13 @@ internal static class AttributeConverter
             return;
 
         var typeBuilder = context.GetTypeBuilder<T>();
-
+        
         //All mapping properties that has action mapping will be called here
         foreach (var property in properties)
         {
             var propertyTypeBuilder = typeBuilder.GetProperty(property.Name);
 
-            if (propertyTypeBuilder is null)
-                continue;
-
-            propertyTypeBuilder.InvokeMaps(instance);
+            propertyTypeBuilder?.InvokeMaps(instance);
         }
     }
 

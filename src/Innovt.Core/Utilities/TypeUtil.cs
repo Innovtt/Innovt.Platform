@@ -96,6 +96,33 @@ public static class TypeUtil
 
         return type.IsArray || (type.IsGenericType && typeof(IEnumerable).IsAssignableFrom(type));
     }
+    
+    /// <summary>
+    /// Check if the object is a collection of T.
+    /// </summary>
+    /// <param name="instance"></param>
+    /// <returns></returns>
+    public static bool IsCollection(object instance)
+    {
+        if (instance == null) return false;
+
+        var type = instance.GetType();
+        
+        return type.IsArray || (type.IsGenericType && typeof(IEnumerable).IsAssignableFrom(type));
+    }
+    /// <summary>
+    /// Check if the object is a collection.
+    /// </summary>
+    /// <param name="instance"></param>
+    /// <returns></returns>
+    public static bool IsCollection<T>(object instance)
+    {
+        if (instance == null) return false;
+
+        var type = instance.GetType();
+        
+        return type.IsArray || (type.IsGenericType && typeof(IEnumerable<T>).IsAssignableFrom(type));
+    }
 
     /// <summary>
     ///     Checks if a given type is a dictionary.

@@ -358,6 +358,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         where T : class
     {
         Check.NotNull(message, nameof(message));
+        ThrowIfInstanceIsCollection(message);
 
         using var activity = ActivityRepository.StartActivity();
 
@@ -499,6 +500,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         where T : class
     {
         Check.NotNull(message, nameof(message));
+        ThrowIfInstanceIsCollection(message);
 
         using (ActivityRepository.StartActivity())
         {
@@ -989,4 +991,16 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     #endregion
+    
+    /// <summary>
+    /// Throw an exception if the instance is a collection.
+    /// </summary>
+    /// <param name="message"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <exception cref="CriticalException"></exception>
+    private static void ThrowIfInstanceIsCollection<T>(T message)
+    {
+        if (TypeUtil.IsCollection(message))
+            throw new CriticalException("You should use AddRangeAsync to add a list of items");
+    }
 }
