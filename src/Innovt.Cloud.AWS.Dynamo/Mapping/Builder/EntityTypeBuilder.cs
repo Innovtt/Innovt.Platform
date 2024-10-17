@@ -12,8 +12,9 @@ namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 ///     A builder for defining the entity type and its properties for use with DynamoDB.
 /// </summary>
 /// <typeparam name="TEntity">The type of the entity being defined.</typeparam>
-public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
+public sealed class EntityTypeBuilder<TEntity> // where TEntity:class
 {
+    
     public EntityTypeBuilder(bool ignoreNonNativeTypes) : this()
     {
         IgnoreNonNativeTypes = ignoreNonNativeTypes;
@@ -67,8 +68,9 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     ///     Tell the auto-map method to ignore all non-native types
     /// </summary>
     private bool IgnoreNonNativeTypes { get; }
-
-
+    
+    public DiscriminatorBuilder<TEntity> Discriminator { get; private set; }
+    
     /// <summary>
     ///     Sets the table name associated with the entity type.
     /// </summary>
@@ -176,6 +178,19 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     }
 
     /// <summary>
+    /// Define a discriminator for the entity. Entities with discriminator mean that more than one type can be inherited from the same type.
+    /// </summary>
+    /// <param name="name">The name of the column that will be used to check the value.</param>
+    /// <returns></returns>
+    public DiscriminatorBuilder<TEntity> HasDiscriminator<T>(string name)
+    {
+        Discriminator ??= new DiscriminatorBuilder<TEntity>(name,typeof(T),this);
+        
+        return Discriminator;
+    }
+    
+    
+    /// <summary>
     ///     Defines a property for the entity using a provided property function.
     /// </summary>
     /// <param name="propertyExpression">The property function to generate the property.</param>
@@ -239,8 +254,7 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     {
         var property = GetProperty(name);
 
-        if (property is not null)
-            Properties.Remove(property);
+        property?.Ignore();
 
         return this;
     }
@@ -271,10 +285,15 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
         var properties = entityType.GetProperties(
             BindingFlags.Public | BindingFlags.Instance);
 
-        if (ShouldIgnoreNonNativeTypes(ignoreNonNativeTypes))
-            properties = properties.Where(p => TypeUtil.IsPrimitive(p.PropertyType)).ToArray();
-
-        foreach (var propertyInfo in properties) AddProperty(propertyInfo.Name, propertyInfo.GetType());
+        foreach (var propertyInfo in properties)
+        {
+            var property = AddProperty(propertyInfo.Name, propertyInfo.GetType());
+            
+            var ignoreProperty = !TypeUtil.IsPrimitive(propertyInfo.PropertyType) && ShouldIgnoreNonNativeTypes(ignoreNonNativeTypes);
+            
+            if (ignoreProperty)
+                property.Ignore();
+        }
 
         if (withDefaultKeys)
             WithDefaultKeys();
@@ -292,7 +311,7 @@ public sealed class EntityTypeBuilder<TEntity> //where TEntity:class
     /// <returns></returns>
     public IReadOnlyCollection<PropertyTypeBuilder<TEntity>> GetProperties()
     {
-        return Properties.AsReadOnly();
+        return Properties.Where(p=>!p.Ignored).ToList().AsReadOnly();
     }
 
     /// <summary>

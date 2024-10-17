@@ -387,9 +387,14 @@ public abstract class Repository : AwsBaseService, ITableRepository
         where T : class
     {
         Check.NotNull(messages, nameof(messages));
+        
         using var activity = ActivityRepository.StartActivity();
         activity?.SetTag("Messages", messages.Count);
 
+        // No messages but the log will be created
+        if(messages.Count == 0)
+            return;
+        
         var tableName = TableHelper.GetTableName<T>(context);
 
         var writeRequest = messages.Select(message => new WriteRequest
@@ -534,27 +539,34 @@ public abstract class Repository : AwsBaseService, ITableRepository
     {
         Check.NotNull(messages, nameof(messages));
 
-        using (ActivityRepository.StartActivity())
+        using var activity = ActivityRepository.StartActivity();
+        activity?.SetTag("Messages", messages.Count);
+
+        // No messages but the log will be created
+        if(messages.Count == 0)
+            return;
+        
+        var tableName = TableHelper.GetTableName<T>(context);
+        activity?.SetTag("TableName", tableName);
+        
+        var writeRequest = messages.Select(message => new WriteRequest
         {
-            var tableName = TableHelper.GetTableName<T>(context);
+            DeleteRequest =
+                new DeleteRequest
+                {
+                    Key = TableHelper.ExtractKeyAttributeValueMap(message, context)
+                }
+        }).ToList();
 
-            var writeRequest = messages.Select(message => new WriteRequest
-            {
-                DeleteRequest =
-                    new DeleteRequest
-                    {
-                        Key = TableHelper.ExtractKeyAttributeValueMap(message, context)
-                    }
-            }).ToList();
+        var response = await InternalBatchWriteItemAsync(new Dictionary<string, List<WriteRequest>>
+        {
+            { tableName, writeRequest }
+        }, cancellationToken: cancellationToken).ConfigureAwait(false);
 
-            var response = await InternalBatchWriteItemAsync(new Dictionary<string, List<WriteRequest>>
-            {
-                { tableName, writeRequest }
-            }, cancellationToken: cancellationToken).ConfigureAwait(false);
-
-            if (response.HasItems())
-                throw new CriticalException("Some items could not be deleted from the table");
-        }
+        activity?.SetTag("UnprocessedItems", response.Count);
+        
+        if (response.HasItems())
+            throw new CriticalException("Some items could not be deleted from the table");
     }
 
     #endregion

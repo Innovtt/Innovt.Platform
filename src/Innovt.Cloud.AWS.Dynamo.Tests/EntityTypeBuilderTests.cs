@@ -1,3 +1,4 @@
+using System;
 using Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 using Innovt.Cloud.AWS.Dynamo.Tests.Mapping;
 using NUnit.Framework;
@@ -117,6 +118,31 @@ public class EntityTypeBuilderTests
 
         userMap.Configure(builder);
 
+        var properties = builder.GetProperties();
+
+        Assert.That(properties, Is.Not.Null);
+        Assert.That(properties, Has.Count.EqualTo(15));
+    }
+    
+    [Test]
+    public void IgnoredPropertiesShouldInvokeMap()
+    {
+        var builder = new EntityTypeBuilder<User>();
+        builder.AutoMap(ignoreNonNativeTypes:true);
+        
+        builder.Ignore(c=>c.Company);
+        
+        builder.Property(c => c.Company).WithMap(c => new Company
+        {
+            Name = "Company",
+            User =null,
+            Id = Guid.NewGuid().ToString()
+        });
+
+        var ignored = builder.Property(c => c.Company).Ignored;
+        
+        Assert.That(ignored, Is.True);
+            
         var properties = builder.GetProperties();
 
         Assert.That(properties, Is.Not.Null);

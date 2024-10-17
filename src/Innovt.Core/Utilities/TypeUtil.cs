@@ -124,4 +124,5 @@ public static class TypeUtil
         return type == typeof(int) || type == typeof(double) || type == typeof(float) ||
                type == typeof(decimal) || type == typeof(long);
     }
+
 }

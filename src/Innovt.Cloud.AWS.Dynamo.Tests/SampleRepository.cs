@@ -26,12 +26,11 @@ public class SampleRepository(DynamoContext dynamoContext, ILogger logger, IAwsC
             ConditionExpression = "attribute_not_exists(PK)",
             Items = new Dictionary<string, object>
             {
-                { "PK", "michelmob" },
+                { "PK", $"michelmob{user.Id}" },
                 { "SK", "USERNAME" },
                 { "Id", user.Id }
             }
         });
-
 
         try
         {
@@ -62,7 +61,7 @@ public class SampleRepository(DynamoContext dynamoContext, ILogger logger, IAwsC
             ConditionExpression = "attribute_exists(PK)",
             Keys = new Dictionary<string, object>
             {
-                { "PK", "michelmob" },
+                { "PK", $"michelmob{user.Id}" },
                 { "SK", "USERNAME" }
             }
         });
