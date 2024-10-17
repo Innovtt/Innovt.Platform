@@ -300,6 +300,28 @@ internal static class AttributeConverter
     }
 
     /// <summary>
+    /// This method will create an instance of the object using the type or discriminator value.
+    /// </summary>
+    /// <param name="items"></param>
+    /// <param name="context"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    private static T CreateInstance<T>(Dictionary<string, AttributeValue> items,DynamoContext context = null) where T : class
+    {
+        if(context is null || !context.HasTypeBuilder<T>())
+            return ReflectionTypeUtil.CreateInstance<T>()();
+        
+        var typeBuilder = context.GetTypeBuilder<T>();
+        
+        if(typeBuilder.Discriminator is null)
+            return ReflectionTypeUtil.CreateInstance<T>()();
+        
+        var discriminatorValue = items[typeBuilder.Discriminator.Name].N ?? items[typeBuilder.Discriminator.Name].S;
+
+        return (T)typeBuilder.Discriminator.GetValue(discriminatorValue);
+    }
+    
+    /// <summary>
     ///     Convert an attribute array to specific type. The method is called when the object is being retrieved from DynamoDB
     /// </summary>
     /// <typeparam name="T">The desired Type </typeparam>
@@ -308,12 +330,12 @@ internal static class AttributeConverter
     /// <returns></returns>
     public static T ConvertAttributeValuesToType<T>(Dictionary<string, AttributeValue> items,
         DynamoContext context = null)
-        where T : class, new()
+        where T : class
     {
         if (items is null) return default;
 
-        var instance = new T();
-
+        var instance = CreateInstance<T>(items, context);
+        
         var properties = instance.GetType()
             .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.SetProperty);
 
@@ -394,16 +416,13 @@ internal static class AttributeConverter
             return;
 
         var typeBuilder = context.GetTypeBuilder<T>();
-
+        
         //All mapping properties that has action mapping will be called here
         foreach (var property in properties)
         {
             var propertyTypeBuilder = typeBuilder.GetProperty(property.Name);
 
-            if (propertyTypeBuilder is null)
-                continue;
-
-            propertyTypeBuilder.InvokeMaps(instance);
+            propertyTypeBuilder?.InvokeMaps(instance);
         }
     }
 

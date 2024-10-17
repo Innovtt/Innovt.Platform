@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,7 +14,7 @@ using NUnit.Framework;
 namespace Innovt.Cloud.AWS.Dynamo.Tests;
 
 [TestFixture]
-[Ignore("Only for local tests")]
+//[Ignore("Only for local tests")]
 public class RepositoryTests
 {
     private string fakeUserId = "24a874d8-d0a1-7032-b572-3c3383ff4ba9";
@@ -496,11 +494,37 @@ public class RepositoryTests
 
             repository = new SampleRepository(context, loggerMock, awsConfiguration);
 
-            var phone = new DynamoPhoneContact();
-            phone.Name = "Michel";
-            phone.CountryCode = "55";
+            var contacts = new List<DynamoContact>();
             
-           // await repository.AddAsync(phone).ConfigureAwait(false);
+            var phone = new DynamoPhoneContact
+            {
+                Name = "Michel",
+                CountryCode = "55"
+            };
+            contacts.Add(phone);
+            var email = new DynamoEmailContact
+            {
+                Name = "Michel",
+                Value = "michelmob@gmail.com",
+                Days = new List<int> {1, 2, 3, 4, 5}
+            };
+            contacts.Add(email);
+            
+            //O que vai acontecer eh que ele nao vai cneontrar o tipo pelo nome.
+            await repository.AddRangeAsync(contacts).ConfigureAwait(false);
+            
+            var queryRequest = new QueryRequest
+            {
+                KeyConditionExpression = "PK=:pk AND begins_with(SK,:sk)",
+                Filter = new
+                {
+                    pk = $"CONTACT",
+                    sk = "CONTACT#"
+                }
+            };
+            
+            var contact = await repository.QueryAsync<DynamoContact>(queryRequest, CancellationToken.None)
+                .ConfigureAwait(false);
             
         }
         catch (Exception e)

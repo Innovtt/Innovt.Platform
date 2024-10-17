@@ -24,7 +24,7 @@ public class DiscriminatorBuilderTests
         
         builder.AutoMap();
         
-        builder.HasDiscriminator<int>("Type").HasValue<DynamoPhoneContact>(1)
+        builder.HasDiscriminator("Type").HasValue<DynamoPhoneContact>(1)
             .HasValue<DynamoEmailContact>(2);
 
         var discriminator = builder.Discriminator;
@@ -50,7 +50,7 @@ public class DiscriminatorBuilderTests
         
         builder.AutoMap();
         
-        builder.HasDiscriminator<int>("Type").HasValue(new DynamoPhoneContact()
+        builder.HasDiscriminator("Type").HasValue(new DynamoPhoneContact()
             {
                 CountryCode = "+55"
             }, 1)

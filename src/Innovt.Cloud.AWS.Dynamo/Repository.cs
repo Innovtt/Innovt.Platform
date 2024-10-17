@@ -96,7 +96,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <returns>The list of items retrieved.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the batch get item request is null.</exception>
     public async Task<List<T>> BatchGetItem<T>(BatchGetItemRequest batchGetItemRequest,
-        CancellationToken cancellationToken = default) where T : class, new()
+        CancellationToken cancellationToken = default) where T : class
     {
         ArgumentNullException.ThrowIfNull(batchGetItemRequest);
 
@@ -247,7 +247,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <returns>A tuple containing the last evaluated key and the list of items retrieved.</returns>
     /// <exception cref="ArgumentNullException">Thrown when request is null.</exception>
     private async Task<(Dictionary<string, AttributeValue> ExclusiveStartKey, IList<T> Items)> InternalScanAsync<T>(
-        ScanRequest request, CancellationToken cancellationToken = default) where T : class, new()
+        ScanRequest request, CancellationToken cancellationToken = default) where T : class
     {
         ArgumentNullException.ThrowIfNull(request);
 
@@ -358,6 +358,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         where T : class
     {
         Check.NotNull(message, nameof(message));
+        ThrowIfInstanceIsCollection(message);
 
         using var activity = ActivityRepository.StartActivity();
 
@@ -499,6 +500,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         where T : class
     {
         Check.NotNull(message, nameof(message));
+        ThrowIfInstanceIsCollection(message);
 
         using (ActivityRepository.StartActivity())
         {
@@ -673,7 +675,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
     /// <inheritdoc />
     public async Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default)
-        where T : class, new()
+        where T : class
     {
         using (ActivityRepository.StartActivity())
         {
@@ -694,7 +696,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
     /// <inheritdoc />
     public async Task<T> GetByIdAsync<T>(object id, string rangeKey = null,
-        CancellationToken cancellationToken = default) where T : class, new()
+        CancellationToken cancellationToken = default) where T : class
     {
         ArgumentNullException.ThrowIfNull(id);
 
@@ -724,7 +726,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>A list of items with the specified id.</returns>
     public async Task<IList<T>> QueryAsync<T>(object id, CancellationToken cancellationToken = default)
-        where T : class, new()
+        where T : class
     {
         using (ActivityRepository.StartActivity())
         {
@@ -749,7 +751,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>A list of items based on the query request.</returns>
     public async Task<IList<T>> QueryAsync<T>(QueryRequest request, CancellationToken cancellationToken = default)
-        where T : class, new()
+        where T : class
     {
         using var activity = ActivityRepository.StartActivity();
 
@@ -771,9 +773,9 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>Tuple containing lists of items split based on the specified key.</returns>
     public async Task<(IList<TResult1> first, IList<TResult2> second)> QueryMultipleAsync<T, TResult1, TResult2>(
-        QueryRequest request, string splitBy, CancellationToken cancellationToken = default) where T : class, new()
-        where TResult1 : class, new()
-        where TResult2 : class, new()
+        QueryRequest request, string splitBy, CancellationToken cancellationToken = default) where T : class
+        where TResult1 : class
+        where TResult2 : class
     {
         ArgumentNullException.ThrowIfNull(request);
 
@@ -798,10 +800,10 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <returns>Tuple containing lists of items split based on the specified keys.</returns>
     public async Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third)>
         QueryMultipleAsync<T, TResult1, TResult2, TResult3>(QueryRequest request, string[] splitBy,
-            CancellationToken cancellationToken = default) where T : class, new()
-        where TResult1 : class, new()
-        where TResult2 : class, new()
-        where TResult3 : class, new()
+            CancellationToken cancellationToken = default) where T : class
+        where TResult1 : class
+        where TResult2 : class
+        where TResult3 : class
     {
         ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(splitBy);
@@ -828,11 +830,11 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <returns>Tuple containing lists of items split based on the specified keys.</returns>
     public async Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth)>
         QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4>(QueryRequest request, string[] splitBy,
-            CancellationToken cancellationToken = default) where T : class, new()
-        where TResult1 : class, new()
-        where TResult2 : class, new()
-        where TResult3 : class, new()
-        where TResult4 : class, new()
+            CancellationToken cancellationToken = default) where T : class
+        where TResult1 : class
+        where TResult2 : class
+        where TResult3 : class
+        where TResult4 : class
     {
         ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(splitBy);
@@ -862,12 +864,12 @@ public abstract class Repository : AwsBaseService, ITableRepository
     public async Task<(IList<TResult1> first, IList<TResult2> second, IList<TResult3> third, IList<TResult4> fourth,
             IList<TResult5> fifth)>
         QueryMultipleAsync<T, TResult1, TResult2, TResult3, TResult4, TResult5>(QueryRequest request, string[] splitBy,
-            CancellationToken cancellationToken = default) where T : class, new()
-        where TResult1 : class, new()
-        where TResult2 : class, new()
-        where TResult3 : class, new()
-        where TResult4 : class, new()
-        where TResult5 : class, new()
+            CancellationToken cancellationToken = default) where T : class
+        where TResult1 : class
+        where TResult2 : class
+        where TResult3 : class
+        where TResult4 : class
+        where TResult5 : class
     {
         ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(splitBy);
@@ -889,7 +891,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>The first or default item based on the query request.</returns>
     public async Task<T> QueryFirstOrDefaultAsync<T>(QueryRequest request,
-        CancellationToken cancellationToken = default) where T : class, new()
+        CancellationToken cancellationToken = default) where T : class
     {
         ArgumentNullException.ThrowIfNull(request);
 
@@ -914,7 +916,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>A paginated collection of items based on the query request.</returns>
     public async Task<PagedCollection<T>> QueryPaginatedByAsync<T>(QueryRequest request,
-        CancellationToken cancellationToken = default) where T : class, new()
+        CancellationToken cancellationToken = default) where T : class
     {
         ArgumentNullException.ThrowIfNull(request);
 
@@ -944,7 +946,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>The list of scanned items.</returns>
     public async Task<IList<T>> ScanAsync<T>(ScanRequest request,
-        CancellationToken cancellationToken = default) where T : class, new()
+        CancellationToken cancellationToken = default) where T : class
     {
         using (ActivityRepository.StartActivity())
         {
@@ -965,7 +967,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <returns>A paginated collection of items based on the scan request.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the request is null.</exception>
     public async Task<PagedCollection<T>> ScanPaginatedByAsync<T>(ScanRequest request,
-        CancellationToken cancellationToken = default) where T : class, new()
+        CancellationToken cancellationToken = default) where T : class
     {
         ArgumentNullException.ThrowIfNull(request);
 
@@ -989,4 +991,16 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     #endregion
+    
+    /// <summary>
+    /// Throw an exception if the instance is a collection.
+    /// </summary>
+    /// <param name="message"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <exception cref="CriticalException"></exception>
+    private static void ThrowIfInstanceIsCollection<T>(T message)
+    {
+        if (TypeUtil.IsCollection(message))
+            throw new CriticalException("You should use AddRangeAsync to add a list of items");
+    }
 }

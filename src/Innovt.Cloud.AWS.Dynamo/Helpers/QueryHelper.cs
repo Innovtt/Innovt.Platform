@@ -294,7 +294,7 @@ internal static class QueryHelper
     ///     If the input list is null, an empty list of type T is returned.
     /// </remarks>
     internal static IList<T> ConvertAttributesToType<T>(IList<Dictionary<string, AttributeValue>> items,
-        DynamoContext context = null) where T : class, new()
+        DynamoContext context = null) where T : class
     {
         return items is null
             ? []
@@ -329,8 +329,8 @@ internal static class QueryHelper
     /// </remarks>
     internal static (IList<T1> first, IList<T2> seccond) ConvertAttributesToType<T1, T2>(
         IList<Dictionary<string, AttributeValue>> items, string splitBy, DynamoContext context = null)
-        where T1 : class, new()
-        where T2 : class, new()
+        where T1 : class
+        where T2 : class
     {
         if (items is null)
             return (null, null);
@@ -385,9 +385,9 @@ internal static class QueryHelper
     /// </remarks>
     internal static (List<T1> first, IList<T2> seccond, IList<T3> third) ConvertAttributesToType<T1, T2, T3>(
         IList<Dictionary<string, AttributeValue>> items, string[] splitBy, DynamoContext context = null)
-        where T1 : class, new()
-        where T2 : class, new()
-        where T3 : class, new()
+        where T1 : class
+        where T2 : class
+        where T3 : class
     {
         if (items is null)
             return (null, null, null);
@@ -462,10 +462,10 @@ internal static class QueryHelper
     internal static (IList<T1> first, IList<T2> seccond, IList<T3> third, IList<T4> fourth) ConvertAttributesToType<T1,
         T2, T3, T4>(
         IList<Dictionary<string, AttributeValue>> items, string[] splitBy, DynamoContext context = null)
-        where T1 : class, new()
-        where T2 : class, new()
-        where T3 : class, new()
-        where T4 : class, new()
+        where T1 : class
+        where T2 : class
+        where T3 : class
+        where T4 : class
 
     {
         if (items is null)
@@ -520,11 +520,11 @@ internal static class QueryHelper
     internal static (IList<T1> first, IList<T2> seccond, IList<T3> third, IList<T4> fourth, IList<T5> fifth)
         ConvertAttributesToType<T1, T2, T3, T4, T5>(
             IList<Dictionary<string, AttributeValue>> items, string[] splitBy, DynamoContext context = null)
-        where T1 : class, new()
-        where T2 : class, new()
-        where T3 : class, new()
-        where T4 : class, new()
-        where T5 : class, new()
+        where T1 : class
+        where T2 : class
+        where T3 : class
+        where T4 : class
+        where T5 : class
 
     {
         if (items is null)
