@@ -46,7 +46,12 @@ public abstract class DynamoContext
     {
         return ModelBuilder?.GetTypeBuilder<T>();
     }
-
+    
+    public EntityTypeBuilder<T> GetTypeBuilder<T>(string name)
+    {
+        return ModelBuilder?.GetTypeBuilder<T>(name);
+    }
+    
     public IPropertyConverter GetPropertyConverter(Type type)
     {
         return ModelBuilder?.GetPropertyConverter(type);

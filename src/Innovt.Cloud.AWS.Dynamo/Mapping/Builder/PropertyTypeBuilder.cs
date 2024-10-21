@@ -77,6 +77,8 @@ public class PropertyTypeBuilder<T>
         private set => columnName = value;
     }
 
+   
+
     public void Ignore()
     {
         Ignored = true;
@@ -94,7 +96,7 @@ public class PropertyTypeBuilder<T>
     /// </summary>
     /// <param name="name">The custom column name.</param>
     /// <returns>The current instance of <see cref="PropertyTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<T> WithColumnName(string name)
+    public PropertyTypeBuilder<T> HasColumnName(string name)
     {
         ColumnName = name;
         return this;
@@ -104,7 +106,7 @@ public class PropertyTypeBuilder<T>
     ///     Specifies that the property is of decimal type.
     /// </summary>
     /// <returns>The current instance of <see cref="PropertyTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<T> WithMaxLength(int maxLength)
+    public PropertyTypeBuilder<T> HasMaxLength(int maxLength)
     {
         MaxLength = maxLength;
         return this;
@@ -175,7 +177,7 @@ public class PropertyTypeBuilder<T>
 
         return this;
     }
-    
+
     /// <summary>
     ///     Get the instance value using a fixed value or a delegate.
     /// </summary>
@@ -190,4 +192,5 @@ public class PropertyTypeBuilder<T>
 
         return Value;
     }
+    
 }

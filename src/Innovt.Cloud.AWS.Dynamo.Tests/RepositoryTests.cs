@@ -14,7 +14,7 @@ using NUnit.Framework;
 namespace Innovt.Cloud.AWS.Dynamo.Tests;
 
 [TestFixture]
-[Ignore("Only for local tests")]
+//[Ignore("Only for local tests")]
 public class RepositoryTests
 {
     private string fakeUserId = "24a874d8-d0a1-7032-b572-3c3383ff4ba9";
@@ -533,6 +533,43 @@ public class RepositoryTests
             throw;
         }
     }
+    
+    
+    [Test]
+    public async Task IgnoredPropertiesShouldInvokeMap()
+    {
+        var context = new SampleDynamoContext();
 
+        var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
 
+        repository = new SampleRepository(context, loggerMock, awsConfiguration);
+
+        try
+        {
+            await AddUserIfNotExist().ConfigureAwait(false);
+            
+            var userSortKey = "PROFILE";
+
+            var queryRequest = new QueryRequest
+            {
+                KeyConditionExpression = "PK=:pk AND SK=:sk",
+                Filter = new
+                {
+                    pk = $"USER#{fakeUserId}",
+                    sk = userSortKey
+                }
+            };
+
+            var user =
+                (await repository.QueryAsync<User>(queryRequest).ConfigureAwait(false)).SingleOrDefault();
+
+            Assert.That(user, Is.Not.Null);
+            Assert.That(user.Company, Is.Not.Null);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
 }

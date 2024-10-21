@@ -60,7 +60,7 @@ public class DiscriminatorBuilder<TEntity>(string name, EntityTypeBuilder<TEntit
         ArgumentNullException.ThrowIfNull(whenValue);
         
         TypeValues.TryAdd(whenValue,typeof(T));
-        
+     
         return this;
     }
     

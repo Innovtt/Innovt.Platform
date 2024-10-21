@@ -131,11 +131,25 @@ public sealed class ModelBuilder
     public EntityTypeBuilder<T> GetTypeBuilder<T>()
     {
         var entityName = GetEntityName<T>();
-
+        
+       return GetTypeBuilder<T>(entityName);
+    }
+    
+    /// <summary>
+    ///    It returns a EntityTypeBuilder for the given entity name.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    /// <exception cref="MissingEntityMapException"></exception>
+    public EntityTypeBuilder<T> GetTypeBuilder<T>(string entityName)
+    {
+        ArgumentNullException.ThrowIfNull(entityName);
+        
         if (!Entities.TryGetValue(entityName, out var value))
             throw new MissingEntityMapException(entityName);
-
-        if (value is EntityTypeBuilder<T> entityTypeBuilder) return entityTypeBuilder;
+        
+        if (value is EntityTypeBuilder<T> entityTypeBuilder)
+            return entityTypeBuilder;
 
         throw new MissingEntityMapException(entityName);
     }

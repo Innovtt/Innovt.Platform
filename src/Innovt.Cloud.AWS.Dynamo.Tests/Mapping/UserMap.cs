@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics.CodeAnalysis;
 using Innovt.Cloud.AWS.Dynamo.Mapping;
 using Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
@@ -16,10 +17,20 @@ public class UserMap : IEntityTypeDataModelMapper<User>
     /// <param name="builder">The EntityTypeBuilder used to configure the mapping.</param>
     public void Configure([NotNull] EntityTypeBuilder<User> builder)
     {
-        builder.AutoMap().WithDefaultKeys().WithTableName("Users", "#");
-        builder.WithHashKey().SetDynamicValue(u => "USER#" + u.Id);
-        builder.WithRangeKey().HasDefaultValue("PROFILE");
-        builder.Property(u => u.Email).WithMaxLength(50).IsRequired();
-        builder.WithHashKeyPrefix("USER");
+        builder.AutoMap().HasDefaultKeys().HasTableName("Users", "#");
+        builder.HasHashKey().SetDynamicValue(u => "USER#" + u.Id);
+        builder.HasRangeKey().HasDefaultValue("PROFILE");
+        builder.Property(u => u.Email).HasMaxLength(50).IsRequired();
+        builder.HasHashKeyPrefix("USER");
+        
+        builder.Ignore(c=>c.Company);
+        
+        builder.Property(c => c.Company).WithMap(c => c.Company = new Company
+        {
+            Name = "Company",
+            Id = Guid.NewGuid().ToString()
+        });
+
+        
     }
 }

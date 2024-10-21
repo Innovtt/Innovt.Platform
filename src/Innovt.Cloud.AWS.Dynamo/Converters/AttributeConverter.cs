@@ -446,9 +446,9 @@ internal static class AttributeConverter
             return new Dictionary<string, AttributeValue>();
 
         var attributes = new Dictionary<string, AttributeValue>();
-
+        
         var typeBuilder = context?.HasTypeBuilder<T>() == true ? context.GetTypeBuilder<T>() : null;
-
+      
         //No Mapped properties - All properties will be filled using only the object properties
         if (typeBuilder is null)
             foreach (var property in properties)
@@ -462,7 +462,7 @@ internal static class AttributeConverter
     private static void ConvertToAttributeValueMapWithContext<T>(T instance, DynamoContext context,
         PropertyInfo[] properties, EntityTypeBuilder<T> typeBuilder, Dictionary<string, AttributeValue> attributes)
         where T : class
-    {
+    {   
         //Invoke the mapped properties to get the value.
         InvokeMappedProperties(context, properties, instance);
 

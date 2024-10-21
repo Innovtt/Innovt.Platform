@@ -12,9 +12,8 @@ namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 ///     A builder for defining the entity type and its properties for use with DynamoDB.
 /// </summary>
 /// <typeparam name="TEntity">The type of the entity being defined.</typeparam>
-public sealed class EntityTypeBuilder<TEntity> // where TEntity:class
+public sealed class EntityTypeBuilder<TEntity> 
 {
-    
     public EntityTypeBuilder(bool ignoreNonNativeTypes) : this()
     {
         IgnoreNonNativeTypes = ignoreNonNativeTypes;
@@ -77,7 +76,7 @@ public sealed class EntityTypeBuilder<TEntity> // where TEntity:class
     /// <param name="tableName">The table name to set.</param>
     /// <param name="keySeparator">If you want to define a key prefix like USER#ID the separator will be #</param>
     /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public EntityTypeBuilder<TEntity> WithTableName(string tableName, string keySeparator = null)
+    public EntityTypeBuilder<TEntity> HasTableName(string tableName, string keySeparator = null)
     {
         TableName = tableName;
         KeySeparator = keySeparator;
@@ -89,10 +88,10 @@ public sealed class EntityTypeBuilder<TEntity> // where TEntity:class
     ///     In this case the default PK and SK will be created
     /// </summary>
     /// <returns></returns>
-    public EntityTypeBuilder<TEntity> WithDefaultKeys()
+    public EntityTypeBuilder<TEntity> HasDefaultKeys()
     {
-        WithHashKey();
-        WithRangeKey();
+        HasHashKey();
+        HasRangeKey();
         return this;
     }
 
@@ -101,9 +100,9 @@ public sealed class EntityTypeBuilder<TEntity> // where TEntity:class
     /// </summary>
     /// <param name="expression">The hash key function to generate the partition key.</param>
     /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<TEntity> WithHashKey<TProperty>(Expression<Func<TEntity, TProperty>> expression)
+    public PropertyTypeBuilder<TEntity> HasHashKey<TProperty>(Expression<Func<TEntity, TProperty>> expression)
     {
-        return WithHashKey(GetPropertyName(expression));
+        return HasHashKey(GetPropertyName(expression));
     }
 
     /// <summary>
@@ -111,13 +110,13 @@ public sealed class EntityTypeBuilder<TEntity> // where TEntity:class
     /// </summary>
     /// <param name="hashKey">The partition key to set.</param>
     /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<TEntity> WithHashKey(string hashKey = "PK")
+    public PropertyTypeBuilder<TEntity> HasHashKey(string hashKey = "PK")
     {
         Pk = hashKey;
         return Property(Pk);
     }
 
-    public EntityTypeBuilder<TEntity> WithHashKeyPrefix(string hashKeyPrefix)
+    public EntityTypeBuilder<TEntity> HasHashKeyPrefix(string hashKeyPrefix)
     {
         HashKeyPrefix = hashKeyPrefix;
         return this;
@@ -128,9 +127,9 @@ public sealed class EntityTypeBuilder<TEntity> // where TEntity:class
     /// </summary>
     /// <param name="expression">The sort key function to generate the sort key.</param>
     /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<TEntity> WithRangeKey<TProperty>(Expression<Func<TEntity, TProperty>> expression)
+    public PropertyTypeBuilder<TEntity> HasRangeKey<TProperty>(Expression<Func<TEntity, TProperty>> expression)
     {
-        return WithRangeKey(GetPropertyName(expression));
+        return HasRangeKey(GetPropertyName(expression));
     }
 
     /// <summary>
@@ -138,7 +137,7 @@ public sealed class EntityTypeBuilder<TEntity> // where TEntity:class
     /// </summary>
     /// <param name="rangeKey">The sort key to set.</param>
     /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public PropertyTypeBuilder<TEntity> WithRangeKey(string rangeKey = "SK")
+    public PropertyTypeBuilder<TEntity> HasRangeKey(string rangeKey = "SK")
     {
         Sk = rangeKey;
         return Property(Sk);
@@ -149,7 +148,7 @@ public sealed class EntityTypeBuilder<TEntity> // where TEntity:class
     /// </summary>
     /// <param name="rangeKeyPrefix"></param>
     /// <returns></returns>
-    public EntityTypeBuilder<TEntity> WithRangeKeyPrefix(string rangeKeyPrefix)
+    public EntityTypeBuilder<TEntity> HasRangeKeyPrefix(string rangeKeyPrefix)
     {
         RangeKeyPrefix = rangeKeyPrefix;
         return this;
@@ -160,7 +159,7 @@ public sealed class EntityTypeBuilder<TEntity> // where TEntity:class
     /// </summary>
     /// <param name="entityTypeName">The entity type to set.</param>
     /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
-    public EntityTypeBuilder<TEntity> WithEntityType(string entityTypeName)
+    public EntityTypeBuilder<TEntity> HasEntityType(string entityTypeName)
     {
         EntityType = entityTypeName;
         return this;
@@ -171,7 +170,7 @@ public sealed class EntityTypeBuilder<TEntity> // where TEntity:class
     /// </summary>
     /// <param name="entityTypeColumnName">The name of your customized entity type column</param>
     /// <returns></returns>
-    public EntityTypeBuilder<TEntity> WithEntityTypeColumnName(string entityTypeColumnName = "EntityType")
+    public EntityTypeBuilder<TEntity> HasEntityTypeColumnName(string entityTypeColumnName = "EntityType")
     {
         EntityTypeColumnName = entityTypeColumnName;
         return this;
@@ -296,7 +295,7 @@ public sealed class EntityTypeBuilder<TEntity> // where TEntity:class
         }
 
         if (withDefaultKeys)
-            WithDefaultKeys();
+            HasDefaultKeys();
 
         //Set the entity type as the entity name
         if (EntityTypeColumnName.IsNotNullOrEmpty())
@@ -309,7 +308,7 @@ public sealed class EntityTypeBuilder<TEntity> // where TEntity:class
     ///     Returns all properties defined for the entity type.
     /// </summary>
     /// <returns></returns>
-    public IReadOnlyCollection<PropertyTypeBuilder<TEntity>> GetProperties()
+    public IReadOnlyCollection<PropertyTypeBuilder<TEntity>> GetProperties(string discriminatorValue = null)
     {
         return Properties.Where(p=>!p.Ignored).ToList().AsReadOnly();
     }
