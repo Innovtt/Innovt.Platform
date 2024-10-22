@@ -373,7 +373,7 @@ internal static class AttributeConverter
             }
         }
 
-        InvokeMappedProperties(context, properties, instance);
+        InvokeMappedProperties(typeBuilder, properties, instance);
 
         return instance;
     }
@@ -403,19 +403,14 @@ internal static class AttributeConverter
     /// <summary>
     ///     Invoke all mapped properties to fill the object
     /// </summary>
-    /// <param name="context"></param>
+    /// <param name="typeBuilder"></param>
     /// <param name="properties"></param>
     /// <param name="instance"></param>
     /// <typeparam name="T"></typeparam>
-    private static void InvokeMappedProperties<T>(DynamoContext context, PropertyInfo[] properties, T instance)
-    {
-        if (context is null || properties is null || instance is null)
+    private static void InvokeMappedProperties<T>(EntityTypeBuilder<T> typeBuilder, PropertyInfo[] properties, T instance)
+    {   
+        if(typeBuilder is null || properties.Length == 0 || instance is null)
             return;
-
-        if (!context.HasTypeBuilder<T>())
-            return;
-
-        var typeBuilder = context.GetTypeBuilder<T>();
         
         //All mapping properties that has action mapping will be called here
         foreach (var property in properties)
@@ -447,14 +442,18 @@ internal static class AttributeConverter
 
         var attributes = new Dictionary<string, AttributeValue>();
         
-        var typeBuilder = context?.HasTypeBuilder<T>() == true ? context.GetTypeBuilder<T>() : null;
-      
         //No Mapped properties - All properties will be filled using only the object properties
-        if (typeBuilder is null)
+        if (context?.HasTypeBuilder<T>() == false)
             foreach (var property in properties)
                 attributes.Add(property.Name, CreateAttributeValue(property.GetValue(instance)));
         else
+        {
+            var typeBuilder = context.GetTypeBuilder<T>();
+            
+            //aqui que eu tenho que trocar a desgraca do nome da propriedade
+            
             ConvertToAttributeValueMapWithContext(instance, context, properties, typeBuilder, attributes);
+        }
 
         return attributes;
     }
@@ -464,7 +463,7 @@ internal static class AttributeConverter
         where T : class
     {   
         //Invoke the mapped properties to get the value.
-        InvokeMappedProperties(context, properties, instance);
+        InvokeMappedProperties(typeBuilder, properties, instance);
 
         var mappedProperties = typeBuilder.GetProperties();
 

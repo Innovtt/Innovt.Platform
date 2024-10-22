@@ -400,7 +400,10 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         var writeRequest = messages.Select(message => new WriteRequest
             {
-                PutRequest = new PutRequest { Item = AttributeConverter.ConvertToAttributeValueMap(message, context) }
+                PutRequest = new PutRequest
+                {
+                    Item = AttributeConverter.ConvertToAttributeValueMap(message, context)
+                }
             })
             .ToList();
 

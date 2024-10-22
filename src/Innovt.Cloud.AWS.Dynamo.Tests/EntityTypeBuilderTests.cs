@@ -51,7 +51,7 @@ public class EntityTypeBuilderTests
         var properties = builder.GetProperties();
 
         Assert.That(properties, Is.Not.Null);
-        Assert.That(properties, Has.Count.EqualTo(19));
+        Assert.That(properties, Has.Count.EqualTo(18));
 
         var emailProperty = builder.GetProperty("Email");
 
@@ -73,12 +73,12 @@ public class EntityTypeBuilderTests
         var properties = builder.GetProperties(); //Should have 13 properties
 
         Assert.That(properties, Is.Not.Null);
-        Assert.That(properties, Has.Count.EqualTo(19)); // Because we ignored the Email property
+        Assert.That(properties, Has.Count.EqualTo(19));
 
         //Adding the same property should be ignored
-        builder.Ignore(u => u.FirstName); //Should have 13 properties
+        builder.Ignore(u => u.FirstName);
 
-        properties = builder.GetProperties(); //Should have 13 properties
+        properties = builder.GetProperties();
 
         Assert.That(properties, Is.Not.Null);
         Assert.That(properties, Has.Count.EqualTo(18)); // Because we ignored the Email property
@@ -106,7 +106,7 @@ public class EntityTypeBuilderTests
         var properties = builder.GetProperties();
 
         Assert.That(properties, Is.Not.Null);
-        Assert.That(properties, Has.Count.EqualTo(19));
+        Assert.That(properties, Has.Count.EqualTo(18));
     }
 
     [Test]

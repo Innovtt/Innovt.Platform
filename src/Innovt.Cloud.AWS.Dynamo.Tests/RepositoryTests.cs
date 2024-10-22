@@ -55,9 +55,12 @@ public class RepositoryTests
 
         var user = (await repository.QueryAsync<User>(queryRequest).ConfigureAwait(false)).SingleOrDefault();
         
+        //Temporary Delete
         if (user is not null)
-            return user;
+            await repository.DeleteAsync(user).ConfigureAwait(false);
+          //  return user;
         
+          
         user = new User
         {
             Id = fakeUserId,
@@ -68,8 +71,9 @@ public class RepositoryTests
             Picture = "https://www.google.com",
             JobPositionId = 1,
             Context = "C2G",
-            IsActive = true
-            
+            IsActive = true,
+            Status = UserStatus.Active,
+            DaysOfWeek = new List<int>(){1,2,3,4,5},
         };
         
         await repository.AddAsync(user).ConfigureAwait(false);
@@ -115,6 +119,9 @@ public class RepositoryTests
                 Assert.That(user1.FirstName, Is.EqualTo(userByIdAndSort.FirstName));
                 Assert.That(user1.LastName, Is.EqualTo(userByIdAndSort.LastName));
                 Assert.That(user1.Id, Is.EqualTo(userByIdAndSort.Id));
+                Assert.That(user1.Status, Is.EqualTo(userByIdAndSort.Status));
+                Assert.That(user1.StatusId, Is.EqualTo(userByIdAndSort.StatusId));
+                Assert.That(user1.DaysOfWeek, Is.EqualTo(userByIdAndSort.DaysOfWeek));
             });
 
             if (user1 == null)

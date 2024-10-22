@@ -11,9 +11,14 @@ public class UserStatus:ConstantClass
     public static readonly UserStatus Inactive = new UserStatus(2, "Inactive");
     protected UserStatus(int id, string value) : base(value)
     {
+        this.Id = id;
         StatusList.Add(this);
     }
 
+    public UserStatus():base("teste") 
+    {
+        
+    }
     public int Id { get; set; }
     
     public UserStatus GetById(int id)

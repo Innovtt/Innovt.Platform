@@ -22,7 +22,6 @@ public class UserMap : IEntityTypeDataModelMapper<User>
         builder.HasRangeKey().HasDefaultValue("PROFILE");
         builder.Property(u => u.Email).HasMaxLength(50).IsRequired();
         builder.HasHashKeyPrefix("USER");
-        
         builder.Ignore(c=>c.Company);
         
         builder.Property(c => c.Company).WithMap(c => c.Company = new Company

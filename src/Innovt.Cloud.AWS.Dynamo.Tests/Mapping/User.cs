@@ -19,6 +19,8 @@ public class BaseUser : BaseUserOne
 
 public class User : BaseUser
 {
+    private UserStatus status;
+
     public User()
     {
         //Properties from BaseUser
@@ -37,12 +39,19 @@ public class User : BaseUser
     public DateTimeOffset? LastAccess { get; set; } //6
     public int JobPositionId { get; set; } //7
     public new string Id { get; set; } //8
-
     public List<int> DaysOfWeek { get; set; }
 
-    public UserStatus Status { get; set; }
+    public UserStatus Status
+    {
+        get => status;
+        set
+        {
+            status = value;
+            if(value!=null)
+                StatusId = value.Id;
+        }
+    }
 
     public int StatusId { get; set; }
-
     public Company Company { get; set; }
 }
