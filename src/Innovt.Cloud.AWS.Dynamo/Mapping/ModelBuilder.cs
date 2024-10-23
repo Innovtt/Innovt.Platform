@@ -141,14 +141,14 @@ public sealed class ModelBuilder
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     /// <exception cref="MissingEntityMapException"></exception>
-    public EntityTypeBuilder<T> GetTypeBuilder<T>(string entityName)
+    public EntityTypeBuilder GetTypeBuilder<T>(string entityName)
     {
         ArgumentNullException.ThrowIfNull(entityName);
         
         if (!Entities.TryGetValue(entityName, out var value))
             throw new MissingEntityMapException(entityName);
         
-        if (value is EntityTypeBuilder<T> entityTypeBuilder)
+        if (value is EntityTypeBuilder entityTypeBuilder)
             return entityTypeBuilder;
 
         throw new MissingEntityMapException(entityName);

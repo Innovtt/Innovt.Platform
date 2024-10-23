@@ -443,19 +443,39 @@ internal static class AttributeConverter
         var attributes = new Dictionary<string, AttributeValue>();
         
         //No Mapped properties - All properties will be filled using only the object properties
-        if (context?.HasTypeBuilder<T>() == false)
+        if (context is null || !context.HasTypeBuilder<T>())
             foreach (var property in properties)
                 attributes.Add(property.Name, CreateAttributeValue(property.GetValue(instance)));
         else
         {
             var typeBuilder = context.GetTypeBuilder<T>();
             
-            //aqui que eu tenho que trocar a desgraca do nome da propriedade
-            
             ConvertToAttributeValueMapWithContext(instance, context, properties, typeBuilder, attributes);
         }
 
         return attributes;
+    }
+
+    private static List<PropertyTypeBuilder<T>> GetDiscriminatorProperties<T>(DynamoContext context,
+        EntityTypeBuilder<T> typeBuilder, PropertyInfo[] properties, T instance)
+        where T : class
+    {
+        if (typeBuilder?.Discriminator is null)
+            return [];
+
+        var discriminatorName = typeBuilder.Discriminator.Name;
+
+        var discriminatorValue = Array.Find(properties, p => p.Name == discriminatorName)
+            ?.GetValue(instance);
+
+        if (discriminatorValue is null)
+            throw new CriticalException($"The instance has no value for discriminator property {discriminatorName}");
+
+        var discriminatorType = typeBuilder.Discriminator.GetTypeForDiscriminator(discriminatorValue.ToString());
+
+        var typeBuildForDiscriminator = context.GetTypeBuilder<T>(discriminatorType.Name);
+
+        return typeBuildForDiscriminator?.GetProperties() as List<PropertyTypeBuilder<T>>;
     }
 
     private static void ConvertToAttributeValueMapWithContext<T>(T instance, DynamoContext context,
@@ -465,7 +485,10 @@ internal static class AttributeConverter
         //Invoke the mapped properties to get the value.
         InvokeMappedProperties(typeBuilder, properties, instance);
 
-        var mappedProperties = typeBuilder.GetProperties();
+        var mappedProperties = typeBuilder.GetProperties().ToList();
+        
+       if(typeBuilder.Discriminator is not null)
+            mappedProperties.AddRange(GetDiscriminatorProperties(context, typeBuilder, properties, instance));
 
         foreach (var mappedProperty in mappedProperties)
         {

@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
@@ -308,11 +309,11 @@ public sealed class EntityTypeBuilder<TEntity>
     ///     Returns all properties defined for the entity type.
     /// </summary>
     /// <returns></returns>
-    public IReadOnlyCollection<PropertyTypeBuilder<TEntity>> GetProperties(string discriminatorValue = null)
+    public IReadOnlyCollection<PropertyTypeBuilder<TEntity>> GetProperties()
     {
         return Properties.Where(p=>!p.Ignored).ToList().AsReadOnly();
     }
-
+    
     /// <summary>
     ///     Gets a property by its column name or Name
     /// </summary>

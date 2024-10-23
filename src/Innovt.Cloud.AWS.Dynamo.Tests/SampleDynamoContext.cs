@@ -36,8 +36,6 @@ public class SampleDynamoContext : DynamoContext
 
         //Se vc nao mapeia o sistema vai considerar apenas o que esta mapeado na super classe. 
         
-        
-        
         modelBuilder.Entity<DynamoPhoneContact>().AutoMap().HasTableName("CloudExperts")
             .HasHashKey().SetDynamicValue(c => "CONTACT").Builder
             .HasRangeKey().SetDynamicValue(c => "CONTACT#" + c.Id);
