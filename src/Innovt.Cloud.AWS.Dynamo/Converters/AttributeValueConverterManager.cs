@@ -10,7 +10,7 @@ using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.Dynamo.Converters;
 
-public static class AttributeValueConverterManager
+internal static class AttributeValueConverterManager
 {
     #region [Converters]
 
@@ -65,7 +65,7 @@ public static class AttributeValueConverterManager
     /// <param name="value">An object.</param>
     /// <param name="visitedObjects">This is a hash set to control circular reference.</param>
     /// <returns>A dynamo db attribute value.</returns>
-    public static AttributeValue CreateAttributeValue(object value, HashSet<object> visitedObjects = null)
+    internal static AttributeValue CreateAttributeValue(object value, HashSet<object> visitedObjects = null)
     {
         if (value is null)
             return NullAttributeValue();
