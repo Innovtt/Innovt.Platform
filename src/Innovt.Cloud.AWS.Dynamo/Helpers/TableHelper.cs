@@ -9,6 +9,7 @@ using System.Globalization;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.Model;
 using Innovt.Cloud.AWS.Dynamo.Converters;
+using Innovt.Cloud.AWS.Dynamo.Converters.Attributes;
 using Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 using Innovt.Core.Utilities;
 

@@ -6,7 +6,7 @@ using Amazon.DynamoDBv2.Model;
 using Innovt.Core.Collections;
 using Innovt.Core.Utilities;
 
-namespace Innovt.Cloud.AWS.Dynamo.Converters;
+namespace Innovt.Cloud.AWS.Dynamo.Converters.Attributes;
 
 public static class AttributeValueToObjectConverterManager
 {

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using Amazon.DynamoDBv2.Model;
 using Innovt.Cloud.AWS.Dynamo.Converters;
+using Innovt.Cloud.AWS.Dynamo.Converters.Attributes;
 using Innovt.Cloud.Table;
 using Innovt.Core.Collections;
 using Innovt.Core.Utilities;

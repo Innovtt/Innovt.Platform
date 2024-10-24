@@ -12,6 +12,7 @@ using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.Model;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Cloud.AWS.Dynamo.Converters;
+using Innovt.Cloud.AWS.Dynamo.Converters.Attributes;
 using Innovt.Cloud.AWS.Dynamo.Helpers;
 using Innovt.Cloud.Table;
 using Innovt.Core.Collections;

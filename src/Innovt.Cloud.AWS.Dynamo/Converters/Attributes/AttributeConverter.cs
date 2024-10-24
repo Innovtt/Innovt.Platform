@@ -6,12 +6,11 @@ using System.Reflection;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
-using Innovt.Cloud.AWS.Dynamo.Converters.Attributes;
 using Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
 
-namespace Innovt.Cloud.AWS.Dynamo.Converters;
+namespace Innovt.Cloud.AWS.Dynamo.Converters.Attributes;
 
 /// <summary>
 ///     A utility class for converting between different attribute types.
