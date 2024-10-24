@@ -128,11 +128,11 @@ public sealed class ModelBuilder
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     /// <exception cref="MissingEntityMapException"></exception>
-    public EntityTypeBuilder<T> GetTypeBuilder<T>()
+    public EntityTypeBuilder GetEntityBuilder<T>()
     {
         var entityName = GetEntityName<T>();
         
-       return GetTypeBuilder<T>(entityName);
+       return GetEntityBuilder<T>(entityName);
     }
     
     /// <summary>
@@ -141,16 +141,37 @@ public sealed class ModelBuilder
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     /// <exception cref="MissingEntityMapException"></exception>
-    public EntityTypeBuilder GetTypeBuilder<T>(string entityName)
+    public EntityTypeBuilder GetEntityBuilder<T>(string entityName)
     {
         ArgumentNullException.ThrowIfNull(entityName);
         
         if (!Entities.TryGetValue(entityName, out var value))
             throw new MissingEntityMapException(entityName);
-        
-        if (value is EntityTypeBuilder entityTypeBuilder)
-            return entityTypeBuilder;
 
-        throw new MissingEntityMapException(entityName);
+        return value switch
+        {
+            EntityTypeBuilder<T> entityTypeBuilderTyped => entityTypeBuilderTyped,
+            EntityTypeBuilder entityTypeBuilder => entityTypeBuilder,
+            _ => throw new MissingEntityMapException(entityName)
+        };
+    }
+    
+    public EntityTypeBuilder<T> GetTypedEntityBuilder<T>(string entityName)
+    {
+        ArgumentNullException.ThrowIfNull(entityName);
+        
+        if (!Entities.TryGetValue(entityName, out var value))
+            throw new MissingEntityMapException(entityName);
+      
+        
+        if(EntityTypeBuilder<T>
+            
+            EntityTypeBuilder<T> entityTypeBuilderTyped => entityTypeBuilderTyped,
+                
+                
+            EntityTypeBuilder entityTypeBuilder => entityTypeBuilder,
+
+
+            throw new MissingEntityMapException(entityName);
     }
 }

@@ -15,7 +15,7 @@ public abstract class DynamoContext
 {
     private static readonly object ObjLock = new();
 
-    public CultureInfo DefaultCulture { get; private set; } = CultureInfo.CurrentCulture;
+    private  CultureInfo DefaultCulture { get; set; } = CultureInfo.CurrentCulture;
     
     protected DynamoContext()
     {
@@ -42,14 +42,23 @@ public abstract class DynamoContext
         }
     }
 
-    public EntityTypeBuilder<T> GetTypeBuilder<T>()
+    public EntityTypeBuilder GetBaseEntityTypeBuilder<T>()
     {
-        return ModelBuilder?.GetTypeBuilder<T>();
+        return ModelBuilder?.GetEntityBuilder<T>();
+    }
+    public EntityTypeBuilder GetBaseEntityTypeBuilder<T>(string name)
+    {
+        return ModelBuilder?.GetEntityBuilder<T>(name);
     }
     
-    public EntityTypeBuilder<T> GetTypeBuilder<T>(string name)
+    
+    public EntityTypeBuilder GetsBaseEntityTypeBuilder<T>()
     {
-        return ModelBuilder?.GetTypeBuilder<T>(name);
+        return ModelBuilder?.GetEntityBuilder<T>();
+    }
+    public EntityTypeBuilder GetBaseEntityTypeBuilder<T>(string name)
+    {
+        return ModelBuilder?.GetEntityBuilder<T>(name);
     }
     
     public IPropertyConverter GetPropertyConverter(Type type)

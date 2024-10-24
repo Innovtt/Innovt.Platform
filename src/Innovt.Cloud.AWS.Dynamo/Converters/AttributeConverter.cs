@@ -311,7 +311,7 @@ internal static class AttributeConverter
         if(context is null || !context.HasTypeBuilder<T>())
             return ReflectionTypeUtil.CreateInstance<T>()();
         
-        var typeBuilder = context.GetTypeBuilder<T>();
+        var typeBuilder = context.GetBaseEntityTypeBuilder<T>();
         
         if(typeBuilder.Discriminator is null)
             return ReflectionTypeUtil.CreateInstance<T>()();
@@ -343,7 +343,7 @@ internal static class AttributeConverter
             return instance;
 
         //Check if has type builder to decide how will be filled the object
-        var typeBuilder = context?.HasTypeBuilder<T>() == true ? context.GetTypeBuilder<T>() : null;
+        var typeBuilder = context?.HasTypeBuilder<T>() == true ? context.GetBaseEntityTypeBuilder<T>() : null;
 
         //Iterating over the attributes from dynamoDB
         foreach (var attributeValue in items)
@@ -448,7 +448,7 @@ internal static class AttributeConverter
                 attributes.Add(property.Name, CreateAttributeValue(property.GetValue(instance)));
         else
         {
-            var typeBuilder = context.GetTypeBuilder<T>();
+            var typeBuilder = context.GetBaseEntityTypeBuilder<T>();
             
             ConvertToAttributeValueMapWithContext(instance, context, properties, typeBuilder, attributes);
         }
@@ -456,7 +456,7 @@ internal static class AttributeConverter
         return attributes;
     }
 
-    private static List<PropertyTypeBuilder<T>> GetDiscriminatorProperties<T>(DynamoContext context,
+    private static List<PropertyBuilder<T>> GetDiscriminatorProperties<T>(DynamoContext context,
         EntityTypeBuilder<T> typeBuilder, PropertyInfo[] properties, T instance)
         where T : class
     {
@@ -473,7 +473,7 @@ internal static class AttributeConverter
 
         var discriminatorType = typeBuilder.Discriminator.GetTypeForDiscriminator(discriminatorValue.ToString());
 
-        var typeBuildForDiscriminator = context.GetTypeBuilder<T>(discriminatorType.Name);
+        var typeBuildForDiscriminator = context.GetBaseEntityTypeBuilder<T>(discriminatorType.Name);
 
         return typeBuildForDiscriminator?.GetProperties() as List<PropertyTypeBuilder<T>>;
     }
