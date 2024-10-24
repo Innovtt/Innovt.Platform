@@ -9,8 +9,7 @@ namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 /// <summary>
 ///  Represents a discriminator builder for defining the properties of an entity type.
 /// </summary>
-/// <typeparam name="TEntity">The type of the entity.</typeparam>
-public class DiscriminatorBuilder<TEntity>(string name, EntityTypeBuilder<TEntity> builder)
+public class DiscriminatorBuilder(string name, EntityTypeBuilder builder)
 {
     /// <summary>
     /// The column name that will be used to store the discriminator.
@@ -23,14 +22,14 @@ public class DiscriminatorBuilder<TEntity>(string name, EntityTypeBuilder<TEntit
     private ConcurrentDictionary<string,Type> TypeValues { get; set;  } = new();
     private ConcurrentDictionary<string,object> InstanceValues { get; set;  } = new();
 
-    public EntityTypeBuilder<TEntity> Builder { get; private set; } = builder ?? throw new ArgumentNullException(nameof(builder));
+    public EntityTypeBuilder Builder { get; private set; } = builder ?? throw new ArgumentNullException(nameof(builder));
 
     /// <summary>
     /// Simple case of a class that can inherit from another class.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public DiscriminatorBuilder<TEntity> HasValue<T>() where T : TEntity, new()
+    public DiscriminatorBuilder HasValue<T>() where T : new()
     {
         TypeValues.TryAdd(typeof(T).Name,typeof(T));
         
@@ -42,7 +41,7 @@ public class DiscriminatorBuilder<TEntity>(string name, EntityTypeBuilder<TEntit
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public DiscriminatorBuilder<TEntity> HasValue<T>(T value) where T : TEntity
+    public DiscriminatorBuilder HasValue<T>(T value)
     {   
         InstanceValues.TryAdd(typeof(T).Name,value);
         
@@ -55,12 +54,12 @@ public class DiscriminatorBuilder<TEntity>(string name, EntityTypeBuilder<TEntit
     /// <param name="whenValue"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public DiscriminatorBuilder<TEntity> HasValue<T>(string whenValue) where T : TEntity, new()
+    public DiscriminatorBuilder HasValue<T>(string whenValue) where T : new()
     {
         ArgumentNullException.ThrowIfNull(whenValue);
         
         TypeValues.TryAdd(whenValue,typeof(T));
-        
+     
         return this;
     }
     
@@ -70,7 +69,7 @@ public class DiscriminatorBuilder<TEntity>(string name, EntityTypeBuilder<TEntit
     /// <param name="whenValue"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public DiscriminatorBuilder<TEntity> HasValue<T>(int whenValue) where T : TEntity, new()
+    public DiscriminatorBuilder HasValue<T>(int whenValue) where T : new()
     {
         return HasValue<T>(whenValue.ToString(CultureInfo.InvariantCulture));
     }
@@ -82,7 +81,7 @@ public class DiscriminatorBuilder<TEntity>(string name, EntityTypeBuilder<TEntit
     /// <param name="whenValue"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public DiscriminatorBuilder<TEntity> HasValue<T>(T value, string whenValue) where T : TEntity
+    public DiscriminatorBuilder HasValue<T>(T value, string whenValue)
     {
         ArgumentNullException.ThrowIfNull(value);
         ArgumentNullException.ThrowIfNull(whenValue);
@@ -99,7 +98,7 @@ public class DiscriminatorBuilder<TEntity>(string name, EntityTypeBuilder<TEntit
     /// <param name="whenValue"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public DiscriminatorBuilder<TEntity> HasValue<T>(T value, int whenValue) where T : TEntity
+    public DiscriminatorBuilder HasValue<T>(T value, int whenValue)
     {
         return HasValue(value, whenValue.ToString(CultureInfo.InvariantCulture));
     }
@@ -139,7 +138,7 @@ public class DiscriminatorBuilder<TEntity>(string name, EntityTypeBuilder<TEntit
     /// </summary>
     /// <param name="value"></param>
     /// <returns></returns>
-    public T GetValue<T>(string value) where T : TEntity
+    public T GetValue<T>(string value)
     {
         //Check is an instance value exists
         if (InstanceValues.TryGetValue(value, out var defaultObj))
@@ -161,7 +160,7 @@ public class DiscriminatorBuilder<TEntity>(string name, EntityTypeBuilder<TEntit
     /// </summary>
     /// <param name="value"></param>
     /// <returns></returns>
-    public T GetValue<T>(int value) where T : TEntity
+    public T GetValue<T>(int value)
     {
         return GetValue<T>(value.ToString(CultureInfo.InvariantCulture));
     }

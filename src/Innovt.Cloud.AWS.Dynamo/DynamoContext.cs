@@ -15,7 +15,7 @@ public abstract class DynamoContext
 {
     private static readonly object ObjLock = new();
 
-    public CultureInfo DefaultCulture { get; private set; } = CultureInfo.CurrentCulture;
+    private  CultureInfo DefaultCulture { get; set; } = CultureInfo.CurrentCulture;
     
     protected DynamoContext()
     {
@@ -41,12 +41,16 @@ public abstract class DynamoContext
             OnModelCreating(ModelBuilder);
         }
     }
-
-    public EntityTypeBuilder<T> GetTypeBuilder<T>()
+    
+    public EntityTypeBuilder GetEntityBuilder<T>()
     {
-        return ModelBuilder?.GetTypeBuilder<T>();
+        return ModelBuilder?.GetEntityBuilder<T>();
     }
-
+    public EntityTypeBuilder GetEntityBuilder(string name)
+    {
+        return ModelBuilder?.GetEntityBuilder(name);
+    }
+    
     public IPropertyConverter GetPropertyConverter(Type type)
     {
         return ModelBuilder?.GetPropertyConverter(type);
@@ -83,6 +87,16 @@ public abstract class DynamoContext
     public bool HasTypeBuilder<T>(object instance = null)
     {
         return ModelBuilder.HasTypeBuilder<T>(instance);
+    }
+    
+    /// <summary>
+    /// Check if the entity has a builder.
+    /// </summary>
+    /// <param name="entityName">The name of the typebuilder</param>
+    /// <returns></returns>
+    public bool HasTypeBuilder(string entityName)
+    {
+        return ModelBuilder.HasTypeBuilder(entityName);
     }
     
     protected abstract void OnModelCreating([DisallowNull] ModelBuilder modelBuilder);

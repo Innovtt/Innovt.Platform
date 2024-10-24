@@ -18,8 +18,8 @@
         <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0"/>
         <PackageReference Include="Amazon.Lambda.Core" Version="2.3.0"/>
         <PackageReference Include="Amazon.Lambda.RuntimeSupport" Version="1.11.0"/>
-        <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.4.3"/>
-        <PackageReference Include="AWSSDK.XRay" Version="3.7.400.36" />
+        <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.4.4" />
+        <PackageReference Include="AWSSDK.XRay" Version="3.7.400.38" />
     </ItemGroup>
 
 </Project>

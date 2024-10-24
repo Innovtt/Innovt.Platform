@@ -9,6 +9,8 @@ using System.Globalization;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.Model;
 using Innovt.Cloud.AWS.Dynamo.Converters;
+using Innovt.Cloud.AWS.Dynamo.Converters.Attributes;
+using Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.Dynamo.Helpers;
@@ -28,7 +30,7 @@ internal static class TableHelper
     /// </returns>
     internal static string GetTableName<T>(DynamoContext context = null) where T : class
     {
-        if (context != null && context.HasTypeBuilder<T>()) return context.GetTypeBuilder<T>().TableName;
+        if (context != null && context.HasTypeBuilder<T>()) return context.GetEntityBuilder<T>().TableName;
 
         return Attribute.GetCustomAttribute(typeof(T), typeof(DynamoDBTableAttribute)) is not DynamoDBTableAttribute
             attribute
@@ -47,7 +49,7 @@ internal static class TableHelper
     /// <returns></returns>
     private static string GetHashKeyName<T>(DynamoContext context = null) where T : class
     {
-        if (context != null && context.HasTypeBuilder<T>()) return context.GetTypeBuilder<T>().Pk;
+        if (context != null && context.HasTypeBuilder<T>()) return context.GetEntityBuilder<T>().Pk;
 
         return Attribute.GetCustomAttribute(typeof(T), typeof(DynamoDBHashKeyAttribute)) is not DynamoDBHashKeyAttribute
             attribute
@@ -66,7 +68,8 @@ internal static class TableHelper
     /// <returns></returns>
     private static string GetRangeKeyName<T>(DynamoContext context = null) where T : class
     {
-        if (context != null && context.HasTypeBuilder<T>()) return context.GetTypeBuilder<T>().Sk;
+        if (context != null && context.HasTypeBuilder<T>()) 
+            return context.GetEntityBuilder<T>().Sk;
 
         return Attribute.GetCustomAttribute(typeof(T), typeof(DynamoDBRangeKeyAttribute)) is not
             DynamoDBRangeKeyAttribute
@@ -116,10 +119,13 @@ internal static class TableHelper
             return (hashKeyValue, rangeKeyValue);
 
         //It will build the value from the delegate using the type builder
-        var entityBuilder = context.GetTypeBuilder<T>();
+
+        if(context.GetEntityBuilder<T>() is not EntityTypeBuilder<T> entityBuilder)
+            return (hashKeyValue, rangeKeyValue);
+        
         //invoke the map action to get the updated value
-        hashKeyValue = entityBuilder.GetProperty(hashKeyName)?.InvokeMaps(value).GetValue(value);
-        rangeKeyValue = entityBuilder.GetProperty(rangeKeyName)?.InvokeMaps(value).GetValue(value);
+        hashKeyValue = entityBuilder.GetProperty(hashKeyName)?.InvokeMaps(value).GetDefaultValue(value);
+        rangeKeyValue = entityBuilder.GetProperty(rangeKeyName)?.InvokeMaps(value).GetDefaultValue(value);
 
         return (hashKeyValue, rangeKeyValue);
     }
@@ -138,7 +144,7 @@ internal static class TableHelper
     {
         ArgumentNullException.ThrowIfNull(id);
 
-        var entityBuilder = context?.GetTypeBuilder<T>();
+        var entityBuilder = context?.GetEntityBuilder<T>();
         var hashKeyPrefix = entityBuilder?.HashKeyPrefix;
         var keySeparator = entityBuilder?.KeySeparator;
 

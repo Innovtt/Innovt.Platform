@@ -81,10 +81,8 @@ public sealed class ModelBuilder
     public bool HasTypeBuilder(Type type)
     {
         ArgumentNullException.ThrowIfNull(type);
-        
-        var entityName = type.Name;
 
-        return Entities.TryGetValue(entityName, out _);
+        return HasTypeBuilder(type.Name);
     }
 
     /// <summary>
@@ -97,6 +95,13 @@ public sealed class ModelBuilder
     {
         var entityName = GetEntityName<T>(instance);
 
+        return HasTypeBuilder(entityName);
+    }
+    
+    public bool HasTypeBuilder(string entityName)
+    {
+        ArgumentNullException.ThrowIfNull(entityName);
+        
         return Entities.TryGetValue(entityName, out _);
     }
 
@@ -121,22 +126,35 @@ public sealed class ModelBuilder
 
         return entityTypeBuilder;
     }
-
+    
     /// <summary>
-    ///     It returns a EntityTypeBuilder for the given entity.
+    /// Returns a EntityTypeBuilder for the given entity.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    public EntityTypeBuilder GetEntityBuilder<T>()
+    {
+        var entityName = GetEntityName<T>();
+        
+        return GetEntityBuilder(entityName);
+    }
+    
+    /// <summary>
+    ///    It returns a EntityTypeBuilder for the given entity name.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     /// <exception cref="MissingEntityMapException"></exception>
-    public EntityTypeBuilder<T> GetTypeBuilder<T>()
+    public EntityTypeBuilder GetEntityBuilder(string entityName)
     {
-        var entityName = GetEntityName<T>();
-
+        ArgumentNullException.ThrowIfNull(entityName);
+        
         if (!Entities.TryGetValue(entityName, out var value))
             throw new MissingEntityMapException(entityName);
 
-        if (value is EntityTypeBuilder<T> entityTypeBuilder) return entityTypeBuilder;
-
+        if (value is EntityTypeBuilder entityTypeBuilder)
+            return entityTypeBuilder;
+        
         throw new MissingEntityMapException(entityName);
     }
 }
