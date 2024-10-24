@@ -9,7 +9,7 @@ namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 /// <summary>
 ///  Represents a discriminator builder for defining the properties of an entity type.
 /// </summary>
-public abstract class DiscriminatorBuilder(string name, EntityTypeBuilder builder)
+public class DiscriminatorBuilder(string name, EntityTypeBuilder builder)
 {
     /// <summary>
     /// The column name that will be used to store the discriminator.

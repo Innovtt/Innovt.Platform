@@ -6,6 +6,7 @@ using System.Reflection;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
+using Innovt.Cloud.AWS.Dynamo.Converters.Attributes.Exceptions;
 using Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
@@ -20,7 +21,7 @@ internal static class AttributeConverter
     private static readonly ConcurrentDictionary<Type, PropertyInfo[]> PropertiesCache = new();
     private static readonly ConcurrentDictionary<(Type type, string propertyName), PropertyInfo> PropertyLookupCache = new();
     private static readonly ConcurrentDictionary<PropertyInfo, DynamoDBPropertyAttribute> AttributeCache = new();
-    private static readonly ConcurrentDictionary<(string discriminatorName, string discriminatorValue), Type> DiscriminatorTypeCache = new();
+    
 
     /// <summary>
     ///     Add a new type to the list of recognized primitive types.
@@ -182,7 +183,7 @@ internal static class AttributeConverter
             }
         }
         
-        InvokeMappedProperties(typeBuilder, properties, instance);
+        PropertyMapper.InvokeMappedProperties(typeBuilder, properties, instance);
 
         return instance;
     }
@@ -203,56 +204,9 @@ internal static class AttributeConverter
         return ConvertNonPrimitiveType(property, attributeValue, value, context?.GetPropertyConverter(property.PropertyType));
     }
 
-    /// <summary>
-    ///     Invoke all mapped properties to fill the object
-    /// </summary>
-    private static void InvokeMappedProperties<T>(EntityTypeBuilder typeBuilder, PropertyInfo[] properties, T instance)
-    {   
-        if(typeBuilder is null || properties.Length == 0 || instance is null)
-            return;
-        
-        foreach (var property in properties)
-        {
-            var propertyTypeBuilder = typeBuilder.GetProperty(property.Name) as PropertyBuilder<T>;
-            propertyTypeBuilder?.InvokeMaps(instance);
-        }
-    }
+  
 
-    private static Type GetDiscriminatorType(EntityTypeBuilder typeBuilder, string discriminatorValue)
-    {
-        if (typeBuilder?.Discriminator is null)
-            return null;
-
-        var cacheKey = (typeBuilder.Discriminator.Name, discriminatorValue);
-    
-        return DiscriminatorTypeCache.GetOrAdd(cacheKey, key =>
-            typeBuilder.Discriminator.GetTypeForDiscriminator(discriminatorValue));
-    }
-
-    private static List<PropertyBuilder> GetDiscriminatorProperties<T>(DynamoContext context, EntityTypeBuilder typeBuilder, 
-        PropertyInfo[] properties, T instance)
-        where T : class
-    {
-        if (typeBuilder?.Discriminator is null)
-            return [];
-
-        var discriminatorName = typeBuilder.Discriminator.Name;
-
-        var discriminatorProperty = Array.Find(properties, p => p.Name == discriminatorName);
-        var discriminatorValue = discriminatorProperty?.GetValue(instance)?.ToString();
-
-        if (discriminatorValue is null)
-            throw new CriticalException($"The instance has no value for discriminator property {discriminatorName}");
-
-        var discriminatorType = GetDiscriminatorType(typeBuilder, discriminatorValue);
-        
-        if (discriminatorType is null)
-            return [];
-
-        var typeBuildForDiscriminator = context.GetEntityBuilder(discriminatorType.Name);
-
-        return typeBuildForDiscriminator?.GetProperties() ?? [];
-    }
+  
 
     /// <summary>
     ///     Converts a type to a dictionary of attributes and values.
@@ -288,23 +242,18 @@ internal static class AttributeConverter
         PropertyInfo[] properties, EntityTypeBuilder typeBuilder, Dictionary<string, AttributeValue> attributes)
         where T : class
     {   
-        InvokeMappedProperties(typeBuilder, properties, instance);
+        PropertyMapper.InvokeMappedProperties(typeBuilder, properties, instance);
 
         var mappedProperties = typeBuilder.GetProperties().ToList();
-        
-        if(typeBuilder.Discriminator is not null)
-            mappedProperties.AddRange(GetDiscriminatorProperties(context, typeBuilder, properties, instance));
 
+        if (typeBuilder.Discriminator is not null)
+            mappedProperties.AddRange(DiscriminatorManager.GetDiscriminatorProperties(context, typeBuilder, properties, instance));
+        
         foreach (var mappedProperty in mappedProperties)
         {
             try
             {
                 var propertyKey = mappedProperty.Name;
-                var propertyTypeBuilder = typeBuilder.GetProperty(propertyKey);
-
-                if (propertyTypeBuilder is null)
-                    continue;
-
                 var property = Array.Find(properties, p => p.Name == propertyKey);
 
                 var propertyType = property?.PropertyType;
@@ -328,7 +277,7 @@ internal static class AttributeConverter
             }
             catch (Exception ex)
             {
-                throw new CriticalException($"Error parsing entity to Dynamo properties. Property {mappedProperty.Name}", ex);
+                throw new ConversionException($"Error parsing entity to Dynamo properties. Property {mappedProperty.Name}", ex);
             }
         }
     }
@@ -342,6 +291,5 @@ internal static class AttributeConverter
         PropertiesCache.Clear();
         PropertyLookupCache.Clear();
         AttributeCache.Clear();
-        DiscriminatorTypeCache.Clear();
     }
 }

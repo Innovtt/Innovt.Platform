@@ -39,5 +39,7 @@ public class SampleDynamoContext : DynamoContext
         modelBuilder.Entity<DynamoPhoneContact>().AutoMap().HasTableName("CloudExperts")
             .HasHashKey().SetDynamicValue(c => "CONTACT").Builder
             .HasRangeKey().SetDynamicValue(c => "CONTACT#" + c.Id);
-}
+
+        modelBuilder.Entity<DynamoEmailContact>().AutoMap().HasTableName("CloudExperts");
+    }
 }

@@ -81,10 +81,8 @@ public sealed class ModelBuilder
     public bool HasTypeBuilder(Type type)
     {
         ArgumentNullException.ThrowIfNull(type);
-        
-        var entityName = type.Name;
 
-        return Entities.TryGetValue(entityName, out _);
+        return HasTypeBuilder(type.Name);
     }
 
     /// <summary>
@@ -97,6 +95,13 @@ public sealed class ModelBuilder
     {
         var entityName = GetEntityName<T>(instance);
 
+        return HasTypeBuilder(entityName);
+    }
+    
+    public bool HasTypeBuilder(string entityName)
+    {
+        ArgumentNullException.ThrowIfNull(entityName);
+        
         return Entities.TryGetValue(entityName, out _);
     }
 

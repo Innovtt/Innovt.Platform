@@ -133,7 +133,7 @@ public class EntityTypeBuilderTests
         
         builder.Ignore(c=>c.Company);
         
-        builder.Property(c => c.Company).WithMap(c => new Company
+        builder.Property(c => c.Company).WithMap(c => c.Company= new Company
         {
             Name = "Company",
             User =null,

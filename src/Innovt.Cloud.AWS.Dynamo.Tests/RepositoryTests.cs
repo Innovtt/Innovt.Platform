@@ -14,7 +14,7 @@ using NUnit.Framework;
 namespace Innovt.Cloud.AWS.Dynamo.Tests;
 
 [TestFixture]
-//[Ignore("Only for local tests")]
+[Ignore("Only for local tests")]
 public class RepositoryTests
 {
     private string fakeUserId = "24a874d8-d0a1-7032-b572-3c3383ff4ba9";
@@ -334,7 +334,7 @@ public class RepositoryTests
 
         repository = new SampleRepository(context, loggerMock, awsConfiguration);
 
-        var email = "michelmob@gmail.com";
+        var email = "michelmob+innovt@gmail.com";
 
         var users = await repository.ScanAsync<User>(new ScanRequest
         {
@@ -506,14 +506,16 @@ public class RepositoryTests
             var phone = new DynamoPhoneContact
             {
                 Name = "Michel",
-                CountryCode = "55"
+                CountryCode = "55",
+                Id = Guid.NewGuid().ToString()
             };
             contacts.Add(phone);
             var email = new DynamoEmailContact
             {
                 Name = "Michel",
                 Value = "michelmob@gmail.com",
-                Days = new List<int> {1, 2, 3, 4, 5}
+                Days = [1, 2, 3, 4, 5],
+                Id = Guid.NewGuid().ToString()
             };
             contacts.Add(email);
             
@@ -530,9 +532,30 @@ public class RepositoryTests
                 }
             };
             
-            var contact = await repository.QueryAsync<DynamoContact>(queryRequest, CancellationToken.None)
+            var result = await repository.QueryAsync<DynamoContact>(queryRequest, CancellationToken.None)
                 .ConfigureAwait(false);
             
+            Assert.That(contacts, Is.Not.Null);
+
+            foreach (var contact in result)
+            {
+                Assert.That(contact, Is.Not.Null);
+                Assert.That(contact.Id, Is.Not.Null);
+                
+                if (contact is DynamoPhoneContact phoneContact)
+                {
+                    Assert.That(phoneContact.CountryCode, Is.Not.Null);
+                    Assert.That(phoneContact.CountryCode, Is.EqualTo("55"));
+                }
+                
+                if (contact is DynamoEmailContact emailContact)
+                {
+                    Assert.That(emailContact.Value, Is.Not.Null);
+                    Assert.That(emailContact.Value, Is.EqualTo("michelmob@gmail.com"));
+                }
+            }
+
+            await repository.DeleteRangeAsync(result).ConfigureAwait(false);
         }
         catch (Exception e)
         {

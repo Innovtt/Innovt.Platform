@@ -89,5 +89,15 @@ public abstract class DynamoContext
         return ModelBuilder.HasTypeBuilder<T>(instance);
     }
     
+    /// <summary>
+    /// Check if the entity has a builder.
+    /// </summary>
+    /// <param name="entityName">The name of the typebuilder</param>
+    /// <returns></returns>
+    public bool HasTypeBuilder(string entityName)
+    {
+        return ModelBuilder.HasTypeBuilder(entityName);
+    }
+    
     protected abstract void OnModelCreating([DisallowNull] ModelBuilder modelBuilder);
 }
