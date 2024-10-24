@@ -71,7 +71,7 @@ public abstract class EntityTypeBuilder
     public EntityTypeBuilder HasTableName(string tableName, string keySeparator = null)
     {
         TableName = tableName ?? throw new ArgumentNullException(nameof(tableName));
-        KeySeparator = keySeparator ?? throw new ArgumentNullException(nameof(keySeparator));
+        KeySeparator = keySeparator;
         return this;
     }
 
@@ -209,9 +209,9 @@ public abstract class EntityTypeBuilder
     ///     Returns all properties defined for the entity type.
     /// </summary>
     /// <returns></returns>
-    public IReadOnlyCollection<PropertyBuilder> GetProperties()
+    public List<PropertyBuilder> GetProperties()
     {
-        return PropertyBuilders.Where(p=>!p.Ignored).ToList().AsReadOnly();
+        return PropertyBuilders.Where(p=>!p.Ignored).ToList();
     }
 
     /// <summary>

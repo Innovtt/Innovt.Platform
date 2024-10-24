@@ -123,8 +123,8 @@ internal static class TableHelper
             return (hashKeyValue, rangeKeyValue);
         
         //invoke the map action to get the updated value
-        hashKeyValue = entityBuilder.GetProperty(hashKeyName)?.InvokeMaps(value).GetValue(value);
-        rangeKeyValue = entityBuilder.GetProperty(rangeKeyName)?.InvokeMaps(value).GetValue(value);
+        hashKeyValue = entityBuilder.GetProperty(hashKeyName)?.InvokeMaps(value).GetDefaultValue(value);
+        rangeKeyValue = entityBuilder.GetProperty(rangeKeyName)?.InvokeMaps(value).GetDefaultValue(value);
 
         return (hashKeyValue, rangeKeyValue);
     }

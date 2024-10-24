@@ -13,7 +13,7 @@
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.402.1" />
+        <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.402.2" />
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -23,6 +23,9 @@
     <ItemGroup>
         <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj"/>
         <ProjectReference Include="..\Innovt.Domain\Innovt.Domain.csproj"/>
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Converters\Attributes\" />
     </ItemGroup>
 
 </Project>

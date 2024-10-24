@@ -5,6 +5,7 @@ namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 public abstract class PropertyBuilder
 {
     private string columnName;
+    protected Func<object, object> SetValueDelegate { get; set; }
     
     public EntityTypeBuilder Builder { get; set; }
     
@@ -31,7 +32,7 @@ public abstract class PropertyBuilder
     /// <summary>
     ///     Gets the type of the property.
     /// </summary>
-    protected Type Type { get; set; }
+    public Type Type { get; set; }
 
     /// <summary>
     ///     Gets or sets the column name associated with the property. if the column name is not set, the property name is
@@ -100,24 +101,17 @@ public abstract class PropertyBuilder
     }
 
     /// <summary>
-    ///     Define a delegate to parse the property.
-    /// </summary>
-    /// <param name="actionMap">The action to parse the property.</param>
-    /// <returns>The current instance of <see cref="PropertyBuilder" />.</returns>
-    //public abstract PropertyBuilder WithMap<T>(Action<T> actionMap);
-    
-    /// <summary>
-    ///     Define a delegate to set the value of the property based on the entity.
-    /// </summary>
-    /// <param name="valueDelegate"></param>
-    /// <exception cref="ArgumentNullException"></exception>
-    //public abstract PropertyBuilder SetDynamicValue<T>(Func<T, object> valueDelegate);
-
-    /// <summary>
     ///     Get the instance value using a fixed value or a delegate.
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    //public abstract object GetValue<T>(T entity);
-    //public abstract PropertyBuilder InvokeMaps<T>(T entity);
+    public object GetDefaultValue<T>(T entity) where T:class
+    {
+        if (SetValueDelegate != null)
+            Value =  SetValueDelegate(entity);
+        
+        Type = Value?.GetType() ?? Type;
+        
+        return Value;
+    }
 }

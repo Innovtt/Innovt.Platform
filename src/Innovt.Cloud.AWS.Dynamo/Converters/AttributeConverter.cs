@@ -372,7 +372,7 @@ internal static class AttributeConverter
                 throw new CriticalException($"Error parsing data from database to object. Property {attributeValue.Key}", ex);
             }
         }
-
+        
         InvokeMappedProperties(typeBuilder, properties, instance);
 
         return instance;
@@ -407,7 +407,7 @@ internal static class AttributeConverter
     /// <param name="properties"></param>
     /// <param name="instance"></param>
     /// <typeparam name="T"></typeparam>
-    private static void InvokeMappedProperties<T>(EntityTypeBuilder<T> typeBuilder, PropertyInfo[] properties, T instance)
+    private static void InvokeMappedProperties<T>(EntityTypeBuilder typeBuilder, PropertyInfo[] properties, T instance)
     {   
         if(typeBuilder is null || properties.Length == 0 || instance is null)
             return;
@@ -415,7 +415,7 @@ internal static class AttributeConverter
         //All mapping properties that has action mapping will be called here
         foreach (var property in properties)
         {
-            var propertyTypeBuilder = typeBuilder.GetProperty(property.Name);
+            var propertyTypeBuilder = typeBuilder.GetProperty(property.Name) as PropertyBuilder<T>;
 
             propertyTypeBuilder?.InvokeMaps(instance);
         }
@@ -442,22 +442,21 @@ internal static class AttributeConverter
 
         var attributes = new Dictionary<string, AttributeValue>();
         
-        //No Mapped properties - All properties will be filled using only the object properties
-        if (context is null || !context.HasTypeBuilder<T>())
+        var typeBuilder = context?.HasTypeBuilder<T>() == true ? context.GetEntityBuilder<T>() : null;
+        
+        if (typeBuilder is null)
             foreach (var property in properties)
                 attributes.Add(property.Name, CreateAttributeValue(property.GetValue(instance)));
         else
         {
-            var typeBuilder = context.GetEntityBuilder<T>();
-            
             ConvertToAttributeValueMapWithContext(instance, context, properties, typeBuilder, attributes);
         }
 
         return attributes;
     }
 
-    private static List<PropertyBuilder<T>> GetDiscriminatorProperties<T>(DynamoContext context,
-        EntityTypeBuilder<T> typeBuilder, PropertyInfo[] properties, T instance)
+    private static List<PropertyBuilder> GetDiscriminatorProperties<T>(DynamoContext context, EntityTypeBuilder typeBuilder, 
+        PropertyInfo[] properties, T instance)
         where T : class
     {
         if (typeBuilder?.Discriminator is null)
@@ -473,9 +472,9 @@ internal static class AttributeConverter
 
         var discriminatorType = typeBuilder.Discriminator.GetTypeForDiscriminator(discriminatorValue.ToString());
 
-        var typeBuildForDiscriminator = context.GetBaseEntityTypeBuilder<T>(discriminatorType.Name);
+        var typeBuildForDiscriminator = context.GetEntityBuilder(discriminatorType.Name);
 
-        return typeBuildForDiscriminator?.GetProperties() as List<PropertyTypeBuilder<T>>;
+        return typeBuildForDiscriminator?.GetProperties();
     }
 
     private static void ConvertToAttributeValueMapWithContext<T>(T instance, DynamoContext context,
@@ -510,7 +509,7 @@ internal static class AttributeConverter
                 if (property is null)
                 {
                     //Invoke the delegate action to get the value.
-                    propertyValue = mappedProperty.GetValue(instance);
+                    propertyValue = mappedProperty.GetDefaultValue(instance);
                     propertyType = mappedProperty.Type;
                 }
 

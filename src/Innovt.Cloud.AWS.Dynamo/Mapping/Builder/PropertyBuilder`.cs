@@ -7,11 +7,10 @@ namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 ///     Represents a builder for defining the properties of an entity type.
 /// </summary>
 /// <typeparam name="T">The type of the entity.</typeparam>
+
 public sealed class PropertyBuilder<T>: PropertyBuilder
 {
-    private readonly List<Action<object>> mappedActions = [];
-    
-    private Func<T, object> setValueDelegate;
+    private readonly List<Action<T>> mappedActions = [];
     
     public new EntityTypeBuilder<T> Builder { get; set; }
     
@@ -74,6 +73,7 @@ public sealed class PropertyBuilder<T>: PropertyBuilder
 
 
 
+
     /// <summary>
     ///     Define a delegate to parse the property.
     /// </summary>
@@ -84,7 +84,7 @@ public sealed class PropertyBuilder<T>: PropertyBuilder
     {
         ArgumentNullException.ThrowIfNull(actionMap);
 
-        mappedActions.Add(actionMap as Action<object>);
+        mappedActions.Add(actionMap);
 
         return this;
     }
@@ -96,7 +96,9 @@ public sealed class PropertyBuilder<T>: PropertyBuilder
     /// <exception cref="ArgumentNullException"></exception>
     public PropertyBuilder<T> SetDynamicValue(Func<T, object> valueDelegate)
     {
-       setValueDelegate = valueDelegate ?? throw new ArgumentNullException(nameof(valueDelegate));
+        ArgumentNullException.ThrowIfNull(valueDelegate);
+    
+        SetValueDelegate = obj => valueDelegate((T)obj);
         
         return this;
     }
@@ -106,7 +108,7 @@ public sealed class PropertyBuilder<T>: PropertyBuilder
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public PropertyBuilder<T> InvokeMaps<TEntity>(TEntity entity)
+    public PropertyBuilder<T> InvokeMaps<TEntity>(TEntity entity) where TEntity : T
     {
         if (!HasMapAction)
             return this;
@@ -115,20 +117,5 @@ public sealed class PropertyBuilder<T>: PropertyBuilder
             action(entity);
 
         return this;
-    }
-    
-    /// <summary>
-    ///    Get the instance value using a fixed value or a delegate.
-    /// </summary>
-    /// <param name="entity"></param>
-    /// <returns></returns>
-    public object GetValue(T entity)
-    {
-        if (setValueDelegate != null)
-            Value = setValueDelegate(entity);
-
-        Type = Value?.GetType() ?? Type;
-
-        return Value;
     }
 }
