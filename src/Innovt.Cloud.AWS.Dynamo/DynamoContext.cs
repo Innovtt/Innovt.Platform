@@ -41,24 +41,14 @@ public abstract class DynamoContext
             OnModelCreating(ModelBuilder);
         }
     }
-
-    public EntityTypeBuilder GetBaseEntityTypeBuilder<T>()
+    
+    public EntityTypeBuilder GetEntityBuilder<T>()
     {
         return ModelBuilder?.GetEntityBuilder<T>();
     }
-    public EntityTypeBuilder GetBaseEntityTypeBuilder<T>(string name)
+    public EntityTypeBuilder GetEntityBuilder(string name)
     {
-        return ModelBuilder?.GetEntityBuilder<T>(name);
-    }
-    
-    
-    public EntityTypeBuilder GetsBaseEntityTypeBuilder<T>()
-    {
-        return ModelBuilder?.GetEntityBuilder<T>();
-    }
-    public EntityTypeBuilder GetBaseEntityTypeBuilder<T>(string name)
-    {
-        return ModelBuilder?.GetEntityBuilder<T>(name);
+        return ModelBuilder?.GetEntityBuilder(name);
     }
     
     public IPropertyConverter GetPropertyConverter(Type type)

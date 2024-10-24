@@ -121,18 +121,17 @@ public sealed class ModelBuilder
 
         return entityTypeBuilder;
     }
-
+    
     /// <summary>
-    ///     It returns a EntityTypeBuilder for the given entity.
+    /// Returns a EntityTypeBuilder for the given entity.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    /// <exception cref="MissingEntityMapException"></exception>
     public EntityTypeBuilder GetEntityBuilder<T>()
     {
         var entityName = GetEntityName<T>();
         
-       return GetEntityBuilder<T>(entityName);
+        return GetEntityBuilder(entityName);
     }
     
     /// <summary>
@@ -141,37 +140,16 @@ public sealed class ModelBuilder
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     /// <exception cref="MissingEntityMapException"></exception>
-    public EntityTypeBuilder GetEntityBuilder<T>(string entityName)
+    public EntityTypeBuilder GetEntityBuilder(string entityName)
     {
         ArgumentNullException.ThrowIfNull(entityName);
         
         if (!Entities.TryGetValue(entityName, out var value))
             throw new MissingEntityMapException(entityName);
 
-        return value switch
-        {
-            EntityTypeBuilder<T> entityTypeBuilderTyped => entityTypeBuilderTyped,
-            EntityTypeBuilder entityTypeBuilder => entityTypeBuilder,
-            _ => throw new MissingEntityMapException(entityName)
-        };
-    }
-    
-    public EntityTypeBuilder<T> GetTypedEntityBuilder<T>(string entityName)
-    {
-        ArgumentNullException.ThrowIfNull(entityName);
+        if (value is EntityTypeBuilder entityTypeBuilder)
+            return entityTypeBuilder;
         
-        if (!Entities.TryGetValue(entityName, out var value))
-            throw new MissingEntityMapException(entityName);
-      
-        
-        if(EntityTypeBuilder<T>
-            
-            EntityTypeBuilder<T> entityTypeBuilderTyped => entityTypeBuilderTyped,
-                
-                
-            EntityTypeBuilder entityTypeBuilder => entityTypeBuilder,
-
-
-            throw new MissingEntityMapException(entityName);
+        throw new MissingEntityMapException(entityName);
     }
 }

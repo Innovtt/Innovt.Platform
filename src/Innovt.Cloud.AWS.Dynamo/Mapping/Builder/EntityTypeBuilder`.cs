@@ -22,7 +22,7 @@ public sealed class EntityTypeBuilder<T> : EntityTypeBuilder
     /// </summary>
     public new string EntityType { get; private set; } = typeof(T).Name.ToUpper(CultureInfo.InvariantCulture);
     
-    public DiscriminatorBuilder<T> Discriminator { get; private set; }
+    public new DiscriminatorBuilder<T> Discriminator { get; private set; }
     
     /// <summary>
     ///     Sets the table name associated with the entity type.
@@ -100,6 +100,7 @@ public sealed class EntityTypeBuilder<T> : EntityTypeBuilder
     public DiscriminatorBuilder<T> HasDiscriminator(string name)
     {
         Discriminator ??= new DiscriminatorBuilder<T>(name,this);
+        
         return Discriminator;
     }
     /// <summary>

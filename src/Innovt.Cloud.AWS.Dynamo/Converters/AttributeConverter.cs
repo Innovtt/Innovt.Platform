@@ -311,7 +311,7 @@ internal static class AttributeConverter
         if(context is null || !context.HasTypeBuilder<T>())
             return ReflectionTypeUtil.CreateInstance<T>()();
         
-        var typeBuilder = context.GetBaseEntityTypeBuilder<T>();
+        var typeBuilder = context.GetEntityBuilder<T>();
         
         if(typeBuilder.Discriminator is null)
             return ReflectionTypeUtil.CreateInstance<T>()();
@@ -343,7 +343,7 @@ internal static class AttributeConverter
             return instance;
 
         //Check if has type builder to decide how will be filled the object
-        var typeBuilder = context?.HasTypeBuilder<T>() == true ? context.GetBaseEntityTypeBuilder<T>() : null;
+        var typeBuilder = context?.HasTypeBuilder<T>() == true ? context.GetEntityBuilder<T>() : null;
 
         //Iterating over the attributes from dynamoDB
         foreach (var attributeValue in items)
@@ -448,7 +448,7 @@ internal static class AttributeConverter
                 attributes.Add(property.Name, CreateAttributeValue(property.GetValue(instance)));
         else
         {
-            var typeBuilder = context.GetBaseEntityTypeBuilder<T>();
+            var typeBuilder = context.GetEntityBuilder<T>();
             
             ConvertToAttributeValueMapWithContext(instance, context, properties, typeBuilder, attributes);
         }
@@ -479,7 +479,7 @@ internal static class AttributeConverter
     }
 
     private static void ConvertToAttributeValueMapWithContext<T>(T instance, DynamoContext context,
-        PropertyInfo[] properties, EntityTypeBuilder<T> typeBuilder, Dictionary<string, AttributeValue> attributes)
+        PropertyInfo[] properties, EntityTypeBuilder typeBuilder, Dictionary<string, AttributeValue> attributes)
         where T : class
     {   
         //Invoke the mapped properties to get the value.
