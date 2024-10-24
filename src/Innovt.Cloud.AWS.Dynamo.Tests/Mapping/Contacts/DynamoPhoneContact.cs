@@ -4,8 +4,6 @@ public class DynamoPhoneContact: DynamoContact
 {
     public string CountryCode { get; set; }
 
-    public string Name { get; set; }
-
     public DynamoPhoneContact()
     {
         Type = 1;
