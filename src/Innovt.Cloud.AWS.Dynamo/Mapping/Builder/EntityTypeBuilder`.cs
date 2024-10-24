@@ -13,7 +13,7 @@ namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 ///     A builder for defining the entity type and its properties for use with DynamoDB.
 /// </summary>
 /// <typeparam name="TEntity">The type of the entity being defined.</typeparam>
-public class EntityTypeBuilder 
+public sealed class EntityTypeBuilder<TEntity> 
 {
     public EntityTypeBuilder(bool ignoreNonNativeTypes) : this()
     {
