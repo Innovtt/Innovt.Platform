@@ -51,9 +51,12 @@ public static class TypeUtil
         typeof(ulong?),
         typeof(ushort?),
         typeof(Guid?),
-        typeof(TimeSpan?)
+        typeof(TimeSpan?),
+        typeof(Enum),
+        typeof(Uri), 
+        typeof(Version),
+        typeof(ValueType)
     ];
-
 
     private static readonly HashSet<TypeInfo> PrimitiveTypeInfos
         =
