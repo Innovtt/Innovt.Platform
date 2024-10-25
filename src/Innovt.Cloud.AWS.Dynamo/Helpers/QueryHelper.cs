@@ -8,6 +8,7 @@ using System.Dynamic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.Model;
 using Innovt.Cloud.AWS.Dynamo.Converters;
 using Innovt.Cloud.AWS.Dynamo.Converters.Attributes;
@@ -144,11 +145,10 @@ internal static class QueryHelper
             ExclusiveStartKey = PaginationTokenToDictionary(request.Page),
             ExpressionAttributeValues = CreateExpressionAttributeValues(request.Filter,
                 string.Join(',', request.KeyConditionExpression, request.FilterExpression)),
-            ExpressionAttributeNames = request.ExpressionAttributeNames
+            ExpressionAttributeNames = request.ExpressionAttributeNames,
+            Limit = Math.Min(request.PageSize ?? 100, 100),
+            Select = Select.ALL_ATTRIBUTES
         };
-
-        if (request.PageSize.HasValue)
-            queryRequest.Limit = request.PageSize == 0 ? 1 : request.PageSize.Value;
 
         return queryRequest;
     }

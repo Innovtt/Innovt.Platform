@@ -20,7 +20,7 @@ namespace Innovt.Cloud.AWS.Notification;
 /// </summary>
 public class SmsNotificationHandler : AwsBaseService, INotificationHandler
 {
-    private AmazonSimpleNotificationServiceClient _simpleNotificationClient;
+    private AmazonSimpleNotificationServiceClient simpleNotificationClient;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="SmsNotificationHandler" /> class.
@@ -45,16 +45,8 @@ public class SmsNotificationHandler : AwsBaseService, INotificationHandler
     /// <summary>
     ///     Gets the Amazon Simple Notification Service client.
     /// </summary>
-    private AmazonSimpleNotificationServiceClient SimpleNotificationClient
-    {
-        get
-        {
-            if (_simpleNotificationClient == null)
-                _simpleNotificationClient = CreateService<AmazonSimpleNotificationServiceClient>();
-
-            return _simpleNotificationClient;
-        }
-    }
+    private AmazonSimpleNotificationServiceClient SimpleNotificationClient =>
+        simpleNotificationClient ??= CreateService<AmazonSimpleNotificationServiceClient>();
 
     /// <summary>
     ///     Sends an SMS notification asynchronously.
@@ -82,7 +74,7 @@ public class SmsNotificationHandler : AwsBaseService, INotificationHandler
             };
 
             var result = await policy.ExecuteAsync(async () =>
-                await SimpleNotificationClient.PublishAsync(request, cancellationToken));
+                await SimpleNotificationClient.PublishAsync(request, cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
 
             deliveryResult.Add(result);
         }
@@ -95,6 +87,6 @@ public class SmsNotificationHandler : AwsBaseService, INotificationHandler
     /// </summary>
     protected override void DisposeServices()
     {
-        _simpleNotificationClient?.Dispose();
+        simpleNotificationClient?.Dispose();
     }
 }

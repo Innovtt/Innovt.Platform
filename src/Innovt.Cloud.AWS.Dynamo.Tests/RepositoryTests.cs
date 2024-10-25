@@ -602,4 +602,43 @@ public class RepositoryTests
             throw;
         }
     }
+    
+    [Test]
+    public async Task QueryPaginated()
+    {
+        var context = new SampleDynamoContext();
+
+        var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
+
+        repository = new SampleRepository(context, loggerMock, awsConfiguration);
+
+        try
+        {
+            var queryRequest = new QueryRequest
+            {
+                KeyConditionExpression = "PK=:pk AND begins_with(SK,:sk)",
+                Filter = new
+                {
+                    pk = "SKILL",
+                    sk = "SKILL#",
+                    name = "CLOUD"
+                },
+                PageSize = 10
+            };
+            
+            queryRequest.FilterExpression = "contains(#Name, :name)";
+            queryRequest.ExpressionAttributeNames = new Dictionary<string, string> { { "#Name", "Name" } };
+        
+            var skills = await repository.QueryPaginatedByAsync<Skill>(queryRequest).ConfigureAwait(false);
+
+            Assert.That(skills, Is.Not.Null);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    
+    
 }
