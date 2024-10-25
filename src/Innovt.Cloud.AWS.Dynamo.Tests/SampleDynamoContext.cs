@@ -26,8 +26,6 @@ public class SampleDynamoContext : DynamoContext
             .HasRangeKey().SetDynamicValue(c => "CE#AVAILABILITY").Builder
             .Ignore(p => p.DayOfWeek);
         
-        //como pegar o tipo base ? 
-        //Quando tem um discriminator, vc deve mapear os 3 tipos.
         modelBuilder.Entity<DynamoContact>().AutoMap().HasTableName("CloudExperts")
             .HasHashKey().SetDynamicValue(c => "CONTACT").Builder
             .HasRangeKey().SetDynamicValue(c => "CONTACT#" + c.Id).Builder

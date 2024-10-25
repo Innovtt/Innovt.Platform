@@ -22,8 +22,6 @@ public sealed class EntityTypeBuilder<T> : EntityTypeBuilder
     /// </summary>
     public new string EntityType { get; private set; } = typeof(T).Name.ToUpper(CultureInfo.InvariantCulture);
     
-    //public new DiscriminatorBuilder<T> Discriminator { get; private set; }
-    
     /// <summary>
     ///     Sets the table name associated with the entity type.
     /// </summary>
@@ -161,7 +159,22 @@ public sealed class EntityTypeBuilder<T> : EntityTypeBuilder
     /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
     public new EntityTypeBuilder<T> Ignore(string name) => (EntityTypeBuilder<T>)base.Ignore(name);
     
-
+    /// <summary>
+    ///     Include a property that was ignored during a map.
+    /// </summary>
+    /// <param name="expression">The property to include.</param>
+    public EntityTypeBuilder<T> Include<TProperty>(Expression<Func<T, TProperty>> expression)
+    {
+        return Include(GetPropertyName(expression));
+    }
+    
+    /// <summary>
+    /// Include a property that was ignored during a map.
+    /// </summary>
+    /// <param name="name">The name of the property that you want to include.</param>
+    /// <returns></returns>
+    public new EntityTypeBuilder<T> Include(string name) => (EntityTypeBuilder<T>)base.Include(name);
+    
     /// <summary>
     ///     Starts a reflection process to auto map all properties of the entity type.
     /// </summary>
