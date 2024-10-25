@@ -207,10 +207,12 @@ public abstract class Repository : AwsBaseService, ITableRepository
         activity?.SetTag("TableName", queryRequest.TableName);
         activity?.SetTag("Page", request.Page);
         activity?.SetTag("PageSize", request.PageSize);
+        activity?.SetTag("BatchSize", queryRequest.Limit);
+        activity?.SetTag("ConsistentRead", queryRequest.ConsistentRead);
 
         var items = new List<Dictionary<string, AttributeValue>>();
         var remaining = request.PageSize;
-
+        
         Dictionary<string, AttributeValue> lastEvaluatedKey = null;
 
         do
@@ -228,12 +230,14 @@ public abstract class Repository : AwsBaseService, ITableRepository
             items.AddRange(response.Items);
 
             queryRequest.ExclusiveStartKey = lastEvaluatedKey = response.LastEvaluatedKey;
-
             remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
-
             activity?.SetTag("Remaining", remaining);
 
-            if (remaining > 0) queryRequest.Limit = remaining.Value;
+            if (remaining > 0)
+            {
+                queryRequest.Limit = Math.Min(remaining.Value, 100);
+            }
+            
         } while (ShouldContinue(lastEvaluatedKey, remaining));
 
         return (lastEvaluatedKey, items);
@@ -898,18 +902,16 @@ public abstract class Repository : AwsBaseService, ITableRepository
         CancellationToken cancellationToken = default) where T : class
     {
         ArgumentNullException.ThrowIfNull(request);
+        
+        using var activity = ActivityRepository.StartActivity();
+        request.PageSize = 1;
+        request.Page = null;
 
-        using (ActivityRepository.StartActivity())
-        {
-            request.PageSize = 1;
-            request.Page = null;
+        var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
+        
+        var queryResponse = QueryHelper.ConvertAttributesToType<T>(items, context);
 
-            var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
-
-            var queryResponse = QueryHelper.ConvertAttributesToType<T>(items, context);
-
-            return queryResponse.FirstOrDefault();
-        }
+        return queryResponse.FirstOrDefault();
     }
 
     /// <summary>
@@ -926,12 +928,16 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         using (ActivityRepository.StartActivity())
         {
+            //For pagination, the default page size is 100
+            var defaultPageSize = request.PageSize;
+            request.PageSize = Math.Max(defaultPageSize ?? 100, 100);
+                
             var (lastEvaluatedKey, items) =
                 await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
             return new PagedCollection<T>
             {
-                Items = QueryHelper.ConvertAttributesToType<T>(items, context),
+                Items = QueryHelper.ConvertAttributesToType<T>(items, context)?.Take(defaultPageSize ?? 100).ToList(),
                 Page = QueryHelper.CreatePaginationToken(lastEvaluatedKey),
                 PageSize = request.PageSize.GetValueOrDefault()
             };
