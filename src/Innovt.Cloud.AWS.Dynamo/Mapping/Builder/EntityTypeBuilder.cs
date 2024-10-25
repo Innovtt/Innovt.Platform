@@ -196,6 +196,33 @@ public abstract class EntityTypeBuilder
     }
 
     /// <summary>
+    ///     Include a property that was ignored during a map.
+    /// </summary>
+    /// <param name="expression">The property to include.</param>
+    public EntityTypeBuilder Include<TEntity,TProperty>(Expression<Func<TEntity, TProperty>> expression)
+    {
+        ArgumentNullException.ThrowIfNull(expression);
+        
+        return Include(GetPropertyName(expression));
+    }
+
+    /// <summary>
+    ///   Include a property that was ignored during a map.
+    /// </summary>
+    /// <param name="name">The name of the property to include.</param>
+    /// <returns>The current instance of <see cref="EntityTypeBuilder{T}" />.</returns>
+    public EntityTypeBuilder Include(string name)
+    {
+        ArgumentNullException.ThrowIfNull(name);
+        
+        var property = GetProperty(name);
+
+        property?.Include();
+
+        return this;
+    }
+    
+    /// <summary>
     ///   Check if complex types should be ignored. The default is true and can be changed by the user for each entity.
     /// </summary>
     /// <param name="ignoreNonNativeTypes"></param>
