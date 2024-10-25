@@ -48,6 +48,11 @@ public abstract class PropertyBuilder
     {
         Ignored = true;
     }
+    
+    public void Include()
+    {
+        Ignored = false;
+    }
 
     public bool Ignored { get; private set; }
 
