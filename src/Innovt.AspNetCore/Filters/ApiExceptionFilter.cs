@@ -107,21 +107,30 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
             TraceId = requestId
         };
 
-        if (baseException is BusinessException bex)
+        switch (baseException)
         {
-            result.Message = Translate(bex.Message);
-            result.Code = bex.Code.IsNullOrEmpty() ? $"{StatusCodes.Status400BadRequest}" : bex.Code;
-            result.Detail = bex.Detail;
-            context.Result = new BadRequestObjectResult(result);
-        }
-        else
-        {
-            result.Code = $"{StatusCodes.Status500InternalServerError}";
-            context.Result = new ObjectResult(result)
-            {
-                StatusCode = StatusCodes.Status500InternalServerError
-            };
-            WriteLog(context.HttpContext, "InternalServerError", context.Exception);
+            case UnauthorizedAccessException uex:
+                result.Code = $"{StatusCodes.Status401Unauthorized}";
+                result.Detail = Translate(uex.Message);
+                context.Result = new ObjectResult(result)
+                {
+                    StatusCode = StatusCodes.Status401Unauthorized
+                };
+                break;
+            case BusinessException bex:
+                result.Message = Translate(bex.Message);
+                result.Code = bex.Code.IsNullOrEmpty() ? $"{StatusCodes.Status400BadRequest}" : bex.Code;
+                result.Detail = bex.Detail;
+                context.Result = new BadRequestObjectResult(result);
+                break;
+            default:
+                result.Code = $"{StatusCodes.Status500InternalServerError}";
+                context.Result = new ObjectResult(result)
+                {
+                    StatusCode = StatusCodes.Status500InternalServerError
+                };
+                WriteLog(context.HttpContext, "InternalServerError", context.Exception);
+                break;
         }
 
         Activity.Current?.SetStatus(ActivityStatusCode.Error, baseException.Message);
