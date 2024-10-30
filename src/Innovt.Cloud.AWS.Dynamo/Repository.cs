@@ -214,9 +214,11 @@ public abstract class Repository : AwsBaseService, ITableRepository
         var remaining = request.PageSize;
         
         Dictionary<string, AttributeValue> lastEvaluatedKey = null;
-
+        var quantityRequests = 0;
         do
-        {
+        {   
+            quantityRequests++;
+                
             var response = await CreateDefaultRetryAsyncPolicy()
                 .ExecuteAsync(ct => DynamoClient.QueryAsync(queryRequest, ct), cancellationToken)
                 .ConfigureAwait(false);
@@ -232,11 +234,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             queryRequest.ExclusiveStartKey = lastEvaluatedKey = response.LastEvaluatedKey;
             remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
             activity?.SetTag("Remaining", remaining);
-
-            if (remaining > 0)
-            {
-                queryRequest.Limit = Math.Min(remaining.Value, 100);
-            }
+            activity?.SetTag("QuantityRequests", quantityRequests);
             
         } while (ShouldContinue(lastEvaluatedKey, remaining));
 
@@ -928,16 +926,12 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         using (ActivityRepository.StartActivity())
         {
-            //For pagination, the default page size is 100
-            var defaultPageSize = request.PageSize;
-            request.PageSize = Math.Max(defaultPageSize ?? 100, 100);
-                
             var (lastEvaluatedKey, items) =
                 await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
             return new PagedCollection<T>
             {
-                Items = QueryHelper.ConvertAttributesToType<T>(items, context)?.Take(defaultPageSize ?? 100).ToList(),
+                Items = QueryHelper.ConvertAttributesToType<T>(items, context),
                 Page = QueryHelper.CreatePaginationToken(lastEvaluatedKey),
                 PageSize = request.PageSize.GetValueOrDefault()
             };

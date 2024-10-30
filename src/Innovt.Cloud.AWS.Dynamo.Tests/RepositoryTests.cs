@@ -10,11 +10,12 @@ using Innovt.Cloud.Table;
 using Innovt.Core.CrossCutting.Log;
 using NSubstitute;
 using NUnit.Framework;
+using UserStatus = Innovt.Cloud.AWS.Dynamo.Tests.Mapping.UserStatus;
 
 namespace Innovt.Cloud.AWS.Dynamo.Tests;
 
 [TestFixture]
-[Ignore("Only for local tests")]
+//[Ignore("Only for local tests")]
 public class RepositoryTests
 {
     private string fakeUserId = "24a874d8-d0a1-7032-b572-3c3383ff4ba9";
@@ -80,7 +81,7 @@ public class RepositoryTests
 
         return user;
     }
-
+    
     [Test]
     public async Task AddDeleteAndQuery()
     {

@@ -21,7 +21,6 @@ internal static class AttributeConverter
     private static readonly ConcurrentDictionary<Type, PropertyInfo[]> PropertiesCache = new();
     private static readonly ConcurrentDictionary<(Type type, string propertyName), PropertyInfo> PropertyLookupCache = new();
     private static readonly ConcurrentDictionary<PropertyInfo, DynamoDBPropertyAttribute> AttributeCache = new();
-    
 
     /// <summary>
     ///     Add a new type to the list of recognized primitive types.
