@@ -13,19 +13,15 @@ using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.Dynamo.Converters.Attributes;
 
-/// <summary>
-///     A utility class for converting between different attribute types.
-/// </summary>
 internal static class AttributeConverter
 {
-    private static readonly ConcurrentDictionary<Type, PropertyInfo[]> PropertiesCache = new();
-    private static readonly ConcurrentDictionary<(Type type, string propertyName), PropertyInfo> PropertyLookupCache = new();
-    private static readonly ConcurrentDictionary<PropertyInfo, DynamoDBPropertyAttribute> AttributeCache = new();
-    
+    private static readonly ConcurrentDictionary<Type, Lazy<PropertyInfo[]>> PropertiesCache = new();
 
-    /// <summary>
-    ///     Add a new type to the list of recognized primitive types.
-    /// </summary>
+    private static readonly ConcurrentDictionary<(Type type, string propertyName), Lazy<PropertyInfo>>
+        PropertyLookupCache = new();
+
+    private static readonly ConcurrentDictionary<PropertyInfo, Lazy<DynamoDBPropertyAttribute>> AttributeCache = new();
+
     static AttributeConverter()
     {
         TypeUtil.AddPrimitiveType(typeof(Primitive));
@@ -33,12 +29,6 @@ internal static class AttributeConverter
         TypeUtil.AddPrimitiveType(typeof(TimeOnly?));
     }
 
-    /// <summary>
-    ///     Converts a dictionary of string and object pairs to DynamoDB AttributeValues.
-    /// </summary>
-    /// <param name="items">The dictionary to convert.</param>
-    /// <param name="context"></param>
-    /// <returns>A dictionary of string and AttributeValue pairs.</returns>
     internal static Dictionary<string, AttributeValue> ConvertToAttributeValues(Dictionary<string, object> items,
         DynamoContext context = null)
     {
@@ -58,24 +48,16 @@ internal static class AttributeConverter
             }).ToDictionary(x => x.Key, x => new AttributeValue { M = x.Value });
     }
 
-    /// <summary>
-    ///     Conversion from object to attribute Value.
-    /// </summary>
-    /// <param name="value">Any object</param>
-    /// <returns></returns>
     internal static AttributeValue CreateAttributeValue(object value)
     {
         return AttributeValueConverterManager.CreateAttributeValue(value);
     }
 
-    /// <summary>
-    ///     Gets the PropertyInfo for a property with the specified name in the given set of properties.
-    /// </summary>
     private static PropertyInfo GetProperty(PropertyInfo[] properties, string propertyName, Type declaringType)
     {
         var cacheKey = (declaringType, propertyName);
-    
-        return PropertyLookupCache.GetOrAdd(cacheKey, key =>
+
+        return PropertyLookupCache.GetOrAdd(cacheKey, key => new Lazy<PropertyInfo>(() =>
         {
             var instanceProps = properties.Where(p => p.Name.Equals(propertyName, StringComparison.OrdinalIgnoreCase))
                 .ToList();
@@ -84,8 +66,8 @@ internal static class AttributeConverter
             {
                 instanceProps = properties.Where(p =>
                 {
-                    var attr = AttributeCache.GetOrAdd(p, prop =>
-                        prop.GetCustomAttribute<DynamoDBPropertyAttribute>());
+                    var attr = AttributeCache.GetOrAdd(p, prop => new Lazy<DynamoDBPropertyAttribute>(() =>
+                        prop.GetCustomAttribute<DynamoDBPropertyAttribute>())).Value;
                     return attr != null && propertyName.Equals(attr.AttributeName, StringComparison.OrdinalIgnoreCase);
                 }).ToList();
             }
@@ -96,12 +78,9 @@ internal static class AttributeConverter
             var prop = instanceProps.Find(p => p.DeclaringType == declaringType) ?? instanceProps[0];
 
             return prop?.CanWrite == true ? prop : null;
-        });
+        })).Value;
     }
 
-    /// <summary>
-    ///     Converts an AttributeValue to a DynamoDBEntry.
-    /// </summary>
     private static DynamoDBEntry ConvertAttributeValue(AttributeValue attributeValue)
     {
         if (attributeValue is null)
@@ -116,9 +95,6 @@ internal static class AttributeConverter
         return attributeValue.N is not null ? new Primitive(attributeValue.N, true) : new Primitive(attributeValue.S);
     }
 
-    /// <summary>
-    ///     Converts a non-primitive property value to the desired type.
-    /// </summary>
     private static object ConvertNonPrimitiveType(PropertyInfo property, AttributeValue attributeValue, object value,
         IPropertyConverter propertyConverter = null)
     {
@@ -129,8 +105,10 @@ internal static class AttributeConverter
             return Enum.Parse(property.PropertyType, value.ToString()!, true);
 
         var customConverter = propertyConverter ?? AttributeCache.GetOrAdd(property, prop =>
+            new Lazy<DynamoDBPropertyAttribute>(() =>
                 prop.GetCustomAttributes<DynamoDBPropertyAttribute>()
-                    .FirstOrDefault(a => a.Converter != null))?.Converter as IPropertyConverter;
+                    // ReSharper disable once SuspiciousTypeConversion.Global
+                    .FirstOrDefault(a => a.Converter != null))).Value?.Converter as IPropertyConverter;
 
         if (customConverter is null)
             return value;
@@ -140,9 +118,6 @@ internal static class AttributeConverter
         return convertedEntry is null ? null : customConverter.FromEntry(convertedEntry);
     }
 
-    /// <summary>
-    ///     Convert an attribute array to specific type.
-    /// </summary>
     public static T ConvertAttributeValuesToType<T>(Dictionary<string, AttributeValue> items,
         DynamoContext context = null)
         where T : class
@@ -150,9 +125,10 @@ internal static class AttributeConverter
         if (items is null) return default;
 
         var instance = InstanceCreator.CreateInstance<T>(items, context);
-        
+
         var properties = PropertiesCache.GetOrAdd(instance.GetType(), type =>
-            type.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.SetProperty));
+            new Lazy<PropertyInfo[]>(() =>
+                type.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.SetProperty))).Value;
 
         if (properties.Length == 0)
             return instance;
@@ -179,10 +155,11 @@ internal static class AttributeConverter
             }
             catch (Exception ex)
             {
-                throw new CriticalException($"Error parsing data from database to object. Property {attributeValue.Key}", ex);
+                throw new CriticalException(
+                    $"Error parsing data from database to object. Property {attributeValue.Key}", ex);
             }
         }
-        
+
         PropertyMapper.InvokeMappedProperties(typeBuilder, properties, instance);
 
         return instance;
@@ -191,26 +168,21 @@ internal static class AttributeConverter
     private static object ConvertAttributeValueToObject(AttributeValue attributeValue, PropertyInfo property,
         DynamoContext context = null)
     {
-        var value = AttributeValueToObjectConverterManager.CreateAttributeValueToObject(attributeValue, property.PropertyType, context);
-        
+        var value = AttributeValueToObjectConverterManager.CreateAttributeValueToObject(attributeValue,
+            property.PropertyType, context);
+
         if (TypeUtil.IsPrimitive(property.PropertyType))
             return TypeConverter.ConvertType(property.PropertyType, value);
-        
+
         if (TypeUtil.IsCollection(property.PropertyType))
             return TypeUtil.IsDictionary(property.PropertyType)
                 ? value
                 : CollectionConverter.ItemsToCollection(property.PropertyType, (IEnumerable<object>)value);
 
-        return ConvertNonPrimitiveType(property, attributeValue, value, context?.GetPropertyConverter(property.PropertyType));
+        return ConvertNonPrimitiveType(property, attributeValue, value,
+            context?.GetPropertyConverter(property.PropertyType));
     }
 
-  
-
-  
-
-    /// <summary>
-    ///     Converts a type to a dictionary of attributes and values.
-    /// </summary>
     internal static Dictionary<string, AttributeValue> ConvertToAttributeValueMap<T>(T instance,
         DynamoContext context = null)
         where T : class
@@ -218,15 +190,16 @@ internal static class AttributeConverter
         Check.NotNull(instance, nameof(instance));
 
         var properties = PropertiesCache.GetOrAdd(instance.GetType(), type =>
-            type.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.GetProperty));
+            new Lazy<PropertyInfo[]>(() =>
+                type.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.GetProperty))).Value;
 
         if (properties.Length == 0)
             return new Dictionary<string, AttributeValue>();
 
         var attributes = new Dictionary<string, AttributeValue>();
-        
+
         var typeBuilder = context?.HasTypeBuilder<T>() == true ? context.GetEntityBuilder<T>() : null;
-        
+
         if (typeBuilder is null)
             foreach (var property in properties)
                 attributes.Add(property.Name, CreateAttributeValue(property.GetValue(instance)));
@@ -241,14 +214,15 @@ internal static class AttributeConverter
     private static void ConvertToAttributeValueMapWithContext<T>(T instance, DynamoContext context,
         PropertyInfo[] properties, EntityTypeBuilder typeBuilder, Dictionary<string, AttributeValue> attributes)
         where T : class
-    {   
+    {
         PropertyMapper.InvokeMappedProperties(typeBuilder, properties, instance);
 
         var mappedProperties = typeBuilder.GetProperties().ToList();
 
         if (typeBuilder.Discriminator is not null)
-            mappedProperties.AddRange(DiscriminatorManager.GetDiscriminatorProperties(context, typeBuilder, properties, instance));
-        
+            mappedProperties.AddRange(
+                DiscriminatorManager.GetDiscriminatorProperties(context, typeBuilder, properties, instance));
+
         foreach (var mappedProperty in mappedProperties)
         {
             try
@@ -277,15 +251,12 @@ internal static class AttributeConverter
             }
             catch (Exception ex)
             {
-                throw new ConversionException($"Error parsing entity to Dynamo properties. Property {mappedProperty.Name}", ex);
+                throw new ConversionException(
+                    $"Error parsing entity to Dynamo properties. Property {mappedProperty.Name}", ex);
             }
         }
     }
 
-    /// <summary>
-    ///     Clears all internal caches. Use this method when you need to free up memory
-    ///     or when you know the cached data is no longer valid.
-    /// </summary>
     public static void ClearCaches()
     {
         PropertiesCache.Clear();

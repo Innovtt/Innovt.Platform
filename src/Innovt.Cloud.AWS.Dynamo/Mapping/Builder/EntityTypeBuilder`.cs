@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
@@ -11,6 +12,7 @@ namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 ///     A builder for defining the entity type and its properties for use with DynamoDB.
 /// </summary>
 /// <typeparam name="T">The type of the entity being defined.</typeparam>
+[SuppressMessage("ReSharper", "UnusedMember.Global")]
 public sealed class EntityTypeBuilder<T> : EntityTypeBuilder
 {   
     public EntityTypeBuilder(bool ignoreNonNativeTypes) : base(ignoreNonNativeTypes){}
