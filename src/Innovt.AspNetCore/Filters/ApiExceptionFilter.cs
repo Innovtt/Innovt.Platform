@@ -112,6 +112,7 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
             case UnauthorizedAccessException uex:
                 result.Code = $"{StatusCodes.Status401Unauthorized}";
                 result.Detail = Translate(uex.Message);
+                result.Message = Translate("Unauthorized");
                 context.Result = new ObjectResult(result)
                 {
                     StatusCode = StatusCodes.Status401Unauthorized
