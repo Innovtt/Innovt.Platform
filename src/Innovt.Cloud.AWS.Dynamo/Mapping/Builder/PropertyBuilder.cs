@@ -44,14 +44,16 @@ public abstract class PropertyBuilder
         private set => columnName = value;
     }
 
-    public void Ignore()
+    public PropertyBuilder Ignore()
     {
         Ignored = true;
+        return this;
     }
     
-    public void Include()
+    public PropertyBuilder Include()
     {
         Ignored = false;
+        return this;
     }
 
     public bool Ignored { get; private set; }
