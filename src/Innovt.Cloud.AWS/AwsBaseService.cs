@@ -22,7 +22,7 @@ namespace Innovt.Cloud.AWS;
 [CLSCompliant(false)]
 public abstract class AwsBaseService : IDisposable
 {
-    protected readonly IAwsConfiguration Configuration;
+    protected IAwsConfiguration Configuration { get; }
 
     private bool disposed;
 

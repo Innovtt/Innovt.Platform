@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Threading;
 using Amazon.DynamoDBv2.DataModel;
+using Innovt.Cloud.AWS.Dynamo.Converters.Attributes;
 using Innovt.Cloud.AWS.Dynamo.Mapping;
 using Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 
@@ -36,6 +37,9 @@ public abstract class DynamoContext
             if (ModelBuilder != null)
                 return;
 
+            //Clear all caches to avoid any issue with mapping
+            AttributeConverter.ClearCaches();
+            
             ModelBuilder = new ModelBuilder();
 
             OnModelCreating(ModelBuilder);

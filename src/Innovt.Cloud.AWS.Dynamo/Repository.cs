@@ -202,7 +202,6 @@ public abstract class Repository : AwsBaseService, ITableRepository
         ArgumentNullException.ThrowIfNull(request);
 
         using var activity = ActivityRepository.StartActivity();
-
         var queryRequest = QueryHelper.CreateQueryRequest<T>(request, context);
         activity?.SetTag("TableName", queryRequest.TableName);
         activity?.SetTag("Page", request.Page);
@@ -212,36 +211,38 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         var items = new List<Dictionary<string, AttributeValue>>();
         var remaining = request.PageSize;
-        
+
+        var iterator = DynamoClient.Paginators.Query(queryRequest).Responses
+            .GetAsyncEnumerator(cancellationToken);
+
         Dictionary<string, AttributeValue> lastEvaluatedKey = null;
 
-        do
+        try
         {
-            var response = await CreateDefaultRetryAsyncPolicy()
-                .ExecuteAsync(ct => DynamoClient.QueryAsync(queryRequest, ct), cancellationToken)
-                .ConfigureAwait(false);
-
-            if (response == null)
-                break;
-
-            activity?.SetTag("HttpStatusCode", response.HttpStatusCode);
-            activity?.SetTag("RequestId", response.ResponseMetadata?.RequestId);
-
-            items.AddRange(response.Items);
-
-            queryRequest.ExclusiveStartKey = lastEvaluatedKey = response.LastEvaluatedKey;
-            remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
-            activity?.SetTag("Remaining", remaining);
-
-            if (remaining > 0)
+            do
             {
-                queryRequest.Limit = Math.Min(remaining.Value, 100);
-            }
-            
-        } while (ShouldContinue(lastEvaluatedKey, remaining));
+                if (!await iterator.MoveNextAsync().ConfigureAwait(false) || iterator.Current == null)
+                    break;
+
+                items.AddRange(iterator.Current.Items);
+                queryRequest.ExclusiveStartKey = lastEvaluatedKey = iterator.Current.LastEvaluatedKey;
+
+                remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
+
+                if (remaining > 0) queryRequest.Limit = remaining.Value;
+
+            } while (ShouldContinue(lastEvaluatedKey, remaining));
+        }
+        catch (Exception ex)
+        {
+            activity?.SetTag("Error", ex.Message);
+            activity?.SetStatus(ActivityStatusCode.Error);
+            throw;
+        }
 
         return (lastEvaluatedKey, items);
     }
+
 
     /// <summary>
     ///     Executes an internal scan against the DynamoDB table based on the specified scan request.
@@ -251,7 +252,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>A tuple containing the last evaluated key and the list of items retrieved.</returns>
     /// <exception cref="ArgumentNullException">Thrown when request is null.</exception>
-    private async Task<(Dictionary<string, AttributeValue> ExclusiveStartKey, IList<T> Items)> InternalScanAsync<T>(
+    private async Task<(Dictionary<string, AttributeValue> ExclusiveStartKey, IList<Dictionary<string, AttributeValue>> Items)> InternalScanAsync<T>(
         ScanRequest request, CancellationToken cancellationToken = default) where T : class
     {
         ArgumentNullException.ThrowIfNull(request);
@@ -264,27 +265,34 @@ public abstract class Repository : AwsBaseService, ITableRepository
         activity?.SetTag("PageSize", request.PageSize);
 
         Dictionary<string, AttributeValue> lastEvaluatedKey = null;
-
-        var items = new List<T>();
+        
+        var items = new List<Dictionary<string, AttributeValue>>();
         var remaining = request.PageSize;
 
-        do
+        var iterator = DynamoClient.Paginators.Scan(scanRequest).Responses
+            .GetAsyncEnumerator(cancellationToken);
+        try
         {
-            var response = await CreateDefaultRetryAsyncPolicy()
-                .ExecuteAsync(ct => DynamoClient.ScanAsync(scanRequest, ct), cancellationToken)
-                .ConfigureAwait(false);
+            do
+            {
+                if (!await iterator.MoveNextAsync().ConfigureAwait(false) || iterator.Current == null)
+                    break;
 
-            if (response == null)
-                break;
+                items.AddRange(iterator.Current.Items);
+                scanRequest.ExclusiveStartKey = lastEvaluatedKey = iterator.Current.LastEvaluatedKey;
 
-            items.AddRange(QueryHelper.ConvertAttributesToType<T>(response.Items, context));
-            scanRequest.ExclusiveStartKey = lastEvaluatedKey = response.LastEvaluatedKey;
-            remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
+                remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
 
-            activity?.SetTag("Remaining", remaining);
+                if (remaining > 0) scanRequest.Limit = remaining.Value;
 
-            if (remaining > 0) scanRequest.Limit = remaining.Value;
-        } while (ShouldContinue(lastEvaluatedKey, remaining));
+            } while (ShouldContinue(lastEvaluatedKey, remaining));
+        }
+        catch (Exception ex)
+        {
+            activity?.SetTag("Error", ex.Message);
+            activity?.SetStatus(ActivityStatusCode.Error);
+            throw;
+        }
 
         return (lastEvaluatedKey, items);
     }
@@ -928,16 +936,12 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         using (ActivityRepository.StartActivity())
         {
-            //For pagination, the default page size is 100
-            var defaultPageSize = request.PageSize;
-            request.PageSize = Math.Max(defaultPageSize ?? 100, 100);
-                
             var (lastEvaluatedKey, items) =
                 await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
             return new PagedCollection<T>
             {
-                Items = QueryHelper.ConvertAttributesToType<T>(items, context)?.Take(defaultPageSize ?? 100).ToList(),
+                Items = QueryHelper.ConvertAttributesToType<T>(items, context),
                 Page = QueryHelper.CreatePaginationToken(lastEvaluatedKey),
                 PageSize = request.PageSize.GetValueOrDefault()
             };
@@ -962,9 +966,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         {
             var response = await InternalScanAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
-            //This implementation hides pagination and returns all items
-
-            return response.Items;
+            return QueryHelper.ConvertAttributesToType<T>(response.Items, context);
         }
     }
 
@@ -991,8 +993,8 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
             var response = new PagedCollection<T>
             {
-                Items = items,
-                Page = QueryHelper.CreatePaginationToken(exclusiveStartKey),
+                Items = QueryHelper.ConvertAttributesToType<T>(items, context),
+                Page  = QueryHelper.CreatePaginationToken(exclusiveStartKey),
                 PageSize = request.PageSize.GetValueOrDefault()
             };
 

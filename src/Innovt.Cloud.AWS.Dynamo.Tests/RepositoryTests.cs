@@ -10,6 +10,7 @@ using Innovt.Cloud.Table;
 using Innovt.Core.CrossCutting.Log;
 using NSubstitute;
 using NUnit.Framework;
+using UserStatus = Innovt.Cloud.AWS.Dynamo.Tests.Mapping.UserStatus;
 
 namespace Innovt.Cloud.AWS.Dynamo.Tests;
 
@@ -80,7 +81,7 @@ public class RepositoryTests
 
         return user;
     }
-
+    
     [Test]
     public async Task AddDeleteAndQuery()
     {
@@ -632,6 +633,22 @@ public class RepositoryTests
             var skills = await repository.QueryPaginatedByAsync<Skill>(queryRequest).ConfigureAwait(false);
 
             Assert.That(skills, Is.Not.Null);
+
+            var scanRequest = new ScanRequest()
+            {
+                FilterExpression = "contains(#Name, :name)",
+                ExpressionAttributeNames = new Dictionary<string, string> { { "#Name", "Name" } },
+                Filter = new
+                {
+                    name = "CLOUD"
+                },
+                PageSize = 10
+            };
+            
+             skills = await repository.ScanPaginatedByAsync<Skill>(scanRequest).ConfigureAwait(false);
+             
+             
+             Assert.That(skills, Is.Not.Null);
         }
         catch (Exception e)
         {

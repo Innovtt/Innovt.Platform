@@ -72,7 +72,17 @@ public sealed class PropertyBuilder<T>: PropertyBuilder
     public new PropertyBuilder<T> IsRequired(bool isRequired = true) => (PropertyBuilder<T>)base.IsRequired(isRequired);
 
 
-
+    /// <summary>
+    /// The property will be ignored by the mapping.
+    /// </summary>
+    /// <returns></returns>
+    public new PropertyBuilder<T> Ignore() => (PropertyBuilder<T>)base.Ignore();
+    
+    /// <summary>
+    /// The property will be included by the mapping.
+    /// </summary>
+    /// <returns></returns>
+    public new PropertyBuilder<T> Include() => (PropertyBuilder<T>)base.Include();
 
     /// <summary>
     ///     Define a delegate to parse the property.

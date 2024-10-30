@@ -142,7 +142,6 @@ public sealed class ModelBuilder
     /// <summary>
     ///    It returns a EntityTypeBuilder for the given entity name.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     /// <exception cref="MissingEntityMapException"></exception>
     public EntityTypeBuilder GetEntityBuilder(string entityName)
