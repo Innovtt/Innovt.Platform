@@ -15,7 +15,7 @@ using UserStatus = Innovt.Cloud.AWS.Dynamo.Tests.Mapping.UserStatus;
 namespace Innovt.Cloud.AWS.Dynamo.Tests;
 
 [TestFixture]
-[Ignore("Only for local tests")]
+//[Ignore("Only for local tests")]
 public class RepositoryTests
 {
     private string fakeUserId = "24a874d8-d0a1-7032-b572-3c3383ff4ba9";
@@ -649,6 +649,41 @@ public class RepositoryTests
              
              
              Assert.That(skills, Is.Not.Null);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    
+    
+    [Test]
+    public async Task QueryMultipleAsync()
+    {
+        var context = new SampleDynamoContext();
+
+        var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
+
+        repository = new SampleRepository(context, loggerMock, awsConfiguration);
+
+        try
+        {
+           
+            var queryRequest = new QueryRequest
+            {
+                KeyConditionExpression = "PK=:pk",
+                FilterExpression = "(EntityType=:et1) OR (EntityType=:et2)",
+                Filter = new
+                {
+                    pk = $"ORGANIZATION#bca41602-5067-4c07-8be5-eaa405866382",
+                    et1 = "ORGANIZATION",
+                    et2 = "ORGANIZATIONLANGUAGE"
+                }
+            };
+            
+            var queryResult = await repository.QueryMultipleAsync<Organization, Organization, Address, Company>(queryRequest, ["ORGANIZATION", "ADDRESS", "ORGANIZATIONLANGUAGE", "USER"], CancellationToken.None).ConfigureAwait(false);
+            
         }
         catch (Exception e)
         {

@@ -305,6 +305,12 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <returns></returns>
     private static bool ShouldContinue(Dictionary<string, AttributeValue> lastEvaluatedKey, int? remaining)
     {
+        //No more items to read
+        if(lastEvaluatedKey?.Count == 0)
+            return false;
+        
+        return lastEvaluatedKey != null && lastEvaluatedKey.Count > 0 && remaining > 0;
+        
         return lastEvaluatedKey?.Count > 0 && remaining > 0;
     }
 
