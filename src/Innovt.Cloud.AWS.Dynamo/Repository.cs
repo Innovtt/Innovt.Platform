@@ -211,7 +211,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         var items = new List<Dictionary<string, AttributeValue>>();
         var remaining = request.PageSize;
-
+        
         var iterator = DynamoClient.Paginators.Query(queryRequest).Responses
             .GetAsyncEnumerator(cancellationToken);
 
@@ -227,9 +227,12 @@ public abstract class Repository : AwsBaseService, ITableRepository
                 items.AddRange(iterator.Current.Items);
                 queryRequest.ExclusiveStartKey = lastEvaluatedKey = iterator.Current.LastEvaluatedKey;
 
-                remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
+                if (!remaining.HasValue) continue;
+                
+                remaining = request.PageSize - items.Count;
 
-                if (remaining > 0) queryRequest.Limit = remaining.Value;
+                if (remaining > 0)
+                    queryRequest.Limit = remaining.Value;
 
             } while (ShouldContinue(lastEvaluatedKey, remaining));
         }
@@ -281,9 +284,12 @@ public abstract class Repository : AwsBaseService, ITableRepository
                 items.AddRange(iterator.Current.Items);
                 scanRequest.ExclusiveStartKey = lastEvaluatedKey = iterator.Current.LastEvaluatedKey;
 
-                remaining = remaining.HasValue ? request.PageSize - items.Count : 0;
+                if (!remaining.HasValue) continue;
+                
+                remaining = request.PageSize - items.Count;
 
-                if (remaining > 0) scanRequest.Limit = remaining.Value;
+                if (remaining > 0) 
+                    scanRequest.Limit = remaining.Value;
 
             } while (ShouldContinue(lastEvaluatedKey, remaining));
         }
@@ -305,6 +311,9 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <returns></returns>
     private static bool ShouldContinue(Dictionary<string, AttributeValue> lastEvaluatedKey, int? remaining)
     {
+        if(lastEvaluatedKey?.Count>0 && !remaining.HasValue)
+            return true;
+        
         return lastEvaluatedKey?.Count > 0 && remaining > 0;
     }
 

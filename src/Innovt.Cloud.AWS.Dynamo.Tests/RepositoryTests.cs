@@ -658,4 +658,39 @@ public class RepositoryTests
     }
     
     
+    [Test]
+    public async Task QueryMultipleAsync()
+    {
+        var context = new SampleDynamoContext();
+
+        var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
+
+        repository = new SampleRepository(context, loggerMock, awsConfiguration);
+
+        try
+        {
+           
+            var queryRequest = new QueryRequest
+            {
+                KeyConditionExpression = "PK=:pk",
+                FilterExpression = "(EntityType=:et1) OR (EntityType=:et2)",
+                Filter = new
+                {
+                    pk = $"ORGANIZATION#bca41602-5067-4c07-8be5-eaa405866382",
+                    et1 = "ORGANIZATION",
+                    et2 = "ORGANIZATIONLANGUAGE"
+                }
+            };
+            
+            var queryResult = await repository.QueryMultipleAsync<Organization, Organization, Address, Company>(queryRequest, ["ORGANIZATION", "ADDRESS", "ORGANIZATIONLANGUAGE", "USER"], CancellationToken.None).ConfigureAwait(false);
+            
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    
+    
 }
