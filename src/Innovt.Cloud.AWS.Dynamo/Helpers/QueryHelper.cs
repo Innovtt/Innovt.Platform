@@ -146,9 +146,11 @@ internal static class QueryHelper
             ExpressionAttributeValues = CreateExpressionAttributeValues(request.Filter,
                 string.Join(',', request.KeyConditionExpression, request.FilterExpression)),
             ExpressionAttributeNames = request.ExpressionAttributeNames,
-            Limit = request.PageSize ?? 1,
             Select = Select.ALL_ATTRIBUTES
         };
+        
+        if(request.PageSize.HasValue)
+            queryRequest.Limit = request.PageSize == 0 ? 1 : request.PageSize.Value;
 
         return queryRequest;
     }
