@@ -6,8 +6,8 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests.DataModels;
 public class SampleDataModel
 {
     [DynamoDBHashKey("PK")] 
-    public string PK { get; set; }
+    public string Pk { get; set; }
 
     [DynamoDBRangeKey("SK")] 
-    public string SK { get; set; }
+    public string Sk { get; set; }
 }
