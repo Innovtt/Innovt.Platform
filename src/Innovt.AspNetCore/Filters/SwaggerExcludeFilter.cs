@@ -32,18 +32,13 @@ public class SwaggerExcludeFilter : ISchemaFilter, IOperationFilter
 
         if (ignoredProperties.Count == 0) return;
 
-
         foreach (var prop in ignoredProperties)
         {
-            // var schemaProp = operation.Parameters
-            //   .SingleOrDefault(p => string.Equals(p.Name, prop, StringComparison.OrdinalIgnoreCase));
             var schemaProp = context.ApiDescription.ParameterDescriptions
                 .SingleOrDefault(p => string.Equals(p.Name, prop, StringComparison.OrdinalIgnoreCase));
 
             if (schemaProp != null)
                 context.ApiDescription.ParameterDescriptions.Remove(schemaProp);
-
-            //operation.Parameters.Remove(schemaProp);
         }
     }
 

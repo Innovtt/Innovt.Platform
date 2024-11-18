@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Innovt.Cloud.AWS.Configuration;
+using Innovt.Cloud.AWS.Dynamo.Tests.DataModels;
 using Innovt.Cloud.AWS.Dynamo.Tests.Mapping;
 using Innovt.Cloud.AWS.Dynamo.Tests.Mapping.Contacts;
 using Innovt.Cloud.Table;
@@ -691,6 +692,37 @@ public class RepositoryTests
             throw;
         }
     }
+    
+    [Test]
+    public async Task SampleWithDataModel()
+    {
+        var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
+
+        var dataModelRepository = new DataModelRepository(loggerMock, awsConfiguration);
+
+        var queryRequest = new QueryRequest
+        {
+            KeyConditionExpression = "PK=:pk AND SK=:sk",
+            Filter = new
+            {
+                pk = $"REQUEST#{Guid.NewGuid()}",
+                sk = "REQUEST_IDEMPOTENCY"
+            }
+        };
+        
+        try
+        {
+            var request = await dataModelRepository.QueryFirstAsync<SampleDataModel>(queryRequest, CancellationToken.None);
+
+            Assert.That(request, Is.Not.Null);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
     
     
 }

@@ -4,11 +4,11 @@
 
 using System;
 using System.Data;
-using System.Data.SqlClient;
 using Innovt.Core.Utilities;
 using Innovt.Data.DataSources;
 using Innovt.Data.Exceptions;
 using Innovt.Data.Model;
+using Microsoft.Data.SqlClient;
 using Microsoft.Data.Sqlite;
 using MySql.Data.MySqlClient;
 using Npgsql;
@@ -30,7 +30,7 @@ public class ConnectionFactory : IConnectionFactory
     /// <exception cref="ConnectionStringException">Thrown when the connection string is null or empty.</exception>
     public IDbConnection Create(IDataSource dataSource)
     {
-        if (dataSource == null) throw new ArgumentNullException(nameof(dataSource));
+        ArgumentNullException.ThrowIfNull(dataSource);
 
         var connectionString = dataSource.GetConnectionString();
 
