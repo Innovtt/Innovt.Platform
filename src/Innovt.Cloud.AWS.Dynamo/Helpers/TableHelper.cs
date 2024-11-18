@@ -6,9 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Globalization;
+using System.Linq;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.Model;
-using Innovt.Cloud.AWS.Dynamo.Converters;
 using Innovt.Cloud.AWS.Dynamo.Converters.Attributes;
 using Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 using Innovt.Core.Utilities;
@@ -50,11 +50,13 @@ internal static class TableHelper
     private static string GetHashKeyName<T>(DynamoContext context = null) where T : class
     {
         if (context != null && context.HasTypeBuilder<T>()) return context.GetEntityBuilder<T>().Pk;
-
-        return Attribute.GetCustomAttribute(typeof(T), typeof(DynamoDBHashKeyAttribute)) is not DynamoDBHashKeyAttribute
-            attribute
-            ? typeof(T).Name
-            : attribute.AttributeName;
+        
+         var hashKey = typeof(T).GetProperties().SingleOrDefault(p => p.GetCustomAttributes(typeof(DynamoDBHashKeyAttribute), true).Length != 0);
+         
+         if(hashKey != null)
+             return hashKey.Name;
+         
+         return "PK";//Default PK name
     }
 
     /// <summary>
@@ -71,11 +73,9 @@ internal static class TableHelper
         if (context != null && context.HasTypeBuilder<T>()) 
             return context.GetEntityBuilder<T>().Sk;
 
-        return Attribute.GetCustomAttribute(typeof(T), typeof(DynamoDBRangeKeyAttribute)) is not
-            DynamoDBRangeKeyAttribute
-            attribute
-            ? typeof(T).Name
-            : attribute.AttributeName;
+        var rangeKey = typeof(T).GetProperties().SingleOrDefault(p => p.GetCustomAttributes(typeof(DynamoDBRangeKeyAttribute), true).Length != 0);
+         
+        return rangeKey != null ? rangeKey.Name : null;
     }
 
     /// <summary>
