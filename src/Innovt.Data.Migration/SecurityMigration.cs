@@ -3,9 +3,9 @@
 // Project: Innovt.Data.Migration
 
 using System;
-using System.Data.SqlClient;
 using Dapper;
 using Innovt.Core.Utilities;
+using Microsoft.Data.SqlClient;
 
 namespace Innovt.Data.Migration;
 
