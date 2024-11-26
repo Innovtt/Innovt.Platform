@@ -62,8 +62,8 @@ public class RepositoryBase : IRepositoryBase
     public async Task<T> QueryFirstOrDefaultAsync<T>(string tableName, string whereClause, object filter = null,
         CancellationToken cancellationToken = default, params string[] columns)
     {
-        if (tableName == null) throw new ArgumentNullException(nameof(tableName));
-        if (whereClause == null) throw new ArgumentNullException(nameof(whereClause));
+        ArgumentNullException.ThrowIfNull(tableName);
+        ArgumentNullException.ThrowIfNull(whereClause);
 
         return await QueryFirstOrDefaultInternalAsync<T>(tableName, whereClause, filter, cancellationToken,
             columns).ConfigureAwait(false);
@@ -81,7 +81,7 @@ public class RepositoryBase : IRepositoryBase
     public async Task<T> QueryFirstOrDefaultAsync<T>(string sql, object filter = null,
         CancellationToken cancellationToken = default)
     {
-        if (sql == null) throw new ArgumentNullException(nameof(sql));
+        ArgumentNullException.ThrowIfNull(sql);
 
         return await QueryFirstOrDefaultInternalAsync<T>(sql, filter, cancellationToken).ConfigureAwait(false);
     }
@@ -102,7 +102,7 @@ public class RepositoryBase : IRepositoryBase
     public async Task<T> QuerySingleOrDefaultAsync<T>(string sql, object filter = null,
         CancellationToken cancellationToken = default)
     {
-        if (sql == null) throw new ArgumentNullException(nameof(sql));
+        ArgumentNullException.ThrowIfNull(sql);
 
         return await QuerySingleOrDefaultInternalAsync<T>(sql, filter, cancellationToken).ConfigureAwait(false);
     }
@@ -145,7 +145,7 @@ public class RepositoryBase : IRepositoryBase
     public async Task<int> QueryCountAsync(string tableName, string whereClause = null, object filter = null,
         CancellationToken cancellationToken = default)
     {
-        if (tableName == null) throw new ArgumentNullException(nameof(tableName));
+        ArgumentNullException.ThrowIfNull(tableName);
 
         return await QueryCountInternalAsync(tableName, whereClause, filter, cancellationToken)
             .ConfigureAwait(false);
@@ -166,7 +166,7 @@ public class RepositoryBase : IRepositoryBase
     public async Task<IEnumerable<T>> QueryAsync<T>(string sql, object filter = null,
         CancellationToken cancellationToken = default)
     {
-        if (sql == null) throw new ArgumentNullException(nameof(sql));
+        ArgumentNullException.ThrowIfNull(sql);
 
         return await QueryInternalAsync<T>(sql, filter, cancellationToken).ConfigureAwait(false);
     }
@@ -191,7 +191,7 @@ public class RepositoryBase : IRepositoryBase
     public async Task<IEnumerable<TReturn>> QueryAsync<TFirst, TSecond, TReturn>(string sql, object filter,
         Func<TFirst, TSecond, TReturn> func, string splitOn, CancellationToken cancellationToken = default)
     {
-        if (sql == null) throw new ArgumentNullException(nameof(sql));
+        ArgumentNullException.ThrowIfNull(sql);
 
         return await QueryInternalAsync(sql, filter, func, splitOn, cancellationToken).ConfigureAwait(false);
     }
@@ -217,7 +217,7 @@ public class RepositoryBase : IRepositoryBase
     public async Task<IEnumerable<TReturn>> QueryAsync<TFirst, TSecond, TThird, TReturn>(string sql, object filter,
         Func<TFirst, TSecond, TThird, TReturn> func, string splitOn, CancellationToken cancellationToken = default)
     {
-        if (sql == null) throw new ArgumentNullException(nameof(sql));
+        ArgumentNullException.ThrowIfNull(sql);
 
         return await QueryInternalAsync(sql, filter, func, splitOn, cancellationToken).ConfigureAwait(false);
     }
@@ -245,7 +245,7 @@ public class RepositoryBase : IRepositoryBase
         object filter, Func<TFirst, TSecond, TThird, TFourth, TReturn> func, string splitOn,
         CancellationToken cancellationToken = default)
     {
-        if (sql == null) throw new ArgumentNullException(nameof(sql));
+        ArgumentNullException.ThrowIfNull(sql);
 
         return await QueryInternalAsync(sql, filter, func, splitOn, cancellationToken).ConfigureAwait(false);
     }
@@ -275,7 +275,7 @@ public class RepositoryBase : IRepositoryBase
         object filter, Func<TFirst, TSecond, TThird, TFourth, TFifth, TReturn> func, string splitOn,
         CancellationToken cancellationToken = default)
     {
-        if (sql == null) throw new ArgumentNullException(nameof(sql));
+        ArgumentNullException.ThrowIfNull(sql);
 
         return await QueryInternalAsync(sql, filter, func, splitOn, cancellationToken).ConfigureAwait(false);
     }
@@ -297,7 +297,7 @@ public class RepositoryBase : IRepositoryBase
         IDbTransaction dbTransaction = null,
         CancellationToken cancellationToken = default)
     {
-        if (sql is null) throw new ArgumentNullException(nameof(sql));
+        ArgumentNullException.ThrowIfNull(sql);
 
         return await ExecuteInternalScalar<T>(sql, filter, dbTransaction, cancellationToken).ConfigureAwait(false);
     }
@@ -317,7 +317,7 @@ public class RepositoryBase : IRepositoryBase
     public async Task<int> ExecuteAsync(string sql, object filter = null, IDbTransaction dbTransaction = null,
         CancellationToken cancellationToken = default)
     {
-        if (sql is null) throw new ArgumentNullException(nameof(sql));
+        ArgumentNullException.ThrowIfNull(sql);
 
         return await ExecuteInternalAsync(sql, filter, dbTransaction, cancellationToken).ConfigureAwait(false);
     }
@@ -339,7 +339,7 @@ public class RepositoryBase : IRepositoryBase
     public async Task<PagedCollection<T>> QueryPagedAsync<T>(string sql, IPagedFilter filter, bool useCount = true,
         CancellationToken cancellationToken = default) where T : class
     {
-        if (sql == null) throw new ArgumentNullException(nameof(sql));
+        ArgumentNullException.ThrowIfNull(sql);
 
         var orderByIndex = sql.LastIndexOf("ORDER BY", StringComparison.CurrentCultureIgnoreCase);
 
@@ -407,8 +407,8 @@ public class RepositoryBase : IRepositoryBase
     public async Task<IEnumerable<T>> QueryListPagedAsync<T>(string sql, IPagedFilter filter,
         CancellationToken cancellationToken = default)
     {
-        if (sql == null) throw new ArgumentNullException(nameof(sql));
-        if (filter == null) throw new ArgumentNullException(nameof(filter));
+        ArgumentNullException.ThrowIfNull(sql);
+        ArgumentNullException.ThrowIfNull(filter);
 
         return await QueryListPagedInternalAsync<T>(sql, filter, cancellationToken).ConfigureAwait(false);
     }

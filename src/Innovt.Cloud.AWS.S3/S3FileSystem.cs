@@ -261,7 +261,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     {
         var stream = await DownloadStreamAsync(url, cancellationToken).ConfigureAwait(false);
 
-        return await ReadStream(stream, encoding);
+        return await ReadStream(stream, encoding).ConfigureAwait(false);
     }
 
     public async Task<string> GetObjectContentAsync(string bucketName, string key, Encoding encoding,
@@ -269,23 +269,24 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     {
         var stream = await DownloadStreamAsync(bucketName, key, cancellationToken).ConfigureAwait(false);
 
-        return await ReadStream(stream, encoding);
+        return await ReadStream(stream, encoding).ConfigureAwait(false);
     }
 
     /// <summary>
     ///     When you need to get a content from Json file as an typed method.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    /// <param name="url"></param>
+    /// <param name="filePath"></param>
     /// <returns></returns>
     public async Task<T> GetObjectFromJsonAsync<T>(Uri filePath, CancellationToken cancellationToken = default)
     {
-        if (filePath is null) throw new ArgumentNullException(nameof(filePath));
+        ArgumentNullException.ThrowIfNull(filePath);
 
         using var activity = S3ActivitySource.StartActivity();
         activity?.SetTag("s3.url", filePath);
 
-        var content = await GetObjectContentAsync(filePath.ToString(), Encoding.UTF8, cancellationToken);
+        var content = await GetObjectContentAsync(filePath.ToString(), Encoding.UTF8, cancellationToken)
+            .ConfigureAwait(false);
 
         if (content is null)
             return default;
@@ -613,7 +614,7 @@ public class S3FileSystem : AwsBaseService, IFileSystem
         using var stream = new MemoryStream();
         using var writer = new StreamWriter(stream);
         await writer.WriteAsync(JsonSerializer.Serialize(obj)).ConfigureAwait(false);
-        await writer.FlushAsync().ConfigureAwait(false);
+        await writer.FlushAsync(cancellationToken).ConfigureAwait(false);
 
         return await UploadAsync(bucketName, stream, fileName, metadata, serverSideEncryptionMethod, fileAcl,
             cancellationToken).ConfigureAwait(false);

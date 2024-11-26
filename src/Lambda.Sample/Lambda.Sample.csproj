@@ -15,11 +15,11 @@
 
     <ItemGroup>
         <PackageReference Include="Amazon.Extensions.Configuration.SystemsManager" Version="6.2.2" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0"/>
-        <PackageReference Include="Amazon.Lambda.Core" Version="2.4.0" />
-        <PackageReference Include="Amazon.Lambda.RuntimeSupport" Version="1.11.0"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="9.0.0" />
+        <PackageReference Include="Amazon.Lambda.Core" Version="2.5.0" />
+        <PackageReference Include="Amazon.Lambda.RuntimeSupport" Version="1.12.0" />
         <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.4.4" />
-        <PackageReference Include="AWSSDK.XRay" Version="3.7.400.53" />
+        <PackageReference Include="AWSSDK.XRay" Version="3.7.401.1" />
     </ItemGroup>
 
 </Project>

@@ -79,7 +79,7 @@ public abstract class BaseEventProcessor
     ///     Initializes the logger with an optional logger instance or creates a new logger if not provided.
     /// </summary>
     /// <param name="iocContainer">An optional logger instance to use.</param>
-    protected void InitializeLogger(IContainer iocContainer = null)
+    protected virtual void InitializeLogger(IContainer iocContainer = null)
     {
         //If the logger is already set, do nothing.
         if (Logger is not null)
@@ -158,7 +158,7 @@ public abstract class BaseEventProcessor
         var configBuilder = new ConfigurationBuilder();
         configBuilder.AddEnvironmentVariables();
         configBuilder.AddJsonFile("appsettings.json", true);
-
+        
         var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
         if (!string.IsNullOrWhiteSpace(environmentName))
