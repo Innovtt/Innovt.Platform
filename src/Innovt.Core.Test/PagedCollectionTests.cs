@@ -44,6 +44,22 @@ public class PagedCollectionTests
     }
 
     [Test]
+    public void PageCount_ShouldReturnZero_WhenNotItems()
+    {
+        // Arrange
+        var pagedCollection = new PagedCollection<string>(new List<string>(), "1", 1)
+        {
+            TotalRecords = 0
+        };
+
+        // Act
+        var pageCount = pagedCollection.PageCount;
+
+        // Assert
+        Assert.That(pageCount, Is.EqualTo(0));
+    }
+
+    [Test]
     public void HasNext_ShouldReturnTrue_WhenThereAreMorePages()
     {
         // Arrange
