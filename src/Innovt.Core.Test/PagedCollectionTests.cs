@@ -2,6 +2,8 @@ using Innovt.Core.Collections;
 using NUnit.Framework;
 using System.Collections.Generic;
 
+namespace Innovt.Core.Test;
+
 [TestFixture]
 public class PagedCollectionTests
 {
