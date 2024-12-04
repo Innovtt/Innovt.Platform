@@ -2,9 +2,9 @@
 // Author: Michel Borges
 // Project: Innovt.Core
 
+using Innovt.Core.Utilities;
 using System.Collections.Generic;
 using System.Globalization;
-using Innovt.Core.Utilities;
 
 namespace Innovt.Core.Collections;
 
@@ -78,7 +78,7 @@ public class PagedCollection<T> : IPagedCollection<T>
     public int PageSize { get; set; }
 
     /// <inheritdoc />
-    public int PageCount => PageSize <= 0 ? 0 : TotalRecords / PageSize;
+    public int PageCount => PageSize > 0 ? (TotalRecords + PageSize - 1) / PageSize : 0;
 
     /// <inheritdoc />
     public bool HasNext()
