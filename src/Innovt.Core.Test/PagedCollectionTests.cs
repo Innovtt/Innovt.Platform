@@ -19,10 +19,13 @@ public class PagedCollectionTests
         var pagedCollection = new PagedCollection<string>(items, page, pageSize) { TotalRecords = 3 };
 
         // Assert
-        Assert.That(pagedCollection.Items, Is.EqualTo(items));
-        Assert.That(pagedCollection.Page, Is.EqualTo(page));
-        Assert.That(pagedCollection.PageSize, Is.EqualTo(pageSize));
-        Assert.That(pagedCollection.TotalRecords, Is.EqualTo(3));
+        Assert.Multiple(() =>
+        {
+            Assert.That(pagedCollection.Items, Is.EqualTo(items));
+            Assert.That(pagedCollection.Page, Is.EqualTo(page));
+            Assert.That(pagedCollection.PageSize, Is.EqualTo(pageSize));
+            Assert.That(pagedCollection.TotalRecords, Is.EqualTo(3));
+        });
     }
 
     [Test]
