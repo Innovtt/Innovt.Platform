@@ -79,14 +79,14 @@ public abstract class BaseEventProcessor
     ///     Initializes the logger with an optional logger instance or creates a new logger if not provided.
     /// </summary>
     /// <param name="iocContainer">An optional logger instance to use.</param>
-    protected virtual void InitializeLogger(IContainer iocContainer = null)
+    protected void InitializeLogger(IContainer iocContainer = null)
     {
-        //If the logger is already set, do nothing.
-        if (Logger is not null)
+        //The logger is already set.
+        if (iocContainer is null && Logger is not null)
             return;
-
+        
         var logger = iocContainer?.TryToResolve<ILogger>();
-
+        
         Logger = logger ?? new LambdaLogger(Context.Logger);
     }
 

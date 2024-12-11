@@ -3,6 +3,7 @@
 // Project: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
 
 using Innovt.Core.CrossCutting.Ioc;
+using Innovt.Core.CrossCutting.Log;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors;
 
@@ -13,9 +14,7 @@ public class KinesisDataInvoiceProcessorBatch(IServiceMock serviceMock, bool rep
 
     protected override IContainer SetupIocContainer()
     {
-        serviceMock.InitializeIoc();
-
-        return default!;
+        return serviceMock.InitializeIoc();
     }
 
     protected override Task<BatchFailureResponse> ProcessMessages(IList<Invoice> messages)
@@ -23,5 +22,11 @@ public class KinesisDataInvoiceProcessorBatch(IServiceMock serviceMock, bool rep
         var result = serviceMock.ProcessMessage(messages.First().TraceId);
 
         return Task.FromResult(result);
+    }
+    
+    
+    public ILogger GetLogger()
+    {   
+        return Logger;
     }
 }
