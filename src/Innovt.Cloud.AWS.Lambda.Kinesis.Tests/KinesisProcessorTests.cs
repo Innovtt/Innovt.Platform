@@ -8,9 +8,13 @@ using System.Text.Json;
 using Amazon.Lambda.KinesisEvents;
 using Amazon.Lambda.TestUtilities;
 using Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors;
+using Innovt.Core.CrossCutting.Ioc;
+using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Exceptions;
+using Innovt.CrossCutting.Log.Serilog;
 using Innovt.Domain.Core.Events;
 using Innovt.Domain.Core.Streams;
+using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
 using NUnit.Framework;
 using OpenTelemetry;
@@ -150,8 +154,13 @@ public class KinesisProcessorTests
     }
 
     [Test]
-    public async Task Process_WithCustomLogger()
+    public async Task Process_WithoutCustomLogger()
     {
+        var emptyContainer = new Innovt.CrossCutting.IOC.Container();
+
+        serviceMock.InitializeIoc().Returns(emptyContainer);
+        
+        
         var function = new KinesisDataInvoiceProcessorBatch(serviceMock);
 
         var lambdaContext = new TestLambdaContext();
@@ -168,6 +177,51 @@ public class KinesisProcessorTests
 
         await function.Process(message, lambdaContext);
 
+
+        var logger = function.GetLogger();
+        
+        Assert.That(logger, Is.Not.Null);
+        Assert.That(logger, Is.InstanceOf<LambdaLogger>());
+        
+        serviceMock.Received().InitializeIoc();
+        serviceMock.Received().ProcessMessage(Arg.Any<string>());
+    }
+
+    
+    [Test]
+    public async Task Process_WithCustomLogger()
+    {
+        var container = new Innovt.CrossCutting.IOC.Container();
+
+        var module = new IocModule();
+        module.GetServices().AddScoped<ILogger,Logger>();
+      
+        container.AddModule(module);
+
+        serviceMock.InitializeIoc().Returns(container);
+        
+        var function = new KinesisDataInvoiceProcessorBatch(serviceMock);
+
+        var lambdaContext = new TestLambdaContext();
+
+        var eventId = Guid.NewGuid();
+
+        var message = new KinesisEvent
+        {
+            Records = new List<KinesisEvent.KinesisEventRecord>
+            {
+                CreateValidKinesisRecord(eventId, new Invoice())
+            }
+        };
+
+        await function.Process(message, lambdaContext);
+        
+        var logger = function.GetLogger();
+        
+        Assert.That(logger, Is.Not.Null);
+        Assert.That(logger, Is.Not.InstanceOf<LambdaLogger>());
+        Assert.That(logger, Is.InstanceOf<Logger>());
+        
         serviceMock.Received().InitializeIoc();
         serviceMock.Received().ProcessMessage(Arg.Any<string>());
     }

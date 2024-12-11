@@ -3,6 +3,7 @@
 // Project: Innovt.Cloud.AWS.Lambda.Kinesis.Tests
 
 using Innovt.Core.CrossCutting.Ioc;
+using Innovt.Core.CrossCutting.Log;
 using Innovt.Domain.Core.Events;
 
 namespace Innovt.Cloud.AWS.Lambda.Kinesis.Tests.Processors;
@@ -23,9 +24,7 @@ public class KinesisDomainEventEmptyInvoiceProcessor : KinesisDomainEventProcess
 
     protected override IContainer SetupIocContainer()
     {
-        serviceMock.InicializeIoc();
-
-        return null!;
+       return  serviceMock.InicializeIoc();
     }
 
     protected override Task ProcessMessage(DomainEvent message)
@@ -34,4 +33,6 @@ public class KinesisDomainEventEmptyInvoiceProcessor : KinesisDomainEventProcess
 
         return Task.CompletedTask;
     }
+
+
 }

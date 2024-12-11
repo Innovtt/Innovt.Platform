@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <PackageId>Innovt.Cloud.AWS</PackageId>
-        <PackageVersion>8.1.27</PackageVersion>
+        <PackageVersion>8.1.28</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -13,8 +13,8 @@
         <ClsCompliant>true</ClsCompliant>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="AWSSDK.Core" Version="3.7.400.57" />
-        <PackageReference Include="AWSSDK.SecurityToken" Version="3.7.401.6" />
+        <PackageReference Include="AWSSDK.Core" Version="3.7.400.61" />
+        <PackageReference Include="AWSSDK.SecurityToken" Version="3.7.401.10" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.0" />
         <PackageReference Include="Polly" Version="8.5.0" />
         <PackageReference Include="System.Text.Json" Version="9.0.0" />
