@@ -3,8 +3,8 @@
 // Project: Innovt.Cqrs
 
 using System;
-using System.Data.SqlClient;
 using Innovt.Core.CrossCutting.Log;
+using Microsoft.Data.SqlClient;
 using Polly;
 using Polly.Retry;
 

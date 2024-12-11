@@ -20,7 +20,7 @@ namespace Innovt.Cloud.AWS.Notification;
 /// </summary>
 public class MailNotificationHandler : AwsBaseService, INotificationHandler
 {
-    private AmazonSimpleEmailServiceClient _simpleEmailClient;
+    private AmazonSimpleEmailServiceClient simpleEmailClient;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="MailNotificationHandler" /> class.
@@ -54,9 +54,9 @@ public class MailNotificationHandler : AwsBaseService, INotificationHandler
     {
         get
         {
-            if (_simpleEmailClient == null) _simpleEmailClient = CreateService<AmazonSimpleEmailServiceClient>();
+            if (simpleEmailClient == null) simpleEmailClient = CreateService<AmazonSimpleEmailServiceClient>();
 
-            return _simpleEmailClient;
+            return simpleEmailClient;
         }
     }
 
@@ -132,6 +132,6 @@ public class MailNotificationHandler : AwsBaseService, INotificationHandler
     /// </summary>
     protected override void DisposeServices()
     {
-        _simpleEmailClient?.Dispose();
+        simpleEmailClient?.Dispose();
     }
 }

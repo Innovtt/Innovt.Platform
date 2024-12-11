@@ -12,7 +12,7 @@ namespace Innovt.Cloud.AWS.Lambda;
 /// <summary>
 ///     An adapter class that provides logging capabilities using an ILambdaLogger.
 /// </summary>
-internal class LambdaLogger : ILogger
+public class LambdaLogger : ILogger
 {
     private readonly IFormatProvider formatProvider;
     private readonly ILambdaLogger lambdaLogger;
