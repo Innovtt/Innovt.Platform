@@ -3,6 +3,7 @@
 // Project: Innovt.AspNetCore
 
 using Innovt.Core.Exceptions;
+using Innovt.Core.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -20,7 +21,7 @@ public sealed class CustomExceptionFilterAttribute : ExceptionFilterAttribute
     /// <param name="context">The exception context.</param>
     public override void OnException(ExceptionContext context)
     {
-        if (context is null || context.ExceptionHandled) return;
+        if (context.IsNull() || context.ExceptionHandled) return;
 
         if (!(context.Exception is BusinessException)) return;
 
