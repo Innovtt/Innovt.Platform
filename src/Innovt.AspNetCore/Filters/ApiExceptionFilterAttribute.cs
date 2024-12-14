@@ -20,31 +20,31 @@ namespace Innovt.AspNetCore.Filters;
 ///     An exception filter attribute for handling exceptions globally and providing standardized error responses.
 /// </summary>
 [AttributeUsage(AttributeTargets.All)]
-public sealed class ApiExceptionFilter : ExceptionFilterAttribute
+public sealed class ApiExceptionFilterAttribute : ExceptionFilterAttribute
 {
     /// <summary>
     ///     Default Constructor
     /// </summary>
-    public ApiExceptionFilter()
+    public ApiExceptionFilterAttribute()
     {
     }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="ApiExceptionFilter" /> class with a logger.
+    ///     Initializes a new instance of the <see cref="ApiExceptionFilterAttribute" /> class with a logger.
     /// </summary>
     /// <param name="logger">The logger to use for logging exceptions.</param>
-    public ApiExceptionFilter(ILogger logger)
+    public ApiExceptionFilterAttribute(ILogger logger)
     {
         Logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="ApiExceptionFilter" /> class with a logger and a string localizer for
+    ///     Initializes a new instance of the <see cref="ApiExceptionFilterAttribute" /> class with a logger and a string localizer for
     ///     exception messages.
     /// </summary>
     /// <param name="logger">The logger to use for logging exceptions.</param>
     /// <param name="stringLocalizer">The string localizer for localizing exception messages.</param>
-    public ApiExceptionFilter(ILogger logger, IStringLocalizer<IExceptionResource> stringLocalizer) : this(logger)
+    public ApiExceptionFilterAttribute(ILogger logger, IStringLocalizer<IExceptionResource> stringLocalizer) : this(logger)
     {
         StringLocalizer = stringLocalizer ?? throw new ArgumentNullException(nameof(stringLocalizer));
     }
@@ -83,7 +83,6 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
 
         if (Logger is null)
         {
-            Console.WriteLine("ApiExceptionFilter is not resolving the innovt logger.");
             Console.WriteLine($"Message: {message}, Exception: {ex.Message}");
         }
         else
@@ -116,6 +115,15 @@ public sealed class ApiExceptionFilter : ExceptionFilterAttribute
                 context.Result = new ObjectResult(result)
                 {
                     StatusCode = StatusCodes.Status401Unauthorized
+                };
+                break;
+            case ForbiddenAccessException uex:
+                result.Code = $"{StatusCodes.Status403Forbidden}";
+                result.Detail = Translate(uex.Message);
+                result.Message = Translate("Unauthorized");
+                context.Result = new ObjectResult(result)
+                {
+                    StatusCode = StatusCodes.Status403Forbidden
                 };
                 break;
             case BusinessException bex:
