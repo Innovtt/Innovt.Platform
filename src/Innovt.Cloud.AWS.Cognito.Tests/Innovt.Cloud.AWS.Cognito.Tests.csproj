@@ -2,7 +2,6 @@
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <IsPackable>false</IsPackable>
         <GenerateDocumentationFile>false</GenerateDocumentationFile>
@@ -10,12 +9,9 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
-        <PackageReference Include="NUnit" Version="4.2.2"/>
+        <PackageReference Include="NUnit" Version="4.3.0" />
+        <PackageReference Include="NSubstitute" Version="5.3.0"/>
         <PackageReference Include="NUnit3TestAdapter" Version="4.6.0"/>
-        <PackageReference Include="NUnit.Analyzers" Version="4.4.0">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
         <PackageReference Include="coverlet.collector" Version="6.0.2">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -28,6 +24,11 @@
     <ItemGroup>
         <ProjectReference Include="..\Innovt.Cloud.AWS.Cognito\Innovt.Cloud.AWS.Cognito.csproj"/>
         <ProjectReference Include="..\Innovt.CrossCutting.Log.Serilog\Innovt.CrossCutting.Log.Serilog.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+        <PackageReference Include="AWSSDK.SSO" Version="3.7.400.65" />
+        <PackageReference Include="AWSSDK.SSOOIDC" Version="3.7.400.65" />
     </ItemGroup>
 
 </Project>
