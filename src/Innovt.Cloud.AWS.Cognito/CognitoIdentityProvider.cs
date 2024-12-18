@@ -69,10 +69,10 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         bool allowAutoConfirmUserWithSocialLogin = false) :
         base(logger, configuration, region)
     {
+        ArgumentNullException.ThrowIfNull(domainEndPoint);
+        
         this.clientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
         this.userPoolId = userPoolId ?? throw new ArgumentNullException(nameof(userPoolId));
-        if (domainEndPoint == null) throw new ArgumentNullException(nameof(domainEndPoint));
-
         this.allowAutoConfirmUserWithSocialLogin = allowAutoConfirmUserWithSocialLogin;
         this.domainEndPoint = new Uri(domainEndPoint);
     }

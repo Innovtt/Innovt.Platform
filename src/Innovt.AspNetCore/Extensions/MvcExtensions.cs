@@ -7,9 +7,11 @@ using System.Net;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
+using Innovt.AspNetCore.Handlers;
 using Innovt.AspNetCore.Utility.Pagination;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -109,11 +111,11 @@ public static class MvcExtensions
             throw new CriticalException($"The Config Section '{configSection}:Audience' not defined.");
         if (authoritySection.Value == null)
             throw new CriticalException("The Config Section '{configSection}:Authority' not defined.");
-
+        
         services.AddBearerAuthorization(audienceSection.Value, authoritySection.Value, validateAudience, validateIssuer,
             validateLifetime, validateIssuerSigningKey, audiences);
     }
-
+    
     // ReSharper disable once MemberCanBePrivate.Global
     /// <summary>
     ///     Adds Bearer token authentication.

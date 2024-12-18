@@ -65,12 +65,12 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
     /// <inheritdoc />
     protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
     {
-        if (!Request.Headers.ContainsKey("Authorization"))
+        if (!Request.Headers.TryGetValue("Authorization", out var value))
             return Fail("Missing Authorization Header");
 
         try
-        {
-            var authHeader = AuthenticationHeaderValue.Parse(Request.Headers["Authorization"]);
+        {   
+            var authHeader = AuthenticationHeaderValue.Parse(value!);
 
             if (authHeader?.Parameter is null)
                 return Fail("Invalid Authorization Header");

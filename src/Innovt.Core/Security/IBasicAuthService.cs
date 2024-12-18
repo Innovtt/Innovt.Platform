@@ -2,6 +2,7 @@
 // Author: Michel Borges
 // Project: Innovt.Core
 
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Innovt.Core.Security;
@@ -16,9 +17,10 @@ public interface IBasicAuthService
     /// </summary>
     /// <param name="userName">The username to authenticate.</param>
     /// <param name="password">The password associated with the username.</param>
+    /// <param name="cancellationToken">A cancellation token to cancel the operartion</param>
     /// <returns>
     ///     A task that represents the asynchronous authentication operation.
     ///     The task result is <c>true</c> if the authentication is successful; otherwise, <c>false</c>.
     /// </returns>
-    Task<bool> Authenticate(string userName, string password);
+    Task<bool> Authenticate(string userName, string password, CancellationToken cancellationToken = default);
 }
