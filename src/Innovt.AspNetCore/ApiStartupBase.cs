@@ -136,6 +136,8 @@ public abstract class ApiStartupBase
         {
             options.SchemaFilter<SwaggerExcludeFilter>();
             options.OperationFilter<SwaggerExcludeFilter>();
+            //options.ParameterFilter<SwaggerExcludeFilter>();
+            
             options.SwaggerDoc(Documentation.ApiVersion,
                 new OpenApiInfo
                 {

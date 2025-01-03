@@ -13,8 +13,8 @@
         <ClsCompliant>true</ClsCompliant>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="AWSSDK.Core" Version="3.7.400.65" />
-        <PackageReference Include="AWSSDK.SecurityToken" Version="3.7.401.14" />
+        <PackageReference Include="AWSSDK.Core" Version="3.7.400.71" />
+        <PackageReference Include="AWSSDK.SecurityToken" Version="3.7.401.20" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.0" />
         <PackageReference Include="Polly" Version="8.5.0" />
         <PackageReference Include="System.Text.Json" Version="9.0.0" />
