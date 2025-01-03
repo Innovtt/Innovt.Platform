@@ -19,7 +19,7 @@
         <PackageReference Include="Amazon.Lambda.Core" Version="2.5.0" />
         <PackageReference Include="Amazon.Lambda.RuntimeSupport" Version="1.12.2" />
         <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.4.4" />
-        <PackageReference Include="AWSSDK.XRay" Version="3.7.401.9" />
+        <PackageReference Include="AWSSDK.XRay" Version="3.7.401.15" />
     </ItemGroup>
 
 </Project>

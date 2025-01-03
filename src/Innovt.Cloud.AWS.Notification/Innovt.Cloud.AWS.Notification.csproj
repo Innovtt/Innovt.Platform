@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <PackageId>Innovt.Cloud.AWS.Notification</PackageId>
-        <PackageVersion>8.1.31</PackageVersion>
+        <PackageVersion>8.1.32</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -13,8 +13,8 @@
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.402.8" />
-        <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.7.400.65" />
+        <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.402.14" />
+        <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.7.400.71" />
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

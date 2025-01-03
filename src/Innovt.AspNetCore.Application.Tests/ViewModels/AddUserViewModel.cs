@@ -1,12 +1,14 @@
-using System.Text.Json.Serialization;
+
+using Innovt.Core.Attributes;
 
 namespace Innovt.AspNetCore.Application.Tests.ViewModels;
 
+[ModelExcludeFilter("ExternalId", "UserId")]
 public class AddUserViewModel
-{
-    [JsonIgnore] public string? UserId { get; set; }
+{  
+    public string? UserId { get; set; }
 
     public string? FirstName { get; set; }
-
-    [JsonIgnore] public string? ExternalId { get; set; }
+    
+    public string? ExternalId { get; set; }
 }
