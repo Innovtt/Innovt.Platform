@@ -60,7 +60,7 @@ public class AddCustomHeaderParameter : IOperationFilter
         apiSchema ??= new OpenApiSchema
         {
             Type = schemaType,
-            Format = schemaFormat
+            Format = schemaFormat,
         };
 
         operation.Parameters.Add(new OpenApiParameter
