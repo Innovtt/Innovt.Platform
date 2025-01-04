@@ -27,7 +27,7 @@ public static class SimpleMapper
     {
         if (input == null)
             return default;
-
+        
         // Get properties from both input and output
         var inputProperties = input.GetType()
             .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.IgnoreCase);
@@ -41,7 +41,7 @@ public static class SimpleMapper
             var outProperty = outputProperties
                 .LastOrDefault(p => p.Name == property.Name && p.PropertyType == property.PropertyType);
 
-            if (outProperty != null)
+            if (outProperty != null && outProperty.CanWrite)
                 // Set the value on the output object
                 outProperty.SetValue(output, property.GetValue(input, null), null);
         }
@@ -91,7 +91,7 @@ public static class SimpleMapper
     public static T1 MapTo<T1>(this object inputInstance) where T1 : class
     {
         if (inputInstance is null)
-            return default;
+            return null;
 
         var outputInstance = ReflectionTypeUtil.CreateInstance<T1>();
 

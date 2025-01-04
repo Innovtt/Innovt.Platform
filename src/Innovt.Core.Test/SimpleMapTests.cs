@@ -45,6 +45,13 @@ internal class SomeDto3 : SomeDto
     public int Age { get; set; }
 }
 
+internal class SomeDtoWithReadyOnlyProperty: SomeDto
+{
+    public string LastName { get; } = "Borges";
+    
+    public string FullName => $"{Name} {LastName}";
+}
+
 [TestFixture]
 public class SimpleMapTests
 {
@@ -122,6 +129,24 @@ public class SimpleMapTests
         Assert.That(b, Is.Not.Null);
         Assert.That(a.Name, Is.EqualTo(b.Name));
         Assert.That(a.Description, Is.EqualTo(b.Description));
+    }
+    
+    [Test]
+    public void MapWithReadyOnlyProperties()
+    {
+        var a = new SomeDtoWithReadyOnlyProperty() { Name = "michel", Description = "something" };
+        var b = new SomeDtoWithReadyOnlyProperty();
+
+        SimpleMapper.Map(a, b);
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(b, Is.Not.Null);
+            Assert.That(a.Name, Is.EqualTo(b.Name));
+            Assert.That(a.LastName, Is.EqualTo(b.LastName));
+            Assert.That(a.FullName, Is.EqualTo(b.FullName));
+            Assert.That(a.Description, Is.EqualTo(b.Description));
+        });
     }
 
     [Test]
@@ -296,6 +321,7 @@ public class SimpleMapTests
             Assert.That(invoice.UpdatedAt, Is.EqualTo(invoiceDto.UpdatedAt));
         });
     }
+    
 
 
     [Test]
