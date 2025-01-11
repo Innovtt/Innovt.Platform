@@ -836,4 +836,62 @@ public static class StringExtensions
     {
         return Guid.TryParse(str, out var result) ? result : Guid.Empty;
     }
+
+    /// <summary>
+    /// Create a safe and SEO friendly slug from a string.
+    /// </summary>
+    /// <param name="str"></param>
+    /// <param name="maxLength"></param>
+    /// <returns></returns>
+    public static string CreateSlug(this string str, int maxLength = 100)
+    {
+        if (str.IsNullOrEmpty())
+            return string.Empty;
+
+        var normalizedString = str.ToLowerInvariant()
+            .Normalize(NormalizationForm.FormD);
+
+        var estimatedLength = Math.Min(normalizedString.Length, maxLength);
+        Span<char> buffer = stackalloc char[estimatedLength];
+        var bufferPosition = 0;
+        var prevDash = true; // Start true to avoid leading dash
+
+        foreach (var c in normalizedString)
+        {
+            var category = CharUnicodeInfo.GetUnicodeCategory(c);
+            
+            switch (category)
+            {
+                case UnicodeCategory.NonSpacingMark:
+                    continue;
+                case UnicodeCategory.LowercaseLetter:
+                case UnicodeCategory.UppercaseLetter:
+                case UnicodeCategory.DecimalDigitNumber:
+                {
+                    if (bufferPosition < estimatedLength)
+                    {
+                        buffer[bufferPosition++] = c;
+                        prevDash = false;
+                    }
+                    continue;
+                }
+            }
+            
+            //Convert to dash
+            if (!prevDash && bufferPosition < estimatedLength &&
+                (category == UnicodeCategory.SpaceSeparator ||
+                 category == UnicodeCategory.DashPunctuation ||
+                 (category == UnicodeCategory.OtherPunctuation && c != '\'' && c != '\'')))
+            {
+                buffer[bufferPosition++] = '-';
+                prevDash = true;
+            }
+        }
+        
+        if (bufferPosition > 0 && buffer[bufferPosition - 1] == '-')
+            bufferPosition--;
+        
+        return bufferPosition == 0 ? string.Empty : new string(buffer[..bufferPosition]);
+    }
+
 }

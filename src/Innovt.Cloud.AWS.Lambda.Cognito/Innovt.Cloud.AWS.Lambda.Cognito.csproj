@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <PackageId>Innovt.Cloud.AWS.Lambda.Cognito</PackageId>
-        <PackageVersion>8.1.33</PackageVersion>
+        <PackageVersion>8.1.34</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
