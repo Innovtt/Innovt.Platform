@@ -117,4 +117,49 @@ public class ExtensionsTests
         Assert.That(convertedDateTime, Is.EqualTo(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
             12, 0, 0, DateTimeKind.Utc)));
     }
+    
+    [TestCase("","")]
+    [TestCase(null,"")]
+    [TestCase(" ","")]
+    [TestCase("   ", "")]
+    [TestCase("---", "")]
+    [TestCase("Hello World!", "hello-world")]
+    [TestCase("Hello & World", "hello-world")]
+    [TestCase("Hello (World)", "hello-world")]
+    [TestCase("Hello @ World", "hello-world")]
+    [TestCase("Hello #World", "hello-world")]
+    [TestCase("Hello's World", "hellos-world")]
+    [TestCase("áéíóú", "aeiou")]
+    [TestCase("çñ", "cn")]
+    [TestCase("äëïöü", "aeiou")]
+    [TestCase("àèìòù", "aeiou")]
+    [TestCase("Café", "cafe")]
+    [TestCase("Product 2024", "product-2024")]
+    [TestCase("Version 1.0.0", "version-1-0-0")]
+    [TestCase("Item #123", "item-123")]
+    [TestCase("hello--world", "hello-world")]
+    [TestCase("hello---world", "hello-world")]
+    [TestCase("hello - world", "hello-world")]
+    [TestCase("-hello-world-", "hello-world")]
+    [TestCase("Hello World (Special Edition) 2024 ®", "hello-world-special-edition-2024")]
+    [TestCase("L'été est très beau!", "lete-est-tres-beau")]
+    [TestCase("∑∆ Special Characters ♥†", "special-characters")]
+    [TestCase("User's Guide & Tutorial", "users-guide-tutorial")]
+    public void CreateSlug(string value, string expected)
+    {
+        var actual = value.CreateSlug();
+
+        Assert.That(actual, Is.EqualTo(expected));
+    }
+    
+
+    [Test]
+    public void LongInput_ShouldBeTruncated()
+    {
+        var longInput = new string('a', 100) + "-test";
+        var result = longInput.CreateSlug(75);
+        Assert.That(result, Has.Length.LessThanOrEqualTo(75)); 
+    }
+    
+   
 }
