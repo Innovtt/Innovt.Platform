@@ -10,8 +10,8 @@
     <ItemGroup>
         <PackageReference Include="Amazon.Lambda.KinesisEvents" Version="2.2.0"/>
         <PackageReference Include="Amazon.Lambda.TestUtilities" Version="2.0.0"/>
-        <PackageReference Include="OpenTelemetry" Version="1.10.0"/>
-        <PackageReference Include="OpenTelemetry.Api" Version="1.10.0"/>
+        <PackageReference Include="OpenTelemetry" Version="1.11.1" />
+        <PackageReference Include="OpenTelemetry.Api" Version="1.11.1" />
         <PackageReference Include="OpenTelemetry.Contrib.Instrumentation.AWS" Version="1.0.2"/>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
         <PackageReference Include="NUnit" Version="4.3.2" />
@@ -21,11 +21,11 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="coverlet.collector" Version="6.0.3">
+        <PackageReference Include="coverlet.collector" Version="6.0.4">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="coverlet.msbuild" Version="6.0.3">
+        <PackageReference Include="coverlet.msbuild" Version="6.0.4">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>

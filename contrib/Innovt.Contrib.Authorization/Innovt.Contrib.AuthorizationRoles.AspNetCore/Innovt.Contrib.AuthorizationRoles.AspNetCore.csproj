@@ -4,7 +4,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <PackageId>Innovt.Contrib.AuthorizationRoles.AspNetCore</PackageId>
-        <PackageVersion>8.1.34</PackageVersion>
+        <PackageVersion>8.1.35</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -14,7 +14,7 @@
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="OpenTelemetry" Version="1.10.0"/>
+        <PackageReference Include="OpenTelemetry" Version="1.11.1" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\..\..\src\Innovt.AspNetCore\Innovt.AspNetCore.csproj"/>
