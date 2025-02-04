@@ -14,7 +14,7 @@
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="OpenTelemetry" Version="1.10.0"/>
+        <PackageReference Include="OpenTelemetry" Version="1.11.1" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\..\..\src\Innovt.AspNetCore\Innovt.AspNetCore.csproj"/>

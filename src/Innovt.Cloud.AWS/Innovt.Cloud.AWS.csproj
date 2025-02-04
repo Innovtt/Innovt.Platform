@@ -13,11 +13,11 @@
         <ClsCompliant>true</ClsCompliant>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="AWSSDK.Core" Version="3.7.400.77" />
-        <PackageReference Include="AWSSDK.SecurityToken" Version="3.7.401.26" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.0" />
-        <PackageReference Include="Polly" Version="8.5.0" />
-        <PackageReference Include="System.Text.Json" Version="9.0.0" />
+        <PackageReference Include="AWSSDK.Core" Version="3.7.401.7" />
+        <PackageReference Include="AWSSDK.SecurityToken" Version="3.7.401.36" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.1" />
+        <PackageReference Include="Polly" Version="8.5.1" />
+        <PackageReference Include="System.Text.Json" Version="9.0.1" />
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

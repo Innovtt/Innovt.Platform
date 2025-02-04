@@ -34,7 +34,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 8.0.403
+          dotnet-version: 8.0.405
       - name: AddNugetSource
         run: dotnet nuget add source --username USERNAME --password ${{ secrets.NUGET_API_KEY }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/Innovtt/index.json"
       - name: Install Sonnar Scaner

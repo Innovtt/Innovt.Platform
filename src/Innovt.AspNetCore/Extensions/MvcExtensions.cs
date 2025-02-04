@@ -7,11 +7,9 @@ using System.Net;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
-using Innovt.AspNetCore.Handlers;
 using Innovt.AspNetCore.Utility.Pagination;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -82,7 +80,7 @@ public static class MvcExtensions
 
         return app.Use(async (context, next) =>
         {
-            context.Request.Headers.Add(Constants.HeaderApplicationContext, headerContext);
+            context.Request.Headers.Append(Constants.HeaderApplicationContext, headerContext);
             await next().ConfigureAwait(false);
         });
     }
@@ -240,7 +238,7 @@ public static class MvcExtensions
     /// <param name="user">The claims principal.</param>
     /// <param name="type">The claim type (default is ClaimTypes.Email).</param>
     /// <returns>The claim value or an empty string if not found.</returns>
-    public static string GetClaim(this ClaimsPrincipal user, string type = ClaimTypes.Email)
+    public static string GetClaim(this ClaimsPrincipal? user, string type = ClaimTypes.Email)
     {
         if (user is null)
             return string.Empty;
@@ -258,7 +256,7 @@ public static class MvcExtensions
     /// <param name="action">The action descriptor.</param>
     /// <param name="filter">The type of filter to check for.</param>
     /// <returns>True if the action has the filter, otherwise false.</returns>
-    public static bool HasFilter(this ActionDescriptor action, Type filter)
+    public static bool HasFilter(this ActionDescriptor? action, Type? filter)
     {
         if (action == null || filter == null)
             return false;
@@ -312,7 +310,7 @@ public static class MvcExtensions
     /// <param name="session">The session object.</param>
     /// <param name="key">The key the object was stored under.</param>
     /// <returns>The deserialized object.</returns>
-    public static T Get<T>(this ISession session, string key)
+    public static T? Get<T>(this ISession session, string key)
     {
         var value = session?.GetString(key);
 
