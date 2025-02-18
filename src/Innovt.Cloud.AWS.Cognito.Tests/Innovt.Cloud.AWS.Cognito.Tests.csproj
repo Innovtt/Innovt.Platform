@@ -27,8 +27,8 @@
     </ItemGroup>
 
     <ItemGroup Condition="'$(Configuration)' == 'Debug'">
-        <PackageReference Include="AWSSDK.SSO" Version="3.7.400.93" />
-        <PackageReference Include="AWSSDK.SSOOIDC" Version="3.7.400.94" />
+        <PackageReference Include="AWSSDK.SSO" Version="3.7.400.96" />
+        <PackageReference Include="AWSSDK.SSOOIDC" Version="3.7.400.97" />
     </ItemGroup>
 
 </Project>
