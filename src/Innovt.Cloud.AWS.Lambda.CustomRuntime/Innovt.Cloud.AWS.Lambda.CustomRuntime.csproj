@@ -5,7 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <PackageId>Innovt.Cloud.AWS.Lambda.CustomRuntime</PackageId>
-        <PackageVersion>8.1.38</PackageVersion>
+        <PackageVersion>8.1.39</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -17,7 +17,7 @@
 
     <ItemGroup>
         <PackageReference Include="Amazon.Lambda.Core" Version="2.5.0" />
-        <PackageReference Include="Amazon.Lambda.RuntimeSupport" Version="1.12.2" />
+        <PackageReference Include="Amazon.Lambda.RuntimeSupport" Version="1.12.3" />
         <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.4.4" />
     </ItemGroup>
 </Project>
