@@ -25,7 +25,7 @@ public static class Extensions
     /// </summary>
     /// <param name="obj">The object to check for null.</param>
     /// <returns>True if the object is null; otherwise, false.</returns>
-    public static bool IsNull([NotNull] this object obj)
+    public static bool IsNull([NotNullWhen(false)] this object obj)
     {
         return obj == null;
     }
@@ -55,7 +55,7 @@ public static class Extensions
     /// </summary>
     /// <param name="id">The nullable Guid to check for null or emptiness.</param>
     /// <returns>True if the Guid is null or empty; otherwise, false.</returns>
-    public static bool IsGuidNUllOrEmpty(this Guid? id)
+    public static bool IsGuidNullOrEmpty([NotNullWhen(false)] this Guid? id)
     {
         return id is null || id.Value.IsGuidEmpty();
     }
