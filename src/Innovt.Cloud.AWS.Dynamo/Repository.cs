@@ -100,7 +100,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         CancellationToken cancellationToken = default) where T : class
     {
         ArgumentNullException.ThrowIfNull(batchGetItemRequest);
-
+        
         using (ActivityRepository.StartActivity())
         {
             var items = QueryHelper.CreateBatchGetItemRequest(batchGetItemRequest);
