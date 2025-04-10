@@ -559,10 +559,10 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         switch (command.ChallengeName)
         {
             case "CUSTOM_CHALLENGE":
-                challengeResponses.Add("ANSWER", command.ConfirmationCode);
+                challengeResponses.Add("ANSWER", command.ConfirmationCode.SmartTrim());
                 break;
             case "SMS_MFA":
-                challengeResponses.Add("SMS_MFA_CODE", command.ConfirmationCode);
+                challengeResponses.Add("SMS_MFA_CODE", command.ConfirmationCode.SmartTrim());
                 break;
             case "NEW_PASSWORD_REQUIRED":
                 challengeResponses.Add("NEW_PASSWORD", command.Password);
