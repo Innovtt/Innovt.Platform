@@ -16,7 +16,7 @@ using UserStatus = Innovt.Cloud.AWS.Dynamo.Tests.Mapping.UserStatus;
 namespace Innovt.Cloud.AWS.Dynamo.Tests;
 
 [TestFixture]
-[Ignore("Only for local tests")]
+//[Ignore("Only for local tests")]
 public class RepositoryTests
 {
     private string fakeUserId = "24a874d8-d0a1-7032-b572-3c3383ff4ba9";
@@ -723,6 +723,29 @@ public class RepositoryTests
         }
     }
 
-    
+    [Test]
+    public async Task SampleWithNotificationDataModel()
+    {
+        var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
+
+        var dataModelRepository = new DataModelRepository(loggerMock, awsConfiguration);
+
+        var notification = new NotificationDataModel();
+        notification.Id = Guid.NewGuid().ToString();
+        notification.TemplateId = Guid.NewGuid().ToString();
+        notification.Status = "SENT";
+        notification.CreatedAt = DateTime.UtcNow;
+
+        try
+        {
+            await dataModelRepository.AddAsync<NotificationDataModel>(notification, CancellationToken.None);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
     
 }

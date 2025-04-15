@@ -66,8 +66,8 @@ internal static class AttributeConverter
             {
                 instanceProps = properties.Where(p =>
                 {
-                    var attr = AttributeCache.GetOrAdd(p, prop => new Lazy<DynamoDBPropertyAttribute>(() =>
-                        prop.GetCustomAttribute<DynamoDBPropertyAttribute>())).Value;
+                    var attr = AttributeCache.GetOrAdd(p, prop => new Lazy<DynamoDBPropertyAttribute>(prop.GetCustomAttribute<DynamoDBPropertyAttribute>)).Value;
+                    
                     return attr != null && propertyName.Equals(attr.AttributeName, StringComparison.OrdinalIgnoreCase);
                 }).ToList();
             }
@@ -122,7 +122,7 @@ internal static class AttributeConverter
         DynamoContext context = null)
         where T : class
     {
-        if (items is null) return default;
+        if (items is null) return null;
 
         var instance = InstanceCreator.CreateInstance<T>(items, context);
 
@@ -201,8 +201,10 @@ internal static class AttributeConverter
         var typeBuilder = context?.HasTypeBuilder<T>() == true ? context.GetEntityBuilder<T>() : null;
 
         if (typeBuilder is null)
+        {
             foreach (var property in properties)
                 attributes.Add(property.Name, CreateAttributeValue(property.GetValue(instance)));
+        }
         else
         {
             ConvertToAttributeValueMapWithContext(instance, context, properties, typeBuilder, attributes);
