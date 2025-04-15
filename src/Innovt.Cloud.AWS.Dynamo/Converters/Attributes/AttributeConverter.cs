@@ -7,6 +7,7 @@ using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
 using Innovt.Cloud.AWS.Dynamo.Converters.Attributes.Exceptions;
+using Innovt.Cloud.AWS.Dynamo.Helpers;
 using Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
@@ -66,8 +67,8 @@ internal static class AttributeConverter
             {
                 instanceProps = properties.Where(p =>
                 {
-                    var attr = AttributeCache.GetOrAdd(p, prop => new Lazy<DynamoDBPropertyAttribute>(() =>
-                        prop.GetCustomAttribute<DynamoDBPropertyAttribute>())).Value;
+                    var attr = AttributeCache.GetOrAdd(p, prop => new Lazy<DynamoDBPropertyAttribute>(prop.GetCustomAttribute<DynamoDBPropertyAttribute>)).Value;
+                    
                     return attr != null && propertyName.Equals(attr.AttributeName, StringComparison.OrdinalIgnoreCase);
                 }).ToList();
             }
@@ -122,7 +123,7 @@ internal static class AttributeConverter
         DynamoContext context = null)
         where T : class
     {
-        if (items is null) return default;
+        if (items is null) return null;
 
         var instance = InstanceCreator.CreateInstance<T>(items, context);
 
@@ -201,8 +202,9 @@ internal static class AttributeConverter
         var typeBuilder = context?.HasTypeBuilder<T>() == true ? context.GetEntityBuilder<T>() : null;
 
         if (typeBuilder is null)
-            foreach (var property in properties)
-                attributes.Add(property.Name, CreateAttributeValue(property.GetValue(instance)));
+        {
+            ConvertToAttributeValueMapWithoutContext(instance, properties, attributes);
+        }
         else
         {
             ConvertToAttributeValueMapWithContext(instance, context, properties, typeBuilder, attributes);
@@ -256,6 +258,48 @@ internal static class AttributeConverter
             }
         }
     }
+    
+    /// <summary>
+    /// No context mapping for properties
+    /// </summary>
+    /// <param name="instance"></param>
+    /// <param name="properties"></param>
+    /// <param name="attributes"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <exception cref="ConversionException"></exception>
+    private static void ConvertToAttributeValueMapWithoutContext<T>(T instance, PropertyInfo[] properties, Dictionary<string, AttributeValue> attributes)
+        where T : class
+    {
+        ArgumentNullException.ThrowIfNull(instance);
+        ArgumentNullException.ThrowIfNull(properties);
+        ArgumentNullException.ThrowIfNull(attributes);
+
+        foreach (var property in properties)
+        {
+            try
+            {
+                var propertyKey = property.Name;
+
+                var hasIgnoreAttribute = property.GetCustomAttribute<DynamoDBIgnoreAttribute>() != null;
+
+                if (hasIgnoreAttribute)
+                    continue;
+
+                var dynamoAttribute = property.GetCustomAttribute<DynamoDBPropertyAttribute>();
+
+                if (dynamoAttribute != null)
+                    propertyKey = dynamoAttribute.AttributeName;
+                
+                attributes.Add(propertyKey, CreateAttributeValue(property.GetValue(instance)));
+            }
+            catch (Exception ex)
+            {
+                throw new ConversionException(
+                    $"Error parsing entity to Dynamo properties. Property {property.Name}", ex);
+            }
+        }
+    }
+
 
     public static void ClearCaches()
     {
