@@ -60,6 +60,30 @@ internal static class TableHelper
 
         return hashKey;
     }
+    
+    private static object GetPropertyValue<T>(T instance, string propertyName) where T : class
+    {
+        ArgumentNullException.ThrowIfNull(instance);
+        ArgumentNullException.ThrowIfNull(propertyName);
+        
+        var property = typeof(T).GetProperty(propertyName);
+        
+        if(property != null)
+        {
+           return property.GetValue(instance);
+        }
+        
+        //Check if  property has a DynamoDBAttribute
+        var dynamoDbProperties = typeof(T).GetProperties().Where(p =>
+            p.GetCustomAttribute<DynamoDBPropertyAttribute>() != null).ToList();
+        
+        if(dynamoDbProperties.Count == 0)
+            return null;
+        
+        var originalProperty = dynamoDbProperties.FirstOrDefault(p => p.GetCustomAttribute<DynamoDBPropertyAttribute>()?.AttributeName == propertyName);
+
+        return originalProperty?.GetValue(instance);
+    }
 
     /// <summary>
     ///     Get the range key name for the specified type <typeparamref name="T" />.
@@ -112,17 +136,16 @@ internal static class TableHelper
     {
         Check.NotNull(value, nameof(value));
 
-        var hashKeyName = GetHashKeyName<T>(context);
+        var hashKeyName  = GetHashKeyName<T>(context);
         var rangeKeyName = GetRangeKeyName<T>(context);
-
-        // the default value will be from the type
-        var entityType = value.GetType();
-
-        var hashKeyValue = entityType.GetProperty(hashKeyName)?.GetValue(value);
-        var rangeKeyValue = entityType.GetProperty(rangeKeyName)?.GetValue(value);
+        
+        var hashKeyValue  = GetPropertyValue(value, hashKeyName);
+        var rangeKeyValue =  GetPropertyValue(value, rangeKeyName);
 
         if (context is null || !context.HasTypeBuilder<T>())
+        {
             return (hashKeyValue, rangeKeyValue);
+        }
 
         //It will build the value from the delegate using the type builder
 

@@ -723,6 +723,49 @@ public class RepositoryTests
         }
     }
 
-    
+    [Test]
+    public async Task SampleWithNotificationDataModel()
+    {
+        var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
+
+        var dataModelRepository = new DataModelRepository(loggerMock, awsConfiguration);
+
+        var notification = new NotificationDataModel();
+        notification.Id = "3b9d19f3-b44d-4da8-a65d-8ab3cb55732f";
+        notification.TemplateId = Guid.NewGuid().ToString();
+        notification.Sk = "NOTIFICATION";
+        notification.Status = "SENT";
+        notification.CreatedAt = DateTime.UtcNow;
+        notification.To = "michelmob@gmail.com";
+
+        try
+        {
+            await dataModelRepository.AddAsync(notification, CancellationToken.None);
+            
+            
+            var queryRequest = new QueryRequest
+            {
+                KeyConditionExpression = "PK=:pk AND SK=:sk",
+                Filter = new
+                {
+                    pk = notification.Id,
+                    sk = notification.Sk
+                }
+            };
+            
+            var request = await dataModelRepository.QueryAsync<NotificationDataModel>(queryRequest,
+                CancellationToken.None);
+
+            Assert.That(request, Is.Not.Null);
+            
+            await dataModelRepository.DeleteAsync(notification, CancellationToken.None);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
     
 }
