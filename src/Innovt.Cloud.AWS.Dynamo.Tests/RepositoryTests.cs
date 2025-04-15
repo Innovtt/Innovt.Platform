@@ -16,7 +16,7 @@ using UserStatus = Innovt.Cloud.AWS.Dynamo.Tests.Mapping.UserStatus;
 namespace Innovt.Cloud.AWS.Dynamo.Tests;
 
 [TestFixture]
-//[Ignore("Only for local tests")]
+[Ignore("Only for local tests")]
 public class RepositoryTests
 {
     private string fakeUserId = "24a874d8-d0a1-7032-b572-3c3383ff4ba9";
@@ -731,14 +731,34 @@ public class RepositoryTests
         var dataModelRepository = new DataModelRepository(loggerMock, awsConfiguration);
 
         var notification = new NotificationDataModel();
-        notification.Id = Guid.NewGuid().ToString();
+        notification.Id = "3b9d19f3-b44d-4da8-a65d-8ab3cb55732f";
         notification.TemplateId = Guid.NewGuid().ToString();
+        notification.Sk = "NOTIFICATION";
         notification.Status = "SENT";
         notification.CreatedAt = DateTime.UtcNow;
+        notification.To = "michelmob@gmail.com";
 
         try
         {
-            await dataModelRepository.AddAsync<NotificationDataModel>(notification, CancellationToken.None);
+            await dataModelRepository.AddAsync(notification, CancellationToken.None);
+            
+            
+            var queryRequest = new QueryRequest
+            {
+                KeyConditionExpression = "PK=:pk AND SK=:sk",
+                Filter = new
+                {
+                    pk = notification.Id,
+                    sk = notification.Sk
+                }
+            };
+            
+            var request = await dataModelRepository.QueryAsync<NotificationDataModel>(queryRequest,
+                CancellationToken.None);
+
+            Assert.That(request, Is.Not.Null);
+            
+            await dataModelRepository.DeleteAsync(notification, CancellationToken.None);
         }
         catch (Exception e)
         {

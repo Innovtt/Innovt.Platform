@@ -18,7 +18,6 @@ public class NotificationDataModel
     public string Id { get; set; }
 
     public DateTime CreatedAt { get; set; }
-
     public string TemplateId { get; set; }
 
     public string To { get; set; }
