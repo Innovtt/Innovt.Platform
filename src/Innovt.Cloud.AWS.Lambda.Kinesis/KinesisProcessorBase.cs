@@ -63,7 +63,7 @@ public abstract class KinesisProcessorBase<TBody> : EventProcessor<KinesisEvent,
     /// <returns>An instance of type <typeparamref name="TBody" /> representing the parsed content.</returns>
     protected async Task<TBody> ParseRecord(KinesisEvent.KinesisEventRecord record)
     {
-        if (record == null) throw new ArgumentNullException(nameof(record));
+        ArgumentNullException.ThrowIfNull(record);
 
         if (record.Kinesis.Data is null)
             throw new CriticalException($"Kinesis Data for EventId {record.EventId} is null");
@@ -76,12 +76,15 @@ public abstract class KinesisProcessorBase<TBody> : EventProcessor<KinesisEvent,
         activity?.SetTag("Kinesis.EventVersion", record.EventVersion);
         activity?.SetTag("Kinesis.EventSource", record.EventSource);
         activity?.SetTag("Kinesis.PartitionKey", record.Kinesis.PartitionKey);
-        activity?.SetTag("Kinesis.ApproximateArrivalTimestamp", record.Kinesis.ApproximateArrivalTimestamp);
-        activity?.AddBaggage("Message.ElapsedTimeBeforeAttendedInMilliseconds",
-            $"{DateTime.UtcNow.Subtract(record.Kinesis.ApproximateArrivalTimestamp).TotalMilliseconds}");
-        activity?.AddBaggage("Message.ElapsedTimeBeforeAttendedInMinutes",
-            $"{DateTime.UtcNow.Subtract(record.Kinesis.ApproximateArrivalTimestamp).TotalMinutes}");
-
+        if (record.Kinesis.ApproximateArrivalTimestamp.HasValue)
+        {
+            activity?.SetTag("Kinesis.ApproximateArrivalTimestamp", record.Kinesis.ApproximateArrivalTimestamp);
+            activity?.AddBaggage("Message.ElapsedTimeBeforeAttendedInMilliseconds",
+                $"{DateTime.UtcNow.Subtract(record.Kinesis.ApproximateArrivalTimestamp.Value).TotalMilliseconds}");
+            activity?.AddBaggage("Message.ElapsedTimeBeforeAttendedInMinutes",
+                $"{DateTime.UtcNow.Subtract(record.Kinesis.ApproximateArrivalTimestamp.Value).TotalMinutes}");
+        }
+        
         Logger.Info("Reading Stream Content.");
 
         using var reader = new StreamReader(record.Kinesis.Data, Encoding.UTF8);
@@ -97,7 +100,7 @@ public abstract class KinesisProcessorBase<TBody> : EventProcessor<KinesisEvent,
         if (body != null)
         {
             body.EventId = record.EventId;
-            body.ApproximateArrivalTimestamp = record.Kinesis.ApproximateArrivalTimestamp;
+            body.ApproximateArrivalTimestamp = record.Kinesis.ApproximateArrivalTimestamp.GetValueOrDefault(DateTime.UtcNow);
             body.Partition ??= record.Kinesis.PartitionKey;
             body.TraceId ??= activity?.Id;
         }
