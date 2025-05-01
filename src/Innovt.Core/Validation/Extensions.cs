@@ -89,9 +89,9 @@ public static class Extensions
     /// </summary>
     /// <param name="obj">The object to validate.</param>
     /// <param name="context">An optional <see cref="ValidationContext" /> to specify validation context.</param>
-    public static void EnsureIsValid(this IValidatableObject obj, ValidationContext context = null)
+    public static void EnsureIsValid([NotNull] this IValidatableObject obj, ValidationContext context = null)
     {
-        if (obj == null) throw new ArgumentNullException(nameof(obj));
+        ArgumentNullException.ThrowIfNull(obj);
 
         var validationResults = Validate(obj, context);
 

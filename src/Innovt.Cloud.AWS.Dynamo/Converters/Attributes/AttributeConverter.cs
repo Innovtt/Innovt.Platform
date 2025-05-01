@@ -88,7 +88,7 @@ internal static class AttributeConverter
             return new DynamoDBNull();
 
         if (attributeValue.IsBOOLSet)
-            return new DynamoDBBool(attributeValue.BOOL);
+            return new DynamoDBBool(attributeValue.BOOL.GetValueOrDefault());
 
         if (attributeValue.B is not null)
             return new Primitive(attributeValue.B);

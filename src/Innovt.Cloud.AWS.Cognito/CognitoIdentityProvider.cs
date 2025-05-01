@@ -263,11 +263,11 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                     await CognitoProvider.SignUpAsync(signUpRequest, cancellationToken).ConfigureAwait(false))
                 .ConfigureAwait(false);
-
-            if (!response.UserConfirmed)
+            
+            if (!response.UserConfirmed.GetValueOrDefault())
                 response.UserConfirmed = await ConfirmUserIfHasSocialUser(signUpRequest.Username, cancellationToken);
 
-            return new SignUpResponse { Confirmed = response.UserConfirmed, UUID = response.UserSub };
+            return new SignUpResponse { Confirmed = response.UserConfirmed.GetValueOrDefault(), UUID = response.UserSub };
         }
         catch (Exception ex)
         {
@@ -465,8 +465,8 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
             user.UserName = cognitoUser.Username;
             user.Status = cognitoUser.UserStatus.ToString(cultureInfo);
-            user.UserCreateDate = cognitoUser.UserCreateDate;
-            user.UserLastModifiedDate = cognitoUser.UserLastModifiedDate;
+            user.UserCreateDate = cognitoUser.UserCreateDate.GetValueOrDefault(DateTime.UtcNow);
+            user.UserLastModifiedDate = cognitoUser.UserLastModifiedDate.GetValueOrDefault(DateTime.UtcNow);
 
             ParseUserAttributes(ref user, cognitoUser.Attributes);
 
@@ -490,7 +490,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     public virtual async Task<T> GetUser<T>(string accessToken, CancellationToken cancellationToken = default)
         where T : IGetUserResponse
     {
-        if (accessToken == null) throw new ArgumentNullException(nameof(accessToken));
+        ArgumentNullException.ThrowIfNull(accessToken);
 
         using var activity = CognitoIdentityProviderActivitySource.StartActivity();
 
@@ -599,7 +599,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
                 {
                     IdToken = response.AuthenticationResult.IdToken,
                     AccessToken = response.AuthenticationResult.AccessToken,
-                    ExpiresIn = response.AuthenticationResult.ExpiresIn,
+                    ExpiresIn = response.AuthenticationResult.ExpiresIn.GetValueOrDefault(),
                     TokenType = response.AuthenticationResult.TokenType,
                     RefreshToken = response.AuthenticationResult.RefreshToken,
                     SignInType = "USER_PASSWORD_AUTH"
@@ -713,7 +713,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             if (!responseMessage.IsSuccessStatusCode)
                 throw new BusinessException(ErrorCode.OAuthResponseError);
 
-            var responseContent = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var responseContent = await responseMessage.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 
             response = JsonSerializer.Deserialize<OAuth2SignInResponse>(responseContent);
 
@@ -805,7 +805,8 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             {
                 IdToken = response.AuthenticationResult.IdToken,
                 AccessToken = response.AuthenticationResult.AccessToken,
-                ExpiresIn = response.AuthenticationResult.ExpiresIn,
+                ExpiresIn = response.AuthenticationResult.ExpiresIn.GetValueOrDefault(),
+                RefreshToken = response.AuthenticationResult.RefreshToken,
                 TokenType = response.AuthenticationResult.TokenType
             };
         }
@@ -1070,6 +1071,8 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     /// </remarks>
     private async Task<ListUsersResponse> ListUsersAsync(string email, CancellationToken cancellationToken = default)
     {
+        ArgumentNullException.ThrowIfNull(email);
+        
         var listUsersResponse = await CognitoProvider.ListUsersAsync(new ListUsersRequest
         {
             UserPoolId = userPoolId,
@@ -1086,10 +1089,10 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     /// <returns></returns>
     private static string GetSocialProviderName(string userName)
     {
-        if (!userName.Contains('_'))
+        if (!userName.Contains('_', StringComparison.InvariantCultureIgnoreCase))
             return string.Empty;
 
-        var provider = userName.Split("_")[0].ToUpper();
+        var provider = userName.Split("_")[0].ToUpper(CultureInfo.InvariantCulture);
         return provider switch
         {
             "FACEBOOK" => "USER_FACE",
@@ -1153,7 +1156,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
                 {
                     IdToken = response.AuthenticationResult.IdToken,
                     AccessToken = response.AuthenticationResult.AccessToken,
-                    ExpiresIn = response.AuthenticationResult.ExpiresIn,
+                    ExpiresIn = response.AuthenticationResult.ExpiresIn.GetValueOrDefault(),
                     TokenType = response.AuthenticationResult.TokenType,
                     RefreshToken = response.AuthenticationResult.RefreshToken,
                     SignInType = "USER_PASSWORD_AUTH"
