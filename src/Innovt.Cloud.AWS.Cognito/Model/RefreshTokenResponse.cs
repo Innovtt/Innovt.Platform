@@ -28,4 +28,6 @@ public class RefreshTokenResponse
     ///     Gets or sets the type of token (e.g., "Bearer").
     /// </summary>
     public string TokenType { get; set; }
+
+    public string RefreshToken { get; set; }
 }
