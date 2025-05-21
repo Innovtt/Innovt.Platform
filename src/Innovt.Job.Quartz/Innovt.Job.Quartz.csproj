@@ -3,7 +3,7 @@
     <PropertyGroup>
           <TargetFramework>net8.0</TargetFramework>
         <PackageId>Innovt.Job.Quartz</PackageId>
-        <PackageVersion>8.2.0</PackageVersion>
+        <PackageVersion>8.2.1</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
