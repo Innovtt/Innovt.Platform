@@ -32,7 +32,7 @@ public class CreateAuthChallengeRequest : TriggerRequest
     /// </summary>
     [DataMember(Name = "session")]
     [JsonPropertyName("session")]
-    public List<ChallengeResultItem> Session { get; set; } = new();
+    public List<ChallengeResultItem> Session { get; set; } = [];
 
     /// <summary>
     ///     Gets or sets a value indicating whether the user was not found.

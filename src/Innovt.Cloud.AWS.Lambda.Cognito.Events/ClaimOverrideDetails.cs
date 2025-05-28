@@ -22,7 +22,7 @@ public class ClaimOverrideDetails
     /// </summary>
     [DataMember(Name = "claimsToSuppress")]
     [JsonPropertyName("claimsToSuppress")]
-    public List<string> ClaimsToSuppress { get; set; } = new();
+    public List<string> ClaimsToSuppress { get; set; } = [];
 
     /// <summary>
     ///     Gets or sets group override details associated with the token.
