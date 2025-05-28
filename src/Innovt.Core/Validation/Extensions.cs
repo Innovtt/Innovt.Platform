@@ -48,7 +48,7 @@ public static class Extensions
     /// <returns></returns>
     internal static IList<ValidationResult> Validate(this IValidatableObject obj, ValidationContext context = null)
     {
-        if (obj == null) throw new ArgumentNullException(nameof(obj));
+        ArgumentNullException.ThrowIfNull(obj);
 
         var validationResults = new List<ValidationResult>();
 

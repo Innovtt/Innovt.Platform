@@ -15,6 +15,10 @@
 
     <ItemGroup>
         <PackageReference Include="Amazon.Extensions.Configuration.SystemsManager" Version="7.0.0" />
+        <PackageReference Include="AWSSDK.AppConfigData" Version="4.0.0.4" />
+        <PackageReference Include="AWSSDK.Core" Version="4.0.0.6" />
+        <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="4.0.1" />
+        <PackageReference Include="AWSSDK.SimpleSystemsManagement" Version="4.0.1.4" />
         <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="9.0.5" />
         <PackageReference Include="Amazon.Lambda.Core" Version="2.5.1" />
         <PackageReference Include="Amazon.Lambda.RuntimeSupport" Version="1.13.0" />
