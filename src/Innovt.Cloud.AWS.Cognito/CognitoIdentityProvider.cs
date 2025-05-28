@@ -786,10 +786,12 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             {
                 EncodedData =
                     $"IP:{command.IpAddress};ServerPath:{command.ServerPath};ServerName:{command.ServerName}"
+            },
+            AuthParameters = new Dictionary<string, string>
+            {
+                { "REFRESH_TOKEN", command.RefreshToken }
             }
         };
-
-        authRequest.AuthParameters.Add("REFRESH_TOKEN", command.RefreshToken);
 
         try
         {
@@ -1135,11 +1137,13 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             {
                 EncodedData =
                     $"IP:{request.IpAddress};ServerPath:{request.ServerPath};ServerName:{request.ServerName}"
+            },
+            AuthParameters = new Dictionary<string, string>()
+            {
+                { "USERNAME", request.UserName.Trim().ToLower(cultureInfo) }
             }
         };
-
-        authRequest.AuthParameters.Add("USERNAME", request.UserName.Trim().ToLower(cultureInfo));
-
+        
         if (authParameters != null)
             foreach (var (key, value) in authParameters)
                 authRequest.AuthParameters.Add(key, value);
