@@ -91,7 +91,10 @@ public class IntegratedTests
             var request = new SignUpRequest
             {
                 UserName = "michel.borges@cloud2gether.com",
-                Password = "testpassword"
+                Password = "testpassword",
+                Family_Name = "michel",
+                Name = "Michel",
+                Phone_Number = "+5511999999999",
             };
     
             try
