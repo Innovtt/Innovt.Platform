@@ -20,6 +20,7 @@ using Innovt.Cloud.AWS.Cognito.Exceptions;
 using Innovt.Cloud.AWS.Cognito.Model;
 using Innovt.Cloud.AWS.Cognito.Resources;
 using Innovt.Cloud.AWS.Configuration;
+using Innovt.Core.Collections;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Http;
@@ -233,11 +234,13 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
         if (command.CustomAttributes != null)
             foreach (var attribute in command.CustomAttributes)
-                signUpRequest.UserAttributes.Add(new AttributeType
+            {
+                signUpRequest.UserAttributes.AddFluent(new AttributeType
                 {
                     Name = $"custom:{attribute.Key}",
                     Value = attribute.Value
                 });
+            }
 
         var excludedProperties = new[]
             { "password", "username", "ipaddress", "serverpath", "servername", "httpheader", "customattributes" };
@@ -251,7 +254,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             var value = prop.GetValue(command);
 
             if (value != null)
-                signUpRequest.UserAttributes.Add(new AttributeType
+                signUpRequest.UserAttributes.AddFluent(new AttributeType
                 {
                     Name = prop.Name.ToLower(cultureInfo),
                     Value = value.ToString()
@@ -963,11 +966,13 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         };
 
         foreach (var (key, value) in command.Attributes)
-            updateUserAttributeRequest.UserAttributes.Add(new AttributeType
+        {
+            updateUserAttributeRequest.UserAttributes.AddFluent(new AttributeType
             {
                 Name = key,
                 Value = value
             });
+        }
 
         try
         {
@@ -1049,8 +1054,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
                     }
                     else
                     {
-                        user.CustomAttributes ??= new Dictionary<string, string>();
-                        user.CustomAttributes.Add(
+                        user.CustomAttributes.AddFluent(
                             userAttribute.Name.Replace("custom:", "", StringComparison.OrdinalIgnoreCase),
                             userAttribute.Value);
                     }
@@ -1146,7 +1150,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         
         if (authParameters != null)
             foreach (var (key, value) in authParameters)
-                authRequest.AuthParameters.Add(key, value);
+                authRequest.AuthParameters.AddFluent(key, value);
 
         try
         {
