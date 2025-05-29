@@ -20,7 +20,6 @@ using Innovt.Cloud.AWS.Cognito.Exceptions;
 using Innovt.Cloud.AWS.Cognito.Model;
 using Innovt.Cloud.AWS.Cognito.Resources;
 using Innovt.Cloud.AWS.Configuration;
-using Innovt.Core.Collections;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Http;
@@ -229,18 +228,21 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             {
                 EncodedData =
                     $"IP:{command.IpAddress};ServerPath:{command.ServerPath};ServerName:{command.ServerName}"
-            }
+            },
+            UserAttributes = []
         };
 
         if (command.CustomAttributes != null)
+        {
             foreach (var attribute in command.CustomAttributes)
             {
-                signUpRequest.UserAttributes.AddFluent(new AttributeType
+                signUpRequest.UserAttributes.Add(new AttributeType
                 {
                     Name = $"custom:{attribute.Key}",
                     Value = attribute.Value
                 });
             }
+        }
 
         var excludedProperties = new[]
             { "password", "username", "ipaddress", "serverpath", "servername", "httpheader", "customattributes" };
@@ -253,12 +255,13 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         {
             var value = prop.GetValue(command);
 
-            if (value != null)
-                signUpRequest.UserAttributes.AddFluent(new AttributeType
-                {
-                    Name = prop.Name.ToLower(cultureInfo),
-                    Value = value.ToString()
-                });
+            if (value == null) continue;
+            
+            signUpRequest.UserAttributes.Add(new AttributeType
+            {
+                Name = prop.Name.ToLower(cultureInfo),
+                Value = value.ToString()
+            });
         }
 
         try
@@ -636,8 +639,6 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     public async Task ConfirmForgotPassword(ConfirmForgotPasswordRequest command,
         CancellationToken cancellationToken = default)
     {
-        Check.NotNull(command, nameof(command));
-
         command.EnsureIsValid();
 
         using var activity = CognitoIdentityProviderActivitySource.StartActivity();
@@ -689,8 +690,6 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     public virtual async Task<OAuth2SignInResponse> SocialSignIn(SocialSignInRequest command,
         CancellationToken cancellationToken)
     {
-        Check.NotNull(command, nameof(command));
-
         command.EnsureIsValid();
 
         using var activity = CognitoIdentityProviderActivitySource.StartActivity(nameof(ConfirmForgotPassword));
@@ -740,8 +739,6 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
             response.NeedRegister = !hasCognitoUser;
             response.SignInType = GetSocialProviderName(socialUser.Username);
-
-
             response.FirstName = GetUserAttributeValue(socialUser.UserAttributes, "name");
             response.LastName = GetUserAttributeValue(socialUser.UserAttributes, "family_name");
             response.Picture = GetUserAttributeValue(socialUser.UserAttributes, "picture");
@@ -962,12 +959,13 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         using var activity = CognitoIdentityProviderActivitySource.StartActivity();
         var updateUserAttributeRequest = new Amazon.CognitoIdentityProvider.Model.UpdateUserAttributesRequest
         {
-            AccessToken = command.AccessToken
+            AccessToken = command.AccessToken,
+            UserAttributes = []
         };
-
+        
         foreach (var (key, value) in command.Attributes)
         {
-            updateUserAttributeRequest.UserAttributes.AddFluent(new AttributeType
+            updateUserAttributeRequest.UserAttributes.Add(new AttributeType
             {
                 Name = key,
                 Value = value
@@ -1033,6 +1031,8 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         if (user is null) return;
         if (userAttributes is null) return;
 
+        user.CustomAttributes ??= [];
+            
         foreach (var userAttribute in userAttributes.Where(userAttribute => userAttribute.Name != null))
             switch (userAttribute.Name)
             {
@@ -1054,7 +1054,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
                     }
                     else
                     {
-                        user.CustomAttributes.AddFluent(
+                        user.CustomAttributes.Add(
                             userAttribute.Name.Replace("custom:", "", StringComparison.OrdinalIgnoreCase),
                             userAttribute.Value);
                     }
@@ -1150,7 +1150,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         
         if (authParameters != null)
             foreach (var (key, value) in authParameters)
-                authRequest.AuthParameters.AddFluent(key, value);
+                authRequest.AuthParameters.Add(key, value);
 
         try
         {
