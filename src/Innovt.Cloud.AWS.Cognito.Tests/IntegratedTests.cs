@@ -83,4 +83,28 @@ public class IntegratedTests
         // Act
        
     }
+    
+      [Test]
+        public async Task Register()
+        {
+            // Arrange
+            var request = new SignUpRequest
+            {
+                UserName = "michel.borges@cloud2gether.com",
+                Password = "testpassword"
+            };
+    
+            try
+            {
+                var response = await identityProvider.SignUp(request, CancellationToken.None);
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            // Act
+           
+        }
 }
