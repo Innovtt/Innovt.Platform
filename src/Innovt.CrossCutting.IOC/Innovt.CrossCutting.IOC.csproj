@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <PackageId>Innovt.CrossCutting.IOC</PackageId>
-        <PackageVersion>8.2.5</PackageVersion>
+        <PackageVersion>8.3.0</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -14,7 +14,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Lamar" Version="14.0.1" />
+        <PackageReference Include="Lamar" Version="15.0.0" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.5" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.5" />
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0">

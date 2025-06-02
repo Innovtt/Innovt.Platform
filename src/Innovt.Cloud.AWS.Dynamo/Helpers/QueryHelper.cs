@@ -605,10 +605,10 @@ internal static class QueryHelper
     /// <returns>A dictionary of attribute values representing the pagination token.</returns>
     private static Dictionary<string, AttributeValue> PaginationTokenToDictionary(string paginationToken)
     {
+        if (paginationToken.IsNullOrEmpty())
+            return null;
+        
         var result = new Dictionary<string, AttributeValue>();
-
-        if (paginationToken is null)
-            return result;
 
         var decryptedToken = Convert.FromBase64String(paginationToken.UrlDecode()).Unzip();
 
