@@ -603,9 +603,9 @@ internal static class QueryHelper
     /// </summary>
     /// <param name="paginationToken">Pagination token string to convert.</param>
     /// <returns>A dictionary of attribute values representing the pagination token.</returns>
-    private static Dictionary<string, AttributeValue> PaginationTokenToDictionary(string paginationToken)
+    private static Dictionary<string, AttributeValue>? PaginationTokenToDictionary(string? paginationToken)
     {
-        if (paginationToken.IsNullOrEmpty())
+        if (paginationToken is null || paginationToken.Length == 0)
             return null;
         
         var result = new Dictionary<string, AttributeValue>();
