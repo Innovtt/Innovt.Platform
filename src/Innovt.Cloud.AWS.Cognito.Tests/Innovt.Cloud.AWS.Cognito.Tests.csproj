@@ -8,7 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="AWSSDK.AppConfigData" Version="4.0.0.4" />
         <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="4.0.1" />
+        <PackageReference Include="AWSSDK.SimpleSystemsManagement" Version="4.0.1.4" />
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.5" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.0" />
         <PackageReference Include="Amazon.Extensions.Configuration.SystemsManager" Version="7.0.0"/>
