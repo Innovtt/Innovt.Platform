@@ -698,7 +698,7 @@ public class RepositoryTests
     {
         var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
 
-        var dataModelRepository = new DataModelRepository(loggerMock, awsConfiguration);
+        using var dataModelRepository = new DataModelRepository(loggerMock, awsConfiguration);
 
         var queryRequest = new QueryRequest
         {
@@ -708,11 +708,11 @@ public class RepositoryTests
                 pk = $"REQUEST#{Guid.NewGuid()}",
                 sk = "REQUEST_IDEMPOTENCY"
             }
-        };
+        };//One or more parameter values were invalid: Condition parameter type does not match schema type
         
         try
         {
-            var request = await dataModelRepository.QueryFirstAsync<SampleDataModel>(queryRequest, CancellationToken.None);
+            var request = await dataModelRepository.QueryAsync<SampleDataModel>(queryRequest, CancellationToken.None);
 
             Assert.That(request, Is.Not.Null);
         }
