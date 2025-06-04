@@ -99,7 +99,7 @@ public interface ITableRepository : IDisposable
     /// <param name="rangeKey">The range key for the item (optional).</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>An item of type T if found; otherwise, null.</returns>
-    Task<T> GetByIdAsync<T>(object id, string rangeKey = null, CancellationToken cancellationToken = default)
+    Task<T?> GetByIdAsync<T>(object id, string? rangeKey = null, CancellationToken cancellationToken = default)
         where T : class;
 
     /// <summary>
@@ -109,7 +109,7 @@ public interface ITableRepository : IDisposable
     /// <param name="id">The identifier of the item.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>An item of type T if found; otherwise, null.</returns>
-    Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default) where T : class;
+    Task<T?> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default) where T : class;
 
     /// <summary>
     ///     Asynchronously queries and retrieves a list of items of type T by their identifier.
@@ -137,7 +137,7 @@ public interface ITableRepository : IDisposable
     /// <param name="request">The query request specifying the query parameters.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The first item of type T based on the query request; otherwise, null.</returns>
-    Task<T> QueryFirstOrDefaultAsync<T>(QueryRequest request, CancellationToken cancellationToken = default)
+    Task<T?> QueryFirstOrDefaultAsync<T>(QueryRequest request, CancellationToken cancellationToken = default)
         where T : class;
 
     /// <summary>

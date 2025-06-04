@@ -296,8 +296,8 @@ internal static class QueryHelper
     ///     is used to perform the conversion for each dictionary.
     ///     If the input list is null, an empty list of type T is returned.
     /// </remarks>
-    internal static IList<T> ConvertAttributesToType<T>(IList<Dictionary<string, AttributeValue>> items,
-        DynamoContext context = null) where T : class
+    internal static IList<T> ConvertAttributesToType<T>(IList<Dictionary<string, AttributeValue>>? items,
+        DynamoContext? context = null) where T : class
     {
         return items is null
             ? []
