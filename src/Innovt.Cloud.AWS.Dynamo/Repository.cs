@@ -196,7 +196,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <returns>A tuple containing the last evaluated key and the list of items retrieved.</returns>
     /// <exception cref="ArgumentNullException">Thrown when request is null.</exception>
     private async
-        Task<(Dictionary<string, AttributeValue> LastEvaluatedKey, IList<Dictionary<string, AttributeValue>> Items)>
+        Task<(Dictionary<string, AttributeValue>? LastEvaluatedKey, IList<Dictionary<string, AttributeValue>>? Items)>
         InternalQueryAsync<T>(QueryRequest request, CancellationToken cancellationToken = default) where T : class
     {
         ArgumentNullException.ThrowIfNull(request);
@@ -215,7 +215,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         var iterator = DynamoClient.Paginators.Query(queryRequest).Responses
             .GetAsyncEnumerator(cancellationToken);
 
-        Dictionary<string, AttributeValue> lastEvaluatedKey = null;
+        Dictionary<string, AttributeValue> lastEvaluatedKey = null!;
 
         try
         {
@@ -255,7 +255,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>A tuple containing the last evaluated key and the list of items retrieved.</returns>
     /// <exception cref="ArgumentNullException">Thrown when request is null.</exception>
-    private async Task<(Dictionary<string, AttributeValue> ExclusiveStartKey, IList<Dictionary<string, AttributeValue>> Items)> InternalScanAsync<T>(
+    private async Task<(Dictionary<string, AttributeValue>? ExclusiveStartKey, IList<Dictionary<string, AttributeValue>>? Items)> InternalScanAsync<T>(
         ScanRequest request, CancellationToken cancellationToken = default) where T : class
     {
         ArgumentNullException.ThrowIfNull(request);
@@ -267,7 +267,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         activity?.SetTag("Page", request.Page);
         activity?.SetTag("PageSize", request.PageSize);
 
-        Dictionary<string, AttributeValue> lastEvaluatedKey = null;
+        Dictionary<string, AttributeValue> lastEvaluatedKey = null!;
         
         var items = new List<Dictionary<string, AttributeValue>>();
         var remaining = request.PageSize;
@@ -699,7 +699,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     #region [Queries]
 
     /// <inheritdoc />
-    public async Task<T> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default)
+    public async Task<T?> QueryFirstAsync<T>(object id, CancellationToken cancellationToken = default)
         where T : class
     {
         using (ActivityRepository.StartActivity())
@@ -720,7 +720,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     /// <inheritdoc />
-    public async Task<T> GetByIdAsync<T>(object id, string rangeKey = null,
+    public async Task<T?> GetByIdAsync<T>(object id, string? rangeKey = null,
         CancellationToken cancellationToken = default) where T : class
     {
         ArgumentNullException.ThrowIfNull(id);
@@ -915,14 +915,14 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="request">The query request.</param>
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>The first or default item based on the query request.</returns>
-    public async Task<T> QueryFirstOrDefaultAsync<T>(QueryRequest request,
+    public async Task<T?> QueryFirstOrDefaultAsync<T>(QueryRequest request,
         CancellationToken cancellationToken = default) where T : class
     {
         ArgumentNullException.ThrowIfNull(request);
         
         using var activity = ActivityRepository.StartActivity();
         request.PageSize = 1;
-        request.Page = null;
+        request.Page = null!;
 
         var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
         
@@ -997,7 +997,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             var (exclusiveStartKey, items) =
                 await InternalScanAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
-            if (items?.Count == 0)
+            if (items.IsNotNullOrEmpty())
                 return new PagedCollection<T>();
 
             var response = new PagedCollection<T>
