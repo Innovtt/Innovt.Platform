@@ -176,6 +176,31 @@ public class RepositoryTests
             throw;
         }
     }
+    
+     [Test]
+    public async Task GetById()
+    {
+        var context = new SampleDynamoContext();
+
+        var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
+
+        repository = new SampleRepository(context, loggerMock, awsConfiguration);
+        
+        try
+        {
+            var templateId = "SendWelcomeEmail";
+            
+            var notificationDataModel =
+                await  repository.GetByIdAsync<NotificationTemplateDataModel>(templateId);
+            
+            Assert.That(notificationDataModel, Is.Not.Null);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
 
     [Test]
     public async Task ContextAddAndDeleteBatch()
