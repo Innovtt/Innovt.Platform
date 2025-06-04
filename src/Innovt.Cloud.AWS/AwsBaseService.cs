@@ -108,7 +108,7 @@ public abstract class AwsBaseService : IDisposable
     protected RegionEndpoint GetServiceRegionEndPoint()
     {
         var region = Region ?? Configuration?.Region;
-
+        
         return region == null ? null : RegionEndpoint.GetBySystemName(region);
     }
 
@@ -121,7 +121,7 @@ public abstract class AwsBaseService : IDisposable
     {
         var credentials = Configuration.GetCredential();
         var serviceRegion = GetServiceRegionEndPoint();
-
+        
         if (credentials == null)
             return serviceRegion == null
                 ? Activator.CreateInstance<T>()

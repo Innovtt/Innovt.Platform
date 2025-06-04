@@ -5,6 +5,7 @@
 using System;
 using Amazon.Runtime;
 using Amazon.Runtime.CredentialManagement;
+using Amazon.Runtime.Credentials;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
 using Microsoft.Extensions.Configuration;
@@ -23,10 +24,12 @@ public class DefaultAwsConfiguration : IAwsConfiguration
     ///     The default profile name
     /// </summary>
     /// <param name="profileName"></param>
+    /// <param name="region"></param>
     /// <exception cref="ArgumentNullException"></exception>
-    public DefaultAwsConfiguration(string profileName)
+    public DefaultAwsConfiguration(string profileName,string? region=null)
     {
         Profile = profileName ?? throw new ArgumentNullException(nameof(profileName));
+        Region = region!;
     }
 
     /// <summary>
@@ -48,7 +51,7 @@ public class DefaultAwsConfiguration : IAwsConfiguration
 
         var section = configuration.GetSection(sectionName);
 
-        if (section == null || !section.Exists())
+        if (section == null! || !section.Exists())
             throw new CriticalException($"Section {sectionName} not Found!");
 
         section.Bind(this);
@@ -116,27 +119,18 @@ public class DefaultAwsConfiguration : IAwsConfiguration
     /// <returns>The AWS credentials.</returns>
     public AWSCredentials GetCredential()
     {
-        AWSCredentials credentials = null;
-
         if (Profile.IsNotNullOrEmpty())
         {
-            credentials = GetCredentialsFromProfile();
-        }
-        else
-        {
-            if (AccessKey.IsNotNullOrEmpty() || SecretKey.IsNotNullOrEmpty())
-            {
-                if (SessionToken.IsNullOrEmpty())
-                    credentials = new BasicAWSCredentials(AccessKey, SecretKey);
-                else
-                    credentials = new SessionAWSCredentials(AccessKey, SecretKey, SessionToken);
-            }
+            return GetCredentialsFromProfile();
         }
 
-        if (credentials is null)
-            credentials = FallbackCredentialsFactory.GetCredentials();
+        if (AccessKey.IsNullOrEmpty() && SecretKey.IsNullOrEmpty())
+            return DefaultAWSCredentialsIdentityResolver.GetCredentials();
 
-        return credentials;
+        if (SessionToken.IsNotNullOrEmpty())
+            return new SessionAWSCredentials(AccessKey, SecretKey, SessionToken);
+
+        return new BasicAWSCredentials(AccessKey, SecretKey);
     }
 
     /// <summary>
@@ -145,18 +139,20 @@ public class DefaultAwsConfiguration : IAwsConfiguration
     /// <returns>AWS credentials obtained from the named profile.</returns>
     /// <exception cref="ConfigurationException">Thrown when the specified profile is not found.</exception>
     private AWSCredentials GetCredentialsFromProfile()
-    {
-        var sharedProfile = new SharedCredentialsFile();
+    {   
+        var profileSource = new CredentialProfileStoreChain();
 
-        var profile = sharedProfile.ListProfiles()
-            .Find(p => p.Name.Equals(Profile, StringComparison.OrdinalIgnoreCase));
-
-        if (profile == null)
-            throw new ConfigurationException($"Profile {Profile} not found.");
-
-        if (Region == null && profile.Region != null)
-            Region = profile.Region.SystemName;
-
-        return AWSCredentialsFactory.GetAWSCredentials(profile, sharedProfile);
+        if (!profileSource.TryGetProfile(Profile, out var profile))
+        {
+            throw new ConfigurationException($"Profile '{Profile}' not found.");
+        }
+        
+        // If Region is not yet set, and the profile has a region, assign it
+        if (string.IsNullOrEmpty(Region))
+        {
+            Region = profile.Region is null ? profile.Options.SsoRegion :  profile.Region.SystemName;
+        }
+        
+        return AWSCredentialsFactory.GetAWSCredentials(profile, profileSource);
     }
 }
