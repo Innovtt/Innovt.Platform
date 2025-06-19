@@ -85,20 +85,24 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
 
         foreach (var data in dataStreams)
         {
+            // Ensure that the data stream is not null and has a valid partition key.
+            if(data is null)
+            {
+                continue;
+            }
+            
             if (data.TraceId.IsNullOrEmpty() && activity != null) data.TraceId = activity.TraceId.ToString();
 
             data.PublishedAt = DateTimeOffset.UtcNow;
 
             var dataAsBytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize<object>(data));
 
-            using (var ms = new MemoryStream(dataAsBytes))
+            request.Add(new PutRecordsRequestEntry
             {
-                request.Add(new PutRecordsRequestEntry
-                {
-                    Data = ms,
-                    PartitionKey = data.Partition
-                });
-            }
+                Data = new MemoryStream(dataAsBytes),
+                PartitionKey = data.Partition
+            });
+            
         }
 
         return request;
@@ -113,15 +117,15 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
     {
         Logger.Info("Kinesis Publisher Started");
 
-        if (dataList.IsNullOrEmpty())
+        var dataStreams = dataList as T[] ?? dataList.ToArray();
+        
+        if (dataStreams.IsNullOrEmpty())
         {
             Logger.Info("The event list is empty or null.");
             return;
         }
-
-        var dataStreams = dataList.ToList();
-
-        if (dataStreams.Count > 500) throw new InvalidEventLimitException();
+        
+        if (dataStreams.Length > 500) throw new InvalidEventLimitException();
 
         using var activity = ActivityDataProducer.StartActivity();
         activity?.SetTag("BusName", BusName);

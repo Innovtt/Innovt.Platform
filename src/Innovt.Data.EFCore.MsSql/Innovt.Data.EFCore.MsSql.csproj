@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <PackageId>Innovt.Data.EFCore.MsSql</PackageId>
-        <PackageVersion>8.3.1</PackageVersion>
+        <PackageVersion>8.3.2</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -16,7 +16,7 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.2" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.5" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.6" />
     </ItemGroup>
 
     <ItemGroup>
