@@ -105,7 +105,7 @@ public abstract class AwsBaseService : IDisposable
     ///     Gets the AWS service region endpoint based on the configured region.
     /// </summary>
     /// <returns>The AWS service region endpoint.</returns>
-    protected RegionEndpoint GetServiceRegionEndPoint()
+    protected RegionEndpoint? GetServiceRegionEndPoint()
     {
         var region = Region ?? Configuration?.Region;
         
@@ -122,15 +122,15 @@ public abstract class AwsBaseService : IDisposable
         var credentials = Configuration.GetCredential();
         var serviceRegion = GetServiceRegionEndPoint();
         
-        if (credentials == null)
+        if (credentials == null!)
             return serviceRegion == null
                 ? Activator.CreateInstance<T>()
-                : (T)Activator.CreateInstance(typeof(T), serviceRegion);
+                : (T)Activator.CreateInstance(typeof(T), serviceRegion)!;
 
 
         return serviceRegion == null
-            ? (T)Activator.CreateInstance(typeof(T), credentials)
-            : (T)Activator.CreateInstance(typeof(T), credentials, serviceRegion);
+            ? (T)Activator.CreateInstance(typeof(T), credentials)!
+            : (T)Activator.CreateInstance(typeof(T), credentials, serviceRegion)!;
     }
 
     /// <summary>
