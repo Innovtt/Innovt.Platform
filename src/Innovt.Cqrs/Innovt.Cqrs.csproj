@@ -3,7 +3,7 @@
     <PropertyGroup>
           <TargetFramework>net8.0</TargetFramework>
         <PackageId>Innovt.Cqrs</PackageId>
-        <PackageVersion>8.3.1</PackageVersion>
+        <PackageVersion>8.3.2</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -16,8 +16,8 @@
         <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj"/>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="9.0.5" />
-        <PackageReference Include="Polly" Version="8.5.2" />
+        <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="9.0.6" />
+        <PackageReference Include="Polly" Version="8.6.1" />
         <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.2" />
     </ItemGroup>
     <ItemGroup>
