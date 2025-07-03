@@ -837,6 +837,23 @@ public static class StringExtensions
         return Guid.TryParse(str, out var result) ? result : Guid.Empty;
     }
 
+
+    /// <summary>
+    /// Converts a string to a Uri.
+    /// </summary>
+    /// <param name="str">The Valid Url to be converted.</param>
+    /// <returns>Returns a uri or null</returns>
+    public static Uri ToUri(this string str)
+    {
+        if (str.IsNullOrEmpty())
+            return null;
+        
+        var strUri = str.Trim();
+        
+        return !Uri.TryCreate(strUri, UriKind.RelativeOrAbsolute, out var uri) ? null : uri;
+    }
+    
+    
     /// <summary>
     /// Create a safe and SEO friendly slug from a string.
     /// </summary>
