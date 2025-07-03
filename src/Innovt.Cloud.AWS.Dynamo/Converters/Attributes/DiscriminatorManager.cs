@@ -51,7 +51,7 @@ public static class DiscriminatorManager
     }
     
     
-    private static Type GetDiscriminatorType(EntityTypeBuilder typeBuilder, string discriminatorValue)
+    private static Type? GetDiscriminatorType(EntityTypeBuilder typeBuilder, string discriminatorValue)
     {
         if (typeBuilder?.Discriminator is null)
             return null;

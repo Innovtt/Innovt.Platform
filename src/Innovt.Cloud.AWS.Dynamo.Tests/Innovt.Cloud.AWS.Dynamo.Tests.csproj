@@ -6,6 +6,7 @@
         <GenerateDocumentationFile>false</GenerateDocumentationFile>
         <LangVersion>latest</LangVersion>
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
@@ -31,7 +32,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="AWSSDK.SSO" Version="4.0.0.10" />
-        <PackageReference Include="AWSSDK.SSOOIDC" Version="4.0.0.10" />
+        <PackageReference Include="AWSSDK.SSO" Version="4.0.0.12" />
+        <PackageReference Include="AWSSDK.SSOOIDC" Version="4.0.0.12" />
     </ItemGroup>
 </Project>

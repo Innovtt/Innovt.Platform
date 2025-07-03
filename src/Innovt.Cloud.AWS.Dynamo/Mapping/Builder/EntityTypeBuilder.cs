@@ -60,7 +60,7 @@ public abstract class EntityTypeBuilder
     /// </summary>
     protected List<PropertyBuilder> PropertyBuilders { get; private set; } = [];
     
-    public DiscriminatorBuilder Discriminator { get; protected set; }
+    public DiscriminatorBuilder? Discriminator { get; protected set; }
     
     /// <summary>
     ///     Sets the table name associated with the entity type.

@@ -8,7 +8,7 @@ namespace Innovt.Cloud.AWS.Dynamo.Converters.Attributes;
 
 internal static class InstanceCreator
 {
-    public static T CreateInstance<T>(Dictionary<string, AttributeValue> items, DynamoContext context = null)
+    public static T CreateInstance<T>(Dictionary<string, AttributeValue> items, DynamoContext? context = null)
         where T : class
     {
         ArgumentNullException.ThrowIfNull(items);
