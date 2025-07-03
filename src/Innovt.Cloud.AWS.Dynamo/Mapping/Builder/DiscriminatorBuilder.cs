@@ -43,7 +43,7 @@ public class DiscriminatorBuilder(string name, EntityTypeBuilder builder)
     /// <returns></returns>
     public DiscriminatorBuilder HasValue<T>(T value)
     {   
-        InstanceValues.TryAdd(typeof(T).Name,value);
+        InstanceValues.TryAdd(typeof(T).Name,value!);
         
         return this;
     }
@@ -170,7 +170,7 @@ public class DiscriminatorBuilder(string name, EntityTypeBuilder builder)
     /// </summary>
     /// <param name="value"></param>
     /// <returns></returns>
-    public object GetValue(string value)
+    public object? GetValue(string value)
     {
         if (InstanceValues.TryGetValue(value, out var defaultObj))
         {
@@ -185,7 +185,7 @@ public class DiscriminatorBuilder(string name, EntityTypeBuilder builder)
     /// </summary>
     /// <param name="value"></param>
     /// <returns></returns>
-    public object GetValue(int value)
+    public object? GetValue(int value)
     {
         return GetValue(value.ToString(CultureInfo.InvariantCulture));
     }

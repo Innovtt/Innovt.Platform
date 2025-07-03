@@ -49,6 +49,7 @@ internal static class AttributeValueConverterManager
                 { S = ((DateTimeOffset)value).ToString("o", CultureInfo.InvariantCulture) } // ISO 8601 format
         },
         { typeof(Guid), value => new AttributeValue { S = value.ToString() } },
+        { typeof(Uri), value => new AttributeValue { S = value.ToString() } },
         { typeof(TimeSpan), value => new AttributeValue { S = value.ToString() } }
     };
 
@@ -65,7 +66,7 @@ internal static class AttributeValueConverterManager
     /// <param name="value">An object.</param>
     /// <param name="visitedObjects">This is a hash set to control circular reference.</param>
     /// <returns>A dynamo db attribute value.</returns>
-    internal static AttributeValue CreateAttributeValue(object value, HashSet<object> visitedObjects = null)
+    internal static AttributeValue CreateAttributeValue(object? value, HashSet<object>? visitedObjects = null)
     {
         if (value is null)
             return NullAttributeValue();
@@ -99,7 +100,7 @@ internal static class AttributeValueConverterManager
     /// <param name="value"></param>
     /// <param name="visitedObjects"></param>
     /// <returns></returns>
-    private static AttributeValue TryConvertComplexEnumerable(object value, HashSet<object> visitedObjects)
+    private static AttributeValue? TryConvertComplexEnumerable(object value, HashSet<object> visitedObjects)
     {
         return value switch
         {
@@ -124,7 +125,7 @@ internal static class AttributeValueConverterManager
         };
     }
 
-    private static AttributeValue TryConvertComplexType(object value, HashSet<object> visitedObjects, Type valueType)
+    private static AttributeValue? TryConvertComplexType(object value, HashSet<object> visitedObjects, Type valueType)
     {
         if (!valueType.IsClass || valueType == typeof(string)) return null;
 

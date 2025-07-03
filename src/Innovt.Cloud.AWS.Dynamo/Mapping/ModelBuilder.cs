@@ -49,9 +49,9 @@ public sealed class ModelBuilder
     /// </summary>
     /// <param name="type">A type that the system will search for a converter</param>
     /// <returns>Returns a converter or null.</returns>
-    public IPropertyConverter GetPropertyConverter(Type type)
+    public IPropertyConverter? GetPropertyConverter(Type type)
     {
-        return Converters?.GetValueOrDefault(type);
+        return Converters.GetValueOrDefault(type);
     }
 
     /// <summary>
@@ -60,7 +60,7 @@ public sealed class ModelBuilder
     /// <param name="instance"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    private static Type GetEntityType<T>(object instance = null)
+    private static Type GetEntityType<T>(object? instance = null)
     {
         return instance is null ? typeof(T) : instance.GetType();
     }
@@ -71,7 +71,7 @@ public sealed class ModelBuilder
     /// <param name="instance"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    private static string GetEntityName<T>(object instance = null)
+    private static string GetEntityName<T>(object? instance = null)
     {
         var instanceType = GetEntityType<T>(instance);
 
@@ -91,7 +91,7 @@ public sealed class ModelBuilder
     /// <param name="instance"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public bool HasTypeBuilder<T>(object instance = null)
+    public bool HasTypeBuilder<T>(object? instance = null)
     {
         var entityName = GetEntityName<T>(instance);
 
@@ -111,7 +111,7 @@ public sealed class ModelBuilder
     /// <param name="entityTypeBuilder"></param>
     /// <typeparam name="TEntity"></typeparam>
     /// <returns></returns>
-    private EntityTypeBuilder<TEntity> AddTypeBuilder<TEntity>(EntityTypeBuilder<TEntity> entityTypeBuilder = null)
+    private EntityTypeBuilder<TEntity> AddTypeBuilder<TEntity>(EntityTypeBuilder<TEntity>? entityTypeBuilder = null)
         where TEntity : class
     {
         var entityName = typeof(TEntity).Name;
