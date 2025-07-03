@@ -14,7 +14,7 @@ public class BaseUserOne : Entity<Guid>
 public class BaseUser : BaseUserOne
 {
     public string Picture2 { get; set; } // 13
-    public string Picture { get; set; } //14
+    public Uri? Picture { get; set; } //14
 }
 
 public class User : BaseUser
@@ -24,7 +24,6 @@ public class User : BaseUser
     public User()
     {
         //Properties from BaseUser
-        Picture = "test"; //9
         Picture2 = "test"; //10 
         CreatedAt = DateTime.Now; //11
         UpdatedAt = DateTime.Now; //12

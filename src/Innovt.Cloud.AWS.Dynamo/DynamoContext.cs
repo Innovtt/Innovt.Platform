@@ -46,18 +46,18 @@ public abstract class DynamoContext
         }
     }
     
-    public EntityTypeBuilder GetEntityBuilder<T>()
+    public EntityTypeBuilder? GetEntityBuilder<T>()
     {
-        return ModelBuilder?.GetEntityBuilder<T>();
+        return ModelBuilder.GetEntityBuilder<T>();
     }
     public EntityTypeBuilder GetEntityBuilder(string name)
     {
-        return ModelBuilder?.GetEntityBuilder(name);
+        return ModelBuilder.GetEntityBuilder(name);
     }
     
-    public IPropertyConverter GetPropertyConverter(Type type)
+    public IPropertyConverter? GetPropertyConverter(Type type)
     {
-        return ModelBuilder?.GetPropertyConverter(type);
+        return ModelBuilder.GetPropertyConverter(type);
     }
 
     /// <summary>
@@ -88,7 +88,7 @@ public abstract class DynamoContext
     /// <param name="instance"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public bool HasTypeBuilder<T>(object instance = null)
+    public bool HasTypeBuilder<T>(object? instance = null)
     {
         return ModelBuilder.HasTypeBuilder<T>(instance);
     }

@@ -39,7 +39,7 @@ public static class AttributeValueToObjectConverterManager
     };
 
     // Create a unique key to determine which characteristic of AttributeValue is set
-    private static string GetKeyForAttributeValue(AttributeValue value)
+    private static string? GetKeyForAttributeValue(AttributeValue value)
     {
         if (value.IsBOOLSet) return "BOOL";
         if (value.IsLSet) return "L";
@@ -57,14 +57,16 @@ public static class AttributeValueToObjectConverterManager
     /// </summary>
     /// <param name="value">The dynamo db attribute value.</param>
     /// <param name="desiredType">Thy desired type to match with the property.</param>
+    /// <param name="context"></param>
     /// <returns>An object.</returns>
-    public static object CreateAttributeValueToObject(AttributeValue value, Type desiredType,
-        DynamoContext context = null)
+    public static object CreateAttributeValueToObject(AttributeValue? value, Type desiredType,
+        DynamoContext? context = null)
     {
         if (value == null)
-            return default;
+            return null!;
 
         var key = GetKeyForAttributeValue(value);
+        
         if (key != null && Converters.TryGetValue(key, out var converter))
             return converter(value, desiredType, context);
 

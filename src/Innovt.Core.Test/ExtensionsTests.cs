@@ -161,5 +161,52 @@ public class ExtensionsTests
         Assert.That(result, Has.Length.LessThanOrEqualTo(75)); 
     }
     
+    
+    [Test]
+    public void ToUri_ReturnsNull_If_Str_IsNull()
+    {
+        string? uri = null;
+
+        var result = uri.ToUri();
+        Assert.That(result, Is.Null);
+    }
+    
+    [Test]
+    public void ToUri_ReturnsNull_If_Str_IsEmpty()
+    {
+       var uri = string.Empty;
+
+        var result = uri.ToUri();
+        Assert.That(result, Is.Null);
+    }
+    
+    [Test]
+    public void ToUri_ReturnsN_If_Uri_Is_NotValid()
+    {
+        var uri = "invalid-url";
+
+        var result = uri.ToUri();
+        
+        Assert.That(result, Is.Not.Null);
+        Assert.That(result.IsAbsoluteUri, Is.False);
+        Assert.That(result.ToString(),Is.EqualTo("invalid-url"));
+    }
+    
+    [Test]
+    public void ToUri()
+    {
+        var uri = "http://example.com/path?query=123";
+
+        var result = uri.ToUri();
+        
+        Assert.That(result, Is.Not.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result.IsAbsoluteUri, Is.True);
+            Assert.That(result.ToString(), Is.EqualTo(uri));
+        }
+
+    }
+    
    
 }
