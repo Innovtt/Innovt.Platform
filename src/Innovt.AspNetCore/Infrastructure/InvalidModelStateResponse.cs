@@ -18,7 +18,7 @@ public static class InvalidModelStateResponse
     /// <returns>BadRequestObjectResult object</returns>
     public static BadRequestObjectResult CreateCustomErrorResponse(ActionContext actionContext)
     {
-        if (actionContext == null) throw new ArgumentNullException(nameof(actionContext));
+        ArgumentNullException.ThrowIfNull(actionContext);
 
         var result = new ResponseError
         {
