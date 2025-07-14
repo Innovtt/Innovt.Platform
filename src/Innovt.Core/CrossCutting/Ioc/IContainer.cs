@@ -21,29 +21,29 @@ public interface IContainer : IDisposable
     ///     Adds an <see cref="IocModule" /> to the container.
     /// </summary>
     /// <param name="iocModule">The <see cref="IocModule" /> to be added to the container.</param>
-    void AddModule(IocModule iocModule);
-
+    /// <returns>Container</returns>
+    IContainer AddModule(IocModule iocModule);
+    
+    /// <summary>
+    ///  Adds an <see cref="IocModule" /> to the container.
+    /// </summary>
+    /// <param name="iocModules">The <see cref="IocModule" /> to be added to the container.</param>
+    /// <returns>Container</returns>
+    IContainer AddModule(IocModule[] iocModules);
+    
     /// <summary>
     ///     Resolves a service of the specified <paramref name="type" />.
     /// </summary>
     /// <param name="type">The <see cref="Type" /> of the service to resolve.</param>
     /// <returns>The resolved service object.</returns>
     object Resolve(Type type);
-
     /// <summary>
     ///     Resolves a service of type <typeparamref name="TService" />.
     /// </summary>
     /// <typeparam name="TService">The type of service to resolve.</typeparam>
     /// <returns>The resolved service object.</returns>
     TService Resolve<TService>();
-
-    /// <summary>
-    ///     Try to resolve a service. If the service is not registered, return null.
-    /// </summary>
-    /// <typeparam name="TService"></typeparam>
-    /// <returns></returns>
-    TService TryToResolve<TService>();
-
+    
     /// <summary>
     ///     Resolves a service of type <typeparamref name="TService" /> with the specified <paramref name="type" />.
     /// </summary>
@@ -51,6 +51,13 @@ public interface IContainer : IDisposable
     /// <param name="type">The <see cref="Type" /> of the service implementation to resolve.</param>
     /// <returns>The resolved service object.</returns>
     TService Resolve<TService>(Type type);
+
+    /// <summary>
+    ///     Try to resolve a service. If the service is not registered, return null.
+    /// </summary>
+    /// <typeparam name="TService"></typeparam>
+    /// <returns></returns>
+    TService TryToResolve<TService>();
 
     /// <summary>
     ///     This method will not throw an exception if the service is not registered. Return null instead.
@@ -74,13 +81,13 @@ public interface IContainer : IDisposable
     /// <param name="obj">The object to release.</param>
     void Release(object obj);
 
-
     /// <summary>
     ///     Creates and returns a new service scope.
     /// </summary>
     /// <returns>An <see cref="IServiceScope" /> representing the new service scope.</returns>
     IServiceScope CreateScope();
-
+    
+    
     /// <summary>
     ///     Checks the configuration of the container.
     /// </summary>

@@ -14,13 +14,13 @@ namespace Innovt.CrossCutting.IOC;
 public sealed class Container : IContainer
 {
     private readonly Lamar.Container container;
-
     /// <summary>
     ///     Initializes a new instance of the <see cref="Container" /> class using the provided services.
     /// </summary>
     /// <param name="services">The collection of services for the container.</param>
     public Container(IServiceCollection services)
     {
+        ArgumentNullException.ThrowIfNull(services);
         container = new Lamar.Container(services);
     }
 
@@ -56,13 +56,33 @@ public sealed class Container : IContainer
     /// </summary>
     /// <param name="iocModule">The IoC module providing services to be added.</param>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="iocModule" /> is null.</exception>
-    public void AddModule(IocModule iocModule)
+    public IContainer AddModule(IocModule iocModule)
     {
         ArgumentNullException.ThrowIfNull(iocModule);
+        
+        container.Configure(iocModule.GetServices());
+        
+        return this;
+    }
 
-        var services = iocModule.GetServices();
-
-        container.Configure(services);
+    /// <summary>
+    /// Registers multiple IoC modules with the container.
+    /// </summary>
+    /// <param name="iocModules"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentNullException"></exception>
+    public IContainer AddModule(IocModule[] iocModules)
+    {
+        ArgumentNullException.ThrowIfNull(iocModules);
+        
+        foreach (var module in iocModules)
+        {
+            if (module == null)
+                throw new ArgumentNullException(nameof(iocModules), "One of the IocModule is null");
+            
+            container.Configure(module.GetServices());
+        }
+        return this;
     }
 
     /// <summary>
@@ -94,16 +114,6 @@ public sealed class Container : IContainer
     }
 
     /// <summary>
-    ///     Try to resolve a service. If the service is not registered, return null.
-    /// </summary>
-    /// <typeparam name="TService"></typeparam>
-    /// <returns></returns>
-    public TService TryToResolve<TService>()
-    {
-        return container.TryGetInstance<TService>();
-    }
-
-    /// <summary>
     ///     Resolves an instance of the specified type.
     /// </summary>
     /// <typeparam name="TService">The type to be resolved.</typeparam>
@@ -113,7 +123,17 @@ public sealed class Container : IContainer
     {
         return (TService)container.GetInstance(type);
     }
-
+    
+    /// <summary>
+    ///     Try to resolve a service. If the service is not registered, return null.
+    /// </summary>
+    /// <typeparam name="TService"></typeparam>
+    /// <returns></returns>
+    public TService TryToResolve<TService>()
+    {
+        return container.TryGetInstance<TService>();
+    }
+    
     /// <summary>
     ///     This method will not throw an exception if the service is not registered. Return null instead.
     /// </summary>
