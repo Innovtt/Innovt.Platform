@@ -1,6 +1,7 @@
 using System.Net;
 using Innovt.AspNetCore.Application.Tests.ViewModels;
 using Innovt.AspNetCore.Controllers;
+using Innovt.AspNetCore.Filters;
 using Innovt.Core.Attributes;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -26,7 +27,21 @@ public class SampleController : BaseApiController
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType((int)HttpStatusCode.Created)]
     [ModelExcludeFilter("parameterTobeRemoved")]
+    [ServiceToServiceAuthorize("Teste")]
     public IActionResult Add([FromRoute] Guid id,  Guid parameterTobeRemoved,[FromBody] AddUserViewModel command, CancellationToken cancellationToken = default)
+    {
+        return Ok();
+    }
+    
+    
+    //Sample for ModelExcludeFilter
+    [HttpPost("{id:guid}")]
+    [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
+    [ProducesResponseType((int)HttpStatusCode.NotFound)]
+    [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+    [ProducesResponseType((int)HttpStatusCode.Created)]
+    [ServiceToServiceAuthorize("Teste")]
+    public IActionResult Add2([FromRoute] Guid id,  Guid parameterTobeRemoved,[FromBody] AddUserViewModel command, CancellationToken cancellationToken = default)
     {
         return Ok();
     }
