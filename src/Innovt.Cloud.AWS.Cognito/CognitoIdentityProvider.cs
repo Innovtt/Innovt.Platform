@@ -16,6 +16,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Amazon.CognitoIdentityProvider;
 using Amazon.CognitoIdentityProvider.Model;
+using Innovt.Cloud.AWS.Cognito.Dtos;
 using Innovt.Cloud.AWS.Cognito.Exceptions;
 using Innovt.Cloud.AWS.Cognito.Model;
 using Innovt.Cloud.AWS.Cognito.Resources;
@@ -701,8 +702,6 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             new("redirect_uri", command.RedirectUri)
         };
 
-        OAuth2SignInResponse response;
-
         try
         {
             var uri = domainEndPoint.AppendResourceUri("oauth2/token");
@@ -717,15 +716,14 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
             var responseContent = await responseMessage.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 
-            response = JsonSerializer.Deserialize<OAuth2SignInResponse>(responseContent);
+           var oauthResponse = JsonSerializer.Deserialize<OAuthSignInResponseDto>(responseContent);
 
-            if (response == null)
-                throw new BusinessException(ErrorCode.OAuthResponseError);
+            if (oauthResponse == null) throw new BusinessException(ErrorCode.OAuthResponseError);
 
             var socialUser = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                 await CognitoProvider.GetUserAsync(
                     new Amazon.CognitoIdentityProvider.Model.GetUserRequest
-                        { AccessToken = response.AccessToken },
+                        { AccessToken = oauthResponse.AccessToken },
                     cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
 
             if (socialUser == null)
@@ -737,21 +735,31 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
             var hasCognitoUser = listUsersResponse.Users.Exists(u => u.UserStatus != "EXTERNAL_PROVIDER");
 
-            response.NeedRegister = !hasCognitoUser;
-            response.SignInType = GetSocialProviderName(socialUser.Username);
-            response.FirstName = GetUserAttributeValue(socialUser.UserAttributes, "name");
-            response.LastName = GetUserAttributeValue(socialUser.UserAttributes, "family_name");
-            response.Picture = GetUserAttributeValue(socialUser.UserAttributes, "picture");
-            response.Email = socialUserEmail;
-
-            if (response.NeedRegister) response.AccessToken = response.IdToken = response.RefreshToken = null;
+            var response = new OAuth2SignInResponse
+            {
+                NeedRegister = !hasCognitoUser,
+                AccessToken = oauthResponse.AccessToken,
+                IdToken = oauthResponse.IdToken,
+                RefreshToken = oauthResponse.RefreshToken,
+                ExpiresIn = oauthResponse.ExpiresIn,
+                TokenType = oauthResponse.TokenType,
+                SignInType = GetSocialProviderName(socialUser.Username),
+                FirstName = GetUserAttributeValue(socialUser.UserAttributes, "name"),
+                LastName = GetUserAttributeValue(socialUser.UserAttributes, "family_name"),
+                Picture = GetUserAttributeValue(socialUser.UserAttributes, "picture"),
+                Email = socialUserEmail
+            };
+            
+            //Clear the token to avoid the authentication flow if the user needs to register.
+            if (response.NeedRegister) 
+                response.AccessToken = response.IdToken = response.RefreshToken = null;
+            
+            return response;
         }
         catch (Exception ex)
         {
             throw CatchException(ex);
         }
-
-        return response;
     }
 
     /// <summary>
