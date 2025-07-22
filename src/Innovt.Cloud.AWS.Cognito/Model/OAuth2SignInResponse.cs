@@ -1,7 +1,6 @@
 ﻿// Innovt Company
 // Author: Michel Borges
 // Project: Innovt.Cloud.AWS.Cognito
-
 namespace Innovt.Cloud.AWS.Cognito.Model;
 
 /// <summary>
