@@ -11,7 +11,7 @@
         <PackageReference Include="Amazon.Lambda.Core" Version="2.7.0" />
         <PackageReference Include="Amazon.Lambda.KinesisEvents" Version="3.0.0" />
         <PackageReference Include="Amazon.Lambda.TestUtilities" Version="3.0.0" />
-        <PackageReference Include="AWSSDK.Kinesis" Version="4.0.2.13" />
+        <PackageReference Include="AWSSDK.Kinesis" Version="4.0.2.14" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.7" />
         <PackageReference Include="OpenTelemetry" Version="1.12.0" />
         <PackageReference Include="OpenTelemetry.Api" Version="1.12.0" />

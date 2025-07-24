@@ -54,7 +54,7 @@ public class AdminUser : Entity<Guid>
     /// <returns>True if the password is valid; otherwise, false.</returns>
     public bool IsPasswordValid(string password)
     {
-        return PasswordHash == password.Md5Hash();
+        return PasswordHash == password.ShaHash();
     }
 
     /// <summary>

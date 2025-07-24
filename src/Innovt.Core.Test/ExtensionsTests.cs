@@ -205,7 +205,27 @@ public class ExtensionsTests
             Assert.That(result.IsAbsoluteUri, Is.True);
             Assert.That(result.ToString(), Is.EqualTo(uri));
         }
-
+    }
+    
+    
+    [TestCase(null)]
+    [TestCase("")]
+    public void ToDeterministicGuidThrowsExceptionWhenEmailIsNUll(string email)
+    {
+        if (email == null) 
+            Assert.Throws<ArgumentNullException>(() => email.ToDeterministicGuid());
+        else
+            Assert.Throws<ArgumentException>(() => email.ToDeterministicGuid());
+    }
+   
+    [TestCase("michelmob@gmail.com","f9369c7e-3298-d066-7200-9ce835dad432")]
+    [TestCase("MICHELMOB@GMAIL.COM","f9369c7e-3298-d066-7200-9ce835dad432")]
+    public void ToDeterministicGuid(string email, string expectedGuid)
+    {
+        var result = email.ToDeterministicGuid();
+        
+        Assert.That(result, Is.Not.Empty);
+        Assert.That(result.ToString(), Is.EqualTo(expectedGuid));
     }
     
    

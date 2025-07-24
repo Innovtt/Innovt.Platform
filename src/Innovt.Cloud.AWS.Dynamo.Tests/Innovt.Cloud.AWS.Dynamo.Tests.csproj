@@ -32,7 +32,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="AWSSDK.SSO" Version="4.0.0.14" />
-        <PackageReference Include="AWSSDK.SSOOIDC" Version="4.0.0.14" />
+        <PackageReference Include="AWSSDK.SSO" Version="4.0.0.15" />
+        <PackageReference Include="AWSSDK.SSOOIDC" Version="4.0.0.15" />
     </ItemGroup>
 </Project>
