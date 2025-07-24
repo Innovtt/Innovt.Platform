@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -826,6 +827,25 @@ public static class StringExtensions
     {
         return Guid.Parse(str);
     }
+    
+    /// <summary>
+    /// Generates a deterministic Guid from a string using SHA256 hashing.
+    /// </summary>
+    /// <param name="str"></param>
+    /// <param name="salt"></param>
+    /// <returns></returns>
+    public static Guid ToDeterministicGuid(this string str, string salt = "")
+    {
+       ArgumentException.ThrowIfNullOrWhiteSpace(str);
+        
+        var hash = SHA256.HashData(Encoding.UTF8.GetBytes((str + salt).ToUpperInvariant()));
+        
+        const int arrayLenght = 16;
+        var guidBytes = new byte[arrayLenght];
+        Array.Copy(hash, guidBytes, arrayLenght);
+
+        return new Guid(guidBytes);
+    }
 
     /// <summary>
     ///     Converts a string to a Guid or returns Guid.Empty if the conversion fails.
@@ -860,12 +880,13 @@ public static class StringExtensions
     /// <param name="str"></param>
     /// <param name="maxLength"></param>
     /// <returns></returns>
+    [SuppressMessage("Globalization", "CA1308:Normalize strings to uppercase")]
     public static string CreateSlug(this string str, int maxLength = 100)
     {
         if (str.IsNullOrEmpty())
             return string.Empty;
 
-        var normalizedString = str.ToLowerInvariant()
+        var normalizedString = str.ToUpperInvariant()
             .Normalize(NormalizationForm.FormD);
 
         var estimatedLength = Math.Min(normalizedString.Length, maxLength);
@@ -908,7 +929,7 @@ public static class StringExtensions
         if (bufferPosition > 0 && buffer[bufferPosition - 1] == '-')
             bufferPosition--;
         
-        return bufferPosition == 0 ? string.Empty : new string(buffer[..bufferPosition]);
+        return bufferPosition == 0 ? string.Empty : new string(buffer[..bufferPosition]).ToLowerInvariant();
     }
 
 }
