@@ -22,7 +22,7 @@ public interface IAuthorizationAppService
     /// <param name="command">The add user command.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    Task AddUser(AddUserCommand command, CancellationToken cancellationToken);
+    Task AddUser(AddUserCommand command, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Gets the roles associated with a user based on the provided filter.
@@ -30,7 +30,7 @@ public interface IAuthorizationAppService
     /// <param name="filter">The filter for retrieving roles by user.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A list of role DTOs.</returns>
-    Task<IList<RoleDto>> GetUserRoles(RoleByUserFilter filter, CancellationToken cancellationToken);
+    Task<IList<RoleDto>> GetUserRoles(RoleByUserFilter filter, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Removes a user using the provided remove user command.
@@ -38,7 +38,7 @@ public interface IAuthorizationAppService
     /// <param name="command">The remove user command.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    Task RemoveUser(RemoveUserCommand command, CancellationToken cancellationToken);
+    Task RemoveUser(RemoveUserCommand command, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Assigns roles to a user using the provided assign role command.
@@ -46,7 +46,7 @@ public interface IAuthorizationAppService
     /// <param name="command">The assign role command.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    Task AssignRole(AssignRoleCommand command, CancellationToken cancellationToken);
+    Task AssignRole(AssignRoleCommand command, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Unassigns roles from a user using the provided unassign role command.
@@ -54,7 +54,7 @@ public interface IAuthorizationAppService
     /// <param name="command">The unassign role command.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    Task UnAssignRole(UnAssignUserRoleCommand command, CancellationToken cancellationToken);
+    Task UnAssignRole(UnAssignUserRoleCommand command, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Registers an administrator using the provided registration command.
@@ -62,5 +62,5 @@ public interface IAuthorizationAppService
     /// <param name="command">The registration command for the administrator.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    Task RegisterAdmin(RegisterAdminCommand command, CancellationToken cancellationToken);
+    Task RegisterAdmin(RegisterAdminCommand command, CancellationToken cancellationToken = default);
 }

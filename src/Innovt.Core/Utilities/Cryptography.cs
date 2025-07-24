@@ -162,22 +162,4 @@ public static class Cryptography
 
         return Decrypt(cryptoTransform, encryptedText);
     }
-
-    /// <summary>
-    ///     Computes the MD5 hash of a given plaintext password.
-    /// </summary>
-    /// <param name="plainPassword">The plaintext password to be hashed.</param>
-    /// <returns>The MD5 hash of the plaintext password.</returns>
-    public static string Md5Hash(this string plainPassword)
-    {
-        ArgumentNullException.ThrowIfNull(plainPassword);
-
-        var passBytes = Encoding.UTF8.GetBytes(plainPassword);
-
-        var hashBytes = MD5.HashData(passBytes);
-
-        var hashedPassword = BitConverter.ToString(hashBytes).Replace("-", "", StringComparison.InvariantCulture);
-        
-        return hashedPassword;
-    }
 }

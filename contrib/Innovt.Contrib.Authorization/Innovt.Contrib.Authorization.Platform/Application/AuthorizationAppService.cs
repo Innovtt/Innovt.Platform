@@ -51,7 +51,7 @@ public class AuthorizationAppService : IAuthorizationAppService
         var adminUser = await authorizationRepository.GetAdminUser(new UserFilter(command.Email), cancellationToken)
             .ConfigureAwait(false);
 
-        if (adminUser != null && command.Password.Md5Hash() != adminUser.PasswordHash)
+        if (adminUser != null && command.Password.ShaHash() != adminUser.PasswordHash)
             throw new BusinessException(Messages.InvalidUserOrPassword);
 
 
@@ -60,7 +60,7 @@ public class AuthorizationAppService : IAuthorizationAppService
             Email = command.Email,
             IsEnabled = true,
             Name = command.Name,
-            PasswordHash = command.Password.Md5Hash()
+            PasswordHash = command.Password.ShaHash()
         };
 
         adminUser.RegisterAccess();
