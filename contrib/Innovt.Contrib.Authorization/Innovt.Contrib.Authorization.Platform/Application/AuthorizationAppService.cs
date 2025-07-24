@@ -75,7 +75,7 @@ public class AuthorizationAppService : IAuthorizationAppService
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
     /// <exception cref="BusinessException">Thrown when the user already exists.</exception>
-    public async Task AddUser(AddUserCommand command, CancellationToken cancellationToken)
+    public async Task AddUser(AddUserCommand command, CancellationToken cancellationToken = default)
     {
         command.EnsureIsValid();
 
@@ -103,7 +103,7 @@ public class AuthorizationAppService : IAuthorizationAppService
     /// <param name="filter">The filter for retrieving roles by user.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A list of role DTOs.</returns>
-    public async Task<IList<RoleDto>> GetUserRoles(RoleByUserFilter filter, CancellationToken cancellationToken)
+    public async Task<IList<RoleDto>> GetUserRoles(RoleByUserFilter filter, CancellationToken cancellationToken = default)
     {
         filter.EnsureIsValid();
 
@@ -119,7 +119,7 @@ public class AuthorizationAppService : IAuthorizationAppService
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
     /// <exception cref="BusinessException">Thrown when the user does not exist.</exception>
-    public async Task RemoveUser(RemoveUserCommand command, CancellationToken cancellationToken)
+    public async Task RemoveUser(RemoveUserCommand command, CancellationToken cancellationToken = default)
     {
         command.EnsureIsValid();
 
@@ -139,7 +139,7 @@ public class AuthorizationAppService : IAuthorizationAppService
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
     /// <exception cref="BusinessException">Thrown when the user does not exist.</exception>
-    public async Task AssignRole(AssignRoleCommand command, CancellationToken cancellationToken)
+    public async Task AssignRole(AssignRoleCommand command, CancellationToken cancellationToken = default)
     {
         command.EnsureIsValid();
 
@@ -161,7 +161,7 @@ public class AuthorizationAppService : IAuthorizationAppService
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
     /// <exception cref="BusinessException">Thrown when the user does not exist.</exception>
-    public async Task UnAssignRole(UnAssignUserRoleCommand command, CancellationToken cancellationToken)
+    public async Task UnAssignRole(UnAssignUserRoleCommand command, CancellationToken cancellationToken = default)
     {
         command.EnsureIsValid();
 
