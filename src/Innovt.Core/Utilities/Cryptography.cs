@@ -17,18 +17,28 @@ public static class Cryptography
     /// <summary>
     ///     Computes the SHA-256 hash of a given plaintext password with an optional salt.
     /// </summary>
-    /// <param name="plainPassword">The plaintext password to be hashed.</param>
+    /// <param name="text">The plaintext password to be hashed.</param>
     /// <param name="salt">An optional salt value to add to the plaintext before hashing.</param>
     /// <returns>The SHA-256 hash of the plaintext password.</returns>
-    public static string ShaHash(this string plainPassword, string salt = "")
+    public static string ShaHash(this string text, string salt = "")
     {
-        using var sha256 = SHA256.Create();
+        Check.NotNull(text, nameof(text));
 
+        return ComputeSha(text,salt).Replace("-", "", StringComparison.OrdinalIgnoreCase);
+    }
+    
+    public static string Sha(this string text, string salt = "")
+    {
+        return ComputeSha(text,salt);
+    }
+    
+    private static string ComputeSha(this string plainPassword, string salt = "")
+    {
         var passBytes = Encoding.UTF8.GetBytes(plainPassword + salt);
 
-        var hashBytes = sha256.ComputeHash(passBytes);
+        var hashBytes = SHA256.HashData(passBytes);
 
-        var hashedPassword = BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+        var hashedPassword = BitConverter.ToString(hashBytes);
 
         return hashedPassword;
     }
@@ -160,13 +170,14 @@ public static class Cryptography
     /// <returns>The MD5 hash of the plaintext password.</returns>
     public static string Md5Hash(this string plainPassword)
     {
-        using var sha256 = MD5.Create();
+        ArgumentNullException.ThrowIfNull(plainPassword);
+
         var passBytes = Encoding.UTF8.GetBytes(plainPassword);
 
-        var hashBytes = sha256.ComputeHash(passBytes);
+        var hashBytes = MD5.HashData(passBytes);
 
-        var hashedPassword = BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
-
+        var hashedPassword = BitConverter.ToString(hashBytes).Replace("-", "", StringComparison.InvariantCulture);
+        
         return hashedPassword;
     }
 }
