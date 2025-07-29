@@ -858,7 +858,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             // We cannot link a social user if the user is not confirmed.
             if (socialUser != null)
             {
-                await DeleteUser(new DeleteUserAccountRequest(command.UserName), cancellationToken);
+                await DeleteUser(new DeleteUserAccountRequest(command.UserName), cancellationToken).ConfigureAwait(false);
                 return false;
             }
             

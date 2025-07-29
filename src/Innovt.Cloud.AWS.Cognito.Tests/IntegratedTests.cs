@@ -83,60 +83,30 @@ public class IntegratedTests
         // Act
        
     }
-    
-      [Test]
-        public async Task Register()
+
+    [Test]
+    public async Task Register()
+    {
+        // Arrange
+        var request = new SignUpRequest
         {
-            // Arrange
-            var request = new SignUpRequest
-            {
-                UserName = "michelmob@gmail.com",
-                Password = "34567890",
-                Family_Name = "michel",
-                Name = "Michel",
-                Phone_Number = "+5511999999999",
-            };
-    
-            try
-            {
-                var response = await identityProvider.SignUp(request, CancellationToken.None);
-                
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-            // Act
-           
-        }
-        
-        [Test]
-        public async Task LinkSocialUsers()
+            UserName = "michelmob@gmail.com",
+            Password = "34567890",
+            Family_Name = "michel",
+            Name = "Michel",
+            Phone_Number = "+5511999999999",
+        };
+
+        try
         {
-            // Arrange
-            var request = new LinkSocialAccountRequest()
-            {
-                Email = "michelmob@gmail.com",
-                UserName = "Google_110966145042332068325"
-            };
-            
-            try
-            {
-                // e se aqui no link eu verificar se o usuário já existe e deletar o usuário antigo ? 
-                //Pego o user que está mergedando e deleto o user que esta sendo linkado.
-                
-                var response = await identityProvider.LinkSocialUser(request, CancellationToken.None);
-                
-                //e deletar o anterirr.
-                
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-            // Act
-           
+            var response = await identityProvider.SignUp(request, CancellationToken.None);
+
         }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
 }
