@@ -273,7 +273,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             
             if (!response.UserConfirmed.GetValueOrDefault())
                 response.UserConfirmed = await ConfirmUserIfHasSocialUser(signUpRequest.Username, cancellationToken);
-
+            
             return new SignUpResponse { Confirmed = response.UserConfirmed.GetValueOrDefault(), UUID = response.UserSub };
         }
         catch (Exception ex)
@@ -848,8 +848,20 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         if (localUser is null)
             return false;
 
+        
+        //Check if the user has a social user, what mean UserStatus=EXTERNAL Provider
+        var socialUser = users.Users.SingleOrDefault(u => u.UserStatus == "EXTERNAL_PROVIDER" 
+                                                          && u.Username == command.UserName);
+        
         try
         {
+            // We cannot link a social user if the user is not confirmed.
+            if (socialUser != null)
+            {
+                await DeleteUser(new DeleteUserAccountRequest(command.UserName), cancellationToken).ConfigureAwait(false);
+                return false;
+            }
+            
             //Check if the user is a federated user PS: Google_1234567890
             var userNameAndProvider = command.UserName.Split('_');
 
@@ -874,7 +886,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
                     ProviderAttributeValue = providerValue
                 }
             };
-
+            
             var result = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                 await CognitoProvider.AdminLinkProviderForUserAsync(request, cancellationToken
                 )).ConfigureAwait(false);
@@ -991,7 +1003,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             throw CatchException(ex);
         }
     }
-
+    
 
     /// <summary>
     ///     This implementation is to avoid users with social login to confirm the user.

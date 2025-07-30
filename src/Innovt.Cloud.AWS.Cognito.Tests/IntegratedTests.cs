@@ -26,7 +26,7 @@ public class IntegratedTests
         
         var awsOptions = new AWSOptions
         {
-            Profile = "hey-dev", Region = RegionEndpoint.SAEast1, DefaultClientConfig =
+            Profile = "c2g-dev", Region = RegionEndpoint.USEast1, DefaultClientConfig =
             {
                 AllowAutoRedirect = true
             }
@@ -34,7 +34,7 @@ public class IntegratedTests
         
         configuration.AddSystemsManager("/Authentication/", awsOptions,false);
         
-        awsConfigurationMock = new DefaultAwsConfiguration("hey-dev");
+        awsConfigurationMock = new DefaultAwsConfiguration("c2g-dev");
         
         var configurationRoot = configuration.Build();
         
@@ -83,31 +83,30 @@ public class IntegratedTests
         // Act
        
     }
-    
-      [Test]
-        public async Task Register()
+
+    [Test]
+    public async Task Register()
+    {
+        // Arrange
+        var request = new SignUpRequest
         {
-            // Arrange
-            var request = new SignUpRequest
-            {
-                UserName = "michel.borges@cloud2gether.com",
-                Password = "testpassword",
-                Family_Name = "michel",
-                Name = "Michel",
-                Phone_Number = "+5511999999999",
-            };
-    
-            try
-            {
-                var response = await identityProvider.SignUp(request, CancellationToken.None);
-                
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-            // Act
-           
+            UserName = "michelmob@gmail.com",
+            Password = "34567890",
+            Family_Name = "michel",
+            Name = "Michel",
+            Phone_Number = "+5511999999999",
+        };
+
+        try
+        {
+            var response = await identityProvider.SignUp(request, CancellationToken.None);
+
         }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
 }
