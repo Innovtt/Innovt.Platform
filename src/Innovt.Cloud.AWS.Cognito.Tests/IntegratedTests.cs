@@ -53,11 +53,8 @@ public class IntegratedTests
     }
     
     private ILogger loggerMock;
-    
     private IAwsConfiguration awsConfigurationMock;
     private BaseIdentityProvider identityProvider;
-    
-    //var response = await identityProvider.SignIn(request, cancellationToken);
     
     [Test]
     public async Task TestSignIn()
@@ -84,6 +81,30 @@ public class IntegratedTests
        
     }
 
+    
+    [Test]
+    public async Task LinkUsers()
+    {
+        // Arrange
+        var request = new LinkSocialAccountRequest()
+        {
+            UserName = "14f80418-9041-7057-0ca5-72e856fbc405",
+            Email = "michelmob@gmail.com"
+        };
+
+        try
+        {
+            var response = await identityProvider.LinkSocialUser(request, CancellationToken.None);
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    
+    
     [Test]
     public async Task Register()
     {
@@ -106,6 +127,25 @@ public class IntegratedTests
         {
             Console.WriteLine(e);
             throw;
+        }
+    }
+    
+    [Test]
+    public async Task ClearSocialAccounts()
+    {
+        // Arrange
+        var request = new ClearSocialAccountRequest("michelmob@gmail.com");
+
+        try
+        {
+            var response = await identityProvider.ClearSocialAccounts(request, CancellationToken.None);
+            
+            Assert.That(response, Is.True);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            Assert.Fail(e.Message);
         }
     }
 
