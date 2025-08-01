@@ -53,11 +53,6 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     private static readonly ActivitySource CognitoIdentityProviderActivitySource =
         new("Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider");
 
-    /// <summary>
-    ///     Allow our system to confirm the user when a social login already exists.
-    /// </summary>
-    private readonly bool allowAutoConfirmUserWithSocialLogin;
-
     private readonly string clientId;
     private readonly CultureInfo cultureInfo = CultureInfo.CurrentCulture;
     private readonly Uri domainEndPoint;
@@ -66,15 +61,13 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     private AmazonCognitoIdentityProviderClient cognitoIdentityProvider;
 
     protected CognitoIdentityProvider(ILogger logger, IAwsConfiguration configuration, string clientId,
-        string userPoolId, string domainEndPoint, string region = null,
-        bool allowAutoConfirmUserWithSocialLogin = false) :
+        string userPoolId, string domainEndPoint, string region) :
         base(logger, configuration, region)
     {
         ArgumentNullException.ThrowIfNull(domainEndPoint);
         
         this.clientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
         this.userPoolId = userPoolId ?? throw new ArgumentNullException(nameof(userPoolId));
-        this.allowAutoConfirmUserWithSocialLogin = allowAutoConfirmUserWithSocialLogin;
         this.domainEndPoint = new Uri(domainEndPoint);
     }
 
@@ -270,9 +263,6 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                     await CognitoProvider.SignUpAsync(signUpRequest, cancellationToken).ConfigureAwait(false))
                 .ConfigureAwait(false);
-            
-            if (!response.UserConfirmed.GetValueOrDefault())
-                response.UserConfirmed = await ConfirmUserIfHasSocialUser(signUpRequest.Username, cancellationToken);
             
             return new SignUpResponse { Confirmed = response.UserConfirmed.GetValueOrDefault(), UUID = response.UserSub };
         }
@@ -844,24 +834,17 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         var users = await ListUsersAsync(command.Email, cancellationToken);
         //Check if the user has a local user, what mean UserStatus!=EXTERNAL Provider
         var localUser = users.Users.SingleOrDefault(u => u.UserStatus != "EXTERNAL_PROVIDER");
-
-        if (localUser is null)
-            return false;
-
         
-        //Check if the user has a social user, what mean UserStatus=EXTERNAL Provider
-        var socialUser = users.Users.SingleOrDefault(u => u.UserStatus == "EXTERNAL_PROVIDER" 
-                                                          && u.Username == command.UserName);
+        // If the user is not found, we cannot link the social user.
+        if (localUser is null)
+        {
+            Logger.Info("LinkSocialUser: User with email {@Email} not found in the system. UserName: {@UserName}",
+                command.Email, command.UserName);
+            return false;
+        }
         
         try
         {
-            // We cannot link a social user if the user is not confirmed.
-            if (socialUser != null)
-            {
-                await DeleteUser(new DeleteUserAccountRequest(command.UserName), cancellationToken).ConfigureAwait(false);
-                return false;
-            }
-            
             //Check if the user is a federated user PS: Google_1234567890
             var userNameAndProvider = command.UserName.Split('_');
 
@@ -931,6 +914,57 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         {
             throw CatchException(ex);
         }
+    }
+
+    /// <summary>
+    /// Clear social accounts linked to a user. The limit is 60 accounts and if you have more you should call this method
+    /// multiple times.
+    /// This method will delete all social accounts linked to a user with the specified email address.
+    /// </summary>
+    /// <param name="command"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    public async Task<bool> ClearSocialAccounts(ClearSocialAccountRequest command, CancellationToken cancellationToken = default)
+    {
+        command.EnsureIsValid();
+        
+        using var activity = CognitoIdentityProviderActivitySource.StartActivity();
+    
+        var users = await ListUsersAsync(command.Email, cancellationToken);
+
+        //Check if the user has a local user, what mean UserStatus!=EXTERNAL Provider and confirmed.
+        var localUser = users.Users.SingleOrDefault(u =>
+            u.UserStatus != UserStatusType.EXTERNAL_PROVIDER && u.UserStatus == UserStatusType.CONFIRMED);
+
+        // If the user is not found, we cannot clear the social accounts.
+        if (localUser is null)
+        {
+            Logger.Info("User with email {@Email} not found or not confirmed in the system. The process will not continue.",
+                command.Email);
+            return false;
+        }
+
+        var federatedUserNames = users.Users.Where(u => u.UserStatus == UserStatusType.EXTERNAL_PROVIDER)
+            .Select(u => u.Username).ToList();
+
+        if (federatedUserNames.Count == 0)
+        {
+            Logger.Info("No social accounts found for user {@Email}", command.Email);
+            return false;
+        }
+        
+        Logger.Info("Found {@Count} social accounts for user {@Email}", federatedUserNames.Count, command.Email);
+
+        foreach (var userName in federatedUserNames)
+        {
+            Logger.Info("Removing social account {@Username} for user of email {@Email}.", 
+                localUser.Username,command.Email);
+            await DeleteUser(new DeleteUserAccountRequest(userName), cancellationToken);
+
+            Logger.Info("Social account {@UserName} removed successfully.", userName);
+        }
+        
+        return true;
     }
 
     public async Task UpdateUserAttributes(AdminUpdateUserAttributesRequest command,
@@ -1005,46 +1039,6 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     }
     
 
-    /// <summary>
-    ///     This implementation is to avoid users with social login to confirm the user.
-    /// </summary>
-    /// <param name="username">The username</param>
-    /// <param name="cancellationToken">A cancellation token for async tasks</param>
-    /// <returns>True when everything was confirmed or false in case of failure</returns>
-    private async Task<bool> ConfirmUserIfHasSocialUser(string username, CancellationToken cancellationToken)
-    {
-        //Only confirm user if the AllowAutoConfirmUserWithSocialLogin is true
-        if (!allowAutoConfirmUserWithSocialLogin)
-            return false;
-
-        try
-        {
-            var listUsersResponse = await ListUsersAsync(username, cancellationToken).ConfigureAwait(false);
-
-            var hasSocialUser = listUsersResponse.Users.Exists(u => u.UserStatus == "EXTERNAL_PROVIDER");
-
-            if (!hasSocialUser)
-                return false;
-
-            var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await
-                        CognitoProvider.AdminConfirmSignUpAsync(new AdminConfirmSignUpRequest
-                        {
-                            UserPoolId = userPoolId,
-                            Username = username
-                        }, cancellationToken).ConfigureAwait(false))
-                .ConfigureAwait(false);
-
-            return response.HttpStatusCode == HttpStatusCode.OK;
-        }
-        catch (Exception ex)
-        {
-            Logger.Error(ex, "Error on confirm user with social login.");
-        }
-
-        return false;
-    }
-
     private static void ParseUserAttributes<T>(ref T user, IList<AttributeType> userAttributes)
         where T : IGetUserResponse
     {
@@ -1102,7 +1096,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         var listUsersResponse = await CognitoProvider.ListUsersAsync(new ListUsersRequest
         {
             UserPoolId = userPoolId,
-            Filter = $"email=\"{email}\""
+            Filter = $"email=\"{email}\"",
         }, cancellationToken).ConfigureAwait(false);
 
         return listUsersResponse;
