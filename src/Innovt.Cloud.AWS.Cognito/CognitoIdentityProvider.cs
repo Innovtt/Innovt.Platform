@@ -933,8 +933,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         var users = await ListUsersAsync(command.Email, cancellationToken);
 
         //Check if the user has a local user, what mean UserStatus!=EXTERNAL Provider and confirmed.
-        var localUser = users.Users.SingleOrDefault(u =>
-            u.UserStatus != UserStatusType.EXTERNAL_PROVIDER && u.UserStatus == UserStatusType.CONFIRMED);
+        var localUser = users.Users.SingleOrDefault(u => u.UserStatus != UserStatusType.EXTERNAL_PROVIDER);
 
         // If the user is not found, we cannot clear the social accounts.
         if (localUser is null)
