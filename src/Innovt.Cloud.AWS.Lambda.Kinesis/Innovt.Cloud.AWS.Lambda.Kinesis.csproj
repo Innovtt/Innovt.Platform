@@ -3,7 +3,7 @@
     <PropertyGroup>
           <TargetFramework>net8.0</TargetFramework>
         <PackageId>Innovt.Cloud.AWS.Lambda.Kinesis</PackageId>
-        <PackageVersion>8.3.9</PackageVersion>
+        <PackageVersion>8.3.10</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -15,17 +15,17 @@
 
     <ItemGroup>
         <PackageReference Include="Amazon.Lambda.KinesisEvents" Version="3.0.0" />
-        <PackageReference Include="AWSSDK.Core" Version="4.0.0.19" />
-        <PackageReference Include="AWSSDK.Kinesis" Version="4.0.2.14" />
-        <PackageReference Include="System.Text.Json" Version="9.0.7" />
+        <PackageReference Include="AWSSDK.Core" Version="4.0.0.23" />
+        <PackageReference Include="AWSSDK.Kinesis" Version="4.0.2.18" />
+        <PackageReference Include="System.Text.Json" Version="9.0.8" />
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda\Innovt.Cloud.AWS.Lambda.csproj"/>
-        <ProjectReference Include="..\Innovt.Domain.Core\Innovt.Domain.Core.csproj"/>
+        <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda\Innovt.Cloud.AWS.Lambda.csproj" />
+        <ProjectReference Include="..\Innovt.Domain.Core\Innovt.Domain.Core.csproj" />
     </ItemGroup>
 
 </Project>
