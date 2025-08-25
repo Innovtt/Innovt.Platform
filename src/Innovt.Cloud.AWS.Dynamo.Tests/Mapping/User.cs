@@ -52,5 +52,8 @@ public class User : BaseUser
     }
 
     public int StatusId { get; set; }
+    
+    public List<int> StatusIds { get; set; }
+    public List<Skill> Skills { get; set; }
     public Company Company { get; set; }
 }

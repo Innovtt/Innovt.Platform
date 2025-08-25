@@ -74,6 +74,8 @@ public class RepositoryTests
             JobPositionId = 1,
             Context = "C2G",
             IsActive = true,
+            StatusIds = new List<int>(),
+            Skills = new List<Skill>(),
             Status = UserStatus.Active,
             DaysOfWeek = new List<int>(){1,2,3,4,5},
         };
