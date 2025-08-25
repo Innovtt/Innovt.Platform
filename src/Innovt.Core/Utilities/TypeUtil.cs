@@ -148,8 +148,8 @@ public static class TypeUtil
     public static bool IsNumericList(IList list)
     {
         if (list == null) return false;
-        if (list.Count == 0) return false;
-
+          if (list.Count == 0) return false;
+          
         var type = list[0].GetType();
         return type == typeof(int) || type == typeof(double) || type == typeof(float) ||
                type == typeof(decimal) || type == typeof(long);
