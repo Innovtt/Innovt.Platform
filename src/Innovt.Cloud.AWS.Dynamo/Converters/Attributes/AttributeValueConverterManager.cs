@@ -105,6 +105,10 @@ internal static class AttributeValueConverterManager
         return value switch
         {
             // Handle numeric lists using a custom check
+            IList { Count: 0 } => new AttributeValue 
+            { 
+                L = []
+            },
             IList list when TypeUtil.IsNumericList(list) => new AttributeValue
             {
                 NS = list.Cast<object>().Select(o => Convert.ToString(o, CultureInfo.InvariantCulture)).ToList()
