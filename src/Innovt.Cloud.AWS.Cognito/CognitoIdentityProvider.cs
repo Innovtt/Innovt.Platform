@@ -852,7 +852,14 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
                 return false;
 
             var providerName = userNameAndProvider[0];
-            var providerValue = userNameAndProvider[1];
+            var providerValue = command.UserName.Replace(providerName,"", StringComparison.InvariantCultureIgnoreCase).TrimStart('_');
+            var identities = localUser.Attributes.SingleOrDefault(a => a.Name == "identities");
+                
+            if (identities?.Value?.Contains($"\"{providerName}\"", StringComparison.InvariantCultureIgnoreCase) == true)
+            {
+                Logger.Info("User {Username} already linked to {Provider}", localUser.Username, providerName);
+                return false;
+            }
 
             var request = new AdminLinkProviderForUserRequest
             {
@@ -865,7 +872,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
                 SourceUser = new ProviderUserIdentifierType
                 {
                     ProviderName = providerName,
-                    ProviderAttributeName = "Cognito_Subject",
+                    ProviderAttributeName = "sub",//"Cognito_Subject",
                     ProviderAttributeValue = providerValue
                 }
             };
