@@ -8,10 +8,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="AWSSDK.AppConfigData" Version="4.0.0.20" />
+        <PackageReference Include="AWSSDK.AppConfigData" Version="4.0.1.1" />
         <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="4.0.2.2" />
-        <PackageReference Include="AWSSDK.SimpleSystemsManagement" Version="4.0.2.10" />
-        <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.8" />
+        <PackageReference Include="AWSSDK.SimpleSystemsManagement" Version="4.0.3.1" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.9" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
         <PackageReference Include="Amazon.Extensions.Configuration.SystemsManager" Version="7.0.0" />
         <PackageReference Include="NUnit" Version="4.4.0" />
@@ -32,8 +32,8 @@
     </ItemGroup>
 
     <ItemGroup Condition="'$(Configuration)' == 'Debug'">
-        <PackageReference Include="AWSSDK.SSO" Version="4.0.0.20" />
-        <PackageReference Include="AWSSDK.SSOOIDC" Version="4.0.0.20" />
+        <PackageReference Include="AWSSDK.SSO" Version="4.0.1.1" />
+        <PackageReference Include="AWSSDK.SSOOIDC" Version="4.0.1.1" />
     </ItemGroup>
 
 </Project>
