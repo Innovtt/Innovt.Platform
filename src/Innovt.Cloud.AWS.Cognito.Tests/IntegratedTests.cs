@@ -14,7 +14,7 @@ using NUnit.Framework;
 namespace Innovt.Cloud.AWS.Cognito.Tests;
 
 [TestFixture]
-[Ignore("Only for local tests")]
+//[Ignore("Only for local tests")]
 public class IntegratedTests
 {   
     [SetUp]
@@ -88,8 +88,8 @@ public class IntegratedTests
         // Arrange
         var request = new LinkSocialAccountRequest()
         {
-            UserName = "14f80418-9041-7057-0ca5-72e856fbc405",
-            Email = "michelmob@gmail.com"
+            UserName = "LinkedIn_uA_qHMDw1j",
+            Email = "davi262016@gmail.com"
         };
 
         try
