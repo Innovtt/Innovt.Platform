@@ -872,7 +872,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
                 SourceUser = new ProviderUserIdentifierType
                 {
                     ProviderName = providerName,
-                    ProviderAttributeName = "sub",//"Cognito_Subject",
+                    ProviderAttributeName = "Cognito_Subject",
                     ProviderAttributeValue = providerValue
                 }
             };
