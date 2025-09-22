@@ -3,6 +3,7 @@
 // Project: Innovt.Cloud.AWS
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using Amazon;
 using Amazon.Runtime;
@@ -20,6 +21,7 @@ namespace Innovt.Cloud.AWS;
 ///     and circuit breakers.
 /// </summary>
 [CLSCompliant(false)]
+[SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
 public abstract class AwsBaseService : IDisposable
 {
     protected IAwsConfiguration Configuration { get; }
@@ -117,7 +119,7 @@ public abstract class AwsBaseService : IDisposable
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    protected T CreateService<T>() where T : IAmazonService
+    protected virtual T CreateService<T>() where T : IAmazonService
     {
         var credentials = Configuration.GetCredential();
         var serviceRegion = GetServiceRegionEndPoint();
