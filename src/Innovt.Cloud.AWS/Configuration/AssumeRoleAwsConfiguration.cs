@@ -28,8 +28,8 @@ public class AssumeRoleAwsConfiguration : IAssumeRoleAwsConfiguration
     ///     Thrown when <paramref name="configuration" /> or <paramref name="roleArn" /> is
     ///     null.
     /// </exception>
-    public AssumeRoleAwsConfiguration(IAwsConfiguration configuration, string roleArn, string roleSessionName = null,
-        string roleExternalId = null)
+    public AssumeRoleAwsConfiguration(IAwsConfiguration configuration, string roleArn, string? roleSessionName = null,
+        string? roleExternalId = null)
     {
         this.configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         RoleArn = roleArn ?? throw new ArgumentNullException(nameof(roleArn));
@@ -45,12 +45,12 @@ public class AssumeRoleAwsConfiguration : IAssumeRoleAwsConfiguration
     /// <summary>
     ///     Gets or sets the external ID to use when assuming the role.
     /// </summary>
-    public string ExternalId { get; set; }
+    public string? ExternalId { get; set; }
 
     /// <summary>
     ///     Gets or sets the name to use for the assumed role session.
     /// </summary>
-    public string RoleSessionName { get; set; }
+    public string? RoleSessionName { get; set; }
 
     /// <summary>
     ///     Gets or sets the AWS account number.
