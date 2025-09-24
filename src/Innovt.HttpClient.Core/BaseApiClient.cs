@@ -72,6 +72,7 @@ public abstract class BaseApiClient
     /// <returns>The parsed object of type <typeparamref name="T" />.</returns>
     protected virtual async Task<T> ParseResponse<T>(HttpResponseMessage response)
     {
+        ArgumentNullException.ThrowIfNull(response);
         var contentResponse = await response.Content.ReadAsStringAsync();
 
         if (response.IsSuccessStatusCode) return Serializer.DeserializeObject<T>(contentResponse);
@@ -91,6 +92,8 @@ public abstract class BaseApiClient
     /// <returns>The response stream.</returns>
     protected virtual async Task<Stream> ParseStreamResponse(HttpResponseMessage response)
     {
+        ArgumentNullException.ThrowIfNull(response);
+        
         var contentResponse = await response.Content.ReadAsStreamAsync();
 
         return response.IsSuccessStatusCode ? contentResponse : null;
@@ -100,20 +103,22 @@ public abstract class BaseApiClient
     ///     Sends a POST request and parses the response into a strongly-typed object.
     /// </summary>
     /// <typeparam name="T">The type of the object to parse into.</typeparam>
-    /// <param name="baseUri">The base URI for the request.</param>
-    /// <param name="resourceUri">The resource URI for the request.</param>
+    /// <param name="requestUri">The base URI for the request.</param>
     /// <param name="content">The HTTP content to send.</param>
     /// <param name="headerValues">Additional header values for the request.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>The parsed object of type <typeparamref name="T" />.</returns>
-    private async Task<T> PostAsync<T>(Uri baseUri, string resourceUri, HttpContent content,
+    protected async Task<T> PostAsync<T>(Uri requestUri, HttpContent content,
         Dictionary<string, string> headerValues = null, CancellationToken cancellationToken = default)
     {
+        ArgumentNullException.ThrowIfNull(requestUri);
+        ArgumentNullException.ThrowIfNull(content);
+        
         var client = CreateHttpClient();
 
         InitializeClient(client, headerValues);
 
-        var response = await client.PostAsync($"{baseUri}{resourceUri}", content, cancellationToken);
+        var response = await client.PostAsync(requestUri, content, cancellationToken).ConfigureAwait(false);
 
         return await ParseResponse<T>(response);
     }
@@ -121,20 +126,22 @@ public abstract class BaseApiClient
     /// <summary>
     ///     Asynchronously sends an HTTP POST request to the specified URI with optional headers and content.
     /// </summary>
-    /// <param name="baseUri">The base URI for the request.</param>
-    /// <param name="resourceUri">The resource URI to append to the base URI.</param>
+    /// <param name="requestUri">The base URI for the request.</param>
     /// <param name="content">The HTTP content to send in the request body.</param>
     /// <param name="headerValues">Optional headers to include in the request.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
     /// <returns>The HTTP status code of the response.</returns>
-    private async Task<HttpStatusCode> PostAsync(Uri baseUri, string resourceUri, HttpContent content,
+    protected async Task<HttpStatusCode> PostAsync(Uri requestUri, HttpContent content,
         Dictionary<string, string> headerValues = null, CancellationToken cancellationToken = default)
     {
+        ArgumentNullException.ThrowIfNull(requestUri);
+        ArgumentNullException.ThrowIfNull(content);
+        
         var client = CreateHttpClient();
 
         InitializeClient(client, headerValues);
 
-        var response = await client.PostAsync($"{baseUri}{resourceUri}", content, cancellationToken);
+        var response = await client.PostAsync(requestUri, content, cancellationToken).ConfigureAwait(false);
 
         return response.StatusCode;
     }
@@ -143,49 +150,49 @@ public abstract class BaseApiClient
     ///     Asynchronously sends an HTTP POST request to the specified URI with optional headers and content, and deserializes
     ///     the response to a strongly typed object of type T.
     /// </summary>
-    /// <param name="baseUri">The base URI for the request.</param>
-    /// <param name="resourceUri">The resource URI to append to the base URI.</param>
+    /// <param name="requestUri">The base URI for the request.</param>
     /// <param name="content">The HTTP content to send in the request body.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
     /// <returns>The strongly typed object of type T representing the response data.</returns>
-    protected async Task<T> PostAsync<T>(Uri baseUri, string resourceUri, HttpContent content,
+    protected async Task<T> PostAsync<T>(Uri requestUri, HttpContent content,
         CancellationToken cancellationToken = default)
     {
-        return await PostAsync<T>(baseUri, resourceUri, content, null, cancellationToken);
+        return await PostAsync<T>(requestUri, content, null, cancellationToken);
     }
 
     /// <summary>
     ///     Asynchronously sends an HTTP POST request to the specified URI with content and optional headers.
     /// </summary>
-    /// <param name="baseUri">The base URI for the request.</param>
-    /// <param name="resourceUri">The resource URI to append to the base URI.</param>
+    /// <param name="requestUri">The base URI for the request.</param>
     /// <param name="content">The HTTP content to send in the request body.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
     /// <returns>The HTTP status code of the response.</returns>
-    protected async Task<HttpStatusCode> PostAsync(Uri baseUri, string resourceUri, HttpContent content,
+    protected async Task<HttpStatusCode> PostAsync(Uri requestUri, HttpContent content,
         CancellationToken cancellationToken = default)
     {
-        return await PostAsync(baseUri, resourceUri, content, null, cancellationToken);
+        return await PostAsync(requestUri, content, null, cancellationToken);
     }
 
     /// <summary>
     ///     Asynchronously sends an HTTP PUT request to the specified URI with optional headers and content, and deserializes
     ///     the response to a strongly typed object of type T.
     /// </summary>
-    /// <param name="baseUri">The base URI for the request.</param>
-    /// <param name="resourceUri">The resource URI to append to the base URI.</param>
+    /// <param name="requestUri">The base URI for the request.</param>
     /// <param name="content">The HTTP content to send in the request body.</param>
     /// <param name="headerValues">Optional headers to include in the request.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
     /// <returns>The strongly typed object of type T representing the response data.</returns>
-    protected async Task<T> PutAsync<T>(Uri baseUri, string resourceUri, HttpContent content,
+    protected async Task<T> PutAsync<T>(Uri requestUri, HttpContent content,
         Dictionary<string, string> headerValues = null, CancellationToken cancellationToken = default)
     {
+        ArgumentNullException.ThrowIfNull(requestUri);
+        ArgumentNullException.ThrowIfNull(content);
+        
         var client = CreateHttpClient();
 
         InitializeClient(client, headerValues);
 
-        var response = await client.PutAsync($"{baseUri}{resourceUri}", content, cancellationToken);
+        var response = await client.PutAsync(requestUri, content, cancellationToken).ConfigureAwait(false);
 
         return await ParseResponse<T>(response);
     }
@@ -194,15 +201,14 @@ public abstract class BaseApiClient
     ///     Asynchronously sends an HTTP PUT request to the specified URI with optional headers and content, and deserializes
     ///     the response to a strongly typed object of type T.
     /// </summary>
-    /// <param name="baseUri">The base URI for the request.</param>
-    /// <param name="resourceUri">The resource URI to append to the base URI.</param>
+    /// <param name="requestUri">The base URI for the request.</param>
     /// <param name="content">The HTTP content to send in the request body.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
     /// <returns>The strongly typed object of type T representing the response data.</returns>
-    protected async Task<T> PutAsync<T>(Uri baseUri, string resourceUri, HttpContent content,
+    protected async Task<T> PutAsync<T>(Uri requestUri, HttpContent content,
         CancellationToken cancellationToken = default)
     {
-        return await PutAsync<T>(baseUri, resourceUri, content, null, cancellationToken);
+        return await PutAsync<T>(requestUri, content, null, cancellationToken);
     }
 
     /// <summary>
@@ -225,19 +231,20 @@ public abstract class BaseApiClient
     ///     Asynchronously sends an HTTP GET request to the specified URI with optional headers and deserializes the response
     ///     to a strongly typed object of type T.
     /// </summary>
-    /// <param name="baseUri">The base URI for the request.</param>
-    /// <param name="resourceUri">The resource URI to append to the base URI.</param>
+    /// <param name="requestUri">The base URI for the request.</param>
     /// <param name="headerValues">Optional headers to include in the request.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
     /// <returns>The strongly typed object of type T representing the response data.</returns>
-    private async Task<T> GetAsync<T>(Uri baseUri, string resourceUri, Dictionary<string, string> headerValues = null,
+    protected async Task<T> GetAsync<T>(Uri requestUri, Dictionary<string, string> headerValues = null,
         CancellationToken cancellationToken = default)
     {
+        ArgumentNullException.ThrowIfNull(requestUri);
+        
         var client = CreateHttpClient();
 
         InitializeClient(client, headerValues);
 
-        var response = await client.GetAsync($"{baseUri}{resourceUri}", cancellationToken);
+        var response = await client.GetAsync(requestUri, cancellationToken).ConfigureAwait(false);
 
         return await ParseResponse<T>(response);
     }
@@ -246,32 +253,32 @@ public abstract class BaseApiClient
     ///     Asynchronously sends an HTTP GET request to the specified URI with optional headers and deserializes the response
     ///     to a strongly typed object of type T.
     /// </summary>
-    /// <param name="baseUri">The base URI for the request.</param>
-    /// <param name="resourceUri">The resource URI to append to the base URI.</param>
+    /// <param name="requestUri">The base URI for the request.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
     /// <returns>The strongly typed object of type T representing the response data.</returns>
-    protected async Task<T> GetAsync<T>(Uri baseUri, string resourceUri, CancellationToken cancellationToken = default)
+    protected async Task<T> GetAsync<T>(Uri requestUri, CancellationToken cancellationToken = default)
     {
-        return await GetAsync<T>(baseUri, resourceUri, null, cancellationToken);
+        return await GetAsync<T>(requestUri, null, cancellationToken);
     }
 
     /// <summary>
     ///     Asynchronously sends an HTTP GET request to the specified URI with optional headers and returns the response as a
     ///     stream.
     /// </summary>
-    /// <param name="baseUri">The base URI for the request.</param>
-    /// <param name="resourceUri">The resource URI to append to the base URI.</param>
+    /// <param name="requestUri">The base URI for the request.</param>
     /// <param name="headerValues">Optional headers to include in the request.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
     /// <returns>A stream representing the response data.</returns>
-    private async Task<Stream> GetStreamAsync(Uri baseUri, string resourceUri,
+    protected async Task<Stream> GetStreamAsync(Uri requestUri,
         Dictionary<string, string> headerValues = null, CancellationToken cancellationToken = default)
     {
+        ArgumentNullException.ThrowIfNull(requestUri);
+        
         var client = CreateHttpClient();
 
         InitializeClient(client, headerValues);
 
-        var response = await client.GetAsync($"{baseUri}{resourceUri}", cancellationToken);
+        var response = await client.GetAsync(requestUri, cancellationToken).ConfigureAwait(false);
 
         return await ParseStreamResponse(response);
     }
@@ -280,14 +287,12 @@ public abstract class BaseApiClient
     ///     Asynchronously sends an HTTP GET request to the specified URI with optional headers and returns the response as a
     ///     stream.
     /// </summary>
-    /// <param name="baseUri">The base URI for the request.</param>
-    /// <param name="resourceUri">The resource URI to append to the base URI.</param>
+    /// <param name="requestUri">The base URI for the request.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
     /// <returns>A stream representing the response data.</returns>
-    protected async Task<Stream> GetStreamAsync(Uri baseUri, string resourceUri,
-        CancellationToken cancellationToken = default)
+    protected async Task<Stream> GetStreamAsync(Uri requestUri,CancellationToken cancellationToken = default)
     {
-        return await GetStreamAsync(baseUri, resourceUri, null, cancellationToken);
+        return await GetStreamAsync(requestUri, null, cancellationToken);
     }
 }
 
@@ -326,7 +331,9 @@ public abstract class BaseApiClient<TErrorResponse> : BaseApiClient where TError
     /// <returns>The deserialized success response.</returns>
     protected override async Task<T> ParseResponse<T>(HttpResponseMessage response)
     {
-        var contentResponse = await response.Content.ReadAsStringAsync();
+        ArgumentNullException.ThrowIfNull(response);
+        
+        var contentResponse = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
         if (response.IsSuccessStatusCode) return Serializer.DeserializeObject<T>(contentResponse);
 
@@ -343,6 +350,8 @@ public abstract class BaseApiClient<TErrorResponse> : BaseApiClient where TError
     /// <returns>A stream representing the response data.</returns>
     protected override async Task<Stream> ParseStreamResponse(HttpResponseMessage response)
     {
+        ArgumentNullException.ThrowIfNull(response);
+        
         var contentResponse = await response.Content.ReadAsStreamAsync();
 
         if (response.IsSuccessStatusCode) return contentResponse;
