@@ -69,8 +69,8 @@ public class DefaultAwsConfiguration : IAwsConfiguration
     ///     Thrown when <paramref name="accessKey" />, <paramref name="secretKey" />, or
     ///     <paramref name="region" /> is null.
     /// </exception>
-    public DefaultAwsConfiguration(string accessKey, string secretKey, string region, string accountNumber = null,
-        string sessionToken = null)
+    public DefaultAwsConfiguration(string accessKey, string secretKey, string region, string? accountNumber = null,
+        string? sessionToken = null)
     {
         Check.NotNull(accessKey, nameof(accessKey));
         Check.NotNull(secretKey, nameof(secretKey));
@@ -86,12 +86,12 @@ public class DefaultAwsConfiguration : IAwsConfiguration
     /// <summary>
     ///     Gets or sets the AWS session token for temporary credentials.
     /// </summary>
-    public string SessionToken { get; set; }
+    public string? SessionToken { get; set; }
 
     /// <summary>
     ///     Gets or sets the AWS account number associated with the AWS credentials.
     /// </summary>
-    public string AccountNumber { get; set; }
+    public string? AccountNumber { get; set; }
 
     /// <summary>
     ///     Gets or sets the AWS secret key for authentication.

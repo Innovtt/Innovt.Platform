@@ -20,10 +20,10 @@ public interface IAssumeRoleAwsConfiguration : IAwsConfiguration
     /// <summary>
     ///     Gets or sets an external identifier used when assuming the IAM role (optional).
     /// </summary>
-    public string ExternalId { get; set; }
+    public string? ExternalId { get; set; }
 
     /// <summary>
     ///     Gets or sets the name of the assumed role session (optional).
     /// </summary>
-    public string RoleSessionName { get; set; }
+    public string? RoleSessionName { get; set; }
 }
