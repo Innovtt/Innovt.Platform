@@ -20,7 +20,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
     /// <summary>
     ///     The default output template for log messages.
     /// </summary>
-    public const string DefaultOutputTemplate = "{ {timestamp:@t, ..rest(), message:@m, eventid:@i, Exception:@x} }\n";
+    private const string DefaultOutputTemplate = "{ {timestamp:@t, ..rest(), message:@m, eventid:@i, Exception:@x} }\n";
 
     private global::Serilog.Core.Logger logger;
 
@@ -49,9 +49,9 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
     /// <param name="consoleOutputTemplate">The console output template for log messages.</param>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="logEventEnricher" /> is null.</exception>
     public Logger(ILogEventEnricher logEventEnricher, string consoleOutputTemplate = DefaultOutputTemplate) : this(
-        new[] { logEventEnricher }, consoleOutputTemplate)
+        [logEventEnricher], consoleOutputTemplate)
     {
-        if (logEventEnricher is null) throw new ArgumentNullException(nameof(logEventEnricher));
+        ArgumentNullException.ThrowIfNull(logEventEnricher);
     }
 
     /// <summary>
@@ -63,7 +63,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="logEventEnricher" /> is null.</exception>
     public Logger(ILogEventEnricher[] logEventEnricher, string consoleOutputTemplate = DefaultOutputTemplate)
     {
-        if (logEventEnricher is null) throw new ArgumentNullException(nameof(logEventEnricher));
+        ArgumentNullException.ThrowIfNull(logEventEnricher);
 
         InitializeDefaultLogger(new LoggerConfiguration(), logEventEnricher, consoleOutputTemplate);
     }
@@ -77,7 +77,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="configuration" /> is null.</exception>
     public Logger(LoggerConfiguration configuration, string consoleOutputTemplate = DefaultOutputTemplate)
     {
-        if (configuration == null) throw new ArgumentNullException(nameof(configuration));
+        ArgumentNullException.ThrowIfNull(configuration);
 
         InitializeDefaultLogger(configuration, null, consoleOutputTemplate);
     }
@@ -91,7 +91,8 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
         if (!IsEnabledInternal(LogLevel.Debug))
             return;
 
-        logger.Debug(message);
+        if (message != null) 
+            logger.Debug(message);
     }
 
     /// <summary>
@@ -103,9 +104,9 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
     {
         if (!IsEnabledInternal(LogLevel.Debug))
             return;
-
-
-        logger.Debug(messageTemplate, propertyValues);
+        
+        if (messageTemplate != null) 
+            logger.Debug(messageTemplate, propertyValues);
     }
 
     /// <summary>
@@ -117,8 +118,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
     {
         if (!IsEnabledInternal(LogLevel.Debug))
             return;
-
-
+        
         logger.Debug(exception, messageTemplate);
     }
 
@@ -145,7 +145,8 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
         if (!IsEnabledInternal(LogLevel.Error))
             return;
 
-        logger.Error(message);
+        if (message != null) 
+            logger.Error(message);
     }
 
     /// <summary>
@@ -198,8 +199,8 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
         if (!IsEnabledInternal(LogLevel.Critical))
             return;
 
-
-        logger.Fatal(message);
+        if (message != null) 
+            logger.Fatal(message);
     }
 
     /// <summary>
@@ -212,7 +213,8 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
         if (!IsEnabledInternal(LogLevel.Critical))
             return;
 
-        logger.Fatal(messageTemplate, propertyValues);
+        if (messageTemplate != null) 
+            logger.Fatal(messageTemplate, propertyValues);
     }
 
     /// <summary>
@@ -225,7 +227,8 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
         if (!IsEnabledInternal(LogLevel.Critical))
             return;
 
-        logger.Fatal(exception, messageTemplate);
+        if (messageTemplate != null) 
+            logger.Fatal(exception, messageTemplate);
     }
 
     /// <summary>
@@ -251,7 +254,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
         if (!IsEnabledInternal(LogLevel.Information))
             return;
 
-        logger.Information(message);
+        if (message != null) logger.Information(message);
     }
 
     /// <summary>
@@ -264,7 +267,8 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
         if (!IsEnabledInternal(LogLevel.Information))
             return;
 
-        logger.Information(messageTemplate, propertyValues);
+        if (messageTemplate != null) 
+            logger.Information(messageTemplate, propertyValues);
     }
 
     /// <summary>
@@ -276,7 +280,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
     {
         if (!IsEnabledInternal(LogLevel.Information))
             return;
-
+        
         logger.Information(exception, messageTemplate);
     }
 
@@ -303,7 +307,8 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
         if (!IsEnabledInternal(LogLevel.Trace))
             return;
 
-        logger.Verbose(message);
+        if (message != null) 
+            logger.Verbose(message);
     }
 
     /// <summary>
@@ -316,7 +321,8 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
         if (!IsEnabledInternal(LogLevel.Trace))
             return;
 
-        logger.Verbose(messageTemplate, propertyValues);
+        if (messageTemplate != null) 
+            logger.Verbose(messageTemplate, propertyValues);
     }
 
     /// <summary>
@@ -410,7 +416,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
     public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception,
         Func<TState, Exception, string> formatter)
     {
-        if (formatter == null) throw new ArgumentNullException(nameof(formatter));
+        ArgumentNullException.ThrowIfNull(formatter);
 
         var message = formatter(state, exception);
 

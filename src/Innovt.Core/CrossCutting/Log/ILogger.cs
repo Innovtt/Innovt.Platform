@@ -21,7 +21,7 @@ public interface ILogger
     /// <summary>
     ///     Debug is the noisiest level, rarely (if ever) enabled for a production app.
     /// </summary>
-    /// <param name="messageTemplate">The message templete will follow the Serilog Pattern.</param>
+    /// <param name="messageTemplate">The message template will follow the Serilog Pattern.</param>
     /// <param name="propertyValues">Properties that will be used as template of the message</param>
     void Debug(string messageTemplate, params object[] propertyValues);
 
@@ -29,14 +29,14 @@ public interface ILogger
     ///     Debug is the noisiest level, rarely (if ever) enabled for a production app.
     /// </summary>
     /// <param name="exception">An Exception parameter</param>
-    /// <param name="messageTemplate">The message templete will follow the Serilog Pattern.</param>
+    /// <param name="messageTemplate">The message template will follow the Serilog Pattern.</param>
     void Debug(Exception exception, string messageTemplate);
 
     /// <summary>
     ///     Debug is the noisiest level, rarely (if ever) enabled for a production app.
     /// </summary>
     /// <param name="exception">An exception</param>
-    /// <param name="messageTemplate">The message templete will follow the Serilog Pattern.</param>
+    /// <param name="messageTemplate">The message template will follow the Serilog Pattern.</param>
     /// <param name="propertyValues"></param>
     void Debug(Exception exception, string messageTemplate, params object[] propertyValues);
 
@@ -44,7 +44,7 @@ public interface ILogger
     /// <summary>
     ///     An error logger
     /// </summary>
-    /// <param name="message">The message templete will follow the Serilog Pattern.</param>
+    /// <param name="message">The message template will follow the Serilog Pattern.</param>
     void Error(string message);
 
     /// <summary>
