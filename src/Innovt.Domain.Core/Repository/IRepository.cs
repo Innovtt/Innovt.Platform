@@ -8,6 +8,7 @@ using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Innovt.Core.Collections;
+using Innovt.Domain.Core.Model;
 using Innovt.Domain.Core.Specification;
 
 namespace Innovt.Domain.Core.Repository;
@@ -25,6 +26,13 @@ public interface IRepository<T> where T : class
     void Add(T entity);
 
     /// <summary>
+    /// Save and entity or update if it already exists
+    /// </summary>
+    /// <param name="entity"></param>
+    /// <param name="cancellationToken"></param>
+    Task SaveAsync(T entity,CancellationToken cancellationToken = default);
+
+    /// <summary>
     ///     Adds multiple entities
     /// </summary>
     /// <param name="entities"></param>
@@ -34,15 +42,17 @@ public interface IRepository<T> where T : class
     ///     Asynchronously adds a single entity
     /// </summary>
     /// <param name="entity"></param>
+    /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task AddAsync(T entity);
+    Task AddAsync(T entity, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Asynchronously adds multiple entities
     /// </summary>
     /// <param name="entities"></param>
+    /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task AddAsync(IEnumerable<T> entities);
+    Task AddAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Modifies an entity

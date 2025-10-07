@@ -9,6 +9,7 @@ using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Innovt.Core.Collections;
+using Innovt.Domain.Core.Model;
 using Innovt.Domain.Core.Repository;
 using Innovt.Domain.Core.Specification;
 using Microsoft.EntityFrameworkCore;
@@ -43,6 +44,26 @@ public class RepositoryBase<T> : IRepository<T> where T : class
         Context.Add(entity);
     }
 
+    public Task SaveAsync(T entity, CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(entity);
+
+        //Safe parser to DbContext to check entity state
+        var entry = (Context as DbContext)?.Entry(entity);
+
+        var shouldAdd = entry?.State == EntityState.Detached || 
+                        entity is Entity entityModel && entityModel.IsNew();
+        
+        if (shouldAdd)
+        {
+            return Context.AddAsync(entity,cancellationToken);
+        }
+       
+        Context.Update(entity);
+        
+        return Task.CompletedTask;
+    }
+
     /// <inheritdoc />
     public virtual void Add(IEnumerable<T> entities)
     {
@@ -53,20 +74,22 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     ///     Asynchronously adds a collection of entities of type T to the repository.
     /// </summary>
     /// <param name="entities">The collection of entities to add.</param>
+    /// <param name="cancellationToken"></param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public virtual Task AddAsync(IEnumerable<T> entities)
+    public virtual Task AddAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default)
     {
-        return Context.AddAsync(entities);
+        return Context.AddAsync(entities,cancellationToken);
     }
 
     /// <summary>
     ///     Asynchronously adds an entity of type T to the repository.
     /// </summary>
     /// <param name="entity">The entity to add.</param>
+    /// <param name="cancellationToken"></param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public virtual Task AddAsync(T entity)
+    public virtual Task AddAsync(T entity,  CancellationToken cancellationToken = default)
     {
-        return Context.AddAsync(entity);
+        return Context.AddAsync(entity,cancellationToken);
     }
 
     /// <summary>
@@ -157,12 +180,9 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     /// <summary>
     ///     Finds entities of type T based on the provided specification with optional sorting and pagination.
     /// </summary>
-    /// <typeparam name="TKey">The type of the sorting key.</typeparam>
     /// <param name="specification">The specification used to filter the entities.</param>
-    /// <param name="orderBy">The sorting key selector.</param>
-    /// <param name="isOrderByDescending">A flag indicating whether the sorting is in descending order.</param>
     /// <param name="includes">The related entities to include in the query.</param>
-    /// <returns>An enumerable of entities matching the specification with optional sorting.</returns>
+    /// <returns>An enum of entities matching the specification with optional sorting.</returns>
     public virtual IEnumerable<T> FindBy(ISpecification<T> specification, Include? includes = null)
     {
         ArgumentNullException.ThrowIfNull(specification);
