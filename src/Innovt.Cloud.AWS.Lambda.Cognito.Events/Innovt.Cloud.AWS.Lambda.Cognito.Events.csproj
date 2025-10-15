@@ -3,7 +3,7 @@
     <PropertyGroup>
           <TargetFramework>net8.0</TargetFramework>
         <PackageId>Innovt.Cloud.AWS.Lambda.Cognito.Events</PackageId>
-        <PackageVersion>8.4.2</PackageVersion>
+        <PackageVersion>8.4.3</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -13,7 +13,7 @@
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="System.Text.Json" Version="9.0.9" />
+        <PackageReference Include="System.Text.Json" Version="9.0.10" />
     </ItemGroup>
     <ItemGroup>
         <Folder Include="CreateAuthChallenge\" />
