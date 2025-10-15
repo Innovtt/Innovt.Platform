@@ -13,7 +13,6 @@ namespace Innovt.AspNetCore.Application.Tests.Controllers;
 [Produces("application/json")]
 [Route("[controller]")]
 [ApiController]
-
 public class SampleController : BaseApiController
 {
     public SampleController(ILogger logger) : base(logger)
@@ -28,12 +27,13 @@ public class SampleController : BaseApiController
     [ProducesResponseType((int)HttpStatusCode.Created)]
     [ModelExcludeFilter("parameterTobeRemoved")]
     [ServiceToServiceAuthorize("Teste")]
-    public IActionResult Add([FromRoute] Guid id,  Guid parameterTobeRemoved,[FromBody] AddUserViewModel command, CancellationToken cancellationToken = default)
+    public IActionResult Add([FromRoute] Guid id, Guid parameterTobeRemoved, [FromBody] AddUserViewModel command,
+        CancellationToken cancellationToken = default)
     {
         return Ok();
     }
-    
-    
+
+
     //Sample for ModelExcludeFilter
     [HttpPost("{id:guid}")]
     [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
@@ -41,7 +41,8 @@ public class SampleController : BaseApiController
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType((int)HttpStatusCode.Created)]
     [ServiceToServiceAuthorize("Teste")]
-    public IActionResult Add2([FromRoute] Guid id,  Guid parameterTobeRemoved,[FromBody] AddUserViewModel command, CancellationToken cancellationToken = default)
+    public IActionResult Add2([FromRoute] Guid id, Guid parameterTobeRemoved, [FromBody] AddUserViewModel command,
+        CancellationToken cancellationToken = default)
     {
         return Ok();
     }

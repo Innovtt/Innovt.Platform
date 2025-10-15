@@ -66,7 +66,7 @@ public static class AttributeValueToObjectConverterManager
             return null!;
 
         var key = GetKeyForAttributeValue(value);
-        
+
         if (key != null && Converters.TryGetValue(key, out var converter))
             return converter(value, desiredType, context);
 

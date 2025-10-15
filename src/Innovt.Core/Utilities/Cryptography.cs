@@ -24,14 +24,14 @@ public static class Cryptography
     {
         Check.NotNull(text, nameof(text));
 
-        return ComputeSha(text,salt).Replace("-", "", StringComparison.OrdinalIgnoreCase);
+        return ComputeSha(text, salt).Replace("-", "", StringComparison.OrdinalIgnoreCase);
     }
-    
+
     public static string Sha(this string text, string salt = "")
     {
-        return ComputeSha(text,salt);
+        return ComputeSha(text, salt);
     }
-    
+
     private static string ComputeSha(this string plainPassword, string salt = "")
     {
         var passBytes = Encoding.UTF8.GetBytes(plainPassword + salt);
@@ -92,7 +92,7 @@ public static class Cryptography
     {
         Check.NotNull(plainText);
         Check.NotNull(keyString);
-        
+
         using var aesAlg = Aes.Create();
         aesAlg.Key = Encoding.UTF8.GetBytes(keyString);
         aesAlg.IV = new byte[16];

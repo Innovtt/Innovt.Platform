@@ -84,9 +84,9 @@ public abstract class BaseEventProcessor
         //The logger is already set.
         if (iocContainer is null && Logger is not null)
             return;
-        
+
         var logger = iocContainer?.TryToResolve<ILogger>();
-        
+
         Logger = logger ?? new LambdaLogger(Context.Logger);
     }
 
@@ -158,7 +158,7 @@ public abstract class BaseEventProcessor
         var configBuilder = new ConfigurationBuilder();
         configBuilder.AddEnvironmentVariables();
         configBuilder.AddJsonFile("appsettings.json", true);
-        
+
         var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
         if (!string.IsNullOrWhiteSpace(environmentName))

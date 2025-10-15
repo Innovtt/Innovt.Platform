@@ -23,27 +23,28 @@ public interface IContainer : IDisposable
     /// <param name="iocModule">The <see cref="IocModule" /> to be added to the container.</param>
     /// <returns>Container</returns>
     IContainer AddModule(IocModule iocModule);
-    
+
     /// <summary>
     ///  Adds an <see cref="IocModule" /> to the container.
     /// </summary>
     /// <param name="iocModules">The <see cref="IocModule" /> to be added to the container.</param>
     /// <returns>Container</returns>
     IContainer AddModule(IocModule[] iocModules);
-    
+
     /// <summary>
     ///     Resolves a service of the specified <paramref name="type" />.
     /// </summary>
     /// <param name="type">The <see cref="Type" /> of the service to resolve.</param>
     /// <returns>The resolved service object.</returns>
     object Resolve(Type type);
+
     /// <summary>
     ///     Resolves a service of type <typeparamref name="TService" />.
     /// </summary>
     /// <typeparam name="TService">The type of service to resolve.</typeparam>
     /// <returns>The resolved service object.</returns>
     TService Resolve<TService>();
-    
+
     /// <summary>
     ///     Resolves a service of type <typeparamref name="TService" /> with the specified <paramref name="type" />.
     /// </summary>
@@ -86,8 +87,8 @@ public interface IContainer : IDisposable
     /// </summary>
     /// <returns>An <see cref="IServiceScope" /> representing the new service scope.</returns>
     IServiceScope CreateScope();
-    
-    
+
+
     /// <summary>
     ///     Checks the configuration of the container.
     /// </summary>

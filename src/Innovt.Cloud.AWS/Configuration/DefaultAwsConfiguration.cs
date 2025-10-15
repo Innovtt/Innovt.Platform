@@ -26,7 +26,7 @@ public class DefaultAwsConfiguration : IAwsConfiguration
     /// <param name="profileName"></param>
     /// <param name="region"></param>
     /// <exception cref="ArgumentNullException"></exception>
-    public DefaultAwsConfiguration(string profileName,string? region=null)
+    public DefaultAwsConfiguration(string profileName, string? region = null)
     {
         Profile = profileName ?? throw new ArgumentNullException(nameof(profileName));
         Region = region!;
@@ -139,20 +139,20 @@ public class DefaultAwsConfiguration : IAwsConfiguration
     /// <returns>AWS credentials obtained from the named profile.</returns>
     /// <exception cref="ConfigurationException">Thrown when the specified profile is not found.</exception>
     private AWSCredentials GetCredentialsFromProfile()
-    {   
+    {
         var profileSource = new CredentialProfileStoreChain();
 
         if (!profileSource.TryGetProfile(Profile, out var profile))
         {
             throw new ConfigurationException($"Profile '{Profile}' not found.");
         }
-        
+
         // If Region is not yet set, and the profile has a region, assign it
         if (string.IsNullOrEmpty(Region))
         {
-            Region = profile.Region is null ? profile.Options.SsoRegion :  profile.Region.SystemName;
+            Region = profile.Region is null ? profile.Options.SsoRegion : profile.Region.SystemName;
         }
-        
+
         return AWSCredentialsFactory.GetAWSCredentials(profile, profileSource);
     }
 }

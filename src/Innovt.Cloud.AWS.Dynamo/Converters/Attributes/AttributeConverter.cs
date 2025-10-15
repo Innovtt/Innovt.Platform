@@ -67,8 +67,11 @@ internal static class AttributeConverter
             {
                 instanceProps = properties.Where(p =>
                 {
-                    var attr = AttributeCache.GetOrAdd(p, prop => new Lazy<DynamoDBPropertyAttribute>(prop.GetCustomAttribute<DynamoDBPropertyAttribute>)).Value;
-                    
+                    var attr = AttributeCache.GetOrAdd(p,
+                            prop => new Lazy<DynamoDBPropertyAttribute>(prop
+                                .GetCustomAttribute<DynamoDBPropertyAttribute>))
+                        .Value;
+
                     return attr != null && propertyName.Equals(attr.AttributeName, StringComparison.OrdinalIgnoreCase);
                 }).ToList();
             }
@@ -96,7 +99,8 @@ internal static class AttributeConverter
         return attributeValue.N is not null ? new Primitive(attributeValue.N, true) : new Primitive(attributeValue.S);
     }
 
-    private static object? ConvertNonPrimitiveType(PropertyInfo property, AttributeValue attributeValue, object? value, IPropertyConverter? propertyConverter = null)
+    private static object? ConvertNonPrimitiveType(PropertyInfo property, AttributeValue attributeValue, object? value,
+        IPropertyConverter? propertyConverter = null)
     {
         if (value is null)
             return null;
@@ -118,7 +122,8 @@ internal static class AttributeConverter
         return customConverter.FromEntry(convertedEntry);
     }
 
-    public static T? ConvertAttributeValuesToType<T>(Dictionary<string, AttributeValue>? items, DynamoContext? context = null)
+    public static T? ConvertAttributeValuesToType<T>(Dictionary<string, AttributeValue>? items,
+        DynamoContext? context = null)
         where T : class
     {
         if (items is null) return null;
@@ -167,7 +172,8 @@ internal static class AttributeConverter
     private static object ConvertAttributeValueToObject(AttributeValue attributeValue, PropertyInfo property,
         DynamoContext? context = null)
     {
-        var value = AttributeValueToObjectConverterManager.CreateAttributeValueToObject(attributeValue, property.PropertyType, context);
+        var value = AttributeValueToObjectConverterManager.CreateAttributeValueToObject(attributeValue,
+            property.PropertyType, context);
 
         if (TypeUtil.IsPrimitive(property.PropertyType))
             return TypeConverter.ConvertType(property.PropertyType, value);
@@ -177,7 +183,8 @@ internal static class AttributeConverter
                 ? value
                 : CollectionConverter.ItemsToCollection(property.PropertyType, (IEnumerable<object>)value);
 
-        return ConvertNonPrimitiveType(property, attributeValue, value, context?.GetPropertyConverter(property.PropertyType));
+        return ConvertNonPrimitiveType(property, attributeValue, value,
+            context?.GetPropertyConverter(property.PropertyType));
     }
 
     internal static Dictionary<string, AttributeValue> ConvertToAttributeValueMap<T>(T instance,
@@ -218,7 +225,8 @@ internal static class AttributeConverter
         var mappedProperties = typeBuilder.GetProperties().ToList();
 
         if (typeBuilder.Discriminator is not null)
-            mappedProperties.AddRange(DiscriminatorManager.GetDiscriminatorProperties(context, typeBuilder, properties, instance));
+            mappedProperties.AddRange(
+                DiscriminatorManager.GetDiscriminatorProperties(context, typeBuilder, properties, instance));
 
         foreach (var mappedProperty in mappedProperties)
         {
@@ -253,7 +261,7 @@ internal static class AttributeConverter
             }
         }
     }
-    
+
     /// <summary>
     /// No context mapping for properties
     /// </summary>
@@ -262,7 +270,8 @@ internal static class AttributeConverter
     /// <param name="attributes"></param>
     /// <typeparam name="T"></typeparam>
     /// <exception cref="ConversionException"></exception>
-    private static void ConvertToAttributeValueMapWithoutContext<T>(T instance, PropertyInfo[] properties, Dictionary<string, AttributeValue> attributes)
+    private static void ConvertToAttributeValueMapWithoutContext<T>(T instance, PropertyInfo[] properties,
+        Dictionary<string, AttributeValue> attributes)
         where T : class
     {
         ArgumentNullException.ThrowIfNull(instance);
@@ -284,7 +293,7 @@ internal static class AttributeConverter
 
                 if (dynamoAttribute != null)
                     propertyKey = dynamoAttribute.AttributeName;
-                
+
                 attributes.Add(propertyKey, CreateAttributeValue(property.GetValue(instance)));
             }
             catch (Exception ex)

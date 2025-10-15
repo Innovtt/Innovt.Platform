@@ -8,15 +8,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="AWSSDK.AppConfigData" Version="4.0.1.6" />
-        <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="4.0.3.4" />
-        <PackageReference Include="AWSSDK.SimpleSystemsManagement" Version="4.0.4.3" />
-        <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.9" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.0" />
-        <PackageReference Include="Amazon.Extensions.Configuration.SystemsManager" Version="7.0.0" />
-        <PackageReference Include="NUnit" Version="4.4.0" />
-        <PackageReference Include="NSubstitute" Version="5.3.0" />
-        <PackageReference Include="NUnit3TestAdapter" Version="5.2.0" />
+        <PackageReference Include="AWSSDK.AppConfigData" Version="4.0.1.8"/>
+        <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="4.0.3.6"/>
+        <PackageReference Include="AWSSDK.SimpleSystemsManagement" Version="4.0.4.5"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.10"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.0"/>
+        <PackageReference Include="Amazon.Extensions.Configuration.SystemsManager" Version="7.0.0"/>
+        <PackageReference Include="NUnit" Version="4.4.0"/>
+        <PackageReference Include="NSubstitute" Version="5.3.0"/>
+        <PackageReference Include="NUnit3TestAdapter" Version="5.2.0"/>
         <PackageReference Include="coverlet.collector" Version="6.0.4">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -27,13 +27,13 @@
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\Innovt.Cloud.AWS.Cognito\Innovt.Cloud.AWS.Cognito.csproj" />
-        <ProjectReference Include="..\Innovt.CrossCutting.Log.Serilog\Innovt.CrossCutting.Log.Serilog.csproj" />
+        <ProjectReference Include="..\Innovt.Cloud.AWS.Cognito\Innovt.Cloud.AWS.Cognito.csproj"/>
+        <ProjectReference Include="..\Innovt.CrossCutting.Log.Serilog\Innovt.CrossCutting.Log.Serilog.csproj"/>
     </ItemGroup>
 
     <ItemGroup Condition="'$(Configuration)' == 'Debug'">
-        <PackageReference Include="AWSSDK.SSO" Version="4.0.1.6" />
-        <PackageReference Include="AWSSDK.SSOOIDC" Version="4.0.2.3" />
+        <PackageReference Include="AWSSDK.SSO" Version="4.0.1.8"/>
+        <PackageReference Include="AWSSDK.SSOOIDC" Version="4.0.2.5"/>
     </ItemGroup>
 
 </Project>

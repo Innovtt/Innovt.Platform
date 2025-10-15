@@ -21,15 +21,15 @@ public class DateTimeOffsetConverter : IPropertyConverter
     /// <param name="entry"></param>
     /// <returns></returns>
     public object FromEntry(DynamoDBEntry entry)
-    {   
+    {
         if (entry is DynamoDBNull || entry is null)
             return null;
 
-        if (DateTimeOffset.TryParse(entry.ToString(),CultureInfo.InvariantCulture, 
+        if (DateTimeOffset.TryParse(entry.ToString(), CultureInfo.InvariantCulture,
                 out var value))
             return value;
-        
-        if (DateTime.TryParse(entry.ToString(),CultureInfo.InvariantCulture, out var valueDate))
+
+        if (DateTime.TryParse(entry.ToString(), CultureInfo.InvariantCulture, out var valueDate))
             return valueDate;
 
         return null;

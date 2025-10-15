@@ -11,7 +11,7 @@ public sealed class ServiceToServiceAuthorizeAttribute : Attribute, IAsyncAction
 {
     private const string HeaderName = "X-Internal-Key";
     public string ExpectedKey { get; }
-    
+
     // ReSharper disable once ConvertToPrimaryConstructor
     public ServiceToServiceAuthorizeAttribute(string expectedKey)
     {
@@ -23,7 +23,7 @@ public sealed class ServiceToServiceAuthorizeAttribute : Attribute, IAsyncAction
         ArgumentNullException.ThrowIfNull(next);
         ArgumentNullException.ThrowIfNull(context);
 
-        if (!context.HttpContext.Request.Headers.TryGetValue(HeaderName, out var providedKey) || 
+        if (!context.HttpContext.Request.Headers.TryGetValue(HeaderName, out var providedKey) ||
             !string.Equals(providedKey, ExpectedKey, StringComparison.Ordinal))
         {
             context.Result = new UnauthorizedResult();

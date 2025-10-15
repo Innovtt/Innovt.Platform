@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <PackageId>Innovt.Cloud.AWS.Caching</PackageId>
-        <PackageVersion>8.4.2</PackageVersion>
+        <PackageVersion>8.4.3</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -14,16 +14,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="ServiceStack.Redis" Version="8.8.0" />
-        <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="9.0.9" />
-        <PackageReference Include="System.Text.Json" Version="9.0.9" />
+        <PackageReference Include="ServiceStack.Redis" Version="8.9.0"/>
+        <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="9.0.10"/>
+        <PackageReference Include="System.Text.Json" Version="9.0.10"/>
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj" />
+        <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj"/>
     </ItemGroup>
 
 </Project>

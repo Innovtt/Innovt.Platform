@@ -7,13 +7,13 @@
         <GenerateDocumentationFile>false</GenerateDocumentationFile>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Amazon.Lambda.Core" Version="2.7.1" />
-        <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="9.0.9" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.0" />
-        <PackageReference Include="NUnit" Version="4.4.0" />
-        <PackageReference Include="NUnit3TestAdapter" Version="5.2.0" />
-        <PackageReference Include="Amazon.Lambda.TestUtilities" Version="3.0.1" />
-        <PackageReference Include="NSubstitute" Version="5.3.0" />
+        <PackageReference Include="Amazon.Lambda.Core" Version="2.7.1"/>
+        <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="9.0.10"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.0"/>
+        <PackageReference Include="NUnit" Version="4.4.0"/>
+        <PackageReference Include="NUnit3TestAdapter" Version="5.2.0"/>
+        <PackageReference Include="Amazon.Lambda.TestUtilities" Version="3.0.1"/>
+        <PackageReference Include="NSubstitute" Version="5.3.0"/>
         <PackageReference Include="NUnit.Analyzers" Version="4.10.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -29,12 +29,12 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj" />
-        <ProjectReference Include="..\Innovt.Domain.Core\Innovt.Domain.Core.csproj" />
+        <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj"/>
+        <ProjectReference Include="..\Innovt.Domain.Core\Innovt.Domain.Core.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Exceptions\" />
+        <Folder Include="Exceptions\"/>
     </ItemGroup>
 
 </Project>

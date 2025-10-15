@@ -91,7 +91,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
         if (!IsEnabledInternal(LogLevel.Debug))
             return;
 
-        if (message != null) 
+        if (message != null)
             logger.Debug(message);
     }
 
@@ -104,8 +104,8 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
     {
         if (!IsEnabledInternal(LogLevel.Debug))
             return;
-        
-        if (messageTemplate != null) 
+
+        if (messageTemplate != null)
             logger.Debug(messageTemplate, propertyValues);
     }
 
@@ -118,7 +118,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
     {
         if (!IsEnabledInternal(LogLevel.Debug))
             return;
-        
+
         logger.Debug(exception, messageTemplate);
     }
 
@@ -145,7 +145,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
         if (!IsEnabledInternal(LogLevel.Error))
             return;
 
-        if (message != null) 
+        if (message != null)
             logger.Error(message);
     }
 
@@ -199,7 +199,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
         if (!IsEnabledInternal(LogLevel.Critical))
             return;
 
-        if (message != null) 
+        if (message != null)
             logger.Fatal(message);
     }
 
@@ -213,7 +213,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
         if (!IsEnabledInternal(LogLevel.Critical))
             return;
 
-        if (messageTemplate != null) 
+        if (messageTemplate != null)
             logger.Fatal(messageTemplate, propertyValues);
     }
 
@@ -227,7 +227,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
         if (!IsEnabledInternal(LogLevel.Critical))
             return;
 
-        if (messageTemplate != null) 
+        if (messageTemplate != null)
             logger.Fatal(exception, messageTemplate);
     }
 
@@ -267,7 +267,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
         if (!IsEnabledInternal(LogLevel.Information))
             return;
 
-        if (messageTemplate != null) 
+        if (messageTemplate != null)
             logger.Information(messageTemplate, propertyValues);
     }
 
@@ -280,7 +280,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
     {
         if (!IsEnabledInternal(LogLevel.Information))
             return;
-        
+
         logger.Information(exception, messageTemplate);
     }
 
@@ -307,7 +307,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
         if (!IsEnabledInternal(LogLevel.Trace))
             return;
 
-        if (message != null) 
+        if (message != null)
             logger.Verbose(message);
     }
 
@@ -321,7 +321,7 @@ public class Logger : ILogger, Microsoft.Extensions.Logging.ILogger
         if (!IsEnabledInternal(LogLevel.Trace))
             return;
 
-        if (messageTemplate != null) 
+        if (messageTemplate != null)
             logger.Verbose(messageTemplate, propertyValues);
     }
 

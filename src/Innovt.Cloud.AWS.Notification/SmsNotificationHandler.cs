@@ -74,7 +74,8 @@ public class SmsNotificationHandler : AwsBaseService, INotificationHandler
             };
 
             var result = await policy.ExecuteAsync(async () =>
-                await SimpleNotificationClient.PublishAsync(request, cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
+                    await SimpleNotificationClient.PublishAsync(request, cancellationToken).ConfigureAwait(false))
+                .ConfigureAwait(false);
 
             deliveryResult.Add(result);
         }

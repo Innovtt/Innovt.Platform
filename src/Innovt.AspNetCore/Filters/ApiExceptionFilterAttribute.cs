@@ -44,7 +44,8 @@ public sealed class ApiExceptionFilterAttribute : ExceptionFilterAttribute
     /// </summary>
     /// <param name="logger">The logger to use for logging exceptions.</param>
     /// <param name="stringLocalizer">The string localizer for localizing exception messages.</param>
-    public ApiExceptionFilterAttribute(ILogger logger, IStringLocalizer<IExceptionResource> stringLocalizer) : this(logger)
+    public ApiExceptionFilterAttribute(ILogger logger, IStringLocalizer<IExceptionResource> stringLocalizer) :
+        this(logger)
     {
         StringLocalizer = stringLocalizer ?? throw new ArgumentNullException(nameof(stringLocalizer));
     }

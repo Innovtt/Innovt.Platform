@@ -24,7 +24,7 @@ public class KinesisDomainEventEmptyInvoiceProcessor : KinesisDomainEventProcess
 
     protected override IContainer SetupIocContainer()
     {
-       return  serviceMock.InicializeIoc();
+        return serviceMock.InicializeIoc();
     }
 
     protected override Task ProcessMessage(DomainEvent message)
@@ -33,6 +33,4 @@ public class KinesisDomainEventEmptyInvoiceProcessor : KinesisDomainEventProcess
 
         return Task.CompletedTask;
     }
-
-
 }

@@ -230,9 +230,9 @@ public class S3FileSystem : AwsBaseService, IFileSystem
             Key = fileName
         };
 
-        return await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(
-                async () => await new TransferUtility(S3Client).OpenStreamAsync(request, cancellationToken)
-                    .ConfigureAwait(false))
+        return await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () => await new TransferUtility(S3Client)
+                .OpenStreamAsync(request, cancellationToken)
+                .ConfigureAwait(false))
             .ConfigureAwait(false);
     }
 
@@ -528,8 +528,8 @@ public class S3FileSystem : AwsBaseService, IFileSystem
         };
 
         var response = await base.CreateDefaultRetryAsyncPolicy()
-            .ExecuteAsync(
-                async () => await S3Client.DeleteObjectAsync(request, cancellationToken).ConfigureAwait(false))
+            .ExecuteAsync(async () =>
+                await S3Client.DeleteObjectAsync(request, cancellationToken).ConfigureAwait(false))
             .ConfigureAwait(false);
 
         return response.HttpStatusCode == HttpStatusCode.OK;
@@ -662,7 +662,8 @@ public class S3FileSystem : AwsBaseService, IFileSystem
     /// <param name="bucketName">The name of the S3 bucket.</param>
     /// <param name="fileKey">The key for the object in the bucket.</param>
     /// <returns>The URL to access the object.</returns>
-    private  static string GetObjectUrl(string bucketName, string fileKey) => "https://s3.amazonaws.com/" + $"{bucketName}/{fileKey}";
+    private static string GetObjectUrl(string bucketName, string fileKey) =>
+        "https://s3.amazonaws.com/" + $"{bucketName}/{fileKey}";
 
     /// <summary>
     ///     Asynchronously puts an object in the specified Amazon S3 bucket from a local file path.

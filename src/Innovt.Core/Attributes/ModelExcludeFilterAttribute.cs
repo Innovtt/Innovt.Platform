@@ -6,6 +6,7 @@ using System;
 using System.Runtime.CompilerServices;
 
 namespace Innovt.Core.Attributes;
+
 /// <summary>
 /// Attribute used to specify model properties that should be excluded when applying filters.
 /// </summary>
@@ -16,7 +17,6 @@ namespace Innovt.Core.Attributes;
 /// [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
 public sealed class ModelExcludeFilterAttribute : Attribute
 {
-   
     /// <summary>
     ///     Initializes a new instance of the <see cref="ModelExcludeFilterAttribute" /> class.
     /// </summary>
@@ -33,7 +33,6 @@ public sealed class ModelExcludeFilterAttribute : Attribute
     public ModelExcludeFilterAttribute(params string[] excludeAttributes)
     {
         ExcludeAttributes = excludeAttributes;
-        
     }
 
     /// <summary>

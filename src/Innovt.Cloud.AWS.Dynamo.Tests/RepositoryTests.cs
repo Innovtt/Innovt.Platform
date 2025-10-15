@@ -20,7 +20,7 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests;
 public class RepositoryTests
 {
     private string fakeUserId = "24a874d8-d0a1-7032-b572-3c3383ff4ba9";
-    
+
     [SetUp]
     public void TearUp()
     {
@@ -42,9 +42,9 @@ public class RepositoryTests
     private SampleRepository repository;
 
     private async Task<User> AddUserIfNotExist()
-    { 
+    {
         var userSortKey = "PROFILE";
-            
+
         var queryRequest = new QueryRequest
         {
             KeyConditionExpression = "PK=:pk AND SK=:sk",
@@ -56,13 +56,13 @@ public class RepositoryTests
         };
 
         var user = (await repository.QueryAsync<User>(queryRequest).ConfigureAwait(false)).SingleOrDefault();
-        
+
         //Temporary Delete
         if (user is not null)
             await repository.DeleteAsync(user).ConfigureAwait(false);
-          //  return user;
-        
-          
+        //  return user;
+
+
         user = new User
         {
             Id = fakeUserId,
@@ -77,14 +77,14 @@ public class RepositoryTests
             StatusIds = new List<int>(),
             Skills = new List<Skill>(),
             Status = UserStatus.Active,
-            DaysOfWeek = new List<int>(){1,2,3,4,5},
+            DaysOfWeek = new List<int>() { 1, 2, 3, 4, 5 },
         };
-        
+
         await repository.AddAsync(user).ConfigureAwait(false);
 
         return user;
     }
-    
+
     [Test]
     public async Task AddDeleteAndQuery()
     {
@@ -93,13 +93,13 @@ public class RepositoryTests
         var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
 
         repository = new SampleRepository(context, loggerMock, awsConfiguration);
-        
+
         try
         {
             await AddUserIfNotExist().ConfigureAwait(false);
-            
+
             var userSortKey = "PROFILE";
-            
+
             var queryRequest = new QueryRequest
             {
                 KeyConditionExpression = "PK=:pk AND SK=:sk",
@@ -178,8 +178,8 @@ public class RepositoryTests
             throw;
         }
     }
-    
-     [Test]
+
+    [Test]
     public async Task GetById()
     {
         var context = new SampleDynamoContext();
@@ -187,14 +187,14 @@ public class RepositoryTests
         var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
 
         repository = new SampleRepository(context, loggerMock, awsConfiguration);
-        
+
         try
         {
             var templateId = "SendWelcomeEmail";
-            
+
             var notificationDataModel =
-                await  repository.GetByIdAsync<NotificationTemplateDataModel>(templateId);
-            
+                await repository.GetByIdAsync<NotificationTemplateDataModel>(templateId);
+
             Assert.That(notificationDataModel, Is.Not.Null);
         }
         catch (Exception e)
@@ -216,7 +216,7 @@ public class RepositoryTests
         try
         {
             await AddUserIfNotExist().ConfigureAwait(false);
-            
+
             var userSortKey = "PROFILE";
 
             var queryRequest = new QueryRequest
@@ -484,7 +484,7 @@ public class RepositoryTests
             throw;
         }
     }
-    
+
     [Test]
     public async Task QueryUserWithDateTimeOffSetColumn()
     {
@@ -495,7 +495,7 @@ public class RepositoryTests
             var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
 
             repository = new SampleRepository(context, loggerMock, awsConfiguration);
-            
+
             var queryRequest = new QueryRequest
             {
                 KeyConditionExpression = "PK=:pk AND begins_with(SK,:sk)",
@@ -505,7 +505,7 @@ public class RepositoryTests
                     sk = "PROFILE"
                 }
             };
-            
+
             var expertSkills = await repository.QueryAsync<User>(queryRequest, CancellationToken.None)
                 .ConfigureAwait(false);
 
@@ -517,8 +517,8 @@ public class RepositoryTests
             throw;
         }
     }
-    
-    
+
+
     [Test]
     public async Task AddContactTestingDiscriminator()
     {
@@ -531,7 +531,7 @@ public class RepositoryTests
             repository = new SampleRepository(context, loggerMock, awsConfiguration);
 
             var contacts = new List<DynamoContact>();
-            
+
             var phone = new DynamoPhoneContact
             {
                 Name = "Michel",
@@ -547,10 +547,10 @@ public class RepositoryTests
                 Id = Guid.NewGuid().ToString()
             };
             contacts.Add(email);
-            
+
             //O que vai acontecer eh que ele nao vai cneontrar o tipo pelo nome.
             await repository.AddRangeAsync(contacts).ConfigureAwait(false);
-            
+
             var queryRequest = new QueryRequest
             {
                 KeyConditionExpression = "PK=:pk AND begins_with(SK,:sk)",
@@ -560,23 +560,23 @@ public class RepositoryTests
                     sk = "CONTACT#"
                 }
             };
-            
+
             var result = await repository.QueryAsync<DynamoContact>(queryRequest, CancellationToken.None)
                 .ConfigureAwait(false);
-            
+
             Assert.That(contacts, Is.Not.Null);
 
             foreach (var contact in result)
             {
                 Assert.That(contact, Is.Not.Null);
                 Assert.That(contact.Id, Is.Not.Null);
-                
+
                 if (contact is DynamoPhoneContact phoneContact)
                 {
                     Assert.That(phoneContact.CountryCode, Is.Not.Null);
                     Assert.That(phoneContact.CountryCode, Is.EqualTo("55"));
                 }
-                
+
                 if (contact is DynamoEmailContact emailContact)
                 {
                     Assert.That(emailContact.Value, Is.Not.Null);
@@ -592,8 +592,8 @@ public class RepositoryTests
             throw;
         }
     }
-    
-    
+
+
     [Test]
     public async Task IgnoredPropertiesShouldInvokeMap()
     {
@@ -606,7 +606,7 @@ public class RepositoryTests
         try
         {
             await AddUserIfNotExist().ConfigureAwait(false);
-            
+
             var userSortKey = "PROFILE";
 
             var queryRequest = new QueryRequest
@@ -631,7 +631,7 @@ public class RepositoryTests
             throw;
         }
     }
-    
+
     [Test]
     public async Task QueryPaginated()
     {
@@ -654,10 +654,10 @@ public class RepositoryTests
                 },
                 PageSize = 10
             };
-            
+
             queryRequest.FilterExpression = "contains(#Name, :name)";
             queryRequest.ExpressionAttributeNames = new Dictionary<string, string> { { "#Name", "Name" } };
-        
+
             var skills = await repository.QueryPaginatedByAsync<Skill>(queryRequest).ConfigureAwait(false);
 
             Assert.That(skills, Is.Not.Null);
@@ -672,11 +672,11 @@ public class RepositoryTests
                 },
                 PageSize = 10
             };
-            
-             skills = await repository.ScanPaginatedByAsync<Skill>(scanRequest).ConfigureAwait(false);
-             
-             
-             Assert.That(skills, Is.Not.Null);
+
+            skills = await repository.ScanPaginatedByAsync<Skill>(scanRequest).ConfigureAwait(false);
+
+
+            Assert.That(skills, Is.Not.Null);
         }
         catch (Exception e)
         {
@@ -684,8 +684,8 @@ public class RepositoryTests
             throw;
         }
     }
-    
-    
+
+
     [Test]
     public async Task QueryMultipleAsync()
     {
@@ -697,7 +697,6 @@ public class RepositoryTests
 
         try
         {
-           
             var queryRequest = new QueryRequest
             {
                 KeyConditionExpression = "PK=:pk",
@@ -709,9 +708,11 @@ public class RepositoryTests
                     et2 = "ORGANIZATIONLANGUAGE"
                 }
             };
-            
-            var queryResult = await repository.QueryMultipleAsync<Organization, Organization, Address, Company>(queryRequest, ["ORGANIZATION", "ADDRESS", "ORGANIZATIONLANGUAGE", "USER"], CancellationToken.None).ConfigureAwait(false);
-            
+
+            var queryResult = await repository
+                .QueryMultipleAsync<Organization, Organization, Address, Company>(queryRequest,
+                    ["ORGANIZATION", "ADDRESS", "ORGANIZATIONLANGUAGE", "USER"], CancellationToken.None)
+                .ConfigureAwait(false);
         }
         catch (Exception e)
         {
@@ -719,7 +720,7 @@ public class RepositoryTests
             throw;
         }
     }
-    
+
     [Test]
     public async Task SampleWithDataModel()
     {
@@ -735,8 +736,8 @@ public class RepositoryTests
                 pk = $"REQUEST#{Guid.NewGuid()}",
                 sk = "REQUEST_IDEMPOTENCY"
             }
-        };//One or more parameter values were invalid: Condition parameter type does not match schema type
-        
+        }; //One or more parameter values were invalid: Condition parameter type does not match schema type
+
         try
         {
             var request = await dataModelRepository.QueryAsync<SampleDataModel>(queryRequest, CancellationToken.None);
@@ -768,8 +769,8 @@ public class RepositoryTests
         try
         {
             await dataModelRepository.AddAsync(notification, CancellationToken.None);
-            
-            
+
+
             var queryRequest = new QueryRequest
             {
                 KeyConditionExpression = "PK=:pk AND SK=:sk",
@@ -779,12 +780,12 @@ public class RepositoryTests
                     sk = notification.Sk
                 }
             };
-            
+
             var request = await dataModelRepository.QueryAsync<NotificationDataModel>(queryRequest,
                 CancellationToken.None);
 
             Assert.That(request, Is.Not.Null);
-            
+
             await dataModelRepository.DeleteAsync(notification, CancellationToken.None);
         }
         catch (Exception e)
@@ -793,6 +794,4 @@ public class RepositoryTests
             throw;
         }
     }
-
-    
 }

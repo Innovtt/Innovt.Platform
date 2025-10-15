@@ -52,7 +52,7 @@ public interface IPagedCollection
 /// It is commonly used to represent the result of paginated queries or data retrieval operations.
 /// </remarks>
 [SuppressMessage("Naming", "CA1711:Identifiers should not have incorrect suffix", Justification = "<Pending>")]
-public interface IPagedCollection<T>: IPagedCollection
+public interface IPagedCollection<T> : IPagedCollection
 {
     /// <summary>
     ///     Gets or sets the collection of items in the current page.

@@ -18,5 +18,5 @@ public class InvalidDiscriminatorException : CriticalException
     public InvalidDiscriminatorException(Type type) : base(
         $"There is no discriminator for the provided type {type}.Please check your context mapping.")
     {
-    } 
+    }
 }

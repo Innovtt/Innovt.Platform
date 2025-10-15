@@ -24,7 +24,7 @@ internal static class CollectionConverter
             : ItemsToArray(targetType, items);
     }
 
-    
+
     /// <summary>
     ///     Converts a collection of objects to an array of the specified target type.
     /// </summary>

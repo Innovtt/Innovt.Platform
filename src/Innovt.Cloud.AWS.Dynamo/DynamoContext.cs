@@ -16,8 +16,8 @@ public abstract class DynamoContext
 {
     private static readonly object ObjLock = new();
 
-    private  CultureInfo DefaultCulture { get; set; } = CultureInfo.CurrentCulture;
-    
+    private CultureInfo DefaultCulture { get; set; } = CultureInfo.CurrentCulture;
+
     protected DynamoContext()
     {
         BuildModel();
@@ -39,22 +39,23 @@ public abstract class DynamoContext
 
             //Clear all caches to avoid any issue with mapping
             AttributeConverter.ClearCaches();
-            
+
             ModelBuilder = new ModelBuilder();
 
             OnModelCreating(ModelBuilder);
         }
     }
-    
+
     public EntityTypeBuilder? GetEntityBuilder<T>()
     {
         return ModelBuilder.GetEntityBuilder<T>();
     }
+
     public EntityTypeBuilder GetEntityBuilder(string name)
     {
         return ModelBuilder.GetEntityBuilder(name);
     }
-    
+
     public IPropertyConverter? GetPropertyConverter(Type type)
     {
         return ModelBuilder.GetPropertyConverter(type);
@@ -71,12 +72,12 @@ public abstract class DynamoContext
             return false;
 
         DefaultCulture = cultureInfo;
-        
+
         Thread.CurrentThread.CurrentCulture = DefaultCulture;
-        
+
         return true;
     }
-    
+
     public bool HasTypeBuilder(Type type)
     {
         return ModelBuilder.HasTypeBuilder(type);
@@ -92,7 +93,7 @@ public abstract class DynamoContext
     {
         return ModelBuilder.HasTypeBuilder<T>(instance);
     }
-    
+
     /// <summary>
     /// Check if the entity has a builder.
     /// </summary>
@@ -102,6 +103,6 @@ public abstract class DynamoContext
     {
         return ModelBuilder.HasTypeBuilder(entityName);
     }
-    
+
     protected abstract void OnModelCreating([DisallowNull] ModelBuilder modelBuilder);
 }

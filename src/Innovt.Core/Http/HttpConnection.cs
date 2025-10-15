@@ -170,7 +170,7 @@ public static class HttpConnection
         NameValueCollection headerData = null, int? connectionTimeout = null) where T : class
     {
         Check.NotNull(serializer);
-        
+
         var response = SendHttpWebRequest(endpoint, HttpMethod.Post.Method, dataToSend, headerData,
             connectionTimeout);
 

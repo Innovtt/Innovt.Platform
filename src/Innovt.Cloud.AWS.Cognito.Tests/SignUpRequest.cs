@@ -6,7 +6,7 @@ using Innovt.Core.Utilities;
 
 namespace Innovt.Cloud.AWS.Cognito.Tests;
 
-public class SignUpRequest:RequestBase,ISignUpRequest
+public class SignUpRequest : RequestBase, ISignUpRequest
 {
     public string Name { get; set; }
     public string Family_Name { get; set; }
@@ -25,7 +25,7 @@ public class SignUpRequest:RequestBase,ISignUpRequest
     public Dictionary<string, string> CustomAttributes { get; set; }
 
     public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-    {   
+    {
         if (UserName.IsNullOrEmpty())
             yield return new ValidationResult("error", new[] { nameof(Family_Name) });
     }
@@ -44,5 +44,4 @@ public class SignUpRequest:RequestBase,ISignUpRequest
     {
         return InvitedById;
     }
-
 }
