@@ -141,11 +141,14 @@ public class ContextUserServiceTests
 
         // Assert
         Assert.That(result, Is.Not.Null);
-        Assert.That(result.UserId, Is.EqualTo(userId));
-        Assert.That(result.Email, Is.EqualTo(email));
-        Assert.That(result.Name, Is.EqualTo(name));
-        Assert.That(result.Roles, Is.Null);
-        Assert.That(result.Claims, Is.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result.UserId, Is.EqualTo(userId));
+            Assert.That(result.Email, Is.EqualTo(email));
+            Assert.That(result.Name, Is.EqualTo(name));
+            Assert.That(result.Roles, Is.Null);
+            Assert.That(result.Claims, Is.Null);
+        }
     }
 
     [Test]
@@ -173,11 +176,14 @@ public class ContextUserServiceTests
 
         // Assert
         Assert.That(result, Is.Not.Null);
-        Assert.That(result.UserId, Is.EqualTo(userId));
-        Assert.That(result.Email, Is.Null);
-        Assert.That(result.Name, Is.Null);
-        Assert.That(result.Roles, Is.Null);
-        Assert.That(result.Claims, Is.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result.UserId, Is.EqualTo(userId));
+            Assert.That(result.Email, Is.Null);
+            Assert.That(result.Name, Is.Null);
+            Assert.That(result.Roles, Is.Null);
+            Assert.That(result.Claims, Is.Null);
+        }
     }
 
     [Test]
@@ -207,9 +213,12 @@ public class ContextUserServiceTests
 
         // Assert
         Assert.That(result, Is.Not.Null);
-        Assert.That(result.UserId, Is.EqualTo(string.Empty));
-        Assert.That(result.Email, Is.EqualTo(email));
-        Assert.That(result.Name, Is.EqualTo(name));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result.UserId, Is.EqualTo(string.Empty));
+            Assert.That(result.Email, Is.EqualTo(email));
+            Assert.That(result.Name, Is.EqualTo(name));
+        }
     }
 
     [Test]
@@ -241,8 +250,11 @@ public class ContextUserServiceTests
 
         // Assert
         Assert.That(result, Is.Not.Null);
-        Assert.That(result.UserId, Is.EqualTo(userId));
-        Assert.That(result.Roles, Is.Not.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result.UserId, Is.EqualTo(userId));
+            Assert.That(result.Roles, Is.Not.Null);
+        }
         Assert.That(result.Roles.Count, Is.EqualTo(2));
         Assert.That(result.Roles, Does.Contain(role1));
         Assert.That(result.Roles, Does.Contain(role2));
@@ -279,11 +291,17 @@ public class ContextUserServiceTests
 
         // Assert
         Assert.That(result, Is.Not.Null);
-        Assert.That(result.UserId, Is.EqualTo(userId));
-        Assert.That(result.Claims, Is.Not.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result.UserId, Is.EqualTo(userId));
+            Assert.That(result.Claims, Is.Not.Null);
+        }
         Assert.That(result.Claims.Count, Is.EqualTo(2));
-        Assert.That(result.Claims[customClaimType1], Is.EqualTo(customClaimValue1));
-        Assert.That(result.Claims[customClaimType2], Is.EqualTo(customClaimValue2));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result.Claims[customClaimType1], Is.EqualTo(customClaimValue1));
+            Assert.That(result.Claims[customClaimType2], Is.EqualTo(customClaimValue2));
+        }
     }
 
     [Test]
@@ -325,16 +343,22 @@ public class ContextUserServiceTests
 
         // Assert
         Assert.That(result, Is.Not.Null);
-        Assert.That(result.UserId, Is.EqualTo(userId));
-        Assert.That(result.Email, Is.EqualTo(email));
-        Assert.That(result.Name, Is.EqualTo(name));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result.UserId, Is.EqualTo(userId));
+            Assert.That(result.Email, Is.EqualTo(email));
+            Assert.That(result.Name, Is.EqualTo(name));
 
-        Assert.That(result.Roles, Is.Not.Null);
+            Assert.That(result.Roles, Is.Not.Null);
+        }
         Assert.That(result.Roles.Count, Is.EqualTo(2));
         Assert.That(result.Roles, Does.Contain(role1));
-        Assert.That(result.Roles, Does.Contain(role2));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result.Roles, Does.Contain(role2));
 
-        Assert.That(result.Claims, Is.Not.Null);
+            Assert.That(result.Claims, Is.Not.Null);
+        }
         Assert.That(result.Claims.Count, Is.EqualTo(2));
         Assert.That(result.Claims[customClaimType1], Is.EqualTo(customClaimValue1));
         Assert.That(result.Claims[customClaimType2], Is.EqualTo(customClaimValue2));
@@ -376,12 +400,15 @@ public class ContextUserServiceTests
         Assert.That(result, Is.Not.Null);
         Assert.That(result.Claims, Is.Not.Null);
         Assert.That(result.Claims.Count, Is.EqualTo(1));
-        Assert.That(result.Claims.ContainsKey(ClaimTypes.NameIdentifier), Is.False);
-        Assert.That(result.Claims.ContainsKey(ClaimTypes.Email), Is.False);
-        Assert.That(result.Claims.ContainsKey(ClaimTypes.Name), Is.False);
-        Assert.That(result.Claims.ContainsKey(ClaimTypes.Role), Is.False);
-        Assert.That(result.Claims.ContainsKey(customClaim), Is.True);
-        Assert.That(result.Claims[customClaim], Is.EqualTo(customValue));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result.Claims.ContainsKey(ClaimTypes.NameIdentifier), Is.False);
+            Assert.That(result.Claims.ContainsKey(ClaimTypes.Email), Is.False);
+            Assert.That(result.Claims.ContainsKey(ClaimTypes.Name), Is.False);
+            Assert.That(result.Claims.ContainsKey(ClaimTypes.Role), Is.False);
+            Assert.That(result.Claims.ContainsKey(customClaim), Is.True);
+            Assert.That(result.Claims[customClaim], Is.EqualTo(customValue));
+        }
     }
 
     #endregion
