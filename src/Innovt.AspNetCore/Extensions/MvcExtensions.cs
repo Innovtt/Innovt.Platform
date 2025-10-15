@@ -7,9 +7,11 @@ using System.Net;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
+using Innovt.AspNetCore.Infrastructure;
 using Innovt.AspNetCore.Utility.Pagination;
 using Innovt.Core.Exceptions;
 using Innovt.Core.Utilities;
+using Innovt.Domain.Security;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -160,7 +162,13 @@ public static class MvcExtensions
                 };
             });
     }
-
+    
+    public static void AddContextUserService(this IServiceCollection services)
+    {
+        services.AddHttpContextAccessor();
+        services.AddScoped<IContextUserService, ContextUserService>();
+    }
+    
     /// <summary>
     ///     Generates an HTML pager for pagination.
     /// </summary>

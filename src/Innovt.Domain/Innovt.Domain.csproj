@@ -10,6 +10,7 @@
         <Copyright>Innovt Tecnologia</Copyright>
         <Description>Simple domain project.</Description>
         <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
