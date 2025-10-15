@@ -14,15 +14,17 @@ public class DiscriminatorBuilder(string name, EntityTypeBuilder builder)
     /// <summary>
     /// The column name that will be used to store the discriminator.
     /// </summary>
-    public string Name { get; set;  } = name ?? throw new ArgumentNullException(nameof(name));
+    public string Name { get; set; } = name ?? throw new ArgumentNullException(nameof(name));
 
     /// <summary>
     /// The values attached to the discriminator.
     /// </summary>
-    private ConcurrentDictionary<string,Type> TypeValues { get; set;  } = new();
-    private ConcurrentDictionary<string,object> InstanceValues { get; set;  } = new();
+    private ConcurrentDictionary<string, Type> TypeValues { get; set; } = new();
 
-    public EntityTypeBuilder Builder { get; private set; } = builder ?? throw new ArgumentNullException(nameof(builder));
+    private ConcurrentDictionary<string, object> InstanceValues { get; set; } = new();
+
+    public EntityTypeBuilder Builder { get; private set; } =
+        builder ?? throw new ArgumentNullException(nameof(builder));
 
     /// <summary>
     /// Simple case of a class that can inherit from another class.
@@ -31,23 +33,23 @@ public class DiscriminatorBuilder(string name, EntityTypeBuilder builder)
     /// <returns></returns>
     public DiscriminatorBuilder HasValue<T>() where T : new()
     {
-        TypeValues.TryAdd(typeof(T).Name,typeof(T));
-        
+        TypeValues.TryAdd(typeof(T).Name, typeof(T));
+
         return this;
     }
-    
+
     /// <summary>
     /// Use this method when you need to define a value for a specific type.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     public DiscriminatorBuilder HasValue<T>(T value)
-    {   
-        InstanceValues.TryAdd(typeof(T).Name,value!);
-        
+    {
+        InstanceValues.TryAdd(typeof(T).Name, value!);
+
         return this;
     }
-  
+
     /// <summary>
     /// Use this method when you have a type T with a parameterless constructor and will be created when matched the whenValue parameter
     /// </summary>
@@ -57,12 +59,12 @@ public class DiscriminatorBuilder(string name, EntityTypeBuilder builder)
     public DiscriminatorBuilder HasValue<T>(string whenValue) where T : new()
     {
         ArgumentNullException.ThrowIfNull(whenValue);
-        
-        TypeValues.TryAdd(whenValue,typeof(T));
-     
+
+        TypeValues.TryAdd(whenValue, typeof(T));
+
         return this;
     }
-    
+
     /// <summary>
     /// Use this method when you have a type T with a parameterless constructor and will be created when matched the whenValue parameter
     /// </summary>
@@ -73,7 +75,7 @@ public class DiscriminatorBuilder(string name, EntityTypeBuilder builder)
     {
         return HasValue<T>(whenValue.ToString(CultureInfo.InvariantCulture));
     }
-    
+
     /// <summary>
     /// Use this method when you want to define a value for a specific type and a specific value.
     /// </summary>
@@ -85,12 +87,12 @@ public class DiscriminatorBuilder(string name, EntityTypeBuilder builder)
     {
         ArgumentNullException.ThrowIfNull(value);
         ArgumentNullException.ThrowIfNull(whenValue);
-        
-        InstanceValues.TryAdd(whenValue,value);
-        
+
+        InstanceValues.TryAdd(whenValue, value);
+
         return this;
     }
-    
+
     /// <summary>
     /// Use this method when you want to define a value for a specific type and a specific value.
     /// </summary>
@@ -102,7 +104,7 @@ public class DiscriminatorBuilder(string name, EntityTypeBuilder builder)
     {
         return HasValue(value, whenValue.ToString(CultureInfo.InvariantCulture));
     }
-    
+
     /// <summary>
     /// Get the type for the discriminator.
     /// </summary>
@@ -110,19 +112,19 @@ public class DiscriminatorBuilder(string name, EntityTypeBuilder builder)
     /// <returns></returns>
     public Type GetTypeForDiscriminator(string value)
     {
-        if(TypeValues.TryGetValue(value, out var typeValue))
+        if (TypeValues.TryGetValue(value, out var typeValue))
         {
             return typeValue;
         }
-        
-        if(InstanceValues.TryGetValue(value, out var defaultObj))
+
+        if (InstanceValues.TryGetValue(value, out var defaultObj))
         {
             return defaultObj.GetType();
         }
-        
+
         throw new InvalidDiscriminatorException(value);
     }
-    
+
     /// <summary>
     /// Get the type for the discriminator.
     /// </summary>
@@ -147,11 +149,11 @@ public class DiscriminatorBuilder(string name, EntityTypeBuilder builder)
         }
 
         //Check if a type value exists
-        if(TypeValues.TryGetValue(value, out var typeValue))
+        if (TypeValues.TryGetValue(value, out var typeValue))
         {
             return (T)ReflectionTypeUtil.CreateInstance(typeValue)();
         }
-        
+
         throw new InvalidDiscriminatorException(value);
     }
 
@@ -164,7 +166,7 @@ public class DiscriminatorBuilder(string name, EntityTypeBuilder builder)
     {
         return GetValue<T>(value.ToString(CultureInfo.InvariantCulture));
     }
-    
+
     /// <summary>
     /// Get the instance of a object with a discriminator value
     /// </summary>
@@ -179,7 +181,7 @@ public class DiscriminatorBuilder(string name, EntityTypeBuilder builder)
 
         return TypeValues.TryGetValue(value, out var typeValue) ? ReflectionTypeUtil.CreateInstance(typeValue)() : null;
     }
-    
+
     /// <summary>
     /// Get the instance of a object with a discriminator value
     /// </summary>

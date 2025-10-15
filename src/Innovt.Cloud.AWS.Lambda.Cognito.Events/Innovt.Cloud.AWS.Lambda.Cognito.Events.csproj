@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-          <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <PackageId>Innovt.Cloud.AWS.Lambda.Cognito.Events</PackageId>
         <PackageVersion>8.4.3</PackageVersion>
         <Authors>Michel Borges</Authors>
@@ -13,12 +13,12 @@
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="System.Text.Json" Version="9.0.10" />
+        <PackageReference Include="System.Text.Json" Version="9.0.10"/>
     </ItemGroup>
     <ItemGroup>
-        <Folder Include="CreateAuthChallenge\" />
-        <Folder Include="DefineAuthChallenge\" />
-        <Folder Include="PreTokenGeneration\" />
-        <Folder Include="PostConfirmation\" />
+        <Folder Include="CreateAuthChallenge\"/>
+        <Folder Include="DefineAuthChallenge\"/>
+        <Folder Include="PreTokenGeneration\"/>
+        <Folder Include="PostConfirmation\"/>
     </ItemGroup>
 </Project>

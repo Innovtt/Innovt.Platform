@@ -111,11 +111,11 @@ public static class MvcExtensions
             throw new CriticalException($"The Config Section '{configSection}:Audience' not defined.");
         if (authoritySection.Value == null)
             throw new CriticalException("The Config Section '{configSection}:Authority' not defined.");
-        
+
         services.AddBearerAuthorization(audienceSection.Value, authoritySection.Value, validateAudience, validateIssuer,
             validateLifetime, validateIssuerSigningKey, audiences);
     }
-    
+
     // ReSharper disable once MemberCanBePrivate.Global
     /// <summary>
     ///     Adds Bearer token authentication.
@@ -162,13 +162,13 @@ public static class MvcExtensions
                 };
             });
     }
-    
+
     public static void AddContextUserService(this IServiceCollection services)
     {
         services.AddHttpContextAccessor();
         services.AddScoped<IContextUserService, ContextUserService>();
     }
-    
+
     /// <summary>
     ///     Generates an HTML pager for pagination.
     /// </summary>

@@ -45,10 +45,10 @@ internal class SomeDto3 : SomeDto
     public int Age { get; set; }
 }
 
-internal class SomeDtoWithReadyOnlyProperty: SomeDto
+internal class SomeDtoWithReadyOnlyProperty : SomeDto
 {
     public string LastName { get; } = "Borges";
-    
+
     public string FullName => $"{Name} {LastName}";
 }
 
@@ -130,7 +130,7 @@ public class SimpleMapTests
         Assert.That(a.Name, Is.EqualTo(b.Name));
         Assert.That(a.Description, Is.EqualTo(b.Description));
     }
-    
+
     [Test]
     public void MapWithReadyOnlyProperties()
     {
@@ -321,7 +321,6 @@ public class SimpleMapTests
             Assert.That(invoice.UpdatedAt, Is.EqualTo(invoiceDto.UpdatedAt));
         });
     }
-    
 
 
     [Test]

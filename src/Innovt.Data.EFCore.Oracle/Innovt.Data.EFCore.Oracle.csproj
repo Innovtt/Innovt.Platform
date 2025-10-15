@@ -15,7 +15,7 @@
 
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Oracle.EntityFrameworkCore" Version="9.23.26000" />
+        <PackageReference Include="Oracle.EntityFrameworkCore" Version="9.23.26000"/>
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\Innovt.Data.EFCore\Innovt.Data.EFCore.csproj"/>

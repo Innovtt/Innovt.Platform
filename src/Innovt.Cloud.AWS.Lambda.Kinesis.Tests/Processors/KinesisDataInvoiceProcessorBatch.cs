@@ -23,10 +23,10 @@ public class KinesisDataInvoiceProcessorBatch(IServiceMock serviceMock, bool rep
 
         return Task.FromResult(result);
     }
-    
-    
+
+
     public ILogger GetLogger()
-    {   
+    {
         return Logger;
     }
 }

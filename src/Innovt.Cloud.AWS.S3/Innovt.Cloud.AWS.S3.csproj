@@ -13,8 +13,8 @@
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="AWSSDK.S3" Version="4.0.7.10" />
-        <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="9.0.10" />
+        <PackageReference Include="AWSSDK.S3" Version="4.0.7.10"/>
+        <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="9.0.10"/>
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj" />
+        <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj"/>
     </ItemGroup>
 
 </Project>

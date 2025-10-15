@@ -16,14 +16,14 @@ namespace Innovt.Cloud.AWS.Cognito.Tests;
 [TestFixture]
 [Ignore("Only for local tests")]
 public class IntegratedTests
-{   
+{
     [SetUp]
     public void TearUp()
     {
         loggerMock = Substitute.For<ILogger>();
-        
+
         var configuration = new ConfigurationBuilder();
-        
+
         var awsOptions = new AWSOptions
         {
             Profile = "c2g-dev", Region = RegionEndpoint.USEast1, DefaultClientConfig =
@@ -31,35 +31,34 @@ public class IntegratedTests
                 AllowAutoRedirect = true
             }
         };
-        
-        configuration.AddSystemsManager("/Authentication/", awsOptions,false);
-        
+
+        configuration.AddSystemsManager("/Authentication/", awsOptions, false);
+
         awsConfigurationMock = new DefaultAwsConfiguration("c2g-dev");
-        
+
         var configurationRoot = configuration.Build();
-        
+
         var cognitoConfiguration = configurationRoot.GetSection("CognitoWebApp").Get<CognitoProviderConfiguration>();
 
         if (cognitoConfiguration.IsNull())
             cognitoConfiguration = configurationRoot.GetSection("Authentication:CognitoWebApp")
                 .Get<CognitoProviderConfiguration>();
-        
+
         identityProvider = new BaseIdentityProvider(
             loggerMock,
-            awsConfigurationMock,cognitoConfiguration!.ClientId,
+            awsConfigurationMock, cognitoConfiguration!.ClientId,
             cognitoConfiguration.UserPoolId,
             cognitoConfiguration.DomainEndPoint,
             cognitoConfiguration.Region);
     }
-    
+
     private ILogger loggerMock;
     private IAwsConfiguration awsConfigurationMock;
     private BaseIdentityProvider identityProvider;
-    
+
     [Test]
     public async Task TestSignIn()
     {
-        
         // Arrange
         var request = new SignInRequest
         {
@@ -70,7 +69,6 @@ public class IntegratedTests
         try
         {
             var response = await identityProvider.SignIn(request, CancellationToken.None);
-            
         }
         catch (Exception e)
         {
@@ -78,10 +76,9 @@ public class IntegratedTests
             throw;
         }
         // Act
-       
     }
 
-    
+
     [Test]
     public async Task LinkUsers()
     {
@@ -95,7 +92,6 @@ public class IntegratedTests
         try
         {
             var response = await identityProvider.LinkSocialUser(request, CancellationToken.None);
-
         }
         catch (Exception e)
         {
@@ -103,8 +99,8 @@ public class IntegratedTests
             throw;
         }
     }
-    
-    
+
+
     [Test]
     public async Task Register()
     {
@@ -121,7 +117,6 @@ public class IntegratedTests
         try
         {
             var response = await identityProvider.SignUp(request, CancellationToken.None);
-
         }
         catch (Exception e)
         {
@@ -129,7 +124,7 @@ public class IntegratedTests
             throw;
         }
     }
-    
+
     [Test]
     public async Task ClearSocialAccounts()
     {
@@ -139,7 +134,7 @@ public class IntegratedTests
         try
         {
             var response = await identityProvider.ClearSocialAccounts(request, CancellationToken.None);
-            
+
             Assert.That(response, Is.True);
         }
         catch (Exception e)
@@ -148,5 +143,4 @@ public class IntegratedTests
             Assert.Fail(e.Message);
         }
     }
-
 }

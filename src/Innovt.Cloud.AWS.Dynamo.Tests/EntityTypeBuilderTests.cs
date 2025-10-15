@@ -123,80 +123,80 @@ public class EntityTypeBuilderTests
         Assert.That(properties, Is.Not.Null);
         Assert.That(properties, Has.Count.EqualTo(16));
     }
-    
+
     [Test]
     public void IgnoredPropertiesShouldInvokeMap()
     {
         var builder = new EntityTypeBuilder<User>();
         //Ignoring no native properties
-        builder.AutoMap(ignoreNonNativeTypes:true);
-        
-        builder.Ignore(c=>c.Company);
-        
-        builder.Property(c => c.Company).WithMap(c => c.Company= new Company
+        builder.AutoMap(ignoreNonNativeTypes: true);
+
+        builder.Ignore(c => c.Company);
+
+        builder.Property(c => c.Company).WithMap(c => c.Company = new Company
         {
             Name = "Company",
-            User =null,
+            User = null,
             Id = Guid.NewGuid().ToString()
         });
 
         var ignored = builder.Property(c => c.Company).Ignored;
-        
+
         Assert.That(ignored, Is.True);
-            
+
         var properties = builder.GetProperties();
 
         Assert.That(properties, Is.Not.Null);
         Assert.That(properties, Has.Count.EqualTo(16));
     }
-    
+
     [Test]
     public void IncludePropertyShouldRemoveTheIgnore()
     {
         var builder = new EntityTypeBuilder<User>();
-        
+
         //Ignoring no native properties
-        builder.AutoMap(ignoreNonNativeTypes:true);
-        
+        builder.AutoMap(ignoreNonNativeTypes: true);
+
         var properties = builder.GetProperties();
-        
+
         Assert.That(properties, Is.Not.Null);
         Assert.That(properties, Has.Count.EqualTo(16));
-        
-        builder.Include(c=>c.Company);
-        
+
+        builder.Include(c => c.Company);
+
         properties = builder.GetProperties();
-        
+
         Assert.That(properties, Is.Not.Null);
         Assert.That(properties, Has.Count.EqualTo(17));
-        
+
         var ignored = builder.Property(c => c.Company).Ignored;
-        
+
         Assert.That(ignored, Is.False);
     }
-    
+
     [Test]
     public void IncludePropertyShouldIgnoredWheIgnoreWasAdded()
     {
         var builder = new EntityTypeBuilder<User>();
-        
+
         //Ignoring no native properties
-        builder.AutoMap(ignoreNonNativeTypes:true);
-        
+        builder.AutoMap(ignoreNonNativeTypes: true);
+
         var properties = builder.GetProperties();
-        
+
         Assert.That(properties, Is.Not.Null);
         Assert.That(properties, Has.Count.EqualTo(16));
 
-        builder.Include(c => c.Company).Ignore(c=>c.Company);
-        
+        builder.Include(c => c.Company).Ignore(c => c.Company);
+
         properties = builder.GetProperties();
-        
+
         Assert.That(properties, Is.Not.Null);
         Assert.That(properties, Has.Count.EqualTo(16));
-        
+
         var ignored = builder.Property(c => c.Company).Ignored;
-        
+
         Assert.That(ignored, Is.True);
     }
 }

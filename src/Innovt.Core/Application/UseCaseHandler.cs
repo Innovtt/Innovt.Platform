@@ -9,13 +9,14 @@ namespace Innovt.Core.Application;
 
 public class UseCaseHandler(IServiceProvider serviceProvider) : IUseCaseHandler
 {
-    public async Task<TResponse> ExecuteAsync<TRequest, TResponse>(TRequest tRequest, CancellationToken cancellationToken = default) where TRequest : IValidatableObject
-    {       
+    public async Task<TResponse> ExecuteAsync<TRequest, TResponse>(TRequest tRequest,
+        CancellationToken cancellationToken = default) where TRequest : IValidatableObject
+    {
         var handler = serviceProvider.GetService<IUseCase<TRequest, TResponse>>();
 
         if (handler == null)
             throw new InvalidOperationException($"Handler not found for {typeof(TRequest).Name}");
-        
+
         return await handler.ExecuteAsync(tRequest, cancellationToken);
     }
 }

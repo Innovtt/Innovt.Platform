@@ -6,5 +6,6 @@ namespace Innovt.Core.Application;
 
 public interface IUseCaseHandler
 {
-    Task<TResponse> ExecuteAsync<TRequest, TResponse>(TRequest tRequest, CancellationToken cancellationToken = default) where TRequest : IValidatableObject;
+    Task<TResponse> ExecuteAsync<TRequest, TResponse>(TRequest tRequest, CancellationToken cancellationToken = default)
+        where TRequest : IValidatableObject;
 }

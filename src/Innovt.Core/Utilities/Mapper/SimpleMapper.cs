@@ -27,7 +27,7 @@ public static class SimpleMapper
     {
         if (input == null)
             return default;
-        
+
         // Get properties from both input and output
         var inputProperties = input.GetType()
             .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.IgnoreCase);

@@ -14,6 +14,7 @@ namespace Innovt.CrossCutting.IOC;
 public sealed class Container : IContainer
 {
     private readonly Lamar.Container container;
+
     /// <summary>
     ///     Initializes a new instance of the <see cref="Container" /> class using the provided services.
     /// </summary>
@@ -59,9 +60,9 @@ public sealed class Container : IContainer
     public IContainer AddModule(IocModule iocModule)
     {
         ArgumentNullException.ThrowIfNull(iocModule);
-        
+
         container.Configure(iocModule.GetServices());
-        
+
         return this;
     }
 
@@ -74,14 +75,15 @@ public sealed class Container : IContainer
     public IContainer AddModule(IocModule[] iocModules)
     {
         ArgumentNullException.ThrowIfNull(iocModules);
-        
+
         foreach (var module in iocModules)
         {
             if (module == null)
                 throw new ArgumentNullException(nameof(iocModules), "One of the IocModule is null");
-            
+
             container.Configure(module.GetServices());
         }
+
         return this;
     }
 
@@ -123,7 +125,7 @@ public sealed class Container : IContainer
     {
         return (TService)container.GetInstance(type);
     }
-    
+
     /// <summary>
     ///     Try to resolve a service. If the service is not registered, return null.
     /// </summary>
@@ -133,7 +135,7 @@ public sealed class Container : IContainer
     {
         return container.TryGetInstance<TService>();
     }
-    
+
     /// <summary>
     ///     This method will not throw an exception if the service is not registered. Return null instead.
     /// </summary>

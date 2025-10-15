@@ -206,19 +206,20 @@ public static class Extensions
     /// <returns>A string representation of the DateTimeOffset in a custom format.</returns>
     public static string FormatToExtensionDateTime(this DateTimeOffset value)
     {
-        var weekDay = value.ToString("dddd",CultureInfo.DefaultThreadCurrentCulture).Split('-');
+        var weekDay = value.ToString("dddd", CultureInfo.DefaultThreadCurrentCulture).Split('-');
 
         var dia = weekDay[0][..1].ToUpper(CultureInfo.DefaultThreadCurrentCulture) + weekDay[0][1..];
 
         if (weekDay.Length == 2)
             dia += "-" + weekDay[1][..1].ToUpper(CultureInfo.DefaultThreadCurrentCulture) + weekDay[1][1..];
 
-        var mes = value.ToString("MMMM",CultureInfo.DefaultThreadCurrentCulture);
+        var mes = value.ToString("MMMM", CultureInfo.DefaultThreadCurrentCulture);
 
         mes = mes[..1].ToUpper(CultureInfo.DefaultThreadCurrentCulture) + mes[1..];
 
-        return dia + ", " + value.ToString("dd",CultureInfo.DefaultThreadCurrentCulture) + " de " + mes + " de " + value.ToString("yyyy",CultureInfo.DefaultThreadCurrentCulture) + ", " +
-               value.ToString("t",CultureInfo.DefaultThreadCurrentCulture) + "h";
+        return dia + ", " + value.ToString("dd", CultureInfo.DefaultThreadCurrentCulture) + " de " + mes + " de " +
+               value.ToString("yyyy", CultureInfo.DefaultThreadCurrentCulture) + ", " +
+               value.ToString("t", CultureInfo.DefaultThreadCurrentCulture) + "h";
     }
 
     /// <summary>

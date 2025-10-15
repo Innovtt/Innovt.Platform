@@ -84,7 +84,7 @@ public abstract class KinesisProcessorBase<TBody> : EventProcessor<KinesisEvent,
             activity?.AddBaggage("Message.ElapsedTimeBeforeAttendedInMinutes",
                 $"{DateTime.UtcNow.Subtract(record.Kinesis.ApproximateArrivalTimestamp.Value).TotalMinutes}");
         }
-        
+
         Logger.Info("Reading Stream Content.");
 
         using var reader = new StreamReader(record.Kinesis.Data, Encoding.UTF8);
@@ -100,7 +100,8 @@ public abstract class KinesisProcessorBase<TBody> : EventProcessor<KinesisEvent,
         if (body != null)
         {
             body.EventId = record.EventId;
-            body.ApproximateArrivalTimestamp = record.Kinesis.ApproximateArrivalTimestamp.GetValueOrDefault(DateTime.UtcNow);
+            body.ApproximateArrivalTimestamp =
+                record.Kinesis.ApproximateArrivalTimestamp.GetValueOrDefault(DateTime.UtcNow);
             body.Partition ??= record.Kinesis.PartitionKey;
             body.TraceId ??= activity?.Id;
         }

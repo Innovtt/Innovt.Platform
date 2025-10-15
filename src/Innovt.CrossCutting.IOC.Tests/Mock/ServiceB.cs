@@ -1,6 +1,6 @@
 namespace Innovt.CrossCutting.IOC.Tests.Mock;
 
-public class ServiceB: IServiceB
+public class ServiceB : IServiceB
 {
     public void MethodB()
     {

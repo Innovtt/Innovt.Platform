@@ -6,9 +6,9 @@ public abstract class PropertyBuilder
 {
     private string columnName;
     protected Func<object, object> SetValueDelegate { get; set; }
-    
+
     public EntityTypeBuilder Builder { get; set; }
-    
+
     /// <summary>
     ///     Gets a value if the field is required.
     /// </summary>
@@ -17,12 +17,12 @@ public abstract class PropertyBuilder
     /// <summary>
     ///     Has map actions is when you need to map some property.
     /// </summary>
-    public bool HasMapAction{ get; protected set; }
+    public bool HasMapAction { get; protected set; }
 
     /// <summary>
     ///     Gets the name of the property.
     /// </summary>
-    public string Name { get; protected set;}
+    public string Name { get; protected set; }
 
     /// <summary>
     ///     Get the value of the property.
@@ -49,7 +49,7 @@ public abstract class PropertyBuilder
         Ignored = true;
         return this;
     }
-    
+
     public PropertyBuilder Include()
     {
         Ignored = false;
@@ -93,7 +93,7 @@ public abstract class PropertyBuilder
     {
         Value = value;
         return this;
-    }   
+    }
 
     /// <summary>
     ///     Define when a fi
@@ -112,13 +112,13 @@ public abstract class PropertyBuilder
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public object GetDefaultValue<T>(T entity) where T:class
+    public object GetDefaultValue<T>(T entity) where T : class
     {
         if (SetValueDelegate != null)
-            Value =  SetValueDelegate(entity);
-        
+            Value = SetValueDelegate(entity);
+
         Type = Value?.GetType() ?? Type;
-        
+
         return Value;
     }
 }

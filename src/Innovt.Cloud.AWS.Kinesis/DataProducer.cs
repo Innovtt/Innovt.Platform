@@ -86,11 +86,11 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
         foreach (var data in dataStreams)
         {
             // Ensure that the data stream is not null and has a valid partition key.
-            if(data is null)
+            if (data is null)
             {
                 continue;
             }
-            
+
             if (data.TraceId.IsNullOrEmpty() && activity != null) data.TraceId = activity.TraceId.ToString();
 
             data.PublishedAt = DateTimeOffset.UtcNow;
@@ -102,7 +102,6 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
                 Data = new MemoryStream(dataAsBytes),
                 PartitionKey = data.Partition
             });
-            
         }
 
         return request;
@@ -118,13 +117,13 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
         Logger.Info("Kinesis Publisher Started");
 
         var dataStreams = dataList as T[] ?? dataList.ToArray();
-        
+
         if (dataStreams.IsNullOrEmpty())
         {
             Logger.Info("The event list is empty or null.");
             return;
         }
-        
+
         if (dataStreams.Length > 500) throw new InvalidEventLimitException();
 
         using var activity = ActivityDataProducer.StartActivity();

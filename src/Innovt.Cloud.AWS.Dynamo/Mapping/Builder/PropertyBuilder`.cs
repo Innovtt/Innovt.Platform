@@ -7,13 +7,12 @@ namespace Innovt.Cloud.AWS.Dynamo.Mapping.Builder;
 ///     Represents a builder for defining the properties of an entity type.
 /// </summary>
 /// <typeparam name="T">The type of the entity.</typeparam>
-
-public sealed class PropertyBuilder<T>: PropertyBuilder
+public sealed class PropertyBuilder<T> : PropertyBuilder
 {
     private readonly List<Action<T>> mappedActions = [];
-    
+
     public new EntityTypeBuilder<T> Builder { get; set; }
-    
+
     /// <summary>
     ///     Initializes a new instance of the <see cref="PropertyBuilder{T}" /> class with a specified property name and
     ///     type.
@@ -40,16 +39,16 @@ public sealed class PropertyBuilder<T>: PropertyBuilder
         Type = propertyName.Invoke(default).GetType();
         Builder = builder;
     }
-    
+
     private new bool HasMapAction => mappedActions.Count > 0;
-    
+
     /// <summary>
     ///     Specifies a custom column name for the property in the database.
     /// </summary>
     /// <param name="name">The custom column name.</param>
     /// <returns>The current instance of <see cref="PropertyBuilder{T}" />.</returns>
-    public new PropertyBuilder<T> HasColumnName(string name)=> (PropertyBuilder<T>)base.HasColumnName(name);
-    
+    public new PropertyBuilder<T> HasColumnName(string name) => (PropertyBuilder<T>)base.HasColumnName(name);
+
     /// <summary>
     ///     Specifies that the property is of decimal type.
     /// </summary>
@@ -77,7 +76,7 @@ public sealed class PropertyBuilder<T>: PropertyBuilder
     /// </summary>
     /// <returns></returns>
     public new PropertyBuilder<T> Ignore() => (PropertyBuilder<T>)base.Ignore();
-    
+
     /// <summary>
     /// The property will be included by the mapping.
     /// </summary>
@@ -98,7 +97,7 @@ public sealed class PropertyBuilder<T>: PropertyBuilder
 
         return this;
     }
-    
+
     /// <summary>
     ///     Define a delegate to set the value of the property based on the entity.
     /// </summary>
@@ -107,12 +106,12 @@ public sealed class PropertyBuilder<T>: PropertyBuilder
     public PropertyBuilder<T> SetDynamicValue(Func<T, object> valueDelegate)
     {
         ArgumentNullException.ThrowIfNull(valueDelegate);
-    
+
         SetValueDelegate = obj => valueDelegate((T)obj);
-        
+
         return this;
     }
-    
+
     /// <summary>
     ///  Invoke all map actions
     /// </summary>

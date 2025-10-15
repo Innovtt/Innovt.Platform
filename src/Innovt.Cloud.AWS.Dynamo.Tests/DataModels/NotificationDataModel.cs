@@ -11,11 +11,9 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests.DataModels;
 [DynamoDBTable("NotificationRequests")]
 public class NotificationDataModel
 {
-    [DynamoDBRangeKey("SK")] 
-    public string Sk { get; set; }
-    
-    [DynamoDBHashKey("PK")] 
-    public string Id { get; set; }
+    [DynamoDBRangeKey("SK")] public string Sk { get; set; }
+
+    [DynamoDBHashKey("PK")] public string Id { get; set; }
 
     public DateTime CreatedAt { get; set; }
     public string TemplateId { get; set; }

@@ -117,10 +117,10 @@ public class ExtensionsTests
         Assert.That(convertedDateTime, Is.EqualTo(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
             12, 0, 0, DateTimeKind.Utc)));
     }
-    
-    [TestCase("","")]
-    [TestCase(null,"")]
-    [TestCase(" ","")]
+
+    [TestCase("", "")]
+    [TestCase(null, "")]
+    [TestCase(" ", "")]
     [TestCase("   ", "")]
     [TestCase("---", "")]
     [TestCase("Hello World!", "hello-world")]
@@ -151,17 +151,17 @@ public class ExtensionsTests
 
         Assert.That(actual, Is.EqualTo(expected));
     }
-    
+
 
     [Test]
     public void LongInput_ShouldBeTruncated()
     {
         var longInput = new string('a', 100) + "-test";
         var result = longInput.CreateSlug(75);
-        Assert.That(result, Has.Length.LessThanOrEqualTo(75)); 
+        Assert.That(result, Has.Length.LessThanOrEqualTo(75));
     }
-    
-    
+
+
     [Test]
     public void ToUri_ReturnsNull_If_Str_IsNull()
     {
@@ -170,35 +170,35 @@ public class ExtensionsTests
         var result = uri.ToUri();
         Assert.That(result, Is.Null);
     }
-    
+
     [Test]
     public void ToUri_ReturnsNull_If_Str_IsEmpty()
     {
-       var uri = string.Empty;
+        var uri = string.Empty;
 
         var result = uri.ToUri();
         Assert.That(result, Is.Null);
     }
-    
+
     [Test]
     public void ToUri_ReturnsN_If_Uri_Is_NotValid()
     {
         var uri = "invalid-url";
 
         var result = uri.ToUri();
-        
+
         Assert.That(result, Is.Not.Null);
         Assert.That(result.IsAbsoluteUri, Is.False);
-        Assert.That(result.ToString(),Is.EqualTo("invalid-url"));
+        Assert.That(result.ToString(), Is.EqualTo("invalid-url"));
     }
-    
+
     [Test]
     public void ToUri()
     {
         var uri = "http://example.com/path?query=123";
 
         var result = uri.ToUri();
-        
+
         Assert.That(result, Is.Not.Null);
         using (Assert.EnterMultipleScope())
         {
@@ -206,27 +206,25 @@ public class ExtensionsTests
             Assert.That(result.ToString(), Is.EqualTo(uri));
         }
     }
-    
-    
+
+
     [TestCase(null)]
     [TestCase("")]
     public void ToDeterministicGuidThrowsExceptionWhenEmailIsNUll(string email)
     {
-        if (email == null) 
+        if (email == null)
             Assert.Throws<ArgumentNullException>(() => email.ToDeterministicGuid());
         else
             Assert.Throws<ArgumentException>(() => email.ToDeterministicGuid());
     }
-   
-    [TestCase("michelmob@gmail.com","f9369c7e-3298-d066-7200-9ce835dad432")]
-    [TestCase("MICHELMOB@GMAIL.COM","f9369c7e-3298-d066-7200-9ce835dad432")]
+
+    [TestCase("michelmob@gmail.com", "f9369c7e-3298-d066-7200-9ce835dad432")]
+    [TestCase("MICHELMOB@GMAIL.COM", "f9369c7e-3298-d066-7200-9ce835dad432")]
     public void ToDeterministicGuid(string email, string expectedGuid)
     {
         var result = email.ToDeterministicGuid();
-        
+
         Assert.That(result, Is.Not.Empty);
         Assert.That(result.ToString(), Is.EqualTo(expectedGuid));
     }
-    
-   
 }

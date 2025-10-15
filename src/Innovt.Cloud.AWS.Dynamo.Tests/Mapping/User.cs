@@ -46,13 +46,13 @@ public class User : BaseUser
         set
         {
             status = value;
-            if(value!=null)
+            if (value != null)
                 StatusId = value.Id;
         }
     }
 
     public int StatusId { get; set; }
-    
+
     public List<int> StatusIds { get; set; }
     public List<Skill> Skills { get; set; }
     public Company Company { get; set; }

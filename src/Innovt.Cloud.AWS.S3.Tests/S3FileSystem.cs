@@ -17,14 +17,14 @@ public class Tests
     public async Task Upload()
     {
         const string bucketName = "cloud2gether-cdn-dev";
-        
+
         var logger = new Logger();
-        
+
         var configuration = new DefaultAwsConfiguration("c2g-dev");
 
         IFileSystem fileSystem = new S3FileSystem(logger, configuration);
 
-        var fileName ="Sample.txt".ToLower();
+        var fileName = "Sample.txt".ToLower();
 
         var fileExists = await fileSystem.FileExistsAsync(bucketName, fileName);
 
@@ -32,15 +32,15 @@ public class Tests
         {
             await fileSystem.DeleteObjectAsync(bucketName, fileName);
         }
-        
+
         var content = "sample storage class";
         using var ms = new MemoryStream();
         var sw = new StreamWriter(ms);
-        
+
         await sw.WriteAsync(content);
         await sw.FlushAsync();
         var path = await fileSystem.UploadAsync(bucketName, ms, fileName, serverSideEncryptionMethod: "AES256");
-        
+
         Assert.That(path, Is.Not.Null);
     }
 
@@ -48,14 +48,14 @@ public class Tests
     public async Task UploadAsJson()
     {
         const string bucketName = "cloud2gether-cdn-dev";
-        
+
         var logger = new Logger();
-        
+
         var configuration = new DefaultAwsConfiguration("c2g-dev");
 
         IFileSystem fileSystem = new S3FileSystem(logger, configuration);
 
-        var fileName ="sample.json".ToLower();
+        var fileName = "sample.json".ToLower();
 
         var fileExists = await fileSystem.FileExistsAsync(bucketName, fileName);
 
@@ -63,11 +63,12 @@ public class Tests
         {
             await fileSystem.DeleteObjectAsync(bucketName, fileName);
         }
-        
+
         var content = new { Name = "Sample", Description = "This is a sample JSON content" };
-        
-        var path = await fileSystem.UploadAsJsonAsync(bucketName, content, fileName, serverSideEncryptionMethod: "AES256");
-        
+
+        var path = await fileSystem.UploadAsJsonAsync(bucketName, content, fileName,
+            serverSideEncryptionMethod: "AES256");
+
         Assert.That(path, Is.Not.Null);
     }
 }

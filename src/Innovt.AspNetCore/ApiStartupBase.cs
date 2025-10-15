@@ -137,7 +137,7 @@ public abstract class ApiStartupBase
             options.SchemaFilter<SwaggerExcludeFilter>();
             options.OperationFilter<SwaggerExcludeFilter>();
             //options.ParameterFilter<SwaggerExcludeFilter>();
-            
+
             options.SwaggerDoc(Documentation.ApiVersion,
                 new OpenApiInfo
                 {
@@ -233,7 +233,8 @@ public abstract class ApiStartupBase
 
         var mvcBuilder = services.AddControllers(op =>
         {
-            op.Filters.Add(provider.GetService<ApiExceptionFilterAttribute>() ?? throw new InvalidOperationException());
+            op.Filters.Add(provider.GetService<ApiExceptionFilterAttribute>() ??
+                           throw new InvalidOperationException());
         });
 
         ApplyDefaultJsonOptions(mvcBuilder);

@@ -159,8 +159,8 @@ public class KinesisProcessorTests
         var emptyContainer = new Innovt.CrossCutting.IOC.Container();
 
         serviceMock.InitializeIoc().Returns(emptyContainer);
-        
-        
+
+
         var function = new KinesisDataInvoiceProcessorBatch(serviceMock);
 
         var lambdaContext = new TestLambdaContext();
@@ -179,27 +179,27 @@ public class KinesisProcessorTests
 
 
         var logger = function.GetLogger();
-        
+
         Assert.That(logger, Is.Not.Null);
         Assert.That(logger, Is.InstanceOf<LambdaLogger>());
-        
+
         serviceMock.Received().InitializeIoc();
         serviceMock.Received().ProcessMessage(Arg.Any<string>());
     }
 
-    
+
     [Test]
     public async Task Process_WithCustomLogger()
     {
         var container = new Innovt.CrossCutting.IOC.Container();
 
         var module = new IocModule();
-        module.GetServices().AddScoped<ILogger,Logger>();
-      
+        module.GetServices().AddScoped<ILogger, Logger>();
+
         container.AddModule(module);
 
         serviceMock.InitializeIoc().Returns(container);
-        
+
         var function = new KinesisDataInvoiceProcessorBatch(serviceMock);
 
         var lambdaContext = new TestLambdaContext();
@@ -215,13 +215,13 @@ public class KinesisProcessorTests
         };
 
         await function.Process(message, lambdaContext);
-        
+
         var logger = function.GetLogger();
-        
+
         Assert.That(logger, Is.Not.Null);
         Assert.That(logger, Is.Not.InstanceOf<LambdaLogger>());
         Assert.That(logger, Is.InstanceOf<Logger>());
-        
+
         serviceMock.Received().InitializeIoc();
         serviceMock.Received().ProcessMessage(Arg.Any<string>());
     }

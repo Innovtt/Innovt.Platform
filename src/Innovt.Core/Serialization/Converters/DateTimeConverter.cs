@@ -37,7 +37,7 @@ public class DateTimeConverter : JsonConverter<DateTime>
     {
         Debug.Assert(typeToConvert == typeof(DateTime));
 
-        return DateTime.Parse(reader.GetString(),CultureInfo.InvariantCulture);
+        return DateTime.Parse(reader.GetString(), CultureInfo.InvariantCulture);
     }
 
     /// <summary>

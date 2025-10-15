@@ -13,12 +13,12 @@
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Amazon.Lambda.Core" Version="2.7.1" />
-        <PackageReference Include="System.Text.Json" Version="9.0.10" />
-        <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.4.4" />
+        <PackageReference Include="Amazon.Lambda.Core" Version="2.7.1"/>
+        <PackageReference Include="System.Text.Json" Version="9.0.10"/>
+        <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.4.4"/>
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda.Cognito.Events\Innovt.Cloud.AWS.Lambda.Cognito.Events.csproj" />
-        <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda\Innovt.Cloud.AWS.Lambda.csproj" />
+        <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda.Cognito.Events\Innovt.Cloud.AWS.Lambda.Cognito.Events.csproj"/>
+        <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda\Innovt.Cloud.AWS.Lambda.csproj"/>
     </ItemGroup>
 </Project>
