@@ -949,8 +949,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         // If the user is not found, we cannot clear the social accounts.
         if (localUser is null)
         {
-            Logger.Info(
-                "User with email {@Email} not found or not confirmed in the system. The process will not continue.",
+            Logger.Info("User with email {@Email} not found or not confirmed in the system. The process will not continue.",
                 command.Email);
             return false;
         }
@@ -960,19 +959,14 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
         if (federatedUserNames.Count == 0)
         {
-            Logger.Info("No social accounts found for user {@Email}", command.Email);
+            Logger.Info("No social accounts found for user {@Username}", localUser.Username);
             return false;
         }
-
-        Logger.Info("Found {@Count} social accounts for user {@Email}", federatedUserNames.Count, command.Email);
-
+        
         foreach (var userName in federatedUserNames)
         {
-            Logger.Info("Removing social account {@Username} for user of email {@Email}.",
-                localUser.Username, command.Email);
             await DeleteUser(new DeleteUserAccountRequest(userName), cancellationToken);
-
-            Logger.Info("Social account {@UserName} removed successfully.", userName);
+            Logger.Info("Social account for user {@userName} deleted.", userName);
         }
 
         return true;
