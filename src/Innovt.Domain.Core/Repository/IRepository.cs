@@ -30,7 +30,7 @@ public interface IRepository<T> where T : class
     /// </summary>
     /// <param name="entity"></param>
     /// <param name="cancellationToken"></param>
-    Task SaveAsync(T entity,CancellationToken cancellationToken = default);
+    Task SaveAsync(T entity, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Adds multiple entities

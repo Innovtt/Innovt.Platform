@@ -15,8 +15,7 @@ internal static class TypeConverter
     ///     The converted value of the specified property type, or the default value of the property type if the input value is
     ///     null.
     /// </returns>
-
-    internal static object ConvertType(Type propertyType, object value)   
+    internal static object ConvertType(Type propertyType, object value)
     {
         if (value is null)
             return default;

@@ -100,7 +100,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         CancellationToken cancellationToken = default) where T : class
     {
         ArgumentNullException.ThrowIfNull(batchGetItemRequest);
-        
+
         using (ActivityRepository.StartActivity())
         {
             var items = QueryHelper.CreateBatchGetItemRequest(batchGetItemRequest);
@@ -211,7 +211,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         var items = new List<Dictionary<string, AttributeValue>>();
         var remaining = request.PageSize;
-        
+
         var iterator = DynamoClient.Paginators.Query(queryRequest).Responses
             .GetAsyncEnumerator(cancellationToken);
 
@@ -228,12 +228,11 @@ public abstract class Repository : AwsBaseService, ITableRepository
                 queryRequest.ExclusiveStartKey = lastEvaluatedKey = iterator.Current.LastEvaluatedKey;
 
                 if (!remaining.HasValue) continue;
-                
+
                 remaining = request.PageSize - items.Count;
 
                 if (remaining > 0)
                     queryRequest.Limit = remaining.Value;
-
             } while (ShouldContinue(lastEvaluatedKey, remaining));
         }
         catch (Exception ex)
@@ -255,8 +254,10 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     /// <returns>A tuple containing the last evaluated key and the list of items retrieved.</returns>
     /// <exception cref="ArgumentNullException">Thrown when request is null.</exception>
-    private async Task<(Dictionary<string, AttributeValue>? ExclusiveStartKey, IList<Dictionary<string, AttributeValue>>? Items)> InternalScanAsync<T>(
-        ScanRequest request, CancellationToken cancellationToken = default) where T : class
+    private async
+        Task<(Dictionary<string, AttributeValue>? ExclusiveStartKey, IList<Dictionary<string, AttributeValue>>? Items)>
+        InternalScanAsync<T>(
+            ScanRequest request, CancellationToken cancellationToken = default) where T : class
     {
         ArgumentNullException.ThrowIfNull(request);
 
@@ -268,7 +269,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         activity?.SetTag("PageSize", request.PageSize);
 
         Dictionary<string, AttributeValue> lastEvaluatedKey = null!;
-        
+
         var items = new List<Dictionary<string, AttributeValue>>();
         var remaining = request.PageSize;
 
@@ -285,12 +286,11 @@ public abstract class Repository : AwsBaseService, ITableRepository
                 scanRequest.ExclusiveStartKey = lastEvaluatedKey = iterator.Current.LastEvaluatedKey;
 
                 if (!remaining.HasValue) continue;
-                
+
                 remaining = request.PageSize - items.Count;
 
-                if (remaining > 0) 
+                if (remaining > 0)
                     scanRequest.Limit = remaining.Value;
-
             } while (ShouldContinue(lastEvaluatedKey, remaining));
         }
         catch (Exception ex)
@@ -311,9 +311,9 @@ public abstract class Repository : AwsBaseService, ITableRepository
     /// <returns></returns>
     private static bool ShouldContinue(Dictionary<string, AttributeValue> lastEvaluatedKey, int? remaining)
     {
-        if(lastEvaluatedKey?.Count>0 && !remaining.HasValue)
+        if (lastEvaluatedKey?.Count > 0 && !remaining.HasValue)
             return true;
-        
+
         return lastEvaluatedKey?.Count > 0 && remaining > 0;
     }
 
@@ -410,14 +410,14 @@ public abstract class Repository : AwsBaseService, ITableRepository
         where T : class
     {
         Check.NotNull(messages, nameof(messages));
-        
+
         using var activity = ActivityRepository.StartActivity();
         activity?.SetTag("Messages", messages.Count);
 
         // No messages but the log will be created
-        if(messages.Count == 0)
+        if (messages.Count == 0)
             return;
-        
+
         var tableName = TableHelper.GetTableName<T>(context);
 
         var writeRequest = messages.Select(message => new WriteRequest
@@ -570,12 +570,12 @@ public abstract class Repository : AwsBaseService, ITableRepository
         activity?.SetTag("Messages", messages.Count);
 
         // No messages but the log will be created
-        if(messages.Count == 0)
+        if (messages.Count == 0)
             return;
-        
+
         var tableName = TableHelper.GetTableName<T>(context);
         activity?.SetTag("TableName", tableName);
-        
+
         var writeRequest = messages.Select(message => new WriteRequest
         {
             DeleteRequest =
@@ -591,7 +591,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         }, cancellationToken: cancellationToken).ConfigureAwait(false);
 
         activity?.SetTag("UnprocessedItems", response.Count);
-        
+
         if (response.HasItems())
             throw new CriticalException("Some items could not be deleted from the table");
     }
@@ -919,13 +919,13 @@ public abstract class Repository : AwsBaseService, ITableRepository
         CancellationToken cancellationToken = default) where T : class
     {
         ArgumentNullException.ThrowIfNull(request);
-        
+
         using var activity = ActivityRepository.StartActivity();
         request.PageSize = 1;
         request.Page = null!;
 
         var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
-        
+
         var queryResponse = QueryHelper.ConvertAttributesToType<T>(items, context);
 
         return queryResponse.FirstOrDefault();
@@ -1003,7 +1003,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             var response = new PagedCollection<T>
             {
                 Items = QueryHelper.ConvertAttributesToType<T>(items, context),
-                Page  = QueryHelper.CreatePaginationToken(exclusiveStartKey),
+                Page = QueryHelper.CreatePaginationToken(exclusiveStartKey),
                 PageSize = request.PageSize.GetValueOrDefault()
             };
 
@@ -1012,7 +1012,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     }
 
     #endregion
-    
+
     /// <summary>
     /// Throw an exception if the instance is a collection.
     /// </summary>

@@ -25,6 +25,5 @@ public abstract class PostAuthenticationHandler : EventProcessor<PostAuthenticat
     /// </summary>
     protected PostAuthenticationHandler()
     {
-        
     }
 }

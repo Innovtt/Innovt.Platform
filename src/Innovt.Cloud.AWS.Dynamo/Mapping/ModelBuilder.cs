@@ -97,11 +97,11 @@ public sealed class ModelBuilder
 
         return HasTypeBuilder(entityName);
     }
-    
+
     public bool HasTypeBuilder(string entityName)
     {
         ArgumentNullException.ThrowIfNull(entityName);
-        
+
         return Entities.TryGetValue(entityName, out _);
     }
 
@@ -126,7 +126,7 @@ public sealed class ModelBuilder
 
         return entityTypeBuilder;
     }
-    
+
     /// <summary>
     /// Returns a EntityTypeBuilder for the given entity.
     /// </summary>
@@ -135,10 +135,10 @@ public sealed class ModelBuilder
     public EntityTypeBuilder GetEntityBuilder<T>()
     {
         var entityName = GetEntityName<T>();
-        
+
         return GetEntityBuilder(entityName);
     }
-    
+
     /// <summary>
     ///    It returns a EntityTypeBuilder for the given entity name.
     /// </summary>
@@ -147,13 +147,13 @@ public sealed class ModelBuilder
     public EntityTypeBuilder GetEntityBuilder(string entityName)
     {
         ArgumentNullException.ThrowIfNull(entityName);
-        
+
         if (!Entities.TryGetValue(entityName, out var value))
             throw new MissingEntityMapException(entityName);
 
         if (value is EntityTypeBuilder entityTypeBuilder)
             return entityTypeBuilder;
-        
+
         throw new MissingEntityMapException(entityName);
     }
 }

@@ -86,7 +86,7 @@ internal static class AttributeValueConverterManager
         // If we have a direct match, use the converter
         if (Converters.TryGetValue(valueType, out var converter))
             return converter(value);
-        
+
         var result = TryConvertComplexEnumerable(value, visitedObjects);
 
         result ??= TryConvertComplexType(value, visitedObjects, valueType);
@@ -105,8 +105,8 @@ internal static class AttributeValueConverterManager
         return value switch
         {
             // Handle numeric lists using a custom check
-            IList { Count: 0 } => new AttributeValue 
-            { 
+            IList { Count: 0 } => new AttributeValue
+            {
                 L = []
             },
             IList list when TypeUtil.IsNumericList(list) => new AttributeValue

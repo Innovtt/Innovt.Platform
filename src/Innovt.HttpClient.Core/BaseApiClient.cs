@@ -93,7 +93,7 @@ public abstract class BaseApiClient
     protected virtual async Task<Stream> ParseStreamResponse(HttpResponseMessage response)
     {
         ArgumentNullException.ThrowIfNull(response);
-        
+
         var contentResponse = await response.Content.ReadAsStreamAsync();
 
         return response.IsSuccessStatusCode ? contentResponse : null;
@@ -113,7 +113,7 @@ public abstract class BaseApiClient
     {
         ArgumentNullException.ThrowIfNull(requestUri);
         ArgumentNullException.ThrowIfNull(content);
-        
+
         var client = CreateHttpClient();
 
         InitializeClient(client, headerValues);
@@ -136,7 +136,7 @@ public abstract class BaseApiClient
     {
         ArgumentNullException.ThrowIfNull(requestUri);
         ArgumentNullException.ThrowIfNull(content);
-        
+
         var client = CreateHttpClient();
 
         InitializeClient(client, headerValues);
@@ -187,7 +187,7 @@ public abstract class BaseApiClient
     {
         ArgumentNullException.ThrowIfNull(requestUri);
         ArgumentNullException.ThrowIfNull(content);
-        
+
         var client = CreateHttpClient();
 
         InitializeClient(client, headerValues);
@@ -239,7 +239,7 @@ public abstract class BaseApiClient
         CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(requestUri);
-        
+
         var client = CreateHttpClient();
 
         InitializeClient(client, headerValues);
@@ -273,7 +273,7 @@ public abstract class BaseApiClient
         Dictionary<string, string> headerValues = null, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(requestUri);
-        
+
         var client = CreateHttpClient();
 
         InitializeClient(client, headerValues);
@@ -290,7 +290,7 @@ public abstract class BaseApiClient
     /// <param name="requestUri">The base URI for the request.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
     /// <returns>A stream representing the response data.</returns>
-    protected async Task<Stream> GetStreamAsync(Uri requestUri,CancellationToken cancellationToken = default)
+    protected async Task<Stream> GetStreamAsync(Uri requestUri, CancellationToken cancellationToken = default)
     {
         return await GetStreamAsync(requestUri, null, cancellationToken);
     }
@@ -332,7 +332,7 @@ public abstract class BaseApiClient<TErrorResponse> : BaseApiClient where TError
     protected override async Task<T> ParseResponse<T>(HttpResponseMessage response)
     {
         ArgumentNullException.ThrowIfNull(response);
-        
+
         var contentResponse = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
         if (response.IsSuccessStatusCode) return Serializer.DeserializeObject<T>(contentResponse);
@@ -351,7 +351,7 @@ public abstract class BaseApiClient<TErrorResponse> : BaseApiClient where TError
     protected override async Task<Stream> ParseStreamResponse(HttpResponseMessage response)
     {
         ArgumentNullException.ThrowIfNull(response);
-        
+
         var contentResponse = await response.Content.ReadAsStreamAsync();
 
         if (response.IsSuccessStatusCode) return contentResponse;

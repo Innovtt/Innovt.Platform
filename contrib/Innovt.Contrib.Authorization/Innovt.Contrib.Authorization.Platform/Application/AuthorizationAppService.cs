@@ -103,7 +103,8 @@ public class AuthorizationAppService : IAuthorizationAppService
     /// <param name="filter">The filter for retrieving roles by user.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A list of role DTOs.</returns>
-    public async Task<IList<RoleDto>> GetUserRoles(RoleByUserFilter filter, CancellationToken cancellationToken = default)
+    public async Task<IList<RoleDto>> GetUserRoles(RoleByUserFilter filter,
+        CancellationToken cancellationToken = default)
     {
         filter.EnsureIsValid();
 

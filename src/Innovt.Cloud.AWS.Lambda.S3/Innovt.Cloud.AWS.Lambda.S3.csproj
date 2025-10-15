@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <PackageId>Innovt.Cloud.AWS.Lambda.S3</PackageId>
-        <PackageVersion>8.4.2</PackageVersion>
+        <PackageVersion>8.4.3</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -13,15 +13,15 @@
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Amazon.Lambda.S3Events" Version="3.1.0" />
-        <PackageReference Include="System.Text.Json" Version="9.0.9" />
+        <PackageReference Include="Amazon.Lambda.S3Events" Version="3.1.0"/>
+        <PackageReference Include="System.Text.Json" Version="9.0.10"/>
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda\Innovt.Cloud.AWS.Lambda.csproj" />
+        <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda\Innovt.Cloud.AWS.Lambda.csproj"/>
     </ItemGroup>
 
 </Project>

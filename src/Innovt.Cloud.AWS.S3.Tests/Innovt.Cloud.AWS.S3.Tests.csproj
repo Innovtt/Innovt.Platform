@@ -8,11 +8,11 @@
         <GenerateDocumentationFile>false</GenerateDocumentationFile>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Amazon.Lambda.Core" Version="2.7.1" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.0" />
-        <PackageReference Include="NUnit" Version="4.4.0" />
-        <PackageReference Include="NUnit3TestAdapter" Version="5.2.0" />
-        <PackageReference Include="Amazon.Lambda.TestUtilities" Version="3.0.1" />
+        <PackageReference Include="Amazon.Lambda.Core" Version="2.7.1"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.0"/>
+        <PackageReference Include="NUnit" Version="4.4.0"/>
+        <PackageReference Include="NUnit3TestAdapter" Version="5.2.0"/>
+        <PackageReference Include="Amazon.Lambda.TestUtilities" Version="3.0.1"/>
         <PackageReference Include="NUnit.Analyzers" Version="4.10.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -28,14 +28,14 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="AWSSDK.SSO" Version="4.0.1.6" />
-        <PackageReference Include="AWSSDK.SSOOIDC" Version="4.0.2.3" />
+        <PackageReference Include="AWSSDK.SSO" Version="4.0.1.8"/>
+        <PackageReference Include="AWSSDK.SSOOIDC" Version="4.0.2.5"/>
     </ItemGroup>
-    
+
     <ItemGroup>
-        <ProjectReference Include="..\Innovt.Cloud.AWS.S3\Innovt.Cloud.AWS.S3.csproj" />
-        <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj" />
-        <ProjectReference Include="..\Innovt.CrossCutting.Log.Serilog\Innovt.CrossCutting.Log.Serilog.csproj" />
+        <ProjectReference Include="..\Innovt.Cloud.AWS.S3\Innovt.Cloud.AWS.S3.csproj"/>
+        <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj"/>
+        <ProjectReference Include="..\Innovt.CrossCutting.Log.Serilog\Innovt.CrossCutting.Log.Serilog.csproj"/>
     </ItemGroup>
 
 </Project>

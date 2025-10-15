@@ -51,16 +51,16 @@ public class RepositoryBase<T> : IRepository<T> where T : class
         //Safe parser to DbContext to check entity state
         var entry = (Context as DbContext)?.Entry(entity);
 
-        var shouldAdd = entry?.State == EntityState.Detached || 
+        var shouldAdd = entry?.State == EntityState.Detached ||
                         entity is Entity entityModel && entityModel.IsNew();
-        
+
         if (shouldAdd)
         {
-            return Context.AddAsync(entity,cancellationToken);
+            return Context.AddAsync(entity, cancellationToken);
         }
-       
+
         Context.Update(entity);
-        
+
         return Task.CompletedTask;
     }
 
@@ -78,7 +78,7 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     /// <returns>A task representing the asynchronous operation.</returns>
     public virtual Task AddAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default)
     {
-        return Context.AddAsync(entities,cancellationToken);
+        return Context.AddAsync(entities, cancellationToken);
     }
 
     /// <summary>
@@ -87,9 +87,9 @@ public class RepositoryBase<T> : IRepository<T> where T : class
     /// <param name="entity">The entity to add.</param>
     /// <param name="cancellationToken"></param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public virtual Task AddAsync(T entity,  CancellationToken cancellationToken = default)
+    public virtual Task AddAsync(T entity, CancellationToken cancellationToken = default)
     {
-        return Context.AddAsync(entity,cancellationToken);
+        return Context.AddAsync(entity, cancellationToken);
     }
 
     /// <summary>

@@ -26,7 +26,7 @@ public class DefineAuthChallengeRequest : TriggerRequest
     /// </summary>
     [DataMember(Name = "session")]
     [JsonPropertyName("session")]
-    public List<ChallengeResultItem> Session { get; set; } = new();
+    public List<ChallengeResultItem> Session { get; set; } = [];
 
 
     /// <summary>

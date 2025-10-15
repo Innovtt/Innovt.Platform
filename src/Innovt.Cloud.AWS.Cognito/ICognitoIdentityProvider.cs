@@ -157,7 +157,7 @@ public interface ICognitoIdentityProvider
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     Task<bool> DeleteUser(DeleteUserAccountRequest command, CancellationToken cancellationToken = default);
-    
+
     /// <summary>
     /// Clear all social accounts for a confirmed user. You can Use this method to remove social accounts that you want to merge or delete from the user pool.
     /// This method will remove all social accounts linked to the user, but will not delete the user account itself.

@@ -47,21 +47,22 @@ public abstract class EntityTypeBuilder
     ///     Gets or sets the range key prefix for the DynamoDB table.
     /// </summary>
     public string RangeKeyPrefix { get; private set; }
+
     public string EntityType { get; private set; }
     public string EntityTypeColumnName { get; set; } = "EntityType";
-    
+
     /// <summary>
     ///     Tell the auto-map method to ignore all non-native types
     /// </summary>
     protected bool IgnoreNonNativeTypes { get; }
-    
+
     /// <summary>
     /// Internal list of properties.
     /// </summary>
     protected List<PropertyBuilder> PropertyBuilders { get; private set; } = [];
-    
+
     public DiscriminatorBuilder? Discriminator { get; protected set; }
-    
+
     /// <summary>
     ///     Sets the table name associated with the entity type.
     /// </summary>
@@ -147,6 +148,7 @@ public abstract class EntityTypeBuilder
         EntityTypeColumnName = entityTypeColumnName ?? throw new ArgumentNullException(nameof(entityTypeColumnName));
         return this;
     }
+
     /// <summary>
     ///     Defines a property for the entity using a specified property name.
     /// </summary>
@@ -158,8 +160,8 @@ public abstract class EntityTypeBuilder
     }
 
     protected abstract PropertyBuilder AddProperty(string name, Type type = null);
-    
-    protected static string GetPropertyName<TEntity,TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression)
+
+    protected static string GetPropertyName<TEntity, TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression)
     {
         Check.NotNull(propertyExpression, nameof(propertyExpression));
 
@@ -172,10 +174,10 @@ public abstract class EntityTypeBuilder
     ///     Ignores a property during mapping.
     /// </summary>
     /// <param name="expression">The property to ignore.</param>
-    public EntityTypeBuilder Ignore<TEntity,TProperty>(Expression<Func<TEntity, TProperty>> expression)
+    public EntityTypeBuilder Ignore<TEntity, TProperty>(Expression<Func<TEntity, TProperty>> expression)
     {
         ArgumentNullException.ThrowIfNull(expression);
-        
+
         return Ignore(GetPropertyName(expression));
     }
 
@@ -187,7 +189,7 @@ public abstract class EntityTypeBuilder
     public EntityTypeBuilder Ignore(string name)
     {
         ArgumentNullException.ThrowIfNull(name);
-        
+
         var property = GetProperty(name);
 
         property?.Ignore();
@@ -199,10 +201,10 @@ public abstract class EntityTypeBuilder
     ///     Include a property that was ignored during a map.
     /// </summary>
     /// <param name="expression">The property to include.</param>
-    public EntityTypeBuilder Include<TEntity,TProperty>(Expression<Func<TEntity, TProperty>> expression)
+    public EntityTypeBuilder Include<TEntity, TProperty>(Expression<Func<TEntity, TProperty>> expression)
     {
         ArgumentNullException.ThrowIfNull(expression);
-        
+
         return Include(GetPropertyName(expression));
     }
 
@@ -214,14 +216,14 @@ public abstract class EntityTypeBuilder
     public EntityTypeBuilder Include(string name)
     {
         ArgumentNullException.ThrowIfNull(name);
-        
+
         var property = GetProperty(name);
 
         property?.Include();
 
         return this;
     }
-    
+
     /// <summary>
     ///   Check if complex types should be ignored. The default is true and can be changed by the user for each entity.
     /// </summary>
@@ -231,14 +233,14 @@ public abstract class EntityTypeBuilder
     {
         return ignoreNonNativeTypes ?? IgnoreNonNativeTypes;
     }
-    
+
     /// <summary>
     ///     Returns all properties defined for the entity type.
     /// </summary>
     /// <returns></returns>
     public List<PropertyBuilder> GetProperties()
     {
-        return PropertyBuilders.Where(p=>!p.Ignored).ToList();
+        return PropertyBuilders.Where(p => !p.Ignored).ToList();
     }
 
     /// <summary>

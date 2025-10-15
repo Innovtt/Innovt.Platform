@@ -21,16 +21,18 @@ public class BasicAuthorizationService(ILogger logger, IAwsConfiguration configu
         new(nameof(BasicAuthorizationService));
 
     private AmazonCognitoIdentityProviderClient cognitoIdentityProvider;
+
     private AmazonCognitoIdentityProviderClient CognitoProvider
     {
         get { return cognitoIdentityProvider ??= CreateService<AmazonCognitoIdentityProviderClient>(); }
     }
-    
-    public async Task<bool> Authenticate(string userName, string password, CancellationToken cancellationToken = default)
+
+    public async Task<bool> Authenticate(string userName, string password,
+        CancellationToken cancellationToken = default)
     {
         using var activity = BasicAuthorizationServiceActivitySource.StartActivity();
-        activity?.SetTag("UserName",userName);
-        
+        activity?.SetTag("UserName", userName);
+
         try
         {
             var request = new DescribeUserPoolClientRequest
@@ -38,11 +40,11 @@ public class BasicAuthorizationService(ILogger logger, IAwsConfiguration configu
                 UserPoolId = UserPoolId,
                 ClientId = userName
             };
-            
-           var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
-                    await CognitoProvider.DescribeUserPoolClientAsync(request, cancellationToken)
+
+            var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
+                await CognitoProvider.DescribeUserPoolClientAsync(request, cancellationToken)
                     .ConfigureAwait(false)).ConfigureAwait(false);
-           
+
             return response.UserPoolClient.ClientSecret == password;
         }
         catch (ResourceNotFoundException)
@@ -55,11 +57,11 @@ public class BasicAuthorizationService(ILogger logger, IAwsConfiguration configu
         }
         catch (Exception ex)
         {
-            Logger.Error(ex,"Error on Authenticate user {@UserName}",userName);
+            Logger.Error(ex, "Error on Authenticate user {@UserName}", userName);
             return false;
         }
     }
-    
+
     protected override void DisposeServices()
     {
         cognitoIdentityProvider?.Dispose();

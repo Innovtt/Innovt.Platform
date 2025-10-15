@@ -148,8 +148,8 @@ internal static class QueryHelper
             ExpressionAttributeNames = request.ExpressionAttributeNames,
             Select = Select.ALL_ATTRIBUTES
         };
-        
-        if(request.PageSize.HasValue)
+
+        if (request.PageSize.HasValue)
             queryRequest.Limit = request.PageSize == 0 ? 1 : request.PageSize.Value;
 
         return queryRequest;
@@ -591,7 +591,7 @@ internal static class QueryHelper
             var value = attributeValue.S != null ? $"S:{attributeValue.S}" : $"N:{attributeValue.N}";
 
             var token = $@"{attributeKey}{PaginationTokenSeparator}{value}\r\n";
-            
+
             stringBuilder.Append(token);
         }
 
@@ -607,7 +607,7 @@ internal static class QueryHelper
     {
         if (paginationToken is null || paginationToken.Length == 0)
             return null;
-        
+
         var result = new Dictionary<string, AttributeValue>();
 
         var decryptedToken = Convert.FromBase64String(paginationToken.UrlDecode()).Unzip();

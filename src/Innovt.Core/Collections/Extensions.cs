@@ -24,7 +24,7 @@ public static class Extensions
     /// <typeparam name="T">The type of elements in the list.</typeparam>
     /// <param name="list">The <see cref="IList{T}" /> to check.</param>
     /// <returns><c>true</c> if the list is null or empty; otherwise, <c>false</c>.</returns>
-    public static bool IsNullOrEmpty<T>([NotNullWhen(false)]this IList<T> list)
+    public static bool IsNullOrEmpty<T>([NotNullWhen(false)] this IList<T> list)
     {
         return list == null || list.Count == 0;
     }
@@ -35,7 +35,7 @@ public static class Extensions
     /// <typeparam name="T">The type of elements in the enumerable.</typeparam>
     /// <param name="enumerable">The <see cref="IEnumerable{T}" /> to check.</param>
     /// <returns><c>true</c> if the enumerable is null or empty; otherwise, <c>false</c>.</returns>
-    public static bool IsNullOrEmpty<T>([NotNullWhen(false)]this IEnumerable<T> enumerable)
+    public static bool IsNullOrEmpty<T>([NotNullWhen(false)] this IEnumerable<T> enumerable)
     {
         return enumerable == null || !enumerable.Any();
     }
@@ -46,7 +46,7 @@ public static class Extensions
     /// <typeparam name="T">The type of elements in the collection.</typeparam>
     /// <param name="collection">The <see cref="ICollection{T}" /> to check.</param>
     /// <returns><c>true</c> if the collection is null or empty; otherwise, <c>false</c>.</returns>
-    public static bool IsNullOrEmpty<T>([NotNullWhen(false)]this ICollection<T> collection)
+    public static bool IsNullOrEmpty<T>([NotNullWhen(false)] this ICollection<T> collection)
     {
         return collection == null || collection.Count == 0;
     }
@@ -57,7 +57,7 @@ public static class Extensions
     /// <typeparam name="T">The type of elements in the enumerable.</typeparam>
     /// <param name="enumerable">The <see cref="IEnumerable{T}" /> to check.</param>
     /// <returns><c>true</c> if the enumerable is not null and not empty; otherwise, <c>false</c>.</returns>
-    public static bool IsNotNullOrEmpty<T>([NotNullWhen(true)]this IEnumerable<T> enumerable)
+    public static bool IsNotNullOrEmpty<T>([NotNullWhen(true)] this IEnumerable<T> enumerable)
     {
         return !enumerable.IsNullOrEmpty();
     }
@@ -69,7 +69,7 @@ public static class Extensions
     /// <typeparam name="T">The type of elements in the collection.</typeparam>
     /// <param name="collection">The <see cref="ICollection{T}" /> to check.</param>
     /// <returns><c>true</c> if the collection is not null and not empty; otherwise, <c>false</c>.</returns>
-    public static bool IsNotNullOrEmpty<T>([NotNullWhen(true)]this ICollection<T> collection)
+    public static bool IsNotNullOrEmpty<T>([NotNullWhen(true)] this ICollection<T> collection)
     {
         return !collection.IsNullOrEmpty();
     }

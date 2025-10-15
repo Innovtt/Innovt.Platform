@@ -21,6 +21,7 @@ public class ApiException<T> : Exception
     ///     Gets or sets the error response associated with the API exception.
     /// </summary>
     public T ErrorResponse { get; set; }
+
     public ApiException()
     {
     }

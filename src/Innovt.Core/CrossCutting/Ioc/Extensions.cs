@@ -32,7 +32,7 @@ public static class Extensions
         // Implementation of the AddModule method.
         Check.NotNull(services);
         Check.NotNull(assembly);
-        
+
         var modulesTypes = assembly.DefinedTypes.Where(t => t.IsSubclassOf(typeof(IocModule))).ToList();
 
         foreach (var moduleType in modulesTypes)

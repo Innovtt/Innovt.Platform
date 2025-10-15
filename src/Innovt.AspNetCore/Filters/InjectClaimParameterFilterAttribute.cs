@@ -99,7 +99,7 @@ public sealed class InjectClaimParameterFilterAttribute : ActionFilterAttribute
             if (!(property.GetType() is string))
                 value = TypeDescriptor.GetConverter(property.PropertyType)
                     .ConvertFromInvariantString(claimValue);
-            
+
             property.SetValue(inputParam, value);
         }
     }

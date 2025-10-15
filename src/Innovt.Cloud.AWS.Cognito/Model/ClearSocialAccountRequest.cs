@@ -23,9 +23,7 @@ public class ClearSocialAccountRequest : RequestBase
         Email = email;
     }
 
-    [Required] 
-    [EmailAddress]
-    public string Email { get; set; }
+    [Required] [EmailAddress] public string Email { get; set; }
 
     /// <inheritdoc />
     public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

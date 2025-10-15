@@ -51,36 +51,37 @@ internal static class TableHelper
     private static string GetHashKeyName<T>(DynamoContext context = null) where T : class
     {
         if (context != null && context.HasTypeBuilder<T>()) return context.GetEntityBuilder<T>().Pk;
-         
-        var hashKey = 
-             typeof(T).GetProperties()
-                 .FirstOrDefault(p => p.GetCustomAttribute<DynamoDBHashKeyAttribute>() != null)?
-                 .GetCustomAttribute<DynamoDBHashKeyAttribute>()?
-                 .AttributeName ?? "PK";
+
+        var hashKey =
+            typeof(T).GetProperties()
+                .FirstOrDefault(p => p.GetCustomAttribute<DynamoDBHashKeyAttribute>() != null)?
+                .GetCustomAttribute<DynamoDBHashKeyAttribute>()?
+                .AttributeName ?? "PK";
 
         return hashKey;
     }
-    
+
     private static object GetPropertyValue<T>(T instance, string propertyName) where T : class
     {
         ArgumentNullException.ThrowIfNull(instance);
         ArgumentNullException.ThrowIfNull(propertyName);
-        
+
         var property = typeof(T).GetProperty(propertyName);
-        
-        if(property != null)
+
+        if (property != null)
         {
-           return property.GetValue(instance);
+            return property.GetValue(instance);
         }
-        
+
         //Check if  property has a DynamoDBAttribute
         var dynamoDbProperties = typeof(T).GetProperties().Where(p =>
             p.GetCustomAttribute<DynamoDBPropertyAttribute>() != null).ToList();
-        
-        if(dynamoDbProperties.Count == 0)
+
+        if (dynamoDbProperties.Count == 0)
             return null;
-        
-        var originalProperty = dynamoDbProperties.FirstOrDefault(p => p.GetCustomAttribute<DynamoDBPropertyAttribute>()?.AttributeName == propertyName);
+
+        var originalProperty = dynamoDbProperties.FirstOrDefault(p =>
+            p.GetCustomAttribute<DynamoDBPropertyAttribute>()?.AttributeName == propertyName);
 
         return originalProperty?.GetValue(instance);
     }
@@ -96,15 +97,15 @@ internal static class TableHelper
     /// <returns></returns>
     private static string GetRangeKeyName<T>(DynamoContext context = null) where T : class
     {
-        if (context != null && context.HasTypeBuilder<T>()) 
+        if (context != null && context.HasTypeBuilder<T>())
             return context.GetEntityBuilder<T>().Sk;
 
-        var rangeKey = 
+        var rangeKey =
             typeof(T).GetProperties()
                 .FirstOrDefault(p => p.GetCustomAttribute<DynamoDBRangeKeyAttribute>() != null)?
                 .GetCustomAttribute<DynamoDBRangeKeyAttribute>()?
                 .AttributeName;
-        
+
         return rangeKey;
     }
 
@@ -136,11 +137,11 @@ internal static class TableHelper
     {
         Check.NotNull(value, nameof(value));
 
-        var hashKeyName  = GetHashKeyName<T>(context);
+        var hashKeyName = GetHashKeyName<T>(context);
         var rangeKeyName = GetRangeKeyName<T>(context);
-        
-        var hashKeyValue  = GetPropertyValue(value, hashKeyName);
-        var rangeKeyValue =  GetPropertyValue(value, rangeKeyName);
+
+        var hashKeyValue = GetPropertyValue(value, hashKeyName);
+        var rangeKeyValue = GetPropertyValue(value, rangeKeyName);
 
         if (context is null || !context.HasTypeBuilder<T>())
         {
@@ -149,9 +150,9 @@ internal static class TableHelper
 
         //It will build the value from the delegate using the type builder
 
-        if(context.GetEntityBuilder<T>() is not EntityTypeBuilder<T> entityBuilder)
+        if (context.GetEntityBuilder<T>() is not EntityTypeBuilder<T> entityBuilder)
             return (hashKeyValue, rangeKeyValue);
-        
+
         //invoke the map action to get the updated value
         hashKeyValue = entityBuilder.GetProperty(hashKeyName)?.InvokeMaps(value).GetDefaultValue(value);
         rangeKeyValue = entityBuilder.GetProperty(rangeKeyName)?.InvokeMaps(value).GetDefaultValue(value);
@@ -180,7 +181,8 @@ internal static class TableHelper
         hashKeyPrefix = hashKeyPrefix.IsNotNullOrEmpty() ? $"{hashKeyPrefix}{keySeparator}" : string.Empty;
 
         //To avoid situations where the id is already prefixed
-        if (id.ToStringOrDefault().Contains(hashKeyPrefix,StringComparison.CurrentCultureIgnoreCase)) hashKeyPrefix = string.Empty;
+        if (id.ToStringOrDefault().Contains(hashKeyPrefix, StringComparison.CurrentCultureIgnoreCase))
+            hashKeyPrefix = string.Empty;
 
         //Get the name of the hash key
         var hashKey = (GetHashKeyName<T>(context), new AttributeValue($"{hashKeyPrefix}{id}"));
@@ -193,7 +195,8 @@ internal static class TableHelper
 
         rangeKeyPrefix = rangeKeyPrefix.IsNotNullOrEmpty() ? $"{rangeKeyPrefix}{keySeparator}" : string.Empty;
 
-        if (rangeKeyValue.ToStringOrDefault().Contains(rangeKeyPrefix,StringComparison.CurrentCultureIgnoreCase)) rangeKeyPrefix = string.Empty;
+        if (rangeKeyValue.ToStringOrDefault().Contains(rangeKeyPrefix, StringComparison.CurrentCultureIgnoreCase))
+            rangeKeyPrefix = string.Empty;
 
         var rangeKey = (rangeKeyName, new AttributeValue($"{rangeKeyPrefix}{rangeKeyValue}"));
 

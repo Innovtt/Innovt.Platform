@@ -1,15 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-          <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <PackageId>Innovt.Domain</PackageId>
-        <PackageVersion>8.4.2</PackageVersion>
+        <PackageVersion>8.4.3</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <Copyright>Innovt Tecnologia</Copyright>
         <Description>Simple domain project.</Description>
         <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>

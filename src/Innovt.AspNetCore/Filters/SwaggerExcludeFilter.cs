@@ -12,15 +12,15 @@ namespace Innovt.AspNetCore.Filters;
 /// <summary>
 ///     A filter used to exclude specified properties or parameters from Swagger documentation.
 /// </summary>
-public class SwaggerExcludeFilter : ISchemaFilter, IOperationFilter,IOperationAsyncFilter
+public class SwaggerExcludeFilter : ISchemaFilter, IOperationFilter, IOperationAsyncFilter
 {
     /// <summary>
     ///     Initializes a new instance of the <see cref="SwaggerExcludeFilter" /> class.
     /// </summary>
     public SwaggerExcludeFilter()
-    {   
+    {
     }
-    
+
     /// <summary>
     /// Apply the filter to the schem and remove the excluded properties.
     /// </summary>
@@ -39,27 +39,29 @@ public class SwaggerExcludeFilter : ISchemaFilter, IOperationFilter,IOperationAs
 
         RemoveParameterFromSchema(excludeAttributes, schema);
     }
-    
+
     /// <inheritdoc />
     public void Apply(OpenApiOperation operation, OperationFilterContext context)
     {
         RemoveExcludedParametersFromOperation(operation, context);
     }
-    
-    
-    public Task ApplyAsync(OpenApiOperation operation, OperationFilterContext context, CancellationToken cancellationToken)
+
+
+    public Task ApplyAsync(OpenApiOperation operation, OperationFilterContext context,
+        CancellationToken cancellationToken)
     {
         RemoveExcludedParametersFromOperation(operation, context);
 
         return Task.CompletedTask;
     }
-    
-    
-    private static void RemoveExcludedParametersFromOperation(OpenApiOperation operation, OperationFilterContext context)
+
+
+    private static void RemoveExcludedParametersFromOperation(OpenApiOperation operation,
+        OperationFilterContext context)
     {
         ArgumentNullException.ThrowIfNull(operation);
         ArgumentNullException.ThrowIfNull(context);
-        
+
 
         // Get excluded properties from both controller and method
         var methodExclusions = context.MethodInfo
@@ -75,11 +77,11 @@ public class SwaggerExcludeFilter : ISchemaFilter, IOperationFilter,IOperationAs
             .Concat(controllerExclusions)
             .Distinct(StringComparer.OrdinalIgnoreCase)
             .ToList();
-        
+
         if (ignoredProperties.Count == 0) return;
-        
+
         foreach (var prop in ignoredProperties)
-        {   
+        {
             var schemaProp = context.ApiDescription.ParameterDescriptions
                 .SingleOrDefault(p => string.Equals(p.Name, prop, StringComparison.OrdinalIgnoreCase));
 
@@ -87,10 +89,9 @@ public class SwaggerExcludeFilter : ISchemaFilter, IOperationFilter,IOperationAs
                 context.ApiDescription.ParameterDescriptions.Remove(schemaProp);
         }
     }
-    
+
     private static void RemoveParameterFromSchema(List<string> allExclusions, OpenApiSchema schema)
     {
-        
         foreach (var prop in allExclusions)
         {
             var schemaProp = schema.Properties.Where(p =>
@@ -101,5 +102,4 @@ public class SwaggerExcludeFilter : ISchemaFilter, IOperationFilter,IOperationAs
                 schema.Properties.Remove(schemaProp);
         }
     }
-
 }

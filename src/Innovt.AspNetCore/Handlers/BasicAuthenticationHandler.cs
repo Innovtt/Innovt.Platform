@@ -69,7 +69,7 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
             return Fail("Missing Authorization Header");
 
         try
-        {   
+        {
             var authHeader = AuthenticationHeaderValue.Parse(value!);
 
             if (authHeader?.Parameter is null)

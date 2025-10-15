@@ -827,7 +827,7 @@ public static class StringExtensions
     {
         return Guid.Parse(str);
     }
-    
+
     /// <summary>
     /// Generates a deterministic Guid from a string using SHA256 hashing.
     /// </summary>
@@ -836,10 +836,10 @@ public static class StringExtensions
     /// <returns></returns>
     public static Guid ToDeterministicGuid(this string str, string salt = "")
     {
-       ArgumentException.ThrowIfNullOrWhiteSpace(str);
-        
+        ArgumentException.ThrowIfNullOrWhiteSpace(str);
+
         var hash = SHA256.HashData(Encoding.UTF8.GetBytes((str + salt).ToUpperInvariant()));
-        
+
         const int arrayLenght = 16;
         var guidBytes = new byte[arrayLenght];
         Array.Copy(hash, guidBytes, arrayLenght);
@@ -867,13 +867,13 @@ public static class StringExtensions
     {
         if (str.IsNullOrEmpty())
             return null;
-        
+
         var strUri = str.Trim();
-        
+
         return !Uri.TryCreate(strUri, UriKind.RelativeOrAbsolute, out var uri) ? null : uri;
     }
-    
-    
+
+
     /// <summary>
     /// Create a safe and SEO friendly slug from a string.
     /// </summary>
@@ -897,7 +897,7 @@ public static class StringExtensions
         foreach (var c in normalizedString)
         {
             var category = CharUnicodeInfo.GetUnicodeCategory(c);
-            
+
             switch (category)
             {
                 case UnicodeCategory.NonSpacingMark:
@@ -911,10 +911,11 @@ public static class StringExtensions
                         buffer[bufferPosition++] = c;
                         prevDash = false;
                     }
+
                     continue;
                 }
             }
-            
+
             //Convert to dash
             if (!prevDash && bufferPosition < estimatedLength &&
                 (category == UnicodeCategory.SpaceSeparator ||
@@ -925,11 +926,10 @@ public static class StringExtensions
                 prevDash = true;
             }
         }
-        
+
         if (bufferPosition > 0 && buffer[bufferPosition - 1] == '-')
             bufferPosition--;
-        
+
         return bufferPosition == 0 ? string.Empty : new string(buffer[..bufferPosition]).ToLowerInvariant();
     }
-
 }

@@ -65,7 +65,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         base(logger, configuration, region)
     {
         ArgumentNullException.ThrowIfNull(domainEndPoint);
-        
+
         this.clientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
         this.userPoolId = userPoolId ?? throw new ArgumentNullException(nameof(userPoolId));
         this.domainEndPoint = new Uri(domainEndPoint);
@@ -250,7 +250,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             var value = prop.GetValue(command);
 
             if (value == null) continue;
-            
+
             signUpRequest.UserAttributes.Add(new AttributeType
             {
                 Name = prop.Name.ToLower(cultureInfo),
@@ -263,8 +263,9 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             var response = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                     await CognitoProvider.SignUpAsync(signUpRequest, cancellationToken).ConfigureAwait(false))
                 .ConfigureAwait(false);
-            
-            return new SignUpResponse { Confirmed = response.UserConfirmed.GetValueOrDefault(), UUID = response.UserSub };
+
+            return new SignUpResponse
+                { Confirmed = response.UserConfirmed.GetValueOrDefault(), UUID = response.UserSub };
         }
         catch (Exception ex)
         {
@@ -704,9 +705,10 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             if (!responseMessage.IsSuccessStatusCode)
                 throw new BusinessException(ErrorCode.OAuthResponseError);
 
-            var responseContent = await responseMessage.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+            var responseContent =
+                await responseMessage.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 
-           var oauthResponse = JsonSerializer.Deserialize<OAuthSignInResponseDto>(responseContent);
+            var oauthResponse = JsonSerializer.Deserialize<OAuthSignInResponseDto>(responseContent);
 
             if (oauthResponse == null) throw new BusinessException(ErrorCode.OAuthResponseError);
 
@@ -739,11 +741,11 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
                 Picture = GetUserAttributeValue(socialUser.UserAttributes, "picture"),
                 Email = socialUserEmail
             };
-            
+
             //Clear the token to avoid the authentication flow if the user needs to register.
-            if (response.NeedRegister) 
+            if (response.NeedRegister)
                 response.AccessToken = response.IdToken = response.RefreshToken = null;
-            
+
             return response;
         }
         catch (Exception ex)
@@ -834,7 +836,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         var users = await ListUsersAsync(command.Email, cancellationToken);
         //Check if the user has a local user, what mean UserStatus!=EXTERNAL Provider
         var localUser = users.Users.SingleOrDefault(u => u.UserStatus != "EXTERNAL_PROVIDER");
-        
+
         // If the user is not found, we cannot link the social user.
         if (localUser is null)
         {
@@ -842,7 +844,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
                 command.Email, command.UserName);
             return false;
         }
-        
+
         try
         {
             //Check if the user is a federated user PS: Google_1234567890
@@ -852,9 +854,10 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
                 return false;
 
             var providerName = userNameAndProvider[0];
-            var providerValue = command.UserName.Replace(providerName,"", StringComparison.InvariantCultureIgnoreCase).TrimStart('_');
+            var providerValue = command.UserName.Replace(providerName, "", StringComparison.InvariantCultureIgnoreCase)
+                .TrimStart('_');
             var identities = localUser.Attributes.SingleOrDefault(a => a.Name == "identities");
-                
+
             if (identities?.Value?.Contains($"\"{providerName}\"", StringComparison.InvariantCultureIgnoreCase) == true)
             {
                 Logger.Info("User {Username} already linked to {Provider}", localUser.Username, providerName);
@@ -876,7 +879,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
                     ProviderAttributeValue = providerValue
                 }
             };
-            
+
             var result = await base.CreateDefaultRetryAsyncPolicy().ExecuteAsync(async () =>
                 await CognitoProvider.AdminLinkProviderForUserAsync(request, cancellationToken
                 )).ConfigureAwait(false);
@@ -931,12 +934,13 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     /// <param name="command"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    public async Task<bool> ClearSocialAccounts(ClearSocialAccountRequest command, CancellationToken cancellationToken = default)
+    public async Task<bool> ClearSocialAccounts(ClearSocialAccountRequest command,
+        CancellationToken cancellationToken = default)
     {
         command.EnsureIsValid();
-        
+
         using var activity = CognitoIdentityProviderActivitySource.StartActivity();
-    
+
         var users = await ListUsersAsync(command.Email, cancellationToken);
 
         //Check if the user has a local user, what mean UserStatus!=EXTERNAL Provider and confirmed.
@@ -955,21 +959,16 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
 
         if (federatedUserNames.Count == 0)
         {
-            Logger.Info("No social accounts found for user {@Email}", command.Email);
+            Logger.Info("No social accounts found for user {@Username}", localUser.Username);
             return false;
         }
         
-        Logger.Info("Found {@Count} social accounts for user {@Email}", federatedUserNames.Count, command.Email);
-
         foreach (var userName in federatedUserNames)
         {
-            Logger.Info("Removing social account {@Username} for user of email {@Email}.", 
-                localUser.Username,command.Email);
             await DeleteUser(new DeleteUserAccountRequest(userName), cancellationToken);
-
-            Logger.Info("Social account {@UserName} removed successfully.", userName);
+            Logger.Info("Social account for user {@userName} deleted.", userName);
         }
-        
+
         return true;
     }
 
@@ -1022,7 +1021,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             AccessToken = command.AccessToken,
             UserAttributes = []
         };
-        
+
         foreach (var (key, value) in command.Attributes)
         {
             updateUserAttributeRequest.UserAttributes.Add(new AttributeType
@@ -1043,7 +1042,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
             throw CatchException(ex);
         }
     }
-    
+
 
     private static void ParseUserAttributes<T>(ref T user, IList<AttributeType> userAttributes)
         where T : IGetUserResponse
@@ -1052,7 +1051,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
         if (userAttributes is null) return;
 
         user.CustomAttributes ??= [];
-            
+
         foreach (var userAttribute in userAttributes.Where(userAttribute => userAttribute.Name != null))
             switch (userAttribute.Name)
             {
@@ -1098,7 +1097,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
     private async Task<ListUsersResponse> ListUsersAsync(string email, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(email);
-        
+
         var listUsersResponse = await CognitoProvider.ListUsersAsync(new ListUsersRequest
         {
             UserPoolId = userPoolId,
@@ -1167,7 +1166,7 @@ public abstract class CognitoIdentityProvider : AwsBaseService, ICognitoIdentity
                 { "USERNAME", request.UserName.Trim().ToLower(cultureInfo) }
             }
         };
-        
+
         if (authParameters != null)
             foreach (var (key, value) in authParameters)
                 authRequest.AuthParameters.Add(key, value);

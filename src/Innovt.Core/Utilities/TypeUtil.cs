@@ -53,7 +53,7 @@ public static class TypeUtil
         typeof(Guid?),
         typeof(TimeSpan?),
         typeof(Enum),
-        typeof(Uri), 
+        typeof(Uri),
         typeof(Version),
         typeof(ValueType)
     ];
@@ -99,7 +99,7 @@ public static class TypeUtil
 
         return type.IsArray || (type.IsGenericType && typeof(IEnumerable).IsAssignableFrom(type));
     }
-    
+
     /// <summary>
     /// Check if the object is a collection of T.
     /// </summary>
@@ -110,9 +110,10 @@ public static class TypeUtil
         if (instance == null) return false;
 
         var type = instance.GetType();
-        
+
         return type.IsArray || (type.IsGenericType && typeof(IEnumerable).IsAssignableFrom(type));
     }
+
     /// <summary>
     /// Check if the object is a collection.
     /// </summary>
@@ -123,7 +124,7 @@ public static class TypeUtil
         if (instance == null) return false;
 
         var type = instance.GetType();
-        
+
         return type.IsArray || (type.IsGenericType && typeof(IEnumerable<T>).IsAssignableFrom(type));
     }
 
@@ -148,11 +149,10 @@ public static class TypeUtil
     public static bool IsNumericList(IList list)
     {
         if (list == null) return false;
-          if (list.Count == 0) return false;
-          
+        if (list.Count == 0) return false;
+
         var type = list[0].GetType();
         return type == typeof(int) || type == typeof(double) || type == typeof(float) ||
                type == typeof(decimal) || type == typeof(long);
     }
-
 }
