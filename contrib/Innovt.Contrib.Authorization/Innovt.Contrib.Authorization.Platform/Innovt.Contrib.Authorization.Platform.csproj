@@ -13,8 +13,8 @@
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="AWSSDK.DynamoDBv2" Version="4.0.8"/>
-        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0">
+        <PackageReference Include="AWSSDK.DynamoDBv2" Version="4.0.9.6" />
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.100">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>

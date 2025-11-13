@@ -14,16 +14,16 @@
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="AWSSDK.CognitoIdentityProvider" Version="4.0.3.9"/>
-        <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="9.0.10"/>
-        <PackageReference Include="System.Text.Json" Version="9.0.10"/>
-        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0">
+        <PackageReference Include="AWSSDK.CognitoIdentityProvider" Version="4.0.4.3" />
+        <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="10.0.0" />
+          <PackageReference Include="System.Text.Json" Version="10.0.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.100">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj"/>
+        <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj" />
     </ItemGroup>
 
 </Project>

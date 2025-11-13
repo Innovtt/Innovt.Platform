@@ -15,26 +15,26 @@
         <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
     </PropertyGroup>
     <ItemGroup>
-        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.10"/>
-        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.10"/>
-        <PackageReference Include="OpenTelemetry" Version="1.13.1"/>
-        <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.13.1"/>
-        <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.12.0"/>
-        <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.12.0"/>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.6"/>
-        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.9"/>
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.19"/>
-        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0">
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.0" />
+        <PackageReference Include="OpenTelemetry" Version="1.14.0" />
+        <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.14.0" />
+        <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.14.0" />
+        <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.14.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="10.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.22" />
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.100">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj"/>
-        <ProjectReference Include="..\Innovt.Domain\Innovt.Domain.csproj"/>
-        <ProjectReference Include="..\Innovt.OpenTelemetry\Innovt.OpenTelemetry.csproj"/>
+        <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj" />
+        <ProjectReference Include="..\Innovt.Domain\Innovt.Domain.csproj" />
+        <ProjectReference Include="..\Innovt.OpenTelemetry\Innovt.OpenTelemetry.csproj" />
     </ItemGroup>
 </Project>

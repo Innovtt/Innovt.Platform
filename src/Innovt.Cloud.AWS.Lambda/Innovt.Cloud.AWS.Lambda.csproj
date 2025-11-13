@@ -13,10 +13,10 @@
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Amazon.Lambda.Core" Version="2.7.1"/>
-        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="9.0.10"/>
-        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.10"/>
-        <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="9.0.10"/>
+        <PackageReference Include="Amazon.Lambda.Core" Version="2.8.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="10.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.0" />
+        <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="10.0.0" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\Innovt.Cloud\Innovt.Cloud.csproj"/>

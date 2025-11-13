@@ -122,9 +122,9 @@ public class ContextUserServiceTests
 
         var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.NameIdentifier, userId),
-            new Claim(ClaimTypes.Email, email),
-            new Claim(ClaimTypes.Name, name)
+            new(ClaimTypes.NameIdentifier, userId),
+            new(ClaimTypes.Email, email),
+            new(ClaimTypes.Name, name)
         };
 
         var identity = new ClaimsIdentity(claims, "TestAuthType");

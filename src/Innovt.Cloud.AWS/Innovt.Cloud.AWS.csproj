@@ -14,23 +14,23 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="AWSSDK.Core" Version="4.0.1"/>
-        <PackageReference Include="AWSSDK.SecurityToken" Version="4.0.2.8"/>
-        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.10"/>
-        <PackageReference Include="Polly" Version="8.6.4"/>
-        <PackageReference Include="System.Text.Json" Version="9.0.10"/>
-        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0">
+        <PackageReference Include="AWSSDK.Core" Version="4.0.3.1" />
+        <PackageReference Include="AWSSDK.SecurityToken" Version="4.0.4.1" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.0" />
+        <PackageReference Include="Polly" Version="8.6.4" />
+          <PackageReference Include="System.Text.Json" Version="10.0.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.100">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj"/>
-        <ProjectReference Include="..\Innovt.Cloud\Innovt.Cloud.csproj"/>
-        <ProjectReference Include="..\Innovt.Notification.Core\Innovt.Notification.Core.csproj"/>
+        <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj" />
+        <ProjectReference Include="..\Innovt.Cloud\Innovt.Cloud.csproj" />
+        <ProjectReference Include="..\Innovt.Notification.Core\Innovt.Notification.Core.csproj" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Update="NETStandard.Library" Version="2.0.3"/>
+        <PackageReference Update="NETStandard.Library" Version="2.0.3" />
     </ItemGroup>
 
 </Project>

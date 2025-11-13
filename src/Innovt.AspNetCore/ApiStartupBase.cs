@@ -15,7 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
@@ -83,7 +83,7 @@ public abstract class ApiStartupBase
     /// <summary>
     ///     Gets or sets the API documentation details.
     /// </summary>
-    protected DefaultApiDocumentation Documentation { get; set; } = null!;
+    protected DefaultApiDocumentation? Documentation { get; set; }
 
     /// <summary>
     ///     Gets or sets the localization settings for the API.
@@ -111,7 +111,7 @@ public abstract class ApiStartupBase
     /// <returns>True if Swagger documentation is enabled; otherwise, false.</returns>
     private bool IsSwaggerEnabled()
     {
-        return Documentation is not null;
+        return Documentation is not null  && IsDevelopmentEnvironment();
     }
 
     /// <summary>
@@ -134,16 +134,20 @@ public abstract class ApiStartupBase
 
         services.AddSwaggerGen(options =>
         {
-            options.SchemaFilter<SwaggerExcludeFilter>();
-            options.OperationFilter<SwaggerExcludeFilter>();
-            //options.ParameterFilter<SwaggerExcludeFilter>();
-
+            // options.SchemaFilter<SwaggerExcludeFilter>();
+            // options.OperationFilter<SwaggerExcludeFilter>();
+            // options.IgnoreObsoleteActions();
+            // options.IgnoreObsoleteProperties();
+            
+            if (Documentation is null)
+                return;
+            
             options.SwaggerDoc(Documentation.ApiVersion,
                 new OpenApiInfo
                 {
-                    Description = Documentation.ApiDescription,
                     Title = Documentation.ApiTitle,
                     Version = Documentation.ApiVersion,
+                    Description = Documentation.ApiDescription,
                     Contact = Documentation.ContactName is null
                         ? null
                         : new OpenApiContact
@@ -152,9 +156,7 @@ public abstract class ApiStartupBase
                             Email = Documentation.ContactEmail
                         }
                 });
-
-            options.IgnoreObsoleteActions();
-            options.IgnoreObsoleteProperties();
+      
         });
     }
 
@@ -272,12 +274,16 @@ public abstract class ApiStartupBase
     protected virtual void ConfigureSwaggerUi(IApplicationBuilder app, IWebHostEnvironment env)
     {
         if (!IsSwaggerEnabled()) return;
-
+        
         app.UseRewriter(new RewriteOptions().AddRedirect("(.*)docs$", "$1docs/index.html"));
-
-        app.UseSwagger(s => { s.RouteTemplate = "docs/{documentName}/swagger.json"; }).UseSwaggerUI(c =>
+        
+        app.UseSwagger(s =>
         {
-            c.SwaggerEndpoint($"{Documentation.ApiVersion}/swagger.json", Documentation.ApiTitle);
+            s.RouteTemplate = "docs/{documentName}/swagger.json";
+            s.OpenApiVersion = OpenApiSpecVersion.OpenApi3_1;
+        }).UseSwaggerUI(c =>
+        {
+            c.SwaggerEndpoint($"{Documentation?.ApiVersion}/swagger.json", Documentation?.ApiTitle);
             c.RoutePrefix = "docs";
         });
     }
@@ -290,13 +296,9 @@ public abstract class ApiStartupBase
     /// <param name="env"></param>
     /// <param name="loggerFactory"></param>
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
-    {
-        if (env.IsDevelopment())
-        {
-            app.UseDeveloperExceptionPage();
-            ConfigureSwaggerUi(app, env);
-        }
-
+    {  
+        ConfigureSwaggerUi(app, env);
+        
         app.UseHttpsRedirection().UseRouting();
 
         ConfigureCultures(app);
