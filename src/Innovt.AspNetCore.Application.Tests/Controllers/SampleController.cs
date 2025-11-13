@@ -35,7 +35,7 @@ public class SampleController : BaseApiController
 
 
     //Sample for ModelExcludeFilter
-    [HttpPost("{id:guid}")]
+    [HttpPost("Add2{id:guid}")]
     [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
