@@ -4,7 +4,7 @@
 
 using System.Reflection;
 using Innovt.Core.Attributes;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Innovt.AspNetCore.Filters;
@@ -26,12 +26,12 @@ public class SwaggerExcludeFilter : ISchemaFilter, IOperationFilter, IOperationA
     /// </summary>
     /// <param name="schema"></param>
     /// <param name="context"></param>
-    public void Apply(OpenApiSchema schema, SchemaFilterContext context)
+    public void Apply(IOpenApiSchema schema, SchemaFilterContext context)
     {
         ArgumentNullException.ThrowIfNull(schema);
         ArgumentNullException.ThrowIfNull(context);
 
-        if (schema.Properties.Count == 0)
+        if (schema.Properties?.Count == 0)
             return;
 
         var excludeAttributes = context.Type.GetCustomAttributes<ModelExcludeFilterAttribute>(true)
@@ -90,16 +90,18 @@ public class SwaggerExcludeFilter : ISchemaFilter, IOperationFilter, IOperationA
         }
     }
 
-    private static void RemoveParameterFromSchema(List<string> allExclusions, OpenApiSchema schema)
+    private static void RemoveParameterFromSchema(List<string> allExclusions, IOpenApiSchema schema)
     {
         foreach (var prop in allExclusions)
         {
-            var schemaProp = schema.Properties.Where(p =>
+            var schemaProp = schema.Properties?.Where(p =>
                     string.Equals(p.Key, prop, StringComparison.OrdinalIgnoreCase)).Select(p => p.Key)
                 .SingleOrDefault();
 
             if (schemaProp != null)
-                schema.Properties.Remove(schemaProp);
+                schema.Properties?.Remove(schemaProp);
         }
     }
+
+
 }

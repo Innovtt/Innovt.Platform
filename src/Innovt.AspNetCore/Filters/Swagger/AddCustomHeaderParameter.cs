@@ -1,4 +1,4 @@
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Innovt.AspNetCore.Filters.Swagger;
@@ -12,7 +12,7 @@ public class AddCustomHeaderParameter : IOperationFilter
     private readonly string name;
     private readonly bool required;
     private readonly string schemaFormat;
-    private readonly string schemaType;
+    private readonly JsonSchemaType schemaType = JsonSchemaType.String;
     private OpenApiSchema? apiSchema;
 
     /// <summary>
@@ -23,7 +23,7 @@ public class AddCustomHeaderParameter : IOperationFilter
     /// <param name="required">Indicates whether the custom header parameter is required.</param>
     /// <param name="schemaType">The type of the custom header parameter schema (default is "string").</param>
     /// <param name="schemaFormat">The format of the custom header parameter schema (default is "uuid").</param>
-    public AddCustomHeaderParameter(string name, string? description, bool required, string schemaType = "string",
+    public AddCustomHeaderParameter(string name, string? description, bool required, JsonSchemaType schemaType = JsonSchemaType.String,
         string schemaFormat = "uuid")
     {
         this.name = name ?? throw new ArgumentNullException(nameof(name));
@@ -55,11 +55,11 @@ public class AddCustomHeaderParameter : IOperationFilter
         if (operation is null)
             return;
 
-        operation.Parameters ??= new List<OpenApiParameter>();
-
+        operation.Parameters ??= new List<IOpenApiParameter>();
+        
         apiSchema ??= new OpenApiSchema
         {
-            Type = schemaType,
+            Type =  schemaType,
             Format = schemaFormat,
         };
 

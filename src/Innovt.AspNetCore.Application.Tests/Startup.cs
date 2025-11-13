@@ -25,13 +25,13 @@ public class Startup : ApiStartupBase
     protected override void AddSwagger(IServiceCollection services)
     {
         base.AddSwagger(services);
-
-        services.ConfigureBearerAuthorization(options =>
-            {
-                options.OperationFilter<AddCustomHeaderParameter>("ExternalId",
-                    "The cognito sub id for authenticated user", false);
-            }
-        );
+    
+        // services.ConfigureBearerAuthorization(options =>
+        //     {
+        //         options.OperationFilter<AddCustomHeaderParameter>("ExternalId",
+        //             "The cognito sub id for authenticated user", false);
+        //     }
+        // );
     }
 
 
