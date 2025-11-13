@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Innovt.Core.Collections;
 using Innovt.Core.Test.Models;
@@ -226,5 +227,29 @@ public class ExtensionsTests
 
         Assert.That(result, Is.Not.Empty);
         Assert.That(result.ToString(), Is.EqualTo(expectedGuid));
+    }
+    
+    
+    [TestCase("1981/04/02", "1981/03/30")]
+    [TestCase("2025/11/13", "2025/11/10")]
+    public void GetMondayOfAWeek(string date, string expected)
+    {
+        var providedDay = DateTime.Parse(date, new DateTimeFormatInfo());
+        var expectedDate = DateTime.Parse(expected,new DateTimeFormatInfo());
+        
+        var actualDate = providedDay.GetMondayOfWeek();
+        Assert.That(actualDate, Is.EqualTo(expectedDate));
+    }
+    
+    
+    [TestCase("1981/04/02", "1981/04/03")]
+    [TestCase("2025/11/13", "2025/11/14")]
+    public void GetFridayOfAWeek(string date, string expected)
+    {
+        var providedDay = DateTime.Parse(date, new DateTimeFormatInfo());
+        var expectedDate = DateTime.Parse(expected,new DateTimeFormatInfo());
+        
+        var actualDate = providedDay.GetFridayOfWeek();
+        Assert.That(actualDate, Is.EqualTo(expectedDate));
     }
 }
