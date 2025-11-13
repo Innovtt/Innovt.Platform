@@ -198,6 +198,24 @@ public static class Extensions
             new DateTime(date.Year, date.Month, DateTime.DaysInMonth(date.Year, date.Month)).AddDays(1)
                 .AddMilliseconds(-1), date.Offset);
     }
+    
+    
+    /// <summary>
+    /// Get the first monday of week based on the provided date
+    /// </summary>
+    /// <param name="date">Date reference for the week.</param>
+    /// <returns>Returns a datetime for monday of the week</returns>
+    public static DateTime GetMondayOfWeek(this DateTime date)
+    {
+       return date.AddDays(-((int)date.DayOfWeek - 1 + 7) % 7);
+    }
+
+    /// <summary>
+    /// Get the friday of the provided week.
+    /// </summary>
+    /// <param name="date">Date reference for the week.</param>
+    /// <returns>Returns a datetime for friday of the week.</returns>
+    public static DateTime GetFridayOfWeek(this DateTime date) => GetMondayOfWeek(date.Date).AddDays(4);
 
     /// <summary>
     ///     Formats a DateTimeOffset as a human-readable date and time string.
