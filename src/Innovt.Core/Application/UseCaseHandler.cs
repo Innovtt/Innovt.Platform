@@ -17,6 +17,6 @@ public class UseCaseHandler(IServiceProvider serviceProvider) : IUseCaseHandler
         if (handler == null)
             throw new InvalidOperationException($"Handler not found for {typeof(TRequest).Name}");
 
-        return await handler.ExecuteAsync(tRequest, cancellationToken);
+        return await handler.ExecuteAsync(tRequest, cancellationToken).ConfigureAwait(false);
     }
 }

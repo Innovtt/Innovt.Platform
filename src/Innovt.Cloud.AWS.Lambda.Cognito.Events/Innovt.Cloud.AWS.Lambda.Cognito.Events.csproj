@@ -13,12 +13,9 @@
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     </PropertyGroup>
     <ItemGroup>
-          <PackageReference Include="System.Text.Json" Version="10.0.0"/>
-    </ItemGroup>
-    <ItemGroup>
-        <Folder Include="CreateAuthChallenge\"/>
-        <Folder Include="DefineAuthChallenge\"/>
-        <Folder Include="PreTokenGeneration\"/>
-        <Folder Include="PostConfirmation\"/>
+        <Folder Include="CreateAuthChallenge\" />
+        <Folder Include="DefineAuthChallenge\" />
+        <Folder Include="PreTokenGeneration\" />
+        <Folder Include="PostConfirmation\" />
     </ItemGroup>
 </Project>

@@ -18,8 +18,6 @@
         <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj" />
         <ProjectReference Include="..\Innovt.Domain\Innovt.Domain.csproj" />
         <PackageReference Include="AWSSDK.Kinesis" Version="4.0.7.3" />
-        <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="10.0.0" />
-          <PackageReference Include="System.Text.Json" Version="10.0.0" />
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.100">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

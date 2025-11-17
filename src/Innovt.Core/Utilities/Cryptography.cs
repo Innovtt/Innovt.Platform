@@ -113,11 +113,11 @@ public static class Cryptography
         Check.NotNull(plainText);
         Check.NotNull(keyString);
 
-        using var rijndael = Rijndael.Create();
-        rijndael.Key = Encoding.UTF8.GetBytes(keyString);
-        rijndael.IV = new byte[16];
+        using var aes = Aes.Create();
+        aes.Key = Encoding.UTF8.GetBytes(keyString);
+        aes.IV = new byte[16];
 
-        using var crypto = rijndael.CreateEncryptor(Encoding.UTF8.GetBytes(keyString), rijndael.IV);
+        using var crypto = aes.CreateEncryptor(Encoding.UTF8.GetBytes(keyString), aes.IV);
 
         return Encrypt(crypto, plainText);
     }

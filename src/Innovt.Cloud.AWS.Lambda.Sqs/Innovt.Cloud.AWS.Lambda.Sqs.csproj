@@ -14,8 +14,7 @@
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Amazon.Lambda.SQSEvents" Version="2.2.0"/>
-        <PackageReference Include="System.Text.Json" Version="10.0.0" />
+        <PackageReference Include="Amazon.Lambda.SQSEvents" Version="2.2.0" />
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.100">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -23,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda\Innovt.Cloud.AWS.Lambda.csproj"/>
+        <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda\Innovt.Cloud.AWS.Lambda.csproj" />
     </ItemGroup>
 
 
