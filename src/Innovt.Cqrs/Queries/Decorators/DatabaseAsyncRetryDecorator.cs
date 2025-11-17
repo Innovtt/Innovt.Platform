@@ -46,6 +46,6 @@ public sealed class DatabaseAsyncRetryDecorator<TFilter, TResult> : BaseDatabase
     public Task<TResult> HandleAsync(TFilter filter, CancellationToken cancellationToken = default)
     {
         return CreateAsyncPolicy()
-            .ExecuteAsync(async () => await queryHandler.HandleAsync(filter, cancellationToken));
+            .ExecuteAsync(async () => await queryHandler.HandleAsync(filter, cancellationToken).ConfigureAwait(false));
     }
 }

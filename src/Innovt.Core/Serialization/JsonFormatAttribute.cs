@@ -11,7 +11,7 @@ namespace Innovt.Core.Serialization;
 ///     Represents a custom JSON attribute for specifying the format of a property when serializing to JSON.
 /// </summary>
 [AttributeUsage(AttributeTargets.Property)]
-public class JsonFormatAttribute : JsonAttribute
+public sealed class JsonFormatAttribute : JsonAttribute
 {
     /// <summary>
     ///     Initializes a new instance of the <see cref="JsonFormatAttribute" /> class with the specified format.

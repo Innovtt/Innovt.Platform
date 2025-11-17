@@ -87,7 +87,7 @@ public class PagedCollection<T> : IPagedCollection<T>
             return false;
 
         //Page +1 because of the indice will be 0
-        var actualPage = int.Parse(Page) + 1 * PageSize;
+        var actualPage = int.Parse(Page, CultureInfo.InvariantCulture) + 1 * PageSize;
 
         return TotalRecords > actualPage;
     }
@@ -98,6 +98,6 @@ public class PagedCollection<T> : IPagedCollection<T>
         if (TotalRecords <= 0 || !IsNumberPagination)
             return false;
 
-        return int.Parse(Page) > 1;
+        return int.Parse(Page, CultureInfo.InvariantCulture) > 1;
     }
 }

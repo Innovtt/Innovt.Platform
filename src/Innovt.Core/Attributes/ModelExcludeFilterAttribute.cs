@@ -14,7 +14,7 @@ namespace Innovt.Core.Attributes;
 /// This attribute allows developers to annotate model properties that should be excluded when applying filters
 /// to the model. Filters can be used, for example, for data validation or data transformation.
 /// </remarks>
-/// [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
 public sealed class ModelExcludeFilterAttribute : Attribute
 {
     /// <summary>
