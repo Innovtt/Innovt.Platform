@@ -46,6 +46,6 @@ public sealed class DatabaseAsyncRetryDecorator<TCommand> : BaseDatabaseRetryDec
     public async Task Handle(TCommand command, CancellationToken cancellationToken = default)
     {
         await CreateAsyncPolicy()
-            .ExecuteAsync(async () => await asyncCommandHandler.Handle(command, cancellationToken));
+            .ExecuteAsync(async () => await asyncCommandHandler.Handle(command, cancellationToken).ConfigureAwait(false)).ConfigureAwait(false);
     }
 }
