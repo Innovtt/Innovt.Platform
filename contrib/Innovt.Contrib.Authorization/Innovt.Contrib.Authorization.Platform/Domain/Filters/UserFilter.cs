@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Innovt.Core.Collections;
 using Innovt.Core.Cqrs.Queries;
 
 namespace Innovt.Contrib.Authorization.Platform.Domain.Filters;
@@ -44,6 +45,7 @@ public class UserFilter : IFilter
     /// <remarks>This method is not implemented and will throw <see cref="NotImplementedException" />.</remarks>
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
-        throw new NotImplementedException();
+        if (Email.IsNullOrEmpty())
+            yield return new ValidationResult("Email is required.", [nameof(Email)]);
     }
 }
