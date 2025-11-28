@@ -31,7 +31,11 @@ public class CryptographyTests
         Assert.Multiple(() =>
         {
             Assert.That(encrypted, Is.Not.Null);
-            Assert.That("+CSp39EM8HoEjSn4nOAbnw==", Is.EqualTo(encrypted));
+            // With dynamic IV, the encrypted value will be different each time
+            // Format should be: IV:Ciphertext
+            Assert.That(encrypted, Does.Contain(":"));
+            var parts = encrypted.Split(':');
+            Assert.That(parts.Length, Is.EqualTo(2));
         });
     }
 
@@ -59,7 +63,11 @@ public class CryptographyTests
         var encrypted = Cryptography.RijndaelEncrypt(plainText, key);
 
         Assert.That(encrypted, Is.Not.Null);
-        Assert.That("+CSp39EM8HoEjSn4nOAbnw==", Is.EqualTo(encrypted));
+        // With dynamic IV, the encrypted value will be different each time
+        // Format should be: IV:Ciphertext
+        Assert.That(encrypted, Does.Contain(":"));
+        var parts = encrypted.Split(':');
+        Assert.That(parts.Length, Is.EqualTo(2));
     }
 
 
@@ -75,5 +83,16 @@ public class CryptographyTests
 
         Assert.That(decrypted, Is.Not.Null);
         Assert.That(plainText, Is.EqualTo(decrypted));
+    }
+
+    [Test]
+    [TestCase("+CSp39EM8HoEjSn4nOAbnw==", "e37306c1755548f79bfac21185d5a6ef", "michel borges")]
+    public void RijndaelDecryptLegacyFormat(string legacyEncrypted, string key, string expectedPlainText)
+    {
+        // Test backward compatibility with old encrypted data (static IV)
+        var decrypted = Cryptography.RijndaelDecrypt(legacyEncrypted, key);
+
+        Assert.That(decrypted, Is.Not.Null);
+        Assert.That(expectedPlainText, Is.EqualTo(decrypted));
     }
 }
