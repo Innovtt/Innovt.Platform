@@ -23,9 +23,11 @@ public class BusinessExceptionTests
     {
         var bex = new BusinessException("E-mail is not valid.");
 
-        Assert.That(bex, Is.Not.Null);
-
-        Assert.That("E-mail is not valid.", Is.EqualTo(bex.Message));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(bex, Is.Not.Null);
+            Assert.That("E-mail is not valid.", Is.EqualTo(bex.Message));
+        }
     }
 
     /// <summary>
@@ -36,13 +38,13 @@ public class BusinessExceptionTests
     {
         var bex = new BusinessException("01", "E-mail is not valid.");
 
-        Assert.Multiple(() =>
+        using (Assert.EnterMultipleScope())
         {
             Assert.That(bex, Is.Not.Null);
 
             Assert.That("E-mail is not valid.", Is.EqualTo(bex.Message));
             Assert.That("01", Is.EqualTo(bex.Code));
-        });
+        }
     }
 
     /// <summary>
