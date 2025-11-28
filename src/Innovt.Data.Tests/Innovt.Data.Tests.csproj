@@ -1,28 +1,27 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <IsPackable>false</IsPackable>
         <GenerateDocumentationFile>false</GenerateDocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
-        <PackageReference Include="NUnit" Version="4.4.0"/>
-        <PackageReference Include="NUnit3TestAdapter" Version="5.2.0"/>
+        <PackageReference Include="NUnit" Version="4.4.0" />
+        <PackageReference Include="NUnit3TestAdapter" Version="5.2.0" />
         <PackageReference Include="coverlet.collector" Version="6.0.4">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="10.0.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Innovt.Data\Innovt.Data.csproj"/>
+        <ProjectReference Include="..\Innovt.Data\Innovt.Data.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Model\"/>
+        <Folder Include="Model\" />
     </ItemGroup>
 
 </Project>

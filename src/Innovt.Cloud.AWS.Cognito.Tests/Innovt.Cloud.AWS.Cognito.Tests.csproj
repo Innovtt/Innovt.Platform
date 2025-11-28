@@ -1,19 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <Nullable>enable</Nullable>
         <IsPackable>false</IsPackable>
         <GenerateDocumentationFile>false</GenerateDocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="AWSSDK.AppConfigData" Version="4.0.2.5" />
-        <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="4.0.3.12" />
-        <PackageReference Include="AWSSDK.SimpleSystemsManagement" Version="4.0.6.2" />
+        <PackageReference Include="AWSSDK.AppConfigData" Version="4.0.2.7" />
+        <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="4.0.3.14" />
+        <PackageReference Include="AWSSDK.SimpleSystemsManagement" Version="4.0.6.4" />
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
-        <PackageReference Include="Amazon.Extensions.Configuration.SystemsManager" Version="7.0.0" />
+        <PackageReference Include="Amazon.Extensions.Configuration.SystemsManager" Version="7.0.1" />
         <PackageReference Include="NUnit" Version="4.4.0" />
         <PackageReference Include="NSubstitute" Version="5.3.0" />
         <PackageReference Include="NUnit3TestAdapter" Version="5.2.0" />
@@ -32,8 +32,8 @@
     </ItemGroup>
 
     <ItemGroup Condition="'$(Configuration)' == 'Debug'">
-        <PackageReference Include="AWSSDK.SSO" Version="4.0.2.3" />
-        <PackageReference Include="AWSSDK.SSOOIDC" Version="4.0.3.4" />
+        <PackageReference Include="AWSSDK.SSO" Version="4.0.2.5" />
+        <PackageReference Include="AWSSDK.SSOOIDC" Version="4.0.3.6" />
     </ItemGroup>
 
 </Project>

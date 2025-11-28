@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <PackageId>Innovt.Data.EFCore.PostgreSQL</PackageId>
-        <PackageVersion>8.4.4</PackageVersion>
+      <PackageVersion>10.0.0</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -15,10 +15,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Innovt.Data.EFCore\Innovt.Data.EFCore.csproj"/>
+        <ProjectReference Include="..\Innovt.Data.EFCore\Innovt.Data.EFCore.csproj" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.0" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.0" />
     </ItemGroup>
-
 </Project>

@@ -2,7 +2,18 @@
   "permissions": {
     "allow": [
       "Bash(dotnet test:*)",
-      "Bash(dotnet build:*)"
+      "Bash(dotnet build:*)",
+      "Bash(tee:*)",
+      "Bash(dotnet list:*)",
+      "Bash(dotnet add:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(find:*)",
+      "Bash(while read dir)",
+      "Bash(do test -f \"$dir/README.md\")",
+      "Bash(echo:*)",
+      "Bash(done)",
+      "Bash(xargs:*)"
     ],
     "deny": [],
     "ask": []
