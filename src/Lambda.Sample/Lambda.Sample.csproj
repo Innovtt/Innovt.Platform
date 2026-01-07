@@ -15,15 +15,15 @@
 
     <ItemGroup>
         <PackageReference Include="Amazon.Extensions.Configuration.SystemsManager" Version="7.0.1" />
-        <PackageReference Include="AWSSDK.AppConfigData" Version="4.0.2.7" />
-        <PackageReference Include="AWSSDK.Core" Version="4.0.3.3" />
-        <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="4.0.3.14" />
-        <PackageReference Include="AWSSDK.SimpleSystemsManagement" Version="4.0.6.4" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="10.0.0" />
+        <PackageReference Include="AWSSDK.AppConfigData" Version="4.0.2.11" />
+        <PackageReference Include="AWSSDK.Core" Version="4.0.3.7" />
+        <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="4.0.3.18" />
+        <PackageReference Include="AWSSDK.SimpleSystemsManagement" Version="4.0.6.8" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="10.0.1" />
         <PackageReference Include="Amazon.Lambda.Core" Version="2.8.0" />
         <PackageReference Include="Amazon.Lambda.RuntimeSupport" Version="1.14.1" />
         <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.4.4" />
-        <PackageReference Include="AWSSDK.XRay" Version="4.0.3.5" />
+        <PackageReference Include="AWSSDK.XRay" Version="4.0.3.9" />
     </ItemGroup>
 
 </Project>
