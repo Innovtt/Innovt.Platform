@@ -118,7 +118,7 @@ public abstract class ApiStartupBase
     ///     Checks if the application is running in a development environment.
     /// </summary>
     /// <returns>True if the application is in development; otherwise, false.</returns>
-    protected bool IsDevelopmentEnvironment()
+    private bool IsDevelopmentEnvironment()
     {
         return Environment.IsDevelopment();
     }
@@ -131,14 +131,10 @@ public abstract class ApiStartupBase
     {
         if (!IsSwaggerEnabled())
             return;
-
+        
+        services.AddEndpointsApiExplorer();
         services.AddSwaggerGen(options =>
-        {
-            // options.SchemaFilter<SwaggerExcludeFilter>();
-            // options.OperationFilter<SwaggerExcludeFilter>();
-            // options.IgnoreObsoleteActions();
-            // options.IgnoreObsoleteProperties();
-            
+        { 
             if (Documentation is null)
                 return;
             
@@ -309,6 +305,9 @@ public abstract class ApiStartupBase
 
         app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
     }
+
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env) =>
+        Configure(app, env, null!);
 
     /// <summary>
     ///     Configures API behavior options.
