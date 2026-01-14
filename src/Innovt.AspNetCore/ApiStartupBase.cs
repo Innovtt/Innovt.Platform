@@ -44,7 +44,7 @@ public abstract class ApiStartupBase
         DefaultHealthPath = "/health";
         SetDefaultJsonOptions = setDefaultJsonOptions;
     }
-
+    
     /// <summary>
     ///     Initializes a new instance of the ApiStartupBase class with additional API documentation details.
     /// </summary>
