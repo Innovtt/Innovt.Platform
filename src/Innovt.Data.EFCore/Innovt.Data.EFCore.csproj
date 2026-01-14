@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
         <PackageId>Innovt.Data.EFCore</PackageId>
-      <PackageVersion>10.0.2</PackageVersion>
+      <PackageVersion>10.0.3</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -14,12 +14,12 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.1" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.1">
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.2" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.2">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.101">
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.102">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
