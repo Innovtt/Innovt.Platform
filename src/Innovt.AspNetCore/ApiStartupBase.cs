@@ -291,7 +291,7 @@ public abstract class ApiStartupBase
     /// <param name="app"></param>
     /// <param name="env"></param>
     /// <param name="loggerFactory"></param>
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {  
         ConfigureSwaggerUi(app, env);
         
@@ -301,13 +301,10 @@ public abstract class ApiStartupBase
 
         app.UseHealthChecks(DefaultHealthPath);
 
-        ConfigureApp(app, env, loggerFactory);
+        ConfigureApp(app, env);
 
         app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
     }
-
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env) =>
-        Configure(app, env, null!);
 
     /// <summary>
     ///     Configures API behavior options.
@@ -356,7 +353,7 @@ public abstract class ApiStartupBase
     /// <param name="env">The hosting environment.</param>
     /// <param name="loggerFactory">The logger factory.</param>
     // ReSharper disable once MemberCanBeProtected.Global
-    public abstract void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory);
+    public abstract void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env);
 
     /// <summary>
     ///     Configures OpenTelemetry for tracing.
