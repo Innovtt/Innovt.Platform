@@ -35,7 +35,7 @@ public class Startup : ApiStartupBase
     }
 
 
-    public override void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
+    public override void ConfigureApp(IApplicationBuilder app, IWebHostEnvironment env)
     {
     }
 
