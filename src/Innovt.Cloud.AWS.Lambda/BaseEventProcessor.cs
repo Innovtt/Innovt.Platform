@@ -125,7 +125,7 @@ public abstract class BaseEventProcessor
     /// <returns>The started <see cref="Activity" />.</returns>
     protected Activity StartBaseActivity(string activityName)
     {
-        if (activityName is null) throw new ArgumentNullException(nameof(activityName));
+        ArgumentNullException.ThrowIfNull(activityName);
 
         var activity = EventProcessorActivitySource.StartActivity(activityName) ?? new Activity(activityName);
         activity?.SetTag("Lambda.FunctionName", Context.FunctionName);

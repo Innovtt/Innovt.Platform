@@ -48,7 +48,7 @@ public class DmContext
     /// <exception cref="ArgumentNullException">Thrown when the entity is null.</exception>
     public void Attach<T>(T entity) where T : IBaseDataModel
     {
-        if (entity == null) throw new ArgumentNullException(nameof(entity));
+        ArgumentNullException.ThrowIfNull(entity);
 
         entity.EnableTrackingChanges = true;
 
@@ -65,7 +65,7 @@ public class DmContext
     /// <exception cref="ArgumentNullException">Thrown when the entity is null.</exception>
     public void DeAttach<T>(T entity) where T : IBaseDataModel
     {
-        if (entity == null) throw new ArgumentNullException(nameof(entity));
+        ArgumentNullException.ThrowIfNull(entity);
 
         entity.EnableTrackingChanges = true;
 
@@ -88,7 +88,7 @@ public class DmContext
     /// <exception cref="ArgumentNullException">Thrown when the entity is null.</exception>
     public T Find<T>(T entity) where T : IBaseDataModel
     {
-        if (entity == null) throw new ArgumentNullException(nameof(entity));
+        ArgumentNullException.ThrowIfNull(entity);
         var key = entity.GetHashCode().ToString(CultureInfo.InvariantCulture);
 
         if (items.TryGetValue(key, out var item))

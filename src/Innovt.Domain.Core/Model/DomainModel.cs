@@ -13,7 +13,7 @@ namespace Innovt.Domain.Core.Model;
 /// <typeparam name="T">The type of value object.</typeparam>
 public class DomainModel<T> : ValueObject where T : ValueObject
 {
-    private readonly List<T> models = new();
+    private readonly List<T> models = [];
 
     /// <summary>
     ///     Adds a value object to the domain model.
@@ -38,7 +38,7 @@ public class DomainModel<T> : ValueObject where T : ValueObject
     /// </summary>
     /// <param name="id">The primary key to search for.</param>
     /// <returns>The value object found, or null if not found.</returns>
-    public T GetByPk(int id)
+    public T? GetByPk(int id)
     {
         return models.SingleOrDefault(s => s.Id == id);
     }

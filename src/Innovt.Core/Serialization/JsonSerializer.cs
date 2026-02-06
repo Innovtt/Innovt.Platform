@@ -61,7 +61,7 @@ public class JsonSerializer : ISerializer
     /// <exception cref="ArgumentNullException">Thrown when the <paramref name="obj" /> parameter is null.</exception>
     public string SerializeObject<T>(T obj)
     {
-        if (obj == null) throw new ArgumentNullException(nameof(obj));
+        ArgumentNullException.ThrowIfNull(obj);
 
         return System.Text.Json.JsonSerializer.Serialize(obj, options);
     }

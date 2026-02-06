@@ -210,7 +210,7 @@ public class QueueService<T> : AwsBaseService, IQueueService<T> where T : IQueue
     public async Task<string> EnQueueAsync<TK>(TK message, int? visibilityTimeoutInSeconds = null,
         CancellationToken cancellationToken = default)
     {
-        if (message == null) throw new ArgumentNullException(nameof(message));
+        ArgumentNullException.ThrowIfNull(message);
 
         using var activity = QueueActivitySource.StartActivity("QueueAsync");
         activity?.SetTag("sqs.delay_seconds", visibilityTimeoutInSeconds);

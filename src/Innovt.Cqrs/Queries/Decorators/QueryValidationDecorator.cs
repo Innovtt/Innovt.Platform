@@ -36,7 +36,7 @@ public sealed class QueryValidationDecorator<TFilter, TResult> : IQueryHandler<T
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="filter" /> is null.</exception>
     public TResult Handle(TFilter filter)
     {
-        if (filter == null) throw new ArgumentNullException(nameof(filter));
+        ArgumentNullException.ThrowIfNull(filter);
 
         filter.EnsureIsValid();
 

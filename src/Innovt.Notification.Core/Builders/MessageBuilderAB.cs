@@ -32,8 +32,8 @@ public abstract class MessageBuilderAB
     /// <returns>The built notification message.</returns>
     public virtual NotificationMessage Build(NotificationTemplate template, NotificationRequest request)
     {
-        if (template == null) throw new ArgumentNullException(nameof(template));
-        if (request == null) throw new ArgumentNullException(nameof(request));
+        ArgumentNullException.ThrowIfNull(template);
+        ArgumentNullException.ThrowIfNull(request);
 
         var message =
             new NotificationMessage(template.Type, template.FromAddress, template.FromName, template.Subject)

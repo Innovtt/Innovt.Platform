@@ -74,7 +74,7 @@ public static class Check
     /// <exception cref="BusinessException">Thrown if any of the values is less than or equal to zero.</exception>
     public static void NotLessThanZero<T>(params T[] value)
     {
-        if (value == null) throw new ArgumentNullException(nameof(value));
+        ArgumentNullException.ThrowIfNull(value);
 
         foreach (var i in value)
         {

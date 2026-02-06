@@ -39,7 +39,7 @@ public sealed class QueryAsyncValidationDecorator<TFilter, TResult> : IAsyncQuer
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="filter" /> is null.</exception>
     public async Task<TResult> HandleAsync(TFilter filter, CancellationToken cancellationToken = default)
     {
-        if (filter == null) throw new ArgumentNullException(nameof(filter));
+        ArgumentNullException.ThrowIfNull(filter);
 
         filter.EnsureIsValid();
 

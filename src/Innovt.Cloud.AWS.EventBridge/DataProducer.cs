@@ -1,40 +1,33 @@
 ﻿// Innovt Company
 // Author: Michel Borges
-// Project: Innovt.Cloud.AWS.Kinesis
+// Project: Innovt.Cloud.AWS.EventBridge
 
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
-using Amazon.Kinesis;
-using Amazon.Kinesis.Model;
+using Amazon.EventBridge;
+using Amazon.EventBridge.Model;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Core.Collections;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Core.Utilities;
 using Innovt.Domain.Core.Streams;
 
-namespace Innovt.Cloud.AWS.Kinesis;
+namespace Innovt.Cloud.AWS.EventBridge;
 
 /// <summary>
-///     Represents a data producer for publishing data to an Amazon Kinesis stream.
+///     Represents a data producer for publishing data to an Amazon EventBridge event bus.
 /// </summary>
 /// <typeparam name="T">The type of data streams to be published.</typeparam>
 public class DataProducer<T> : AwsBaseService where T : class, IDataStream
 {
-    private readonly ActivitySource activityDataProducer = new("Innovt.Cloud.AWS.KinesisDataProducer");
-    private AmazonKinesisClient kinesisClient;
+    private readonly ActivitySource activityDataProducer = new("Innovt.Cloud.AWS.EventBridgeDataProducer");
+    private AmazonEventBridgeClient eventBridgeClient;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="DataProducer{T}" /> class with the specified bus name,
     ///     logger, and AWS configuration.
     /// </summary>
-    /// <param name="busName">The name of the Kinesis data stream (bus) to which data will be published.</param>
+    /// <param name="busName">The name of the EventBridge event bus to which data will be published.</param>
     /// <param name="logger">The logger for logging informational and error messages.</param>
     /// <param name="configuration">The AWS configuration used to create AWS service clients.</param>
     protected DataProducer(string busName, ILogger logger, IAwsConfiguration configuration) : base(logger,
@@ -47,10 +40,10 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
     ///     Initializes a new instance of the <see cref="DataProducer{T}" /> class with the specified bus name,
     ///     logger, AWS configuration, and AWS region.
     /// </summary>
-    /// <param name="busName">The name of the Kinesis data stream (bus) to which data will be published.</param>
+    /// <param name="busName">The name of the EventBridge event bus to which data will be published.</param>
     /// <param name="logger">The logger for logging informational and error messages.</param>
     /// <param name="configuration">The AWS configuration used to create AWS service clients.</param>
-    /// <param name="region">The AWS region in which the Kinesis data stream is located.</param>
+    /// <param name="region">The AWS region in which the EventBridge event bus is located.</param>
     protected DataProducer(string busName, ILogger logger, IAwsConfiguration configuration,
         string region) : base(logger, configuration, region)
     {
@@ -58,63 +51,64 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
     }
 
     /// <summary>
-    ///     Gets the name of the Kinesis data stream (bus) to which data will be published.
+    ///     Gets the name of the EventBridge event bus to which data will be published.
     /// </summary>
     private string BusName { get; }
 
     /// <summary>
-    ///     Gets the Amazon Kinesis client for interacting with Kinesis streams.
+    ///     Gets the Amazon EventBridge client for interacting with EventBridge.
     /// </summary>
-    private AmazonKinesisClient KinesisClient
+    private AmazonEventBridgeClient EventBridgeClient
     {
-        get { return kinesisClient ??= CreateService<AmazonKinesisClient>(); }
+        get { return eventBridgeClient ??= CreateService<AmazonEventBridgeClient>(); }
     }
 
     /// <summary>
-    ///     Creates a list of <see cref="PutRecordsRequestEntry" /> from a collection of data streams.
+    ///     Creates a list of <see cref="PutEventsRequestEntry" /> from a collection of data streams.
     /// </summary>
     /// <param name="dataStreams">The collection of data streams to be converted.</param>
     /// <param name="activity">The activity used for tracing purposes.</param>
-    /// <returns>A list of <see cref="PutRecordsRequestEntry" /> representing the data streams.</returns>
-    private static List<PutRecordsRequestEntry> CreatePutRecords(IList<T> dataStreams, Activity activity)
+    /// <param name="busName">The EventBridge event bus name.</param>
+    /// <returns>A list of <see cref="PutEventsRequestEntry" /> representing the data streams.</returns>
+    private static List<PutEventsRequestEntry>? CreatePutEventsEntries(IList<T> dataStreams, Activity? activity,
+        string busName)
     {
         if (dataStreams.IsNullOrEmpty())
             return null;
 
-        var request = new List<PutRecordsRequestEntry>();
+        var entries = new List<PutEventsRequestEntry>();
 
-        foreach (var data in dataStreams)
+        foreach (var data in dataStreams.Where(d=>d!=null!))
         {
-            // Ensure that the data stream is not null and has a valid partition key.
-            if (data is null)
-            {
-                continue;
-            }
-
-            if (data.TraceId.IsNullOrEmpty() && activity != null) data.TraceId = activity.TraceId.ToString();
+            if (data.TraceId.IsNullOrEmpty() && activity != null) 
+                data.TraceId = activity.TraceId.ToString();
 
             data.PublishedAt = DateTimeOffset.UtcNow;
 
-            var dataAsBytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize<object>(data));
+            var detail = JsonSerializer.Serialize<object>(data);
 
-            request.Add(new PutRecordsRequestEntry
+            entries.Add(new PutEventsRequestEntry
             {
-                Data = new MemoryStream(dataAsBytes),
-                PartitionKey = data.Partition
+                Source = data.Partition,
+                DetailType = data.GetType().Name,
+                Detail = detail,
+                EventBusName = busName,
+                Time = DateTime.UtcNow,
+                TraceHeader = data.TraceId
             });
         }
 
-        return request;
+        return entries;
     }
 
     /// <summary>
-    ///     Publishes a collection of data streams to the Kinesis data stream asynchronously.
+    ///     Publishes a collection of data streams to the EventBridge event bus asynchronously.
     /// </summary>
     /// <param name="dataList">The collection of data streams to be published.</param>
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
     private async Task InternalPublish(IEnumerable<T> dataList, CancellationToken cancellationToken = default)
     {
-        Logger.Info("Kinesis Publisher Started");
+        Logger.Info("EventBridge Publisher Started");
 
         var dataStreams = dataList as T[] ?? dataList.ToArray();
 
@@ -124,15 +118,14 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
             return;
         }
 
-        if (dataStreams.Length > 500) throw new InvalidEventLimitException();
+        if (dataStreams.Length > 10) throw new InvalidEventLimitException();
 
         using var activity = activityDataProducer.StartActivity();
         activity?.SetTag("BusName", BusName);
 
-        var request = new PutRecordsRequest
+        var request = new PutEventsRequest
         {
-            StreamName = BusName,
-            Records = CreatePutRecords(dataStreams, activity)
+            Entries = CreatePutEventsEntries(dataStreams, activity, BusName)
         };
 
         Logger.Info($"Publishing Data for Bus {BusName}");
@@ -140,10 +133,10 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
         var policy = base.CreateDefaultRetryAsyncPolicy();
 
         var results = await policy.ExecuteAsync(async () =>
-                await KinesisClient.PutRecordsAsync(request, cancellationToken).ConfigureAwait(false))
+                await EventBridgeClient.PutEventsAsync(request, cancellationToken).ConfigureAwait(false))
             .ConfigureAwait(false);
-
-        if (results.FailedRecordCount == 0)
+        
+        if (results.FailedEntryCount == 0)
         {
             Logger.Info($"All data published to Bus {BusName}");
             return;
@@ -151,14 +144,14 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
 
         foreach (var data in dataStreams) data.PublishedAt = null;
 
-        var errorRecords = results.Records.Where(r => r.ErrorCode != null);
+        var errorEntries = results.Entries.Where(e => e.ErrorCode != null);
 
-        foreach (var error in errorRecords)
-            Logger.Error($"Error publishing message. Error: {error.ErrorCode}, ErrorMessage: {error.ErrorMessage}");
+        foreach (var error in errorEntries)
+            Logger.Error($"Error publishing event to EventBridge. Error: {error.ErrorCode}, ErrorMessage: {error.ErrorMessage}");
     }
 
     /// <summary>
-    ///     Publishes a single data stream to the Kinesis data stream asynchronously.
+    ///     Publishes a single data stream to the EventBridge event bus asynchronously.
     /// </summary>
     /// <param name="data">The data stream to be published.</param>
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
@@ -169,7 +162,7 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
     }
 
     /// <summary>
-    ///     Publishes a collection of data streams to the Kinesis data stream asynchronously.
+    ///     Publishes a collection of data streams to the EventBridge event bus asynchronously.
     /// </summary>
     /// <param name="events">The collection of data streams to be published.</param>
     /// <param name="cancellationToken">Cancellation token to cancel the operation.</param>
@@ -180,11 +173,11 @@ public class DataProducer<T> : AwsBaseService where T : class, IDataStream
     }
 
     /// <summary>
-    ///     Disposes the Amazon Kinesis client when the service is no longer needed.
+    ///     Disposes the Amazon EventBridge client when the service is no longer needed.
     /// </summary>
     protected override void DisposeServices()
     {
-        kinesisClient?.Dispose();
+        eventBridgeClient?.Dispose();
         activityDataProducer?.Dispose();
     }
 }

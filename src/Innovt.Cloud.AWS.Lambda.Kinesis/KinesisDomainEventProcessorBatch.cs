@@ -57,7 +57,7 @@ public abstract class KinesisDomainEventProcessorBatch<TBody> : KinesisProcessor
     /// <returns>A list of domain-specific events of type <typeparamref name="TBody" /> created from the event records.</returns>
     private async Task<IList<TBody>> CreateBatchMessages(IEnumerable<KinesisEvent.KinesisEventRecord> messageRecords)
     {
-        if (messageRecords == null) throw new ArgumentNullException(nameof(messageRecords));
+        ArgumentNullException.ThrowIfNull(messageRecords);
 
         var dataStreams = new List<TBody>();
 

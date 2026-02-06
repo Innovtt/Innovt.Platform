@@ -27,8 +27,8 @@ public static class LoggerActivityExporterExtensions
     public static TracerProviderBuilder AddLoggerExporter(this TracerProviderBuilder builder,
         IServiceCollection serviceCollection)
     {
-        if (builder == null) throw new ArgumentNullException(nameof(builder));
-        if (serviceCollection == null) throw new ArgumentNullException(nameof(serviceCollection));
+        ArgumentNullException.ThrowIfNull(builder);
+        ArgumentNullException.ThrowIfNull(serviceCollection);
 
         return builder.AddProcessor(new SimpleActivityExportProcessor(new LoggerActivityExporter(serviceCollection)));
     }
