@@ -54,7 +54,7 @@ public class AuthUser : Entity
     /// <param name="role">The role to assign.</param>
     public void AssignRole(Role role)
     {
-        if (role == null) throw new ArgumentNullException(nameof(role));
+        ArgumentNullException.ThrowIfNull(role);
 
         Roles ??= new List<Role>();
 
@@ -73,8 +73,8 @@ public class AuthUser : Entity
     /// <param name="roleName">The name of the role.</param>
     public void UnAssignRole(string scope, string roleName)
     {
-        if (scope == null) throw new ArgumentNullException(nameof(scope));
-        if (roleName == null) throw new ArgumentNullException(nameof(roleName));
+        ArgumentNullException.ThrowIfNull(scope);
+        ArgumentNullException.ThrowIfNull(roleName);
 
         var role = Roles?.SingleOrDefault(r => r.Scope.Equals(scope, StringComparison.OrdinalIgnoreCase)
                                                && r.Name.Equals(roleName, StringComparison.OrdinalIgnoreCase));
@@ -91,7 +91,7 @@ public class AuthUser : Entity
     /// <param name="group">The group to assign.</param>
     public void AssignGroup(Group group)
     {
-        if (group == null) throw new ArgumentNullException(nameof(group));
+        ArgumentNullException.ThrowIfNull(group);
 
         Groups ??= new List<Group>();
 

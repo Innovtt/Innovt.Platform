@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace Innovt.Cloud.AWS.Kinesis.Tests;
 
-public class EventHandlerTests
+public class KinesisEventHandlerTests
 {
     [SetUp]
     public void TearUp()
@@ -27,7 +27,7 @@ public class EventHandlerTests
         var region = "us-west-2";
 
         // Act
-        var eventHandler = new EventHandler(busName, loggerMock, awsConfigurationMock, region);
+        var eventHandler = new KinesisEventHandler(busName, loggerMock, awsConfigurationMock, region);
 
         // Assert
         Assert.That(eventHandler, Is.Not.Null);
@@ -40,7 +40,7 @@ public class EventHandlerTests
         var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
 
         // Act
-        var eventHandler = new EventHandler("EventStream", loggerMock, awsConfiguration, "us-east-1");
+        var eventHandler = new KinesisEventHandler("EventStream", loggerMock, awsConfiguration, "us-east-1");
 
         var sampleEvent = new UserConfirmedEvent();
 

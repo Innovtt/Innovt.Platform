@@ -44,7 +44,7 @@ public abstract class KinesisDataProcessor<TBody> : KinesisDataProcessorBatch<TB
     /// <returns>A <see cref="BatchFailureResponse" /> containing information about failed message processing.</returns>
     protected override async Task<BatchFailureResponse> ProcessMessages(IList<TBody> messages)
     {
-        if (messages == null) throw new ArgumentNullException(nameof(messages));
+        ArgumentNullException.ThrowIfNull(messages);
 
         var response = new BatchFailureResponse();
 

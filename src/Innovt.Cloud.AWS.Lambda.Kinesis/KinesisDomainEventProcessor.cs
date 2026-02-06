@@ -47,7 +47,7 @@ public abstract class KinesisDomainEventProcessor<TBody> : KinesisDomainEventPro
     /// <returns>A <see cref="BatchFailureResponse" /> containing information about failed event processing.</returns>
     protected override async Task<BatchFailureResponse> ProcessMessages(IList<TBody> messages)
     {
-        if (messages == null) throw new ArgumentNullException(nameof(messages));
+        ArgumentNullException.ThrowIfNull(messages);
 
         var response = new BatchFailureResponse();
 

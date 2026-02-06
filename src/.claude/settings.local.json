@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet add package:*)",
+      "Bash(dotnet build:*)",
+      "Bash(xxd:*)",
+      "Bash(printf:*)"
+    ]
+  }
+}

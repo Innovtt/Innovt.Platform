@@ -14,7 +14,7 @@ public class Program
 
     public static IWebHostBuilder CreateHostBuilder(IWebHostBuilder hostBuilder)
     {
-        if (hostBuilder == null) throw new ArgumentNullException(nameof(hostBuilder));
+        ArgumentNullException.ThrowIfNull(hostBuilder);
 
         return hostBuilder
             .CaptureStartupErrors(true).UseContentRoot(Directory.GetCurrentDirectory())

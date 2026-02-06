@@ -2,22 +2,23 @@
 
     <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
-        <PackageId>Innovt.Cloud.AWS.Kinesis</PackageId>
-      <PackageVersion>10.0.6</PackageVersion>
+        <PackageId>Innovt.Cloud.AWS.EventBridge</PackageId>
+        <PackageVersion>10.0.6</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <Copyright>Innovt Tecnologia</Copyright>
-        <Description>AWS implementation for Kinesis Abstraction.</Description>
+        <Description>AWS implementation for EventBridge Abstraction.</Description>
         <LangVersion>latest</LangVersion>
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\Innovt.Cloud.AWS\Innovt.Cloud.AWS.csproj" />
-        <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj" />
-        <ProjectReference Include="..\Innovt.Domain\Innovt.Domain.csproj" />
-        <PackageReference Include="AWSSDK.Kinesis" Version="4.0.8" />
+        <ProjectReference Include="..\Innovt.Domain.Core\Innovt.Domain.Core.csproj" />
+        <PackageReference Include="AWSSDK.EventBridge" Version="4.0.5.15" />
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.102">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

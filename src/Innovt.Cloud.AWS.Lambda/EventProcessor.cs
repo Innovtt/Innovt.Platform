@@ -40,7 +40,7 @@ public abstract class EventProcessor<T, TResult> : BaseEventProcessor where T : 
     /// <returns>The result of processing the event message.</returns>
     public async Task<TResult> Process(T message, ILambdaContext context)
     {
-        if (message == null) throw new ArgumentNullException(nameof(message));
+        ArgumentNullException.ThrowIfNull(message);
         Context = context ?? throw new ArgumentNullException(nameof(context));
 
         InitializeLogger();
@@ -102,7 +102,7 @@ public abstract class EventProcessor<T> : BaseEventProcessor where T : class
     /// <param name="context">The Lambda context associated with the event processing.</param>
     public async Task Process(T message, ILambdaContext context)
     {
-        if (message == null) throw new ArgumentNullException(nameof(message));
+        ArgumentNullException.ThrowIfNull(message);
         Context = context ?? throw new ArgumentNullException(nameof(context));
 
         InitializeLogger();

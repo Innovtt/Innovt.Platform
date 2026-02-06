@@ -20,7 +20,7 @@ public class LogLevelEnricher : ILogEventEnricher
     /// <param name="propertyFactory">The log event property factory.</param>
     public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
     {
-        if (logEvent is null) throw new ArgumentNullException(nameof(logEvent));
+        ArgumentNullException.ThrowIfNull(logEvent);
 
         if (propertyFactory is null)
             return;

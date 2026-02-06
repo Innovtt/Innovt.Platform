@@ -22,7 +22,7 @@ public class ActivityEnrich : ILogEventEnricher
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="logEvent" /> is null.</exception>
     public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
     {
-        if (logEvent is null) throw new ArgumentNullException(nameof(logEvent));
+        ArgumentNullException.ThrowIfNull(logEvent);
 
         var activity = GetActivity();
 

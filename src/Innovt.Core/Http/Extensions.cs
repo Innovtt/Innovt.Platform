@@ -25,7 +25,7 @@ public static class Extensions
     /// <exception cref="Exception">Thrown if the URL cannot be created.</exception>
     public static Uri AppendResourceUri(this Uri baseUri, string resource)
     {
-        if (baseUri == null) throw new ArgumentNullException(nameof(baseUri));
+        ArgumentNullException.ThrowIfNull(baseUri);
 
         if (!Uri.TryCreate(baseUri, resource, out var uniformResourceIdentifier))
             throw new Exception("Cannot create URL; baseURI=" + baseUri + ", resourcePath=" + resource);

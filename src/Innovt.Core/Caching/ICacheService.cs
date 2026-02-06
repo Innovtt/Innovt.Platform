@@ -30,7 +30,7 @@ public interface ICacheService : IDisposable
         CancellationToken cancellationToken)
     {
         if (key.IsNullOrEmpty()) throw new ArgumentNullException(nameof(key));
-        if (factory == null) throw new ArgumentNullException(nameof(factory));
+        ArgumentNullException.ThrowIfNull(factory);
 
         var value = GetValue<T>(key);
 
@@ -57,7 +57,7 @@ public interface ICacheService : IDisposable
         CancellationToken cancellationToken)
     {
         if (key.IsNullOrEmpty()) throw new ArgumentNullException(nameof(key));
-        if (factory == null) throw new ArgumentNullException(nameof(factory));
+        ArgumentNullException.ThrowIfNull(factory);
 
         var value = GetValue<T>(key);
 
