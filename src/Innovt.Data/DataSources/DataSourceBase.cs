@@ -38,8 +38,8 @@ public abstract class DataSourceBase : IDataSource
     protected DataSourceBase(IConfiguration configuration, string connectionStringName,
         Provider provider = Provider.MsSql)
     {
-        if (configuration == null) throw new ArgumentNullException(nameof(configuration));
-        if (connectionStringName == null) throw new ArgumentNullException(nameof(connectionStringName));
+        ArgumentNullException.ThrowIfNull(configuration);
+        ArgumentNullException.ThrowIfNull(connectionStringName);
 
         Provider = provider;
         SetConnectionString(configuration, connectionStringName);
@@ -93,8 +93,8 @@ public abstract class DataSourceBase : IDataSource
     /// <exception cref="ConnectionStringException">Thrown when the connection string is not found or null.</exception>
     private void SetConnectionString(IConfiguration configuration, string name)
     {
-        if (configuration == null) throw new ArgumentNullException(nameof(configuration));
-        if (name == null) throw new ArgumentNullException(nameof(name));
+        ArgumentNullException.ThrowIfNull(configuration);
+        ArgumentNullException.ThrowIfNull(name);
 
         var localConnectionString = configuration.GetConnectionString(name);
 

@@ -50,7 +50,7 @@ public class Role : Entity<Guid>
     /// <param name="permission">The permission to be assigned.</param>
     public void AssignPermission(Permission permission)
     {
-        if (permission == null) throw new ArgumentNullException(nameof(permission));
+        ArgumentNullException.ThrowIfNull(permission);
 
         Permissions ??= new List<Permission>();
 

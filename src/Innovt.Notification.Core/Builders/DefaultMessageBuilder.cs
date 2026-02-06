@@ -34,8 +34,8 @@ public class DefaultMessageBuilder : IMessageBuilder
     /// <returns></returns>
     public NotificationMessage Build(NotificationTemplate notificationTemplate, NotificationRequest request)
     {
-        if (notificationTemplate == null) throw new ArgumentNullException(nameof(notificationTemplate));
-        if (request == null) throw new ArgumentNullException(nameof(request));
+        ArgumentNullException.ThrowIfNull(notificationTemplate);
+        ArgumentNullException.ThrowIfNull(request);
 
         var message = new NotificationMessage(notificationTemplate.Type)
         {
@@ -60,7 +60,7 @@ public class DefaultMessageBuilder : IMessageBuilder
     protected virtual NotificationMessageSubject BuildSubject(NotificationTemplate template,
         NotificationRequest request)
     {
-        if (template == null) throw new ArgumentNullException(nameof(template));
+        ArgumentNullException.ThrowIfNull(template);
 
         return new NotificationMessageSubject
         {

@@ -89,7 +89,7 @@ public abstract class Entity
     /// <param name="domainEvent">The domain event to add.</param>
     public Entity AddDomainEvent(DomainEvent domainEvent)
     {
-        if (domainEvent == null) throw new ArgumentNullException(nameof(domainEvent));
+        ArgumentNullException.ThrowIfNull(domainEvent);
 
         domainEvent.PublishedAt = null;
         domainEvent.CreatedAt = DateTime.UtcNow;

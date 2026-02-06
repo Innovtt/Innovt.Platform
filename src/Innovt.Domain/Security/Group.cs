@@ -45,7 +45,7 @@ public class Group : Entity<Guid>
     /// <param name="role">The role to assign.</param>
     public void AssignRole(Role role)
     {
-        if (role == null) throw new ArgumentNullException(nameof(role));
+        ArgumentNullException.ThrowIfNull(role);
 
         Roles ??= new List<Role>();
 
@@ -63,7 +63,7 @@ public class Group : Entity<Guid>
     /// <param name="role">The role to unassign.</param>
     public void UnAssignRole(Role role)
     {
-        if (role == null) throw new ArgumentNullException(nameof(role));
+        ArgumentNullException.ThrowIfNull(role);
 
         var roleToRemove = Roles?.SingleOrDefault(r => r.Id == role.Id);
 

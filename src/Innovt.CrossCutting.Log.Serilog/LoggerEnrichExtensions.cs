@@ -20,7 +20,7 @@ public static class LoggerEnrichExtensions
     /// <returns>The updated logger configuration.</returns>
     public static LoggerConfiguration WithDataDogEnrich(this LoggerEnrichmentConfiguration enrichmentConfiguration)
     {
-        if (enrichmentConfiguration == null) throw new ArgumentNullException(nameof(enrichmentConfiguration));
+        ArgumentNullException.ThrowIfNull(enrichmentConfiguration);
 
         return enrichmentConfiguration.With<DataDogEnrich>();
     }
@@ -32,7 +32,7 @@ public static class LoggerEnrichExtensions
     /// <returns>The updated logger configuration.</returns>
     public static LoggerConfiguration WithActivityEnrich(this LoggerEnrichmentConfiguration enrichmentConfiguration)
     {
-        if (enrichmentConfiguration == null) throw new ArgumentNullException(nameof(enrichmentConfiguration));
+        ArgumentNullException.ThrowIfNull(enrichmentConfiguration);
 
         return enrichmentConfiguration.With<ActivityEnrich>();
     }

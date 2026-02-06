@@ -20,7 +20,7 @@ public static class TracerBuilderExtensions
     /// <exception cref="ArgumentNullException"></exception>
     public static TracerProviderBuilder AddInnovtInstrumentation(this TracerProviderBuilder builder)
     {
-        if (builder == null) throw new ArgumentNullException(nameof(builder));
+        ArgumentNullException.ThrowIfNull(builder);
 
         builder.AddSource("Innovt.Cloud.AWS.Cognito.CognitoIdentityProvider")
             .AddSource("Innovt.Cloud.AWS.Dynamo.Repository")

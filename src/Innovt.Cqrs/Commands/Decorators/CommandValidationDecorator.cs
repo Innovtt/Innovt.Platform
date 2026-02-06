@@ -33,7 +33,7 @@ public sealed class CommandValidationDecorator<TCommand> : ICommandHandler<TComm
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="command" /> is null.</exception>
     public void Handle(TCommand command)
     {
-        if (command == null) throw new ArgumentNullException(nameof(command));
+        ArgumentNullException.ThrowIfNull(command);
 
         command.EnsureIsValid();
 

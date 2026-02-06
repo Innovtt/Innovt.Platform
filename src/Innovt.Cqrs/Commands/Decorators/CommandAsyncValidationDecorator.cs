@@ -38,7 +38,7 @@ public sealed class CommandAsyncValidationDecorator<TCommand> : IAsyncCommandHan
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="command" /> is null.</exception>
     public async Task Handle(TCommand command, CancellationToken cancellationToken = default)
     {
-        if (command == null) throw new ArgumentNullException(nameof(command));
+        ArgumentNullException.ThrowIfNull(command);
 
         command.EnsureIsValid();
 
