@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Threading;
 using Innovt.Cloud.AWS.Configuration;
 using Innovt.Core.CrossCutting.Log;
@@ -37,6 +38,18 @@ public class EventBridgeEventHandlerTests
     [Ignore("Integration Test")]
     public void Publish_Integrated()
     {
+        var activitySource = new ActivitySource(nameof(EventBridgeEventHandlerTests));
+        
+        using var listener = new ActivityListener
+        {
+            ShouldListenTo = _ => true,
+            Sample = (ref ActivityCreationOptions<ActivityContext> _) => ActivitySamplingResult.AllDataAndRecorded
+        };
+        
+        ActivitySource.AddActivityListener(listener);
+
+        using var activity = activitySource.StartActivity("EventBridgeEventHandlerTests");
+
         var awsConfiguration = new DefaultAwsConfiguration("c2g-dev");
 
         // Act
