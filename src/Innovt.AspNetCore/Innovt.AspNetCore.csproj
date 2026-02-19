@@ -22,9 +22,9 @@
         <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.15.0" />
         <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.15.0" />
         <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.15.0" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.2" />
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.2" />
-        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.102">
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.4" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.3" />
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.103">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>

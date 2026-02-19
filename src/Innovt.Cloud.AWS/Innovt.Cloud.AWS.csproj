@@ -14,11 +14,11 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="AWSSDK.Core" Version="4.0.3.12" />
+        <PackageReference Include="AWSSDK.Core" Version="4.0.3.14" />
         <PackageReference Include="AWSSDK.SecurityToken" Version="4.0.5.9" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.2" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.3" />
         <PackageReference Include="Polly" Version="8.6.5" />
-        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.102">
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.103">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
