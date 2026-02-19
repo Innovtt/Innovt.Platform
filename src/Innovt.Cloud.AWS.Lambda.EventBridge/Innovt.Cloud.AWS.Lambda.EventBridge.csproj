@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <PackageId>Innovt.Cloud.AWS.Lambda.EventBridge</PackageId>
+      <PackageVersion>10.1.0</PackageVersion>
+        <Authors>Michel Borges</Authors>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Copyright>Innovt Tecnologia</Copyright>
+        <Description>AWS implementation for lambda and EventBridge events.</Description>
+        <LangVersion>latest</LangVersion>
+        <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Amazon.Lambda.CloudWatchEvents" Version="4.4.1" />
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.103">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Innovt.Cloud.AWS.Lambda\Innovt.Cloud.AWS.Lambda.csproj" />
+        <ProjectReference Include="..\Innovt.Domain.Core\Innovt.Domain.Core.csproj" />
+    </ItemGroup>
+
+</Project>

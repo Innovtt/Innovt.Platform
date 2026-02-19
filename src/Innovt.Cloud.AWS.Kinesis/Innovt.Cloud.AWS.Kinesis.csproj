@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
         <PackageId>Innovt.Cloud.AWS.Kinesis</PackageId>
-      <PackageVersion>10.0.6</PackageVersion>
+      <PackageVersion>10.1.0</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -18,7 +18,7 @@
         <ProjectReference Include="..\Innovt.Core\Innovt.Core.csproj" />
         <ProjectReference Include="..\Innovt.Domain\Innovt.Domain.csproj" />
         <PackageReference Include="AWSSDK.Kinesis" Version="4.0.8" />
-        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.102">
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.103">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
