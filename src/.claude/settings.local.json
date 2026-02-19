@@ -4,7 +4,9 @@
       "Bash(dotnet add package:*)",
       "Bash(dotnet build:*)",
       "Bash(xxd:*)",
-      "Bash(printf:*)"
+      "Bash(printf:*)",
+      "Bash(ls:*)",
+      "WebFetch(domain:raw.githubusercontent.com)"
     ]
   }
 }
