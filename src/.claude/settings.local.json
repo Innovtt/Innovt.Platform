@@ -6,7 +6,8 @@
       "Bash(xxd:*)",
       "Bash(printf:*)",
       "Bash(ls:*)",
-      "WebFetch(domain:raw.githubusercontent.com)"
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(dotnet test:*)"
     ]
   }
 }
