@@ -3,9 +3,10 @@
 // Project: Innovt.Cloud.AWS.Lambda.EventBridge
 
 using System.Diagnostics.CodeAnalysis;
+using System.Text.Json;
 using System.Threading.Tasks;
-using Amazon.Lambda.CloudWatchEvents;
 using Amazon.Lambda.Core;
+using Innovt.Cloud.AWS.Lambda.EventBridge.Events;
 using Innovt.Core.CrossCutting.Log;
 using Innovt.Domain.Core.Events;
 using Innovt.Domain.Core.Streams;
@@ -17,8 +18,7 @@ namespace Innovt.Cloud.AWS.Lambda.EventBridge;
 ///     <typeparamref name="TBody" />.
 /// </summary>
 /// <typeparam name="TBody">The type of domain event contained in the EventBridge event detail.</typeparam>
-public abstract class EventBridgeDomainEventProcessor<TBody> : EventProcessor<CloudWatchEvent<TBody>>
-    where TBody : DomainEvent
+public abstract class EventBridgeDomainEventProcessor<TBody> : EventProcessor<EventBridgeMessage> where TBody : DomainEvent
 {
     /// <summary>
     ///     Initializes a new instance of the <see cref="EventBridgeDomainEventProcessor{TBody}" /> class with optional
@@ -42,7 +42,7 @@ public abstract class EventBridgeDomainEventProcessor<TBody> : EventProcessor<Cl
     /// <param name="message">The CloudWatchEvent containing the domain event detail.</param>
     /// <param name="context">The ILambdaContext providing information about the Lambda function's execution environment.</param>
     /// <returns>A Task representing the asynchronous processing operation.</returns>
-    protected override async Task Handle([NotNull]CloudWatchEvent<TBody> message, ILambdaContext context)
+    protected override async Task Handle([NotNull]EventBridgeMessage message, ILambdaContext context)
     {
         Logger.Info($"Processing EventBridge event from Source={message.Source}, DetailType={message.DetailType}.");
 
@@ -52,8 +52,10 @@ public abstract class EventBridgeDomainEventProcessor<TBody> : EventProcessor<Cl
         activity?.SetTag("EventBridge.DetailType", message.DetailType);
         activity?.SetTag("EventBridge.Region", message.Region);
         activity?.SetTag("EventBridge.Time", message.Time);
-
-        var body = DeserializeDetail(message);
+        
+        var detail = JsonSerializer.Serialize(message.Detail);
+        
+        var body = DeserializeBody(detail, message.DetailType);
 
         if (body is null)
         {
@@ -83,13 +85,14 @@ public abstract class EventBridgeDomainEventProcessor<TBody> : EventProcessor<Cl
     }
 
     /// <summary>
-    ///     Deserializes the event detail from the CloudWatchEvent. Override this method for custom deserialization.
+    ///     Deserializes the content of a Kinesis event record into an instance of type <typeparamref name="TBody" />.
     /// </summary>
-    /// <param name="message">The CloudWatchEvent containing the event detail.</param>
-    /// <returns>An instance of type <typeparamref name="TBody" /> representing the deserialized detail.</returns>
-    protected virtual TBody DeserializeDetail([NotNull]CloudWatchEvent<TBody> message)
+    /// <param name="content">The content of the Kinesis event record.</param>
+    /// <param name="partition">The partition associated with the message.</param>
+    /// <returns>An instance of type <typeparamref name="TBody" /> representing the deserialized content.</returns>
+    protected virtual TBody? DeserializeBody(string content, string? partition = null)
     {
-        return message.Detail;
+        return JsonSerializer.Deserialize<TBody>(content);
     }
 
     /// <summary>

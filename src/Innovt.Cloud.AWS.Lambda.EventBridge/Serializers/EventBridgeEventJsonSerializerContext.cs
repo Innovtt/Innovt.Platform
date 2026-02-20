@@ -2,13 +2,12 @@
 // Author: Michel Borges
 // Project: Innovt.Cloud.AWS.Lambda.EventBridge
 
-using System.Text.Json;
 using System.Text.Json.Serialization;
-using Amazon.Lambda.CloudWatchEvents;
+using Innovt.Cloud.AWS.Lambda.EventBridge.Events;
 
 namespace Innovt.Cloud.AWS.Lambda.EventBridge.Serializers;
 
-[JsonSerializable(typeof(CloudWatchEvent<JsonElement>))]
+[JsonSerializable(typeof(EventBridgeMessage))]
 public partial class EventBridgeEventJsonSerializerContext : JsonSerializerContext
 {
 }
