@@ -19,7 +19,7 @@ public class EventBridgeDomainEventInvoiceProcessor(IDomainEventServiceMock<Invo
         return null!;
     }
 
-    protected override Task ProcessMessage(InvoiceDomainEvent message)
+    protected override Task ProcessMessage([NotNull]InvoiceDomainEvent message)
     {
         serviceMock.ProcessMessage(message);
 

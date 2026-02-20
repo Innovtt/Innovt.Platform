@@ -79,7 +79,7 @@ public abstract class BaseEventProcessor
     ///     Initializes the logger with an optional logger instance or creates a new logger if not provided.
     /// </summary>
     /// <param name="iocContainer">An optional logger instance to use.</param>
-    protected void InitializeLogger(IContainer iocContainer = null)
+    protected void InitializeLogger(IContainer? iocContainer = null)
     {
         //The logger is already set.
         if (iocContainer is null && Logger is not null)
@@ -173,7 +173,7 @@ public abstract class BaseEventProcessor
     ///     Sets up the Inversion of Control (IOC) container for managing dependencies.
     /// </summary>
     /// <returns>The configured IOC container.</returns>
-    protected abstract IContainer SetupIocContainer();
+    protected abstract IContainer? SetupIocContainer();
 
     /// <summary>
     ///     Configures additional sources for enriching the application configuration.
