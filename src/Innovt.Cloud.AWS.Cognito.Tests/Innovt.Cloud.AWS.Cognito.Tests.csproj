@@ -16,7 +16,7 @@
         <PackageReference Include="Amazon.Extensions.Configuration.SystemsManager" Version="7.1.0" />
         <PackageReference Include="NUnit" Version="4.5.1" />
         <PackageReference Include="NSubstitute" Version="5.3.0" />
-        <PackageReference Include="NUnit3TestAdapter" Version="6.1.0" />
+        <PackageReference Include="NUnit3TestAdapter" Version="6.2.0" />
         <PackageReference Include="coverlet.collector" Version="8.0.1">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
