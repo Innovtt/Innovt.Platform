@@ -117,9 +117,9 @@ internal static class AttributeValueConverterManager
             {
                 M = dict.ToDictionary(item => item.Key, item => CreateAttributeValue(item.Value, visitedObjects))
             },
-            IList<object> objectList => new AttributeValue
+            IList list => new AttributeValue
             {
-                L = objectList.Select(o => CreateAttributeValue(o, visitedObjects)).ToList()
+                L = list.Cast<object>().Select(o => CreateAttributeValue(o, visitedObjects)).ToList()
             },
             IEnumerable<object> objectList => new AttributeValue
             {

@@ -16,7 +16,7 @@ using UserStatus = Innovt.Cloud.AWS.Dynamo.Tests.Mapping.UserStatus;
 namespace Innovt.Cloud.AWS.Dynamo.Tests;
 
 [TestFixture]
-[Ignore("Only for local tests")]
+//[Ignore("Only for local tests")]
 public class RepositoryTests
 {
     private string fakeUserId = "24a874d8-d0a1-7032-b572-3c3383ff4ba9";
@@ -78,9 +78,19 @@ public class RepositoryTests
             Skills = new List<Skill>(),
             Status = UserStatus.Active,
             DaysOfWeek = new List<int>() { 1, 2, 3, 4, 5 },
+            Childs = new List<Guid>(){Guid.NewGuid()}
         };
 
-        await repository.AddAsync(user).ConfigureAwait(false);
+        try
+        {
+            await repository.AddAsync(user).ConfigureAwait(false);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+     
 
         return user;
     }
