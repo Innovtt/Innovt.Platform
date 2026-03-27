@@ -7,7 +7,9 @@
       "Bash(printf:*)",
       "Bash(ls:*)",
       "WebFetch(domain:raw.githubusercontent.com)",
-      "Bash(dotnet test:*)"
+      "Bash(dotnet test:*)",
+      "Bash(find /Volumes/Backup/Projects/Innovt/Innovt.Platform/src -name *.cs -exec grep -l IPropertyConverter {})",
+      "Bash(2)"
     ]
   }
 }

@@ -78,9 +78,19 @@ public class RepositoryTests
             Skills = new List<Skill>(),
             Status = UserStatus.Active,
             DaysOfWeek = new List<int>() { 1, 2, 3, 4, 5 },
+            Childs = new List<Guid>(){Guid.NewGuid()}
         };
 
-        await repository.AddAsync(user).ConfigureAwait(false);
+        try
+        {
+            await repository.AddAsync(user).ConfigureAwait(false);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+     
 
         return user;
     }

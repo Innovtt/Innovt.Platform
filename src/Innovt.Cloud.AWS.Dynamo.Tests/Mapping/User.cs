@@ -39,6 +39,8 @@ public class User : BaseUser
     public int JobPositionId { get; set; } //7
     public new string Id { get; set; } //8
     public List<int> DaysOfWeek { get; set; }
+    
+    public List<Guid>? Childs { get; set; }
 
     public UserStatus Status
     {
