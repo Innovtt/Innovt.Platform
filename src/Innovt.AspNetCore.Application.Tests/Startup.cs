@@ -1,5 +1,3 @@
-using Innovt.AspNetCore.Extensions;
-using Innovt.AspNetCore.Filters.Swagger;
 using Innovt.CrossCutting.Log.Serilog;
 using OpenTelemetry.Trace;
 using ILogger = Innovt.Core.CrossCutting.Log.ILogger;
