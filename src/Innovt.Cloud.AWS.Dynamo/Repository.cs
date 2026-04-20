@@ -110,7 +110,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
                 .ConfigureAwait(false);
 
             if (response.Responses is null)
-                return null;
+                return null!;
 
             var result = new List<T>();
 
