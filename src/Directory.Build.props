@@ -1,0 +1,5 @@
+<Project>
+  <PropertyGroup Condition="$(MSBuildProjectName.EndsWith('.Tests')) Or $(MSBuildProjectName.EndsWith('.Test'))">
+    <SonarQubeTestProject>true</SonarQubeTestProject>
+  </PropertyGroup>
+</Project>
