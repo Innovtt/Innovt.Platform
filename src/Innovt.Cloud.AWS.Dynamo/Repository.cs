@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.Model;
 using Innovt.Cloud.AWS.Configuration;
-using Innovt.Cloud.AWS.Dynamo.Converters;
+using Innovt.Cloud.AWS.Dynamo.ChangeTracking;
 using Innovt.Cloud.AWS.Dynamo.Converters.Attributes;
 using Innovt.Cloud.AWS.Dynamo.Helpers;
 using Innovt.Cloud.Table;
@@ -39,6 +39,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     private const string StatusCode = "StatusCode";
 
     private static readonly ActivitySource ActivityRepository = new("Innovt.Cloud.AWS.Dynamo.Repository");
+    private readonly IChangeTracker changeTracker = new ChangeTracker();
     private readonly DynamoContext context;
 
     private AmazonDynamoDBClient dynamoClient;
@@ -49,6 +50,8 @@ public abstract class Repository : AwsBaseService, ITableRepository
     ///     Gets the Amazon DynamoDB client.
     /// </summary>
     private AmazonDynamoDBClient DynamoClient => dynamoClient ??= CreateService<AmazonDynamoDBClient>();
+
+    public bool EnableChangeTracking { get; set; }
 
     #endregion
 
@@ -83,7 +86,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
             return new ExecuteSqlStatementResponse<T>
             {
                 NextToken = sqlStatementRequest.NextToken,
-                Items = QueryHelper.ConvertAttributesToType<T>(response.Items, context)
+                Items = AttachAll(QueryHelper.ConvertAttributesToType<T>(response.Items, context))
             };
         }
     }
@@ -110,13 +113,14 @@ public abstract class Repository : AwsBaseService, ITableRepository
                 .ConfigureAwait(false);
 
             if (response.Responses is null)
-                return null;
+                return null!;
 
             var result = new List<T>();
 
             foreach (var item in response.Responses)
                 result.AddRange(QueryHelper.ConvertAttributesToType<T>(item.Value, context));
 
+            AttachAll(result);
             return result;
         }
     }
@@ -394,6 +398,8 @@ public abstract class Repository : AwsBaseService, ITableRepository
             .ExecuteAsync(ct => DynamoClient.PutItemAsync(putRequest, ct), cancellationToken)
             .ConfigureAwait(false);
 
+        AttachOne(message);
+
         activity?.SetTag(ConsumedCapacity, response.ConsumedCapacity);
         activity?.SetTag(StatusCode, response.HttpStatusCode);
         activity?.SetTag(RequestId, response.ResponseMetadata.RequestId);
@@ -436,6 +442,11 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         if (response.HasItems())
             throw new CriticalException("Some items could not be added to the table");
+
+        if (EnableChangeTracking)
+            foreach (var message in messages)
+                if (message is not null)
+                    changeTracker.Attach(message);
     }
 
     /// <summary>
@@ -607,8 +618,14 @@ public abstract class Repository : AwsBaseService, ITableRepository
     {
         Check.NotNull(instance, nameof(instance));
 
-        using (ActivityRepository.StartActivity())
+        using (var activity = ActivityRepository.StartActivity())
         {
+            if (EnableChangeTracking && changeTracker.GetState(instance) == EntityState.Unchanged)
+            {
+                activity?.SetTag("Skipped", true);
+                return instance;
+            }
+
             var tableName = TableHelper.GetTableName<T>(context);
 
             var keys = TableHelper.ExtractKeyAttributeValueMap(instance, context);
@@ -634,6 +651,8 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
             //If the user request a return value
             var newInstance = await UpdateAsync<T>(updateItemRequest, cancellationToken).ConfigureAwait(false);
+
+            AttachOne(newInstance ?? instance);
 
             return newInstance ?? instance;
         }
@@ -784,7 +803,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         var (_, response) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
-        return QueryHelper.ConvertAttributesToType<T>(response, context);
+        return AttachAll(QueryHelper.ConvertAttributesToType<T>(response, context));
     }
 
     /// <summary>
@@ -808,7 +827,10 @@ public abstract class Repository : AwsBaseService, ITableRepository
         {
             var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
-            return QueryHelper.ConvertAttributesToType<TResult1, TResult2>(items, splitBy, context);
+            var (first, second) = QueryHelper.ConvertAttributesToType<TResult1, TResult2>(items, splitBy, context);
+            AttachAll(first);
+            AttachAll(second);
+            return (first, second);
         }
     }
 
@@ -837,7 +859,12 @@ public abstract class Repository : AwsBaseService, ITableRepository
         {
             var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
-            return QueryHelper.ConvertAttributesToType<TResult1, TResult2, TResult3>(items, splitBy, context);
+            var (first, second, third) =
+                QueryHelper.ConvertAttributesToType<TResult1, TResult2, TResult3>(items, splitBy, context);
+            AttachAll(first);
+            AttachAll(second);
+            AttachAll(third);
+            return (first, second, third);
         }
     }
 
@@ -868,8 +895,13 @@ public abstract class Repository : AwsBaseService, ITableRepository
         {
             var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
-            return QueryHelper
+            var (first, second, third, fourth) = QueryHelper
                 .ConvertAttributesToType<TResult1, TResult2, TResult3, TResult4>(items, splitBy, context);
+            AttachAll(first);
+            AttachAll(second);
+            AttachAll(third);
+            AttachAll(fourth);
+            return (first, second, third, fourth);
         }
     }
 
@@ -903,8 +935,15 @@ public abstract class Repository : AwsBaseService, ITableRepository
         {
             var (_, items) = await InternalQueryAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
-            return QueryHelper.ConvertAttributesToType<TResult1, TResult2, TResult3, TResult4, TResult5>(items,
-                splitBy, context);
+            var (first, second, third, fourth, fifth) =
+                QueryHelper.ConvertAttributesToType<TResult1, TResult2, TResult3, TResult4, TResult5>(items,
+                    splitBy, context);
+            AttachAll(first);
+            AttachAll(second);
+            AttachAll(third);
+            AttachAll(fourth);
+            AttachAll(fifth);
+            return (first, second, third, fourth, fifth);
         }
     }
 
@@ -928,7 +967,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         var queryResponse = QueryHelper.ConvertAttributesToType<T>(items, context);
 
-        return queryResponse.FirstOrDefault();
+        return AttachOne(queryResponse.FirstOrDefault());
     }
 
     /// <summary>
@@ -950,7 +989,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
             return new PagedCollection<T>
             {
-                Items = QueryHelper.ConvertAttributesToType<T>(items, context),
+                Items = AttachAll(QueryHelper.ConvertAttributesToType<T>(items, context)),
                 Page = QueryHelper.CreatePaginationToken(lastEvaluatedKey),
                 PageSize = request.PageSize.GetValueOrDefault()
             };
@@ -975,7 +1014,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         {
             var response = await InternalScanAsync<T>(request, cancellationToken).ConfigureAwait(false);
 
-            return QueryHelper.ConvertAttributesToType<T>(response.Items, context);
+            return AttachAll(QueryHelper.ConvertAttributesToType<T>(response.Items, context));
         }
     }
 
@@ -1002,7 +1041,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
             var response = new PagedCollection<T>
             {
-                Items = QueryHelper.ConvertAttributesToType<T>(items, context),
+                Items = AttachAll(QueryHelper.ConvertAttributesToType<T>(items, context)),
                 Page = QueryHelper.CreatePaginationToken(exclusiveStartKey),
                 PageSize = request.PageSize.GetValueOrDefault()
             };
@@ -1024,4 +1063,28 @@ public abstract class Repository : AwsBaseService, ITableRepository
         if (TypeUtil.IsCollection(message))
             throw new CriticalException("You should use AddRangeAsync to add a list of items");
     }
+
+    #region [Change Tracking]
+
+    private IList<T> AttachAll<T>(IList<T>? entities) where T : class
+    {
+        if (!EnableChangeTracking || entities is null)
+            return entities!;
+
+        foreach (var entity in entities)
+            if (entity is not null)
+                changeTracker.Attach(entity);
+
+        return entities;
+    }
+
+    private T? AttachOne<T>(T? entity) where T : class
+    {
+        if (EnableChangeTracking && entity is not null)
+            changeTracker.Attach(entity);
+
+        return entity;
+    }
+
+    #endregion
 }
