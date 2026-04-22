@@ -1067,7 +1067,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
     #region [Change Tracking]
 
-    private IList<T> AttachAll<T>(IList<T>? entities) where T : class
+    protected IList<T> AttachAll<T>(IList<T>? entities) where T : class
     {
         if (entities is null)
             return [];
@@ -1081,7 +1081,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         return entities;
     }
 
-    private T? AttachOne<T>(T? entity) where T : class
+    protected T? AttachOne<T>(T? entity) where T : class
     {
         if (EnableChangeTracking && entity is not null)
             changeTracker.Attach(entity);
