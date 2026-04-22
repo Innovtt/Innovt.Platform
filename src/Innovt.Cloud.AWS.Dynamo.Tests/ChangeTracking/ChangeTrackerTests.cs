@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace Innovt.Cloud.AWS.Dynamo.Tests.ChangeTracking;
 
 [TestFixture]
-public class ChangeTrackerTests
+internal sealed class ChangeTrackerTests
 {
     private ChangeTracker tracker = null!;
 

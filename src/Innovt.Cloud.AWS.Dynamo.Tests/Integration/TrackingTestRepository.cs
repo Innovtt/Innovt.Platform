@@ -5,7 +5,7 @@ using Innovt.Core.CrossCutting.Log;
 
 namespace Innovt.Cloud.AWS.Dynamo.Tests.Integration;
 
-public class TrackingTestRepository(
+internal sealed class TrackingTestRepository(
     ILogger logger,
     IAwsConfiguration configuration,
     string serviceUrl)
