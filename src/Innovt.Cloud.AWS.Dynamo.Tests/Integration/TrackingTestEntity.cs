@@ -4,7 +4,7 @@ using Amazon.DynamoDBv2.DataModel;
 namespace Innovt.Cloud.AWS.Dynamo.Tests.Integration;
 
 [DynamoDBTable("ChangeTracking")]
-public class TrackingTestEntity
+internal sealed class TrackingTestEntity
 {
     [DynamoDBHashKey("PK")]
     public string Pk { get; set; } = string.Empty;
@@ -18,7 +18,7 @@ public class TrackingTestEntity
     public List<string>? Tags { get; set; }
 }
 
-public class TrackingAddress
+internal sealed class TrackingAddress
 {
     public string Street { get; set; } = string.Empty;
     public string City { get; set; } = string.Empty;

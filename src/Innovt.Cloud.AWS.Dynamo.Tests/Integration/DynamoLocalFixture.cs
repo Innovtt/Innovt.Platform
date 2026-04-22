@@ -12,7 +12,7 @@ using NUnit.Framework;
 namespace Innovt.Cloud.AWS.Dynamo.Tests.Integration;
 
 [SetUpFixture]
-public class DynamoLocalFixture
+internal sealed class DynamoLocalFixture
 {
     public const string TableName = "ChangeTracking";
 
@@ -31,8 +31,7 @@ public class DynamoLocalFixture
             return;
         }
 
-        container = new ContainerBuilder()
-            .WithImage("amazon/dynamodb-local:2.5.2")
+        container = new ContainerBuilder("amazon/dynamodb-local:2.5.2")
             .WithPortBinding(8000, true)
             .Build();
 

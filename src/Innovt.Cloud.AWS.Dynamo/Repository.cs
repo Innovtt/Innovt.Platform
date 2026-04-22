@@ -39,7 +39,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
     private const string StatusCode = "StatusCode";
 
     private static readonly ActivitySource ActivityRepository = new("Innovt.Cloud.AWS.Dynamo.Repository");
-    private readonly IChangeTracker changeTracker = new ChangeTracker();
+    private readonly ChangeTracker changeTracker = new();
     private readonly DynamoContext context;
 
     private AmazonDynamoDBClient dynamoClient;
@@ -444,9 +444,10 @@ public abstract class Repository : AwsBaseService, ITableRepository
             throw new CriticalException("Some items could not be added to the table");
 
         if (EnableChangeTracking)
+        {
             foreach (var message in messages)
-                if (message is not null)
-                    changeTracker.Attach(message);
+                changeTracker.Attach(message);
+        }
     }
 
     /// <summary>
@@ -1068,12 +1069,14 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
     private IList<T> AttachAll<T>(IList<T>? entities) where T : class
     {
-        if (!EnableChangeTracking || entities is null)
-            return entities!;
+        if (entities is null)
+            return [];
+
+        if (!EnableChangeTracking)
+            return entities;
 
         foreach (var entity in entities)
-            if (entity is not null)
-                changeTracker.Attach(entity);
+            changeTracker.Attach(entity);
 
         return entities;
     }

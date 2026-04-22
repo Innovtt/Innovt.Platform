@@ -12,7 +12,7 @@ namespace Innovt.Cloud.AWS.Dynamo.Tests.Integration;
 
 [TestFixture]
 [Category("Integration")]
-public class ChangeTrackingIntegrationTests
+internal sealed class ChangeTrackingIntegrationTests
 {
     private TrackingTestRepository repository = null!;
     private ConcurrentBag<Activity> recordedActivities = null!;
