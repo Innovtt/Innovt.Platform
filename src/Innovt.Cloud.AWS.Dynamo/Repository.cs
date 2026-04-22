@@ -388,6 +388,12 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         using var activity = ActivityRepository.StartActivity();
 
+        if (IsUnchanged(message))
+        {
+            activity?.SetTag("Skipped", true);
+            return;
+        }
+
         var putRequest = new PutItemRequest
         {
             TableName = TableHelper.GetTableName<T>(context),
@@ -424,9 +430,19 @@ public abstract class Repository : AwsBaseService, ITableRepository
         if (messages.Count == 0)
             return;
 
+        var itemsToWrite = FilterUnchanged(messages);
+
+        if (itemsToWrite.Count == 0)
+        {
+            activity?.SetTag("Skipped", true);
+            return;
+        }
+
+        activity?.SetTag("MessagesToWrite", itemsToWrite.Count);
+
         var tableName = TableHelper.GetTableName<T>(context);
 
-        var writeRequest = messages.Select(message => new WriteRequest
+        var writeRequest = itemsToWrite.Select(message => new WriteRequest
             {
                 PutRequest = new PutRequest
                 {
@@ -443,11 +459,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
         if (response.HasItems())
             throw new CriticalException("Some items could not be added to the table");
 
-        if (EnableChangeTracking)
-        {
-            foreach (var message in messages)
-                changeTracker.Attach(message);
-        }
+        AttachAll(itemsToWrite);
     }
 
     /// <summary>
@@ -621,7 +633,7 @@ public abstract class Repository : AwsBaseService, ITableRepository
 
         using (var activity = ActivityRepository.StartActivity())
         {
-            if (EnableChangeTracking && changeTracker.GetState(instance) == EntityState.Unchanged)
+            if (IsUnchanged(instance))
             {
                 activity?.SetTag("Skipped", true);
                 return instance;
@@ -1087,6 +1099,20 @@ public abstract class Repository : AwsBaseService, ITableRepository
             changeTracker.Attach(entity);
 
         return entity;
+    }
+
+    protected bool IsUnchanged<T>(T? entity) where T : class
+    {
+        return EnableChangeTracking
+               && entity is not null
+               && changeTracker.GetState(entity) == EntityState.Unchanged;
+    }
+
+    private IList<T> FilterUnchanged<T>(ICollection<T> entities) where T : class
+    {
+        return EnableChangeTracking
+            ? entities.Where(e => changeTracker.GetState(e) != EntityState.Unchanged).ToList()
+            : entities.ToList();
     }
 
     #endregion

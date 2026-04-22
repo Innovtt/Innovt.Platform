@@ -12,7 +12,7 @@
         <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="4.0.3.33" />
         <PackageReference Include="AWSSDK.SimpleSystemsManagement" Version="4.0.7.11" />
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.7" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.4.0" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.5.0" />
         <PackageReference Include="Amazon.Extensions.Configuration.SystemsManager" Version="7.1.0" />
         <PackageReference Include="NUnit" Version="4.5.1" />
         <PackageReference Include="NSubstitute" Version="5.3.0" />
