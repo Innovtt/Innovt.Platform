@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
         <PackageId>Innovt.Data.Ado</PackageId>
-      <PackageVersion>10.2.0</PackageVersion>
+      <PackageVersion>10.2.1</PackageVersion>
         <Authors>Michel Borges</Authors>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -13,13 +13,13 @@
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Dapper" Version="2.1.72" />
-        <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="10.0.6" />
-        <PackageReference Include="MySql.Data" Version="9.6.0" />
+        <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="10.0.7" />
+        <PackageReference Include="MySql.Data" Version="9.7.0" />
         <PackageReference Include="Npgsql" Version="10.0.2" />
         <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="23.26.200" />
         <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.0" />
-        <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.6" />
-        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.202">
+        <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.7" />
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.203">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
