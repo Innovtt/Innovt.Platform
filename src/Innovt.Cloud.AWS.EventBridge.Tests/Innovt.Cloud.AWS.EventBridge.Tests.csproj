@@ -26,8 +26,8 @@
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="AWSSDK.SSO" Version="4.0.2.24" />
-        <PackageReference Include="AWSSDK.SSOOIDC" Version="4.0.3.25" />
+        <PackageReference Include="AWSSDK.SSO" Version="4.0.2.26" />
+        <PackageReference Include="AWSSDK.SSOOIDC" Version="4.0.3.27" />
     </ItemGroup>
 
     <ItemGroup>
